@@ -1,0 +1,207 @@
+<HTML>
+<HEAD>
+   <TITLE>Stereo Vision: Triangulation</TITLE>
+</HEAD>
+
+<BODY>
+
+<P>
+<CENTER><H1>Stereo Vision: Triangulation</H1>
+<H3><A HREF="http://www.dis.uniroma1.it/~iocchi">Luca Iocchi</A></H3>
+Dipartimento di Informatica e Sistemistica<BR>
+Universit&agrave di Roma "La Sapienza", Italy.
+</CENTER>
+</P>
+
+<P>&nbsp;</P>
+<H2>1. Introduction</H2>
+
+Triangulation in stereo analysis is the task of 
+computing the 3D position of points in the images, given
+the disparity map and the geometry of the stereo setting.
+
+
+<P>&nbsp;</P>
+<H2>2. Camera Model</H2>
+
+<P>
+The pinhole camera model is often used for 3D reconstruction.
+
+<P>
+<IMG SRC="fig/pinhole.gif">
+</P>
+
+<P>
+The relation between the world coordinates of
+a point P(X,Y,Z) and the coordinates on the image plane (x,y) in a
+pinhole camera is
+<P>x = f * X / Z</P>
+<P>y = f * Y / Z</P>
+where f is the focal distance of the lens.
+
+
+<H3>2.1 From frame to image coordinates</H2>
+
+<P>
+A digitalized image is usually stored in a frame buffer, that can be seen as
+a matrix of pixels with W columns and H rows.
+Let (i,j) be the discrete frame coordinates of the image with origin in the
+upperleft corner, (Ox,Oy) be the focal point of the lens (the intersection
+between the optical axes and the image plane) in the frame coordinates, 
+and (x,y) be the image coordinates.<BR>
+
+
+<P><IMG SRC="fig/image-coords.gif" ALT="Camera Coordinates" ALIGN=NONE></P>
+
+<P>
+Image coordinates relate to frame coordinates in the following way:
+<P>x = ( i - Ox ) * Sx</P>
+<P>y = ( j - Oy ) * Sy</P>
+where Sx,Sy are the horizontal and vertical distances of two adjacent pixels
+in the frame buffer.
+
+
+<H3>2.2 Radial distortion</H3>
+
+Lens distortion can be modelled by the following equations:
+
+<P>x = xd * ( 1 + k1 * rd^2 )</P>
+<P>y = yd * ( 1 + k1 * rd^2 )</P>
+
+where (xd,yd) are the image coordinates of the distorted image, 
+rd = SQRT(xd^2 + yd^2), and k1 is a constant depending on the distortion of the lens.
+
+<P>
+The relation between image and frame coordinates in presence of lens distortion is:
+
+<P>x = ( id - Ox ) * Sx * ( 1 + k1 * rd^2 )</P>
+<P>y = ( jd - Oy ) * Sy * ( 1 + k1 * rd^2 )</P>
+
+
+
+<H3>2.3 Scanning and sampling</H3>
+
+<P>
+If the distances of two adjacent cells in the camera digitalization device
+are known (Px,Py), then the distances of pixels in the image are
+
+<P>Sx = ax * Px</P>
+<P>Sy = Py</P>
+
+where ax is a scale factor due to the displacement in horizontal scanning and sampling
+frequencies. On the contrary, there is no displacement in vertical sampling.
+
+
+
+<P>&nbsp;</P>
+<H2>3. Triangulation</H2>
+
+The 3D position (X,Y,Z) of a point P, can be reconstructed from
+the perspective projection of P on the image planes of the cameras,
+once the relative position and orientation of the two cameras are known.
+
+<P>
+We choose the 3D world reference system to be the left camera reference system.
+The right camera is translated and rotated with respect from the left one,
+therefore six parameters describe this transformation.<BR>
+
+The simplest case arise when the optical axes of two cameras are parallel, and
+the translation of the right camera is only along the X axis.
+
+<H3>4.1 Geometry for parallel cameras</H3>
+
+<P>
+Let us consider the optical setting in the figure, that is also called
+<I>standard model</I>.
+<OL>
+<LI>L and R are two pinhole cameras with parallel optical axes. Let f be the focal length
+of both cameras.
+<LI>The baseline (that is the line connecting the two lens centers) 
+is perpendicular to the optical axes. Let b be the distance between the two lens centers.
+<LI>XZ is the plane where the optical axes lie,
+XY plane is parallel to the image plane of both cameras,
+X axis equals the baseline and
+the origin O of (X,Y,Z) world reference system is the lens center of the left camera.
+</OL>
+
+<P><IMG SRC="fig/triang.gif" ALT="Stereo Triangulation" ALIGN=NONE></P>
+
+<P>
+In this setting the equations of stereo triangulation are:
+<P>Z = ( b * f ) / ( x1 - x2 )</P>
+<P>X = x1 * Z / f  </P>
+<P>Y = y1 * Z / f  </P>
+
+
+<H3>4.2 Non-parallel cameras</H3>
+
+In the general case, the right camera can be rotated with respect to the left one
+in three directions. In all this section we assume that
+rotation angles are small (<I>small angle approximation</I>).
+
+<P><B>Rotation around Y axis (<I>theta</I>)</B></P>
+
+In this case the optical axes are not parallel, but they both lie on the XZ plane,
+so they intersect in a point (0,0,Z0), that is called <I>fixation point</I> and
+could also be behind the cameras (Z0<0).<BR>
+If <I>theta</I> is the rotation angle, then Z0 = b / tan(<I>theta</I>).
+
+<P>
+Under small angle approximation, we can still assume the right image plane
+to be parallel to the left image plane and hence to XY plane.
+
+<P><IMG SRC="fig/triang-np.gif" ALT="Non Parallel Stereo Triangulation" ALIGN=NONE></P>
+
+<P>
+In this case we have:
+<P>Z = ( b * f ) / ( x1 - x2 + f * b / Z0 )</P>
+<P>X = x1 * Z / f </P>
+<P>Y = y1 * Z / f </P>
+
+
+<P><B>Rotation around X axis (<I>phi</I>)</B></P>
+
+<P>
+Rotation around X axis only affects the Y coordinate in reconstruction.
+Let <I>phi</I> be the rotation angle, then stereo triangulation is
+<P>Z = ( b * f ) / ( x1 - x2 )</P>
+<P>X = x1 * Z / f </P>
+<P>Y = y1 * Z / f  +  tan(<I>phi</I>) * Z </P>
+
+
+<P><B>Rotation around Z axis (<I>psi</I>)</B></P>
+
+<P>
+Rotation around optical axis is usually dealt with by rotating the image
+before applying matching and triangulation.<BR>
+In the following the rotation angle of the right camera around its optical axis
+will be called <I>psi</I>.
+
+
+<H3>4.3 General case</H3>
+
+Given the translation vector T and rotation matrix R describing the transormation
+from left camera to right camera coordinates, the equation to solve for
+stereo triangulation is
+<P>p' = RT ( p - T )</P>
+where p and p' are the coordinates of P in the left and right camera coordinates
+respectively, and RT is the transpose (or the inverse) matrix of R.
+</P>
+
+<P>&nbsp</P>
+
+<HR>
+
+<I>Luca Iocchi</I>. April 6 1998.
+
+<P>
+Go to:<BR>
+<A HREF="stereo.html">Multiresolution Stereo Vision System</A><BR>
+<A HREF="calib.html">Stereo Camera Calibration</A><BR>
+<A HREF="houghcalib.html">Hough Internal Calibration</A><BR>
+
+
+</BODY>
+</HTML>
+
+

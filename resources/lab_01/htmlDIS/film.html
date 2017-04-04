@@ -1,0 +1,137 @@
+<html>
+<head>
+<title>Primo appello 2004</title>
+</head>
+
+<body>
+
+<h1>Primo appello 2004</h1>
+
+<p>
+La prova dura un'ora e tre quarti.
+</p>
+
+<p>
+<b>Riempire il file <tt>studenteid.txt</tt> con i propri
+dati.</b>
+</p>
+
+<p>
+Vengono dati: due programmi di prova, un file di prova, e il
+testo del compito in formato html. Lo studente deve
+realizzare due classi che vengono usate dai due programmi di
+prova. <b>Le soluzioni devono trovarsi nella stessa cartella
+<tt>Esame</tt> dove si trovano i programmi di prova</tt>
+pena l'annullamento dell'esame.</b>
+</p>
+
+<hr>
+
+<h3>Prima parte</h3>
+
+<p>
+Un videonoleggio vuole realizzare un sistema di gestione
+informatica del suo catalogo DVD. 
+</p>
+
+<p>
+Realizzare la classe <tt>Film</tt> i cui oggetti rappresentano
+dei DVD del negozio. Le componenti di questi oggetti devono essere:
+</p>
+
+<dl>
+
+<dt><tt>titolo</tt>
+<dd>il titolo del film
+
+<dt><tt>regista</tt>
+<dd>il regista del film
+
+<dt><tt>anno</tt>
+<dd>l'anno di realizzazione del film
+(un intero fra 1920 a 2004)
+
+<dt><tt>copie</tt>
+<dd>il numero di copie disponibili del film
+(intero positivo)
+</dl>
+
+<p>
+La classe deve essere incapsulata. Devono essere realizzati
+i seguenti metodi:
+</p>
+
+<ul>
+
+<li>metodi <tt>get</tt> e <tt>set</tt> per tutte le
+componenti; i metodi <tt>set</tt> per le componenti
+<tt>anno</tt> e <tt>copie</tt> devono prevedere dei
+controlli che impediscano di impostare valori non validi;
+in caso di errore, stampare
+un messaggio di errore e terminare il programma;
+
+<li>metodo costruttore che ha come argomento un
+<tt>BufferedReader</tt>; il metodo deve leggere i valori da
+mettere nell'oggetto da file; questi valori sono 
+memorizzati uno per linea; nel caso in cui il file
+finisca prima che si riescano a leggere tutte le componenti,
+si stampi un messaggio di errore e si esca dal programma;
+
+<li>un metodo toString che restituisce una stringa in cui ci
+sono tutte le componenti dell'oggetto.
+
+</ul>
+
+<hr>
+
+
+<h3>Seconda parte</h3>
+
+<p>
+Definire una  classe <tt>Noleggio</tt> i cui oggetti rappresentano
+tutti i DVD disponibili nel videonoleggio.
+Ogni oggetto di questa classe &egrave; quindi la
+rappresentazione di un insieme di oggetti <tt>Film</tt>.
+Per rappresentare insiemi di oggetti, usare un array.
+</p>
+
+<p>
+Costruttore della classe: 
+</p>
+
+<dl>
+
+<dt>
+<tt>Noleggio(String nomefile)</tt>
+<dd>
+crea un oggetto <tt>Noleggio</tt> che rappresenta l'insieme
+di tutti gli oggetti <tt>Film</tt> che sono memorizzati
+nel file il cui nome &egrave; dato dalla stringa passata
+come argomento; la prima linea del file contiene il numero
+degli oggetti memorizzati su file.
+
+</dl>
+
+<p>
+Metodi della classe:
+</p>
+
+<dl>
+
+<dt><tt>public void stampaTutti()</tt>
+<dd>stampa tutti i film
+
+<dt><tt>public void novita(int minAnno)</tt>
+<dd>Stampare nome, regista e anno di tutti i film
+disponibili che sono stati realizzati dall'anno
+<tt>minAnno</tt> in poi
+
+<dt><tt>public void noleggia(String titolo)</tt>
+<dd>diminuire di uno il numero di copie del film il
+cui titolo viene passato come argomento
+<dt>
+</dl>
+
+</body>
+</html>
+

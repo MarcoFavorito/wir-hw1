@@ -1,0 +1,131 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1">
+<META NAME="Generator" CONTENT="Microsoft Word 98">
+<TITLE>Esame 1/7/1998</TITLE>
+</HEAD>
+<BODY>
+
+<B><FONT SIZE=3><P ALIGN="CENTER">Universit&agrave; di Roma <I>La Sapienza</P>
+</I><P ALIGN="CENTER">Facolt&agrave; di Ingegneria </P>
+<P ALIGN="CENTER">Corso di Fondamenti di Informatica </P>
+<P ALIGN="CENTER">Corso di Laurea: <I>Ambiente e Territorio</P>
+</B></I><P ALIGN="CENTER"></P>
+<P ALIGN="CENTER">Appello dell&#146;1-7-1998</P>
+
+<P>&nbsp;</P>
+<B><P>Esercizio 1 (18 punti)</P>
+</B>
+<P>In un sistema per la progettazione assistita da elaboratore (CAD) un disegno (tecnico) &egrave; composto da un insieme di poligoni (massimo 10). Ciascuno di questi viene rappresentato tramite una lista collegata di elementi di tipo <B>Vertice</B>, in cui ciascun vertice &egrave; un punto del piano cartesiano a coordinate intere e il vertice finale di ogni poligono coincide con quello iniziale.</P>
+
+<P>Si consideri un file DISEGNO.TXT in cui &egrave; memorizzato un disegno: il file (di tipo testo) contiene le rappresentazioni dei poligoni che compongono il disegno, un poligono per riga.</P>
+
+<OL>
+
+<LI>Definire i tipi di dato C adeguati a risolvere i problemi di cui ai successivi punti (2) e (3).</LI>
+<LI TYPE="1" VALUE=1>Scrivere una funzione C (o pi&ugrave;) che, dato come parametro il file DISEGNO.TXT, costruisca una rappresentazione di tipo <B>Disegno</B> del disegno memorizzato nel file, dove <B>Disegno</B> &egrave; un tipo di dato che deve essere opportunamente definito.<BR>
+[In particolare, la funzione costruisce una lista per ciascun poligono nel disegno e organizza nella maniera che si ritiene pi&ugrave; opportuna i puntatori alla testa delle varie liste.]</LI>
+<LI TYPE="1" VALUE=1>Scrivere una funzione C (o pi&ugrave;) che, ricevendo un parametro formale di tipo <B>Disegno</B> <U>elimini dal disegno rappresentato</U> tutti i poligoni che contengono un lato orizzontale (parallelo all&#146;asse delle <I>x</I>).<BR>
+A titolo di esempio, si consideri la Fig. 1: in (a) &egrave; illustrato un poligono non avente lati orizzontali, in (b) un poligono con un lato orizzontale.<BR>
+</LI>
+</FONT>
+<P ALIGN="CENTER"><CENTER><TABLE CELLSPACING=0 BORDER=0 CELLPADDING=5 WIDTH=284>
+<TR><TD WIDTH="50%" VALIGN="TOP">
+<FONT SIZE=3><P><IMG SRC="Image11.gif" WIDTH=130 HEIGHT=87></FONT></TD>
+<TD WIDTH="50%" VALIGN="TOP">
+<FONT SIZE=3><P><IMG SRC="Image12.gif" WIDTH=130 HEIGHT=87></FONT></TD>
+</TR>
+<TR><TD WIDTH="50%" VALIGN="TOP">
+<FONT SIZE=3><P>(a) Poligono privo di lati orizzontali.</FONT></TD>
+<TD WIDTH="50%" VALIGN="TOP">
+<FONT SIZE=3><P>(b) Poligono con un lato orizzontale (in grassetto).</FONT></TD>
+</TR>
+<TR><TD WIDTH="50%" VALIGN="TOP">&nbsp;</TD>
+<TD WIDTH="50%" VALIGN="TOP">&nbsp;</TD>
+</TR>
+<TR><TD VALIGN="TOP" COLSPAN=2>
+<FONT SIZE=3><P ALIGN="CENTER">Fig. 1</FONT></TD>
+</TR>
+</TABLE>
+</CENTER></P>
+
+<FONT SIZE=3>
+<P>&nbsp;</P>
+<P>&nbsp;</P>
+</FONT><P ALIGN="CENTER">&nbsp;</P>
+<B><FONT SIZE=3><P ALIGN="CENTER">Universit&agrave; di Roma <I>La Sapienza</P>
+</I><P ALIGN="CENTER">Facolt&agrave; di Ingegneria </P>
+<P ALIGN="CENTER">Corso di Fondamenti di Informatica </P>
+<P ALIGN="CENTER">Corso di Laurea: <I>Ambiente e Territorio</P>
+</B></I><P ALIGN="CENTER"></P>
+<P ALIGN="CENTER">Appello dell&#146;1-7-1998</P>
+
+<P>&nbsp;</P>
+<B><P>Esercizio 2 (4 punti)</P>
+</B><P>Con riferimento al linguaggio C, si considerino</P>
+<LI>un tipo (struttura) ElLista, con campi</LI>
+<OL>
+
+<LI>info, di tipo int,</LI>
+<LI>prox, di tipo <U>puntatore</U> a ElLista;</LI></OL>
+
+<LI>una funzione InsInCoda che, data una <U>lista collegata</U> (anche vuota) e dato un nuovo elemento, dovrebbe collegare tale elemento alla <U>coda</U> della lista.</LI></OL>
+
+
+<P>La funzione qui proposta contiene degli errori. Indicarli, spiegarne l&#146;effetto e correggerli.</P>
+</FONT><FONT FACE="Courier" SIZE=1>
+<P>void InsInCoda (ElLista *p, int nuovo)</P>
+<P>{</P>
+<P>&#9;if (p != NULL) {</P>
+<P>&#9;&#9;while (p-&gt;prox != NULL)</P>
+<P>&#9;&#9;&#9;p = p-&gt;prox;</P>
+<P>&#9;&#9;p-&gt;prox = malloc(sizeof(ElLista));</P>
+<P>&#9;&#9;p-&gt;prox-&gt;val = nuovo;</P>
+<P>&#9;&#9;p-&gt;prox-&gt;prox = NULL;</P>
+<P>&#9;} else {</P>
+<P>&#9;&#9;p = malloc(sizeof(ElLista));</P>
+<P>&#9;&#9;p-&gt;val = nuovo;</P>
+<P>&#9;&#9;p-&gt;prox = NULL;</P>
+<P>&#9;}</P>
+<P>&#9;return;</P>
+<P>}</P>
+</FONT><FONT SIZE=3>
+<P>&nbsp;</P>
+<P>&nbsp;</P>
+<B><P>Esercizio 3 (4 punti)</P>
+</B><P>Con riferimento al programma C presentato nel riquadro, dire quali valori vengono stampati, e perch&eacute;,  quando vengono inseriti i valori sotto specificati (siano <I>A</I>, <I>B</I> e <I>C</I> i voti ottenuti negli ultimi tre esami superati):</P>
+<OL>
+
+<I><LI>A</I>, <I>B</I> e <I>C</I>;</LI>
+<I><LI>A</I>+1, <I>B</I> e <I>C</I>.</LI></OL>
+
+
+</FONT><FONT FACE="Courier" SIZE=1><P>#include &lt;stdio.h&gt;</P>
+<P>main() {</P>
+<P>&#9;int a[3], sommaint = 0, i;</P>
+<P>&#9;float media, sommafloat = 0;</P>
+<P>&#9;for(i=0; i&lt;3; i=i+1)</P>
+<P>&#9;&#9;scanf("%d", &amp;a[i]);</P>
+<P>&#9;for(i=0; i&lt;3; i=i+1) {</P>
+<P>&#9;&#9;sommaint =  sommaint+a[i];</P>
+<P>&#9;&#9;sommafloat = sommafloat+a[i];</P>
+<P>&#9;}</P>
+<P>&#9;media = sommaint/3;</P>
+<P>&#9;printf("Media1=%f\n", media);</P>
+<P>&#9;media = sommafloat/3;</P>
+<P>&#9;printf("Media2=%f\n", media);</P>
+<P>&#9;return 0;</P>
+<P>}</P>
+</FONT><FONT SIZE=3>
+<P>&nbsp;</P>
+<P>&nbsp;</P>
+<B><P>Esercizio 4 (4 punti)</P>
+</B><P>Con riferimento alle seguenti relazioni:</P>
+
+<UL>
+<LI>Automobile (Targa, ModelloAuto, Cilindrata, DataImmatricolazione, ProvinciaImmatricolazione, CodiceFiscalePropretario)</LI>
+<LI>Anagrafe (Nome, Cognome, DataNascita, CodiceFiscale, Indirizzo, NumeroCivico, CAP, Citt&agrave;, Provincia)</LI>
+<LI>Contravvenzione (NumeroSerie, Targa, ModelloAuto, Data, Orario, Indirizzo, NumeroCivico, Citt&agrave;)</LI></UL>
+
+<P>il candidato scriva una interrogazione SQL che restituisca nome e cognome di tutti i proprietari di auto che hanno sub&igrave;to una contravvenzione in orario serale (dalle 20 alle 8) mentre l&#146;auto era posteggiata sulla strada di residenza.</P></FONT></BODY>
+</HTML>

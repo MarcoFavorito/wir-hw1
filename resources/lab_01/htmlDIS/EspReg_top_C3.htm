@@ -1,0 +1,137 @@
+<HTML>
+<!-- Created with the CoffeeCup HTML Editor++ --> 
+<!--     http://www.coffeecup.com/editor      --> 
+<HEAD>
+<TITLE>Regular Expression</TITLE>
+<STYLE>
+	A:link, A:visited {
+		text-decoration:none;
+                   	}
+</STYLE>
+</HEAD>
+<BODY BACKGROUND="backgrou.gif" BGCOLOR=white LINK=C910AD VLINK=800080>
+<TABLE WIDTH=100%>
+  <TR>
+     <TD VALIGN=top><A HREF="index.htm"><IMG SRC="home.gif" BORDER=0></A></TD>
+     <TD  VALIGN=bottom ALIGN=center><FONT FACE="Arial Black" SIZE=6>Espressione Regolare</FONT></TD>
+     <TD VALIGN=top ALIGN=right><A HREF="App_main.htm"><FONT FACE="Arial Black" SIZE=2 COLOR=C910AD>Indice<BR>Applet</FONT></TD>
+  </TR>
+</TABLE>
+<P>
+<ADDRESS>Autore: Orlando Moroni</ADDRESS>
+<P>
+<TABLE WIDTH=100%>
+  <TR> 
+    <TD COLSPAN=2><FONT FACE="Arial" SIZE=3>
+    Questa applet raccoglie una serie di funzioni che permettono di "giocare" con i concetti di <B>automa a stati finiti</B> ed <B>espressione regolare</B>.
+    Data un'espressione regolare in input, l'applet consente di seguire il processo di costruzione ( anche in step_by_step ) dell'ASF che riconosce il linguaggio generato dall'espressione inserita.
+    Una volta costruito l'automa, l'applet permette anche di simulare il riconoscimento di una data stringa. Inoltre l'applet comprende delle funzioni supplementari che aiutano a comprendere meglio il procedimento di costruzione dell'ASF equivalente, come la visualizzazione dell'espressione regolare in forma post-fissa e la visualizzazione della lista generata dal parsing dell'espressione.
+    </TD>
+  </TR>
+  <TR>  
+    <TD>
+      <IMG SRC="pics/espreg.jpg" BORDER=3>
+    </TD>
+    <TD ALIGN=top VALIGN=left><FONT FACE="Arial" SIZE=3>
+       <BIG><U>FORMATO DELL'ESPRESSIONE</U></BIG>
+       <P>L'espressione regolare che viene accettata in input dall'applet ha come alfabeto l'insieme dei
+          caratteri letterali minuscoli ( 'a'...'z' ) mentre gli operatori sono rappresentati dai seguenti caratteri:
+          <UL>
+            <LI> ' + ' per l'unione </LI>
+            <LI> ' . ' per l'iterazione </LI>
+            <LI> ' * ' per la concatenazione </LI>
+          </UL>
+    </TD>
+  </TR>
+  <TR>
+   <TD COLSPAN=2> <FONT FACE="Arial" SIZE=3>
+<P>Prima di vedere meglio le funzioni dell'applet è necessaria una breve spiegazione di come viene processata l'espressione regolare inserita in ingresso:
+   l'espressione viene analizzata prima lessicalmente e poi sintatticamente per verificare che sia un'espressione legale, questo processo di parsing genera una lista che abbiamo
+   chiamato parsing-list come la seguente:
+   </TD>
+  </TR>
+  <TR>
+   <TD ALIGN=center>    <IMG SRC="pics/parsing.jpg" BORDER=1> 
+   </TD>
+   <TD ALIGN=left> <FONT FACE="Arial" SIZE=3>
+
+    Il processo di parsing è necessario per individuare i vari elementi sintattici dell'espressione ( operatori, letterali, parentesi, ... )
+   che vengono elencati nella parsing-list. 
+   <P>Una volta eseguito il parsing, l'espressione viene messa in forma post-fissa, per agevolare il processo di costruzione dell' ASF equivalente.
+  </TD>
+ </TR>
+ <TR>
+  <TD><FONT FACE="Arial" SIZE=3>
+      Data l'espressione regolare in forma post-fissa viene poi iniziata la costruzione dell' automa a stati finiti equivalente secondo quanto spiegato 
+      nelle lezioni di teoria.
+  </TD>
+  <TD><IMG SRC="pics/postfix.jpg" BORDER=1> 
+  </TD>
+ </TR>
+ <TR>
+  <TD COLSPAN=2><FONT FACE="Arial" SIZE=3>
+   <P>
+   Vediamo allora le funzioni dell'applet, descrivendo i menu inseriti nella barra dei menu:
+   <UL>
+     <LI><B><U> Menu INSERISCI </U></B>
+         <BR>Selezionando <B>" Nuova Espressione... "</B> si apre la finestra per l'immissione dell'espressione regolare da processare.<P></LI>
+     <LI><B><U> Menu VISUALIZZA </U></B>
+          <BR> Da questo menu attraverso l'opzione <B>" Parsing list "</B> è possibile visualizzare la finestra della lista generata dal parsing sintattico dell'espressione regolare, mentre
+               selezionando <B>" Espressione post-fissa "</B> si visualizza l'espressione regolare in forma post-fissa. <P></LI>
+    <LI><B><U> Menu RICONOSCI</U></B>
+             <BR> Attraverso <B>" Simula accettazione stringa "</B> si apre la finestra per la simulazione del riconoscimento, da parte dell'automa costruito dall'applet, della stringa che verrà inserita in ingresso. <P></LI>
+    <LI><B><U> Menu OPZIONI </U></B>
+             <BR> Selezionando <B> " Step_by_step "</B> si abilita la costruzione dell'automa equivalente all'espressione regolare in input in modalità passo-passo. Il procedimento di costruzione viene illustrato in una nuova finestra. 
+     <BR><TABLE>
+             <TR>
+                <TD>
+                  <IMG SRC="pics/espreg1.jpg" BORDER=1>
+                </TD>
+                <TD VALIGN=top><FONT FACE="Arial" SIZE=3>
+                  In questa finestra, come possiamo vedere dalla figura a lato, sono via via visualizzati tutti gli automi ( a partire da quelli elementari ) che vengono costruiti attraverso le operazioni
+                  di unione, concatenazione e intersezione, fino ad arrivare all'automa equivalente all'espressione regolare.
+                  Ogni volta che viene eseguita un'operazione nella finestra vengono mostrati gli operandi e l'automa risultato.
+                  La lista <B>" Stack Automi "</B> invece visualizza le sottoespressioni già valutate, ovvero le sottoespressioni per cui è stato già costruito l'automa equivalente. In pratica ogni volta che si effettua un'operazione l'automa risultato viene inserito in cima allo stack (in realtà viene inserita l'espressione equivalente all'automa). La valutazione dell'espressione regolare viene effettuata seguendo l'ordine post-fisso.
+               </TD>
+             </TR>
+          </TABLE>
+          </LI>
+     
+   </UL>  
+  
+    </TD>
+  </TR>
+</TABLE>
+<P> &nbsp <P>
+<CENTER><FONT FACE="Arial Black" SIZE=3 COLOR=blue> Per eseguire l'applet premi il pulsante RUN &nbsp <APPLET CODEBASE="class" CODE="EspReg_app.class"  WIDTH=100 HEIGHT=40 ALIGN=middle></APPLET>
+</FONT></CENTER>
+<P>
+<HR>
+<P>
+<FONT FACE="Arial Black" SIZE=2><I> Se sei interessato agli argomenti di teoria relativi ai concetti sviluppati in questa applet puoi visitare la sezione seguente: </I>
+</FONT>    
+<TABLE WIDTH=100%>
+ <TR>
+    <TD WIDTH=10% ALIGN=left><FONT FACE="Arial Black" SIZE=2><U>Tutorial:</U></FONT><TD>
+    <TD WIDTH=90% ALIGN=left>
+        <TABLE CELLSPACING=10 CELLPADDING=4>
+          <TR>
+            <TD ALIGN=left BGCOLOR=80FFFF><FONT FACE="Arial Black" SIZE=1><A HREF="Tut4_top.htm">Le Espressioni Regolari ed i Linguaggi Regolari</A></FONT></TD>
+          </TR>
+        </TABLE>
+    </TD>
+  </TR>
+</TABLE>
+<P>
+<HR>
+<P>
+<TABLE WIDTH=100%>
+  <TR>
+     <TD VALIGN=bottom WIDTH=20%><A HREF="index.htm"><IMG SRC="home.gif" ALT=home BORDER=0></A></TD>
+     <TD WIDTH=60%><IMG SRC="backgrou.gif" BORDER=0 HEIGHT=10></TD>
+     <TD WIDTH=20%><FONT FACE="Arial Black" SIZE=2><A HREF="App_main.htm">Indice Applet</A></FONT></TD>
+  </TR>
+</TABLE>
+<FONT FACE="Verdana" SIZE=1> <CENTER>URL: www.dis.uniroma1.it/~moroni/EspReg_top_C3 &nbsp &nbsp Last Modified:10/06/1999</CENTER></FONT>
+</BODY>
+</HTML>

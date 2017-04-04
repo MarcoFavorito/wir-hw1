@@ -1,0 +1,585 @@
+<HTML>
+<!--Converted with LaTeX2HTML 96.1 (Feb 5, 1996) by Nikos Drakos (nikos@cbl.leeds.ac.uk), CBLU, University of Leeds -->
+<HEAD>
+  <META NAME="GENERATOR" CONTENT="Adobe PageMill 3.0 Win">
+  <TITLE>ART - Azzurra Robot Team (English Version)</TITLE>
+  <META NAME="description" CONTENT="ARTD98">
+  <META NAME="keywords" CONTENT="ART">
+  <META NAME="resource-type" CONTENT="document">
+  <META NAME="distribution" CONTENT="global">
+</HEAD>
+<BODY LANG="EN" BGCOLOR="#ffffff">
+
+<TABLE WIDTH="98%" HEIGHT="80%" BORDER="0" CELLSPACING="2" CELLPADDING="0">
+  <TR>
+    <TD VALIGN="TOP" HEIGHT="400">
+    <P><DIV STYLE="text-align:justify;"><B><FONT SIZE="+1" FACE="Verdana">Abstract:</FONT></B></P>
+
+    <P><FONT SIZE="-1" FACE="Verdana">Azzurra Robot Team (ART) is
+    the result of a joint effort of six Italian research groups from
+    Univ. of Genova, Politecnico Milano, Univ. of Padova, Univ. of
+    Palermo, Univ. of Parma, Univ. Roma &quot;La Sapienza&quot;,
+    and Consorzio Padova Ricerche which has provided resources and
+    a set up of the soccer field in its Center in Padova. We have
+    developed the team within the framework of the RoboCup Italia
+    Project, with the aim of education and training of students in
+    the subjects related to the design of autonomous mobile robots,
+    of developing new research ideas and foster the development of
+    larger projects in this field in Italy.</FONT></P>
+
+    <P>&nbsp;</P>
+
+    <H1><A NAME="SECTION00010000000000000000"></A><FONT SIZE="+2"
+     FACE="Verdana">Azzurra Robot Team</FONT></H1>
+
+    <P><FONT SIZE="-1" FACE="Verdana">Azzurra Robot Team (ART) is
+    the National Italian Team for F-2000 RoboCup league, developed
+    within the framework of the RoboCup Italia project, and for RoboCup-99
+    ART is formed by six academic groups and the Consorzio Padova
+    Ricerche. The goal of the project is to exploit the expertise
+    and ideas from all groups in order to build a team where players
+    have different features, both hardware and software, but retain
+    the ability to coordinate their behaviour within the team. Therefore,
+    the ART team includes several types of players, that are built
+    on top of two hardware bases: baseART and <I>Mo</I><SUP>2</SUP><I>Ro</I>.</FONT></P>
+
+    <P><FONT SIZE="-1" FACE="Verdana">Below we provide a short description
+    of the two basic architectures, and subsequently we shall address
+    each type of player. Finally we shall address the research problems
+    that are tackled by every unit of the team.</FONT></P>
+
+    <P>&nbsp;</P>
+
+    <H1><A NAME="SECTION00020000000000000000"></A><FONT SIZE="+2"
+     FACE="Verdana">Robotic bases</FONT></H1>
+
+    <P><FONT SIZE="-1" FACE="Verdana">Presently, we are using two
+    robotic bases: BaseART and <I>Mo</I><SUP>2</SUP><I>Ro</I> which
+    are described below.</FONT></P>
+
+    <P>&nbsp;</P>
+
+    <H2><A NAME="SECTION00021000000000000000"></A><FONT SIZE="+1"
+     FACE="Verdana">BaseART</FONT></H2>
+
+    <P><FONT SIZE="-1" FACE="Verdana">BaseART was developed in preparation
+    to the 1998 RoboCup by assembling several out-of-the-shelf, low-cost
+    components, with the goal of keeping it very standard in terms
+    of hardware and, therefore, easily extensible with new devices.</FONT></P>
+
+    <P><FONT SIZE="-1" FACE="Verdana">The first building block is
+    constituted by the Pioneer 1 mobile basis and the second is constituted
+    by a conventional PC, running LINUX, for onboard computing. We
+    have reached a compromise between weight and power consumption,
+    where the player has enough autonomy to play games.</FONT></P>
+
+    <P><FONT SIZE="-1" FACE="Verdana">The third component is constituted
+    by a wireless high bandwidth connection that we consider necessary
+    to have a development environment that allows the programmer
+    operating on a standard platform (connected to the robot) to
+    obtain accurate information about the situation onboard. The
+    wireless connection supports also the exchange of information
+    among the players, but it is not currently used to transfer raw
+    data among the players.</FONT></P>
+
+    <P><FONT SIZE="-1" FACE="Verdana">The fourth component is the
+    vision system which is constituted by a low-cost frame grabber
+    based on the BT848. At RoboCup 99 we have used a Sony XC-999P
+    color camera with about 100<SUP><I>o</I></SUP> aperture angle.
+    The cameras are positioned differently on different types of
+    players.</FONT></P>
+
+    <P><FONT SIZE="-1" FACE="Verdana">The fifth component is a kicking
+    device driven by air pressure, with two actuators that can enable
+    the player to kick left or right or straight (when both kickers
+    are activated at the same time).</FONT></P>
+
+    <P>&nbsp;</P>
+
+    <H2><A NAME="SECTION00022000000000000000"></A><I><FONT SIZE="+1"
+     FACE="Verdana">Mo</FONT></I><FONT SIZE="+1" FACE="Verdana"><SUP>2</SUP><I>Ro</I></FONT></H2>
+
+    <P><I><FONT SIZE="-1" FACE="Verdana">Mo</FONT></I><FONT SIZE="-1"
+     FACE="Verdana"><SUP>2</SUP><I>Ro</I> is a <I>Mo</I>dular <I>Mo</I>bile
+    <I>Ro</I>bot base designed and implemented at Politecnico di
+    Milano Artificial Intelligence and Robotics Lab. When we decided
+    to build it, we needed a general purpose robot to match the RoboCup
+    specifications, but also the needs of other projects in our lab.
+    <I>Mo</I><SUP>2</SUP><I>Ro</I> can run up to 60 cm/sec, and may
+    have more then 40 kg as payload. The hardware is functionally
+    layered, and any module can be easily added or removed. At the
+    first level, we have mounted, in the different implementations
+    of <I>Mo</I><SUP>2</SUP><I>Ro</I>: a sonar belt, bumpers, encoders,
+    and different vision sensors; among these: two different types
+    of omnidirectional sensors [<A HREF="art.html#BonarinietAl:99">3</A>],
+    and a camera mounted on top of a 5 DOF arm. Among the actuators
+    that we have adopted up to now we have two DC motors for movement,
+    a kicker, and the arm. On the second layer, control and data
+    acquisition can be done either by commercial or by home made
+    cards, including one based on a Motorola 68HC12 fuzzy chip. Low
+    level control may be implemented by fuzzy rules either on the
+    fuzzy HW, or on the PC. The third layer consists of behavioral
+    and data interpretation modules, implemented in the ETHNOS [<A
+    HREF="art.html#PiaggioZaccaria98">12</A>,<A HREF="art.html#PiaggioetAl:99">11</A>]
+    real time architecture.</FONT></P>
+
+    <P>&nbsp;</P>
+
+    <H1><A NAME="SECTION00030000000000000000"></A><FONT SIZE="+2"
+     FACE="Verdana">Goal keepers</FONT></H1>
+
+    <P><FONT SIZE="-1" FACE="Verdana">In the ART team we have developed
+    two different kinds of goal keepers, TinoZoff which is described
+    below, and Saracinescu, that was used during 1998 championship
+    [<A HREF="art.html#Cassinis99">5</A>], but was not available
+    for RoboCup-99.</FONT></P>
+
+    <P>&nbsp;</P>
+
+    <H2><A NAME="SECTION00031000000000000000"></A><FONT SIZE="+1"
+     FACE="Verdana">Tinozoff</FONT></H2>
+
+    <P><FONT SIZE="-1" FACE="Verdana">The physical layout of the
+    goalie is considerably different from the other players' structure.
+    This goalie has a vision system based on two wide-angle cameras
+    placed on top of it, having an aperture angle of about 70<SUP><I>o</I></SUP>
+    vertically and 110<SUP><I>o</I></SUP> horizontally. This allows
+    the robot to extend its field of view to over 200<SUP><I>o</I></SUP>,
+    considering that the fields of view of the two cameras overlap
+    by about 20<SUP><I>o</I></SUP> in the central region right in
+    front of the goalie.</FONT></P>
+
+    <P><FONT SIZE="-1" FACE="Verdana">As for its cinematics, the
+    two driving wheels are located in the middle of the chassis,
+    one on the front and the other on the rear. This makes translational
+    movements more precise and accidental turns less likely. Balance
+    is ensured by a pair of spheres, on which the robot leans, that
+    are positioned along an axis at 90<SUP><I>o</I></SUP> to the
+    wheel axis, and passing through its center. Turning is possible
+    because the two wheels can be operated independently. Just ahead
+    of the front wheel is a pneumatic kick device, whose air hangs
+    just above.</FONT></P>
+
+    <P><FONT SIZE="-1" FACE="Verdana">The vision system and the self-localization
+    method developed for it are described in [<A HREF="art.html#AdornietAl:99">1</A>].</FONT></P>
+
+    <P>&nbsp;</P>
+
+    <H1><A NAME="SECTION00040000000000000000"></A><FONT SIZE="+2"
+     FACE="Verdana">Middlefield players</FONT></H1>
+
+    <P><FONT SIZE="-1" FACE="Verdana">In the ART team we currently
+    have three types of middelfield players.</FONT></P>
+
+    <P>&nbsp;</P>
+
+    <H2><A NAME="SECTION00041000000000000000"></A><FONT SIZE="+1"
+     FACE="Verdana">Ronaltino-Tottino</FONT></H2>
+
+    <P><FONT SIZE="-1" FACE="Verdana">Ronaltino-Tottino is a middlefield
+    player developed on BaseART. Its essential features from the
+    hardware viewpoint are: a specialized vision system with a camera
+    rotating on 360<SUP><I>o</I></SUP>, a compass, and infrared sensors
+    to enable the kicking when the ball is close to the kickers.</FONT></P>
+
+    <P><FONT SIZE="-1" FACE="Verdana">The control system of this
+    player is designed on top of SAPHIRA, an environment developed
+    to implement the robot control both in terms of actions, realized
+    as programs in the Colbert language, and in terms of fuzzy behaviours,
+    that are executed by a fuzzy controller. In [<A HREF="art.html#IocchiNardi99">7</A>]
+    we discuss our experience in the design of the control system
+    for this player based on fuzzy rules. To overcome some of the
+    difficulties encountered in the programming of robot behaviors
+    in the RoboCup scenario we have developed several tools to support
+    the designer in the debugging and experimental activities.</FONT></P>
+
+    <P><FONT SIZE="-1" FACE="Verdana">We also implemented several
+    self-localization methods relying on the vision-based recognition
+    of the goals, on the information coming from the compass and
+    on the vision-based analysis of the lines in the field [<A HREF="art.html#IocchiNardi99a">8</A>].
+    We have compared them trying to identify the conditions under
+    which each source of information for localizing the player is
+    reliable.</FONT></P>
+
+    <P>&nbsp;</P>
+
+    <H2><A NAME="SECTION00042000000000000000"></A><FONT SIZE="+1"
+     FACE="Verdana">Rel&egrave;, Bart, Homer</FONT></H2>
+
+    <P><FONT SIZE="-1" FACE="Verdana">Rel&egrave;, Bart and Homer
+    are middlefield players, developed on baseART, provided with
+    different settings for the kicking device and characterised by
+    a novel software planning and control architecture based on the
+    ETHNOS real-time programming environment. ETHNOS exploits the
+    Linux RT multithreaded operating system and provides additional
+    support from different points of view. From the communication
+    perspective it supports and optimises transparent inter-robot
+    information exchange and co-ordination across wireless media.
+    From the runtime perspective it provides support for the real-time
+    execution of periodic, sporadic and background tasks (called
+    Experts), schedulability analysis, event handling, and resource
+    allocation and synchronisation. From the software engineering
+    perspective it provides support for rapid development, platform
+    independence and software integration and re-use.</FONT></P>
+
+    <P><FONT SIZE="-1" FACE="Verdana">The whole set of software module
+    for controlling the players has been developed over the ETHNOS'
+    Kernel. Besides its use for managing communication with Pioneer
+    hardware facilities, ETHNOS' Kernel has been used for developing
+    several basic behaviors (Ball-Searching, Ball-Reaching, Ball-Shooting,
+    Ball-Bringing) as well as the vision module. ETHNOS' Kernel has
+    been selected because of the flexibility of its architecture,
+    allowing the real time scheduling of both occasional Experts,
+    that are conditionally activated, and periodic Experts. Thus,
+    Vision Experts, and Map Building Experts are realized as Periodic
+    Experts, whereas an arbitration module over basic robot skills
+    can usefully exploit the fast real time decision making capabilities
+    of a suitable Occasional Experts.</FONT></P>
+
+    <P>&nbsp;</P>
+
+    <H2><A NAME="SECTION00043000000000000000"></A><FONT SIZE="+1"
+     FACE="Verdana">Rullit</FONT></H2>
+
+    <P><FONT SIZE="-1" FACE="Verdana">Rullit is implemented on a
+    <I>Mo</I><SUP>2</SUP><I>Ro</I> base. Its design is centered around
+    the omnidirectional vision sensor we have implemented for RoboCup.
+    It consists of a mirror studied to exploit at best all the camera
+    definition both in the neighborough of the robot and at a large
+    distance: the ball corresponds to a reasonable number of pixels
+    from 10 to 400 cm all around the robot. The vision system is
+    implemented mimicking some natural mechanisms for fast tracking
+    and color interpretation: we have distances from all the visible,
+    classified objects at a rate higher than 20 frames/sec. This
+    makes it possible to implement behaviors and strategies that
+    take advantage of the knowledge about most of what surrounds
+    the robot. For instance, it can move without problems also backward
+    at a high speed, or it can take a position while monitoring ball
+    and other robots also not in front of it. A self-localization
+    module also has enough reliable information to provide an approximate,
+    but satisfactory extimation of the position in most of the situations.
+    Behavior modules are implemented to face the different situations,
+    including those produced by the current rules about charging.
+    A fuzzy low-level control system provides reliable actuation
+    to the fuzzy behaviors modules.</FONT></P>
+
+    <P>&nbsp;</P>
+
+    <H1><A NAME="SECTION00050000000000000000"></A><FONT SIZE="+2"
+     FACE="Verdana">ART Research perspective</FONT></H1>
+
+    <P><FONT SIZE="-1" FACE="Verdana">Research is a major goal of
+    all the members of the ART team. This is demonstrated by the
+    specific contributions presented at the RoboCup Workshop [<A
+    HREF="art.html#AmorosoetAl:99">2</A>,<A HREF="art.html#Bonarini99">4</A>,<A
+    HREF="art.html#IocchiNardi99a">8</A>,<A HREF="art.html#PiaggioetAl:99">11</A>].
+    It is worth emphasizing that the need of coordinating heterogeneous
+    soccer players has lead to interesting results, by practically
+    showing the feasibility of coordination in a fully distributed,
+    heterogeneous multi-robot scenario. In the following we report
+    on the research perspective of each group in the team.</FONT></P>
+
+    <P>&nbsp;</P>
+
+    <H2><A NAME="SECTION00051000000000000000"></A><FONT SIZE="+1"
+     FACE="Verdana">Univ. Genova</FONT></H2>
+
+    <P><FONT SIZE="-1" FACE="Verdana">The research in the software
+    control architecture carried out in ART has different goals which
+    are tightly tied together: (1) the study and development of a
+    hybrid cognitive model suitable for a set of interacting autonomous
+    robots, (2) the analysis of the architectural and computational
+    requirements of an autonomous robot, (3) the development of a
+    suitable programming environment for multi robot applications.</FONT></P>
+
+    <P><FONT SIZE="-1" FACE="Verdana">From the cognitive model perspective
+    we aim to better understand the relationship between different
+    forms of representation and reasoning starting from a reference
+    model we recently proposed [<A HREF="art.html#Piaggio98">10</A>].
+    In this model symbolic, diagrammatic and procedural representations
+    and/or activities are integrated in a non-hierarchical framework.
+    Different hierarchies are formed dynamically depending on the
+    task that the robot has to perform. For example for a complex
+    assembly operation symbolic representation and planning will
+    drive the activity of motion control reactive procedures; for
+    autonomous navigation tasks, diagrammatic and procedural knowledge
+    will drive the robot behavior while the symbolic activities are
+    only responsible of data interpretation and symbol extraction.</FONT></P>
+
+    <P><FONT SIZE="-1" FACE="Verdana">From the software architecture
+    perspective we intend to study what support is required and suitable
+    to allow the robot to respond in real time to the changes in
+    a partially structured environment. In particular our research
+    will focus on scheduling algorithms that take into account the
+    heterogeneity of the set of tasks that have to be executed: periodic/sporadic,
+    hard real time/soft real time/any time/background, predictable/non
+    predictable, etc. These algorithms will be integrated and experimented
+    on using the ETHNOS [<A HREF="art.html#PiaggioZaccaria98">12</A>]
+    programming environment.</FONT></P>
+
+    <P>&nbsp;</P>
+
+    <H2><A NAME="SECTION00052000000000000000"></A><FONT SIZE="+1"
+     FACE="Verdana">Politecnico Milano</FONT></H2>
+
+    <P><FONT SIZE="-1" FACE="Verdana">Our aim was to implement a
+    reliable machine where the competences present in our Lab, and
+    in the whole team, could merge to realize a large set of tasks,
+    including RoboCup. We have faced all the problems related with
+    the development of such a machine: hardware (both electronical
+    and mechanical), operating system, sensors (including vision),
+    low-level fuzzy control, behaviors, strategy, communication,
+    and learning. Most of this activity up to now was aimed at building
+    a robust base to experiment the higher level aspects. We have
+    implemented our behaviors as modules activated by two sets of
+    fuzzy preconditions: the <EM>cando preconditions</EM> enable
+    the behavior, and the <EM>want preconditions</EM> give the amount
+    of motivation for it. Moreover, we have two parameters: the static
+    and the dynamic <EM>relevance</EM>. The first implements a priori
+    a partial ordering among behaviors, the second a partial ordering
+    modified according to the situation, and used to implement strategies.
+    The behavior with the highest <EM>triggering level</EM> (a composition
+    of these four factors), is activated, and its actions done. We
+    have a winner-take-all activation, instead of a composition of
+    proposed actions typical of fuzzy systems, since this gives more
+    coherence to behavior selection. We have also implemented a reinforcement
+    learning system that interprets the model built from the sensorial
+    input, and identifies and classifies the actions taken by the
+    other robots. By acting on the dynamic relevance, this system
+    learns the best behavior for each situation, and makes Rullit
+    to adapt its behavior to the opponents.</FONT></P>
+
+    <P>&nbsp;</P>
+
+    <H2><A NAME="SECTION00053000000000000000"></A><FONT SIZE="+1"
+     FACE="Verdana">Univ. Padova</FONT></H2>
+
+    <P><FONT SIZE="-1" FACE="Verdana">Coordinating the whole soccer-robot
+    team is a fundamental problem in the multi-robot research field.
+    A sound arbitration mechanism, for both single and collective
+    actions, is the base for an appropriate coordinated performance
+    of behavior-based autonomous systems. To approach correctly the
+    problem of controlling a multi-robot system, we have also to
+    consider the interference among robots as a potential to inhibit,
+    or limit, the behavior of each single robot in the case of resource
+    competition. This potential increases with the number of robots,
+    eventually causing the degeneration of global performance, and
+    forcing the use of social rules. In the soccer robot case, a
+    further difficulty arises, due to the simultaneous presence of
+    several playing agents in the same environment. Coordination
+    among robots may arise when single individuals plan complementary
+    actions, and when some kind of prediction is available.</FONT></P>
+
+    <P><FONT SIZE="-1" FACE="Verdana">A second problem is given by
+    the possibility of using a different kind of cooperation among
+    robots, namely the implicit one. While passing intentional information
+    is realized sending voluntarily explicit coordination messages
+    to the other agents, implicit cooperation is realized by looking
+    at the external behavior of the other agents, without any transmission
+    of information. We have considered, the case where a set of actions,
+    performed by a single robot to achieve its own goal, affects
+    the world and helps other robots to achieve their goal. As the
+    form of communication, we considered only the observing of the
+    behavior of other robots, that is based on affecting the environment
+    rather than on passing explicit messages. Thus, an interesting
+    example of emergent cooperative behavior arises from this form
+    of communication [<A HREF="art.html#Pagello1999">9</A>].</FONT></P>
+
+    <P>&nbsp;</P>
+
+    <H2><A NAME="SECTION00054000000000000000"></A><FONT SIZE="+1"
+     FACE="Verdana">Univ. Palermo</FONT></H2>
+
+    <P><FONT SIZE="-1" FACE="Verdana">The main contribution of the
+    unit of Palermo is the development of a system for the robust
+    segmentation of the color images acquired by the camera of the
+    ART robot.</FONT></P>
+
+    <P><FONT SIZE="-1" FACE="Verdana">Although the colors of the
+    objects in the RoboCup framework are clear and well defined,
+    several disturbing conditions arise during the competitions.
+    The light conditions of the field vary during the day; the persons
+    and the other robots generate unexpected shadows effects; Different
+    game fields may be characterized by similar but not equal colors.</FONT></P>
+
+    <P><FONT SIZE="-1" FACE="Verdana">We are investigating a novel
+    method based on feed-forward neural networks that learn to recognize
+    the hue range of meaningful objects. A neural network does not
+    require the exact knowledge of the statistical distribution of
+    input items, as it generates an internal representation of input
+    data distribution by a suitable learning phase.</FONT></P>
+
+    <P><FONT SIZE="-1" FACE="Verdana">First experimental results
+    showed that the approach is effective and robust with respect
+    to environmental conditions, shadows and illumination variations.
+    Although this method is tailored to the RoboCup experimental
+    framework, we claim that it is an effective intermediate-level
+    step in generic image interpretation tasks where the color is
+    a meaningful descriptor.</FONT></P>
+
+    <P>&nbsp;</P>
+
+    <H2><A NAME="SECTION00055000000000000000"></A><FONT SIZE="+1"
+     FACE="Verdana">Univ. Parma</FONT></H2>
+
+    <P><FONT SIZE="-1" FACE="Verdana">In designing the goalie, three
+    main problems had to be tackled: (1) Object detection and motion
+    estimation; (2) Self-localization and repositioning; (3) Task
+    planning.</FONT></P>
+
+    <P><FONT SIZE="-1" FACE="Verdana">Object detection is performed
+    through a color-based segmentation algorithm. Such an algorithm
+    returns the position of the ball and of possible other players
+    occupying the goalie's field of view for each frame received
+    from the cameras. By comparing two subsequent frames and taking
+    the robot motion into account, it is possible to estimate the
+    instantaneous speed and direction of the ball. As it is not possible
+    to acquire the images coming from the two frame grabbers at the
+    same time, there is a switching strategy based on the detection
+    of the ball. When the ball is not detected by either of the two
+    cameras, the camera from which the image is acquired is switched.
+    When the ball is detected by one of the two cameras the image
+    is acquired from such a camera until it enters the overlap region
+    of the two fields of view. At that point a switch to the other
+    camera is performed.</FONT></P>
+
+    <P><FONT SIZE="-1" FACE="Verdana">Self-localization and re-positioning
+    are based on an algorithm which detects the lines of the penalty
+    area and infers the goalie's position through a comparison between
+    the images acquired by the two cameras. The goalie's area front
+    line is first detected in the two frames. If the goalie is aligned
+    with such a line, the two resulting images are symmetric. If
+    the goalie is rotated, such a symmetry is lost.</FONT></P>
+
+    <P>&nbsp;</P>
+
+    <H2><A NAME="SECTION00056000000000000000"></A><FONT SIZE="+1"
+     FACE="Verdana">Univ. Roma &quot;La Sapienza''</FONT></H2>
+
+    <P><FONT SIZE="-1" FACE="Verdana">The main focus of the reasearch
+    of the group at DIS, ``La Sapienza'' is on the design of cognitive
+    mobile robots, namely robots where a deliberative layer including
+    an explicit representation of the robot's knowledge on the environment
+    is added, with the aim of increasing the robot's performance
+    in accomplishing complex tasks. Our approach to the design of
+    cognitive mobile robots insists on the view that a global design
+    of the layers of the architecture is necessary to achieve the
+    desired performance.</FONT></P>
+
+    <P><FONT SIZE="-1" FACE="Verdana">Consequently, we have developed
+    both a set of basic behaviours to provide the robots with individual
+    skill and we are currently working at identifying the behaviour
+    structures that have to be executed in order to achieve a given
+    goal in a given situation. Such structures embody concurrent
+    actions, sensing actions and take into account of the cooperation
+    among players.</FONT></P>
+
+    <P><FONT SIZE="-1" FACE="Verdana">To this end we are extending
+    the framework proposed in [<A HREF="art.html#DINR99">6</A>] so
+    to enable the robot to plan the actions to achieve a given goal,
+    negotiate the actions to be executed with the team mates, and
+    activate the behaviour structures that drive the actions of the
+    robot.</FONT></P>
+
+    <P><FONT SIZE="-2" FACE="Verdana"><HR ALIGN=LEFT></FONT></P>
+
+    <H2><A NAME="SECTIONREF"></A><FONT SIZE="+1" FACE="Verdana">Bibliography</FONT></H2>
+
+    <DL>
+      <DD>&nbsp;
+      <DT><A NAME="AdornietAl:99"></A><FONT SIZE="-1" FACE="Verdana">1</FONT>
+      <DD><FONT SIZE="-1" FACE="Verdana">G. Adorni, S. Cagnoni, M.
+      Mordonini (in press) Landmark-Based Robot Self-Localization:
+      a Case Study for the RoboCup Goal-Keeper. <EM>Proceedings of
+      the IEEE Int. Conf. on Information, Intelligence and Systems
+      - ICIIS99</EM>, Bethesda, MD, November 1999.</FONT>
+      <P>&nbsp;
+      <DT><A NAME="AmorosoetAl:99"></A><FONT SIZE="-1" FACE="Verdana">2</FONT>
+      <DD><FONT SIZE="-1" FACE="Verdana">C. Amoroso, A. Chella, V.
+      Morreale, P. Storniolo, A Segmentation System for Soccer Robot
+      Based on Neural Networks, <EM>Proc. of the RoboCup-99 Workshop</EM>,
+      Stockholm, 1999.</FONT>
+      <P>&nbsp;
+      <DT><A NAME="BonarinietAl:99"></A><FONT SIZE="-1" FACE="Verdana">3</FONT>
+      <DD><FONT SIZE="-1" FACE="Verdana">A. Bonarini, P. Aliverti,
+      M. Lucioni (in press) An omnidirectional vision sensor for fast
+      tracking for mobile robots. <EM>Proceedings of the IEEE Instrumentation
+      and Measurement Tecnology Conference - IMTC99</EM>, IEEE Computer
+      Press, Piscataway NJ.</FONT>
+      <P>&nbsp;
+      <DT><A NAME="Bonarini99"></A><FONT SIZE="-1" FACE="Verdana">4</FONT>
+      <DD><FONT SIZE="-1" FACE="Verdana">A. Bonarini, The body, the
+      mind, or the eye first? <EM>Proc. of the RoboCup-99 Workshop</EM>,
+      Stockholm, 1999.</FONT>
+      <P>&nbsp;
+      <DT><A NAME="Cassinis99"></A><FONT SIZE="-1" FACE="Verdana">5</FONT>
+      <DD><FONT SIZE="-1" FACE="Verdana">R. Cassinis, A. Rizzi, Design
+      issues for a Goalkeeper robot. <EM>Proc. of the RoboCup-99 Workshop</EM>,
+      Stockholm, 1999.</FONT>
+      <P>&nbsp;
+      <DT><A NAME="DINR99"></A><FONT SIZE="-1" FACE="Verdana">6</FONT>
+      <DD><FONT SIZE="-1" FACE="Verdana">G. De Giacomo, L. Iocchi,
+      D. Nardi, and R. Rosati. A theory and implementation for mobile
+      robots, <EM>Journal of Logic and Computation</EM>, in press,
+      1999.</FONT>
+      <P>&nbsp;
+      <DT><A NAME="IocchiNardi99"></A><FONT SIZE="-1" FACE="Verdana">7</FONT>
+      <DD><FONT SIZE="-1" FACE="Verdana">L. Iocchi, D. Nardi. Design
+      and Implementation of Robotic soccer Behaviors: A user viewpoint,
+      <EM>Proc. IIA-SOCO'99</EM>, Genova, Italy, 1999.</FONT>
+      <P>&nbsp;
+      <DT><A NAME="IocchiNardi99a"></A><FONT SIZE="-1" FACE="Verdana">8</FONT>
+      <DD><FONT SIZE="-1" FACE="Verdana">L. Iocchi, D. Nardi. Self-Localization
+      in the RoboCup Environment, <EM>Proc. of the RoboCup-99 Workshop</EM>,
+      Stockholm, 1999.</FONT>
+      <P>&nbsp;
+      <DT><A NAME="Pagello1999"></A><FONT SIZE="-1" FACE="Verdana">9</FONT>
+      <DD><FONT SIZE="-1" FACE="Verdana">E. Pagello, F. Montesello,
+      A. D'Angelo, F. Garelli, and C. Ferrari. &quot;Cooperative behaviors
+      in multi-robot systems through implicit communication&quot;.
+      Robotics and Autonomous Systems, Spring 1999.</FONT>
+      <P>&nbsp;
+      <DT><A NAME="Piaggio98"></A><FONT SIZE="-1" FACE="Verdana">10</FONT>
+      <DD><FONT SIZE="-1" FACE="Verdana">M. Piaggio, HEIR - A Non Hierarchical
+      Hybrid Architecture for Intelligent Robots, <EM>Agent Theories
+      Architectures and Languages Workshop, ATAL'98</EM>, Paris.</FONT>
+      <P>&nbsp;
+      <DT><A NAME="PiaggioetAl:99"></A><FONT SIZE="-1" FACE="Verdana">11</FONT>
+      <DD><FONT SIZE="-1" FACE="Verdana">M.Piaggio, A. Sgorbissa, R.
+      Zaccaria, Programming Real Time Distributed Multiple Robotic
+      Systems <EM>Proc. of the RoboCup-99 Workshop</EM>, Stockholm,
+      1999.</FONT>
+      <P>&nbsp;
+      <DT><A NAME="PiaggioZaccaria98"></A><FONT SIZE="-1" FACE="Verdana">12</FONT>
+      <DD><FONT SIZE="-1" FACE="Verdana">M. Piaggio and R. Zaccaria,
+      Distributing a Robotic System on a Network: the ETHNOS Approach
+      - <EM>Advanced Robotics Journal</EM>, Vol. 12, N.8, VSP, 1998.</FONT>
+    </DL>
+
+    <P><FONT SIZE="-1" FACE="Verdana"><DIV></FONT><HR ALIGN=LEFT></P>
+
+    <ADDRESS><FONT SIZE="-1" FACE="Verdana, Arial, Helvetica, sans-serif">Daniele
+    Nardi et al.</FONT></ADDRESS>
+
+    <ADDRESS><FONT SIZE="-1" FACE="Verdana, Arial, Helvetica, sans-serif">Progetto
+    RoboCup-Italia<BR>
+    Consorzio Padova Ricerche, Corso Spagna 12, I-35127 Padova, Italy<BR>
+    mail: <A HREF="mailto:nardi@dis.uniroma1.it">nardi@dis.uniroma1.it</A><BR>
+    web page:<A HREF="http://www.dis.uniroma1.it/%7Enardi/"> http://www.dis.uniroma1.it/~nardi/</A></FONT></ADDRESS>
+
+    <P><CENTER>&nbsp;</CENTER></P>
+
+    <P><CENTER><A HREF="javascript:history.back();"><I><FONT SIZE="-2"
+     FACE="Georgia, Times New Roman, Times, serif"><IMG SRC="../images/back.gif"
+    WIDTH="20" HEIGHT="20" ALIGN="ABSMIDDLE" BORDER="0" NATURALSIZEFLAG="0"></FONT></I></A><I><FONT
+     SIZE="-2" FACE="Georgia, Times New Roman, Times, serif">Torna
+    indierto</FONT></I></CENTER></TD>
+  </TR>
+  <TR>
+    <TD VALIGN="BOTTOM" HEIGHT="2">
+    <P><CENTER><FONT SIZE="-2">&COPY; ART - Azzurra Robot Team</FONT></CENTER></TD>
+  </TR>
+</TABLE>
+
+</BODY>
+</HTML>

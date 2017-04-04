@@ -1,0 +1,117 @@
+<html>
+<head>
+<title>Ordinamento 2000 - Corso di Laurea Ing. Informatica</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<style type="text/css">
+<!--
+.Stile2 {	font-family: Arial, Helvetica, sans-serif;
+	color: #FFFFFF;
+	font-weight: bold;
+}
+a {
+	color: #FFFFFF;
+	text-decoration: none;
+}
+-->
+</style>
+</head>
+
+<body bgcolor="#000000">
+<table width="100%" border="0" align="center" cellpadding="0" cellspacing="0">
+  <tr> 
+    <td><a href="http://cclii.dis.uniroma1.it/home.asp" target="_parent"><img src="../program-ball2.jpg" width="150" height="110" border="0"></a></td>
+  </tr>
+</table>
+<br>
+<script language="JavaScript" type="text/JavaScript">
+<!--
+var clicked=""
+var gtype=".png"
+var selstate="_over"
+if (typeof(loc)=="undefined" || loc==""){
+	var loc=""
+	if (document.body&&document.body.innerHTML){
+		var tt = document.body.innerHTML.toLowerCase();
+		var last = tt.indexOf("abstractshapes.js\"");
+		if (last>0){
+			var first = tt.lastIndexOf("\"", last);
+			if (first>0 && first<last) loc = document.body.innerHTML.substr(first+1,last-first-1);
+		}
+	}
+}
+
+document.write("<table border=\"0\" cellspacing=\"0\" cellpadding=\"0\"><tr>");
+document.write("<td><img src=\""+loc+"abstractshapes_top.png\" alt=\"\" width=\"196\" height=\"19\"></td>");
+tr(false);
+writeButton("","http://cclii.dis.uniroma1.it/speciali/manifesto/obiettivi.htm","abstractshapes_b1",196,19,"Obiettivi","mainFrame",0);
+writeButton("","http://cclii.dis.uniroma1.it/speciali/manifesto/sbocchi.htm","abstractshapes_b2",196,19,"Sbocchi","mainFrame",0);
+writeButton("","http://cclii.dis.uniroma1.it/speciali/manifesto/accesso.htm","abstractshapes_b3",196,19,"Accesso","mainFrame",0);
+writeButton("","http://cclii.dis.uniroma1.it/speciali/manifesto/organizzazione.htm?ccl=linr&tipodoc=organizzazione","abstractshapes_b4",196,19,"Organizzazione","mainFrame",0);
+writeButton("","http://cclii.dis.uniroma1.it/speciali/manifesto/corsibase.htm","abstractshapes_b5",196,19,"Corsi base","mainFrame",0);
+writeButton("","http://cclii.dis.uniroma1.it/speciali/manifesto/Orientamenti.htm","abstractshapes_b6",196,19,"Indirizzi","mainFrame",0);
+writeButton("","http://cclii.dis.uniroma1.it/speciali/manifesto/provafin.htm","abstractshapes_b7",196,19,"Prova finale","mainFrame",0);
+writeButton("","http://cclii.dis.uniroma1.it/speciali/manifesto/regole.htm","abstractshapes_b8",196,19,"Frequenza e passaggi","mainFrame",0);
+writeButton("","http://cclii.dis.uniroma1.it/speciali/manifesto/creditidebiti.htm","abstractshapes_b9",196,19,"Crediti e debiti formativi","mainFrame",0);
+writeButton("","http://cclii.dis.uniroma1.it/pdsomat/modalita.htm","abstractshapes_b10",196,19,"Piani di studio","mainFrame",0);
+writeButton("","http://cclii.dis.uniroma1.it/speciali/manifesto/Calendario1.html","abstractshapes_b11",196,19,"Calendario e programmi","mainFrame",0);
+writeButton("","http://w3.ing.uniroma1.it/orari/orari.htm","abstractshapes_b12",196,19,"Orario lezioni","_blank",0);
+writeButton("","http://cclii.dis.uniroma1.it/speciali/manifesto/listafaq.asp?categoria=speciali","abstractshapes_b13",196,19,"Faqs","mainFrame",0);
+tr(true);
+document.write("<td><img src=\""+loc+"abstractshapes_bottom.png\" alt=\"\" width=\"196\" height=\"19\"></td>");
+document.write("</tr></table>")
+loc="";
+
+function tr(b){if (b) document.write("<tr>");else document.write("</tr>");}
+
+function turn_over(name) {
+	if (document.images != null && clicked != name) {
+		document[name].src = document[name+"_over"].src;
+	}
+}
+
+function turn_off(name) {
+	if (document.images != null && clicked != name) {
+		document[name].src = document[name+"_off"].src;
+	}
+}
+
+function reg(gname,name)
+{
+if (document.images)
+	{
+	document[name+"_off"] = new Image();
+	document[name+"_off"].src = loc+gname+gtype;
+	document[name+"_over"] = new Image();
+	document[name+"_over"].src = loc+gname+"_over"+gtype;
+	}
+}
+
+function evs(name){ return " onmouseover=\"turn_over('"+ name + "')\" onmouseout=\"turn_off('"+ name + "')\""}
+
+function writeButton(urld, url, name, w, h, alt, target, hsp)
+{
+	gname = name;
+	while(typeof(document[name])!="undefined") name += "x";
+	reg(gname, name);
+	tr(true);
+	document.write("<td>");
+	if (alt != "") alt = " alt=\"" + alt + "\"";
+	if (target != "") target = " target=\"" + target + "\"";
+	if (w > 0) w = " width=\""+w+"\""; else w = "";
+	if (h > 0) h = " height=\""+h+"\""; else h = "";	
+	if (url != "") url = " href=\"" + urld + url + "\"";
+	
+	document.write("<a " + url + evs(name) + target + ">");	
+	
+	if (hsp == -1) hsp =" align=\"right\"";
+	else if (hsp > 0) hsp = " hspace=\""+hsp+"\"";
+	else hsp = "";
+	
+	document.write("<img src=\""+loc+gname+gtype+"\" name=\"" + name + "\"" + w + h + alt + hsp + " border=\"0\" /></a></td>");
+	tr(false);
+}
+//-->
+</script>
+<br>
+</body>
+</html>

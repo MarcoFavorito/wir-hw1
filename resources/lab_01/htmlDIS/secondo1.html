@@ -1,0 +1,135 @@
+<html>
+<head>
+<title>Prova scritta 21/3/2002</title>
+</head>
+
+<body>
+
+<h1>Prova scritta 21/3/2002</h1>
+
+<b>Compito 1/Prova II</b>
+
+<hr>
+
+<h4>Esercizio 1</h4>
+
+<p>
+Dire cosa fa il seguente metodo ricorsivo:
+</p>
+
+<pre>
+static boolean unMetodo(int x, int y) {
+  x=y+1;
+
+  if(x==0)
+    y=0;
+
+  return unMetodo(x-1, y-1);
+}
+</pre>
+
+
+<h4>Soluzione</h4>
+
+<p>
+Il metodo non contiene nessun caso base.
+Infatti, la chiamata ricorsiva viene fatta
+indipendentemente dai valori dei parametri.
+</p>
+
+<p>
+Il metodo viene quindi invocato fino ad
+esaurimento della memoria disponibile.
+``Il metodo non ritorna", oppure
+``il metodo si invoca all'infinito'',
+``si genera un ciclo infinito'', ecc.
+erano risposte accettabili.
+</p>
+
+<hr>
+
+
+<h4>Esercizio 2</h4>
+
+<p>
+Descrivere la politica di accesso delle code:
+se a un coda vuota vengono inseriti, in ordine,
+gli elementi <tt>1</tt>, <tt>5</tt>, <tt>1</tt>
+e <tt>7</tt>, quale elemento viene estratto
+per primo?
+</p>
+
+
+<h4>Risposta</h4>
+
+<p>
+La politica di accesso &egrave; FIFO (First In,
+First Out): viene estratto per primo l'elemento
+che &egrave; stato inserito per primo.
+</p>
+
+<p>
+Nell'esempio, il primo elemento a essere estratto
+&egrave; <tt>1</tt>
+</p>
+
+<hr>
+
+
+<h4>Esercizio 3</h4>
+
+<p>
+Il seguente metodo ricorsivo dovrebbe calcolare
+la somma dei nodi di una catena. Ma non funziona.
+Perch&egrave;?
+</p>
+
+<pre>
+static int sommaCatena(Catena c) {
+  int acc=0;
+
+  if(c==null) {
+    acc=0;
+    return acc;
+  }
+
+  acc=acc+c.getVal();
+
+  sommaCatena(c.getNext());
+
+  return acc;
+}
+</pre>
+
+<p>
+Motivare la risposta (dire perch&egrave; non viene
+ritornato il valore corretto).
+</p>
+
+
+<h4>Riposta</h4>
+
+<p>
+Il metodo dovrebbe calcolare la somma dei nodi usando
+la tecnica dell'accumulatore. Ma ogni record di
+attivazione ha una sua variabile <tt>acc</tt> diversa
+dalle altre.
+</p>
+
+<p>
+Il fatto che il valore di ritorno dell'invocazione
+ricorsiva vennisse scartato (ossia non venisse messo
+in una variabile o usato in una espressione) era un
+chiaro segno che l'invocazione ricorsiva non aveva
+alcun effetto.
+</p>
+
+
+
+</body>
+</html>
+
+
+
+
+

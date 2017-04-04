@@ -1,0 +1,229 @@
+  <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN"
+           "http://www.w3.org/TR/REC-html40/loose.dtd">
+<HTML>
+<META NAME="GENERATOR" CONTENT="TtH 2.25">
+                                                                      
+<center>  <b>   
+<title>Universit</title>
+Universit&#224; di Roma ``La Sapienza''<br>
+   Facolt&#224; di Ingegneria<br>
+   Corso di Fondamenti di Informatica - A.A.&#229;<br>
+   Corsi di Laurea: </b>Chimica, 
+   Elettrica, Materiali, Meccanica, Nucleare (vecchio ordinamento)
+   </b>
+<p>
+   <br>   Appello del <b>15 febbraio 2002</b> - 1<sup>a</sup> prova scritta
+   <br>
+<p>
+   <em>tempo a disposizione: 2 ore</em>
+</center>
+<p>
+<b>Problema 1 (18 punti)</b>
+
+<p>
+Spazio, ultima frontiera. L'astronave enterprise sta tornando dalla 
+sua missione quinquennale, alla scoperta di nuovi mondi e nuove forme 
+di vita.
+
+<p>
+Tutti i mondi visitati sono registrati in un file di testo, 
+contenente, per ogni pianeta, 
+
+<DL compact>
+<p>
+<dt><b> &gt; </b></dt>
+	<dd> il nome del pianeta (una stringa: es. <tt>M-113</tt>),
+<dt><b> &gt; </b></dt>
+	<dd> il nome del sistema stellare di appartenenza (una stringa: es. <tt>
+GammZetaIV</tt>),
+<dt><b> &gt; </b></dt>
+	<dd> la classe del pianeta (un carattere: es. <tt>M</tt>),
+<dt><b> &gt; </b></dt>
+	<dd> la data stellare in cui il pianeta &#232; stato visitato (un 
+numero reale: es. <tt>1513.1</tt>).
+</DL>
+<p>
+Le informazioni su un pianeta sono su una medesima riga, come 
+nell'esempio riportato in fondo alla pagina.
+Per semplicit&#224;, assumiamo che le stringhe siano prive di spazi bianchi.
+
+<p>
+Il file &#232; stato gestito dall'Assistente Ufficiale Scientifico P. 
+Checov, quindi non &#232; ordinato.
+
+<p>
+
+<OL type="1">
+<li> Definire i tipi di dato Pascal adeguati a risolvere i problemi di cui ai 
+successivi punti 2) e 3). 
+
+<p>
+<b>Usare</b> <tt>TIPOLISTAPIANETI</tt> come nome per il tipo della
+lista dei mondi 
+visitati dall'enterprise.
+Si tratta di una lista, costruita mediante 
+record e puntatori, in cui ogni nodo rappresenta uno dei mondi.
+
+<p>
+
+<li>	<b>Scrivere un sottoprogramma pascal</b> ESER2 che, ricevendo il nome 
+del file di mondi di cui abbiamo parlato sopra, un carattere <tt>c</tt> indicante 
+un tipo di mondo e quanti altri parametri si ritengano opportuni,
+produca e <em>restituisca</em> una lista dei mondi di tipo <tt>c</tt>
+visitati dall'enterprise. La lista non deve rispettare un particolare ordinamento.
+
+<p>
+&#200; proibito usare la ricorsione.
+
+<p>
+
+<li>	<b>Scrivere una procedura pascal</b> ESER3 che, ricevendo il nome di 
+un file di mondi (<tt>file1</tt>), il nome di un altro file di testo (<tt>
+file2</tt>), due date stellari, e un carattere <tt>c</tt>, stampi in <tt>
+file2</tt>, 
+in ordine alfabetico sul nome dei mondi, i dati relativi ai mondi di 
+tipo <tt>c</tt> visitati dall'enterprise nel periodo compreso strettamente
+tra le due date stellari.
+
+<p>
+&#200; proibito usare la ricorsione.
+</OL>
+<p>
+
+<pre>
+------------------------------------------------------------------------------------
+</pre>
+
+<p>
+<b>Ecco un esempio di come potrebbe essere 
+il file gestito dall'Assistente Ufficiale Scientifico P. 
+Checov:</b>
+
+<p>
+
+<pre>
+M-113 GammaZetaIV M 1513.1
+ArgeliusII ArgeliusB M 3614.9
+Triskelion M24Alpha M 3211.7
+BetaVI &lt;Unspecified&#62; M 2124.0
+DeltaVega Trimoridian F 1312.4
+Babel Wolf424 K 4953.4
+Ardana MuLeonisA M 5818.4
+Visalayan IXHydrae C 5637.7
+OrganiaIV Organia M 3198.4
+</pre>
+
+<center>
+  <b>
+<p>
+   Universit&#224; di Roma ``La Sapienza''<br>
+   Facolt&#224; di Ingegneria<br>
+   Corso di Fondamenti di Informatica - A.A.&#229;<br>
+   Corsi di Laurea: </b>Chimica, Elettrica, 
+Materiali,
+    Meccanica, Nucleare (vecchio ordinamento)</b><br>
+  Appello del <b>15 febbraio 2002</b> - 2<sup>a</sup> prova scritta<br>
+  <em>tempo a disposizione: 1 ora</em>
+</center>
+<p>
+<b>Problema (a) (4 punti)</b>
+Immaginando di rappresentare i numeri razionali in floating point,
+con locazioni da 32 bit, di cui 24 per la mantissa,
+fornire la rappresentazione dei seguenti numeri:
+
+<UL>
+<p>
+
+<li> 64.0625
+
+<li> -254
+
+<li> 0.078125
+</UL>
+<p>
+<b>Problema (b) (4 punti)</b>
+Si descriva dettagliatamente il contenuto e le funzioni
+di un record di attivazione.
+
+<p>
+A titolo di esempio si mostri l'evoluzione dei (o del) rda durante la
+chiamata
+di una procedura che, ricevendo 
+
+<UL>
+<p>
+
+<li>un parametro di input <tt>arr</tt>,
+array di interi, 
+
+<li> 
+<p>
+un altro parametro di input <tt>v</tt> intero e 
+
+<li>
+<p>
+un parametro di output <tt>occ</tt>,
+</UL>
+<p>
+restituisca in occ il numero di occorrenze di v nell'array.
+
+<p>
+Facoltativamente si pu&#242; utilizzare una funzione ricorsiva (potrebbe
+valere fino a un
+punto in pi&#249;).
+
+<p>
+<b>Problema (c) (4 punti)</b>  
+
+<p>
+Scrivere una unit&#224; di programma FORTRAN (denominata ESERFORTRAN)
+che, ricevendo 
+
+<DL compact>
+<p>
+<dt><b>-</b></dt>
+	<dd> un array
+di N numeri interi 
+<dt><b>-</b></dt>
+	<dd> un valore intero, k
+<dt><b>-</b></dt>
+	<dd> e quanti altri parametri si ritenga opportuno,
+</DL>
+<p>
+restituisca, facendo uso di opportuni parametri di output,
+
+<p>
+
+<OL type="1">
+<li> il numero di occorrenze di k nell'array;
+
+<li> un valore booleano che esprima il valore di verit&#224; della seguente 
+affermazione: il numero di occorrenze di k &#232; maggiore del numero di 
+elementi dell'array compresi nell'intevallo [m+30%m, m-30%m], dove 
+m &#232;
+la media dei valori contenuti nell'array.
+</OL>
+<p>
+Se, ad esempio, l'array contenesse:
+
+<p>
+
+<center>    <tt><b>7</b> <b>12</b> 4 <b>9</b> 15 4 16 3 20</tt>
+</center>
+<p>
+ e k  fosse <tt>4</tt>,
+ 
+<p>
+
+<UL>    
+<li> il numero di occorrenze di k sarebbe <tt>2</tt>;
+    
+<li> inoltre, essendo la media degli elementi dell'array (m) pari a 10 ed
+    essendoci 3 elementi nell'intervallo [10-30%m,10+30%m] 
+    (cio&#232; [7,13]), il valore restituito
+    sar&#224; .FALSE.
+</UL>
+<p>
+
+<p><hr><small>File translated from T<sub><font size="-1">E</font></sub>X by <a href="http://hutchinson.belmont.ma.us/tth/">T<sub><font size="-1">T</font></sub>H</a>, version 2.25.<br>On 21 Feb 2002, 13:42.</small>
+</HTML>

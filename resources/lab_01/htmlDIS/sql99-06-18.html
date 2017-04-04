@@ -1,0 +1,46 @@
+<!doctype html public "-//w3c//dtd html 4.0 transitional//en">
+<html>
+<head>
+   <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <meta name="Author" content="Fabrizio d'Amore">
+   <meta name="GENERATOR" content="Mozilla/4.6 (Macintosh; I; PPC) [Netscape]">
+   <title>Svolgimento interrogazione SQL esame 18-6-1999</title>
+</head>
+<body text="#000080" bgcolor="#FFC040" link="#0000FF" vlink="#008000" alink="#00FFFF">
+
+<center>
+<h3>
+Interrogazione SQL</h3></center>
+
+<hr WIDTH="100%">
+<blockquote><tt><font size=+1><font color="#18605A">select</font> p1.nome,
+p2.nome</font></tt>
+<br><tt><font size=+1><font color="#18605A">from</font> persone p1, persone
+p2</font></tt>
+<br><tt><font size=+1><font color="#18605A">where</font> (p1.nome &lt;
+p2.nome) <font color="#6876E7">and</font> (p1.padre=p2.padre) <font color="#6876E7">and</font>
+(p1.madre=p2.madre);</font></tt></blockquote>
+
+<hr WIDTH="100%">
+<h4>
+Commenti</h4>
+
+<ul>
+<li>
+&Egrave; necessario definire gli alias <tt>p1</tt> e <tt>p2</tt> della
+tabella <tt>persone</tt> in quanto le informazioni richieste possono essere
+estratte solo dal prodotto cartesiano della tabella con se stessa (notare
+che la parola <tt>as</tt> &egrave; stata omessa in quanto opzionale).</li>
+
+<li>
+Nella parte <tt>where</tt> ci sono tre condizioni in <tt>and</tt>. La prima
+impone due importanti propriet&agrave;: la coppia di fratelli &egrave;
+composta da due persone diverse e ciascuna coppia appare una volta sola
+nel risultato (se avessimo scritto semplicemente <tt>(p1.nome &lt;> p2.nome)</tt>
+per ogni coppia di fratelli A e B avremmo ottenuto le due tuple (A,B) e
+(B,A)). La seconda e la terza condizione impongono che i fratelli siano
+naturali (stesso padre e stessa madre).</li>
+</ul>
+
+</body>
+</html>

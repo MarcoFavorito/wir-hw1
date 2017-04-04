@@ -1,0 +1,90 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1">
+<META NAME="Generator" CONTENT="Microsoft Word 98">
+<TITLE>Esame 11/9/1998 -- I parte</TITLE>
+<META NAME="Template" CONTENT="C:\Programmi\Microsoft Office\Modelli\attilio.dot">
+</HEAD>
+<BODY>
+
+<B><FONT SIZE=4><P ALIGN="CENTER">Universit&agrave; di Roma La Sapienza</P>
+<P ALIGN="CENTER">Corso di Fondamenti di Informatica</FONT> </P>
+<P ALIGN="CENTER">Facolt&agrave; di Ingegneria </P>
+<P ALIGN="CENTER">Ambiente e Territorio</P>
+<P ALIGN="CENTER"></P>
+<P ALIGN="CENTER">Appello dell' 11-9-1998</P>
+
+<P>Esercizio 1 (18 punti)</P>
+</B><P ALIGN="JUSTIFY">La Societ&agrave; Sportiva Olimpia dispone di un archivio in cui memorizza i farmaci che vengono assunti da ciascun atleta. L'archivio, realizzato in C, consiste di un array di 22 componenti, ciascuna delle quali &egrave; costituita da una struttura in cui sono memorizzati la matricola dell'atleta (un intero) ed il puntatore ad una lista collegata, rappresentata mediante strutture e puntatori, i cui elementi sono costituiti da: sigla del farmaco (una stringa di 12 caratteri), data (una stringa con formato GGMMAA) della prescrizione della terapia. La Commissione Nazionale Antidoping ha aggiornato l'elenco delle sostanze vietate. In particolare, ha vietato alcune sostanze che precedentemente erano ammesse ed ha ammesso alcune sostanze che erano vietate. La Commissione ha prodotto, e distribuito su floppy disk, un file di testo NODOPING.TXT in cui sono memorizzate le nuove informazioni. In particolare, nel file &egrave; presente una riga per ogni farmaco e ciascuna riga contiene le informazioni sul relativo farmaco nel seguente formato: la sigla del farmaco (una stringa di 12 caratteri), una cifra intera 0 o 1, ad indicare se il farmaco &egrave; vietato (cifra: 0) o ammesso (cifra: 1) e la data (una stringa con formato GGMMAA) a partire dalla quale il farmaco &egrave; vietato o ammesso, a seconda dei casi. Si pu&ograve; assumere che tali informazioni siano separate nel file tramite il carattere ' '.</P>
+<P ALIGN="JUSTIFY"></P>
+<OL>
+
+<P ALIGN="JUSTIFY"><LI>Definire i tipi di dato C adeguati a risolvere i problemi di cui ai successivi punti 2) e 3).</LI></P>
+<P ALIGN="JUSTIFY"><LI>Scrivere una funzione (o pi&ugrave;) C che, dati come parametri l'archivio degli atleti della Societ&agrave; Olimpia ed il file NODOPING.TXT, elimini dall'archivio tutte le prescrizioni dei farmaci vietati avvenute <U>non anteriormente</U> alla data del divieto.</LI></P>
+<P ALIGN="JUSTIFY"><LI>Scrivere una funzione (o pi&ugrave;) C che, dato come parametro il file NODOPING. TXT, costruisca e fornisca in uscita la lista, rappresentata mediante strutture e puntatori, di tutti i farmaci ammessi, unitamente alle date di ammissione.</LI></P></OL>
+
+<P ALIGN="JUSTIFY"></P>
+<U><P ALIGN="JUSTIFY">Esempio.</P>
+</U><P ALIGN="JUSTIFY">Si consideri in fig. (a) l'archivio di atleti ed in fig. (b) il file NODOPING.TXT. In fig. (c) &egrave; mostrato l'archivio dopo l'esecuzione della procedura richiesta al punto 2), ed in fig. (d) la lista fornita dalla procedura di cui al punto 3).</P>
+<P ALIGN="JUSTIFY"></P>
+<P ALIGN="JUSTIFY">&nbsp;</P>
+<P ALIGN="JUSTIFY">&nbsp;</P>
+<P ALIGN="JUSTIFY">&nbsp;</P>
+<P ALIGN="JUSTIFY">&nbsp;</P>
+<P ALIGN="JUSTIFY">&nbsp;</P>
+<P ALIGN="JUSTIFY">&nbsp;</P>
+<P ALIGN="JUSTIFY">&nbsp;</P><DIR>
+<DIR>
+
+<B><P ALIGN="JUSTIFY">(a)</B>&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;<B>(c)</P>
+</B><P ALIGN="JUSTIFY"></P></DIR>
+</DIR>
+
+<P ALIGN="CENTER"><CENTER><TABLE BORDER CELLSPACING=1 CELLPADDING=1 WIDTH=405>
+<TR><TD WIDTH="4%" VALIGN="TOP" HEIGHT=12>
+<FONT SIZE=1><P ALIGN="JUSTIFY">Z</FONT></TD>
+<TD WIDTH="3%" VALIGN="TOP" HEIGHT=12>
+<FONT SIZE=1><P ALIGN="JUSTIFY">0</FONT></TD>
+<TD WIDTH="10%" VALIGN="TOP" HEIGHT=12>
+<FONT SIZE=1><P ALIGN="JUSTIFY">01-07-98</FONT></TD>
+<TD WIDTH="1%" VALIGN="TOP" BGCOLOR="#000000" HEIGHT=12><P></P></TD>
+<TD WIDTH="4%" VALIGN="TOP" HEIGHT=12>
+<FONT SIZE=1><P ALIGN="JUSTIFY">X</FONT></TD>
+<TD WIDTH="4%" VALIGN="TOP" HEIGHT=12>
+<FONT SIZE=1><P ALIGN="JUSTIFY">1</FONT></TD>
+<TD WIDTH="10%" VALIGN="TOP" HEIGHT=12>
+<FONT SIZE=1><P ALIGN="JUSTIFY">01-01-98</FONT></TD>
+<TD WIDTH="1%" VALIGN="TOP" BGCOLOR="#000000" HEIGHT=12><P></P></TD>
+<TD WIDTH="4%" VALIGN="TOP" HEIGHT=12>
+<FONT SIZE=1><P ALIGN="JUSTIFY">S</FONT></TD>
+<TD WIDTH="4%" VALIGN="TOP" HEIGHT=12>
+<FONT SIZE=1><P ALIGN="JUSTIFY">1</FONT></TD>
+<TD WIDTH="10%" VALIGN="TOP" HEIGHT=12>
+<FONT SIZE=1><P ALIGN="JUSTIFY">30-06-98</FONT></TD>
+<TD WIDTH="1%" VALIGN="TOP" BGCOLOR="#000000" HEIGHT=12><P></P></TD>
+<TD WIDTH="4%" VALIGN="TOP" HEIGHT=12>
+<FONT SIZE=1><P ALIGN="JUSTIFY">Y</FONT></TD>
+<TD WIDTH="4%" VALIGN="TOP" HEIGHT=12>
+<FONT SIZE=1><P ALIGN="JUSTIFY">0</FONT></TD>
+<TD WIDTH="10%" VALIGN="TOP" HEIGHT=12>
+<FONT SIZE=1><P ALIGN="JUSTIFY">01-01-97</FONT></TD>
+<TD WIDTH="1%" VALIGN="TOP" BGCOLOR="#000000" HEIGHT=12><P></P></TD>
+<TD WIDTH="4%" VALIGN="TOP" HEIGHT=12>
+<FONT SIZE=1><P ALIGN="JUSTIFY">R</FONT></TD>
+<TD WIDTH="4%" VALIGN="TOP" HEIGHT=12>
+<FONT SIZE=1><P ALIGN="JUSTIFY">0</FONT></TD>
+<TD WIDTH="10%" VALIGN="TOP" HEIGHT=12>
+<FONT SIZE=1><P ALIGN="JUSTIFY">01-01-98</FONT></TD>
+<TD WIDTH="4%" VALIGN="TOP" HEIGHT=12>
+<FONT SIZE=1><P ALIGN="JUSTIFY">eof</FONT></TD>
+</TR>
+</TABLE>
+</CENTER></P>
+
+<B><P ALIGN="CENTER">(b)</P>
+</B><P ALIGN="JUSTIFY"></P>
+<P ALIGN="JUSTIFY">&nbsp;</P>
+<P ALIGN="JUSTIFY">&nbsp;</P>
+<B><P ALIGN="CENTER">(d)</P>
+</B><P ALIGN="JUSTIFY"></P></BODY>
+</HTML>

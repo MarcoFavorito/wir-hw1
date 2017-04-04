@@ -1,0 +1,111 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+
+<!--Converted with jLaTeX2HTML 2002 (1.62) JA patch-1.4
+patched version by:  Kenshi Muto, Debian Project.
+LaTeX2HTML 2002 (1.62),
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>2003-01-11-b</TITLE>
+<META NAME="description" CONTENT="2003-01-11-b">
+<META NAME="keywords" CONTENT="2003-01-11-b">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1">
+<META NAME="Generator" CONTENT="jLaTeX2HTML v2002 JA patch-1.4">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+</HEAD>
+
+<BODY >
+
+<P>
+
+<P>
+<DIV ALIGN="CENTER">
+<FONT SIZE="+1"><B>  Laurea in Ingegneria Informatica - Nuovo Ordinamento
+<BR>
+Esame di Basi di Dati
+<BR>
+A.A.&nbsp;2002/2003 - Appello del 11/1/2003
+<BR>
+Compito B
+<BR>  <I>tempo a disposizione: 2 ore</I>
+
+</B></FONT></DIV>
+
+<P>
+
+<H2><A NAME="SECTION00001000000000000000">
+Problema 1</A>
+</H2>
+
+<P>
+Si richiede di progettare lo schema concettuale Entit&#224;-Relazione di
+un'applicazione per la federazione di pallacanestro giovanile.  La federazione
+vuole tenere traccia di un insieme di informazioni concernenti le trasferte
+delle squadre, descritte nel seguito.
+Ogni squadra appartiene ad una e una sola citt&#224; ed ha un nome unico
+nell'ambito della citt&#224; di appartenenza, un anno di fondazione, un presidente
+(uno ed uno solo) ed un allenatore (uno ed uno solo).
+Di ogni presidente interessano il nome, la data di nascita, lo stato civile, il
+reddito annuo e la regione di residenza.  Di ogni allenatore interessano il
+nome, la data di nascita, lo stato civile, gli anni di anzianit&#224;, e la
+regione di residenza.  Si noti che un allenatore pu&#242; essere anche presidente
+e che due persone diverse non possono avere lo stesso nome e la stessa data di
+nascita.
+Di ogni trasferta, che &#232; per una certa squadra verso una certa citt&#224;,
+interessano la data e le spese sostenute.  Si noti che una stessa squadra non
+pu&#243; effettuare in una stessa data pi&#250; di una trasferta verso la stessa
+citt&#224;.  Inoltre, una squadra potrebbe non avere effettuato alcuna trasferta.
+Le trasferte sono sponsorizzate da una o pi&#249; regioni, e interessa l'importo
+di ciascuna sponsorizzazione.
+Di ogni citt&#224;, interessano il nome che la identifica, la regione di
+appartenenza, ed il numero di abitanti.
+Di ogni regione interessano il nome (identificatore) e la superficie.
+
+<P>
+
+<H2><A NAME="SECTION00002000000000000000">
+Problema 2</A>
+</H2>
+
+<P>
+Si richiede di effettuare la progettazione logica dell'applicazione, producendo
+lo schema relazionale completo di vincoli, e seguendo l'indicazione di evitare
+valori nulli nella base di dati (si noti che le interrogazioni menzionate nel
+problema&nbsp;3 non sono da considerarsi significative per le indicazioni di
+progetto).
+
+<P>
+
+<H2><A NAME="SECTION00003000000000000000">
+Problema 3</A>
+</H2>
+
+<P>
+Sulla base dello schema relazionale definito per il problema&nbsp;2, esprimere in
+SQL le seguenti interrogazioni:
+
+ <OL>
+<LI>Calcolare il nome delle regioni  che hanno sponsorizzato le trasferte di
+  costo superiore a 10000.
+</LI>
+<LI>Calcolare il nome, la data di nascita, e l'anzianit&#224; degli allenatori
+  che sono anche presidenti di almeno una squadra che ha effettuato almeno una
+  trasferta.
+</LI>
+<LI>Calcolare per ogni citt&#224; il numero di squadre che vi appartengono e
+  che non hanno effettuato nessuna trasferta.
+</LI>
+<LI>Calcolare le citt&#224; verso cui vi &#232; almeno una trasferta sponsorizzata
+  solo dalla regione in cui &#232; situata la citt&#224;.
+</LI>
+</OL>
+
+</BODY>
+</HTML>

@@ -1,0 +1,280 @@
+<!doctype html public "-//w3c//dtd html 4.0 transitional//en">
+<html>
+<head>
+   <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <meta name="Author" content="ber">
+   <meta name="GENERATOR" content="Mozilla/4.72 [en] (X11; U; AIX 4.3) [Netscape]">
+   <title>sol1</title>
+</head>
+<body>
+program RILEVAZIONE_INQUINAMENTO;
+<br>(*SOLUZIONE ESERCIZIO 1, COMPITO DEL 20/06/2001*)
+<p>(*^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^*)
+<br>(*Attiva la valutazione con corto-circuito per le espressioni booleane*)
+<br>(*B-*)
+<br>(*^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^*)
+<p>(*####################################################################
+<br>Il programma legge un file di testo con i dati inviati dalle sonde
+(vedi file SONDE.TXT)
+<br>*)
+<p>CONST
+<br>&nbsp;&nbsp;&nbsp;&nbsp; N = 2;&nbsp; (*Numero di righe*)
+<br>&nbsp;&nbsp;&nbsp;&nbsp; M = 3;&nbsp; (*Numero di colonne*)
+<p>(* =============================== PUNTO 1 ==============================*)
+<p>TYPE
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; (*formato "GG/MM/AAAA HH:MM:SS"
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+Nota: i caratteri '/' e ':' non sono memorizzati. Tuttavia verranno letti
+dal file e stampati in uscita (vedi procedure ausiliarie) ...
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; *)
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; TIPODATA&nbsp;&nbsp; =
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+RECORD
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+anno: string[4];
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+giorno,mese,ora,minuti,secondi:string[2]
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+END;
+<br>&nbsp;&nbsp;&nbsp;&nbsp; LISTASONDE = ^TIPORECLISTA;
+<br>&nbsp;&nbsp;&nbsp;&nbsp; TIPORECLISTA = RECORD
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+Tasso: Real;
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+data: TipoData;
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+Next : ListaSonde
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+END;
+<p>&nbsp;&nbsp;&nbsp;&nbsp; MATRICESONDE = ARRAY[1..N,1..M] of LISTASONDE;
+<p>(*============================= PUNTO 2==============================*)
+<p>procedure ANALIZZA(X: MATRICESONDE;T: real;C:integer);
+<p>var nnodi:integer;
+<br>&nbsp;&nbsp;&nbsp; media:real;
+<br>&nbsp;&nbsp;&nbsp; f:text;
+<br>&nbsp;&nbsp;&nbsp; i,j:integer;
+<br>&nbsp;&nbsp;&nbsp; L:LISTASONDE;
+<br>begin
+<br>&nbsp;assign(f,'RES.TXT');
+<br>&nbsp;rewrite(f);
+<br>&nbsp;for i:=1 to N do
+<br>&nbsp; for j:=1 to M do begin
+<br>&nbsp;&nbsp;&nbsp; (*CALCOLO DELLA MEDIA....*)
+<br>&nbsp;&nbsp;&nbsp; write(f,i,' ',j,' ');
+<br>&nbsp;&nbsp;&nbsp; nnodi:=C;
+<br>&nbsp;&nbsp;&nbsp; media:=0;
+<br>&nbsp;&nbsp;&nbsp; L:=X[i,j];
+<br>&nbsp;&nbsp;&nbsp; while (L&lt;>NIL) and (nnodi>0) do begin
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; media:=L^.tasso+media;
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; L:=L^.next;
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; nnodi:=nnodi-1
+<br>&nbsp;&nbsp;&nbsp; end;
+<br>&nbsp;&nbsp;&nbsp; if nnodi=0 then write(f,media/C:0:2,' ')
+<br>&nbsp;&nbsp;&nbsp; else&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+write(f,'? ');
+<p>&nbsp;&nbsp;&nbsp; (*CALCOLO DELLA VARIAZIONE...*)
+<p>&nbsp;&nbsp;&nbsp; if (X[i,j]=nil) or (X[i,j]^.next=nil)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+then write(f,'? ')
+<br>&nbsp;&nbsp;&nbsp; else if X[i,j]^.tasso = X[i,j]^.next^.tasso then
+write(f,'= ')
+<br>&nbsp;&nbsp;&nbsp; else if X[i,j]^.tasso > X[i,j]^.next^.tasso then
+write(f,'+ ')
+<br>&nbsp;&nbsp;&nbsp; else&nbsp;&nbsp;&nbsp; write(f,'- ');
+<p>&nbsp;&nbsp;&nbsp; (*CALCOLO SITUAZIONE DI ALLARME*)
+<p>&nbsp;&nbsp;&nbsp; if&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; nnodi>0&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+then writeln(f,'?')
+<br>&nbsp;&nbsp;&nbsp; else if (media/C) > T then writeln(f,'A')
+<br>&nbsp;&nbsp;&nbsp; else&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+writeln(f,'N')
+<br>&nbsp;end;
+<br>&nbsp;close(f)
+<br>end;
+<p>(*========================&nbsp; PUNTO 3 =================================*)
+<br>procedure CANCELLA(var L:LISTASONDE;D:TIPODATA);
+<br>var aux,aux2: listasonde;
+<p>&nbsp;function MinoreDi(D1,D2: TIPODATA):boolean;
+<br>&nbsp;begin
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; (*Per verificare se D1 e' antecedente
+a D2 si costruisce la stringa AAAAMMGGHHMMSS concatendo i campi dei record
+di D1 e D2, mediante l'operatore +.
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Visto che '1''&lt;'2'&lt;..
+il confronto fra le due stringhe con tale formato vale true solo e solo
+se D1 e' antecendente D2
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; *)
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; MinoreDi:=D1.anno+D1.mese+D1.giorno+D1.ora+D1.minuti+D1.secondi&lt;
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+D2.anno+D2.mese+D2.giorno+D2.ora+D2.minuti+D2.secondi
+<br>&nbsp;end;
+<p>begin
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; (*I nodi sono ordinati temporalmente..*)
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; (*quindi la cencellazione avverra' da
+un nodo S fino alla coda..*)
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; (*Se L non e' vuota...*)
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; if (L&lt;>NIL) then
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; (*Primo caso: S=L. L'elemento di testa
+e' precedente alla data D
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; quindi, visto che la lista
+a' ordinata temporalmente, devono
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; essere cancellatti tutti
+i nodi.
+<br>&nbsp;&nbsp;&nbsp;&nbsp; *)
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; if (MinoreDi(L^.data,D)) then
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; repeat
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+aux:=L; L:=L^.next;
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+dispose(aux)
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; until L=nil
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; else
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; (*Secondo caso: S, se esiste,
+e' posizionato dopo L*)
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; begin
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; aux:=L;
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; while
+(aux^.next&lt;>NIL) and (not MinoreDi(aux^.next^.data,D)) do aux:=aux^.next;
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; while
+aux^.next&lt;>NIL do begin
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+aux2:=aux^.next;
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+aux^.next:=aux2^.next;
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+dispose(aux2)
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; end
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; end
+<br>end;
+<p>(*====================== PROCEDURE DI UTILITA'&nbsp; =======================*)
+<p>procedure INIZIALIZZA(var X:MATRICESONDE);
+<br>var i,j: integer;
+<br>begin
+<br>&nbsp;&nbsp;&nbsp; for i:=1 to N&nbsp; do
+<br>&nbsp;&nbsp;&nbsp;&nbsp; for j:=1 to M do
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; X[i,j]:=nil;
+<br>end;
+<p>procedure Visita(X: MATRICESONDE;i,j:integer);
+<br>begin
+<br>&nbsp;&nbsp;&nbsp;&nbsp; writeln('L->');
+<br>&nbsp;&nbsp;&nbsp;&nbsp; while X[i,j]&lt;>NIL do begin
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; write('(',X[i,j]^.tasso:5:2,'
+',
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+X[i,j]^.data.giorno,'/',
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+X[i,j]^.data.mese,'/',
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+X[i,j]^.data.anno,' ',
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+X[i,j]^.data.ora,':',
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+X[i,j]^.data.minuti,':',
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+X[i,j]^.data.secondi);
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+writeln&nbsp; (')->');
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; X[i,j]:=X[i,j]^.next;
+<br>&nbsp;&nbsp;&nbsp;&nbsp; end;
+<br>&nbsp;&nbsp;&nbsp;&nbsp; writeln('#')
+<br>end;
+<p>procedure LEGGI_DA_FILE(var X:MATRICESONDE;nomeFile:string);
+<p>var i,j: integer;
+<br>&nbsp;&nbsp;&nbsp; f:text;
+<br>&nbsp;&nbsp;&nbsp; ch:char;
+<br>&nbsp;&nbsp;&nbsp; aux,prec,corr: LISTASONDE;
+<br>&nbsp;&nbsp;&nbsp; (*Si assume che i dati nel file siano ordinati,
+quidni e'
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; sufficiente un INSERIMENTO IN
+TESTA*)
+<br>begin
+<br>&nbsp;&nbsp;&nbsp; assign(f,nomeFile);
+<br>&nbsp;&nbsp;&nbsp; reset(f);
+<br>&nbsp;&nbsp;&nbsp; while not eof(f) do begin
+<br>&nbsp;&nbsp;&nbsp;&nbsp; new(aux);
+<br>&nbsp;&nbsp;&nbsp;&nbsp; read(f,aux^.data.giorno,ch,aux^.data.mese,ch,aux^.data.anno,ch,
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+aux^.data.ora,ch,aux^.data.minuti,ch,aux^.data.secondi,i,j);
+<br>&nbsp;&nbsp;&nbsp;&nbsp; readln(f,aux^.tasso);
+<br>&nbsp;&nbsp;&nbsp;&nbsp; aux^.next:=X[i,j];
+<br>&nbsp;&nbsp;&nbsp;&nbsp; X[i,j]:=aux
+<br>&nbsp;&nbsp;&nbsp; end;
+<br>&nbsp;&nbsp;&nbsp; close(f)
+<br>end;
+<br>&nbsp;
+<p>(*======================&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; DRIVER&nbsp;&nbsp;&nbsp;&nbsp;
+============================*)
+<p>var op,ch:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+char;
+<br>&nbsp;&nbsp;&nbsp; nome:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+string;
+<br>&nbsp;&nbsp;&nbsp; C,i,j:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+integer;
+<br>&nbsp;&nbsp;&nbsp; T:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+real;
+<br>&nbsp;&nbsp;&nbsp; data:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+TipoData;
+<br>&nbsp;&nbsp;&nbsp; VAR X:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+MATRICESONDE;
+<p>begin
+<br>&nbsp;&nbsp;&nbsp;&nbsp; Inizializza(X);
+<br>&nbsp;&nbsp;&nbsp;&nbsp; writeln('**************************************************');
+<br>&nbsp;&nbsp;&nbsp;&nbsp; writeln('l=LEGGI FILE a=ANALIZZA v=VISITA
+c=CANCELLA q=QUIT');
+<p>&nbsp;&nbsp;&nbsp;&nbsp; repeat
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; write('>');
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; readln(op);
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; case op
+of
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 'l','L'
+: begin
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+write('NOME FILE DATI: ');
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+readln(nome);
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+Leggi_Da_File(X,nome);
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+end;
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 'a','A'
+: begin
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+write('Soglia [T]: ');&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+readln(T);
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+write('Numero Rilevazioni[C]: '); readln(C);
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+ANALIZZA(X,T,C)
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+end;
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 'v','V'
+: begin
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+repeat
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+write('i j: ');
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+readln(i,j);
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+until (i>=1) and (i&lt;=N) and (j>=1) and (j&lt;=M);
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+Visita(X,i,j)
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+end;
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 'c','C'
+:&nbsp; begin
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+write('DATA [GG/MM/AAAA HH:MM:SS]: ');
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+readln(data.giorno,ch,data.mese,ch,data.anno,ch,
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+data.ora,ch,data.minuti,ch,data.secondi);
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+write('SONDA [i,j]: ');readln(i,j);
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+Cancella(X[i,j],data);
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+end;
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; end
+<br>&nbsp;&nbsp;&nbsp;&nbsp; until (op='q') or (op='Q');
+<br>&nbsp;&nbsp;&nbsp;&nbsp; writeln('FINE...');readln;
+<br>end.
+</body>
+</html>

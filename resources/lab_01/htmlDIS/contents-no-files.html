@@ -1,0 +1,406 @@
+<!doctype html public "-//w3c//dtd html 4.0 transitional//en">
+<html>
+<head>
+   <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <meta name="Author" content="Daniele Nardi">
+   <title>Contents</title>
+</head>
+<body>
+
+<center><h3>THE DESCRIPTION LOGIC HANDBOOK:<br>
+Theory, implementation and applications</h3></center>
+
+<h3>Contents</h3>
+
+<blockquote>
+<b>Table of contents</b><br>
+<b>Contributors</b>
+
+<p>
+<b>Chapter 1</b>: <a href="#Chapter01">An Introduction to Description
+   Logics</a>
+</blockquote>
+
+<b>PART I</b>: <a href="#Part1">THEORY</a>
+<blockquote>
+<b>Chapter 2:</b> <a href="#Chapter02">Basic Description Logics</a><br>
+<b>Chapter 3:</b> <a href="#Chapter03">Complexity of Reasoning</a><br>
+<b>Chapter 4:</b> <a href="#Chapter04">Relationships with Other
+   Formalisms</a><br>
+<b>Chapter 5:</b> <a href="#Chapter05">Expressive Description Logics</a><br>
+<b>Chapter 6:</b> <a href="#Chapter06">Extensions to Description Logics</a>
+</blockquote>
+
+<b>PART II</b>: <a href="#Part2">IMPLEMENTATION</a>
+<blockquote>
+<b>Chapter 7:</b> <a href="#Chapter07">From Description Logics Provers to
+   Knowledge Representation Systems</a><br>
+<b>Chapter 8:</b> <a href="#Chapter08">Description Logic Systems</a><br>
+<b>Chapter 9:</b> <a href="#Chapters09">Implementation and Optimization
+   Techniques</a>
+</blockquote>
+
+<b>PART III</b>: <a href="#Part3">APPLICATIONS</a>
+<blockquote>
+<b>Chapter 10:</b> <a href="#Chapter10">Conceptual Modeling with Description
+   Logics</a><br>
+<b>Chapter 11:</b> <a href="#Chapter11">Software Engineering</a><br>
+<b>Chapter 12:</b> <a href="#Chapter12">Description Logic for
+   Configuration</a><br>
+<b>Chapter 13:</b> <a href="#Chapter13">Description Logics in Medical
+   Informatics</a><br>
+<b>Chapter 14:</b> <a href="#Chapter14">Digital Libraries and Web Based
+   Information Systems</a><br>
+<b>Chapter 15:</b> <a href="#Chapter15">Natural Language Processing</a><br>
+<b>Chapter 16:</b> <a href="#Chapter16">Description Logics for Data Bases</a>
+
+<p>
+<b>Appendix</b><br>
+<b>Bibliography</b><br>
+<b>Index</b>
+
+</blockquote>
+</b>
+
+<hr>
+<h3><a NAME="Chapter01">Chapter 1: An Introduction to Description
+Logics</a></h3>
+
+Authors: <b>Daniele Nardi, Ronald J. Brachmann</b>
+
+<p>
+<b>Abstract:</b>
+
+This Introduction presents the main motivations for the development of
+Description Logics (DL) as a formalism for representing knowledge, as well as
+some important basic notions underlying all systems that have been created in
+the DL tradition. In addition, we provide the reader with an overview of the
+entire book and some guidelines for reading it. We first address the
+relationship between Description Logics and earlier semantic network and frame
+systems, which represent the original heritage of the field. We delve into some
+of the key problems encountered with the older efforts. Subsequently, we
+introduce the basic features of Description Logic languages and related
+reasoning techniques. Description Logic languages are then viewed as the core
+of knowledge representation systems, considering both the structure of a DL
+knowledge base and its associated reasoning services. The development of some
+implemented knowledge representation systems based on Description Logics and
+the rst applications built with such systems are then reviewed. Finally, we
+address the relationship of Description Logics to other fields of Computer
+Science. We also discuss some extensions of the basic representation language
+machinery; these include features proposed for incorporation in the formalism
+that originally arose in implemented systems, and features proposed to cope
+with the needs of certain application domains.
+
+<p><hr>
+<h2><a NAME="Part1"></a>PART I: THEORY</h2>
+
+<h3><a NAME="Chapter02">Chapter 2: Basic Description Logics</h3></a>
+
+Authors: <b>Franz Baader, Werner Nutt</b>
+
+<p>
+<b>Abstract:</b>
+
+This chapter provides an introduction to Description Logics as a formal
+language for representing knowledge and reasoning about it.  It first gives a
+short overview of the ideas underlying Description Logics.  Then it introduces
+syntax and semantics, covering the basic constructors that are used in systems
+or have been introduced in the literature, and the way these constructors can
+be used to build knowledge bases.  Finally, it defines the typical inference
+problems, shows how they are interrelated, and describes different approaches
+for effectively solving these problems.  Some of the topics that are only
+briefly mentioned in this chapter will be treated in more detail in subsequent
+chapters.
+
+<h3><a NAME="Chapter03">Chapter 3: Complexity of Reasoning</a></h3>
+
+Authors: <b>Francesco M. Donini</b>
+
+<p>
+<b>Abstract:</b>
+
+We present lower bounds on the computational complexity of satisfiability and
+subsumption in several description logics.  We interpret these lower bounds as
+coming from different ``sources of complexity'', which we isolate one by one.
+We consider both reasoning with simple concept expressions and with an
+underlying TBox.  We discuss also complexity of instance check in simple
+ABoxes.  We tried to enhance clarity and ease of presentation, sometimes
+sacrificing exhaustiveness for lack of space.
+
+
+<h3><a NAME="Chapter04">Chapter 4: Relationships with Other Formalisms</a></h3>
+
+Authors: <b>Ulrike Sattler, Diego Calvanese, Ralf Molitor</b>
+
+<p>
+<b>Abstract:</b>
+
+In this chapter, we are concerned with the relationship between description
+logics and other formalisms, regardless of whether they were designed for
+knowledge representation issues or not. Obviously, due to the lack of space, we
+cannot compare each representational formalism with description logics, thus we
+concentrated on those that either (1) had or have a strong influence on
+description logics (e.g., modal logics), (2) are closely related to description
+logics for historical reasons (e.g., semantic networks and structured
+inheritance networks), (3) have similar expressive power (e.g., semantic data
+models).  There are far more knowledge representation formalisms than those
+mentioned in this section. For example, ``verb-centered'' graphical formalisms
+like those introduced by [Simm73] are not mentioned since we believe that their
+relationship with description logics is too weak.
+
+<h3><a NAME="Chapter05">Chapter 5: Expressive Description Logics</a></h3>
+
+Authors: <b>Giuseppe De Giacomo, Diego Calvanese</b>
+
+<p>
+<b>Abstract:</b>
+
+This chapter covers extensions of the basic description logics introduced in
+Chapter 2 by very expressive constructs that require advanced reasoning
+techniques.  In particular, we study reasoning in description logics that
+include general inclusion axioms, inverse roles, number-restrictions,
+reflexive-transitive closure of roles, fixpoint constructs for recursive
+definitions, and relations of arbitrary arity. The chapter will also address
+reasoning w.r.t. knowledge bases including both a TBox and an ABox, and discuss
+more general ways to treat objects.  Since the logics considered in the chapter
+lack the finite model property, finite model reasoning is of interest and will
+also be discussed.  Finally, we mention several extensions to description
+logics that lead to undecidability, confirming that the expressive description
+logics considered in this chapter are close to the boundary between
+decidability and undecidability.
+
+<h3><a NAME="Chapter06">Chapter 6: Extensions to Description Logics</a></h3>
+
+Authors: <b>Franz Baader, Ralph Kuesters, Frank Wolter</b>
+
+<p>
+<b>Abstract:</b>
+
+This chapter considers, on the one hand, extensions of Description Logics by
+features not available in the basic framework, but considered important for
+using Description Logics as a modeling language.  In particular, it addresses
+the extensions concerning: concrete domain constraints; modal, epistemic, and
+temporal operators; probabilities and fuzzy logic; and defaults.  On the other
+hand, it considers non-standard inference problems for Description Logics,
+i.e., inference problems that--unlike subsumption or instance checking--are
+not available in all systems, but have turned out to be useful in
+applications. In particular, it addresses the non-standard inference problems:
+least common subsumer and most specific concept; unification and matching of
+concepts; and rewriting.
+
+<p><hr>
+<h2><a NAME="Part2"></a>PART II: IMPLEMENTATION</h2>
+
+<h3><a NAME="Chapter07">Chapter 7: From Description Logics Provers to Knowledge
+Representation Systems</a></h3>
+
+Authors: <b>Deborah L. McGuinness, Peter Patel-Schneider</b>
+
+<p>
+<b>Abstract:</b>
+
+A description-logic based knowledge representation system is more than an
+inference engine for a particular description logic.  A knowledge
+representation system must provide a number of services to human users,
+including presentation of the information stored in the system in a manner
+palatable to users and justification of the inferences performed by the system.
+If human users cannot understand what the system is doing, then the development
+of knowledge bases is made much more difficult or even impossible.  A knowledge
+representation system must also provide a number of services to application
+programs, including access to the basic information stored in the system but
+also including access to the machinations of the system.  If programs cannot
+easily access and manipulate the information stored in the system, then the
+development of applications is made much more difficult or even impossible.
+
+<h3><a NAME="Chapter08">Chapter 8: Description Logic Systems</a></h3>
+
+Authors: <b>Ralf Moeller, Volker Haarslev</b>
+
+<p>
+<b>Abstract:</b>
+
+This chapter discusses implemented description logic systems that have played
+or play an important role in the field. It first presents several earlier
+systems that, although not based on description logics, have provided important
+ideas. These systems include KlOne, Krypton, Nikl, and Kandor. Then, successor
+systems are described by classifying them along the characteristics discussed
+in the previous chapters, addressing the following systems: Classic (``almost''
+complete, fast); Back, Loom (expressive, incomplete); Kris, Crack (expressive,
+complete). At last, new optimized generation of very expressive but sound and
+complete DL systems is also introduced. In particular, we focus on the systems
+DLP, Fact, and Racer and explain what they can and cannot do.
+
+<h3><a NAME="Chapters09">Chapter 9: Implementation and Optimization
+Techniques</a></h3>
+
+Authors: <b>Ian Horrocks</b>
+
+<p>
+<b>Abstract:</b>
+
+This chapter will discuss the implementation of the reasoning services which
+form the core of Description Logic based Knowledge Representation Systems.  To
+be useful in realistic applications, such systems need both expressive logics
+and fast reasoners. As expressive logics inevitably have high worst-case
+complexities, this can only be achieved by employing highly optimised
+implementations of suitable reasoning algorithms.  Systems based on such
+implementations have demonstrated that they can perform well with problems that
+occur in realistic applications, including problems where unoptimised reasoning
+is hopelessly intractable.
+
+<p><hr>
+<h2><a NAME="Part3"></a>PART III: APPLICATIONS</h2>
+
+<h3><a NAME="Chapter10">Chapter 10: Conceptual Modeling with Description
+Logics</a></h3>
+
+Authors: <b>Alex Borgida, Ronald J. Brachman</b>
+
+<p>
+<b>Abstract:</b>
+
+The purpose of the chapter is to help someone familiar with DLs to understand
+the issues involved in developing an ontology for some universe of discourse,
+which is to become a conceptual model or knowledge base represented and
+reasoned with using Description Logics.  We briefly review the purposes and
+history of conceptual modeling, and then use the domain of a university library
+to illustrate an approach to conceptual modeling that combines general ideas of
+object-centered modeling with a look at special modeling/ontological problems,
+and DL-specific solutions to them.  Among the ontological issues considered are
+the nature of individuals, concept specialization, non-binary relationships,
+materialization, aspects of part-whole relationships, and epistemic aspects of
+individual knowledge.
+
+<h3><a NAME="Chapter11">Chapter 11: Software Engineering</a></h3>
+
+Authors: <b>Christopher A. Welty</b>
+
+<p>
+<b>Abstract:</b>
+
+One of the first large applications of description logics was in the area of
+software engineering.  In software, programmers and maintainers of large
+systems are plagued with information overload.  These systems are typically
+over a million lines of code, some approach fifty million.  The size of the
+workforce dedicated to maintaining these enormous systems is often over a
+thousand.  In addition, turnover is quite high, as is the training investment
+required to make someone a productive member of the team.  This seems, on the
+surface, to be a problem crying out for a knowledge-based solution, but
+understanding precisely how description logics can play a role requires
+understanding the basic problems of software engineering ``in the large.''
+
+<h3><a NAME="Chapter12">Chapter 12: Description Logic for
+Configuration</a></h3>
+
+Authors: <b>Deborah L. McGuinness</b>
+
+<p>
+<b>Abstract:</b>
+
+Description logics are used to solve a wide variety of problems with
+configuration applications being some of the largest and longest-lived.  There
+is concrete, commercial evidence that shows that description logic-based
+configurators have been successfully fielded for over a decade.  Additionally,
+it appears that configuration applications have a number of characteristics
+that make them well-suited to description logic-based solutions.  This chapter
+will introduce the problem of configuration, describe some requirements of
+configuration applications that make them candidates for description
+logic-based solutions, show examples of these requirements in a configuration
+example, and introduce the largest and longest lived family of description
+logic-based configurators.
+
+
+<h3><a NAME="Chapter13">Chapter 13: Description Logics in Medical
+Informatics</a></h3>
+
+Authors: <b>Alan Rector</b>
+
+<p>
+<b>Abstract:</b>
+
+Description logics and related formalisms are being applied in at least five
+applications in medical informatics---terminology, intelligent user interfaces,
+decision support and semantic indexing, language technology, and systems
+integration.  Important issues include size, complexity, connectivity, and the
+wide range of granularity required---medical terminologies require on the order
+of 250,000 concepts, some involving a dozen or more conjuncts with deep
+nesting; the nature of anatomy and physiology is that everything connects to
+everything else; and notions to be represented range from psychology to
+molecular biology.  Technical issues for expressivity have focused on problems
+of part-whole relations and the need to provide ``frame-like''
+functionality---i.e., the ability to determine efficiently what can sensibly be
+said about any particular concept and means of handling at least limited cases
+of defaults with exceptions.  There are also significant problems with
+``semantic normalisation'' and ``clinical pragmatics'' because understanding
+medical notions often depends on implicit knowledge and some notions defy easy
+logical formulation.  The two best known efforts---OpenGALEN and
+SNOMED-RT---both use idiosyncratic description logics with generally limited
+expressivity but specialised extensions to cope with issues around part-whole
+and other transitive relations.  There is also a conflict between the needs for
+re-use and the requirement for easy understandability by domain expert authors.
+OpenGALEN has coped with this conflict by introducing a layered architecture
+with a high level ``Intermediate Representation'' which insulates authors from
+the details of the description logic which is treated as an ``assembly
+language'' rather than the primary medium for expressing the ontology.
+
+
+<h3><a NAME="Chapter14">Chapter 14: Digital Libraries and Web Based
+Information Systems</a></h3>
+
+Authors: <b>Ian Horrocks, Deborah L. McGuinness, Christopher A. Welty</b>
+
+<p>
+<b>Abstract:</b>
+
+It has long been realised that the web could benefit from having its content
+understandable and available in a machine processable form, and it is widely
+agreed that ontologies will play a key role in providing much enabling
+infrastructure to support this goal. In this chapter we review briefly a
+selected history of description logics in web-based information systems, and
+the more recent developments related to OIL, DAML+OIL and the semantic web. OIL
+and DAML+OIL are ontology languages specifically designed for use on the web;
+they exploit existing web standards (XML, RDF and RDFS), adding the formal
+rigor of a description logic and the ontological primitives of object oriented
+and frame based systems. 
+
+<h3><a NAME="Chapter15">Chapter 15: Natural Language Processing</a></h3>
+
+Authors: <b>Enrico Franconi</b>
+
+<p>
+<b>Abstract:</b>
+
+In most natural language processing applications, Description Logics have been
+used to encode in a knowledge base some syntactic, semantic, and pragmatic
+elements needed to drive the semantic interpretation and the natural language
+generation processes. More recently, Description Logics have been used to fully
+characterise the semantic issues involved in the interpretation phase. In this
+Chapter the various proposals appeared in the literature about the use of
+Description Logics for natural language processing will be analysed. 
+
+<h3><a NAME="Chapter16">Chapter 16: Description Logics for Data Bases</a></h3>
+
+Authors: <b>Alex Borgida, Maurizio Lenzerini, Riccardo Rosati</b>
+
+<p>
+<b>Abstract:</b>
+
+In contrast to the relatively complex information that can be expressed
+in DL ABoxes (which we might call knowledge/information), databases and
+other sources such as files, semi-structured data, and the World Wide
+Web provide rather simpler data, which must however be managed
+effectively.  This chapter surveys the major classes of application of
+Description Logics and their reasoning facilities to the issues of data
+management, including: (i) expressing the conceptual domain
+model/ontology of the data source, (ii) integrating multiple data
+sources, and (iii) expressing and evaluating queries. In each case we
+utilize the standard properties of DLs, such as the ability to express
+ontologies at a level closer to that of human conceptualization (e.g.,
+representing conceptual schemas), determining consistency of descriptions
+(e.g., determining if a query or the integration of some schemas is
+consistent), and automatically classifying descriptions that are
+definitions (e.g., queries are really definitions, so we can classify
+them and determine subsumption between them).
+
+</body>
+</html>

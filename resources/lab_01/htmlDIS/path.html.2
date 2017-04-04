@@ -1,0 +1,180 @@
+<html>
+<head>
+<title>Il path</title>
+<link href="../04.css" rel="stylesheet" type="text/css">
+</head>
+
+<body>
+
+<h3>Il path</h3>
+
+<p>
+I file del computer sono suddivisi in cartelle:
+ogni cartella &egrave; semplicemente un contenitore
+in cui ci sono dei file.
+</p>
+
+<p>
+I comandi inviati al prompt hanno vengono inizialmente applicati alla directory in cui ci si trova. Se un comando/file non viene trovato nella directory corrente, il sistema lo cerca nell'elenco di directory specificati in un'opportuna variabile d'ambiente, chiamata PATH. Il  path dice in quali
+  cartelle andare a guardare per trovare i file
+che rappresentano i comandi. </p>
+<p>
+<tt>javac</tt> e <tt>java</tt> sono dei comandi che vengono invocati al prompt. Se viene visualizzato il messaggio</p>
+<p> <tt>&quot;javac&quot; non &egrave; riconosciuto come comando interno o esterno, un programma eseguibile o un file batch.</tt> </p>
+<p>quando si esegue javac, anche
+  se l'installazione &egrave; stata fatta, questo
+  pu&ograve; essere dovuto al fatto che il path
+  non include la cartella in cui si trova il file. </p>
+<p>
+Cose da fare:
+</p>
+
+<ol>
+
+<li>Cercare il file <tt>javac.exe</tt> e prendere
+nota della cartella (directory) in cui si trova. Per una installazione standard questa directory &egrave; <strong>c:\j2sdk1.4.2\bin. </strong>Nel resto di questa pagina si far&agrave; riferimento a questa cartella. 
+<li>Impostare il PATH<tt></tt>
+in modo che includa questa cartella.
+
+</ol>
+
+<p> Ecco come fare ad impostare la variabile PATH nelle varie versioni di Windows: </p>
+
+<dl>
+
+  <p>-<a
+name="Windows2000"><strong>Windows 2000/Windows XP </strong></a>. </p>
+  <ol>
+    <li>
+      <p>Fate clic con il pulsante destro del mouse su <b>Risorse del computer </b>(nell'angolo in alto a sinistra dello schermo).</p>
+    </li>
+    <li>
+      <p>Andate a <b>Avanzate</b>.</p>
+    </li>
+    <li>
+      <p>Fate clic sul bottone <b>Variabili d'ambiente</b>. Apparir&agrave; unascheda contenente due aree: <strong>Variabili di sistema</strong> e <strong>Variabili dell'utente</strong>.</p>
+    </li>
+    <li>
+      <p>Nella sezione <strong>Variabili dell'utente</strong>, controllate se c'&egrave; una variabile <strong>PATH</strong> gi&agrave; definita (potreste dover far scorrere quella parte della finestra). Se non c'&egrave;, saltate al passo 10.</p>
+    </li>
+    <li>
+      <p>Fate clic sulla variabile <strong>PATH</strong>. Compariranno <strong>PATH</strong> nel campo <strong>Variabile</strong> e la configurazione attuale di path nel campo <strong>Valore</strong> nella parte bassa della finestra. </p>
+    </li>
+    <li>
+      <p>Fate clic nel campo <strong>Valore</strong> e utilizzate il <em>tasto freccia a destra</em> per portarvi alla fine del testo contenuto in tale campo. Digitate quanto segue <em>(NOTA: Fate attenzione a inserire un punto e virgola alla fine del valore corrente)</em>:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <strong>;C:\j2sdk1.4.2\bin<br>
+    </strong>Il punto e virgola &egrave; richiesto solo se non ce n'&egrave; gi&agrave; uno.</p>
+    </li>
+    <li>
+      <p>Saltate al passo 12.</p>
+    </li>
+    <li>
+      <p>Se la variabile <strong>PATH</strong> non &egrave; definita, fate clic nel campo <strong>Variabile</strong> nella parte bassa della finestra e digitate<br>
+          <strong>&nbsp;&nbsp; </strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <strong>PATH</strong></p>
+    </li>
+    <li>
+      <p>Fate clic nel campo Valore e digitate <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <strong>C:\j2sdk1.4.2\bin</strong></p>
+    </li>
+    <li>
+      <p>Fate clic sul pulsante <strong>Impostazioni</strong> e chiudete la finestra. &egrave; estremamente importante che facciate clic su <strong>Impostazioni</strong> prima, altrimenti le nuove impostazioni non verranno salvate.</p>
+    </li>
+    <li>
+      <p>Ora siete pronti a utilizzare Java 2 SDK. Se avevate una qualche finestra <strong>Prompt di sistema</strong> aperta prima di impostare il <strong>PATH</strong>, dovrete chiuderla e riaprirla affinch&eacute; la nuova impostazione <strong>PATH</strong> abbia effetto. Non &egrave; necessario riavviare il computer.<br>
+      </p>
+    </li>
+  </ol>
+  <p>- <a name="Windows 95/98"><strong>Windows 95/98</strong></a></p>
+  <ol>
+    <li>
+      <p>Fate clic sul pulsante <strong>Start</strong> (nell'angolo in basso a sinistra sullo schermo).</p>
+    </li>
+    <li>
+      <p>Selezionate <strong>Esegui...</strong></p>
+    </li>
+    <li>
+      <p>Digitate <strong>sysedit</strong> e premete <strong>OK</strong>. In questo modo vedrete l'<strong>Editor di configurazione di sistema</strong> che consente di modificare il file autoexec.bat (e numerosi altri file).</p>
+    </li>
+    <li>
+      <p>Il file da modificare tra quelli aperti &egrave; <strong>C:\AUTOEXEC.BAT</strong> (la finestra contenente questo file dovrebbe essere in primo piano).</p>
+    </li>
+    <li>
+      <p>Come ultima linea di questo file, aggiungete <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <strong>&nbsp; SET PATH=C:\j2sdk1.4.2\bin;%PATH%</strong></p>
+    </li>
+    <li>
+      <p>Nel menu <strong>File</strong>, selezionate <strong>Salva</strong>.</p>
+    </li>
+    <li>
+      <p>Nel menu <strong>File</strong>, selezionate <strong>Esci</strong>.</p>
+    </li>
+    <li>
+      <p>Riavviate il computer affinch&eacute; le modifiche abbiano effetto.</p>
+      <br>
+    </li>
+  </ol>
+  <p>-<a
+name="WindowsNT"><strong>Windows NT</strong></a>. </p>
+  <ol>
+    <li>
+      <p>Fate clic sul pulsante <strong>Start</strong> (nell'angolo in basso a sinistra dello schermo).</p>
+    </li>
+    <li>
+      <p>Andate a <strong>Impostazioni</strong>.</p>
+    </li>
+    <li>
+      <p>Selezionate <strong>Pannello di controllo</strong>.</p>
+    </li>
+    <li>
+      <p>In <strong>Pannello di controllo</strong>, fate doppio clic su <strong>Sistema</strong>.</p>
+    </li>
+    <li>
+      <p>Fate clic sulla scheda <strong>Ambiente</strong>. Questa scheda contiene due aree: <strong>Variabili di sistema</strong> e <strong>Variabili dell'utente</strong>.</p>
+    </li>
+    <li>
+      <p>Nella sezione <strong>Variabili dell'utente</strong>, controllate se c'&egrave; una variabile <strong>PATH</strong> gi&agrave; definita (potreste dover far scorrere quella parte della finestra). Se non c'&egrave;, saltate al passo 10.</p>
+    </li>
+    <li>
+      <p>Fate clic sulla variabile <strong>PATH</strong>. Compariranno <strong>PATH</strong> nel campo <strong>Variabile</strong> e la configurazione attuale di path nel campo <strong>Valore</strong> nella parte bassa della finestra. </p>
+    </li>
+    <li>
+      <p>Fate clic nel campo <strong>Valore</strong> e utilizzate il <em>tasto freccia a destra</em> per portarvi alla fine del testo contenuto in tale campo. Digitate quanto segue <em>(NOTA: Fate attenzione a inserire un punto e virgola alla fine del valore corrente)</em>:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <strong>;C:\j2sdk1.4.2\bin<br>
+    </strong>Il punto e virgola &egrave; richiesto solo se non ce n'&egrave; gi&agrave; uno.</p>
+    </li>
+    <li>
+      <p>Saltate al passo 12.</p>
+    </li>
+    <li>
+      <p>Se la variabile <strong>PATH</strong> non &egrave; definita, fate clic nel campo <strong>Variabile</strong> nella parte bassa della finestra e digitate<br>
+          <strong>&nbsp;&nbsp; </strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <strong>PATH</strong></p>
+    </li>
+    <li>
+      <p>Fate clic nel campo Valore e digitate <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <strong>C:\j2sdk1.4.2\bin</strong></p>
+    </li>
+    <li>
+      <p>Fate clic sul pulsante <strong>Impostazioni</strong> e chiudete la finestra. &egrave; estremamente importante che facciate clic su <strong>Impostazioni</strong> prima, altrimenti le nuove impostazioni non verranno salvate.</p>
+    </li>
+    <li>
+      <p>Ora siete pronti a utilizzare Java 2 SDK. Se avevate una qualche finestra <strong>Prompt di sistema</strong> aperta prima di impostare il <strong>PATH</strong>, dovrete chiuderla e riaprirla affinch&eacute; la nuova impostazione <strong>PATH</strong> abbia effetto. Non &egrave; necessario riavviare il computer.</p>
+    </li>
+  </ol>
+  <dt>
+</dl>
+
+<p>
+Se non si riesce a modificare il path,
+andare sull'help in linea
+(Start-&gt;Guida in linea
+oppure Start-&gt;Help) e cercare le parole
+chiave "variabili d'ambiente" oppure
+"modificare i valori delle variabili
+d'ambiente".
+</p>
+<p>IMPORTANTE: le modifiche prendono effetto solo sulle finestre del prompt aperte DOPO aver dato l'OK. Perci&ograve; una finestra aperta PRIMA delle modifiche va chiusa. </p>
+</dl>
+
+</body>
+</html>
+

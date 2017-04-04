@@ -1,0 +1,167 @@
+<html>
+<head>
+<title>Compito esame 5/5/2005</title>
+<style type="text/css">
+  dt { font-weight: bold }
+</style>
+
+</head>
+
+<body>
+
+<h1>Compito esame 5/5/2005</h1>
+
+<h3>Laboratorio di programmazione,<br>
+AA 2004/2005<br>
+Terzo appello<br>
+Compito A</h3>
+
+<h3>Descrizione</h3>
+
+<p>
+Si vogliono realizzare delle classi per rappresentare un
+semplice linguaggio di programmazione in cui esistono solo
+variabili, istruzioni di stampa, sequenze di istruzioni e
+condizionali. Un programma in questo linguaggio &egrave;
+composto da una istruzione. Ogni istruzione pu&ograve;
+per&ograve; essere composto da una singola istruzione di
+stampa, da una sequenza di altre istruzioni, oppure da un
+condizionale.
+</p>
+
+
+<h3>Parte I</h3>
+
+<p>
+Si realizzino le classi che rappresentano le variabili e le
+istruzioni. Si noti che viene richiesta una sola classe per
+la variabili, mentre deve esistere una classe per
+l'istruzione genererica e tre per le istruzioni specifiche.
+</p>
+
+<dl>
+
+<dt>variabile
+<dd>un oggetto variabile &egrave; caratterizzato da una
+stringa (il nome della variabile)
+
+<dt>istruzione
+<dd>una istruzione pu&ograve; essere esclusivamente di uno
+dei seguenti tre tipi:
+
+<dl>
+
+<dt>istruzioneStampa
+<dd>una istruzione di stampa &egrave; caratterizzata da una
+stringa, che &egrave; la stringa che viene stampata quando
+si "esegue" una istruzione (vedi sotto);
+
+<dt>istruzioneSequenza
+<dd>una istruzioneSequenza &egrave; una sequenza di altre
+istruzioni
+
+<dt>istruzioneIf
+<dd>questa istruzione &egrave; composta da una variabile a
+da due istruzioni
+
+</dl>
+
+</dl>
+
+<p>
+Oggetti di queste classi <i>rappresentano</i>
+sintatticamente dei programmi scritti in un linguaggio di
+programmazione in cui esistono solo variabili, istruzioni di
+stampa, sequenze di istruzioni e condizionali. La stampa di
+un tale programma si pu&ograve; effettuare a partire da
+questi oggetti in questo modo:
+</p>
+
+<table border=1>
+
+<tr><th>Oggetto</th><th>Cosa stampare</th></tr>
+
+<tr>
+<td>variabile</td>
+<td>si stampa la stringa che rappresenta il nome della variabile</td>
+</tr>
+
+<tr>
+<td>istruzione di stampa</td>
+<td>si stampa <tt>print(stringa)</tt>, dove la stringa
+&egrave; quella che si trova nell'oggetto che rappresenta
+l'istruzione
+</tr>
+
+<tr>
+<td>istruzione condizionale</td>
+<td>si stampa <tt>if(var,istr,istr)</tt> dove <tt>var</tt>
+&egrave; l'oggetto variabile e <tt>istr</tt> sono le due
+istruzioni che si trovano nell'oggetto
+</tr>
+
+<tr>
+<td>istruzione sequenza</td>
+<td>si stampa <tt>(istr,istr,...,istr)</tt>, ossia si
+stampa la sequenza delle istruzioni precedute e seguite da
+parentesi e intervallate da virgole
+</tr>
+
+</table>
+
+<p>
+Le classi devono essere incapsulate e avere i seguenti metodi:
+</p>
+
+<ul>
+
+<li>metodi che permettono la creazione degli oggetti
+
+<li>metodi che permettono di trovare i dati memorizzati nei
+vari oggetti 
+
+<li>metodo <tt>toString</tt> che ritorna la stringa come
+descritta nella tabella di sopra
+
+<li>metodo <tt>equals</tt> che effettua il confronto
+profondo
+
+<li>corrispondente metodo <tt>hashCode</tt>
+
+<li>metodo <tt>clone</tt> che effettua una clonazione
+profonda
+
+</ul>
+
+
+<h3>Parte II</h3>
+
+<p>
+Realizzare una classe <tt>ServiziProgrammi</tt> che contiene
+due metodi:
+</p>
+
+<dl>
+
+<dt><tt>stampa</tt>
+<dd>questo metodo ha come argomento una istruzione, e la
+stampa
+
+<dt><tt>esegui</tt>
+<dd>questo metodo ha come argomento una istruzione e un
+oggetto <tt>Map</tt> che rappresenta una valutazione
+booleana delle variabili; in altre parole, le chiavi di
+questo oggetto sono le variabili del programma e i valori
+sono oggetti <tt>Boolean</tt>; il valore boolean &egrave; il
+valore che viene dato alla variabile; eseguire il programma
+significa eseguire la sue istruzioni; in particolare, quando
+si esegue <tt>if(var,istr,istr)</tt> viene eseguita la prima
+istruzione se la variabile &egrave; vera e la seconda se
+&egrave; falsa
+
+</dl>
+
+</body>
+</html>
+
+

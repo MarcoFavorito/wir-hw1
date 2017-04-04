@@ -1,0 +1,270 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=windows-1252">
+<META NAME="Generator" CONTENT="Microsoft Word 97">
+<TITLE>RETI LOGICHE</TITLE>
+</HEAD>
+<BODY>
+<body bgcolor="#FFFFFF">
+
+<B><FONT FACE="Palatino"><P ALIGN="CENTER">RETI LOGICHE</P>
+<P ALIGN="CENTER">&nbsp;</P>
+<P ALIGN="CENTER">PRIMA PROVA SCRITTA DELL'APPELLO DI MAGGIO 91</P>
+<P ALIGN="CENTER">&#9;****************************************</P>
+<P ALIGN="JUSTIFY">&nbsp;</P>
+</B><P ALIGN="JUSTIFY">Progettare un sistema di acquisizione di dati analogici  con le seguenti caratteristiche:</P>
+<P ALIGN="JUSTIFY">&nbsp;</P>
+<P ALIGN="JUSTIFY">1) Il segnale analogico nel campo 0-10 volt va convertito in digitale con una risoluzione migliore di 4 mvolt;</P>
+<P ALIGN="JUSTIFY">&nbsp;</P>
+<P ALIGN="JUSTIFY">2) la conversione A/D avviene a blocchi di 1024 campioni con una frequenza di campionamento di  200kHz ed &egrave; avviata da un segnale impulsivo esterno START  <B><U>aperiodico</B></U>;</P>
+<P ALIGN="JUSTIFY">&nbsp;</P>
+<P ALIGN="JUSTIFY">3) i campioni acquisiti devono essere accumulati in una RAM statica di 2k word, con tempi di accesso in lettura e scrittura di 150 nsec, gestita come  memoria FIFO dal sistema di acquisizione, nell'ipotesi che essa non venga mai riempit
+
+
+
+
+a completamente;</P>
+<P ALIGN="JUSTIFY">&nbsp;</P>
+<P ALIGN="JUSTIFY">4) non appena la memoria FIFO &egrave; <B><U>non vuota </B></U> un microprocessore Z80 o 8086 avvia una routine di interruzione vettorizzata per caricare il blocco di 1024 campioni.</P>
+<P ALIGN="JUSTIFY">&nbsp;</P>
+<P ALIGN="JUSTIFY">Progettare l'architettura  e lo schema elettrico del sistema,  nonch&eacute; la temporizzazione degli accessi alla memoria FIFO in scrittura e lettura tenendo conto dei possibili conflitti (richiesta simultanea da parte del convertitore
+
+
+
+
+ e del microprocessore). Si sviluppi inoltre la routine di acquisizione da parte del microprocessore.</P>
+<P ALIGN="CENTER"> </P>
+ <P><P><HR SIZE=10><P><P><P><P>
+<B><P ALIGN="CENTER">RETI LOGICHE</P>
+<P ALIGN="CENTER">&nbsp;</P>
+<P ALIGN="CENTER">PRIMA PROVA SCRITTA DELL'APPELLO DEL 6-4-93</P>
+<P ALIGN="CENTER">****************************************</P>
+<P ALIGN="JUSTIFY">&nbsp;</P>
+<P ALIGN="JUSTIFY">Progettare un modulo di ALU per quattro bit, basata su look-ahead carry adder, che sia espandibile per dati multipli di quattro, e che sia in grado di eseguire le operazioni definite dalla seguente tabella </P>
+<P ALIGN="JUSTIFY">&nbsp;</P></B></FONT>
+<TABLE BORDER CELLSPACING=1 CELLPADDING=5 WIDTH=552>
+<TR><TD WIDTH="13%" VALIGN="TOP">
+<B><FONT FACE="Palatino"><P ALIGN="CENTER">000</B></FONT></TD>
+<TD WIDTH="13%" VALIGN="TOP">
+<B><FONT FACE="Palatino"><P ALIGN="CENTER">001</B></FONT></TD>
+<TD WIDTH="13%" VALIGN="TOP">
+<B><FONT FACE="Palatino"><P ALIGN="CENTER">010</B></FONT></TD>
+<TD WIDTH="13%" VALIGN="TOP">
+<B><FONT FACE="Palatino"><P ALIGN="CENTER">011</B></FONT></TD>
+<TD WIDTH="13%" VALIGN="TOP">
+<B><FONT FACE="Palatino"><P ALIGN="CENTER">100</B></FONT></TD>
+<TD WIDTH="13%" VALIGN="TOP">
+<B><FONT FACE="Palatino"><P ALIGN="CENTER">101</B></FONT></TD>
+<TD WIDTH="13%" VALIGN="TOP">
+<B><FONT FACE="Palatino"><P ALIGN="CENTER">110</B></FONT></TD>
+<TD WIDTH="13%" VALIGN="TOP">
+<B><FONT FACE="Palatino"><P ALIGN="CENTER">111</B></FONT></TD>
+</TR>
+<TR><TD WIDTH="13%" VALIGN="TOP">
+<B><FONT FACE="Palatino"><P ALIGN="CENTER">A+B</B></FONT></TD>
+<TD WIDTH="13%" VALIGN="TOP">
+<B><FONT FACE="Palatino"><P ALIGN="CENTER">A+B+c</B></FONT></TD>
+<TD WIDTH="13%" VALIGN="TOP">
+<B><FONT FACE="Palatino"><P ALIGN="CENTER">A-B</B></FONT></TD>
+<TD WIDTH="13%" VALIGN="TOP">
+<B><FONT FACE="Palatino"><P ALIGN="CENTER">-B</B></FONT></TD>
+<TD WIDTH="13%" VALIGN="TOP">
+<B><FONT FACE="Palatino"><P ALIGN="CENTER">AorB</B></FONT></TD>
+<TD WIDTH="13%" VALIGN="TOP">
+<B><FONT FACE="Palatino"><P ALIGN="CENTER">AandB</B></FONT></TD>
+<TD WIDTH="13%" VALIGN="TOP">
+<B><FONT FACE="Palatino"><P ALIGN="CENTER">AxorB</B></FONT></TD>
+<TD WIDTH="13%" VALIGN="TOP">
+<B><FONT FACE="Palatino"><P ALIGN="CENTER">notB</B></FONT></TD>
+</TR>
+</TABLE>
+
+<B><FONT FACE="Palatino"><P ALIGN="JUSTIFY">&nbsp;</P>
+<P ALIGN="JUSTIFY">Nota: i valori numerici da 000 a 111 sono definiti da tre variabili di controllo S1, S2, S3 che permettono  di specificare l'operazione richiesta.</P>
+<P ALIGN="JUSTIFY">A e B sono i due operandi, c il bit di riporto in ingresso al modulo, + e - sono i due operatori aritmetici; and, or, xor e not sono  i noti operatori booleani.</P>
+<P ALIGN="JUSTIFY">Definire chiaramente le scelte effettuate, le propriet&agrave; logico-aritmetiche usate, e lo schema logico del modulo.</P>
+</B><P ALIGN="CENTER">&nbsp;</P>
+
+
+
+
+
+<P ALIGN="CENTER">&nbsp;</P>
+<B><P ALIGN="CENTER">RETI LOGICHE</P>
+<P ALIGN="CENTER">&nbsp;</P>
+<P ALIGN="CENTER">PRIMA PROVA SCRITTA DELL'APPELLO DEL 8-6-92</P>
+<P ALIGN="CENTER">****************************************</P>
+</B><P ALIGN="JUSTIFY">&nbsp;</P>
+<P ALIGN="JUSTIFY">Ad un sistema basato su microprocessore 8086 &egrave; interfacciata una periferica che riceve informazioni da una linea seriale sincrona a 256 kbit/sec, costituita da una linea dati e una linea di clock.</P>
+<P ALIGN="JUSTIFY">Le informazioni sono organizzate in messaggi, costituiti da un numero variabile di byte. Ciascun messaggio ha la seguente struttura:</P>
+<P ALIGN="JUSTIFY">&nbsp;</P>
+<P ALIGN="JUSTIFY">a) un byte di sincronismo, avente sempre il valore AAh, che &#9;identifica l'inizio del messaggio;</P>
+<P ALIGN="JUSTIFY">b) un byte che indica il numero N (variabile da pacchetto a &#9;pacchetto ma miore di 256) di dati contenuti nel messaggio &#9;stesso;</P>
+<P ALIGN="JUSTIFY">c) N byte consecutivi di dati;</P>
+<P ALIGN="JUSTIFY">d) un byte di controllo (checksum), ottenuto dall'ex-or di tutti i &#9;byte precedenti (a),b),c)) che viene utilizzato dalla periferica &#9;per la rivelazione di errori di trasmissione.</P>
+<P ALIGN="JUSTIFY">Ogni messaggio &egrave; separato dal successivo da un numero variabile di bit uguali a zero; tale numero non &egrave; necessariamente un multiplo di 8, ma in ogni caso &egrave; maggiore di 8.</P>
+<P ALIGN="JUSTIFY">La periferica trasferisce in dma verso la memoria del microprocessore le sole informazioni b) e c), e la fine del trasferimento &egrave; segnalata mediante interrupt.</P>
+<P ALIGN="JUSTIFY">Si chiede:</P>
+<P ALIGN="JUSTIFY">&#9;1) la definizione dell'interfaccia tra periferica e CPU;</P>
+<P ALIGN="JUSTIFY">&#9;2) il progetto logico della periferica  e le temporizzazioni dei relativi &#9;circuiti.</P>
+<P ALIGN="CENTER">&nbsp;</P>
+ <P><P><HR SIZE=10><P><P><P><P>
+
+<B><P ALIGN="CENTER">RETI LOGICHE</P>
+<P ALIGN="CENTER">&nbsp;</P>
+<P ALIGN="CENTER">PRIMA PROVA SCRITTA DELL'APPELLO DI GENNAIO 92</P>
+<P ALIGN="CENTER">*************************************</P>
+</B><P>&nbsp;</P>
+<P ALIGN="JUSTIFY">Progettare un dispositivo di acquisizione dati per un microprocessore che operi nel seguente modo:</P>
+<P ALIGN="JUSTIFY">&#9;1) i dati di 8 bits, positivi e minori di uno, arrivano a pacchetti di 1 kbytes, con un data rate di 10 MHz e frequenza di pacchetto 2 kHz, ad uno stadio di ingresso dove viene effettuata l'operazione:</P>
+<P ALIGN="JUSTIFY">&nbsp;</P>
+<P ALIGN="JUSTIFY">&#9;&#9;y(kT) = &#8721;iaix[(k-i)T]    i=0,1,2,3</P>
+<P ALIGN="JUSTIFY">&nbsp;</P>
+<P ALIGN="JUSTIFY">dove le costanti ai , anch'esse positive e minori di uno, sono memorizzate in quattro registri di 8 bit modificabili dal processore. </P>
+<P ALIGN="JUSTIFY">&nbsp;</P>
+<P ALIGN="JUSTIFY">&#9;2) i valori y(kT) sono memorizzati in una memoria tampone di 1 kword dalla quale vengono scaricati in DMA sulla memoria del processore quando il tampone &egrave; pieno.</P>
+<P ALIGN="JUSTIFY">&nbsp;</P>
+<P ALIGN="JUSTIFY">Per il progetto si usino addizionatori e moltiplicatori paralleli i cui tempi di calcolo sono di 30  e 60 nsec; la memoria tampone ha un tempo di scrittura di 80 nsec, i registri e le porte hanno tempi di commutazione di 2 nsec.</P>
+<P ALIGN="JUSTIFY">&nbsp;</P>
+<P ALIGN="JUSTIFY">Calcolare il tempo massimo di ciclo della memoria del microprocessore affinch&eacute; sia rispettato il funzionamento sincrono specificato dal master clock.</P>
+<P ALIGN="CENTER">&nbsp;</P>
+ <P><P><HR SIZE=10><P><P><P><P>
+
+<B><P ALIGN="CENTER">RETI LOGICHE</P>
+<P ALIGN="CENTER">&nbsp;</P>
+<P ALIGN="CENTER">PRIMA PROVA SCRITTA DELL'APPELLO DEL 12-6-91</P>
+<P ALIGN="CENTER">*************************************</P>
+<P ALIGN="JUSTIFY">&nbsp;</P>
+</B><P ALIGN="JUSTIFY">&nbsp;</P>
+<P ALIGN="JUSTIFY">Progettare un sistema microprogrammato adibito alla acquisizione dati da due periferiche P1 e P2 tramite interruzione. Il sistema prevede due linee di interruzione INT1 e INT2  con priorit&agrave; decrescente.</P>
+<P ALIGN="JUSTIFY">Quando riceve INT1 il sistema entra in una microroutine che effettua le seguenti operazioni:</P>
+<P ALIGN="JUSTIFY">&nbsp;</P><DIR>
+
+<P ALIGN="JUSTIFY">1) Legge 16 dati da P1 accumulandoli in un registro interno R1,</P>
+<P ALIGN="JUSTIFY">2) Effettua la media M1 dei dati accumulati,</P>
+<P ALIGN="JUSTIFY">3) Confronta M1 col contenuto di un suo registro R2 e, se M1&gt; (R2),   carica M1 in un registro di uscita Ru.</P>
+<P ALIGN="JUSTIFY">&nbsp;</P></DIR>
+
+<P ALIGN="JUSTIFY">Per INT2 le operazioni da eseguire sono invece:</P>
+<P ALIGN="JUSTIFY">&nbsp;</P>
+<P ALIGN="JUSTIFY">1) Legge 32 dati da P2 accumulandoli in R3,</P>
+<P ALIGN="JUSTIFY">2) Effettua la media M2 dei dati accumulati,</P>
+<P ALIGN="JUSTIFY">3) Se il valore di M2 &egrave; maggiore di M1 carica M2 in R2.</P>
+<P ALIGN="JUSTIFY">&nbsp;</P>
+<P ALIGN="JUSTIFY">I dati provenienti dalle due periferiche sono a 8 bit in complemento a due.</P>
+<P ALIGN="JUSTIFY">Le due periferiche posseggono due segnali di uscita INT e DR (data ready); quest'ultimo viene automaticamente resettato ogni volta che il sistema legge il dato.</P>
+<P ALIGN="JUSTIFY">&nbsp;</P>
+<P ALIGN="JUSTIFY">Definire lo schema a blocchi del sistema con i segnali di interfacciamento verso P1 e P2, la struttura interna della SCA e della SCO che devono essere Moore-Moore, e il microprogramma completo.</P>
+<P ALIGN="CENTER">&nbsp;</P>
+ <P><P><HR SIZE=10><P><P><P><P>
+
+ <P><P><HR SIZE=10><P><P><P><P> 
+<B><P ALIGN="CENTER">RETI LOGICHE</P> <P
+ALIGN="CENTER">&nbsp;</P> <P ALIGN="CENTER">PRIMA PROVA SCRITTA
+DELL'APPELLO DEL 21-9-92</P> <P
+ALIGN="CENTER">*************************************</P> </B><P
+ALIGN="JUSTIFY">Un microprocessore 8086 deve comandare una macchina
+utensile costituitta da un trapano a colonna e da una slitta di lavoro su
+cui viene posizionato un pezzo da forare. La slitta di lavoro pu&ograve;
+spostarsi lungo due assi X-Y in m
+
+
+
+
+odo da presentare sulla perpendicolare della testa del trapano il punto da
+forare; la testa del trapano, a sua volta, &egrave; in grado di ruotare
+lungo un asse orizzontale per cambiare la punta foratrice (si supponga che
+siano possibili quattro punte div
+
+
+
+
+erse). Un programma memorizzato nel microprocessore dovr&agrave; dare i
+comandi alla macchina utensile per eseguire sul pezzo una serie di fori di
+diametro diverso e in posizioni prestabilite. Le informazioni che riceve
+la macchina sono:</P> <P ALIGN="JUSTIFY">&#9;</P> <P ALIGN="JUSTIFY">&#9;-
+posizione del foro</P> <P ALIGN="JUSTIFY">&#9;- diametro del foro</P> <P
+ALIGN="JUSTIFY">&nbsp;</P> <P ALIGN="JUSTIFY">Un sensore posto sulla
+macchina utensile indica con un segnale 0/1 quando la punta del trapano ha
+trapassato il pezzo da forare.</P> <P ALIGN="JUSTIFY">La precisione di
+posizionamento del foro deve essere migliore di 0,02 mm. su una escursione
+massima di 300 mm. Si supponga che i motori di azionamento siano
+passo-passo e che un impulso di comando corrisponda ad uno spostamento di
+0,01
+
+
+
+
+mm in un senso o in senso opposto a seconda di un segnale di controllo che
+indichi il senso di rotazione.</P> <P ALIGN="JUSTIFY">Al termine del
+programma di foratura il microprocessore manda un comando per riportare la
+slitta in posizione di riposo.</P> <P ALIGN="JUSTIFY">Si richiede:</P> <P
+ALIGN="JUSTIFY">1) interfaccia tra microprocessore e macchina utensile</P>
+<P ALIGN="JUSTIFY">&nbsp;</P> <P ALIGN="JUSTIFY">2) la logica di comando
+dei motori passo-passo</P> <P ALIGN="JUSTIFY">&nbsp;</P> <P
+ALIGN="JUSTIFY">3) la struttura del programma di controllo.</P> <P
+ALIGN="CENTER">&nbsp;</P> 
+
+ <P><P><HR SIZE=10><P><P><P><P>
+
+
+<B><P ALIGN="CENTER">RETI LOGICHE</P> <P ALIGN="CENTER">&nbsp;</P> <P
+ALIGN="CENTER">PRIMA PROVA SCRITTA DELL'APPELLO DEL 26-11-92</P>
+<P>&nbsp;</P> <P
+ALIGN="CENTER">****************************************</P>
+</B><P>&nbsp;</P> <P ALIGN="JUSTIFY">Un sistema a microprocessore &egrave;
+fornito di quattro canali di uscita, chiamati E, O, N e S, gestiti da
+quattro DMA controller. Ogni canale &egrave; in grado di trasmettere i
+byte letti dalla memoria del microprocessore alla veloci
+
+
+
+
+t&agrave; di 1 Mbyte/sec. Il microprocessore prepara i messaggi da spedire
+sulle quattro direzioni in quattro buffer di memoria di indirizzo fisso
+noto ai rispettivi DMAC, ed ogni messaggio &egrave; strutturato nel modo
+seguente:</P> <P ALIGN="JUSTIFY">&nbsp;</P> <P
+ALIGN="CENTER">&lt;flag&gt;&lt;lunghezza&gt;&lt;corpo del messaggio&gt;
+</P> <P ALIGN="CENTER">&nbsp;</P> <P ALIGN="JUSTIFY">Il flag &egrave; un
+byte posto ad FF per indicare che si tratta di un nuovo messaggio ed il
+DMAC corrispondente lo porr&agrave; a 00 per segnalare che il messaggio
+&egrave; stato letto. I DMAC non vengono preavvertiti quando &egrave; di
+
+
+
+
+sponibile un nuovo messaggio da trasmettere, per&ograve; &egrave; noto che
+l'aggiornamento dei buffer da parte del processore avviene con un data
+rate non inferiore a 1 msec.  Specificare la velocit&agrave; della memoria
+e della logica di controllo dei DM
+
+
+
+
+A affinch&eacute; i quattro DMAC possano lavorare alla massima
+velocit&agrave; (1Mbyte/sec) senza rallentare il funzionamento del
+microprocessore pi&ugrave; del 50%.</P> <P ALIGN="JUSTIFY">Risolvere la
+competizione tra i quattro DMAC mediante un grant circolare nel modo
+seguente: con cadenza 1 msec un timer attiva il primo DMAC che legge il
+flag che gli compete e successivamente passa il turno al successivo e
+cos&igrave; 
+
+
+
+
+via.; l'ultimo DMAC rimanda il grant al primo che lo utilizzer&agrave; per
+l'eventuale svuotamento del buffer e cos&igrave; via. </P>
+
+
+<P ALIGN="JUSTIFY">&nbsp;</P>
+<P ALIGN="JUSTIFY">Si richiede:</P>
+<P ALIGN="JUSTIFY">1) Lo schema a blocchi del sistema</P>
+<P ALIGN="JUSTIFY">2) Il progetto del generico DMAC</P>
+<P ALIGN="JUSTIFY">3) La logica di accesso alla memoria con la disciplina circolare</P>
+<P ALIGN="CENTER">&nbsp;</P>
+ <P><P><HR SIZE=10><P><P><P><P>
+
+
+
+
+</HTML>

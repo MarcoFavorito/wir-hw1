@@ -1,0 +1,2016 @@
+<!doctype html public "-//w3c//dtd html 4.0 transitional//en">
+<html>
+<head>
+<link href="java.css" rel="stylesheet" type="text/css">
+<title>Java</title>
+</head>
+
+<body>
+
+
+<h1>Procedure e funzioni</h1>
+
+
+
+<h2>Istruzioni che si ripetono</h2>
+
+Funzioni e procedure consentono di scrivere una sola volta
+delle istruzioni che normalmente andrebbero ripetute pi&ugrave;
+volte nel programma. Un esempio &egrave; la valutazione della
+funzione di cui si vuole trovare un intervallo con uno zero
+nel programma <a href="Nullo.java">Nullo.java</a>. Nel programma
+ci sono ben cinque istruzioni che calcolano la stessa
+identica funzione <i>x<sup>2</sup>-5x-2</i>. Sarebbe comodo
+poter scrivere questa funzione una volta sola all'inizio del
+programma: a parte la semplificazione del lavoro di scrittura,
+questo riduce la probabilit&agrave; di commettere errori nella
+scrittura della funzione, e permette di modificare pi&ugrave;
+facilmente il programma se si vuole analizzare una funzione
+diversa.<p>
+
+Usare funzioni sul programma di ricerca degli zeri &egrave;
+piuttosto complicato da spiegare, dal momento che si utilizzano
+gi&agrave; tutte le caratteristiche delle funzioni. Per questa
+ragione, cominciamo con esemp&icirc; pi&ugrave; facili, e rimandiamo
+la modifica di <a href="Nullo.java">Nullo.java</a> a un momento
+successivo.<p>
+
+Supponiamo di voler modificare il programma
+<a href="Espressioni.java">Espressioni.java</a> in modo che i
+risultati delle espressioni siano separati fra di loro da una
+linea composta di asterischi, preceduta e seguita da linee vuote.
+In altre parole, vogliamo una cosa del tipo:<p>
+
+<pre>
+Risultato della prima espressione: 1.8371900826446281
+
+***********************************************************
+
+Risultato della seconda espressione: 34.460000000000001
+
+***********************************************************
+
+Risultato della terza espressione: 0.01484119916889285
+
+***********************************************************
+
+Risultato della quarta espressione: 7.0408025110778389
+</pre>
+
+Per stampare una linea vuota basta dare un comando del tipo
+<tt>System.out.println(" ")</tt>, che corrisponde a stampare
+una linea in cui c'&egrave; solo uno spazio (la linea appare
+quindi vuota). Con questo trucco, &egrave; possibile
+scrivere il programma
+<a href="EspressioniSeparate.java">EspressioniSeparate.java</a>
+che risolve il problema.<p>
+
+<pre>
+/*
+  Alcuni esempi di espressioni
+*/
+
+class EspressioniSeparate {
+  public static void main(String[] args) {
+    double a=12.23,b=0.1e+2,c;
+
+    c=(a+b)/12.1;
+    System.out.println("Risultato della prima espressione: "+c);
+
+    System.out.println(" ");
+    System.out.println("***********************************************************");
+    System.out.println(" ");
+
+    c=a*2+b;
+    System.out.println("Risultato della seconda espressione: "+c);
+
+    System.out.println(" ");
+    System.out.println("***********************************************************");
+    System.out.println(" ");
+
+    c=1/(a-1)/(b-4);
+    System.out.println("Risultato della terza espressione: "+c);
+
+    System.out.println(" ");
+    System.out.println("***********************************************************");
+    System.out.println(" ");
+
+    c=Math.sqrt(a*a - b*b);
+    System.out.println("Risultato della quarta espressione: "+c);
+  }
+}
+
+</pre>
+
+<p>
+Il programma funziona perfettamente. D'altra parte, &egrave;
+stato necessario riscrivere tre volte la stessa sequenza di
+istruzioni:<p>
+
+<pre>
+    System.out.println(" ");
+    System.out.println("***********************************************************");
+    System.out.println(" ");
+</pre>
+
+Sarebbe comodo poter evitare di ripetere la scrittura di queste
+tre istruzioni ogni volta. Le procedure servono a questo: scrivere
+una sequenza di istruzioni una volta sola, anche se poi vanno
+ripetute pi&ugrave; volte nel programma.
+In particolare, una procedura &egrave; un nome che viene
+assegnato a una sequenza di istruzioni. In questo modo, quando
+nel programma &egrave; necessario eseguire quelle istruzioni,
+si pu&ograve; utilizzare il nome invece di scrivere le istruzioni
+per esteso.<p>
+
+Per fare questo &egrave; necessario:<p>
+
+<ol>
+
+<li>dare un nome a una sequenza di istruzioni;
+
+<li>scrivere il nome al posto della sequenza nei punti del
+programma in cui vanno eseguite le istruzioni.
+
+</ol>
+
+Il passo 1, chi&egrave; la definizione di un nome a una sequenza
+di istruzioni, si chiama <i>dichiarazione di procedura</i>.
+Il formato &egrave; il seguente:<p>
+
+<pre>
+static void nome() {
+  istruzione1;
+  istruzione2;
+  ...
+}
+</pre>
+
+Le istruzioni fra parentesi graffe sono quelle che si vuole ripetere
+pi&ugrave; volte all'interno del programma. A questa sequenza viene
+assegnato il nome dato. Il nome serve a permettere di
+<i>richiamare</i> queste istruzioni: in altre parole, si usa ogni
+volta che &egrave; necessario eseguire la sequenza di istruzioni.<p>
+
+Le procedure vanno messa prima della line
+<tt>public stati void main...</tt>. Ogni volta che si vogliono
+eseguire le istruzioni che si trovano in una certa procedura, si
+scrive <tt>nome();</tt>. Scrivere il nome (che equivale a eseguire
+le istruzioni associate al nome) si dice
+<i>chiamata di procedura</i>.<p>
+
+Il programma che stampa il risultato di espressioni si pu&ograve;
+quindi riscrivere come segue:
+<a href="EspressioniSeparateProc.java">EspressioniSeparateProc.java</a>
+
+<pre>
+/*
+  Alcuni esempi di espressioni
+*/
+
+class EspressioniSeparateProc {
+  static void separa() {
+    System.out.println(" ");
+    System.out.println("***********************************************************");
+    System.out.println(" ");
+  }
+
+  public static void main(String[] args) {
+    double a=12.23,b=0.1e+2,c;
+
+    c=(a+b)/12.1;
+    System.out.println("Risultato della prima espressione: "+c);
+
+    separa();
+
+    c=a*2+b;
+    System.out.println("Risultato della seconda espressione: "+c);
+
+    separa();
+
+    c=1/(a-1)/(b-4);
+    System.out.println("Risultato della terza espressione: "+c);
+
+    separa();
+
+    c=Math.sqrt(a*a - b*b);
+    System.out.println("Risultato della quarta espressione: "+c);
+  }
+}
+
+</pre>
+
+Spiegazione riassuntiva: occorre ripetere una sequenza di tre
+istruzioni diverse volte nel codice; &egrave; quindi vantaggioso
+usare una procedura in cui si scrivono queste istruzioni una volta
+sola. La prima cosa da fare &egrave; scrivere la procedura stessa,
+ossia si scrive <tt>static void separa()</tt>, in cui ``separa''
+&egrave; il nome che si &egrave; scelto per la procedura, seguito
+dalle tre istruzioni racchiuse da
+parentesi graffe. A questo punto esiste una procedura che si 
+chiama <tt>separa()</tt>. Ogni volta che nel resto del programma
+appare la istruzione <tt>separa()</tt>, questo &egrave; equivalente
+ad eseguire le istruzioni che sono state messe nella procedura.<p>
+
+</body>
+
+
+
+
+<h2>Variabili e procedure</h2>
+
+A prima vista, pu&ograve; sembrare che le procedure siano
+semplicemente un modo per raccogliere insieme una sequenza
+di istruzioni, in modo da avere un nome per questa sequenza.
+Le cose non stanno esattamente cos&iacute;. La principale
+differenza &egrave; che all'interno di una procedura non
+si possono usare le variabili che sono dichiarate all'interno
+del programma principale. In altre parole, il seguente
+programma non viene compilato:<p>
+
+<pre>
+class Zero {
+  static annulla() {
+    a=0;
+  }
+
+  public static void main(String[] args) {
+    int a;
+
+    anulla();
+    System.out.println(a);
+  }
+}
+</pre>
+
+A prima vista, potrebbe sembrare che scrivere <tt>a=0</tt>
+nel programma oppure <tt>annulla()</tt> sia esattamente la
+stessa cosa. Il problema &egrave; che le variabili del
+programma non possono venire usate in nessun modo nelle
+istruzioni all'interno della procedura.<p>
+
+D'altra parte, &egrave; possibile dichiarare ed usare delle
+variabili all'interno della procedura. Queste variabili non
+saranno per&ograve; visibili al programma principale, ossia
+non potranno venire usate dalle istruzioni del programma
+principale. Queste variabili sono dette
+<b>variabili locali della procedura</b>.<p>
+
+Supponiamo per esempio di voler realizzare una procedura che
+stampa venti linee bianche. Possiamo ripetere la stampa di 
+una linea bianca per venti volte, usando un ciclo for. Per
+poter usare il ciclo for occorre una variabile di tipo intero
+che vada da 1 a 20. Non possiamo dichiarare questa variabile
+nel programma principale (cio&egrave; dopo il
+<tt>public static void main...</tt>) perch&eacute; in questo
+modo la procedura non potrebbe usarla. &Egrave; quindi necessario
+dichiarare questa variabile all'interno della procedura, nel
+modo seguente:<p>
+
+<pre>
+class LineeBianche {
+  static void diecilinee() {
+    int i;
+
+    for(i=1; i<=20; i=i+1) {
+      System.out.println(" ");
+    }
+  }
+
+  public static void main(String[] args) {
+    ....
+
+    diecilinee();
+
+    ...
+
+  }
+}
+</pre>
+
+&Egrave; possibile avere pi&ugrave; procedure, oltre
+al programma principale. In oguna di queste procedure
+si possono definire delle variabili. La regola in questo
+caso &egrave;<p>
+
+<blockquote>
+<i>
+le variabili definite all'interno di una procedura
+si possono usare solo dentro la procedura stessa
+</i>
+</blockquote>
+
+Prendiamo in considerazione il seguente programma
+<a href="StessoNome.java">StessoNome.java</a>:<p>
+
+<pre>
+/*
+  Due variabili con lo stesso nome: una nella procedura
+  e una nel programma.
+*/
+
+class StessoNome {
+  static void esempio() {
+    int a;
+
+    a=12;
+  }
+
+  public static void main(String[] args) {
+    int a;
+
+    a=90;
+
+    esempio();
+
+    System.out.println(a);
+  }
+}
+
+</pre>
+
+Si analizzi il programma e si provi a capire che cosa
+viene stampato. A prima vista pu&ograve; sembrare che
+si stampa il valore 12: infatti, la variabile <tt>a</tt>
+viene assegnata a 90, poi si chiama la procedura che
+ci mette il valore 12, e poi si stampa il contenuto.
+In realt&agrave;, il programma stampa il numero 90.<p>
+
+Per capire il perch&egrave;, occorre capire come viene
+organizzata la memoria. La situazione che si viene a
+creare nella memoria &egrave; la seguente:<p>
+
+<table>
+
+<tr>
+<td><tt>esempio</tt></td>
+<td>
+<table border=1>
+<tr><td>
+<table>
+<tr>
+<td><tt>a</tt></td>
+<td><table border=1><tr><td><tt>&nbsp;&nbsp;&nbsp;&nbsp;</tt></td></tr></table></td>
+</tr>
+<tr><td>&nbsp;</td><td>&nbsp;</td><td><tt>&nbsp;&nbsp;&nbsp;&nbsp;</tt></td></tr>
+<tr><td>&nbsp;</td></tr>
+</table>
+</tr></td>
+</table>
+</td>
+</tr>
+<tr><td>&nbsp;</td></tr>
+<tr>
+<td><tt>main</tt></td>
+<td>
+<table border=1><tr><td>
+<table>
+<tr>
+<td><tt>a</tt></td>
+<td><table border=1><tr><td><tt>&nbsp;&nbsp;&nbsp;&nbsp;</tt></td></tr></table></td>
+</tr>
+<tr><td>&nbsp;</td><td>&nbsp;</td><td><tt>&nbsp;&nbsp;&nbsp;&nbsp;</tt></td></tr>
+<tr><td>&nbsp;</td></tr>
+</table>
+</tr></td></table>
+</td>
+</tr>
+</table>
+
+
+<p>
+
+A parole: la procedura <tt>esempio</tt> ha una sua zona
+di memoria, che &egrave; un contenitore in cui vengono
+messe le variabili locali alla procedura. La variabile
+<tt>a</tt> dichiarata all'intero di <tt>esempio</tt>
+&egrave; una casella all'interno di questo contenitore.<p>
+
+D'altra parte, il programma principale (<tt>main</tt>)
+ha una sua zona di memoria, che &egrave; il contenitore
+in cui vengono create le sue variabili Quindi, la variabile
+<tt>a</tt> dichiarata all'interno di <tt>main</tt> 
+&egrave; una casella all'interno di questa zona.<p>
+
+&Egrave; quindi chiaro che la due variabili, anche se
+hanno lo stesso nome, corrispondono a due zone di memoria
+diverse. &Egrave; quindi possibile che il contenuto sia
+diverso; pi&ugrave; precisamente, mettendo un valore in
+una delle due variabili, l'altra rimane inalterata.<p>
+
+Vediamo ora come viene creata questa situazione, ossia
+eseguiamo il programma passo per passo. Inizialmente,
+la memoria &egrave; vuota.<p>
+
+<table>
+
+<tr>
+<td><tt>esempio</tt></td>
+<td>
+<table border=1>
+<tr><td>
+<table>
+<tr>
+<td><tt>&nbsp;</tt></td>
+<td><table border=0><tr><td><tt>&nbsp;&nbsp;&nbsp;&nbsp;</tt></td></tr></table></td>
+</tr>
+<tr><td>&nbsp;</td><td>&nbsp;</td><td><tt>&nbsp;&nbsp;&nbsp;&nbsp;</tt></td></tr>
+<tr><td>&nbsp;</td></tr>
+</table>
+</tr></td>
+</table>
+</td>
+</tr>
+<tr><td>&nbsp;</td></tr>
+<tr>
+<td><tt>main</tt></td>
+<td>
+<table border=1><tr><td>
+<table>
+<tr>
+<td><tt>&nbsp;</tt></td>
+<td><table border=0><tr><td><tt>&nbsp;&nbsp;&nbsp;&nbsp;</tt></td></tr></table></td>
+</tr>
+<tr><td>&nbsp;</td><td>&nbsp;</td><td><tt>&nbsp;&nbsp;&nbsp;&nbsp;</tt></td></tr>
+<tr><td>&nbsp;</td></tr>
+</table>
+</tr></td></table>
+</td>
+</tr>
+</table>
+
+
+<p>
+
+Per prima cosa viene creata la variabile <tt>a</tt> del
+programma:<p>
+
+<table>
+
+<tr>
+<td><tt>esempio</tt></td>
+<td>
+<table border=1>
+<tr><td>
+<table>
+<tr>
+<td><tt>&nbsp;</tt></td>
+<td><table border=0><tr><td><tt>&nbsp;&nbsp;&nbsp;&nbsp;</tt></td></tr></table></td>
+</tr>
+<tr><td>&nbsp;</td><td>&nbsp;</td><td><tt>&nbsp;&nbsp;&nbsp;&nbsp;</tt></td></tr>
+<tr><td>&nbsp;</td></tr>
+</table>
+</tr></td>
+</table>
+</td>
+</tr>
+<tr><td>&nbsp;</td></tr>
+<tr>
+<td><tt>main</tt></td>
+<td>
+<table border=1><tr><td>
+<table>
+<tr>
+<td><tt>a</tt></td>
+<td><table border=1><tr><td><tt>&nbsp;&nbsp;&nbsp;&nbsp;</tt></td></tr></table></td>
+</tr>
+<tr><td>&nbsp;</td><td>&nbsp;</td><td><tt>&nbsp;&nbsp;&nbsp;&nbsp;</tt></td></tr>
+<tr><td>&nbsp;</td></tr>
+</table>
+</tr></td></table>
+</td>
+</tr>
+</table>
+
+
+<p>
+
+In questa variabile viene messo il valore 90:<p>
+
+<table>
+
+<tr>
+<td><tt>esempio</tt></td>
+<td>
+<table border=1>
+<tr><td>
+<table>
+<tr>
+<td><tt>&nbsp;</tt></td>
+<td><table border=0><tr><td><tt>&nbsp;&nbsp;&nbsp;&nbsp;</tt></td></tr></table></td>
+</tr>
+<tr><td>&nbsp;</td><td>&nbsp;</td><td><tt>&nbsp;&nbsp;&nbsp;&nbsp;</tt></td></tr>
+<tr><td>&nbsp;</td></tr>
+</table>
+</tr></td>
+</table>
+</td>
+</tr>
+<tr><td>&nbsp;</td></tr>
+<tr>
+<td><tt>main</tt></td>
+<td>
+<table border=1><tr><td>
+<table>
+<tr>
+<td><tt>a</tt></td>
+<td><table border=1><tr><td><tt>&nbsp;&nbsp;90</tt></td></tr></table></td>
+</tr>
+<tr><td>&nbsp;</td><td>&nbsp;</td><td><tt>&nbsp;&nbsp;&nbsp;&nbsp;</tt></td></tr>
+<tr><td>&nbsp;</td></tr>
+</table>
+</tr></td></table>
+</td>
+</tr>
+</table>
+
+
+<p>
+
+A questo punto si chiama la procedura <tt>esempio</tt>.
+Questa procedura crea una sua variabile locale (nel suo
+contenitore/zona di memoria) che ha ancora nome <tt>a</tt>.
+Quindi la situazione che si ha a questo punto &egrave;
+la seguente:<p>
+
+<table>
+
+<tr>
+<td><tt>esempio</tt></td>
+<td>
+<table border=1>
+<tr><td>
+<table>
+<tr>
+<td><tt>a</tt></td>
+<td><table border=1><tr><td><tt>&nbsp;&nbsp;&nbsp;&nbsp;</tt></td></tr></table></td>
+</tr>
+<tr><td>&nbsp;</td><td>&nbsp;</td><td><tt>&nbsp;&nbsp;&nbsp;&nbsp;</tt></td></tr>
+<tr><td>&nbsp;</td></tr>
+</table>
+</tr></td>
+</table>
+</td>
+</tr>
+<tr><td>&nbsp;</td></tr>
+<tr>
+<td><tt>main</tt></td>
+<td>
+<table border=1><tr><td>
+<table>
+<tr>
+<td><tt>a</tt></td>
+<td><table border=1><tr><td><tt>&nbsp;&nbsp;90</tt></td></tr></table></td>
+</tr>
+<tr><td>&nbsp;</td><td>&nbsp;</td><td><tt>&nbsp;&nbsp;&nbsp;&nbsp;</tt></td></tr>
+<tr><td>&nbsp;</td></tr>
+</table>
+</tr></td></table>
+</td>
+</tr>
+</table>
+
+
+<p>
+
+La procedura <tt>esempio</tt> contiene una istruzione
+<tt>a=12</tt>. Questo significa: metti il valore 12 nella
+variabile <tt>a</tt>. Abbiamo per&ograve; due variabili
+<tt>a</tt> in questo momento. Dal momento che questa
+istruzione si trova nella procedura <tt>esempio</tt>, la
+variabile <tt>a</tt> &egrave; quella della zona di
+memoria di memoria di <tt>esempio</tt>, che nel grafico
+&egrave; il contenitore di sopra. Quindi <tt>a=12</tt> mette
+il valore 12 nella variabile <tt>a</tt> locale della
+procedura <tt>esempio</tt>:<p>
+
+<table>
+
+<tr>
+<td><tt>esempio</tt></td>
+<td>
+<table border=1>
+<tr><td>
+<table>
+<tr>
+<td><tt>a</tt></td>
+<td><table border=1><tr><td><tt>&nbsp;&nbsp;12</tt></td></tr></table></td>
+</tr>
+<tr><td>&nbsp;</td><td>&nbsp;</td><td><tt>&nbsp;&nbsp;&nbsp;&nbsp;</tt></td></tr>
+<tr><td>&nbsp;</td></tr>
+</table>
+</tr></td>
+</table>
+</td>
+</tr>
+<tr><td>&nbsp;</td></tr>
+<tr>
+<td><tt>main</tt></td>
+<td>
+<table border=1><tr><td>
+<table>
+<tr>
+<td><tt>a</tt></td>
+<td><table border=1><tr><td><tt>&nbsp;&nbsp;90</tt></td></tr></table></td>
+</tr>
+<tr><td>&nbsp;</td><td>&nbsp;</td><td><tt>&nbsp;&nbsp;&nbsp;&nbsp;</tt></td></tr>
+<tr><td>&nbsp;</td></tr>
+</table>
+</tr></td></table>
+</td>
+</tr>
+</table>
+
+
+<p>
+
+A questo punto la procedura termina e si ritorna ad eseguire
+il programma principale dal punto in cui lo si era lasciato.
+In questo caso, l'istruzione subito dopo la chiamata di
+procedura &egrave; <tt>System.out.println(a)</tt>, che
+stampa il valore della variabile <tt>a</tt>. Anche in questo
+caso abbiamo il dubbio di quale sia la variabile <tt>a</tt>,
+se quella del programma o quella della procedura 
+<tt>esempio</tt>. Dal momento che la istruzione di stampa si
+trova all'interno del programma, la variabile da usare &egrave;
+quella del programma, ossia quella che attualmente contiene
+il valore 90. Il risultato dell'esecuzione di questo programma
+&egrave; quindi la stampa del numero 90.<p>
+
+
+
+</body>
+
+
+
+
+<h2>Procedure con argomenti</h2>
+
+Le procedure viste nelle pagine precedenti erano semplicemente
+un modo per scrivere una volta sola una sequenza di istruzioni
+che andava eseguita in pi&ugrave; punti del programma. In pi&ugrave;
+esisteva la limitazione che le variabili del programma non
+potevano venire usate dalla procedura. Ci sono dei casi in cui
+questa limitazione &egrave; un problema. Si pensi al caso in
+cui, in pi&ugrave; punti del programma, occorre stampare un
+certo numero di linee bianche. Il caso in cui occorre stampare
+sempre lo stesso numero di linee (per esempio, 20) &egrave;
+stato gi&agrave; analizzato nella pagina sulle
+<a href="variabiliprocedura.shtml">variabili e procedure</a>.
+Consideriamo ora il caso in cui in un certo punto del programma
+occorre stampare 10 linee bianche, in un altro 20, in un altro
+2, ecc. Chiaramente il programma gi&agrave; visto non va bene,
+dal momento che la procedura <tt>lineebianche()</tt> stampa sempre
+lo stesso numero di linee bianche (20).<p>
+
+Se le variabili del programma principali fossero visibili
+(=utilizzabili) nella procedura, sarebbe facile: la
+procedura dovrebbe effettuare un ciclo partendo da 1 fino
+al valore di una certa variabile che rappresenta il numero di
+linee da stampare. In altre parole si potrebbe (ma non si
+pu&ograve;) fare cos&iacute;:
+
+<pre>
+class Linee {
+  static void lineebianche() {		/* NON FUNZIONA */
+    int i;
+
+    for(i=1; i<=lineedalasciare; i=i+1) {
+      System.out.println(" ");
+    }
+  }
+
+  public static void main(String[] args) {
+    int lineedalasciare;
+
+    /* stampa 10 linee */
+    lineedalasciare=10;
+    lineebianche();
+
+    ...
+
+    /* stampa 20 linee */
+    lineedalasciare=20;
+    lineebianche();
+  }
+}
+</pre>
+
+<p>
+Questo funzionerebbe se la procedura potesse utilizzare le
+variabili del programma. Sfortunatamente questo non &egrave;
+possibile. Esiste per&ograve; un meccanismo che consente ad
+una procedura di ricevere dei dati dal programma. Usando questo
+metodo, il programma pu&ograve; ``comunicare'' alla procedura
+il numero di linee bianche che vanno lasciate. Questo meccanismo
+si chiama <b>passaggio dei parametri</b>.
+
+<p>
+Si pu&ograve; pensare al passaggio dei parametri come a un
+tipo di ``trasmissione'', in cui il programma trasmette dei
+dati alla procedura (nell'esempio quante linee bianche stampare);
+la procedura riceve questi dati e li pu&ograve; usare.
+
+<p>
+Per poter effettuare questa trasmissione, &egrave; necessario
+che la procedura sia definita in modo tale da poter ricevere
+questi parametri. La definizione della procedura viene modificata
+in questo modo: dopo il nome, viene aggiunta la lista dei dati
+che la procedura pu&ograve; ricevere:<p>
+
+<pre>
+static void nome(lista dei parametri)
+</pre>
+
+I parametri sono appunto i dati che il programma trasmette alla
+procedura. La lista dei parametri deve contenere il tipo di
+questi dati. In altre parole, per ogni dato che la procedura
+pu&ograve; ricevere occorre specificare quale &egrave; il suo
+tipo, se <tt>int</tt>, <tt>double</tt>, ecc. Oltre al tipo,
+per ogni parametro &egrave; necessario utilizzare un nome, in
+modo tale che la procedura possa poi utilizzare il dato
+ricevuto come se fosse una qualsiasi variabile.<p>
+
+
+
+Queste cose sono pi&ugrave; facili da far vedere su un esempio
+che da spiegare. Nel caso della procedura che stampa un certo
+numero di linee bianche, il programma trasmette un unico dato,
+che &egrave; il numero di linee da stampare. Logicamente, la
+procedura riceve solo questo dato, quindi nella lista dei
+parametri c'&egrave; un unico parametro, che &egrave; di tipo
+intero. La definizione della procedura viene quindi modificata
+come segue:<p>
+
+<pre>
+  static void lineebianche(int ...) {
+    int i;
+
+    for(i=1; i<=lineedalasciare; i=i+1) {
+      System.out.println(" ");
+    }
+  }
+</pre>
+
+A questo punto, occorre un modo per far s&igrave; cha la procedura
+possa usare questo numero. Si ricordi che la procedura &egrave;
+una unit&agrave; indipendente dal programma, quindi non ``sa''
+come &egrave; fatto il programma che la usa. Il meccanismo che si
+usa &egrave; quello di associare una variabile al dato che &egrave;
+stato passato. In altre parole, si specifica che il dato che il
+programma ha passato va messo in una variabile di cui diamo noi
+il nome. In questo modo, la procedura pu&ograve; accedere al dato
+che &egrave; stato trasmesso dal programma semplicemente usando la
+variabile. La definizione della procedura, oltre al tipo di ogni
+dato che viene passato, specifica un nome di variabile, che
+&egrave; il posto dove il dato ricevuto viene memorizzato.<p>
+
+<pre>
+  static void lineebianche(int l) {
+    int i;
+
+    for(i=1; i<=l; i=i+1) {
+      System.out.println(" ");
+    }
+  }
+</pre>
+
+Nelle istruzioni che compongono la procedura, <tt>l</tt> si
+comporta esattamente come una qualsiasi variabile. Il punto
+importante &egrave; che all'inizio in questa variabile viene
+memorizzato il dato che il programma ha trasmesso.<p>
+
+Manca ora da specificare in che modo <b>il programma trasmette
+i parametri</b> alle procedure. Nel caso di procedure senza
+parametri, per indicare che si voleva la esecuzione di una
+procedura, si usava la istruzione <tt>nome()</tt>, in cui
+``nome'' &egrave; il nome della procedura. Nel caso in cui il
+programma vuole passare dei parametri, questi vanno semplicemente
+messi, l'uno dietro l'altro e separati da virgole, fra le due
+parentesi tonde: <tt>nome(dato1, dato2, dato3,...);</tt>
+
+Nel caso della stampa di linee bianche, il programma finale
+&egrave; fatto come segue.<p>
+
+<pre>
+class Linee {
+  static void lineebianche(int l) {
+    int i;
+
+    for(i=1; i<=l; i=i+1) {
+      System.out.println(" ");
+    }
+  }
+
+  public static void main(String[] args) {
+
+    /* stampa 10 linee */
+    lineebianche(10);
+
+    ...
+
+    /* stampa 20 linee */
+    lineebianche(20);
+  }
+}
+</pre>
+
+Cosa succede quando il programma viene eseguito? La prima
+istruzione &egrave; <tt>lineebianche(10);</tt> La esecuzione
+di questa istruzione comporta che:
+
+<ol>
+<li>viene chiamata la procedura <tt>lineebianche</tt>
+<li>a questa procedura viene mandato il dato intero 10.
+</ol>
+
+La procedura ha un parametro di tipo intero: pu&ograve;
+ricevere un dato intero, e questo viene memorizzato nella
+variabile <tt>l</tt>:
+
+<ol start="3">
+<li>si crea la variabile intera <tt>l</tt>, e ci si mette 10
+<li>si eseguono le istruzioni di <tt>lineebianche</tt>.
+</ol>
+
+<p>
+Viene quindi creata una variabile di tipo intero <tt>l</tt>,
+in cui viene messo il valore 10. A questo punto, si esegue
+il resto della procedura come al solito: si crea la
+variabile <tt>i</tt> e si esegue il ciclo.<p>
+
+La successiva istruzione &egrave; <tt>lineebianche(20)</tt>.
+Qui avviene tutto come prima: il programma passa il valore 20
+alla procedura, la quale lo riceve e lo memorizza nella
+variabile <tt>l</tt>, al che vengono eseguite le altre
+istruzioni della procedura.<p>
+
+Graficamente, la situazione &egrave; la seguente: inizialmente
+abbiamo un contenitore (zona di memoria) per il programma
+principale (<tt>main</tt>) e un contenitore per la procedura
+<tt>lineebianche</tt>. Inizialmente, non sono definite
+variabili, quindi abbiamo:<p>
+
+<table>
+
+<tr>
+<td><tt>lineebianche</tt></td>
+<td>
+<table border=1>
+<tr><td>
+<table>
+<tr>
+<td><tt>&nbsp;</tt></td>
+<td><table border=0><tr><td><tt>&nbsp;&nbsp;&nbsp;&nbsp;</tt></td></tr></table></td>
+<td><tt>&nbsp;&nbsp;&nbsp;&nbsp;</tt></td>
+</tr>
+<tr>
+<td><tt>&nbsp;</tt></td>
+<td><table border=0><tr><td><tt>&nbsp;&nbsp;&nbsp;&nbsp;</tt></td></tr></table></td>
+</tr>
+<tr>
+<td>&nbsp;</td>
+</tr>
+<tr>
+<td>&nbsp;</td>
+</tr>
+</table>
+</tr></td>
+</table>
+</td>
+</tr>
+<tr><td>&nbsp;</td></tr>
+<tr>
+<td><tt>main</tt></td>
+<td>
+<table border=1><tr><td>
+<table>
+<tr>
+<td><tt>&nbsp;</tt></td>
+<td><table border=0><tr><td><tt>&nbsp;&nbsp;&nbsp;&nbsp;</tt></td></tr></table></td>
+</tr>
+<tr><td>&nbsp;</td><td>&nbsp;</td><td><tt>&nbsp;&nbsp;&nbsp;&nbsp;</tt></td></tr>
+<tr><td>&nbsp;</td></tr>
+</table>
+</tr></td></table>
+</td>
+</tr>
+</table>
+
+
+<p>
+
+Viene chiamata <tt>lineebianche(10)</tt>. Questo corrisponde
+a: primo, si crea una variabile <tt>l</tt> che &egrave; una
+variabile locale a <tt>lineebianche</tt>,
+in cui viene messo il valore passato, cio&egrave; 10; secondo,
+si eseguono le istruzioni di <tt>lineebianche</tt>.<p>
+
+<table>
+
+<tr>
+<td><tt>lineebianche</tt></td>
+<td>
+<table border=1>
+<tr><td>
+<table>
+<tr>
+<td><tt>l</tt></td>
+<td><table border=1><tr><td><tt>&nbsp;&nbsp;10</tt></td></tr></table></td>
+<td><tt>&nbsp;&nbsp;&nbsp;&nbsp;</tt></td>
+</tr>
+<tr>
+<td><tt></tt></td>
+<td><table border=0><tr><td><tt>&nbsp;&nbsp;&nbsp;&nbsp;</tt></td></tr></table></td>
+</tr>
+<tr>
+<td>&nbsp;</td>
+</tr>
+<tr>
+<td>&nbsp;</td>
+</tr>
+</table>
+</tr></td>
+</table>
+</td>
+</tr>
+<tr><td>&nbsp;</td></tr>
+<tr>
+<td><tt>main</tt></td>
+<td>
+<table border=1><tr><td>
+<table>
+<tr>
+<td><tt>&nbsp;</tt></td>
+<td><table border=0><tr><td><tt>&nbsp;&nbsp;&nbsp;&nbsp;</tt></td></tr></table></td>
+</tr>
+<tr><td>&nbsp;</td><td>&nbsp;</td><td><tt>&nbsp;&nbsp;&nbsp;&nbsp;</tt></td></tr>
+<tr><td>&nbsp;</td></tr>
+</table>
+</tr></td></table>
+</td>
+</tr>
+</table>
+
+
+<p>
+
+La procedura <tt>lineebianche</tt> contiene una dichiarazione
+di un'altra variabile intera <tt>i</tt> che &egrave; sempre
+locale alla procedura. Si ha quindi la situazione seguente.
+
+<p>
+<table>
+
+<tr>
+<td><tt>lineebianche</tt></td>
+<td>
+<table border=1>
+<tr><td>
+<table>
+<tr>
+<td><tt>l</tt></td>
+<td><table border=1><tr><td><tt>&nbsp;&nbsp;10</tt></td></tr></table></td>
+<td><tt>&nbsp;&nbsp;&nbsp;&nbsp;</tt></td>
+</tr>
+<tr>
+<td><tt>i</tt></td>
+<td><table border=1><tr><td><tt>&nbsp;&nbsp;&nbsp;&nbsp;</tt></td></tr></table></td>
+</tr>
+<tr>
+<td>&nbsp;</td>
+</tr>
+<tr>
+<td>&nbsp;</td>
+</tr>
+</table>
+</tr></td>
+</table>
+</td>
+</tr>
+<tr><td>&nbsp;</td></tr>
+<tr>
+<td><tt>main</tt></td>
+<td>
+<table border=1><tr><td>
+<table>
+<tr>
+<td><tt>&nbsp;</tt></td>
+<td><table border=0><tr><td><tt>&nbsp;&nbsp;&nbsp;&nbsp;</tt></td></tr></table></td>
+</tr>
+<tr><td>&nbsp;</td><td>&nbsp;</td><td><tt>&nbsp;&nbsp;&nbsp;&nbsp;</tt></td></tr>
+<tr><td>&nbsp;</td></tr>
+</table>
+</tr></td></table>
+</td>
+</tr>
+</table>
+
+
+
+<p>
+La procedura contiene anche un ciclo in cui <tt>i</tt> assume
+tutti i valori interi da 1 al valore attualmente memorizzato
+in <tt>l</tt>. All'interno del ciclo si stampa una linea
+bianca. Quindi, alla fine verranno stampate tante linee bianche
+quanto &egrave; il valore di <tt>l</tt>. Questo &egrave;
+esattamente quello che si voleva ottenere.
+
+<p>
+Le pagine successive mostrano esempi di procedure che ricevono
+argomenti: <a href="stampasepositivo.shtml">stampa di valori
+solo se positivi</a> e <a href="graficofunzione.shtml">la
+stampa del grafico di una funzione con istruzioni di testo</a>.<p>
+
+
+
+</body>
+
+
+
+
+<h2>Stampa i valori positivi</h2>
+
+Vediamo ora una funzione leggermente pi&ugrave;
+complicata delle precedenti. Supponiamo di avere due
+variabili intere <tt>a</tt> e <tt>b</tt>, a cui assegnamo
+dei valori. Vogliamo poi calcolare e stampare il valore
+di alcune espressioni, per esempio
+<tt>a-b</tt>, <tt>a-b*b</tt>, <tt>-a/b</tt> e <tt>a/b</tt>.
+Vogliamo per&ograve; stampare solo il valore delle
+espressioni positive (maggiore
+oppure uguale a zero); in caso contrario si vuole stampare
+solo la scritta <tt>Valore negativo</tt>, senza precisare
+il valore esatto dell'espressione.<p>
+
+Questo tipo di problema si pu&ograve; risolvere anche senza
+usare le procedure. Per esempio, per stampare il valore
+della prima espressione, si potrebbe fare:<p>
+
+<pre>
+  int c;
+
+  c=a-b;
+
+  if( c>=0 ) {
+    System.out.println(c);
+  }
+  else {
+    System.out.println("Valore negativo");
+  }
+</pre>
+
+Questo andrebbe poi ripetuto anche per le altre espressioni da
+valutare. Il programma completo contiene quindi quattro volte
+la intera istruzione condizionale, esattamente identica. Si
+tratta quindi di una situazione in cui una sequenza di istruzioni
+si ripete pi&ugrave; volte in un programma, per cui conviene
+``mettere a fattor comune'' e usare una procedura.<p>
+
+In questo caso, la procedura dovrebbe ricevere un valore intero
+(il valore di una delle espressioni); questo valore viene stampato
+oppure no a seconda se &egrave; positivo oppure no. Dal momento
+che la procedura riceve un valore intero, occorre specificare
+un nome di variabile intero in cui il dato che il programma manda
+viene memorizzato. L'inizio della procedura quindi &egrave;:<p>
+
+<pre>
+  static void stampa(int e)
+</pre>
+
+Si &egrave; scelto il nome <tt>stampa</tt> per questa procedura.
+Le istruzioni associate devono stampare il valore memorizzato
+in <tt>e</tt>, ma soltanto se &egrave; positivo. In caso
+contrario, si stampa <tt>Valore negativo</tt>. La procedura
+completa &egrave; quindi come segue:<p>
+
+<pre>
+  static void stampa(int e) {
+    if( e>=0 ) {
+      System.out.println(e);
+    }
+    else {
+      System.out.println("Valore negativo");
+    }
+  }
+</pre>
+
+Per poter eseguire le istruzioni della procedura &egrave; necessario
+che all'interno del programma principale ci siano delle chiamate
+di procedura, ossia delle istruzioni <tt>stampa(...)</tt>. Fra
+parentesi ci va il valore che il programma manda alla procedura.
+&Egrave; possibile mettere tra parentesi un numero intero
+(per esempio 12), una variabile (per esempio <tt>a</tt>), o anche
+una espressione. Nel nostro caso, dato che vogliamo stampare il
+valore di una espressione come <tt>a-b</tt> possiamo semplicemente
+scrivere <tt>stampa(a-b)</tt>. Questo equivale a calcolare il
+valore della espressione <tt>a-b</tt>, mettere il risultato nella
+variabile <tt>e</tt> locale della procedura <tt>stampa</tt>, ed
+eseguire le istruzioni della procedura. Questo &egrave; esattamente
+quello che serve (calcolare il valore della espressione e
+stamparlo se positivo).<p>
+
+La stessa cosa va fatta per le altre espressioni da stampare. Il
+programma completo
+<a href="StampaSePositivo.java">StampaSePositivo.java</a>
+&egrave; riportato qui sotto.<p>
+
+<pre>
+/*
+  Stampa il valore di alcune espressioni, ma solo
+  se e' positivo.
+*/
+
+class StampaSePositivo {
+
+  static void stampa(int e) {
+    if( e>=0 ) {
+      System.out.println(e);
+    }
+    else {
+      System.out.println("Valore negativo");
+    }
+  }
+
+  public static void main(String[] args) {
+    int a=12, b=4;
+
+    stampa(a-b);
+    stampa(a-b*b);
+    stampa(-a/b);
+    stampa(a/b);
+  }
+}
+
+</pre>
+
+</body>
+
+
+
+
+<h2>Grafico di una funzione</h2>
+
+Vediamo qui un esempio di procedura: la stampa del grafico
+di una funzione usando solo caratteri di testo. Sia quindi
+data una funzione <i>f=|x|/20.0+20sin(x/10)+30</i> da
+visualizzare. Vogliamo visualizzare graficamente i valori
+di questa funzione con <i>x</i> che va da -100 a +100.<p>
+
+Per effettuare questo grafico usando esclusivamente la
+finestra di testo, usiamo il trucco di visualizzare il
+grafico ``in verticale'': per ogni valore di <i>x</i>
+stampiamo una linea, in cui mettiamo un asterisco "*"
+in posizione tanto pi&ugrave; a destra in funzione del
+valore <i>f(x)</i>.<p>
+
+Per stampare l'asterisco a destra, usiamo la funzione
+<tt>System.out.print</tt>, che &egrave; simile alla
+<tt>println</tt>, ma non va a capo una volta stampato.
+Per stampare l'asterisco a destra, facciamo prima una
+stampa di tanti spazi quanto vale la funzione, e poi
+stampiamo ``*" con andata a capo.<p>
+
+Il programma
+<a href="GraficoFunzione.java">GraficoFunzione.java</a>
+realizza questa funzione.<p>
+
+<pre>
+/*
+  Grafico di una funzione usando solo testo
+  (con funzione)
+*/
+
+class GraficoFunzione {
+  static void linea(int n) {
+    int i;
+
+    for(i=1; i<=n; i=i+1) {
+      System.out.print(" ");
+    }
+    System.out.println("*");
+  }
+
+  public static void main(String[] args) {
+    double f;
+    int x;
+
+    for(x=-100; x<=100; x=x+1) {
+      f=Math.abs(x)/20.0+20*Math.sin(x/10.0)+30;
+      linea(Math.round((float) f));
+    }
+  }
+}
+
+</pre>
+
+La funzione <tt>linea</tt> ha un argomento di tipo intero,
+ossia si aspetta di ricevere un valore di tipo intero. Questo
+valore viene memorizzato nella variabile <tt>n</tt>. Usando
+il valore di questa variabile, &egrave; facile stampare la
+linea voluta: si fa un ciclo for in cui si stampano <tt>n</tt>
+spazi bianchi (senza andare a capo), e poi si stampa un singolo
+asterisco ``*'', andando a capo. La funzione <tt>linee</tt>
+stampa quindi una singola linea del grafico.<p>
+
+Per stampare tutto il grafico, occorre chiamare la funzione
+per ogni valore di <tt>x</tt> da -100 a +100. Il programma
+fa esattamente questo: c'&egrave; un ciclo for che assegna
+alla variabile <tt>x</tt> valori progressivi da -100 a +100.
+Per ogni valore di <tt>x</tt> si valuta la funzione, e si
+assegna il valore risultato alla variabile <tt>f</tt>. A
+questo punto, si chiama la funzione usando il valore memorizzato
+in <tt>f</tt>.<p>
+
+Un punto da notare nel programma &egrave; la presenza della
+funzione di arrotondamento <tt>Math.round</tt>. &Egrave;
+necessario usare questa funzione perch&egrave; il risultato
+della funzione &egrave; un numero reale. Quindi, non si pu&ograve;
+passare alla procedura <tt>linea</tt>, che si aspetta un
+numero intero. La espressione <tt>Math.round((float) f)</tt>
+rappresenta un numero intero che &egrave; la pi&ugrave;
+vicina approssimazione del numero reale contenuto nella
+variabile <tt>f</tt>.<p>
+
+
+</body>
+
+
+
+
+
+<h2>Funzioni che ritornano un valore</h2>
+
+Fino ad ora abbiamo visto due tipi di procedure: quelle che
+eseguono una sequenza di istruzioni senza ricevere dati dal
+programma, e quelle che ricevono dati dal programma e li
+usano per fare qualcosa. Manca ora l'ultima parte, ossia:
+fare in modo che la procedura possa mandare dei dati al
+programma principale.<p>
+
+Questo &egrave; utile per esempio se il programma contiene
+molte volte la stessa espressione. Consideriamo il programma
+che trova un intervallo in cui la funzione contiene uno
+zero <a href="Nullo.java">Nullo.java</a>. In questo programma,
+si ripete per cinque volte una istruzione in cui si valuta
+il valore della funzione per valori diversi dell'argomento.
+Farebbe comodo poter scrivere la funzione una volta sola.
+Con le cose che sono state viste fino ad ora, il calcolo
+non &egrave; difficile da inserire in una procedura:<p>
+
+<pre>
+  static void f( double x ) {
+    double risultato;
+
+    risultato=x*x-5*x-2;
+  }
+</pre>
+
+Questa procedura crea una variabile reale <tt>x</tt>, in cui
+viene messo il dato che la procedura principale manda; viene
+poi creata un'altra variabile reale <tt>risultato</tt>. Si
+valuta la espressione (usando il valore della variabile
+<tt>x</tt>, che &egrave; quello passato dalla variabile
+principale) e la si mette in <tt>risultato</tt>. Da un certo
+punto di vista, siamo effettivamente riusciti a scrivere
+l'espressione una volta sola, soltanto che ancora ci manca
+il modo in cui la procedura rimanda il valore del risultato
+al programma.<p>
+
+
+<h4>Come si scrive una procedura che manda risultati al programma</h4>
+
+Si fa in due passi. Per prima cosa, occorre
+dire quale &egrave; il <i>tipo</i> del risultato, ossia se la
+procedura vuole inviare al programma un intero oppure un
+reale, ecc. Per fare questo si modifica la prima linea della
+procedura, come segue:<p>
+
+<pre>
+  static double f( double x ) {
+    ...
+  }
+</pre>
+
+La parole <tt>void</tt> &egrave; stata rimpiazzata dalla
+parola <tt>double</tt>. Questo specifica il tipo di dato che
+la procedura rimanda al programma principale. Si spiega ora
+il piccolo mistero dalla parola <tt>void</tt> usata nelle
+procedure che non tornano valori al programma:
+dichiara che il tipo di dati che la procedura rimanda al
+programma &egrave; vuoto, ossia la procedura non rimanda niente.<p>
+
+Il secondo passo &egrave; quello di specificare esattamente
+che cosa la procedura restituisce al programma. Per fare questo
+si usa la istruzione:<p>
+
+<center>
+<tt><i>return espressione</i></tt>
+</center>
+<p>
+
+Questa istruzione ha due effetti: la prima &egrave; che
+l'esecuzione della procedura termina; la seconda &egrave; che
+la espressione viene valutata, e il suo valore viene mandato
+indietro al programma.<p>
+
+La procedura di calcolo della funzione va quindi modificata
+in maniera tale che il contenuto della variabile
+<tt>risultato</tt> venga rimandato al programma principale.
+Per fare questo &egrave; sufficiente aggiungere come ultima
+istruzione della procedura il <tt>return</tt>:<p>
+
+<pre>
+  static double f( double x ) {
+    double risultato;
+
+    risultato=x*x-5*x-2;
+
+    return risultato;
+  }
+</pre>
+
+Si noti che quello che segue la parola <tt>return</tt> pu&ograve;
+essere sia una variabile che una espressione complessa. Quindi,
+la procedura si pu&ograve; semplificare mettendo l'espressione
+da calcolare direttamente dopo la parola <tt>return</tt>, rendendo
+inutile la variabile <tt>risultato</tt>:<p>
+
+<pre>
+  static double f( double x ) {
+    return x*x-5*x-2;
+  }
+</pre>
+<p>
+
+
+<h4>Come fa il programma a usare il valore che la procedura ritorna</h4>
+
+Questo &egrave; l'ultimo passo: abbiamo visto come si fa a
+specificare che una procedura calcola valori da rimandare al
+programma; ora dobbiamo dire come si fa a usare questi valori
+nel programma.<p>
+
+Nel caso in cui una procedura <tt>nomeproc</tt> non mandava
+dati al programma, per far eseguire le sue istruzioni si
+usava una singola istruzione <tt>nomeproc(....)</tt> in cui
+si mettevano fra parentesi i dati che il programma mandava.
+Nel caso in cui la procedura ritorna un valore, si usa
+invece:<p>
+
+<pre>
+     variabile = nomeproc(...);
+</pre>
+
+Questa istruzione significa: esegui la procedura mandando i
+dati fra parentesi; il risultato che la procedura manda mettilo
+nella variabile.<p>
+
+Pi&ugrave; in generale, se una procedura <tt>f(...)</tt>
+ritorna un dato di un certo tipo, allora si pu&ograve;
+scrivere <tt>f(...)</tt> in qualsiasi punto in cui &egrave;
+possibile usare una variabile di quel tipo. Per esempio,
+se vogliamo assegnare a <tt>x</tt> la media fra il
+risultato di <tt>f</tt> e 5, possiamo anche scrivere:
+<tt>x=(f(...)+5)/2;</tt>. In altre parole, se
+una espressione contiene una o pi&ugrave;
+procedure, queste vengono eseguite, e al loro posto ci si
+mette il valore che la procedura ha rimandato al programma.<p>
+
+<b>Nota:</b> le procedure che ritornano un valore vengono
+chiamate <b>funzioni</b>.<p>
+
+Il programma
+<a href="NulloFunzione.java">NulloFunzione.java</a>
+trova un intervallo piccolo in cui la funzione ha uno zero,
+e questo viene fatto usando una funzione (procedura che ritorna
+un valore).<p>
+
+<pre>
+/*
+  Trova un punto in cui una funzione f(x) ha un
+  valore sufficientemente vicino allo zero.
+  Siano a e b due valori tali che f(a) ha segno
+  opposto a f(b). Si assume che la funzione sia
+  continua.
+  Variante con chiamata a funzione.
+*/
+
+class NulloFunzione {
+
+    /* la funzione di cui si vuole trovare lo zero */
+
+  static double f( double x ) {
+    return x*x-5*x-2;
+  }
+
+
+    /* la procedura principale */
+
+  public static void main(String[] args) {
+    double a=0,b=10;
+    double e=0.01;
+    double x=a;
+
+    if( f(a)*f(b) >0 ) {
+      System.out.println("La funzione non ha segno diverso negli estremi");
+      System.out.println(f(a)+" "+f(b));
+      return;
+    }
+
+    while( Math.abs(f(x))>e ) {
+      x=(a+b)/2;
+      System.out.println(a+" "+x+" "+b);
+
+      if( f(x)*f(a) > 0 ) {
+        a=x;
+      }
+      else {
+        b=x; 
+      }
+    }
+
+    System.out.println("Trovato valore "+f(x)+" per x pari a "+x);
+  }
+}
+
+</pre>
+
+Nel caso ci fosse un qualche dubbio sull'uso che si pu&ograve;
+fare delle funzioni, si tenga presente che &egrave; sempre
+possibile usare una istruzione del tipo
+<tt>variabile=nomefunzione(...)</tt>, che mette il risultato
+della funzione nella variabile, e poi utilizzare il valore
+della variabile nel punto in cui serve il risultato calcolato
+della funzione.<p>
+
+</body>
+
+
+
+
+<h2>Variabili passate come parametri</h2>
+
+Il programma
+<a href="Locali.java">Locali.java</a>
+chiarisce un punto che pu&ograve; risultare poco chiaro
+nella programmazione con procedure e funzioni.<p>
+
+<pre>
+/*
+  Esempio sull'uso di variabili locali.
+*/
+
+class Locali {
+  static void uno(int x) {
+    x=x+1;
+  }
+
+  static int due(int x) {
+    x=x+1;
+    return x;
+  }
+
+  public static void main(String[] args) {
+    int x=5;
+    int y;
+
+    uno(x);
+    System.out.println(x);
+
+    y=due(x);
+    System.out.println(x);
+    System.out.println(y);
+  }
+}
+
+</pre>
+
+Ci poniamo il seguente problema: cosa viene stampato?
+Questo non &egrave; difficile, se si seguono esattamente
+le regole sul passaggio dei parametri che sono state
+specificate fino ad ora. A volte per&ograve; vengono date
+risposte errate, del tipo ``viene stampato per tre volte
+il numero 6'', oppure ``viene stampato 5, poi due volte 6''.
+La risposta esatta &egrave;:<p>
+
+<center>
+<i>viene stampato due volte 5, poi una volta 6</i>
+</center>
+<p>
+
+Se il risultato che ci si aspettava &egrave; diverso, allora
+non si sono seguite correttamente le regole di passaggio
+sulle procedure.<p>
+
+Analizziamo quindi l'esecuzione del programma:<p>
+
+<ol>
+<li>viene creata la variabile <tt>x</tt> e ci viene messo 5;
+<li>si crea la variabile <tt>y</tt>;
+<li>si chiama la procedura <tt>uno</tt>, passando il valore di
+<tt>x</tt> (che in questo caso &egrave; 5);
+<li>la procedura <tt>uno</tt> crea <i>una sua variabile</i>
+che chiama <tt>x</tt>, e in questa variabile ci mette il valore
+passato, cio&egrave; 5; &egrave; importante notare che questa
+variabile, anche se ha lo stesso nome, non &egrave; la stessa
+di quella che sta nel programma;
+<li>la variabile <tt>x</tt> interna alla procedura <tt>uno</tt>
+viene incrementata;
+<li>questo termina l'esecuzione di <tt>uno</tt>;
+<li>si esegue <tt>System.out.println(x)</tt>; fino a questo punto,
+la variabile <tt>x</tt> non &egrave; stata modificata: infatti,
+la procedura <tt>uno</tt> ha modificato la sua variabile <tt>x</tt>,
+che non &egrave; la stessa del programma. Quindi, si stampa il
+valore 5.
+</ol>
+
+La chiamata alla funzione <tt>due</tt> &egrave; simile: la
+variabile <tt>x</tt> che viene incrementata &egrave; una
+variabile locale della funzione, e non &egrave; la stessa
+del programma. La funzione <tt>due</tt> permette di vedere come
+l'unico modo che una funzione ha di influenzare il
+programma &egrave; quello di ritornare dei valori: tutte le
+altre modifiche vengono ignorate dal programma. In questo
+caso, la variabile <tt>x</tt> interna alla funzione viene
+modificata, ma questa modifica non si riflette sulla variabile
+<tt>x</tt> del programma, ma soltanto nel fatto che il valore
+che la procedura rimanda al programma (che &egrave; il valore
+di <tt>x</tt> aumentato di 1) viene memorizzato nella
+variabile <tt>y</tt>.<p>
+
+</body>
+
+
+
+
+<h2>Variabili globali</h2>
+
+Il meccanismo con cui le procedure interagiscono con il
+programma principale visto fino ad ora &egrave; quello
+del passaggio dei parametri (con cui il programma manda
+dei dati alle procedure) e il valore di ritorno
+(<tt>return</tt>, con cui la funzioni mandano dati al
+programma principale quando hanno terminato).<p>
+
+Esiste un altro meccanismo che permette al programma
+e alle procedure di comunicare, ed &egrave; quello delle
+<i>variabili globali</i>.<p>
+
+Come si &egrave; visto fino ad ora, le variabili dichiarate
+all'interno di una procedura e le variabili dichiarate nel
+programma principale sono diverse, e ogni blocco pu&ograve;
+accedere alle sole variabili dichiarate all'interno del
+blocco stesso. Per esempio, nel seguente programma java
+la variabile <tt>x</tt> dichiarata nella procedura <tt>test</tt>
+&egrave; diversa dalla variabile <tt>x</tt> del programma
+principale, anche se il nome &egrave; lo stesso.<p>
+
+<pre>
+class Prova {
+  static void test() {
+    int x;
+
+    ...
+  }
+
+  public static void main(String[] args) {
+    int x;
+
+    ...
+  }
+}
+</pre>
+
+Infatti, la situazione che si viene a creare nella memoria &egrave;
+la seguente:<p>
+
+<table>
+
+<tr>
+<td><tt>test</tt></td>
+<td>
+<table border=1>
+<tr><td>
+<table>
+<tr>
+<td><tt>x</tt></td>
+<td><table border=1><tr><td><tt>&nbsp;&nbsp;&nbsp;&nbsp;</tt></td></tr></table></td>
+</tr>
+<tr><td>&nbsp;</td><td>&nbsp;</td><td><tt>&nbsp;&nbsp;&nbsp;&nbsp;</tt></td></tr>
+<tr><td>&nbsp;</td></tr>
+</table>
+</tr></td>
+</table>
+</td>
+</tr>
+<tr><td>&nbsp;</td></tr>
+<tr>
+<td><tt>main</tt></td>
+<td>
+<table border=1><tr><td>
+<table>
+<tr>
+<td><tt>x</tt></td>
+<td><table border=1><tr><td><tt>&nbsp;&nbsp;&nbsp;&nbsp;</tt></td></tr></table></td>
+</tr>
+<tr><td>&nbsp;</td><td>&nbsp;</td><td><tt>&nbsp;&nbsp;&nbsp;&nbsp;</tt></td></tr>
+<tr><td>&nbsp;</td></tr>
+</table>
+</tr></td></table>
+</td>
+</tr>
+</table>
+
+Se per esempio si mette <tt>x=10</tt> dentro il <tt>main</tt>,
+la variabile in cui viene messo il 10 &egrave; la variabile che
+sta nel contenitore di <tt>main</tt>. Se si esegue
+<tt>System.out.println(x)</tt> dentro il <tt>main</tt>, viene
+stampato il contenuto della casella <tt>x</tt> che sta dentro
+il contenitore di <tt>main</tt>, ecc. Lo stesso vale per l'altra
+variabile <tt>x</tt>, cio&egrave; quella del contenitore della
+procedura <tt>test</tt>: solo le istruzioni che stanno dentro
+<tt>test</tt> possono modificare il contenuto di questa variabile,
+e solo queste possono accedere al contenuto precedentemente
+memorizzato. Si pu&ograve; dire che le due variabili, anche se
+hanno lo stesso nome, sono due variabili diverse.<p>
+
+Le variabili globali sono variabili che possono venire usate
+da tutte le procedure e dal programma principale. Si tratta di
+variabili che sono definite al di fuori delle procedure, e che
+sono accessibili da tutti i blocchi del programma. Per dichiarare
+una variabile globale, si mette la dichiarazione prima di tutte
+le procedure. Per esempio, se serve una variabile globale
+intera <tt>a</tt> si fa cos&iacute:<p>
+
+<pre>
+class Prova {
+  static int a;
+
+  static void test() {
+    int x;
+
+    ...
+  }
+
+  public static void main(String[] args) {
+    int x;
+
+    ...
+  }
+}
+</pre>
+
+In un certo senso, continua a valere la regola che le variabili
+definite all'interno di una coppia di graffe <tt>{...}</tt>
+sono utilizzabili solo all'interno dello stesso paio di graffe.
+In questo caso per&ograve; la dichiarazione di <tt>a</tt>
+si trova tra <tt>class Prova{</tt> e l'ultima <tt>}</tt>, per 
+cui tutte le istruzioni di tutte le procedure (e del programma
+principale) possono usare questa variabile, sia per memorizzare
+un valore che per vedere il suo contenuto.<p>
+
+La situazione che si viene a creare nella memoria si pu&ograve;
+rappresentare come segue:<p>
+
+<table>
+
+<tr>
+<td><tt></tt></td>
+<td>
+<table>
+<tr><td>
+<table>
+<tr>
+<td><tt>a</tt></td>
+<td><table border=1><tr><td><tt>&nbsp;&nbsp;&nbsp;&nbsp;</tt></td></tr></table></td>
+</tr>
+<tr><td>&nbsp;</td><td>&nbsp;</td><td><tt>&nbsp;&nbsp;&nbsp;&nbsp;</tt></td></tr>
+<tr><td>&nbsp;</td></tr>
+</table>
+</tr></td>
+</table>
+</td>
+</tr>
+
+<tr>
+<td><tt>test</tt></td>
+<td>
+<table border=1>
+<tr><td>
+<table>
+<tr>
+<td><tt>x</tt></td>
+<td><table border=1><tr><td><tt>&nbsp;&nbsp;&nbsp;&nbsp;</tt></td></tr></table></td>
+</tr>
+<tr><td>&nbsp;</td><td>&nbsp;</td><td><tt>&nbsp;&nbsp;&nbsp;&nbsp;</tt></td></tr>
+<tr><td>&nbsp;</td></tr>
+</table>
+</tr></td>
+</table>
+</td>
+</tr>
+
+<tr><td>&nbsp;</td></tr>
+<tr>
+<td><tt>main</tt></td>
+<td>
+<table border=1><tr><td>
+<table>
+<tr>
+<td><tt>x</tt></td>
+<td><table border=1><tr><td><tt>&nbsp;&nbsp;&nbsp;&nbsp;</tt></td></tr></table></td>
+</tr>
+<tr><td>&nbsp;</td><td>&nbsp;</td><td><tt>&nbsp;&nbsp;&nbsp;&nbsp;</tt></td></tr>
+<tr><td>&nbsp;</td></tr>
+</table>
+</tr></td></table>
+</td>
+</tr>
+</table>
+
+<p>
+
+Detto a parole, la variabile <tt>a</tt> &egrave; una casella
+(zona di memoria) che non sta dentro il contenitore di nessuna
+delle procedure. Per questo tipo di variabili vale la regola
+che tutte le procedure e funzioni possono usare queste variabili.<p>
+
+Consideriamo il seguente programma
+<a href="Globali.java">Globali.java</a>:
+
+<pre>
+/*
+  Esempio di variabili globali.
+*/
+
+class Globali {
+  static int a;
+
+  static void test() {
+    a=a+1;
+  }
+
+  public static void main(String[] args) {
+    a=10;
+
+    test();
+    test();
+
+    System.out.println("La variabile vale "+a);
+  }
+}
+
+</pre>
+
+Quello che succede &egrave; che la variabile <tt>a</tt> viene
+creata come una variabile globale. Quindi, sia <tt>test</tt>
+che <tt>main</tt> possono usarla. In particolare, quando
+si esegue <tt>a=10</tt> dentro <tt>main</tt>, viene messo 10
+nella variabile. Quando si chiama la procedura <tt>test</tt>,
+si esegue l'istruzione <tt>a=a+1</tt>. Questa istruzione
+incrementa di 1 il valore della variabile <tt>a</tt>, e questa
+&egrave; ancora la variabile globale. Quando si chiama la
+seconda volta la procedura, il contenuto della variabile viene
+incrementato di nuovo. Alla fine, l'istruzione
+<tt>System.out.println("La variabile vale "+a);</tt> stampa
+il valore di <tt>a</tt>, che ora &egrave; 12.<p>
+
+Si noti la differenza dal programma in cui vengono dichiarate
+due variabili con lo stesso nome <tt>a</tt> sia dentro
+<tt>test</tt> che dentro <tt>main</tt>: in questo caso, si
+tratta di due variabili distinte, e ogni blocco di istruzioni
+pu&ograve; accedere soltanto alla sua variabile, e non a quella
+dell'altro blocco (anche se le due variabili hanno lo stesso
+nome).<p>
+
+Questo meccanismo consente di far passare informazioni dal
+programma alle procedure e viceversa: se per esempio il
+programma vuole mandare un intero a una procedura, pu&ograve;
+mettere il valore in una variabile globale e poi chiamare
+la procedura. La procedura, a sua volta, pu&ograve; leggere
+il valore che il programma ha scritto in questa variabile.
+Si veda per esempio il programma che stampa un certo numero
+di linee bianche fatto usando una variabile globale:
+
+<pre>
+class Linee {
+  static int lineedalasciare;
+
+  static void lineebianche() {
+    int i;
+
+    for(i=1; i<=lineedalasciare; i=i+1) {
+      System.out.println(" ");
+    }
+  }
+
+  public static void main(String[] args) {
+
+    /* stampa 10 linee */
+    lineedalasciare=10;
+    lineebianche();
+
+    ...
+
+    /* stampa 20 linee */
+    lineedalasciare=10;
+    lineebianche();
+  }
+}
+</pre>
+
+Quello che succede, in questo caso, &egrave; che il programma
+principale mette il valore 10 nella variabile
+<tt>lineedalasciare</tt> e poi chiama la procedura
+<tt>lineebianche()</tt>. Questa procedura contiene un ciclo
+in cui la variabile <tt>i</tt> va da 1 al contenuto della
+variabile <tt>lineedalasciare</tt>, che &egrave; appunto
+10. In questo modo, la procedura riesce a usare un valore
+che &egrave; stato memorizzato dal programma principale.<p>
+
+<b>Nota</b>: il passaggio di parametri e i valori di ritorno
+sono anch'essi forme di comunicazione di dati fra procedure
+e programma. In effetti, &egrave; possibile non usare affatto
+gli argomenti, limitandosi a usare sempre variabili globali.
+Questo modo di procedere &egrave; fortemente sconsigliato,
+a meno che non sia realmente necessario (vedi il caso della
+reazione al mouse negli applet) perch&egrave; in questo modo
+si genera un codice difficile da leggere, cha spesso genera
+errori e sempre un abbassamento del voto finale.<p>
+
+<b>Nota</b>: ci sono dei casi in cui una variabile globale
+non &egrave; utilizzabile da una procedura. Questo problema
+viene analizzato nella pagina dedicata alla
+<a href="visibilita.shtml">visibilit&agrave;</a>.<p>
+
+</body>
+
+
+
+
+<h2>Visibilit&agrave; delle variabili globali</h2>
+
+Nella pagine precedente si &egrave; detto che le variabili
+globali si possono usare in tutte le procedure e nel
+programma principale. In effetti esiste una eccezione 
+molto importante. Non tenerne conto pu&ograve; portare
+a programmi che compilano senza errori ma non funzionano
+nel modo dovuto. La regola &egrave;:<p>
+
+<blockquote>
+<i>
+una variabile globale non &egrave; utilizzabile
+in una procedura se nella procedura viene definita
+un'altra variabile con lo stesso nome.
+</i>
+</blockquote>
+
+Per esempio, se definiamo una variabile globale che si
+chiama <tt>x</tt>, e poi in una procedura c'&egrave; una
+variabile locale <tt>x</tt>, allora la procedura ``vede''
+solo la sua variabile locale. Consideriamo questo
+programma:<p>
+
+<pre>
+class Prova {
+  static int x;
+
+  static void test() {
+    int x;
+
+    x=10;
+  }
+
+  public static void main(String[] args) {
+    x=5;
+    test();
+    System.out.println(x);
+  }
+}
+</pre>
+
+La situazione che si viene a creare nella memoria &egrave;
+la seguente:<p>
+
+<table>
+
+<tr>
+<td><tt></tt></td>
+<td>
+<table>
+<tr><td>
+<table>
+<tr>
+<td><tt>x</tt></td>
+<td><table border=1><tr><td><tt>&nbsp;&nbsp;&nbsp;&nbsp;</tt></td></tr></table></td>
+</tr>
+<tr><td>&nbsp;</td><td>&nbsp;</td><td><tt>&nbsp;&nbsp;&nbsp;&nbsp;</tt></td></tr>
+<tr><td>&nbsp;</td></tr>
+</table>
+</tr></td>
+</table>
+</td>
+</tr>
+
+<tr>
+<td><tt>test</tt></td>
+<td>
+<table border=1>
+<tr><td>
+<table>
+<tr>
+<td><tt>x</tt></td>
+<td><table border=1><tr><td><tt>&nbsp;&nbsp;&nbsp;&nbsp;</tt></td></tr></table></td>
+</tr>
+<tr><td>&nbsp;</td><td>&nbsp;</td><td><tt>&nbsp;&nbsp;&nbsp;&nbsp;</tt></td></tr>
+<tr><td>&nbsp;</td></tr>
+</table>
+</tr></td>
+</table>
+</td>
+</tr>
+
+<tr><td>&nbsp;</td></tr>
+<tr>
+<td><tt>main</tt></td>
+<td>
+<table border=1><tr><td>
+<table>
+<tr>
+<td><tt></tt></td>
+<td><table border=0><tr><td><tt>&nbsp;&nbsp;&nbsp;&nbsp;</tt></td></tr></table></td>
+</tr>
+<tr><td>&nbsp;</td><td>&nbsp;</td><td><tt>&nbsp;&nbsp;&nbsp;&nbsp;</tt></td></tr>
+<tr><td>&nbsp;</td></tr>
+</table>
+</tr></td></table>
+</td>
+</tr>
+</table>
+
+<p>
+
+
+La assegnazione <tt>x=10</tt> mette il valore 10 nella
+variabile <tt>x</tt> locale della procedura, e non in quella
+globale. Come risultato, la operazione di stampa che si
+trova nel programma principale stampa 5 e non 10. Infatti,
+la prima istruzione del programma mette 5 nella variabile
+globale; viene chiamata la procedura, che mette 10 nella 
+sua variabile <tt>x</tt> locale; si ritorna dalla procedura
+e si stampa il valore della variabile globale, che contiene
+ancora 5.<p>
+
+La stessa cosa succede se la variabile locale che ha lo stesso
+nome &egrave; uno dei parametri:<p>
+
+<pre>
+class Prova {
+  static int x;
+
+  static void test(int x) {
+    x=10;
+  }
+
+  public static void main(String[] args) {
+    x=5;
+    test(24);
+    System.out.println(x);
+  }
+}
+</pre>
+
+In questo caso, la variabile <tt>x</tt> della procedura
+<tt>test</tt> &egrave; un parametro, ma &egrave; sempre una
+variabile della procedura (l'unica differenza fra i parametri
+e le variabili dichiarate dentro la procedura &egrave; che
+il suo valore iniziale &egrave; quello inviato dal programma).
+Quindi, la assegnazione <tt>x=10</tt> mette il valore 10 nella
+variabile <tt>x</tt> locale di <tt>test</tt> e non nella
+variabile globale <tt>x</tt>. Anche se hanno lo stesso nome,
+queste due variabili sono distinte.<p>
+
+Il risultato della esecuzione di questo programma &egrave;
+identico a quello del precedente: la prima istruzione <tt>x=5</tt>
+mette 5 nella variabile globale, si chiama la procedura che
+mette 10 nella sua variabile locale, si ritorna e si stampa
+il contenuto della variabile globale, che contiene ancora il
+valore 5.<p>
+
+Il motivo per cui il programma principale vede la variabile
+globale, mentre la procedura vede quella locale, &egrave; che
+nel programma principale non ci sono variabili locali con
+lo stesso nome <tt>x</tt>, mentre nella procedura c'&egrave;
+una variabile locale con lo stesso nome, per cui la procedure
+vede la sua variabile e non quella globale.<p>
+
+</body>
+
+variabili statiche (cancellazione di variabili alla
+fine delle procedure)
+
+</body>
+
+</body>
+</html>

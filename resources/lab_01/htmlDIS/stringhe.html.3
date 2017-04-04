@@ -1,0 +1,349 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html>
+<head>
+<title>Le stringhe</title>
+      <link rel="top" href="../lezioni.html">
+      <link rel="up" href="../lezioni.html">
+      <link rel="contents" href="../lezioni.html">
+      <link rel="previous" href="../metodi/metodi.html">
+      <link rel="next" href="../classi/classi.html">
+</head>
+
+<body>
+
+<h1>Le stringhe</h1>
+
+<p>
+Una stringa &egrave; una sequenza di caratteri
+</p>
+
+<p>
+Si tratta di un tipo composto, ossia sono oggetti.
+</p>
+
+<p>
+Sulle stringhe ci sono delle eccezioni (rispetto
+alle regole che valgono per tutti gli altri oggetti).
+</p>
+
+<hr>
+
+
+<h4>Stringhe: programma di esempio</h4>
+
+<p>
+Non serve fare <tt>import</tt>
+(serve se ci sono anche punti ecc.)
+</p>
+
+<pre>
+class UnaStringa {
+  public static void main(String args[]) {
+    String s;
+
+    s="abcd efgh";
+
+    System.out.println(s);
+  }
+}
+</pre>
+
+<p>
+Il significato &egrave; chiaro: viene definita
+una variabile stringa, ci viene messa la sequenza
+di caratteri <tt>abcd efgh</tt>, che poi viene
+stampata.
+</p>
+
+<p>
+Domanda: le stringhe sono oggetti. Come mai
+non si fa <tt>new</tt>?
+</p>
+
+<hr>
+
+
+<h4>Stringhe: definizione</h4>
+
+<pre>
+  String s;
+</pre>
+
+
+<p>
+Solita dichiarazione di variabile
+</p>
+
+<p>
+La <tt>new</tt> non &egrave; necessaria
+(vedi prox. pagina).
+</p>
+
+<img src="stringhe-1.jpg">
+
+<hr>
+
+
+<h4>Stringhe: creazione</h4>
+
+<p>
+Regola generale: gli oggetti vanno creati
+con <tt>new</tt>, a meno che non siano il
+risultato della valutazione di un metodo.
+</p>
+
+<p>
+Caso delle stringhe:
+</p>
+
+<pre>
+  s="abcd efgh";
+</pre>
+
+<p>
+Questa istruzione <b>crea la stringa</b>
+</p>
+
+<p>
+Si pu&ograve; pensare che l'istruzione
+<tt>s="abcd efgh";</tt> sia una invocazione
+di metodo che crea la zona di memoria e
+ci mette dentro la sequenza di caratteri.
+</p>
+
+<img src="stringhe-2.jpg">
+
+<hr>
+
+
+<h4>Stringhe: uso</h4>
+
+<p>
+Le stringhe si possono stampare:
+</p>
+
+<pre>
+  System.out.println(s);
+</pre>
+
+<p>
+Vengono stampati i caratteri (senza le
+virgolette).
+</p>
+
+<hr>
+
+
+<h4>Dichiarazione/creazione</h4>
+
+<p>
+Per valori interi o reali, basta la sola
+dichiarazione.
+</p>
+
+<p>
+Per gli oggetti, servono due zone di memoria.
+</p>
+
+<p>
+La dichiarazione crea la prima, la creazione
+crea la seconda.
+</p>
+
+<dl>
+<dt>dichiarazione di variabile
+<dd>crea il rettangolo piccolo accanto al nome di variabile
+
+<dt>creazione
+<dd>crea il rettangolo grande che contiene i dati
+</dl>
+
+<p>
+La creazione si pu&ograve; fare con:
+</p>
+
+<ul>
+<li><tt>new</tt>
+<li>un metodo di quelli che hanno come risultato un oggetto
+(questi metodi fanno loro la <tt>new</tt>)
+<li>solo per le stringhe: con le assegnazioni
+<tt>var="..."</tt>
+</ul>
+
+<hr>
+
+
+<h4>Stringhe: manipolazione</h4>
+
+<p>
+Alcuni metodi sulle stringhe:
+</p>
+
+<dl>
+
+<dt><tt>length</tt>
+<dd>senza argomenti, d&agrave; il numero di
+caratteri della stringa
+
+<dt><tt>concat</tt>
+<dd>concatena la stringa con un'altra;
+non modifica la stringa, ma ne crea una
+nuova
+
+<dt><tt>substring</tt>
+<dd>crea una nuova stringa che contiene solo
+una sezione di quella vecchia
+
+</dl>
+
+<p>
+Per esempio, <tt>x=s.length();</tt> mette nella
+variabile intera <tt>x</tt> il numero di
+caratteri che si trovano nella stringa <tt>s</tt>.
+</p>
+
+<p>
+<tt>c=a.concat(b)</tt> crea una nuova stringa che
+&egrave; la concatenazione di <tt>a</tt> e <tt>b</tt>,
+ossia la nuova stringa ottenuta mettendo i caratteri
+di <tt>b</tt> subito dopo quelli di <tt>a</tt>. Il
+metodo crea una nuova stringa.
+</p>
+
+<hr>
+
+
+<h4>Indici di una stringa</h4>
+
+<p>
+Alcuni metodi riguardano parti di una stringa.
+</p>
+
+<p>
+Per esempio, <tt>substring</tt> prende una
+parte della stringa.
+</p>
+
+<p>
+Come faccio a capire quali caratteri devo prendere?
+</p>
+
+<p>
+Si usano degli indici: il primo carattere ha
+indice <tt>0</tt>, il secondo <tt>1</tt>, ecc.
+</p>
+
+<hr>
+
+
+<h4>Indici, graficamente</h4>
+
+<p>
+La stringa <tt>"werasdew"</tt> viene vista
+come una sequenza di caratteri, ognuno in
+una casella separata.
+</p>
+
+<img src="string-1.jpg">
+
+<p>
+Ogni casella ha un numero di posizione:
+</p>
+
+<img src="string-2.jpg">
+
+<p>
+I numeri di posizione si chiamano indici.
+</p>
+
+<p>
+Notare che una stringa pu&ograve; anche contenere
+pi&ugrave; volte lo stesso carattere, in posizioni
+diverse.
+</p>
+
+<p>
+Invece, ogni indice identifica un carattere solo
+all'interno della stringa.
+</p>
+
+<p>
+Motivo: non ha senso dire: trova la sottostringa
+dal carattere <tt>w</tt> al carattere <tt>e</tt>,
+dato che questi caratteri compaiono pi&ugrave;
+volte nella stringa.
+</p>
+
+<hr>
+
+
+<h4>Uso degli indici</h4>
+
+<p>
+Il metodo <tt>substring</tt> prende solo un frammento
+della stringa originaria.
+</p>
+
+<p>
+Viene creata una nuova stringa, in cui viene copiata
+una parte della stringa originaria.
+</p>
+
+<p>
+Servono due argomenti, che dicono dove iniziare
+a copiare e dove terminare.
+</p>
+
+<pre>
+  t=s.substring(3,6);
+</pre>
+
+<p>
+Il significato degli argomenti:
+</p>
+
+<dl compact="compact">
+
+<dt>primo:
+<dd>il primo carattere da copiare
+
+<dt>secondo:
+<dd>il primo carattere da <i>non</i> copiare
+
+</dl>
+
+<img src="substring.jpg">
+
+<p>
+Creo la nuova stringa, in cui copio i caratteri
+che stanno nelle posizioni <tt>3</tt>, <tt>4</tt>
+e <tt>5</tt>. Il carattere <tt>6</tt> non lo copio,
+perch&egrave; &egrave; il primo carattere da non
+copiare (il secondo argomento).
+</p>
+
+<p>
+Notare che i numeri di indice della nuova stringa
+partono comunque da <tt>0</tt>
+</p>
+
+<p>
+Ogni stringa ha numeri <tt>0</tt>, <tt>1</tt>, ecc,
+indipendentemente da come la stringa &egrave; stata
+ottenuta.
+</p>
+
+<!--
+
+conversione da dato a stringa
+
+concatenazione di stringa e dato
+
+-->
+
+
+
+  
+
+
+

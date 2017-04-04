@@ -1,0 +1,36 @@
+
+<HTML>
+
+<HEAD>
+<META HTTP-EQUIV="Context-Type" CONTEXT="text/html;charset=PREDEFINITA (AUTOMATICA)">
+<meta name="GENERATOR" content="Microsoft Internet Assistant for PowerPoint 97">
+ <TITLE>Ensuring Atomicity</TITLE> 
+</HEAD>
+
+<BODY     >
+
+ <H1>Ensuring Atomicity</H1> 
+ <P><UL>
+<LI><H2>DBMS ensures atomicity (all-or-nothing property) even if system crashes in the middle of a Xact.
+</H2>
+</UL><UL>
+<LI><H2>Idea: Keep a log (history) of all actions carried out by the DBMS while executing a set of Xacts:
+</H2>
+<UL>
+<LI>Before a change is made to the database, the corresponding log entry is forced to a safe location.  (WAL protocol; OS support for this is often inadequate.)
+<LI>After a crash, the effects of partially executed transactions are undone using the log. (Thanks to WAL, if log entry wasn’t saved before the crash, corresponding change was not applied to database!)</UL></UL></P>
+<P></P> 
+<P>
+<TABLE>
+  <TD HEIGHT=100 WIDTH=100> <A HREF="tsld011.htm">Diapositiva precedente</A> </TD>
+  <TD HEIGHT=100 WIDTH=100> <A HREF="tsld013.htm">Diapositiva successiva</A> </TD>
+  <TD HEIGHT=100 WIDTH=150> <A HREF="tsld001.htm">Torna alla prima diaposiva</A> </TD>
+  <TD HEIGHT=100 WIDTH=150> <A HREF="sld012.htm">Visualizza versione grafica</A> </TD>
+</TABLE>
+<BR>
+</P>
+
+
+
+</Body>
+</HTML>

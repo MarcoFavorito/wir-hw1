@@ -1,0 +1,84 @@
+  <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN"
+           "http://www.w3.org/TR/REC-html40/loose.dtd">
+<HTML>
+<META NAME="GENERATOR" CONTENT="TtH 2.25">
+                                                                      
+<center>  <b>   
+<title>Testo esame 8-6-2000 (2&#170; prova)</title>
+Universit&#224; di Roma ``La Sapienza''<br>
+   Facolt&#224; di Ingegneria<br>
+   Corso di Fondamenti di Informatica - A.A.&#229;<br>
+   Corso di Laurea: </b>Ambiente e Territorio</b><br>
+  Appello del <b>8 giugno 2000</b> - 2<sup>a</sup> prova scritta<br>
+  <em>tempo a disposizione: 1 ora</em>
+</center>
+<p>
+<b>Problema 2 (4 punti)</b>
+
+<p>
+Con riferimento al linguaggio C, discutere, mostrando anche esempi, le tecniche che &#232; 
+possibile adottare nei casi in cui occorra gestire un array (tipo 
+base: un qualunque tipo semplice) di cui non si conosca la dimensione 
+al momento della scrittura del programma.
+
+<p>
+ <b>Problema 3 (4 punti)</b>
+
+<p>
+Si consideri il seguente programma C:
+
+<p>
+
+<pre>
+#include &lt;stdio.h&#62;
+
+int Mistery(int i, int j) {
+    if(j == 0)
+        return i;
+    else
+        return Mistery(i, j-1) - 1;
+}
+
+main() {
+    printf("%d\n", Mistery(-7, 3));
+    return 0;
+}
+</pre>
+
+<p>
+
+<UL>
+<li> Descrivere cosa fa (non come lo fa) la funzione <tt>Mistery</tt>. Che valore viene stampato dal programma? 
+
+<li> Fornire almeno un valore dei parametri attuali per i quali l'attivazione
+  della funzione <tt>Mistery</tt> non termina.
+</UL>
+<p>
+ <b>Problema 4 (4 punti)</b>
+Si consideri una tabella relazionale <tt>PubblicazioniEdicola</tt> con i seguenti attributi:
+
+<UL>
+<p>
+    
+<li>  <tt>Nome</tt>. Il nome della pubblicazione (ad es., il 
+    titolo di un quotidiano o di una rivista ecc.)
+
+<p>
+    
+<li>  <tt>Editore</tt>. Il nome dell'editore della pubblicazione.
+
+<p>
+    
+<li>  <tt>Tipologia</tt>. `R' rivista, `Q' quotidiano, `M' monografia ecc.
+
+<p>
+    
+<li>  <tt>PrezzoUnitario</tt>. Il prezzo (al pubblico) unitario della pubblicazione.
+</UL>
+<p>
+Scrivere una interrogazione SQL per determinare i nomi di tutti gli 
+editori (in ordine alfabetico) che stampano quotidiani con prezzo al 
+pubblico inferiore a Lit.&nbsp;2000.
+
+<p><hr><small>File translated from T<sub><font size="-1">E</font></sub>X by <a href="http://hutchinson.belmont.ma.us/tth/">T<sub><font size="-1">T</font></sub>H</a>, version 2.25.<br>On  9 Jun 2000, 12:57.</small>
+</HTML>

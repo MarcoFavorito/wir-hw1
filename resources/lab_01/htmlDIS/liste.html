@@ -1,0 +1,66 @@
+<!-- saved from url=(0022)http://internet.e-mail -->
+<!doctype html public "-//w3c//dtd html 4.0 transitional//en">
+<html>
+<head>
+   <title>Tecniche di Programmazione - Esercitazione 3</title>
+   <link rel="stylesheet" href="../../tp.css" type="text/css">
+</head>
+<body>
+<center><B>Tecniche di Programmazione</B> <BR>
+    <B>Corsi di Laurea in Ingegneria Informatica e Automatica</B>
+  <p><b>A.A. 2004/05</b></p>
+  <p><b>Esercitazione 3 </b></p>
+</center>
+
+
+<hr>
+
+<p><center>
+  <H3><b>Gestione di dati sperimentali</b></H3>
+</center>
+<p><blockquote> 
+  <p>Scrivere una classe <code>Esperimento</code> che mantenga informazioni 
+riguardo ai dati sperimentali misurati durante un esperimento. 
+I dati vengono forniti sotto forma di valori interi
+positivi memorizzati su file (uno per ciascuna linea).</P>
+
+
+<P>
+La classe <code>Esperimento</code> deve avere le seguenti 
+funzionalit&agrave;:</p>
+  <ul>
+    <li>creazione di un esperimento a partire da una stringa contenente il nome del file in cui sono memorizzati i valori</li>
+    <li>calcolo e restituzione della media (in <code>double</code>) dei valori
+    <li>ordinamento dei valori sperimentali</li>
+    <li>eliminazione dei valori multipli (doppioni)</li>
+    <li>scrittura su nuovo file (passato come argomento) dei valori</li>
+  </ul>
+<p>
+<i>Nota</i>: Si usi il file <a href="dati.txt">dati.txt</a> come file di dati di prova per la classe e il seguente programma <a href="Main.java">Main.java</a> per verificare il funzionamento della classe
+<!-- <p>2) si utilizzi un qualsiasi metodo di ordinamento (vedi <a href="../../Dispense/Ordinamento-1-per-pag.pdf">Dispensa 2</a>)
+  per ordinare i dati;<br>
+  3) si usi come variabile di istanza un array di interi di 100
+  componenti inizializzato
+  nel costruttore leggendo i valori dal file;<br> -->
+  </blockquote>
+
+<blockquote>
+<H3>Parte 1. </H3>
+<P>Realizzare la classe <code>Esperimento</code> utilizzando la tecnica degli array dinamici.</P>
+</blockquote>
+<blockquote>
+<H3>Parte 2. </H3>
+<P>Realizzare la classe <code>Esperimento</code> utilizzando una 
+struttura collegata lineare (o lista) di interi. Si risolva l'esercizio implementando il metodo ordina in tre passi: <br>
+1) costruzione di un array di interi dagli elementi della lista; <br>
+2) invocazione di un metodo di ordinamento sugli array; <br>
+3) costruzione di una nuova lista contenente i dati presenti nell'array ordinato.</P>
+Per ordinare i dati, si utilizzi l'algoritmo di ordinamento <em>quicksort</em>, implementato nella classe <a href="QuickSortAlgorithm.java">QuickSortAlgorithm.java</a>.
+</blockquote>
+
+
+
+<p><a href="soluzione">Soluzione</a></p> 
+
+</body>
+</html>

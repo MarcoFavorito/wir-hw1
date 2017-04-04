@@ -1,0 +1,141 @@
+<HTML>
+<BODY >
+
+<DIV ALIGN="CENTER">
+<FONT SIZE="+1"><B>Diploma Universitario in Ingegneria Informatica
+<BR>
+Esame di Fondamenti di Informatica II - primo modulo
+<BR>
+A.A. 1998/99 - Appello del 26 aprile 1999
+</B></FONT></DIV>
+
+<P>
+<P>
+
+<B>Problema 1</B>&nbsp;&nbsp;Si vuole progettare una classe in modo tale che ogni
+oggetto della classe rappresenti un'azienda con i suoi impiegati. La
+specifica del corrispondente tipo astratto &#232;:
+
+<P><DL>
+<DT><STRONG><U>TipoAstratto</U> <I>Azienda</I></STRONG>
+<DD><DT><STRONG><U>Domini</U></STRONG>
+<DD>&nbsp;&nbsp; <I>Az</I> (dominio di interesse), <I>Imp</I> (dominio per
+il tipo <I>Impiegato</I>), <I>Tur</I> (dominio per il tipo  <I>Turno</I>)
+   <DT><STRONG><U>Funzioni</U></STRONG>
+<DD>&nbsp;&nbsp;
+   <DL>
+<DT><STRONG><I>Crea</I></STRONG> : <I>(Intero) --> Az</I>
+<DD>
+precondizioni e postcondizioni per 
+<!-- MATH: $Crea(k) = a$ -->
+<I>Crea</I>(<I>k</I>) = <I>a</I>
+<BR>
+             <U>pre</U>: nessuna
+<BR>
+             <U>post</U>: <I>a</I> &#232; un'azienda con 0 impiegati,
+             e con il vincolo di non poter assumere pi&#249; di <I>k</I> impiegati
+          <DT><STRONG><I>Massimo</I></STRONG> : <I>(Az) --> Intero</I>
+<DD>
+precondizioni e postcondizioni per 
+<!-- MATH: $Massimo(a) = k$ -->
+<I>Massimo</I>(<I>a</I>) = <I>k</I>
+<BR>
+             <U>pre</U>: nessuna
+<BR>
+             <U>post</U>: <I>k</I> &#232; il numero massimo di impiegati
+              che l'azienda <I>a</I> pu&#242; assumere
+          <DT><STRONG><I>Quanti</I></STRONG> : <I> (Az) --> Intero</I>
+<DD>
+precondizioni e postcondizioni per 
+<!-- MATH: $Quanti(a) = q$ -->
+<I>Quanti</I>(<I>a</I>) = <I>q</I>
+<BR>
+             <U>pre</U>: nessuna
+<BR>
+             <U>post</U>: <I>q</I> &#232; il numero  di impiegati in <I>a</I>
+          <DT><STRONG><I>Assume</I></STRONG> : <I>(Az,Imp) --> Az</I>
+<DD>
+precondizioni e postcondizioni per 
+<!-- MATH: $Assume(a,i) = b$ -->
+<I>Assume</I>(<I>a</I>,<I>i</I>) = <I>b</I>
+<BR>
+             <U>pre</U>: l'azienda <I>a</I> ha un numero di impiegati
+             minore al massimo consentito per essa, e <I>i</I> non &#232; impiegato in  <I>a</I>
+<BR>
+             <U>post</U>: <I>b</I> &#232; l'azienda pari ad <I>a</I> con la
+             differenza che <I>b</I> ha <I>i</I> come impiegato in pi&#249;, e ad <I>i</I> non
+             &#232; stato assegnato alcun turno
+           <DT><STRONG><I>Assegna</I></STRONG> : <I>(Az,Imp,Tur) --> Az</I>
+<DD>
+precondizioni e postcondizioni per 
+<!-- MATH: $Assegna(a,i,t) = b$ -->
+<I>Assegna</I>(<I>a</I>,<I>i</I>,<I>t</I>) = <I>b</I>
+<BR>
+             <U>pre</U>: <I>i</I> &#232; impiegato in <I>a</I>
+<BR>
+             <U>post</U>: <I>b</I> &#232; l'azienda pari ad <I>a</I>, con la
+             differenza che <I>t</I> viene aggiunto ai turni assegnati a <I>i</I> in
+             <I>b</I>
+           <DT><STRONG><I>Togli</I></STRONG>  : <I>(Az,Imp,Tur) --> Az</I>
+<DD>
+precondizioni e postcondizioni per 
+<!-- MATH: $Togli(a,i,t) = b$ -->
+<I>Togli</I>(<I>a</I>,<I>i</I>,<I>t</I>) = <I>b</I>
+<BR>
+             <U>pre</U>: <I>i</I> &#232; impiegato in <I>a</I> e <I>t</I> &#232; uno dei
+             turni asseganti a <I>i</I> in <I>a</I>
+<BR>
+             <U>post</U>: <I>b</I> &#232; l'azienda pari ad <I>a</I>, con la
+             differenza che <I>t</I> non &#232; tra i turni assegnati a <I>i</I> in <I>b</I>
+           <DT><STRONG><I>EstAssegnato</I></STRONG> : <I>(Az,Imp,Tur) --> Intero</I>
+<DD>
+precondizioni e postcondizioni per 
+<!-- MATH: $EstAssegnato(a,i,t) = j$ -->
+<I>EstAssegnato</I>(<I>a</I>,<I>i</I>,<I>t</I>) = <I>j</I>
+<BR>
+             <U>pre</U>: nessuna
+<BR>
+             <U>post</U>: se <I>i</I> non &#232; impiegato in <I>a</I>, allora <I>j</I> =
+             -1; se <I>i</I> &#232; impiegato in <I>a</I> e <I>t</I> non &#232; uno dei turni
+             assegnati a <I>i</I> in <I>a</I>, allora <I>j</I> = 0; se <I>i</I> &#232; impiegato in
+             <I>a</I> e <I>t</I> &#232; uno dei turni assegnati a <I>i</I> in <I>a</I>, allora <I>j</I> =
+             1</DL>
+   <DT><STRONG><U>FineTipoAstratto</U></STRONG>
+<DD></DL>
+
+<P>
+
+<B>Domanda 1</B>&nbsp;&nbsp;Si chiede di illustrare le scelte di progetto riguardante la
+realizzazione del tipo astratto <I>Azienda</I> mediante una classe <TT>Azienda</TT>
+in C++. Per riferirsi ai tipi astratti <I>Impiegato</I> e <I>Turno</I> &#232; necessario
+utilizzare le classi gi&#224; definite <TT>Impiegato</TT> e <TT>Turno</TT>, delle
+quali per&#242; non &#232; nota n&#233; la definizione n&#233; la dichiarazione.
+
+<P>
+<P>
+
+<B>Domanda 2</B>&nbsp;&nbsp;Si chiede di scrivere la classe <TT>Azienda</TT> che realizza il
+tipo astratto <I>Azienda</I> secondo le scelte di progetto illustrate per la
+Domanda 1. Se la progettazione della classe richiede la ridefinizione del
+costruttore di copia e dell'operatore di assegnazione, la specifica delle loro 
+istruzioni &#232; facoltativa.  
+
+<P>
+<P>
+
+<B>Problema 2</B>&nbsp;&nbsp;Realizzare una funzione esterna (non friend) alla classe
+<TT>Azienda</TT> che, data un'azienda <I>a</I>, un turno <I>t</I>, ed un insieme <I>s</I> di
+impiegati, calcoli quanti sono gli impiegati in <I>s</I> che lavorano nell'azienda
+<I>a</I>, e a quanti di questi &#232; stato assegnato il turno <I>t</I> nell'azienda <I>a</I>.
+Si noti che per realizzare la funzione si deve decidere il modo in cui
+rappresentare i dati da fornire alla funzione stessa.
+
+<P>
+
+<B>Problema 3</B>&nbsp;&nbsp;Dare le definizioni di: schema concettuale, relazione
+has-a, relazione has-many, relazione isa.  Illustrare un esempio di schema
+concettuale con almeno una relazione has-a, una relazione has-many ed una
+relazione isa.
+</ADDRESS>
+</BODY>
+</HTML>

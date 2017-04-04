@@ -1,0 +1,104 @@
+<!-- saved from url=(0022)http://internet.e-mail -->
+<html>
+<head>
+   <title>Esame del 5/7/2004 - Compito B</title>
+</head>
+<body>
+
+<center>
+  <h2>Appello del 5/7/2004 - Compito B</h2>
+</center>
+
+<p>
+
+Si vogliono gestire le graduatorie degli insegnanti. Di un oggetto<i>
+Graduatoria</i> sono
+di interesse la disciplina di riferimento (una stringa), ed una lista di
+insegnanti. Di ciascun&nbsp; insegnante è
+necessario sapere le seguenti informazioni:</p>
+<ul>
+  <li> <font color="#000000"><i>nome </i>(una stringa). Si assuma che il nome 
+    sia identificativo, cioè che non possano esistere due insegnanti aventi lo 
+    stesso nome nella lista;</font> 
+  <li><font color="#000000"><i>punteggio</i> (un intero).</font> 
+</ul>
+
+Gli oggetti <em>Graduatoria</em> supportano le seguenti funzionalit&agrave;: 
+<ul>
+  <li><em>crea:</em> che, data una stringa <em>n</em>  che rappresenta la
+    disciplina di riferimento, crea un oggetto <em>Graduatoria</em> per la
+    disciplina <em>n</em>
+    che inizialmente non ha alcun insegnante;</li>
+  <li><em>disciplina:</em> che restituisce la disciplina di riferimento della
+    gradutoria; 
+  </li>
+  <li><em>inserisci:</em> che dato il nome di un insegnante, ed il suo
+    punteggio, lo inserisce in gradutoria prima di tutti gli insegnati aventi
+    punteggio inferiore;&nbsp;tuttavia, se l'insegnante è già
+    presente in graduatoria, lancia una
+    eccezione;</li>
+  <li><i>posizione:</i> che, dato il nome di un insegnante,
+    restituisce la sua posizione in graduatoria; se l'insegnante non è presente
+    in graduatoria restituisce -1;</li>
+  <li>
+<i>elimina:</i> che, dato il nome di un insegnante, lo elimina dalla graduatoria; se
+l'insegnante non è presente in graduatoria, lancia una
+    eccezione;</li>
+  <li>
+<i>nomeInsegnante:</i> che, dato un intero che indica una posizione in
+graduatoria, restituisce il nome dell'insegnante che occupa quella posizione; se
+non esiste un insegnante in quella posizione (cioè la graduatoria non arriva a
+coprire la posizione data), genera una eccezione;</li>
+  <li>
+<i>punteggioInsegnante:</i> che, dato un intero che indica una posizione in
+graduatoria, restituisce il punteggio dell'insegnante che occupa quella
+posizione; se non esiste un insegnante in quella posizione (cioè la graduatoria
+non arriva a coprire la posizione data), genera una eccezione;</li>
+  <li>
+<font color="#000000"><i>listaInsegnanti:</i> che</font>, dato un un punteggio,<font color="#000000">
+restituisce una struttura
+collegata formata da nodi della classe<pre>public class nodoLista
+{
+    public String nome;
+    public nodoLista next;
+}
+</pre>
+in cui sono memorizzati i nomi di tutti gli insegnanti che hanno quel punteggio
+in graduatoria.</li>
+</ul>
+
+  
+<p><strong>Domanda 1.</strong> Scrivere una classe Java <code>Graduatoria</code> 
+  per rappresentare oggetti <em>Graduatoria</em>.&nbsp; Dei metodi <i>nomeInsegnante 
+  </i>e<i> punteggioInsegnante</i> è necessario<i> </i>scrivere le segnature,<i> 
+  </i>ma è sufficiente realizzarne <b> solo uno</b> a scelta. Fornire il costo 
+  in tempo dei metodi che realizzano le funzionalit&agrave; <em>inserisci</em>, 
+  <i>elimina</i> e <i>listaInsegnanti</i>, motivando la risposta (indicando esplicitamente 
+  i parametri di input della funzione di costo ed il caso peggiore).
+<p><strong>Domanda 2.</strong>
+   Realizzare un metodo statico <code>StampaInsegnanti</code> cliente della classe
+  <code>Graduatoria</code> che, dati
+<ul>
+  <li>un riferimento <i>g</i> ad un oggetto di classe <code>Graduatoria</code>,</li>
+  <li>il nome <i>n</i> di un insegnante,</li>
+  <li>un intero <i>r</i>,&nbsp;</li>
+  <li>il nome <i>fout</i> di un file,</li>
+</ul>
+  <p>scriva sul file <i>fout</i>, uno per riga, i nomi di tutti gli insegnanti di
+  <i>g</i> che abbiano un punteggio <i>p </i>tale che&nbsp;</p>
+  <p><i>pn-r &lt;= p &lt;=&nbsp; pn+r</i>,</p>
+  <p>dove <i>pn</i> indica il punteggio di<i> n</i>.</font> <font color="#000000">
+Fornire il costo in tempo del metodo realizzato, motivando la risposta (indicando esplicitamente 
+  i parametri di input della funzione di costo ed il caso peggiore).</p>
+
+  
+<p><strong>Domanda 3.</strong> Spiegare la rappresentazione collegata di alberi 
+  binari in cui l'informazione in ciascun nodo &egrave; un riferimento ad un oggetto. 
+  Realizzare un metodo statico pubblico<code> VerificaLineare</code>,<code> </code>che, 
+  dato il riferimento alla radice di un albero binario <em>alb</em>,&nbsp; restituisca 
+  <i>true</i> se l'albero è lineare, cioè se ogni nodo non foglia ha un solo figlio 
+  non vuoto, <i>false</i> altrimenti. Fornire il costo in tempo e spazio di memoria 
+  del metodo realizzato, motivando la risposta (indicando esplicitamente i parametri&nbsp;di 
+  input della funzione di costo&nbsp;ed il caso peggiore).
+</body>
+</html>

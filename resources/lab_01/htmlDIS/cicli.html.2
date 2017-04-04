@@ -1,0 +1,3106 @@
+<html>
+<head>
+<title>I cicli</title>
+      <link rel="top" href="../lezioni.html">
+      <link rel="up" href="../lezioni.html">
+      <link rel="contents" href="../lezioni.html">
+      <link rel="previous" href="../condiz/condiz.html">
+      <link rel="next" href="../boolean/boolean.html">
+</head>
+
+<body>
+
+<h1>I cicli</h1>
+
+<p>
+Modo facile per eseguire molte istruzioni
+simili.
+</p>
+
+<p>
+Si basano su una costruzione in cui una stessa
+istruzione (o blocco) vengono eseguite pi&ugrave;
+volte.
+</p>
+
+<hr>
+
+<h4>Perch&egrave; servono i cicli?</h4>
+
+<p>
+Esercizio: scrivere il programma che stampa
+la seguente stringa 100 volte:
+</p>
+
+<pre>
+non devo parlare durante la lezione
+</pre>
+
+<hr>
+
+
+<h4>La soluzione dello scriba</h4>
+
+<p>
+Ripeto cento volte la istruzione.
+</p>
+
+<pre>
+class Cento {
+  public static void main(String args[]) {
+    System.out.println("non devo parlare durante la lezione");
+    System.out.println("non devo parlare durante la lezione");
+    System.out.println("non devo parlare durante la lezione");
+    System.out.println("non devo parlare durante la lezione");
+    System.out.println("non devo parlare durante la lezione");
+    System.out.println("non devo parlare durante la lezione");
+    System.out.println("non devo parlare durante la lezione");
+    System.out.println("non devo parlare durante la lezione");
+    System.out.println("non devo parlare durante la lezione");
+    System.out.println("non devo parlare durante la lezione");
+    System.out.println("non devo parlare durante la lezione");
+    System.out.println("non devo parlare durante la lezione");
+    System.out.println("non devo parlare durante la lezione");
+    System.out.println("non devo parlare durante la lezione");
+    System.out.println("non devo parlare durante la lezione");
+    System.out.println("non devo parlare durante la lezione");
+    System.out.println("non devo parlare durante la lezione");
+    System.out.println("non devo parlare durante la lezione");
+    System.out.println("non devo parlare durante la lezione");
+    System.out.println("non devo parlare durante la lezione");
+    System.out.println("non devo parlare durante la lezione");
+    System.out.println("non devo parlare durante la lezione");
+    System.out.println("non devo parlare durante la lezione");
+    System.out.println("non devo parlare durante la lezione");
+    System.out.println("non devo parlare durante la lezione");
+    System.out.println("non devo parlare durante la lezione");
+    System.out.println("non devo parlare durante la lezione");
+    System.out.println("non devo parlare durante la lezione");
+    System.out.println("non devo parlare durante la lezione");
+    System.out.println("non devo parlare durante la lezione");
+    System.out.println("non devo parlare durante la lezione");
+    System.out.println("non devo parlare durante la lezione");
+    System.out.println("non devo parlare durante la lezione");
+    System.out.println("non devo parlare durante la lezione");
+    System.out.println("non devo parlare durante la lezione");
+    System.out.println("non devo parlare durante la lezione");
+    System.out.println("non devo parlare durante la lezione");
+    System.out.println("non devo parlare durante la lezione");
+    System.out.println("non devo parlare durante la lezione");
+    System.out.println("non devo parlare durante la lezione");
+    System.out.println("non devo parlare durante la lezione");
+    System.out.println("non devo parlare durante la lezione");
+    System.out.println("non devo parlare durante la lezione");
+    System.out.println("non devo parlare durante la lezione");
+    System.out.println("non devo parlare durante la lezione");
+    System.out.println("non devo parlare durante la lezione");
+    System.out.println("non devo parlare durante la lezione");
+    System.out.println("non devo parlare durante la lezione");
+    System.out.println("non devo parlare durante la lezione");
+    System.out.println("non devo parlare durante la lezione");
+    System.out.println("non devo parlare durante la lezione");
+    System.out.println("non devo parlare durante la lezione");
+    System.out.println("non devo parlare durante la lezione");
+    System.out.println("non devo parlare durante la lezione");
+    System.out.println("non devo parlare durante la lezione");
+    System.out.println("non devo parlare durante la lezione");
+    System.out.println("non devo parlare durante la lezione");
+    System.out.println("non devo parlare durante la lezione");
+    System.out.println("non devo parlare durante la lezione");
+    System.out.println("non devo parlare durante la lezione");
+    System.out.println("non devo parlare durante la lezione");
+    System.out.println("non devo parlare durante la lezione");
+    System.out.println("non devo parlare durante la lezione");
+    System.out.println("non devo parlare durante la lezione");
+    System.out.println("non devo parlare durante la lezione");
+    System.out.println("non devo parlare durante la lezione");
+    System.out.println("non devo parlare durante la lezione");
+    System.out.println("non devo parlare durante la lezione");
+    System.out.println("non devo parlare durante la lezione");
+    System.out.println("non devo parlare durante la lezione");
+    System.out.println("non devo parlare durante la lezione");
+    System.out.println("non devo parlare durante la lezione");
+    System.out.println("non devo parlare durante la lezione");
+    System.out.println("non devo parlare durante la lezione");
+    System.out.println("non devo parlare durante la lezione");
+    System.out.println("non devo parlare durante la lezione");
+    System.out.println("non devo parlare durante la lezione");
+    System.out.println("non devo parlare durante la lezione");
+    System.out.println("non devo parlare durante la lezione");
+    System.out.println("non devo parlare durante la lezione");
+    System.out.println("non devo parlare durante la lezione");
+    System.out.println("non devo parlare durante la lezione");
+    System.out.println("non devo parlare durante la lezione");
+    System.out.println("non devo parlare durante la lezione");
+    System.out.println("non devo parlare durante la lezione");
+    System.out.println("non devo parlare durante la lezione");
+    System.out.println("non devo parlare durante la lezione");
+    System.out.println("non devo parlare durante la lezione");
+    System.out.println("non devo parlare durante la lezione");
+    System.out.println("non devo parlare durante la lezione");
+    System.out.println("non devo parlare durante la lezione");
+    System.out.println("non devo parlare durante la lezione");
+    System.out.println("non devo parlare durante la lezione");
+    System.out.println("non devo parlare durante la lezione");
+    System.out.println("non devo parlare durante la lezione");
+    System.out.println("non devo parlare durante la lezione");
+    System.out.println("non devo parlare durante la lezione");
+    System.out.println("non devo parlare durante la lezione");
+    System.out.println("non devo parlare durante la lezione");
+    System.out.println("non devo parlare durante la lezione");
+  }
+}
+</pre>
+
+<hr>
+
+
+<h4>Soluzione con ciclo</h4>
+
+<p>
+Questo programma fa la stessa cosa:
+</p>
+
+<pre>
+class CentoCiclo {
+  public static void main(String args[]) {
+    int a;
+
+    for(a=0; a&lt;100; a=a+1) {
+      System.out.println("non devo parlare in aula");
+    }
+
+  }
+}
+</pre>
+
+<hr>
+
+
+<h4>Forma semplificata di ciclo</h4>
+
+<p>
+Per fare i cicli si usano <tt>for</tt> e
+<tt>while</tt>
+</p>
+
+<p>
+Ora vediamo una forma particolare di <tt>for</tt>
+</p>
+
+<pre>
+for(variabile=valore1; variabile&lt;valore2;
+  variabile=variabile+1) 
+  istruzione;
+</pre>
+
+<p>
+Al posto di una sola istruzione, posso mettere un blocco:<br>
+(come sempre!)
+</p>
+
+<pre>
+for(variabile=valore1; variabile&lt;valore2;
+  variabile=variabile+1) {
+  istruzione;
+  istruzione;
+  ...
+}
+</pre>
+
+<hr>
+
+
+<h4>Cosa succede quando si esegue</h4>
+
+<pre>
+for(variabile=valore1; variabile&lt;valore2;
+  variabile=variabile+1)
+  istruzione;
+</pre>
+
+<p>
+L'istruzione viene eseguita una volta con
+<tt>valore1</tt>, poi con <tt>valore1+1</tt>,
+ecc.
+</p>
+
+<p>
+<b>Attenzione!</b> il <tt>valore2</tt> &egrave;
+il primo valore per il quale <b>NON</b> si
+esegue l'istruzione.
+</p>
+
+<hr>
+
+
+<h4>Unfolding del ciclo</h4>
+
+<p>
+Un ciclo di questo tipo
+</p>
+
+<pre>
+for(variabile=valore1; variabile&lt;valore2; variabile=variabile+1)
+  istruzione;
+</pre>
+
+<p>
+Equivale a queste istruzioni:
+</p>
+
+<pre>
+variabile=valore1;
+istruzione;
+variabile=valore1+1;
+istruzione;
+variabile=valore1+2;
+istruzione;
+variabile=valore1+3;
+...
+variabile=valore2-1;
+istruzione;
+variabile=valore2;
+</pre>
+
+<p>
+Quando <tt>variabile</tt> arriva a <tt>valore2</tt>,
+l'istruzione <i>non</i> viene eseguita.
+</p>
+
+<p>
+&Egrave; un modo per <i>capire</i>
+cosa fa un ciclo, non bisogna scriverlo
+per esteso nel programma!
+</p>
+
+<hr>
+
+
+<h4>Non devo parlare in aula</h4>
+
+<p>
+Il programma stampa cento volte, perch&egrave;
+eseguo l'istruzione per <tt>a=0</tt>,
+poi <tt>a=1</tt> fino ad <tt>a=99</tt>.
+</p>
+
+<p>
+Sono cento valori diversi
+</p>
+
+<p>
+L'istruzione viene eseguita cento volte.
+</p>
+
+<hr>
+
+
+<h4>Esercizio</h4>
+
+<p>
+Stampare i primi cento numeri pari positivi,
+escludendo lo zero.
+</p>
+
+<p>
+Se non ci riuscite, stampate i primi cento
+interi positivi (sia pari che dispari),
+escludendo lo zero.
+</p>
+
+<hr>
+
+
+<h4>Cento interi</h4>
+
+<p>
+Il primo valore da stampare &egrave; <tt>1</tt>
+</p>
+
+<p>
+L'ultimo &egrave; <tt>100</tt>
+</p>
+
+<p>
+Il primo da <i>non</i> stampare &egrave; <tt>101</tt>
+</p>
+
+<pre>
+class CentoInt {
+  public static void main(String args[]) {
+    int a;
+
+    for(a=1; a&lt;101; a=a+1) 
+      System.out.println(a);
+  }
+}
+</pre>
+
+<hr>
+
+
+<h4>Cento Pari</h4>
+
+<p>
+Due soluzioni possibili:
+</p>
+
+<ol>
+
+<li>faccio il ciclo da <tt>1</tt> a <tt>200</tt>,
+stampando solo i pari;
+
+<li>faccio il ciclo da <tt>1</tt> a <tt>100</tt>,
+ma poi stampo <tt>a*2</tt>
+
+</ol>
+
+<hr>
+
+
+<h4>Soluzione con la moltiplicazione</h4>
+
+<p>
+Se moltiplico i primo cento numeri per due,<br>
+ottengo i primi cento numeri pari.
+</p>
+
+<p>
+<tt>101</tt> &egrave; il primo numero da non considerare
+</p>
+
+<pre>
+class CentoPari {
+  public static void main(String args[]) {
+    int a;
+
+    for(a=1; a&lt;101; a=a+1) 
+      System.out.println(a*2);
+  }
+}
+</pre>
+
+<hr>
+
+
+<h4>Soluzione con <tt>if</tt></h4>
+
+<p>
+Il condizionale &egrave; una istruzione
+come le altre.
+</p>
+
+<p>
+Dove ci va una istruzione, ci posso
+mettere un condizionale.
+</p>
+
+<p>
+Vado da <tt>1</tt> a <tt>201</tt>, ma
+stampo solo i numeri pari.
+</p>
+
+<p>
+Condizione: numero pari = la divisione
+per <tt>2</tt> d&agrave; resto <tt>0</tt>
+</p>
+
+<pre>
+class CentoIf {
+  public static void main(String args[]) {
+    int a;
+
+    for(a=1; a&lt;201; a=a+1) 
+      if(a%2==0)
+        System.out.println(a);
+  }
+}
+</pre>
+
+<hr>
+
+
+<h4>Cicli dipendenti dai dati</h4>
+
+<p>
+Il numero di esecuzioni di un ciclo pu&ograve;
+dipendere anche dai dati.
+</p>
+
+<p>
+I valori iniziali e finali sono due
+espressioni intere qualsiasi.
+</p>
+
+<p>
+Esercizio: leggere due interi <tt>n</tt>
+ed <tt>m</tt>, e stampare tutti gli interi
+fra <tt>n</tt> ed <tt>m</tt>, inclusi.
+</p>
+
+<p>
+Assumere <tt>n&lt;m</tt>
+</p>
+
+<hr>
+
+
+<h4>Soluzione</h4>
+
+<p>
+Il ciclo inizia da <tt>n</tt>;<br>
+il primo valore da non stampare &egrave; <tt>m+1</tt>
+</p>
+
+<pre>
+import javax.swing.*;
+
+class DaA {
+  public static void main(String args[]) {
+    String s;
+    int n, m;
+
+    s=JOptionPane.showInputDialog("Inizio");
+    n=Integer.parseInt(s);
+
+    s=JOptionPane.showInputDialog("Fine");
+    m=Integer.parseInt(s);
+
+    int a;
+
+    for(a=n; a&lt;m+1; a=a+1) 
+      System.out.println(a);
+
+    System.exit(0);
+  }
+}
+</pre>
+
+<hr>
+
+
+<h4>Cicli: se <tt>m&lt;n</tt>?</h4>
+
+<p>
+Se la condizione &egrave; falsa subito,
+l'istruzione non viene eseguita nemmeno
+una volta.
+</p>
+
+<hr>
+
+
+<h4>Forma generale del ciclo <tt>for</tt></h4>
+
+<pre>
+for(istruzione; condizione; istruzione)
+  istruzione
+</pre>
+
+<p>
+Il significato &egrave;:
+</p>
+
+<img src="for.jpg">
+
+<hr>
+
+
+<h4>Parti di un ciclo</h4>
+
+<dl>
+
+<dt>inizializzazione
+<dd>istruzione che viene eseguita all'inizio
+del ciclo
+
+<dt>condizione di uscita
+<dd>quando diventa falsa, si smette di eseguire
+il ciclo
+
+<dt>istruzione di incremento
+<dd>serve a modificare la variabile di ciclo
+
+<dt>corpo del ciclo
+<dd>l'istruzione che viene eseguita ripetutamente
+
+</dl>
+
+<hr>
+
+
+<h4>Unfolding del ciclo: caso generale</h4>
+
+<pre>
+for(iniz; cond; incr)
+  corpo;
+</pre>
+
+<p>
+Questa istruzione si pu&ograve; interpretare
+come:
+</p>
+
+<pre>
+iniz;
+if(cond) {
+  corpo;
+  incr;
+  if(cond) {
+    corpo;
+    incr;
+    ...
+  }
+}
+</pre>
+
+<p>
+&Egrave; un modo per capire cosa succede
+(non va scritto per esteso)
+</p>
+
+<hr>
+
+
+<h4>Unfolding, con salto</h4>
+
+<pre>
+for(iniz; cond; incr)
+  corpo;
+
+altre istruzioni;
+</pre>
+
+<p>
+Si pu&ograve; pensare come:
+</p>
+
+<pre>
+iniz;
+if(!cond)
+  passa alle istruzioni successive;
+corpo;
+incr;
+if(!cond)
+  passa alle istruzioni successive;
+corpo;
+incr;
+...
+
+altre istruzioni
+</pre>
+
+<p>
+La condizione <tt>!cond</tt> &egrave; vera
+quando <tt>cond</tt> &egrave; falsa<br>
+(operatore booleano "not")
+</p>
+
+<hr>
+
+
+<h4>Ciclo: decremento</h4>
+
+<p>
+Stampare i numeri da <tt>m</tt> ad <tt>n</tt>
+</p>
+
+<p>
+Voglio prima <tt>m</tt> poi <tt>m-1</tt> ecc.
+</p>
+
+<p>
+Si assume <tt>m&gt;n</tt>
+</p>
+
+<hr>
+
+
+<h4>Decremento: soluzione</h4>
+
+<p>
+Come si costruisce un ciclo:
+</p>
+
+<ol>
+
+<li>se &egrave; un ciclo "standard", ossia
+uno di quelli gi&agrave; visti, uso lo schema
+solito
+
+<p/>
+
+<li>se non lo &egrave;, devo costruire le
+quattro parti (iniz, cond, incr, corpo)
+
+</ol>
+
+<hr>
+
+
+<h4>Corpo del ciclo</h4>
+
+<p>
+Devo ripetere
+<tt>System.out.println(...)</tt>
+</p>
+
+<p>
+Fra parentesi ci va la variabile del
+ciclo, oppure una espressione che
+dipende da questa.
+</p>
+
+<p>
+Intanto, mettiamo <tt>a</tt>; se serve,
+si potr&agrave; cambiare.
+</p>
+
+<pre>
+System.out.println(a);
+</pre>
+
+<hr>
+
+
+<h4>Inizializzazione, e incremento</h4>
+
+<p>
+Parto con <tt>a=m</tt>.
+</p>
+
+<p>
+Ad ogni passo, <tt>a</tt> deve diminuire
+di uno!
+</p>
+
+<pre>
+for(a=m; ...; a=a-1)
+  corpo;
+</pre>
+
+<hr>
+
+
+<h4>Condizione di uscita</h4>
+
+<p>
+&Egrave; facile sbagliarsi di uno in pi&ugrave;
+o in meno.
+</p>
+
+<p>
+Fare una prova con valori precisi
+(es <tt>m=4</tt> ed <tt>n=2</tt>)
+spesso risolve il problema.
+</p>
+
+<p>
+Considero lo stato attuale del ciclo:
+</p>
+
+<pre>
+for(a=m; ...; a=a-1)
+  System.out.println(a);
+</pre>
+
+<p>
+Il primo valore di <tt>a</tt> per il quale
+il corpo non va eseguito &egrave; <tt>n-1</tt>
+</p>
+
+<pre>
+for(a=m; a&gt;n-1; a=a-1)
+  System.out.println(a);
+</pre>
+
+<hr>
+
+
+<h4>Perch&egrave; <tt>&gt;</tt> invece di
+<tt>&lt;</tt>?</h4>
+
+<p>
+La condizione dice se devo continuare
+ad eseguire il ciclo.
+</p>
+
+<p>
+condizione vera=continua ad eseguire<br>
+condizione falsa=smetti
+</p>
+
+<p>
+La condizione deve diventare falsa
+<b>solo</b> quando voglio smettere di eseguire
+(e non prima)
+</p>
+
+<p>
+Se metto la condizione <tt>a&lt;n-1</tt> questa
+&egrave; subito falsa, per cui non si esegue
+il corpo nemmeno una volta.
+</p>
+
+<p>
+Confondere <tt>&lt;</tt> e <tt>&gt;</tt>
+in un ciclo con decremento &egrave; un errore
+comune.
+</p>
+
+<hr>
+
+
+<h4>Uso di <tt>&lt;=</tt> invece di <tt>&lt;</tt></h4>
+
+<p>
+Nel ciclo "standard":
+</p>
+
+<pre>
+for(a=0; a&lt;N; a=a+1)
+  istruzione;
+</pre>
+
+<p>
+Conviene usare <tt>a&lt;N</tt> come condizione,
+perch&egrave; cos&iacute; &egrave; pi&ugrave;
+evidente che il corpo viene eseguito <tt>N</tt>
+volte.
+</p>
+
+<p>
+In generale, si pu&ograve; anche usare una
+condizione con <tt>&lt;=</tt> o con
+<tt>&gt;=</tt>
+</p>
+
+<p>
+Basta ricordarsi che:
+</p>
+
+<ul>
+<li>la condizione viene verificata subito
+dopo l'incremento
+<li>se &egrave; falsa, il corpo non viene eseguito
+</ul>
+
+<pre>
+for(a=m; a&gt;=n; a=a-1)
+  System.out.println(a);
+</pre>
+
+<hr>
+
+
+<h4>Esercizio sui cicli</h4>
+
+<p>
+Estendere la classe <tt>Rectangle</tt> con un 
+metodo che stampa tutti i punti sulla base.
+</p>
+
+<pre>
+  void printBase()
+</pre>
+
+<hr>
+
+
+<h4>Soluzione</h4>
+
+<p>
+Il primo punto da stampare sta in posizione
+<tt>this.x, this.y</tt>
+</p>
+
+<p>
+L'ultimo sta in posizione <tt>this.x+this.width, this.y</tt>
+</p>
+
+<pre>
+import java.awt.*;
+
+class RectBase extends Rectangle {
+  void printBase() {
+    int a;
+    Point p;
+    p=new Point();
+
+    p.y=this.y;
+
+    for(a=this.x; a&lt;this.x+this.width+1; a=a+1) {
+      p.x=a;
+      System.out.println(p);
+    }
+  }
+}
+</pre>
+      
+<hr>
+
+
+<h4>Soluzione alternativa, con <tt>&lt;=</tt></h4>
+
+<p>
+Per la condizione di terminazione
+ci sono due possibilit&agrave;:
+</p>
+
+<ol>
+
+<li>uso <tt>a &lt; N</tt>, e poi <tt>N</tt>
+&egrave; il primo valore per il quale il corpo
+non va eseguito
+
+<li>uso <tt>a &lt;= N</tt>, ma questa volta
+<tt>N</tt> &egrave; l'ultimo valore con cui
+eseguire il corpo.
+
+</ol>
+
+<pre>
+import java.awt.*;
+
+class RectBase extends Rectangle {
+  void printBase() {
+    int a;
+    Point p;
+    p=new Point();
+
+    p.y=this.y;
+
+    for(a=this.x; a&lt;=this.x+this.width; a=a+1) {
+      p.x=a;
+      System.out.println(p);
+    }
+  }
+}
+</pre>
+
+<hr>
+
+
+<h4>Esercizio sui cicli</h4>
+
+<p>
+Stampare i soli valori positivi della
+funzione <i>f(x)</i> per <tt>x</tt> intero
+nell'intervallo <tt>[5,20]</tt>
+</p>
+
+<p align="center">
+<i>f(x)=x<sup>2</sup>-10x+2</i>
+</p>
+
+<hr>
+
+
+<h4>Stampa della funzione: soluzione</h4>
+
+<p>
+Iniziamo con la stampa di tutti i valori.
+</p>
+
+<p>
+Serve una stampa di <i>f(x)</i> per ogni
+<i>x</i> da 5 a 20.
+</p>
+
+<p>
+Il corpo del ciclo sar&agrave; una cosa
+del genere:
+</p>
+
+<pre>
+  System.out.println(x*x-10*x+2);
+</pre>
+
+<p>
+Non siamo ancora sicuri che il corpo sia
+questo: prima va scritto il resto.
+</p>
+
+<hr>
+
+
+<h4>Inizializzazione ed incremento</h4>
+
+<pre>
+for(...; ...; ...)
+  System.out.println(x*x-10*x+2);
+</pre>
+
+<p>
+Le parti del <tt>for</tt> sono:
+</p>
+
+<dl>
+
+<dt>iniz.
+<dd>il primo valore di <tt>x</tt> per il quale
+il ciclo va eseguito &egrave; <tt>5</tt>;<br>
+quindi, scrivo <tt>x=5</tt>
+
+<dt>incr.
+<dd>ad ogni passo <tt>x</tt> deve aumentare
+di uno, quindi ho <tt>x=x+1</tt>
+
+<dt>cond. uscita
+<dd>l'ultimo valore da considerare &egrave;
+<tt>20</tt>; oppure, il primo da non contare
+&egrave; <tt>21</tt>
+
+</dl>
+
+<pre>
+for(x=5; x&lt;=20; x=x+1)
+  System.out.println(x*x-10*x+2);
+</pre>
+
+<p>
+Oppure:
+</p>
+
+<pre>
+for(x=5; x&lt;21; x=x+1)
+  System.out.println(x*x-10*x+2);
+</pre>
+
+<hr>
+
+
+<h4>Stampa dei valori positivi</h4>
+
+<p>
+Stesso ciclo. Per&ograve; la stampa
+non va fatta se la funzione ha valore
+negativo.
+</p>
+
+<p>
+Si tratta di fare o non fare una cosa
+a seconda dei valori delle variabili
+</p>
+
+<p>
+Serve un condizionale.
+</p>
+
+<pre>
+for(x=5; x&lt;=20; x=x+1)
+  se f(x) e' positiva, stampala
+</pre>
+
+<hr>
+
+<h4>Valori positivi: codice</h4>
+
+<p>
+La condizione &egrave; <tt>x*x-10*x+2&lt;=0</tt>
+</p>
+
+<pre>
+for(x=5; x&lt;=20; x=x+1)
+  if(x*x-10*x+2&gt;=0)
+    System.out.println(x*x-10*x+2);
+</pre>
+
+<p>
+Soluzione che usa una variabile per
+evitare di fare due volte il calcolo:
+</p>
+
+<pre>
+for(x=5; x&lt;=20; x=x+1) {
+  f=x*x-10*x+2;
+
+  if(f &gt;= 0)
+    System.out.println(f);
+}
+</pre>
+
+<hr>
+
+
+<h4>Parentesi graffe</h4>
+
+<p>
+Cosa stampa questo programma?<br>
+(stesso di prima, ma senza parentesi)
+</p>
+
+<pre>
+for(x=5; x&lt;=20; x=x+1) 
+  f=x*x-10*x+2;
+
+  if(f &gt;= 0)
+    System.out.println(f);
+</pre>
+
+<hr>
+
+
+<h4>Risposta: si segue la sintassi dei cicli</h4>
+
+<p>
+La forma sintattica &egrave;:
+</p>
+
+<pre>
+for(....)
+  istruzione;
+</pre>
+
+<p>
+Dove l'istruzione pu&ograve; essere una
+istruzione composta<br>
+(sequenza fra graffe, condizionale, ecc.)
+</p>
+
+<pre>
+for(x=5; x&lt;=20; x=x+1)      for(...)
+  f=x*x-10*x+2;               istruzione;
+
+  if(f &gt;= 0)                istr successive;
+    System.out.println(f);
+</pre>
+
+<p>
+Quindi, il corpo del ciclo &egrave; dato
+solo da <tt>f=x*x-10*x+2;</tt>
+</p>
+
+<p>
+L'istruzione <tt>if...</tt> viene eseguita
+solo <i>dopo</i> che il ciclo &egrave;
+terminato.
+</p>
+
+<hr>
+
+
+<h4>Costruzione dei cicli</h4>
+
+<p>
+In generale, occorre stabilire cosa
+deve essere eseguito, anche se in
+modo approssimativo.
+</p>
+
+<p>
+In base a questo, si costruisce
+l'istruzione <tt>for</tt>
+</p>
+
+<p>
+Il corpo potrebbe poi richiedere modifiche
+</p>
+
+<hr>
+
+
+<h4>Sintassi del ciclo <tt>for</tt></h4>
+
+<pre>
+for(istruzione; condizione; istruzione)
+  istruzione;
+</pre>
+
+<p>
+Il corpo del ciclo pu&ograve; essere:
+</p>
+
+<ol>
+
+<li>una istruzione
+
+<li>una sequenza di istruzioni racchiuse
+fra graffe
+
+<li>un condizionale
+
+<li>un altro ciclo
+
+</ol>
+
+<p>
+Nel caso 2, la sequenza pu&ograve; a sua
+volta contenere un ciclo o una istruzione
+condizionale.
+</p>
+
+<p>
+Le istruzioni possono essere assenti.
+</p>
+
+<hr>
+
+
+<h4>Ciclo <tt>while</tt></h4>
+
+<p>
+A volte, l'istruzione di inizializzazione
+e di incremento non servono.
+</p>
+
+<p>
+In questo caso, so pu&ograve; usare il
+ciclo <tt>while</tt>
+</p>
+
+<pre>
+while(condizione)
+  istruzione;
+</pre>
+
+<p>
+Esegue l'istruzione finch&egrave; la
+condizione &egrave; vera.
+</p>
+
+<hr>
+
+
+<h4>Unfolding del ciclo <tt>while</tt></h4>
+
+<pre>
+while(condizione)
+  istruzione;
+</pre>
+
+<p>
+Equivale a fare:
+</p>
+
+<pre>
+if(condizione) {
+  istruzione;
+  if(condizione) {
+    istruzione;
+    ...
+  }
+}
+</pre>
+
+<hr>
+
+
+<h4>Unfolding, con uscita</h4>
+
+<pre>
+while(condizione)
+  istruzione;
+</pre>
+
+<p>
+Quando la condizione &egrave; falsa, si smette
+di eseguire il ciclo
+</p>
+
+<pre>
+if(!condizione)
+  passa all'istruzione che segue
+istruzione;
+if(!condizione)
+  passa all'istruzione che segue
+istruzione;
+if(!condizione)
+  passa all'istruzione che segue
+istruzione;
+...
+</pre>
+
+<p>
+Si controlla la condizione: se &egrave;
+vera, si esegue l'istruzione e si controlla
+la condizione, ecc.
+</p>
+
+<hr>
+
+
+<h4>Equivalenza <tt>for</tt>-<tt>while</tt></h4>
+
+<p>
+Ogni ciclo <tt>for</tt> si pu&ograve;
+trasformare in <tt>while</tt>, e viceversa.
+</p>
+
+<table border="1">
+
+<tr>
+<td>
+<pre>
+while(cond)
+  istruzione;
+</pre>
+</td>
+
+<td>&nbsp;=&nbsp;</td>
+<td>
+<pre>
+for( ; cond; )
+  istruzione;
+</pre>
+</td>
+</tr>
+
+<tr>
+<td>
+<pre>
+for(istr1;cond;istr2)
+  istruzione;
+</pre>
+</td>
+<td>&nbsp;=&nbsp;</td>
+
+<td>
+<pre>
+istr1;
+while(cond) {
+  istruzione;
+  istr2;
+}
+</pre>
+</td>
+</tr>
+
+</table>
+
+<hr>
+
+
+<h4>Perch&egrave; allora usare <tt>for</tt>?</h4>
+
+<p>
+D&agrave; una struttura chiara al programma
+</p>
+
+<p>
+Si sa in che punto guardare per cercare
+la inizializzazione e l'incremento del
+ciclo
+</p>
+
+<hr>
+
+
+<h4>Quando &egrave; meglio il <tt>while</tt>?</h4>
+
+<p>
+Due tipi di cicli.
+</p>
+
+<dl>
+
+<dt>cicli definiti:
+<dd>si sa in partenza quante iterazioni
+vanno eseguite;<br>
+questo numero pu&ograve; non essere una
+costante: basta che sia noto quando si
+inizia ad eseguire il ciclo
+
+<p/>
+
+<dt>cicli indefiniti:
+<dd>il numero di iterazioni non si pu&ograve;
+sapere in partenza
+
+</dl>
+
+<p>
+Si consiglia di usare <tt>for</tt> per i
+cicli definiti e <tt>while</tt> per quelli
+indefiniti.
+</p>
+
+<hr>
+
+
+<h4>Un esempio di ciclo indefinito</h4>
+
+<p>
+Stampare i valori di <i>f(x)=-x<sup>2</sup>+3x+4</i>
+per valori interi di <tt>x</tt> da <tt>0</tt> al primo
+valore per il quale la funzione diventa negativa.
+</p>
+
+<p>
+Non sappiamo quando fermarci se non calcoliamo
+prima i valori della funzione.
+</p>
+
+<hr>
+
+
+<h4>Soluzione</h4>
+
+<p>
+Sappiamo da che valore di <tt>x</tt> partire,
+ma non quando fermarci.
+</p>
+
+<pre>
+class Indef {
+  public static void main(String args[]) {
+    int x;
+
+    x=0;
+
+    while(-x*x+3*x+4 &gt;= 0 ) {
+      System.out.println(-x*x+3*x+4);
+
+      x=x+1;
+    }
+  }
+}
+</pre>
+
+<hr>
+
+
+<h4>Soluzione con il <tt>for</tt></h4>
+
+<p>
+&Egrave; quasi la stessa cosa.
+</p>
+
+<pre>
+class Indef {
+  public static void main(String args[]) {
+    int x;
+
+    for(x=0; -x*x+3*x+4 &gt;= 0; x=x+1)
+      System.out.println(-x*x+3*x+4);
+  }
+}
+</pre>
+
+<p>
+Di solito si preferisce il <tt>while</tt>
+quando i cicli sono indefiniti, ma non
+&egrave; obbligatorio.
+</p>
+
+<hr>
+
+
+<h4>Metodo del risultato parziale</h4>
+
+<p>
+Si usa quando serve calcolare il risultato
+di un operatore associativo su un insieme
+di valori.
+</p>
+
+<p>
+Caso particolare: il metodo dell'accumulatore
+serve per sommare i valori di una funzione
+per <tt>x</tt> che va da <tt>10</tt> a <tt>20</tt>
+</p>
+
+<hr>
+
+
+<h4>Metodo del risultato parziale</h4>
+
+<p>
+Si considera un elemento per volta (si fa
+un ciclo).
+</p>
+
+
+<p>
+Si usa una variabile per memorizzare il
+risultato parziale.
+</p>
+
+<p>
+Inizialmente, ci si mette l'elemento identit&agrave;
+dell'operatore.
+</p>
+
+<p>
+Ad ogni passo, si modifica la variabile
+con un nuovo elemento.
+</p>
+
+<hr>
+
+
+<h4>Paragone: algoritmo per riempire di biglie un secchiello</h4>
+
+<p>
+Inizia con il secchiello vuoto
+</p>
+
+<p>
+Per ogni biglia, prendila e mettila nel secchiello
+</p>
+
+<p>
+Il secchiello contiene il risultato parziale
+corretto, ossia tutte le biglie considerate
+fino a questo momento.
+</p>
+
+<hr>
+
+
+<h4>Esempio: somma dei valori</h4>
+
+<p>
+Per sommare i valori della funzione,
+posso procedere in questo modo.
+</p>
+
+<ol>
+
+<li>inizialmente, la somma parziale &egrave; zero
+
+<li>prendo il primo valore, e lo aggiungo alla
+somma parziale
+
+<li>prendo il secondo valore, e lo aggiungo
+alla somma parziale
+
+<li>...
+
+</ol>
+
+<p>
+Alla fine, la somma parziale sar&agrave;
+diventata la somma di tutti gli elementi
+</p>
+
+<p>
+Nel caso della somma, si chiama anche metodo
+dell'accumulatore: la variabile accumula tutti
+gli interi considerati finora.
+</p>
+
+<hr>
+
+
+<h4>Somma di elementi: codice</h4>
+
+<p>
+Uso una variabile per memorizzare i valori
+della somma parziale.
+</p>
+
+<p>
+Per ogni valore da considerare, lo prendo
+e lo sommo al contenuto della variabile.
+</p>
+
+<pre>
+class Accum {
+  public static void main(String args[]) {
+    int somma;
+    int f, x;
+
+    somma=0;
+
+    for(x=10; x&lt;=20; x=x+1) {
+      f=-x*x+3*x+4;
+
+      somma=somma+f;
+    }
+
+    System.out.println(somma);
+  }
+}
+</pre>
+
+<hr>
+
+
+<h4>Accumulatore: funzionamento</h4>
+
+<p>
+Voglio sommare <i>n</i> valori interi
+<i>a<sub>1</sub>, ..., a<sub>n</sub></i>
+</p>
+
+<p>
+Uso la propriet&agrave; associativa:
+</p>
+
+<p>
+&sum;<sub>x=1,...,i</sub> a<sub>x</sub> = 
+( &sum;<sub>x=1,...,i-1</sub>  a<sub>x</sub> ) +
+a<sub>i</sub>
+</p>
+
+<p>
+Ossia:
+</p>
+
+<p>
+a<sub>1</sub>  + ... + a<sub>i</sub> =
+(a<sub>1</sub>  + ... + a<sub>i-i</sub> ) + a<sub>i</sub>
+</p>
+
+<p>
+Il metodo &egrave; basato sul principio
+di induzione:
+</p>
+
+<ul>
+
+<li>se funziona per sommare zero elementi,
+
+<li>se, assumendo che funzioni su <i>i-1</i> elementi,
+allora funziona anche per <i>i</i>
+
+</ul>
+
+<p>
+... allora funziona per qualsiasi <i>n</i>.
+</p>
+
+<hr>
+
+
+<h4>La somma e il principio di induzione</h4>
+
+<p>
+Per sommare zero elementi, ho che la somma
+parziale mantiene il valore iniziale (zero)
+(quindi, funziona per zero elementi)
+</p>
+
+<p>
+Se ho gi&agrave; sommato <i>i-1</i> elementi,
+allora incrementando la somma parziale del
+valore <i>i</i>-esimo, ottengo la somma di <tt>i</tt>
+elementi (se vale per <i>i-1</i> allora vale
+per <i>i</i>)
+</p>
+
+<p>
+In base al principio di induzione, funziona
+</p>
+
+<hr>
+
+
+<h4>Induzione-Accumulatore</h4>
+
+<p>
+Confronto:
+</p>
+
+<table border="1">
+<tr><th></th><th>Induzione</th><th>Accumulatore</th></tr>
+<tr>
+<td>Cosa fa</td>
+<td>Dimostra che che un teorema &egrave; valido per ogni
+<i>n</i></td>
+<td>Calcola il risultato esatto per insiemi di <i>n</i>
+interi</td>
+</tr>
+<tr>
+<td>Caso base</td>
+<td>Dimostra che il teorema &egrave; vero per
+<i>n=0</i></td>
+<td>Calcola il risultato esatto per insiemi di zero
+elementi</td>
+</tr>
+<tr>
+<td>Caso induttivo</td>
+<td>Dimostra che il teorema, se &egrave; valido per
+<i>n=i-1</i>, allora &egrave; valido per <i>n=i</i></td>
+</td>
+<td>A partire dal risultato parziale, che si assume
+corretto, della somma dei primi <i>n=i-1</i> interi,
+calcola la somma dei primo <i>n=i</i> interi.
+</td>
+</tr>
+<tr>
+<td>Conclusione</td>
+<td>Il teorema &egrave; vero per ogni <i>n</i>
+<td>Il risultato &egrave; corretto per ogni
+insieme di <i>n</i> interi</td>
+</tr>
+</table>
+
+<p>
+Si pu&ograve; dire che il principio di induzione
+dimostra che il metodo dell'accumulatore &egrave;
+corretto.
+</p>
+
+<p>
+Oppure: con il metodo dell'accumulatore, stiamo
+costruendo la dimostrazione che il risultato finale
+&egrave; effettivamente la somma.
+</p>
+
+<hr>
+
+
+
+<h4>Principio di induzione e accumulatore</h4>
+
+<img src="confused.jpg">
+
+<p>
+Si tratta semplicemente di questo:
+</p>
+
+<p>
+Ho un contenitore vuoto (una variabile con
+zero dentro)
+</p>
+
+<p>
+Alla fine voglio che contenga tutti gli elementi
+sommati
+</p>
+
+<p>
+Li sommo uno per volta
+</p>
+
+<hr>
+
+
+<h4>Anche se non avete capito...</h4>
+
+<p>
+Potete sempre pensare all'algoritmo per riempire
+di biglie un secchiello
+</p>
+
+<ul>
+
+<li>Inizia con il secchiello vuoto
+
+<li>Per ogni biglia, prendila e mettila nel secchiello
+
+</ul>
+
+<p>
+Una persona prenderebbe le biglie a manciate.
+</p>
+
+<p>
+Il calcolatore pu&ograve; soltanto sommare un
+numero costante di interi per volta<br>
+(prendere una singola biglia)
+</p>
+
+<p>
+Per sommare pi&ugrave; elementi, devo usare un
+algoritmo in cui ne sommo due per volta (o comunque
+un numero costante).
+</p>
+
+<p>
+Sull'induzione ci torneremo quando faremo la
+ricorsione.
+</p>
+
+<hr>
+
+
+<h4>Variante: moltiplicazione</h4>
+
+<p>
+Stesso esercizio di prima, per&ograve; questa
+volta con la moltiplicazione
+</p>
+
+<p>
+&prod;<sub>x=10...20</sub> f(x)
+</p>
+
+<hr>
+
+
+<h4>Produttoria: soluzione</h4>
+
+<p>
+Variabile <tt>parz</tt> per memorizzare
+il prodotto parziale.
+</p>
+
+<p>
+Se contiene il prodotto di <i>n-1</i>
+elementi, allora per ottenere il prodotto
+di <i>n</i> basta moltiplicare l'ultimo.
+</p>
+
+<p>
+Quindi, devo fare
+<tt>parz=parz*</tt>valore
+</p>
+
+<pre>
+class Prod {
+  public static void main(String args[]) {
+    int parz;
+    int f, x;
+
+    ...
+
+    for(x=10; x&lt;=20; x=x+1) {
+      f=-x*x+3*x+4;
+
+      parz=parz*f;
+    }
+
+    System.out.println(parz);
+  }
+}
+</pre>
+
+<p>
+Valore iniziale?
+</p>
+
+<hr>
+
+
+<h4>Il valore iniziale</h4>
+
+<p>
+&Egrave; l'elemento neutro.
+</p>
+
+<pre>
+class Prod {
+  public static void main(String args[]) {
+    int parz;
+    int f, x;
+
+    parz=1;
+
+    for(x=10; x&lt;=20; x=x+1) {
+      f=-x*x+3*x+4;
+
+      parz=parz*f;
+    }
+
+    System.out.println(parz);
+  }
+}
+</pre>
+
+<p>
+Se mettevo <tt>parz=0</tt> all'inizio?<br>
+(risposta ovvia)
+</p>
+
+<hr>
+
+
+<h4>Fattoriale</h4>
+
+<p>
+Calcolare il fattoriale di un numero
+letto da input
+</p>
+
+<hr>
+
+
+<h4>Calcolo del fattoriale</h4>
+
+<p>
+La lettura da input si fa come al solito
+</p>
+
+<pre>
+import javax.swing.*;
+
+class Fatt {
+  public static void main(String args[]) {
+    String s;
+    int n;
+
+    s=JOptionPane.showInputDialog("Dammi un numero");
+    n=Integer.parseInt(s);
+
+    ...
+  }
+}
+</pre>
+
+<p>
+Ora, fare il calcolo del fattoriale.
+</p>
+
+<hr>
+
+
+<h4>Calcolo del fattoriale</h4>
+
+<p>
+Si tratta di moltiplicare i numeri interi
+da <tt>1</tt> ad <tt>n</tt>
+</p>
+
+<p>
+Faccio il solito ciclo con accumulatore
+</p>
+
+<pre>
+import javax.swing.*;
+
+class Fatt {
+  public static void main(String args[]) {
+    String s;
+    int n;
+    int f, i;
+
+
+    s=JOptionPane.showInputDialog("Dammi un numero");
+    n=Integer.parseInt(s);
+
+    f=1;
+
+    for(i=1; i&lt;=n; i++)
+      f=f*i;
+      
+    System.out.println(f);
+
+    System.exit(0);
+  }
+}
+</pre>
+
+<hr>
+
+
+<h4>Esercizio</h4>
+
+<p>
+Calcolare l'n-esimo elemento della serie di
+Fibonacci
+</p>
+
+<p>
+f<sub>1</sub> = 1 <br>
+f<sub>2</sub> = 1 <br>
+f<sub>i</sub> = f<sub>i-2</sub> + f<sub>i-1</sub>
+</p>
+
+<p>
+Assumere che <tt>n&gt;2</tt>
+</p>
+
+<hr>
+
+
+<h4>Soluzione</h4>
+
+<p>
+Serve un ciclo definito
+</p>
+
+<p>
+Devo memorizzare i due ultimi valori
+</p>
+
+<pre>
+primo valore =1
+secondo valore =1
+for ogni intero da 3 ad n
+  fi=somma dei due precedenti
+</pre>
+
+<p>
+Unico problema: dove stanno i due
+ultimi valori?
+</p>
+
+<p>
+Non sempre i cicli sono facili da scrivere.
+</p>
+
+<p>
+In questo caso, il problema non &egrave; il
+<tt>for(...)</tt>, ma capire come deve essere
+fatto il corpo del ciclo.
+</p>
+
+<hr>
+
+
+<h4>Correttezza dei cicli</h4>
+
+<p>
+Perch&egrave; questo programma non funziona?
+</p>
+
+<pre>
+class Fibo {
+  public static void main(String args[]) {
+    int f1, f2;
+    int f, i, n=6;
+
+    f1=1;
+    f2=1;
+
+    for(i=3; i&lt;=n; i++)
+      f=f1+f2;
+
+    System.out.println(f);
+  }
+}
+</pre>
+
+<hr>
+
+
+<h4>Correttezza: assunzioni</h4>
+
+<p>
+Se <tt>n</tt> vale <tt>3</tt>, il risultato
+&egrave; corretto
+(viene eseguita una sola volta l'istruzione
+<tt>f=f1+f2;</tt>)
+</p>
+
+<p>
+In tutti gli altri casi, viene eseguita
+pi&ugrave; volte la stessa istruzione, ma
+il valore non cambia.
+</p>
+
+<p>
+Nel primo caso, funziona perch&egrave;
+<tt>f1</tt> ed <tt>f2</tt> sono i valori
+di <i>f<sub>i-2</sub></i> ed
+<i>f<sub>i-1</sub></i> quando <i>n</i>
+vale 3.
+</p>
+
+<p>
+Se <tt>n=6</tt>, devo sommare il quarto
+e il quinto valore della serie, non il
+primo o il secondo.
+</p>
+
+<hr>
+
+
+<h4>Correttezza: mantenere le assunzioni</h4>
+
+<p>
+Quando eseguo per la prima volta il corpo
+del ciclo, <tt>f1</tt> ed <tt>f2</tt>
+contengono gli ultimi due valori calcolati
+per la serie (il primo e il secondo).
+</p>
+
+<p>
+Quando eseguo di nuovo il ciclo, gli ultimi
+due valori calcolati sono il secondo e il
+terzo.
+</p>
+
+<p>
+Invece, in  <tt>f1</tt> ed <tt>f2</tt> ci
+sono ancora il primo e il secondo.
+</p>
+
+<p>
+Devo fare in modo che l'assunzione "in
+<tt>f1</tt> ed <tt>f2</tt> ci sono gli
+ultimi due valori calcolati della serie"
+sia valida in <i>qualsiasi</i> esecuzione
+del corpo del ciclo.
+</p>
+
+<hr>
+
+
+<h4>Programma corretto</h4>
+
+<p>
+Quando calcolo un valore, gli ultimi due
+valori calcolati sono <tt>f2</tt> ed
+<tt>f</tt>, non <tt>f1</tt> ed <tt>f2</tt>.
+</p>
+
+<p>
+Devo modificare le variabili in modo che
+l'assunzione torni ad essere vera.
+</p>
+
+<p>
+In <tt>f1</tt> metto il valore di <tt>f2</tt>,
+e in <tt>f2</tt> il valore di <tt>f</tt>
+</p>
+
+<pre>
+class Fibo {
+  public static void main(String args[]) {
+    int f1, f2;
+    int f=0, i, n=6;
+
+    f1=1;
+    f2=1;
+
+    for(i=3; i&lt;=n; i++) {
+      f=f1+f2;
+
+      f1=f2;
+      f2=f;
+    }
+
+    System.out.println(f);
+  }
+}
+</pre>
+
+<hr>
+
+
+<h4>Verifica di correttezza dei cicli</h4>
+
+<p>
+La maggior parte dei cicli sono facili
+da scrivere.
+</p>
+
+<p>
+A volte invece occorre verificare che
+le assunzioni che servono restino valide.
+</p>
+
+<p>
+Notare che l'assunzione non &egrave;
+"<tt>f1</tt> contiene il primo elemento"
+ma "<tt>f1</tt> contiene il penultimo
+elemento calcolato".
+</p>
+
+<p>
+L'assunzione dipende da cosa voglio calcolare.
+</p>
+
+<hr>
+
+
+<h4>Operazioni logiche su insiemi</h4>
+
+<p>
+Scrivere un programma che stampa "si"
+oppure "no" a seconda se la funzione
+<i>f(x)=x<sup>2</sup>-10x+2</i>
+assume valori negativi per <i>x</i>
+intero da 0 a 10.
+</p>
+
+<hr>
+
+
+<h4>Soluzione</h4>
+
+<p>
+Devo fare un ciclo.
+</p>
+
+<p>
+A ogni passo, verifico il valore della funzione.
+</p>
+
+<pre>
+class Presenza {
+  public static void main(String args[]) {
+    int f, x;
+
+    for(x=0; x&lt;=10; x++) {
+      f=x*x-10*x+2;
+
+      if(f&lt;0)
+        System.out.println("si");
+      else
+        System.out.println("no");
+    }
+  }
+}
+</pre>
+
+<p>
+Questa soluzione &egrave; sbagliata
+</p>
+
+<hr>
+
+
+<h4>L'errore</h4>
+
+<p>
+L'istruzione condizionale <tt>if/else</tt>
+sta dentro il ciclo.
+</p>
+
+<p>
+Quindi, viene eseguita una volta per ogni
+valore di <tt>x</tt>
+</p>
+
+<p>
+Viene stampato <tt>si</tt> o <tt>no</tt>
+per dieci volte.
+</p>
+
+<hr>
+
+
+<h4>Seconda soluzione</h4>
+
+<p>
+Faccio la stampa solo alla fine.
+</p>
+
+<pre>
+class Presenza {
+  public static void main(String args[]) {
+    int f=0, x;
+
+    for(x=0; x&lt;=10; x++) {
+      f=x*x-10*x+2;
+    }
+
+    if(f&lt;0)
+      System.out.println("si");
+    else
+      System.out.println("no");
+  }
+}
+</pre>
+
+<p>
+Sbagliato!
+</p>
+
+<p>
+<tt>f</tt> viene calcolata fino all'ultimo
+valore.
+</p>
+
+<p>
+La stringa stampata dipende solo dall'ultimo
+valore.
+</p>
+
+<p>
+(<tt>f=0</tt> serve perh&egrave; altrimenti
+il programma non compila: provare per credere;
+il problema &egrave; che <tt>f</tt> viene usato
+quando non &egrave; sicuro che ci sia stato
+messo dentro un valore)
+</p>
+
+<hr>
+
+
+<h4>Asimmetria</h4>
+
+<p>
+A volte, il fatto che un programma sia
+sbagliato &egrave; evidente dal tipo
+di problema.
+</p>
+
+<p>
+Nel nostro caso, la stringa da stampare
+era:
+</p>
+
+<dl compact="compact">
+
+<dt><tt>si</tt>
+<dd>se fra i valori c'&egrave; un numero negativo
+
+<dt><tt>no</tt>
+<dd>se tutti i valori sono positivi
+
+</dl>
+
+<p>
+Invece, nei programmi di sopra potrei scambiare
+<tt>si</tt>-<tt>no</tt> e <tt>&lt;</tt>-<tt>&gt;</tt>
+e ottenere lo stesso risultato.
+</p>
+
+<p>
+Quindi, non pu&ograve; funzionare
+</p>
+
+<hr>
+
+
+<h4>Terza soluzione</h4>
+
+<p>
+Esprimo il problema in termini formali:
+</p>
+
+<p>
+Se esiste un valore di <tt>x</tt> per il
+quale <tt>f</tt> &egrave; negativa, stampa
+<tt>si</tt>, altrimenti <tt>no</tt>
+</p>
+
+<p>
+Lo trasformo in un programma che usa il
+meccanismo del risultato parziale, e che
+quindi funziona per induzione.
+</p>
+
+<hr>
+
+
+<h4>Il principio di induzione</h4>
+
+<p>
+In programmazione, devo fare un passo per volta.
+</p>
+
+<p>
+Uso una variabile che mi dice il risultato
+parziale, calcolato solo sugli elementi che
+ho guardato finora.
+</p>
+
+<p>
+Il principio di induzione dice che il risultato
+&egrave; corretto se:
+</p>
+
+<ul>
+
+<li>lo &egrave; il valore iniziale
+
+<li>a ogni passo, considero un nuovo elemento e
+modifico il risultato parziale in modo corretto
+
+</ul>
+
+<hr>
+
+
+<h4>Induzione, per trovare valori negativi</h4>
+
+<p>
+Nel nostro caso: devo vedere se fra <i>n</i>
+interi c'&egrave; un valore negativo.
+</p>
+
+<dl>
+
+<dt><i>caso base:</i>
+<dd>ho zero numeri interi; ci sono valori
+negativi?
+
+<dt><i>caso generico:</i>
+<dd>
+<ul>
+
+<li>assumo di sapere se ci sono valori negativi nei primi
+<i>i-1</i> elementi
+ 
+<li>vedo se ci sono sui primi <i>i</i> elementi
+
+</ul>
+
+</dl>
+
+<p>
+Il primo caso &egrave; facile (la risposta
+&egrave; no)
+</p>
+
+<p>
+Nel secondo caso: so se ci sono negativi fra
+i primi <i>n=i-1</i>:
+</p>
+
+<ul>
+
+<li>se l'<i>i</i>-esimo valore &egrave; negativo,
+allora ci sono valori negativi fra tutti gli
+<i>i=n</i> elementi (indipendentemente dai primi
+<i>n=i-1</i>).
+
+<li>se l'<i>i</i>-esimo valore &egrave; negativo,
+allora la presenza di valori negativi
+equivale alla presenza di valori negativi
+fra i primi <i>n=i-1</i> valori.
+
+</ul>
+
+<hr>
+
+
+<h4>Dall'induzione al programma</h4>
+
+<p>
+Serve una scansione (un ciclo <tt>for</tt>)
+</p>
+
+<p>
+Viene considerato un intero per volta.
+</p>
+
+<p>
+Uso una variabile <tt>presente</tt> che dice
+se ho trovato un valore negativo <b>finora</b>
+</p>
+
+<ul>
+
+<li>all'inizio, non ho ancora trovato un
+valore negativo (<tt>presente="no"</tt>)
+
+<li>quando guardo un valore, posso contare
+sul fatto che <tt>presente</tt> indica se
+il valore &egrave; stato trovato fra gli
+elementi precedenti (assunzione del ciclo)
+
+<li>se il valore &egrave; negativo, allora
+ho trovato un valore negativo:
+<tt>presente="si"</tt>
+
+<li>se il valore &egrave; positivo, allora
+la presenza di valori negativi dipende dalla
+presenza fra gli elementi precedenti
+
+</ul>
+
+<p>
+Nell'ultimo caso, l'assunzione del ciclo
+mi dice che la presenza &egrave; data dal
+valore attuale di <tt>presenza</tt>, che
+quindi non va modificato.
+</p>
+
+<hr>
+
+
+<h4>Il ciclo, in parole povere</h4>
+
+<p>
+La variabile mi dice se ho trovato il
+valore negativo, fino a questo momento.
+</p>
+
+<p>
+Inizialmente, non l'ho trovato.
+</p>
+
+<p>
+Quando guardo un elemento, se &egrave; negativo
+l'ho trovato.
+</p>
+
+<p>
+Se l'elemento non &egrave; negativo, allora
+la condizione "l'ho trovato" non cambia.
+</p>
+
+<hr>
+
+
+<h4>Presenza: codice</h4>
+
+<p>
+Si tratta di implementare il meccanismo
+detto sopra.
+</p>
+
+<pre>
+class Presenza {
+  public static void main(String args[]) {
+    int f=0, x;
+
+    String presenza;
+    presenza="no";
+
+    for(x=0; x&lt;=10; x++) {
+      f=x*x-10*x+2;
+
+      if(f&lt;0)
+        presenza="si";
+    }
+
+    System.out.println(presenza);
+  }
+}
+</pre>
+
+<hr>
+
+
+<h4>Costruzione del ciclo</h4>
+
+<p>
+Devo partire dall'assunzione che la variabile
+<tt>presenza</tt> contenga il risultato parziale
+corretto.
+</p>
+
+<p>
+Nel corpo del ciclo, considero un nuovo elemento.
+</p>
+
+<img src="parziale.jpg">
+
+<hr>
+
+
+<h4>Uscire dal ciclo prima della fine</h4>
+
+<p>
+Se trovo l'elemento negativo, non serve
+guardare gli elementi.
+</p>
+
+<p>
+L'istruzione <tt>break</tt> permette di
+uscire dal ciclo in qualsiasi momento.
+</p>
+
+<pre>
+  for(....) {
+    ...
+    break;
+    ...
+  }
+
+  istruzione dopo;
+</pre>
+
+<p>
+Quando si esegue <tt>break</tt>,
+il ciclo viene interrotto automaticamente:
+</p>
+
+<hr>
+
+
+<h4>Diagramma di flusso</h4>
+
+<img src="break.jpg">
+
+<p>
+Quando si esegue <tt>break</tt>, si
+passa immediatamente ad eseguire
+l'istruzione che segue il ciclo
+(se c'&egrave;)
+</p>
+
+<hr>
+
+
+<h4>Esempio sul programma di presenza</h4>
+
+<p>
+Se trovo un elemento negativo, non serve
+andare avanti.
+</p>
+
+<pre>
+class PresConBreak {
+  public static void main(String args[]) {
+    int f=0, x;
+
+    boolean presenza;
+    presenza=false;
+
+    for(x=0; x&lt;=10; x++) {
+      f=x*x-10*x+2;
+
+      if(f&lt;0) {
+        presenza=true;
+        break;
+      }
+    }
+
+    if(presenza)
+      System.out.println("si");
+    else
+      System.out.println("no");
+  }
+}
+</pre>
+
+<hr>
+
+
+<h4>Uso del <tt>break</tt></h4>
+
+<p>
+Va messo dentro un ciclo
+</p>
+
+<p>
+Di norma, sta in un condizionale,
+altrimenti non ha senso:
+</p>
+
+<pre>
+  for(....) {
+    istruzione1;
+    break;
+    istruzione2;
+  }
+</pre>
+
+<p>
+In questo caso, viene eseguita
+<tt>istruzione1</tt> una volta sola,
+e poi basta.
+</p>
+
+<p>
+Di solito viene messo in un condizionale:
+</p>
+
+<pre>
+  for(....) {
+    istruzione1;
+    if(condizione)
+      break;
+    istruzione2;
+  }
+</pre>
+
+<p>
+Quando la condizione &egrave; vera, si
+esce dal ciclo.
+</p>
+
+<hr>
+
+
+<h4><tt>break</tt>=condizione di uscita?</h4>
+
+<p>
+Dire quale &egrave; la differenza fra questi
+pezzi di programma
+</p>
+
+<pre>
+  // primo pezzo
+
+  while(x!=0) {
+    istruzione1;
+    if(y==0)
+      x=0;
+    istruzione2;
+  }
+</pre>
+
+<pre>
+  // secondo pezzo
+
+  while(x!=0) {
+    istruzione1;
+    if(y==0)
+      break;
+    istruzione2;
+  }
+</pre>
+
+<hr>
+
+
+<h4>Risposta</h4>
+
+<dl>
+
+<dt><tt>break</tt>
+<dd>si esce dal ciclo immediatamente, senza
+eseguire le istruzioni che seguono (<tt>istruzione2</tt>) 
+
+<dt>falsificare la condizione di uscita
+<dd>si esce dal ciclo solo quando la condizione viene
+controllata, ossia alla fine dell'esecuzione del corpo;
+quindi, <tt>istruzione2</tt> viene eseguita un'ultima
+volta.
+
+</dl>
+
+<hr>
+
+
+<h4>Esempio della differenza</h4>
+
+<p>
+Da questo ciclo, non si esce mai:
+</p>
+
+<pre>
+  while(x!=0) {
+    if(y==0)
+      x=0;
+
+    x=1;
+  }
+</pre>
+
+<p>
+Infatti, <tt>x</tt> viene messo a zero (e quindi
+la condizione di uscita dal ciclo <tt>x!=0</tt>
+viene falsificata).
+</p>
+
+<p>
+Per&ograve; poi <tt>x</tt> viene rimesso a <tt>1</tt>:
+quando viene controllata la condizione del ciclo,
+risulta sempre vera.
+</p>
+
+<p>
+Nel caso del <tt>break</tt>:
+</p>
+
+<pre>
+  while(x!=0) {
+    if(y==0)
+      break;
+
+    x=1;
+  }
+</pre>
+
+<p>
+Se <tt>y</tt> vale <tt>0</tt>, si esegue <tt>break</tt>
+e si esce subito dal ciclo, senza eseguire pi&ugrave;
+l'istruzione <tt>x=1</tt>.
+</p>
+
+<hr>
+
+
+<h4>Esercizio sul <tt>while</tt></h4>
+
+<p>
+Chiedere all'utente di inserire valori
+interi da tastiera, e stampare la met&agrave;
+di ognuno di essi.
+</p>
+
+<p>
+Fermarsi quando viene letto un valore
+negativo.
+</p>
+
+<p>
+Il valore negativo non deve essere stampato.
+</p>
+
+<p>
+<b>Nota:</b> questo non &egrave; soltanto
+un esercizio!
+</p>
+
+<p>
+Vedremo dei cicli che si possono usare
+anche per leggere da file ecc.
+</p>
+
+<hr>
+
+
+<h4>Soluzione</h4>
+
+<p>
+Si tratta di ripetere la sequenza
+lettura-scrittura, fino a che la
+lettura non produce un risultato
+negativo.
+</p>
+
+<p>
+Primo tentativo:
+</p>
+
+<pre>
+import javax.swing.*;
+
+class CicloLeggi {
+  public static void main(String args[]) {
+    String s;
+    int x;
+
+    while(x&gt;=0) {
+      s=JOptionPane.showInputDialog("Scrivi un numero");
+      x=Integer.parseInt(s);
+
+      System.out.println(x/2);
+    }
+
+    System.exit(0);
+  }
+}
+</pre>
+  
+<p>
+Errore di compilazione: <tt>x</tt> potrebbe
+non essere stata inizializzata.
+</p>
+
+<p>
+Correzione: <tt>int x=0;</tt>
+</p>
+
+<p>
+Attenzione: non posso mettere un valore qualsiasi
+in <tt>x</tt>: se usavo <tt>x=-10</tt> il ciclo
+non veniva mai eseguito.
+</p>
+
+<hr>
+
+
+<h4>Errore di progettazione</h4>
+
+<p>
+Il programma stampa anche il primo
+numero negativo trovato, mentre doveva
+stampare solo i positivi.
+</p>
+
+<p>
+Soluzione1: se trovo un negativo, non
+lo stampo.
+</p>
+
+<pre>
+import javax.swing.*;
+
+class CicloLeggi {
+  public static void main(String args[]) {
+    String s;
+    int x=0;
+
+    while(x&gt;=0) {
+      s=JOptionPane.showInputDialog("Scrivi un numero");
+      x=Integer.parseInt(s);
+
+      if(x&gt;=0)
+        System.out.println(x/2);
+    }
+
+    System.exit(0);
+  }
+}
+</pre>
+
+<hr>
+
+
+<h4>Seconda soluzione</h4>
+
+<p>
+Leggo il primo elemento.
+</p>
+
+<p>
+Se &egrave; positivo, lo stampo e leggo
+il prossimo. Ripeto.
+</p>
+
+<pre>
+import javax.swing.*;
+
+class CicloLeggi {
+  public static void main(String args[]) {
+    String s;
+    int x;
+
+    s=JOptionPane.showInputDialog("Scrivi un numero");
+    x=Integer.parseInt(s);
+
+    while(x&gt;=0) {
+      System.out.println(x/2);
+
+      s=JOptionPane.showInputDialog("Scrivi un numero");
+      x=Integer.parseInt(s);
+    }
+
+    System.exit(0);
+  }
+}
+</pre>
+
+<hr>
+
+
+<h4>Soluzione con il <tt>break</tt></h4>
+
+<p>
+Se faccio: <tt>while(true)</tt> ho un ciclo
+infinito, dato che la condizione &egrave; sempre
+vera.
+</p>
+
+<p>
+Per&ograve; posso mettere un <tt>break</tt>
+quando voglio uscire.
+</p>
+
+<pre>
+import javax.swing.*;
+
+class CicloLeggi {
+  public static void main(String args[]) {
+    String s;
+    int x;
+
+    while(true) {
+      s=JOptionPane.showInputDialog("Scrivi un numero");
+      x=Integer.parseInt(s);
+
+      if(x&lt;0)
+        break;
+
+      System.out.println(x/2);
+    }
+
+    System.exit(0);
+  }
+</pre>
+
+<hr>
+
+
+<h4>Quale &egrave; il migliore?</h4>
+
+<p>
+Non c'&egrave; un ciclo migliore di altri.
+</p>
+
+<p>
+Vanno tutti bene (se funzionano).
+</p>
+
+<hr>
+
+
+<h4>Ciclo infinito con <tt>break</tt></h4>
+
+<p>
+Schema generale:
+</p>
+
+<pre>
+while(true) {
+  istruzioni;
+
+  if(condizione)
+    break;
+
+  istruzioni;
+}
+</pre>
+
+<p>
+Si usa quando il "punto di uscita" del ciclo
+si trova in mezzo alle istruzioni da eseguire.
+</p>
+
+<p>
+Quando la condizione &egrave; vera si esce<br>
+(al contrario, quando la condizione del <tt>while</tt>
+diventa falsa si esce)
+</p>
+
+<hr>
+
+
+<h4>Tavola pitagorica</h4>
+
+<p>
+Proviamo a risolvere questo esercizio:
+</p>
+
+<p>
+Stampare la tavola pitagorica
+</p>
+
+<p>
+Usare il fatto che <tt>System.out.print</tt>
+(senza <tt>ln</tt>) stampa senza andare a
+capo.
+</p>
+
+<p>
+Versione semplificata: stampare soltanto
+i multipli di un numero intero <tt>x</tt>
+</p>
+
+<hr>
+
+
+<h4>Stampare un riga</h4>
+
+<p>
+Dato <tt>x</tt>, devo stampare
+<tt>x</tt>, <tt>x*2</tt>, <tt>x*3</tt>, ecc.
+</p>
+
+<p>
+Faccio un ciclo:
+</p>
+
+<pre>
+  per ogni y da 1 a 10
+    stampa x*y
+  vai a capo
+</pre>
+
+<p>
+Il codice &egrave; immediato:
+</p>
+
+<pre>
+class Riga {
+  public static void main(String args[]) {
+    int x=5;
+
+    int y;
+
+    for(y=1; y&lt;=10; y++) {
+      System.out.print(x*y);
+      System.out.print(" ");
+    }
+
+    System.out.println();
+  }
+}
+</pre>
+
+<p>
+Ora: fare il programma che stampa tutta
+la tavola pitagorica.
+</p>
+
+<hr>
+
+
+<h4>Algoritmo</h4>
+
+<p>
+So come stampare una riga.
+</p>
+
+<p>
+Quello che devo fare &egrave;:
+</p>
+
+<pre>
+  per ogni x da 1 a 10
+    stampa i multipli di x
+</pre>
+
+<p>
+Ora so come si fa a stampare i
+multipli di <tt>x</tt>!
+</p>
+
+<hr>
+
+
+<h4>Programma</h4>
+
+<p>
+La parte <tt>per ogni x</tt>
+diventa un ciclo
+</p>
+
+<p>
+La parte <tt>stampa i multipli di x</tt>
+la risolvo come ho fatto prima,<br>
+ossia uso lo stesso identico blocco
+di prima.
+</p>
+
+<pre>
+class Pitag {
+  public static void main(String args[]) {
+    int x;
+
+    for(x=1; x&lt;=10; x++) {
+      int y;
+
+      for(y=1; y&lt;=10; y++) {
+        System.out.print(x*y);
+        System.out.print(" ");
+      }
+
+      System.out.println();
+    }
+  }
+}
+</pre>
+
+<hr>
+
+
+<h4>Nidificazione e allineamento</h4>
+
+<p>
+Ogni volta che inizio un blocco, oppure
+scrivo una istruzione all'interno di una
+istruzione composta, vado avanti di due
+spazi.
+</p>
+
+<pre>
+if(cond)
+..istruzione;
+else {
+..istruzione;
+..while(cond) {
+....istruzione;
+....istruzione;
+..}
+}
+</pre>
+
+<p>
+Rende pi&ugrave; facile da capire il programma.
+</p>
+
+<p>
+Attenzione! Non ha importanza per il compilatore:
+</p>
+
+<pre>
+if(condizione)
+  istruzione;
+  istruzione;
+</pre>
+
+<p>
+Equivale a:
+</p>
+
+<pre>
+if(condizione) {
+  istruzione;
+}
+
+istruzione;
+</pre>
+
+<p>
+L'allineamento pu&ograve; trarre in inganno.
+</p>
+
+</body>
+</html>
+

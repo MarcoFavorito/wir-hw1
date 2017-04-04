@@ -1,0 +1,58 @@
+
+<HTML>
+
+<HEAD>
+<META HTTP-EQUIV="Context-Type" CONTEXT="text/html;charset=PREDEFINITA (AUTOMATICA)">
+<meta name="GENERATOR" content="Microsoft Internet Assistant for PowerPoint 97">
+ <TITLE>Queries on Views</TITLE> 
+</HEAD>
+
+<BODY     >
+
+ <H1>Queries on Views</H1> 
+ <P><UL>
+<LI><H2>Evaluated using a technique known as query modification.
+</H2>
+<UL>
+<LI>Reference to view is replaced by its definition.
+</UL></UL><UL>
+<H2>
+</H2>
+</UL><UL>
+<LI><H2>Note how sname    has been renamed   to name to match  the view definition.</H2>
+</UL></P>
+<P><UL>
+SELECT  A.name,  MAX ( A.day )
+<BR></UL><UL>
+FROM  Active Sailors A
+</UL><UL>
+GROUP BY  A.name</UL></P>
+<P><UL>
+SELECT  name, MAX ( A.Day )
+<BR></UL><UL>
+FROM
+</UL><UL>
+  ( SELECT  S.sname AS name, S.age, R.day
+</UL><UL>
+    FROM  Sailors S,  Reserves R
+</UL><UL>
+    WHERE  S.sname=R.sname  
+</UL><UL>
+                    AND  S.rating&#0626 ) AS A
+</UL><UL>
+GROUP BY  A.name</UL></P>
+<P></P> 
+<P>
+<TABLE>
+  <TD HEIGHT=100 WIDTH=100> <A HREF="tsld016.htm">Diapositiva precedente</A> </TD>
+  <TD HEIGHT=100 WIDTH=100> <A HREF="tsld018.htm">Diapositiva successiva</A> </TD>
+  <TD HEIGHT=100 WIDTH=150> <A HREF="tsld001.htm">Torna alla prima diaposiva</A> </TD>
+  <TD HEIGHT=100 WIDTH=150> <A HREF="sld017.htm">Visualizza versione grafica</A> </TD>
+</TABLE>
+<BR>
+</P>
+
+
+
+</Body>
+</HTML>

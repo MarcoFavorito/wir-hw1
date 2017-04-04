@@ -1,0 +1,75 @@
+<!doctype html public "-//w3c//dtd html 4.0 transitional//en">
+<html>
+<head>
+<link href="java.css" rel="stylesheet" type="text/css">
+<title>Stampa valori di una funzione in un applet</title>
+</head>
+
+<body>
+
+<h2>Stampa valori di una funzione in un applet</h2>
+
+Vogliamo stampare i valori che la funzione 
+<i>f(x)=x<sup>2</sup>-10</i> con <i>x</i> intero
+nell'intervallo [0,20]. Un programma simile &egrave;
+stato fatto stampando per&ograve; su linea di comando
+usando <tt>System.out.println</tt>. Vogliamo per&ograve;
+che la stampa sia fatta nella finestra. Quindi, &egrave;
+necessario calcolare la posizione in cui i valori
+vanno stampati.<p>
+
+Diciamo per esempio che stampiamo un valore per riga,
+e che la prima linea &egrave; quella che ha coordinata
+<i>y</i> pari a 20, e poi ogni riga si trova 20 punti
+pi&ugrave; sotto la precedente. Dal momento che il primo
+valore (che corrisponde a <tt>x=0</tt> va stampato nella
+posizione 20, il secondo (<tt>x=1</tt> a 40, ecc),
+&egrave; chiaro che il valore che corrisponde a un
+<tt>x</tt> generico va in posizione <tt>20*x+20</tt>
+(provare per credere).<p>
+
+Il programma completo
+<a href="StampaFunzione.java">StampaFunzione.java</a>
+&egrave; il seguente.<p>
+
+<pre>
+/*
+  Stampa i valori di una funzione in un applet.
+*/
+
+import java.awt.*;
+
+public class StampaFunzione extends java.applet.Applet {
+  public void paint(Graphics g) {
+    int x;
+    int f;
+
+    for(x=0; x<=20; x=x+1) {
+      f=x*x-10;
+
+      g.drawString(""+f,0,20*x+20);
+    }
+  }
+}
+
+</pre>
+
+<p>
+Si noti che, per stampare un numero con l'istruzione
+<tt>drawString</tt> &egrave; necessario fare
+<tt>g.drawString(""+f,...)</tt>. In altre parole,
+occorre concatenare <tt>""</tt> al numero. Questo
+serve per trasformare il numero in una stringa.
+
+<p>
+Il risultato &egrave; riportato qui sotto.
+
+<p>
+<center>
+<img src="StampaFunzione.gif">
+</center>
+
+
+</body>
+</html>
+

@@ -1,0 +1,164 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+<html> <head>
+<title>Esercizi del 29-01-2001</title>
+</head>
+
+<body>
+
+<center><b>Tecniche di Programmazione</b> <br>
+<b>Corsi di Laurea in Ingegneria Informatica ed Automatica</b> <br>
+Canale F-N, A.A. 2003/04</center>
+
+<hr>
+
+<h2 align="center">Es<b>ercizi sulla ric</b>orsione&nbsp;</h2>
+
+<ol>
+  <li>Seguire l'evoluzione della pila dei record di attivazione usando il debugger 
+di BlueJ per il programma <A 
+href="./provaStackSistema/Fibonacci.java"><CODE>Fibonacci.java</CODE></A>. 
+Per fare ciò, procedere come segue:</li>
+</ol>
+<blockquote>
+  <ol>
+    <li>salvare il programma in una cartella del disco locale;</li>
+    <li>aprire tale cartella come progetto in BlueJ (usando il comando 
+  <CODE>Open&nbsp;Non&nbsp;BlueJ</CODE>);</li>
+    <li>compilare la classe <CODE>Fibonacci</CODE>;</li>
+    <li>aprire il file <CODE>Fibonacci.java</CODE> e mettere un breakpoint alla 
+  linea 17 (prima istruzione del metodo <CODE>main</CODE>); per mettere un 
+  breakpoint ad un'istruzione, posizionare il cursore sull'istruzione e usare il 
+  comando <CODE>Set/Clear&nbsp;Breakpoint</CODE> del menu <CODE>Tools</CODE> 
+  (oppure cliccare semplimente sul bordo sinistro accanto all'istruzione);</li>
+    <li>lanciare il metodo <CODE>main</CODE> eseguendo le istruzioni passo/passo 
+  (utilizzare i pulsanti <CODE>Step</CODE> <CODE>Step&nbsp;Into</CODE> della 
+  finestra del debugger).</li>
+  </ol>
+  Si noti, in particolare, come ciascuna 
+attivazione di <CODE>fibonacci</CODE> rimanga sospeso nel punto in cui ha 
+effettuato una delle due attivazioni ricorsive, e come dopo il ritorno dalla 
+prima attivazione ricorsiva venga eseguita la seconda attivazione ricorsiva.
+</blockquote>
+<hr>
+
+
+
+<ol start="2">
+  <li>Si vuole calcolare la somma di numeri interi letti da un file. Diversamente da
+    quanto visto sul libro ditesto&nbsp; (cfr. par 10.13), proponiamo una
+    soluzione in cui vengono utilizzate due funzioni, <code>somma(BufferedReader br)</code> e 
+    <code>somma(BufferedReader br, int s</code><code>)</code>.&nbsp;</li>
+</ol>
+<blockquote>
+  <pre>  public static int somma(BufferedReader br) throws IOException {
+    return somma(br,0);
+  }
+
+  private static int somma(BufferedReader br, int s) throws IOException {
+      String st = br.readLine();
+      if (st == null)
+        return s;
+      else return somma(br, s+Integer.parseInt(st));  
+   }
+  </pre>
+
+
+  <p>Nella soluzione proposta, alla <i>i</i>-esima chiamata ricorsiva della
+  funzione <code>somma(BufferedReader br, int s</code><code>)</code>, viene
+  comunicato a tale funzione il valore della somma dei primi <i>i</i> interi
+  letti da file. Si noti che, in questo modo, l'ultima istruzione effettuata
+  prima che il metodo termini è la chiamata ricorsiva, per cui lo schema
+  utilizzato è quello di una <i>tail recursion.</i></p>
+
+  <p>Basandosi sullo stesso principio utilizzato per risolvere il problema
+  precedente, si scriva una funzione che preso in inupt un file di interi
+(acceduto tramite BufferedReader) restituisca la lunghezza della più lunga
+sequenza crescente di interi. Si assuma che ogni intero sia memorizzato su una riga
+  del file.</p>
+
+  <p><b>Suggerimento:</b> si utilizzino le due funzioni seguenti&nbsp;</p>
+
+  <pre>  public static int maxSerieCrescente(BufferedReader br) throws IOException {
+    String s = br.readLine();
+      if (s == null)
+        return 0;
+      else  return maxSerieCrescente(br,Integer.parseInt(s),1,0);
+  }
+
+  private static int maxSerieCrescente(BufferedReader br, int elemCorr, int lungCorr, int max) 
+		throws IOException {....... }        </pre>
+<p><a href="Soluzioni/SequenzaCrescente.java">Soluzione</a></p>
+</blockquote>
+<hr>
+<ol start="3">
+  <li>Consideriamo la classe <code>MiaStringa</code> che implementa i seguenti metodi.
+  </li>
+</ol>
+<blockquote>
+  <pre>
+ public class MiaStringa {
+    
+   // costruisce l'oggetto MiaStringa
+   public MiaStringa(String x) { }
+
+   // restituisce la lunghezza
+   public int lunghezza()
+
+   // converte la stringa in maiuscolo     
+   public MiaStringa convertiMaiuscolo () { }
+ }
+</pre>
+
+  Si consideri inoltre una possibile implementazione della classe
+<pre> 
+public class MiaStringa {
+
+   // variabile di istanza
+   private String str;
+      
+   // costruisce l'oggetto MiaStringa
+   public MiaStringa(String x) { 
+      str = x;
+   }
+   
+   private boolean vuota() {
+      return this.str.equals(&quot;&quot;);
+   }</pre>
+
+
+</blockquote>
+<pre>  	// calcola la lunghezza dell'oggetto di invocazione
+   	public int lunghezza() {   
+      	if (this.vuota())
+           return 0;
+      	else{ 
+	   MiaStringa resto = new MiaStringa(this.str.substring(1));
+           return 1 + resto.lunghezza();   
+   	 }
+        }</pre>
+
+
+<blockquote>
+  <pre>   // restituisce la conversione in caratteri maiuscoli dell'oggetto di invocazione
+   public MiaStringa convertiMaiuscolo() 
+     {.....}   
+
+  }
+</pre>
+
+Completare la classe precedente con la definizione del metodo
+  <code>convertiMaiuscolo()</code>.
+  <p><a href="Soluzioni/MiaStringa.java">Soluzione</a></p>
+
+
+</blockquote>
+
+
+<hr>
+<ol start="4">
+  <li>Risolvere il problema &quot;Sequenza di Interi Simmetrica&quot; (paragrafo
+    10.21 del testo).</li>
+</ol>
+
+
+</body> </html>

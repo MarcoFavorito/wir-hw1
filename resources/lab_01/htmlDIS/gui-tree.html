@@ -1,0 +1,84 @@
+<html>
+<head>
+<title></title>
+</head>
+
+<body>
+
+<tt>http://www.dis.uniroma1.it/~liberato/gestionale/eserc/gui-tree.html</tt>
+
+<h1>GUI e alberi</h1>
+
+<h4>Esercizio sulle GUI</h4>
+
+<p>
+Costruire una finestra con due pulsanti e una
+etichetta
+</p>
+
+<p>
+(ricordarsi di creare il file .html, e di usare
+appletviewer e non java per lanciarlo)
+</p>
+
+<p>
+I pulsanti sono <tt>Aumenta</tt> e <tt>Diminuisci</tt>
+</p>
+
+<p>
+L'etichetta contiene inizialmente il carattere <tt>'X'</tt>
+</p>
+
+<p>
+Ogni volta che si preme il pulsante <tt>Aumenta</tt>, viene
+aggiunta una <tt>'X'</tt> all'etichetta; quando si preme
+<tt>Diminuisci</tt>, si diminuisce di uno
+</p>
+
+<applet code="Aumenta.class" width="300" height="100">
+</applet>
+
+<p>
+L'etichetta deve sempre contenere almeno una <tt>X</tt>
+</p>
+
+
+<h4>Esercizio sugli alberi</h4>
+
+<p>
+Scrivere un metodo statico che calcola la somma delle
+foglie di un albero (le foglie sono i nodi senza figli)
+</p>
+
+<p>
+Per verificare il programma, usare il metodo
+<tt>alberoCasuale(int livelli)</tt>
+</p>
+
+<pre>
+  static Albero alberoCasuale(int livelli) {
+    if(livelli==0)
+      return null;
+
+    if(Math.random()&lt;0.3)
+      return null;
+
+    int r=(int) (Math.random()*21-10);
+    Albero s=alberoCasuale(livelli-1);
+    Albero d=alberoCasuale(livelli-1);
+
+    return new Albero(r, s, d);
+  }
+</pre>
+
+<p>
+Per usare il metodo di visulizzazione
+<tt>DrawTree.draw(...)</tt>, scaricare
+le classi
+<a href="DrawTree.class">DrawTree</a> e
+<a href="DrawCanvas.class">DrawCanvas</a>
+nella directory locale
+</p>
+
+</body>
+</html>

@@ -1,0 +1,387 @@
+<html>
+<head>
+<title>Package e livelli di accesso</title>
+</head>
+
+<body>
+
+<h1>Package e livelli di accesso</h1>
+
+<p>
+Un package &egrave; un insieme di classi
+</p>
+
+<p>
+Di solito, un package contiene classi correlate fra loro
+</p>
+
+<p>
+Esempio: nel package <tt>java.awt</tt> ci sono le classi
+<tt>Point</tt>, <tt>Rectangle</tt> ecc
+</p>
+
+<hr>
+
+
+<h4>Usare le classi di un package</h4>
+
+<p>
+La classe <tt>Point</tt> sta nel package <tt>java.awt</tt>
+</p>
+
+<p>
+Tre modi per usare questa classe:
+</p>
+
+<ol>
+
+<li>importare tutto il package:
+
+<pre>
+import java.awt.*;
+
+class Prova {
+  Point p;
+}
+</pre>
+
+<li>importare solo la classe:
+
+<pre>
+import java.awt.Point;
+
+class Prova {
+  Point p;
+}
+</pre>
+
+<li>usare il nome di package prima della classe:
+
+<pre>
+class Prova {
+  java.awt.Point p;
+}
+</pre>
+
+</ol>
+
+<hr>
+
+
+<h4>Definire un nuovo package</h4>
+
+<p>
+Tutte le classi del package devono stare nella stessa
+directory
+</p>
+
+<p>
+Ogni file inizia con la dichiarazione:
+</p>
+
+<pre>
+package nomepackage;
+</pre>
+
+<hr>
+
+
+<h4>Definizione di package: esempio</h4>
+
+<p>
+directory <tt>pack/</tt>:
+</p>
+
+<table border=1>
+<tr>
+<td>
+<table>
+<tr>
+<td>Uno.class</td>
+<td>
+<table border=1>
+<tr><td>
+<pre>
+package pack;
+
+public class Uno {
+  public int x;
+  int y;
+  private int z;
+}
+</pre>
+</td></td>
+</table>
+</td>
+</tr>
+<tr>
+<td>Due.class</td>
+<td>
+<table border=1>
+<tr><td>
+<pre>
+package pack;
+
+class Due {
+  String s;
+}
+</pre>
+</td></tr>
+</table>
+</td></tr>
+</table>
+</td>
+</tr>
+</table>
+
+<p>
+Quello che conta sono i file <tt>.class</tt>
+</p>
+
+<p>
+Nella figura sono stati messi i corrispondenti file sorgente
+<tt>.java</tt>
+</p>
+
+<hr>
+
+
+<h4>Uso del package</h4>
+
+<p>
+Il nuovo package si pu&ograve; usare come quelli predefiniti
+</p>
+
+<p>
+Per esempio:
+</p>
+
+<pre>
+import pack.*;
+
+class Prova {
+  public static void main(String args[]) {
+    Uno a=new Uno();
+
+    a.x=12;
+  }
+}
+</pre>
+
+<hr>
+
+
+<h4>Perch&egrave; <tt>public</tt>?</h4>
+
+<p>
+Per le classi, esistono due livelli di accesso:
+</p>
+
+<ul>
+
+<li><tt>public</tt>
+
+<li>(nessuna specifica)
+
+</ul>
+
+<p>
+Quando non si scrive nulla, l'accesso &egrave; consentito
+soltanto alle altri classi dello stesso package
+</p>
+
+<p>
+Nelle classi del nostro package:
+</p>
+
+<dl>
+
+<dt><tt>public class Uno {...}</tt>
+<dd>la classe &egrave; accessibile a tutti
+
+<p />
+
+<dt><tt>class Due {...}</tt>
+<dd>la classe si pu&ograve; usare solo all'interno del package
+
+</dl>
+
+
+<hr>
+
+
+<h4>Accesso alle componenti e ai metodi</h4>
+
+<p>
+Esistono quattro livelli di accesso:
+</p>
+
+<ul>
+
+<li><tt>public</tt>
+
+<li><tt>protected</tt>
+
+<li>(nessuna specifica)
+
+<li><tt>private</tt>
+
+</ul>
+
+<p>
+Anche qui, nessuna specifica=accesso solo da altre classi
+dello stesso package
+</p>
+
+<pre>
+package pack;
+
+public class Uno {
+  public int x;
+  int y;
+  private int z;
+}
+</pre>
+
+<dl>
+
+<dt><tt>public int x;</tt>
+<dd>la componente <tt>x</tt> &egrave; visibile a tutti
+
+<dt><tt>int y;</tt>
+<dd>la compomente <tt>y</tt> &egrave; visibile solo alle
+classi che stanno dentro il package (<tt>pack</tt>, in
+questo caso)
+
+<dt><tt>private int z;</tt>
+<dd>si pu&ograve; accedere a <tt>z</tt> solo all'interno di
+questa classe
+
+</dl>
+
+<p>
+Lo stesso vale anche per i metodi
+</p>
+
+<hr>
+
+
+<h4>Se non dichiaro il package?</h4>
+
+<p>
+Se in una classe non si specifica un package:
+</p>
+
+<p>
+Esiste un package di default, che contiene tutte le classi
+che non hanno una specifica di package
+</p>
+
+<p>
+Quando si omette la specifica di accesso, si permette
+l'accesso all'interno dello stesso package
+</p>
+
+<p>
+Vale anche in nel caso del package senza nome
+</p>
+
+<hr>
+
+
+<h4>Livello <tt>protected</tt></h4>
+
+<p>
+Se una componente o metodo &egrave; dichiarata
+<tt>protected</tt> allora &egrave; visibile:
+</p>
+
+<ul>
+
+<li>a tutte le classi dello stesso package
+
+<li>a tutte le sue sottoclassi, anche in package diversi
+
+</ul>
+
+<p>
+A che serve?
+</p>
+
+<hr>
+
+
+<h4>Differenza <tt>protected</tt>/nulla</h4>
+
+<p>
+Il livello di accesso di default (nessuna specifica di
+accesso) impedisce l'accesso a tutte le classi fuori dal
+package, <i>anche le sottoclassi</i>
+</p>
+
+<p>
+Con <tt>protected</tt>, le sottoclassi hanno accesso
+</p>
+
+<hr>
+
+
+<h4>Diritti di accesso: principi</h4>
+
+<p>
+Principio generale: restringere il pi&ugrave; possibile
+</p>
+
+<p>
+Riformulato: permettere l'accesso solo alle classi,
+componenti e metodi di cui le altre classi hanno realmente
+bisogno
+</p>
+
+<p>
+Conseguenza: non permettere l'accesso a metodi e componenti
+ausiliari
+</p>
+
+<p>
+Vantaggio: se si cambia l'implementazione, le altre classi
+non hanno bisogno di modifiche
+</p>
+
+<hr>
+
+
+<h4>Incapsulamento</h4>
+
+<p>
+Rendere private tutte le componenti, e pubblici solo i
+metodi che fanno operazioni permesse alle altre classi
+</p>
+
+<pre>
+class Incap {
+  private int x;
+
+  public int getX() {
+    return this.x;
+  }
+
+  public void setX(int x) {
+    this.x=x;
+  }
+}
+</pre>
+
+<p>
+Vantaggio: posso restringere/eliminare l'accesso in lettura
+o scrittura modificando i metodi
+</p>
+
+<p>
+Posso aggiungere controlli (es., <tt>x</tt> deve essere
+positivo)
+</p>
+
+</body>
+</html>
+

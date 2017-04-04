@@ -1,0 +1,392 @@
+<!doctype html public "-//w3c//dtd html 4.0 transitional//en">
+<html>
+<head>
+<link href="java.css" rel="stylesheet" type="text/css">
+<title>Procedure con argomenti</title>
+</head>
+
+<body>
+
+<h2>Procedure con argomenti</h2>
+
+Le procedure viste nelle pagine precedenti erano semplicemente
+un modo per scrivere una volta sola una sequenza di istruzioni
+che andava eseguita in pi&ugrave; punti del programma. In pi&ugrave;
+esisteva la limitazione che le variabili del programma non
+potevano venire usate dalla procedura. Ci sono dei casi in cui
+questa limitazione &egrave; un problema. Si pensi al caso in
+cui, in pi&ugrave; punti del programma, occorre stampare un
+certo numero di linee bianche. Il caso in cui occorre stampare
+sempre lo stesso numero di linee (per esempio, 20) &egrave;
+stato gi&agrave; analizzato nella pagina sulle
+<a href="variabiliprocedura.shtml">variabili e procedure</a>.
+Consideriamo ora il caso in cui in un certo punto del programma
+occorre stampare 10 linee bianche, in un altro 20, in un altro
+2, ecc. Chiaramente il programma gi&agrave; visto non va bene,
+dal momento che la procedura <tt>lineebianche()</tt> stampa sempre
+lo stesso numero di linee bianche (20).<p>
+
+Se le variabili del programma principali fossero visibili
+(=utilizzabili) nella procedura, sarebbe facile: la
+procedura dovrebbe effettuare un ciclo partendo da 1 fino
+al valore di una certa variabile che rappresenta il numero di
+linee da stampare. In altre parole si potrebbe (ma non si
+pu&ograve;) fare cos&iacute;:
+
+<pre>
+class Linee {
+  static void lineebianche() {		/* NON FUNZIONA */
+    int i;
+
+    for(i=1; i<=lineedalasciare; i=i+1) {
+      System.out.println(" ");
+    }
+  }
+
+  public static void main(String[] args) {
+    int lineedalasciare;
+
+    /* stampa 10 linee */
+    lineedalasciare=10;
+    lineebianche();
+
+    ...
+
+    /* stampa 20 linee */
+    lineedalasciare=20;
+    lineebianche();
+  }
+}
+</pre>
+
+<p>
+Questo funzionerebbe se la procedura potesse utilizzare le
+variabili del programma. Sfortunatamente questo non &egrave;
+possibile. Esiste per&ograve; un meccanismo che consente ad
+una procedura di ricevere dei dati dal programma. Usando questo
+metodo, il programma pu&ograve; ``comunicare'' alla procedura
+il numero di linee bianche che vanno lasciate. Questo meccanismo
+si chiama <b>passaggio dei parametri</b>.
+
+<p>
+Si pu&ograve; pensare al passaggio dei parametri come a un
+tipo di ``trasmissione'', in cui il programma trasmette dei
+dati alla procedura (nell'esempio quante linee bianche stampare);
+la procedura riceve questi dati e li pu&ograve; usare.
+
+<p>
+Per poter effettuare questa trasmissione, &egrave; necessario
+che la procedura sia definita in modo tale da poter ricevere
+questi parametri. La definizione della procedura viene modificata
+in questo modo: dopo il nome, viene aggiunta la lista dei dati
+che la procedura pu&ograve; ricevere:<p>
+
+<pre>
+static void nome(lista dei parametri)
+</pre>
+
+I parametri sono appunto i dati che il programma trasmette alla
+procedura. La lista dei parametri deve contenere il tipo di
+questi dati. In altre parole, per ogni dato che la procedura
+pu&ograve; ricevere occorre specificare quale &egrave; il suo
+tipo, se <tt>int</tt>, <tt>double</tt>, ecc. Oltre al tipo,
+per ogni parametro &egrave; necessario utilizzare un nome, in
+modo tale che la procedura possa poi utilizzare il dato
+ricevuto come se fosse una qualsiasi variabile.<p>
+
+
+
+Queste cose sono pi&ugrave; facili da far vedere su un esempio
+che da spiegare. Nel caso della procedura che stampa un certo
+numero di linee bianche, il programma trasmette un unico dato,
+che &egrave; il numero di linee da stampare. Logicamente, la
+procedura riceve solo questo dato, quindi nella lista dei
+parametri c'&egrave; un unico parametro, che &egrave; di tipo
+intero. La definizione della procedura viene quindi modificata
+come segue:<p>
+
+<pre>
+  static void lineebianche(int ...) {
+    int i;
+
+    for(i=1; i<=lineedalasciare; i=i+1) {
+      System.out.println(" ");
+    }
+  }
+</pre>
+
+A questo punto, occorre un modo per far s&igrave; cha la procedura
+possa usare questo numero. Si ricordi che la procedura &egrave;
+una unit&agrave; indipendente dal programma, quindi non ``sa''
+come &egrave; fatto il programma che la usa. Il meccanismo che si
+usa &egrave; quello di associare una variabile al dato che &egrave;
+stato passato. In altre parole, si specifica che il dato che il
+programma ha passato va messo in una variabile di cui diamo noi
+il nome. In questo modo, la procedura pu&ograve; accedere al dato
+che &egrave; stato trasmesso dal programma semplicemente usando la
+variabile. La definizione della procedura, oltre al tipo di ogni
+dato che viene passato, specifica un nome di variabile, che
+&egrave; il posto dove il dato ricevuto viene memorizzato.<p>
+
+<pre>
+  static void lineebianche(int l) {
+    int i;
+
+    for(i=1; i<=l; i=i+1) {
+      System.out.println(" ");
+    }
+  }
+</pre>
+
+Nelle istruzioni che compongono la procedura, <tt>l</tt> si
+comporta esattamente come una qualsiasi variabile. Il punto
+importante &egrave; che all'inizio in questa variabile viene
+memorizzato il dato che il programma ha trasmesso.<p>
+
+Manca ora da specificare in che modo <b>il programma trasmette
+i parametri</b> alle procedure. Nel caso di procedure senza
+parametri, per indicare che si voleva la esecuzione di una
+procedura, si usava la istruzione <tt>nome()</tt>, in cui
+``nome'' &egrave; il nome della procedura. Nel caso in cui il
+programma vuole passare dei parametri, questi vanno semplicemente
+messi, l'uno dietro l'altro e separati da virgole, fra le due
+parentesi tonde: <tt>nome(dato1, dato2, dato3,...);</tt>
+
+Nel caso della stampa di linee bianche, il programma finale
+&egrave; fatto come segue.<p>
+
+<pre>
+class Linee {
+  static void lineebianche(int l) {
+    int i;
+
+    for(i=1; i<=l; i=i+1) {
+      System.out.println(" ");
+    }
+  }
+
+  public static void main(String[] args) {
+
+    /* stampa 10 linee */
+    lineebianche(10);
+
+    ...
+
+    /* stampa 20 linee */
+    lineebianche(20);
+  }
+}
+</pre>
+
+Cosa succede quando il programma viene eseguito? La prima
+istruzione &egrave; <tt>lineebianche(10);</tt> La esecuzione
+di questa istruzione comporta che:
+
+<ol>
+<li>viene chiamata la procedura <tt>lineebianche</tt>
+<li>a questa procedura viene mandato il dato intero 10.
+</ol>
+
+La procedura ha un parametro di tipo intero: pu&ograve;
+ricevere un dato intero, e questo viene memorizzato nella
+variabile <tt>l</tt>:
+
+<ol start="3">
+<li>si crea la variabile intera <tt>l</tt>, e ci si mette 10
+<li>si eseguono le istruzioni di <tt>lineebianche</tt>.
+</ol>
+
+<p>
+Viene quindi creata una variabile di tipo intero <tt>l</tt>,
+in cui viene messo il valore 10. A questo punto, si esegue
+il resto della procedura come al solito: si crea la
+variabile <tt>i</tt> e si esegue il ciclo.<p>
+
+La successiva istruzione &egrave; <tt>lineebianche(20)</tt>.
+Qui avviene tutto come prima: il programma passa il valore 20
+alla procedura, la quale lo riceve e lo memorizza nella
+variabile <tt>l</tt>, al che vengono eseguite le altre
+istruzioni della procedura.<p>
+
+Graficamente, la situazione &egrave; la seguente: inizialmente
+abbiamo un contenitore (zona di memoria) per il programma
+principale (<tt>main</tt>) e un contenitore per la procedura
+<tt>lineebianche</tt>. Inizialmente, non sono definite
+variabili, quindi abbiamo:<p>
+
+<table>
+
+<tr>
+<td><tt>lineebianche</tt></td>
+<td>
+<table border=1>
+<tr><td>
+<table>
+<tr>
+<td><tt>&nbsp;</tt></td>
+<td><table border=0><tr><td><tt>&nbsp;&nbsp;&nbsp;&nbsp;</tt></td></tr></table></td>
+<td><tt>&nbsp;&nbsp;&nbsp;&nbsp;</tt></td>
+</tr>
+<tr>
+<td><tt>&nbsp;</tt></td>
+<td><table border=0><tr><td><tt>&nbsp;&nbsp;&nbsp;&nbsp;</tt></td></tr></table></td>
+</tr>
+<tr>
+<td>&nbsp;</td>
+</tr>
+<tr>
+<td>&nbsp;</td>
+</tr>
+</table>
+</tr></td>
+</table>
+</td>
+</tr>
+<tr><td>&nbsp;</td></tr>
+<tr>
+<td><tt>main</tt></td>
+<td>
+<table border=1><tr><td>
+<table>
+<tr>
+<td><tt>&nbsp;</tt></td>
+<td><table border=0><tr><td><tt>&nbsp;&nbsp;&nbsp;&nbsp;</tt></td></tr></table></td>
+</tr>
+<tr><td>&nbsp;</td><td>&nbsp;</td><td><tt>&nbsp;&nbsp;&nbsp;&nbsp;</tt></td></tr>
+<tr><td>&nbsp;</td></tr>
+</table>
+</tr></td></table>
+</td>
+</tr>
+</table>
+
+
+<p>
+
+Viene chiamata <tt>lineebianche(10)</tt>. Questo corrisponde
+a: primo, si crea una variabile <tt>l</tt> che &egrave; una
+variabile locale a <tt>lineebianche</tt>,
+in cui viene messo il valore passato, cio&egrave; 10; secondo,
+si eseguono le istruzioni di <tt>lineebianche</tt>.<p>
+
+<table>
+
+<tr>
+<td><tt>lineebianche</tt></td>
+<td>
+<table border=1>
+<tr><td>
+<table>
+<tr>
+<td><tt>l</tt></td>
+<td><table border=1><tr><td><tt>&nbsp;&nbsp;10</tt></td></tr></table></td>
+<td><tt>&nbsp;&nbsp;&nbsp;&nbsp;</tt></td>
+</tr>
+<tr>
+<td><tt></tt></td>
+<td><table border=0><tr><td><tt>&nbsp;&nbsp;&nbsp;&nbsp;</tt></td></tr></table></td>
+</tr>
+<tr>
+<td>&nbsp;</td>
+</tr>
+<tr>
+<td>&nbsp;</td>
+</tr>
+</table>
+</tr></td>
+</table>
+</td>
+</tr>
+<tr><td>&nbsp;</td></tr>
+<tr>
+<td><tt>main</tt></td>
+<td>
+<table border=1><tr><td>
+<table>
+<tr>
+<td><tt>&nbsp;</tt></td>
+<td><table border=0><tr><td><tt>&nbsp;&nbsp;&nbsp;&nbsp;</tt></td></tr></table></td>
+</tr>
+<tr><td>&nbsp;</td><td>&nbsp;</td><td><tt>&nbsp;&nbsp;&nbsp;&nbsp;</tt></td></tr>
+<tr><td>&nbsp;</td></tr>
+</table>
+</tr></td></table>
+</td>
+</tr>
+</table>
+
+
+<p>
+
+La procedura <tt>lineebianche</tt> contiene una dichiarazione
+di un'altra variabile intera <tt>i</tt> che &egrave; sempre
+locale alla procedura. Si ha quindi la situazione seguente.
+
+<p>
+<table>
+
+<tr>
+<td><tt>lineebianche</tt></td>
+<td>
+<table border=1>
+<tr><td>
+<table>
+<tr>
+<td><tt>l</tt></td>
+<td><table border=1><tr><td><tt>&nbsp;&nbsp;10</tt></td></tr></table></td>
+<td><tt>&nbsp;&nbsp;&nbsp;&nbsp;</tt></td>
+</tr>
+<tr>
+<td><tt>i</tt></td>
+<td><table border=1><tr><td><tt>&nbsp;&nbsp;&nbsp;&nbsp;</tt></td></tr></table></td>
+</tr>
+<tr>
+<td>&nbsp;</td>
+</tr>
+<tr>
+<td>&nbsp;</td>
+</tr>
+</table>
+</tr></td>
+</table>
+</td>
+</tr>
+<tr><td>&nbsp;</td></tr>
+<tr>
+<td><tt>main</tt></td>
+<td>
+<table border=1><tr><td>
+<table>
+<tr>
+<td><tt>&nbsp;</tt></td>
+<td><table border=0><tr><td><tt>&nbsp;&nbsp;&nbsp;&nbsp;</tt></td></tr></table></td>
+</tr>
+<tr><td>&nbsp;</td><td>&nbsp;</td><td><tt>&nbsp;&nbsp;&nbsp;&nbsp;</tt></td></tr>
+<tr><td>&nbsp;</td></tr>
+</table>
+</tr></td></table>
+</td>
+</tr>
+</table>
+
+
+
+<p>
+La procedura contiene anche un ciclo in cui <tt>i</tt> assume
+tutti i valori interi da 1 al valore attualmente memorizzato
+in <tt>l</tt>. All'interno del ciclo si stampa una linea
+bianca. Quindi, alla fine verranno stampate tante linee bianche
+quanto &egrave; il valore di <tt>l</tt>. Questo &egrave;
+esattamente quello che si voleva ottenere.
+
+<p>
+Le pagine successive mostrano esempi di procedure che ricevono
+argomenti: <a href="stampasepositivo.shtml">stampa di valori
+solo se positivi</a> e <a href="graficofunzione.shtml">la
+stampa del grafico di una funzione con istruzioni di testo</a>.<p>
+
+
+
+</body>
+</html>
+

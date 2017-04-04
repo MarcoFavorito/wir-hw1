@@ -1,0 +1,86 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=windows-1252">
+<TITLE>1</TITLE>
+</HEAD>
+<BODY background="bgrnd.jpg">
+
+<B><FONT SIZE=5><P>2) Ereditariet&agrave; in C++</P>
+</B></FONT><P ALIGN="RIGHT">Riferimenti: <B>[1a]</B> capitolo 5 e 13</P>
+<hr>
+
+<I>1. Quando utilizzare ereditariet&agrave; sulle classi
+
+
+<UL>
+
+<UL>
+</I><LI>quando &egrave; evidente la relazione is-a tra due classi </LI><LI>quando necessitiamo di metodi di rappresentazione pi&ugrave; specifici per una classe</LI><LI>quando &egrave; conveniente il riuso del codice presente in una classe</LI></UL>
+</UL>
+
+<I>2. Costruttori
+
+<OL>
+
+</I><P ALIGN="JUSTIFY">Al momento dell'invocazione del costruttore della classe derivata, viene automaticamente invocato il costruttore senza argomenti della superclasse. Analogo comportamento si ha con l'operatore di assegnazione "=", con il costruttore di copia e con il distruttore. E' possibile invocare esplicitamente un costruttore diverso da quello di default attraverso una dichiarazione di questo tipo</P>
+<I><P ALIGN="CENTER">puntoXYZ(float a, float b, float c) : puntoXY(a, b)</P>
+</OL>
+
+
+<p>3. Parte pubblica, privata e protetta</p>
+</I>
+
+<OL>
+
+<P ALIGN="JUSTIFY">Nella definizione di una classe, ogni membro (metodo o attributo) che precede la parola chiave <I>public</I>: o che comunque (esplicitamente) segue la parola chiave <I>private</I>: fa parte della "parte privata" della classe. Ogni membro che segue la parola chiave <I>protected:</I> viene invece definito "protetto". Ad un membro <I>public</I> &egrave; possibile accedere da una qualsiasi funzione esterna o interna alla classe. Ad un membro <I>protected:</I> possono accedere le sole funzioni interne e le funzioni delle classi derivate. Ad un membro <I>private:</I> possono accedere le sole funzioni interne.</P>
+<P ALIGN="CENTER">Analisi di <a href="parametricompatibili.cpp"> parametricompatibili.cpp</a></P>
+<I></OL>
+
+
+4. Concetti fondamentali
+
+
+<UL>
+
+<UL>
+</I><LI>Se la classe B deriva dalla classe A, B eredita tutte le propriet&agrave; (membri pubblici, protetti e privati) di A</LI><LI>B pu&ograve; possedere ulteriori propriet&agrave; e pu&ograve; avere dati o funzioni (presenti in A) ridefiniti. Questo normalmente rende gli oggetti di B pi&ugrave; specifici rispetto agli oggetti di tipo A</LI><LI>In caso di derivazione pubblica ogni oggetto della classe B &egrave; anche un oggetto della classe A e ogni membro ereditato mantiene il proprio livello di accesso. E' possibile usare un oggetto della classe derivata in ogni situazione o contesto in cui si pu&ograve; usare un oggetto della classe base (l'oggetto della classe derivata si dice compatibile)</LI><LI>In caso di derivazione protetta ogni membro pubblico o protetto ereditato, viene reso protetto nella classe derivata. In caso di derivazione privata ogni membro pubblico o protetto ereditato, viene reso privato nella classe derivata. In questi tipi di derivazione gli oggetti della classe ereditata perdono la compatibilit&agrave; con gli oggetti della superclasse</LI><LI>In caso di derivazione multipla, i tipi di derivazione possono anche essere differenti </LI></UL>
+</UL>
+
+<I>5. Scope Resolution
+</I>
+
+<OL>
+
+<P ALIGN="JUSTIFY">Se una funzione viene ridefinita nella classe derivata, per gli oggetti di quest'ultima non &egrave; pi&ugrave; disponibile l'omonima funzione della superclasse. Non viene mascherata la sola funzione con uguale nome e uguale numero/tipo parametri ma tutte le funzioni della superclasse con lo stesso nome. E' possibile utilizzare questi metodi solo mediante l'uso dell'operatore "::"</P>
+<I><P ALIGN="CENTER">classe::metodo(parametri)</P>
+</I><P ALIGN="JUSTIFY">Se una funzione non viene ridefinita nella classe derivata, sugli oggetti di quest'ultima &egrave; possibile applicare quella ereditata dalla classe base. Se le superclassi sono pi&ugrave; di una &egrave; necessario utilizzare l'operatore di <I>scope resolution</I> per risolvere l'ambiguit&agrave; che il compilatore non &egrave; in grado di interpretare.</P>
+</OL>
+<p>6. <I>Esercitazione proposta</p>
+
+</I>
+<DIR>
+<DIR>
+
+<P ALIGN="JUSTIFY">Considerare l'albero binario di ricerca visto nel precedente incontro. Definire ed implementare le funzioni:</P></DIR>
+</DIR>
+
+
+<UL>
+
+<UL>
+<LI>CercaMinimo</LI><LI>CercaMassimo</LI><LI>CercaSuccessore</LI><LI>CercaPredecessore</LI></UL>
+</UL>
+<DIR>
+<DIR>
+
+<P ALIGN="JUSTIFY">Considerare che:</P></DIR>
+</DIR>
+
+
+<UL>
+
+<UL>
+<LI>Il minimo non pu&ograve; che trovarsi nell'ultima foglia a sinistra</LI><LI>Il massimo non pu&ograve; che trovarsi nell'ultima foglia a destra</LI><LI>Il successore non pu&ograve; che essere il minore dei nodi appartenenti al sottoalbero destro</LI><LI>Il predecessore non pu&ograve; che essere il maggiore tra i nodi appartenenti al sottoalbero sinistro</LI></UL>
+</UL>
+</BODY>
+</HTML>

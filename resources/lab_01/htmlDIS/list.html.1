@@ -1,0 +1,2911 @@
+<html>
+<head>
+<title>Liste</title>
+</head>
+
+<body>
+
+<h1>Liste</h1>
+
+<p>
+Esistono dei tipi predefiniti
+in Java per liste e insiemi
+</p>
+
+<hr>
+
+
+<h4>Breve riepilogo</h4>
+
+<p>
+Variabili:
+</p>
+
+<ol>
+
+<li>ogni oggetto si pu&ograve; mettere in <tt>Object</tt>
+
+<li>per il passo inverso, serve il cast
+
+</ol>
+
+<p>
+Quando la variabile &egrave; di un tipo
+ma l'oggetto &egrave; di una sottoclasse:
+</p>
+
+<ol>
+
+<li>le componenti sono quelle della classe dalla variabile
+
+<li>i metodi sono quelli della classe dell'oggetto
+
+</ol>
+
+<p>
+<b>Nota:</b> questo discorso vale solo per i metodi
+e le componenti che esistono in tutte e due le classi
+</p>
+
+<p>
+Se un metodo esiste solo nella classe dell'oggetto
+ma non in quella della variabile, non si pu&ograve;
+invocare
+</p>
+
+<hr>
+
+
+
+<h4>Ridefinizione dei metodi di <tt>Object</tt></h4>
+
+<ol>
+
+<li>si definisce <tt>public String toString()</tt>
+come un metodo che ritorna una stringa ottenuta
+concatenando le componenti
+
+<li>si definisce <tt>public boolean equals(Object o)</tt>
+come un metodo che:
+
+<ol>
+<li>confronta <tt>o</tt> con <tt>null</tt>
+<li>fa il cast di <tt>o</tt> alla classe
+<li>confronta le componenti di <tt>o</tt> e <tt>this</tt>
+</ol>
+
+</ol>
+
+<pre>
+class Studente {
+  String nome;
+  int anno;
+
+  public String toString() {
+    return "["+nome+","+anno+"]";
+  }
+
+  public boolean equals(Object o) {
+    Studente s;
+
+    if(o==null)
+      return false;
+
+    if(this.getClass()!=o.getClass())
+      return false;
+
+    s=(Studente) o;
+
+    if(this.nome==null) {
+      if(s.nome!=null)
+        return false;
+    }
+    else
+      if(!this.nome.equals(s.nome))
+        return false;
+
+    if(this.anno!=s.anno)
+      return false;
+
+    return true;
+  }
+}
+</pre>
+
+<hr>
+
+
+<h4>Liste collegate</h4>
+
+<p>
+Si rappresentano sequenze di elementi usando un oggetto per
+ogni elemento
+</p>
+
+<p>
+Ogni oggetto &egrave; collegato al successivo
+</p>
+
+<pre>
+class Nodo {
+  int info;
+  Nodo next;
+}
+</pre>
+
+<img src="lista.gif">
+
+<hr>
+
+
+<h4>Liste di oggetti</h4>
+
+<p>
+Al posto di <tt>int info</tt>, posso mettere
+un tipo qualsiasi (es. <tt>Point</tt>)
+</p>
+
+<p>
+In questo modo, posso rappresentare sequenze di oggetti
+<tt>Point</tt>
+</p>
+
+<p>
+Usando <tt>Object</tt> come tipo di <tt>info</tt>, ho una
+sequenza di oggetti qualsiasi
+</p>
+
+<pre>
+class Nodo {
+  Object info;
+  Nodo next;
+}
+</pre>
+
+<hr>
+
+
+<h4>Catene di oggetti, in memoria</h4>
+
+<p>
+Il campo <tt>info</tt> contiene l'indirizzo di un
+oggetto
+</p>
+
+<img src="lista-obj.gif">
+
+<p>
+Al posto di un intero, nei campi <tt>info</tt>
+ci sono riferimenti ad altri oggetti
+</p>
+
+<p>
+Ci posso mettere riferimenti a <tt>Point</tt>,
+<tt>Rectangle</tt>, <tt>Studente</tt>, ecc
+</p>
+
+<hr>
+
+
+<h4>Cosa posso fare con una lista</h4>
+
+<p>
+Ci sono varie operazioni che si possono
+fare:
+</p>
+
+<ol>
+
+<li>verifica se &egrave; vuota
+
+<li>trovare la lunghezza
+
+<li>trovare l'elemento in una certa
+posizione
+
+<li>inserire un elemento in una certa
+posizione
+
+<li>eliminare l'elemento in una certa
+posizione
+
+</ol>
+
+<p>
+Alcune sono complicate da realizzare
+</p>
+
+<hr>
+
+
+<h4>Cosa succede se si inserisce un elemento</h4>
+
+<p>
+Si pu&ograve; mettere all'inizio della catena,
+alla fine, o anche in mezzo:
+</p>
+
+<img src="insert.gif">
+
+<hr>
+
+
+<h4>Eliminazione di un elemento</h4>
+
+<p>
+Basta fare in modo che la catena di riferimenti
+``aggiri'' l'elemento da eliminare:
+</p>
+
+<img src="remove.gif">
+
+<p>
+Per eliminare il secondo:
+</p>
+
+<pre>
+n.next=n.next.next;
+</pre>
+
+<p>
+In generale, si pu&ograve; eliminare un elemento
+qualsiasi
+</p>
+
+<hr>
+
+
+<h4>Semplicit&agrave; di realizzazione</h4>
+
+<p>
+Sulle liste collegate, le operazioni di inserimento e
+cancellazione di un elemento sono semplici
+</p>
+
+<p>
+D'altra parte, per arrivare all'i-esimo elemento, devo
+scandire tutta la lista (sugli array questo non &egrave;
+necessario)
+</p>
+
+<hr>
+
+
+<h4>Tipo <tt>LinkedList</tt></h4>
+
+<p>
+&Egrave; un tipo di oggetto predefinito
+di Java
+</p>
+
+<p>
+Realizza liste collegate, in cui il
+campo <tt>info</tt> &egrave; <tt>Object</tt>
+</p>
+
+<p>
+Sono liste collegate di oggetti
+</p>
+
+<p>
+&Egrave; un tipo predefinito del linguaggio:
+non c'&egrave; bisogno di sapere come sono
+implementati i metodi
+</p>
+
+<p>
+Se si usa una <tt>LinkedList</tt> va fatto:
+</p>
+
+<pre>
+import java.util.*;
+</pre>
+
+<hr>
+
+
+<h4>Come si usa</h4>
+
+<p>
+Una lista &egrave; una sequenza di oggetti
+</p>
+
+<p>
+Un singolo oggetto <tt>LinkedList</tt> rappresenta una
+sequenza di oggetti
+</p>
+
+<pre>
+  LinkedList l;
+  l=new LinkedList();
+</pre>
+
+<p>
+Dopo la creazione, la lista &egrave; vuota (&egrave; una
+sequenza di zero elementi)
+</p>
+
+<p>
+Metodo <tt>add</tt>: inserisce un elemento in fondo alla lista
+</p>
+
+<pre>
+  l.add(new Point(12,3));
+  l.add("abcd");
+  l.add(new Studente("Pippo", 3));
+</pre>
+
+<hr>
+
+
+<h4>Stampa della lista</h4>
+
+<p>
+Si pu&ograve; stampare una lista:
+</p>
+
+<pre>
+  System.out.println(l);
+</pre>
+
+<p>
+Per ogni oggetto della lista, si invoca <tt>toString</tt> e
+si stampa il risultato
+</p>
+
+<p>
+Tutti gli oggetti hanno il metodo <tt>toString</tt>: o
+&egrave; quello di <tt>Object</tt>, oppure &egrave; stato
+ridefinito
+</p>
+
+<hr>
+
+
+<h4>Stampa della lista</h4>
+
+<p>
+Stampa della lista di sopra se <tt>toString</tt>
+non viene ridefinito in <tt>Studente</tt>:
+</p>
+
+<pre>
+[java.awt.Point[x=12,y=3], abcd,
+Studente@5d87b2]
+</pre>
+
+<p>
+Stampa l'indirizzo dell'oggetto, non i dati dello studente!
+</p>
+
+<p>
+Se ridefinisco <tt>toString</tt> di <tt>Studente</tt>:
+</p>
+
+<pre>
+[java.awt.Point[x=12,y=3], abcd,
+[Pippo 3]]
+</pre>
+
+<p>
+Adesso vedo i dati dello studente!
+</p>
+
+<hr>
+
+
+<h4>Trovare la lunghezza di una lista</h4>
+
+<p>
+Metodo <tt>size</tt>, che ritorna un intero
+</p>
+
+<pre>
+import java.util.*;
+import java.awt.*;
+
+class Prova {
+  public static void main(String args[]) {
+    LinkedList l;
+    l=new LinkedList();
+  
+    l.add(new Point(12,3));
+    l.add("abcd");
+    l.add(new Studente("Pippo", 3));
+
+    System.out.print("Lunghezza lista: ");
+    System.out.println(l.size());
+  }
+}
+</pre>
+
+<hr>
+
+
+<h4>Inserire un elemento in mezzo</h4>
+
+<p>
+Il metodo <tt>add</tt> &egrave; sovraccarico
+</p>
+
+<pre>
+  // inserisce elemento alla fine
+ l.add("efg");
+</pre>
+
+<p>
+C'&egrave; una versione con un intero
+</p>
+
+<pre>
+  l.add(2, "efg");
+</pre>
+
+<p>
+Inserisce l'elemento in posizione <tt>2</tt>
+</p>
+
+<hr>
+
+
+<h4>Numerazione degli elementi</h4>
+
+<p>
+Attenzione!
+</p>
+
+<p>
+Gli elementi sono numerati da <tt>0</tt>
+a <tt>size()-1</tt>
+</p>
+
+<p>
+Quando faccio <tt>l.add(2, "efg")</tt>,
+l'elemento <tt>"efg"</tt> viene inserito
+nella posizione <tt>2</tt>, ossia in terza
+</p>
+
+<p>
+Gli elementi successivi vengono scalati
+(in ordine):
+</p>
+
+<pre>
+Prima:   [abcd, ert, wwww, zzzz]
+faccio   l.add(2, "nuova");
+Dopo:    [abcd, ert, nuova, wwww, zzzz]
+</pre>
+
+<p>
+L'elemento viene inserito in posizione <tt>2</tt> (la terza)
+</p>
+
+<p>
+Tutti quelli dopo sono spostati in ordine
+</p>
+
+<hr>
+
+
+<h4>Regola degli indici</h4>
+
+<p>
+&Egrave; la stessa degli array:
+</p>
+
+<blockquote>
+<i>
+l'elemento di indice <tt>0</tt> &egrave; il primo
+</i>
+</blockquote>
+
+<p>
+Vale per gli array, per le liste, e per varie
+altre strutture dati
+</p>
+
+<p>
+Regola della dimensione:
+</p>
+
+<blockquote>
+<i>
+l'ultimo elemento ha indice <tt>num_elementi-1</tt>
+</i>
+</blockquote>
+
+<p>
+Questa regola vale anche in altri linguaggi
+</p>
+
+<p>
+&Egrave; facile sbagliare quando si fanno
+cicli su una parte della sequenza<br>
+(es. stampare tutti gli elementi di una lista
+tranne gli ultimi <tt>n</tt>)
+</p>
+
+<hr>
+
+
+<h4>Dove va l'elemento?</h4>
+
+<pre>
+  l.add(i, oggetto);
+</pre>
+
+<p>
+Regola dell'inserimento:
+</p>
+
+<blockquote>
+<i>
+l'oggetto diventa l'oggetto in posizione
+<tt>i</tt> nella lista
+</i>
+</blockquote>
+
+<p>
+Esempio:
+</p>
+
+<dl>
+
+<dt><tt>l.add(3, "abcd");</tt>
+<dd>l'oggetto <tt>"abcd"</tt> diventa il nuovo elemento
+di indice <tt>3</tt> della lista (il quarto)
+
+<dt><tt>l.add(0, "efgh");</tt>
+<dd>l'oggetto
+<tt>"efgh"</tt> diventa il nuovo elemento
+in posizione <tt>0</tt> (diventa il nuovo primo elemento)
+
+</dl>
+
+<hr>
+
+
+<h4>Mettere <tt>null</tt></h4>
+
+<p>
+Posso anche aggiungere <tt>null</tt> come elemento
+di una lista
+</p>
+
+<pre>
+  l.add(null);
+</pre>
+
+<p>
+Concetto: una <tt>LinkedList</tt> &egrave; una sequenza di
+variabili <tt>Object</tt>
+</p>
+
+<p>
+In queste variabili posso anche mettere <tt>null</tt>
+</p>
+
+<hr>
+
+
+<h4>Trovare un elemento</h4>
+
+<p>
+Ci sono tre metodi:
+</p>
+
+<dl>
+
+<dt><tt>getFirst()</tt>
+<dd>trova il primo oggetto della lista
+
+<dt><tt>getLast()</tt>
+<dd>trova l'ultimo oggetto della lista
+
+<dt><tt>get(int index)</tt>
+<dd>trova l'elemento di indice <tt>index</tt>
+
+</dl>
+
+<p>
+Tutti e tre restituiscono un <tt>Object</tt>
+</p>
+
+<hr>
+
+
+<h4>Cast sugli elementi</h4>
+
+<p>
+Se so che sono di un tipo specifico, posso
+fare il cast:
+</p>
+
+<pre>
+  String s;
+
+  s=(String) l.getFirst();
+</pre>
+
+<p>
+D&agrave; errore se poi l'oggetto non &egrave;
+di tipo stringa!
+</p>
+
+<p>
+&Egrave; un errore in esecuzione
+</p>
+
+<p>
+Di solito, si fanno liste che contengono
+tutti elementi dello stesso tipo
+</p>
+
+<hr>
+
+
+<h4>Perch&egrave; devo fare il cast?</h4>
+
+<pre>
+  Point p, q;
+  ...
+
+  l.add(p);
+  q=(Point) l.getLast();
+</pre>
+
+<p>
+Domanda:
+</p>
+
+<ul>
+
+<li>Quando metto dentro <tt>p</tt>, &egrave; un <tt>Point</tt>
+
+<li> perch&egrave;, quando lo tiro fuori, devo fare il cast
+per rimetterlo in una variabile <tt>Point</tt>?
+
+</ul>
+
+<hr>
+
+
+<h4>Cast: risposta</h4>
+
+<p>
+Concettualmente, le liste sono sequenze di oggetti <tt>Object</tt>
+</p>
+
+<p>
+L'implementazione Java: una lista &egrave; una sequenza di variabili
+(d'istanza) <tt>Object</tt>
+</p>
+
+<dl>
+
+<dt>inserire
+<dd>in una variabile <tt>Object</tt> posso mettere
+un qualsiasi riferimento a oggetto
+
+<dt>trovare
+<dd>se ho un <tt>Point</tt> in una variabile
+<tt>Object</tt>, devo fare il cast per poterlo
+rimettere in un <tt>Point</tt>
+
+</dl>
+
+<hr>
+
+
+<h4>Graficamente</h4>
+
+<p>
+Quando inserisco un oggetto in una <tt>LinkedList</tt>,
+viene messo in una variabile <tt>Object</tt>
+</p>
+
+<img src="obj-point.gif">
+
+<dl>
+
+<dt>Inserimento:
+<dd>faccio <tt>Object=Point</tt> non ho bisogno del cast
+
+<dt>Trovare elemento:
+<dd>per fare <tt>Point=Object</tt> devo fare il cast, anche se
+l'oggetto &egrave; un <tt>Point</tt>
+
+</dl>
+
+<p>
+Notare l'incapsulamento: non so come &egrave; fatta
+la <tt>LinkedList</tt>
+</p>
+
+<p>
+&Egrave; come se ci fosse una ``barriera'', che mi
+impedisce di vedere la struttura degli oggetti
+</p>
+
+<p>
+So solo che dentro ci sono delle variabili
+<tt>Object</tt> per memorizzare gli oggetti.<br>
+</p>
+
+<p>
+Queste variabili sono componenti di oggetti collegati
+fra loro, ma la cosa non mi interessa.
+</p>
+
+<hr>
+
+
+<h4>Esercizio</h4>
+
+<p>
+Stampare gli elementi di una lista,
+uno per linea
+</p>
+
+<p>
+Notare che <tt>println(lista)</tt> li
+stampa tutti su una linea
+</p>
+
+<pre>
+  static void stampaLista(LinkedList l) {
+    ...
+  }
+</pre>
+
+<hr>
+
+
+<h4>Soluzione</h4>
+
+<p>
+<tt>l.get(i)</tt> trova l'oggetto in
+posizione <tt>i</tt>
+</p>
+
+<p>
+Gli elementi della lista hanno
+indici che vanno da <tt>0</tt>
+a <tt>l.size()-1</tt>
+</p>
+
+<pre>
+  static void stampaLista(LinkedList l) {
+    int i;
+    Object o;
+
+    for(i=0; i&lt;l.size(); i++) {
+      o=l.get(i);
+
+      System.out.println(o.toString());
+    }
+  }
+</pre>
+
+<hr>
+
+
+<h4>Osservazione</h4>
+
+<p>
+<tt>l.get(i)</tt> ritorna un <tt>Object</tt>,
+che metto in <tt>o</tt>
+</p>
+
+<p>
+<tt>o.toString()</tt> &egrave; l'invocazione del metodo
+<tt>toString</tt> dell'oggetto il cui riferimento sta in
+<tt>o</tt>
+</p>
+
+<p>
+Se questo oggetto &egrave; un <tt>Point</tt>, allora
+<tt>o.toString()</tt> &egrave; l'invocazione del metodo
+<tt>toString</tt> di <tt>Point</tt>, anche
+se la variabile <tt>o</tt> &egrave; un <tt>Object</tt>
+</p>
+
+<p>
+<b>Nota:</b> questo vale anche se faccio
+<tt>l.get(i).toString()</tt>: il risultato di
+<tt>l.get(i)</tt> &egrave; di tipo <tt>Object</tt>,
+per cui &egrave; come se faccessi
+<tt>Object o=l.get(i); o.toString();</tt>
+</p>
+
+<hr>
+
+
+<h4>Esercizio</h4>
+
+<p>
+Scrivere un metodo statico che verifica
+la presenza di un oggetto in una lista
+</p>
+
+<pre>
+  static boolean
+     presente(LinkedList l, Object o) {
+    ...
+  }
+</pre>
+
+<p>
+Voglio sapere se la lista contiene un oggetto
+che &egrave; <tt>equals</tt> ad <tt>o</tt>
+</p>
+
+<hr>
+
+
+<h4>Soluzione</h4>
+
+<p>
+Per ogni elemento della lista, se &egrave;
+<tt>equals</tt> ad <tt>o</tt>, ritorna <tt>true</tt>
+</p>
+
+<p>
+Se si arriva alla fine senza aver trovato
+l'elemento, si ritorna <tt>false</tt>
+</p>
+
+<pre>
+  static boolean presente(LinkedList l, Object o) {
+    int i;
+
+    for(i=0; i&lt;l.size(); i++) {
+      if(o.equals(l.get(i)))
+        return true;
+    }
+
+    return false;
+  }
+</pre>
+
+<p>
+Attenzione! Quando faccio <tt>o.equals</tt>
+viene invocato l'<tt>equals</tt> dell'oggetto!
+</p>
+
+<p>
+Se l'oggetto &egrave; un <tt>Point</tt>, viene
+invocato <tt>equals</tt> di <tt>Point</tt>, anche
+se <tt>o</tt> &egrave; una variabile <tt>Object</tt>
+</p>
+
+<hr>
+
+
+<h4>Pi&ugrave; facile</h4>
+
+<p>
+Nella classe <tt>LinkedList</tt> c'&egrave;
+il metodo <tt>contains</tt>:
+</p>
+
+<pre>
+  boolean contains(Object)
+</pre>
+
+<p>
+Verifica se l'elemento sta nella lista oppure no
+</p>
+
+<hr>
+
+
+<h4>Verifica coordinate negative</h4>
+
+<p>
+Scrivere un metodo statico che verifica se
+una lista di punti contiene un punto con
+coordinata <tt>x</tt> negativa
+</p>
+
+<pre>
+  static boolean puntiNegativi(LinkedList l) {
+    ...
+  }
+</pre>
+
+<hr>
+
+
+<h4>Soluzione sbagliata</h4>
+
+<p>
+Algoritmo simile: se si trova un elemento uguale, si ritorna
+<tt>true</tt>
+</p>
+
+<pre>
+  static boolean puntiNegativi(LinkedList l) {
+    int i;
+
+    for(i=0; i&lt;l.size(); i++) 
+      if(l.get(i).x&lt;0)
+        return true;
+
+    return false;
+  }
+</pre>
+
+<p>
+Quando si compila, genera un errore
+</p>
+
+<p>
+Quale?
+</p>
+
+<hr>
+
+
+<h4>Non esiste la componente <tt>x</tt></h4>
+
+<p>
+L'errore che viene dato &egrave; questo:
+</p>
+
+<pre>
+Negative.java:9: cannot resolve symbol
+symbol  : variable x  
+location: class java.lang.Object
+      if(l.get(i).x&lt;0)
+              ^
+1 error
+</pre>
+
+<p>
+Significa: l'oggetto <tt>l.get(i)</tt> non ha
+la componente <tt>x</tt>
+</p>
+
+<p>
+&Egrave; vero?
+</p>
+
+<hr>
+
+
+<h4>Variabili e oggetti</h4>
+
+<p>
+L'oggetto <tt>l.get(i)</tt> &egrave; di tipo <tt>Object</tt>
+</p>
+
+<p>
+La classe <tt>Object</tt> non ha la componente <tt>x</tt>
+</p>
+
+<p>
+<tt>l.get(i).x</tt> &egrave; un errore
+</p>
+
+<hr>
+
+
+<h4>Verifiche statiche e dinamiche</h4>
+
+<p>
+Se <tt>o</tt> &egrave; una variabile <tt>Object</tt>,
+vengono fatti questi controlli:
+</p>
+
+<dl>
+
+<dt>staticamente:
+<dd><tt>o</tt> ha solo le componenti e metodi di <tt>Object</tt>
+
+<p />
+
+<dt>dinamicamente:
+<dd>si pu&ograve; fare il cast <tt>(Classe) o</tt> solo se
+l'oggetto che si trova <i>attualmente</i> nella variabile
+&egrave; di un tipo che si pu&ograve; mettere in una
+variabile <tt>Classe</tt>
+
+</dl>
+
+<p>
+Principio: in fase di compilazione, non si pu&ograve; sapere
+con certezza il tipo dell'oggetto che sta in una variabile
+</p>
+
+<p>
+Si assume quindi che abbia solo le componenti e i metodi del
+tipo della variabile
+</p>
+
+<hr>
+
+
+<h4>Variabili, metodi ed espressioni</h4>
+
+<p>
+Lo stesso discorso vale per:
+</p>
+
+<ul>
+
+<li>variabili <tt>Object</tt>
+
+<li>metodi che ritornano un <tt>Object</tt>
+
+<li>espressioni che hanno come risultato un <tt>Object</tt>
+
+</ul>
+
+<p>
+Valgono le stesse regole che abbiamo detto per le variabili
+<tt>Object</tt>
+</p>
+
+<hr>
+
+
+<h4>Cast</h4>
+
+<p>
+Dato che l'oggetto &egrave; di tipo <tt>Point</tt>,
+posso fare il cast a <tt>Point</tt>
+</p>
+
+<pre>
+   Point e=(Point) l.get(i);
+</pre>
+
+<p>
+Ora posso fare <tt>e.x</tt> ecc.
+</p>
+
+<hr>
+
+
+<h4>Soluzione corretta</h4>
+
+<p>
+Prima faccio il cast, e poi vedo
+la componente <tt>x</tt>
+</p>
+
+<pre>
+  static boolean puntiNegativi(LinkedList l) {
+    int i;
+    Point p;
+
+    for(i=0; i&lt;l.size(); i++) {
+      p=(Point) l.get(i);
+
+      if(p.x&lt;0)
+        return true;
+    }
+
+    return false;
+  }
+</pre>
+
+<p>
+Si poteva anche fare:
+</p>
+
+<pre>
+  if(((Point) l.get(i)).x&lt;0)
+</pre>
+
+<p>
+L'espressione <tt>((Point) l.get(i)).x</tt> ritorna un
+<tt>Point</tt>, quindi si pu&ograve; fare <tt>.x</tt>
+</p>
+
+<hr>
+
+
+<h4>Osservazione</h4>
+
+<p>
+Se nella lista ci metto un rettangolo,
+e poi invoco il metodo, viene dato
+errore
+</p>
+
+<p>
+Il cast <tt>(Point) oggetto</tt> si pu&ograve;
+fare solo se la variabile contiene effettivamente
+un <tt>Point</tt>
+</p>
+
+<dl>
+
+<dt>testo del problema:
+<dd>``data una lista di punti''
+<p />
+
+<dt>in Java
+<dd>non esiste il tipo ``lista di punti''
+
+</dl>
+
+<p>
+&Egrave; una affermazione su come verr&agrave; invocato il
+metodo: solo su liste in cui tutti gli oggetti sono
+di tipo <tt>Point</tt>
+</p>
+
+<p>
+Quindi, il cast <tt>e=(Point) l.get(i)</tt>
+non d&agrave; errore se la lista passata rispetta
+la specifica
+</p>
+
+<p>
+Non c'&egrave; modo di generare un errore in compilazione se
+si passa una lista con oggetti che non sono <tt>Point</tt>
+</p>
+
+<hr>
+
+
+<h4>Altro esercizio</h4>
+
+<p>
+Realizzare un metodo statico che prende
+una lista di punti, che sono in ordine
+di <tt>x</tt> crescente, e inserisce
+un nuovo punto nella posizione giusta
+</p>
+
+<pre>
+  static void inserisciPuntoOrdine(
+    LinkedList l, Point p) {
+    ...
+  }
+</pre>
+
+<hr>
+
+
+<h4>Soluzione</h4>
+
+<p>
+Primo livello di raffinamento dell'algoritmo:
+</p>
+
+<ol>
+
+<li>trova la posizione in cui va messo
+l'elemento
+
+<li>inseriscilo
+
+</ol>
+
+<p>
+La seconda parte &egrave; facile
+</p>
+
+<hr>
+
+
+<h4>Versione che non funziona</h4>
+
+<p>
+Viene dato un errore:
+</p>
+
+<pre>
+  static void inserisciPuntoOrdine(
+    LinkedList l, Point p) {
+
+    int i;
+
+    for(i=0; i&lt;l.size(); i++) {
+      if(l.get(i).x&gt;=p.x) {
+        l.add(i, p);
+        break;
+      }
+    }
+  }
+</pre>
+
+<p>
+&Egrave; un errore in compilazione: quale?
+</p>
+
+<hr>
+
+
+<h4>Non esiste la componente <tt>x</tt></h4>
+
+<p>
+L'errore &egrave;:
+</p>
+
+<pre>
+Prova.java:30: cannot resolve symbol
+symbol  : variable x  
+location: class java.lang.Object
+      if(l.get(i).x&gt;=p.x) {
+              ^
+1 error
+</pre>
+
+<p>
+Motivo: <tt>l.get(i)</tt> &egrave; di tipo
+<tt>Object</tt>, che non ha il campo <tt>x</tt>
+</p>
+
+<hr>
+
+
+<h4>Variabile e oggetto</h4>
+
+<dl>
+
+<dt>variabile
+<dd><tt>l.get(i)</tt> &egrave; di
+tipo <tt>Object</tt>
+
+<dt>oggetto
+<dd>l'oggetto il cui indirizzo sta in
+<tt>l.get(i)</tt> &egrave; un <tt>Point</tt>
+
+</dl>
+
+<p>
+Regola: il controllo statico assume che in una variabile
+<tt>Object</tt> ci sia un <tt>Object</tt>
+</p>
+
+<p>
+Pi&ugrave; preciso: in una variabile <tt>Object</tt>
+potrebbe esserci un <tt>Object</tt>
+</p>
+
+<p>
+<tt>Object</tt> non ha la componente <tt>x</tt>
+</p>
+
+<p>
+&Egrave; giusto che il compilatore segnali l'errore
+</p>
+
+<hr>
+
+
+<h4>Cast</h4>
+
+<p>
+Dato che l'oggetto &egrave; di tipo <tt>Point</tt>,
+posso fare il cast a <tt>Point</tt>
+</p>
+
+<pre>
+   Point e=(Point) l.get(i);
+</pre>
+
+<p>
+Ora posso fare <tt>e.x</tt> ecc.
+</p>
+
+<hr>
+
+
+<h4>Soluzione corretta</h4>
+
+<p>
+Anche se una variabile <tt>o</tt> di tipo
+<tt>Object</tt> contiene l'indirizzo di un <tt>Point</tt>,
+per poter usare le componenti <tt>x</tt> ed <tt>y</tt>
+devo fare il cast
+</p>
+
+<pre>
+  static void inserisciPuntoOrdine(
+    LinkedList l, Point p) {
+
+    int i;
+    Point e;
+
+    for(i=0; i&lt;l.size(); i++) {
+      e=(Point) l.get(i);
+      if(e.x&gt;=p.x) {
+        l.add(i, p);
+        break;
+      }
+    }
+  }
+</pre>
+
+<hr>
+
+
+<h4>Metodi non ridefiniti</h4>
+
+<p>
+Questa soluzione non funziona:
+</p>
+
+<pre>
+  int x=(int) (l.get(i).getX());
+</pre>
+
+<p>
+&Egrave; vero che i metodi sono quelli
+dell'oggetto
+</p>
+
+<p>
+&Egrave; vero che <tt>Point</tt> ha il
+metodo <tt>getX()</tt>
+</p>
+
+<p>
+Per&ograve; vale solo per i metodi che
+sono <i>ridefiniti</i>
+</p>
+
+<p>
+<tt>Object</tt> non ha il metodo <tt>getX()</tt>
+</p>
+
+<p>
+Non posso fare <tt>o.getX()</tt>, anche se poi
+<tt>o</tt> contiene l'indirizzo di un <tt>Point</tt>
+</p>
+
+<hr>
+
+
+<h4>Metodi e componenti</h4>
+
+<p>
+Variabile e oggetto della stessa classe:
+metodi e componenti della classe
+</p>
+
+<p>
+Variabile di un tipo e oggetto di
+una sottoclasse:
+</p>
+
+
+<dl>
+
+<dt>non ridefiniti
+<dd>regola solita: ogni variabile accede ai suoi
+metodi e componenti
+
+<dt>ridefiniti
+<dd>le componenti sono quelle della variabile,
+i metodi dell'oggetto
+
+</dl>
+
+<p>
+La regola da ricordare vale solo per componenti
+e metodi che sono ridefiniti, e soltanto quando
+la varibile e l'oggetto sono di tipo diverso
+</p>
+
+<hr>
+
+
+<h4>Caso tipico</h4>
+
+<p>
+La variabile &egrave; un <tt>Object</tt>, ma
+l'oggetto &egrave; di un altro tipo:
+</p>
+
+<ul>
+
+<li>non ha componenti (devo fare il cast, se
+mi servono le componenti dell'oggetto)
+
+<li>ha i metodi <tt>equals</tt> e <tt>toString</tt>:
+se sono ridefiniti, vengono invocati quelli dell'oggetto
+
+</ul>
+
+<p>
+Se una variabile &egrave; <tt>Object</tt>, si possono
+solo invocare i metodi di <tt>Object</tt>, e non i metodi
+dell'oggetto (es <tt>move</tt>)
+</p>
+
+<hr>
+
+
+<h4>Programma di prova</h4>
+
+<p>
+Creare una lista che contiene i punti
+di coordinate
+<tt>(0,0)</tt>, ..., <tt>(9,9)</tt>
+</p>
+
+<p>
+Inserire il punto di coordinate <tt>(2,4)</tt>
+</p>
+
+<hr>
+
+
+<h4>Soluzione</h4>
+
+<p>
+Faccio un ciclo
+</p>
+
+<p>
+A ogni passo, creo un punto e lo aggiungo
+in fondo alla lista
+</p>
+
+<pre>
+    LinkedList l;
+    l=new LinkedList();
+
+    for(int i=0; i&lt;10; i++) 
+      l.add(new Point(i,i));
+
+    stampaLista(l);
+    inserisciPuntoOrdine(l, new Point(2,4));
+    stampaLista(l);
+  }
+</pre>
+
+<p>
+Per verificare la correttezza: stampare
+la lista sia prima che dopo
+</p>
+
+<p>
+Se la stampate solo dopo, non sapete se
+&egrave; venuto bene oppure no
+</p>
+
+<hr>
+
+
+<h4>Esercizio</h4>
+
+<p>
+Data una lista, creare quella che ha
+gli stessi elementi, in ordine inverso
+</p>
+
+<hr>
+
+
+<h4>Soluzione</h4>
+
+<p>
+Due soluzioni possibili:
+</p>
+
+<ol>
+
+<li>scansione diretta della lista di partenza:
+ogni elemento lo aggiungo all'inizio della
+nuova lista
+
+<li>scansione inversa della lista, con aggiunta
+di elementi in fondo alla nuova lista
+
+</ol>
+
+<hr>
+
+
+<h4>Soluzione 1</h4>
+
+<p>
+Verifica. All'inizio:
+</p>
+
+<pre>
+vecchia: 1 2 3 4 5
+nuova:
+</pre>
+
+<p>
+Prendo il primo elemento, e lo metto all'inizio
+</p>
+
+<pre>
+vecchia: 1 2 3 4 5
+nuova:   1
+</pre>
+
+<p>
+Secondo elemento della lista di partenza, all'inizio:
+</p>
+
+<pre>
+vecchia: 1 2 3 4 5
+nuova:   2 1
+</pre>
+
+<p>
+Terzo elemento, sempre all'inizio:
+</p>
+
+<pre>
+vecchia: 1 2 3 4 5
+nuova:   3 2 1
+</pre>
+
+<p>
+Ecc.
+</p>
+
+<hr>
+
+
+<h4>Soluzione 2</h4>
+
+<p>
+Verifica. All'inizio:
+</p>
+
+<pre>
+vecchia: 1 2 3 4 5
+nuova:   
+</pre>
+
+<p>
+Prendo l'ultimo elemento e lo metto
+in coda alla nuova lista:
+</p>
+
+<pre>
+vecchia: 1 2 3 4 5
+nuova:   5
+</pre>
+
+<p>
+Penultimo elemento in coda:
+</p>
+
+<pre>
+vecchia: 1 2 3 4 5
+nuova:   5 4 
+</pre>
+
+<p>
+Terz'ultimo elemento in coda:
+</p>
+
+<pre>
+vecchia: 1 2 3 4 5
+nuova:   5 4 3
+</pre>
+
+<p>
+Ecc.
+</p>
+
+<hr>
+
+
+<h4>Codice della soluzione 1</h4>
+
+<p>
+Inserire all'inizio: il nuovo elemento
+deve diventare quello di indice <tt>0</tt>
+</p>
+
+<pre>
+  static LinkedList invertiLista(LinkedList l) {
+    LinkedList nuova;
+    nuova=new LinkedList();
+
+    int i;
+
+    for(i=0; i&lt;l.size(); i++) {
+      Object o;
+      o=l.get(i);
+
+      nuova.add(0, o);
+    }
+
+    return nuova;
+  }
+</pre>
+
+<p>
+Esiste anche il metodo <tt>addFirst(Object)</tt>
+</p>
+
+<p>
+Non &egrave; necessario saperlo:<br>
+<tt>add(0, oggetto)</tt> fa la stessa cosa
+</p>
+
+<hr>
+
+
+<h4>Codice della soluzione 2</h4>
+
+<pre>
+  static LinkedList invertiLista(LinkedList l) {
+    LinkedList nuova;
+    nuova=new LinkedList();
+
+    int i;
+
+    for(i=l.size()-1; i&gt;=0; i--) {
+      Object o;
+      o=l.get(i);
+
+      nuova.add(o);
+    }
+
+    return nuova;
+  }
+</pre>
+
+<hr>
+
+
+<h4>Osservazione</h4>
+
+<p>
+Gli oggetti non sono stati copiati
+</p>
+
+<p>
+Quando faccio <tt>nuova.add(o)</tt>, sto mettendo
+nella lista il riferimento all'oggetto
+</p>
+
+<p>
+La lista nuova contiene i riferimenti agli oggetti
+della vecchia lista, in ordine inverso
+</p>
+
+<p>
+Non si pu&ograve; fare la copia di un oggetto arbitrario
+</p>
+
+<pre>
+  Object a, b;
+
+  a=new Object();
+
+  b=a.clone(); 		// errore
+</pre>
+
+<p>
+Ci torneremo
+</p>
+
+<hr>
+
+
+<h4>Copia di elementi</h4>
+
+<p>
+Si pu&ograve; fare solo per
+oggetti specifici:
+</p>
+
+<pre>
+  static LinkedList invertiListaPoint(LinkedList l) {
+    LinkedList nuova;
+    nuova=new LinkedList();
+
+    int i;
+
+    for(i=l.size()-1; i&gt;=0; i--) {
+      Point p;
+      p=(Point) l.get(i);
+
+      Point q=(Point) p.clone();
+
+      nuova.add(q);
+    }
+
+    return nuova;
+  }
+</pre>
+
+<hr>
+
+
+<h4>Eliminazione elementi</h4>
+
+<p>
+Metodo <tt>remove</tt>
+</p>
+
+<p>
+Si passa un indice intero
+</p>
+
+<p>
+Toglie dalla lista l'elemento:
+</p>
+
+<pre>
+Prima:      [abcd, efgh, eft]
+Istruzione: l.remove(1);
+Dopo:       [abcd, eft]
+</pre>
+
+<p>
+Viene eliminato l'elemento che sta in posizione
+<tt>1</tt>
+</p>
+
+<hr>
+
+
+<h4>Esercizio</h4>
+
+<p>
+Scrivere un metodo statico che elimina la prima
+stringa di lunghezza pari da una lista di stringhe
+</p>
+
+<p>
+Lista di stringhe=so che tutti gli elementi sono
+stringhe<br>
+(non esiste il tipo ``lista di stringhe'', si
+tratta comunque di una lista di <tt>Object</tt>)
+</p>
+
+<hr>
+
+
+<h4>Soluzione</h4>
+
+<p>
+Faccio un ciclo di scansione
+</p>
+
+<p>
+Quando trovo una stringa di lunghezza
+pari, la elimino
+</p>
+
+<hr>
+
+
+<h4>Codice della soluzione</h4>
+
+<p>
+Quando ho trovato l'elemento, posso
+anche uscire dal ciclo
+</p>
+
+<pre>
+  static void eliminaPrimaPari(LinkedList l) {
+    int i;
+    String s;
+
+    for(i=0; i&lt;l.size(); i++) {
+      s=(String) l.get(i);
+
+      if(s.length()%2==0) {
+        l.remove(i);
+        break;
+      }
+    }
+  }
+</pre>
+
+<hr>
+
+
+<h4>Variante</h4>
+
+<p>
+Eliminare tutte le stringhe di lunghezza
+pari
+</p>
+
+<p>
+<i>Sembra</i> pi&ugrave; facile
+</p>
+
+<hr>
+
+
+<h4>Soluzione che non funziona</h4>
+
+<p>
+Ciclo di scansione con eliminazione
+di tutte le stringhe di lunghezza pari
+</p>
+
+<pre>
+  static void eliminaPariSbagliato(LinkedList l) {
+    int i;
+    String s;
+
+    for(i=0; i&lt;l.size(); i++) {
+      s=(String) l.get(i);
+
+      if(s.length()%2==0)
+        l.remove(i);
+    }
+  }
+</pre>
+
+<p>
+Sulla lista:
+</p>
+
+<pre>
+[abcde, efg, ef, efgh, xxx]
+</pre>
+
+<p>
+il risultato &egrave;:
+</p>
+
+<pre>
+[abcde, efg, ef, efgh, xxx]
+</pre>
+
+<p>
+La stringa <tt>efgh</tt> non &egrave; stata
+eliminata!
+</p>
+
+<hr>
+
+
+<h4>Assunzione del ciclo</h4>
+
+<p>
+Quando ho scritto il ciclo, ho fatto queste
+assunzioni:
+</p>
+
+<ol>
+<li>le stringhe di lunghezza pari che ho gi&agrave;
+considerato sono state tutte eliminate dalla lista
+
+<li>ad ogni iterazione del ciclo, considero una
+nuova stringa
+</ol>
+
+<p>
+In questo caso, l'assunzione 2 &egrave; sbagliata!
+</p>
+
+<hr>
+
+
+<h4>Cosa &egrave; successo</h4>
+
+<p>
+Lista di partenza:
+</p>
+
+<pre>
+Lista: [abcde, efg, ef, efgh, xxx]
+Indici: 0      1    2   3     4
+</pre>
+
+<p>
+Quando <tt>i=2</tt> ho <tt>s="ef"</tt>,
+che &egrave; di lunghezza pari
+</p>
+
+<p>
+La elimino, e ottengo:
+</p>
+
+<pre>
+Lista: [abcde, efg, efgh, xxx]
+Indici: 0      1    2     3
+</pre>
+
+<p>
+Ora, il corpo del ciclo &egrave; finito, per
+cui si incrementa <tt>i</tt> e si passa alla
+prossima iterazione
+</p>
+
+<p>
+Prossima iterazione: <tt>i=3</tt>, per cui
+considero la stringa <tt>s="xxx"</tt>
+</p>
+
+<p>
+La stringa <tt>"efgh"</tt> &egrave; stata
+saltata
+</p>
+
+<hr>
+
+
+<h4>L'assunzione che non vale</h4>
+
+<p>
+Non &egrave; vero che ogni iterazione
+considera un nuovo elemento
+</p>
+
+<p>
+Ci sono elementi che vengono saltati
+</p>
+
+<p>
+Quando elimino un elemento, quello successivo
+viene ignorato, e si passa subito a quello dopo
+ancora
+</p>
+
+<hr>
+
+
+<h4>Altra soluzione</h4>
+
+<p>
+Se ho eliminato un elemento, considero
+anche il successivo:
+</p>
+
+<pre>
+  static void eliminaPariSbagliatoDue(LinkedList l) {
+    int i;
+    String s;
+
+    for(i=0; i&lt;l.size(); i++) {
+      s=(String) l.get(i);
+
+      if(s.length()%2==0) {
+        l.remove(i);
+        s=(String) l.get(i);
+
+        if(s.length()%2==0) 
+          l.remove(i);
+      }
+    }
+  }
+</pre>
+
+<p>
+Non funziona se la lista contiene tre stringhe di
+lunghezza pari in sequenza
+</p>
+
+<hr>
+
+
+<h4>Progettazione</h4>
+
+<p>
+L'algoritmo di partenza &egrave; corretto:
+</p>
+
+<pre>
+  per ogni elemento della lista
+    se e' di lunghezza pari, eliminalo
+</pre>
+
+<p>
+L'errore &egrave; che il ciclo non considera
+tutti gli elementi
+</p>
+
+<hr>
+
+
+<h4>Raffinamento dell'algoritmo</h4>
+
+<p>
+La frase <tt>per ogni elemento della lista</tt>
+la traduco in un ciclo:
+</p>
+
+<pre>
+  elemento=primo elemento
+
+  finche' non sono alla fine della lista {
+    elimina elemento se e' pari
+    passa al prossimo elemento
+  }
+</pre>
+
+<p>
+L'errore &egrave; che <tt>passa al prossimo
+elemento</tt> non &egrave; <tt>i++</tt>
+</p>
+
+<p>
+Se ho eliminato un elemento, non serve fare
+<tt>i++</tt> per passare al prossimo
+</p>
+
+<hr>
+
+
+<h4>Implementazione</h4>
+
+<p>
+Scrivo lo stesso ciclo di prima
+</p>
+
+<p>
+Per&ograve; <tt>i++</tt> lo eseguo solo se non
+ho eliminato l'elemento
+</p>
+
+<pre>
+  static void eliminaPari(LinkedList l) {
+    int i;
+    String s;
+
+    i=0;
+    while(i&lt;l.size()) {
+      s=(String) l.get(i);
+
+      if(s.length()%2==0)
+        l.remove(i);
+      else
+        i++;
+    }
+  }
+</pre>
+
+<hr>
+
+
+<h4>Attenzione alla terminazione!</h4>
+
+<p>
+Quando si scrivono cicli <tt>while</tt>, bisogna
+verificare che il ciclo prima o poi termini
+</p>
+
+<p>
+Come: quando si esegue il corpo del ciclo, deve
+cambiare qualcosa
+</p>
+
+<p>
+Alla fine, la condizione deve diventare falsa
+</p>
+
+<hr>
+
+
+<h4>Liste di dati scalari</h4>
+
+<p>
+In una <tt>LinkedList</tt> ci posso oggetti qualsiasi, ma
+non dati scalari (interi, reali, booleani, ...)
+</p>
+
+<p>
+Per ogni tipo scalare, esiste una classe corrispondente
+</p>
+
+<table border=1>
+
+<tr>
+<th>Scalare</th>
+<th>Classe</th>
+</tr>
+
+<tr>
+<td>boolean</td>
+<td>Boolean</td>
+</tr>
+
+<tr>
+<td>int</td>
+<td>Integer</td>
+</tr>
+
+<tr>
+<td>double</td>
+<td>Double</td>
+</tr>
+
+</table>
+
+<p>
+Ognuno di questi oggetti contiene un dato scalare
+</p>
+
+<dl>
+
+<dt>creare un oggetto
+<dd><tt>i=new Integer(12);</tt> gli passo il valore
+da mettere dentro
+
+<p />
+
+<dt>trovare il valore
+<dd><tt>i.intValue()</tt> ritorna il valore intero
+
+</dl>
+
+<p>
+Il valore memorizzato nell'oggetto non &egrave; modificabile
+</p>
+ 
+<hr>
+
+
+<h4>Esempio: creazione di una lista di interi</h4>
+
+<p>
+Ogni volta che devo inserire un valore, devo
+creare l'oggetto con dentro il valore
+</p>
+
+<pre>
+import java.util.*;
+
+class ListaInteri {
+  public static void main(String args[]) {
+    LinkedList l;
+    l=new LinkedList();
+
+    int i;
+    for(i=0; i&lt;10; i++)
+      l.add(new Integer(i));
+
+    System.out.println(l);
+  }
+}
+</pre>
+
+<hr>
+
+
+<h4>Usare i valori</h4>
+
+<p>
+Scrivere un metodo che somma i valori
+di una lista di interi
+</p>
+
+<p>
+Nota: non si possono sommare gli oggetti
+di tipo <tt>Integer</tt> con <tt>+</tt>
+</p>
+
+<hr>
+
+
+<h4>Soluzione</h4>
+
+<p>
+Dato che so che la lista contiene solo interi,
+posso fare il cast
+</p>
+
+<pre>
+  static int somma(LinkedList l) {
+    int i;
+    int somma=0;
+    Integer v;
+
+    for(i=0; i&lt;l.size(); i++) {
+      v=(Integer) l.get(i);
+      somma=somma+v.intValue();
+    }
+
+    return somma;
+  }
+</pre>
+
+<p>
+Osservazione:
+<tt>l.get(i).intValue()</tt> &egrave; un errore
+</p>
+
+<p>
+<tt>l.get(i)</tt> &egrave; di tipo <tt>Object</tt>, che non
+ha il metodo <tt>intValue()</tt>
+</p>
+
+<hr>
+
+
+<h4>Esercizio</h4>
+
+<p>
+Data una lista di interi, per ogni elemento di valore (non
+indice) pari, eliminare il successivo
+</p>
+
+<hr>
+
+
+<h4>Soluzione provvisoria</h4>
+
+<p>
+Ciclo: per ogni elemento, se &egrave;
+pari, elimino il successivo
+</p>
+
+<pre>
+  static void dopoPari(LinkedList l) {
+    int i;
+    Integer v;
+
+    for(i=0; i&lt;l.size(); i++) {
+      v=(Integer) l.get(i);
+
+      if(v.intValue()%2==0)
+        l.remove(i+1);
+    }
+  }
+</pre>
+
+<hr>
+
+
+<h4>Attenzione ai casi limite!</h4>
+
+<p>
+Il metodo va quasi bene
+</p>
+
+<p>
+Se per&ograve; l'ultimo elemento della
+lista &egrave; pari, si cerca di eliminare
+un elemento che non c'&egrave;
+</p>
+
+<p>
+Questo genera un errore in esecuzione
+</p>
+
+<hr>
+
+
+<h4>Varianti</h4>
+
+<ol>
+
+<li>faccio il ciclo solo fino al penultimo
+<pre>
+    for(i=0; i&lt;l.size()-1; i++) {
+      v=(Integer) l.get(i);
+
+      if(v.intValue()%2==0)
+        l.remove(i+1);
+    }
+</pre>
+
+<li>controllo prima di eliminare
+<pre>
+    for(i=0; i&lt;l.size(); i++) {
+      v=(Integer) l.get(i);
+
+      if(v.intValue()%2==0)
+        if(i+1&lt;l.size())
+          l.remove(i+1);
+    }
+</pre>
+
+</ol>
+
+<hr>
+
+
+<h4>Caso limite sul primo elemento</h4>
+
+<p>
+Se andava eliminato l'elemento precedente a quello pari,
+bisognava stare attenti al primo elemento
+</p>
+
+<hr>
+
+
+<h4>Elementi consecutivi</h4>
+
+<p>
+Quando viene enunciata una condizione sugli elementi di una
+lista, tenere presente che la lista pu&ograve;:
+</p>
+
+<ul>
+
+<li>non contenere elementi che soddisfano la condizione
+
+<li>avere un elemento in prima o ultima posizione che
+soddisfa la condizione
+
+<li>contenere una sequenza di elementi che soddisfano la
+condizione
+
+</ul>
+
+<p>
+Nel nostro caso: se la lista contiene una sequenza di
+elementi pari consecutivi, vanno eliminati tutti tranne il
+primo, pi&ugrave; il primo dispari successivo
+</p>
+
+<hr>
+
+
+<h4>Soluzione difficile</h4>
+
+<p>
+Per ogni elemento:<br>
+se &egrave; pari, memorizzo il successivo, lo elimino, e ripeto
+</p>
+
+<p>
+Nel ciclo interno, devo controllare se sono arrivato alla
+fine della lista
+</p>
+
+<pre>
+  static void dopoPariOK(LinkedList l) {
+    int i;
+    Integer v;
+
+    i=0;
+    while(i&lt;l.size()-1) {
+      v=(Integer) l.get(i);
+
+      while((i&lt;l.size()-1)&&(v.intValue()%2==0)) {
+        v=(Integer) l.get(i+1);
+        l.remove(i+1);
+      }
+
+      i++;
+    }
+  }
+</pre>
+
+<p>
+Nella condizione <tt>i&lt;l.size()-1</tt>, del while
+interno, non &egrave; <tt>i</tt> che cambia, ma
+<tt>l.size()</tt>
+</p>
+
+<hr>
+
+
+<h4>Soluzione facile</h4>
+
+<p>
+Riformulazione del problema: per ogni elemento, se il
+<i>precedente</i> &egrave; pari, elimino l'elemento
+</p>
+
+<p>
+Facendo la scansione della lista in ordine inverso, non devo
+mai tenere conto di elementi gi&agrave; eliminati
+</p>
+
+<pre>
+  static void dopoPari(LinkedList l) {
+    int i;
+    Integer v;
+
+    for(i=l.size()-1; i&gt;=1; i--) {
+      v=(Integer) l.get(i-1);
+      if(v.intValue()%2==0)
+        l.remove(i);
+    }
+  }
+</pre>
+
+<hr>
+
+
+<h4>Altra soluzione</h4>
+
+<p>
+Creare una nuova lista senza gli elementi che vanno
+eliminati
+</p>
+
+<hr>
+
+
+<h4>Esercizio facile</h4>
+
+<p>
+Scrivere un metodo statico che conta quante
+volte un oggetto appare in una lista
+</p>
+
+<pre>
+  static int conta(LinkedList l, Object o) {
+    ...
+  }
+</pre>
+
+<hr>
+
+
+<h4>Soluzione</h4>
+
+<p>
+Uso un contatore: ogni volta che trovo un elemento
+che &egrave; <tt>equals</tt> a <tt>o</tt>, lo
+incremento di uno
+</p>
+
+<pre>
+  static int conta(LinkedList l, Object o) {
+    int quante=0;
+    int i;
+
+    for(i=0; i&lt;l.size(); i++)
+      if(o.equals(l.get(i)))
+        quante++;
+
+    return quante;
+  }
+</pre>
+
+<hr>
+
+
+<h4>Esercizio pi&ugrave; difficile</h4>
+
+<p>
+Data una lista, verificare se c'&egrave; qualche
+elemento che si ripete pi&ugrave; di una volta
+</p>
+
+<pre>
+  static boolean ripetizioni(LinkedList l) {
+    ...
+  }
+</pre>
+
+<p>
+Come si risolve:
+</p>
+
+<ol>
+
+<li>dare la soluzione a parole
+
+<li>tradurla in codice
+
+</ol>
+
+<hr>
+
+
+<h4>Soluzione a parole</h4>
+
+<pre>
+per ogni elemento della lista
+  se appare piu' di una volta
+    ritorna true
+
+ritorna false
+</pre>
+
+<p>
+A questo punto, si tratta di tradurre ogni parte
+di questo algoritmo
+</p>
+
+<hr>
+
+
+<h4>Per ogni elemento</h4>
+
+<p>
+&Egrave; chiaramente un ciclo:
+</p>
+
+<pre>
+for(i=0; i&lt;l.size(); i++)
+  se l.get(i) c'e' piu' di una volta
+    ritorna true;
+
+ritorna false;
+</pre>
+
+<p>
+I due <tt>ritorna</tt> sono chiaramente dei
+<tt>return</tt>
+</p>
+
+<p>
+Manca solo da tradurre: <tt>sta piu' di una
+volta nella lista</tt>
+</p>
+
+<hr>
+
+
+<h4>Pi&ugrave; di una volta?</h4>
+
+<p>
+Posso risolvere il problema cos&iacute;:
+</p>
+
+<pre>
+  conta quante volte c'e' l'elemento
+                          [nella lista
+  vedi se e' &gt;1
+</pre>
+
+<p>
+Vantaggio:
+</p>
+
+<ol>
+
+<li>so gi&agrave; come &egrave; fatto il metodo
+per contare
+
+<li>il resto &egrave; facile
+
+</ol>
+
+<p>
+Scrivo il metodo per contare, anche se poi mi
+serve solo per vedere se un elemento &egrave;
+ripetuto!
+</p>
+
+<p>
+Il metodo fa qualcosa in pi&ugrave;: va bene
+lo stesso
+</p>
+
+<hr>
+
+
+<h4>Soluzione complessiva</h4>
+
+<p>
+Serve anche il metodo <tt>conta</tt>
+</p>
+
+<pre>
+  static int conta(LinkedList l, Object o) {
+    int quante=0;
+    int i;
+
+    for(i=0; i&lt;l.size(); i++)
+      if(o.equals(l.get(i)))
+        quante++;
+
+    return quante;
+  }
+
+  static boolean ripetizioni(LinkedList l) {
+    int i;
+
+    for(i=0; i&lt;l.size(); i++)
+      if(conta(l, l.get(i))&gt;1)
+        return true;
+
+    return false;
+  }
+</pre>
+
+<hr>
+
+
+<h4>Nota sui requisiti</h4>
+
+<p>
+Quando un problema richiede: ``scrivere un metodo
+che...''
+</p>
+
+<p>
+Si intende: ``ed, eventualmente, tutti i metodi
+ausiliari necessari''
+</p>
+
+<p>
+Scrivere metodi ausiliari ha due vantaggi:
+</p>
+
+<ol>
+
+<li>spesso, sono uguali/simili a metodi
+visti a lezione
+
+<li>il codice del metodo da scrivere risulta
+pi&ugrave; semplice
+
+</ol>
+
+<hr>
+
+
+<h4>Semplicit&agrave; del codice</h4>
+
+<p>
+Se il codice &egrave; pi&ugrave; semplice, &egrave;
+pi&ugrave; facile non commettere errori
+</p>
+
+<p>
+Codice senza metodo ausiliario:
+</p>
+
+<pre>
+  static boolean
+      ripetizioniNoAux(LinkedList l) {
+    int i, j;
+    int conta;
+
+    for(i=0; i&lt;l.size(); i++) {
+      conta=0;
+
+      for(j=0; j&lt;l.size(); j++) 
+        if(l.get(i).equals(l.get(j)))
+          conta++;
+
+      if(conta&gt;1)
+        return true;
+    }
+
+    return false;
+  }
+</pre>
+
+<p>
+Nei cicli nidificati (l'uno dentro l'altro), &egrave;
+facile sbagliare
+</p>
+
+<p>
+Esempio:
+</p>
+
+<ul>
+
+<li>usare <tt>i</tt> al posto di <tt>j</tt>,
+
+<li>mettere <tt>conta=0</tt> fuori da tutti e due i cicli,
+
+<li>mettere <tt>return true</tt> all'interno di tutti
+e due i cicli
+
+<li>ecc.
+
+</ul>
+
+<p>
+A volte i cicli nidificati servono
+</p>
+
+<p>
+Meglio fare due metodi, se la cosa che
+fa il ciclo interno si pu&ograve; realizzare
+con un metodo
+</p>
+
+<hr>
+
+
+<h4>Unico metodo con doppio ciclo</h4>
+
+<p>
+Altra soluzione
+</p>
+
+<pre>
+per ogni elemento
+  se si trova anche in un'altra posizione
+    return true;
+
+return false;
+</pre>
+
+<hr>
+
+
+<h4>Implementazione</h4>
+
+<p>
+In questo modo, non funziona:
+</p>
+
+<pre>
+  static boolean ripetizioni(LinkedList l) {
+    int i, j;
+
+    for(i=0; i&lt;l.size(); i++)
+      if(l.contains(l.get(i)))
+        return true;
+
+    return false;
+  }
+</pre>
+
+<p>
+Motivo: <tt>l.get(i)</tt> si trova nella lista
+</p>
+
+<p>
+Se faccio <tt>l.contains(l.get(i))</tt> ritorna
+per forza <tt>true</tt>
+</p>
+
+<hr>
+
+
+<h4>Altra implementazione</h4>
+
+<p>
+Dato che <tt>l.contains</tt> non va bene,
+faccio cos&iacute;:
+</p>
+
+<blockquote>
+per ogni elemento della lista, faccio un ciclo
+che, per ogni altro elemento della lista,
+verifica l'uguaglianza
+</blockquote>
+
+<pre>
+  static boolean ripetizioni(LinkedList l) {
+    int i, j;
+
+    for(i=0; i&lt;l.size(); i++)
+      for(j=0; j&lt;l.size(); j++)
+        if(l.get(i).equals(l.get(j)))
+          return true;
+
+    return false;
+  }
+</pre>
+
+<p>
+Non funziona nemmeno questo!
+</p>
+
+<p>
+Caso <tt>i=j</tt>: qui <tt>l.get(i).equals(l.get(j))</tt>
+&egrave; sicuramente <tt>true</tt>
+</p>
+
+<hr>
+
+
+<h4>Soluzione numero 1</h4>
+
+<p>
+Stesso ciclo, ma controllo che sia
+<tt>i!=j</tt>
+</p>
+
+<p>
+Ossia, la lista contiene due elementi
+uguali se ci sono due indici <i>diversi</i>
+<tt>i</tt> e <tt>j</tt> che contengono
+due elementi uguali
+</p>
+
+<pre>
+  static boolean ripetizioni(LinkedList l) {
+    int i, j;
+
+    for(i=0; i&lt;l.size(); i++)
+      for(j=0; j&lt;l.size(); j++)
+        if((i!=j) &amp;&amp; (l.get(i).equals(l.get(j))))
+          return true;
+
+    return false;
+  }
+</pre>
+
+<hr>
+
+
+<h4>Soluzione numero 2</h4>
+
+<p>
+Per ogni elemento, verifico solo se c'&egrave;
+un elemento uguale nelle posizioni successive
+</p>
+
+<p>
+Perch&egrave; funziona?
+</p>
+
+<p>
+Se sono arrivato all'elemento <tt>4</tt> vuol
+dire che non ci sono ripetizioni, fino a questo
+momento
+</p>
+
+<p>
+Quindi, non possono esserci elementi prima uguali
+a questo
+</p>
+
+<p>
+Quindi, devo guardare solo gli elementi successivi
+</p>
+
+<pre>
+  static boolean ripetizioni(LinkedList l) {
+    int i, j;
+
+    for(i=0; i&lt;l.size(); i++)
+      for(j=i+1; j&lt;l.size(); j++)
+        if(l.get(i).equals(l.get(j)))
+          return true;
+
+    return false;
+  }
+</pre>
+
+<hr>
+
+
+<h4>Nota sui cicli nidificati</h4>
+
+<p>
+Quando ci sono due cicli:
+</p>
+
+<pre>
+  for(i=0; i&lt;n, i++) {
+
+    for(j=0; j&lt;m; j++) {
+      istruzioni;
+    }
+
+  }
+</pre>
+
+<p>
+Le istruzioni pi&ugrave; interne vengono eseguite
+<tt>n*m</tt> volte
+</p>
+
+<p>
+Dopo aver scritto un programma con due cicli, l'uno
+dentro l'altro, verificate se effettivamente bisognava
+fare <tt>n*m</tt> iterazioni
+</p>
+
+<p>
+Per vedere se ci sono elementi ripetuti: &egrave;
+necessario. Infatti, per ogni elemento devo fare la
+scansione di tutta la lista per vedere se c'&egrave;
+un elemento uguale
+</p>
+
+<hr>
+
+
+<h4>Differenza liste-array</h4>
+
+<p>
+Nelle liste si possono eliminare/aggiungere
+elementi in mezzo
+</p>
+
+<p>
+L'accesso agli elementi di un array &egrave;
+pi&ugrave; efficiente (non richiede di guardare
+gli oggetti precedenti della catena)
+</p>
+
+</body>
+</html>
+
+

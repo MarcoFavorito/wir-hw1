@@ -1,0 +1,77 @@
+<!doctype html public "-//w3c//dtd html 4.0 transitional//en">
+<html>
+<head>
+<link href="java.css" rel="stylesheet" type="text/css">
+<title>Cancellazione</title>
+</head>
+
+<body>
+
+<h2>Cancellazione</h2>
+
+<p>
+Finora si &egrave; visto come disegnare figure geometriche
+vuote e riempite. Vediamo ora come si fa a cancellare una
+parte della finestra.
+
+<p>
+L'istruzione che si usa &egrave; la <tt>clearRect</tt>. Questa
+istruzione ha quattro argomenti, che sono le coordinate in
+alto a sinistra di un rettangolo, la sua larghezza e la sua
+altezza. L'effetto &egrave; che la zona rettangolare
+determinata da questi quattro numeri viene cancellata. In
+altre parole <tt>clearRect(x,y,w,h)</tt> &egrave; equivalente
+a disegnare un rettangolo riempito con il colore dello sfondo,
+il che equivale a cancellare tutto quello che si trova
+all'interno del rettangolo.
+
+<p>
+Il seguente programma
+<a href="Cancella.java">Cancella.java</a>
+disegna una griglia e cancella la sua parte centrale
+usando l'istruzione <tt>clearRect</tt>.
+
+<p>
+<pre>
+/*
+  Disegna una griglia, e ne cancella una parte.
+*/
+
+import java.awt.*;
+
+public class Cancella extends java.applet.Applet {
+  public void paint(Graphics g) {
+    int x,y;
+
+    /* disegna le linee verticali */
+    for(x=0; x<=200; x=x+10) {
+      g.drawLine(x, 0, x, 200);
+    }
+
+    /* disegna le linee orizzontali */
+    for(y=0; y<=200; y=y+10) {
+      g.drawLine(0, y, 200, y);
+    }
+
+    /* cancella una zona */
+    g.clearRect(45,45,100,100);
+  }
+}
+
+</pre>
+
+<p>
+Il risultato dell'esecuzione &egrave; il seguente disegno.
+
+<p>
+<center>
+<img src="Cancella.gif">
+</center>
+
+<p>
+<applet code="Cancella.class">
+</applet>
+
+</body>
+</html>
+

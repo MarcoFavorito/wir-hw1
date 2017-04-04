@@ -1,0 +1,48 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"         "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="it">
+<head>
+	<title>Soluzione domanda CORBA</title>
+</head>
+<body>
+
+<h3>Corso di Laurea in Ing. Informatica, Universita' La Sapienza<br>
+  Sistemi Operativi II<br>
+  Docente Roberto Baldoni</h3>
+<h3> Soluzione della domanda di programmazione (argomento: CORBA). </h3>
+<p>Di seguito viene riportato una delle possibili soluzioni all'esercizio. E' possibile consultare la version <a href="esempio_corba_html/_top_.html">html dell'IDL</a> (completa della relativa documentazione) ed &egrave; possibile consultare una versione html delle classi generate dopo la compilazione (<a href="esempio_corba_html/index.html">mapping java</a>). (<a href="esempio_corba.zip">idl + documentazione completa</a>) </p>
+<pre>
+module biblioteca {
+    typedef string ISBNType;
+
+    struct InfoLibro {
+        ISBNType isbn;
+        string titolo;
+        sequence&lt;string&gt; autori;
+        string casaEditrice;
+        long anno;
+        string genere;
+    };
+
+    exception LibroNonPresente {};
+
+    exception LibroNonDisponibile{};
+
+    interface ServerBiblioteca {
+        void cercaLibro(inout InfoLibro asked)
+            raises(LibroNonPresente);
+        void richiediPrestitoLibro(in string nome, in ISBNType isbn)
+            raises(LibroNonDisponibile, LibroNonPresente);
+    };
+
+    typedef sequence&lt;ServerBiblioteca&gt; Biblioteche;
+
+    interface ServerCoordinatore {
+        Biblioteche cercaLibro(inout InfoLibro param)
+            raises(LibroNonPresente);
+        ServerBiblioteca richiediPrestitoLibro(in string nome, in ISBNType isbn)
+            raises(LibroNonDisponibile, LibroNonPresente);
+    };
+};
+</pre>
+</body>
+</html>

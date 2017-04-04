@@ -1,0 +1,856 @@
+<html>
+<head>
+<title>Clone</title>
+</head>
+
+<body>
+
+<h1>Il metodo <tt>clone</tt></h1>
+
+<p>
+Il metodo <tt>clone</tt> serve per copiare gli oggetti
+</p>
+
+<p>
+Si pu&ograve; invocare su quasi tutti gli oggetti delle
+classi predefinite
+</p>
+
+<pre>
+  public static void main(String args[]) {
+    Point p, q;
+    p=new Point(2,3);
+    q=(Point) p.clone();
+  }
+</pre>
+
+<p>
+Perch&egrave; il cast? Poi vediamo
+</p>
+
+<hr>
+
+
+<h4><tt>clone</tt> e <tt>Object</tt></h4>
+
+<p>
+&Egrave; un metodo di <tt>Object</tt>
+</p>
+
+<p>
+&Egrave; definito <tt>protected</tt>
+</p>
+
+<p>
+Quindi: si pu&ograve; usare solo:
+</p>
+
+<ul>
+
+<li>nello stesso package di <tt>Object</tt><br>
+(che &egrave; <tt>java.lang</tt>)
+
+<li>nelle classi derivate
+
+</ul>
+
+<hr>
+
+
+<h4>Restrizione su <tt>clone</tt></h4>
+
+<p>
+Il <tt>clone</tt> di <tt>Object</tt> non si pu&ograve; usare
+nelle nostre classi:
+</p>
+
+<pre>
+class CloneObject {
+  public static void main(String args[]) {
+    Object o=new Object();
+    Object s;
+
+    s=o.clone();
+  }
+}
+</pre>
+
+<p>
+Viene dato questo errore in compilazione:
+</p>
+
+<pre>
+... clone() has protected access ...
+</pre>
+
+<hr>
+
+
+<h4>Definizione di <tt>clone</tt></h4>
+
+<p>
+Nella classe <tt>Object</tt>, &egrave; definito in questo
+modo:
+</p>
+
+<pre>
+protected Object clone()
+</pre>
+
+<p>
+Quindi:
+</p>
+
+<ol>
+
+<li>ritorna un <tt>Object</tt>
+
+<li>&egrave; protected
+
+</ol>
+
+<hr>
+
+
+<h4>Come clonare oggetti predefiniti</h4>
+
+<p>
+Non tutti gli oggetti sono clonabili:
+</p>
+
+<pre>
+String a, b;
+
+a=new String("abcd");
+b=(String) a.clone(); // errore
+</pre>
+
+<p>
+Per gli oggetti clonabili: il metodo ritorna un
+<tt>Object</tt>, quindi va fatto il cast:
+</p>
+
+<pre>
+Point p, q;
+p=new Point(2,3);
+q=(Point) p.clone();
+</pre>
+
+<hr>
+
+
+<h4>Definire il metodo <tt>clone</tt></h4>
+
+<p>
+Prendiamo la classe <tt>Studente</tt> e definiamo
+<tt>clone</tt>
+</p>
+
+<pre>
+class Studente {
+  String nome;
+  int anno;
+}
+</pre>
+
+<hr>
+
+
+<h4>Clonazione: primo tentativo</h4>
+
+<p>
+Facciamo overloading
+</p>
+
+<pre>
+class Studente {
+  String nome; 
+  int anno;
+
+    // errore logico
+  Studente clone() {
+    ...
+  }
+}
+</pre>
+
+<p>
+Non va bene: <tt>clone</tt> deve fare overloading del metodo
+di <tt>Object</tt>
+</p>
+
+<hr>
+
+
+<h4>Clonazione: secondo tentativo</h4>
+
+<p>
+Come per <tt>equals</tt>, il metodo deve avere esattamente
+la stessa intestazione del metodo di <tt>Object</tt>:
+</p>
+
+<pre>
+class Studente {
+  String nome;
+  int anno;
+
+  Object clone() {
+    ...
+  }
+}
+</pre>
+
+<p>
+Non funziona nemmeno cos&iacute;:
+</p>
+
+<pre>
+clone() in Studente cannot override
+clone() in java.lang.Object;
+attempting to assign weaker access
+privileges; was protected
+</pre>
+
+<p>
+A parole: si possono allargare i diritti, ma non restringere
+</p>
+
+<p>
+Va dichiarato <tt>protected</tt> oppure <tt>public</tt>
+</p>
+
+<hr>
+
+
+<h4>Clonazione: terzo tentativo</h4>
+
+<p>
+Lo dichiariamo <tt>public</tt> (si poteva anche dichiarare
+<tt>protected</tt>, se serviva):
+</p>
+
+<pre>
+class Studente {
+  String nome;
+  int anno;
+
+  public Object clone() {
+    ...
+  }
+}
+</pre>
+
+<p>
+Ora funziona: scriviamo il corpo
+</p>
+
+<hr>
+
+
+<h4>Clonazione: terzo tentativo</h4>
+
+<p>
+Il codice completo &egrave;:
+</p>
+
+<pre>
+class Studente {
+  String nome;
+  int anno;
+
+  public Object clone() {
+      // non del tutto corretto ...
+    Studente s=new Studente();
+    s.nome=this.nome;
+    s.anno=this.anno;
+    return s;
+  }
+}
+</pre>
+
+<p>
+Ancora non va del tutto bene...
+</p>
+
+<hr>
+
+
+<h4>Ereditariet&agrave;</h4>
+
+<p>
+Sia per <tt>equals</tt> che per <tt>clone</tt>
+</p>
+
+<p>
+In una classe derivata, &egrave; opportuno definire
+<tt>equals</tt> e <tt>clone</tt> in termini della loro
+definizione nella sovraclasse:
+</p>
+
+<pre>
+class Borsista extends Studente {
+  int stipendio;
+
+  public String toString() {
+    return "["+this.nome+","+this.anno+","+this.stipendio+"]";
+  }
+
+  public boolean equals(Object o) {
+    Borsista b;
+
+    if(!super.equals(o))
+      return false;
+
+    b=(Borsista) o;
+
+    if(this.stipendio!=b.stipendio)
+      return false;
+
+    return true;
+  }
+}
+</pre>
+
+<p>
+Motivo: <tt>super.equals</tt> fa la parte dei controlli
+relativi alle componenti ereditate
+</p>
+
+<hr>
+
+
+<h4>Clonazione in classi derivate</h4>
+
+<p>
+Faccio la stessa cosa:
+</p>
+
+<pre>
+class Borsista extends Studente {
+  int stipendio;
+
+  ...
+
+  public Object clone() {
+    Borsista b=(Borsista) super.clone();
+
+    b.stipendio=this.stipendio;
+
+    return b;
+  }
+}
+</pre>
+
+<p>
+Qui abbiamo un problema
+</p>
+
+<hr>
+
+
+<h4>Ereditare <tt>clone</tt></h4>
+
+<pre>
+  public static void main(String args[]) {
+    Borsista s=new Borsista();
+    Borsista q;
+
+    q=(Borsista) s.clone();
+  }
+</pre>
+
+<p>
+In <b>esecuzione</b> viene dato questo errore:
+</p>
+
+<pre>
+Exception in thread "main" java.lang.ClassCastException
+        at Borsista.clone(Borsista.java:23)
+        at ProvaBorsista.main(ProvaBorsista.java:6)
+</pre>
+
+<hr>
+
+
+<h4>La radice del problema</h4>
+
+<p>
+Facendo <tt>super.clone()</tt> nella classe
+<tt>Borsista</tt>, viene invocato il metodo <tt>clone</tt>
+di <tt>Studente</tt>
+</p>
+
+<p>
+In <tt>Studente</tt>, il metodo <tt>clone</tt> &egrave;
+definito come un metodo che crea un oggetto
+<tt>Studente</tt>
+</p>
+
+<p>
+Il cast a <tt>Borsita</tt> fallisce
+</p>
+
+<hr>
+
+
+<h4>Ereditare <tt>clone</tt> da <tt>Object</tt></h4>
+
+<p>
+Il metodo standard di clonazione &egrave; questo: ogni
+oggetto invoca il <tt>clone</tt> della sovraclasse
+</p>
+
+<p>
+Il <tt>clone</tt> di <tt>Object</tt> fa la creazione del
+nuovo oggetto e ci copia le componenti del vecchio
+</p>
+
+<p>
+Il <tt>clone</tt> di <tt>Object</tt> crea un oggetto della
+stessa classe di quello di partenza, non (necessariamente)
+un oggetto <tt>Object</tt>
+</p>
+
+<hr>
+
+
+<h4>Invocare <tt>clone</tt> di <tt>Object</tt></h4>
+
+<p>
+La versione complessiva &egrave; complicata
+</p>
+
+<p>
+Il concetto di base (che non funziona) &egrave; che ogni
+<tt>clone</tt> invoca il <tt>clone</tt> della sovraclasse
+</p>
+
+<pre>
+class Studente {
+  ...
+	//  ancora non funziona...
+  public Object clone() {
+    return super.clone();
+  }
+}
+</pre>
+
+<p>
+Lo stesso vale per classi derivate:
+</p>
+
+<pre>
+class Borsista extends Studente {
+  ...
+	//  ancora non funziona...
+  public Object clone() {
+    return super.clone();
+  }
+}
+</pre>
+
+<hr>
+
+
+<h4><tt>CloneNotSupportedException</tt></h4>
+
+<p>
+I metodi <tt>clone</tt> scritti sopra non funzionano:
+</p>
+
+<pre>
+Studente.java:35: unreported exception
+java.lang.CloneNotSupportedException; must be caught or
+declared to be thrown
+    return super.clone();
+</pre>
+
+<p>
+Questo &egrave; dovuto al modo in cui &egrave; realizzato il
+metodo <tt>clone</tt> di <tt>Object</tt>
+
+<hr>
+
+
+<h4>Metodo <tt>clone</tt> di <tt>Object</tt></h4>
+
+<p>
+Il metodo <tt>clone</tt> di <tt>Object</tt> &egrave;
+definito in questo modo:
+</p>
+
+<ul>
+
+<li>se l'oggetto appartiene a una classe che <i>non</i>
+implementa l'interfaccia <tt>Cloneable</tt>, lancia
+una eccezione <tt>CloneNotSupportedException</tt>
+
+<li>altrimenti, fa una copia esatta dell'oggetto
+
+</ul>
+
+<p>
+Questo ha due conseguenze:
+</p>
+
+<ul>
+
+<li>occorre fare <tt>try-catch</tt> dell'eccezione
+
+<li>la classe deve implementare l'interfaccia
+<tt>Cloneable</tt>
+
+</ul>
+
+<hr>
+
+
+<h4><tt>Cloneable</tt>: motivazione</h4>
+
+<p>
+Perch&egrave; tutte queste complicazioni?
+</p>
+
+<p>
+Soluzioni alternative:
+</p>
+
+<ul>
+
+<li>l'interfaccia <tt>Cloneable</tt> contiene <tt>clone</tt>
+mentre <tt>Object</tt> no
+
+<li>la <tt>clone</tt> di <tt>Object</tt> fa la copia e basta
+
+</ul>
+
+<p>
+Problemi delle due soluzioni:
+</p>
+
+<ul>
+
+<li>ogni classe deve fare la creazione del nuovo oggetto e
+la copiatura (dato che una interfaccia pu&ograve; solo
+contenere l'intestazione di un metodo, il metodo va poi
+realizzato completamente nella classe)
+
+<li>la clonazione non ha senso per tutti gli oggetti
+
+</ul>
+
+<hr>
+
+
+<h4>Clonazione usando <tt>clone</tt> di <tt>Object</tt></h4>
+
+<pre>
+class Studente implements Cloneable {
+  ...
+
+  public Object clone() {
+    try {
+      return super.clone();
+    }
+    catch(CloneNotSupportedException e) {
+      return null;
+    }
+  }
+}
+</pre>
+
+<ul>
+
+<li>la classe deve implementare <tt>Cloneable</tt>
+
+<li>dato che <tt>clone</tt> di <tt>Object</tt> ha
+<tt>throws CloneNotSupportedException</tt>, va catturata
+
+</ul>
+
+<hr>
+
+
+<h4>Clonazione in classi derivate</h4>
+
+<p>
+Se <tt>Borsista</tt> estende <tt>Studente</tt>:
+</p>
+
+<pre>
+class Borsista extends Studente {
+  ...
+
+  public Object clone() {
+    return super.clone();
+  }
+}
+</pre>
+
+<p>
+Commenti:
+</p>
+
+<dl>
+
+<dt>non serve <tt>implements Cloneable</tt>
+<dd>dato che <tt>Studente</tt> implementa l'interfaccia
+<tt>Cloneable</tt>, anche <tt>Borsista</tt> la implementa
+automaticamente in modo indiretto
+
+<dt>non serve catturare l'eccezione
+<dd>viene gi&agrave; fatto nel <tt>clone</tt> di
+<tt>Studente</tt>
+
+</dl>
+
+<hr>
+
+
+<h4>Chi clona l'oggetto?</h4>
+
+<p>
+Quando si invoca <tt>clone</tt> di <tt>Borsista</tt>:
+</p>
+
+<ol>
+
+<li>viene invocato <tt>clone</tt> di <tt>Studente</tt>
+
+<li>che invoca <tt>clone</tt> di <tt>Object</tt>
+
+</ol>
+
+<p>
+&Egrave; sempre <tt>clone</tt> di <tt>Object</tt> che fa la
+copia!
+</p>
+
+<hr>
+
+
+<h4>Copia superficiale e profonda</h4>
+
+<p>
+Se un oggetto contiene altri riferimenti a oggetti:
+</p>
+
+<dl>
+
+<dt>copia superficiale
+<dd>viene copiato solo l'oggetto
+
+<dt>copia profonda
+<dd>viene copiato l'oggetto e tutti quelli collegati
+
+</dl>
+
+<hr>
+
+
+<h4>Esempio</h4>
+
+<p>
+Classe <tt>Segmento</tt>
+</p>
+
+<pre>
+import java.awt.*;
+
+class Segmento {
+  Point i, f;
+}
+</pre>
+
+<hr>
+
+
+<h4>Uguaglianza superficiale</h4>
+
+<p>
+Si confrontano i riferimenti degli oggetti
+</p>
+
+<p>
+Due oggetti <tt>Segmento</tt> sono <tt>equals</tt> se i loro
+compi sono esattamente uguali (contengono riferimenti agli
+stessi identici oggetti
+</p>
+
+<pre>
+import java.awt.*;
+
+class Segmento {
+  Point i, f;
+
+	// equals superficiale
+  public boolean equals(Object o) {
+    if(o==null)
+      return false;
+
+    if(this.getClass()!=o.getClass())
+      return false;
+
+    Segmento s=(Segmento) o;
+
+    return((this.i==s.i)&amp;&amp;(this.f==s.f));
+  }
+}
+</pre>
+
+<hr>
+
+
+<h4>Confronto profondo</h4>
+
+<p>
+Gli oggetti vengono confrontati in base ai loro valori, non
+ai loro riferimenti:
+</p>
+
+<pre>
+import java.awt.*;
+
+class Segmento {
+  Point i, f;
+
+  public boolean equals(Object o) {
+    if(o==null)
+      return false;
+
+    if(this.getClass()!=o.getClass())
+      return false;
+
+    Segmento s=(Segmento) o;
+
+    if(this.i==null) {
+      if(s.i!=null)
+        return false;
+    }
+    else if(!this.i.equals(s.i))
+      return false;
+
+    if(this.f==null) {
+      if(s.f!=null)
+        return false;
+    }
+    else if(!this.f.equals(s.f))
+      return false;
+
+    return true;
+  }
+}
+</pre>
+
+<hr>
+
+
+<h4>Copia superficiale</h4>
+
+<p>
+<tt>clone</tt> di <tt>Object</tt> fa la copia del solo
+oggetto
+</p>
+
+<pre>
+import java.awt.*;
+
+class Segmento {
+  Point i, f;
+
+  public Object clone() {
+    try {
+      return super.clone();
+    }
+    catch(CloneNotSupportedException e) {
+      return null;
+    }
+  }
+}
+</pre>
+
+<p>
+Prima della copia:
+</p>
+
+<img src="prima.gif">
+
+<p>
+Dopo la copia superficiale:
+</p>
+
+<img src="superf.gif">
+
+<hr>
+
+
+<h4>Copia profonda</h4>
+
+<p>
+Ha senso richiedere una copia anche dei due oggetti
+<tt>Point</tt>
+</p>
+
+<img src="profonda.gif">
+
+<p>
+Questo non viene fatto da <tt>clone</tt> di <tt>Object</tt>
+</p>
+
+<p>
+Va fatto manualmente:
+</p>
+
+<hr>
+
+
+<h4>Copia profonda: realizzazione</h4>
+
+<p>
+Occorre invocare <tt>clone</tt> su ognuno degli oggetti di
+cui voglio fare la copia
+</p>
+
+<p>
+Notare che <tt>super.clone</tt> ha tipo di ritorno
+<tt>Object</tt>
+</p>
+
+<p>
+Per poter accedere alle componenti, devo fare il cast
+</p>
+
+<p>
+Lo stesso vale per le componenti
+</p>
+
+<pre>
+import java.awt.*;
+
+class Segmento {
+  Point i, f;
+
+  ...
+
+  public Object clone() {
+    try {
+      Segmento s;
+      s=(Segmento) super.clone();
+
+      s.i=(Point) this.i.clone();
+      s.f=(Point) this.f.clone();
+
+      return s;
+    }
+    catch(CloneNotSupportedException e) {
+      return null;
+    }
+  }
+}
+</pre>
+
+</body>
+</html>
+
+
+

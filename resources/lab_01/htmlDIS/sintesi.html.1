@@ -1,0 +1,358 @@
+	<HTML>
+	<HEAD>
+	
+	<script language="javascript">
+
+<!--
+
+function Remote() {
+  var floater = null
+  floater = window.open('','vRemote','width=700,height=500,resizable=1,status=0,scrollbars=1')
+  if (floater != null) {
+    if (floater.opener == null) {
+      floater.opener = self
+    }
+    floater.location.href ='/murst-dae/docente/leggimi_form98.htm'
+  }
+} 
+
+
+var Campo_Mancante = new Object();
+Campo_Mancante[1] = "OBIETTIVO DELLA RICERCA";
+Campo_Mancante[2] = "INNOVAZIONE RISPETTO ALLO STATO ...";
+Campo_Mancante[3] = "ALMENO UN CRITERIO DI VALUTAZIONE";
+Campo_Mancante[4] = "CRITERIO 2";
+Campo_Mancante[5] = "CRITERIO 3";
+Campo_Mancante[6] = "CRITERIO 4";
+Campo_Mancante[8] = "FINANZIAMENTO  Unita' ";
+Campo_Mancante[9] = "COMPITO  Unita' ";
+
+
+// Prima di uscire controlla i dati
+function validateForm (f,num_b) {
+        var SCRITTA = "";
+        var j, k, indica=-1;
+        var nome_campo;
+        var jj,a,b,criteri=0;
+        var totale_campi = document.forms[0].elements.length;
+        totale_campi--; // toglie submit
+        // controlla che i campi obligatori non siano vuoti
+        for (var k=1; k < totale_campi; k++) {
+                 valore = document.forms[0].elements[k].value;
+                 if(k>=1 && k<((num_b*3)+7) ){
+                     j = 0;
+                     for (var i=0; i < valore.length; i++) {
+                         if(valore.substring(i,i+1) != " ") {
+                            j += 1;
+                         }
+                     }
+                     if(j == 0) {
+	               if(k==3 || k==4 || k==5 || k==6){
+	                 criteri++;
+		       }
+	               if(k==1 || k==2 ){
+                         SCRITTA += Campo_Mancante[k] + "\n";
+                       }
+	               else{
+			 a=8; b=9;
+                         for(jj=1;jj<=num_b;jj++){
+			   if(a==k){
+                             SCRITTA += Campo_Mancante[8] + jj + "\n";
+	                     jj = num_b;
+                           } 
+			   if(b==k){
+                             SCRITTA += Campo_Mancante[9] + jj + "\n";
+	                     jj = num_b;
+                           } 
+			   a = a+3;
+			   b = b+3;
+                         }
+	               }
+                       document.forms[0].elements[k].value = "";
+                       if(indica == -1) { indica = k; }
+                     }
+                  }
+        }
+        if(criteri ==4){
+            SCRITTA += Campo_Mancante[3] + "\n";
+	}
+        if(SCRITTA.length > 0) {
+                alert ("PER AGGIORNARE DEFINITIVAMENTE I DATI E' NECESSARIO INSERIRE:\n\n" + SCRITTA);
+                document.forms[0].elements[indica].focus();
+                return false;
+        }
+        else {
+                // Controlla che la suddivisione dei fondi sia corretta 
+	        checkTotale(num_b);
+                return true;
+        }
+
+}
+
+function checkTotale(num_b) {
+        var jj=0,somma=0.000,finanz=0,totale=0;
+        var  a=8,stringa="",somma2; 
+
+        for(jj=1;jj<=num_b;jj++){           
+	   temp = document.forms[0].elements[a].value; 
+	   if(temp.indexOf(".") == -1 && temp.indexOf(",") == -1){
+	        value =  temp + ".000" ;
+ 	   } 
+       else{
+          temp1=33;
+	      if(temp.indexOf(",") != -1){
+             value = temp.substring(0,temp.indexOf(","));
+             value += "." + temp.substring(temp.indexOf(",")+1,temp.length);
+	         temp1 = temp.substring(temp.indexOf(",")+1,temp.length).length;
+	      }
+	      else{
+             value = temp;
+	         temp1 = temp.substring(temp.indexOf(".")+1,temp.length).length;
+	      }
+          if(temp1== 0){ value += "000";}
+          if(temp1== 1){ value += "00";}
+          if(temp1== 2){ value += "0";}
+          if(temp1==33){ value = temp;}
+	   }
+       if(value.length==5){ value = "    " + value; }
+       if(value.length==6){ value = "  " + value; }
+
+	   finanz = parseFloat(value);
+	   somma = somma+finanz;
+           stringa = stringa + "Finanziamento Unita' " + jj + " :       " + value + "\n";
+           a = a+3;
+       }
+
+       // trasforma in stringa il totale delle unita'
+	   somma2 = "" + somma;
+       if(somma2.indexOf(".") == -1){ somma2 += ".000"; }
+	   else{
+	      temp1 = somma2.substring(somma2.indexOf(".")+1,somma2.length).length;
+          if(temp1== 1){ somma2 += "00";}
+          if(temp1== 2){ somma2 += "0";}
+       }
+
+       // trasforma in stringa il finanziamento totale
+	   temp = document.forms[0].elements[0].value; 
+	   if(temp.indexOf(",") != -1){
+	      arrayOfString = temp.split(",");
+	      value = arrayOfString[0] + "." + arrayOfString[1];
+	   }
+	   else{
+	      value =  temp + ".000" ;
+       }
+	   totale = parseFloat(value);
+
+       if(somma2.length==5){ somma2 = "    " + somma2; }
+       if(somma2.length==6){ somma2 = "  " + somma2; }
+       
+       if(somma < totale || somma > totale){
+       	     alert ("LA SOMMA DEI FINANZIAMENTI RIPARTITI TRA LE UNITA' NON CORRISPONDE \nAL FINANZIAMENTO TOTALE. LA PREGHIAMO DI CORREGGERE TALI VALORI: \n\n" + stringa + " \n\nTOTALE UNITA:                    " + somma2 + "\n" + "TOTALE FINANZIAMENTO:  " + value);
+       } 
+}
+
+// Controlla i numeri
+function checkNumber(k) {
+        var nome = document.forms[0].elements[k].name;
+        var valore = document.forms[0].elements[k].value;
+        //alert("K \n" + k + " Value " + valore);
+        var numStr = "0123456789.";
+        var thisChar, new_val= "";
+        var primo_numero = 0;
+        testoCambiato = 1;
+        if(valore.length > 0) {
+                //Controlla ogni carattere
+                for (var i=0; i < valore.length; i++) {
+                        thisChar = valore.substring(i,i+1);
+                        thisChar = (thisChar == ",") ? "." : thisChar;
+                        if(primo_numero == 0 && thisChar == "0") {
+                        }
+                        else if(numStr.indexOf(thisChar) != -1) {
+                                if(thisChar == "." && primo_numero == 0) {
+                                        new_val += "0";
+                                } 
+                                new_val += thisChar;
+                                primo_numero++;
+                        }
+                }
+                new_val = (new_val == "") ? 0 : new_val;
+                var rotondato = roundValue(new_val);
+                if(rotondato != new_val) {
+                        alert("Il valore e' stato arrotondato\n" + new_val + " => " + rotondato);
+                }
+                new_val = rotondato;
+                document.forms[0].elements[k].value = new_val;
+       }
+}
+function roundValue(val) {
+        if(val == 0) { return ("0"); }
+        if(val.indexOf(".") == -1) {
+                return (val);
+        }
+        val += "0";
+        var decPart = val.substring(0,val.indexOf("."));
+        var pos = val.indexOf(".")+1;
+        thisChar = val.substring(pos,pos+2);
+        var fractPart = parseInt(thisChar);
+
+        if(parseInt(fractPart) >= 50) {
+                return ("" + (parseInt(decPart)+1));
+        }
+        else {
+                return parseInt(val);
+        }
+        
+}
+
+//-->
+
+</script>
+
+
+
+   	<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1">
+   	<META NAME="GENERATOR" CONTENT="Mozilla/4.03 [it] (Win95; I) [Netscape]">
+   	<TITLE>Ricerca Scientifica 2000</TITLE>
+	</HEAD>
+	<BODY BGCOLOR="#C9DEFA" TEXT="#000000" >
+
+	<CENTER><B>
+	<FONT FACE="Geneva" COLOR="#05004F" SIZE=+0>
+        MINISTERO DELL'UNIVERSIT&Agrave; E DELLA RICERCA SCIENTIFICA E TECNOLOGICA
+	<br>
+	PROGRAMMI DI RICERCA ANNO 2000
+	<br>
+	COMPITI E SUDDIVISIONE DELLE UNIT&Agrave; DI RICERCA
+        </FONT>
+        </B></CENTER>
+
+	<!--<A HREF="../../leggimi_form00.htm"  target="_blank" ><font face='arial,geneva' color="#05004F"> <b>LEGGIMI</b></font></a>-->
+	<p>
+	<HR> 
+<TABLE border=0><TR><TD><FONT COLOR="#000000" SIZE=+1><u><b>Il Form risulta regolarmente <br> chiuso in data:</b> </u></FONT></B></TD><TD>  &nbsp; &nbsp; </TD><TD valign=bottom><FONT COLOR="#05004F" ><b><font color=red> 24-11-2000 </font></b> <br> &nbsp; </FONT></FONT></TD></TR><TR><TD><FONT COLOR="#000000" SIZE=+1><u>Coordinatore</u></FONT
+></B></TD><TD>  &nbsp; &nbsp; </TD><TD valign=bottom><FONT COLOR="#05004F" ><b
+> MAURIZIO</b></FONT><FONT COLOR="#05004F" ><b> LENZERINI </b></FONT></TR><TR><TD></TD></TR> <BR><TR><TD><FONT COLOR="#000000" SIZE=+1><u>Titolo della Ricerca</u></FONT><TD> &nbsp; &nbsp; </TD></TD><TD align=left valign=bottom ><FONT COLOR="#05004F" ><b> D2I: INTEGRAZIONE, WAREHOUSING E MINING DI SORGENTI ETEROGENEE DI DATI</b></FONT></TD></TR><TR><TD></TD></TR> <TR><TD><FONT COLOR="#000000" SIZE=+1><u>Finanziamento assegnato in milioni</u></FONT></B><FONT COLOR="#FF0000" > </FONT></TD><TD> &nbsp; &nbsp; </TD><TD valign=bottom><FONT COLOR="#05004F" >M£ <b>564</b> , Euro <b>291281</b></FONT></TD></TR><TR><TD></TD></TR> <TR><TD><FONT COLOR="#000000" SIZE=+1><u>Rd+Ra </u></FONT></TD><TD> &nbsp; &nbsp; </TD><TD valign=bottom><FONT COLOR="#05004F" > M£ <b>267</b> , Euro <b>137893</b></FONT> (dichiarata) &nbsp;&nbsp;</b></FONT></TD></TR><TR><TD></TD></TR> <TR><TD><FONT COLOR="#000000" SIZE=+1><u>Durata </u></FONT></TD><TD> &nbsp; &nbsp; </TD><TD valign=bottom><FONT COLOR="#05004F" ><b> 24 mesi</b></FONT></TD></TR><TR><TD></TD></TR> </TABLE>	<TABLE border=0 width=95% align=center>
+	<TR><TD>&nbsp;<FONT COLOR="#000000"><FONT SIZE=+1><u>Obiettivo della Ricerca </u></FONT></FONT></TD></TR>
+        <TR><TD><br>L'obiettivo del progetto &#232; la definizione di un quadro metodologico generale per l'integrazione, il warehousing e il mining di sorgenti eterogenee (D2I: From Data to Information), e lo sviluppo di metodi e strumenti specifici per i tre temi. Riguardo al tema 1, l'obiettivo &#232; lo sviluppo di metodi e strumenti per l'integrazione di dati provenienti da sorgenti fortemente e strutturalmente eterogenee, ossia da sorgenti di tipo strutturato o semistrutturato. I principali risultati che si intendono perseguire riguardano la definizione di una metodologia di integrazione di sorgenti fortemente eterogenee, la definizione di tecniche semiautomatiche di clustering di sorgenti basate su propriet&#224; di affinit&#224; e corrispondenze semantiche, la progettazione di algoritmi per la riscrittura di interrogazioni su viste globali in termini di interrogazioni sulle sorgenti, la definizione di metodi per la gestione di versioni diverse delle sorgenti e per la riconciliazione di dati provienti da sorgenti diverse, la progettazione e la realizzazione di un ambiente che supporti l'attivit&#224; d'integrazione, basato sulla gestione di meta-dati. Riguardo al tema 2, l'obiettivo &#232; lo sviluppo di tecniche per la progettazione e l'interrogazione efficiente di data warehouse. Ci si propone di definire tecniche efficaci per la materializzazione di viste in presenza di un carico di lavoro complesso, e per l'individuazione di un insieme ottimale di indici per l'accesso veloce ai dati. Il problema della interrogazione efficiente di data warehouse sar&#224; affrontato principalmente come problema di riscrittura di interrogazioni su viste materializzate. I risultati che si intendono perseguire in questo contesto riguardano la definizione di tecniche di ottimizzazione, basate sulla struttura delle interrogazioni, che estendono metodi gi&#224; esistenti in maniera da tenere conto delle specificit&#224; dell'ambiente data warehouse.  Riguardo al tema 3, la ricerca operer&#224; in numerose direzioni con lo scopo di trattare gli aspetti pi&#249; rilevanti e a tutt'oggi meno esplorati. Verranno trattati vari tipi di dati, da quelli strutturati, tipici dei sistemi di basi di dati, a quelli multimediali, quali DB di immagini. La conoscenza estratta sar&#224; di diversi tipi, dall'informazione sui raggruppamenti di oggetti (clustering), al meta-querying, che cerca pattern complessi all'interno dei dati con tecniche di tipo logico. Particolare cura sar&#224; dedicata agli aspetti di visualizzazione dell'informazione estratta e di adattabilit&#224; a vari tipi di utenti, nella convinzione che la forma di presentazione e l'interazione con l'utente siano esse stesse fattori critici per l'efficacia del processo di estrazione e la fruibilit&#224; dell'informazione. Per quanto riguarda i metodi di estrazione, verranno considerate le problematiche che sorgono quando la sorgente di dati &#232; un data warehouse. In questo caso, sorge spesso la necessit&#224; di effettuare elaborazioni incrementali, poich&#233; i dati vengono consolidati periodicamente, ed &#232; importante evitare la ripetizione di attivit&#224; molto onerose dal punto di vista computazionale, come ad esempio il clustering. I principali risultati che si intende produrre riguardano: algoritmi di clustering incrementale, paradigmi per query di similarit&#224;, inclusi quelli con approssimazione, formalizzazione degli indicatori in grado di quantificare il compromesso  qualit&#224;/costo, strategie di ausilio per permettere all'utente di formulare facilmente un piano per la scoperta di informazioni nascoste, primitive per la creazione semiautomatica di visualizzazioni, caratterizzazione computazionale di varianti di meta-querying di interesse applicativo, algoritmi efficienti per il meta-querying. <br><br></TD></TR>
+
+	<TR><TD collspan=2><FONT COLOR="#000000"><FONT SIZE=+1><u>Innovazione rispetto allo stato dell'arte nel campo</u> </FONT></FONT></TD></TR>
+
+        <TR><TD><br>L'integrazione di sorgenti di dati semi-strutturati, oggetto della presente ricerca pone nuove problematiche rispetto al caso di dati strutturati, che non sono ancora state risolte. L'innovativit&#224; riguarda tecniche e strumenti per la costruzione di viste riconciliate di dati semi-strutturati. Un aspetto nuovo che emerge nella integrazione di dati eterogenei &#232; la necessit&#224; di considerare la coesistenza di versioni diverse, anche strutturali, di una stessa sorgente. Il problema dello schema versioning &#232; affrontato da diversi anni nelle basi di dati relazionali. In questo ambito sono ancora numerosi i problemi da affrontare connessi all'esecuzione di query e cambiamenti di schema che coinvolgono contemporaneamente pi&#249; versioni di schema e pi&#249; sorgenti dati. L'estrazione, l'analisi e la specifica di propriet&#224; inter-schema, quali sinonimie, omonimie, inclusioni, conflitti di tipo ecc., &#232; un ulteriore aspetto critico della integrazione. Anche in questo campo l'innovazione del presente progetto &#232; connessa alla esigenza di considerare sorgenti semi-strutturate. Solo recentemente il problema di porre interrogazioni in modo trasparente rispetto alle sorgenti utilizzate viene studiato nell'ambito in cui sono presenti sorgenti semi-strutturate, ambito di interesse nel presente progetto. Infine, l'integrazione di sorgenti eterogenee richiede anche tecniche per la riconciliazione dei dati. Questo problema necessita ancora di metodi formali e scientifici, che sono un obiettivo di questo progetto. I temi di ricerca legati al data warehouse sono oggetto di forte interesse da parte della comunit&#224; scientifica. Sebbene molti aspetti specifici legati alla modellazione concettuale, alla modellazione logica, alla ottimizzazione e alla selezione degli indici siano stati trattati, a tutt'oggi l'area &#232; ben lungi dal poter essere considerata matura.  L'innovazione del progetto consiste nella definizione di una metodologia che copra i vari aspetti e sia anche coerente con i risultati con il tema dell'integrazione. Nonostante l'interesse crescente verso il data mining, esistono numerosi problemi aperti, su cui questo progetto indagher&#224;. Negli ultimi anni si &#232; manifestato un notevole interesse per lo sviluppo di metodi di data clustering di complessit&#224; subquadratica. Tuttavia l'applicazione di tali metodi ha ricevuto attenzione limitata nel caso di dati derivanti da data warehouse. In questo caso la innovazione del progetto si baser&#224; sul considerare l'aggiornamento dei risultati in modo incrementale a partire dalle classi ricavate nella precedente elaborazione e dalle transazioni di modifica del warehouse.  Sempre nell'ambito del clustering, recenti lavori hanno messo in evidenza l'importanza di strutture per risolvere query di similarit&#224; al fine di pervenire ad una corretta classificazione di oggetti. Poich&#233; tali query possono arrivare ad avere un costo proibitivo, &#232; emersa l'importanza di query approssimate, oggetto del presente progetto. La tecnica del meta querying ha di recente ricevuto attenzione nella comunit&#224; scientifica adattandosi bene alla descrizione di classi di pattern complessi di dati che possono essere estratti dalle basi di dati. Il presente progetto si propone di condurre uno studio innovativo su frammenti interessanti di meta-querying e sulle loro propriet&#224; computazionali. Per quanto riguarda l'utilizzo delle tecniche di data mining, l'importanza e l'efficacia delle rappresentazioni visuali dei dati sono ben note. Un ulteriore elemento di innovazione del progetto &#232; la definizione di nuove tecniche di visualizzazione basate su ambienti integrati in cui l'interazione dell'utente, tramite opportune rappresentazioni visuali e primitive grafiche di manipolazione, guidi lo strumento nel processo di scoperta e sia anche un valido ausilio per l'analisi dei dati prodotti utilizzando le diverse tecniche. <br><br></TD></TR>
+
+        <TR><TD><FONT COLOR="#000000"><FONT SIZE=+1><u>Criteri di verificabilit&agrave;</u></FONT></FONT></TD></TR>
+
+        <TR><TD><FONT SIZE=+1><br>1)&nbsp;</FONT>Verifica del rilascio dei prodotti. </TD></TR>
+
+        <TR><TD><P><FONT SIZE=+1><br>2)&nbsp;</FONT>Verifica della qualita' dei prodotti, e delle relative pubblicazioni.</TD></TR>
+
+        <TR><TD><P><FONT SIZE=+1><br>3)&nbsp;</FONT>Sito web con i risultati del progetto ed il programma delle ricerche.</TD></TR>
+
+        <TR><TD><P><FONT SIZE=+1><br>4)&nbsp;</FONT>Sperimentazione dei risultati in applicazioni reali.</TD></TR>
+	</TABLE>
+
+        <P>
+        <FONT COLOR="#000000"><FONT SIZE=+1><u>Unit&agrave; di Ricerca</u></FONT></FONT>
+        <BR><BR>
+        <TABLE border=0 width=95% align=center>
+<TR><TD><FONT COLOR="#000000"><FONT SIZE=+0 COLOR="#FF0000">1</FONT><FONT SIZE=+1>]&nbsp;&nbsp;Unit&agrave; di</FONT>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<FONT SIZE=+0 COLOR="#05004F">&nbsp;<b>Universita' degli Studi di ROMA "La Sapienza"</b></FONT></TD>
+        </TR>
+        <TD><FONT SIZE=+1>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Responsabile</FONT><FONT
+ SIZE=+0 COLOR="#05004F">&nbsp;<b>MAURIZIO LENZERINI</b>
+</font></td>  
+        <TR><TD></TD></TR>
+        <TR>
+        <TD><FONT SIZE=+1>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Rd+Ra </FONT><FONT SIZE=+0 COLOR="#05004F">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; M£ <b>58</b> , Euro <b>29954,000</b></FONT> (dichiarata)
+	</TD>
+        </TR>
+        <TR><TD></TD></TR>
+        <TR>
+        <TD><FONT SIZE=+1>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Finanziamento</FONT><FONT SIZE=+0>&nbsp;<FONT SIZE=+0 COLOR="#05004F">&nbsp;&nbsp; M£ <b>125</b> , Euro <b>64557,000</b></FONT></TD>
+        </TR>
+        <TR><TD></TD></TR>
+        <TR><TD>
+        <FONT SIZE=+1>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Compito<br></FONT></t></tr><tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br> TEMA 1: Relativamente al tema dell'integrazione, si prevede nella prima fase di studiare e analizzare i nuovi requisiti che emergono sulla integrazione di dati quando si considerano sorgenti fortemente eterogenee e semistrutturate. Verranno studiati i requisiti per nuovi metodi di rappresentazione dei dati. Verranno confrontati i modelli per dati semistrutturati proposti in letteratura, allo scopo di caratterizzarne il potere espressivo. Verranno indagati metodi per specificare parametri di qualit&#224; delle sorgenti e i metodi per la riconciliazione di dati provenienti da sorgenti eterogenee. Si analizzeranno i metodi esistenti per il problema del query rewriting e del query answering using views. Nella seconda fase si svilupperanno le tecniche e algoritmi per la riscrittura di interrogazioni rispetto ad un insieme di viste, estendendo, modificando e adattando gli approcci attuali tenendo conto della esistenza di sorgenti semistrutturate.  Nella terza fase, che prevede la realizzazione di prototipi che implementino le funzioni enucleate dai risultati scientifici prodotti nella fase precedente, si realizzer&#224; un prototipo per gli algoritmi di query rewriting e query answering using views sviluppati nella fase 2 e per la riconciliazione dei dati. Nella quarta fase verr&#224; completata la realizzazione del prototipo per gli algoritmi di query rewriting e query answering using views e per la riconciliazione dei dati, e la sua integrazione con gli altri strumenti. Verranno sperimentate e validate le metodologie e gli strumenti per la riconciliazione dei dati sviluppati nelle fasi precedenti. <br><br>TEMA 3: Relativamente al tema del data mining, l'obiettivo  consiste nella realizzazione di un prototipo di sistema di data mining di nuova generazione, che sia user-centered ed in cui tecniche e strumenti di data mining esistenti siano integrati con nuove componenti che mirano a fornire un supporto sostanziale all'utente in tutte le fasi della scoperta di informazioni. Caratteristiche distintive del sistema saranno non soltanto la possibilit&#224; di integrare sistemi diversi in un ambiente integrato ed orientato all'utente, ma anche la capacit&#224; di fornire nuove soluzioni sia ad alcuni dei problemi aperti esistenti sia nelle singole tecniche di data mining, sia a quelli derivanti dalla integrazione di tecniche diverse in un unico ambiente. Preliminare alla definizione del sistema sar&#224; condotto uno studio teorico che sistematizzi e formalizzi il rapporto esistente tra le varie modalit&#224; di visualizzazione dei dati e le varie attivit&#224;  di scoperta di informazioni. Il sistema dovr&#224; avere le seguenti caratteristiche fondamentali: 1. fornire varie modalit&#224; di visualizzazione atte a trasmettere efficacemente propriet&#224;  rilevanti dei dati; 2. fornire varie strategie di ausilio per permettere all'utente di formulare facilmente un piano per la scoperta di informazioni nascoste; 3. fornire primitive per la creazione semi-automatica di nuove visualizzazioni ad-hoc, a seconda del tipo dei dati e degli obiettivi dell'utente; 4. essere adattabile ai vari tipi di utenti, offrendo automaticamente le modalit&#224; di visualizzazione e strategie di ricerca piu' appropriate; 5. essere flessibile e capace di integrare sistemi e tecniche esistenti in un ambiente omogeneo. Specifici risultati del progetto riguarderanno: a) un modello di formalizzazione delle rappresentazioni visuali; b) tecniche di proiezione di spazi multidimensioni su spazi due-tre dimensionali allo scopo di evidenziare caratteristiche di ripetitivit&#224; nei dati; c) nuove strutture di dati che possano velocizzare i cambiamenti nella visualizzazione derivanti da azioni dell'utente; d) nuove visualizzazioni atte a rappresentare grandi insiemi di dati. <br>
+        </TD></TR>
+        </TABLE>
+        <TABLE border=0 width=95% align=center>
+<TR><TD><FONT COLOR="#000000"><FONT SIZE=+0 COLOR="#FF0000">2</FONT><FONT SIZE=+1>]&nbsp;&nbsp;Unit&agrave; di</FONT>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<FONT SIZE=+0 COLOR="#05004F">&nbsp;<b>Universita' degli Studi di BOLOGNA</b></FONT></TD>
+        </TR>
+        <TD><FONT SIZE=+1>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Responsabile</FONT><FONT
+ SIZE=+0 COLOR="#05004F">&nbsp;<b>STEFANO RIZZI</b>
+</font></td>  
+        <TR><TD></TD></TR>
+        <TR>
+        <TD><FONT SIZE=+1>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Rd+Ra </FONT><FONT SIZE=+0 COLOR="#05004F">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; M£ <b>65</b> , Euro <b>33569,000</b></FONT> (dichiarata)
+	</TD>
+        </TR>
+        <TR><TD></TD></TR>
+        <TR>
+        <TD><FONT SIZE=+1>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Finanziamento</FONT><FONT SIZE=+0>&nbsp;<FONT SIZE=+0 COLOR="#05004F">&nbsp;&nbsp; M£ <b>137</b> , Euro <b>70754,000</b></FONT></TD>
+        </TR>
+        <TR><TD></TD></TR>
+        <TR><TD>
+        <FONT SIZE=+1>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Compito<br></FONT></t></tr><tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br> TEMA 1: La ricerca studier&#224; l'impatto della presenza di diverse versioni di schema sul processo di integrazione; verranno prese in considerazione sorgenti in cui i medesimi dati sono rappresentati mediante versioni di schema diverse, create da successive modifiche apportate allo schema stesso. Le sorgenti da integrare verranno descritte mediante un modello generalizzato per il supporto di versioni di schema. Il tipo di eterogeneit&#224; sar&#224; invece modellato tramite le relazioni inter-versione indotte dalle modifiche di schema applicate. Verr&#224; sviluppato un approccio per la gestione di sorgenti dotate di versioni di schema con lo scopo di definire una metodologia di integrazione sulla base della quale saranno introdotte le specifiche funzionali di un Query Manager. Si definiranno quindi algoritmi per la riscrittura di interrogazioni multiversione basate su tecniche di query rewriting e query answering using views. Verr&#224; sviluppato un prototipo che si occuper&#224; della riscrittura di interrogazioni multiversione, e che verr&#224; integrato in un framework comune per la descrizione delle singole sorgenti e del livello integrato/riconciliato. Seguir&#224; una fase di validazione e sperimentazione del framework cos&#236; ottenuto con applicazione ad un caso reale.<br><br>TEMA 2: Verranno affrontate le principali problematiche legate alla progettazione logica e fisica di data warehouse, assumendo come modello logico target il modello relazionale. Per quanto riguarda la progettazione logica, verr&#224; studiato il problema della materializzazione di viste sulla base di un carico di lavoro complesso che contempli la presenza contemporanea di pi&#249; operatori di aggregazione all'interno delle interrogazioni. Verr&#224; analizzata l'utilit&#224; della frammentazione delle viste materializzate, effettuata sulla base del carico di lavoro e tenendo conto di vincoli di spazio. Per entrambi i problemi saranno definite funzioni di costo ad hoc, che ne permettano una formulazione come problemi di ottimizzazione. Per il livello fisico, l'unit&#224; analizzer&#224; i tipi di indici pi&#249; diffusi ed elaborer&#224; i relativi modelli di costo. Verr&#224; poi affrontato il problema della scelta ottimale degli indici tramite algoritmi euristici. Le tecniche prodotte verranno implementate in un prototipo che accetter&#224; in ingresso uno schema concettuale di data mart, un carico di lavoro, nonch&#233; eventuali vincoli aggiuntivi ed effettuer&#224; la progettazione logica e fisica del data mart. La sperimentazione utilizzer&#224; i pi&#249; diffusi strumenti di data warehousing, e sar&#224; basata su benchmark di varia natura.<br><br>TEMA 3: Verranno affrontati argomenti legati al trattamento di interrogazioni di similarit&#224;, nonch&#233; metodi incrementali di data clustering per il data warehousing su dati metrici e categorici. Si analizzeranno i paradigmi esistenti per query di similarit&#224;, inclusi quelli di tipo approssimato, e verranno definiti indicatori adeguati a caratterizzare la qualit&#224; del risultato, che saranno utilizzati per definire nuovi algoritmi in grado di mediare tra costo e qualit&#224; del risultato. Sar&#224; sviluppato un prototipo in grado di supportare e risolvere efficientemente query complesse. Verr&#224; studiata l'applicabilit&#224; dei metodi di clustering basati sui primi vicini all'analisi incrementale e si lavorer&#224; alla definizione dell'architettura del sistema integrato di data mining e visualizzazione. Verr&#224; prodotto un prototipo che comprenda un motore di data clustering, un generatore di dati sintetici per la sperimentazione e uno strumento di valutazione delle prestazioni. Entrambi i prototipi saranno sperimentati in modo estensivo, considerando dati reali e sintetici.<br> <br>
+        </TD></TR>
+        </TABLE>
+        <TABLE border=0 width=95% align=center>
+<TR><TD><FONT COLOR="#000000"><FONT SIZE=+0 COLOR="#FF0000">3</FONT><FONT SIZE=+1>]&nbsp;&nbsp;Unit&agrave; di</FONT>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<FONT SIZE=+0 COLOR="#05004F">&nbsp;<b>Universita' degli Studi di MODENA e REGGIO EMILIA</b></FONT></TD>
+        </TR>
+        <TD><FONT SIZE=+1>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Responsabile</FONT><FONT
+ SIZE=+0 COLOR="#05004F">&nbsp;<b>SONIA BERGAMASCHI</b>
+</font></td>  
+        <TR><TD></TD></TR>
+        <TR>
+        <TD><FONT SIZE=+1>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Rd+Ra </FONT><FONT SIZE=+0 COLOR="#05004F">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; M£ <b>40</b> , Euro <b>20658,000</b></FONT> (dichiarata)
+	</TD>
+        </TR>
+        <TR><TD></TD></TR>
+        <TR>
+        <TD><FONT SIZE=+1>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Finanziamento</FONT><FONT SIZE=+0>&nbsp;<FONT SIZE=+0 COLOR="#05004F">&nbsp;&nbsp; M£ <b>85</b> , Euro <b>43898,000</b></FONT></TD>
+        </TR>
+        <TR><TD></TD></TR>
+        <TR><TD>
+        <FONT SIZE=+1>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Compito<br></FONT></t></tr><tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br> L'attivit&#224; di ricerca avr&#224; come obiettivo la continuazione ed evoluzione del progetto MOMIS che permette di ottenere una &#34;Vista Virtuale Globale&#34; di sorgenti informative eterogenee. L'obiettivo finale di MOMIS, proposto come attivit&#224; di ricerca nel presente progetto, &#232; quello di porre l'utente generico in condizione di fare una singola interrogazione rispetto alla Vista Virtuale Globale ed ottenere un'unica risposta che unifichi e sintetizzi in informazione i dati provenienti dalle singole sorgenti. In altre parole, con l'ambiente MOMIS si realizzer&#224; un sistema di mediazione che contribuisca a fornire un'integrazione delle sorgenti che faciliti l'interrogazione per gli utenti, senza comprometterne la libert&#224; od inficiare la completezza e la sinteticit&#224; della risposta.<br><br>FASE 1:  - Definizione dei requisiti di integrazione per dati provenienti da sorgenti semistrutturate.  - Definizione delle possibili estensioni al modello di integrazione per sorgenti strutturate di MOMIS per:  1) Integrare dati provenienti anche da sorgenti semistrutturate , proponendo modelli di rappresentazione per &#34;dare struttura&#34; ai dati semistrutturati.  2) Utilizzare ontologie di dominio e top-level basati su sistemi lessicali che prevedono l'esistenza di relazioni terminologiche tra termini definite a priori.  3) Utilizzare conoscenza estensionale inter-schema, tramite la definizione di assiomi estensionali che descrivono le relazioni insiemistiche esistenti tra le estensioni delle classi di oggetti presenti nelle sorgenti. <br><br>FASE 2:  L'obiettivo della fase &#232; la produzione di risultati scientifici che definiscano nel loro complesso un quadro metodologico per l'integrazione di dati provenienti da sorgenti fortemente eterogenee. La metodologia sar&#224; basata su tecniche intelligenti di tipo semi-automatico per l'identificazione e riconciliazione di eterogeneit&#224; basate sulle propriet&#224; dei dati, sulla estrazione semi-automatica di propriet&#224; interschema, e su conoscenza di ontologie di dominio. I risultati forniti includeranno la specifica funzionale/architetturale di un prototipo che implementa tale metodologia. Inoltre verranno definite le specifiche funzionali di un &#34;Query Manager&#34; che supporti query (globali) rispetto ad una &#34;Vista Virtuale Globale&#34; delle sorgenti integrate.  Il Query Manager dovr&#224; decomporre una query globale in sub-query relative alle sorgenti, estendendo tecniche sviluppate nell'ambito di sistemi distribuiti di Basi di Dati, ed ottimizzarne l'esecuzione utilizzando tecniche di logica descrittiva per l'ottimizzazione semantica di query.  Il Query Manager dovr&#224; inoltre gestire la composizione della risposta: i dati reperiti dalle sottoquery dovranno essere combinati per generare la risposta all'interrogazione posta sullo schema globale. <br><br>FASE 3: L'obiettivo di questa fase &#232; lo sviluppo dei prototipi che realizzino le funzioni enucleate dai risultati scientifici prodotti nella fase precedente. Il contributo di questa Unit&#224; di Ricerca sar&#224;:  1) lo sviluppo di un prototipo di ambiente di ausilio al progettista per la costruzione di una vista globale basato su ontologie e assiomi inter-schema ;  2) lo sviluppo di un prototipo di Query Manager per la gestione di query globali.<br> <br>FASE 4: L'obiettivo di questa fase &#232; quello di completare la realizzazione e l'integrazione dei prototipi sviluppati nelle fasi precedenti e di condurre opportuni esperimenti per verificarne l'efficacia in problemi reali d'integrazione. In particolare, la sperimentazione verr&#224; condotta facendo riferimento alle sorgenti informative messe a disposizione da TELECOM Italia. Inoltre, in collaborazione con l'Unit&#224; di Ricerca di Roma, verr&#224; completato l'interfacciamento tra il sistema di ausilio alla integrazione, il Query Manager ed il prototipo per query rewriting e query answering tramite viste. <br>
+        </TD></TR>
+        </TABLE>
+        <TABLE border=0 width=95% align=center>
+<TR><TD><FONT COLOR="#000000"><FONT SIZE=+0 COLOR="#FF0000">4</FONT><FONT SIZE=+1>]&nbsp;&nbsp;Unit&agrave; di</FONT>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<FONT SIZE=+0 COLOR="#05004F">&nbsp;<b>Universita' degli Studi di MILANO</b></FONT></TD>
+        </TR>
+        <TD><FONT SIZE=+1>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Responsabile</FONT><FONT
+ SIZE=+0 COLOR="#05004F">&nbsp;<b>SILVANA CASTANO</b>
+</font></td>  
+        <TR><TD></TD></TR>
+        <TR>
+        <TD><FONT SIZE=+1>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Rd+Ra </FONT><FONT SIZE=+0 COLOR="#05004F">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; M£ <b>41</b> , Euro <b>21174,000</b></FONT> (dichiarata)
+	</TD>
+        </TR>
+        <TR><TD></TD></TR>
+        <TR>
+        <TD><FONT SIZE=+1>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Finanziamento</FONT><FONT SIZE=+0>&nbsp;<FONT SIZE=+0 COLOR="#05004F">&nbsp;&nbsp; M£ <b>86</b> , Euro <b>44415,000</b></FONT></TD>
+        </TR>
+        <TR><TD></TD></TR>
+        <TR><TD>
+        <FONT SIZE=+1>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Compito<br></FONT></t></tr><tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br> L'unit&#224; di Milano &#232; coinvolta nel solo Tema 1. Obiettivo della ricerca &#232; lo sviluppo di un ambiente per la creazione di viste riconciliate di dati eterogenei e semistrutturati, mediante utilizzo di tecniche di affinit&#224; e clustering specializzate per tali dati, e per l'interrogazione di viste riconciliate mediante un linguaggio di tipo fuzzy opportunamente definito. Il programma si articola nelle seguenti fasi. <br><br>FASE 1. Definizione di requisiti di integrazione per sorgenti di dati eterogenei e semistrutturati per la valutazione di propriet&#224; di affinit&#224; e corrispondenze semantiche, tenendo conto di propriet&#224; e caratteristiche delle loro descrizioni a livello intensionale (metadati), contenuto semantico (con l'ausilio di thesaurus/ontologie), tipologie di eterogeneit&#224; e propriet&#224; intra e inter-schema. Definizione preliminare della struttura del meta-data repository sulla base dei requisiti di integrazione identificati. Prodotti della Fase 1:  D0.R1: Specifiche per il meta-data repository (in collaborazione con BO,CS,RM,MO) D1.R1: Metodi e tecniche di estrazione, rappresentazione ed integrazione di sorgenti strutturate e semi-strutturate eterogenee (in collaborazione con BO,CS,RM,MO) D1.R2: Utilizzo di ontologie e propriet&#224; inter-schema di tipo estensionale (in collaborazione con MO). <br><br>FASE 2. Definizione di tecniche di clustering basate su affinit&#224; e corrispondenze semantiche per sorgenti di dati semistrutturati e selezione interattiva di cluster di candidati all'integrazione da cui derivare viste riconciliate mediante opportune regole definite. Definizione del linguaggio fuzzy per l'interrogazione di viste riconciliate. Definizione di una metodologia per la costruzione semi-automatica di viste riconciliate basata su affinit&#224; e clustering e definizione delle specifiche funzionali del prototipo dell'ambiente di supporto relativo: tali attivit&#224; saranno svolte anche in stretta collaborazione le altre unit&#224; coinvolte. Definizione di uno specifico livello del meta-data repository dedicato a contenere regole di integrazione/unificazione in un verso e mapping/trasformazione nel verso opposto per la derivazione, rispettivamente, del processo di integrazione e delle corrispondenze tra viste riconciliate e candidati nei cluster delle sorgenti di partenza. Prodotti della Fase 2:  D0.R2: Specifica della architettura funzionale del repository di meta-dati (in collaborazione con BO,CS,RM,MO) D1.R6: Descrizione della metodologia di integrazione di sorgenti fortemente eterogenee ( in collaborazione con MO,BO) D1.R7: Architettura funzionale di un ambiente di ausilio al progettista per la costruzione di viste riconciliate di sorgenti fortemente eterogenee basato sulle tecniche sviluppate (in collaborazione con CS,MO). D1.R10: Descrizione del linguaggio fuzzy per l'interrogazione di viste riconciliate.<br><br>FASE 3. Realizzazione di un prototipo di strumento di ausilio al progettista per la costruzione di viste riconciliate di sorgenti eterogenee e semistrutturate basato sulle tecniche di affinit&#224; e clustering e sull'architettura funzionale definite nella fase 2. Collaborazione alla realizzazione del meta-data repository per gli aspetti relativi alla costruzione di viste riconciliate con affinit&#224; e clustering. Prodotti della Fase 3: D0.P1: Repository di meta-dati (in collaborazione con BO,CS,RM,MO) D1.P7: Prototipo di ambiente di ausilio al progettista per la costruzione di viste globali riconciliate basato su valutazione di affinit&#224; e clustering interattivo.<br><br>FASE 4. Completamento dell'implementazione del prototipo sviluppato nella fase 3 e effettuazione di sperimentazione e validazione della metodologia e dello strumento su casi applicativi individuati nell'ambito del progetto anche in collaborazione con Telecom Italia. D1.R12: Risultati della sperimentazione delle metodologie e dei prototipi per l'integrazione (in collaborazione con BO,CS,MO,RM). <br>
+        </TD></TR>
+        </TABLE>
+        <TABLE border=0 width=95% align=center>
+<TR><TD><FONT COLOR="#000000"><FONT SIZE=+0 COLOR="#FF0000">5</FONT><FONT SIZE=+1>]&nbsp;&nbsp;Unit&agrave; di</FONT>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<FONT SIZE=+0 COLOR="#05004F">&nbsp;<b>Universita' degli Studi della CALABRIA</b></FONT></TD>
+        </TR>
+        <TD><FONT SIZE=+1>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Responsabile</FONT><FONT
+ SIZE=+0 COLOR="#05004F">&nbsp;<b>SERGIO GRECO</b>
+<FONT COLOR= "#FF0000" >(Luigi PALOPOLI 
+)</font></td> 
+</font></td>  
+        <TR><TD></TD></TR>
+        <TR>
+        <TD><FONT SIZE=+1>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Rd+Ra </FONT><FONT SIZE=+0 COLOR="#05004F">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; M£ <b>63</b> , Euro <b>32536,000</b></FONT> (dichiarata)
+	</TD>
+        </TR>
+        <TR><TD></TD></TR>
+        <TR>
+        <TD><FONT SIZE=+1>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Finanziamento</FONT><FONT SIZE=+0>&nbsp;<FONT SIZE=+0 COLOR="#05004F">&nbsp;&nbsp; M£ <b>131</b> , Euro <b>67655,000</b></FONT></TD>
+        </TR>
+        <TR><TD></TD></TR>
+        <TR><TD>
+        <FONT SIZE=+1>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Compito<br></FONT></t></tr><tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br> TEMA 1. La nostra unit&#224; studier&#224; opportune generalizzazioni di alcune tecniche gi&#224; sviluppate per l'estrazione di varie tipologie di propriet&#224; interschema, quali ad esempio le iponimie. Verranno considerati problemi di integrazione che coinvolgono anche sorgenti di dati semi-strutturati che, grazie allo sviluppo del WEB, stanno affermandosi sempre pi&#249; come le nuove forme di memorizzazione e di scambio delle informazioni. In questo ambito, verranno progettate delle tecniche opportune per l'estrazione di propriet&#224; interschema. Si considereranno degli algoritmi per la traduzione dei dati da un modello dirappresentazione sorgente ad un modello di rappresentazione target. Collaborer&#224; alla definizione di un meta-repository che descrive le diverse tipologie di sorgenti e di relazioni intra e interschema. In particolare, verranno inserite nel meta-data repository nuove tipologie di meta-relazione e verr&#224; definita la sua architettura funzionale. Collaborer&#224; inoltre alla definizione di algoritmi per la riscrittura di interrogazioni. Sar&#224; progettato ed implementato un prototipo che implementi gli algoritmi per l'estrazione di propriet&#224; interschema, di un prototipo per la traduzione di dati e di un prototipo per gli algoritmi di query rewriting e query answering using views. <br><br>TEMA 2. La nostra unit&#224; di ricerca affronter&#224; il tema dell'interrogazione efficiente in ambiente data warehouse.  Dopo uno studio preliminare dello stato dell'arte sui data warehouse e sulle tecniche di interrogazione efficienti di basi di dati (query containment, query rewriting, ecc.), il primo obiettivo consister&#224; nella individuazione delle specificit&#224; del contesto data warehouse in cui dovranno essere risolti i problemi di efficienza delle interrogazioni. Si svilupperanno poi tecniche innovative di interrogazione in ambiente data warehouse attraverso l'estensione di tecniche preesistenti concepite per basi di dati relazionali. L'idea di base &#232; quella di sfruttare le propriet&#224; strutturali delle interrogazioni e delle viste materializzate per ottenere un'esecuzione ottimizzata. A tal fine si potrebbe sfruttare la propriet&#224; di aciclicit&#224; strutturale della query riscritta per guidare il query rewriting, rendendo in tal modo efficiente la successiva verifica di query containment. In altri termini, in presenza di pi&#249; riscritture possibili, vengono preferite quelle che generano interrogazioni con limitata ciclicit&#224;. Le informazioni necessarie per l'ottimizzazione (in particolare quelle relative alla descrizione delle viste) saranno estratte dal Meta-Data Repository. Inoltre, le scelte effettuate saranno memorizzate nel Meta-Data Repository per successivi eventuali riutilizzi. Le tecniche prodotte nella seconda fase saranno implementate a livello prototipale. Il prototipo ricever&#224; in input una interrogazione e, sulla base delle informazioni presenti nel Meta-data repository, produrr&#224; un piano di esecuzione che tende a massimizzare l'utilizzo di predicati (viste) materializzati. <br><br>TEMA 3. La nostra unit&#224; si propone di svolgere uno studio approfondito sulle sorgenti di intrattabilit&#224; computazionale di alcune varianti del problema del metaquerying al fine di identificare ulteriori casi trattabili che evidenzino un buon interesse applicativo e di progettare, implementare e sperimentare algoritmi per il riconoscimento e la risoluzione di tali casi. Verr&#224; poi progettato e realizzato un prototipo basato sugli algoritmi per il metaquerying ottenuti nella fase precedente. Tale prototipo sar&#224; infine interfacciato a basi di dati reali pre-esistenti ed i pattern di dati da esso estratti verranno valutati qualitativamente con l'aiuto di uno o pi&#249; esperti dello specifico dominio applicativo analizzato. <br>
+        </TD></TR>
+        </TABLE>
+</BODY><BR><BR>

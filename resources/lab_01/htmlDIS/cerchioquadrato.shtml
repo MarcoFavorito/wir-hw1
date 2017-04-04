@@ -1,0 +1,111 @@
+<!doctype html public "-//w3c//dtd html 4.0 transitional//en">
+<html>
+<head>
+<link href="java.css" rel="stylesheet" type="text/css">
+<title>Un cerchio oppure un quadrato</title>
+</head>
+
+<body>
+
+<h2>Un cerchio oppure un quadrato</h2>
+
+<p>
+Realizzare un applet che disegna un cerchio. In un
+angolo, vanno disegnati due rettangoli. Premendo il
+mouse nel rettangolo in alto il cerchio deve diventare
+un quadrato, mentre premendo dentro il rettangolo in
+basso deve tornare a essere un quadrato.
+
+<p>
+In pratica, il problema si risolve cos&iacute;: quando
+si preme il pulsante, si va a controllare se la posizione
+&egrave; all'interno di uno dei due rettangoli. Se lo
+&egrave;, si cancella la figura disegnata in precedenza
+e si disegna quella nuova.
+
+<p>
+Per rendere il disegno permanente, occorre che la procedura
+<tt>paint</tt> sappia se la figura corrente &egrave; un
+quadrato oppure un cerchio. Dal momento che la figura viene
+cambiata da <tt>mouseDown</tt>, serve una variabile globale.
+Usiamo quindi una variabile globale intera <tt>cerchio</tt>.
+Vogliamo che questa variabile valga 1 se la figura corrente
+&egrave; un cerchio, 0 se &egrave; un rettangolo.
+La variabile deve inizialmente valere 1 (si comincia
+con il cerchio) e poi deve venire cambiata quando si preme
+il pulsante in uno dei rettangoli. La procedura <tt>paint</tt>
+pu&ograve; usare il valore di questa variabile per capire se
+deve disegnare un quadrato oppure un cerchio.
+
+<p>
+Serve solo una ultima precisazione prima di mostrare il codice:
+in Java, l'unica istruzione per cancellare &egrave; la
+<tt>clearRect</tt>. Non esiste una istruzione <tt>clearOval</tt>.
+Per cancellare il rettangolo usiamo la <tt>clearRect</tt>, e
+questo &egrave; abbastanza chiaro. Per cancellare il cerchio
+non possiamo usare <tt>clearOval</tt>, dal momento che non
+esiste. Usiamo ancora la <tt>clearRect</tt>, cancellando una
+zona rettangolare che contiene il cerchio.
+
+<p>
+Il programma finale
+<a href="CerchioQuadrato.java">CerchioQuadrato.java</a>
+&egrave; qui sotto:<p>
+
+<pre>
+/*
+  Disegna un cerchio oppure un quadrato.
+*/
+
+import java.awt.*;
+
+public class CerchioQuadrato extends java.applet.Applet {
+  int cerchio=1;
+
+  public boolean mouseDown(Event e, int x, int y) {
+    Graphics g=getGraphics();
+    
+    if( (x>=10) && (x<=70) && (y>=10) && (y<=30) ) {
+      g.clearRect(100,100,200,200);
+
+      g.drawRect(150,150,100,100);
+
+      cerchio=0;
+    }
+
+    if( (x>=10) && (x<=70) && (y>=50) && (y<=70) ) {
+      g.clearRect(100,100,200,200);
+
+      g.drawOval(150,150,100,100);
+
+      cerchio=1;
+    }
+
+    return true;
+  }
+
+  public void paint(Graphics g) {
+    g.drawRect(10,10,60,20);
+    g.drawString("quadrato",15,25);
+
+    g.drawRect(10,50,60,20);
+    g.drawString("cerchio",15,65);
+
+    if( cerchio==1 ) {
+      g.drawOval(150,150,100,100);
+    }
+    else {
+      g.drawRect(150,150,100,100);
+    }
+  }
+}
+
+</pre>
+
+<p>
+<applet code="CerchioQuadrato.class" height="400" width="400">
+</applet>
+
+</body>
+</html>
+

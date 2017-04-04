@@ -1,0 +1,140 @@
+<HTML>
+<!-- Created with the CoffeeCup HTML Editor++ --> 
+<!--     http://www.coffeecup.com/editor      --> 
+<HEAD>
+<TITLE>Editor di ASF</TITLE>
+<STYLE>
+	A:link, A:visited {
+		text-decoration:none;
+                   	}
+</STYLE>
+</HEAD>
+<BODY BACKGROUND="backgrou.gif" BGCOLOR=white LINK=C910AD VLINK=800080>
+<TABLE WIDTH=100%>
+  <TR>
+     <TD VALIGN=top><A HREF="index.htm"><IMG SRC="home.gif" BORDER=0></A></TD>
+     <TD  VALIGN=bottom ALIGN=center><FONT FACE="Arial Black" SIZE=6>Editor di ASF</FONT></TD>
+     <TD VALIGN=top ALIGN=right><A HREF="App_main.htm"><FONT FACE="Arial Black" SIZE=2 COLOR=C910AD>Indice<BR>Applet</FONT></TD>
+  </TR>
+</TABLE>
+<P>
+<ADDRESS>Autore: Orlando Moroni</ADDRESS>
+<TABLE CELLPADDING=8>
+  <TR>
+    <TD><FONT FACE="Arial" SIZE=3>
+        Questa è un applet che raccoglie una serie di tools per operare con gli automi a stati finiti (deterministici e non) e le grammatiche regolari.
+        Innazitutto quest'applet permette di disegnare il diagramma degli stati di un automa a stati finiti, quindi
+        una volta definito l'automa, l'applet permette di 
+        fare le seguenti cose:
+        <UL>
+          <LI><B>Simulare il riconoscimento di una stringa in input e visualizzare le computazioni.</LI>
+          <LI>Passare da un ASFND all' ASF detrministico equivalente (anche in modalità step_by_step).</LI>
+          <LI>Costruire la grammatica regolare equivalente all'automa dato (anche in step_by_step).</B></LI>
+        </UL>
+        L'applet consente anche di impostare una grammatica regolare per poi:
+        <UL>
+          <LI><B>Costruire l'automa equivalente alla grammatica impostata.</B></LI>
+        </UL>
+     </TD>
+   </TR>
+  <TR> 
+    <TD>
+        <IMG SRC="pics/editor1.jpg" BORDER=3 ALIGN=left VALIGN=top HSPACE=5>     <FONT FACE="Arial" SIZE=3>
+        <BIG><U>DISEGNO DELL' AUTOMA</U></BIG>
+        <BR>Per il disegno dell'automa l'applet si comporta come i programmi commerciali per il disegno più diffusi, infatti è sufficiente premere il pulsante (con il tasto sx del mouse) riferito all'azione
+        che si vuole compiere(uno dei pulsanti nel pannello di sx dell'applet) e poi seguire le seguenti indicazioni:
+         <UL>
+           <LI> Per <B>aggiungere uno stato</B> all'automa è sufficiente premere il pulsante relativo al tipo di 
+                stato che si vuole aggiungere ( il pulsante 1 per aggiungere uno stato iniziale, il 2 per uno aggiungere uno stato iniziale e finale, il 3 per uno stato normale e il 4 per uno stato finale )
+                 e poi fare click sempre con il tasto sx del mouse sul punto della lavagna in cui si vuole inserire il nuovo stato.
+           </LI>
+         </UL>
+    </TD> 
+  </TR>   
+  <TR>
+    <TD><FONT FACE="Arial" SIZE=3>
+      <UL>
+           <LI> Per <B>aggiungere una transizione</B> è necessario premere il pulsante 5 nel pannello di sx, e fare click ( sempre con il tasto sx del mouse ) prima sullo stato sorgente e poi sullo stato destinazione della transizione. In questo modo verrà disegnata la transizione e poi verrà aperta una finestra che consente di inserire l'etichetta per la transizione. L'etichetta può essere costituita da un singolo carattere letterale o da una stringa.
+E' possibile anche inserire una nuova transizione ( cioè con una diversa etichetta ) tra due stati che sono già sorgente e destinazione di una transizione.
+            <P></LI>
+            <LI>Per <B>impostare l'etichetta di uno stato</B> è sufficiente premere il pulsante 6 e, quindi, fare click sullo stato per fare aprire la finestra di inserimento dell'etichetta.<P></LI>
+           <LI> Per <B>rimuovere uno stato</B> è invece sufficiente premere il pulsante 7 e, quindi, fare click sullo stato da rimuovere, sarà così rimosso lo stato e tutte le transizioni relative. <P></LI>
+           <LI>Infine per <B>rimuovere una transizione</B> è sufficiente premere il pulsante 8 nel pannello di sx, e poi fare click sugli stati sorgente e destinazione della transizione da rimuovere. </LI>
+      </UL>
+     Ogni stato può essere <B>spostato</B> in una diversa posizione sulla lavagna semplicemente trascinandolo con il mouse.
+<P>
+<BIG><U>IMPOSTAZIONE DELLA GRAMMATICA</U></BIG>
+<BR> Per impostare la grammatica regolare è necessario invece andare sul menu FILE e quindi scegliere l'opzione <B>"Nuova grammatica ..."</B>, in questo modo verrà aperta la seguente finestra per 
+l'inserimento della grammatica:
+<IMG SRC="pics/gramm.jpg" BORDER=3 VALIGN=top ALIGN=left HSPACE=8 VSPACE=8>
+Per inserire gli elementi dell' <B>alfabeto terminale</B> e dell' <B>alfabeto non terminale</B>  ( che possono essere costituiti da un singolo carattere letterale o da una stringa ) è necessario digitare i caratteri nelle apposite aree di testo, facendo attenzione a separare gli elementi dell'alfabeto con il carattere ";" oppure premendo il tasto "Invio" dopo l'inserimento di ogni elemento dell'alfabeto.
+<P>Nel campo di testo <B>Assioma</B> va invece inserito il carattere non terminale che rappresenta l'assioma per la grammatica.
+<P> Le <B>produzioni</B> vanno invece inserite nell'apposita area di testo, facendo particolare attenzione alle convenzioni per il loro inserimento:
+   <UL>
+     <LI> Il membro sx è separato dal membro dx della produzione dal carattere " > ".</LI>
+   </UL>
+   </TD>
+  </TR>
+  <TR>
+   <TD><FONT FACE="Arial" SIZE=3>     
+    <UL>
+     <LI> Nel membro destro della produzione è necessario separare con uno spazio il carattere terminale dal non terminale, quindi la produzione
+          A->aB va inserita come A>a B oppure A > a B.<P></LI>
+     <LI> Produzioni che hanno lo stessa parte sx possono essere raggruppate, quindi al posto di inserire le 
+          produzioni A>a B e A>b A è possibili inserire la produzione A>a B|b A .<P></LI>
+     <LI> La stringa vuota va inserita con il carattere "&", quindi una produzione tipo S>& rappresenta 
+          un epsilon-produzione. <P></LI>
+     <LI> Le produzioni vanno separate dal carattere ";" oppure premendo il tasto "Invio" dopo l'inserimento di ogni produzione.</LI>
+    </UL>
+   <P>
+    <BIG> <U>BARRA DEI MENU</U> </BIG>
+    <BR> La barra dei menu raccoglie i menu necessari per interagire con l'applet.
+        <P><IMG SRC="pics/menu.jpg" BORDER=3>
+        <UL>
+           <LI> Il menu FILE permette di definire il diagramma degli stati di un nuovo automa ( opzione <B>"Nuovo automa..."</B> ) e di inserire
+                una nuova grammatica regolare ( <B>"Nuova grammatica..."</B> ).<P></LI>
+           <LI> Il menu  IMPOSTAZIONI permette di impostare i colori dei vari oggetti disegnati dall'automa ( opzione <B>"Colori"</B> ) e di definire la dimensione
+                degli stati (<B> "Dimensione stato" </B>).<P></LI>
+           <LI> Il menu  TOOLS raccoglie le opzioni necessarie per operare con l'automa o la grammatica inserita; l'opzione <B>" To ASFD "</B> trasforma un ASFND nell'equivalente deterministico, 
+                <B>" Gram -> Aut " </B> costruisce l'automa equivalente alla grammatica inserita, mentre <B> " Aut -> Gram "</B> costruisce la grammatica regolare equivalente all'automa disegnato.<P></LI>
+           <LI> Il menu OPZIONI consente di attivare la funzione <B> " StepByStep "</B> che permette di seguire i procedimenti di costruzioni degli automi e delle grammatiche equivalenti passo dopo passo. <P></LI>      
+           <LI> Il menu SIMULA attraverso l'opzione <B> " Simula accettazione stringa " </B> consente di aprire la finestra per la simulazione del riconoscimento della stringa che sarà stata inserita.
+                Nel caso le transizioni dell'automa siano etichettate con letterali ( tipo 'a','b',... ) la stringa da riconoscere va inserita normalmente ( es. "abbab" ) senza spazi intermedi, mentre 
+               se le transizioni hanno delle stringhe per etichetta ( tipo "io", "sono", "qui" ) la stringa da riconoscere va inserita separando le parole con uno spazio ( es. "io sono qui").   </LI>
+        </UL>  
+   </TD>
+  </TR>
+</TABLE>
+<P> 
+<CENTER><FONT FACE="Arial Black" SIZE=2 COLOR=blue> Per mandare in esecuzione l'applet premi il pulsante RUN &nbsp <APPLET CODEBASE="class" CODE="ASFEditor_app.class"  WIDTH=100 HEIGHT=40 ALIGN=middle></APPLET>
+</FONT></CENTER>
+<P>
+<HR>
+<P>
+<FONT FACE="Arial Black" SIZE=2><I> Se sei interessato agli argomenti di teoria relativi ai concetti sviluppati in questa applet puoi visitare le sezioni seguenti: </I>
+</FONT>    
+<TABLE WIDTH=100%>
+ <TR>
+    <TD WIDTH=10% ALIGN=left><FONT FACE="Arial Black" SIZE=2><U>Tutorial:</U></FONT><TD>
+    <TD WIDTH=90% ALIGN=left>
+        <TABLE CELLSPACING=10 CELLPADDING=4>
+          <TR>
+            <TD ALIGN=left BGCOLOR=80FFFF><FONT FACE="Arial Black" SIZE=1><A HREF="Tut3_top.htm">Gli Automi a Stati Finiti ed i Linguaggi Regolari</A></FONT></TD>
+          </TR>
+        </TABLE>
+    </TD>
+  </TR>
+</TABLE>
+<P>
+<HR>
+<P>
+<TABLE WIDTH=100%>
+  <TR>
+     <TD VALIGN=bottom WIDTH=20%><A HREF="index.htm"><IMG SRC="home.gif" ALT=home BORDER=0></A></TD>
+     <TD WIDTH=60%><IMG SRC="backgrou.gif" BORDER=0 HEIGHT=10></TD>
+     <TD WIDTH=20%><FONT FACE="Arial Black" SIZE=2><A HREF="App_main.htm">Indice Applet</A></TD>
+  </TR>
+</TABLE>
+<FONT FACE="Verdana" SIZE=1> <CENTER>URL: www.dis.uniroma1.it/~moroni/ASFEditor_top_C3 &nbsp &nbsp Last Modified:10/03/1999</CENTER></FONT
+</BODY>
+</HTML>

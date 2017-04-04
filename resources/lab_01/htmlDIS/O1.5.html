@@ -1,0 +1,107 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+<HEAD>
+<TITLE></TITLE>
+</HEAD>
+
+<BODY TEXT="#4D1201" BGCOLOR="#BADBFF">
+
+<hr>
+
+<h1 align="center"><font color="red", size=+4> <b>Obiettivo O1.5</b>
+</font></h1>
+
+<p align="center"><font color="blue"> Progetto Strategico MIUR "Societ&agrave
+dell'Informazione" <br> <a href="../index.html">Azione A2</a>, Anno
+I</font></p>
+
+
+<hr>
+
+<h3><b>Unit&agrave coinvolte</b></h3>
+
+<ul>
+<li>ICAR-CNR, Rende (CS)
+</ul>
+
+<hr>
+
+<h3><b>Descrizione</b></h3> 
+
+L'obiettivo consiste nel definire metodi e strumenti per la definizione dell'interoperabilità di data 
+warehouse distribuiti. L'interoperabilità puo' essere definita a vari livelli nelle data warehouse, sia 
+a livello astratto con la presenza di viste materializzate oppure con la presenza di collegamenti tra le 
+varie viste che consentano ai dati di risiedere su diverse macchine. Quest'ultimo livello risulta molto 
+interessante specialmente nell'ambito del Web, dove spesso l'informazione risulta distribuita su diversi 
+siti ed è codificata seguendo formati differenti.
+Un modo di garantire l'interoperabilita' è quello di scegliere un formato comune portabile, quale ad esempio 
+XML. Tuttavia, l'uso di XML non e' sufficiente se i vari siti non sono coscienti dei collegamenti tra i dati 
+e dei modi di interagire. In questo obiettivo, si sono studiate tutte queste problematiche facendo particolare 
+leva sulla possibilita' di estendere XML per ottenere maggiore interoperabilità.  
+
+
+<hr>
+
+<h3><b>Risultati ottenuti</b></h3> 
+
+L'estensione di XML per garantire l'interoperabilità in un'architettura di data warehouse distribuite è stata 
+ottenuta con il sistema ActiveXML ([1, 2]). In ActiveXML, infatti un documento XML e' arricchito con chiamate 
+di servizi (Web Services), che possono essere considerati come delle chiamate a metodi residenti o sulla 
+stessa macchina o in remoto. Questi Web services possono essere qualunque tipo di web services e nel nostro 
+caso particolare essi possono essere specificati in un linguaggio di query dichiarativo (nella fattispecie, 
+XQuery). Ciascuna chiamata può essere interpretata come una vista sui dati (locali alla macchina o residenti 
+su un numero qualsivoglia di macchine remote). Questa vista viene materializzata quando il Web service è 
+invocato.
+Inoltre, un ulteriore livello di interoperabilità si ottiene aggiungendo dei link esterni a dati distribuiti 
+su altre macchine.  Questo consente di mantenere i link tra i vari tipi di informazione, e di distribuire il 
+carico di computazione tra le varie macchine. Inoltre, i dati possono essere anche replicati in ActiveXML in 
+modo opportuno in modo da consentire maggiore efficienza delle interrogazioni e minori problemi dovuti a 
+eventuali bottleneck di Internet. Cio' e' fondamentale nelle data warehouse distribuite in quanto molte volte 
+gli stessi dati sono utilizzati in punti opposti della rete ed è utile conservarne molte copie [1]. 
+Distribuzione e replicazione viaggiano in simbiosi in qualsivoglia framework distribuito, ma nel caso di 
+ActiveXML, la complessità è accresciuta dalla presenza di servizi che interrogano altre sorgenti e importano 
+i risultati in locale. Il tipo di architettura che viene considerata e' quella dei P2P che si sta sostituendo 
+al classico Client-Server.
+Ciascun peer allora puo' essere visto come un insieme di documenti ActiveXML, vale a dire dati e servizi, e 
+questi ultimi possono ragionevolmente essere considerati come 'viste' sugli altri peer.
+La presenza di link esterni facilita la comunicazione tra i vari peer e la distribuzione dei dati.
+
+
+
+<hr>
+
+<h3><b>Rapporti di ricerca</b></h3> 
+
+  <ul>
+ 
+  <li> Rapporto Anno 1 <a href="O1.5.ps">in PS</a>
+
+<!-- Qui inserire i rapporti di ricerca prodotti. Possono essere piu' di uno,
+per gli obbiettivi che coprono sia il primo anno che il secondo.  -->
+
+  </ul>
+
+
+<hr>
+
+
+<h3><b>Pubblicazioni</b></h3> 
+
+<ol>
+
+<li> S. Abiteboul, A. Bonifati, G. Cobena, I. Manolescu, T. Milo:<a
+href="../pub/AX1.pdf"> Dynamic XML Documents with Distribution and Replication
+</a>, Proceedings of the International Conference SIGMOD 2003, San Diego
+(California), June 2003.
+
+<li> S. Abiteboul, J. Baumgarten, A. Bonifati, G. Cobena, C. Cremarenco,
+F. Dragan, I. Manolescu, T. Milo, N.  Preda: <a href="../pub/AX2.pdf"> Managing
+Distributed Workspaces with Active XML </a>, to appear in VLDB 2003, Berlin
+(Germany).
+
+</ol>
+
+<hr>
+
+</BODY>
+</HTML>

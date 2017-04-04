@@ -1,0 +1,212 @@
+<!doctype html public "-//w3c//dtd html 4.0 transitional//en">
+<html>
+<head>
+<link href="java.css" rel="stylesheet" type="text/css">
+<title>Istruzioni che si ripetono</title>
+</head>
+
+<body>
+
+<h2>Istruzioni che si ripetono</h2>
+
+Funzioni e procedure consentono di scrivere una sola volta
+delle istruzioni che normalmente andrebbero ripetute pi&ugrave;
+volte nel programma. Un esempio &egrave; la valutazione della
+funzione di cui si vuole trovare un intervallo con uno zero
+nel programma <a href="Nullo.java">Nullo.java</a>. Nel programma
+ci sono ben cinque istruzioni che calcolano la stessa
+identica funzione <i>x<sup>2</sup>-5x-2</i>. Sarebbe comodo
+poter scrivere questa funzione una volta sola all'inizio del
+programma: a parte la semplificazione del lavoro di scrittura,
+questo riduce la probabilit&agrave; di commettere errori nella
+scrittura della funzione, e permette di modificare pi&ugrave;
+facilmente il programma se si vuole analizzare una funzione
+diversa.<p>
+
+Usare funzioni sul programma di ricerca degli zeri &egrave;
+piuttosto complicato da spiegare, dal momento che si utilizzano
+gi&agrave; tutte le caratteristiche delle funzioni. Per questa
+ragione, cominciamo con esemp&icirc; pi&ugrave; facili, e rimandiamo
+la modifica di <a href="Nullo.java">Nullo.java</a> a un momento
+successivo.<p>
+
+Supponiamo di voler modificare il programma
+<a href="Espressioni.java">Espressioni.java</a> in modo che i
+risultati delle espressioni siano separati fra di loro da una
+linea composta di asterischi, preceduta e seguita da linee vuote.
+In altre parole, vogliamo una cosa del tipo:<p>
+
+<pre>
+Risultato della prima espressione: 1.8371900826446281
+
+***********************************************************
+
+Risultato della seconda espressione: 34.460000000000001
+
+***********************************************************
+
+Risultato della terza espressione: 0.01484119916889285
+
+***********************************************************
+
+Risultato della quarta espressione: 7.0408025110778389
+</pre>
+
+Per stampare una linea vuota basta dare un comando del tipo
+<tt>System.out.println(" ")</tt>, che corrisponde a stampare
+una linea in cui c'&egrave; solo uno spazio (la linea appare
+quindi vuota). Con questo trucco, &egrave; possibile
+scrivere il programma
+<a href="EspressioniSeparate.java">EspressioniSeparate.java</a>
+che risolve il problema.<p>
+
+<pre>
+/*
+  Alcuni esempi di espressioni
+*/
+
+class EspressioniSeparate {
+  public static void main(String[] args) {
+    double a=12.23,b=0.1e+2,c;
+
+    c=(a+b)/12.1;
+    System.out.println("Risultato della prima espressione: "+c);
+
+    System.out.println(" ");
+    System.out.println("***********************************************************");
+    System.out.println(" ");
+
+    c=a*2+b;
+    System.out.println("Risultato della seconda espressione: "+c);
+
+    System.out.println(" ");
+    System.out.println("***********************************************************");
+    System.out.println(" ");
+
+    c=1/(a-1)/(b-4);
+    System.out.println("Risultato della terza espressione: "+c);
+
+    System.out.println(" ");
+    System.out.println("***********************************************************");
+    System.out.println(" ");
+
+    c=Math.sqrt(a*a - b*b);
+    System.out.println("Risultato della quarta espressione: "+c);
+  }
+}
+
+</pre>
+
+<p>
+Il programma funziona perfettamente. D'altra parte, &egrave;
+stato necessario riscrivere tre volte la stessa sequenza di
+istruzioni:<p>
+
+<pre>
+    System.out.println(" ");
+    System.out.println("***********************************************************");
+    System.out.println(" ");
+</pre>
+
+Sarebbe comodo poter evitare di ripetere la scrittura di queste
+tre istruzioni ogni volta. Le procedure servono a questo: scrivere
+una sequenza di istruzioni una volta sola, anche se poi vanno
+ripetute pi&ugrave; volte nel programma.
+In particolare, una procedura &egrave; un nome che viene
+assegnato a una sequenza di istruzioni. In questo modo, quando
+nel programma &egrave; necessario eseguire quelle istruzioni,
+si pu&ograve; utilizzare il nome invece di scrivere le istruzioni
+per esteso.<p>
+
+Per fare questo &egrave; necessario:<p>
+
+<ol>
+
+<li>dare un nome a una sequenza di istruzioni;
+
+<li>scrivere il nome al posto della sequenza nei punti del
+programma in cui vanno eseguite le istruzioni.
+
+</ol>
+
+Il passo 1, chi&egrave; la definizione di un nome a una sequenza
+di istruzioni, si chiama <i>dichiarazione di procedura</i>.
+Il formato &egrave; il seguente:<p>
+
+<pre>
+static void nome() {
+  istruzione1;
+  istruzione2;
+  ...
+}
+</pre>
+
+Le istruzioni fra parentesi graffe sono quelle che si vuole ripetere
+pi&ugrave; volte all'interno del programma. A questa sequenza viene
+assegnato il nome dato. Il nome serve a permettere di
+<i>richiamare</i> queste istruzioni: in altre parole, si usa ogni
+volta che &egrave; necessario eseguire la sequenza di istruzioni.<p>
+
+Le procedure vanno messa prima della line
+<tt>public stati void main...</tt>. Ogni volta che si vogliono
+eseguire le istruzioni che si trovano in una certa procedura, si
+scrive <tt>nome();</tt>. Scrivere il nome (che equivale a eseguire
+le istruzioni associate al nome) si dice
+<i>chiamata di procedura</i>.<p>
+
+Il programma che stampa il risultato di espressioni si pu&ograve;
+quindi riscrivere come segue:
+<a href="EspressioniSeparateProc.java">EspressioniSeparateProc.java</a>
+
+<pre>
+/*
+  Alcuni esempi di espressioni
+*/
+
+class EspressioniSeparateProc {
+  static void separa() {
+    System.out.println(" ");
+    System.out.println("***********************************************************");
+    System.out.println(" ");
+  }
+
+  public static void main(String[] args) {
+    double a=12.23,b=0.1e+2,c;
+
+    c=(a+b)/12.1;
+    System.out.println("Risultato della prima espressione: "+c);
+
+    separa();
+
+    c=a*2+b;
+    System.out.println("Risultato della seconda espressione: "+c);
+
+    separa();
+
+    c=1/(a-1)/(b-4);
+    System.out.println("Risultato della terza espressione: "+c);
+
+    separa();
+
+    c=Math.sqrt(a*a - b*b);
+    System.out.println("Risultato della quarta espressione: "+c);
+  }
+}
+
+</pre>
+
+Spiegazione riassuntiva: occorre ripetere una sequenza di tre
+istruzioni diverse volte nel codice; &egrave; quindi vantaggioso
+usare una procedura in cui si scrivono queste istruzioni una volta
+sola. La prima cosa da fare &egrave; scrivere la procedura stessa,
+ossia si scrive <tt>static void separa()</tt>, in cui ``separa''
+&egrave; il nome che si &egrave; scelto per la procedura, seguito
+dalle tre istruzioni racchiuse da
+parentesi graffe. A questo punto esiste una procedura che si 
+chiama <tt>separa()</tt>. Ogni volta che nel resto del programma
+appare la istruzione <tt>separa()</tt>, questo &egrave; equivalente
+ad eseguire le istruzioni che sono state messe nella procedura.<p>
+
+</body>
+</html>
+

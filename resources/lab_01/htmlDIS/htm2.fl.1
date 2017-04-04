@@ -1,0 +1,114 @@
+/*
+ * Analizzatore lessicale per miniHTML, versione 2
+ * (da usare insieme all'analizzatore sintattico realizzato con BISON
+ *  a partire da htm2.y).
+ *
+ * Sequenza di comandi per generare il parser:
+ *
+ *     flex htm2.fl
+ *     bison -d htm2.y
+ *     PER DOS/WINDOWS: gcc lexyy.c htm2_tab.c -lfl -o mini2
+ *     PER LINUX/UNIX: gcc lex.yy.c htm2.tab.c -lfl -o mini2
+ *
+ * Richiamare il parser tramite il comando:
+ *
+ *     mini2 < nomefileinput
+ *
+ * oppure ridirigendo l'output su un file:
+ *
+ *     mini2 < nomefileinput > nomefileoutput
+ */
+
+
+%{
+ #include <string.h>
+ #include <stdlib.h>
+ #include "htm2_tab.h" /* PER LINUX/UNIX: cambiare in questa include il
+                          nome del file in htm2.tab.h */
+%}
+
+delim ([ \t\n])+
+integer ("+"|"-")?[0-9]+
+
+%x PARAM
+%x VALUE
+
+%%
+
+<INITIAL>"<html>"	{return(Shtml); }
+<INITIAL>"</html>"	{return(Ehtml);}
+<INITIAL>"<head>"	{return(Shead);}
+<INITIAL>"</head>"	{return(Ehead);}
+<INITIAL>"</body>"	{return(Ebody);}
+<INITIAL>"<title>"	{return(Stitle);}
+<INITIAL>"</title>"	{return(Etitle);}
+<INITIAL>"<ol>"	{return(Sol);}
+<INITIAL>"</ol>"	{return(Eol);}
+<INITIAL>"<ul>"	{return(Sul);}
+<INITIAL>"</ul>"	{return(Eul);}
+<INITIAL>"<li>"	{return(Sli);}
+<INITIAL>"</li>"	{return(Eli);}
+<INITIAL>"<h1>"	{return(Sh1);}
+<INITIAL>"</h1>"	{return(Eh1);}
+<INITIAL>"<h2>"	{return(Sh2);}
+<INITIAL>"</h2>"	{return(Eh2);}
+<INITIAL>"<h3>"	{return(Sh3);}
+<INITIAL>"</h3>"	{return(Eh3);}
+<INITIAL>"<h4>"	{return(Sh4);}
+<INITIAL>"</h4>"	{return(Eh4);}
+<INITIAL>"<h5>"	{return(Sh5);}
+<INITIAL>"</h5>"	{return(Eh5);}
+<INITIAL>"<h6>"	{return(Sh6);}
+<INITIAL>"</h6>"	{return(Eh6);}
+<INITIAL>"<em>"	{return(Sem);}
+<INITIAL>"</em>"	{return(Eem);}
+<INITIAL>"<center>"	{return(Scenter);}
+<INITIAL>"</center>"	{return(Ecenter);}
+<INITIAL>"<code>"	{return(Scode);}
+<INITIAL>"</code>"	{return(Ecode);}
+<INITIAL>"<b>"	{return(Sb);}
+<INITIAL>"</b>"	{return(Eb);}
+<INITIAL>"<i>"	{return(Si);}
+<INITIAL>"</i>"	{return(Ei);}
+<INITIAL>"<dd>"	{return(Sdd);}
+<INITIAL>"</dd>"        {return(Edd);}
+<INITIAL>"<br>"	{return(Br);}
+<INITIAL>"<p>"	{return(Sp);}
+
+<INITIAL>"<meta"	{BEGIN(PARAM);return(Smeta);}
+<INITIAL>"<body"	{BEGIN(PARAM);return(Sbody);}
+<INITIAL>"<font"	{BEGIN(PARAM);return(Sfont);}
+<INITIAL>"<a"		{BEGIN(PARAM);return(Sanch);}
+<INITIAL>"<hr"	        {BEGIN(PARAM);return(Hr);}
+
+<INITIAL>"</font>"	{return(Efont);}
+<INITIAL>"</a>"		{return(Eanch);}
+
+<PARAM>{delim}
+<PARAM>"content"	{return(Acontent);}
+<PARAM>("name"|"NAME")		{return(Aname);}
+<PARAM>"text"		{return(Atext);}
+<PARAM>"link"		{return(Alink);}
+<PARAM>"alink"		{return(Aalink);}
+<PARAM>"vlink"		{return(Avlink);}
+<PARAM>"bgcolor"       	{return(Abgcolor);}
+<PARAM>"href"		{return(Ahref);}
+<PARAM>"size"		{return(Asize);}
+<PARAM>"face"		{return(Aface);}
+<PARAM>"http-equiv"	{return(Ahttpequiv);}
+<PARAM>("width"|"WIDTH")  {return(Awidth);}
+<PARAM>"="	{BEGIN(VALUE);return(Equal); }
+<PARAM>">"	{BEGIN(INITIAL);return(Endtag); }
+
+<VALUE>{delim}
+<VALUE>\"([^\"])*\"	{BEGIN(PARAM);return(String);}
+<VALUE>{integer}        {BEGIN(PARAM);return(Integer);}
+
+<INITIAL>{delim}
+<INITIAL>[^\<\>]+		{strcpy(yylval.stringa,yytext);return(Text);}
+<INITIAL>"<!"[^\>]*">"		
+
+
+%%
+
+

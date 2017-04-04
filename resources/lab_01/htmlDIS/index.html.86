@@ -1,0 +1,268 @@
+<html>
+<head>
+<title>Introduzione a Cloudscape 5.0 ed all'ambiente Cloudview</title>
+</head>
+
+<center> <h1>Introduzione a Cloudscape 5.0 ed all'ambiente Cloudview</h1>
+</center>
+
+<hr>
+<b><font size="5" color="#FF0000">Avvertenza: </font></b><font size="3"><b>E`
+stata rilasciata da IBM la nuova versione di Cloudscape (Cloudscape 5.1). I link
+indicati nel seguito fanno ora riferimento alla versione 5.1</b>. Inoltre, sul
+sito della IBM non e` piu` disponibile la versione 5.0. Comunque, le operazioni
+di installazione di Clouscape e di avvio dell'ambiente Cview sono analoghe per
+entrambe le versioni di Cloudscape, per cui <b>la procedura da seguire in
+entrambi i casi resta quella indicata in questa guida (se non e` esplicitamente
+indicato diversamente)</b>. Inoltre, non ci sono variazioni di rilievo fra le
+due versioni. La seguente guida e` quindi da considerarsi valida per entrambe le
+versioni.&nbsp;</font>
+
+<hr>
+
+<h3>
+<img SRC="logo.gif" >
+
+</h3>
+
+<h3>Indice</h3>
+<ol>
+  <li><a href="#intro">Nota introduttiva</a></li> 
+  <li><a href="#inst">Guida all'installazione</a></li>
+  <li><a href="#cview">Guida all'uso dell'ambiente Cloudview</a></li>  
+  <li><a href="#uninst">Disinstallazione</a></li>  
+  <li><a href="#limit">Sintassi e costrutti SQL introdotti nel corso ma non supportati da Cloudview</a></li> 
+  <li><a href="#note">Note e suggerimenti</a></li>  
+ 
+</ol>
+<hr>
+
+
+<h3><a name="intro">1. Nota introduttiva</a></h3>
+
+<p>Cloudscape 5.0 &egrave; un DataBase Management System (DBMS) scritto completamente in Java, sviluppato e distribuito dalla IBM. Nella sua versione attuale, oltre al DBMS, la <i>Cloudscape Enterprise Solution Suite</i> offre diversi componenti: <i>Cloudsync</i>, sistema avanzato per la sincronizzazione delle applicazioni, <i>Cloudconnector</i>, framework server per le connessioni JDBC ed Internet con il DBMS Cloudscape, e <i> Cloudscape ODBC Bridge</i>,  componente che consente alle applicazioni Open DataBase Connectivity di connettersi alle basi di dati gestite da Cloudscape. Inoltre, offre strumenti aggiuntivi di supporto, come <i>Cloudview</i>, interfaccia grafica utente che &egrave; utilizzata per creare, gestire e manipolare applicazioni di basi di dati realizzate con Cloudscape.</p>
+
+<p>In questo corso utilizziamo esclusivamente il DBMS Cloudscape tramite l'interfaccia Cloudview, per cui in questo documento descriviamo solo la modalit&agrave; di installazione del DBMS e le funzionalit&agrave; principali di Cloudview. Per maggiori informazioni su tutta la suite Cloudscape, e per una descrizione pi&ugrave; dettagliata del DBMS e dell'interfaccia Cloudview si consulti la documentazione in linea fornita dalla IBM alla pagina web <a href="http://www-3.ibm.com/software/data/cloudscape/pubs/collateral.html"><u>http://www-3.ibm.com/software/data/cloudscape/pubs/collateral.html</u></a>.</p>
+
+<p>Dallo stesso sito &egrave; possibile scaricare una versione dimostrativa di Informix Cloudscape 5.0 utilizzabile per 60 giorni collegandosi alla pagina
+<a href="http://www14.software.ibm.com/webapp/download/search.jsp?go=y&rs=cloudscape"><u>http://www14.software.ibm.com/webapp/download/search.jsp?go=y&amp;rs=cloudscape</u></a> Prima di scaricare Cloudscape &egrave; necessario effettuare la propria <a href="https://www6.software.ibm.com/dl/cloudscape/cloudscape-r?S_PKG=dl_java_ww&S_ACTION=new&S_CMP=&S_TACT=&addsw="><u>registrazione</u></a>.</p>
+
+
+
+<h3><a name="inst">2. Guida all'installazione di cloudscape</a></h3>
+
+<p>Per eseguire il software Cloudscape &egrave; necessario installare precedentemente Java 2 Runtime Environment Standard Edition (J2SE), (disponibile nella versione 1.4.1 sul sito <a href="http://java.sun.com/j2se/downloads.html"><u>java.sun.com</u></a>). &Egrave; sufficiente installare il JRE (circa 10 MB), ma se siete interessati a tutto il Java Development Kit (comprensivo di documentazione) dovete fare il download dell'intero SDK (circa 36 MB) ). Per eseguire Cloudview &egrave; raccomandata la versione 1.3.0 (o successiva).</p> 
+
+<p>Una volta eseguita l'installazione di JRE (o JDK) settate opportunamente <a href="./VariabiliAmbiente.html"><u>la variabile di ambiente PATH</u></a>.</p> 
+
+<p>Per installare Cloudscape procedete come segue:
+
+<!-- 
+<li>Installare una JVM 1.1.8 o successiva. Dal momento che per eseguire Cloudview &egrave; raccomandata l'installazione di JDK 1.3 (o successivo)  ;</li>
+<li>Settare opportunamente la variabile di ambiente PATH per la JVM;</li>
+-->
+
+<ol>
+<li>Scaricate il file <tt>cloudscape504-eval.zip</tt> come indicato nella nota introduttiva;</li>
+<li>Scompattate il file in una cartella di appoggio, ad esempio <tt>c:\temp</tt>;</li>
+<li>Da riga di comando posizionatevi nella cartella <tt>temp</tt> ed eseguite il comando <tt>java run</tt> per avviare la procedura di installazione;<br>
+  <b>Per la versione 5.1 digitate java -jar cloudscape_eval_513.jar</b></li>
+<li>Installate Cloudscape nella cartella <tt>c:\programmi\cloudscape_5.0</tt>;<br>
+  <b>Per la versione 5.1 installate Cloudscape nella cartella <tt>c:\Cloudscape_5.1</tt>;</b></li>
+<li><p>Settate la variabile d'ambiente DB2J_INSTALL ed il CLASSPATH come indicato di seguito:</p>
+
+<p>Per ambiente Windows
+
+<pre>
+set DB2J_INSTALL=C:\Programmi\cloudscape_5.0 (per la versione 5.0)
+set DB2J_INSTALL=C:\Cloudscape_5.1 <b>(Per la versione 5.1) </b></pre>
+
+<pre>set CLASSPATH=%DB2J_INSTALL%\lib\db2j.jar;%DB2J_INSTALL%\lib\db2jtools.jar;%DB2J_INSTALL%\lib\db2jcview.jar;%DB2J_INSTALL%\lib\jh.jar;%DB2J_INSTALL%\lib\license.jar;%CLASSPATH%
+
+Per ambiente Linux/Unix</pre>
+
+<pre>
+DB2J_INSTALL=C:\Programmi\cloudscape_5.0 (per la versione 5.0)
+DB2J_INSTALL=C:\Cloudscape_5.1 <b>(Per la versione 5.1) </b>
+
+export CLASSPATH=${DB2J_INSTALL}/lib/db2j.jar:${DB2J_INSTALL}/lib/db2jtools.jar:${DB2J_INSTALL}/lib/db2jcview.jar:${DB2J_INSTALL}/lib/jh.jar:${DB2J_INSTALL}/lib/license.jar:${CLASSPATH}
+
+</pre>
+
+<p> &Egrave; possiblile settare le variabili d'ambiente in maniera "permanente" nel vostro sistema, in modo da non doverlo fare ad ogni utilizzo del DBMS e dell'ambiente Cloudview. Per settare DB2J_INSTALL e CLASSPATH procedete analogamente a quanto fatto per la variabile di ambiente PATH dopo l'insatallazione di JRE.</p>
+<p><b>Alternativamente</b> potete utilizzare uno dei due script <tt>c:\programmi\cloudscape_5.0\bin\setEmbeddedCP.bat
+<b>(C:\Cloudscape_5.1\frameworks\embedded\bin\</b></tt><b><tt>setEmbeddedCP.bat</tt></b> <tt><b>
+per la versione 5.1</b>)</tt>, relativo all'ambiente Windows NT/2000/98, e <tt>c:\programmi\cloudscape_5.0\bin\setEmbeddedCP.ksh
+(<b>C:\Cloudscape_5.1\frameworks\embedded\bin\</b></tt><b><tt>setEmbeddedCP.ksh</tt></b> <tt><b>
+per la versione 5.1</b>)</tt>, relativo all'ambiente Linux/Unix. Lanciate questo file da riga di comando ogni volta che volete utilizzare Cloudview (quindi aprite un prompt dei comandi e posizionatevi da riga di comando in <tt>c:\programmi\cloudscape_5.0\bin</tt> 
+(<tt><b>C:\Cloudscape_5.1\frameworks\embedded\bin per la versione 5.1</b></tt>) e digitate <tt>setEmbeddedCP</tt> seguito da invio), e successivamente, nella stessa finestra e dalla stessa posizione, digitate <tt>cview</tt> seguito da invio per lanciare Cloudview (vedere anche il paragrafo successivo).</p>
+
+  <p><b>Nota: </b>Gli script <tt>setEmbeddedCP.bat</tt> e <tt>setEmbeddedCP.ksh</tt> potrebbero richiedere delle modifiche per funzionare correttamente in ambiente Windows o Unix se Cloudscape non &egrave; stato installato nella cartella
+  <tt>c:\programmi\cloudscape_5.0 (<b>C:\Cloudscape_5.1 sper la versione 5.1</b>)</tt>. Per ulteriori indicazioni su questo aspetto consultare il paragrafo 2 del documento <a href="./start.pdf"><u>getting started with Cloudscape</u></a></p></li>
+</ol>
+
+
+<h3><a name="cview">3. Guida all'uso dell'ambiente Cloudview</a></h3>
+
+<img SRC="open.gif" >
+
+<p>Cloudview &egrave; un tool grafico che consente di creare e gestire basi di dati con Cloudscape. In particolare, Cloudview consente di eseguire le seguenti operazioni:
+<ul>
+<li>creare ed accedere a basi di dati;</li>
+<li>definire propriet&agrave; di basi di dati</li>
+<li>creare e manipolare tabelle;</li>
+<li>creare e manipolare indici;</li>
+<li>specificare domini di SQL-92 e tipi di dato Java;</li>
+<li>eseguire comandi SQL interattivamente o richiamadoli da file.</li>
+</ul>
+
+<p>Per eseguire Cloudview utilizzate il seguente comando di linea</p> 
+
+<p><tt>java -ms32M -mx32M com.ibm.db2j.tools.cview [databaseName]</tt></p>
+
+<p>databaseName  &egrave; una lista di basi di dati a cui connettersi (indicare il percorso completo della cartella in cui &egrave; memorizzato ciascuna base di dati. Separare con uno spazio i vari percorsi). Ad esempio</p>
+
+<p><tt><a align="center">java -ms32M -mx32M com.ibm.db2j.tools.cview c:\database_1 c:\database_2</a></tt></p>
+
+<p><b>Alternativamente</b> potete utilizzare il file <tt>cview.bat</tt> (o <tt>cview.ksh</tt> se lavorate in ambiente Unix/Linux) che trovate nella cartella <tt>c:\programmi\cloudscape_5.0\bin
+</tt>(<b>o nella cartella</b> <b><tt>C:\Cloudscape_5.1\frameworks\embedded\bin
+per la versione 5.1</tt></b>) . Se le variabili d'ambiente sono state settate in maniera permanente nel sistema &egrave; sufficiente cliccare due volte sul file <tt>cview.bat</tt> per lanciare Cloudview. 
+
+Altrimenti &egrave; necessario prima lanciare <tt>setEmbeddedCP.bat</tt> dalla stessa finestra dei comandi, semplicemente eseguendo il comando <tt>setEmbeddedCP</tt> dalla posizione <tt>c:\programmi\cloudscape_5.0\bin</tt>&nbsp;
+(<b>o dalla posizione</b> <b><tt>C:\Cloudscape_5.1\frameworks\embedded\bin per
+la versione 5.1</tt></b>) (vedi paragrafo precedente), e successivamente eseguire il comando <tt>cview</tt>.</p>
+
+<p>Se volete procedere come fatto in laboratorio (ambiente Windows), create un file batch (semplice file di testo con estensione <tt>.bat</tt>, realizzabile ad esempio da Notepad), chiamato ad esempio <tt>avvio.bat</tt>, e salvatelo  nella cartella <tt>c:\programmi\cloudscape_5.0\bin
+(</tt><b>o nella cartella</b> <b><tt>C:\Cloudscape_5.1\frameworks\embedded\bin
+per la versione 5.1</tt></b>). In questo file deve scrivere semplicemente
+
+<pre>
+call setEmbeddedCP
+call Cview
+</pre>
+
+e niente altro. A questo punto ogni volta che vorrete usare Cloudview potrete semplicemente cliccare due volte su questo file.
+
+Se infine volete avviare Cloudview dal Desktop, create un collegamento ad <tt>avvio.bat</tt> (selezionando <tt>avvio.bat</tt> con il
+tasto destro del mouse) e trascinate questo collegamento sul desktop. Cliccando semplicemente sul collegamento potete lanciare Cloudview.
+
+
+<p>All'avvio di Cloudview, viene visualizzata la finestra principale, chiamata <i>Cview Window</i>, da cui &egrave; possibile specificare ulteriori connessioni a basi di dati per la sessione di Cloudview in corso, ed effettuare tutte le operazioni di manipolazione delle basi di dati connesse.</p>
+
+<p>La Cview Window contiene un <i>Navigation Panel</i> (sinistra) ed un <i>Edit Panel</i> (destra).</p> 
+<ul>
+<li>Il Navigation Panel mostra le basi di dati connesse ed il loro contenuto.</li>
+<li>Il contenuto dell'Edit Panel cambia in base alla selezione effettuata nel Navigation Panel.</li>
+</ul>
+
+<p>Ad ogni sessione Cloudview crea un file called <tt>SysVisual.LOG</tt> nella cartella da cui Cloudview &egrave; stato avviato. Questo file contiene messaggi riguardo la sessione di Cloudview che forniscono supporto tecnico nel caso si verifichino problemi durante l'uso di Cloudview.</p>
+
+<p>Nella stessa cartella, Cloudview crea un file chiamato <tt>SysVisual.properties</tt> che contiene informazioni riguardanti  i driver caricati durante la sessione di lavoro, le basi di dati connesse, e cos&igrave; via. &Egrave possibile rimuovere questo file per ripristinare le configurazioni di default, ma &egrave; bene non modificarlo.</p>
+
+<p>Nel seguito descriviamo brevemente le principali funzionalit&agrave; offerte da Cloudview. Per avere informazioni pi&ugrave; dettagliate su come utilizzare Cloudview e su tutte le sue funzioni &egrave; possibile consultare l'help in linea di Cloudview, selezionando la voce <tt>Cview help</tt> dal men&ugrave; <tt>help</tt> della Cview Window.</p>
+
+
+<ol>
+<li><b>Creare una base di dati</b>
+
+<p>Selezionare il comando <tt>New Database</tt> dal men&ugrave; file. Specificare il nome della base di dati da creare, ad esempio <tt>MyDatabase</tt>, e selezionare il tasto <tt>OK</tt>: Cloudview creer&agrave; la cartella <tt>MyDatabase</tt> nella posizione da cui &egrave; stato avviato.  utilizzare il tasto <tt>Directory</tt> per specificare un percorso diverso. </p></li>
+
+<li><b>Connettersi ad una base di dati</b>
+
+<p>&Egrave; possibile procedere da riga di comando come indicato precedentemente, oppure utilizzare il comando <tt>Open</tt> del men&ugrave; <tt>File</tt>. &Egrave; possibile connettersi a diverse basi di dati. Tutte le basi di dati connesse sono mostrate nel Navigation Panel.</p></li>
+
+<li><b>Eseguire codice SQL</b>
+
+<p>Per scrivere le istruzioni SQL in Cloudview, selezionare nel Navigation Panel l'icona relativa alla base di dati a cui queste si riferiscono, ed editare nell'area di testo della scheda contraddistinta dall'etichetta <tt>Database</tt> (chiamata <i>SQL Window</i>). Selezionare il bottone <tt>Execute</tt> della SQL Window (primo bottone da sinistra) per eseguire il codice scritto. Questa funzionalit&agrave; consente di eseguire codice SQL per creare e modificare tabelle, eseguire inserimenti e cancellazioni di dati, eseguire interrogazioni. In questo caso i risultati delle interrogazioni verranno mostrati nella parte inferiore della SQL Window. Per ogni comando eseguito con successo la barra di stato mostra un messaggio relativo all'operazione effettuata. Nel caso Cloudview abbia riscontrato dei problemi durante l'esecuzione, un messaggio di errore viene visualizzato in una apposita finestra di errore.</p>
+
+<p>Nel caso in cui si voglia eseguire codice SQL precedentemente scritto in un file di testo, &egrave; possibile aprire il file attraverso il bottone <tt>Script</tt> della SQL Window (terzo bottone da sinistra), ed eseguire il codice come indicato precedentemente.</p></li> 
+
+<p>&Egrave; bene notare che Cloudview esegue i comandi SQL in modalit&agrave; auto-commit, per cui tutti i cambiamenti sullo schema della base di dati o sui dati vengono effettuati direttamente.</p>
+
+
+<li><b>Esportare risultati di interrogazioni</b>
+
+<p> Una volta eseguite le interrogazioni &egrave; possibile esportare i risultati attraverso il tasto <tt>export</tt>. Una volta indicato il nome del file in cui esportare i dati e cliccato sul tasto <tt>save</tt>, &egrave; possibile operare alcune scelte sulla formattazione del testo esportato, come ad esempio indicare il carattere con cui separare i valori esportati (<tt>Separator</tt>), o se racchiudere (o meno) i valori fra apici\virgolette (<tt>Quote</tt>), oppure se esportare anche il nome delle colonne restituite dall'interrogazione (<tt>Column Definition</tt> nella scheda <tt>Advanced</tt>). </p></li> 
+
+
+<li><b>Disconnettere una base di dati</b>
+
+<p>Per disconnettere semplicemente Cloudview da una base di dati, selezionare la base di dati nel Navigation Panel ed utilizzare il comando <tt>Close</tt> del men&ugrave; <tt>File</tt>. Per disattivare la base di dati, selezionare il comando <tt>Shutdown Database</tt> dal men&ugrave; che viene visualizzato cliccando nel Navigation Panel con il tasto destro sulla base di dati da disattivare. Notiamo che solo nel secondo caso Cloudscape effettua un controllo finale sulla base di dati, e che un'altra VM non pu&ograve; avere accesso alla base di dati se questa non viene disattivata.</p></li>
+
+<li><b>Cancellare una base di dati</b>
+
+<p>Non &egrave; possibile cancellare una base di dati all'interno dell'ambiente Cview. Per cancellare la base
+di dati &egrave; sufficiente cancellare la cartella che la contiene attraverso i comandi del sistema operativo. ricordiamo che la cartella ha lo stesso nome della base di dati.</p></li>
+
+</ol>
+
+<h3><a name="uninst">4. Disinstallazione</a></h3>
+
+<p>Per disinstallare Cloudscape e l'ambiente Cloudview &egrave; sufficiente cancellare la cartella <tt>c:\programmi\Cloudscape_5.0</tt>.
+Attenzione a non cancellare le basi di dati create in precedenza, nel caso in cui queste siano 
+memorizzate nella cartella che contiene cloudscape (di default Cloudview salva le basi di dati in
+c:\programmi\cloudscape_5.0\bin). Ricordiamo che &egrave; buona norma mantenere tutte le basi di dati create in una cartella separata.</p>
+<p>Una volta disinstallato il progrmma &egrave possibile eseguire una nuova installazione procedendo come descritto al punto 2.</p>
+
+<h3><a name="limit">5. Sintassi e costrutti SQL introdotti nel corso ma non supportati da Cloudview</a></h3>
+
+<ol>
+<li>Non &egrave; supportata la creazione di domini. In alternativa, quando possibile, si consiglia di utilizzare il costrutto 
+<tt>check</tt> all'interno della definizione della tabella in cui si dichiarano attributi del dominio voluto.
+
+<li>Non &egrave supportata la specifica di query annidate che non siano unarie (cio&egrave; che abbiano pi&ugrave; 
+di un attributo nella select).
+
+<li>Gli operatori insiemistici EXCEPT (MINUS) ed INTERSECT non sono supportati</li>
+
+<li>Nelle query annidate l'uso di * &egrave ammesso solo in presenza dei costrutti EXISTS e NOT EXISTS.
+
+<li>L'uso di ORDER BY non &egrave supportato all'interno di viste.
+
+<li><b>Non &egrave; possibile specificare asserzioni</b>. 
+
+<li><b>Non &egrave; possibile utilizzare sub-query nella clausola check</b>.
+
+
+<li><b>Non sono supportate le transazioni</b>.
+
+<li>Non sono supportati i domini <tt>blob</tt>, <tt>clob</tt> e gli intervalli temporali</tt>.
+
+</ol>
+
+
+<h3><a name="note">6. Note e suggerimenti</a></h3>
+
+<ol>
+<li><p>AVVIO DI CLOUDVIEW:</p>
+Il modo pi&ugrave; semplice &egrave;  agire da riga di comando
+<ol>
+<li> Da una finestra DOS posizionatevi in c:\programmi\cloudscape_5.0\bin (<b>o
+  in</b> <b><tt>C:\Cloudscape_5.1\frameworks\embedded\bin per la versione 5.1</tt></b>) 
+<li> Digitate setembeddedcp seguito da invio (in questo modo si settano le variabili di ambiente)
+<li> Digitate cview seguito da invio
+</ol>
+<br>
+
+<li>Nel caso in cui Cloudview non consenta pi&ugrave; di aprire o creare alcuna base di dati, controllate la data di 
+scadenza della licenza di prova: selezionate <tt>System</tt> nel Browse Panel e successivamente nell' Edit Panel selezionate la scheda 
+<tt>Information</tt>; il valore del parametro <tt>db2j.local.license.expiration.date</tt> contenuto in questa scheda indica la data di scadenza della licenza. 
+Se il periodo coperto da licenza &egrave; terminato disinstallate Cloudscape e l'ambiente Cloudview come indicato al punto 4. 
+Si ricorda che una volta disinstallato, Cloudscape pu&ograve; essere installato di nuovo in qualsiasi momento.
+
+<li>Vincoli sullo schema in Cloudscape:
+
+<ul>
+<li> Attraverso Cloudscape non &egrave; possibile specificare inclusioni e disgiunzioni sullo schema 
+dato che non sono supportate le assertion (punto 6 del paragrafo 5) n&eacute; i check con subquery (punto 7 del paragrafo 5).
+Per lo svolgimento del progettino da presentare all'esame &egrave; sufficiente (e necessario) che tali  vincoli 
+siano specificati (in notazione insiemistica e non necessariamente in SQL) nel documento consegnato, anche se non &egrave; stato possibile implementarli tramite Cloudview.
+<li> Inoltre, &egrave; bene non specificare vincoli di foreign key che producano cicli. In questo caso, infatti, non sarebbe possibile popolare la base di dati dal momento 
+che le transazioni non sono supportate in Cloudscape (punto 7 del paragrafo 5).
+</ul>
+
+<li>Il formato per il tipo <tt>date</tt> &egrave; <tt>yyyy-mm-dd</tt> 
+
+</ol>
+
+</html>

@@ -1,0 +1,763 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 3.0//EN">
+<!--Converted with LaTeX2HTML 96.1 (Feb 5, 1996) by Nikos Drakos (nikos@cbl.leeds.ac.uk), CBLU, University of Leeds -->
+<HTML>
+<HEAD>
+<TITLE>om</TITLE>
+<META NAME="description" CONTENT="om">
+<META NAME="keywords" CONTENT="main">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+</HEAD>
+<BODY LANG="EN">
+<P>
+<H1 ALIGN=CENTER>Accessing the Web: Exploiting the Data Base Paradigm</H1>
+<P ALIGN=CENTER><STRONG>Tiziana Catarci, Luca Iocchi, Daniele Nardi,
+Giuseppe Santucci<BR> 
+Dipartimento di Informatica e Sistemistica <BR> 
+Universit&#224; di Roma ``La Sapienza''<BR> 
+Via Salaria 113, 00198 Roma, Italy<BR> 
+{catarci,iocchi,nardi,santucci}@dis.uniroma1.it
+</STRONG></P><P>
+<P ALIGN=CENTER><STRONG></STRONG></P><P>
+<P>
+<H3 CLASS=ABSTRACT>Abstract:</H3>
+<P CLASS=ABSTRACT>The open growth of the Internet, the amount of available information, 
+and the typical access modality (i.e., browsing) cause the puzzled 
+user to search for the information of interest in a labyrinth of 
+links.Web-at-a-Glance (WAG) is a system aiming to allow the user to 
+query (instead of browsing) the Web. The basic idea is to build, once 
+the user has specified a generic domain of interest, the domain 
+conceptual representation, to instantiate it with data extracted from 
+Web sites (so to build a materialized view over the Web), and to query 
+such a conceptual representation through an easy-to-use visual 
+interface.  Knowledge representation techniques are used for both the 
+internal modeling of the conceptual representation and for supporting 
+the automatic extraction of data from Web sites to feed the 
+materialized view. 
+</P><P>
+<H1><A NAME="SECTION00010000000000000000">Introduction</A></H1>
+<P>
+The WWW is undoubtly a great source of disparate information.  This 
+implies that information surfers could have a lot of fun while 
+browsing diverse sites, finding a rainbow of unexpected data.  
+However, what about information seekers, i.e., those who are searching 
+for specific information?  They have a real hard time in finding the 
+data of their interest, following the billions of links of the 
+Internet labyrinth and/or checking the thousands of references 
+returned by search engines [<A HREF="main.html#Cat97">1</A>].  They would probably prefer just 
+&quot;querying&quot; the Web, specifying what they want and do not care about 
+the paths to be followed for reaching the information of interest.
+<P>
+Web-At-a-Glance (WAG)  [<A HREF="main.html#coopis">2</A>] is a system
+thought for such users, since it
+enables them to query (instead of browsing) the Web.  WAG performs 
+this ambitious task by first constructing personalized databases, 
+containing the information pertinent to the user's interests which are 
+relevant for specific domains.  The system semi-automatically gleans 
+such information from a Web site or several Web sites, stores it into 
+the databases, cooperatively designed with the user, and allows 
+her/him to query such databases through a visual interface equipped 
+with a powerful multimedia query language.
+<P>
+In order to achieve its aims, WAG exploits a suitable integration of
+ideas and techniques coming from both the database and the knowledge 
+representation areas and it is based on three key issues:
+<OL><LI> the building of a conceptual representation for any domain of 
+interest, which is populated with data extracted from the Web, so to 
+constitute a fully materialized view;<LI> the availability of a visual interface to easily query such a 
+materialized view [<A HREF="main.html#CCCLS96">3</A>];<LI> the adoption of both an internal modeling of the information 
+and several acquisition mechanisms based on Description Logics 
+[<A HREF="main.html#BBMR89">4</A>].
+</OL>
+<P>
+There are other approaches (see Section 2) sharing similar objectives
+with WAG. However, WAG differs from all of them mainly because,
+instead of requiring an explicit description of the sources, it 
+attempts to
+semi-automatically classify the information gathered from various 
+sites based on
+the conceptual model of the domain of interest.
+<P>
+The paper is organized as follows. First, we present a classification 
+and a comparison
+of diverse systems whose common goal is to access 
+information residing on the WWW. Then, we describe the architecture 
+and the main modules of the WAG system.
+We conclude by briefly commenting on some preliminary experiments done with the 
+prototype.
+<P>
+<H1><A NAME="SECTION00020000000000000000">Web Information Access Systems</A></H1>
+<P>
+The huge amount and heterogeneity of Web data makes it 
+extremely difficult to organize them under a coherent and uniform 
+structure. As a consequence,  
+it is more difficult than usual (i.e., when accessing archives, 
+databases, etc.)
+to locate the information of interest. 
+Actually, there are some attempts towards establishing a general 
+agreement among
+the information sources on the WWW, but they appear to be quite far 
+from the 
+fulfillment. 
+More promising seems to be the development of a variety of tools 
+aiming at 
+helping the user in her/his information search.
+<P>
+<P><A NAME="40">&#160;</A><A NAME="class">&#160;</A> <IMG WIDTH=276 HEIGHT=233 ALIGN=BOTTOM ALT="figure16" SRC="img1.gif"  > <BR>
+<STRONG>Figure 1:</STRONG> <EM>Classification of current approaches</EM><BR>
+<P>
+<P>
+Such tools can be classified as in Figure <A HREF="main.html#class">1</A> which shows the
+ various classes, how they are hierarchically organized, and, for
+ each class, its discriminant characteristics. 
+First of all, systems are divided into so-called surfers and
+hunters. The  former class comprises browsing systems which 
+facilitate the user during
+the navigation, 
+based on the user model they incrementally build (e.g., 
+[<A HREF="main.html#Arms95">5</A>, <A HREF="main.html#Lieb95">6</A>]). 
+Such systems are often based on ad-hoc mechanisms, depending on the 
+particular 
+application domain, and do not offer a significant help in locating 
+the 
+information, instead they speed the analysis process once a set of 
+sources or html links has been found. 
+Hunters provide the user with different kinds of query facilities to 
+access the Web data. They may be further refined into two subclasses: 
+information 
+brokers and global information management systems (GIMSs). 
+Information brokers 
+(e.g., [<A HREF="main.html#PerkDoor96">7</A>, <A HREF="main.html#BF">8</A>]) are devoted to the semi-automatic 
+extraction of
+information for specific predefined application domains. 
+GIMSs try to generalize this 
+approach by 
+removing the constraint on the single application domain. 
+Thus, their ultimate goal is to treat disparate heterogeneous 
+information 
+sources inside a single global structure, allowing the user to just 
+ask queries 
+in order to retrieve the information of interest. Popular 
+keyword-based search 
+engines can be considered as GIMSs, where documents are characterized 
+using feature-based representations.
+Such representations make it easy to automatically classify 
+documents, 
+but offer very limited capabilities for retrieving the information of 
+interest. 
+More advanced GIMSs typically use sophisticated methods for 
+representing 
+information sources. Such methods can be roughly classified as being 
+based on 
+database or knowledge representation techniques (e.g. 
+[<A HREF="main.html#Chaw94">9</A>, <A HREF="main.html#Aran">10</A>] and 
+[<A HREF="main.html#Aren96">11</A>, <A HREF="main.html#Kirk95">12</A>, <A HREF="main.html#EtziWeld94">13</A>] respectively). In the database 
+perspective the goal is to build a fully materialized data warehouse 
+of the 
+information in the Web. Conversely, knowledge representation based 
+methods 
+provide a solution in which specific information is recorded locally, 
+while 
+the ability to answer queries relies on methods for dynamically 
+accessing the 
+information sources. 
+A fully materialized approach carries a number of advantages in the 
+ease and 
+effectiveness of access once the data are stored in the database. 
+However, it 
+raises a number of issues, in particular the problem of database 
+construction and maintenance. 
+Typically, a conceptual schema of the information 
+domain is built and specific procedures are implemented for 
+extracting the 
+information to be stored based on the conceptual schema. However, 
+either there 
+are strong assumptions on the structure and organization of the 
+information 
+sources or the issue is left to (user-made) ad hoc solutions.
+The dynamics of the information sources raises a maintenance problem 
+for
+the materialized data.
+A fully virtual approach is better suited to cope with the 
+dynamics of the information sources, while it is generally 
+problematic with respect to
+the response time.
+In a knowledge based approach the idea is that the system 
+handles an <I>explicit</I> representation of the information sources, 
+which is 
+used at query time.
+<P>
+In the rest of this section we concentrate on the last two categories 
+of systems, namely GIMs based on either database or knowledge representation 
+techniques.
+<P>
+<H2><A NAME="SECTION00021000000000000000">Database approaches</A></H2>
+<P>
+In the database-oriented approaches the basic idea is to regard the WEB 
+as a federation of 
+databases. With the difference that database federations typically rely 
+on the presence of a schema describing the sources and on highly 
+structured data, while Web documents are usually unstructured or 
+semi-structured.
+<P>
+One example of this first approach is Tsimmis [<A HREF="main.html#Chaw94">9</A>], which 
+describes the common schema with the OEM (Object Exchange Model) 
+language. The associated query language, OEM-QL, is an SQL-like 
+language. Tsimmis makes use of <EM>translators</EM> to translate both data 
+objects into a common information model and queries into requests for 
+an information source, while <EM>mediators</EM> embed the knowledge needed 
+for processing a specific type of information, once the content of 
+information sources is known. Each mediator needs to know which 
+sources it will use to retrieve information. Therefore, a model of 
+information sources has to be explicitly specified, but it is possible to 
+work without a global database schema. Classifiers and extractors can be 
+used to extract information from unstructured documents (e.g. plain text 
+files, mail messages, etc.) and classify them in terms of the domain 
+model. The classifier/extractor components of Tsimmis is based on the 
+Rufus system [<A HREF="main.html#Shoe93">14</A>]. Rufus uses an object oriented database to store 
+descriptive information about user's data, and a full text retrieval 
+database to provide access to the textual content of data.
+<P>
+Another proposal along these lines is constituted by the ARANEUS
+Project [<A HREF="main.html#Aran">10</A>], whose aim is to make explicit the schema
+according to which the data are organized in so-called structured
+servers, and then use this schema to pose queries in a high level
+language instead of browsing the data. Even though the ability to
+construct structured description of the information in the Web enables
+the system to answer effectively user queries, the approach has the
+following drawbacks that are typical of a Database perspective: 
+1) Araneus works only on a particular kind of
+Web sites and pages, which have a clearly specified structure, not on
+generic ones; 2) the user has to completely specify the relational
+schema corresponding to the site data; there is no automatic
+translation from the site to the database; 3) there is no hint for
+automatic search and conceptualization of WWW sites similar to
+prototypical ones indicated by the user.
+<P>
+Another worth mentioning research line involves the development of 
+declarative languages to query the Web [<A HREF="main.html#W3QS">15</A>, <A HREF="main.html#WebLog">16</A>, <A HREF="main.html#WebSQL">17</A>].
+Note that this approach is weakly 
+related with the idea of modeling the information stored in the Web 
+sites. Indeed, the 
+main idea is to model the Web document network topology, and to 
+provide the user
+with a query language enriched with primitives for specifying query 
+conditions 
+on both the structure of single documents and their locality on the 
+network. 
+However, the user cannot query the Web information content.
+<P>
+<H2><A NAME="SECTION00022000000000000000">Knowledge-based approaches</A></H2>
+<P>
+Knowledge-based GIMSs are systems using a Knowledge Representation 
+approach for information source representation, data acquisition and 
+query processing. Many logical frameworks are used to represent 
+information and reason about them.
+<P>
+The main design element for these systems is the Knowledge 
+Representation language. Also relevant are automatic data acquisition 
+techniques, that are useful to build and update knowledge bases, as well 
+as query-planning techniques, adopted to answer user queries.
+<P>
+As for the Knowledge Representation language and data acquisition 
+aspects, let us remark that a GIMS needs to represent both the 
+application domain and the content of the information sources. Usually a 
+single Knowledge Representation language is adopted. One typical example
+is constituted by Description Logic, which is suited  to represent taxonomic knowledge.
+<P>
+In addition, a basic feature for a GIMS is the possibility of identifying interesting information sources 
+unknown to the user and to automatically gather from them relevant 
+information units. In other words, tools to scale up with the growth of 
+the information space are needed.
+<P>
+The discovery of new information 
+sources, the extraction of information units within them and the 
+interpretation of data coming from these sources are all problems 
+related to information acquisition. This issue is rarely addressed in most 
+systems, as they force the user to hand-code information source models. 
+The main exceptions are ShopBot and ILA [<A HREF="main.html#PerkDoor96">7</A>]. ShopBot addresses 
+the extraction problem learning how to access an on-line catalog (via an 
+HTML form) and how to extract information about products. It uses an 
+unsupervised learning algorithm with a small training set. Whereas ILA 
+(Internet Learning Agent) is focused on the interpretation problem. It 
+learns how to translate information source output into the domain 
+model, using a set of descriptions of objects in the world.
+<P>
+It is worth noting that, especially when dealing with the automatic 
+discovery and integration of information sources, the vocabulary 
+problem is one of the most critical ones. The presence of possibly 
+different terms representing the same concept in the description of a 
+source or an information unit is a significant example. At least three 
+possibilities have been explored to face this problem: 1) unique 
+vocabulary, that is forcing the description of information sources and 
+domain model to share the same vocabulary; 2) a manual mapping, that 
+is relationships between similar concepts are hand-coded; 3) automatic 
+(or semi-automatic) mapping, in which the system takes advantage of 
+existing ontologies that provide synonym, hypernym and hyponym 
+relationships between terms. The use of  hypernym and 
+hyponym relationships is a powerful tool  to solve questions about
+the terminology, but involves loss of
+information when generalizations of terms are used.
+<P>
+As for query answering, a significant body of work on agents able to 
+reason and make plans has been developed. In this case, the 
+representation of the information sources is known to the system. The 
+use of planning techniques to retrieve information requested by a user 
+query has been very common in this context and is in general aimed at 
+introducing a certain degree of flexibility in exploring the information 
+sources and extracting information from them.
+<P>
+For instance, in 
+Information Manifold [<A HREF="main.html#Levy96">18</A>] the content of information sources is 
+described by query expressions that are used to determine precisely 
+which sources are needed to answer the query. The planning algorithm 
+first computes information sources relevant to each subgoal, next 
+conjunctive plans are constructed so that the soundness and 
+completeness of information retrieval and the minimization of the 
+number of information sources to be accessed are guaranteed. In this 
+system, interleaving planning and execution is a useful way to obtain 
+information for reducing the cost of the query during plan execution.
+<P>
+SIMS [<A HREF="main.html#Aren96">11</A>] defines operators for query reformulation and uses 
+them to select relevant sources and to integrate available information to 
+satisfy the query. Since source selection is integrated into the planning 
+system, SIMS can use information about resource availability and access 
+costs to minimize the overall cost of a query.
+<P>
+A final note is on the closed world assumption adopted by all the above 
+systems. That is, they work on the assumption that the domain model contains all 
+information needed and that all unavailable information does not exist. 
+On the contrary Internet Softbot [<A HREF="main.html#EtziWeld94">13</A>] provides a framework to 
+reason with incomplete information, executing sensing actions to 
+provide forms of local closure, i.e., to verify the actual presence of 
+information in the source during plan execution.
+<P>
+<H1><A NAME="SECTION00030000000000000000">Web-At-a-Glance (WAG)</A></H1>
+<P>
+The work briefly surveyed in the previous sections shows the efforts
+that have been separately made by both the database and the knowledge
+representation communities to find effective ways to model the
+information contained in the Web.  However, we argue that many of the 
+still existing open problems could be solved by combining database and 
+artificial intelligence techniques. This is the idea we are following in the WAG
+(Web-At-a-Glance) project [<A HREF="main.html#HICSS97">19</A>, <A HREF="main.html#coopis">2</A>], by coupling a database
+conceptual model (namely the Graph Model [<A HREF="main.html#CSA93">20</A>, <A HREF="main.html#CSC97">21</A>]) and its
+environment to interact with the user [<A HREF="main.html#CCCLS96">3</A>] with the C<font size=-1><small>LASSIC</small></font>
+knowledge representation system [<A HREF="main.html#BBMR89">4</A>], in a system aiming to
+semi-automatically build conceptual views over information extracted
+from various Web sites and to allow the user to query such views.
+<P>
+The main differences with other Database approaches (e.g. Tsimmis and
+ARANEUS) are the following.
+<OL><LI> Instead of requiring an explicit description of the
+sources, WAG attempts to semi-automatically classify the information
+gathered from various sites based on the conceptual model of the
+domain of interest.<LI> The result of such a classification is fully
+materialized. The idea is that a certain degree of inaccuracy in the
+classification is acceptable in &quot;unknown&quot; domains. In order to make
+feasible the site conceptualization, a set of tools are available to
+match the information acquired visiting new sites with the domain
+model owned by the system.<LI> WAG provides a visual
+interface to query the databases (each one related with a specific
+domain or sub-domain) resulting from the integration of the
+information extracted from the various sites.
+</OL>
+<P>
+<P><A NAME="85">&#160;</A><A NAME="FigSysArchi">&#160;</A> <IMG WIDTH=396 HEIGHT=239 ALIGN=BOTTOM ALT="figure49" SRC="img2.gif"  > <BR>
+<STRONG>Figure 2:</STRONG> <EM>The System Architecture</EM><BR>
+<P>
+<P>
+In this section we present the architecture of WAG. In Fig.&nbsp;<A HREF="main.html#FigSysArchi">2</A> 
+the  main components of the system are shown. 
+WAG has a highly modular architecture, in which several components 
+cooperate to accomplish the task. The user interacts with the 
+user interface that allows for switching among a conventional HTML 
+browser, a WAG Querier, and the WAG Engine.  Each time the user meets 
+a site containing pieces of information about a relevant matter s/he 
+can activate the WAG engine in order to analyze it.
+<P>
+The WAG Engine reaches the site pointed out by the user and collects 
+the HTML pages belonging to it. Once the 
+site pages are locally available, the WAG Engine starts its analysis. 
+In doing that, some additional information on the domain of interest 
+is needed; it is provided either by the system knowledge base or by 
+the user, through an interactive session. In the latter case, the 
+pieces of information gathered by the user are added to the knowledge 
+base for further reuse. The main objective of the analysis process is 
+to associate with the site under observation a conceptual data schema 
+and to populate it. The results of such a process, that may again 
+involve the user in an interactive fashion, are stored in the WEB 
+DataBase. More precisely, the WEB DataBase contains both the data and 
+the locations in which such data are available (e.g., the page URL, 
+the page paragraph, etc.).
+<P>
+Once the site has been fully analyzed, the user is provided with a 
+new powerful way to access the information stored in the site itself: 
+s/he can query the WEB through the WAG Querier,
+according to several query modalities provided by the system.
+The WAG Querier handles all the phases needed to answer a user query: 
+query formulation, query distribution, and query result presentation. 
+In particular, it provides the user with a multiparadigmatic visual 
+environment (see [<A HREF="main.html#CCCLS96">3</A>]), equipped with different visualizations 
+and interaction mechanisms, including a synchronized browser on the 
+database schema and instances and several ad-hoc features for 
+interacting with multimedia data.
+<P>
+Below we focus on the two main submodules of the WAG engine:
+The <EM>Page Classifier</EM> and the <EM>Conceptualizer</EM>.
+<P>
+<H2><A NAME="SECTION00031000000000000000">Page Classifier</A></H2>
+<P>
+Pirolli et al. ([<A HREF="main.html#PPR97">22</A>]) present a classification technique of WWW pages, 
+which is used to identify and rank particular kinds of them, such as 
+index pages and organization home pages.  We build upon their work in 
+order to come up with a particular page categorization which provides 
+useful information to the Conceptualizer module.  We define four page 
+categories:
+<UL><LI> organizational home page: these pages represent the 
+entry point for different kinds of organizations and institutions;<LI> index: these pages contain a large number of links (with respect to 
+the page size) to navigate towards other (usually related) pages;<LI> personal home page: these pages belong to individuals, who may or may 
+not be affiliated with some organization;<LI> document: these pages have 
+the purpose of delivering specific information and, consequently, the 
+percentage of outgoing links vs. the total page size is very low. 
+</UL>
+<P>
+Once encountered by the classifier, a page is analyzed in order to 
+categorize it, and figure out some basic characteristics.  There are 
+two different kinds of analysis: the first one checks the syntactical 
+structure of the page, in order to verify the presence of HTML 
+keywords which signal specific objects, i.e., lists, nested lists, 
+forms, tables, and applets; the second one calculates the probability 
+of the page to belong to each of the above four categories.  The 
+result of the classification phase is a feature vector associated with 
+the page.  The vector contains several page characteristics, useful 
+for the Conceptualizer activities.  In particular we store in the 
+feature vector quantitative pieces of information about the page 
+(size, number of incoming links, number of forms contained in the 
+page, etc.) and several probabilistic figures (e.g., the probability 
+for the page to be an index page).  Quantitative pieces of information 
+are directly collected from the analysis of the HTML source; the 
+probability figures are computed using statistical techniques, based 
+on a set of relevant properties of the page.  The properties we take 
+into account are: page size, number of local (i.e., coming from the 
+same site) incoming links, number of outgoing links; frequency of 
+access, which indicates how often the page has been visited, and depth 
+of the children nodes reachable by that page.   
+We collected sample pages on the Web through a Java robot and we 
+analyzed about six thousand pages (pages were also analyzed by hand to 
+determine the success or failure of the automatic classification).  We 
+obtained satisfactory results when classifying index and document 
+pages (up to 0.967 success percentage), while the statistical approach 
+failed when considering home pages.  This is presumably due to the 
+fact that home pages are designed in a very non uniform way and that, 
+consequently, the distribution of their features is very close to the 
+overall page distribution.  Consequently, we adopted suitable 
+heuristics for the classification of the home pages.  Looking at the 
+presence of a pair  <IMG WIDTH=128 HEIGHT=23 ALIGN=MIDDLE ALT="tex2html_wrap_inline265" SRC="img3.gif"  >  in the text (plus the optional 
+words &quot;home page&quot;) we got up to 0.97 success considering personal home 
+pages.  In the case of organization home pages, analyzing the graph 
+structure of the pages (see also [<A HREF="main.html#Sper97">23</A>]) and looking at the deeper paths 
+and at the URL structure we got a success percentage up to 0.92.  
+Using a mixed approach (heuristics for home pages and probabilities 
+for document and index pages) we have now a working prototype able to 
+classify pages with an overall success percentage of 0.96.
+<P>
+<H2><A NAME="SECTION00032000000000000000">The Conceptualizer</A></H2>
+<P>
+The Conceptualizer is the core of the system. It builds a 
+conceptual schema from the HTML pages of a certain site, and then 
+populates the schema with different kinds of instances (e.g., URL, 
+tuples, multimedia objects, etc.) extracted from the site.
+<P>
+The Conceptualizer relies on two formal models, which are strictly
+related. The first one is an object-based data model, the Graph
+Model. It has two important features: 1) it is semantically rich; 2)
+it is equipped with a relationally-complete set of graphical query
+primitives, which have been already used as formal basis for a
+multiparadigmatic visual interface [<A HREF="main.html#CCCLS96">3</A>]. A Graph Model
+DataBase (GMDB) is a triple &lt;<I>g</I>,<I>c</I>,<I>m</I>&gt;, constituted by: 1) an
+intensional part, comprising the schema of the database, the so-called
+<EM>Typed Graph</EM> <I>g</I>, and a set of <EM>constraints</EM> <I>c</I>, which
+includes the standard ISA and cardinality constraints, and 2) an
+extensional part, i.e., the instances of the database, represented by <I>m</I>,
+which is called <EM>Interpretation</EM>.
+<P>
+As for the second model, the main need is to have schemata modeling
+the information of the domains of interest, plus knowledge
+representation mechanisms and reasoning services to support the
+construction and maintenance of such schemata. In WAG, we choose to
+express the information content of the various domains in a knowledge
+representation formalism of the family of Description Logics. The
+formalism is equipped with special reasoning capabilities (for example
+to detect containment relations between classes, or to classify new
+classes with respect to a set of existing ones) and has a strict
+relationship with semantic data models [<A HREF="main.html#CaLN94">24</A>, <A HREF="main.html#CSC95">25</A>].
+<P>
+In particular, we have chosen to represent the system generic ontology
+using the knowledge representation system C<font size=-1><small>LASSIC</small></font> [<A HREF="main.html#BBMR89">4</A>], while
+the user's views on the various domains are represented using the
+Graph Model structures, namely as pairs &lt;<I>g</I>,<I>c</I>&gt;. The idea is to use a
+restricted representation to reason efficiently, while adopting a
+richer framework for modeling the data, thus providing the user with a
+suitable model for the interaction with the system.
+<P>
+While analyzing and structuring the site information, the
+Conceptualizer executes three main activities (for a detailed 
+description of the techniques used while executing each activity see 
+[<A HREF="main.html#Cata97">26</A>]):
+<DL ><DT><DD> <I>Site Structure Discovery</I>. 
+For each site, the system, starting from the Page Classifier inputs, 
+analyzes the page graph in order to cluster 
+homogeneous sets of pages and links that may be grouped into classes 
+and relationships. During this phase various techniques are utilized, 
+e.g. text analysis, link analysis, pattern matching;
+<DT><DD> <I>Schema Definition</I>.
+The site conceptual schema  is matched against 
+the description of the domain knowledge (which is either already part 
+of the system ontology or is built up with the help of user's 
+suggestions) in order to build a complete conceptual schema; 
+<DT><DD> <I>Database Population</I>.
+Once the conceptual schema resulting from the previous phases has 
+been completely built, the WAG engine visits the site and extracts 
+from the HTML pages data to materialize, which constitute the 
+instance level of the conceptual schema <A NAME="tex2html3" HREF="#78"><IMG  ALIGN=BOTTOM ALT="gif" SRC="http://www.dis.uniroma1.it/icone/foot_motif.gif"></A>. 
+In doing this, both text analysis 
+techniques and domain specific plus general knowledge are exploited.
+<P>
+ </DL><H2><A NAME="SECTION00033000000000000000">Working Prototype</A></H2>
+<P>
+The current version of the WAG prototype embodies an implementation 
+of the
+interface (including the site analysis, querying and schema editing
+functionalities), the Page
+Classifier<A NAME="tex2html4" HREF="#81"><IMG  ALIGN=BOTTOM ALT="gif" SRC="http://www.dis.uniroma1.it/icone/foot_motif.gif"></A>, 
+and the Conceptualizer. Presently, the latter fully supports the 
+phase of Database Population, while the phase of Schema Definition is 
+currently
+based on an interactive approach to acquire from the user information
+about site and page structures; the phase of Site Structure Discovery 
+is still under development.  Thus, the user is asked to provide the 
+system with the information that cannot yet be automatically derived.
+<P>
+The present prototype has been tested on a specific domain concerning 
+typical teaching and research activities carried out in universities 
+(the domain contains the concepts of department, professor, course, 
+lab, research area, etc.).  WAG has been activated to search and 
+classify information contained in Web sites related with the 
+University domain (at this stage of the experiment we restricted the 
+search to italian sites (i.e., <TT>.it</TT>).  Once the database 
+construction has been completed we asked a set of queries about 
+teachers, courses and labs of computer science departments.
+Then, in order to compare the
+performances of WAG with those of well known search engines (SEs), 
+namely Lycos, Yahoo!  and Metacrawler, we submitted the same queries 
+to SEs and manually analyzed the first 20 top ranked retrieved 
+documents seeking for information automatically found by our system.
+<P>
+We got encouraging results, showing that a) in the domain under
+consideration the system can
+acquire automatically a substantial percentage of <TT>relevant</TT> data
+(While SEs return an enormous amount of insignificant links), and b)
+the answers of WAG
+on queries concerning specific information (e.g. the phone number of
+a professor) are satisfactory, whereas SEs typically fail.
+<P>
+<H1><A NAME="SECTION00040000000000000000">Conclusions</A></H1>
+<P>
+It is our opinion that, in order to exploit the enormous amount of 
+disparate
+information contained on the Web, the user has not to desperately 
+search for it, instead s/he should just ask a query and get back the 
+desired answer. To obtain this ambitious goal is not an easy task. 
+First of all, there is the need of effective ways to retrieve, extract 
+and model the information of interest.
+<P>
+Our proposal, namely the WAG system, aims to address these issues by a 
+suitable integration of ideas and techniques coming from both the 
+database and the knowledge representation areas.  Indeed, the basic 
+idea of WAG is to allow the user to access the Web data by simply 
+issuing a visual query on the conceptual schema of a database, and to 
+rely on sophisticated knowledge representation techniques in order to 
+build such a database.
+<P>
+The results of a first bunch of experiments on real Web data supports 
+the goodness of such an idea.
+<P>
+Moreover, even if designed to cope with the WWWW (Whole WWW), the Wag system can be usefully exploited in a Corporate Intranet as well. During an initial phase, the WAG classification techniques can be used to gather and structure the pieces of information available in the organization. Afterwards, the system can be tuned to be more efficient in the isolate world of an organization where, under the reasonable assumption that a relaxed standard about the production of HTML pages is available, WEB documents show a more stable and predictable structure.
+<P>
+<P><A NAME="SECTIONREF"><H2>References</H2></A><P>
+<DL COMPACT>
+<DT><A NAME="Cat97"><STRONG>1</STRONG></A><DD>
+T.&nbsp;Catarci.
+Interacting with databases in the global information infrastructure.
+<EM>IEEE Communications Magazine</EM>, 35(5):72-76, 1997.
+<P>
+<DT><A NAME="coopis"><STRONG>2</STRONG></A><DD>
+M.&nbsp;De Rosa, T.&nbsp;Catarci, L.Iocchi, D.&nbsp;Nardi, and G.&nbsp;Santucci.
+Materializing the web.
+In <EM>Proc. of COOPIS-98</EM>, 1998.
+to appear.
+<P>
+<DT><A NAME="CCCLS96"><STRONG>3</STRONG></A><DD>
+T.&nbsp;Catarci, S.&nbsp;K. Chang, M.&nbsp;F. Costabile, S.&nbsp;Levialdi, and G.&nbsp;Santucci.
+A graph-based framework for multiparadigmatic visual access to
+  databases.
+<EM>IEEE Transactions on Software Engineering</EM>, 8(3):455-475, 1996.
+<P>
+<DT><A NAME="BBMR89"><STRONG>4</STRONG></A><DD>
+Alexander Borgida, Ronald&nbsp;J. Brachman, Deborah&nbsp;L. McGuinness, and Lori Alperin
+  Resnick.
+CLASSIC: A structural data model for objects.
+In <EM>Proc. ACM-SIGMOD Conference on the Management of Data</EM>, pages
+  59-67, 1989.
+<P>
+<DT><A NAME="Arms95"><STRONG>5</STRONG></A><DD>
+Robert Armstrong, Freitag Dayne, Thorsten Joachims, and Tom Mitchell.
+WebWatcher: A learning apprentice for the World Wide Web.
+In <EM>Proc. of AAAI Spring Symposium on Information Gathering form
+  Heterogeneous Distributed Environments</EM>, 1995.
+<P>
+<DT><A NAME="Lieb95"><STRONG>6</STRONG></A><DD>
+Henry Lieberman.
+Letizia: an Agent that assist Web Browsing.
+In <EM>Proceedings of the Fourteenth International Joint Conference
+  on Artificial Intelligence (IJCAI-95)</EM>, 1995.
+<P>
+<DT><A NAME="PerkDoor96"><STRONG>7</STRONG></A><DD>
+Mike Perkowitz, Robert&nbsp;B. Doorebons, Oren Etzioni, and Daniel&nbsp;S. Weld.
+Learning to understand information on the Internet: an
+  example-based approach.
+<EM>Journal of Intelligent Information Systems</EM>, 1996.
+<P>
+<DT><A NAME="BF"><STRONG>8</STRONG></A><DD>
+Bruce Krulwich.
+BargainFinder.
+<EM><TT>http://bf.cstar.ac.com/bf/</TT></EM>, 1996.
+<P>
+<DT><A NAME="Chaw94"><STRONG>9</STRONG></A><DD>
+S.&nbsp;Chawathe, H.&nbsp;Garcia-Molina, J.&nbsp;Hammer, K.&nbsp;Ireland, Y.&nbsp;Papakonstantinou,
+  J.&nbsp;Ullman, and J.&nbsp;Widom.
+The TSIMMIS Project: Integration of Heterogeneous
+  Information Sources.
+In <EM>Proc. of IPSJ Conference</EM>, pages 7-18, 1994.
+<P>
+<DT><A NAME="Aran"><STRONG>10</STRONG></A><DD>
+P.&nbsp;Atzeni, G.&nbsp;Mecca, and P.&nbsp;Merialdo.
+Design and maintenance of data-intensive web sites.
+Technical Report&nbsp;25, Dipartimento di Informatica e Automazione,
+  Universit&#224; di Roma Tre, 1997.
+<P>
+<DT><A NAME="Aren96"><STRONG>11</STRONG></A><DD>
+Y.&nbsp;Arens, C.&nbsp;A. Knoblock, and W.&nbsp;Shen.
+Query reformulation for dynamic information integration.
+<EM>Journal of Intelligent Information Systems</EM>, 1996.
+<P>
+<DT><A NAME="Kirk95"><STRONG>12</STRONG></A><DD>
+T.&nbsp;Kirk, A.&nbsp;Y. Levy, Y.&nbsp;Sagiv, and D.&nbsp;Srivastava.
+The Information Manifold.
+In <EM>Proc. of the AAAI Spring Symposium on Information Gathering
+  in Distributed Heterogeneous Environments</EM>, 1995.
+<P>
+<DT><A NAME="EtziWeld94"><STRONG>13</STRONG></A><DD>
+Oren Etzioni and Daniel Weld.
+A Softbot-Based Interface to the Internet.
+<EM>CACM</EM>, 37(7), 1994.
+<P>
+<DT><A NAME="Shoe93"><STRONG>14</STRONG></A><DD>
+K.&nbsp;Shoens, A.&nbsp;Luniewski, P.&nbsp;Schwarz, J.&nbsp;Stamos, and J.&nbsp;Thomas.
+The Rufus system: Information organization for semi-structured
+  data.
+In <EM>Proceedings of the Nineteenth International Conference on
+  Very Large Data Bases (VLDB-93)</EM>, 1993.
+<P>
+<DT><A NAME="W3QS"><STRONG>15</STRONG></A><DD>
+D.&nbsp;Konopnicki and O.&nbsp;Shmueli.
+W3QS Home Page.
+<EM><TT>http://www.cs.technion.ac.il/&nbsp; konop/
+  w3qs.html</EM></TT>.
+<P>
+<DT><A NAME="WebLog"><STRONG>16</STRONG></A><DD>
+L.&nbsp;Lakshmanan, F.&nbsp;Sadri, and I.&nbsp;N. Subramanian.
+WebLog Project.
+<EM><TT>http://www.cs.concordia.ca/&nbsp; special/
+  bibdb/weblog.html</EM></TT>.
+<P>
+<DT><A NAME="WebSQL"><STRONG>17</STRONG></A><DD>
+A.&nbsp;Mendelzon and G.&nbsp;A. Mihaila.
+WebSQL Home Page.
+<EM><TT>http://www.cs.utoronto.ca/&nbsp; georgem/
+  WebSQL.html</EM></TT>.
+<P>
+<DT><A NAME="Levy96"><STRONG>18</STRONG></A><DD>
+A.&nbsp;Y. Levy, A.&nbsp;Rajaraman, and J.&nbsp;J. Ordille.
+Querying Heterogeneous Information Sources Using Source
+  Descriptions.
+In <EM>Proc. of 22nd International Conference on Very Large
+  Databases (VLDB-96)</EM>, 1996.
+<P>
+<DT><A NAME="HICSS97"><STRONG>19</STRONG></A><DD>
+T.&nbsp;Catarci, S.K. Chang, D.Nardi, G.&nbsp;Santucci, and M.&nbsp;Lenzerini.
+Wag: Web-at-a-glace.
+In <EM>Proc. of the Hawaii International Conference on System
+  Sciences (HICSS-31)</EM>, January 1998.
+<P>
+<DT><A NAME="CSA93"><STRONG>20</STRONG></A><DD>
+T.&nbsp;Catarci, G.&nbsp;Santucci, and M.&nbsp;Angelaccio.
+Fundamental graphical primitives for visual query languages.
+<EM>Information Systems</EM>, 18(2):75-98, 1993.
+<P>
+<DT><A NAME="CSC97"><STRONG>21</STRONG></A><DD>
+T.&nbsp;Catarci, G.&nbsp;Santucci, and J.&nbsp;Cardiff.
+Graphical interaction with heterogeneous databases.
+<EM>VLDB Journal</EM>, 6(2):97-120, 1997.
+<P>
+<DT><A NAME="PPR97"><STRONG>22</STRONG></A><DD>
+P.&nbsp;Pirolli, J.&nbsp;Pitkow, and R.&nbsp;Rao.
+Silk from a sow's ear: Extracting usable structures from the web.
+In <EM>Proc. of CHI'96</EM>, 1996.
+<P>
+<DT><A NAME="Sper97"><STRONG>23</STRONG></A><DD>
+E.&nbsp;Spertus.
+Parasite: Mining structural information on the web.
+In <EM>Proc. of the Sixth WWW Conference</EM>, 1997.
+<P>
+<DT><A NAME="CaLN94"><STRONG>24</STRONG></A><DD>
+Diego Calvanese, Maurizio Lenzerini, and Daniele Nardi.
+A unified framework for class based representation formalisms.
+In J.&nbsp;Doyle, E.&nbsp;Sandewall, and P.&nbsp;Torasso, editors, <EM>Proceedings
+  of the Fourth International Conference on the Principles of Knowledge
+  Representation and Reasoning (KR-94)</EM>, pages 109-120, Bonn, 1994. Morgan
+  Kaufmann, Los Altos.
+<P>
+<DT><A NAME="CSC95"><STRONG>25</STRONG></A><DD>
+T.&nbsp;Catarci, G.&nbsp;Santucci, and J.&nbsp;Cardiff.
+Knowledge-based schema integration in a heterogeneous environment.
+In <EM>Proc. of the Second International Workshop on Next Generation
+  Information Technologies and Systems (NGITSÕ95)</EM>, 1995.
+<P>
+<DT><A NAME="Cata97"><STRONG>26</STRONG></A><DD>
+T.&nbsp;Catarci, S.&nbsp;K. Chang, D.&nbsp;Nardi, and G.&nbsp;Santucci.
+Wag: Web-at-a-glance.
+Technical Report 03-97, Dipartimento di Informatica e Sistemistica,
+  Universit&#224; ``La Sapienza&quot; di Roma, 1997.
+</DL>
+<P>
+<H1><A NAME="SECTION00060000000000000000">  About this document ... </A></H1>
+<P>
+ <STRONG>Accessing the Web: Exploiting the Data Base Paradigm</STRONG><P>
+This document was generated using the <A HREF="http://www-dsed.llnl.gov/files/programs/unix/latex2html/manual/"><STRONG>LaTeX</STRONG>2<tt>HTML</tt></A> translator Version 96.1 (Feb 5, 1996) Copyright &#169; 1993, 1994, 1995, 1996,  <A HREF="http://cbl.leeds.ac.uk/nikos/personal.html">Nikos Drakos</A>, Computer Based Learning Unit, University of Leeds. <P> The command line arguments were: <BR>
+<STRONG>latex2html</STRONG> <tt>-t om -split 0 -no_reuse main.tex</tt>. <P>The translation was initiated by Daniele Nardi on Fri Jun  5 17:21:03 MET DST 1998<DL> <DT><A NAME="78">...schema</A><DD>Actually, data are 
+stored into a relational database, straightforwardly derived from the 
+conceptual schema
+<PRE>
+</PRE><DT><A NAME="81">...Classifier</A><DD>http://ftp.dis.uniroma1.it/pub/santucci/WAG/ 
+CLASSIFIER/index.html
+<PRE>
+</PRE> </DL>
+<BR> <HR>
+<P><ADDRESS>
+<I>Daniele Nardi <BR>
+Fri Jun  5 17:21:03 MET DST 1998</I>
+</ADDRESS>
+</BODY>
+</HTML>

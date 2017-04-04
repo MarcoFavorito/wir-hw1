@@ -1,0 +1,90 @@
+<html>
+<head>
+<title></title>
+</head>
+
+<body>
+
+<h1>Esercizio di esame 11/4/2002</h1>
+
+<b>Canale A-L (Liberatore)/ Parte II</b>
+
+<hr>
+
+<h4>Domanda 1</h4>
+
+<p>
+Dire cosa stampa il seguente programma.
+</p>
+
+<pre>
+class Prova {
+  public static int unMetodo(int x) {
+    int y=x+1;
+
+    altroMetodo(x, y);
+
+    return 0;
+  }
+
+  public static void altroMetodo(int y, int x) {
+    System.out.println(x-y);
+  }
+
+  public static void main(String arg[]) {
+    System.out.println(unMetodo(12));
+  }
+}
+</pre>
+
+
+<h4>Domanda 2</h4>
+
+<p>
+Spiegare la differenza fra variabili statiche
+e di istanza. Illustrare con disegni.
+</p>
+
+
+<h4>Domanda 3</h4>
+
+<p>
+Il seguente metodo dovrebbe contare il numero
+delle foglie di un albero.
+</p>
+
+<pre>
+public static int contaFoglie(Albero a) {
+  int numfoglie=0;
+
+  if(a==null)
+    return numfoglie;
+
+  if( (a.getDestro()==null)&&(a.getSinistro()==null) ) {
+    numfoglie++;
+    return numfoglie;
+  }
+
+  contaFoglie(a.getSinistro());
+  contaFoglie(a.getDestro());
+
+  return numfoglie;
+}
+</pre>
+
+<ul>
+
+<li>dire cosa stampa il metodo
+
+<li>spiegare perch&egrave; il metodo non &egrave; corretto
+
+<li>dire come va modificato per renderlo corretto
+
+</ul>
+
+Motivare i tre punti.
+
+</body>
+</html>
+
+

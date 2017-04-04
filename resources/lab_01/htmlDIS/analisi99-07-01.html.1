@@ -1,0 +1,71 @@
+<!doctype html public "-//w3c//dtd html 4.0 transitional//en">
+<html>
+<head>
+   <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <meta name="Content-Type" content="text/html; charset=iso-8859-1">
+   <meta name="Author" content="Fabrizio d'Amore">
+   <meta name="GENERATOR" content="Mozilla/4.61 (Macintosh; I; PPC) [Netscape]">
+   <title>Esercizio di analisi</title>
+</head>
+<body text="#000080" bgcolor="#FFC040" link="#0000FF" vlink="#008000" alink="#00FFFF">
+
+<center>
+<h3>
+Esercizio di analisi (Es. n. 3, 1 luglio 1999, Fondamenti di Informatica,
+Ambiente e Territorio)
+<hr WIDTH="100%"></h3></center>
+La funzione <tt>Boh</tt>, definita nel seguente frammento di programma
+C:
+<br>&nbsp;
+<blockquote>
+<pre>#include &lt;stdio.h></pre>
+
+<pre>typedef struct e {</pre>
+
+<pre>&nbsp;&nbsp;&nbsp; int info;</pre>
+
+<pre>&nbsp;&nbsp;&nbsp; struct e *next;</pre>
+
+<pre>} elem;</pre>
+
+<pre>elem *Boh(elem *ptesta, int zz)</pre>
+
+<pre>{</pre>
+
+<pre>&nbsp;&nbsp;&nbsp; if(ptesta==NULL)</pre>
+
+<pre>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; return NULL;</pre>
+
+<pre>&nbsp;&nbsp;&nbsp; else if(ptesta->info==zz)</pre>
+
+<pre>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; return ptesta;</pre>
+
+<pre>&nbsp;&nbsp;&nbsp; else</pre>
+
+<pre>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; return Boh(ptesta->next, zz);</pre>
+
+<pre>}</pre>
+</blockquote>
+
+<p><br>effettuta una semplice scansione di una lista, a partire dall'elemento
+il cui indirizzo &egrave; specificato dal valore del parametro <tt>ptesta</tt>.
+La scansione continua fino a quando si verifica una fra le seguenti condizioni:
+<ol>
+<li>
+si &egrave; trovato un elemento della lista nel cui campo <tt>info</tt>
+&egrave; presente un valore eguale a quello specificato dal valore del
+parametro <tt>zz</tt>;</li>
+
+<li>
+la scansione della lista &egrave; terminata.</li>
+</ol>
+Nel primo caso la funzione restituisce <tt>NULL</tt>, nel secondo restituisce
+l'indirizzo dell'elemento contenente il valore <tt>zz</tt> nrel campo <tt>info</tt>.
+Nel caso particolare in cui sono presenti pi&ugrave; elementi contenenti
+<tt>zz</tt>
+nel campo <tt>info</tt>, la funzine restituisce l'indirizzo del primo che
+trova.
+<p>La chiamata <tt>Boh(Boh(Boh(pelem,x),x),x)</tt> restituisce lo stesso
+valore restituito dalla chiamata <tt>Boh(pelem,x)</tt>.
+</body>
+</html>

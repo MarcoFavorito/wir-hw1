@@ -1,0 +1,143 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<html>
+<head>
+<!--Converted with jLaTeX2HTML 2002 (1.62) JA patch-1.4
+patched version by:  Kenshi Muto, Debian Project.
+LaTeX2HTML 2002 (1.62),
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+  <title>2003-09-19</title>
+  <meta name="description" content="2003-09-19">
+  <meta name="keywords" content="2003-09-19">
+  <meta name="resource-type" content="document">
+  <meta name="distribution" content="global">
+  <meta http-equiv="Content-Type"
+ content="text/html; charset=iso-8859-1">
+  <meta name="Generator" content="jLaTeX2HTML v2002 JA patch-1.4">
+</head>
+<body>
+<p>
+</p>
+<p></p>
+<div align="center"><font size="+1"><b> Esame di Basi di Dati
+<br>
+Laurea in Ingegneria Informatica - V.O. <br>
+A.A.&nbsp;2002/2003 - Appello del 19/9/2003
+<br>
+<br>
+</b></font></div>
+<p>
+</p>
+<h2><a name="SECTION00001000000000000000">
+Problema 1</a>
+</h2>
+<p>
+Si richiede di progettare lo schema concettuale Entit&agrave;-Relazione
+di
+un'applicazione relativa all'ultima edizione del Giro d'Italia
+disputata.
+Di ogni tappa, identificata da un numero d'ordine, interessa la data in
+cui &egrave;
+stata disputata, il luogo di partenza, ed il luogo di arrivo. Esistono
+due
+tipologie di tappe: le tappe a cronometro e le tappe normali. Delle
+tappe a
+cronometro interessa la lunghezza. Delle tappe normali interessa il
+grado di
+difficolt&agrave;, e gli eventuali luoghi intermedi attraversati dalla
+tappa,
+con
+l'ordine di attraversamento.
+Ovviamente una stessa tappa non puo' passare due volte per lo stesso
+luogo. Di ogni corridore interessa la squadra di appartenenza (una ed
+una sola), con
+il tipo di appartenenza (ad es., capitano, gregario, ecc.), il codice
+(unico
+nell'ambito della squadra), il nome, la data di nascita ed il luogo di
+nascita.
+Interessano inoltre le tappe portate a termine dal corridore, con la
+posizione
+nella tappa e la posizione complessiva al termine della tappa. Nel caso
+di
+tappe a cronometro interessa anche il tempo impiegato dal corridore.
+Di ogni squadra interessa il codice (identificativo) ed il nome
+dell'eventuale
+sponsor. Si fa presente che ad una squadra deve appartenere almeno un
+corridore.
+Di ogni luogo rilevante per la base di dati interessa il nome
+(identificativo)
+e l'altezza sul livello del mare.
+</p>
+<p></p>
+<h2><a name="SECTION00002000000000000000">Problema 2</a>
+</h2>
+<p>
+Si richiede di effettuare la progettazione logica dell'applicazione,
+producendo
+(in una qualunque notazione) lo schema relazionale completo di vincoli,
+e
+seguendo l'indicazione di evitare valori nulli nella base di dati (si
+noti che
+le interrogazioni menzionate nel problema&nbsp;3 non sono da
+considerarsi
+significative per le indicazioni di progetto).
+</p>
+<p></p>
+<h2><a name="SECTION00003000000000000000">Problema 3</a>
+</h2>
+<p>
+Sulla base dello schema relazionale definito per il problema&nbsp;2,
+esprimere in
+SQL le seguenti interrogazioni: </p>
+<ol>
+  <li>Dato un corridore, calcolare in quale posizione si &egrave;
+classificato nelle varie tappe a cronometro. </li>
+  <li>Calcolare il nome e la data di nascita dei corridori che hanno
+vinto almeno una tappa con arrivo nel luogo di nascita del corridore. </li>
+  <li>Calcolare il nome del vincitore della edizione in question del
+Giro d'Italia. Si fa presente che il vincitore &egrave; il corridore in
+posizione 1 al termine dell'ultima tappa, ovvero della tappa con il
+massimo numero d'ordine. </li>
+  <li>Data una tappa, calcolare la classifica delle squadre al termine
+di quella tappa, ovvero la lista delle squadre in ordine crescente
+secondo la posizione in classifica. La posizione di una squadra in
+classifica al termine di una tappa &egrave; calcolata sulla base della
+media delle posizioni che i corridori appartenenti alla squadra hanno
+al termine di quella tappa. </li>
+</ol>
+<h2><a name="SECTION00001000000000000000">Problema 4</a>
+</h2>
+<p>Analizzare i seguenti schedule:<br>
+<br>
+1) &nbsp; r_1(x), r_2(y), w_1(y), r_2(x), w_2(x)<br>
+2)&nbsp;&nbsp; r_1(x), r_2(y), w_1(x), w_1(y), r_2(x), w_2(x)<br>
+3)&nbsp;&nbsp; r_1(x), r_1(y), r_2(y), w_2(z), w_1(z), w_3(z), w_3(x)<br>
+<br>
+e dire se sono view-serializzabili, indicando per ciascuno di essi il
+procedimento seguito per rispondere alla domanda.<br>
+<br>
+</p>
+<p></p>
+<h2><a name="SECTION00002000000000000000">Problema 5</a>
+</h2>
+<p>Si consideri la seguente relazione <br>
+</p>
+<div style="text-align: left;">LIBRO(titolo, autore, tipo, prezzo,
+affiliazioneautore, editore)<br>
+</div>
+<p>con le seguenti dipendenze funzionali:<br>
+<br>
+titolo &#8594; editore<br>
+titolo &#8594; tipo<br>
+tipo &#8594; prezzo<br>
+autore &#8594; affiliazioneautore.<br>
+<br>
+Dire se la relazione LIBRO e' in forma normale di Boyce-Codd,
+motivando la risposta. Se necessario, effettuare una opportuna
+decomposizione della relazione.
+</p>
+<p></p>
+</body>
+</html>

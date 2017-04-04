@@ -1,0 +1,103 @@
+<html>
+<head>
+<title>
+Diploma Universitario di Ingegneria Informatica,
+Esame di Fondamenti di Informatica II - secondo modulo,
+A.A. 2000/01 - Appello del 24 aprile 2001
+</title>
+</head>
+
+<body>
+
+<h3 align="center">
+Diploma Universitario di Ingegneria Informatica<br>
+Esame di Fondamenti di Informatica II - secondo modulo <br>
+A.A. 2000/01 - Appello del 24 aprile 2001</h3>
+
+<p><b>Problema 1</b>&nbsp;&nbsp; Si consideri la seguente specifica del
+tipo astratto <i>PlayList</i>:
+
+<dl>
+  <dt><b><u>TipoAstratto</u></b> <i>PlayList</i><p>
+  <dt><b><u>Sorte</u></b> <i>PL</i> (sorta per il dominio di interesse)<p>
+  <dt><b><u>Funzioni</u></b><p>
+
+       <ul>
+         <li><i>Crea : (URL) --&gt; PL</i> <br>
+              precondizioni e postcondizioni per <i>crea(u) = p</i> <br>
+              <u>pre</u>: nessuna <br>
+              <u>post</u>: <i>p</i> &egrave;
+              una playlist avente url (uniform resource locator)
+              <i>u</i> e nessun file MP3 associato
+              <p>
+
+
+         <li><i>URL : (PL) --&gt; URL</i><br>
+              precondizione e postcondizioni per <i>URL(p) = u</i><br>
+              <u>pre</u>: nessuna<br>
+              <u>post</u>: <i>u</i> &egrave; l'url della playlist
+              <i>p</i>
+              <p>
+
+
+         <li><i>Inserisci : (PL, MP3) --&gt; PL</i><br>
+              precondizioni e postcondizioni per
+              <i>Inserisci(p,m) = q</i><br>
+              <U>pre</u>:  nessuna<br>
+              <U>post</u>: <i>q</i> &egrave; la playlist ottenuta da
+              <i>p</i> aggiungendo il file MP3 <i>m</i> se non gi&agrave;
+              presente, <i>q=p</i> altrimenti
+              <p>
+
+         <li><i>Elimina : (PL, MP3) --&gt; PL</i><br>
+              precondizioni e postcondizioni per<I> Elimina(p,m) = q</i> <br>
+              <u>pre</u>: nessuna <br>
+              <u>post</u>: <i>q</i> &egrave; la playlist ottenuta da
+              <i>p</i> eliminando il file MP3 <i>m</i> (se presente)
+              <p>
+
+         <li><i>Presente : (PL, MP3) --&gt; Bool</i><br>
+              precondizioni e postcondizioni per
+              <i>Presente(p,m) = b</i><br>
+              <u>pre</u>:  nessuna <br>
+              <u>post</u>: <i>b=true</i> se il file MP3 &egrave; presente in
+              <i>p</i>; <i>b=false</i> altrimenti
+              <p>
+
+       </dl>
+       <dt><b><u>FineTipoAstratto</u></b></dt>
+<p>
+
+            
+Scrivere una classe C++ <code>PlayList</code> (file <code>.h</code> e file
+<code>.cpp</code>) che realizza il tipo astratto <i>PlayList</i> facendo uso di
+una <i>tavola hash</i>, definita in modo da eseguire tutte le operazione del
+tipo astratto in tempo costante (<i>O(1)</i>) nel caso atteso,  avendo cura che
+il fattore di carico <i>fc</i> della <i>tavola hash</i> sia sempre compreso tra
+<i>0.25</i> e <i>0.75</i>.  Si consideri che per riferirsi al tipo astratto
+<i>MP3</i> &egrave; necessario utilizzare la classe <code>MP3</code> che si
+suppone gi&agrave; realizzata, della quale per&ograve; non &egrave; nota la
+definizione. Inoltre si assuma che <code>URL</code> sia rappresentato da
+oggetti di una classe <code>Stringa</code> per la quale sono disponibili,
+assegnazione, construttore di copia ed uguaglianza.
+
+
+<p><b>Problema 2</b>&nbsp;&nbsp; Si modifichi la definizione del tipo astratto
+<i>PlayList</i> aggiungendo la funzione
+
+<p><ul>
+  <li><i>TuttiMP3 : (PL) --&gt; Enumerazione(MP3)</i><br>
+       precondizioni e postcondizioni per
+       <i>TuttiMP3(p) = e</i><br>
+       <u>pre</u>:  nessuna <br>
+       <u>post</u>: <i>e</i> &egrave; una enumerazione dei file MP3 presenti
+       nella playlist <i>p</i>; l'ordine della enumerazione &egrave; qualsiasi
+</ul><p>
+
+Aggiungere alla classe <code>PlayList</code> realizzata per il Problema 1 una
+funzione che realizzi <i>TuttiMP3</i> in modo che venga eseguita in tempo
+costante (O(1)), definendo una opportuna classe <code>Iteratore</code> per
+realizzare il tipo astratto <i>Enumerazione(MP3)</i>.
+
+</body>
+</html>

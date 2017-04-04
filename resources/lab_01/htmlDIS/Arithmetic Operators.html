@@ -1,0 +1,402 @@
+<html><head><title>Arithmetic Operators + - * / &#92; ^ ' (MATLAB Functions)</title>
+<!-- $Revision$  $Date$ -->
+
+<!-- DOCNAME: MATLAB Functions -->
+<!-- CHUNKNAME: Arithmetic Operators + - * / &#92; ^ ' -->
+<!-- CHAPNAME: Arithmetic Operators + - * / &#92; ^ ' -->
+<!-- HEADSTUFF -->
+<link rel=stylesheet href="docstyle1.css" type="text/css">
+</head>
+<body bgcolor=#ffffff>
+<a name="65367">
+<!-- NAVBARTOP -->
+<table border=0 width="100%" cellpadding=0 cellspacing=0><tr>
+<td valign=baseline bgcolor="#e7ebf7"><b>MATLAB Function Reference</b></td>
+<td valign=baseline bgcolor="#e7ebf7" align=right><a href="wait.html"><img src="b_prev.gif" alt="Previous page" border=0></a>&nbsp;&nbsp;&nbsp;<a href="relationaloperators.html"><img src="b_next.gif" alt="Next Page" border=0></a></td>
+</tr>
+</table><font size=+3 color="#990000">Arithmetic Operators + - * / &#92; ^ '</font>
+
+
+<!-- FNAME:Arithmetic Operators + - * / &#92; ^ ' --><a name="65367"></a>
+
+<!-- SYNCHTO: func_by_.html -->
+<a name="arithmetic_operators_defined"></a>
+
+<!-- H2 --><a name="44071"></a><br>
+<p><a name="8347"></a>Matrix and array <a name="ops_arithmetic_operators"></a>arithmetic</p>
+<a name="syntax"></a><!-- H2 --><a name="8348"></a><p><font size=+1 color="#990000"><b>Syntax</b></font><br class="hdr">
+<ul class=continued><li class=continued><pre><a name="8349"></a>A+B 
+<a name="8350"></a>A-B
+<a name="8351"></a>A*B     A.*B
+<a name="8352"></a>A/B     A./B
+<a name="8353"></a>A&#92;B     A.&#92;B
+<a name="8354"></a>A^B     A.^B
+<a name="8355"></a>A'      A.'
+</pre></li></ul>
+<a name="description"></a><!-- H2 --><a name="8356"></a><p><font size=+1 color="#990000"><b>Description</b></font><br class="hdr">
+<p><a name="8357"></a>MATLAB has two different types of arithmetic operations. Matrix arithmetic operations are defined by the rules of linear algebra. Array arithmetic operations are carried out element by element, and can be used with multidimensional arrays. The period character (<code>.</code>) distinguishes the array operations from the matrix operations. However, since the matrix and array operations are the same for addition and subtraction, the character pairs <code>.+</code> and <code>.-</code> are not used.<br><br>
+<table Border="0" cellpadding=5>
+<caption></caption>
+<tr valign=top><td><p><a name="20832"></a><code>+
+</code><!-- DESCRPEND --></td>
+<td><a name="20834"></a>Addition or unary plus. <code>A+B</code> adds <code>A</code> and <code>B</code>. <code>A</code> and <code>B</code> must have the same size, unless one is a scalar. A scalar can be added to a matrix of any size.<br></td>
+
+<tr valign=top><td><p><a name="20836"></a><code>-
+</code><!-- DESCRPEND --></td>
+<td><a name="20838"></a>Subtraction or unary minus. <code>A-B</code> subtracts <code>B</code> from <code>A</code>. <code>A</code> and <code>B</code> must have the same size, unless one is a scalar. A scalar can be subtracted from a matrix of any size. <br></td>
+
+<tr valign=top><td><p><a name="20840"></a><code>*
+</code><!-- DESCRPEND --></td>
+<td><a name="20842"></a>Matrix multiplication. <code>C = A</code>*<code>B</code> is the linear algebraic product of the matrices <code>A</code> and <code>B</code>. More precisely,<br><ul class=continued><a name="69751"></a><li class=continued><img src="lang_opa.gif" alt="" align=bottom>
+</ul>
+<a name="24159"></a>For nonscalar <code>A</code> and <code>B</code>, the number of columns of <code>A</code> must equal the number of rows of <code>B</code>. A scalar can multiply a matrix of any size. <br></td>
+
+<tr valign=top><td><p><a name="20844"></a><code>.*
+</code><!-- DESCRPEND --></td>
+<td><a name="20846"></a>Array multiplication. <code>A.</code>*<code>B</code> is the element-by-element product of the arrays <code>A</code> and <code>B</code>. <code>A</code> and <code>B</code> must have the same size, unless one of them is a scalar. <br></td>
+
+<tr valign=top><td><p><a name="21302"></a><code>/
+</code><!-- DESCRPEND --></td>
+<td><a name="21304"></a>Slash or matrix right division. <code>B/A</code> is roughly the same as <code>B</code>*<code>inv(A)</code>. More precisely, <code>B/A = (A'&#92;B')'</code>. Seethe reference page for <code><a href="mrdivide.html">mrdivide</a></code> for more information.<br></td>
+
+<tr valign=top><td><p><a name="21298"></a><code>./
+</code><!-- DESCRPEND --></td>
+<td><a name="21300"></a>Array right division. <code>A./B</code> is the matrix with elements <code>A(i,j)/B(i,j)</code>. <code>A</code> and <code>B</code> must have the same size, unless one of them is a scalar. <br></td>
+
+<tr valign=top><td><p><a name="20848"></a><code>&#92;
+</code><!-- DESCRPEND --></td>
+<td><a name="20850"></a>Backslash or matrix left division. If <code>A</code> is a square matrix, <code>A&#92;B</code> is roughly the same as <code>inv(A)</code>*<code>B</code>, except it is computed in a different way. If <code>A</code> is an <code>n</code>-by-<code>n</code> matrix and <code>B</code> is a column vector with <code>n</code> components, or a matrix with several such columns, then <code>X = A&#92;B</code> is the solution to the equation <em>AX = B</em> computed by Gaussian elimination. A warning message is displayed if <code>A</code> is badly scaled or nearly singular. See the reference page for <code><a href="mldivide.html">mldivide</a></code> for more information.<br></td>
+
+<tr valign=top><td><p><a name="20852"></a><code>
+</code><!-- DESCRPEND --></td>
+<td><a name="20854"></a>If <code>A</code> is an <code>m</code>-by-<code>n</code> matrix with <code>m ~= n</code> and <code>B</code> is a column vector with <code>m</code> components, or a matrix with several such columns, then <code>X = A&#92;B</code> is the solution in the least squares sense to the under- or overdetermined system of equations <em>AX = B</em>. The effective rank, <code>k</code>, of <code>A</code> is determined from the QR decomposition with pivoting (see <a href="mldivide.html#1002049">Algorithm</a> for details). A solution <code>X</code> is computed that has at most <code>k</code> nonzero components per column. If <code>k &lt; n</code>, this is usually not the same solution as <code>pinv(A)</code>*<code>B</code>, which is the least squares solution with the smallest norm <img src="lang_o2a.gif" alt="" align=bottom>.<br></td>
+
+<tr valign=top><td><p><a name="20856"></a><code>.&#92;
+</code><!-- DESCRPEND --></td>
+<td><a name="20858"></a>Array left division. <code>A.&#92;B</code> is the matrix with elements <code>B(i,j)/A(i,j)</code>. <code>A</code> and <code>B</code> must have the same size, unless one of them is a scalar. <br></td>
+
+<tr valign=top><td><p><a name="20868"></a><code>^
+</code><!-- DESCRPEND --></td>
+<td><a name="20870"></a>Matrix power. <code>X^p</code> is <code>X</code> to the power <code>p</code>, if <code>p</code> is a scalar. If <code>p</code> is an integer, the power is computed by repeated squaring. If the integer is negative, <code>X</code> is inverted first. For other values of <code>p</code>, the calculation involves eigenvalues and eigenvectors, such that if <code>[V,D] = eig(X)</code>, then <code>X^p&nbsp;=&nbsp;V</code>*<code>D.^p/V</code>.<br></td>
+
+<tr valign=top><td><p><a name="20872"></a><code>
+</code><!-- DESCRPEND --></td>
+<td><a name="20874"></a>If <code>x</code> is a scalar and <code>P</code> is a matrix, <code>x^P</code> is <code>x</code> raised to the matrix power <code>P</code> using eigenvalues and eigenvectors. <code>X^P</code>, where <code>X</code> and <code>P</code> are both matrices, is an error.<br></td>
+
+<tr valign=top><td><p><a name="20876"></a><code>.^ 
+</code><!-- DESCRPEND --></td>
+<td><a name="20878"></a>Array power. <code>A.^B</code> is the matrix with elements <code>A(i,j)</code> to the <code>B(i,j)</code> power. <code>A</code> and <code>B</code> must have the same size, unless one of them is a scalar. <br></td>
+
+<tr valign=top><td><p><a name="20880"></a><code>'
+</code><!-- DESCRPEND --></td>
+<td><a name="20882"></a>Matrix transpose. <code>A'</code> is the linear algebraic transpose of <code>A</code>. For complex matrices, this is the complex conjugate transpose. <br></td>
+
+<tr valign=top><td><p><a name="20884"></a><code>.'
+</code><!-- DESCRPEND --></td>
+<td><a name="20886"></a>Array transpose. <code>A.'</code> is the array transpose of <code>A</code>. For complex matrices, this does not involve conjugation.<br></td>
+
+
+</table> 
+<Table>
+<tr valign=top><td>
+</Table> 
+</p>
+<a name="nondouble_data_type_support"></a><!-- H2 --><a name="45015"></a><p><font size=+1 color="#990000"><b>Nondouble<a name="nondouble_arithmetic_support"></a> Data Type Support</b></font><br class="hdr">
+<p><a name="88018"></a>This section describes the arithmetic operators' support for data types other than <code>double</code>.</p>
+<a name="data_type_single"></a><!-- H3 --><a name="88025"></a><p><font color="#990000"><b>Data Type single</b></font><br class="hdr">
+<p><a name="87010"></a>You can apply any of the arithmetic operators to arrays of type <code>single</code> and MATLAB returns an answer of type <code>single</code>. You can also combine an array of type <code>double</code> with an array of type <code>single</code>, and the result has type <code>single</code>.</p>
+<a name="integer_data_types"></a><!-- H3 --><a name="87097"></a><p><font color="#990000"><b>Integer Data Types</b></font><br class="hdr">
+<p><a name="87798"></a>You can apply most of the arithmetic operators to real arrays of the following integer data types: </p>
+<ul><li><a name="88924"></a><code>int8</code> and <code>uint8</code>
+</li>
+<li><a name="88925"></a><code>int16</code> and <code>uint16</code>
+</li>
+<li><a name="88926"></a><code>int32</code> and <code>uint32</code>
+</li>
+</ul>
+<p><a name="88960"></a>All operands must have the same integer data type and MATLAB returns an answer of that type.</p>
+<p><ul><table border=1 cellspacing=0 cellpadding=5><tr width="90%"><td bgcolor="#e7ebf7"><a name="88927"></a><b>Note  </b>&nbsp;&nbsp;
+The arithmetic operators do not support operations on the data types <code>int64</code> or <code>uint64</code>. Except for the unary operators <code>+A</code> and <code>A.'</code>, the arithmetic operators do not support operations on complex arrays of any integer data type.
+</td></tr></table></ul></p>
+<p><a name="88920"></a>For example,</p>
+<ul class=continued><li class=continued><pre><a name="88278"></a>x = int8(3) + int8(4);
+<a name="88279"></a>class(x)
+<a name="88280"></a>
+<a name="88281"></a>ans =
+<a name="88282"></a>
+<a name="88138"></a>int8
+</pre></li></ul>
+<p><a name="85710"></a>The following table lists the binary arithmetic operators that you can apply to arrays of the same integer data type. In the table, <code>A</code> and <code>B</code> are arrays of the same integer data type and <code>c</code> is a scalar of type <code>double</code> or the same type as <code>A</code> and <code>B</code>.<br><br>
+<table Border="2" cellpadding=4 cellspacing=0>
+<caption></caption>
+<tr valign=top><td><a name="87198"></a><b>Operation</b><br></td>
+<td><a name="87200"></a><b>Support when A and B Have Same Integer Type</b><br></td>
+
+<tr valign=top><td><a name="88844"></a><code>+A</code>, <code>-A</code><br></td>
+<td><a name="88846"></a>Yes<br></td>
+
+<tr valign=top><td><a name="87202"></a><code>A+B</code>, <code>A+c</code>, <code>c+B</code><br></td>
+<td><a name="87204"></a>Yes<br></td>
+
+<tr valign=top><td><a name="87206"></a><code>A-B</code>, <code>A-c</code>, <code>c-B</code><br></td>
+<td><a name="87208"></a>Yes<br></td>
+
+<tr valign=top><td><a name="87210"></a><code>A.*B</code><br></td>
+<td><a name="87212"></a>Yes<br></td>
+
+<tr valign=top><td><a name="88655"></a><code>A*c</code>, <code>c*B</code><br></td>
+<td><a name="88657"></a>Yes<br></td>
+
+<tr valign=top><td><a name="87214"></a><code>A*B</code><br></td>
+<td><a name="87216"></a>No<br></td>
+
+<tr valign=top><td><a name="88641"></a><code>A/c</code>, <code>c/B</code><br></td>
+<td><a name="88643"></a>Yes<br></td>
+
+<tr valign=top><td><a name="87218"></a><code>A.&#92;B</code>, <code>A./B</code><br></td>
+<td><a name="87220"></a>Yes<br></td>
+
+<tr valign=top><td><a name="87226"></a><code>A&#92;B</code>, <code>A/B</code><br></td>
+<td><a name="87228"></a>No<br></td>
+
+<tr valign=top><td><a name="87238"></a><code>A.^B</code><br></td>
+<td><a name="87240"></a>Yes, if <code>B</code> has nonnegative integer values.<br></td>
+
+<tr valign=top><td><a name="89075"></a><code>c^k</code><br></td>
+<td><a name="89077"></a>Yes, for a scalar <code>c</code> and a nonnegative scalar integer <code>k</code>, which have the same integer data type or one of which has type <code>double</code><br></td>
+
+<tr valign=top><td><a name="89141"></a><code>A.'</code>, <code>A'</code><br></td>
+<td><a name="89143"></a>Yes<br></td>
+
+
+</table> 
+<Table>
+<tr valign=top><td>
+</Table> 
+</p>
+<a name="combining_integer_data_types_with_type_double"></a><!-- H3 --><a name="89005"></a><p><font color="#990000"><b>Combining Integer Data Types with Type Double</b></font><br class="hdr">
+<p><a name="88273"></a>For the operations that support integer data types, you can combine a scalar or array of an integer data type with a scalar, but <font face=sansserif>not</font> an array, of type <code>double</code> and the result has the same integer data type as the input of integer type. For example, </p>
+<ul class=continued><li class=continued><pre><a name="88296"></a>y = 5 + int32(7);
+<a name="88297"></a>class(y)
+<a name="88298"></a>
+<a name="88299"></a>ans =
+<a name="88300"></a>
+<a name="88228"></a>int32
+</pre></li></ul>
+<p><a name="88491"></a>However, you cannot combine an array of an integer data type with either of the following:</p>
+<ul><li><a name="88544"></a>A scalar or array of a different integer data type
+</li>
+<li><a name="88658"></a>A scalar or array of type <code>single</code>
+</li>
+</ul>
+<p><a name="88667"></a><a href="file:../math/nondouble.html#nondouble_data_types">Nondouble Data Types</a>, in the online MATLAB documentation, provides more information about operations on nondouble data types.</p>
+<a name="remarks"></a><!-- H2 --><a name="87292"></a><p><font size=+1 color="#990000"><b>Remarks</b></font><br class="hdr">
+<p><a name="45115"></a>The arithmetic operators have M-file function equivalents, as shown:<br><br>
+<table Border="0" cellpadding=5>
+<caption></caption>
+<tr valign=top><td><a name="45018"></a>Binary addition<br></td>
+<td><a name="45020"></a><code>A+B</code><br></td>
+<td><a name="45023"></a><code>plus(A,B)</code><br></td>
+
+<tr valign=top><td><a name="45025"></a>Unary plus<br></td>
+<td><a name="45027"></a><code>+A</code><br></td>
+<td><a name="45030"></a><code>uplus(A)</code><br></td>
+
+<tr valign=top><td><a name="45032"></a>Binary subtraction<br></td>
+<td><a name="45034"></a><code>A-B</code><br></td>
+<td><a name="45037"></a><code>minus(A,B)</code><br></td>
+
+<tr valign=top><td><a name="45039"></a>Unary minus<br></td>
+<td><a name="45041"></a><code>-A</code><br></td>
+<td><a name="45044"></a><code>uminus(A)</code><br></td>
+
+<tr valign=top><td><a name="45046"></a>Matrix multiplication<br></td>
+<td><a name="45048"></a><code>A*B</code><br></td>
+<td><a name="45051"></a><code>mtimes(A,B)</code><br></td>
+
+<tr valign=top><td><a name="45053"></a>Arraywise multiplication<br></td>
+<td><a name="45055"></a><code>A.*B</code><br></td>
+<td><a name="45058"></a><code>times(A,B)</code><br></td>
+
+<tr valign=top><td><a name="45060"></a>Matrix right division<br></td>
+<td><a name="45062"></a><code>A/B</code><br></td>
+<td><a name="45065"></a><code>mrdivide(A,B)</code><br></td>
+
+<tr valign=top><td><a name="45067"></a>Arraywise right division<br></td>
+<td><a name="45069"></a><code>A./B</code><br></td>
+<td><a name="45072"></a><code>rdivide(A,B)</code><br></td>
+
+<tr valign=top><td><a name="45074"></a>Matrix left division<br></td>
+<td><a name="45076"></a><code>A&#92;B</code><br></td>
+<td><a name="45079"></a><code>mldivide(A,B)</code><br></td>
+
+<tr valign=top><td><a name="45081"></a>Arraywise left division<br></td>
+<td><a name="45083"></a><code>A.&#92;B</code><br></td>
+<td><a name="45086"></a><code>ldivide(A,B)</code><br></td>
+
+<tr valign=top><td><a name="45088"></a>Matrix power<br></td>
+<td><a name="45090"></a><code>A^B</code><br></td>
+<td><a name="45093"></a><code>mpower(A,B)</code><br></td>
+
+<tr valign=top><td><a name="45095"></a>Arraywise power<br></td>
+<td><a name="45097"></a><code>A.^B</code><br></td>
+<td><a name="45100"></a><code>power(A,B)</code><br></td>
+
+<tr valign=top><td><a name="45102"></a>Complex transpose<br></td>
+<td><a name="45104"></a><code>A'</code><br></td>
+<td><a name="45107"></a><code>ctranspose(A)</code><br></td>
+
+<tr valign=top><td><a name="45109"></a>Matrix transpose<br></td>
+<td><a name="45111"></a><code>A.'</code><br></td>
+<td><a name="45114"></a><code>transpose(A)</code><br></td>
+
+
+</table> 
+<Table>
+<tr valign=top><td>
+</Table> 
+</p>
+<p><ul><table border=1 cellspacing=0 cellpadding=5><tr width="90%"><td bgcolor="#e7ebf7"><a name="82835"></a><b>Note  </b>&nbsp;&nbsp;
+For some toolboxes, the arithmetic operators are overloaded, that is, they perform differently in the context of that toolbox. To see the toolboxes that overload a given operator, type <code>help</code> followed by the operator name. For example, type <code>help plus</code>. The toolboxes that overload <code>plus</code> (<code>+</code>) are listed. For information about using the operator in that toolbox, see the documentation for the toolbox.
+</td></tr></table></ul></p>
+<a name="examples"></a><a name="exmpl_sec"></a><!-- H2 --><a name="45116"></a><p><font size=+1 color="#990000"><b>Examples</b></font><br class="hdr">
+<p><a name="8373"></a>Here are two vectors, and the results of various matrix and array operations on them, printed with <code>format</code> <code>rat</code>.<br><br>
+<table Border="2" cellpadding=4 cellspacing=0>
+<caption></caption>
+<tr valign=top><td colspan=2 rowspan=1><a name="8376"></a><b><strong>Matrix Operations</strong></b><br><td colspan=2 rowspan=1><a name="8380"></a><b>Array Operations</b><br>
+<tr valign=top><td><a name="8384"></a><code>x </code><br></td>
+<td><a name="8386"></a><code>1</code><br><a name="8387"></a><code>2</code><br><a name="8388"></a><code>3</code><br></td>
+<td><a name="8390"></a><code>y </code><br></td>
+<td><a name="8392"></a><code> 4</code><br><a name="8393"></a><code> 5</code><br><a name="8394"></a><code> 6</code><br></td>
+
+<tr valign=top><td><a name="8396"></a><code>x' </code><br></td>
+<td><a name="8398"></a><code>1   2   3</code><br></td>
+<td><a name="8400"></a><code>y' </code><br></td>
+<td><a name="8402"></a><code> 4   5   6</code><br></td>
+
+<tr valign=top><td><a name="8404"></a><code>x+y </code><br></td>
+<td><a name="8406"></a><code>5</code><br><a name="8407"></a><code>7</code><br><a name="8408"></a><code>9</code><br></td>
+<td><a name="8410"></a><code>x-y </code><br></td>
+<td><a name="8412"></a><code>-3</code><br><a name="8413"></a><code>-3</code><br><a name="8414"></a><code>-3</code><br></td>
+
+<tr valign=top><td><a name="8416"></a><code>x + 2 </code><br></td>
+<td><a name="8418"></a><code>3</code><br><a name="8419"></a><code>4</code><br><a name="8420"></a><code>5</code><br></td>
+<td><a name="8422"></a><code>x-2 </code><br></td>
+<td><a name="8424"></a><code>-1</code><br><a name="8425"></a><code> 0</code><br><a name="8426"></a><code> 1</code><br></td>
+
+<tr valign=top><td><a name="8428"></a><code>x * y </code><br></td>
+<td><a name="8430"></a><code>Error</code><br></td>
+<td><a name="8432"></a><code>x.*y </code><br></td>
+<td><a name="8434"></a><code> 4</code><br><a name="8435"></a><code>10</code><br><a name="8436"></a><code>18</code><br></td>
+
+<tr valign=top><td><a name="8438"></a><code>x'*y </code><br></td>
+<td><a name="8440"></a><code>32</code><br></td>
+<td><a name="8442"></a><code>x'.*y </code><br></td>
+<td><a name="8444"></a><code>Error</code><br></td>
+
+<tr valign=top><td><a name="8446"></a><code>x*y' </code><br></td>
+<td><a name="8448"></a><code> 4   5   6</code><br><a name="8449"></a><code> 8  10  12</code><br><a name="8450"></a><code>12  15  18</code><br></td>
+<td><a name="8452"></a><code>x.*y' </code><br></td>
+<td><a name="8454"></a><code>Error</code><br></td>
+
+<tr valign=top><td><a name="8456"></a><code>x*2 </code><br></td>
+<td><a name="8458"></a><code>2</code><br><a name="8459"></a><code>4</code><br><a name="8460"></a><code>6</code><br></td>
+<td><a name="8462"></a><code>x.*2 </code><br></td>
+<td><a name="8464"></a><code> 2</code><br><a name="8465"></a><code> 4</code><br><a name="8466"></a><code> 6</code><br></td>
+
+<tr valign=top><td><a name="8468"></a><code>x&#92;y </code><br></td>
+<td><a name="8470"></a><code>16/7</code><br></td>
+<td><a name="8472"></a><code>x.&#92;y </code><br></td>
+<td><a name="8474"></a><code> 4</code><br><a name="8475"></a><code>5/2</code><br><a name="8476"></a><code> 2</code><br></td>
+
+<tr valign=top><td><a name="8478"></a><code>2&#92;x</code><br></td>
+<td><a name="8480"></a><code>1/2</code><br><a name="8481"></a><code> 1</code><br><a name="8482"></a><code>3/2</code><br></td>
+<td><a name="8484"></a><code>2./x</code><br></td>
+<td><a name="8486"></a><code> 2</code><br><a name="8487"></a><code> 1</code><br><a name="8488"></a><code>2/3</code><br></td>
+
+<tr valign=top><td><a name="8490"></a><code>x/y</code><br></td>
+<td><a name="8492"></a><code>0   0   1/6</code><br><a name="8493"></a><code>0   0   1/3</code><br><a name="8494"></a><code>0   0   1/2</code><br></td>
+<td><a name="8496"></a><code>x./y</code><br></td>
+<td><a name="8498"></a><code>1/4</code><br><a name="8499"></a><code>2/5</code><br><a name="8500"></a><code>1/2</code><br></td>
+
+<tr valign=top><td><a name="8502"></a><code>x/2</code><br></td>
+<td><a name="8504"></a><code>1/2</code><br><a name="8505"></a><code> 1</code><br><a name="8506"></a><code>3/2</code><br></td>
+<td><a name="8508"></a><code>x./2</code><br></td>
+<td><a name="8510"></a><code>1/2</code><br><a name="8511"></a><code> 1</code><br><a name="8512"></a><code>3/2</code><br></td>
+
+<tr valign=top><td><a name="8514"></a><code>x^y</code><br></td>
+<td><a name="8516"></a><code>Error</code><br></td>
+<td><a name="8518"></a><code>x.^y</code><br></td>
+<td><a name="8520"></a><code>  1</code><br><a name="8521"></a><code> 32</code><br><a name="8522"></a><code>729</code><br></td>
+
+<tr valign=top><td><a name="8524"></a><code>x^2</code><br></td>
+<td><a name="8526"></a><code>Error</code><br></td>
+<td><a name="8528"></a><code>x.^2</code><br></td>
+<td><a name="8530"></a><code>  1</code><br><a name="8531"></a><code>  4</code><br><a name="8532"></a><code>  9</code><br></td>
+
+<tr valign=top><td><a name="8534"></a><code>2^x</code><br></td>
+<td><a name="8536"></a><code>Error</code><br></td>
+<td><a name="8538"></a><code>2.^x</code><br></td>
+<td><a name="8540"></a><code>  2</code><br><a name="8541"></a><code>  4</code><br><a name="8542"></a><code>  8</code><br></td>
+
+<tr valign=top><td><a name="8544"></a><code>(x+i*y)'</code><br></td>
+<td colspan=3 rowspan=1><a name="8546"></a><code>1 - 4i   2 - 5i   3 - 6i</code><br><!-- TBLSPANEND -->
+<tr valign=top><td><a name="8552"></a><code>(x+i*y).'</code><br></td>
+<td colspan=3 rowspan=1><a name="8554"></a><code>1 + 4i   2 + 5i   3 + 6i</code><br><!-- TBLSPANEND -->
+
+
+</table> 
+<Table>
+<tr valign=top><td>
+</Table> 
+</p>
+<a name="diagnostics"></a><!-- H2 --><a name="8582"></a><p><font size=+1 color="#990000"><b>Diagnostics</b></font><br class="hdr">
+<ul><li><a name="8583"></a>From matrix division, if a square <code>A</code> is singular,
+</li>
+<ul class=continued><li class=continued><pre><a name="8584"></a>Warning: Matrix is singular to working precision.
+</pre></li></ul>
+<li><a name="8585"></a>From elementwise division, if the divisor has zero elements,
+</li>
+<ul class=continued><li class=continued><pre><a name="8586"></a>Warning: Divide by zero.
+</pre></li></ul>
+</ul>
+<ul class=continued><li class=continued><p><a name="8587"></a>Matrix division and elementwise division can produce <code>NaN</code>s or <code>Inf</code>s where appropriate.</p>
+</li>
+</ul>
+<ul><li><a name="8588"></a>If the inverse was found, but is not reliable,
+</li>
+<ul class=continued><li class=continued><pre><a name="8589"></a>Warning: Matrix is close to singular or badly scaled.
+<a name="8590"></a>    Results may be inaccurate.  RCOND = xxx
+</pre></li></ul>
+<li><a name="8591"></a>From matrix division, if a nonsquare <code>A</code> is rank deficient,
+</li>
+<ul class=continued><li class=continued><pre><a name="8592"></a>Warning: Rank deficient, rank = xxx tol = xxx
+</pre></li></ul>
+</ul>
+<a name="see_also"></a><a name="seeal_sec"></a><!-- H2 --><a name="8593"></a><p><font size=+1 color="#990000"><b>See Also</b></font><br class="hdr">
+<p><a name="17383"></a><code><a href="mldivide.html">mldivide</a></code>, <code><a href="mrdivide.html">mrdivide</a></code>, <code><a href="chol.html">chol</a></code>, <code><a href="det.html">det</a></code>, <code><a href="inv.html">inv</a></code>, <code><a href="lu.html">lu</a></code>, <code><a href="orth.html">orth</a></code>, <code><a href="permute.html">permute</a></code>, <code><a href="ipermute.html">ipermute</a></code>, <code><a href="qr.html">qr</a></code>, <code><a href="rref.html">rref</a></code></p>
+<a name="references"></a><!-- H2 --><a name="8602"></a><p><font size=+1 color="#990000"><b>References</b></font><br class="hdr">
+<p><a name="70674"></a>[1] &nbsp;Anderson, E., Z. Bai, C. Bischof, S. Blackford, J. Demmel, J. Dongarra, 
+J.&nbsp;Du Croz, A. Greenbaum, S. Hammarling, A. McKenney, and D. Sorensen, 
+<em>LAPACK User's Guide</em> 
+(<a href="http://www.netlib.org/lapack/lug/lapack_lug.html">http://www.netlib.org/lapack/lug/lapack_lug.html</a>), Third Edition, 
+SIAM, Philadelphia, 1999.
+</p>
+<p><a name="77983"></a>[2] &nbsp;Davis, T.A., <em>UMFPACK Version 4.0 User Guide</em> 
+(<a href="http://www.cise.ufl.edu/research/sparse/umfpack/v4.0/UserGuide.pdf">http://www.cise.ufl.edu/research/sparse/umfpack/v4.0/UserGuide.pdf</a>), 
+Dept. of Computer and Information Science and Engineering, Univ. of Florida, 
+Gainesville, FL, 2002.
+</p>
+
+<br>
+
+
+<p><table bgcolor="#e7ebf7" border=0 width="100%" cellpadding=0 cellspacing=0><tr valign=top><td align=left width=20><a href="wait.html"><img src="b_prev.gif" alt="Previous page" border=0 align=bottom></a>&nbsp;</td><td align=left>&nbsp;wait</td><td>&nbsp;</td><td align=right>Relational Operators &lt;  &gt; &lt;=   &gt;= ==  ~=&nbsp;</td><td align=right width=20><a href="relationaloperators.html"><img src="b_next.gif" alt="Next page" border=0 align=bottom></a></td></tr></table>
+
+<br>
+<!-- Copyright 2004 The MathWorks, Inc. -->
+<!-- Last updated: Wed Aug 25 22:45:27 2004 -->
+</body>
+</html>
+
+

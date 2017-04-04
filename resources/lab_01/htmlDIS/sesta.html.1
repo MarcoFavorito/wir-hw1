@@ -1,0 +1,583 @@
+<!doctype html public "-//w3c//dtd html 4.0 transitional//en">
+<html>
+<head>
+   <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <meta name="Generator" content="Microsoft Word 98">
+   <meta name="GENERATOR" content="Mozilla/4.5 (Macintosh; I; PPC) [Netscape]">
+   <title>esercitazione15/3</title>
+</head>
+<body>
+<b><u><font face="New York"><font color="#ED181E"><font size=+2>Sesta
+esercitazione in laboratorio</font></font></font></u></b>
+<br>&nbsp;
+<p><font face="Times">Nello svolgimento di questa esercitazione &egrave;
+essenziale essere posizionati nella giusta directory. Posizionarsi subito
+sulla directory radice del dischetto A: e sulla sua sottodirectory che
+si intende usare. Attenzione, perch&eacute; tutti i file usati durante
+l'esercitazione dovranno risiedere su questa directory di lavoro.</font>
+<p><font face="Times">Per settare (assegnare) la directory di lavoro usare
+il comando <b>Change Dir</b> del men&ugrave; <b>FILE</b>, oppure semplicemente
+entrare nell'ambiente DOS da turbopascal (comando <b>DOS Shell</b> del
+men&ugrave; <b>FILE</b>), cambiare directory con il comando dos CD e poi
+inserire il comando Exit, che riporta nell'ambiente di editing del turbopascal.</font>
+<p><font face="Times">Le soluzioni agli esercizi, le versioni di programmi
+dati nel testo delle esercitazioni e quant'altro sono nelle directory pubbliche
+degli autori.</font>
+<p><font face="Times">Se si accede dal laboratorio il percorso &egrave;,
+per questa esercitazione,</font>
+<ul>
+<li>
+<font face="Courier">E:\program\fond\temperin\AUTOGUID\SESTA </font><font face="Times">per
+i chimici, elettrici, materialisti e nucleari</font></li>
+
+<li>
+<font face="Courier">E:\program\fond\daloisi\AUTOGUID\SESTA</font>per gli
+elettronici</li>
+</ul>
+Si pu&ograve; accedere via internet collegandosi alla pagina del corso
+di interesse, seguendo il percorso per le esercitazioni autoguidate.
+<br>&nbsp;
+<p><b><i><font face="Helvetica"><font color="#1822CD"><font size=+2>UN
+PROGRAMMA CON PROCEDURA RICORSIVA</font></font></font></i></b>
+<p><font face="Times">Scrivere e salvare il seguente programma, che lancia
+la procedura InvertiInput. Dopo aver salvato il testo, compilate, eliminate
+eventuali errori, ed eseguite per verificare che il programma sia corretto.
+La procedura esegue la stampa invertita dell'input dato da tastiera (una
+stringa terminata da '.'; anche '.' viene stampato).</font>
+<p><b><tt>program</tt> inversioneinput (input, output);</b>
+<br>&nbsp;
+<blockquote><b>procedure InvertiInput;</b>
+<p><b>var ch: char;</b>
+<br>&nbsp;
+<blockquote><b>begin {InvertiInput}</b>
+<p><b>read(ch);</b>
+<p><b>if ch &lt;> '.'</b>
+<p><b>then InvertiInput;</b>
+<p><b>write(ch);</b>
+<p><b>end; {InvertiInput}</b></blockquote>
+</blockquote>
+
+<p><br><b>begin { MAIN }</b>
+<br>&nbsp;
+<blockquote><b>writeln('stringa terminata da ''.'', prego:');</b>
+<p><b>InvertiInput;</b></blockquote>
+
+<p><br><b>end.</b>
+<br>&nbsp;
+<p><font face="Times">L'unico modo per distinguere tra le varie attivazioni
+ricorsive di </font><tt>InvertiInput</tt><font face="Times">, &egrave;
+di vedere il carattere associato a </font><tt>ch</tt><font face="Times">,
+che cambia nelle diverse attivazioni: inserire una opportuna watch; con
+input TOPI. si vedr&agrave; che ch contiene <b>T</b> (durante la prima
+attivazione),<b>O</b> (durante la seconda), <b>P</b> (durante la terza),
+<b>I</b>
+(durante la quarta), <b>.</b> (durante la quinta); la quinta attivazione
+non &egrave; seguita da ulteriori chiamate ricorsive, quindi stampa '.'
+e termina; dopo la terminazione della quinta attivazione, la quarta attivazione
+torna in esecuzione, stampa 'I' (cioe' il valore di </font><tt>ch</tt><font face="Times">
+nel suo ambiente locale) e termina; la terza attivazione stampa 'P' e termina
+e cos&igrave; via fino al termine della prima attivazione e del programma.
+Notare che all'inizio di ogni attivazione </font><tt>ch</tt><font face="Times">
+&egrave; una nuova variabile locale e quindi contiene un valore non significativo
+fino a che non viene assegnata da programma. Per verificare quanto descritto
+sopra, eseguire il programma "passo-passo", prima usando sempre <b>F8</b>
+e poi usando sempre <b>F7</b>.</font>
+<br>&nbsp;
+<p><b><i><font face="Helvetica"><font color="#1822CD"><font size=+2>USO
+DI CALL STACK</font></font></font></i></b>
+<p><font face="Times">Qui usiamo un modo alternativo per verificare la
+sequenza delle chiamate ricorsive. Usiamo il programma:</font>
+<p><font face="Times"><b>program</b> provafattoriale;</font>
+<p><font face="Times"><b>function</b> FATT(n:integer):integer;</font>
+<p><b><font face="Times">begin</font></b>
+<p><font face="Times"><b>if</b> n&lt;>0</font>
+<p><font face="Times"><b>then</b> FATT:=n*FATT(n-1)</font>
+<p><font face="Times"><b>else</b> FATT:=1;</font>
+<p><font face="Times"><b>end</b>;</font>
+<p><font face="Times"><b>begin</b>{MAIN} writeln(FATT(2)); <b>end</b>.</font>
+<br>&nbsp;
+<br>&nbsp;
+<p><font face="Times">Mantenere visibile sullo schermo la finestra con
+il programma e la finestra <b>Call Stack </b>(PILA delle CHIAMATE DI SOTTOPROGRAMMA,
+selezionabile con il comando <b>Call Stack</b> nel men&ugrave; <b>Debug</b>).
+In questa ultima finestra viene mostrata la sequenza delle attivazioni
+di procedura/funzione. In essa, per ogni attivazione di un sottoprogramma
+vengono mostrati nome e parametri usati nella chiamata, dal basso verso
+l'alto, nell'ordine di attivazione. Eseguire il programma con <b>F7</b>.</font>
+<ol>
+<ol>&nbsp;</ol>
+</ol>
+<font face="Times">Quando l'esecuzione del programma comincia, nella Call
+Stack si vede l'indicazione dell'attivazione del main program (Provafattoriale).
+Quando viene attivata la funzione FATT la prima volta, nella finestra Call
+Stack si vede apparire FATT(2) (chiamata di FATT con parametro 2). Continuando
+si vedono le attivazioni di FATT con parametri 1 e poi 0. Continuando ancora,
+progressivamente le attivazioni terminano e la Call Stack si svuota, fino
+a far scomparire anche Provafattoriale, quando il programma termina.</font>
+<ul>
+<ol>&nbsp;</ol>
+</ul>
+<b><i><font face="Helvetica"><font color="#1822CD"><font size=+2>PROCEDURA
+RICORSIVA CON PARAMETRI</font></font></font></i></b>
+<br>&nbsp;
+<br>&nbsp;
+<p><font face="Times">Modificare il programma del punto <b>1</b> come segue:</font>
+<p><b><tt>program</tt> inversioneinput2 (input, output);</b>
+<p><b>var lunghezza: integer;</b>
+<br>&nbsp;
+<blockquote><b>procedure InvertiInput2 (numCar: integer; var lung: integer);</b>
+<p><b>var ch: char;</b>
+<p><b>begin {InvertiInput2}</b>
+<br>&nbsp;
+<blockquote><b>read(ch);</b>
+<p><b>if ch &lt;> '.'</b>
+<p><b>then InvertiInput2(numCar + 1, lung)</b>
+<p><b>else lung := numCar;</b>
+<p><b>write(ch);</b></blockquote>
+
+<p><br><b>end; {InvertiInput2 }</b></blockquote>
+
+<p><br><b>begin { MAIN }</b>
+<br>&nbsp;
+<blockquote><b>writeln('stringa terminata da ''.'', prego:');</b>
+<p><b>InvertiInput2(0, lunghezza);</b>
+<p><b>writeln;</b>
+<p><b>writeln('la lunghezza della stringa e'' ', lunghezza : 2);</b>
+<p><b>lunghezza:=0;</b></blockquote>
+
+<p><br><b>end.</b>
+<p><font face="Times">Qui la procedura di inversione ha due parametri;
+con </font><tt>numCar</tt><font face="Times"> l'unit&agrave; chiamante
+indica il numero di caratteri gi&agrave; letti (0 alla prima attivazione);
+</font><tt>lung</tt><font face="Times">
+&egrave; un parametro passato per variabile cui, quando si raggiunge la
+fine della stringa, viene assegnato il numero di caratteri letti fino a
+quel momento; ragionevolmente il </font><tt>main</tt><font face="Times">
+chiamer&agrave; </font><tt>InvertiInput2</tt><font face="Times"> con parametro
+0 (prima chiamata in assoluto: nessun carattere letto); altrettanto ragionevolmente,
+quando </font><tt>InvertiInput2</tt><font face="Times"> esegue la chiamata
+ricorsiva, passa come parametro l'intero successivo a quello che gli era
+stato passato (cio&egrave; passa </font><tt>numCar+1</tt><font face="Times">).</font>
+<p><font face="Times">Come cambia il carattere locale </font><tt>ch</tt><font face="Times">
+nelle varie attivazioni si vede con una Watch; come cambiano i parametri
+delle varie attivazioni si pu&ograve; vedere ancora con due watches su
+</font><tt>numCar</tt><font face="Times">
+e </font><tt>lung</tt><font face="Times"> , oppure usando anche la finestra<b><i>Call
+Stack</i></b>.. Eseguendo il programma passo passo, osservare nella finestra
+Call Stack la sequenza delle attivazioni di </font><tt>InvertiInput2</tt><font face="Times">
+e notare, in particolare, il momento in cui </font><tt>lung</tt><font face="Times">
+viene effettivamente assegnata (ultima attivazione di </font><tt>InvertiInput2</tt><font face="Times">
+).</font>
+<br>&nbsp;
+<br>&nbsp;
+<p><b><i><font face="Helvetica"><font color="#1822CD"><font size=+2>USO
+DI PUNTI D'ARRESTO (BREAKPOINT)</font></font></font></i></b>
+<p><font face="Times">Mettere due breakpoints sulle linee: </font><tt>then
+InvertiInput2(numCar+1,lung)</tt><font face="Times"> e </font><tt>else
+lung:= numCar</tt><font face="Times">. Far eseguire il programma (comando
+<b><i>Run</i>,</b>
+o CTRL F9). Esso si fermer&agrave; nei breakpoints specificati; le variabili
+per cui fosse definita una Watch potranno essere ispezionate. Dopo un arresto
+si pu&ograve; continuare passo-passo (<b>F7</b>,<b>F8</b>), oppure eseguire
+fino al prossimo punto d'arresto (<b><i>Run</i></b>). Eseguire di nuovo,
+dopo aver posto i breakpoints all'inizio e alla fine di </font><tt>InvertiInput2</tt><font face="Times">
+.</font>
+<br>&nbsp;
+<p><b><i><font face="Helvetica"><font color="#1822CD"><font size=+2>USO
+DI UN FILE TESTO</font></font></font></i></b>
+<p><font face="Times">Il seguente programma usa una variazione della procedura
+</font><tt>InvertiInput2</tt><font face="Times">
+: in questa soluzione la stringa da stampare al contrario si legge da un
+file testo (</font><tt>filedati.dat</tt><font face="Times"> che si suppone
+gi&agrave; esistente: se non esiste, editarlo e salvarlo in modo che contenga
+la parola "precipitevolissimevolmente."). Nel programma il nome del file
+&egrave; una costante stringa. La procedura </font><tt>InvertiInput3</tt><font face="Times">
+riceve anche un parametro file, dal quale leggere la stringa. Si metta
+un <b>breakpoint</b> in corrispondenza della istruzione </font><tt>lung:=numCar;
+</tt><font face="Times">in
+questo modo se si lancia il programma, questo si fermer&agrave; dopo aver
+letto tutti i caratteri (e aver lanciato tutte le chiamate ricorsive per
+</font><tt>invertiInput3</tt><font face="Times">
+- vedi in <b>Call Stack</b>). Riattivando l'esecuzione, le attivazioni
+verranno progressivamente terminate.</font>
+<p><b><tt>program</tt> inversioneinput3 (input, output, filein);</b>
+<p><b>const DIM = 12; {lunghezza massima nome file}</b>
+<p><b>NOMEFILE = 'filedati.dat'; {nome del file concreto da usare}</b>
+<p><b>var filein: text; lunghezza: integer;</b>
+<br>&nbsp;
+<blockquote><b>procedure InvertiInput3 (var f: text; numCar: integer; var
+lung: integer);</b>
+<p><b>var ch: char;</b>
+<p><b>begin {InvertiInput3}</b>
+<br>&nbsp;
+<blockquote><b>if not eof(f)</b>
+<p><b>then begin</b>
+<br>&nbsp;
+<blockquote><b>read(f, ch);</b>
+<p><b>if ch &lt;> '.'</b>
+<p><b>then InvertiInput3(f, numCar + 1, lung)</b>
+<p><b>else lung := numCar;</b>
+<p><b>write(ch);</b>
+<p><b>end;</b></blockquote>
+</blockquote>
+
+<p><br><b>end; {InvertiInput3}</b></blockquote>
+
+<p><br><b>begin { MAIN }</b>
+<br>&nbsp;
+<blockquote><b>assign(filein, NOMEFILE); {apertura del file in lettura}</b>
+<p><b>reset(filein);</b>
+<p><b>writeln('stampo al contrario la stringa nel file');</b>
+<p><b>InvertiInput3(filein, 0, lunghezza);</b>
+<p><b>writeln; writeln('la lunghezza della stringa e'' ', lunghezza : 2);</b>
+<p><b>close(filein);</b>
+<br>&nbsp;</blockquote>
+<b>end.</b>
+<br>&nbsp;
+<p><b><i><font face="Helvetica"><font color="#1822CD"><font size=+2>INCLUSIONE
+DI FILE NEL FILE DA COMPILARE</font></font></font></i></b>
+<p><font face="Times">Supponiamo che i file FILEPROG1 e FILEPROG2 contengano
+due programmi che fanno uso di un medesimo insieme di sottoprogrammi, SP1,
+SP2, SP3 .... Non &egrave; necessario scrivere i sottoprogrammi in entrambi
+i file. Si pu&ograve; invece fare uso di una direttiva al compilatore chiamata
+<i>inclusione</i>.</font>
+<p><font face="Times">Immaginiamo che i sottoprogrammi siano memorizzati
+nel file FILESOTP e NON siano stati scritti nei file FILEPROG1 e FILEPROG2.</font>
+<p><font face="Times">Allora &egrave; sufficiente inserire in questi ultimi
+file la direttiva</font>
+<p><font face="Times">{$I FILESOTP}.</font>
+<p><font face="Times">Nonostante l'apparenza di un commento, questa direttiva
+viene interpretata dal compilatore come il comando di includere <i>testualmente</i>,
+nel file in cui viene incontrata, il contenuto del file FILESOTP. Ad esempio,
+quando questa direttiva viene incontrata nel file FILEPROG1, il compilatore
+capisce che deve considerare il contenuto di FILESOTP come se fosse presente
+in FILEPROG1. Quindi il codice prodotto dal compilatore &egrave; quello
+di un file in cui sono contenuti sia i sottoprogrammi di FILESOTP che il
+programma principale contenuto in FILEPROG1.</font>
+<br>&nbsp;
+<p><b><i><font face="Helvetica"><font color="#1822CD"><font size=+2>ESEMPIO
+DI USO DELLA DIRETTIVA $I</font></font></font></i></b>
+<br>&nbsp;
+<p><font face="Times">Copiare sul proprio dischetto il contenuto della
+directory POLINOMI (contenuta nei percorsi prima indicati). Poi posizionarsi
+sul dischetto, in modo che tutti i file copiati siano tutti visibili dal
+turbopascal. Tra questi file c'&egrave; </font><font face="Courier">POLIDEF.DEF</font><font face="Times">,
+che contiene la definizione di tipi e sottoprogrammi per la gestione elementare
+di polinomi.</font>
+<p><font face="Times">Un polinomio di grado n, </font><font face="Courier">p(x)
+= a<sup>0</sup> + a<sup>1</sup>x + a<sup>2</sup>x<sup>2</sup> + ... + a<sup>n</sup>x<sup>n</sup>viene
+rappresentato mediante un array [0..n] di numeri reali, in cui la componente
+di indice <b>i </b>contiene il coefficiente del monomio di grado <b>i</b>.</font>
+<p><font face="Courier">Nel file sono contenuti: la definizione del </font><tt>type
+POLINOMIO</tt><font face="Times"> e quella di due procedure generali di
+lettura e stampa di polinomi.</font>
+<p><font face="Times">Vedere ora queste definizioni.</font>
+<p><font face="Times">Ad esempio se </font><font face="Courier">p(x) =
+<b>5</b>
++ <b>2</b>x + <b>4</b>x<sup>2</sup> + <b>3</b>x<sup>3</sup>+ <b>2</b>x<sup>4</sup></font><font face="Times">,
+la sua rappresentazione in memoria sar&agrave; data dall'array</font>
+<p><b><font face="Courier">5 2 4 3 2</font></b>
+<p><font face="Courier"><font size=-1>(indici) 0 1 2 3 4</font></font>
+<br>&nbsp;
+<br>&nbsp;
+<p><font face="Times">Aprire ora il file </font><font face="Courier">POLI.PAS</font><font face="Times">.</font>
+<p><font face="Times">Questo file contiene un programma in cui vengono
+chiesti: un polinomio e un valore di x per cui calcolare il polinomio,
+e viene stampato il risultato.</font>
+<p><font face="Times">Notare che in </font><font face="Courier">POLI.PAS</font><font face="Times">
+il </font><tt>type POLINOMIO</tt><font face="Times"> non &egrave; definito
+(ma usato per dichiarare una variabile), n&eacute; sono date le procedure
+di stampa e lettura polinomi, che pure vengono usate per l'input/output.
+Invece il programma contiene la direttiva</font><font face="Courier"> {$I
+POLIDEF.DEF}</font><font face="Times"> che provoca l'inclusione del file
+di definizioni in </font><font face="Courier">POLI.PAS</font><font face="Times">
+al momento della compilazione. Cos&igrave;, al momento della compilazione,
+le definizioni contenute in </font><font face="Courier">POLIDEF.DEF</font><font face="Times">
+"&egrave; come se fossero scritte" in </font><font face="Courier">POLI.PAS</font><font face="Times">
+e quindi possono essere usate.</font>
+<p><font face="Times">Il file </font><font face="Courier">POLI.PAS</font><font face="Times">
+contiene inoltre la</font>
+<p><i><tt>function</tt> Potenza</i><font face="Times"> e la</font>
+<p><i><tt>procedure</tt> Valuta</i><font face="Times">,</font>
+<p><font face="Times">che servono per eseguire il suo specifico compito.</font>
+<p><font face="Times">Dopo aver compilato ed eseguito il programma, notare
+che POLI.PAS non cambia "fisicamente", mentre in realt&agrave; il codice
+eseguibile prodotto dalla sua compilazione &egrave; quello che sarebbe
+stato prodotto se avessimo copiato il contenuto di </font><font face="Courier">POLIDEF.DEF</font><font face="Times">
+in </font><font face="Courier">POLI.PAS</font><font face="Times"> prima
+della compilazione.</font>
+<ul>&nbsp;</ul>
+<b><i><font face="Helvetica"><font color="#1822CD"><font size=+2>ESERCIZIO:
+LABIRINTO</font></font></font></i></b>
+<p><font face="Times">Un labirinto si pu&ograve; rappresentare come una
+matrice di caratteri, usando (per es.) il carattere '%' per rappresentare
+una porzione di muro, e il carattere '-' per rappresentare una zona di
+passaggio.</font>
+<p><font face="Times">Scrivere un file </font><font face="Courier">LABIRINT.DEF</font><font face="Times">,
+contenente la definizione del </font><tt>type labirinto</tt><font face="Times">,
+le eventuali altre definizioni di tipi necessarie e le procedure di lettura
+da file e stampa adatte a matrici labirinto.</font>
+<p><font face="Times">Scrivete poi, in un file </font><font face="Courier">LABIRINT.PAS</font><font face="Times">,
+un </font><i><tt>program </tt>labirinto</i><font face="Times"> in cui viene
+letto da file testo un labirinto, stampato sullo schermo e viene calcolato
+e stampato sullo schermo un percorso tra un punto dato di entrata e uno
+di uscita. Questo programma deve definire solo la </font><i><tt>procedure</tt>
+CalcolaPercorso</i><font face="Times"> che, data una matrice che rappresenta
+un labirinto, ed un punto di entrata, cerchi un percorso nel labirinto
+verso un punto d'uscita (diverso da quello di entrata) e stampi un opportuno
+messaggio se lo trova.</font>
+<p><font face="Times">Il programma deve leggere da un file un labirinto,
+ricevere in input le coordinate del punto di entrata, chiamare la procedura
+</font><tt>CalcolaPercorso
+</tt><font face="Times">e
+stampare il percorso trovato, o un messaggio negativo.</font>
+<p><font face="Times">Per risolvere l'esercizio &egrave; consigliabile
+eseguire i seguenti passi:</font>
+<li>
+<font face="Times">scrivere il file LABIRINTO.DEF;</font></li>
+
+<li>
+<font face="Times">scrivere una versione preliminare di LABIRINT.PAS, contenente
+un programma di prova che si limiti a leggere e stampare labirinti; in
+questo modo si potranno testare le definizioni scritte;</font></li>
+
+<li>
+<font face="Times">poi, quando si &egrave; sicuri che LABIRINT.DEF va bene,
+modificare LABIRINT.PAS secondo le richieste dell'esercizio.</font></li>
+
+<br><font face="Times">Nel caso che la procedura </font><tt>CalcolaPercorso</tt><font face="Times">
+contenga errori non facilmente rilevabili, si potranno usare tutti gli
+strumenti di <i>debugging</i> visti nelle esercitazioni precedenti: esecuzione
+passo-passo, <b>Watch </b>sulle variabili principali, controlli di intervallo,
+visualizzazione del <b>Call Stack</b> per seguire il comportamento della
+procedura (soprattutto se &egrave; ricorsiva).</font>
+<p><font face="Times">Una volta risolto l'esercizio, provare a complicarlo
+come segue:</font>
+<li>
+<font face="Times">stampare il percorso trovato;</font></li>
+
+<br><font face="Times">stampare il percorso trovato direttamente sul labirinto
+(cio&egrave; modificare la matrice labirinto, in modo che i punti di passaggio
+del percorso di attraversamento vengano evidenziati da un carattere ' ',
+e poi stampare la matrice).</font>
+<p><font face="Times">Proposte di soluzione per l'esercizio sono nella
+directory LABIRINT nei percorsi prima indicati.</font>
+<br>&nbsp;
+<br>&nbsp;
+<br>&nbsp;
+<p><b><i><font face="Helvetica"><font color="#1822CD"><font size=+2>UNIT
+IN TURBOPASCAL</font></font></font></i></b>
+<p><font face="Times">La UNIT &egrave; lo strumento turbopascal per la
+scrittura di <i>moduli di programma</i>.</font>
+<p><font face="Times">Un modulo &egrave; un insieme di definizioni di strutture
+dati (const., tipi, var) e di sottoprogrammi per la loro gestione.</font>
+<p><font face="Times">E' contraddistinto da un nome (ad es. </font><font face="Courier">nomeunit</font><font face="Times">)
+e contenuto in un file (ad es. </font><tt>NOMEUNIT.PAS</tt><font face="Times">).</font>
+<p><font face="Times">Un programma (main) scritto in un altro file (</font><tt>PROG.PAS</tt><font face="Times">),
+pu&ograve; fare riferimento al modulo con l'istruzione</font>
+<p><b><tt>uses nomeunit</tt></b><font face="Times">;</font>
+<p><font face="Times">in questo modo le istruzioni del programma potranno
+anche contenere l'uso di ci&ograve; che &egrave; definito nel modulo.</font>
+<p><font face="Times">Una unit, una volta definita e scritta in un file
+(es. </font><font face="Courier">NOMEUNIT.PAS</font><font face="Times">)
+va compilata a parte (separatamente), sempre con il comando <b>Compile</b>.
+La compilazione di una unit produce un file con estensione </font><font face="Courier">.TPU</font><font face="Times">.</font>
+<p><font face="Times">La unit cos&igrave; preparata pu&ograve; essere usata
+dai differenti programmi in cui serve.</font>
+<p><font face="Times">Se un programma scritto in </font><font face="Courier">PROG.PAS</font><font face="Times">
+ha la dichiarazione </font><font face="Courier">uses NOMEUNIT</font><font face="Times">,
+il programma eseguibile corrispondente sar&agrave; scritto in </font><font face="Courier">PROG.EXE</font><font face="Times">
+insieme al codice derivato dalla compilazione della unit. In altre parole
+</font><font face="Courier">PROG.EXE</font><font face="Times">
+&egrave; il risultato del <i>LINKING</i> tra </font><font face="Courier">PROG.OBJ</font><font face="Times">
+e </font><font face="Courier">NOMEUNIT.TPU</font><font face="Times"> (pi&ugrave;
+quanto altro servisse Ö).</font>
+<br>&nbsp;
+<br>&nbsp;
+<p><font face="Times">Per esercitarsi con le unit, scrivere il file UNITCOMP.PAS
+contenente la seguente unit per<i>"i numeri complessi"</i>.</font>
+<p><font face="Times">Parole chiave:</font>
+<li>
+<b><tt>Unit</tt></b><font face="Times"> introduce l'unit&agrave;;</font></li>
+
+<li>
+<b><tt>Interface</tt></b><font face="Times"> precede la definizione dei
+tipi di dati e la lista di funzionalit&agrave; disponibili (solo intestazioni);</font></li>
+
+<li>
+<b><tt>Implementation</tt></b><font face="Times"> precede la lista delle
+implementazioni delle funzionalit&agrave; in interface;</font></li>
+
+<li>
+<b><tt>end</tt></b><font face="Times"> chiude l'unit&agrave;.</font></li>
+
+<br>&nbsp;
+<p>&nbsp;
+<br>&nbsp;
+<br>&nbsp;
+<p><font face="Times">In generale nella unit&agrave; si possono includere
+anche variabili e una parte esecutiva di inizializzazione (vedi help in
+linea e manuale). Compilare la unit (con <b>Destination Disk</b>) e verificare
+l'esistenza del file prodotto </font><tt>UNITCOMP.TPU (per esempio facendo
+DIR in <b>Dos Shell</b>)</tt><font face="Times">.</font>
+<p><font face="Times">Altre spiegazioni e l'unit&agrave; in questione si
+trovano, nel file UNITCOMP.PAS. (NB il nome dell'unit&agrave; &egrave;
+pi&ugrave; lungo di 8 caratteri. In tal caso unit&agrave; e file non possono
+avere esattamente lo stesso nome. Per&ograve; gli otto caratteri del nomefile
+devono essere uguali ai primi otto caratteri del nome dell'unit&agrave;
+(altrimenti si hanno problemi in compilazione).</font>
+<p><b><tt>unit</tt> unitcomplessi; {numeri complessi: struttura dati,proc/funct
+necessarie.}</b>
+<p><b>interface</b>
+<dir><b>type </b>complex <b>= record</b>
+<br><b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</b>parte_reale, parte_imm: real;
+<br><b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+end;</b>
+<p><b><tt>procedure</tt> </b>readcomplex (var c: complex);
+<p>{lettura di un complesso da input}
+<br>&nbsp;
+<p><b>procedure </b>writecomplex (c: complex);
+<p>{stampa di un complesso in output}
+<br>&nbsp;
+<p><b>procedure </b>assegna_c (x, y: real; var c: complex);
+<p>{qualcosa di simile a <i>c:= "x + i*y"</i>}
+<br>&nbsp;
+<p><b>function</b> Re (c: complex): real;
+<p>{restituisce la parte reale di c}
+<br>&nbsp;
+<p><b>function </b>Im (c: complex): real;
+<p>{restituisce la parte immaginaria di c}
+<br>&nbsp;
+<p><b>procedure </b>somma_c (c1, c2: complex; var c3: complex);
+<p>{qualcosa di simile a <i>c3:="c1+c2"</i>}</dir>
+<b>implementation</b>
+<dir><b>procedure </b>readcomplex (var c: complex); {lettura di un complesso
+da input}
+<dir><b>begin</b>
+<p>write('parte reale ? ');readln(c.parte_reale);
+<p>write('parte immaginaria ? ');readln(c.parte_imm);
+<p><b>end;</b>
+<br>&nbsp;</dir>
+<b>procedure </b>writecomplex (c: complex); {stampa di un complesso in
+output}
+<dir><b>begin</b>
+<p>if (c.parte_imm &lt; 0)
+<dir>
+<dir>then writeln(c.parte_reale, ' - i*', abs(c.parte_imm))
+<p>else writeln(c.parte_reale, ' + i*', c.parte_imm);</dir>
+</dir>
+<b>end;</b></dir>
+<b>procedure </b>assegna_c (x, y: real; var c: complex); {c:= x + i*y}
+<dir><b>begin</b>
+<p>c.parte_reale := x;
+<p>c.parte_imm := y;
+<p><b>end;</b>
+<br>&nbsp;</dir>
+<b>function </b>Re (c: complex): real; {restituisce la parte reale di c}
+<dir><b>begin</b>
+<p>re := c.parte_reale;
+<p><b>end;</b>
+<br>&nbsp;</dir>
+<b>function </b>Im (c: complex): real; {restituisce la parte immaginaria
+di c}
+<br>&nbsp;
+<dir><b>begin</b>
+<p>Im := c.parte_imm;
+<p><b>end;</b>
+<br>&nbsp;</dir>
+<b>procedure </b>somma_c (c1, c2: complex; var c3: complex); {c3:=c1+c2}
+<dir><b>begin</b>
+<p>assegna_c(Re(c1) + Re(c2), Im(c1) + Im(c2), c3);
+<p><b>end;</b></dir>
+<b>end.</b> {unitcomplessi}
+<br>&nbsp;</dir>
+<b><i><font face="Helvetica"><font color="#1822CD"><font size=+2>USO DI
+FILE DI RECORD</font></font></font></i></b>
+<p><font face="Times">Per provare l'uso della unit appena costruita, scrivere
+un programma che risponda alle seguenti specifiche:</font>
+<ul>
+<li>
+<font face="Times">usa un file di record complex, chiamato </font><tt>COMPL.BDT</tt><font face="Times">
+(il nome indica che nel file sono conservati "Binary DaTa", nella fattispecie
+record codificati di tipo complex).</font></li>
+
+<li>
+<font face="Times">In particolare usa i numeri complessi cos&igrave; come
+definiti dalla </font><font face="Courier">unit unitcomplessi </font><font face="Times">(cio&egrave;
+contiene l'istruzione </font><tt>uses unitcomplessi)</tt></li>
+
+<li>
+<font face="Times">permette all'utente di scegliere pi&ugrave; volte l'operazione
+che si intende eseguire, scrivendo uno tra i possibili "comandi": A, B,
+F, dove</font></li>
+
+<ul>
+<li>
+<font face="Times">A corrisponde a far eseguire al programma istruzioni
+per leggere dei numeri complessi dati in input da tastiera e stamparli
+in un file di record COMPL.BDT (file di record complex)</font></li>
+
+<li>
+<font face="Times">B corrisponde a far leggere da un file COMPL.BDT i numeri
+complessi ivi contenuti per poi stamparne la somma</font></li>
+
+<li>
+<font face="Times">F determina la fine del programma</font></li>
+</ul>
+</ul>
+<font face="Times">Ecco un suggerimento sull'inizio del programma:</font>
+<p><b><tt>program</tt> complessiESER (input, output, filegen);</b>
+<p><b>uses unitcomplessi;</b>
+<p><b>var</b>
+<blockquote>zIn, zApp: complex; {per leggere o accumulare i complessi}
+<p>a, b: real; {per leggere parte intera e parte imm. di un complex}
+<br>filegen: file of complex;
+<p>op: char; {per le scelte (A, B, F}
+<p>i, quanti: integer;<font face="Times"> </font><tt>{per i cicli: quanti
+= quanti complessi inserire nel file in A}</tt></blockquote>
+<tt><b>begin</b> {complessiESER}</tt>
+<br>&nbsp;
+<br>&nbsp;
+<p><font face="Times">Chiamare il file contenente il programma FIRECES.PAS.
+Dopo la sua compilazione, al momento del link, il turbopascal cercher&agrave;
+il file </font><tt>unitcomplessi.tpu</tt><font face="Times">, in modo da
+creare, con l'unione di FIRECES.OBJ e UNITCOMPLESSI.TPU il file eseguibile
+FIRECES.EXE. Per questo &egrave; importante aver gi&agrave; compilato il
+file con l'unit&agrave;.</font>
+<p><font face="Times">Poich&eacute; il nome UNITCOMPLESSI.TPU &egrave;
+troppo lungo per essere un file nella directory, il turbopascal cerca il
+file con il nome pi&ugrave; simile, che e' UNITCOMP.TPU. E' per questo
+che abbiamo chiamato UNITCOMP.PAS il file con l'unit&agrave; UNITCOMPlessi.</font>
+<p><font face="Times">Il file con l'esercizio risolto &egrave; FIREC.PAS.</font>
+<br>&nbsp;
+<p><b><i><font face="Helvetica"><font color="#1822CD"><font size=+2>PROCEDURA
+RICORSIVA E FILE DI RECORD</font></font></font></i></b>
+<p><font face="Times">Modificare il programma complessiESER in modo che
+la somma dei numeri contenuti nel file COMPL.BDT sia eseguita in maniera
+ricorsiva.</font>
+<p><font face="Times">Usare euna procedura ricorsiva con intestazione</font>
+<dir><b><tt>procedure</tt> s</b>ommaric (var c: complex; var f: TIPOFILECOMPLESSI);
+<p>{aggiunge ricorsivamente in c i complessi contenuti in f}</dir>
+<font face="Times">La soluzione &egrave; nel file FIRECRIC.PAS.</font>
+<p><font face="Times">Per permettere la definizione di un parametro di
+tipo file in tale procedura, definiamo anche un tipo TIPOFILECOMPLESSI
+(perche? - ricordare che l'equivalenza di tipi in PASCAL &egrave; "per
+nome").</font>
+<p><font face="Times">Dopo aver scritto, salvato, compilato con successo
+il programma, eseguirlo seguendo la serie di attivazioni di </font><tt>sommaric</tt><font face="Times">
+nella finestra <i>Call Stack</i>. Notare che nel file </font><font face="Courier">COMPL.BDT</font><font face="Times">
+ci sono ancora i dati che erano stati memorizzati nell'ultima esecuzione
+del programma precedente. La prima prova di questo programma con procedura
+ricorsiva &egrave; meglio comunque proceda inserendo (A) due soli numeri
+complessi nel file prima di calcolare la somma (B).</font>
+<dir>
+<dir>
+<dir>
+<dir><font face="Courier"></font>&nbsp;</dir>
+</dir>
+</dir>
+</dir>
+
+</body>
+</html>

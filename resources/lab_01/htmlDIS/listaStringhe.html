@@ -1,0 +1,576 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+
+<!--Converted with jLaTeX2HTML 2002 (1.62) JA patch-1.4
+patched version by:  Kenshi Muto, Debian Project.
+LaTeX2HTML 2002 (1.62),
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>Esempio di uso di strutture collegate lineari: la classe SequenzaStringhe</TITLE>
+<META NAME="description" CONTENT="Esempio di uso di strutture collegate lineari: la classe SequenzaStringhe">
+<META NAME="keywords" CONTENT="html-main-11">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1">
+<META NAME="Generator" CONTENT="Microsoft FrontPage 4.0">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="html-main-11.css">
+
+<LINK REL="next" HREF="node26.html">
+<LINK REL="previous" HREF="node24.html">
+<LINK REL="up" HREF="html-main-11.html">
+<LINK REL="next" HREF="node26.html">
+</HEAD>
+
+<BODY >
+
+<H2><A NAME="SECTION1011025000000000000000">
+Esempio di uso di strutture collegate lineari: 
+la classe <TT>SequenzaStringhe</TT></A>
+</H2>
+
+<P>
+Definiamo la classe <TT>SequenzaStringhe</TT> per memorizzare una
+sequenza di stringhe mediante una struttura collegata lineare.
+Lo scheletro della classe che implementeremo &#232; il seguente.
+
+<P>
+La classe <TT>SequenzaStringhe</TT> usa una variabile di istanza <TT>nodoinit</TT>
+di tipo <TT>NodoLista</TT> che rappresenta il riferimento al
+primo nodo della lista. La variabile <TT>nodoinit</TT> sar&#224; posta 
+a <TT>null</TT> per rappresentare la lista vuota.
+
+<blockquote>
+<PRE>
+class NodoLista {
+  public String info;
+  public NodoLista next;
+  
+  public NodoLista(String i, NodoLista n) {
+     info = i; next = n;
+  }
+}
+
+public class SequenzaStringhe {
+
+   private NodoLista nodoinit;
+   
+   // costruttore che crea una lista vuota
+   public SequenzaStringhe() { ... }
+
+   // aggiunge la stringa x in posizione k
+   public void add (int k, String x) { ... }
+
+   // concatena alla lista this una lista passata come argomento
+   public void append (SequenzaStringhe l) { ... }
+
+   // modifica il valore del k-esimo elemento con la stringa x
+   public void set (int k, String x) { ... }
+
+   // copia il contenuto della lista e restituisce una nuova lista
+   public SequenzaStringhe copy () { ... }
+
+}
+</PRE>
+</blockquote>
+
+<HR>
+
+<H2><A NAME="SECTION1011027000000000000000">
+Implementazione della classe <TT>SequenzaStringhe</TT> </A>
+</H2>
+
+<P>
+Vediamo prima l'implementazione dei metodi che modificano la
+struttura della lista, ovvero inserimenti e cancellazioni.
+
+<blockquote>
+<PRE>
+public class SequenzaStringhe {
+
+   private NodoLista nodoinit;
+
+   // costruttore che crea una lista vuota
+   public SequenzaStringhe() {
+      nodoinit = null;
+   }
+
+   // aggiunge la stringa x in posizione k
+   public void add (int k, String x)  {
+       
+       // creo il nodo generatore
+       NodoLista q = new NodoLista(null,nodoinit); 
+       nodoinit = q; 
+
+       for (int i=0; i&lt;k &amp;&amp; q!=null; i++)
+            q = q.next;
+       
+       if (q!=null)
+            q.next = new NodoLista(x,q.next); 
+       
+       nodoinit = nodoinit.next;
+      }
+
+
+   // concatena alla lista this la lista passata come argomento
+   public void append (SequenzaStringhe l) {
+      
+      //creo nodo generatore
+      NodoLista q = new NodoLista(null,nodoinit);
+      nodoinit = q;
+
+      while (q.next!=null)
+          q = q.next;
+
+      q.next=l.nodoinit;
+      nodoinit=nodoinit.next;
+    }
+
+}</PRE>
+</blockquote>
+
+<p>La funzione <code>append</code> e' realizzata in maniera opportuna?</p>
+
+<p>Considerate il seguente frammento di codice</p>
+
+<pre>
+SequenzaStringhe s1 = ...... //sequenza con due elementi
+SequenzaStringhe s2 = ...... // sequenza con due elementi
+s1.append(s2);
+s1.add(3,&quot;pippo&quot;);
+</pre>
+
+<p>Quale è il suo effetto su s2?</p>
+
+
+<p>&nbsp;</p>
+<p>Di seguito è riportata la versione corretta.</p>
+
+
+<pre>
+   // concatena alla lista this la lista passata come argomento
+   public void append (SequenzaStringhe l) {
+      
+      //creo nodo generatore
+      NodoLista q = new NodoLista(null,nodoinit);
+      nodoinit = q;
+
+      while (q.next!=null)
+          q = q.next;
+
+      NodoLista p = l.nodoinit;
+      while (p!=null) {
+         q.next = new NodoLista(p.info,null);
+         q = q.next;
+         p = p.next;
+       }
+      
+      //elimina il nodo ausiliario
+      nodoinit = nodoinit.next;
+   }
+</pre>
+
+<HR>
+<h2><a NAME="SECTION1011028000000000000000">Implementazione della classe <tt>SequenzaStringhe</tt>
+(2)</a></h2>
+<p>In questa sezione descriviamo il metodo <tt>set</tt> che modifica il
+contenuto della lista, ma non la sua struttura.
+<p>&nbsp;
+<blockquote>
+  <pre>
+public class SequenzaStringhe {
+
+   private NodoLista nodoinit;
+   
+   ...
+
+   // modifica il valore del k-esimo elemento con la stringa x
+   public void set (int k, String x) {
+         NodoLista p = nodoinit;
+         for (int i=0; i&lt;k &amp;&amp; p!=null; i++)
+            p = p.next;
+         if (p!=null)
+            p.info = x;
+    }
+ }
+</pre>
+</blockquote>
+<p>Il metodo <tt>set</tt> è implementato effettuando prima un ciclo per
+accedere al nodo in posizione <tt>k</tt> e successivamente la modifica del campo
+<tt>info</tt> di tale nodo. Si noti che, a differenza del metodo <tt>add</tt>
+visto precedentemente, l'operazione di accesso al nodo <tt>k</tt> non deve
+terminare nel nodo precedente, in quanto in questo caso non è necessario
+modificare la struttura collegata.
+<p>&nbsp;
+<hr>
+<h2>Implementazione della classe <tt>SequenzaStringhe</tt> (3)</h2>
+<p>In questa sezione descriviamo i metodi che non modifcano la lista su cui sono
+invocati.
+<blockquote>
+  <pre>
+public class SequenzaStringhe {
+
+   private NodoLista nodoinit;
+   
+ 
+   // copia il contenuto della lista e restituisce una nuova lista
+   public SequenzaStringhe copy () {
+      
+      // Crea il primo nodo della lista risultato 
+      // (nodo generatore)
+      NodoLista a = new NodoLista(null,null); 
+      NodoLista q = a;
+
+      NodoLista p = nodoinit;
+      while (p!=null) {
+         q.next = new NodoLista(p.info,null); 
+         q = q.next;
+         p = p.next;
+      }
+
+      SequenzaStringhe r = new SequenzaStringhe();
+      r.nodoinit = a.next;
+      return r;
+   }
+ 
+}
+</pre>
+</blockquote>
+<p>Si noti che il metodo <tt>copy</tt> crea una nuova lista copiando il
+contenuto di ciascun elemento della lista oggetto di invocazione;
+<hr>
+
+<H2>
+Esercizio
+</H2>
+
+<P>
+Completare la classe con i seguenti metodi.
+
+<blockquote>
+<PRE>
+public class SequenzaStringhe {
+
+   private NodoLista nodoinit;
+   
+   ........ 
+
+   // elimina l'elemento in posizione k
+   public void remove (int k) { ... }
+
+   // elimina la prima occorrenza della stringa x
+   public void remove (String x) { ... }
+
+   // restituisce la stringa contenuta nel k-esimo elemento
+   public String get (int k) { ... }
+   
+   // verifica se una stringa x e' presente nella lista
+   public boolean contains (String x) { ... }
+
+   // restituisce l'indice della prima occorrenza di x nella lista
+   // o -1 se questa non e' presente
+   public int indexOf (String x) { ... }
+
+   // restituisce l'indice dell'ultima occorrenza di x nella lista
+   // o -1 se questa non e' presente
+   public int lastIndexOf (String x) { ... }
+   
+   // verifica se la lista e' vuota
+   public boolean isEmpty () { ... }
+
+   // restituisce la lunghezza della lista
+   public int size () { ... }
+
+   // copia il contenuto della lista e restituisce una nuova lista
+   public SequenzaStringhe copy () { ... }
+
+   // restituisce la lista composta dagli elementi j,j+1,...,k-1
+   public SequenzaStringhe subList (int j, int k) { ... }
+
+   // restituisce una stringa con il contenuto della lista
+   public String toString () { ... }
+
+   // restituisce un array di stringhe contenente tutti 
+   // gli elementi della lista
+   public String[] toArray () { ... }
+ 
+}
+</PRE>
+</blockquote>
+
+<HR>
+
+<H2>
+Esempio di cliente della classe <TT>SequenzaStringhe</TT>
+</H2>
+
+<P>
+<I>Esempio</I>:
+Si realizzi un cliente della classe <TT>SequenzaStringhe</TT>
+che implementi due metodi statici <TT>accoda(SequenzaStringhe l, String[] v)</TT>
+che accoda alla lista <TT>l</TT> gli elementi dell'array di stringhe <TT>v</TT>
+e <TT>rimuovitutti(SequenzaStringhe l, String x)</TT> che rimuove
+dalla lista <TT>l</TT> tutte le occorrenze della stringa <TT>x</TT>.
+Si implementi anche il metodo <TT>main</TT> contenente alcune operazioni
+di creazione di liste e di invocazione dei metodi definiti sopra.
+
+<blockquote>
+<PRE>
+public class ProvaSequenzaStringhe {
+
+   public static void accoda(SequenzaStringhe l, String[] v) {
+      int k = l.size();
+      for (int i=0; i&lt;v.length; i++, k++)
+         l.add(k,v[i]);
+   }
+
+   public static void rimuovitutti(SequenzaStringhe l, String x) {
+      while (l.contains(x)) {
+         l.remove(x);
+      }
+   }
+
+   public static void main (String[] args) {
+      SequenzaStringhe l = new SequenzaStringhe();
+      l.add(0,&quot;B&quot;); l.add(1,&quot;C&quot;); l.add(2,&quot;D&quot;); l.add(0,&quot;A&quot;);
+      System.out.println(l);
+      String[] v = {&quot;E&quot;,&quot;F&quot;,&quot;G&quot;};
+      accoda(l,v);
+      System.out.println(l);
+      l.add(0,&quot;X&quot;); l.add(4,&quot;X&quot;); l.add(l.size(),&quot;X&quot;); 
+      System.out.println(l);
+      rimuovitutti(l,&quot;X&quot;);
+      System.out.println(l);
+      System.out.println(&quot;Lunghezza = &quot;+l.size());
+   }
+}</PRE>
+</blockquote>
+
+<HR>
+
+<H2><A NAME="SECTION1011031000000000000000">
+Implementazione con side-effect e implementazione funzionale</A>
+</H2>
+
+<P>
+Nell'esempio che abbiamo appena visto le operazioni che modificano il
+contenuto di una lista (inserimenti, eliminazioni e modifiche) sono
+state realizzate in maniera tale da effettuare <EM>side-effect</EM>,
+modificando lo stato dell'oggetto di invocazione, ovvero la struttura
+collegata puntata dalla variabile di istanza <TT>nodoinit</TT>.
+
+<P>
+&#200; anche possibile definire tutti i metodi della
+classe <TT>SequenzaStringhe</TT> in modo <EM>funzionale</EM>, ovvero tale da non 
+modificare lo stato
+dell'oggetto di invocazione, ma di restituire un nuovo oggetto <TT>SequenzaStringhe</TT> contenente la nuova lista calcolata.  In questo modo
+otterremo un comportamento simile a quello della classe <TT>String</TT> e
+potremmo dire quindi che gli oggetti della classe <TT>SequenzaStringhe</TT>
+sono <EM>immutabili</EM> (caratteristica degli oggetti le cui classi sono 
+definite secondo uno schema funzionale senza metodi 
+che effettuano side-effect).
+
+<HR>
+
+<H2><A NAME="SECTION1011032000000000000000">
+Scheletro funzionale di <TT>SequenzaStringheF</TT></A>
+</H2>
+
+<blockquote>
+<PRE>
+public class SequenzaStringheF {
+   private NodoLista nodoinit;
+   
+   public SequenzaStringheF() { ... }
+
+   public SequenzaStringheF add (int k, String x) { ... }
+
+   public SequenzaStringheF append (SequenzaStringheF l) { ... }</PRE>
+<PRE>   public SequenzaStringheF set (int k, String x) { ... }
+
+   public SequenzaStringheF remove (int k) { ... }</PRE>
+<PRE>   ...
+
+}
+</PRE>
+</blockquote>
+
+<P>
+Si noti che i metodi che non modificano la lista avranno sattamente
+la stessa definizione e implementazione della classe <TT>SequenzaStringhe</TT>.
+
+<HR>
+
+<H2><A NAME="SECTION1011033000000000000000">
+Implementazione funzionale di <TT>SequenzaStringheF</TT></A>
+</H2>
+
+<P>
+In questa sezione vediamo l'implementazione dei metodi per l'inserimento, e la modifica di elementi
+di una lista. Gli altri metodi di inserimento, ed i metodi di cancellazione ed
+append
+possono essere implementati in maniera equivalente, mentre i metodi 
+che non modificano la lista sono esattamente uguali a quella della classe
+<TT>SequenzaStringhe</TT>.
+<blockquote>
+<PRE>
+
+public class SequenzaStringheF {
+
+  private NodoLista nodoinit;
+   
+  public SequenzaStringheF() {
+    nodoinit = null;
+  }
+
+  private SequenzaStringheF(NodoLista n) {
+    nodoinit = n;
+  }
+
+  public SequenzaStringheF add (int k, String x)  {
+     NodoLista a = new NodoLista(null,null);
+     NodoLista q = a;
+     NodoLista p = nodoinit;
+     int i;  // devo verificare il valore di i al termine del ciclo
+     for (i=0; i&lt;k &amp;&amp; p!=null; i++) {
+        q.next = new NodoLista(p.info,null);
+        q = q.next;
+        p = p.next;
+      }
+      if (i == k){
+        // aggiungo il nuovo nodo dopo q
+        q.next = new NodoLista(x,null); 
+        q = q.next;
+        // p e' il riferimento al nodo in posizione k
+        q.next = p;
+        return new SequenzaStringheF(a.next);
+      }
+      return null;
+    }</pre>
+
+<p><code>//Notare la condivisione di memoria ottenuta nel metodo precedente</p></code>
+
+<pre>  
+  public SequenzaStringheF set (int k, String x)  {
+      //nodo generatore della lista da creare
+      NodoLista a = new NodoLista(null,null);
+      NodoLista q = a;
+      NodoLista p = nodoinit;
+      for (int i=0; i&lt;k &amp;&amp; p!=null; i++) {
+        q.next = new NodoLista(p.info,null);
+        q = q.next;
+        p = p.next;
+      }
+      if (p!=null){
+        // aggiungo il nuovo nodo dopo q
+        // p e' il riferimento al nodo in posizione k
+        q.next = new NodoLista(x,p.next); 
+        return new SequenzaStringheF(a.next);
+      }
+      return null;
+  }
+.........
+}
+</PRE>
+</blockquote>
+
+<P>
+I metodi implementati in questa classe differiscono sostanzialmente
+dai corrispondenti metodi della classe <TT>SequenzaStringhe</TT>, in
+quanto non modificano l'oggetto di invocazione, ma costruiscono
+e restituiscono una nuova lista contenente il risultato dell'operazione
+effettuata.
+In particolare viene usata la tecnica del nodo generatore.
+<HR>
+<h2><A NAME="SECTION1011034000000000000000">
+Esercizio</h2>
+<p>Realizzare per la classe SequenzaStringheF gli stessi metodi indicati per la
+classe SequenzaStringhe&nbsp;</a></p>
+
+<HR>
+
+<H2><A NAME="SECTION1011034000000000000000">
+Esempio di cliente della classe <TT>SequenzaStringheF</TT></A>
+</H2>
+
+<P>
+<I>Esempio</I>: Si realizzi ora un cliente della classe <TT>SequenzaStringheF</TT>
+che implementi due metodi statici <TT>accoda(SequenzaStringheF l, String[] v)</TT>
+che restituisce una nuova lista ottenuta accodando alla lista <TT>l</TT> 
+gli elementi dell'array di stringhe <TT>v</TT>
+e <TT>rimuovitutti(SequenzaStringheF l, String x)</TT> che restituisce una nuova
+lista ottenuta rimuovendo
+dalla lista <TT>l</TT> tutte le occorrenze della stringha <TT>x</TT>.
+Si implementi anche il metodo <TT>main</TT> contenente alcune operazioni
+di creazione di liste e di invocazione dei metodi definiti sopra.
+
+<P>
+<blockquote>
+<PRE>
+public class ProvaSequenzaStringheF {
+
+   public static <b>SequenzaStringheF</b> accoda(SequenzaStringheF l, 
+                                       String[] v) {
+      int k = l.size();
+      for (int i=0; i&lt;v.length; i++, k++)
+       <b>  l = l.add(k,v[i]);</b>
+      <b>return l;</b>
+   }
+
+   public static <b>SequenzaStringheF</b> rimuovitutti(SequenzaStringheF l, 
+                                             String x) {
+      while (l.contains(x))
+      <b>   l = l.remove(x);
+      return l;</b>
+   }
+
+   public static void main (String[] args) {
+      SequenzaStringheF l = <b>new SequenzaStringheF().add(0,&quot;B&quot;).
+                           add(1,&quot;C&quot;).add(2,&quot;D&quot;).add(0,&quot;A&quot;);</b>
+      System.out.println(l);
+      String[] v = {&quot;E&quot;,&quot;F&quot;,&quot;G&quot;};
+<b>      l = accoda(l,v);</b>
+      System.out.println(l);
+      <b>l = l.add(0,&quot;X&quot;).add(4,&quot;X&quot;).add(l.size()+2,&quot;X&quot;);</b>
+      System.out.println(l);
+      <b>l = rimuovitutti(l,&quot;X&quot;);</b>
+      System.out.println(l);
+      System.out.println(&quot;Lunghezza = &quot;+l.size());
+   }
+}
+</PRE>
+</blockquote>
+
+<P>
+Si noti la differenza d'uso tra una implementazione con side-effect
+e una implementazione funzionale (<b>codice in grassetto</b>). Nel primo caso le operazioni
+di inserimento ed eliminazione non restituiscono un valore
+e sono quindi usate come istruzioni, mentre nel secondo caso
+tali operazioni restituiscono un nuovo oggetto lista senza
+modificare l'oggetto di invocazione e tale risultato deve
+essere assegnato ad una variabile o usato in una espressione.
+Ad esempio l'uso delle seguenti istruzioni
+<blockquote>
+<PRE>
+SequenzaStringheF l = new SequenzaStringheF();
+l.add(0,&quot;B&quot;); l.add(1,&quot;C&quot;); l.add(2,&quot;D&quot;); l.add(0,&quot;A&quot;);
+System.out.println(l);
+</PRE>
+</blockquote>
+
+<P>
+(in cui il risultato dei metodi funzionali non viene assegnato a 
+delle variabili o usato in espressioni) 
+comporta un uso errato della classe funzionale 
+<TT>SequenzaStringheF</TT>. Infatti in questo caso la lista <TT>l</TT>
+&#232; rimasta vuota.
+
+<HR>
+
+</BODY>
+</HTML>

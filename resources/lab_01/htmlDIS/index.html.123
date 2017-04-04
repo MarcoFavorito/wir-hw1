@@ -1,0 +1,175 @@
+<!doctype public "-//w3c//dtd html 4.01 transitional//en" 
+		"http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+   <title>Esercizi sull'unit&agrave; 3</title>
+   <link rel="stylesheet" href="../../fi2001.css" type="text/css">
+</head>
+<body>
+&nbsp;
+<center>
+  <p><b>Fondamenti di Informatica</b> <br>
+<b>Ingegneria Idraulica Marittima e Trasporti, sede di Civitavecchia<br>
+
+Ingegneria della Sicurezza e Protezione, sede di Civitavecchia</b></p>
+</center>
+
+
+<p>
+<hr>
+<h2 align=center>Esercizi sull'unit&agrave; 3</h2>
+
+
+<blockquote>
+  <b>Esercitazione svolta a lezione</b> 
+
+<P>
+Definiamo insieme la classe <TT>chitarra</TT>.
+Le informazioni di interesse per una chitarra sono: il tipo, il produttore ed il prezzo. I metodi di interesse sono:
+<LI>
+Costruttore con 2 argomenti di tipo stringa: tipo e produttore.
+</LI>
+<LI>
+Costruttore con 3 argomenti di tipo stringa: tipo e produttore e prezzo.
+</LI>
+<LI>
+Un metodo che ritorni il tipo della chitarra
+</LI>
+<LI>
+Un metodo che ritorni il produttore della chitarra
+</LI>
+<LI>
+Un metodo che ritorni il prezzo della chitarra
+</LI>
+<LI>
+Un metodo che modifichi il prezzo della chitarra con il valore di tipo stringa passato come parametro
+</LI>
+<LI>
+Un metodo (<B>stampaChitarra()</B>)che stampi tutte le informazioni relative ad una chitarra a schermo
+</LI>
+<LI>
+Un metodo (<B>stampaChitarraFinestra()</B>)che stampi tutte le informazioni relative ad una chitarra su di una finestra di output
+</LI>
+<a href="soluzioni/solChit/chitarra.java">chitarra</a>
+</P>
+
+<P>
+Definiamo anche una classe provaChitarra che utilizzi tutti i metodi della classe chitarra.
+</P>
+
+<a href="soluzioni/solChit/provaChitarra.java">provaChitarra</a>
+</blockquote>
+
+
+  <b>Esercizio 0</b> 
+
+<blockquote> <b>Parte 1</b><br>
+Realizzare un programma java contenente due metodi statici: 
+concatena1 e concatena2.
+Il metodo concatena1 prende in ingresso due stringhe e concatena 
+la prima lettera della prima sringa con la prima lettera della seconda.
+Il metodo concatena2 prende in ingresso due stringhe e concatena le prime tre lettere della prima stringa con le prime tre lettere della seconda. 
+    &nbsp; &nbsp; &nbsp; <a href="soluzioni/sol0/concatena.java">Soluzione</a>
+</blockquote>
+
+
+<p><br>
+  <b>Esercizio 1</b> 
+<blockquote> <b>Parte 1</b><br>
+Realizzare un programma java che realizzi alcune funzionalit&agrave; 
+  per la manipolazione di stringhe utili per Internet. In particolare, devono essere 
+  definiti metodi statici che implementino le seguenti funzionalit&agrave;. 
+  <ul>
+    <li> Un metodo <code>email</code> che, presi come parametri tre stringhe rappresentanti 
+      nome, cognome e dominio di email di un utente, restituisca la stringa che 
+      rappresenta l'email dell'utente. Tale stringa &egrave; ottenuta concatenando: 
+      il primo carattere del nome, il carattere ".", il cognome, il carattere 
+      "@", ed il dominio di email. </li>
+    <li> Un metodo <code>homePage</code> che, presi come parametri due stringhe 
+      rappresentanti cognome e dominio web di un utente, restituisca la stringa 
+      che rappresenta la homepage dell'utente. Tale stringa &egrave; ottenuta 
+      concatenando: la stringa "http://", il dominio web, la stringa "/~", ed 
+      il cognome. </li>
+    <li> Un metodo <code>userId</code> che, presi come parametri due stringhe 
+      rappresentanti nome e cognome di un utente, restituisca la stringa che rappresenta 
+      lo userId dell'utente. Tale stringa &egrave; ottenuta concatenando: il primo 
+      carattere del nome con i primi sette caratteri del cognome. </li>
+    <li> Un metodo <code>password</code> che, presi come parametri due stringhe 
+      rappresentanti nome e cognome di un utente, restituisca una password generata 
+      automaticamente. Tale stringa &egrave; ottenuta concatenando i primi tre 
+      caratteri del cognome e gli ultimi tre del nome. </li>
+  </ul>
+  <b>Parte 2</b><br>
+	Definire una classe <code>Cliente1</code> che implementi un metodo <code>main</code>,
+	che chiede all'utente i dati opportuni mediante il metodo <code>JOptionPane.showInputDialog(...)</code>, 
+	invochi i metodi della classe definita al punto precedente e ne stampi i risultati.
+
+    &nbsp; &nbsp; &nbsp; <a href="soluzioni/sol2_1/FunzUtenti.java">Soluzione</a>
+</blockquote>
+
+<b>Esercizio 2</b> 
+<blockquote> Definire una classe <code>CD</code> per gestire le informazioni associate 
+  ad un CD, ovvero autore, titolo, casa discografica, e nome del proprietario. 
+  <p> Le operazioni di interesse sono: 
+  <ul>
+    <li><code>creaCD</code> che crea un oggetto CD, con autore, titolo e casa 
+      discografica; </li>
+    <li><code>stampaCD</code> che stampa autore, titolo e casa discografica di 
+      un CD su tre linee; </li>
+    <li><code>stampaProprietarioCD</code> che stampa i dati del proprietario di 
+      un CD; </li>
+    <li><code>getAutore</code> che restituisce l'autore di un CD; </li>
+    <li><code>getTitolo</code> che restituisce il titolo di un CD; </li>
+    <li><code>getCasa</code> che restituisce la casa discografica di un CD; </li>
+    <li><code>getProprietario </code> che restituisce il proprietario di un CD; 
+    </li>
+    <li><code>setProprietario </code> che imposta il proprietario di un CD alla 
+      stringa passata come parametro. </li>
+  </ul>
+  <p>&nbsp; &nbsp; &nbsp; <a href="soluzioni/sol2_2/CD.java">Soluzione</a></p>
+</blockquote>
+<b>Esercizio 3</b> 
+<blockquote> Scrivere un programma java che implementi un esempio per la classe 
+  <code>CD</code> dell'esercizio 2.2. <br>
+  La classe esempio deve eseguire le seguenti operazioni: 
+  <ul>
+    <li> legge il titolo di un primo CD, l'autore e la casa discografica e li 
+      memorizza in un oggetto corrispondente; </li>
+    <li> legge il titolo di un secondo CD, l'autore e la casa discografica e li 
+      memorizza in un oggetto corrispondente; </li>
+    <li> visualizza il primo CD; </li>
+    <li> visualizza il secondo CD; </li>
+    <li> legge il proprietario del primo CD ed aggiorna l'oggetto corrispondente; 
+    </li>
+    <li> visualizza il primo CD con il proprietario. </li>
+  </ul>
+   
+  &nbsp; &nbsp; &nbsp; <a href="soluzioni/sol2_3/ClienteCD.java">Soluzione</a>
+</blockquote>
+
+<!--b>Esercizio 4</b> 
+<blockquote> 
+  <p>Realizzare una classe <code>Animale</code> di cui interessa memorizzare il 
+    nome. <br> Le operazioni di interesse sono: </p>
+  <ul>
+    <li><code>Animale</code> che crea un oggetto Animale, il cui nome &egrave; 
+      passato come parametro; </li>
+    <li><code>emettiVerso</code> che stampa il verso dell'animale generico (ad 
+      esempio la stringa "@#%&amp;").</li>
+  </ul>
+    
+  <p>Particolari tipi di animali sono il cane, il gatto e il pappagallo. Per ciascuno 
+    di essi, realizzare un'opportuna classe Java avente un costruttore (che crea 
+    un oggetto opportuno con il nome associato ) e il metodo <code>emettiVerso</code> 
+    che stampa il verso opportuno. La classe associata al pappagallo ha in pi&ugrave; 
+    un metodo <code> ripeti</code> che stampa la stringa passata come parametro, 
+    ripetuta due volte.</p>
+    
+  <p>Infine, si realizzino due classi associate alle razze di cane Chiwawa e Rottweiler, 
+    aventi un costruttore e il metodo <code>emettiVerso</code> che stampa, rispettivamente, 
+    &quot;bau!&quot; e &quot;BAU&quot;.</p>
+  </blockquote>
+  <p align="left">&nbsp;</p>
+</blockquote-->
+</body>
+</html>

@@ -1,0 +1,92 @@
+<!doctype html public "-//w3c//dtd html 4.0 transitional//en">
+<html>
+<head>
+<link href="java.css" rel="stylesheet" type="text/css">
+<title>Disegno di linee con il mouse</title>
+</head>
+
+<body>
+
+<h2>Disegno di linee con il mouse</h2>
+
+Il programma seguente &egrave; un esempio di uso della
+funzione <tt>mouseUp</tt>. Si vuole disegnare della
+linee nella finestra usando il mouse, in questo modo:
+l'utente preme il pulsante in un punto, e quello &egrave;
+il punto iniziale della linea. Tenendo premuto il pulsante,
+si sposta il cursore nel punto in cui si vuole che la
+linea finisca, e l&iacute; si rilascia il pulsante.<p>
+
+La funzione <tt>mouseDown</tt> viene usata per
+memorizzare il punto iniziale della linea. La funzione
+<tt>mouseUp</tt> pu&ograve; disegnare la linea usando
+la posizione in cui il mouse &egrave; stato premuto e
+quella in cui &egrave; stato rilasciato. Dal momento che
+la posizione iniziale viene memorizzata dalla funzione
+<tt>mouseDown</tt> e poi usata dalla funzione
+<tt>mouseUp</tt>, deve essere rappresentata usando 
+variabili globali.<p>
+
+Usiamo quindi due variabili globali <tt>xi</tt> e
+<tt>yi</tt> per indicare la posizione in cui il pulsante
+&egrave; stato premuto. La funzione <tt>mouseDown</tt>
+si limita a memorizzare le coordinate in cui il pulsante
+&egrave; stato premuto (che &egrave; memorizzato nei suoi
+argomenti <tt>x</tt> e <tt>y</tt>) in queste variabili.
+La funzione <tt>mouseUp</tt> invece disegna la linea fra
+il punto iniziale (che &egrave; memorizzato in <tt>xi</tt>
+e <tt>yi</tt>) e il punto in cui il pulsante &egrave; stato
+sollevato, che &egrave; rappresentato dai suoi argomenti
+<tt>x</tt> e <tt>y</tt>.
+
+Il programma completo 
+<a href="UpDown.java">UpDown.java</a>
+&egrave; riportato qui sotto.<p>
+
+<pre>
+/*
+  Disegna linee fra i punti di pressione e
+  rilasciamento del pulsante.
+*/
+
+import java.awt.*;
+
+public class UpDown extends java.applet.Applet {
+	/* punto iniziale della linea */
+  int xi, yi;
+
+	/* memorizza il punto iniziale della linea */
+  public boolean mouseDown(Event e, int x, int y) {
+    xi=x;
+    yi=y;
+   
+    return true;
+  }
+
+	/* disegna la linea fra il punto iniziale e quello corrente */
+  public boolean mouseUp(Event e, int x, int y) {
+    Graphics g=getGraphics();
+
+    g.drawLine(xi,yi,x,y);
+
+    return true;
+  }
+}
+
+</pre>
+
+Naturalmente, le linee disegnate vengono cancellate ogni
+volta che la finestra viene coperta o ridotta a icona. Per
+rendere le linee disegnate permanenti, occorre che siano
+disegnate anche dalla funzione <tt>paint</tt>, per cui
+&egrave; necessario usare quattro vettori per memorizzare
+le coordinate dei punti iniziali e finali di ogni linea.<p>
+
+<p>
+<applet code="UpDown.class" height="500" width="500">
+</applet>
+
+</body>
+</html>
+
+

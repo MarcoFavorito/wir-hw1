@@ -1,0 +1,112 @@
+/*
+ * Analizzatore lessicale per miniHTML VERSIONE 2 (con attributi dei tag)
+ *
+ * da usare autonomamente
+ *
+ * (versione che effettua il solo riconoscimento lessicale)
+ *
+ * Sequenza di comandi per generare lo scanner:
+ *
+ *     flex htm1.fl
+ *     PER DOS/WINDOWS: gcc lexyy.c -lfl -o htm1
+ *     PER LINUX/UNIX: gcc lex.yy.c -lfl -o htm1
+ *
+ * Richiamare lo scanner tramite il comando:
+ *
+ *     htm1 < nomefileinput
+ *
+ * oppure ridirigendo l'output su un file:
+ *
+ *     htm1 < nomefileinput > nomefileoutput
+ */
+
+
+%{
+ #include <string.h>
+ #include <stdlib.h>
+%}
+
+delim ([ \t\n])+
+integer ("+"|"-")?[0-9]+
+
+%x PARAM
+%x VALUE
+
+%%
+
+<INITIAL>"<html>"
+<INITIAL>"</html>"
+<INITIAL>"<head>"
+<INITIAL>"</head>"
+<INITIAL>"</body>"
+<INITIAL>"<title>"
+<INITIAL>"</title>"
+<INITIAL>"<ol>"
+<INITIAL>"</ol>"
+<INITIAL>"<ul>"
+<INITIAL>"</ul>"
+<INITIAL>"<li>"
+<INITIAL>"</li>"
+<INITIAL>"<h1>"
+<INITIAL>"</h1>"
+<INITIAL>"<h2>"
+<INITIAL>"</h2>"
+<INITIAL>"<h3>"
+<INITIAL>"</h3>"
+<INITIAL>"<h4>"
+<INITIAL>"</h4>"
+<INITIAL>"<h5>"
+<INITIAL>"</h5>"
+<INITIAL>"<h6>"
+<INITIAL>"</h6>"
+<INITIAL>"<em>"
+<INITIAL>"</em>"
+<INITIAL>"<center>"
+<INITIAL>"</center>"
+<INITIAL>"<code>"
+<INITIAL>"</code>"
+<INITIAL>"<b>"
+<INITIAL>"</b>"
+<INITIAL>"<i>"
+<INITIAL>"</i>"
+<INITIAL>"<dd>"
+<INITIAL>"</dd>"
+<INITIAL>"<br>"
+<INITIAL>"<p>"
+<INITIAL>"</p>"
+<INITIAL>"</font>"
+<INITIAL>"</a>"
+
+<INITIAL>"<meta" {BEGIN(PARAM);}
+<INITIAL>"<body" {BEGIN(PARAM);}
+<INITIAL>"<font" {BEGIN(PARAM);}
+<INITIAL>"<a"	 {BEGIN(PARAM);}
+<INITIAL>"<hr"	 {BEGIN(PARAM);}
+
+<INITIAL>{delim}
+<INITIAL>[^\<\>]+
+<INITIAL>"<!"[^\>]*">"		
+<INITIAL><<EOF>>	{return(0);}
+
+
+<PARAM>{delim}
+<PARAM>"content"
+<PARAM>("name"|"NAME")
+<PARAM>"text"
+<PARAM>"link"
+<PARAM>"alink"
+<PARAM>"vlink"
+<PARAM>"bgcolor"
+<PARAM>"href"
+<PARAM>"size"
+<PARAM>"face"
+<PARAM>"http-equiv"
+<PARAM>("width"|"WIDTH")
+<PARAM>"="       {BEGIN(VALUE);}
+<PARAM>">"       {BEGIN(INITIAL);}
+
+<VALUE>{delim}
+<VALUE>\"([^\"])*\"  {BEGIN(PARAM);}
+<VALUE>{integer}     {BEGIN(PARAM);}
+
+%%

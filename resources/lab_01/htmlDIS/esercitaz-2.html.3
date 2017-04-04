@@ -1,0 +1,82 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1">
+<META NAME="Generator" CONTENT="Microsoft Word 98">
+<TITLE>2&#170; Esercitazione in laboratorio (a.a. 1998/99)</TITLE>
+</HEAD>
+<BODY>
+<DIR>
+
+<B><FONT FACE="Times" SIZE=2><P ALIGN="CENTER">Fondamenti di Informatica - <I>Ingegneria per l'Ambiente e il Territorio</I> - A.A. 98/99</P>
+<P ALIGN="CENTER"> - Seconda esercitazione in laboratorio - </P>
+<P ALIGN="CENTER"></P></DIR>
+
+</FONT><FONT FACE="Times" SIZE=1><P>Problema (test di primalit&agrave;)</P>
+</B><P>"Dato un naturale <I>n</I>, stabilire se esso &egrave; primo oppure no"</P>
+
+<P>Si propone di seguito il codice C di un programma che risolve il problema. Si invitano gli studenti a:</P>
+<OL>
+
+<LI>Analizzare il programma per comprenderne la modalit&agrave; di funzionamento.</LI>
+<LI VALUE=1>Scrivere il programma in un ambiente di sviluppo per il linguaggio C (ad es., TurboC).</LI></OL>
+
+<DIR>
+<DIR>
+<DIR>
+
+</FONT><FONT FACE="Courier" SIZE=1><P>#include &lt;stdio.h&gt;</P>
+
+<P>main () {</P>
+<P>  int n, primo, divisore;</P>
+
+<P>  /* <I>n</I> e` il naturale da testare</P>
+
+<P>     <I>primo</I> e` una variabile che alla fine della esecuzione contiene uno fra i seguenti valori:</P>
+<P>       0 (<I>n</I> e` primo)</P>
+<P>       1 (<I>n</I> e` primo)</P>
+<P>       2 (errore, <I>n</I> e` negativo)</P>
+
+<P>     <I>divisore</I> contiene i vari divisori che si provano (2, 3, 4, ...) per stabilire se <I>n</I> e` primo</P>
+<P>  */</P>
+
+<P>  printf("\n\n\nTest di primalita`. Benvenuti.\n");</P>
+<P>  printf("Digita il numero da testare: ");</P>
+<P>  scanf("%d", &amp;n);</P>
+
+<P>  if (n &lt;= 0)</P>
+<P>    primo = 2;</P>
+<P>  else {</P>
+<P>    primo = 1; /* assumiamo che <I>n</I> sia primo */</P>
+<P>    divisore = 2;</P>
+<P>    while (divisore &lt; n) {</P>
+<P>      if (n % divisore == 0)</P>
+<P>        primo = 0; /* e` stato trovato un divisore */</P>
+<P>      divisore = divisore + 1;</P>
+<P>    }</P>
+<P>  }</P>
+
+<P>  if (primo == 0)</P>
+<P>    printf("Il numero %d non e` primo.", n);</P>
+<P>  else if (primo == 1)</P>
+<P>    printf("Il numero %d e` primo.", n);</P>
+<P>  else /* (primo == 2) */</P>
+<P>    printf("Errore: hai immesso un numero negativo.");</P>
+
+<P>    printf(" Arrivederci.\n");</P>
+<P>}</P>
+</FONT><FONT FACE="Times" SIZE=1></DIR>
+</DIR>
+</DIR>
+
+<B><P>Attivit&agrave; di raffinamento</P>
+</B><P>Con riferimento al programma di cui sopra, sono evidenti alcuni limiti dello stesso:</P>
+<OL>
+
+<LI>In caso di numero non primo, il programma continua (inutilmente) a lavorare anche se trova subito un divisore.</LI>
+<LI VALUE=1>Il test utilizzato nel ciclo </FONT><FONT FACE="Courier" SIZE=1>while</FONT><FONT FACE="Times" SIZE=1> usa un valore limite (<I>n</I>) inutilmente elevato (per verificare se un naturale <I>m</I> &egrave; primo basta cercare un divisore nell'intervallo</FONT><FONT FACE="Times" SIZE=1> <IMG SRC="Image38.gif" WIDTH=37 HEIGHT=14></FONT><FONT FACE="Times" SIZE=1>).</LI>
+<LI VALUE=1>Se il numero non &egrave; primo il programma non ci d&agrave; informazione alcuna sui suoi divisori.</LI></OL>
+
+<P>Ci&ograve; premesso, si invitano gli studenti a modificare il programma in modo da ovviare ai limiti descritti. In particolare, scrivere un programma per il test di primalit&agrave; che termini non appena la risposta al test sia "certa" e restituisca, in caso di numero non primo, il pi&ugrave; piccolo divisore del numero.</P>
+
+<P>&nbsp;</P></FONT></BODY>
+</HTML>

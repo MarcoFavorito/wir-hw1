@@ -1,0 +1,121 @@
+<!doctype html public "-//w3c//dtd html 4.0 transitional//en">
+<html>
+<head>
+<link href="java.css" rel="stylesheet" type="text/css">
+<title>Somma elementi di una serie</title>
+</head>
+
+<body>
+
+<h2>Somma dei primi elementi di una serie</h2>
+
+<p>
+Consideriamo questo problema: abbiamo una serie definitita
+come la somma dei valori di una funzione f(x). Vogliamo
+calcolare la somma di questi valori per x che va da 0 a
+un certo valore prefissato, per esempio 5 oppure 29. In
+altre parole, si vuole sapere il valore di: 
+
+<center>
+<img src="sommatoria.jpeg">
+</center>
+
+<p>
+Per fare questo, si pu&ograve; procedere nel modo seguente:
+si dichiara una variabile <tt>somma</tt> che contiene la
+somma parziale calcolata fino a questo punto. Si comincia
+con <tt>somma=0;</tt>. Poi si aggiunge a questa variabile
+il valore della funzione valutata con argomento 0, poi con
+argomento 1, poi 2, ecc. fino al limite considerato. Questo
+procedimento &egrave; stato seguito nel programma
+<a href="Serie.java">Serie.java</a> per la funzione
+f(x)=x*x.
+
+<pre>
+/* 
+  Calcola la somma dei primi valori di una serie.
+*/
+
+class Serie {
+  public static void main(String[] args) {
+    int x;
+    int somma;
+
+    somma=0;
+
+    x=0;
+    somma=somma+x*x;
+
+    x=1;
+    somma=somma+x*x;
+
+    x=2;
+    somma=somma+x*x;
+
+    x=3;
+    somma=somma+x*x;
+
+    x=4;
+    somma=somma+x*x;
+
+    x=5;
+    somma=somma+x*x;
+  
+    System.out.println("La somma vale "+somma);
+  }
+}
+    
+
+</pre>
+
+<p>
+Tutto questo funziona perfettamente, ma &egrave; possibile
+solo se i valori da calcolare sono pochi. Se si volesse per
+esempio la somma dei valori della funzione da 0 a 100,
+sarebbero necessarie pi&ugrave; di 200 linee di codice.
+Questo meccanismo risolutivo ha un altro problema: ogni
+volta che si vuole effettuare un calcolo su un intervallo
+diverso (per esempio di vuole passare da 200 a 90) occorre
+modificare radicalmente il codice del programma, eliminando
+o aggiungendo istruzioni.<p>
+
+Il programma di somma dei valori di una funzione si pu&ograve;
+facilmente realizzare usando un ciclo. Vogliamo infatti eseguire
+la istruzione <tt>somma=somma+x*x</tt> per <tt>i</tt> che vale
+prima 0, poi 1, poi 2, ecc, fino a un valore da noi scelto.
+Il programma <a href="SerieFor.java">SerieFor.java</a>
+calcola il valore della somma usando un ciclo.<p>
+
+<pre>
+/*
+  Somma dei primi valori di una serie
+*/
+
+class SerieFor {
+  public static void main(String[] args) {
+    int x;
+    int somma;
+
+    somma=0;
+    for(x=0; x<=5; x=x+1) {
+      somma=somma+x*x;
+    }
+
+    System.out.println("La somma vale "+somma);
+  }
+}
+
+
+</pre>
+
+<p>
+A parte la brevit&agrave; del programma, si fa notare come sia
+facimente modificabile: per esempio, se si vuole calcolare la
+somma da 0 a 100 (invece che da 0 a 5), basta modificare la
+istruzione for, facendola diventare
+<tt>for(x=0; x<=100; x=x+1) {</tt>.<p>
+
+</body>
+</html>
+
+

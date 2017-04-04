@@ -1,0 +1,66 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=windows-1252">
+<title></title>
+</HEAD>
+<BODY background="bgrnd.jpg">
+
+<B><FONT SIZE=5><P>12)</FONT><FONT SIZE=5> </FONT><FONT SIZE=5>Heap </P>
+</B></FONT><P ALIGN="RIGHT">Riferimenti: <B>[2]</B> capitolo 7</P>
+<hr>
+
+<I>1.&nbsp; Rappresentazione di un albero binario, mediante array
+<OL>
+
+</I><P ALIGN="JUSTIFY">Ha nel primo elemento il nodo radice.  Il padre del generico nodo i &egrave; i/2, il figlio sinistro del generico nodo i &egrave; 2i, mentre il figlio destro del generico nodo i &egrave; 2i+1</P>
+<I></OL>
+
+
+2.&nbsp; Caratteristiche della struttura dati "Heap"
+</I>
+<OL>
+
+<P ALIGN="JUSTIFY">L'heap pu&ograve; essere visto come un albero binario completo; si presta ad essere rappresentato mediante array (ogni elemento dell'array rappresenta un nodo) e soddisfa la <I>propriet&agrave; di ordinamento parziale dell'heap</I>: per ogni nodo i (esclusa la radice), il valore del nodo &egrave; minore o uguale al valore del padre.</P>
+<I></OL>
+
+
+3.&nbsp; Metodi fondamentali per la struttura dati
+
+
+<UL>
+</I><LI>Inserimento - O(lg n) dovuto alla chiamata a FaiSalire</LI><LI>Estrazione del massimo - O(lg n) dovuto alla chiamata a FaiScendere</LI><LI>Ripristino propriet&agrave; dell'heap - O(lg n)</LI></UL>
+
+<I>4.&nbsp; Implementazione
+
+<OL>
+
+</I><P ALIGN="CENTER">Analisi di <a href="heap.h"> heap.h</a> e <a href="heap.cpp"> heap.cpp</a></P>
+<I></OL>
+5.&nbsp; Trasformazione in Heap di un array
+</I>
+
+<OL>
+
+<P ALIGN="JUSTIFY">void BuildHeap(int v[], int n) {</P>
+<P ALIGN="JUSTIFY">for (int i = n/2; i &gt;= 1; i--)</P>
+<P ALIGN="JUSTIFY">FaiScendere(i,v,n); }</P>
+<I></OL>
+6.&nbsp; L'algoritmo "Heapsort"
+</I>
+
+<OL>
+
+<P ALIGN="JUSTIFY">Basandoci sulla propriet&agrave; dell'ordinamento parziale, la radice conterr&agrave; sempre l'elemento con chiave maggiore. E' possibile ordinare un array trasformandolo in un heap, estraendo la radice (e ponendola nell'ultimo elemento dell'array che si vuole ordinare) e ripetendo l'operazione sui rimanenti elementi dell'array. L'algoritmo ha complessit&agrave; O(n lg n) corrispondente ad n chiamate della funzione di estrazione del massimo.</P>
+<P ALIGN="CENTER">Analisi di <a href="heapsort.cpp"> heapsort.cpp</a> e <a href="heapsort2.cpp">heapsort2.cpp</a></P>
+<I></OL>
+7.&nbsp; Code con priorit&agrave;
+<DIR>
+<DIR>
+
+</I><P ALIGN="JUSTIFY">Una coda con priorit&agrave; &egrave; una struttura dati utilizzata per la gestione di elementi con associata una chiave.&nbsp;</P>
+<P ALIGN="center">  Analisi di <a href="coda_priorita.h"> coda_priorit&agrave;.h</a> e
+<a href="coda_priorita.cpp"> coda_priorit&agrave;.cpp</a></P>
+</DIR>
+</DIR>
+</BODY>
+</HTML>

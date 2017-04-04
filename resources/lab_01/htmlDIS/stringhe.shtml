@@ -1,0 +1,134 @@
+<!doctype html public "-//w3c//dtd html 4.0 transitional//en">
+<html>
+<head>
+<link href="java.css" rel="stylesheet" type="text/css">
+<title>Stringhe</title>
+</head>
+
+<body>
+
+<h2>Stringhe</h2>
+
+<p>
+Le <b>stringhe</b> sono sequenze di caratteri. Nei precedenti
+programmi le stringhe sono state gi&agrave; usate, anche se
+non erano state introdotte formalmente. La istruzione di stampa
+<tt>System.out.println</tt> &egrave; infatti una istruzione
+che stampa una stringa. Per dire all'interprete come
+&egrave; fatta una stringa si pu&ograve; mettere la sequenza
+di caratteri che la compone fra virgolette doppie. Per esempio,
+la sequenza di caratteri 'abcd efgs' viene rappresentata
+come <tt>"abcd efgs"</tt>. Si noti che una stringa pu&ograve;
+anche contenre degli spazi, per cui <tt>"abcd efgs"</tt>
+&egrave; una unica stringa. Dal momento che la istruzione
+<tt>System.out.println</tt> stampa una stringa, se si
+esegue <tt>System.out.println("abcd efgs")</tt> viene stampata
+la stringa 'abcd efgs'.<p>
+
+Le stringhe sono il primo tipo di dati non numerico che
+vediamo. Mentre <tt>int</tt> e <tt>double</tt> erano
+rappresentazione di numeri (interi e reali) le stringhe
+sono sequenze di caratteri. Per il resto, sono tipi di dati come
+gli altri, per cui si possono definire e usare variabili
+di tipo stringa. La dichiarazione tipica &egrave; la
+seguente:<p>
+
+<pre>
+String a;
+</pre>
+
+<p>
+Per esempio, il programma
+<a href="PrimaStringa.java">PrimaStringa.java</a> definisce
+una variabile di tipo stringa, gli assegna una valore (che
+in questo caso non pu&ograve; essere un numero, ma deve
+essere una stringa), e la stampa.<p>
+
+<pre>
+/*
+  Definisce e usa una variabile di tipo stringa.
+*/
+
+class PrimaStringa {
+  public static void main(String[] args) {
+    String a;
+
+    a="Questa e' una stringa.";
+
+    System.out.println(a);
+  }
+}
+
+</pre>
+
+<p>
+Le espressioni che &egrave; possible scrivere con le stringhe
+sono diverse da quelle sui numeri. Per esempio, l'operatore
+<tt>+</tt> nel caso dei numeri rappresenta la normale somma
+numerica, mentre nel caso delle stringhe &egrave; la concatenazione,
+cio&egrave; mette le due stringhe l'una dietro l'altra. Per
+esempio, la espressione <tt>"abcd efg"+"12c"</tt> rappresenta
+la stringa <tt>"abcd efg12c"</tt>, che &egrave; la stringa
+ottenuta mettendo il secondo operando dopo il primo.<p>
+
+Un caso particolare da tenere a mente &egrave; che quando si
+un numero a una stringa, il numero viene prima convertito in
+stringa, e poi viene fatta la normale concatenazione.
+Per esempio, la espressione
+<tt>"questo numero vale"+12</tt> d&agrave; come risultato la
+stringa <tt>"questo numero vale12"</tt>. Si faccia attenzione
+che il numero <tt>12</tt> &egrave; molto differente dalla
+stringa <tt>"12"</tt>. Per esempio, <tt>12+4</tt> d&agrave;
+<tt>16</tt> come risultato, mentre <tt>"12"+4</tt> d&agrave;
+<tt>"124"</tt>. La seconda espressione &egrave; infatti la
+somma di una stringa e di un numero, per cui il numero <tt>4</tt>
+viene convertito nella stringa <tt>"4"</tt>; a questo punto si
+fa la somma fra le due stringhe <tt>"12"</tt> e <tt>"4"</tt>.
+Usando la regola della concatenzione, si mette il carattere
+<tt>4</tt> subito dopo i caratteri <tt>12</tt>, per cui si
+ottiene la stringa <tt>124</tt>.<p>
+
+Il programma <a href="Concatenazione.java">Concatenazione.java</a>
+contiene alcuni esempi di operazioni su stringhe.<p>
+
+<pre>
+/*
+  Alcuni esempi di concatenazioni fra stringhe.
+*/
+
+class Concatenazione {
+  public static void main(String[] args) {
+    int a=10, b=20, c;
+    String z="abcd";
+    String x="123";
+    String y;
+
+    c=a+b;	// questa e' una somma fra interi: risultato 30
+
+    System.out.println(c);
+
+    y=x+z;	// concatenazione fra stringhe: risultato "123abcd"
+
+    System.out.println(y);
+
+    y=12+"3";	// concatena una stringa a un intero: ris. "123"
+
+    System.out.println(y);
+
+    y=c+x;	// concatena stringa e intero: risultato "30123"
+
+    System.out.println(y);
+  }
+}
+
+</pre>
+
+<p>
+La regola generale &egrave; molto semplice: se si somma un
+intero con una stringa, si ottiene una stringa. Una cosa simile
+succede sommando un intero a un reale: si ottiene un reale.<p>
+
+
+</body>
+</html>
+

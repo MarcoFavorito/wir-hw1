@@ -1,0 +1,55 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=windows-1252">
+<TITLE>Reti di Calcolatori</TITLE>
+</HEAD>
+<BODY background="bgrnd.jpg">
+
+<B><FONT SIZE=5><P>14) Il livello applicativo in Internet - CGI e sistemi <I>Java-based</P>
+<hr>
+</I></FONT>
+</B>1.&nbsp; L'interfaccia CGI
+<OL>
+
+<P ALIGN="JUSTIFY">Specifica il protocollo di comunicazione, ovvero le regole che governano l'interfacciamento tra server web, browser e applicazioni CGI che affiancano il server http.</P>
+<P ALIGN="JUSTIFY">In una pagina html &egrave; possibile introdurre URL che individuano risorse particolari come programmi residenti su server (solitamente nella cartella <I>cgi-bin</I>)</P>
+<I><P ALIGN="CENTER">&lt;A HREF="http://nome_dominio/cartella_del_server/eseguibile.exe&gt;…&gt;</P>
+</I></OL>
+
+
+2.&nbsp; Ciclo di esecuzione di una richiesta CGI
+
+
+<UL>
+
+<UL>
+<LI>Il server http fornisce al browser una pagina html contenente (sotto forma di link) il riferimento ad un'applicazione CGI.</LI><LI>Il browser esegue una richiesta al server http, di invocazione (con eventuali parametri) dell'applicazione CGI.</LI><LI>Il server http esegue l'attivazione dell'applicazione CGI, redirezionando l'input standard e l'output standard.</LI><LI>L'applicazione CGI elabora la richiesta e fornisce la risposta (es: una pagina html).</LI><LI>Il server http fornisce il risultato prodotto al browser richiedente.</LI></UL>
+</UL>
+
+3.&nbsp; Interazione con l'utente nelle pagine html
+
+<OL>
+
+<P ALIGN="JUSTIFY">L'html fornisce dei tag con i quali &egrave; possibile definire formati di input da proporre al visitatore (esempio: <B>test1form.html</B>).  L'utilizzo di tali tag e la specifica CGI consentono la realizzazione di "ambienti" client/server su internet.</P>
+</OL>
+4.&nbsp; Passaggio di parametri
+
+<OL>
+
+<P ALIGN="JUSTIFY">Le modalit&agrave; per il passaggio di eventuali parametri dipendono dal metodo di richiesta utilizzato: "GET" o "POST".  Nel metodo GET i parametri vengono accodati all'URL che individua il CGI, mentre nel metodo POST i dati vengono inseriti nel corpo della richiesta http.  Il primo metodo soffre dei limiti dettati dalla lunghezza massima dell'URL (256 caratteri), con il metodo POST invece tale limite pu&ograve; essere abbondantemente superato.  Nel metodo GET, un punto interrogativo sull'URL, separa l'identificativo della risorsa dai parametri, eventualmente (se pi&ugrave; di uno) separati dal carattere "+" (<B>test2get.html, test2getnopar.java, test2gethref.java, test2getgif.java</B>).  Nel metodo POST i dati vengono accodati all'header http e rigirati allo standard input dell'applicazione CGI (<B>test3post.html, test3postpar.java</B>). </P>
+</OL>
+5.&nbsp; Accesso ai dati via Internet
+
+<OL>
+
+<P ALIGN="JUSTIFY">Analisi di <B>test4daticgi.*</B>, <B>RichiestaSQL.java</B> e <B>ConnessioneODBC.java</P>
+</B></OL>
+6.&nbsp; Soluzione alternativa Applet-Server java
+<DIR>
+<DIR>
+
+<P ALIGN="JUSTIFY">Analisi di <B>test5datijava.html</B>, <B>ServerODBC.java</B> e <B>RichiestaParametri.java
+</B></P></DIR>
+</DIR>
+</BODY>
+</HTML>

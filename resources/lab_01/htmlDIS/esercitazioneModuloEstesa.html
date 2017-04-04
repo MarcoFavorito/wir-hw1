@@ -1,0 +1,74 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML><HEAD><TITLE>Fattura</TITLE>
+<META http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<SCRIPT language=Javascript>
+<!-- /* Hide content from old browsers */
+
+function controllaDati(){
+    if ( isNaN(document.fattura.prezzoUnitario.value)  ) {
+	window.alert("il prezzo unitario deve essere composto solo da cifre");
+        document.fattura.prezzoUnitario.focus();
+	return false;
+    }
+    else if ( document.fattura.prezzoUnitario.value == ""  ) {
+	window.alert("il prezzo unitario non può essere vuoto");
+        document.fattura.prezzoUnitario.focus();
+	return false;
+    }
+    else if ( isNaN(document.fattura.quantita.value)  ) {
+	window.alert("la quantità deve essere composta solo da cifre");
+        document.fattura.quantita.focus();
+	return false;
+    }
+    else if ( document.fattura.quantita.value == "" ) {
+	window.alert("la quantità non può essere vuota");
+        document.fattura.quantita.focus();
+	return false;
+    }
+    else {
+        return true;
+    }
+}
+
+function calcola()
+{
+		var prezzo;
+		prezzo = document.fattura.prezzoUnitario.value *                      
+    document.fattura.quantita.value;
+		var iva;
+                iva = prezzo * document.fattura.aliquota.value;
+
+		var tot=prezzo+iva;
+		document.fattura.totale.value=tot;
+                return true;
+}
+// end hiding content from old browsers  -->
+</SCRIPT>
+
+</HEAD>
+<BODY text=white bgColor=blue>
+<FORM name="fattura">
+<TABLE cellPadding=10>
+  <TR>
+    <TD align=right>Prezzo unitario: 
+    <TD><INPUT style="TEXT-ALIGN: right" name="prezzoUnitario"> 
+  <TR>
+    <TD align=right>Quantità: 
+    <TD><INPUT style="TEXT-ALIGN: right" name="quantita"> 
+  <TR>
+    <TD>
+      <select name="aliquota">
+	<option value="0"> Non imponibile</option>
+        <option value="0.1"> I.V.A. 10%</option>
+        <option value="0.2" selected> I.V.A. 20%</option>
+      </select>
+  <TR>
+    <TD><INPUT onClick="controllaDati(); calcola();" type=button value="Calcola 
+Totale" name=calcoloTotale> 
+    <TD><INPUT type=reset value=Azzera> </TR></TABLE>
+<HR>
+<STRONG>Totale:</STRONG>
+<TD><INPUT style="TEXT-ALIGN: right" name="totale"> 
+</FORM>
+</BODY>
+</HTML>

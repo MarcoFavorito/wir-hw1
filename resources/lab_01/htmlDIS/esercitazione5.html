@@ -1,0 +1,105 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1">
+<TITLE>esercitazione 17/11/2000</TITLE>
+</HEAD>
+<BODY>
+
+<FONT FACE="Times"><DIR>
+
+<H2 ALIGN="CENTER"
+>Universit&agrave; DI ROMA &quot;LA SAPIENZA&quot;<BR>
+Corso di Laurea in Ingegneria Elettrica<BR>
+Corso di FONDAMENTI DI INFORMATICA<BR>
+per l&#146;A.A. 2000/01 (Prof. Donini) <BR>
+Quinta esercitazione in laboratorio<BR>
+</H2>
+
+<H3>DIFFERENTI ESECUZIONI PASSO-PASSO</H3>
+
+<P ALIGN="JUSTIFY">Aprite il programma in 
+<B>E:\PROGRAM\FOND\DONINI\DONINI00\FUNZIONI\QUARTA.C</B>. </P>
+
+<P ALIGN="JUSTIFY">&#9;Il programma calcola la quarta potenza di un 
+numero, utilizzando una funzione &quot;
+<FONT FACE="Courier">quarta</FONT>&quot; che a sua volta ne 
+chiama una &quot;</FONT><FONT FACE="Courier">quadrato</FONT><FONT 
+FACE="Times">&quot;.</P>
+
+<P ALIGN="JUSTIFY">&#9;Stabilite di ispezionare (<B>Watch</B>) le 
+variabili </FONT><FONT FACE="Courier">x, y</FONT><FONT FACE="Times"> e 
+</FONT><FONT FACE="Courier">c </FONT><FONT FACE="Times">come spiegato 
+nella Seconda Esercitazione. Ridimensionate (men&ugrave; <B>Window</B>  - 
+<B>Tile</B>) opportunamente le finestre in modo da poter vedere 
+contemporaneamente le finestre<B> Watch, Output </B> e il programma.</P>
+
+<P ALIGN="JUSTIFY">&#9;Eseguite il programma "passo-passo", usando il 
+tasto <B>F8</B> ("step over"). Con questa modalit&agrave; di esecuzione, 
+una chiamata di funzione viene eseguita in un solo passo, come fosse 
+un'istruzione elementare. Verificate che la chiamata alla funzione 
+</FONT><FONT FACE="Courier">quarta</FONT><FONT FACE="Times"> viene 
+eseguita in un solo passo. Questa modalit&agrave; &egrave; utile quando, 
+cercando gli errori in un programma, gi&agrave; sapete che una funzione 
+&egrave; corretta. In tal caso &egrave; inutile cercare l'errore tra le 
+istruzioni interne alla funzione.</P>
+<P ALIGN="JUSTIFY">&#9;Se invece volete seguire l'esecuzione delle 
+istruzioni interne ad una funzione, usate il tasto <B>F7</B> ("trace"). 
+Eseguite il programma passo-passo con <B>F7</B> e verificate che ad ogni 
+chiamata di funzione il programma esegue le istruzioni interne della 
+funzione. </P>
+
+<P ALIGN="JUSTIFY">&#9;Potete alternare l'uso di <B>F7 </B>e <B>F8</B>, a 
+seconda di quali chiamate di funzione volete seguire in dettaglio e quali 
+no. Eseguite il programma passo-passo usando <B>F7 </B>per la chiamata di 
+</FONT><FONT FACE="Courier">quarta,</FONT><FONT FACE="Times"> e poi usate 
+<B>F8</B> per<B> </B>eseguire<B> </B>in un solo passo le chiamate alla 
+funzione </FONT><FONT FACE="Courier">quadrato</FONT>.</P>
+
+<FONT FACE="Times">
+<B><P>&#9;Domanda: </B>osservate nella finestra di <B>Watch</B> come 
+variano i valori delle variabili e dei parametri.<B> </B>Perch&eacute; 
+quando &egrave; in esecuzione </FONT><FONT FACE="Courier">main</FONT><FONT 
+FACE="Times">, il simbolo </FONT><FONT FACE="Courier">c</FONT><FONT 
+FACE="Times"> non &egrave; definito, e quandosono in esecuzione le 
+funzioni, </FONT><FONT FACE="Courier">x</FONT><FONT FACE="Times"> ed 
+</FONT><FONT FACE="Courier">y</FONT><FONT FACE="Times"> sono 
+indefinite?</P>
+
+<H3>PILA DELLE ATTIVAZIONI (CALL STACK)</H3>
+
+<P ALIGN="JUSTIFY">&#9;</B>Si pu&ograve; visualizzare la pila delle 
+attivazioni delle funzioni ("Call stack"), per vedere, in un determinato 
+momento dell&#146;esecuzione, quale funzione  &egrave; attiva, e quali 
+sono sospese in attesa che le chiamate ritornino.</P>
+
+<P ALIGN="JUSTIFY">&#9;Eseguite il programma passo-passo con <B>F7, 
+</B>ed<B> </B>arrivate sino alla esecuzione  della funzione </FONT><FONT 
+FACE="Courier">quadrato</FONT><FONT FACE="Times">. Aprite adesso il 
+men&ugrave; <B>Debug</B> e selezionate dal men&ugrave; <B>Call stack. 
+</B>Si apre una nuova finestra con questo nome, che visualizza la pila 
+delle attivazioni. Le chiamate pi&ugrave; recenti sono pi&ugrave; in alto, 
+le prime pi&ugrave; in basso; </FONT><FONT FACE="Courier">main</FONT><FONT 
+FACE="Times"> &egrave; sempre sul fondo.</P>
+<P ALIGN="JUSTIFY">&#9;Premete OK per chiudere la finestra e tornare 
+all&#146;esecuzione.</P>
+
+<H3>ESERCIZIO 1</H3>
+
+<P>Aprite il programma 
+<B>E:\PROGRAM\FOND\DONINI\DONINI00\FUNZIONI\LETTERE.C. </B>Completate il 
+programma definendo le funzioni </FONT><FONT 
+FACE="Courier">maiuscola</FONT><FONT FACE="Times">, </FONT><FONT 
+FACE="Courier">minuscola</FONT><FONT FACE="Times">, </FONT><FONT 
+FACE="Courier">lettera</FONT><FONT FACE="Times">, ed eseguite pi&ugrave; 
+volte, dando almeno una lettera maiuscola, almeno una minuscola, ed almeno 
+un carattere non alfabetico.</P>
+
+<H3>ESERCIZIO 2</H3>
+
+<P>Aprite il programma 
+<B>E:\PROGRAM\FOND\DONINI\DONINI00\FUNZIONI\UPCASE.C. </B>Completate il 
+programma principale, e definite la funzione upcase . Se serve, potete 
+usare funzioni definite precedentemente.</P></DIR>
+
+</FONT></BODY>
+</HTML>

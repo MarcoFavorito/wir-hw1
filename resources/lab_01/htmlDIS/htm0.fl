@@ -1,0 +1,81 @@
+/*
+ * Analizzatore lessicale per miniHTML VERSIONE 1 (senza attributi dei tag)
+ *
+ * da usare autonomamente
+ *
+ * (versione che effettua il solo riconoscimento lessicale)
+ *
+ * Sequenza di comandi per generare lo scanner:
+ *
+ *     flex htm0.fl
+ *     PER DOS/WINDOWS: gcc lexyy.c -lfl -o htm0
+ *     PER LINUX/UNIX: gcc lex.yy.c -lfl -o htm0
+ *
+ * Richiamare lo scanner tramite il comando:
+ *
+ *     htm0 < nomefileinput
+ *
+ * oppure ridirigendo l'output su un file:
+ *
+ *     htm0 < nomefileinput > nomefileoutput
+ */
+
+%{
+ #include <string.h>
+ #include <stdlib.h>
+%}
+
+delim ([ \t\n])+
+
+%%
+
+"<html>"
+"</html>"
+"<head>"
+"</head>"
+"<body>"
+"</body>"
+"<title>"
+"</title>"
+"<ol>"
+"</ol>"
+"<ul>"
+"</ul>"
+"<li>"
+"</li>"
+"<h1>"
+"</h1>"
+"<h2>"
+"</h2>"
+"<h3>"
+"</h3>"
+"<h4>"
+"</h4>"
+"<h5>"
+"</h5>"
+"<h6>"
+"</h6>"
+"<em>"
+"</em>"
+"<center>"
+"</center>"
+"<code>"
+"</code>"
+"<b>"
+"</b>"
+"<i>"
+"</i>"
+"<dd>"
+"</dd>"
+"<br>"
+"<p>"
+"<hr>"
+
+<<EOF>>	{return(0);}
+
+{delim}
+[^\<\>]+
+"<!"[^\>]*">"		
+
+%%
+

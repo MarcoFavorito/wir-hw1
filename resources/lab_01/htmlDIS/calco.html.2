@@ -1,0 +1,106 @@
+<html>
+<head>
+<title>Prova al calcolatore 11/4/2002</title>
+</head>
+
+<body>
+
+<h1>Prova al calcolatore 11/4/2002</h1>
+
+<p>
+Si vuole realizzare la gestione di un mobilificio.
+Per ogni mobile, viene memorizzato un numero
+identificativo univoco (un intero), il tipo di
+mobile (poltrona, divano, ecc) come stringa,
+il nome della persona che lo ha comprato, e la
+data di consegna. Questi ultimo due dati sono
+stringhe, e possono valere <tt>"n/a"</tt>, se
+il mobile non &egrave; stato ancora comprato
+oppure non &egrave; stato ancora consegnato.
+</p>
+
+<h4>Parte I</h4>
+
+<p>
+Realizzare la classe <tt>Mobile</tt>, con i
+seguenti metodi:
+</p>
+
+<dl>
+
+<dt>costruttore
+<dd>ha come argomenti un intero e tre stringhe
+
+<dt><tt>getNumero</tt>
+<dd>restituisce il numero del mobile
+
+<dt><tt>getTipo</tt>
+<dd>restituisce il tipo del mobile
+
+<dt><tt>getCompratore</tt>
+<dd>restituisce il tipo del compratore,
+oppure la stringa <tt>"n/a"</tt>
+
+<dt><tt>getData</tt>
+<dd>restituisce la data di consegna
+oppure la stringa <tt>"n/a"</tt>
+
+<dt><tt>consegnato</tt>
+<dd>restituisce <tt>true</tt> se il mobile
+&egrave; stato comprato ma non ancora consegnato
+
+<dt><tt>stampa</tt>
+<dd>stampa i dati di un mobile
+
+<dt><tt>read</tt>
+<dd>unico metodo statico: restituisce un mobile
+i cui dati vengono letti da un <tt>BufferedReader</tt>;
+restituisce <tt>null</tt> se il primo tentativo di
+lettura da file fallisce.
+
+</dl>
+
+<p>
+I dati sono memorizzati su file in modo sequenziale:
+prima il numero, poi il tipo, poi il nome del compratore
+oppure <tt>n/a</tt>, poi la data di consegna oppure
+<tt>n/a</tt>
+</p>
+
+
+<h4>Parte II</h4>
+
+<p>
+Relizzare la classe <tt>Mobilificio</tt> le cui istanze
+modellano interi mobilifici. Ogni istanza &egrave;
+associata a un file che contiene i dati di tutti i
+mobili associati.
+</p>
+
+<p>
+La classe deve contenere i seguenti metodi:
+</p>
+
+<dl>
+
+<dt>costruttore
+<dd>prende come parametro una stringa, e crea l'oggetto
+che rappresenta il mobilificio associato
+
+<dt><tt>quantiVenduti</tt>
+<dd>calcola il numero di mobili che non sono ancora
+stati venduti (il compratore &egrave; <tt>"n/a"</tt>)
+
+<dt><tt>stampaComprati</tt>
+<dd>prende come parametro il nome di una persona, e
+stampa tutti i mobili che ha comprato: prima tutti quelli
+gi&agrave; consegnati, e poi gli altri
+
+</dl>
+
+</body>
+</html>
+
+
+
+

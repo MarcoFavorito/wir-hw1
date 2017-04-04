@@ -1,0 +1,91 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head><title>Un compito di esame completo</title></head>
+
+<body>
+<h1>Un compito di esame completo</h1>
+<p>
+L'esame si svolge al calcolatore, e dura un'ora e tre
+quarti.
+</p>
+<span style="font-weight: bold;">Prima classe</span>
+<p>Una libreria vuole realizzare un programma di
+gestione del magazzino. Per ogni libro, i dati
+da rappresentare sono i seguenti:
+</p>
+<dl>
+  <dt><tt>titolo</tt>
+  </dt>
+  <dd>una stringa
+  </dd>
+  <dt><tt>autore</tt>
+  </dt>
+  <dd>una stringa
+  </dd>
+  <dt><tt>prezzo</tt>
+  </dt>
+  <dd>un numero reale
+  </dd>
+  <dt><tt>copie</tt>
+  </dt>
+  <dd>numero di copie presenti in magazzino: un intero
+  </dd>
+</dl>
+<p>
+Definire la classe incapsulata <tt>Libro</tt> i cui
+oggetti siano rappresentazione di libri. I nomi delle
+componenti (variabili di istanza) devono essere: <tt>titolo</tt>, <tt>autore</tt>,
+<tt>prezzo</tt>, <tt>copie</tt>. Devono essere
+realizzati i seguenti metodi:
+</p>
+<ul>
+  <li>metodi <tt>get</tt> e <tt>set</tt> per tutte le
+componenti; i metodi <tt>set</tt> per le componenti
+numeriche devono verificare che il prezzo sia maggiore di
+zero e il numero non sia negativo;
+  </li>
+  <li>metodo costruttore che ha come argomento un
+    <tt>BufferedReader</tt>; il metodo deve leggere i valori da
+mettere nell'oggetto da file.
+  </li>
+  <li>un metodo toString the restituisce una stringa in cui ci
+sono tutte le componenti dell'oggetto
+  </li>
+</ul>
+<hr>
+<h4>Seconda classe</h4>
+<p>
+Definire una seconda classe i cui oggetti rappresentano
+tutti i libri di una certa casa editrice. Ogni oggetto di
+questa classe <tt>Editore</tt> è quindi la
+rappresentazione di un insieme di oggetti <tt>Libro</tt>.
+Per rappresentare insiemi di oggetti, usare un array.
+</p>
+<p>
+Costruttore della classe:
+</p>
+<dl>
+  <dt><tt>Editore(String nomefile)</tt>
+  </dt>
+  <dd>crea un oggetto <tt>Editore</tt> che rappresenta l'insieme
+di tutti gli oggetti <tt>Libro</tt> che sono memorizzati
+nel file il cui nome è dato dalla stringa passata
+come argomento; la prima linea del file contiene il numero
+degli oggetti memorizzati su file.
+  </dd>
+</dl>
+<p>
+Metodi della classe:
+</p>
+<dl>
+  <dt><tt>void stampaEsauriti()</tt>
+  </dt>
+  <dd>stampa il titolo e l'autore dei libri esauriti (quelli
+per i quali non ci sono copie in magazzino)
+  </dd>
+  <dt><tt>int quantiEconomici(double prezzoMax)</tt>
+  </dt>
+  <dd>trova il numero totale di libri il cui prezzo è
+inferiore a <tt>prezzoMax</tt>
+  </dd>
+</dl>
+</body></html>

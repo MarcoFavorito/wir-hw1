@@ -1,0 +1,96 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=windows-1252">
+<TITLE>Reti di Calcolatori</TITLE>
+</HEAD>
+<BODY background="bgrnd.jpg">
+
+<B><FONT SIZE=5><P>8) Programmazione di rete in Java - Il package <I>java.net</P>
+<hr>
+</I></FONT>
+</B>1.&nbsp; La classe <I>InetAddress
+<OL>
+
+</I><P ALIGN="JUSTIFY">Sono diversi gli strumenti forniti con Java per la realizzazione di applicazioni Client.  Una delle classi pi&ugrave; utili &egrave; la <I>InetAddress</I>; rappresenta uno o pi&ugrave; indirizzi IP appartenenti ad un host e comprende metodi per la risoluzione dei nomi.  In un'applet &egrave; facile trovare righe di codice come quelle che seguono:</P>
+<I><P ALIGN="CENTER">String nome_host = getDocumentBase().getHost();</P>
+<P ALIGN="CENTER">indirizzo_server = InetAddress.getByName(nome_host);</P>
+</I><P ALIGN="JUSTIFY">infatti, la classe <I>InetAddress</I> non fornisce costruttori, ma solo metodi di classe.  Altri metodi sono:</P>
+<I><P ALIGN="CENTER">static InetAddress[] getAllByName(String host)</P>
+</I><P ALIGN="JUSTIFY">che fornisce un array di indirizzi IP conosciuti per quell nome host</P>
+<I><P ALIGN="CENTER">String getHostName()</P>
+</I><P ALIGN="JUSTIFY">che permette (tramite DNS) di conoscere il nome host associato ad un certo indirizzo.</P>
+</OL>
+2.&nbsp; La classe <I>Socket
+</I>
+<OL>
+
+<P ALIGN="JUSTIFY">Consente di stabilire un canale di comunicazione <I>stream-based</I> con un host remoto; pu&ograve; essere istanziata specificando la porta e il nome dell'host remoto, il suo indirizzo IP oppure l'oggetto <I>InetAddress</I> che lo incapsula</P>
+<I><P ALIGN="CENTER">Socket(String host, int porta)</P>
+<P ALIGN="CENTER">Socket(InetAddress ia, int porta)</P>
+</I><P ALIGN="JUSTIFY">La realizzazione del canale impegna anche una porta locale, scelta a caso tra quelle attualmente disponibili.  Per conoscere l'ID della porta locale utilizzata &egrave; disponibile il metodo</P>
+<I><P ALIGN="CENTER">int getLocalPort()</P>
+</I><P ALIGN="JUSTIFY">Per realizzare lo scambio dati tra due processi &egrave; necessario, una volta ottenuta la <I>socket</I>, ottenere da essa gli stream di input e di output attraverso i metodi</P>
+<I><P ALIGN="CENTER">InputStream getInputStream()</P>
+<P ALIGN="CENTER">OutputStream getOutputStream()</P>
+</I><P ALIGN="JUSTIFY">E' sempre opportuno inoltre, chiudere la connessione al termine dello scambio, per consentire il rilascio di tutte le risorse impegnate</P>
+<I><P ALIGN="CENTER">void close()</P>
+</I><P ALIGN="JUSTIFY">E' importante notare che, per quanto detto in precedenza (in merito all'I/O bufferizzato), se viene utilizzato uno stream bufferizzato l'invocazione del metodo <I>close()</I> provvede ad un preventivo svuotamento del buffer.</P>
+</OL>
+3.&nbsp; Utilizzo delle <I>socket</I> in Java - un esempio (<B>Client_Socket.java</B>)
+<OL>
+
+<P ALIGN="JUSTIFY">Nel momento in cui &egrave; necessario stabilire una connessione verso un <I>server</I> di cui si conosce l'indirizzo IP (o il nome), &egrave; sufficiente realizzare un'istanza della classe con</P>
+<I><P ALIGN="CENTER">Socket pippo = new Socket("www.pluto.com", 1010);</P>
+</I><P ALIGN="JUSTIFY">ottenuta la connessione, &egrave; possibile scambiare dati attraverso gli <I>stream</I> (filtrati) forniti dalla <I>socket</I> stessa. Esempio:</P>
+<I><P ALIGN="CENTER">DataInputStream pippo_is = new DataInputStream(s.getInputStream);</P>
+<P ALIGN="CENTER">PrintStream pippo_os = new PrintStream(s.getOutputStream);</P>
+</I><P ALIGN="JUSTIFY">Le <I>applet</I> possono comunicare soltanto con il <I>server</I> da cui sono state scaricate.  Quando si realizza un'<I>applet</I> anzich&eacute; indicare il nome o l'indirizzo (quindi un riferimento assoluto al <I>server</I> origine), &egrave; preferibile utilizzare un riferimento relativo, nella forma</P>
+<I><P ALIGN="CENTER">String nome_host = getDocumentBase().getHost();</P>
+<P ALIGN="CENTER">Ia_server = InetAddress.getByName(nome_host);</P>
+</I></OL>
+4.&nbsp; La classe <I>ServerSocket
+</I>
+<OL>
+
+<P ALIGN="JUSTIFY">Se dal lato <I>client</I> &egrave; possibile chiedere una connessione via <I>socket</I> verso un host remoto (e verso una sua porta), dal lato <I>server</I> &egrave; necessario che esista un processo in attesa di tale richiesta.  La classe <I>ServerSocket</I> consente la realizzazione di un processo server in attesa di "richieste di connessione" (<I>Socket</I>) da parte di processi <I>client</I>.  L'istanza di un oggetto <I>ServerSocket</I> avviene mediante il costruttore</P>
+<I><P ALIGN="CENTER">ServerSocket(int porta) throws IOException</P>
+</I><P ALIGN="JUSTIFY">Tra I metodi disponibili per questa classe troviamo quello fondamentale per stabilire una connessione, verso il <I>client</I> che l'ha richiesta</P>
+<I><P ALIGN="CENTER">Socket accept() throws IOException</P>
+</I><P ALIGN="JUSTIFY">Questo metodo, pone il <I>server</I> in attesa (bloccante); non appena una richiesta viene intercettata, viene restituita una <I>socket</I>.  E' possibile che due <I>client</I> facciano contemporaneamente richiesta di <I>socket</I> verso lo stesso <I>server</I>.  Solo una di esse verr&agrave; accettata; la seconda verr&agrave; posta in una particolare coda, gestita dal sistema operativo del <I>server</I>.  Se non specificato, il numero massimo di <I>client</I> accettati &egrave; 50 (la 51.esima richiesta verr&agrave; rifiutata).  In alternativa &egrave; possibile specificare tale limite con il costruttore</P>
+<I><P ALIGN="CENTER">ServerSocket(int porta, int client_max) throws IOException</P>
+</I></OL>
+5.&nbsp; Utilizzo della classe <I>ServerSocket</I> - un esempio (<B>Server_Socket.java</B>)
+<OL>
+
+<P ALIGN="JUSTIFY">Volendo mettere in ascolto sulla porta 1010 l'oggetto "pippo" (di tipo <I>ServerSocket</I>)</P>
+<I><P ALIGN="CENTER">ServerSocket pippo = new ServerSocket(1010);</P>
+<P ALIGN="CENTER">Socket_accettata = pippo.accept();</P>
+</I><P ALIGN="JUSTIFY">a questo punto si pu&ograve; gestire la <I>socket</I> "accettata" e reperire i canali di I/O.</P>
+</OL>
+6.&nbsp; La classe <I>URL
+</I>
+<OL>
+
+<P ALIGN="JUSTIFY">A volte pu&ograve; non essere necessario dover realizzare, oltre all'applicazione <I>client</I>, un'applicazione <I>server</I> che svolga un determinato servizio.  Se il problema &egrave;, ad esempio, dover accedere ad una certa risorsa su <I>Internet</I>, sono gi&agrave; disponibili protocolli (e applicazioni <I>server</I>) universalmente riconosciuti.  Un <I>URL</I> (<I>Uniform Resource Locator</I>) &egrave; una stringa che identifica una risorsa su <I>Internet</I> (un file, una pagina html, un'immagine o altro), presente quindi sul disco di un qualsiasi host della rete.  Per accedere alla risorsa identificata &egrave; necessario che sull'host ci sia un server disposto a metterla a disposizione, per questo un <I>URL</I> ha una struttura di questo tipo</P>
+<I><P ALIGN="CENTER">protocollo://indirizzo_host/percorso/nome_file</P>
+</I><P ALIGN="JUSTIFY">dove "indirizzo_host/percorso/nome_file" identifica la risorsa, mentre "protocollo" rappresenta il tipo di server che vogliamo si interessi del servizio.  Pu&ograve; assumere valori come "http" (esempio: <A HREF="http://www.dis.uniroma1.it/~fbenedet/index.html"><U><FONT COLOR="#0000ff">http://www.dis.uniroma1.it/~fbenedet/index.html</U></FONT></A>), "ftp", "file" (per accedere a risorse locali) o altro.  Java mette a disposizione la classe URL, che comprende metodi utili alla individuazione di risorse presenti in rete.  Costruttori:</P>
+<I><P ALIGN="CENTER">URL(String protocollo, String host, int porta, String file)</P>
+<P ALIGN="CENTER">URL(String protocollo, String host, String file)</P>
+<P ALIGN="CENTER">URL(String descry_URL)</P>
+</I><P ALIGN="JUSTIFY">Nel primo costruttore &egrave; possible specificare tutti i parametri che identificano la risorsa.  Nel secondo viene assunto come numero porta, la porta standard utilizzata dal protocollo (http o ftp), mentre con il terzo costruttore &egrave; possibile istanziare un oggetto <I>URL</I> specificando una stringa:</P>
+<I><P ALIGN="CENTER">"protocollo://indirizzo_host/percorso/nome_file"</P>
+</I></OL>
+7.&nbsp; La classe <I>URLConnection
+<DIR>
+<DIR>
+
+</I><P ALIGN="JUSTIFY">Permette la connessione al server previsto dal protocollo specificato nell'oggetto <I>URL</I>, e comprende metodi utili alla gestione della risorsa individuata.  Esempio:</P>
+<I><P ALIGN="CENTER">URL url = new URL(</I><A HREF="http://www.dis.uniroma1.it/~fbenedet/index.html"><I><U><FONT COLOR="#0000ff">http://www.dis.uniroma1.it/~fbenedet/index.html</I></U></FONT></A><I>");</P>
+<P ALIGN="CENTER">URLConnection url_con = url.openConnection();</P>
+<P ALIGN="CENTER">InputStream is = url_con.getInputStream();</P>
+<P ALIGN="CENTER">OutputStream os = url_con.getOutputStream();</P>
+<P ALIGN="CENTER">url_con.connect();</P>
+</I></DIR>
+</DIR>
+</BODY>
+</HTML>

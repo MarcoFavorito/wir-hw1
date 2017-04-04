@@ -1,0 +1,58 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0//EN">
+<HTML lang="en"><HEAD>
+<META http-equiv="Generator" content="com.bluecraft.htmlize">
+<TITLE>Source Code: neper.c</TITLE>
+<STYLE>
+body {
+    background: ivory;
+    color: black;
+}
+DIV.description {
+    color: maroon;
+    margin-top: -0.4cm;
+}
+SPAN.linenumber {
+    color: maroon;
+}
+SPAN.string {
+    color: red;
+}
+SPAN.comment {
+    color: green;
+}
+SPAN.keyword {
+    color: blue;
+}
+SPAN.userkeyword {
+    color: purple;
+    font-weight: bold;
+}
+</STYLE>
+</HEAD><BODY>
+<PRE>
+#include &lt;stdio.h&gt;
+#include &lt;math.h&gt;
+
+
+double calcola(unsigned long n) {
+	return pow(1 + 1 / (double)n, n);
+}
+
+<SPAN class="userkeyword">main</SPAN>() {
+	unsigned long n = 2;
+	double e = 2, ee, eps;
+	printf(<SPAN class="string">"Immetti epsilon = "</SPAN>);
+	scanf(<SPAN class="string">"%lf"</SPAN>, &amp;eps);
+	(<SPAN class="userkeyword">void</SPAN>)getchar();
+	do {
+		ee = e;
+		e = calcola(n);
+		n++;
+	} while(fabs(e-ee)&gt;=eps);
+
+	printf(<SPAN class="string">"approssimazione = %g, (iterazioni = %lu)\npremi invio..."</SPAN>, e, n-1);
+	(<SPAN class="userkeyword">void</SPAN>)getchar();
+	return 0;
+}
+</PRE>
+</BODY></HTML>

@@ -1,0 +1,141 @@
+<html>
+<head>
+<title>Secondo appello 2004 - Compito Telefoni</title>
+</head>
+
+<body>
+
+<h1>Secondo appello 2004</h1>
+
+<p>
+La prova dura un'ora e tre quarti.
+</p>
+
+<p>
+<b>Riempire il file <tt>studenteid.txt</tt> con i propri
+dati.</b>
+</p>
+
+<p>
+Vengono dati: due programmi di prova, un file di prova, e il
+testo del compito in formato html. Lo studente deve
+realizzare due classi che vengono usate dai due programmi di
+prova. <b>Le soluzioni devono trovarsi nella stessa cartella
+<tt>Esame</tt> dove si trovano i programmi di prova</tt>
+pena l'annullamento dell'esame.</b>
+</p>
+
+<hr>
+
+<h3>Prima parte</h3>
+
+<p>
+Un gestore di servizi telefonici ha bisogno di memorizzare i
+dati relativi agli utenti.
+</p>
+
+<p>
+Realizzare la classe <tt>Utente</tt> i cui oggetti
+rappresentano i singoli utenti abbonati al servizio.
+Le componenti di questi oggetti devono essere:
+</p>
+
+<dl>
+
+<dt><tt>nome</tt>
+<dd>il nome dell'utente
+
+<dt><tt>telefono</tt>
+<dd>il numero di telefono (usare un intero)
+
+<dt><tt>pagante</tt>
+<dd>un booleano che indica se l'utente ha pagato l'ultima
+bolletta oppure no
+
+<dt><tt>ultima</tt>
+<dd>il costo dell'ultima bolletta (un reale)
+
+</dl>
+
+<p>
+Definire la classe incapsulata <tt>Utente</tt>  i cui
+oggetti siano rappresentazione di utenti. I nomi delle
+componenti devono essere: <tt>nome</tt>, <tt>telefono</tt>,
+<tt>pagante</tt>, <tt>ultima</tt>.
+Devono essere realizzati i seguenti metodi:
+</p>
+
+<ul>
+
+<li>metodi <tt>get</tt> e <tt>set</tt> per tutte le
+componenti; i metodi <tt>set</tt> per le componenti telefono
+e ultima devono verificare che questi numeri siano maggiori
+o uguali a zero; in caso di errore, stampare
+un messaggio di errore e terminare il programma;
+
+<li>metodo costruttore che ha come argomento un
+<tt>BufferedReader</tt>; il metodo deve leggere i valori da
+mettere nell'oggetto da file; questi valori sono 
+memorizzati uno per linea; nel caso in cui il file
+finisca prima che si riescano a leggere tutte le componenti,
+si stampi un messaggio di errore e si esca dal programma; il
+booelano &egrave; memorizzato su file come
+<tt>pagante</tt> oppure <tt>moroso</tt>;
+
+<li>un metodo toString che restituisce una stringa in cui ci
+sono tutte le componenti dell'oggetto.
+
+</ul>
+
+<hr>
+
+
+<h3>Seconda parte</h3>
+
+<p>
+Definire una seconda classe <tt>Provincia</tt> i cui 
+oggetti rappresentano tutti gli utenti di una provincia.
+Ogni oggetto di questa classe &egrave; quindi la
+rappresentazione di un insieme di oggetti <tt>Utente</tt>.
+Per rappresentare insiemi di oggetti, usare un array.
+</p>
+
+<p>
+Costruttore della classe: 
+</p>
+
+<dl>
+
+<dt>
+<tt>Provincia(String nomefile)</tt>
+<dd>
+crea un oggetto <tt>Provincia</tt> che rappresenta l'insieme
+di tutti gli oggetti <tt>Utente</tt> che sono memorizzati
+nel file il cui nome &egrave; dato dalla stringa passata
+come argomento; la prima linea del file contiene il numero
+degli oggetti memorizzati su file.
+
+</dl>
+
+<p>
+Metodi della classe:
+</p>
+
+<dl>
+
+<dt><tt>void stampaTutti()</tt>
+<dd>stampa tutti gli oggetti dell'array
+
+<dt><tt>void stampaTelefoni(String utente)</tt>
+<dd>stampa tutti i numeri di telefono intestati a un certo
+utente
+
+<dt><tt>boolean duplicato(int t)</tt>
+<dd>ritorna <tt>true</tt> se il numero passato come
+parametro corrisponde a due o pi&ugrave; numeri di telefono
+
+</dl>
+
+</body>
+</html>
+

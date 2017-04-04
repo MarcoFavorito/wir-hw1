@@ -1,0 +1,87 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1">
+<META NAME="Generator" CONTENT="Microsoft Word 98">
+<TITLE>Esame 26/4/1999</TITLE>
+<META NAME="Template" CONTENT="damore-4gb:Applications:Microsoft Office 98:Templates:Web Pages:Blank Web Page">
+</HEAD>
+<BODY LINK="#0000ff" VLINK="#800080">
+
+<B><FONT FACE="Palatino"><P ALIGN="CENTER">Universit&agrave; di Roma "La Sapienza"</P>
+<P ALIGN="CENTER">Facolt&agrave; di Ingegneria </P>
+<P ALIGN="CENTER">Corso di Fondamenti di Informatica </P>
+<P ALIGN="CENTER">Corso di Laurea: Ambiente e Territorio</P>
+</B><I><P ALIGN="CENTER">Appello del 26/4/1999. Prima prova (tempo: due ore).</P>
+<P ALIGN="CENTER">Orali e verbalizzazioni: 30/4/99, h 10:30, Via Salaria 113, 2&#176; piano, aula C3</P>
+</I><P ALIGN="JUSTIFY">&nbsp;</P>
+<P ALIGN="JUSTIFY">&nbsp;</P>
+<B><P ALIGN="JUSTIFY">Esercizio 1 (18 punti)</P>
+</B><P ALIGN="JUSTIFY">Una rubrica &egrave; memorizzata su disco come un file di strutture, in cui ogni struttura, denominata <I>scheda</I>, &egrave; riferita a un individuo e contiene campi per la memorizzazione delle seguenti informazioni sull'individuo: nome (max 12 caratteri), cognome (max 20 caratteri), indirizzo (max 20 caratteri), numero civico, CAP, citt&agrave; (max 20 caratteri), provincia, telefono casa, telefono lavoro, cellulare, fax e posta elettronica (max 25 caratteri).</P>
+<OL>
+
+<P ALIGN="JUSTIFY"><LI>Scrivere un insieme di dichiarazioni globali in C da utilizzarsi per risolvere i due punti successivi (le dichiarazioni locali potranno essere direttamente specificate nello svolgimento dei punti successivi).</LI></P>
+<P ALIGN="JUSTIFY"><LI>Scrivere una funzione C (o pi&ugrave;) che, ricevendo come parametri una scheda <I>S</I> relativa a un individuo ed il nome di un file contenente una rubrica, legga il file in memoria, aggiorni la rubrica con il contenuto della scheda <I>S</I> e costruisca un nuovo file con la versione aggiornata della rubrica. L'aggiornamento avviene secondo la seguente modalit&agrave;: se l'individuo non &egrave; gi&agrave; presente nella rubrica, allora la scheda <I>S</I> deve venir aggiunta nell'ultima posizione della rubrica; se invece l'individuo ha gi&agrave; una scheda in rubrica, allora tale scheda deve venir sostituita dalla nuova scheda <I>S</I>.</LI></P>
+<P ALIGN="JUSTIFY"><LI>Scrivere una funzione C (o pi&ugrave;) che, ricevendo come parametri la prima lettera di un cognome ed il nome di un file contenente una rubrica, costruisca, restituendola in uscita, una lista (rappresentata tramite strutture e puntatori) contenente tutte e sole le schede (presenti nella rubrica) relative ad individui il cui cognome inizia con la lettera specificata.</LI></P></OL>
+
+<P ALIGN="CENTER">&nbsp;</P>
+<B><P ALIGN="CENTER">Universit&agrave; di Roma "La Sapienza"</P>
+<P ALIGN="CENTER">Facolt&agrave; di Ingegneria </P>
+<P ALIGN="CENTER">Corso di Fondamenti di Informatica </P>
+<P ALIGN="CENTER">Corso di Laurea: Ambiente e Territorio</P>
+</B><I><P ALIGN="CENTER">Appello del 26/4/1999. Seconda prova (tempo: una ora)</P>
+<P ALIGN="CENTER">Orali e verbalizzazioni: 30/4/99, h 10:30, Via Salaria 113, 2&#176; piano, aula C3</P>
+</I><P ALIGN="JUSTIFY">&nbsp;</P>
+<B><P ALIGN="JUSTIFY">Esercizio 2 (4 punti)</P>
+</B><P ALIGN="JUSTIFY">Si illustri il concetto di <I>tipo di dato strutturato</I>, con particolare riferimento al linguaggio C, mettendo in evidenza i meccanismi mediante i quali &egrave; consentita la creazione di tipi strutturati. Il linguaggio C contiene tipi strutturati pre-definiti?</P>
+<P ALIGN="JUSTIFY">&nbsp;</P>
+<B><P ALIGN="JUSTIFY">Esercizio 3 (4 punti)</P>
+</B><P ALIGN="JUSTIFY">Il candidato consideri il seguente programma C ed indichi esattamente cosa viene stampato, e perch&eacute;, quando fornisce in lettura la propria data di nascita nel formato GGMMAAAA.</P>
+</FONT><FONT FACE="Courier" SIZE=2><P ALIGN="JUSTIFY">#include &lt;stdio.h&gt;</P>
+<P ALIGN="JUSTIFY">typedef char vettore[8];</P>
+<P ALIGN="JUSTIFY">void Leggi2(char *x)</P>
+<P ALIGN="JUSTIFY">{</P>
+<P ALIGN="JUSTIFY">&#9;scanf("%c",x);</P>
+<P ALIGN="JUSTIFY">&#9;return;</P>
+<P ALIGN="JUSTIFY">}</P>
+<P ALIGN="JUSTIFY">void Leggi1(char *x, int quale)</P>
+<P ALIGN="JUSTIFY">{</P>
+<P ALIGN="JUSTIFY">&#9;if(quale&lt;8) {</P>
+<P ALIGN="JUSTIFY">&#9;&#9;Leggi2(x);</P>
+<P ALIGN="JUSTIFY">&#9;&#9;Leggi1(x+1,quale+1);</P>
+<P ALIGN="JUSTIFY">&#9;}</P>
+<P ALIGN="JUSTIFY">&#9;return;</P>
+<P ALIGN="JUSTIFY">}</P>
+<P ALIGN="JUSTIFY">&nbsp;</P>
+<P ALIGN="JUSTIFY">void Scrivi2(char *x)</P>
+<P ALIGN="JUSTIFY">{</P>
+<P ALIGN="JUSTIFY">&#9;printf("%c",*x);</P>
+<P ALIGN="JUSTIFY">&#9;return;</P>
+<P ALIGN="JUSTIFY">}</P>
+<P ALIGN="JUSTIFY">void Scrivi1(char *x, int quale)</P>
+<P ALIGN="JUSTIFY">{</P>
+<P ALIGN="JUSTIFY">&#9;if(quale&lt;8) {</P>
+<P ALIGN="JUSTIFY">&#9;&#9;Scrivi1(x+1, quale+1);</P>
+<P ALIGN="JUSTIFY">&#9;&#9;Scrivi2(x);</P>
+<P ALIGN="JUSTIFY">&#9;}</P>
+<P ALIGN="JUSTIFY">&#9;return;</P>
+<P ALIGN="JUSTIFY">}</P>
+<P ALIGN="JUSTIFY">main()</P>
+<P ALIGN="JUSTIFY">{</P>
+<P ALIGN="JUSTIFY">&#9;vettore x;</P>
+<P ALIGN="JUSTIFY">&#9;Leggi1(x,0);</P>
+<P ALIGN="JUSTIFY">&#9;Scrivi1(x,0);</P>
+<P ALIGN="JUSTIFY">&#9;return 0;</P>
+<P ALIGN="JUSTIFY">}</P>
+</FONT><B><FONT FACE="Palatino"><P ALIGN="JUSTIFY">&nbsp;</P>
+<P ALIGN="JUSTIFY">Esercizio 4 (4 punti)</P>
+</B><P ALIGN="JUSTIFY">Con riferimento alle relazioni</P><DIR>
+<DIR>
+
+</FONT><FONT FACE="Arial Narrow"><P ALIGN="JUSTIFY">Clienti(codice_cliente, nome, indirizzo, citt&agrave;)</P>
+<P ALIGN="JUSTIFY">Ordini(codice_cliente, codice_ordine, data_ordine, ordine_evaso, codice_prodotto)</P>
+<P ALIGN="JUSTIFY">Prodotti(codice_prodotto, descrizione_prodotto, prezzo_prodotto)</P></DIR>
+</DIR>
+
+</FONT><FONT FACE="Palatino"><P ALIGN="JUSTIFY">in cui l'attributo </FONT><FONT FACE="Arial Narrow">Ordini.ordine_evaso</FONT><FONT FACE="Palatino"> assume valore 1 nelle tuple relative a ordini che sono stati evasi e valore 0 nelle tuple relative ad ordini inevasi, scrivere una interrogazione SQL per ottenere tutte le informazioni possibili sugli ordini attualmente inevasi emessi dalla ditta PincoPallino nei mesi di agosto 1998 e dicembre 1998.</P>
+<P ALIGN="JUSTIFY">N.B. In SQL &egrave; possibile specificare costanti di tipo data (</FONT><FONT FACE="Arial Narrow">date</FONT><FONT FACE="Palatino">) nel formato italiano come 'GG.MM.AAAA'.</P></FONT></BODY>
+</HTML>

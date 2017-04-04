@@ -1,0 +1,44 @@
+
+<HTML>
+
+<HEAD>
+<META HTTP-EQUIV="Context-Type" CONTEXT="text/html;charset=PREDEFINITA (AUTOMATICA)">
+<meta name="GENERATOR" content="Microsoft Internet Assistant for PowerPoint 97">
+ <TITLE>Enforcing Referential Integrity</TITLE> 
+</HEAD>
+
+<BODY     >
+
+ <H1>Enforcing Referential Integrity</H1> 
+ <P><UL>
+<LI><H2>Consider Students andEnrolled;  sid in Enrolled is a foreign key that references Students.
+</H2>
+</UL><UL>
+<LI><H2>What should be done if an Enrolled tuple with a non-existent student id is inserted?  (Reject it!)
+</H2>
+</UL><UL>
+<LI><H2>What should be done if a Students tuple is deleted?
+</H2>
+<UL>
+<LI>Also delete all Enrolled tuples that refer to it.
+<LI>Disallow deletion of a Students tuple that is referred to.
+<LI>Set sid in Enrolled tuples that refer to it to a default sid.
+<LI>(In SQL, also: Set sid in Enrolled tuples that refer to it to a special value null, denoting `unknown’ or `inapplicable’.)
+</UL></UL><UL>
+<LI><H2>Similar if primary key of Students tuple is updated.</H2>
+</UL></P>
+<P></P> 
+<P>
+<TABLE>
+  <TD HEIGHT=100 WIDTH=100> <A HREF="tsld008.htm">Diapositiva precedente</A> </TD>
+  <TD HEIGHT=100 WIDTH=100> <A HREF="tsld010.htm">Diapositiva successiva</A> </TD>
+  <TD HEIGHT=100 WIDTH=150> <A HREF="tsld001.htm">Torna alla prima diaposiva</A> </TD>
+  <TD HEIGHT=100 WIDTH=150> <A HREF="sld009.htm">Visualizza versione grafica</A> </TD>
+</TABLE>
+<BR>
+</P>
+
+
+
+</Body>
+</HTML>

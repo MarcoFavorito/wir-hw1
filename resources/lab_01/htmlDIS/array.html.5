@@ -1,0 +1,2950 @@
+<html>
+<head>
+<title>Array</title>
+</head>
+
+<body>
+
+<h1>Array</h1>
+
+<ul>
+
+<li>sono oggetti
+
+<li>ci posso memorizzare insiemi di dati
+
+<li>i dati devono essere tutti dello stesso tipo
+
+<li>ogni array ha un numero prefissato di elementi
+
+</ul>
+
+<hr>
+
+<h4>Dichiarazione</h4>
+
+<pre>
+int v[];
+</pre>
+
+<p>
+Significa: <tt>v</tt> &egrave; un vettore di interi
+</p>
+
+<p>
+&Egrave; un oggetto che pu&ograve; contenere zero,
+uno o pi&ugrave; interi.
+</p>
+
+<hr>
+
+<h4>Creazione</h4>
+
+<pre>
+int v[];
+
+v=new int[100];
+</pre>
+
+<p>
+Crea un oggetto vettore
+</p>
+
+<p>
+&Egrave; un contenitore per cento interi
+</p>
+
+<p>
+Equivale a dichiarare cento variabili intere
+</p>
+
+<img src="cento-int.jpg">
+
+<hr>
+
+<h4>Accesso alle variabili</h4>
+
+<p>
+Per gli array, <i>non</i> si usa la notazione
+<tt>oggetto.componente</tt>
+</p>
+
+<p>
+Le componenti sono
+<tt>v[0]</tt>, ..., <tt>v[99]</tt>
+</p>
+
+<hr>
+
+
+<h4>Array=insieme di variabili (quasi)</h4>
+
+<p>
+Dopo aver fatto:
+</p>
+
+<pre>
+int v[];
+v=new int[100];
+</pre>
+
+<p>
+&Egrave; come se esistessero cento variabili:
+</p>
+
+<pre>
+v[0]
+v[1]
+...
+v[99]
+</pre>
+
+<p>
+Attenzione: se ho cento elementi,
+vanno da <tt>0</tt> a <tt>99</tt>!
+</p>
+
+<hr>
+
+
+<h4>Rappresentazione grafica</h4>
+
+<p>
+&Egrave; un oggetto:
+</p>
+
+<img src="nomi.jpg">
+
+<p>
+Le componenti sono <tt>v[0], v[1], v[2],..., v[99]</tt> ecc.
+</p>
+
+<p>
+Nella variabile c'&egrave; comunque il suo indirizzo
+</p>
+
+<hr>
+
+
+<h4>Perch&egrave; usare un vettore?</h4>
+
+<p>
+Quale vantaggio ho a usare un vettore
+(invece di cento variabili)?
+</p>
+
+<ul>
+
+<li>una sola dichiarazione
+
+<li>posso fare dei cicli per accedere al
+valore di tutte le variabili
+
+</ul>
+
+<p>
+Esempio: mettere il valore <tt>0</tt>
+in tutte le variabili:
+</p>
+
+<pre>
+for(i=0; i&lt;100; i++)
+  v[i]=0;
+</pre>
+
+<hr>
+
+<h4>Terminologia</h4>
+
+<p>
+Elemento del vettore=una delle variabili
+che ne fanno parte.
+</p>
+
+<dl>
+
+<dt>
+<tt>v=new int[100]</tt>
+<dd>crea un vettore di cento elementi
+(=crea cento variabili)
+
+<dt>
+<tt>v[9]</tt>
+<dd>elemento del vettore <tt>v</tt> di
+<i>indice</i> <tt>9</tt>
+
+</dl>
+
+<hr>
+
+<h4>Accesso attraverso indici</h4>
+
+<p>
+Si pu&ograve; leggere/scrivere un elemento
+di un vettore come fosse una qualsiasi altra
+variabile.
+</p>
+
+<p>
+Fra quadre (=come indice) posso mettere:
+</p>
+
+<ul>
+
+<li>un intero costante (es. <tt>9</tt>)
+
+<li>una espressione che
+ritorna un intero (es. <tt>i+2</tt>, oppure
+<tt>Integer.parseInt(s)</tt>, ecc)
+
+</ul>
+
+<p>
+Vantaggio: si possono fare cicli per fare la
+stessa cosa su tutti gli elementi di un
+array
+</p>
+
+<p>
+Attenzione: l'indice
+</p>
+
+<ul>
+
+<li>deve essere un intero (es. <tt>v[10.1]</tt> non funziona)
+
+<li>deve essere compreso fra <tt>0</tt> e il numero
+di elementi del vettore meno uno (<tt>v[100]</tt> non
+funziona se il vettore ha cento elementi)
+
+</ul>
+
+<hr>
+
+<h4>Esercizio</h4>
+
+<p>
+Creare un vettore di ventiquattro elementi interi,<br>
+memorizzare <tt>10</tt> in tutti, e stamparli.
+</p>
+
+<p>
+Nota: <tt>println</tt> non funziona sui vettori<br>
+(stampa qualcosa, ma non le componenti)
+</p>
+
+<hr>
+
+
+<h4>Soluzione</h4>
+
+<p>
+La creazione del vettore &egrave; come al
+solito.
+</p>
+
+<p>
+Per riempire il vettore di <tt>10</tt>, faccio
+un ciclo.
+</p>
+
+<p>
+Per stampare, faccio un altro ciclo
+</p>
+
+<pre>
+class Cento {
+  public static void main(String args[]) {
+    int v[];
+    v=new int[24];
+    int i;
+
+    for(i=0; i&lt;24; i++)
+      v[i]=10;
+
+    for(i=0; i&lt;24; i++)
+      System.out.println(v[i]);
+  }
+}
+</pre>
+
+<hr>
+
+
+<h4>Vettori di oggetti</h4>
+
+<p>
+Il tipo degli elementi pu&ograve; essere
+qualsiasi.
+</p>
+
+<p>
+Si possono fare anche vettori di oggetti.
+</p>
+
+<hr>
+
+
+<h4>Esercizio</h4>
+
+<p>
+Creare un vettore di venti punti.
+</p>
+
+<p>
+Memorizzare i punti di coordinate
+<tt>(0,0)</tt>, ..., <tt>(19,19)</tt>.
+</p>
+
+<hr>
+
+
+<h4>Creazione array</h4>
+
+<p>
+Questo si fa come al solito, con
+<tt>Point</tt> al posto di <tt>int</tt>
+</p>
+
+<pre>
+import java.awt.*;
+
+class Punti {
+  public static void main(String args[]) {
+    Point vp[];
+    vp=new Point[20];
+
+    // memorizzazione
+
+    // stampa
+  }
+}
+</pre>
+
+<hr>
+
+
+<h4>Mettere dati nell'array</h4>
+
+<p>
+I punti sono oggetti.
+</p>
+
+<p>
+Quindi, una variabile contiene il suo
+riferimento.
+</p>
+
+<p>
+Quindi, in <tt>vp[i]</tt> ci va l'indirizzo
+di un punto
+</p>
+
+<p>
+Il punto va creato!
+</p>
+
+<pre>
+    int i;
+    for(i=0; i&lt;20; i++) 
+      vp[i]=new Point(i,i);
+</pre>
+
+<p>
+<tt>vp[i]</tt> &egrave; una variabile oggetto
+</p>
+
+<p>
+Pu&ograve; solo contenere l'indirizzo dell'oggetto.
+</p>
+
+<p>
+Altro modo:
+</p>
+
+<pre>
+    int i;
+    for(i=0; i&lt;20; i++) {
+      vp[i]=new Point();
+      vp[i].move(i,i);
+    }
+</pre>
+
+<p>
+Altro modo ancora:
+</p>
+
+<pre>
+    int i;
+    for(i=0; i&lt;20; i++) {
+      vp[i]=new Point();
+      vp[i].x=i;
+      vp[i].y=i;
+    }
+</pre>
+
+<p>
+Dato che <tt>vp[i]</tt> contiene un riferimento
+a un oggetto <tt>Point</tt>, posso usare i metodi
+e le componenti.
+</p>
+
+<hr>
+
+
+<h4>In memoria</h4>
+
+<p>
+&Egrave; come quando ho un oggetto che contiene
+il riferimento ad altri oggetti (es. le classi
+<tt>Segmento</tt> e <tt>Studente</tt>)
+</p>
+
+<img src="punti.jpg">
+
+<hr>
+
+
+<h4>Il programma completo</h4>
+
+<p>
+Basta aggiungere un ciclo di scrittura.
+</p>
+
+<pre>
+import java.awt.*;
+
+class Punti {
+  public static void main(String args[]) {
+    Point vp[];
+    vp=new Point[20];
+
+    int i;
+    for(i=0; i&lt;20; i++) 
+      vp[i]=new Point(i,i);
+
+    for(i=0; i&lt;20; i++)
+      System.out.println(vp[i]);
+  }
+}
+</pre>
+
+<hr>
+
+
+<h4>Esercizio</h4>
+
+<p>
+Stampare le prime duecento linee di un file in
+ordine inverso.
+</p>
+
+<p>
+Assumere che il file contenga almeno duecento linee
+</p>
+
+<hr>
+
+<h4>Soluzione</h4>
+
+<p>
+Primo esempio significativo di uso dei vettori!
+</p>
+
+<dl>
+
+<dt>senza vettori:
+<dd>apro il file, leggo duecento righe, stampo la
+duecentesima, riapro di nuovo il file, leggo 199
+linee...
+
+<dt>con i vettori:
+<dd>leggo il file una sola volta, memorizzando le
+prime duecento linee in un vettore; poi le stampo
+in ordine inverso
+
+</dl>
+
+<hr>
+
+
+<h4>Soluzione</h4>
+
+<ul>
+
+<li>creo un vettore di duecento stringhe
+
+<li>apro il file
+
+<li>leggo duecento stringhe da file e le
+metto nel vettore
+
+<li>stampo le stringhe del vettore in
+ordine inverso
+
+</ul>
+
+<hr>
+
+
+<h4>Il codice</h4>
+
+<pre>
+import java.io.*;
+
+class InvertiFile {
+  public static void main(String args[])
+  throws IOException {
+
+    String linee[];
+    linee=new String[200];
+    int i;
+
+
+		// legge il file
+
+    FileReader r=new FileReader("pur.txt");
+    BufferedReader br=new BufferedReader(r);
+
+    for(i=0; i&lt;200; i++)
+      linee[i]=br.readLine();
+
+
+		// stampa a partire dall'ultima
+
+    for(i=199; i&gt;=0; i--)
+      System.out.println(linee[i]);
+  }
+}
+</pre>
+
+<p>
+Gli oggetti stringa vengono creati da
+<tt>br.readLine()</tt>
+</p>
+
+<p>
+Questo metodo restituisce l'indirizzo dell'oggetto
+creato, che viene poi memorizzato in <tt>linee[i]</tt>
+</p>
+
+<hr>
+
+
+<h4>Passaggio di vettori</h4>
+
+<p>
+I vettori sono oggetti
+</p>
+
+<p>
+Si pu&ograve; passare a un metodo sia il singolo
+elemento che l'intero vettore
+</p>
+
+<dl>
+
+<dt>singolo elemento
+<dd>si passa come un qualsiasi elemento del tipo
+
+<dt>intero array
+<dd>si specifica il tipo nella dichiarazione del metodo
+
+</dl>
+
+<p>
+In ogni caso, viene passato un valore<br>
+(nel secondo caso, &egrave; un indirizzo)
+</p>
+
+<hr>
+
+
+<h4>Esempio</h4>
+
+<p>
+Metodo che stampa i primi dieci elementi
+di un vettore
+</p>
+
+<pre>
+  static void stampaPrimi(int v[]) {
+    int i;
+
+    for(i=0; i&lt;10; i++)
+      System.out.println(v[i]);
+  }
+</pre>
+
+<p>
+Esempio di programma:
+</p>
+
+<pre>
+  public static void main(String args[]) {
+    int casuali[];
+    casuali=new int[20];
+
+    int i;
+    for(i=0; i&lt;20; i++)
+      casuali[i]=(int) (Math.random()*101-50);
+
+    stampaPrimi(casuali);
+  }
+</pre>
+
+<hr>
+
+
+<h4>Cosa succede in memoria?</h4>
+
+<p>
+Stessa cosa degli altri oggetti.
+</p>
+
+<p>
+Prima dell'invocazione:
+</p>
+
+<img src="prima.jpg">
+
+<hr>
+
+
+<h4>Durante l'esecuzione del metodo</h4>
+
+<p>
+Il valore di <tt>causali</tt> &egrave;
+stato copiato in <tt>v</tt>
+</p>
+
+<p>
+Il valore di <tt>causali</tt> &egrave; quello
+che c'&egrave; scritto nella casellina
+(l'indirizzo dell'oggetto array)
+</p>
+
+<img src="durante.jpg">
+
+<p>
+Ora <tt>v[5]</tt> e <tt>causali[5]</tt>
+sono la stessa variabile.
+</p>
+
+<p>
+&Egrave; la stessa cosa che succede quando
+si passa un oggetto
+</p>
+
+<hr>
+
+
+<h4>Esercizio</h4>
+
+<p>
+Scrivere un metodo che mette nei primi
+dieci elementi di un vettore di interi
+i valori della funzione
+<i>f(x)=x<sup>2</sup>+3x-2</i> per
+<i>x=0,1,2,...,9</i>
+</p>
+
+<p>
+Il vettore viene passato come parametro.
+</p>
+
+<p>
+Esempio di programma di prova:
+</p>
+
+<pre>
+class Funzione {
+  // inserire qui il metodo
+
+  static void stampaPrimi(int v[]) {
+    int i;
+
+    for(i=0; i&lt;10; i++)
+      System.out.println(v[i]);
+  }
+
+  public static void main(String args[]) {
+    int f[];
+    f=new int[20];
+
+    funzione(f);
+    stampaPrimi(f);
+  }
+}
+</pre>
+
+<hr>
+
+
+<h4>Soluzione</h4>
+
+<p>
+Serve un ciclo
+</p>
+
+<p>
+Per ogni intero, calcolo il valore
+della funzione e lo metto nel vettore.
+</p>
+
+<pre>
+  static void funzione(int v[]) {
+    int x;
+
+    for(x=0; x&lt;10; x++)
+      v[x]=x*x+3*x-2;
+  }
+</pre>
+
+<hr>
+
+
+<h4>Nota</h4>
+
+<p>
+Scrivere <tt>f[x]=...</tt> nel metodo
+&egrave; sbagliato.
+</p>
+
+<p>
+Nella funzione, non si vede <tt>f</tt>
+</p>
+
+<img src="funzione.jpg">
+
+<p>
+Le modifiche fatte dal metodo sono visibili nel
+programma perch&egrave; <tt>v[0]</tt> ecc e
+<tt>f[0]</tt> ecc sono la stessa variabile
+</p>
+
+<hr>
+
+
+<h4>Passare un elemento</h4>
+
+<p>
+Quello che si passa &egrave; il valore
+dell'elemento
+</p>
+
+<pre>
+class PassaElem {
+  static void azzera(int x) {
+    x=0;
+  }
+
+  public static void main(String args[]) {
+    int v[];
+    v=new int[10];
+
+    int i;
+    for(i=0; i&lt;10; i++)
+      v[i]=12;
+
+    azzera(v[2]);
+
+    System.out.println(v[2]);
+  }
+}
+</pre>
+
+<p>
+&Egrave; il valore di <tt>v[2]</tt> che
+viene passato.
+</p>
+
+<p>
+La variabile di partenza non viene
+modificata.
+</p>
+
+<p>
+Si stampa <tt>12</tt>
+</p>
+
+<hr>
+
+
+<h4>Lunghezza di un vettore</h4>
+
+<p>
+Se <tt>v</tt> &egrave; un vettore,
+allora:
+</p>
+
+<pre>
+  v.length
+</pre>
+
+<p>
+&egrave; il numero dei suoi elementi.
+</p>
+
+<p>
+Nota: non &egrave; un metodo!
+</p>
+
+<p>
+Non ci vanno le parentesi!
+</p>
+
+<p>
+&Egrave; come una componente dell'oggetto.
+</p>
+
+<hr>
+
+
+<h4>A che serve?</h4>
+
+<p>
+Un metodo pu&ograve; ricevere un vettore
+di lunghezza generica.
+</p>
+
+<p>
+Per esempio, al metodo <tt>stampa</tt>
+posso passare un vettore di lunghezza <tt>10</tt>,
+ma anche <tt>2</tt>, <tt>34</tt>, ecc.
+</p>
+
+<p>
+<tt>v.length</tt> permette di vedere quanto
+&egrave; grande il vettore passato
+</p>
+
+<hr>
+
+
+<h4>Esercizio</h4>
+
+<p>
+Modificare il metodo <tt>stampa</tt> in modo
+che stampi tutti gli elementi del vettore
+</p>
+
+<p>
+Deve funzionare con vettori di lunghezza arbitraria
+</p>
+
+<p>
+Esempio di programma:
+</p>
+
+<pre>
+  public static void main(String args[]) {
+    int x[];
+    x=new int[100];
+
+    int y[];
+    y=new int[1030];
+
+    // metti valori nei vettori
+
+    stampa(x);
+    stampa(y);
+  }
+</pre>
+
+<hr>
+
+
+<h4>Soluzione</h4>
+
+<p>
+Il ciclo va da <tt>0</tt> a <tt>v.length-1</tt>:
+</p>
+
+<pre>
+  public static void stampa(int v[]) {
+    int i;
+
+    for(i=0; i&lt;v.length; i++)
+      System.out.println(v[i]);
+  }
+</pre>
+
+<p>
+uso <tt>length</tt> per sapere quanti elementi
+ha il vettore.
+</p>
+
+<p>
+In questo modo, posso passare array di lunghezza
+diversa
+</p>
+
+<hr>
+
+
+<h4>Leggere array di interi da file</h4>
+
+<p>
+Si leggono stringhe, e si convertono in interi.
+</p>
+
+<pre>
+    int v[];
+    v=new int[10];
+
+    int i;
+
+    FileReader r=new FileReader("lista.txt");
+    BufferedReader br=new BufferedReader(r);
+    String s;
+
+    for(i=0; i&lt;10; i++) {
+      s=br.readLine();
+      v[i]=Integer.parseInt(s);
+    }
+</pre>
+
+<p>
+Si poteva anche fare:<br>
+<tt>v[i]=Integer.parseInt(br.readLine());</tt>
+</p>
+
+<hr>
+
+
+<h4>Esercizio</h4>
+
+<p>
+Leggere dieci interi da file; per ognuno stampare
+la differenza dalla media.
+</p>
+
+<hr>
+
+
+<h4>Soluzione: algoritmo</h4>
+
+<ul>
+
+<li>leggi gli interi in un vettore
+
+<li>calcola la media
+
+<li>per ogni elemento del vettore, stampa la differenza
+
+</ul>
+
+<hr>
+
+<h4>Soluzione: implementazione</h4>
+
+<p>
+Primo: lettura del vettore da file
+</p>
+
+<pre>
+import java.io.*;
+
+class DiffMedia {
+  public static void main(String args[])
+  throws IOException {
+
+    int v[];
+    v=new int[10];
+
+    int i;
+
+    FileReader r=new FileReader("lista.txt");
+    BufferedReader br=new BufferedReader(r);
+    for(i=0; i&lt;10; i++) 
+      v[i]=Integer.parseInt(br.readLine());
+</pre>
+
+<hr>
+
+
+<h4>Soluzione</h4>
+
+<p>
+Secondo: calcolo della media
+</p>
+
+<pre>
+    int somma=0;
+    for(i=0; i&lt;10; i++)
+      somma=somma+v[i];
+
+    double media=((double) somma)/10;
+</pre>
+
+<hr>
+
+<h4>Soluzione</h4>
+
+<p>
+Terzo: stampa la differenza fra gli elementi e la media
+</p>
+
+<pre>
+    for(i=0; i&lt;10; i++)
+      System.out.println(v[i]-media);
+</pre>
+      
+<hr>
+
+<h4>Esercizio: massimo e posizione</h4>
+
+<p>
+Leggere un array di dieci interi da file. Trovare il suo
+elemento massimo, e la posizione in cui si trova.
+</p>
+
+<hr>
+
+<h4>Soluzione</h4>
+
+<p>
+Primo algoritmo:
+</p>
+
+<ol>
+<li>leggi il vettore
+<li>trova massimo e posizione
+<li>stampa il massimo e la posizione
+</ol>
+
+<p>
+Il primo punto l'abbiamo gi&agrave; visto.
+</p>
+
+<p>
+Il terzo punto &egrave; facile.
+</p>
+
+<hr>
+
+<h4>Passo 1: leggere il vettore</h4>
+
+<p>
+Come al solito
+</p>
+
+<pre>
+import java.io.*;
+
+class Massimo {
+  public static void main(String args[])
+  throws IOException {
+    int v[]=new int[10];
+    int i;
+
+		// lettura da file
+
+    FileReader r=new FileReader("lista.txt");
+    BufferedReader br=new BufferedReader(r);
+ 
+    for(i=0; i&lt;10; i++) 
+      v[i]=Integer.parseInt(br.readLine());
+</pre>
+
+<p>
+Questa parte di programma &egrave; stata
+gi&agrave; vista.
+</p>
+
+<hr>
+
+<h4>Ricerca del massimo</h4>
+
+<p>
+La ricerca del massimo l'abbiamo gi&agrave;
+vista:
+</p>
+
+<ul>
+
+<li>assumo che il massimo sia il primo
+
+<li>per ogni elemento, vedo se &egrave;
+maggiore del massimo parziale
+
+</ul>
+
+<p>
+Serve una variante in cui trovo anche la posizione
+del massimo.
+</p>
+
+<hr>
+
+
+<h4>Ricerca di massimo e posizione</h4>
+
+<p>
+Uso un meccanismo simile (metodo della soluzione
+parziale).
+</p>
+
+<p>
+Oltre a memorizzare il massimo valore trovato
+finora, memorizzo anche la sua posizione.
+</p>
+
+<ol>
+
+<li>assumo che il massimo sia il primo
+
+<li>per ogni altro elemento del vettore,
+verifico se &egrave; maggiore del massimo
+
+</ol>
+
+<p>
+&Egrave; lo stesso algoritmo di prima,
+in cui memorizzo anche la posizione
+del massimo.
+</p>
+
+<pre>
+    m=v[0];
+    posm=0;
+
+    for(i=1; i&lt;10; i++)
+      if(v[i]&gt;m) {
+        m=v[i];
+        posm=i;
+      }
+</pre>
+
+<p>
+La variabile <tt>m</tt> contiene il massimo
+trovato finora
+</p>
+
+<p>
+La variabile <tt>posm</tt> contiene la sua posizione
+nel vettore
+</p>
+
+<hr>
+
+
+<h4>Algoritmo alternativo</h4>
+
+<p>
+Memorizzo solo la posizione del massimo
+trovato finora:
+</p>
+
+<ol>
+
+<li>inizio: il massimo elemento &egrave;
+quello in prima posizione
+
+<li>per ogni nuova posizione, confronto
+
+</ol>
+
+<p>
+Dato che non ho memorizzato il massimo
+attuale ma la sua posizione, il confronto
+&egrave; fra <tt>v[i]</tt> (elemento
+attuale) e <tt>v[posm]</tt> (massimo
+finora):
+</p>
+
+<pre>
+    posm=0;
+
+    for(i=1; i&lt;10; i++)
+      if(v[i]&gt;v[posm]) 
+        posm=i;
+</pre>
+
+
+<hr>
+
+<h4>Array di oggetti</h4>
+
+<p>
+Un vettore pu&ograve; anche contenere oggetti
+</p>
+
+<p>
+Se <tt>NomeClasse</tt> &egrave; una classe,
+si pu&ograve; fare:
+</p>
+
+<pre>
+  NomeClasse vett[];
+  vett=new NomeClasse[100];
+</pre>
+
+<p>
+<tt>vett</tt> &egrave; un oggetto che contiene
+100 variabili
+</p>
+
+<p>
+Ogni variabile pu&ograve; contenere <tt>null</tt>
+oppure un riferimento a un oggetto di tipo
+<tt>NomeClasse</tt> (una istanza)
+</p>
+
+<hr>
+
+<h4>Esercizio: vettore di punti</h4>
+
+<p>
+Leggere da file un array di cinque punti da file,
+trovare quello pi&ugrave; lontano dall'origine.
+</p>
+
+<p>
+Per ogni punto, il file contiene due linee,
+una per ogni coordinata
+</p>
+
+<p>
+Esempio di file:
+</p>
+
+<table border="1">
+<tr><td>
+<pre>
+4
+-10
+2
+3
+4
+0
+-2
+1
+</pre>
+</td></tr>
+</table>
+
+<p>
+Contiene i punti di coordinate
+(4,-10), (2,3), (4,0), (-2,1)
+</p>
+
+<hr>
+
+
+<h4>Soluzione: algoritmo</h4>
+
+<ul>
+<li>si leggono i punti da file
+<li>si trova il punto di distanza massima
+</ul>
+
+<p>
+Metodo <tt>distance</tt> della classe
+<tt>Point</tt>: ha come argomento il punto
+da cui calcolare la distanza.
+</p>
+
+<hr>
+
+<h4>Lettura punti da file</h4>
+
+<p>
+Per ogni punto ho la coordinata x e la coordinata y
+</p>
+
+<p>
+Per ogni punto da leggere, leggo due interi e
+creo il punto.
+</p>
+
+<pre>
+import java.io.*;
+import java.awt.*;
+
+class LeggiPunti {
+  public static void main(String args[])
+  throws IOException {
+
+    Point l[];
+    l=new Point[5];
+
+    int i;
+    int x, y;
+
+    FileReader r=new FileReader("lista.txt");
+    BufferedReader br=new BufferedReader(r);
+
+    for(i=0; i&lt;5; i++) {
+      x=Integer.parseInt(br.readLine());
+      y=Integer.parseInt(br.readLine());
+
+      l[i]=new Point(x,y);
+    }
+</pre>
+
+<p>
+Attenzione! Gli oggetti vanno creati!
+</p>
+
+<p>
+La creazione del vettore non crea gli oggetti.
+</p>
+
+<hr>
+
+
+<h4>Punto pi&ugrave; distante</h4>
+
+<p>
+Algoritmo:
+</p>
+
+<ol>
+<li>assumo che il primo punto sia il pi&ugrave; distante
+<li>per ogni altro punto, controllo se &egrave; pi&ugrave;
+distante
+<li>se lo &egrave;, cambio le variabili che mi
+dicono il punto pi&ugrave; distante e la sua distanza
+</ol>
+
+<p>
+&Egrave; il solito algoritmo del risultato parziale.
+</p>
+
+<pre>
+    double maxdist;
+    Point puntodist;
+    Point origine=new Point(0,0);
+
+    maxdist=l[0].distance(origine);
+    puntodist=l[0];
+
+    for(i=1; i&lt;5; i++)
+      if(l[i].distance(origine)&gt;maxdist) {
+        maxdist=l[i].distance(origine);
+        puntodist=l[i];
+      }
+</pre>
+
+<hr>
+
+<h4>Stampo il risultato</h4>
+
+<pre>
+    System.out.print("Il punto piu' distante e' ");
+    System.out.println(puntodist);
+    System.out.print("Si trova a distanza ");
+    System.out.println(puntodist.distance(origine));
+</pre>
+
+<hr>
+
+
+<h4>Array: tipi</h4>
+
+<p>
+Un array non &egrave; soltanto un insieme di
+elementi.
+</p>
+
+<ul>
+
+<li>tutti gli elementi dell'array devono essere dello stesso tipo
+
+<li>nell'array posso mettere due volte lo stesso elemento
+(in posizioni diverse)
+
+<li>l'array ha un numero specificato di elementi
+
+<li>gli elementi vanno messi in posizioni specifiche
+
+</ul>
+
+<hr>
+
+
+<h4>Array bidimensionali</h4>
+
+<p>
+Rappresentano le matrici.
+</p>
+
+<pre>
+int mat[][];
+mat=new int[100][100];
+</pre>
+
+<p>
+Definisce le variabili
+<tt>mat[0][0]</tt>, <tt>mat[0][1]</tt> ... <tt>mat[99][99]</tt>
+</p>
+
+<hr>
+
+<h4>Esercizio: tavola pitagorica</h4>
+
+<p>
+Memorizzare la tavola pitagorica in una
+matrice, e poi stampare la matrice.
+</p>
+
+<p>
+Nella matrice ci vanno i numeri:
+</p>
+
+<pre>
+1 2 3 ...
+2 4 6 ...
+3 6 9 ...
+</pre>
+
+<hr>
+
+
+<h4>Soluzione: stampare un riga</h4>
+
+<p>
+Per stampare la prima riga:
+</p>
+
+<pre>
+      for(j=0; j&lt;10; j++)
+        mat[0][j]=(1)*(j+1);
+</pre>
+
+<p>
+Notare il <tt>j+1</tt>
+</p>
+
+<p>
+Gli indici vanno da <tt>0</tt> a <tt>9</tt>,<br>
+i valori nella matrice da <tt>1</tt> a <tt>10</tt>
+</p>
+
+<p>
+Alternativa: ciclo da <tt>1</tt> a <tt>10</tt>
+e usare <tt>mat[0][j-1]</tt>
+</p>
+
+<p>
+Per stampare la riga <tt>i</tt>:
+</p>
+
+<pre>
+     for(j=0; j&lt;10; j++)
+        mat[i][j]=(i+1)*(j+1);
+</pre>
+
+<hr>
+
+
+<h4>Soluzione completa</h4>
+
+<p>
+Stampo la riga <tt>i</tt> per <tt>i</tt>
+che va da <tt>0</tt> a <tt>9</tt>
+</p>
+
+<pre>
+class Matrice {
+  public static void main(String args[]) {
+    int mat[][];
+    mat=new int[10][10];
+    int i, j;
+    
+    for(i=0; i&lt;10; i++)
+      for(j=0; j&lt;10; j++)
+        mat[i][j]=(i+1)*(j+1);
+
+    for(i=0; i&lt;10; i++) {
+      for(j=0; j&lt;10; j++)
+        System.out.print(mat[i][j]+" ");
+      System.out.println();
+    }
+  }
+}
+</pre>
+
+<p>
+Notare <tt>i+1</tt> e <tt>j+1</tt>
+</p>
+
+<p>
+L'alternativa era fare cicli da <tt>1</tt> a <tt>10</tt>
+e usare <tt>mat[i-1][j-1]</tt>
+</p>
+
+<hr>
+
+
+<h4>Il mistero svelato</h4>
+
+<p>
+Perch&egrave; devo fare:
+</p>
+
+<pre>
+class Esempio {
+  public static void main(String args[]) {
+    ...
+  }
+}
+</pre>
+
+<p>
+Cosa significa?
+</p>
+
+<p>
+Risposta:
+</p>
+
+<ul>
+
+<li>in Java, posso scrivere istruzioni solo
+dentro i metodi
+
+<li>i metodi li posso scrivere solo dentro le
+classi
+
+</ul>
+
+<p>
+Per scrivere un programma, faccio una classe
+con un metodo <tt>main</tt> dentro
+</p>
+
+<p>
+In altri linguaggi, posso fare un programma
+scrivendo direttamente le istruzioni in un file,
+ma in Java non si pu&ograve;
+</p>
+
+<hr>
+
+
+<h4>Significato delle parti</h4>
+
+<pre>
+class Esempio {
+  public static void main(String args[]) {
+    ...
+  }
+}
+</pre>
+
+<dl>
+
+<dt><tt>class Esempio</tt>
+<dd>nome della classe
+
+<dt><tt>public</tt>
+<dd>modificatore di accesso
+
+<dt><tt>static</tt>
+<dd>si tratta di un metodo statico
+
+<dt><tt>void</tt>
+<dd>&egrave; un metodo che non ritorna
+nessun valore
+
+<dt><tt>main</tt>
+<dd>nome del metodo
+
+<dt><tt>(String args[])</tt>
+<dd>argomento: un vettore di stringhe
+
+</dl>
+
+<hr>
+
+
+<h4>Cosa c'&egrave; nel vettore?</h4>
+
+<p>
+L'argomento del metodo <tt>main</tt>
+&egrave; un vettore di stringhe
+</p>
+
+<p>
+Quando si lancia il programma, si possono
+mettere dei dati:
+</p>
+
+<pre>
+java nomeclasse primastringa secondastringa terzastringa
+</pre>
+
+<hr>
+
+
+<h4>Cosa succede quando un programma viene eseguito</h4>
+
+<pre>
+java nomeclasse primastringa secondastringa terzastringa
+</pre>
+
+<ul>
+
+<li>viene creato un array di stringhe, in cui
+vengono messi:
+
+<ul>
+
+<li><tt>"primastringa"</tt> viene messo in posizione <tt>0</tt>
+
+<li><tt>"secondastringa"</tt> va in posizione <tt>1</tt>
+
+<li><tt>"terzastringa"</tt> va in posizione <tt>2</tt>
+
+<li>ecc.
+
+</ul>
+
+<li>se c'&egrave; un metodo statico <tt>main</tt> nella
+classe, viene invocato
+
+<li>al metodo viene passato, come argomento,
+il vettore.
+
+</ul>
+
+<p>
+&Egrave; come se il metodo <tt>main</tt> venisse invocato
+passando un vettore di stringhe composto dalle parole
+della linea di comando.
+</p>
+
+<hr>
+
+
+<h4>Quando <tt>main</tt> inizia</h4>
+
+<pre>
+java nomeclasse primastringa secondastringa terzastringa
+</pre>
+
+<p>
+In questo caso, quando si esegue il corpo
+del metodo <tt>main</tt>:
+</p>
+
+<ul>
+
+<li><tt>args[0]</tt> contiene <tt>"primastringa"</tt>
+
+<li><tt>args[1]</tt> contiene <tt>"secondastringa"</tt>
+
+<li><tt>args[2]</tt> contiene <tt>"terzastringa"</tt>
+
+</ul>
+
+<p>
+Il numero di stringhe passate &egrave; dato dalla
+dimensione del vettore.
+</p>
+
+<p>
+Quindi, sta in in <tt>args.length</tt>
+</p>
+
+<hr>
+
+<h4>Esempio</h4>
+
+<p>
+Stampare il numero di parole che seguono il nome del
+programma nella invocazione, e poi le parole stesse.
+</p>
+
+<hr>
+
+<h4>Soluzione</h4>
+
+<p>
+Primo: il metodo <tt>main</tt> deve avere come argomento
+un vettore di stringhe (come al solito).
+</p>
+
+<pre>
+class Argom {
+  public static void main(String args[]) {
+
+</pre>
+
+<p>
+Al posto di <tt>args</tt> posso usare un nome
+qualsiasi (<tt>v</tt>, <tt>argomenti</tt>,
+<tt>pippo</tt>, ecc)
+</p>
+
+<p>
+Quello che conta &egrave; la firma di <tt>main</tt>:
+</p>
+
+<pre>
+  public static void main(String[])
+</pre>
+
+<hr>
+
+<h4>Soluzione</h4>
+
+<p>
+Il vettore <tt>args</tt> contiene le stringhe
+passate da linea di comando.
+</p>
+
+<p>
+La sua lunghezza &egrave; il numero di parole
+</p>
+
+<pre>
+class Argom {
+  public static void main(String args[]) {
+    int i;
+
+    System.out.print("Numero di parole passate: ");
+    System.out.println(args.length);
+</pre>
+
+<hr>
+
+
+<h4>Soluzione</h4>
+
+<p>
+Per stampare le parole, basta una scansione del vettore
+</p>
+
+<pre>
+    int i;
+
+    for(i=0; i&lt;args.length; i++)
+      System.out.println(args[i]);
+  }
+}
+</pre>
+
+<hr>
+
+<h4>Cosa succede quando si lancia il programma</h4>
+
+<p>
+Esempio di linea di comando:
+</p>
+
+<pre>
+java Argom abcd efgh 123
+</pre>
+
+<p>
+Le stringhe <tt>abcd</tt> <tt>efgh</tt> e <tt>123</tt>
+vengono messe nel vettore che viene passato a <tt>main</tt>
+</p>
+
+<p>
+Quindi <tt>main</tt> riceve un vettore di tre stringhe.
+</p>
+
+<p>
+Viene stampato:
+</p>
+
+<pre>
+Numero di parole passate: 3
+abcd
+efgh
+123
+</pre>
+
+<hr>
+
+<h4>Uso tipico degli argomenti</h4>
+
+<p>
+Programmi che usano i file hanno bisogno del nome
+</p>
+
+<pre>
+  FileReader r=new FileReader("lista.txt");
+</pre>
+
+<p>
+Al costruttore <tt>FileReader</tt> posso passare
+una stringa qualsiasi
+</p>
+
+<pre>
+  String s;
+  s="lis".concat("ta.txt");
+
+  FileReader r=new FileReader(s);
+</pre>
+
+<hr>
+
+
+<h4>Nome file letto da tastiera</h4>
+
+<p>
+Posso fare <tt>new FileReader(s)</tt>, e questo
+legge dal file il cui nome &egrave; la stringa
+memorizzata in <tt>s</tt>
+</p>
+
+<p>
+Nella variabile <tt>s</tt> posso anche mettere
+una stringa letta da tastiera
+</p>
+
+<pre>
+  String s;
+  s=JOptionPane.showInputDialog("Dammi il nome del file");
+
+  FileReader r=new FileReader(s);
+</pre>
+
+<hr>
+
+
+<h4>Nome file come parametro del programma</h4>
+
+<pre>
+FileReader r=new FileReader(args[0]);
+</pre>
+
+<p>
+Quando si invoca il programma, bisogna fare
+</p>
+
+<pre>
+java NomeProgramma lista.txt
+</pre>
+
+<p>
+Dato che <tt>"lista.txt"</tt> va in <tt>args[0]</tt>,
+questo &egrave; il file che viene letto
+</p>
+
+<p>
+Vantaggio: posso usare lo stesso programma per
+fare le stesse operazioni su pi&ugrave; file,
+senza dover cambiare il sorgente e ricompilare.
+</p>
+
+<hr>
+
+
+<h4>Numero di argomenti</h4>
+
+<p>
+L'utente potrebbe inserire il numero sbagliato
+di argomenti (per errore)
+</p>
+
+<p>
+Controllare che l'utente abbia inserito il numero
+giusto di argomenti!
+</p>
+
+<pre>
+  if(args.length &lt; 1) {
+    System.out.println("Devi darmi il nome del file");
+    return;
+  }
+</pre>
+
+<hr>
+
+
+<h4>Esercizio</h4>
+
+<p>
+Realizzare un programma di somma
+</p>
+
+<p>
+Quando l'utente inserisce:
+</p>
+
+<pre>
+java Somma 12 43 -23 1 32
+</pre>
+
+<p>
+Il programma deve stampare la somma
+di questi elementi
+</p>
+
+<hr>
+
+
+<h4>Soluzione sbagliata</h4>
+
+<p>
+In <tt>args</tt> non ci sono interi,
+ma stringhe
+</p>
+
+<p>
+Non posso fare <tt>somma=somma+args[i]</tt>
+</p>
+
+<hr>
+
+
+<h4>Soluzione</h4>
+
+<p>
+Gli elementi da sommare stanno in
+<tt>args[0],...,args[args.length-1]</tt>
+</p>
+
+<p>
+Per&ograve; sono stringhe: vanno prima
+convertite in interi
+</p>
+
+<pre>
+class Somma {
+  public static void main(String args[]) {
+    int i;
+    int somma;
+
+    somma=0;
+
+    for(i=0; i&lt;args.length; i++)
+      somma=somma+
+            Integer.parseInt(args[i]);
+
+    System.out.println(somma);
+  }
+</pre>
+
+<hr>
+
+
+<h4>Leggere tutte le linee di un file</h4>
+
+<p>
+Finora ho sempre letto un numero prefissato
+di linee da file.
+</p>
+
+<p>
+Ora, leggiamo tutte le linee del file.
+</p>
+
+<hr>
+
+<h4>Creazione del vettore</h4>
+
+<p>
+Per creare il vettore, devo sapere
+quanti elementi deve contenere.
+</p>
+
+<p>
+Deve contenere un elemento per ogni
+linea del file.
+</p>
+
+<p>
+Quindi, devo contare le linee del file
+</p>
+
+<hr>
+
+<h4>Conteggio linee del file</h4>
+
+<p>
+Leggo tutto il file, incrementando
+il contatore di uno ad ogni passo.
+</p>
+
+<pre>
+import java.io.*;
+
+class LeggiTutti {
+  public static void main(String args[])
+  throws IOException {
+
+		// conta le linee
+
+    FileReader r=new FileReader("lista.txt");
+    BufferedReader br=new BufferedReader(r);
+ 
+    int numero=0;
+    String linea=br.readLine();
+    while(linea!=null) {
+      numero++;
+      linea=br.readLine();
+    }
+</pre>
+
+<hr>
+
+
+<h4>Creazione del vettore e lettura</h4>
+
+<p>
+Ora so quanti elementi devo leggere.
+</p>
+
+<p>
+&Egrave; tutto uguale a prima.
+</p>
+
+<p>
+Attenzione! Ora il <tt>BufferedReader</tt>
+sta alla fine del file.
+</p>
+
+<p>
+Devo rileggere da capo, quindi riapro il file.
+</p>
+
+<hr>
+
+<h4>Lettura del vettore</h4>
+
+<pre>
+		// crea il vettore
+
+    String v[];
+    v=new String[numero];
+
+		// legge le linee
+
+    r=new FileReader("lista.txt");
+    br=new BufferedReader(r);
+    int i;
+
+    for(i=0; i&lt;numero; i++) 
+      v[i]=br.readLine();
+
+</pre>
+
+<hr>
+
+
+<h4>Stampa del vettore</h4>
+
+<p>
+Come al solito:
+</p>
+
+<pre>
+		// stampa il vettore
+
+    for(i=0; i&lt;numero; i++)
+      System.out.println(v[i]);
+</pre>
+
+<hr>
+
+
+<h4>Variante</h4>
+
+<p>
+Modificare il programma in modo che il nome del
+file da aprire venga passato al programma
+</p>
+
+<hr>
+
+
+<h4>Soluzione</h4>
+
+<ul>
+
+<li>controllo se effettivamente l'utente ha
+immesso una stringa come argomento
+
+<li>uso <tt>args[0]</tt> come nome di file
+
+</ul>
+
+<pre>
+import java.io.*;
+
+class LeggiTuttiArg {
+  public static void main(String args[])
+  throws IOException {
+
+		// controllo argomenti
+
+    if(args.length&lt;1) {
+      System.out.println("Manca il nome del file");
+      System.exit(0);
+    }
+
+		// conta le linee
+
+    FileReader r=new FileReader(args[0]);
+    BufferedReader br=new BufferedReader(r);
+    ...
+
+		// crea il vettore
+		// legge le linee
+
+    r=new FileReader(args[0]);
+    br=new BufferedReader(r);
+    ...
+		// stampa il vettore
+  }
+}
+</pre>
+
+<hr>
+
+
+<h4>Ricerca in vettore ordinato</h4>
+
+<p>
+Problema: decidere se un vettore contiene o
+no un certo elemento.
+</p>
+
+<p>
+Suppongo che gli elementi del vettore siano
+in un certo ordine:
+</p>
+
+<pre>
+0
+1
+2
+3
+4
+12
+15
+40
+59
+102
+</pre>
+
+<hr>
+
+
+<h4>Soluzione per vettori non ordinati</h4>
+
+<p>
+Posso anche usare lo stesso algoritmo dei
+vettori non ordinati:
+</p>
+
+<p>
+scansione del vettore; se trovo l'elemento
+ritorno <tt>true</tt>, altrimenti <tt>false</tt>.
+</p>
+
+<p>
+Realizzo un metodo statico, a cui passo il vettore
+e l'elemento da cercare.
+</p>
+
+<pre>
+  public static boolean
+  presente(int v[], int e) {
+    int i;
+
+    for(i=0; i&lt;v.length; i++)
+      if(v[i]==e)
+        return true;
+
+    return false;
+  }
+</pre>
+
+<p>
+Si pu&ograve; anche fare con una variabile
+booleana e il <tt>break</tt>
+</p>
+
+<hr>
+
+
+<h4>Esempio di programma</h4>
+
+<pre>
+  public static void main(String args[])
+  throws IOException {
+
+    int letti[];
+    letti=new int[10];
+
+                // lettura da file
+
+    FileReader r=new FileReader("lista.txt");
+    BufferedReader br=new BufferedReader(r);
+
+    int i;
+    for(i=0; i&lt;10; i++) 
+      letti[i]=Integer.parseInt(br.readLine());
+
+                // vede se il 14 e il 40 ci sono
+
+    System.out.println(presente(letti, 14));
+    System.out.println(presente(letti, 40));
+  }
+</pre>
+
+<hr>
+
+
+<h4>Ordinamento del vettore</h4>
+
+<p>
+La soluzione precedente funziona.
+</p>
+
+<p>
+Non sfrutta il fatto che il vettore
+&egrave; ordinato:
+</p>
+
+<pre>
+0
+1
+2
+3
+4
+12
+15
+40
+59
+102
+</pre>
+
+<p>
+Se cerco il 14, quando arrivo a 15 so che
+l'elemento non c'&egrave;
+</p>
+
+<hr>
+
+
+<h4>Ricerca per vettori ordinati</h4>
+
+<p>
+Quasi uguale a quello di prima.
+</p>
+
+<p>
+Quando trovo un elemento maggiore di quello
+da cercare, mi fermo (so che l'elemento non
+c'&egrave;)
+</p>
+
+<ol>
+<li>per ogni elemento del vettore:
+<ol>
+<li>se ho trovato l'elemento, ritorno <tt>true</tt>
+<li>se sono passato oltre, ritorno <tt>false</tt>
+</ol>
+<li>se ha fatto tutta la scansione senza trovare
+l'elemento, ritorno <tt>false</tt>
+</ol>
+
+<hr>
+
+<h4>Implementazione dell'algoritmo</h4>
+
+<p>
+Rispetto a prima: esco se trovo un elemento
+maggiore di quello da cercare.
+</p>
+
+<pre>
+class Ricerca {
+  public static boolean presente(int v[], int e) {
+    int i;
+
+    for(i=0; i&lt;v.length; i++) {
+      if(v[i]==e)
+        return true;
+
+      if(v[i]&gt;e)
+        return false;
+    }
+
+    return false;
+  }
+</pre>
+
+<p>
+Domanda: in quale situazione si esegue l'ultimo
+<tt>return false;</tt>?
+</p>
+
+<hr>
+
+
+<h4>Risposta</h4>
+
+<p>
+Se tutti gli elementi del vettore sono minori
+di quello da cercare
+</p>
+
+<p>
+In questo caso, si fa la scansione di tutto il
+vettore senza mai eseguire uno dei due 
+<tt>return</tt> del corpo del ciclo
+</p>
+
+<p>
+Si esce dal ciclo e si esegue l'ultimo
+<tt>return</tt>
+</p>
+
+<hr>
+
+
+<h4>Esempio di programma</h4>
+
+<pre>
+  public static void main(String args[])
+  throws IOException {
+
+    int letti[];
+    letti=new int[10];
+
+                // lettura da file
+
+    FileReader r=new FileReader("lista.txt");
+    BufferedReader br=new BufferedReader(r);
+
+    int i;
+    for(i=0; i&lt;10; i++)
+      letti[i]=Integer.parseInt(br.readLine());
+
+                // vede se il 14 e il 40 ci sono
+
+    System.out.println(presente(letti, 14));
+    System.out.println(presente(letti, 40));
+  }
+</pre>
+
+<p>
+&Egrave; lo stesso programma di prima.
+</p>
+
+<p>
+Vantaggio dei metodi: posso cambiare
+il  modo di fare una cosa (es. cercare
+in un vettore) senza dover cambiare
+il programma.
+</p>
+
+<hr>
+
+
+<h4>Esercizio</h4>
+
+<p>
+Controllare se sul file <tt>punord.txt</tt>
+c'&egrave; il punto <tt>(12,0)</tt>
+</p>
+
+<p>
+Nel file ci sono dieci punti:<br>
+per ognuno, ho una linea per ogni coordinata
+</p>
+
+<p>
+I punti sono memorizzati in ordine di distanza
+crescente dall'origine
+</p>
+
+<p>
+Scrivere un metodo che usa questo fatto:
+</p>
+
+<pre>
+  static boolean cercaPunto(Point v[], Point p) {
+    ...
+  }
+</pre>
+
+<p>
+<i>Dopo,</i> scrivere il programma
+</p>
+
+<hr>
+
+
+<h4>Soluzione</h4>
+
+<p>
+Faccio la solita ricerca:
+</p>
+
+<pre>
+  static boolean cercaPunto(Point v[], Point p) {
+    int i;
+
+    for(i=0; i&lt;v.length; i++) {
+      if(p.equals(v[i]))
+        return true;
+    }
+
+    return false;
+  }
+</pre>
+
+<p>
+Il confronto si pu&ograve; anche fare:
+</p>
+
+<pre>
+if(v[i].equals(p)) 
+if( (v[i].x==p.x) &amp;&amp; (v[i].y==p.y) )
+if( (p.x==v[i].x) &amp;&amp; (p.y==v[i].y) )
+</pre>
+
+<p>
+Non si pu&ograve; fare <tt>v[i]==p</tt>, perch&egrave;
+sono oggetti
+</p>
+
+<p>
+Non ho usato l'ordinamento.
+</p>
+
+<hr>
+
+
+<h4>Usare l'ordinamento</h4>
+
+<p>
+Creo un punto con coordinate <tt>(0,0)</tt>
+</p>
+
+<p>
+Quando trovo un punto di distanza maggiore
+di quello cercato, mi fermo.
+</p>
+
+<pre>
+  static boolean cercaPunto(Point v[], Point p) {
+    Point o=new Point(0,0);
+    int i;
+
+    for(i=0; i&lt;v.length; i++) {
+      if(p.equals(v[i]))
+        return true;
+
+      if(p.distance(o)&gt;v[i].distance(o))
+        return false;
+    }
+
+    return false;
+  }
+</pre>
+
+<p>
+Se <tt>v[i]</tt> contiene l'indirizzo di un oggetto
+<tt>Point</tt>, posso usare <tt>v[i].x</tt> oppure
+<tt>v[i].distance(o)</tt> ecc.
+</p>
+
+<hr>
+
+
+<h4>Il programma</h4>
+
+<p>
+Leggo i punti da file.
+</p>
+
+<p>
+Per ogni punto, leggo due interi.
+</p>
+
+<pre>
+  public static void main(String args[]) 
+  throws IOException {
+    Point p[];
+    p=new Point[20];
+
+    FileReader r=new FileReader("punord.txt");
+    BufferedReader br=new BufferedReader(r);
+    int i;
+    for(i=0; i&lt;10; i++) {
+      String s;
+      int x, y;
+
+      s=br.readLine();
+      x=Integer.parseInt(s);
+
+      s=br.readLine();
+      y=Integer.parseInt(s);
+
+      p[i]=new Point(x, y);
+    }
+
+    Point c=new Point(12,0);
+
+    System.out.println(cercaPunto(p, c));
+  }
+}
+</pre>
+
+<hr>
+
+
+<h4>Array: creazione statica</h4>
+
+<p>
+La creazione di array vista finora avviene
+in due passi:
+</p>
+
+<pre>
+  int v[];	// crea la variabile
+  v=new int[10];// crea l'array
+</pre>
+
+<p>
+&Egrave; possibile creare un array direttamente
+con dei valori dentro:
+</p>
+
+<pre>
+  int v[]={-2, -3, 0, -4, 9};
+</pre>
+
+<p>
+Attenzione! Non si pu&ograve; fare in due
+passi:
+</p>
+
+<pre>
+  // non compila
+  int v[];
+  v={-2, -3, 0, -4, 9};
+</pre>
+
+<p>
+La creazione statica non ci interessa
+</p>
+
+<hr>
+
+
+<h4>Errore comune n. 1</h4>
+
+<p>
+Usare l'array senza averlo creato
+</p>
+
+<pre>
+  int v[];
+
+  v[0]=12;
+</pre>
+
+<p>
+Gli array in Java sono oggetti
+</p>
+
+<p>
+Quando creo la variabile, ho solo
+creato lo spazio per un indirizzo,
+non ho creato l'oggetto.
+</p>
+
+<hr>
+
+
+<h4>Errore comune n. 2</h4>
+
+<p>
+Attenzione alle parentesi!
+</p>
+
+<pre>
+  int x, y;
+  int v[];
+  String s[];
+
+  x=v.length;
+  y=s.length();
+</pre>
+
+<p>
+Le parentesi si mettono per le stringhe,
+non si mettono per gli array.
+</p>
+
+<p>
+Principio: negli array, &egrave; una componente,
+nelle stringhe un metodo.
+</p>
+
+<hr>
+
+
+<h4>Errore comune n. 3</h4>
+
+<p>
+Per copiare un vettore:
+</p>
+
+<pre>
+    int v[]={-2, -3, 0, -4, 9};
+    int k[];
+
+    k=v;
+</pre>
+
+<p>
+Come per gli oggetti: l'oggetto &egrave; sempre
+quello!
+</p>
+
+<p>
+Se cambio <tt>k[2]</tt>, cambia anche <tt>v[2]</tt>,
+dato che <tt>k</tt> e <tt>v</tt> puntano allo stesso
+oggetto array.
+</p>
+
+<p>
+Modo giusto: creare un nuovo vettore e fare la copia
+con un ciclo.
+</p>
+
+<p>
+Vedremo poi un modo semplice per fare la copia
+</p>
+
+<hr>
+
+
+<h4>Esercizio: salvare valori di una funzione</h4>
+
+<p>
+Sia dato un metodo statico <tt>funzione(int)</tt>
+che calcola i valori di una funzione:
+</p>
+
+<pre>
+class Salva {
+     // esempio di funzione
+  static int funzione(int x) {
+    return x*x-3*x+2;
+  }
+
+  // scrivere qui il main
+}
+</pre>
+
+<p>
+Memorizzare i valori della funzione, per
+<i>x</i> intero da <i>-10</i> a <i>10</i>,
+in un vettore.
+</p>
+
+<p>
+Determinare il minimo della funzione per
+<i>x</i> intero da <i>-5</i> a <i>5</i>,
+la somma da <i>-20</i> a <i>5</i>, e 
+verificare l'esistenza di valori negativi
+da <i>0</i> a <i>15</i>.
+</p>
+
+<p>
+Usare il vettore per i valori gi&agrave; calcolati
+</p>
+
+<hr>
+
+
+<h4>Creazione del vettore</h4>
+
+<p>
+Fra <tt>-10</tt> e <tt>10</tt> ci sono ventuno
+elementi:
+</p>
+
+<pre>
+  public static void main(String args[]) {
+    int f[];
+    f=new int[21];
+
+    // memorizza
+    // calcola il minimo
+    // calcola la somma
+    // verifica valori negativi
+  }
+</pre>
+
+<hr>
+
+
+<h4>Memorizzazione</h4>
+
+<p>
+Devo tenere presente che i valori di <tt>x</tt>
+vanno da <tt>-10</tt> a <tt>10</tt>, mentre gli
+indici del vettore vanno da <tt>0</tt> a <tt>20</tt>
+</p>
+
+<p>
+Si tratta di una relazione lineare:
+</p>
+
+<table border="1">
+
+<tr>
+<th>valore di <tt>x</tt></th>
+<th>indice del vettore</th>
+</tr>
+
+<tr>
+<td><tt>-10</tt></td>
+<td><tt>0</tt></td>
+</tr>
+
+<tr>
+<td><tt>-9</tt></td>
+<td><tt>1</tt></td>
+</tr>
+
+<tr>
+<td><tt>-8</tt></td>
+<td><tt>2</tt></td>
+</tr>
+
+<tr>
+<td><tt>...</tt></td>
+<td><tt>...</tt></td>
+</tr>
+
+<tr>
+<td><tt>10</tt></td>
+<td><tt>20</tt></td>
+</tr>
+
+</table>
+
+<p>
+Si tratta di una relazione lineare:<br>
+dato <tt>x</tt>, l'indice del vettore
+in cui sta <tt>f(x)</tt> &egrave;
+<tt>x+10</tt>
+</p>
+
+<p>
+Controllare che funzioni anche per l'ultimo indice:<br>
+per <tt>x=10</tt> risulta
+<tt>x+10=20</tt>, che &egrave; l'ultimo
+indice del vettore
+</p>
+
+<pre>
+  public static void main(String args[]) {
+    int f[];
+    f=new int[21];
+
+    int x;
+    for(x=-10; x&lt;=10; x++)
+      f[x+10]=funzione(x);
+
+    // calcola il minimo
+    // calcola la somma
+    // verifica valori negativi
+  }
+</pre>
+
+<hr>
+
+
+<h4>Usare il vettore</h4>
+
+<p>
+Per il calcolo del minimo, vado a guardare il
+vettore invece di calcolare la funzione:
+</p>
+
+<pre>
+    x=-5;
+    int minimo=f[x+10];
+    for(x=-5; x&lt;=5; x++)
+      if(f[x+10]&lt;minimo)
+        minimo=f[x+10];
+    System.out.println(minimo);
+</pre>
+
+<p>
+Questo era facile...
+</p>
+
+<hr>
+
+
+<h4>Calcolo della somma</h4>
+
+<p>
+La somma va fatta da <i>-20</i> a <i>5</i>,
+quindi ci sono valori che non si trovano
+nel vettore.
+</p>
+
+<p>
+La somma normalmente sarebbe:
+</p>
+
+<pre>
+    int somma;
+    somma=0;
+    for(x=-20; x&lt;=5; x++)
+      somma=somma+funzione(x);
+    System.out.println(somma);
+</pre>
+
+<p>
+Ogni volta che compare <tt>funzione(x)</tt>,
+verifico se <tt>x</tt> sta fra <tt>-10</tt>
+e <tt>10</tt>.
+</p>
+
+<p>
+In questo caso, uso il vettore invece del
+metodo.
+</p>
+
+<hr>
+
+
+<h4>Calcolo della somma, con il vettore</h4>
+
+<p>
+Al posto di <tt>funzione(x)</tt>, uso
+<tt>f[x+10]</tt> se <tt>x</tt> &egrave;
+compreso fra <tt>-10</tt> e <tt>10</tt>:
+</p>
+
+<pre>
+    somma=0;
+    for(x=-20; x&lt;=5; x++)
+      if((x&gt;=-10) &amp;&amp; (x&lt;=10))
+        somma=somma+f[x+10];
+      else
+        somma=somma+funzione(x);
+    System.out.println(somma);
+</pre>
+
+<hr>
+
+
+<h4>Esistenza valori negativi</h4>
+
+<p>
+Anche qui, servono alcuni valori della funzione
+che non sono memorizzati nell'array
+</p>
+
+<p>
+Per il resto, &egrave; la solita verifica:
+</p>
+
+<pre>
+    boolean negativi;
+    negativi=false;
+    for(x=0; x&lt;=15; x++)
+      if(funzione(x)&lt;0)
+         negativi=true;
+    System.out.println(negativi);
+</pre>
+
+<hr>
+
+
+<h4>Verifica valori negativi</h4>
+
+<p>
+Posso memorizzare il valore della funzione
+in una variabile <tt>val</tt> e poi usarlo:
+</p>
+
+<pre>
+    int val;
+    negativi=false;
+    for(x=0; x&lt;=15; x++) {
+      if((x&gt;=-10) &amp;&amp; (x&lt;=10))
+         val=f[x+10];
+      else
+         val=funzione(x);
+
+      if(val&lt;0)
+            negativi=true;
+    }
+    System.out.println(negativi);
+</pre>
+
+<p>
+Alternativa: doppio <tt>if</tt> (prox pag)
+</p>
+
+<hr>
+
+
+<h4>Soluzione con due <tt>if</tt></h4>
+
+<p>
+Uso <tt>f[x+10]</tt> oppure <tt>funzione(x)</tt>
+a seconda dei valori di <tt>x</tt>:
+</p>
+
+<pre>
+    negativi=false;
+    for(x=0; x&lt;=15; x++)
+      if((x&gt;=-10) &amp;&amp; (x&lt;=10))
+        if(f[x+10]&lt;0)
+          negativi=true;
+      else
+        if(funzione(x)&lt;0)
+          negativi=true;
+    System.out.println(negativi);
+</pre>
+
+<p>
+Trovare l'errore
+</p>
+
+<hr>
+
+
+<h4>Errore: ambiguit&agrave; dell'<tt>if</tt></h4>
+
+<p>
+L'<tt>else</tt> si attacca all'ultimo <tt>if</tt>
+</p>
+
+<p>
+Soluzione corretta:
+</p>
+
+<pre>
+    negativi=false;
+    for(x=0; x&lt;=15; x++)
+      if((x&gt;=-10) &amp;&amp; (x&lt;=10)) {
+        if(f[x+10]&lt;0)
+          negativi=true;
+      }
+      else {
+        if(funzione(x)&lt;0)
+          negativi=true;
+      }
+    System.out.println(negativi);
+</pre>
+
+</body>
+</html>
+

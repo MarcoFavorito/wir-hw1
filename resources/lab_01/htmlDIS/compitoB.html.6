@@ -1,0 +1,72 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<!-- saved from url=(0098)http://www.dis.uniroma1.it/~degiacom/didattica/fond1info/appelli/2003-04-08/compito-A/testo-A.html --><HTML><HEAD><TITLE>Esame TP - Compito B</TITLE>
+<META http-equiv=Content-Type content="text/html; charset=iso-8859-1">
+<META content="MSHTML 6.00.2900.2604" name=GENERATOR></HEAD>
+<BODY>
+<CENTER><B>Tecniche di Programmazione </B><BR>
+<B>Corsi  di Laurea in Ingegneria 
+Informatica ed </B><B>Automatica</B> <BR>
+A.A. 
+2004/05 </CENTER>
+<CENTER>
+<H2>Appello del 12/04/2005 - Compito B</H2></CENTER>
+<P>Si vuole realizzare un programma per la gestione di attività sportive da 
+parte di un'associazione. L'associazione è caratterizzata da un nome (una 
+stringa), una città in cui si trova (una stringa) e una serie di attività che 
+essa organizza. Di ciasuna attività sportiva sono di interesse i seguenti dati: 
+<UL>
+  <LI>nome dell'attività (una stringa) 
+  <LI>giorno, mese e anno in cui si svolge 
+  <LI>luogo in cui si svolge (una stringa) </LI></UL>
+<P>Per la rappresentazione delle date si definisca una classe <TT>Data</TT> 
+contenente le informazioni relative a giorni, mesi e anni.</P>
+<P>Si richiede l'implementazione di una classe per la gestione dell'associazione 
+con le seguenti funzionalità: </P>
+<UL>
+  <LI><EM>crea:</EM> che, date due stringhe <EM>n</EM> e <EM>c</EM>, crea un 
+  oggetto associato all'associazione <EM>n</EM> operante nella città <EM>c</EM>; 
+
+  <LI><EM>totaleAttivita: </EM>che restituisce il numero di attività attualmente 
+  in gestione all'associazione; 
+  <LI><EM>organizza:</EM> che, dato il nome, la data e il luogo di un'attività, 
+  la aggiunge alla serie delle attivit&agrave; organizzate dall'associazione, se esiste già 
+  un'attività con lo stesso nome lancia un'eccezione; 
+  <LI><EM>cancella:</EM> che, dato il nome di un'attività, la cancella da quelle 
+  organizzate dall'associazione; 
+  <LI><EM>spostaData:</EM> che, dati il nome di un'attività e una nuova data, 
+  modifica la data di svolgimento dell'attività; 
+  <LI><EM>doveAttivita:</EM> che, dato il nome di un'attività, restituisce il 
+  luogo in cui si svolge; 
+  <LI><EM>quandoAttivita:</EM> che, dato il nome di un'attività, restituisce la 
+  data in cui si svolge; 
+  <LI><EM>quanteAttivitaLuogo</EM>: che, data una stringa <EM>c</EM>, restituisce 
+  il numero di attività programmate nel luogo <EM>c</EM>; 
+  <LI><EM>tutteAttivitaLuogo:</EM> che, data una stringa <EM>c</EM>, restituisce 
+  un array di stringhe contenente i nomi di tutte le attività programmate nel 
+  luogo <EM>c</EM>. </LI></UL>
+<P><STRONG>Domanda 1.</STRONG> Scrivere una classe Java 
+<CODE>AssociazioneSportiva</CODE> per rappresentare un'associazione sportiva. Si 
+richiede di ottimizzare il codice in modo particolare nell'accesso ad un 
+elemento della collezione dato il nome dell'attività. Specificare il costo 
+asintotico in tempo e in spazio di ciascun metodo, indicando esplicitamente la 
+dimensione dell'input, l'istruzione dominante e descrivendo il caso peggiore 
+quando necessario. 
+<P><STRONG>Domanda 2.</STRONG> Si realizzi una classe cliente della classe 
+<CODE>AssociazioneSportiva</CODE> contenente un metodo statico 
+<CODE>stampaAttivitaLuogo</CODE> che, dato un oggetto <EM>a</EM> di tipo 
+<EM>AssociazioneSportiva</EM> una stringa <EM>c</EM> e una stringa <EM>f</EM>, 
+stampi su un file di nome <EM>f</EM> nome e data delle attività organizate 
+dall'associazione <EM>a</EM> nel luogo <EM>c</EM>. Specificare il costo 
+asintotico in tempo e in spazio del metodo, indicando esplicitamente la 
+dimensione dell'input, l'istruzione dominante e descrivendo il caso peggiore 
+quando necessario. 
+<P><STRONG>Domanda 3.</STRONG> Data una rappresentazione collegata di alberi 
+binari in cui l'informazione in ciascun nodo è un intero, realizzare un metodo 
+statico pubblico che, dato il riferimento alla radice di un albero binario 
+<EM>alb</EM> e dati due valori interi <EM>x</EM> e <EM>y</EM>, verifichi la 
+presenza di una coppia di nodi dell'albero che in cui il nodo contenente 
+<EM>x</EM> è il padre di un nodo contenente <EM>y</EM>. Specificare il costo 
+asintotico in tempo e in spazio del metodo, indicando esplicitamente la 
+dimensione dell'input, l'istruzione dominante e descrivendo il caso peggiore 
+quando necessario. 
+<P></P></BODY></HTML>

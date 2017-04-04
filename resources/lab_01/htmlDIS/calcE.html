@@ -1,0 +1,95 @@
+<html>
+<head>
+<title>Prova al calcolatore - compito E</title>
+</head>
+
+<body>
+
+<h2>Prova al calcolatore</h2>
+<b>Compito E<br>
+Durata: 1:45</b>
+<hr>
+
+<h4>Prima parte</h4>
+
+<p>
+La congregazione religiosa ``Adoratorori della Pietra Grezza
+sotto la Porta di Ishtar'' ha la necessit&agrave; di
+informatizzare la gestione dei fedeli delle numerose chiese
+sparse sul territorio. Per ogni fedele, i dati da
+memorizzare sono i seguenti:
+</p>
+
+<dl>
+
+<dt><tt>nome</tt>
+<dd>il nome del fedele (una stringa)
+
+<dt><tt>eta</tt>
+<dd>l'et&agrave; del fedele (un intero)
+
+<dt><tt>permanenza</tt>
+<dd>il numero di anni da cui il fedele fa parte della
+congregazione (intero)
+
+<dt><tt>obolo</tt>
+<dd>la cifra totale che il fedele ha finora versato
+alla congregazione (reale)
+
+</dl>
+
+<p>
+Scrivere una classe <tt>Fedele</tt> i cui oggetti contengono
+queste variabili di istanza (componenti): <tt>nome, eta,
+permanenza, obolo</tt>. La classe deve essere incapsulata,
+ossia deve avere componenti private e i metodi <tt>get</tt>
+e <tt>set</tt> per tutte le componenti. Deve essere presente
+il costruttore a quattro argomenti e i metodi
+<tt>toString</tt> ed <tt>equals</tt>
+</p>
+
+<hr>
+
+
+<h4>Seconda parte</h4>
+
+<p>
+Per ognuna delle chiese sparse sul territorio, si vogliono
+memorizzare i dati relativi ai fedeli. Si realizzi la classe
+<tt>Chiesa</tt> che rappresenta un insieme di fedeli: usare
+un array, oppure una <tt>LinkedList</tt>, oppure un
+<tt>HashSet</tt>, oppure una <tt>Lista</tt>. In tale classe
+devono essere presenti i seguenti metodi:
+</p>
+
+<dl>
+
+<dt><tt>static Fedele readFedele(BufferedReader br)</tt>
+<dd>legge i dati di un oggetto <tt>Fedele</tt> dal
+<tt>BufferedReader</tt> passato come argomento, e ritorna
+questo oggetto; se non &egrave; possibile laggere un oggetto
+a causa della fine del file, si ritorni <tt>null</tt>
+
+<dt><tt>Chiesa(String nomefile)</tt>
+<dd>il costruttore ha come parametro il nome di un file: i
+dati dei fedeli contenuti nel file vengono letti e
+memorizzati nella struttura dati usata per la loro
+memorizzazione
+
+<dt><tt>int quantiGiovani(int e)</tt>
+<dd>questo metodo ritorna il numero di fedeli della chiesa
+la cui et&agrave; &egrave; inferiore al valore <tt>e</tt>
+passato come parametro
+
+<dt><tt>Fedele piuTirchio()</tt>
+<dd>determina il fedele che ha dato di meno in proporzione
+al numero di anni di permanenza; in altre parole, quello per
+il quale il rapporto fra <tt>obolo</tt> e
+<tt>permanenza</tt> &egrave; pi&ugrave; basso
+
+</dl>
+
+</body>
+</html>
+
+

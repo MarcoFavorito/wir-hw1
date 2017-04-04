@@ -1,0 +1,156 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=windows-1252">
+<META NAME="Generator" CONTENT="Microsoft Word 97">
+<TITLE>1</TITLE>
+<META NAME="Template" CONTENT="C:\PROGRAMMI\MICROSOFT OFFICE\OFFICE\html.dot">
+</HEAD>
+<BODY BACKGROUND="bgrnd.jpg">
+
+<B><FONT SIZE=5><P>4) Flex e JFlex</P>
+</B></FONT><P ALIGN="RIGHT">Riferimenti: "<I>Flex</I>" - Manuale in formato PostScript</P>
+<P ALIGN="RIGHT">"J<I>Flex</I>" - Manuale in formato PostScript</P>
+<P ALIGN="RIGHT">"<I>Linguaggi formali e compilatori</I>" - 4.12</P>
+<P ALIGN="CENTER"><HR></P>
+<B><U><FONT SIZE=4><P ALIGN="JUSTIFY">Aula</B></U></FONT> </P>
+<OL>
+
+<I><P ALIGN="JUSTIFY"><LI>Cosa sono Flex e JFlex</LI></P>
+</I><P ALIGN="JUSTIFY">Abbiamo detto che l'analizzatore lessicale, raggruppa i caratteri in ingresso in <I>token</I> e riconosce eventuali errori lessicali. Abbiamo anche detto che l'analizzatore pu&ograve; essere implementato in codice C o Java, e che nell'analizzatore possono essere utilizzate delle strutture dati per rappresentare i diversi passaggi di stato nell'automa a stati finiti (che rappresenta il riconoscimento dei simboli del nostro lessico). Uno strumento di ausilio alla realizzazione di analizzatori lessicali in linguaggio C &egrave; Flex; uno strumento analogo, di ausilio alla realizzazione di analizzatori lessicali in linguaggio Java &egrave; Jflex. Sono generatori di analizzatori lessicali. </P>
+<I><P ALIGN="JUSTIFY"><LI>Come utilizzarli</LI></P>
+</I><P ALIGN="JUSTIFY">Per generare un analizzatore lessicale corretto, &egrave; necessario fornire a Flex o a JFlex una descrizione formale del "linguaggio" di input. La prima cosa da fare &egrave; quindi formalizzare quella che viene chiamata "specifica lessicale"; in questa, le regole lessicali del linguaggio vengono descritte mediante espressioni regolari.</P>
+<I><P ALIGN="JUSTIFY"><LI>La specifica lessicale</LI></P>
+</I><P ALIGN="JUSTIFY">E' composta da tre sezioni distinte, separate dal simbolo <B>%%.</B> In Flex la sequenza prevista &egrave; la seguente: </P>
+<I><P ALIGN="CENTER">Dichiarazioni</P>
+<P ALIGN="CENTER">%%</P>
+<P ALIGN="CENTER">Regole lessicali</P>
+<P ALIGN="CENTER">%%</P>
+<P ALIGN="CENTER">funzioni ausiliarie</P>
+</I><P ALIGN="JUSTIFY">mentre in Jflex la sequnza &egrave; diversa:</P>
+<I><P ALIGN="CENTER">Codice utente</P>
+<P ALIGN="CENTER">%%</P>
+<P ALIGN="CENTER">Opzioni e dichiarazioni</P>
+<P ALIGN="CENTER">%%</P>
+<P ALIGN="CENTER">Regole lessicali</P>
+</I><P ALIGN="JUSTIFY">Quella che segue &egrave; la specifica lessicale di esempio, stilata per la realizzazione con Flex, dell'analizzatore lessicale del Pascom (esercitazione 1 fornita insieme al materiale).</P>
+<FONT FACE="Courier New" SIZE=2 COLOR="#008000"><P>/* Analizzatore lessicale per PASCOM</P>
+<P>* (da usare autonomamente)</P>
+<P>*/</P>
+</FONT><FONT FACE="Courier New" SIZE=2><P>%{</P>
+<P>#include &lt;string.h&gt;</P>
+<P>#include &lt;stdio.h&gt;</P>
+</FONT><FONT FACE="Courier New" SIZE=2 COLOR="#ff0000"><P>char</FONT><FONT FACE="Courier New" SIZE=2> *yylval=</FONT><FONT FACE="Courier New" SIZE=2 COLOR="#ff0000">0</FONT><FONT FACE="Courier New" SIZE=2>;</P>
+</FONT><FONT FACE="Courier New" SIZE=2 COLOR="#ff0000"><P>int</FONT><FONT FACE="Courier New" SIZE=2> Line_Number=</FONT><FONT FACE="Courier New" SIZE=2 COLOR="#ff0000">0</FONT><FONT FACE="Courier New" SIZE=2>;</P>
+<P>%}</P>
+</FONT><FONT FACE="Courier New" SIZE=2 COLOR="#008000"><P>/* regular definitions */</P>
+</FONT><FONT FACE="Courier New" SIZE=2><P>delim [ \t]</P>
+<P>ws {delim}+</P>
+<P>newline \n</P>
+<P>letter [a-zA-Z]</P>
+<P>digit [</FONT><FONT FACE="Courier New" SIZE=2 COLOR="#ff0000">0</FONT><FONT FACE="Courier New" SIZE=2>-</FONT><FONT FACE="Courier New" SIZE=2 COLOR="#ff0000">9</FONT><FONT FACE="Courier New" SIZE=2>]</P>
+<P>id {letter}({letter}|{digit})*</P>
+<P>number&#9; {digit}+</P>
+<P>%%</P>
+<P>{ws}&#9;&#9;&#9;&#9; &#9;&#9;&#9;{printf(</FONT><FONT FACE="Courier New" SIZE=2 COLOR="#ff0000">"Spazio\n"</FONT><FONT FACE="Courier New" SIZE=2>);}</P>
+<P>{newline}&#9;&#9;&#9; &#9;&#9;{Line_Number++;}</P>
+<P>\{[^\}]*\}&#9;&#9; &#9;&#9;{printf(</FONT><FONT FACE="Courier New" SIZE=2 COLOR="#ff0000">"Commenti\n"</FONT><FONT FACE="Courier New" SIZE=2>);}</P>
+<P>(PROGRAM|program)&#9;{printf(</FONT><FONT FACE="Courier New" SIZE=2 COLOR="#ff0000">"%d Program\n"</FONT><FONT FACE="Courier New" SIZE=2>,Line_Number);}</P>
+<P>(BEGIN|begin)&#9;&#9;&#9;{printf(</FONT><FONT FACE="Courier New" SIZE=2 COLOR="#ff0000">"%d Begin\n"</FONT><FONT FACE="Courier New" SIZE=2>,Line_Number);}</P>
+<P>(END|end)&#9;&#9;&#9;&#9;&#9;{printf(</FONT><FONT FACE="Courier New" SIZE=2 COLOR="#ff0000">"%d End\n"</FONT><FONT FACE="Courier New" SIZE=2>,Line_Number);}</P>
+<P>(IF|</FONT><FONT FACE="Courier New" SIZE=2 COLOR="#0000ff">if</FONT><FONT FACE="Courier New" SIZE=2>)&#9;&#9;&#9;&#9;&#9;&#9;{printf(</FONT><FONT FACE="Courier New" SIZE=2 COLOR="#ff0000">"%d If\n"</FONT><FONT FACE="Courier New" SIZE=2>,Line_Number);}</P>
+<P>(THEN|then)&#9;&#9;&#9;&#9;{printf(</FONT><FONT FACE="Courier New" SIZE=2 COLOR="#ff0000">"%d Then\n"</FONT><FONT FACE="Courier New" SIZE=2>,Line_Number);}</P>
+<P>(ELSE|</FONT><FONT FACE="Courier New" SIZE=2 COLOR="#0000ff">else</FONT><FONT FACE="Courier New" SIZE=2>)&#9;&#9;&#9;&#9;{printf(</FONT><FONT FACE="Courier New" SIZE=2 COLOR="#ff0000">"%d Else\n"</FONT><FONT FACE="Courier New" SIZE=2>,Line_Number);}</P>
+<P>(READ|read)&#9;&#9;&#9;&#9;{printf(</FONT><FONT FACE="Courier New" SIZE=2 COLOR="#ff0000">"%d Read\n"</FONT><FONT FACE="Courier New" SIZE=2>,Line_Number);}</P>
+<P>(WRITE|write)&#9;&#9;&#9;{printf(</FONT><FONT FACE="Courier New" SIZE=2 COLOR="#ff0000">"%d Write\n"</FONT><FONT FACE="Courier New" SIZE=2>,Line_Number);}</P>
+<P>(WHILE|</FONT><FONT FACE="Courier New" SIZE=2 COLOR="#0000ff">while</FONT><FONT FACE="Courier New" SIZE=2>)&#9;&#9;&#9;{printf(</FONT><FONT FACE="Courier New" SIZE=2 COLOR="#ff0000">"%d While\n"</FONT><FONT FACE="Courier New" SIZE=2>,Line_Number);}</P>
+<P>(DO|</FONT><FONT FACE="Courier New" SIZE=2 COLOR="#0000ff">do</FONT><FONT FACE="Courier New" SIZE=2>)&#9;&#9;&#9;&#9;&#9;&#9;{printf(</FONT><FONT FACE="Courier New" SIZE=2 COLOR="#ff0000">"%d Do\n"</FONT><FONT FACE="Courier New" SIZE=2>,Line_Number);}</P>
+<P>\;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;{printf(</FONT><FONT FACE="Courier New" SIZE=2 COLOR="#ff0000">"%d SEQOP\n"</FONT><FONT FACE="Courier New" SIZE=2>,Line_Number);}</P>
+<P>{number}&#9;&#9;&#9;&#9;&#9;&#9;{strcpy(yylval,yytext);</P>
+<P>&#9;&#9;&#9;&#9; &#9;&#9;&#9;&#9; &#9; printf(</FONT><FONT FACE="Courier New" SIZE=2 COLOR="#ff0000">"%d NUM %s\n"</FONT><FONT FACE="Courier New" SIZE=2>,Line_Number,yylval);}</P>
+</FONT><FONT FACE="Courier New" SIZE=2 COLOR="#ff0000"><P>":="</FONT><FONT FACE="Courier New" SIZE=2>&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;{printf(</FONT><FONT FACE="Courier New" SIZE=2 COLOR="#ff0000">"%d ASSOP\n"</FONT><FONT FACE="Courier New" SIZE=2>,Line_Number);}</P>
+<P>[\+\-\*/]&#9;&#9;&#9;&#9;&#9;{strcpy(yylval,yytext);</P>
+<P>&#9;&#9;&#9;&#9; &#9;&#9;&#9;&#9; &#9; printf(</FONT><FONT FACE="Courier New" SIZE=2 COLOR="#ff0000">"%d ARITOP %s\n"</FONT><FONT FACE="Courier New" SIZE=2>,Line_Number,yylval);}</P>
+</FONT><FONT FACE="Courier New" SIZE=2 COLOR="#ff0000"><P>"="</FONT><FONT FACE="Courier New" SIZE=2>|</FONT><FONT FACE="Courier New" SIZE=2 COLOR="#ff0000">"&gt;"</FONT><FONT FACE="Courier New" SIZE=2>|</FONT><FONT FACE="Courier New" SIZE=2 COLOR="#ff0000">"&lt;"</FONT><FONT FACE="Courier New" SIZE=2>|</FONT><FONT FACE="Courier New" SIZE=2 COLOR="#ff0000">"&lt;="</FONT><FONT FACE="Courier New" SIZE=2>|</FONT><FONT FACE="Courier New" SIZE=2 COLOR="#ff0000">"&gt;="</FONT><FONT FACE="Courier New" SIZE=2>|</FONT><FONT FACE="Courier New" SIZE=2 COLOR="#ff0000">"&lt;&gt;"</FONT><FONT FACE="Courier New" SIZE=2>&#9;{strcpy(yylval,yytext);</P>
+<P>&#9;&#9;&#9;&#9; &#9;&#9;&#9;&#9;&#9;&#9; &#9;&#9; printf(</FONT><FONT FACE="Courier New" SIZE=2 COLOR="#ff0000">"%d RELOP %s\n"</FONT><FONT FACE="Courier New" SIZE=2>,Line_Number,yylval);}</P>
+<P>{id}&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;{strcpy(yylval,yytext);</P>
+<P>&#9;&#9;&#9;&#9; &#9;&#9;&#9;&#9; &#9; printf(</FONT><FONT FACE="Courier New" SIZE=2 COLOR="#ff0000">"%d ID %s\n"</FONT><FONT FACE="Courier New" SIZE=2>,Line_Number,yylval);}</P>
+<P>&lt;&lt;EOF&gt;&gt;&#9;&#9;&#9;&#9;&#9;&#9;{</FONT><FONT FACE="Courier New" SIZE=2 COLOR="#0000ff">return</FONT><FONT FACE="Courier New" SIZE=2>(</FONT><FONT FACE="Courier New" SIZE=2 COLOR="#ff0000">0</FONT><FONT FACE="Courier New" SIZE=2>);}</P>
+<P>%% </P>
+<P>main ()</P>
+<P>{ </FONT><FONT FACE="Courier New" SIZE=2 COLOR="#008000">/* la stringa deve essere inizializzata perche' funzioni la strcpy */</P>
+</FONT><FONT FACE="Courier New" SIZE=2><P>yylval=(</FONT><FONT FACE="Courier New" SIZE=2 COLOR="#ff0000">char</FONT><FONT FACE="Courier New" SIZE=2>*)malloc(</FONT><FONT FACE="Courier New" SIZE=2 COLOR="#ff0000">80</FONT><FONT FACE="Courier New" SIZE=2>*sizeof(</FONT><FONT FACE="Courier New" SIZE=2 COLOR="#ff0000">char</FONT><FONT FACE="Courier New" SIZE=2>)); </P>
+</FONT><FONT FACE="Courier New" SIZE=2 COLOR="#008000"><P>/* alla terminazione del file facciamo tornare 0 per uscire dal while ..*/</P>
+</FONT><FONT FACE="Courier New" SIZE=2 COLOR="#0000ff"><P>while</FONT><FONT FACE="Courier New" SIZE=2> (yylex()); </P>
+</FONT><FONT FACE="Courier New" SIZE=2 COLOR="#008000"><P>/* .. e deallocare la memoria */</P>
+</FONT><FONT FACE="Courier New" SIZE=2><P>free(yylval);</P>
+<P>}</P>
+</FONT><I><P ALIGN="JUSTIFY"><LI>Le dichiarazioni nella specifica Flex</LI></P>
+</I><P ALIGN="JUSTIFY">Innanzi tutto, nella sezione dedicata alle dichiarazioni possiamo introdurre dei commenti delimitati da "<B>/*</B>" e "<B>*/</B>" che verranno riportati interamente nel sorgente C generato. Possiamo utilizzare i commenti per spiegare dettagliatamente come, quando e perche' abbiamo realizzato la specifica in oggetto. </P>
+<P ALIGN="JUSTIFY">Analogamente ai commenti, verr&agrave; riportato sul codice generato, tutto ci&ograve; che nella sezione <I>dichiarazioni</I> viene racchiuso tra i simboli "<B>%{</B>" e "<B>}%</B>". Come mostrato nell'esempio, possiamo sfruttare questa possibilit&agrave; ed utilizzare tali simboli per fare in modo che sul sorgente vengano riportate le direttive al compilatore e la dichiarazione di eventuali variabili globali. </P>
+<P ALIGN="JUSTIFY">Nella sezione dedicata alle dichiarazioni &egrave; possibile definire delle "espressioni denominate"; &egrave; possibile cio&egrave; associare nomi ad espressioni regolari. Sono utilizzate per semplificare la stesura delle regole nella sezione successiva. Se un'espressione regolare, magari complessa, &egrave; utilizzata in pi&ugrave; di una regola, si pu&ograve; far riferimento ad essa attraverso la denominazione associata e rendere cos&igrave; pi&ugrave; leggibile l'intera specifica lessicale. </P>
+<I><P ALIGN="JUSTIFY"><LI>Le regole nella specifica Flex</LI></P>
+</I><P ALIGN="JUSTIFY">Analogamente a quanto offerto nella sezione <I>dichiarazioni</I>, nella sezione dedicata alle regole &egrave; possibile racchiudere del codice (ma anche commenti) tra i simboli "<B>%{</B>" e "<B>}%</B>", che verr&agrave; riportato sul codice generato. A differenza della sezione <I>dichiarazioni</I>, non vengono riportati i commenti racchiusi tra "/*" e "*/". </P>
+<P ALIGN="JUSTIFY">Nelle <I>regole</I> troviamo un insieme di coppie del tipo &lt;espressione regolare&gt;-&lt;azione&gt;. Con le espressioni regolari vengono riconosciuti i token del linguaggio, mentre con le <I>azioni</I> &egrave; possibile specificare codice C da eseguire nel momento in cui viene riconosciuto il token. Bisogna tener presente che quando il token &egrave; riconosciuto non viene copiato automaticamente nel file di uscita; nelle azioni da eseguire associate all'espressione regolare, &egrave; necessario introdurre istruzioni di scrittura.</P>
+<P ALIGN="JUSTIFY">Nelle espressioni i simboli del linguaggio vengono individuati attraverso espressioni regolari che possono essere combinazioni delle seguenti:</P>
+<P ALIGN="JUSTIFY">a&#9;&#9;<FONT FACE="Wingdings">&agrave;</FONT> un carattere 'a'</P>
+<P ALIGN="JUSTIFY">abc&#9;<FONT FACE="Wingdings">&agrave;</FONT> la stringa 'abc' (concatenazione di caratteri)</P>
+<P ALIGN="JUSTIFY">a*&#9;&#9;<FONT FACE="Wingdings">&agrave;</FONT> 0 o pi&ugrave; caratteri 'a' (chiusura del linguaggio L({a}))</P>
+<P ALIGN="JUSTIFY">a+&#9;&#9;<FONT FACE="Wingdings">&agrave;</FONT> 1 o pi&ugrave; caratteri 'a' (chiusura positiva del linguaggio L({a}))</P>
+<P ALIGN="JUSTIFY">a?&#9;&#9;<FONT FACE="Wingdings">&agrave;</FONT> 0 o 1 carattere 'a' (opzionale)</P>
+<P ALIGN="JUSTIFY">a{2,5}&#9;<FONT FACE="Wingdings">&agrave;</FONT> da 2 a 5 caratteri 'a'</P>
+<P ALIGN="JUSTIFY">a{2,}&#9;<FONT FACE="Wingdings">&agrave;</FONT> 2 o pi&ugrave; caratteri 'a'</P>
+<P ALIGN="JUSTIFY">a{4}&#9;<FONT FACE="Wingdings">&agrave;</FONT> 4 caratteri 'a'</P>
+<P ALIGN="JUSTIFY">[abc]&#9;<FONT FACE="Wingdings">&agrave;</FONT> il carattere 'a' oppure il carattere 'b' oppure il carattere 'c'</P>
+<P ALIGN="JUSTIFY">a|b|c&#9;<FONT FACE="Wingdings">&agrave;</FONT> il carattere 'a' oppure il carattere 'b' oppure il carattere 'c'</P>
+<P ALIGN="JUSTIFY">[f-h]&#9;<FONT FACE="Wingdings">&agrave;</FONT> un qualunque carattere compreso tra 'f' e 'h'</P>
+<P ALIGN="JUSTIFY">[~f-h]&#9;<FONT FACE="Wingdings">&agrave;</FONT> un qualunque carattere purch&egrave; non compreso tra 'f' e 'h'</P>
+<P ALIGN="JUSTIFY">[acf-h]&#9;<FONT FACE="Wingdings">&agrave;</FONT> un carattere 'a' o un carattere 'c' o un carattere compreso tra 'f' e 'h'</P>
+<P ALIGN="JUSTIFY">. (punto)&#9;<FONT FACE="Wingdings">&agrave;</FONT> un qualsiasi carattere</P>
+<P ALIGN="JUSTIFY">{&lt;cost&gt;}&#9;<FONT FACE="Wingdings">&agrave;</FONT> l'espressione regolare associata alla costante denominata &lt;cost&gt;</P>
+<P ALIGN="JUSTIFY">\xx&#9;<FONT FACE="Wingdings">&agrave;</FONT> corrispondente carattere di escape </P>
+<P ALIGN="JUSTIFY">………&#9;<FONT FACE="Wingdings">&agrave;</FONT> altri simbolismi presenti sulla documentazione <I>Flex.ps</P>
+<P ALIGN="JUSTIFY"><LI>Le funzioni ausiliarie nella specifica Flex</LI></P>
+</I><P ALIGN="JUSTIFY">Nella sezione dedicata alle funzioni ausiliarie, &egrave; possibile includere il codice C che implementa funzioni a cui si &egrave; fatto riferimento nella sezione delle regole. Il contenuto di tale sezione verr&agrave; riportato interamente nel modulo generato. Nell'esempio visto non ci sono funzioni ausiliarie; &egrave; stata comunque sfruttata tale sezione per implementare il main() da riportare sul modulo C.</P>
+<I><P ALIGN="JUSTIFY"><LI>Come si genera l'analizzatore lessicale</LI></P></OL>
+<DIR>
+<DIR>
+<DIR>
+
+</I><P ALIGN="JUSTIFY">La specifica lessicale realizzata, deve essere elaborata da Flex. Il risultato di tale elaborazione &egrave; un modulo C denominato "Lexyy.c" al cui interno troviamo la funzione <I>yylex()</I> che rappresenta l'implementazione effettiva dell'analizzatore. Questo va compilato e linkato con la libreria <I>lfl</I>. L'eseguibile pu&ograve; essere richiamato specificando il file di input e il file di output. Se non specificata alcuna redirezione, vengono utilizzati lo standard input e output. Applicando quanto detto al nostro esempio e sapendo che la specifica lessicale si trova nel file <I>lex1pas.fl</P>
+<P ALIGN="CENTER">flex lex1pas.fl</P>
+</I><P ALIGN="JUSTIFY">l'oggetto lex1pas.exe pu&ograve; essere generato con</P>
+<I><P ALIGN="CENTER">gcc lexyy.c -lfl -o lex1pas</P>
+</I><P ALIGN="JUSTIFY">infine, per verificarne il funzionamento</P>
+<I><P ALIGN="CENTER">lex1pas &lt; nome_file_input &gt; nome_file_output</P></DIR>
+</DIR>
+</DIR>
+
+</I><B><U><FONT SIZE=4><P>Laboratorio</P>
+<OL>
+
+</B></U></FONT><I><P ALIGN="JUSTIFY"><LI>Descrizione del materiale portato</LI></P></OL>
+
+
+<UL>
+
+<UL>
+</I><P ALIGN="JUSTIFY"><LI>Winzip 6.3 per w95;</LI></P>
+<P ALIGN="JUSTIFY"><LI>GSView.zip - 3 dischetti contenenti GhostScript e GhostView per W95 in formato zip (scaricabile dalla pagina web del prof. Rosati);</LI></P>
+<P ALIGN="JUSTIFY"><LI>Djgpp.zip - 4 dischetti contenenti l'ambiente C (Gnu) completo di Flex e Bison, in formato zip (scaricabile dalla pagina web del prof. Rosati);</LI></P>
+<P ALIGN="JUSTIFY"><LI>Flex - Manuale Flex in formato PostScript ed esempi di specifica lessicale (scaricabile dalla pagina web del prof. Rosati).</LI></P></UL>
+</UL>
+
+<OL>
+
+<I><P ALIGN="JUSTIFY"><LI>Esercitazione</LI></P></OL>
+
+
+<UL>
+
+<UL>
+</I><P ALIGN="JUSTIFY"><LI>Analisi, generazione e test delle specifiche lessicali (Pascom x Flex) portate come esempio;</LI></P>
+<P ALIGN="JUSTIFY"><LI>Analisi, generazione e test delle specifiche lessicali (simple x JFlex) comprese nell'ambiente JFlex;</LI></P>
+<P ALIGN="JUSTIFY"><LI>Realizzazione della specifica di un "semplicistico" scanner HTML.</LI></P></UL>
+</UL>
+</BODY>
+</HTML>

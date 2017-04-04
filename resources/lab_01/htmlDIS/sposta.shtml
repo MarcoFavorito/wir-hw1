@@ -1,0 +1,150 @@
+<!doctype html public "-//w3c//dtd html 4.0 transitional//en">
+<html>
+<head>
+<link href="java.css" rel="stylesheet" type="text/css">
+<title>Sposta una figura</title>
+</head>
+
+<body>
+
+<h2>Sposta una figura</h2>
+
+Il problema da risolvere &egrave; questo: scrivere un
+applet che disegna un quadratino riempito in ogni punto
+in cui si preme il pulsante del mouse; inoltre, quando
+si preme di nuovo il pulsante, va disegnato un nuovo
+rettangolo, ma il precedente va cancellato.<p>
+
+Questo programma &egrave; completamente centrato intorno
+alla funzione <tt>mouseDown</tt>. Infatti, le uniche
+operazioni da fare sono:<p>
+
+<ul>
+
+<li>quando si preme il pulsante, cancellare l'ultimo
+quadrato disegnato;
+
+<li>disegnare un quadrato nella nuova posizione.
+
+</ul>
+
+Disegnare il quadrato nella nuova posizione &egrave; facile:
+basta mettere l'istruzione <tt>g.drawRect(x-5,y-5,10,10)</tt>
+dentro <tt>mouseDown</tt>.<p>
+
+La cosa pi&ugrave; complicata &egrave; cancellare il
+quadrato che era stato disegnato in precedenza. Per fare
+questo &egrave; necessario, ogni volta che si disegna
+un quadrato, memorizzare la sua posizione, in modo tale
+che al click successivo il quadrato si possa cancellare.
+Quindi, occorre salvare i valori di <tt>x</tt> e <tt>y</tt>
+in modo che siano disponibili la successiva volta che si
+preme il pulsante.<p>
+
+Un metodo che a prima vista pu&ograve; sembrare valido
+&egrave; questo:<p>
+
+<pre>
+  public boolean mouseDown(Event e, int x, int y) {
+    Graphics g=getGraphics();
+    int xultimo, yultimo;		/* PROGRAMMA ERRATO */
+
+    g.clearRect(xultimo-5,yultimo-5,10,10);
+
+    g.fillRect(x-5,y-5,10,10);
+
+    xultimo=x;
+    yultimo=y;
+
+    return true;
+  }
+</pre>
+
+In effetti, in questa funzione i valori di <tt>x</tt> e <tt>y</tt>
+vengono memorizzati nelle variabili <tt>xultimo</tt> e
+<tt>yultimo</tt>; alla successiva chiamata, viene cancellato
+il quadratino messo in questa posizione. Questo sistema non
+funziona perch&egrave; vale la seguente regola:<p>
+
+<blockquote>
+<i>
+quando una procedura termina, il contenuto delle sue
+variabili locali viene cancellato.
+</i>
+</blockquote>
+
+Nel nostro caso, quando viene premuto il pulsante, i valori
+di <tt>x</tt> e <tt>y</tt> vengono copiati nelle variabili
+<tt>xultimo</tt> e <tt>yultimo</tt>, per&ograve; queste
+due variabili vengono cancellate quando si arriva alla fine
+della procedura <tt>mouseDown</tt>. Al successivo click
+del mouse non sar&agrave; pi&ugrave; possibile cancellare
+il quadratino precedente.<p>
+
+Visto che la variabili locali vengono cancellate alla fine
+della esecuzione della procedura, l'unico altro metodo che
+abbiamo per memorizzare in modo permanente questi valori
+&egrave; quello di copiarne il valore in due variabili
+globali. Definiamo quindi <tt>xultimo</tt> e <tt>yultimo</tt>
+come variabili globali. Ogni volta che si preme il pulsante
+del mouse, i valori di <tt>x</tt> e <tt>y</tt> vengono copiati
+in queste due variabili. Dal momento che <tt>xultimo</tt> e
+<tt>yultimo</tt> sono globali, il loro valore non viene
+cancellato quando <tt>mouseDown</tt> finisce (la cancellazione
+avviene solo per le variabili locali). Quindi, la volta dopo
+che il pulsante viene premuto, le variabili globali contengono
+ancora la posizione del quadrato precedente. &Egrave; quindi
+possibile cancellarlo.<p>
+
+Riassumendo, la funzione <tt>mouseDown</tt> &egrave; fatta
+cos&iacute;: per prima cosa si cancella il quadrato precedente,
+poi si disegna il quadrato nuovo, e poi si memorizza la posizione
+nelle variabili globali. Manca ora solo da dire i valori iniziali
+delle variabili globali. Infatti, la prima volta che si
+esegue <tt>mouseDown</tt> viene comunque fatta l'operazione di
+cancellazione del quadrato posizionato in <tt>xultimo</tt> e
+<tt>yultimo</tt>, e quindi viene fatta la cancellazione di
+un quadrato le cui coordinate sono date dai valori iniziali
+di queste variabili. Possiamo scegliere di dare inizialmente
+-10 a <tt>xultimo</tt> e <tt>yultimo</tt>, in modo tale che
+la cancellazione avvenga fuori dall'area visibile della
+finestra.<p>
+
+Il programma completo
+<a href="Sposta.java">Sposta.java</a>
+risulta quindi fatto nel modo seguente:<p>
+
+<pre>
+/*
+  Sposta il rettangolo nel punto in cui viene premuto
+  il pulsante.
+*/
+
+import java.awt.*;
+
+public class Sposta extends java.applet.Applet {
+  int xultimo=-10, yultimo=-10;
+
+  public boolean mouseDown(Event e, int x, int y) {
+    Graphics g=getGraphics();
+
+    g.clearRect(xultimo-5,yultimo-5,10,10);
+
+    g.fillRect(x-5,y-5,10,10);
+
+    xultimo=x;
+    yultimo=y;
+
+    return true;
+  }
+}
+
+</pre>
+
+<p>
+<applet code="Sposta.class" height="400" width="400">
+</applet>
+
+</body>
+</html>
+

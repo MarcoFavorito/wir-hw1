@@ -1,0 +1,51 @@
+<html>
+<head>
+<link href="moses.css" rel="stylesheet" type="text/css">
+<title>Programma di lavoro dell'unit&agrave; di Roma</title>
+</head>
+
+<body>
+
+<h1>Unit&agrave; di Roma: base di partenza scientifica</h1>
+
+La ricerca di benchmark per la valutazione e la comparazione di procedure di decisione e di inferenza ha ricevuto una notevole attenzione negli ultimi anni. Questo e' avvenuto per una serie di fattori, tra cui l'aumento della potenza di calcolo e ultimo lo sviluppo di nuovi algoritmi e tecniche piu' potenti e veloci. Questa combinazione ha reso possibile affrontare problemi sempre piu' difficili e di dimensioni significativemente simili a quelle incontrati in applicazioni reali. Infine ha anche reso possibile il benchmarking vero e proprio, su grandi insiemi di test e di dati, e conseguentemente l'organizzazione di vere e proprie competizioni tra dimostratori [RM.1,RM.2,RM.3].<P><br>
+Il diffondersi delle tecniche di analisi sperimentali degli algoritmi e procedure di decsione nella logica (proposizionale e non proposizionale) ha pero' messo anche i rilievo le numerose carenze del settore. Infatti, per lo sviluppo di algoritmi e per una valutazione corretta di efficienza dell'efficienza e' necessario disporre di dati di test adeguati.<P><br>
+Gli studi recenti hanno dimostrato, ad esempio nel caso proposizionale, che una scelta sbagliata dei benchmark puo' portare a dei risultati errati nella valutazione degli algoritmi. Per esempio, e' stato dimostrato [RM.4,RM.5] che molti dei problemi che usati negli anni passati come benchmark di valutazione di algoritmi erano in realta' problemi di facile risoluzione. Studi del genere hanno fatto perdere di importanza alcuni studi precedenti di valutazione di algoritmi.<P><br>
+Sulla base di questi studi si e' affermata una tecnica di costruzione dei benchmark basata sulla generazione casuale dei problemi. Il benchmark piu' utilizzato nel caso proposizionale e' noto come il Random 3-CNF [RM.4] che e' ormai uno dei benchmak standard. Tuttavia la generazione casuale di problemi non e' cosi' semplice, e soprattutto nel caso delle logiche non proposizionali puo' dare adito a numerosi errori [RM.6]. Inoltre si introduce anche il problema di come riportare in modo &#34;fair&#34; i risultati di dati di test che ovviamente non possono che essere riportati in media [RM.7].<P><br>
+Dal momento che i problemi generati casualmente possono non riflettere la struttura dei problemi reali, sono state realizzate delle librerie di problemi derivati da problemi reali, come per esempio la pianificazione [RM.8], la dimostrazione automatica di teoremi matematici [RM.2], problemi di propagazione dei vincoli [RM.9] e verifica di proprieta' dell'hardware [RM.10] Esistono molte librerie di problemi per il calcolo proposizionale e la logica del primo ordine, ma pochi problemi la cui complessita' sia a un livello intermedio.<P><br>
+Il Gruppo di intelligenza artificiale del Dipartimento di Informatica e Sistemistica dell'Universita' di Roma &#34;La Sapienza&#34; ha contribuito a diversi aspetti alla ricerca nel settore, sia per quanto riguarda l'analisi sperimentale con benchmark random che per quanto riguarda la generazione di benchmark basati su problemi applicativi.<P><br>
+Per quanto riguarda i benchmark basati su problemi enerati in modo casuale, sono stati compiuti esperimenti sui problemi delle formule booleane quantificate (QBF), che sono strumenti piu' espressivi del calcolo proposizionale [RM.11]. Un'altra estensione riguarda il calcolo dei modelli minimi di una formula proposizionale [RM.12]. In entrambi i casi sono stati identificati insiemi di problemi &#34;random difficili&#34;, il che permette di generare in modo random dei problemi che risultano strutturalmente difficili. La ricerca di dati di test significativi permette di capire quali sono i problemi su cui valutare successivi algoritmi sviluppati per gli stessi problemi. A dimostrazione del valore scientifico della ricerca condotta, l'Universita' di Roma e' stata scelta come organizzatrice della competizione sui sistemi modali TANCS99 [RM.3]. Per quanto riguarda i problemi applicativi, ad esempio [RM.13] ha mostrato come codificare schemi E-R nelle descrition logics e [RM.14] ha mostrato come codificare problemi di crittografia nella logica proposizionale.
+
+<h1>Scientific Background (Unit of Rome)</h1>
+
+Research on the scientific design of benchmark problems has received a lot<br>
+of attention in the last year. This is due to a number of causes: the increase of computer speed, and the development of new algorithms and techniques. They allow for solving large problems (of the size of real-world applications) and for the creation of scalable benchmarks which in turns allow for making solver competitions [RM.1,RM.2,RM.3].<br>
+<p><br>
+The popularity of experimental analysis of algorithms in logics (both propositional and non-propositional) has shown many drawbacks in the field. Indeed, in order to compare the efficiency of algorithm, a suitable choice of test sets is needed. A milestone in the research on benchmarks was the discovery that a careless choice of data may lead researcher to overestimate the efficiency of algorithms [RM.4,RM.5]. Indeed, it has been proved that many algorithms developed for the problem of propositional satisfiability have been incorrectly classified as very efficient, while the real cause of their efficiency was the choice of easy input problems.<br>
+<P><br>
+A technique of random generatino of benchmark based on randomly generated problems had been developed. The most used propositional benchmark is known as 3CNF [RM.4], which is now become a standard. However, randomly generating formulas is not so simple, especially in the non-propositional case, in which errors are quite common [RM.6]. Another problem is that of making a &#34;fair&#34; comparison between provers, since the results are in general the average over a number of tests [RM.7].<br>
+<p><br>
+Since random problems are usually very far from real-world problems, many efforts have been put in creating libraries of encodings of real-world problems. For instance, [RM.8] is a library of problems of propositional satisfiability, including problems derived from planning ones; [RM.2] is a library of problems of first-order logics derived from mathematical problems; a library of constraint satisfaction problems has been recently created [RM.9]. A library of problems from hardware verification has also been developed [RM.10]. There are many libraries of propositional and first-order logics. However, very few problems are available for problems of an intermediate degree of complexity.<br>
+<p><br>
+The AI group of the Dipartimento di Informatica e Sistemistica of the Universita' di Roma ``La Sapienza'' contributed to the research in several ways. Experiments have been conducted on problems of Quantified Boolean Formulae (QBF), that are more expressive than the propositional calculus [RM.11]. Another extension that has been analyzed is minimal models finding [RM.12]. In both cases, sets of random hard problems have been identified. Namely, methods for randomly generating hard formulas have been discovered, which allow experimental evaluation of algorithms for the above two problems. The international recognition of the research conducted at the Dipartimento di Informatica e Sistemistica of the Universita' di Roma ``La Sapienza'' is shown in the choice of the AI group to organize the modal system competition TANCS99 [RM.3]. For what concerns applications, the paper [RM.13] has shown how to encode ER diagrams in Description Logics, while [RM.14] show how to translate criptography problems into the propositional logics. </I></FONT></DIV>
+<HR SIZE=1>
+<B>2.2.a Riferimenti bibliografici</B>
+<P>
+[RM.1] Johnson and M. Trick, 96 eds. Cliques, Coloring, satisfiability: the second DIMACS implementation challenge. AMS Series in Discrete mathematics and Theortical Computer Science 26, 1996<br>
+[RM.2] Suttner C.B., G. Sutcliffe. The CADE-14 ATP System Competition, Journal of Automated Reasoning 21(1), pp.99-134. 1998. The CADE-14 ATP System Competition. Journal of Automated Reasoning 18(2), pp.271-286. 1997<br>
+[RM.3] F. Massacci. Design and Results of the Tableaux-99 Non-Classical (Modal) Systems Comparison. To appear in TABLEAUX-99, LNCS, Springer Verlag, 1999.<br>
+[RM.4] B. Selman, D. Mitchell, and H. Levesque. Generating hard satisfiability problems. Artificial Intelligence, 81(1-2):17-29, 1996.<br>
+[RM.5] D. Mitchell and H. Levesque. Some pitfalls for experimenters with random SAT. Artificial Intelligence, 81(1-2):111-125, 1996.<br>
+[RM.6] U. Hustadt and R. Schmidt, On evaluating decision procedures for modal logic. In Proc. of IJCAI-97, Morgan Kaufman.<br>
+[RM.7] P. Fleming and J. Wallace. How not to lie with statistics: the correct way to summarize benchmark results. Communications of the ACM 29(3):218-221, 1986. <br>
+[RM.8] H. Hoos and T. St&#34;utzle. SATLIB - the satisfiability library, 1998. Disponibile sul web.<br>
+[RM.9] I. Gent, T. Walsh, and B. Selman. CSPLib: a problem library for constraints, 1999. Disponibile sul web.<br>
+[RM.10] L. van Claesen. Formal VLSI Correctness Verification: VLSI Design Methods. Vol. II. Elsevier Science Publisher, 1990.<br>
+[RM.11] M. Cadoli, A. Giovanardi, and M. Schaerf. An algorithm to evaluate quantified boolean formulae. In Proceedings of the Fifteenth National Conference on Artificial Intelligence (AAAI-98), pages 263-267, 1998.<br>
+[RM.12] P. Liberatore. Algorithms and experiments on finding minimal models. Technical report, Dipartimento di Informatica e Sistemistica, Universita di Roma &#34;La Sapienza&#34;, 1999. Submitted to Journal of Automated Reasoning.<br>
+[RM.13] D. Calvanese and M. Lenzerini and D. Nardi. Foundations of a Unified Theory for Class Based Representation Formalisms. In Proc. of KR-94, pages 109-120, 1994. <br>
+[RM.14] L. Marraro. Analisi Crittografica del DES Mediante Logica Booleana, Tesi di Laurea, Facolt\`a di Ingegneria, Univ. di Roma I ``La Sapienza'', Dicembre 1998. Relatrice prof.ssa L. Carlucci Aiello. Versione inglese sottomessa al Journal of automated Reasoning.
+
+</body>
+</html>
+

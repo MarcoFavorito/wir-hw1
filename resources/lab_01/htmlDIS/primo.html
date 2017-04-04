@@ -1,0 +1,199 @@
+<html>
+<head>
+<title></title>
+</head>
+
+<body>
+
+<h1>Esercizio di esame 26/3/2002</h1>
+
+<b>Canale A-L (Liberatore)/ Parte I</b>
+
+<hr>
+
+<h4>Esercizio 1</h4>
+
+Scrivere un metodo (non statico) da inserire nella classe
+<tt>Lista</tt>, che controlla se la lista &egrave; ordinata.
+Il metodo non ha parametri (a parte l'oggetto di invocazione)
+e restituisce un booleano che vale <tt>true</tt> se la
+lista &egrave; ordinata, ossia se il primo elemento &egrave;
+maggiore del secondo, il secondo &egrave; maggiore del
+terzo, ecc. Il metodo non deve stampare nulla.
+</p>
+
+<h4>Soluzione</h4>
+
+<p>
+Il metodo deve controllare se ogni elemento della
+lista &egrave; minore o uguale a quello che lo segue.
+L'algoritmo &egrave; semplicemente:
+</p>
+
+<ul>
+
+<li>per ogni elemento della lista, se &egrave;
+maggiore di quello seguente, ritorna <tt>false</tt>
+
+<li>alla fine della scansione, ritorna <tt>true</tt>
+
+</ul>
+
+<p>
+La prima versione usa il normale ciclo di scansione:
+<tt>s.getVal()</tt> &egrave; l'elemento che si trova
+nell'oggetto puntato da <tt>s</tt>. Per trovare
+l'elemento successivo: <tt>s.getNext()</tt> &egrave;
+il riferimento all'oggetto che segue, quindi
+<tt>s.getNext().getVal()</tt> &egrave; l'intero che
+si trova dentro.
+</p>
+
+<pre>
+  public boolean inOrdine() {
+    Catena s=c;
+
+    while(s!=null) {
+      if(s.getVal()&gt;s.getNext().getVal())
+        return false;
+      s=s.getNext();
+    }
+
+    return true;
+  }
+</pre>
+
+<p>
+Vanno ora considerati i casi particolari. Per il momento,
+la catena vuota non crea problemi (verr&agrave; rivista
+pi&ugrave; avanti). Al contrario, ci sono dei problemi
+quando si arriva all'ultimo elemento della lista. Infatti,
+quando <tt>s</tt> &egrave; il riferimento all'ultimo
+elemento della lista, <tt>s.getNext()</tt> vale <tt>null</tt>.
+</p>
+
+<p>
+Il problema &egrave; anche abbastanza chiaro intuitivamente:
+dato che confronto ogni elemento con il successivo, non posso
+fare l'ultimo confronto usando l'ultimo elemento (che non ha
+un elemento successivo). Mi devo quindi fermare quando <tt>s</tt>
+&egrave; un puntatore al penultimo elemento. In altre parole,
+quando arrivo alla condizione <tt>s.getNext()==null</tt>,
+allora <tt>s</tt> punta all'ultimo elemento, e quindi si
+deve uscire:
+</p>
+
+<pre>
+  public boolean inOrdine() {
+    Catena s=c;
+
+    while(s.getNext()!=null) {
+      if(s.getVal()&gt;s.getNext().getVal())
+        return false;
+      s=s.getNext();
+    }
+
+    return true;
+  }
+</pre>
+
+<p>
+Rientra a questo punto in gioco il problema della
+lista vuota. In questo caso, infatti, <tt>s</tt> vale
+inizialmente <tt>null</tt>, per cui la verifica
+di condizione <tt>s.getNext()!=null</tt> produce un
+errore, dato che <tt>s.getNext()</tt> &egrave;
+equivalente a <tt>null.getNext()</tt>. 
+</p>
+
+<p>
+Occorre quindi mettere un controllo sulla lista
+vuota prima di iniziare il ciclo.
+</p>
+
+<pre>
+  public boolean inOrdine() {
+    Catena s=c;
+
+    if(s==null)
+      return true;
+
+    while(s.getNext()!=null) {
+      if(s.getVal()&gt;s.getNext().getVal())
+        return false;
+      s=s.getNext();
+    }
+
+    return true;
+  }
+</pre>
+
+<p>
+Si vede poi facilmente che, nel caso di lista di un
+solo elemento, non ci sono difficolt&agrave;: il ciclo
+non viene mai eseguito dato che <tt>s.getNext()</tt>
+vale inizialmente <tt>null</tt>.
+</p>
+
+
+<hr>
+
+
+<h4>Esercizio 2</h4>
+
+<p>
+Scrivere un metodo di programma che prende come argomento
+un albero e restituisce il numero dei suoi nodi che hanno
+un solo figlio.
+Per esempio, il seguente albero ha due nodi in queste
+condizioni (il <tt>4</tt> e il <tt>-48</tt>), per cui
+va restituito <tt>2</tt>.
+</p>
+
+<p>
+<img src="tree1.jpg">
+</p>
+
+<p>
+L'albero che segue non ha nodi con un solo figlio, per cui
+va restituito <tt>0</tt>.
+</p>
+
+<p>
+<img src="tree2.jpg">
+</p>
+
+
+<h4>Soluzione</h4>
+
+<p>
+Come quasi tutti i problemi sugli alberi, la soluzione
+&egrave; ricorsiva. In questo caso, il numero di nodi
+che soddisfano la condizione si determina in questo
+modo: si calcolano quelli dei due sottoalberi, e si somma
+<tt>1</tt> se la radice ha un solo figlio.
+</p>
+
+<pre>
+  static int contaUnici(Albero a) {
+    if(a==null)
+      return 0;
+
+    int x=contaUnici(a.getSinistro());
+    int y=contaUnici(a.getDestro());
+
+    if( (a.getSinistro()==null) && (a.getDestro()!=null) )
+      return x+y+1;
+
+    if( (a.getSinistro()!=null) && (a.getDestro()==null) )
+      return x+y+1;
+
+    return x+y;
+  }
+</pre>
+
+
+</body>
+</html>
+
+

@@ -1,0 +1,1498 @@
+<html>
+<head>
+<title>Liste doppie</title>
+</head>
+
+<body>
+
+<h1>Liste doppie</h1>
+
+<p>
+Liste:
+</p>
+
+<dl>
+
+<dt>semplici
+<dd>ogni elemento contiene un riferimento al successivo
+
+<dt>doppie
+<dd>ogni elemento contiene un riferimento al successivo e al
+precedente
+
+</dl>
+
+<hr>
+
+
+<h4>Rappresentazione grafica</h4>
+
+<p>
+Lista semplice:
+</p>
+
+<img src="semplice.gif">
+
+<p>
+Lista doppia:
+</p>
+
+<img src="doppia.gif">
+
+<p>
+Gli elementi della lista (interi se si parla di una lista di
+interi, <tt>Object</tt> se si realizza un lista di oggetti)
+vanno nella prima variabile d'instanza di ognuno di questi
+nodi
+</p>
+
+<pre>
+class Nodo {
+  Object info;
+  Nodo next;
+  Nodo prev;
+}
+</pre>
+
+<hr>
+
+
+<h4>Come si conclude la lista</h4>
+
+<img src="fine.gif">
+
+<p>
+Ho due scelte:
+</p>
+
+<ol>
+
+<li>l'ultimo riferimento da ogni lato &egrave; <tt>null</tt>
+
+<li>l'ultimo riferimento punta all'oggetto dalla parte
+opposta
+
+</ol>
+
+<hr>
+
+
+<h4>Lista doppia circolare</h4>
+
+<p>
+Usiamo la soluzione circolare:
+</p>
+
+<img src="circolare.gif">
+
+<p>
+Dato il riferimento a un nodo qualsiasi riesco a scandire la
+lista
+</p>
+
+<p>
+Per comodit&agrave;, aggiungo anche la dimensione della
+lista
+</p>
+
+<hr>
+
+
+<h4>Oggetto <tt>ListaDoppia</tt></h4>
+
+<img src="size.gif">
+
+<p>
+L'oggetto <tt>Lista</tt> contiene:
+</p>
+
+<dl>
+
+<dt>un riferimento a un oggetto della catena
+<dd>questo permette la scansione della lista
+
+<dt>la dimensione della lista
+<dd>non &egrave; strettamente necessario, per&ograve;
+&egrave; comodo
+
+</dl>
+
+<hr>
+
+
+<h4>L'inizio della catena</h4>
+
+<p>
+Il nodo dova va il puntatore iniziale pu&ograve; essere:
+</p>
+
+<ol>
+
+<li>il nodo che contiene il primo oggetto della lista
+
+<li>un nodo che non contiene oggetti della lista, ma indica
+solo il punto dove la lista inizia (e finisce)
+
+</ol>
+
+<p>
+Nel secondo modo, il nodo di inizio &egrave; solo un
+<i>segnaposto</i> (non corrisponde a un elemento della
+lista)
+</p>
+
+<p>
+&Egrave; come una posizione ``vuota'' nella lista, e indica
+un elemento che non c'&egrave;
+</p>
+
+<p>
+Se ho una variabile di scansione <tt>Nodo n</tt>, posso
+capire quando sono all'inizio a alla fine della lista
+<tt>l</tt> facilmente:
+</p>
+
+<dl>
+
+<dt>primo elemento della lista
+<dd>n.prev==l.sentinella
+
+<dt>ultimo elemento della lista
+<dd>n.next==l.sentinella
+
+</dl>
+
+<p>
+Si pu&ograve; pensare al nodo segnaposto come a un elemento
+che non c'&egrave; perch&egrave; si trova:
+</p>
+
+<ul>
+
+<li>prima del primo elemento
+<li>dopo l'ultimo elemento
+
+</ul>
+
+<p>
+Il numero degli oggetti della lista &egrave; pari al numero
+degli oggetti <tt>Nodo</tt> <i>meno uno</i>
+</p>
+
+<hr>
+
+
+<h4>Classi</h4>
+
+<p>
+Gli oggetti <tt>Nodo</tt> hanno tre campi: l'oggetto della
+lista e due riferimenti (avanti e indietro):
+</p>
+
+<pre>
+class Nodo {
+  Object info;
+  Nodo next;
+  Nodo prev;
+}
+</pre>
+
+<p>
+Gli oggetti <tt>ListaDoppia</tt> hanno due campi: il numero
+di elementi e un riferimento a un qualsiasi oggetto
+dell'anello:
+</p>
+
+<pre>
+class ListaDoppia {
+  int numElem;
+  Nodo sentinella;
+}
+</pre>
+
+<hr>
+
+
+<h4>Nodi e oggetti</h4>
+
+<p>
+Ogni nodo ha un campo <tt>info</tt>
+</p>
+
+<p>
+Questo campo <tt>info</tt> contiene un riferimeno a un
+oggetto della lista
+</p>
+
+<p>
+La lista rappresenta la sequenza di oggetti dei campi
+<tt>info</tt>, non la sequenza di nodi!
+</p>
+
+<img src="diversi.gif">
+
+<p>
+Questa lista rappresenta la sequenza dei tre oggetti 
+<tt>String</tt>, <tt>Point</tt> e <tt>Integer</tt>, non la
+sequenza degli oggetti <tt>Nodo</tt>
+</p>
+
+<p>
+Nelle figure seguenti e successive, si omettono gli oggetti
+attaccati al campo <tt>info</tt> per semplicit&agrave;
+</p>
+
+<hr>
+
+
+<h4>La lista vuota</h4>
+
+<p>
+Nella lista vuota c'&egrave; solo l'elemento segnaposto
+</p>
+
+<img src="vuota.gif">
+
+<hr>
+
+
+<h4>Scansione della lista</h4>
+
+<p>
+Si parte dall'oggetto <tt>sentinella</tt>
+</p>
+
+<p>
+Si pu&ograve; andare avanti o indietro
+</p>
+
+<p>
+Ci si ferma quando si torna di nuovo a <tt>sentinella</tt>
+</p>
+
+<hr>
+
+
+<h4>Cosa succede se la lista contiene due oggetti
+uguali?</h4>
+
+<p>
+Gli oggetti della lista stanno nel campo <tt>info</tt> dei
+nodi
+</p>
+
+<p>
+Anche se <i>tutti</i> gli oggetti della lista sono uguali,
+gli oggetti <tt>Nodo</tt> sono comunque tutti diversi.
+</p>
+
+<p>
+Esempio di lista che contiene tre volte lo stesso
+<tt>Point</tt>:
+</p>
+
+<img src="uguali.gif">
+
+<hr>
+
+
+<h4>Scansione della lista</h4>
+
+<p>
+Questo metodo stampa tutti gli oggetti:
+</p>
+
+<pre>
+  public static void stampa(ListaDoppia l) {
+    Nodo n;
+
+    if(l==null)
+      return;
+
+    n=l.sentinella.next;
+    while(n!=l.sentinella) {
+      System.out.println(n.info);
+      n=n.next;
+    }
+  }
+</pre>
+
+<p>
+Princip&icirc;:
+</p>
+
+<ol>
+
+<li>il nodo <tt>sentinella</tt> non rappresenta un oggetto
+della lista
+
+<li>il primo nodo della lista &egrave; quello
+<i>successivo</i> alla sentinella
+
+<li>si va avanti come al solito (<tt>n=n.next</tt>)
+
+<li>quando si arriva di nuovo alla sentinella, vuol dire che
+la lista &egrave; finita
+
+</ol>
+
+<hr>
+
+
+<h4>Scansione: grafica</h4>
+
+<p>
+All'inizio della scansione: <tt>n=l.sentinella.next</tt>
+</p>
+
+<img src="primo.gif">
+
+<p>
+Si va ora avanti (nel disegno, verso destra)
+</p>
+
+<p>
+Alla fine:
+</p>
+
+<img src="ultimo.gif">
+
+<p>
+Al passo successivo, <tt>n</tt> punta alla sentinella:
+</p>
+
+<img src="sentinella.gif">
+
+<p>
+Dato che <tt>n==l.sentinella</tt>, la scansione termina
+(senza stampare l'elemento <tt>n.info</tt>)
+</p>
+
+
+<hr>
+
+
+<h4>Alternativa con <tt>numElem</tt></h4>
+
+<p>
+Parto da un elemento qualsiasi, e vado avanti per
+<tt>numElem</tt> volte:
+</p>
+
+<pre>
+  public static void stampa(ListaDoppia l) {
+    Nodo n;
+    int i;
+
+    if(l==null)
+      return;
+
+    n=l.sentinella.next;
+    for(i=0; i&lt;l.numElem; i++) {
+      System.out.println(n.info);
+      n=n.next;
+    }
+  }
+</pre>
+
+<hr>
+
+
+<h4>Scansione al contrario</h4>
+
+<p>
+Con le liste doppie, si pu&ograve; fare anche la scansione
+della lista al contrario:
+</p>
+
+<pre>
+  public static void stampa(ListaDoppia l) {
+    Nodo n;
+
+    if(l==null)
+      return;
+
+    n=l.sentinella.prev;
+    for(i=0; i&lt;l.numElem; i++) {
+      System.out.println(n.info);
+      n=n.prev;
+    }
+  }
+</pre>
+
+<p>
+Basta usare <tt>prev</tt> al posto di <tt>next</tt>
+</p>
+
+<hr>
+
+
+<h4>Implementazione di <tt>List</tt></h4>
+
+<p>
+Vediamo una implementazione dell'interfaccia <tt>List</tt>
+usando una lista doppia
+</p>
+
+<p>
+Dobbiamo implementare tutti metodi dell'interfaccia
+</p>
+
+<p>
+Inoltre, va implementata anche una classe che implementa
+<tt>ListIterator</tt>
+</p>
+
+<p>
+Ne vediamo solo alcuni metodi
+</p>
+
+<hr>
+
+
+<h4>La classe <tt>Nodo</tt></h4>
+
+<p>
+Oltre alle componenti, mettiamo anche un costruttore:
+</p>
+
+<pre>
+class Nodo {
+  Object info;
+  Nodo next;
+  Nodo prev;
+
+  Nodo(Object i, Nodo n, Nodo p) {
+    this.info=i;
+    this.next=n;
+    this.prev=p;
+  }
+}
+</pre>
+
+<hr>
+
+
+<h4>La classe <tt>ListListaDoppia</tt></h4>
+
+<p>
+Come detto prima, ho due componenti e parecchi metodi:
+</p>
+
+<pre>
+public class ListListaDoppia {
+  protected int numElem;
+  protected Nodo sentinella;
+
+  // metodi
+}
+</pre>
+
+<hr>
+
+
+<h4>Gli iteratori</h4>
+
+<p>
+L'interfaccia <tt>List</tt> ha due metodi che ritornano
+un iteratore.
+</p>
+
+<ul>
+
+<li>quello ``ereditato'' da <tt>Collection</tt>,
+che ritorna un <tt>Iterator</tt>
+
+<li>uno proprio di <tt>List</tt>, che ritorna un
+<tt>ListIterator</tt>
+
+</ul>
+
+<p>
+Dato che <tt>ListIterator</tt> &egrave; una sottointerfaccia
+di <tt>Iterator</tt>, posso implementare anche soltanto un
+<tt>ListIterator</tt> e ritornare sempre quello
+</p>
+
+<pre>
+class ListIteratorListaDoppia implements ListIterator {
+  // metodi di Iterator
+  // metodi di ListIterator
+}
+</pre>
+
+<hr>
+
+
+<h4>Package</h4>
+
+<p>
+Mettiamo tutto in un package: <tt>listlistadoppia</tt>
+</p>
+
+<p>
+Le classi sono dichiarate:
+</p>
+
+<dl>
+
+<dt>pubbliche:
+<dd>soltanto la classe che implementa la lista
+<tt>ListListaDoppia</tt>
+
+<dt>ristrette al package:
+<dd>tutte le altre, ossia <tt>Nodo</tt> e
+<tt>ListIteratorListaDoppia</tt>
+
+</dl>
+
+<hr>
+
+
+<h4>Creazione della lista</h4>
+
+<pre>
+package listlistadoppia;
+
+import java.util.*; // contiene l'interfaccia List
+
+public class ListListaDoppia implements List {
+  protected int numElem;
+  protected Nodo sentinella;
+
+  public ListListaDoppia() {
+    numElem = 0;
+    sentinella = new Nodo(null,null,null);
+    sentinella.next = sentinella;
+    sentinella.prev = sentinella;
+  }
+
+  ...
+}
+</pre>
+
+<p>
+Viene creata la catena che contiene solo l'elemento
+sentinella, ossia la lista vuota
+</p>
+
+<hr>
+
+
+<h4>Lunghezza lista</h4>
+
+<pre>
+  public int size() {
+    return numElem;
+  }
+
+  public boolean isEmpty() {
+    return sentinella.next == sentinella;
+    // oppure return sentinella.prev == sentinella;
+    // oppure return numElem == 0;
+  }
+</pre>
+
+<p>
+I metodi che aggiungono o tolgono elementi devono
+modificare <tt>numElem</tt>
+</p>
+
+<p>
+Incapsulamento: se <tt>numElem</tt> fosse pubblico, chi usa
+questa classe potrebbe modificare questo campo (per cui il
+suo contenuto potrebbe non essere pi&ugrave; il numero di
+elementi della lista)
+</p>
+
+<hr>
+
+
+<h4>Metodo <tt>contains</tt></h4>
+
+<p>
+Si fa la scansione della lista
+</p>
+
+<pre>
+  public boolean contains(Object o) {
+    Nodo n;
+
+    n=sentinella.next;
+    while(n!=sentinella) {
+      if(n.info.equals(o))
+        return true;
+      n=n.next;
+    }
+
+    return false;
+  }
+</pre>
+
+<ul>
+
+<li>si parte dal primo elemento, che &egrave; il
+<tt>next</tt> di <tt>sentinella</tt>
+
+<li>a ogni passo, si verifica se l'elemento corrente
+&egrave; uguale a quello da cercare
+
+<li>se lo &egrave;, si ritorna <tt>true</tt>
+
+<li>se si arriva alla fine del ciclo, vuol dire che il nodo
+non c'&egrave;, per cui si ritorna <tt>false</tt>
+
+</ul>
+
+<hr>
+
+
+<h4>Soluzione alternativa: metodo ausiliario</h4>
+
+<p>
+Trova il riferimento al nodo che contiene un certo oggetto
+(se presente);
+</p>
+
+<pre>
+  private Nodo trova(Object o) {
+    Nodo n = sentinella.next;
+    while (n!=sentinella) {
+      if (n.info.equals(o))
+        return n;
+      n = n.next;
+    }
+    return sentinella;
+  }
+</pre>
+
+<p>
+Nota: ritorna il <tt>Nodo</tt> in cui &egrave; memorizzato
+l'oggetto da cercare
+</p>
+
+<p>
+In altre parole, ritorna il <tt>Nodo</tt> il cui campo
+<tt>info</tt> contiene un oggetto uguale a quello passato
+come argomento
+</p>
+
+<p>
+&Egrave; un metodo privato, perch&egrave; all'esterno i nodi
+non si devono vedere (perch&egrave; sono parte del modo
+specifico in cui la classe &egrave; stata realizzata)
+</p>
+
+<hr>
+
+
+<h4>Metodo <tt>contains</tt></h4>
+
+<p>
+Basta vedere se l'oggetto c'&egrave;:
+</p>
+
+<pre>
+  public boolean contains(Object element) {
+    return trova(element) != sentinella;
+  }
+</pre>
+
+<hr>
+
+
+<h4>Aggiunta elemento in coda</h4>
+
+<p>
+Il metodo <tt>add</tt> aggiunge un elemento alla fine della
+lista
+</p>
+
+<pre>
+  public boolean add(Object element) {
+    Nodo pos = sentinella;
+    Nodo aux = new Nodo(element,pos,pos.prev);
+    pos.prev.next = aux;
+    pos.prev = aux;
+    numElem++;
+    return true;
+  }
+</pre>
+
+<p>
+Vediamo cosa succede un passo per volta
+</p>
+
+<hr>
+
+
+<h4>Inizio: creazione elemento</h4>
+
+<p>
+Come prima cosa, si crea l'elemento da aggiungere:
+</p>
+
+<pre>
+  public boolean add(Object element) {
+    Nodo pos = sentinella;
+    Nodo aux = new Nodo(...);
+    ...
+  }
+</pre>
+
+<img src="coda-1.gif">
+
+<hr>
+
+
+<h4>Cosa mettere nell'elemento</h4>
+
+<p>
+I campi del nuovo elemento devono contenere:
+</p>
+
+<dl>
+
+<dt><tt>info</tt>
+<dd>l'oggetto da aggiungere
+
+<dt><tt>next</tt>
+<dd>dato che questo deve diventare l'ultimo elemento, ci va
+messo il riferimento alla sentinella
+
+<dt><tt>prev</tt>
+<dd>qui ci va messo il riferimento all'elemento precedente,
+che &egrave; quello che prima stava in ultima posizione
+
+</dl>
+
+<pre>
+  public boolean add(Object element) {
+    Nodo pos = sentinella;
+    Nodo aux = new Nodo(element,pos,pos.prev);
+    ...
+  }
+</pre>
+
+<img src="coda-2.gif">
+
+<hr>
+
+
+<h4>Ultimi collegamenti</h4>
+
+<p>
+Bisogna aggiornare i campi <tt>next</tt> e <tt>prev</tt>
+dell'ultimo elemento e della sentinella
+</p>
+
+<pre>
+  public boolean add(Object element) {
+    Nodo pos = sentinella;
+    Nodo aux = new Nodo(element,pos,pos.prev);
+    pos.prev.next = aux;
+    ...
+  }
+</pre>
+
+<p>
+Questo genera:
+</p>
+
+<img src="coda-3.gif">
+
+<p>
+Ora manca solo un collegamento:
+</p>
+
+<pre>
+  public boolean add(Object element) {
+    Nodo pos = sentinella;
+    Nodo aux = new Nodo(element,pos,pos.prev);
+    pos.prev.next = aux;
+    pos.prev = aux;
+    ...
+  }
+</pre>
+
+<img src="coda-4.gif">
+
+<hr>
+
+
+<h4>Valore di ritorno</h4>
+
+<p>
+Bisogna aggiornare <tt>numElem</tt>
+</p>
+
+<p>
+Si ritorna <tt>null</tt> se si &egrave; l'inserimento ha
+avuto successo
+</p>
+
+<p>
+Metodo completo:
+</p>
+
+<pre>
+  public boolean add(Object element) {
+    Nodo pos = sentinella;
+    Nodo aux = new Nodo(element,pos,pos.prev);
+    pos.prev.next = aux;
+    pos.prev = aux;
+    numElem++;
+    return true;
+  }
+</pre>
+
+<hr>
+
+
+<h4>Eliminare un elemento</h4>
+
+<ul>
+
+<li>si trova la posizione
+
+<li>si elimina l'elemento
+
+</ul>
+
+<p>
+Per il primo passo, possiamo usare il metodo ausiliario
+<tt>trova</tt>:
+</p>
+
+<pre>
+  public boolean remove(Object element) {
+    Nodo pos=trova(element);
+
+    if(pos==sentinella)
+      return false;
+
+    ...
+  }
+</pre>
+
+<hr>
+
+
+<h4>Eliminazione elemento</h4>
+
+<p>
+Si tratta di collegare fra di loro l'elemento precedente e
+successivo:
+</p>
+
+<pre>
+  public boolean remove(Object element) {
+    Nodo pos=trova(element);
+
+    if(pos==sentinella)
+      return false;
+
+    pos.prev.next = pos.next;
+    pos.next.prev = pos.prev;
+    numElem--;
+    return true;
+  }
+</pre>
+
+<p>
+Un passo per volta
+</p>
+
+<hr>
+
+
+<h4>Si trova l'elemento da eliminare</h4>
+
+<p>
+Questo viene fatto dal metodo ausiliario
+</p>
+
+<img src="remove-1.gif">
+
+<hr>
+
+
+<h4>Primo collegamento</h4>
+
+<p>
+Le freccie verso l'elemento da eliminare lo devono
+``saltare''
+</p>
+
+<p>
+Prima la freccia orientata verso destra:
+</p>
+
+<pre>
+pos.prev.next = pos.next;
+</pre>
+
+<img src="remove-2.gif">
+
+<p>
+Ora si esegue:
+</p>
+
+<pre>
+pos.next.prev = pos.prev;
+</pre>
+
+<hr>
+
+
+<h4>Secondo collegamento</h4>
+
+<p>
+Lo stesso per l'altra freccia:
+</p>
+
+<pre>
+pos.next.prev = pos.prev;
+</pre>
+
+<img src="remove-3.gif">
+
+<hr>
+
+
+<h4>Fine eliminazione</h4>
+
+<p>
+Viene aggiornato il campo <tt>numElem</tt>
+</p>
+
+<p>
+Quando il metodo termina, la variabile <tt>pos</tt> viene
+deallocata
+</p>
+
+<p>
+Dato che il nodo da eliminare non ha pi&ugrave; riferimenti
+entranti, viene cancellato
+</p>
+
+<img src="remove-4.gif">
+
+<hr>
+
+
+<h4>L'iteratore</h4>
+
+<p>
+Notare che non esiste nessun oggetto <tt>Iterator</tt> o
+<tt>ListIterator</tt>, dal momento che queste sono
+interfacce
+</p>
+
+<p>
+Dobbiamo quindi realizzare una classe che implementa
+l'interfaccia <tt>Iterator</tt> e <tt>ListIterator</tt>
+</p>
+
+<p>
+Lo mettiamo sempre nello stesso package:
+</p>
+
+<pre>
+package listlistadoppia;
+
+import java.util.*; // contiene le interfacce!
+
+class ListIteratorListaDoppia
+  implements ListIterator {
+  ...
+}
+</pre>
+
+<hr>
+
+
+<h4>Diritti di accesso dell'iteratore</h4>
+
+<p>
+La classe e il costruttore hanno diritti di package
+</p>
+
+<p>
+Tutti i metodi delle interfacce <tt>Iterator</tt> e
+<tt>ListIterator</tt> devono essere pubblici perch&egrave;
+questo &egrave; il loro modificatore di accesso nelle
+interfacce
+</p>
+
+<pre>
+class ListIteratorListaDoppia
+  implements ListIterator {
+
+  // componenti private
+
+  public boolean hasNext() {
+    ...
+  }
+
+  public Object next() {
+    ...
+  }
+
+  public void remove() {
+    ...
+  }
+
+  // metodi di ListInterface
+}
+</pre>
+
+<hr>
+
+
+<h4>Uso dell'iteratore</h4>
+
+<p>
+Dato che <tt>ListIteratorListaDoppia</tt> &egrave; ristretto
+al package, nei programmi esterni al package non posso
+neanche scrivere il nome di questa classe
+</p>
+
+<p>
+Per&ograve;, se <tt>l</tt> &egrave; della classe
+<tt>ListListaDoppia</tt>, allora <tt>l.iterator()</tt>
+ritorna un oggetto <tt>ListIteratorListaDoppia</tt>
+</p>
+
+<p>
+I programmi esterni al package <i>possono</i> usare
+l'oggetto solo mettendolo in una variabile interfaccia
+(<tt>Iterator</tt> o <tt>ListIterator</tt>)
+</p>
+
+<p>
+A questo punto, possono usare solo i metodi dichiarati
+nell'interfaccia (<tt>next</tt>, <tt>hasNext</tt>, ecc)
+</p>
+
+<hr>
+
+
+<h4>Il metodo <tt>remove</tt></h4>
+
+<p>
+Questo metodo &egrave; definito opzionale nel
+<i>contratto</i> dell'interfaccia <tt>Iterator</tt>
+</p>
+
+<p>
+Quindi, va definito, ma pu&ograve; anche soltanto lanciare
+una eccezione:
+</p>
+
+<pre>
+  public void remove() {
+    throw new
+      UnsupportedOperationException(
+      "remove not supported");
+  }
+</pre>
+
+<hr>
+
+
+<h4>Le componenti dell'interfaccia</h4>
+
+<p>
+Dato un <tt>Iterator</tt>, deve essere possibile scandire
+una lista
+</p>
+
+<p>
+Servono quindi:
+</p>
+
+<ul>
+
+<li>la lista da scandire
+
+<li>il nodo corrente
+
+</ul>
+
+<pre>
+class ListIteratorListaDoppia
+  implements ListIterator {
+
+  Nodo pos;
+  ListListaDoppia lista;
+
+  ...
+</pre>
+
+<hr>
+
+
+<h4>Il costruttore</h4>
+
+<p>
+Per quello che riguarda gli iteratori, basta questo:
+</p>
+
+<pre>
+  ListIteratorListaDoppia(ListListaDoppia lista) {
+    this.lista=lista;
+    pos = lista.sentinella;
+  }
+</pre>
+
+<hr>
+
+
+<h4>Il metodo <tt>iterator()</tt> della lista</h4>
+
+<p>
+Il metodo <tt>iterator()</tt> della lista &egrave; fatto
+cos&iacute;:
+</p>
+
+<pre>
+public class ListListaDoppia {
+  ...
+  public Iterator iterator() {
+    return new ListIteratorListaDoppia(this);
+  }
+  ...
+}
+</pre>
+
+<p>
+Viene ritornato un nuovo iteratore per la lista corrente.
+</p>
+
+<hr>
+
+
+<h4>I metodi <tt>next</tt> e <tt>hasNext</tt></h4>
+
+<p>
+Il <tt>next</tt> ritorna il prossimo elemento:
+</p>
+
+<pre>
+  public Object next() {
+    pos=pos.next;
+    if(pos==lista.sentinella)
+      throw new NoSuchElementException();
+    return pos.info;
+  }
+</pre>
+
+<p>
+Il metodo <tt>hasNext</tt> vede se c'&egrave; un prossimo
+elemento da guardare:
+</p>
+
+<pre>
+  public boolean hasNext() {
+    return pos.next!=lista.sentinella;
+  }
+</pre>
+
+<hr>
+
+
+<h4>L'interfaccia <tt>ListIterator</tt></h4>
+
+<p>
+Questa interfaccia ha due metodi in pi&ugrave; per passare
+all'elemento precedente
+</p>
+
+<p>
+Poi ci sono anche i metodi opzionali <tt>add</tt> e
+<tt>set</tt>
+</p>
+
+<pre>
+  public void set(Object o) {
+    throw new
+      UnsupportedOperationException(
+      "set not supported");
+  }
+  public void add(Object o) {
+    throw new
+      UnsupportedOperationException(
+      "add not supported");
+  }
+</pre>
+
+<hr>
+
+
+<h4>Metodi <tt>previous()</tt> e <tt>hasPrevious()</tt></h4>
+
+<p>
+Servono per andare indietro nella scansione
+</p>
+
+<p>
+Attenzione!
+</p>
+
+<pre>
+  a=i.next();
+  b=i.previous();
+</pre>
+
+<p>
+Se si fanno in sequenza queste due invocazioni, viene
+ritornato lo stesso elemento
+</p>
+
+<hr>
+
+
+<h4>Implementazione di <tt>previous</tt></h4>
+
+<p>
+Dato che <tt>pos</tt> indica la posizione dell'ultimo
+elemento ritornato da <tt>next</tt>, questo &egrave; anche
+quello che va ritornato da <tt>previous</tt>
+</p>
+
+<pre>
+  public Object previous() {
+    if(pos==list.sentinella)
+      throw new NoSuchElementException();
+    Object o=pos.info;
+    pos=pos.prev;
+    return o;
+  }
+</pre>
+
+<p>
+Nota: &egrave; diverso dal metodo <tt>next()</tt>!
+</p>
+
+<dl>
+
+<dt><tt>next</tt>
+<dd>si porta avanti il puntatore e si ritorna l'elemento su
+cui si trova
+
+<dt><tt>previous</tt>
+<dd>si ritorna l'elemento dove si trova il puntatore <i>e
+poi</i> si manda indietro il puntatore
+
+</dl>
+
+<p>
+Poi vediamo il perch&egrave;
+</p>
+
+<hr>
+
+
+<h4>Il metodo <tt>hasPrevious</tt></h4>
+
+<p>
+L'unico elemento che non ha il precedente &egrave; il primo
+</p>
+
+<pre>
+  public boolean hasPrevious() {
+    return pos!=list.sentinella;
+}
+</pre>
+
+<p>
+Anche questo &egrave; diverso da <tt>hasNext</tt>
+</p>
+
+<hr>
+
+
+<h4>Interpretazione di <tt>next</tt> e
+<tt>previous</tt></h4>
+
+<p>
+Dal punto di vista della programmazione, un puntatore
+pu&ograve; solo trovarsi su un elemento della lista, mai in
+mezzo fra due
+</p>
+
+<p>
+Nella <i>specifica</i> dei <tt>ListIterator</tt>, viene
+detto che il cursore <b>&egrave; come</b> se fosse sempre
+fra un elemento e l'altro:
+</p>
+
+<p>
+Posizioni possibili del cursore:
+</p>
+
+<pre>
+Lista:   Primo Secondo Terzo Quarto
+Curs:
+iniz    ^
+next          ^
+next                  ^
+next                        ^
+next                               ^
+</pre>
+
+<p>
+Il cursore &egrave; in questo caso un concetto relativo alla
+specifica
+</p>
+
+<p>
+La specifica non dice che il puntatore di scansione deve
+stare in mezzo fra due elementi (cosa che sarebbe comunque
+impossibile)
+</p>
+
+<hr>
+
+
+<h4><tt>next</tt> e <tt>previous</tt></h4>
+
+<dl>
+
+<dt><tt>next</tt>
+<dd>ritorna l'elemento dopo il cursore, e lo fa avanzare
+
+<dt><tt>previous</tt>
+<dd>ritorna l'elemento prima del cursore, e lo manda
+indietro di una posizione
+
+</dl>
+
+<p>
+Questo riguarda il concetto astratto di cursore
+</p>
+
+<p>
+Il puntatore dell'oggetto <tt>ListIterator</tt> deve
+``simulare'' questo ``stare in mezzo''
+</p>
+
+<hr>
+
+
+<h4>Posizione del cursore</h4>
+
+<p>
+&Egrave; importante perch&egrave;:
+</p>
+
+<ul>
+
+<li>se faccio <tt>next</tt> e poi <tt>previous</tt> ritorno
+sullo stesso elemento
+
+<pre>
+Lista:   Primo Secondo Terzo Quarto
+              ^
+next                  ^
+previos       ^
+</pre>
+
+<p>
+in questo caso, <tt>next</tt> e <tt>previous</tt> ritornano
+lo stesso elemento
+</p>
+
+<li>i metodi opzionali <tt>remove</tt> e <tt>set</tt>
+lavorano sull'ultimo elemento ritornato dall'ultima
+invocazione di <tt>next</tt> o <tt>previous</tt>, e non
+sulla posizione del cursore
+
+<pre>
+Lista:   Primo Secondo Terzo Quarto
+              ^
+next                  ^
+</pre>
+
+qui viene canellato il secondo, se invece faccio:
+
+<pre>
+Lista:   Primo Secondo Terzo Quarto
+                            ^
+prev                  ^
+</pre>
+
+<p>
+La posizione del cursore &egrave; la stessa, ma viene
+cancellato il terzo elemento
+</p>
+
+
+<li>il metodo <tt>add</tt> inserisce un elemento nella
+posizione dove si trova il cursore (che si trova fra due
+elementi)
+
+</ul>
+
+<hr>
+
+
+<h4>Implementazione del cursore</h4>
+
+<p>
+Il cursore fa parte della specifica (a parole) della
+interfaccia <tt>ListIterator</tt>
+</p>
+
+<p>
+Va implementato con un puntatore
+</p>
+
+<p>
+Idea: il cursore si trova in mezzo fra il nodo dove
+c'&egrave; il puntatore e il successivo
+</p>
+
+<pre>
+Lista:   Primo Secondo Terzo Quarto
+cursore               ^
+puntatore         *
+</pre>
+
+<p>
+In questo esempio, il cursore sta fra il secondo e il terzo
+elemento; il puntatore che rappresenta questa posizione del
+cursore deve stare sul secondo elemento
+</p>
+
+<p>
+Per questo <tt>next</tt> e <tt>previous</tt> sono diversi:
+</p>
+
+<dl>
+
+<dt><tt>next</tt>
+<dd>per ritornare l'elemento dopo il cursore, bisogna prima
+avanzare il puntatore
+
+<dt><tt>previous</tt>
+<dd>l'elemento prima del cursore &egrave; quello dove
+attualmente si trova il puntatore; va quindi restituito
+questo elemento, prima di spostare il puntatore indietro
+
+</dl>
+
+<p>
+Si poteva anche scegliere di mettere il puntarore
+sull'elemento <i>successivo</i> al cursore
+</p>
+
+<p>
+Andavano per&ograve; cambiati di conseguenza tutti i metodi
+</p>
+
+</body>
+</html>
+
+

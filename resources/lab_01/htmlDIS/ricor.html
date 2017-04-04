@@ -1,0 +1,4960 @@
+<html>
+<head>
+<title>Ricorsione</title>
+</head>
+
+<body>
+
+<h1>Ricorsione</h1>
+
+<p>
+Due concetti essenziali:
+</p>
+
+<dl>
+
+<dt>cosa succede quando si invoca un metodo ricorsivo
+<dd>record di attivazione, sequenza di invocazioni
+
+<dt>come si scrivono metodi ricorsivi
+<dd>assunzione ricorsiva, caso base
+
+</dl>
+
+<hr>
+
+<h4>Record di attivazione</h4>
+
+<p>
+Ogni volta che si invoca un metodo:
+</p>
+
+<pre>
+		// definizione del metodo
+  static int inutile(int a, String b) {
+    double x;
+    ...
+    return 0;
+  }
+		// invocazione del metodo
+  y=inutile(2, "abcd");
+</pre>
+
+<ul>
+
+<li>si crea una zona di memoria che contiene
+sia i parametri formali che le variabili locali
+(es. un intero <tt>a</tt> e una stringa <tt>b</tt>,
+e poi un reale <tt>x</tt>)
+
+<li>i dati passati come argomenti vengono copiati
+nei parametri formali (es. <tt>2</tt> viene
+messo in <tt>a</tt> mentre <tt>"abcd"</tt> viene
+messo in <tt>b</tt>)
+
+<li>si esegue il corpo del metodo
+
+<li>il valore di ritorno viene usato come se fosse
+scritto al posto della invocazione
+
+</ul>
+
+<p>
+<b>Record di attivazione:</b> contiene le variabili
+(locali+parametri formali) di una invocazione di
+metodo.
+</p>
+
+<hr>
+
+<h4>Metodo che invoca un altro metodo</h4>
+
+<p>
+I metodi possono avere variabili con lo stesso nome
+</p>
+
+<p>
+Sono variabili diverse (in record di attivazione diversi)
+</p>
+
+<pre>
+static void primo(int i) {
+  double j;
+  secondo("stringa");
+}
+
+static void secondo(String i) {
+  int j;
+}
+</pre>
+
+<table>
+<tr>
+<td>
+<table border="1">
+<tr><td>
+<pre>
+int i
+double j
+</pre>
+</td></tr>
+</table>
+</td>
+<td>(record di attivazione di <tt>primo</tt>)</td>
+</tr>
+<tr>
+<td>
+<table border="1">
+<tr><td>
+<pre>
+String i
+int j
+</pre>
+</td></tr>
+</table>
+</td>
+<td>
+(record di attivazione di <tt>secondo</tt>)
+</td>
+</tr>
+</table>
+
+<p>
+Per ogni metodo, ho un record di attivazione.
+</p>
+
+<p>
+Il record di un metodo contiene
+le sue variabili locali
+e i suoi parametri formali.
+</p>
+
+<hr>
+
+
+<h4>Invocare due volte un metodo</h4>
+
+<p>
+Se in un programma invoco due volte un metodo:
+</p>
+
+<pre>
+static void primo() {
+  int i;
+  ...
+}
+
+...main(...) {
+int x;
+
+primo();
+primo();
+</pre>
+
+<ul>
+
+<li>alla prima invocazione, si crea un record
+di attivazione:
+
+<table>
+<tr>
+<td>
+<table border="1">
+<tr><td><tt>int x</tt></td></tr>
+</table>
+</td>
+<td>main</td>
+</tr>
+<tr>
+<td>
+<table border="1">
+<tr><td><tt>int i</tt></td></tr>
+</table>
+</td>
+<td>primo</td>
+</tr>
+</table>
+
+<li>quando termina, viene distrutto
+
+<table>
+<tr>
+<td>
+<table border="1">
+<tr><td><tt>int x</tt></td></tr>
+</table>
+</td>
+<td>main</td>
+</tr>
+</table>
+
+<li>alla seconda invocazione, si crea un altro
+record,
+
+<table>
+<tr>
+<td>
+<table border="1">
+<tr><td><tt>int x</tt></td></tr>
+</table>
+</td>
+<td>main</td>
+</tr>
+<tr>
+<td>
+<table border="1">
+<tr><td><tt>int i</tt></td></tr>
+</table>
+</td>
+<td>primo</td>
+</tr>
+</table>
+
+<li>che viene cancellato alla fine dell'esecuzione
+del metodo
+
+<table>
+<tr>
+<td>
+<table border="1">
+<tr><td><tt>int x</tt></td></tr>
+</table>
+</td>
+<td>main</td>
+</tr>
+</table>
+
+
+</ul>
+
+<p>
+In questo caso, in ogni momento al massimo c'&egrave;
+un record di attivazione di <tt>primo</tt> in
+memoria
+</p>
+
+<p>
+Se invoco metodi in sequenza, &egrave; sempre cos&iacute;
+</p>
+
+<hr>
+
+
+<h4>Ricorsione</h4>
+
+<p>
+Un metodo pu&ograve; anche invocare se stesso.
+</p>
+
+<pre>
+  static void ricorsivo(int i) {
+    int j=i+1;
+    System.out.println(i);
+    ricorsivo(j);
+  }
+</pre>
+
+<hr>
+
+
+<h4>Cosa succede quando un metodo invoca se stesso?</h4>
+
+<p>
+Ogni volta che si invoca un metodo, viene creato
+un record di attivazione
+</p>
+
+<p>
+Vale anche quando un metodo invoca se stesso: ogni
+volta, ho un nuovo record di attivazione
+</p>
+
+<hr>
+
+
+<h4>I record di attivazione dell'esempio</h4>
+
+<ul>
+
+<li>prima chiamata: ho un record che contiene
+due interi <tt>i</tt> e <tt>j</tt>
+
+<li>seconda chiamata: ho un secondo record
+che contiene <tt>i</tt> e <tt>j</tt>
+
+<li>ecc.
+
+</ul>
+
+<p>
+<b>Attenzione:</b> le due <tt>i</tt> sono due
+variabili completamente diverse! Lo stesso
+per le due <tt>j</tt>.
+</p>
+
+<p>
+Le due <tt>i</tt> devono necessariamente avere
+lo stesso tipo (sono definite nello stesso modo).
+Ma sono variabili diverse.
+Lo stesso per le due <tt>j</tt>.
+</p>
+
+<hr>
+
+<h4>Esercizio</h4>
+
+<p>
+Quali sono i record di attivazione del metodo
+di sopra quanto viene invocato <tt>ricorsivo(3)</tt>?
+</p>
+
+<pre>
+  static void ricorsivo(int i) {
+    int j=i+1;
+    System.out.println(i);
+    ricorsivo(j);
+  }
+</pre>
+
+<hr>
+
+<h4>Soluzione</h4>
+
+<p>
+Prima invocazione:
+</p>
+
+<table border="1">
+<tr><td>
+<pre>
+i=3;
+j=indefinito;
+</td></tr>
+</table>
+
+<p>
+Viene alterato il valore di <tt>j</tt>:
+</p>
+
+<table border="1">
+<tr><td>
+<pre>
+i=3;
+j=4;
+</td></tr>
+</table>
+
+<p>
+Viene stampato <tt>i</tt> (stampo <tt>3</tt>)
+</p>
+
+<hr>
+
+<h4>Seconda invocazione</h4>
+
+<p>
+Al metodo viene passato il valore
+di <tt>j</tt>, ossia 4.
+</p>
+
+<ul>
+<li>si crea un <b>altro</b> record di attivazione
+<li>questo record contiene <b>altre</b> variabili <tt>i</tt> e <tt>j</tt>
+<li>nella <tt>i</tt> viene inizialmente messo il valore
+passato come parametro (4)
+</ul>
+
+<table border="1">
+<tr><td>
+<pre>
+i=3;
+j=4;
+</td></tr>
+</table>
+<table border="1">
+<tr><td>
+<pre>
+i=4;
+j=indefinito;
+</td></tr>
+</table>
+
+<p>
+Il metodo viene ora eseguito
+</p>
+
+<p>
+Nel corpo del metodo, quando uso <tt>i</tt> e <tt>j</tt>
+queste sono le variabili del nuovo record di attivazione
+(quello creato apposta per questa attivazione)
+</p>
+
+<hr>
+
+<h4>Continua</h4>
+
+<p>
+Si esegue il corpo del metodo, si mette <tt>5</tt>
+in <tt>j</tt> e si stampa <tt>i</tt> (vale 4).
+</p>
+
+<table border="1">
+<tr><td>
+<pre>
+i=3;
+j=4;
+</td></tr>
+</table>
+<table border="1">
+<tr><td>
+<pre>
+i=4;
+j=5;
+</td></tr>
+</table>
+
+<p>
+Si fa riferimento alle variabili <tt>i</tt> e <tt>j</tt>
+del record creato per questa invocazione.
+</p>
+
+<hr>
+
+<h4>Continua</h4>
+
+<p>
+Si fa una nuova invocazione ricorsiva:
+</p>
+
+<table border="1">
+<tr><td>
+<pre>
+i=3;
+j=4;
+</td></tr>
+</table>
+<table border="1">
+<tr><td>
+<pre>
+i=4;
+j=5;
+</td></tr>
+</table>
+<table border="1">
+<tr><td>
+<pre>
+i=5;
+j=indefinito;
+</td></tr>
+</table>
+
+<p>
+Eccetera.
+</p>
+
+<p>
+Si continua all'infinito.
+</p>
+
+<p>
+Metodi ricorsivi senza terminazione:<br>
+alla fine, esauriscono la memoria.
+</p>
+
+<hr>
+
+<h4>Iterazione e ricorsione</h4>
+
+<p>
+Il metodo ricorsivo senza terminazione
+permette di realizzare un ciclo infinito
+</p>
+
+<p>
+Dato che <tt>ricorsivo(j)</tt> mette nel
+parametro formale (<tt>i</tt>) il valore
+del parametro attuale (<tt>j</tt>), un
+ciclo equivalente &egrave;:
+</p>
+
+<pre>
+  while(true) {
+    j=i+1;
+    System.out.println(i);
+    i=j;
+  }
+</pre>
+
+<p>
+La ricorsione permette di ripetere istruzioni
+</p>
+
+<p>
+&Egrave; quindi una forma di ciclo.
+</p>
+
+<p>
+C'&egrave; una differenza importante
+</p>
+
+<hr>
+
+
+<h4>Differenza ciclo-ricorsione</h4>
+
+<pre>
+// iterazione
+  while(true) {
+    j=i+1;
+    System.out.println(i);
+    i=j;
+  }
+// ricorsione
+  static void ricorsivo(int i) {
+    int j=i+1;
+    System.out.println(i);
+    ricorsivo(j);
+  }
+</pre>
+
+<dl>
+
+<dt><i>ciclo</i>
+<dd>ho sempre le stesse due variabili <tt>i</tt> e <tt>j</tt>
+
+<dt><i>ricorsione</i>
+<dd>ad ogni chiamata ricorsiva ho una variabile <tt>i</tt>
+diversa dalle altre; lo stesso per <tt>j</tt>.
+
+</dl>
+
+<hr>
+
+<h4>Terminazione dei metodi ricorsivi</h4>
+
+<p>
+Il metodo deve, prima o poi, smettere di invocarsi
+</p>
+
+<p>
+Questo fa terminare l'esecuzione
+</p>
+
+<pre>
+  static void ricorsivo(int i) {
+    int j=i+1;
+    System.out.println(i);
+    if(i&lt;5)
+      ricorsivo(j);
+  }
+</pre>
+
+<p>
+Quando <tt>i</tt> raggiunge <tt>5</tt>, il metodo
+termina senza invocare se stesso
+</p>
+
+<hr>
+
+<h4>Terminazione di un metodo ricorsivo</h4>
+
+<p>
+Cosa succede quando il metodo non si invoca?
+</p>
+
+<p>
+Stessa regola di tutti gli altri metodi: si elimina
+il record di attivazione e si riprende da dove si
+era lasciato.
+</p>
+
+<p>
+Prima invocazione:
+</p>
+
+<table border="1">
+<tr><td>
+<pre>
+i=3;
+j=indef;
+</td></tr>
+</table>
+
+<p>
+Seconda invocazione:
+</p>
+
+<table border="1">
+<tr><td>
+<pre>
+i=3;
+j=4;
+</td></tr>
+</table>
+<table border="1">
+<tr><td>
+<pre>
+i=4;
+j=indef;
+</td></tr>
+</table>
+
+<p>
+Terza invocazione:
+</p>
+
+<table border="1">
+<tr><td>
+<pre>
+i=3;
+j=4;
+</td></tr>
+</table>
+<table border="1">
+<tr><td>
+<pre>
+i=4;
+j=5;
+</td></tr>
+</table>
+<table border="1">
+<tr><td>
+<pre>
+i=5;
+j=indef;
+</td></tr>
+</table>
+
+<p>
+In <tt>j</tt> viene messo <tt>6</tt>, ma non viene
+pi&ugrave; fatta la invocazione ricorsiva, dato
+che <tt>i&lt;5</tt> &egrave; falso.
+</p>
+
+<p>
+L'esecuzione del metodo termina perch&egrave; non
+ci sono altre istruzioni.
+</p>
+
+<p>
+Viene quindi cancellato il record di attivazione,
+e si riparte da dove si era lasciato:
+</p>
+
+<table border="1">
+<tr><td>
+<pre>
+i=3;
+j=4;
+</td></tr>
+</table>
+<table border="1">
+<tr><td>
+<pre>
+i=4;
+j=5;
+</td></tr>
+</table>
+
+<p>
+Si era lasciato il metodo <tt>ricorsivo</tt> per
+invocare <tt>ricorsivo</tt>. Dato che non ci sono
+altre istruzioni, si termina anche questo.
+</p>
+
+<table border="1">
+<tr><td>
+<pre>
+i=3;
+j=4;
+</td></tr>
+</table>
+
+<p>
+Termina anche questa chiamata.
+</p>
+
+<hr>
+
+<h4>Ricorsione: interpretazione con metodi diversi</h4>
+
+<p>
+Quando ho un metodo ricorsivo, posso pensare
+di avere pi&ugrave; copie dello stesso metodo,
+con nomi diversi:
+</p>
+
+<ul>
+<li><tt>ricorsivo</tt> invoca <tt>ricorsivo1</tt>
+<li><tt>ricorsivo1</tt> invoca <tt>ricorsivo2</tt>
+<li><tt>ricorsivo2</tt> invoca <tt>ricorsivo3</tt>
+<li>ecc.
+</ul>
+
+<pre>
+  static void ricorsivo(int i) {
+    int j=i+1;
+    System.out.println(i);
+    if(i&lt;5)
+      ricorsivo1(j);
+  }
+
+  static void ricorsivo1(int i) {
+    int j=i+1;
+    System.out.println(i);
+    if(i&lt;5)
+      ricorsivo2(j);
+  }
+
+  static void ricorsivo2(int i) {
+    int j=i+1;
+    System.out.println(i);
+    if(i&lt;5)
+      ricorsivo3(j);
+  }
+</pre>
+
+<p>
+Quando <tt>ricorsivo2</tt> termina, si riprende
+dal punto di <tt>ricorsivo1</tt> in cui si trova
+la invocazione di <tt>ricorsivo2</tt>
+</p>
+
+<p>
+<b>Attenzione:</b> pensare a pi&ugrave; metodi
+serve solo a capire come funziona la ricorsione.
+</p>
+
+<p>
+In pratica, non so quanti metodi dovrei definire
+(es, se faccio <tt>ricorsivo(-10)</tt> mi servono
+quindici metodi, per <tt>ricorsivo(-20)</tt> ne
+servono venticinque)
+</p>
+
+<hr>
+
+<h4>Cicli definiti e ricorsione</h4>
+
+<p>
+Con la ricorsione posso simulare cicli definiti:
+</p>
+
+<pre>
+for(i=0; i&lt;10; i++)
+  System.out.println(i);
+</pre>
+
+<p>
+Devo eseguire la stessa istruzione per dieci volte:
+</p>
+
+<pre>
+static void stampadieci(int i) {
+  if(i&lt;10) {
+    System.out.println(i);
+    i++;
+    stampadieci(i);
+  }
+}
+</pre>
+
+<p>
+Invocazione: <tt>stampadieci(0)</tt>
+</p>
+
+<p>
+Attenzione: si pu&ograve; anche scrivere:
+</p>
+
+<pre>
+static void stampadieci(int i) {
+  if(i&lt;10) {
+    System.out.println(i);
+    stampadieci(i+1);
+  }
+}
+</pre>
+
+<p>
+Il metodo pu&ograve; accedere solo alle variabili
+locali e ai parametri.
+</p>
+
+<p>
+Se gli occorre un dato, va passato come parametro.
+</p>
+
+<hr>
+
+<h4>Cicli indefiniti e ricorsione</h4>
+
+<p>
+Realizzo cicli indefiniti con la ricorsione
+</p>
+
+<pre>
+s=br.readLine();
+while(s!=null) {
+  System.out.println(s);
+  s=br.readLine();
+}
+</pre>
+
+<p>
+Lo posso fare in modo ricorsivo:
+</p>
+
+<pre>
+int leggiestampa(BufferedReader br)
+  throws IOException {
+  String s=br.readLine();
+  if(s!=null) {
+    System.out.println(s);
+    leggiestampa(br);
+  }
+}
+</pre>
+
+<p>
+Notare:
+</p>
+
+<ul>
+
+<li>il metodo ha bisogno di <tt>br</tt> in tutte
+le chiamate; va quindi passato come parametro;
+
+<li>il <tt>while</tt> della versione iterativa
+&egrave; diventato un <tt>if</tt> che contiene
+la chiamata ricorsiva.
+
+</ul>
+
+<hr>
+
+
+<h4>Passaggio iterazione-ricorsione</h4>
+
+<p>
+Nei cicli e nella ricorsione, realizzo la
+ripetizione di istruzioni in modo diverso:
+</p>
+
+<dl>
+
+<dt><i>cicli</i>
+<dd>uso il costrutto <tt>while</tt> oppure
+<tt>for</tt>, che ripetono una certa istruzione
+finch&egrave; una condizione non diventa falsa
+
+<dt><i>ricorsione</i>
+<dd>eseguo l'istruzione; se poi una condizione
+&egrave; vera ripeto; la ripetizione si realizza
+con una nuova invocazione ricorsiva
+
+</dl>
+
+<hr>
+
+
+<h4>Istruzioni dopo la chiamata ricorsiva</h4>
+
+<p>
+Dopo la chiamata ricorsiva posso mettere altre
+istruzioni.
+</p>
+
+<hr>
+
+<h4>Esercizio</h4>
+
+<p>
+Cosa succede quando eseguo <tt>ricorsivo(3)</tt>?
+</p>
+
+<pre>
+  static void ricorsivo(int i) {
+    System.out.println(i);
+    if(i&lt;5)
+      ricorsivo(i+1);
+    System.out.println(i);
+  }
+</pre>
+
+<p>
+Fare "come se fossero metodi diversi"
+</p>
+
+<p>
+Riportare accanto al record di attivazione
+il punto del codice che si sta eseguendo
+</p>
+
+<hr>
+
+
+<h4>Rappresentazione grafica</h4>
+
+<p>
+Accanto al record di attivazione, scrivo il codice
+del metodo
+</p>
+
+<p>
+Con una freccia, indico l'istruzione che sto
+eseguendo
+</p>
+
+<table border="1">
+<tr><td>
+<pre>
+i=3;
+</pre>
+</td><td>
+<pre>
+  static void ricorsivo(int i) {
+--&gt; System.out.println(i);
+    if(i&lt;5)
+      ricorsivo1(i+1);
+    System.out.println(i);
+  }
+</pre>
+</td></tr>
+</table>
+
+<hr>
+
+
+<h4>Prima invocazione</h4>
+
+<table border="1">
+<tr><td>
+<pre>
+i=3;
+</pre>
+</td><td>
+<pre>
+  static void ricorsivo(int i) {
+--&gt; System.out.println(i);
+    if(i&lt;5)
+      ricorsivo1(i+1);
+    System.out.println(i);
+  }
+</pre>
+</td></tr>
+</table>
+
+<p>
+Si stampa <tt>3</tt>
+</p>
+
+<table border="1">
+<tr><td>
+<pre>
+i=3;
+</pre>
+</td><td>
+<pre>
+  static void ricorsivo(int i) {
+    System.out.println(i);
+--&gt; if(i&lt;5)
+      ricorsivo1(i+1);
+    System.out.println(i);
+  }
+</pre>
+</td></tr>
+</table>
+
+<p>
+<tt>i</tt> ha valore minore di <tt>5</tt>:
+si fa la chiamata ricorsiva
+<i>passando il valore  di <tt>i+1</tt>, ossia <tt>4</tt></i>
+</p>
+
+<hr>
+
+<h4>Seconda invocazione</h4>
+
+<p>
+Si crea un nuovo record di attivazione.
+</p>
+
+<table border="1">
+<tr><td>
+<pre>
+i=3;
+</pre>
+</td><td>
+<pre>
+  static void ricorsivo(int i) {
+    System.out.println(i);
+    if(i&lt;5)
+--&gt;  ricorsivo1(i+1);
+    System.out.println(i);
+  }
+</pre>
+</td></tr>
+</table>
+<table border="1">
+<tr><td>
+<pre>
+i=4;
+</pre>
+</td><td>
+<pre>
+  static void ricorsivo1(int i) {
+--&gt; System.out.println(i);
+    if(i&lt;5)
+      ricorsivo2(i+1);
+    System.out.println(i);
+  }
+</pre>
+</td></tr>
+</table>
+
+<p>
+Attenzione: la esecuzione di <tt>ricorsivo</tt>
+&egrave; stata sospesa per eseguire <tt>ricorsivo1</tt>,
+ma non &egrave; terminata: quando <tt>ricorsivo1</tt>
+termina, si riprender&agrave; da dove si &egrave; lasciato.
+</p>
+
+<p>
+Si stampa <tt>i</tt>
+</p>
+
+<p>
+La <tt>i</tt> che viene stampata &egrave;
+quella del record di attivazione corrente,
+quindi si stampa <tt>4</tt>.
+</p>
+
+<hr>
+
+
+<h4>Esecuzione del condizionale</h4>
+
+<table border="1">
+<tr><td>
+<pre>
+i=3;
+</pre>
+</td><td>
+<pre>
+  static void ricorsivo(int i) {
+    System.out.println(i);
+    if(i&lt;5)
+--&gt;  ricorsivo1(i+1);
+    System.out.println(i);
+  }
+</pre>
+</td></tr>
+</table>
+<table border="1">
+<tr><td>
+<pre>
+i=4;
+</pre>
+</td><td>
+<pre>
+  static void ricorsivo1(int i) {
+    System.out.println(i);
+--&gt; if(i&lt;5)
+      ricorsivo2(i+1);
+    System.out.println(i);
+  }
+</pre>
+</td></tr>
+</table>
+
+<p>
+Dato che <tt>i</tt> vale meno di <tt>5</tt>,
+si invoca di nuovo il metodo.
+</p>
+
+<p>
+Si passa il valore di <tt>i+1</tt>.
+</p>
+
+<p>
+La <tt>i</tt> &egrave; quella dell'ultimo
+record, quindi <tt>i+1</tt> vale <tt>5</tt>.
+</p>
+
+<hr>
+
+<h4>Terza chiamata</h4>
+
+<p>
+Si crea un terzo record di attivazione
+</p>
+
+<table border="1">
+<tr><td>
+<pre>
+i=3;
+</pre>
+</td><td>
+<pre>
+  static void ricorsivo(int i) {
+    System.out.println(i);
+    if(i&lt;5)
+--&gt;  ricorsivo1(i+1);
+    System.out.println(i);
+  }
+</pre>
+</td></tr>
+</table>
+<table border="1">
+<tr><td>
+<pre>
+i=4;
+</pre>
+</td><td>
+<pre>
+  static void ricorsivo1(int i) {
+    System.out.println(i);
+    if(i&lt;5)
+--&gt;   ricorsivo2(i+1);
+    System.out.println(i);
+  }
+</pre>
+</td></tr>
+</table>
+<table border="1">
+<tr><td>
+<pre>
+i=5;
+</pre>
+</td><td>
+<pre>
+  static void ricorsivo2(int i) {
+--&gt; System.out.println(i);
+    if(i&lt;5)
+      ricorsivo3(i+1);
+    System.out.println(i);
+  }
+</pre>
+</td></tr>
+</table>
+
+<p>
+Si stampa il valore di <tt>i</tt>.
+</p>
+
+<p>
+La <tt>i</tt> da guardare &egrave; l'ultima,
+e vale <tt>5</tt>.
+</p>
+
+<hr>
+
+
+<h4>Esecuzione del condizionale</h4>
+
+<table border="1">
+<tr><td>
+<pre>
+i=3;
+</pre>
+</td><td>
+<pre>
+  static void ricorsivo(int i) {
+    System.out.println(i);
+    if(i&lt;5)
+--&gt;  ricorsivo1(i+1);
+    System.out.println(i);
+  }
+</pre>
+</td></tr>
+</table>
+<table border="1">
+<tr><td>
+<pre>
+i=4;
+</pre>
+</td><td>
+<pre>
+  static void ricorsivo1(int i) {
+    System.out.println(i);
+    if(i&lt;5)
+--&gt;   ricorsivo2(i+1);
+    System.out.println(i);
+  }
+</pre>
+</td></tr>
+</table>
+<table border="1">
+<tr><td>
+<pre>
+i=5;
+</pre>
+</td><td>
+<pre>
+  static void ricorsivo2(int i) {
+    System.out.println(i);
+--&gt; if(i&lt;5)
+      ricorsivo3(i+1);
+    System.out.println(i);
+  }
+</pre>
+</td></tr>
+</table>
+
+<p>
+Questa volta <tt>i</tt> non &egrave; minore di <tt>5</tt>,
+per cui non si fa la chiamata ricorsiva.
+</p>
+
+<table border="1">
+<tr><td>
+<pre>
+i=3;
+</pre>
+</td><td>
+<pre>
+  static void ricorsivo(int i) {
+    System.out.println(i);
+    if(i&lt;5)
+--&gt;  ricorsivo1(i+1);
+    System.out.println(i);
+  }
+</pre>
+</td></tr>
+</table>
+<table border="1">
+<tr><td>
+<pre>
+i=4;
+</pre>
+</td><td>
+<pre>
+  static void ricorsivo1(int i) {
+    System.out.println(i);
+    if(i&lt;5)
+--&gt;   ricorsivo2(i+1);
+    System.out.println(i);
+  }
+</pre>
+</td></tr>
+</table>
+<table border="1">
+<tr><td>
+<pre>
+i=5;
+</pre>
+</td><td>
+<pre>
+  static void ricorsivo2(int i) {
+    System.out.println(i);
+    if(i&lt;5)
+      ricorsivo3(i+1);
+--&gt; System.out.println(i);
+  }
+</pre>
+</td></tr>
+</table>
+
+<p>
+Si stampa ancora <tt>i</tt>, che &egrave; sempre <tt>5</tt>.
+</p>
+
+<hr>
+
+<h4>Fine della terza invocazione</h4>
+
+<p>
+La terza invocazione termina, per cui si ammazza
+l'ultimo record di attivazione.
+</p>
+
+<table border="1">
+<tr><td>
+<pre>
+i=3;
+</pre>
+</td><td>
+<pre>
+  static void ricorsivo(int i) {
+    System.out.println(i);
+    if(i&lt;5)
+--&gt;  ricorsivo1(i+1);
+    System.out.println(i);
+  }
+</pre>
+</td></tr>
+</table>
+<table border="1">
+<tr><td>
+<pre>
+i=4;
+</pre>
+</td><td>
+<pre>
+  static void ricorsivo1(int i) {
+    System.out.println(i);
+    if(i&lt;5)
+--&gt;   ricorsivo2(i+1);
+    System.out.println(i);
+  }
+</pre>
+</td></tr>
+</table>
+
+<p>
+Ero rimasto alla chiamata ricorsiva di <tt>ricorsivo2</tt>
+</p>
+
+<p>
+Secondo le regole, devo semplicemente eseguire
+l'istruzione successiva.
+</p>
+
+<table border="1">
+<tr><td>
+<pre>
+i=3;
+</pre>
+</td><td>
+<pre>
+  static void ricorsivo(int i) {
+    System.out.println(i);
+    if(i&lt;5)
+--&gt;  ricorsivo1(i+1);
+    System.out.println(i);
+  }
+</pre>
+</td></tr>
+</table>
+<table border="1">
+<tr><td>
+<pre>
+i=4;
+</pre>
+</td><td>
+<pre>
+  static void ricorsivo1(int i) {
+    System.out.println(i);
+    if(i&lt;5)
+      ricorsivo2(i+1);
+--&gt; System.out.println(i);
+  }
+</pre>
+</td></tr>
+</table>
+
+<p>
+Viene stampato il valore di <tt>i</tt>,
+che ora &egrave; <tt>4</tt>.
+</p>
+
+<p>
+Attenzione! Nella chiamata <tt>ricorsivo2</tt>
+la <tt>i</tt> valeva <tt>5</tt>, ma in questa
+&egrave; sempre stato <tt>4</tt>!
+</p>
+
+<p>
+Come dire: la <tt>i</tt> di <tt>ricorsivo2</tt>
+valeva <tt>5</tt> ma la <tt>i</tt> di <tt>ricorsivo1</tt>
+&egrave; sempre stata <tt>4</tt>.
+</p>
+
+<hr>
+
+<h4>Terminazione seconda invocazione</h4>
+
+<p>
+Il secondo record di attivazione viene distrutto,
+e si ritorna a <tt>ricorsivo</tt>:
+</p>
+
+<table border="1">
+<tr><td>
+<pre>
+i=3;
+</pre>
+</td><td>
+<pre>
+  static void ricorsivo(int i) {
+    System.out.println(i);
+    if(i&lt;5)
+--&gt;  ricorsivo1(i+1);
+    System.out.println(i);
+  }
+</pre>
+</td></tr>
+</table>
+
+<p>
+Riprendo da dove avevo lasciato: quindi
+eseguo la stampa.
+</p>
+
+<p>
+Si stampa il valore di <tt>i</tt>, che
+questa volta &egrave; <tt>3</tt>.
+</p>
+
+<p>
+Alla fine si elimina anche questo record di attivazione.
+</p>
+
+<hr>
+
+<h4>Conclusione</h4>
+
+<p>
+Sono stati stampati:
+</p>
+
+<pre>
+3
+4
+5
+5
+4
+3
+</pre>
+
+<p>
+Regola "a occhio":
+</p>
+
+<ul>
+
+<li>le istruzioni prima della invocazione ricorsiva
+vengono eseguite "in ordine" (prima quella della
+prima chiamata, poi quella della seconda, ecc)
+
+<li>le istruzioni dopo la invocazione vengono eseguite
+in ordine inverso (la prima ad essere eseguita &egrave;
+la istruzione che sta nell'ultima chiamata ricorsiva)
+
+</ul>
+
+<hr>
+
+<h4>Esercizio</h4>
+
+<p>
+Stampare le linee di un file in ordine inverso,
+senza usare i vettori e i cicli.
+</p>
+
+<hr>
+
+<h4>Soluzione</h4>
+
+<p>
+La lettura va fatta in ordine, per cui la faccio prima
+della chiamata ricorsiva.
+</p>
+
+<p>
+La stampa va fatta in ordine inverso, per cui la faccio dopo.
+</p>
+
+<pre>
+  static void stampaInverso(BufferedReader br)
+  throws IOException {
+    String s=br.readLine();
+    if(s!=null) {
+      stampaInverso(br);
+      System.out.println(s);
+    }
+  }
+</pre>
+
+<p>
+Principio: invece di usare il vettore, sfrutto il
+fatto di avere una variabile <tt>s</tt> diversa
+per ognuna delle chiamate ricorsive.
+</p>
+
+<hr>
+
+<h4>Progettazione metodi ricorsivi</h4>
+
+<p>
+Ci sono due modi:
+</p>
+
+<ul>
+<li>il modo sbagliato
+<li>il modo giusto
+</ul>
+
+<hr>
+
+<h4>Progettazione metodi ricorsivi</h4>
+
+<p>
+Come si progettano:
+</p>
+
+<dl>
+
+<dt>sbagliato:
+<dd>pensare alla ricorsione come a un modo di
+realizzare cicli
+
+<dt>sbagliato:
+<dd>cercare di scrivere il metodo sulla base
+di come devono essere fatti i record di attivazione
+
+<dt>giusto:
+<dd>assunzione ricorsiva+verifica di terminazione
+
+</dl>
+
+<p>
+La simulazione dei record di attivazione va fatta
+solo alla fine per verificare se funziona.
+</p>
+
+<hr>
+
+<h4>Assunzione ricorsiva</h4>
+
+<p>
+I metodi ricorsivi si progettano facendo la
+seguente assunzione:
+</p>
+
+<blockquote>
+<i>
+all'interno di un metodo, una invocazione ricorsiva
+produce il risultato corretto se viene fatta su un
+problema pi&ugrave; semplice di quello di partenza
+</i>
+</blockquote>
+
+<hr>
+
+
+<h4>Il metodo di stampa inversa di un file</h4>
+
+<pre>
+static void stampaInverso(BufferedReader br)
+throws IOException {
+  ...
+}
+</pre>
+
+<p>
+Dentro posso fare una chiamata ricorsiva.
+</p>
+
+<p>
+<i>
+All'interno di un metodo, una invocazione ricorsiva
+produce il risultato corretto se viene fatta su un
+problema pi&ugrave; semplice di quello di partenza
+</i>
+</p>
+
+<p>
+Applicazione del principio: dopo aver fatto
+<tt>String s=br.readLine()</tt>, la parte di
+file che resta da leggere contiene una linea
+di meno
+</p>
+
+<p>
+Quindi, il problema della stampa in ordine inverso
+&egrave; stato semplificato
+</p>
+
+<p>
+Quindi, l'invocazione <tt>stampaInverso(br)</tt> funziona correttamente
+</p>
+
+<p>
+Quindi, viene stampato il resto del file in ordine
+inverso
+</p>
+
+<p>
+Dato che poi stampo la prima linea, ottengo tutto
+il file stampato al contrario
+</p>
+
+<hr>
+
+
+<h4>Come un metodo predefinito</h4>
+
+<p>
+Una volta che il problema &egrave; stato
+semplificato, l'invocazione ricorsiva &egrave;
+corretta
+</p>
+
+<p>
+&Egrave; come se si trattasse di un metodo
+predefinito, come <tt>Math.sqrt</tt>,
+<tt>System.println</tt>, ecc.
+</p>
+
+<p>
+Per&ograve; questo metodo si pu&ograve; invocare
+soltanto dopo che il problema &egrave; stato
+semplificato
+</p>
+
+<hr>
+
+
+<h4>Esempio di progettazione</h4>
+
+<p>
+Devo scrivere questo metodo:
+</p>
+
+<pre>
+static void stampaInverso(BufferedReader br)
+throws IOException {
+  ...
+}
+</pre>
+
+<p>
+Procedo in questo modo:
+</p>
+
+<ul>
+<li>assumo che esista un metodo predefinito
+<tt>System.inverseReadAndPrint(BufferedReader br)</tt>
+
+<li>scrivo delle istruzioni per semplificare il problema
+
+<li>quando il problema &egrave; stato semplificato,
+invoco il metodo predefinito
+
+<li>al posto del metodo predefinito, ci metto la
+invocazione ricorsiva
+</ul>
+
+<hr>
+
+
+<h4>Progettazione 1</h4>
+
+<pre>
+static void stampaInverso(BufferedReader br)
+throws IOException {
+  ...
+}
+</pre>
+
+<p>
+Per prima cosa, leggo una linea
+</p>
+
+<p>
+&Egrave; l'unica cosa che posso fare
+</p>
+
+<pre>
+static void stampaInverso(BufferedReader br)
+throws IOException {
+  String s=br.readLine();
+  ...
+}
+</pre>
+
+<hr>
+
+
+<h4>Il problema &egrave; stato semplificato!</h4>
+
+<p>
+Ora <tt>br</tt> indica un file da leggere in cui
+una linea &egrave; stata gi&agrave; letta
+</p>
+
+<p>
+Il problema &egrave; stato semplificato
+</p>
+
+<p>
+Posso invocare il metodo ``predefinito'':
+</p>
+
+<pre>
+static void stampaInverso(BufferedReader br) throws
+IOException {
+	// legge prima linea
+  String s=br.readLine();
+	// stampa il resto del file al contrario
+  System.inverseReadAndPrint(br);
+}
+</pre>
+
+<hr>
+
+
+<h4>Fine del metodo</h4>
+
+<p>
+Ho letto una linea, e stampato il resto del
+file al contrario; cosa manca?
+</p>
+
+<p>
+Devo stampare la prima linea:
+</p>
+
+<pre>
+tatic void stampaInverso(BufferedReader br) throws
+IOException {
+	// legge prima linea
+  String s=br.readLine();
+	// stampa il resto del file al contrario
+  System.inverseReadAndPrint(br);
+	// stampa la prima linea
+  System.out.println(s);
+}
+</pre>
+
+<hr>
+
+
+<h4>Applicazione dell'assunzione</h4>
+
+<p>
+Applicazione dell'assunzione: al posto del metodo
+predefinito (che non esiste) posso mettere la
+invocazione ricorsiva
+</p>
+
+<pre>
+static void stampaInverso(BufferedReader br) throws
+IOException {
+        // legge prima linea
+  String s=br.readLine();
+        // stampa il resto del file al contrario
+  stampaInverso(br);
+        // stampa la prima linea
+  System.out.println(s);
+}
+</pre>
+
+<hr>
+
+
+<h4>Costruzione del metodo ricorsivo: riassunto</h4>
+
+<p>
+L'assunzione: dopo aver letto una linea, il problema
+&egrave; pi&ugrave; semplice; quindi, <tt>stampaInverso(br)</tt>
+stampa in ordine inverso il resto del file
+</p>
+
+<p>
+Algoritmo:
+</p>
+
+<ul>
+<li>leggo una linea
+<li>stampa il resto del file al contrario
+<li>stampa la prima linea
+</ul>
+
+<p>
+Il punto due si pu&ograve; realizzare con una invocazione
+ricorsiva
+</p>
+
+<hr>
+
+<h4>Costruzione: verifica di terminazione</h4>
+
+<p>
+A un certo punto, il metodo deve terminare.
+</p>
+
+<p>
+Nel nostro caso, se <tt>s</tt> &egrave; <tt>null</tt>,
+non devo fare la chiamata ricorsiva, e nemmeno la stampa.
+</p>
+
+<pre>
+static void stampaInverso(BufferedReader br) throws IOException {
+  String s=br.readLine();
+
+  if(s!=null) {
+    stampaInverso(br);
+    System.out.println(s);
+  }
+}
+</pre>
+
+<hr>
+
+
+<h4>Esercizio: stringhe palindrome</h4>
+
+<p>
+Scrivere un metodo di programma ricorsivo
+che decide se una stringa &egrave; palindroma.
+</p>
+
+<p>
+Una stringa &egrave; palindroma se il primo
+carattere &egrave; uguale all'ultimo, il
+secondo al penultimo, ecc.
+</p>
+
+<pre>
+static boolean pali(String);
+</pre>
+
+<hr>
+
+<h4>Stringhe palindrome: soluzione</h4>
+
+<p>
+Seguendo l'assunzione ricorsiva:
+</p>
+
+<pre>
+static boolean pali(String a) {
+  ...
+  pali(...);
+  ...
+}
+</pre>
+
+<p>
+La chiamata ricorsiva su una sottostringa di <tt>a</tt>
+&egrave; corretta.
+</p>
+
+<p>
+Nota: <tt>pali(a)</tt> non &egrave; corretta, perch&egrave;
+il problema non &egrave; stato semplificato.
+</p>
+
+<p>
+Prima <tt>stampaInverso(br)</tt> era corretta perch&egrave;
+dal file era stata letta una linea
+</p>
+
+<p>
+Se prima <tt>br</tt> era un file in cui mancavano 10 linee
+da leggere, quando si fa l'invocazione ricorsiva &egrave;
+un file in cui ci sono solo 9 linee prima della fine del
+file
+</p>
+
+<p>
+Non &egrave; il nome della variabile quello che conta, ma
+il fatto che rappresenti un problema pi&ugrave; semplice
+</p>
+
+<hr>
+
+
+<h4>Stringhe palindrome: soluzione</h4>
+
+<p>
+Secondo l'assunzione ricorsiva, tutte queste
+invocazioni sono corrette:
+</p>
+
+<dl>
+<dt><tt>pali(substring(1, a.length())</tt>
+<dd>(invocazione sulla stringa tranne il primo carattere)
+
+<dt><tt>pali(substring(0, a.length()-1)</tt>
+<dd>(invocazione sulla stringa tranne l'ultimo carattere)
+
+<dt><tt>pali(substring(1, a.length()-1)</tt>
+<dd>(invocazione sulla stringa tranne il primo e l'ultimo
+carattere)
+
+</dl>
+
+<p>
+Tutte e tre le invocazioni sono corrette.
+</p>
+
+<hr>
+
+
+<h4>Quale invocazione ricorsiva usare?</h4>
+
+<p>
+L'invocazione <tt>pali(substring(1, a.length()-1)</tt>
+mi dice se la parte centrale della stringa &egrave;
+palindroma
+</p>
+
+<p>
+Se lo &egrave;, basta poi vedere se il primo
+carattere &egrave; uguale all'ultimo.
+</p>
+
+<ul>
+
+<li>se la parte centrale della stringa non &egrave;
+palindroma, ritorna <tt>false</tt>
+
+<li>altrimenti, verifica se il primo carattere &egrave;
+uguale all'ultimo
+
+</ul>
+
+<hr>
+
+
+<h4>Stringhe palindrome: soluzione</h4>
+
+<p>
+Se la parte centrale della stringa non &egrave;
+palindroma, non lo &egrave; neanche la stringa
+intera.
+</p>
+
+<pre>
+  public static boolean pali(String a) {
+    ...
+    if(!pali(a.substring(1, a.length()-1)))
+      return false;
+    ...
+  }
+</pre>
+
+<hr>
+
+<h4>Stringhe palindrome: soluzione</h4>
+
+<p> 
+Se la parte centrale &egrave; palindroma, allora
+devo controllare se il primo carattere &egrave;
+uguale all'ultimo:
+</p>
+
+<pre>
+  public static boolean pali(String a) {
+    if(!pali(a.substring(1, a.length()-1)))
+      return false;
+
+    if(a.charAt(0)!=a.charAt(a.length()-1))
+      return false;
+
+    return true;
+  }
+</pre>
+
+<hr>
+
+<h4>Stringhe palindrome: soluzione</h4>
+
+<p>
+Manca il caso base
+</p>
+
+<p>
+Se la stringa iniziale ha lunghezza dispari, arrivo
+alla chiamata con una stringa lunga 1.
+</p>
+
+<p>
+Se inizio con una stringa di lunghezza pari, arrivo
+a una chiamata con la stringa vuota.
+</p>
+
+<p>
+Ho due casi base!
+</p>
+
+<pre>
+  public static boolean pali(String a) {
+    if(a.length()&lt;=1)
+      return true;
+
+    if(!pali(a.substring(1, a.length()-1)))
+      return false;
+
+    if(a.charAt(0)!=a.charAt(a.length()-1))
+      return false;
+
+    return true;
+  }
+</pre>
+
+<hr>
+
+
+<h4>Perch&egrave; si ritorna <tt>true</tt>?</h4>
+
+<p>
+Quando la stringa ha un solo elemento, &egrave; chiaro
+che &egrave; palindroma.
+</p>
+
+<p>
+Perch&egrave; la stringa vuota &egrave; palindroma?
+</p>
+
+<p>
+Arrivo a fare la chiamata soltanto se ho una stringa
+con due caratteri uguali.
+</p>
+
+<hr>
+
+
+<h4>Palindrome: interpretazione matematica</h4>
+
+<p>
+Una stringa &egrave; palindroma se:
+</p>
+
+<ul>
+<li>il primo carattere &egrave; uguale all'ultimo
+<li>la stringa fatta di tutti i caratteri meno il
+primo e l'ultimo &egrave; palidroma
+</ul>
+
+<p>
+Manca il passo base: una stringa di 0 oppure 1
+carattere &egrave; palindroma.
+</p>
+
+<p>
+Definizione basata sul principio di induzione.
+</p>
+
+<p>
+Il metodo ricorsivo viene scritto seguendo
+letteralmente la definizione ricorsiva.
+</p>
+
+<hr>
+
+
+<h4>Progettazione metodi ricorsivi: riepilogo</h4>
+
+<ul>
+
+<li>si scrive lo scheletro del metodo
+
+<li>si sceglie un problema dello stesso tipo di
+quello di partenza, ma pi&ugrave; semplice
+(anche se di poco)
+
+<li>si assume che l'invocazione ricorsiva sia
+corretta (che funzioni correttamente) sul
+problema semplificato
+
+<li>si mette l'invocazione ricorsiva nel corpo
+del metodo
+
+<li>si scrive il resto del metodo: posso usare
+il risultato dell'invocazione ricorsiva
+
+<li>si verifica che il metodo termini, ossia:
+
+<ol>
+<li>non sto facendo l'invocazione sempre sugli
+stessi dati (es, non leggo da file prima della
+chiamata ricorsiva): prima della chiamata ricorsiva
+devo semplificare il problema
+
+<li>ho una condizione che fa terminare le
+chiamate ricorsive
+</ol>
+
+<li>a questo punto, si pu&ograve; verificare con
+i record di attivazione se il metodo funziona.
+
+</ul>
+
+<p>
+Il modo sbagliato &egrave; quello di partire dai
+record di attivazione e costruire il metodo in
+base a questi.
+</p>
+
+<p>
+Ancora peggio: quando ho la chiamata ricorsiva,
+si ``ripete dall'inizio del metodo''
+</p>
+
+<p>
+Questo causa la ``ripetizione dall'inizio'' dell'esame
+</p>
+
+<hr>
+
+
+<h4>Progettazione ricorsiva</h4>
+
+<p>
+All'inizio, pu&ograve; sembrare difficile
+</p>
+
+<p>
+Una volta che si &egrave; capito dove si pu&ograve;
+mettere una invocazione ricorsiva &egrave; facile
+</p>
+
+<p>
+Basta pensare che l'invocazione ricorsiva &egrave;
+corretta, senza pensare a cosa ``succede l&iacute;
+dentro''
+</p>
+
+<hr>
+
+
+<h4>Esercizio: il fattoriale</h4>
+
+<p>
+Scrivere una funzione che calcola il fattoriale
+di un numero in modo ricorsivo.
+</p>
+
+<p>
+Condizione: il metodo non deve contenere <tt>for</tt>
+oppure <tt>while</tt>
+</p>
+
+<hr>
+
+
+<h4>Fattoriale: soluzione</h4>
+
+<p>
+Si inizia con la scrittura dello scheletro:
+serve un intero, e il valore di ritorno &egrave;
+un intero:
+</p>
+
+<pre>
+  public static int fattoriale(int i) {
+    ...
+  }
+</pre>
+
+<hr>
+
+<h4>Fattoriale: chiamata ricorsiva</h4>
+
+<p>
+Invocare il metodo su <tt>i</tt> non funziona
+(il problema non &egrave; stato semplificato)
+</p>
+
+<p>
+Invocare <tt>fattoriale(1)</tt> oppure
+<tt>fattoriale(i/2)</tt> funziona (sono problemi
+pi&ugrave; semplici) per&ograve; non servono
+</p>
+
+<p>
+<tt>fattoriale(i-1)</tt> funziona (il problema &egrave;
+pi&ugrave; semplice) e forse &egrave; utile
+</p>
+
+<pre>
+  public static int fattoriale(int i) {
+    int j;
+
+    ...
+
+    j=fattoriale(i-1);
+
+    ...
+  }
+</pre>
+
+<hr>
+
+
+<h4>Fattoriale: valore di ritorno</h4>
+
+<p>
+Il valore di ritorno di <tt>fattoriale(i-1)</tt>
+&egrave; corretto (assunzione ricorsiva).
+</p>
+
+<p>
+Quindi vale:
+</p>
+
+<pre>
+1*2*3*...*(i-1)
+</pre>
+
+<p>
+Il fattoriale di <tt>i</tt>, che &egrave; quello
+che serve, vale:
+</p>
+
+<pre>
+1*2*3*...*(i-1)*i
+</pre>
+
+<p>
+Quindi, il fattoriale di <tt>i</tt> si ottiene
+calcolando <tt>fattoriale(i-1)</tt> e poi
+moltiplicando per <tt>i</tt>.
+</p>
+
+<pre>
+  public static int fattoriale(int i) {
+    int j;
+
+    j=fattoriale(i-1);
+    return j*i;
+  }
+</pre>
+
+<hr>
+
+<h4>Fattoriale: terminazione</h4>
+
+<p>
+Questo metodo ricorsivo non termina, perch&egrave;
+ogni volta che invoco il metodo questo invoca
+se stesso. Sempre.
+</p>
+
+<p>
+Passo base della ricorsione: si deve prima o poi
+arrivare a un caso in cui non c'&egrave; la
+invocazione ricorsiva.
+</p>
+
+<p>
+Nel caso del fattoriale: quando arrivo a
+<tt>i=0</tt> posso direttamente dire che
+il fattoriale vale <tt>1</tt>.
+</p>
+
+<pre>
+  public static int fattoriale(int i) {
+    int j;
+
+    if(i==0)
+      return 1;
+
+    j=fattoriale(i-1);
+    return j*i;
+  }
+</pre>
+
+<hr>
+
+
+<h4>Definizione ricorsiva</h4>
+
+<p>
+La progettazione si pu&ograve; fare anche a
+partire dalla definizione ricorsiva del
+problema
+</p>
+
+<p>
+La definizione di fattoriale si pu&ograve;
+anche dare come:
+</p>
+
+<ul>
+
+<li>il fattoriale di <tt>0</tt> &egrave; <tt>1</tt>
+
+<li>il fattoriale di <tt>i</tt> &egrave; dato
+dal fattoriale di <tt>i-1</tt> moltiplicato per
+<tt>i</tt>
+
+</ul>
+
+<p>
+L'algoritmo ricorsivo implementa questa definizione
+</p>
+
+<p>
+Il fattoriale di <tt>i-1</tt> si calcola con la
+invocazione ricorsiva
+</p>
+
+<hr>
+
+
+<h4>Principio di induzione</h4>
+
+<p>
+La ricorsione funziona grazie al principio
+di induzione
+</p>
+
+<p>
+Principio di induzione: se
+</p>
+
+<ul>
+
+<li>un enunciato &egrave; vero per <tt>n=0</tt>
+
+<li>se l'enunciato &egrave; vero per <tt>n-1</tt>
+allora &egrave; vero anche per <tt>n</tt>
+
+</ul>
+
+<p>
+Allora l'enunciato &egrave; vero per ogni <tt>n</tt>
+</p>
+
+<hr>
+
+
+<h4>Induzione e ricorsione</h4>
+
+<p>
+Parallelo:
+</p>
+
+<table border="1">
+
+<tr>
+<th>Parte</td>
+<th>Induzione</th>
+<th>Ricorsione</th>
+</tr>
+
+<tr>
+<td>passo base</td>
+<td>l'enunciato &egrave; vero per <tt>n=0</tt></td>
+<td>il metodo calcola il fattoriale corretto
+quando il parametro vale <tt>0</tt>
+</tr>
+
+<tr>
+<td>assunzione caso <tt>n-1</tt></td>
+<td><b>se</b> l'enunciato &egrave; vero per <tt>n-1</tt></td>
+<td><b>assumo</b> che il metodo sia
+corretto passando <tt>n-1</tt>
+</tr>
+
+<tr>
+<td>conclusione caso <tt>n</tt></td>
+<td>l'enunciato &egrave; vero per <tt>n</tt></td>
+<td>scrivo il metodo in modo che funzioni quando
+si passa <tt>n</tt></td>
+</tr>
+
+<tr>
+<td>conclusione</td>
+<td>l'enunciato &egrave; vero sempre</td>
+<td>il metodo &egrave; sempre corretto</td>
+</tr>
+
+</table>
+
+<p>
+Nel principio di induzione, quando faccio l'assunzione, non
+devo dimostrare che &egrave; vera
+</p>
+
+<p>
+<i>Assumo</i> che sia vera
+</p>
+
+<p>
+Quando scrivo metodi ricorsivi, non devo vedere cosa succede
+quando si fa la invocazione ricorsiva
+</p>
+
+<p>
+Assumo semplicemente che sia corretta
+</p>
+
+<hr>
+
+
+<h4>Fattoriale: verifica a posteriori</h4>
+
+<p>
+<b>Dopo</b> aver terminato la progettazione posso
+verificare con i record di attivazione se &egrave;
+tutto a posto.
+</p>
+
+<p>
+Va fatta particolare attenzione a:
+</p>
+
+<ul>
+<li>prima della chiamata ricorsiva il problema
+va semplificato, anche se di poco; altrimenti
+il metodo non termina
+
+<li>esiste un caso in cui non viene fatta la
+invocazione ricorsiva (passo base)
+
+<li>questo caso viene raggiunto comunque, prima o
+poi, indipendentemente dal valore iniziale
+
+</ul>
+
+<p>
+In questo caso: se <tt>i</tt> &egrave; negativo il
+passo base non viene mai raggiunto.
+</p>
+
+<p>
+Il metodo va corretto, se lo si vuole invocare anche
+passando valori negativi.
+</p>
+
+<hr>
+
+<h4>Fattoriale: verifica con i record di attivazione</h4>
+
+<p>
+Esempio: <tt>fattoriale(3)</tt>.
+</p>
+
+<p>
+Prima invocazione:
+</p>
+
+<table border="1">
+<tr><td><pre>
+i=3
+j=indef
+</pre></td><td><pre>
+  public static int fattoriale(int i) {
+    int j;
+
+    if(i==0)
+      return 1;
+
+--&gt; j=fattoriale(i-1);
+    return j*i;
+  }
+</pre></td></tr>
+</table>
+
+<hr>
+
+<h4>Fattoriale: seconda invocazione</h4>
+
+<table border="1">
+<tr><td><pre>
+i=3
+j=indef
+</pre></td><td><pre>
+  public static int fattoriale(int i) {
+    int j;
+
+    if(i==0)
+      return 1;
+
+--&gt; j=fattoriale(i-1);
+    return j*i;
+  }
+</pre></td></tr>
+</table>
+<table border="1">
+<tr><td><pre>
+i=2
+j=indef
+</pre></td><td><pre>
+  public static int fattoriale(int i) {
+    int j;
+
+    if(i==0)
+      return 1;
+
+--&gt; j=fattoriale(i-1);
+    return j*i;
+  }
+</pre></td></tr>
+</table>
+
+<hr>
+
+<h4>Fattoriale: terza invocazione</h4>
+
+<table border="1">
+<tr><td><pre>
+i=3
+j=indef
+</pre></td><td><pre>
+  public static int fattoriale(int i) {
+    int j;
+
+    if(i==0)
+      return 1;
+
+--&gt; j=fattoriale(i-1);
+    return j*i;
+  }
+</pre></td></tr>
+</table>
+<table border="1">
+<tr><td><pre>
+i=2
+j=indef
+</pre></td><td><pre>
+  public static int fattoriale(int i) {
+    int j;
+
+    if(i==0)
+      return 1;
+
+--&gt; j=fattoriale(i-1);
+    return j*i;
+  }
+</pre></td></tr>
+</table>
+<table border="1">
+<tr><td><pre>
+i=1
+j=indef
+</pre></td><td><pre>
+  public static int fattoriale(int i) {
+    int j;
+
+    if(i==0)
+      return 1;
+
+--&gt; j=fattoriale(i-1);
+    return j*i;
+  }
+</pre></td></tr>
+</table>
+
+<hr>
+
+<h4>Fattoriale: quarta invocazione</h4>
+
+<table border="1">
+<tr><td><pre>
+i=3
+j=indef
+</pre></td><td><pre>
+  public static int fattoriale(int i) {
+    int j;
+
+    if(i==0)
+      return 1;
+
+--&gt; j=fattoriale(i-1);
+    return j*i;
+  }
+</pre></td></tr>
+</table>
+<table border="1">
+<tr><td><pre>
+i=2
+j=indef
+</pre></td><td><pre>
+  public static int fattoriale(int i) {
+    int j;
+
+    if(i==0)
+      return 1;
+
+--&gt; j=fattoriale(i-1);
+    return j*i;
+  }
+</pre></td></tr>
+</table>
+<table border="1">
+<tr><td><pre>
+i=1
+j=indef
+</pre></td><td><pre>
+  public static int fattoriale(int i) {
+    int j;
+
+    if(i==0)
+      return 1;
+
+--&gt; j=fattoriale(i-1);
+    return j*i;
+  }
+</pre></td></tr>
+</table>
+<table border="1">
+<tr><td><pre>
+i=0
+j=indef
+</pre></td><td><pre>
+  public static int fattoriale(int i) {
+    int j;
+
+    if(i==0)
+--&gt;   return 1;
+
+      j=fattoriale(i-1);
+    return j*i;
+  }
+</pre></td></tr>
+</table>
+
+<hr>
+
+<h4>Fattoriale: ritorno dalla quarta invocazione</h4>
+
+<table border="1">
+<tr><td><pre>
+i=3
+j=indef
+</pre></td><td><pre>
+  public static int fattoriale(int i) {
+    int j;
+
+    if(i==0)
+      return 1;
+
+--&gt; j=fattoriale(i-1);
+    return j*i;
+  }
+</pre></td></tr>
+</table>
+<table border="1">
+<tr><td><pre>
+i=2
+j=indef
+</pre></td><td><pre>
+  public static int fattoriale(int i) {
+    int j;
+
+    if(i==0)
+      return 1;
+
+--&gt; j=fattoriale(i-1);
+    return j*i;
+  }
+</pre></td></tr>
+</table>
+<table border="1">
+<tr><td><pre>
+i=1
+j=1
+</pre></td><td><pre>
+  public static int fattoriale(int i) {
+    int j;
+
+    if(i==0)
+      return 1;
+
+--&gt; j=fattoriale(i-1);
+    return j*i;
+  }
+</pre></td></tr>
+</table>
+
+<hr>
+
+<h4>Fattoriale: ritorno dalla terza invocazione</h4>
+
+
+<table border="1">
+<tr><td><pre>
+i=3
+j=indef
+</pre></td><td><pre>
+  public static int fattoriale(int i) {
+    int j;
+
+    if(i==0)
+      return 1;
+
+--&gt; j=fattoriale(i-1);
+    return j*i;
+  }
+</pre></td></tr>
+</table>
+<table border="1">
+<tr><td><pre>
+i=2
+j=1
+</pre></td><td><pre>
+  public static int fattoriale(int i) {
+    int j;
+
+    if(i==0)
+      return 1;
+
+--&gt; j=fattoriale(i-1);
+    return j*i;
+  }
+</pre></td></tr>
+</table>
+
+<hr>
+
+<h4>Fattoriale: ritorno dalla seconda invocazione</h4>
+
+<table border="1">
+<tr><td><pre>
+i=3
+j=2
+</pre></td><td><pre>
+  public static int fattoriale(int i) {
+    int j;
+
+    if(i==0)
+      return 1;
+
+--&gt; j=fattoriale(i-1);
+    return j*i;
+  }
+</pre></td></tr>
+</table>
+
+<p>
+Si ritorna <tt>2*3</tt>, ossia <tt>6</tt>.
+</p>
+
+<hr>
+
+
+<h4>Palindrome: interpretazione matematica</h4>
+
+<p>
+Il problema delle stringhe palindrome si pu&ograve;
+risolvere in modo ricorsivo, esprimendo il problema
+in modo diverso
+</p>
+
+<p>
+Una stringa &egrave; palindroma se:
+</p>
+
+<ul>
+<li>il primo carattere &egrave; uguale all'ultimo
+<li>la stringa fatta di tutti i caratteri meno il
+primo e l'ultimo &egrave; palidroma
+</ul>
+
+<p>
+Manca il passo base: una stringa di 0 oppure 1
+carattere &egrave; palindroma.
+</p>
+
+<p>
+Definizione basata sul principio di induzione.
+</p>
+
+<p>
+Il metodo ricorsivo viene scritto seguendo
+letteralmente la definizione ricorsiva.
+</p>
+
+<pre>
+  public static boolean pali(String a) {
+    if(a.length()&lt;=1)
+      return true;
+
+    if(a.charAt(0)==a.charAt(a.length()-1))
+      if(pali(a.substring(1, a.length()-1)))
+        return true;
+
+    return false;
+  }
+</pre>
+
+<hr>
+
+
+<h4>Stringhe palindrome: il principio di induzione</h4>
+
+<p>
+Il programma funziona in base al principio di induzione:
+</p>
+
+<dl>
+
+<dt>passo base
+<dd>il metodo &egrave; corretto per tutte le stringhe
+di lunghezza minore o uguale a uno;
+
+<dt>assunzione induttiva
+<dd>il metodo si assume che funzioni correttamente per
+stringhe di lunghezza minore o uguale a <tt>n-1</tt>
+
+<dt>tesi induttiva
+<dd>dato che si invoca
+<tt>pali(a.substring(1, a.length()-1))</tt>, in base
+alla assunzione induttiva questo metodo ritorna il
+risultato giusto; il metodo &egrave; stato scritto in
+modo che, se questo &egrave; vero, allora funziona
+
+<dt>conclusione
+<dd>il metodo &egrave; corretto per tutte le stringhe
+
+</dl>
+
+<hr>
+
+
+<h4>Differenza induzione-ricorsione</h4>
+
+<ul>
+
+<li>in matematica, la conclusione &egrave; data,
+e si sta solo cercando di dimostrarla
+
+<li>in programmazione, la conclusione &egrave; che
+il programma &egrave; corretto, ma il programma lo
+sto ancora scrivendo
+
+</ul>
+
+<p>
+Si tratta di scrivere il programma in modo tale che
+la ``dimostrazione di correttezza'' funzioni
+</p>
+
+<p>
+Scrivo il metodo seguendo la linea che user&ograve;
+per dimostrare che &egrave; corretto, ossia il principio
+di induzione
+</p>
+
+<hr>
+
+
+<h4>Semplificare il problema</h4>
+
+<p>
+Come si fa a dire che il problema &egrave; stato
+semplificato?
+</p>
+
+<p>
+Un modo possibile &egrave; quello di contare le
+istruzioni che servono per risolverlo:
+</p>
+
+<p>
+Il problema &egrave; semplificato se richiede
+meno operazioni
+</p>
+
+<hr>
+
+
+<h4>Esempi di semplificazione</h4>
+
+<p>
+Nei problemi visti finora:
+</p>
+
+<table border="1">
+
+<tr>
+<th>Problema</th>
+<th>Quante operazioni servono</th>
+<th>Semplificazione</th>
+</tr>
+
+<tr>
+<td>Stampa un file al contrario</td>
+<td>numero di linee nel file</td>
+<td>leggere una linea (ne rimane una di meno
+da leggere e stampare)</td>
+</tr>
+
+<tr>
+<td>Stringhe palindrome</td>
+<td>numero di confronti da fare: met&agrave;
+del numero di caratteri della stringa</td>
+<td>stringa con due caratteri di meno</td>
+</tr>
+
+<tr>
+<td>Fattoriale</td>
+<td>per il fattoriale di <tt>i</tt> servono
+<tt>i-2</tt> moltiplicazioni</td>
+<td>riduco il valore di cui calcolare il
+fattoriale</td>
+</tr>
+
+</table>
+
+<p>
+Non sempre la semplificazione avviene attraverso
+la riduzione della dimensione dei dati
+</p>
+
+<p>
+A volte &egrave; un cambiamento dei valori (es.
+diminzione di uno, nel caso del fattoriale) a
+semplificare il problema
+</p>
+
+<hr>
+
+
+<h4>Perch&egrave; funziona?</h4>
+
+<p>
+Sia <tt>n</tt> il numero di <i>operazioni</i>
+da fare
+</p>
+
+<p>
+Scrivo il metodo in modo tale che sia corretto
+quando servono <tt>n</tt> operazioni
+</p>
+
+<p>
+In questa fase, posso assumere che la invocazione
+ricorsiva sia corretta quando viene fatta su un
+problema per il quale bastano <tt>n-1</tt> operazioni
+</p>
+
+<p>
+Posso applicare il principio di induzione matematica,
+che dimostra che il metodo &egrave; corretto per
+qualsiasi numero di operazioni <tt>n</tt>
+</p>
+
+<p>
+Manca solo il caso base (correttezza quando basta una
+sola operazione)
+</p>
+
+<hr>
+
+
+<h4>Esercizio</h4>
+
+<p>
+Scrivere un metodo ricorsivo che verifica se tutti
+i caratteri di una stringa sono uguali
+</p>
+
+<p>
+Non si pu&ograve; usare <tt>for</tt> e nemmeno
+<tt>while</tt>
+</p>
+
+<hr>
+
+
+<h4>Scheletro</h4>
+
+<pre>
+  public static boolean uguali(String s) {
+    ...
+  }
+</pre>
+
+<p>
+Assunzione: se faccio <tt>uguali(t)</tt>,
+dove <tt>t</tt> &egrave; una stringa pi&ugrave;
+corta di <tt>s</tt>, questo mi dice se <tt>t</tt>
+ha tutti i caratteri uguali
+</p>
+
+<hr>
+
+
+<h4>Problema semplificato</h4>
+
+<p>
+Se faccio una qualsiasi di queste invocazioni,
+il risultato &egrave; corretto:
+</p>
+
+<pre>
+  uguali(s.substring(0, s.length()-1))
+  uguali(s.substring(1, s.length()))
+  uguali("")
+  uguali(s.substring(1, s.length()-1))
+  ...
+</pre>
+
+<p>
+La terza non serve a niente
+</p>
+
+<p>
+Le altre s&iacute;
+</p>
+
+<p>
+Vediamo un programma basato sulla seconda
+</p>
+
+<hr>
+
+
+<h4>Invocazione ricorsiva</h4>
+
+<p>
+L'invocazione <tt>uguali(s.substring(1, s.length())</tt>
+&egrave; corretta:
+</p>
+
+<pre>
+  public static boolean uguali(String s) {
+    ...
+
+    uguali(s.substring(1, s.length()))
+
+    ...
+  }
+</pre>
+
+<p>
+Mi dice se i caratteri dopo il primo sono 
+tutti uguali
+</p>
+
+<hr>
+
+
+<h4>Come si usa?</h4>
+
+<p>
+Se i caratteri sono diversi, ritorno subito
+<tt>false</tt>:
+</p>
+
+<pre>
+  public static boolean uguali(String s) {
+
+    if(!uguali(s.substring(1, s.length())))
+      return false;
+
+  }
+</pre>
+
+<hr>
+
+
+<h4>Cosa manca?</h4>
+
+<p>
+Devo verificare se il primo carattere &egrave;
+uguale agli altri
+</p>
+
+<p>
+Ma gi&agrave; so che gli altri sono uguali:
+basta fare il confronto con il secondo
+</p>
+
+<pre>
+  public static boolean uguali(String s) {
+
+    if(!uguali(s.substring(1, s.length())))
+      return false;
+
+    if(s.charAt(0)!=s.charAt(1))
+      return false;
+
+    return true;
+  }
+</pre>
+
+<hr>
+
+
+<h4>Caso base</h4>
+
+<p>
+Se invoco il metodo su una stringa vuota, oppure
+fatta di un solo carattere, <tt>s.charAt(1)</tt>
+d&agrave; errore
+</p>
+
+<p>
+In questi casi, so che la stringa &egrave; composta
+da caratteri uguali:
+</p>
+
+<pre>
+  public static boolean uguali(String s) {
+    if(s.length()&lt;=1)
+      return true;
+
+    if(!uguali(s.substring(1, s.length())))
+      return false;
+
+    if(s.charAt(0) != s.charAt(1))
+      return false;
+
+    return true;
+  }
+</pre>
+
+<hr>
+
+
+<h4>Ricorsione e array</h4>
+
+<p>
+Esercizio: decidere se un array di interi
+contiene un elemento, versione ricorsiva.
+</p>
+
+<hr>
+
+<h4>Contenimento</h4>
+
+<p>
+Inizio dallo scheletro del metodo
+</p>
+
+<pre>
+  public static boolean
+  contiene(int v[], int e) {
+    ...
+  }
+</pre>
+
+<p>
+Come faccio la chiamata ricorsiva?
+</p>
+
+<p>
+<tt>contiene(v, e)</tt> non si pu&ograve;
+fare: non ho semplificato il problema;
+continuo nell'invocazione all'infinito.
+</p>
+
+<hr>
+
+<h4>Ricerca nel vettore</h4>
+
+<p>
+Algoritmo: se l'elemento &egrave; il primo,
+ritorno <tt>true</tt>. Altrimenti, cerco nel
+resto del vettore.
+</p>
+
+<pre>
+  public static boolean
+  contiene(int v[], int e) {
+
+    if(v[0]==e)
+      return true;
+
+    // cerca nel resto del vettore
+  }
+</pre>
+
+<hr>
+
+
+<h4>Invocazione ricorsiva</h4>
+
+<p>
+Voglio cercare l'elemento nel resto del vettore
+</p>
+
+<p>
+Creo un nuovo vettore che &egrave; uguale
+a <tt>v</tt> ma non contiene il primo elemento.
+</p>
+
+<p>
+Creo un vettore di <tt>v.length-1</tt> elementi.
+</p>
+
+<p>
+Ci metto dentro i valori di <tt>v</tt> dal secondo
+all'ultimo:
+</p>
+
+<pre>
+public static boolean
+contiene(int v[], int e) {
+
+  if(v[0]==e)
+    return true;
+
+  int p[];
+  p=new int[v.length-1];
+
+  System.arraycopy(v, 1, p, 0, v.length-1);
+
+  return contiene(p, e);
+}
+</pre>
+
+<p>
+Se il resto del vettore contiene <tt>e</tt> si
+ritorna <tt>true</tt>, altrimenti <tt>false</tt>
+</p>
+
+<hr>
+
+
+<h4>Numero di operazioni</h4>
+
+<p>
+Per cercare un elemento in un array, quante
+operazioni servono?
+</p>
+
+<p>
+Caso peggiore: un confronto per ogni elemento
+dell'array
+</p>
+
+<p>
+Se la invocazione ricorsiva viene fatta su
+un array che ha un elemento di meno, il problema
+&egrave; stato semplificato<br>
+(infatti, questo problema si risolve con una
+istruzione di meno)
+</p>
+
+<p>
+Si pu&ograve; fare la assunzione ricorsiva:<br>
+l'invocazione ricorsiva &egrave; corretta
+</p>
+
+<hr>
+
+
+<h4>Caso base</h4>
+
+<p>
+A ogni chiamata il vettore diventa pi&ugrave;
+corto di uno.
+</p>
+
+<p>
+Alla fine ho il vettore vuoto.
+</p>
+
+<p>
+Il vettore vuoto non contiene la stringa da cercare
+</p>
+
+<pre>
+public static boolean
+contiene(int v[], int e) {
+  if(v.length==0)
+    return false;
+
+  if(v[0]==e)
+    return true;
+
+  int p[]=new int[v.length-1];
+  System.arraycopy(v, 1, p, 0, v.length-1);
+  return contiene(p, e);
+}
+</pre>
+
+<p>
+Verifica: mancava un <tt>return false</tt>
+da qualche parte...
+</p>
+
+<hr>
+
+
+<h4>Evitare la copia</h4>
+
+<p>
+Copiare (quasi) l'intero vettore non &egrave;
+efficiente
+</p>
+
+<p>
+Infatti, gli elementi vengono copiati uno per uno
+</p>
+
+<p>
+Viene fatto un ciclo (dentro il metodo <tt>arraycopy</tt>)
+</p>
+
+<p>
+Alternativa: passo lo stesso vettore, ma poi dico che
+la ricerca va fatta solo dal secondo elemento in poi
+</p>
+
+<hr>
+
+
+<h4>Ricerca in una parte del vettore: problema</h4>
+
+<p>
+Devo continuare la ricerca nella parte restante
+dell'array
+</p>
+
+<pre>
+  public static boolean
+  contiene(int v[], int e) {
+
+    ...
+
+	// cerca in tutto il vettore
+    return contiene(v, e);
+  }
+</pre>
+
+<p>
+Come faccio a dire che voglio fare la ricerca
+solo in una parte del vettore?
+</p>
+
+<p>
+<tt>contiene</tt> ha solo due argomenti, non posso
+speficiare il punto da cui iniziare la ricerca
+</p>
+
+<hr>
+
+
+<h4>Ricerca in una parte del vettore: soluzione</h4>
+
+<p>
+Specifico il punto in cui inizia la ricerca
+</p>
+
+<p>
+Dato che l'invocazione sar&agrave;
+<tt>contiene(v, indice_inizio, e)</tt>, il metodo
+deve avere un argomento in pi&ugrave;
+</p>
+
+<p>
+Metto un nuovo argomento nella funzione: il punto
+da cui iniziare la ricerca.
+</p>
+
+<pre>
+  public static boolean
+  contiene(int v[], int start, int e) {
+    ...
+    return contiene(v, start+1, e);
+  }
+</pre>
+
+<hr>
+
+
+<h4>Invocazione-intestazione</h4>
+
+<p>
+Se un metodo va invocato con tre argomenti,
+deve avere tre parametri formali
+</p>
+
+<p>
+Vale anche per i metodi ricorsivi
+</p>
+
+<p>
+Soltanto che ora l'invocazione va fatta dentro
+il metodo stesso
+</p>
+
+<pre>
+public static boolean
+contiene(int v[], int start, int e) {
+    ...
+
+    return contiene(v, start+1, e);
+  }
+</pre>
+
+<hr>
+
+
+<h4>Cosa fa il metodo?</h4>
+
+<p>
+Il metodo &egrave; pi&ugrave; generale di quello
+di prima
+</p>
+
+<p>
+Infatti, ora cerca un elemento a partire da un
+indice dato
+</p>
+
+<p>
+Quando si scrive il metodo, bisogna tenere conto
+del fatto che il primo elemento da considerare
+&egrave; quello di indice <tt>start</tt>
+</p>
+
+<hr>
+
+
+<h4>Scrittura del metodo</h4>
+
+<p>
+Il metodo fa la ricerca a partire dall'indice
+<tt>start</tt>
+</p>
+
+<ol>
+
+<li>il primo elemento da considerare &egrave;
+<tt>v[start]</tt>
+
+<li>quando ho <tt>start==v.length</tt> non ho
+pi&ugrave; elementi da considerare (la parte
+di vettore da guardare &egrave; vuota)
+
+</ol>
+
+<p>
+Notare che, se <tt>start==v.length-1</tt>, allora
+c'&egrave; un elemento da considerare (l'ultimo
+elemento dell'array)
+</p>
+
+<pre>
+public static boolean
+contiene(int v[], int start, int e) {
+  if(start==v.length)
+    return false;
+
+  if(v[start]==e)
+    return true;
+
+  return contiene(v, start+1, e);
+}
+</pre>
+
+<hr>
+
+
+<h4>Ricorsione sui vettori, in generale</h4>
+
+<p>
+Il problema va semplificato
+</p>
+
+<p>
+Di solito, questo avviene passando una parte
+del vettore nell'invocazione ricorsiva
+</p>
+
+<p>
+Invece di creare un nuovo vettore, passo il vettore
+intero,<br>
+ma specifico in pi&ugrave; quale parte del
+vettore va usata.
+</p>
+
+<p>
+Questo modifica il prototipo del metodo!<br>
+(argomenti in pi&ugrave;)
+</p>
+
+<hr>
+
+
+<h4>Vettori palindromi</h4>
+
+<p>
+Scrivere un metodo che verifica se il primo elemento
+del vettore &egrave; uguale all'ultimo, il secondo
+&egrave; uguale al penultimo, ecc.
+</p>
+
+<p>
+Farlo su un vettore di stringhe
+</p>
+
+<hr>
+
+
+<h4>Vettori palindromi: algoritmo</h4>
+
+<ul>
+<li>se il vettore ha zero oppure un elemento,
+allora &egrave; palindromo.
+<li>se il primo non &egrave; uguale all'ultimo,
+ritorna <tt>false</tt>
+<li>altrimenti, verifica se il vettore senza
+il primo e l'ultimo &egrave; palindromo.
+</ul>
+
+<hr>
+
+<h4>Vettori palindromi: eliminare primo e ultimo</h4>
+
+<p>
+Due soluzioni:
+</p>
+
+<ul>
+<li>creo un nuovo vettore
+<li>specifico il punto iniziale <b>e</b>
+quello finale della ricerca
+</ul>
+
+<p>
+Questa volta, non basta un indice solo per dire
+quale &egrave; la parte di vettore da considerare
+</p>
+
+<hr>
+
+
+<h4>Specifico punto iniziale e finale della ricerca</h4>
+
+<p>
+Il metodo ha due parametri in pi&ugrave;: l'indice da
+cui iniziare la ricerca e quello a cui finire
+</p>
+
+<pre>
+  static boolean vettpal(String v[],
+  int inizio, int fine) {
+    ...
+  }
+</pre>
+
+<hr>
+
+
+<h4>Assunzione ricorsiva</h4>
+
+<p>
+L'invocazione ricorsiva &egrave; corretta, se viene
+fatta su <i>una parte di vettore pi&ugrave; piccola</i>
+</p>
+
+<p>
+Verifica: il numero di operazioni &egrave; proporzionale
+al numero di elementi da considerare
+</p>
+
+<p>
+Operazione che mi serve: verificare se la parte centrale
+sia palindroma
+</p>
+
+<hr>
+
+
+<h4>Uso l'assunzione ricorsiva</h4>
+
+<p>
+La parte di vettore da guardare &egrave; quella che va
+da <tt>inizio</tt> a <tt>fine</tt>
+</p>
+
+<p>
+Per fare la verifica sulla parte centrale, devo aumentare
+<tt>inizio</tt> e diminuire <tt>fine</tt>
+</p>
+
+<pre>
+  static boolean vettpal(String v[],
+  int inizio, int fine) {
+    ...
+        vettpal(v, inizio+1, fine-1);
+  }
+</pre>
+
+<hr>
+
+
+<h4>Progetto il resto del metodo</h4>
+
+<p>
+Prima verifico se <tt>v[inizio]</tt>
+&egrave; uguale a <tt>v[fine]</tt>
+</p>
+
+<pre>
+  static boolean vettpal(String v[],
+  int inizio, int fine) {
+
+    if(!v[inizio].equals(v[fine]))
+      return false;
+
+    return vettpal(v, inizio+1, fine-1);
+  }
+</pre>
+
+<p>
+Se sono diversi, allora so che la parte di
+vettore non &egrave; palindroma
+</p>
+
+<p>
+Se sono uguali, faccio la verifica sulla
+parte centrale (tutto meno l'elemento iniziale
+e finale)
+</p>
+
+<hr>
+
+
+<h4>Caso base</h4>
+
+<p>
+Quando <tt>inizio==fine</tt> allora la parte di
+array da guardare ha un solo elemento (ossia
+<tt>v[inizio]</tt>, che poi &egrave; lo stesso
+che <tt>v[fine]</tt>
+</p>
+
+<pre>
+  static boolean vettpal(String v[],
+  int inizio, int fine) {
+    if(inizio==fine)
+      return true;
+
+    if(!v[inizio].equals(v[fine]))
+      return false;
+
+    return vettpal(v, inizio+1, fine-1);
+  }
+</pre>
+
+<p>
+Non basta!
+</p>
+
+<p>
+Perch&egrave;?
+</p>
+
+<hr>
+
+
+<h4>Verifica a posteriori</h4>
+
+<p>
+<b>Dopo</b> aver scritto il metodo, si verifica
+la terminazione
+</p>
+
+<p>
+Se l'array ha un numero dispari di elementi, ho
+la terminazione
+</p>
+
+<p>
+Infatti, la sequenza di valori di <tt>inizio</tt>
+e <tt>fine</tt> dei record di attivazione &egrave;:
+</p>
+
+<p>
+<img src="pari-1.gif">
+</p>
+
+<p>
+<img src="pari-2.gif">
+</p>
+
+<p>
+<img src="pari-3.gif">
+</p>
+
+<p>
+<img src="pari-4.gif">
+</p>
+
+<p>
+Alla fine, <tt>inizio==fine</tt> e si termina
+</p>
+
+<p>
+Ma se l'array ha dimensione pari?
+</p>
+
+<hr>
+
+
+<h4>Array con numero pari di elementi</h4>
+
+<p>
+La sequenza dei valori di <tt>inizio</tt> e
+<tt>fine</tt> nei record di attivazione &egrave;:
+</p>
+
+<p>
+<img src="dispari-1.gif">
+</p>
+
+<p>
+<img src="dispari-2.gif">
+</p>
+
+<p>
+<img src="dispari-3.gif">
+</p>
+
+<p>
+Quando ora si invoca di nuovo il metodo, passo 
+<tt>inizio+1</tt> e <tt>fine-1</tt>
+</p>
+
+<p>
+I parametri formali di questa invocazione sono:
+</p>
+
+<p>
+<img src="dispari-4.gif">
+</p>
+
+<p>
+Ora <tt>inizio</tt> vale pi&ugrave; di <tt>fine</tt>
+</p>
+
+<hr>
+
+
+<h4>Secondo caso base</h4>
+
+<p>
+Quando <tt>inizio==fine</tt>, il vettore (la parte
+da guardare) ha solo un elemento
+</p>
+
+<p>
+Quindi, il vettore di zero elementi si ottiene quando
+<tt>inizio==fine+1</tt>
+</p>
+
+<p>
+Se l'array ha un numero di elementi pari, si arriva
+per forza a questa condizione (e non si arriva mai
+alla situazione <tt>inizio==fine</tt>)
+</p>
+
+<hr>
+
+
+<h4>Metodo completo</h4>
+
+<p>
+Il caso base &egrave; fatto di due casi: parte di 
+vettore di uno oppure zero elementi
+</p>
+
+<pre>
+  static boolean vettpal(String v[],
+  int inizio, int fine) {
+    if(inizio&gt;=fine)
+      return true;
+
+    if(!v[inizio].equals(v[fine]))
+      return false;
+
+    return vettpal(v, inizio+1, fine-1);
+  }
+</pre>
+
+<p>
+La condizione <tt>inizio&gt;=fine</tt> li
+comprende tutti e due
+</p>
+
+<hr>
+
+
+<h4>Variante con inizio e lunghezza</h4>
+
+<p>
+Pu&ograve; risultare pi&ugrave; comoda da usare
+</p>
+
+<p>
+Idea: invece di usare <tt>inizio</tt> e <tt>fine</tt>
+uso:
+</p>
+
+<dl>
+
+<dt><tt>start</tt>
+<dd>indice del primo elemento da guardare
+
+<dt><tt>quanti</tt>
+<dd>numero di elementi da considerare
+
+</dl>
+
+<p>
+Per guardare tutto il vettore, valgono <tt>0</tt>
+e <tt>v.length</tt>
+</p>
+
+<hr>
+
+
+<h4>Algoritmo</h4>
+
+<p>
+Si usa sempre lo stesso algoritmo:
+</p>
+
+<ul>
+
+<li>se il vettore ha zero, oppure un elemento,
+allora &egrave; palindromo
+
+<li>se il primo elemento &egrave; diverso dall'ultimo,
+allora non &egrave; palindromo
+
+<li>altrimenti, verifica nella parte centrale
+
+</ul>
+
+<hr>
+
+
+<h4>Progettazione ricorsiva</h4>
+
+<p>
+Modo alternativo per progettare il metodo:<br>
+scrivo l'intestazione e poi uso l'assunzione
+ricorsiva
+</p>
+
+<pre>
+  static boolean vettpal(String v[],
+  int inizio, int quanti) {
+    ...
+  }
+</pre>
+
+<p>
+Qui dentro, l'invocazione di <tt>vettpal</tt>
+funziona (d&agrave; il risultato corretto), se
+gli passo un valore di <tt>quanti</tt> minore
+(parte di vettore composta da meno elementi)
+</p>
+
+<hr>
+
+
+<h4>Progettazione ricorsiva</h4>
+
+<p>
+Sulla base dell'assunzione ricorsiva, quando
+faccio <tt>vettpal(v, inizio+1, quanti-2)</tt>,
+questo funziona
+</p>
+
+<p>
+In questo modo, ho determinato se la parte
+centrale &egrave; palindroma
+</p>
+
+<p>
+Cosa manca?
+</p>
+
+<ol>
+
+<li>verificare se il primo &egrave; uguale
+all'ultimo
+
+<li>il caso base (vettore di uno o zero
+elementi)
+
+</ol>
+
+<hr>
+
+
+<h4>Soluzione</h4>
+
+<p>
+Se il numero di elementi da guardare &egrave; zero
+oppure uno, si ritorna <tt>true</tt>
+</p>
+
+<p>
+Se il primo non &egrave; uguale all'ultimo, si
+ritorna <tt>false</tt>
+</p>
+
+<p>
+Altrimenti, si fa la verifica sulla parte centrale
+</p>
+
+<pre>
+static boolean vettpal(String v[],
+int inizio, int quanti) {
+  if(quanti&lt;=1)
+    return true;
+
+  if(!v[inizio].equals(v[inizio+quanti-1]))
+    return false;
+
+  return vettpal(v, inizio+1, quanti-2);
+}
+</pre>
+
+<hr>
+
+
+<h4>Gli indici dei vettori</h4>
+
+<p>
+Ogni volta che faccio la chiamata ricorsiva,
+il primo indice aumenta di uno, ma il numero
+di elementi diminuisce di due
+</p>
+
+<p>
+Perch&egrave; <tt>v[inizio+quanti-1]</tt> &egrave;
+l'ultimo elemento della parte da considerare?
+</p>
+
+<p>
+Basta fare qualche prova: se <tt>quanti=1</tt> deve
+venire <tt>v[inizio]</tt>; se <tt>quanti=2</tt>
+deve venire <tt>v[inizio+1]</tt>, ecc.
+</p>
+
+<hr>
+
+
+<h4>Trovare la posizione in una stringa</h4>
+
+<p>
+Esercizio: scrivere un metodo che prende come argomento
+una stringa e ritorna l'indice della prima posizione in
+cui appare la lettera <tt>'a'</tt>
+</p>
+
+<pre>
+  static int prima(String s) {
+    ...
+  }
+</pre>
+
+<hr>
+
+
+<h4>Assunzione ricorsiva</h4>
+
+<p>
+All'interno del metodo, la invocazione ricorsiva &egrave;
+corretta, se fatta su una stringa pi&ugrave; corta
+</p>
+
+<p>
+Quindi, <tt>prima(s.substring(1, s.length()))</tt>
+ritorna la prima posizione di <tt>'a'</tt> nella
+stringa
+</p>
+
+<p>
+Cosa ci faccio?
+</p>
+
+<hr>
+
+
+<h4>Come usare un risultato parziale</h4>
+
+<dl compact="compact">
+
+<dt><b>No:</b>
+<dd><tt>s</tt> &egrave; la stringa a un certo punto della
+ricorsione, ossia potrebbe essere sia la stringa di partenza
+che una sottostringa a un certo punto della sequenza delle
+invocazioni ricorsive
+
+<dt><b>Si:</b>
+<dd><tt>s</tt> &egrave; la stringa ``di partenza'', ossia
+quella di cui voglio sapere la prima posizione di
+<tt>'a'</tt>
+
+</dl>
+
+<hr>
+
+
+<h4>Uso il risultato parziale</h4>
+
+<p>
+Se trovo <tt>'a'</tt> in prima posizione, ritorno <tt>0</tt>
+</p>
+
+<p>
+Altrimenti, vado a vedere deve &egrave; nel resto della
+stringa
+</p>
+
+<p>
+Cosa ci faccio con <tt>prima(s.substring(1,
+s.length()))</tt>?
+</p>
+
+<p>
+Esempio:
+</p>
+
+<pre>
+s=                 "egfaswerfa"
+s.substring(...)=   "gfaswerfa"
+</pre>
+
+<p>
+La posizione in <tt>s.substring(...)</tt> &egrave; 3
+</p>
+
+<p>
+La posizione in <tt>s</tt> &egrave; 4
+</p>
+
+<p>
+In generale: data la posizione nella sottostringa,
+quella nella stringa &egrave; +1
+</p>
+
+<hr>
+
+
+<h4>Il metodo completo</h4>
+
+<p>
+Se la stringa &egrave; vuota, ritorno <tt>10000</tt>
+</p>
+
+<p>
+Se il carattere sta in prima posizione, ritorno <tt>0</tt>
+</p>
+
+<p>
+Altrimenti, faccio la invocazione ricorsiva sulla
+sottostringa fatta di tutti i caratteri tranne il primo
+</p>
+
+<pre>
+static int prima(String s) {
+  if(s.length()==0)
+    return 10000;
+
+  if(s.charAt(0)=='a')
+    return 0;
+
+  return prima(s.substring(1, s.length()))+1;
+}
+</pre>
+
+<hr>
+
+
+<h4>Espressione ricorsiva del problema</h4>
+
+<p>
+La posizione &egrave;:
+</p>
+
+<ul>
+
+<li>zero, se l'elemento sta in prima posizione
+
+<li>la posizione nel resto della stringa pi&ugrave;
+uno, altrimenti
+
+</ul>
+
+<hr>
+
+
+<h4>Osservazione</h4>
+
+<p>
+Ho scritto il metodo pensando ad <tt>s</tt> come
+alla stringa iniziale
+</p>
+
+<p>
+Non &egrave; la stringa ``a un certo punto''
+</p>
+
+<p>
+Questo &egrave; corretto
+</p>
+
+<hr>
+
+
+<h4>Versione con valore di non presenza</h4>
+
+<p>
+Modificare il metodo in modo che torni <tt>-1</tt>
+se la stringa non contiene <tt>'a'</tt>
+</p>
+
+<p>
+Dire perch&egrave; questo metodo non funziona:
+</p>
+
+<pre>
+static int prima(String s) {
+  if(s.length()==0)
+    return -1;
+
+  if(s.charAt(0)=='a')
+    return 0;
+
+  return prima(s.substring(1,s.length()))+1;
+}
+</pre>
+
+<hr>
+
+
+<h4>Perch&egrave; non funziona?</h4>
+
+<dl>
+
+<dt>verifica con record di attivazione:
+<dd>quanto torno <tt>-1</tt> dall'ultima invocazione
+(quando <tt>s=""</tt>), viene sommato 1
+
+<dt>assunzione ricorsiva
+<dd>se il valore di ritorno &egrave; -1, non devo
+ritornare questo valore pi&ugrave; uno
+
+</dl>
+
+<p>
+Soluzione?
+</p>
+
+<hr>
+
+
+<h4>Soluzione</h4>
+
+<ul>
+
+<li>se la stringa &egrave; vuota, ritorno <tt>-1</tt>
+
+<li>se il carattere sta in prima posizione, ritorno <tt>0</tt>
+
+<li>guardo la posizione nel resto della stringa:
+
+<ul>
+
+<li>se &egrave; <tt>-1</tt> (non c'&egrave;) ritorno
+<tt>-1</tt>
+
+<li>se il valore &egrave; maggiore o uguale a zero, ritorno
+questo valore pi&ugrave; uno
+
+</ul>
+
+</ul>
+
+<hr>
+
+
+<h4>Implementazione della soluzione</h4>
+
+<p>
+Dall'algoritmo al codice il passaggio &egrave; facile:
+</p>
+
+<pre>
+static int prima(String s) {
+  if(s.length()==0)
+    return -1;
+
+  if(s.charAt(0)=='a')
+    return 0;
+
+  int r=prima(s.substring(1,s.length()));
+  if(r==-1)
+    return -1;
+  else
+    return r+1;
+}
+</pre>
+
+<p>
+Memorizzo il valore di ritorno in una variabile, per
+evitare di dover invocare due volte il metodo
+</p>
+
+<hr>
+
+
+<h4>Suggerimento</h4>
+
+<p>
+Per i metodi ricorsivi:
+</p>
+
+<blockquote>
+<i>
+mettere sempre il valore di ritorno in una variabile,
+e poi usarlo
+</i>
+</blockquote>
+
+<p>
+Rende pi&ugrave; difficile fare un errore tipico di
+quando si progettano metodi ricorsivi
+</p>
+
+<hr>
+
+
+<h4>Somma degli elementi di un vettore</h4>
+
+<p>
+Dato un vettore di interi, trovare il valore
+della somma
+</p>
+
+<p>
+Realizzare un metodo ricorsivo
+</p>
+
+<hr>
+
+
+<h4>Definizione ricorsiva del problema</h4>
+
+<p>
+Si pu&ograve; definire la somma in questo modo:
+</p>
+
+<ul>
+
+<li>se il vettore &egrave; vuoto, la somma &egrave; zero
+
+<li>altrimenti, la somma &egrave; data dalla somma di
+tutti gli elementi tranne l'ultimo, pi&ugrave; l'ultimo
+
+</ul>
+
+<p>
+L'idea &egrave; che ``la somma di tutti tranne l'ultimo''
+si pu&ograve; trovare con una invocazione ricorsiva
+</p>
+
+<ul>
+
+<li>se il vettore &egrave; vuoto, la somma &egrave; zero
+
+<li>altrimenti, calcola la somma di tutti gli elementi
+tranne l'ultimo
+
+<li>a questo valore, somma l'ultimo elemento, e ritorna
+
+</ul>
+
+<hr>
+
+
+<h4>Progettazione ricorsiva</h4>
+
+<p>
+Modo alternativo:
+</p>
+
+<ul>
+
+<li>si assume che la invocazione ricorsiva sia
+corretta su un vettore pi&ugrave; piccolo
+
+<li>si scrive il resto del metodo, usando questa
+assunzione
+
+</ul>
+
+<hr>
+
+
+<h4>I parametri</h4>
+
+<p>
+Esistono vari modi per specificare una parte
+di un vettore
+</p>
+
+<p>
+Questa volta: passiamo il numero di elementi
+da considerare
+</p>
+
+<pre>
+  static int somma(int v[], int quanti) {
+    ...
+  }
+</pre>
+
+<p>
+Questo metodo calcola la somma dei primi
+<tt>quanti</tt> elementi del vettore <tt>v</tt>
+</p>
+
+<hr>
+
+
+<h4>Osservazione</h4>
+
+<p>
+Il metodo che realizzo &egrave; pi&ugrave; generale
+di quello richiesto
+</p>
+
+<p>
+Infatti, calcola la somma dei primi <tt>quanti</tt>
+elementi, non di tutti
+</p>
+
+<p>
+Ma...
+</p>
+
+<blockquote>
+<i>
+anche se <tt>quanti</tt> &egrave; diverso da
+<tt>v.length</tt>, questo non vuol dire che sono
+in una invocazione ricorsiva ``in mezzo''
+</i>
+</blockquote>
+
+<p>
+Si deve sempre pensare che:
+</p>
+
+<ul>
+
+<li>il metodo pu&ograve; venire invocato anche su una
+parte del vettore
+
+<li>i valori di <tt>v</tt> e <tt>quanti</tt> sono quelli
+<b>iniziali</b>, non quelli ``a un certo punto''
+
+<li>devo calcolare la funzione ``estesa'', cio&egrave;
+quella che trova la somma di una parte qualsiasi del
+vettore
+
+</ul>
+
+<hr>
+
+
+<h4>Assunzione ricorsiva</h4>
+
+<p>
+L'invocazione <tt>somma(v, quanti-1)</tt> d&agrave;
+la somma:
+</p>
+
+<pre>
+v[0]+...v[quanti-2]
+</pre>
+
+<p>
+&Egrave; la somma dei primi <tt>quanti-1</tt> elementi
+</p>
+
+<p>
+Per trovare la somma dei primi <tt>quanti</tt> cosa manca?
+</p>
+
+<p>
+La somma dei primi <tt>quanti</tt> &egrave;:
+</p>
+
+<pre>
+v[0]+...v[quanti-2]+v[quanti-1]
+</pre>
+
+<p>
+Devo sommare il valore di <tt>v[quanti-1]</tt>
+</p>
+
+<hr>
+
+
+<h4>Implementazione</h4>
+
+<p>
+Sommo tutti gli elementi da considerare tranne
+l'ultimo (invocazione ricorsiva)
+</p>
+
+<p>
+Poi, sommo l'ultimo elemento da considerare
+</p>
+
+<pre>
+  static int somma(int v[], int quanti) {
+    if(quanti==0)
+      return 0;
+
+    int parziale=somma(v, quanti-1);
+
+    return parziale+v[quanti-1];
+  }
+</pre>
+
+<p>
+Il caso base &egrave; <tt>quanti==0</tt>: se non
+ci sono elementi da considerare, la somma &egrave;
+zero
+</p>
+
+<hr>
+
+
+<h4>Modo sbagliato</h4>
+
+<p>
+Adesso vediamo un modo sbagliato di progettare
+i metodi ricorsivi
+</p>
+
+<p>
+Se non capite perch&egrave; questo modo &egrave;
+sbagliato, non avete capito come funziona la
+ricorsione
+</p>
+
+<hr>
+
+
+<h4>Un metodo ricorsivo che non funziona</h4>
+
+<p>
+Questo errore viene fatto molto spesso da chi
+non ha capito la ricorsione:
+</p>
+
+<p>
+<i>Studente impreparato:</i>
+dato che la chiamata ricorsiva fa ripartire il
+metodo dall'inizio, io sommo un elemento,
+incremento il valore di <tt>i</tt>, e poi
+faccio la chiamata ricorsiva:
+</p>
+
+<pre>
+  static int sommaErr(int v[], int i) {
+    int somma;
+
+    if(i&gt;=v.length)
+      return 0;
+
+    somma=somma+v[i];
+
+    sommaErr(v, i+1);
+
+    return somma;
+  }
+</pre>
+
+<p>
+<i>Professore:</i> torni la prossima volta
+</p>
+
+<p>
+Dire perch&egrave; non funziona
+</p>
+
+<hr>
+
+
+<h4>Soluzione</h4>
+
+<p>
+Intanto, la variabile <tt>somma</tt> viene usata
+senza essere stata inizializzata:
+</p>
+
+<pre>
+    int somma;
+
+    if(i&gt;=v.length)
+      return 0;
+
+    somma=somma+v[i];
+</pre>
+
+<p>
+Anche mettendo <tt>int somma=0</tt>, non funziona
+lo stesso
+</p>
+
+<hr>
+
+
+<h4>Le variabili dei metodi ricorsivi</h4>
+
+<p>
+Quando si scrive una variabile in un metodo
+ricorsivo:
+</p>
+
+<pre>
+  int somma;
+</pre>
+
+<p>
+Questa non &egrave; una singola variabile!
+</p>
+
+<p>
+Si crea una variabile <i>per ogni invocazione
+del metodo</i>
+</p>
+
+<hr>
+
+
+<h4>Cosa succede in pratica</h4>
+
+<p>
+Non &egrave; vero che la variabile <tt>somma</tt>
+``accumula'' i valori del vettore
+</p>
+
+<p>
+Infatti, ho pi&ugrave; variabili di nome
+<tt>somma</tt>:<br>
+se ne crea una ogni volta
+che si invoca ricorsivamente il metodo
+</p>
+
+<hr>
+
+
+<h4>Come si interpreta un metodo ricorsivo</h4>
+
+<p>
+Regola generale (anche per metodi non ricorsivi):
+</p>
+
+<p>
+Se so che il metodo funziona, quando lo invoco non
+mi interessa il modo in cui lavora (le operazioni che
+vengono fatte nel corpo)
+</p>
+
+<p>
+Esempio: non mi interessa quali sono le istruzioni
+di <tt>Math.sqrt</tt>, mi basta sapere che il risultato
+&egrave; corretto
+</p>
+
+<p>
+Ma sopratutto:
+</p>
+
+<blockquote>
+<i>
+l'unica interazione fra un metodo e quello che lo
+ha invocato &egrave; attraverso i parametri e il valore
+di ritorno
+</i>
+</blockquote>
+
+<hr>
+
+
+<h4>Applicazione ai metodi ricorsivi</h4>
+
+<p>
+Quando scrivo una invocazione ricorsiva dentro
+un metodo:
+</p>
+
+<pre>
+  static int somma(...) {
+
+    somma(...)
+
+  }
+</pre>
+
+<p>
+&Egrave; come se <tt>somma</tt> fosse <i>un altro
+metodo</i>, di cui <i>non conosco l'implementazione</i>
+</p>
+
+<p>
+So soltanto che, passando un vettore e un intero,
+lui calcola la somma <i>e lo d&agrave; come valore
+di ritorno</i>
+</p>
+
+<p>
+Quello che &egrave; stato calcolato viene restituito:
+per usarlo devo fare <tt>variabile=somma(...)</tt>
+oppure usare <tt>somma(...)</tt> all'interno di una
+espressione
+</p>
+
+<hr>
+
+
+<h4>I parametri in pi&ugrave;</h4>
+
+<p>
+Nei metodi ricorsivi su vettori, usiamo uno o due
+parametri in pi&ugrave; (indice primo elemento
+da guardare, e poi indice ultimo oppure numero di
+elementi da guardare)
+</p>
+
+<p>
+Esempio: per verificare se un vettore &egrave;
+palindromo:
+</p>
+
+<pre>
+  static boolean vettpal(String v[],
+  int inizio, int quanti) {
+    ...
+  }
+</pre>
+
+<p>
+Se voglio guardare tutto il vettore, devo fare:
+</p>
+
+<pre>
+  vettpal(v, 0, v.length);
+</pre>
+
+<hr>
+
+
+<h4>Metodo iniziale</h4>
+
+<p>
+Di solito, l'operazione va fatta su tutto un vettore
+</p>
+
+<p>
+Per evitare di avere ogni volta i due parametri aggiuntivi
+nella invocazione, metto un metodo intermedio:
+</p>
+
+<pre>
+  static boolean vettorePalindromo(String v[]) {
+    return vettpal(v, 0, v.lenght);
+  }
+</pre>
+
+<p>
+Questo metodo si pu&ograve; invocare passando
+il solo vettore: 
+</p>
+
+<pre>
+  if( vettorePalindromo(unArray) ) {
+    ...
+  }
+</pre>
+
+<p>
+Non &egrave; un metodo ricorsivo!
+</p>
+
+<p>
+Serve solo per invocare il metodo ricorsivo con
+i valori dei due parametri <tt>inizio</tt> e <tt>fine</tt>
+che corrispondono a tutto l'array
+</p>
+
+<hr>
+
+
+<h4>Esercizio</h4>
+
+<p>
+Scrivere un metodo ricorsivo che: data una
+<tt>LinkedList</tt> e un oggetto, ritorna il numero
+di oggetti della lista che sono <tt>equals</tt>
+all'altro oggetto
+</p>
+
+<p>
+U
+
+<hr>
+
+
+<h4>Scheletro</h4>
+
+<p>
+Sarebbe cos&iacute;:
+</p>
+
+<pre>
+  static int quanteVolte(LinkedList l, Object o) {
+    ...
+  }
+</pre>
+
+<p>
+Per&ograve; cos&iacute; non posso fare l'invocazione
+ricorsiva!
+</p>
+
+<hr>
+
+
+<h4>Copia/indici</h4>
+
+<p>
+Due soluzioni:
+</p>
+
+<ul>
+
+<li>creo una nuova lista, in cui metto tutti gli
+elementi della vecchia tranne uno
+
+<li>uso indici per dire quale parte della lista
+guardare
+
+</ul>
+
+<p>
+Nel secondo caso, ho due possibilit&agrave;:
+</p>
+
+<ul>
+
+<li>indice del primo elemento da guardare
+
+<li>numero di elementi da guardare
+
+</ul>
+
+<hr>
+
+
+<h4>Soluzione con numero di elementi</h4>
+
+<p>
+Scheletro:
+</p>
+
+<pre>
+static int quanteVolte(LinkedList l, int quanti, Object o) {
+  ...
+}
+</pre>
+
+<p>
+<tt>quanti</tt> indica quanti elementi della lista devo
+guardare
+</p>
+
+<p>
+Gli elementi da guardare sono
+<tt>l.get(0)...l.get(quanti-1)</tt>
+</p>
+
+<hr>
+
+
+<h4>Assunzione ricorsiva</h4>
+
+<p>
+Il valore di <tt>quanteVolte(l, quanti-1, o)</tt> &egrave;
+corretto
+</p>
+
+<p>
+Dice quanti elementi uguali a <tt>o</tt> ci sono nei
+primi <tt>quanti-1</tt> elementi della lista
+</p>
+
+<p>
+Cosa manca?
+</p>
+
+<hr>
+
+
+<h4>Calcolo delle occorrenze</h4>
+
+<pre>
+static int quanteVolte(LinkedList l, int quanti, Object o) {
+
+  int r=quanteVolte(l, quanti-1, o);
+
+  ...
+}
+</pre>
+
+<p>
+Ora so che <tt>r</tt> contiene il numero di occorrenze
+(quante volte) l'oggetto appare nella lista, negli
+indici <tt>0...quanti-2</tt>
+</p>
+
+<p>
+Cosa manca?
+</p>
+
+<p>
+Se l'elemento in posizione <tt>quanti-1</tt> &egrave;
+diverso da <tt>o</tt>, ritorno <tt>r</tt>
+</p>
+
+<p>
+Se l'elemento in posizione <tt>quanti-1</tt> &egrave;
+uguale ad <tt>o</tt>, restituisco <tt>r+1</tt>
+</p>
+
+<hr>
+
+
+<h4>Metodo completo</h4>
+
+<p>
+Il caso base &egrave; quando <tt>quanti==0</tt><br>
+(si ritorna <tt>0</tt>)
+</p>
+
+<pre>
+static int quanteVolte(LinkedList l,
+  int quanti, Object o) {
+  if(quanti==0)
+    return 0;
+
+  int r=quanteVolte(l, quanti-1, o);
+
+  if(l.get(quanti-1).equals(o))
+    return r+1;
+  else
+    return r;
+}
+</pre>
+
+<hr>
+
+
+<h4>Seconda soluzione</h4>
+
+<p>
+Faccio il conteggio su una parte della lista
+</p>
+
+<p>
+Conto solo a partire da un certo indice in poi
+</p>
+
+<pre>
+static int quanteVolte(LinkedList l,
+int primo, Object o) {
+  ...
+}
+</pre>
+
+<hr>
+
+
+<h4>Caso base</h4>
+
+<p>
+Quando <tt>primo==l.size()-1</tt> allora ho un solo
+elemento da considerare
+</p>
+
+<p>
+Quando <tt>primo==l.size()</tt>, non ho nessun elemento
+da guardare
+</p>
+
+<p>
+Modo alternativo di capire quale &egrave; il caso base:<br>
+</p>
+
+<p>
+Se faccio il conteggio su tutta la lista:<br>
+se la lista &egrave; vuota allora <tt>l.size()</tt> vale
+<tt>0</tt>;<br>
+alla prima invocazione devo subito terminare<br>
+ma, alla prima invocazione, <tt>primo</tt> vale <tt>0</tt>
+</p>
+
+<p>
+Quindi, se <tt>primo==l.size()</tt> ho il caso base
+</p>
+
+<hr>
+
+
+<h4>Assunzione ricorsiva</h4>
+
+<p>
+Se faccio <tt>quanteVolte(l, primo+1, o)</tt>
+questo d&agrave; il risultato corretto
+</p>
+
+<p>
+Cosa manca?
+</p>
+
+<p>
+Se l'elemento sta anche in prima posizione, allora
+devo sommare uno a questo valore
+</p>
+
+<pre>
+static int quanteVolte(LinkedList l,
+int primo, Object o) {
+
+  if(primo==l.size())
+    return 0;
+
+  if(l.get(primo).equals(o))
+    return quanteVolte(l, primo+1, o)+1;
+  else
+    return quanteVolte(l, primo+1, o);
+}
+</pre>
+
+<hr>
+
+
+<h4>Implementazione alternativa</h4>
+
+<p>
+Prima faccio la invocazione ricorsiva, e poi
+vedo se tornare il valore, oppure il valore
+aumentato di uno
+</p>
+
+<pre>
+static int quanteVolte(LinkedList l,
+int primo, Object o) {
+  if(primo==l.size())
+    return 0;
+
+  int r=quanteVolte(l, primo+1, o);
+
+  if(l.get(primo).equals(o))
+    return r+1;
+  else
+    return r;
+}
+</pre>
+
+</body>
+</html>
+
+
+

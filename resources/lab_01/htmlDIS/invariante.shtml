@@ -1,0 +1,207 @@
+<!doctype html public "-//w3c//dtd html 4.0 transitional//en">
+<html>
+<head>
+<link href="java.css" rel="stylesheet" type="text/css">
+<title>Correttezza dei cicli</title>
+</head>
+
+<body>
+
+<h2>Correttezza dei cicli</h2>
+
+
+<h4>Assunzioni</h4>
+
+<p>
+Quando si usano dei cicli, &egrave; facile commettere degli
+errori legati alle assunzioni che vengono fatte. Molto spesso,
+ci sono delle assunzioni che sono valide all'inizio della
+prima esecuzione del ciclo, ma che non sono valide alle
+successive iterazioni. Prendiamo il seguente programma
+<a href="FibonacciErrato.java">FibonacciErrato.java</a>,
+che dovrebbe stampare gli elementi della serie di
+fibonacci.<p>
+
+<pre>
+/*
+  La serie di Fibonacci per valori minori di 10000.
+*/
+
+class FibonacciErrato {
+  public static void main(String[] args) {
+    int penultimo, ultimo, nuovo;
+    int limite=10000;
+
+    penultimo=1;
+    ultimo=1;
+
+    System.out.println(penultimo);
+    System.out.println(ultimo);
+
+    while( penultimo+ultimo < limite ) {
+      nuovo=penultimo+ultimo;
+      System.out.println(nuovo);
+    }
+  }
+}
+
+</pre>
+
+<p>
+Eseguendo questo programma, vengono stampati i primi due
+valori della sequenza 1 e 1, e poi viene stampato ripetutamente
+il terzo valore 2. Quindi, i primi tre valori che escono sono
+giusti, ma dal quarto valore in poi si ottengono risultati
+errati.<p>
+
+L'errore &egrave; che le variabili <tt>penultimo</tt> e
+<tt>ultimo</tt> dovrebbero sempre rappresentare il penultimo
+e l'ultimo elemento trovato della serie. Questo &egrave; vero
+alla prima iterazione del ciclo, dal momento che i primi due
+valori trovati sono 1 e 1 (e questi sono i valori delle due
+variabili). A questo punto viene calcolato il nuovo valore
+<tt>nuovo=1+1</tt>, e questo &egrave; effettivamente il terzo
+elemento della serie. A questo punto si parte con una nuova
+iterazione del ciclo. Questa volta per&ograve; la assunzione
+che <tt>penultimo</tt> e <tt>ultimo</tt> rappresentano gli
+ultimo due valori trovati non &egrave; pi&ugrave; valida,
+dal momento che l'ultimo valore trovato &egrave; quello che
+sta nella variabile <tt>nuovo</tt>, mentre il valore che sta
+in <tt>ultimo</tt> &egrave; il penultimo valore trovato. Questo
+&egrave; il motivo per cui il programma non funziona: la
+assunzione che &egrave; vera alla prima iterazione del ciclo
+non lo &egrave; pi&ugrave; alle successive iterazioni. Per
+rendere il programma corretto occorre fare in modo che la
+assunzione risulti valida anche alle successive iterazioni.
+Il programma corretto <a href="Fibonacci.java">Fibonacci.java</a>
+modifica il contenuto delle variabili <tt>penultimo</tt> e
+<tt>ultimo</tt> in modo tale che, alla fine di ogni iterazione
+del ciclo, contenengano gli ultimi due elementi trovati.<p>
+
+Analogamente, nel programma di ricerca di un intervallo che
+contiene uno zero di una funzione,
+<a href="Nullo.java">Nullo.java</a>,
+si parte dall'assunzione che <tt>c,d</tt> siano due valori
+per i quali la funzione ha segno diverso. &Egrave; quindi
+necessario che la stessa condizione sia verificata alla fine
+di ogni singola iterazione del ciclo. Il concetto si pu&ograve;
+riassumere come segue:<p>
+
+<object type="application/tex" data="data:\noindent\framebox{\vbox{">
+<table frame=box rules=none border=2>
+<tr>
+<td>
+</object>
+Se nel corpo un ciclo uso una assunzione A, allora:
+
+<ul>
+<li>la assunzione A deve essere vera la prima volta che eseguo
+il ciclo;
+<li>devo verificare che, assumendo A vera all'inizio del
+corpo del ciclo, allora A risulta vera anche alla fine.
+</ul>
+<object type="application/tex" data="data:}}">
+</td>
+</tr>
+</table>
+</object>
+<p>
+
+In genere nei cicli c'&egrave; sempre una propriet&agrave; che
+viene mantenuta in tutte le iterazioni, e che &egrave; necessaria
+perch&eacute; il tutto funzioni. La prima cosa da controllare
+&egrave; che la assunzione sia vera alla prima iterazione
+del ciclo. Questo risulta di solito abbastanza naturale, ed
+&egrave; quindi difficile trovare errori legati a questo. La
+seconda cosa che si deve fare &egrave; controllare che,
+assumendo che la assunzione si vera all'inizio <i>di una
+generica iterazione del ciclo</i>, ed eseguendo il corpo del
+ciclo, la assunzione alla fine &egrave; ancora verificata.<p>
+
+Naturalmente, non &egrave; necessario che la assunzione valga
+anche in mezzo al corpo del ciclo. Per esempio, il fatto che
+le due variabili contenessere gli ultimi due valori trovati
+non vale a met&agrave; della iterazione (per esempio non vale
+subito dopo la istruzione <tt>System.out.println(nuovo)</tt>).<p>
+
+
+<h4>Terminazione</h4>
+
+<p>
+Non &egrave; difficile fare esempi di cicli che non terminano.
+Per esempio, il ciclo
+
+<pre>
+while( 1==1 ) {
+  ...
+}
+</pre>
+
+<p>
+viene eseguito all'infinito, dal momento che la condizione &egrave;
+sempre vera (a meno che non ci sia un <tt>break</tt> all'interno
+del ciclo).<p>
+
+In alcuni casi, il ciclo infinito &egrave; esattamente quello che
+si vuole. Di solito per&ograve; si vuole che un programma faccia
+delle operazioni le sue escuzioni e poi termini, il che implica
+che tutti i cicli che contiene devono prima o poi terminare. In
+particolare, se dopo il ciclo ci sono altre istruzioni da eseguire,
+allora la mancata terminazione fa s&iacute; che le istruzioni
+seguenti non siano eseguite, il che &egrave; chiaramente un errore.
+In generale, <b>i cicli devono sempre terminare</b>.
+
+<p>
+Nel caso dei cicli for usati per assegnare ripetutamente
+a una variabile valori crescenti o decrescenti la terminazione di
+rado &egrave; un problema: i cicli
+<tt>for(var=val1; var&lt;=val2; var=var+1)</tt> terminano sempre:
+l'unico problema che pu&ograve; verificarsi &egrave; quello di
+scrivere una condizione con il <tt>&lt;=</tt> mentre la istruzione
+che segue &egrave; un decremento <tt>x=x-1</tt>. In altre parole,
+questi cicli possono non terminare se si scrive per errore una delle
+due cose seguenti:
+
+<ul>
+<li><tt>for(var=val1; var<=val2; var=var-val3)</tt>
+<li><tt>for(var=val1; var>=val2; var=var+val3)</tt>
+</ul>
+
+<p>
+Il problema pu&ograve; essere pi&ugrave; grave nel caso dei cicli
+while e dei cicli for generici (cio&egrave; quelli di tipo
+<tt>for(istruzione1; condizione; istruzione2)</tt> in cui condizioni
+e istruzioni sono generiche). In questi casi, la verifica di
+terminazione pu&ograve; essere pi&ugrave; complicata. Per esempio,
+il programma <a href="FibonacciErrato.java">FibonacciErrato.java</a>
+non termina, e il motivo &egrave; che le variabili che si trovano
+nella condizione di terminazione non vengono modificate dopo la
+prima iterazione del ciclo (questo &egrave; a sua volta dovuto
+al fatto che una assunzione che veniva usata non era pi&ugrave;
+vera alla fine della prima iterazione).<p>
+
+In generale, verificare se un ciclo termina &egrave; difficile. Ci
+sono per&ograve; delle cose che &egrave; possibile controllare
+facilmente. Per esempio, all'interno del ciclo deve esistere sempre
+la possibilit&agrave; di cambiare le variabili della condizione, e
+deve essere sempre possibile che queste variabili assumano valori
+che fanno uscire dal ciclo. Per esempio, se si ha un ciclo
+<tt>while( a!=0 )</tt>, e all'interno del ciclo le uniche operazioni
+che modificano il valore di <tt>a</tt> sono le assegnazioni
+<tt>a=1</tt> e <tt>a=-1</tt>, &egrave; chiaro che la variabile
+non assume mai il valore nullo che fa uscire dal ciclo.<p>
+
+Si tenga altres&iacute; presente che la istruzione <tt>break</tt>
+fa comunque uscire dai cicli. A volte si usano cicli in cui si
+sa che la condizione &egrave; sempre verificata, come per
+esempio <tt>while( 1!=0 )</tt>, semplicemente perch&egrave; la
+uscita dal ciclo &egrave; garantita da una istruzione
+<tt>break</tt>. In questo caso, occorre verificare se &egrave;
+sempre possibile che la istruzione di break venga effettivamente
+eseguita.<p>
+
+
+
+</body>
+</html>
+

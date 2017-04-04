@@ -1,0 +1,44 @@
+
+<HTML>
+
+<HEAD>
+<META HTTP-EQUIV="Context-Type" CONTEXT="text/html;charset=PREDEFINITA (AUTOMATICA)">
+<meta name="GENERATOR" content="Microsoft Internet Assistant for PowerPoint 97">
+ <TITLE>GROUP BY and HAVING</TITLE> 
+</HEAD>
+
+<BODY     >
+
+ <H1>GROUP BY and HAVING</H1> 
+ <P><UL>
+<LI><H2>So far, we’ve applied aggregate operators to all (qualifying) tuples.  Sometimes, we want to apply them to each of several groups of tuples.
+</H2>
+</UL><UL>
+<LI><H2>Consider:  Find the age of the youngest sailor for each rating level.
+</H2>
+<UL>
+<LI>In general, we don’t know how many rating levels exist, and what the rating values for these levels are!
+<LI>Suppose we know that rating values go from 1 to 10; we can write 10 queries that look like this (!):</UL></UL></P>
+<P><UL>
+SELECT  MIN (S.age)
+<BR></UL><UL>
+FROM  Sailors S
+</UL><UL>
+WHERE  S.rating = i</UL></P>
+<P><UL>
+For i = 1, 2, ... , 10:<BR></UL></P>
+<P></P> 
+<P>
+<TABLE>
+  <TD HEIGHT=100 WIDTH=100> <A HREF="tsld017.htm">Diapositiva precedente</A> </TD>
+  <TD HEIGHT=100 WIDTH=100> <A HREF="tsld019.htm">Diapositiva successiva</A> </TD>
+  <TD HEIGHT=100 WIDTH=150> <A HREF="tsld001.htm">Torna alla prima diaposiva</A> </TD>
+  <TD HEIGHT=100 WIDTH=150> <A HREF="sld018.htm">Visualizza versione grafica</A> </TD>
+</TABLE>
+<BR>
+</P>
+
+
+
+</Body>
+</HTML>

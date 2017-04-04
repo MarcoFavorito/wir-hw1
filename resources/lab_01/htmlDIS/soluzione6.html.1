@@ -1,0 +1,58 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"         "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="it">
+<head>
+	<title>Soluzione domanda PIPE</title>
+</head>
+<body>
+
+<h3>Corso di Laurea in Ing. Informatica, Universita' La Sapienza<br>
+  Sistemi Operativi II<br>
+  Docente Roberto Baldoni</h3>
+<h3> Soluzione della domanda di programmazione (argomento: PIPE - Appello del 19 Luglio 2004).</h3>
+<p>Le operazioni che ogni nodo intermedio della catena deve effettuare sono le seguenti:</p>
+<ol>
+  <li>leggere dalla pipe che lo collega al figlio un intero;</li>
+  <li>sommare il numero letto a quello da lui generato;</li>
+  <li>scrivere nella pipe che lo collega al padre la somma risultante; quest'ultimo passo non sar&agrave; ovviamente eseguito dal processo progenitore (quello che nella figura &egrave; etichettato come processo 0) che invece stamper&agrave; la somma a video. </li>
+</ol>
+<p>C'&egrave; da notare che il descrittore di file <strong>pipeSUP</strong> ha un significato ben preciso: <strong>&egrave; il riferimento al canale di scrittura della pipe che collega un processo con il relativo padre</strong>. Quindi <strong>NON SI DEVE MODIFICARE</strong> il suo valore, mentre <strong>nextPIPE</strong> <strong>rappresenta il collegamento con il processo figlio</strong>. Durante la fase di creazione della catena, tutti i nodi intermedi passano da una fase in cui sono &quot;figli&quot; (ramo else dell'if fork) ad una in cui diventano &quot;padri&quot; (successiva fork dovuta al ciclo while): ed &egrave; in questa fase che il riferimento al canale di scrittura col processo padre viene &quot;salvato&quot; (assegnando a pipeSUP in valore di nextPIPE[1], che in quel punto specifico del codice rappresenta proprio il collegamento col padre). Al successivo ciclo, nextPIPE assumer&agrave; nuovi valori relativi alla nuova pipe, e quindi l'unico riferimento alla vecchia pipe rimane pipeSUP </p>
+<p>Di seguito viene riportato il codice della soluzione proposta. E' possibile prelevare il file completo <a href="lista.zip">qui</a>. </p>
+<pre>&nbsp;
+         close(nextPIPE[1]);
+
+         printf("Processo %d: nodo", getpid());
+         if (pipeSUP == -1) printf(" iniziale ");
+         else printf(" intermedio ");
+         printf(": -> figlio = %d\n", figlio);
+
+         // read su pipeSX[0]
+         if (read(nextPIPE[0], &num, sizeof(int)) == -1) {
+            printf("Processo %d: errore durante la receive\n",getpid());
+            exit(1);
+         }
+         else
+            printf("Processo %d: ricevuto %d dal figlio.\n", getpid(), num);
+
+         num2 = my_random();
+         printf("Processo %d: nodo", getpid());
+         if (pipeSUP == -1) printf(" iniziale ");
+         else printf(" intermedio ");
+         printf(": valore generato = %d\n", num2);
+
+         num += num2;
+         if (pipeSUP != -1) // write su pipeSUP se != -1
+            if (write(pipeSUP, &num, sizeof(int))==-1) {
+               printf("Processo %d: errore durante la send\n", getpid());
+               exit(1);
+            }
+            else {
+               printf("Processo %d: send di %d al processo %d riuscita.\n", getpid(), num, getppid());
+               close(pipeSUP);
+            }
+         else // else sto alla radice e quindi stampo.
+            printf("Processo %d: il Risultato della somma è: %d\n", getpid(), num);
+
+         wait(&status);
+         break; </pre>
+</body>
+</html>

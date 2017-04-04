@@ -1,0 +1,210 @@
+<HTML>
+<HEAD>
+   <META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1">
+   <META NAME="GENERATOR" CONTENT="Mozilla/4.03 [en] (X11; I; Linux 2.0.30 i586) [Netscape]">
+</HEAD>
+<BODY BGCOLOR="#DFDFDF">
+
+<CENTER>
+<DT>
+<B><FONT SIZE=+2>Fondamenti di Informatica</FONT></B></DT></CENTER>
+
+<CENTER>
+<DT>
+<FONT SIZE=+1>Aeronautica, Meccanica, Elettrica, Materiali,</FONT></DT></CENTER>
+
+<CENTER>
+<DT>
+<FONT SIZE=+1>Nucleare, Chimica, Ambiente e Territorio</FONT></DT></CENTER>
+
+<CENTER>
+<DT>
+<B><FONT SIZE=+1>Appello del 30-6-1997</FONT></B></DT></CENTER>
+
+<CENTER>
+<DT>
+<FONT SIZE=+1>PRIMA PARTE</FONT></DT></CENTER>
+
+<DT>
+<B>Esercizio 1 (18 punti)</B></DT>
+
+<DT>
+La biblioteca di un piccolo dipartimento possiede alcune migliaia di volumi
+ed &egrave; utilizzata da 50 utenti che possono prendere dei libri in prestito.
+La biblioteca &egrave; informatizzata e il sistema di gestione contiene
+l?archivio dei libri posseduti e l?archivio dei prestiti.</DT>
+
+<DT>
+L?archivio dei libri posseduti &egrave; memorizzato in un file sequenziale
+(su disco fisso) denominato BIBLIO.DAT. Il file &egrave; un file di record
+di tipo <TT>Volume</TT>. Ciascun record contiene i seguenti campi:</DT>
+
+<DT>
+&middot; autore (max 30 caratteri);</DT>
+
+<DT>
+&middot; titolo (max 50 caratteri);</DT>
+
+<DT>
+&middot; prezzo (intero positivo);</DT>
+
+<DT>
+&middot; numero di inventario (intero positivo &lt;=10000);</DT>
+
+<DT>
+&middot; prestito (boolean).</DT>
+
+<DT>
+I 50 utenti sono identificati con un numero Nu (1&lt;=Nu&lt;=50) ed ogni
+utente pu&ograve; avere in prestito pi&ugrave; libri. L?archivio dei prestiti
+&egrave; memorizzato in un array di liste: la componente i-esima dell'array
+&egrave; il puntatore alla lista di libri attualmente in prestito all'utente
+i-esimo. La lista dei libri prestati ad un utente contiene soltanto i numeri
+di inventario, che identificano il volume in modo univoco.</DT>
+
+<CENTER>
+<DT>
+<IMG SRC="970630.gif" HEIGHT=184 WIDTH=310></DT></CENTER>
+
+<DT>
+1. Scrivere le dichiarazioni di tipo necessarie per poter gestire in un
+programma l'archivio della biblioteca (tipo Volume e tipo del file archivio)
+e per rappresentare l?insieme dei libri in prestito.</DT>
+
+<DT>
+2. Scrivere una procedura Pascal che, ricevendo come parametro di input
+un numero di inventario, restituisca</DT>
+
+<DT>
+&middot; il valore vero se il libro corrispondente &egrave; presente nell?archivio
+e non &egrave; in prestito</DT>
+
+<DT>
+&middot; il valore falso se il libro non &egrave; presente nell?archivio
+o se &egrave; in prestito.</DT>
+
+<DT>
+3. Scrivere una procedura Pascal che, ricevendo come parametri di input
+un numero di inventario e un numero di utente e utilizzando la procedura
+precedente aggiorni la lista dei prestiti dell?utente e il file su cui
+&egrave; memorizzato l?archivio della biblioteca per tenere conto del nuovo
+prestito nel caso in cui esso sia possibile e stampi un opportuno messaggio
+qualora il prestito non sia possibile.</DT>
+
+<DT>
+
+<HR SIZE=6 WIDTH="100%"></DT>
+
+<CENTER>
+<DT>
+<B><FONT SIZE=+2>Fondamenti di Informatica</FONT></B></DT></CENTER>
+
+<CENTER>
+<DT>
+<FONT SIZE=+1>Aeronautica, Meccanica, Elettrica, Materiali,</FONT></DT></CENTER>
+
+<CENTER>
+<DT>
+<FONT SIZE=+1>Nucleare, Chimica, Ambiente e Territorio</FONT></DT></CENTER>
+
+<CENTER>
+<DT>
+<B><FONT SIZE=+1>Appello del 30-6-1997</FONT></B></DT></CENTER>
+
+<CENTER>
+<DT>
+<FONT SIZE=+1>SECONDA PARTE</FONT></DT></CENTER>
+
+<DT>
+<B>Esercizio 2 (punti 4)</B></DT>
+
+<DT>
+Elencare le principali funzioni del sistema operativo e in particolare
+illustrare le funzioni del gestore dei processi.</DT>
+
+<DT>
+<B>Esercizio 3 (4 punti)</B></DT>
+
+<DT>
+Scrivere un sottoprogramma Fortran che, ricevendo in ingresso una matrice
+quadrata di ordine N, restituisca una variabile booleana che assume il
+valore vero se la matrice &egrave; unitaria e falso altrimenti. Fornire
+le dichiarazioni da inserire nel programma principale.</DT>
+
+<DT>
+<B>Esercizio 4 (4 punti)</B></DT>
+
+<DT>
+Siano A, B, C, D le ultime quattro cifre del numero di matricola del candidato
+(D &egrave; l'ultima). Che cosa stampa il seguente programma quando riceve
+in input i numeri AB e CD?</DT>
+
+<DT>
+(Ad esempio sia 09002468 la matricola, i due numeri AB e CD sono 24 e 68).</DT>
+
+<DT>
+Motivare la risposta e mostrare l?evoluzione dei record di attivazione
+della funzione.</DT>
+
+<UL>
+<DT>
+<TT><FONT SIZE=+1><B>program</B> magico;</FONT></TT></DT>
+
+<DT>
+<B><TT><FONT SIZE=+1><FONT COLOR="#C0C0C0">..</FONT>var</FONT></TT></B></DT>
+
+<DT>
+<TT><FONT SIZE=+1><B><FONT COLOR="#C0C0C0">....</FONT></B>m, n: integer;</FONT></TT></DT>
+
+<DT>
+<TT><FONT SIZE=+1><B>function</B> pippo (m, n: integer): integer;</FONT></TT></DT>
+
+<DT>
+<B><TT><FONT SIZE=+1><FONT COLOR="#C0C0C0">..</FONT>begin</FONT></TT></B></DT>
+
+<DT>
+<B><TT><FONT SIZE=+1><FONT COLOR="#C0C0C0">..</FONT>if</FONT></TT></B><TT><FONT SIZE=+1>
+(n &lt;= m) <B>and</B> (m mod n = 0) <B>then</B></FONT></TT></DT>
+
+<DT>
+<TT><FONT SIZE=+1><B><FONT COLOR="#C0C0C0">........</FONT></B>pippo :=
+n</FONT></TT></DT>
+
+<DT>
+<B><TT><FONT SIZE=+1><FONT COLOR="#C0C0C0">..</FONT>else</FONT></TT></B><TT><FONT SIZE=+1>
+<B>if</B> n > m <B>then</B></FONT></TT></DT>
+
+<DT>
+<TT><FONT SIZE=+1><B><FONT COLOR="#C0C0C0">..........</FONT></B>pippo :=
+pippo(n, m)</FONT></TT></DT>
+
+<DT>
+<B><TT><FONT SIZE=+1><FONT COLOR="#C0C0C0">.....</FONT>else</FONT></TT></B></DT>
+
+<DT>
+<TT><FONT SIZE=+1><B><FONT COLOR="#C0C0C0">..........</FONT></B>pippo :=
+pippo(n, m mod n);</FONT></TT></DT>
+
+<DT>
+<B><TT><FONT SIZE=+1><FONT COLOR="#C0C0C0">..</FONT>end</FONT></TT></B><TT><FONT SIZE=+1>;</FONT></TT></DT>
+
+<DT>
+<B><TT><FONT SIZE=+1>begin</FONT></TT></B></DT>
+
+<DT>
+<TT><FONT SIZE=+1><B><FONT COLOR="#C0C0C0">..</FONT></B>readln(m, n);</FONT></TT></DT>
+
+<DT>
+<TT><FONT SIZE=+1><B><FONT COLOR="#C0C0C0">..</FONT></B>writeln(pippo(m+1,
+n+1));</FONT></TT></DT>
+
+<DT>
+<TT><FONT SIZE=+1><B>end</B>.</FONT></TT></DT>
+
+<DT>
+<A HREF="970630.doc"><IMG SRC="/images/floppy.gif" HEIGHT=40 WIDTH=37 ALIGN=ABSCENTER></A><A HREF="970630.doc">Dowload
+testo in formato Word.</A></DT>
+</UL>
+
+</BODY>
+</HTML>

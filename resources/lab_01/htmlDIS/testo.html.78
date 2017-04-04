@@ -1,0 +1,120 @@
+<html>
+<head>
+<title>Diploma Universitario di Ingegneria Informatica,Esame di Fondamenti di Informatica II - primo modulo,A.A. 2002/03 - Appello del 8 aprile 2003</title>
+</head>
+
+<body>
+
+<h3 align="center">
+Diploma Universitario di Ingegneria Informatica<br>
+Esame di Fondamenti di Informatica II - primo modulo <br>
+  A.A. 2002/03 - Appello del 8 aprile 2003</h3>
+
+<p><b>Problema 1</b>&nbsp;&nbsp; Si consideri la seguente specifica del tipo astratto 
+  <i>Biblioteca</i>: 
+<dl>
+  <dt><b><u>TipoAstratto</u></b><i> Biblioteca</i> 
+    <p> 
+  <dt><b><u>Sorte</u></b> <i>BB</i>(sorta per il dominio di interesse) 
+    <p> 
+  <dt><b><u>Funzioni</u></b> 
+    <p> 
+    <ul>
+      <li> 
+        <p><i>Crea : (String) --&gt; BB</i> <br>
+          precondizioni e postcondizioni per <i>Crea(s) = b</i> <br>
+          <u>pre</u>: nessuna <br>
+          <u>post</u>: <i>b</i> &egrave; una biblioteca avente nome <i>s </i>e 
+          che insialemnte non ha alcun libro. </p>
+      <li> 
+        <p><i>Nome : (BB) --&gt; Stringa</i> <br>
+          precondizioni e postcondizioni per <i>Nome(b) = s</i> <br>
+          <u>pre</u>: nessuna <br>
+          <u>post</u>: <i>s </i>&egrave; il nome della biblioteca <i>b.</i> </p>
+      <li> 
+        <p><i>Presente : (BB,Libro) --&gt; boolean</i><br>
+          precondizioni e postcondizioni per <i>Presente(b,l) = v</i><br>
+          <u>pre</u>: nessuna<br>
+          <u>post</u>:<em> v</em> &egrave; true se <em>1</em> &egrave; un libro di b; false 
+          altrimenti. </p>
+      <li> 
+        <p><i>StatoLibro : (BB,Libro) --&gt; (Intero, Persona)</i><br>
+          precondizioni e postcondizioni per <i>StatoLibro(b,l) = (s,p)</i><br>
+          <u>pre</u>: <i>l</i> &egrave; un libro di <em>b</em><br>
+          <u>post</u>:<em> s</em> &egrave; pari a <em>1</em> se il libro &egrave; prestato, 
+          in tal caso <em>p</em> &egrave; la persona a cui il libro &egrave; stato prestato; 
+          <i>s</i> &egrave; pari a <em>0 </em>se il libro &egrave; disponibile per il 
+          prestito mentre <em>s</em> &egrave; pari a <em>-1</em> se il libro &egrave; in restauro, 
+          in entrambi questi casi <em>p</em> non &egrave; sigificativo. </p>
+      <li> 
+        <p><i>Presta : (BB,Libro,Persona) --&gt; BB</i><br>
+          precondizioni e postcondizioni per <i>Presta(b,l,p) = b'</i><br>
+          <u>pre</u>: <i>l</i> &egrave; un libro disponibile di <em>b</em><br>
+          <u>post</u>: <i>b' </i> &egrave; la biblioteca ottenuta prestando il 
+          libro<em> l </em>alla persona <em>p</em>. </p>
+      <li> 
+        <p><i>Restaura : (BB,Libro) --&gt; BB</i><br>
+          precondizioni e postcondizioni per <i>Restaura(b,l) = b'</i><br>
+          <u>pre</u>: <i>l</i> &egrave; un libro disponibile di <em>b</em><br>
+          <u>post</u>: <i>b' </i> &egrave; la biblioteca ottenuta ponendo il libro 
+          <em>l </em>in restauro. </p>
+      <li> 
+        <p><i>RendiDisponibile : (BB,Libro) --&gt; BB</i><br>
+          precondizioni e postcondizioni per <i>RendiDisponibile(b,l) = b'</i><br>
+          <u>pre</u>: <i>l</i> &egrave; un libro di <em>b</em> in restauro o in 
+          prestito<br>
+          <u>post</u>: <i>b' </i> &egrave; la biblioteca ottenuta rendendo disponibile 
+          il libro <em>l</em>. </p>
+      
+      <li> 
+        <p><i>Aggiungi : (BB, Libro) --&gt; BB</i><br>
+          precondizioni e postcondizioni per <i>Elimina(b,l) = b'</i><br>
+          <U>pre</u>: <i>l</i> non &egrave; un libro di <em>b</em><br>
+          <U>post</u>: <i>b' </i> &egrave; la biblioteca ottenuta aggiungendo 
+          il libro <em>l</em>. </p>
+      
+      <li>
+        <p><i>Elimina : (BB, Libro) --&gt; BB</i><br>
+          precondizioni e postcondizioni per <i>Elimina(b,l) = b'</i><br>
+          <U>pre</u>: <i>l</i> &egrave; un libro di <em>b</em><br>
+          <U>post</u>: <i>b' </i> &egrave; la biblioteca ottenuta eliminando il 
+          libro <em>l</em>. </p>
+      <li><i>TuttiILibri : (BB) --&gt; (Array(Libri),Intero)</i><br>
+        precondizioni e postcondizioni per <i>TuttiLibri(b) = (a,n)</i><br>
+        <U>pre</u>: nessuna<br>
+        <U>post</u>: <i>a</i> &egrave; un array di libri che contiene tutti i 
+        libri di <em>b</em>, e <em>n</em> &egrave; il numero dei suoi elementi. 
+    </ul>
+</dl>
+       <dt><b><u>FineTipoAstratto</u></b></dt>
+<p> Si vuole scrivere una classe C++ <code>Biblioteca</code> che realizzi il tipo 
+  astratto <i>Biblioteca</i>, considerando che per riferirsi al tipo astratto 
+  <i>Libro</i> ed al tipo astratto <em>Persona</em> &egrave; necessario utilizzare 
+  le classe <code>Libro</code> e <code>Persona</code> che si suppongono gi&agrave; 
+  realizzata, della quali per&ograve; non &egrave; nota la definizione. 
+<p><b>Domanda 1</b>&nbsp;&nbsp; Si illustrino le scelte di progetto relative alla 
+  realizzazione del tipo astratto <i>Biblioteca</i> mediante la classe C++ <code>Biblioteca</code>. 
+</p>
+
+<p><b>Domanda 2</b>&nbsp;&nbsp; Si scriva la classe <code>Biblioteca</code> (file 
+  .h e file .cpp) secondo le scelte di progetto illustrate per la Domanda 1. Scrivere 
+  il codice delle funzioni pubbliche e private della classe. La realizzazione 
+  del codice delle funzioni che realizzano <em>Nome</em>, <em>Presente</em>, e 
+  due a scelta tra <em>Presta</em>, <em>Restaura</em>, e <em>RendiDisponibile</em> 
+  &egrave; opzionale; tutto il resto &egrave; obbligatorio.</p>
+
+
+
+<p><b>Problema 2</b>&nbsp;&nbsp; Realizzare una funzione esterna (non friend) 
+  della classe <code>Biblioteca</code> che, dato un oggetto <i>b</i>di tipo <code>Biblioteca</code>, 
+  restituisca un nuovo oggetto <code>Biblioteca</code> contenete gli stessi libri 
+  ma tutti nello stato di diponibile.</p>
+
+
+<p><b>Problema 3</b>&nbsp;&nbsp; 
+Spiegare brevemente il significato delle nozioni di <i>coesione</i>,
+<i>information hiding</i>, <i>accoppiamento</i>, e <i>interfacciamento
+esplicito</i>, e descrivere i criteri fondamentali che legano tali
+nozioni con la qualit&agrave; della modularizzazione.
+</body>
+</html>

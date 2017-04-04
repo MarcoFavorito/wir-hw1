@@ -1,0 +1,237 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+<html>
+
+<head>
+
+<title>Esperimenti con programmi C invocati via cgi</title>
+
+</head>
+
+<body>
+<h2>
+Esperimenti con programmi C invocati via cgi
+</h2>
+
+<p>
+Ovviamente Apache deve essere stato attivato ...
+<p>
+Possiamo immaginare che ci sia un programma pronto nella
+directory cgi-bin
+<ul>
+<LI> (nell'esempio /c/cgi-bin)
+<LI> in formato eseguibile (PROVA1C.EXE)
+</ul>
+e che tale programma sia attivato via web.
+<p>
+Nel secondo esempio l'esecuzione del programma C viene "inglobata"
+in un programmino batch, attivato via web.
+
+<p><hr><p>
+<h2>
+ESEMPIO 1.0
+</h2>
+Programma invocato via web:
+<pre>PROVA1C.EXE".</pre>
+<p>
+<a href="http://localhost/cgi-local-bin/c/PROVA1C.EXE">
+http://localhost/cgi-bin/c/PROVA1C.EXE</a></p>
+
+<p><hr><p>
+<h2> ecco il codice C che viene eseguito (PROVA1.C)
+</h2>
+
+<pre>
+#include&ltstdio.h>
+main()
+{
+printf("Content-type:text/html\n\n");
+printf("&ltHTML>\n&ltHEAD>\n");
+printf("&ltTITLE> cgi in C (via bat ...)&lt/TITLE>\n");
+printf("&lt/HEAD>\n\n&ltBODY>\n");
+printf("&ltH2>Risultati del programmino C&lt/H2>\n");
+printf("&ltHR>\n");
+printf("Tutto qua ...\n");
+printf("&ltHR>\n");
+printf("&lt/BODY>\n\n&lt/HTML>");
+
+return 0;
+}
+</pre>
+
+
+
+
+<p><hr><p>
+<h2>
+ESEMPIO 1.1
+</h2>
+Programma invocato via web
+(un file batch che esegue il file PROVA1C.EXE):
+<pre>PROVA1C.BAT".</pre>
+<p>
+<a href="http://localhost/cgi-local-bin/c/PROVA1C.BAT">
+http://localhost/cgi-bin/c/PROVA1C.BAT</a></p>
+
+<p><hr><p>
+<h2> ecco il codice batch che viene eseguito (PROVA1C.BAT)
+</h2>
+
+<pre>
+@echo off
+prova1c.exe
+</pre>
+
+
+
+
+
+<p><hr><p>
+<h2>
+ESEMPIO 2
+</h2>
+Programma invocato via web:
+<pre>PROVA2C.EXE".</pre>
+<p>
+<a href="http://localhost/cgi-local-bin/c/PROVA2C.EXE">
+http://localhost/cgi-bin/c/PROVA2C.EXE</a></p>
+
+<p><hr><p>
+<h2> ecco il codice C che viene eseguito (PROVA2.C)
+</h2>
+
+<pre>
+#include&lt;stdio.h&gt;
+#include&lt;stdlib.h&gt;
+
+int main(int argc, char *argv[])
+{
+	int i;
+	char *cp1, *cp2, *cp3;
+
+printf("Content-type:text/html\n\n");
+printf("&lt;html&gt;\n&lt;head&gt;\n");
+printf("&lt;title&gt; cgi in C (via bat ...)&lt;/TITLE&gt;\n");
+printf("&lt;/head&gt;\n\n&lt;BODY&gt;\n");
+printf("&lt;h2&gt;Risultati del programmino C&lt;/H2&gt;\n");
+printf("&lt;hR /&gt;\n");
+	printf("inizio elaborazione\n&lt;p&gt;");
+	printf("argc = %d\n&lt;br&gt;", argc);
+
+	for(i = 0; i &lt; argc; i++)
+		printf("argv[%d] = \"%s\"\n", i, argv[i]);
+
+	cp1 = getenv("GATEWAY_INTERFACE");
+	cp2 = getenv("HTTP_USER_AGENT");
+	cp3 = getenv("QUERY_STRING");
+	printf("&lt;p&gt;GATEWAY_INTERFACE = \"%s\"\n&lt;br /&gt;", cp1 ? cp1 : "");
+	printf("HTTP_USER_AGENT = \"%s\"\n&lt;br /&gt;", cp2 ? cp2 : "");
+	printf("\nQUERY_STRING = \"%s\"\n&lt;/p&gt;", cp3 ? cp3 : "");
+	printf("&lt;p&gt;fine elaborazione\n&lt;/p&gt;");
+
+printf("&lt;HR&gt;\n");
+printf("Tutto qua ...\n");
+printf("&lt;hr /&gt;\n");
+printf("&lt;/body&gt;\n\n&lt;/html&gt;");
+
+return 0;
+}
+</pre>
+
+
+
+
+
+
+<p><hr><p>
+<h2>
+ESEMPIO 3
+</h2>
+Programma invocato via web (Allegato alla libreria CGIC, reperibile
+da <a href="http://www.boutell.com/">Boutell.Com, Inc.</a>):
+<pre>CGITEST.EXE".</pre>
+<p>
+Viene usata una form di test che si chiama
+<a href="formtest.html">
+http://localhost/cgi-local-bin/c/formtest.html</a></p>
+
+<p>Questa form raccoglie una quantit&agrave di dati e li fa processre
+dal programma suddetto
+</p>
+
+<h2> ecco parte del codice della form (formtest.html):
+</h2>
+
+<pre>
+&lthtml>
+&lthead>
+&lttitle>CGI-C Test Form&lt/title>
+&lt/head>
+&ltbody>
+&lth1>CGI-C Test Form&lt/h1>
+&ltform method="get" action="http://localhost/cgi-bin/c/CGITEST.EXE">
+&ltp>
+Text Field containing Plaintext
+&ltp>
+&ltinput type="text" name="name">Your Name
+&ltp>
+Multiple-Line Text Field
+&ltp>
+&lttextarea NAME="address" ROWS=4 COLS=40>
+Default contents go here.
+&lt/textarea>
+&ltp>
+Checkbox
+&ltp>
+&ltinput type="checkbox" name="hungry" checked>Hungry
+&ltp>
+Text Field containing a Numeric Value
+&ltp>
+&ltinput type="text" name="temperature" value="98.6">
+Blood Temperature (80.0-120.0)
+&ltp>
+Text Field containing an Integer Value
+&ltp>
+&ltinput type="text" name="frogs" value="1">
+Frogs Eaten
+&ltp>
+Single-SELECT
+&ltbr>
+&ltselect name="colors">
+&ltoption value="Red">Red
+&ltoption value="Green">Green
+&ltoption value="Blue">Blue
+&lt/select>
+&ltbr>
+Multiple-SELECT
+&ltbr>
+&ltselect name="flavors" multiple>
+&ltoption value="pistachio">Pistachio
+&ltoption value="walnut">Walnut
+&ltoption value="creme">Creme
+&lt/select>
+&ltp>Exclusive Radio Button Group: Age of Truck in Years
+&ltinput type="radio" name="age" value="1">1
+&ltinput type="radio" name="age" value="2">2
+&ltinput type="radio" name="age" value="3" checked>3
+&ltinput type="radio" name="age" value="4">4
+&ltp>Nonexclusive Checkbox Group: Voting for Zero through Four Candidates
+&ltinput type="checkbox" name="vote" value="A">A
+&ltinput type="checkbox" name="vote" value="B">B
+&ltinput type="checkbox" name="vote" value="C">C
+&ltinput type="checkbox" name="vote" value="D">D
+&ltp>
+&ltinput type="submit" name="submit1" value="Submit Request">
+&ltinput type="reset" value="Reset Request">
+&lt/form>
+&lt/body>
+&lt/html>
+</pre>
+
+<h2> il codice C non c'e' ...
+</h2>
+
+
+<p><hr>
+</body>
+</html>
+

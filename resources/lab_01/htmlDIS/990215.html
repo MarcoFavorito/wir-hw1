@@ -1,0 +1,129 @@
+<HTML>
+<HEAD>
+   <META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1">
+   <META NAME="Generator" CONTENT="Microsoft Word 97">
+   <META NAME="GENERATOR" CONTENT="Mozilla/4.03 [it] (WinNT; I) [Netscape]">
+   <TITLE>Fondamenti di Informatica</TITLE>
+</HEAD>
+<BODY>
+
+<CENTER><B><FONT FACE="TIMES"><FONT SIZE=+1>Fondamenti di Informatica</FONT></FONT></B></CENTER>
+
+<CENTER><B><FONT FACE="TIMES"><FONT SIZE=+1>Aeronautica, Meccanica, Elettrica,
+Materiali, Nucleare,</FONT></FONT></B></CENTER>
+
+<CENTER><B><FONT FACE="TIMES"><FONT SIZE=+1>Chimica, Ambiente e Territorio
+(vecchio programma)</FONT></FONT></B></CENTER>
+
+<CENTER><B><FONT FACE="TIMES"><FONT SIZE=+1>Appello del 15-2-1999</FONT></FONT></B></CENTER>
+
+
+<P><B><FONT FACE="TIMES">Esercizio 1 (18 punti)</FONT></B>
+
+<P><FONT FACE="TIMES">Il ricevimento clienti di un albergo e' gestito in
+modo da memorizzare le prenotazioni in un file di record, PRENOT.DAT, in
+cui ogni record contiene le seguenti informazioni: codice della prenotazione,
+cognome e nome del cliente, tipo di camera (S o D), tipo di trattamento
+(P, M, o C), tariffa giornaliera, data di arrivo, data di partenza. Quando
+il cliente arriva in albergo tutte le informazioni relative alla sua prenotazione
+contenute nel file PRENOT.DAT vengono riportate in un nuovo record aggiunto
+ad una lista PRES, realizzata con record e puntatori. Quando il cliente
+parte il suo record viene eliminato dalla lista PRES, le informazioni in
+esso contenute vengono inserite in un nuovo record nel file ARCHIVIO.DAT
+(i record di ARCHIVIO.DAT hanno la stessa struttura di quelli di PRENOT.DAT).</FONT>
+<DIR>
+<DIR><FONT FACE="TIMES"><B>1.</B> Scrivere le dichiarazioni di tipo necessarie
+per i sottoprogrammi 2 e 3 seguenti.</FONT>
+
+<P><FONT FACE="TIMES"><B>2.</B> Scrivere una procedura o funzione Pascal
+che, ricevendo in ingresso la data corrente (nel formato giorno, mese,
+anno), il file PRENOT.DAT, e la lista PRES, stampi le informazioni relative
+ai clienti previsti e non arrivati (cioe' quelli la cui prenotazione e'
+presente nel file PRENOT.DAT con data di arrivo = data odierna e che non
+sono nella lista PRES).</FONT>
+
+<P><FONT FACE="TIMES"><B>3.</B> Scrivere una procedura o funzione Pascal
+che, ricevendo in ingresso il file ARCHIVIO.DAT e la lista PRES, crei una
+nuova lista VIP, contenente i nominativi dei clienti al momento presenti
+in albergo (e cioe' contenuti nella lista PRES) che hanno soggiornato in
+albergo per tre o piu' volte. N.B.: 1) ogni cliente deve comparire soltanto
+una volta nella lista VIP; 2) ogni record della lista VIP contiene le seguenti
+informazioni: nome e cognome del cliente, numero di volte che ha soggiornato
+nell'albergo (inclusa quella in corso).</FONT>
+<BR><FONT FACE="TIMES"></FONT>&nbsp;</DIR>
+</DIR>
+
+<CENTER><B><FONT FACE="TIMES"><FONT SIZE=+1>Fondamenti di Informatica</FONT></FONT></B></CENTER>
+
+<CENTER><B><FONT FACE="TIMES"><FONT SIZE=+1>Aeronautica, Meccanica, Elettrica,
+Materiali, Nucleare,</FONT></FONT></B></CENTER>
+
+<CENTER><B><FONT FACE="TIMES"><FONT SIZE=+1>Chimica, Ambiente e Territorio</FONT></FONT></B></CENTER>
+
+<CENTER><B><FONT FACE="TIMES"><FONT SIZE=+1>Appello del 15-2-1999</FONT></FONT></B></CENTER>
+<B><FONT FACE="TIMES">Esercizio 2 (4 punti)</FONT></B>
+<BR>Illustrare le principali metodologie di progetto dei programmi.
+
+<P><B><FONT FACE="TIMES">Esercizio 3 (4 punti)</FONT></B>
+<BR>Scrivere un sottoprogramma Fortran che ricevendo in ingresso una matrice
+A(n<FONT FACE="Symbol">&yen;</FONT><FONT FACE="TIMES">n)</FONT> ad elementi
+interi, costruisca la matrice trasposta (cioe' la matrice che si ottiene
+scambiando le righe con le colonne).
+
+<P><B><FONT FACE="TIMES">Esercizio 4 (4 punti)</FONT></B>
+<BR>Dato il seguente programma Pascal, dire cosa stampa se viene eseguito
+con le ultime due cifre del proprio numero di matricola come dati di ingresso.
+Motivare la risposta.
+
+<P><B><FONT FACE="Courier"><FONT SIZE=+0>program Prova;</FONT></FONT></B>
+<BR><B><FONT FACE="Courier"><FONT SIZE=+0>type</FONT></FONT></B>
+<BR><B><FONT FACE="Courier"><FONT SIZE=+0>punt = ^rec;</FONT></FONT></B>
+<BR><B><FONT FACE="Courier"><FONT SIZE=+0>rec = record</FONT></FONT></B>
+<BR><B><FONT FACE="Courier"><FONT SIZE=+0>info: integer;</FONT></FONT></B>
+<BR><B><FONT FACE="Courier"><FONT SIZE=+0>next: punt</FONT></FONT></B>
+<BR><B><FONT FACE="Courier"><FONT SIZE=+0>end;</FONT></FONT></B>
+<BR><B><FONT FACE="Courier"><FONT SIZE=+0>var</FONT></FONT></B>
+<BR><B><FONT FACE="Courier"><FONT SIZE=+0>p, app: punt;</FONT></FONT></B>
+<BR><B><FONT FACE="Courier"><FONT SIZE=+0>i, k: integer;</FONT></FONT></B>
+<BR><B><FONT FACE="Courier"><FONT SIZE=+0>procedure Costruisci (var q:
+punt; k: integer);</FONT></FONT></B>
+<BR><B><FONT FACE="Courier"><FONT SIZE=+0>begin</FONT></FONT></B>
+<BR><B><FONT FACE="Courier"><FONT SIZE=+0>if k &lt;> 0 then</FONT></FONT></B>
+<BR><B><FONT FACE="Courier"><FONT SIZE=+0>begin</FONT></FONT></B>
+<BR><B><FONT FACE="Courier"><FONT SIZE=+0>new(q);</FONT></FONT></B>
+<BR><B><FONT FACE="Courier"><FONT SIZE=+0>q^.info := k;</FONT></FONT></B>
+<BR><B><FONT FACE="Courier"><FONT SIZE=+0>q^.next := nil;</FONT></FONT></B>
+<BR><B><FONT FACE="Courier"><FONT SIZE=+0>Costruisci(q^.next, k - 1)</FONT></FONT></B>
+<BR><B><FONT FACE="Courier"><FONT SIZE=+0>end</FONT></FONT></B>
+<BR><B><FONT FACE="Courier"><FONT SIZE=+0>end;</FONT></FONT></B>
+<BR><B><FONT FACE="Courier"><FONT SIZE=+0>procedure Pippo (l: punt);</FONT></FONT></B>
+<BR><B><FONT FACE="Courier"><FONT SIZE=+0>var</FONT></FONT></B>
+<BR><B><FONT FACE="Courier"><FONT SIZE=+0>q: punt;</FONT></FONT></B>
+<BR><B><FONT FACE="Courier"><FONT SIZE=+0>begin</FONT></FONT></B>
+<BR><B><FONT FACE="Courier"><FONT SIZE=+0>q := l;</FONT></FONT></B>
+<BR><B><FONT FACE="Courier"><FONT SIZE=+0>while q &lt;> nil do</FONT></FONT></B>
+<BR><B><FONT FACE="Courier"><FONT SIZE=+0>begin</FONT></FONT></B>
+<BR><B><FONT FACE="Courier"><FONT SIZE=+0>q^.info := q^.info + i;</FONT></FONT></B>
+<BR><B><FONT FACE="Courier"><FONT SIZE=+0>i := i + 1;</FONT></FONT></B>
+<BR><B><FONT FACE="Courier"><FONT SIZE=+0>q := q^.next</FONT></FONT></B>
+<BR><B><FONT FACE="Courier"><FONT SIZE=+0>end;</FONT></FONT></B>
+<BR><B><FONT FACE="Courier"><FONT SIZE=+0>l^.next^.next := q;</FONT></FONT></B>
+<BR><B><FONT FACE="Courier"><FONT SIZE=+0>l := nil</FONT></FONT></B>
+<BR><B><FONT FACE="Courier"><FONT SIZE=+0>end;</FONT></FONT></B>
+
+<P><B><FONT FACE="Courier"><FONT SIZE=+0>begin</FONT></FONT></B>
+<BR><B><FONT FACE="Courier"><FONT SIZE=+0>writeln('inserisci un numero
+di due cifre');</FONT></FONT></B>
+<BR><B><FONT FACE="Courier"><FONT SIZE=+0>read(k);</FONT></FONT></B>
+<BR><B><FONT FACE="Courier"><FONT SIZE=+0>Costruisci(p, k);</FONT></FONT></B>
+<BR><B><FONT FACE="Courier"><FONT SIZE=+0>i := 2;</FONT></FONT></B>
+<BR><B><FONT FACE="Courier"><FONT SIZE=+0>Pippo(p);</FONT></FONT></B>
+<BR><B><FONT FACE="Courier"><FONT SIZE=+0>app := p;</FONT></FONT></B>
+<BR><B><FONT FACE="Courier"><FONT SIZE=+0>while app &lt;> nil do</FONT></FONT></B>
+<BR><B><FONT FACE="Courier"><FONT SIZE=+0>begin</FONT></FONT></B>
+<BR><B><FONT FACE="Courier"><FONT SIZE=+0>write(app^.info);</FONT></FONT></B>
+<BR><B><FONT FACE="Courier"><FONT SIZE=+0>app := app^.next</FONT></FONT></B>
+<BR><B><FONT FACE="Courier"><FONT SIZE=+0>end; readln; end.</FONT></FONT></B>
+<BR><B><FONT FACE="Courier"><FONT SIZE=+0></FONT></FONT></B>&nbsp;
+</BODY>
+</HTML>

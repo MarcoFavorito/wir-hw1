@@ -1,0 +1,93 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<html>
+<head>
+<!--Converted with jLaTeX2HTML 2002 (1.62) JA patch-1.4
+patched version by:  Kenshi Muto, Debian Project.
+LaTeX2HTML 2002 (1.62),
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+  <title>2003-04-14</title>
+  
+  <meta name="description" content="2003-04-14">
+ 
+  <meta name="keywords" content="2003-04-14">
+ 
+  <meta name="resource-type" content="document">
+ 
+  <meta name="distribution" content="global">
+  
+  <meta http-equiv="Content-Type"
+ content="text/html; charset=iso-8859-1">
+ 
+  <meta name="Generator" content="jLaTeX2HTML v2002 JA patch-1.4">
+ 
+  <meta http-equiv="Content-Style-Type" content="text/css">
+</head>
+    <body>
+  
+<p>  </p>
+<p> </p>
+<div align="center"> <font size="+1"><b>  Laurea in Ingegneria Informatica
+- Nuovo Ordinamento<br>
+ Esame di Basi di Dati<br>
+ A.A.&nbsp;2002/2003 - Appello del 14/4/2003<br>
+ <i>tempo a disposizione: 2 ore</i> </b></font></div>
+  
+<p>  </p>
+<h2><a name="SECTION00001000000000000000"> Problema 1</a> </h2>
+  
+<p> Si richiede di progettare lo schema concettuale Entit&agrave;-Relazione
+di un'applicazione relativa ad una agenzia per il noleggio di automobili.
+ Di ogni autovettura interessa la targa (identificativo), la marca, il modello,
+l'anno di immatricolazione e la categoria di noleggio.  Di ogni categoria
+di noleggio, identificata da un codice, interessa il prezzo di noleggio giornaliero
+ed il prezzo di noleggio al km.  Dei clienti dell'autonoleggio interessa
+il codice fiscale (identificativo), il nome e la data di nascita.  Esistono
+esattamente due categorie di clienti: clienti occasionali e clienti tesserati.
+ Ogni cliente occasionale possiede una carta di credito di cui interessa
+il numero ed il circuito.  Dei clienti tesserati interessa il numero di tessera
+(che identifica un tesserato) e la residenza.  Ogni cliente tesserato usufruisce
+di uno sconto personalizzato su una o pi&ugrave; categorie di noleggio, ed
+interessa la percentuale di sconto di cui il cliente gode per ciascuna categoria.
+ Inoltre, per ogni cliente tesserato interessa l'insieme (anche vuoto) delle
+autovetture su cui egli ha espresso la preferenza per il noleggio.  Ogni
+noleggio &egrave; effettuato da uno ed un solo cliente ed &egrave; relativo
+ad una ed una sola autovettura.  Di ogni noleggio interessano la tipologia
+(a chilometro, a giornate, ecc.), la data di inizio e la durata prevista.
+ Dei noleggi terminati interessano anche la durata effettiva, l'ora di riconsegna
+ed i km percorsi.  Si noti che una stessa autovettura non pu&ograve; essere
+noleggiata pi&ugrave; volte con la stessa data di inizio del noleggio.  </p>
+<p>  </p>
+<h2><a name="SECTION00002000000000000000"> Problema 2</a> </h2>
+  
+<p> Si richiede di effettuare la progettazione logica dell'applicazione,
+producendo lo schema relazionale completo di vincoli, e seguendo l'indicazione
+di evitare valori nulli nella base di dati (si noti che le interrogazioni
+menzionate nel problema&nbsp;3 non sono da considerarsi significative per
+le indicazioni di progetto).  </p>
+<p>  </p>
+<h2><a name="SECTION00003000000000000000"> Problema 3</a> </h2>
+  
+<p> Sulla base dello schema relazionale definito per il problema&nbsp;2,
+esprimere in SQL le seguenti interrogazioni:   </p>
+<ol>
+ <li>Calcolare la targa e i km percorsi per tutti i noleggi terminati la
+cui   durata effettiva &egrave; maggiore della durata prevista. </li>
+ <li>Calcolare il codice fiscale del cliente, il nome del cliente, la marca
+e   il modello dell'autovettura per tutti i noleggi terminati o anche solo
+inziati&nbsp; da clienti occasionali   per auto di categoria con codice "<tt>A</tt>". 
+  </li>
+ <li>Calcolare il codice fiscale, il nome e la data di nascita di tutti i 
+  clienti tesserati che hanno noleggiato solo autovetture per cui hanno 
+ espresso preferenza. </li>
+ <li>Per ciascuna autovettura immatricolata a partire dal 2000, calcolare
+la   targa, la marca, il modello, e i km totali percorsi a fronte di noleggi 
+  terminati.  I km totali percorsi sono ovviamente dati dalla somma dei km 
+  percorsi per ciascun noleggio. </li>
+ 
+</ol>
+  <br>
+</body>
+</html>

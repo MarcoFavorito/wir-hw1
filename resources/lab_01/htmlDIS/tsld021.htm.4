@@ -1,0 +1,45 @@
+
+<HTML>
+
+<HEAD>
+<META HTTP-EQUIV="Context-Type" CONTEXT="text/html;charset=PREDEFINITA (AUTOMATICA)">
+<meta name="GENERATOR" content="Microsoft Internet Assistant for PowerPoint 97">
+ <TITLE>Find the age of the youngest sailor with age    18, for each rating with at least 2 such sailors</TITLE> 
+</HEAD>
+
+<BODY     >
+
+ <H1>Find the age of the youngest sailor with age    18, for each rating with at least 2 such sailors</H1> 
+ <P><UL>
+<LI><H2>Only S.rating and S.age are mentioned in the SELECT, GROUP BY or HAVING clauses; other attributes `unnecessary’.
+</H2>
+</UL><UL>
+<LI><H2>2nd column of result is unnamed.  (Use AS to name it.)</H2>
+</UL></P>
+<P><UL>
+SELECT  S.rating,  MIN (S.age)
+<BR></UL><UL>
+FROM  Sailors S
+</UL><UL>
+WHERE  S.age &#062= 18
+</UL><UL>
+GROUP BY  S.rating
+</UL><UL>
+HAVING  COUNT (*) &#062 1</UL></P>
+<P><UL>
+Answer relation<BR></UL></P>
+<P></P> 
+<P>
+<TABLE>
+  <TD HEIGHT=100 WIDTH=100> <A HREF="tsld020.htm">Diapositiva precedente</A> </TD>
+  <TD HEIGHT=100 WIDTH=100> <A HREF="tsld022.htm">Diapositiva successiva</A> </TD>
+  <TD HEIGHT=100 WIDTH=150> <A HREF="tsld001.htm">Torna alla prima diaposiva</A> </TD>
+  <TD HEIGHT=100 WIDTH=150> <A HREF="sld021.htm">Visualizza versione grafica</A> </TD>
+</TABLE>
+<BR>
+</P>
+
+
+
+</Body>
+</HTML>

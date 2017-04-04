@@ -1,0 +1,67 @@
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+
+<html>
+<head>
+<title>Esame di Basi di Dati A.A. 2000/2001 - 2002-01-30</title>
+</head>
+
+<center>
+<h1>Esame di Basi di Dati<br>
+A.A. 2000/2001 - Appello del 30/01/2002</h1>
+</center>
+
+<h2>Problema 1</h2>
+
+Si progetti lo schema concettuale Entit&agrave;-Relazione di un'applicazione
+relativa ad un commercio di mobili, descritta dalle seguenti specifiche:
+<ul>
+  <li>Sono di interesse le unit&agrave; con cui si costruiscono i mobili,
+      unit&agrave; dette "moduli". Di ogni modulo interessa il codice
+      identificativo, le dimensioni, il tipo (ad esempio, cassettiera, anta,
+      ecc.), ed i mobilifici che li producono. Alcuni moduli sono di materiali
+      speciali, adatti in modo particolare all'uso da parte di bambini. Di
+      ognuno di questi moduli speciali interessa anche il materiale con cui
+      &egrave; fatto.
+  <li>Come detto in precedenza, i moduli sono le unit&agrave; con cui si
+      costruiscono i mobili. Un mobile viene costruito perch&eacute; un cliente
+      lo ordina ad un negozio, ed &egrave; identificato da un numero
+      progressivo per quel cliente nell'ambito del negozio (ad esempio un
+      mobile pu&ograve; essere identificato come il mobile numero 3 ordinato
+      dal cliente C al negozio N). Dei mobili interessano il prezzo, ed i
+      moduli di cui &egrave; composto, con l'indicazione, per ogni modulo, di
+      quanti pezzi sono necessari per il mobile (ad esempio, 2 cassettiere, tre
+      ante, ecc.). I mobili per bambini sono mobili speciali, perch&eacute;
+      sono costituti solo da moduli speciali. Dei mobili per bambini interessa
+      anche lo sconto praticato.
+  <li>Dei mobilifici interessa il codice fiscale, il numero di dipendenti,
+      l'indirizzo, la citt&agrave; e la regione in cui sono ubicati.
+  <li>Dei negozi interessa il nome, la categoria (di lusso, economico, ecc.),
+      la citt&agrave; e la regione.
+  <li>Dei clienti interessa il nome, il cognome, la data di nascita e la
+      citt&agrave; di residenza.
+</ul>
+
+<h2>Problema 2</h2>
+
+Si progetti lo schema logico dell'applicazione, indicando lo schema relazionale
+corrispondente, completo di vincoli. L'indicazione di progetto &egrave; di
+evitare valori nulli nella base di dati. 
+
+<h2>Problema 3</h2>
+
+Sulla base dello schema relazionale definito per il problema 2, esprimere in
+SQL le seguenti interrogazioni:
+<ol>
+  <li>Fornire il codice dei moduli che sono prodotti dai mobilifici di Roma.
+  <li>Fornire tutti i dati dei mobili per bambini ordinati a negozi di Siena.
+  <li>Dato un cliente C, fornire il codice dei mobili ordinati da C che sono
+      costituti da un unico modulo.
+  <li>Fornire i dati di tutti i mobili che sono stati ordinati da clienti che
+      risiedono in citt&agrave; diverse dal negozio a cui &egrave; stato fatto
+      l'ordine.
+</ol>
+
+</body>
+</html>
+

@@ -1,0 +1,94 @@
+<!doctype html public "-//w3c//dtd html 4.0 transitional//en">
+<html>
+<head>
+<link href="java.css" rel="stylesheet" type="text/css">
+<title>Distanza fra due punti</title>
+</head>
+
+<body>
+
+<h2>Distanza fra due punti</h2>
+
+Si scriva un applet che calcola la distanza fra due
+punti. I due punti vengono indicati con il mouse, in
+questo modo: il primo punto &egrave; quello in cui il
+mouse &egrave; stato premuto, il secondo &egrave; quello
+in cui il pulsante &egrave; stato rilasciato. Si tratta
+quindi di trovare la distanza fra il punto in cui il
+mouse viene premuto e quello in cui viene rilasciato.<p>
+
+Cominciamo con la funzione <tt>mouseUp</tt>. Questa
+funzione deve stampare la distanza fra il punto in cui
+&egrave; stato premuto il pulsante e quello in cui &egrave;
+stato sollevato. Questa funzione ha a disposizione le
+coordinate del punto di rilascio (nelle variabili <tt>x</tt>
+e <tt>y</tt>), ma non quelle del punto di click.<p>
+
+D'altra parte, le coordinate del punto di pressione sono
+note quando si esegue <tt>mouseDown</tt>. &Egrave; quindi
+necessario fare in modo che <tt>mouseDown</tt> memorizzi
+queste coordinate in modo tale che <tt>mouseUp</tt> le
+possa usare. Usiamo quindi delle variabili globali, che si
+possono accedere sia da <tt>mouseDown</tt> che da
+<tt>mouseUp</tt>.<p>
+
+Riassumendo: <tt>mouseDown</tt> memorizza le coordinate del
+punto in cui si &egrave; premuto il pulsante in due
+variabili globali <tt>xpressione</tt> e <tt>ypressione</tt>;
+in <tt>mouseUp</tt> si calcola la distanza fra i punti
+(<tt>x</tt>,<tt>y</tt>), che &egrave; la coordinata del
+punto in cui il pulsante &egrave; stato lasciato, e
+(<tt>xpressione</tt>,<tt>ypressione</tt>). Il valore di
+questa differenza viene poi stampato.<p>
+
+Il programma finale
+<a href="Distanza.java">Distanza.java</a>
+contiene anche il disegno di una croce nel punto di pressione,
+croce che viene poi cancellata quando si lascia il pulsante
+del mouse.<p>
+
+<pre>
+/*
+  Distanza fra due punti.
+*/
+
+import java.awt.*;
+
+public class Distanza extends java.applet.Applet {
+  int xpremuto, ypremuto;
+
+  public boolean mouseDown(Event e, int x, int y) {
+    Graphics g=getGraphics();
+
+    g.drawLine(x-10,y,x+10,y);
+    g.drawLine(x,y-10,x,y+10);
+
+    xpremuto=x;
+    ypremuto=y;
+
+    return true;
+  }
+
+  public boolean mouseUp(Event e, int x, int y) {
+    Graphics g=getGraphics();
+    double d;
+
+    g.clearRect(xpremuto-10,ypremuto-10,21,21);
+    g.clearRect(0,0,200,20);
+
+    d=Math.sqrt((double) (x-xpremuto)*(x-xpremuto) + (y-ypremuto)*(y-ypremuto));
+
+    g.drawString(""+d,10,20);
+
+    return true;
+  }
+}
+
+</pre>
+
+<p>
+<applet code="Distanza.class" height="400" width="400">
+</applet>
+
+</body>
+</html>

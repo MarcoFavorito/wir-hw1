@@ -1,0 +1,207 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1">
+<META NAME="Generator" CONTENT="Microsoft Word 98">
+<TITLE>Esame del 14 luglio 1999</TITLE>
+<META NAME="Template" CONTENT="damore-4gb:Applications:Microsoft Office 98:Templates:Web Pages:Blank Web Page">
+</HEAD>
+<BODY LINK="#0000ff" VLINK="#800080">
+
+<B><P ALIGN="CENTER">Universit&agrave; di Roma "La Sapienza" &#150; Facolt&agrave; di Ingegneria</P>
+</B><P ALIGN="CENTER">Corso di Fondamenti di Informatica</P>
+<P ALIGN="CENTER">Corso di laurea: Ambiente e Territorio</P>
+<I><FONT SIZE=2><P ALIGN="CENTER">14 luglio 1999 (1&#170; prova)</P>
+</I></FONT><FONT SIZE=1><P ALIGN="CENTER">tempo a disposizione: 120 minuti</P>
+</FONT><B><FONT SIZE=2><P>Problema 1 (18 punti)</P>
+</B><P>Un grande aeroporto &egrave; suddiviso in diversi terminali, ognuno dei quali &egrave; identificato da una lettera dell'alfabeto progressiva, a partire dalla lettera 'A'. Per ogni terminale l'accesso ai voli in partenza avviene da diversi gate. Tutti i terminali dell'aeroporto hanno lo stesso numero di gate, ed ogni gate &egrave; identificato da un intero compreso tra 1 ed il numero di gate. Il numero di terminali ed il numero di gate per terminale sono costanti e fissati a priori. </P>
+<P>Le informazioni riguardo al numero giornaliero di passeggeri in partenza dall'aeroporto sono memorizzate in un file di testo, come segue: il file &egrave; suddiviso in righe, ognuna delle quali contiene, separati da uno spazio, </P>
+
+<UL>
+<LI>la lettera identificativa di un terminale, </LI>
+<LI>il numero identificativo di un gate, e </LI>
+<LI>il numero giornaliero di passeggeri in partenza da quel gate di quel terminale.</LI></UL>
+
+<P>Ogni coppia terminale-gate compare in al pi&ugrave; una riga del file. Se una coppia terminale-gate non compare in alcuna riga del file il corrispondente numero giornaliero di passeggeri in partenza &egrave; nullo. </P>
+<P>Si richiede di risolvere i seguenti punti: </P>
+<OL>
+
+<LI>Costruire una opportuna struttura di dati adatta a memorizzare in memoria centrale tutte le informazioni riguardo al numero giornaliero di passeggeri in partenza dall'aeroporto, fornendo le corrispondenti dichiarazioni di tipo C. Fornire inoltre le ulteriori dichiarazioni globali in C da utilizzarsi per risolvere i due punti successivi.</LI>
+<LI>Scrivere una funzione C (o pi&ugrave;) che, ricevendo come parametro il nome di un file di testo contenente le informazioni riguardo al numero giornaliero di passeggeri in partenza dall'aeroporto, restituisca in un opportuno parametro la struttura progettata al punto 1 (contenente quindi tutte le informazioni memorizzate sul file). </LI>
+<LI>Scrivere una funzione C (o pi&ugrave;) che, ricevendo in ingresso attraverso opportuni parametri</LI></OL>
+
+
+<UL>
+<LI>la struttura progettata al punto 1, contenente le informazioni riguardo al numero giornaliero di passeggeri in partenza dall'aeroporto, e </LI>
+<LI>un numero intero non negativo, </LI></UL>
+<DIR>
+
+<P>costruisca e restituisca una lista con un elemento per ogni coppia terminale-gate con numero di passeggeri in partenza minore o uguale al numero dato. Ogni elemento &egrave; costituito dagli identificativi di terminale e di gate e dal rispettivo numero di passeggeri in partenza. La lista restituita deve essere ordinata per lettera identificativa del terminale crescente (i gate associati a ciascun terminale possono invece comparire in ordine arbitrario). </P>
+<P>&nbsp;</P></DIR>
+
+<B><P>Esempio</P>
+</B><P>Per un aeroporto con tre terminali (identificati quindi da 'A', 'B' e 'C') e tre gate per ogni terminale, &egrave; mostrato il possibile contenuto di un file di testo con le informazioni riguardo al numero giornaliero di passeggeri in partenza. Se al punto 3 si prende in ingresso la struttura corrispondente a tale file di testo (come costruita al punto 2), ed il valore 100, viene restituita la lista mostrata in figura. </P></FONT>
+<P ALIGN="CENTER"><CENTER><TABLE BORDER CELLSPACING=1 WIDTH=340>
+<TR><TD WIDTH="16%" VALIGN="TOP">
+<P><FONT SIZE=2>B 2 358</FONT></TD>
+<TD WIDTH="84%" VALIGN="MIDDLE" ROWSPAN=8>
+<P><IMG SRC="Image40.gif" WIDTH=264 HEIGHT=25></TD>
+</TR>
+<TR><TD WIDTH="16%" VALIGN="TOP">
+<FONT SIZE=2><P>A 1 25</FONT></TD>
+</TR>
+<TR><TD WIDTH="16%" VALIGN="TOP">
+<FONT SIZE=2><P>A 3 872</FONT></TD>
+</TR>
+<TR><TD WIDTH="16%" VALIGN="TOP">
+<FONT SIZE=2><P>C 2 92</FONT></TD>
+</TR>
+<TR><TD WIDTH="16%" VALIGN="TOP">
+<FONT SIZE=2><P>B 1 281</FONT></TD>
+</TR>
+<TR><TD WIDTH="16%" VALIGN="TOP">
+<FONT SIZE=2><P>B 3 542</FONT></TD>
+</TR>
+<TR><TD WIDTH="16%" VALIGN="TOP">
+<FONT SIZE=2><P>C 1 1132</FONT></TD>
+</TR>
+<TR><TD WIDTH="16%" VALIGN="TOP">
+<FONT SIZE=2><P>C 3 88</FONT></TD>
+</TR>
+</TABLE>
+</CENTER></P>
+
+<P ALIGN="CENTER"><HR SIZE=0></P>
+<B><P ALIGN="CENTER">Universit&agrave; di Roma "La Sapienza" &#150; Facolt&agrave; di Ingegneria</P>
+</B><P ALIGN="CENTER">Corso di Fondamenti di Informatica</P>
+<P ALIGN="CENTER">Corso di laurea: Ambiente e Territorio</P>
+<I><FONT SIZE=2><P ALIGN="CENTER">14 luglio 1999 (2&#170; prova)</P>
+</I></FONT><FONT SIZE=1><P ALIGN="CENTER">tempo a disposizione: 60 minuti</P>
+</FONT><B><FONT SIZE=2><P>Problema 2 (4 punti)</P>
+</B><P>Con riferimento al linguaggio C, descrivere le modalit&agrave; con cui avvengono le operazioni fra operandi di tipo non identico.</P>
+<P>&nbsp;</P>
+<B><P>Problema 3 (4 punti)</P>
+</B><P>Per il seguente frammento di programma C, assumendo validi i prototipi mostrati, indicare quali chiamate di funzione sono corrette e quali sono errate, motivando le risposte date. </P>
+</FONT><FONT FACE="Courier" SIZE=1><P>typedef struct {</P>
+<P>char c1;</P>
+<P>int c2;</P>
+<P>} TipoStrutt;</P>
+<P>typedef int TipoVett[4];</P>
+<P>/* prototipi */</P>
+<P>void Proc1 (char *, int);</P>
+<P>void Proc2 (TipoStrutt);</P>
+<P>void Proc3 (int, int *, int);</P>
+<P>void Proc4 (TipoVett);</P>
+<P>int Fun1 (char, int);</P>
+<P>/* ... */</P>
+<P>main() { </P>
+<P>char a;</P>
+<P>int i;</P>
+<P>TipoStrutt s;</P>
+<P>TipoVett v;</P>
+<P>/* ... */</P>
+<P>Proc1(&amp;a, i); /* 1 */</P>
+<P>Proc1("a", i); /* 2 */</P>
+<P>Proc2(s); /* 3 */</P>
+<P>Proc2(s.c1, s.c2); /* 4 */</P>
+<P>Proc2(s.c2, s.c1); /* 5 */</P>
+<P>Proc3(v[3], &amp;v[2], v[1]); /* 6 */</P>
+<P>Proc3(v[1], i, i); /* 7 */</P>
+<P>Proc4(v); /* 8 */</P>
+<P>Proc4([i,v[2],i]); /* 9 */</P>
+<P>i = Fun1(a, i); /* 10 */</P>
+<P>Fun1(a, i); /* 11 */</P>
+<P>i = Fun1('1', i); /* 12 */</P>
+<P>/* ... */</P>
+<P>}</P>
+</FONT><FONT SIZE=2><P>&nbsp;</P>
+<B><P>Problema 4 (4 punti)</P>
+</B><P>Data la relazione Voli (v. tabella esemplificativa), scrivere un'interrogazione SQL che mostri tutti i viaggi con esattamente uno scalo intermedio, senza cambiare compagnia aerea, da Roma a Parigi.</P></FONT>
+<P ALIGN="CENTER"><CENTER><TABLE BORDER CELLSPACING=1 WIDTH=172>
+<TR><TD VALIGN="TOP" COLSPAN=3>
+<P ALIGN="CENTER"><B><FONT SIZE=2>Voli</B></FONT></TD>
+</TR>
+<TR><TD WIDTH="28%" VALIGN="TOP">
+<B><FONT SIZE=2><P ALIGN="CENTER">Partenza</B></FONT></TD>
+<TD WIDTH="37%" VALIGN="TOP">
+<B><FONT SIZE=2><P ALIGN="CENTER">Destinazione</B></FONT></TD>
+<TD WIDTH="36%" VALIGN="TOP">
+<B><FONT SIZE=2><P ALIGN="CENTER">Compagnia</B></FONT></TD>
+</TR>
+<TR><TD WIDTH="28%" VALIGN="TOP">
+<FONT SIZE=2><P ALIGN="CENTER">Roma</FONT></TD>
+<TD WIDTH="37%" VALIGN="TOP">
+<FONT SIZE=2><P ALIGN="CENTER">Milano</FONT></TD>
+<TD WIDTH="36%" VALIGN="TOP">
+<FONT SIZE=2><P ALIGN="CENTER">Air-Pippo</FONT></TD>
+</TR>
+<TR><TD WIDTH="28%" VALIGN="TOP">
+<FONT SIZE=2><P ALIGN="CENTER">Milano</FONT></TD>
+<TD WIDTH="37%" VALIGN="TOP">
+<FONT SIZE=2><P ALIGN="CENTER">Parigi</FONT></TD>
+<TD WIDTH="36%" VALIGN="TOP">
+<FONT SIZE=2><P ALIGN="CENTER">Air-Pluto</FONT></TD>
+</TR>
+<TR><TD WIDTH="28%" VALIGN="TOP">
+<FONT SIZE=2><P ALIGN="CENTER">Milano</FONT></TD>
+<TD WIDTH="37%" VALIGN="TOP">
+<FONT SIZE=2><P ALIGN="CENTER">Berlino</FONT></TD>
+<TD WIDTH="36%" VALIGN="TOP">
+<FONT SIZE=2><P ALIGN="CENTER">Air-Pippo</FONT></TD>
+</TR>
+<TR><TD WIDTH="28%" VALIGN="TOP">
+<FONT SIZE=2><P ALIGN="CENTER">Roma</FONT></TD>
+<TD WIDTH="37%" VALIGN="TOP">
+<FONT SIZE=2><P ALIGN="CENTER">Palermo</FONT></TD>
+<TD WIDTH="36%" VALIGN="TOP">
+<FONT SIZE=2><P ALIGN="CENTER">Air-Orazio</FONT></TD>
+</TR>
+<TR><TD WIDTH="28%" VALIGN="TOP">
+<FONT SIZE=2><P ALIGN="CENTER">Palermo</FONT></TD>
+<TD WIDTH="37%" VALIGN="TOP">
+<FONT SIZE=2><P ALIGN="CENTER">Parigi</FONT></TD>
+<TD WIDTH="36%" VALIGN="TOP">
+<FONT SIZE=2><P ALIGN="CENTER">Air-Orazio</FONT></TD>
+</TR>
+<TR><TD WIDTH="28%" VALIGN="TOP">
+<FONT SIZE=2><P ALIGN="CENTER">Milano</FONT></TD>
+<TD WIDTH="37%" VALIGN="TOP">
+<FONT SIZE=2><P ALIGN="CENTER">Ancona</FONT></TD>
+<TD WIDTH="36%" VALIGN="TOP">
+<FONT SIZE=2><P ALIGN="CENTER">Air-Pippo</FONT></TD>
+</TR>
+<TR><TD WIDTH="28%" VALIGN="TOP">
+<FONT SIZE=2><P ALIGN="CENTER">Ancona</FONT></TD>
+<TD WIDTH="37%" VALIGN="TOP">
+<FONT SIZE=2><P ALIGN="CENTER">Parigi</FONT></TD>
+<TD WIDTH="36%" VALIGN="TOP">
+<FONT SIZE=2><P ALIGN="CENTER">Air-Pippo</FONT></TD>
+</TR>
+</TABLE>
+</CENTER></P>
+
+<FONT SIZE=2><P ALIGN="CENTER">&nbsp;</P>
+<P>Con riferimento all'esempio, l'interrogazione richiesta deve fornire come risultato la relazione</P></FONT>
+<P ALIGN="CENTER"><CENTER><TABLE BORDER CELLSPACING=1 WIDTH=214>
+<TR><TD WIDTH="22%" VALIGN="TOP">
+<P ALIGN="CENTER"><B><FONT SIZE=2>Partenza</B></FONT></TD>
+<TD WIDTH="20%" VALIGN="TOP">
+<B><FONT SIZE=2><P ALIGN="CENTER">Scalo</B></FONT></TD>
+<TD WIDTH="30%" VALIGN="TOP">
+<B><FONT SIZE=2><P ALIGN="CENTER">Destinazione</B></FONT></TD>
+<TD WIDTH="29%" VALIGN="TOP">
+<B><FONT SIZE=2><P ALIGN="CENTER">Compagnia</B></FONT></TD>
+</TR>
+<TR><TD WIDTH="22%" VALIGN="TOP">
+<FONT SIZE=2><P ALIGN="CENTER">Roma</FONT></TD>
+<TD WIDTH="20%" VALIGN="TOP">
+<FONT SIZE=2><P ALIGN="CENTER">Palermo</FONT></TD>
+<TD WIDTH="30%" VALIGN="TOP">
+<FONT SIZE=2><P ALIGN="CENTER">Parigi</FONT></TD>
+<TD WIDTH="29%" VALIGN="TOP">
+<FONT SIZE=2><P ALIGN="CENTER">Air-Orazio</FONT></TD>
+</TR>
+</TABLE>
+</CENTER></P>
+
+<P ALIGN="CENTER"></P></BODY>
+</HTML>

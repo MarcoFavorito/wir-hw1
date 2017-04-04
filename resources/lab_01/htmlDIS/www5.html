@@ -1,0 +1,144 @@
+<HTML>
+<HEAD>
+<TITLE> Knowledge-based access to the network </TITLE>
+</HEAD>
+<BODY>
+<CENTER>
+<H2> Knowledge-based access to the network</H2>
+<H3>
+Cinzia Barcaroli, Luca Iocchi, Maurizio Lenzerini, Daniele Nardi
+</H3>
+<A HREF="http://www.dis.uniroma1.it/DIS/DISHome.html">
+Dipartimento di Informatica e Sistemistica</A>,
+<BR>
+<A HREF="http://itaca.caspur.it">
+Universit&agrave; di Roma ''La Sapienza''</A>
+<BR>
+<A HREF="mailto:nardi@dis.uniroma1.it"> mail: nardi@dis.uniroma1.it  </A>
+<BR>
+<A HREF="http://www.dis.uniroma1.it/PUB/nardi/nardi.html">
+http://www.dis.uniroma1.it/PUB/nardi/nardi.html  </A>
+</CENTER>
+
+<P>
+The idea that knowledge can be used for finding information through
+the network has been developed in several directions. However, most
+proposals keep the knowledge about the information separate from
+the access methods. This has the advantage of making it possible
+the development of systems that can gather information from different 
+sources, but it requires a mapping from the representation structures
+into methods to access information on the network which is
+accomplished by ad hoc procedures.
+On the other hand, the information that we access through the browsers
+is organized into structures that are coded in terms of
+the content of each page and of its relationship to other pages.
+Such structures typically guide humans in the search for a specific information.
+Our idea is to use this kind of structural information to build 
+knowledge based tools for the access to the network. 
+More specifically, we are working at a system which acquires information
+on a subject matter by extracting from the pages an explicit representation
+of the underlying structure, and use it to answer user's requests by directly
+pointing to the page containing the desired answer.
+</P>
+
+<P>
+There are three building blocks of our proposal: a mechanism for 
+representing Web pages  in terms
+of description logics, a method for learning the structure of the pages
+ available in the network on a specific topic,
+a technique for generating a plan, as a sequence of links,
+that leads to a page satisfying a user request.
+</P>
+
+<P>
+<A><A HREF="http://www.dis.uniroma1.it/PUB/AI/dl"> 
+Description logics </A> [4] have been developed in the last years with
+the aim of formalizing terminological systems
+that have been developed after KL-ONE. Such systems are
+based on the idea of representing knowledge by building
+hierarchical structures, sometimes called terminologies,
+where the descriptions of interest are classified according
+to their properties. The basic elements of the representation are
+called <I>concepts</I> and <I>roles</I>,
+which denote classes and binary relations, respectively. 
+This general scheme is specialized in our framework according to the 
+following ontology:
+<UL>
+<LI> the structure of a page is regarded as a concept description and a
+specific Web page as an instance of a concept;</LI>
+<LI> each page has static properties, which are represented as roles
+and refer to any kind of information that can be relevant to both
+the page structure and its content;</LI>
+<LI> each page has dynamic properties, which are also represented as
+roles, and are represented as actions, in the sense that they allow 
+jumping to other pages.</LI>
+</UL>
+
+<P>
+Regarding the learning method, the extraction of information from the sources
+relies both on the ability to represent the syntactic structure
+of the documents (description logics can be effectively used to
+characterize SGML documents [1]) and on the processing textual information
+in order to identify names for the links and other static properties
+such as, for example, page title.
+The information acquired by the system is returned as
+a set of training examples in a description logic. To support
+the construction of a knowledge base, we use the method for
+inductive learning proposed in [2]. In addition, we
+are considering the extension of such method to
+exploit the use of background knowledge during the learning process.
+The result of the knowledge acquisition stage is a knowledge base containing
+the concept descriptions that represent
+the typical structure of the Web pages on the subject matter, together
+with information about the initial addresses to navigate within
+such structures.
+</P>
+
+<P>
+Once the knowledge base is constructed, our system can accept requests 
+from the user, concerning the subjects previously examined, and is
+expected to return the page(s) satisfying the requests. This
+is achieved by a two step process. The first step consists of finding
+one or more plans (sequences of links) that lead to a page satisfying
+the goal associated with the user request. The stecond step consists
+in the execution of the plan, which may require the discovery of
+failures and requests for replanning. The planning component of the system
+relies on a special use of the procedural rules typically used in
+description logic systems, that has been obtained by exploiting
+the correspondence between description and dynamic logics.
+The setting has been developed for planning the actions of a mobile
+robot [3].
+</P>
+
+<P>
+Therefore, our system, whose implementation is in progress,
+is meant to act as an intelligent browser,
+which allows the user to reach the requested information in a single step.
+Learning and planning are essential underlying techniques for accomplishing
+ such a task, and description logics are the bases for both 
+the formalization and the implementation of several system components.
+We believe that the main feature of our proposal is in the intrepretation
+of the network structures available on the Web,
+directly in terms of the representation structures used by the system
+in order to provide reasoning facilities.
+</P>
+
+<H3>References</H3>
+
+<P> [1] D. Calvanese, G. De Giacomo, M. Lenzerini.
+<A HREF="ftp://www.dis.uniroma1.it/PUB/AI/lenzerini/SGML.ps.gz">
+Rethinking SGML document type definitions</A></P>
+<P> [2] W. Cohen, H. Hirsch, Learning the Classic Description Logics:
+Theoretical and Experimental Results. Proc. of KR-94</P>
+<P> [3] G. De Giacomo, L.Iocchi, D. Nardi, R. Rosati.
+<A HREF="ftp://www.dis.uniroma1.it/PUB/AI/nardi/Ricerca/papers/tino2.ps.gz">
+Classing Planning for Mobile Robots</A>
+</P>
+<P> [4] W.A. Woods.
+Understanding Subsumption and Taxonomy. A Framework for Progress. 
+In Principles of Semantic Networks. John F. Sowa (Ed.)
+</P>
+
+</BODY>
+</HTML>
+

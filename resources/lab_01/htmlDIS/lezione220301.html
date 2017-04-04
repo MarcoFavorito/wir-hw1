@@ -1,0 +1,582 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1">
+<META NAME="Generator" CONTENT="Microsoft Word 98">
+<TITLE>LEZIONE 22 03 2001</TITLE>
+</HEAD>
+<BODY>
+
+<B><U><FONT FACE="Times" SIZE=4><P ALIGN="CENTER">Fond. di Informatica (C.E.M.N.)</U>&#9;&#9;&#9;      <U>terzo complemento didattico</P>
+</U></FONT><FONT FACE="Times"><P ALIGN="CENTER"> (COSTRUTTORI DI) TIPI DEFINITI DALL'UTENTE</P>
+</B><P ALIGN="JUSTIFY">consentono di scrivere speciali "ESPRESSIONI_DI_TIPO" (atte a SPECIFICARE TIPI DI DATI).</P>
+<B><P ALIGN="RIGHT">TIPO = VALORI + OPERATORI !!!</P>
+</B><P>usandoli, si possono dichiarare variabili di un tipo non predefinito</P><DIR>
+<DIR>
+<DIR>
+<DIR>
+<DIR>
+
+</FONT><FONT FACE="Courier" SIZE=4><P>var g: <B>(</B>Lun, Mar, Mer, Gio, Ven, Sab, Dom<B>)</B>;</P>
+<P>var cont: 2..7</P></DIR>
+</DIR>
+</DIR>
+</DIR>
+</DIR>
+
+</FONT><FONT FACE="Times"><P ALIGN="JUSTIFY">e usarle per contenere valori previsti dal loro tipo</P><DIR>
+<DIR>
+<DIR>
+<DIR>
+<DIR>
+
+</FONT><FONT FACE="Courier" SIZE=4><P>g:= Lun;</P>
+<P>cont:=6;</P>
+</FONT><B><FONT FACE="Courier New"><P ALIGN="JUSTIFY"></P></DIR>
+</DIR>
+</DIR>
+</DIR>
+</DIR>
+
+</B></FONT><FONT FACE="Times"><P ALIGN="JUSTIFY">I tipi definiti dall'utente possono essere "anonimi" come quelli sopra, o avere un nome (sempre stabilito dall'utente). Il nome viene assegnato ad un nuovo tipo mediante una DICHIARAZIONE DI TIPO, cio&egrave; un'associazione tra un identificatore (il nome di tipo) e un tipo (gi&agrave; esistente oppure definito dall'utente usando un costruttore di tipo).</P><DIR>
+<DIR>
+<DIR>
+
+</FONT><B><FONT FACE="Courier" SIZE=4><P>TYPE</B> GIORNO = (Lun, Mar, Mer, Gio, Ven, Sab, Dom);</P>
+<B><P>TYPE</B> Contatore = 2..7;</P>
+<B><P>TYPE</B> InteroNonNegativo = 0..maxint;</P>
+<B><P>TYPE</B> NumeroIntero = integer;</P></DIR>
+</DIR>
+</DIR>
+
+</FONT><FONT FACE="Times"><P ALIGN="JUSTIFY">Se un certo nome di tipo &egrave; stato dichiarato nel programma, lo si pu&ograve; usare come un tipo predefinito, per definire variabili ...</P><DIR>
+<DIR>
+<DIR>
+<DIR>
+<DIR>
+
+</FONT><FONT FACE="Courier"><P>var cont:InteroNonNegativo&#9;<STRIKE>cont:= <B>-7</B></STRIKE>&#9;cont:=5</P>
+<P>       i: NumeroIntero;&#9;&#9;</P>
+<P>       g: GIORNO&#9;&#9;&#9;     g:=Gio;  <STRIKE>g:=gio</STRIKE>   <STRIKE>g:=7</P>
+</STRIKE></FONT><B><FONT FACE="Courier New"><P ALIGN="JUSTIFY"></P></DIR>
+</DIR>
+</DIR>
+</DIR>
+</DIR>
+
+</FONT><FONT FACE="Times"><P>TIPO ENUMERATO&#9;(id1, ..., idn)</P>
+</B><P ALIGN="JUSTIFY"></P><DIR>
+<DIR>
+
+</FONT><FONT FACE="Times" SIZE=4><P ALIGN="JUSTIFY">VALORI &#9;&#9;= {identificatori esplicitamente elencati nella definizione}</P>
+<P ALIGN="JUSTIFY">OPERATORI &#9;= ORD, PRED, SUCC&#9;</P><DIR>
+<DIR>
+<DIR>
+
+</FONT><FONT FACE="Times"><P ALIGN="JUSTIFY">&#9;&#9;</P></DIR>
+</DIR>
+</DIR>
+</DIR>
+</DIR>
+
+<P ALIGN="JUSTIFY">ord(Mar)=1&#9;ord(Lun)=0&#9;ord(Dom)=6&#9;&#9;pred(Mar)=Lun&#9;&#9;succ(Dom)=!!!</P>
+</FONT><B><FONT FACE="Courier New"><P ALIGN="JUSTIFY"></P>
+</FONT><FONT FACE="Times"><P ALIGN="JUSTIFY">TIPO INTERVALLO&#9;LIM1..LIM2&#9;&#9;&#9;&#9;</B>con LIM1, Lim2 valori di </P><DIR>
+<DIR>
+<DIR>
+<DIR>
+<DIR>
+<DIR>
+<DIR>
+<DIR>
+<DIR>
+<DIR>
+<DIR>
+<DIR>
+<DIR>
+<DIR>
+<DIR>
+<DIR>
+<DIR>
+<DIR>
+
+<P ALIGN="JUSTIFY">un tipo ORDINALE (tipo<I> ospite</I>)</P></DIR>
+</DIR>
+</DIR>
+</DIR>
+</DIR>
+</DIR>
+</DIR>
+</DIR>
+</DIR>
+</DIR>
+</DIR>
+</DIR>
+</DIR>
+</DIR>
+</DIR>
+</DIR>
+</DIR>
+</DIR>
+
+<P ALIGN="JUSTIFY">VALORI &#9;= {tutti i valori da LIM1 a LIM2 nel tipo ospite}</P>
+<P ALIGN="JUSTIFY">OPERATORI &#9;= quelli ammessi dal tipo ospite (Il risultato delle operazioni sar&agrave; di tipo ospite)&#9;</P>
+<P ALIGN="RIGHT">se GIORNO &egrave; definito nel programma,</P><DIR>
+<DIR>
+<DIR>
+<DIR>
+<DIR>
+
+</FONT><FONT FACE="Courier" SIZE=4><P>TYPE GIORNO_LAV = Lun .. Ven</P>
+<P>var ip: 1 .. maxint;</P>
+<P>    gl: GIORNO_LAV;</P></DIR>
+</DIR>
+</DIR>
+</DIR>
+</DIR>
+
+</FONT><B><FONT FACE="Times"><P ALIGN="JUSTIFY">Esercizio</P>
+</B><P ALIGN="JUSTIFY">INPUT = dati sul viaggio di un missile (ora min sec della partenza;tempo di volo espresso in secondi)</P>
+<P ALIGN="JUSTIFY">OUTPUT = ora min sec di atterraggio</P><DIR>
+<DIR>
+<DIR>
+<DIR>
+
+<P ALIGN="JUSTIFY">1) (chiedere e) leggere ORE, MIN, SEC, TVOLO </P>
+<P ALIGN="JUSTIFY">2) stampa di controllo</P>
+<P ALIGN="JUSTIFY">3) calcolare i nuovi valori di ORE MIN e SEC dopo l'aggiunta di TVOLO secondi</P>
+<P ALIGN="JUSTIFY">4) stampa risultati</P></DIR>
+</DIR>
+</DIR>
+</DIR>
+</FONT>
+<TABLE BORDER CELLSPACING=1 CELLPADDING=4 WIDTH=464>
+<TR><TD WIDTH="17%" VALIGN="TOP">
+<FONT FACE="Times"><P ALIGN="CENTER">Ore</FONT></TD>
+<TD WIDTH="20%" VALIGN="TOP">
+<FONT FACE="Times"><P ALIGN="CENTER">Min</FONT></TD>
+<TD WIDTH="20%" VALIGN="TOP">
+<FONT FACE="Times"><P ALIGN="CENTER">sec</FONT></TD>
+<TD WIDTH="12%" VALIGN="TOP">&nbsp;</TD>
+<TD WIDTH="31%" VALIGN="TOP">
+<FONT FACE="Times"><P ALIGN="JUSTIFY">TVOLO</FONT></TD>
+</TR>
+<TR><TD WIDTH="17%" VALIGN="TOP">
+<FONT FACE="Times"><P ALIGN="CENTER">12</FONT></TD>
+<TD WIDTH="20%" VALIGN="TOP">
+<FONT FACE="Times"><P ALIGN="CENTER">52</FONT></TD>
+<TD WIDTH="20%" VALIGN="TOP">
+<FONT FACE="Times"><P ALIGN="CENTER">20</FONT></TD>
+<TD WIDTH="12%" VALIGN="TOP">
+<FONT FACE="Times"><P ALIGN="JUSTIFY">+</FONT></TD>
+<TD WIDTH="31%" VALIGN="TOP">
+<FONT FACE="Times"><P ALIGN="JUSTIFY">730</FONT></TD>
+</TR>
+<TR><TD WIDTH="17%" VALIGN="TOP">
+<FONT FACE="Times"><P ALIGN="CENTER">12</FONT></TD>
+<TD WIDTH="20%" VALIGN="TOP">
+<FONT FACE="Times"><P ALIGN="CENTER">52</FONT></TD>
+<TD WIDTH="20%" VALIGN="TOP">
+<FONT FACE="Times"><P ALIGN="CENTER">750 <B>!!!!!!</B></FONT></TD>
+<TD WIDTH="12%" VALIGN="TOP">&nbsp;</TD>
+<TD WIDTH="31%" VALIGN="TOP">&nbsp;</TD>
+</TR>
+<TR><TD WIDTH="37%" VALIGN="TOP" COLSPAN=2>&nbsp;</TD>
+<TD WIDTH="20%" VALIGN="TOP">
+<FONT FACE="Times"><P ALIGN="CENTER">normalizzazione</FONT></TD>
+<TD WIDTH="43%" VALIGN="TOP" COLSPAN=2>
+<FONT FACE="Times"><P ALIGN="JUSTIFY">750 div 60 = <B>12</B> con resto 30</P>
+<P ALIGN="JUSTIFY">750 mod 60 = <B>30</B></FONT></TD>
+</TR>
+<TR><TD WIDTH="17%" VALIGN="TOP">
+<FONT FACE="Times"><P ALIGN="CENTER">12</FONT></TD>
+<TD WIDTH="20%" VALIGN="TOP">
+<FONT FACE="Times"><P ALIGN="CENTER">52 + <B>12 !!!!!</B></FONT></TD>
+<TD WIDTH="20%" VALIGN="TOP">
+<B><FONT FACE="Times"><P ALIGN="CENTER">30</B></FONT></TD>
+<TD WIDTH="12%" VALIGN="TOP">&nbsp;</TD>
+<TD WIDTH="31%" VALIGN="TOP">&nbsp;</TD>
+</TR>
+<TR><TD WIDTH="17%" VALIGN="TOP">&nbsp;</TD>
+<TD WIDTH="20%" VALIGN="TOP">
+<FONT FACE="Times"><P ALIGN="CENTER">Normalizzazione</FONT></TD>
+<TD WIDTH="20%" VALIGN="TOP">&nbsp;</TD>
+<TD WIDTH="43%" VALIGN="TOP" COLSPAN=2>
+<FONT FACE="Times"><P ALIGN="JUSTIFY">64 div 60 = <B>1</B> con resto <B>4</B></FONT></TD>
+</TR>
+<TR><TD WIDTH="17%" VALIGN="TOP">
+<FONT FACE="Times"><P ALIGN="CENTER">12 + <B>1</B></FONT></TD>
+<TD WIDTH="20%" VALIGN="TOP">
+<B><FONT FACE="Times"><P ALIGN="CENTER">4</B></FONT></TD>
+<TD WIDTH="20%" VALIGN="TOP">&nbsp;</TD>
+<TD WIDTH="12%" VALIGN="TOP">&nbsp;</TD>
+<TD WIDTH="31%" VALIGN="TOP">&nbsp;</TD>
+</TR>
+<TR><TD WIDTH="17%" VALIGN="TOP">
+<FONT FACE="Times"><P ALIGN="CENTER"></P>
+<P ALIGN="CENTER">13</FONT></TD>
+<TD WIDTH="20%" VALIGN="TOP">
+<FONT FACE="Times"><P ALIGN="CENTER"></P>
+<P ALIGN="CENTER">4</FONT></TD>
+<TD WIDTH="20%" VALIGN="TOP">
+<FONT FACE="Times"><P ALIGN="CENTER"></P>
+<P ALIGN="CENTER">30</FONT></TD>
+<TD WIDTH="12%" VALIGN="TOP">&nbsp;</TD>
+<TD WIDTH="31%" VALIGN="TOP">
+<FONT FACE="Times" SIZE=2><P ALIGN="JUSTIFY"></P>
+<P ALIGN="JUSTIFY">Il missile atterra poco dopo l&#146;una</FONT></TD>
+</TR>
+</TABLE>
+
+<B><U><FONT FACE="Times"><P ALIGN="JUSTIFY">Strutture dati</P><DIR>
+<DIR>
+<DIR>
+<DIR>
+
+</U></FONT><FONT FACE="Courier"><P>ore: 0..23;&#9;sec, min:0..59;&#9;&#9;TVOLO:0..maxint;</P></DIR>
+</DIR>
+</DIR>
+</DIR>
+
+</B></FONT><FONT FACE="Times"><P ALIGN="JUSTIFY">inoltre sono utili le variabili ausiliarie                  </FONT><B><FONT FACE="Courier New">secaux, minaux, oreaux: 0..maxint</P><DIR>
+<DIR>
+<DIR>
+<DIR>
+<DIR>
+
+</B></FONT><FONT FACE="Courier" SIZE=4><P>come calcolare il tempo di arrivo?</P>
+</FONT><B><FONT FACE="Courier"><P>sec:= sec + tvolo   &#9;&#9;!!!! sec <FONT FACE="Wingdings">&#223;</FONT>
+ 750 fuori range</P>
+</FONT><FONT FACE="Times"><P ALIGN="JUSTIFY"></P>
+</FONT><FONT FACE="Courier"><P>secaux := sec + tvolo</P>
+<P>sec:= </B><U>secondi normalizzati</P>
+</U></FONT><FONT FACE="Times"><P ALIGN="JUSTIFY"></P></DIR>
+</DIR>
+</DIR>
+</DIR>
+</DIR>
+
+<B><P ALIGN="JUSTIFY">punto 3)</B></FONT><FONT FACE="Courier New" SIZE=4> &#9;secaux := sec + tvolo&#9;&#9; {potrebbe essere &gt;59!}</P><DIR>
+<DIR>
+
+<P ALIGN="JUSTIFY">sec := secaux mod 60&#9;&#9;      {normalizzazione}</P>
+</FONT><FONT FACE="Courier" SIZE=4><P>minaux := min + secaux div 60&#9;     </FONT><FONT FACE="Courier">{potrebbe&#133;&gt;59 !}</P>
+</FONT><FONT FACE="Courier" SIZE=4><P>min := minaux mod 60&#9;&#9;      {  </FONT><FONT FACE="Courier">               }</P>
+</FONT><FONT FACE="Courier" SIZE=4><P>oreaux := ore + minaux div 60&#9;      </FONT><FONT FACE="Courier">{potrebbe&#133;&gt;   }</P>
+</FONT><FONT FACE="Courier" SIZE=4><P>ore := oreaux mod 24&#9;&#9;      </FONT><FONT FACE="Courier">{                  }</P>
+</FONT><FONT FACE="Times"><P ALIGN="JUSTIFY"></P></DIR>
+
+</FONT><B><FONT FACE="Courier"><P>program</B> MISSILE (input, output);</P>
+<B><P>type</B>&#9;IntNonNeg = 0..maxint;</P>
+<P>&#9;&#9;TIPO_ORA = 0..23;</P>
+<B><P>var</B> &#9;ore: TIPO_ORA;&#9;&#9;&#9;min, sec: 0..59;</P>
+<P>&#9;&#9;oreaux, minaux, secaux: IntNonNeg;</P>
+</FONT><B><FONT FACE="Times"><P ALIGN="JUSTIFY">begin</B> {main program}&#9;&#9;</P>
+<P ALIGN="JUSTIFY">&#9;&#9;</FONT><B><FONT FACE="Times" SIZE=4>&#133;&#9;</P>
+</FONT><FONT FACE="Courier New"><P ALIGN="JUSTIFY"></P></DIR>
+
+</FONT><FONT FACE="Times"><P ALIGN="JUSTIFY">Lettura da input di un valore di tipo enumerato</P>
+</B><P ALIGN="JUSTIFY">(g: GIORNO)&#9;&#9;&#9;&#9;<B><STRIKE>Readln(g)</B></STRIKE>&#9;&#9;          NO!!!  (semplicemnete non si pu&ograve;)</P>
+<OL>
+
+<P ALIGN="JUSTIFY"><LI>INPUT NUMERICO</LI></P></OL>
+
+</FONT><FONT FACE="Courier"><DIR>
+<DIR>
+<DIR>
+<DIR>
+<DIR>
+
+<P>writeln(giorno? (1 per Lun, 2 per Mar &#133;) &#146;);</P>
+<P>readln(i);</P>
+<P>if i=1 then g:=Lun</P>
+<P>          else if i=2 then g:=Mar</P>
+<P>            &#133;</P>
+<P>&#9;&#9; &#9;&#9;else if i=7 then g:= DOM</P>
+<P>&#9;&#9;&#9;&#9;&#9;&#9;  else writeln(&#145;eh?&#146;);</P></DIR>
+</DIR>
+</DIR>
+</DIR>
+</DIR>
+
+</FONT><FONT FACE="Courier" SIZE=4><P ALIGN="JUSTIFY">2) </FONT><FONT FACE="Times">INPUT REALISTICO</P><DIR>
+<DIR>
+
+</FONT><FONT FACE="Courier"><P>writeln(giorno? (Lun, Mar &#133;)&#146;);</P><DIR>
+<DIR>
+<DIR>
+
+</FONT><FONT FACE="Times"><P ALIGN="JUSTIFY">si legge un carattere: se &egrave; uno in </FONT><FONT FACE="Courier New">L,G,V,S,D</FONT><FONT FACE="Times"> possiamo assegnare </FONT><FONT FACE="Courier New">g</FONT><FONT FACE="Times">. Ma se </FONT><FONT FACE="Courier New">c=&#146;M&#146;</FONT><FONT FACE="Times"> allora il giorno pu&ograve; essere </FONT><FONT FACE="Courier New">Mar</FONT><FONT FACE="Times"> o </FONT><FONT FACE="Courier New">Mer</FONT><FONT FACE="Times"> (va letto un altro carattere)</P></DIR>
+</DIR>
+</DIR>
+
+</FONT><B><U><FONT FACE="Courier"><P>read</B></U>(c);</P>
+<P>if c=&#146;L&#146; </P>
+<P>  then <B>g:=Lun</P>
+</B><P>  else if c=&#146;G&#146; </P>
+<P>         then <B>g:=Gio</P>
+</B><P>         else if c=&#146;V&#146; </P>
+<P> &#9;&#9;     then <B>g:=Ven</P><DIR>
+<DIR>
+<DIR>
+<DIR>
+
+</B><P>else if c=&#146;S&#146; </P>
+<P>       then <B>g:=Sab</P><DIR>
+<DIR>
+<DIR>
+
+</B><P>  else if c=&#146;D&#146; </P>
+<P>         then <B>g:=Dom</P><DIR>
+<DIR>
+<DIR>
+<DIR>
+
+</B><P> else if c=&#146;M&#146; </P>
+<P>        then <B>begin</P>
+</B><P>                <B><U>readln</B></U>(c);</P>
+<P>&#9;&#9;&#9;    if c=&#146;a&#146; then <B>g:=</P>
+</B><P>                         else <B>g:=</P>
+<P>             end</P>
+<P>        </B>else writeln(&#145;eh?&#146;);</P></DIR>
+</DIR>
+</DIR>
+</DIR>
+</DIR>
+</DIR>
+</DIR>
+</DIR>
+</DIR>
+</DIR>
+</DIR>
+</DIR>
+</DIR>
+
+</FONT><FONT FACE="Times"><P ALIGN="JUSTIFY">sequenza di if piuttosto scomoda.Traducibile con</P><DIR>
+<DIR>
+
+</FONT><FONT FACE="Courier"><P>read(c)</P>
+<B><P>case</B> c <B>of</P>
+</B><P>&#145;L&#146;: g:=Lun;</P>
+<P>&#145;G&#146;: g:=Gio;</P>
+<P>&#145;V&#146;: g:=Ven;</P>
+<P>&#145;S&#146;: g:=Sab;</P>
+<P>&#145;D&#146;: g:=Dom;</P>
+<P>&#145;M&#146;: <B>begin</B> readln(c); if c=&#146;a&#146; then <B>g:=Mar</B>   else <B>g:=Mer    end</P>
+</B><P>else writeln(&#145;eh?&#146;);</P>
+<B><P>end</B>;</P>
+</FONT><FONT FACE="Times"><P ALIGN="JUSTIFY"></P>
+<P ALIGN="JUSTIFY">&nbsp;</P></DIR>
+</DIR>
+
+<B><P ALIGN="CENTER">TIPI PASCAL</P>
+</B><P ALIGN="JUSTIFY"></P></FONT>
+<TABLE BORDER CELLSPACING=1 CELLPADDING=3 WIDTH=488>
+<TR><TD WIDTH="25%" VALIGN="TOP">&nbsp;</TD>
+<TD WIDTH="25%" VALIGN="TOP">
+<FONT FACE="Times"><P ALIGN="JUSTIFY">Predefiniti</FONT></TD>
+<TD WIDTH="25%" VALIGN="TOP">
+<FONT FACE="Times"><P ALIGN="JUSTIFY">Def dall&#146;utente</FONT></TD>
+<TD WIDTH="25%" VALIGN="TOP">&nbsp;</TD>
+</TR>
+<TR><TD WIDTH="25%" VALIGN="TOP">
+<FONT FACE="Times"><P ALIGN="JUSTIFY">Non strutturati</FONT></TD>
+<TD WIDTH="25%" VALIGN="TOP">
+<FONT FACE="Times"><P ALIGN="JUSTIFY">Integer, boolean, char</FONT></TD>
+<TD WIDTH="25%" VALIGN="TOP">
+<FONT FACE="Times"><P ALIGN="JUSTIFY">INTERVALLO</P>
+<P ALIGN="JUSTIFY">ENUMERATO</FONT></TD>
+<TD WIDTH="25%" VALIGN="TOP">
+<I><FONT FACE="Times"><P ALIGN="JUSTIFY">Ordinali</I></FONT></TD>
+</TR>
+<TR><TD WIDTH="25%" VALIGN="TOP">&nbsp;</TD>
+<TD WIDTH="25%" VALIGN="TOP">
+<FONT FACE="Times"><P ALIGN="JUSTIFY">Real</FONT></TD>
+<TD WIDTH="25%" VALIGN="TOP">&nbsp;</TD>
+<TD WIDTH="25%" VALIGN="TOP">&nbsp;</TD>
+</TR>
+<TR><TD WIDTH="25%" VALIGN="TOP">
+<FONT FACE="Times"><P ALIGN="JUSTIFY">Strutturati</FONT></TD>
+<TD WIDTH="25%" VALIGN="TOP">
+<FONT FACE="Times"><P ALIGN="JUSTIFY">Text</FONT></TD>
+<TD WIDTH="25%" VALIGN="TOP">
+<FONT FACE="Times"><P ALIGN="JUSTIFY">File of</P>
+<P ALIGN="JUSTIFY">Record</P>
+<P ALIGN="JUSTIFY">Array</P>
+<P ALIGN="JUSTIFY">Set </P>
+<P ALIGN="JUSTIFY">Puntatore</FONT></TD>
+<TD WIDTH="25%" VALIGN="TOP">&nbsp;</TD>
+</TR>
+</TABLE>
+
+<B><FONT FACE="Courier New"><P ALIGN="JUSTIFY"></P>
+</FONT><FONT FACE="Times"><P ALIGN="CENTER">PROCEDURE</P><DIR>
+<DIR>
+<DIR>
+<DIR>
+<DIR>
+
+</FONT><FONT FACE="Courier"><P>Procedure</B> NOME;</P>
+<B><P>var</B> v1, v2 &#133;</P>
+<B><P>begin </P><DIR>
+<DIR>
+
+</B><P>&#133;</P></DIR>
+</DIR>
+
+<B><P>end</B>;</P></DIR>
+</DIR>
+</DIR>
+</DIR>
+</DIR>
+
+</FONT><B><FONT FACE="Times"><P ALIGN="JUSTIFY">Esercizio</P>
+</B><P ALIGN="JUSTIFY">Programma che calcola l&#146;orario di apertura di un ufficio, in un certo giorno di un anno non bisestile.</P></FONT>
+<P ALIGN="CENTER"><CENTER><TABLE CELLSPACING=0 BORDER=0 CELLPADDING=3 WIDTH=488>
+<TR><TD WIDTH="50%" VALIGN="TOP">
+<FONT FACE="Times"><P ALIGN="CENTER">Lun, Mer, Ven  aperto 8:00 &#151; 13:00</FONT></TD>
+<TD WIDTH="50%" VALIGN="TOP">
+<FONT FACE="Times"><P ALIGN="CENTER">Sab aperto 9:00 &#151; 12:00</FONT></TD>
+</TR>
+<TR><TD WIDTH="50%" VALIGN="TOP">
+<FONT FACE="Times"><P ALIGN="CENTER">Mar, Gio aperto 9:00 &#151; 12:00 E 14:00 &#151; 18:00</FONT></TD>
+<TD WIDTH="50%" VALIGN="TOP">
+<FONT FACE="Times"><P ALIGN="CENTER">Dom chiuso</FONT></TD>
+</TR>
+</TABLE>
+</CENTER></P>
+
+<FONT FACE="Times"><P ALIGN="JUSTIFY">INPUT: giorno1Gen (Lun, &#133;Dom), data del giorno di interesse (gg, mm)</P>
+<P ALIGN="JUSTIFY">OUTPUT:messaggio</P><DIR>
+<DIR>
+
+</FONT><B><FONT FACE="Courier"><P>Program</B> orario;</P>
+<P>  TYPE GIORNO &#133;</P>
+<P>  <B>var</B> giorno1gen, risult:GIORNO</P>
+<P>      gg, mm: integer;      </FONT>pi&ugrave; altre variabili e definizioni<FONT FACE="Courier"> </FONT>(c, nordine, risult)</P>
+<B><FONT FACE="Courier"><P>begin   {MAIN PROGRAM}</P>
+</B><P>  LETTURA_G1G;&#9;&#9;{1}</P>
+<P>  LETTURA_DATA; &#9;{2}&#9;</P>
+<P>  CALCOLA_GIORNO; &#9;{3}   </P>
+<P>  STAMPA_ORARIO; &#9;{4}</P>
+<B><P>end.  {fine programma}</P>
+</B></FONT><FONT FACE="Times"><P ALIGN="JUSTIFY"></P></DIR>
+</DIR>
+
+</FONT><FONT FACE="Courier New"><P ALIGN="JUSTIFY">{1}  <B>procedure</B> LETTURA_G1G;&#9;{assegna giorno1g}</P>
+<P ALIGN="JUSTIFY">&#9;<B>begin {inizio LETTURA_G1G}</P>
+</B><P ALIGN="JUSTIFY">&#9;&#9;write(&#145;giorno del primo gennaio ? (Lun,Mar,&#133;,Dom) &#145;);</P>
+<P ALIGN="JUSTIFY">&#9;&#9;readln(c);</P><DIR>
+<DIR>
+
+<B><P ALIGN="JUSTIFY">case</B> c <B>of</B> &#133; &#133; &#133; &#133; &#133; &#133; &#133; </P>
+<B><P ALIGN="JUSTIFY">end; {fine LETTURA_G1G}</P>
+</B></FONT><FONT FACE="Times"><P ALIGN="JUSTIFY"></P></DIR>
+</DIR>
+
+</FONT><FONT FACE="Courier New"><P ALIGN="JUSTIFY">{2}  <B>procedure</B> LETTURA_DATA;&#9;{assegna gg, mm}</P>
+<P ALIGN="JUSTIFY">&#9;<B>begin</P>
+</B><P ALIGN="JUSTIFY">&#9;&#9;write(&#145;giorno e mese della data di interesse? (numeri)&#145;);</P>
+<P ALIGN="JUSTIFY">&#9;&#9;readln(gg, mm);</P>
+<B><P ALIGN="JUSTIFY">&#9;end;</P><DIR>
+<DIR>
+
+</B></FONT><FONT FACE="Times"><P ALIGN="JUSTIFY"></FONT><FONT FACE="Courier New">program orario</P>
+<P ALIGN="JUSTIFY">&#9;             </FONT>giorno1gen<FONT FACE="Courier New">              </FONT>gg<FONT FACE="Courier New">          </FONT>mm</P>
+<FONT FACE="Times"><P ALIGN="JUSTIFY"></P>
+<P ALIGN="JUSTIFY">                                                                                          risult</P>
+<P ALIGN="JUSTIFY"></P>
+<P ALIGN="JUSTIFY"></P>
+<P ALIGN="JUSTIFY">&nbsp;</P>
+<P ALIGN="JUSTIFY">&nbsp;</P></DIR>
+</DIR>
+
+</FONT><B><FONT FACE="Courier New"><P ALIGN="JUSTIFY">{3}&#9;procedure</B> CALCOLO_GIORNO; {assegna a risult il GIORNO gg/mm }</P><DIR>
+<DIR>
+<DIR>
+
+</FONT><B><P ALIGN="JUSTIFY">3.1 calcolare Nordine</P>
+<P ALIGN="JUSTIFY">3.2 calcolare il giorno della data gg/mm, noto Nordine</P></DIR>
+</DIR>
+</DIR>
+</B>
+<TABLE BORDER CELLSPACING=1 CELLPADDING=3 WIDTH=492>
+<TR><TD WIDTH="61%" VALIGN="TOP">
+<B><P ALIGN="JUSTIFY">3.2</P>
+</B><P ALIGN="JUSTIFY">Nordine = num. d&#146;ordine di gg/mm nell&#146;anno (1..365) </P>
+<P ALIGN="JUSTIFY"></P>
+<FONT FACE="Courier New"><P ALIGN="JUSTIFY">= 1 + 7 + 7 +&#133;+ 7 + RESTO</P>
+</FONT><P ALIGN="JUSTIFY">  primo                                     (&gt;=0 e &lt;7)</P>
+<P ALIGN="JUSTIFY">    g1g   g1g    g1g       g1g</P>
+<P ALIGN="JUSTIFY">giorno risult. = g1g + RESTO (?) = RESTO volte <I>succ</I> da g1g</TD>
+<TD WIDTH="39%" VALIGN="TOP">
+<P ALIGN="JUSTIFY">Es. 5 Aprile = 31+28+31+5 = 95</P>
+<P ALIGN="JUSTIFY">Supponendo g1g = lun</P>
+<FONT FACE="Courier New"><P ALIGN="JUSTIFY">95 = 1 + 7 + &#133; + 7 <B>+ 3</P>
+</B></FONT><P ALIGN="JUSTIFY">          Lun   Lun            Lun</P>
+<P ALIGN="JUSTIFY">+ <FONT FACE="Courier New">(3 volte <I>succ</I> da lun)</FONT>                                                                          succ(Lun)=Mar         succ(Mar)=Mer</P>
+<P ALIGN="JUSTIFY">succ(Mer)= Gio       </TD>
+</TR>
+</TABLE>
+<DIR>
+<DIR>
+<DIR>
+<DIR>
+<DIR>
+
+<FONT FACE="Courier" SIZE=4><P>Resto := (Nordine-1) mod 7</P>
+<P>Risult := giorno1gen</P>
+<B><P>For</B> i:=1 to resto do    </P><DIR>
+<DIR>
+
+<B><P>if</B> risult&lt;&gt; Dom <B>then</B> risult := succ(risult)                                 </P>
+<P>                <B>else</B> risult := Lun;</P></DIR>
+</DIR>
+</DIR>
+</DIR>
+</DIR>
+</DIR>
+</DIR>
+
+</FONT><B><FONT FACE="Times"><P ALIGN="JUSTIFY">3.1)</P>
+</B><P ALIGN="JUSTIFY">var MESE, contmese: (Gen, Feb, Mar, Apr, Mag, Giu, Lug, Ago, Set, Ott, Nov, Dic)</P>
+<B><P ALIGN="JUSTIFY"></P>
+<P ALIGN="JUSTIFY">&#9;3.1.1) assegnare MESE a partire da mm</P>
+<P ALIGN="JUSTIFY">&#9;3.1.2) accumulare in Nordine i giorni dei mesi da Gen a pred(MESE)</P>
+<P ALIGN="JUSTIFY">&#9;3.1.3) aggiungere in Nordine gg</P>
+</B></FONT><FONT FACE="Courier"><P>MESE := Gen;</P><DIR>
+
+<P>for i:=&#133; to mm do MESE := succ(MESE);</P>
+
+<P>for contmese:=Gen to pred(MESE) do </P>
+</FONT><P>     &#9;&#9;&#9;&#9;{Nordine := Nordine + {31, 30 oppure 28,dipende da contmese}}</P>
+<FONT FACE="Courier"><P>&#9;Case contmese of</P>
+<P>&#9;&#9;Gen, Mar, Mag, Lug, Ago, Ott,Dic : Nordine:=nordine+31;</P>
+<P>&#9;&#9;Feb: nordine:= nordine+28;</P>
+<P>&#9;&#9;Else nordine:=nordine+30;</P>
+<P>&#9;end;</P>
+
+<P>Nordine:= Nordine + gg</P>
+</FONT><FONT FACE="Times"><P ALIGN="JUSTIFY"></P></DIR>
+
+<P ALIGN="JUSTIFY">{4} &#9;</FONT><B><FONT FACE="Courier">Procedure</B> STAMPA_ORARIO;</P><DIR>
+<DIR>
+
+<P>{in base al contenuto di RISULT stampa l&#146;orario di</P><DIR>
+<DIR>
+
+<P>apertura del negozio}</P></DIR>
+</DIR>
+
+<B><P>begin</P>
+</B><P>  write (&#145;il giorno &#145;, gg:2,&#146;/&#146;,mm:2, &#145; l&#146;&#146;ufficio sara&#146;&#146; &#145;);</P>
+<P>  <B>case</B> risult <B>of</P>
+</B><P>    Dom: writeln(&#145;chiuso&#146;);</P>
+<P>    Lun, Mer, Ven: writeln(&#145; aperto dalle 8 alle 13&#146;);</P>
+<P>    Mar, Gio: writeln( &#133; );</P>
+<P>    Sab: Writeln(&#133;)</P>
+<P>  <B>end</B>;</P>
+<B><P>end</B>;   {fine proc STAMPA_ORARIO}   </P></DIR>
+</DIR>
+
+</FONT><B><FONT FACE="Times"><P ALIGN="JUSTIFY">Esercizio: </B>Modificare il programma in modo che funzioni per gli anni bisestili (e solo per i bisestili)</P></FONT></BODY>
+</HTML>

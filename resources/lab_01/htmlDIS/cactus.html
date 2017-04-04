@@ -1,0 +1,124 @@
+<html>
+<head>
+<title>Introduzione a Cactus 1.5</title>
+</head>
+
+<center> 
+  <h1>Introduzione a Cactus 1.5</h1>
+</center>
+
+<hr>
+<img src="images/cactus/cactus_logo.gif" width="301" height="60" > 
+<h3>Indice</h3>
+<ol>
+  <li><a href="#intro">Nota introduttiva</a></li>
+  <li><a href="#inst">Guida all'installazione</a></li>
+  <li><a href="#uso">Guida all'uso di Cactus</a></li>
+  <li><a href="#uninst">Disinstallazione</a></li>
+</ol>
+<hr>
+
+<h3><a name="intro">1. Nota introduttiva</a></h3>
+<p>Cactus &egrave; un framework per il test di codice Java lato server (per esempio 
+  servlet, EJB ecc.), ed &egrave; stato sviluppato all'interno di Jakarta, un 
+  progetto della Apache Software Foundation avente lo scopo di realizzare soluzioni 
+  software lato server per la piattaforma Java, dotate di elevata qualit&agrave; 
+  dal punto di vista commerciale, ma nello stesso tempo open-source. In particolare, 
+  Cactus ha lo scopo di ridurre il costo legato alla scrittura di test per codice 
+  Java lato server, consentendo di effettuare sia test di unit&agrave;, sia test 
+  di integrazione. Cactus estende JUnit, per cui si consiglia vivamente di acquisire 
+  familiarit&agrave; con <a href="junit.html">JUnit</a> prima di procedere 
+  nella lettura di questo documento.</p>
+<p>In questo corso siamo interessati allo sviluppo di applicazioni web basate 
+  su servlet e JSP, per cui descriveremo la modalit&agrave; di installazione di 
+  Cactus, e le funzionalit&agrave; da esso fornite per il test di questi componenti. 
+  Per ulteriori informazioni riguardanti le altre caratteristiche di Cactus si 
+  rimanda alla documentazione fornita sul sito web all'indirizzo <a href="http://jakarta.apache.org/cactus/" target="_blank">http://jakarta.apache.org/cactus/</a></p>
+<p>La versione Cactus 1.5 &egrave; disponibile per il download all'indirizzo <a href="http://www.apache.inetcosmos.org/dist/jakarta/cactus/binaries/jakarta-cactus-13-1.5.zip" target="_blank">http://www.apache.inetcosmos.org/dist/jakarta/cactus/binaries/jakarta-cactus-13-1.5.zip</a>.</p>
+<h3><a name="inst"></a>2. Guida all'installazione</h3>
+<p> Per utilizzare Cactus &egrave; necessario aver precedentemente installato 
+  una qualsiasi versione della JavaVirtual Machine, superiore alla 1.2. Java &egrave; 
+  disponibile sul sito <a href="http://java.sun.com" target="_blank">java.sun.com</a>. 
+  Inoltre, &egrave; necessario aver installato un servlet engine, conforme ad 
+  una specifica superiore alla 2.2.2. delle servlet. In questo caso supponiamo 
+  di utilizzare <a href="tomcat.html">Tomcat 5.0</a>.</p>
+<p>Una volta installato Java e Tomcat, si pu&ograve; procedere all'installazione 
+  di Cactus, eseguendo i seguenti passi:</p>
+<ol>
+  <li>Scaricare il file jakarta-cactus-13-1.5.zip come indicato nella nota introduttiva;</li>
+  <li>Scompattare il file in una directory, per esempio <tt>C:\Programmi\Cactus</tt>. 
+    Nel seguito ci riferiremo alla directory in cui il file &egrave; stato scompattato 
+    come <tt>CACTUS_ROOT</tt>.</li>
+</ol>
+<h3><a name="uso"></a> 3. Guida all'uso di Cactus</h3>
+<p>Per testare una applicazione usando Cactus, &egrave; necessario implementare 
+  delle classi che definiscono i TestCase, allo stesso modo di come avviene per 
+  JUnit. Ovviamente Cactus fornisce i propri TestCase, come il ServletTestCase, 
+  che estendono il TestCase definito da JUnit, per testare il codice lato server. 
+</p>
+<p>In generale, per scrivere un TestCase con Cactus &egrave; necessario:</p>
+<ol>
+  <li>importare i package <tt>org.apache.cactus</tt> e <tt>junit.framework</tt>;</li>
+  <li>estendere una classe TestCase di Cactus;</li>
+  <li>definire i metodi (<tt>suite()</tt>, <tt>setUp()</tt>, <tt>tearDown()</tt> 
+    ecc.) come per JUnit.</li>
+</ol>
+<p>Inoltre, per ogni metodo di test <tt>testXXX() </tt>(vedi <a href="junit.html">guida 
+  introduttiva a JUnit</a>) Cactus consente di definire altri due metodi (<tt>beginXXX</tt> 
+  e <tt>endXXX</tt>), che possono opzionalmente essere utilizzati per inizializzare 
+  parametri HTTP relativi al metodo da testare, e per verificare i parametri HTTP 
+  ricevuti in risposta, rispettivamente.</p>
+<p>Sono disponibili inoltre altre funzionalit&agrave; che dipendono dal tipo di 
+  TestCase che si estende. Per esempio, nel caso del ServletTestCase, Cactus si 
+  preoccupa di inizializzare automaticamente alcuni oggetti impliciti, come la 
+  richiesta HTTP, la risposta HTTP e la sessione, rendendoli disponibili ai metodi 
+  <tt>setUp()</tt>, <tt>testXXX() </tt>e <tt>tearDown()</tt>, e fornendo opportuni 
+  metodi per manipolarli.</p>
+<p>Per eseguire i TestCase realizzati &egrave; necessario procedere nel modo seguente 
+  (si assume che l'applicazione sia stata corretamente distribuita come descritto 
+  nella <a href="tomcat.html">guida introduttiva a Tomcat</a>).</p>
+<ol>
+  <li>Copiare nella directory <tt>WEB-INF\lib</tt> i seguenti file: 
+    <ul>
+      <li><tt>CACTUS_ROOT\lib\cactus.jar</tt></li>
+      <li><tt>CACTUS_ROOT\lib\commons-httpclient.jar</tt></li>
+      <li><tt>CACTUS_ROOT\lib\commons-logging.jar</tt></li>
+      <li><tt>CACTUS_ROOT\lib\junit.jar</tt></li>
+      <li><tt>CACTUS_ROOT\lib\aspectjrt.jar</tt></li>
+    </ul>
+  </li>
+  <li>Inserire nel file web.xml le seguenti linee (tra i tag <tt>&lt;web-app&gt; 
+    </tt>e<tt> </tt> <tt>&lt;/web-app&gt;</tt>) 
+    <table>
+      <td> <blockquote> 
+          <pre>&lt;servlet&gt;<br>	&lt;servlet-name&gt;ServletRedirector&lt;/servlet-name&gt;<br>	&lt;servlet-class&gt;org.apache.cactus.server.ServletTestRedirector&lt;/servlet-class&gt;<br>&lt;/servlet&gt;</pre>
+          <pre>&lt;servlet&gt;<br>	&lt;servlet-name&gt;JspRedirector&lt;/servlet-name&gt;<br>	&lt;jsp-file&gt;/jspRedirector.jsp&lt;/jsp-file&gt;<br>&lt;/servlet&gt;</pre>
+          <pre>&lt;servlet&gt;<br>    &lt;servlet-name&gt;ServletTestRunner&lt;/servlet-name&gt;<br>    &lt;servlet-class&gt;org.apache.cactus.server.runner.ServletTestRunner&lt;/servlet-class&gt;<br>&lt;/servlet&gt;</pre>
+          <pre>&lt;servlet-mapping&gt;<br>	&lt;servlet-name&gt;ServletRedirector&lt;/servlet-name&gt;<br>	&lt;url-pattern&gt;/ServletRedirector&lt;/url-pattern&gt;<br>&lt;/servlet-mapping&gt;</pre>
+          <pre>&lt;servlet-mapping&gt;<br>	&lt;servlet-name&gt;JspRedirector&lt;/servlet-name&gt;<br>	&lt;url-pattern&gt;/JspRedirector&lt;/url-pattern&gt;<br>&lt;/servlet-mapping&gt;</pre>
+          <pre>&lt;servlet-mapping&gt;<br>    &lt;servlet-name&gt;ServletTestRunner&lt;/servlet-name&gt;<br>    &lt;url-pattern&gt;/ServletTestRunner&lt;/url-pattern&gt;<br>&lt;/servlet-mapping&gt;</pre>
+        </blockquote></td>
+    </table>
+  </li>
+  <li>Copiare nella directory <tt>WEB-INF\classes</tt> tutti i file .class che 
+    costituiscono i TestCase, rispettando la struttura del package, come descritto 
+    nella <a href="tomcat.html">guida introduttiva a Tomcat</a>.</li>
+</ol>
+<p><strong>Nota:</strong> le informazioni relative al ServletRedirector (risp. 
+  JspRedirector) vanno aggiunte solo se si hanno test che estendono ServletTestCase 
+  (risp. JspTestCase). Nel caso in cui si usi il JspRedirector, &egrave; necessario 
+  inoltre copiare il file <tt>JspRedirector.jsp</tt> (presente nella directory 
+  <tt>CACTUS_ROOT\web</tt>) nella directory dell'applicazione (quindi nella stessa 
+  directory a cui appartiene <tt>WEB-INF</tt>).</p>
+<p>Per eseguire i test, procedere nel modo seguente.</p>
+<ol>
+  <li>Avviare Tomcat;</li>
+  <li>Avviare il browser e andare al seguente indirizzo: <tt>http://localhost:8080/NOME_APPL/ServletTestRunner?suite=NOME_TEST_CASE</tt>, 
+    in cui <tt>NOME_APPL</tt> &egrave; il nome della directory che contiene l'applicazione 
+    (vedere <a href="tomcat.html">guida introduttiva a Tomcat</a>) e <tt>NOME_TEST_CASE</tt> 
+    &egrave; il nome della classe che estende il ServletTestCase (o il JspTestCase) 
+    e che contiene la suite da testare (&egrave; necessario utilizzare il nome 
+    completo, comprensivo di package)..</li>
+</ol>
+<h3><a name="uninst"></a>4. Disinstallazione</h3>
+<p>Per disinstallare Cactus &egrave; sufficiente rimuovere la cartella <tt>CACTUS_ROOT</tt>.</p>

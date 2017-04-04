@@ -1,0 +1,116 @@
+<!-- file generated with webcpp 0.6.2 http://webcpp.sf.net -->
+<html>
+<head>
+<title>Z:\www\igea\materiale\listati\alto-basso\Ab.java</title>
+</head>
+<body bgcolor=#ffffff text=#000000 link=#ff0000 vlink=#666666 alink=#0000ff>
+<pre>
+<b><font COLOR=#0000ff>import</font></b> java.io.BufferedReader;
+<b><font COLOR=#0000ff>import</font></b> java.io.InputStream;
+<b><font COLOR=#0000ff>import</font></b> java.io.InputStreamReader;
+<b><font COLOR=#0000ff>import</font></b> java.io.IOException;
+
+
+<b><font COLOR=#0000ff>public</font></b> <b><font COLOR=#0000ff>class</font></b> Ab {
+	<b><font COLOR=#0000ff>public</font></b> <b><font COLOR=#0000ff>static</font></b> <b><font COLOR=#0000ff>void</font></b> main(String[] args) {
+		ConsoleReader lettore = <b><font COLOR=#0000ff>new</font></b> ConsoleReader(System.in);
+		System.out.print(<font COLOR=#ff0000>"Max intero: "</font>);
+		<b><font COLOR=#0000ff>int</font></b> max = lettore.readInt();
+		<b><font COLOR=#0000ff>int</font></b> tentativi = <font COLOR=#a900a9>0</font>;
+		<b><font COLOR=#0000ff>int</font></b> inizio = <font COLOR=#a900a9>1</font>;
+		<b><font COLOR=#0000ff>int</font></b> fine = max;
+		<b><font COLOR=#0000ff>while</font></b>(inizio &lt;= fine) {
+			<b><font COLOR=#0000ff>int</font></b> media = (inizio + fine) / <font COLOR=#a900a9>2</font>;
+			System.out.println(<font COLOR=#ff0000>"inizio = "</font> + inizio + <font COLOR=#ff0000>", fine = "</font> + fine);
+			System.out.print(<font COLOR=#ff0000>"    "</font> + media + <font COLOR=#ff0000>"? "</font>);
+			tentativi++;
+			String risposta = lettore.readLine(); <font COLOR=#666666>// a=alto, b=basso, u=ok</font>
+			<b><font COLOR=#0000ff>if</font></b>(risposta.equals(<font COLOR=#ff0000>"u"</font>)) {
+				<b><font COLOR=#0000ff>if</font></b>(tentativi &gt; <font COLOR=#a900a9>1</font>)
+					System.out.println(<font COLOR=#ff0000>"ho impiegato "</font> + tentativi + <font COLOR=#ff0000>" tentativi"</font>);
+				<b><font COLOR=#0000ff>else</font></b>
+					System.out.println(<font COLOR=#ff0000>"ho impiegato un solo tentativo!!"</font>);
+				<b><font COLOR=#0000ff>return</font></b>;
+			} <b><font COLOR=#0000ff>else</font></b> <b><font COLOR=#0000ff>if</font></b>(risposta.equals(<font COLOR=#ff0000>"a"</font>))
+				fine = media - <font COLOR=#a900a9>1</font>;
+			<b><font COLOR=#0000ff>else</font></b> <b><font COLOR=#0000ff>if</font></b>(risposta.equals(<font COLOR=#ff0000>"b"</font>)) <font COLOR=#666666>// DEVE essere b</font>
+				inizio = media + <font COLOR=#a900a9>1</font>;
+			<b><font COLOR=#0000ff>else</font></b> <font COLOR=#666666>// riprova lo stesso valore: non vogliamo contarlo più di una volta</font>
+				tentativi--;
+		}
+		System.out.println(<font COLOR=#ff0000>"inizio = "</font> + inizio + <font COLOR=#ff0000>", fine = "</font> + fine);
+		System.out.println(<font COLOR=#ff0000>"errore!"</font>);
+		<b><font COLOR=#0000ff>return</font></b>;
+	}
+}
+
+
+<font COLOR=#666666>/** 
+   Una classe per leggere stringhe e numeri da un flusso di input.
+   Questa classe è particolarmente adatta per chi comincia 
+   a programmare in Java.
+   Costruisce il necessario lettore bufferizzato, 
+   gestisce le eccezioni I/O e converte le stringhe in numeri.
+*/</font>
+
+<b><font COLOR=#0000ff>class</font></b> ConsoleReader
+{  <font COLOR=#666666>/**
+      Costruisce un lettore da console da un flusso di input 
+      come per esempio System.in
+      @param inStream un flusso di input 
+   */</font>
+   <b><font COLOR=#0000ff>public</font></b> ConsoleReader(InputStream inStream)
+   {  reader = <b><font COLOR=#0000ff>new</font></b> BufferedReader
+         (<b><font COLOR=#0000ff>new</font></b> InputStreamReader(inStream)); 
+   }
+   
+   <font COLOR=#666666>/**
+      Legge una riga di input e la converte in un integer.
+      La riga di input non può contenere altro che un integer.
+      Non sono neppure ammessi spazi vuoti.
+      @return l'integer digitato dall'utente
+   */</font>
+   <b><font COLOR=#0000ff>public</font></b> <b><font COLOR=#0000ff>int</font></b> readInt() 
+   {  String inputString = readLine();
+      <b><font COLOR=#0000ff>int</font></b> n = Integer.parseInt(inputString);
+      <b><font COLOR=#0000ff>return</font></b> n;
+   }
+   
+   <font COLOR=#666666>/**
+      Legge una riga di input e la converte in un numero in virgola
+      Mobile. La riga di input non può contenere altro che un  
+      numero. Non sono neppure ammessi spazi vuoti.
+      @return il numero digitato dall'utente
+   */</font>
+   <b><font COLOR=#0000ff>public</font></b> <b><font COLOR=#0000ff>double</font></b> readDouble() 
+   {  String inputString = readLine();
+      <b><font COLOR=#0000ff>double</font></b> x = Double.parseDouble(inputString);
+      <b><font COLOR=#0000ff>return</font></b> x;
+   }
+   
+   <font COLOR=#666666>/**
+      Legge una riga di input. Nel caso (improbabile) di
+      una eccezione I/O, il programma si arresta. 
+      @return la riga di input digitata dall'utente, null
+      alla fine dell'input
+   */</font>
+   <b><font COLOR=#0000ff>public</font></b> String readLine() 
+   {  String inputLine = <font COLOR=#ff0000>""</font>;
+
+      <b><font COLOR=#0000ff>try</font></b>
+      {  inputLine = reader.readLine();
+      }
+      <b><font COLOR=#0000ff>catch</font></b>(IOException e)
+      {  System.out.println(e);
+         System.exit(<font COLOR=#a900a9>1</font>);
+      }
+
+      <b><font COLOR=#0000ff>return</font></b> inputLine;
+   }
+
+   <b><font COLOR=#0000ff>private</font></b> BufferedReader reader; 
+}
+
+</pre>
+</body>
+</html>

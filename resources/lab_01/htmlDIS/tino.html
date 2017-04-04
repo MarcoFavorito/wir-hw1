@@ -1,0 +1,170 @@
+<HTML>
+<HEAD>
+<TITLE>The Mobile Robot TINO</TITLE>
+<!-- Changed by: Iocchi Luca,  6-May-1997 -->
+</HEAD>
+
+<BODY>
+
+<CENTER>
+<H1>The Mobile Robot TINO</H1>
+<!--H3>
+<A HREF="/~degiacomo/">Giuseppe De Giacomo</A>,
+<A HREF="/~iocchi/">Luca Iocchi</A>,
+<A HREF="/~nardi/">Daniele Nardi</A> and
+<A HREF="/~rosati/">Riccardo Rosati</A>
+</H3>
+<A HREF="http://www.dis.uniroma1.it/">
+Dipartimento di Informatica e Sistemistica</A><BR>
+Universit&agrave; di Roma ''La Sapienza''<BR>
+Via Salaria 113, 00198, Roma, Italy.<BR>
+E-mail: <TT>{iocchi,nardi}@dis.uniroma1.it</TT-->
+</CENTER>
+
+<HR>
+
+<!-- 
+<P>
+<CENTER>
+<IMG BORDER=2 ALIGN=middle SRC="images/lic.gif" ALT="Work in progress">
+<EM> These pages are under construction! </EM>
+</CENTER>
+</P>
+<HR>
+-->
+
+<P>
+<IMG ALIGN=left width=176 height=124 BORDER=2 SRC="images/base2.gif" ALT="Tino">
+
+<B>Tino</B> is a mobile robot platform of the
+<A HREF="http://www.ai.sri.com/people/erratic/">Erratic</A> family,
+developed at <A HREF="http://www.ai.sri.com/">SRI International</A>,
+quite suitable for operating within an office environment.
+It is equipped with two independent driving wheels
+and a free-wheeling castor, while
+sensoring capabilities are provided by seven ultrasonic range finders
+placed in the front of the platform.
+Detailed <A HREF="hw.html">hardware specifications</A> 
+of the Erratic base are also available.<BR>
+
+The robot is remote controlled from a host computer through a 
+wireless communication.
+Control software runs on the remote workstation and
+real-time capabilities are obtained by means of a 10 Hz communication with
+the mobile platform.<BR>
+
+</P>
+
+
+<H3>ARCHITECTURE</H3>
+<P>
+<B>Tino</B> is based on a layered architecture, which combines a reactive
+control mechanism with a reasoning system.
+At the lower level a <A HREF="control.html">fuzzy controller</A>
+is responsible for reactively executing primitive actions,
+while at the upper level a <A HREF="reason.html">reasoning system</A>
+is used to achieve high-level goals.
+The integration of planning and reactivity is obtained by means of
+a monitor,
+which both translates data representation between the two
+levels (allowing for a heterogeneous implementation)
+and checks whether the execution of actions leads to the accomplishment
+of the goals.
+</P>
+
+
+<H3>RESEARCH WORK</H3>
+<P>
+The main goal of our research work is to provide autonomous reasoning
+capabilities to the robot by devising a principled and practically
+feasible realization of a 
+<A HREF="reason.html">KR&R approach for reasoning about actions</A>.
+Specifically, the basis of our proposal for reasoning about
+actions is provided by Propositional Dynamic Logics (PDLs).
+However, the implementation has been obtained by relying on the tight
+correspondence that exists between PDLs and Description Logics (DLs).
+By exploiting this correspondence we have been able both to develop
+an interesting theoretical framework for reasoning about actions and to
+obtain an implementation that uses a knowledge representation system based
+on DLs.<BR>
+
+In fact, a general knowledge representation system based on DLs 
+(CLASSIC) is used to represent the robot's knowledge
+about the environment and the actions it can perform.
+
+The reasoning services of CLASSIC allow the robot to deductively 
+derive plans to achieve its goals,
+while its reactive capabilities 
+allow it to execute its plans in the real world.
+</P>
+
+<H3>EXPERIMENTS</H3>
+<P>
+Experiments involve navigation tasks in an office-like environment.
+The robot accepts high-level goals, computes a plan whose performance
+is expected to achieve the goal and reactively executes it in the world.<BR>
+
+<A HREF="exp-mo.html">First experiments</A>
+were focussed on using moving actions to reach a specified goal and
+on the integration between the planning system and the fuzzy controller.
+Recently we introduce in our framework sensing actions,
+and we test them in some
+<A HREF="exp-se.html">new experiments</A>.
+</P>
+
+<HR>
+
+<H2> People </H2>
+<UL>
+<LI><A HREF="/~nardi/">Daniele Nardi</A>
+<LI><A HREF="/~degiacomo/">Giuseppe De Giacomo</A>
+<LI><A HREF="/~rosati/">Riccardo Rosati</A>
+<LI><A HREF="/~iocchi/">Luca Iocchi</A>
+</UL>
+
+<HR>
+
+<H2> Selected Publications </H2>
+
+<DL>
+
+
+<DT>
+<A HREF="ftp://ftp.dis.uniroma1.it/pub/iocchi/publications/tino-ecp97.ps.gz">
+<STRONG> Planning with Sensing for a Mobile Robot</STRONG> </A> <BR>
+G. De Giacomo, L. Iocchi, D. Nardi, R. Rosati. <BR>
+In <EM> Proceedings of the Fourth European Conference on Planning (ECP'97)</EM>,
+Toulouse, France. 1997.<BR>
+<BR>
+
+
+<DT>
+<A HREF="ftp://ftp.dis.uniroma1.it/pub/iocchi/publications/tino-kr96.ps.gz">
+<STRONG> Moving a Robot: the KR&R Approach at Work </STRONG> </A> <BR>
+G. De Giacomo, L. Iocchi, D. Nardi, R. Rosati. <BR>
+In <EM> Proceedings of the 5th International Conference on Principles of
+Knowledge Representation and Reasoning (KR'96)</EM>,
+pages 198--209. Morgan Kaufmann, 1996.<BR>
+<BR>
+
+</DL>
+</P>
+
+
+<HR>
+
+<P>
+<A HREF="resources.html"><H3>Robotics information source</H3></A>
+</P>
+
+<HR>
+
+<P>
+The URL of this page is http://www.dis.uniroma1.it/~iocchi/tino/tino.html.<BR>
+Last updated on May 6, 1997.
+</P>
+
+<!-- A HREF="mailto:iocchi@dis.uniroma1.it"><EM>Luca Iocchi</EM></A-->
+
+</BODY>
+</HTML>

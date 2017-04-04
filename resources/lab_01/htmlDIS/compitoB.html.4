@@ -1,0 +1,82 @@
+<!DOCTYPE doctype PUBLIC "-//w3c//dtd html 4.0 transitional//en"><html><head>
+   <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+      <title>Esame 29/3/04 - Laboratorio di Programmazione - aa 2003/04</title>
+</head>
+
+<body>
+<br>
+<center>
+  <p><b>Laboratorio di Programmazione - A.A. 2003/04</b></p>
+  <h2>Esame del 29/3/2004</h2>
+  <h2>Gestione attivit&agrave; (B)</h2>
+</center>
+
+
+
+<P>Si vuole scrivere una classe per gestire lo svolgimento di
+attivit&agrave;. Un'<em>attivit&agrave;</em> pu&ograve; essere un'
+<em>attivit&agrave; elementare</em> oppure una <em>macro-attivit&agrave;</em>,
+quest'ultima &egrave; costituita da una sequenza di attivit&agrave;.
+Ciascuna <em>attivit&agrave;</em> &egrave; caratterizzata da un nome,
+e le <em>attivit&agrave; elementari</em> hanno anche una durata
+(rappresentata tramite un valore intero in minuti).
+La durata di una <em>macro-attivit&agrave;</em> &egrave; calcolata come
+la somma delle durate delle <em>attivit&agrave;</em> che la costituiscono.
+</P>
+
+<br>
+
+<P><b>Parte 1</b></P>
+
+<P>1. Scrivere le classi Java per rappresentare le <em>attivit&agrave;</em>
+(<em>attivit&agrave; elementari</em> e <em>macro-attivit&agrave;</em>)
+in un package <code>attivita</code>, rispettando le seguenti
+specifiche:
+<ul>
+<li>tutte le classi realizzate devono ridefinire il metodo 
+<tt>clone</tt>  per effettuare la copia profonda 
+dell'oggetto;
+<li>la classe per la gestione delle <em>macro-attivit&agrave;</em>
+deve contenere (tra gli altri): a) un metodo per inserire una nuova 
+<em>attivit&agrave;</em> in coda alla sequenza 
+(cio&egrave; in modo che sar&agrave; eseguita dopo le altre);
+b) un metodo per eliminare dalla sequenza la prima <em>attivit&agrave;</em>
+(cio&egrave; quella che &egrave; stata inserita prima delle altre);
+<li>la classe per la gestione delle <em>macro-attivit&agrave;</em> deve
+implementare un iteratore che consenta la scansione senza possibilit&agrave; 
+di modifica della sequenza delle attivit&agrave; nell'ordine in cui devono
+essere eseguite.
+</ul>
+
+<P><b>Parte 2</b></P>
+
+<P>Si definisca una classe <code>UtilitaAttivita</code> in un package
+<code>servizi</code>, contenente i seguenti metodi statici: </P>
+<ul>
+  <li><em>durataTotale(Attivita a)</em>: che calcola la durata totale dell'attivit&agrave; <em>a</em>;
+  <li><em>listaAttivitaElementari(Attivita a)</em>: che restituisce una lista
+(oggetto che implementa l'interfaccia <code>List</code>) 
+delle sole <em>attivit&agrave; elementari</em> nell'ordine in cui dovranno
+essere eseguite;
+  <li><em>tutteLeAttivita(Attivita a1, Attivita a2)</em>: che restituisce l'insieme
+(oggetto che implementa l'interfaccia <code>Set</code>) 
+delle sole <em>attivit&agrave; elementari</em> che sono presenti in almeno
+una delle attivit&agrave; <em>a1</em> e <em>a2</em>.
+</ul>
+
+<P>Calcolare e spiegare la complessit&agrave; dei metodi realizzati in
+  funzione del numero <em>n</em> di <em>attivit&agrave; elementari</em>
+  contenute in un'attivit&agrave;.
+  Aggiungere un commento nel file contenente tali metodi. </P>
+
+<p><b>Parte 3</b></p>
+<p>Scrivere una classe <code>Main</code>, al di fuori di tutti i package usati 
+  precedentemente, che realizzi un programma di prova per le classi sviluppate.</p>
+<br>
+<hr>
+<p><a href="http://www.dis.uniroma1.it/docs/j2sdk">Documentazione API Java</a></p>
+<p>&nbsp;</p>
+<p><br></p>
+
+</body>
+</html>

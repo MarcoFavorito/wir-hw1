@@ -1,0 +1,219 @@
+<HTML>
+<HEAD>
+<TITLE>Appello di fondamenti di informatica AE-CH-EL-MAT-MECC-NU 28/06/00 </TITLE>
+</HEAD>
+<BODY >
+
+<P>
+<DIV ALIGN="CENTER">
+<B>
+   Universit&#224; di Roma ``La Sapienza''
+<BR>
+Facolt&#224; di Ingegneria
+<BR>
+Corso di Fondamenti di Informatica - A.A. 1999-2000;
+<BR>
+Corsi di Laurea: Aerospaziale, Chimica, Elettrica, Materiali,
+    Meccanica, Nucleare</B>
+<BR>
+Appello del <B>28 giugno 2000</B> -- 1<SUP><I>a</I></SUP> prova scritta
+<BR>
+  <EM>tempo a disposizione: 2 ore</EM>
+</DIV>
+
+<P>
+<HR>
+<p>
+
+<H2><A NAME="SECTION00001000000000000000">
+Problema 1 (18 punti)</A>
+</H2>
+Un'organizzazione per il controllo e il monitoraggio ambientale rappresenta in
+un file di testo (denominato <EM>file di assorbimento</EM>) informazioni relative
+alla capacit&#224; di assorbimento delle precipitazioni da parte del suolo.  Le
+informazioni sono relative ad una porzione rettangolare di territorio che, a
+questo scopo, &#232; stata decomposta in una griglia di celle (ancora
+rettangolari). Il file ha il seguente formato:
+<UL>
+<LI>una riga contenente due interi compresi fra 1 e 10, che rappresentano il
+  numero di righe <I>m</I> e di colonne <I>n</I> della griglia;
+<LI><I>m</I> righe, ciascuna delle quali contiene <I>n</I> valori reali.  Tali valori
+  sono le capacit&#224; di assorbimento (espresse in mm.) in 24 ore associate alle
+  celle della griglia.
+</UL>
+
+<P>
+<FONT SIZE="-1">Un esempio di file di assorbimento potrebbe essere il seguente.
+</FONT><PRE>
+  2 3
+  12.5 11.2 12.0
+  11.7 10.3 10.9
+</PRE><FONT SIZE="-1">
+ Tale file &#232; relativo ad una porzione rettangolare di territorio che &#232;
+ stata suddivisa in una griglia </FONT><FONT SIZE="-1"> contenente 6 celle.  </FONT>
+
+<P>
+L'organizzazione riceve quotidianamente dal servizio meteorologico le
+previsioni di precipitazioni nelle prossime 24 ore.  Tali informazioni
+sono memorizzate in file (denominati <EM>file di pioggia</EM>) che hanno il
+medesimo formato dei file di assorbimento, ma in cui i reali associati
+alle celle rappresentano la previsione di pioggia (in mm.)  nelle 24
+ore.  Le informazioni vengono usate per determinare lo <EM>stato di
+rischio</EM> delle celle: 0 (la previsione <I>p</I> &#232; inferiore alla
+capacit&#224; di assorbimento <I>a</I>, normalit&#224;), 1 (
+<!-- MATH: $a\leq p\leq
+2a$ -->
+,
+attenzione) o 2 (<I>p</I>&gt;2<I>a</I>, allarme).
+
+<P>
+Si richiede di risolvere i seguenti punti:
+<DL COMPACT>
+<DT>1.
+<DD>Scrivere le dichiarazioni dei tipi di dato Pascal da utilizzarsi per
+risolvere i punti successivi.
+<P>
+<DT>2.
+<DD>Scrivere una (o pi&#249;) unit&#224; di programma Pascal che riceve come
+  parametri di ingresso i nomi fisici di un file di assorbimento e di un file
+  di pioggia relativi alla medesima porzione di territorio, e il nome fisico
+  <I>r</I> di un terzo file (<EM>file di risultati</EM>), e scrive su <I>r</I> i valori
+  interi che indicano lo stato di rischio delle celle.
+  
+<FONT SIZE="-1">Ad esempio, con riferimento al file di assorbimento dell'esempio
+ precedente, ed ipotizzando di ricevere dal servizio meteo il seguente file di
+ pioggia:
+</FONT><PRE>
+  2 3
+  29.0 21.1 17.5
+  11.8 9.6 10.5
+</PRE><FONT SIZE="-1">
+ Il file di risultati deve contenere i seguenti dati (si noti che il file <B>
+  non contiene</B> le dimensioni della griglia):
+</FONT><PRE>
+  2 1 1
+  1 0 0
+</PRE>
+
+<P>
+<DT>3.
+<DD>Scrivere una (o pi&#249;) unit&#224; di programma Pascal che riceva come
+  parametro di ingresso il nome fisico di un file di risultati e restituisca
+  in maniera opportuna una lista contenente gli indici delle celle con stato di
+  rischio pari a 0, seguiti dagli indici delle celle con stato di
+  rischio pari a 1 ed infine dagli indici delle celle con stato di
+  rischio pari a 2.
+
+<P>
+<FONT SIZE="-1">Con riferimento al file di risultati dell'esempio precedente, la
+   funzione deve restituire la seguente lista:
+</FONT><PRE>
+   __    __________    __________    __________     __________    __________    _________
+  |  |  |   |   |  |  |   |   |  |  |   |   |  |   |   |   |  |  |   |   |  |  |   |   | |
+l | -+-&gt;| 2 | 2 | -+-&gt;| 2 | 3 | -+-&gt;| 1 | 2 |  -+-&gt;| 1 | 3 | -+-&gt;| 2 | 1 | -+-&gt;| 1 | 1 |\|
+  |__|  |___|___|__|  |___|___|__|  |___|___|__|   |___|___|__|  |___|___|__|  |___|___|_|
+</PRE>
+<P>
+
+<P>
+</DL>
+
+<P>
+<HR>
+<p>
+
+<P>
+<DIV ALIGN="CENTER">
+<B>
+   Universit&#224; di Roma ``La Sapienza''
+<BR>
+Facolt&#224; di Ingegneria
+<BR>
+Corso di Fondamenti di Informatica - A.A. 1999-2000;
+<BR>
+Corsi di Laurea: Aerospaziale, Chimica, Elettrica, Materiali,
+    Meccanica, Nucleare</B>
+<BR>
+Appello del <B>28 giugno 2000</B> -- 2<SUP><I>a</I></SUP> prova scritta
+<BR>
+  <EM>tempo a disposizione: 1 ora</EM>
+</DIV>
+
+<P>
+<HR>
+<p>
+
+<H2><A NAME="SECTION00002000000000000000">
+Problema 2 (4 punti)</A>
+</H2>
+Illustrare e confrontare fra loro le tecniche disponibili in Pascal e Fortran
+per realizzare la comunicazione di dati fra sottoprogrammi.
+
+
+
+<P>
+<H2><A NAME="SECTION00003000000000000000">
+Problema 3 (4 punti)</A>
+</H2>
+Si consideri il seguente programma Pascal.
+<PRE>
+program Main;
+  function Ricorsiva(primo, secondo : integer): integer;
+  begin
+    if primo &gt;= secondo then
+      Ricorsiva := 0
+    else
+      Ricorsiva := 1 + Ricorsiva(primo*2, secondo);
+  end; { Ricorsiva }
+  var i :  integer;
+begin
+  writeln('Inserire le ultime tre cifre del proprio numero di matricola');
+  readln(i);
+  writeln(Ricorsiva(1,i));
+end. { Main }
+</PRE>
+<UL>
+<LI>Descrivere cosa fa (non come lo fa) la funzione <TT>Ricorsiva</TT>.
+<LI>Che valore viene stampato dal programma quando vengono inserite da
+  tastiera le ultime tre cifre del proprio numero di matricola?  Mostrare l'evoluzione della
+  pila dei record di attivazione.
+<LI>Fornire almeno un valore dei parametri attuali per i quali l'attivazione
+  della funzione <TT>Ricorsiva</TT> non termina.
+</UL>
+
+
+<p>
+
+<H2><A NAME="SECTION00004000000000000000">
+Problema 4 (4 punti)</A>
+</H2>
+Un file il cui nome fisico &#232; di non pi&#249; di 12 caratteri contiene 9 interi,
+uno per riga.
+
+<P>
+Scrivere  un sottoprogramma Fortran che:
+<UL>
+<LI>riceve come parametro una stringa che rappresenta il nome fisico
+  del file;
+<LI>dispone gli interi del file in una matrice 3 
+3, secondo 
+  le righe;
+<LI>restituisce <TT>.TRUE.</TT> se la somma dei valori della diagonale
+  principale &#232; maggiore o uguale a quelli della diagonale secondaria,
+  restituisce <TT>.FALSE.</TT> altrimenti.
+</UL>
+
+<P>
+Scrivere inoltre un programma principale che:
+<UL>
+<LI>usi l'unit&#224; progettata con il
+file il cui nome fisico &#232; <TT>DATI.TXT</TT>;
+<LI>se nella matrice rappresentata in tale file la somma dei valori della
+  diagonale principale &#232; maggiore o uguale a quelli della diagonale
+  secondaria, stampi la stringa <TT>SI</TT>, altrimenti stampi la stringa <TT>
+   NO</TT>.
+</UL>
+
+
+</BODY>
+</HTML>

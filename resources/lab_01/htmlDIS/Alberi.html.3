@@ -1,0 +1,378 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+
+<!--Converted with jLaTeX2HTML 2002 (1.62) JA patch-1.4
+patched version by:  Kenshi Muto, Debian Project.
+LaTeX2HTML 2002 (1.62),
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>Unit&agrave; 12</TITLE>
+<META NAME="description" CONTENT="Unit&agrave; 12">
+<META NAME="keywords" CONTENT="html-main-12">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1">
+<META NAME="Generator" CONTENT="Microsoft FrontPage 4.0">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="../uni12-single/html-main-12.css">
+
+</HEAD>
+
+<BODY >
+
+<P>
+
+<P>
+
+
+<center>
+  <h1>Unit&agrave; 12.</h1>
+  <h1>Alberi</h1>
+</center>
+
+<P>
+
+<hr>
+
+<H2><A NAME="SECTION101209000000000000000">
+Rappresentazione parentetica di alberi binari</A>
+</H2>
+
+<P>
+Un'altra possibile rappresentazione di un albero binario &#232; la <B> rappresentazione parentetica</B>, basata su stringhe di caratteri.  Assumiamo che
+<I>f</I> (<I>T</I>) sia la stringa che denota l'albero binario <I>T</I>;
+
+<P>
+
+<OL>
+<LI>l'albero vuoto &#232; rappresentato dalla stringa <code>"( )"</code>, cio&#232;
+  <I>f</I> (albero&nbsp;vuoto)=<code>"( )"</code>;
+</LI>
+<LI>un albero binario con radice <I>x</I> e sottoalberi sinistro e destro <I>T</I><SUB>1</SUB> e
+  <I>T</I><SUB>2</SUB> &#232; rappresentato dalla stringa <code>"( " +</code>&nbsp;<I>x</I>&nbsp;<code>+</code>&nbsp;<I>f</I> (<I>T</I><SUB>1</SUB>)&nbsp;<code>+</code>&nbsp;<I>f</I> (<I>T</I><SUB>2</SUB>)&nbsp;<code>+ " )"</code>.
+</LI>
+</OL>
+
+<P>
+<I>Esempio:</I> L'albero mostrato nella seguente figura pu&#242; essere
+rappresentato mediante la stringa:
+
+<P>
+<DIV ALIGN="CENTER"><TABLE CELLPADDING=3>
+<TR><TD ALIGN="LEFT"><TT>
+    <code>"( G ( E ( A ( ) ( ) ) ( B ( ) ( ) ) ) "  +</code></TT></TD>
+</TR>
+<TR><TD ALIGN="LEFT"><TT> 
+    <code>    "( F ( C ( ) ( ) ) ( D ( ) ( ) ) ) )"</code>.
+  </TT></TD>
+</TR>
+</TABLE></DIV>
+
+<P>
+<DIV ALIGN="CENTER">
+<IMG
+ width="259" height="182" ALIGN="BOTTOM" BORDER="0"
+ SRC="../uni12-single/img4.png"
+ ALT="\includegraphics[]{figure/fig1204.eps}">
+
+</DIV>
+
+<P>
+
+<hr>
+
+<h2>Esercizio</h2>
+<h3>Scrivere un metodo statico <code>albBin2string</code> che preso in input 
+un albero binario restituisce una stringa che ne è la rappresentazione parentetica.</h3>
+
+<hr>
+
+
+<h2>Soluzione</h2>
+<pre>  public static String albBin2string(NodoBin a) {
+    if (a == null) 
+      return &quot;( )&quot;;
+    else 
+      return &quot;( &quot; + 
+                a.info + 
+                &quot; &quot; + 
+                albBin2string(a.sinistro) +
+                &quot; &quot; +
+                albBin2string(a.destro) +
+             &quot; )&quot;;
+  }
+</pre>
+
+<hr>
+
+<H2><A NAME="SECTION1012016000000000000000">
+Costruzione di un albero binario da rappresentazione 
+ parentetica</A>
+</H2>
+
+<P>
+Vediamo ora un modo conveniente per costruire un albero binario data una sua rappresentazione parentetica.  
+In particolare, vediamo come progettare un metodo statico <TT>leggiParentetica</TT> da aggiungere alla classe 
+<TT>OperazioniAlberi</TT> che fornisca questa funzionalit&#224;.&nbsp;
+
+<P>Prima
+di presentare il codice introduciamo la classe <code>StringTokenizer</code>.</P>
+
+<p>Data una stringa <code>s </code> la classe <code>StringTokenizer</code>
+consente di avere agevolmente accesso alle parole che compongono la stringa,
+dove con il termine parola si intende ogni sequenza di caratteri che compresa fra due spazi, la prima
+sequenza seguita da uno spazio e l'ultima sequenza preceduta da uno spazio. Ad esempio, per la stringa</p>
+
+<code><font size="3">Stringa di prova</font></code>
+
+<p>Le parole (i token) sono <br><br>
+
+<font size="4">
+
+<code>Stringa</code><br>
+<code>di</code><br>
+<code>prova</code></font><font size="4"><br></font></p>
+
+<p>La classe <code>StringTokenizer</code> offre (fra gli altri) i seguenti metodi 
+
+<PRE>
+//crea uno stringTokenizer per la stringa in input
+public StringTokenizer(String s){....} 
+
+//restituisce la parola successiva (ed avanza)
+public String nextToken(){....}
+
+//restituisce true se ci sono altre parole
+public boolean hasMoreTokens(){....}
+
+
+</PRE>
+
+Di seguito riportiamo un esempio di utilizzo
+
+<pre>
+    StringTokenizer st = new StringTokenizer(&quot;this is a test&quot;);
+     while (st.hasMoreTokens()) {
+         System.out.println(st.nextToken());
+     }
+
+</pre>
+
+Veniamo ora alla costruzione di un albero a partire dalla sua rappresentazione parentetica
+
+<blockquote>
+<PRE>
+  import java.util.*
+
+  //nel seguito si assume che s contenga una rappresentazione parentetica corretta
+  public static NodoBin string2albBin(String s) {
+    // s deve contenere un albero in notazione parentetica con spazi
+    // che separano i vari simboli
+    StringTokenizer tks = new StringTokenizer(s);
+    return string2albBin(tks);
+  }
+
+  //metodo ausiliario
+  public static NodoBin string2albBin(StringTokenizer tks) {
+    String t = tks.nextToken();  // t = &quot;(&quot;
+    t = tks.nextToken();
+    if (t.equals(&quot;)&quot;)) // caso di albero vuoto 
+      return null;
+    else {
+      NodoBin a = new NodoBin(); // creo la radice dell'albero
+      a.info = t;
+      a.sinistro = string2albBin(tks); //chiamo ricorsivamente sul sottoalbero sin
+      a.destro = string2albBin(tks); //chiamo ricorsivamente sul sottoalbero des
+      t = tks.nextToken(); // t =  &quot;)&quot;
+      return a;
+    }
+  }
+
+</PRE>
+</blockquote>
+
+<P>
+Si noti che:
+
+<UL>
+<LI>Per utilizzare&nbsp; la classe <TT>StringTokenizer</TT> &#232;
+  necessario importare <TT>java.util.*</TT> e che i simboli della
+  rappresentazione devono essere separati da spazi.
+</LI>
+</UL>
+
+<P>
+<I>Esempio:</I> Mostriamo ora un esempio di uso del metodo <TT> leggiParentetica</TT> che costruisce il seguente albero a partire dalla sua
+rappresentazione parentetica.
+
+<P>
+<DIV ALIGN="CENTER">
+<IMG
+ width="297" height="259" ALIGN="BOTTOM" BORDER="0"
+ SRC="../uni12-single/img6.png"
+ ALT="\includegraphics[]{figure/fig1206.eps}">
+
+</DIV>
+
+<P>
+<blockquote>
+<PRE>
+public class ProvaParentetica {
+  public static void main(String []arg) {
+
+    String s = &quot;( A ( B ( C ( D ( ) ( ) ) ( E ( ) ( ) ) ) &quot; + 
+                       &quot;( F ( ) ( ) ) ) &quot; +
+                   &quot;( G ( H ( ) ( ) ) ( I ( ) ( ) ) ) )&quot;;
+
+    NodoBin t = OperazioniAlberi.string2albBin(s);
+    OperazioniAlberi.visitaSimmetrica(t);
+  }
+}
+</PRE>
+</blockquote>
+
+<P>
+Il programma stampa <TT>D C E B F A H G I</TT>, effettuando la 
+visita simmetrica dell'albero.
+
+<P>
+
+<hr>
+
+<H2><A NAME="SECTION1012017000000000000000">
+Rappresentazione di espressioni aritmetiche mediante alberi binari</A>
+</H2>
+
+<P>
+Una espressione aritmetica pu&#242; essere rappresentata mediante un albero
+binario in cui:
+
+<P>
+
+<UL>
+<LI>i nodi non foglie rappresentano operazioni (es. <TT>+</TT>, <TT>-</TT>, <TT>   *</TT>, <TT>/</TT> );
+</LI>
+<LI>le foglie rappresentano valori numerici (es. <TT>2</TT>, <TT>7</TT>, ecc.)
+</LI>
+</UL>
+
+<P>
+<I>Esempio:</I> L'espressione aritmetica <!-- MATH
+ $(4+2)\cdot (3+9)-7$
+ -->
+ (((4 + 2)<SUP> . </SUP>(3 + 9)) - 7) pu&#242; essere
+rappresentata mediante l'albero binario:
+
+<P>
+<DIV ALIGN="CENTER">
+<IMG
+ width="247" height="215" ALIGN="BOTTOM" BORDER="0"
+ SRC="../uni12-single/img8.png"
+ ALT="\includegraphics[]{figure/fig1209.eps}">
+
+</DIV>
+
+<P>
+L'albero, a sua volta, pu&#242; essere rappresentato in modo parentetico come:
+
+<P>
+<blockquote>
+<PRE>
+String s = &quot;( - ( * ( + ( 4 ( ) ( ) ) ( 2 ( ) ( ) ) ) &quot;   + 
+                   &quot;( + ( 3 ( ) ( ) ) ( 9 ( ) ( ) ) ) ) &quot; +
+               &quot;( 7 ( ) ( ) ) )&quot;;
+</PRE>
+</blockquote>
+
+<P>
+
+<hr>
+
+<H2><A NAME="SECTION1012018000000000000000">
+Valutazione di espressioni aritmetiche mediante alberi
+binari</A>
+</H2>
+
+<P>
+Definiamo ora un metodo statico <TT>valutaEspressione</TT> della classe <TT>OperazioniAlberi</TT>
+che, data una espressione rappresentata come albero binario, ne restituisce il
+valore calcolato:
+
+<P>
+<blockquote>
+<PRE>
+public static int valutaEspressione(NodoBin a) {
+
+  // caso albero vuoto: errore
+  if (a==null) 
+     throw new RutimeException(&quot;Errore albero vuoto&quot;);
+
+  // caso nodo foglia: restituisce valore
+  if (a.sinistro==null &amp;&amp; a.destro==null)
+      return Integer.parseInt(a.info);
+  
+  else { // caso nodo non foglia: calcola ricorsivamente le
+         // sottoespressioni destra e sinistra
+    int sin = valutaEspressione(a.sinistro);
+    int des = valutaEspressione(a.destro);
+
+    // applica operazione
+         if (a.info.equals(&quot;+&quot;)) return sin + des;
+    else if (a.info.equals(&quot;-&quot;)) return sin - des;
+    else if (a.info.equals(&quot;*&quot;)) return sin * des;
+    else if (a.info.equals(&quot;/&quot;)) return sin / des;
+
+    // lancia un'eccezione se l'operazione non e' valida
+    throw new EccezioneAlbero(&quot;Operazione non valida&quot;);
+  }
+}
+</PRE>
+</blockquote>
+
+<P>
+<I>Esempio:</I> Mostriamo ora un esempio di uso del metodo <TT> valutaEspressione</TT> applicato all'espressione vista precedentemente.
+
+<P>
+<blockquote>
+<PRE>
+public class ProvaValutaEspressione {
+  public static void main(String[] args)  {
+    String s = &quot;( - ( * ( + ( 4 ( ) ( ) ) ( 2 ( ) ( ) ) ) &quot;   + 
+                       &quot;( + ( 3 ( ) ( ) ) ( 9 ( ) ( ) ) ) ) &quot; +
+                   &quot;( 7 ( ) ( ) ) )&quot;;
+    NodoBin t = OperazioniAlberi.leggiParentetica(s);
+    try {
+      // la seguente istruzione stampa 65
+      System.out.println( OperazioniAlberi.valutaEspressione(t) );
+    }
+    catch(EccezioneAlbero e) {
+      System.out.println(&quot;Errore: &quot; + e.getMessage());
+    }
+  }
+}
+</PRE>
+</blockquote>
+
+<hr>
+
+<h2>Esercizi</h2>
+<ol>
+  <li><h3>Scrivere un metodo statico <code>esp2string</code> che preso in input 
+un albero binario restituisce l'espressione sotto forma di stringa (potete
+    assumere che l'albero contenga una espressione legale).</h3>
+  </li>
+  <li><h3>Scrivere un metodo statico <code>string2esp</code> che preso in input 
+una espressione (stringa) costruisce l'albero che la rappresentazione. Si assuma
+    che le parentesi della espressione siano tutte esplicitamente scritte (ad
+    esempio 3 + 3 * 4 = ( 3 + ( 3 * 4 ) ). Assumete inoltre ch ogni carattere
+    sia separato da uno spazio.&nbsp;</h3>
+  </li>
+</ol>
+
+</BODY>
+</HTML>

@@ -1,0 +1,111 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1">
+<META NAME="Generator" CONTENT="Microsoft Word 98">
+<TITLE>Esame 4/6/1998</TITLE>
+</HEAD>
+<BODY>
+
+<B><FONT SIZE=4><P ALIGN="CENTER">Universit&agrave; di Roma La Sapienza</P>
+<P ALIGN="CENTER">Corso di Fondamenti di Informatica</FONT> </P>
+<P ALIGN="CENTER">Facolt&agrave; di Ingegneria </P>
+<P ALIGN="CENTER">Corso di Laurea: <I>Ambiente e Territorio</P>
+</I><P ALIGN="CENTER"></P>
+<P ALIGN="CENTER">Appello del 4-6-1998</P>
+<P ALIGN="CENTER"></P>
+<P>&nbsp;</P>
+<P>&nbsp;</P>
+<P>Esercizio 1 (18 punti)</P>
+</B><P ALIGN="JUSTIFY">Un grafico pu&ograve; essere rappresentato mediante una sequenza di coppie di valori (ascissa, ordinata). La sequenza &egrave; ordinata per valori crescenti di ascissa. Si assuma che i valori di ascissa siano tutti distinti.</P>
+<P ALIGN="JUSTIFY">Si considerino due file &#145;C:\GRAF1.DAT&#146; e &#145;C:\GRAF2.DAT&#146;, in cui sono memorizzati due grafici nel modo suddetto.  In particolare, i valori di ascissa sono interi mentre i valori di ordinata sono reali. </P>
+<P ALIGN="JUSTIFY"></P>
+<OL>
+
+<P ALIGN="JUSTIFY"><LI>Definire i tipi di dato C adeguati a risolvere i problemi di cui ai successivi punti 2) e 3).</LI></P>
+<P ALIGN="JUSTIFY"><LI>Scrivere una funzione C (o pi&ugrave;) che, dati come parametri i due file, costruisca e fornisca in uscita il file che rappresenta il grafico ottenuto sommando i due grafici di ingresso. Tale grafico &egrave; costituito da coppie di valori (<I>x</I>, <I>y</I>) calcolate nel seguente modo: se <I>x</I> &egrave; un valore di ascissa presente in tutti e due i grafici dati, allora <I>y</I> &egrave; la somma dei due corrispondenti valori di ordinata; se <I>x</I> &egrave; un valore di ascissa presente in uno solo dei grafici dati, allora <I>y</I> &egrave; il corrispondente valore di ordinata.</LI></P>
+<P ALIGN="JUSTIFY"><LI>Scrivere una funzione C (o pi&ugrave;) che, dato come parametro il file costruito al punto precedente, fornisca la lista collegata costituita dalle sole coppie (ascissa, ordinata) il cui valore di ascissa &egrave; una potenza di due. </LI></P></OL>
+
+<P ALIGN="JUSTIFY"></P>
+<B><P ALIGN="JUSTIFY">Esempio</P>
+</B><P ALIGN="JUSTIFY">Siano dati i seguenti due grafici, rappresentati mediante sequenze, ordinate, di coppie di valori:</P><DIR>
+<DIR>
+
+<P ALIGN="JUSTIFY">(2, 3.5) (4, 7.2) (9, 1.6) (16, 5.0) (27, 9.2)</P>
+<P ALIGN="JUSTIFY">(3, 4.6) (9, 27.0) (16, 8.3) (22, 12.2) (25, 9.2)</P>
+<P ALIGN="JUSTIFY"></P></DIR>
+</DIR>
+
+<P ALIGN="JUSTIFY">La procedura di cui al punto 2) costruir&agrave; il grafico somma e produrr&agrave; un file in cui &egrave; memorizzata la seguente sequenza di coppie:</P><DIR>
+<DIR>
+
+<P ALIGN="JUSTIFY">(2, 3.5) (3, 4.6) (4, 7.2) (9, 28.6) (16, 13.3) (22, 12.2) (25, 9.2) (27, 9.2)</P>
+<P ALIGN="JUSTIFY"></P></DIR>
+</DIR>
+
+<P ALIGN="JUSTIFY">La procedura di cui al punto 3) fornir&agrave; la lista collegata costituita dalle seguenti coppie:</P><DIR>
+<DIR>
+
+<P ALIGN="JUSTIFY">(2, 3.5) (4, 7.2) (16, 13.3) </P>
+<P ALIGN="JUSTIFY"></P>
+<P ALIGN="CENTER">&nbsp;</P></DIR>
+</DIR>
+
+<B><FONT SIZE=4><P ALIGN="CENTER">Universit&agrave; di Roma La Sapienza</P>
+<P ALIGN="CENTER">Corso di Fondamenti di Informatica</FONT> </P>
+<P ALIGN="CENTER">Facolt&agrave; di Ingegneria </P>
+<P ALIGN="CENTER">Corso di Laurea: <I>Ambiente e Territorio</P>
+</I><P ALIGN="CENTER"></P>
+<P ALIGN="CENTER">Appello del 4-6-1998</P>
+</B><P ALIGN="JUSTIFY"></P>
+<P ALIGN="JUSTIFY">&nbsp;</P>
+<B><P>Esercizio 2 (4 punti)</P>
+</B><P ALIGN="JUSTIFY">Si illustrino le tecniche e i concetti che il candidato ritiene significativi al fine di costruire programmi corretti.</P>
+<P ALIGN="JUSTIFY"></P>
+<P ALIGN="JUSTIFY">&nbsp;</P>
+<B><P>Esercizio 3 (4 punti)</P>
+</B><P ALIGN="JUSTIFY">Il candidato consideri il seguente programma C ed indichi cosa viene stampato, e perch&eacute;, quando fornisce in lettura le ultime due cifre (una alla volta) del suo numero di matricola.</P>
+<P ALIGN="JUSTIFY"></P><DIR>
+<DIR>
+
+<FONT FACE="Courier New" SIZE=2><P ALIGN="JUSTIFY">#include &lt;stdio.h&gt;</P>
+<P ALIGN="JUSTIFY"></P>
+<P ALIGN="JUSTIFY">typedef int vett[10];</P>
+<P ALIGN="JUSTIFY"></P>
+<P ALIGN="JUSTIFY">vett v;</P>
+<P ALIGN="JUSTIFY">int i, n;</P>
+<P ALIGN="JUSTIFY"></P>
+<P ALIGN="JUSTIFY">void modifica(vett v, int *n)</P>
+<P ALIGN="JUSTIFY">{</P>
+<P ALIGN="JUSTIFY">&#9;int com;</P>
+<P ALIGN="JUSTIFY">&#9;</P>
+<P ALIGN="JUSTIFY">&#9;com = v[*n];</P>
+<P ALIGN="JUSTIFY">&#9;scanf("%d",n);</P>
+<P ALIGN="JUSTIFY">&#9;v[*n] = com;</P>
+<P ALIGN="JUSTIFY">&#9;</P>
+<P ALIGN="JUSTIFY">&#9;return;</P>
+<P ALIGN="JUSTIFY">}</P>
+<P ALIGN="JUSTIFY"></P>
+<P ALIGN="JUSTIFY">&nbsp;</P>
+<P ALIGN="JUSTIFY">main()</P>
+<P ALIGN="JUSTIFY">{</P>
+<P ALIGN="JUSTIFY">&#9;for(i = 0; i &lt;= 9; i = i+1) </P>
+<P ALIGN="JUSTIFY">&#9;&#9;v[i] = i;</P>
+<P ALIGN="JUSTIFY">&#9;&#9;</P>
+<P ALIGN="JUSTIFY">&#9;n = 1;</P>
+<P ALIGN="JUSTIFY">&#9;</P>
+<P ALIGN="JUSTIFY">&#9;do {</P>
+<P ALIGN="JUSTIFY">&#9;&#9;modifica(v,&amp;(v[n]));</P>
+<P ALIGN="JUSTIFY">&#9;&#9;n = n+1;</P>
+<P ALIGN="JUSTIFY">&#9;} while (n != 3);</P>
+<P ALIGN="JUSTIFY">&#9;</P>
+<P ALIGN="JUSTIFY">&#9;for(i = 0; i &lt;= 9; i = i+1)</P>
+<P ALIGN="JUSTIFY">&#9;&#9;printf("%d\n",v[i]);</P>
+<P ALIGN="JUSTIFY">&#9;</P>
+<P ALIGN="JUSTIFY">&#9;return 0;</P>
+<P ALIGN="JUSTIFY">}</P>
+</FONT><P ALIGN="JUSTIFY"></P></DIR>
+</DIR>
+
+<B><P>Esercizio 4 (4 punti)</P>
+</B><P ALIGN="JUSTIFY">Si illustrino le caratteristiche dei GIS, con particolare attenzione alle caratteristiche dei dati e alle operazioni di interesse sugli stessi.</P></BODY>
+</HTML>

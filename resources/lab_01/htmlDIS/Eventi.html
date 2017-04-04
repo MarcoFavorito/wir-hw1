@@ -1,0 +1,2354 @@
+<!doctype html public "-//w3c//dtd html 4.0 transitional//en">
+<html>
+<head>
+<link href="java.css" rel="stylesheet" type="text/css">
+<title>Java</title>
+</head>
+
+<body>
+
+
+<h1>Rilevazione eventi</h1>
+
+
+
+<h2>Rilevazione del click del mouse</h2>
+
+Gli applet visti fino ad ora si limitano a stampare
+qualcosa sullo schermo, e basta. In questa pagina
+vediamo in che modo un applet pu&ograve; reagire al
+click del mouse.<p>
+
+Quello che vogliamo fare, in generale, &egrave; dire
+all'interprete che ogni volta che viene premuto il
+tasto del mouse deve eseguire una sequenza di istruzioni.
+Il programma di esempio che vediamo &egrave; quello
+che disegna un quadratino nella posizione in cui si
+trova il cursore.<p>
+
+Un applet sensibile al click del mouse ha questa
+struttura:<p>
+
+<pre>
+import java.awt.*;
+
+public class nomefile extends java.applet.Applet {
+  public boolean mouseDown(Event e, int x, int y) {
+    Graphics g=new Graphics();
+
+    istruzioni
+
+    return True;
+  }
+}
+</pre>
+
+Le istruzioni sono quelle che vanno eseguite in risposta
+al click del mouse. Queste istruzioni possono utilizzare
+il contenuto delle due variabili <tt>x</tt> e <tt>y</tt>,
+in cui &egrave; memorizzata la posizione del cursore nel
+momento in cui &egrave; stato premuto il pulsante.<p>
+
+Nel caso in cui si vuole disegnare un quadratino ogni volta
+che viene premuto il pulsante, l'operazione da eseguire
+&egrave; una <tt>fillRect</tt>. Il programma che disegna
+i quadratini &egrave; 
+<a href="PuntiMouse.java">PuntiMouse.java</a>:<p>
+
+<pre>
+/*
+  Disegna dei punti, sulla base del click del mouse
+*/
+
+import java.awt.*;
+
+public class PuntiMouse extends java.applet.Applet {
+  public boolean mouseDown(Event e, int x, int y) {
+    Graphics g=getGraphics();
+
+    g.fillRect(x-2,y-2,4,4);
+
+    return true;
+  }
+}
+
+</pre>
+
+La seguente immagine mostra come appare la finestra dopo
+che il pulsante &egrave; stato premuto su cinque punti
+diversi: in ogni punto &egrave; stato disegnato un
+quadratino.<p>
+
+<center>
+<img src="PuntiMouse.gif">
+</center>
+<p>
+
+
+
+</body>
+
+
+
+
+<h2>Croci e cerchi</h2>
+
+Vediamo ora un altro esempio: vogliamo sempre disegnare
+delle figure geometriche nel punto dove viene premuto
+il pulsante del mouse, soltanto che questa volta la figura
+deve essere una croce oppure un cerchio. In particolare,
+se il pulsante del mouse viene premuto in una posizione
+in cui <tt>x</tt> &egrave; minore o uguale a 200, si deve
+disegnare una croce, mentre invece si disegna un cerchio
+se <tt>x</tt> &egrave; maggiore di 200.<p>
+
+Concettualmente, questo esercizio non presenta nessuna
+difficolt&agrave;: si tratta sempre di fare dei disegni
+ogni volta ogni volta che il pulsante del mouse viene
+premuto. Quindi, occorre semplicemente mettere delle
+istruzioni nel blocco <tt>mouseDown</tt> in modo che
+venga fatto il disegno appropriato. Questa volta la
+cosa da disegnare dipende dal valore della coordinata
+<tt>x</tt>, per cui la procedura <tt>mouseDown</tt>
+contiene una istruzione condizionale, in cui la condizione
+&egrave; <tt>x<=200</tt>. Se questa condizione &egrave;
+verificata si disegna la croce, altrimenti si disegna
+il cerchio.<p>
+
+Il programma completo 
+<a href="CrociCerchi.java">CrociCerchi.java</a>
+&egrave; riportato qui sotto.<p>
+
+<pre>
+/*
+  Disegna croci e cerchi
+*/
+
+import java.awt.*;
+
+public class CrociCerchi extends java.applet.Applet {
+  public boolean mouseDown(Event e, int x, int y) {
+    Graphics g=getGraphics();
+
+    if( x<=200 ) {
+      g.drawLine(x,y-5,x,y+5);
+      g.drawLine(x-5,y,x+5,y);
+    }
+    else {
+      g.drawOval(x-5,y-5,10,10);
+    }
+
+    return true;
+  }
+}
+
+</pre>
+
+<p>
+
+In questo programma si pu&ograve; osservare come le
+variabili <tt>x</tt> e <tt>y</tt> sono variabili come tutte
+le altre. L'unica cosa che le differenzia dalle variabili
+definite localmente &egrave; che il loro valore iniziale
+rappresenta le coordinate del punto in cui si &egrave;
+premuto il pulsante. Per il resto, si possono usare come
+qualsiasi altra variabile intera, per cui per esempio ci
+si pu&ograve; fare un test come <tt>x<=200</tt>.<p>
+
+<center>
+<img src="CrociCerchi.gif">
+</center>
+<p>
+
+
+<p>
+
+</body>
+
+
+
+
+<h2>Coordinate dei punti</h2>
+
+Si risolva il seguente problema: ogni volta che si preme
+il pulsante del mouse in una posizione, si stampi
+in alto a sinistra nella finestra le coordinate in cui
+il pulsante &egrave; stato premuto.<p>
+
+Dal momento che vogliamo fare qualcosa in risposta al
+click, occorre mettere le istruzioni di stampa dentro
+la procedura <tt>mouseDown</tt>. Quello che occorre
+fare &egrave; semplicemente stampare le coordinate, che
+sono date da <tt>x</tt> e <tt>y</tt>. Una prima versione
+del programma potrebbe essere la seguente:
+
+<pre>
+import java.awt.*;
+
+public class Coordinate extends java.applet.Applet {
+  public boolean mouseDown(Event e, int x, int y) {
+    Graphics g=getGraphics();
+
+    g.drawString("Coordinate: "+x+" "+y,0,20);
+
+    return true;
+  }
+}
+</pre>
+
+Il problema &egrave; che le coordinate del punto successivo
+vengono scritte sopra a quelle precedenti, senza prima
+cancellarle. &Egrave; quindi necessario cancellare
+la scritta fatta in precedenza prima di scriverne una
+nuova. Il programma definitivo
+<a href="Coordinate.java">Coordinate.java</a>
+&egrave; quindi fatto cos&iacute:<p>
+
+<pre>
+/*
+  Stampa le coordinate dei punti dove viene fatto click.
+*/
+
+import java.awt.*;
+
+public class Coordinate extends java.applet.Applet {
+  public boolean mouseDown(Event e, int x, int y) {
+    Graphics g=getGraphics();
+
+    g.clearRect(0,0,200,20);
+    g.drawString("Coordinate: "+x+" "+y,0,20);
+
+    return true;
+  }
+}
+
+</pre>
+
+<p>
+
+</body>
+
+
+
+<h2>Paint e mouseDown insieme</h2>
+
+I programmi visti fino ad ora sono di due tipi: quelli
+con <tt>paint</tt>, che disegnano qualcosa ma non reagiscono
+ai click del mouse, e quelli con <tt>mouseDown</tt>, che
+invece reagiscono al click del mouse, ma disegnano una
+finestra che inizialmente &egrave; vuota. Ci sono casi in
+cui si vogliono fare tutte e due queste cose, ossia si
+deve disegnare qualcosa all'inizio, e poi reagire alla
+pressione del tasto del mouse con azioni opportune.<p>
+
+Come abbiamo visto, l'applet che disegna quando viene
+premuto il tasto del mouse ha questa struttura:<p>
+
+<pre>
+import java.awt.*;
+
+public class nomefile extends java.applet.Applet {
+  public boolean mouseDown(Event e, int x, int y) {
+    ...
+  }
+}
+</pre>
+
+L'applet che fa un disegno all'inizio e poi basta 
+ha invece una struttura leggermente diversa:<p>
+
+<pre>
+import java.awt.*;
+
+public class nomefile extends java.applet.Applet {
+  public void paint(Graphics g) {
+    ...
+  }
+}
+</pre>
+
+La differenza sta nel fatto che il primo tipo di
+applet contiene un blocco di istruzioni
+<tt>mouseDown(..) { ... }</tt>, mentre il secondo
+tipo contiene un blocco <tt>paint(..) { ... }</tt>.
+Come si &egrave; gi&agrave; detto, le istruzioni che
+si trovano all'interno delle parentesi graffe
+di <tt>mouseDown(..) { ... }</tt> sono quelle che
+vengono eseguite quando il pulsante del
+mouse viene premuto.<p>
+
+Nel caso degli applet che disegnano, il blocco di
+istruzioni all'interno delle parentesi graffe di
+<tt>paint(..) { ... }</tt> vengono invece eseguite
+comunque all'inizio della esecuzione dell'applet.<p>
+
+&Egrave; possibile mettere nello stesso applet sia
+il blocco <tt>mouseDown(..) { ... }</tt> che quello
+<tt>paint(..) { ... }</tt>. In questo modo, possiamo
+specificare cosa deve succedere sia quando si preme il
+pulsante del mouse che quando si deve disegnare la
+finestra. Lo schema generale, a questo punto, risulta il
+seguente:<p>
+
+<pre>
+import java.awt.*;
+
+public class nomefile extends java.applet.Applet {
+  public boolean mouseDown(Event e, int x, int y) {
+    bloccoA
+  }
+
+  public void paint(Graphics g) {
+    bloccoB
+  }
+}
+</pre>
+
+La sequenza di istruzioni <tt>bloccoA</tt> viene eseguito
+quando si preme il pulsante del mouse, mentre
+<tt>bloccoB</tt> si esegue all'inizio della esecuzione.
+Questo &egrave; molto interessante, e ci consente di
+realizzare un applet in cui possiamo contemporanemente
+disegnare qualcosa e rispondere al click.<p>
+
+Supponiamo per esempio di voler modificare l'applet
+<a href="CrociCerchi.java">CrociCerchi.java</a>
+che disegna una croce se si fa click in un punto
+con <tt>x<=200</tt> e un cerchio altrimenti. Vogliamo
+tracciare una linea sul confine fra i punti dove si
+disegnano le croci e i punti dove si disegnano i
+cerchi.<p>
+
+La linea che separa le due regioni &egrave; una linea
+verticale in cui <tt>x</tt> vale 200. Per esempio, si
+pu&ograve; tracciare con
+<tt>drawLine(200,0,200,500)</tt>. Dal momento che
+questa linea va disegnata ogni volta che l'applet parte,
+la mettiamo all'interno di <tt>paint</tt>. Il
+programma complessivo
+<a href="CrociCerchiLinea.java">CrociCerchiLinea.java</a>
+&egrave; riportato qui sotto.<p>
+
+<pre>
+/*
+  Disegna croci e cerchi, piu' la linea
+  che li separa.
+*/
+
+import java.awt.*;
+
+public class CrociCerchiLinea extends java.applet.Applet {
+
+	/* risponde al click del mouse */
+  public boolean mouseDown(Event e, int x, int y) {
+    Graphics g=getGraphics();
+
+    if( x<=200 ) {
+      g.drawLine(x,y-5,x,y+5);
+      g.drawLine(x-5,y,x+5,y);
+    }
+    else {
+      g.drawOval(x-5,y-5,10,10);
+    }
+
+    return true;
+  }
+
+	/* disegna la linea di separazione */
+  public void paint(Graphics g) {
+    g.drawLine(200,0,200,500);
+  }
+}
+
+</pre>
+
+<p>
+
+<center>
+<img src="CrociCerchiLinea.gif">
+</center>
+<p>
+
+
+
+
+
+</body>
+
+
+
+
+<h2>Griglia e punti</h2>
+
+Realizziamo un applet che disegna prima una griglia di
+linee a distanza 30 l'una dall'altra, e poi disegna un
+quadratino in ogni punto in cui viene premuto il pulsante
+del mouse.<p>
+
+La parte in cui si risponde al click &egrave; la stessa
+del programma
+<a href="PuntiMouse.java">PuntiMouse.java</a>: l'effetto
+della pressione deve essere il disegno del rettangolo
+centrato intorno alla posizione corrente del mouse:<p>
+
+<pre>
+  public boolean mouseDown(Event e, int x, int y) {
+    Graphics g=getGraphics();
+
+    g.fillRect(x-2,y-2,4,4);
+
+    return true;
+  }
+</pre>
+
+La parte di disegno della griglia va eseguita subito, e
+non solo quando si preme il pulsante del mouse, per cui
+le istruzioni di disegno della griglia vanno messe all'interno
+del <tt>paint</tt> (la spiegazione di come si disegna la
+griglia &egrave; stata vista in una pagina precedente):<p>
+
+<pre>
+  public void paint(Graphics g) {
+    int i, j;
+    
+    for(i=0; i<=300; i=i+30) {
+      g.drawLine(0,i,300,i);
+      g.drawLine(i,0,i,300);
+    }
+  }
+</pre>
+
+<p>
+
+Il programma
+<a href="DrawAndClick.java">DrawAndClick.java</a>
+disegna una griglia, pi&ugrave; un quadratino per ogni
+punto in cui si preme il pulsante.<p>
+
+<pre>
+/*
+  Disegna nella finestra, e aggiunge quadrati dove
+viene premuto il pulsante del mouse.
+*/
+
+import java.awt.*;
+
+public class DrawAndClick extends java.applet.Applet {
+  public boolean mouseDown(Event e, int x, int y) {
+    Graphics g=getGraphics();
+
+    g.fillRect(x-2,y-2,4,4);
+
+    return true;
+  }
+
+  public void paint(Graphics g) {
+    int i, j;
+    
+    for(i=0; i<=300; i=i+30) {
+      g.drawLine(0,i,300,i);
+      g.drawLine(i,0,i,300);
+    }
+  }
+}
+
+</pre>
+
+Il risultato della esecuzione, premendo il pulsante in
+alcuni punti, &egrave; il seguente.<p>
+
+<center>
+<img src="DrawAndClick.gif">
+</center>
+<p>
+
+
+
+</body>
+
+
+
+
+<h2>Il problema della cancellazione</h2>
+
+Si provi ad eseguire il programma
+<a href="PuntiMouse.java">PuntiMouse.java</a>, che
+disegna un rettangolo in ogni punto in cui viene
+premuto il pulsante del mouse, in questo modo:<p>
+
+<ul>
+<li>si lancia l'applet;
+<li>si disegnano dei punti sulla finestra premendo il
+pulsante del mouse;
+<li>si copre la finestra con un'altra finestra;
+<li>si riporta in alto la finestra con l'applet.
+</ul>
+
+Il risultato &egrave; che i punti che erano stati in
+precedenza disegnati sono spariti. Un risultato simile
+si ottiene con gli altri programmi visti fino ad ora.
+In particolare, si nota che tutti i disegni che vengono
+fatti da istruzioni che stanno dentro <tt>paint</tt>
+rimangono, mentre i disegni fatti da istruzioni che stanno
+dentro <tt>mouseDown</tt> sono spariti. Per esempio, nel
+programma
+<a href="CrociCerchiLinea.java">CrociCerchiLinea.java</a>
+la linea verticale viene disegnata da <tt>paint</tt>, e
+in effetti &egrave; l'unica cosa che rimane: tutte le
+croci e i cerchi, che sono disegnati dentro
+<tt>mouseDown</tt>, spariscono quando la finestra viene
+coperta e poi scoperta di nuovo.<p>
+
+A cosa &egrave; dovuto questo curioso fenomeno? Per dare
+una risposta a questa domanda, &egrave; necessario
+approfondire l'anatomia di un applet. Come abbiamo visto,
+gli applet hanno questa struttura:<p>
+
+<pre>
+import java.awt.*;
+
+public class nomefile extends java.applet.Applet {
+  public boolean mouseDown(Event e, int x, int y) {
+    bloccoA
+  }
+
+  public void paint(Graphics g) {
+    bloccoB
+  }
+}
+</pre>
+
+Come si &egrave; gi&agrave; detto, le istruzioni che
+si trovano all'interno delle parentesi graffe di
+<tt>mouseDown(..) { ... }</tt> sono quelle che vengono
+eseguite ogni volta che il pulsante del mouse viene
+premuto. Le istruzioni all'interno delle parentesi graffe
+di <tt>paint(..) { ... }</tt> vengono invece eseguite
+quando si lancia l'applet. Finora si &egrave; detto che
+l'unico momento in cui queste istruzioni vengono eseguite
+&egrave; l'inizio. Questo non &egrave; del tutto esatto.<p>
+
+Prima di analizzare questo punto, occorre essere pi&ugrave;
+precisi su quello che succede quando una finestra viene
+coperta.
+Quello che in effetti succede &egrave; <i>che il contenuto
+della finestra (quello che &egrave; stato disegnato al
+suo interno) viene cancellato quando la finestra diventa
+invisibile</i>. Se per esempio si copre la finestra con
+un'altra finestra, quello che era stato disegnato viene
+cancellato.<p>
+
+Questo sembra in contraddizione con il fatto che non c'&egrave;
+nessuna cancellazione di quello che &egrave; stato disegnato
+nel <tt>paint</tt>. Non c'&egrave; invece nessuna
+contraddizione. &Egrave; semplicemente stata detta una
+cosa imprecisa a proposito di <tt>paint</tt>. Non &egrave;
+vero che le sue istruzioni vengono eseguite una sola volta
+all'inizio. Al contrario,
+
+<blockquote>
+<b>
+la sequenza <tt>paint</tt> viene eseguita ogni volta
+che parte della finestra diventa visibile
+</b>
+</blockquote>
+
+Quando una finestra viene coperta e poi scoperta, i disegni
+effettuati all'interno di <tt>paint</tt> vengono cancellati
+come anche tutti quelli fatti all'interno di
+<tt>mouseDown</tt>. Quando la finestra diventa di nuovo
+visibile, le istruzioni dentro <tt>paint</tt> vengono
+eseguite di nuovo, per cui i disegni che sono stati fatti
+da istruzioni dentro <tt>paint</tt> vengono semplicemente
+disegnati di nuovo.<p>
+
+Possiamo dire che non &egrave; vero che le
+cose disegnate da <tt>paint</tt> rimangono quando la
+finestra viene coperta e poi scoperta. Quello che succede
+in realt&agrave; &egrave; che tutto viene cancellato, solo
+che i disegni fatti da <tt>paint</tt> vengono disegnati
+di nuovo quando la finestra riappare.<p>
+
+Quando l'applet viene lanciato, la finestra diventa
+visibile e quindi vengono eseguite le istruzioni che stanno
+fra parentesi graffe in <tt>paint(..) { ... }</tt>.
+Ogni volta che la finestra (o una sua parte) diventa
+invisibile, il contenuto viene cancellato. Quando la
+finestra torna a essere visibile, le istruzioni del
+blocco <tt>paint</tt> vengono eseguite di nuovo, per
+cui viene fatto di nuovo il disegno.<p>
+
+Riassumendo, possiamo dire che:
+
+<ul>
+<li>la sequenza di istruzioni all'interno di
+<tt>mouseDown(..) { ... }</tt> viene eseguito ogni volta
+che si preme il pulsante del mouse;
+<li>le istruzioni di <tt>paint(..) { ... }</tt> sono
+eseguite ogni volta che parte della finestra diventa
+visibile.
+</ul>
+
+Da questo si capisce perch&egrave; solo i disegni fatti
+da <tt>mouseDown</tt> non riappaiono: quando la finestra
+diventa di nuovo visibile, solo le istruzioni che stanno
+dentro <tt>paint</tt> vengono eseguite di nuovo.<p>
+
+</body>
+
+
+
+
+<h2>Variabili globali</h2>
+
+Vediamo come si pu&ograve; fare per evitare la cancellazione
+delle cose fatte da <tt>mouseDown</tt>. Prendiamo il programma
+<a href="CrociCerchiLinea.java">CrociCerchiLinea.java</a>
+e facciamo in modo che almeno l'ultimo
+punto non venga cancellato. Come si &egrave; detto, in effetti
+tutto viene cancellato quando la finestra &egrave; coperta.
+L'unica cosa che si pu&ograve; fare &egrave; <i>fare in modo
+che i disegni fatti da </i><tt>mouseDown</tt><i> vengano
+ridisegnati di nuovo quando la finestra appare di nuovo</i>.<p>
+
+Sappiamo che quando la finestra appare vengono eseguite le
+istruzioni dentro <tt>paint</tt>. Quindi, &egrave; necessario
+che le cose disegnate da <tt>mouseDown</tt> vengano disegnate
+di nuovo da <tt>paint</tt> quando la finestra diventa di
+nuovo visibile.<p>
+
+Iniziamo con un caso semplice: modifichiamo l'applet
+<a href="CrociCerchiLinea.java">CrociCerchiLinea.java</a>
+in modo che l'ultima figura disegnata da <tt>mouseDown</tt>
+sia permanente. Per fare questo &egrave; necessario
+memorizzare la posizione e forma di quest'ultima figura in
+modo tale che <tt>paint</tt> possa leggere questo valore,
+e ridisegnare la figura quando serve. Il meccanismo che
+abbiamo per memorizzare dati &egrave; quello delle variabili.
+Resta per&ograve; il problema di dove dichiarare queste
+variabili.<p>
+
+Supponiamo infatti di voler memorizzare le coordinate
+<tt>x</tt> e <tt>y</tt> dell'ultima posizione in cui il
+pulsante &egrave; stato premuto. Questi due numeri sono
+chiaramente sufficienti per disegnare di nuovo l'ultima
+figura fatta. Usiamo quindi due variabili
+<tt>xultimo</tt> e <tt>yultimo</tt>.
+Il problema &egrave; che la posizione dell'ultimo
+click viene memorizzata dentro <tt>mouseDown</tt>, ma
+questi dati sono necessari a <tt>paint</tt> per poter
+disegnare di nuovo l'ultima figura quando la finestra
+diventa nuovamente visibile. Se dichiariamo queste
+due variabili dentro <tt>mouseDown</tt>, la procedura
+<tt>paint</tt> non la pu&ograve; usare; se le dichiariamo
+dentro <tt>paint</tt> allora <tt>mouseDown</tt> non ci
+pu&ograve; scrivere; dichiarare queste due variabili in
+entrambe le procedure non serve, dal momento che variabili
+in procedure diverse sono diverse (corrispondono a zone
+di memoria diverse) anche se hanno lo stesso nome.<p>
+
+Il meccanismo che si usa per permettere ai due blocchi
+interni a <tt>mouseDown</tt> e <tt>paint</tt> di condividere
+delle variabili &egrave; quello di dichiararle come
+<i>variabili globali</i>. Una variabile &egrave; globale
+se viene dichiarata all'interno delle parentesi graffe
+di <tt>class ... { ... }</tt> ma prima delle procedure
+(cio&egrave; prima di <tt>public boolean mouseDown</tt>).
+Le variabili dichiarate in questo modo si dicono appunto
+globali, e sono variabili che tutte le procedure possono
+usare. Nel nostro caso, dichiarando una variabile globale
+<tt>xultimo</tt> di tipo intero, sia <tt>mouseDown</tt> che
+<tt>paint</tt> possono accedere ad essa. In questo modo,
+all'interno di <tt>mouseDown</tt> possiamo memorizzare in
+questa variabile la coordinata <tt>x</tt> dell'ultimo punto
+in cui il pulsante &egrave; stato premuto, mentre all'interno
+di <tt>paint</tt> possiamo utilizzare il valore che &egrave;
+stato memorizzato in precedenza.<p>
+
+Per poter ripetere l'ultima figura disegnata sono chiaramente
+necessari due valori, che corrispondono alle due coordinate
+dell'ultimo punto in cui il pulsante del mouse &egrave;
+stato premuto. Le seguenti dichiarazioni creano due variabili
+globali in cui &egrave; possibile memorizzare questi valori.<p>
+
+<pre>
+import java.awt.*;
+
+public class CrociCerchiLineaUltimo extends java.applet.Applet {
+
+  int xultimo=-4, yultimo=-4;
+
+        /* risponde al click del mouse */
+  public boolean mouseDown(Event e, int x, int y) {
+
+  ...
+</pre>
+
+All'interno di <tt>mouseDown</tt> occorre aggiungere delle
+istruzioni che memorizzano i valori di <tt>x</tt> e <tt>y</tt>
+nelle variabili <tt>xultimo</tt> e <tt>yultimo</tt>. Le due
+istruzioni necessarie sono chiaramente <tt>xultimo=x</tt>
+e <tt>yultimo=y</tt>.<p>
+
+L'ultima figura deve venire poi disegnata di nuovo da 
+<tt>paint</tt>. Per fare questo, aggiungiamo, all'interno
+di <tt>paint</tt>, le istruzioni che disegnano la figura
+appropriata alle coordinata <tt>xultimo</tt> e
+<tt>yultimo</tt>, che rappresentano le coordinate dell'ultimo
+punto in cui il pulsante del mouse &egrave; stato premuto.
+
+Il codice completo del programma
+<a href="CrociCerchiLineaUltimo.java">CrociCerchiLineaUltimo.java</a>
+&egrave; riportato qui sotto.
+
+<pre>
+/*
+  Disegna croci e cerchi, piu' la linea
+  che li separa.
+*/
+
+import java.awt.*;
+
+public class CrociCerchiLineaUltimo extends java.applet.Applet {
+
+  int xultimo=-4, yultimo=-4;
+
+	/* risponde al click del mouse */
+  public boolean mouseDown(Event e, int x, int y) {
+    Graphics g=getGraphics();
+
+    if( x<=200 ) {
+      g.drawLine(x,y-5,x,y+5);
+      g.drawLine(x-5,y,x+5,y);
+    }
+    else {
+      g.drawOval(x-5,y-5,10,10);
+    }
+
+    xultimo=x;
+    yultimo=y;
+
+    return true;
+  }
+
+	/* disegna la linea di separazione */
+  public void paint(Graphics g) {
+    g.drawLine(200,0,200,500);
+
+    if( xultimo<=200 ) {
+      g.drawLine(xultimo,yultimo-5,xultimo,yultimo+5);
+      g.drawLine(xultimo-5,yultimo,xultimo+5,yultimo);
+    }
+    else {
+      g.drawOval(xultimo-5,yultimo-5,10,10);
+    }
+
+  }
+}
+
+</pre>
+
+Va fatta una precisazione sul perch&egrave; le variabili
+<tt>xultimo</tt> e <tt>yultimo</tt> hanno valori iniziali
+-4. Si tratta di un espediente per evitare il disegno di
+una figura geometrica quando l'applet parte. Come si &egrave;
+detto, quello che sta dentro <tt>paint</tt> viene eseguito
+una prima volta, sempre, quando si esegue il programma (dopo
+che la finestra &egrave; stata creata). All'inizio il
+pulsante del mouse non &egrave; stato mai premuto, per cui
+le istruzioni di <tt>mouseDown</tt> non sono mai state
+eseguite. Quindi, le variabili <tt>xultimo</tt> e
+<tt>yultimo</tt> non contengono l'ultimo punto (semplicemente
+perch&egrave; non esiste un punto in cui il mouse &egrave;
+stato premuto).<p>
+
+Quando l'applet viene lanciato, si esegue la procedura
+<tt>paint</tt>. Questa disegna la linea verticale, e poi
+un cerchio o una croce. Dal momento che inizialmente le
+due variabili <tt>xultimo</tt> e <tt>yultimo</tt> valgono
+-4, la figura disegnata &egrave; fuori dall'area visibile.<p>
+
+Ogni volta che viene premuto il pulsante del mouse, viene
+disegnata una croce oppure un cerchio. Inoltre, i valori
+delle coordinate della posizione del cursore vengono salvate
+nelle variabilie <tt>xultimo</tt> e <tt>yultimo</tt>. Se
+si preme nuovamente il pulsante, si fa il nuovo disegno,
+e nelle variabili <tt>xultimo</tt> e <tt>yultimo</tt> ci si
+mettono le nuove coordinate. Quindi, queste variabili
+contengono sempre le coordinate dell'ultimo punto di click.
+Quando la finestra viene coperta e poi scoperta di nuovo,
+viene eseguita la procedura <tt>paint</tt>, che disegna di
+nuovo la linea verticale, e poi disegna una croce oppure
+un cerchio alle coordinate <tt>xultimo</tt> e
+<tt>yultimo</tt>. Il programma fa esattamente quello che era
+richiesto: se la finestra viene coperta e poi scoperta,
+l'ultima figura disegnata rimane.<p>
+
+
+
+
+</body>
+
+
+
+
+<h2>Rendere permanenti tutte le modifiche</h2>
+
+Analizziamo ora il problema di evitare la cancellazione
+di <i>tutte</i> le figure geometriche che vengono
+disegnate da <tt>mouseDown</tt>. In effetti, abbiamo
+gi&agrave; tutte le informazioni necessarie per realizzare
+un programma del genere. Si tratta infatti di memorizzare
+le caratteristiche di tutti i punti in cui il mouse viene
+premuto in delle variabili globali, in modo tale che
+<tt>paint</tt> possa fare tutti i disegni da capo.<p>
+
+Consideriamo quindi il programma
+<a href="DrawAndClick.java">DrawAndClick.java</a>. Cos&iacute;
+come &egrave; scritto, i quadratini che corrispondono ai click
+del mouse non vengono disegnati ogni volta che la
+finestra diventa visibile. Il motivo &egrave; chiaro:
+viene fatto solo quello che si trova nel blocco
+del <tt>paint(){ ... }</tt>, e il disegno dei quadratini
+non si trova l&iacute; dentro.<p>
+
+Per rendere questi quadratini permanenti, &egrave;
+necessario che all'interno di <tt>paint</tt> vengano
+disegnati <i>tutti i quadratini</i> che corrispondono
+a tutti i punti in cui &egrave; stato premuto il
+pulsante. &Egrave; quindi necessario memorizzare via
+via tutti i punti in cui &egrave; stato premuto il
+pulsante.<p>
+
+Dal momento che occorre memorizzare un numero non noto
+di valori per le coordinate <i>x</i> e <i>y</i> di ogni
+punto, usiamo due vettori: <tt>xvett</tt> e <tt>yvett</tt>.
+Ci serve poi sapere quanti punti sono stati disegnati
+fino a questo momento, e per questo usiamo una variabile
+intera <tt>npunti</tt>.<p>
+
+All'inizio, il numero dei punti disegnati &egrave; zero:
+questo &egrave; quindi il valore iniziale della
+variabile <tt>npunti</tt>. Il primo punto viene memorizzato
+nelle variabili <tt>xvett[0]</tt> e <tt>yvett[0]</tt>,
+e a questo corrisponde un incremento della variabile
+<tt>npunti</tt>. Al secondo click del mouse, le variabili
+da usare sono <tt>xvett[1]</tt> e <tt>yvett[1]</tt>,
+e si incrementa nuovamente <tt>npunti</tt>. In poche parole:
+a ogni click si memorizza il valore di <tt>x</tt>
+in <tt>xvett[npunti]</tt> e il valore di <tt>y</tt> in
+<tt>yvett[npunti]</tt>. La struttura di
+<tt>mouseDown()</tt> diventa quindi:<p>
+
+<pre>
+  public boolean mouseDown(Event e, int x, int y) {
+    int i;
+
+    g.fillRect(x-2,y-2,4,4);
+
+    xvett[npunti]=x;
+    yvett[npunti]=y;
+    npunti=npunti+1;
+
+    return true;
+  }
+</pre>
+
+Per quello che riguarda il disegno: all'interno di
+<tt>paint()</tt> occorre fare il disegno di tutti i punti
+che sono stati toccati fino a questo momento. Dal momento
+che le coordinate del primo punto sono memorizzate in
+<tt>xvett[0]</tt> e <tt>yvett[0]</tt>, mentre le ultime
+sono in <tt>xvett[npunti-1]</tt> e <tt>yvett[npunti-1]</tt>,
+&egrave; chiaro che occorre fare un ciclo in cui una
+variabile va da <tt>0</tt> a <tt>npunti-1</tt> aumentando di 1
+ogni volta:<p>
+
+<pre>
+  public void paint(Graphics g) {
+    int i;
+
+    for(i=0; i<=npunti-1; i++) 
+      g.fillRect(xvett[i]-2,yvett[i]-2,4,4);
+  }
+</pre>
+
+
+<p>
+
+I due vettori <tt>xvett</tt> e <tt>yvett</tt> e la
+variabile <tt>npunti</tt> vanno dichiarati come variabili
+globali, dal momento che sia <tt>mouseDown</tt> che
+<tt>paint</tt> li devono usare.<p>
+
+<pre>
+public class PuntiMouseDue extends java.applet.Applet {
+  int xvett[] = new int[100];
+  int yvett[] = new int[100];
+  int npunti=0;
+
+  public boolean mouseDown(Event e, int x, int y) {
+    ...
+  }
+
+  public void paint(Graphics g) {
+    ...
+  }
+}
+</pre>
+
+Con questo tipo di dichiarazione, i due vettori <tt>xvett</tt>
+e <tt>yvett</tt> e la variabile <tt>npunti</tt> si possono
+usare in entrambi i blocchi di istruzioni, e sono esattamente
+gli stessi. In questo modo, ogni volta che viene premuto il
+pulsante del mouse, si attiva la sequenza <tt>mouseDown</tt>,
+che disegna il punto, memorizza le posizioni nei vettori e
+incrementa la variabile <tt>npunti</tt>. Ogni volta che la
+finestra diventa visibile, si ridisegnano tutti i punti
+memorizzati nei vettori. Il programma finale
+<a href="PuntiMouseDue.java">PuntiMouseDue.java</a>
+risulta quindi il seguente:<p>
+
+<pre>
+/*
+  Disegna dei punti, sulla base del click del mouse
+*/
+
+import java.awt.*;
+
+public class PuntiMouseDue extends java.applet.Applet {
+  int xvett[] = new int[100];
+  int yvett[] = new int[100];
+  int npunti=0;
+
+  public boolean mouseDown(Event e, int x, int y) {
+    Graphics g=getGraphics();
+
+    g.fillRect(x-2,y-2,4,4);
+
+    xvett[npunti]=x;
+    yvett[npunti]=y;
+    npunti=npunti+1;
+
+    return true;
+  }
+
+  public void paint(Graphics g) {
+    int i;
+
+    for(i=0; i<=npunti-1; i++) 
+      g.fillRect(xvett[i]-2,yvett[i]-2,4,4);
+  }
+}
+
+</pre>
+<p>
+
+
+
+
+</body>
+
+
+
+
+<h2>Sposta una figura</h2>
+
+Il problema da risolvere &egrave; questo: scrivere un
+applet che disegna un quadratino riempito in ogni punto
+in cui si preme il pulsante del mouse; inoltre, quando
+si preme di nuovo il pulsante, va disegnato un nuovo
+rettangolo, ma il precedente va cancellato.<p>
+
+Questo programma &egrave; completamente centrato intorno
+alla funzione <tt>mouseDown</tt>. Infatti, le uniche
+operazioni da fare sono:<p>
+
+<ul>
+
+<li>quando si preme il pulsante, cancellare l'ultimo
+quadrato disegnato;
+
+<li>disegnare un quadrato nella nuova posizione.
+
+</ul>
+
+Disegnare il quadrato nella nuova posizione &egrave; facile:
+basta mettere l'istruzione <tt>g.drawRect(x-5,y-5,10,10)</tt>
+dentro <tt>mouseDown</tt>.<p>
+
+La cosa pi&ugrave; complicata &egrave; cancellare il
+quadrato che era stato disegnato in precedenza. Per fare
+questo &egrave; necessario, ogni volta che si disegna
+un quadrato, memorizzare la sua posizione, in modo tale
+che al click successivo il quadrato si possa cancellare.
+Quindi, occorre salvare i valori di <tt>x</tt> e <tt>y</tt>
+in modo che siano disponibili la successiva volta che si
+preme il pulsante.<p>
+
+Un metodo che a prima vista pu&ograve; sembrare valido
+&egrave; questo:<p>
+
+<pre>
+  public boolean mouseDown(Event e, int x, int y) {
+    Graphics g=getGraphics();
+    int xultimo, yultimo;		/* PROGRAMMA ERRATO */
+
+    g.clearRect(xultimo-5,yultimo-5,10,10);
+
+    g.fillRect(x-5,y-5,10,10);
+
+    xultimo=x;
+    yultimo=y;
+
+    return true;
+  }
+</pre>
+
+In effetti, in questa funzione i valori di <tt>x</tt> e <tt>y</tt>
+vengono memorizzati nelle variabili <tt>xultimo</tt> e
+<tt>yultimo</tt>; alla successiva chiamata, viene cancellato
+il quadratino messo in questa posizione. Questo sistema non
+funziona perch&egrave; vale la seguente regola:<p>
+
+<blockquote>
+<i>
+quando una procedura termina, il contenuto delle sue
+variabili locali viene cancellato.
+</i>
+</blockquote>
+
+Nel nostro caso, quando viene premuto il pulsante, i valori
+di <tt>x</tt> e <tt>y</tt> vengono copiati nelle variabili
+<tt>xultimo</tt> e <tt>yultimo</tt>, per&ograve; queste
+due variabili vengono cancellate quando si arriva alla fine
+della procedura <tt>mouseDown</tt>. Al successivo click
+del mouse non sar&agrave; pi&ugrave; possibile cancellare
+il quadratino precedente.<p>
+
+Visto che la variabili locali vengono cancellate alla fine
+della esecuzione della procedura, l'unico altro metodo che
+abbiamo per memorizzare in modo permanente questi valori
+&egrave; quello di copiarne il valore in due variabili
+globali. Definiamo quindi <tt>xultimo</tt> e <tt>yultimo</tt>
+come variabili globali. Ogni volta che si preme il pulsante
+del mouse, i valori di <tt>x</tt> e <tt>y</tt> vengono copiati
+in queste due variabili. Dal momento che <tt>xultimo</tt> e
+<tt>yultimo</tt> sono globali, il loro valore non viene
+cancellato quando <tt>mouseDown</tt> finisce (la cancellazione
+avviene solo per le variabili locali). Quindi, la volta dopo
+che il pulsante viene premuto, le variabili globali contengono
+ancora la posizione del quadrato precedente. &Egrave; quindi
+possibile cancellarlo.<p>
+
+Riassumendo, la funzione <tt>mouseDown</tt> &egrave; fatta
+cos&iacute;: per prima cosa si cancella il quadrato precedente,
+poi si disegna il quadrato nuovo, e poi si memorizza la posizione
+nelle variabili globali. Manca ora solo da dire i valori iniziali
+delle variabili globali. Infatti, la prima volta che si
+esegue <tt>mouseDown</tt> viene comunque fatta l'operazione di
+cancellazione del quadrato posizionato in <tt>xultimo</tt> e
+<tt>yultimo</tt>, e quindi viene fatta la cancellazione di
+un quadrato le cui coordinate sono date dai valori iniziali
+di queste variabili. Possiamo scegliere di dare inizialmente
+-10 a <tt>xultimo</tt> e <tt>yultimo</tt>, in modo tale che
+la cancellazione avvenga fuori dall'area visibile della
+finestra.<p>
+
+Il programma completo
+<a href="Sposta.java">Sposta.java</a>
+risulta quindi fatto nel modo seguente:<p>
+
+<pre>
+/*
+  Sposta il rettangolo nel punto in cui viene premuto
+  il pulsante.
+*/
+
+import java.awt.*;
+
+public class Sposta extends java.applet.Applet {
+  int xultimo=-10, yultimo=-10;
+
+  public boolean mouseDown(Event e, int x, int y) {
+    Graphics g=getGraphics();
+
+    g.clearRect(xultimo-5,yultimo-5,10,10);
+
+    g.fillRect(x-5,y-5,10,10);
+
+    xultimo=x;
+    yultimo=y;
+
+    return true;
+  }
+}
+
+</pre>
+
+<p>
+
+</body>
+
+
+
+
+<h2>Disegna una linea spezzata</h2>
+
+Scrivere un applet che disegna una linea spezzata seguendo
+i click del mouse. In altre parole, ogni volta che si fa
+un click, va aggiunto un segmento fra l'ultimo punto
+della spezzata e quello in cui si trova il cursore.<p>
+
+Lasciamo da parte il problema di rendere permanente
+la spezzata, ossia di fare in modo che venga ridisegnata
+ogni volta che la finestra viene coperta e torna
+nuovamente visibile. Ci concentriamo invece sul
+problema del disegno.<p>
+
+Dal momento che si tratta di fare qualcosa ogni volta
+che si preme il pulsante del mouse, occorre scrivere
+qualcosa nella procedura <tt>mouseDown</tt>. In
+particolare, occorre disegnare un segmento fra l'ultimo
+punto disegnato e quello in cui si trova il cursore in
+questo momento. La posizione attuale del cursore &egrave;
+memorizzata in <tt>x</tt> e <tt>y</tt> come al solito.
+Serve anche sapere la posizione del penultimo punto in
+cui il pulsante era stato premuto. Occorre quindi che
+la procedura stessa salvi la posizione in due variabili
+globali, in modo tale che la volta dopo di sappia la
+posizione precedente.<p>
+
+La funzione <tt>mouseDown</tt> &egrave; quindi fatta in
+questo modo (per ora):<p>
+
+<pre>
+  public boolean mouseDown(Event e, int x, int y) {
+    Graphics g=getGraphics();
+
+    g.drawLine(xultimo,yultimo,x,y);
+
+    xultimo=x;
+    yultimo=y;
+
+    return true;
+  }
+</pre>
+
+Le due variabili <tt>xultimo</tt> e <tt>yultimo</tt> sono
+dichiarate come variabili globali. Resta ancora un punto da
+decidere: quale valore iniziale devono avere queste due
+variabili? Se mettiamo per esempio 0 in entrambe, abbiamo
+che il primo punto della spezzata si trova sempre nella
+posizione (0,0). D'altra parte, noi vorremmo far partire la
+spezzata nel punto in cui il pulsante &egrave; stato premuto
+per la prima volta.<p>
+
+Il problema si risolve facilmente considerando che, la prima
+volta che il pulsante viene premuto, non occorre disegnare
+nessuna linea: infatti, questo &egrave; il punto iniziale
+della spezzata; la prima linea sar&agrave; fra questo punto
+e il successivo. Il problema, a questo punto, &egrave;: come
+facciamo, all'interno di <tt>mouseDown</tt> a capire se
+stiamo al primo click del mouse oppure no? Il problema non
+&egrave; difficile come sembra.<p>
+
+Supponiamo di mettere -1 come valore iniziale di
+<tt>xultimo</tt>. Quando <tt>mouseDown</tt> viene eseguito
+per la prima volta, <tt>xultimo</tt> vale quindi -1. In
+questa variabile viene poi messa la coordinata <tt>x</tt>
+del punto attuale del cursore, che &egrave; un numero
+maggiore o uguale a 0. Alla successiva chiamata, nella
+variabile c'&egrave; ancora questo valore, che viene poi
+modificato nuovamente con la nuova coordinata. Si pu&ograve;
+quindi dire che la variabile vale -1 soltanto la prima
+volta che la procedura viene eseguita, ossia soltanto
+la prima volta che viene premuto il pulsante del mouse.<p>
+
+Questo ci permette di decidere se disegnare o no la linea.
+Come si &egrave; detto, la linea va disegnata soltanto se
+questa non &egrave; la prima volta che il pulsante &egrave;
+stato premuto. Abbiamo visto che <tt>xultimo</tt> vale
+-1 soltanto la prima volta che il pulsante &egrave; stato
+premuto. Quindi, la linea va fatta solo se <tt>xultimo</tt>
+non vale -1.<p>
+
+Il programma finale
+<a href="DisegnaSpezzata.java">DisegnaSpezzata.java</a>
+contiene la procedura <tt>mouseDown</tt> modificata, in cui
+la linea viene disegnata solo se <tt>xultimo</tt> ha
+un valore diverso da -1.<p>
+
+<pre>
+/*
+  Disegna un poligono, dati i punti successivi
+*/
+
+import java.awt.*;
+
+public class DisegnaSpezzata extends java.applet.Applet {
+  int xultimo=-1, yultimo=-1;
+
+  public boolean mouseDown(Event e, int x, int y) {
+    Graphics g=getGraphics();
+
+    if( xultimo != -1 ) {
+      g.drawLine(xultimo,yultimo,x,y);
+    }
+
+    xultimo=x;
+    yultimo=y;
+
+    return true;
+  }
+}
+
+</pre>
+
+<p>
+
+</body>
+
+
+
+<h2>Un cerchio oppure un quadrato</h2>
+
+<p>
+Realizzare un applet che disegna un cerchio. In un
+angolo, vanno disegnati due rettangoli. Premendo il
+mouse nel rettangolo in alto il cerchio deve diventare
+un quadrato, mentre premendo dentro il rettangolo in
+basso deve tornare a essere un quadrato.
+
+<p>
+In pratica, il problema si risolve cos&iacute;: quando
+si preme il pulsante, si va a controllare se la posizione
+&egrave; all'interno di uno dei due rettangoli. Se lo
+&egrave;, si cancella la figura disegnata in precedenza
+e si disegna quella nuova.
+
+<p>
+Per rendere il disegno permanente, occorre che la procedura
+<tt>paint</tt> sappia se la figura corrente &egrave; un
+quadrato oppure un cerchio. Dal momento che la figura viene
+cambiata da <tt>mouseDown</tt>, serve una variabile globale.
+Usiamo quindi una variabile globale intera <tt>cerchio</tt>.
+Vogliamo che questa variabile valga 1 se la figura corrente
+&egrave; un cerchio, 0 se &egrave; un rettangolo.
+La variabile deve inizialmente valere 1 (si comincia
+con il cerchio) e poi deve venire cambiata quando si preme
+il pulsante in uno dei rettangoli. La procedura <tt>paint</tt>
+pu&ograve; usare il valore di questa variabile per capire se
+deve disegnare un quadrato oppure un cerchio.
+
+<p>
+Serve solo una ultima precisazione prima di mostrare il codice:
+in Java, l'unica istruzione per cancellare &egrave; la
+<tt>clearRect</tt>. Non esiste una istruzione <tt>clearOval</tt>.
+Per cancellare il rettangolo usiamo la <tt>clearRect</tt>, e
+questo &egrave; abbastanza chiaro. Per cancellare il cerchio
+non possiamo usare <tt>clearOval</tt>, dal momento che non
+esiste. Usiamo ancora la <tt>clearRect</tt>, cancellando una
+zona rettangolare che contiene il cerchio.
+
+<p>
+Il programma finale
+<a href="CerchioQuadrato.java">CerchioQuadrato.java</a>
+&egrave; qui sotto:<p>
+
+<pre>
+/*
+  Disegna un cerchio oppure un quadrato.
+*/
+
+import java.awt.*;
+
+public class CerchioQuadrato extends java.applet.Applet {
+  int cerchio=1;
+
+  public boolean mouseDown(Event e, int x, int y) {
+    Graphics g=getGraphics();
+    
+    if( (x>=10) && (x<=70) && (y>=10) && (y<=30) ) {
+      g.clearRect(100,100,200,200);
+
+      g.drawRect(150,150,100,100);
+
+      cerchio=0;
+    }
+
+    if( (x>=10) && (x<=70) && (y>=50) && (y<=70) ) {
+      g.clearRect(100,100,200,200);
+
+      g.drawOval(150,150,100,100);
+
+      cerchio=1;
+    }
+
+    return true;
+  }
+
+  public void paint(Graphics g) {
+    g.drawRect(10,10,60,20);
+    g.drawString("quadrato",15,25);
+
+    g.drawRect(10,50,60,20);
+    g.drawString("cerchio",15,65);
+
+    if( cerchio==1 ) {
+      g.drawOval(150,150,100,100);
+    }
+    else {
+      g.drawRect(150,150,100,100);
+    }
+  }
+}
+
+</pre>
+
+<p>
+
+</body>
+
+
+
+
+<h2>Repaint</h2>
+
+Il programma 
+<a href="PuntiMouseDue.java">PuntiMouseDue.java</a>
+ha una struttura abbastanza tipica: <tt>mouseDown</tt>,
+(risposta a un click) effettua dei disegni, e poi
+memorizza delle informazioni che permettono a
+<tt>paint</tt> di ripetere questo disegno ogni volta che
+la finestra diventa visibile.<p>
+
+Un metodo che permette di semplificare leggermente questo
+schema &egrave; di limitare la <tt>mouseDown</tt> alla
+sola memorizzazione delle informazioni, lasciando che
+sia <tt>paint</tt> a fare tutti i disegni. Questo per&ograve;
+genera un ulteriore problema: le cose che vengono memorizzate
+da <tt>mouseDown</tt> non sono visibili fino a che la finestra
+non viene coperta e poi scoperta. Il problema &egrave; che
+se il disegno viene fatto da <tt>paint</tt>, allora viene fatto
+solo in questa condizione.<p>
+
+&Egrave; per&ograve; possibile risolvere il problema usando
+la istruzione <tt>repaint()</tt> che forza il disegno
+dell'applet. Si pu&ograve; dire che, ogni volta che si
+esegue l'istruzione <tt>repaint()</tt>, &egrave; come se
+l'applet venisse coperto e poi scoperto di nuovo. Nel nostro
+caso, vogliamo che la finestra venga disegnata di nuovo ogni
+volta che si preme un pulsante del mouse, per cui
+l'istruzione <tt>repaint()</tt> va eseguita per ultima alla
+fine del blocco <tt>mouseDown</tt>. Il programma completo
+<a href="PuntiMouseTre.java">PuntiMouseTre.java</a> &egrave;
+riportato qui sotto.<p>
+
+<pre>
+/*
+  Disegna dei punti, sulla base del click del mouse
+*/
+
+import java.awt.*;
+
+public class PuntiMouseTre extends java.applet.Applet {
+  int xvett[] = new int[100];
+  int yvett[] = new int[100];
+  int npunti=0;
+
+  public boolean mouseDown(Event e, int x, int y) {
+    xvett[npunti]=x;
+    yvett[npunti]=y;
+    npunti=npunti+1;
+
+    repaint();
+
+    return true;
+  }
+
+  public void paint(Graphics g) {
+    int i;
+
+    for(i=0; i<=npunti-1; i++) 
+      g.fillRect(xvett[i]-2,yvett[i]-2,4,4);
+  }
+}
+
+</pre>
+<p>
+
+&Egrave; importante notare che la funzione <tt>mouseDown</tt>,
+in questo caso, non contiene la istruzione
+<tt>Graphics g=getGraphics()</tt>. Questa istruzione &egrave;
+necessaria solo se nella funzione si intende disegnare
+qualcosa. Nel programma di sopra il disegno viene fatto
+dalla funzione <tt>paint</tt>, mentre all'interno di
+<tt>mouseDown</tt> non si disegna niente, per cui questa
+istruzione non &egrave; necessaria.<p>
+
+
+
+
+
+</body>
+
+
+
+
+<h2>Conta i punti</h2>
+
+Questo esercizio richiede l'uso della funzione di rilevazione
+dei punti in cui il pulsante del mouse viene premuto. In
+particolare, si tratta di disegnare un rettangolo,
+e poi di contare quante volte il pulsante &egrave; stato
+premuto al suo interno. Questo numero viene poi scritto
+al di sopra del rettangolo stesso.<p>
+
+Il rettangolo &egrave; fatto in questo modo: il punto in
+alto a sinistra &egrave; (20,20), la sua larghezza e altezza
+sono pari a 100. Lasciamo uno spazio di 20 punti al di sopra
+del rettangolo per poter scrivere il numero di volte che
+il pulsante viene premuto al suo interno.<p>
+
+Il problema &egrave; il seguente: dobbiamo memorizzare
+il numero di click all'interno del rettangolo. Questa
+variabile viene modificata ogni volta che si preme il
+pulsante, per cui viene modificata dalla funzione
+<tt>mouseDown</tt>. Inoltre, viene usata dalla funzione
+<tt>paint</tt>, che la stampa sopra il rettangolo. Dal
+momento che serve in due funzioni diverse, la dichiariamo
+come variabile globale.<p>
+
+<pre>
+import java.awt.*;
+
+public class ContaPunti extends java.applet.Applet {
+  int quantevolte=0;
+</pre>
+
+In questa variabile memorizziamo il numero di volte che
+il pulsante &egrave; stato premuto all'interno del rettangolo.
+Lasciamo per un momento da parte la funzione <tt>mouseDown</tt>,
+e vediamo invece la funzione <tt>paint</tt>. Per prima cosa,
+dobbiamo disegnare il rettangolo, e poi dobbiamo disegnare sopra
+di esso il numero di click al suo interno. Dal momento che
+questo numero sta nella variabile <tt>quantevolte</tt>, il
+programma risulta il seguente:<p>
+
+<pre>
+  public void paint(Graphics g) {
+    int i;
+
+    g.drawRect(20,20,100,100);
+
+    g.drawString(""+quantevolte,60, 18);
+  }
+</pre>
+
+Passiamo ora alla funzione <tt>mouseDown</tt>. Questa
+funzione riceve la posizione del cursore in cui il pulsante
+&egrave; stato premuto: deve controllare se questo punto
+si trova all'interno del rettangolo, ed eventualmente
+aumentare di uno la variabile che conta il numero di
+click.<p>
+
+Il punto si trova all'interno del rettangolo se il valore
+di <tt>x</tt> &egrave; compreso fra 20 e 120, e se il
+valore di <tt>y</tt> sta fra 20 e 120. Se questa condizione
+&egrave; verificata, aumentiamo di uno il valore della
+variabile <tt>quantevolte</tt>.<p>
+
+<pre>
+  public boolean mouseDown(Event e, int x, int y) {
+    if( (y>=20) && (y<=120) && (x>=20) && (x<=120) ) { 
+      quantevolte=quantevolte+1;
+    }
+    repaint();
+    return true;
+  }
+</pre>
+
+Chiaramente, dopo aver aumentato il valore della variabile
+che conta il numero di click, occorre fare di nuovo il
+disegno, dal momento che va stampato questo nuovo valore al
+posto di quello vecchio.<p>
+
+Il programma complessivo
+<a href="ContaRect.java">ContaRect.java</a>
+viene riportato qui sotto.<p>
+
+<pre>
+/*
+  Conta il numero di volte che il pulsante del mouse
+  viene premuto all'interno di ognuno dei rettangoli
+  disegnati.
+*/
+
+import java.awt.*;
+
+public class ContaRect extends java.applet.Applet {
+  int quantevolte=0;
+
+  public boolean mouseDown(Event e, int x, int y) {
+    if( (y>=20) && (y<=120) && (x>=20) && (x<=120) ) { 
+      quantevolte=quantevolte+1;
+    }
+    repaint();
+    return true;
+  }
+
+  public void paint(Graphics g) {
+    int i;
+
+    g.drawRect(20,20,100,100);
+
+    g.drawString(""+quantevolte,60, 18);
+  }
+}
+
+</pre>
+<p>
+
+Segue l'immagine di una finestra durante l'esecuzione.<p>
+
+<center>
+<img src="ContaRect.gif">
+</center>
+<p>
+
+
+
+
+</body>
+
+
+
+
+<h2>Punti in pi&ugrave; rettangoli</h2>
+
+Questo esercizio &egrave; simile al precedente: in
+particolare, si tratta di disegnare dei rettangoli affiancati,
+e poi di contare quante volte il pulsante &egrave; stato
+premuto in ognuno di essi. Questo numero viene poi scritto
+al di sopra del rettangolo stesso.<p>
+
+Supponiamo quindi di avere dieci rettangoli affiancati,
+ognuno dei quali &egrave; largo 20 e alto 100. Lasciamo
+uno spazio di 20 punti al di sopra del rettangolo per poter
+scrivere il numero di volte che il pulsante viene premuto
+all'interno di ciascuno di questi rettangoli.<p>
+
+Il problema &egrave; il seguente: dobbiamo memorizzare
+il numero di click all'interno di ognuno dei rettangoli.
+Dal momento che si tratta di dieci rettangoli, non &egrave;
+il caso di usare dieci variabili normali. Conviene invece
+usare un vettore. Dopo la intestazione del programma,
+dichiariamo quindi un vettore di interi con dieci componenti:
+
+<pre>
+import java.awt.*;
+
+public class ContaPunti extends java.applet.Applet {
+  int quantevolte[]={0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
+</pre>
+
+Ogni elemento di questo vettore rappresenta il numero di
+volte che il pulsante &egrave; stato premuto all'interno
+di ognuno dei rettangoli. Inizialmente tutti gli elementi
+di questo vettore valgono zero, dal momento che il mouse
+non &egrave; mai stato premuto quando si inizia l'esecuzione
+dell'applet. Lasciamo per un momento da 
+parte la funzione <tt>mouseDown</tt>, e vediamo invece la
+funzione <tt>paint</tt>. Per prima cosa, dobbiamo disegnare
+i rettangoli. Questi sono costituiti da due linee orizzontali
+e da undici linee verticali. Non &egrave; difficile
+verificare che il modo giusto per disegnare queste linee 
+&egrave; il seguente:<p>
+
+<pre>
+  public void paint(Graphics g) {
+    int i;
+
+    g.drawLine(0,20,20*quantevolte.length,20);
+    g.drawLine(0,120,20*quantevolte.length,120);
+
+    for(i=0; i<=quantevolte.length; i=i+1) {
+      g.drawLine(i*20, 20, i*20, 120);
+    }
+
+    for(i=0; i<=quantevolte.length-1; i=i+1) {
+      g.drawString(""+quantevolte[i],i*20+5, 18);
+    }
+  }
+</pre>
+
+Le prime due istruzioni <tt>drawLine</tt> disegnano le due
+linee orizzontali, mentre il ciclo disegna le linee verticali.
+Il secondo ciclo visualizza il contenuto del vettore
+<tt>quantevolte</tt>. Questo &egrave; richiesto dal problema,
+dal momento che sopra ogni rettangolo bisogna visualizzare
+il numero dei click, che &egrave; rappresentato appunto dalle
+variabili di questo vettore.<p>
+
+Passiamo ora alla funzione <tt>mouseDown</tt>. Questa
+funzione riceve la posizione del cursore in cui il pulsante
+&egrave; stato premuto: deve controllare se questo punto
+si trova all'interno di uno dei rettangoli, ed eventualmente
+aumentare di uno la variabile che conta il numero di
+click di quel rettangolo.<p>
+
+La cosa si pu&ograve; fare in questo modo: per prima cosa,
+se <tt>y</tt> &egrave; minore di 20 o maggiore di 120, siamo
+sicuramente fuori da tutti i rettangoli. Una volta appurato
+che <tt>20 &lt;= y &lt;= 120</tt>, dobbiamo ancora capire in
+quale rettangolo ci troviamo; inoltre, la <tt>x</tt> potrebbe
+essere troppo grande (cio&egrave; siamo a destra dell'ultimo
+rettangolo). Il primo rettangolo comprende i punti con
+coordinate <tt>x</tt> comprese fra 0 e 19, mentre il secondo
+comprende i punti in cui <tt>x</tt> va da 20 a 39, ecc. Quindi,
+se <tt>x</tt> ha un valore qualsiasi, si pu&ograve; capire
+in quale rettangolo ci si trova facendo la divisione intero
+<tt>x/20</tt>. Infatti, se <tt>x</tt> &egrave; compreso fra 0
+e 19 questa espressione vale 0, se <tt>x</tt> sta fra 20 e 39
+l'espressione vale 1, ecc. Quindi, se il pulsante &egrave;
+stato premuto nel punto <tt>x</tt>, la variabile da aumentare
+di 1 &egrave; <tt>quantevolte[x/20]</tt>. Da questo si capisce
+anche che, se <tt>x/20</tt> super <tt>quantevolte.lenght</tt>,
+allora siamo fuori dalla fila di rettangoli.<p>
+
+Il programma completo
+<a href="ContaPunti.java">ContaPunti.java</a>, che include
+la funzione <tt>mouseDown</tt> spiegata sopra, &egrave; il
+seguente:<p>
+
+<pre>
+/*
+  Conta il numero di volte che il pulsante del mouse
+  viene premuto all'interno di ognuno dei rettangoli
+  disegnati.
+*/
+
+import java.awt.*;
+
+public class ContaPunti extends java.applet.Applet {
+  int quantevolte[]={0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
+
+  public boolean mouseDown(Event e, int x, int y) {
+    if( (y>=20) && (y<=120) && (x<20*quantevolte.length) ) { 
+      quantevolte[x/20]=quantevolte[x/20]+1;
+    }
+    repaint();
+    return true;
+  }
+
+  public void paint(Graphics g) {
+    int i;
+
+    g.drawLine(0,20,20*quantevolte.length,20);
+    g.drawLine(0,120,20*quantevolte.length,120);
+
+    for(i=0; i<=quantevolte.length; i=i+1) {
+      g.drawLine(i*20, 20, i*20, 120);
+    }
+
+    for(i=0; i<=quantevolte.length-1; i=i+1) {
+      g.drawString(""+quantevolte[i],i*20+5, 18);
+    }
+  }
+}
+
+</pre>
+<p>
+
+<center>
+<img src="ContaPunti.gif">
+</center>
+<p>
+
+
+
+
+</body>
+
+
+
+
+<h2>Rilasciamento pulsante: mouseUp</h2>
+
+La funzione <tt>mouseUp</tt> viene chiamata ogni volta
+che il pulsante del mouse, che precedentemente era
+stato premuto, &egrave; stato rilasciato. In altre
+parole, quello che suceede quando si preme il pulsante
+del mouse &egrave;:<p>
+
+<table border=1>
+<tr>
+<td>si preme il pulsante del mouse <br>nella posizione <tt>(x,y)</tt></td>
+<td>viene attivata la funzione <tt>mouseDown</tt></td>
+</tr>
+<tr>
+<td>si rilascia il pulsante, mentre il mouse &egrave;<br>
+nella posizione <tt>(x,y)</tt></td>
+<td>viene attivata la funzione <tt>mouseUp</tt></td>
+</tr>
+</table>
+<p>
+
+Va notato che la posizione in cui il pulsante viene rilasciato
+non &egrave; necessariamente la stessa in cui il pulsante &egrave;
+stato premuto. Infatti, l'utente potrebbe aver premuto il
+pulsante, poi mosso il cursore <i>tenendo il pulsante premuto</i>,
+e poi rilasciato il pulsante in una posizione diversa da quella
+iniziale. In effetti, questo metodo di tenere premuto il
+pulsante spostandosi viene spesso usato dai programmi di
+disegno, quando si vogliono disegnare figure geometriche che
+sono caratterizzate da due punti (per esempio, rettangoli).<p>
+
+Facciamo un esempio: disegnamo un quadrato nel punto il cui
+il pulsante viene premuto, e un cerchio nel punto in cui viene
+rilasciato. Chiaramente, se si preme e si rilascia il pulsante
+senza muovere il cursore, questi due punti sono lo stesso.
+D'altra parte, se si muove il mouse mentre il pulsante viene
+tenuto premuto, questi due punti sono differenti. Per realizzare
+due figure differenti nel caso di pressione e rilascio,
+dobbiamo semplicemente definire sia <tt>mouseDown</tt> che
+<tt>mouseUp</tt>. La prima disegna il rettangolo, mentre le
+seconda disegna il cerchio. Il programma completo
+<a href="QuadratiCerchi.java">QuadratiCerchi.java</a>
+&egrave; questo:
+
+<pre>
+/*
+  Quadrati dove viene premuto il pulsante,
+  cerchi dove viene rilasciato.
+*/
+
+import java.awt.*;
+
+public class QuadratiCerchi extends java.applet.Applet {
+
+  public boolean mouseDown(Event e, int x, int y) {
+    Graphics g=getGraphics();
+
+    g.drawRect(x-5,y-5,10,10);
+
+    return true;
+  }
+
+  public boolean mouseUp(Event e, int x, int y) {
+    Graphics g=getGraphics();
+
+    g.drawOval(x-5,y-5,10,10);
+
+    return true;
+  }
+}
+
+</pre>
+
+Un altro esempio: il programma 
+<a href="DisegnaCancella.java">DisegnaCancella.java</a>
+disegna un quadrato nel punto in cui viene premuto il
+pulsante, e lo cancella quando il pulsante viene rilasciato.<p>
+
+<pre>
+/*
+  Disegna un punto finche' il mouse e' premuto,
+  poi lo cancella.
+*/
+
+import java.awt.*;
+
+public class DisegnaCancella extends java.applet.Applet {
+
+  public boolean mouseDown(Event e, int x, int y) {
+    Graphics g=getGraphics();
+
+    g.fillRect(x-3,y-3,7,7);
+
+    return true;
+  }
+
+  public boolean mouseUp(Event e, int x, int y) {
+    Graphics g=getGraphics();
+
+    g.clearRect(x-3,y-3,7,7);
+
+    return true;
+  }
+}
+
+</pre>
+
+Va notato che non necessariamente i quadrati vengono cancellati.
+Infatti, se si preme il pulsante in un punto e si sposta il
+cursore tenendolo premuto, allora la coordinate
+<tt>(x,y)</tt> della funzione <tt>mouseUp</tt> sono diverse
+dal punto <tt>(x,y)</tt> della funzione <tt>mouseDown</tt>.
+Il programma che effettivamente cancella il quadrato disegnato
+deve memorizzare la sua posizione in una variabile globale,
+come viene fatto in
+<a href="DisegnaCancellaDue.java">DisegnaCancellaDue.java</a>,
+che viene riportato qui sotto.<p>
+
+<pre>
+/*
+  Disegna un punto finche' il mouse e' premuto,
+  poi lo cancella.
+*/
+
+import java.awt.*;
+
+public class DisegnaCancellaDue extends java.applet.Applet {
+
+  int lx,ly;
+
+  public boolean mouseDown(Event e, int x, int y) {
+    Graphics g=getGraphics();
+
+    lx=x;
+    ly=y;
+
+    g.fillRect(x-3,y-3,7,7);
+
+    return true;
+  }
+
+  public boolean mouseUp(Event e, int x, int y) {
+    Graphics g=getGraphics();
+
+    g.clearRect(lx-3,ly-3,7,7);
+
+    return true;
+  }
+}
+
+</pre>
+
+Va notato che le variabili globali non si possono chiamare
+<tt>x</tt> e <tt>y</tt>. Infatti, se si facesse cos&iacute;
+non si potrebbero usare all'intero delle funzioni
+<tt>mouseUp</tt> e <tt>mouseDown</tt>, che hanno le loro
+variabili con gli stessi nomi.<p>
+
+<p>
+
+</body>
+
+
+
+
+<h2>Disegno di linee con il mouse</h2>
+
+Il programma seguente &egrave; un esempio di uso della
+funzione <tt>mouseUp</tt>. Si vuole disegnare della
+linee nella finestra usando il mouse, in questo modo:
+l'utente preme il pulsante in un punto, e quello &egrave;
+il punto iniziale della linea. Tenendo premuto il pulsante,
+si sposta il cursore nel punto in cui si vuole che la
+linea finisca, e l&iacute; si rilascia il pulsante.<p>
+
+La funzione <tt>mouseDown</tt> viene usata per
+memorizzare il punto iniziale della linea. La funzione
+<tt>mouseUp</tt> pu&ograve; disegnare la linea usando
+la posizione in cui il mouse &egrave; stato premuto e
+quella in cui &egrave; stato rilasciato. Dal momento che
+la posizione iniziale viene memorizzata dalla funzione
+<tt>mouseDown</tt> e poi usata dalla funzione
+<tt>mouseUp</tt>, deve essere rappresentata usando 
+variabili globali.<p>
+
+Usiamo quindi due variabili globali <tt>xi</tt> e
+<tt>yi</tt> per indicare la posizione in cui il pulsante
+&egrave; stato premuto. La funzione <tt>mouseDown</tt>
+si limita a memorizzare le coordinate in cui il pulsante
+&egrave; stato premuto (che &egrave; memorizzato nei suoi
+argomenti <tt>x</tt> e <tt>y</tt>) in queste variabili.
+La funzione <tt>mouseUp</tt> invece disegna la linea fra
+il punto iniziale (che &egrave; memorizzato in <tt>xi</tt>
+e <tt>yi</tt>) e il punto in cui il pulsante &egrave; stato
+sollevato, che &egrave; rappresentato dai suoi argomenti
+<tt>x</tt> e <tt>y</tt>.
+
+Il programma completo 
+<a href="UpDown.java">UpDown.java</a>
+&egrave; riportato qui sotto.<p>
+
+<pre>
+/*
+  Disegna linee fra i punti di pressione e
+  rilasciamento del pulsante.
+*/
+
+import java.awt.*;
+
+public class UpDown extends java.applet.Applet {
+	/* punto iniziale della linea */
+  int xi, yi;
+
+	/* memorizza il punto iniziale della linea */
+  public boolean mouseDown(Event e, int x, int y) {
+    xi=x;
+    yi=y;
+   
+    return true;
+  }
+
+	/* disegna la linea fra il punto iniziale e quello corrente */
+  public boolean mouseUp(Event e, int x, int y) {
+    Graphics g=getGraphics();
+
+    g.drawLine(xi,yi,x,y);
+
+    return true;
+  }
+}
+
+</pre>
+
+Naturalmente, le linee disegnate vengono cancellate ogni
+volta che la finestra viene coperta o ridotta a icona. Per
+rendere le linee disegnate permanenti, occorre che siano
+disegnate anche dalla funzione <tt>paint</tt>, per cui
+&egrave; necessario usare quattro vettori per memorizzare
+le coordinate dei punti iniziali e finali di ogni linea.<p>
+
+<p>
+
+</body>
+
+
+
+
+
+<h2>Distanza fra due punti</h2>
+
+Si scriva un applet che calcola la distanza fra due
+punti. I due punti vengono indicati con il mouse, in
+questo modo: il primo punto &egrave; quello in cui il
+mouse &egrave; stato premuto, il secondo &egrave; quello
+in cui il pulsante &egrave; stato rilasciato. Si tratta
+quindi di trovare la distanza fra il punto in cui il
+mouse viene premuto e quello in cui viene rilasciato.<p>
+
+Cominciamo con la funzione <tt>mouseUp</tt>. Questa
+funzione deve stampare la distanza fra il punto in cui
+&egrave; stato premuto il pulsante e quello in cui &egrave;
+stato sollevato. Questa funzione ha a disposizione le
+coordinate del punto di rilascio (nelle variabili <tt>x</tt>
+e <tt>y</tt>), ma non quelle del punto di click.<p>
+
+D'altra parte, le coordinate del punto di pressione sono
+note quando si esegue <tt>mouseDown</tt>. &Egrave; quindi
+necessario fare in modo che <tt>mouseDown</tt> memorizzi
+queste coordinate in modo tale che <tt>mouseUp</tt> le
+possa usare. Usiamo quindi delle variabili globali, che si
+possono accedere sia da <tt>mouseDown</tt> che da
+<tt>mouseUp</tt>.<p>
+
+Riassumendo: <tt>mouseDown</tt> memorizza le coordinate del
+punto in cui si &egrave; premuto il pulsante in due
+variabili globali <tt>xpressione</tt> e <tt>ypressione</tt>;
+in <tt>mouseUp</tt> si calcola la distanza fra i punti
+(<tt>x</tt>,<tt>y</tt>), che &egrave; la coordinata del
+punto in cui il pulsante &egrave; stato lasciato, e
+(<tt>xpressione</tt>,<tt>ypressione</tt>). Il valore di
+questa differenza viene poi stampato.<p>
+
+Il programma finale
+<a href="Distanza.java">Distanza.java</a>
+contiene anche il disegno di una croce nel punto di pressione,
+croce che viene poi cancellata quando si lascia il pulsante
+del mouse.<p>
+
+<pre>
+/*
+  Distanza fra due punti.
+*/
+
+import java.awt.*;
+
+public class Distanza extends java.applet.Applet {
+  int xpremuto, ypremuto;
+
+  public boolean mouseDown(Event e, int x, int y) {
+    Graphics g=getGraphics();
+
+    g.drawLine(x-10,y,x+10,y);
+    g.drawLine(x,y-10,x,y+10);
+
+    xpremuto=x;
+    ypremuto=y;
+
+    return true;
+  }
+
+  public boolean mouseUp(Event e, int x, int y) {
+    Graphics g=getGraphics();
+    double d;
+
+    g.clearRect(xpremuto-10,ypremuto-10,21,21);
+    g.clearRect(0,0,200,20);
+
+    d=Math.sqrt((double) (x-xpremuto)*(x-xpremuto) + (y-ypremuto)*(y-ypremuto));
+
+    g.drawString(""+d,10,20);
+
+    return true;
+  }
+}
+
+</pre>
+
+<p>
+
+</body>
+
+
+
+<h2>Rilevazione trascinamento del mouse: mouseDrag</h2>
+
+Spesso &egrave; utile poter rilevare i casi in cui
+l'utente ha premuto il pulsante del mouse e ha poi
+spostato il cursore tenendo premuto il pulsante. Una
+operazione di questo tipo si chiama <i>trascinamento</i>
+(drag). Molti programmi di disegno richedono l'uso di
+questa operazione.<p>
+
+La rilevazione del trascinamento avviene attraverso
+una funzione <tt>mouseDrag</tt>, simile alla funzione di
+rilevazione del click. In particolare, ha gli stessi
+argomenti:
+
+<pre>
+  public boolean mouseDrag(Event e, int x, int y) {
+    Graphics g=new Graphics();
+
+    istruzioni
+
+    return true;
+  }
+</pre>
+
+Questa funzione viene attivata quando viene rilevato
+un movimento del mouse mentre il pulsante &egrave; tenuto
+premuto. &Egrave; anche importante notare che questa
+funzione <i>non</i> viene attivata in <i>tutti</i> i
+punti attraversati dal cursore. Si pu&ograve; dire che
+vale invece l'inverso: se la funzione viene attivata
+(ossia si eseguono le istruzioni al suo interno) allora
+vuol dire che il punto di coordinate <tt>x</tt> e
+<tt>y</tt> &egrave; stato attraversato mentre il pulsante
+&egrave; stato tenuto premuto.<p>
+
+Il seguente esempio
+<a href="PuntiDrag.java">PuntiDrag.java</a>
+disegna dei punti nelle posizioni in cui il mouse viene
+premuto, come fa anche 
+<a href="PuntiMouse.java">PuntiMouse.java</a>. In pi&ugrave;,
+disegna dei punti anche se il cursore viene spostato tenendo
+il pulsante premuto.<p>
+
+<pre>
+/*
+  Disegna dei punti, sulla base del click del mouse
+*/
+
+import java.awt.*;
+
+public class PuntiDrag extends java.applet.Applet {
+  public boolean mouseDown(Event e, int x, int y) {
+    Graphics g=getGraphics();
+
+    g.fillRect(x-2,y-2,4,4);
+
+    return true;
+  }
+
+  public boolean mouseDrag(Event e, int x, int y) {
+    Graphics g=getGraphics();
+
+    g.fillRect(x-2,y-2,4,4);
+
+    return true;
+  }
+}
+
+</pre>
+
+<p>
+
+Un possibile miglioramento &egrave; quello di fare in modo
+che i punti non vengano cancellati ogni volta che la
+finestra diventa invisibile. &Egrave; chiaramente sufficiente
+introdurre delle variabili globali per rappresentare i punti,
+e una funzione <tt>paint</tt> che li ridisegna ogni volta.<p>
+
+</body>
+
+
+
+
+
+<h2>Disegno di rettangoli usando mouseDown, mouseDrag e mouseUp</h2>
+
+Vediamo ora un programma che disegna dei rettangoli nella
+finestra. Per disegnare un rettangolo, l'utente deve
+premere il pulsante nel punto in alto a sinistra del rettangolo,
+e poi muovere il cursore tenendo premuto il pulsante. Il
+punto in cui il pulsante viene rilasciato &egrave; il punto
+in basso a destra del rettangolo.<p>
+
+Il metodo da usare &egrave; molto semplice: ci servono
+quattro vettori per rappresentare i dati di ciascuno dei
+rettangoli disegnati (per ogni rettangolo ci servono le
+coordinate del punto in alto a sinistra, la larghezza e
+l'altezza). Questi dati sono modificati dalle funzioni
+<tt>mouseDown</tt> e <tt>mouseDrag</tt>, e sono poi usati
+da <tt>paint</tt> per disegnare effettivamente i rettangoli.
+Quindi, questi vettori devono essere variabili globali.
+Un'altra variabile globale che ci serve &egrave; quella che
+contiene il numero di rettangoli che sono stati disegnati
+fino ad ora. Il programma inizia quindi cos&iacute;:<p>
+
+<pre>
+import java.awt.*;
+
+public class RettangoliMouse extends java.applet.Applet {
+  int xvett[] = new int[100];
+  int yvett[] = new int[100];
+  int wvett[] = new int[100];
+  int hvett[] = new int[100];
+  int nrettangoli=0;
+</pre>
+
+La funzione <tt>mouseDown</tt> viene chiamata ogni volta che
+il pulsante viene premuto. A questo deve corrispondere la
+definizione del punto in alto a sinistra di un nuovo
+rettangolo. Quindi, la funzione <tt>mouseDown</tt> contiene
+le due istruzioni:<p>
+
+<pre>
+  public boolean mouseDown(Event e, int x, int y) {
+
+    xvett[nrettangoli]=x;
+    yvett[nrettangoli]=y;
+
+    return true;
+  }
+</pre>
+
+La funzione <tt>mouseUp</tt> viene chiamata quando il pulsante
+viene rilasciato. Quindi, questa funzione deve definire la
+largezza e l'altezza del rettangolo. Inoltre, dato che il
+rettangolo &egrave; terminato, deve incrementare di uno il
+valore della variabile che conta il numero di rettangoli.
+A questo punto, si pu&ograve; disegnare di nuovo tutta la
+figura.<p>
+
+<pre>
+  public boolean mouseUp(Event e, int x, int y) {
+    wvett[nrettangoli]=x-xvett[nrettangoli];
+    hvett[nrettangoli]=y-yvett[nrettangoli];
+
+    nrettangoli=nrettangoli+1;
+
+    repaint();
+
+    return true;
+  }
+</pre>
+
+Il programma
+<a href="RettangoliMouse.java">RettangoliMouse.java</a>
+effettua anche il tracciamento dei rettangoli
+durante il disegno.<p>
+
+<pre>
+/*
+  Disegna dei rettangoli con il trascinamento del mouse.
+*/
+
+import java.awt.*;
+
+public class RettangoliMouse extends java.applet.Applet {
+  int xprec=0, yprec=0;
+
+  int xvett[] = new int[100];
+  int yvett[] = new int[100];
+  int wvett[] = new int[100];
+  int hvett[] = new int[100];
+  int nrettangoli=0;
+
+
+  public boolean mouseDown(Event e, int x, int y) {
+    xvett[nrettangoli]=x;
+    yvett[nrettangoli]=y;
+
+    xprec=0;
+    yprec=0;
+
+    return true;
+  }
+
+  public boolean mouseUp(Event e, int x, int y) {
+    wvett[nrettangoli]=x-xvett[nrettangoli];
+    hvett[nrettangoli]=y-yvett[nrettangoli];
+
+    nrettangoli=nrettangoli+1;
+
+    repaint();
+
+    return true;
+  }
+
+  public boolean mouseDrag(Event e, int x, int y) {
+    Graphics g=getGraphics();
+
+    g.setColor(getBackground());
+    g.drawRect(xvett[nrettangoli],yvett[nrettangoli],
+               xprec-xvett[nrettangoli],yprec-yvett[nrettangoli]);
+
+    g.setColor(Color.black);
+    g.drawRect(xvett[nrettangoli],yvett[nrettangoli],
+               x-xvett[nrettangoli],y-yvett[nrettangoli]);
+
+    xprec=x;
+    yprec=y;
+
+    return true;
+  }
+
+  public void paint(Graphics g) {
+    int i;
+
+    for(i=0; i<=nrettangoli-1; i++) 
+      g.drawRect(xvett[i],yvett[i],wvett[i],hvett[i]);
+  }
+}
+
+</pre>
+<p>
+
+
+</body>
+
+
+
+
+
+<h2>Battaglia Navale</h2>
+
+<hr>
+
+Si usi la funzione <tt>Math.random()</tt> che ritorna
+un numero reale a caso compreso fra 0 e 1.<p>
+
+Questo programma usa la funzione <tt>start</tt>, in
+cui si decidono le posizioni dei sottomarini (questo
+va fatto in <tt>start</tt> e non in paint, altrimenti
+si ricomincia da capo ogni volta che si scopre la
+finestra.<p>
+
+<hr>
+
+<a href="BattagliaNavale.java">BattagliaNavale.java</a>
+
+<p>
+
+<pre>
+/*
+  Battaglia navale (solo sottomarini).
+*/
+
+import java.awt.*;
+
+public class BattagliaNavale extends java.applet.Applet {
+
+	/* posizioni dei sottomarini */
+  int xsott[]=new int[10];
+  int ysott[]=new int[10];
+
+	/* i colpi sparati */
+  int xcolpi[]=new int[500];
+  int ycolpi[]=new int[500];
+  int ncolpi=0;
+
+	/* inizio: si mettono i sottomarini in posizioni casuali */
+  public void start() {
+    int i;
+
+    for(i=0; i<=xsott.length-1; i=i+1) {
+      xsott[i]=Math.round((float) Math.random()*10);
+      ysott[i]=Math.round((float) Math.random()*10);
+
+      System.out.println(xsott[i]+" "+ysott[i]);
+    }
+  }
+
+	/* mouseDown: si memorizza un nuovo colpo */
+  public boolean mouseDown(Event e, int x, int y) {
+    if( (x<=400) && (y<=400) ) {
+      ncolpi=ncolpi+1;
+      xcolpi[ncolpi-1]=x/40;
+      ycolpi[ncolpi-1]=y/40;
+
+      repaint();
+    }
+
+    return true;
+  }
+
+	/* paint: si stampa la griglia, e poi per ogni colpo
+	   si mette x oppure o a seconda se c'e' un sottomarino */
+  public void paint(Graphics g) {
+    int x,y;
+    int c,s;
+    int colpito;
+
+	/* la griglia */
+    for(x=0; x<=400; x=x+40) {
+      g.drawLine(x,0,x,400);
+    }
+
+    for(y=0; y<=400; y=y+40) {
+      g.drawLine(0,y,400,y);
+    }
+
+
+	/* disegna i colpi */
+    for(c=0; c<=ncolpi-1; c=c+1) {
+      colpito=0;
+
+      for(s=0; s<=xsott.length-1; s=s+1) {
+        if( (xcolpi[c]==xsott[s]) && (ycolpi[c]==ysott[s]) ) {
+          colpito=1;
+        }
+      }
+      
+      if( colpito==1 ) {
+          g.drawLine(xcolpi[c]*40+5,ycolpi[c]*40+5,
+                     xcolpi[c]*40+35,ycolpi[c]*40+35);
+          g.drawLine(xcolpi[c]*40+5,ycolpi[c]*40+35,
+                     xcolpi[c]*40+35,ycolpi[c]*40+5);
+      }
+      else {
+          g.drawOval(xcolpi[c]*40+5,ycolpi[c]*40+5,30,30);
+      }
+    }
+  }
+}
+
+</pre>
+
+<p>
+
+</body>
+
+
+
+</body>
+
+</body>
+</html>

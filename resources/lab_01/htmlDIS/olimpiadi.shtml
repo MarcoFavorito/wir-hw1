@@ -1,0 +1,63 @@
+<!doctype html public "-//w3c//dtd html 4.0 transitional//en">
+<html>
+<head>
+<link href="java.css" rel="stylesheet" type="text/css">
+<title>Simbolo delle olimpiadi</title>
+</head>
+
+<body>
+
+<h2>Simbolo delle olimpiadi</h2>
+
+Lo scopo di questo esercizio &egrave; quello di scrivere
+un applet che disegna il simbolo delle olimpiadi.<p>
+
+Usando la istruzione <tt>drawOval</tt> la cosa risulta
+particolarmente facile: i tre cerchi in alto sono messi
+l'uno accanto all'altro, per cui sono circoscritti da
+tre quadrati messi l'uno a fianco dell'altro.<p>
+
+I due cerchi di sotto si trovano spostati sia a destra che
+in basso di esattamente il raggio dei cerchi. Il raggio
+&egrave; la met&agrave; dal lato del quadrato circoscritto.
+Questo permette di disegnare gli altri due cerchi.<p>
+
+Il programma completo &egrave;
+<a href="Olimpiadi.java">Olimpiadi.java</a>,
+di cui si riporta qui sotto il codice:<p>
+
+<pre>
+/*
+  Disegna il simbolo delle olimpiadi.
+*/
+
+import java.awt.*;
+
+public class Olimpiadi extends java.applet.Applet {
+  public void paint(Graphics g) {
+    /* i tre cerchi di sopra */
+    g.drawOval(0, 0, 20, 20);
+    g.drawOval(20, 0, 20, 20);
+    g.drawOval(40, 0, 20, 20);
+
+    /* i tre cerchi di sotto */
+    g.drawOval(10, 10, 20, 20);
+    g.drawOval(30, 10, 20, 20);
+  }
+}
+
+
+</pre>
+
+Questo programma produce il seguente risultato:<p>
+
+<center>
+<img src="Olimpiadi.gif">
+</center>
+<p>
+
+
+
+</body>
+</html>
+

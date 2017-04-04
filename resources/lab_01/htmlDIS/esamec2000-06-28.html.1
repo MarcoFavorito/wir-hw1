@@ -1,0 +1,224 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN"
+           "http://www.w3.org/TR/REC-html40/loose.dtd">
+<HTML>  
+<HEAD>
+  <META NAME="GENERATOR" CONTENT="Adobe PageMill 3.0 Mac">
+  <META NAME="GENERATOR" CONTENT="TtH 2.25">
+  <TITLE>Testo esame Fondamenti di Informatica (Ambiente e Territorio) del 28/6/00</TITLE>
+</HEAD>
+<BODY>
+
+<P><CENTER><B>Universit&agrave; di Roma &quot;La Sapienza&quot;<BR>
+Facolt&agrave; di Ingegneria<BR>
+Corso di Fondamenti di Informatica - A.A. 1999/2000<BR>
+Corso di Laurea: </B>Ambiente e Territorio<BR>
+Appello del <B>28 giugno 2000</B> - prima prova scritta<BR>
+<EM>tempo a disposizione: 2 ore</EM></CENTER></P>
+
+<P>&nbsp;</P>
+
+<H3>Problema 1 (18 punti)</H3>
+
+<P>Una organizzazione per il controllo e il monitoraggio ambientale
+gestisce in un file di testo (denominato <EM>file di assorbimento</EM>)
+informazioni relative alla capacit&agrave; di assorbimento delle
+precipitazioni da parte del suolo. Le informazioni sono relative
+ad una porzione rettangolare di territorio che, a questo scopo,
+&egrave; stata decomposta in una griglia di celle (ancora rettangolari).
+Nel file, per ogni cella della griglia, &egrave; presente il numero
+di mm. (reale) di pioggia che il suolo associato alla cella pu&ograve;
+assorbire in 24 ore.</P>
+
+<P>Pi&ugrave; precisamente, il file ha il seguente formato:</P>
+
+<UL>
+  <LI>Una riga contenente informazioni testuali sulla porzione
+  di territorio.
+  <LI>Una riga contenente due reali, che rappresentano le dimensioni
+  (in m., base ed altezza) della porzione rettangolare di territorio.
+  <LI>Una riga contenente due interi, che rappresentano il numero
+  di righe m e di colonne n della griglia.
+  <LI>m righe, ciascuna delle quali contiene n valori reali (in
+  mm.). Tali valori sono le capacit&agrave; di assorbimento in
+  24 ore associate alle celle della griglia.
+</UL>
+
+<P><FONT SIZE="-1">Un esempio di file di assorbimento potrebbe
+essere il seguente.</FONT></P>
+
+<PRE>
+  Zona municipale di Topolinia
+  700.1 550.8
+  2 3
+  12.5 11.2 12.0
+  11.7 10.3 10.9</PRE>
+
+<P><FONT SIZE="-1">Tale file &egrave; relativo ad una porzione
+rettangolare di territorio, di dimensioni m.&nbsp;700.1&nbsp;&times;&nbsp;m.&nbsp;550.8,
+che &egrave; stata suddivisa in una griglia 2&times;3 contenente
+6 celle.</FONT></P>
+
+<P>L'organizzazione riceve quotidianamente dal servizio meteorologico
+le previsioni di precipitazioni nelle prossime 24 ore. Tali informazioni
+sono memorizzate in file (denominati <EM>file di pioggia</EM>)
+che hanno il medesimo formato dei file di assorbimento, ma in
+cui i reali associati alle celle rappresentano la previsione di
+pioggia (in mm.) nelle 24 ore. Le informazioni vengono usate per
+determinare lo <EM>stato di rischio</EM> delle celle: 0 (la previsione
+p &egrave; inferiore alla capacit&agrave; di assorbimento a, normalit&agrave;),
+1 (a <FONT FACE="symbol">&pound;</FONT> p <FONT FACE="symbol">&pound;</FONT>
+2a, attenzione) o 2 (p &gt; 2a, allarme).</P>
+
+<P>Si richiede di risolvere i seguenti punti:</P>
+
+<OL>
+  <LI>Scrivere le dichiarazioni dei tipi di dato C da utilizzarsi
+  per risolvere i punti successivi. <EM>Qualora si utilizzino variabili
+  globali motivare adeguatamente la scelta.</EM>
+  <LI>Scrivere una funzione C (o pi&ugrave;) che riceve come parametri
+  di ingresso i nomi fisici di un file di assorbimento e di un
+  file di pioggia (relativi alla medesima porzione di territorio)
+  e il nome fisico di un terzo file (<EM>file di risultati</EM>,
+  testuale) e scrive in quest'ultimo la stringa contenente le informazioni
+  testuali relative alla porzione di territorio e, a partire da
+  una nuova riga, i valori interi che indicano lo stato di rischio
+  delle celle ad essa relative.
+  <P><FONT SIZE="-1">Ad esempio, con riferimento al file di assorbimento
+  dell'esempio precedente, ed ipotizzando di ricevere dal servizio
+  meteo il seguente file di pioggia: <pre>Zona municipale di Topolinia
+  700.1 550.8 2 3 29.0 21.1 17.5 11.6 9.6 10.5 </FONT></pre>la
+  funzione dovrebbe creare il seguente file di risultati (si noti
+  che il file <EM>non contiene</EM> le dimensioni della griglia):
+  <pre>Zona municipale di Topolinia 2 1 1 0 0 0 </pre>
+  <LI>Scrivere una funzione C (o pi&ugrave;) che riceve come parametro
+  di ingresso il nome fisico di un file di risultati e restituisce,
+  attraverso opportuni parametri di output e/o valori restituiti
+  dalla funzione, un array contenente gli indici delle celle con
+  stato di rischio pari a 0, seguiti dagli indici delle celle con
+  stato di rischio pari a 1 ed infine dagli indici delle celle
+  con stato di rischio pari a 2.
+  <P><FONT SIZE="-1">Con riferimento al file di assorbimento dell'esempio
+  precedente, la funzione deve restituire il seguente array: </FONT><TABLE
+  BORDER="1" CELLSPACING="2" CELLPADDING="0">
+    <TR>
+      <TD><TT>1</TT></TD>
+      <TD><TT>0</TT></TD>
+      <TD ALIGN="CENTER"><I><FONT SIZE="-2">(cella 0)</FONT></I></TD>
+    </TR>
+    <TR>
+      <TD><TT>1</TT></TD>
+      <TD><TT>1</TT></TD>
+      <TD ALIGN="CENTER"><I><FONT SIZE="-2">(cella 1)</FONT></I></TD>
+    </TR>
+    <TR>
+      <TD><TT>1</TT></TD>
+      <TD><TT>2</TT></TD>
+      <TD ALIGN="CENTER"><I><FONT SIZE="-2">(cella 2)</FONT></I></TD>
+    </TR>
+    <TR>
+      <TD><TT>0</TT></TD>
+      <TD><TT>1</TT></TD>
+      <TD ALIGN="CENTER"><I><FONT SIZE="-2">(cella 3)</FONT></I></TD>
+    </TR>
+    <TR>
+      <TD><TT>0</TT></TD>
+      <TD><TT>2</TT></TD>
+      <TD ALIGN="CENTER"><I><FONT SIZE="-2">(cella 4)</FONT></I></TD>
+    </TR>
+    <TR>
+      <TD><TT>0</TT></TD>
+      <TD><TT>0</TT></TD>
+      <TD ALIGN="CENTER"><I><FONT SIZE="-2">(cella 5)</FONT></I></TD>
+    </TR>
+  </TABLE>
+</OL>
+
+<P><HR ALIGN=LEFT></P>
+
+<P><CENTER><B>Universit&agrave; di Roma &quot;La Sapienza&quot;<BR>
+Facolt&agrave; di Ingegneria<BR>
+Corso di Fondamenti di Informatica - A.A. 1999/2000<BR>
+Corso di Laurea: </B>Ambiente e Territorio<BR>
+Appello del <B>28 giugno 2000</B> - seconda prova scritta<BR>
+<EM>tempo a disposizione: 1 ora</EM></CENTER></P>
+
+<P>&nbsp;</P>
+
+<H3>Problema 2 (4 punti)</H3>
+
+<P>Illustrare e confrontare fra loro le tecniche disponibili in
+C per realizzare la condivisione di dati fra sottoprogrammi.</P>
+
+<P>&nbsp;</P>
+
+<H3>Problema 3 (4 punti)</H3>
+
+<P>Si consideri il seguente programma C.</P>
+
+<PRE>
+    #include &lt;stdio.h&gt;
+
+    unsigned int ricorsiva(unsigned int primo, unsigned int secondo)
+    {
+        if(primo&gt;=secondo)
+            return 0;
+        else
+            return 1+ricorsiva(primo*2,secondo);
+    }
+
+    int main(void)
+    {
+        unsigned int i;
+        scanf(&quot;%u&quot;,&amp;i);
+        printf(&quot;%u\n&quot;,ricorsiva(1,i));
+        return 0;
+    }</PRE>
+
+<UL>
+  <LI>Descrivere cosa fa la funzione <TT>ricorsiva</TT>. Che valore
+  viene mostrato in output quando il programma riceve in input
+  l'intero definito dalle ultime tre cifre del vostro numero di
+  matricola?
+  <LI>Mostrare l'evoluzione dei valori delle variabili nella varie
+  attivazioni della funzione <TT>ricorsiva</TT>.
+  <LI>Esiste un valore del parametro attuale per il quale l'attivazione
+  della funzione <TT>ricorsiva</TT> non termina?
+</UL>
+
+<P>&nbsp;</P>
+
+<H3>Problema 4 (4 punti)</H3>
+
+<P>Data la relazione <TT>Volo(CodiceVolo, Partenza, Destinazione,
+Durata)</TT>, scrivere una interrogazione SQL che costruisca l'elenco
+(codici) dei voli che collegano Roma a New York tramite Londra,
+con un tempo di volo totale non superiore alle 11 ore.</P>
+
+<P><FONT SIZE="-1">Descrizione degli attributi:</FONT></P>
+
+<UL>
+  <LI><TT><FONT SIZE="-1">CodiceVolo</FONT></TT><FONT SIZE="-1">.
+  Codice che identifica univocamente un volo (ad es., <TT>'AZ113'</TT>,
+  <TT>'BA980'</TT> ecc.)</FONT>
+  <LI><TT><FONT SIZE="-1">Partenza</FONT></TT><FONT SIZE="-1">.
+  Nome della citt&agrave; di partenza (ad es., <TT>'Roma'</TT>,
+  <TT>'Milano'</TT>, <TT>'Londra'</TT> ecc.).</FONT>
+  <LI><TT><FONT SIZE="-1">Destinazione</FONT></TT><FONT SIZE="-1">.
+  Nome della citt&agrave; di destinazione (ad es., <TT>'Palermo'</TT>,
+  <TT>'Londra'</TT>, <TT>'New York'</TT> ecc.).</FONT>
+  <LI><TT><FONT SIZE="-1">Durata</FONT></TT><FONT SIZE="-1">. Durata
+  prevista del volo, in minuti.</FONT>
+</UL>
+
+<P><CENTER><EM><FONT SIZE="-2">Orali e verbalizzazioni: mercoled&igrave;
+5/7/2000, h 9:30, V. Salaria 113, 2<sup>o</sup> piano, aula C3.</FONT></EM></CENTER></P>
+
+<P>&nbsp;</P>
+
+<P><HR ALIGN=LEFT><FONT SIZE="-1">File translated from T<sub>E</sub>X
+by <A HREF="http://hutchinson.belmont.ma.us/tth/">T<sub>T</sub>H</A>,
+version 2.25.<BR>
+On 5 Jul 2000, 19:44.</FONT>
+
+</BODY>
+</HTML>

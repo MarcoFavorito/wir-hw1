@@ -1,0 +1,261 @@
+<html>
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<meta name="GENERATOR" content="Microsoft FrontPage 4.0">
+<meta name="ProgId" content="FrontPage.Editor.Document">
+<title>La raccolta dei pedaggi</title>
+</head>
+
+<body>
+
+<p>
+  <b> La raccolta dei pedaggi: progettazione delle classi</b> 
+<blockquote>
+  <p>Si vuole scrivere un insieme di classi Java che consentano
+la gestione dei pedaggi di camion presso dei caselli autostradali. I camion
+devono pagare 5 dollari per ciascun asse piu' 10 dollari per ogni tonnellata
+di peso. Il casello deve raccogliere i pedaggi e visualizzandoli su video,
+inoltre periodicamente si dovranno visualizzare il numero di camion passati
+e l'incasso totale, e contestualmente tali dati dovranno essere azzerati.</p>
+
+ <OL>
+<LI><I>Si evincono le propriet&#224;
+   e i servizi delle classi da realizzare</I>.
+</LI>
+<LI>Si sceglie una <I>rappresentazione degli oggetti della classe</I>
+</LI>
+<LI>Si sceglie l'<I>intestazione dei metodi pubblici della classe</I>
+  (l'interfaccia della classe);
+  <ol>
+    <li>&nbsp;Si definiscono i clienti devono usare gli oggetti della classe.</li>
+  </ol>
+</LI>
+<LI>Si <I>realizza il corpo dei metodi pubblici</I>, eventualmente
+  introducendo metodi ausiliari per facilitare la realizzazione del codice
+  degli stessi.
+</LI>
+</OL>
+
+</blockquote>
+<hr>
+<p><b>Individuazione delle classi necessarie</b> 
+<blockquote>
+<p>Due classi dovranno essere implementate per risolvere il problema:<p>la
+classe <tt>Truck</tt> che modella un camion dovrà memorizzare il numero
+  degli&nbsp; assi ed il peso di un camion<p>la classe <tt>TollBooth</tt>
+che modella invece il casello autostradale dovrà memorizzare il numero di
+  camion transitati ed il totale dei pedaggi, inoltre dovrà avere un metodo per
+  calcolare il pedaggio (quando passa un camion), un metodo per visualizzare il
+  numero di camion transitati ed il totale dei pedaggi, ed un metodo per
+  riazzerare&nbsp; il conteggio.
+</blockquote>
+<hr>
+<p><b>Definizione delle variabili di istanza</b>
+<blockquote>
+  <p><tt>class Truck {</tt>
+<br><tt>&nbsp;&nbsp;&nbsp; // Instance Variables</tt>
+<br><tt>&nbsp;&nbsp;&nbsp; private int axles;</tt>
+<br><tt>&nbsp;&nbsp;&nbsp; private int totalWeight;</tt>
+<br><tt>&nbsp;&nbsp;&nbsp; // Methods&nbsp; ...</tt>
+<br><tt>}</tt></p>
+</blockquote>
+
+<blockquote><tt>class TollBooth {</tt>
+<br><tt>&nbsp;&nbsp;&nbsp; // Instance Variables</tt>
+<br><tt>&nbsp;&nbsp;&nbsp; private int receiptsSinceCollection;</tt>
+<br><tt>&nbsp;&nbsp;&nbsp; private int trucksSinceCollection;</tt>
+<br><tt>&nbsp;&nbsp;&nbsp; // Methods ...</tt>
+<br><tt>}</tt></blockquote>
+<hr>
+<p><b>Interfacce delle classi</b> 
+<blockquote>
+<p>La classe <tt>Truck</tt> dovra' contenere i seguenti metodi:
+<br>- <tt>Truck (int axles, int totalWeight)</tt>
+<br>- <tt>int getAxles ()</tt>
+<br>- <tt>int getTotalWeight ()</tt>
+<p>La classe <tt>TollBooth</tt> dovra' contenere i seguenti metodi:
+<br>- <tt>TollBooth ()</tt>
+<br>- <tt>void calculateToll (Truck truck)</tt>
+<br>- <tt>void displayData ()</tt>
+<br>- <tt>void onReceiptCollection ()</tt>
+</blockquote>
+<hr>
+<p><b>Esempio di programma cliente
+<br></b>&nbsp; 
+<blockquote>
+<blockquote><tt>class TestTollBooth {</tt>
+<br><tt>&nbsp;&nbsp;&nbsp; public static void main(String [] args) {</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; // Create the tollbooth</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; TollBooth booth = new
+TollBooth();</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; // Now for some trucks</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Truck truck1 = new Truck(5,
+12500);</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Truck truck2 = new Truck(2,
+5000);</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Truck truck3 = new Truck(6,
+17000);</tt>
+<p><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; // Let's start collecting
+tolls!</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; booth.calculateToll(truck1);</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; booth.displayData();</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; booth.calculateToll(truck2);</tt>
+<p><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; // Time to collect the
+receipts</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; booth.onReceiptCollection();</tt>
+<p><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; // Here comes another
+truck</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; booth.calculateToll(truck3);</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; booth.displayData();</tt>
+<br><tt>&nbsp;&nbsp;&nbsp; }</tt>
+<br><tt>}</tt></blockquote>
+
+</blockquote>
+
+<p><br>
+<hr>
+
+<p><b>Scheletro delle classi</b> 
+<blockquote>
+<blockquote><tt>class Truck {</tt>
+<br><tt>&nbsp;&nbsp;&nbsp; // Methods</tt>
+<br><tt>&nbsp;&nbsp;&nbsp; Truck(int axles, int totalWeight) {</tt>
+<p><tt>&nbsp;&nbsp;&nbsp; }</tt>
+<br><tt>&nbsp;&nbsp;&nbsp; int getAxles() {</tt>
+<p><tt>&nbsp;&nbsp;&nbsp; }</tt>
+<br><tt>&nbsp;&nbsp;&nbsp; int getTotalWeight() {</tt>
+<p><tt>&nbsp;&nbsp;&nbsp; }</tt>
+<br><tt>&nbsp;&nbsp;&nbsp; // Instance Variables</tt>
+<br><tt>&nbsp;&nbsp;&nbsp; private int axles;</tt>
+<br><tt>&nbsp;&nbsp;&nbsp; private int totalWeight;</tt>
+<br><tt>}</tt></blockquote>
+
+<blockquote><tt>class TollBooth {</tt>
+<br><tt>&nbsp;&nbsp;&nbsp; // Methods</tt>
+<br><tt>&nbsp;&nbsp;&nbsp; TollBooth() {</tt>
+<p><tt>&nbsp;&nbsp;&nbsp; }</tt>
+<br><tt>&nbsp;&nbsp;&nbsp; void calculateToll(Truck truck) {</tt>
+<p><tt>&nbsp;&nbsp;&nbsp; }</tt>
+<br><tt>&nbsp;&nbsp;&nbsp; void onReceiptCollection() {</tt>
+<p><tt>&nbsp;&nbsp;&nbsp; }</tt>
+<br><tt>&nbsp;&nbsp;&nbsp; void displayData() {</tt>
+<p><tt>&nbsp;&nbsp;&nbsp; }</tt>
+<br><tt>&nbsp;&nbsp;&nbsp; // Instance Variables</tt>
+<br><tt>&nbsp;&nbsp;&nbsp; private int receiptsSinceCollection;</tt>
+<br><tt>&nbsp;&nbsp;&nbsp; private int trucksSinceCollection;</tt>
+<br><tt>}</tt></blockquote>
+</blockquote>
+<hr>
+<b> Implementazione delle classi</b> 
+<blockquote>
+<p><tt>class Truck {</tt>
+<br><tt>&nbsp;&nbsp;&nbsp; // Methods</tt>
+<br><tt>&nbsp;&nbsp;&nbsp; Truck(int axles, int totalWeight) {</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; this.axles = axles;</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; this.totalWeight = totalWeight;</tt>
+<br><tt>&nbsp;&nbsp;&nbsp; }</tt>
+<p><tt>&nbsp;&nbsp;&nbsp; int getAxles() {return axles;}</tt>
+<p><tt>&nbsp;&nbsp;&nbsp; int getTotalWeight() {return totalWeight;}</tt>
+<p><tt>&nbsp;&nbsp;&nbsp; // Instance Variables</tt>
+<br><tt>&nbsp;&nbsp;&nbsp; int axles;</tt>
+<br><tt>&nbsp;&nbsp;&nbsp; int totalWeight;</tt>
+<br><tt>}</tt></blockquote>
+
+<blockquote><tt>class TollBooth {</tt>
+<br><tt>&nbsp;&nbsp;&nbsp; // Methods</tt>
+<br><tt>&nbsp;&nbsp;&nbsp; TollBooth() {</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; trucksSinceCollection
+= 0;&nbsp;&nbsp;&nbsp;&nbsp; // Clear out totals</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; receiptsSinceCollection
+= 0;</tt>
+<br><tt>&nbsp;&nbsp;&nbsp; }</tt>
+<p><tt>&nbsp;&nbsp;&nbsp; void calculateToll(Truck truck) {</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; int axles = truck.getAxles();</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; int totalWeight = truck.getTotalWeight();</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; int tollDue = 5*axles
++ 10*(totalWeight/1000);</tt>
+<p><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; System.out.print("Truck
+arrival - axles: ");</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; System.out.print(axles);</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; System.out.print(" total
+weight: ");</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; System.out.print(totalWeight);</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; System.out.print(" Toll
+due: ");</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; System.out.println(tollDue);</tt>
+<p><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; trucksSinceCollection
+= trucksSinceCollection + 1;</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; receiptsSinceCollection
+= receiptsSinceCollection + tollDue;</tt>
+<br><tt>&nbsp;&nbsp;&nbsp; }</tt>
+<p><tt>&nbsp;&nbsp;&nbsp; void onReceiptCollection() {</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; System.out.print("***
+Collecting receipts ***");</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; displayData();</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; trucksSinceCollection
+= 0;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; // Clear out totals</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; receiptsSinceCollection
+= 0;</tt>
+<br><tt>&nbsp;&nbsp;&nbsp; }</tt>
+<p><tt>&nbsp;&nbsp;&nbsp; void displayData() {</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; System.out.print("Totals
+since last collection - Receipts: ");</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; System.out.print(receiptsSinceCollection);</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; System.out.print(" Trucks:
+");</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; System.out.println(trucksSinceCollection);</tt>
+<br><tt>&nbsp;&nbsp;&nbsp; }</tt>
+<p><tt>&nbsp;&nbsp;&nbsp; // Instance Variables</tt>
+<br><tt>&nbsp;&nbsp;&nbsp; int receiptsSinceCollection;</tt>
+<br><tt>&nbsp;&nbsp;&nbsp; int trucksSinceCollection;</tt>
+<br><tt>}</tt></blockquote>
+<hr>
+<p><b>Esercizio</b></p>
+<blockquote>Scrivere una classe <tt>Persona</tt> i cui oggetti mantengano le seguenti 
+  informazioni su una persona: 
+  <ol>
+    <li> Nome</li>
+    <li> Cognome</li>
+    <li> Titolo (es. "Sig.", o "Ing.")</li>
+    <li> Professione</li>
+  </ol>
+  La classe <tt>Persona</tt> deve fornire i seguenti metodi: 
+  <ol>
+    <li> Costruttore che riceva nome, cognome, titolo e professione e inizializzi 
+      le informazioni dell'oggetto.</li>
+    <li> Costruttore che riceva solo nome e cognome e inizializzi le informazioni 
+      dell'oggetto assumendo come titolo la stringa nulla "" e come professione 
+      "disoccupato".</li>
+    <li> Metodo <tt>ottieniInfoPersona</tt> che restituisca una stringa con tutte 
+      le informazioni sulla persona (es.: "ing. Marco Bianchi, professione analista 
+      programmatore").</li>
+    <li> Metodo <tt>impostaTitolo</tt> che riceva una stringa titolo e cambi l'informazione 
+      relativa al titolo della persona memorizzata nell'oggetto.</li>
+    <li> Metodo <tt>impostaProfessione</tt> che riceva una stringa professione 
+      e cambi l'informazione relativa alla professione della persona memorizzata 
+      nell'oggetto.</li>
+  </ol>
+  Scrivere un programma di prova <tt>ProvaPersona</tt> che: 
+  <ol>
+    <li> Costruisca un oggetto <tt>persona1</tt> della classe <tt>Persona</tt> 
+      per Marco Bianchi, di professione disoccupato.</li>
+    <li> Costruisca un oggetto <tt>persona2</tt> della classe <tt>Persona</tt> 
+      per il Sig. Renato Caputo, di professione barbiere.</li>
+    <li> Stampi su schermo la stringa ottenuta invocando il metodo <tt>ottieniInfoPersona</tt> 
+      su <tt>persona1</tt>. Dovrebbe comparire la scritta: " Marco Bianchi, professione 
+      disoccupato".</li>
+    <li> Stampi su schermo la stringa ottenuta invocando il metodo <tt>ottieniInfoPersona</tt> 
+      su <tt>persona2</tt>. Dovrebbe comparire la scritta: "Sig. Renato Caputo, 
+      professione barbiere".</li>
+    <li> Modifichi il titolo di <tt>persona1</tt> a "Ing." e la professione ad 
+      "analista programmatore" invocando i metodi <tt>impostaTitolo</tt> e <tt>impostaProfessione</tt>.</li>
+    <li> Stampi su schermo la stringa ottenuta invocando il metodo <tt>ottieniInfoPersona</tt> 
+      su <tt>persona1</tt>. Dovrebbe comparire la scritta: "Ing. Marco Bianchi, 
+      professione analista programmatore".</li>
+  </ol>
+</blockquote>
+
+</body>
+
+</html>

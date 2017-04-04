@@ -1,0 +1,104 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<!--last modified on Wed, Nov 29, 2000 08:35 AM-->
+<HTML>
+
+<HEAD>
+	<META HTTP-EQUIV="Content-Type" CONTENT="text/html;CHARSET=iso-8859-1">
+	<META NAME="GENERATOR" Content="Symantec Visual Page Mac 1.1.1">
+	<META NAME="Author" Content="Mark Manning">
+	<TITLE>Introduction</TITLE>
+</HEAD>
+
+<BODY TEXT="#000000" BGCOLOR="#EEEEEE">
+
+<P><FONT SIZE="4">Systems Supported</FONT><BR>
+<HR>
+
+<P>
+Mesa was originally designed for Unix/X11 systems and is still best supported on
+those systems. All you need is an ANSI C compiler and the X development environment
+to use Mesa. Others have contributed drivers for the Amiga, Apple Macintosh, BeOS,
+NeXT, OS/2, MS-DOS, VMS, Windows 9x/NT, and Direct3D. See the README file included
+with the Mesa distribution for more details.
+</P>
+
+<P>
+The standard Mesa distribution only supports software-based rendering, with
+the exception of the 3Dfx Glide driver.
+Information about other hardware support follows.
+</P>
+
+<UL>
+	<LI>DRI-based hardware support for 3dfx, Intel, Matrox, ATI on Linux
+</UL>
+<BLOCKQUOTE>
+	<BLOCKQUOTE>
+		<P>The <A HREF="http://dri.sourceforge.net" target="_parent">DRI architecture</A>,
+		originally developed by Precision Insight, Inc. uses Mesa and
+                provides hardware acceleration for a number of popular chipsets.<BR>
+		<BR>
+		The DRI is part of XFree86 4.0 and later.
+                <BR><BR>
+                If you download and install XFree86 4.x you do not need to
+                install Mesa separately.  All the important parts of Mesa
+                will be installed with the rest of XFree86.
+	</BLOCKQUOTE>
+</BLOCKQUOTE>
+
+<UL>
+	<LI>3dfx Voodoo1, Voodoo2, Voodoo Rush, Voodoo Banshee, Voodoo3
+</UL>
+<BLOCKQUOTE>
+	<BLOCKQUOTE>
+		<P>All cards based on these chipsets should work with Linux and
+                Windows 95 via 3dfx's Glide library.
+		The Mesa/Glide driver is included with the Mesa distribution.
+                You'll need to install the Glide header files and runtime library.
+		</P>
+		<P>
+		David Bucciarelli wrote the original 3dfx driver for Mesa.<BR>
+		Daryll Strauss ported Glide to Linux.
+	</BLOCKQUOTE>
+</BLOCKQUOTE>
+
+<UL>
+	<LI>Matrox G200/G400, nVidia RIVA, ATI Rage Pro, Intel i810 on Linux
+</UL>
+<BLOCKQUOTE>
+	<BLOCKQUOTE>
+		<P>The <A HREF="http://utah-glx.sourceforge.net/" target="_parent">Utah GLX project</A>
+		(no longer active)
+		developed drivers for these chipsets and others.
+
+	</BLOCKQUOTE>
+</BLOCKQUOTE>
+
+<UL>
+	<LI>Amiga Warp3D
+</UL>
+<BLOCKQUOTE>
+	<BLOCKQUOTE>
+		<P>Amiga systems can support 3D hardware with the Warp3D API. See <A HREF="http://www.haage-partner.com/3dworld"
+		target="_parent">here</A>.
+	</BLOCKQUOTE>
+</BLOCKQUOTE>
+
+<UL>
+	<LI>Also see
+</UL>
+<BLOCKQUOTE>
+	<BLOCKQUOTE>
+		<P><A HREF="http://www.linux3d.org/"
+		target="_parent">www.linux3d.org</A> for
+		other 3D hardware info for Linux.
+	</BLOCKQUOTE>
+</BLOCKQUOTE>
+
+<P>
+<B><EM>Note:</EM></B> If you have NVIDIA hardware in your computer, you should
+download and install NVIDIA's OpenGL library.  You may however, want to download
+Mesa in order to use its GLU and GLUT libraries, or assorted demo programs.</P>
+
+</BODY>
+
+</HTML>

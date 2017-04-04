@@ -1,0 +1,335 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1">
+<META NAME="Generator" CONTENT="Microsoft Word 98">
+<TITLE>Fondamenti CEMN settimo complemento didattico</TITLE>
+</HEAD>
+<BODY>
+
+<B><U><FONT FACE="Times" SIZE=4><P ALIGN="CENTER">Fond. di Informatica (C.E.M.N.)</U>&#9;
+  &#9;&#9;&#9; <U>settimo complemento didattico</P>
+</B></U></FONT><FONT FACE="Times">
+<P><IMG SRC="Image1.gif" WIDTH=313 HEIGHT=38></FONT><B><FONT FACE="Times" SIZE=4>ARRAY MULTIDIMENSIONALI</P>
+</B></FONT><FONT FACE="Times"><P ALIGN="CENTER">-----------------------------------------------------------------------------------------------------------------------------</P>
+<P>TIPOVETT = array[1..N]of real&#9;&#9;e V: TIPOVETT &#9;&#9;V=array MONODIMENSIONALE</P>
+
+<P>Ogni elemento &egrave; identificabile con UNA COORDINATA</P>
+<P> (quasi) ogni elemento di V "sta vicino" ad altri due: il precedente e il successore</P>
+</FONT><FONT FACE="Times" SIZE=4><P ALIGN="CENTER">V[1] <FONT FACE="Wingdings">&#224;</FONT>
+ V[2] <FONT FACE="Wingdings">&#224;</FONT>
+ V[3] <FONT FACE="Wingdings">&#224;</FONT>
+ V[4] <FONT FACE="Wingdings">&#224;</FONT>
+ V[5] <FONT FACE="Wingdings">&#224;</FONT>
+ V[6] &#133;</P>
+</FONT><FONT FACE="Times"><P ALIGN="CENTER">-----------------------------------------------------------------------------------------------------------------------------</P>
+</FONT><FONT FACE="Times" SIZE=4><P>Se definiamo </P>
+<P>TIPOMAT = array [ 1..N, 1..M] of real; &#9;e <B>VV</B>: TIPOMAT&#9;array BIDIMENSIONALE</P>
+
+<P>Ogni elemento &egrave; identificabile con DUE COORDINATE (un'indice tra 1 e N,un altro tra 1 e M)</P>
+<DIR>
+
+<P>"prima riga"&#9;&#9;VV[1,1]   &#9;VV[1,2]&#9; &#133; &#9;VV[1, j]&#9;&#133;&#9;VV[1,M]</P>
+<P>"seconda riga"&#9;&#9;VV[2,1]   &#9;VV[2,2]&#9; &#133;&#9;VV[2, j]&#9;&#133;&#9;VV[2,M]</P><DIR>
+<DIR>
+<DIR>
+<DIR>
+<DIR>
+<DIR>
+<DIR>
+<DIR>
+<DIR>
+<DIR>
+<DIR>
+<DIR>
+<DIR>
+
+<P>&#133;</P></DIR>
+</DIR>
+</DIR>
+</DIR>
+</DIR>
+</DIR>
+</DIR>
+</DIR>
+</DIR>
+</DIR>
+</DIR>
+</DIR>
+</DIR>
+
+<P>"riga i-sima"&#9;&#9;VV[i,1]&#9;VV[i,2]&#9; &#133;&#9;VV[i,j]&#9;&#133;&#9;VV[i,M]</P><DIR>
+<DIR>
+<DIR>
+<DIR>
+<DIR>
+<DIR>
+<DIR>
+<DIR>
+<DIR>
+<DIR>
+<DIR>
+<DIR>
+<DIR>
+
+<P>&#133;</P></DIR>
+</DIR>
+</DIR>
+</DIR>
+</DIR>
+</DIR>
+</DIR>
+</DIR>
+</DIR>
+</DIR>
+</DIR>
+</DIR>
+</DIR>
+
+<P>"riga N"&#9;&#9;&#9;VV[N,1]&#9;VV[N,2]&#9; &#133;&#9;VV[N,j]&#9;&#133;&#9;VV[N,M]</P>
+</DIR>
+
+<P>V: array[1..10] of integer;&#9;&#9;&#9;10 componenti &#9;&#9;una coordinata</P>
+<P>M: array[1..10, 1..10] of integer;&#9;&#9;100 componenti&#9;&#9;due coordinate</P>
+<P>C: array[1..10, 1..10, 1..10] of integer;&#9;&#9;1000 componenti&#9;tre coordinate (C[1,1,1] &#133;)</P>
+</FONT><FONT FACE="Times"><P ALIGN="CENTER">-----------------------------------------------------------------------------------------------------------------------------</P>
+</FONT><FONT FACE="Times" SIZE=4><P>MATRICI</P><DIR>
+<DIR>
+<DIR>
+<DIR>
+<DIR>
+<DIR>
+<DIR>
+<DIR>
+
+<P>VV: array[1..N, 1..M] of integer;</P></DIR>
+</DIR>
+</DIR>
+</DIR>
+</DIR>
+</DIR>
+</DIR>
+</DIR>
+
+<P>N righe, ciascuna di M componenti intere&#9;&#9;&#9;&#9;&#9;   N righe per M colonne</P>
+</FONT>
+<TABLE BORDER CELLSPACING=1 CELLPADDING=3 WIDTH=533>
+<TR><TD WIDTH="50%" VALIGN="TOP">
+<FONT FACE="Times" SIZE=4><P>LETTURA DI UNA MATRICE N<FONT FACE="Symbol">&#180;</FONT>
+M</P>
+
+<P>Ripetere N volte</P>
+<P>              Lettura della riga <I>i</I></FONT></TD>
+<TD WIDTH="50%" VALIGN="TOP">
+<FONT FACE="Times" SIZE=4><P>                       Lettura della riga K </P>
+<P>                                       =</P>
+<P>Ripetere per j = 1&#133;M </P>
+<P>                   Lettura dell'elemento [K,  j]</FONT></TD>
+</TR>
+</TABLE>
+
+<FONT FACE="Times"><P ALIGN="CENTER"></P>
+<P ALIGN="CENTER">-----------------------------------------------------------------------------------------------------------------------------</P>
+</FONT><B><FONT FACE="Times" SIZE=4><P ALIGN="CENTER">USO DI FILE NEI PROGRAMMI</P>
+</B></FONT><FONT FACE="Times">
+</FONT><FONT FACE="Times" SIZE=4><P>FILE = gruppo (<B>sequenza</B>) <B>di info</B> in MS, sotto un unico nome e <B>reperibili una dopo l'altra</B>.</P>
+</FONT><FONT FACE="Times"><P ALIGN="CENTER"><IMG SRC="Image2.gif" WIDTH=312 HEIGHT=26></P>
+
+<U><P>USO DI UN FILE IN UN PROGRAMMA</U> = </FONT><FONT FACE="Times" SIZE=4>lettura di informazioni contenute in un file</FONT><FONT FACE="Times"> (<B>INPUT</B> da file)</P>
+<P>&#9;&#9;&#9;&#9;&#9;<B>oppure</B>  </FONT><FONT FACE="Times" SIZE=4>scrittura di informazioni dentro un file</FONT><FONT FACE="Times"> (<B>OUTPUT</B> da file)</P>
+</FONT><B><FONT FACE="Times" SIZE=4><P>(File generalizzati</B>)</P>
+</FONT><FONT FACE="Times"><P>Un file, in generale contiene <B>informazioni codificate in formato numerico</B> (numeri reali floating point, numeri interi in complemento a 2, array di dati, record di dati, ...). Ad esempio, se il file in figura sopra &egrave; un file di reali, ogni </FONT><FONT FACE="Courier">dati</FONT><FONT FACE="Times"> &egrave; un numero reale. Se stessimo leggendo questi numeri reali, il </FONT><FONT FACE="Courier">datk+1</FONT><FONT FACE="Times"> sarebbe raggiungibile solo dopo essere passati sopra al (aver letto il) </FONT><FONT FACE="Courier">datk</FONT><FONT FACE="Times">.</P>
+
+</FONT><B><FONT FACE="Times" SIZE=4><P ALIGN="CENTER">MODALIT&Agrave; d'USO</P>
+</B><U><P>Per usare un file (FILE FISICO) in un programma bisogna <B>collegarlo</B> <B>ad una variabile</B> del programma e poi <B>usarlo</B> (leggere da - scrivere in quel file) <B>usando la variabile come tram</B>ite.</P>
+</U></FONT><FONT FACE="Times"><P>La variabile deve essere del tipo giusto, rispetto al tipo di informazioni contenute nel file.</P>
+
+</FONT><B><FONT FACE="Times" SIZE=4><P>1.</B> <B><U>dichiarazione</B> di una VARIABILE FILE</U>&#9;&#9;<B>var</B> fr: <B>file of</B> real;&#9;    var f: file of integer;</P>
+<P>&#9;&#9;&#9;&#9;&#9;&#9;&#9;var fc: file of complex; {?!}&#9;&#9;var ft: text;</P>
+<B>
+<P>2.</B> <B><U>collegamento</B> ad un FILE FISICO</U>   
+<DIR>
+<DIR>
+<DIR>
+<DIR>
+<DIR>
+<DIR>
+<DIR>
+<DIR>
+<DIR>
+<DIR>
+<DIR>
+<DIR>
+<DIR>
+<DIR>
+<DIR>
+&#9;&#9;&#9;</FONT><FONT FACE="Courier" SIZE=4>assign(f,'DATI.DAT');</P><DIR>
+
+
+<B><P>assign</B>(fr,'REALDATI.DAT');</P>
+</FONT><FONT FACE="Times" SIZE=4></DIR>
+</DIR>
+</DIR>
+</DIR>
+</DIR>
+</DIR>
+</DIR>
+</DIR>
+</DIR>
+</DIR>
+</DIR>
+</DIR>
+</DIR>
+</DIR>
+</DIR>
+</DIR>
+
+<B><P>3.</B> <B><U>predisposizione</B></U> all'uso: <U>o lettura o scrittura</U>&#9;&#9;<B>reset</B>(fr);&#9;{"apertura" in lettura}</P>
+<P>&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;<B>rewrite</B>(fr);&#9;{"apertura" in scrittura}</P>
+<P>Si stabilisce se nelle prossime istruzioni (fino alla "chiusura del collegamento") il file sar&agrave; usato come sorgente di dati di input, o come struttura di memorizzazione di dati di output.</P>
+
+<B><P>4.</B> <B><U>uso</B> effettivo</U>&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;(var x:real)</P>
+<P>(fr aperto in lettura)&#9;    </FONT><B><FONT FACE="Courier" SIZE=4>read</B>(fr, x);&#9;   </FONT><FONT FACE="Times">{legge un reale dal file collegato a fr e lo copia in x}</P>
+</FONT><FONT FACE="Times" SIZE=4><P>(fr aperto in scrittura)&#9;    </FONT><B><FONT FACE="Courier" SIZE=4>write</B>(fr, x+45);</FONT><FONT FACE="Times" SIZE=4>  </FONT><FONT FACE="Times">{memorizza nel file collegato a fr il valore (x+45)}</P>
+</FONT><FONT FACE="Times" SIZE=4>
+<B><P>5.</B> <B><U>chiusura</B></U>&#9;&#9;&#9;   </FONT><B><FONT FACE="Courier" SIZE=4>close</B>(fr);</FONT><FONT FACE="Times" SIZE=4> </FONT><FONT FACE="Times">{interrompe il collegamento stabilito tra fr e il file fisico}</P>
+<P ALIGN="CENTER">-----------------------------------------------------------------------------------------------------------------------------</P>
+</FONT><B><U><FONT FACE="Times" SIZE=4><P ALIGN="CENTER">Funzionamento</P>
+
+</B></U></FONT><FONT FACE="Times"><P><IMG SRC="Image3.gif" WIDTH=544 HEIGHT=80></P>
+
+<P><IMG SRC="Image4.gif" WIDTH=550 HEIGHT=55></P>
+<B><U><P>Predisposizione alla lettura: &#9;reset(f)</P>
+</B></U><P>&#9;- da ora in poi (fino ad una nuova predisposizione) si usa solo read</P>
+<P>&#9;- fr</FONT><FONT FACE="Symbol">‚</FONT><FONT FACE="Times"> viene spostato all'inizio del file (il primo dato diventa disponibile per la lettura)</P>
+<P>&#9;- fr deve essere gi&agrave; stata collegata ad un <U>file fisico esistente</U> in memoria secondaria</P>
+
+<B><U><P>Predisposizione alla scrittura: &#9;rewrite(f)</P>
+</B></U><P>&#9;- da ora in poi (fino ad una nuova predisposizione) si usa solo write</P>
+<P>&#9;- fr deve essere gi&agrave; stata collegata ad un <U>file fisico</U> in memoria secondaria (gi&agrave; esistente oppure no)</P>
+<P>In particolare, se il file fisico con il nome specificato nell'istruzione assign (e collegato alla variabile)</P>
+<P>&#9;&#9;&#9;- non esiste in Memoria Secondaria, &#9;viene creato </P>
+<P>&#9;&#9;&#9;- esiste gi&agrave; in MS, si crea una versione nuova e i dati preesistenti sono persi</P>
+<P>Comunque <B>fr</FONT><FONT FACE="Symbol">‚</B></FONT><FONT FACE="Times"> viene sistemato in modo che punti sulla prima posizione stampabile ("all'inizio") del file. </P>
+
+<B><P>Es.</B>&#9;Leggere N dati da un file di numeri interi (A:\dati.dat) e stamparli sul video </P><DIR>
+
+</FONT><B><FONT FACE="Courier" SIZE=4><P>program</B> PRIMOFILE;</P>
+<P>  <B>const</B> N=...;</P>
+<B><P>  var</B> f: file of integer;&#9;</FONT><FONT FACE="Courier">{variabile da coll.a file binari di interi}</P>
+</FONT><FONT FACE="Courier" SIZE=4><P>       i, d:integer;</P>
+<P> <B>begin</B> {main program}</P>
+<P>  writeln('   inizio programma');</P>
+<P>  assign(f,'a:dati.dat');&#9;</FONT><FONT FACE="Courier">{collegamento}</P>
+</FONT><FONT FACE="Courier" SIZE=4><P>  reset(f);&#9;&#9;&#9;&#9;{</FONT><FONT FACE="Courier">predisposizione alla lettura}</P>
+</FONT><FONT FACE="Courier" SIZE=4><P>  for i:=1 to N do</P>
+<P>&#9;  <B>begin</B> </P>
+<P>&#9;&#9;read(f,d);&#9;&#9;&#9;&#9;</FONT><FONT FACE="Courier">{lettura da file}</P>
+</FONT><FONT FACE="Courier" SIZE=4><P>&#9;&#9;writeln('dato letto = ',d);</P>
+<P>&#9;  <B>end</B>;</P>
+<P>  close(f);&#9;&#9;&#9;&#9;{chiusura del collegamento}</P>
+<P>  writeln('   fine programma')</P></DIR>
+
+</FONT><B><FONT FACE="Courier"><P> end</B>.</P>
+</FONT><FONT FACE="Times"><P>Un file di numeri interi potrebbe essere stato costruito da un programma come il seguente:</P>
+<B><P>Es.</B>&#9;Leggere N interi da input e memorizzarli in un file di interi (A:\datiint.dat) </P><DIR>
+
+</FONT><B><FONT FACE="Courier"><P>program</B> SECONDOFILE;</P>
+<P>  <B>const</B> N=...;&#9;<B>var</B>&#9;f: file of integer;&#9;{variabile file}</P>
+<P>       &#9;&#9;&#9;&#9;i, d:integer;</P>
+<P> <B>begin</B> {main program}</P>
+<P>&#9;assign(f,'a:datiint.dat');&#9;{collegamento}</P>
+<P>&#9;rewrite(f);&#9;&#9;&#9;&#9;{predisposizione alla scrittura}</P>
+<P>&#9;for i:=1 to N do</P>
+<P>&#9;  <B>begin</B> </P>
+<P>&#9;&#9;readln(d);&#9;&#9;&#9;&#9;{lettura da input}</P>
+<P>&#9;&#9;write(f,d);&#9;&#9;&#9;{<B>NB</B> niente stringhe: solo interi}</P>
+<P>&#9;  <B>end</B>;</P>
+<P>&#9;close(f); &#9;&#9;&#9;<B>end</B>.</P></DIR>
+
+</FONT><FONT FACE="Times"><P ALIGN="CENTER">-----------------------------------------------------------------------------------------------------------------------------</P>
+<B><U><P ALIGN="CENTER">EOF</U> (End Of File)</P>
+</B><P>Con f variabile file:&#9;    {<B>TRUE</B> se f</FONT><FONT FACE="Symbol">‚</FONT><FONT FACE="Times"> &egrave; posizionato dopo l'ultima informazione presente nel file collegato a f</P>
+<P>&#9;&#9;<B>eof(f)</B> =   {<B>FALSE</B> se f</FONT><FONT FACE="Symbol">‚</FONT><FONT FACE="Times"> &egrave; posizionato su un'informazione effettiva del file</P>
+<B><P>eof(f)=FALSE</B> vuol dire che ci sono informazioni nel file sulle quali il buffer file non &egrave; ancora passato (<B>ci sono ancora dati da leggere</B>). Se leggiamo dati da un file, possiamo continuare mentre NOT(eof(f)) e&#146; TRUE.</P>
+<B>
+<P>Es</B>. programma che legge gli interi contenuti in </FONT><FONT FACE="Courier">datiint.dat</FONT><FONT FACE="Times"> e li stampa sul video (senza conoscere N!!!)</P><DIR>
+
+</FONT><B><FONT FACE="Courier"><P>program</B> TERZOFILE;</P>
+<P> <B>var</B>&#9;f: file of integer;&#9;{variabile file}</P>
+<P>       &#9;d:integer;</P>
+<P> <B>begin</B> {main program}</P>
+<P>&#9;assign(f,'a:datiint.dat');&#9;&#9;{collegamento}</P>
+<P>&#9;reset(f);&#9;&#9;&#9;&#9;&#9;&#9;{predisposizione alla lettura}</P>
+<B><P>&#9;while not(eof(f)) do</P>
+</B><P>&#9;  <B>begin</B> </P>
+<P>&#9;&#9;read(f,d);&#9;&#9;&#9;&#9;&#9;{lettura da input}</P>
+<P>&#9;&#9;writeln('dato letto = ',d);&#9;{<B>NB</B> su output stampiamo stringhe} </P><DIR>
+<DIR>
+
+<B><P>end</B>;&#9;&#9;&#9;&#9;&#9;&#9;{   e interi (e altro se serve) }</P></DIR>
+</DIR>
+
+<P>&#9;close(f); &#9;&#9;<B>end</B>.</P>
+<P ALIGN="CENTER"></P>
+</FONT><B><FONT FACE="Times" SIZE=4><P ALIGN="CENTER">File generalizzati e file testo</P></DIR>
+
+</B></FONT><FONT FACE="Times"><P>Stampando su video (</FONT><FONT FACE="Courier" SIZE=2>type nomefile</FONT><FONT FACE="Times">) o aprendo con un <I>editor</I> un file generalizzato, di norma non ci si capisce niente. I file generalizzati contengono informazioni codificate, non direttamente visualizzabili. Una eccezione a questa regola sono i file che contengono TESTO (ad esempio i file costruiti con un editor come quello del TP). </P>
+<B><P ALIGN="CENTER">TESTO = sequenza di caratteri, organizzati in linee.</P>
+</B><P>Una LINEA &egrave; una sequenza di caratteri terminata da un carattere speciale EOL  (EndOfLine: in sostanza il carattere ottenuto premendo il tasto Invio).</P>
+
+<P>Quando in un file di testo viene stampato il carattere EOL, "si va a capo". Quindi &egrave; soltanto nei file di testo che ha senso parlare di "andata a capo" e hanno senso operazioni come readln e writeln. </P>
+<P>Per i file di testo, oltre alla funzione </FONT><FONT FACE="Courier">eof()</FONT><FONT FACE="Times"> &egrave; disponibile la funzione </FONT><B><FONT FACE="Courier" SIZE=4>eoln()</FONT><FONT FACE="Times">.</P>
+</FONT><FONT FACE="Courier"><P>eoln(f)</B></FONT><FONT FACE="Times"> = TRUE se il buffer file &egrave; posizionato sull'ultimo carattere di una riga (EOL); FALSE altrimenti.</P>
+<DIR>
+<DIR>
+
+</FONT><B><FONT FACE="Times" SIZE=4><P>File generalizzati&#9;&#9;read, write&#9;&#9;&#9;&#9;&#9;eof()</P></DIR>
+</DIR>
+
+<P>File testo&#9;&#9;&#9;read, write, readln, writeln.&#9;&#9;eof(), eoln()</P>
+</B></FONT><FONT FACE="Times">
+<P>I <B>canali standard di <I>input</I> e <I>output</B></I> sono <B>assimilabili a file di testo</B>. Infatti contengono solo sequenze di caratteri stampabili, interpretati come informazioni di un tipo o dell'altro secondo le istruzioni del programma</P>
+
+<P>Per i file di testo, in PASCAL &egrave; predefinito il <B>tipo </FONT><FONT FACE="Courier">text</B></FONT><FONT FACE="Times">. Le variabili file destinate ad essere collegate a file di testo devono essere di tipo </FONT><FONT FACE="Courier">text</FONT><FONT FACE="Times">.</P>
+<B><P>Es.</B> DATI.TXT = file testo, creato con un editor, contenente due linee, ciascuna con 20 interi. </P>
+<P>Leggere 2 sequenze di N=20 interi da DATI.TXT e stampare le somme dei primi, secondi, terzi &#133; elementi delle sequenze. </FONT><FONT FACE="Times" SIZE=2>&Egrave; il programma SOMMAVETTORI gi&agrave; visto, solo che l'input per riempire i due vettori &egrave; ottenuto "da file"</P><DIR>
+
+</FONT><B><FONT FACE="Courier" SIZE=4><P>program</B> SOMMAVETTORIconFILE;</P>
+<B><P>const</B> N=20;&#9;&#9;</P>
+<B><P>type TIPOVETT = array[1..N] of integer;</P>
+<P>var</B>&#9;filein: <B>text</B>;&#9;</FONT>{variabile file capace di collegarsi a file di testo}</P>
+<FONT FACE="Courier" SIZE=4><P>       &#9;v1,v2,v3:TIPOVETT;&#9;i:integer;</P></DIR>
+
+<P>procedure STAMPAVETT &#133;&#9;&#9;procedure SOMMAVETT &#133;</P><DIR>
+
+<P> <B>begin</B> {main program}</P>
+<P>&#9;assign(filein,"a:dati.txt");&#9;<B>{collegamento</B>}</P>
+<P>&#9;reset(f);&#9;&#9;&#9;&#9;&#9;<B>{predisposizione alla lettura</B>}</P>
+<P>&#9;</P>
+<B><P>for</B> i:=1 to N <B>do</B>&#9;&#9;&#9;<B>{lettura prima riga del file }</P></DIR>
+
+</B><P>     read(filein, v1[i]);&#9;&#9;<B>{ = 20 interi in V1          } </P>
+</B><DIR>
+
+<P>readln(filein);</P>
+<B>
+<P>for</B> i:=1 to N <B>do</B>&#9;&#9;&#9;<B>{lettura seconda riga del file}</P></DIR>
+
+</B><P>     read(filein, v2[i]);&#9;&#9;<B>{ = 20 interi in V2          } </P><DIR>
+
+</B><P>&#9;</P>
+<P>   close(f); &#9;&#9;&#9;&#9;<B>{interruzione collegamento</B>}</P>
+<P>&#9;Sommavett(v1,v2,v3);&#9;&#9;&#9;{somma}</P>
+<P>&#9;Stampavett(v3)&#9;&#9;&#9;&#9;{stampa del risultato}</P>
+<B><P>end</B>.</P>
+</FONT><B><FONT FACE="Times"></DIR>
+
+</FONT><FONT FACE="Times" SIZE=4><P>NB. </FONT><FONT FACE="Times">Nelle proc che ricevono file come par, tali par sono passati</FONT><FONT FACE="Times" SIZE=4> sempre e soltanto per variabile</P><DIR>
+
+</FONT><FONT FACE="Courier" SIZE=4><P>procedure</B> LEGGIVETT3 (var f:text; var V:TIPOVETT);</P>
+<B><P>var</B>&#9;i: integer;</P>
+<P> <B>begin</B> {LEGGIVETT3 }</P>
+<P>&#9;for i:=1 to N do read(f, v[i]);         readln(f);</P>
+<B><P> end</B> {LEGGIVETT3}</P></DIR>
+</FONT></BODY>
+</HTML>

@@ -1,0 +1,64 @@
+<!doctype html public "-//w3c//dtd html 4.0 transitional//en">
+<html>
+<head>
+<link href="java.css" rel="stylesheet" type="text/css">
+<title>Grafico di una funzione usando una matrice</title>
+</head>
+
+<body>
+
+<h2>Grafico di una funzione usando una matrice</h2>
+
+<hr>
+
+<a href="MatriceFunzione.java">MatriceFunzione.java</a>
+
+<p>
+
+<pre>
+/*
+  Grafico di una funzione, usando una matrice.
+*/
+
+class MatriceFunzione {
+  public static void main(String[] args) {
+    int f,x;
+    int mat[][]=new int[100][40];
+    int i,j;
+
+	/* inizialmente, tutti gli elementi stanno a 0 */
+    for(i=0; i<=99; i=i+1) {
+      for(j=0; j<=39; j=j+1) {
+         mat[i][j]=0;
+      }
+    }
+
+	/* valori della funzione */
+    for(x=0; x<=39; x=x+1) {
+      f=(x*x+3*x+2)/10;
+
+      if( (f>=0) && (f<=99) ) {
+        mat[99-f][x]=1;
+      }
+    }
+
+	/* stampa la matrice */
+    for(i=0; i<=99; i=i+1) {
+      for(j=0; j<=39; j=j+1) {
+         if( mat[i][j]==0 ) {
+           System.out.print(" ");
+         }
+         else {
+           System.out.print("*");
+         }
+      }
+      System.out.println("");
+    }
+  }
+}
+
+</pre>
+
+</body>
+</html>
+

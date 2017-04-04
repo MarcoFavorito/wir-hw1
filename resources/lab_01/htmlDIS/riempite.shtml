@@ -1,0 +1,84 @@
+<!doctype html public "-//w3c//dtd html 4.0 transitional//en">
+<html>
+<head>
+<link href="java.css" rel="stylesheet" type="text/css">
+<title>Figure geometriche riempite</title>
+</head>
+
+<body>
+
+<h2>Figure geometriche riempite</h2>
+
+Le istruzioni di disegno viste fino ad ora tracciavano in
+effetti solo il contorno delle figure, ossia il loro
+perimetro. In Java, &egrave; possibile anche disegnare
+figure geometriche il cui interno sia riempito con il
+colore corrente. Il modo di farlo &egrave; molto
+semplice: mentre le istruzioni per disegnare il contorno
+si chiamano <tt>drawQualcosa</tt>, le istruzioni per
+disegnare anche l'interno si chiamano <tt>fillQualcosa</tt>.
+Qui sotto ci sono tutte le istruzioni di disegno viste
+fino ad ora, con accanto le istruzioni che riempiono:<p>
+
+<table border=1 align=center>
+<tr><th>Figura</th><th>Disegno del contorno</th><th>Disegno riempito</th></tr>
+<tr><td>Rettangolo</td><td>drawRect</td><td>fillRect</td></tr>
+<tr><td>Poligono</td><td>drawPolygon</td><td>fillPolygon</td></tr>
+<tr><td>Ovale</td><td>drawOval</td><td>fillOval</td></tr>
+<tr><td>Arco</td><td>drawArc</td><td>fillArc</td></tr>
+</table>
+<p>
+
+Le istruzioni di riempimento hanno esattamente gli stessi
+argomenti delle istruzioni che disegnano il contorno. Per
+esempio, <tt>fillRect</tt> prende quattro numeri, che sono
+le coordinate del punto in alto a sinistra del rettangolo,
+la larghezza e l'altezza.<p>
+
+Il programma
+<a href="Riempite.java">Riempite.java</a> disegna
+alcune figure geometriche riempite.<p>
+
+<pre>
+/*
+  Alcune figure geometriche riempite.
+*/
+
+import java.awt.*;
+
+public class Riempite extends java.applet.Applet {
+  public void paint(Graphics g) {
+    Polygon p=new Polygon();
+
+    g.fillRect(0,0,100,100);
+
+    g.setColor(Color.red);
+    g.fillOval(100,100,50,100);
+    g.fillArc(200,0,80,120,45,150);
+
+    p.addPoint(200,200);
+    p.addPoint(200,250);
+    p.addPoint(250,400);
+    p.addPoint(190,500);
+    p.addPoint(160,200);
+    
+    g.setColor(Color.blue);
+    g.fillPolygon(p);
+  }
+}
+
+</pre>
+<p>
+
+Il risultato &egrave; il seguente:<p>
+
+<center>
+<img src="Riempite.gif">
+</center>
+<p>
+
+
+
+</body>
+</html>
+

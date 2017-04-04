@@ -1,0 +1,594 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+<HEAD>
+   <TITLE>Information Access in the Web</TITLE>
+   <META NAME="GENERATOR" CONTENT="Mozilla/3.01Gold (X11; I; Linux 2.0.30 i686) [Netscape]">
+</HEAD>
+<BODY>
+
+<H1 ALIGN=CENTER>Information Access in the Web</H1>
+
+<H3 ALIGN=CENTER><A HREF="http://www.dis.uniroma1.it/~iocchi/">Luca Iocchi</A>
+and <A HREF="http://www.dis.uniroma1.it/~nardi/">Daniele Nardi</A></H3>
+
+<CENTER><P><A HREF="http://www.dis.uniroma1.it/">Dipartimento di Informatica
+e Sistemistica<BR>
+</A>Universit&agrave; di Roma ''La Sapienza''<BR>
+Via Salaria 113, 00198, Roma, Italy.<BR>
+E-mail: <TT>{iocchi,nardi}@dis.uniroma1.it</TT> </P></CENTER>
+
+<H2>Abstract</H2>
+
+<P>While the amount of information available on line in the Internet or
+in the World Wide Web is increasingly growing, many different systems have
+been developed to help the user to locate or gather information of interest.
+In this paper we discuss the main approaches to the design of such systems
+focusing in particular on the methods used to represent the information
+available in the Web. </P>
+
+<H2>1. Introduction</H2>
+
+<P>The management of large amounts of information is a critical task for
+an organization or a workgroup. The growth of information available in
+various repositories within an organization or on-line through the World
+Wide Web, makes it difficult for users to gather information of interest,
+while browsing and keyword-based search become more and more ineffective.<BR>
+The World Wide Web can be seen as a huge collection of different information
+sources, that are on-line databases, information systems or simply HTML
+pages, containing a very large body of information from very different
+areas. An individual user is usually interested only in a small portion
+of this information, so s/he needs tools for an effective organization
+of her/his own information and for an intelligent access to information
+sources in order to retrieve important or relevant information in an effective
+and efficient way.<BR>
+Recent research work is focused on the design of systems that help the
+user to locate or gather desired information in a world with many different
+and heterogeneous information sources. In this paper we discuss the main
+design elements of these systems, especially outlining the different approaches
+arising from the choice of different methodologies for representing information.<BR>
+</P>
+
+<H2>2. Surfers vs Hunters</H2>
+
+<P>A first distinction among systems is based on their main goal. We identify
+a first group in which we consider systems whose main goal is to learn
+a user profile to assist the navigation of users through the Web (we refer
+to such systems as <I>surfers</I>). The second group is characterized by
+the integration of various information systems and a query answering mechanism
+(we call them <I>hunters</I>).<BR>
+Two examples of surfers are <A HREF="http://www.cs.cmu.edu/~webwatcher/">WebWatcher</A>
+<A HREF="#Arms-95">[Arms-95]</A> and Letizia <A HREF="#Lieb-95">[Lieb-95]</A>.
+They present a Web-based interface to interactively assist user browsing,
+learning what s/he usually looks for (using several navigation tasks as
+training set) and trying to anticipate which links will be followed. Surfers
+do not take control over the user, they only suggest possibly relevant
+links to follow.<BR>
+They differ in the function to be learned. WebWatcher learns the probability
+that an arbitrary user will choose a link starting from a certain page
+to achieve a goal, which corresponds the function </P>
+
+<P>UserChoice? : Page x Goal x Link -&gt; [0,1]</P>
+
+<P>while Letizia tries to infer user goals from his browsing behavior.
+Pages, links and goals are represented by lists of keywords or by feature
+vectors, each feature indicating the occurrence of a particular word within
+the text. A comparison between different machine learning techniques to
+be used in this task is presented in <A HREF="#Arms-95">[Arms-95]</A>.
+A related approach is followed in <A HREF="#Cohe-96b">[Cohe-96b]</A>, in
+which the system learns to query the Web, that is it learns how to use
+a search tool (which keywords have to be used) to retrieve important information
+for the user.<BR>
+We do not consider systems whose main goal is an automatic classification
+of documents. They usually represent documents as a feature vector with
+each component corresponding to the frequency of a word in the document
+or the salience in the text of a subject category, constructing personalized
+information filters. Such a representation is used, however, for special
+class of textual documents such as e-mail, Usenet news and Web pages and
+machine learning techniques have been proposed to learn rules that classify
+them (see for example <A HREF="#Cohe-96a">[Cohe-96a]</A>, <A HREF="#Bloe-96">[Bloe-96]</A>,
+<A HREF="#Goan-96">[Goan-96]</A>). <BR>
+Hunters differ from surfers in building a (virtual) common model of the
+relevant information space. They act as spiders through the Web gathering
+information for the user. Many special purpose agents (we call them <I>information
+brokers</I>) have been developed to retrieve a particular type of information
+from pre-defined information sources. For example one can use <A HREF="http://bf.cstar.ac.com/bf/">BargainFinder</A>
+to find where to buy the last CD of his favorite artist for the best price,
+or ContactFinder <A HREF="#Krul-Burk-96">[Krul-Burk-96]</A> to identify
+a person who can help him in solving a problem. In the following we focus
+on Global Information Management Systems, that are general purpose systems
+in which there is an explicit representation of domain and information
+sources. <BR>
+</P>
+
+<H2>3. Global Information Management Systems</H2>
+
+<P>Global Information Managements Systems (GIMSs) provide a framework to
+integrate different and heterogeneous information sources into a common
+domain model. An information source can be an on-line database accessible
+through the Web or a simple HTML page or a plain text file. Information
+units are individual elements of information coming from information sources.
+The user interacts with the GIMS as a single information system, so that
+s/he can ignore data models used in the individual sources, and accesses
+information through query-answering mechanisms.<BR>
+A basic distinction among GIMSs can be done considering different methods
+to represent information. First we address feature-based representation
+(or keyword representation), in which documents are represented with feature
+vectors (or simply list of keywords), like in the well known keyword-based
+search engines. Second we explore the work from the Database community,
+in which both systems using a conceptual data model to represent information
+domain and Web Query Languages are developed. Finally, systems using a
+Knowledge Representation approach are presented. They use an explicit representation
+of knowledge about domain and information sources and automatic reasoning
+tools to answer user queries. <BR>
+</P>
+
+<H3>3.1 Feature-based Representation of Documents</H3>
+
+<P>The representation of text documents through a feature vector is very
+simple but also useful. A vector whose features are specific words describing
+document contents is associated to each document. A particular case is
+that in which documents are represented by a list of keywords.<BR>
+In this class we include the well known keyword-based search engines, such
+as <A HREF="http://www.altavista.com/">Altavista</A>, <A HREF="http://www.lycos.com/">Lycos</A>,
+<A HREF="http://www.yahoo.com/">Yahoo!</A>, and <A HREF="http://cuiwww.unige.ch/meta-index.html">many
+others</A>. They are equipped with soft-bots that explore the entire Web
+reading documents and indexing them according to some key. Then they allow
+for retrieving the previously analyzed documents from specified keywords.
+We must observe that these systems provide a limited integration of information
+sources, as they typically consider only HTML or plain text documents,
+nonetheless they are broadly used being easily accessible for the user.
+We do not list specific features of these systems, as one can find a lot
+of <A HREF="http://www.cse.ogi.edu/~magostin/report/search_tools.html">surveys</A>,and
+<A HREF="http://www.state.ia.us/educate/depteduc/offtech/search.html">comparisons</A>
+on-line in the Web. We only point out the importance of organizing Web
+documents into a hierarchical structure, as in Yahoo!, even though in this
+system there are different and not uniform subdivision criteria within
+a single hierarchy (e.g. is-a and part-of relationships, geographic and
+time divisions, etc.).<BR>
+</P>
+
+<H3>3.2 Database Approaches</H3>
+
+<P>In the Database community we find two kinds of proposals: systems to
+integrate different information sources and declarative languages to query
+the Web. We do not specifically address tools for database integration
+or federated databases, since they rely on the presence of a schema describing
+sources and in highly structured data, while Web documents are usually
+unstructured or semi-structured.<BR>
+A notable example of GIMS using database technology to represent information
+is <A HREF="http://www-db.stanford.edu/tsimmis/tsimmis.html">Tsimmis</A>
+<A HREF="#Chaw-94">[Chaw-94]</A>, which describes the common model with
+the OEM (Object Exchange Model) language and the associated query language,
+OEM-QL, is an SQL-like language. It makes use of <I>translators</I> to
+translate data object into a common information model and queries into
+requests for an information source, while <I>mediators</I> embed the knowledge
+necessary for processing a specific type of information, knowing the contents
+of information sources. This distinction between translators and mediators
+allows different mediators to work independently. Each mediator needs to
+know which sources it will use to retrieve information. In this way it
+is possible to work without a global database schema. Furthermore, mediators
+and translators can be automatically generated from high level descriptions
+of the information processing they have to accomplish. Constraint Manager
+units are also used to define integrity constraints which specify semantic
+consistency requirements, while classifiers and extractors can be used
+to extract information from unstructured documents (e.g. plain text files,
+mail messages, etc.) into the domain model. The Classifier/Extractor components
+of Tsimmis are used in order to extract information from unstructured documents.<BR>
+Another proposal along these lines is constituted by the <A HREF="http://poincare.inf.uniroma3.it:8080/Araneus/araneus.html">ARANEUS
+Project</A> <A HREF="#Atze-97">[Atze-97]</A>, whose aim is to make explicit
+the schema according to which the data are organized in so-called structured
+servers, and then use this schema to pose queries in a high level language
+instead of browsing the data. Even though the ability to construct structured
+description of the information in the Web enables the system to answer
+user queries, the approach has the following drawbacks that are typical
+of a Database perspective: 1) Araneus works only on a particular kind of
+Web sites and pages, which have a clearly specified structure, not on generic
+ones; 2) the user has to completely specify the relational schema corresponding
+to the site data; there is no automatic translation from the site to the
+database; 3) there is no hint for automatic search and conceptualization
+of WWW sites similar to prototypical ones indicated by the user. <BR>
+WAG (Web At a Glance) <A HREF="#Cata-97">[Cata-97]</A>, is a system that
+assists the user in the construction of a conceptual view of Web pages
+relevant to her/his own interests. The main difference with other database
+approaches is that, instead of requiring an explicit description of the
+sources, WAG attempts to semi-automatically classify the information gathered
+from various sites based on the conceptual model of the domain of interest.
+The result of such a classification is fully materialized. In addition,
+WAG provides a visual interface to query the databases (each one related
+with a specific domain or sub-domain) resulting from the integration of
+the information extracted from the various sites. <BR>
+A second research area in the Database community involves the development
+of declarative languages to query the Web. Web Query Languages proposed
+in literature are <A HREF="http://www.cs.technion.ac.il/~konop/w3qs.html">W3QL</A>
+<A HREF="#Konop-95">[Konop-95]</A>, <A HREF="http://www.cs.concordia.ca/~special/bibdb/weblog.html">WebLog</A>
+<A HREF="#Laks-96">[Laks-96]</A>, <A HREF="http://www.cs.toronto.edu/~websql/">WebSQL</A>
+<A HREF="#Mend-96">[Mend-96]</A>. Conceptual models of the World Wide Web
+are presented to specify semantics of these languages. In particular in
+<A HREF="#Mend-96">[Mend-96]</A> a ``virtual graph'' is used to represent
+the hypertextual documents in the Web. Systems using a Web Query Language
+do not maintain a global model of an application domain, instead they allow
+the user to interact with Web search engines or indexes built from robots
+in a transparent way. Many of the problems one encounters using indexes,
+such as information updates or the lack of representation of the structures
+in the documents, are not addressed in these systems. However the possibility
+of capturing the structure of a hypermedia network, explicitly describing
+links between documents, and the introduction of the ``query locality''
+concept to measure the cost to answer a query are important elements in
+the development of effective and efficient systems. </P>
+
+<H2>4. Knowledge-based GIMSs</H2>
+
+<P>Knowledge-based GIMSs are systems using a Knowledge Representation (KR)
+approach for information sources representation, data acquisition and query
+processing. Many logical frameworks are used to represent information and
+many Knowledge Representation systems are used to reason about them.<BR>
+The main design element for these systems is the KR language. While the
+most important tasks they have to accomplish are automatic information
+acquisition, that is useful to build and maintain knowledge bases, as well
+as query answering using query-planning techniques.<BR>
+</P>
+
+<H3>4.1 Knowledge Representation</H3>
+
+<P>A GIMS represents both the application domain and contents of information
+sources, using usually a single KR language. [Tab. 1] shows different logical
+frameworks used by some of the implemented systems. As the knowledge base
+of a GIMS is formed by a collection of concepts related by semantical and
+hierarchical relationships, it seems that formalisms able to represent
+taxonomic knowledge, such as Description Logics, are valuable in this context
+for their capability to represent hierarchical concept structures. <BR>
+</P>
+
+<CENTER><TABLE BORDER=2 >
+<TR>
+<TD width=150><B>System</B></TD>
+
+<TD width=100><B>KR language</B></TD>
+
+<TD width=170><B>Vocabulary Problem</B></TD>
+</TR>
+
+<TR>
+<TD><A HREF="http://www.research.att.com/~levy/imhome.html">Information
+Manifold</A></TD>
+
+<TD>CARIN</TD>
+
+<TD>Unique vocabulary</TD>
+</TR>
+
+<TR>
+<TD><A HREF="http://www.isi.edu/sims/">SIMS</A></TD>
+
+<TD><A HREF="http://www.isi.edu/isd/LOOM/LOOM-HOME.html">LOOM</A></TD>
+
+<TD>Manual mapping</TD>
+</TR>
+
+<TR>
+<TD><A HREF="http://www.cs.washington.edu:80/research/projects/softbots/www/internet-softbot.html">Internet
+Softbot</A></TD>
+
+<TD>UWL</TD>
+
+<TD>Unique vocabulary</TD>
+</TR>
+
+<TR>
+<TD>OBSERVER</TD>
+
+<TD><A HREF="http://www.research.att.com/sw/tools/classic/">CLASSIC</A></TD>
+
+<TD>Semi-automatic mapping</TD>
+</TR>
+
+<TR>
+<TD>Information broker</TD>
+
+<TD>Context logic</TD>
+
+<TD>Automatic mapping</TD>
+</TR>
+
+<TR>
+<TD><A HREF="http://infomaster.stanford.edu/">Infomaster</A></TD>
+
+<TD>Datalog-like</TD>
+
+<TD>Unique vocabulary</TD>
+</TR>
+</TABLE></CENTER>
+
+<CENTER><P><BR>
+Table 1: Knowledge Representation in GIMSs. </P></CENTER>
+
+<P>One critical problem arising from the integration of different descriptions
+of information sources is the vocabulary problem. It is due to the presence
+of possibly different terms representing the same concept in the description
+of a source or an information unit. There are three possibilities to face
+this problem: (i) unique vocabulary, that is forcing the description of
+information sources and domain model to share the same vocabulary; (ii)
+a manual mapping, that is relationships between similar concepts are hand-coded;
+(iii) automatic (or semi-automatic) mapping, in which the system takes
+advantage of existing ontology systems (<A HREF="http://www-ksl.stanford.edu/knowledge-sharing/ontolingua/index.html">
+Ontolingua</A>, <A HREF="http://www.cogsci.princeton.edu/~wn/">WordNet</A>)
+that provide synonym, hypernym and hyponym relationships between terms.
+In [Tab. 1] we also show how systems address the vocabulary problem. In
+particular OBSERVER <A HREF="#Mena-96">[Mena-96]</A>, which is based on
+the interaction of different ontologies, addresses the problem both in
+the definition of the ontologies and by providing a tool for defining semantical
+relationships among terms of different ontologies. While in the information
+broker presented in <A HREF="#Fike-96">[Fike-96]</A>,<A HREF="#Farq-95">[Farq-95]</A>
+the use of linguistic tools provided by <A HREF="http://www-ksl.stanford.edu/knowledge-sharing/ontolingua/index.html">Ontolingua</A>
+is proposed.<BR>
+Let us notice that using a unique vocabulary can lead to an extremely rigid
+system. On the other hand using linguistic tools is very powerful to solve
+questions about the terminology and to retrieve information, even though
+it involves information loss due to the use of terms not completely suitable
+to describe information units. </P>
+
+<H3>4.2 Information Acquisition</H3>
+
+<P>An important feature for a GIMS is the possibility of identifying interesting
+information sources unknown to the user and to automatically gather from
+them relevant information units. In other words, tools to scale up with
+the growth of the information space are needed. The discovery of new information
+sources, the extraction of information units within them and the interpretation
+of data coming from these sources are all problems related to information
+acquisition.<BR>
+This issue is rarely addressed in most systems, as they force the user
+to hand-code information sources' models. The main exceptions are ShopBot
+and ILA <A HREF="#Perk-Door-96">[Perk-Door-96]</A>. ShopBot addresses the
+extraction problem learning how to access an on-line catalog (via an HTML
+form) and how to extract information about products. It uses an unsupervised
+learning algorithm with a small training set. Whereas ILA (Internet Learning
+Agent) is focused on the interpretation problem. It learns how to translate
+information source's output into the domain model, using a set of descriptions
+of objects in the world.<BR>
+</P>
+
+<H3>4.3 Query Processing</H3>
+
+<P>A significant body of work on agents able to reason and make plans for
+query answering has been developed. The use of planning techniques to retrieve
+information requested by a user query has been very common in this context.<BR>
+In Information Manifold <A HREF="#Levy-Raja-Ordi-96">[Levy-Raja-Ordi-96]</A>
+the contents of information sources are described by query expressions
+that are used to determine precisely which sources are needed to answer
+the query. The planning algorithm first computes information sources relevant
+to each subgoal, next conjunctive plans are constructed so that the soundness
+and completeness of information retrieval and the minimization of the number
+of information sources to be accessed are guaranteed. In this system, interleaving
+planning and execution is a useful way to reduce the cost of the query
+during plan execution. <BR>
+The Infomaster <A HREF="#Dusc-96">[Dusc-96]</A> planning method is similar
+to the Information Manifold one. Infomaster guarantees a semantically correct
+and source-complete plan generation in a very expressive representation
+language, but clearly separates query planning and plan execution. <BR>
+SIMS <A HREF="#Aren-96">[Aren-96]</A> defines operators for query reformulation
+and uses them to select relevant sources and to integrate available information
+to satisfy the query. The system applies these operators first to reformulate
+the query according to the information sources model, and then to identify
+the information sources to access. Since source selection is integrated
+into the planning system, SIMS can use information about resource availability
+and access costs to minimize the overall cost of a query. <BR>
+Previously described systems rely on a closed world assumption, that is
+they assume that domain model contains all information needed and that
+all unavailable information does not exist. On the contrary Internet Softbot
+<A HREF="#Etzi-Weld-94">[Etzi-Weld-94]</A> provides a framework to reason
+with incomplete information <A HREF="#Etzi-92">[Etzi-92]</A>, <A HREF="#Etzi-Gold-Weld-94">[Etzi-Gold-Weld-94]</A>,
+executing sensing actions to provide forms of local closure, in other words
+to verify the actual presence of information in the source during plan
+execution. <BR>
+</P>
+
+<H2>5. Conclusion</H2>
+
+<P>We conclude by stating that an intelligent access to information in
+the Web deeply relates to the representation of information. In fact simple
+representation languages, used in most search tools, have severe limitations
+for an effective retrieval of information. On the other hand, more structured
+representations of knowledge are difficult to build automatically, but
+can provide more effective tools for information access. </P>
+
+<H2>References</H2>
+
+<P><A NAME="Aren-96"></A></P>
+
+<DT><B>Aren-96</B> </DT>
+
+<DD>Y. Arens, C. A. Knoblock, and W. Shen. Query reformulation for dynamic
+information integration. <I>Journal of Intelligent Information Systems</I>,
+1996. </DD>
+
+<P><A NAME="Arms-95"></A></P>
+
+<DT><B>Arms-95</B> </DT>
+
+<DD>Robert Armstrong, Freitag Dayne, Thorsten Joachims, and Tom Mitchell.
+WebWatcher: A learning apprentice for the World Wide Web. In <I>Proc. of
+AAAI Spring Symposium on Information Gathering form Heterogeneous Distributed
+Environments</I>, 1995. </DD>
+
+<P><A NAME="Atze-97"></A></P>
+
+<DT><B>Atze-97</B> </DT>
+
+<DD>P. Atzeni, G. Mecca, and P. Merialdo. Design and maintenance of data-intensive
+web sites. Technical Report 25, Dip. di Informatica e Automazione, Universit&agrave;
+di Roma Tre, 1997. </DD>
+
+<P><A NAME="Bloe-96"></A></P>
+
+<DT><B>Bloe-96</B> </DT>
+
+<DD>Eric Bloedorn, Inderjeet Mani, and T. Richard MacMillan. Representational
+issues in Machine Learning of user profiles. In <I>Proc. of AAAI Spring
+Symposium on Machine Learning in Information Access</I>, 1996. </DD>
+
+<P><A NAME="Cata-97"></A></P>
+
+<DT><B>Cata-97</B> </DT>
+
+<DD>T. Catarci, S. K. Chang, D. Nardi, G. Santucci. WAG: Web At a Glance.
+Technical Report 03-97. Dipartimento di Informatica e Sistemistica, Universit&agrave;
+&quot;La Sapienza&quot; di Roma, 1997. <A HREF="ftp://ftp.dis.uniroma1.it/pub/nardi/Ricerca/papers/WAG.ps">Available
+on line</A>. </DD>
+
+<P><A NAME="Chaw-94"></A></P>
+
+<DT><B>Chaw-94</B> </DT>
+
+<DD>S. Chawathe et al. The TSIMMIS Project: Integration of Heterogeneous
+Information Sources. In <I>Proc. of IPSJ Conference</I>, pages 7--18, 1994.
+</DD>
+
+<P><A NAME="Cohe-96a"></A></P>
+
+<DT><B>Cohe-96a</B> </DT>
+
+<DD>William W. Cohen. Learning Rules that Classify E-Mail. In <I>Proc.
+of AAAI Spring Symposium on Machine Learning in Information Access</I>,
+1996. </DD>
+
+<P><A NAME="Cohe-96b"></A></P>
+
+<DT><B>Cohe-96b</B> </DT>
+
+<DD>William W. Cohen and Yoram Singer. Learning to query the web. In <I>AAAI
+Workshop on Internet-Based Information Systems</I>, 1996. </DD>
+
+<P><A NAME="Dusc-96"></A></P>
+
+<DT><B>Dusc-96</B> </DT>
+
+<DD>Oliver M. Duschka and Michael R. Genesereth. Query planning in Infomaster,
+1996. <A HREF="http://logic.stanford.edu/people/duschka/papers/Infomaster.ps">Available
+on line</A>. </DD>
+
+<P><A NAME="Etzi-Gold-Weld-94"></A></P>
+
+<DT><B>Etzi-Gold-Weld-94</B> </DT>
+
+<DD>Oren Etzioni, Keith Golden, and Daniel Weld. Tractable Closed World
+Reasoning with Updates. <I>Proceedings of the Fourth International Conference
+on the Principles of Knowledge Representation and Reasoning (KR-94)</I>,
+1994. </DD>
+
+<P><A NAME="Etzi-92"></A></P>
+
+<DT><B>Etzi-92</B> </DT>
+
+<DD>Oren Etzioni, Steve Hanks, Daniel Weld, Denise Draper, Neal Lesh, and
+Mike Williamson. An approach to planning with incomplete information. <I>Proceedings
+of the Third International Conference on the Principles of Knowledge Representation
+and Reasoning (KR-92)</I>, 1992. </DD>
+
+<P><A NAME="Etzi-Weld-94"></A></P>
+
+<DT><B>Etzi-Weld-94</B> </DT>
+
+<DD>Oren Etzioni and Daniel Weld. A Softbot-Based Interface to the Internet.
+<I>CACM</I>, 37(7), 1994. </DD>
+
+<P><A NAME="Farq-95"></A></P>
+
+<DT><B>Farq-95</B> </DT>
+
+<DD>Adam Farquhar, Angela Dappert, Richard Fikes, and Wanda Pratt. Integrating
+information sources using context logic. In <I>Proc. of AAAI Spring Symposium
+on Information Gathering form Heterogeneous Distributed Environments</I>,
+1995. </DD>
+
+<P><A NAME="Fike-96"></A></P>
+
+<DT><B>Fike-96</B> </DT>
+
+<DD>Richard Fikes, Adam Farquhar, and Wanda Pratt. Information brokers:
+Gathering information from heterogeneous information sources. In <I>Proc.
+of the Ninth Florida Artificial Intelligence Research Symposium (FLAIRS'96)</I>,
+1996. </DD>
+
+<P><A NAME="Gedd-96"></A></P>
+
+<DT><B>Gedd-96</B> </DT>
+
+<DD>Donald F. Geddis, Michael R. Genesereth, and Arthur M. Keller. Infomaster
+and Information Integration. In <I>Proceedings of WWW5 Workshop on Artificial
+Intelligence-based tools to help W3 users</I>, 1996. </DD>
+
+<P><A NAME="Goan-96"></A></P>
+
+<DT><B>Goan-96</B> </DT>
+
+<DD>Terrance Goan, Nels Benson, and Oren Etzioni. A grammar inference algorithm
+for the World Wide Web. In <I>Proc. of AAAI Spring Symposium on Machine
+Learning in Information Access</I>, 1996. </DD>
+
+<P><A NAME="Konop-95"></A></P>
+
+<DT><B>Konop-95</B> </DT>
+
+<DD>D. Konopnicki and O. Shmueli. W3QS: A query system for the World Wide
+Web. In <I>Proceedings of the Twentyfirst International Conference on Very
+Large Data Bases (VLDB-95)</I>, pages 54--65, 1995. </DD>
+
+<P><A NAME="Krul-Burk-96"></A></P>
+
+<DT><B>Krul-Burk-96</B> </DT>
+
+<DD>Bruce Krulwich and Chad Burkey. The ContactFinder agent: Answering
+bulletin board questions with referrals. In <I>Proceedings of the Thirteenth
+National Conference on Artificial Intelligence (AAAI-96)</I>, 1996. </DD>
+
+<P><A NAME="Laks-96"></A></P>
+
+<DT><B>Laks-96</B> </DT>
+
+<DD>L. Lakshmanan, F. Sadri, and I. N. Subramanian. A declarative language
+for querying and resctructuring the Web. In <I>Proc. of 6th International
+Workshop on Research Issue in Data Engineering (RIDE-96)</I>, 1996. </DD>
+
+<P><A NAME="Levy-Raja-Ordi-96"></A></P>
+
+<DT><B>Levy-Raja-Ordi-96</B> </DT>
+
+<DD>A. Y. Levy, A. Rajaraman, and J. J. Ordille. Querying-Answering Algorithms
+for Information Agents. In <I>Proceedings of the Thirteenth National Conference
+on Artificial Intelligence (AAAI-96)</I>, 1996. </DD>
+
+<P><A NAME="Lieb-95"></A></P>
+
+<DT><B>Lieb-95</B> </DT>
+
+<DD>Henry Lieberman. Letizia: an Agent that assist Web Browsing. In <I>Proceedings
+of the Fourteenth International Joint Conference on Artificial Intelligence
+(IJCAI-95)</I>, 1995. </DD>
+
+<P><A NAME="Mena-96"></A></P>
+
+<DT><B>Mena-96</B> </DT>
+
+<DD>E. Mena, V. Kashyap, A. Sheth, and A. Illarramendi. OBSERVER: An approach
+for query processing in global information systems based on interoperation
+across pre-existing ontologies. In <I>Proceedings of the Conference on
+Cooperative Information Systems</I>, 1996. </DD>
+
+<P><A NAME="Mend-96"></A></P>
+
+<DT><B>Mend-96</B> </DT>
+
+<DD>A. Mendelzon, G. A. Mihaila, and T. Milo. Querying the World Wide Web.
+In <I>Proc. of PDIS'96, 1996. <A HREF="ftp://db.toronto.edu/pub/papers/websql.ps">Available
+on line</A>. </I></DD>
+
+<P><A NAME="Perk-Door-96"></A></P>
+
+<DT><I><B>Perk-Door-96</B> </I></DT>
+
+<DD><I>Mike Perkowitz, Robert B. Doorebons, Oren Etzioni, and Daniel S.
+Weld. Learning to understand information on the Internet: an example-based
+approach. Journal of Intelligent Information Systems, 1996. </I></DD>
+
+</BODY>
+</HTML>

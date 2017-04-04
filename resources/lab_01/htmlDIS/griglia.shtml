@@ -1,0 +1,76 @@
+<!doctype html public "-//w3c//dtd html 4.0 transitional//en">
+<html>
+<head>
+<link href="java.css" rel="stylesheet" type="text/css">
+<title>Disegna una griglia</title>
+</head>
+
+<body>
+
+<h2>Disegna una griglia</h2>
+
+Si vuole disegnare una griglia, ossia un quadrato suddiviso
+in altri quadrati pi&ugrave; piccoli, tutti della stessa
+dimensione.<p>
+
+La istruzione di stampa della linea in questo caso &egrave;
+sufficente. Si tratta infatti di disegnare una serie di 
+linee verticali e una serie di linee orizzontali.
+Prendiamo per esempio le linee verticali. Supponiamo che la
+dimensione (larghezza e altezza) totale della griglia sia
+200, e che i quadratini devono avere lato 10. Allora, le
+linee verticali sono fatte come nel disegno, in cui sono
+riportate anche le coordinate dei punti estremi di ogni
+linea.<p>
+
+<center>
+<img src="grigliaverticali.jpg">
+</center>
+
+A parole: la prima linea va da (0,0) a (0,200). La seconda
+linea va da (10,0) a (10,200), la terza da (20,0) a (20,200).
+A questo punto &egrave; chiaro che occorre disegnare tutte
+le linee da (x,0) a (x,200), in cui x parte da 0 e arriva
+a 200, con un incremento di 10 a ogni passo.<p>
+
+Il programma completo
+<a href="Griglia.java">Griglia.java</a>
+viene realizzato usando un ciclo per disegnare le linee
+verticali, e un altro ciclo per disegnare le linee
+orizzontali.<p>
+
+<pre>
+/*
+  Disegna una griglia.
+*/
+
+import java.awt.*;
+
+public class Griglia extends java.applet.Applet {
+  public void paint(Graphics g) {
+    int x,y;
+
+    /* disegna le linee verticali */
+    for(x=0; x<=200; x=x+10) {
+      g.drawLine(x, 0, x, 200);
+    }
+
+    /* disegna le linee orizzontali */
+    for(y=0; y<=200; y=y+10) {
+      g.drawLine(0, y, 200, y);
+    }
+  }
+}
+
+</pre>
+
+Quando si esegue il programma, si ottiene il seguente
+grafico.<p>
+
+<center>
+<img src="Griglia.gif">
+</center>
+
+</body>
+</html>
+

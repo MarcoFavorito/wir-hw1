@@ -1,0 +1,559 @@
+<html>
+<head>
+<title>Un esercizio sugli accessi</title>
+      <link rel="top" href="../lezioni.html">
+      <link rel="up" href="../lezioni.html">
+      <link rel="contents" href="../lezioni.html">
+      <link rel="previous" href="../accesso/accesso.html">
+      <link rel="next" href="../calco/calco.html">
+</head>
+
+<body>
+
+<h1>Un esercizio sugli accessi</h1>
+
+<p>
+Esercizio
+</p>
+
+<hr>
+
+
+<h4>Testo</h4>
+
+<p>
+Definire una classe con incapsulamento che
+rappresenta i dati di uno studente:
+</p>
+
+<ul>
+<li>nome
+<li>data di nascita (stringa)
+<li>numero esami (intero)
+<li>media (reale)
+
+</ul>
+
+<p>
+Definire un metodo <b>statico</b> che calcola
+come si modifica una media di interi quando viene
+aggiunto un nuovo intero. Sono dati: la media
+attuale, il numero di interi, il nuovo intero.
+</p>
+
+<p>
+La classe deve essere incapsulata.
+</p>
+
+<p>
+Definire i costruttori, seguendo i vincoli
+riportati qui sotto.
+</p>
+
+<p>
+Si implementi la classe in modo tale che
+non sia possibile:
+</p>
+
+<ul>
+<li>creare un oggetto senza nome e data di nascita
+
+<li>creare un oggetto con media ma senza numero di
+esami sostenuti e viceversa
+
+<li>cambiare il nome o la data di nascita
+
+<li>modificare solo la media o solo il numero
+di esami sostenuti senza modificare l'altro
+
+</ul>
+
+<p>
+Definire il metodo statico che ritorna un
+oggetto studente i cui dati vengono letti
+da tastiera.
+</p>
+
+<hr>
+
+
+<h4>Come affrontare un problema complesso</h4>
+
+<p>
+Si procede un passo per volta.
+</p>
+
+<p>
+Intanto: la classe ha componenti e metodi.
+</p>
+
+<hr>
+
+
+<h4>Componenti</h4>
+
+<p>
+Sono dati nel testo:
+</p>
+
+<pre>
+class Studente {
+  String nome;
+  String data;
+  int esami;
+  double media;
+
+  // metodi
+}
+</pre>
+
+<p>
+Incapsulamento: dopo.
+</p>
+
+<hr>
+
+
+<h4>Il metodo statico</h4>
+
+<p>
+Intestazione del metodo:
+</p>
+
+<pre>
+static double nuovaMedia(double media, int numero, int nuovo) {
+  ...
+}
+</pre>
+  
+<hr>
+
+
+<h4>Il metodo</h4>
+
+<p>
+Facendo <tt>media*numero</tt> ottengo la somma.
+</p>
+
+<p>
+Se faccio <tt>somma+nuovo/(numero+1)</tt>
+ottengo la nuova media.
+</p>
+
+<pre>
+class Studente {
+  String nome;
+  String data;
+  int esami;
+  double media;
+
+  static double nuovaMedia(double media, int numero, int nuovo) {
+    double somma=media*numero;
+    return (somma+nuovo)/(numero+1);
+  }
+
+  // altri metodi
+}
+</pre>
+
+<p>
+Attenzione: si tratta di una valutazione
+approssimata!
+</p>
+
+<hr>
+
+
+<h4>Incapsulamento</h4>
+
+<p>
+L'incapsulamento si fa al contrario:
+</p>
+
+<ol>
+
+<li>dichiaro tutto privato
+
+<li>implemento solo i metodi che realizzano
+un accesso consentito
+
+</ol>
+
+<p>
+Prima di implementare, occorre vedere cosa
+&egrave; permesso fare.
+</p>
+
+<hr>
+
+
+<h4>I metodi <tt>get</tt></h4>
+
+<p>
+Se non c'&egrave; scritto niente, tutte le
+componenti sono accessibili in lettura.
+</p>
+
+<pre>
+class Studente {
+  String nome;
+  String data;
+  int esami;
+  double media;
+
+  // metodo nuovaMedia 
+
+  String getNome() {
+    return this.nome;
+  }
+
+  String getData() {
+    return this.data;
+  }
+
+  int getEsami() {
+    return this.esami;
+  }
+
+  double getMedia() {
+    return this.media;
+  }
+}
+</pre>
+
+<hr>
+
+
+<h4>Costruttori</h4>
+
+<p>
+I costruttori sono metodi che scrivono un
+valore nelle componenti quando gli oggetti
+vengono creati
+</p>
+
+<p>
+Quali costruttori creare?
+</p>
+
+<p>
+Di solito, ci sono tutte le possibilit&agrave;:
+</p>
+
+<pre>
+Studente()
+Studente(String nome)
+Studente(String data)
+Studente(String nome, String data)
+Studente(int esami)
+...
+</pre>
+
+<p>
+Nel nostro caso:
+</p>
+
+<ul>
+
+<li>non sono ammessi solo i costruttori che
+non danno un valore iniziale a <tt>nome</tt>
+ed <tt>data</tt>
+
+<li>non sono ammessi i costruttori con
+<tt>esami</tt> ma senza <tt>media</tt> e
+viceversa.
+
+</ul>
+
+<p>
+Quindi, sono ammessi:
+</p>
+
+<ul>
+
+<li>solo i costruttori con <tt>nome</tt>
+ed <tt>esami</tt>
+
+<li>solo quelli con <tt>media</tt> ed
+<tt>esami</tt>, oppure con nessuno dei
+due
+
+</ul>
+
+<p>
+Quindi, restano solo:
+</p>
+
+<pre>
+  Studente(String nome, String data)
+  Studente(String nome, String data, int esami, int media)
+</pre>
+
+<hr>
+
+
+<h4>Implementazione dei costruttori</h4>
+
+<p>
+Solito modo:
+</p>
+
+<pre>
+class Studente {
+  String nome;
+  String data;
+  int esami;
+  double media;
+
+  Studente(String nome, String data) {
+    this.nome=nome;
+    this.data=data;
+  }
+
+  Studente(String nome, String data, int esami, double media) {
+    this.nome=nome;
+    this.data=data;
+    this.esami=esami;
+    this.media=media;
+  }
+
+  // altri metodi
+}
+</pre>
+
+<p>
+Di solito, i costruttori si mettono prima
+degli altri metodi
+</p>
+
+<hr>
+
+
+<h4>Versione con controllo</h4>
+
+<p>
+Controllo che <tt>nome</tt> e <tt>data</tt>
+non siano <tt>null</tt>:
+</p>
+
+<pre>
+class Studente {
+  String nome;
+  String data;
+  int esami;
+  double media;
+
+  Studente(String nome, String data) {
+    if( (this.nome==null)||(this.data==null) ) {
+      // errore
+    }
+
+    this.nome=nome;
+    this.data=data;
+  }
+
+  Studente(String nome, String data, int esami, int media) {
+    if( (this.nome==null)||(this.data==null) ) {
+      // errore
+    }
+
+    this.nome=nome;
+    this.data=data;
+    this.esami=esami;
+    this.media=media;
+  }
+
+  // altri metodi
+}
+</pre>
+
+<hr>
+
+
+<h4>Metodi di scrittura</h4>
+
+<p>
+Vincoli:
+</p>
+
+<ul>
+
+<li>non si possono modificare nome e data
+
+<li>se si modifica la media si deve modificare
+anche il numero di esami e viceversa
+
+</ul>
+
+<p>
+Quindi:
+</p>
+
+<ul>
+
+<li>non ho i metodi </tt>setNome</tt> e
+<tt>setData</tt>
+
+<li>non ho i metodi <tt>setEsami</tt> e
+<tt>setMedia</tt>, ma un unico metodo
+<tt>setEsamiMedia</tt>
+
+</ul>
+
+<hr>
+
+
+<h4>Implementazione del metodo <tt>set</tt></h4>
+
+<p>
+Come al solito:
+</p>
+
+<pre>
+class Studente {
+  String nome;
+  String data;
+  int esami;
+  double media;
+
+  // altri metodi
+
+  void setEsamiMedia(int esami, double media) {
+    this.esami=esami;
+    this.media=media;
+  }
+}
+</pre>
+
+<hr>
+
+
+<h4>Cambiare <tt>nome</tt> ed <tt>esame</tt></h4>
+
+<pre>
+  Studente s=new Studente("Pippo", "12/2/1938");
+
+  s=new Studente("Topolino", "1/1/1930");
+</pre>
+
+<p>
+Sembra che sia stato cambiato l'oggetto.
+</p>
+
+<p>
+In realt&agrave; nessuno oggetto &egrave; stato
+modificato.
+</p>
+
+<p>
+&Egrave; stato creato un nuovo oggetto, il cui
+indirizzo &egrave; stato messo nella variabile.
+</p>
+
+<p>
+Il vincolo &egrave; soddisfatto.
+</p>
+
+<hr>
+
+<h4>L'altro metodo statico</h4>
+
+<p>
+Leggo i dati da tastiera e restituisco
+un oggetto con dentro questi dati.
+</p>
+
+<p>
+L'oggetto non va passato come parametro
+</p>
+
+<p>
+Il metodo crea l'oggetto
+</p>
+
+<hr>
+
+
+<h4>Implementazione del metodo</h4>
+
+<p>
+Come al solito: leggo un dato per
+volta, e lo converto se serve.
+</p>
+
+<pre>
+import javax.swing.*;
+
+class Studente {
+  String nome;
+  String data;
+  int esami;
+  double media;
+
+  // altri metodi
+
+  static Studente readKb() {
+    String nome=JOptionPane.showInputDialog("Scrivi il nome");
+    String data=JOptionPane.showInputDialog("Scrivi la data di nascita");
+
+    String s;
+    s=JOptionPane.showInputDialog("Scrivi il numero di esami");
+    int esami=Integer.parseInt(s);
+
+    s=JOptionPane.showInputDialog("Scrivi la media");
+    double media=Double.parseDouble(s);
+
+    return (new Studente(nome, data, esami, media));
+  }
+}
+</pre>
+
+<hr>
+
+
+<h4>Programma di prova</h4>
+
+<p>
+Con BlueJ si possono direttamente creare
+gli oggetti, oppure invocare i metodi.
+</p>
+
+<p>
+Nota: quando un metodo ritorna un oggetto,
+se lo si vuole salvare, evidenziare la
+riga <tt>result= &lt;object referece&gt;</tt>,
+e fare <tt>get</tt>
+</p>
+
+<p>
+Si pu&ograve; comunque scrivere un programma
+di prova.
+</p>
+
+<pre>
+public class ProvaStudente
+{
+  public static void main(String args[]) {
+    Studente s;
+    s=new Studente("Pippo", "12/3/1939");
+    
+    Studente t;
+    t=new Studente("Topolino", "12/2/1943", 12, 19.2);
+    
+    System.out.println(s.getNome());
+    
+    s=Studente.readKb();
+    
+    System.out.println(s.getNome());
+  }
+}
+</pre>
+
+<p>
+Scrivere altre invocazioni di metodo.
+</p>
+
+</body>
+</html>
+
+

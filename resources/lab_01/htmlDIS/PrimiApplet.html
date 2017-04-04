@@ -1,0 +1,98 @@
+<!doctype html public "-//w3c//dtd html 4.0 transitional//en">
+<html>
+<head>
+<link href="java.css" rel="stylesheet" type="text/css">
+<title>Java</title>
+</head>
+
+<body>
+
+
+<h1>Primi applet</h1>
+
+<p>
+
+
+<h2>Applet: struttura generale</h2>
+
+I programmi Java visti fino ad ora interagivano con l'utente
+solo attraverso la finestra di testo. Gli <i>applet</i> sono programmi in
+cui esiste una interazione grafica. Questi programmi hanno la
+possibilit&agrave; di aprire nuove finestre, disegnare punti,
+linee, e altre figure geometriche, di rilevare la posizione
+del cursore nella finestra, ecc.<p>
+
+La struttura di base di un applet &egrave; la seguente:<p>
+
+<pre>
+import java.awt.*;
+
+public class nomefile extends java.applet.Applet {
+  public void paint(Graphics g) {
+    ...
+  }
+}
+</pre>
+
+Dal confronto con la struttura di un programma Java, emergono
+le seguenti differenze:<p>
+
+<ul>
+
+<li>c'&egrave; la linea <tt>import java.awt.*;</tt>
+prima di tutto
+
+<li>al posto di <tt>class nomefile</tt> ora c'&egrave;
+<tt>public class nomefile extends java.applet.Applet</tt>,
+ossia c'&egrave; la parola <tt>public</tt> prima e le
+due parole <tt>extends java.applet.Applet</tt> dopo;
+
+<li>la linea <tt>public static void main(...)</tt>
+&egrave; stata sostituita dalla linea
+<tt>public void paint(Graphics g) {</tt>
+
+</ul>
+
+Per il resto, gli applet sono molto simili ai programmi.
+Si possono fare pi&ugrave; o meno le stesse cose. Una
+eccezione &egrave; la funzione di stampa su schermo
+<tt>System.out.println</tt> che non si usa negli applet.<p>
+
+</body>
+
+
+
+<p>
+
+
+<h2>Esecuzione applet</h2>
+
+<p>
+Per far funzionare un applet occorre metterlo in una
+pagina html. Il modo pi&ugrave; facile &egrave; creare
+un file <tt>nomefile.html</tt> di questo tipo:
+
+<pre>
+&lt;html>
+&lt;body>
+&lt;applet code="nomefile.class" width=500 height=500>
+&lt;/applet>
+&lt;/body>
+&lt;/html>
+</pre>
+
+<p>
+dove <tt>nomefile.class</tt> &egrave; chiaramente il nome del
+file compilato, ossia quello creato da <tt>javac</tt>.<p>
+
+Una volta prodotto questo file, si salva con il nome
+<tt>nomefile.html</tt>. Per poter eseguire l'applet,
+si esegue il comando <tt>appletviewer nomefile.html</tt>.<p>
+
+</body>
+
+
+</body>
+
+</body>
+</html>

@@ -1,0 +1,281 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML><HEAD><TITLE>Soluzione del 14-06-2002</TITLE>
+<META content="text/html; charset=windows-1252" http-equiv=Content-Type>
+<META content="MSHTML 5.00.2919.6307" name=GENERATOR></HEAD>
+<BODY>
+
+<CENTER>
+<H2>Appello del 14 giugno 2002 - Soluzione</H2>
+</CENTER>
+
+<H3>DOMANDA 1</H3>
+
+<P>Basandosi sulla specifica riportata sopra (vedi testo esame del 14 giugno 
+2002), realizzare i moduli per tipo astratto <I>Robot</I> e <I>Quadrupede</I> mediante due classi C++ 
+<TT>Robot</TT> e <TT>Quadrupede</TT>.</P>
+
+<H4>Soluzione</H4>
+
+<P>Si sceglie uno schema realizzativo con side effect senza condivisione di memoria.<BR>
+Si sceglie di dichiarare privati il costruttore di copia e l'operatore di assegnazione.</P>
+
+<PRE>
+
+//File Robot.h
+#ifndef ROBOT_H
+#define ROBOT_H
+
+class Robot
+{
+
+public:
+  Robot(int);
+  ~Robot();
+  int QuantiSottosistemi() const;
+  void InserisciScheda(int);
+  int QuanteSchede(int) const;
+  virtual double Costo() const=0;
+
+protected:
+  int num_sshw; //numero sottosistemi hardware.
+  int *vhw;     //puntatore per il vettore che contiene il numero di 
+                //schede per ogni sottosistema software.
+
+private:
+  Robot (const Robot&amp;);
+  Robot&amp; operator=(const Robot&amp;);
+};
+#endif
+//fine file Robot.h
+
+
+//File Robot.cpp
+#include "Robot.h"
+
+Robot::Robot(int n_sottosist)
+{
+  num_sshw = n_sottosist;
+  vhw = new int[n_sottosist];               
+  for(int i=0; i&lt;=n_sottosist-1; i++)    
+      vhw[i] = 0;
+}
+
+Robot::~Robot()
+{
+  delete[] vhw;
+}
+
+int Robot::QuantiSottosistemi() const
+{
+  return num_sshw;
+}
+
+void Robot::InserisciScheda(int sottosist)
+{
+  vhw[sottosist-1]++;
+}
+
+int Robot::QuanteSchede(int sottosist) const
+{
+  return vhw[sottosist-1];
+}
+
+//fine file Robot.cpp
+
+
+//File Quadrupede.h
+#ifndef QUADRUPEDE_H
+#define QUADRUPEDE_H
+#include "Robot.h"
+
+class Quadrupede: public Robot
+{
+  public:
+    Quadrupede(int n): Robot(n){};
+    double Costo() const;
+};
+#endif
+//fine file Quadrupede.h
+
+//File Quadrupede.cpp
+#include "Quadrupede.h"
+#include &ltmath.h&gt
+
+double Quadrupede::Costo() const
+{
+  double c=0;
+  for(int i=0; i&lt;=num_sshw-1; i++)
+    c += sqrt(vhw[i]*3);
+  c += num_sshw*12;
+  return c;
+}
+//fine file Quadrupede.cpp
+
+</PRE>
+
+<HR>
+
+<H3>DOMANDA 2</H3>
+<P>Realizzare una funzione <TT>C++</TT> esterna alla classe (e non 
+<TT>friend</TT>) che, dato un vettore <TT>v</TT> di puntatori ad oggetti della classe <TT>Robot</TT> ed il numero di componenti del vettore <TT>v</TT>, restituisca il rapporto fra numero medio di schede e numero medio di sottosistemi hardware dei robot rappresentati da <TT>v</TT>.</P>
+
+<H4>Soluzione</H4>
+
+<PRE>
+
+//File IndiceStatistico.cpp
+#include "Robot.h"
+
+float IndiceStatistico (Robot* v[], int dim)
+{
+  float sch_tot=0, med_sch, sshw_tot=0, med_sshw;
+  
+  for(int i=0; i&lt;=dim-1; i++)
+  {
+    sshw_tot += v[i]->QuantiSottosistemi();
+    for(int j=1; j&lt;=v[i]->QuantiSottosistemi(); j++)
+      sch_tot += v[i]->QuanteSchede(j);
+  }  
+
+  med_sch = sch_tot/dim;
+  med_sshw = sshw_tot/dim;
+  return med_sch/med_sshw; 
+}
+//fine file IndiceStatistico.cpp
+
+</PRE>
+<HR>
+
+<H4>Parte opzionale</H4>Non prevista dal testo, ma utile per la verifica del codice. 
+
+<PRE>
+
+//File Test.cpp
+#include "Robot.h"
+#include "Quadrupede.h"
+#include &ltIOSTREAM.H&gt
+
+extern float IndiceStatistico (Robot* [], int);
+
+void StampaRobot(Robot&amp; r) {
+  cout &lt;&lt; "Caratteristiche robot:" &lt;&lt; endl;
+  cout &lt;&lt; "Numero sottosistemi harwdare : "&lt;&lt; r.QuantiSottosistemi() &lt;&lt; endl;
+  for (int i = 1; i &lt;= r.QuantiSottosistemi(); i++)
+    cout &lt;&lt; "Il terminale " &lt;&lt; i &lt;&lt; " ha " &lt;&lt; r.QuanteSchede(i) &lt;&lt; " schede." &lt;&lt; endl;
+}
+
+void main() {
+  
+  Robot* vettRobot[5];
+  
+  for (int i = 0; i &lt;= 4; i++)
+  { 
+    vettRobot[i] = new Quadrupede(i+1);
+    
+    //viene inserita una scheda in tutti i terminali
+    for (int j = 1; j &lt;= i+1; j++)
+      vettRobot[i]->InserisciScheda(j); 
+  } 
+  
+  //vengono inserite alcune schede come dati di prova
+  vettRobot[2]->InserisciScheda(1);
+  vettRobot[2]->InserisciScheda(1);
+  vettRobot[3]->InserisciScheda(2);
+  vettRobot[4]->InserisciScheda(4);
+  vettRobot[0]->InserisciScheda(1);
+
+  for (i = 0; i &lt;= 4; i++)
+  {
+    cout &lt;&lt; "stampa il Robot" &lt;&lt; i &lt;&lt; endl;
+    StampaRobot(*vettRobot[i]);
+    cout &lt;&lt; "Il costo del Robot (Quadrupede) " &lt;&lt; i &lt;&lt; " e' " &lt;&lt; vettRobot[i]->Costo() &lt;&lt; endl;
+  }
+  cout &lt;&lt; "il rapporto fra il numero medio di schede ed il numero medio di sottosistemi hardware &egrave;" IndiceStatistico(vettRobot, 5) &lt;&lt; endl;
+
+}
+
+//fine file test.cpp
+
+</PRE>
+<HR>
+
+<H3>DOMANDA 3</H3>
+<P>Fornire la complessità di tempo e di spazio delle classi <TT>C++</TT> 
+fornite come risposta della Domanda 1. Fornire la complessità di 
+tempo e di spazio della funzione <TT>C++</TT> fornita come risposta della 
+Domanda 2. 
+
+
+<H4>Classe <TT>Robot</TT></H4>
+<P>Misura dell'input: numero di sottosistemi hardware, indicata 
+con <TT>n</TT></P>
+
+<H5><B>Complessità di tempo e di spazio</B></H5>
+<TABLE border=2>
+  <TBODY>
+  <TR>
+    <TD><B>Operazione</B></TD>
+    <TD><B>Complessità</B></TD></TR>
+  <TR>
+    <TD><TT>Robot(int)</TT></TD>
+    <TD><TT>O(n)</TT></TD></TR>
+  <TR>
+    <TD><TT>~Robot()</TT></TD>
+    <TD><TT>O(1)</TT></TD></TR>
+  <TR>
+    <TD><TT>QuantiSottosistemi()</TT></TD>
+    <TD><TT>O(1)</TT></TD></TR>
+  <TR>
+    <TD><TT>InserisciScheda(int)</TT></TD>
+    <TD><TT>O(1)</TT></TD></TR>
+  <TR>
+    <TD><TT>QuanteSchede(int)</TT></TD>
+    <TD><TT>O(1)</TT></TD></TR>
+  </TBODY>
+  </TABLE>
+
+<P>Notiamo che solo per il costruttore la complessità dipende dalla dimensione 
+dell'input, mentre in tutti gli altri casi è costante.</P>
+
+<H4>Classe <TT>Quadrupede</TT></H4>
+<P>Misura dell'input: numero di sottosistemi hardware, indicata 
+con <TT>n</TT>.</P>
+
+<H5><B>Complessità di tempo</B></H5>
+<TABLE border=2>
+  <TBODY>
+  <TR>
+    <TD><B>Operazione</B></TD>
+    <TD><B>Complessità</B></TD></TR>
+  <TR>
+    <TD><TT>Costo()</TT></TD>
+    <TD><TT>O(n)</TT></TD></TR>
+  </TBODY>
+  </TABLE>
+
+<H5><B>Complessità di spazio</B></H5>
+<TABLE border=2>
+  <TBODY>
+  <TR>
+    <TD><B>Operazione</B></TD>
+    <TD><B>Complessità</B></TD></TR>
+  <TR>
+    <TD><TT>Costo()</TT></TD>
+    <TD><TT>O(1)</TT></TD></TR>
+  </TBODY>
+  </TABLE>
+
+
+<P>Per le altre operazioni la complessit&agrave; &egrave; la stessa della sua classe base <TT>Robot</TT>.</P> 
+
+<H4>Funzione <TT>IndiceStatistico (const Robot&amp;[], int)
+</TT></H4>
+
+<P>Misura dell'input: numero robot coinvolti nella statistica (cio&egrave; numero di componenti del vettore) indicato con <TT>m</TT>, e numero massimo dei sottosistemi hardware presenti nei robot, indicato con <TT>n</TT>.</P>
+
+<P><B>Complessità di tempo</B>: <TT>O(m*n)</TT>; infatti, l'istruzione dominante <TT>sch_tot += v[i]->QuanteSchede(j)</TT> viene eseguita un numero di volte pari a <TT> n_1 + n_2 +...+ n_m &lt m * n</TT>, dove <TT>n_i</TT> indica il numero di sottosistemi hardware presenti nel robot iesimo, ed <TT>n</TT> indica il massimo fra i valori <TT>n_i</TT> per <TT>i=1,..,m</TT>. </P>
+ 
+<P><B>Complessità di spazio</B>: <TT>O(1)</TT>; notiamo che viene allocato un numero costante di variabli locali la cui dimensione non dipende dall'input.</P>
+
+</BODY>
+</HTML>

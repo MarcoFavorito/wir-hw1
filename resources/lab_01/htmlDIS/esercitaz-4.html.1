@@ -1,0 +1,113 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1">
+<META NAME="Generator" CONTENT="Microsoft Word 98">
+<TITLE>4&#170; Esercitazione in laboratorio (a.a. 1997/98)</TITLE>
+</HEAD>
+<BODY>
+
+<B><FONT FACE="Times"><P ALIGN="CENTER">Fondamenti di Informatica - Ingegneria per l'Ambiente e il Territorio - A.A. 97/98</P>
+<P ALIGN="CENTER"> - Quarta esercitazione in laboratorio - </P>
+</B>
+<P>Si consideri il seguente problema: dato un intero positivo <I>n</I>, riempire le <I>n</I><SUP>2</SUP> celle di una scacchiera <I>n</I> <FONT FACE="Symbol">&#180;</FONT>
+ <I>n</I> con i numeri 1, 2, &#133;, <I>n</I><SUP>2</SUP>, rispettando le due seguenti regole:</P>
+<OL>
+
+<LI>l&#146;intero 1 pu&ograve; essere posizionato in una cella arbitraria;</LI>
+<LI VALUE=1>se l&#146;intero <I>k</I> &egrave; posizionato nella cella (<I>i</I>,<I>j</I>) allora l&#146;intero <I>k</I>+1 pu&ograve; essere posizionato in una e solo una delle seguenti celle: (<I>i</I>,<I>j</I>+3), (<I>i</I>+2,<I>j</I>+2), (<I>i</I>+3,<I>j</I>), (<I>i</I>+2,<I>j</I>-2), (<I>i</I>,<I>j</I>-3), (<I>i</I>-2,<I>j</I>-2), (<I>i</I>-3,<I>j</I>), (<I>i</I>-2,<I>j</I>+2).</LI></OL>
+
+<P>Un esempio &egrave; il seguente, per <I>n</I> = 6.</P>
+</FONT>
+<P ALIGN="CENTER"><CENTER><TABLE BORDER CELLSPACING=1 CELLPADDING=3 WIDTH=157>
+<TR><TD WIDTH="17%" VALIGN="TOP">
+<FONT FACE="Times"><P ALIGN="CENTER">1</FONT></TD>
+<TD WIDTH="17%" VALIGN="TOP">
+<FONT FACE="Times"><P ALIGN="CENTER">21</FONT></TD>
+<TD WIDTH="17%" VALIGN="TOP">
+<FONT FACE="Times"><P ALIGN="CENTER">30</FONT></TD>
+<TD WIDTH="17%" VALIGN="TOP">
+<FONT FACE="Times"><P ALIGN="CENTER">2</FONT></TD>
+<TD WIDTH="17%" VALIGN="TOP">
+<FONT FACE="Times"><P ALIGN="CENTER">22</FONT></TD>
+<TD WIDTH="17%" VALIGN="TOP">
+<FONT FACE="Times"><P ALIGN="CENTER">29</FONT></TD>
+</TR>
+<TR><TD WIDTH="17%" VALIGN="TOP">
+<FONT FACE="Times"><P ALIGN="CENTER">35</FONT></TD>
+<TD WIDTH="17%" VALIGN="TOP">
+<FONT FACE="Times"><P ALIGN="CENTER">26</FONT></TD>
+<TD WIDTH="17%" VALIGN="TOP">
+<FONT FACE="Times"><P ALIGN="CENTER">18</FONT></TD>
+<TD WIDTH="17%" VALIGN="TOP">
+<FONT FACE="Times"><P ALIGN="CENTER">36</FONT></TD>
+<TD WIDTH="17%" VALIGN="TOP">
+<FONT FACE="Times"><P ALIGN="CENTER">25</FONT></TD>
+<TD WIDTH="17%" VALIGN="TOP">
+<FONT FACE="Times"><P ALIGN="CENTER">17</FONT></TD>
+</TR>
+<TR><TD WIDTH="17%" VALIGN="TOP">
+<FONT FACE="Times"><P ALIGN="CENTER">14</FONT></TD>
+<TD WIDTH="17%" VALIGN="TOP">
+<FONT FACE="Times"><P ALIGN="CENTER">32</FONT></TD>
+<TD WIDTH="17%" VALIGN="TOP">
+<FONT FACE="Times"><P ALIGN="CENTER">23</FONT></TD>
+<TD WIDTH="17%" VALIGN="TOP">
+<FONT FACE="Times"><P ALIGN="CENTER">28</FONT></TD>
+<TD WIDTH="17%" VALIGN="TOP">
+<FONT FACE="Times"><P ALIGN="CENTER">31</FONT></TD>
+<TD WIDTH="17%" VALIGN="TOP">
+<FONT FACE="Times"><P ALIGN="CENTER">3</FONT></TD>
+</TR>
+<TR><TD WIDTH="17%" VALIGN="TOP">
+<FONT FACE="Times"><P ALIGN="CENTER">6</FONT></TD>
+<TD WIDTH="17%" VALIGN="TOP">
+<FONT FACE="Times"><P ALIGN="CENTER">20</FONT></TD>
+<TD WIDTH="17%" VALIGN="TOP">
+<FONT FACE="Times"><P ALIGN="CENTER">10</FONT></TD>
+<TD WIDTH="17%" VALIGN="TOP">
+<FONT FACE="Times"><P ALIGN="CENTER">7</FONT></TD>
+<TD WIDTH="17%" VALIGN="TOP">
+<FONT FACE="Times"><P ALIGN="CENTER">19</FONT></TD>
+<TD WIDTH="17%" VALIGN="TOP">
+<FONT FACE="Times"><P ALIGN="CENTER">11</FONT></TD>
+</TR>
+<TR><TD WIDTH="17%" VALIGN="TOP">
+<FONT FACE="Times"><P ALIGN="CENTER">34</FONT></TD>
+<TD WIDTH="17%" VALIGN="TOP">
+<FONT FACE="Times"><P ALIGN="CENTER">27</FONT></TD>
+<TD WIDTH="17%" VALIGN="TOP">
+<FONT FACE="Times"><P ALIGN="CENTER">15</FONT></TD>
+<TD WIDTH="17%" VALIGN="TOP">
+<FONT FACE="Times"><P ALIGN="CENTER">33</FONT></TD>
+<TD WIDTH="17%" VALIGN="TOP">
+<FONT FACE="Times"><P ALIGN="CENTER">24</FONT></TD>
+<TD WIDTH="17%" VALIGN="TOP">
+<FONT FACE="Times"><P ALIGN="CENTER">16</FONT></TD>
+</TR>
+<TR><TD WIDTH="17%" VALIGN="TOP">
+<FONT FACE="Times"><P ALIGN="CENTER">13</FONT></TD>
+<TD WIDTH="17%" VALIGN="TOP">
+<FONT FACE="Times"><P ALIGN="CENTER">8</FONT></TD>
+<TD WIDTH="17%" VALIGN="TOP">
+<FONT FACE="Times"><P ALIGN="CENTER">5</FONT></TD>
+<TD WIDTH="17%" VALIGN="TOP">
+<FONT FACE="Times"><P ALIGN="CENTER">12</FONT></TD>
+<TD WIDTH="17%" VALIGN="TOP">
+<FONT FACE="Times"><P ALIGN="CENTER">9</FONT></TD>
+<TD WIDTH="17%" VALIGN="TOP">
+<FONT FACE="Times"><P ALIGN="CENTER">4</FONT></TD>
+</TR>
+</TABLE>
+</CENTER></P>
+
+<FONT FACE="Times">
+<P>Ci&ograve; premesso:</P>
+
+<P>Esercizio 4.1</P>
+<P>Scrivere un programma in C, che, letti un intero positivo <I>n</I> e una matrice <I>A</I> di interi <FONT FACE="Symbol">&#206;</FONT>
+ {1,2,&#133;,<I> n</I><SUP>2</SUP>}, stabilisca se <I>A</I> costituisce una soluzione del problema proposto.</P>
+
+<P>Esercizio 4.2</P>
+<P>Scrivere un programma in C, che, letto un intero positivo <I>n</I>, calcoli e stampi una soluzione del problema proposto o, in assenza di soluzione, stampi un apposito messaggio.</P>
+</FONT></BODY>
+</HTML>

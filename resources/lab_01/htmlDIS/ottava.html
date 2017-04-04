@@ -1,0 +1,156 @@
+<!doctype html public "-//w3c//dtd html 4.0 transitional//en">
+<html>
+<head>
+   <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <meta name="Generator" content="Microsoft Word 98">
+   <meta name="GENERATOR" content="Mozilla/4.7 [en] (X11; I; SunOS 5.6 sun4u) [Netscape]">
+   <title>esercitazione15/3</title>
+</head>
+<body text="#000000" bgcolor="#FFFFFF" link="#0000EE" vlink="#551A8B" alink="#FF0000">
+&nbsp;
+<ol START=7>
+<center>
+<h1>
+<b><i><font face="New York"><font color="#FF0000"><font size=+4>Ottava
+esercitazione autoguidata</font></font></font></i></b></h1></center>
+</ol>
+<font face="Times"></font>
+<ol START=7>
+<center>
+<h2>
+<b><u><font face="New York"><font color="#FF0000"><font size=+3>Simulazione
+di (parte di) una prova di esonero</font></font></font></u></b></h2></center>
+</ol>
+
+<p><br>Per questa esercitazione bisogna disporre di un dischetto personale.
+Si tratta di un allenamento per l'esonero e pertanto ci si aspetta che
+ciascuno tenti di risolvere l'esercizio da solo.
+<p>La prova di esonero comporter&agrave; la soluzione di tre problemi.
+In questa esercitazione possiamo allenarci usando due problemi, divisi
+nelle seguenti sezioni.
+<p>Attivare il TurboPascal. Scegliere il comando <b>Dos Shell</b> dal men&ugrave;
+File.
+<p>Posizionarsi sulla directory di rete E:\PROGRAM\FOND\TEMPERIN\AUTOGUID\OTTAVA\.
+<p>opure <font color="#CC33CC">E:\program\fond\daloisi\AUTOGUID\OTTAVA
+</font>per gli elettronici
+<br>&nbsp;
+<p>Copiare sul dischetto, nella directory "radice" A:\, i file contenuti
+in questa directory.
+<p>Posizionarsi sul driver del dischetto (A:) e tornare al TurboPascal,
+inviando il comando EXIT.
+<br>&nbsp;
+<br>&nbsp;
+<h1>
+<i><font color="#3366FF">Primo problema</font></i></h1>
+Ho detto di posizionarsi su A: prima di rientrare in turbopascal.
+<br><b><font color="#3366FF"><font size=+1></font></font></b>&nbsp;
+<br><b><font color="#3366FF"><font size=+1></font></font></b>&nbsp;<b><font color="#3366FF"><font size=+1></font></font></b>
+<p><b><font color="#3366FF"><font size=+1>ESO1: File di interesse per questo
+problema</font></font></b>
+<p>Il file ESO1.PAS contiene un programma <b>quasi </b>completo che manipola
+una matrice e un vettore.
+<p>Il file SOL1.PAS &egrave; attualmente vuoto e dovr&agrave; contenere
+la soluzione del problema (una procedura ESERCIZIO1)
+<p>I file INPUT<b>1</b>.1,input<b>1</b>.2, INPUT<b>1</b>.3, INPUT<b>1</b>.4
+contengono dati di prova per testare il programma (e la procedura).
+<p>Il file SOLUZ8/ESOL1.PAS contiene unapossibile soluzione al problema
+(cio&egrave; una possibile procedura ESERCIZIO1).
+<br>Si presume che non venga visto fino alla fine ....
+<p>Il programma in ESO1.PAS contiene le dichiarazioni per le costanti N
+ed M e per i tipi
+<br><b></b>&nbsp;
+<blockquote><b>Type</b> MATRICE =<b> array</b>[1..N,1..M] <b>of </b>integer
+<p><b>Type </b>VETTORE = <b>array</b>[1..N] <b>of i</b>nteger;</blockquote>
+<font color="#3366FF"><font size=+1></font></font>
+<p><br><b><font color="#3366FF"><font size=+1>Richieste dell'esercizio</font></font></b>
+<br>&nbsp;
+<p>Bisogna scrivere nel file SOL1.PAS la procedura ESERCIZIO1 che, ricevendo
+per parametri una matrice di tipi MATRICE e un array di tipo VETTORE riempia
+il vettore in modo che il suo elemento i-esimo contenga la somma degli
+elementi della riga i-esima della matrice.
+<br>&nbsp;
+<p><b><font color="#3366FF"><font size=+1>Esecuzione dell'esercizio</font></font></b><b></b>
+<p>&Egrave; bene dare un'occhiata al contenuto del file ESO2.PAS. Per la
+soluzione dell'esercizio bisogner&agrave; dichiarare opportunamente la
+funzioneESERCIZIO2 nel file SOL2.PAS. Questo file viene automaticamente
+incluso nel programma, che cos&igrave; pu&ograve; usare la procedura.
+<p><b>Attenzione</b> a <b>non modificare il programma in ESO2.PAS</b>.
+Il file ESO2.PAS deve rimanere esattamente com'&egrave;.
+<p>Le uniche modifiche ammesse sono quelle al file SOL2.PAS. Non mettete
+le mani altrove!
+<p>Una volta scritta la procedura nel file SOL1.PAS, trasferirsi su ESO1.PAS,
+compilare e fare le esecuzioni di prova.
+<p>Ad ogni esecuzione il programma chiede l'immissione di un nome di file
+(uno dei file di dati di prova input1.k, oppure un file costruito personalmente
+&Ouml;), riempie la matrice mat con i dati in esso contenuti, chiama la
+procedura ESERCIZIO1 e poi stampa il contenuto del vettore vet.
+<p>Idealmente, dopo aver testato il programma e visto che la procedura
+prodotta funziona bene, si passa al successivo esercizio. Il lavoro conservato
+in SOL1.PAS &egrave; pronto per la correzione.
+<br>&nbsp;
+<ul START=7>
+<ol>&nbsp;</ol>
+</ul>
+<b><font face="Helvetica"><font color="#3366FF"><font size=+1>ESO2: Secondo
+problema</font></font></font></b><b><font face="Times"><font color="#3366FF"><font size=+1></font></font></font></b>
+<p><b><font face="Times"><font color="#3366FF"><font size=+1>File di interesse
+per questo problema</font></font></font></b><b><font color="#3366FF"><font size=+1></font></font></b>
+<p>Il file ESO2.PAS contiene un programma <b>quasi </b>completo che manipola
+una matrice.
+<p>Il file SOL2.PAS &egrave; attualmente vuoto e dovr&agrave; contenere
+la soluzione del problema (una funzione ESERCIZIO2)
+<p>I file INPUT<b>2</b>.1,input<b>2</b>.2, INPUT<b>2</b>.3, INPUT<b>2</b>.4
+contengono dati di prova per testare il programma (e la procedura).
+<p>Il file SOLUZ8/ESOL2.PAS contiene unapossibile soluzione al problema
+(cio&egrave; una possibile procedura ESERCIZIO2).
+<br>Si presume che non venga visto fino alla fine ....
+<p>Il programma in ESO2.PAS contiene le dichiarazioni per le costanti N
+ed M e per i tipi<b></b>
+<p><b>Type </b>TipoMATRICE = a<b>rray[</b>1..N,1..M] <b>of </b>integer
+<ul START=7>
+<ol>
+<ol>&nbsp;
+<br>&nbsp;</ol>
+</ol>
+</ul>
+<b><font face="Times"><font color="#3366FF"><font size=+1>Richieste dell'esercizio</font></font></font></b><b></b>
+<p><b>Bisogna scrivere nel file SOL2.PAS la funzione ESERCIZIO2 che, ricevendo
+una variabile file contenente almeno NxM numeri interi (in sequenza) e
+4 indici </b>h1, h2, k1, k2, riempie un array mat di tipo TIPOMATRICE con
+gli interi del file e restituisce il massimo valore contenuto nella sottomatrice
+avente come vertice superiore sinistro l'elemento
+mat[h1,k1] e come vertice
+inferiore destro l'elemento mat[h2,k2].
+<p><b>Attenzione</b>, il programma principale consegna alla funzione un
+file gi&agrave; "resettato" per la lettura, quindi la funzione non deve
+eseguire reset.
+<br><b><font face="Times"></font></b>&nbsp;<b><font face="Times"></font></b>
+<p><b><font face="Times"><font color="#3366FF"><font size=+1>Esecuzione
+dell'esercizio</font></font></font></b><b><font face="Times"><font color="#3366FF"><font size=+1></font></font></font></b>
+<p>&Egrave; bene dare un'occhiata al contenuto del file ESO2.PAS. Per la
+soluzione dell'esercizio bisogner&agrave; dichiarare opportunamente la
+proceduraESERCIZIO2 nel file SOL2.PAS. Questo file viene automaticamente
+incluso nel programma, che cos&igrave; pu&ograve; usare la procedura.
+<p>Attenzione a non modificare il programma in ESO2.PAS. Il file ESO2.PAS
+deve rimanere esattamente com'&egrave;. Le uniche modifiche ammesse sono
+quelle al file SOL2.PAS.
+<p>Una volta scritta la procedura nel file SOL2.PAS, trasferirsi su ESO2.PAS,
+compilare e fare le esecuzioni di prova.
+<p>Ad ogni esecuzione il programma
+<ul>
+<li>
+chiede l'immissione di un nome di file (uno dei file di dati di prova input2.k,
+oppure un file costruito personalmente &Ouml; ma prima di costruire nuovi
+file di input verificare come sono fatti quelli forniti: )</li>
+
+<li>
+legge dal file i quattro numeri che saranno gli indici h1, h2, k1, k2</li>
+
+<li>
+chiama la funzione ESERCIZIO2 passandole quel che deve passarle</li>
+</ul>
+Idealmente, dopo aver testato il programma e visto che la procedura prodotta
+funziona bene, si passa al successivo esercizio. Il lavoro conservato in
+SOL2.PAS &egrave; pronto per la correzione.
+</body>
+</html>

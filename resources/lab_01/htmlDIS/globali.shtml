@@ -1,0 +1,202 @@
+<!doctype html public "-//w3c//dtd html 4.0 transitional//en">
+<html>
+<head>
+<link href="java.css" rel="stylesheet" type="text/css">
+<title>Variabili globali</title>
+</head>
+
+<body>
+
+<h2>Variabili globali</h2>
+
+Vediamo come si pu&ograve; fare per evitare la cancellazione
+delle cose fatte da <tt>mouseDown</tt>. Prendiamo il programma
+<a href="CrociCerchiLinea.java">CrociCerchiLinea.java</a>
+e facciamo in modo che almeno l'ultimo
+punto non venga cancellato. Come si &egrave; detto, in effetti
+tutto viene cancellato quando la finestra &egrave; coperta.
+L'unica cosa che si pu&ograve; fare &egrave; <i>fare in modo
+che i disegni fatti da </i><tt>mouseDown</tt><i> vengano
+ridisegnati di nuovo quando la finestra appare di nuovo</i>.<p>
+
+Sappiamo che quando la finestra appare vengono eseguite le
+istruzioni dentro <tt>paint</tt>. Quindi, &egrave; necessario
+che le cose disegnate da <tt>mouseDown</tt> vengano disegnate
+di nuovo da <tt>paint</tt> quando la finestra diventa di
+nuovo visibile.<p>
+
+Iniziamo con un caso semplice: modifichiamo l'applet
+<a href="CrociCerchiLinea.java">CrociCerchiLinea.java</a>
+in modo che l'ultima figura disegnata da <tt>mouseDown</tt>
+sia permanente. Per fare questo &egrave; necessario
+memorizzare la posizione e forma di quest'ultima figura in
+modo tale che <tt>paint</tt> possa leggere questo valore,
+e ridisegnare la figura quando serve. Il meccanismo che
+abbiamo per memorizzare dati &egrave; quello delle variabili.
+Resta per&ograve; il problema di dove dichiarare queste
+variabili.<p>
+
+Supponiamo infatti di voler memorizzare le coordinate
+<tt>x</tt> e <tt>y</tt> dell'ultima posizione in cui il
+pulsante &egrave; stato premuto. Questi due numeri sono
+chiaramente sufficienti per disegnare di nuovo l'ultima
+figura fatta. Usiamo quindi due variabili
+<tt>xultimo</tt> e <tt>yultimo</tt>.
+Il problema &egrave; che la posizione dell'ultimo
+click viene memorizzata dentro <tt>mouseDown</tt>, ma
+questi dati sono necessari a <tt>paint</tt> per poter
+disegnare di nuovo l'ultima figura quando la finestra
+diventa nuovamente visibile. Se dichiariamo queste
+due variabili dentro <tt>mouseDown</tt>, la procedura
+<tt>paint</tt> non la pu&ograve; usare; se le dichiariamo
+dentro <tt>paint</tt> allora <tt>mouseDown</tt> non ci
+pu&ograve; scrivere; dichiarare queste due variabili in
+entrambe le procedure non serve, dal momento che variabili
+in procedure diverse sono diverse (corrispondono a zone
+di memoria diverse) anche se hanno lo stesso nome.<p>
+
+Il meccanismo che si usa per permettere ai due blocchi
+interni a <tt>mouseDown</tt> e <tt>paint</tt> di condividere
+delle variabili &egrave; quello di dichiararle come
+<i>variabili globali</i>. Una variabile &egrave; globale
+se viene dichiarata all'interno delle parentesi graffe
+di <tt>class ... { ... }</tt> ma prima delle procedure
+(cio&egrave; prima di <tt>public boolean mouseDown</tt>).
+Le variabili dichiarate in questo modo si dicono appunto
+globali, e sono variabili che tutte le procedure possono
+usare. Nel nostro caso, dichiarando una variabile globale
+<tt>xultimo</tt> di tipo intero, sia <tt>mouseDown</tt> che
+<tt>paint</tt> possono accedere ad essa. In questo modo,
+all'interno di <tt>mouseDown</tt> possiamo memorizzare in
+questa variabile la coordinata <tt>x</tt> dell'ultimo punto
+in cui il pulsante &egrave; stato premuto, mentre all'interno
+di <tt>paint</tt> possiamo utilizzare il valore che &egrave;
+stato memorizzato in precedenza.<p>
+
+Per poter ripetere l'ultima figura disegnata sono chiaramente
+necessari due valori, che corrispondono alle due coordinate
+dell'ultimo punto in cui il pulsante del mouse &egrave;
+stato premuto. Le seguenti dichiarazioni creano due variabili
+globali in cui &egrave; possibile memorizzare questi valori.<p>
+
+<pre>
+import java.awt.*;
+
+public class CrociCerchiLineaUltimo extends java.applet.Applet {
+
+  int xultimo=-4, yultimo=-4;
+
+        /* risponde al click del mouse */
+  public boolean mouseDown(Event e, int x, int y) {
+
+  ...
+</pre>
+
+All'interno di <tt>mouseDown</tt> occorre aggiungere delle
+istruzioni che memorizzano i valori di <tt>x</tt> e <tt>y</tt>
+nelle variabili <tt>xultimo</tt> e <tt>yultimo</tt>. Le due
+istruzioni necessarie sono chiaramente <tt>xultimo=x</tt>
+e <tt>yultimo=y</tt>.<p>
+
+L'ultima figura deve venire poi disegnata di nuovo da 
+<tt>paint</tt>. Per fare questo, aggiungiamo, all'interno
+di <tt>paint</tt>, le istruzioni che disegnano la figura
+appropriata alle coordinata <tt>xultimo</tt> e
+<tt>yultimo</tt>, che rappresentano le coordinate dell'ultimo
+punto in cui il pulsante del mouse &egrave; stato premuto.
+
+Il codice completo del programma
+<a href="CrociCerchiLineaUltimo.java">CrociCerchiLineaUltimo.java</a>
+&egrave; riportato qui sotto.
+
+<pre>
+/*
+  Disegna croci e cerchi, piu' la linea
+  che li separa.
+*/
+
+import java.awt.*;
+
+public class CrociCerchiLineaUltimo extends java.applet.Applet {
+
+  int xultimo=-4, yultimo=-4;
+
+	/* risponde al click del mouse */
+  public boolean mouseDown(Event e, int x, int y) {
+    Graphics g=getGraphics();
+
+    if( x<=200 ) {
+      g.drawLine(x,y-5,x,y+5);
+      g.drawLine(x-5,y,x+5,y);
+    }
+    else {
+      g.drawOval(x-5,y-5,10,10);
+    }
+
+    xultimo=x;
+    yultimo=y;
+
+    return true;
+  }
+
+	/* disegna la linea di separazione */
+  public void paint(Graphics g) {
+    g.drawLine(200,0,200,500);
+
+    if( xultimo<=200 ) {
+      g.drawLine(xultimo,yultimo-5,xultimo,yultimo+5);
+      g.drawLine(xultimo-5,yultimo,xultimo+5,yultimo);
+    }
+    else {
+      g.drawOval(xultimo-5,yultimo-5,10,10);
+    }
+
+  }
+}
+
+</pre>
+
+Va fatta una precisazione sul perch&egrave; le variabili
+<tt>xultimo</tt> e <tt>yultimo</tt> hanno valori iniziali
+-4. Si tratta di un espediente per evitare il disegno di
+una figura geometrica quando l'applet parte. Come si &egrave;
+detto, quello che sta dentro <tt>paint</tt> viene eseguito
+una prima volta, sempre, quando si esegue il programma (dopo
+che la finestra &egrave; stata creata). All'inizio il
+pulsante del mouse non &egrave; stato mai premuto, per cui
+le istruzioni di <tt>mouseDown</tt> non sono mai state
+eseguite. Quindi, le variabili <tt>xultimo</tt> e
+<tt>yultimo</tt> non contengono l'ultimo punto (semplicemente
+perch&egrave; non esiste un punto in cui il mouse &egrave;
+stato premuto).<p>
+
+Quando l'applet viene lanciato, si esegue la procedura
+<tt>paint</tt>. Questa disegna la linea verticale, e poi
+un cerchio o una croce. Dal momento che inizialmente le
+due variabili <tt>xultimo</tt> e <tt>yultimo</tt> valgono
+-4, la figura disegnata &egrave; fuori dall'area visibile.<p>
+
+Ogni volta che viene premuto il pulsante del mouse, viene
+disegnata una croce oppure un cerchio. Inoltre, i valori
+delle coordinate della posizione del cursore vengono salvate
+nelle variabilie <tt>xultimo</tt> e <tt>yultimo</tt>. Se
+si preme nuovamente il pulsante, si fa il nuovo disegno,
+e nelle variabili <tt>xultimo</tt> e <tt>yultimo</tt> ci si
+mettono le nuove coordinate. Quindi, queste variabili
+contengono sempre le coordinate dell'ultimo punto di click.
+Quando la finestra viene coperta e poi scoperta di nuovo,
+viene eseguita la procedura <tt>paint</tt>, che disegna di
+nuovo la linea verticale, e poi disegna una croce oppure
+un cerchio alle coordinate <tt>xultimo</tt> e
+<tt>yultimo</tt>. Il programma fa esattamente quello che era
+richiesto: se la finestra viene coperta e poi scoperta,
+l'ultima figura disegnata rimane.<p>
+
+<applet code="CrociCerchiLineaUltimo.class" width="500" height="500">
+</applet>
+
+
+
+</body>
+</html>
+

@@ -1,0 +1,97 @@
+<HTML><HEAD><TITLE>Knowledge Representation</TITLE></HEAD>
+    
+
+<BODY>
+
+ <H2>Knowledge Representation</H2>
+    The goal of this research is to study the foundations of a logical approach
+to structured knowledge representation languages, with regard to both the expressive  power  and  the  computational  properties  of  the  associated  reasoning
+techniques <A HREF="BLNPS94.html">[BLNPS94]</A>.<p>
+    The definition of knowledge bases by means of structured knowledge representation  languages  is  done  by  specifying  a  terminological  knowledge  base,
+
+
+where  concepts  are  defined,  along  with  an  assertional  knowledge  base,  where
+facts about individuals are stated in terms of these concepts.  After the studies
+of the complexity of reasoning on concept expressions, current research has focussed on instance checking (verifying whether an individual is an instance of
+a concept) and explicit representation of epistemic knowledge into a knowledge
+base.  A comprehensive overview of the results of this approach can be found
+<A HREF="Sch94a.html">[Sch94a]</A>.<p>
+    The question of whether instance checking can be solved by means of subsumption algorithms has been tackled in <A HREF="DLNS94.html">[DLNS94]</A>.  Different methods for the
+instance checking problem are shown and a complexity analysis of this problem
+is provided.  A major result is that there are cases where instance checking is
+inherently more difficult than subsumption.<p>
+    The issue has been further studied in <A HREF="Sch94b.html">[Sch94b]</A> where language constructors
+for the amalgamation of terminological and assertional knowledge bases have
+been considered.  In particular,  one of these attempts is based on letting the
+individuals to be referenced in the concept expressions by admitting a constructor for building a concept from a set of enumerated individuals.  In the cited
+paper the consequences of introducing this type of constructors in the concept
+description language are studied both in term of complete reasoning procedures
+and of computational complexity.  At the same time the possibility of refining
+the structure of the terminological knowledge base into schema and views has
+been studied in <A HREF="BDNS94.html">[BDNS94]</A>.  The terminological schemata play a role similar to
+that of a database schema, i.e. frame-like structures where typing information
+are introduced through primitive concepts and primitive roles.  On the other
+hand, views on the objects in the knowledge base are provided through defined
+concepts.  Language,  definitions,  semantics  and  computational  properties  are
+described for three case studies concerning implemented systems.<p>
+    The enhancement of concept languages with epistemic operators is investigated in <A HREF="DLNetal94.html">[DLNetal94]</A>.  The results of this work have a twofold importance.  From
+the point of view of epistemic logics, the contribution is the identification of an
+effective procedure for the problem of answering epistemic queries posed to a
+knowledge base defined in a highly expressive concept language.  From the point
+of view of concept languages, the most relevant aspect of the work is that several
+common features of existing knowledge representation systems are reconstructed
+in logic.  Epistemic operators provide a highly expressive query language, allow
+for the treatment of several database features, such as closed-world reasoning
+and integrity constraints and, finally, can give a formal characterization of some
+procedural mechanisms, such as trigger rules, usually considered in frame-based
+systems.<p>
+    The recently established correspondence between Description Logics (concept languages) and Propositional Dynamic Logics has brought to a fruitful relationship and migration of results between these two fields.  A general overview
+of main results, scientific and practical possibilities can be found in <A HREF="DGL94e.html">[DGL94e]</A><A HREF="DG95.html">[DG95]</A>.<p>
+
+
+    This correspondence has been the basis to introduce powerful Description
+Logics which do not correspond to any studied Propositional Dynamic Logic.<p>
+In particular decidability and complexity characterization have been established
+by <A HREF="DGL94a.html">[DGL94a]</A> for Description Logics, which allow for "functional restrictions",
+"qualified  number  restrictions",  "inverse  roles",  "assertions  on  concepts"  and
+"assertions on single objects".  In <A HREF="DGL94d.html">[DGL94d]</A> it is shown that n-ary relations can
+be correctly modeled in this setting.<p>
+    An enhanced Description Logic with constructs for specifying classes of aggregate  objects  is  introduced  in  <A HREF="DGL95b.html">[DGL95b]</A>,  where  decidability  and  computational properties are also established.  It is possible to define classes of tuples
+(n-ary relations), subclasses, sets and "key" attributes, in the spirit of object
+oriented models.  In addition, the logic contains a controlled form of "role value
+map".<p>
+    Semantical problems for the assignment of a meaning to a recursive concept
+definitions have been tackled in <A HREF="DGL94b.html">[DGL94b]</A>, by adopting a formalism where different semantics coexist.  The resulting Description Logic captures definitions of
+data structures such as lists, directed acyclic graphs, streams, etc.  Decidability
+and computational properties are derived by establishing a correspondence with
+the modal mu-calculus.<p>
+    Decidability and computational properties for Propositional Dynamic Logics
+which  allow  for  several  forms  of  program  determinism  have  been  studied  in
+<A HREF="DGL94c.html">[DGL94c]</A>.  In particular it is proven that the introduction of graded modalities
+makes the logic strictly more expressive than "Converse Deterministic PDL",
+but still decidable in deterministic exponential time.<p>
+    A  powerful  Propositional  Dynamic  Logics  for  reasoning  about  actions  (in
+the style of the "situation calculus") have been investigated in <A HREF="DGL95a.html">[DGL95a]</A>, thus
+providing  decidability  result  and  tight  computational  complexity  analysis.  A
+formalism is proposed that allows for boolean expressions denoting sets of primitive actions executed concurrently and also interdependencies between primitive
+actions as specialization or disjointness..<p>
+    Structured knowledge representation languages bear similarities to database
+models, and allow to enhance their expressive power <A HREF="Len94.html">[Len94]</A>.  A concept language, powerful enough to model frame systems, object-oriented database languages and semantic data models, is shown in <A HREF="CLN94.html">[CLN94]</A>. The high expressivity of
+the language (and the need for capturing reasoning in different contexts) forces
+to  distinguish  between  unrestricted  and  finite  model  reasoning.   It  is  shown
+that reasoning is decidable in both cases.  This is achieved by a correspondence
+with propositional dynamic logic for unrestricted model reasoning and by linear
+programming techniques for finite model reasoning.  The work is extended in
+<A HREF="CL94b.html">[CL94b]</A> where the data model is enhanced and a detailed complexity analysis is
+presented.  The new model expresses also disjointness and disjunction of classes
+and more general constraints on the connections that may exist between classes,
+without sacrificing decidability of reasoning with respect to finite models.  The
+complexity analysis provides tight upper and lower bounds for the general case,
+
+
+and singles out important practical cases where the decision procedure is efficient.<p>
+    The interaction between different types of constraints has been further analyzed for semantic data models in <A HREF="CL94c.html">[CL94c]</A>, namely ISA and cardinality constraints.  A  sound  and  complete  method  is  proposed  for  reasoning  effectively
+about a set of ISA and cardinality constraints to check either the satisfiability
+of a schema or whether a schema implies a given constraint.<p>
+
+</BODY></HTML>

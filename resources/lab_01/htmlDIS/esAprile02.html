@@ -1,0 +1,178 @@
+  <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN"
+           "http://www.w3.org/TR/REC-html40/loose.dtd">
+<HTML>
+<META NAME="GENERATOR" CONTENT="TtH 2.25">
+                                                                            
+<center>    <b>     
+<title>Universit</title>
+Universit&#224; di Roma ``La Sapienza'' - Facolt&#224; di Ingegneria<br>
+     Corso di Fondamenti di Informatica - A.A.2000-2001<br>
+     Corsi di Laurea: </b>Chimica, Elettrica, dei Materiali, Meccanica, Nuclere</b> 
+     (vecchio ordinamento)<br>
+    Appello del <b>19 aprile 2002</b> - 1<sup>a</sup> prova scritta<br>
+    <em>tempo a disposizione: 2 ore</em>
+  </center>
+<p>
+
+<H4>Problema 1 (18 punti)</H4>
+
+<p>
+Un'applicazione per il disegno bidimensionale consente all'utente
+di gestire insiemi di rettangoli <em>isotetici</em> (con i lati
+paralleli agli assi coordinati), definiti nel piano cartesiano.
+Per ciascun rettangolo risultano significative le seguenti
+informazioni, opportunamente rappresentate:
+
+<UL>
+<p>
+  
+<li> <em>dimensioni</em>, espresse mediante la lunghezza della base 
+  e dell'altezza (valori in virgola mobile);
+  
+<li> <em>posizione</em> nel piano, espressa dalle due coordinate sul 
+  piano  del vertice in basso a sinistra del rettangolo (valori in virgola
+  mobile);
+  
+<li> <em>colore</em> da usarsi per il tracciamento del bordo del 
+  rettangolo, espresso mediante un numero intero;
+  
+<li> <em>etichetta</em> associata al rettangolo, 
+  che l'applicazione visualizza al centro del rettangolo
+  stesso (stringa di non pi&#249; di 20 caratteri).
+</UL>
+<p>
+L'applicazione &#232; capace di gestire diversi gruppi di rettangoli 
+isotetici. 
+
+<p>
+Per ogni gruppo di rettangoli c'&#232; un file di testo ben determinato
+nel quale sono memorizzate le informazioni relative ai rettangoli di 
+quel gruppo. In questi file, le informazioni sul gruppo di rettangoli sono 
+memorizzate organizzandole in un opportuno formato (ad esempio: 
+``tutto di seguito'', oppure ``un dato per riga'', oppure ``i 
+dati di un rettangolo su una stessa riga'' etc...).
+Chiameremo <tt> rettangofile</tt> il tipo PASCAL dei file di 
+rettangoli.
+
+<p>
+In particolare, dato un <tt> rettangofile</tt>, l'applicazione 
+costruisce opportunamente la lista dei corrispondenti
+rettangoli (rappresentata mediante record e 
+puntatori).
+
+<p>
+Si richiede lo svolgimento dei seguenti punti.
+
+<p>
+
+<OL type="1">  
+<li>  Definire i tipi di dato PASCAL adeguati a risolvere i problemi di cui
+  ai successivi punti 2.&nbsp;e 3.
+  
+<p>
+  Tra l'altro, definire i tipi
+  
+<DL compact>
+<p>
+      <dt><b></b></dt>
+	<dd>- <tt> rettangofile</tt> per i file di rettangoli;
+      <dt><b></b></dt>
+	<dd>- <tt> rettangolista</tt> per le liste di rettangoli.
+  </DL>
+<p>
+    Inoltre definire esplicitamente e dettagliatamente, con un breve esempio,
+  il formato con il quale ci si 
+  aspetta che siano memorizzati i dati di 
+  un gruppo di rettangoli in un file di rettangoli.
+ 
+<p>
+  
+<li>  Scrivere una unit&#224; di sottoprogramma PASCAL <tt>ESERC2</tt> 
+  che, ricevendo il nome di un file di rettangoli,
+  costruisca e restituisca (eventualmente facendo uso di 
+  un opportuno parametro di output) 
+  la lista dei rettangoli specificati nel file.
+  
+<p>
+  La lista non deve rispettare un particolare criterio di ordinamento.
+
+<p>
+  
+<li>  Scrivere una  unit&#224; di sottoprogramma PASCAL <tt>ESERC3</tt> che, 
+      ricevendo una <tt> rettangolista</tt> r, un'etichetta e e 
+      un numero reale s, 
+      
+<OL type="a">
+<p>
+	  
+<li> elimini da r tutti i rettangoli aventi etichetta 
+	  differente da e e superficie strettamente maggiore di s;
+	  
+<li> restituisca
+	  (eventualmente facendo uso di un opportuno parametro di output)  
+	  il numero di rettangoli rimasti in r.
+      </OL>
+<p>
+  </OL>  
+<center>    <b>     Universit&#224; di Roma ``La Sapienza'' - Facolt&#224; di Ingegneria<br>
+     Corso di Fondamenti di Informatica - A.A.2000-2001<br>
+     Corsi di Laurea: </b>Chimica, Elettrica, dei Materiali, Meccanica, Nuclere</b> 
+     (vecchio ordinamento)<br>
+    Appello del <b>19 aprile 2002</b> - 2<sup>a</sup> prova scritta<br>
+    <em>tempo a disposizione: 1 ora</em>
+  </center>
+<p>
+
+<H4>Problema 2 (4 punti)</H4>
+Scegliere e descrivere due algoritmi di ricerca.
+Si vuole che i due algoritmi non abbiano la medesima
+complessit&#224; computazionale e lavorino su strutture dati differenti.
+Mostrare il funzionamento degli algoritmi selezionati, mediante 
+esempi non banali.
+
+<p>
+
+<H4>Problema 3 (4 punti)</H4>
+Con riferimento al linguaggio PASCAL, descrivere le regole mediante le 
+quali 
+viene gestito il passaggio dei parametri ad un sottoprogramma.
+
+<p>
+
+<H4>Problema 4 (4 punti)</H4>
+Scrivere un sottoprogramma FORTRAN, <tt>ESERC4</tt> che, 
+
+<UL>
+<p>
+    
+<li> ricevendo un array bidimensionale di interi MAT, un array 
+    monodimensionale ARR e quanti altri parametri si ritenga necessario,
+    
+<li> modifichi ARR in modo che 
+    
+<UL> 
+<p>
+       
+<li> per ogni i dispari possibile, la componente i-esima di ARR 
+       sia assegnata al massimo tra gli elementi della colonna i-esima 
+       di MAT;
+       
+<li> per ogni i pari possibile, la componente i-esima di ARR 
+       sia assegnata alla media calcolata tra gli elementi della riga 
+       i-esima di MAT;
+   </UL>
+<p>
+</UL><b>Facoltativamente</b> scrivere un programma FORTRAN che legga dal file 
+DATI.TXT i dati su una matrice di interi, usi il sottoprogramma
+<tt>ESERC4</tt> per riempire un array monodimensionale opportuno 
+e scarichi l'array nel file RES.TXT.
+
+<p>
+<font size="-1"><em>Per lo svolgimento degli orali, ove non siano disponibili 
+notizie durante lo scritto, vedere le date di convocazione sulla 
+pagina web del docente.</em></font>
+
+<p>
+
+<p><hr><small>File translated from T<sub><font size="-1">E</font></sub>X by <a href="http://hutchinson.belmont.ma.us/tth/">T<sub><font size="-1">T</font></sub>H</a>, version 2.25.<br>On 27 Apr 2002, 14:39.</small>
+</HTML>

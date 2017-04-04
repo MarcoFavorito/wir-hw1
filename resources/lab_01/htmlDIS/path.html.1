@@ -1,0 +1,103 @@
+<html>
+<head>
+<title>Il path</title>
+</head>
+
+<body>
+
+<h1>Il path</h1>
+
+<p>
+I file del computer sono suddivisi in cartelle:
+ogni cartella &egrave; semplicemente un contenitore
+in cui ci sono dei file.
+</p>
+
+<p>
+I comandi java e javac sono in effetti dei file
+loro stessi. Il comando path dice in quali
+cartelle andare a guardare per trovare i file
+che rappresentano i comandi.
+</p>
+
+<p>
+Se viene visualizzato il messaggio "comando
+non riconosciuto" quando si esegue javac, anche
+se l'installazione &egrave; stata fatta, questo
+pu&ograve; essere dovuto al fatto che il path
+non include la cartella in cui si trova il file.
+</p>
+
+<p>
+Cose da fare:
+</p>
+
+<ol>
+
+<li>Cercare il file <tt>javac.exe</tt> e prendere
+nota della cartella (directory) in cui si trova
+
+<li>Dal prompt dei comandi: lanciare il comando
+<tt>path</tt> e verificare se viene visualizzata
+anche la cartella in cui si trova <tt>javac.exe</tt>
+
+<li>In caso contrario, impostare il <tt>path</tt>
+in modo che includa questa cartella.
+
+</ol>
+
+<p>
+Il punto 3 si pu&ograve; fare in vari modi:
+</p>
+
+<dl>
+
+<dt>tutti i sistemi operativi Windows
+<dd>quando si apre una finestra di prompt dei
+comandi, dare<br/>
+<tt>path=%PATH%;c:\xxx</tt><br/>
+dove <tt>c:\xxx</tt> &egrave; il nome della
+cartella in cui si trova <tt>javac</tt>
+
+<dt>sistemi Windows 95 e simili
+<dd>editare il file <tt>autoexec.bat</tt>
+che si trova nella cartella <tt>c:\</tt>
+aggiungendo <i>alla fine del file</i> la
+linea<br/>
+<tt>path=%PATH%;c:\xxx</tt><br/>
+descritta sopra
+
+<dt>sistemi Windows NT e simili (2000, XP)
+<dd>Andare su
+Start-&gt;Pannello di controllo;
+fate click su Sistema, poi Avanzate,
+poi Variabili d'ambiente. Nel rettangolo di
+sotto vedete un elemento della lista in
+cui c'&egrave; scritto <tt>path</tt>:
+evidenziate, e fate click su Modifica.
+
+</dl>
+
+<p>
+Nei casi 2 e 3: controllate che la stringa del
+path sia una sequenza di cartelle separate dal
+punto e virgola. Controllate ed eventualmente
+aggiungete il nome della cartella dove sta
+javac.exe
+</p>
+
+<p>
+Se non si riesce a modificare il path,
+andare sull'help in linea
+(Start-&gt;Guida in linea
+oppure Start-&gt;Help) e cercare le parole
+chiave "variabili d'ambiente" oppure
+"modificare i valori delle variabili
+d'ambiente".
+</p>
+
+</dl>
+
+</body>
+</html>
+

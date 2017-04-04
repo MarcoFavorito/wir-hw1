@@ -1,0 +1,45 @@
+<HTML>  
+<HEAD>
+  <META NAME="GENERATOR" CONTENT="Adobe PageMill 3.0 Mac">
+  <TITLE>Query SQL -- 8 giugno 2000</TITLE>
+</HEAD>
+<BODY>
+
+<H3>Testo della domanda (4 punti) </H3>
+
+<P>Si consideri una tabella relazionale PubblicazioniEdicola con
+i seguenti attributi: </P>
+
+<UL>
+  <LI>Nome. Il nome della pubblicazione (ad es., il titolo di un
+  quotidiano o di una rivista ecc.) 
+  <LI>Editore. Il nome dell'editore della pubblicazione. 
+  <LI>Tipologia. `R' rivista, `Q' quotidiano, `M' monografia ecc.
+  <LI>PrezzoUnitario. Il prezzo (al pubblico) unitario della pubblicazione.
+</UL>
+
+<P>Scrivere una interrogazione SQL per determinare i nomi di tutti
+gli editori (in ordine alfabetico) che stampano quotidiani con
+prezzo al pubblico inferiore a Lit.&nbsp;2000. </P>
+
+<P><HR ALIGN=LEFT></P>
+
+<H3>Esempio di svolgimento</H3>
+
+<PRE>select distinct Editore
+from PubblicazioniEdicola
+where (Tipologia='Q') and (PrezzoUnitario&lt;2000)
+order by Editore asc</PRE>
+
+<P><HR ALIGN=LEFT></P>
+
+<H3>Commenti</H3>
+
+<P>L'interrogazione &egrave; particolarmente semplice. Da notare
+l'esigenza di inserire l'opzione <TT>distinct</TT> per evitare
+che editori di pi&ugrave; quotidiani di basso costo appaiano pi&ugrave;
+volte nel risultato. L'opzione <TT>asc</TT> &egrave; opzionale
+(se viene omessa si sottointende <TT>asc</TT>).
+
+</BODY>
+</HTML>

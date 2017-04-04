@@ -1,0 +1,168 @@
+<!DOCTYPE html PUBLIC "-//w3c//dtd html 4.0 transitional//en">
+<html>
+<head>
+<title>Tecniche di Programmazione -- Esercitazione</title>
+</head>
+
+<body>
+
+<center>
+  <p><B>Tecniche di Programmazione</B> <BR>
+    <B>Corso di Laurea in Ingegneria Informatica e Automatica</B></p>
+  <p><b>A.A. 2003/04</b></p>
+  <p><b>Alberi binari</b> </p>
+  </center>
+
+<hr>
+
+Facendo uso della rappresentazione collegata di alberi binari, si realizzino
+i seguenti metodi statici.
+
+<p>
+<b>1</b> 
+Realizzare un metodo statico pubblico che, 
+dati un intero <i>n</i> ed il riferimento alla radice di un albero binario 
+<i>alb</i> i cui nodi contengono interi, 
+restituisca il numero di occorrenze di interi minori di <i>n</i> in <i>alb</i>. 
+</p>
+
+<p>
+<b>2</b> Realizzare un metodo statico pubblico che, 
+ dato il riferimento alla radice di un albero binario <i>alb</i> i cui nodi contengono 
+reali negativi, restituisca il minimo valore reale in <i>alb</i> (oppure 0 se l'albero è vuoto). 
+</p>
+
+<p>
+<b>3</b> Realizzare un metodo statico pubblico che, dati una stringa <i>s</i> 
+ed il riferimento alla radice di un albero binario <i>alb</i> i cui nodi contengono stringhe, 
+restituisca <tt>true</tt> se <i>s</i> compare in <i>alb</i>, <tt>false</tt> altrimenti. 
+</p>
+
+
+<p>
+<b>4</b> Realizzare un metodo statico pubblico che, dati una stringa <i>s</i> 
+ed il riferimento alla radice di un albero binario <i>alb</i> i cui nodi contengono stringhe, 
+restituisca il numero di occorrenze di <i>s</i> in <i>alb</i>. 
+</p>
+
+
+<p>
+<b>5</b> Realizzare un metodo statico pubblico che, dato il riferimento alla radice di un albero 
+binario <i>alb</i> i cui nodi contengono interi, restituisca il numero di foglie la cui 
+informazione sia un numero positivo (maggiore di 0). 
+</p>
+
+<p>
+<b>6</b> Realizzare un metodo statico pubblico che, dato il riferimento alla radice di un albero 
+binario <i>alb</i>, 
+restituisca il numero di nodi che hanno esattamente un figlio diverso dall'albero vuoto.
+</p>
+
+<hr>
+
+<p><a href="soluzione/esAlbBin.java">Soluzioni</a></p>
+
+
+<hr>
+
+Facendo uso della rappresentazione collegata di alberi binari e di una delle seguenti
+implementazioni delle strutture dati Lista, Pila e Coda, si realizzino i seguenti metodi statici.
+<p>Le classi <tt>Lista</tt> <tt>Pila</tt> e <tt>Coda</tt> hanno la seguente interfaccia 
+(dove <tt>&lt;TYPE&gt;</tt>
+pu&ograve; essere sostituito dal tipo di interesse per il metodo).
+
+<blockquote>
+<pre>
+class Lista {
+   public Lista() 
+   public boolean empty() 
+   public &lt;TYPE&gt; car()
+   public Lista cons(&lt;TYPE&gt; x)
+   public Lista cdr()
+}
+
+class Pila {
+   public Pila() 
+   public boolean empty() 
+   public &lt;TYPE&gt; top()
+   public void push(&lt;TYPE&gt; x)
+   public void pop()
+}
+
+class Coda {
+   public Coda() 
+   public boolean empty() 
+   public &lt;TYPE&gt; primo()
+   public void inCoda(&lt;TYPE&gt; x)
+   public void outCoda()
+}
+</pre>
+</blockquote>
+
+
+<p>
+<b>7</b> Realizzare un metodo statico pubblico che, 
+dato il riferimento alla radice di un albero binario di ricerca <i>alb</i> i cui nodi contengono
+interi, restituisca la lista ordinata degli elementi dell'albero.
+</p>
+
+<p>
+<b>8</b> Realizzare un metodo statico pubblico che, 
+dato il riferimento alla radice di un albero binario <i>alb</i> i cui nodi contengono
+Stringhe, restituisca una coda contenente le informazioni delle foglie 
+ordinate da sinistra a destra. Il primo elemento della coda risultante dovr&agrave; essere
+la foglia estrema a sinistra.
+</p>
+
+<p>
+<b>9</b> Realizzare un metodo statico pubblico che, 
+dato il riferimento alla radice di un albero binario <i>alb</i> i cui nodi contengono
+interi, restituisca la Lista dei padri di esattamente due foglie in qualunque ordine.
+</p>
+
+<p>
+<b>10</b> Realizzare un metodo statico pubblico che, 
+dato il riferimento alla radice di un albero binario di ricerca <i>alb</i> i cui nodi contengono
+interi, restituisca l'elemento mediano (ovvero l'elemento che si trova in posizione centrale
+nella sequenza ordinata dei valori dell'albero).
+</p>
+
+
+<p>
+<b>11</b> Realizzare un metodo statico pubblico che, 
+dato il riferimento alla radice di un albero binario <i>alb</i> i cui nodi contengono
+Stringhe, restituisca una pila contenente tutte le informazioni nei nodi, in modo tale 
+che svuotandola si ottenga l'effetto equivalente ad una visita in preordine.
+</p>
+
+<p>
+<b>12</b> Realizzare un metodo statico pubblico che, 
+dato il riferimento alla radice di un albero binario <i>alb</i> i cui nodi contengono
+Stringhe, restituisca una coda contenente tutte le informazioni nei nodi, in modo tale 
+che svuotandola si ottenga l'effetto equivalente ad una visita simmetrica.
+</p>
+
+<p>
+<b>13</b> Realizzare un metodo statico pubblico che, 
+dato il riferimento alla radice di un albero binario <i>alb</i> i cui nodi contengono
+Stringhe e una lista <i>l</i> di Stringhe, verifichi che tutti i valori della lista
+sono foglie dell'albero binario.
+</p>
+
+<p>
+<b>14</b> Realizzare un metodo statico pubblico che, 
+dato il riferimento alla radice di un albero binario <i>alb</i> i cui nodi contengono
+Stringhe e una lista <i>l</i> di Stringhe, verifichi che la lista corrisponda ad un
+percorso (cio&egrave; una sequenza di informazioni contenute nei nodi) 
+dalla radice ad una foglia dell'albero.
+
+
+<hr>
+
+
+<p><a href="soluzione/EserciziAlberi2.java">Soluzioni</a></p>
+
+<hr>
+
+</body>
+</html>

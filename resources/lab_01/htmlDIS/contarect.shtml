@@ -1,0 +1,138 @@
+<!doctype html public "-//w3c//dtd html 4.0 transitional//en">
+<html>
+<head>
+<link href="java.css" rel="stylesheet" type="text/css">
+<title>Conta i punti</title>
+</head>
+
+<body>
+
+<h2>Conta i punti</h2>
+
+Questo esercizio richiede l'uso della funzione di rilevazione
+dei punti in cui il pulsante del mouse viene premuto. In
+particolare, si tratta di disegnare un rettangolo,
+e poi di contare quante volte il pulsante &egrave; stato
+premuto al suo interno. Questo numero viene poi scritto
+al di sopra del rettangolo stesso.<p>
+
+Il rettangolo &egrave; fatto in questo modo: il punto in
+alto a sinistra &egrave; (20,20), la sua larghezza e altezza
+sono pari a 100. Lasciamo uno spazio di 20 punti al di sopra
+del rettangolo per poter scrivere il numero di volte che
+il pulsante viene premuto al suo interno.<p>
+
+Il problema &egrave; il seguente: dobbiamo memorizzare
+il numero di click all'interno del rettangolo. Questa
+variabile viene modificata ogni volta che si preme il
+pulsante, per cui viene modificata dalla funzione
+<tt>mouseDown</tt>. Inoltre, viene usata dalla funzione
+<tt>paint</tt>, che la stampa sopra il rettangolo. Dal
+momento che serve in due funzioni diverse, la dichiariamo
+come variabile globale.<p>
+
+<pre>
+import java.awt.*;
+
+public class ContaPunti extends java.applet.Applet {
+  int quantevolte=0;
+</pre>
+
+In questa variabile memorizziamo il numero di volte che
+il pulsante &egrave; stato premuto all'interno del rettangolo.
+Lasciamo per un momento da parte la funzione <tt>mouseDown</tt>,
+e vediamo invece la funzione <tt>paint</tt>. Per prima cosa,
+dobbiamo disegnare il rettangolo, e poi dobbiamo disegnare sopra
+di esso il numero di click al suo interno. Dal momento che
+questo numero sta nella variabile <tt>quantevolte</tt>, il
+programma risulta il seguente:<p>
+
+<pre>
+  public void paint(Graphics g) {
+    int i;
+
+    g.drawRect(20,20,100,100);
+
+    g.drawString(""+quantevolte,60, 18);
+  }
+</pre>
+
+Passiamo ora alla funzione <tt>mouseDown</tt>. Questa
+funzione riceve la posizione del cursore in cui il pulsante
+&egrave; stato premuto: deve controllare se questo punto
+si trova all'interno del rettangolo, ed eventualmente
+aumentare di uno la variabile che conta il numero di
+click.<p>
+
+Il punto si trova all'interno del rettangolo se il valore
+di <tt>x</tt> &egrave; compreso fra 20 e 120, e se il
+valore di <tt>y</tt> sta fra 20 e 120. Se questa condizione
+&egrave; verificata, aumentiamo di uno il valore della
+variabile <tt>quantevolte</tt>.<p>
+
+<pre>
+  public boolean mouseDown(Event e, int x, int y) {
+    if( (y>=20) && (y<=120) && (x>=20) && (x<=120) ) { 
+      quantevolte=quantevolte+1;
+    }
+    repaint();
+    return true;
+  }
+</pre>
+
+Chiaramente, dopo aver aumentato il valore della variabile
+che conta il numero di click, occorre fare di nuovo il
+disegno, dal momento che va stampato questo nuovo valore al
+posto di quello vecchio.<p>
+
+Il programma complessivo
+<a href="ContaRect.java">ContaRect.java</a>
+viene riportato qui sotto.<p>
+
+<pre>
+/*
+  Conta il numero di volte che il pulsante del mouse
+  viene premuto all'interno di ognuno dei rettangoli
+  disegnati.
+*/
+
+import java.awt.*;
+
+public class ContaRect extends java.applet.Applet {
+  int quantevolte=0;
+
+  public boolean mouseDown(Event e, int x, int y) {
+    if( (y>=20) && (y<=120) && (x>=20) && (x<=120) ) { 
+      quantevolte=quantevolte+1;
+    }
+    repaint();
+    return true;
+  }
+
+  public void paint(Graphics g) {
+    int i;
+
+    g.drawRect(20,20,100,100);
+
+    g.drawString(""+quantevolte,60, 18);
+  }
+}
+
+</pre>
+<p>
+
+Segue l'immagine di una finestra durante l'esecuzione.<p>
+
+<center>
+<img src="ContaRect.gif">
+</center>
+<p>
+
+<applet code="ContaRect.class">
+</applet>
+
+
+
+</body>
+</html>
+

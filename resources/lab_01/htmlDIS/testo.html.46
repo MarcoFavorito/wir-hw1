@@ -1,0 +1,109 @@
+<html>
+<head>
+<title>
+Diploma Universitario di Ingegneria Informatica,
+Esame di Fondamenti di Informatica II - primo modulo,
+A.A. 2000/01 - Appello del 7 settembre 2001
+</title>
+</head>
+
+<body>
+
+<h3 align="center">
+Diploma Universitario di Ingegneria Informatica<br>
+Esame di Fondamenti di Informatica II - primo modulo <br>
+A.A. 2000/01 - Appello del 7 settembre 2001</h3>
+
+<p><b>Problema 1</b>&nbsp;&nbsp; Si consideri la seguente specifica del
+tipo astratto <i>Gruppo</i>:
+
+<dl>
+  <dt><b><u>TipoAstratto</u></b> <i>Gruppo</i><p>
+  <dt><b><u>Sorte</u></b> <i>GR</i> (sorta per il dominio di interesse)<p>
+  <dt><b><u>Funzioni</u></b><p>
+
+       <ul>
+         <li><i>Crea : () --&gt; GR</i> <br>
+              precondizioni e postcondizioni per <i>Crea() = g</i> <br>
+              <u>pre</u>: nessuna <br>
+              <u>post</u>: <i>g</i> &egrave;
+              un gruppo avente zero componenti
+              <p>
+
+         <li><i> NumComp : (GR) --&gt; Int</i><br>
+              precondizioni e postcondizioni per <i>NumComp(g) =
+                 n</i><br>
+              <u>pre</u>: nessuna<br>
+              <u>post</u>: <i>n</i> &egrave; il numero di componenti del gruppo
+              <i>g</i>
+              <p>
+
+         <li><i>AggiungiComp : (GR, Componente) --&gt; GR</i><br>
+              precondizioni e postcondizioni per
+              <i>AggiungiComp(g,c) = h</i><br>
+              <U>pre</u>:  <i>c</i> non &egrave; gi&agrave; un componente
+              di <i>g</i><br>
+              <U>post</u>: <i>h</i> &egrave; il gruppo ottenuto da
+              <i>c</i> aggiungendo il componente <i>c</i>
+              <p>
+
+         <li><i>EstComp : (GR, Componente) --&gt; Boolean</i><br>
+              precondizione e postcondizioni per
+              <i>EstComp(g,c) = b</i><br>
+              <u>pre</u>:  nessuna<br>
+              <u>post</u>: <i>b=true</i> se <i>c</i> &egrave;
+              un componente del gruppo <i>g</i>; <i>b=false</i> altrimenti
+              <p>
+
+         <li><i>Ripartisci : (GR) --&gt; (GR,GR)</i><br>
+              precondizione e postcondizioni per
+              <i>Ripartisci(g) = (g',h)</i><br>
+              <u>pre</u>: nessuna<br>
+              <u>post</u>: <i>g'</i>  e <i>h</i>
+              sono i gruppi ottenuto da <i>g</i> ripartendo i componenti in
+              due sottogruppi che uguale dimensione (eccetto che per al
+              pi&ugrave un componente) in un modo
+              qualsiasi.
+              <p>
+       </dl>
+       <dt><b><u>FineTipoAstratto</u></b></dt>
+<p>
+
+Si vuole scrivere una classe C++ <code>Gruppo</code> che realizzi il tipo
+astratto <i>Gruppo</i>, considerando che per riferirsi al tipo astratto
+<i>Componente</i> &egrave; necessario utilizzare la classe
+<code>Componente</code> che si suppone gi&agrave; realizzata, della quale
+per&ograve; non &egrave; nota la definizione.
+
+<p><b>Domanda 1</b>&nbsp;&nbsp; Si illustrino le scelte di progetto relative
+alla realizzazione del tipo astratto <i>Gruppo</i> mediante la classe C++
+<code>Gruppo</code>. </p>
+
+<p><b>Domanda 2</b>&nbsp;&nbsp; Si scriva la classe <code>Gruppo</code> (file
+.h e file .cpp) secondo le scelte di progetto illustrate per la Domanda
+1. Scrivere il codice di tutte le funzioni pubbliche e private della
+classe. </p>
+
+
+
+<p><b>Problema 2</b>&nbsp;&nbsp; Realizzare una funzione esterna (non friend)
+della classe <code>Gruppo</code> che dato un oggetto <i>g</i> di tipo
+<code>Gruppo</code> ed una lista <i>l</i> di record aventi la forma
+seguente:
+<pre>
+struct Rec {
+  Componente* info;
+  Rec* next;
+};
+</pre>
+verifichi che tutte i componenti nella lista <i>l</i> facciano parte di
+<i>g</i>.</p>
+
+
+
+<p><b>Problema 3</b>&nbsp;&nbsp; Discutere brevemente i vantaggi e gli
+svantaggi degli schemi realizzativi <i>funzionale con condivisione</i> e
+<i>side-effect senza condivisione</i>.</p>
+
+</body>
+</html>

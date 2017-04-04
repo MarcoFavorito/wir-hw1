@@ -1,0 +1,159 @@
+<!doctype html public "-//w3c//dtd html 4.0 transitional//en">
+<html>
+<head>
+   <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <meta name="Author" content="ber">
+   <meta name="GENERATOR" content="Mozilla/4.61 [en] (X11; I; Linux 2.2.12-20 i686) [Netscape]">
+   <title>TESTO APPELLO 20/06/2001</title>
+</head>
+<body>
+
+<center><b>Universit&agrave; di Roma "La Sapienza"</b>
+<br><b>Facolt&agrave; di Ingegneria</b>
+<br><b>Corso di Fondamenti di Informatica - A. A. 2000/2001</b>
+<br><b>Corsi di Laurea: Chimica, Elettrica, Materiali, Meccanica, Nucleare
+(vecchio ordinamento)</b>
+<p><b>Appello del 20 giugno 2001 - prima prova scritta</b>
+<br><b>tempo a disposizione <i>2 ore</i></b></center>
+
+<p><b>Esercizio 1 (18 punti)</b>
+<br>Per misurare il tasso di inquinamento in un'area di forma rettangolare,
+si utilizzano una serie di M sonde rilevatrici disposte su N file, in modo
+che la j-sima sonda della i-sima fila sia identificata dalla coppia &lt;i,j>.
+I valori rilevati vengono inviati ad un computer centrale ed elaborati
+da un programma Pascal.
+<p>Il programma utilizza una matrice X di liste di dimensione NxM per la
+memorizzazione dei dati che riceve. La lista X[i,j] &egrave; associata
+alla sonda &lt;i,j> ed &egrave; ordinata temporalmente, con l'elemento
+in testa alla lista pari al valore pi&ugrave; recente inviato dalla sonda
+&lt;i,j>.
+<p>1. Definire il tipo di dato LISTASONDE per memorizzare i dati inviati
+da una sonda tramite una lista rappresentata mediante record e puntatori.
+Il record deve contenere i seguenti campi:
+<br>- <b>tasso</b>: valore rilevato dalla sonda
+<br>- <b>data</b>: orario in cui &egrave; stato prodotto il dato (con formato
+GG/MM/AAAA HH:MM:SS, esempio 20/06/2001 09:00:00)
+<br>Definire il tipo di dato MATRICESONDE il cui elemento &lt;i,j> &egrave;
+la lista associata alla sonda con coordinate &lt;i,j>. Inoltre, definire
+eventuali altri tipi necessari per risolvere i punti 2 e 3.
+<p>2. Scrivere una procedura ANALIZZA che, ricevendo come parametri:
+<ul>
+<li>
+&nbsp;X, matrice di tipo MATRICESONDE</li>
+
+<li>
+&nbsp;T, valore soglia di inquinamento</li>
+
+<li>
+&nbsp;C, numero di rilevazioni</li>
+</ul>
+
+<p><br>scriva su un file di testo di nome 'RES.TXT', una per ogni linea,
+la seguente tupla di valori:
+<br>&lt;<b>i, j, media, variazione, allarme</b>>, dove:
+<br><b>i</b> e <b>j</b> sono le coordinate della sonda;
+<br><b>&nbsp;media</b> &egrave; la media degli ultimi C tassi rilevati
+dalla sonda &lt;i,j>, espressa con 2 cifre decimali. Si ponga la media
+uguale al carattere '?' se i dati disponibili sono insufficienti;
+<br><b>variazione</b> &egrave; pari al carattere '+' se l'ultimo dato inviato
+dalla sonda &lt;i,j> &egrave; maggiore del precedente; '-' se inferiore,
+'=' se invariato; '?' se i dati disponibili sono insufficienti;
+<br><b>allarme</b> &egrave; uguale al carattere 'A' se la media degli ultimi
+C valori &egrave; superiore a T, 'N' se inferiore, '?' se i dati disponibili
+non sono sufficienti
+<p>Ad esempio, per N=2,M=2 se i valori del solo campo tasso nei record
+della lista sono pari a (5.0,2.0,8.0) per la lista X[1,1], (4.3,0.0) per
+la lista X[1,2], (6.7,6.7) per la lista X[2,1] e (2.0) per la lista X[2,2],
+allora il contenuto di RES.TXT dopo la chiamata ANALIZZA(X,3,2):
+<p>1 1 3.50 + A
+<br>1 2 2.15 + N
+<br>2 1 6.70 = A
+<br>2 2 ? ? ?
+<p>3. Scrivere una procedura CANCELLA che ricevendo come parametri:
+<ul>
+<li>
+una lista L di tipo LISTASONDE</li>
+
+<li>
+una data D in formato (GG/MM/AAA HH:MM:SS)</li>
+</ul>
+
+<p><br>Elimini dalla lista tutti gli elementi con data antecedente a D.
+(Si possono usare gli operatori relazionali &lt;,&lt;=,etc. definiti su
+stringhe)
+<br>&nbsp;
+<p><a href="sol1.html">SOLUZIONE</a> (<a href="sonde.txt">FILE DATI</a>)
+<br>
+<hr WIDTH="100%">
+<center><b>&nbsp;Universit&agrave; di Roma "La Sapienza"</b>
+<br><b>Facolt&agrave; di Ingegneria</b>
+<br><b>Corso di Fondamenti di Informatica - A. A. 2000/2001</b>
+<br><b>Corsi di Laurea: Chimica, Elettrica, Materiali, Meccanica, Nucleare
+(vecchio ordinamento)</b>
+<p><b>Appello del 20 giugno 2001 - seconda prova scritta</b>
+<br><b>tempo a disposizione <i>1 ora</i></b></center>
+
+<p><br>
+<br>
+<br>
+<br>
+<br>
+<p><b>Esercizio 2 (4 punti)</b>
+<br>Si descrivano i metodi di rappresentazione dei numeri interi e reali
+all'interno del calcolatore, mostrando qualche esempio significativo.
+<p><b>Esercizio 3 (4 punti)</b>
+<br>Si descriva il comportamento del seguente programma Pascal, mostrando
+in particolare:
+<ul>
+<li>
+&nbsp;evoluzione di stack ed heap</li>
+
+<li>
+&nbsp;informazioni contenute nei record di attivazione</li>
+
+<li>
+&nbsp;valori visualizzati sullo schermo</li>
+</ul>
+
+<p><br><font face="Borders2">PROGRAM Eser3;</font>
+<p><font face="Borders2">var n,m: integer;</font>
+<p><font face="Borders2">&nbsp; procedure Foo(n: integer);</font>
+<br><font face="Borders2">&nbsp; var p: ^integer;</font>
+<p><font face="Borders2">&nbsp;&nbsp;&nbsp; function writeit:integer;</font>
+<br><font face="Borders2">&nbsp;&nbsp;&nbsp; begin</font>
+<br><font face="Borders2">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; writeit:=m;</font>
+<br><font face="Borders2">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; m:=m-1</font>
+<br><font face="Borders2">&nbsp;&nbsp;&nbsp; end;</font>
+<p><font face="Borders2">&nbsp; begin</font>
+<br><font face="Borders2">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; if n>0 then
+begin</font>
+<br><font face="Borders2">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+new(p);</font>
+<br><font face="Borders2">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+p^:=n;</font>
+<br><font face="Borders2">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+Foo(n-1);</font>
+<br><font face="Borders2">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+writeln(p^,' ',n,' ',writeit);</font>
+<br><font face="Borders2">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+dispose(p)</font>
+<br><font face="Borders2">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; end</font>
+<br><font face="Borders2">&nbsp; end;</font>
+<p><font face="Borders2">Begin</font>
+<br><font face="Borders2">&nbsp;&nbsp;&nbsp; m:=3;</font>
+<br><font face="Borders2">&nbsp;&nbsp;&nbsp; Foo(m)</font>
+<br><font face="Borders2">end.</font>
+<p><a href="sol3.html">SOLUZIONE</a>
+<p><b>Esercizio4 (4 punti)</b>
+<br>Si scriva una subroutine Fortran ESER4 che, dati come parametri due
+matrici A e B di dimensione N x M a valori interi, costruisca la matrice
+B a partire dalla matrice A in modo che B goda della seguente propriet&agrave;:
+la media degli elementi delle righe &egrave; crescente (la somma degli
+elementi della prima riga &egrave; minore o uguale a quella degli elementi
+della seconda riga, che a sua volta &egrave; minore o uguale alla somma
+degli elementi della terza riga, etc.).
+<br>Si mostri inoltre il codice del main necessario per chiamare la subroutine
+e per la scrittura della matrice B sul file 'RES.TXT'
+<p><a href="sol4.html">SOLUZIONE</a>
+</body>
+</html>

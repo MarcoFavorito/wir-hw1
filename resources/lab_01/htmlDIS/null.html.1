@@ -1,0 +1,652 @@
+<html>
+<head>
+<title>La costante null</title>
+      <link rel="top" href="../lezioni.html">
+      <link rel="up" href="../lezioni.html">
+      <link rel="contents" href="../lezioni.html">
+      <link rel="previous" href="../param/param.html">
+      <link rel="next" href="../statici/statici.html">
+</head>
+
+<body>
+
+<h1>La costante <tt>null</tt></h1>
+
+<p>
+Le variabili per gli oggetti contengono
+l'indirizzo di un oggetto.
+</p>
+
+<p>
+Possono anche contenere il valore
+<tt>null</tt>
+</p>
+
+<p>
+Indica che un oggetto non esiste.
+</p>
+
+<hr>
+
+
+<h4>Esempio di uso</h4>
+
+<p>
+Quando <tt>readLine</tt> viene invocato su
+un file che &egrave; finito, ritorna <tt>null</tt>
+</p>
+
+<pre>
+    String s;
+
+    while(true) {
+      s=b.readLine();
+      if(s==null)
+        break;
+      System.out.println(s);
+    }
+</pre>
+
+<hr>
+
+
+<h4>Il <tt>null</tt>, in memoria</h4>
+
+<p>
+Non &egrave; un oggetto.
+</p>
+
+<p>
+&Egrave; un valore speciale che viene scritto
+nella variabile.
+</p>
+
+<p>
+Se <tt>s</tt> &egrave; una stringa (es. dopo
+<tt>s="abcd"</tt>):
+</p>
+
+<img src="stringa.jpg">
+
+<p>
+Se <tt>s</tt> vale <tt>null</tt> (es. dopo
+<tt>s=null;</tt>):
+</p>
+
+<img src="null.jpg">
+
+<hr>
+
+
+<h4>Stringa vuota</h4>
+
+<p>
+Attenzione: <tt>null</tt> non indica la
+stringa vuota.
+</p>
+
+<p>
+La stringa vuota &egrave; un oggetto.
+</p>
+
+<img src="vuota.jpg">
+
+<p>
+La stringa vuota &egrave; una sequenza
+di caratteri di lunghezza zero.
+</p>
+
+<p>
+Il valore <tt>null</tt> indica che non
+c'&egrave; un oggetto:
+</p>
+
+<img src="null.jpg">
+
+<hr>
+
+
+<h4>Leggere la stringa vuota</h4>
+
+<p>
+Il valore di ritorno di <tt>b.readLine()</tt>
+indica:
+</p>
+
+<dl>
+
+<dt>stringa vuota
+<dd>nel file c'&egrave; una linea bianca
+(una linea che non contiene nessun carattere);
+dopo, potrebbero esserci altre linee.
+
+<dt><tt>null</tt>
+<dd>il file non contiene altre linee
+
+</dl>
+
+<hr>
+
+
+<h4>Assegnare <tt>null</tt></h4>
+
+<p>
+Pensate a <tt>null</tt> come al valore
+<i>"nessun indirizzo"</i>.
+</p>
+
+<p>
+Si tratta sempre di un valore numerico,
+per&ograve; non indica un indirizzo.
+</p>
+
+<p>
+In altri linguaggi, &ograve; il valore <tt>0</tt>
+(e nessun oggetto pu&ograve; essere memorizzato
+all'indirizzo <tt>0</tt>)
+</p>
+
+<p>
+Una variabile per un oggetto contiene <tt>null</tt>
+oppure un indirizzo.
+</p>
+
+<p>
+Se contiene un indirizzo, allora &egrave; l'indirizzo
+dell'oggetto. Altrimenti, l'oggetto non esiste.
+</p>
+
+<hr>
+
+
+<h4>Dove si pu&ograve; usare <tt>null</tt>?</h4>
+
+<p>
+Si pu&ograve; usare per qualsiasi oggetto:
+</p>
+
+<pre>
+  Point p;
+
+  p=null;
+</pre>
+
+<p>
+Se in <tt>p</tt> ci metto <tt>null</tt>, non 
+devo creare l'oggetto.
+</p>
+
+<hr>
+
+
+<h4>Oggetti persi</h4>
+
+<pre>
+  Point p;
+  p=new Point();
+
+  p=null;
+</pre>
+
+<p>
+Primo: viene creata la variabile:
+</p>
+
+<img src="nullpoint-1.jpg">
+
+<hr>
+
+
+<h4>Creazione dell'oggetto</h4>
+
+<p>
+Viene creato l'oggetto, e il suo indirizzo
+va in <tt>p</tt>.
+</p>
+
+<img src="nullpoint-2.jpg">
+
+<hr>
+
+
+<h4>Il valore <tt>null</tt></h4>
+
+<p>
+Viene messo dentro <tt>p</tt>
+</p>
+
+<img src="nullpoint-3.jpg">
+
+<p>
+Si &egrave; perso l'indirizzo dell'oggetto.
+</p>
+
+<p>
+L'oggetto non si pu&ograve; usare.
+</p>
+
+<p>
+Verr&agrave; cancellato automaticamente.
+</p>
+
+<hr>
+
+
+<h4>Creazione oggetti e <tt>null</tt></h4>
+
+<pre>
+  Point p;
+  p=new Point();
+
+  p=null;
+</pre>
+
+<p>
+Non serve creare un oggetto, se poi nella
+variabile ci metto <tt>null</tt>
+</p>
+
+<hr>
+
+
+<h4>Invocare metodi</h4>
+
+<p>
+La costante <tt>null</tt> la posso mettere
+in una qualsiasi variabile oggetto:
+</p>
+
+<pre>
+  Studente s;
+  s=null;
+</pre>
+
+<p>
+Cosa succede se uso una componente o un
+metodo?
+</p>
+
+<hr>
+
+
+<h4>Metodi e componenti</h4>
+
+<p>
+Le componenti e i metodi riguardano gli oggetti:
+</p>
+
+<ul>
+
+<li>la componente &egrave; una parte dell'oggetto
+
+<li>il metodo &egrave; una operazione sull'oggetto
+
+</ul>
+
+<p>
+<tt>null</tt> indica che l'oggetto non esiste
+</p>
+
+<hr>
+
+
+<h4>Errori</h4>
+
+<pre>
+  Point p;
+  p=null;
+
+  p.x=12;   // errore: non esiste l'oggetto p
+
+  p.move(10,2);	// stesso errore
+</pre>
+
+<p>
+Stessa regola vista finora: non posso usare
+le componenti o invocare i metodi se l'oggetto
+non esiste.
+</p>
+
+<p>
+Se faccio <tt>p=null</tt> l'oggetto non esiste.
+</p>
+
+<hr>
+
+
+<h4>Variabili non inizializzate</h4>
+
+<pre>
+  Point p;
+
+  if(p==null)
+    ...
+</pre>
+
+<p>
+Qui <tt>p</tt> vale <tt>null</tt>?
+</p>
+
+<p>
+No! La variabile non &egrave; inizializzata.
+</p>
+
+<p>
+L'errore &egrave; diverso: <tt>p</tt> non
+contiene un valore preciso.
+</p>
+
+<pre>
+  p=null;
+
+  ...
+
+  if(p==null) 
+    ...
+</pre>
+
+<p>
+Se faccio l'assegnamento <tt>p=null;</tt> allora
+<tt>p</tt> contiene il valore <tt>null</tt>
+</p>
+
+<p>
+L'oggetto non esiste, ma <tt>p</tt> contiene
+un valore specifico.
+</p>
+
+<p>
+Quindi, si pu&ograve; confrontare il valore
+di <tt>p</tt> con <tt>null</tt> (anche se
+l'oggetto non esiste).
+</p>
+
+<hr>
+
+
+<h4>Inizializzazione automatica</h4>
+
+<p>
+Le variabili non vengono inizializzate automaticamente.
+</p>
+
+<p>
+Le componenti degli oggetti vengono inizializate
+a <tt>0</tt> se numeriche e a <tt>null</tt> se
+di tipo oggetto.
+</p>
+
+<p>
+Il compilatore non rileva errori.
+</p>
+
+<p>
+Per&ograve; questo pu&ograve; portare a errori.
+</p>
+
+<p>
+Controllare sempre l'inizializzazione.
+</p>
+
+<hr>
+
+
+<h4>Passare <tt>null</tt> a un metodo</h4>
+
+<p>
+Cosa succede quando si esegue questo programma?
+</p>
+
+<pre>
+import java.awt.*;
+
+class NullMet {
+  static void azzera(Point q) {
+    q.x=0;
+    q.y=0;
+  }
+
+  public static void main(String args[]) {
+    Point p;
+    p=null;
+
+    azzera(p);
+
+    System.out.println(p);
+  }
+}
+</pre>
+
+<hr>
+
+
+<h4>Errore in esecuzione!</h4>
+
+<pre>
+Exception in thread "main" java.lang.NullPointerException
+        at NullMet.azzera(NullMet.java:5)
+        at NullMet.main(NullMet.java:13)
+</pre>
+
+<p>
+L'errore indica che &egrave; stata usata una
+componente, oppure invocato un metodo, di un
+oggetto che non esiste.
+</p>
+
+<hr>
+
+
+<h4>In memoria</h4>
+
+<p>
+Inizialmente:
+</p>
+
+<img src="nullmet.jpg">
+
+<hr>
+
+
+<h4>Dopo l'invocazione del metodo</h4>
+
+<p>
+Se faccio <tt>q=p;</tt> viene copiato l'indirizzo
+scritto in <tt>p</tt> dentro <tt>q</tt>.
+</p>
+
+<p>
+Lo stesso succede quando si invoca il metodo.
+</p>
+
+<p>
+Il valore <tt>null</tt> viene copiato.
+</p>
+
+<img src="nullmetinv.jpg">
+
+<hr>
+
+
+<h4>In esecuzione</h4>
+
+<p>
+Si cerca di fare <tt>q.x=0;</tt> quando non esiste
+l'oggetto.
+</p>
+
+<p>
+Si genera un errore.
+</p>
+
+<hr>
+
+
+<h4>Modifiche all'oggetto</h4>
+
+<dl>
+
+<dt>regola sbagliata:
+<dd>quando si passa una variabile oggetto a un
+metodo, le modifiche hanno effetto nel programma
+
+<dt>regola esatta:
+<dd>le variabili oggetto contengono l'indirizzo
+di un oggetto; gli oggetti stanno in una zona di
+memoria visibile da tutti i metodi.
+
+</dl>
+
+<p>
+Domanda: cosa stampa questo programma?
+</p>
+
+<pre>
+import java.awt.*;
+
+class Modifica {
+  static void cambia(Point q) {
+    q=new Point();
+
+    q.move(0,0);
+  }
+
+  public static void main(String args[]) {
+    Point p;
+    p=null;
+
+    cambia(p);
+
+    System.out.println(p.x);
+  }
+}
+</pre>
+
+<hr>
+
+
+<h4>Risposta</h4>
+
+<p>
+Bisogna vedere cosa succede in memoria.
+</p>
+
+<p>
+Inizio:
+</p>
+
+<img src="modifica-1.jpg">
+
+<hr>
+
+
+<h4>Invocazione del metodo</h4>
+
+<p>
+Viene creata la zona di memoria associata.
+</p>
+
+<p>
+Vengono copiati i valori nelle variabili.
+</p>
+
+<img src="modifica-2.jpg">
+
+<hr>
+
+
+<h4>Esecuzione del metodo</h4>
+
+<p>
+Viene creato un nuovo oggetto.
+</p>
+
+<p>
+Il suo indirizzo viene messo in <tt>q</tt>
+</p>
+
+<img src="modifica-3.jpg">
+
+<hr>
+
+
+<h4>Fine dell'esecuzione</h4>
+
+<p>
+La zona di memoria del metodo viene cancellata.
+</p>
+
+<img src="modifica-4.jpg">
+
+<p>
+L'oggetto esiste ancora, ma non &egrave;
+pi&ugrave; accessibile.
+</p>
+
+<p>
+Verr&agrave; distrutto automaticamente.
+</p>
+
+<hr>
+
+
+<h4>Risposta</h4>
+
+<p>
+<tt>p</tt> &egrave; sempre rimasto <tt>null</tt>
+</p>
+
+<p>
+Quando si cerca di stampare <tt>p.x</tt>,
+si genera un errore.
+</p>
+
+<p>
+Regola generale:
+</p>
+
+<blockquote>
+<i>
+quando si invoca un metodo, sono i valori che
+vengono trasmessi al metodo
+</i>
+</blockquote>
+
+<p>
+Quando si fa <tt>cambia(p)</tt>, questo equivale
+a <tt>cambia(null)</tt>
+</p>
+
+<p>
+Perch&egrave; <tt>cambia(null)</tt> dovrebbe
+modificare <tt>p</tt>?
+</p>
+
+<hr>
+
+
+<h4>Modifiche agli oggetti</h4>
+
+<p>
+Tutti i metodi possono modificare/usare gli
+oggetti, basta che abbiano il loro indirizzo.
+</p>
+
+<p>
+Se un metodo riceve l'indirizzo di un oggetto,
+lo pu&ograve; modificare.
+</p>
+
+<p>
+Il metodo riceve comunque un <i>valore</i>
+</p>
+
+<p>
+Dal valore pu&ograve; risalire all'oggetto e
+cambiarlo.
+</p>
+
+</body>
+</html>
+
+

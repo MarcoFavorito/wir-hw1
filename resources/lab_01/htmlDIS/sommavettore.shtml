@@ -1,0 +1,55 @@
+<!doctype html public "-//w3c//dtd html 4.0 transitional//en">
+<html>
+<head>
+<link href="java.css" rel="stylesheet" type="text/css">
+<title>Somma elementi di un vettore</title>
+</head>
+
+<body>
+
+<h2>Somma elementi di un vettore</h2>
+
+Sia dato un vettore; si vuole la somma di tutti i suoi
+elementi. Questo esercizio non differisce molto da quello
+del calcolo della <a href="serie.shtml">somma degli elementi
+di una serie</a>: si tratta infatti di sommare un certo
+numero di elementi fra di loro. Nel caso della somma della
+serie questi elementi erano determinati dalla funzione,
+mentre ora ogni elemento &egrave; una componente
+<tt>x[i]</tt> del vettore.<p>
+
+Lo svolgimento &egrave; lo stesso: usiamo una variabile
+<tt>somma</tt> per memorizzare la somma degli elementi
+analizzati fino ad ora. Inizialmente la somma vale 0. Si
+fa poi un ciclo in cui, ad ogni passo, si prende un elemento
+del vettore e lo si aggiunge al contenuto della variabile
+<tt>somma</tt>. Il programma completo &egrave
+<a href="SommaVettore.java">SommaVettore.java</a>, di cui
+si riporta il codice qui sotto.<p>
+
+<pre>
+/*
+  Somma gli elementi di un vettore.
+*/
+
+class SommaVettore {
+  public static void main(String[] args) {
+    int x[]={32, 65, 98, 31, 64, 97, 30, 63, 96, 29, 62, 95, 28, 61, 94, 27, 60, 93, 26, 59, 92, 25, 58, 91, 24, 57, 90, 23, 56, 89, 22, 55, 88, 21, 54, 87, 20, 53, 86, 19, 52, 85, 18, 51, 84, 17, 50, 83, 16, 49, 82};
+    int i;
+    int somma;
+
+    somma=0;
+
+    for(i=0; i<=x.length-1; i=i+1) {
+      somma=somma+x[i];
+    }
+
+    System.out.println("La somma vale: "+somma);
+  }
+}
+
+</pre>
+
+</body>
+</html>
+

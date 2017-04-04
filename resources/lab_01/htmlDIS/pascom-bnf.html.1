@@ -1,0 +1,49 @@
+<HTML>
+<HEAD>
+   <META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1">
+   <META NAME="GENERATOR" CONTENT="Mozilla/4.03 [en] (X11; I; SunOS 5.5.1 sun4u) [Netscape]">
+   <TITLE>La grammatica di PASCOM</TITLE>
+</HEAD>
+<BODY TEXT="#000000" BGCOLOR="#FFFFFF" LINK="#0000EE" VLINK="#551A8B" ALINK="#FF0000">
+
+<H1>
+La grammatica di PASCOM</H1>
+<I>programma</I> -> <B>program</B> <I>identificatore</I> "<TT>;</TT>" <I>istruzione</I>
+
+<P>&nbsp;<I>istruzione</I> -> <B>begin</B> <I>istruzione</I> <I>listaistruzioni</I>
+<BR><I>istruzione</I> -> <B>write</B> <I>espressione</I>
+<BR><I>istruzione</I> -> <B>read</B> <I>identificatore</I>
+<BR><I>istruzione</I> -> <B>if</B> <I>test</I> <B>then</B> <I>istruzione</I>
+<B>else</B> <I>istruzione</I>
+<BR><I>istruzione</I> -> <B>while</B> <I>test</I> <B>do</B> <I>istruzione</I>
+<BR><I>istruzione</I> -> <I>identificatore</I> "<TT>:=</TT>" <I>espressione</I>
+
+<P>&nbsp;<I>listaistruzioni</I> -> <B>end</B>
+<BR><I>listaistruzioni</I> -> "<TT>;</TT>" <I>istruzione</I> <I>listaistruzioni</I>
+
+<P>&nbsp;<I>espressione</I> -> <I>costante</I>
+<BR><I>espressione</I> -> <I>costante</I> <I>op</I> <I>espressione</I>
+
+<P>&nbsp;<I>costante</I> -> <I>numero</I>
+<BR><I>costante</I> -> <I>identificatore</I>
+
+<P>&nbsp;<I>test</I> -> <I>espressione</I> <I>relop</I> <I>espressione</I>
+
+<P>&nbsp;<I>op</I> -> "<TT>+</TT>" | "<TT>-</TT>" | "<TT>*</TT>" | "<TT>/</TT>"
+<BR><I>relop</I> -> "<TT>&lt;</TT>" | "<TT>&lt;=</TT>" | "<TT>></TT>" |
+"<TT>>=</TT>" | "<TT>=</TT>" | "<TT>&lt;></TT>"
+
+<P>&nbsp;<I>identificatore</I> -> <I>lettera</I> (<I>lettera</I> | <I>cifra</I>)*
+<BR><I>numero</I> -> <I>cifra</I>+
+
+<P>&nbsp;<I>lettera</I> -> "<TT>A</TT>" | ... | "<TT>Z</TT>" | "<TT>a</TT>"
+| ... | "<TT>z</TT>"
+<BR><I>cifra</I> -> "<TT>0</TT>" | ... | "<TT>9</TT>"
+
+<P>Sono inoltre previsti i caratteri spazio, nuova linea, e tabulazione
+come separatori, e commenti racchiusi tra parentesi graffe.
+
+<P>
+<HR WIDTH="100%">
+</BODY>
+</HTML>

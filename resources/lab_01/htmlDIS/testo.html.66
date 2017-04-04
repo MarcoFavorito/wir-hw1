@@ -1,0 +1,74 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=windows-1252">
+<META NAME="Generator" CONTENT="Microsoft Word 97">
+<TITLE>testo.doc</TITLE>
+</HEAD>
+<BODY>
+
+<H3 ALIGN="CENTER">
+Diploma Universitario di Ingegneria Informatica<BR>
+Esame di Fondamenti di Informatica II - secondo modulo <BR>
+A.A. 1999/2000 - Appello del 17 aprile 2000
+</H3>
+
+<P>
+Si consideri un guardaroba di un teatro, quando uno spettatore deposita un
+oggetto (ad esempio un cappotto, una borsa) all'oggetto viene associato un
+token. La specifica del tipo astratto &egrave; la seguente <I>Guardaroba</I>:
+</P>
+
+<B><U><DL> <DT>TipoAstratto</U> <I>Guardaroba</B></I> </DT>
+<B><U><DT>Sorte</B></U> <I>GR</I> (sorta per il dominio di interesse) </DT>
+<B><U><DT>Funzioni</DT>
+
+<UL>
+</U><I><DT><LI>Crea</B></I> : <I>() -> GR</I> <BR>
+precondizioni e postcondizioni per <I>Crea()</I> = <I>d</I> <BR>
+<U>pre</U>: nessuna <BR>
+<U>post</U>: <I>d</I> &egrave; un guardaroba con 0 oggetti.</LI></DT>
+<B><I><DT><LI>AggiungiOggetto</B></I>: <I>(GR,Oggetto) -> (GR, Token)</I> <BR>
+precondizioni e postcondizioni per <I>AggiungiOggetto</I>(<I>g</I>,<I>o</I>) = <I>(e,t)</I> <BR>
+<U>pre</U>: nessuna <BR>
+<U>post</U>: <I>e</I> &egrave; il guardaroba ottenuto da <I>g</I> aggiungendo l'oggetto <I>o</I> ed un nuovo token <I>t, </I>che viene associato<I> </I>all'oggetto <I>o </I>nel guardaroba <I>g .</LI></DT>
+
+<B><DT><LI>EstInGuardaroba</B> : (GR, Token) -> Boolean</I><BR>
+precondizioni e postcondizioni per <I>EstInGuardaroba(g,t) = b</I> <BR>
+<U>pre</U>: nessuna<BR>
+<U>post</U>: <I>b=true</I> se l'oggetto associato a t &egrave; nel guardaroba g<I>, b=false</I> altrimenti. </LI></DT>
+
+<B><I><DT><LI>RestituisciOggetto</B></I> : <I>(GR, Token) -> (GR,Oggetto)</I><BR>
+precondizioni e postcondizioni per <I>RestituisciOggetto(g,t) = (e,a)</I> <BR>
+<U>pre</U>: l'oggetto al quale &egrave; associato il token <I>t</I> &egrave; nel guardaroba <I>g</I><BR>
+<U>post</U>: <I>e</I> &egrave; il guardaroba ottenuto da <I>g</I> eliminando l'oggetto <I>o</I> e <I>a</I> &egrave; l'oggetto al quale &egrave; associato il token <I>t</I>.</LI></DT>
+
+<B><I><DT><LI>OggettiPresenti</B></I>:  <I>(GR) -> Array(Token,Oggetto)</I><BR>
+Precondizioni e postcondizioni per <I>OggettiPresenti(g) = e</I><BR>
+<U>pre</U>: nessuna<BR>
+<U>post</U>: <I>e</I> &egrave; un array delle coppie &lt;token, oggetto associato&gt; contenute nel guardaroba <I>g</I>.</LI></DT></UL>
+
+<B><U><DT>FineTipoAstratto</B></U> </DT>
+
+<DT>&nbsp;</DT>
+
+<P><B>Domanda 1</B>&nbsp;&nbsp; Si scriva la classi C++
+<code>Guardaroba</code>(file .h e file .cpp) che realizza il tipo astratto
+<I>Guardaroba </I>in modo che le funzioni del tipo astratto siano il pi&ugrave;
+efficiente possibile. Si assuma che siano state definita una classe
+<code>Oggetto</code> che realizza il tipo astratto
+<I>Oggetto</I> ed una classe <code>Token</code> che
+realizzi il tipo astratto <I>Token</I> delle quali non sono note le funzioni
+pubbliche e private.  Si rappresenti <I>Array(Token,Oggetto)</I> con un array
+C++.</P>
+
+<P><B>Domanda 2</B>&nbsp;&nbsp; Si discuta la complessit&agrave; di tutte le funzioni di <code>Guardaroba</code>. </P>
+
+
+<P><B>Domanda 3</B> Si illustri la visita in ampiezza di un grafo, mettendo in
+evidenza come questa possa essere modificata per ottenere un algoritmo che
+calcola le distanze minime da un dato nodo.</P>
+
+<P>Note: <I>Token</I> e <I>Oggetto</I> sono astrazioni d’entit&agrave;. <I>Token</I> ha il costruttore a zero argomenti.</P>
+
+</BODY>
+</HTML>

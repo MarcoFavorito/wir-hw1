@@ -1,0 +1,183 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<!--Converted with LaTeX2HTML 98.1 release (February 19th, 1998)
+originally by Nikos Drakos (nikos@cbl.leeds.ac.uk), CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>Testo compito esame Fondamenti di Informatica 16/9/1999</TITLE>
+</HEAD>
+<BODY >
+
+<P>
+<DIV ALIGN="CENTER">
+<B>
+   Universit&#224; di Roma ``La Sapienza''
+<BR>
+Facolt&#224; di Ingegneria
+<BR>
+Corso di Fondamenti di Informatica
+<BR>
+Corsi di Laurea: Aerospaziale, Chimica, Elettrica, Materiali,
+   Nucleare, Ambiente e Territorio (v.p.)</B>
+<BR>
+Appello del <B>16/9/1999</B> -- 1<SUP><I>a</I></SUP> prova scritta
+<BR>
+  <EM>tempo a disposizione: 2 ore</EM>
+</DIV>
+
+<P>
+<B>Problema 1 (18 punti)</B>
+Una spia invia al suo capo messaggi composti di sole lettere maiuscole,
+senza spazi n&#233; segni di interpuzione.
+Prima di inviare un messaggio, la spia lo trasforma usando un codice
+crittografico. Il codice crittografico, rappresentato in un file, &#232; composto
+da una sequenza di linee, dove ogni linea ha il formato:
+
+<P>
+<TT>L XYZ </TT>
+
+<P>
+dove <TT>L</TT>, <TT>X</TT>, <TT>Y</TT> e <TT>Z</TT> sono lettere maiuscole dell'alfabeto
+inglese.  L'ovvio significato del codice &#232; che la lettera <TT>L</TT> deve essere
+tradotta con la sequenza di lettere <TT>XYZ</TT>.  Ad esempio, se il codice &#232; il
+seguente:
+<PRE>
+C XXX
+I QWE
+O OPA
+A EMU
+L CAR
+S ONE
+</PRE>
+ed il messaggio &#232; il seguente:
+<PRE>
+CIAOLISA
+</PRE>
+il testo tradotto &#232; il seguente:
+<PRE>
+XXXQWEEMUOPACARQWEONEEMU
+</PRE>
+Si noti che (come evidenziato nell'esempio)
+non necessariamente tutte le 26 lettere dell'alfabeto inglese
+sono codificate.
+
+<P>
+Due aspetti che devono essere presi in considerazione sono i seguenti:
+<DL COMPACT>
+<DT>1.
+<DD>Alcune lettere dell'alfabeto potrebbero essere codificate pi&#249;
+di una volta nel codice (un codice di questo tipo si dice
+   <EM>incoerente</EM>). Ad esempio, se nel file dell'esempio precedente
+   occorresse anche la linea
+
+<P>
+<TT>O USA</TT>
+
+<P>
+il codice sarebbe incoerente.
+
+<P>
+<DT>2.
+<DD>Alcune lettere del messaggio potrebbero non essere codificate dal codice,
+  che in tal caso si dice <EM>incompleto</EM> rispetto al messaggio. Ad esempio,
+  se il messaggio fosse
+
+<P>
+<TT>CIAOANNA</TT>
+
+<P>
+il codice visto in precedenza sarebbe incompleto, perch&#233; la lettera <TT>N</TT>
+non &#232; codificata.
+</DL>
+
+<P>
+In particolare, si richiede di risolvere i seguenti punti:
+<DL COMPACT>
+<DT>1.
+<DD>Scrivere le dichiarazioni dei tipi di dato Pascal da utilizzarsi
+per risolvere i punti successivi.
+<DT>2.
+<DD>Scrivere una (o pi&#249;) unit&#224; di programma Pascal che, dato un file
+  contenente un codice, restituisca un valore booleano indicante se
+  esso &#232; incoerente oppure no.
+  (<B>Suggerimento:</B> progettare l'unit&#224; in maniera sufficientemente
+  generale, al fine di renderla utile anche per il punto successivo).
+<DT>3.
+<DD>Scrivere una (o pi&#249;) unit&#224; di programma Pascal che, dati due file
+  contenenti rispettivamente un codice e un messaggio, verifichi se il codice
+  &#232; coerente e completo rispetto al messaggio, e in tal caso costruisca <B>
+   una lista</B> contenente il messaggio tradotto. La lista deve essere composta
+  da record contenenti <B>un solo</B> carattere.  Il verso della lista &#232; a
+  scelta dello studente.
+</DL>
+
+<P>
+
+<P>
+<DIV ALIGN="CENTER">
+<B>
+   Universit&#224; di Roma ``La Sapienza''
+<BR>
+Facolt&#224; di Ingegneria
+<BR>
+Corso di Fondamenti di Informatica
+<BR>
+Corsi di Laurea: Aerospaziale, Chimica, Elettrica, Materiali,
+   Nucleare, Ambiente e Territorio (v.p.)</B>
+<BR>
+Appello del <B>16/9/1999</B> -- 2<SUP><I>a</I></SUP> prova scritta
+<BR>
+  <EM>tempo a disposizione: 1 ora</EM>
+</DIV>
+
+<P>
+<B>Problema 2 (4 punti)</B>
+
+<P>
+Descrivere gli aspetti fondamentali della ricorsione, fornendo almeno un
+esempio di unit&#224; di programma Pascal ricorsiva. Descrivere inoltre la maniera
+in cui la ricorsione &#232; implementata in Pascal.
+
+<P>
+<B>Problema 3 (4 punti)</B>
+
+<P>
+Scrivere un programma Pascal che costruisca in memoria la lista illustrata in
+figura.  Il programma deve essere completo, cio&#232; deve essere compilabile.
+
+<P>
+<DIV ALIGN="CENTER">
+ 
+<PRE>
+  ____        __________      __________      _________      _________
+ |    |      |       |  |    |       |  |    |      |  |    |     |  /|
+ | --------->|  'c'  | ----->|  'i'  | ----->|  'a' | ----->| 'o' | / |
+ |____|      |_______|__|    |_______|__|    |______|__|    |_____|/__|
+
+
+</PRE>
+
+ 
+<BR>
+
+<BR></DIV>
+
+<P>
+<B>Problema 4 (4 punti)</B>
+
+<P>
+Scrivere un sottoprogramma Fortran che, ricevendo come parametro una matrice
+quadrata di interi positivi di dimensione n per n,
+calcoli e restituisca in
+modo opportuno al programma chiamante:
+<UL>
+<LI>l'indice della riga la cui media aritmetica &#232; massima;
+<LI>l'indice della colonna la cui media aritmetica &#232; massima.
+</UL>
+
+<P>
+
+</BODY>
+</HTML>

@@ -1,0 +1,642 @@
+<html>
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<meta http-equiv="Content-Language" content="en-us">
+<meta name="GENERATOR" content="Microsoft FrontPage 6.0">
+<meta name="keywords" content="Agile data, database administrator, dba, Sybase, Oracle, Agile Alliance, Agile Software Development, Agile Modeling, Style Guidelines, Agile Database Techniques">
+<meta name="ProgId" content="FrontPage.Editor.Document">
+<title>Encapsulating Database Access </title>
+</head>
+
+<body>
+
+<table border="0" width="100%">
+  <tr>
+    <td width="6%"><a href="http://www.agiledata.org">
+	<img border="0" src="http://www.agiledata.org/images/agileDataLogo.jpg" alt="Agile Data" width="95" height="70"></a></td>
+    <td width="100%">
+      <h1 align="center">Encapsulating Database Access</h1>      
+      <p align="center"><b><a href="http://www.agiledata.org">www.agiledata.org</a>: Bringing data professionals and application developers together.</b></td>
+    <td width="94%">
+      <a href="http://www.ambysoft.com/scottAmbler.html">
+		<img border="0" src="http://www.agiledata.org/images/logoScottWAmbler.gif" alt="Scott W. Ambler" width="81" height="57"></a></td>
+  </tr>
+</table>
+
+<p>&nbsp;</p>
+<p>This essay summarizes Chapter 13 of <a href="http://www.ambysoft.com/agileDatabaseTechniques.html">Agile 
+    Database Techniques</a>.&nbsp; </p>
+<p class="BT" style="text-indent:0in"><i>Encapsulation </i>is a design issue
+that deals with how functionality is compartmentalized within a system. You
+should not have to know how something is implemented to be able to use it.<span style="mso-spacerun: yes">&nbsp;
+</span>The implication of encapsulation is that you can build anything anyway
+you want, and then you can later change the implementation and it will not
+affect other components within the system (as long as the interface to that
+component did not change).<span style="mso-spacerun: yes">&nbsp; </span>People
+often say that encapsulation is the act of painting the box black – you are
+defining how something is going to be done, but you are not telling the rest of
+the world how you’re going to do it.<span style="mso-spacerun: yes">&nbsp; </span>For
+example, consider your bank.<span style="mso-spacerun: yes">&nbsp; </span>How do
+they keep track of your account information, on a mainframe, a mini, or a PC?<span style="mso-spacerun:
+yes">&nbsp; </span>What database do they use?<span style="mso-spacerun: yes">&nbsp;
+</span>What operating system?<span style="mso-spacerun: yes">&nbsp; </span>It
+doesn’t matter to you because the bank has encapsulated the way in which they
+perform account services.<span style="mso-spacerun: yes">&nbsp; </span>You just
+walk up to a teller and perform whatever transactions you wish.</p>
+<p class="BT" style="text-indent:0in">In this chapter I describe the concept of
+a <a href="#DatabaseEncapsulationLayers">database encapsulation layer</a>,
+explore the <a href="#RoleAgileDBA">role of the Agile DBA</a> with respect to
+database encapsulation, various <a href="#Architecture">encapsulation
+architectures</a>, and <a href="#ImplementationStrategies">implementation
+strategies</a> for database encapsulation.<span style="mso-spacerun: yes">&nbsp;
+</span>This chapter is written following the assumption that you are working
+with <a href="http://www.agiledata.org/essays/relationalDatabases.html">relational
+databases</a>, although if this isn’t the case much of the advice in this
+chapter is still appropriate with slight modifications.</p>
+<p>&nbsp;</p>
+<h1>Table of Contents</h1>
+<ul>
+  <li>
+    <p class="MsoNormal"><a href="#DatabaseEncapsulationLayers">Database
+    Encapsulation Layers</a></li>
+  <li>
+    <p class="MsoNormal"><a href="#RoleAgileDBA">The Role of the Agile DBA</a> </li>
+  <li>
+    <p class="MsoNormal"><a href="#Architecture">Encapsulation Layer Architecture</a>
+  </li>
+  <li>
+    <p class="MsoNormal"><a href="#ImplementationStrategies">Implementation
+    Strategies</a> &nbsp;
+    <ul>
+      <li>
+        <p class="MsoNormal"><a href="#StrategyBruteForce">Brute force</a> </li>
+      <li>
+        <p class="MsoNormal"><a href="#StrategyDataAccessObjects">Data access
+        objects</a> </li>
+      <li>
+        <p class="MsoNormal"><a href="#StrategyPersistenceFrameworks">Persistence
+        frameworks</a> &nbsp;</li>
+      <li>
+        <p class="MsoNormal"><a href="#StrategyServices">Services</a> </li>
+    </ul>
+  </li>
+  <li>
+    <p class="MsoNormal"><a href="#Marshalling">Marshalling</a> </li>
+  <li>
+    <p class="MsoNormal"><a href="#ErrorHandling">Error Handling</a> </li>
+  <li>
+    <p class="MsoNormal"><a href="#References">References and Recommended
+    Reading</a></li>
+</ul>
+<p class="MsoNormal">&nbsp;</p>
+<h1>1. <a name="DatabaseEncapsulationLayers">Database Encapsulation Layers</a></h1>
+<p class="MsoNormal">A <i>database encapsulation layer</i> hides the
+implementation details of your database(s), including their physical schemas,
+from your business code.<span style="mso-spacerun: yes">&nbsp; </span>In effect
+it provides your business objects with persistence services – the ability to
+read data from, write data to, and delete data from – data sources.<span style="mso-spacerun: yes">&nbsp;
+</span>Ideally your business objects should know nothing about how they are
+persisted, it just happens.<span style="mso-spacerun: yes">&nbsp; </span>Database
+encapsulation layers aren’t magic and they aren’t academic theories;
+database encapsulation layers are commonly used practice by both large and small
+applications as well as in both simple and complex applications.<span style="mso-spacerun: yes">&nbsp;
+</span>Database encapsulation layers are an important technique that every agile
+software developer should be aware of and be prepared to use.</p>
+<p class="MsoNormal">An effective database encapsulation layer will provide
+several benefits:</p>
+<ul>
+  <li>
+    <p class="MsoNormal">It reduces the coupling between your object schema and 
+    your data schema, increasing your ability to evolve either one. <span style="mso-spacerun: yes">&nbsp;</span></li>
+  <li>
+    <p class="MsoNormal">It implements all data-related code in one place.<span style="mso-spacerun: yes">&nbsp;</span></li>
+  <li>
+    <p class="MsoNormal">It simplifies the job of application programmers.<span style="mso-spacerun: yes">&nbsp;
+    </span></li>
+  <li>
+    <p class="MsoNormal">It allows application programmers to focus on the business problem and Agile DBA(s)
+    can focus on the database.<span style="mso-spacerun: yes">&nbsp; </span></li>
+  <li>
+    <p class="MsoNormal">It gives you a common place to implement data-oriented business rules.<span style="mso-spacerun:
+yes">&nbsp;</span></li>
+  <li>
+    <p class="MsoNormal">It takes advantage of specific database features,
+    increasing application performance.</li>
+</ul>
+<p class="MsoNormal">There are potentially several disadvantages of database
+encapsulation layers:</p>
+<ul>
+  <li>
+    <p class="MsoNormal">They require investment.<span style="mso-spacerun: yes">&nbsp;
+    </span></li>
+  <li>
+    <p class="MsoNormal">They often require reasonably clean <a href="http://www.agiledata.org/essays/mappingObjects.html">mappings</a>.<span style="mso-spacerun: yes">&nbsp;
+    </span></li>
+  <li>
+    <p class="MsoNormal">Can provide too little control over database access.<span style="mso-spacerun: yes">&nbsp;
+    </span></li>
+</ul>
+<p class="MsoNormal">&nbsp;</p>
+<h1>2. The Role of the <a name="RoleAgileDBA">Agile DBA</a></h1>
+<p class="BT"><a href="#Figure1AgileDBA">Figure 1</a> depicts the role of an
+Agile DBA with regards to encapsulation layers.<span style="mso-spacerun: yes">&nbsp;
+</span></p>
+<p class="MsoNormal"><b><a name="Figure1AgileDBA">Figure 1. The role of the
+Agile DBA</a>.</b></p>
+<p class="MsoNormal"><img border="0" src="../images/encapsulationAgileDBA.gif" width="720" height="432"></p>
+<p class="MsoNormal">&nbsp;</p>
+<h1>3. <a name="Architecture">Encapsulation Layer Architecture</a></h1>
+<p><a href="#Figure2SingleSingleArchitecture">Figure 2</a>
+depicts the simplest architecture for encapsulating access to a relational
+database – a single application working with a single database.&nbsp;
+In this situation there is the greatest potential for flexibility as your
+team should be able to choose the implementation strategy, such as data access
+objects or a persistence framework, that best fits your situation.&nbsp; Furthermore you should be in a position to evolve both your
+object schema and your database schema as you implement new requirements.</p>
+<p class="MsoNormal">&nbsp;</p>
+<p class="MsoNormal"><span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;
+font-family:Times;mso-fareast-font-family:&quot;Times New Roman&quot;;mso-bidi-font-family:
+&quot;Times New Roman&quot;;mso-ansi-language:EN-US;mso-fareast-language:EN-US;
+mso-bidi-language:AR-SA"><b><a name="Figure2SingleSingleArchitecture">Figure 2.
+Single application, single</a> database architecture.</b></span></p>
+<p class="MsoNormal"><img border="0" src="../images/encapsulationSingleSingle.gif" width="381" height="720"></p>
+<p class="MsoNormal">&nbsp;</p>
+<p class="MsoNormal"><span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;
+font-family:Times;mso-fareast-font-family:&quot;Times New Roman&quot;;mso-bidi-font-family:
+&quot;Times New Roman&quot;;mso-ansi-language:EN-US;mso-fareast-language:EN-US;
+mso-bidi-language:AR-SA">A far more realistic situation to be in is <a href="#Figure3MultiSingleArchitecture">Figure
+3</a> that depicts a multiple application, single database architecture.<span style="mso-spacerun: yes">&nbsp;
+</span>This architecture is common in organizations that have a centralized <a href="http://www.agiledata.org/essays/legacyDatabases.html">legacy
+database</a> with which all applications work.<span style="mso-spacerun: yes">&nbsp;
+</span>Another realistic situation is shown in <a href="#Figure4MultiMultiArchitecture">Figure
+4</a> where there are multiple applications working with multiple databases.<span style="mso-spacerun: yes">&nbsp;
+</span>In this case you are likely accessing both your database(s), if you have
+any at all, as well as one or more legacy data sources.</span></p>
+<p class="MsoNormal">&nbsp;</p>
+<p class="MsoNormal"><span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;
+font-family:Times;mso-fareast-font-family:&quot;Times New Roman&quot;;mso-bidi-font-family:
+&quot;Times New Roman&quot;;mso-ansi-language:EN-US;mso-fareast-language:EN-US;
+mso-bidi-language:AR-SA"><a name="Figure3MultiSingleArchitecture"><b>Figure 3.
+Multi-application, single database architecture.</b></a></span></p>
+<p class="MsoNormal"><img border="0" src="../images/encapsulationMultiSingle.gif" width="628" height="720"></p>
+<p class="MsoNormal">One interesting observation about both of these diagrams is
+that some applications may not take advantage of the encapsulation layer(s) and
+instead directly access data.<span style="mso-spacerun: yes">&nbsp; </span>There
+are several reasons for this:</p>
+<ul>
+  <li>
+    <p class="MsoNormal">Your data encapsulation layer written in a language
+    that some legacy applications can’t easily access.<span style="mso-spacerun: yes">&nbsp;</span></li>
+  <li>
+    <p class="MsoNormal">You’ve chosen not to rework some of your legacy
+    applications to use the database encapsulation layers.<span style="mso-spacerun: yes">&nbsp;</span></li>
+  <li>
+    <p class="MsoNormal">You want to use technologies, such as a bulk load
+    facility or a reporting framework, that require direct access to the
+    database schema.<span style="mso-spacerun: yes">&nbsp; </span>Note that this
+    may motivate your team to sometimes go around the encapsulation layer.</li>
+</ul>
+<p class="MsoNormal">The point is that some applications will be able to take
+advantage of your encapsulation layer(s) and some won’t.<span style="mso-spacerun: yes">&nbsp;
+</span>There are still benefits because you are reducing coupling and therefore
+reducing your development costs and maintenance burden.</p>
+<p class="MsoNormal">&nbsp;</p>
+<p class="MsoNormal"><span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;
+font-family:Times;mso-fareast-font-family:&quot;Times New Roman&quot;;mso-bidi-font-family:
+&quot;Times New Roman&quot;;mso-ansi-language:EN-US;mso-fareast-language:EN-US;
+mso-bidi-language:AR-SA"><b><a name="Figure4MultiMultiArchitecture">Figure 4.
+Multi-application, multi-database architecture</a>.</b></span></p>
+<p class="MsoNormal"><img border="0" src="../images/encapsulationMultiMulti.gif" width="675" height="720"></p>
+<p class="MsoNormal"><a href="#Figure4MultiMultiArchitecture">Figure 4</a> makes
+it clear that some applications already have an encapsulation layer in place.<span style="mso-spacerun: yes">&nbsp; </span>If this is the case you
+might want to consider reusing the existing approach instead of developing your
+own.<span style="mso-spacerun: yes">&nbsp; </span>By having a single
+encapsulation layer that all applications use to access all data sources (where
+appropriate) you potentially reduce the effort it takes to evolve your database
+schemas via <a href="http://www.agiledata.org/essays/databaseRefactoring.html">database
+refactoring</a> because there is only one encapsulation layer to update.<span style="mso-spacerun: yes">&nbsp;
+</span>If you’ve purchased the encapsulation layer there is an opportunity to
+reduce overall licensing fees because you only need to deal with one vendor.<span style="mso-spacerun: yes">&nbsp;
+</span>The potential disadvantage is that the team responsible for maintaining
+the encapsulation layer could become a bottleneck if they are unable or
+unwilling to work in an agile manner.</p>
+<p class="MsoNormal">&nbsp;</p>
+<h1>4. <a name="ImplementationStrategies">Implementation Strategie</a>s For
+Database Encapsulation Layers</h1>
+<p class="BT">Regardless of whether you intend to purchase, build, or download
+an a database encapsulation layer it is critical for both Agile DBAs and
+application developers to understand the various implementation strategies.
+There are four basic strategies – <a href="#StrategyBruteForce">brute force</a>,
+<a href="#StrategyDataAccessObjects">data
+access objects</a>, <a href="#StrategyPersistenceFrameworks">persistence
+frameworks</a>, and <a href="#StrategyServices">services</a> – that you should
+consider using.<span style="mso-spacerun: yes">&nbsp;</span></p>
+<p class="MsoNormal">&nbsp;</p>
+<h2>4.1. <a name="StrategyBruteForce">Brute Force</a></h2>
+<p class="BT">The basic strategy with the brute force approach is that business
+objects access data sources directly, typically submitting Structure Query
+Language (SQL) or Object Query Language (OQL) code to the database.<span style="mso-spacerun: yes">&nbsp;
+</span>In Java applications this will be done via the Java Database Connectivity
+(JDBC) class library and via Open Database Connectivity (ODBC) application
+programming interface (API) in Microsoft-based applications.<span style="mso-spacerun: yes">&nbsp;
+</span>Note that Microsoft has newer approaches, such as the ActiveX Data Object
+(ADO) and Microsoft Data Access Component (MDAC) libraries, which encapsulate
+and extend ODBC.<span style="mso-spacerun: yes">&nbsp; </span>Other
+environments, such as COBOL or Ruby, have their own native APIs which often take
+advantage of existing ODBC or JDBC database drivers.</p>
+<p class="BT">The brute force approach isn’t a database encapsulation
+strategy, it is what you do when you don’t have a database encapsulation
+layer.<span style="mso-spacerun: yes">&nbsp; </span>However, it is a valid
+option for database access.<span style="mso-spacerun: yes">&nbsp; </span>Furthermore
+it is likely the most common approach because it is simple and provides
+programmers with complete control over how their business objects interact with
+the database.<span style="mso-spacerun: yes">&nbsp; </span>Because of its
+simplicity this is a very good approach to take at the beginning of a project
+when your database access requirements are fairly straightforward.<span style="mso-spacerun: yes">&nbsp;
+</span>As your database access needs become more complex data access objects or
+persistence frameworks are likely better options.</p>
+<p class="MsoNormal">&nbsp;</p>
+<h2>4.2. <a name="StrategyDataAccessObjects">Data Access Objects</a></h2>
+<p class="BT">Data access objects (DAOs) encapsulate the database access logic
+required of business objects.<span style="mso-spacerun: yes">&nbsp; </span>The
+typical approach is for there to be one data access object for each business
+object, for example the Customer class would have a Customer_Data class.<span style="mso-spacerun: yes">&nbsp;
+</span>The Customer_Data class implements the SQL/OQL/… code required to
+access the database, similar to the brute force approach.<span style="mso-spacerun: yes">&nbsp;
+</span>The main advantage of data access objects over the brute force approach
+is that your business classes are no longer directly coupled to the database,
+instead the data access classes are.<span style="mso-spacerun: yes">&nbsp; </span>It
+is quite common to simply develop your own data access objects, although you may
+also choose to follow industry-standard approaches such as <a href="http://www.jdocentral.com/">Java
+Data Object (JDO)</a> and <a href="http://www.microsoft.com/data/ado">ActiveX
+Data Object (ADO)</a>. Note that ADO is arguably more of an implementation
+platform on which to build DAOs within the Microsoft environment, and that it is
+clearly not as sophisticated than the newer JDO.<o:p>
+</o:p>
+</p>
+<p class="MsoNormal">&nbsp;</p>
+<h2>4.3. <a name="StrategyPersistenceFrameworks">Persistence Frameworks</a></h2>
+<p class="BT">A persistence framework, often referred to as a persistence layer,
+fully encapsulates database access from your business objects.<span style="mso-spacerun: yes">&nbsp;
+</span>Instead of writing code to implement the logic required to access the
+database you instead define meta data that represents the mappings.<span style="mso-spacerun: yes">&nbsp;
+</span>So, if the <i>Customer</i> class maps to the <i>T_Customer</i> table part
+of the meta data would represent this mapping.<span style="mso-spacerun: yes">&nbsp;
+</span>Meta data representing the mappings of all business objects, as well as
+the associations between them would also need to exist.<span style="mso-spacerun: yes">&nbsp;
+</span>Based on this meta data the persistence framework would generate the
+database access code it requires to persist the business objects.<span style="mso-spacerun: yes">&nbsp;
+</span>Depending on the framework, several of which are listed in <a href="#Table1ExampleProducts">Table
+1</a> and even more at <a href="http://www.ambysoft.com/persistenceLayer.html">www.ambysoft.com/persistenceLayer.html</a>,
+this code is either generated dynamically at run time or it can be generated
+statically in the form of data access objects which are then compiled into the
+application.<span style="mso-spacerun: yes">&nbsp; </span>The first approach
+provides greater flexibility whereas the second provides greater performance.</p>
+<p>Persistence frameworks will have a variety of features.&nbsp;
+Simple ones will support basic create, read, update, delete (CRUD)
+functionality for objects as well as basic <a href="http://www.agiledata.org/essays/concurrencyControl.html">transaction
+and concurrency control</a>.&nbsp; Advanced
+features include robust error handling (see below), database connection pooling,
+caching, XML support, schema and mapping generation capabilities, and support
+for industry standard technology such as EJB.&nbsp;&nbsp;&nbsp;</p>
+<p>Taking the persistence framework approach the job of an
+Agile DBA becomes a little more complex but a lot less onerous.&nbsp;
+You will be expected to install, if necessary, the persistence framework.&nbsp;
+You will also need to work with the administration facility to define and
+maintain the mapping meta data.&nbsp; In
+the case of explicitly controlled persistence frameworks application programmers
+will need mentoring in the use of the framework, often a very simple task.</p>
+<p>As you can see in <a href="#Table1ExampleProducts">Table 1</a>
+there are many persistence frameworks available for download or purchase, and a
+much longer list is maintained at <a href="http://www.ambysoft.com/persistenceLayer.html">www.ambysoft.com/persistenceLayer.html</a>.&nbsp;
+This URL also includes a white paper describing the design of a
+persistence layer.
+</p>
+<p class="MsoNormal"> <span style="mso-spacerun: yes">&nbsp;</span></p>
+<p class="TT"><b><a name="Table1ExampleProducts">Table 1. Example products</a>.</b></p>
+<table border="1" style="border-collapse: collapse; mso-border-alt: solid windowtext .5pt; mso-padding-alt: 0in 5.4pt 0in 5.4pt; border-style: none; border-width: medium" width="100%">
+  <tr>
+    <td width="159" valign="top" style="border: .5pt solid windowtext; padding-left: 5.4pt; padding-right: 5.4pt; padding-top: 0in; padding-bottom: 0in">
+      <p class="TCH"><b>Product</b></p>
+    </td>
+    <td width="196" valign="top" style="mso-border-left-alt: solid windowtext .5pt; border-left-style: none; border-left-width: medium; border-right: .5pt solid windowtext; border-top: .5pt solid windowtext; border-bottom: .5pt solid windowtext; padding-left: 5.4pt; padding-right: 5.4pt; padding-top: 0in; padding-bottom: 0in">
+      <p class="TCH"><b>Platform</b></p>
+    </td>
+    <td width="1366" valign="top" style="mso-border-left-alt: solid windowtext .5pt; border-left-style: none; border-left-width: medium; border-right: .5pt solid windowtext; border-top: .5pt solid windowtext; border-bottom: .5pt solid windowtext; padding-left: 5.4pt; padding-right: 5.4pt; padding-top: 0in; padding-bottom: 0in">
+      <p class="TCH"><b>Description</b></p>
+    </td>
+  </tr>
+  <tr>
+    <td width="175" style="mso-border-top-alt: solid windowtext .5pt; border-left: .5pt solid windowtext; border-right: .5pt solid windowtext; border-top-style: none; border-top-width: medium; border-bottom: .5pt solid windowtext; ">
+      <p><a href="http://castor.exolab.org">Castor</a></p>
+    </td>
+    <td width="212" style="mso-border-top-alt: solid windowtext .5pt; mso-border-left-alt: solid windowtext .5pt; border-left-style: none; border-left-width: medium; border-right: .5pt solid windowtext; border-top-style: none; border-top-width: medium; border-bottom: .5pt solid windowtext; ">
+      <p>Java</p>
+    </td>
+    <td width="1382" style="mso-border-top-alt: solid windowtext .5pt; mso-border-left-alt: solid windowtext .5pt; border-left-style: none; border-left-width: medium; border-right: .5pt solid windowtext; border-top-style: none; border-top-width: medium; border-bottom: .5pt solid windowtext; ">
+      <p>OSS persistence framework with support for XML, DAX, DSML, caching, two-phase commit, OQL to SQL mappings, ability to create
+      base mapping, support for EJB containers, and the ability to create an XML
+      schema.&nbsp;</p>
+    </td>
+  </tr>
+  <tr>
+    <td width="175" style="mso-border-top-alt: solid windowtext .5pt; border-left: .5pt solid windowtext; border-right: .5pt solid windowtext; border-top-style: none; border-top-width: medium; border-bottom: .5pt solid windowtext; ">
+      <p><a href="http://www.thoughtinc.com">CocoBase Enterprise O/R</a></p>
+    </td>
+    <td width="212" style="mso-border-top-alt: solid windowtext .5pt; mso-border-left-alt: solid windowtext .5pt; border-left-style: none; border-left-width: medium; border-right: .5pt solid windowtext; border-top-style: none; border-top-width: medium; border-bottom: .5pt solid windowtext; ">
+      <p>Java</p>
+    </td>
+    <td width="1382" style="mso-border-top-alt: solid windowtext .5pt; mso-border-left-alt: solid windowtext .5pt; border-left-style: none; border-left-width: medium; border-right: .5pt solid windowtext; border-top-style: none; border-top-width: medium; border-bottom: .5pt solid windowtext; ">
+      <p>Commercial persistence framework that create maps from
+      objects to tables, tables to objects, existing objects with existing
+      tables, existing object models using transparent persistence, and UML /
+      XMI object models.&nbsp; Generates
+      Java code a variety of approaches data objects, EJB CMP/BMP entity beans,
+      EJB session beans, JSPs, and servlets.&nbsp;&nbsp;</p>
+    </td>
+  </tr>
+  <tr>
+    <td width="175" style="mso-border-top-alt: solid windowtext .5pt; border-left: .5pt solid windowtext; border-right: .5pt solid windowtext; border-top-style: none; border-top-width: medium; border-bottom: .5pt solid windowtext; ">
+      <p><a href="http://www.deklarit.com">Deklarit</a></p>
+    </td>
+    <td width="212" style="mso-border-top-alt: solid windowtext .5pt; mso-border-left-alt: solid windowtext .5pt; border-left-style: none; border-left-width: medium; border-right: .5pt solid windowtext; border-top-style: none; border-top-width: medium; border-bottom: .5pt solid windowtext; ">
+      <p>.NET</p>
+    </td>
+    <td width="1382" style="mso-border-top-alt: solid windowtext .5pt; mso-border-left-alt: solid windowtext .5pt; border-left-style: none; border-left-width: medium; border-right: .5pt solid windowtext; border-top-style: none; border-top-width: medium; border-bottom: .5pt solid windowtext; ">
+      <p>Commercial development environment that allows you to
+      describe business objects and rules in a declarative way, with no
+      programming, and it generates the database schema and the ADO.NET strongly
+      typed DataSets and DataAdapters necessary to support them.&nbsp;</p>
+    </td>
+  </tr>
+  <tr>
+    <td width="175" style="mso-border-top-alt: solid windowtext .5pt; border-left: .5pt solid windowtext; border-right: .5pt solid windowtext; border-top-style: none; border-top-width: medium; border-bottom: .5pt solid windowtext; ">
+      <a href="http://hibernate.bluemars.net">Hibernate</a>
+    </td>
+    <td width="212" style="mso-border-top-alt: solid windowtext .5pt; mso-border-left-alt: solid windowtext .5pt; border-left-style: none; border-left-width: medium; border-right: .5pt solid windowtext; border-top-style: none; border-top-width: medium; border-bottom: .5pt solid windowtext; ">
+      Java
+    </td>
+    <td width="1382" style="mso-border-top-alt: solid windowtext .5pt; mso-border-left-alt: solid windowtext .5pt; border-left-style: none; border-left-width: medium; border-right: .5pt solid windowtext; border-top-style: none; border-top-width: medium; border-bottom: .5pt solid windowtext; ">
+      OSS persistence framework which generates code
+      dynamically at system startup time.&nbsp; Supports
+      an ODMG 3 interface as well as a custom API.&nbsp;&nbsp;
+    </td>
+  </tr>
+  <tr>
+    <td width="175" style="mso-border-top-alt: solid windowtext .5pt; border-left: .5pt solid windowtext; border-right: .5pt solid windowtext; border-top-style: none; border-top-width: medium; border-bottom: .5pt solid windowtext; ">
+      <p><a href="http://sourceforge.net/projects/jcframework/">JC
+      Persistent Framework</a></p>
+    </td>
+    <td width="212" style="mso-border-top-alt: solid windowtext .5pt; mso-border-left-alt: solid windowtext .5pt; border-left-style: none; border-left-width: medium; border-right: .5pt solid windowtext; border-top-style: none; border-top-width: medium; border-bottom: .5pt solid windowtext; ">
+      <p>Visual Basic 6.0</p>
+    </td>
+    <td width="1382" style="mso-border-top-alt: solid windowtext .5pt; mso-border-left-alt: solid windowtext .5pt; border-left-style: none; border-left-width: medium; border-right: .5pt solid windowtext; border-top-style: none; border-top-width: medium; border-bottom: .5pt solid windowtext; ">
+      <p>OSS persistence framework that manages transactions in a
+      transparent manner to most relational databases.&nbsp;&nbsp;</p>
+    </td>
+  </tr>
+  <tr>
+    <td width="175" style="mso-border-top-alt: solid windowtext .5pt; border-left: .5pt solid windowtext; border-right: .5pt solid windowtext; border-top-style: none; border-top-width: medium; border-bottom: .5pt solid windowtext; ">
+      <p><a href="http://osage.sourceforge.net">Osage Persistence
+      Plus XML</a></p>
+    </td>
+    <td width="212" style="mso-border-top-alt: solid windowtext .5pt; mso-border-left-alt: solid windowtext .5pt; border-left-style: none; border-left-width: medium; border-right: .5pt solid windowtext; border-top-style: none; border-top-width: medium; border-bottom: .5pt solid windowtext; ">
+      <p>Java</p>
+    </td>
+    <td width="1382" style="mso-border-top-alt: solid windowtext .5pt; mso-border-left-alt: solid windowtext .5pt; border-left-style: none; border-left-width: medium; border-right: .5pt solid windowtext; border-top-style: none; border-top-width: medium; border-bottom: .5pt solid windowtext; ">
+      <p>OSS persistence framework that features JDBC-based
+      object-relational mapping that allows experienced Java developers to
+      quickly implement database access in their applications. It generates SQL
+      for retreiving, saving, and deleting objects. Supports object
+      relationships and can automatically generate keys.</p>
+    </td>
+  </tr>
+  <tr>
+    <td width="175" style="mso-border-top-alt: solid windowtext .5pt; border-left: .5pt solid windowtext; border-right: .5pt solid windowtext; border-top-style: none; border-top-width: medium; border-bottom: .5pt solid windowtext; ">
+      <a href="http://www.pragmatier.com">Pragmatier</a>
+    </td>
+    <td width="212" style="mso-border-top-alt: solid windowtext .5pt; mso-border-left-alt: solid windowtext .5pt; border-left-style: none; border-left-width: medium; border-right: .5pt solid windowtext; border-top-style: none; border-top-width: medium; border-bottom: .5pt solid windowtext; ">
+      Visual Basic 6, .NET
+    </td>
+    <td width="1382" style="mso-border-top-alt: solid windowtext .5pt; mso-border-left-alt: solid windowtext .5pt; border-left-style: none; border-left-width: medium; border-right: .5pt solid windowtext; border-top-style: none; border-top-width: medium; border-bottom: .5pt solid windowtext; ">
+      Commercial persistence framework/code generator that generates the code
+      for DAO objects with full CRUD +&nbsp;filter/sort capabilities on the MS
+      platforms. Includes development environment that enables you to map data
+      access objects that you create to your existing database or you can let
+      the framework create the database for you (or a mix thereof). Support for
+      distributed transactions and object caching, XML serialization, and&nbsp;traversable
+      data model.&nbsp;
+    </td>
+  </tr>
+  <tr>
+    <td width="175" style="mso-border-top-alt: solid windowtext .5pt; border-left: .5pt solid windowtext; border-right: .5pt solid windowtext; border-top-style: none; border-top-width: medium; border-bottom: .5pt solid windowtext; ">
+      <p><a href="http://www.versant.com/products/enjin/index.html">Versant
+      Enjin</a></p>
+    </td>
+    <td width="212" style="mso-border-top-alt: solid windowtext .5pt; mso-border-left-alt: solid windowtext .5pt; border-left-style: none; border-left-width: medium; border-right: .5pt solid windowtext; border-top-style: none; border-top-width: medium; border-bottom: .5pt solid windowtext; ">
+      <p>Java</p>
+    </td>
+    <td width="1382" style="mso-border-top-alt: solid windowtext .5pt; mso-border-left-alt: solid windowtext .5pt; border-left-style: none; border-left-width: medium; border-right: .5pt solid windowtext; border-top-style: none; border-top-width: medium; border-bottom: .5pt solid windowtext; ">
+      <p>Commercial persistence framework that provides transparent persistence for Java objects within the
+      application server and web server tiers. enJin stores objects
+      transactionally in the middle tier and distributes these objects on demand
+      to local caches in the application and web servers.</p>
+    </td>
+  </tr>
+  <tr>
+    <td width="175" style="mso-border-top-alt: solid windowtext .5pt; border-left: .5pt solid windowtext; border-right: .5pt solid windowtext; border-top-style: none; border-top-width: medium; border-bottom: .5pt solid windowtext; ">
+      <p><a href="http://webware.sourceforge.net">Webware for Python</a></p>
+    </td>
+    <td width="212" style="mso-border-top-alt: solid windowtext .5pt; mso-border-left-alt: solid windowtext .5pt; border-left-style: none; border-left-width: medium; border-right: .5pt solid windowtext; border-top-style: none; border-top-width: medium; border-bottom: .5pt solid windowtext; ">
+      <p>Python</p>
+    </td>
+    <td width="1382" style="mso-border-top-alt: solid windowtext .5pt; mso-border-left-alt: solid windowtext .5pt; border-left-style: none; border-left-width: medium; border-right: .5pt solid windowtext; border-top-style: none; border-top-width: medium; border-bottom: .5pt solid windowtext; ">
+      <p>OSS suite of software components for developing
+      object-oriented, web-based applications including an object to relational
+      mapper.</p>
+    </td>
+  </tr>
+</table>
+<p class="MsoNormal">&nbsp;</p>
+<h2>4.4. <a name="StrategyServices">Services</a></h2>
+<p class="MsoNormal">For the sake of discussion a service is an operation
+offered by a computing entity that can be invoked by other computing entities.<span style="mso-spacerun: yes">&nbsp;
+</span>At the time of this writing the most popular architectural strategy is
+web services (McGovern et. al. 2003), however, as you see in <a href="#Table2ServiceArchitecturalStrategies">Table
+2</a>, it is only one of several common strategies available to you:</p>
+<ul>
+  <li>
+<p class="MsoNormal">Common Object Request Broker Architecture (CORBA)</p>
+  </li>
+  <li>
+<p class="MsoNormal">Customer Information Control System (CICS)
+      Transaction</p>
+  </li>
+  <li>
+<p class="MsoNormal">Distributed Component Object Model (DCOM)</p>
+  </li>
+  <li>
+<p class="MsoNormal">Electronic data interchange (EDI)</p>
+  </li>
+  <li>
+	<p class="MsoNormal">Stored procedures</p></li>
+	<li>
+	<p class="MsoNormal">Web Services</p></li>
+</ul>
+<p class="MsoNormal">Services are typically used to encapsulate access to legacy functionality
+and data, and there is a clear preference within the industry to build new
+applications following a web services-based architecture to facilitate reuse via
+system integration.</p>
+<p class="MsoNormal">&nbsp;</p>
+<p class="MsoNormal">&nbsp;</p>
+<h1>5. <a name="Marshalling">Marshalling</a></h1>
+<p class="MsoNormal">Let’s start with some terminology.<span style="mso-spacerun:
+yes">&nbsp; </span>Marshalling is the conversion of an object into a data
+structure such as an XML document or a data set.<span style="mso-spacerun: yes">&nbsp;
+</span>Unmarshalling is the conversion of data to objects.<span style="mso-spacerun: yes">&nbsp;
+</span>However, it is common to refer to both types of conversion simply as
+marshalling.<span style="mso-spacerun: yes">&nbsp; </span>Don’t worry about
+it.<span style="mso-spacerun: yes">&nbsp;</span></p>
+<p class="MsoNormal">Because (un)marshalling occurs at boundary points within
+your system you need to consider validating the data.<span style="mso-spacerun:
+yes">&nbsp; </span>You want to ensure that your data is in a valid state, that
+individual values conform to business rules (e.g. someone’s age is less than
+150) and to <a href="http://www.agiledata.org/essays/referentialIntegrity.html">referential
+integrity</a> rules.<span style="mso-spacerun:
+yes">&nbsp; </span><a href="http://www.agiledata.org/essays/legacyDatabases.html">The
+Joy of Legacy Data</a> described many common data quality problems that you may
+want to try to detect.<span style="mso-spacerun: yes">&nbsp; </span>There are
+several data validation issues that you need to consider:</p>
+<ul>
+  <li>
+    <p class="MsoNormal">Do you validate the data at all?<span style="mso-spacerun: yes">&nbsp;
+    </span></li>
+  <li>
+    <p class="MsoNormal">Where is validation performed?<span style="mso-spacerun: yes">&nbsp;
+    </span></li>
+  <li>
+    <p class="MsoNormal">Do you validate automatically?<span style="mso-spacerun: yes">&nbsp;
+    </span></li>
+  <li>
+    <p class="MsoNormal">What do you do when you find a problem?<span style="mso-spacerun: yes">&nbsp;
+    </span></li>
+</ul>
+<p class="MsoNormal">&nbsp;</p>
+<h1>6. <a name="ErrorHandling">Error Handling</a></h1>
+<p class="MsoNormal">An important feature of a database encapsulation layer is
+its ability to handle database errors accordingly.<span style="mso-spacerun:
+yes">&nbsp; </span>Whenever the encapsulation layer interacts with a data source
+there is a potential that an error can occur.<span style="mso-spacerun: yes">&nbsp;
+</span>Common types of database-oriented errors include:</p>
+<ul>
+  <li>
+    <p class="MsoNormal">The database is not available</li>
+  <li>
+    <p class="MsoNormal">The network is not available</li>
+  <li>
+    <p class="MsoNormal">The request you made to the database is not correct
+    (e.g. improperly formulated SQL code, you’re trying to invoke a stored
+    procedure that doesn’t exist)</li>
+  <li>
+    <p class="MsoNormal">You are trying to work with data that doesn’t exist
+    (e.g. trying to update a deleted record)</li>
+  <li>
+    <p class="MsoNormal">You are trying to insert existing data</li>
+  <li>
+    <p class="MsoNormal">The data you want to access is locked (e.g. you want to
+    update a record that another user has write locked)</li>
+</ul>
+<p class="MsoNormal">The list described above is nowhere near complete, you only
+have to look at the list of error codes in the manuals for your database to see
+this, but it is a good start.<span style="mso-spacerun: yes">&nbsp; </span>The
+point is that errors happen and you need to be prepared to act on them.<span style="mso-spacerun: yes">&nbsp;
+</span>A good encapsulation layer should be able to:</p>
+<ul>
+  <li>
+    <p class="MsoNormal">Detect database-oriented errors and continue
+    processing.<span style="mso-spacerun: yes">&nbsp;</span></li>
+  <li>
+    <p class="MsoNormal">Log the details pertaining to the error.</li>
+  <li>
+    <p class="MsoNormal">Report the error to the invoking application in an 
+    intelligible manner.</li>
+</ul>
+<p class="MsoNormal">&nbsp;</p>
+<p class="MsoNormal">&nbsp;</p>
+<h1>6. <a name="References">References</a> and Suggested Online Readings</h1>
+<p><a href="http://www.agiledata.org/essays/references.html">List of References</a></p>
+<p>You will also find these essays of interest:</p>
+<ul>
+  <li><a href="http://www.agiledata.org/essays/mappingObjects.html">Mapping Objects to
+    RDBs</a></li>
+  <li><a href="http://www.agiledata.org/essays/relationalDatabases.html">Relational
+    Databases 101: Looking at the Whole Picture</a></li>
+</ul>
+<table border="0" width="100%">
+  <tr>
+    <td width="12%">
+<b><a href="http://www.ambysoft.com/agileDatabaseTechniques.html">
+<img
+        src="http://images.amazon.com/images/P/0471202835.01.MZZZZZZZ.jpg" alt="Agile Database Techniques"
+        border="0" width="114" height="140"></a></b></td>
+    <td width="88%">This book describes the philosophies and skills required for 
+    developers and database administrators to work together effectively on 
+    project teams following evolutionary software processes such as Extreme 
+    Programming (XP), the Rational Unified Process (RUP), Feature Driven 
+    Development (FDD), Dynamic System Development 
+    Method (DSDM), or The Enterprise Unified Process (EUP).&nbsp; In March 2004 
+	it won a Jolt Productivity award.</td>
+  </tr>
+	<tr>
+    <td width="12%">
+<b><a href="http://www.ambysoft.com/theObjectPrimer.html"><img
+        src="http://images.amazon.com/images/P/0521540186.01.MZZZZZZZ.jpg" alt="The Object Primer 3rd Edition: Agile Model Driven Development (AMDD) with UML 2"
+        border="0" width="106" height="140"></a></b></td>
+    <td width="88%">This book presents a full-lifecycle, agile model driven 
+	development (AMDD) approach to software development.&nbsp; It is one of the 
+	few books which covers both object-oriented and data-oriented development in 
+	a comprehensive and coherent manner.&nbsp; Techniques the book covers 
+	include Agile Modeling (AM), Full Lifecycle Object-Oriented Testing (FLOOT), 
+	over 30 modeling techniques, agile database techniques, refactoring, and 
+	test driven development (TDD).If you want to gain the skills required to 
+	build mission-critical applications in an agile manner, this is the book for 
+	you. </td>
+  </tr>
+</table>
+<p class="MsoNormal">&nbsp;</p>
+<h1> 7. <a name="LetUsHelp">Let Us Help</a></h1>
+                        <p>I work with <a href="http://www.ronin-intl.com">Ronin
+                        International, Inc.</a> helping numerous
+                        organizations to learn about and hopefully adopt agile
+                        techniques and philosophies.&nbsp; Ronin offers both 
+						<a href="http://www.ronin-intl.com/services/">consulting</a> and 
+						<a href="http://www.ronin-intl.com/training/">training</a> 
+						offerings.&nbsp; In addition we host
+						<a href="http://www.enterpriseunifiedprocess.com">Enterprise
+                        Unified Process (EUP)</a> which may find of value.&nbsp; You
+                        might find several of my books to be of interest,
+                        including <a href="http://www.ambysoft.com/theObjectPrimer.html">The
+                        Object Primer 3/e</a>, <a href="http://www.ambysoft.com/agileModeling.html">Agile
+                        Modeling</a>, <a href="http://www.ambysoft.com/elementsUMLStyle.html">The
+                        Elements of UML Style</a>, and <a href="http://www.ambysoft.com/agileDatabaseTechniques.html">Agile
+                        Database Techniques</a>.&nbsp; For more information please
+contact Michael Vizdos at 866-AT-RONIN (U.S. number) or via e-mail (<a href="mailto:michael.vizdos@ronin-intl.com">michael.vizdos@ronin-intl.com</a>).
+                        </p>
+                        <p>&nbsp;<o:p><table border="0" id="table1">
+							<tr>
+								<td><a href="http://www.ambysoft.com">
+								<img border="0" src="../../agilemodeling/images/logoAmbysoft.gif" width="97" height="57"></a></td>
+								<td><b>Page last updated on January 22 2005<br>
+								This site owned by
+								<a href="http://www.ambysoft.com">Ambysoft Inc.</a></b></td>
+								</tr>
+							</table>
+						<p><b><br>
+Page last updated: December 17 2004<br>
+						Copyright 2003-2005 <a href="http://www.ambysoft.com/scottAmbler.html">Scott
+W. Ambler</a></b></p>
+
+</body>
+
+</html>

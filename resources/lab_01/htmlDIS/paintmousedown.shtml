@@ -1,0 +1,157 @@
+<!doctype html public "-//w3c//dtd html 4.0 transitional//en">
+<html>
+<head>
+<link href="java.css" rel="stylesheet" type="text/css">
+<title>Paint e mouseDown insieme</title>
+</head>
+
+<body>
+
+<h2>Paint e mouseDown insieme</h2>
+
+I programmi visti fino ad ora sono di due tipi: quelli
+con <tt>paint</tt>, che disegnano qualcosa ma non reagiscono
+ai click del mouse, e quelli con <tt>mouseDown</tt>, che
+invece reagiscono al click del mouse, ma disegnano una
+finestra che inizialmente &egrave; vuota. Ci sono casi in
+cui si vogliono fare tutte e due queste cose, ossia si
+deve disegnare qualcosa all'inizio, e poi reagire alla
+pressione del tasto del mouse con azioni opportune.<p>
+
+Come abbiamo visto, l'applet che disegna quando viene
+premuto il tasto del mouse ha questa struttura:<p>
+
+<pre>
+import java.awt.*;
+
+public class nomefile extends java.applet.Applet {
+  public boolean mouseDown(Event e, int x, int y) {
+    ...
+  }
+}
+</pre>
+
+L'applet che fa un disegno all'inizio e poi basta 
+ha invece una struttura leggermente diversa:<p>
+
+<pre>
+import java.awt.*;
+
+public class nomefile extends java.applet.Applet {
+  public void paint(Graphics g) {
+    ...
+  }
+}
+</pre>
+
+La differenza sta nel fatto che il primo tipo di
+applet contiene un blocco di istruzioni
+<tt>mouseDown(..) { ... }</tt>, mentre il secondo
+tipo contiene un blocco <tt>paint(..) { ... }</tt>.
+Come si &egrave; gi&agrave; detto, le istruzioni che
+si trovano all'interno delle parentesi graffe
+di <tt>mouseDown(..) { ... }</tt> sono quelle che
+vengono eseguite quando il pulsante del
+mouse viene premuto.<p>
+
+Nel caso degli applet che disegnano, il blocco di
+istruzioni all'interno delle parentesi graffe di
+<tt>paint(..) { ... }</tt> vengono invece eseguite
+comunque all'inizio della esecuzione dell'applet.<p>
+
+&Egrave; possibile mettere nello stesso applet sia
+il blocco <tt>mouseDown(..) { ... }</tt> che quello
+<tt>paint(..) { ... }</tt>. In questo modo, possiamo
+specificare cosa deve succedere sia quando si preme il
+pulsante del mouse che quando si deve disegnare la
+finestra. Lo schema generale, a questo punto, risulta il
+seguente:<p>
+
+<pre>
+import java.awt.*;
+
+public class nomefile extends java.applet.Applet {
+  public boolean mouseDown(Event e, int x, int y) {
+    bloccoA
+  }
+
+  public void paint(Graphics g) {
+    bloccoB
+  }
+}
+</pre>
+
+La sequenza di istruzioni <tt>bloccoA</tt> viene eseguito
+quando si preme il pulsante del mouse, mentre
+<tt>bloccoB</tt> si esegue all'inizio della esecuzione.
+Questo &egrave; molto interessante, e ci consente di
+realizzare un applet in cui possiamo contemporanemente
+disegnare qualcosa e rispondere al click.<p>
+
+Supponiamo per esempio di voler modificare l'applet
+<a href="CrociCerchi.java">CrociCerchi.java</a>
+che disegna una croce se si fa click in un punto
+con <tt>x<=200</tt> e un cerchio altrimenti. Vogliamo
+tracciare una linea sul confine fra i punti dove si
+disegnano le croci e i punti dove si disegnano i
+cerchi.<p>
+
+La linea che separa le due regioni &egrave; una linea
+verticale in cui <tt>x</tt> vale 200. Per esempio, si
+pu&ograve; tracciare con
+<tt>drawLine(200,0,200,500)</tt>. Dal momento che
+questa linea va disegnata ogni volta che l'applet parte,
+la mettiamo all'interno di <tt>paint</tt>. Il
+programma complessivo
+<a href="CrociCerchiLinea.java">CrociCerchiLinea.java</a>
+&egrave; riportato qui sotto.<p>
+
+<pre>
+/*
+  Disegna croci e cerchi, piu' la linea
+  che li separa.
+*/
+
+import java.awt.*;
+
+public class CrociCerchiLinea extends java.applet.Applet {
+
+	/* risponde al click del mouse */
+  public boolean mouseDown(Event e, int x, int y) {
+    Graphics g=getGraphics();
+
+    if( x<=200 ) {
+      g.drawLine(x,y-5,x,y+5);
+      g.drawLine(x-5,y,x+5,y);
+    }
+    else {
+      g.drawOval(x-5,y-5,10,10);
+    }
+
+    return true;
+  }
+
+	/* disegna la linea di separazione */
+  public void paint(Graphics g) {
+    g.drawLine(200,0,200,500);
+  }
+}
+
+</pre>
+
+<p>
+
+<center>
+<img src="CrociCerchiLinea.gif">
+</center>
+<p>
+
+<applet code="CrociCerchiLinea.class" width="500" height="500">
+</applet>
+
+
+
+
+</body>
+</html>
+

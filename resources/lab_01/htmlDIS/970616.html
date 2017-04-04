@@ -1,0 +1,125 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+<HEAD>
+   <TITLE></TITLE>
+   <META NAME="Author" CONTENT="">
+   <META NAME="GENERATOR" CONTENT="Mozilla/3.01Gold (Win95; I) [Netscape]">
+</HEAD>
+<BODY BGCOLOR="#dfdfdf">
+
+<CENTER><DT><B><FONT SIZE=+2>Fondamenti di Informatica </FONT></B></DT></CENTER>
+
+<CENTER><DT><FONT SIZE=+1>Aeronautica, Meccanica, Elettrica, Materiali,
+</FONT></DT></CENTER>
+
+<CENTER><DT><FONT SIZE=+1>Nucleare, Chimica, Ambiente e Territorio </FONT></DT></CENTER>
+
+<CENTER><DT><B><FONT SIZE=+1>Appello del 16-6-1997</FONT></B></DT></CENTER>
+
+<CENTER><DT><FONT SIZE=+1>PRIMA&nbsp;PARTE</FONT></DT></CENTER>
+
+<DT><B>Esercizio 1 (18 punti)</B></DT>
+
+<DT>Le note musicali possono essere rappresentate mediante un array di
+sette componenti booleane, in cui la prima componente corrisponde al DO,
+la seconda al RE, e cos&igrave; via. Una nota X &egrave; perci&ograve;
+rappresentata da un array la cui componente corrispondente alla nota X
+ha valore TRUE e tutte le altre componenti hanno valore FALSE. Il bemolle
+di una nota X (X diverso da DO), corrispondente alla componente i-esima
+dell’array (i diverso da 1), si ottiene assegnando il valore TRUE anche
+alla componente (i-1)-esima. Il diesis di una nota X (X diverso da SI),
+corrispondente alla componente i-esima dell’array (i diverso da 7), si
+ottiene assegnando il valore TRUE anche alla componente (i+1)-esima. Un
+accordo elementare pu&ograve; quindi essere rappresentato da una nota,
+nella rappresentazione mediante array, e da un carattere: ‘+’ (per maggiore),
+‘-’ (per minore). Infine, una armonia &egrave; una sequenza di accordi
+elementari.</DT>
+
+<DT>Ad esempio, i seguenti array rappresentano le note accanto indicate:</DT>
+
+<CENTER><DT><IMG SRC="970616.gif" HEIGHT=59 WIDTH=595></DT></CENTER>
+
+<DT>1. Sulla base delle precedenti definizioni, fornire le opportune dichiarazioni
+dei tipi di dati Pascal per rappresentare le note, gli accordi e, mediante
+record e puntatori, le armonie. </DT>
+
+<DT>2. Scrivere una funzione o procedura Pascal che, ricevendo come parametro
+di input una armonia rappresentata mediante record e puntatori, riconosca
+se nell’armonia &egrave; presente almeno un giro armonico del LA+ (cio&egrave;
+una sequenza costituita, nell’ordine, dai seguenti accordi elementari:
+LA+, FAdiesis -, SI-, MI+). </DT>
+
+<DT>3. Scrivere una procedura che, ricevendo come parametro di input una
+armonia, vi aggiunga, dopo ogni DO+, un SOL+. </DT>
+
+<DT>
+<HR SIZE=6 WIDTH="100%"></DT>
+
+<CENTER><DT><B><FONT SIZE=+2>Fondamenti di Informatica</FONT></B><FONT SIZE=+1>
+</FONT></DT></CENTER>
+
+<CENTER><DT><FONT SIZE=+1>Aeronautica, Meccanica, Elettrica, Materiali,
+</FONT></DT></CENTER>
+
+<CENTER><DT><FONT SIZE=+1>Nucleare, Chimica, Ambiente e Territorio </FONT></DT></CENTER>
+
+<CENTER><DT><B><FONT SIZE=+1>Appello del 16-6-1997</FONT></B></DT></CENTER>
+
+<CENTER><DT><FONT SIZE=+1>SECONDA&nbsp;PARTE</FONT></DT></CENTER>
+
+<DT><B>Esercizio 2 (4 punti)</B> </DT>
+
+<DT>Descrivere, avvalendosi anche di esempi, la codifica binaria dell’informazione
+numerica, con particolare riferimento alla rappresentazione dei numeri
+reali in virgola fissa ed in virgola mobile. </DT>
+
+<DT><B>Esercizio 3 (4 punti) </B></DT>
+
+<DT>Scrivere un sottoprogramma Fortran che, ricevendo in ingresso una matrice
+quadrata di ordine N calcoli il prodotto della somma degli elementi della
+diagonale principale per la somma degli elementi della diagonale secondaria.
+Fornire le dichiarazioni da inserire nel programma principale.</DT>
+
+<DT><B>Esercizio 4 (4 punti)</B></DT>
+
+<DT>Che cosa stampa il seguente programma quando riceve in input le ultime
+tre cifre del numero di matricola del candidato? Motivare la risposta.</DT>
+
+<UL>
+<DT><B>program</B> cosa_stampa; </DT>
+
+<DT><B>var</B> b:boolean; </DT>
+
+<DT><FONT COLOR="#C0C0C0">......</FONT>c,d,n:integer;</DT>
+
+<DT><B>function</B> f(a:integer):integer; </DT>
+
+<DT><B>begin</B> </DT>
+
+<DT><FONT COLOR="#C0C0C0">...</FONT>readln(a); </DT>
+
+<DT><FONT COLOR="#C0C0C0">...</FONT>f:=(a*n) <B>mod</B> 2 </DT>
+
+<DT><B>end</B>;</DT>
+
+<DT><B>begin </B></DT>
+
+<DT><FONT COLOR="#C0C0C0">...</FONT>readln(n); </DT>
+
+<DT><FONT COLOR="#C0C0C0">...</FONT>c:=f(n); </DT>
+
+<DT><FONT COLOR="#C0C0C0">...</FONT>d:=f(n); </DT>
+
+<DT><FONT COLOR="#C0C0C0">...</FONT><B>for</B> b:=((n*c)=n) <B>to</B> ((n*d)&lt;&gt;n)
+<B>do</B> writeln(n) </DT>
+
+<DT><B>end</B>.</DT>
+</UL>
+
+<DT>Si ricorda che il tipo BOOLEAN in Pascal &egrave; un tipo ordinale,
+con FALSE &lt; TRUE.</DT>
+
+<DT><A HREF="970616.doc"><IMG SRC="/images/floppy.gif" HEIGHT=33 WIDTH=32>Download testo in formato Word.</A> </DT>
+
+</BODY>
+</HTML>

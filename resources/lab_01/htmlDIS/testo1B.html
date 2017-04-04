@@ -1,0 +1,52 @@
+<!DOCTYPE doctype PUBLIC "-//w3c//dtd html 4.0 transitional//en"><html><head>
+   <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   
+   <title>Esame: 14/12/04 compito 1 B - Laboratorio di Programmazione - aa 2004/05</title></head>
+
+<body>
+<br>
+<center>
+  <p><b>Laboratorio di Programmazione - A.A. 2004/05</b></p>
+  <h2>Esame del 14/12/2004</h2>
+  <h2>Compito B</h2>
+</center>
+
+<P><b>Parte 1</b></P>
+
+<P> Si rappresentino attraverso opportune classi Java, definite all'interno di 
+  un package <code><strong>esprreali</strong>,</code> espressioni intere formate 
+  da: <em>(i)</em> <strong>variabili</strong> caratterizzate da un nome formato 
+  da una stringa; <em>(ii) </em><strong>costanti</strong> caratterizzate da un 
+  valore di tipo <code>double</code>; <em>(iii) </em><strong>somma </strong>di 
+  due espressioni; <em>(iv) </em> <strong>prodotto</strong> (ennario) di n espressioni. 
+  Si richiede che le espressioni reali supportino l'uguaglianza (sintattica) profonda 
+  attraverso l'overriding di <code><strong>equals()</strong></code> e la redifinizione 
+  di <strong><code>hashCode()</code></strong>, la copia profonda attraverso l'overriding 
+  di <code><strong>clone()</strong></code>, e una rappresentazione testuale attraverso 
+  l'overriding di <code><strong>toString()</strong></code>. Per quest'ultima si 
+  faccia riferimento alla seguente sintassi: 
+<blockquote> <code><strong>ER := costante | variabile | (ER + ER) | (ER * ER * 
+  ... * ER) </strong></code> </blockquote>
+<P><b>Parte 2</b></P>
+
+<P>Si definisca una classe <code><strong>ServiziEsprReali</strong></code>, all'interno 
+  di un package <code><strong>serviziesprreali</strong></code>, contenente il 
+  seguenti metodo:</P>
+<ul>
+  <li><code><strong>public static double valuta(EsprReale e, Map a)</strong></code>: 
+    che data una espressione <code><strong>e</strong></code> ed un<strong> <code>Map</code></strong> 
+    <code><strong>a,</strong></code> che rappresenta una assegnazione di variabili, 
+    <code></code> valuta <code><strong>e</strong></code> assegnando alle sue variabili 
+    il valore previsto nella assegnazione <code><strong>a</strong></code>. Si 
+    assuma che il <strong><code>Map a,</code></strong> che rappresenta una assegnazione, 
+    associ a chiavi di tipo <code><strong>String</strong></code> (il nome della 
+    variabile) valori di tipo <code><strong>Double</strong></code><strong> </strong>(il 
+    valore della variabile), e che tutte le variabili in <strong><code>e</code></strong> 
+    siano incluse in <strong><code>a</code></strong>.</li>
+</ul>
+<P><strong>Parte 3</strong></P>
+<P>Calcolare inoltre la <strong>complessit&agrave;</strong> della generazione 
+  della copia profonda su oggetti di tipo <strong><code>EsprDouble</code></strong>.</P>
+<P>&nbsp;</P>
+</body>
+</html>

@@ -1,0 +1,109 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+<html> <head>
+<title>Esercizi sulla ricorsione</title>
+</head>
+
+<body>
+
+<center><b>Tecniche di Programmazione</b> <br>
+<b>Corsi di Laurea in Ingegneria Informatica ed Automatica</b> <br>
+Canale F-N, A.A. 2003/04</center>
+
+<p>
+<hr>
+
+<h2 align="center">Es<b>ercizi sulla ric</b>orsione (stringhe)<br>
+</h2>
+
+<ol>
+  <li>Scrivere una funzione ricorsiva che data una stringa s restituisca una stringa che
+    è una copia esatta.<br>
+  <li>Scrivere una funzione ricorsiva che data una stringa s restituisca la stringa ottenuta da s eliminando tutti gli spazi bianchi.<br>
+  <li>Scrivere una funzione ricorsiva che data una stringa formata da caratteri alfabetici senza spazi restituisca il carattere
+    più piccolo in ordine alfabetico, e se la stringa è vuota restituisca uno spazio.<br>
+    <br>
+    <a href="Soluzioni/StringRic.java">Soluzioni</a>
+</ol>
+
+
+<hr>
+
+<h2 align="center">Es<b>ercizi sulla ric</b>orsione (file)</h2>
+
+<p>Consideriamo file in cui sia memorizzato un numero intero per riga. Negli esercizi seguenti i file acceduti in lettura sono passati
+come BufferedReader, e i file acceduti in scrittura sono passati come PrintWriter.<br>
+</p>
+<ol>
+  <li>Scrivere una funzione ricorsiva per contare il numero di interi memorizzati nel
+    file<br>
+  </li>
+  <li>Scrivere una funzione ricorsiva che dato un file i restituisca un file o ottenuto da i sostituento gli interi negativi con -1.<br>
+    <br>
+    <a href="Soluzioni/File.java">Soluzioni</a></li>
+</ol>
+
+
+<hr>
+
+<h2 align="center">Es<b>ercizi sulla ric</b>orsione (array)</h2>
+
+<ol>
+  <li>Scrivere un metodo statico
+      <pre>public static boolean appartiene(int[] a, int n)</pre>
+      che, dato un array di interi <i>a</i> ed un intero <i>n</i>, verifichi se
+      <i>n</i> compare in <i>a</i>.<br>
+      Ad esempio l'invocazione <code>appartiene({1,2,3}, 2)</code> deve
+      restituire <code>true</code>.
+
+      <!--<p><a href="Appartenenza.java">Soluzione</a>-->
+
+      <p>
+  <li>Scrivere un metodo statico
+      <pre>public static int occorrenze(int[] a, int n)</pre>
+      che, dato un array di interi  <i>a</i> ed un intero <i>n</i>, restituisca
+      il numero di occorrenze di <i>n</i> in <i>a</i>.<br>
+      Ad esempio l'invocazione <code>occorrenze({1,2,3,2,4,2}, 2)</code> deve
+      restituire <code>3</code>.
+
+      <!--<p><a href="Occorrenze.java">Soluzione</a>-->
+
+      <p>
+  <li>Scrivere un metodo statico
+      <pre>public static int[] azzeraNegativi(int[] a)</pre>
+      che, dato un array di interi <i>a</i>, restituisca un nuovo array di
+      interi ottenuto da <i>a</i> sostituendo ogni numero negativo con 0.<br>
+      Ad esempio l'invocazione <code>azzeraNegativi({1,-2, 3, 4, -5})</code>,
+      deve restituire l'array <code>{1, 0, 3, 4, 0}</code>.
+
+      <!--<p><a href="AzzeraNegativi.java">Soluzione</a>-->
+
+      <p>
+  <li>Scrivere un metodo statico
+      <pre>public static void inverti(int[] a)</pre>
+      che, dato un array di interi <i>a</i>, inverta le posizioni dei suoi
+      elementi.<br>
+      Ad esempio l'invocazione <code>inverti(a)</code>, dove <code>a</code>
+      &egrave; un riferimento all'array <code>{1, 2, 3, 4}</code> deve
+      modificare l'array a cui <code>a</code> si riferisce in <code>{4, 3, 2,
+      1}</code>.
+
+
+      <!--<p><a href="Reverse.java">Soluzione</a>-->
+
+      <p>
+  <li>Scrivere un metodo statico
+      <pre>public static boolean palindromo(int[] a)</pre>
+      che dato un array di interi <i>a</i>, restituisca il valore booleano
+      <code>true</code> se la sequenza deglio elementi di <i>a</i> coincide con
+      la sequenza stessa in ordine invertito, <code>false</code>
+      altrimenti.
+</ol>
+
+<blockquote>
+  <p><a href="Soluzioni/RicorsioneArray.java">Soluzioni</a> <br>
+  <br>
+  Classe <a href="Soluzioni/MainArray.java"><code>Main</code></a> per verificare
+  i metodi di sopra.</p>
+</blockquote>
+
+</body> </html>

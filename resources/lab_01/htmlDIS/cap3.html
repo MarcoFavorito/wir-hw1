@@ -1,0 +1,244 @@
+
+<HTML>
+ 
+<HEAD>
+<TITLE>Soluzioni capitolo 3</TITLE>
+</HEAD>
+ 
+<BODY>         
+
+<pre>
+
+/*ESERCIZIO 1 DEL CAPITOLO 3 DEL BELLINI_GUIDI*/
+/********************************************/
+/********************************************/
+#include <stdio.h>
+main()
+{
+/* esercizio 1 del capitolo 3 */
+ 
+/* Fattoriale dei primi  N numeri */
+int i,n, fat ;
+ 
+printf("Calcolo del fattoriale dei primi  N numeri \n\n");
+printf("Dammi un numero:");
+scanf("%d",&n);
+ 
+fat = 1;
+if (n>=0)
+  if (n==0) printf("Il fattoriale di  0 vale 1\n");
+      else for (i=1; i<=n; i=i+1){
+               fat = fat * i;
+               printf("Il fattoriale di  %d vale %d\n",i,fat);
+               }
+else printf("Il fattoriale di un numero negativo non e' definito\n");
+ 
+}                                             
+
+/*ESERCIZIO 2 DEL CAPITOLO 3 DEL BELLINI_GUIDI*/
+/********************************************/
+/********************************************/
+#include <stdio.h>
+#include <limits.h>
+main()
+{
+/* esercizio 2 del capitolo 3 */
+ 
+ 
+/* Calcola MAGGIORE, MINORE E MEDIA dei valori interi immessi dall'utente: zero
+per terminare*/
+int num,somma, max, min, conta;
+float media;
+ 
+printf("MAGGIORE, MINORE E MEDIA DI N NUMERI\n\n");
+ 
+num = 1;
+somma = 0;
+max = INT_MIN;
+min = INT_MAX;
+conta = 0;
+ 
+while (num !=0){
+printf("Dammi un numero, zero per terminare:");
+scanf("%d",&num);
+somma = somma + num;
+if (num > max) max = num;
+if (num!=0 && num < min) min = num;
+conta=conta+1;
+}
+media = somma/(conta-1);
+printf("Hai immesso  %d numeri \n", conta-1);
+ 
+printf("Il massimo dei numeri immessi  vale %d\n",max);
+ 
+printf("Il minimo dei numeri immessi  vale %d\n",min);
+printf("la media dei numeri immessi  vale %7.2f\n",media);
+}                                                                      
+
+/*ESERCIZIO 3 DEL CAPITOLO 3 DEL BELLINI_GUIDI*/
+/********************************************/
+/********************************************/
+#include <stdio.h>
+#define CORNICE '*'
+#define INTERNO 'Q'
+main()
+{
+/* esercizio 3 del capitolo 3 */
+/* CICLI ANNIDATI*/
+int n,m,i,j;
+ 
+printf("Disegno rettangolo\n\n");
+printf("Dammi il numero di righe,maggiore di 1: \t");
+scanf("%d",&n);
+printf("Dammi il numero di colonne, maggiore di 1: \t");
+scanf("%d",&m);
+ 
+for(j=1;j<=m;j=j+1) printf("%c",CORNICE);
+for(i=2;i<=(n-1);i=i+1){
+    printf("\n");printf("%c",CORNICE);
+    for(j=2;j<=(m-1);j=j+1) printf("%c",INTERNO);printf("%c",CORNICE);
+     } printf("\n");
+for(j=1;j<=m;j=j+1) printf("%c",CORNICE);
+}
+ 
+                                                              
+/*ESERCIZIO 4 DEL CAPITOLO 3 DEL BELLINI_GUIDI*/
+/********************************************/
+/********************************************/
+#include <stdio.h>
+main()
+{
+/* esercizio 4 del capitolo 3 */
+/* CICLI ANNIDATI*/
+int n,m,i,j,k,volte;
+char interno, cornice;
+ 
+printf("Disegno rettangolo\n\n");
+printf("Dammi il numero di righe, maggiore di 1: \t");
+scanf("%d",&n);
+printf("Dammi il numero di colonne, maggiore di 1: \t");
+scanf("%d",&m);
+getchar();
+printf("Dammi il carattere per la cornice: \t");
+scanf("%c",&cornice);
+printf("\n%c\n",cornice);
+getchar();
+printf("Dammi il carattere per l'interno: \t");
+scanf("%c",&interno);
+printf("\n%c\n",interno);
+getchar();
+printf("Dammi il numero di volte, maggiore di 1: \t");
+scanf("%d",&volte);
+printf("\n%d\n",volte);
+for(k=1;k<=volte;k=k+1){
+printf("\n\n");
+for(j=1;j<=m;j=j+1) printf("%c",cornice);
+for(i=2;i<=(n-1);i=i+1){
+    printf("\n");printf("%c",cornice);
+    for(j=2;j<=(m-1);j=j+1) printf("%c",interno);printf("%c",cornice);
+     } printf("\n");
+for(j=1;j<=m;j=j+1) printf("%c",cornice);
+}
+}
+                                                          
+/*ESERCIZIO 5 DEL CAPITOLO 3 DEL BELLINI_GUIDI*/
+/********************************************/
+/********************************************/
+#include <stdio.h>
+main()
+{
+/* esercizio 5 del capitolo 3 */
+ 
+int num, conta10,conta100,conta1000, volte;
+ 
+ 
+printf("Esempio di contatori\n\n");
+num = 1;
+conta10 = 0;
+conta100 = 0;
+conta1000 = 0;
+volte= 1;
+while (num !=0 && volte<= 100){
+printf("Dammi un numero, zero per terminare:");
+scanf("%d",&num);
+if (num == 10) conta10++;
+if (num == 100) conta100++;
+if (num == 1000) conta1000++;
+volte = volte + 1;
+}
+ 
+printf("hai immesso %d dieci, %d cento e %d mille \n",conta10,conta100,conta1000);
+
+}
+
+                                                               
+/*ESERCIZIO 6 DEL CAPITOLO 3 DEL BELLINI_GUIDI*/
+/********************************************/
+/********************************************/
+#include <stdio.h>
+main()
+{
+/* esercizio 6 del capitolo 3 */
+ 
+int i,j;
+ 
+printf("     TABELLINA PITAGORICA\n\n");
+ 
+for(i=1;i<= 10;i=i+1){
+    printf("\n");
+    for(j=1;j<=10;j=j+1) printf("%3d",i*j);
+   }
+}
+ 
+ 
+/*ESERCIZIO 7 DEL CAPITOLO 3 DEL BELLINI_GUIDI*/
+/********************************************/
+/********************************************/
+#include <stdio.h>
+main()
+{
+/* esercizio 7 del capitolo 3 DOMINO*/
+ 
+int i,j;
+ 
+printf("     Domino \n\n");
+ 
+for(i=6;i>= 0;i--){
+    printf("\n");
+    for(j=6;j>=i;j--) printf("(%1d,%1d) ",i,j);
+   }
+}                                                                             
+
+ 
+/*ESERCIZIO 8 DEL CAPITOLO 3 DEL BELLINI_GUIDI*/
+/********************************************/
+/********************************************/
+#include <stdio.h>
+main()
+{
+/* esercizio 8 del capitolo 3 */
+ 
+int a,b,c;
+float x,y,z,t;
+ 
+y = 2.4;
+printf(" y vale %7.2f  \n",  y);
+z = 7.0;
+printf(" z vale %7.2f  \n",  z);
+b = 3;
+printf(" b vale %d  \n",  b);
+c = 7;
+printf(" c vale %d  \n",  c);
+t = 0.1E2;
+printf(" t vale %7.2f  \n", t);
+printf(" a vale %d  \n", a);
+printf(" a/c vale %7.2f  \n", t/z);
+printf(" t/z vale %7.2f  \n", t/z);
+printf(" t/z*y vale %7.2f  \n", t/z*y);
+x = a/c + t/z*y;
+a = b*c + t/z;
+printf(" Dopo i conticini a vale %d e x vale %7.2f  \n", a,x);
+}                                                                                  
+</pre>
+</body>
+</html>  

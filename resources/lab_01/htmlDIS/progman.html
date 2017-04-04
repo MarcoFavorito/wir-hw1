@@ -1,0 +1,129 @@
+<HTML><!-- #BeginTemplate "/Templates/standard.dwt" -->
+<HEAD>
+<!-- #BeginEditable "doctitle" --> 
+<TITLE>DaQuinCIS Project Management</TITLE>
+<!-- #EndEditable -->
+<meta http-equiv="Content-Type" content="text/html; charset=">
+<script language="JavaScript">
+<!--
+function MM_preloadImages() { //v3.0
+  var d=document; if(d.images){ if(!d.MM_p) d.MM_p=new Array();
+    var i,j=d.MM_p.length,a=MM_preloadImages.arguments; for(i=0; i<a.length; i++)
+    if (a[i].indexOf("#")!=0){ d.MM_p[j]=new Image; d.MM_p[j++].src=a[i];}}
+}
+
+function MM_findObj(n, d) { //v4.0
+  var p,i,x;  if(!d) d=document; if((p=n.indexOf("?"))>0&&parent.frames.length) {
+    d=parent.frames[n.substring(p+1)].document; n=n.substring(0,p);}
+  if(!(x=d[n])&&d.all) x=d.all[n]; for (i=0;!x&&i<d.forms.length;i++) x=d.forms[i][n];
+  for(i=0;!x&&d.layers&&i<d.layers.length;i++) x=MM_findObj(n,d.layers[i].document);
+  if(!x && document.getElementById) x=document.getElementById(n); return x;
+}
+
+function MM_nbGroup(event, grpName) { //v3.0
+  var i,img,nbArr,args=MM_nbGroup.arguments;
+  if (event == "init" && args.length > 2) {
+    if ((img = MM_findObj(args[2])) != null && !img.MM_init) {
+      img.MM_init = true; img.MM_up = args[3]; img.MM_dn = img.src;
+      if ((nbArr = document[grpName]) == null) nbArr = document[grpName] = new Array();
+      nbArr[nbArr.length] = img;
+      for (i=4; i < args.length-1; i+=2) if ((img = MM_findObj(args[i])) != null) {
+        if (!img.MM_up) img.MM_up = img.src;
+        img.src = img.MM_dn = args[i+1];
+        nbArr[nbArr.length] = img;
+    } }
+  } else if (event == "over") {
+    document.MM_nbOver = nbArr = new Array();
+    for (i=1; i < args.length-1; i+=3) if ((img = MM_findObj(args[i])) != null) {
+      if (!img.MM_up) img.MM_up = img.src;
+      img.src = (img.MM_dn && args[i+2]) ? args[i+2] : args[i+1];
+      nbArr[nbArr.length] = img;
+    }
+  } else if (event == "out" ) {
+    for (i=0; i < document.MM_nbOver.length; i++) {
+      img = document.MM_nbOver[i]; img.src = (img.MM_dn) ? img.MM_dn : img.MM_up; }
+  } else if (event == "down") {
+    if ((nbArr = document[grpName]) != null)
+      for (i=0; i < nbArr.length; i++) { img=nbArr[i]; img.src = img.MM_up; img.MM_dn = 0; }
+    document[grpName] = nbArr = new Array();
+    for (i=2; i < args.length-1; i+=2) if ((img = MM_findObj(args[i])) != null) {
+      if (!img.MM_up) img.MM_up = img.src;
+      img.src = img.MM_dn = args[i+1];
+      nbArr[nbArr.length] = img;
+  } }
+}
+//-->
+</script>
+<link rel="stylesheet" href="style.css" type="text/css">
+</HEAD>
+
+<BODY BGCOLOR="#BED1E4" TEXT="#000000" onLoad="MM_preloadImages('images/navbar_r1_c2_f2.gif','images/navbar_r1_c4_f2.gif','images/navbar_r1_c6_f2.gif','images/navbar_r1_c8_f2.gif','images/navbar_r1_c10_f2.gif','images/navbar_r1_c12_f2.gif')" link="#000099" vlink="#000066">
+<table width="100%" border="0" cellspacing="0" cellpadding="0" height="67">
+  <tr> 
+    <td rowspan="2" width="140" height="67" valign="top"><img src="images/dqlogo.gif" width="140" height="67"></td>
+    <td height="42" bgcolor="#8890B6" valign="top"><img src="images/dqdesc.gif" width="322" height="29"></td>
+  </tr>
+  <tr> 
+    <td height="25" bgcolor="#000066"><!-- #BeginLibraryItem "/Library/navbar.lbi" --><table border="0" cellpadding="0" cellspacing="0" width="650">
+<!-- fwtable fwsrc="navbar3.png" fwbase="navbar.gif" -->
+
+  <tr>
+   <td><img name="navbar_r1_c1" src="images/navbar_r1_c1.gif" width="20" height="20" border="0"></td>
+    <td><a href="index.html" onMouseOut="MM_nbGroup('out');"  onMouseOver="MM_nbGroup('over','navbar_r1_c2','images/navbar_r1_c2_f2.gif','',1)" ><img name="navbar_r1_c2" src="images/navbar_r1_c2.gif" width="30" height="20" border="0"></a></td>
+   <td><img name="navbar_r1_c3" src="images/navbar_r1_c3.gif" width="18" height="20" border="0"></td>
+    <td><a href="info.html" onMouseOut="MM_nbGroup('out');"  onMouseOver="MM_nbGroup('over','navbar_r1_c4','images/navbar_r1_c4_f2.gif','',1)" ><img name="navbar_r1_c4" src="images/navbar_r1_c4.gif" width="24" height="20" border="0"></a></td>
+   <td><img name="navbar_r1_c5" src="images/navbar_r1_c5.gif" width="18" height="20" border="0"></td>
+    <td><a href="people.html" onMouseOut="MM_nbGroup('out');"  onMouseOver="MM_nbGroup('over','navbar_r1_c6','images/navbar_r1_c6_f2.gif','',1)" ><img name="navbar_r1_c6" src="images/navbar_r1_c6.gif" width="35" height="20" border="0"></a></td>
+   <td><img name="navbar_r1_c7" src="images/navbar_r1_c7.gif" width="35" height="20" border="0"></td>
+    <td><a href="news.html" onMouseOut="MM_nbGroup('out');"  onMouseOver="MM_nbGroup('over','navbar_r1_c8','images/navbar_r1_c8_f2.gif','',1)" ><img name="navbar_r1_c8" src="images/navbar_r1_c8.gif" width="75" height="20" border="0"></a></td>
+   <td><img name="navbar_r1_c9" src="images/navbar_r1_c9.gif" width="15" height="20" border="0"></td>
+    <td><a href="dissemination.html" onMouseOut="MM_nbGroup('out');"  onMouseOver="MM_nbGroup('over','navbar_r1_c10','images/navbar_r1_c10_f2.gif','',1)" ><img name="navbar_r1_c10" src="images/navbar_r1_c10.gif" width="70" height="20" border="0"></a></td>
+   <td><img name="navbar_r1_c11" src="images/navbar_r1_c11.gif" width="40" height="20" border="0"></td>
+    <td><a href="progman.html" onMouseOut="MM_nbGroup('out');"  onMouseOver="MM_nbGroup('over','navbar_r1_c12','images/navbar_r1_c12_f2.gif','',1)" ><img name="navbar_r1_c12" src="images/navbar_r1_c12.gif" width="100" height="20" border="0"></a></td>
+   <td><img name="navbar_r1_c13" src="images/navbar_r1_c13.gif" width="20" height="20" border="0"></td>
+    <td><a href="docs.html" onMouseOut="MM_nbGroup('out');"  onMouseOver="MM_nbGroup('over','navbar_r1_c14','images/navbar_r1_c14_f2.gif','',1)" ><img name="navbar_r1_c14" src="images/navbar_r1_c14.gif" width="56" height="20" border="0"></a></td>
+   <td><img name="navbar_r1_c15" src="images/navbar_r1_c15.gif" width="94" height="20" border="0"></td>
+   <td><img src="images/spacer.gif" width="1" height="20" border="0"></td>
+  </tr>
+</table>
+<!-- #EndLibraryItem --></td>
+  </tr>
+</table>
+<!-- #BeginEditable "content" --> 
+<p>&nbsp;</p>
+<p><img src="images/b_progman.gif" width="160" height="25"></p>
+<table width="60%" border="0" cellspacing="5" cellpadding="0" align="center">
+  <tr> 
+    <td> 
+      <p><b><img src="images/bullet2.gif" width="12" height="12" align="absmiddle"> 
+        <a href="activities.html">Activities</a></b></p>
+      <p>List of project activities for each participant unit.</p>
+      <p>&nbsp;</p>
+    </td>
+  </tr>
+  <tr> 
+    <td> 
+      <p><b><img src="images/bullet2.gif" width="12" height="12" align="absmiddle"> 
+        <a href="products.html">Products</a></b></p>
+      <p>List of expected products and scheduled deadlines.</p>
+      <p>&nbsp;</p>
+    </td>
+  </tr>
+  <tr> 
+    <td> 
+      <p><b><img src="images/bullet2.gif" width="12" height="12" align="absmiddle"> 
+        <a href="meetings.html">Meetings</a></b></p>
+      <p>Minutes of past meetings (Italian).</p>
+    </td>
+  </tr>
+</table>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<!-- #EndEditable --> 
+<p align="center"><a href="index.html"><img src="images/b_home.gif" width="45" height="18" border="0"></a></p>
+<p>&nbsp;</p>
+<p><img src="images/bullet2.gif" width="12" height="12" align="absmiddle"> 
+  DaQuinCIS Project - Web Site - Last update 22-04-2002 - Webmaster: <a href="mailto:virgi@dis.uniroma1.it">Antonino 
+  Virgillito</a> </p>
+</BODY>
+<!-- #EndTemplate --></HTML>

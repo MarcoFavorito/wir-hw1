@@ -1,0 +1,974 @@
+<html>
+<head>
+<title>Introduzione</title>
+      <link rel="top" href="../lezioni.html">
+      <link rel="up" href="../lezioni.html">
+      <link rel="contents" href="../lezioni.html">
+      <link rel="next" href="../vars/vars.html">
+</head>
+
+<body>
+
+<h1>Fondamenti di informatica</h1>
+
+<b>Ingegeneria Gestionale, Canale D-L</b>
+
+<p>
+In questo corso:
+</p>
+
+<ul>
+<li>cenni sulla struttura dei calcolatori (1/2 lezione)
+<li>programmazione dei calcolatori (10 settimane)
+</ul>
+
+<hr>
+
+
+<h4>Caratteristiche dei dispositivi elettronici</h4>
+
+<p>
+Calcolatrici, termometri digitali, telefonini, ecc,
+hanno in comune:
+</p>
+
+<object data="calcolatrici.ps" type="application/postscript">
+<img src="calcolatrici.jpg">
+</object>
+
+<p>
+Da notare:
+</p>
+
+<ul>
+<li>ricevono dati (es. numeri da addizionare)
+
+<li>forniscono dati in uscita (es. la temperatura)
+
+<li>hanno una memoria (es. numero di telefono in rubrica)
+</ul>
+
+<p>
+In alcuni dispositivi, delle parti possono mancare.
+</p>
+
+<hr>
+
+
+<h4>Tipi di dispositivi</h4>
+
+<ul>
+
+<li><b>non programmabili:</b> fanno sempre la stessa cosa
+
+<li><b>programmabili:</b> quello che viene fatto dipende
+da un programma
+
+</ul>
+
+<p>
+Esempio banale: quello che succede quando si
+preme il tasto +
+</p>
+
+<p>
+Nei dispositivi non programmabili succede sempre
+la stessa cosa. In quelli programmabili dipende
+dal programma che si sta eseguendo.
+</p>
+
+<hr>
+
+
+<h4>Esempio: il tasto +</h4>
+
+<dl>
+
+<dt>su una calcolatrice semplice:
+<dd>viene fatta la somma
+
+<dt>su un computer:
+<dd>se sta eseguendo un programma di calcolo,
+viene fatta una somma:<br>
+
+<img src="plusincalc.gif"><br>
+
+se si sta eseguendo un
+programma di videoscrittura, viene stampato
+il simbolo +, ecc<br>
+
+<img src="plusintext.gif">
+
+</dl>
+
+<p>
+Il computer &egrave; sempre lo stesso.
+</p>
+
+<p>
+Cosa succede se si preme <tt>+</tt> dipende dal programma
+che si sta eseguendo.
+</p>
+
+<p>
+La calcolatrice fa sempre le stesse cose, il computer
+pu&ograve; fare cose diverse se opportunamente
+programmato.
+</p>
+
+<hr>
+
+
+<h4>Programmazione</h4>
+
+<p>
+I computer sono in grado di eseguire solo operazioni
+semplici.
+</p>
+
+<p>
+<b>Programma:</b> specifica di cosa deve fare il
+calcolatore.
+</p>
+
+<p>
+Il programma dice al calcolatore che cosa deve fare.
+</p>
+
+<p>
+Sono istruzioni che il calcolatore deve eseguire.
+</p>
+
+<hr>
+
+<h4>Esempio di programma</h4>
+
+<p>
+Dati i coefficienti di una equazione
+di secondo grado <tt>a</tt>, <tt>b</tt> e <tt>c</tt>,
+calcola la radice:
+</p>
+
+<pre>
+calcola bb - 4ac
+se viene positivo:
+  calcola la radice quadrata
+  calcola ( -b + radice(bb-4ac) ) / 2ac
+  ...
+</pre>
+
+<p>
+Sono tutte istruzioni semplici.
+</p>
+
+<p>
+Sono combinate a formare un programma che
+pu&ograve; essere anche complesso.
+</p>
+
+<hr>
+
+
+<h4>Eseguire pi&ugrave; volte lo stesso programma</h4>
+
+<p>
+Vantaggio dei computer: una volta dato il programma,
+lo si pu&ograve; usare pi&ugrave; volte.
+</p>
+
+<p>
+Esempio: risolvere 20 equazioni di secondo grado.
+</p>
+
+<ul>
+<li>con una calcolatrice: occorre ogni volta fare b*b-...
+<li>con un computer: una volta dato il programma si
+pu&ograve; usare lo stesso per tutte le equazioni.
+</ul>
+
+<hr>
+
+
+<h4>Uso di un calcolatore</h4>
+
+<ol>
+<li>specificare il programma
+<li>eseguire il programma
+</ol>
+
+<p>
+Nella prima fase: viene detto al calcolatore
+cosa deve fare.
+</p>
+
+<p>
+Nella seconda fase il calcolatore esegue, ossia
+fa quello che &egrave; stato detto.
+</p>
+
+<p>
+La prima fase non &egrave; necessaria solo se
+il programma &egrave; stato gi&agrave; scritto
+da altri.
+</p>
+
+<p>
+World, Excel, ecc. sono tutti programmi,
+scritti da altri.
+</p>
+
+<p>
+In questo corso: come si scrivono i programmi.
+</p>
+
+<hr>
+
+<h4>Parti di un calcolatore</h4>
+
+<p>
+Come tutti i dispositivi elettronici:
+</p>
+
+<ol>
+<li>parte che riceve l'input
+<li>parte che fornisce l'output
+<li>parte dove vengono memorizzati i dati
+<li>parte che elabora
+</ol>
+
+<object data="parti.ps" type="application/postscript">
+<img src="parti.jpg">
+</object>
+
+<p>
+CPU=parte che elabora.
+</p>
+
+<p>
+Attenzione! Non &egrave; il contenuto del cabinet
+(uso improprio fatto dai commercianti).
+</p>
+
+<p>
+La elaborazione avviene seguendo le istruzioni
+che stanno scritte nel programma.
+</p>
+
+<hr>
+
+
+<h4>Esempio di programma</h4>
+
+<p>
+Questo programma calcola le soluzioni di 
+una equazione di secondo grado dati i suoi
+coefficienti <tt>a</tt>, <tt>b</tt> e <tt>c</tt>.
+</p>
+
+<pre>
+/*
+  Soluzione equazione di secondo grado.
+*/
+
+class SecondoGrado {
+  public static void main (String args[]) {
+    double a=2, b=5, c=3;
+    double d;
+    double s1, s2;
+
+    d=b*b-4*a*c;
+
+    if( d==0 ) {
+      s1=(-b - Math.sqrt( b*b -4*a*c ))/(2*a);
+      s2=s1;
+      System.out.println("Soluzioni coincidenti: " + s1);
+    }
+
+    if( d&gt;0 ) {
+      s1=(-b - Math.sqrt( b*b -4*a*c ))/(2*a);
+      s2=(-b + Math.sqrt( b*b -4*a*c ))/(2*a);
+      System.out.println("Soluzioni reali: " + s1 + " " +
+s2);
+    }
+
+    if( d<0 ) {
+      System.out.println("Soluzioni complesse");
+    }
+  }
+}
+</pre>
+
+<p>
+Sembra complicato, ma non lo &egrave;!
+</p>
+
+<p>
+Da notare: 
+</p>
+
+<ul>
+
+<li>&egrave; una sequenza di istruzioni semplici
+<li>ci sono dei calcoli (elaborazioni) (<tt>b*b-...</tt>)
+<li>ci sono istruzioni per mettere i dati in memoria
+(<tt>d=..</tt>, <tt>s1=...</tt>)
+<li>ci sono istruzioni per stampare i dati
+(<tt>System.out.println(...)</tt>)
+
+</ul>
+
+<hr>
+
+
+<h4>Istruzioni di un programma</h4>
+
+<p>
+Tipi di istruzioni:
+</p>
+
+<ul>
+
+<li>istruzioni per gestire i dati di input
+
+<li>istruzioni per effettuare un output
+
+<li>istruzioni per elaborare e memorizzare
+i dati
+
+</ul>
+
+<p>
+Ogni istruzione dice al calcolatore una cosa da fare.
+</p>
+
+<p>
+Ogni istruzione usa una o pi&ugrave; parti del calcolatore.
+</p>
+
+<hr>
+
+
+<h4>Come eseguire un programma</h4>
+
+<ol>
+
+<li>scrivere il programma usando un editor di testi
+
+<li>tradurre il programma (compilazione)
+
+<li>eseguire il programma
+
+</ol>
+
+<object data="trefasi.ps" type="application/postscript">
+<img src="trefasi.jpg">
+</object>
+
+<p>
+La compilazione &egrave; necessaria perch&egrave; il
+programma, per essere eseguito, deve essere scritto
+in un <i>linguaggio</i> che il calcolatore &egrave;
+in grado di capire. Esempi si vedranno nel corso di
+calcolatori elettronici.
+</p>
+
+<hr>
+
+<h4>In pratica: inizio della sessione</h4>
+
+<p>
+Lo vedremo in pratica in laboratorio.
+</p>
+
+<img src="start.gif">
+
+<ul>
+
+<li>premere il pulsante <b>Start</b>
+<li>andare su <b>Programmi</b>
+<li>andare su <b>Accessori</b>
+<li>click su <b>Prompt dei comandi</b>
+
+</ul>
+
+<p>
+Si apre una finestra che usiamo per
+scrivere programmi ed eseguirli.
+</p>
+
+<img src="command.gif">
+
+<hr>
+
+
+<h4>In pratica: per iniziare a scrivere un programma</h4>
+
+<p>
+Occorre scrivere il testo del programma.
+</p>
+
+<p>
+Per iniziare a scrivere, usare notepad
+(scrivere  <tt>notepad nome.java</tt>
+nella finestra nera).
+</p>
+
+<img src="startnote.gif">
+
+<p>
+Si apre una finestra in cui possiamo scrivere
+il programma. Per prima cosa viene chiesto se
+il file va creato. Rispondere si.
+</p>
+
+<img src="notepad.gif">
+
+<hr>
+
+
+<h4>In pratica: scrivere un programma</h4>
+
+<p>
+Nella finestra bianca (blocco note), scrivere
+un programma.
+</p>
+
+<p>
+Un esempio di programma:
+</p>
+
+<pre>
+class Primo {
+  public static void main (String args[]) {
+
+    System.out.println("Una sequenza di caratteri qualsiasi");
+  }
+}
+</pre>
+
+<p>
+Va scritto nel blocco note.
+</p>
+
+<img src="hello.gif">
+
+<p>
+Paragone:
+</p>
+
+<dl>
+
+<dt>penna:
+<dd>strumento per scrivere su carta ("memorizza" su carta)
+
+<dt>notepad:
+<dd>strumento per scrivere su computer (memorizza sul
+computer)
+
+</dl>
+
+
+<hr>
+
+<h4>Salvare il programma</h4>
+
+<p>
+File-&gt;Salva
+</p>
+
+<img src="salva.gif">
+
+<p>
+Il salvataggio &egrave; la memorizzazione
+permanente del programma.
+</p>
+
+<p>
+&Egrave; necessario per poter poi tradurre e usare il
+programma.
+</p>
+
+<hr>
+
+
+<h4>In pratica: la traduzione di un programma</h4>
+
+<p>
+Il programma sta sul calcolatore.
+</p>
+
+<p>
+Il calcolatore non lo pu&ograve; eseguire.
+</p>
+
+<p>
+Serve un passo di <i>traduzione</i>.
+</p>
+
+<img src="traduci.gif">
+
+<hr>
+
+
+<h4>In pratica: la esecuzione di un programma</h4>
+
+<p>
+Si dice al calcolatore di eseguire il programma.
+</p>
+
+<img src="esegui.gif">
+
+<p>
+Il calcolatore fa quello che gli &egrave; stato detto.
+</p>
+
+<img src="risultato.gif">
+
+<p>
+Il programma diceva al calcolatore di stampare
+<tt>ABCDEF</tt>, e lui l'ha fatto.
+</p>
+
+<hr>
+
+
+<h4>Cosa &egrave; successo?</h4>
+
+<p>
+Abbiamo semplicemente effettuato i vari passi:
+</p>
+
+<ul>
+
+<li><tt>notepad</tt> serve per scrivere il programma
+
+<li><tt>javac</tt> serve per tradurre il programma
+
+<li><tt>java</tt> (senza la c!) serve per eseguirlo
+
+</ul>
+
+<hr>
+
+<h4>Modificare un programma gi&agrave; scritto</h4>
+
+<p>
+Se <tt>notepad</tt> &egrave; stato gi&agrave; chiuso,
+lanciarlo di nuovo.
+</p>
+
+<p>
+Dato che il file gi&agrave; esiste, non viene
+chiesto di crearlo.
+</p>
+
+<img src="dinuovo.gif">
+
+<hr>
+
+
+<h4>Eseguire due istruzioni in sequenza</h4>
+
+<p>
+Scrivere le istruzioni di seguito.
+</p>
+
+<pre>
+class Primo {
+  public static void main (String args[]) {
+    System.out.println("ABCDEF");
+    System.out.println("Altra stringa");
+  }
+}
+</pre>
+
+<p>
+Le istruzioni vengono eseguite una per volta, in ordine.
+</p>
+
+<p>
+Occorre di nuovo salvare il file.
+</p>
+
+<img src="dueistruzioni.gif">
+
+<p>
+Il programma va nuovamente tradotto ed eseguito.
+</p>
+
+<p>
+Viene stampato:
+</p>
+
+<pre>
+ABCDEF
+Altra stringa
+</pre>
+
+<hr>
+
+
+<h4>Gli spazi bianchi</h4>
+
+<p>
+Per ora, non diamo la regola generale.
+</p>
+
+<p>
+Diciamo solo:
+</p>
+
+<ul>
+
+<li>all'inizio e alla fine di una linea si possono mettere
+spazi
+
+<li>dove si pu&ograve; mettere uno spazio, si possono
+mettere pi&ugrave; spazi
+
+<li>se uno spazio c'&egrave; negli esemi di queste
+pagine, &egrave; bene metterlo.
+
+<li>non ci vanno spazi prima e dopo i punti in
+<tt>System.out.println</tt>
+<br> ossia: <tt>System. out. println</tt> &egrave; sbagliato
+perch&egrave; ha spazi in mezzo
+
+</ul>
+
+<hr>
+
+<h4>Schema di programma</h4>
+
+<p>
+Non diamo la sintassi esatta.
+</p>
+
+<p>
+Per ora diciamo che le due parti iniziali
+e finali di un programma sono fatte cos&iacute;:
+</p>
+
+<pre>
+class nomeprogramma {
+  public static void main (String args[]) {
+
+    ...
+
+  }
+}
+</pre>
+
+<p>
+Le istruzioni vanno messe in sequenza al posto
+dei puntini <tt>...</tt>
+</p>
+
+<p>
+Il nome del programma &egrave; il nome del file
+senza la parte <tt>.java</tt>
+</p>
+
+<p>
+Non si possono mettere spazi all'interno del nome
+del programma.
+</p>
+
+<hr>
+
+
+<h4>Esercizio</h4>
+
+<p>
+Scrivere un programma che stampa, su tre righe
+diverse, il proprio nome, data di nascita e
+luogo di residenza.
+</p>
+
+<p>
+<i>tempo:</i> 3 minuti.
+</p>
+
+<p>
+In aula: scrivere il programma su carta.
+</p>
+
+<p>
+In laboratorio: scrivere sul computer,
+tradurre ed eseguire.
+</p>
+
+<hr>
+
+<h4>Soluzione</h4>
+
+<p>
+L'istruzione <tt>System.out.println("...");</tt>
+stampa quello che c'&egrave; fra le virgolette.
+</p>
+
+<p>
+Nel nostro caso, abbiamo tre righe da stampare.
+</p>
+
+<p>
+Servono tre istruzioni, da eseguire in sequenza.
+</p>
+
+<pre>
+class TreRighe {
+  public static void main(String args[]) {
+    System.out.println("Aristide Coluzzi");
+    System.out.println("4/12/1934");
+    System.out.println("Rovereto");
+  }
+}
+</pre> 
+
+<p>
+Come scrivere, tradurre ed eseguire il programma:
+come visto prima.<br>
+(<tt>notepad</tt>, <tt>javac</tt>, <tt>java</tt>)
+</p>
+
+<hr>
+
+<h4>Correzione dei programmi</h4>
+
+<p>
+<i>Regola generale:</i>
+la prima versione di un programma
+&egrave; sbagliata.
+</p>
+
+<pre>
+class TreRighe {
+  public static void main(String args[]) {
+    System.out.println("Aristde Coluzzi");
+    System.out.println("4/12/1934");
+    Systm.out.println("Rovereto");
+  }
+}
+</pre>
+
+<p>
+Ci sono due errori. Trovarli e correggerli.
+</p>
+
+<hr>
+
+
+<h4>Errori nel programma</h4>
+
+<p>
+I due errori sono:
+</p>
+
+<ul>
+
+<li><tt>Aristde</tt>
+
+<li><tt>Systm</tt>
+
+</ul>
+
+<p>
+L'effetto del primo errore &egrave; che viene
+stampato il nome sbagliato.
+</p>
+
+<p>
+Il secondo errore causa un errore di compilazione:<br>
+<tt>javac</tt> non riesce a tradurre il programma.
+</p>
+
+<p>
+<tt>javac</tt> infatti d&agrave; il messaggio:
+</p>
+
+<pre>
+TreRighe.java:5: cannot resolve symbol
+symbol  : class out  
+location: package Systm
+    Systm.out.println("Rovereto");
+         ^
+1 error
+</pre>
+
+<hr>
+
+
+<h4>Due tipi di errore</h4>
+
+<dl>
+
+<dt><b>sintattici</b>
+<dd>l'errore <tt>Systm</tt> &egrave; sintattico: il
+programma non &egrave; scritto correttamente nel
+linguaggio
+
+<dt><b>di logica</b>
+<dd>il programma rispetta le regole del linguaggio,
+per cui pu&ograve; venire compilato ed eseguito;
+per&ograve; non fa quello che dovrebbe
+
+</dl>
+
+<p>
+Paragone con il linguaggio umano:
+"questo &egrave; una tavolo" &egrave; un errore
+sintattico, perch&egrave; al posto di una va
+scritto uno. Per&ograve; il significato &egrave;
+corretto.
+</p>
+
+<p>
+La frase "siamo nell'anno 1998" &egrave; sintatticamente
+corretta (rispetta le regole dell'italiano); &egrave;
+per&ograve; una affermazione falsa
+</p>
+
+<hr>
+
+
+<h4>Correzione degli errori</h4>
+
+<ul>
+
+<li>Si prova a compilare il programma.
+<p>
+
+<li>
+Se ci sono errori sintattici, <tt>javac</tt> li
+segnala; indica anche la riga.
+<p>
+
+<li>
+Si riprende il file con <tt>notepad</tt>, e si corregge
+
+</ul>
+
+<p>
+<b>Attenzione:</b> solo il primo errore &egrave;
+sicuro: gli altri sono solo "possibili" errori.
+</p>
+
+<hr>
+
+
+<h4>24 Errors!</h4>
+
+<p>
+Un esempio di programma con un errore:
+</p>
+
+<pre>
+class MoltiErrori {
+  public satic void main(String args[]) {
+    System.out.println("Aristde Coluzzi");
+    System.out.println("4/12/1934");
+    Systm.out.println("Rovereto");
+  }
+}
+</pre>
+
+<p>
+Errore: <tt>satic</tt> invece di <tt>static</tt>
+</p>
+
+<p>
+Messaggio di errore di <tt>javac</tt>:
+</p>
+
+<pre>
+===============================================
+MoltiErrori.java:2: <identifier> expected
+  public satic void main(String args[]) {
+               ^
+MoltiErrori.java:6: ';' expected
+  }
+   ^
+MoltiErrori.java:2: cannot resolve symbol
+symbol  : class satic  
+location: class MoltiErrori
+  public satic void main(String args[]) {
+         ^
+3 errors
+===============================================
+</pre>
+
+
+<p>
+I primi programmi di 10 righe generano 24 messaggi
+di errore.
+</p>
+
+<img src="cry.jpg">
+
+<p>
+Gli errori veri di solito sono due o tre.
+</p>
+
+<img src="itcrashed.jpg">
+
+<hr>
+
+
+<h4>Errori di logica</h4>
+
+<p>
+Una volta corretti gli errori sintattici, il
+programma si pu&ograve; eseguire.
+</p>
+
+<p>
+Se <tt>java nomeprogramma</tt> non fa quello
+che ci si aspetta, il programma va modificato.
+</p>
+
+<p>
+Questi errori possono essere molto difficili
+da individuare.
+</p>
+
+<hr>
+
+<h4>Creazione di un programma: fasi effettive</h4>
+
+<p>
+&Egrave; spesso necessario correggere/compilare/eseguire
+il programma pi&ugrave; volte.
+</p>
+
+<object data="ciclo.ps" type="application/postscript">
+<img src="ciclo.jpg">
+</object>
+
+<hr>
+
+
+<h4>Riassunto</h4>
+
+<ul>
+
+<li>il calcolatore &egrave; composto da dispositivi
+di input/output, una memoria, e una unit&agrave; di
+elaborazione
+
+<li>il calcolatore esegue i programmi, che sono
+sequenze di istruzioni
+
+<li>i programmi vanno scritti (<tt>notepad</tt>),
+tradotti (<tt>javac</tt>) ed eseguiti (<tt>java</tt>)
+
+<li>quando si esegue il programma, vengono eseguite
+le sue istruzioni
+
+<li>di solito, i programmi sono sbagliati, e
+vanno corretti
+
+</ul>
+
+
+</body>
+</html>

@@ -1,0 +1,250 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0//EN">
+<!-- Created by htmlize-0.46 in css mode. -->
+<html>
+  <head>
+    <title>svol99-07-14.c</title>
+    <style type="text/css">
+    <!--
+      BODY {
+        color: #000000;
+        background-color: #ffffff;
+      } /* default */
+      span.keyword {
+        color: #006400;
+      } /* font-lock-keyword-face */
+      span.function-name {
+        color: #0000cd;
+      } /* font-lock-function-name-face */
+      span.comment {
+        color: #4682b4;
+      } /* font-lock-comment-face */
+      span.string {
+        color: #b22222;
+      } /* font-lock-string-face */
+      span.variable-name {
+        color: #a52a2a;
+      } /* font-lock-variable-name-face */
+      span.type {
+        color: #ff00ff;
+      } /* font-lock-type-face */
+      span.builtin {
+        color: #da70d6;
+      } /* font-lock-builtin-face */
+    -->
+    </style>
+  </head>
+  <body>
+    <pre>
+<span class="comment">/*
+	Soluz. Compito Esame Fondamenti di Informatica (Amb. &amp; Territorio),
+	a cura del docente. 14 luglio 1999.
+*/</span>
+
+#<span class="builtin">include</span> <span class="string">&lt;stdio.h&gt;</span>
+#<span class="builtin">include</span> <span class="string">&lt;stdlib.h&gt;</span>
+
+#<span class="builtin">define</span> <span class="variable-name">NTERM</span> 3
+#<span class="builtin">define</span> <span class="variable-name">NGATE</span> 3
+<span class="comment">/* numero terminali e numero gate */</span>
+
+#<span class="builtin">define</span> <span class="variable-name">MAXLUNGH</span> 21
+<span class="comment">/* max lunghezza del nome di un file */</span>
+
+<span class="type">typedef</span> <span class="type">unsigned</span> <span class="type">short</span> <span class="variable-name">tipogate</span>;
+<span class="type">typedef</span> <span class="type">char</span> <span class="variable-name">tipoterm</span>;
+<span class="type">typedef</span> <span class="type">unsigned</span> <span class="variable-name">tipopasseggeri</span>;
+
+<span class="type">typedef</span> <span class="type">char</span> <span class="variable-name">nomefile</span>[MAXLUNGH];
+
+
+<span class="comment">/* opportuna struttura dati richiesta al punto 1: una matrice */</span>
+<span class="type">typedef</span> tipopasseggeri <span class="variable-name">tipopartenze</span>[NTERM][NGATE];
+<span class="comment">/* I riga associata a terminale 'A', II a 'B' ecc. */</span>
+<span class="comment">/* per accedere agli elementi della matrice, dati terminale e gate
+   usiamo le funzioni riga e colonna
+   riga_1 e colonna_1 rappresentano le funzioni inverse */</span>
+
+<span class="type">typedef</span> <span class="type">struct</span> <span class="variable-name">elem</span> {
+	tipoterm term;
+	tipogate gate;
+	tipopasseggeri pass;
+	<span class="type">struct</span> elem *<span class="variable-name">next</span>;
+} <span class="variable-name">elista</span>;
+
+
+<span class="comment">/* prototipi */</span>
+	<span class="type">int</span> <span class="function-name">main</span>(<span class="type">void</span>);
+	<span class="type">void</span> <span class="function-name">LeggiStrutturaDaFile</span>(tipopartenze, nomefile);
+	<span class="type">int</span> <span class="function-name">Riga</span>(tipoterm);
+	<span class="type">int</span> <span class="function-name">Colonna</span>(tipogate);
+	tipoterm Riga_1(<span class="type">int</span>);
+	tipogate Colonna_1(<span class="type">int</span>);
+	<span class="type">void</span> <span class="function-name">AzzeraStruttura</span>(tipopartenze);
+	<span class="type">void</span> <span class="function-name">LeggiRiga</span>(<span class="type">FILE</span> *, tipoterm *, tipogate *, tipopasseggeri *);
+	<span class="type">void</span> <span class="function-name">StampaStruttura</span>(tipopartenze);
+	elista *CostruisciLista(tipopartenze, tipopasseggeri);
+	elista *Crea(tipoterm, tipogate, tipopasseggeri);
+	<span class="type">void</span> <span class="function-name">InTesta</span>(elista **, elista *);
+	<span class="type">void</span> <span class="function-name">StampaLista</span>(elista *);
+
+<span class="function-name">main</span>(<span class="type">void</span>)
+{
+	tipopartenze partenze;
+	elista *lista;
+	nomefile nome;
+	tipopasseggeri n;
+	
+	printf(<span class="string">&quot;Inserisci il nome del file partenze: &quot;</span>);
+	gets(nome);
+
+	LeggiStrutturaDaFile(partenze,nome);
+	StampaStruttura(partenze);
+	
+	printf(<span class="string">&quot;Inserisci numero passeggeri per lista: &quot;</span>);
+	scanf(<span class="string">&quot;%u&quot;</span>,&amp;n);
+	getchar();
+
+	lista=CostruisciLista(partenze,n);
+	StampaLista(lista);
+	
+	<span class="keyword">return</span> 0;
+}
+
+
+<span class="type">void</span> <span class="function-name">LeggiStrutturaDaFile</span>(tipopartenze p, nomefile z)
+<span class="comment">/* funz. richiesta al punto 2 */</span>
+{
+	<span class="type">FILE</span> *<span class="variable-name">f</span>;
+	tipoterm t;
+	tipogate g;
+	tipopasseggeri n;
+	
+	AzzeraStruttura(p); <span class="comment">/* azzera, cosi` le celle non lette contengono zero */</span>
+	
+	f=fopen(z,<span class="string">&quot;r&quot;</span>);
+	<span class="keyword">if</span>(f==NULL) {
+		fprintf(stderr, <span class="string">&quot;Impossibile aprire il file \&quot;%s\&quot; in modalita` \&quot;r\&quot;. Stop.\n&quot;</span>,z
+		);
+		exit(1);
+	}
+	
+	LeggiRiga(f, &amp;t, &amp;g, &amp;n);
+	<span class="keyword">while</span>(!feof(f)) {
+		p[Riga(t)][Colonna(g)]=n;
+		LeggiRiga(f, &amp;t, &amp;g, &amp;n);
+	}
+	
+	fclose(f);
+	<span class="keyword">return</span>;
+}
+
+
+<span class="type">int</span> <span class="function-name">Riga</span>(tipoterm t)
+<span class="comment">/* dato nome di un terminale, restituisce indice di riga relativa nella matrice */</span>
+{
+	<span class="keyword">return</span> t-<span class="string">'A'</span>;
+}
+
+
+
+<span class="type">int</span> <span class="function-name">Colonna</span>(tipogate g)
+<span class="comment">/* dato nome di un gate, restituisce indice di colonna relativa nella matrice */</span>
+{
+	<span class="keyword">return</span> g-1;
+}
+
+
+<span class="type">tipoterm</span> <span class="function-name">Riga_1</span>(<span class="type">int</span> <span class="variable-name">i</span>)
+<span class="comment">/* dato l'indice di riga di una matrice, restituisce nome terminale corrispondente */</span>
+{
+	<span class="keyword">return</span> <span class="string">'A'</span>+i;
+}
+
+
+<span class="type">tipogate</span> <span class="function-name">Colonna_1</span>(<span class="type">int</span> <span class="variable-name">j</span>)
+<span class="comment">/* dato l'indice di colonna di una matrice, restituisce codice gate corrispondente */</span>
+{
+	<span class="keyword">return</span> j+1;
+}
+
+
+<span class="type">void</span> <span class="function-name">AzzeraStruttura</span>(tipopartenze zz)
+{
+	<span class="type">int</span> <span class="variable-name">i</span>,<span class="variable-name">j</span>;
+	<span class="keyword">for</span>(i=0;i&lt;NTERM;i++)
+		<span class="keyword">for</span>(j=0;j&lt;NGATE;j++)
+			zz[i][j]=0;
+	<span class="keyword">return</span>;
+}
+
+<span class="type">void</span> <span class="function-name">LeggiRiga</span>(<span class="type">FILE</span> *<span class="variable-name">f</span>, <span class="variable-name">tipoterm</span> *t, <span class="variable-name">tipogate</span> *g, <span class="variable-name">tipopasseggeri</span> *n)
+{
+	fscanf(f,<span class="string">&quot;%c %hu %u&quot;</span>, t, g, n);
+	fgetc(f); <span class="comment">/* per consumare '\n' */</span>
+	<span class="keyword">return</span>;
+}
+
+
+<span class="type">void</span> <span class="function-name">StampaStruttura</span>(tipopartenze p)
+{
+	<span class="type">int</span> <span class="variable-name">i</span>, <span class="variable-name">j</span>;
+	
+	<span class="keyword">for</span>(i=0; i&lt;NTERM; i++)
+		<span class="keyword">for</span>(j=0; j&lt;NGATE; j++)
+			printf(<span class="string">&quot;%c %d %u\n&quot;</span>, Riga_1(i), Colonna_1(j), p[i][j]);
+	<span class="keyword">return</span>;
+}
+
+
+<span class="type">elista</span> *<span class="function-name">CostruisciLista</span>(tipopartenze p, tipopasseggeri n)
+<span class="comment">/* funz. richiesta al punto 3 */</span>
+{
+	<span class="type">int</span> <span class="variable-name">i</span>,<span class="variable-name">j</span>;
+	elista *testa=NULL, *nuovo;
+	
+	<span class="comment">/* scandisco la matrice alla rovescia, cosi`
+	   posso costruire la lista con gli elementi nell'ordine
+	   richiesto semplicemente inserendo in testa */</span>
+	<span class="keyword">for</span>(i=NTERM-1;i&gt;=0;i--)
+		<span class="keyword">for</span>(j=NGATE-1;j&gt;=0;j--)
+			<span class="keyword">if</span>(p[i][j]&lt;=n) {
+				nuovo=Crea(Riga_1(i),Colonna_1(j),p[i][j]);
+				InTesta(&amp;testa,nuovo);
+			}
+	<span class="keyword">return</span> testa;
+}
+
+
+<span class="type">elista</span> *<span class="function-name">Crea</span>(tipoterm t, tipogate g, tipopasseggeri n)
+{
+	elista *nuovo;
+	nuovo=malloc(<span class="keyword">sizeof</span>(elista));
+	<span class="keyword">if</span>(nuovo==NULL) {
+		fprintf(stderr,<span class="string">&quot;malloc fallita. Programma terminato.\n&quot;</span>);
+		exit(2);
+	}
+	nuovo-&gt;term=t;
+	nuovo-&gt;gate=g;
+	nuovo-&gt;pass=n;
+	nuovo-&gt;next=NULL;
+	<span class="keyword">return</span> nuovo;
+}
+
+
+<span class="type">void</span> <span class="function-name">InTesta</span>(elista **e, elista *nuovo)
+{
+	nuovo-&gt;next=*e;
+	*e=nuovo;
+	<span class="keyword">return</span>;
+}
+
+
+<span class="type">void</span> <span class="function-name">StampaLista</span>(elista *p)
+{
+	<span class="keyword">for</span>(; p!=NULL; p=p-&gt;next)
+		printf(<span class="string">&quot;TERM=%c GATE=%hu PASSEGGERI=%u\n&quot;</span>,p-&gt;term,p-&gt;gate,p-&gt;pass);
+	<span class="keyword">return</span>;
+}
+</pre>
+  </body>
+</html>

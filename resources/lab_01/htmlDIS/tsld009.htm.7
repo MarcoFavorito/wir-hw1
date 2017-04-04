@@ -1,0 +1,62 @@
+
+<HTML>
+
+<HEAD>
+<META HTTP-EQUIV="Context-Type" CONTEXT="text/html;charset=PREDEFINITA (AUTOMATICA)">
+<meta name="GENERATOR" content="Microsoft Internet Assistant for PowerPoint 97">
+ <TITLE>Find sid’s of sailors who’ve reserved a red or a green boat</TITLE> 
+</HEAD>
+
+<BODY     >
+
+ <H1>Find sid’s of sailors who’ve reserved a red or a green boat</H1> 
+ <P><UL>
+<LI><H2>UNION: Can be used to compute the union of any two union-compatible sets of tuples (which are themselves the result of SQL queries).
+</H2>
+</UL><UL>
+<LI><H2>If we replace OR by AND in the first version, what do we get?
+</H2>
+</UL><UL>
+<LI><H2>Also available:  EXCEPT  (What do we get if we replace UNION by EXCEPT?)</H2>
+</UL></P>
+<P><UL>
+SELECT  R.sid
+<BR></UL><UL>
+FROM  Boats B, Reserves R
+</UL><UL>
+WHERE  R.bid=B.bid
+</UL><UL>
+  AND (B.color=‘red’ OR B.color=‘green’)</UL></P>
+<P><UL>
+SELECT  S.sid
+<BR></UL><UL>
+FROM  Sailors S, Boats B, Reserves R
+</UL><UL>
+WHERE  S.sid=R.sid AND R.bid=B.bid
+</UL><UL>
+                AND B.color=‘red’
+</UL><UL>
+UNION
+</UL><UL>
+SELECT  S.sid
+</UL><UL>
+FROM  Sailors S, Boats B, Reserves R
+</UL><UL>
+WHERE  S.sid=R.sid AND R.bid=B.bid
+</UL><UL>
+                AND B.color=‘green’</UL></P>
+<P></P> 
+<P>
+<TABLE>
+  <TD HEIGHT=100 WIDTH=100> <A HREF="tsld008.htm">Diapositiva precedente</A> </TD>
+  <TD HEIGHT=100 WIDTH=100> <A HREF="tsld010.htm">Diapositiva successiva</A> </TD>
+  <TD HEIGHT=100 WIDTH=150> <A HREF="tsld001.htm">Torna alla prima diaposiva</A> </TD>
+  <TD HEIGHT=100 WIDTH=150> <A HREF="sld009.htm">Visualizza versione grafica</A> </TD>
+</TABLE>
+<BR>
+</P>
+
+
+
+</Body>
+</HTML>

@@ -1,0 +1,119 @@
+<html>
+<head>
+<title>Tecniche di programmazione -- Compito di
+prova</title>
+</head>
+
+<body>
+
+<h1>Compito di esame (prova)</h1>
+<b>Tecniche di programmazione</b>
+
+
+<h2>Parte I</h2>
+
+<dl>
+
+<dt><b>Esercizio A (9 punti)</b>
+<dd>scrivere un metodo ricorsivo
+<tt>static boolean consecutivi(LinkedList l)</tt>
+che riceve una <tt>LinkedList</tt> e verifica se la lista
+contiene due oggetti consecutivi uguali
+
+<p />
+
+<dt><b>Esercizio B (9 punti)</b>
+<dd>scrivere un metodo
+<tt>static int quanti(Albero a)</tt> che riceve come
+parametro un albero che contiene interi, e ritorna il numero
+di nodi interni che hanno valore pari
+
+</dl>
+
+
+<h2>Parte II</h2>
+
+<dl>
+
+<dt><b>Esercizio A (4 punti)</b>
+<dd>Uno studente ha scritto il seguente metodo ricorsivo per
+la verifica di presenza di interi pari in un array. Spiegare
+perch&egrave; questo studente &egrave; stato bocciato.
+
+<pre>
+static boolean consecutivi(int v[], int start) {
+  if(v.length==0)
+    return false;
+
+  if(v[0]%2==0)
+    return true;
+
+  consecutivi(v, start+1);
+}
+</pre>
+
+<p />
+
+<dt><b>Esercizio B (4 punti)</b>
+<dd>Dire quante operazioni di scambio vengono effettuate
+dall'algoritmo di bubblesort nel caso migliore e peggiore e
+nel caso specifico dell'array qui sotto:
+
+<table border=1>
+<tr>
+<td>4</td>
+<td>9</td>
+<td>3</td>
+<td>2</td>
+<td>1</td>
+</tr>
+</table>
+
+<p />
+
+<dt><b>Esercizio C (4 punti)</b>
+<dd>Rispondere a <i>una sola</i> delle seguenti tre domande:
+
+<p />
+
+<ol>
+
+<li>spiegare in che modo si catturano le eccezioni
+
+<p />
+
+<li>illustrare la semantica del blocco
+
+<pre>
+synchronized("abcd") {
+  istruzione1;
+  istruzione2;
+}
+</pre>
+
+<li>data l'interfaccia
+
+<pre>
+interface Prova {
+  void metodo() {
+  }
+}
+</pre>
+
+quali delle seguenti istruzioni sono corrette e quali sono
+sbagliate?
+
+<pre>
+1: Prova x;
+2: x=new Prova();
+3: x.metodo();
+</pre>
+
+
+</ol>
+
+</dl>
+
+</body>
+</html>
+

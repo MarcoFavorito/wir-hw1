@@ -1,0 +1,80 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+<html>
+
+<head>
+<meta name="GENERATOR" content="Microsoft FrontPage 3.0">
+<title></title>
+</head>
+
+<body background="images/tela.jpg"
+onload="timerONE=window.setTimeout('scroller_Left(30)',10);">
+<script language="javascript">
+function scroller_Left(seed)
+{
+        var m1  = "Diploma d'Ingegneria Informatica ed Automatica...";
+        var m2  = "";
+        
+        var msg=m1+m2;
+        var out = " ";
+        var c   = 1;
+
+        if (seed > 100) {
+                seed--;
+                var cmd="scroller_Left(" + seed + ")";
+                timerTwo=window.setTimeout(cmd,100);
+        }
+        else if (seed <= 100 && seed > 0) {
+                for (c=0 ; c < seed ; c++) {
+                        out+=" ";
+                }
+                out+=msg;
+                seed--;
+                var cmd="scroller_Left(" + seed + ")";
+                    window.status=out;
+                timerTwo=window.setTimeout(cmd,100);
+        }
+        else if (seed <= 0) {
+                if (-seed < msg.length) {
+                        out+=msg.substring(-seed,msg.length);
+                        seed--;
+                        var cmd="scroller_Left(" + seed + ")";
+                        window.status=out;
+                        timerTwo=window.setTimeout(cmd,100);
+                }
+                else {
+                        window.status=" ";
+                        timerTwo=window.setTimeout("scroller_Left(100)",75);
+                }
+        }
+}
+</script>
+
+
+<h1 align="center">Università degli Studi<br>
+&quot;La Sapienza&quot; di Roma</h1>
+
+<hr>
+
+<p><br>
+Benvenuti nella HomePage WWW (World Wide Web) del <b>Diploma Universitario In Ingegneria
+Informatica ed Automatica</b>.<br>
+Questo documento contiene informazioni dettagliate sulla organizzazione del Diploma in
+Ingegneria Informatica ed Automatica, ed è rivolto sia agli studenti attuali del Diploma
+che agli studenti potenziali. Si consiglia di navigarlo prima di chiedere altre
+informazioni.Il documento è disponibile :</p>
+
+<p align="center"><a href="infogen/infochi.html#SEDERM">presso la segreteria del corso di
+Diploma </a><br>
+<a href="infogen/infochi.html#SEDEFR">presso il centro di studio di Frosinone</a><br>
+</p>
+
+<p>Oltre al Diploma in Ingegneria Informatica ed Automatica, la Facoltà di Ingegneria
+dell'Università &quot;La Sapienza&quot; eroga anche i Diplomi in Ingegneria Chimica,
+Ingegneria Meccanica, Ingegneria Elettrica, Ingegneria dell'Ambiente e Territorio.<br>
+Per informazioni su tali diplomi, si consiglia di rivolgersi alle corrispondenti strutture
+didattiche esistenti in Facoltà telefonando o scrivendo alla Presidenza,<a
+href="infogen/eudo.html"> Via Eudossiana 18</a>, 00184 Roma, tel.0644585706, Sig.Zanelli
+oppure telefonando al numero 0644585740 Sig.ra Mongiorgi.<br>
+</p>
+</body>
+</html>

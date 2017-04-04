@@ -1,0 +1,312 @@
+<!doctype html public "-//w3c//dtd html 4.0 transitional//en">
+<html>
+<head>
+<link href="java.css" rel="stylesheet" type="text/css">
+<title>Variabili globali</title>
+</head>
+
+<body>
+
+<h2>Variabili globali</h2>
+
+Il meccanismo con cui le procedure interagiscono con il
+programma principale visto fino ad ora &egrave; quello
+del passaggio dei parametri (con cui il programma manda
+dei dati alle procedure) e il valore di ritorno
+(<tt>return</tt>, con cui la funzioni mandano dati al
+programma principale quando hanno terminato).<p>
+
+Esiste un altro meccanismo che permette al programma
+e alle procedure di comunicare, ed &egrave; quello delle
+<i>variabili globali</i>.<p>
+
+Come si &egrave; visto fino ad ora, le variabili dichiarate
+all'interno di una procedura e le variabili dichiarate nel
+programma principale sono diverse, e ogni blocco pu&ograve;
+accedere alle sole variabili dichiarate all'interno del
+blocco stesso. Per esempio, nel seguente programma java
+la variabile <tt>x</tt> dichiarata nella procedura <tt>test</tt>
+&egrave; diversa dalla variabile <tt>x</tt> del programma
+principale, anche se il nome &egrave; lo stesso.<p>
+
+<pre>
+class Prova {
+  static void test() {
+    int x;
+
+    ...
+  }
+
+  public static void main(String[] args) {
+    int x;
+
+    ...
+  }
+}
+</pre>
+
+Infatti, la situazione che si viene a creare nella memoria &egrave;
+la seguente:<p>
+
+<table>
+
+<tr>
+<td><tt>test</tt></td>
+<td>
+<table border=1>
+<tr><td>
+<table>
+<tr>
+<td><tt>x</tt></td>
+<td><table border=1><tr><td><tt>&nbsp;&nbsp;&nbsp;&nbsp;</tt></td></tr></table></td>
+</tr>
+<tr><td>&nbsp;</td><td>&nbsp;</td><td><tt>&nbsp;&nbsp;&nbsp;&nbsp;</tt></td></tr>
+<tr><td>&nbsp;</td></tr>
+</table>
+</tr></td>
+</table>
+</td>
+</tr>
+<tr><td>&nbsp;</td></tr>
+<tr>
+<td><tt>main</tt></td>
+<td>
+<table border=1><tr><td>
+<table>
+<tr>
+<td><tt>x</tt></td>
+<td><table border=1><tr><td><tt>&nbsp;&nbsp;&nbsp;&nbsp;</tt></td></tr></table></td>
+</tr>
+<tr><td>&nbsp;</td><td>&nbsp;</td><td><tt>&nbsp;&nbsp;&nbsp;&nbsp;</tt></td></tr>
+<tr><td>&nbsp;</td></tr>
+</table>
+</tr></td></table>
+</td>
+</tr>
+</table>
+
+Se per esempio si mette <tt>x=10</tt> dentro il <tt>main</tt>,
+la variabile in cui viene messo il 10 &egrave; la variabile che
+sta nel contenitore di <tt>main</tt>. Se si esegue
+<tt>System.out.println(x)</tt> dentro il <tt>main</tt>, viene
+stampato il contenuto della casella <tt>x</tt> che sta dentro
+il contenitore di <tt>main</tt>, ecc. Lo stesso vale per l'altra
+variabile <tt>x</tt>, cio&egrave; quella del contenitore della
+procedura <tt>test</tt>: solo le istruzioni che stanno dentro
+<tt>test</tt> possono modificare il contenuto di questa variabile,
+e solo queste possono accedere al contenuto precedentemente
+memorizzato. Si pu&ograve; dire che le due variabili, anche se
+hanno lo stesso nome, sono due variabili diverse.<p>
+
+Le variabili globali sono variabili che possono venire usate
+da tutte le procedure e dal programma principale. Si tratta di
+variabili che sono definite al di fuori delle procedure, e che
+sono accessibili da tutti i blocchi del programma. Per dichiarare
+una variabile globale, si mette la dichiarazione prima di tutte
+le procedure. Per esempio, se serve una variabile globale
+intera <tt>a</tt> si fa cos&iacute:<p>
+
+<pre>
+class Prova {
+  static int a;
+
+  static void test() {
+    int x;
+
+    ...
+  }
+
+  public static void main(String[] args) {
+    int x;
+
+    ...
+  }
+}
+</pre>
+
+In un certo senso, continua a valere la regola che le variabili
+definite all'interno di una coppia di graffe <tt>{...}</tt>
+sono utilizzabili solo all'interno dello stesso paio di graffe.
+In questo caso per&ograve; la dichiarazione di <tt>a</tt>
+si trova tra <tt>class Prova{</tt> e l'ultima <tt>}</tt>, per 
+cui tutte le istruzioni di tutte le procedure (e del programma
+principale) possono usare questa variabile, sia per memorizzare
+un valore che per vedere il suo contenuto.<p>
+
+La situazione che si viene a creare nella memoria si pu&ograve;
+rappresentare come segue:<p>
+
+<table>
+
+<tr>
+<td><tt></tt></td>
+<td>
+<table>
+<tr><td>
+<table>
+<tr>
+<td><tt>a</tt></td>
+<td><table border=1><tr><td><tt>&nbsp;&nbsp;&nbsp;&nbsp;</tt></td></tr></table></td>
+</tr>
+<tr><td>&nbsp;</td><td>&nbsp;</td><td><tt>&nbsp;&nbsp;&nbsp;&nbsp;</tt></td></tr>
+<tr><td>&nbsp;</td></tr>
+</table>
+</tr></td>
+</table>
+</td>
+</tr>
+
+<tr>
+<td><tt>test</tt></td>
+<td>
+<table border=1>
+<tr><td>
+<table>
+<tr>
+<td><tt>x</tt></td>
+<td><table border=1><tr><td><tt>&nbsp;&nbsp;&nbsp;&nbsp;</tt></td></tr></table></td>
+</tr>
+<tr><td>&nbsp;</td><td>&nbsp;</td><td><tt>&nbsp;&nbsp;&nbsp;&nbsp;</tt></td></tr>
+<tr><td>&nbsp;</td></tr>
+</table>
+</tr></td>
+</table>
+</td>
+</tr>
+
+<tr><td>&nbsp;</td></tr>
+<tr>
+<td><tt>main</tt></td>
+<td>
+<table border=1><tr><td>
+<table>
+<tr>
+<td><tt>x</tt></td>
+<td><table border=1><tr><td><tt>&nbsp;&nbsp;&nbsp;&nbsp;</tt></td></tr></table></td>
+</tr>
+<tr><td>&nbsp;</td><td>&nbsp;</td><td><tt>&nbsp;&nbsp;&nbsp;&nbsp;</tt></td></tr>
+<tr><td>&nbsp;</td></tr>
+</table>
+</tr></td></table>
+</td>
+</tr>
+</table>
+
+<p>
+
+Detto a parole, la variabile <tt>a</tt> &egrave; una casella
+(zona di memoria) che non sta dentro il contenitore di nessuna
+delle procedure. Per questo tipo di variabili vale la regola
+che tutte le procedure e funzioni possono usare queste variabili.<p>
+
+Consideriamo il seguente programma
+<a href="Globali.java">Globali.java</a>:
+
+<pre>
+/*
+  Esempio di variabili globali.
+*/
+
+class Globali {
+  static int a;
+
+  static void test() {
+    a=a+1;
+  }
+
+  public static void main(String[] args) {
+    a=10;
+
+    test();
+    test();
+
+    System.out.println("La variabile vale "+a);
+  }
+}
+
+</pre>
+
+Quello che succede &egrave; che la variabile <tt>a</tt> viene
+creata come una variabile globale. Quindi, sia <tt>test</tt>
+che <tt>main</tt> possono usarla. In particolare, quando
+si esegue <tt>a=10</tt> dentro <tt>main</tt>, viene messo 10
+nella variabile. Quando si chiama la procedura <tt>test</tt>,
+si esegue l'istruzione <tt>a=a+1</tt>. Questa istruzione
+incrementa di 1 il valore della variabile <tt>a</tt>, e questa
+&egrave; ancora la variabile globale. Quando si chiama la
+seconda volta la procedura, il contenuto della variabile viene
+incrementato di nuovo. Alla fine, l'istruzione
+<tt>System.out.println("La variabile vale "+a);</tt> stampa
+il valore di <tt>a</tt>, che ora &egrave; 12.<p>
+
+Si noti la differenza dal programma in cui vengono dichiarate
+due variabili con lo stesso nome <tt>a</tt> sia dentro
+<tt>test</tt> che dentro <tt>main</tt>: in questo caso, si
+tratta di due variabili distinte, e ogni blocco di istruzioni
+pu&ograve; accedere soltanto alla sua variabile, e non a quella
+dell'altro blocco (anche se le due variabili hanno lo stesso
+nome).<p>
+
+Questo meccanismo consente di far passare informazioni dal
+programma alle procedure e viceversa: se per esempio il
+programma vuole mandare un intero a una procedura, pu&ograve;
+mettere il valore in una variabile globale e poi chiamare
+la procedura. La procedura, a sua volta, pu&ograve; leggere
+il valore che il programma ha scritto in questa variabile.
+Si veda per esempio il programma che stampa un certo numero
+di linee bianche fatto usando una variabile globale:
+
+<pre>
+class Linee {
+  static int lineedalasciare;
+
+  static void lineebianche() {
+    int i;
+
+    for(i=1; i<=lineedalasciare; i=i+1) {
+      System.out.println(" ");
+    }
+  }
+
+  public static void main(String[] args) {
+
+    /* stampa 10 linee */
+    lineedalasciare=10;
+    lineebianche();
+
+    ...
+
+    /* stampa 20 linee */
+    lineedalasciare=10;
+    lineebianche();
+  }
+}
+</pre>
+
+Quello che succede, in questo caso, &egrave; che il programma
+principale mette il valore 10 nella variabile
+<tt>lineedalasciare</tt> e poi chiama la procedura
+<tt>lineebianche()</tt>. Questa procedura contiene un ciclo
+in cui la variabile <tt>i</tt> va da 1 al contenuto della
+variabile <tt>lineedalasciare</tt>, che &egrave; appunto
+10. In questo modo, la procedura riesce a usare un valore
+che &egrave; stato memorizzato dal programma principale.<p>
+
+<b>Nota</b>: il passaggio di parametri e i valori di ritorno
+sono anch'essi forme di comunicazione di dati fra procedure
+e programma. In effetti, &egrave; possibile non usare affatto
+gli argomenti, limitandosi a usare sempre variabili globali.
+Questo modo di procedere &egrave; fortemente sconsigliato,
+a meno che non sia realmente necessario (vedi il caso della
+reazione al mouse negli applet) perch&egrave; in questo modo
+si genera un codice difficile da leggere, cha spesso genera
+errori e sempre un abbassamento del voto finale.<p>
+
+<b>Nota</b>: ci sono dei casi in cui una variabile globale
+non &egrave; utilizzabile da una procedura. Questo problema
+viene analizzato nella pagina dedicata alla
+<a href="visibilita.shtml">visibilit&agrave;</a>.<p>
+
+</body>
+</html>
+

@@ -1,0 +1,434 @@
+<!doctype html public "-//w3c//dtd html 4.0 transitional//en">
+<html>
+<head>
+<link href="java.css" rel="stylesheet" type="text/css">
+<title>Variabili e procedure</title>
+</head>
+
+<body>
+
+<h2>Variabili e procedure</h2>
+
+A prima vista, pu&ograve; sembrare che le procedure siano
+semplicemente un modo per raccogliere insieme una sequenza
+di istruzioni, in modo da avere un nome per questa sequenza.
+Le cose non stanno esattamente cos&iacute;. La principale
+differenza &egrave; che all'interno di una procedura non
+si possono usare le variabili che sono dichiarate all'interno
+del programma principale. In altre parole, il seguente
+programma non viene compilato:<p>
+
+<pre>
+class Zero {
+  static annulla() {
+    a=0;
+  }
+
+  public static void main(String[] args) {
+    int a;
+
+    anulla();
+    System.out.println(a);
+  }
+}
+</pre>
+
+A prima vista, potrebbe sembrare che scrivere <tt>a=0</tt>
+nel programma oppure <tt>annulla()</tt> sia esattamente la
+stessa cosa. Il problema &egrave; che le variabili del
+programma non possono venire usate in nessun modo nelle
+istruzioni all'interno della procedura.<p>
+
+D'altra parte, &egrave; possibile dichiarare ed usare delle
+variabili all'interno della procedura. Queste variabili non
+saranno per&ograve; visibili al programma principale, ossia
+non potranno venire usate dalle istruzioni del programma
+principale. Queste variabili sono dette
+<b>variabili locali della procedura</b>.<p>
+
+Supponiamo per esempio di voler realizzare una procedura che
+stampa venti linee bianche. Possiamo ripetere la stampa di 
+una linea bianca per venti volte, usando un ciclo for. Per
+poter usare il ciclo for occorre una variabile di tipo intero
+che vada da 1 a 20. Non possiamo dichiarare questa variabile
+nel programma principale (cio&egrave; dopo il
+<tt>public static void main...</tt>) perch&eacute; in questo
+modo la procedura non potrebbe usarla. &Egrave; quindi necessario
+dichiarare questa variabile all'interno della procedura, nel
+modo seguente:<p>
+
+<pre>
+class LineeBianche {
+  static void diecilinee() {
+    int i;
+
+    for(i=1; i<=20; i=i+1) {
+      System.out.println(" ");
+    }
+  }
+
+  public static void main(String[] args) {
+    ....
+
+    diecilinee();
+
+    ...
+
+  }
+}
+</pre>
+
+&Egrave; possibile avere pi&ugrave; procedure, oltre
+al programma principale. In oguna di queste procedure
+si possono definire delle variabili. La regola in questo
+caso &egrave;<p>
+
+<blockquote>
+<i>
+le variabili definite all'interno di una procedura
+si possono usare solo dentro la procedura stessa
+</i>
+</blockquote>
+
+Prendiamo in considerazione il seguente programma
+<a href="StessoNome.java">StessoNome.java</a>:<p>
+
+<pre>
+/*
+  Due variabili con lo stesso nome: una nella procedura
+  e una nel programma.
+*/
+
+class StessoNome {
+  static void esempio() {
+    int a;
+
+    a=12;
+  }
+
+  public static void main(String[] args) {
+    int a;
+
+    a=90;
+
+    esempio();
+
+    System.out.println(a);
+  }
+}
+
+</pre>
+
+Si analizzi il programma e si provi a capire che cosa
+viene stampato. A prima vista pu&ograve; sembrare che
+si stampa il valore 12: infatti, la variabile <tt>a</tt>
+viene assegnata a 90, poi si chiama la procedura che
+ci mette il valore 12, e poi si stampa il contenuto.
+In realt&agrave;, il programma stampa il numero 90.<p>
+
+Per capire il perch&egrave;, occorre capire come viene
+organizzata la memoria. La situazione che si viene a
+creare nella memoria &egrave; la seguente:<p>
+
+<table>
+
+<tr>
+<td><tt>esempio</tt></td>
+<td>
+<table border=1>
+<tr><td>
+<table>
+<tr>
+<td><tt>a</tt></td>
+<td><table border=1><tr><td><tt>&nbsp;&nbsp;&nbsp;&nbsp;</tt></td></tr></table></td>
+</tr>
+<tr><td>&nbsp;</td><td>&nbsp;</td><td><tt>&nbsp;&nbsp;&nbsp;&nbsp;</tt></td></tr>
+<tr><td>&nbsp;</td></tr>
+</table>
+</tr></td>
+</table>
+</td>
+</tr>
+<tr><td>&nbsp;</td></tr>
+<tr>
+<td><tt>main</tt></td>
+<td>
+<table border=1><tr><td>
+<table>
+<tr>
+<td><tt>a</tt></td>
+<td><table border=1><tr><td><tt>&nbsp;&nbsp;&nbsp;&nbsp;</tt></td></tr></table></td>
+</tr>
+<tr><td>&nbsp;</td><td>&nbsp;</td><td><tt>&nbsp;&nbsp;&nbsp;&nbsp;</tt></td></tr>
+<tr><td>&nbsp;</td></tr>
+</table>
+</tr></td></table>
+</td>
+</tr>
+</table>
+
+
+<p>
+
+A parole: la procedura <tt>esempio</tt> ha una sua zona
+di memoria, che &egrave; un contenitore in cui vengono
+messe le variabili locali alla procedura. La variabile
+<tt>a</tt> dichiarata all'intero di <tt>esempio</tt>
+&egrave; una casella all'interno di questo contenitore.<p>
+
+D'altra parte, il programma principale (<tt>main</tt>)
+ha una sua zona di memoria, che &egrave; il contenitore
+in cui vengono create le sue variabili Quindi, la variabile
+<tt>a</tt> dichiarata all'interno di <tt>main</tt> 
+&egrave; una casella all'interno di questa zona.<p>
+
+&Egrave; quindi chiaro che la due variabili, anche se
+hanno lo stesso nome, corrispondono a due zone di memoria
+diverse. &Egrave; quindi possibile che il contenuto sia
+diverso; pi&ugrave; precisamente, mettendo un valore in
+una delle due variabili, l'altra rimane inalterata.<p>
+
+Vediamo ora come viene creata questa situazione, ossia
+eseguiamo il programma passo per passo. Inizialmente,
+la memoria &egrave; vuota.<p>
+
+<table>
+
+<tr>
+<td><tt>esempio</tt></td>
+<td>
+<table border=1>
+<tr><td>
+<table>
+<tr>
+<td><tt>&nbsp;</tt></td>
+<td><table border=0><tr><td><tt>&nbsp;&nbsp;&nbsp;&nbsp;</tt></td></tr></table></td>
+</tr>
+<tr><td>&nbsp;</td><td>&nbsp;</td><td><tt>&nbsp;&nbsp;&nbsp;&nbsp;</tt></td></tr>
+<tr><td>&nbsp;</td></tr>
+</table>
+</tr></td>
+</table>
+</td>
+</tr>
+<tr><td>&nbsp;</td></tr>
+<tr>
+<td><tt>main</tt></td>
+<td>
+<table border=1><tr><td>
+<table>
+<tr>
+<td><tt>&nbsp;</tt></td>
+<td><table border=0><tr><td><tt>&nbsp;&nbsp;&nbsp;&nbsp;</tt></td></tr></table></td>
+</tr>
+<tr><td>&nbsp;</td><td>&nbsp;</td><td><tt>&nbsp;&nbsp;&nbsp;&nbsp;</tt></td></tr>
+<tr><td>&nbsp;</td></tr>
+</table>
+</tr></td></table>
+</td>
+</tr>
+</table>
+
+
+<p>
+
+Per prima cosa viene creata la variabile <tt>a</tt> del
+programma:<p>
+
+<table>
+
+<tr>
+<td><tt>esempio</tt></td>
+<td>
+<table border=1>
+<tr><td>
+<table>
+<tr>
+<td><tt>&nbsp;</tt></td>
+<td><table border=0><tr><td><tt>&nbsp;&nbsp;&nbsp;&nbsp;</tt></td></tr></table></td>
+</tr>
+<tr><td>&nbsp;</td><td>&nbsp;</td><td><tt>&nbsp;&nbsp;&nbsp;&nbsp;</tt></td></tr>
+<tr><td>&nbsp;</td></tr>
+</table>
+</tr></td>
+</table>
+</td>
+</tr>
+<tr><td>&nbsp;</td></tr>
+<tr>
+<td><tt>main</tt></td>
+<td>
+<table border=1><tr><td>
+<table>
+<tr>
+<td><tt>a</tt></td>
+<td><table border=1><tr><td><tt>&nbsp;&nbsp;&nbsp;&nbsp;</tt></td></tr></table></td>
+</tr>
+<tr><td>&nbsp;</td><td>&nbsp;</td><td><tt>&nbsp;&nbsp;&nbsp;&nbsp;</tt></td></tr>
+<tr><td>&nbsp;</td></tr>
+</table>
+</tr></td></table>
+</td>
+</tr>
+</table>
+
+
+<p>
+
+In questa variabile viene messo il valore 90:<p>
+
+<table>
+
+<tr>
+<td><tt>esempio</tt></td>
+<td>
+<table border=1>
+<tr><td>
+<table>
+<tr>
+<td><tt>&nbsp;</tt></td>
+<td><table border=0><tr><td><tt>&nbsp;&nbsp;&nbsp;&nbsp;</tt></td></tr></table></td>
+</tr>
+<tr><td>&nbsp;</td><td>&nbsp;</td><td><tt>&nbsp;&nbsp;&nbsp;&nbsp;</tt></td></tr>
+<tr><td>&nbsp;</td></tr>
+</table>
+</tr></td>
+</table>
+</td>
+</tr>
+<tr><td>&nbsp;</td></tr>
+<tr>
+<td><tt>main</tt></td>
+<td>
+<table border=1><tr><td>
+<table>
+<tr>
+<td><tt>a</tt></td>
+<td><table border=1><tr><td><tt>&nbsp;&nbsp;90</tt></td></tr></table></td>
+</tr>
+<tr><td>&nbsp;</td><td>&nbsp;</td><td><tt>&nbsp;&nbsp;&nbsp;&nbsp;</tt></td></tr>
+<tr><td>&nbsp;</td></tr>
+</table>
+</tr></td></table>
+</td>
+</tr>
+</table>
+
+
+<p>
+
+A questo punto si chiama la procedura <tt>esempio</tt>.
+Questa procedura crea una sua variabile locale (nel suo
+contenitore/zona di memoria) che ha ancora nome <tt>a</tt>.
+Quindi la situazione che si ha a questo punto &egrave;
+la seguente:<p>
+
+<table>
+
+<tr>
+<td><tt>esempio</tt></td>
+<td>
+<table border=1>
+<tr><td>
+<table>
+<tr>
+<td><tt>a</tt></td>
+<td><table border=1><tr><td><tt>&nbsp;&nbsp;&nbsp;&nbsp;</tt></td></tr></table></td>
+</tr>
+<tr><td>&nbsp;</td><td>&nbsp;</td><td><tt>&nbsp;&nbsp;&nbsp;&nbsp;</tt></td></tr>
+<tr><td>&nbsp;</td></tr>
+</table>
+</tr></td>
+</table>
+</td>
+</tr>
+<tr><td>&nbsp;</td></tr>
+<tr>
+<td><tt>main</tt></td>
+<td>
+<table border=1><tr><td>
+<table>
+<tr>
+<td><tt>a</tt></td>
+<td><table border=1><tr><td><tt>&nbsp;&nbsp;90</tt></td></tr></table></td>
+</tr>
+<tr><td>&nbsp;</td><td>&nbsp;</td><td><tt>&nbsp;&nbsp;&nbsp;&nbsp;</tt></td></tr>
+<tr><td>&nbsp;</td></tr>
+</table>
+</tr></td></table>
+</td>
+</tr>
+</table>
+
+
+<p>
+
+La procedura <tt>esempio</tt> contiene una istruzione
+<tt>a=12</tt>. Questo significa: metti il valore 12 nella
+variabile <tt>a</tt>. Abbiamo per&ograve; due variabili
+<tt>a</tt> in questo momento. Dal momento che questa
+istruzione si trova nella procedura <tt>esempio</tt>, la
+variabile <tt>a</tt> &egrave; quella della zona di
+memoria di memoria di <tt>esempio</tt>, che nel grafico
+&egrave; il contenitore di sopra. Quindi <tt>a=12</tt> mette
+il valore 12 nella variabile <tt>a</tt> locale della
+procedura <tt>esempio</tt>:<p>
+
+<table>
+
+<tr>
+<td><tt>esempio</tt></td>
+<td>
+<table border=1>
+<tr><td>
+<table>
+<tr>
+<td><tt>a</tt></td>
+<td><table border=1><tr><td><tt>&nbsp;&nbsp;12</tt></td></tr></table></td>
+</tr>
+<tr><td>&nbsp;</td><td>&nbsp;</td><td><tt>&nbsp;&nbsp;&nbsp;&nbsp;</tt></td></tr>
+<tr><td>&nbsp;</td></tr>
+</table>
+</tr></td>
+</table>
+</td>
+</tr>
+<tr><td>&nbsp;</td></tr>
+<tr>
+<td><tt>main</tt></td>
+<td>
+<table border=1><tr><td>
+<table>
+<tr>
+<td><tt>a</tt></td>
+<td><table border=1><tr><td><tt>&nbsp;&nbsp;90</tt></td></tr></table></td>
+</tr>
+<tr><td>&nbsp;</td><td>&nbsp;</td><td><tt>&nbsp;&nbsp;&nbsp;&nbsp;</tt></td></tr>
+<tr><td>&nbsp;</td></tr>
+</table>
+</tr></td></table>
+</td>
+</tr>
+</table>
+
+
+<p>
+
+A questo punto la procedura termina e si ritorna ad eseguire
+il programma principale dal punto in cui lo si era lasciato.
+In questo caso, l'istruzione subito dopo la chiamata di
+procedura &egrave; <tt>System.out.println(a)</tt>, che
+stampa il valore della variabile <tt>a</tt>. Anche in questo
+caso abbiamo il dubbio di quale sia la variabile <tt>a</tt>,
+se quella del programma o quella della procedura 
+<tt>esempio</tt>. Dal momento che la istruzione di stampa si
+trova all'interno del programma, la variabile da usare &egrave;
+quella del programma, ossia quella che attualmente contiene
+il valore 90. Il risultato dell'esecuzione di questo programma
+&egrave; quindi la stampa del numero 90.<p>
+
+
+
+</body>
+</html>
+

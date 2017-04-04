@@ -1,0 +1,182 @@
+<!DOCTYPE html PUBLIC "-//w3c//dtd html 4.0 transitional//en">
+<html>
+<head>
+  <title>Esercizi sull'unit&agrave; 7</title>
+  <link rel="stylesheet" href="../../fi2001.css" type="text/css">
+</head>
+<body>
+&nbsp;
+<center>
+<p><b>Fondamenti di Informatica</b> <br>
+<b>Corsi di Laurea in Ingegneria <br>
+Informatica e Automatica</b> <br>
+</p>
+</center>
+<hr>
+<h2 align="center">Esercizi sull'unit&agrave; 7</h2>
+<h2 align="center">&nbsp;</h2>
+<p><b>Esercizio 1</b> </p>
+<blockquote> Realizzare una classe <code>funzionalitaArray</code> che
+implementa i seguenti metodi statici:
+  <ul>
+    <li><code>leggi</code>, che memorizza una sequenza di interi letti
+mediante il metodo <code>JOptionPane.showInputDialog</code>,
+e ritorna il un vettore di interi contenente tale sequenza.
+L'inserimento deve terminare quando si preme il tasto
+      <b>Cancel</b> nella finestra di input.<br>
+Suggerimento: Memorizzare i dati letti in un array di lunghezza pari
+alla dimensione della massima sequanza ammissibile (100);
+copiare quindi i dati inseriti in un array opportunamente dimensionato.</li>
+    <li><code>elementiPari</code>, che dato un array di interi <i>v</i>
+come argomento, restituisce un array contenente i soli
+elementi pari che occorrono in <i>v</i>.
+Se non esistono elementi pari il metodo deve restituire <code>null<code>;</code></code></li>
+    <li><code>somma</code>, che data una coppia di array di interi <i>v</i>
+e <i>s</i> come argomenti verifica se gli array
+hanno la stessa dimensione (in caso contrario ritorna <code>null<code>),
+e restituisce un vettore <i>q</i>, tale che
+      <i>q[i]=v[i]+s[i]</i>;</code></code></li>
+    <li><code>prodotto</code>, che data una coppia di array di interi <i>v</i>
+e <i>s</i> come argomenti, verifica se gli array
+hanno la stessa dimensione e restituisce un intero <i>p</i>, che
+&egrave; la somma del prodotto degli
+elementi corrispondenti di <i>v</i> e <i>s</i> (prodotto scalare);</li>
+    <li><code>prodotto</code>, che dato un array di interi <i>v</i> ed
+un intero <i>p</i> come argomenti, ritorna un vettore <i>p</i> tale
+che p[i]=v[i]*p.</li>
+  </ul>
+  <br>
+</blockquote>
+<p><b>Esercizio 2</b> </p>
+<blockquote>
+  <p>Si vuole realizzare una classe <code>Lotto</code>, i cui oggetti
+mantengono informazioni su una estrazione del lotto. Ogni estrazione
+&egrave; caratterizzata da 5 numeri (interi) estratti su 6 ruote. </p>
+  <p>Della classe sono d'interesse le seguenti funzionalit&agrave;:</p>
+  <ul>
+    <li> creazione di una estrazione del lotto: si generino casualmente
+i numeri estratti utilizzando la formula seguente
+      <ul>
+        <blockquote> <em>(int) (Math.random() * 90) + 1</em></blockquote>
+      </ul>
+    </li>
+    <li> verifica che l'array passato come argomento rappresenti un
+ambo, un terno, una quaterna o una cinquina su almeno una ruota;</li>
+    <li>verifica che l'array (di lunghezza cinque) passato come
+parametro rappresenti una vincita al superEnalotto. Si ottiene cinquina
+al superEnalotto se i cinque numeri giocati sono uguali ai primi cinque
+estratti su cinque delle sei ruote. </li>
+  </ul>
+  <p>Si scriva inoltre un cliente della classe <code>Lotto</code> che
+rappresenti la giocata di alcuni numeri e verifichi la vincita. </p>
+  <p><a href="soluzioni/Lotto.java">Soluzione</a>&nbsp;</p>
+</blockquote>
+<p><b>Esercizio 3 - Parte I</b> </p>
+<blockquote>
+  <p>Si realizzi una classe <code>Televisore</code> per gestire
+informazioni relative ai televisori. Ciascun oggetto della classe
+rappresenta un televisore, e per ciascun televisore, le informazioni
+rilevanti riguardano il numero di canali di cui dispone (ad esempio dal
+numero 1 al numero 49), e le stazioni (ad esempio, "Rai Tre") su cui i
+vari canali vengono sintonizzati. </p>
+  <p>Equipaggiare la classe con im seguenti metodi pubblici: </p>
+  <ul>
+    <li>un costruttore che, dato un intero <em>c</em>, crei un oggetto
+di tipo <code>Televisore</code> con <em>c</em> canali, ai quali non
+e' associata alcuna stazione.</li>
+    <li> <code>quantiCanali</code>, che restituisce il numero di
+canali di cui dispone un televisore</li>
+    <li> <code>associa</code>, che dati una stazione <em>s</em> ed un
+canale <em>c</em>, associa al canale <em>c</em> del televisore la
+stazione <em>s</em></li>
+    <li><code>qualeStazione</code> che dato un intero <em>c</em>,
+restituisce la stazione associata al canale <em>c</em> del televisore
+se esiste e restituisca la stringa <code>"stazione inesistente"</code>
+altrimenti.</li>
+  </ul>
+  <a href="soluzioni/Televisore.java">Soluzione</a><br>
+</blockquote>
+<p><b>Esercizio 3 - Parte II</b> </p>
+<blockquote>
+  <p>Realizzare una classe <code>StazioniSintonizzate</code>, che
+includa un metodo statico <code>quanteStazioni</code> che, preso in
+ingresso un array di televisori e una stazione, restituisce il numero
+di televisori che hanno quella stazione.<br>
+  </p>
+  <p><a href="soluzioni/StazioniSintonizzate.java">Soluzione</a><br>
+  </p>
+</blockquote>
+<p><b>Esercizio 3 - Parte III</b> </p>
+<blockquote>
+  <p>Realizzare una classe cliente delle classi precedenti avente un
+metodo <code>main</code> che legga da tastiera il numero canali di 4
+di televisori, crei i relativi oggetti e associ loro alcune stazioni
+lette da tastiera. Infine, si legga un'altra stazione da tastiera e si
+stampi il numero di televisori che sono sintonizzati su quella stazione.<br>
+  </p>
+  <p><a href="soluzioni/ClienteTelevisore.java">Soluzione</a><br>
+  </p>
+</blockquote>
+<p><b>Esercizio 4 </b> </p>
+<blockquote>
+  <p>Si vuole realizzare una classe che realizzi il gioco Battaglia
+Navale. Battaglia Navale si gioca su di una matrice di 10*10 celle. Il
+gioco inizia con i due concorrenti che dispongono nel campo di gioco un
+certo numero di navi. Ogni giocatore non conosce la disposizione delle
+navi dell'avversario. Ad ogni turno il giocatore "chiama" una cella
+(x,y) del campo avversario, e l'avversario comunica se ha colpito
+qualcosa. Il gioco termina quando uno dei due giocatori ha finito le
+navi.<br>
+  <br>
+Nella nostra implementazione l'avversario e' il computer, che non
+pu&ograve; mai sparare. Ad ogni turno il giocatore pu&ograve; sparare
+con due tipi di arma: il fucile ed il cannone. Se spara con il fucile
+in <i>(x,y</i>), ha l'effetto di colpire una ben precisa cella, mentre
+se spara con il cannone da una certa <i>riga</i> e con una certa <i>direzione</i>,
+colpisce tutte le celle allineate lungo la direzione, come mostrato in
+figura. <br>
+  <br>
+  <img src="bn.gif" alt="Campo" height="254" width="340"> <br>
+  <br>
+  <br>
+  <b>Parte I</b> </p>
+  <blockquote>Implementare una classe <code>Cella</code>, che
+rappresenta una cella del campo di gioco. Ciascuna cella &egrave;
+caratterizzata dalle seguenti informazioni:
+    <p></p>
+    <ul>
+      <li><em>colpita</em>, che indica se la cella &egrave; stata
+colpita almeno una volta,</li>
+      <li><em>occupata</em>, che indica se la cella &egrave; occupata
+da una nave.</li>
+    </ul>
+La classe <code>Cella</code> deve essere provvista di metodi per
+accedere a tutte le informazioni contenute, e di un metodo <code>toString</code>
+che si comporta come segue:
+    <ul>
+      <li>se la cella non e' colpita, ritorna la stringa composta da un
+carattere blank (<code>" "</code>);</li>
+      <li>se la cella e' colpita, ed e' occupata ritorna la stringa <code>"X"</code>;</li>
+      <li>se la cella e' colpita e libera ritorna la stringa <code>"#"</code>.</li>
+    </ul>
+    <p>&nbsp;</p>
+  </blockquote>
+  <b>Parte II</b><br>
+  <blockquote>Implementare la classe <code>BattagliaNavale</code>, che
+contiene una matrice di 10*10 celle. La classe deve implementare i
+seguenti metodi:
+    <ul>
+      <li><code>spara</code>, che dati due interi <em>x</em> e <em>y</em>,
+modifica lo stato della cella di coordinate (x,y), come colpita;</li>
+      <li><code>lanciaSiluro</code>, che dati due interi ha l'effetto
+di colpire una serie di caselle allineate, a seconda del valore .</li>
+      <li><code>toString</code>, che restituisce la stringa
+rappresentante il campo di gioco, dove per ogni cella viene stampato <code>"
+"</code>,<code> "X"</code> o <code>"#"</code>, a seconda che essa sia
+non colpita, colpita ed occupata, o colpita e libera.</li>
+    </ul>
+    <a href="soluzioni/soluzioniEsBatt/">Soluzione</a><br>
+  </blockquote>
+</blockquote>
+</body>
+</html>

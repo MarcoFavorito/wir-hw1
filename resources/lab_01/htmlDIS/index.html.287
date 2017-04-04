@@ -1,0 +1,143 @@
+<!doctype html public "-//w3c//dtd html 4.0 transitional//en">
+<html>
+<head>
+   <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <meta name="GENERATOR" content="Mozilla/4.7 [en] (X11; I; SunOS 5.5.1 sun4u) [Netscape]">
+   <title>Esercitazione 5 - Parser per mini-HTML</title>
+</head>
+<body text="#000000" bgcolor="#FFFFFF" link="#0000FF" vlink="#990066" alink="#FF0000">
+
+<center>
+<h1>
+Esercitazione 5</h1></center>
+
+<center>
+<h1>
+Parser per miniHTML</h1></center>
+
+<hr WIDTH="100%">
+<p><a href="HTMLgram.html">Grammatica di HTML completa</a>
+<ol>
+<li>
+miniHTML, versione 1 (senza tag con parametri)
+
+<ul>
+<li>
+<a href="minihtml0.txt">sintassi</a></li>
+
+<li>
+<a href="htm0.fl">specifica FLEX</a></li>
+
+<li>
+<a href="htm0.y">specifica BISON per un riconoscitore</a></li>
+
+<li>
+esempi di file di input:
+
+<ul>
+<li>
+<a href="ese0.htm">esempio 0</a></li>
+
+<li>
+<a href="ese0err.htm">esempio 0 con errore</a></li>
+
+<li>
+<a href="ese1.htm">esempio 1</a></li>
+
+<li>
+<a href="ese1err.htm">esempio 1 con errore</a></li>
+</ul></li>
+</ul></li>
+
+<li>
+miniHTML, versione 2 (comprendente alcuni tag con parametri)
+
+<ul>
+<li>
+<a href="minihtml1.txt">sintassi</a></li>
+
+<li>
+<a href="htm1.fl">specifica FLEX</a></li>
+
+<li>
+<a href="htm1.y">specifica BISON per un riconoscitore</a></li>
+
+<li>
+esempi di file di input:
+
+<ul>
+<li>
+<a href="ese1.htm">esempio 1</a></li>
+
+<li><a href="index.html">il file che state leggendo</a></li>
+
+<li>il file <a href="../lezioni.html">lezioni.html</a> di questo sito</li>
+
+<li>
+<a href="ese1err.htm">esempio 1 con errore</a></li>
+</ul></li>
+</ul></li>
+
+<li>
+parser per miniHTML (versione 2) che restituisce in uscita l'indice del
+documento in input
+
+<ul>
+<li>
+<a href="htm2.fl">specifica FLEX</a></li>
+
+<li>
+<a href="htm2.y">specifica BISON</a></li>
+
+<li>
+esempi di file di input:
+
+<ul>
+<li>
+<a href="ese1.htm">esempio 1</a></li>
+
+<li><a href="index.html">il file che state leggendo</a></li>
+
+<li>il file <a href="../lezioni.html">lezioni.html</a> di questo sito</li>
+
+<li><a href="ese3.htm">pagina del corso del 1999/2000</a></li>
+
+<li>
+<a href="ese1err.htm">esempio 1 con errore</a></li>
+</ul></li>
+</ul></li>
+
+<li>
+esercizi proposti:
+
+<ul>
+<li>
+estendere la sintassi del miniHTML con altri tag (ad esempio: blink, big,
+address, caption, cite, img...) (vedere la <a href="HTMLgram.html">grammatica
+di HTML</a>)</li>
+
+<li>
+modificare l'analizzatore lessicale o l'analizzatore sintattico del miniHTML
+in modo che i valori dei parametri rispettino alcuni vincoli (ad esempio:
+il valore del size dei font puo' essere solo +1, +2, -1 o -2)</li>
+
+<li>
+estendere la sintassi del miniHTML in modo che, nei tag con parametri,
+i parametri obbligatori (required) compaiano effettivamente (consultare
+al riguardo la <a href="HTMLgram.html">grammatica di HTML</a>)</li>
+
+<li>
+modificare il parser del miniHTML in modo che stampi in uscita un documento
+HTML contenente esclusivamente le liste presenti nel documento di input
+(tutto il resto viene scartato)</li>
+
+<li>modificare il parser del miniHTML in modo che stampi in uscita un documento
+HTML corrispondente al documento di input, con la sola esclusione del testo
+contenuto nei tag di tipo font</li>
+</ul></li>
+</ol>
+
+<hr WIDTH="100%">
+
+</body>
+</html>

@@ -1,0 +1,211 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<!-- saved from url=(0056)http://www.dis.uniroma1.it/~mannino/papers/MaxStab1.html -->
+<html xmlns:v="urn:schemas-microsoft-com:vml"
+xmlns:o="urn:schemas-microsoft-com:office:office"
+xmlns:w="urn:schemas-microsoft-com:office:word"
+xmlns="http://www.w3.org/TR/REC-html40">
+
+<head>
+<meta http-equiv=Content-Type content="text/html; charset=windows-1252">
+<meta name=ProgId content=Word.Document>
+<meta name=Generator content="Microsoft Word 9">
+<meta name=Originator content="Microsoft Word 9">
+<link rel=File-List href="./MaxStab1_file/filelist.xml">
+<link rel=Edit-Time-Data href="./MaxStab1_file/editdata.mso">
+<!--[if !mso]>
+<style>
+v\:* {behavior:url(#default#VML);}
+o\:* {behavior:url(#default#VML);}
+w\:* {behavior:url(#default#VML);}
+.shape {behavior:url(#default#VML);}
+</style>
+<![endif]-->
+<title>An exact algorithm for the maximum stable set problem</title>
+<!--[if gte mso 9]><xml>
+ <o:DocumentProperties>
+  <o:Author>mannino</o:Author>
+  <o:LastAuthor>mannino</o:LastAuthor>
+  <o:Revision>4</o:Revision>
+  <o:TotalTime>2</o:TotalTime>
+  <o:Created>2000-08-29T18:55:00Z</o:Created>
+  <o:LastSaved>2000-08-31T12:37:00Z</o:LastSaved>
+  <o:Pages>1</o:Pages>
+  <o:Words>130</o:Words>
+  <o:Characters>743</o:Characters>
+  <o:Company>Mac Dobnald's</o:Company>
+  <o:Lines>6</o:Lines>
+  <o:Paragraphs>1</o:Paragraphs>
+  <o:CharactersWithSpaces>912</o:CharactersWithSpaces>
+  <o:Version>9.2812</o:Version>
+ </o:DocumentProperties>
+</xml><![endif]--><!--[if gte mso 9]><xml>
+ <w:WordDocument>
+  <w:HyphenationZone>14</w:HyphenationZone>
+ </w:WordDocument>
+</xml><![endif]-->
+<style>
+<!--
+ /* Style Definitions */
+p.MsoNormal, li.MsoNormal, div.MsoNormal
+	{mso-style-parent:"";
+	margin:0cm;
+	margin-bottom:.0001pt;
+	mso-pagination:widow-orphan;
+	font-size:12.0pt;
+	font-family:"Times New Roman";
+	mso-fareast-font-family:"Times New Roman";}
+a:link, span.MsoHyperlink
+	{color:blue;
+	text-decoration:underline;
+	text-underline:single;}
+a:visited, span.MsoHyperlinkFollowed
+	{color:blue;
+	text-decoration:underline;
+	text-underline:single;}
+p
+	{margin-right:0cm;
+	mso-margin-top-alt:auto;
+	mso-margin-bottom-alt:auto;
+	margin-left:0cm;
+	mso-pagination:widow-orphan;
+	font-size:12.0pt;
+	font-family:"Times New Roman";
+	mso-fareast-font-family:"Times New Roman";}
+@page Section1
+	{size:595.3pt 841.9pt;
+	margin:70.85pt 2.0cm 2.0cm 2.0cm;
+	mso-header-margin:35.4pt;
+	mso-footer-margin:35.4pt;
+	mso-paper-source:0;}
+div.Section1
+	{page:Section1;}
+ /* List Definitions */
+@list l0
+	{mso-list-id:473370303;
+	mso-list-type:hybrid;
+	mso-list-template-ids:-356714952 -1979134224 1229353670 -2103545574 1745774688 -1965798068 -1193760432 237829764 -1243174674 1502926172;}
+@list l0:level1
+	{mso-level-number-format:bullet;
+	mso-level-text:\F0B7;
+	mso-level-tab-stop:36.0pt;
+	mso-level-number-position:left;
+	text-indent:-18.0pt;
+	mso-ansi-font-size:10.0pt;
+	font-family:Symbol;}
+ol
+	{margin-bottom:0cm;}
+ul
+	{margin-bottom:0cm;}
+-->
+</style>
+<!--[if gte mso 9]><xml>
+ <o:shapedefaults v:ext="edit" spidmax="1027">
+  <o:colormenu v:ext="edit" fillcolor="#cff"/>
+ </o:shapedefaults></xml><![endif]--><!--[if gte mso 9]><xml>
+ <o:shapelayout v:ext="edit">
+  <o:idmap v:ext="edit" data="1"/>
+ </o:shapelayout></xml><![endif]--><!-- Changed by: Carlo Mannino, 16-May-1997 -->
+</head>
+
+<body bgcolor="#ccffff" lang=IT link=blue vlink=blue style='tab-interval:35.4pt'>
+
+<div class=Section1>
+
+<h2><span lang=EN-GB style='mso-ansi-language:EN-GB'>An exact algorithm for the
+maximum stable set problem <o:p></o:p></span></h2>
+
+<ul type=disc>
+ <li class=MsoNormal style='mso-margin-top-alt:auto;mso-margin-bottom-alt:auto;
+     mso-list:l0 level1 lfo3;tab-stops:list 36.0pt'><b>Authors </b>: <i>Carlo
+     Mannino and Antonio Sassano </i></li>
+ <li class=MsoNormal style='mso-margin-top-alt:auto;mso-margin-bottom-alt:auto;
+     mso-list:l0 level1 lfo3;tab-stops:list 36.0pt'><b><span lang=EN-GB
+     style='mso-ansi-language:EN-GB'>Abstract </span></b><span lang=EN-GB
+     style='mso-ansi-language:EN-GB'>: <o:p></o:p></span></li>
+</ul>
+
+<p class=MsoNormal style='margin-right:36.0pt;mso-margin-top-alt:auto;
+mso-margin-bottom-alt:auto;margin-left:72.0pt'><i><span lang=EN-GB
+style='mso-ansi-language:EN-GB'>We describe a new branch-and-bound algorithm
+for the exact solution of the maximum cardinality stable set problem. The
+bounding phase is based on a variation of the standard greedy algorithm for
+finding a colouring of a graph. Two different node-fixing heuristics are also
+described. Computational tests on random and structured graphs and very large
+graphs corresponding to `real-life' problems show that the algorithm is
+competitive with the fastest algorithms known so far. <o:p></o:p></span></i></p>
+
+
+<div class=MsoNormal align=center style='margin-top:5.0pt;mso-margin-bottom-alt:
+auto;margin-left:36.0pt;text-align:center'>
+
+<hr size=2 width="100%" align=center>
+
+</div>
+
+
+<ul type=disc>
+ <li class=MsoNormal style='mso-margin-top-alt:auto;mso-margin-bottom-alt:auto;
+     mso-list:l0 level1 lfo3;tab-stops:list 36.0pt'><b><span lang=EN-GB
+     style='mso-ansi-language:EN-GB'>Status </span></b><span lang=EN-GB
+     style='mso-ansi-language:EN-GB'>:<span style="mso-spacerun: yes">  </span><i>Published
+     <o:p></o:p></i></span></li>
+</ul>
+
+
+<div class=MsoNormal align=center style='margin-top:5.0pt;mso-margin-bottom-alt:
+auto;margin-left:36.0pt;text-align:center'>
+
+<hr size=2 width="100%" align=center>
+
+</div>
+
+
+<ul type=disc>
+ <li class=MsoNormal style='mso-margin-top-alt:auto;mso-margin-bottom-alt:auto;
+     mso-list:l0 level1 lfo3;tab-stops:list 36.0pt'><b><span lang=EN-GB
+     style='mso-ansi-language:EN-GB'>Date of entry </span></b><span lang=EN-GB
+     style='mso-ansi-language:EN-GB'>: <i>July 14 1995 </i><o:p></o:p></span></li>
+ <li class=MsoNormal style='mso-margin-top-alt:auto;mso-margin-bottom-alt:auto;
+     mso-list:l0 level1 lfo3;tab-stops:list 36.0pt'><b>Dimension </b>: <i>423
+     Kb (compressed file) </i></li>
+</ul>
+
+
+<div class=MsoNormal align=center style='text-align:center'>
+
+<hr size=2 width="100%" align=center>
+
+</div>
+
+
+<h4><a href="MaxStab1.ps.Z"><span lang=EN-GB style='mso-ansi-language:EN-GB'>Click
+here to get the postscript version of the paper </span></a><span lang=EN-GB
+style='mso-ansi-language:EN-GB'><o:p></o:p></span></h4>
+
+<p class=MsoNormal>. </p>
+
+
+<div class=MsoNormal align=center style='text-align:center'>
+
+<hr size=2 width="100%" align=center>
+
+</div>
+
+
+<p class=MsoNormal><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<address>Dipartimento di Informatica e Sistemistica, via Buonarroti 12, 00185
+Roma, Italy </address>
+
+
+<div class=MsoNormal align=center style='text-align:center'>
+
+<hr size=2 width="100%" align=center>
+
+</div>
+
+</div>
+
+</body>
+
+</html>

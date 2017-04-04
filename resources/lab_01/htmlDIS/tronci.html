@@ -1,0 +1,103 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+<HEAD>
+   <TITLE>Upcoming CS Seminars</TITLE>
+   <META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1">
+   <META NAME="GENERATOR" CONTENT="Mozilla/3.04Gold (X11; I; SunOS 5.7 sun4m) [Netscape]">
+</HEAD>
+<BODY TEXT="#000000" BGCOLOR="#FFFFFF" LINK="#0000FF">
+
+<DL>
+<P><B><FONT SIZE=+3><FONT COLOR="#FF0000">S</FONT><FONT FACE="Times New Roman,Times">eminario
+<FONT COLOR="#FF0000">I</FONT>nterdipartimentale di <FONT COLOR="#FF0000">A</FONT>lgoritmica</FONT></FONT></B>
+<BR>
+&nbsp; <BR>
+&nbsp; <BR>
+&nbsp; </P>
+
+<B>Luned&igrave 17 Febbraio 2003&nbsp; ore 12:00</B></DT>
+<br>  Exploiting Transition Locality in Disk Based Model Checking
+<br><A HREF="http://www.dsi.uniroma1.it/~tronci/">
+Prof. Enrico Tronci </A>
+<br>Dipartimento di Informatica, Universit&agrave <i>La Sapienza</i> di Roma
+
+<p>
+<p>
+Dipartimento di Informatica (ex-Scienze dell'Informazione) - D(S)I
+<br>via Salaria 113, piano terzo
+<br>Aula Seminari
+
+<P><B>Abstract:</B> 
+<br>
+(English) 
+The main obstruction to automatic verification of Finite State Systems
+is the huge amount of memory required to complete the verification
+task at hand (state explosion). This motivates research on distributed as
+well as disk based verification algorithms.<br>
+
+After reviewing some basic notion about Explicit State Space Exploration
+we present a novel Disk Based Breadth First Explicit State Space Exploration 
+algorithm as well as an implementation of it within the Murphi verifier.
+<br>
+Our algorithm exploits transition locality (i.e. the statistical fact that 
+most transitions lead to unvisited states or to recently visited states)
+to decrease disk read accesses thus reducing the time overhead due to 
+disk usage.
+<br>
+A disk based verification algorithm for Murphi has been
+already proposed in the literature.
+To measure the time speed up due to locality exploitation
+we compared our algorithm with such previously proposed algorithm.
+Our experimental results show that our disk based verification algorithm 
+is typically more than 10 times faster than such previously proposed 
+disk based verification algorithm.
+<br>
+To measure the time overhead due to disk usage we compared
+our algorithm with RAM based verification using the (standard) Murphi
+verifier with enough memory to complete the verification task. 
+Our experimental results show that even when using
+$1/10$ of the RAM needed to complete verification,
+our disk based algorithm is only between 1.4 and 5.3 times 
+(3 times on average)
+slower than (RAM) Murphi with enough RAM memory to complete
+the verification task at hand.
+<br>
+Using our disk based Murphi we were able to complete
+verification of a protocol with about $10^9$ reachable states.
+This would require more than 5 gigabytes of RAM using RAM based Murphi.
+<p>
+-- Work presented at FMCAD 2002, LNCS, Springer
+
+<p><p>
+(Italiano)
+L'ostruzione principale alla verifica automatica di sistemi a Stati Finiti
+e' la quantita' di memoria necessaria per completare la verifica (state
+explosion). Questo motiva la ricerca su algoritmi di verifica distribuiti
+o su memoria secondaria.
+ 
+Dopo una breve introduzione al model checking verra' presentato un nuovo
+algoritmo di verifica su memoria secondaria. Tale algoritmo e' stato
+implementato nel model checker Murphi.
+ 
+I nostri risultati sperimentali mostrano che, anche usando solo 1/10 della
+RAM necessaria per completare la verifica, il nostro algoritmo e' in media
+solo 3 volte piu' lento di "RAM Murphi" con abbastanza RAM per completare
+la verifica.
+ 
+Usando il nostro "Disk Murphi" siamo stati in grado di completare la
+verifica di un protocollo con circa $10^9$ stati. Questo richiederebbe
+piu' di 5 gigabytes di RAM usando "RAM Murphi".
+
+</P>
+<p><br>
+<p><br>
+<a href=http://www.dis.uniroma1.it/sia>
+<img SRC="http://www.dis.uniroma1.it/sia/logo.gif" ALT="SIA" height=57 width=100></a>
+
+&nbsp; <BR>
+&nbsp; <BR>
+&nbsp; <BR>
+&nbsp;</P>
+</DL>
+
+

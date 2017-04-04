@@ -1,0 +1,58 @@
+<HTML>
+<HEAD>
+   <META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1">
+   <META NAME="GENERATOR" CONTENT="Mozilla/4.03 [en] (X11; I; SunOS 5.5.1 sun4u) [Netscape]">
+</HEAD>
+<BODY TEXT="#000000" BGCOLOR="#FFFFFF" LINK="#0000EE" VLINK="#551A8B" ALINK="#FF0000">
+
+<H1>
+Consigli utili sulla gestione della memoria in GCC (su indicazioni di Corrado
+Di Pietro)</H1>
+
+<OL>
+<LI>
+Quando un programma compilato con gcc non funziona terminando con il segnale
+SIGSEGV e un errore di Stack Fault :</LI>
+
+<UL>
+<LI>
+con il comando:</LI>
+
+<PRE>STUBEDIT nomeprogramma.exe minstack=2M</PRE>
+si deve aumentare la dimensione dello stack per quel programma (nell'esempio
+lo stack diviene di 2MB), il file eseguibile nomeprogramma.exe viene alterato
+da STUBEDIT in modo permanente fino ad un successivo comando STUBEDIT che
+ne modifichi ancora le dimensioni dello stack , ci&ograve; pu&ograve; servire
+ad&nbsp; esempio se dopo aver tentato con 2MB, il programma non funziona
+ancora e si vuole ritentare con una dimesione maggiore;
+<BR>&nbsp;
+<LI>
+un altro modo per risolvere il problema della dimensione dello stack &egrave;
+quello di aggiungere appena prima del main() la riga :</LI>
+
+<PRE>unsigned _stklen =&nbsp; 4194304;&nbsp; /* esempio con stack di 4MB */</PRE>
+il compilatore gcc controlla se &egrave; stata definita la variabile globale
+_stklen ed in caso affermativo dimensiona lo stack in funzione della definizione
+trovata.</UL>
+
+
+<P>La prima soluzione &egrave; indicata se si vuole scrivere del codice
+compatibile con il compilatore gcc sotto Linux, la seconda soluzione &egrave;
+utile invece se si vuole evitare di usare il comando STUBEDIT rinunciando
+per&ograve; alla portabilit&agrave; del codice.
+<BR>&nbsp;
+<LI>
+Nella nuova versione del compilatore gcc la memoria allocata al programma
+non viene azzerata. Si pu&ograve; azzerare la memoria allocata aggiungendo
+prima del main() le due righe seguenti :</LI>
+
+<PRE>&nbsp;&nbsp; #include &lt;crt0.h></PRE>
+
+<PRE>&nbsp;&nbsp; int&nbsp; _crt0_startup_flags = _CRT0_FLAG_FILL_SBRK_MEMORY;</PRE>
+queste impongono che, all'inizio del programma, tutta la memoria allocata
+venga inizializzata a zero, come avviene con il compilatore gcc su Linux/AIX.</OL>
+
+<HR WIDTH="100%">
+<BR>&nbsp;
+</BODY>
+</HTML>

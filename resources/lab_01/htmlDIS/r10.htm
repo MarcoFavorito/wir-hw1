@@ -1,0 +1,109 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=windows-1252">
+<TITLE>Reti di Calcolatori</TITLE>
+</HEAD>
+<BODY background="bgrnd.jpg">
+
+<B><FONT SIZE=5><P>10) Programmazione multithreading</P>
+<hr>
+</FONT>
+</B>1.&nbsp; Richiami sul multitasking
+<OL>
+
+<P ALIGN="JUSTIFY">Il multitasking simula un comportamento parallelo, facendo eseguire alla CPU i vari processi, per brevi frazioni di tempo - I processi figli di un unico genitore non sono in grado di condividere variabili o scambiare informazioni se non tramite scambio messaggi.</P>
+</OL>
+2.&nbsp; Multithreading
+<OL>
+
+<P ALIGN="JUSTIFY">Il multithreading riguarda l'esecuzione parallela di pi&ugrave; thread (pseudo-parallela su macchine a singolo processore).  Un thread &egrave; una porzione di codice (un flusso indipendente) di una applicazione.  Un processo pu&ograve; essere suddiviso in pi&ugrave; thread i quali seguono la stessa logica del parallelismo fittizio dei processi, in un sistema operativo multitasking.  I thread figli di un unico processo possono facilmente colloquiare tra di loro in quanto condividono lo stesso spazio di indirizzamento; se una variabile globale viene modificata durante l'esecuzione di uno dei thread, tutti gli altri thread potranno osservare il cambiamento.  L'ambiente Java fornisce nativamente supporto alla programmazione multithread, mettendo a disposizione la classe Thread (e l'interfaccia Runnable).</P>
+</OL>
+3.&nbsp; Stati di un thread
+<OL>
+
+<P ALIGN="CENTER"><IMG SRC="Image2.gif" WIDTH=469 HEIGHT=262></P>
+</OL>
+4.&nbsp; La classe <I>Thread
+</I>
+<OL>
+
+<P ALIGN="JUSTIFY">Per creare un thread &egrave; sufficiente un'istanza del costruttore</P>
+<I><P ALIGN="CENTER">Thread(Runnable nome_classe)</P>
+</I><P ALIGN="JUSTIFY">Per attivarlo, pu&ograve; essere invocato il metodo</P>
+<I><P ALIGN="CENTER">void start()</P>
+</I><P ALIGN="JUSTIFY">che provvede alla chiamata del metodo <I>run()</I>.  Per fermarlo pu&ograve; essere invocato il metodo <I>stop()</I>, mentre per metterlo a riposo (per un certo numero di millisecondi)</P>
+<I><P ALIGN="CENTER">static void sleep(long mls) throws InterruptedException</P>
+</I><P ALIGN="JUSTIFY">con il metodo <I>sleep()</I>, il thread entra nello stato "Not Runnable"; l'uscita da questo stato viene segnalata attraverso un'eccezione.  Esempio:</P>
+<I><P ALIGN="JUSTIFY">try { pippo.sleep(1000); }</P>
+<P ALIGN="JUSTIFY">catch (InterruptedException e)</P>
+<P ALIGN="JUSTIFY">{ System.out.println("Risvegliato dopo 1 secondo"); }</P>
+</I><P ALIGN="JUSTIFY">I <I>thread</I> vengono attivati a rotazione secondo un criterio piuttosto semplice basato sulle priorit&agrave;.  E' possibile che un thread monopolizzi il processore con un elaborazione piuttosto pesante.  Per migliorare le prestazioni di un'applicazione multithread, &egrave; consigliabile un utilizzo adeguato delle priorit&agrave;</P>
+<P ALIGN="CENTER">void setPriority(int newPriority)</P>
+<P ALIGN="JUSTIFY">oppure l'utilizzo del metodo</P>
+<I><P ALIGN="CENTER">Statico void yield()</P>
+</I><P>che consente ad altri thread in attesa con pari priorit&agrave;, di entrare in azione.</P>
+</OL>
+5.&nbsp; L'interfaccia <I>Runnable
+</I>
+<OL>
+
+<P ALIGN="JUSTIFY">L'interfaccia prevede l'implementazione del metodo <I>run()</I> e consente la realizzazione di Thread, senza doverne estendere la classe.  L'interfaccia Runnable permette di ovviare ai limiti imposti dall'ereditariet&agrave; singola.</P>
+</OL>
+6.&nbsp; Problemi derivanti dalla condivisione dello spazio di indirizzamento - la sincronizzazione
+<OL>
+
+<P ALIGN="JUSTIFY">Thread che condividono lo stesso spazio di indirizzamento, competono nell'utilizzo di risorse comuni e/o strutture dati condivise.  Immaginiamo una situazione in cui il valore di una variabile globale viene utilizzato e modificato da un thread ignaro che un secondo thread sta eseguendo le stesse operazioni</P>
+<I><P>Public void eseguiServizio()</P>
+<P>{  if (contatore == 31)</P>
+<P>  System.out.println(&quot;Spiacente…superato il limite di 30 richieste");</P>
+<P>  else</P>
+<P>  {………</P>
+<P>   ………</P>
+<P>   contatore++;} }</P>
+</I><P ALIGN="JUSTIFY">Per gestire correttamente tali situazioni &egrave; necessario prevedere meccanismi che garantiscano un corretto uso delle risorse e l'assenza di stalli.  In Java la parola chiave <I>synchronized</I> permette l'utilizzo di una regione critica, ad un solo thread per volta.  Se le regioni critiche sono pi&ugrave; di una, se si hanno cio&egrave; pi&ugrave; metodi dichiarati <I>synchronized</I>, l'ambiente run-time garantisce che avremo al pi&ugrave; un solo blocco di codice utilizzato da un unico thread.  Questo meccanismo preserva anche da stalli dell'applicazione.  Esempio:</P>
+<I><P ALIGN="JUSTIFY">synchronized void a()</P>
+<P ALIGN="JUSTIFY">{  if (contatore = 0)</P>
+<P ALIGN="JUSTIFY">    {  contatore++;</P>
+<P ALIGN="JUSTIFY">        b();</P>
+<P ALIGN="JUSTIFY">     }</P>
+<P ALIGN="JUSTIFY">     else System.out.println("Termine in a");</P>
+<P ALIGN="JUSTIFY">}</P>
+<P ALIGN="JUSTIFY">synchronized void b()</P>
+<P ALIGN="JUSTIFY">{ if (contatore = 0)</P>
+<P ALIGN="JUSTIFY">    {  contatore++;</P>
+<P ALIGN="JUSTIFY">        a();</P>
+<P ALIGN="JUSTIFY">     }</P>
+<P ALIGN="JUSTIFY">     else System.out.println("Termine in b");</P>
+<P ALIGN="JUSTIFY">}</P>
+</I><P ALIGN="JUSTIFY">La parola chiave <I>synchronized</I>, fa tornare in mente i semafori di Dijkstra (variabili protette associate alle risorse, manipolabili attraverso le primitive P(S) e V(S)).  Non permettere a due thread l'utilizzo di regioni critiche diverse equivale ad avere un unico semaforo "di classe", condiviso dai thread (che possono ottenerlo solo se non &egrave; gi&agrave; impegnato), che consente l'accesso ad una delle sezioni critiche della classe.</P>
+</OL>
+7.&nbsp; I metodi wait() e notify()
+<DIR>
+<DIR>
+
+<P ALIGN="JUSTIFY">Utilizzati contestualmente a <I>synchronized</I>, questi metodi permettono di mettere in attesa un thread (rilasciando quindi la regione critica), e di risvergliarlo ad un cambio di contesto</P></DIR>
+
+<I>
+<FONT FACE="Courier" SIZE=1><P>/******************************************************************</P>
+<P>* attesaTerminazione - Attende terminazione dei thread precedenti *</P>
+<P>*-----------------------------------------------------------------*/</P>
+<P>public synchronized void attesaTerminazione(int x)</P>
+<P> {&#9;boolean terminati_tutti = false;</P>
+<P>  &#9;while (!terminati_tutti)</P>
+<P>  &#9;{&#9;terminati_tutti = true;</P>
+<P>  &#9;&#9;for (int i=0; i&lt;x; i++) </P>
+<P>&#9;&#9;&#9;&#9;if (((String)terminato.elementAt(i)).equals("0"))</P>
+<P>    &#9;&#9;&#9;terminati_tutti = false;</P>
+
+<P>    &#9;// sospende l'esecuzione se anche uno solo dei thread</P>
+<P>    &#9;// chiamati non ha notificato la terminazione </P>
+<P>    &#9;if (!terminati_tutti)&#9;&#9;&#9;</P>
+<P>    &#9;&#9;try </P>
+<P>    &#9;&#9;{ wait();</P>
+<P>&#9;&#9;&#9;&#9;} catch (InterruptedException ie) {}</P>
+<P>&#9;&#9;}   </P></DIR>
+
+<P ALIGN="JUSTIFY"> }</P>
+</FONT>
+</I></BODY>
+</HTML>

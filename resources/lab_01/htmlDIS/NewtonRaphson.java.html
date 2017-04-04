@@ -1,0 +1,52 @@
+<!-- file generated with webcpp 0.6.2 http://webcpp.sf.net -->
+<html>
+<head>
+<title>Z:\www\igea\materiale\2002-03\lab\20021202\sorgenti\NewtonRaphson.java</title>
+</head>
+<body bgcolor=#ffffff text=#000000 link=#ff0000 vlink=#666666 alink=#0000ff>
+<pre>
+<font COLOR=#666666>/* ECCO L'ALGORITMO
+
+start
+input(r)
+x=1 (ad esempio)
+e = 0.000001
+while(|x^2-r| &gt; e)
+x = (r/x + x)/2
+output(x)
+stop
+
+   DI SEGUITO C'E' IL CODICE
+*/</font>
+<b><font COLOR=#0000ff>public</font></b> <b><font COLOR=#0000ff>class</font></b> NewtonRaphson {
+	
+	<b><font COLOR=#0000ff>public</font></b> <b><font COLOR=#0000ff>static</font></b> <b><font COLOR=#0000ff>final</font></b> <b><font COLOR=#0000ff>double</font></b> OPERANDO=<font COLOR=#a900a9>1000</font>;
+	<b><font COLOR=#0000ff>public</font></b> <b><font COLOR=#0000ff>static</font></b> <b><font COLOR=#0000ff>final</font></b> <b><font COLOR=#0000ff>double</font></b> EPS=<font COLOR=#a900a9>1.0</font>/<font COLOR=#a900a9>1000000</font>;
+	
+	<b><font COLOR=#0000ff>public</font></b> <b><font COLOR=#0000ff>static</font></b> <b><font COLOR=#0000ff>void</font></b> main (String[] arg) {
+		<b><font COLOR=#0000ff>double</font></b> x= <font COLOR=#a900a9>1</font>; <font COLOR=#666666>// valore iniziale</font>
+				
+		System.out.print(<font COLOR=#ff0000>"Valore iniziale di X: "</font>);
+		System.out.println(x);
+		System.out.println();
+		
+		<b><font COLOR=#0000ff>while</font></b> (Math.abs(x*x-OPERANDO)&gt;EPS){
+		x=(OPERANDO/x+x)/<font COLOR=#a900a9>2</font>;
+		System.out.print(<font COLOR=#ff0000>"Iterazione: "</font>);
+		System.out.println(x);
+		}
+		System.out.println();
+		System.out.print(<font COLOR=#ff0000>"Operando\t=\t"</font>);
+		System.out.println(OPERANDO);
+		System.out.print(<font COLOR=#ff0000>"Tolleranza\t=\t"</font>);
+		System.out.println(EPS);
+		System.out.print(<font COLOR=#ff0000>"X\t\t=\t"</font>);
+		System.out.println(x);
+		System.out.print(<font COLOR=#ff0000>"X^2\t\t=\t"</font>);
+		System.out.println(x*x);
+	}
+}
+
+</pre>
+</body>
+</html>

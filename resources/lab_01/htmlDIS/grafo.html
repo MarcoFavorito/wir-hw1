@@ -1,0 +1,105 @@
+<html>
+<head>
+<title>Rappresentazione di un grafo</title>
+</head>
+
+<body>
+
+<h2>Secondo esonero (25/5/1998):<br>
+Rappresentazione di un grafo</h2>
+
+Un grafo con 16 nodi ha archi etichettati con numeri interi maggiori di zero.
+Il grafo e' rappresentato su un file organizzato per record, e ogni record ha
+la forma:
+
+<pre>
+
+@numero{ lista di campi }
+
+</pre>
+
+che serve a indicare i pesi degli archi uscenti dal nodo numero. Ogni campo
+e' rappresentato come
+
+<pre>
+
+$numero=intero;
+
+</pre>
+
+che indica il peso dell'arco verso il nodo numero.
+Per esempio, il file
+
+<pre>
+
+@11{ $1=10; $8=9 }
+@12{
+  $3=1;
+}
+
+</pre>
+
+rappresenta un grafo in cui il nodo 11 ha due archi uscenti, uno verso il
+nodo 1 (con peso 10), uno verso il nodo 8 (con peso 9). Il nodo 12 ha un solo
+arco uscente, diretto verso il nodo 3 (con peso 1).
+
+<p>
+
+Scrivere l'analizzatore lessicale-sintattico per leggere un grafo rappresentato
+in questo modo. Stampare la matrice di adiacenza del grafo, e la somma dei pesi
+degli archi entranti nel nodo 0.
+
+
+<h3>Esempio</h3>
+
+<h4>File di input</h4>
+
+<pre>
+
+@11{
+  $3=4;
+
+  $2=1;
+
+  $9=10;
+}
+
+
+@1{ $0=1; $2=4; $5=6; }
+
+@0{ $1=1; $9=7; }
+
+@9{ $0=11; $11=4; }
+
+</pre>
+
+<h4>File di output</h4>
+
+<pre>
+
+      $00  $01  $02  $03  $04  $05  $06  $07  $08  $09  $10  $11  $12  $13  $14  $15 
+ @00    0    1    0    0    0    0    0    0    0    7    0    0    0    0    0    0 
+ @01    1    0    4    0    0    6    0    0    0    0    0    0    0    0    0    0 
+ @02    0    0    0    0    0    0    0    0    0    0    0    0    0    0    0    0 
+ @03    0    0    0    0    0    0    0    0    0    0    0    0    0    0    0    0 
+ @04    0    0    0    0    0    0    0    0    0    0    0    0    0    0    0    0 
+ @05    0    0    0    0    0    0    0    0    0    0    0    0    0    0    0    0 
+ @06    0    0    0    0    0    0    0    0    0    0    0    0    0    0    0    0 
+ @07    0    0    0    0    0    0    0    0    0    0    0    0    0    0    0    0 
+ @08    0    0    0    0    0    0    0    0    0    0    0    0    0    0    0    0 
+ @09   11    0    0    0    0    0    0    0    0    0    0    4    0    0    0    0 
+ @10    0    0    0    0    0    0    0    0    0    0    0    0    0    0    0    0 
+ @11    0    0    1    4    0    0    0    0    0   10    0    0    0    0    0    0 
+ @12    0    0    0    0    0    0    0    0    0    0    0    0    0    0    0    0 
+ @13    0    0    0    0    0    0    0    0    0    0    0    0    0    0    0    0 
+ @14    0    0    0    0    0    0    0    0    0    0    0    0    0    0    0    0 
+ @15    0    0    0    0    0    0    0    0    0    0    0    0    0    0    0    0 
+
+Somma dei pesi degli archi entranti nel nodo 0: 12
+
+</pre>
+
+</body>
+</html>
+
+

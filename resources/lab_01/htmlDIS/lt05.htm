@@ -1,0 +1,279 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=windows-1252">
+<META NAME="Generator" CONTENT="Microsoft Word 97">
+<TITLE>1</TITLE>
+<META NAME="Template" CONTENT="C:\PROGRAMMI\MICROSOFT OFFICE\OFFICE\html.dot">
+</HEAD>
+<BODY BACKGROUND="bgrnd.jpg">
+
+<B><FONT SIZE=5><P>5) Analisi sintattica</P>
+</B></FONT><P ALIGN="RIGHT">Riferimenti: "<I>Linguaggi formali e compilatori</I>" - 2.2, 2.4</P>
+<P ALIGN="CENTER"><HR></P>
+<B><U><FONT SIZE=4><P>Aula</B></U></FONT> </P>
+<OL>
+
+<I><P ALIGN="JUSTIFY"><LI>Ruolo dell'analisi sintattica</LI></P>
+</I><P ALIGN="JUSTIFY">Come accennato nel primo incontro, l'analisi sintattica ha lo scopo di verificare l'ammissibilit&agrave; della lista di simboli in ingresso, rispetto alle regole sintattiche del "linguaggio" che stiamo esaminando. In un traduttore, il <I>parser</I> elabora l'output prodotto dallo <I>scanner</I>. Quest'ultimo restituisce una lista di elementi del tipo </P>
+<P ALIGN="CENTER">&lt;simbolo&gt; - &lt;categoria lessicale&gt;.</P>
+<P ALIGN="JUSTIFY">La lista di token, viene analizzata nella sequenza fornita e confrontata con le regole sintattiche del linguaggio. Gli strumenti a nostra disposizione per definire le regole sintattiche di un linguaggio sono le grammatiche. </P>
+<I><P ALIGN="JUSTIFY"><LI>Grammatiche</LI></P></OL>
+<DIR>
+<DIR>
+<DIR>
+
+</I><P ALIGN="JUSTIFY">Formalmente una grammatica &egrave; una quadrupla:</P>
+<I><P ALIGN="CENTER">simboli terminali</P>
+<P ALIGN="CENTER">simboli non terminali</P>
+<P ALIGN="CENTER">insieme di regole</P>
+<P ALIGN="CENTER">assioma della grammatica (simbolo iniziale)</P>
+</I><P ALIGN="JUSTIFY">Mediante le regole di una grammatica &egrave; possibile descrivere la struttura sintattica di un linguaggio. Esempio:</P>
+<P ALIGN="JUSTIFY">1) Testo_HTML <FONT FACE="Wingdings">&agrave;</FONT> Tag_Apertura Testo_HTML Tag_Chiusura</P>
+<P ALIGN="JUSTIFY">2) Testo_HTML <FONT FACE="Wingdings">&agrave;</FONT> Testo </P>
+<P ALIGN="JUSTIFY">3) Testo_HTML <FONT FACE="Wingdings">&agrave;</FONT> <FONT FACE="Symbol">e</FONT> </P>
+<P ALIGN="JUSTIFY">4) Tag_Apertura <FONT FACE="Wingdings">&agrave;</FONT> &lt;HTML&gt;</P>
+<P ALIGN="JUSTIFY">5) Tag_Apertura <FONT FACE="Wingdings">&agrave;</FONT> &lt;BODY&gt;</P>
+<P ALIGN="JUSTIFY">6) Tag_Apertura <FONT FACE="Wingdings">&agrave;</FONT> ………..</P>
+<P ALIGN="JUSTIFY">7) Tag_Chiusura <FONT FACE="Wingdings">&agrave;</FONT> &lt;/HTML&gt;</P>
+<P ALIGN="JUSTIFY">8) Tag_Chiusura <FONT FACE="Wingdings">&agrave;</FONT> &lt;/BODY&gt;</P>
+<P ALIGN="JUSTIFY">9) Tag_Chiusura <FONT FACE="Wingdings">&agrave;</FONT> ………..</P>
+<P ALIGN="JUSTIFY">La descrizione &egrave; basata sul meccanismo generativo della "derivazione", ovvero sulla possibilit&agrave; di produrre da una stringa contenente almeno un simbolo non terminale, un'altra stringa in cui tale simbolo &egrave; sostituito dalla parte destra di una regola avente come parte sinistra quel simbolo non terminale. Partendo dall'assioma della grammatica &egrave; possibile applicare le regole in successione, per "derivare" qualsiasi frase del linguaggio. Data la grammatica di esempio e data in ingresso la lista: </P>
+<I><P ALIGN="JUSTIFY">{&lt;HTML&gt;, TagApertura}, {&lt;BODY&gt;, TagApertura}, {&lt;B&gt;, TagApertura}, {Testo di prova, Testo}, {&lt;/B&gt;, TagChiusura}, {&lt;/BODY&gt;, TagChiusura}, {&lt;/HTML&gt;, TagChiusura}</P>
+</I><P ALIGN="JUSTIFY">questa verr&agrave; riconosciuta come una frase del linguaggio. E' infatti possibile generarla:</P></DIR>
+</DIR>
+</DIR>
+
+<OL>
+<OL>
+
+<P ALIGN="JUSTIFY"><LI>Prendendo in considerazione la prima regola e sostituendo:</LI></P>
+<I><P ALIGN="CENTER">Tag_Apertura <FONT FACE="Wingdings">&agrave;</FONT> &lt;HTML&gt;</P>
+<P ALIGN="CENTER">Tag_Chiusura <FONT FACE="Wingdings">&agrave;</FONT> &lt;/HTML&gt;</P>
+</I><P ALIGN="JUSTIFY"><LI>Applicando di nuovo la prima regola e sostituendo:</LI></P>
+<I><P ALIGN="CENTER">Tag_Apertura <FONT FACE="Wingdings">&agrave;</FONT> &lt;BODY&gt;</P>
+<P ALIGN="CENTER">Tag_Chiusura <FONT FACE="Wingdings">&agrave;</FONT> &lt;/BODY&gt;</P>
+</I><P ALIGN="JUSTIFY"><LI>Applicando di nuovo la prima regola e sostituendo:</LI></P>
+<I><P ALIGN="CENTER">Tag_Apertura <FONT FACE="Wingdings">&agrave;</FONT> &lt;B&gt;</P>
+<P ALIGN="CENTER">Tag_Chiusura <FONT FACE="Wingdings">&agrave;</FONT> &lt;/B&gt;</P>
+</I><P ALIGN="JUSTIFY"><LI>Applicando infine la seconda regola e sostituendo:</LI></P></OL>
+</OL>
+<DIR>
+<DIR>
+<DIR>
+
+<I><P ALIGN="CENTER">Testo_HTML <FONT FACE="Wingdings">&agrave;</FONT> Testo di prova</P>
+</I><P ALIGN="JUSTIFY">Se &egrave; possibile generare la frase del linguaggio, allora &egrave; verificata l'ammissibilit&agrave; della sequenza di token nei confronti del linguaggio descritto.</P>
+<I><P ALIGN="CENTER">Def.: Data una grammatica G, si dice che una stringa x &egrave; una forma di frase di G se e solo se x &egrave; derivabile dall'assioma S di G.</P>
+<P ALIGN="CENTER">Def.: Si dice frase di G una forma di frase costituita da soli simboli terminali.</P>
+</I><P ALIGN="JUSTIFY">Un'altra propriet&agrave; importante delle grammatiche &egrave; la "ricorsione"; questa conferisce alla grammatica la capacit&agrave; di generare un linguaggio infinito.</P>
+<I><P ALIGN="CENTER">Una grammatica G &egrave; ricorsiva sinistra se presenta regole del tipo X <FONT FACE="Wingdings">&agrave;</FONT> X a</P>
+<P ALIGN="CENTER">Una grammatica G &egrave; ricorsiva destra se presenta regole del tipo X <FONT FACE="Wingdings">&agrave;</FONT> a X</P>
+<P ALIGN="CENTER">Una grammatica G possiede ricorsione interna se presenta regole del tipo X <FONT FACE="Wingdings">&agrave;</FONT> a X b</P></DIR>
+</DIR>
+</DIR>
+
+<OL>
+
+<P ALIGN="JUSTIFY"><LI>Classificazione di Chomsky</LI></P></OL>
+
+
+<UL>
+
+<UL>
+</I><P ALIGN="JUSTIFY"><LI>Grammatiche a struttura di frase - comprendenti regole con almeno un simbolo non terminale nella parte sinistra</LI></P></UL>
+</UL>
+<DIR>
+<DIR>
+<DIR>
+
+<I><P ALIGN="CENTER">aXb <FONT FACE="Wingdings">&agrave;</FONT> w (con a,b,w<FONT FACE="Symbol">&Icirc;</FONT> V* - X<FONT FACE="Symbol">&Icirc;</FONT> VN ) </P></DIR>
+</DIR>
+</DIR>
+
+
+<UL>
+
+<UL>
+</I><P ALIGN="JUSTIFY"><LI>Grammatiche contestuali - in queste la sostituzione del simbolo X con x, avviene solo nel contesto di a e b</LI></P></UL>
+</UL>
+<DIR>
+<DIR>
+<DIR>
+
+<I><P ALIGN="CENTER">aXb <FONT FACE="Wingdings">&agrave;</FONT> axb (con a,b<FONT FACE="Symbol">&Icirc;</FONT> V* - X<FONT FACE="Symbol">&Icirc;</FONT> VN - x <FONT FACE="Symbol">&Icirc;</FONT> V+) </P></DIR>
+</DIR>
+</DIR>
+
+
+<UL>
+
+<UL>
+</I><P ALIGN="JUSTIFY"><LI>Grammatiche non contestuali - comprendenti regole del tipo</LI></P></UL>
+</UL>
+<DIR>
+<DIR>
+<DIR>
+
+<I><P ALIGN="CENTER">X <FONT FACE="Wingdings">&agrave;</FONT> x (con X<FONT FACE="Symbol">&Icirc;</FONT> VN - x <FONT FACE="Symbol">&Icirc;</FONT> V*) </P></DIR>
+</DIR>
+</DIR>
+
+
+<UL>
+
+<UL>
+</I><P ALIGN="JUSTIFY"><LI>Grammatiche regolari </LI></P></UL>
+</UL>
+<DIR>
+<DIR>
+<DIR>
+
+<I><P ALIGN="CENTER">(destre) X <FONT FACE="Wingdings">&agrave;</FONT> x Y (con X, Y<FONT FACE="Symbol">&Icirc;</FONT> VN - x <FONT FACE="Symbol">&Icirc;</FONT> VT*) </P>
+<P ALIGN="CENTER">(sinistre) X <FONT FACE="Wingdings">&agrave;</FONT> Y x (con X, Y<FONT FACE="Symbol">&Icirc;</FONT> VN - x <FONT FACE="Symbol">&Icirc;</FONT> VT*)</P>
+</I><P ALIGN="JUSTIFY">La relazione esistente tra le grammatiche &egrave; la seguente:</P>
+<I><P ALIGN="CENTER">Struttura di frase <FONT FACE="Symbol">&Ecirc;</FONT> contestuali <FONT FACE="Symbol">&Ecirc;</FONT> non contestuali <FONT FACE="Symbol">&Ecirc;</FONT> regolari</P>
+</I><P ALIGN="JUSTIFY">In altre parole, le grammatiche regolari sono anche non contestuali (in quanto ne rappresentano un sottinsieme), ma non tutte le grammatiche "context free" sono regolari. I linguaggi descritti dalle grammatiche possono di riflesso essere classificati allo stesso modo.</P></DIR>
+</DIR>
+</DIR>
+
+<OL>
+
+<I><P ALIGN="JUSTIFY"><LI>Alberi sintattici</LI></P>
+</I><P ALIGN="JUSTIFY">La verifica dell'ammissibilit&agrave; della struttura sintattica di una sequenza di token, viene effettuata attraverso la costruzione dell'albero sintattico; in questa rappresentazione grafica, la radice rappresenta l'assioma della grammatica, ciascun ramo rappresenta una regola, i nodi intermedi (simboli non terminali) identificano le categorie sintattiche e le foglie i simboli (terminali). Facendo riferimento all'esempio precedente, l'albero sintattico relativo alla frase </P>
+<I><P ALIGN="CENTER">&lt;HTML&gt; &lt;BODY&gt; &lt;B&gt; Testo di prova &lt;/B&gt; &lt;/BODY&gt;&lt;/HTML&gt;</P>
+</I><P ALIGN="JUSTIFY">&egrave; il seguente</P>
+<P ALIGN="CENTER"><IMG SRC="Image13.gif" WIDTH=377 HEIGHT=294></P>
+<P ALIGN="JUSTIFY">Non &egrave; il nostro caso, ma in generale la stessa frase pu&ograve; essere derivata con alberi sintattici diversi, comunque equivalenti. In questo caso, la realizzazione dei diversi alberi dipende dall'ordine con cui si applicano le regole ai simboli non terminali. Assumono particolare importanza, la derivazione canonica sinistra (espansione del simbolo non terminale pi&ugrave; a sinistra) e la derivazione canonica destra (espansione del simbolo non terminale pi&ugrave; a destra).</P>
+<I><P ALIGN="CENTER">Def.: Una frase (e di conseguenza anche la grammatica) si dice ambigua, se pu&ograve; essere generata da due alberi sintattici distinti.</P>
+</I><P ALIGN="JUSTIFY">Per eliminare l'ambiguit&agrave; da una grammatica devono essere aggiunti simboli non terminali intermedi. </P>
+<P ALIGN="JUSTIFY">La generazione "discendente", ovvero la <I>derivazione</I> di una frase dall'assioma della grammatica, come vedremo, &egrave; tipico degli analizzatori "top down". L' esatto contrario del processo di <I>derivazione</I> &egrave; la "riduzione", ovvero il meccanismo con cui &egrave; possibile produrre da una stringa contenente soltanto simboli terminali, un'altra stringa in cui tale sequenza di simboli &egrave; sostituita dalla parte sinistra di una regola avente come parte destra la sequenza di simboli terminali. In altre parole, rappresenta la costruzione dell'albero sintattico, dalle foglie alla radice. E' utilizzato negli analizzatori "Bottom up"; i vantaggi di tale metodologia riguardano la capacit&agrave; di analizzare una pi&ugrave; ampia gamma di linguaggi e la facilit&agrave; di gestione degli errori. Per contro il relativo analizzatore &egrave; complesso ed in pratica viene generato solo da appositi strumenti (Bison).</P>
+<I><P ALIGN="JUSTIFY"><LI>La grammatica del PASCOM</LI></P>
+</I><P ALIGN="JUSTIFY">La grammatica del Pascom come del resto tutte le grammatiche utilizzate per descrivere la struttura sintattica di un linguaggio, &egrave; <I>non contestuale</I>.</P>
+<P ALIGN="JUSTIFY">Programma <FONT FACE="Wingdings">&agrave;</FONT> <B>program</B> Identificatore ";" Istruzione </P>
+<P ALIGN="JUSTIFY">Istruzione <FONT FACE="Wingdings">&agrave;</FONT> <B>begin</B> Istruzione Listaistruzioni </P>
+<P ALIGN="JUSTIFY">Istruzione <FONT FACE="Wingdings">&agrave;</FONT> <B>write</B> Espressione </P>
+<P ALIGN="JUSTIFY">Istruzione <FONT FACE="Wingdings">&agrave;</FONT> <B>read</B> Identificatore </P>
+<P ALIGN="JUSTIFY">Istruzione <FONT FACE="Wingdings">&agrave;</FONT> <B>if</B> Test <B>then</B> Istruzione <B>else</B> Istruzione </P>
+<P ALIGN="JUSTIFY">Istruzione <FONT FACE="Wingdings">&agrave;</FONT> <B>while</B> Test <B>do</B> Istruzione </P>
+<P ALIGN="JUSTIFY">Istruzione <FONT FACE="Wingdings">&agrave;</FONT> Identificatore ":=" Espressione </P>
+<P ALIGN="JUSTIFY">Listaistruzioni <FONT FACE="Wingdings">&agrave;</FONT> <B>end</B> </P>
+<P ALIGN="JUSTIFY">Listaistruzioni <FONT FACE="Wingdings">&agrave;</FONT> ";" Istruzione Listaistruzioni </P>
+<P ALIGN="JUSTIFY">Espressione <FONT FACE="Wingdings">&agrave;</FONT> Costante </P>
+<P ALIGN="JUSTIFY">Espressione <FONT FACE="Wingdings">&agrave;</FONT> Costante Op Espressione </P>
+<P ALIGN="JUSTIFY">Costante <FONT FACE="Wingdings">&agrave;</FONT> Numero </P>
+<P ALIGN="JUSTIFY">Costante <FONT FACE="Wingdings">&agrave;</FONT> Identificatore </P>
+<P ALIGN="JUSTIFY">Test <FONT FACE="Wingdings">&agrave;</FONT> Espressione Relop Espressione </P>
+<P ALIGN="JUSTIFY">Op <FONT FACE="Wingdings">&agrave;</FONT> "+" | "-" | "*" | "/" </P>
+<P ALIGN="JUSTIFY">Relop <FONT FACE="Wingdings">&agrave;</FONT> "&lt;" | "&lt;=" | "&gt;" | "&gt;=" | "=" | "&lt;&gt;" </P>
+<P ALIGN="JUSTIFY">Identificatore <FONT FACE="Wingdings">&agrave;</FONT> Lettera (Lettera | Cifra)* </P>
+<P ALIGN="JUSTIFY">Numero <FONT FACE="Wingdings">&agrave;</FONT> Cifra+ </P>
+<P ALIGN="JUSTIFY">Lettera <FONT FACE="Wingdings">&agrave;</FONT> "A" | ... | "Z" | "a" | ... | "z" </P>
+<P ALIGN="JUSTIFY">Cifra <FONT FACE="Wingdings">&agrave;</FONT> "0" | ... | "9" </P>
+<P ALIGN="JUSTIFY">(sono inoltre previsti i caratteri spazio, nuova linea, e tabulazione come separatori, e commenti racchiusi tra parentesi graffe).&nbsp;</P>
+<I><P ALIGN="JUSTIFY"><LI>Grammatiche ridotte</LI></P></OL>
+<DIR>
+<DIR>
+<DIR>
+
+</I><P ALIGN="JUSTIFY">Le grammatiche si dicono ridotte quando rispettano determinate propriet&agrave; (indice di qualit&agrave;)</P></DIR>
+</DIR>
+</DIR>
+
+
+<UL>
+
+<UL>
+<P ALIGN="JUSTIFY"><LI>Non esistono regole inutili del tipo </LI></P></UL>
+</UL>
+<DIR>
+<DIR>
+<DIR>
+
+<I><P ALIGN="CENTER">X <FONT FACE="Wingdings">&agrave;</FONT> X</P></DIR>
+</DIR>
+</DIR>
+
+
+<UL>
+
+<UL>
+</I><P ALIGN="JUSTIFY"><LI>Non esistono regole che producono un linguaggio vuoto </LI></P></UL>
+</UL>
+<DIR>
+<DIR>
+<DIR>
+
+<I><P ALIGN="CENTER">X <FONT FACE="Wingdings">&agrave;</FONT> <FONT FACE="Symbol">e</FONT> </P></DIR>
+</DIR>
+</DIR>
+
+
+<UL>
+
+<UL>
+</I><P ALIGN="JUSTIFY"><LI>Ciascun simbolo deve essere contenuto in almeno una forma di frase, ovvero deve essere raggiungibile a partire dall'assioma</LI></P>
+<P ALIGN="JUSTIFY"><LI>La grammatica non deve essere circolare, ovvero con regole del tipo</LI></P></UL>
+</UL>
+<DIR>
+<DIR>
+<DIR>
+
+<I><P ALIGN="CENTER">X <FONT FACE="Wingdings">&agrave;</FONT> Y, Y <FONT FACE="Wingdings">&agrave;</FONT> Z, Z <FONT FACE="Wingdings">&agrave;</FONT> X</P>
+</I><P ALIGN="JUSTIFY">Le regole del tipo X <FONT FACE="Wingdings">&agrave;</FONT> <FONT FACE="Symbol">e</FONT> possono essere eliminate facilmente considerando i seguenti casi:</P></DIR>
+</DIR>
+</DIR>
+
+
+<UL>
+
+<UL>
+<P ALIGN="JUSTIFY"><LI>X <FONT FACE="Wingdings">&agrave;</FONT> <FONT FACE="Symbol">e</FONT> &egrave; l'unica regola avente X come parte sinistra; in questo caso si elimina tale regola e si elimina X da tutte le parti destre in cui compare. Esempio: </LI></P></UL>
+</UL>
+<DIR>
+<DIR>
+<DIR>
+
+<I><P ALIGN="CENTER">Z <FONT FACE="Wingdings">&agrave;</FONT> u X</P>
+<P ALIGN="CENTER">X <FONT FACE="Wingdings">&agrave;</FONT> <FONT FACE="Symbol">e</FONT> </P><DIR>
+<DIR>
+<DIR>
+<DIR>
+
+</I><P ALIGN="JUSTIFY">diventa</P></DIR>
+</DIR>
+</DIR>
+</DIR>
+
+<I><P ALIGN="CENTER">Z <FONT FACE="Wingdings">&agrave;</FONT> u</P></DIR>
+</DIR>
+</DIR>
+
+
+<UL>
+
+<UL>
+</I><P ALIGN="JUSTIFY"><LI>X <FONT FACE="Wingdings">&agrave;</FONT> <FONT FACE="Symbol">e</FONT> non &egrave; l'unica regola avente X come parte sinistra; in questo caso si elimina tale regola e per ogni regola Y <FONT FACE="Wingdings">&agrave;</FONT> uXv, si aggiunge la regola Y <FONT FACE="Wingdings">&agrave;</FONT> uv. Esempio: </LI></P></UL>
+</UL>
+<DIR>
+<DIR>
+<DIR>
+
+<I><P ALIGN="CENTER">Z <FONT FACE="Wingdings">&agrave;</FONT> u X v</P>
+<P ALIGN="CENTER">X <FONT FACE="Wingdings">&agrave;</FONT> y</P>
+<P ALIGN="CENTER">X <FONT FACE="Wingdings">&agrave;</FONT> <FONT FACE="Symbol">e</FONT> </P><DIR>
+<DIR>
+<DIR>
+<DIR>
+
+</I><P ALIGN="JUSTIFY">diventa</P></DIR>
+</DIR>
+</DIR>
+</DIR>
+
+<I><P ALIGN="CENTER">Z <FONT FACE="Wingdings">&agrave;</FONT> u X v</P>
+<P ALIGN="CENTER">Z <FONT FACE="Wingdings">&agrave;</FONT> u v</P>
+<P ALIGN="CENTER">X <FONT FACE="Wingdings">&agrave;</FONT> y</P></DIR>
+</DIR>
+</DIR>
+</I></BODY>
+</HTML>

@@ -1,0 +1,247 @@
+<!doctype html public "-//w3c//dtd html 4.0 transitional//en">
+<html>
+<head>
+<link href="java.css" rel="stylesheet" type="text/css">
+<title>Cicli while</title>
+</head>
+
+<body>
+
+<h2>Cicli while</h2>
+
+<p>
+I cicli while sono la forma pi&ugrave; generica di ciclo. La
+struttura generale &egrave; questa:
+
+<pre>
+while( condizione ) {
+  istruzione1;
+  istruzione2;
+  ...
+}
+</pre>
+
+<p>
+Quando questo blocco viene eseguito, si compiono i seguenti
+passi:
+
+<ol>
+<li>si verifica se la condizione &egrave; vera;
+<li>se lo &egrave;, si eseguono in sequenza le istruzioni
+<tt>istruzione1</tt>, <tt>istruzione2</tt>, ecc., altrimenti
+si esce dal ciclo
+<li>si verifica di nuovo la condizione,
+<li>se &egrave; verificata si eseguono di nuovo le istruzioni;
+<li>...
+</ol>
+
+<p>
+La frase "si esce dal ciclo" indica che si passa ad eseguire la
+prima istruzione che segue il blocco, ossia la prima istruzione
+che viene dopo il <tt>}</tt>. In italiano, il ciclo while si
+potrebbe tradurre come: "finch&egrave; la condizione &egrave;
+verificata, continua ad eseguire le istruzioni".<p>
+
+&Egrave; facile far vedere che ogni ciclo for si pu&ograve;
+tradurre in un ciclo while:<p>
+
+<pre>
+for(istruz1; condiz; istruz2) {           istruz1;
+  A;                                -->   while(condiz) {
+}                                           A;
+                                            istruz2;
+                                          }
+</pre>
+
+<p>
+D'altra parte, i cicli in cui una variabile deve venire assegnata
+a valori crescenti o decrescenti in un intervallo si codificano
+in maniera pi&ugrave; naturale usando cicli for: il codice
+risulta in questo modo pi&ugrave; breve da scrivere e pi&ugrave;
+facile da capire. D'altra parte, i cicli while sono pi&ugrave;
+conveniente negli altri casi di iterazione di istruzioni ma non
+c'&egrave; una variabile che si incrementa o decrementa.<p>
+
+
+
+<h4>Esempio: serie di Fibonacci</h4>
+
+<p>
+Si vogliono i valori inferiori a 10000 della serie di Fibonacci.
+La serie di Fibonacci &egrave; definita in questo modo: i primi
+due elementi <i>f<sub>0</sub></i> e <i>f<sub>1</sub></i> valgono
+1. Gli elementi successivi sono determinati con la formula:<p>
+
+<center>
+<i>
+f<sub>i</sub>=f<sub>i-1</sub>+f<sub>i-2</sub>
+</i>
+</center>
+
+<p>
+Il problema si risolve facimente usando due variabili
+<tt>penultimo</tt> e <tt>ultimo</tt> in cui si memorizzano
+gli ultimi due valori trovati
+della serie. All'inizio, queste due variabili hanno valore 1,
+dato che i primi due elementi della serie valgono 1 per definizione.
+Per determinare il successivo elemento della serie, &egrave;
+sufficiente sommare queste due variabili. A questo punto, la
+variabile <tt>ultimo</tt> deve assumere il valore dell'ultimo elemento
+della serie, e quindi il valore della somma, mentre <tt>penultimo</tt>
+deve diventare il valore del penultimo elemento trovato, per
+cui deve prendere il valore che aveva <tt>ultimo</tt> in precedenza.
+Il programma <a href="Fibonacci.java">Fibonacci.java</a> risolve
+il problema in questo modo.<p>
+
+<pre>
+/*
+  La serie di Fibonacci per valori minori di 10000.
+*/
+
+class Fibonacci {
+  public static void main(String[] args) {
+    int penultimo, ultimo, nuovo;
+    int limite=10000;
+
+    penultimo=1;
+    ultimo=1;
+
+    System.out.println(penultimo);
+
+    while( ultimo < limite ) {
+      System.out.println(ultimo);
+
+      nuovo=penultimo+ultimo;
+      penultimo=ultimo;
+      ultimo=nuovo;
+    }
+  }
+}
+
+</pre>
+
+<p> Il programma funziona nel modo seguente. Ad ogni passo,
+<tt>penultimo</tt> e <tt>ultimo</tt> sono gli ultimi due valori
+trovati della serie, e si stampa <tt>ultimo</tt>. Si calcola il
+nuovo valore della serie, che &egrave; la somma di questi due,
+e lo si memorizza nella variabile <tt>nuovo</tt>. A questo
+punto, <tt>penultimo</tt> e <tt>ultimo</tt> sono diventati il
+terz'ultimo e il penultimo elemento della serie, per cui &egrave;
+necessario cambiarli per far s&iacute; ritornino ad essere il
+penultimo e l'ultimo.  Questo significa che <tt>penultimo</tt>
+prende il valore di <tt>ultimo</tt>, mentre <tt>ultimo</tt> prende il
+valore di <tt>nuovo</tt>. Dal momento che questa sequenza di passi
+si trova all'interno di un ciclo while, viene eseguita fino a che
+la condizione &egrave; verificata. In questo caso, si continua
+fino a che l'ultimo valore trovato non supera il limite
+imposto.<p>
+
+Ultima nota: dal momento che a venire stampato &egrave; sempre il 
+valore di <tt>ultimo</tt> dopo questo cambiamento, nelle stampe si
+perde il primo elemento della serie. Per questa ragione &egrave;
+stata messa l'istruzione <tt>System.out.println(penultimo);</tt>
+prima della esecuzione del ciclo.<p>
+
+
+
+<h4>Esempio: zero di una funzione</h4>
+
+<p>
+&Egrave; noto che una funzione, se &egrave; continua in un
+intervallo <i>[a,b]</i>, ha valore positivo in <i>a</i> e
+negativo in <i>b</i>, allora &egrave; nulla in almeno un punto
+dell'intervallo. Si vuole un programma che calcola un intervallo
+sufficientemente piccolo in cui la funzione ha (almeno) uno zero.
+Siano quindi dati la funzione, i valori (reali) di <i>a</i>
+e <i>b</i>, e un terzo valore <i>e</i>, e si vuole un
+intervallo <i>[c,d]</i> che sia contenuto in <i>[a,b]</i>,
+che contenga un punto <i>x</i> tale che <i>f(x)=0</i>,
+e la dimensione di questo intervallo sia minore di <i>e</i>,
+ossia <i>d-c <= e</i>.<p>
+
+Un possibile meccanismo risolutivo &egrave; il seguente: si
+parte con <i>c,d</i> pari agli estremi dell'intervallo dato.
+Poi si assegna <i>x=(c+d)/2</i>, e si valuta <i>f(x)</i>.
+In altre parole, si fissa <i>x</i> al punto esattamente in
+mezzo all'intervallo, e si valuta <i>f</i> nel punto.
+Dal momento che <i>f(c)</i> e <i>f(d)</i> hanno segni diversi,
+almeno uno dei due ha un segno uguale a quello di <i>f(x)</i>.
+Nel caso in cui <i>f(c)</i> e <i>f(x)</i> hanno lo stesso
+segno, si assegna <i>c=x</i>. Nel caso in cui sono <i>f(d)</i>
+e <i>f(x)</i> ad avere lo stesso segno, si assegna <i>d=x</i>.
+Alla fine di questo passo, la propriet&agrave; che <i>f(c)</i>
+e <i>f(d)</i> hanno segni diversi continua a valere. D'altra
+parte, la differenza fra <i>d</i> e <i>c</i> si &egrave;
+dimezzata.<p>
+
+Il programma <a href="Nullo.java">Nullo.java</a> contiene il
+programma Java che ripete questi passi fino a che la ampiezza
+dell'intervallo non diventa minore o uguale del numero
+dato <tt>e</tt>.<p>
+
+<pre>
+/*
+  Trova un punto in cui una funzione f(x) ha un
+  valore sufficientemente vicino allo zero.
+  Siano a e b due valori tali che f(a) ha segno
+  opposto a f(b). Si assume che la funzione sia
+  continua.
+*/
+
+class Nullo {
+  public static void main(String[] args) {
+    double a=0,b=10;
+    double c,d;
+    double e=0.01;
+    double x,f,f1,f2;
+
+    f1=a*a-5*a-2;
+    f2=b*b-5*b-2;
+
+    if( f1*f2 >0 ) {
+      System.out.println("La funzione non ha segno diverso negli estremi");
+      System.out.println(f1+" "+f2);
+    }
+    else {
+      c=a;
+      d=b;
+  
+      while( d-c>e ) {
+        x=(c+d)/2;
+        System.out.println("Intervallo: ["+c+","+d+"], Medio: "+x);
+  
+        f=x*x-5*x-2;
+        f1=c*c-5*c-2;
+        f2=d*d-5*d-2;
+  
+        if( f*f2 < 0 ) {
+          c=x;
+        }
+        else if( f*f1 < 0 ) {
+          d=x; 
+        }
+        else {
+          c=x;
+          d=x;
+          break;
+        }
+      }
+  
+      System.out.println("Trovato intervallo ["+c+","+d+"]");
+    }
+  }
+}
+
+</pre>
+
+<p>
+Usiamo la condizione <tt>f*f1>0</tt> per decidere se due numeri
+hanno lo stesso segno. Una delle prime istruzioni del programma
+&egrave; la verifica se effettivamente la funzione ha segno
+differente pre <i>a</i> e per <i>b</i>. Se il segno risulta
+uguale, si stampa un messaggio di errore e basta. In caso contrario,
+si esegue il resto della procedura.<p>
+
+</body>
+</html>
+

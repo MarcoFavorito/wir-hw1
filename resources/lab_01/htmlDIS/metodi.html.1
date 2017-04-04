@@ -1,0 +1,723 @@
+<html>
+<head>
+<title>I metodi</title>
+      <link rel="top" href="../lezioni.html">
+      <link rel="up" href="../lezioni.html">
+      <link rel="contents" href="../lezioni.html">
+      <link rel="previous" href="../punti/punti.html">
+      <link rel="next" href="../stringhe/stringhe.html">
+</head>
+
+<body>
+
+<h1>I metodi</h1>
+
+<p>
+Metodo=operazione su un oggetto
+</p>
+
+<p>
+Esempio: spostare un punto.
+</p>
+
+<pre>
+  p.translate(10,-20);
+</pre>
+
+<p>
+Il punto <tt>p</tt> viene spostato di <tt>10</tt>
+sulla coordinata <tt>x</tt> e di <tt>-20</tt> sulla
+coordinata <tt>y</tt>.
+</p>
+
+<p>
+Esempio: muovere il punto alle coordinate specificate.
+</p>
+
+<pre>
+  p.move(5, 14);
+</pre>
+
+<p>
+Le stesse cose si possono fare con
+delle istruzioni (es. <tt>p.x=5</tt> ecc.)
+</p>
+
+<hr>
+
+
+<h4>Esempio di programma che usa un metodo</h4>
+
+<p>
+Programma della distanza, con il metodo
+<tt>move</tt> per definire il punto.
+</p>
+
+<pre>
+import java.awt.*;
+
+class Distanza {
+  public static void main(String args[]) {
+    Point p;
+    p=new Point();
+
+    p.move(10,20);
+
+    double dis;
+
+    dis=Math.sqrt(p.x*p.x+p.y*p.y);
+
+    System.out.println(dis);
+  }
+}
+</pre>
+
+<hr>
+
+
+<h4>Metodi di oggetti di tipo diverso</h4>
+
+<dl>
+
+<dt>rettangoli
+<dd>esiste il metodo <tt>setSize</tt> (che modifica altezza a larghezza)
+che non c'&egrave; per i punti
+
+<dt>punti
+<dd>esiste il metodo <tt>move</tt> (che d&agrave; nuove
+coordinate per il punto) che non c'&egrave; per i
+rettangoli.
+
+</dl>
+
+<p>
+Ogni tipo di oggetto (<tt>Point</tt>, <tt>Rectangle</tt>,
+ecc) ha i suoi metodi.
+</p>
+
+<hr>
+
+
+<h4>Metodi: argomenti</h4>
+
+<p>
+Il metodo <tt>move</tt> dei punti ha due argomenti:
+</p>
+
+<img src="args.jpg">
+
+<p>
+Gli argomenti sono i dati che servono per
+poter fare l'operazione.
+</p>
+
+<p>
+Rappresentazione grafica:
+</p>
+
+<img src="metarg.jpg">
+
+<p>
+Il metodo ``usa'' gli argomenti per fare qualcosa.
+</p>
+
+<hr>
+
+
+<h4>Metodi: risultato</h4>
+
+<p>
+Un metodo &egrave; una operazione che riguarda
+l'oggetto.
+</p>
+
+<p>
+Il metodo <tt>move</tt> &egrave; una operazione
+di modifica dell'oggetto.
+</p>
+
+<p>
+Certe operazioni sull'oggetto non fanno modifiche,
+ma producono un risultato
+</p>
+
+<p>
+Questi metodi vanno usati in modo leggermente
+diverso.
+</p>
+
+<hr>
+
+
+<h4>Metodi: risultato</h4>
+
+<p>
+Alcuni metodi producono dei dati come risultato
+</p>
+
+<p>
+Per esempio, <tt>getX</tt> ritorna il valore di <tt>x</tt>,
+espresso come <tt>double</tt>
+</p>
+
+<pre>
+  double a;
+
+  a=p.getX();
+</pre>
+
+<p>
+Il metodo <tt>getX()</tt> trova il valore della
+coordindata <tt>x</tt>.
+</p>
+
+<p>
+Facendo <tt>a=p.getX();</tt> viene trovato il
+valore di <tt>p.x</tt>, che viene messo in <tt>a</tt>
+</p>
+
+<p>
+Graficamente, il metodo ha una ``uscita'' (output)
+ma nessuna ``entrata'' (input).
+</p>
+
+<img src="metris.jpg">
+
+<hr>
+
+
+<h4>Metodi: argomenti e risultato</h4>
+
+<p>
+Certi metodi calcolano qualcosa, sulla base
+di dati.
+</p>
+
+<p>
+Questi metodi hanno degli ``input'' (argomenti)
+ma anche degli ``output'' (risultati)
+</p>
+
+<p>
+Per i punti, esiste il metodo <tt>distance</tt>,
+che calcola la distanza fra il punto e un altro
+punto:
+</p>
+
+<pre>
+  Point a;
+  Point b;
+  ...
+
+  double dist;
+
+  dist=a.distance(b);
+</pre>
+
+<p>
+Il metodo riceve un altro punto, e fornisce la
+distanza come risultato.
+</p>
+
+<img src="metargris.jpg">
+
+<hr>
+
+
+<h4>Uso di un metodo con risultato</h4>
+
+<p>
+Se <tt>abcd</tt> &egrave; un metodo, allora
+scrivere <tt>p.abcd(arg)</tt> equivale a dire:
+</p>
+
+<blockquote>
+esegui l'operazione <tt>abcd</tt> usando <tt>arg</tt>
+come dati...
+</blockquote>
+
+<p>
+Il risultato dove va?
+</p>
+
+<blockquote>
+... e il risultato mettilo nel punto
+dove appariva originariamente <tt>p.abcd(arg)</tt>
+</blockquote>
+
+<hr>
+
+
+<h4>Cosa succede quando c'&egrave; un metodo?</h4>
+
+<p>
+Uso di un metodo con argomenti e risultato:
+</p>
+
+<pre>
+  dist=a.distance(b);
+</pre>
+
+<p>
+Cosa succede quando il calcolatore deve eseguire
+questa istruzione?
+</p>
+
+<ol>
+
+<li>prima si valuta quello che sta a destra di <tt>=</tt>
+
+<li>contiene un metodo, ossia <tt>a.distance(b)</tt>
+
+<li>viene valutato il metodo, ossia si esegue l'operazione
+(in questo caso, il calcolo della distanza)
+
+<li>se il risultato &egrave;, per esempio, <tt>2.34</tt>,
+allora si passa ad eseguire <tt>dist=2.34</tt>
+
+<li>si prosegue come al solito
+
+</ol>
+
+<p>
+L'effetto &egrave; che il valore calcolato va
+nella variabile <tt>dist</tt>
+</p>
+
+<p>
+Il punto 4 corrisponde ad eseguire l'istruzione, ma
+mettendo il risultato <tt>2.34</tt> nel punto in cui
+in realt&agrave; c'&egrave; scritto il metodo
+<tt>a.distance(b)</tt>
+</p>
+
+<hr>
+
+
+<h4>Metodi come dispositivi</h4>
+
+<p>
+&Egrave; come se i metodi fossero dei
+dispositivi a cui &egrave; possibile
+dare dati, e che possono produrre un
+risultato.
+</p>
+
+<p>
+Usare un metodo=inviare dati a un dispostivo,
+e ricevere il risultato.
+</p>
+
+<p>
+Tutto questo avviene ``internamente'' al
+calcolatore: i metodi visti fino ad ora
+non stampano niente!
+</p>
+
+<hr>
+
+
+<h4>Esercizio: il programma del perimetro</h4>
+
+<p>
+Riscrivere il programma del perimetro
+usando il metodo <tt>distance</tt>
+</p>
+
+<hr>
+
+
+<h4>Distanza fra due punti usando un metodo</h4>
+
+<p>
+Al posto dell'espressione si mette semplicemente
+il metodo.
+</p>
+
+<pre>
+import java.awt.*;
+
+class DistMet {
+  public static void main(String args[]) {
+    Point p;
+    p=new Point();
+    p.move(20,2);
+
+    Point s;
+    s=new Point();
+    s.move(1,20);
+
+    double dist;
+    dist=p.distance(s);
+
+    System.out.println(dist);
+  }
+}
+</pre>
+
+<p>
+Osservazione: il metodo equivale a pi&ugrave;
+istruzioni.
+</p>
+
+<p>
+Quindi, si pu&ograve; fare la stessa cosa anche
+senza il metodo.
+</p>
+
+<hr>
+
+
+<h4>I metodi dei rettangoli</h4>
+
+<dl>
+
+<dt><tt>setBounds</tt>
+<dd>modifica le quattro componenti del rettangolo
+
+<dt><tt>translate</tt>
+<dd>fa la stessa cosa che fa sui punti
+
+<dt><tt>intersection</tt>
+<dd>trova l'intersezione del rettangolo con un altro
+
+<dt><tt>union</tt>
+<dd>trova il pi&ugrave; piccolo rettangolo che contiene
+questo e un altro
+
+<dt><tt>grow</tt>
+<dd>espande il rettangolo mantenendo lo stesso centro
+
+</dl>
+
+<p>
+Il metodo <tt>setBounds</tt> riceve quattro interi,
+e modifica l'oggetto (non produce nessun risultato).
+</p>
+
+<p>
+Il metodo <tt>intersection</tt> riceve un altro
+rettangolo (oltre a quello nominato prima del punto);
+</p>
+
+<p>
+Il metodo <tt>intersection</tt> non modifica nulla,
+ma crea un nuovo rettangolo, che &egrave; l'intersezione
+dei due.
+</p>
+
+<hr>
+
+
+<h4>Esercizio: calcolare l'area dell'intersezione</h4>
+
+<p>
+Dati due rettangoli, stampare l'area della loro
+intersezione.
+</p>
+
+<pre>
+import java.awt.*;
+
+class AreaInt {
+  public static void main(String args[]) {
+    Rectangle a;
+    a=new Rectangle();
+    Rectangle b;
+    b=new Rectangle();
+
+    a.setBounds(10,10,40,30);
+
+    b.setBounds(30,30,10,50);
+
+    ...
+  }
+}
+</pre>
+
+<hr>
+
+
+<h4>Area dell'intersezione: soluzione</h4>
+
+<p>
+Si pu&ograve; fare in questo modo: prima calcolo
+il rettangolo intersezione, e poi calcolo l'area.
+</p>
+
+<pre>
+import java.awt.*;
+
+class AreaInt {
+  public static void main(String args[]) {
+    Rectangle a;
+    a=new Rectangle();
+    Rectangle b;
+    b=new Rectangle();
+
+    a.setBounds(10,10,40,30);
+
+    b.setBounds(30,30,10,50);
+
+    Rectangle c;
+
+    c=a.intersection(b);
+
+    int area;
+
+    area=c.width*c.height;
+
+    System.out.println(area);
+  }
+}
+</pre>
+
+<p>
+Mentre <tt>distance</tt> ha come risultato un valore
+reale, il metodo <tt>translate</tt> ha come risultato
+un oggetto (un nuovo rettangolo).
+</p>
+
+<p>
+Per il resto non cambia niente:
+<tt>c=a.intersection(b)</tt> calcola il rettangolo
+che &egrave; l'intersezione dei due, e memorizza
+il risultato usando la variabile <tt>c</tt>
+</p>
+
+<p>
+Niente di strano, in questo programma?
+</p>
+
+<hr>
+
+
+<h4>Manca <tt>c=new Rectangle();</tt>!</h4>
+
+<p>
+Nella lezione precedente, si era detto:
+per ogni oggetto servono due operazioni:
+</p>
+
+<pre>
+  Point p;
+  p=new Point();
+</pre>
+
+<p>
+Nel caso dei rettangoli:
+</p>
+
+<pre>
+  Rectangle r;
+  r=new Rectangle();
+</pre>
+
+<p>
+Nel programma di sopra viene fatto <tt>Rectangle c</tt>
+ma non c'&egrave; <tt>c=new Rectangle()</tt>
+</p>
+
+<p>
+Spiegazione:
+</p>
+
+<blockquote>
+Si pu&ograve; pensare che questa
+operazione <tt>c=new Rectangle()</tt> la
+esegue il metodo <tt>intersection</tt>
+</blockquote>
+
+<hr>
+
+
+<h4>Dichiarazione/creazione</h4>
+
+<p>
+Perch&egrave; per <tt>int</tt> basta una istruzione
+mentre per <tt>Point</tt> ne servono due?
+</p>
+
+<pre>
+  int a;
+  Point p;
+  p=new Point();
+</pre>
+
+<p>
+In memoria:
+</p>
+
+<img src="intpunto.jpg">
+
+<p>
+Non serve (per ora) capire perch&egrave; si
+usa questo modo di rappresentazione.
+</p>
+
+<p>
+Serve solo sapere che per una variabile di
+tipo oggetto servono <b>due</b> zone di memoria.
+</p>
+
+<p>
+<tt>Point p;</tt> crea la prima zona, mentre
+la <tt>new</tt> crea la seconda.
+</p>
+
+<hr>
+
+
+<h4>Definizione e creazione di un oggetto: parte I</h4>
+
+<pre>
+  Point p;
+</pre>
+
+<img src="defcrea-1.jpg">
+
+<p>
+Viene creata solo la casellina con <tt>p</tt>
+accanto.
+</p>
+
+<p>
+&Egrave; la stessa cosa che succede facendo
+<tt>int a;</tt> (si crea una casellina con
+accanto il nome della variabile).
+</p>
+
+<p>
+La differenza &egrave; che dopo <tt>int a;</tt> si
+pu&ograve; subito usare la variabile <tt>a</tt>,
+perch&ograve; i dati sono memorizzati in questa
+casellina.
+<p>
+
+<p>
+Non si pu&ograve; invece nel caso degli oggetti,
+dato che i dati vanno memorizzati in una seconda
+area di memoria.
+</p>
+
+<p>
+Quindi, dopo <tt>int a</tt> la variabile <tt>a</tt> si
+pu&ograve; subito usare per fare <tt>a=12;</tt>. Dopo
+aver fatto <tt>Point p;</tt>, non esistono ancora le
+due variabili <tt>p.x</tt> e <tt>p.y</tt>
+</p>
+
+<hr>
+
+
+<h4>Definizione e creazione di un oggetto: parte II</h4>
+
+<pre>
+  p=new Point();
+</pre>
+
+<p>
+Viene creata la zona di memoria dove si trovano
+<tt>p.x</tt> e <tt>p.y</tt>
+</p>
+
+<img src="defcrea-2.jpg">
+
+<p>
+L'istruzione mette anche la freccia.
+</p>
+
+<img src="defcrea-3.jpg">
+
+<p>
+Solo a questo punto l'oggetto si pu&ograve; usare
+(esistono <tt>p.x</tt> e <tt>p.y</tt>)
+</p>
+
+<hr>
+
+
+<h4>Metodi che restituiscono un oggetto</h4>
+
+<p>
+Il metodo <tt>intersection</tt> si occupa
+lui di fare la creazione dell'oggetto.
+</p>
+
+<p>
+In particolare, il metodo fa:
+</p>
+
+<ul>
+
+<li>crea il rettangolo grande con le quattro componenti
+
+<li>calcola i quattro valori del rettangolo intersezione
+
+</ul>
+
+<p>
+Dato che la creazione del rettangolo grande la fa lui,
+non &egrave; necessario fare <tt>new</tt>
+</p>
+
+<p>
+Spiegazione alternativa: &egrave; il metodo che
+esegue <tt>new Rectangle();</tt> prima di mettere
+i dati nelle componenti <tt>x</tt>, <tt>y</tt>,
+<tt>width</tt> e <tt>height</tt>
+</p>
+
+<hr>
+
+
+<h4>Il programma che fa l'intersezione: esecuzione</h4>
+
+<p>
+Quando di esegue <tt>Rectangle c;</tt> lo stato della
+memoria (a parte le variabili <tt>a</tt> e <tt>b</tt>)
+&egrave;:
+</p>
+
+<img src="inters-1.jpg">
+
+<hr>
+
+
+<h4>Cosa fa il metodo</h4>
+
+<p>
+Quando si esegue <tt>c=a.intersection(b)</tt>, questo
+metodo fa due cose:
+</p>
+
+<p>
+<b>Primo:</b> crea un nuovo oggetto (solo il blocco
+con le variabili!)
+</p>
+
+<img src="inters-2.jpg">
+
+<p>
+<b>Secondo:</b> calcola i valori del rettangolo che
+rappresenta l'intersezione e li mette nell'oggetto.
+</p>
+
+<img src="inters-3.jpg">
+
+<p>
+La freccia viene aggiunta quando il metodo termina:
+</p>
+
+<img src="inters-4.jpg">
+
+<p>
+A questo punto, esistono tutte e due le zone di 
+memoria, per cui l'oggetto <tt>c</tt> si pu&ograve; usare.
+</p>
+
+</body>
+</html>
+
+
+

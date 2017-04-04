@@ -1,0 +1,70 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+
+<html>
+<head>
+<title>Esame di Basi di Dati A.A. 2000/2001 - 2002-01-18</title>
+</head>
+
+<center>
+<h1>Esame di Basi di Dati<br>
+A.A. 2000/2001 - Appello del 18/01/2002</h1>
+</center>
+
+<h2>Problema 1</h2>
+
+Si progetti lo schema concettuale Entit&agrave;-Relazione di un'applicazione
+relativa ad un insieme di satelliti per la rilevazione di dati sull'ambiente,
+descritta dalle seguenti specifiche:
+<ul>
+  <li>Dei satelliti interessa il codice, l'anno di lancio, e l'ente spaziale
+      che lo gestisce (unico).
+  <li>Di ogni ente gestore interessa il codice, lo stato in cui &egrave;
+      ubicato, il numero di dipendenti.
+  <li>Ogni rilevazione ha un codice, ed &egrave; caratterizzata dalle seguenti
+      informazioni:
+      <ul>
+        <li>il satellite che lo ha effettuato la rilevazione,
+        <li>il livello di inquinamento rilevato,
+        <li>la data e l'ora di rilevazione,
+        <li>l'area a cui la rilevazione si riferisce.
+      </ul>
+  <li>Ogni area soggetta a rilevazioni ha un codice, e copre, con una certa
+      percentuale, un certo insieme di stati. Ad  esempio, l'area A copre il
+      territorio spagnolo al 30%, il territorio francese al 20% e quello
+      portoghese al 15%.
+  <li>Di ogni stato interessa il nome, il numero di abitanti, e gli stati
+      confinanti, con l'indicazione, per ogni stato confinante, di quanti Km
+      &egrave; lungo il confine.
+  <li>Alcuni satelliti sono speciali, nel senso che, oltre alle usuali
+      rilevazioni, possono anche effettuare fotografie, a fronte di richieste
+      di enti spaziali. Di ogni fotografia effettuata da un satellite speciale
+      interessa la data e l'ora di effettuazione, l'area fotografata, e l'ente
+      spaziale che l'ha richiesta (ogni fotografia &egrave; richiesta da un
+      unico ente spaziale).
+</ul>
+
+<h2>Problema 2</h2>
+
+Si progetti lo schema logico dell'applicazione, producendo la specifica SQL del
+corrispondente schema relazionale, completo di vincoli. L'indicazione di
+progetto &egrave; di evitare valori nulli nella base di dati. 
+
+<h2>Problema 3</h2>
+
+Sulla base dello schema relazionale definito per il problema 2, esprimere in
+SQL le seguenti interrogazioni:
+<ol>
+  <li>Fornire il codice di tutti i satelliti che hanno effettuato almeno una
+      rilevazione nell'anno 2001.
+  <li>Dato il codice S di un satellite e dato il codice A di un'area, fornire
+      le informazioni su tutte le rilevazioni effettuate da S sull'area A.
+  <li>Calcolare numero di matricola degli astronauti che hanno partecipato solo
+      a missioni che sono iniziate nella base in cui hanno conseguito il
+      brevetto.
+  <li>Fornire il codice delle rilevazioni effettuate dal 2000 che hanno
+      riguardato un'area che copre almeno 4 stati.
+</ol>
+
+</body>
+</html>
+

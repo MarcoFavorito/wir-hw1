@@ -1,0 +1,186 @@
+<!DOCTYPE html PUBLIC "-//w3c//dtd html 4.0 transitional//en">
+<html>
+<head>
+  <title>Esercitazione 4</title>
+  <link rel="stylesheet" href="../../fi2001.css" type="text/css">
+</head>
+<body>
+<center>
+<b>Fondamenti di Informatica </b> <br>
+<b>Corso di Laurea in Ingegneria Informatica e Automatica</b> <br>
+</center>
+<p>
+</p>
+<hr>
+<h2 align="center">Esercitazione 6</h2>
+<h2 align="center">Classi che usano istruzioni iterative</h2>
+<hr>
+NOTA: tutti gli input da tastiera sono realizzati mediante il metodo <code>JOptionPane.showInputDialog</code>,
+l'input termina se viene premuto il tasto <i>Cancel</i>.
+<p><b>Esercizio 6A</b></p>
+<p>Scrivere un metodo statico <code>main</code> Java che stampi il
+codice ascii dei caratteri da '0' a '9'.<br>
+Suggerimento i codici ascii dei caratteri '0' ... '9' hanno valori
+crescenti,
+cio&egrave;, se <i>x</i> codice ascii di '0', il codice ascii di '1'
+&egrave;
+<i>x+1<br>
+</i></p>
+<p><i><br>
+</i> </p>
+<p><!--<a href="soluzioni/eser6A/Vocali.java">Soluzione</a></p>
+<hr>
+<p><b>Esercizio 6B</b></p>
+<p>Scrivere un metodo statico <code>media</code> Java che legga da
+tastiera una sequenza di valori interi restituisca ne stampi la media
+corrente.
+Scrive inoltre un metodo <code>main</code> che invochi il metodo
+realizzato, e ne stampi il valore di ritorno.
+</p>
+<p><!--<a href="soluzioni/eser6A/Vocali.java"></p>
+<hr>
+<p><b>Esercizio 6C</b></p>
+<p>Scrivere un metodo statico Java che legga da tastiera una sequenza
+di valori e stampi il valore massimo ed il numero di occorrenze nella
+sequenza.
+Ad esempio inserendo la sequenza 1 2 3 45 2, il metodo deve stampare 45
+(che &egrave; il massimo valore fino ad ora inserito) e 1, che &egrave;
+il numero di volte che
+il massimo occorre nella sequenza.
+Se la sequenza &egrave; 1 2 3 45 2 45, i valori stampati sevono essere
+45 e 2,
+poich&egrave; il massimo occorre due volte nella sequenza.<br>
+Suggerimento: stampare ad ogni iterazione in massimo corrente ed il
+numero di occorrenze.
+</p>
+<p><!--<a href="soluzioni/eser6A/Vocali.java">Soluzione</a> --></p>
+<hr>
+<p><b>Esercizio 6B</b></p>
+<p>Scrivere un metodo statico Java avente come argomento una <code>String</code>
+che rappresenta
+una domanda, che ponga tale domanda all'utente fina a che questo non
+inseriscce la stringa "si" oppure "no".
+Il metodo deve ritornare un valore booleano true, se il valore inserito
+&egrave; "si"
+false, se il valore inserito &egrave; "no".
+</p>
+<p><!--<a href="soluzioni/eser6A/Vocali.java">Soluzione</a> --></p>
+<hr>
+<p><b>Esercizio 6C</b></p>
+<p>Scrivere un metodo statico Java che legga da tastiera (mediante il
+metodo <code>JOptionPane.showInputDialog</code>) una vocale e una
+stringa e
+stampi la stringa ottenuta sostituendo ad ogni vocale nella stringa
+la vocale letta in ingresso.</p>
+<p>Ad esempio, data la stringa "<code>pippo</code>" e la vocale
+<code>'e'</code>, deve stampare "<code>peppe</code>".<br>
+</p>
+<p><a href="soluzioni/Es3/Vocali.java">Soluzione</a><br>
+</p>
+<p><!--<a href="soluzioni/eser6A/Vocali.java">Soluzione</a> --></p>
+<hr>
+<p><b>Esercizio 6D</b></p>
+<p>Scrivere un metodo statico Java che legga da tastiera una stringa,
+ne calcoli la stringa invertita, concateni le due stringhe e le stampi.</p>
+<p>Ad esempio, data la stringa "<code>pippo</code>", deve stampare
+"<code>pippooppip</code>".<br>
+</p>
+<p><a href="soluzioni/Es4/Invertita.java">Soluzione</a><br>
+</p>
+<p><!--<a href="soluzioni/eser6B/Invertita.java">Soluzione</a> --></p>
+<hr>
+<h2>PER CASA</h2>
+<hr>
+Svolgere gli serecizi 6.1-6.7 del libro.
+<hr>
+<p><b>Esercizio 6E Parte I</b></p>
+<p>Una funzione campionata &egrave; una funzione <em>y=f(x)</em> i cui
+valori
+<em>y</em> sono definiti solamente per determinati valori di <em>x</em>
+(detti
+punti di campionamento) opportunamente intervallati. In particolare,
+una
+funzione campionata &egrave; caratterizzata da:</p>
+<ul>
+  <li>un punto di campionamento iniziale <i>x<font size="-1">0</font></i>
+(un reale)</li>
+  <li>un intervallo di campionamento <i>dx</i> (un reale)</li>
+  <li>un numero fissato di campioni <i>n</i> (un intero)</li>
+</ul>
+<p>e l'<em>i</em>-esimo valore campionato <em>(i = 0,..,n-1)</em>
+corrisponde
+al valore della funzione
+<em>y<font size="-1">i</font> = f(x<font size="-1">i</font>)</em>
+dove <i>x<font size="-1">i</font></i> &egrave; l'i-esimo punto di
+campionamento ed &egrave; pari a <i>x<font size="-1">i</font>=x<font
+ size="-1">0</font>+i*dx</i>.</p>
+<div align="center"> <img src="fungraph.gif" height="241" width="327"><br>
+</div>
+<p>Progettare e realizzare una classe <code>FunzioneCampionata</code>
+che
+rappresenti una funzione campionata. In particolare, la funzione di cui
+interessano i campioni &egrave; <em>y = 2*x + 3</em>, mentre il punto
+di
+campionamento iniziale, l'intervallo di campionamento e il numero di
+campioni
+variano da istanza a istanza.</p>
+Equipaggiare la classe con i seguenti metodi pubblici:
+<ul>
+  <li>un opportuno costruttore;</li>
+  <li>metodi che restituiscono il punto di campionamento iniziale,
+l'intervallo di campionamento e il numero di campioni;</li>
+  <li>un metodo <code>puntoCampionamento</code>, che dato un intero <em>i</em>
+restituisce l'<em>i</em>-esimo punto di campionamento;</li>
+  <li>un metodo <code>valoreCampionato</code>, che dato un intero <em>i</em>
+restituisce l'<em>i</em>-esimo valore campionato;</li>
+  <li>un metodo <code>toString</code>, che restituisce una stringa
+composta da tutte le coppie separate da <code>'\n'</code>, formate da
+punto di campionamento e valore campionato separati da uno spazio.</li>
+</ul>
+<p><!--<a href="soluzioni/eser6G/FunzioneCampionata.java">Soluzione</a> --></p>
+<hr>
+<p><b>Esercizio 6F - Parte II</b></p>
+Realizzare due classi: <code>RadiceQuadrataCampionata</code> e
+<code>SenoCampionato</code>, derivate dalla classe
+<code>FunzioneCampionata</code>, che ridefiniscano il metodo
+<code>valoreCampionato</code>, in modo che ritorni, rispettivamente, il
+valore
+delle funzioni <em>y = sqrt(x)</em> e <em>y = sen(x)</em>, calcolate
+nel punto
+di campionamento corrispondente al valore del parametro.
+<p><!--p-->Soluzione:
+<!--<a href="soluzioni/eser6G/RadiceQuadrataCampionata.java">RadiceQuadrataCampionata</a>
+e <!--<a href="soluzioni/eser6G/SenoCampionato.java">SenoCampionato</a></p>
+<hr>
+<p><b>Esercizio 6G - Parte III</b></p>
+Realizzare una classe <code>FunzionalitaFunzioniCampionate</code>,
+che includa un metodo statico <code>integrale</code>, che prende come
+argomento
+una funzione campionata e ne calcola una approssimazione dell'integrale
+nell'intervallo tra <em>x<font size="-1">0</font></em> e <em>x<font
+ size="-1">n-1</font></em>, sommando il valore di tutti i campioni, tra
+<em>0</em> e <em>n-1</em>, moltiplicati per l'intervallo di
+campionamento,
+secondo la formula seguente:
+<p></p>
+<p align="center"><img src="formula.jpg" height="117" width="198"></p>
+<p>L'area racchiusa tra i rettangoli evidenziati nella figura seguente
+rappresenta l'integrale di una funzione campionata:</p>
+<p align="center"><img src="funIntegr.jpg" border="0" height="236"
+ width="322"></p>
+<p><!--<a href="soluzioni/eser6G/Funzionalita.java">Soluzione</a> --></p>
+<hr>
+<p><b>Esercizio 6G - Parte IV</b></p>
+Realizzare una classe cliente delle classi precedenti avente un metodo <code>main</code>
+che legga da tastiera il punto di campionamento iniziale,
+l'intervallo di campionamento e un numero fissato di campioni e
+crei un oggetto di tipo <code>FunzioneCampionata</code>, uno di tipo
+<code>RadiceQuadrataCampionata</code> e uno di tipo
+<code>SenoCampionato</code>, stampi i tre oggetti e calcoli e stampi
+l'integrale di ciascuno di essi.<br>
+<br>
+<br>
+<a href="soluzioni/Es5-7/">Soluzioni</a><br>
+<p><!--<a href="soluzioni/eser6G/Cliente.java">Soluzione</a> --></p>
+</body>
+</html>

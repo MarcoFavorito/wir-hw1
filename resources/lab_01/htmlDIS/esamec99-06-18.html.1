@@ -1,0 +1,229 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1">
+<META NAME="Generator" CONTENT="Microsoft Word 98">
+<TITLE>Esame del 18 giugno 1999</TITLE>
+</HEAD>
+<BODY>
+
+<FONT FACE="Times" SIZE=4><P ALIGN="CENTER">Universit&agrave; di Roma "La Sapienza" &#150; Facolt&agrave; di Ingegneria</P>
+</FONT><FONT FACE="Times" SIZE=4><P ALIGN="CENTER">Corso di <I>Fondamenti di Informatica</P>
+</I></FONT><B><FONT FACE="Times"><P ALIGN="CENTER">Corso di laurea: Ambiente e Territorio</P>
+</B><P ALIGN="CENTER">1&#170; prova di esame del 18 giugno 1999 (II appello estivo)</P>
+</FONT><I><FONT FACE="Times" SIZE=3><P ALIGN="CENTER">tempo a disposizione: 120 minuti</P>
+</I></FONT><FONT FACE="Times">
+<B><P>Problema 1</P>
+</B><P>Un docente di <I>Fondamenti di Informatica</I> memorizza in un file di strutture (binario), per fini statistici, l'esito di tutti gli esami svolti positivamente nell'ambito del suo corso. Per ogni studente esaminato sono incluse le seguenti informazioni:</P>
+
+<UL>
+<LI>matricola (8 cifre);</LI>
+<LI>nome (20 caratteri);</LI>
+<LI>cognome (20 caratteri);</LI>
+<LI>corso di laurea (abbreviato in 4 caratteri);</LI>
+<LI>data esame (8 cifre nel formato GGMMAAAA);</LI>
+<LI>esito (intero da 18 a 30);</LI>
+<LI>lode.</LI></UL>
+
+
+<OL>
+
+<LI>Scrivere un insieme di dichiarazioni globali in C da utilizzarsi per risolvere i due punti successivi (le dichiarazioni locali potranno essere direttamente specificate nello svolgimento dei punti successivi).</LI>
+<LI VALUE=1>Scrivere una funzione C (o pi&ugrave;) che, ricevendo come parametro il nome di un file di strutture riepilogativo di tutti gli esami svolti nell'A.A. 97/98, costruisca un nuovo file (il cui nome &egrave; anche passato come parametro) inserendovi tutti (e soli) i voti assegnati nell'A.A. 97/98 che risultano superiori alla media dei voti assegnati dal docente nel corso dell'A.A. (media definita dai voti memorizzati nel file riepilogativo; i "30 e lode" contribuiscono come 30 sia alla media sia al file di output).</LI>
+<LI VALUE=1>Scrivere una funzione C (o pi&ugrave;) che, ricevendo come parametro il nome del file costruito al punto precedente, costruisca, restituendola in uscita, una lista rappresentata tramite strutture e puntatori i cui elementi contengono i voti presenti nel file e, per ogni voto, il numero delle sue presenze nel file. Ogni voto deve essere presente una sola volta nella lista.</LI></OL>
+
+
+<B><P>Esempio</P>
+</B><P>Dato il file contenente le informazioni illustrate in Fig. 1.1 (media: 26.17), il punto 1.2 richiede la costruzione di un file contenente quanto mostrato in Fig. 1.2, mentre il punto 1.3 richiede la costruzione della lista descritta in Fig 1.3.</P>
+</FONT>
+<P ALIGN="CENTER"><CENTER><TABLE BORDER CELLSPACING=1 CELLPADDING=5 WIDTH=430>
+<TR><TD WIDTH="15%" VALIGN="TOP">
+<FONT FACE="Times" SIZE=2><P ALIGN="CENTER">matricola</FONT></TD>
+<TD WIDTH="15%" VALIGN="TOP">
+<FONT FACE="Times" SIZE=2><P ALIGN="CENTER">nome</FONT></TD>
+<TD WIDTH="17%" VALIGN="TOP">
+<FONT FACE="Times" SIZE=2><P ALIGN="CENTER">cognome</FONT></TD>
+<TD WIDTH="19%" VALIGN="TOP">
+<FONT FACE="Times" SIZE=2><P ALIGN="CENTER">corso di laurea</FONT></TD>
+<TD WIDTH="15%" VALIGN="TOP">
+<FONT FACE="Times" SIZE=2><P ALIGN="CENTER">data esame</FONT></TD>
+<TD WIDTH="10%" VALIGN="TOP">
+<FONT FACE="Times" SIZE=2><P ALIGN="CENTER">esito</FONT></TD>
+<TD WIDTH="10%" VALIGN="TOP">
+<FONT FACE="Times" SIZE=2><P ALIGN="CENTER">lode</FONT></TD>
+</TR>
+<TR><TD WIDTH="15%" VALIGN="TOP">
+<FONT FACE="Times" SIZE=2><P>09000001</FONT></TD>
+<TD WIDTH="15%" VALIGN="TOP">
+<FONT FACE="Times" SIZE=2><P>Pico</FONT></TD>
+<TD WIDTH="17%" VALIGN="TOP">
+<FONT FACE="Times" SIZE=2><P>De Paperis</FONT></TD>
+<TD WIDTH="19%" VALIGN="TOP">
+<FONT FACE="Times" SIZE=2><P>AT</FONT></TD>
+<TD WIDTH="15%" VALIGN="TOP">
+<FONT FACE="Times" SIZE=2><P ALIGN="CENTER">10011998</FONT></TD>
+<TD WIDTH="10%" VALIGN="TOP">
+<FONT FACE="Times" SIZE=2><P ALIGN="CENTER">30</FONT></TD>
+<TD WIDTH="10%" VALIGN="TOP">
+<FONT FACE="Times" SIZE=2><P ALIGN="CENTER">n</FONT></TD>
+</TR>
+<TR><TD WIDTH="15%" VALIGN="TOP">
+<FONT FACE="Times" SIZE=2><P>09000021</FONT></TD>
+<TD WIDTH="15%" VALIGN="TOP">
+<FONT FACE="Times" SIZE=2><P>Paolino</FONT></TD>
+<TD WIDTH="17%" VALIGN="TOP">
+<FONT FACE="Times" SIZE=2><P>Paperino</FONT></TD>
+<TD WIDTH="19%" VALIGN="TOP">
+<FONT FACE="Times" SIZE=2><P>CIV</FONT></TD>
+<TD WIDTH="15%" VALIGN="TOP">
+<FONT FACE="Times" SIZE=2><P ALIGN="CENTER">15021998</FONT></TD>
+<TD WIDTH="10%" VALIGN="TOP">
+<FONT FACE="Times" SIZE=2><P ALIGN="CENTER">19</FONT></TD>
+<TD WIDTH="10%" VALIGN="TOP">
+<FONT FACE="Times" SIZE=2><P ALIGN="CENTER">n</FONT></TD>
+</TR>
+<TR><TD WIDTH="15%" VALIGN="TOP">
+<FONT FACE="Times" SIZE=2><P>09000101</FONT></TD>
+<TD WIDTH="15%" VALIGN="TOP">
+<FONT FACE="Times" SIZE=2><P>Macchia</FONT></TD>
+<TD WIDTH="17%" VALIGN="TOP">
+<FONT FACE="Times" SIZE=2><P>Nera</FONT></TD>
+<TD WIDTH="19%" VALIGN="TOP">
+<FONT FACE="Times" SIZE=2><P>CH</FONT></TD>
+<TD WIDTH="15%" VALIGN="TOP">
+<FONT FACE="Times" SIZE=2><P ALIGN="CENTER">15021998</FONT></TD>
+<TD WIDTH="10%" VALIGN="TOP">
+<FONT FACE="Times" SIZE=2><P ALIGN="CENTER">23</FONT></TD>
+<TD WIDTH="10%" VALIGN="TOP">
+<FONT FACE="Times" SIZE=2><P ALIGN="CENTER">n</FONT></TD>
+</TR>
+<TR><TD WIDTH="15%" VALIGN="TOP">
+<FONT FACE="Times" SIZE=2><P>09001211</FONT></TD>
+<TD WIDTH="15%" VALIGN="TOP">
+<FONT FACE="Times" SIZE=2><P>Paperon</FONT></TD>
+<TD WIDTH="17%" VALIGN="TOP">
+<FONT FACE="Times" SIZE=2><P>de' Paperoni</FONT></TD>
+<TD WIDTH="19%" VALIGN="TOP">
+<FONT FACE="Times" SIZE=2><P>INF</FONT></TD>
+<TD WIDTH="15%" VALIGN="TOP">
+<FONT FACE="Times" SIZE=2><P ALIGN="CENTER">23071997</FONT></TD>
+<TD WIDTH="10%" VALIGN="TOP">
+<FONT FACE="Times" SIZE=2><P ALIGN="CENTER">27</FONT></TD>
+<TD WIDTH="10%" VALIGN="TOP">
+<FONT FACE="Times" SIZE=2><P ALIGN="CENTER">n</FONT></TD>
+</TR>
+<TR><TD WIDTH="15%" VALIGN="TOP">
+<FONT FACE="Times" SIZE=2><P>09002110</FONT></TD>
+<TD WIDTH="15%" VALIGN="TOP">
+<FONT FACE="Times" SIZE=2><P>Rocker</FONT></TD>
+<TD WIDTH="17%" VALIGN="TOP">
+<FONT FACE="Times" SIZE=2><P>Duck</FONT></TD>
+<TD WIDTH="19%" VALIGN="TOP">
+<FONT FACE="Times" SIZE=2><P>NUC</FONT></TD>
+<TD WIDTH="15%" VALIGN="TOP">
+<FONT FACE="Times" SIZE=2><P ALIGN="CENTER">23071997</FONT></TD>
+<TD WIDTH="10%" VALIGN="TOP">
+<FONT FACE="Times" SIZE=2><P ALIGN="CENTER">28</FONT></TD>
+<TD WIDTH="10%" VALIGN="TOP">
+<FONT FACE="Times" SIZE=2><P ALIGN="CENTER">n</FONT></TD>
+</TR>
+<TR><TD WIDTH="15%" VALIGN="TOP">
+<FONT FACE="Times" SIZE=2><P>09000113</FONT></TD>
+<TD WIDTH="15%" VALIGN="TOP">
+<FONT FACE="Times" SIZE=2><P>Archimede</FONT></TD>
+<TD WIDTH="17%" VALIGN="TOP">
+<FONT FACE="Times" SIZE=2><P>Pitagorico</FONT></TD>
+<TD WIDTH="19%" VALIGN="TOP">
+<FONT FACE="Times" SIZE=2><P>MEC</FONT></TD>
+<TD WIDTH="15%" VALIGN="TOP">
+<FONT FACE="Times" SIZE=2><P ALIGN="CENTER">20021905</FONT></TD>
+<TD WIDTH="10%" VALIGN="TOP">
+<FONT FACE="Times" SIZE=2><P ALIGN="CENTER">30</FONT></TD>
+<TD WIDTH="10%" VALIGN="TOP">
+<FONT FACE="Times" SIZE=2><P ALIGN="CENTER">s</FONT></TD>
+</TR>
+<TR><TD VALIGN="TOP" COLSPAN=7>
+<FONT FACE="Times" SIZE=2><P ALIGN="CENTER">Fig. 1.1</FONT></TD>
+</TR>
+</TABLE>
+</CENTER></P>
+
+<FONT FACE="Times"></FONT>
+<P ALIGN="CENTER"><CENTER><TABLE BORDER CELLSPACING=1 CELLPADDING=5 WIDTH=47>
+<TR><TD VALIGN="TOP">
+<FONT FACE="Times" SIZE=2><P ALIGN="CENTER">esito</FONT></TD>
+</TR>
+<TR><TD VALIGN="TOP">
+<FONT FACE="Times" SIZE=2><P ALIGN="CENTER">30</FONT></TD>
+</TR>
+<TR><TD VALIGN="TOP">
+<FONT FACE="Times" SIZE=2><P ALIGN="CENTER">27</FONT></TD>
+</TR>
+<TR><TD VALIGN="TOP">
+<FONT FACE="Times" SIZE=2><P ALIGN="CENTER">28</FONT></TD>
+</TR>
+<TR><TD VALIGN="TOP">
+<FONT FACE="Times" SIZE=2><P ALIGN="CENTER">30</FONT></TD>
+</TR>
+<TR><TD VALIGN="TOP">
+<FONT FACE="Times" SIZE=2><P ALIGN="CENTER">Fig. 1.2</FONT></TD>
+</TR>
+</TABLE>
+</CENTER></P>
+
+<FONT FACE="Times"><P ALIGN="CENTER"></P>
+<P ALIGN="CENTER">&nbsp;</P></FONT>
+<P ALIGN="CENTER"><CENTER><TABLE CELLSPACING=0 BORDER=0 CELLPADDING=5 WIDTH=196>
+<TR><TD VALIGN="TOP">
+<FONT FACE="Times" SIZE=2><P ALIGN="CENTER"><IMG SRC="Image39.gif" WIDTH=187 HEIGHT=39></FONT></TD>
+</TR>
+<TR><TD VALIGN="TOP">
+<FONT FACE="Times" SIZE=2><P ALIGN="CENTER">Fig. 1.3</FONT></TD>
+</TR>
+</TABLE>
+</CENTER></P>
+
+<FONT FACE="Times"><P ALIGN="CENTER"></P>
+<P ALIGN="CENTER">&nbsp;</P>
+</FONT><FONT FACE="Times" SIZE=4><P ALIGN="CENTER">Universit&agrave; di Roma "La Sapienza" &#150; Facolt&agrave; di Ingegneria</P>
+</FONT><FONT FACE="Times" SIZE=4><P ALIGN="CENTER">Corso di <I>Fondamenti di Informatica</P>
+</I></FONT><B><FONT FACE="Times"><P ALIGN="CENTER">Corso di laurea: Ambiente e Territorio</P>
+</B><P ALIGN="CENTER">2&#170; prova di esame del 18 giugno 1999 (II appello estivo)</P>
+</FONT><I><FONT FACE="Times" SIZE=3><P ALIGN="CENTER">tempo a disposizione: 60 minuti</P>
+</I></FONT><FONT FACE="Times">
+<B><P>Problema 2</P>
+</B><P>Illustrare e discutere le regole di visibilit&agrave; delle variabili all'interno di un programma C. Quando pu&ograve; essere consigliabile o conveniente l'uso di variabili globali?</P>
+
+<B><P>Problema 3</P>
+</B><P>Dato il seguente frammento di codice C:</P>
+
+</FONT><FONT FACE="Courier" SIZE=3><P>#include &lt;stdio.h&gt;</P>
+
+<P>struct e {</P>
+<P>&#9;int info;</P>
+<P>&#9;struct e *next1, *next2;</P>
+<P>};</P>
+
+<P>typedef struct e *pse;</P>
+
+<P>void Inserisci(pse *pptesta, pse pnuovo, pse *ppcoda)</P>
+<P>{</P>
+<P>&#9;if(*pptesta==NULL) {</P>
+<P>&#9;&#9;pnuovo-&gt;next2=NULL;</P>
+<P>&#9;&#9;*pptesta=pnuovo;</P>
+<P>&#9;} else {</P>
+<P>&#9;&#9;pnuovo-&gt;next2=*ppcoda;</P>
+<P>&#9;&#9;(*ppcoda)-&gt;next1=pnuovo;</P>
+<P>&#9;}</P>
+<P>&#9;pnuovo-&gt;next1=NULL;</P>
+<P>&#9;*ppcoda=pnuovo;</P>
+<P>&#9;return;</P>
+<P>}</P>
+</FONT><FONT FACE="Times">
+<P>discutere cosa fa (e non come lo fa) la funzione </FONT><FONT FACE="Courier" SIZE=3>Inserisci</FONT><FONT FACE="Times">, nonch&eacute; la sua possibile utilit&agrave;.</P>
+
+<P>&nbsp;</P>
+<B><P>Problema 4</P>
+</B><P>Data la relazione PERSONE(Nome,Padre,Madre), le cui tuple contengono solo nomi di battesimo e in cui si assume non ci siano omonimie, scrivere una interrogazione SQL che calcoli tutte le coppie di fratelli.</P>
+<P>N.B. Ogni coppia deve avere gli stessi genitori, deve apparire una sola volta e deve essere composta da due persone differenti.</P>
+</FONT></BODY>
+</HTML>

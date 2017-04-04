@@ -1,0 +1,145 @@
+<!doctype html public "-//w3c//dtd html 4.0 transitional//en">
+<html>
+<head>
+<link href="java.css" rel="stylesheet" type="text/css">
+<title>Variabili reali</title>
+</head>
+
+<body>
+
+<h2>Variabili reali</h2>
+
+<p>
+Le variabili intere possono -per definizione- contenere
+solo valori interi. Questo chiaramente crea dei problemi
+nel caso in cui i valori o i risultati delle espressioni
+possono essere non interi. Il seguente programma
+<a href="DivisioneIntera.java">DivisioneIntera.java</a>
+illustra questi problemi.
+
+<pre>
+/*
+  In questo programma si fa la divisione di due variabili intere
+*/
+
+class DivisioneIntera {
+  public static void main(String[] args) {
+    int a,b,c;
+
+    a=22;
+    b=8;
+
+    c=a/b;
+
+    System.out.println("Il risultato della divisione e': "+c);
+  }
+}
+
+
+</pre>
+
+<p>
+Se si compila ed esegue il programma, viene stampata la
+seguente linea:
+
+<pre>
+Il risultato della divisione e': 2
+</pre>
+
+<p>
+Questo risultato &egrave; impreciso, visto che
+22/8=2.75 Il problema &egrave; che il risultato della
+divisione 22/8 viene memorizzato nella variabile <tt>c</tt>,
+che &egrave; stata dichiarata per contenere solo variabili di
+tipo intero. Per risolvere questo problema, il valore che
+viene memorizzato in <tt>c</tt> &egrave; la parte intera del
+risultato della espressione, ossia quello che sta prima della
+virgola decimale. Nel nostro caso, il risultato era 2.75, per
+cui viene memorizzato solo il 2.<p>
+
+Se si devono eseguire dei calcoli di cui si vuole conoscere anche
+il valore dei decimali, &egrave; necessario usare variabili di
+tipo reale. Contrariamente a quello che ci si aspetta, una
+variabile reale viene dichiarata usando una linea
+<tt>double nomevariabile;</tt> Il programma
+<a href="DivisioneReale.java">DivisioneReale.java</a> &egrave;
+una versione modificata del precedente, in cui si usano
+variabile reali invece che intere.<p>
+
+<pre>
+/*
+  In questo programma si fa la divisione di due variabili reali
+*/
+
+class DivisioneReale {
+  public static void main(String[] args) {
+    double a,b,c;
+
+    a=22;
+    b=8;
+
+    c=a/b;
+
+    System.out.println("Il risultato della divisione e': "+c);
+  }
+}
+
+
+</pre>
+
+<p>
+Il risultato stampato questa volta contiene anche le cifre
+decimali. In generale, se si pensa che il risulato di una
+espressione potrebbe contenere cifre decimali, &egrave; bene
+usare variabili reali invece che intere.<p>
+
+
+<h4>Nota sulle conversioni</h4>
+
+<p>
+Si consideri il seguente programma di divisione:
+<a href="DivisioneIntera2.java">DivisioneIntera2.java</a>,
+riportato qui sotto.<p>
+
+<pre>
+/*
+  In questo programma si fa la divisione di due variabili intere
+*/
+
+class DivisioneIntera2 {
+  public static void main(String[] args) {
+    int a,b;
+    double c;
+
+    a=22;
+    b=8;
+
+    c=a/b;
+
+    System.out.println("Il risultato della divisione e': "+c);
+  }
+}
+
+
+</pre>
+
+<p>
+In base a quanto detto finora, il risultato dovrebbe essere
+corretto: si calcola <tt>a/b</tt>, e il risultato si mette nella
+variabile reale <tt>c</tt>. Quello che succede compilando ed
+eseguendo il programma &egrave; che viene stampato ancora
+il valore 2, ossia solo la parte intera della divisione.<p>
+
+La spiegazione richiede di addentrarsi nei meccanismi di
+conversione dei tipi usato da Java.
+Quando &egrave; necessario fare una divisione fra
+due variabili, se entrambe sono intere allora la divisione
+produce un risultato intero. In altre parole, la divisione
+<tt>a/b</tt> produce sempre un risultato intero (approssimato),
+indipendentemente dall'uso che si fa di questo risultato,
+se <tt>a</tt> e <tt>b</tt> sono variabili di tipo intero.
+
+
+</body>
+</html>
+

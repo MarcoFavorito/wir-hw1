@@ -1,0 +1,22 @@
+<!doctype html public "-//w3c//dtd html 4.0 transitional//en">
+<html>
+<head>
+   <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <meta name="GENERATOR" content="Mozilla/4.72 [en] (X11; U; AIX 4.3) [Netscape]">
+</head>
+<body text="#000000" bgcolor="#FFFFFF" link="#0000FF" vlink="#990066" alink="#FF0000">
+&nbsp;
+<br>Soluzione del <b><u>PROBLEMA&nbsp;3</u></b><b></b>
+<p>La complessita' vale<b> O(N<sup>2</sup>).</b>
+<p>La complessita' e' determinata dall'istruzione dominante nel corpo del
+while (J:=J-1).
+<br>Essa viene eseguita - per un fissato valore di i, un numero di volte
+pari ad i+1.
+<p>Pertanto, il numero totale di volte, T(N), che tale istruzione dominante
+viene eseguita a' dato dalla seguente sommatoria:
+<p>T(N) = 2+3+4+ ... (i+2) + ... + N+ (N+1) = 1+2+...+N + N;
+<p>da cui,&nbsp; poiche' 1+2+...+N = (N+1)N/2,
+<p>T(N) = (N+1) N/2&nbsp; +&nbsp; N = 1/2 (N<sup>2</sup>+ 3 N)&nbsp; =
+O(N<sup>2</sup>).
+</body>
+</html>

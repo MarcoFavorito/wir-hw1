@@ -1,0 +1,230 @@
+<!doctype html public "-//w3c//dtd html 4.0 transitional//en">
+<html>
+<head>
+<title>Soluzione del 19-04-2002</title>
+</head>
+<body>
+
+<center>
+<h2>Appello del 19 aprile 2002 - Soluzione</h2>
+</center>
+
+
+<h3>DOMANDA 1</h3>
+
+<p>Basandosi sulla specifica riportata sopra (vedi testo esame del 19 aprile 2002), realizzare il modulo per tipo astratto Satellite mediante una classe C++ Satellite.</p> 
+
+<h4>Soluzione</h4>
+
+
+<p>Gli elementi del tipo astratto <i>Satellite</i> rappresentano oggetti del mondo reale che cambiano di stato a fronte della esecuzione di opportune operazioni.
+La classe che realizza il tipo astratto <i>Satellite</i> appartiene, quindi, alla categoria delle Classi come astrazioni di entità.Il metodo di rappresentazione prevede di definire opportuni campi della classe mediante i quali si possano memorizzare le proprietà che caratterizzano lo stato dell'oggetto.</p>
+
+<p>Adottiamo lo schema realizzativo con <i>side-effect senza condivisione</i>. Per evitare la condivisione dichiariamo l'operatore di assegnazione ed il costruttore di copia nella parte privata della classe. Questo impedisce il loro utilizzo per gli oggetti della classe da parte di moduli clienti. Si ricorda che questa scelta impedisce anche l'inizializzazione degli oggetti della classe, il passaggio di parametri per valore e la restituzione di valori con l'istruzione <tt>return</tt>.
+<br>La scelta è dettata dal fatto che vogliamo che i moduli clienti utilizzino ogni oggetto singolarmente (si veda anche la DOMANDA 2 in cui la funzione gestisce un unico oggetto su cui opera eventualmente delle modifiche). Alternativamente, avremmo dovuto ridefinire nella parte pubblica il costruttore di copia e l'operatore di assegnazione in modo da avere copie profonde degli oggetti.</p>
+
+<p>Si noti inoltre che, coerentemente con la scelta di uno schema realizzativo con side-effect, per le funzioni <i>Crea</i>, <i>RiceviRichiesta</i>, <i>AccordaRichiesta</i>, si è scelto di legare sia il satellite in ingresso che il satellite in uscita all'oggetto di invocazione. In particolare la funzione <i>Crea</i> è stata realizzata tramite il costruttore della classe.</p>
+
+<pre>
+
+//File Satellite.h
+#ifndef SATELLITE_H
+#define SATELLITE_H
+
+class Satellite
+{
+
+public:
+  Satellite(int,int);
+  ~Satellite();
+  int QuantiTerminali();
+  int QuantaBanda();
+  void RiceviRichiesta(int,int);
+  int QualeRichiesta(int);
+  void AccordaRichiesta(int);
+
+private:
+
+  int n_terminali;    //numero terminali che usano il satellite
+  int banda;          //banda del satellite
+  int* richieste;     /* contiene nel campo i-1 la richiesta di banda
+			       effettuata da terminale i */
+
+  Satellite (const Satellite&);
+  Satellite& operator=(const Satellite&);
+};
+#endif
+
+
+//File Satellite.cpp
+#include "Satellite.h"
+
+Satellite::Satellite(int num_term, int bnd)
+{
+  n_terminali = num_term;
+  banda = bnd;
+  richieste = new int[n_terminali];
+  for(int i=0; i<=n_terminali-1; i++)
+ 	  richieste[i] = 0;
+}
+
+Satellite::~Satellite()
+{
+  delete[] richieste;
+}
+
+int Satellite::QuantiTerminali()
+{
+  return n_terminali;
+}
+
+int Satellite::QuantaBanda()
+{
+  return banda;
+}
+
+void Satellite::RiceviRichiesta(int term, int bnd)
+{
+  if(richieste[term-1]==0)
+ 	  richieste[term-1]=bnd;
+}
+
+int Satellite::QualeRichiesta(int bnd)
+{
+  return richieste[bnd-1];
+}
+
+void Satellite::AccordaRichiesta(int term)
+{
+  if(richieste[term-1]!=0)
+     richieste[term-1]=0;
+}
+
+</pre>
+
+<hr>
+
+<h3>DOMANDA 2</h3>
+
+<p>Realizzare una funzione <tt>C++</tt> esterna alla classe (e non <tt>friend</tt>) che, dato un satellite <tt>s</tt>, verifichi se la somma delle bande delle richieste non ancora accordate da <tt>s</tt> sia non superiore alla sua banda. In tal caso, bisogna inoltre modificare <tt>s</tt> in maniera tale che le tutte le richieste vengano accordate.</p> 
+
+<h4>Soluzione</h4>
+Si noti che l'argomento di tipo <tt>Satellite</tt> viene passato per
+riferimento.
+
+<pre>
+//File ControllaBanda.cpp
+#include "Satellite.h"
+
+int ControllaBanda (Satellite& sat)
+{
+  int somma=0;
+  for(int i=1; i<=sat.QuantiTerminali(); i++)
+    somma = somma + sat.QualeRichiesta(i);  
+  if(somma<=sat.QuantaBanda())
+    {
+      for(i=1; i<=sat.QuantiTerminali(); i++)
+	      sat.AccordaRichiesta(i);
+      return 1;
+     }
+   else return 0;
+}
+
+</pre>
+
+<hr>
+
+<h4>Parte opzionale</h4>  
+Non prevista dal testo, ma utile per la verifica del codice.
+<pre>
+//File Test.cpp
+#include "Satellite.h"
+#include <iostream.h>
+
+extern int ControllaBanda (Satellite&);
+
+void StampaSatellite(Satellite& s) {
+  cout << "Caratteristiche satellite:" << endl;
+  cout << "Numero terminali abilitati: " << s.QuantiTerminali() << endl;
+  cout << "Banda disponibile: " << s.QuantaBanda() << endl;
+  for (int i = 1; i <= s.QuantiTerminali(); i++)
+    cout << "Terminale " << i << " ha richiesto banda " << s.QualeRichiesta(i)
+         << endl;
+}
+
+void main() {
+  Satellite telsat(10,5000);
+  telsat.RiceviRichiesta(1,1000);
+  telsat.RiceviRichiesta(5,2000);
+  telsat.RiceviRichiesta(10,1500);
+  StampaSatellite(telsat);
+  if(ControllaBanda(telsat))
+    cout << "Le richieste sono state accordate\n";
+  else
+    cout << "Impossibile soddisfare tutte le richieste\n";
+  StampaSatellite(telsat);
+}
+
+</pre>
+<hr>
+
+<h3>DOMANDA 3</h3>  
+
+<P>Fornire la complessità di tempo e di spazio della classe <tt>C++ Satellite</tt> fornita come risposta della Domanda 1. Fornire la complessità di tempo e di spazio della funzione <tt>C++</tt> fornita come risposta della Domanda 2. 
+
+<h4>Classe <tt>Satellite</tt></h4>
+
+<p>Misura dell'input: numero di terminali che utilizzano il satellite,
+indicata con <tt>n</tt></p>
+
+<p><b>Complessit&agrave; di tempo e di spazio</b></p>
+
+<TABLE BORDER="2">
+	<TR>
+		<TD><B>Operazione</B></TD>
+		<TD><B>Complessit&agrave;</B></TD>
+	</TR>
+	<TR>
+		<TD><tt>Satellite(int,int)</tt></TD>
+		<TD><tt>O(n)</tt></TD>
+	</TR>
+	<TR>
+		<TD><tt>~Satellite()</tt></TD>
+		<TD><tt>O(1)</tt></TD>
+	</TR>
+	<TR>
+		<TD><tt>QuantiTerminali()</tt></TD>
+		<TD><tt>O(1)</tt></TD>
+	</TR>
+	<TR>
+		<TD><tt>QuantaBanda()</tt></TD>
+		<TD><tt>O(1)</tt></TD>
+	</TR>
+	<TR>
+		<TD><tt>RiceviRichiesta(int,int)</tt></TD>
+		<TD><tt>O(1)</tt></TD>
+	</TR>
+	<TR>
+		<TD><tt>QualeRichiesta(int)</tt></TD>
+		<TD><tt>O(1)</tt></TD>
+	</TR>
+	<TR>
+		<TD><tt>AccordaRichiesta(int)</tt></TD>
+		<TD><tt>O(1)</tt></TD>
+	</TR>
+</TABLE>
+
+<p> Notiamo che solo per il costruttore la complessit&agrave; dipende dalla dimensione dell'input, mentre in tutti gli altri casi &egrave; costante.
+
+<h4>Funzione <tt>ControllaBanda(Satellite&)</tt></h4>
+
+<p>Misura dell'input: numero di terminali che utilizzano il satellite indicata con <tt>n</tt></p>
+
+<p><b>Complessit&agrave; di tempo</b>: <tt>O(n)</tt>; notiamo che, nel caso peggiore per la complessit&agrave; (caso in cui bisogna accordare le richieste), il costo di esecuzione dei due cicli <tt>O(n)</tt> deve essere sommato, ma la classe di complessit&agrave; della funzione resta sempre <tt>O(n)</tt>.</p>
+
+<p><b>Complessit&agrave; di spazio</b>: <tt>O(1)</tt>; notiamo che il passaggio del parametro avviene per riferimento per cui la funzione non alloca spazio per una copia locale del satellite.</p>
+
+</BODY>
+
+</HTML>
+

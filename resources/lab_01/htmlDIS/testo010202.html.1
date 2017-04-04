@@ -1,0 +1,121 @@
+<!doctype html public "-//w3c//dtd html 4.0 transitional//en">
+<html>
+<head>
+   <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <meta name="Generator" content="Microsoft Word 97">
+   <meta name="GENERATOR" content="Mozilla/4.72 [en] (X11; U; AIX 4.3) [Netscape]">
+   <title>TESTO ESAME 01-02-02</title>
+</head>
+<body>
+
+<center><b>Universit&agrave; di Roma "La Sapienza"</b>
+<br><b>Facolt&agrave; di Ingegneria</b>
+<br><b>Corso di Fondamenti di Informatica - A.A. 2000/20001</b>
+<p><b><font size=-1>Corso di Laurea: Chimica, Elettrica, Materiali, Meccanica,
+Nucleare (vecchio ordinamento)</font></b>
+<p><b><font size=-1>Appello del 1 febbraio 2002 - prima prova scritta</font></b>
+<p><b><i>tempo a disposizione: 2 ore</i></b></center>
+
+<p><br>
+<br>
+<br>
+<p><b><font size=+0>Problema 1 (18 punti)</font></b>
+<br>I valori della temperatura (-20&deg;C,55&deg;C) vengono misurati da
+una stazione meteorologica e registrati, ogni minuto, su linee consecutive
+di un file di tipo testo di nome dati.txt. Il file inizia con un?intestazione
+sulla prima linea, contenente la data della prima registrazione, e continua
+con i valori misurati. Il valore ti, misurato dopo i minuti dall?inizio
+delle rilevazioni della temperatura, occupa pertanto la linea i+1 del file.
+<p>Ad esempio, dopo aver registrato i valori -2,-2.1,-2.1 a partire dalle
+ore 10 del 1 febbraio 2002 il file conterr&agrave;:
+<p>10:00:00 01/02/2002
+<p>-2
+<p>-2.1
+<p>-2.1
+<p>Risolvere i seguenti punti:
+<p><b>Punto 1</b>
+<br>Definire le strutture dati necessarie a risolvere i punti successivi.
+<p><b>Punto 2</b>
+<br>Scrivere una procedura PASCAL, ESER2, che, ricevendo il nome di un
+file (come dati.txt) e un puntatore opportuno <font size=+0><font face="Courier New">sequenzavalori</font>,
+costruisca la lista delle temperature memorizzate nel file, associandola
+a <font face="Courier New">sequenzavalori</font>. La lista deve essere
+rappresentata mediante record e puntatori. La lista deve essere costruita
+in modo tale che la i-esima temperatura letta dal file sia contenuta nell'i-esim
+o elemento.</font>
+<p><b><font size=+0>Punto 3</font></b>
+<br><font size=+0>Scrivere una procedura Pascal <i>ESER3</i> che, ricevendo
+una lista <font face="Courier New">sequenzavalori</font> come quella delineata
+al punto precedente, ne costruisca e restituisca (mediante apposito parametro)
+un'altra in cui il primo elemento sia il medesimo di <font face="Courier New">se
+quenzavalori</font>; gli altri elementi siano ottenuti copiando, nel medesimo
+ordine, gli elementi di <font face="Courier New">sequenzavalori</font>
+ma omettendone alcuni in modo che la nuova lista sia una sequenza in ordine
+strettamente crescente. Ad esempio, se la lista <font face="Courier New">sequenzavalori</font>
+e' &lt;3, 3, 3.5, 3.3, 3.7, 3.4, 4> la lista prodotta da <i>ESER3</i> sar&agrave;
+; &lt;3,3.5, 3.7, 4>.</font>
+<center>
+<p>
+<hr WIDTH="100%">
+<br><b>Universit&agrave; di Roma "La Sapienza"</b>
+<br><b>Facolt&agrave; di Ingegneria</b>
+<br><b>Corso di Fondamenti di Informatica - A.A. 2000/20001</b>
+<p><b><font size=-1>Corso di Laurea: Chimica, Elettrica, Materiali, Meccanica,
+Nucleare (vecchio ordinamento)</font></b>
+<br><b><font size=-1>Appello del 1 febbraio 2002 - seconda prova scritta</font>&lt;
+/b></b>
+<br><b><i>tempo a disposizione: 1 ora</i></b></center>
+
+<p><br>
+<br>
+<br>
+<p><b><font size=+0>Problema 2 (4 punti)</font></b>
+<br>Convertire i seguenti numeri da base 10 a base 2. Per i numeri interi
+si usi la rappresentazione in modulo e segno, mentre per i reali la rappresentaz
+ione in virgola fissa.
+<p>a. 15
+<br>b. -19
+<br>c. 0.3
+<br>d. 0
+<p><b>Problema 3 (4 punti)</b>
+<br>Si consideri la seguente funzione
+<p><i><font size=+0>function F (x:integer):longint;</font></i><i></i>
+<p><i><font size=+0>begin</font></i><i></i>
+<p><i><font size=+0>&nbsp;&nbsp;&nbsp; if x=0</font></i><i></i>
+<p><i><font size=+0>&nbsp;&nbsp;&nbsp; else if x=1 then F:=1</font></i><i></i>
+<p><i><font size=+0>&nbsp;&nbsp;&nbsp; else F:=F(x-1)+F (x-2)+2</font></i><i></i>
+<p><i><font size=+0>end;</font></i>
+<p><font size=+0>Descrivere il comportamento del programma. Qual &egrave;
+il risultato di F(4)?.</font><b></b>
+<p><b><font size=+0>Problema 4 (4 punti)</font></b>
+<br>Scrivere una subroutine Fortran che, ricevendo come parametro una matrice
+A di dimensione NxM a valori interi, scriva il messaggio SI oppure NO sul
+file di nome RISULTATO a seconda se A verifica o meno la seguente propriet&agrave;:
+si=si-1+10 (1&lt;i&lt;Si&lt;= N), dove si &egrave; la somma degli elementi
+della riga i-sima.
+<p>Esempio.
+<p>N=4, M=4.
+<br>&nbsp;
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0&nbsp;&nbsp;&nbsp;
+3&nbsp;&nbsp;&nbsp; -4&nbsp;&nbsp;&nbsp; 5
+<p>&nbsp;&nbsp;&nbsp; A = 2&nbsp;&nbsp;&nbsp; 1&nbsp;&nbsp;&nbsp; 4&nbsp;&nbsp;&nbsp;&nbsp;
+7
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 1&nbsp;&nbsp;&nbsp;
+9&nbsp;&nbsp;&nbsp; 4&nbsp;&nbsp;&nbsp; 10
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 5&nbsp;&nbsp;&nbsp;
+3&nbsp;&nbsp;&nbsp; 12&nbsp;&nbsp; 14
+<br>&nbsp;
+<p>s1=4; s2=14; s3=24; s4=34; messaggio: SI
+<br>&nbsp;
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0&nbsp;&nbsp;&nbsp;
+3&nbsp;&nbsp;&nbsp; -4&nbsp;&nbsp;&nbsp; 5
+<p>&nbsp;&nbsp;&nbsp; A = 2&nbsp;&nbsp; 1&nbsp;&nbsp;&nbsp; 4&nbsp;&nbsp;&nbsp;&nbsp;
+7
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 1&nbsp;&nbsp;&nbsp;
+9&nbsp;&nbsp;&nbsp; 4&nbsp;&nbsp;&nbsp; 10
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 5&nbsp;&nbsp;&nbsp;
+3&nbsp;&nbsp;&nbsp; 12&nbsp;&nbsp; 10
+<br>&nbsp;
+<p><font size=+0>s1=4; s2=14; s3=24; s4= 30; messaggio: SI</font>
+</body>
+</html>

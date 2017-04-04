@@ -1,0 +1,54 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0//EN">
+<HTML lang="en"><HEAD>
+<META http-equiv="Generator" content="com.bluecraft.htmlize">
+<TITLE>Source Code: binomial.c</TITLE>
+<STYLE>
+body {
+    background: ivory;
+    color: black;
+}
+DIV.description {
+    color: maroon;
+    margin-top: -0.4cm;
+}
+SPAN.linenumber {
+    color: maroon;
+}
+SPAN.string {
+    color: red;
+}
+SPAN.comment {
+    color: green;
+}
+SPAN.keyword {
+    color: blue;
+}
+SPAN.userkeyword {
+    color: purple;
+    font-weight: bold;
+}
+</STYLE>
+</HEAD><BODY>
+<PRE>
+#include &lt;stdio.h&gt;
+#include &lt;assert.h&gt;
+
+<SPAN class="userkeyword">main</SPAN>(){
+	<SPAN class="userkeyword">int</SPAN> a, b, i;
+	double f = 1;
+	printf(<SPAN class="string">"a = "</SPAN>);
+	scanf(<SPAN class="string">"%d"</SPAN>, &amp;a);
+	assert(a &gt; 0);
+	printf(<SPAN class="string">"b = "</SPAN>);
+	scanf(<SPAN class="string">"%d"</SPAN>, &amp;b);
+	assert((b &gt; 0) &amp;&amp; (a &gt;= b));
+	(<SPAN class="userkeyword">void</SPAN>)getchar();
+	for(i = b; i &gt;= 1; i--) {
+		f *= (a + i - b) / (double)i;
+	}
+	printf(<SPAN class="string">"bin = %g\n"</SPAN>, f);
+	(<SPAN class="userkeyword">void</SPAN>)getchar();
+
+	return 0;
+}</PRE>
+</BODY></HTML>

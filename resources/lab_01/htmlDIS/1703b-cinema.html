@@ -1,0 +1,140 @@
+<html>
+<head>
+<title>Primo appello 2004 - Compito Cinema</title>
+</head>
+
+<body>
+
+<h1>Primo appello 2004</h1>
+
+<p>
+La prova dura un'ora e tre quarti.
+</p>
+
+<p>
+<b>Riempire il file <tt>studenteid.txt</tt> con i propri
+dati.</b>
+</p>
+
+<p>
+Vengono dati: due programmi di prova, un file di prova, e il
+testo del compito in formato html. Lo studente deve
+realizzare due classi che vengono usate dai due programmi di
+prova. <b>Le soluzioni devono trovarsi nella stessa cartella
+<tt>Esame</tt> dove si trovano i programmi di prova</tt>
+pena l'annullamento dell'esame.</b>
+</p>
+
+<hr>
+
+<h3>Prima parte</h3>
+
+<p>
+Un cinema vuole realizzare un programma per la gestione
+della biglietteria.
+Realizzare la classe <tt>Posto</tt> i cui oggetti
+rappresentano la posizione di una poltrona con le relative
+informazioni di prenotazione.
+Le componenti di questi oggetti devono essere:
+</p>
+
+<dl>
+
+<dt><tt>fila</tt>
+<dd>un intero che indica la fila in cui il posto si trova
+
+<dt><tt>colonna</tt>
+<dd>un intero che indica la colonna in cui si trova il posto
+
+<dt><tt>prenotato</tt>
+<dd>indica se un posto &egrave; prenotato (un boolean)
+
+<dt><tt>spettatore</tt>
+<dd>il nome dello spettatore a cui &egrave; stato prenotato
+il posto
+
+</dl>
+
+<p>
+Definire la classe incapsulata <tt>Posto</tt>  i cui
+oggetti siano rappresentazione di posti. I nomi delle
+componenti devono essere: <tt>fila</tt>, <tt>colonna</tt>,
+<tt>prenotato</tt>, e <tt>spettatore</tt>.
+Devono essere realizzati i seguenti metodi:
+</p>
+
+<ul>
+
+<li>metodi <tt>get</tt> e <tt>set</tt> per tutte le
+componenti; i metodi <tt>set</tt> per le componenti fila e
+colonna devono verificare che la fila sia compresa fra 1 e
+50, e che la colonna sia fra 1 e 30; in caso di errore, stampare
+un messaggio di errore e terminare il programma;
+
+<li>metodo costruttore che ha come argomento un
+<tt>BufferedReader</tt>; il metodo deve leggere i valori da
+mettere nell'oggetto da file; questi valori sono 
+memorizzati uno per linea; i valori booleani sono memorizzati attraverso le stringhe
+"prenotato" e "libero"; nel caso in cui il file
+finisca prima che si riescano a leggere tutte le componenti,
+si stampi un messaggio di errore e si esca dal programma;
+
+<li>un metodo toString che restituisce una stringa in cui ci
+sono tutte le componenti dell'oggetto.
+
+</ul>
+
+<hr>
+
+
+<h3>Seconda parte</h3>
+
+<p>
+Definire una seconda classe <tt>Cinema</tt> i cui oggetti
+rappresentano tutti i posti del cinema.
+Ogni oggetto di questa classe &egrave; quindi la
+rappresentazione di un insieme di oggetti ...
+Per rappresentare insiemi di oggetti, usare un array.
+</p>
+
+<p>
+Costruttore della classe: 
+</p>
+
+<dl>
+
+<dt>
+<tt>Cinema(String nomefile)</tt>
+<dd>
+crea un oggetto <tt>Cinema</tt> che rappresenta l'insieme
+di tutti gli oggetti <tt>Posto</tt> che sono memorizzati
+nel file il cui nome &egrave; dato dalla stringa passata
+come argomento; la prima linea del file contiene il numero
+degli oggetti memorizzati su file.
+
+</dl>
+
+<p>
+Metodi della classe:
+</p>
+
+<dl>
+
+<dt><tt>public void stampaTutti()</tt>
+<dd>stampa tutti gli oggetti dell'array
+
+<dt><tt>int guadagno()</tt>
+<dd>calcola il guadagno previsto per la serata, che si
+ottiene calcolando che ogni posto prenotato render&agrave;
+in media 7 euro;
+
+<dt><tt>boolean centrale(int primacolonna, int ultimacolonna)</tt>
+<dd>verifica che ci sono posizioni libere che abbiano numero
+di colonna compreso fra le due passate come parametro
+(restituisce <tt>true</tt> in caso affermativo)
+
+</dl>
+
+</body>
+</html>
+

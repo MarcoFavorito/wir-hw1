@@ -1,0 +1,88 @@
+<html>
+<head>
+<title></title>
+</head>
+
+<body>
+
+<h1>Esercizio di esame 26/3/2002</h1>
+
+<b>Canale A-L (Liberatore)/ Parte II</b>
+
+<hr>
+
+<h4>Esercizio 1</h4>
+
+<p>
+Sia data la seguente definizione di classe:
+</p>
+
+<pre>
+class Vis {
+  private int x;
+  private static int y;
+
+  public Vis(int x) {
+    this.x=x; y=x;
+  }
+  public int primo(int x) {
+    x=x+1; return secondo(y);
+  }
+  public int secondo(int y) {
+    return x-1;
+  }
+} 
+</pre>
+
+<p>
+Dire cosa stampa il seguente programma:
+</p>
+
+<pre>
+class Prova {
+  public static void main(String arg[]) {
+    Vis a=new Vis(10);
+    System.out.println(a.primo(3));
+  }
+}
+</pre>
+
+
+<h4>Esercizio 2</h4>
+
+<p>
+Confrontare l'efficienza del selectionsort e
+del bubblesort. Non &egrave; necessario riportare
+la descrizione degli algoritmi. Viene invece richiesta
+una descrizione della differenza di
+complessit&agrave; dei due algoritmi.
+</p>
+
+
+<h4>Esercizio 3</h4>
+
+<p>
+Il seguente metodo dovrebbe ritornare la somma dei
+nodi di un albero, ma non funziona. Dire perch&egrave;
+non funziona, cosa viene ritornato in realt&agrave;,
+e come andrebbe modificato per farlo funzionare.
+</p>
+
+<pre>
+  static int sommaAlbero(Albero a) {
+    int somma=0;
+
+    if(a==null)
+      return somma;
+
+    somma+=a.getDato();
+    sommaAlbero(a.getSinistro());
+    sommaAlbero(a.getDestro());
+    return somma;
+  }
+</pre>
+
+</body>
+</html>
+
+

@@ -1,0 +1,96 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML>
+
+<HEAD>
+
+<TITLE>controllo valori in moduli</TITLE>
+
+<META CONTENT="text/html; charset=us-ascii" HTTP-EQUIV="Content-Type">
+<SCRIPT TYPE="text/javascript" LANGUAGE="Javascript">
+<!-- /* Hide content from old browsers */
+
+function verificaCaratteri(stringa) {
+     if ( stringa != "" ) {
+         return false;
+     }
+     else {
+         return true;
+     }
+}
+
+
+
+function controllaDati() {
+    if (  verificaCaratteri(document.dati.nome.value) ) {
+        window.alert("Devi inserire il nome");
+	document.dati.nome.focus();
+	return false;
+    } else if (  verificaCaratteri(document.dati.cognome.value)  ) {
+        window.alert("Devi inserire il cognome");
+	document.dati.cognome.focus();
+	return false;
+    } else if ( isNaN(document.dati.numeroMatricola.value)  ) {
+	window.alert("il numero di matricola deve essere composto solo da cifre")
+	document.dati.numeroMatricola.value="";
+        document.dati.numeroMatricola.focus();
+	return false;
+    }          //  isNan() VERIFIcA SE il parametro E'   NOT A NUMBER
+    else if (document.dati.corso[0].checked) {
+        window.alert("Complimenti per aver scelto CLACOM");
+        return true;
+    }
+    else if (document.dati.corso[1].checked) {
+        window.alert("Complimenti per aver scelto CLASAM");
+        return true;
+    }
+    else if (document.dati.corso[2].checked) {
+        window.alert("Complimenti per aver scelto CLAWEB");
+        return true;
+    }
+    else {
+        window.alert("Attenzione, devi selezionare un corso di laurea");
+        return false;
+    }
+}
+// end hiding content from old browsers  -->
+</SCRIPT>
+
+</HEAD>
+
+<BODY>
+
+<FORM NAME="dati" ACTION="javascript:void(0)" 
+METHOD="POST" onSubmit="controllaDati();">
+<TABLE BORDER="2" CELLSPACING="5" CELLPADDING="5">
+    <TR>
+	<TH ALIGN="right">Nome:</TD>
+	<TD><INPUT TYPE="TEXT" NAME="nome" VALUE=""></TD>
+    </TR>
+    <TR>
+	<TH ALIGN="right">Cognome:</TD>
+	<TD><INPUT TYPE="TEXT" NAME="cognome" VALUE=""></TD>
+    <TR>
+	<TD ALIGN="center" COLSPAN="2">Matricola: </TD>
+    </TR>
+    <TR>
+	<TD>
+	  <INPUT TYPE="RADIO" VALUE="COM" NAME="corso">CLACOM<BR>
+          <INPUT TYPE="RADIO" VALUE="SAM" NAME="corso">CLASAM<BR>
+          <INPUT TYPE="RADIO" VALUE="WEB" NAME="corso">CLAWEB
+        </TD>
+	<TD>Numero:
+<INPUT TYPE="TEXT" NAME="numeroMatricola" VALUE="scrivila" SIZE="5" MAXLENGTH="5">
+        </TD>
+     </TR>
+     <TR>
+	 <TD><INPUT TYPE="SUBMIT" VALUE="Invia  i dati">
+	 </TD>
+	 <TD><INPUT TYPE="RESET" VALUE="cancella i dati">
+	 </TD>
+    </TR>
+</TABLE>
+</FORM>
+
+</BODY>
+
+</HTML>

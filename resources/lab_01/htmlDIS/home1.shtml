@@ -1,0 +1,75 @@
+<html>
+<head>
+<title>Fabio Zito, sito web</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<link rel="stylesheet" href="/style.css">
+<link rel="stylesheet" href="style.css" type="text/css">
+<SCRIPT LANGUAGE="JavaScript">
+<!--
+
+
+
+
+<!-- Begin
+var days = new Array();
+var msgs = new Array();
+
+days[0] = "3 Luglio, 2001";
+msgs[0] = "Il mio compleanno!";
+
+days[1] = "25 Dicembre, 2001";
+msgs[1] = "Buon Natale!";
+
+var months = new Array("", 
+"Gennaio", "Febbraio", "Marzo", "Aprile", "Maggio", "Giugno",
+"Luglio", "Agosto", "Settembre", "Ottobre", "Novembre", "Dicembre"
+);
+
+var today = new Date(); // today
+var mon = months[today.getMonth() + 1]; // month
+var day = today.getDate(); // day
+var year = y2k(today.getYear()); // year
+
+function dateMsg() {
+for (i = 0; i < days.length; i++) {
+tempdate = new Date(days[i]);
+tempmonth = months[tempdate.getMonth() + 1];
+tempday = tempdate.getDate();
+tempyear = y2k(tempdate.getYear());
+if (year == tempyear && mon == tempmonth && day == tempday)
+return("Today is " + days[i] + ". " + msgs[i]); // returns day message
+}
+return("Oggi è il " + day + " " + mon + ", " + year + "."); // returns default
+}
+// Y2K Fix Function
+function y2k(year) {
+if (year < 2000) 
+year = year + 1900;
+return year;
+}
+//-->
+</script>
+</head>
+
+<body bgcolor="#006666" text="#000000" vlink="#000000" link="#FFFF99" onLoad="">
+<div align="right"> 
+  <table width="102%" border="0" height="42">
+    <tr>
+      <td width="71%" height="65"> 
+        <table width="35%" border="1">
+          <tr>
+            <td height="43"><img src=cgi-bin/4.gif><img src=cgi-bin/5.gif><img src=cgi-bin/9.gif><img src=cgi-bin/0.gif> </td>
+          </tr>
+        </table>
+      </td>
+      <td width="29%" height="65"> 
+        <p><font face="Verdana, Arial, Helvetica, sans-serif" size="2" color="#FFFFFF"> 
+          <script> document.write(dateMsg()); </script>
+          </font></p>
+      </td>
+    </tr>
+  </table>
+  
+</div>
+</body>
+</html>

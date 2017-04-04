@@ -1,0 +1,98 @@
+<HTML>
+<HEAD>
+<TITLE>Modificare le variabli d'ambiete per Java</TITLE>
+ <link>
+</HEAD>
+
+<body>
+
+<p><b>Nota:</b> Nel seguito supponiamo che il <a href="http://java.sun.com/j2se/1.4.1/download.html"><u>Java Runtime Environment 1.4.1</u></a> sia installato nella cartella <tt>c:\programmi\java\j2re1.4.1</tt>. Per installazioni effettuate in posizioni differenti, sostituite nel seguito <tt>c:\programmi\java\j2re1.4.1\bin</tt> con il percorso relativo alla directory <tt>bin</tt> del vostro JRE (analogamente se avete installato interamente il JDK 1.4.1).</p>
+
+<H4>Creare/Modificare la variabile d'ambiente <strong>PATH</strong> nel file <strong>AUTOEXEC.BAT</strong> 
+  per <a name="Windows 95/98"><strong>Windows 95/98</strong></a> </H4>
+<ol>
+  <li>Selezionate <strong>Esegui...</strong> dal men&ugrave; <strong>Start</strong></li>
+  <li>Digitate <strong>sysedit</strong> e premete <strong>OK</strong>. In questo 
+    modo vedrete l'<strong>Editor di configurazione di sistema</strong> che consente 
+    di modificare il file autoexec.bat (e numerosi altri file).</li>
+  <li>Il file da modificare di default e' <strong>C:\AUTOEXEC.BAT</strong> (la 
+    finestra contenente questo file e' in primo piano).</li>
+  <li>Come ultima linea di questo file, aggiungete <br>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <strong>&nbsp; SET PATH=c:\programmi\java\j2re1.4.1\bin;%PATH%</strong></li>
+  <li>Salvate il file ed uscite da <strong>sysedit</strong>.</li>
+  <li>Riavviate il computer affinche' le modifiche abbiano effetto.</li>
+</ol>
+
+
+<H4>Creare/Modificare la variabile d'ambiente <strong>PATH</strong> in <a
+name="WindowsNT"><strong>Windows NT</strong></a>. </H4>
+<ol>
+  <li>Selezionate <strong>Pannello di controllo</strong> dalla voce <strong>Impostazioni</strong> del men&ugrave; <strong>Start</strong> </li>
+  <li>In <strong>Pannello di controllo</strong>, fate doppio clic su <strong>Sistema</strong>.</li>
+  <li>Fate clic sulla scheda <strong>Ambiente</strong>. Questa scheda contiene 
+    due aree: <strong>Variabili di sistema</strong> e <strong>Variabili dell'utente</strong>.</li>
+  <li>Nella sezione <strong>Variabili dell'utente</strong>, controllate se c'e' 
+    una variabile <strong>PATH</strong> gia' definita (potreste dover far scorrere 
+    quella parte della finestra). Se non c'e', saltate al passo 8.</li>
+  <li>Fate clic sulla variabile <strong>PATH</strong>. Compariranno <strong>PATH</strong> 
+    nel campo <strong>Variabile</strong> e la configurazione attuale di path nel 
+    campo <strong>Valore</strong> nella parte bassa della finestra. </li>
+  <li>Fate clic nel campo <strong>Valore</strong> e utilizzate il <em>tasto freccia 
+    a destra</em> per portarvi alla fine del testo contenuto in tale campo. Digitate 
+    quanto segue <em>(NOTA: Fate attenzione a inserire un punto e virgola alla 
+    fine del valore corrente)</em>:<br>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <strong>;c:\programmi\java\j2re1.4.1\bin<br>
+    </strong>Il punto e virgola e' richiesto solo se non ce n'e' gia' uno.</li>
+  <li>Saltate al passo 10.</li>
+  <li>Se la variabile <strong>PATH</strong> non e' definita, fate clic nel campo 
+    <strong>Variabile</strong> nella parte bassa della finestra e digitate<br>
+    <strong>&nbsp;&nbsp; </strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+    <strong>PATH</strong></li>
+  <li>Fate clic nel campo Valore e digitate <br>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <strong>c:\programmi\java\j2re1.4.1\bin</strong></li>
+  <li>Fate clic sul pulsante <strong>Impostazioni</strong> e chiudete la finestra. 
+    E' estremamente importante che facciate clic su <strong>Impostazioni</strong> 
+    prima, altrimenti le nuove impostazioni non verranno salvate.</li>
+  <li>Ora siete pronti a utilizzare Java 2 SRE. Se avevate una qualche finestra 
+    <strong>Prompt di sistema</strong> aperta prima di impostare il <strong>PATH</strong>, 
+    dovrete chiuderla e riaprirla affinche' la nuova impostazione <strong>PATH</strong> 
+    abbia effetto. Non e' necessario riavviare il computer.</li>
+</ol>
+<h4>Creare/Modificare la variabile d'ambiente <strong>PATH</strong> in <a
+name="Windows2000"><strong>Windows 2000</strong></a>. </h4>
+<ol>
+  <li>Fate clic con il pulsante destro del mouse su <b>Risorse del computer</b>.</li>
+  <li>Andate a <b>Avanzate</b>.</li>
+  <li>Fate clic sulla scheda <b>Variabili d'ambiente</b>. Questa scheda contiene 
+    due aree: <strong>Variabili di sistema</strong> e <strong>Variabili dell'utente</strong>.</li>
+  <li>Nella sezione <strong>Variabili dell'utente</strong>, controllate se c'e' 
+    una variabile <strong>PATH</strong> gia' definita (potreste dover far scorrere 
+    quella parte della finestra). Se non c'e', saltate al passo 8.</li>
+  <li>Fate clic sulla variabile <strong>PATH</strong>. Compariranno <strong>PATH</strong> 
+    nel campo <strong>Variabile</strong> e la configurazione attuale di path nel 
+    campo <strong>Valore</strong> nella parte bassa della finestra. </li>
+  <li>Fate clic nel campo <strong>Valore</strong> e utilizzate il <em>tasto freccia 
+    a destra</em> per portarvi alla fine del testo contenuto in tale campo. Digitate 
+    quanto segue <em>(NOTA: Fate attenzione a inserire un punto e virgola alla 
+    fine del valore corrente)</em>:<br>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <strong>;c:\programmi\java\j2re1.4.1\bin<br>
+    </strong>Il punto e virgola e' richiesto solo se non ce n'e' gia' uno.</li>
+  <li>Saltate al passo 10.</li>
+  <li>Se la variabile <strong>PATH</strong> non e' definita, fate clic nel campo 
+    <strong>Variabile</strong> nella parte bassa della finestra e digitate<br>
+    <strong>&nbsp;&nbsp; </strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+    <strong>PATH</strong></li>
+  <li>Fate clic nel campo Valore e digitate <br>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <strong>c:\programmi\java\j2re1.4.1\bin 
+    </strong></li>
+  <li>Fate clic sul pulsante <strong>Impostazioni</strong> e chiudete la finestra. 
+    E' estremamente importante che facciate clic su <strong>Impostazioni</strong> 
+    prima, altrimenti le nuove impostazioni non verranno salvate.</li>
+  <li>Ora siete pronti a utilizzare Java 2 SDK. Se avevate una qualche finestra 
+    <strong>Prompt di sistema</strong> aperta prima di impostare il <strong>PATH</strong>, 
+    dovrete chiuderla e riaprirla affinche' la nuova impostazione <strong>PATH</strong> 
+    abbia effetto. Non e' necessario riavviare il computer.</li>
+</ol>
+
+</body>
+</html>

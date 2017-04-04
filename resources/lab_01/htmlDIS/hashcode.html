@@ -1,0 +1,845 @@
+<html>
+<head>
+<title>Le tavole hash</title>
+</head>
+
+<body>
+
+<h1>Le tavole hash</h1>
+
+<p>
+&Egrave; il modo con cui sono realizzati gli
+<tt>HashSet</tt>
+</p>
+
+<p>
+Si usano quando serve accesso rapido sia in lettura 
+che in scrittura su un insieme non ordinato
+</p>
+
+<hr>
+
+
+<h4>Principio base</h4>
+
+<p>
+Gli array hanno le caratteristiche che servono:
+</p>
+
+<ul>
+
+<li>lettura di un elemento: <tt>vett[i]</tt>
+
+<li>scrittura di un elemento: <tt>vett[i]=a</tt>
+
+</ul>
+
+<p>
+Sono tutte e due operazioni dirette
+<br>
+(non richiedono nessuna ricerca)
+</p>
+
+<p>
+Cerco di usare un vettore per rappresentare un insieme
+</p>
+
+<hr>
+
+
+<h4>Vettore caratteristico di un insieme</h4>
+
+<p>
+Un insieme di <i>numeri interi</i> che vanno da <tt>0</tt> a
+<tt>100</tt> si pu&ograve; rappresentare usando un vettore
+di cento elementi booleani
+</p>
+
+<p>
+Se <tt>v</tt> &egrave; il vettore che rappresenta l'insieme,
+le operazioni si realizzano cos&iacute;:
+</p>
+
+<dl>
+
+<dt>lettura
+<dd>l'intero <tt>x</tt> si trova nell'insieme se e solo se
+<tt>v[x]</tt> &egrave; <tt>true</tt>
+
+<dt>scrittura
+<dd>per inserire l'intero <tt>x</tt>, si fa
+<tt>v[x]=true</tt><br>
+per togliere, si fa <tt>v[x]=true</tt>
+
+</dl>
+
+<hr>
+
+
+<h4>Insiemi generici</h4>
+
+<p>
+Limiti della rappresentazione dei vettori caratteristici:
+</p>
+
+<ul>
+
+<li>grandezza del vettore=numero di tutti gli elementi possibili
+
+<li>si rappresentano solo interi
+
+</ul>
+
+<p>
+Si possono superare tutti e due grazie agli
+<tt>hashCode</tt>
+</p>
+
+<hr>
+
+
+<h4>Il metodo <tt>hashCode</tt></h4>
+
+<p>
+&Egrave; un metodo che ritorna un intero dato un oggetto
+</p>
+
+<p>
+Dato un oggetto <tt>o</tt>, il suo intero corrispondente
+&egrave; <tt>o.hashCode()</tt>
+</p>
+
+<p>
+Per il momento ci basta sapere questo
+</p>
+
+<hr>
+
+
+<h4>Modifica della rappresentazione</h4>
+
+<p>
+Al posto del vettore di booleani, usiamo un vettore di
+<tt>Object</tt>
+</p>
+
+<ul>
+
+<li>il codice hash di un oggetto identifica una posizione
+nel vettore
+
+<li>se l'oggetto c'&egrave;, sta in quella posizione
+
+</ul>
+
+<p>
+Prima versione della tavola hash:
+</p>
+
+<pre>
+class Tavola {
+  private Object t[];
+
+  public Tavola() {
+    t=new Object[...];
+    // inizializzazione automatica a null
+  }
+
+  boolean add(Object o) {
+    int c=o.hashCode();
+
+    if(t[c]!=null)
+      return false;
+
+    t[c]=o;
+    return true;
+  }
+
+  ...
+</pre>
+
+<hr>
+
+
+<h4>Metodi <tt>contains</tt> e <tt>remove</tt></h4>
+
+<pre>
+class Tavola {
+  ...
+
+  boolean remove(Object o) {
+    boolean p;
+    int c=o.hashCode();
+
+    p=(t[c]!=null);
+
+    t[c]=null;
+
+    return p;
+  }
+
+  boolean contains(Object o) {
+    int c=o.hashCode();
+
+    if(o==null)
+      return false;
+
+    if(t[c]==null)
+      return false;
+
+    return t[c].equals(o);
+  }
+}
+</pre>
+
+<hr>
+
+
+<h4>Due problemi</h4>
+
+<ul>
+
+<li>due oggetti possono avere lo stesso hashCode
+
+<li>il vettore deve avere un elemento per ogni possibile
+numero intero
+<br>
+Dato che si usano 32 bit per rappresentare un intero,
+servirebbe un vettore con <tt>4294967296</tt> elementi
+
+</ul>
+
+<p>
+Del primo problema ci occupiamo dopo
+</p>
+
+<hr>
+
+
+<h4>Dimensione del vettore</h4>
+
+<p>
+Scelgo una dimensione qualsiasi (per esempio, 100)
+</p>
+
+<p>
+Quando l'hashCode vale <tt>c</tt>, uso <tt>c%100</tt> per
+indicizzare l'array
+</p>
+
+<pre>
+class Tavola {
+  private final int size=100;
+  private Object t[];
+
+  public Tavola() {
+    t=new Object[size];
+  }
+
+  boolean add(Object o) {
+    int c=o.hashCode()%size;
+
+    if(t[c]!=null)
+      return false;
+
+    t[c]=o;
+    return true;
+  }
+
+  boolean remove(Object o) {
+    boolean p;
+    int c=o.hashCode()%size;
+
+    p=(t[c]!=null);
+
+    t[c]=null;
+
+    return p;
+  }
+
+  boolean contains(Object o) {
+    int c=o.hashCode()%size;
+
+    if(o==null)
+      return false;
+
+    if(t[c]==null)
+      return false;
+
+    return t[c].equals(o);
+  }
+}
+</pre>
+
+<p>
+Stessa classe di prima con <tt>c=o.hashCode()%size</tt>
+al posto di <tt>c=o.hashCode()</tt>
+</p>
+
+
+<hr>
+
+
+<h4>Oggetti con lo stesso codice hash</h4>
+
+<p>
+Soluzione banale: quando vado a inserire un oggetto ma la
+sua posizione &egrave; gi&agrave; occupata, lo metto invece
+in una lista
+</p>
+
+<p>
+Casella di un oggetto <tt>o</tt>: casella nella posizione
+<tt>o.hashCode()%100</tt>
+</p>
+
+<dl>
+
+<dt>dati
+<dd>un array e una lista
+
+<dt>inserimento
+<dd>se la casella dell'oggetto &egrave; vuota, ci metto
+l'oggetto
+<br>
+altrimento, metto l'oggetto nella lista
+
+<dt>ricerca
+<dd>se la casella dell'oggetto contiene <tt>null</tt>,
+l'oggetto non c'&egrave;
+<br>
+se contiene un oggetto <tt>equals</tt>, ritorna <tt>true</tt>
+<br>
+se contiene un oggetto che non &egrave; uguale, allora
+bisogna andare a vedere nella lista!
+
+<dt>cancellazione
+<dd>stessa cosa; se l'oggetto sta nell'array, occorre anche
+spostare un eventuale oggetto dalla lista
+
+</dl>
+
+<hr>
+
+
+<h4>Dati</h4>
+
+<p>
+Un vettore e una lista, pi&ugrave; la dimensione del vettore
+</p>
+
+<pre>
+import java.util.*;
+
+class Tavola {
+  private final int size=100;
+  private Object t[];
+  private LinkedList l;
+
+  public Tavola() {
+    t=new Object[size];
+    l=new LinkedList();
+  }
+
+  ...
+}
+</pre>
+
+<p>
+La lista si chiama lista di trabocco
+</p>
+
+<hr>
+
+
+<h4>Assunzioni</h4>
+
+<p>
+Dato un oggetto <tt>o</tt>, la sua posizione naturale
+&egrave;:
+</p>
+
+<blockquote>
+posizione naturale di un oggetto <tt>o</tt>
+=
+casella di indice <tt>o.hashCode()%size</tt> del vettore
+</blockquote>
+
+<p>
+Le assunzioni che faccio e rispetto sono:
+</p>
+
+<ol>
+
+<li>un oggetto si trova preferibilmente nella sua posizione
+naturale
+
+<li>se la posizione naturale &egrave; occupata, allora
+l'oggetto sta da qualche altra parte
+
+</ol>
+
+<p>
+Nel nostro caso, "da qualche altra parte" significa nella
+lista
+</p>
+
+
+<hr>
+
+<h4>Inserimento</h4>
+
+<p>
+Facile: se la posizione naturale &egrave; libera, ci metto
+l'oggetto
+</p>
+
+<p>
+Altrimenti, lo metto nella lista
+</p>
+
+<pre>
+  boolean add(Object o) {
+    int c=o.hashCode()%size;
+
+    if(t[c]!=null)
+      return l.add(o);
+
+    t[c]=o;
+    return true;
+  }
+</pre>
+
+<hr>
+
+
+<h4>Ricerca</h4>
+
+<p>
+Devo considerare tutte e due le assunzioni:
+</p>
+
+<ul>
+
+<li>se l'oggetto lo trovo nella sua posizione naturale,
+allora c'&egrave;
+
+<li>se nella sua posizione naturale c'&egrave; un altro
+oggetto, allora devo guardare la lista
+
+</ul>
+
+<pre>
+  boolean contains(Object o) {
+    int c=o.hashCode()%size;
+
+    if(o==null)
+      return false;
+
+    if(t[c]==null)
+      return false;
+
+    if(t[c].equals(o))
+      return true;
+
+    return l.contains(o);
+  }
+</pre>
+
+<hr>
+
+
+<h4>Cancellazione</h4>
+
+<p>
+Faccio prima una ricerca
+</p>
+
+<p>
+Se per&ograve; trovo l'oggetto nella posizione naturale, non
+basta cancellarlo
+</p>
+
+<p>
+Se lo faccio, potrei avere un altro oggetto nella lista che
+ora non si trova nella sua posizione naturale anche se
+questa &egrave; libera!
+</p>
+
+<p>
+Sarebbe un oggetto che non trovo quando faccio
+<tt>contains</tt>
+</p>
+
+<pre>
+  boolean remove(Object o) {
+    boolean p;
+    int c=o.hashCode()%size;
+
+    if(o==null)
+      return false;
+
+    if(t[c]==null)
+      return false;
+
+    if(!t[c].equals(o))
+      return l.remove(o);
+
+// trovato oggetto: guarda la lista
+    Iterator i=l.iterator();
+    while(i.hasNext()) {
+      Object b=i.next();
+      if(b.hashCode()%size==c) {
+        t[c]=b;
+        i.remove();
+        return true;
+      }
+    }
+
+    t[c]=null;
+    return true;
+  }
+</pre>
+
+<hr>
+
+
+<h4>Il metodo <tt>hashCode</tt></h4>
+
+<p>
+Serve per trovare la posizione naturale di un oggetto in una
+tavola hash.
+</p>
+
+<p>
+Vincolo: se due oggetti sono <tt>equals</tt>, devono avere
+lo stesso <tt>hashCode</tt>
+</p>
+
+<p>
+La versione qui sotto rispetta questa specifica:
+</p>
+
+<pre>
+  public int hashCode() {
+    return 0;
+  }
+</pre>
+
+<p>
+Tutte le operazioni funzionano perch&egrave; la specifica
+&egrave; rispettata
+</p>
+
+<hr>
+
+
+<h4>Efficienza delle tavole hash</h4>
+
+<p>
+Se non vado mai nella lista di trabocco, ogni operazione ha
+costo uno (accesso al vettore)
+</p>
+
+<p>
+Se tutti gli oggetti hanno lo stesso codice hash, allora
+tutti gli oggetti tranne uno stanno nella lista
+</p>
+
+<p>
+L'efficienza delle operazioni &egrave; maggiore se riesco a
+non usare la lista di trabocco
+</p>
+
+<p>
+Il metodo <tt>hashCode</tt> dovrebbe funzionare in modo tale
+da restituire interi possibilmente diversi per gli oggetti
+diversi che uso
+</p>
+
+<p>
+Questo non pu&ograve; essere garantito; basta che due
+oggetti diversi che uso abbiano "spesso" codici diversi
+</p>
+
+<hr>
+
+
+<h4>Il metodo <tt>hashCode</tt>, rivisto</h4>
+
+<p>
+Vogliamo avere risultato diverso se i campi sono diversi
+</p>
+
+<pre>
+class Studente {
+  String name;
+  int anno;
+
+  public int hashCode() {
+    int res=0;
+
+    res+=name.hashCode();
+    res+=anno;
+
+    return res;
+  }
+}
+</pre>
+
+<p>
+Prima versione: faccio la somma delle componenti intere e
+degli hashcode delle componenti oggetto
+</p>
+
+<hr>
+
+
+<h4>Versione migliorata di <tt>hashCode</tt></h4>
+
+<p>
+&Egrave; normale che gli stessi numeri appaiano in
+pi&ugrave; oggetti di tipo diverso
+</p>
+
+<p>
+Per fare in modo tale che il confronto risulti comunque
+diverso, usiamo alcune costanti arbitrarie:
+</p>
+
+<pre>
+class Studente {
+  String name;
+  int anno;
+
+  public int hashCode() {
+    int res=1;
+
+    res=5*res+name.hashCode();
+    res=5*res+anno;
+
+    return res;
+  }
+}
+</pre>
+
+<hr>
+
+
+<h4>Varianti</h4>
+
+<p>
+I concetti comuni delle tavole hash sono:
+</p>
+
+<ol>
+
+<li>per ogni oggetto, c'&egrave; una posizione naturale in
+un vettore
+
+<li>se questa posizione &egrave; occupata, l'oggetto sta "da
+qualche altra parte"
+
+</ol>
+
+<p>
+Ci sono versioni diverse in cui cambia il "qualche altra
+parte"
+</p>
+
+<hr>
+
+
+<h4>Versione senza lista</h4>
+
+<p>
+Se la posizione naturale di un oggetto &egrave; occupata, lo
+metto nella successiva posizione dell'array
+</p>
+
+<p>
+Variante: invece della posizione successiva uso
+posizione+incremento, dove incremento &egrave; un numero
+primo rispetto alla dimensione dell'array
+</p>
+
+<hr>
+
+
+<h4>Senza lista: inserimento e cancellazione</h4>
+
+<dl>
+
+<dt>inserimento
+<dd>nella posizione naturale se libera, altrimenti si cerca
+la prima posizione libera
+
+<dt>ricerca
+<dd>nella posizione naturale; se c'&egrave; un oggetto ma
+non &egrave; uguale, si passa alla posizione successiva e si
+ripete ricorsivamente
+
+</dl>
+
+<hr>
+
+
+<h4>Senza lista: cancellazione</h4>
+
+<p>
+&Egrave; complicata
+</p>
+
+<p>
+Esempio: (il numero e' la posizione naturale di un oggetto)
+</p>
+
+<pre>
+prima: {null null 2a 2b 2c 3d 3e null null}
+</pre>
+
+<p>
+Cancellare <tt>2b</tt>: non posso mettere solo <tt>null</tt>
+nella posizione 3, altrimenti otterrei:
+</p>
+
+<pre>
+dopo:  {null null 2a null 2c 3d 3e null null}
+</pre>
+
+<p>
+Se ora cerco <tt>2c</tt> oppure <tt>3d</tt>, ecc. non li
+trovo
+</p>
+
+<p>
+Occorre spostare tutti gli elementi che seguono fino al
+primo elemento che &egrave; null
+</p>
+
+<pre>
+dopo:  {null null 2a 2c 3d 3e null null null}
+</pre>
+
+<p>
+In questi spostamenti, gli elementi non possono risalire
+prima della loro posizione naturale:
+</p>
+
+<pre>
+prima: {null null 2a 2b 2c 3d 3e 7f 3g}
+non va:{null null 2a null 2c 3d 3e 7f null}
+eopo:  {null null 2a 2c 3d 3e 3g 7f null}
+</pre>
+
+<p>
+Se non si rispettano queste regole, la cancellazione non
+&egrave; pi&ugrave; coerente con la ricerca
+</p>
+
+<hr>
+
+
+<h4>Pi&ugrave; liste di trabocco</h4>
+
+<p>
+Idea: per ogni elemento dell'array, ho una lista di trabocco
+</p>
+
+<p>
+Ho quindi un array di oggetti e un array di liste;
+<br>
+i due array hanno la stessa dimensione
+</p>
+
+<p>
+L'elemento sta nella posizione naturale oppure nella lista
+di trabocco della posizione naturale
+</p>
+
+<hr>
+
+
+<h4>Buckets</h4>
+
+<p>
+Realizzo solo l'array di liste
+</p>
+
+<p>
+Il principio &egrave; che l'accesso al primo elemento di
+lista &egrave; comunque facile come accedere a un elemento
+di un array
+</p>
+
+<p>
+Ognuna delle liste si chiama <i>bucket</i>
+</p>
+
+<hr>
+
+
+<h4>Realizzazione</h4>
+
+<pre>
+import java.util.*;
+
+class Tavola {
+  private final int size=100;
+  private LinkedList l[];
+
+  public Tavola() {
+    int i;
+
+    l=new LinkedList[size];
+    for(i=0; i&lt;l.length; i++)
+      l[i]=new LinkedList();
+    
+  }
+
+  boolean add(Object o) {
+    int c=o.hashCode()%size;
+
+    return l[c].add(o);
+  }
+
+  boolean contains(Object o) {
+    int c=o.hashCode()%size;
+
+    return l[c].contains(o);
+  }
+
+  boolean remove(Object o) {
+    int c=o.hashCode()%size;
+
+    return l[c].remove(o);
+  }
+}
+</pre>
+
+<hr>
+
+
+<h4>Realizzazione: nota</h4>
+
+<p>
+Si poteva anche lasciare l'array di liste vuoto
+</p>
+
+<p>
+La lista <tt>l[c]</tt> veniva creato solo quando si andava a
+inserire un elemento che aveva posizione naturale <tt>c</tt>
+</p>
+
+<p>
+Bisogna fare un controllo <tt>l[c]==null</tt> sia su
+<tt>remove</tt> che su <tt>contains</tt>
+
+</body>
+</html>
+
+
+
+
+
+

@@ -1,0 +1,127 @@
+<!doctype html public "-//w3c//dtd html 4.0 transitional//en">
+<html>
+<head>
+<link href="java.css" rel="stylesheet" type="text/css">
+<title>Stampa i valori positivi</title>
+</head>
+
+<body>
+
+<h2>Stampa i valori positivi</h2>
+
+Vediamo ora una funzione leggermente pi&ugrave;
+complicata delle precedenti. Supponiamo di avere due
+variabili intere <tt>a</tt> e <tt>b</tt>, a cui assegnamo
+dei valori. Vogliamo poi calcolare e stampare il valore
+di alcune espressioni, per esempio
+<tt>a-b</tt>, <tt>a-b*b</tt>, <tt>-a/b</tt> e <tt>a/b</tt>.
+Vogliamo per&ograve; stampare solo il valore delle
+espressioni positive (maggiore
+oppure uguale a zero); in caso contrario si vuole stampare
+solo la scritta <tt>Valore negativo</tt>, senza precisare
+il valore esatto dell'espressione.<p>
+
+Questo tipo di problema si pu&ograve; risolvere anche senza
+usare le procedure. Per esempio, per stampare il valore
+della prima espressione, si potrebbe fare:<p>
+
+<pre>
+  int c;
+
+  c=a-b;
+
+  if( c>=0 ) {
+    System.out.println(c);
+  }
+  else {
+    System.out.println("Valore negativo");
+  }
+</pre>
+
+Questo andrebbe poi ripetuto anche per le altre espressioni da
+valutare. Il programma completo contiene quindi quattro volte
+la intera istruzione condizionale, esattamente identica. Si
+tratta quindi di una situazione in cui una sequenza di istruzioni
+si ripete pi&ugrave; volte in un programma, per cui conviene
+``mettere a fattor comune'' e usare una procedura.<p>
+
+In questo caso, la procedura dovrebbe ricevere un valore intero
+(il valore di una delle espressioni); questo valore viene stampato
+oppure no a seconda se &egrave; positivo oppure no. Dal momento
+che la procedura riceve un valore intero, occorre specificare
+un nome di variabile intero in cui il dato che il programma manda
+viene memorizzato. L'inizio della procedura quindi &egrave;:<p>
+
+<pre>
+  static void stampa(int e)
+</pre>
+
+Si &egrave; scelto il nome <tt>stampa</tt> per questa procedura.
+Le istruzioni associate devono stampare il valore memorizzato
+in <tt>e</tt>, ma soltanto se &egrave; positivo. In caso
+contrario, si stampa <tt>Valore negativo</tt>. La procedura
+completa &egrave; quindi come segue:<p>
+
+<pre>
+  static void stampa(int e) {
+    if( e>=0 ) {
+      System.out.println(e);
+    }
+    else {
+      System.out.println("Valore negativo");
+    }
+  }
+</pre>
+
+Per poter eseguire le istruzioni della procedura &egrave; necessario
+che all'interno del programma principale ci siano delle chiamate
+di procedura, ossia delle istruzioni <tt>stampa(...)</tt>. Fra
+parentesi ci va il valore che il programma manda alla procedura.
+&Egrave; possibile mettere tra parentesi un numero intero
+(per esempio 12), una variabile (per esempio <tt>a</tt>), o anche
+una espressione. Nel nostro caso, dato che vogliamo stampare il
+valore di una espressione come <tt>a-b</tt> possiamo semplicemente
+scrivere <tt>stampa(a-b)</tt>. Questo equivale a calcolare il
+valore della espressione <tt>a-b</tt>, mettere il risultato nella
+variabile <tt>e</tt> locale della procedura <tt>stampa</tt>, ed
+eseguire le istruzioni della procedura. Questo &egrave; esattamente
+quello che serve (calcolare il valore della espressione e
+stamparlo se positivo).<p>
+
+La stessa cosa va fatta per le altre espressioni da stampare. Il
+programma completo
+<a href="StampaSePositivo.java">StampaSePositivo.java</a>
+&egrave; riportato qui sotto.<p>
+
+<pre>
+/*
+  Stampa il valore di alcune espressioni, ma solo
+  se e' positivo.
+*/
+
+class StampaSePositivo {
+
+  static void stampa(int e) {
+    if( e>=0 ) {
+      System.out.println(e);
+    }
+    else {
+      System.out.println("Valore negativo");
+    }
+  }
+
+  public static void main(String[] args) {
+    int a=12, b=4;
+
+    stampa(a-b);
+    stampa(a-b*b);
+    stampa(-a/b);
+    stampa(a/b);
+  }
+}
+
+</pre>
+
+</body>
+</html>
+

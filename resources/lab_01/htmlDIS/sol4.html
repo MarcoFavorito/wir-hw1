@@ -1,0 +1,105 @@
+<!doctype html public "-//w3c//dtd html 4.0 transitional//en">
+<html>
+<head>
+   <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <meta name="Author" content="ber">
+   <meta name="GENERATOR" content="Mozilla/4.72 [en] (X11; U; AIX 4.3) [Netscape]">
+   <title>sol4</title>
+</head>
+<body>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; PROGRAM MAIN_ESER4
+<br>* SOLUZIONE DELL'ESERCIZIO ESER4 (compito del 20/06/2001)
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; IMPLICIT NONE
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; INTEGER N,M,i,j
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; PARAMETER (N=3,M=4)
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; INTEGER A(N,M),B(N,M)
+<br>&nbsp;
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; CALL LEGGI_MATRICE(A,N,M)
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; CALL ESER4(A,B,N,M)
+<p>* Scrittura sul file RES.TXT
+<p>&nbsp;&nbsp;&nbsp;&nbsp; OPEN(9,FILE='RES.TXT')
+<br>&nbsp;&nbsp;&nbsp;&nbsp; DO 10 I=1,N
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; WRITE (9,*) (B(I,J), J=1,M)
+<br>10 CONTINUE
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; CLOSE(9)
+<br>&nbsp;&nbsp;&nbsp;&nbsp; END
+<br>&nbsp;
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; SUBROUTINE LEGGI_MATRICE(A,N,M)
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; IMPLICIT NONE
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; INTEGER N,M,A(N,M), R, C
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; WRITE (*,'(A9,I2,A3,I2,A10)') 'INSERIRE',N,
+'x',M, 'ELEMENTI'
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; READ *, (( A(R,C),C=1,M),R=1,N )
+<br>&nbsp;&nbsp;&nbsp;&nbsp; PRINT *,'LETTURA TERMINATA...'
+<br>&nbsp;&nbsp;&nbsp;&nbsp; END
+<br>&nbsp;
+<br>&nbsp;
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; SUBROUTINE ESER4(A,B,N,M)
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; IMPLICIT NONE
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; INTEGER I,IMIN,J,k,temp,N,M,S,T,A(N,M),B(N,M)
+<p>*&nbsp;&nbsp;&nbsp;&nbsp; ORDINA LE RIGHE DELLA MATRICE USANDO
+<br>*&nbsp;&nbsp;&nbsp;&nbsp; UN ALGORITMO DI SELECTION SORT...
+<br>*
+<br>*&nbsp;&nbsp;&nbsp;&nbsp; COPIA PRIMA TUTTO IN B
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; DO 10 i = 1,N
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; DO 10 j = 1,M
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; B(i,j)=A(i,j)
+<br>10&nbsp;&nbsp;&nbsp;&nbsp; CONTINUE
+<br>&nbsp;
+<p>*&nbsp;&nbsp;&nbsp;&nbsp; PER OGNI RIGA I...
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; DO 100 i = 1, n-1
+<p>*&nbsp;&nbsp;&nbsp;&nbsp; ..SELEZIONA L'INDICE DI RIGA imin TALE CHE
+<br>*&nbsp;&nbsp;&nbsp;&nbsp; LA SOMMA S DEGLI ELEMENTI DELLA RIGA imin
+SIA MINIMA
+<br>*&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; RISPETTO ALLA SOMMA DEGLI ELEMENTI
+DELLE RIGHE i ..n
+<br>*
+<br>&nbsp;
+<br>&nbsp;
+<p>*&nbsp;&nbsp;&nbsp;&nbsp; SUPPONIAMO CHE imin SIA PROPRIO&nbsp;PARI
+AD i
+<br>*&nbsp;&nbsp;&nbsp;&nbsp; S CONTIENE LA SOMMA DEGLI ELEMENTI DELLA
+RIGA imin
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; imin = i
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; S=0
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; DO 30 k = 1,M
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; S=S+B(imin,k)
+<br>30&nbsp;&nbsp;&nbsp; CONTINUE
+<p>*&nbsp;&nbsp;&nbsp;&nbsp; PASSA IN RASSEGNA TUTTE LE RIGHE j DA i+1
+FINO AD n
+<br>*&nbsp;&nbsp;&nbsp;&nbsp; CALCOLANDO LA SOMMA T DEGLI ELEMENTI DELLA&nbsp;RIGA
+<br>&nbsp;
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; DO 50 j = i+1, n
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+T = 0
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+DO 40 k=1,m
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+T=T+B(j,k)
+<br>40&nbsp;&nbsp;&nbsp; CONTINUE
+<br>*&nbsp;&nbsp;&nbsp;&nbsp; SE T>S ALLORA PONI imin PARI A j ED S PARI
+A T
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; IF (T.LT.S) THEN
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+imin = j
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+S=T
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ENDIF
+<br>50&nbsp;&nbsp;&nbsp; CONTINUE
+<p>*&nbsp;&nbsp;&nbsp; ADESSO&nbsp; SE NECESSARIO SCAMBIA GLI ELEMENTI
+DELLA RIGA imin CON QUELLI DI i
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; IF (imin .NE. i) THEN
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; DO 60 k=1,m
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; temp =
+B(imin,k)
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; B(imin,k)
+= B(i,k)
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; B(i,k)
+= temp
+<br>60&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; CONTINUE
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ENDIF
+<br>100&nbsp;&nbsp;&nbsp; CONTINUE
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; RETURN
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; END
+</body>
+</html>

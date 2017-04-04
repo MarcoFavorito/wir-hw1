@@ -1,0 +1,139 @@
+<HTML>
+<BODY >
+
+<DIV ALIGN="CENTER">
+<FONT SIZE="+1"><B>Diploma Universitario in Ingegneria Informatica
+<BR>
+Esame di Fondamenti di Informatica II - primo modulo
+<BR>
+A.A. 1998/99 - Appello del 21 luglio 1999
+</B></FONT></DIV>
+
+<P>
+
+<P>
+
+<B>Problema 1</B>&nbsp;&nbsp;
+Si consideri la seguente specifica del tipo astratto <I>Deposito</I>:<DL>
+<DT><STRONG><U>TipoAstratto</U> <I>Deposito</I></STRONG>
+<DD><DT><STRONG><U>Sorte</U></STRONG>
+<DD><I>Dep</I> (sorta per il dominio di interesse)
+<DT><STRONG><U>Funzioni</U></STRONG>
+<DD>&nbsp;&nbsp;
+<DL>
+<DT><STRONG><I>Crea</I></STRONG> : <I> () --> Dep</I>
+<DD>
+    precondizioni e postcondizioni per
+<I>Crea</I>() = <I>d</I>
+<BR>
+  <U>pre</U>: nessuna
+<BR>
+  <U>post</U>: <I>d</I> &#232; un deposito con 0 auto; ad ogni auto che
+  entrer&#224; nel deposito verr&#224; associato un numero
+<DT><STRONG>
+<!-- MATH: $QuanteAuto$ -->
+<I>QuanteAuto</I></STRONG> : <I> (Dep) --> Intero </I>
+<DD>
+precondizioni e postcondizioni per
+<!-- MATH: $QuanteAuto(d) = n$ -->
+<I>QuanteAuto</I>(<I>d</I>) = <I>n</I>
+<BR>
+  <U>pre</U>: nessuna
+<BR>
+  <U>post</U>: <I>n</I> &#232; il numero di auto presenti in <I>d</I>
+<DT><STRONG><I>NuovaAuto</I></STRONG> : <I>(Dep,Auto) --> Dep</I>
+<DD>
+precondizioni e postcondizioni per 
+<!-- MATH: $NuovaAuto(d,a) = e$ -->
+<I>NuovaAuto</I>(<I>d</I>,<I>a</I>) = <I>e</I>
+<BR>
+  <U>pre</U>: <I>a</I> non &#232; nel deposito <I>d</I>
+<BR>
+  <U>post</U>: <I>e</I> &#232; il deposito ottenuto da <I>d</I> aggiungendo l'auto
+  <I>a</I>; alla nuova auto &#232; associato il numero 
+<!-- MATH: $QuanteAuto(d)+1$ -->
+<I>QuanteAuto</I>(<I>d</I>)+1, che
+  coincide con il numero di auto in <I>e</I>
+<DT><STRONG><I>DammiAuto</I></STRONG> : (Dep, Intero) --> Auto</I>
+<DD>
+precondizioni e postcondizioni per 
+<I>DammiAuto</I>(<I>d</I>,<I>i</I>) = <I>a</I>
+<BR>
+  <U>pre</U>: 
+<!-- MATH: $1 \leq i \leq QuanteAuto(d)$ -->
+<BR>
+  <U>post</U>: <I>a</I> &#232; l'auto alla quale &#232; associato il numero <I>i</I> in <I>d</I>
+<DT><STRONG><I>Svuota</I></STRONG> : <I> (Dep) --> Dep</I>
+<DD>
+precondizioni e postcondizioni per
+<!-- MATH: $Svuota(d) = e$ -->
+<I>Svuota</I>(<I>d</I>) = <I>e</I>
+<BR>
+  <U>pre</U>: 
+<!-- MATH: $QuanteAuto(d) > 0$ -->
+<I>QuanteAuto</I>(<I>d</I>) &gt; 0
+<BR>
+  <U>post</U>: <I>e</I> &#232; il deposito ottenuto da <I>d</I> togliendo tutte le
+    auto
+</DL>
+<DT><STRONG><U>FineTipoAstratto</U></STRONG>
+<DD></DL>
+
+<P>
+
+<P>
+
+<B>Domanda 1</B>&nbsp;&nbsp;Illustrare le scelte di progetto per realizzare il tipo
+astratto <I>Deposito</I> mediante una classe in C++ utilizzando lo schema con
+side-effect senza condivisione di memoria. Per riferirsi al tipo astratto
+<I>Auto</I> &#232; necessario utilizzare la classe gi&#224; definita <TT>Auto</TT>, della
+quale &#232; nota solo la funzione <TT>Lunghezza()</TT>: la chiamata <TT>
+ a.Lunghezza()</TT> restituisce un valore di tipo <TT>float</TT> che rappresenta la
+lunghezza in metri dell'auto <TT>a</TT>.
+
+<P>
+
+<P>
+
+<B>Domanda 2</B>&nbsp;&nbsp;Scrivere la classe <TT>Deposito</TT> che realizza il tipo
+astratto <I>Deposito</I> secondo le scelte di progetto illustrate per la Domanda
+1.
+
+<P>
+
+<P>
+
+<B>Problema 2</B>&nbsp;&nbsp;Realizzare una funzione esterna (non friend) alla classe
+<TT>Deposito</TT> che, dato un deposito <TT>d</TT> ed un valore <TT>v</TT> di tipo
+<TT>float</TT> restituisca l'auto pi&#249; lunga tra quelle presenti in <TT>d</TT> che
+sono di lunghezza minore di <TT>v</TT>. Se non esiste una tale auto, la funzione
+deve restituire un opportuno valore che indica tale condizione. Se ne
+esistono pi&#249; d'una con la stessa lunghezza massima, la funzione ne deve
+restituire una qualunque.
+
+<P>
+
+<B>Problema 3</B>&nbsp;&nbsp;Supponiamo che in un programma
+vi sia la necessit&#224; di gestire dei bersagli, e supponiamo che il
+progettista abbia definito il seguente frammento di software per questo
+scopo:<PRE>
+class Bersaglio
+{public:
+  Bersaglio() { quantiColpi = 0; iniziato = false; }
+  void Start() { if (!iniziato) { iniziato = true; quantiColpi = 0; } }
+  int End()  { if (iniziato)  { iniziato = false; return quantiColpi; } else return -1; }
+  void Colpito() { if (iniziato) quantiColpi++; }
+  int quantiColpi;
+ private:
+  bool iniziato;
+};
+
+int  NumeroColpi(Bersaglio b)
+{ return b.quantiColpi; }
+</PRE>
+Dare una descrizione del significato della classe <TT>Bersaglio</TT>, fornire un
+giudizio motivato sulla qualit&#224; della classe rispetto alla <EM>coesione</EM> e
+all'<EM>information hiding</EM>, e dare indicazioni su eventuali miglioramenti
+da apportare.
+</BODY>
+</HTML>

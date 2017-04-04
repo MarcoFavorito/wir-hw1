@@ -1,0 +1,545 @@
+<!doctype html public "-//w3c//dtd html 4.0 transitional//en">
+<html>
+<head>
+<link href="java.css" rel="stylesheet" type="text/css">
+<title>Java</title>
+</head>
+
+<body>
+
+
+<h1>Colori e figure geometriche riempite</h1>
+
+
+
+<h2>Uso dei colori standard</h2>
+
+Le istruzioni grafiche viste fino ad ora disegnano figure
+geometriche con il colore nero.
+Vediamo ora come si fa a disegnare delle linee
+in rosso, o dei cerchi in blu, ecc.<p>
+
+In Java, non &egrave; possibile specificare con una sola
+istruzione che si vuole per esempio disegnare una linea in
+rosso. Java utilizza invece il concetto di <i>colore
+corrente</i>. Ogni volta che si disegna qualcosa, questo
+viene fatto usando il colore corrente. All'inizio, il colore
+corrente &egrave; nero, ma pu&ograve; venire cambiato.
+In questo modo, se si vogliono disegnare due linee in rosso
+e un cerchio in blu, quello che occorre fare &egrave;:<p>
+
+<ul>
+<li>cambiare il colore corrente in rosso;
+<li>disegnare una linea;
+<li>disegnare l'altra linea;
+<li>cambiare il colore corrente in blu;
+<li>disegnare il cerchio.
+</ul>
+
+<p>
+In altre parole, ogni volta che si cambia il colore corrente,
+tutte le successive istruzioni di disegno avverrano con il
+nuovo colore corrente. Per disegnare con un altro colore,
+occorre di nuovo cambiare il colore corrente.<p>
+
+L'istruzione che permette di cambiare il colore corrente
+si chiama <tt>setColor</tt>. I colori standard che Java mette
+a disposizione sono i seguenti:
+
+<pre>
+Color.black Color.blue Color.cyan Color.darkGray Color.gray 
+Color.green Color.lightGray Color.magenta Color.orange 
+Color.pink Color.red Color.white Color.yellow 
+</pre>
+
+Per disegnare le linee in rosso, occorre quindi eseguire la
+istruzione <tt>g.setColor(Color.red)</tt>, che cambia il colore
+corrente in rosso, e poi disegnare le linee normalmente (usando
+la <tt>drawLine</tt> come al solito).<p>
+
+Il programma
+<a href="Standard.java">Standard.java</a>
+usa tre colori standard (rosso, blu e nero) per disegnare varie
+figure geometriche.<p>
+
+<pre>
+/*
+  Uso dei colori standard.
+*/
+
+import java.awt.*;
+
+public class Standard extends java.applet.Applet {
+  public void paint(Graphics g) {
+
+    /* da qui in poi, disegna in rosso */
+    g.setColor(Color.red);
+    g.drawLine(0,0,100,100);
+    g.drawLine(0,100,100,0);
+    g.drawRect(0,0,100,100);
+
+    /* da qui in poi, disegna tutto in blu */
+    g.setColor(Color.blue);
+    g.drawLine(100,100,200,200);
+    g.drawOval(200,200,100,50);
+
+    /* disegna in nero */
+    g.setColor(Color.black);
+    g.drawRect(0,200,50,50);
+
+  }
+}
+
+</pre>
+
+<p>
+Va notato che per tornare a usare il nero, occorre l'istruzione
+<tt>g.setColor(Color.black)</tt>. In altre parole, una volta
+cambiato colore, per tornare a usare quello precedente occorre
+usare la <tt>setColor</tt>: non esiste una istruzione che dice
+di tornare al colore precedente senza specificare quale era.
+Il risultato &egrave; il seguente:<p>
+
+<center>
+<img src="Standard.gif">
+</center>
+<p>
+
+
+</body>
+
+
+
+
+<h2>Figure geometriche riempite</h2>
+
+Le istruzioni di disegno viste fino ad ora tracciavano in
+effetti solo il contorno delle figure, ossia il loro
+perimetro. In Java, &egrave; possibile anche disegnare
+figure geometriche il cui interno sia riempito con il
+colore corrente. Il modo di farlo &egrave; molto
+semplice: mentre le istruzioni per disegnare il contorno
+si chiamano <tt>drawQualcosa</tt>, le istruzioni per
+disegnare anche l'interno si chiamano <tt>fillQualcosa</tt>.
+Qui sotto ci sono tutte le istruzioni di disegno viste
+fino ad ora, con accanto le istruzioni che riempiono:<p>
+
+<table border=1 align=center>
+<tr><th>Figura</th><th>Disegno del contorno</th><th>Disegno riempito</th></tr>
+<tr><td>Rettangolo</td><td>drawRect</td><td>fillRect</td></tr>
+<tr><td>Poligono</td><td>drawPolygon</td><td>fillPolygon</td></tr>
+<tr><td>Ovale</td><td>drawOval</td><td>fillOval</td></tr>
+<tr><td>Arco</td><td>drawArc</td><td>fillArc</td></tr>
+</table>
+<p>
+
+Le istruzioni di riempimento hanno esattamente gli stessi
+argomenti delle istruzioni che disegnano il contorno. Per
+esempio, <tt>fillRect</tt> prende quattro numeri, che sono
+le coordinate del punto in alto a sinistra del rettangolo,
+la larghezza e l'altezza.<p>
+
+Il programma
+<a href="Riempite.java">Riempite.java</a> disegna
+alcune figure geometriche riempite.<p>
+
+<pre>
+/*
+  Alcune figure geometriche riempite.
+*/
+
+import java.awt.*;
+
+public class Riempite extends java.applet.Applet {
+  public void paint(Graphics g) {
+    Polygon p=new Polygon();
+
+    g.fillRect(0,0,100,100);
+
+    g.setColor(Color.red);
+    g.fillOval(100,100,50,100);
+    g.fillArc(200,0,80,120,45,150);
+
+    p.addPoint(200,200);
+    p.addPoint(200,250);
+    p.addPoint(250,400);
+    p.addPoint(190,500);
+    p.addPoint(160,200);
+    
+    g.setColor(Color.blue);
+    g.fillPolygon(p);
+  }
+}
+
+</pre>
+<p>
+
+Il risultato &egrave; il seguente:<p>
+
+<center>
+<img src="Riempite.gif">
+</center>
+<p>
+
+
+
+</body>
+
+
+
+
+<h2>Diagramma a torta</h2>
+
+Siano dati un insieme di percentuali. Si vuole realizzare
+il loro diagramma a torta, che &egrave; costituito da un
+cerchio diviso in tanti settori quante sono le percentuali.
+Ogni arco ha un angolo che &egrave; proporzionale alla
+corrispondente percentuale. Per rendere pi&ugrave; chiaro
+il diagramma, i vari settori devono essere colorati con
+colori diversi.<p>
+
+Si suppone che le percentuali siano memorizzate in un vettore
+di interi, per esempio:
+
+<pre>
+    int percentuali[]={10, 15, 30, 25, 20};
+</pre>
+<p>
+
+L'istruzione fondamentale &egrave; chiaramente quella
+di disegno di un angolo riempito <tt>fillArc</tt>, insieme
+a quella di cambiamento del colore. Concentriamoci per
+il momento sul disegno dei settori, rimandando il cambiamento
+di colore a un secondo momento.<p>
+
+Come si &egrave; detto, ogni settore deve avere un angolo
+proporzionale a una percentuale. Per esempio, il primo settore
+deve avere un angolo proporzionale a <tt>percentuali[0]</tt>.
+Quanto deve essere grande esattamente questo angolo? In tutti
+i casi in cui occorre stabilire una relazione lineare tre due
+grandezze, &egrave; sufficiente considerare i due casi
+estremi:<p>
+
+<ul>
+<li>se la percentuale vale 0 l'angolo vale 0;
+<li>se la percentuale vale 100 l'angolo vale 360.
+</ul>
+
+Ora, diciamo che <i>a</i> &egrave; l'angolo e <i>p</i> &egrave;
+la percentuale. Sappiamo che <i>a</i> deve essere proporzionale
+a <i>p</i>, quindi una relazione lineare intercorre fra loro:
+
+<center>
+<i>
+a = x * p + y
+</i>
+</center>
+<p>
+
+Per trovare i valori delle costanti <i>x</i> e <i>y</i>, usiamo
+i due casi estremi, che diventano:
+
+<center>
+<i>
+0 = x * 0 + y <br>
+360 = x * 100 + y
+</i>
+</center>
+<p>
+
+Dalla prima equazione si ricava <i>y=0</i>, per cui la seconda
+equazione diventa <i>360 = x * 100</i>, ossia <i>x=360/100</i>.
+Quindi, data una percentuale <i>p</i>, l'angolo <i>a</i> si
+ricava dalla equazione:<p>
+
+<center>
+<i>
+a = (360/100)*p
+</i>
+</center>
+<p>
+
+Parte del problema &egrave; quindi risolto: ora sappiamo quanto
+&egrave; grande ogni angolo che va disegnato. Manca ora da
+specificare quale &egrave; il suo punto di partenza. Per il primo
+angolo questo &egrave; ovvio: il punto di partenza si trova a 0
+gradi. Il punto di partenza del secondo arco si trova esattamente
+dove finisce il primo, il terzo dove finisce il secondo, ecc.
+La regola &egrave; quindi semplice: il punto d'inizio
+dell'<i>i</i>-esimo arco &egrave; il punto finale dell'arco
+disegnato precedentemente. Basta quindi memorizzare in una
+variabile il punto in cui l'arco corrente finisce, e questo
+sar&agrave; il punto di inizio dell'arco successivo. Il punto di
+fine di ogni arco si trova sommando l'ampiezza dell'arco al
+punto in cui l'arco inizia. Usiamo la variabile <tt>fine</tt>
+per indicare l'angolo a cui ogni arco finisce (e quindi il
+successivo inizia). Il disegno degli archi si pu&ograve; quindi
+effettuare con il codice seguente:<p>
+
+<pre>
+    int i;
+    int fine;
+
+    fine=0;
+
+    for(i=0; i<=percentuali.length-1; i++) {
+      g.fillArc(100,100, 300, 300, fine, percentuali[i]*360/100);
+
+      fine=fine+percentuali[i]*360/100;
+    }
+</pre>
+
+A parole: si usa una variabile <tt>i</tt> per scandire il vettore
+delle percentuali. La variabile <tt>fine</tt> indica l'angolo a cui
+inizia il settore successivo, e quindi parte a 0. Ad ogni passo,
+si disegna un nuovo settore, e si aggiorna il punto in cui il nuovo
+settore deve cominciare.<p>
+
+Veniamo ora alla questione dei colori. Supponiamo che le
+percentuali da visualizzare siano solo cinque, per cui bastano
+cinque colori diversi. Supponiamo quindi di voler usare, per
+le varie percentuali, i seguenti colori:<p>
+
+<pre>
+Color.green, Color.red, Color.blue, Color.yellow, Color.orange, Color.gray
+</pre>
+<p>
+
+L'ideale sarebbe poter mettere una istruzione
+<tt>setColor</tt> all'interno del ciclo, in modo tale che quando
+<tt>i</tt> vale 0 si esegue <tt>g.setColor(Color.green)</tt>, quando
+<tt>i</tt> vale 1 si esegue <tt>g.setColor(Color.red)</tt>, quando
+<tt>i</tt> vale 2 si esegue <tt>g.setColor(Color.yellow)</tt>, ecc.<p>
+
+In effetti, conosciamo un modo per associare un valore a dei
+numeri interi: i vettori. In questo caso, per <tt>i=0</tt>
+ci serve <tt>Color.green</tt>, per <tt>i=0</tt>
+ci serve <tt>Color.red</tt>, ecc. Quindi, usiamo un vettore in
+cui memorizziamo <tt>Color.green</tt> nella posizione 0,
+<tt>Color.red</tt> nella posizione 1, ecc. Ad ogni passo,
+basta cambiare il valore corrente usando il contenuto di una
+delle celle che costituiscono il vettore <tt>colori</tt>.<p>
+
+Il programma
+<a href="Torta.java">Torta.java</a>
+&egrave; stato realizzato a partire dalle considerazioni
+riportate sopra.<p>
+
+<pre>
+import java.awt.*;
+
+public class Torta extends java.applet.Applet {
+  public void paint (Graphics g) {
+    int percentuali[]={10, 15, 30, 25, 20};
+    Color colori[]={Color.green, Color.red, Color.blue, Color.yellow,
+                    Color.orange, Color.gray };
+    int i;
+    int fine;
+
+    fine=0;
+
+    for(i=0; i<=percentuali.length-1; i++) {
+      g.setColor(colori[i]);
+
+      g.fillArc(100,100, 300, 300, fine, percentuali[i]*360/100);
+
+      fine=fine+percentuali[i]*360/100;
+    }
+  }
+}
+
+</pre>
+
+Il grafico delle percentuali viene visualizzato come segue.<p>
+
+<center>
+<img src="Torta.gif">
+</center>
+<p>
+
+</body>
+
+
+
+<h2>Creazione di nuovi colori</h2>
+
+Come si &egrave; detto, in Java sono disponibili
+alcuni colori ``standard'':
+
+<pre>
+           Color.black 
+           Color.blue 
+           Color.cyan 
+           Color.darkGray 
+           Color.gray 
+           Color.green 
+           Color.lightGray 
+           Color.magenta 
+           Color.orange 
+           Color.pink 
+           Color.red 
+           Color.white 
+           Color.yellow 
+</pre>
+
+In alcuni casi semplici, questi colori possono
+essere sufficienti. D'altra parte, ci sono dei
+casi in cui occorrono altri colori oltre a questi.
+In Java, &egrave; possibile definire un colore
+attraverso le sue tre coordinate RGB.<p>
+
+Come &egrave; noto, ogni colore si pu&ograve;
+ottenre ``mischiando'' quantit&agrave; opportune
+dei tre colori fondamentali rosso, verde e
+blu. Ogni colore &egrave; quindi determinato
+dalle quantit&agrave; dei tre colori fondamentali
+che lo compongono. In Java, si assume che le
+componenti di colore variano da 0 a 255, per cui
+(0,0,0) &egrave; il nero, mentre (255,255,255)
+&egrave; il bianco. Per esempio, il colore rosso
+&egrave; composto da una componente rossa di massima
+intensit&agrave;, e da nessun altro colore
+fondamentale, per cui il rosso &egrave; identificato
+dalla terna di coordinate (255,0,0).<p>
+
+Per creare un nuovo colore occorre una variabile di
+tipo <tt>Color</tt>, che &egrave; una zona di memoria
+in cui si memorizza un colore. Per decidere il colore
+da memorizzare in questa locazione si usa il comando:
+
+<pre>
+  c = new Color(a,b,c);
+</pre>
+
+dove <tt>a</tt>, <tt>b</tt>, <tt>c</tt> sono le coordinate di colore del
+nuovo colore da creare.<p>
+
+Vediamo ora un esempio di uso della allocazione di
+nuovi colori. Vogliamo disegnare dei quadrati colorati,
+ognuno di lato 20, disposti a griglia. Vogliamo che
+il quadrato in posizione (0,0) sia riempito del colore
+di coordinate (0,0,0), mentre quello di coordinate
+(20,0) abbia colore (20,0,0) e quello in posizione
+(0,10) sia colorato con (0,20,0), e cos&igrave; via:
+il quadrato in posizione (i,j) deve essere colorato
+con il colore (i,j,0).<p>
+
+Il programma
+<a href="NuoviColori.java">NuoviColori.java</a>
+disegna la griglia facendo un ciclo in cui la variabile
+<tt>i</tt> va da 0 a 250 aumentando ogni volta di 20.
+Per ogni valore di <tt>i</tt> occorre considerare tutti
+i valori di <tt>j</tt> da 0 a 250, per cui all'interno del
+ciclo for si mette un secondo ciclo for. Quello che si
+trova all'interno del secondo ciclo viene quindi eseguito
+per ogni valore di <tt>i</tt> e per ogni valore di
+<tt>j</tt>. Quello che si deve fare &egrave; creare un nuovo
+colore, dire che si vuole usare questo nuovo colore da ora
+in avanti, e disegnare il quadrato.<p>
+
+<pre>
+/*
+  Allocazione di nuovi colori.
+*/
+
+import java.awt.*;
+
+public class NuoviColori extends java.applet.Applet {
+  public void paint(Graphics g) {
+    int i,j;
+    Color c;
+
+    for(i=0; i<=250; i=i+20) {
+      for(j=0; j<=250; j=j+20) {
+        c=new Color(i,j,0);
+
+        g.setColor(c);
+
+        g.fillRect(i,j,20,20);
+      }
+    }
+  }
+}
+
+</pre>
+
+<center>
+<img src="NuoviColori.gif">
+</center>
+
+
+</body>
+
+
+
+
+<h2>Cancellazione</h2>
+
+<p>
+Finora si &egrave; visto come disegnare figure geometriche
+vuote e riempite. Vediamo ora come si fa a cancellare una
+parte della finestra.
+
+<p>
+L'istruzione che si usa &egrave; la <tt>clearRect</tt>. Questa
+istruzione ha quattro argomenti, che sono le coordinate in
+alto a sinistra di un rettangolo, la sua larghezza e la sua
+altezza. L'effetto &egrave; che la zona rettangolare
+determinata da questi quattro numeri viene cancellata. In
+altre parole <tt>clearRect(x,y,w,h)</tt> &egrave; equivalente
+a disegnare un rettangolo riempito con il colore dello sfondo,
+il che equivale a cancellare tutto quello che si trova
+all'interno del rettangolo.
+
+<p>
+Il seguente programma
+<a href="Cancella.java">Cancella.java</a>
+disegna una griglia e cancella la sua parte centrale
+usando l'istruzione <tt>clearRect</tt>.
+
+<p>
+<pre>
+/*
+  Disegna una griglia, e ne cancella una parte.
+*/
+
+import java.awt.*;
+
+public class Cancella extends java.applet.Applet {
+  public void paint(Graphics g) {
+    int x,y;
+
+    /* disegna le linee verticali */
+    for(x=0; x<=200; x=x+10) {
+      g.drawLine(x, 0, x, 200);
+    }
+
+    /* disegna le linee orizzontali */
+    for(y=0; y<=200; y=y+10) {
+      g.drawLine(0, y, 200, y);
+    }
+
+    /* cancella una zona */
+    g.clearRect(45,45,100,100);
+  }
+}
+
+</pre>
+
+<p>
+Il risultato dell'esecuzione &egrave; il seguente disegno.
+
+<p>
+<center>
+<img src="Cancella.gif">
+</center>
+
+<p>
+
+</body>
+
+
+
+</body>
+</body>
+</html>

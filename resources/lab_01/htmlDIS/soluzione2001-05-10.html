@@ -1,0 +1,656 @@
+<html xmlns:o="urn:schemas-microsoft-com:office:office"
+xmlns:w="urn:schemas-microsoft-com:office:word"
+xmlns="http://www.w3.org/TR/REC-html40">
+
+<head>
+<meta http-equiv=Content-Type content="text/html; charset=windows-1252">
+<meta name=ProgId content=Word.Document>
+<meta name=Generator content="Microsoft Word 9">
+<meta name=Originator content="Microsoft Word 9">
+<link rel=File-List href="./soluzione2001-05-10_file/filelist.xml">
+<title>Fondamenti di informatica (SSE e Statistica)</title>
+<!--[if gte mso 9]><xml>
+ <o:DocumentProperties>
+  <o:Author>Paolo Giulio Franciosa</o:Author>
+  <o:LastAuthor>Paolo Giulio Franciosa</o:LastAuthor>
+  <o:Revision>2</o:Revision>
+  <o:TotalTime>22</o:TotalTime>
+  <o:Created>2002-03-05T16:24:00Z</o:Created>
+  <o:LastSaved>2002-03-05T16:24:00Z</o:LastSaved>
+  <o:Pages>4</o:Pages>
+  <o:Words>582</o:Words>
+  <o:Characters>3319</o:Characters>
+  <o:Lines>27</o:Lines>
+  <o:Paragraphs>6</o:Paragraphs>
+  <o:CharactersWithSpaces>4075</o:CharactersWithSpaces>
+  <o:Version>9.3821</o:Version>
+ </o:DocumentProperties>
+</xml><![endif]--><!--[if gte mso 9]><xml>
+ <w:WordDocument>
+  <w:HyphenationZone>14</w:HyphenationZone>
+ </w:WordDocument>
+</xml><![endif]-->
+<style>
+<!--
+ /* Font Definitions */
+@font-face
+	{font-family:Wingdings;
+	panose-1:5 0 0 0 0 0 0 0 0 0;
+	mso-font-charset:2;
+	mso-generic-font-family:auto;
+	mso-font-pitch:variable;
+	mso-font-signature:0 268435456 0 0 -2147483648 0;}
+@font-face
+	{font-family:"MS Mincho";
+	panose-1:2 2 6 9 4 2 5 8 3 4;
+	mso-font-alt:"\FF2D\FF33 \660E\671D";
+	mso-font-charset:128;
+	mso-generic-font-family:roman;
+	mso-font-format:other;
+	mso-font-pitch:fixed;
+	mso-font-signature:1 134676480 16 0 131072 0;}
+@font-face
+	{font-family:"\@MS Mincho";
+	panose-1:0 0 0 0 0 0 0 0 0 0;
+	mso-font-charset:128;
+	mso-generic-font-family:roman;
+	mso-font-format:other;
+	mso-font-pitch:fixed;
+	mso-font-signature:1 134676480 16 0 131072 0;}
+ /* Style Definitions */
+p.MsoNormal, li.MsoNormal, div.MsoNormal
+	{mso-style-parent:"";
+	margin:0cm;
+	margin-bottom:.0001pt;
+	mso-pagination:widow-orphan;
+	font-size:12.0pt;
+	font-family:"Times New Roman";
+	mso-fareast-font-family:"Times New Roman";}
+p.MsoBodyTextIndent, li.MsoBodyTextIndent, div.MsoBodyTextIndent
+	{margin-top:0cm;
+	margin-right:0cm;
+	margin-bottom:0cm;
+	margin-left:36.0pt;
+	margin-bottom:.0001pt;
+	text-indent:-.75pt;
+	mso-pagination:widow-orphan;
+	font-size:12.0pt;
+	font-family:"Times New Roman";
+	mso-fareast-font-family:"Times New Roman";}
+p.MsoBodyTextIndent2, li.MsoBodyTextIndent2, div.MsoBodyTextIndent2
+	{margin:0cm;
+	margin-bottom:.0001pt;
+	text-align:justify;
+	text-indent:27.0pt;
+	mso-pagination:widow-orphan;
+	font-size:12.0pt;
+	font-family:"Times New Roman";
+	mso-fareast-font-family:"Times New Roman";}
+p.MsoPlainText, li.MsoPlainText, div.MsoPlainText
+	{margin:0cm;
+	margin-bottom:.0001pt;
+	mso-pagination:widow-orphan;
+	font-size:10.0pt;
+	font-family:"Courier New";
+	mso-fareast-font-family:"Times New Roman";}
+@page Section1
+	{size:595.3pt 841.9pt;
+	margin:70.85pt 2.0cm 2.0cm 2.0cm;
+	mso-header-margin:35.4pt;
+	mso-footer-margin:35.4pt;
+	mso-paper-source:0;}
+div.Section1
+	{page:Section1;}
+ /* List Definitions */
+@list l0
+	{mso-list-id:448744536;
+	mso-list-type:hybrid;
+	mso-list-template-ids:788569996 68157441 68157443 68157445 68157441 68157443 68157445 68157441 68157443 68157445;}
+@list l0:level1
+	{mso-level-number-format:bullet;
+	mso-level-text:\F0B7;
+	mso-level-tab-stop:71.25pt;
+	mso-level-number-position:left;
+	margin-left:71.25pt;
+	text-indent:-18.0pt;
+	font-family:Symbol;}
+@list l1
+	{mso-list-id:1804805852;
+	mso-list-type:hybrid;
+	mso-list-template-ids:-532092762 132160630 68157465 68157467 68157455 68157465 68157467 68157455 68157465 68157467;}
+@list l1:level1
+	{mso-level-start-at:8;
+	mso-level-text:%1;
+	mso-level-tab-stop:177.0pt;
+	mso-level-number-position:left;
+	margin-left:177.0pt;
+	text-indent:-5.0cm;}
+@list l2
+	{mso-list-id:1892224987;
+	mso-list-type:hybrid;
+	mso-list-template-ids:172241172 -1441130736 68157465 68157467 68157455 68157465 68157467 68157455 68157465 68157467;}
+@list l2:level1
+	{mso-level-text:"%1\)";
+	mso-level-tab-stop:35.25pt;
+	mso-level-number-position:left;
+	margin-left:35.25pt;
+	text-indent:-35.25pt;}
+ol
+	{margin-bottom:0cm;}
+ul
+	{margin-bottom:0cm;}
+-->
+</style>
+</head>
+
+<body lang=IT style='tab-interval:35.4pt'>
+
+<div class=Section1>
+
+<p class=MsoNormal align=center style='text-align:center'><b><span
+style='font-size:14.0pt;mso-bidi-font-size:12.0pt'>Fondamenti di informatica
+(SSE e Statistica)<o:p></o:p></span></b></p>
+
+<p class=MsoNormal align=center style='text-align:center'><b><span
+style='font-size:14.0pt;mso-bidi-font-size:12.0pt'>Prova di esonero<o:p></o:p></span></b></p>
+
+<p class=MsoNormal align=center style='text-align:center'><b><span
+style='font-size:14.0pt;mso-bidi-font-size:12.0pt'>del 10 maggio 2001<o:p></o:p></span></b></p>
+
+<p class=MsoNormal><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=MsoNormal><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=MsoNormal><b>Domanda 1 (10 punti)<o:p></o:p></b></p>
+
+<p class=MsoBodyTextIndent2>Scrivere un programma C che legge da tastiera 20
+interi, e li stampa ordinati in senso non decrescente usando l’algoritmo
+bubble-sort.</p>
+
+<p class=MsoNormal><b><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></b></p>
+
+<p class=MsoNormal><b>Soluzione<o:p></o:p></b></p>
+
+<p class=MsoNormal><b><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></b></p>
+
+<p class=MsoPlainText><span style='mso-fareast-font-family:"MS Mincho"'>#include
+&lt;stdio.h&gt;<o:p></o:p></span></p>
+
+<p class=MsoPlainText><span style='mso-fareast-font-family:"MS Mincho"'>#include
+&lt;conio.h&gt;<o:p></o:p></span></p>
+
+<p class=MsoPlainText><span style='mso-fareast-font-family:"MS Mincho"'>#define
+NMAX 20<o:p></o:p></span></p>
+
+<p class=MsoPlainText><span style='mso-fareast-font-family:"MS Mincho"'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=MsoPlainText><span style='mso-fareast-font-family:"MS Mincho"'>void
+leggi_vettore(int *n,int *vett);<o:p></o:p></span></p>
+
+<p class=MsoPlainText><span style='mso-fareast-font-family:"MS Mincho"'>void
+scambia(int *a, int *b);<o:p></o:p></span></p>
+
+<p class=MsoPlainText><span style='mso-fareast-font-family:"MS Mincho"'>void
+stampa_vettore(int n, int*vett);<o:p></o:p></span></p>
+
+<p class=MsoPlainText><span style='mso-fareast-font-family:"MS Mincho"'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=MsoPlainText><span lang=FR style='mso-fareast-font-family:"MS Mincho";
+mso-ansi-language:FR'>main()<o:p></o:p></span></p>
+
+<p class=MsoPlainText><span lang=FR style='mso-fareast-font-family:"MS Mincho";
+mso-ansi-language:FR'>{<span style="mso-spacerun: yes">     </span>int v[NMAX];<o:p></o:p></span></p>
+
+<p class=MsoPlainText><span lang=FR style='mso-fareast-font-family:"MS Mincho";
+mso-ansi-language:FR'><span style='mso-tab-count:1'>      </span></span><span
+lang=EN-GB style='mso-fareast-font-family:"MS Mincho";mso-ansi-language:EN-GB'>int
+n,i,p,m;<o:p></o:p></span></p>
+
+<p class=MsoPlainText><span lang=EN-GB style='mso-fareast-font-family:"MS Mincho";
+mso-ansi-language:EN-GB'><span style='mso-tab-count:1'>      </span></span><span
+style='mso-fareast-font-family:"MS Mincho"'>clrscr();<o:p></o:p></span></p>
+
+<p class=MsoPlainText><span style='mso-fareast-font-family:"MS Mincho"'><span
+style='mso-tab-count:1'>      </span>leggi_vettore(&amp;n,v);<o:p></o:p></span></p>
+
+<p class=MsoPlainText><span style='mso-fareast-font-family:"MS Mincho"'><span
+style='mso-tab-count:1'>      </span></span><span lang=EN-GB style='mso-fareast-font-family:
+"MS Mincho";mso-ansi-language:EN-GB'>m=n;<o:p></o:p></span></p>
+
+<p class=MsoPlainText><span lang=EN-GB style='mso-fareast-font-family:"MS Mincho";
+mso-ansi-language:EN-GB'><o:p></o:p></span></p>
+
+<p class=MsoPlainText><span lang=EN-GB style='mso-fareast-font-family:"MS Mincho";
+mso-ansi-language:EN-GB'><span style='mso-tab-count:1'>      </span>do {<o:p></o:p></span></p>
+
+<p class=MsoPlainText><span lang=EN-GB style='mso-fareast-font-family:"MS Mincho";
+mso-ansi-language:EN-GB'><span style='mso-tab-count:2'>            </span>p=1;<o:p></o:p></span></p>
+
+<p class=MsoPlainText><span lang=EN-GB style='mso-fareast-font-family:"MS Mincho";
+mso-ansi-language:EN-GB'><span style='mso-tab-count:2'>            </span>for (i=0;i&lt;m-1;i++)
+{<o:p></o:p></span></p>
+
+<p class=MsoPlainText><span lang=EN-GB style='mso-fareast-font-family:"MS Mincho";
+mso-ansi-language:EN-GB'><span style='mso-tab-count:3'>                  </span>if
+(v[i]&gt;v[i+1]) {<o:p></o:p></span></p>
+
+<p class=MsoPlainText><span lang=EN-GB style='mso-fareast-font-family:"MS Mincho";
+mso-ansi-language:EN-GB'><span style='mso-tab-count:4'>                        </span></span><span
+style='mso-fareast-font-family:"MS Mincho"'>scambia(&amp;v[i],&amp;v[i+1]);<o:p></o:p></span></p>
+
+<p class=MsoPlainText><span style='mso-fareast-font-family:"MS Mincho"'><span
+style='mso-tab-count:4'>                        </span></span><span lang=EN-GB
+style='mso-fareast-font-family:"MS Mincho";mso-ansi-language:EN-GB'>p=i+1;<o:p></o:p></span></p>
+
+<p class=MsoPlainText><span lang=EN-GB style='mso-fareast-font-family:"MS Mincho";
+mso-ansi-language:EN-GB'><span style='mso-tab-count:3'>                  </span>}<o:p></o:p></span></p>
+
+<p class=MsoPlainText><span lang=EN-GB style='mso-fareast-font-family:"MS Mincho";
+mso-ansi-language:EN-GB'><span style='mso-tab-count:2'>            </span>}<o:p></o:p></span></p>
+
+<p class=MsoPlainText><span lang=EN-GB style='mso-fareast-font-family:"MS Mincho";
+mso-ansi-language:EN-GB'><span style='mso-tab-count:2'>            </span>m=p;<o:p></o:p></span></p>
+
+<p class=MsoPlainText><span lang=EN-GB style='mso-fareast-font-family:"MS Mincho";
+mso-ansi-language:EN-GB'><span style='mso-tab-count:1'>      </span>}<o:p></o:p></span></p>
+
+<p class=MsoPlainText><span lang=EN-GB style='mso-fareast-font-family:"MS Mincho";
+mso-ansi-language:EN-GB'><span style='mso-tab-count:1'>      </span>while(p&gt;1);<o:p></o:p></span></p>
+
+<p class=MsoPlainText><span lang=EN-GB style='mso-fareast-font-family:"MS Mincho";
+mso-ansi-language:EN-GB'><span style='mso-tab-count:1'>      </span></span><span
+style='mso-fareast-font-family:"MS Mincho"'>stampa_vettore(n,v);<o:p></o:p></span></p>
+
+<p class=MsoPlainText><span style='mso-fareast-font-family:"MS Mincho"'><span
+style='mso-tab-count:1'>      </span>getch();<o:p></o:p></span></p>
+
+<p class=MsoPlainText><span style='mso-fareast-font-family:"MS Mincho"'>}<o:p></o:p></span></p>
+
+<p class=MsoPlainText><span style='mso-fareast-font-family:"MS Mincho"'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=MsoPlainText><span style='mso-fareast-font-family:"MS Mincho"'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=MsoPlainText><span style='mso-fareast-font-family:"MS Mincho"'>void
+leggi_vettore(int *n, int *vett)<o:p></o:p></span></p>
+
+<p class=MsoPlainText><span style='mso-fareast-font-family:"MS Mincho"'>{<span
+style="mso-spacerun: yes">       </span>int i;<o:p></o:p></span></p>
+
+<p class=MsoPlainText><span style='mso-fareast-font-family:"MS Mincho"'><span
+style='mso-tab-count:1'>      </span>printf(&quot;scrivi la dimensione del
+vettore (&lt;=%d): &quot;,NMAX);<o:p></o:p></span></p>
+
+<p class=MsoPlainText><span style='mso-fareast-font-family:"MS Mincho"'><span
+style='mso-tab-count:1'>      </span>scanf(&quot;%d&quot;,n);<o:p></o:p></span></p>
+
+<p class=MsoPlainText><span style='mso-fareast-font-family:"MS Mincho"'><span
+style='mso-tab-count:1'>      </span></span><span lang=EN-GB style='mso-fareast-font-family:
+"MS Mincho";mso-ansi-language:EN-GB'>for (i=0;i&lt;*n;i++) {<o:p></o:p></span></p>
+
+<p class=MsoPlainText><span lang=EN-GB style='mso-fareast-font-family:"MS Mincho";
+mso-ansi-language:EN-GB'><span style='mso-tab-count:2'>            </span></span><span
+style='mso-fareast-font-family:"MS Mincho"'>printf(&quot;v[%d] = &quot;,i);<o:p></o:p></span></p>
+
+<p class=MsoPlainText><span style='mso-fareast-font-family:"MS Mincho"'><span
+style='mso-tab-count:2'>            </span>scanf(&quot;%d&quot;,&amp;vett[i]);<o:p></o:p></span></p>
+
+<p class=MsoPlainText><span style='mso-fareast-font-family:"MS Mincho"'><span
+style='mso-tab-count:1'>      </span>}<o:p></o:p></span></p>
+
+<p class=MsoPlainText><span style='mso-fareast-font-family:"MS Mincho"'>}<o:p></o:p></span></p>
+
+<p class=MsoPlainText><span style='mso-fareast-font-family:"MS Mincho"'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=MsoPlainText><span style='mso-fareast-font-family:"MS Mincho"'>void
+scambia(int *a, int *b)<o:p></o:p></span></p>
+
+<p class=MsoPlainText><span style='mso-fareast-font-family:"MS Mincho"'>{<span
+style='mso-tab-count:1'>     </span>int temp;<o:p></o:p></span></p>
+
+<p class=MsoPlainText><span style='mso-fareast-font-family:"MS Mincho"'><span
+style='mso-tab-count:1'>      </span>temp=*a;<o:p></o:p></span></p>
+
+<p class=MsoPlainText><span style='mso-fareast-font-family:"MS Mincho"'><span
+style='mso-tab-count:1'>      </span>*a=*b;<o:p></o:p></span></p>
+
+<p class=MsoPlainText><span style='mso-fareast-font-family:"MS Mincho"'><span
+style='mso-tab-count:1'>      </span>*b=temp;<o:p></o:p></span></p>
+
+<p class=MsoPlainText><span style='mso-fareast-font-family:"MS Mincho"'>}<o:p></o:p></span></p>
+
+<p class=MsoPlainText><span style='mso-fareast-font-family:"MS Mincho"'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=MsoPlainText><span style='mso-fareast-font-family:"MS Mincho"'>void
+stampa_vettore(int n, int *vett)<o:p></o:p></span></p>
+
+<p class=MsoPlainText><span style='mso-fareast-font-family:"MS Mincho"'>{<span
+style="mso-spacerun: yes">       </span>int i;<o:p></o:p></span></p>
+
+<p class=MsoPlainText><span style='mso-fareast-font-family:"MS Mincho"'><span
+style='mso-tab-count:1'>      </span>printf(&quot;\n\n&quot;);<o:p></o:p></span></p>
+
+<p class=MsoPlainText><span style='mso-fareast-font-family:"MS Mincho"'><span
+style='mso-tab-count:1'>      </span></span><span lang=EN-GB style='mso-fareast-font-family:
+"MS Mincho";mso-ansi-language:EN-GB'>for (i=0;i&lt;n;i++)<o:p></o:p></span></p>
+
+<p class=MsoPlainText><span lang=EN-GB style='mso-fareast-font-family:"MS Mincho";
+mso-ansi-language:EN-GB'><span style='mso-tab-count:2'>            </span></span><span
+style='mso-fareast-font-family:"MS Mincho"'>printf(&quot;v[%d] =
+%d\n&quot;,i,vett[i]);<o:p></o:p></span></p>
+
+<p class=MsoPlainText><span style='mso-fareast-font-family:"MS Mincho"'>}<o:p></o:p></span></p>
+
+<p class=MsoPlainText><span style='mso-fareast-font-family:"MS Mincho"'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=MsoBodyTextIndent2><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=MsoNormal><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=MsoNormal><b>Domanda 2 (15 punti)<o:p></o:p></b></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt'>Scrivere un
+funzione C di nome <span style='font-family:"Courier New"'>confronta_maiuscole</span>
+che, dati come parametri due array di caratteri (ciascuno terminato
+opportunamente), restituisce –1, 0 , o +1 se il numero di lettere maiuscole
+contenute nel primo è rispettivamente minore, uguale o maggiore del numero di
+lettere maiuscole contenute nel secondo. Se opportuno, si potranno definire
+altre funzioni e invocarle dalla funzione <span style='font-family:"Courier New"'>confronta_maiuscole</span>.</p>
+
+<p class=MsoNormal><b><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></b></p>
+
+<p class=MsoNormal><b>Soluzione<o:p></o:p></b></p>
+
+<p class=MsoNormal>Poichè la funzione dovrà eseguire la stessa operazione
+(contare le maiuscole) su entrambe le stringhe passate, è consigliabile
+definire una funzione ausiliaria che, data una stringa come parametro,
+restituisce il numero di lettere maiuscole in essa contenute:</p>
+
+<p class=MsoNormal><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=MsoPlainText><span style='mso-fareast-font-family:"MS Mincho"'>int
+conta_maiuscole(char *v);<o:p></o:p></span></p>
+
+<p class=MsoPlainText><span style='mso-fareast-font-family:"MS Mincho"'><span
+style='mso-tab-count:1'>      </span><o:p></o:p></span></p>
+
+<p class=MsoPlainText><span style='mso-fareast-font-family:"MS Mincho"'>int
+confronta_maiuscole(char *a, char *b)<o:p></o:p></span></p>
+
+<p class=MsoPlainText><span style='mso-fareast-font-family:"MS Mincho"'>{<o:p></o:p></span></p>
+
+<p class=MsoPlainText><span style='mso-fareast-font-family:"MS Mincho"'><span
+style='mso-tab-count:1'>      </span>int na, nb;<o:p></o:p></span></p>
+
+<p class=MsoPlainText><span style='mso-fareast-font-family:"MS Mincho"'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=MsoPlainText><span style='mso-fareast-font-family:"MS Mincho"'><span
+style='mso-tab-count:1'>      </span>na = conta_maiuscole(a);<o:p></o:p></span></p>
+
+<p class=MsoPlainText><span style='mso-fareast-font-family:"MS Mincho"'><span
+style='mso-tab-count:1'>      </span>nb = conta_maiuscole(b);<o:p></o:p></span></p>
+
+<p class=MsoPlainText><span style='mso-fareast-font-family:"MS Mincho"'><span
+style='mso-tab-count:1'>      </span></span><span lang=EN-GB style='mso-fareast-font-family:
+"MS Mincho";mso-ansi-language:EN-GB'>if(na&gt;nb)<o:p></o:p></span></p>
+
+<p class=MsoPlainText><span lang=EN-GB style='mso-fareast-font-family:"MS Mincho";
+mso-ansi-language:EN-GB'><span style='mso-tab-count:2'>            </span>return
+(1);<o:p></o:p></span></p>
+
+<p class=MsoPlainText><span lang=EN-GB style='mso-fareast-font-family:"MS Mincho";
+mso-ansi-language:EN-GB'><span style='mso-tab-count:1'>      </span>else if
+(na==nb)<o:p></o:p></span></p>
+
+<p class=MsoPlainText><span lang=EN-GB style='mso-fareast-font-family:"MS Mincho";
+mso-ansi-language:EN-GB'><span style='mso-tab-count:2'>            </span>return
+(0);<o:p></o:p></span></p>
+
+<p class=MsoPlainText><span lang=EN-GB style='mso-fareast-font-family:"MS Mincho";
+mso-ansi-language:EN-GB'><span style='mso-tab-count:1'>      </span>else<o:p></o:p></span></p>
+
+<p class=MsoPlainText><span lang=EN-GB style='mso-fareast-font-family:"MS Mincho";
+mso-ansi-language:EN-GB'><span style='mso-tab-count:2'>            </span>return
+(-1);<o:p></o:p></span></p>
+
+<p class=MsoPlainText><span style='mso-fareast-font-family:"MS Mincho"'>}<o:p></o:p></span></p>
+
+<p class=MsoNormal><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=MsoPlainText><span style='mso-fareast-font-family:"MS Mincho"'>int
+conta_maiuscole(char *v)<o:p></o:p></span></p>
+
+<p class=MsoPlainText><span style='mso-fareast-font-family:"MS Mincho"'>{<o:p></o:p></span></p>
+
+<p class=MsoPlainText><span style='mso-fareast-font-family:"MS Mincho"'><span
+style='mso-tab-count:1'>      </span>int i, conta;<o:p></o:p></span></p>
+
+<p class=MsoPlainText><span style='mso-fareast-font-family:"MS Mincho"'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=MsoPlainText><span style='mso-fareast-font-family:"MS Mincho"'><span
+style='mso-tab-count:1'>      </span>conta = 0;<o:p></o:p></span></p>
+
+<p class=MsoPlainText><span style='mso-fareast-font-family:"MS Mincho"'><span
+style='mso-tab-count:1'>      </span>for (i=0; v[i]!=’\0’; i++)<o:p></o:p></span></p>
+
+<p class=MsoPlainText><span style='mso-fareast-font-family:"MS Mincho"'><span
+style='mso-tab-count:2'>            </span></span><span lang=EN-GB
+style='mso-fareast-font-family:"MS Mincho";mso-ansi-language:EN-GB'>if
+((v[i]&gt;=’A’) &amp;&amp; (v[i]&lt;=’Z’))<o:p></o:p></span></p>
+
+<p class=MsoPlainText style='margin-left:70.8pt;text-indent:35.4pt'><span
+style='mso-fareast-font-family:"MS Mincho"'>conta++;<o:p></o:p></span></p>
+
+<p class=MsoPlainText style='text-indent:35.4pt'><span style='mso-fareast-font-family:
+"MS Mincho"'>return (conta);<o:p></o:p></span></p>
+
+<p class=MsoPlainText><span style='mso-fareast-font-family:"MS Mincho"'>}<o:p></o:p></span></p>
+
+<p class=MsoPlainText><span style='font-size:12.0pt;mso-bidi-font-size:10.0pt;
+font-family:"Times New Roman"'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=MsoPlainText><span style='font-size:12.0pt;mso-bidi-font-size:10.0pt;
+font-family:"Times New Roman"'>La funzione conta_maiuscole può anche essere
+definita come segue:<o:p></o:p></span></p>
+
+<p class=MsoPlainText><span style='font-size:12.0pt;mso-bidi-font-size:10.0pt;
+font-family:"Times New Roman"'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=MsoPlainText><span style='mso-fareast-font-family:"MS Mincho"'>int
+conta_maiuscole(char *v)<o:p></o:p></span></p>
+
+<p class=MsoPlainText><span style='mso-fareast-font-family:"MS Mincho"'>{<o:p></o:p></span></p>
+
+<p class=MsoPlainText><span style='mso-fareast-font-family:"MS Mincho"'><span
+style='mso-tab-count:1'>      </span>int conta=0;<o:p></o:p></span></p>
+
+<p class=MsoPlainText><span style='mso-fareast-font-family:"MS Mincho"'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=MsoPlainText><span style='mso-fareast-font-family:"MS Mincho"'><span
+style='mso-tab-count:1'>      </span></span><span lang=EN-GB style='mso-fareast-font-family:
+"MS Mincho";mso-ansi-language:EN-GB'>while (*v!=’\0’) {<o:p></o:p></span></p>
+
+<p class=MsoPlainText><span lang=EN-GB style='mso-fareast-font-family:"MS Mincho";
+mso-ansi-language:EN-GB'><span style='mso-tab-count:2'>            </span>if
+((*v&gt;=’A’) &amp;&amp; (*v&lt;=’Z’))<o:p></o:p></span></p>
+
+<p class=MsoPlainText style='margin-left:70.8pt;text-indent:35.4pt'><span
+style='mso-fareast-font-family:"MS Mincho"'>conta++;<o:p></o:p></span></p>
+
+<p class=MsoPlainText><span style='mso-fareast-font-family:"MS Mincho"'><span
+style='mso-tab-count:2'>            </span>v++;<o:p></o:p></span></p>
+
+<p class=MsoPlainText><span style='mso-fareast-font-family:"MS Mincho"'><span
+style='mso-tab-count:1'>      </span>}<o:p></o:p></span></p>
+
+<p class=MsoPlainText style='text-indent:35.4pt'><span style='mso-fareast-font-family:
+"MS Mincho"'>return (conta);<o:p></o:p></span></p>
+
+<p class=MsoPlainText><span style='mso-fareast-font-family:"MS Mincho"'>}<o:p></o:p></span></p>
+
+<p class=MsoPlainText><span style='font-size:12.0pt;mso-bidi-font-size:10.0pt;
+font-family:"Times New Roman";mso-fareast-font-family:"MS Mincho"'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=MsoNormal><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=MsoNormal><b>Domanda 3 (5 punti)<o:p></o:p></b></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt'>La seguente
+funzione, che dovrebbe individuare il valore minimo in un array di interi,
+contiene numerosi errori (alcuni dovuti ad un uso errato del linguaggio C,
+alcuni ad una logica errata).</p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt'>I parametri
+formali corrispondono rispettivamente (nel programma corretto) all’indirizzo
+iniziale dell’array e al numero di elementi dell’array.</p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt'>Evidenziare
+gli errori, descriverli, e proporre soluzioni (le linee di codice sono numerate
+per semplificare il riferimento al testo).</p>
+
+<p class=MsoNormal style='margin-left:35.25pt'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=MsoNormal style='margin-left:35.25pt'><span style='font-family:"Courier New"'>1<span
+style='mso-tab-count:1'>    </span>void minimo(int *v[], int n)<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-left:35.25pt'><span style='font-family:"Courier New"'><span
+style='mso-tab-count:1'>     </span>2<span style='mso-tab-count:1'>    </span>{<span
+style='mso-tab-count:1'>    </span>int minimo;<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-left:35.25pt'><span style='font-family:"Courier New"'><span
+style='mso-tab-count:1'>     </span>3<span style='mso-tab-count:2'>        </span>minimo
+= 0;<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-left:35.25pt'><span style='font-family:"Courier New"'><span
+style='mso-tab-count:1'>     </span>4<span style='mso-tab-count:2'>        </span>for
+(i=1; i&lt;=n; i++){<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-left:35.25pt'><span style='font-family:"Courier New"'><span
+style='mso-tab-count:1'>     </span>5<span style='mso-tab-count:3'>             </span>if
+(v[i] &lt; minimo)<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-left:35.25pt'><span style='font-family:"Courier New"'><span
+style='mso-tab-count:1'>     </span>6<span style='mso-tab-count:4'>                  </span>minimo
+= v[i];<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-left:35.25pt'><span style='font-family:"Courier New"'><span
+style='mso-tab-count:1'>     </span>7<span style='mso-tab-count:3'>             </span>else<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-left:35.25pt'><span style='font-family:"Courier New"'>8<span
+style='mso-tab-count:4'>                  </span>i++;<o:p></o:p></span></p>
+
+<p class=MsoNormal style='text-indent:35.25pt'><span style='font-family:"Courier New"'>9<span
+style='mso-tab-count:2'>        </span>}<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-left:35.25pt'><span style='font-family:"Courier New"'><span
+style='mso-tab-count:1'>     </span>10<span style='mso-tab-count:2'>       </span>return
+minimo;<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-left:35.25pt'><span style='font-family:"Courier New"'>11<span
+style='mso-tab-count:1'>   </span>}<o:p></o:p></span></p>
+
+<p class=MsoNormal><b>Soluzione<o:p></o:p></b></p>
+
+<p class=MsoNormal><b><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></b></p>
+
+<p class=MsoNormal style='margin-left:35.25pt'><span style='font-family:"Courier New"'>1<span
+style='mso-tab-count:1'>    </span>void minimo(int *v[], int n)</span><b><span
+style="mso-spacerun: yes">  </span>la funzione deve essere di tipo int
+(restituisce il minimo elemento);</b><span style='font-family:"Courier New"'><o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-left:35.25pt'><span style='font-family:"Courier New"'><span
+style='mso-tab-count:1'>     </span>2<span style='mso-tab-count:1'>    </span>{<span
+style='mso-tab-count:1'>    </span>int minimo;<span style="mso-spacerun: yes"> 
+</span></span><b>deve essere definita anche la variabile i, di tipo int.
+Inoltre la variabile locale minimo non può avere lo stesso nome della funzione;</b><span
+style='font-family:"Courier New"'><o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-left:35.25pt'><span style='font-family:"Courier New"'><span
+style='mso-tab-count:1'>     </span>3<span style='mso-tab-count:2'>        </span>minimo
+= 0;</span><b><span style="mso-spacerun: yes">   </span>se l’array contenesse
+solo interi positivi, il risultato sarebbe errato (0). E’ opportuni
+inizializzare la variabile con<span style="mso-spacerun: yes">  </span>v[0], o
+con il massimo intero MAXINT (aggiungendo la #include&lt;limits.h&gt;) </b><span
+style='font-family:"Courier New"'><o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-left:35.25pt'><span style='font-family:"Courier New"'><span
+style='mso-tab-count:1'>     </span>4<span style='mso-tab-count:2'>        </span>for
+(i=1; i&lt;=n; i++){</span><b><span style="mso-spacerun: yes">  </span>l’ulimo
+elemento dell’array è v[n-1]</b><span style='font-family:"Courier New"'><o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-left:35.25pt'><span style='font-family:"Courier New"'><span
+style='mso-tab-count:1'>     </span>5<span style='mso-tab-count:3'>             </span>if
+(v[i] &lt; minimo)<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-left:35.25pt'><span style='font-family:"Courier New"'><span
+style='mso-tab-count:1'>     </span>6<span style='mso-tab-count:4'>                  </span>minimo
+= v[i];<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-left:35.25pt'><span style='font-family:"Courier New"'><span
+style='mso-tab-count:1'>     </span>7<span style='mso-tab-count:3'>             </span>else<span
+style="mso-spacerun: yes">  </span></span><b>il ramo else deve essere omesso,
+poiché la variabile i è già incrementata dal ciclo for </b><span
+style='font-family:"Courier New"'><o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-left:35.25pt'><span style='font-family:"Courier New"'>8<span
+style='mso-tab-count:4'>                  </span>i++;</span><b><span
+style="mso-spacerun: yes">  </span>vedi riga precedente</b><span
+style='font-family:"Courier New"'><o:p></o:p></span></p>
+
+<p class=MsoNormal style='text-indent:35.25pt'><span style='font-family:"Courier New"'>9<span
+style='mso-tab-count:2'>        </span>}<span style="mso-spacerun: yes">       
+</span></span><b>questa coppia di {} è superflua, ma non rappresenta un errore</b><span
+style='font-family:"Courier New"'><o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-left:35.25pt'><span style='font-family:"Courier New"'><span
+style='mso-tab-count:1'>     </span>10<span style='mso-tab-count:2'>       </span>return
+minimo;<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-left:35.25pt'><span style='font-family:"Courier New"'>11<span
+style='mso-tab-count:1'>   </span>}<o:p></o:p></span></p>
+
+<p class=MsoNormal><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=MsoNormal>segue la versione corretta della funzione:</p>
+
+<p class=MsoNormal style='margin-left:35.25pt'><span style='font-family:"Courier New"'>1<span
+style='mso-tab-count:1'>    </span>int minimo(int *v[], int n)<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-left:35.25pt'><span style='font-family:"Courier New"'><span
+style='mso-tab-count:1'>     </span></span><span lang=EN-GB style='font-family:
+"Courier New";mso-ansi-language:EN-GB'>2<span style='mso-tab-count:1'>    </span>{<span
+style='mso-tab-count:1'>    </span>int m, i;<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-left:35.25pt'><span lang=EN-GB
+style='font-family:"Courier New";mso-ansi-language:EN-GB'><span
+style='mso-tab-count:1'>     </span>3<span style='mso-tab-count:2'>        </span>m
+= v[0];<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-left:35.25pt'><span lang=EN-GB
+style='font-family:"Courier New";mso-ansi-language:EN-GB'><span
+style='mso-tab-count:1'>     </span>4<span style='mso-tab-count:2'>        </span>for
+(i=1; i&lt;n; i++)<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-left:35.25pt'><span lang=EN-GB
+style='font-family:"Courier New";mso-ansi-language:EN-GB'><span
+style='mso-tab-count:1'>     </span>5<span style='mso-tab-count:3'>             </span>if
+(v[i] &lt; m)<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-left:35.25pt'><span lang=EN-GB
+style='font-family:"Courier New";mso-ansi-language:EN-GB'><span
+style='mso-tab-count:1'>     </span></span><span style='font-family:"Courier New"'>6<span
+style='mso-tab-count:4'>                  </span>m = v[i];<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-left:35.25pt'><span style='font-family:"Courier New"'><span
+style='mso-tab-count:1'>     </span>10<span style='mso-tab-count:2'>       </span>return
+m;<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-left:35.25pt'><span style='font-family:"Courier New"'>11<span
+style='mso-tab-count:1'>   </span>}<o:p></o:p></span></p>
+
+<p class=MsoNormal><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+</div>
+
+</body>
+
+</html>

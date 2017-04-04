@@ -1,0 +1,81 @@
+<!-- file generated with webcpp 0.6.2 http://webcpp.sf.net -->
+<html>
+<head>
+<title>C:\Documents and Settings\Administrator\Documenti\Web\igea\lab\20020225\AppletGrafica1.java</title>
+<meta name="Microsoft Border" content="tb, default">
+</head>
+<body bgcolor=#ffffff text=#000000 link=#ff0000 vlink=#666666 alink=#0000ff><!--msnavigation--><table border="0" cellpadding="0" cellspacing="0" width="100%"><tr><td>
+
+<p align="center">
+</p>
+<hr>
+<p align="center">&nbsp;</p>
+
+</td></tr><!--msnavigation--></table><!--msnavigation--><table border="0" cellpadding="0" cellspacing="0" width="100%"><tr><!--msnavigation--><td valign="top">
+<pre>
+<b><font COLOR=#0000ff>import</font></b> java.applet.Applet;
+<b><font COLOR=#0000ff>import</font></b> java.awt.*;
+<b><font COLOR=#0000ff>import</font></b> java.awt.geom.Ellipse2D;
+
+<b><font COLOR=#0000ff>public</font></b> <b><font COLOR=#0000ff>class</font></b> AppletGrafica1 <b><font COLOR=#0000ff>extends</font></b> Applet
+{   <b><font COLOR=#0000ff>public</font></b> <b><font COLOR=#0000ff>void</font></b> paint(Graphics g)
+    {   <font COLOR=#666666>// ristabilisci il riferimento a Graphics2D</font>
+        Graphics2D g2=(Graphics2D)g;
+        
+        <font COLOR=#666666>//costruisci, colora e disegna parte superiore albero </font>
+        Ellipse2D.Double parteSuperiore=<b><font COLOR=#0000ff>new</font></b> Ellipse2D.Double(<font COLOR=#a900a9>5</font>,<font COLOR=#a900a9>10</font>,<font COLOR=#a900a9>30</font>,<font COLOR=#a900a9>20</font>);
+        g2.setColor(Color.green);
+        g2.fill(parteSuperiore);
+          
+        <font COLOR=#666666>//costruisci, colora e disegna parte inferiore albero </font>
+        Rectangle parteInferiore=<b><font COLOR=#0000ff>new</font></b> Rectangle(<font COLOR=#a900a9>17</font>,<font COLOR=#a900a9>30</font>,<font COLOR=#a900a9>6</font>,<font COLOR=#a900a9>40</font>);
+        g2.setColor(<b><font COLOR=#0000ff>new</font></b> Color(<font COLOR=#a900a9>1.0</font>F, <font COLOR=#a900a9>0.5</font>F, <font COLOR=#a900a9>0.5</font>F));
+        g2.fill(parteInferiore);
+        
+        <font COLOR=#666666>//costruisci albero traslato</font>
+        parteSuperiore.setFrame(<font COLOR=#a900a9>35</font>,<font COLOR=#a900a9>10</font>,<font COLOR=#a900a9>30</font>,<font COLOR=#a900a9>20</font>);
+        parteInferiore.translate(<font COLOR=#a900a9>30</font>,<font COLOR=#a900a9>0</font>);
+        g2.setColor(Color.green);
+        g2.fill(parteSuperiore);
+        g2.setColor(<b><font COLOR=#0000ff>new</font></b> Color(<font COLOR=#a900a9>1.0</font>F, <font COLOR=#a900a9>0.5</font>F, <font COLOR=#a900a9>0.5</font>F));
+        g2.fill(parteInferiore);
+        
+        <font COLOR=#666666>//costruisci casetta colorata passo passo</font>
+        <font COLOR=#666666>//costruisci prima facciata senza tetto</font>
+        Rectangle facciata= <b><font COLOR=#0000ff>new</font></b> Rectangle(<font COLOR=#a900a9>70</font>,<font COLOR=#a900a9>50</font>,<font COLOR=#a900a9>20</font>,<font COLOR=#a900a9>20</font>);
+        g2.setColor(Color.lightGray);
+        g2.fill(facciata);
+        <font COLOR=#666666>//costruisci parete laterale</font>
+        Polygon pareteLaterale= <b><font COLOR=#0000ff>new</font></b> Polygon();
+        pareteLaterale.addPoint(<font COLOR=#a900a9>90</font>,<font COLOR=#a900a9>70</font>);
+        pareteLaterale.addPoint(<font COLOR=#a900a9>110</font>,<font COLOR=#a900a9>60</font>);
+        pareteLaterale.addPoint(<font COLOR=#a900a9>110</font>,<font COLOR=#a900a9>40</font>);
+        pareteLaterale.addPoint(<font COLOR=#a900a9>90</font>,<font COLOR=#a900a9>50</font>);
+        g2.fill(pareteLaterale);
+        <font COLOR=#666666>//costruisci il frontespizio del tetto</font>
+        Polygon frontespizio= <b><font COLOR=#0000ff>new</font></b> Polygon();
+        frontespizio.addPoint(<font COLOR=#a900a9>70</font>,<font COLOR=#a900a9>50</font>);
+        frontespizio.addPoint(<font COLOR=#a900a9>80</font>,<font COLOR=#a900a9>40</font>);
+        frontespizio.addPoint(<font COLOR=#a900a9>90</font>,<font COLOR=#a900a9>50</font>);
+        g2.setColor(Color.black);
+        g2.fill(frontespizio);
+        <font COLOR=#666666>//costruisci spiovente del tetto</font>
+        Polygon spiovente= <b><font COLOR=#0000ff>new</font></b> Polygon();
+        spiovente.addPoint(<font COLOR=#a900a9>90</font>,<font COLOR=#a900a9>50</font>);
+        spiovente.addPoint(<font COLOR=#a900a9>110</font>,<font COLOR=#a900a9>40</font>);
+        spiovente.addPoint(<font COLOR=#a900a9>100</font>,<font COLOR=#a900a9>30</font>);
+        spiovente.addPoint(<font COLOR=#a900a9>80</font>,<font COLOR=#a900a9>40</font>);
+        g2.fill(spiovente);
+  }
+}
+        
+
+</pre>
+<!--msnavigation--></td></tr><!--msnavigation--></table><!--msnavigation--><table border="0" cellpadding="0" cellspacing="0" width="100%"><tr><td>
+<hr>
+      <h5 align="left">Questa è la bacheca di <b><i>Informatica Grafica</i>,
+      corso di laurea specialistica in <i>Ing. Edile-architettura<br>
+      </i></b>by <a href="mailto:damore@dis.uniroma1.it"> FdA</a></h5>
+      <h6 align="left">ultima modifica: 02/02/2005 11.30</h6>
+</td></tr><!--msnavigation--></table></body>
+</html>

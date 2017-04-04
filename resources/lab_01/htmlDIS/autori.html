@@ -1,0 +1,88 @@
+<!doctype html public "-//w3c//dtd html 4.0 transitional//en">
+<html>
+<head>
+   <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <meta name="GENERATOR" content="Mozilla/4.7 [en] (X11; I; SunOS 5.8 sun4m) [Netscape]">
+   <title>Gli Autori</title>
+</head>
+<body background="tela3.jpg" onload="timerONE=window.setTimeout('scroller_R(30)',10);">
+<script language="javascript">
+function scroller_R(seed)
+{
+        var m1  = "Grazie per aver visionato queste pagine...";
+        var m2  = "";
+        
+        var msg=m1+m2;
+        var out = " ";
+        var c   = 1;
+
+        if (seed > 100) {
+                seed--;
+                var cmd="scroller_R(" + seed + ")";
+                timerTwo=window.setTimeout(cmd,100);
+        }
+        else if (seed <= 100 && seed > 0) {
+                for (c=0 ; c < seed ; c++) {
+                        out+=" ";
+                }
+                out+=msg;
+                seed--;
+                var cmd="scroller_R(" + seed + ")";
+                    window.status=out;
+                timerTwo=window.setTimeout(cmd,100);
+        }
+        else if (seed <= 0) {
+                if (-seed < msg.length) {
+                        out+=msg.substring(-seed,msg.length);
+                        seed--;
+                        var cmd="scroller_R(" + seed + ")";
+                        window.status=out;
+                        timerTwo=window.setTimeout(cmd,100);
+                }
+                else {
+                        window.status=" ";
+                        timerTwo=window.setTimeout("scroller_R(100)",75);
+                }
+        }
+}
+</script>
+
+<h4>
+<a href="/html/index3.html"><img SRC="home.gif" height=40 width=40></a><a href="../index3.html">
+HomePage DIPLOMA</a></h4>
+
+<hr>
+<p>Gli autori ringraziano l'Ing. Giovanni Rumolo, la Sig.na Tiziana Toni,
+la Sig.na AnnaPaola Di Risio ed il Prof. Maurizio Lenzerini per l'opportunit&agrave;
+concessa e la preziosa collaborazione senza le quali non si sarebbe potuto
+realizzare questo Web Server.
+<ul>
+<li>
+<b>Del Nonno Leonardo</b></li>
+
+<li>
+<b>Filacchioni Massimiliano</b></li>
+
+<li>
+<b>Frare Guido</b></li>
+
+<li>
+<b>Ingenito Alfredo</b></li>
+
+<li>
+<b>Perini Luca</b></li>
+
+<li>
+<b>Perna Emilio</b></li>
+
+<li>
+<b>Sette Corrado</b></li>
+</ul>
+
+<p><br>Un ringraziamento particolare va alla <b>Sig.ra Maria Grazia Giacon</b>
+per la cortesia dimostrata (come sempre d'altro canto) nella fornitura
+delle ultime notizie aggiornate.
+<br>
+<hr>
+</body>
+</html>

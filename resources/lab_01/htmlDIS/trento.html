@@ -1,0 +1,235 @@
+<html>
+<head>
+<link href="moses.css" rel="stylesheet" type="text/css">
+<title>Programma di lavoro dell'unit&agrave; di Roma</title>
+</head>
+
+<body>
+
+<h1>Descrizione del programma e dei compiti dell'Unit&agrave; di Trento</h1>
+
+<a href="base-trento.html">Base di partenza scientifica</a>
+
+<p>
+Con riferimento alle fasi come numerate e complessivamente descritte nel modulo A, l'Unita' di Ricerca di Trento sara` task leader delle fasi 3,6,10. Svolgera` inoltre attivita` di collaborazione nelle fasi 1,2,4,8 con le corrispondenti unita` task leaders. Per una visione ed un inquadramento delle singole fasi all'interno del progetto, si rimanda al modulo A.</p>
+
+<p>
+Si ricorda che l'unita' di Trento si occupera' principalmente dello sviluppo di decisori SAT-based per logiche temporali, focalizzandosi inizialmente e principalmente su LTL. L'unita' di Trento sperimentera' inoltre le potenzialita' dei decisori sviluppati nel campo della verifica formale.</p>
+
+<p>
+Le attivita` svolte dall'Unita` di Trento nelle fasi di cui e` task leader e' qui di sotto dettagliata. La durata di ogni fase e` specificata indicando il suo mese di inizio e di fine. Per ogni fase, vengono anche indicati i mesi a cui vengono rilasciati dei risultati intermedi e/o finali.</p>
+
+<h4>Fase 3 - TLSAT: Una procedura SAT-Based per Model Checking</h4>
+
+Durata mesi: 2-21<br>
+Risultati a mesi: 8,12,21 <br>
+Unita' di Ricerca Coinvolte: Trento (task leader), Genova.<br>
+
+<p>
+Definizione ed implementazione di una procedura SAT-Based Model Checking. Tale attivita` sara` articolata nei seguenti periodi.</p>
+
+<dl>
+
+<dt>
+Mesi 2-8:
+
+<dd>
+Definizione di algoritmi SAT-Based per LTL con dimostrazioni di correttezza e completezza. Come punto di partenza, si considereranno le procedure esistenti per la verifica di soddisfacibilita` di formule LTL. In particolare, si analizzeranno le procedure descritte in [22,24,25,26], giungendo quindi alla definizione di corrispondenti procedure SAT-Based. Verrano inoltre analizzate le ottimizzazioni usate in [10,14,27] per la logica modale K (ad esempio, early pruning), verificando quali siano utilizzazibili anche per LTL senza comprometterne la correttezza e completezza, e studiandone il possibile impatto.
+
+<dt>
+Mesi 8-12:
+
+<dd>Implementazione prototipale degli algoritmi. Al fine di massimizzare l'efficenza e nel contempo la portabilita` dei prototipi, si usera` il linguaggio di programmazione C. Inoltre, al fine di rendere l'implementazione facilmente manutenibile, si fara` un alto uso di librerie pubblicamente disponibili
+
+<dt>
+Mesi 12-21:
+
+<dd>Implementazione finale degli algoritmi. In questa fase i prototipi precedentemente sviluppati veranno preliminarmente testati usando i generatori di test casuali forniti dall'Unita` di Roma. Scopo di questo testing preliminare e` vedere se e quali degli algoritmi definiti risultano sempre meno efficenti di altri. Ovviamente, si procedera` all'implementazione definitiva dei soli algoritmi che non sono dominati da altri.<br>
+
+Gli algoritmi dovranno accettare in ingresso problemi di LTL Model Checking espressi nel formato messo a punto nella Fase 4. L'unita' di Genova collaborera' allo svolgimento delle prime due attivita' data l'esperienza maturata in questo ambito.
+
+</dl>
+
+Risultati: <br>
+
+<ul>
+<li>mese 8: Rapporto tecnico con algoritmi SAT-based per satisfiability checking in LTL, e con dimostrazioni di Correttezza e Completezza degli algoritmi.
+<li>mese 12: Implementazione prototipale degli algoritmi
+<li>mese 21: Implementazione finale degli algoritmi
+<li>mese 21: Rapporto tecnico con descrizione finale degli algoritmi
+</ul>
+
+<h4>Fase 6 - MC2TLSAT: procedure di riduzione di Model Checking a TLSAT</h4>
+
+Durata mesi: 13-17<br>
+Risultati a mesi: 17<br>
+Unita' di Ricerca Coinvolte: Trento (task leader).<br>
+
+<p>
+Verifica di sistemi critici, attraverso loro formalizzazione in LTL. La letteratura esistente su esempi di sistemi critici formalizzati in LTL o qualche altra logica temporale e' molto povera. Di solito, ogni singolo articolo si focalizza su qualche caso di studio, e su come e' formalizzato nel proprio sistema. Al fine di avere comunque una serie di casi di studio, si considereranno gli esempi dalla letteratura del model checking, quali ad esempio quelli analizzati in [20] e/o distribuiti con i model checkers disponibili. In particolare, si considerera` la letteratura concernente il sistema SPIN [23], SMV [28], NuSMV [29]. SPIN verra` analizzato in quanto e' un sistema per LTL-model checking. Pertanto, ogni problema formalizzabile in SPIN e' formalizzabile anche come il problema di determinare la soddisfacibilita' di una formula LTL. Sebbene siano due sistemi per CTL model checking, SMV e NuSMV verrano analizzati in quanto:</p>
+
+<ul>
+
+<li>in molti casi la specifica e' formalizzabile anche in LTL (si pensi ad esempio alla specifica che in ogni stato deve valere la formula proposizionale P: questa e' formalizzabile come AG(P) in CTL e G(P) in LTL), e quindi nuovamente riducibile al problema di determinare la soddisfacibilita` di una formula LTL,
+
+<li>SMV, e la sua re-implementazione NuSMV, sono fra gli OBDD-based model checkers piu` diffusi ed efficenti. Considerando gli stessi esempi, si ha una prima stima delle potenzialita` dell'approccio SAT-based rispetto all'approccio OBDD-based.
+
+</ul>
+
+<p>
+In ogni caso, si definira` ed implementera` un algoritmo MC2TLSAT che associa ad ogni problema di LTL model checking, la formula corrispondente di LTL di cui si deve verificarne la soddisfacibilita`. Come abbiamo infatti detto, ogni problema di LTL model checking e' riducibile in tempo polinomiale al problema di verifica di soddisfacibilita` di una formula LTL. Si veda [2] per una presentazione teorica della riduzione.</p>
+
+<p>
+In ogni caso, gli esempi considerati saranno poi usati come guida nella fase 8, avente come leader l'Unita` di Roma.</p>
+
+<p>
+Risultati al mese 17:</p>
+
+<ul>
+
+<li>Rapporto tecnico sulla procedura MC2TLSAT, con dimostrazione di correttezza e completezza.
+<li>Implementazione della procedura di riduzione.
+<li>Identificazione di alcuni casi di studio nel campo della verifica formale di sistemi critici.
+
+</ul>
+
+<h4>Fase 10 - Testing e Ottimizzazione di MC2TLSAT e TLSAT</h4>
+
+Durata mesi: 21-24<br>
+Risultati a mesi: 24<br>
+Unita' di Ricerca Coinvolte: Trento (task leader), Roma.<br>
+
+<p>
+Le procedure MC2TLSAT e TLSAT vengono testate estensivamente utilizzando i test-set messi a punto nelle Fasi 4 e 8.</p>
+
+<p>
+Gli obiettivi di questa attivita` sono molteplici. Si vuole ottenere un debugging estensivo della procedura, identificare potenziali sorgenti di inefficienza, nonche' mettere a punto ottimizzazioni. Piu` in dettaglio, si utilizzeranno come test-set problemi dove gli OBDD-based Model Checkers hanno prestazioni molto diverse, dal molto positive a molto negative. Lo scopo e' quello di giungere a una valutazione sperimentale completa dell'approccio SAT-based al Model Checking, soprattutto comparata all'approccio degli OBDD-based Model Checkers.</p>
+
+<p>
+L'unita' di Roma fornira' supporto all'utilizzo delle librerie di testing messe a punto nelle Fasi 4 e 8. I risultati sperimentali protranno portare a un riallineamento delle librerie di testing qualora il testing rivelasse caratteristiche inattese delle stesse.</p>
+
+<p>
+Risultati al mese 24:</p>
+
+<ul>
+<li>Rapporto tecnico sui risultati del testing
+<li>Versione ottimizzata degli algoritmi
+</ul>
+
+<hr>
+
+<h1>The Program of the Unit of Trento</h1>
+
+<p>
+With reference to the phases described in form A, the Research Unit of Trento will be the task leader of phases 3, 6 and 10. It will cooperate with the task leaders of phases 1, 2, 4 and 8. (See form A for details about each phase of the project.)</p>
+
+<p>
+We recall that the main goal of the unit of Trento is the development of SAT-based decision procedures for temporal logics, with focus on LTL. The unit of Trento will also test the implemented decision procedures in the field of formal verification.</p>
+
+<p>
+Here it follows a description of the phases whom the unit of Trento is task leader of. The duration of each phase, as well as the beginning month and the ending month are specified. For each phase, months corresponding to the release of intermediate and/or final results are also detailed.</p>
+
+<h4>Phase 3 - TLSAT: A SAT-Based procedure for Model Checking</h4>
+
+Months: 2-21
+Results: 8, 12, 21<br>
+Research Units: Trento (task leader) and Genova.<br>
+
+<p>
+Design and implementation of a SAT-Based procedure for Model Checking. This phase consists of three steps:</p>
+
+<dl>
+
+<dt>
+Months 2-8:
+
+<dd>
+Design of SAT-based algorithms for LTL together with correctness and completeness proofs. As a starting point, satisfiability procedures for LTL the available in the literature will be analyzed. In particular, the procedures described in [22,24,25,26] will be carefully scrutinized so to design the corresponding SAT-Based ones. Moreover, some optimizations described in [10,14,27] for the modal logic K (such as early pruning) will be considered. It will be studied whether these optimizations could be used for LTL while preserving soundness and completeness of the decision procedures as well as the potential speed up.
+
+<dt>
+Months 8-12:
+
+<dd>
+Prototypes of the designed algorithms. In order to improve the efficiency of the prototypes together with their portability, the C programming language will be used. Moreover freely available libraries will be used as often as possible, in order to pursue maintainability.
+
+<dt>
+Months 12-21:
+
+<dd>
+Final implementation of the algorithms. In this phase, the previously developed prototypes will be tested by using the random test generator provided by the Research Unit of Rome. The testing is performed in order to see if any algorithm poorly performs with respect to all the others. Of course such algorithms, if any, will not be considered for further development.<br>
+
+The input of the algorithms will be LTL Model Checking problems specified using the format devised in Phase 4. Given the experience of the unit of Genova in this field, strict cooperation in the development of the first two activities is envisaged.
+
+</dl>
+
+Results:<br>
+
+<ul>
+<li>month 8: Technical Report about SAT-Based algorithms for satisfiability checking in LTL, Completeness and Correctness proofs of the algorithms.<br>
+<li>month 12: Prototypes of the algorithms.<br>
+<li>month 21: Final implementation of the algorithms.<br>
+<li>month 21: Technical Report about the final version of the algorithms.<br>
+</ul>
+
+<h4>Phase 6 - MC2TLSAT: reduction procedures from Model Checking to TLSAT</h4>
+
+Months: 13-17<br>
+Results: 17<br>
+Research units: Trento (task leader).<br>
+
+<p>
+Verification of critical systems using LTL formalizations. The existing literature on examples of critical systems formalized using LTL or some other kind of temporal logic is poor. Usually, every paper on the subject focuses on a small number of case studies and describes the system formalization. In order to collect a relevant test set, examples from the Model Checking literature will be considered, e.g., those analyzed in [20] and/or those distributed with the available model checkers. Specifically, the literature about the systems SPIN [23], SMV [28] and NuSMV [29] will be considered. SPIN will be considered since it is a LTL model checking system. Therefore, if a problem can be formalized using SPIN then it can be formalized as a satisfiability problem for an LTL formula. Even if SMV and NuSMV handle CTL model checking problems, they will be considered for the following reasons:</p>
+
+<ul>
+
+<li>in many cases the specification can be formalized using LTL. As an example, think of a propositional property P that must be true in every state: this can be formalized using AG(P) in CTL and, equivalently, using G(P) in LTL.
+
+<li>SMV and it re-implementation NuSMV are among the most efficient and well-known model checkers. Considering the very same examples, a first estimate of the advantages of the SAT-based approach over the OBDD-based approach will be obtained.
+
+</ul>
+
+<p>
+An algorithm MC2TLSAT will be designed and implemented. Such an algorithm will translate an LTL model checking problem into a corresponding LTL formula whose satisfiability is to be checked. As mentioned before, every LTL model checking problem is polynomial-time reducible to the problem of checking the satisfiability of an LTL formula. See [2] for a theoretical presentation of the reduction.</p>
+
+<p>
+In any case, the examples considered will be used as a guideline during phase 8 whose task leader is the unit of Roma.</p>
+
+Results (month 17):<br>
+
+<ul>
+
+<li>Technical report on the procedure MC2TLSAT, together with its proof of soundness and completeness.
+
+<li>Implementation of the reduction procedure.
+
+<li>Identification of some case studies in the field of formal verification of critical systems.
+
+</ul>
+
+<h4>Phase 10 - Testing and optimization of MC2TLSAT and TLSAT</h4>
+
+Months: 21-24<br>
+Results: 24<br>
+Research units involved: Trento (task leader), Roma.<br>
+
+<p>
+The procedures MC2TLSAT and TLSAT are extensively tested using the test-sets defined during the phases 4 and 8.</p>
+
+<p>
+Objectives of this task are manifold. An extensive debugging of the procedures is to be attained, possible sources of inefficiency are to be identified, optimizations are to be defined. Specifically, test-sets where the performance of the OBDD-based Model Checkers varies a lot will be used. The aim is to obtain a complete experimental evaluation of the SAT-based approach, especially w.r.t. the OBDD-based model Checkers.</p>
+
+<p>
+The unit of Roma will provide support for the utilization of the libraries defined during the phases 4 and 8. The experimental results may lead to changes in the libraries whenever the testing process reveals unexpected characteristics of them.</p>
+
+Results (month 24):<br>
+
+<ul>
+
+<li>Technical report on the testing results
+<li>Optimized version of the algorithms
+
+</ul>
+
+</body>
+</html>
+

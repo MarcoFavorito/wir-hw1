@@ -1,0 +1,1370 @@
+<html>
+<head>
+<title>Alberi binari</title>
+</head>
+
+<body>
+
+<h1>Alberi binari</h1>
+
+<p>
+Definizione di albero binario:
+</p>
+
+<dl>
+
+<dt>matematica:
+<dd>un albero &egrave;:
+<ul>
+<li>un albero vuoto, oppure
+<li>&egrave; composto da un dato pi&ugrave; due alberi
+</ul>
+
+<dt>in Java:
+<dd>un oggetto che contiene due riferimenti a due oggetti
+dello stesso tipo
+
+</dl>
+
+<hr>
+
+
+<h4>Rappresentazione</h4>
+
+<dl>
+
+<dt>semplificata:
+<dd>gli alberi sono oggetti con un campo <tt>info</tt> e due
+campi <tt>sinistro</tt> e <tt>destro</tt>
+
+<dt>object-oriented:
+<dd>rappresentazione incapsulata di un albero (in senso
+matematico)
+
+</dl>
+
+<hr>
+
+
+<h4>Rappresentazione semplificata</h4>
+
+<p>
+Tutti campi pubblici
+</p>
+
+<pre>
+class Albero {
+  public Object info;
+  public Albero sinistro;
+  public Albero destro;
+
+  public Albero(Object i, Albero s, Albero d) {
+    info=i;
+    this.sinistro=s;
+    this.destro=d;
+  }
+}
+</pre>
+
+<p>
+Il costruttore non &egrave; necessario
+</p>
+
+<hr>
+
+
+<h4>Ricorsione</h4>
+
+<p>
+Si parte dal presupposto che il metodo funzioni
+</p>
+
+<p>
+Si scrive il corpo del metodo
+</p>
+
+<p>
+Lasciate perdere i record di attivazione (per ora)
+</p>
+
+<hr>
+
+
+<h4>Esempio</h4>
+
+<p>
+Stampa degli elementi di un albero
+</p>
+
+<hr>
+
+
+<h4>Passo 1</h4>
+
+<p>
+si scrive l'intestazione:
+</p>
+
+<pre>
+  static void stampaTutti(Albero a) {
+    // corpo della funzione
+  }
+</pre>
+
+<hr>
+
+
+<h4>Assunzione ricorsiva</h4>
+
+<pre>
+  static void stampaTutti(Albero a) {
+    // corpo della funzione
+  }
+</pre>
+
+<p>
+Nel corpo del metodo si pu&ograve; usare la funzione
+<tt>stampaTutti</tt>
+</p>
+
+<pre>
+  static void stampaTutti(Albero a) {
+    // corpo della funzione
+    ...
+    stampaTutti(b);
+    ...
+  }
+</pre>
+
+
+<p>
+L'invocazione <tt>stampaTutti(b)</tt> dentro il corpo funziona
+a condizione che <tt>b</tt> sia pi&ugrave; piccolo di
+<tt>a</tt>
+</p>
+
+<p>
+Nel caso specifico: si pu&ograve; assumere che
+<tt>stampaTutti(b)</tt> produca la stampa di tutti i nodi di
+<tt>b</tt>
+</p>
+
+<hr>
+
+
+<h4>Passo 2</h4>
+
+<p>
+Nel corpo, si possono scrivere sia
+<tt>stampaTutti(a.sinistro)</tt> che
+<tt>stampaTutti(a.destro)</tt> 
+</p>
+
+<p>
+Si pu&ograve; fare perch&egrave; sia <tt>a.sinistro</tt> che
+<tt>a.destro</tt> sono pi&ugrave; piccoli di <tt>a</tt>
+</p>
+
+<pre>
+  static void stampaTutti(Albero a) {
+    ...
+    stampaTutti(a.sinistro);
+    ...
+    stampaTutti(a.destro);
+    ...
+  }
+</pre>
+
+<p>
+Si pu&egrave; assumere che siano corrette, ossia che vengano
+stampati gli elementi dei sottoalberi
+</p>
+
+<hr>
+
+<h4>Passo 3</h4>
+
+<p>
+Si completa il metodo
+</p>
+
+<pre>
+  static void stampaTutti(Albero a) {
+    if(a==null)
+      return;
+
+    stampaTutti(a.sinistro);
+    stampaTutti(a.destro);
+    System.out.print(a.info+" ");
+  }
+</pre>
+
+<p>
+Bisogna tenere conto che <tt>a</tt> pu&ograve; valere
+<tt>null</tt>
+</p>
+
+<p>
+Dopo aver stampato gli elementi del sottoalbero sinistro e
+quelli del destro, va stampata la radice
+</p>
+
+<hr>
+
+
+<h4>Assunzione ricorsiva e record di attivazione</h4>
+
+<p>
+Si usano in contesti diversi:
+</p>
+
+<dl>
+
+<dt>assunzione ricorsiva
+<dd>si usa per progettare il metodo (assumo che le
+invocazioni ricorsive siano corrette)
+
+<dt>record di attivazione
+<dd>sono il meccanismo che si usa nel linguaggio di
+programmazione per realizzare la ricorsione
+
+</dl>
+
+<p>
+Progettare i metodi pensando ai record di attivazione
+&egrave; uno sbaglio
+</p>
+
+<p>
+La progettazione si fa assumendo che, dentro il corpo del
+metodo, una invocazione ricorsiva fa quello che dovrebbe
+se il problema &egrave; stato semplificato (es. si passa un
+albero pi&ugrave; piccolo)
+</p>
+
+<hr>
+
+
+<h4>Visite</h4>
+
+<p>
+I quattro tipi di visite "standard" di un albero binario:
+</p>
+
+<dl>
+
+<dt>preordine
+<dd>si visita la radice e poi i sottoalberi
+
+<dt>postordine
+<dd>prima i sottoalberi e poi la radice
+
+<dt>simmetrica
+<dd>prima il sottoalbero sinistro, poi la radice e poi il
+sottoalbero destro
+
+<dt>per livelli (detta anche visita in ampiezza)
+<dd>il livello di un nodo &egrave; la sua distanza dalla
+radice; si stampa prima il livello 0, poi il livello 1, ecc.
+
+</dl>
+
+<hr>
+
+
+<h4>Visite in profondit&agrave;</h4>
+
+<p>
+Le visite in preordine, postordine e simmetrica si dicono
+anche "in profondit&agrave;"
+</p>
+
+<p>
+Implementazione:
+</p>
+
+<pre>
+  static void preordine(Albero a) {
+    if(a==null)
+      return;
+
+    System.out.print(a.info+" ");
+    preordine(a.sinistro);
+    preordine(a.destro);
+  }
+
+  static void postordine(Albero a) {
+    if(a==null)
+      return;
+
+    postordine(a.sinistro);
+    postordine(a.destro);
+    System.out.print(a.info+" ");
+  }
+
+  static void simmetrica(Albero a) {
+    if(a==null)
+      return;
+
+    simmetrica(a.sinistro);
+    System.out.print(a.info+" ");
+    simmetrica(a.destro);
+  }
+</pre>
+
+<hr>
+
+
+<h4>Visita=stampa?</h4>
+
+<p>
+I metodi di visita dicono in che ordine si deve effettuare
+una certa operazione
+</p>
+
+<p>
+L'operazione pu&ograve; essere qualsiasi
+</p>
+
+<p>
+Esempio: stampa il campo <tt>info</tt> di un nodo solo
+s&egrave; &egrave; un intero di valore <tt>&lt;4</tt>
+</p>
+
+<pre>
+  static void stampaMinori(Albero a) {
+    if(a==null)
+      return;
+
+    Integer i=(Integer) a.info;
+
+    if(i.intValue()&lt;4)
+      System.out.print(i.intValue()+" ");
+
+    stampaMinori(a.sinistro, limite);
+    stampaMinori(a.destro, limite);
+  }
+</pre>
+
+<hr>
+
+
+<h4>Metodi parametrici</h4>
+
+<p>
+Se si vogliono stampare solo gli elementi
+<i>maggiori</i> di 4?
+</p>
+
+<p>
+Si vogliono stampare i campi <tt>info</tt> che sono di tipo
+<tt>String</tt>, ma al massimo i primi 10 caratteri?
+</p>
+
+<p>
+Servirebbe poter rendere parametrico un metodo:
+</p>
+
+<pre>
+  static void operaTutti(Albero a, "operazione") {
+    if(a==null)
+      return;
+
+    "esegui operazione su a.info";
+
+    operaTutti(a.sinistro);
+    operaTutti(a.destro);
+  }
+</pre>
+
+<p>
+Sto cercando di dire al metodo <tt>operaTutti</tt> che deve
+eseguire una operazione specificata come parametro, non la
+stampa
+</p>
+
+<hr>
+
+
+<h4>Passare un metodo</h4>
+
+<p>
+A un metodo non si pu&ograve; passare un altro metodo, come
+si pu&ograve; fare in C.
+</p>
+
+<p>
+Posso scrivere un metodo che fa la stampa condizionale:
+</p>
+
+<pre>
+  // corretto
+  static void stampaSeMinore4(Object o) {
+    Integer i=(Integer) o;
+
+    if(i.intValue()&lt;4)
+      System.out.println(i.intValue());
+  }
+</pre>
+
+<p>
+Ora vorrei dire al metodo <tt>preordine</tt> di usare il
+metodo <tt>stampaSeMinore</tt> invece di <tt>println</tt>
+</p>
+
+<p>
+Ma in Java non si pu&ograve; passare ad un metodo 
+un altro metodo, come si pu&ograve; fare in C:
+</p>
+
+<pre>
+  // errore
+  static void preordine(Albero a, metodo) {
+    if(a==null)
+      return;
+
+    metodo(a.info);
+    preordine(a.sinistro, metodo);
+    preordine(a.destro, metodo);
+  }
+</pre>
+
+<hr>
+
+
+<h4>Oggetti funzione</h4>
+
+<p>
+A un metodo si pu&ograve; passare soltanto uno scalare
+oppure un oggetto
+</p>
+
+<p>
+Soluzione: passo un oggetto soltanto per per poter passare
+il metodo
+</p>
+
+<hr>
+
+
+<h4>Meccanismo degli oggetti funzione</h4>
+
+<ol>
+
+<li>si scrive una classe con la funzione che va invocata ad
+ogni passo:
+
+<pre>
+class Funzione4 {
+  public void azione(Object o) {
+    Integer i=(Integer) o;
+    if(i.intValue()&lt;=4)
+      System.out.print(i.intValue()+" ");
+  }
+}
+</pre>
+
+<li>si modifica il metodo in modo tale che:
+
+<ul>
+<li>abbia come parametro un oggetto
+<li>invochi il metodo sull'oggetto invece di fare
+<tt>println</tt>
+</ul>
+
+<pre>
+  static void preordine(Albero a, Object f) {
+    if(a==null)
+      return;
+
+    f.azione(a.info);
+    preordine(a.sinistro, f);
+    preordine(a.destro, f);
+  }
+</pre>
+
+<li>quando si invoca il metodo <tt>preordine</tt>, si passa
+un oggetto della classe:
+
+<pre>
+preordine(a, new Funzione4());
+</pre>
+
+</ol>
+
+<p>
+Non pu&ograve; funzionare, ma questo lo vediamo dopo.
+</p>
+
+<hr>
+
+
+<h4>Come funziona</h4>
+
+<p>
+Il metodo viene chiamato usando
+<tt>preordine(a, new Funzione4());</tt>
+</p>
+
+<p>
+Nel metodo <tt>preordine</tt>, viene invocato
+<tt>f.azione</tt>
+</p>
+
+<p>
+Questo &egrave; il metodo <tt>azione</tt> della classe
+<tt>Funzione4</tt>
+</p>
+
+<hr>
+
+
+<h4>Altre operazioni sui nodi</h4>
+
+<p>
+Se voglio fare una operazione diversa su tutti i nodi
+dell'albero: scrivo un'altra classe al posto di
+<tt>Funzione4</tt>
+</p>
+
+<pre>
+class FunzioneString {
+  static void azione(Object o) {
+    if(o instanceof String)
+      System.out.println(o);
+  }
+}
+</pre>
+
+<p>
+Per far eseguire questo metodo su tutti i nodi dell'albero,
+basta fare:
+</p>
+
+<pre>
+preordine(a, new FunzioneString());
+</pre>
+
+<p>
+Quando <tt>preordine</tt> invoca <tt>f.azione</tt>, viene
+eseguito il metodo <tt>azione</tt> della classe
+<tt>FunzioneString</tt>
+</p>
+
+<hr>
+
+
+<h4>Cosa non funziona</h4>
+
+<pre>
+static void preordine(Albero a, Object f) {
+  ...
+  f.azione(a.info);
+  ...
+}
+</pre>
+
+<p>
+La classe <tt>Object</tt> non ha il metodo <tt>azione</tt>
+</p>
+
+<hr>
+
+
+<h4>Falsa soluzione</h4>
+
+<p>
+Modifico l'intestazione del metodo <tt>preordine</tt>:
+</p>
+
+<pre>
+  static void preordine(Albero a, Funzione4 f) {
+    if(a==null)
+      return;
+
+    f.azione(a.info);
+    preordine(a.sinistro, metodo);
+    preordine(a.destro, metodo);
+  }
+</pre>
+
+<p>
+Ora per&ograve; non posso pi&ugrave; passare al metodo un
+oggetto della classe <tt>FunzioneString</tt>!
+</p>
+
+<p>
+In questo caso, posso solo stampare interi minori di quattro
+(il metodo non &egrave; pi&ugrave; parametrico)
+</p>
+
+<hr>
+
+
+<h4>Principio generale</h4>
+
+<p>
+Codifico la funzione da eseguire su tutti i nodi dell'albero
+in una classe:
+</p>
+
+<pre>
+class NomeClasse {
+  void azione(Object o) {
+    ...
+  }
+}
+</pre>
+
+<p>
+Modifico il metodo di visita in preordine in modo tale che:
+</p>
+
+<ol>
+
+<li>riceve come argomento un oggetto <tt>f</tt>
+
+<li>esegue <tt>f.azione(a.info)</tt> su tutti i nodi
+
+</ol>
+
+<hr>
+
+
+<h4>La classe di <tt>f</tt></h4>
+
+<p>
+Il metodo ha intestazione:
+</p>
+
+<pre>
+static void preordine(Albero a, Qualcosa f) {
+  ...
+  f.azione(a.info);
+  ...
+}
+</pre>
+
+<p>
+La classe <tt>Qualcosa</tt> non pu&ograve; essere:
+</p>
+
+<dl>
+
+<dt><tt>Object</tt>
+<dd>troppo generico: non ha il metodo <tt>azione</tt>
+
+<dt><tt>Funzione4</tt>
+<dd>troppo specifico: si possono solo stampare interi minori
+di 4!
+
+</dl>
+
+<p>
+L'oggetto <tt>f</tt> deve essere istanza di una
+classe che ha il metodo <tt>azione(Object o)</tt>
+</p>
+
+<p>
+Come si impone la presenza di un metodo in una classe?
+</p>
+
+<hr>
+
+
+<h4>L'interfaccia <tt>FunzioneVoid</tt></h4>
+
+<p>
+Specifica dell'intefaccia:
+</p>
+
+<pre>
+interface FunzioneVoid {
+  public void azione(Object o);
+}
+</pre>
+
+<p>
+Ora posso scrivere il metodo <tt>preordine</tt>:
+</p>
+
+<pre>
+  static void preordine(Albero a, FunzioneVoid f) {
+    if(a==null)
+      return;
+
+    f.azione(a.info);
+    preordine(a.sinistro, f);
+    preordine(a.destro, f);
+  }
+</pre>
+
+<p>
+A parole:
+</p>
+
+<ol>
+
+<li>l'interfaccia <tt>FunzioneVoid</tt> garantisce la
+presenza di un metodo <tt>azione(Object o)</tt>
+
+<li>il metodo <tt>preordine</tt> riceve un oggetto
+<tt>f</tt> di una classe che implementa l'interfaccia
+<tt>FunzioneVoid</tt>
+
+<li>sull'oggetto <tt>f</tt> si pu&ograve; invocare il metodo
+<tt>f.azione(a.info)</tt>
+
+</ol>
+
+<hr>
+
+
+<h4>Implementazioni di <tt>FunzioneVoid</tt></h4>
+
+<p>
+Posso passare a <tt>preordine</tt> solo oggetti di classi
+che implementano l'iterfaccia <tt>FunzioneVoid</tt>
+</p>
+
+<p>
+Dato che le due possibili operazioni che voglio poter
+eseguire sui nodi sono i metodi <tt>azione</tt> di
+<tt>Funzione4</tt> e <tt>FunzioneString</tt>, queste due
+classi devono implementare l'interfaccia
+<tt>FunzioneVoid</tt>
+</p>
+
+<pre>
+class Funzione4 implements FunzioneVoid {
+  public void azione(Object o) {
+    Integer i=(Integer) o;
+    if(i.intValue()&lt;=4)
+      System.out.print(i.intValue()+" ");
+  }
+}
+</pre>
+
+<pre>
+class FunzioneString implements FunzioneVoid {
+  static void azione(Object o) {
+    if(o instanceof String)
+      System.out.println(o);
+  }
+}
+</pre>
+
+<hr>
+
+
+<h4>Riassunto</h4>
+
+<p>
+Le varie classi/metodi/interfacce:
+</p>
+
+<dl>
+
+<dt><tt>FunzioneVoid</tt>
+<dd>su una variabile <tt>f</tt> di questo tipo di pu&ograve;
+fare <tt>f.azione(o)</tt>
+
+<dt><tt>Funzione4</tt>
+<dd>una classe che implementa l'interfaccia
+<tt>FunzioneVoid</tt>;
+<br>il suo metodo <tt>azione(o)</tt>
+stampa l'oggetto passato se &egrave; un intero minore o
+uguale a quattro;
+
+<dt><tt>FunzioneString</tt>
+<dd>altra classe che implementa l'interfaccia
+<tt>FunzioneVoid</tt>;
+<br>il suo metodo <tt>azione(o)</tt>
+stampa l'oggetto se &egrave; una stringa
+
+<dt>metodo <tt>preordine</tt>
+<dd>
+
+<ul>
+<li>prende un oggetto che si pu&ograve; mettere in una
+variabile <tt>FunzioneVoid</tt>
+<br>
+(un oggetto di una classe
+che sicuramente contiene il metodo <tt>azione</tt>)
+
+<li>per ogni nodo, invoca <tt>f.azione(a.info)</tt>
+</ul>
+
+</dl>
+
+<hr>
+
+
+<h4>Generalit&agrave; del meccanismo</h4>
+
+<p>
+Non &egrave; limitato agli alberi:
+</p>
+
+<ol>
+
+<li>una interfaccia garantisce l'esistenza di un metodo
+<tt>azione</tt>
+
+<li>una o pi&ugrave; classi implementano l'interfaccia
+<br>
+definendo il corpo di <tt>azione</tt> in modo diverso
+
+<li>un metodo riceve un oggetto "di tipo interfaccia"
+<br>
+(ossia, di una di queste classi)
+<br>
+e invoca <tt>azione</tt> su di esso
+
+</ol>
+
+<p>
+Quando si invoca il metodo con un oggetto di una delle
+classi, viene eseguito il suo metodo <tt>azione</tt>
+</p>
+
+<hr>
+
+
+<h4>Eseguire nuove operazioni</h4>
+
+<p>
+Si possono sempre definire nuove azioni da fare sui nodi
+dell'albero
+</p>
+
+<p>
+Esempio: stampare la versione stringa degli oggetti, ma al
+massimo dieci caratteri:
+</p>
+
+<pre>
+class FunzioneDieci implements FunzioneVoid {
+  public void azione(Object o) {
+    String s=o.toString();
+    if(s.length()<10)
+      System.out.println(s);
+    else
+      System.out.println(s.substring(0, 10));
+  }
+}
+</pre>
+
+<p>
+Se faccio <tt>preordine(a, new FunzioneString())</tt>,
+vengono stampate solo le stringhe
+</p>
+
+<p>
+Facendo <tt>preordine(a, new Funzione4())</tt>, vengono
+stampati gli interi minori di quattro
+</p>
+
+<p>
+Fancendo <tt>preordine(a, new FunzioneDieci())</tt>, vengono
+stampate le stringhe corrispondenti agli oggetti, ma al
+massimo dieci caratteri
+</p>
+
+<p>
+Conclusione: con lo stesso metodo <tt>preordine</tt>, si
+pu&ograve; effettuare una operazione arbitraria su tutti i
+campi info dell'albero
+</p>
+
+<hr>
+
+
+<h4>Parametri del metodo <tt>azione</tt></h4>
+
+<p>
+La classe <tt>Funzione4</tt> specifica un metodo
+<tt>azione</tt> che: "stampa gli interi minori di
+quattro"
+</p>
+
+<p>
+Si pu&ograve; pensare a una variante in cui il metodo
+<tt>azione</tt> fa: "stampa gli interi minori di un certo
+valore"
+</p>
+
+<p>
+Soluzione ovvia (sbagliata): aggiungere argomenti al metodo
+<tt>azione</tt>
+</p>
+
+<p>
+Se lo faccio, devo modificare l'interfaccia
+<tt>FunzioneVoid</tt>, e poi anche il metodo
+<tt>preordine</tt> e poi anche tutte le classi che
+implementano <tt>FunzioneVoid</tt>!
+</p>
+
+<p>
+Soluzione: memorizzo i parametri nell'oggetto
+</p>
+
+<pre>
+class FunzioneLimite implements FunzioneVoid {
+  int limite;
+
+  FunzioneLimite(int l) {
+    limite=l;
+  }
+
+  public void azione(Object o) {
+    Integer i=(Integer) o;
+    if(i.intValue()&lt;limite)
+      System.out.print(i.intValue()+" ");
+  }
+}
+</pre>
+
+<p>
+L'invocazione sar&agrave; fatta nel seguente modo:
+</p>
+
+<pre>
+preordine(a, new FunzioneLimite(4));</tt>
+</pre>
+
+<hr>
+
+
+<h4>Sequenza di operazioni</h4>
+
+<p>
+Il valore del massimo da stampare &egrave; 4.
+</p>
+
+<dl>
+
+<dt><tt>new FunzioneLimite(4)</tt>
+<dd>viene creato un oggetto <tt>FunzioneLimite</tt>;
+<br>
+nella sua componente <tt>limite</tt> viene inserito dal
+costruttore il valore <tt>4</tt>
+
+<dt><tt>preordine(a, new FunzioneLimite(4));</tt>
+<dd>al metodo <tt>preordine</tt> viene passato questo
+oggetto, e messo nel parametro formale <tt>f</tt>
+
+<dt><tt>f.azione(a.info)</tt>
+<dd>questo metodo stampa tutti gli interi di valore minore
+di <tt>f.limite</tt>, che &egrave; quattro
+
+</dl>
+
+<hr>
+
+
+<h4>Dichiarazioni e dati</h4>
+
+<p>
+Graficamente:
+</p>
+
+<img src="schema.gif">
+
+<p>
+Quando si esegue <tt>preordine(new FunzioneLimite(4));</tt>
+</p>
+
+<ol>
+
+<li>il <tt>4</tt> viene messo nel campo <tt>limite</tt>
+dell'oggetto <tt>FunzioneLimite</tt> creato
+
+<li>questo oggetto &egrave; di una classe che implementa
+<tt>FunzioneVoid</tt>
+
+<li>si pu&ograve; quindi passare a <tt>preordine</tt>
+
+<li>questa funzione invoca <tt>oggetto.azione(a.info)</tt>
+sui nodi
+
+<li>vengono stampati gli interi minori di quattro
+
+</ol>
+
+<p>
+La scelta dell'oggetto da passare a <tt>preordine</tt>
+determina il metodo da eseguire sui nodi (il metodo
+<tt>azione</tt> di <tt>Funzione4</tt>, oppure il metodo
+<tt>azione</tt> di <tt>FunzioneLimite</tt>, ecc.
+</p>
+
+<p>
+Nel casi di <tt>FunzioneLimite</tt>, i valori che vengono
+messi nelle componenti vengono poi usati dal metodo
+</p>
+
+<hr>
+
+
+<h4>Come fare cose diverse sui nodi</h4>
+
+<dl>
+
+<dt>stampare interi minori di dieci:
+<dd><tt>preordine(new FunzioneLimite(10));</tt>
+
+<dt>stampare solo le stringhe:
+<dd><tt>preordine(new FunzioneStringa());</tt>
+
+</dl>
+
+<p>
+Il meccanismo permette di usare diversi parametri con lo
+stesso metodo da invocare su tutti i nodi, oppure usare
+diversi un diverso metodo da invocare su tutti i nodi
+</p>
+
+<hr>
+
+
+<h4>Metodi con valori di ritorno</h4>
+
+<p>
+Esempio: somma dei nodi
+</p>
+
+<p>
+Soluzioni:
+</p>
+
+<ol>
+
+<li>accumulo i valori trovati in una variabile d'istanza della classe
+
+<li>definisco una interfaccia in cui il metodo &egrave;
+<tt>int azione(Object o, int a, int b)</tt>
+
+</ol>
+
+<p>
+Nel secondo caso, il metodo verr&agrave; invocato con i
+risultati delle invocazioni ricorsive nei parametri
+</p>
+
+<hr>
+
+
+<h4>Visite con stack e code</h4>
+
+<p>
+Le pile e le code sono sequenze di oggetti con i seguenti
+vincoli:
+</p>
+
+<ol>
+
+<li>si puo' inserire solo in coda
+
+<li>si puo' trovare/eliminare solo l'elemento in coda
+(stack) o in testa (coda)
+
+</ol>
+
+<p>
+Realizzano l'accesso FIFO (first-in first-out) e LIFO
+(last-in first-out)
+</p>
+
+<p>
+Sono sempre sequenze di oggetti: si tratta pi&ugrave; che
+altro di usare solo specifiche operazioni di accesso (es.
+inserire solo in coda)
+</p>
+
+<hr>
+
+
+<h4>Visite in profondit&agrave;</h4>
+
+<p>
+Si ralizzano usando uno stack:
+</p>
+
+<p>
+Finch&egrave; lo stack non &egrave; vuoto:
+</p>
+
+<ol>
+
+<li>estrai il primo elemento
+
+<li>se &egrave; un dato, stampalo
+
+<li>se &egrave; un albero, inserisci nello stack il campo
+<tt>info</tt> e i due sottoalberi
+
+</ol>
+
+<hr>
+
+
+<h4>Stack: principio di funzionamento</h4>
+
+<p>
+A ogni passo, si prende un elemento dallo stack
+</p>
+
+<p>
+Nello stack, ci metto ora gli elementi che
+vanno guardati subito dopo questo
+</p>
+
+<p>
+Guardo un info: lo stampo e basta
+</p>
+
+<p>
+Guardo un albero: va prima stampato l'info, poi sinistro e
+poi destro
+</p>
+
+<p>
+Gli elementi vanno messi in ordine inverso, dato che
+l'ultimo elemento che metto nella pila sar&agrave; il primo
+ad uscire
+</p>
+
+<pre>
+  static void preconstack(Albero a) {
+    LinkedList l=new LinkedList();
+    l.add(a);
+
+    while(l.size()&gt;0) {
+      Object o=l.getLast();
+      l.removeLast();
+
+      if(o==null)
+        continue;
+
+      if(!(o instanceof Albero)) {
+        System.out.print(o+" ");
+        continue;
+      }
+
+      a=(Albero) o;
+      if(a!=null) {
+        l.add(a.destro);
+        l.add(a.sinistro);
+        l.add(a.info);
+      }
+    }
+  }
+</pre>
+
+<hr>
+
+
+<h4>Visita in ampiezza</h4>
+
+<p>
+Politica differente: gli elementi li metto in una coda
+</p>
+
+<p>
+L'idea &egrave; che, quando visito un nodo, metto in coda il
+suo info e i due sottoalberi
+</p>
+
+<p>
+&Egrave; quindi garantito che verranno estratti i due figli
+consecutivamente
+</p>
+
+<pre>
+  static void livelli(Albero a) {
+    LinkedList l=new LinkedList();
+    l.add(a);
+
+    while(l.size()&gt;0) {
+      Object o=l.get(0);
+      l.remove(0);
+
+      if(o==null)
+        continue;
+
+      if(!(o instanceof Albero)) {
+        System.out.print(o+" ");
+        continue;
+      }
+
+      a=(Albero) o;
+      if(a!=null) {
+        l.add(a.info);
+        l.add(a.sinistro);
+        l.add(a.destro);
+      }
+    }
+  }
+</pre>
+
+<hr>
+
+
+<h4>Incapsulamento</h4>
+
+<p>
+La classe <tt>Albero</tt> ha il problema di permettere
+accesso libero alle componenti
+</p>
+
+<p>
+Versione incapsulata
+</p>
+
+<pre>
+class Albero {
+  private class Nodo {
+    int info;
+    Albero sinistro;
+    Albero destro;
+
+    public boolean equals(Object o) {
+      if(o==null)
+        return false;
+
+      if(o.getClass()!=this.getClass())
+        return false;
+
+      Nodo a=(Nodo) o;
+
+      // i campi sinistro e destro non possono
+      // valere null
+      return (a.info==info)&amp;&amp;
+             (a.sinistro==this.sinistro)&amp;&amp;
+             (a.destro==this.destro);
+    }
+  }
+
+  private Nodo n;
+
+  public Albero() {
+    // n=null;
+  }
+
+  public Albero(int info, Albero sinistro, Albero destro) {
+    n=new Nodo();
+
+    n.info=info;
+    n.sinistro=sinistro;
+    n.destro=destro;
+  }
+
+  public boolean eVuoto() {
+    return n==null;
+  }
+
+  public int getDato() {
+    return n.info;
+  }
+
+  public Albero getSinistro() {
+    return n.sinistro;
+  }
+
+  public Albero getDestro() {
+    return n.destro;
+  }
+</pre>
+
+<hr>
+
+
+<h4>Uso della classe</h4>
+
+<p>
+Posso ora accedere all'albero solo attraverso i metodi
+</p>
+
+<p>
+Esempio: visita in preordine
+</p>
+
+<pre>
+  static void preordine(Albero a) {
+    if(a.eVuoto())
+      return;
+
+    System.out.print(a.getDato()+" ");
+    preordine(a.getSinistro());
+    preordine(a.getDestro());
+  }
+</pre>
+
+<hr>
+
+
+<h4>Test sugli alberi</h4>
+
+<p>
+Metodo di generazione di un albero casuale:
+</p>
+
+<pre>
+  static Albero alberoRandom(int livelli) {
+    Albero s, d;
+
+    if(livelli==0)
+      return null;
+
+    if(Math.random()<0.2)
+      return null;
+
+    s=alberoRandom(livelli-1);
+    d=alberoRandom(livelli-1);
+
+    return new Albero(
+      new Integer((int) (Math.random()*41-20)),
+      s, d);
+  }
+</pre>
+
+<hr>
+
+
+<h4>Stampa di un albero</h4>
+
+<p>
+Questa funzione stampa un albero
+</p>
+
+<p>
+Non &egrave; necessario sapere come funziona
+</p>
+
+<pre>
+  static void stampaAlbero(Albero a, String before, String after) {
+    if(a==null)
+      return;
+
+    stampaAlbero(a.destro, before+"     ", before+"    |");
+
+    System.out.print(before.substring(0,before.length()-1));
+
+    System.out.println("+--["+a.info+"]");
+
+    stampaAlbero(a.sinistro, after+"    |", after+"     ");
+  }
+
+  static void stampaAlbero(Albero a) {
+    if(a==null)
+      System.out.println("(albero vuoto)");
+    else
+      stampaAlbero(a, " ", " ");
+  }
+</pre>
+
+</body>
+</html>
+

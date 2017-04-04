@@ -1,0 +1,190 @@
+<HTML>
+<HEAD>
+   <META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1">
+   <META NAME="Generator" CONTENT="Microsoft Word 97">
+   <META NAME="Template" CONTENT="C:\PROGRAMMI\MICROSOFT OFFICE\OFFICE\html.dot">
+   <META NAME="GENERATOR" CONTENT="Mozilla/4.03 [en] (Win95; I) [Netscape]">
+   <TITLE>Fondamenti di Informatica</TITLE>
+</HEAD>
+<BODY>
+
+<CENTER><B><FONT SIZE=+1>Fondamenti di Informatica</FONT></B></CENTER>
+
+<CENTER></CENTER>
+
+<CENTER><B><FONT SIZE=+1>Aeronautica, Meccanica, Elettrica, Materiali,
+Nucleare,</FONT></B></CENTER>
+
+<CENTER></CENTER>
+
+<CENTER><B><FONT SIZE=+1>Chimica, Ambiente e Territorio</FONT></B></CENTER>
+
+<CENTER></CENTER>
+
+<CENTER><B><FONT SIZE=+1>Appello del 12-2-1998</FONT></B></CENTER>
+
+
+<P><FONT SIZE=-1>&nbsp;</FONT>
+
+<P><FONT SIZE=-1>&nbsp;</FONT>
+
+<P><B><FONT SIZE=-1>Esercizio 1 (18 punti)</FONT></B>
+
+<P><FONT SIZE=-1>Le varie attivita' di un progetto corrispondono ai nodi
+di un grafo, i cui archi, etichettati con valori reali, esprimono il costo
+necessario per passare da una attivita' all'altra. Il grafo e' rappresentato
+tramite matrice di adiacenza <B>A(n</B><FONT FACE="Symbol">&acute;</FONT>n),
+in cui <B>A(i,j) = 0</B> denota l'assenza di arco tra i nodi <B>i </B>e
+<B>j</B>, mentre <B>A(i,j) ? 0</B> indica la presenza di un arco tra <B>i</B>
+e <B>j</B> di <B>costo A(i,j)</B>.</FONT>
+<DIR>
+<DIR><FONT SIZE=-1><B>1.</B> Scrivere le dichiarazioni di tipo necessarie
+per i sottoprogrammi 2 e 3 seguenti.</FONT>
+
+<P><FONT SIZE=-1><B>2.</B> Scrivere una procedura o funzione Pascal che,
+ricevendo in ingresso la matrice <B>A</B>, restituisca "vero" se nel grafo
+<B>non</B> <B>esiste</B> un'<B>attivita' isolata</B> (un'attivita' e' isolata
+quando da essa non partono archi verso altre attivita' <B>e</B> non puo'
+essere raggiunta a partire da altre attivita'), "falso" altrimenti.</FONT>
+
+<P><FONT SIZE=-1><B>3.</B> Scrivere una procedura o funzione Pascal che,
+ricevendo in ingresso la matrice <B>A</B> ed un valore reale <B>r</B>,
+restituisca in uscita una lista <B>L</B> formata <B>da tutti gli archi
+di costo maggiore di r</B>. Ogni record della lista deve corrispondere
+ad un arco, e contenere le seguenti informazioni: <B>nodo di partenza</B>,
+<B>nodo di arrivo</B>, <B>costo dell'arco</B>.</FONT>
+
+<P><FONT SIZE=-1>&nbsp;</FONT></DIR>
+<B><FONT SIZE=-1>Esempio:</FONT></B>
+
+<P><FONT SIZE=-1>&nbsp;</FONT>
+<CENTER></CENTER>
+
+<CENTER><IMG SRC="image5.gif" HEIGHT=270 WIDTH=750></CENTER>
+
+<CENTER></CENTER>
+
+<CENTER><FONT SIZE=-1>&nbsp;</FONT></CENTER>
+</DIR>
+
+<CENTER><B><FONT SIZE=+1>Fondamenti di Informatica</FONT></B></CENTER>
+
+<CENTER></CENTER>
+
+<CENTER><B><FONT SIZE=+1>Aeronautica, Meccanica, Elettrica, Materiali,
+Nucleare,</FONT></B></CENTER>
+
+<CENTER></CENTER>
+
+<CENTER><B><FONT SIZE=+1>Chimica, Ambiente e Territorio</FONT></B></CENTER>
+
+<CENTER></CENTER>
+
+<CENTER><B><FONT SIZE=+1>Appello del 12-2-1998</FONT></B></CENTER>
+
+
+<P><FONT SIZE=-2>&nbsp;</FONT>
+
+<P><B><FONT SIZE=-1>Esercizio 2 (4 punti)</FONT></B>
+
+<P><B>Illustrare e comparare i metodi di "segmentazione" e "paginazione"
+della memoria di un calcolatore.</B>
+
+<P><FONT SIZE=-2>&nbsp;</FONT>
+
+<P><B><FONT SIZE=-1>Esercizio 3 (4 punti)</FONT></B>
+
+<P><B>Scrivere un sottoprogramma Fortran che ricevendo in ingresso due
+vettori A(n) e B(n) ad elementi interi, verifichi se contengono gli stessi
+valori in ordine inverso (per esempio, se A[1] = B[n], e cos&igrave; via).</B>
+
+<P><FONT SIZE=-2>&nbsp;</FONT>
+
+<P><B><FONT SIZE=-1>Esercizio 4 (4 punti)</FONT></B>
+
+<P><B>Dato il seguente programma Pascal, dire cosa stampa motivando la
+risposta.</B>
+
+<P><B><FONT FACE="Courier">program</FONT> Prova;</B>
+
+<P><B>type</B>
+
+<P><B>punt = ^rec;</B>
+
+<P><B>rec = record</B>
+
+<P><B>info: integer;</B>
+
+<P><B>next: punt</B>
+
+<P><B>end;</B>
+
+<P><B>var</B>
+
+<P><B>p, app: punt; i: integer;</B>
+
+<P><B>procedure Costruisci (var q: punt; k: integer);</B>
+
+<P><B>begin</B>
+
+<P><B>if k &lt;> 0 then</B>
+<DIR>
+<DIR><B>begin</B>
+
+<P><B>new(q);</B>
+
+<P><B>q^.info := k; q^.next := nil; Costruisci(q^.next, k - 1)</B>
+
+<P><B>end</B></DIR>
+</DIR>
+<B>end;</B>
+
+<P><B>procedure Pippo (l: punt);</B>
+
+<P><B>var</B>
+
+<P><B>q: punt;</B>
+
+<P><B>begin</B>
+
+<P><B>q := l;</B>
+
+<P><B>while q &lt;> nil do</B>
+<DIR>
+<DIR><B>begin</B>
+
+<P><B>q^.info := q^.info - i; i := i + 1; q := q^.next</B>
+
+<P><B>end;</B></DIR>
+</DIR>
+<B>l^.next^.next := q; l := nil</B>
+
+<P><B>end;</B>
+
+<P><B>&nbsp;</B>
+
+<P><B>begin</B>
+
+<P><B>Costruisci(p, 10);</B>
+
+<P><B>i := 2;</B>
+
+<P><B>Pippo(p);</B>
+
+<P><B>app := p;</B>
+
+<P><B>while app &lt;> nil do</B>
+<DIR>
+<DIR><B>begin</B>
+
+<P><B>write(app^.info); app := app^.next</B>
+
+<P><B>end;</B></DIR>
+</DIR>
+<B>end.</B>
+
+<P><FONT FACE="Courier"><FONT SIZE=-1>&nbsp;</FONT></FONT>
+
+<P><FONT SIZE=-1>&nbsp;</FONT>
+</BODY>
+</HTML>

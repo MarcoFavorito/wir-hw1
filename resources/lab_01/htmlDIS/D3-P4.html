@@ -1,0 +1,175 @@
+
+<HTML>
+<HEAD>
+<!--
+
+--> 
+<title> Progetto D2I - Prodotto D3-P4</title>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1">
+<style type="text/css">
+
+	A:link, A:visited { text-decoration: none }
+
+	A:hover { text-decoration: underline; color: red }
+
+</style>
+</HEAD>
+<BODY bgcolor="#CCCCCC" leftmargin="5" topmargin="10" marginwidth="5" marginheight="10">
+<CENTER>
+  <table border="0" cellspacing="0" cellpadding="0" width="98%" cols="2">
+    <tr> 
+      <td width="19%" align="right"> 
+        <table width="100%" border="1" height="65">
+          <tr bordercolor="#000099" bgcolor="#99CCFF"> 
+            <td height="94"> 
+              <div align="center"><b><font size="7"><em><font color="#000080">D2I</font></em></font></b></div>
+            </td>
+          </tr>
+        </table>
+      </td>
+      <td width="81%" align="left" >
+        <table width="100%" border="1" height="83">
+          <tr bordercolor="#000099" bgcolor="#99CCFF" align="left"> 
+            <td height="94"> 
+              <div align="center"><font size="6"><em><dfn><font size="5" color="#0000FF"><b><font size="+3"><font color="#000080">Integrazione, 
+                Warehousing e Mining di sorgenti eterogenee</font></font></b></font></dfn></em></font></div>
+            </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+  </table>
+  <TABLE BORDER="0" CELLSPACING="0" CELLPADDING="0" WIDTH="98%" Cols="2">
+    <TR> <!--fine prima colonna--> 
+      <TD align="center" valign="top" colspan="2"> 
+        <DIV STYLE="margin-top:20pt" align="justify"> 
+          <div style="margin-top:20pt" align="justify"> 
+            <table width="100%" height="45">
+              <tr align="left" bgcolor="#000099" bordercolor="#000099"> 
+                <td height="46"><font color="#000099"><font size="5" color="FFF907" face="Arial">Sistema integrato di data mining e visualizzazione: DAMA
+</font></font></td>
+              </tr>
+            </table>
+<h3>
+<b>Vincenzo Curci, Stephen Kimani, Giuseppe Santucci,  Tiziana Catarci</b></h3>
+&nbsp;
+
+<center><table BORDER =1 WIDTH="80%" height="276">
+<tr>
+<td VALIGN=top height="19"><b>Tema</b></td>
+
+<td height="19"><a href="../../Temi/tema3.html"><u>Tema 3:&nbsp;Data Mining</u></a></td>
+</tr>
+
+<tr>
+<td VALIGN=top height="19"><b>Codice</b></td>
+
+<td height="19">D2-P1</td>
+</tr>
+
+<tr>
+<td VALIGN=top height="19"><b>Data</b></td>
+
+<td height="19">13 settembre 2002</td>
+</tr>
+
+<tr>
+<td VALIGN=top height="19"><b>Tipo di prodotto</b></td>
+
+<td height="19">Prodotto software</td>
+</tr>
+
+<tr>
+<td VALIGN=top height="19"><b>Unità responsabile</b></td>
+
+<td height="19">RM</td>
+</tr>
+
+<tr>
+<td VALIGN=top height="19"><b>Unità coinvolte</b></td>
+
+<td height="19">RM</td>
+</tr>
+
+<tr>
+<td VALIGN=top height="19"><b>Autori</b></td>
+
+<td height="19">Vincenzo Curci, Stephen Kimani, Giuseppe Santucci,  Tiziana Catarci</td>
+</tr>
+
+<tr>
+<td VALIGN=top height="76"><b>Autore da contattare</b></td>
+
+<td height="76">Stephen Kimani<br>
+  Dipartimento di Informatica e Sistemistica
+<br>Università di Roma La Sapienza&nbsp;
+<br><A href="mailto:kimani@dis.uniroma1.it" >kimani@dis.uniroma1.it</A></td>
+</tr>
+
+
+<tr>
+<td VALIGN=top height="1"><b>Presentazione prototipo</b></td>
+<td height="1"><a href="../../Riunioni/Riunione_10_02/Kimani-Lodi.ppt"><u>D3-P4</u></a></p>
+    </td>
+</tr>
+
+<tr>
+<td VALIGN=top height="19"><b>Documentazione</b></td>
+
+<td height="19"><a href="./D3.P4.pdf"><u>D3.P4.pdf<u></a></td>
+</tr>
+</table></center>
+
+            &nbsp;
+
+
+<p>
+<hr height="15" color="#000099">
+<center>
+<h3>
+<b>Descrizione</b></h3></center>
+<P>The prototype, from now on defined DAMA (DAta Mining Application), is a modular Java application that allows the user to interact with dataon a relational DB using various Data Mining techniques. At the moment, the application supports, but is not limited to: Association Rules, Metaqueries and Clustering. 
+The prototype is based on an extensible architecture in order to facilitate the integration of DM technique implementations. DAMA does not implement the DM algorithms, but rather it defines an infrastructure to be adopted to interact with the DM algorithms. The algorithms  are implemented by third parties in possibly any language. Clearly, a Java algorithm is better integrated in the GUI than other implementations, which require a more complex development of the interface layer. This interface layer is a set of Java language "interfaces" which must be implemented by the specific DM algorithm to be integrated in DAMA.</p>
+<p>DAMA must be considered a prototypical framework to embed and chain DM techniques.
+The GUI is structured in a similar manner and represents the core of DAMA. Again there is a general GUI framework which can embed specific GUI implementations of a set of Java interfaces to enable the user interact with the DM algorithms in the most friendly way. In other words, for every DM algorithm, two layers are necessary. The first one is an implementation of the Java abstraction layer to wrap the algorithm engine. The second one is an implementation of the GUI abstraction layer to get the specific interaction environment through which a user activates and controls the algorithm.</p>
+<p>The two layers for every DM technique need to be isolated from each other in order to enhance the modularity of the framework. The isolation is realized through the adoption of the classical pattern <b>Model</b>(the Algorithm)-<b>View</b>(The Algorithm GUI)-<b>Controller</b> (The Algorithm GUI in co-operation with the general DAMA GUI and DAMA framework).</P>
+
+            &nbsp;
+
+<hr height="15" color="#000099">
+<center>
+<h3>
+<b>Ambiente di sviluppo e di esecuzione</b></h3></center>
+ <p>Java, Swing, JDBC, SQL<br>
+Multiplatform item</p>
+            &nbsp;
+<hr height="15" color="#000099">
+
+            <p><font color="#0000FF"><a href="../index.html"><u>Back</u></a></font> 
+            </p>
+
+           </div>
+         </div>
+        
+    <TR> 
+      <TD colspan="2" bgcolor="#CCCCCC">&nbsp;</TD>
+    </TR>
+    <TR> 
+      <TD bgcolor="#000099" colspan="2">&nbsp;</TD>
+    </TR>
+    <TR> 
+      <TD colspan="2" bgcolor="#CCCCCC">&nbsp;</TD>
+    </TR>
+    <TR> 
+      <TD height="38" colspan="2" bgcolor="#CCCCCC"> 
+        <div align="center"><font face="Arial" size="1" color="#4E4B4A"><b>Sito 
+          a cura di Domenico Lembo<br>
+          </b></font> <a href="mailto:lembo@dis.uniroma1.it"><font face="Arial" size="1" color="#000099">lembo@dis.uniroma1.it</font></a><BR>
+        </div>
+      </TD>
+    </TR>
+    <!--fine seconda colonna--> 
+  </TABLE>
+</CENTER>
+</BODY>
+</HTML>

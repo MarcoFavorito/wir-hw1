@@ -1,0 +1,180 @@
+<!doctype html public "-//w3c//dtd html 4.0 transitional//en">
+<html>
+<head>
+<link href="java.css" rel="stylesheet" type="text/css">
+<title>Diagramma a torta</title>
+</head>
+
+<body>
+
+<h2>Diagramma a torta</h2>
+
+Siano dati un insieme di percentuali. Si vuole realizzare
+il loro diagramma a torta, che &egrave; costituito da un
+cerchio diviso in tanti settori quante sono le percentuali.
+Ogni arco ha un angolo che &egrave; proporzionale alla
+corrispondente percentuale. Per rendere pi&ugrave; chiaro
+il diagramma, i vari settori devono essere colorati con
+colori diversi.<p>
+
+Si suppone che le percentuali siano memorizzate in un vettore
+di interi, per esempio:
+
+<pre>
+    int percentuali[]={10, 15, 30, 25, 20};
+</pre>
+<p>
+
+L'istruzione fondamentale &egrave; chiaramente quella
+di disegno di un angolo riempito <tt>fillArc</tt>, insieme
+a quella di cambiamento del colore. Concentriamoci per
+il momento sul disegno dei settori, rimandando il cambiamento
+di colore a un secondo momento.<p>
+
+Come si &egrave; detto, ogni settore deve avere un angolo
+proporzionale a una percentuale. Per esempio, il primo settore
+deve avere un angolo proporzionale a <tt>percentuali[0]</tt>.
+Quanto deve essere grande esattamente questo angolo? In tutti
+i casi in cui occorre stabilire una relazione lineare tre due
+grandezze, &egrave; sufficiente considerare i due casi
+estremi:<p>
+
+<ul>
+<li>se la percentuale vale 0 l'angolo vale 0;
+<li>se la percentuale vale 100 l'angolo vale 360.
+</ul>
+
+Ora, diciamo che <i>a</i> &egrave; l'angolo e <i>p</i> &egrave;
+la percentuale. Sappiamo che <i>a</i> deve essere proporzionale
+a <i>p</i>, quindi una relazione lineare intercorre fra loro:
+
+<center>
+<i>
+a = x * p + y
+</i>
+</center>
+<p>
+
+Per trovare i valori delle costanti <i>x</i> e <i>y</i>, usiamo
+i due casi estremi, che diventano:
+
+<center>
+<i>
+0 = x * 0 + y <br>
+360 = x * 100 + y
+</i>
+</center>
+<p>
+
+Dalla prima equazione si ricava <i>y=0</i>, per cui la seconda
+equazione diventa <i>360 = x * 100</i>, ossia <i>x=360/100</i>.
+Quindi, data una percentuale <i>p</i>, l'angolo <i>a</i> si
+ricava dalla equazione:<p>
+
+<center>
+<i>
+a = (360/100)*p
+</i>
+</center>
+<p>
+
+Parte del problema &egrave; quindi risolto: ora sappiamo quanto
+&egrave; grande ogni angolo che va disegnato. Manca ora da
+specificare quale &egrave; il suo punto di partenza. Per il primo
+angolo questo &egrave; ovvio: il punto di partenza si trova a 0
+gradi. Il punto di partenza del secondo arco si trova esattamente
+dove finisce il primo, il terzo dove finisce il secondo, ecc.
+La regola &egrave; quindi semplice: il punto d'inizio
+dell'<i>i</i>-esimo arco &egrave; il punto finale dell'arco
+disegnato precedentemente. Basta quindi memorizzare in una
+variabile il punto in cui l'arco corrente finisce, e questo
+sar&agrave; il punto di inizio dell'arco successivo. Il punto di
+fine di ogni arco si trova sommando l'ampiezza dell'arco al
+punto in cui l'arco inizia. Usiamo la variabile <tt>fine</tt>
+per indicare l'angolo a cui ogni arco finisce (e quindi il
+successivo inizia). Il disegno degli archi si pu&ograve; quindi
+effettuare con il codice seguente:<p>
+
+<pre>
+    int i;
+    int fine;
+
+    fine=0;
+
+    for(i=0; i<=percentuali.length-1; i++) {
+      g.fillArc(100,100, 300, 300, fine, percentuali[i]*360/100);
+
+      fine=fine+percentuali[i]*360/100;
+    }
+</pre>
+
+A parole: si usa una variabile <tt>i</tt> per scandire il vettore
+delle percentuali. La variabile <tt>fine</tt> indica l'angolo a cui
+inizia il settore successivo, e quindi parte a 0. Ad ogni passo,
+si disegna un nuovo settore, e si aggiorna il punto in cui il nuovo
+settore deve cominciare.<p>
+
+Veniamo ora alla questione dei colori. Supponiamo che le
+percentuali da visualizzare siano solo cinque, per cui bastano
+cinque colori diversi. Supponiamo quindi di voler usare, per
+le varie percentuali, i seguenti colori:<p>
+
+<pre>
+Color.green, Color.red, Color.blue, Color.yellow, Color.orange, Color.gray
+</pre>
+<p>
+
+L'ideale sarebbe poter mettere una istruzione
+<tt>setColor</tt> all'interno del ciclo, in modo tale che quando
+<tt>i</tt> vale 0 si esegue <tt>g.setColor(Color.green)</tt>, quando
+<tt>i</tt> vale 1 si esegue <tt>g.setColor(Color.red)</tt>, quando
+<tt>i</tt> vale 2 si esegue <tt>g.setColor(Color.yellow)</tt>, ecc.<p>
+
+In effetti, conosciamo un modo per associare un valore a dei
+numeri interi: i vettori. In questo caso, per <tt>i=0</tt>
+ci serve <tt>Color.green</tt>, per <tt>i=0</tt>
+ci serve <tt>Color.red</tt>, ecc. Quindi, usiamo un vettore in
+cui memorizziamo <tt>Color.green</tt> nella posizione 0,
+<tt>Color.red</tt> nella posizione 1, ecc. Ad ogni passo,
+basta cambiare il valore corrente usando il contenuto di una
+delle celle che costituiscono il vettore <tt>colori</tt>.<p>
+
+Il programma
+<a href="Torta.java">Torta.java</a>
+&egrave; stato realizzato a partire dalle considerazioni
+riportate sopra.<p>
+
+<pre>
+import java.awt.*;
+
+public class Torta extends java.applet.Applet {
+  public void paint (Graphics g) {
+    int percentuali[]={10, 15, 30, 25, 20};
+    Color colori[]={Color.green, Color.red, Color.blue, Color.yellow,
+                    Color.orange, Color.gray };
+    int i;
+    int fine;
+
+    fine=0;
+
+    for(i=0; i<=percentuali.length-1; i++) {
+      g.setColor(colori[i]);
+
+      g.fillArc(100,100, 300, 300, fine, percentuali[i]*360/100);
+
+      fine=fine+percentuali[i]*360/100;
+    }
+  }
+}
+
+</pre>
+
+Il grafico delle percentuali viene visualizzato come segue.<p>
+
+<center>
+<img src="Torta.gif">
+</center>
+<p>
+
+</body>
+</html>

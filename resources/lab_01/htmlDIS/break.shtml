@@ -1,0 +1,182 @@
+<html>
+<head>
+<link href="java.css" rel="stylesheet" type="text/css">
+<title>Uscita forzata da un ciclo</title>
+</head>
+
+<body>
+
+<h2>Uscita forzata da un ciclo</h2>
+
+<p>
+Nel programma di <a href="negativi.shtml">verifica di
+esistenza di valori negativi</a>, si pu&ograve; fare
+una osservazione riguardo al numero di istruzioni che
+vengono effettivamente eseguite. Supponiamo che la
+funzione sia positiva per <tt>x</tt> che va da 0 a 34,
+sia negativa per <tt>x=35</tt>. Simulando l'esecuzione
+del programma, si esegue il contenuto del ciclo una
+prima volta per <tt>x</tt> che vale 0, e qui la <tt>f</tt>
+risulta positiva, e quindi la condizione <tt>f&lt;0</tt>
+&egrave; falsa, e la variabile <tt>positivo</tt> non
+cambia valore. Lo stesso avviene per <tt>x=1</tt>,
+<tt>x=2</tt>, .... , <tt>x=34</tt>. Quando si arriva al
+valore 35, la funzione diventa negativa, per cui la
+condizione <tt>f&lt;0</tt> &egrave; verificata, per cui
+la variabile <tt>positivo</tt> diventa 0.<p>
+
+Cosa succede sulle successive esecuzioni con
+<tt>x=36,...,100</tt>? Se ci sono altri valori di <tt>x</tt>
+per i quali la <tt>f</tt> assume valori negativi, si esegue
+ancora la istruzione <tt>positivo=0</tt>, ma la variabile
+aveva gi&agrave; valore 0. Per i valori positivi, non
+succede niente. In altre parole, i valori successivi di
+<tt>x</tt> non possono cambiare pi&ugrave; niente.<p>
+
+In questo caso, una volta raggiunto il primo valore in
+cui la funzione &egrave; negativa, non &egrave; necessario
+controllare i valori successivi. In effetti, il problema
+di verifica dei valori negativi si pu&ograve; riformulare
+come: per ogni valore di x, controlla se f(x) &egrave;
+negativa: se lo &egrave;, fermati e stampa che la funzione
+assume valori negativi.<p>
+
+La istruzione <tt>break</tt> &egrave; stata introdotta per
+permettere di uscire dai cicli senza aspettare che l'ultimo
+valore sia stato raggiunto. L'uso della istruzione &egrave;
+molto semplice: ogni volta che ci si trova all'interno di
+un ciclo, se si raggiunge una istruzione <tt>break</tt> si
+interrompe il ciclo e si passa direttamente alla prima
+istruzione che segue il ciclo. Nel caso della verifica
+di valori negativi, il <tt>break</tt> si pu&ograve; usare
+come nel programma
+<a href="SottoZeroBreak.java">SottoZeroBreak.java</a>.<p>
+
+<pre>
+/*
+  Dice se una funzione assume valori negativi in un
+  certo intervallo
+*/
+
+class SottoZeroBreak {
+  public static void main(String[] args) {
+    int x;
+    int f;
+    int positivo;
+
+    positivo=1;
+
+    for(x=0; x<=100; x=x+1) {
+      f=-x*x+90*x;
+      if( f<0 ) {
+        positivo=0;
+        break;
+      }
+    }
+
+    if( positivo==1 ) {
+      System.out.println("La funzione e' positiva nell'intervallo");
+    }
+    else {
+      System.out.println("La funzione ha valori negativi");
+    }
+  }
+}
+
+</pre>
+
+<p>
+L'unica cosa che cambia rispetto al programma precedente
+<a href="SottoZero.java">SottoZero.java</a> &egrave; l'istruzione
+<tt>break</tt> all'interno della istruzione condizionale dentro
+il ciclo. L'effetto di questa istruzione &egrave; che si esce
+dal ciclo se la istruzione viene eseguita, ossia il ciclo
+si interrompe se la condizione <tt>f&lt;0</tt> &egrave;
+verificata.<p>
+
+Possiamo considerare due casi:<p>
+
+<ol>
+
+<li>la funzione &egrave; sempre positiva;
+<li>la funzione ha valori negativi.
+
+</ol>
+
+<p>
+Nel primo caso, si procede alla valutazione per x che assume
+valori crescenti da 0 a 100, nei quali la condizione <tt>f&lt;0</tt>
+&egrave; sempre falsa, per cui la variabile <tt>positivo</tt>
+non cambia mai valore, e la istruzione <tt>break</tt> non viene
+mai eseguita (questo fa s&iacute; che il ciclo proceda come al
+solito).<p>
+
+Nel secondo caso, si parte sempre con <tt>x=0</tt> e,
+finch&egrave; la funzione &egrave; positiva,
+si procede come al solito. Non appena la <tt>x</tt> assume un
+valore per cui <tt>f&lt;0</tt>, si esegue
+<tt>positivo=0;</tt>, e si arriva alla istruzione
+<tt>break;</tt> Questa istruzione fa s&iacute; che il ciclo
+venga interrotto sul momento, ossia non si incrementa nuovamente
+la variabile <tt>x</tt>, ma si passa direttamente ad eseguire
+la prima istruzione dopo il ciclo, ossia
+<tt>if( positivo==1 ) ... </tt>. Questo &egrave; esattamente il
+comportamento voluto: quando si trova un valore negativo, si
+esce dal ciclo senza terminare il controllo sui rimanenti valori
+di <tt>x</tt>.
+
+
+<h4>Esempio</h4>
+
+<p>
+Stampare il pi&ugrave; piccolo valore intero di <tt>x</tt>
+nell'intervallo [-100,250] in cui la funzione
+f(x)=x<sup>2</sup>-20x assume un valore nullo.<p>
+
+Questo problema si pu&ograve; riformulare come segue: per
+ogni valore di <tt>x</tt> che va da -100 a +250, se la funzione
+vale 0, si stampi il valore di <tt>x</tt> e si esca dal ciclo.
+Se la funzione non vale 0, si continua la esecuzione del ciclo.
+Il programma <a href="Zero.java">Zero.java</a> usa un ciclo
+in cui a seconda del valore di <tt>f</tt> si decide se uscire
+dal ciclo oppure no.<p>
+
+<pre>
+/*
+  Trova il primo valore di x nell'intervallo [-100,250]
+  in cui f(x)=xx-20x+2 vale 0.
+*/
+
+class Zero {
+  public static void main(String[] args) {
+    int x,f;
+
+    for(x=-100; x<=250; x=x+1) {
+      f=x*x+20*x;
+      if( f==0 ) {
+        System.out.println("La funzione vale 0 quando x vale "+x);
+        break;
+      }
+    }
+  }
+}
+
+</pre>
+
+<p>
+In altre parole, si esegue un ciclo con <tt>x</tt> che va da -100
+a +250. Se per un qualche valore si trova che la funzione vale 0,
+si stampa il valore di <tt>x</tt> che ha reso nulla la funzione e
+si esce dal ciclo. Si noti che il <tt>break</tt> in questo caso
+&egrave; necessario: si veda per esempio il programma
+<a href="ZeroNoBrk.java">ZeroNoBrk.java</a> che &egrave; uguale
+al precedente tranne che per la assenza del <tt>break</tt>.
+Compilando ed eseguendo questo secondo programma, si vede che
+il messaggio viene stampato per tutti i valori di <tt>x</tt> per
+i quali la funzione vale zero, e non solo per il primo, come era
+specificato.<p>
+
+
+</body>
+</html>
+

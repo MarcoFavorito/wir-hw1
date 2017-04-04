@@ -1,0 +1,92 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+
+<!-- saved from url=(0098)http://www.dis.uniroma1.it/~degiacom/didattica/fond1info/appelli/2003-04-08/compito-A/testo-A.html -->
+
+<HTML><HEAD><TITLE>Esame del 22/7/2003 - Compito A</TITLE>
+
+<META http-equiv=Content-Type content="text/html; charset=windows-1252">
+
+<META content="Microsoft FrontPage 4.0" name=GENERATOR>
+</HEAD>
+
+<BODY>
+
+<CENTER>
+  <B>Tecniche di Programmazione </B><BR>
+  <B>Corso di Laurea in Ingegneria 
+
+Informatica</B> <BR><B>Corso di Laurea in Ingegneria Automatica</B> <BR>
+A.A. 
+
+2004/05
+</CENTER>
+
+<CENTER>
+
+  <H2>Appello del 01/04/2005 - Compito A</H2>
+
+</CENTER>
+
+<p>Si vogliono gestire informazioni relative ai capolinea degli autobus. 
+  
+
+   Di un oggetto <em>CapolineaAutobus</em> sono di interesse il numero della linea di autobus che lo ha come capolinea (un intero) e la collezione di autobus che vi &egrave; parcheggiata. 
+  
+
+   Di ogni autobus 
+
+
+ sono di interesse le seguenti 
+
+
+ informazioni:</p>
+<ul>
+  <li>il suo codice (un intero).   
+  <li> se &egrave; funzionante oppure no, e nel caso non lo sia, la parte che non funziona (una stringa)</li>
+</ul>
+<p>Gli oggetti <em>CapolineaAutobus</em> supportano le seguenti funzionalità: </p>
+<UL>
+
+  <LI><EM>crea:</EM> che, dato un intero <EM>n</EM> che rappresenta una linea di autobus, crea un oggetto <em>CapolineaAutobus</em> associato alla linea di autobus <EM>n</EM>, che inizialmente non ha nessun autobus parcheggiato; 
+
+  <LI><em> capolineaVuoto: </em>che restituisce <em>true</em> se il capolinea &egrave; vuoto, <em>false </em>altrimenti; 
+  <LI><EM>lineaAutobus:</EM> che restituisce il numero della linea di autobus associato al capolinea; 
+  
+<LI><EM>arriva:</EM> che, dato il codice <em>c</em> di un autobus (funzionante), 
+
+
+ lo parcheggia  in coda agli autobus presenti nel  capolinea; se tale codice &egrave; gi&agrave; utilizzato lancia un'eccezione; 
+<LI><em>aggiungiRotto:</em> che, dato il codice <em>c</em> di un autobus rotto, lo parcheggia in coda agli autobus presenti nel capolinea; se tale codice &egrave; gi&agrave; utilizzato lancia un'eccezione;
+<LI>  <EM>parte:</EM> che fa partire il primo autobus funzionante dal capolinea; se il capolinea &egrave; vuoto o se il primo autobus non &egrave; funzionante lancia un'eccezione;
+<LI><em>parcheggiato: </em>che, dato il codice <em>c</em> di un autobus, restituisce <em>true</em> se l'autobus &egrave; al capolinea, <em>false</em> altrimenti; 
+  <LI><em>primoFunzionante: </em>che restituisce <em>true </em>se il primo autobus al capolinea &egrave; funzionante, <em>false </em>altrimenti; se il capolinea &egrave; vuoto lancia un'eccezione;
+  <LI><em>primoInPartenza: </em> che restituisce il codice del primo autobus presente nel capolinea se &egrave; funzionante; se il capolinea &egrave; vuoto o se il primo autobus non &egrave; funzionante lancia un'eccezione;
+  <LI><em>riparaPrimoRotto</em>: che ripara il primo autobus non funzionante del capolinea; 
+  <LI><em>rimuovi</em><em>PrimoRotto</em>: che rimuove dal capolinea il primo autobus non funzionante;    
+  <LI><EM>quantiRotti:</EM> che restituisce il numero di autobus non funzionanti parcheggiati al capolinea;
+  <LI><EM>tuttiRotti:</EM> che restituisce un array di interi contenente il codice di tutti gli autobus rotti parcheggiati al capolinea.</LI>
+
+</UL>
+
+<P><STRONG>Domanda 1.</STRONG> Scrivere una classe Java <CODE>CapolineaAutobus</CODE> per rappresentare 
+
+  oggetti <em>CapolineaAutobus</em>. Specificare il costo in tempo e in spazio di ciascun metodo, indicando esplicitamente la dimensione dell'input, l'istruzione dominante e descrivendo il caso peggiore quando necessario. 
+<P><STRONG>Domanda 2.</STRONG> Si realizzi una classe cliente della classe <CODE>CapolineaAutobus </CODE>contenente un metodo statico <code>rinnovaAutobus</code> che, data una lista <em>l </em>  (oggetto della classe <code>Lista</code>, realizzata con l'interfaccia riportata di seguito) di (codici di) autobus ed un <em>CapolineaAutobus a</em>, rimuova tutti gli autobus rotti dal capolinea e aggiunga in coda tutti gli autobus contenuti in <em>l</em>. Si noti che gli autobus presenti in <em>l</em> sono tutti funzionanti.
+Specificare il costo in tempo e in spazio del metodo, indicando esplicitamente la dimensione dell'input, l'istruzione dominante e descrivendo il caso peggiore quando necessario. Le operazioni sulla <code>Lista</code> hanno tutte costo O(1). 
+<p>La classe <tt>Lista</tt> ha la seguente interfaccia:
+<blockquote>
+<pre>
+class Lista {
+   public Lista() 
+   public boolean empty() 
+   public int car()			//restituisce il primo elemento della lista
+   public Lista cons(int x)	//inserisce x come primo elemento
+   public Lista cdr()			//elimina il primo elemento
+}
+</pre>
+</blockquote>
+<P><strong>Domanda 3.</strong> Data una rappresentazione collegata di alberi binari in cui l'informazione in ciascun nodo &egrave; un intero, realizzare un metodo statico pubblico che, dato il riferimento alla radice di un albero binario <em>alb</em>, restituisca il numero di nodi intermedi (cio&egrave; non foglie) la cui informazione sia un numero pari. Specificare il costo in tempo e in spazio del metodo, indicando esplicitamente la dimensione dell'input, l'istruzione dominante e descrivendo il caso peggiore quando necessario. 
+<P>
+</BODY>
+</HTML>
+

@@ -1,0 +1,66 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+"http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<title>Esempio domanda SOCKET</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+</head>
+
+<body>
+<h3>Corso di Laurea in Ing. Informatica, 
+Universita' La Sapienza<br>
+Sistemi Operativi II<br>
+Docente Roberto Baldoni</h3>
+<h3> Esempio di domanda di programmazione (argomento: SOCKET - Appello del 22 Marzo 2004). </h3>
+<p>Il seguente frammento di codice appartiene ad un server FTP. Un server FTP attende una connessione da parte di un client sulla porta 21 ed interpreta i comandi che il client invia su questo canale. Alla ricezione del comando “PORT <em>X </em>”, dove <em>X </em> &egrave; un numero intero compreso tra 1024 e 65535, il server apre una nuova connessione TCP verso la porta <em>X </em> del client per instaurare un nuovo canale su cui verranno inviati i dati eventualmente richiesti. Integrare il codice riportato con le linee necessarie per realizzare la funzionalit&agrave;. Riportare in modo dettagliato in quale punto del codice le linee aggiuntive devono essere inserite. </p>
+<pre>
+ 4 int list_s, data_s, control_conn;
+ 5 int main(int argc, char *argv[]) {
+ 6 	short int			listen_port;
+ 7 	struct				sockaddr_in servaddr;
+ 8 	struct				sockaddr_in their_addr;
+ 9 	struct				sockaddr_in client_addr;
+10 	char					buffer[MAX_LINE], client_port[6];
+11 	char					*endptr;
+12 	int						sin_size;	
+13 
+14	listen_port = 21;
+15	printf("Server in ascolto sulla porta %d.\n",listen_port);
+16 	
+17	/*  Creazione del socket  */
+18	printf("server: creazione socket.\n");
+19	if ( (list_s = socket(AF_INET, SOCK_STREAM, 0)) < 0 ) {
+20		fprintf(stderr, "server: errore creazione socket.\n");
+21		exit(EXIT_FAILURE);
+22	}
+23 
+24	/* Inizializzazione struttura sockaddr_in */
+25	printf("server: init struttura sockaddr.\n");
+26	memset(&servaddr, 0, sizeof(servaddr));
+27	servaddr.sin_family = AF_INET;
+28	servaddr.sin_addr.s_addr = htonl(INADDR_ANY);
+29	servaddr.sin_port = htons(listen_port);
+30 
+31	/* Bind del socket sull'indirizzo IP */
+32	printf("server: bind del socket.\n");
+33	if (bind(list_s,(struct sockaddr *) &servaddr, sizeof(servaddr))&lt;0) {
+34		fprintf(stderr, "server: errore durante la bind.\n");
+35		exit(EXIT_FAILURE);
+36	}
+37 
+38	/* Poniamo il socket in modalita' passiva */
+39	printf("server: listen socket.\n");
+40	if ( listen(list_s, LISTENQ) &lt; 0 ) {
+41		fprintf(stderr, "server: errore durante la listen.\n");
+42		exit(EXIT_FAILURE);
+43	}
+44 
+46 
+47	/* Loop infinito */
+48	while ( 1 ) {
+49		/* da completare */
+50	}
+51 }
+</pre>
+</body>
+</html>

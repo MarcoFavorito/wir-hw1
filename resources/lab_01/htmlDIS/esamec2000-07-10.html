@@ -1,0 +1,219 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN"
+           "http://www.w3.org/TR/REC-html40/loose.dtd">
+<HTML>  
+<HEAD>
+  <META NAME="GENERATOR" CONTENT="Adobe PageMill 3.0 Mac">
+  <META NAME="GENERATOR" CONTENT="TtH 2.25">
+  <TITLE>Testo esame di Fondamenti di Informatica (Ambiente e Territorio)</TITLE>
+</HEAD>
+<BODY>
+
+<P><CENTER><B>Universit&agrave; di Roma ``La Sapienza''&nbsp;-&nbsp;Facolt&agrave;
+di Ingegneria<BR>
+Corso di Fondamenti di Informatica&nbsp;-&nbsp;A.A.&nbsp;1999/2000<BR>
+Corso di Laurea: <I>Ingegneria per l'Ambiente e il Territorio</I></B><BR>
+Appello del <B>10 luglio 2000</B> - 1<sup>a</sup> prova scritta<BR>
+<EM>tempo a disposizione: 120 minuti</EM></CENTER></P>
+
+<P>&nbsp;</P>
+
+<H4>Problema&nbsp;1&nbsp;( punti)</H4>
+
+<P>Il proprietario di una galleria d'arte possiede quadri e sculture
+e memorizza su un file di <EM>testo</EM> i dati di tutte le opere
+da egli possedute. Per ogni opera scrive nel file le seguenti
+informazioni:</P>
+
+<UL>
+  <LI>nome autore (15 caratteri);
+  <LI>titolo opera (10 caratteri);
+  <LI>tipo opera (un carattere: <TT>'Q'</TT> per quadro e <TT>'S'</TT>
+  per scultura);
+  <LI>prezzo in euro (reale positivo).
+</UL>
+
+<P><B><FONT SIZE="-2">Esempio</FONT></B><FONT SIZE="+1">&nbsp;&nbsp;
+</FONT><FONT SIZE="-2">In un certo istante il file potrebbe contenere
+le seguenti informazioni:<BR>
+<TT>SCROFOLO PAESAGGIO Q 1000.0<BR>
+BUONARROTI PIETA S 1.0E+9<BR>
+LEONARDO GIOCONDA Q 1.5E+9<BR>
+DONATELLO DAVID S 1.0E+9<BR>
+BUONARROTI SISTINA Q 0.8E+9<BR>
+VANGOGH GIRASOLI Q 1.5E+9</TT></FONT></P>
+
+<P>Si richiede di risolvere i seguenti punti:</P>
+
+<OL>
+  <LI>Scrivere le dichiarazioni dei tipi di dato C da utilizzarsi
+  per risolvere i punti successivi. <EM>Qualora si utilizzino variabili
+  globali motivare adeguatamente la scelta.</EM>
+  <LI>Scrivere una funzione C (o pi&ugrave;) che riceve come argomento
+  il nome fisico del file f che contiene i dati e restituisce due
+  array a1 ed a2 contenenti, rispettivamente, i dati relativi a
+  tutti i quadri pi&ugrave; cari e i dati relativi a tutte le sculture
+  pi&ugrave; care.
+  <P><B><FONT SIZE="-2">Esempio</FONT></B><FONT SIZE="-2">&nbsp;&nbsp;
+  Facendo riferimento al file sopra riportato, la funzione deve
+  restituire due array con le seguenti informazioni:</FONT><TABLE
+  BORDER="0" CELLSPACING="2" CELLPADDING="0">
+     
+    <TR>
+      <TD>array a1</TD> 
+      <TD><TT>VANGOGH</TT></TD> 
+      <TD><TT>GIRASOLI</TT></TD> 
+      <TD><TT>Q</TT></TD> 
+      <TD><TT>1.5E+9</TT></TD> 
+      <TD ALIGN="RIGHT"><I><FONT SIZE="-2">(cella 0)</FONT></I></TD> 
+    </TR>
+    <TR>
+      <TD></TD>
+      <TD><TT>LEONARDO</TT></TD> 
+      <TD><TT>GIOCONDA</TT></TD> 
+      <TD><TT>Q</TT></TD> 
+      <TD><TT>1.5E+9</TT></TD> 
+      <TD ALIGN="RIGHT"><I><FONT SIZE="-2">(cella 1)</FONT></I></TD> 
+    </TR>
+    <TR>
+      <TD COLSPAN="6" ALIGN="CENTER">&nbsp;</TD>
+       
+    </TR>
+    <TR>
+      <TD>array a2</TD> 
+      <TD><TT>BUONARROTI</TT></TD> 
+      <TD><TT>PIETA</TT></TD> 
+      <TD><TT>S</TT></TD> 
+      <TD><TT>1.0E+9</TT></TD> 
+      <TD ALIGN="RIGHT"><I><FONT SIZE="-2">(cella 0)</FONT></I></TD> 
+    </TR>
+    <TR>
+      <TD></TD>
+      <TD><TT>DONATELLO</TT></TD> 
+      <TD><TT>DAVID</TT></TD> 
+      <TD><TT>S</TT></TD> 
+      <TD><TT>1.0E+9</TT></TD> 
+      <TD ALIGN="RIGHT"><I><FONT SIZE="-2">(cella 1)</FONT></I></TD> 
+    </TR>
+  </TABLE>
+  <LI>Ad ogni autore a si associa il valore complessivo delle opere
+  (di entrambi i tipi) rappresentate val(a). Scrivere una funzione
+  C (o pi&ugrave;) che riceve come argomento il nome fisico del
+  file f che contiene i dati e restituisce max(val(a)), al variare
+  di a; in altre parole la funzione restituisce il valore massimo
+  complessivo delle opere (di entrambi i tipi) di uno stesso autore.
+  <P><B><FONT SIZE="-2">Esempio</FONT></B><FONT SIZE="-2">&nbsp;&nbsp;
+  Facendo riferimento al file sopra riportato, la funzione deve
+  restituire il valore <TT>1.8E+09</TT>, pari alla somma dei valori
+  delle opere di Buonarroti, autore che massimizza tale somma.</FONT>
+</OL>
+
+<P><FONT SIZE="+3"><HR ALIGN=LEFT SIZE="5"></FONT></P>
+
+<P><CENTER><B>Universit&agrave; di Roma ``La Sapienza''&nbsp;-&nbsp;Facolt&agrave;
+di Ingegneria<BR>
+Corso di Fondamenti di Informatica&nbsp;-&nbsp;A.A.&nbsp;1999/2000<BR>
+Corso di Laurea: <I>Ingegneria per l'Ambiente e il Territorio</I></B><BR>
+Appello del <B>10 luglio 2000</B> - 2<sup>a</sup> prova scritta<BR>
+<EM>tempo a disposizione: 60 minuti</EM></CENTER></P>
+
+<P>&nbsp;</P>
+
+<H4>Problema&nbsp;2&nbsp;( punti)</H4>
+
+<OL>
+  <LI>Scrivere la propria data di nascita in formato <TT>gg mm
+  aa</TT>.
+  <LI>Considerare le seguenti definizioni di <TT>g, m, a</TT>.
+  <pre>g = gg % 10; m = - mm; a = aa % 10;</pre>
+  <LI>Scrivere la rappresentazione di <TT>g</TT>, <TT>m</TT> ed
+  <TT>a</TT> in complemento a due, usando 5 bit.
+</OL>
+
+<P>&nbsp;</P>
+
+<H4>Problema&nbsp;3&nbsp;( punti)</H4>
+
+<P>Si consideri il seguente programma C.</P>
+
+<PRE>  #include &lt;stdio.h&gt;
+  #define MAX 8
+
+  typedef int cifra;
+  typedef cifra ARR[MAX];
+
+  int Cosa(ARR a, int i);
+  int main(void);
+
+  int Cosa(ARR a, int i) {
+    if(i == MAX)
+      return 0;
+    else
+      return a[i] + Cosa(a, i+1);
+  }
+
+  int main(void) {
+    ARR io;
+    int j;
+    printf(&quot;Matricola (una cifra alla volta):\n&quot;);
+    for(j=0; j&lt;MAX; j++)
+      scanf(&quot;%d&quot;, &amp;io[j]);
+    printf(&quot;%d\n&quot;, Cosa(io,0));
+    return 0;
+  }</PRE>
+
+<UL>
+  <LI>Descrivere cosa fa (non come lo fa) la funzione <TT>Cosa</TT>.
+  <LI>Che valore viene mostrato in output dal programma quando
+  vengono inserite da tastiera le otto cifre del proprio numero
+  di matricola, una alla volta (cifra1+INVIO, cifra2+INVIO, cifra3+INVIO
+  ecc.)? Mostrare l'evoluzione dei valori delle variabili nelle
+  varie attivazioni.
+</UL>
+
+<P>&nbsp;</P>
+
+<H4>Problema&nbsp;4&nbsp;( punti)</H4>
+
+<P>Date le relazioni:</P>
+
+<UL>
+  <LI><TT>AnagraficaCittadini(Nome, Cognome, CodiceFiscale)</TT>,
+  <LI><TT>RicoveriOspedalieri(CodiceOspedale, CodiceFiscale, DataRic,
+  DataDim)</TT>;
+</UL>
+
+<P>scrivere una interrogazione SQL che costruisca l'elenco l'elenco
+dei nominativi (nome e cognome) dei pazienti che sono stati ricoverati
+(in un qualunque ospedale) pi&ugrave; di una volta.<BR>
+[N.B.: nella relazione <TT>AnagraficaCittadini</TT> sono presenti
+anche informazioni relative ad individui che non sono mai stati
+ricoverati.]</P>
+
+<P><FONT SIZE="-1">Descrizione degli attributi:</FONT></P>
+
+<UL>
+  <LI><TT><FONT SIZE="-1">AnagraficaCittadini.Nome</FONT></TT><FONT
+   SIZE="-1">, <TT>AnagraficaCittadini.Cognome</TT> ed <TT>AnagraficaCittadini.CodiceFiscale</TT>.
+  Informazioni relative ad individui, presenti in tabella a prescindere
+  da un loro effettivo ricovero.</FONT>
+  <LI><TT><FONT SIZE="-1">RicoveriOspedalieri.CodiceOspedale</FONT></TT><FONT
+   SIZE="-1">. Codice (testo) identificativo di un unico ospedale.</FONT>
+  <LI><TT><FONT SIZE="-1">RicoveriOspedalieri.CodiceFiscale</FONT></TT><FONT
+   SIZE="-1">. Codice fiscale di un individuo che &egrave; stato
+  ricoverato.</FONT>
+  <LI><TT><FONT SIZE="-1">RicoveriOspedalieri.DataRic</FONT></TT><FONT
+   SIZE="-1"> e <TT>RicoveriOspedalieri.DataDim</TT>. Date di ricovero
+  e di dimissione.</FONT>
+</UL>
+
+<P><CENTER><B><EM><FONT SIZE="-2">Orali e verbalizzazioni:</FONT></EM></B><EM><FONT
+ SIZE="-2"> gioved&igrave; 13/7/2000, V. Salaria 113, h&nbsp;9:00,
+2<sup>o</sup> piano, aula C3.</FONT></EM></CENTER></P>
+
+<P><FONT SIZE="+3"><HR ALIGN=LEFT></FONT><FONT SIZE="-2">File
+translated from T<sub>E</sub>X by <A HREF="http://hutchinson.belmont.ma.us/tth/">T<sub>T</sub>H</A>,
+version 2.25.<BR>
+On 6 Jul 2000, 15:58.</FONT>
+
+</BODY>
+</HTML>

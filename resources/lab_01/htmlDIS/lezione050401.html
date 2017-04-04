@@ -1,0 +1,179 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1">
+<META NAME="Generator" CONTENT="Microsoft Word 98">
+<TITLE>ottava complemento didattico</TITLE>
+</HEAD>
+<BODY>
+
+<B><U><FONT FACE="New York" SIZE=4><P ALIGN="CENTER">Fond. di Informatica (C.E.M.N.)</U>&#9;   <U>ottavo complemento did.</P>
+</B></U></FONT><FONT FACE="New York"><P ALIGN="JUSTIFY"></P>
+</FONT><B><FONT FACE="Times" SIZE=4><P ALIGN="CENTER">FUNZIONI</P><DIR>
+<DIR>
+
+</B><P ALIGN="JUSTIFY">Secondo genere di sottoprogrammi: <B>servono per costruire espressioni</B> </P>
+</DIR>
+</DIR>
+
+<P>Ad esempio, </FONT><FONT FACE="Courier" SIZE=4>Ord(.), sqr(.), sqrt(.), pred(.)</FONT><FONT FACE="Times" SIZE=4> &#9;sono <I>funzioni di sistema</P>
+</I>
+<P>Una <I>chiamata di funzione</I> pu&ograve; apparire ovunque sia atteso un VALORE (quello calcolato dalla funzione). Ad esempio </FONT><FONT FACE="Courier" SIZE=4>sqr(b)</FONT><FONT FACE="Times" SIZE=4> pu&ograve; apparire dove &egrave; atteso un valore reale:</P>
+</FONT><FONT FACE="Courier" SIZE=4><P>writeln(sqr(x));&#9;&#9;</P>
+<P>x := sqr(b);</P>
+<B><P>if</B> x = (3 + sqr(y+2) &#133;</P>
+<P>write('quadrato di ', b, ' = ', sqr(b));&#9;</P><DIR>
+<DIR>
+
+</FONT><B><FONT FACE="New York"><P>&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;</P></DIR>
+</DIR>
+
+</FONT><FONT FACE="Times"><P>RISULTATO della chiamata</B> sqr(b)&#9;All'atto della chiamata, </P><DIR>
+<DIR>
+<DIR>
+<DIR>
+<DIR>
+<DIR>
+<DIR>
+<DIR>
+<DIR>
+<DIR>
+<DIR>
+
+<P>- viene calcolato un valore (il quadrato di b); </P>
+<P>- tale valore viene "restituito" <I>in luogo</I> della chiamata di funzione</P></DIR>
+</DIR>
+</DIR>
+</DIR>
+</DIR>
+</DIR>
+</DIR>
+</DIR>
+</DIR>
+</DIR>
+</DIR>
+
+</FONT><FONT FACE="New York"><P ALIGN="CENTER">-----------------------------------------------------------------------------------------------------</P>
+<B><P>FUNZIONI definite dal programmatore </B>(dichiarazione di funzioni)</P><DIR>
+<DIR>
+<DIR>
+<DIR>
+<DIR>
+
+</FONT><FONT FACE="Times"><P ALIGN="JUSTIFY">Una <B>funzione</B> &egrave; un <B>sottoprogramma</B>. In pi&ugrave; va definita specificando di che tipo sar&agrave; il valore da essa calcolato (<B>tipo_risultato</B>). Tale valore va assegnato alla <B>variabile automatica</B> prima del termine del sottoprogramma.</P></DIR>
+</DIR>
+</DIR>
+
+</FONT><U><FONT FACE="Courier"><P>Function</U> NOMEFUNZIONE ( lista_parametri ) <B>: tipo_risultato</P>
+</B><P>    &#133; Parte dichiarativa &#133;</P>
+<U><P>begin </P><DIR>
+<DIR>
+
+</U><P>&#133; </P>
+<B><P>NOMEFUNZIONE :=</B> &#133;&#9;{assegnazione della variabile automatica}</P>
+<P>&#133; &#9;&#9;&#9;&#9;{che deve contenere il risultato della f.}</P></DIR>
+</DIR>
+
+<U><P>end</U>; </P></DIR>
+</DIR>
+
+</FONT><FONT FACE="New York"><P ALIGN="CENTER">-----------------------------------------------------------------------------------------------------</P>
+</FONT><B><FONT FACE="Times" SIZE=4><P ALIGN="CENTER">CHIAMATA di FUNZIONE</P>
+</FONT><FONT FACE="Courier"><P ALIGN="CENTER">&#133; NOMEFUNZIONE(parametri) &#133;</P>
+
+
+<UL>
+</B></FONT><FONT FACE="Times" SIZE=4><P ALIGN="JUSTIFY"><LI>avviene all'interno di una espressione (&egrave; essa stessa una espressione)</LI></P>
+<P ALIGN="JUSTIFY"><LI>comporta l'allocazione di un regolare record di attivazione</LI></P>
+<P ALIGN="JUSTIFY"><LI>nel rda c'&egrave; una variabile </FONT><FONT FACE="Courier">NOMEFUNZIONE</FONT><FONT FACE="Times" SIZE=4> (usata per contenere il risultato della funzione)</LI></P>
+<P ALIGN="JUSTIFY"><LI>al termine dell'esecuzione, il risultato conservato in </FONT><FONT FACE="Courier">NOMEFUNZIONE</FONT><FONT FACE="Times" SIZE=4> viene "restituito" (<I>ritornato</I>) all'unit&agrave; chiamante, <U>nel punto dove &egrave; occorsa la chiamata</LI></P></UL>
+
+</U></FONT><B><FONT FACE="Courier"><DIR>
+
+<P>program</B> PF;</P>
+<B><P>&#133; </P><DIR>
+
+<P>function DOPPIOMAX (r1, r2:real) : real;</P>
+<P> begin</P>
+<P>   if r1&gt;r2 </P>
+<P>    then DOPPIOMAX:=2*r1</P>
+<P>    else DOPPIOMAX:=2*r2;</P>
+<P> end;</P></DIR>
+
+<P>begin</B> {main program}</P><DIR>
+
+<P>c:=doppiomax(2,9);&#9;&#9;&#9;{&egrave; c:=18}</P>
+<P>a:=doppiomax(7,c) + 6;&#9;&#9;{&egrave; a:=42}</P>
+<P>b:= 100 + 2* doppiomax(a,c)&#9;{&egrave; b:=268}</P>
+<P>writeln(DOPPIOMAX(7,21));&#9;&#9;{stampa 42}</P>
+<P>doppiomax(a,c)&#9;&#9;&#9;&#9;{privo di senso}   <B>***</B> </P></DIR>
+
+<B><P>end.</P></DIR>
+
+</B></FONT><FONT FACE="New York"><P ALIGN="CENTER">-----------------------------------------------------------------------------------------------------</P><DIR>
+<DIR>
+<DIR>
+<DIR>
+<DIR>
+<DIR>
+
+<B><P ALIGN="CENTER">Procedure&#9;<FONT FACE="Wingdings">&#224;</FONT>
+&#9;nuove istruzioni</P>
+<P ALIGN="CENTER">Funzioni&#9;<FONT FACE="Wingdings">&#224;</FONT>
+&#9;nuove (sotto)espressioni</P>
+</B><P ALIGN="JUSTIFY"></P></DIR>
+</DIR>
+</DIR>
+</DIR>
+</DIR>
+</DIR>
+
+</FONT><FONT FACE="Times" SIZE=4><P ALIGN="JUSTIFY"><IMG SRC="Image1.gif" WIDTH=175 HEIGHT=99></P>
+</FONT><FONT FACE="New York"><P ALIGN="CENTER"><IMG SRC="Image2.gif" WIDTH=507 HEIGHT=138>-----------------------------------------------------------------------------------------------------</P>
+</FONT><B><FONT FACE="Times"><P ALIGN="CENTER"></P>
+<P ALIGN="CENTER">SCELTA TRA PROCEDURA E FUNZIONE</P>
+</FONT><FONT FACE="Times" SIZE=4><P ALIGN="JUSTIFY">Dato un sottoproblema/sottoprogramma</P></B></FONT>
+<TABLE BORDER CELLSPACING=1 CELLPADDING=3 WIDTH=516>
+<TR><TD WIDTH="60%" VALIGN="TOP">
+<B><FONT FACE="Times" SIZE=4><P ALIGN="CENTER">scopo</B></FONT></TD>
+<TD WIDTH="40%" VALIGN="TOP">
+<B><FONT FACE="Times" SIZE=4><P ALIGN="CENTER">Sottoprogramma</B></FONT></TD>
+</TR>
+<TR><TD WIDTH="60%" VALIGN="TOP">
+<FONT FACE="Times" SIZE=4><P ALIGN="JUSTIFY">Calcolo di un valore che l'unit&agrave; chiamante vuole usare in un'espressione</FONT></TD>
+<TD WIDTH="40%" VALIGN="TOP">
+<FONT FACE="Times" SIZE=4><P ALIGN="JUSTIFY">funzione</FONT></TD>
+</TR>
+<TR><TD WIDTH="60%" VALIGN="TOP">
+<FONT FACE="Times" SIZE=4><P ALIGN="JUSTIFY">Modifica dell'ambiente di esecuzione dell'unit&agrave; chiamante (sue variabili)</P>
+
+<UL>
+<P ALIGN="JUSTIFY"><LI>il sottoprogramma calcola pi&ugrave; valori, e li memorizza in variabili  passate per parametri</LI></P>
+<P ALIGN="JUSTIFY"><LI>il sottoprogramma modifica direttamente variabili ad esso non locali</UL>
+</FONT></TD>
+<TD WIDTH="40%" VALIGN="TOP">
+<FONT FACE="Times" SIZE=4><P ALIGN="JUSTIFY">Procedura</P>
+<P ALIGN="JUSTIFY"></P>
+
+<UL>
+<P ALIGN="JUSTIFY"><LI>on parametri di output</LI></P></UL>
+
+<P ALIGN="JUSTIFY">oppure</P>
+
+<UL>
+<P ALIGN="JUSTIFY"><LI>che usa variabili non locali visibili </UL>
+</FONT></TD>
+</TR>
+</TABLE>
+
+<B><FONT FACE="Times" SIZE=4><P ALIGN="JUSTIFY"></P>
+</B></FONT><FONT FACE="Courier"><P ALIGN="JUSTIFY">SCAMBIO (var x, y: real): real;</P>
+<P ALIGN="JUSTIFY">RISOLVI (a,b,c:real; var rad1, rad2: real; var cc:boolean);</P>
+<P ALIGN="JUSTIFY">DOPPIOMAX(&#133;</P>
+<P ALIGN="JUSTIFY">MAX (x, y: integer): integer;</P>
+<P ALIGN="JUSTIFY">POTENZA (x, y: integer): integer;</P>
+<P ALIGN="JUSTIFY">MEDIAVETT (V: TIPOVETT): real;</P>
+</FONT><FONT FACE="New York"><P ALIGN="JUSTIFY">-----------------------------------------------------------------------------------------------------</P>
+</FONT><B><FONT FACE="Times"><P ALIGN="CENTER"></P>
+<P ALIGN="CENTER">EFFETTI COLLATERALI</P>
+</B><P ALIGN="JUSTIFY">Modifiche fatte da una procedura/funzione su VARIABILI NON LOCALI, che non ci si potrebbe aspettare guardando la sola specifica (intestazione) della proc/fun.</P></FONT></BODY>
+</HTML>

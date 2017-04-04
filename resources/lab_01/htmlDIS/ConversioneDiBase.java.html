@@ -1,0 +1,53 @@
+<!-- file generated with webcpp 0.6.2 http://webcpp.sf.net -->
+<html>
+<head>
+<title>Z:\www\igea\materiale\2002-03\lab\20021202\sorgenti\ConversioneDiBase.java</title>
+</head>
+<body bgcolor=#ffffff text=#000000 link=#ff0000 vlink=#666666 alink=#0000ff>
+<pre>
+<font COLOR=#666666>/* ECCO L'ALGORITMO PER CONVERTIRE DA BASE 10 A BASE p
+
+start
+s="";	 //inizializza stringa da stampare a stringa vuota
+input(n) // valore in base 10
+input(p) // base di arrivo
+while (n &gt;= 1)
+	q = n div p 	// divisione intera
+	r = n - q*p 	// resto di n / p
+	s = r + s		// aggiungi nuova cifra in testa alla stringa da stampare
+	n = q
+stop
+output(s)
+
+   DI SEGUITO C'E' IL CODICE
+*/</font>
+
+<b><font COLOR=#0000ff>public</font></b> <b><font COLOR=#0000ff>class</font></b> ConversioneDiBase {
+	
+	<b><font COLOR=#0000ff>public</font></b> <b><font COLOR=#0000ff>static</font></b> <b><font COLOR=#0000ff>final</font></b> <b><font COLOR=#0000ff>int</font></b> VALORE1<font COLOR=#a900a9>0</font>=<font COLOR=#a900a9>1000</font>;
+	<b><font COLOR=#0000ff>public</font></b> <b><font COLOR=#0000ff>static</font></b> <b><font COLOR=#0000ff>final</font></b> <b><font COLOR=#0000ff>int</font></b> BASE=<font COLOR=#a900a9>2</font>;
+	
+	<b><font COLOR=#0000ff>public</font></b> <b><font COLOR=#0000ff>static</font></b> <b><font COLOR=#0000ff>void</font></b> main (String[] arg) {
+		<b><font COLOR=#0000ff>int</font></b> q,r,n=VALORE1<font COLOR=#a900a9>0</font>; 
+		String s=<font COLOR=#ff0000>""</font>;
+				
+		System.out.print(<font COLOR=#ff0000>"Valore in base 10\t:\t"</font>);
+		System.out.println(VALORE1<font COLOR=#a900a9>0</font>);
+		
+		
+		<b><font COLOR=#0000ff>while</font></b> (n&gt;=<font COLOR=#a900a9>1</font>){
+			q = n/ BASE;     	<font COLOR=#666666>// divisione intera</font>
+			r = n - q*BASE; 	<font COLOR=#666666>// resto di n / p</font>
+			s = r + s;	    	<font COLOR=#666666>// aggiungi nuova cifra in testa alla stringa da stampare</font>
+			n = q;		
+		}
+		System.out.print(<font COLOR=#ff0000>"Valore in base "</font>);
+		System.out.print(BASE);
+		System.out.print(<font COLOR=#ff0000>"\t:\t"</font>);
+		System.out.println(s);
+	}
+}
+
+</pre>
+</body>
+</html>

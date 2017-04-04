@@ -1,0 +1,127 @@
+<!-- file generated with webcpp 0.6.2 http://webcpp.sf.net -->
+<html>
+<head>
+<title>C:\Documents and Settings\Administrator\Documenti\Web\asd\listati\ArrayQueue.java</title>
+<meta name="Microsoft Border" content="tb, default">
+</head>
+<body bgcolor=#ffffff text=#000000 link=#ff0000 vlink=#666666 alink=#0000ff><!--msnavigation--><table border="0" cellpadding="0" cellspacing="0" width="100%"><tr><td>
+
+
+
+<p align="center">
+
+</p>
+
+<hr>
+
+<p align="center">&nbsp;</p>
+
+
+
+</td></tr><!--msnavigation--></table><!--msnavigation--><table border="0" cellpadding="0" cellspacing="0" width="100%"><tr><!--msnavigation--><td valign="top">
+<pre>
+<b><font COLOR=#0000ff>public</font></b> <b><font COLOR=#0000ff>class</font></b> ArrayQueue {
+	<b><font COLOR=#0000ff>private</font></b> <b><font COLOR=#0000ff>int</font></b> first, last, size; 
+    <b><font COLOR=#0000ff>private</font></b> Object[] storage; 
+    <b><font COLOR=#0000ff>private</font></b> <b><font COLOR=#0000ff>static</font></b> <b><font COLOR=#0000ff>final</font></b> <b><font COLOR=#0000ff>int</font></b> DEFAULTSIZE = <font COLOR=#a900a9>100</font>;
+
+    <b><font COLOR=#0000ff>public</font></b> ArrayQueue(){
+    	<b><font COLOR=#0000ff>this</font></b>(DEFAULTSIZE);
+    }
+
+	<b><font COLOR=#0000ff>public</font></b> ArrayQueue(<b><font COLOR=#0000ff>int</font></b> n){ 
+		size = n;
+		storage = <b><font COLOR=#0000ff>new</font></b> Object[size];
+		first = last= -<font COLOR=#a900a9>1</font>;
+	} 
+
+	<b><font COLOR=#0000ff>public</font></b> <b><font COLOR=#0000ff>boolean</font></b> isFull(){ 
+		<b><font COLOR=#0000ff>return</font></b> ((first == <font COLOR=#a900a9>0</font>) && (last == size - <font COLOR=#a900a9>1</font>)) || (first == last + <font COLOR=#a900a9>1</font>); 
+	}  
+
+	<b><font COLOR=#0000ff>public</font></b> <b><font COLOR=#0000ff>boolean</font></b> isEmpty(){ 
+		<b><font COLOR=#0000ff>return</font></b> first == -<font COLOR=#a900a9>1</font>; 
+	} 
+
+	<b><font COLOR=#0000ff>public</font></b> <b><font COLOR=#0000ff>void</font></b> enqueue(Object el){
+		<b><font COLOR=#0000ff>if</font></b>(!isFull())
+			<b><font COLOR=#0000ff>if</font></b> ((last == size - <font COLOR=#a900a9>1</font>) || (last == -<font COLOR=#a900a9>1</font>)) { 
+				storage[<font COLOR=#a900a9>0</font>] = el;
+				last = <font COLOR=#a900a9>0</font>; 
+				<b><font COLOR=#0000ff>if</font></b> (first == -<font COLOR=#a900a9>1</font>) <font COLOR=#666666>//caso coda vuota</font>
+					first=<font COLOR=#a900a9>0</font>;
+			} <b><font COLOR=#0000ff>else</font></b> storage[++last] = el; 
+	} 
+	
+	<b><font COLOR=#0000ff>public</font></b> Object dequeue(){ 
+		Object tmp = <b><font COLOR=#0000ff>null</font></b>;
+		<b><font COLOR=#0000ff>if</font></b>(!isEmpty()) {
+			tmp = storage[first];
+			<b><font COLOR=#0000ff>if</font></b> (first == last) <font COLOR=#666666>//caso unico elemento</font>
+				last = first = -<font COLOR=#a900a9>1</font>;
+			<b><font COLOR=#0000ff>else</font></b> <b><font COLOR=#0000ff>if</font></b> (first == size - <font COLOR=#a900a9>1</font>)
+            	first = <font COLOR=#a900a9>0</font>; 
+        	<b><font COLOR=#0000ff>else</font></b> first++; 
+    	}
+		<b><font COLOR=#0000ff>return</font></b> tmp; 
+	} 
+
+   
+
+	<b><font COLOR=#0000ff>public</font></b> <b><font COLOR=#0000ff>void</font></b> printAll(){ 
+		<b><font COLOR=#0000ff>if</font></b>(isEmtpy())
+ 			System.out.println(<font COLOR=#ff0000>"Coda vuota."</font>); 
+		<b><font COLOR=#0000ff>else</font></b> {
+			<b><font COLOR=#0000ff>int</font></b> i = first;
+			<b><font COLOR=#0000ff>do</font></b> {
+ 				System.out.print(storage[i] + <font COLOR=#ff0000>" "</font>); 
+ 				i = (i + <font COLOR=#a900a9>1</font>) % size;
+ 			} <b><font COLOR=#0000ff>while</font></b>(i != ((last + <font COLOR=#a900a9>1</font>) % size));
+ 			System.out.println();
+ 		}
+    } 
+}
+
+</pre>
+<!--msnavigation--></td></tr><!--msnavigation--></table><!--msnavigation--><table border="0" cellpadding="0" cellspacing="0" width="100%"><tr><td>
+
+
+
+<p>&nbsp;</p>
+
+<hr>
+<table border="0" width="100%">
+
+  <tr>
+
+    <td width="505" valign="top">
+
+      <h5 align="left">Bacheca di <i>Algoritmi e Strutture Dati </i>a.a. 2004-05 - canale
+      A - L</h5>
+
+    </td>
+
+    <td width="381" valign="top">
+      <p align="right"><font size="1"><a href="http://algo.mastertopforum.com/" target="_blank">forum
+      del corso</a></font></td>
+
+  </tr>
+
+  <tr>
+
+    <td width="505" valign="top">
+
+      <h6>ultima modifica: 19/04/2005 16.30</h6>
+
+    </td>
+
+    <td width="381" valign="top">
+
+      <h5 align="right">by <a href="mailto:damore@dis.uniroma1.it"> FdA</a></h5>
+
+    </td>
+
+  </tr>
+
+</table></td></tr><!--msnavigation--></table></body>
+</html>

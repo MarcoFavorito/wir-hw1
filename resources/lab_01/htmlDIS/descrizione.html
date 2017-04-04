@@ -1,0 +1,278 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+<HEAD>
+   <TITLE>Laura Palagi: Curriculum Vitae</TITLE>
+</HEAD>
+<BODY BGCOLOR="#ffem9b">
+
+<H1 ALIGN=CENTER><FONT COLOR="#A52A2A">Laura Palagi</FONT></H1>
+
+<CENTER><P><B><FONT SIZE=+2 COLOR="#A52A2A">Descrizione Sintetica delle Pubblicazioni</FONT></B></P></CENTER>
+<BR>
+<P>
+
+L'attivit&agrave; di ricerca  &egrave; stata orientata
+principalmente allo sviluppo ed applicazione di metodi di ottimizzazione 
+per la soluzione di problemi di programmazione matematica ed ha riguardato
+i seguenti  temi:
+<OL>
+<LI>
+<A HREF="descrizione.html#point8"> <FONT COLOR="#A52A2A">
+ metodi di ottimizzazione vincolata;</FONT></A> in particolare:
+</LI>
+<OL>
+<LI>
+definizione di algoritmi locali;
+</LI>
+<LI>
+ costruzione di funzioni di merito esatte continuamente differenziabili;
+</LI>
+<LI>
+definizione di algoritmi globalmente convergenti;
+</LI>
+<LI>
+ metodi di ottimizzazione vincolata per classi particolari di 
+problemi;</LI>
+<LI>
+ metodi numerici per la soluzione di problemi 
+di controllo ottimo;</LI></OL>
+<LI>
+<A HREF="descrizione.html#point9"> <FONT COLOR="#A52A2A">
+ metodi di ottimizzazione non vincolata a grande dimensione;</FONT></A>
+</LI>
+<LI>
+<A HREF="descrizione.html#point7"> <FONT COLOR="#A52A2A">
+ metodi di ottimizzazione globale;</FONT></A>
+</LI>
+<LI>
+<A HREF="descrizione.html#point6"> <FONT COLOR="#A52A2A">
+ reti neurali.</FONT></A>
+</LI></OL>
+
+
+</P>
+Una parte pi&ugrave; applicativa
+della ricerca ha riguardato invece i
+seguenti temi:
+<OL>
+<LI>
+<A HREF="descrizione.html#point5"> <FONT COLOR="#A52A2A">
+ gestione ottima dei posti prenotabili nel trasporto
+ferroviario;
+</FONT></A>
+</LI>
+<LI> 
+<A HREF="descrizione.html#point4"> <FONT COLOR="#A52A2A">
+modelli di programmazione matematica per la gestione dei
+rifiuti solidi urbani;
+</FONT></A>
+
+</LI>
+<LI> <A HREF="descrizione.html#point3"> <FONT COLOR="#A52A2A">
+sistemi di supporto alla progettazione di sistemi di combustione con reti neurali.
+</FONT></A>
+
+</LI>
+</OL>
+
+L'attivit&agrave; svolta &egrave; documentata
+dalle pubblicazioni e   comunicazioni a congresso che sono qui brevemente commentate.
+
+<P>
+<FONT SIZE=4 COLOR="#A52A2A"><A NAME="point8"><B>Metodi di ottimizzazione vincolata</B></A></FONT>
+</P>
+ 
+
+L'obiettivo dell'attivit&agrave;  di ricerca in questo campo &egrave; stato
+quello di definire dei nuovi metodi efficienti di tipo locale e la definizione di funzioni dei merito che consentano la "globalizzazione'' di tali metodi senza deteriorarne il comportamento in termini di velocit&agrave; di convergenza.
+Allo scopo di  definire algoritmi efficienti una particolare attenzione &egrave; stata posta verso problemi per i quali &egrave;  possibile individuare una "struttura'' nella funzione obiettivo e/o nei vincoli.
+ </P> <P> 
+In [16] si affronta il problema di minimizzare una funzione quadratica (non
+necessariamente convessa) con un vincolo di tipo  ellissoidale. Il lavoro &egrave;
+diviso in due parti. Nella prima parte si  caratterizzano i punti di KKT; in particolare si
+dimostra che  <I>(i)</I> il numero di valori che la funzione
+obiettivo pu&ograve; assumere in punti di KKT &egrave; limitato superiormente da un
+polinomio nella dimensione del problema;  <I>(ii)</I>
+dato un punto di KKT che non sia il minimo globale del
+problema, &egrave; possibile determinare in forma analitica un nuovo punto
+ammissibile in cui il valore della funzione obiettivo sia
+strettamente minore. Nella seconda parte si dimostra l'equivalenza del
+problema vincolata originario con un problema non vincolato
+mediante un approccio basato su una funzione di penalit&agrave; esatta. La struttura particolare della funzione obiettivo e del vincolo consente di definire algoritmi globalmente convergenti verso minimi globali del problema e che sotto opportune ipotesi presentano rapidit&agrave; di convergenza superlineare. Tali algoritmi sono utilizzabili anche quando il numero di variabili &egrave; elevato, grazie all'uso di schemi troncati.
+In [2] si considera una 
+particolarizzazione di [16] ad un vincolo sferico (trust region problems). Si sono 
+ottenuti ulteriori risultati sulla caratterizzazione dei minimi locali e 
+globali del problema. In particolare la trasformazione in un problema di 
+programmazione non vincolata ha permesso di fornire una nuova condizione 
+necessaria del secondo ordine di minimo globale.
+Si 
+descrive uno schema di algoritmo basato sui risultati 
+ottenuti e si riportano dei risultati numerici di un prototipo MATLAB. 
+In [9] i risultati di [2] sono stati particolarizzati al caso di vincolo di uguaglianza.
+[11] costituisce una monografia sugli algoritmi esistenti per la soluzione di problemi di <I>trust region</I> a grossa dimensione.
+<P></P>
+In [6] &egrave; proposto un metodo globalmente e superlinearmente
+convergente per minimizzare una generica funzione con il vincolo che  
+le variabili siano (tutte o in parte) limitate inferiormente e/o superiormente. 
+Questo metodo utilizza una direzione che pu&ograve; essere considerata come la
+direzione di Newton di un sistema che "approssima" le condizioni di KKT per il problema originario.  
+Si utilizza uno schema  troncato adatto alla soluzione di problemi a grande dimensione e si dimostra che l'algoritmo &egrave; localmente superlinearmente convergente senza richiedere
+l'usuale assunzione di stretta complementarit&agrave;.  L'algoritmo locale viene
+globalizzato utilizzando un metodo di stabilizzazione non monotono e una
+funziona di penalit&agrave; che sfrutta la struttura dei vincoli ed &egrave; computazionalmente poco onerosa. L'algoritmo &egrave;  stato implementato in Fortran90 e testato sui problemi test della collezione di CUTE. I risultati numerici 
+mostrano che l'algoritmo &egrave; particolarmente efficiente.
+
+<P></P>
+In [3] si &egrave; studiato un problema di
+programmazione non lineare con vincoli lineari e in cui le varibili sono limitate superiormente e inferiormente.  La particolare struttura dei vincoli  consente di costruire una
+funzione di merito esatta e continuamente differenziabile ottenuta combinando
+ un approccio misto di tipo Lagrangiano aumentato esatto per i vincoli lineari e di tipo penalit&agrave; esatta per i vincoli box.
+In [5] si propone 
+un algoritmo solo localmente convergente 
+per il caso di 
+problemi con vincoli di disuguaglianza generali  e limitazioni inferiori e superiori sulle variabili. Anche in questo caso l'algoritmo &egrave; definito nello spazio esteso delle variabili primali e duali relative ai soli vincoli generali. La sequenza generata converge quadraticamente ad un punto di KKT del problema originario sotto opportune ipotesi. Sono anche fornite alcune modifiche dell'algoritmo locale che consentono di migliorare le efficienza numerica e rilassare alcune ipotesi.
+L'uso congiunto dell'algoritmo locale di [2] e della funzione di merito in [3] hanno consentito la soluzione efficiente del problema di gestione ottima dei posti in ambito ferroviario descritto in [4].
+<P></P>
+
+In [10] &egrave; stato proposto un metodo primale-duale per la soluzione di problemi di ottimizzazione vincolata senza una particolare struttura. L'algoritmo locale &egrave; di tipo primale-duale e per la sua soluzione si utilizza uno schema di Newton troncato basato sulla fattorizzazione QR dei gradienti dei vincoli stimati attivi e sull'uso di un metodi di tipo gradiente coniugato nello spazio tangente a questi vincoli. Si riportano anche i risultati numerici di un prototipo Fortran90.
+
+In
+[1] si propone una particolare funzione di merito per la soluzione di problemi di
+ottimizzazione con vincoli di uguaglianza e vincoli box su alcune delle variabili. Questa funzione
+&egrave; ottenuta con un approccio misto di tipo Lagrangiano aumentato esatto per i vincoli di uguaglianza
+e di tipo penalit&agrave; esatta per i vincoli box. Lo studio di questa particolare funzione &egrave;
+giustificato dall'esistenza di molti problemi pratici nel campo del controllo ottimo e della
+modellizzazione economica che possono esssere ricondotti ad una struttura del tipo considerato. Si
+dimostra che la minimizzazione non vincolata di questa nuova funzione permette di individuare le
+soluzioni del problema originale vincolato. Si possono, quindi, utilizzare per la sua soluzione tutti
+i metodi esistenti di ottimizzazione non vincolata.
+
+
+</P> <P>
+Nella tesi di dottorato [29] si affronta il problema di minimizzare una funzione
+quadratica su un insieme chiuso. Nella tesi, da un
+lato si cerca di connettere ed unificare i risultati noti su questo tema anche in
+constesti diversi dall'ottimizzazione continua e si sviluppano alcuni risultati di
+equivalenza che consentono di trasformare problemi tipici dell'ottimizzazione
+combinatoria in problemi continui quadratici concavi. Dall'altro si vogliono fornire nuovi
+risultati sia teorici che algoritmici  nel caso di particolare scelte dell'insieme
+ammissibile.  Una particolare attenzione &egrave; data a problemi di approssimazione di
+problemi "difficili" per il calcolo di buoni bounds utilizzabili in algoritmi di tipo
+branch and bound. 
+</P> <P>  In
+[14] si si analizza un algoritmo  per
+la soluzione numerica di problemi di controllo
+ ottimo  discreto non
+vincolato. 
+L'approccio utilizzato consiste nella trasformazione del  problema di
+controllo ottimo in una problema di programmazione non  lineare tipicamente a
+grande dimensione (legata al passo di  discretizzazione). Il problema
+vincolato &egrave; poi trasformato in un  problema non vincolato mediante l'uso di
+una funzione Lagrangiana  aumentata esatta la cui minimizzazione non vincolata
+conduce alla soluzione del problema vincolato di partenza. Per la soluzione
+del problema di  ottimizzazione non vincolata si &egrave; utilizzato un algoritmo
+di tipo-Newton.  Data la particolare forma dei vincoli dinamici discretizzati,
+il sistema di Newton che definisce la direzione ha una struttura sparsa tridiagonale; si &egrave;, quindi,
+potuta realizzare una procedura iterativa efficiente per la sua soluzione. 
+&egrave; stata inoltre utilizzata una aritmetica di tipo vettoriale  e parallelo
+per poter gestire in modo efficiente il gran numero di variabili del problema.
+ 
+
+<P><FONT SIZE=4 COLOR="#A52A2A"><A NAME="point9"><B>Metodi di ottimizzazione non vincolata a grande
+dimensione</B></A></FONT>
+</P>
+In
+[2] si considera un metodo per la soluzione di problemi di
+ottimizzazione non vincolata a grande dimensione. L'algoritmo proposto
+determina una  direzione di ricerca risolvendo il sistema lineare di Newton
+utilizzando  un metodo iterativo appartente alla classe del gradiente
+coniugato. Per  velocizzare la soluzione del sistema lineare, si sono
+utilizzate tecniche  di precondizionamento che rappresentano la novit&agrave; pi&ugrave;
+interessante  dal punto di vista implementativo. Per quanto riguarda la
+convergenza  globale dell'algoritmo si &egrave; utilizzato uno schema di
+stabilizzazione  che combina una tecnica di ricerca unidimensionale non
+monotona ed una  tecnica di tipo watchdog.
+
+<P>
+<FONT SIZE=4 COLOR="#A52A2A"><A NAME="point7"><B>Metodi di ottimizzazione
+globale</B></A></FONT>
+</P>
+
+ In questo contesto rientra [2] in cui si descrive un algoritmo per determinare un minimo globale 
+ di funzioni quadratiche con vincolo
+sferico. 
+ In [18] si propongono condizioni sufficienti per l'esistenza di
+una  soluzione di un sistema di disequazioni non lineari. 
+Si ottengono diversi criteri basati sulla definizione di particolari 
+funzioni di merito e si dimostra che  le pi&ugrave; usate  condizioni di esistenza (regolarit&agrave;)  note in 
+letteratura, sono ottenibili come casi particolari di queste nuove 
+condizioni.  Si estendono inoltre 
+ queste condizioni utilizzando  risultati classici sull'esistenza 
+ di un punto fisso di un operatore non lineare ed utilizzando un vettore 
+ di funzioni di merito.
+
+<P>
+<FONT SIZE=4 COLOR="#A52A2A"><A NAME="point6"><B>Reti neurali</B></A></FONT>
+</P>
+In [31] &egrave; stato proposto un metodo per la soluzione del problema di addestramento di macchine di apprendimento di tipo Support Vector Machines (SVM). Le SVM sono una classe di reti neurali relativamente nuova che gode di buone propriet&agrave;  di generalizzazione. Il problema di addestramento risulta essere un problema di ottimizzazione vincolata  tipicamente a grossa dimensione, ma con una particolare struttura che consente la definizione di algoritmi ad hoc. Questo lavoro costituisce un primo tentativo per definire algoritmi teoricamente efficienti e utilizzabili in pratica.
+
+<BR>
+<P>
+<FONT SIZE=4><B>Problemi applicativi</B></A></FONT>
+</P>
+<FONT SIZE=2 COLOR="#A52A2A"><A NAME="point5"><B>Gestione ottima dei
+posti prenotabilil nel trasporto ferroviario</B></A></FONT>
+In [4,19,20] sono descritti i
+risultati dell'attivit&agrave; di ricerca svolta in collaborazione con la
+Datamat-Ingegneria dei Sistemi spa nell'ambito della gestione ottima dei
+posti prenotabilil nel trasporto ferroviario.    Il problema &egrave; stato
+formulato come un problema di programmazione  matematica. La struttura del
+modello di programmazione matematica dipende essenzialmente dalle informazioni
+disponibili sulla domanda di prenotazioni di posti.  In particolare  se si
+suppone di rappresentare la domanda semplicemente con il suo valor medio si
+ottiene un problema di programmazione lineare. Mentre se si caratterizza la
+domanda in modo pi&ugrave; complesso, attraverso una variabile aleatoria di cui si
+conoscono valor medio e varianza, si ottiene un particolare problema di
+programmazione non lineare con variabili intere.  Il problema di PL &egrave; stato
+risolto utilizzando software standard, mentre per il modello  non lineare &egrave;
+stato utilizzando un algoritmo che si basa sui risultati descritti in
+[3] particolarizzato al caso di funzione obiettuvo convessa e separabile. I risultati numerici, ottenuti su un insieme di dati reali,
+hanno mostrato sia l'importanza di utilizzare tecniche di ottimizzazione e
+anche la superiorit&agrave;, in termini di profitto atteso, del modello non lineare
+rispetto a quello lineare. 
+</P> <P>  
+<FONT SIZE=2 COLOR="#A52A2A"><A NAME="point4"><B>Modelli di programmazione
+matematica per la gestione dei rifiuti solidi urbani</B></A></FONT>
+La ricerca &egrave; stata
+effettuata  nell'ambito di  una collaborazione con la societ&agrave; AEM spa Milano.
+La gestione efficiente dello smaltimento e/o rivalorizzazione dei rifiuti
+solidi urbani &egrave; un un problema di crescente interesse. Tale problema &egrave;
+molto complesso in quanto coinvolge aspetti differenti e tipicamente
+concorrenti (quali, ad esempio, aspetti tecnologici,  ambientali, sociali,
+economici). Quindi nasce la necessit&agrave; di determinarne delle rappresentazioni
+quantitative che aiutino ad effettuare delle scelte e decisioni
+"ottimizzate''.  &Egrave; stato sviluppato un  modello di programmazione
+matematica per la gestione dei rifiuti solidi urbani  [21] che &egrave; stato
+implementato in AMPL sui dati relativi alla citt&agrave; di Milano e risolto
+utilizzando software standard. </P>
+<P>
+<FONT SIZE=2 COLOR="#A52A2A"><A NAME="point3"><B> Sistemi di supporto alla progettazione di sistemi di combustione con reti neurali</B></A></FONT>
+Nel'ambito della collaborazione con l'ENEA e l'Universit&agrave; di Roma 3, &egrave; stata realizzata una rete neurale di tipo multilayer che consente di riprodurre i dati generati da un simulatore di un combustore a geometria variabile. 
+Poiche' si tratta di un problema con molte coppie di dati di training ed altamente malcondizionato, &egrave; stato realizzato un pre-processamento dei dati  ed un sistema di reti neurali ciascuna addestrata su sottoinsiemi di dati. E' stata inoltre realizzata una rete neurale complessiva.
+</P>
+
+<BR><BR>
+
+<CENTER>
+<TABLE BORDER="3"  ALIGN="CENTER" CELLPADDING="5">
+<TR>
+<TD BGCOLOR="#A52A2A">
+<A HREF="curriculum.html#point3"> <FONT COLOR="#Ffeb9b">
+Torna alla pagina principale del curriculum</FONT></A></TD>
+</TABLE>
+</CENTER>
+
+</FONT>
+
+</BODY>
+</HTML>

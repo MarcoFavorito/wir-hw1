@@ -1,0 +1,107 @@
+<!doctype html public "-//w3c//dtd html 4.0 transitional//en">
+<html>
+<head>
+<link href="java.css" rel="stylesheet" type="text/css">
+<title>Massimo elemento di un vettore</title>
+</head>
+
+<body>
+
+<h2>Massimo elemento di un vettore</h2>
+
+Questo esercizio consiste nel trovare, in un vettore di
+interi, quello che ha valore massimo. Si inizia con la
+definizione del vettore e dei sui valori:<p>
+
+<pre>
+class Massimo {
+  public static void main(String[] args) {
+    int x[]={12, 45, 78, 11, 44, 77, 10, 43, 76, 9, 42, 75, 8, 41, 74, 7, 40, 73 , 6, 39, 72, 5, 38, 71, 4, 37, 70, 3, 36, 69, 2};
+</pre>
+
+La prima cosa da fare &egrave; determinare il numero di
+elementi di cui il vettore &egrave; composto. Contare tutti
+gli elementi a mano richiede tempo. Inoltre, ogni volta che
+si deve aggiungere un nuovo valore al vettore, occorre modificare
+il codice per tenere conto dell'aumento o diminizione del numero
+di elementi. Per questa ragione, definiamo una variabile nella
+quale mettiamo il numero di elementi:<p>
+
+<pre>
+    numeroelementi=x.length;
+</pre>
+
+Per calcolare il massimo, seguiamo l'algoritmo per cui assumiamo
+inizialmente che il massimo elemento &egrave; il primo, e poi
+facciamo una scansione degli elementi del vettore. Se troviamo
+un elemento che &egrave; maggiore del massimo, quello &egrave;
+il nuovo massimo. In altre parole:
+
+<ol>
+<li>il massimo elemento &egrave; il primo;
+<li>per ogni valore di <tt>i</tt>:
+<ul>
+<li>se <tt>x[i]</tt> &egrave; maggiore del massimo trovato finora,
+<li>allora <tt>x[i]</tt> &egrave; il nuovo massimo.
+</ul>
+</ol>
+
+In termini di codice, il primo passo si traduce in:<p>
+
+<pre>
+    massimo=x[0];
+</pre>
+
+Mentre il ciclo diventa:<p>
+
+<pre>
+    for(i=0; i<=numeroelementi-1; i=i+1) {
+      if( x[i]>massimo ) {
+        massimo=x[i];
+      }
+    }
+</pre>
+
+Si noti che gli elementi del vettore partono da <tt>x[0]</tt>.
+Il vettore ha <tt>numeroelementi</tt> componenti, per cui l'ultimo
+elemento &egrave; <tt>x[numeroelementi-1]</tt>. Questo &egrave;
+il motivo per cui il ciclo deve partire dal valore 0 e arrivare
+al valore <tt>numeroelementi-1</tt>.<p>
+
+Alla fine della iterazione la variabile <tt>massimo</tt> contiene
+il valore del massimo elemento del vettore. Il programma completo
+&egrave; <a href="Massimo.java">Massimo.java</a>, in cui al
+posto della variabile <tt>numeroelementi</tt> si usa direttamente
+<tt>x.length</tt> come valore finale del ciclo for.<p>
+
+<pre>
+/*
+  Trova il massimo elemento di un vettore.
+*/
+
+class Massimo {
+  public static void main(String[] args) {
+    int x[]={12, 45, 78, 11, 44, 77, 10, 43, 76, 9, 42, 75, 8, 41, 74, 7, 40, 73, 6, 39, 72, 5, 38, 71, 4, 37, 70, 3, 36, 69, 2};
+    int i;
+    int massimo;
+
+    massimo=x[0];
+
+    for(i=0; i<=x.length-1; i=i+1) {
+      if( x[i]>massimo ) {
+        massimo=x[i];
+      }
+    }
+
+    System.out.println("Il massimo e' "+massimo);
+  }
+}
+
+</pre>
+
+   
+
+
+</body>
+</html>
+

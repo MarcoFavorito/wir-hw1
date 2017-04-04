@@ -1,0 +1,92 @@
+<!doctype html public "-//w3c//dtd html 4.0 transitional//en">
+<html>
+<head>
+<link href="java.css" rel="stylesheet" type="text/css">
+<title>Repaint</title>
+</head>
+
+<body>
+
+<h2>Repaint</h2>
+
+Il programma 
+<a href="PuntiMouseDue.java">PuntiMouseDue.java</a>
+ha una struttura abbastanza tipica: <tt>mouseDown</tt>,
+(risposta a un click) effettua dei disegni, e poi
+memorizza delle informazioni che permettono a
+<tt>paint</tt> di ripetere questo disegno ogni volta che
+la finestra diventa visibile.<p>
+
+Un metodo che permette di semplificare leggermente questo
+schema &egrave; di limitare la <tt>mouseDown</tt> alla
+sola memorizzazione delle informazioni, lasciando che
+sia <tt>paint</tt> a fare tutti i disegni. Questo per&ograve;
+genera un ulteriore problema: le cose che vengono memorizzate
+da <tt>mouseDown</tt> non sono visibili fino a che la finestra
+non viene coperta e poi scoperta. Il problema &egrave; che
+se il disegno viene fatto da <tt>paint</tt>, allora viene fatto
+solo in questa condizione.<p>
+
+&Egrave; per&ograve; possibile risolvere il problema usando
+la istruzione <tt>repaint()</tt> che forza il disegno
+dell'applet. Si pu&ograve; dire che, ogni volta che si
+esegue l'istruzione <tt>repaint()</tt>, &egrave; come se
+l'applet venisse coperto e poi scoperto di nuovo. Nel nostro
+caso, vogliamo che la finestra venga disegnata di nuovo ogni
+volta che si preme un pulsante del mouse, per cui
+l'istruzione <tt>repaint()</tt> va eseguita per ultima alla
+fine del blocco <tt>mouseDown</tt>. Il programma completo
+<a href="PuntiMouseTre.java">PuntiMouseTre.java</a> &egrave;
+riportato qui sotto.<p>
+
+<pre>
+/*
+  Disegna dei punti, sulla base del click del mouse
+*/
+
+import java.awt.*;
+
+public class PuntiMouseTre extends java.applet.Applet {
+  int xvett[] = new int[100];
+  int yvett[] = new int[100];
+  int npunti=0;
+
+  public boolean mouseDown(Event e, int x, int y) {
+    xvett[npunti]=x;
+    yvett[npunti]=y;
+    npunti=npunti+1;
+
+    repaint();
+
+    return true;
+  }
+
+  public void paint(Graphics g) {
+    int i;
+
+    for(i=0; i<=npunti-1; i++) 
+      g.fillRect(xvett[i]-2,yvett[i]-2,4,4);
+  }
+}
+
+</pre>
+<p>
+
+&Egrave; importante notare che la funzione <tt>mouseDown</tt>,
+in questo caso, non contiene la istruzione
+<tt>Graphics g=getGraphics()</tt>. Questa istruzione &egrave;
+necessaria solo se nella funzione si intende disegnare
+qualcosa. Nel programma di sopra il disegno viene fatto
+dalla funzione <tt>paint</tt>, mentre all'interno di
+<tt>mouseDown</tt> non si disegna niente, per cui questa
+istruzione non &egrave; necessaria.<p>
+
+
+<applet code="PuntiMouseTre.class" width="500" height="500">
+</applet>
+
+
+
+</body>
+</html>
+

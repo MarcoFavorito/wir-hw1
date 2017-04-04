@@ -1,0 +1,206 @@
+<!DOCTYPE doctype PUBLIC "-//w3c//dtd html 4.0 transitional//en">
+<html>
+<head>
+  <title>Esercitazione 1</title>
+</head>
+  <body>
+  
+<center> <b>Corso di Laurea in Ingegneria Informatica - Universit&agrave;
+di Roma "La Sapienza"</b> 
+<h3>Corso di Basi di Dati - A.A. 2003/2004</h3>
+ </center>
+  
+<center> 
+<h1>Prima Esercitazione Autoguidata</h1>
+ </center>
+  
+<h3>OBIETTIVI DELL'ESERCITAZIONE:</h3>
+ 
+<ul>
+ <li>Familiarizzarsi con il DBMS Oracle 9i Lite e l'ambiente MSQL (Mobile
+SQL)</li>
+  <li>Utilizzare MSQL per:</li>
+ 
+  <ul>
+    <li>creare e cancellare tabelle;</li>
+    <li>effettuare interrogazioni.</li>
+ 
+  </ul>
+ 
+</ul>
+  
+<h3>L'AMBIENTE MSQL</h3>
+  
+<p>Lo strumento base per accedere al DBMS di Oracle9i Lite e' l' interprete
+di  comandi SQL, MSQL (Mobile SQL). Per utilizzare questo programma, bisogna
+operare dal prompt di comandi MS-DOS attraverso i seguenti parametri in linea</p>
+ 
+<p><tt>msql &lt;user'sname&gt;/&lt;password&gt;@&lt;host string&gt;</tt></p>
+ 
+<p>dove</p>
+ 
+<ul>
+   <li><tt>&lt;user'sname&gt;</tt> &egrave; l'utente che effettua la connessione.
+Oracle9i Lite     mette a disposizione l'utente di default <tt>system</tt>.
+Tale utente ha     tutti i privilegi sul database.   </li>
+  <li><tt>&lt;password&gt;</tt> &egrave; la password per l'utente che effettuea
+la connessione.     L'utente <tt>system</tt> non richiede una password  
+  </li>
+  <li>la <tt>&lt;host string&gt;</tt> ha la forma <tt>jdbc:&lt;mysdn&gt;:&lt;mydb&gt;</tt>,
+ed      indica il driver <tt>jdbc</tt> usato per la connessione, il     
+Data Source Name (DSN) <tt>&lt;mydsn&gt;</tt> ed il database <tt>&lt;mydb&gt;</tt>.
+          Il DSN &egrave; il nome usato per identificare la sorgente di dati
+per JDBC.            Oracle9i Lite mette a disposizione un DSN di default
+chiamato polite, ed un      database di default dallo stesso nome, polite.
+Quindi, se ci si vuole      connettere al database di default, con l'utente
+di default, la <tt>&lt;host      string&gt;</tt> &egrave; la seguente&nbsp;
+          
+    <p><tt>msql system/manager@jdbc:polite:polite</tt></p>
+     
+    <p>dove <tt>manager</tt> pu&ograve; essere sostituita da qualsiasi altra
+password.</p>
+           Per il DSN <tt>polite</tt>, la sorgente di dati &egrave; localizzata
+in <tt>c:\oracle\ora90\Mobile\SDK\oldb40</tt>.     Quindi, ogni database
+con DSN <tt>polite</tt> &egrave; creato nella cartella  <tt>c:\oracle\ora90\Mobile\SDK\oldb40</tt>.
+     Pi&ugrave; precisamente, per il database <tt>polite</tt>, viene creato
+il file <tt>polite.odb</tt>.     </li>
+ 
+</ul>
+  
+<p>Una volta connessi alla base di dati, dopo una serie di messaggi, appare
+il  prompt di MSQL: </p>
+<pre>&nbsp;&nbsp;&nbsp;&nbsp; SQL &gt;</pre>
+A questo punto si possono digitare   comandi SQL che andranno ad operare
+sulla base di dati a cui si &egrave; connessi.   
+<h3>1. AVVIO DEL CALCOLATORE, CREAZIONE DI UNA BASE DI DATI E CONNESSIONE</h3>
+  
+<p>All'inizio della sessione di lavoro in laboratorio appare la <b>finestra
+di login</b> centrata sullo  schermo. Per gli studenti di questo corso, lo
+username &egrave; <b>studente</b> e la password &egrave; vuota. Quindi, premete
+semplicemente il tasto <tt>Invio</tt>  per entrare nell'ambiente Windows
+2000.</p>
+  
+<p>Per creare una nuova base di dati, operate dal prompt dei comandi.  Se,
+ad esempio, volete creare una base di dati chiamata <em>persone</em>:  </p>
+<ul>
+   <li>aprite un <tt>Prompt dei comandi</tt>, utilizzando l'icona relativa
+sul desktop. Se l'icona     non &egrave; sul desktop selezionate la voce
+    <tt>Esegui</tt> (<tt>Run</tt> per la versione inglese)     dal men&ugrave;
+    <tt>Start</tt>, digitate <tt>cmd</tt> e premete <tt>Invio</tt>;</li>
+   <li>digitate la stringa     
+    <pre>createdb polite persone</pre>
+     e premete <tt>Invio</tt>. In questo modo viene creato il database <em>persone</em>
+con DSN polite.     A questo punto, &egrave; possibile connettersi al database
+    <em>persone</em>  attraverso il comando  
+    <p><tt>msql system/manager@jdbc:polite:persone</tt></p>
+ </li>
+</ul>
+    <b>Nota:</b>  in laboratorio, per digitare il carattere <tt>@</tt> utilizzate
+la combinazione di tasti <tt>Altr Gr</tt> +  <tt>&ograve;</tt>   
+<h3>2. CREARE E CANCELLARE TABELLE</h3>
+  
+<p>Si consideri la tabella <tt>PERSONE</tt>, contenente i seguenti attributi
+ </p>
+<ul>
+ <li>Nome (stringa di 20 caratteri, chiave primaria);</li>
+ <li>Reddito (intero di 10 caratteri);</li>
+ <li>Eta (intero di 3 cifre);</li>
+ <li>Sesso ('M' oppure 'F');</li>
+ 
+</ul>
+  e la tabella <tt>GENITORI</tt>, contenente i seguenti attributi  
+<ul>
+ <li>Figlio (stringa di 20 caratteri, chiave esterna su <tt>PERSONE</tt>);</li>
+ <li>Genitore (stringa di 20 caratteri, chiave esterna su <tt>PERSONE</tt>).</li>
+ 
+</ul>
+  Si forniscano le istruzioni SQL per creare le due tabelle.
+<p>Per scrivere le istruzioni SQL, potete procedere direttamente da riga
+di comando (digitando <tt>Invio </tt>per sottomettere comandi SQL al DBMS),&nbsp;
+oppure utilizzare un qualsiasi editor di testo (ad esempio <tt>Notepad</tt>). 
+Se scegliete la seconda opzione, una volta scritto il codice  salvatelo su
+un file, ad esempio <tt>c:\persone.sql</tt>, e richiamate lo script cos&igrave;
+creato da MSQL tramite il comando&nbsp;  </p>
+<p> <tt>start persone.sql</tt></p>
+<p> Se il file non si trova direttamente in <tt>c:\</tt>  (posizione da cui
+avete lanciato MSQL), sostituite il nome del file con il path relativo.</p>
+<p>Ogni volta che viene usato il comando <tt>start</tt>, vengono eseguite
+tutte le istruzioni contenute nel file. Quindi se volete usare sempre lo
+stesso file, per memorizzare le istruzioni SQL da sottomettere ad Oracle,
+dovete di volta in volta cancellare le istruzioni che sono gi&agrave; state
+eseguite (con successo).</p>
+<p>Per verificare di aver effettivamente creato le tabelle, eseguite la seguente
+interrogazione </p>
+<pre>select table_name from all_tables;</pre>
+  che interroga (sull'attributo <tt>table_name</tt>) la tabella predefinita
+<tt>all_tables</tt>&nbsp; che memorizza informazioni su tutte le tabelle
+della base di dati. Inoltre, dato il nome di una tabella &egrave; possibile
+ottenere i suoi attributi (nome e tipo) con il comando 
+<pre>describe &lt;nome-tabella&gt;;</pre>
+   
+<p><b>Nota:</b>&nbsp; Dopo ogni istruzione deve essere posto un punto e virgola
+'<tt>;</tt>' che agisce da simbolo terminatore. Notate che il '<tt>;</tt>'
+deve essere inserito anche se il file contiene una sola istruzione, e se
+si agisce direttamente da riga di comando. In mancanza del '<tt>;</tt>' MSQL
+rester&agrave; in attesa di altre istruzioni che verranno processate al primo
+'<tt>;</tt>' immesso.  Notate inoltre che Oracle Lite non esegue il commit
+delle istruzioni SQL fino a quando non viene   esplicitamente indicato tramite
+il comando <tt>commit;</tt>. Se non viene eseguito il commit, le modifiche
+alla base di dati (come ad esempio la creazione di tabelle) non sono persistenti,
+ma locali alla sessione di lavoro. In sostanza, le modifiche non vengono
+realmente eseguite sulla base di dati, ed una volta disconnessi, gli aggiornamenti
+richiesti andranno persi. Quindi, eseguite il comando commit ogni volta che
+volete che le modifiche sottomesse al DBMS siano effettivamente memorizzate
+nella base di dati.</p>
+   
+<h3>3. EFFETTUARE INTERROGAZIONI</h3>
+  
+<p>Fornite le interrogazioni SQL per rispondere alle seguenti domande.&nbsp; 
+ </p>
+<ol>
+ <li>Trovare i figli di 'Franco';</li>
+ <li>Trovare nome e reddito delle persone con meno di 30 anni;</li>
+ <li>Trovare nome e reddito dei maschi con meno di 30 anni;</li>
+ <li>Trovare i genitori di persone che guadagnano piu` di 20 milioni;</li>
+ <li>Trovare la relazione che mostra per ogni persona i nonni;</li>
+ <li>Trovare le madri di persone che guadagnano piu` di 20 milioni;</li>
+ <li>Trovare la relazione che mostra per ciascun figlio i rispettivi genitori 
+   (Padre, Madre, Figlio).</li>
+ 
+</ol>
+  Per scrivere ed eseguire le istruzioni SQL relative alle interrogazioni
+procedete come al punto precedente.
+<p> Per verificare la correttezza delle proprie soluzioni, popolate la base
+di dati con il file <tt>\\Sauron\Esercitazioni\Basidati\Eser-2003-11-04\eser1-db.sql</tt>, 
+e confrontate i risultati ottenuti con quelli contenuti nel file <tt>\\Sauron\Esercitazioni\Basidati\Eser-2003-11-04\eser1-3-ris.txt</tt>.
+Per popolare la base di dati, copiate nell'unit&agrave; <tt>C </tt>il file
+<tt>eser1-db.sql</tt>, ed eseguite il comando  </p>
+<p> <tt>start eser1-db.sql</tt></p>
+<p>I file <tt>eser1-db.sql</tt> e <tt>eser1-3-ris.txt sono </tt>disponibili
+sul sito del corso all'indirizzo <a href="./"><em>homepage-corso</em>/esercitazioni/primaesercitazioneSQL/</a>.</p>
+   
+<h3>4. ESERCIZIO PER CASA</h3>
+  
+<p>Fornite le interrogazioni SQL per rispondere alle seguenti domande.  </p>
+<ol>
+ <li>Trovare nome e reddito dei genitori di 'Ezechiele';</li>
+ <li>Trovare i Nonni di Ezechiele;</li>
+ <li>Trovare i figli (in comune) di Franco e Maria;</li>
+ <li>Trovare i Nonni di Aldo e di Andrea;</li>
+ <li>Trovare la relazione che mostra le coppie di fratelli (due persone sono
+fratelli se hanno un genitore in comune)</li>
+ <li>Trovare i fratelli di Maria;</li>
+ <li>Trovare la relazione che mostra le coppie fratello-sorella.</li>
+ 
+</ol>
+   
+<p>Confrontate i risultati ottenuti con quelli contenuti nel file <a
+ href="./eser1-4-ris.txt"><em>homepage-corso</em>/esercitazioni/primaesercitazioneSQL/eser1-4-ris.txt</a>.</p>
+  
+<hr>  
+<p>Le soluzioni degli esercizi 2, 3 e 4 saranno disponibili fra una settimana
+all'indirizzo <a href="soluzioni/"><em>homepage-corso</em>/esercitazioni/</a><a
+ href="eser1-db.sql">primaesercitazioneSQL</a><a href="soluzioni/">/soluzioni</a>.</p>
+    <br>
+</body>
+</html>

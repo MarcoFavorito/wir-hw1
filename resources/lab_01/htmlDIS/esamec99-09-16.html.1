@@ -1,0 +1,141 @@
+<!doctype html public "-//w3c//dtd html 4.0 transitional//en">
+<html>
+<head>
+   <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <meta name="GENERATOR" content="Mozilla/4.6 [en] (X11; I; SunOS 5.7 sun4u) [Netscape]">
+   <meta name="Author" content="Fabrizio d'Amore">
+   <title>Esame del 16/9/1999</title>
+</head>
+<body>
+
+<center><b>Universit&agrave; di Roma ``La Sapienza''</b>
+<br><b>Facolt&agrave; di Ingegneria</b>
+<br><b>Corso di Fondamenti di Informatica</b>
+<br><b>Corso di Laurea: </b>Ambiente e Territorio
+<br>Appello del <b>16/9/1999</b> - 1<sup>a</sup> prova scritta
+<br><i>tempo a disposizione: 2 ore</i></center>
+
+<p><b>Problema 1 (18 punti) </b>Una spia invia al suo capo messaggi composti
+di sole lettere maiuscole, senza spazi n&eacute; segni di interpuzione.
+Prima di inviare un messaggio, la spia lo trasforma usando un codice crittografico.
+Il codice crittografico, rappresentato in un file di testo, &egrave; composto
+da una sequenza di righe, dove ogni riga ha il formato:
+<pre>&nbsp;&nbsp;&nbsp; L XYZ</pre>
+dove <tt>L</tt>, <tt>X</tt>, <tt>Y</tt> e <tt>Z</tt> sono lettere maiuscole
+dell'alfabeto inglese. L'ovvio significato del codice &egrave; che la lettera
+<tt>L</tt>
+deve essere tradotta con la sequenza di lettere <tt>XYZ</tt>. Ad esempio,
+se il codice &egrave; il seguente:
+<pre>&nbsp;&nbsp;&nbsp; C XXX
+&nbsp;&nbsp;&nbsp; I QWE
+&nbsp;&nbsp;&nbsp; O OPA
+&nbsp;&nbsp;&nbsp; A EMU
+&nbsp;&nbsp;&nbsp; L CAR
+&nbsp;&nbsp;&nbsp; S ONE</pre>
+ed il messaggio &egrave; il seguente:
+<pre>&nbsp;&nbsp;&nbsp; CIAOLISA</pre>
+il testo tradotto &egrave; il seguente:
+<pre>&nbsp;&nbsp;&nbsp; XXXQWEEMUOPACARQWEONEEMU</pre>
+Si noti che (come evidenziato nell'esempio) non necessariamente tutte le
+26 lettere dell'alfabeto inglese sono codificate.
+<p>Il problema consiste nel progettare parte di un programma C che traduca
+un messaggio, contenuto in un file di testo, utilizzando un codice, anch'esso
+contenuto in un file di testo. Due aspetti che devono essere presi in considerazione
+sono i seguenti:
+<ul>
+<li>
+Alcune lettere dell'alfabeto potrebbero essere codificate pi&ugrave; di
+una volta nel codice (un codice di questro tipo si dice
+<i>incoerente</i>).
+Ad esempio, se nel file dell'esempio precedente occorresse anche la riga</li>
+
+<pre>&nbsp;&nbsp;&nbsp; O USA</pre>
+il codice sarebbe incoerente.
+<li>
+Alcune lettere del messaggio potrebbero non essere codificate dal codice,
+che in tal caso si dice <i>incompleto</i>. Ad esempio, se il messaggio
+fosse</li>
+
+<pre>&nbsp;&nbsp;&nbsp; CIAOANNA</pre>
+il codice visto in precedenza sarebbe incompleto, perch&eacute; la lettera
+<tt>N</tt>
+non &egrave; codificata.</ul>
+In particolare, si richiede di risolvere i seguenti punti:
+<ol type="1">
+<li>
+Scrivere le dichiarazioni dei tipi di dato C da utilizzarsi per risolvere
+i punti successivi.</li>
+
+<li>
+Scrivere una funzione C (o pi&ugrave;) che, dato un file di testo contenente
+un codice, restituisca un valore booleano indicante se esso &egrave; incoerente
+oppure no.</li>
+
+<br>[<b>Suggerimento:</b> progettare la funzione in maniera sufficientemente
+generale, al fine di renderla utile anche per il punto successivo.]
+<li>
+Scrivere una funzione C (o pi&ugrave;) che, dati due file di testo contenenti
+rispettivamente un codice e un messaggio, verifichi se il codice &egrave;
+coerente e completo, e in tal caso costruisca una lista contenente il messaggio
+tradotto. La lista deve essere composta da strutture contenenti un solo
+carattere. Il verso della lista &egrave; a scelta dello studente.</li>
+</ol>
+
+<hr WIDTH="100%">
+<center><b>Universit&agrave; di Roma ``La Sapienza''</b>
+<br><b>Facolt&agrave; di Ingegneria</b>
+<br><b>Corso di Fondamenti di Informatica</b>
+<br><b>Corso di Laurea: </b>Ambiente e Territorio
+<br>Appello del <b>16/9/1999</b> - 2<sup>a</sup> prova scritta
+<br><i>tempo a disposizione: 1 ora</i></center>
+
+<p><br>
+<br>
+<br>
+<br>
+<p><b>Problema 2 (4 punti)</b>
+<p>Descrivere gli aspetti fondamentali della ricorsione, fornendo almeno
+un esempio di funzione C ricorsiva. Descrivere inoltre la maniera in cui
+viene gestita la memoria per implementare in C la ricorsione.
+<br>&nbsp;
+<br>&nbsp;
+<br>&nbsp;
+<p><b>Problema 3 (4 punti)</b>
+<p>Scrivere un programma C che costruisca in memoria la lista illustrata
+in figura. Il programma deve essere completo, cio&egrave; deve essere compilabile.
+Non devono essere scritte procedure o funzioni, ma solamente il programma
+principale.
+<center><img SRC="ciao.gif" VSPACE=20 NOSAVE height=51 width=307 align=CENTER></center>
+
+<p><br>
+<br>
+<br>
+<p><b>Problema 4 (4 punti)</b>
+<p>Date le relazioni create col seguente frammento SQL:
+<pre>&nbsp;&nbsp;&nbsp; create table studenti (
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; matricola character(8) primary key,
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; nome character(20) not null,
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; cognome character(20) not null
+&nbsp;&nbsp;&nbsp; );
+&nbsp;&nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp; create table esamiinformatica (
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; data date,
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; matricolastudente character(8) references studenti(matricola)
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; on update cascade
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; on delete set null,
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; esito smallint,
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; primary key (data, matricolastudente)
+&nbsp;&nbsp;&nbsp; );</pre>
+scrivere una interrogazione SQL che restituisca l'elenco (nome e cognome)
+degli studenti che hanno superato l'esame al primo tentativo.
+<br>[Si assuma che una insufficienza sia memorizzata come 17 e un 30 &amp;
+lode come un 31.]
+<br>&nbsp;
+<p><font size=-1>Orali e verbalizzazioni: gioved&igrave; 23 settembre 1999,
+h 9, via Salaria 113, 2<sup>o</sup> piano, aula C3.</font>
+<p>
+<hr><font size=-1>File translated from T<sub>E</sub>X by <a href="http://hutchinson.belmont.ma.us/tth/">T<sub>T</sub>H</a>,
+version 2.25.</font>
+<br><font size=-1>On 4 Nov 1999, 14:59.</font>
+</body>
+</html>

@@ -1,0 +1,68 @@
+
+<HTML>
+
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html;charset=iso-8859-1">
+<meta name="GENERATOR" content="Microsoft Internet Assistant for Macintosh PowerPoint 98">
+ <TITLE>Example2</TITLE> 
+</HEAD>
+
+<BODY     >
+
+ <H1>Example2</H1> 
+ <P><UL></P>
+
+<P><LI><H2>Clearly, Emp should be the outer relation.
+</H2></P>
+
+<P><UL></P>
+
+<P><LI>Suggests that we build a hash index on D.dno.
+</UL></UL><UL></P>
+
+<P><LI><H2>What index should we build on Emp?
+</H2></P>
+
+<P><UL></P>
+
+<P><LI>B+ tree on E.sal could be used, OR an index on E.hobby could be used.  Only one of these is needed, and which is better depends upon the selectivity of the conditions.
+<UL></P>
+
+<P><LI>As a rule of thumb, equality selections more selective than range selections.
+</UL></UL></UL><UL></P>
+
+<P><LI><H2>As both examples indicate, our choice of indexes is guided by the plan(s) that we expect an optimizer to consider for a query.  Have to understand optimizers!</H2></P>
+
+<P></UL></P>
+
+<P><UL></P>
+
+<P>SELECT  E.ename, D.mgr
+</UL><UL></P>
+
+<P>FROM  Emp E, Dept D
+</UL><UL></P>
+
+<P>WHERE  E.sal BETWEEN 10000 AND 20000
+</UL><UL></P>
+
+<P>  AND E.hobby=‘Stamps’ AND E.dno=D.dno</UL></P>
+
+<P></P> 
+<P>
+<TABLE>
+  <TD HEIGHT=100 WIDTH=100> <A HREF="tsld008.htm">Previous slide</A> </TD>
+  <TD HEIGHT=100 WIDTH=100> <A HREF="tsld010.htm">Next slide</A> </TD>
+  <TD HEIGHT=100 WIDTH=150> <A HREF="tsld001.htm">Back to first slide</A> </TD>
+  <TD HEIGHT=100 WIDTH=150> <A HREF="sld009.htm">View graphic version</A> </TD>
+</TABLE>
+<BR>
+</P>
+
+ <FONT size=4><STRONG> Notes: </FONT></STRONG>
+  <HR SIZE=3> <P> <UL>
+
+17</UL> </P> 
+
+</Body>
+</HTML>

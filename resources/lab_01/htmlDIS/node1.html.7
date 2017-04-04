@@ -1,0 +1,301 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+
+<!--Converted with jLaTeX2HTML 2002 (1.62) JA patch-1.4
+patched version by:  Kenshi Muto, Debian Project.
+LaTeX2HTML 2002 (1.62),
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>Specifiche per il progetto</TITLE>
+<META NAME="description" CONTENT="Specifiche per il progetto">
+<META NAME="keywords" CONTENT="tesine">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1">
+<META NAME="Generator" CONTENT="jLaTeX2HTML v2002 JA patch-1.4">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="tesine.css">
+
+<LINK REL="next" HREF="node2.html">
+<LINK REL="previous" HREF="tesine.html">
+<LINK REL="up" HREF="tesine.html">
+<LINK REL="next" HREF="node2.html">
+</HEAD>
+
+<BODY >
+<!--Navigation Panel-->
+<A NAME="tex2html16"
+  HREF="node2.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next"
+ SRC="file:/usr/share/latex2html/icons/next.png"></A> 
+<A NAME="tex2html14"
+  HREF="tesine.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up"
+ SRC="file:/usr/share/latex2html/icons/up.png"></A> 
+<A NAME="tex2html8"
+  HREF="tesine.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous"
+ SRC="file:/usr/share/latex2html/icons/prev.png"></A>   
+<BR>
+<B> Next:</B> <A NAME="tex2html17"
+  HREF="node2.html">Tesine assegnate nell'Anno Accademico</A>
+<B> Up:</B> <A NAME="tex2html15"
+  HREF="tesine.html">tesine</A>
+<B> Previous:</B> <A NAME="tex2html9"
+  HREF="tesine.html">tesine</A>
+<BR>
+<BR>
+<!--End of Navigation Panel-->
+
+<H1><A NAME="SECTION00010000000000000000">
+Specifiche per il progetto</A>
+</H1>
+
+<P>
+L'elaborato da consegnare per sostenere l'esame di Progetto di Basi di Dati &#232;
+il progetto di un piccolo sistema informativo.  In particolare, il sistema deve
+essere composto da:
+
+<OL>
+<LI>una base di dati relazionale, realizzata con un DBMS interrogabile con
+  SQL;
+</LI>
+<LI>una applicazione scritta in Java, che accede alla base di dati attraverso
+  un driver JDBC.
+</LI>
+</OL>
+Per quanto riguarda la scelta del DBMS, &#232; consigliato Oracle 9i Lite
+scaricabile gratuitamente da <TT>http://www.oracle.com</TT>, e disponibile per
+Windows e Linux.  Il docente distribuisce in prestito dei CD con Oracle 9i Lite
+per Windows e Linux, nonch&#233; il necessario per sviluppare l'applicazione in
+Java.  Per chi volesse installare Oracle Lite su un sistema Windows non
+recente, sono disponibili alcuni CD di installazione della versione 8i.  In
+alternatva a Oracle Lite, per sistema operativo Linux, &#232; consigliato
+PostgreSQL (si veda la pagina Web del corso riguardante le modalit&#224; d'esame).
+
+<P>
+Alla consegna, dovranno essere forniti
+
+<OL>
+<LI><B>tutto</B> il codice <B>in formato elettronico</B>
+</LI>
+<LI>la documentazione <B>in formato cartaceo</B>
+</LI>
+<LI>la documentazione <B>in formato elettronico</B>
+</LI>
+<LI>il codice di tutti i trigger <B>in formato cartaceo</B>
+</LI>
+<LI><B>facoltativamente</B>, il codice di qualche modulo che si ritiene
+  significativo in formato cartaceo.  <FONT COLOR="#ff0000">In generale, non bisogna
+    consegnare il codice stampato su carta</FONT>.
+</LI>
+</OL>
+Materiale in formato elettronico potr&#224; essere consegnato su floppy o su CD.
+
+<P>
+Le dimensioni del progetto sono in linea di massima da calcolarsi nel modo
+seguente:
+
+<UL>
+<LI>lo schema concettuale dovr&#224; avere <B>da 12 a 20 entit&#224;</B>, ed
+  almeno una gerarchia;
+</LI>
+<LI>le <B>funzioni</B> specificate (si veda la Fase&nbsp;<A HREF="node1.html#spec-funz">3</A>)
+  dovranno essere <B>da 10 a 15</B>.
+</LI>
+</UL>
+
+<P>
+Il progetto deve essere articolato nelle seguenti fasi.
+
+<P>
+
+<OL>
+<LI><B>Raccolta dei requisiti.</B>  In questa fase si dovranno raccogliere
+  le specifiche del sistema informativo.  Dovr&#224; essere prodotta la seguente
+  documentazione:
+  
+<UL>
+<LI>Specifia sintetica (nell'ordine delle decine di righe; &#232; pi&#249; o meno
+    quella presentata per l'approvazione del progetto).
+</LI>
+<LI>Specifica completa e dettagliata in linguaggio naturale.
+  
+</LI>
+</UL>
+</LI>
+<LI><B>Progettazione dello schema concettuale.</B>  In questa fase bisogna
+  modellare la realt&#224; di interesse per mezzo di uno schema ER
+  (Entity-Relationship).  Dovr&#224; essere prodotta la seguente documentazione:
+  
+<UL>
+<LI>Schema ER, con discussione delle scelte critiche effettuate nella
+  progettazione.
+</LI>
+<LI>Glossario delle entit&#224; e delle relazioni.  Per ogni entit&#224;/relazione
+  bisogna specificare: il significato, gli attributi con relativo dominio, gli
+  identificatori (solo per le entit&#224;).  Per le relazioni, occorre inoltre
+  motivare la cardinalit&#224; della partecipazione delle entit&#224; coinvolte.
+</LI>
+<LI>Elenco di <I>tutti</I> i vincoli non esprimibili mediante lo schema ER,
+  con attenzione a specificare con precisione ed in dettaglio le ``regole
+  aziendali'' pi&#249; complesse.
+  
+</LI>
+</UL>
+</LI>
+<LI><B>Specifica delle funzioni.</B><A NAME="spec-funz"></A> In questa fase
+  occorre specificare un elenco delle funzioni che il sistema informativo deve
+  supportare.  La documentazione prevista consiste, per ciascuna funzione, in:
+  
+<UL>
+<LI>breve descrizione (linguaggio naturale);
+</LI>
+<LI>porzione dello schema ER interessata;
+</LI>
+<LI>dati in ingresso e in uscita;
+</LI>
+<LI>algoritmo (in pseudocodice);
+</LI>
+<LI>una stima della frequenza con cui l'operazione deve essere eseguita nel
+    sistema informativo.
+</LI>
+<LI><B>Facoltativamente</B>, un diagramma UML dei casi d'uso del sistema
+    (<I>use-case diagram</I>)
+  
+</LI>
+</UL>
+</LI>
+<LI><B>Progettazione logica.</B>  In questa fase occorre produrre lo schema
+  logico dei dati dell'applicazione, dopo aver ristrutturato lo schema
+  concettuale.  La documentazione da produrre &#232; la seguente:
+  
+<UL>
+<LI>Schema ER ristrutturato, con descrizione delle ragioni che hanno
+    portato alle scelte effettuate.
+</LI>
+<LI>Schema logico (relazionale) dei dati.
+</LI>
+<LI>Elenco di <I>tutti</I> i vincoli sullo schema logico (inclusi i vincoli
+    di <I>foreign key</I> e di chiave).  La notazione &#232; a scelta dello
+    studente, purch&#233; sia sintetica e comprensibile.
+  
+</LI>
+</UL>
+</LI>
+<LI><B>Scelta dell'implementazione dei vincoli.</B>  In questa fase,
+  considerando il supporto fornito dalla tecnologia, occorre decidere come
+  implementare i vincoli espressi sullo schema logico nella fase precedente.
+  La documentazione dovr&#224; specificare, per ogni vincolo:
+  
+<UL>
+<LI>La scelta di implementazione (SQL, trigger o applicazione),
+    giustificando le ragioni della scelta ed una eventuale ridondanza nella
+    implementazione.
+</LI>
+<LI>Nel caso dell'implementazione mediante trigger, una specifica
+    <B>procedurale</B> dell'implementazione, cio&#232; cosa fa il trigger e
+    quando (e in quali condizioni) viene innescato.
+</LI>
+<LI>Nel caso di implementazione mediante applicazione, e se &#232; richiesto
+    l'utilizzo di una transazione che esegua pi&#249; di uno statement, la scelta,
+    opportunamente motivata, del livello di isolamento imposto per la
+    transazione (che deve essere supportato dal DBMS).
+  
+</LI>
+</UL>
+</LI>
+<LI><B>Progettazione dell'architettura della applicazione.</B>  In questa
+  fase occorre progettare l'architettura dell'applicazione secondo le
+  metodologie presentate durante il corso; in particolare, l'accesso ai dati
+  deve essere incapsulato da opportune classi che offrano accesso in lettura e
+  scrittura ai dati sottostanti all'applicazione, cos&#236; che le classi di
+  dominio, di controllo, di interfaccia e di sistema non devono accedere
+  direttamente al DB attraverso il diver JDBC.  In particolare, oltre a
+  scegliere le classi della applicazione, occorre progettare l'implementazione
+  delle funzioni specificate nella fase&nbsp;<A HREF="node1.html#spec-funz">3</A>.  Ogni funzione deve
+  essere decomposta in operazioni pi&#249; elementari, eventualmente a loro volta
+  decomposte.  Va inoltre deciso quali classi hanno la
+  <B>responsabilit&#224;</B> di quali funzioni; questa scelta porta alla scelta
+  dei metodi delle classi del sistema.  La documentazione prodotta in questa
+  fase consiste in:
+  
+<UL>
+<LI>Il diagramma delle classi dell'applicazione, completo di metodi e
+    cardinalit&#224; delle associazioni/aggregazioni.  Delle associazioni, a
+    seconda delle operazioni che devono essere eseguite, occorre scegliere la
+    navigabilit&#224;.  Nel diagramma, bisogna evidenziare l'architettura del
+    sistema, evidenziando le classi di accesso ai dati, le classi di dominio,
+    le classi di controllo, le classi di sistema e le classi di interfaccia.
+</LI>
+<LI>Per i metodi pi&#249; complessi, una descrizione accompagnata da un
+    <I>sequence diagram</I> UML, evidenziando eventuali transazioni delle quali
+    si deve indicare livello di isolamento.
+  
+</LI>
+</UL>
+</LI>
+<LI><B>Realizzazione della applicazione.</B>  L'applicazione deve essere
+  realizzata in Java.  L'interfaccia utente pu&#242; essere realizzata usando il
+  package Swing di Java (presentato a lezione); in alternativa, si pu&#242;
+  realizzare una applicazione Web usando Java Servlet.  L'applicazione deve
+  tenere conto di operazioni concorrenti eseguite sui dati.  In particolare,
+  due scelte sono possibili: <I>(i)</I> prevedere pi&#249; client nella medesima
+  applicazione (scelta pi&#249; complessa): in tal caso il gestore della
+  connessione deve provvedere a fornire connessioni diverse ai var&#238;
+  client; <I>(ii)</I> prevedere pi&#249; esecuzioni concorrenti della medesima
+  applicazione (scelta pi&#249; semplice); in tal caso, il gestore della
+  connessione pu&#242; fornire (all'interno della medesima esecuzione
+  dell'applicazione) sempre un'unica connessione.
+</LI>
+<LI><B>Collaudo.</B>  L'applicazione, in sede di esame, e a discrezione del
+  docente, viene collaudata in laboratorio.  In particolare, l'applicazione
+  deve funzionare correttamente in presenza di operazioni concorrenti sui dati,
+  o in risposta ad operazioni che tentino di violare i vincoli di integrit&#224;.
+  A tale scopo, oltre a verificare il corretto funzionamento del sistema
+  informativo (prevedendo l'esecuzione in laboratorio), gli studenti dovranno
+  preparare opportuni script SQL (eventualmente eseguiti dall'applicazione) per
+  creare, popolare e alla fine cancellare la base di dati del sistema.  &#200;
+  possibile eseguire il collaudo su un calcolatore portato dagli studenti (ad
+  esempio un computer portatile).  Si consiglia, allo scopo di rendere pi&#249;
+  agevole il collaudo, di preparare opportuni <I>script</I> di creazione della
+  base di dati (tabelle), delle stored procedure e dei trigger, nonch&#233; di
+  cancellazione della base di dati; in alternativa, si pu&#242; incorporare la
+  creazione e distruzione nell'applicazione Java.
+</LI>
+</OL>
+
+<P>
+<HR>
+<!--Navigation Panel-->
+<A NAME="tex2html16"
+  HREF="node2.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next"
+ SRC="file:/usr/share/latex2html/icons/next.png"></A> 
+<A NAME="tex2html14"
+  HREF="tesine.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up"
+ SRC="file:/usr/share/latex2html/icons/up.png"></A> 
+<A NAME="tex2html8"
+  HREF="tesine.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous"
+ SRC="file:/usr/share/latex2html/icons/prev.png"></A>   
+<BR>
+<B> Next:</B> <A NAME="tex2html17"
+  HREF="node2.html">Tesine assegnate nell'Anno Accademico</A>
+<B> Up:</B> <A NAME="tex2html15"
+  HREF="tesine.html">tesine</A>
+<B> Previous:</B> <A NAME="tex2html9"
+  HREF="tesine.html">tesine</A>
+<!--End of Navigation Panel-->
+<ADDRESS>
+Andrea Cali
+2003-09-12
+</ADDRESS>
+</BODY>
+</HTML>

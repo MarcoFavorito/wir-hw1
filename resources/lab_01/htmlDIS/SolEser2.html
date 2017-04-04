@@ -1,0 +1,73 @@
+<!doctype html public "-//w3c//dtd html 4.0 transitional//en">
+<html>
+<head>
+   <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <meta name="Generator" content="Microsoft Word 97">
+   <meta name="GENERATOR" content="Mozilla/4.75 [en] (WinNT; U) [Netscape]">
+   <title>Il testo non specifica il numero di bit da adottare</title>
+</head>
+<body>
+<b><font size=-1>a.
+Rappresentazione di 15 in modulo e segno.</font></b>
+<br><font size=-1>Il testo non specifica il numero di bit da adottare.
+Pertanto si user&agrave; il numero di cifre binarie strettamente necessarie
+per&nbsp; rappresentare correttamente il valore in base 2.</font>
+<br><font size=-1>Nella rappresentazione in modulo e segno un bit, tipicamente
+quello in posizione pi&ugrave; significativa, rappresenta il segno (0 per
+il segno +, 1 per il segno -); i rimanenti bit il modulo, espresso&nbsp;
+mediante codifica nel sistema di numerazione posizionale.</font><font size=-1></font>
+<p><font size=-1>Rappresentazione del modulo:</font>
+<p><font size=-1>b<sub>0 </sub>= 15<sub> </sub>mod 2 = 1;&nbsp; 15 div
+2 = 7</font>
+<br><font size=-1>b<sub>1 </sub>= 7<sub> </sub>mod 2 = 1;&nbsp; 7div 2
+= 3</font>
+<br><font size=-1>b<sub>2 </sub>= 3<sub> </sub>mod 2 = 1;&nbsp; 3div 2
+= 1</font>
+<br><font size=-1>b<sub>3 </sub>= 1<sub> </sub>mod 2 = 1; 1<sub> </sub>div
+2 = 0.</font>
+<p><font size=-1>Rappresentazione di 15: 1111. Rappresentazione del segno:
+0. Il valore 15 &egrave; rappresentato, in modulo e segno, da 01111</font>
+<p><b><font size=-1>b. Rappresentazione di -19 in modulo e segno.</font></b>
+<br><font size=-1>Si procede in modo analogo al caso precedente. Rappresentazione
+del modulo:</font>
+<p><font size=-1>b<sub>0 </sub>= 19<sub> </sub>mod 2 = 1;&nbsp; 19 div
+2 = 9</font>
+<br><font size=-1>b<sub>1 </sub>= 9<sub> </sub>mod 2 = 1;&nbsp; 9div 2
+= 4</font>
+<br><font size=-1>b<sub>2 </sub>= 4<sub> </sub>mod 2 = 0;&nbsp; 4 div 2
+= 2</font>
+<br><font size=-1>b<sub>3 </sub>= 2<sub> </sub>mod 2 = 0; 2<sub> </sub>div
+2 = 1.</font>
+<br><font size=-1>b4<sub> </sub>= 1<sub> </sub>mod 2 = 1; 1<sub> </sub>div
+2 = 0.</font><font size=-1></font>
+<p><font size=-1>Il valore 19 &egrave; cio&egrave; rappresentato &egrave;&nbsp;
+da: 10011 (Per la verifica si noti che i bit con valore 1 sono proprio
+quelli in corrispondenza delle posizioni 4, 1 e 0, cui corrispondono rispettivamente
+i pesi 16, 2, 1. Infatti 19=16+2+1). Il bit di segno vale 1.&nbsp; Il valore
+-19 &egrave; rappresentato quindi da: 110011.</font>
+<p><b><font size=-1>c. Rappresentazione di 0.3 in virgola fissa.</font></b>
+<br><font size=-1>In questa notazione, i bit&nbsp; rappresentano le&nbsp;
+parti intera e&nbsp; frazionaria, separate esplicitamente mediante il simbolo
+. (punto). Inoltre, un eventuale segno negativo andrebbe indicato esplicitamente.
+Nella conversione di 0.3&nbsp; &egrave; immediato riconoscere che la parte
+intera &egrave; rappresentata dal bit 0 , mentre per trovare la parte frazionaria
+si usa il metodo delle moltiplicazioni successive:</font><font size=-1></font>
+<p><font size=-1>0.3 x 2 = 0.6 ;&nbsp; b<sub>-1</sub>= 0;</font>
+<br><font size=-1>0.6 x 2 = 1.2 ;&nbsp; b<sub>-2</sub>= 1;</font>
+<br><font size=-1>0.2 x 2 = 0.4 ;&nbsp; b<sub>-3</sub>= 0;</font>
+<br><font size=-1>0.4 x 2 = 0.8 ;&nbsp; b<sub>-4</sub>= 0;</font>
+<br><font size=-1>0.8 x 2 = 1.6 ;&nbsp; b<sub>-5</sub>= 1;</font><font size=-1></font>
+<p><font size=-1>Si deve notare che a questo punto dell'algoritmo si riottiene
+lo stesso valore gi&agrave; incontrato (0.6) e pertanto i valori dei bit
+si ripetono (0.3 infatti &egrave; periodico quando rappresentato in base
+2). Il valore andrebbe rappesentato quindi mediante un numero infinito
+di cifre:&nbsp; 0.0 1001 1001 1001...</font><font size=-1></font>
+<p><b><font size=-1>d. Rappresentazione di 0 in modulo e segno.</font></b>
+<br><font size=-1>Tale valore ha due rappresentazioni 00 ed 10 (si veda
+risposta del punto a). Il sistema di rappresentazione mediante moudulo
+e segno prevede infatti una doppia rappresentazione di 0: sia&nbsp; -0
+che +0. E' questo uno dei motivi per cui spesso si adottano,&nbsp; negli
+elaboratori, altre rappresentazioni che prevedono una sola rappresentazione
+dello 0 (complemento a 2).</font>
+</body>
+</html>

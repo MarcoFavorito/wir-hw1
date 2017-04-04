@@ -1,0 +1,110 @@
+<HTML>
+<HEAD>
+<TITLE>
+Fondamenti di Informatica II secondo modulo - Esempio compito d'esame
+</TITLE>
+</HEAD>
+<BODY >
+
+<DIV ALIGN="CENTER">
+<FONT SIZE="+1"><B>Esame di Fondamenti di Informatica II Secondo Modulo
+<BR>
+A.A. 1999/00 - Esempio compito d'esame - prima parte
+</B></FONT></DIV> 
+
+<P>
+<P>
+
+<B>Problema 1</B>&nbsp;&nbsp; Sia <i>GestoreProcessi</i> un tipo astratto specificato come segue:<DL>
+<DT><STRONG><U>TipoAstratto</U> 
+<I>GestoreProcessi</I></STRONG>
+<DD><DT><STRONG><U>Commento</U></STRONG>
+<DD>gestisce in una coda di priorit&agrave; <i>n</i> processi numerati da 0 ad <i>n-1</i>
+<DT><STRONG><U>Sorte</U></STRONG>
+<DD>GP (sorta per il dominio di interesse),
+<DT><STRONG><U>Funzioni</U></STRONG>
+<DD>&nbsp;&nbsp;
+<DL>
+<DT><STRONG><I>Crea</I></STRONG>
+: 
+(Intero) ==> GP
+<BR>
+precondizioni e postcondizioni per 
+<I>Crea</I>(<I>n</I>) = <I>g</I>
+<BR>
+  <U>pre</U>: <I>n</I>&gt;0
+<BR>
+  <U>post</U>: <I>g</I> &egrave; il gestore di processi per <I>n</I> processi, con coda di priorit&agrave; vuota
+<DT><STRONG>
+<I>InCoda</I></STRONG>
+: 
+(GP,Intero,Intero) ==> GP
+<BR>
+precondizioni e postcondizioni per 
+<I>InCoda</I>(<I>g</I>,<i>p</i>,<i>k</i>) = <I>g'</I>
+<BR>
+  <U>pre</U>: <i>p</i> in <i>{ 0..n-1 }</i> e <i>p</i> non &egrave; gi&agrave; in coda
+<BR>
+  <U>post</U>:  <I>g'</I> &egrave; ottenuto da <i>g</i> inserendo il processo <i>p</i> in coda con priorit&agrave; <i>k</i>
+<DT><STRONG>
+<I>OutCoda</I></STRONG>
+: 
+(GP,Intero) ==> GP
+<BR>
+precondizioni e postcondizioni per 
+<I>OutCoda</I>(<I>g</I>,<i>p</i>) = <I>g'</I>
+<BR>
+  <U>pre</U>: <i>p</i>  &egrave;  in coda
+<BR>
+  <U>post</U>:  <I>g'</I> &egrave; ottenuto da <i>g</i> eliminando il processo <i>p</i> dalla coda di  priorit&agrave;
+<DT><STRONG>
+<I>Massimo</I></STRONG>
+: 
+(GP) ==> Intero
+<BR>
+precondizioni e postcondizioni per 
+<I>Massimo</I>(<I>g</I>)=<I>p</I>
+<BR>
+  <U>pre</U>:
+  <i>g</i> non &egrave; vuota
+<BR>
+  <U>post</U>:  <I>p</I> &egrave; il processo con massima priorit&agrave; (uno qualsiasi dei processi di massima priorit&agrave; se pi&ugrave; di uno)
+<DT><STRONG>
+<I>AggiornaPriorita</I></STRONG>
+: 
+(GP,Intero,Intero) ==> GP
+<BR>
+precondizioni e postcondizioni per 
+<I>AggiornaPriorita</I>(<I>g</I>,<i>p</i>,<i>k</i>) = <I>g'</I>
+<BR>
+  <U>pre</U>: <i>p</i>  &egrave;  in coda
+<BR>
+  <U>post</U>:  <I>g'</I> &egrave; ottenuto da <i>g</i> ponendo la priorit&agrave del processo <i>p</i> a  <i>k</i>
+<DT><STRONG>
+<I>CodaVuota</I></STRONG>
+: 
+(GP) ==> Boolean
+<BR>
+precondizioni e postcondizioni per 
+<I>CodaVuota</I>(<I>g</I>)=<I>b</I>
+<BR>
+  <U>pre</U>: nessuna
+<BR>
+  <U>post</U>:  <I>b=true</I> se la coda di <i>g</i> &egrave; vuota, <i>b=false</i> altrimenti
+
+<DD>&nbsp;&nbsp; </DL>
+<DT><STRONG><U>FineTipoAstratto</U></STRONG>
+<DD></DL>
+
+<P>
+<P>
+
+<B>Domanda 1 </B>&nbsp;&nbsp;Scrivere una classe C++ <TT>GestoreProcessi</TT> (file <tt>.h</tt> e file <tt>.cpp</tt>) che
+realizzi il tipo astratto 
+<I>GestoreProcessi</I>, in modo da rendere tutte le operazioni del tipo astratto il pi&ugrave efficienti possibili. Qualora si faccia uso di strutture dati note (quali <tt>Heap</tt>, <tt>AlberiRicerca</tt>, <tt>TavoleHash</tt>) si riporti solo la definizione della classe (file <tt>.h</tt>) e il codice delle funzioni che sono state sostanzialmente modificate per adattare la struttura al caso sotto esame. Per le altre funzioni riportare solo una breve descrizione delle modifiche apportate.
+
+<P>
+<B>Domanda 2 </B>&nbsp;&nbsp;Calcolare per ogni funzione della classe <tt>GestoreProcessi</tt> il costo computazionale.
+
+</BODY>
+</HTML>

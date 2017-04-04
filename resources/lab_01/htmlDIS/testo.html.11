@@ -1,0 +1,92 @@
+<!DOCTYPE doctype PUBLIC "-//w3c//dtd html 4.0 transitional//en"><html><head>
+   <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   
+   <title>Alberi ennari - Laboratorio di Programmazione - aa 2004/05</title><link rel="stylesheet" href="index_files/lp2003.html" type="text/css"></head>
+
+<body>
+<br>
+<center>
+  <p><b>Laboratorio di Programmazione - A.A. 2004/05</b></p>
+  <h2>Alberi n-ari</h2>
+</center>
+
+<P><b>Parte 1</b></P>
+
+<P> Un albero n-ario &egrave; definito e formato da un nodo radice che puo' avere 
+  0, 1 o pi&ugrave; sottoalberi n-ari come figli (nota l'albero vuoto non e' considerato 
+  significativo). 
+<P>Definire la classe <code>Albero</code> con le seguenti funzioni: 
+<UL>
+  <LI><i>crea(String e)</i>, che crea un albero costituito da un unico nodo radice 
+    con informazione <i>e</i>; 
+  <LI><i>crea(String e, List l)</i>, che crea un albero costituito da un nodo 
+    radice con informazione <i>e</i> e da una lista <i>l</i> di riferimenti ad 
+    oggetti di tipo <code>Albero</code> rappresentanti i figli (sottoalberi) di 
+    tale nodo radice; 
+  <LI><i>radice()</i>, che restituisce l'informazione nella radice dell'albero; 
+  <LI><i>primo()</i>, che restituisce il primo sottoalbero dell'albero se presente, 
+    <code>null</code> altrimenti; 
+  <LI><i>resto()</i>, che restituisce la lista dei sottoalberi dell'albero, escluso 
+    il primo. 
+</UL>
+
+
+<P><b>Parte 2</b></P>
+
+<P>Realizzare una classe <code>VisitaAlberi</code>
+contenente tre metodi statici che implementino rispettivamente
+le procedure di visita in preordine, in postordine
+e per livelli di un albero n-ario, effettuando la stampa
+delle informazioni nei nodi.
+</P>
+
+
+<P><b>Parte 3</b></P>
+
+<P>La <i>rappresentazione parentetica</i> di un albero n-ario pu&ograve;
+essere definita come segue:
+<blockquote>
+<pre>
+Alb ->  ( e Alb<sub>1</sub> ... Alb<sub>n</sub> )
+</pre>
+</blockquote><br>
+dove <code>e</code> e' l'informazione sulla radice e <code>Alb<sub>1</sub> ... 
+Alb<sub>n</sub></code> (<em>n &gt;= 0</em>) sono a loro volta alberi. 
+<P>Esempio: 
+
+<blockquote>
+<pre>
+(A (B (C) (D) (E)) (F) (G) (H (I)))
+</pre>
+</blockquote>
+
+<P>Una grammatica non ambigua per rappresentare tali espressioni &egrave;
+<blockquote>
+<pre>
+A -> <b>(</b> B
+B -> <b>i</b> C
+C -> <b>)</b> | <b>(</b> B C
+</pre>
+</blockquote><br>
+dove i simboli <b>(</b>, <b>)</b> e <b>i</b> sono simboli terminali (in particolare 
+<b>i</b> &egrave; l'informazione del nodo), e A, B, C sono simboli non terminali. 
+Questa grammatica consente la definizione di un metodo ricorsivo per l'analisi 
+di una stringa contenente la rappresentazione parentetica di un albero n-ario 
+e la corrispondente costruzione.</p> 
+<P>Realizzare una classe <code>UtilitaAlberi</code>
+contenente due metodi statici:
+<UL>
+<LI><i>alberoToString(Albero a)</i>, che restituisce una stringa
+contenente la rappresentazione parentetica di un albero n-ario <i>a</i>;
+<LI><i>stringToAlbero(String s)</i>, che restituisce l'albero
+equivalente alla rappresentazione parentetica <i>s</i>.
+</UL>
+
+<P>Per l'analisi della stringa contenente la rappresentazione parentetica 
+di un albero si faccia uso della classe 
+<a href="TokenIterator.java">TokenIterator.java</a>.
+
+<br><br>
+
+</table></body>
+</html>

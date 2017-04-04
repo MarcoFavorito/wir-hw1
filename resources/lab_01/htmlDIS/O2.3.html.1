@@ -1,0 +1,114 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+<HEAD>
+<TITLE></TITLE>
+</HEAD>
+
+<BODY TEXT="#4D1201" BGCOLOR="#BADBFF">
+
+<hr>
+
+<h1 align="center"><font color="red", size=+4> <b>Obiettivo O2.3</b>
+</font></h1>
+
+<p align="center"><font color="blue"> Progetto Strategico MIUR "Societ&agrave
+dell'Informazione" <br> <a href="../index.html">Azione A2</a>, Anno
+I</font></p>
+
+
+<hr>
+
+<h3><b>Unit&agrave coinvolte</b></h3>
+
+<ul>
+<li>ICAR-CNR
+</ul>
+
+<hr>
+
+<h3><b>Descrizione</b></h3> 
+
+L'obiettivo consiste nella definizione di tecniche di interrogazione su data
+warehouse distribuite.  Le tecniche tradizionali di interrogazione per le data
+warehouse classiche non sono applicabili in un contesto quale quello di
+ActiveXML in una rete P2P.  Infatti, non avendo informazione globale sui dati
+detenuti dai singoli peer, e' impossibile decidere a priori la strategia di
+valutazione delle query sui vari siti. Inoltre, una rete peer-to-peer è
+altamente soggetta a cambiamenti e questo comporta il dover ricalcolare la
+distribuzione delle query a ogni passo. Un altro grado di complessita' è
+aggiunto dal fatto che i dati, oltre che distribuiti, possono essere replicati.
+In questo contesto, si possono avere a disposizione diverse copie dei dati, e
+si deve poter scegliere (laddove non ci sia una preferenza esplicita
+dell'utente), su quale sito la valutazione della query costa di meno.  Un
+opportuno modello di costo deve essere definito per poter avere ampia
+conoscenza dei vari parametri della rete e delle potenzialita' computazionali e
+di memoria dei vari peer.
+
+
+<hr>
+
+<h3><b>Risultati ottenuti</b></h3> 
+
+I risultati ottenuti si possono riassumere [1] nei seguenti: 1) definizione di
+un linguaggio XQueryD&R, per poter specificare query XQuery in ambito
+distrbuito. Il linguaggio fornisce la possibilita' di scrivere query
+location-aware e location-unaware; quest'ultimo aspetto e' importante in una
+rete P2P dove potenzialmente si possono valutare le query su ogni peer che
+possiede i dati cercati; 2) definizione di un cost model che appiattisce query
+e Web services di ActiveXML e che per ogni query e' in grado di calcolare
+l'impatto in termini di CPU, spazio e memoria di ciascun peer; il cost model
+permette di definire parametri soggettivi, e.g. costo di memorizzazione o di
+computazione su un singolo peer, e oggettivi, come la quantità di dati
+trasferita da un peer all'altro, o la percentuale di utilizzo della CPU; per
+ogni peer, si definisce la cosiddetta 'observable performance', vale a dire la
+capacita' osservabile del peer, e questo corrisponde a ottimizzare le risorse
+egoisticamente rispetto al singolo peer (si ricorda che nessuna informazione
+globale puo' essere presente in una rete P2P); infine, si è definito un
+opportuno meccanismo di query evaluation, che consente di trascegliere in base
+a una What-If analysis quale sarebbe il costo di valutazione di una query
+distribuita; la query viene scomposta in sottoquery, a seconda dei link esterni
+o delle chiamate di servizi presenti nei dati. Alla fine della strategia, si
+sceglie ovviamente il query cut di costo minimo.  In questo modo, considerando
+le query come query poste normalmente nelle data warehouse e i Web services di
+ActiveXML come opportune viste sui dati (come descritto sopra), si ottiene
+chiaramente una soluzione opportuna al problema della valutazione di query su
+sorgenti.
+
+
+<hr>
+
+<h3><b>Rapporti di ricerca</b></h3> 
+
+  <ul>
+ 
+  <li> Rapporto Anno 1 <a href="O2.3.ps">in PS</a>
+
+<!-- Qui inserire i rapporti di ricerca prodotti. Possono essere piu' di uno,
+per gli obbiettivi che coprono sia il primo anno che il secondo.  -->
+
+  </ul>
+
+
+<hr>
+
+
+<h3><b>Pubblicazioni</b></h3> 
+
+<ol>
+
+<li> S. Abiteboul, A. Bonifati, G. Cobena, I. Manolescu, T. Milo:<a
+href="../pub/AX1.pdf"> Dynamic XML Documents with Distribution and Replication
+</a>, Proceedings of the International Conference SIGMOD 2003, San Diego
+(California), June 2003.
+
+<li> S. Abiteboul, J. Baumgarten, A. Bonifati, G. Cobena, C. Cremarenco,
+F. Dragan, I. Manolescu, T. Milo, N.  Preda: <a href="../pub/AX2.pdf"> Managing
+Distributed Workspaces with Active XML </a>, to appear in VLDB 2003, Berlin
+(Germany).
+
+</ol>
+
+<hr>
+
+</BODY>
+</HTML>

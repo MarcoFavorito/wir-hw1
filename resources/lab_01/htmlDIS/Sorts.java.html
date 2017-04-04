@@ -1,0 +1,190 @@
+<!-- file generated with webcpp 0.6.2 http://webcpp.sf.net -->
+<html>
+<head>
+<title>C:\Documents and Settings\Administrator\Documenti\Web\asd\listati\lab20020530\ConfrontoSort\Sorts.java</title>
+<meta name="Microsoft Border" content="tb, default">
+</head>
+<body bgcolor=#ffffff text=#000000 link=#ff0000 vlink=#666666 alink=#0000ff><!--msnavigation--><table border="0" cellpadding="0" cellspacing="0" width="100%"><tr><td>
+
+
+
+<p align="center">
+
+</p>
+
+<hr>
+
+<p align="center">&nbsp;</p>
+
+
+
+</td></tr><!--msnavigation--></table><!--msnavigation--><table border="0" cellpadding="0" cellspacing="0" width="100%"><tr><!--msnavigation--><td valign="top">
+<pre>
+<b><font COLOR=#0000ff>public</font></b> <b><font COLOR=#0000ff>class</font></b> Sorts {
+    <b><font COLOR=#0000ff>protected</font></b> <b><font COLOR=#0000ff>static</font></b> <b><font COLOR=#0000ff>void</font></b> swap(Object[] a, <b><font COLOR=#0000ff>int</font></b> e1, <b><font COLOR=#0000ff>int</font></b> e2) {
+        Object tmp = a[e1]; a[e1] = a[e2]; a[e2] = tmp;
+    }
+    <b><font COLOR=#0000ff>public</font></b> <b><font COLOR=#0000ff>static</font></b> <b><font COLOR=#0000ff>void</font></b> insertionsort(Comparable[] data) {
+        Comparable tmp;
+        <b><font COLOR=#0000ff>int</font></b> i, j;
+        <b><font COLOR=#0000ff>for</font></b> (i = <font COLOR=#a900a9>1</font>; i &lt; data.length; i++) {
+            tmp = data[i];
+            <b><font COLOR=#0000ff>for</font></b> (j = i; j &gt; <font COLOR=#a900a9>0</font> && tmp.compareTo(data[j-<font COLOR=#a900a9>1</font>]) &lt; <font COLOR=#a900a9>0</font>; j--)
+                data[j] = data[j-<font COLOR=#a900a9>1</font>];
+            data[j] = tmp;
+        }
+    }
+    <b><font COLOR=#0000ff>public</font></b> <b><font COLOR=#0000ff>static</font></b> <b><font COLOR=#0000ff>void</font></b> selectionsort(Comparable[] data) {
+        <b><font COLOR=#0000ff>int</font></b> i,j,least;
+        <b><font COLOR=#0000ff>for</font></b> (i = <font COLOR=#a900a9>0</font>; i &lt; data.length-<font COLOR=#a900a9>1</font>; i++) {
+            <b><font COLOR=#0000ff>for</font></b> (j = i+<font COLOR=#a900a9>1</font>, least = i; j &lt; data.length; j++)
+                <b><font COLOR=#0000ff>if</font></b> (data[j].compareTo(data[least]) &lt; <font COLOR=#a900a9>0</font>)
+                    least = j;
+            swap(data,least,i);
+        }
+    }
+    <b><font COLOR=#0000ff>public</font></b> <b><font COLOR=#0000ff>static</font></b> <b><font COLOR=#0000ff>void</font></b> quicksort(Comparable[] data, <b><font COLOR=#0000ff>int</font></b> first, <b><font COLOR=#0000ff>int</font></b> last) {
+        <b><font COLOR=#0000ff>int</font></b> lower = first + <font COLOR=#a900a9>1</font>, upper = last;
+        swap(data,first,(first+last)/<font COLOR=#a900a9>2</font>);
+        Comparable bound = data[first];
+        <b><font COLOR=#0000ff>while</font></b> (lower &lt;= upper) {
+            <b><font COLOR=#0000ff>while</font></b> (data[lower].compareTo(bound) &lt; <font COLOR=#a900a9>0</font>)
+                 lower++;
+            <b><font COLOR=#0000ff>while</font></b> (bound.compareTo(data[upper]) &lt; <font COLOR=#a900a9>0</font>)
+                 upper--;
+            <b><font COLOR=#0000ff>if</font></b> (lower &lt; upper)
+                 swap(data,lower++,upper--);
+            <b><font COLOR=#0000ff>else</font></b> lower++;
+        }
+        swap(data,upper,first);
+        <b><font COLOR=#0000ff>if</font></b> (first &lt; upper-<font COLOR=#a900a9>1</font>)
+            quicksort(data,first,upper-<font COLOR=#a900a9>1</font>);
+        <b><font COLOR=#0000ff>if</font></b> (upper+<font COLOR=#a900a9>1</font> &lt; last)
+            quicksort(data,upper+<font COLOR=#a900a9>1</font>,last);
+    }
+    <b><font COLOR=#0000ff>public</font></b> <b><font COLOR=#0000ff>static</font></b> <b><font COLOR=#0000ff>void</font></b> quicksort(Comparable[] data) {
+        <b><font COLOR=#0000ff>if</font></b> (data.length &lt; <font COLOR=#a900a9>2</font>)
+            <b><font COLOR=#0000ff>return</font></b>;
+        <b><font COLOR=#0000ff>int</font></b> max = <font COLOR=#a900a9>0</font>;
+        <font COLOR=#666666>// find the largest element and put it at the end of data;</font>
+        <b><font COLOR=#0000ff>for</font></b> (<b><font COLOR=#0000ff>int</font></b> i = <font COLOR=#a900a9>1</font>; i &lt; data.length; i++)
+            <b><font COLOR=#0000ff>if</font></b> (data[max].compareTo(data[i]) &lt; <font COLOR=#a900a9>0</font>)
+                max = i;
+        swap(data,data.length-<font COLOR=#a900a9>1</font>,max);    <font COLOR=#666666>// largest el is now in its</font>
+        quicksort(data,<font COLOR=#a900a9>0</font>,data.length-<font COLOR=#a900a9>2</font>); <font COLOR=#666666>// final position;</font>
+    }
+    <b><font COLOR=#0000ff>public</font></b> <b><font COLOR=#0000ff>static</font></b> <b><font COLOR=#0000ff>void</font></b> insertionsort(Comparable[] data, <b><font COLOR=#0000ff>int</font></b> first, <b><font COLOR=#0000ff>int</font></b> last) {
+        Comparable tmp;
+        <b><font COLOR=#0000ff>int</font></b> i, j;
+        <b><font COLOR=#0000ff>for</font></b> (i = first; i &lt;= last; i++) {
+            tmp = data[i];
+            <b><font COLOR=#0000ff>for</font></b> (j = i; j &gt; <font COLOR=#a900a9>0</font> && tmp.compareTo(data[j-<font COLOR=#a900a9>1</font>]) &lt; <font COLOR=#a900a9>0</font>; j--)
+                data[j] = data[j-<font COLOR=#a900a9>1</font>];
+            data[j] = tmp;
+        }
+    }
+    <b><font COLOR=#0000ff>public</font></b> <b><font COLOR=#0000ff>static</font></b> <b><font COLOR=#0000ff>void</font></b> quicksort2(Comparable[] data, <b><font COLOR=#0000ff>int</font></b> first, <b><font COLOR=#0000ff>int</font></b> last) {
+        <b><font COLOR=#0000ff>if</font></b> (last - first &lt; <font COLOR=#a900a9>30</font>)
+             insertionsort(data,first,last);
+        <b><font COLOR=#0000ff>else</font></b> {
+             <b><font COLOR=#0000ff>int</font></b> lower = first + <font COLOR=#a900a9>1</font>, upper = last;
+             swap(data,first,(first+last)/<font COLOR=#a900a9>2</font>);
+             Comparable bound = data[first];
+             <b><font COLOR=#0000ff>while</font></b> (lower &lt;= upper) {
+                 <b><font COLOR=#0000ff>while</font></b> (data[lower].compareTo(bound) &lt; <font COLOR=#a900a9>0</font>)
+                     lower++;
+                 <b><font COLOR=#0000ff>while</font></b> (bound.compareTo(data[upper]) &lt; <font COLOR=#a900a9>0</font>)
+                     upper--;
+                 <b><font COLOR=#0000ff>if</font></b> (lower &lt; upper)
+                     swap(data,lower++,upper--);
+                 <b><font COLOR=#0000ff>else</font></b> lower++;
+             }
+             swap(data,upper,first);
+             <b><font COLOR=#0000ff>if</font></b> (first &lt; upper-<font COLOR=#a900a9>1</font>)
+                  quicksort2(data,first,upper-<font COLOR=#a900a9>1</font>);
+             <b><font COLOR=#0000ff>if</font></b> (upper+<font COLOR=#a900a9>1</font> &lt; last)
+                  quicksort2(data,upper+<font COLOR=#a900a9>1</font>,last);
+        }
+    }
+    <b><font COLOR=#0000ff>public</font></b> <b><font COLOR=#0000ff>static</font></b> <b><font COLOR=#0000ff>void</font></b> quicksort2(Comparable[] data) {
+        <b><font COLOR=#0000ff>if</font></b> (data.length &lt; <font COLOR=#a900a9>2</font>)
+            <b><font COLOR=#0000ff>return</font></b>;
+        <b><font COLOR=#0000ff>int</font></b> max = <font COLOR=#a900a9>0</font>;
+        <font COLOR=#666666>// find the largest element and put it at the end of data;</font>
+        <b><font COLOR=#0000ff>for</font></b> (<b><font COLOR=#0000ff>int</font></b> i = <font COLOR=#a900a9>1</font>; i &lt; data.length; i++)
+            <b><font COLOR=#0000ff>if</font></b> (data[max].compareTo(data[i]) &lt; <font COLOR=#a900a9>0</font>)
+                max = i;
+        swap(data,data.length-<font COLOR=#a900a9>1</font>,max);     <font COLOR=#666666>// largest el is now in its</font>
+        quicksort2(data,<font COLOR=#a900a9>0</font>,data.length-<font COLOR=#a900a9>2</font>); <font COLOR=#666666>// final position;</font>
+    }
+    <b><font COLOR=#0000ff>static</font></b> Comparable[] temp; <font COLOR=#666666>// used by merge();</font>
+    <b><font COLOR=#0000ff>protected</font></b> <b><font COLOR=#0000ff>static</font></b> <b><font COLOR=#0000ff>void</font></b> merge(Comparable[] data, <b><font COLOR=#0000ff>int</font></b> first, <b><font COLOR=#0000ff>int</font></b> last) {
+        <b><font COLOR=#0000ff>int</font></b> mid = (first + last) / <font COLOR=#a900a9>2</font>;
+        <b><font COLOR=#0000ff>int</font></b> i1 = <font COLOR=#a900a9>0</font>, i2 = first, i3 = mid + <font COLOR=#a900a9>1</font>;
+        <b><font COLOR=#0000ff>while</font></b> (i2 &lt;= mid && i3 &lt;= last)
+            <b><font COLOR=#0000ff>if</font></b> (data[i2].compareTo(data[i3]) &lt; <font COLOR=#a900a9>0</font>)
+                 temp[i1++] = data[i2++];
+            <b><font COLOR=#0000ff>else</font></b> temp[i1++] = data[i3++];
+        <b><font COLOR=#0000ff>while</font></b> (i2 &lt;= mid)
+            temp[i1++] = data[i2++];
+        <b><font COLOR=#0000ff>while</font></b> (i3 &lt;= last)
+            temp[i1++] = data[i3++];
+        <b><font COLOR=#0000ff>for</font></b> (i1 = <font COLOR=#a900a9>0</font>, i2 = first; i2 &lt;= last; data[i2++] = temp[i1++]);
+    }
+    <b><font COLOR=#0000ff>public</font></b> <b><font COLOR=#0000ff>static</font></b> <b><font COLOR=#0000ff>void</font></b> mergesort(Comparable[] data, <b><font COLOR=#0000ff>int</font></b> first, <b><font COLOR=#0000ff>int</font></b> last) {
+        <b><font COLOR=#0000ff>if</font></b> (first &lt; last) {
+            <b><font COLOR=#0000ff>int</font></b> mid = (first + last) / <font COLOR=#a900a9>2</font>;
+            mergesort(data, first, mid);
+            mergesort(data, mid+<font COLOR=#a900a9>1</font>, last);
+            merge(data, first, last);
+        }
+    }
+    <b><font COLOR=#0000ff>public</font></b> <b><font COLOR=#0000ff>static</font></b> <b><font COLOR=#0000ff>void</font></b> mergesort(Comparable[] data) {
+        temp = <b><font COLOR=#0000ff>new</font></b> Comparable[data.length];
+        mergesort(data,<font COLOR=#a900a9>0</font>,data.length-<font COLOR=#a900a9>1</font>);
+    }
+}
+
+</pre>
+<!--msnavigation--></td></tr><!--msnavigation--></table><!--msnavigation--><table border="0" cellpadding="0" cellspacing="0" width="100%"><tr><td>
+
+
+
+<p>&nbsp;</p>
+
+<hr>
+<table border="0" width="100%">
+
+  <tr>
+
+    <td width="505" valign="top">
+
+      <h5 align="left">Bacheca di <i>Algoritmi e Strutture Dati </i>a.a. 2004-05 - canale
+      A - L</h5>
+
+    </td>
+
+    <td width="381" valign="top">
+      <p align="right"><font size="1"><a href="http://algo.mastertopforum.com/" target="_blank">forum
+      del corso</a></font></td>
+
+  </tr>
+
+  <tr>
+
+    <td width="505" valign="top">
+
+      <h6>ultima modifica: 19/04/2005 16.30</h6>
+
+    </td>
+
+    <td width="381" valign="top">
+
+      <h5 align="right">by <a href="mailto:damore@dis.uniroma1.it"> FdA</a></h5>
+
+    </td>
+
+  </tr>
+
+</table></td></tr><!--msnavigation--></table></body>
+</html>

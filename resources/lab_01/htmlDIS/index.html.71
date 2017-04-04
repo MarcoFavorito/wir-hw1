@@ -1,0 +1,320 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML>
+<HEAD>
+<TITLE>Toni Mancini - Attività didattica</TITLE>
+<META NAME="Generator" CONTENT="EditPlus">
+<META NAME="Author" CONTENT="">
+<META NAME="Keywords" CONTENT="">
+<META NAME="Description" CONTENT="">
+
+<link rel=stylesheet href="../style.css" type="text/css">
+
+<script src="../myMail.js"></script>
+
+<script>
+function checkRicevimentoInputData(nome, email) {
+	if ( (nome.length == 0) || (email.length == 0) ) { 
+		alert("Attenzione: devi compilare obbligatoriamente i campi Nome ed Email"); 
+		return false; 
+	}
+	else if (email.match("[a-zA-Z0-9._]+@[a-zA-Z0-9._]+") == null) {
+		alert("Attenzione: l'indirizzo Email che hai inserito non e' valido: " + email);
+		return false;
+	}
+	return true;
+}
+</script>
+
+
+</HEAD>
+
+<BODY>
+
+<table width=800 border=0 align=center><tr><td>
+
+<h3>Attività didattica
+<hr>
+</h3>
+
+Docente a contratto di corsi universitari 
+<!------
+del <nobr><a href="http://cclii.dis.uniroma1.it/" target=_blank>Corso di Laurea in Ingegneria Informatica</a></nobr>, 
+----->
+presso la <nobr><a href="http://w3.ing.uniroma1.it/" target=_blank>Facoltà di Ingegneria</a></nobr> <nobr>dell'<!nobr><a href="http://www.uniroma1.it" target=_blank>Università degli Studi di Roma<!/nobr> <!nobr><i>"La Sapienza"</i><!/nobr></a></nobr>.
+<p>
+
+<h4>
+<hr>
+Anno accademico 2004/2005</h4>
+
+<table border=0 cellspacing=0>
+<tr valign=top>
+
+<tr height=10><td></td>
+
+<tr valign=top>
+<td><nobr><b>Secondo trimestre<br><font size=-1>(Gennaio - Marzo 2005)</font></b></nobr> </td>
+<td width=20></td>
+<td><b><a href="courses/2004-2005/prosw/index.html">Progettazione del Software</a> <nobr>(canale A-L)</nobr></b>
+<br><a href="http://www.ingegneriagestionale.uniroma1.it/index.php">Corso di Laurea in Ingegneria Gestionale</a>, nuovo Ordinamento 
+</td>
+</table>
+<hr>
+<div align=right><a href="prevYears.html"><font size=2>(Anni accademici precedenti)</font></a></div>
+<p>
+In questa pagina puoi richiedere un appuntamento per il ricevimento studenti ed esprimere commenti e critiche alle mie lezioni.
+
+<p>
+
+<table width=100% align=center>
+<tr>
+
+<td valign=top align=left> <!--- ricevimento -->
+<a name=ricevimento>
+<script src="weekdays.js"></script>
+<form onsubmit="return(checkRicevimentoInputData(ricevimento.nome.value, ricevimento.email.value));" name="ricevimento" action="http://pub39.bravenet.com/emailfwd/senddata.php" method="post" enctype="multipart/form-data">
+
+<INPUT type="hidden" name="subject" value="[Ricevimento]"> 
+
+<table cellpadding="0" cellspacing="0" border="0"  width=400 bgcolor="#999999">
+<tr>
+	<td>
+		<table border="1" width=100% cellpadding="5" cellspacing="0" bgcolor="cornsilk">
+		<tr bgcolor="#eeeeee" valign=middle>
+			<td align=center>
+				<font face="Verdana,Arial,Helvetica" size="2"><b>Ricevimento studenti: <br>richiedi un appuntamento</b></font>
+			</td>
+		</tr>
+		<tr>
+			<td align=center>
+				<br>
+				<table border="0">
+				<tr>
+					<td width=70 valign=top>
+						<font size=1>Nome<font color="red">(*)</font>:</font>
+					</td>
+					<td valign=top>
+						<input type="text" size=30 name="nome"></input> 
+					</td>
+				</tr>
+				<tr>
+					<td width=70 valign=top>
+						<font size=1>Email<font color="red">(*)</font>:</font> 
+					</td>
+					<td valign=top>
+						<input type="text" size=30 name="email"></input> 
+					</td>
+				</tr>
+				<tr>
+					<td>&nbsp;</td>
+					<td valign=top>
+						<nobr><font size=1><i>(Riceverai la conferma a questo indirizzo: <br>assicurati che sia corretto!)</i></font></nobr>	
+					</td>
+				</tr>
+				<tr>
+					<td width=70 valign=top>
+						<font size=1>Cellulare:</font> 
+					</td>
+					<td valign=top>
+						<input type="text" size=30 name="cellulare"></input> 
+					</td>
+				</tr>
+				<tr>
+					<td>&nbsp;</td>
+					<td valign=top>
+						<nobr><font size=1><i>(per avvertirti in caso di problemi <br>dell'ultimo minuto)</i></font></nobr>	
+					</td>
+				</tr>
+				<!--</table>-->
+
+				<tr>
+					<td colspan=2 align=center>
+					   <p><br>
+					   <table border=0 width=100%>
+					    <tr>
+						 <td align=center>
+							<font size=1><b>Nei prossimi giorni lavorativi sei disponibile 
+							<br>nelle seguenti fasce orarie:</b></font> 
+						 </td>
+						 <td align=right>
+						    <img alt="Indica, nei campi qui sotto, gli orari in cui sei disponibile. Maggiori saranno le tue disponibilita', maggiore e' la probabilita' di ottenere un appuntamento in tempi brevi." 
+							      src="../icons/questionMark.png">
+						 </td>
+						</tr></table>
+					</td>
+				</tr>
+				<!---<table border="0">--->
+
+				<script language="javascript">
+					initWeekDays();
+					var i;
+					for (i=0; i<5; i++) {
+						nextWorkDay();
+						document.write("<tr><td width=70><font size=1>");
+
+						document.write(DAYS[getCurrDay()]+":</td><td><input type=\"text\" size=30 name=\""+ DAYS[getCurrDay()]+ "\" value=\"Dalle 10:00 alle 19:00\"></input>  </font></td></tr>");
+					}
+				</script>
+
+				<tr><td colspan=2><p><br></td></tr>
+
+				<tr>
+					<td width=70 valign=top>
+						<font size=1>Corso:</font> 
+					</td>
+					<td valign=top>
+						<select name="Corso">
+							<option selected value="Progettazione del Software">Progettazione del Software</option> 
+						</select>
+					</td>
+				</tr>		
+
+				<tr>
+					<td colspan=2 align=center>
+						<p><br>
+						<font size=1><b>Desideri parlare dei seguenti argomenti 
+						<br>(a grandi linee):</b></font>
+					</td>
+				</tr>
+
+				<tr>
+					<td colspan=2 align=center>
+						<textarea name="Argomenti" cols=30 rows=5></textarea>
+					</td>
+				</tr>
+
+				</table>
+				
+				
+
+
+				<p>
+				<font color=red size=1>(*)</font>: Campi obbligatori
+				</p>
+				<p>
+				<input type="submit" name="submit" value=" OK ">
+				<input type="reset" name="reset" value=" Reset ">
+				<br>
+				<br>
+				<a href="http://www.bravenet.com/">
+					<img src="http://images.bravenet.com/brpics/formbutt.gif" border="0" width="100" height="35" />
+				</a>
+			</td>
+		</tr>
+		</table>
+	</td>
+</tr>
+</table>
+
+<!--- HIDDEN FIELDS -->
+<input type="hidden" name="usernum" value="3305363427" />
+<input type="hidden" name="cpv" value="1" />
+<INPUT type="hidden" name="thankyou" value="http://www.dis.uniroma1.it/~tmancini/teaching/thankyou_ricevimento.html"> 
+
+</form>
+</div>  <!--- end form ricevimento -->
+
+
+</td>  <!-- end ricevimento  -->
+
+
+<td valign=top align=right>  <!--- Commento -->
+
+
+<a name="commento">
+<div> <!-- begin form commento -->
+<form action="http://pub39.bravenet.com/emailfwd/senddata.php" method="post" enctype="multipart/form-data">
+
+<INPUT type="hidden" name="subject" value="[Commento]"> 
+
+<table width=90% cellpadding="0" cellspacing="0" border="0" bgcolor="#999999">
+<!--------------------------------------------
+<tr bgcolor="#ffffff">
+	<td align=center>
+		<hr>
+		<a href="http://pub39.bravenet.com/vote/vote.php?usernum=3305363427&cpv=2">
+		<!marquee><b>Stai seguendo le lezioni?<br>Compila il form di valutazione del corso!</b></!marquee>
+		</a>
+		<hr>
+		<p>
+	</td>
+</tr>
+-------------------------------------------->
+<tr>
+    <td>
+		<table border="1" cellpadding="5" cellspacing="0" bgcolor="cornsilk">
+		<tr bgcolor="#eeeeee" valign=middle>
+			<td align=center>
+				<font face="Verdana,Arial,Helvetica" size="2"><b>Esprimi un commento o <br>una critica alle mie lezioni</b></font>
+			</td>
+		</tr>
+
+		<tr>
+			<td align=center>
+				<textarea name="commento" cols="30" rows="7"></textarea> 
+				<br>
+				<font face="Verdana,Arial,Helvetica" size=1><i>Il tuo commento verra' inviato in forma <nobr>assolutamente anonima</nobr></i></font>
+				<br><br>
+				<input type="submit" name="submit" value=" OK ">
+				<input type="reset" name="reset" value=" Reset ">
+				<br>
+				<br>
+				<a href="http://www.bravenet.com/">
+					<img src="http://images.bravenet.com/brpics/formbutt.gif" border="0" width="100" height="35" />
+				</a>
+			</td>
+		</tr>
+		</table>
+	</td>
+</tr>
+</table>
+
+<!--- HIDDEN FIELDS -->
+
+<input type="hidden" name="usernum" value="3305363427" />
+<input type="hidden" name="cpv" value="1" />
+
+<INPUT type="hidden" name="thankyou" value="http://www.dis.uniroma1.it/~tmancini/teaching/thankyou_anonimo.html"> 
+</form>
+</div>  <!--- end form commento -->
+
+
+
+</td>  <!-- end commento -->
+
+
+
+</table> <!-- end table due colonne ricevim/commento -->
+
+
+<p>
+Infine, puoi pormi <b>brevi e semplici</b> quesiti tramite posta elettronica: scrivi a 
+<script>writeMyMail("Quesito ProSW")</script>. 
+<p>
+Ti prego però di osservare che: 
+<ul>
+  <li>Rispondo solo a quesiti brevi e dalla risposta (quasi) immediata, quindi attento nel mandarmi ad es. diagrammi UML o codice da controllare;
+  <li>Non posso garantirti risposte immediate (ma farò il possibile, compatibilmente con i miei impegni).
+</ul>
+Per quesiti più complessi ed ogni altra esigenza sono a disposizione mediante il <a href="#ricevimento">ricevimento studenti</a>.
+
+<p>
+<br>
+
+<table width=100% border=0>
+<tr>
+	<td align=left valign=bottom><font size=2><a href="../index.html">Home Page</a></font></td>
+	<td width=50 align=right valign=bottom>
+		<!-- Start Bravenet.com Service Code -->
+		<script language="JavaScript" type="text/javascript" src="http://pub39.bravenet.com/counter/code.php?id=351148&usernum=3305363427&cpv=2"></script>
+		<!-- End Bravenet.com Service Code -->	</td>
+</tr>
+</table>
+<hr>
+
+</font>
+
+</td></tr></table>
+
+</BODY>
+</HTML>

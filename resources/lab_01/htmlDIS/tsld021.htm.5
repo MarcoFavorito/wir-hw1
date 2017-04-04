@@ -1,0 +1,50 @@
+
+<HTML>
+
+<HEAD>
+<META HTTP-EQUIV="Context-Type" CONTEXT="text/html;charset=PREDEFINITA (AUTOMATICA)">
+<meta name="GENERATOR" content="Microsoft Internet Assistant for PowerPoint 97">
+ <TITLE>GRANT and REVOKE of Privileges</TITLE> 
+</HEAD>
+
+<BODY     >
+
+ <H1>GRANT and REVOKE of Privileges</H1> 
+ <P><UL>
+<LI><H2>GRANT  INSERT, SELECT ON  Sailors  TO  Horatio
+</H2>
+<UL>
+<LI>Horatio can query Sailors or insert tuples into it.
+</UL></UL><UL>
+<LI><H2>GRANT DELETE ON  Sailors  TO  Yuppy                       WITH GRANT OPTION
+</H2>
+<UL>
+<LI>Yuppy can delete tuples, and also authorize others to do so.
+</UL></UL><UL>
+<LI><H2>GRANT UPDATE (rating) ON  Sailors  TO  Dustin
+</H2>
+<UL>
+<LI>Dustin can update (only) the rating field of Sailors tuples.
+</UL></UL><UL>
+<LI><H2>GRANT SELECT ON ActiveSailors  TO  Guppy, Yuppy
+</H2>
+<UL>
+<LI>This does NOT allow the ‘uppies to query Sailors directly!
+</UL></UL><UL>
+<LI><H2>REVOKE:  When a privilege is revoked from X, it is also revoked from all users who got it solely from X.</H2>
+</UL></P>
+<P></P> 
+<P>
+<TABLE>
+  <TD HEIGHT=100 WIDTH=100> <A HREF="tsld020.htm">Diapositiva precedente</A> </TD>
+  <TD HEIGHT=100 WIDTH=100> <A HREF="tsld022.htm">Diapositiva successiva</A> </TD>
+  <TD HEIGHT=100 WIDTH=150> <A HREF="tsld001.htm">Torna alla prima diaposiva</A> </TD>
+  <TD HEIGHT=100 WIDTH=150> <A HREF="sld021.htm">Visualizza versione grafica</A> </TD>
+</TABLE>
+<BR>
+</P>
+
+
+
+</Body>
+</HTML>

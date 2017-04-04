@@ -1,0 +1,269 @@
+<HTML><!-- #BeginTemplate "/Templates/standard.dwt" -->
+<HEAD>
+<!-- #BeginEditable "doctitle" --> 
+<TITLE>DaQuinCIS Activities</TITLE>
+<!-- #EndEditable -->
+<meta http-equiv="Content-Type" content="text/html; charset=">
+<script language="JavaScript">
+<!--
+function MM_preloadImages() { //v3.0
+  var d=document; if(d.images){ if(!d.MM_p) d.MM_p=new Array();
+    var i,j=d.MM_p.length,a=MM_preloadImages.arguments; for(i=0; i<a.length; i++)
+    if (a[i].indexOf("#")!=0){ d.MM_p[j]=new Image; d.MM_p[j++].src=a[i];}}
+}
+
+function MM_findObj(n, d) { //v4.0
+  var p,i,x;  if(!d) d=document; if((p=n.indexOf("?"))>0&&parent.frames.length) {
+    d=parent.frames[n.substring(p+1)].document; n=n.substring(0,p);}
+  if(!(x=d[n])&&d.all) x=d.all[n]; for (i=0;!x&&i<d.forms.length;i++) x=d.forms[i][n];
+  for(i=0;!x&&d.layers&&i<d.layers.length;i++) x=MM_findObj(n,d.layers[i].document);
+  if(!x && document.getElementById) x=document.getElementById(n); return x;
+}
+
+function MM_nbGroup(event, grpName) { //v3.0
+  var i,img,nbArr,args=MM_nbGroup.arguments;
+  if (event == "init" && args.length > 2) {
+    if ((img = MM_findObj(args[2])) != null && !img.MM_init) {
+      img.MM_init = true; img.MM_up = args[3]; img.MM_dn = img.src;
+      if ((nbArr = document[grpName]) == null) nbArr = document[grpName] = new Array();
+      nbArr[nbArr.length] = img;
+      for (i=4; i < args.length-1; i+=2) if ((img = MM_findObj(args[i])) != null) {
+        if (!img.MM_up) img.MM_up = img.src;
+        img.src = img.MM_dn = args[i+1];
+        nbArr[nbArr.length] = img;
+    } }
+  } else if (event == "over") {
+    document.MM_nbOver = nbArr = new Array();
+    for (i=1; i < args.length-1; i+=3) if ((img = MM_findObj(args[i])) != null) {
+      if (!img.MM_up) img.MM_up = img.src;
+      img.src = (img.MM_dn && args[i+2]) ? args[i+2] : args[i+1];
+      nbArr[nbArr.length] = img;
+    }
+  } else if (event == "out" ) {
+    for (i=0; i < document.MM_nbOver.length; i++) {
+      img = document.MM_nbOver[i]; img.src = (img.MM_dn) ? img.MM_dn : img.MM_up; }
+  } else if (event == "down") {
+    if ((nbArr = document[grpName]) != null)
+      for (i=0; i < nbArr.length; i++) { img=nbArr[i]; img.src = img.MM_up; img.MM_dn = 0; }
+    document[grpName] = nbArr = new Array();
+    for (i=2; i < args.length-1; i+=2) if ((img = MM_findObj(args[i])) != null) {
+      if (!img.MM_up) img.MM_up = img.src;
+      img.src = img.MM_dn = args[i+1];
+      nbArr[nbArr.length] = img;
+  } }
+}
+//-->
+</script>
+<link rel="stylesheet" href="style.css" type="text/css">
+</HEAD>
+
+<BODY BGCOLOR="#BED1E4" TEXT="#000000" onLoad="MM_preloadImages('images/navbar_r1_c2_f2.gif','images/navbar_r1_c4_f2.gif','images/navbar_r1_c6_f2.gif','images/navbar_r1_c8_f2.gif','images/navbar_r1_c10_f2.gif','images/navbar_r1_c12_f2.gif')" link="#000099" vlink="#000066">
+<table width="100%" border="0" cellspacing="0" cellpadding="0" height="67">
+  <tr> 
+    <td rowspan="2" width="140" height="67" valign="top"><img src="images/dqlogo.gif" width="140" height="67"></td>
+    <td height="42" bgcolor="#8890B6" valign="top"><img src="images/dqdesc.gif" width="322" height="29"></td>
+  </tr>
+  <tr> 
+    <td height="25" bgcolor="#000066"><!-- #BeginLibraryItem "/Library/navbar.lbi" --><table border="0" cellpadding="0" cellspacing="0" width="650">
+<!-- fwtable fwsrc="navbar3.png" fwbase="navbar.gif" -->
+
+  <tr>
+   <td><img name="navbar_r1_c1" src="images/navbar_r1_c1.gif" width="20" height="20" border="0"></td>
+    <td><a href="index.html" onMouseOut="MM_nbGroup('out');"  onMouseOver="MM_nbGroup('over','navbar_r1_c2','images/navbar_r1_c2_f2.gif','',1)" ><img name="navbar_r1_c2" src="images/navbar_r1_c2.gif" width="30" height="20" border="0"></a></td>
+   <td><img name="navbar_r1_c3" src="images/navbar_r1_c3.gif" width="18" height="20" border="0"></td>
+    <td><a href="info.html" onMouseOut="MM_nbGroup('out');"  onMouseOver="MM_nbGroup('over','navbar_r1_c4','images/navbar_r1_c4_f2.gif','',1)" ><img name="navbar_r1_c4" src="images/navbar_r1_c4.gif" width="24" height="20" border="0"></a></td>
+   <td><img name="navbar_r1_c5" src="images/navbar_r1_c5.gif" width="18" height="20" border="0"></td>
+    <td><a href="people.html" onMouseOut="MM_nbGroup('out');"  onMouseOver="MM_nbGroup('over','navbar_r1_c6','images/navbar_r1_c6_f2.gif','',1)" ><img name="navbar_r1_c6" src="images/navbar_r1_c6.gif" width="35" height="20" border="0"></a></td>
+   <td><img name="navbar_r1_c7" src="images/navbar_r1_c7.gif" width="35" height="20" border="0"></td>
+    <td><a href="news.html" onMouseOut="MM_nbGroup('out');"  onMouseOver="MM_nbGroup('over','navbar_r1_c8','images/navbar_r1_c8_f2.gif','',1)" ><img name="navbar_r1_c8" src="images/navbar_r1_c8.gif" width="75" height="20" border="0"></a></td>
+   <td><img name="navbar_r1_c9" src="images/navbar_r1_c9.gif" width="15" height="20" border="0"></td>
+    <td><a href="dissemination.html" onMouseOut="MM_nbGroup('out');"  onMouseOver="MM_nbGroup('over','navbar_r1_c10','images/navbar_r1_c10_f2.gif','',1)" ><img name="navbar_r1_c10" src="images/navbar_r1_c10.gif" width="70" height="20" border="0"></a></td>
+   <td><img name="navbar_r1_c11" src="images/navbar_r1_c11.gif" width="40" height="20" border="0"></td>
+    <td><a href="progman.html" onMouseOut="MM_nbGroup('out');"  onMouseOver="MM_nbGroup('over','navbar_r1_c12','images/navbar_r1_c12_f2.gif','',1)" ><img name="navbar_r1_c12" src="images/navbar_r1_c12.gif" width="100" height="20" border="0"></a></td>
+   <td><img name="navbar_r1_c13" src="images/navbar_r1_c13.gif" width="20" height="20" border="0"></td>
+    <td><a href="docs.html" onMouseOut="MM_nbGroup('out');"  onMouseOver="MM_nbGroup('over','navbar_r1_c14','images/navbar_r1_c14_f2.gif','',1)" ><img name="navbar_r1_c14" src="images/navbar_r1_c14.gif" width="56" height="20" border="0"></a></td>
+   <td><img name="navbar_r1_c15" src="images/navbar_r1_c15.gif" width="94" height="20" border="0"></td>
+   <td><img src="images/spacer.gif" width="1" height="20" border="0"></td>
+  </tr>
+</table>
+<!-- #EndLibraryItem --></td>
+  </tr>
+</table>
+<!-- #BeginEditable "content" --> 
+<p>&nbsp;</p>
+<p><img src="images/b_progman.gif" width="160" height="25"><img src="images/b_activities.gif" width="160" height="25"></p>
+<p>&nbsp;</p>
+<table border="0" align="center" cellspacing="5" width="90%">
+  <tr> 
+    <td bgcolor="#000066" valign="top" rowspan="17" width="5%"> 
+      <div align="center"><b><font color="#FFFFFF">Phase 1</font></b></div>
+    </td>
+    <td colspan="3" class="l2title"><b>Activity 1</b>: Definition of the reference 
+      scenario</td>
+  </tr>
+  <tr> 
+    <td width="5%">&nbsp;</td>
+    <td width="70%">Sub-activity 1.1: Definition of a draft of the methodological 
+      framework</td>
+    <td width="20%"><i>Bicocca,Politecnico,Roma1</i></td>
+  </tr>
+  <tr> 
+    <td>&nbsp;</td>
+    <td>Sub-activity 1.2: Identification of the application domains</td>
+    <td><i>Bicocca,Politecnico,Roma1</i></td>
+  </tr>
+  <tr> 
+    <td>&nbsp;</td>
+    <td>Sub-activity 1.3: Identification of processes and information flows</td>
+    <td><i>Politecnico</i></td>
+  </tr>
+  <tr> 
+    <td>&nbsp;</td>
+    <td>Sub-activity 1.4: Specification of archive and database fields to be measured</td>
+    <td><i>Bicocca</i></td>
+  </tr>
+  <tr> 
+    <td>&nbsp;</td>
+    <td>Sub-activity 1.5: Individuation and analysis of quality dimensions</td>
+    <td><i>Bicocca,Politecnico,Roma1</i></td>
+  </tr>
+  <tr> 
+    <td class="l2title" colspan="3"><b>Activity 2</b>: Definition of metrics and 
+      metadata</td>
+  </tr>
+  <tr> 
+    <td>&nbsp;</td>
+    <td>Sub-activity 2.1: Identification of data quality metrics starting from 
+      processes</td>
+    <td><i>Politecnico</i></td>
+  </tr>
+  <tr> 
+    <td>&nbsp;</td>
+    <td>Sub-activity 2.2: Identification of data quality metrics starting from 
+      data</td>
+    <td><i>Politecnico</i></td>
+  </tr>
+  <tr> 
+    <td>&nbsp;</td>
+    <td>Sub-activity 2.3: Definition of metadata and quality certificate</td>
+    <td><i>Bicocca,Politecnico,Roma1</i></td>
+  </tr>
+  <tr> 
+    <td colspan="3" class="l2title"><b>Activity 3</b>: Identification of measurement 
+      and improvement methodologies</td>
+  </tr>
+  <tr> 
+    <td>&nbsp;</td>
+    <td>Sub-activity 3.1: Identification of "data-based" measurement and improvement 
+      methodologies</td>
+    <td><i>Bicocca</i></td>
+  </tr>
+  <tr> 
+    <td>&nbsp;</td>
+    <td>Sub-activity 3.2: Identification of "process-based" measurement and improvement 
+      methodologies</td>
+    <td><i>Politecnico</i></td>
+  </tr>
+  <tr> 
+    <td>&nbsp;</td>
+    <td>Sub-activity 3.3: Critical analysis and integration of measurement and 
+      improvement proposals</td>
+    <td><i>Bicocca,Politecnico,Roma1</i></td>
+  </tr>
+  <tr> 
+    <td colspan="3" class="l2title"><b>Activity 4</b>: Design of a cooperative 
+      architecture and an evaluation model of costs deriving from poor data quality</td>
+  </tr>
+  <tr> 
+    <td>&nbsp;</td>
+    <td>Sub-activity 4.1: Design of a cooperative architecture supporting data 
+      quality</td>
+    <td><i>Roma1</i></td>
+  </tr>
+  <tr> 
+    <td>&nbsp;</td>
+    <td>Sub-activity 4.2: Cost model for the evaluation of the impact of poor 
+      data quality</td>
+    <td><i>Politecnico</i></td>
+  </tr>
+</table>
+<p>&nbsp;</p>
+<table border="0" align="center" cellspacing="5" width="90%">
+  <tr> 
+    <td bgcolor="#000066" rowspan="13" valign="top"> 
+      <div align="center"><font color="#FFFFFF"><b>Phase 2</b></font></div>
+    </td>
+    <td colspan="3" class="l2title"><b>Activity 1</b>: Development of measurement 
+      and improvement tools</td>
+  </tr>
+  <tr> 
+    <td width="5%">&nbsp;</td>
+    <td width="70%">Sub-activity 1.1: Data Quality measurement tools in archives 
+      and databases</td>
+    <td width="20%"><i>Bicocca</i></td>
+  </tr>
+  <tr> 
+    <td>&nbsp;</td>
+    <td>Sub-activity 1.2: Data Quality measurement tools related to processes</td>
+    <td><i>Politecnico</i></td>
+  </tr>
+  <tr> 
+    <td colspan="3" class="l2title"><b>Activity 2</b>: Identification of infrastructural 
+      services, definition of a cooperative platform, supporting the architecture, 
+      and development of a prototype of the platform</td>
+  </tr>
+  <tr> 
+    <td>&nbsp;</td>
+    <td>Sub-activity 2.1: Definition and design of the platform</td>
+    <td><i>Roma1</i></td>
+  </tr>
+  <tr> 
+    <td>&nbsp;</td>
+    <td>Sub-activity 2.2: Implementation and testing of the prototype</td>
+    <td><i>Roma1</i></td>
+  </tr>
+  <tr> 
+    <td colspan="3" class="l2title"><b>Activity 3</b>: Definition of methodological 
+      framework for data quality in cooperative environments</td>
+  </tr>
+  <tr> 
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td><i>Roma1</i></td>
+  </tr>
+  <tr> 
+    <td colspan="3" class="l2title"><b>Activity 4</b>: Demonstrator</td>
+  </tr>
+  <tr> 
+    <td>&nbsp;</td>
+    <td>Sub-Activity 4.1: Data-based methodologies demonstrator</td>
+    <td><i>Bicocca</i></td>
+  </tr>
+  <tr> 
+    <td>&nbsp;</td>
+    <td>Sub-Activity 4.2: Process-based methodologies demonstrator</td>
+    <td><i>Politecnico</i></td>
+  </tr>
+  <tr> 
+    <td>&nbsp;</td>
+    <td>Sub-Activity 4.3: Architecture and cooperative platform demonstrator</td>
+    <td><i>Roma1</i></td>
+  </tr>
+  <tr> 
+    <td>&nbsp;</td>
+    <td>Sub-Activity 4.4: Demonstrator of the integrated approach to data quality 
+      improvement with respect to the methodological framework</td>
+    <td><i>Roma1</i></td>
+  </tr>
+</table>
+<p>&nbsp;</p>
+<p align="center"><a href="progman.html">back to project management</a></p>
+<p>&nbsp;</p>
+<!-- #EndEditable --> 
+<p align="center"><a href="index.html"><img src="images/b_home.gif" width="45" height="18" border="0"></a></p>
+<p>&nbsp;</p>
+<p><img src="images/bullet2.gif" width="12" height="12" align="absmiddle"> 
+  DaQuinCIS Project - Web Site - Last update 22-04-2002 - Webmaster: <a href="mailto:virgi@dis.uniroma1.it">Antonino 
+  Virgillito</a> </p>
+</BODY>
+<!-- #EndTemplate --></HTML>

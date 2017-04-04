@@ -1,0 +1,52 @@
+
+<HTML>
+
+<HEAD>
+<META HTTP-EQUIV="Context-Type" CONTEXT="text/html;charset=PREDEFINITA (AUTOMATICA)">
+<meta name="GENERATOR" content="Microsoft Internet Assistant for PowerPoint 97">
+ <TITLE>Find the age of the youngest sailor with age &#062 18, for each rating with at least 2 sailors (of any age)</TITLE> 
+</HEAD>
+
+<BODY     >
+
+ <H1>Find the age of the youngest sailor with age &#062 18, for each rating with at least 2 sailors (of any age)</H1> 
+ <P><UL>
+<LI><H2>Shows HAVING clause can also contain a subquery.  
+</H2>
+</UL><UL>
+<LI><H2>Compare this with the query where we considered only ratings with 2 sailors over 18!
+</H2>
+</UL><UL>
+<LI><H2>What if HAVING clause is replaced by:
+</H2>
+<UL>
+<LI>HAVING COUNT(*) &#0621</UL></UL></P>
+<P><UL>
+SELECT  S.rating,  MIN (S.age)
+<BR></UL><UL>
+FROM  Sailors S
+</UL><UL>
+WHERE  S.age &#062 18
+</UL><UL>
+GROUP BY  S.rating
+</UL><UL>
+HAVING  1  &#060  (SELECT  COUNT (*)
+</UL><UL>
+                         FROM  Sailors S2
+</UL><UL>
+                         WHERE  S.rating=S2.rating)</UL></P>
+<P></P> 
+<P>
+<TABLE>
+  <TD HEIGHT=100 WIDTH=100> <A HREF="tsld022.htm">Diapositiva precedente</A> </TD>
+  <TD HEIGHT=100 WIDTH=100> <A HREF="tsld024.htm">Diapositiva successiva</A> </TD>
+  <TD HEIGHT=100 WIDTH=150> <A HREF="tsld001.htm">Torna alla prima diaposiva</A> </TD>
+  <TD HEIGHT=100 WIDTH=150> <A HREF="sld023.htm">Visualizza versione grafica</A> </TD>
+</TABLE>
+<BR>
+</P>
+
+
+
+</Body>
+</HTML>

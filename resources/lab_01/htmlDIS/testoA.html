@@ -1,0 +1,112 @@
+<!-- saved from url=(0022)http://internet.e-mail -->
+<html>
+<head>
+   <title>Esame del 5/7/2004 - Compito A</title>
+</head>
+<body>
+
+<center>
+  <h2>Appello del 5/7/2004 - Compito A</h2>
+</center>
+
+<p>
+
+Si vogliono gestire le prenotazioni dei biglietti per un determinato evento
+(musicale, sportivo, ecc.). Di un oggetto <i>P</i><em>renotazioniEvento</em> sono
+di interesse il nome dell'evento (una stringa) a cui si riferiscono le
+prenotazioni, ed una lista di prenotazioni. Di ciascuna&nbsp; prenotazione è
+necessario sapere le seguenti informazioni:</p>
+<ul>
+  <li> <font color="#000000"><i>nome </i>della persona che effettua la prenotazione 
+    (una stringa). Si assuma che il nome sia identificativo della prenotazione, 
+    cioè che non possano esistere due prenotazioni aventi lo stesso nome nella 
+    lista;</font> 
+  <li><font color="#000000"><i>numero dei biglietti</i> prenotati (un intero).</font> 
+</ul>
+
+Gli oggetti <em>PrenotazioniEvento</em> supportano le seguenti funzionalit&agrave;: 
+<ul>
+  <li><em>crea:</em> che, data una stringa <em>n</em>  che rappresenta il nome di
+    un evento, crea un oggetto <em>PrenotazioniEvento</em> relativo all'evento <em>n</em>
+    per il quale inizialmente non esistono prenotazioni di biglietti;</li>
+  <li><em>nomeEvento:</em> che restituisce il nome dell'evento a cui si
+    riferiscono le prenotazioni; 
+  </li>
+  <li><em>inserisci:</em> che dato il nome di chi
+    effettua la prenotazione, ed il numero di biglietti richiesti, inserisce una
+    nuova prenotazione in coda a quelle già presenti;&nbsp;tuttavia, se è &nbsp;già
+    presente una prenotazione con lo stesso nome, lancia una
+    eccezione;</li>
+  <li><i>presente:</i> che, dato il nome di una persona,
+    restituisce <i>true </i>se fra le prenotazioni&nbsp; è presente una
+    prenotazione effettuata a quel nome, <i>false</i> altrimenti;</li>
+  <li>
+<i>quantiBiglietti:</i> che, dato un nome, restituisce il
+numero di biglietti indicato nella prenotazione effettuata a quel nome; se non esiste una
+prenotazione con il nome dato, genera una eccezione;</li>
+  <li>
+<i>successore:</i> che dato un nome <i>n</i>,
+restituisce il nome della persona che ha effettuato la prenotazione successiva
+alla prenotazione fatta da <i>n</i>; nel caso che la prenotazione effettuata da <i>n</i>
+sia l'ultima restituisce <i>null</i>; infine, se non è presente una prenotazione
+effettuata da <i>n</i>, lancia una
+    eccezione;</li>
+  <li>
+<i>elimina:</i> che, dato un nome, elimina la prenotazione
+effettuata a quel nome; se la prenotazione non è presente, genera una
+eccezione;</li>
+  <li>
+<font color="#000000"><i>listaPrenotazioni:</i> che restituisce una struttura
+collegata formata da nodi della classe
+
+<pre>public class nodoLista
+{
+    public String nome;
+    public nodoLista next;
+}
+</pre>
+in cui sono memorizzati i nomi di tutti coloro che hanno effettuato prenotazioni, nell'ordine 
+in cui tali prenotazioni sono state effettuate.</li>
+</ul>
+
+  <p><strong>Domanda 1.</strong> Scrivere una classe Java <code>PrenotazioniEvento</code>
+  per rappresentare oggetti <em>PrenotazioniEvento</em>. Fornire il costo in tempo dei metodi
+che realizzano le funzionalit&agrave; <em>inserisci</em>, <i>elimina</i>
+e <i>listaPrenotazioni</i>, motivando la risposta (indicando esplicitamente 
+  i parametri di input della funzione di costo ed il caso peggiore).
+  
+  <p><strong>Domanda 2.</strong>
+   Realizzare un metodo statico <code>AssegnaBiglietti</code>
+  cliente della classe <code>PrenotazioniEvento</code> che, dati
+<ul>
+  <li>un riferimento <i>p</i>
+    ad un oggetto di classe <code>PrenotazioniEvento</code>,</li>
+  <li>un intero <i>nb</i>, che indica il numero di
+    biglietti da assegnare,</li>
+  <li>il nome <i>fout</i> di un file</li>
+</ul>
+  
+<p>scriva su ciascuna riga del file <i>fout</i> il nome di chi ha effettuato la 
+  prenotazione, ed il numero di biglietti prenotato, per tutte le prenotazioni 
+  di <i>p</i> che possono essere soddisfatte avendo a disposizione <i>nb</i> biglietti, 
+  e nell'ultima riga del file scriva il numero dei biglietti rimanenti. Si noti 
+  che le prenotazioni vengono soddisfatte nell'ordine in cui esse sono state effettuate. 
+  Quindi, una prenotazione <i>pr</i> è soddisfatta se tutte le prenotazioni che 
+  precedono <i>pr</i> sono state a loro volta soddisfatte, e se il numero di biglietti 
+  richiesto da <i>pr</i> è inferiore o uguale al numero di biglietti ancora da 
+  assegnare. Fornire il costo in tempo del metodo realizzato, motivando la risposta 
+  (indicando esplicitamente i parametri di input della funzione di costo ed il 
+  caso peggiore).</p>
+
+  <p><strong>Domanda 3.</strong>   Spiegare la rappresentazione collegata di alberi 
+  binari in cui l'informazione in ciascun nodo &egrave; un riferimento ad un
+  oggetto. Realizzare
+un metodo statico pubblico<code> VerificaNonLineare</code>,<code> </code>che, dato il riferimento alla radice di un albero
+binario <em>alb</em>,&nbsp; restituisca <i>true</i> se l'albero è un albero
+  binario in cui ogni nodo non foglia ha esattamente due figli, <i>false</i> altrimenti. Fornire il costo in tempo
+e spazio di memoria del metodo realizzato, motivando la risposta (indicando
+esplicitamente i parametri&nbsp;di input della funzione di costo&nbsp;ed il caso
+peggiore).
+
+</body>
+</html>

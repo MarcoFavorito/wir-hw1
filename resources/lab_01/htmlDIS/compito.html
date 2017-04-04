@@ -1,0 +1,151 @@
+<!doctype html public "-//w3c//dtd html 4.0 transitional//en">
+<html>
+<head>
+   <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <meta name="Generator" content="Microsoft Word 97">
+   <meta name="GENERATOR" content="Mozilla/4.72 [en] (X11; U; AIX 4.3) [Netscape]">
+   <title>Problema 1</title>
+</head>
+<body>
+
+<center><b>Universit&agrave; di Roma "La Sapienza"</b>
+<br><b>Facolt&agrave; di Ingegneria</b>
+<br><b>Corso di Fondamenti di Informatica - A. A. 2000/2001</b>
+<br><b>Corsi di Laurea: Chimica, Elettrica, Materiali, Meccanica, Nucleare
+(vecchio ordinamento)</b><b></b>
+<p><b>Appello del 13 settembre 2001 - prima prova scritta</b>
+<br><b>tempo a disposizione 2 ore</b></center>
+
+<p><br><b><font size=+0></font></b>
+<br><b><font size=+0></font></b>
+<p><b><font size=+0>Esercizio 1 (18 punti)</font></b>
+<p>Un juke-box contiene N CD numerati da 1 ad N. Ogni CD &egrave; composto
+da un certo numero di brani musicali, numerati da 1 ad M (dove M dipende
+dal particolare CD e pu&ograve; valere al massimo 15). Un brano risulta
+perci&ograve; individuato dalla coppia (CD, BRANO).
+<p>Le selezioni effettuate nell'arco di una giornata sono memorizzate nel
+file di testo SCELTE.TXT che contiene, su ogni riga, la coppia di valori
+CD, BRANO corrispondente al brano selezionato. I valori sono separati da
+uno spazio.
+<p>1 . Definire, in PASCAL, il tipo di dato <font size=+0><font face="Courier New">LISTABRANI</font>
+adeguato alla memorizzazione di tutti i brani disponibili tramite una lista
+rappresentata mediante record e puntatori. Il record deve contenere i seguenti
+campi:</font>
+<ul>
+<li>
+<font size=+0>CD: identificativo del CD (intero positivo da 1 ad N)</font></li>
+
+<li>
+<font size=+0>Brano: identificativo del brano (positivo da 1 a M)</font></li>
+
+<li>
+<font size=+0>Titolo: titolo della canzone (stringa di 20 caratteri)</font></li>
+
+<li>
+<font size=+0>Autore: nome e cognome dell'autore (stringa di 15 caratteri)</font></li>
+
+<li>
+<font size=+0>Selezioni: numero di volte che il brano &egrave; stato selezionato
+(intero positivo)</font></li>
+</ul>
+<font size=+0>2. Scrivere il codice PASCAL di una unit&agrave; AGGIORNA
+(procedura o funzione) che, ricevendo come parametri:</font>
+<ul>
+<li>
+<font size=+0>LS_BRANI, lista di tipo LISTABRANI</font></li>
+</ul>
+
+<dir><font size=+0>e quanti altri parametri si ritengano necessari, legga
+il file 'SCELTE.TXT' e aggiorni il campo "selezioni" della lista in modo
+che, al termine dell'esecuzione dell'unit&agrave; di programma, il valore
+del campo sia pari al numero totale di volte che un brano &egrave; stato
+selezionato.</font>
+<br>&nbsp;
+<br>&nbsp;</dir>
+<font size=+0>3. Scrivere il codice PASCAL di una procedura o funzione
+HIT_PARADE che, ricevendo come parametri:</font>
+<ul>
+<li>
+<font size=+0>LS_BRANI, lista di tipo LISTABRANI</font></li>
+
+<li>
+<font size=+0>T, intero (lunghezza della classifica)</font></li>
+</ul>
+<font size=+0>e quanti altri parametri si ritengano necessari, scriva uno
+per ogni linea sul file di testo 'TOP.TXT', i primi T brani musicali pi&ugrave;
+selezionati e relativo autore. Chiaramente un brano pu&ograve; far parte
+della classifica se e' stato selezionato almeno una volta.</font>
+<p><font size=+0>Nel caso di ex-equo con l'ultimo brano la lunghezza della
+classifica deve essere opportunamente estesa in modo da includerli tutti.
+Ad esempio, per T = 1 se esistono 2 brani con lo stesso numero (massimo)
+di selezioni, allora il file deve contenerli entrambi. Inoltre, nel caso
+in cui T sia maggiore del numero di brani selezionati deve essere stampato,
+oltre a tutti i brani selezionati, un opportuno messaggio.</font>
+<br><font size=+0>(<a href="PASCAL/">SOLUZIONE</a>)</font><font size=+0></font>
+<p>
+<hr WIDTH="100%">
+<br>&nbsp;
+<p><br>
+<center>
+<p><b><font size=+0>Universit&agrave; di Roma "La Sapienza"</font></b>
+<br><b><font size=+0>Facolt&agrave; di Ingegneria</font></b>
+<br><b><font size=+0>Corso di Fondamenti di Informatica - A. A. 2000/2001</font></b>
+<br><b><font size=+0>Corsi di Laurea: </font>Chimica, Elettrica, Materiali,
+Meccanica, Nucleare (vecchio ordinamento)</b>
+<p><b>Appello del 13 settembre 2001 - seconda prova scritta</b>
+<br><b><i>tempo a disposizione 1 ora</i></b></center>
+
+<p><br>
+<br>
+<p><b><font size=+0>Esercizio 2 (4 punti)</font></b>
+<p>Si descrivano i metodi di visita di un grafo mostrando qualche esempio
+significativo.
+<p><b>Esercizio 3 (4 punti)</b>
+<p>Si esamini il programma di seguito riportato. Quali sono i valori visualizzati
+sullo schermo? Si motivi la risposta discutendo come stack ed heap variano
+nel tempo. Si ricorda che il valore ASCII del carattere 'A' &egrave; pari
+a 65.
+<p><font face="Courier New">PROGRAM Eser3;</font>
+<p><font face="Courier New">var n,m: integer;</font>
+<p><font face="Courier New">&nbsp;&nbsp;&nbsp; procedure A(n: integer);</font>
+<br><font face="Courier New">&nbsp;&nbsp;&nbsp; var p: ^char;</font>
+<p><font face="Courier New">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+function B: char;</font>
+<br><font face="Courier New">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+begin</font>
+<br><font face="Courier New">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+B:=chr((n + 191) mod 127);</font>
+<br><font face="Courier New">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+A(n-1)</font>
+<br><font face="Courier New">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+end;</font>
+<p><font face="Courier New">&nbsp;&nbsp;&nbsp; begin</font>
+<p><font face="Courier New">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+if n>0 then begin</font>
+<br><font face="Courier New">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+new(p);</font>
+<br><font face="Courier New">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+p^:=B;</font>
+<br><font face="Courier New">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+writeln(n,' ', p^);</font>
+<br><font face="Courier New">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+dispose(p)</font>
+<br><font face="Courier New">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+end</font>
+<p><font face="Courier New">&nbsp;&nbsp;&nbsp; end;</font>
+<p><font face="Courier New">Begin</font>
+<br><font face="Courier New">&nbsp;&nbsp;&nbsp; m:=3;</font>
+<br><font face="Courier New">&nbsp;&nbsp;&nbsp; A(m)</font>
+<br><font face="Courier New">end.</font>
+<br>&nbsp;
+<br>&nbsp;
+<p><b><font size=+0>Esercizio4 (4 punti)</font></b>
+<p>Si scriva un programma Fortran che legga da tastiera i valori di una
+matrice quadrata A di ordine N ed un numero intero K e verifichi la seguente
+propriet&agrave;: la differenza fra la somma degli elementi della diagonale
+principale e la somma degli elementi della diagonale secondaria di A &egrave;
+maggiore di K.
+<p>Strutturare il programma tramite opportune unit&agrave;.
+<p>(<a href="FORTRAN/">SOLUZIONE</a>)
+</body>
+</html>

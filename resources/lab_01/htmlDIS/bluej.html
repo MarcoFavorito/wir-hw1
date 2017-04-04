@@ -1,0 +1,374 @@
+<html>
+<head>
+<title>BlueJ</title>
+</head>
+
+<body>
+
+<h1>BlueJ</h1>
+
+<p>
+Vi permette di definire classi,
+e di usarle, senza bisogno del
+prompt dei comandi.
+</p>
+
+<hr>
+
+<h4>Finestra iniziale</h4>
+
+<p>
+La prima volta che si usa, bisogna prima dire
+dove sta <tt>java.exe</tt>
+</p>
+
+<p>
+In laboratorio, non &egrave; necessario
+</p>
+
+<img src="inizio.gif">
+
+<hr>
+
+<h4>Menu' project</h4>
+
+<img src="menu.gif">
+
+<p>
+Creare un nuovo progetto
+</p>
+
+<hr>
+
+<h4>Scegliere il nome del nuovo progetto</h4>
+
+<img src="newproject.gif">
+
+<p>
+Scrivendo "esercitazione" viene creato un
+progetto con questo nome.
+</p>
+
+<p>
+Un progetto &egrave; un insieme di classi
+</p>
+
+<hr>
+
+<h4>Il progetto appena creato</h4>
+
+<img src="emptyproj.gif">
+
+<p>
+L'icona &egrave; un file che contiene
+delle informazioni sul progetto.
+</p>
+
+<p>
+Non &egrave; necessario scriverci niente.
+</p>
+
+<p>
+Premendo il pulsante "New Class..."
+si pu&ograve; creare una nuova classe.
+</p>
+
+<hr>
+
+<h4>Creare una nuova classe</h4>
+
+<p>
+Scegliere il nome della nuova classe.
+</p>
+
+<img src="newclass.gif">
+
+<p>
+Srivendo <tt>Prova</tt> viene creata
+la classe <tt>Prova</tt>
+</p>
+
+<hr>
+
+<h4>Dopo aver creato la classe</h4>
+
+<p>
+La classe appare nella finestra di destra.
+</p>
+
+<img src="unaclasse.gif">
+
+<p>
+Con un doppio click, si pu&ograve; scrivere
+la definizione della classe.
+</p>
+
+<hr>
+
+<h4>Edit della classe</h4>
+
+<p>
+Dopo aver fatto il doppio click,
+si apre l'editor della classe.
+</p>
+
+<img src="editclass.gif">
+
+<p>
+La parte <tt>class Prova</tt> appare
+gi&agrave;.
+</p>
+
+<p>
+Il resto della classe lo dovete scrivere
+voi.
+</p>
+
+<hr>
+
+<h4>Un esempio di classe</h4>
+
+<img src="prova.gif">
+
+<p>
+Notare le parentesi graffe evidenziate!
+</p>
+
+<p>
+Quando si scrive una parentesi, viene
+evidenziata l'altra.
+</p>
+
+<hr>
+
+<h4>Uso della classe</h4>
+
+<p>
+Con il tasto di destra: possiamo invocare
+il costruttore e creare un oggetto.
+</p>
+
+<img src="classmenu.gif">
+
+<p>
+Con il tasto di destra possiamo anche invocare
+i metodi statici
+</p>
+
+<hr>
+
+<h4>Scelta del nome dell'oggetto</h4>
+
+<img src="primooggetto.gif">
+
+<hr>
+
+
+<h4>Dopo aver creato due oggetti</h4>
+
+<img src="dopodue.gif">
+
+<p>
+Gli oggetti appaiono in rosso nella
+finestra sotto.
+</p>
+
+<hr>
+
+<h4>Contenuto dell'oggetto</h4>
+
+<p>
+Facendo click sull'oggetto, si vedono
+i valori delle variabili di istanza
+(le componenti dell'oggetto)
+</p>
+
+<img src="object-inspect.gif">
+
+<hr>
+
+<h4>Il menu degli oggetti</h4>
+
+<p>
+Facendo click con il tasto destro sull'oggetto,
+appare questo menu
+</p>
+
+<img src="objectmenu.gif">
+
+<p>
+C'&egrave; un elemento del menu per ogni metodo.
+</p>
+
+<p>
+Possiamo invocare il metodo di una classe
+senza scrivere un programma con il <tt>main</tt>
+</p>
+
+<hr>
+
+<h4>Invocazione di un metodo</h4>
+
+<p>
+Se il metodo ha dei parametri, occorre
+darli.
+</p>
+
+<img src="method-invoke.gif">
+
+<hr>
+
+<h4>Risultato di un metodo</h4>
+
+<p>
+Appare in una nuova finestra.
+</p>
+
+<img src="method-result.gif">
+
+<hr>
+
+
+<h4>Leggere/scrivere file</h4>
+
+<p>
+Il nome del file deve essere completo,
+ossia include anche le cartelle in
+cui si trova
+</p>
+
+<p>
+Esempio: se il file si chiama
+<tt>prova.txt</tt> e sta nella
+cartella <tt>Daniele</tt> del disco <tt>C</tt>,
+per aprirlo fa fatto:
+</p>
+
+<pre>
+  FileReader r;
+  r=new FileReader("c:\\Daniele\\prova.txt");
+</pre>
+
+<p>
+Notare che i backslash <tt>\</tt> vanno scritti
+doppi
+</p>
+
+<hr>
+
+
+<h4>Cicli infiniti</h4>
+
+<p>
+La conseguenza di alcuni errori &egrave; la
+non-terminazione del programma
+</p>
+
+<p>
+Esempio:
+</p>
+
+<pre>
+  static void nonTermina() {
+    int i=0;
+    
+    while(i&lt;10);
+      i++;
+  }
+</pre>
+
+<p>
+Viene interpretato come:
+</p>
+
+<pre>
+  while(i&lt;10)
+    ;
+
+  i++;
+</pre>
+
+<p>
+Dato che <tt>i</tt> non cambia mai, la condizione
+<tt>i&lt;10</tt> rimane sempre vera, e non si
+esce mai dal ciclo
+</p>
+
+<hr>
+
+
+<h4>Come interrompere il programma</h4>
+
+<p>
+Notare la barra di esecuzione:
+</p>
+
+<img src="notabarra.gif">
+
+<p>
+Quando il programma non &egrave; in esecuzione,
+&egrave; grigia:
+</p>
+
+<img src="barra.gif">
+
+<p>
+Quando il programma &egrave; in esecuzione,
+&egrave; rossa e bianca, e si muove:
+</p>
+
+<img src="esecuzione.gif">
+
+<hr>
+
+
+<h4>Interrompere il programma</h4>
+
+<p>
+Fare doppio click sulla barra
+</p>
+
+<p>
+Si apre questa finestra:
+</p>
+
+<img src="debugger.gif">
+
+<p>
+Premere prima <tt>Halt</tt>,
+<tt>Terminate</tt> e <tt>Close</tt>
+</p>
+
+<p>
+La stessa finestra si apre con
+<tt>View-&gt;Show Debugger</tt>
+</p>
+
+<p>
+Se questo metodo fallisce, uscire da <tt>BlueJ</tt>
+</p>
+
+<hr>
+
+
+<h4>Dove va quello che stampo con <tt>println</tt>?</h4>
+
+<p>
+Per vedere quello che viene stampato:
+</p>
+
+<p>
+Con <tt>view-&gt;show terminal</tt>, appare la finestra
+di output
+</p>
+
+<p>
+Nella finestra <tt>Terminal Window</tt>, andare
+su <tt>Option</tt> e marcare sia <tt>Clear screen</tt>
+che <tt>Unlimited buffering</tt>
+</p>
+
+</body>
+</html>
+
+

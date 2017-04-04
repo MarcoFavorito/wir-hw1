@@ -1,0 +1,929 @@
+<!doctype html public "-//w3c//dtd html 4.0 transitional//en">
+<html>
+<head>
+   <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <meta name="GENERATOR" content="Mozilla/4.5 [en] (Win98; I) [Netscape]">
+   <title>1</title>
+</head>
+<body text="#000000" bgcolor="#FFCC99" link="#0000EE" vlink="#551A8B" alink="#FF0000" background="bgrnd.jpg">
+<b><font size=+2>9) Analizzatori discendenti non ricorsivi</font></b>
+<div align=right>Riferimenti: <b>Aho</b>, sez 4.4</div>
+
+<center>
+<hr></center>
+
+<p><b><u><font size=+1>Aula</font></u></b>
+<ol>
+<li>
+<i>Insiemi FIRST e FOLLOW</i></li>
+
+<br>&nbsp;
+<p>&nbsp;
+<p>Data una stringa x <font face="Symbol">e</font> V*, l'insieme FIRST(x)
+comprende tutti i simboli terminali che sono prefissi di una qualsiasi
+stringa derivabile da x. Data la seguente grammatica, dove i simboli non
+terminali sono indicati con le maiuscole e i simboli terminali con le minuscole,
+<center>
+<p><i>S <font face="Wingdings">&agrave;</font> aBcD</i>
+<p><i>S <font face="Wingdings">&agrave;</font> cBcD</i>
+<p><i>B <font face="Wingdings">&agrave;</font> bB</i>
+<p><i>B <font face="Wingdings">&agrave;</font> <font face="Symbol">e</font></i>
+<p><i>D <font face="Wingdings">&agrave;</font> Ef</i>
+<p><i>E <font face="Wingdings">&agrave;</font> m|n|o|p</i></center>
+
+<p>Gli insiemi FIRST(S) = {a, c}, FIRST(B) = {b, <font face="Symbol">e</font>
+}, FIRST(D) = FIRST(E) = {m,n,o,p}, inoltre FIRST(a) = {a}. Pi&ugrave;
+formalmente,
+<center>
+<p><i>FIRST(X) = {t | t <font face="Symbol">e</font> VT, X =>+ tu, u <font face="Symbol">e</font>
+V*}</i></center>
+
+<p>Dato un simbolo non terminale X, l'insieme FOLLOW(X) comprende tutti
+i simboli terminali che possono seguire immediatamente X, in una qualsiasi
+forma di frase. Data la grammatica dell'esempio precedente, gli insiemi
+FOLLOW(B)={c}, FOLLOW(E)={f}, inoltre FOLLOW(S)= FOLLOW(D)={$}, dove con
+$ si intende il carattere terminatore della stringa. Pi&ugrave; formalmente,
+<center>
+<p><i>FOLLOW(X) = {t | t <font face="Symbol">e</font> VT e S =>+ uXtv,
+dove u,v <font face="Symbol">e</font> V*}</i></center>
+
+<p>Consideriamo la grammatica:
+<p><i>E <font face="Wingdings">&agrave;</font> T E'</i>
+<p><i>E' <font face="Wingdings">&agrave;</font> +T E'</i>
+<p><i>E' <font face="Wingdings">&agrave;</font> <font face="Symbol">e</font></i>
+<p><i>T <font face="Wingdings">&agrave;</font> F T'</i>
+<p><i>T' <font face="Wingdings">&agrave;</font> * F T'</i>
+<p><i>T' <font face="Wingdings">&agrave;</font> <font face="Symbol">e</font></i>
+<p><i>F <font face="Wingdings">&agrave;</font> ( E )</i>
+<p><i>F <font face="Wingdings">&agrave;</font> <b>id</b></i>
+<p>E proviamo ad individuare diversi insiemi FIRST e FOLLOW
+<p><i>FIRST(E) = {(, id}</i>
+<p><i>FIRST(E') = {+, <font face="Symbol">e</font> }</i>
+<p><i>FIRST(T) = {(, id}</i>
+<p><i>FIRST(T') = {*, <font face="Symbol">e</font> }</i>
+<p><i>FIRST(F) = {(, id}</i>
+<p><i>FOLLOW(E) = {), $}</i>
+<p><i>FOLLOW(E') = {), $}</i>
+<p><i>FOLLOW(T) = {+,),$}</i>
+<p><i>FOLLOW(T') = {+,),$}</i>
+<p><i>FOLLOW(F) = {+,*,),$}</i>
+<li>
+<i>Tabella utilizzata nell'analizzatore non ricorsivo</i></li>
+</ol>
+
+<dir>
+<dir>
+<dir>Consideriamo la seguente tabella di dimensioni [A, a], dove "A" rappresenta
+il numero di simboli non terminali della grammatica in esame mentre "a"
+rappresenta il numero di simboli terminali</dir>
+</dir>
+</dir>
+
+<table BORDER CELLPADDING=4 WIDTH="608" >
+<tr>
+<td VALIGN=TOP ROWSPAN="2" WIDTH="14%" HEIGHT="16">
+<center><b>Simboli non Terminali</b></center>
+</td>
+
+<td VALIGN=TOP COLSPAN="6" WIDTH="86%" HEIGHT="16">
+<center><b>Simboli Terminali</b></center>
+</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP WIDTH="14%" HEIGHT="16">
+<center><b>Id</b></center>
+</td>
+
+<td VALIGN=TOP WIDTH="14%" HEIGHT="16">
+<center>+</center>
+</td>
+
+<td VALIGN=TOP WIDTH="14%" HEIGHT="16">
+<center>*</center>
+</td>
+
+<td VALIGN=TOP WIDTH="14%" HEIGHT="16">
+<center>(</center>
+</td>
+
+<td VALIGN=TOP WIDTH="14%" HEIGHT="16">
+<center>)</center>
+</td>
+
+<td VALIGN=TOP WIDTH="14%" HEIGHT="16">
+<center>$</center>
+</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP WIDTH="14%" HEIGHT="22">
+<center>E</center>
+</td>
+
+<td VALIGN=TOP WIDTH="14%" HEIGHT="22"></td>
+
+<td VALIGN=TOP WIDTH="14%" HEIGHT="22"></td>
+
+<td VALIGN=TOP WIDTH="14%" HEIGHT="22"></td>
+
+<td VALIGN=TOP WIDTH="14%" HEIGHT="22"></td>
+
+<td VALIGN=TOP WIDTH="14%" HEIGHT="22"></td>
+
+<td VALIGN=TOP WIDTH="14%" HEIGHT="22"></td>
+</tr>
+
+<tr>
+<td VALIGN=TOP WIDTH="14%" HEIGHT="22">
+<center>E'</center>
+</td>
+
+<td VALIGN=TOP WIDTH="14%" HEIGHT="22"></td>
+
+<td VALIGN=TOP WIDTH="14%" HEIGHT="22"></td>
+
+<td VALIGN=TOP WIDTH="14%" HEIGHT="22"></td>
+
+<td VALIGN=TOP WIDTH="14%" HEIGHT="22"></td>
+
+<td VALIGN=TOP WIDTH="14%" HEIGHT="22"></td>
+
+<td VALIGN=TOP WIDTH="14%" HEIGHT="22"></td>
+</tr>
+
+<tr>
+<td VALIGN=TOP WIDTH="14%" HEIGHT="22">
+<center>T</center>
+</td>
+
+<td VALIGN=TOP WIDTH="14%" HEIGHT="22"></td>
+
+<td VALIGN=TOP WIDTH="14%" HEIGHT="22"></td>
+
+<td VALIGN=TOP WIDTH="14%" HEIGHT="22"></td>
+
+<td VALIGN=TOP WIDTH="14%" HEIGHT="22"></td>
+
+<td VALIGN=TOP WIDTH="14%" HEIGHT="22"></td>
+
+<td VALIGN=TOP WIDTH="14%" HEIGHT="22"></td>
+</tr>
+
+<tr>
+<td VALIGN=TOP WIDTH="14%" HEIGHT="22">
+<center>T'</center>
+</td>
+
+<td VALIGN=TOP WIDTH="14%" HEIGHT="22"></td>
+
+<td VALIGN=TOP WIDTH="14%" HEIGHT="22"></td>
+
+<td VALIGN=TOP WIDTH="14%" HEIGHT="22"></td>
+
+<td VALIGN=TOP WIDTH="14%" HEIGHT="22"></td>
+
+<td VALIGN=TOP WIDTH="14%" HEIGHT="22"></td>
+
+<td VALIGN=TOP WIDTH="14%" HEIGHT="22"></td>
+</tr>
+
+<tr>
+<td VALIGN=TOP WIDTH="14%" HEIGHT="22">
+<center>F</center>
+</td>
+
+<td VALIGN=TOP WIDTH="14%" HEIGHT="22"></td>
+
+<td VALIGN=TOP WIDTH="14%" HEIGHT="22"></td>
+
+<td VALIGN=TOP WIDTH="14%" HEIGHT="22"></td>
+
+<td VALIGN=TOP WIDTH="14%" HEIGHT="22"></td>
+
+<td VALIGN=TOP WIDTH="14%" HEIGHT="22"></td>
+
+<td VALIGN=TOP WIDTH="14%" HEIGHT="22"></td>
+</tr>
+</table>
+
+<dir>
+<dir>
+<dir>E proviamo a riempire la tabella seguendo il seguente criterio:
+<p>Per ogni regola A <font face="Wingdings">&agrave;</font> X della grammatica:</dir>
+</dir>
+</dir>
+
+<ul>
+<dir>
+<dir>
+<ul>
+<li>
+per ogni simbolo terminale y, se y appartiene all'insieme FIRST(X), viene
+aggiunta la regola A <font face="Wingdings">&agrave;</font> X nell'elemento
+[A, y] della tabella.</li>
+
+<li>
+Se nell'insieme FIRST(X) &egrave; compreso anche <font face="Symbol">e</font>
+, viene aggiunta la regola A <font face="Wingdings">&agrave;</font> X in
+tutti gli elementi [A, b] della tabella, con b simbolo terminale appartenente
+all'insieme FOLLOW di A, incluso l'elemento $.</li>
+</ul>
+</dir>
+</dir>
+</ul>
+
+<dir>
+<dir>
+<dir>La prima regola della grammatica &egrave; E <font face="Wingdings">&agrave;</font>
+T E'. Verifichiamo quale dei simboli terminali appartiene all'insieme FIRST(TE')
+ovvero all'insieme FIRST(T):
+<center>
+<p><i>id <font face="Wingdings">&agrave;</font> si</i>
+<p><i>+ <font face="Wingdings">&agrave;</font> no</i>
+<p><i>* <font face="Wingdings">&agrave;</font> no</i>
+<p><i>( <font face="Wingdings">&agrave;</font> si</i>
+<p><i>) <font face="Wingdings">&agrave;</font> no</i></center>
+
+<p>inoltre nell'insieme FIRST(T) non &egrave; compreso l'elemento <font face="Symbol">e</font>
+. La regola viene quindi posta negli elementi</dir>
+</dir>
+</dir>
+
+<table BORDER CELLPADDING=4 WIDTH="608" >
+<tr>
+<td VALIGN=TOP ROWSPAN="2" WIDTH="14%">
+<center><b>Simboli non Terminali</b></center>
+</td>
+
+<td VALIGN=TOP COLSPAN="6" WIDTH="86%">
+<center><b>Simboli Terminali</b></center>
+</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP WIDTH="14%">
+<center><b>id</b></center>
+</td>
+
+<td VALIGN=TOP WIDTH="14%">
+<center>+</center>
+</td>
+
+<td VALIGN=TOP WIDTH="14%">
+<center>*</center>
+</td>
+
+<td VALIGN=TOP WIDTH="14%">
+<center>(</center>
+</td>
+
+<td VALIGN=TOP WIDTH="14%">
+<center>)</center>
+</td>
+
+<td VALIGN=TOP WIDTH="14%">
+<center>$</center>
+</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP WIDTH="14%" HEIGHT="22">
+<center>E</center>
+</td>
+
+<td VALIGN=TOP WIDTH="14%" HEIGHT="22">
+<center>E <font face="Wingdings">&agrave;</font> T E'</center>
+</td>
+
+<td VALIGN=TOP WIDTH="14%" HEIGHT="22"></td>
+
+<td VALIGN=TOP WIDTH="14%" HEIGHT="22"></td>
+
+<td VALIGN=TOP WIDTH="14%" HEIGHT="22">
+<center>E <font face="Wingdings">&agrave;</font> T E'</center>
+</td>
+
+<td VALIGN=TOP WIDTH="14%" HEIGHT="22"></td>
+
+<td VALIGN=TOP WIDTH="14%" HEIGHT="22"></td>
+</tr>
+</table>
+
+<dir>
+<dir>
+<dir>La seconda regola &egrave; E' <font face="Wingdings">&agrave;</font>
++ T E'. All'insieme FIRST(+TE') ovvero all'insieme FIRST(+) appartiene
+il solo elemento +.</dir>
+</dir>
+</dir>
+
+<table BORDER CELLPADDING=4 WIDTH="608" >
+<tr>
+<td VALIGN=TOP ROWSPAN="2" WIDTH="14%">
+<center><b>Simboli non Terminali</b></center>
+</td>
+
+<td VALIGN=TOP COLSPAN="6" WIDTH="86%">
+<center><b>Simboli Terminali</b></center>
+</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP WIDTH="14%">
+<center><b>Id</b></center>
+</td>
+
+<td VALIGN=TOP WIDTH="14%">
+<center>+</center>
+</td>
+
+<td VALIGN=TOP WIDTH="14%">
+<center>*</center>
+</td>
+
+<td VALIGN=TOP WIDTH="14%">
+<center>(</center>
+</td>
+
+<td VALIGN=TOP WIDTH="14%">
+<center>)</center>
+</td>
+
+<td VALIGN=TOP WIDTH="14%">
+<center>$</center>
+</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP WIDTH="14%" HEIGHT="22">
+<center>E</center>
+</td>
+
+<td VALIGN=TOP WIDTH="14%" HEIGHT="22">
+<center>E <font face="Wingdings">&agrave;</font> T E'</center>
+</td>
+
+<td VALIGN=TOP WIDTH="14%" HEIGHT="22"></td>
+
+<td VALIGN=TOP WIDTH="14%" HEIGHT="22"></td>
+
+<td VALIGN=TOP WIDTH="14%" HEIGHT="22">
+<center>E <font face="Wingdings">&agrave;</font> T E'</center>
+</td>
+
+<td VALIGN=TOP WIDTH="14%" HEIGHT="22"></td>
+
+<td VALIGN=TOP WIDTH="14%" HEIGHT="22"></td>
+</tr>
+
+<tr>
+<td VALIGN=TOP WIDTH="14%" HEIGHT="22">
+<center>E'</center>
+</td>
+
+<td VALIGN=TOP WIDTH="14%" HEIGHT="22"></td>
+
+<td VALIGN=TOP WIDTH="14%" HEIGHT="22">
+<center>E' <font face="Wingdings">&agrave;</font> + T E'</center>
+</td>
+
+<td VALIGN=TOP WIDTH="14%" HEIGHT="22"></td>
+
+<td VALIGN=TOP WIDTH="14%" HEIGHT="22"></td>
+
+<td VALIGN=TOP WIDTH="14%" HEIGHT="22"></td>
+
+<td VALIGN=TOP WIDTH="14%" HEIGHT="22"></td>
+</tr>
+</table>
+
+<dir>
+<dir>
+<dir>La terza regola &egrave; E' <font face="Wingdings">&agrave;</font><font face="Symbol">e</font>
+. All'insieme FIRST(<font face="Symbol">e</font> ) appartiene il solo elemento
+<font face="Symbol">e</font> . Verifichiamo a questo punto quali simboli
+terminali appartengono all'insieme FOLLOW(E')
+<center>
+<p><b><i>Id</i> <font face="Wingdings">&agrave;</font> no</b>
+<p><b>+ <font face="Wingdings">&agrave;</font> no</b>
+<p><b>* <font face="Wingdings">&agrave;</font> no</b>
+<p><b>( <font face="Wingdings">&agrave;</font> no</b>
+<p><b>) <font face="Wingdings">&agrave;</font> si</b>
+<p><b>$ <font face="Wingdings">&agrave;</font> si</b></center>
+
+<p>&nbsp;completiamo quindi la seconda riga della tabella, corrispondente
+a E'</dir>
+</dir>
+</dir>
+
+<table BORDER CELLPADDING=4 WIDTH="608" >
+<tr>
+<td VALIGN=TOP ROWSPAN="2" WIDTH="14%">
+<center><b>Simboli non Terminali</b></center>
+</td>
+
+<td VALIGN=TOP COLSPAN="6" WIDTH="86%">
+<center><b>Simboli Terminali</b></center>
+</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP WIDTH="14%">
+<center><b>Id</b></center>
+</td>
+
+<td VALIGN=TOP WIDTH="14%">
+<center>+</center>
+</td>
+
+<td VALIGN=TOP WIDTH="14%">
+<center>*</center>
+</td>
+
+<td VALIGN=TOP WIDTH="14%">
+<center>(</center>
+</td>
+
+<td VALIGN=TOP WIDTH="14%">
+<center>)</center>
+</td>
+
+<td VALIGN=TOP WIDTH="14%">
+<center>$</center>
+</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP WIDTH="14%" HEIGHT="22">
+<center>E</center>
+</td>
+
+<td VALIGN=TOP WIDTH="14%" HEIGHT="22">
+<center>E <font face="Wingdings">&agrave;</font> T E'</center>
+</td>
+
+<td VALIGN=TOP WIDTH="14%" HEIGHT="22"></td>
+
+<td VALIGN=TOP WIDTH="14%" HEIGHT="22"></td>
+
+<td VALIGN=TOP WIDTH="14%" HEIGHT="22">
+<center>E <font face="Wingdings">&agrave;</font> T E'</center>
+</td>
+
+<td VALIGN=TOP WIDTH="14%" HEIGHT="22"></td>
+
+<td VALIGN=TOP WIDTH="14%" HEIGHT="22"></td>
+</tr>
+
+<tr>
+<td VALIGN=TOP WIDTH="14%" HEIGHT="22">
+<center>E'</center>
+</td>
+
+<td VALIGN=TOP WIDTH="14%" HEIGHT="22"></td>
+
+<td VALIGN=TOP WIDTH="14%" HEIGHT="22">
+<center>E' <font face="Wingdings">&agrave;</font> + T E'</center>
+</td>
+
+<td VALIGN=TOP WIDTH="14%" HEIGHT="22"></td>
+
+<td VALIGN=TOP WIDTH="14%" HEIGHT="22"></td>
+
+<td VALIGN=TOP WIDTH="14%" HEIGHT="22">
+<center>E' <font face="Wingdings">&agrave;</font> <font face="Symbol">e</font></center>
+</td>
+
+<td VALIGN=TOP WIDTH="14%" HEIGHT="22">
+<center>E' <font face="Wingdings">&agrave;</font> <font face="Symbol">e</font></center>
+</td>
+</tr>
+</table>
+
+<dir>
+<dir>
+<dir>Applicando lo stesso criterio sulle restanti regole otteniamo</dir>
+</dir>
+</dir>
+
+<table BORDER CELLPADDING=4 WIDTH="608" >
+<tr>
+<td VALIGN=TOP ROWSPAN="2" WIDTH="14%">
+<center><b>Simboli non Terminali</b></center>
+</td>
+
+<td VALIGN=TOP COLSPAN="6" WIDTH="86%">
+<center><b>Simboli Terminali</b></center>
+</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP WIDTH="14%">
+<center><b>Id</b></center>
+</td>
+
+<td VALIGN=TOP WIDTH="14%">
+<center>+</center>
+</td>
+
+<td VALIGN=TOP WIDTH="14%">
+<center>*</center>
+</td>
+
+<td VALIGN=TOP WIDTH="14%">
+<center>(</center>
+</td>
+
+<td VALIGN=TOP WIDTH="14%">
+<center>)</center>
+</td>
+
+<td VALIGN=TOP WIDTH="14%">
+<center>$</center>
+</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP WIDTH="14%" HEIGHT="22">
+<center>E</center>
+</td>
+
+<td VALIGN=TOP WIDTH="14%" HEIGHT="22">
+<center>E <font face="Wingdings">&agrave;</font> T E'</center>
+</td>
+
+<td VALIGN=TOP WIDTH="14%" HEIGHT="22"></td>
+
+<td VALIGN=TOP WIDTH="14%" HEIGHT="22"></td>
+
+<td VALIGN=TOP WIDTH="14%" HEIGHT="22">
+<center>E <font face="Wingdings">&agrave;</font> T E'</center>
+</td>
+
+<td VALIGN=TOP WIDTH="14%" HEIGHT="22"></td>
+
+<td VALIGN=TOP WIDTH="14%" HEIGHT="22"></td>
+</tr>
+
+<tr>
+<td VALIGN=TOP WIDTH="14%" HEIGHT="22">
+<center>E'</center>
+</td>
+
+<td VALIGN=TOP WIDTH="14%" HEIGHT="22"></td>
+
+<td VALIGN=TOP WIDTH="14%" HEIGHT="22">
+<center>E' <font face="Wingdings">&agrave;</font> + T E'</center>
+</td>
+
+<td VALIGN=TOP WIDTH="14%" HEIGHT="22"></td>
+
+<td VALIGN=TOP WIDTH="14%" HEIGHT="22"></td>
+
+<td VALIGN=TOP WIDTH="14%" HEIGHT="22">
+<center>E' <font face="Wingdings">&agrave;</font> <font face="Symbol">e</font></center>
+</td>
+
+<td VALIGN=TOP WIDTH="14%" HEIGHT="22">
+<center>E' <font face="Wingdings">&agrave;</font> <font face="Symbol">e</font></center>
+</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP WIDTH="14%" HEIGHT="22">
+<center>T</center>
+</td>
+
+<td VALIGN=TOP WIDTH="14%" HEIGHT="22">
+<center>T <font face="Wingdings">&agrave;</font> F T'</center>
+</td>
+
+<td VALIGN=TOP WIDTH="14%" HEIGHT="22"></td>
+
+<td VALIGN=TOP WIDTH="14%" HEIGHT="22"></td>
+
+<td VALIGN=TOP WIDTH="14%" HEIGHT="22">
+<center>T <font face="Wingdings">&agrave;</font> F T'</center>
+</td>
+
+<td VALIGN=TOP WIDTH="14%" HEIGHT="22"></td>
+
+<td VALIGN=TOP WIDTH="14%" HEIGHT="22"></td>
+</tr>
+
+<tr>
+<td VALIGN=TOP WIDTH="14%" HEIGHT="22">
+<center>T'</center>
+</td>
+
+<td VALIGN=TOP WIDTH="14%" HEIGHT="22"></td>
+
+<td VALIGN=TOP WIDTH="14%" HEIGHT="22">
+<center>T' <font face="Wingdings">&agrave;</font> <font face="Symbol">e</font></center>
+</td>
+
+<td VALIGN=TOP WIDTH="14%" HEIGHT="22">
+<center>T' <font face="Wingdings">&agrave;</font> * F T'</center>
+</td>
+
+<td VALIGN=TOP WIDTH="14%" HEIGHT="22"></td>
+
+<td VALIGN=TOP WIDTH="14%" HEIGHT="22">
+<center>T' <font face="Wingdings">&agrave;</font> <font face="Symbol">e</font></center>
+</td>
+
+<td VALIGN=TOP WIDTH="14%" HEIGHT="22">
+<center>T' <font face="Wingdings">&agrave;</font> <font face="Symbol">e</font></center>
+</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP WIDTH="14%" HEIGHT="22">
+<center>F</center>
+</td>
+
+<td VALIGN=TOP WIDTH="14%" HEIGHT="22">
+<center>F <font face="Wingdings">&agrave;</font> <b>id</b></center>
+</td>
+
+<td VALIGN=TOP WIDTH="14%" HEIGHT="22"></td>
+
+<td VALIGN=TOP WIDTH="14%" HEIGHT="22"></td>
+
+<td VALIGN=TOP WIDTH="14%" HEIGHT="22">
+<center>F <font face="Wingdings">&agrave;</font> ( E )</center>
+</td>
+
+<td VALIGN=TOP WIDTH="14%" HEIGHT="22"></td>
+
+<td VALIGN=TOP WIDTH="14%" HEIGHT="22"></td>
+</tr>
+</table>
+
+<ol>
+<li>
+<i>Parser predittivo non ricorsivo</i></li>
+</ol>
+
+<dir>
+<dir>
+<dir>In alternativa al parser predittivo ricorsivo, &egrave; possibile
+realizzare un parser non ricorsivo, facendo uso di una tabella e di una
+pila (stack). L'implementazione prevede l'inizializzazione della pila con
+il simbolo iniziale della grammatica (secondo elemento) sopra il simbolo
+$ (primo elemento) che rappresenta il fondo dello stack, oltre all'inizializzazione
+della tabella secondo il criterio visto nel precedente paragrafo.
+<p>L'esecuzione del programma, prevede ad ogni passo il confronto del token
+corrente, letto dalla lista di token in ingresso, con il simbolo presente
+sulla cima della pila.</dir>
+</dir>
+</dir>
+
+<ol TYPE="a">
+<ol TYPE="a">
+<li>
+Se i due simboli coincidono e sono entrambi uguali a $, il parser termina
+l'esecuzione avendo riconosciuto la stringa in ingresso.</li>
+
+<li>
+Se i due simboli coincidono ma non sono entrambi uguali a $, viene letto
+il token successivo della stringa in ingresso ed estratto l'elemento dello
+stack, appena confrontato (esecuzione di una <i>pop</i> sulla pila).</li>
+
+<li>
+Se il simbolo presente sulla cima della pila &egrave; un simbolo non terminale
+X e il token corrente &egrave; un simbolo terminale a, viene letta la regola
+contenuta nell'elemento [X,a] della tabella di parsing, e inserita in ordine
+inverso nello stack.</li>
+</ol>
+</ol>
+
+<dir>
+<dir>
+<dir>Basandoci sulla grammatica (e corrispondente tabella di parsing) vista
+nel paragrafo precedente, proviamo ad analizzare il comportamento del parser,
+nei confronti della stringa in ingresso:
+<center>
+<p><b><i>id</i> + id * id $</b></center>
+</dir>
+</dir>
+</dir>
+
+<center><table BORDER CELLPADDING=4 WIDTH="396" >
+<tr>
+<td VALIGN=TOP WIDTH="40%">
+<center>Contenuto dello Stack</center>
+</td>
+
+<td VALIGN=TOP WIDTH="29%">
+<center>Token corrente</center>
+</td>
+
+<td VALIGN=TOP WIDTH="31%">
+<center>Regola applicata</center>
+</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP WIDTH="40%">$ E</td>
+
+<td VALIGN=TOP WIDTH="29%">
+<center><b>Id</b></center>
+</td>
+
+<td VALIGN=TOP WIDTH="31%">&nbsp;</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP WIDTH="40%">$ E' T</td>
+
+<td VALIGN=TOP WIDTH="29%">
+<center><b>Id</b></center>
+</td>
+
+<td VALIGN=TOP WIDTH="31%">
+<center>E <font face="Wingdings">&agrave;</font> T E'</center>
+</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP WIDTH="40%">$ E' T' F</td>
+
+<td VALIGN=TOP WIDTH="29%">
+<center><b>Id</b></center>
+</td>
+
+<td VALIGN=TOP WIDTH="31%">
+<center>T <font face="Wingdings">&agrave;</font> F T'</center>
+</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP WIDTH="40%">$ E' T' <b>id</b></td>
+
+<td VALIGN=TOP WIDTH="29%">
+<center><b>Id</b></center>
+</td>
+
+<td VALIGN=TOP WIDTH="31%">
+<center>F <font face="Wingdings">&agrave;</font> <b>id</b></center>
+</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP WIDTH="40%">$ E' T'&nbsp;</td>
+
+<td VALIGN=TOP WIDTH="29%">
+<center>+</center>
+</td>
+
+<td VALIGN=TOP WIDTH="31%">&nbsp;</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP WIDTH="40%">$ E'&nbsp;</td>
+
+<td VALIGN=TOP WIDTH="29%">
+<center>+</center>
+</td>
+
+<td VALIGN=TOP WIDTH="31%">
+<center>T' <font face="Wingdings">&agrave;</font> <font face="Symbol">e</font></center>
+</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP WIDTH="40%">$ E' T +</td>
+
+<td VALIGN=TOP WIDTH="29%">
+<center>+</center>
+</td>
+
+<td VALIGN=TOP WIDTH="31%">
+<center>E' <font face="Wingdings">&agrave;</font> + T E'</center>
+</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP WIDTH="40%">$ E' T</td>
+
+<td VALIGN=TOP WIDTH="29%">
+<center><b>Id</b></center>
+</td>
+
+<td VALIGN=TOP WIDTH="31%">&nbsp;</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP WIDTH="40%">$ E' T' F</td>
+
+<td VALIGN=TOP WIDTH="29%">
+<center><b>Id</b></center>
+</td>
+
+<td VALIGN=TOP WIDTH="31%">
+<center>T <font face="Wingdings">&agrave;</font> F T'</center>
+</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP WIDTH="40%">$ E' T' <b>id</b></td>
+
+<td VALIGN=TOP WIDTH="29%">
+<center><b>Id</b></center>
+</td>
+
+<td VALIGN=TOP WIDTH="31%">
+<center>F <font face="Wingdings">&agrave;</font> <b>id</b></center>
+</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP WIDTH="40%">$ E' T'</td>
+
+<td VALIGN=TOP WIDTH="29%">
+<center>*</center>
+</td>
+
+<td VALIGN=TOP WIDTH="31%">&nbsp;</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP WIDTH="40%">$ E' T' F *</td>
+
+<td VALIGN=TOP WIDTH="29%">
+<center>*</center>
+</td>
+
+<td VALIGN=TOP WIDTH="31%">
+<center>T' <font face="Wingdings">&agrave;</font> * F T'</center>
+</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP WIDTH="40%">$ E' T' F</td>
+
+<td VALIGN=TOP WIDTH="29%">
+<center><b>Id</b></center>
+</td>
+
+<td VALIGN=TOP WIDTH="31%">&nbsp;</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP WIDTH="40%">$ E' T' <b>id</b></td>
+
+<td VALIGN=TOP WIDTH="29%">
+<center><b>Id</b></center>
+</td>
+
+<td VALIGN=TOP WIDTH="31%">
+<center>F <font face="Wingdings">&agrave;</font> <b>id</b></center>
+</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP WIDTH="40%">$ E' T'</td>
+
+<td VALIGN=TOP WIDTH="29%">
+<center>$</center>
+</td>
+
+<td VALIGN=TOP WIDTH="31%">&nbsp;</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP WIDTH="40%">$ E'</td>
+
+<td VALIGN=TOP WIDTH="29%">
+<center>$</center>
+</td>
+
+<td VALIGN=TOP WIDTH="31%">
+<center>T' <font face="Wingdings">&agrave;</font> <font face="Symbol">e</font></center>
+</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP WIDTH="40%">$&nbsp;</td>
+
+<td VALIGN=TOP WIDTH="29%">
+<center>$</center>
+</td>
+
+<td VALIGN=TOP WIDTH="31%">
+<center>E' <font face="Wingdings">&agrave;</font> <font face="Symbol">e</font></center>
+</td>
+</tr>
+</table></center>
+
+<dir>
+<dir>
+<dir>Da notare che un'eventuale assenza di regola nell'elemento [X,a],
+implica errore sintattico.</dir>
+</dir>
+</dir>
+
+</body>
+</html>

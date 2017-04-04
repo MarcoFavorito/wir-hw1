@@ -1,0 +1,176 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=windows-1252">
+<title></title>
+</HEAD>
+<BODY background="bgrnd.jpg">
+
+<B><FONT SIZE=5><P>9)</FONT><FONT SIZE=5> </FONT><FONT SIZE=5>Complessit&agrave; degli algoritmi di ordinamento</P>
+<hr>
+</FONT>
+</B>
+<OL>
+
+<I><LI>Richiami sul "Selectionsort"</LI>
+</I><P ALIGN="JUSTIFY">Esegue la scansione del vettore di n elementi e in ogni elemento i, pone l'elemento minimo dell'insieme di elementi compresi tra i ed n</P>
+<FONT FACE="Courier New" SIZE=1><P>&#9;/**********************************************</P>
+<P>&#9;* execSelectionSort - ordinamento del vettore</P>
+<P>&#9;*/</P>
+<P> void execSelectionSort()</P>
+<P> &#9;{&#9;</P>
+<B><P> &#9;&#9;for (int i=0; i&lt;numero_elementi-1; i++)</P>
+<P> &#9;&#9;{&#9;</P>
+<P> &#9;&#9;&#9;int ind_min=i;  // cerca la componente minima tra a[i] e a[n]</P>
+<P> &#9;&#9;&#9;for (int j=i+1; j&lt;numero_elementi; j++) </P>
+<P> &#9;&#9;&#9;&#9;if (array_ordinato[j] &lt; array_ordinato[ind_min]) ind_min=j;</P>
+<P> &#9;&#9;&#9;// pone nell'elemento i-esimo la componente minima trovata</P>
+<P> &#9;&#9;&#9;int appoggio=array_ordinato[i];</P>
+<P> &#9;&#9;&#9;array_ordinato[i]=array_ordinato[ind_min];</P>
+<P> &#9;&#9;&#9;array_ordinato[ind_min]=appoggio;</P>
+<P> &#9;&#9;}&#9;</P>
+</B><P> &#9;}</P>
+</FONT>
+<P ALIGN="JUSTIFY">Nel metodo "execSelectionSort", che implementa l'algoritmo, viene eseguita la ricerca della componente minima effettuando (n-1) confronti alla prima iterazione, (n-2) confronti alla seconda, (n-i) confronti alla i-esima iterazione.  </P>
+<I><P ALIGN="CENTER">(n-1) + (n-2) + …. + 2 + 1 = n (n-1) / 2</P>
+<P ALIGN="CENTER">O(n<SUP>2</SUP>)</P>
+</I><P ALIGN="JUSTIFY">Notare che l'algoritmo ha lo stesso costo anche se l'array risulta gi&agrave; ordinato.<I> </P>
+</I><LI><I> Richiami sul "Bubblesort"</LI>
+</I><P ALIGN="JUSTIFY">Vengono eseguite (n-1) iterazioni.  Ad ogni iterazione i, l'algoritmo confronta le coppie di elementi adiacenti tra n ed i; questi vengono scambiati se non rispettano l'ordinamento.  Al termine di ogni iterazione i, l'elemento pi&ugrave; piccolo tra n ed i, &egrave; posto nella posizione i-esima</P>
+<FONT FACE="Courier New" SIZE=1><P>&#9;&#9;/*******************************************</P>
+<P>&#9;&#9;* execBubbleSort - ordinamento del vettore</P>
+<P>&#9;&#9;*/</P>
+<P>  &#9;void execBubbleSort()</P>
+<P>  &#9;{&#9;</P>
+<B><P>  &#9;&#9;int scambi =0;</P>
+<P>  &#9;&#9;int iterazioni =0;</P>
+<P>  &#9;&#9;while (((scambi&gt;0) || (iterazioni==0)) &amp;&amp; (iterazioni&lt;numero_elementi-1)) </P>
+<P>  &#9;&#9;// l'algoritmo termina quando per un'iterazione non sono stati</P>
+<P>  &#9;&#9;// effettuati scambi o quando &egrave; stata completata l'iterazione n-1</P>
+<P>  &#9;&#9;{&#9;iterazioni +=1;</P>
+<P>  &#9;&#9;&#9;scambi=0;</P>
+<P>  &#9;&#9;&#9;for (int i=numero_elementi; i&gt;iterazioni; i--)</P>
+<P>  &#9;&#9;&#9;&#9;if (array_ordinato[i-1] &lt; array_ordinato[i-2]) </P>
+<P>  &#9;&#9;&#9;  &#9;{&#9;// scambia i due elementi adiacenti, che non rispettano l'ordinamento</P>
+<P>  &#9;&#9;&#9;&#9;&#9;int appoggio=array_ordinato[i-1];</P>
+<P>  &#9;&#9;&#9;&#9;&#9;array_ordinato[i-1]=array_ordinato[i-2];</P>
+<P>  &#9;&#9;&#9;&#9;&#9;array_ordinato[i-2]=appoggio;</P>
+<P>  &#9;&#9;&#9;&#9;&#9;scambi +=1;</P>
+<P>  &#9;&#9;&#9;&#9;}</P>
+<P>  &#9;&#9;}&#9;</P>
+</B><P>  &#9;}</P>
+</FONT>
+<P ALIGN="JUSTIFY">Nel caso peggiore, l'algoritmo effettua (n-1) confronti alla prima iterazione, (n-2) confronti alla seconda iterazione e cosi via fino all'ultima iterazione dove compie 1 solo confronto.  La complessit&agrave; nel caso peggiore &egrave; quindi</P>
+<I><P ALIGN="CENTER">(n-1) + (n-2) + …. + 2 + 1 = n (n-1) / 2</P>
+<P ALIGN="CENTER">O(n<SUP>2</SUP>)</P>
+</I><P ALIGN="JUSTIFY">E' da notare per&ograve; che l'algoritmo non sempre necessit&agrave; di (n-1) iterazioni; se durante un'iterazione non viene effettuato nessuno scambio l'algoritmo termina perch&eacute; il vettore risulta ordinato. Nel caso migliore, quando l'array risulta gi&agrave; ordinato, l'algoritmo effettua gli (n-1) confronti della prima iterazione e termina.  La complessit&agrave; nel caso migliore &egrave; quindi</P>
+<I><P ALIGN="CENTER">O(n)</P>
+<LI>Richiami sul "Insertionsort"</LI>
+</I><P ALIGN="JUSTIFY">Vengono eseguite (n-1) iterazioni.  Ad ogni iterazione i, l'algoritmo verifica se l'elemento in esame &egrave; minore delle componenti (gi&agrave; ordinate) che lo precedono.  In caso affermativo, esegue lo shift di tutti gli elementi maggiori e inserisce l'elemento corrente nella posizione rimasta libera</P>
+<FONT FACE="Courier New" SIZE=1>
+<P>&#9;&#9;/**********************************************</P>
+<P>&#9;&#9;* execInsertionSort - ordinamento del vettore</P>
+<P>&#9;&#9;*/</P>
+<P>  &#9;void execInsertionSort()</P>
+<P>  &#9;{&#9;</P>
+<B><P>  &#9;&#9;for (int ind_ele_cor=1; ind_ele_cor&lt;numero_elementi; ind_ele_cor++)</P>
+<P>  &#9;&#9;{&#9;</P>
+<P>  &#9;&#9;&#9;int ele_cor = array_ordinato[ind_ele_cor]; // elemento corrente</P>
+<P>  &#9;&#9;&#9;int ind_ele_pre = ind_ele_cor-1; // indice del primo elemento precedente  &#9;&#9;&#9;</P>
+<P>  &#9;&#9;&#9;while ((ind_ele_pre&gt;=0) &amp;&amp; (ele_cor&lt;array_ordinato[ind_ele_pre]))</P>
+<P>  &#9;&#9;&#9;{&#9;// shift in avanti di tutte le componenenti (ordinate) che precedono</P>
+<P>  &#9;&#9;&#9;&#9;// l'elemento corrente, maggiori dell'elemento corrente</P>
+<P>  &#9;&#9;&#9;&#9;array_ordinato[ind_ele_pre+1]=array_ordinato[ind_ele_pre];</P>
+<P>&#9;&#9;&#9;&#9;&#9;ind_ele_pre -=1;</P>
+<P>&#9;&#9;&#9;&#9;}</P>
+
+<P>&#9;&#9;&#9;&#9;// "inserimento" dell'elemento corrente nella posizione rimasta libera</P>
+<P>&#9;&#9;&#9;&#9;array_ordinato[ind_ele_pre+1] = ele_cor;  &#9;&#9;&#9;</P>
+<P>  &#9;&#9;}&#9;</P>
+</B><P>  &#9;}</P>
+</FONT><P ALIGN="JUSTIFY">Le istruzioni dominanti sono quelle contenute nel ciclo while; vengono eseguite nel caso peggiore 1 volta alla prima iterazione, 2 volte alla seconda … (n-1) volte alla iterazione (n-1).  La complessit&agrave; dell'algoritmo &egrave; in definitiva anche in questo caso</P>
+<I><P ALIGN="CENTER">(n-1) + (n-2) + …. + 2 + 1 = n (n-1) / 2</P>
+<P ALIGN="CENTER">O(n<SUP>2</SUP>)</P>
+</I><P ALIGN="JUSTIFY"><LI>&nbsp;<I> Richiami sul "Mergesort"</LI>
+</I><P ALIGN="JUSTIFY">L'algoritmo di ordinamento per fusione, sfrutta l'algoritmo di fusione di due array ordinati.  Dati due array ordinati &egrave; possibile realizzare un terzo array ordinato frutto della fusione dei primi due, mettendo in ogni sua componente la pi&ugrave; piccola tra le due componenti correnti dei primi due (analizzati in ordine crescente).</P>
+<P ALIGN="JUSTIFY"></P>
+<P ALIGN="JUSTIFY">Il Mergesort opera in questo modo: se l'array da ordinare &egrave; di un solo elemento &egrave; di per se gi&agrave; ordinato.  Se l'array da ordinare &egrave; di due elementi, con un confronto ed eventualmente uno scambio ottiene l'ordinamento desiderato.  Se l'array ha un numero di elementi superiore a 2, allora suddivide l'array in due, ordina i due array ottenuti applicando ricorsivamente lo stesso metodo e fonde i due array ordinati tramite l'algoritmo di fusione.</P>
+<FONT FACE="Courier New" SIZE=1><P>&#9;&#9;/*******************************************</P>
+<P>&#9;&#9;* execMergeSort - ordinamento del vettore</P>
+<P>&#9;&#9;*/</P>
+<P>  &#9;private void execMergeSort(int ind_ini, int ind_fin)</P>
+<P>  &#9;{&#9;</P>
+<P>  <B>// Se gli elementi da ordinare sono solo due, confronta ed eventualmente scambia</P>
+<P>  &#9;&#9;if (ind_ini+1==ind_fin) </P>
+<P>  &#9;&#9;&#9;if (array_ordinato[ind_fin] &lt; array_ordinato[ind_ini])</P>
+<P>&#9;&#9;&#9;&#9;{&#9;int appoggio=array_ordinato[ind_fin];</P>
+<P>  &#9;&#9;&#9;&#9;array_ordinato[ind_fin]=array_ordinato[ind_ini];</P>
+<P>  &#9;&#9;&#9;&#9;array_ordinato[ind_ini]=appoggio;</P>
+<P>  &#9;&#9;&#9;}</P>
+<P>  &#9;&#9;// Se gli elementi da ordinare sono pi&ugrave; di due, </P>
+<P>  &#9;&#9;// comanda l'ordinamento di una suddivisione dell'array</P>
+<P>  &#9;&#9;if (ind_ini+1&lt;ind_fin) </P>
+<P>  &#9;&#9;{&#9;int k=((ind_fin+ind_ini)+1)/2;</P>
+<P>  &#9;&#9;&#9;execMergeSort(ind_ini, k-1);</P>
+<P>  &#9;&#9;&#9;execMergeSort(k, ind_fin);</P>
+<P>  &#9;&#9;&#9;fusioneArray(ind_ini, k-1, k, ind_fin);</P>
+<P>  &#9;&#9;}</P>
+</B><P>  &#9;}</P>
+
+<P>&#9;&#9;/************************************************************</P>
+<P>&#9;&#9;* fusioneArray - ordinamento degli elementi tramite fusione</P>
+<P>&#9;&#9;*/</P>
+<P>  &#9;private void fusioneArray(int a1_ini, int a1_fin, int a2_ini, int a2_fin)</P>
+<P>  { <B>int elementi = (a2_fin-a1_ini)+1; // numero elementi da ordinare</P>
+<P>  &#9;&#9;int array_temp[] = new int[elementi];</P>
+
+<P>  &#9;&#9;int a1= a1_ini;</P>
+<P>  &#9;&#9;int a2= a2_ini;</P>
+<P>  &#9;&#9;int k = 0;</P>
+<P>  &#9;&#9;// pone nell'array temporaneo gli elementi presi</P>
+<P>  &#9;&#9;while ((a1&lt;=a1_fin) &amp;&amp; (a2&lt;=a2_fin))</P>
+<P>  &#9;&#9;{&#9;// pone nell'array temporaneo il pi&ugrave; piccolo tra l'elemento</P>
+<P>  &#9;&#9;&#9;// corrente dei due array ordinati</P>
+<P>  &#9;&#9;&#9;if (array_ordinato[a1]&lt;=array_ordinato[a2])</P>
+<P>  &#9;&#9;&#9;{&#9;array_temp[k]=array_ordinato[a1];</P>
+<P>  &#9;&#9;&#9;&#9;a1+=1;</P>
+<P>  &#9;&#9;&#9;}</P>
+<P>  &#9;&#9;&#9;else</P>
+<P>  &#9;&#9;&#9;{&#9;array_temp[k]=array_ordinato[a2];</P>
+<P>  &#9;&#9;&#9;&#9;a2+=1;</P>
+<P>  &#9;&#9;&#9;}</P>
+<P>  &#9;&#9;&#9;k+=1;</P>
+<P>  &#9;&#9;}</P>
+
+<P>&#9;&#9;&#9;// Uno dei due array non ha pi&ugrave; elementi.  Pone nell'array temporaneo</P>
+<P>&#9;&#9;&#9;// i restanti elementi ordinati del secondo array  &#9;</P>
+<P>  &#9;&#9;for (int i=a1; i&lt;=a1_fin; i++) </P>
+<P>  &#9;&#9;{&#9;array_temp[k]=array_ordinato[i];</P>
+<P>  &#9;&#9;&#9;k+=1;</P>
+<P>  &#9;&#9;}</P>
+<P>  &#9;&#9;for (int i=a2; i&lt;=a2_fin; i++) </P>
+<P>  &#9;&#9;{&#9;array_temp[k]=array_ordinato[i];</P>
+<P>  &#9;&#9;&#9;k+=1;</P>
+<P>  &#9;&#9;}</P>
+<P>  &#9;&#9;// Pone gli elementi ordinati presenti nell'array temporaneo</P>
+<P>  &#9;&#9;// nell'array originale</P>
+<P>  &#9;&#9;for (int i=0; i&lt;elementi; i++)</P>
+<P>  &#9;&#9;&#9;array_ordinato[a1_ini+i]=array_temp[i];</P>
+</B><P>  &#9;}</P>
+</FONT>
+<P ALIGN="JUSTIFY">Proviamo ad analizzare in chiave semplificata la complessit&agrave; dell'algoritmo.  Se l'array ha uno o due elementi la complessit&agrave; &egrave; costante e pari a c.  Se l'array ha pi&ugrave; di due elementi, vengono eseguite log n attivazioni ricorsive, ognuna delle quali ha costo pari ad n (la complessit&agrave; dell'algoritmo di fusione &egrave; O(n)).  Possiamo per questo dire che la complessit&agrave; del Mergesort &egrave;  </P>
+<I><P ALIGN="CENTER">O(n<SUP> </SUP>log n)</P>
+</I><P ALIGN="JUSTIFY">O(n lg n) rappresenta anche il lower bound del problema dell'ordinamento.</P>
+<I><LI>Obiettivi della "Teoria della computabilit&agrave;"</LI>
+</I><P ALIGN="JUSTIFY">Studiare la calcolabilit&agrave; o la non calcolabilit&agrave; di un problema (decidibilit&agrave; o indecidibilit&agrave;).  Esistono funzioni che non possono essere calcolate mediante un algoritmo, esistono quindi dei limiti al calcolo automatico.  Accertato che tutti i modelli di calcolo utilizzabili sono computazionalmente equivalenti (tesi di Church) &egrave; possibile dimostrare che se una funzione non &egrave; calcolabile con uno dei modelli, non lo &egrave; con nessuno di essi.</P>
+<I><LI>Trattabilit&agrave; e intrattabilit&agrave; computazionale</LI>
+</I><P ALIGN="JUSTIFY">Da un punto di vista computazionale non &egrave; sufficiente sapere che esiste un algoritmo che risolve il problema; &egrave; importante sapere se l'algoritmo &egrave; efficiente, ovvero se pu&ograve; fornire un risultato in tempi accettabili.  Un problema &egrave; considerato risolubile efficientemente se esiste un algoritmo di complessit&agrave; polinomiale (che cio&egrave; si ferma sempre dopo un numero di passi limitato da un polinomio) che lo risolve.  Se un problema &egrave; risolto con un algoritmo di complessit&agrave; maggiore, ad esempio esponenziale, allora &egrave; considerato <I>intrattabile computazionalmente</I>.  Il problema resta in questo caso risolubile, ma trattabile solo per casi molto semplici.</P>
+<I><LI>Classi di complessit&agrave;</LI></OL>
+
+
+<UL>
+
+<UL>
+</I><LI>La classe P - problemi risolubili in tempo polinomiale su un qualunque modello di calcolo deterministico realistico (esempi: ordinamento di un insieme O(nlogn))</LI><LI>La classe NP - problemi risolubili in tempo polinomiale su un modello di calcolo non deterministico (famiglie di computazioni). </LI></UL>
+</UL>
+</BODY>
+</HTML>

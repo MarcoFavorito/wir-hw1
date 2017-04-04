@@ -1,0 +1,122 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=windows-1252">
+<META NAME="Generator" CONTENT="Microsoft Word 97">
+<TITLE>1</TITLE>
+<META NAME="Template" CONTENT="C:\PROGRAMMI\MICROSOFT OFFICE\OFFICE\html.dot">
+</HEAD>
+<BODY BACKGROUND="bgrnd.jpg">
+
+<B><FONT SIZE=5><P>2) Analisi Lessicale - espressioni regolari ed automi</P>
+</B></FONT><P ALIGN="RIGHT">Riferimenti: "<I>Linguaggi formali e compilatori</I>" - 2.1, 3.1, 3.2, 3.3</P>
+<P><HR></P>
+<B><U><FONT SIZE=4><P ALIGN="JUSTIFY">Aula</B></U></FONT> </P>
+<OL>
+
+<I><P ALIGN="JUSTIFY"><LI>Concetti fondamentali</LI></P>
+</I><P ALIGN="JUSTIFY">Per fare in modo che un analizzatore lessicale sia in grado di riconoscere i simboli del vocabolario utilizzato, &egrave; necessario fornire una descrizione "non ambigua" della sequenza di caratteri in ingresso. A questo scopo diremo che quello che viene posto in input &egrave; un "Linguaggio" con un "lessico" ben definito. Per definire il lessico di un linguaggio abbiamo a disposizione strumenti come le <I>espressioni regolari</I> e gli <I>automi a stati finiti</I>. E' importante, per prima cosa, assimilare alcuni concetti fondamentali:</P>
+<B><P ALIGN="JUSTIFY">Simbolo</B> <FONT FACE="Wingdings">&agrave;</FONT> sequenza di caratteri (es: 'a', 'xyz', '&lt;HTML&gt;', 'begin', 'abc', '=&gt;', ';');</P>
+<B><P ALIGN="JUSTIFY">Vocabolario</B> <FONT FACE="Wingdings">&agrave;</FONT> insieme di simboli (es: V={'for', 'xyz', '&lt;HTML&gt;', 'xx', 'yy', '='…}</P>
+<B><P ALIGN="JUSTIFY">Stringa</B> <FONT FACE="Wingdings">&agrave;</FONT> sequenza di simboli (es: S1=&lt;title&gt;xx&lt;/title&gt;, S2=&lt;body&gt;yy&lt;/body&gt;);</P>
+<B><P ALIGN="JUSTIFY">Concatenazione</B> delle stringhe S1 e S2 <FONT FACE="Wingdings">&agrave;</FONT> la stringa che si ottiene facendo seguire S2 ad S1 (es: S1S2=&lt;title&gt;xx&lt;/title&gt;&lt;body&gt;yy&lt;/body&gt;);</P>
+<B><P ALIGN="JUSTIFY">Potenza n-esima</B> di S (S<SUP>n</SUP>) <FONT FACE="Wingdings">&agrave;</FONT> la stringa ottenuta concatenando n stringhe uguali a S;</P>
+<B><P ALIGN="JUSTIFY">Linguaggio</B> <FONT FACE="Wingdings">&agrave;</FONT> insieme di stringhe (es: L1={for(i=0;i&lt;9;i++), if(b&lt;4) than c=true;}</P>
+<P ALIGN="JUSTIFY">Un linguaggio pu&ograve; contenere un numero infinito di stringhe (if b&lt;4 than c=true; e if c&gt;5 than f=8; sono due stringhe diverse) ed in questo caso &egrave; impensabile definire un linguaggio per enumerazione, indicando cio&egrave; tutte le stringhe che lo compongono. </P>
+<I><P ALIGN="JUSTIFY"><LI>Espressioni regolari</LI></P></OL>
+<DIR>
+<DIR>
+<DIR>
+
+</I><P ALIGN="JUSTIFY">Le espressioni regolari costituiscono una formulazione sintetica per definire linguaggi. Il punto di partenza &egrave; rappresentato dall'alfabeto <FONT FACE="Symbol">S</FONT> , ovvero dall'insieme dei caratteri primitivi. Ogni espressione regolare individua un linguaggio.</P></DIR>
+</DIR>
+</DIR>
+
+<OL>
+<OL>
+
+<P ALIGN="JUSTIFY"><LI>Se a <FONT FACE="Symbol">&Icirc;</FONT> <FONT FACE="Symbol">S</FONT> allora a &egrave; un'espressione regolare ed individua il linguaggio {a}.</LI></P>
+<FONT FACE="Symbol"><P ALIGN="JUSTIFY"><LI>e</FONT> &egrave; un 'espressione regolare ed individua il linguaggio {<FONT FACE="Symbol">e</FONT> }.</LI></P>
+<P ALIGN="JUSTIFY"><LI>Se s e t sono espressioni regolari, allora st &egrave; un'espressione regolare e individua il linguaggio L(s)L(t).</LI></P>
+<P ALIGN="JUSTIFY"><LI>Se s e t sono espressioni regolari, allora s|t &egrave; un'espressione regolare e individua il linguaggio L(s) U L(t).</LI></P>
+<P ALIGN="JUSTIFY"><LI>Se s &egrave; un'espressione regolare allora s* &egrave; un'espressione regolare e individua il linguaggio [L(s)]*</LI></P>
+<P ALIGN="JUSTIFY"><LI>Se s &egrave; un'espressione regolare allora (s) &egrave; un'espressione regolare e individua il linguaggio L(s).</LI></P></OL>
+</OL>
+<DIR>
+<DIR>
+<DIR>
+
+<P ALIGN="JUSTIFY">La regola (5) definisce la "chiusura del linguaggio L(s)", ovvero l'unione di tutte le potenze n-esime di L, con n<FONT FACE="Symbol">³</FONT> 0. <IMG SRC="Image8.gif" WIDTH=129 HEIGHT=45>. Nell'ultima regola invece, vengono fornite le parentesi tonde per indicare la precedenza degli operatori. Facendo uso della forma BNF, un linguaggio composto solo da numeri interi (che rappresentano i simboli) potrebbe essere definito in questo modo:</P>
+<I><P ALIGN="CENTER">L <FONT FACE="Wingdings">&agrave;</FONT> (0|1|2|3|4|5|6|7|8|9)*</P>
+</I><P ALIGN="JUSTIFY">Analogamente, un linguaggio composto solo di caratteri (dalla 'a' alla 'Z') potrebbe essere definito in questo modo:</P>
+<I><P ALIGN="CENTER">L <FONT FACE="Wingdings">&agrave;</FONT> ('a'!..!'Z')*</P>
+</I><P ALIGN="JUSTIFY">Mentre una qualunque sequenza di numeri e/o lettere</P>
+<P ALIGN="CENTER">L <FONT FACE="Wingdings">&agrave;</FONT> <I>(0|1|2|3|4|5|6|7|8|9)* ('a'!..!'Z')*</P>
+</I><P ALIGN="JUSTIFY">Le espressioni regolari non hanno un potere espressivo illimitato; con le espressioni regolari non &egrave; possibile ad esempio descrivere la sintassi di un linguaggio (anche per questo le due fasi di analisi sono distinte). Gi automi a stati finiti soffrono delle stesse limitazioni.</P></DIR>
+</DIR>
+</DIR>
+
+<OL>
+
+<I><P ALIGN="JUSTIFY"><LI>Automi a stati finiti</LI></P></OL>
+<DIR>
+<DIR>
+<DIR>
+
+</I><P ALIGN="JUSTIFY">Sono grafi orientati, caratterizzati da:</P></DIR>
+</DIR>
+</DIR>
+
+
+<UL><DIR>
+<DIR>
+
+
+<UL>
+<P ALIGN="JUSTIFY"><LI>Un nodo origine che rappresenta lo stato iniziale</LI></P>
+<P ALIGN="JUSTIFY"><LI>Un insieme di nodi che rappresentano i possibili stati intermedi</LI></P>
+<P ALIGN="JUSTIFY"><LI>Un insieme di nodi che rappresentano i possibili stati finali</LI></P>
+<P ALIGN="JUSTIFY"><LI>Un insieme di archi orientati (tra due nodi) che indicano possibili transizioni tra stati</LI></P>
+<P ALIGN="JUSTIFY"><LI>Un insieme di etichette (sui nodi) che rappresentano le funzioni di transizione</LI></P></UL>
+</DIR>
+</DIR>
+</UL>
+<DIR>
+<DIR>
+<DIR>
+
+<P ALIGN="CENTER"><IMG SRC="Image9.gif" WIDTH=249 HEIGHT=63></P>
+<P ALIGN="JUSTIFY">nell'ambito del progetto di traduttori, assumono notevole importanza perch&eacute; si prestano ad essere utilizzati come riconoscitori di stringhe. </P></DIR>
+</DIR>
+</DIR>
+
+<OL>
+
+<I><P ALIGN="JUSTIFY"><LI>Non determinismo</LI></P></OL>
+<DIR>
+<DIR>
+<DIR>
+
+</I><P ALIGN="JUSTIFY">Un automa &egrave; <I>non deterministico</I> se:</P></DIR>
+</DIR>
+</DIR>
+
+
+<UL><DIR>
+<DIR>
+
+
+<UL>
+<P ALIGN="JUSTIFY"><LI>Presenta archi con etichetta "nulla" (possibile transizione da uno stato ad un altro senza carattere in ingresso)</LI></P>
+<P ALIGN="JUSTIFY"><LI>Presenta due diverse transizioni verso due diversi stati, con due etichette identiche</LI></P></UL>
+</DIR>
+</DIR>
+</UL>
+<DIR>
+<DIR>
+<DIR>
+
+<P ALIGN="JUSTIFY">In un automa non deterministico il tempo di riconoscimento di una stringa non &egrave; pi&ugrave; proporzionale alla lunghezza della stringa stessa; il fallimento di un percorso pu&ograve; portare a riconsiderare un precedente passaggio, ovvero la scelta effettuata tra due identiche transizioni. Questa "inefficienza computazionale" &egrave; nota sotto il nome di <I>backtracking</I>. Il non determinismo viene risolto con la <I>e-chiusura</I>, eliminando cio&egrave; gli archi con funzione di transizione nulla, e introducendo nodi intermedi per le funzioni di transizione identiche.</P></DIR>
+</DIR>
+</DIR>
+</BODY>
+</HTML>

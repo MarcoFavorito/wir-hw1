@@ -1,0 +1,110 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+<HEAD>
+   <TITLE> Discrete-System Simulation:</TITLE>
+   <META NAME="keywords" CONTENT="">
+   <META NAME="resource-type" CONTENT="">
+   <META NAME="distribution" CONTENT="">
+   <META NAME="GENERATOR" CONTENT="Mozilla/3.01Gold (Win95; I) [Netscape]">
+</HEAD>
+<BODY BACKGROUND="../images/paper1.gif" <meta name="description" value=" Discrete-System Simulation:">
+
+<P><!Converted with LaTeX2HTML 95 (Thu Jan 19 1995) by Nikos Drakos 
+
+(nikos@cbl.leeds.ac.uk), CBLU, University of Leeds ></P>
+
+<P><BR>
+
+<HR><A NAME="tex2html297"></A><A NAME="tex2html297"></A><A HREF="node20.html" NAME="tex2html297"><IMG SRC="../images/next_motif.gif" ALT="next" HEIGHT=24 WIDTH=37 ALIGN=BOTTOM></A>
+<A NAME="tex2html295"></A><A NAME="tex2html295"></A><A HREF="node17.html" NAME="tex2html295"><IMG SRC="../images/up_motif.gif" ALT="up" HEIGHT=24 WIDTH=26 ALIGN=BOTTOM></A>
+<A NAME="tex2html289"></A><A NAME="tex2html289"></A><A HREF="node18.html" NAME="tex2html289"><IMG SRC="../images/previous_motif.gif" ALT="previous" HEIGHT=24 WIDTH=63 ALIGN=BOTTOM></A>
+<A NAME="tex2html299"></A><A NAME="tex2html299"></A><A HREF="node1.html" NAME="tex2html299"><IMG SRC="../images/contents_motif.gif" ALT="contents" HEIGHT=24 WIDTH=65 ALIGN=BOTTOM></A>
+<BR>
+<B>Next:</B> <A NAME="tex2html298"></A><A NAME="tex2html298"></A><A HREF="node20.html" NAME="tex2html298">Logistics
+and Resource </A><B>Up:</B> <A NAME="tex2html296"></A><A NAME="tex2html296"></A><A HREF="node17.html" NAME="tex2html296">Technology
+Transfer to </A><B>Previous:</B> <A NAME="tex2html290"></A><A NAME="tex2html290"></A><A HREF="node18.html" NAME="tex2html290">Communication
+Primitives for </A><BR>
+
+<HR></P>
+
+<H3><A NAME="SECTION02013200000000000000"></A>Discrete-System Simulation:</H3>
+
+<P>Our discrete-system simulator (DSS) is used by INTRACOM, the largest
+Greek telecom company. We shall expand DSS (in connection with the DSP
+library) to allow for the specification, simulation and performance testing
+of distributed protocols for almost any form of environment, including
+networks that allow hierarchical description, very fast networks and heterogeneous
+networks with mobile units. The visualisation facility of DSS will be enhanced
+so the user can see the protocol execution in very large networks in a
+meaningful way through, e.g., a hierarchical description and graph-drawing
+techniques. INTRACOM, and also INTRASOFT (the largest Greek software company),
+are interested in the new DSS and DSP library for (1) simulating and testing
+distributed banking applications, and (2) designing hardware for fast networks
+(routers and switches). </P>
+
+<UL>
+<P><IMG SRC="../images/new.gif" HSPACE=2 BORDER=1 HEIGHT=11 WIDTH=28>During
+the first year of ALCOM - IT, we established strong interactions with the
+industrial link INTRAKOM/INTRASOFT a major Telecom and Systems House conglomerate
+of Companies. After analysing the users' needs, we identified a large algorithmic
+area which is a subset of the area of on-line algorithms, namely the area
+of Call Admission Control (CAC) algorithms. Our group and, in general,
+the ALCOM team has had already shown significant research on the issue.
+Since the problem of Admission Control is currently addressing ATM network
+technology, we decided to explore the transfer of algorithmic engineering
+technology in that area by specializing and focusing the ALCOM-IT produced
+DSS tool in the above direction. The new DSS tool aims to provide:</P>
+
+<UL>
+<LI>an abstract, clean and semantically correct high level model of any
+ATM network and of the on-line calls for connections.</LI>
+
+<LI>a library of Call Admission Control algorithms in a form that allows
+them to he easily used by non - experts or to be used and tested by algorithms
+and networks designers.</LI>
+
+<LI>the capability for the user Industry to design new Call Control protocols
+and/or test such designs. </LI>
+</UL>
+</UL>
+
+<UL>
+<P>The ATM technology is considered as the state of the art network technology
+that is expected to play an important role in the future networks. The
+ATM networks are fast packet switching networks achieving their speed by
+avoiding flow control and error checking at the intermediate nodes in a
+transmission. ATM operates in a connected mode, but a connection can only
+be set up and serviced if sufficient resources are available in order to
+preserve the quality of service to the previous accepted connections. This
+function is controlled by the Call Admission Control algorithms running
+in the ATM switches.<BR>
+DSS provides an abstract model for the description of any ATM network which
+is independent of details of the underlying technology. It simulates the
+basic functionality of an ATM network which IS that in each time unit cells
+are produced from traffic generators or forwarded from the switches to
+their destination.<BR>
+Under the scope of DSS an ATM network topology consists of links, ATM switches,
+terminals (workstation) and call/traffic generators (network applications).
+The critical characteristics of the topology such as the size of the buffers
+of the ATM switch, the bandwidth of the links, the virtual paths and virtual
+circuits over the links and the traffic parameters can be defined by the
+user to approach the behaviour of the today's and the future network components.
+Each ATM switch is modelled as a Communicating Finite State Machine. A
+receipt of a CAC cell combined with its current state activates an action
+routine of the CAC algorithm.<BR>
+Emphasis is given in the abstract modelling of traffic generation. Adversarial
+traffic leads the on-line algorithms to their worst case competitive ratio
+of performance (measured against ideal off-line algorithms that know the
+future). The DSS cannot simulate worst-case adversaries but can approximate
+their behaviour by exploiting certain distribution of call request of high
+Kolmogorov complexity. The DSS can of course use externally (pragmatic)
+generated call sequences. <BR>
+
+<HR></P>
+</UL>
+
+<ADDRESS>Paolo Terrevoli<BR>
+<I>revised Jul 2 16:47:02 MET 1997</I></ADDRESS>
+
+</BODY>
+</HTML>

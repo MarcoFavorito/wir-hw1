@@ -1,0 +1,94 @@
+<html>
+<head>
+<title>Prova al calcolatore 15/4/2003 - Compito D</title>
+</head>
+<body>
+
+<h1>Prova al calcolatore</h1>
+
+<p>
+<b>
+Compito D<br>
+Durata: 1:45</b>
+</p>
+
+<p>
+Riempire il file <tt>StudenteId.txt</tt> con i propri
+dati.
+</p>
+
+<hr>
+
+<h4>Prima parte</h4>
+
+<p>
+L'universit&agrave; di Roma vuole informatizzare il suo
+sistema (attualmente cartaceo) di verbalizzazione degli
+esami. Per ogni esame, vanno rappresentati i seguenti
+dati:
+</p>
+
+<dl>
+
+<dt><tt>studente</tt>
+<dd>nome dello studente (una stringa)
+
+<dt><tt>professore</tt>
+<dd>nome del professore (una stringa)
+
+<dt><tt>voto</tt>
+<dd>il voto conseguito dallo studente (un intero)
+
+<dt><tt>crediti</tt>
+<dd>un intero che indica il numero di crediti
+corrispondenti a questo esame
+
+</dl>
+
+<p>
+Si realizzi quindi la classe <tt>Esame</tt> le cui variabili
+di istanza sono quelle riportate qui sopra. La classe deve
+essere incapsulata, ossia tutte le variabili di istanza
+devono essere private e devono essere presenti tutti i
+relativi metodi <tt>get</tt> e <tt>set</tt>. La classe deve
+inoltre avere il costruttore a quattro argomenti ed i metodi
+<tt>toString</tt> ed <tt>equals</tt>
+</p>
+
+<hr>
+
+<h4>Seconda parte</h4>
+
+<p>
+Si realizzi la classe <tt>Corso</tt>: ogni oggetto di questa
+classe rappresenta un insieme di oggetti <tt>Esame</tt>. I
+metodi che questa classe deve avere sono:
+</p>
+
+<dl>
+
+<dt><tt>Esame readEsame(BufferedReader br) throws IOException</tt>
+<dd>i dati di un oggetto <tt>Esame</tt> vengono letti dal
+<tt>BufferedReader</tt>; il metodo restituisce l'oggetto i
+cui dati sono quelli letti dal file; il metodo
+torna <tt>null</tt> se non &egrave; stato possibile leggere
+i dati dell'esame a causa della fine del file;
+
+<dt><tt>Corso(String nomefile) throws IOException</tt>
+<dd>il costruttore legge i dati degli oggetti <tt>Esame</tt>
+dal file il cui nome viene passato come argomento
+
+
+<dt><tt>void stampaBocciati()</tt>
+<dd>stampa i nomi degli studenti che sono stati bocciati
+
+<dt><tt>double media()</tt>
+<dd>calcola la media dei voti per i soli esami superati
+(quelli il cui voto &egrave; maggiore o uguale di 18; non si tenga
+conto del numero di crediti)
+
+</dl>
+
+</body>
+</html>
+

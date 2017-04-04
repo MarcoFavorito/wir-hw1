@@ -1,0 +1,38 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=windows-1252">
+<TITLE>1</TITLE>
+</HEAD>
+<BODY background="bgrnd.jpg">
+
+<B><FONT SIZE=5><P>3) Relazione is-a tra classi</P>
+</B></FONT><P ALIGN="RIGHT">Riferimenti: <B>[1a]</B> capitolo 5 e 13</P>
+<hr>
+<OL>
+
+<I><LI>Funzioni virtuali</LI>
+</I><P ALIGN="JUSTIFY">Vengono definite virtuali quelle funzioni che a tempo di esecuzione, invocano codice della classe di appartenenza del parametro attuale e non di quello formale.</P>
+<P ALIGN="CENTER">Analisi di <a href="punto.h"> punto.h</a> e <a href="test.cpp"> test.cpp</a></P>
+<P ALIGN="CENTER">Analisi di <a href="virtual.cpp"> virtual.cpp</a> e <a href="http://virtualdistr.cpp"> virtualdistr.cpp</a></P>
+<I><LI>Classi base astratte e funzioni virtuali pure</LI>
+</I><P ALIGN="JUSTIFY">La progettazione pu&ograve; portare alla definizione di classi che presentano un livello di astrazione talmente elevato che non ha senso prevedere istanze concrete. Queste classi vengono usate soltanto come base concettuale per la derivazione di gerarchie di classi (ad esempio la classe <I>Object</I> o <I>Applet</I> dei package java forniti da Sun). Per classi di questo tipo pu&ograve; risultare inutile l'implementazione di alcuni metodi in quanto destinati ad essere ridefiniti nelle classi derivate. Il C++ permette di definire un metodo "virtuale" senza specificarne il corpo</P>
+<I><P ALIGN="CENTER">virtual void G() = O;</P>
+</I><P ALIGN="JUSTIFY">Una classe che contiene almeno una <I>funzione virtuale pura</I>, per la quale non &egrave; quindi possibile definire oggetti, viene detta <I>classe base astratta</I>.</P>
+<I><LI>Relazione is-a tra due classi</LI></OL>
+<DIR>
+<DIR>
+
+</I><P ALIGN="JUSTIFY">Se la classe B deriva da A, risulta naturale poter utilizzare oggetti di tipo B in ogni contesto in cui &egrave; lecito utilizzare oggetti di tipo A.</P>
+<P ALIGN="CENTER">Analisi di <a href="AlbBinario.cpp"> AlbBinario.cpp</a> e <a href="AlbRic.cpp"> AlbRic.cpp</a></P>
+<P ALIGN="JUSTIFY">Operazioni critiche:</P></DIR>
+</DIR>
+
+
+<UL>
+
+<UL>
+<LI>Inserimento <FONT FACE="Wingdings">&agrave;</FONT> aggiunta del nuovo nodo come figlio della foglia dell'albero nel punto in cui la ricerca termina</LI><LI>Cancellazione <FONT FACE="Wingdings">&agrave;</FONT> se il nodo &egrave; una foglia viene direttamente eliminato. Se il nodo ha un solo figlio, il nodo viene eliminato ed il figlio viene eletto al suo posto. Se il nodo ha entrambi i figli, si estrae il suo successore e lo si sostituisce al nodo da eliminare</LI></UL>
+</UL>
+
+</BODY>
+</HTML>

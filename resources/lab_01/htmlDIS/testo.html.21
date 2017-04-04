@@ -1,0 +1,239 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+
+<!--Converted with LaTeX2HTML 99.1 release (March 30, 1999)
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>2001-06-18-html</TITLE>
+<META NAME="description" CONTENT="2001-06-18-html">
+<META NAME="keywords" CONTENT="2001-06-18-html">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1">
+<META NAME="Generator" CONTENT="LaTeX2HTML v99.1 release">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="2001-06-18-html.css">
+
+</HEAD>
+
+<BODY >
+
+<P>
+ 
+<DIV ALIGN="CENTER">
+  <B> 
+   Universit&#224; di Roma ``La Sapienza'' - Facolt&#224; di Ingegneria
+<BR>
+Corso di Fondamenti di Informatica - A.A.2000/2001
+<BR>
+Corso di Laurea in Ingegneria Elettronica N.O.</B>
+<BR>
+Appello del <B>18 giugno 2001</B> -- 1a prova scritta
+<BR>
+  <I>tempo a disposizione: 2 ore</I>
+
+</DIV>
+
+<P>
+ 
+<B>Problema 1 (18 punti)</B>
+
+<P>
+Un sito web mette a disposizione delle <I>play list</I> che sono file
+contenenti un elenco di brani mp3 con relativo link al sito dove il brano &#232;
+presente. In particolare ogni record di una play list ha la seguente struttura:
+
+<P>
+ 
+<DIV ALIGN="CENTER">
+  <I>nomebrano&nbsp;&nbsp;artista&nbsp;&nbsp;durata&nbsp;&nbsp;link</I>
+
+</DIV>
+
+<P>
+dove
+
+<UL>
+<LI><I>nomebrano</I> &#232; rappresentato da una stringa di al pi&#249; 100
+  caratteri (priva di spazi bianchi);</LI>
+<LI><I>artista</I> &#232; rappresentato da una stringa di al pi&#249; 25 caratteri
+  (priva di spazi bianchi);</LI>
+<LI><I>durata</I> &#232; rappresentato tramite minuti e secondi separati dal
+  carattere ``<TT>:</TT>'';</LI>
+<LI><I>link</I> &#232; rappresentato da una stringa di al pi&#249; 50 caratteri
+  (priva di spazi bianchi). </LI>
+</UL>
+
+<P>
+
+<OL>
+<LI>Progettare le strutture dati C da utilizzarsi per risolvere i punti&nbsp;2
+  e&nbsp;3.  L'eventuale uso di variabili globali va opportunamente motivato.
+
+<P>
+ </LI>
+<LI>Per evitare tempi di download per un singolo brano troppo lunghi, si &#232;
+  interessati a selezionare da una play list i brani di durata inferiore ad una
+  certa soglia.
+
+<P>
+Progettare una funzione C che prenda come parametri di ingresso
+  
+<UL>
+<LI>il nome <I>nf</I> di un file da leggere contenente una play list e</LI>
+<LI>una soglia <I>s</I>, espressa in minuti e secondi,
+  </LI>
+</UL>
+  e costruisca e restituisca in modo opportuno alla funzione chiamante una
+  lista collegata, rappresentata tramite strutture (allocate dinamicamente) e
+  puntatori, contenente tutti i record di <I>nf</I> relativi ai brani di
+  durata inferiore alla soglia <I>s</I>.  I brani devono comparire nella
+  lista nello <I>stesso ordine</I> in cui compaiono nel file.
+
+<P>
+ </LI>
+<LI>I lettori mp3 sono dotati di una memoria limitata e quindi possono
+  memorizzare solamente brani la cui durata complessiva non deve superare un
+  determinato valore massimo.
+
+<P>
+Progettare una funzione C che prenda come parametri di ingresso
+  
+<UL>
+<LI>una lista <I>l</I> di record come quella costruita al punto&nbsp;2 e</LI>
+<LI>una durata <I>d</I>, espressa in minuti e secondi,
+  </LI>
+</UL>
+  e modifichi <I>l</I> mantenendo i primi record di <I>l</I> la cui
+  <B>durata complessiva</B> &#232; minore di <I>d</I>, ed eliminando i record
+  rimanenti.  Si tenga presente che l'eliminazione dei record deve essere fatta
+  liberando la memoria occupata.</LI>
+</OL>
+
+<P>
+Ad esempio, se il file <I>nf</I> contiene la seguente play list:
+<PRE>
+
+all_you_need_is_love    beatles         04:30  http://www.beatles.com/mp3/all_you_need.mp3
+jumping_jack_flash      rolling_stones  03:22  http://www.rollingstones.com/downloads/jjf.mp3
+symphathy_for_the_devil rolling_stones  11:23  http://www.rollingstones.com/downloads/sd.mp3
+tangled_up_in_blue      bob_dylan       05:11  http://www.bobdylan.com/mp3/tub75.mp3
+penny_lane              beatles         05:20  http://www.beatles.com/mp3/penny_lane.mp3
+</PRE>
+
+<P>
+la funzione al punto&nbsp;2, se invocata con la soglia 5:15, deve costruire la
+seguente lista:
+<PRE>
+
+        +-----------+----+       +-----------+----+       +-----------+----+
+        |all_you... |    |       |jumping... |    |       |tangled... |   /|
+   ----&gt;|beatles    | ----------&gt;|rolling... | ----------&gt;|bob_dylan  |  / |
+        |4 30 http..|    |       |3 22 http..|    |       |5 11 http..| /  |
+        +-----------+----+       +-----------+----+       +-----------+----+
+</PRE>
+Inoltre, se la funzione al punto&nbsp;3 viene invocata passandole come parametri
+tale lista e la durata 8:00, deve eliminare dalla lista solo l'ultimo elemento.
+Se la durata &#232; invece 3:50, deve eliminare dalla lista tutti gli elementi.
+
+<P>
+ 
+<B>Suggerimento:</B> per i calcoli sui tempi, si consiglia di trasformare
+minuti e secondi in secondi.
+
+<P>
+
+<HR>
+
+<P>
+ 
+<DIV ALIGN="CENTER">
+  <B> 
+   Universit&#224; di Roma ``La Sapienza''
+<BR>
+Facolt&#224; di Ingegneria
+<BR>
+Corso di Fondamenti di Informatica - A.A.2000/2001
+<BR>
+Corso di Laurea in Ingegneria Elettronica N.O.</B>
+<BR>
+Appello del <B>18 giugno 2001</B> -- 2a prova scritta
+<BR>
+  <I>tempo a disposizione: 1 ora</I>
+
+</DIV>
+
+<P>
+ 
+<BR>
+
+<P>
+ 
+<B>Problema 2 (4 punti)</B>
+
+<P>
+Descrivere un algoritmo di ordinamento a scelta (utilizzando pseudocodice o
+codice C) e discuterne la complessit&#224; computazionale.  Fornire un esempio di
+vettore per cui l'algoritmo esibisce il comportamento del caso peggiore.
+
+<P>
+ 
+<BR>
+
+<P>
+ 
+<B>Problema 3 (4 punti)</B>
+
+<P>
+Si rappresentino in complemento a due il proprio giorno di nascita e le ultime
+due cifre del proprio anno di nascita e se ne calcolino la somma e la
+differenza.  Utilizzare il minimo numero di bit necessari per non avere
+overflow nelle operazioni.
+
+<P>
+ 
+<BR>
+
+<P>
+ 
+<B>Problema 4 (4 punti)</B>
+
+<P>
+Si consideri il seguente programma C:
+
+<P>
+<PRE>
+
+#include &lt;stdio.h&gt;
+
+int cosafa (int x)
+{
+  if (x == 0)
+     return 0;
+  else if (x % 2 == 0)
+     return x + cosafa(x-2);
+  else
+     return cosafa(x-1);
+}
+
+int main(void)
+{
+  printf("%d\n", cosafa(5));
+}
+</PRE>
+
+<UL>
+<LI>Descrivere cosa fa (non come lo fa) la funzione <TT>cosafa</TT>.</LI>
+<LI>Che valore viene stampato dal programma?  Mostrare l'evoluzione della
+  pila dei record di attivazione.</LI>
+<LI>Fornire almeno un valore del parametro attuale per il quale l'attivazione
+  della funzione <TT>cosafa</TT> non termina.</LI>
+</UL>
+
+</BODY>
+</HTML>

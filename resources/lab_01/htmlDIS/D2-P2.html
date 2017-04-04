@@ -1,0 +1,143 @@
+<!-- saved from url=(0022)http://internet.e-mail -->
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML><HEAD><TITLE>Progetto D2I - Prodotto &quot;Codice Cost-k-decomp&quot;</TITLE><!--
+
+-->
+<META http-equiv=Content-Type content="text/html; charset=iso-8859-1">
+<STYLE type=text/css>A:link {
+	TEXT-DECORATION: none
+}
+A:visited {
+	TEXT-DECORATION: none
+}
+A:hover {
+	COLOR: red; TEXT-DECORATION: underline
+}
+</STYLE>
+
+<META content="Microsoft FrontPage 4.0" name=GENERATOR></HEAD>
+<BODY bgColor=#cccccc leftMargin=5 topMargin=10 marginwidth="5" 
+marginheight="10">
+<CENTER>
+<TABLE cellSpacing=0 cols=2 cellPadding=0 width="98%" border=0>
+  <TBODY>
+  <TR>
+    <TD align=right width="19%">
+      <TABLE height=65 width="100%" border=1>
+        <TBODY>
+        <TR borderColor=#000099 bgColor=#99ccff>
+          <TD height=94>
+            <DIV align=center><B><FONT size=7><EM><FONT 
+            color=#000080>D2I</FONT></EM></FONT></B></DIV></TD></TR></TBODY></TABLE></TD>
+    <TD align=left width="81%">
+      <TABLE height=83 width="100%" border=1>
+        <TBODY>
+        <TR align=left borderColor=#000099 bgColor=#99ccff>
+          <TD height=94>
+            <DIV align=center><FONT size=6><EM><DFN><FONT color=#0000ff 
+            size=5><B><FONT size=+3><FONT color=#000080>Integrazione, 
+            Warehousing e Mining di sorgenti 
+            eterogenee</FONT></FONT></B></FONT></DFN></EM></FONT></DIV></TD></TR></TBODY></TABLE></TD></TR></TBODY></TABLE>
+<TABLE cellSpacing=0 cols=2 cellPadding=0 width="98%" border=0>
+  <TBODY>
+  <TR><!--fine prima colonna-->
+    <TD vAlign=top align=middle colSpan=2>
+      <DIV style="MARGIN-TOP: 20pt" align=justify>
+      <DIV style="MARGIN-TOP: 20pt" align=justify>
+      <TABLE height=45 width="100%">
+        <TBODY>
+        <TR align=left borderColor=#000099 bgColor=#000099>
+          <TD height=46><font face="Arial" color="#fff907" size="5">Prototipo per l'ottimizzazione 
+          di interrogazioni - <b> Cost-k-decomp</b></font></TD></TR></TBODY></TABLE>
+      <H3>Alfredo Mazzitelli e <B>Francesco Scarcello</B></H3>&nbsp; 
+      <CENTER>
+      <TABLE width="80%" border=1>
+        <TBODY>
+        <TR>
+          <TD vAlign=top><B>Tema</B></TD>
+          <TD><A 
+            href="http://www.dis.uniroma1.it/~lembo/D2I/Temi/tema2.html"><U>Tema 
+            2:&nbsp;Progettazione e interrogazione di Data 
+        Warehouse</U></A></TD></TR>
+        <TR>
+          <TD vAlign=top><B>Codice</B></TD>
+          <TD>D2-P2</TD></TR>
+        <TR>
+          <TD vAlign=top><B>Data</B></TD>
+          <TD>13 settembre 2002</TD></TR>
+        <TR>
+          <TD vAlign=top><B>Tipo di prodotto</B></TD>
+          <TD>Prodotto software</TD></TR>
+        <TR>
+          <TD vAlign=top><B>Unità responsabile</B></TD>
+          <TD>CS</TD></TR>
+        <TR>
+          <TD vAlign=top><B>Unità coinvolte</B></TD>
+          <TD>CS</TD></TR>
+        <TR>
+          <TD vAlign=top><B>Autori</B></TD>
+          <TD>Alfredo Mazzitelli e Francesco Scarcello</TD></TR>
+        <TR>
+          <TD vAlign=top><B>Autore da contattare</B></TD>
+          <TD>Francesco Scarcello <BR>Università della Calabria<BR>
+          <a href="mailto:scarcello@unical.it">scarcello@unical.it</a></TD></TR>
+        <tr>
+<td VALIGN=top height="1"><b>Presentazione prototipo</b></td>
+<td height="1"><a href="file:///F:/public_html/D2I/Prodotti/deliverable3/../../Riunioni/Riunione_10_02/Scarcello-D2-P2.pdf"><u>D2-P2</u></a>
+    </td>
+        </tr>
+        <TR>
+          <TD vAlign=top><B>Documentazione in linea&nbsp;</B></TD>
+          <TD><a href="http://wwwinfo.deis.unical.it/~frank/Hypertrees/D2I/"><U>http://wwwinfo.deis.unical.it/~frank/Hypertrees/D2I/</U></a></TD></TR></TBODY></TABLE></CENTER>&nbsp; 
+
+      <P>
+      <HR color=#000099 height="15">
+
+      <CENTER>
+      <H3><B>Descrizione</B></H3></CENTER>
+      <P><i>Cost-k-decomp</i> è un prototipo sviluppato per l'ottimizzazione di
+      interrogazioni, che combina la tecnica di decomposizione di interrogazioni 
+      Hypertree, basata sulla struttura delle interrogazioni, con tecniche più 
+      tradizionali di ottimizzazione, basate sui parametri quantitativi della 
+      base di dati. Studiato per la valutazione efficiente di interrogazioni con 
+      molte relazioni coinvolte e su grosse moli di dati, il protitipo si rivela 
+      particolarmente utile per il popolamento e l'aggiornamento dei data 
+      warehouse. Forniti in input una interrogazione e le
+      informazioni quantitative sulle relazioni ad essa associate,
+      l'applicazione calcola una <i>hypertree decomposition</i> ottimale basata
+      sul costo ed il relativo piano di valutazione. Il modello di costo
+      sfruttato dal prototipo si basa sulle informazioni quantitative di
+      cardinalità e selettività degli attributi delle relazioni coinvolte. Se
+      non esiste alcuna decomposizione di <i>width</i> limitata dal valore <i>k</i>
+      fissato in input, <i>Cost-k-decomp</i> segnala 
+      che per l'istanza considerata&nbsp; non è possibile utilizzare questa 
+      tecnica. L'output è costituito da un piano di valutazione 
+      dell'interrogazione, espresso sotto forma di viste (con <i>Hint </i>per 
+      Oracle<i>),</i> e da un albero di decomposizione, espresso nel formato 
+      standard <i>GML</i> (<i>Graph Modelling
+      Language</i>), che fornisce informazioni sulle stime dei costi di 
+      valutazione. In particolare, la radice è etichettata con la stima del 
+      costo di valutazione di tutta l'interrogazione fornita in input, calcolata 
+      in base alle informazioni statistiche disponibili. </P> 
+      <HR color=#000099 height="15">
+
+      <CENTER>
+      <H3><B>Ambiente di sviluppo e di esecuzione</B></H3></CENTER>Sviluppato in 
+      Visual C++ 6.0 e GNU gcc 2.95.2. <BR>Eseguibile in ambienti Windows 9x/NT e Unix-Like. <BR>
+      <P></P>
+      <HR color=#000099 height="15">
+      &nbsp; 
+      <P><FONT color=#0000ff><a href="javascript:history.back(1)"><U>Back</U></a></FONT> 
+      </P></DIV></DIV>
+  <TR>
+    <TD bgColor=#cccccc colSpan=2>&nbsp;</TD></TR>
+  <TR>
+    <TD bgColor=#000099 colSpan=2>&nbsp;</TD></TR>
+  <TR>
+    <TD bgColor=#cccccc colSpan=2>&nbsp;</TD></TR>
+  <TR>
+    <TD bgColor=#cccccc colSpan=2 height=38>
+      <DIV align=center><FONT face=Arial color=#4e4b4a size=1><B>Sito a cura di 
+      Domenico Lembo<BR></B></FONT><A href="mailto:lembo@dis.uniroma1.it"><FONT 
+      face=Arial color=#000099 
+    size=1>lembo@dis.uniroma1.it</FONT></A><BR></DIV></TD></TR><!--fine seconda colonna--></TBODY></TABLE></CENTER></BODY></HTML>

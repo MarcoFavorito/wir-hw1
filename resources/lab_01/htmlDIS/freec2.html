@@ -1,0 +1,186 @@
+<html> 
+<head>
+<title>LINGUAGGI C</title>
+</head>
+
+<body>
+<H2 style="color: green; text-align: center">
+Alcuni ambienti di programmazione C
+</H2>
+ 
+<P style="margin-left: 2em; margin-right: 2em">
+Per poter far girare programmi C ci vuole un ambiente di programmazione C,
+cio&egrave un sistema software che, una volta attivato, ci permetta di
+scrivere, compilare, eseguire e correggere programmi C.
+</P>
+
+<P style="margin-left: 2em; margin-right: 2em">
+In fondo elenco alcuni ambienti di 
+programmazione C, che possono essere usati su un PC
+(con sistema operativo Windows) e che sono liberamente reperibili 
+sulla rete (piu' uno che vi puo' essere dato in laboratorio di informatica.
+</P>
+
+<P style="margin-left: 2em; margin-right: 2em">
+Tenendo presente che l'esame di Informatica per chimici si 
+svolge in laboratorio usando il TURBO C, 
+scegliete quello che pi&ugrave vi piace, scaricatelo e
+istallatelo sulla vostra macchina.
+</P>
+
+
+<BR>
+Nel seguito i sistemi sono indicati in ordine di "mio consiglio":
+se potete raggiungere il TurboC, usate quello; senn&ograve provate a
+prendere il DJGPP, etc...
+</P>
+
+<P style="margin-left: 2em; margin-right: 2em">
+Comunque, se avete un'opinione gia' radicata e preferite un sistema
+piuttosto che un altro, fate pure: l'unica cosa importante e' riuscire
+a far girare programmi.
+</P>
+
+<p>
+<hr size=2>
+<TABLE BORDER="1" CELLPADDING="2" CELLSPACING="2" WIDTH="90%" align="center">
+<TR>
+ <TD ALIGN=CENTER>
+   Presso il laboratorio di Informatica 
+   "Paolo Ercoli", Via Tiburtina 205
+   (<A HREF="http://tibur.dis.uniroma1.it">http://tibur.dis.uniroma1.it</A>)
+   e' disponibile il borland TURBOC.
+  <P>
+   Chi riesce a frequentare il laboratorio, o a procurarsi li' una copia 
+   temporanea del TURBOC, avra' a disposizione un ambiente di 
+   programmazione C/C++ di buona qualita',  
+   senza troppi fronzoli e con il quale si puo' lavorare agevolmente 
+   per il corso.
+  </P>
+  <P>
+Questo e' l'ambiente usato durante le esercitazioni autoguidate 
+e durante l'esame in laboratorio; quindi, se vi esercitate a casa e 
+non in laboratorio,
+<UL>
+<LI>
+la cosa migliore e' prendere il turboc dal laboratorio 
+(--> borsista di turno) e usarlo sul pc di casa;
+<LI>
+se sul pc di casa avete un ambiente diverso potete ovviamente esecitarvi 
+alla grande su quello, ma qualche visita in laboratorio per 
+impratichirsi con il turboc 
+sarebbe (stata) molto consigliabile.
+</UL>
+</P>
+</TD>
+</TR>
+</TABLE>
+
+<p>
+<hr size=2>
+<TABLE BORDER="1" CELLPADDING="2" CELLSPACING="2" WIDTH="90%" align="center">
+<TR>
+ <TD>
+   DJGPP (DJ's GNU Programming Platform), e' il progetto che ha portato 
+   il softwae GNU (originalmente disponibile sotto unix) sulle macchine 
+   MS-DOS, MS-WINDOWS.
+   Iniziatore del progetto e' stato 
+   <A HREF="http://www.delorie.com/djgpp/">DJ Delorie</A>.
+
+   <P>
+   E' "free software".
+   </P> 
+
+   <P>
+   DJGPP non va bene per calcolatori troppo vecchi 
+   (da 486 in poi dovrebbe andare bene)
+   </p>
+   <P>
+   <hr>
+   Se volete scaricare al volo l'ambiente minimo per la programmazione in C,
+   <A HREF="http://ftp.dis.uniroma1.it/pub/marte/linguaggiC/">ecco 
+   qua</A> (prendere Djgpp-min.zip 5.238MB)
+   <OL>
+     <LI>
+      Scaricate, scompattate, cambiate nome alla directory che 
+         esce fuori (da Djgpp-min in DJGPP)
+         e spostatela in C: (in modo che sia la directory C:\DJGPP)
+     <LI>
+      Poi 
+      <OL>
+        <LI> aggiungete nell'autoexec.bat la riga
+             <BR> 
+             SET DJGPP=C:/DJGPP/DJGPP.ENV
+        <LI> e aggiungete al PATH la directory C:\DJGPP\BIN
+             <BR> 
+             Quindi la riga di PATH sara' simile a 
+             <BR>
+             PATH=C:\windows;c:\dos;c:\djgpp\bin.
+      </OL>
+     <LI> poi riavviate.
+    </OL>
+    <LI>
+    Nella directory bin c'e' "rhide.exe" 
+    che fa partire l'ambiente di programmazione.  
+    <BR>
+    La documentazione sull'interfaccia grafica RHIDE sta nella directory doc.
+  </OL>
+  </p>
+  <P>
+  <hr>
+  Dopo aver installato il pacchetto minimale, 
+  per lavorae anche in C++, o per aggiungere vari altri utili pacchetti al
+  sistema di programmazione, o per risolvere problemi eventuali
+  nell'istallazione sotto WiN2000 o WIN Milleniium (problemi che 
+  non e' detto sopravvengano, comunque)
+  vi suggerisco di andare alla ottima pagina gestita dai colleghi del 
+  <A HREF="http://www-lia.deis.unibo.it/Courses/FondA-TLC/Strumenti/djgpp/djgpp.htm">LIA-BOLOGNA</A>,
+  che hanno fatto un lavoro molto approfondito, che vale la pena vedere in 
+  originale ...
+  <BR>
+  Preso un pacchetto, scompattatelo e distribuite i file dentro 
+  le opportune sottodirectory della directory minimale DJGPP 
+  che avete visto sopra.
+ </TD>
+</TR>
+</TABLE>
+
+<p>
+<hr size=2>
+<TABLE BORDER="1" CELLPADDING="2" CELLSPACING="2" WIDTH="80%" align="center">
+<TR>
+<TD ALIGN=CENTER>
+Il compilatore (per PC con WINDOWS)
+borland C++, messo a disposizione free direttamente 
+dal produttore, sta 
+<A HREF="http://www.borland.com/bcppbuilder/freecompiler/cppc55steps.html">QUI-BCPP</A>)
+	</TD>
+</TR>
+</TABLE>
+
+<p>
+<hr size=2>
+<TABLE BORDER="1" CELLPADDING="2" CELLSPACING="2" WIDTH="80%" align="center">
+<TR>
+<TD ALIGN=CENTER>
+Un compilatore carino, installabile semplicemnete su un PC, va sotto il 
+nome di LCC, scaricabile 
+<A HREF="http://ftp.dis.uniroma1.it/pub/marte/linguaggiC/">QUI-LCC</A>
+(prendere lccwin32.zip).
+<p>
+Lccwin32.exe, che si ottiene scompattando lccwin32.zip,
+ e' proprio il programma si installazione. 
+<p>
+Dopo l'installazione, cercate WEDIT nella directory BIN;
+attivandolo si entra nell'ambiente di programmazione.	</TD>
+</TR>
+</TABLE>
+</P>
+
+<p>
+<hr>
+<ADDRESS>
+<FONT SIZE=-1>
+Marco Temperini
+</body> 
+</html>

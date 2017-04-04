@@ -1,0 +1,630 @@
+<html>
+<head>
+<title>Modificatori di accesso e incapsulamento</title>
+      <link rel="top" href="../lezioni.html">
+      <link rel="up" href="../lezioni.html">
+      <link rel="contents" href="../lezioni.html">
+      <link rel="previous" href="../costruttori/costruttori.html">
+      <link rel="next" href="../quarta/quarta.html">
+</head>
+
+<body>
+
+<h1>Modificatori di accesso e incapsulamento</h1>
+
+<p>
+Finora:
+</p>
+
+<ul>
+
+<li>tutti i metodi possono accedere a tutte le
+componenti degli oggetti
+
+<li>tutti i metodi possono invocare tutti gli
+altri metodi
+
+</ul>
+
+<p>
+Modificatori di accesso: possono impedire
+l'accesso (modifica/uso) delle componenti
+e l'invocazione dei metodi.
+</p>
+
+<hr>
+
+
+<h4>I modificatori</h4>
+
+<p>
+Si applicano a: classi, componenti e metodi.
+</p>
+
+<p>
+Dicono chi pu&ograve; usare una certa cosa.
+</p>
+
+<dl>
+
+<dt><tt>public</tt>
+<dd>tutti possono accedere
+
+<dt><tt>protected</tt>
+<dd>possono accedere la classi dello stesso
+pacchetto (directory, nel nostro caso) e
+tutte le sottoclassi
+
+<dt>nessun modificatore
+<dd>possono accedere tutte le classi dello
+stesso pacchetto (incluse le sottoclassi, ma
+solo se stanno nello stesso pacchetto)
+
+<dt><tt>private</tt>
+<dd>si pu&ograve; accedere solo all'interno
+della classe
+
+</dl>
+
+<p>
+Finora, non abbiamo usato modificatori
+</p>
+
+<p>
+Di solito, si usano solo <tt>public</tt> e
+<tt>private</tt>
+</p>
+
+<hr>
+
+
+<h4>Usare i modificatori</h4>
+
+<p>
+Tipicamente: si usano sulle componenti.
+</p>
+
+<pre>
+class Esempio {
+  private int x;
+}
+</pre>
+
+<p>
+Un programma non pu&ograve; accedere alla
+componente <tt>x</tt> dell'oggetto:
+</p>
+
+<pre>
+class Prova {
+  public static void main(String args[]) {
+    Esempio e;
+    e=new Esempio();
+
+    e.x=12;
+
+    System.out.println(e.x);
+  }
+}
+</pre>
+
+<p>
+Genera due errori:
+</p>
+
+<pre>
+Prova.java:6: x has private access in Esempio
+    e.x=12;
+     ^
+Prova.java:8: x has private access in Esempio
+    System.out.println(e.x);
+                        ^
+2 errors
+</pre>
+
+<hr>
+
+
+<h4>Componenti private</h4>
+
+<p>
+Se una componente &egrave; privata, si pu&ograve;
+accedere solo all'interno della classe.
+</p>
+
+<p>
+Come faccio a mettere un intero in <tt>e.x</tt>?
+</p>
+
+<p>
+Come faccio a vedere il valore memorizzato?
+</p>
+
+<p>
+Posso accedere a <tt>this.x</tt> dentro i metodi
+della classe.
+</p>
+
+<hr>
+
+
+<h4>Incapsulamento</h4>
+
+<pre>
+class Esempio {
+  private int x;
+
+  void setX(int n) {
+    this.x=n;
+  }
+
+  int getX() {
+    return this.x;
+  }
+}
+</pre>
+
+<p>
+Impedisco l'accesso <i>diretto</i>
+ alla componente dell'oggetto
+</p>
+
+<p>
+Permetto la modifica/uso della componente
+attraverso i metodi.
+</p>
+
+<hr>
+
+
+<h4>Usare un classe incapsulata</h4>
+
+<p>
+Ogni volta che voglio memorizzare un valore
+in <tt>e.x</tt>, faccio <tt>e.setX(valore)</tt>.
+</p>
+
+<p>
+Per vedere il valore di <tt>e.x</tt>, uso
+<tt>e.getX()</tt>
+</p>
+
+<pre>
+class Prova {
+  public static void main(String args[]) {
+    Esempio e;
+    e=new Esempio();
+
+    // e.x=12;
+    e.setX(12);
+
+    // System.out.println(e.x);
+    System.out.println(e.getX());
+  }
+}
+</pre>
+
+<p>
+Le linee commentate davano errore.
+</p>
+
+<hr>
+
+
+<h4>Vantaggi dell'incapsulamento</h4>
+
+<ul>
+
+<li>posso associare azioni alla modifica
+delle componenti
+
+<li>posso impedire la modifica di
+componenti in certe condizioni
+
+<li>all'esame viene richiesta una classe
+incapsulata
+
+</ul>
+
+<hr>
+
+
+<h4>Azioni sulla modifica</h4>
+
+<p>
+Verifica tipica: non tutti i valori sono
+accettabili.
+</p>
+
+<p>
+Esempio: l'et&agrave; deve essere un numero
+positivo.
+</p>
+
+<pre>
+class Studente {
+  private String nome;
+  private int eta;
+  private double media;
+
+  void setEta(int n) {
+    if(n&gt;0)
+      this.eta=n;
+    else {
+      System.out.println("Errore");
+      System.exit(1);
+    }
+  }
+
+  int getEta() {
+    return this.eta;
+  }
+
+  ...
+}
+</pre>
+
+<hr>
+
+
+<h4>Oggetti immutabili</h4>
+
+<p>
+Posso decidere che, una volta costruito,
+l'oggetto non si pu&ograve; pi&ugrave;
+cambiare:
+</p>
+
+<pre>
+class Studente {
+  private String nome;
+  private int eta;
+  private double media;
+
+  Studente(String nome, int eta, double media) {
+    this.nome=nome;
+    this.eta=eta;
+    this.media=media;
+  }
+
+  // metodi getNome, getEta, getMedia
+}
+</pre>
+
+<p>
+Quando creo l'oggetto, posso decidere i valori
+delle sue componenti.
+</p>
+
+<p>
+Da questo momento in poi, non si possono
+pi&ugrave; modificare.
+</p>
+
+<hr>
+    
+ 
+<h4>Alcune modifiche</h4>
+
+<p>
+Posso vietare le modifiche solo su singoli
+campi, e permettere modifiche a pi&ugrave;
+campi insieme:
+</p>
+
+<pre>
+class Studente {
+  private String nome;
+  private int eta;
+  private double media;
+
+  ...
+
+  void setMedia(double m) {
+    this.media=m;
+  }
+
+  void setNomeEta(String nome, int eta) {
+    this.nome=nome;
+    this.eta=eta;
+  }
+
+  // metodi getNome, getEta, getMedia
+}
+
+</pre>
+
+<p>
+In questo modo, posso cambiare <tt>nome</tt> ed
+<tt>eta</tt> insieme, ma non uno solo dei due.
+</p>
+
+<p>
+Invece, posso cambiare <tt>media</tt> da solo.
+</p>
+
+<hr>
+
+
+<h4>Permettere l'accesso solo in certe condizioni</h4>
+
+<p>
+Esempio: non posso inserire la media se non
+ho scritto il nome.
+</p>
+
+<pre>
+class Studente {
+  private String nome;
+  private int eta;
+  private double media;
+
+  ...
+
+  void setMedia(double m) {
+    if(this.nome!=null)
+      this.media=m;
+    else {
+      System.out.println("Errore");
+      System.exit(1);
+    }
+  }
+
+  ...
+}
+</pre>
+
+<p>
+<b>Nota:</b> gli errori in genere si gestiscono
+con le eccezioni.
+</p>
+
+<hr>
+
+
+<h4>Esercizio</h4>
+
+<p>
+Modificare la classe <tt>Segmento</tt> con
+le coordinate di un punto che &egrave; il mediano.
+</p>
+
+<pre>
+class Segmento {
+  int x1;
+  int y1;
+
+  int x2;
+  int y2;
+
+  void mediano() {
+    xm=(this.x1+this.x2)/2;
+    ym=(this.y1+this.y2)/2;
+  }
+}
+</pre>
+
+<p>
+Assicurarsi che il punto sia <i>sempre</i> il
+mediano fra gli altri due.
+</p>
+
+<hr>
+
+
+<h4>Soluzione</h4>
+
+<p>
+Aggiungo due campi privati
+</p>
+
+<p>
+Aggiungo il metodo per metterci le
+coordinate del mediano.
+</p>
+
+<pre>
+class Segmento {
+  int x1;
+  int y1;
+
+  int x2;
+  int y2;
+
+  private int xm;
+  private int ym;
+}
+</pre>
+
+<p>
+I programmi non possono usare <tt>xm</tt>
+ed <tt>ym</tt>
+</p>
+
+<p>
+Il problema &egrave; che potrei fare modifiche
+ad <tt>x1</tt> senza aggiornare il centro.
+</p>
+
+<hr>
+
+
+<h4>Incapsulamento</h4>
+
+<p>
+Tutte le componenti sono private.
+</p>
+
+<p>
+L'accesso (lettura e scrittura) avviene
+attraverso metodi.
+</p>
+
+<pre>
+class Segmento {
+  private int x1;
+  private int y1;
+
+  private int x2;
+  private int y2;
+
+  private int xm;
+  private int ym;
+
+  int getX1() {
+    return this.x1;
+  }
+
+  void setX1(int val) {
+    this.x1=val;
+    this.mediano();
+  }
+
+  ...
+
+  void mediano() {
+    xm=(this.x1+this.x2)/2;
+    ym=(this.y1+this.y2)/2;
+  }
+}
+</pre>
+
+<hr>
+
+
+<h4>Vantaggio dell'incapsulamento</h4>
+
+<p>
+Posso modificare le componenti solo
+attraverso metodi.
+</p>
+
+<p>
+Nei metodi, ci posso scrivere operazioni
+ausiliare da fare.
+</p>
+
+<p>
+Nell'esempio, ogni volta che una componente
+viene modificata, si calcola di nuovo il
+mediano.
+</p>
+
+<pre>
+  void setX1(int val) {
+    this.x1=val;
+    this.mediano();
+  }
+</pre>
+
+<p>
+Senza incapsulamento, non c'era modo di obbligare
+chi scrive il programma a invocare il metodo
+<tt>mediano</tt> ogni volta che fa
+<tt>s.x1=qualcosa</tt>
+</p>
+
+<hr>
+
+
+<h4>Accesso ed ereditariet&agrave;</h4>
+
+<p>
+Cosa succede se cambio i diritti di
+accesso in una sottoclasse?
+</p>
+
+<dl>
+
+<dt>variabili
+<dd>quando definisco una variabile con
+lo stesso nome, sto creando un'altra
+variabile: si pu&ograve; fare
+
+<dt>metodi
+<dd>quando definisco un metodo con lo
+stesso nome, sto ridefinendo un metodo;
+si pu&ograve; dare un diritto di accesso
+pi&ugrave; liberale ma non pi&ugrave;
+restrittivo
+
+</dl>
+
+<hr>
+
+
+<h4>Estendere i diritti</h4>
+
+<p>
+Si pu&ograve; sempre fare:
+</p>
+
+<pre>
+class Sopra {
+  private int y;
+
+  private int getY() {
+    return this.y;
+  }
+}
+</pre>
+
+<pre>
+class Sotto extends Sopra {
+  public int y;
+
+  public int getY() {
+    return this.y;
+  }
+}
+</pre>
+
+<p>
+Funziona tutto.
+</p>
+
+<hr>
+
+
+<h4>Restringere i diritti</h4>
+
+<p>
+Si pu&ograve; fare con le variabili, perch&egrave;
+tanto sono variabili nuove (e le vecchie esistono
+ancora)
+</p>
+
+<p>
+Non si pu&ograve; fare con i metodi:
+</p>
+
+<pre>
+class Sopra {
+  public int x;
+
+  public int getX() {
+    return this.x;
+  }
+}
+</pre>
+
+<pre>
+class Sotto extends Sopra {
+  private int x;	// ok
+
+  private int getX() {  // errore!
+    return this.x;
+  }
+}
+</pre>
+
+<p>
+La definizione del metodo <tt>getX</tt> in
+<tt>Sotto</tt> d&agrave; errore.
+</p>
+
+</body>
+</html>
+
+
+

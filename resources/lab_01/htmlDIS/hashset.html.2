@@ -1,0 +1,1465 @@
+<html>
+<head>
+<title>Gli HashSet</title>
+</head>
+
+<body>
+
+<h1>Gli HashSet</h1>
+
+<p>
+Tipo predefinito che rappresenta insiemi
+di <tt>Object</tt>
+</p>
+
+<hr>
+
+
+<h4>Cosa succede se...</h4>
+
+<p>
+Posso mettere un riferimento a un <tt>Point</tt> in
+una variabile <tt>Object</tt>
+</p>
+
+<pre>
+Object o=new Point(12,3);
+</pre>
+
+<blockquote>
+<i>
+&egrave; quasi tutto come se l'oggetto fosse un
+<tt>Object</tt>
+</i>
+</blockquote>
+
+<p>
+Unica eccezione:
+</p>
+
+<blockquote>
+<i>
+se invoco un metodo di <tt>Object</tt>
+che &egrave; ridefinito in <tt>Point</tt>, viene invocato
+il metodo definito in <tt>Point</tt>
+</i>
+</blockquote>
+
+<p>
+Cosa succede se faccio queste cose:
+</p>
+
+<dl>
+
+<dt><tt>o.x</tt>
+<dd>non funziona (<tt>x</tt> non &egrave; una componente
+di <tt>Object</tt>)
+
+<dt><tt>o.move(...)</tt>
+<dd>non funziona (il metodo <tt>move</tt> non
+&egrave; un metodo di <tt>Object</tt>)
+
+<dt><tt>o.equals(...)</tt>
+<dd>questo metodo sta sia in <tt>Object</tt> che in
+<tt>Point</tt>:<br>
+viene invocato l'<tt>equals</tt> di <tt>Point</tt>
+
+</dl>
+
+<p>
+Funziona tutto come se l'oggetto fosse
+un <tt>Object</tt>,<br>
+tranne quando si invoca un
+metodo che sta sia in <tt>Object</tt> che in
+<tt>Point</tt>
+</p>
+
+<p>
+Dopo un cast <tt>Point p=(Point) o</tt>:<br>
+variabile <tt>Point</tt> con dentro un riferimento
+a un <tt>Point</tt>:<br>
+funziona tutto come al solito
+</p>
+
+<hr>
+
+
+<h4>Cosa hanno in comune</h4>
+
+<p>
+Array, liste e insiemi
+</p>
+
+<p>
+Hanno in comune: una variabile rappresenta
+un insieme di oggetti
+</p>
+
+<hr>
+
+
+<h4>Cosa hanno di diverso</h4>
+
+<p>
+Differenze
+</p>
+
+<dl>
+
+<dt>operazioni elementari
+<dd>negli array non si pu&ograve; inserire un
+elemento in mezzo: per farlo, devo creare un
+nuovo array e poi spostare gli elementi successivi
+
+<dt>ordine
+<dd>negli array e nella liste c'&egrave; un ordine
+degli elementi (primo elemento, secondo elemento, ecc)
+Negli insiemi non c'&egrave; nessun ordine
+
+</dl>
+
+<hr>
+
+
+<h4>Il tipo <tt>HashSet</tt></h4>
+
+<p>
+Rappresenta insiemi non ordinati di elementi
+</p>
+
+<p>
+Non esiste un primo, secondo, ecc. elemento
+</p>
+
+<p>
+Creazione di un insieme vuoto:
+</p>
+
+<pre>
+  HashSet h;
+  h=new HashSet();
+</pre>
+
+<hr>
+
+
+<h4>Metodi sugli insiemi</h4>
+
+<dl>
+
+<dt><tt>add()</tt>
+<dd>aggiunge un elemento (se non &egrave; gi&agrave;
+presente
+
+<dt><tt>contains(Object o)</tt>
+<dd>vede se l'insieme contiene un elemento
+<tt>equals</tt> ad <tt>o</tt>
+
+<dt><tt>remove(Object o)</tt>
+<dd>rimuovo l'oggetto, se presente
+
+<dt><tt>isEmpty()</tt>
+<dd>vede se l'insieme &egrave; vuoto
+
+<dt><tt>size()</tt>
+<dd>ritorna il numero di elementi
+
+</dl>
+
+<p>
+Nota: non c'&egrave; un ordine degli elementi
+</p>
+
+<p>
+Quindi, non si pu&ograve; dire ``inserisci in
+prima posizione'' oppure ``trova l'elemento
+in ultima posizione''
+</p>
+
+<hr>
+
+
+<h4>Esercizio</h4>
+
+<p>
+Creare un insieme che contiene i numeri
+interi da <tt>-5</tt> a <tt>5</tt>
+</p>
+
+<hr>
+
+
+<h4>Soluzione</h4>
+
+<p>
+Dato che negli <tt>HashSet</tt> ci posso
+solo mettere oggetti, devo usare il tipo
+<tt>Integer</tt>
+</p>
+
+<hr>
+
+
+<h4>Implementazione</h4>
+
+<p>
+Ciclo da <tt>-5</tt> a <tt>5</tt>
+</p>
+
+<p>
+Ogni valore lo metto in un oggetto
+<tt>Integer</tt>
+</p>
+
+<pre>
+import java.util.*;
+
+class Valori {
+  public static void main(String args[]) {
+    HashSet s;
+    s=new HashSet();
+
+    int i;
+    Integer v;
+
+    for(i=-5; i&lt;=5; i++) {
+      v=new Integer(i);
+      s.add(v);
+    }
+
+    System.out.println(s);
+  }
+}
+</pre>
+
+<hr>
+
+
+<h4>Cosa stampa?</h4>
+
+<p>
+L'istruzione <tt>println(s)</tt> converte
+l'insieme in una stringa, e poi la stampa
+</p>
+
+<p>
+Viene stampato:
+</p>
+
+<pre>
+[5, -1, 4, -2, 3, -3, 2, -4, 1, -5, 0]
+</pre>
+
+<p>
+Gli elementi non sono nell'ordine in cui
+li ho messi!
+</p>
+
+<hr>
+
+
+<h4>Insiemi e ordine</h4>
+
+<p>
+Per definizione, in un insieme non devo
+tenere conto dell'ordine in cui gli elementi
+vengono inseriti
+</p>
+
+<p>
+<tt>{1, 2, 3}</tt> e <tt>{2, 1, 3}</tt>
+sono lo stesso insieme
+</p>
+
+<p>
+Sono due stringhe che rappresentano lo stesso
+insieme
+</p>
+
+<p>
+Il metodo <tt>toString</tt> degli insiemi
+d&agrave; <i>una</i> stringa fra quelle che
+rappresentano l'insieme
+</p>
+
+<hr>
+
+
+<h4>Esercizio</h4>
+
+<p>
+Scrivere un metodo statico che verifica se un
+insieme contiene due interi consecutivi fra
+<tt>-10</tt> e <tt>10</tt>
+</p>
+
+<pre>
+  static boolean consecutivi(HashSet s) {
+    ...
+  }
+</pre>
+
+<hr>
+
+
+<h4>Soluzione</h4>
+
+<p>
+Non abbiamo ancora visto come fare cicli su
+tutti gli elementi 
+</p>
+
+<p>
+Facciamo un ciclo da <tt>-10</tt> a <tt>9</tt>
+</p>
+
+<p>
+A ogni passo, verifichiamo la presenza
+</p>
+
+<pre>
+  static boolean consecutivi(HashSet s) {
+    int i;
+    Integer v, t;
+
+    for(i=-10; i&lt;=9; i++) {
+      v=new Integer(i);
+      t=new Integer(i+1);
+
+      if(s.contains(v) &amp;&amp; s.contains(t))
+        return true;
+    }
+
+    return false;
+  }
+</pre>
+
+<hr>
+
+
+<h4>Esempio</h4>
+
+<p>
+Se viene passato l'insieme:
+</p>
+
+<pre>
+[3, 1, 8, 0]
+</pre>
+
+<p>
+Cosa restituisce il metodo?
+</p>
+
+<hr>
+
+
+<h4>Risposta</h4>
+
+<p>
+<tt>true</tt>
+</p>
+
+<p>
+L'insieme <tt>[3, 1, 8, 0]</tt> contiene
+i numeri <tt>0</tt> e <tt>1</tt> che sono
+consecuitivi
+</p>
+
+<hr>
+
+
+<h4>Come fare cicli</h4>
+
+<p>
+Si usa un meccanismo che esiste anche sulle
+liste
+</p>
+
+<p>
+Si crea un <i>iteratore</i>, che &egrave; un oggetto
+che serve a fare cicli sugli insiemi
+</p>
+
+<hr>
+
+
+<h4>Esempio di ciclo</h4>
+
+<p>
+Questo ciclo stampa gli elementi dell'insieme <tt>s</tt>
+</p>
+
+<pre>
+    Iterator it;
+    it=s.iterator();
+
+    while(it.hasNext()) {
+      v=(Integer) it.next();
+      System.out.println(v);
+    }
+</pre>
+
+<p>
+Si pu&ograve; fare la stessa cosa anche se
+<tt>s</tt> &egrave; una <tt>LinkedList</tt>
+</p>
+
+<hr>
+
+
+<h4>Cosa fa un iteratore</h4>
+
+<p>
+Crea un ordine fra gli elementi dell'insieme,
+e permette di passare da un elemento a quello
+dopo
+</p>
+
+<pre>
+  it=s.iterator();
+</pre>
+
+<p>
+Crea un iteratore sull'insieme <tt>s</tt>
+</p>
+
+<pre>
+  it.next();
+</pre>
+
+<p>
+Trova il prossimo elemento dell'insieme
+</p>
+
+<pre>
+  it.hasNext()
+</pre>
+
+<p>
+Ritorna <tt>true</tt> se ci sono altri
+elementi nell'insieme
+</p>
+
+<hr>
+
+
+<h4>Schema di ciclo</h4>
+
+<p>
+Per fare la stessa cosa su tutti gli elementi
+di una lista o di un array:
+</p>
+
+<pre>
+  for(i=0; i&lt;l.size(); i++) {
+    elemento=l.get(i);
+
+    opera su elemento
+  }
+</pre>
+
+<p>
+Per liste e insiemi, si pu&ograve; fare
+il ciclo con un iteratore:
+</p>
+
+<pre>
+  Iterator it;
+  it=s.iterator();
+
+  while(it.hasNext()) {
+    elemento=it.next();
+
+    opera su elemento
+  }
+</pre>
+
+<p>
+Per gli insiemi, non esiste ordinamento, quindi non
+c'&egrave; il metodo <tt>get</tt>.
+</p>
+
+<p>
+L'unico modo di fare cicli per gli insiemi &egrave;
+quello di usare un iteratore
+</p>
+
+<hr>
+
+
+<h4>Esempio</h4>
+
+<p>
+Dato un insieme di punti, stampare solo
+quelli che stanno nel primo quadrante
+</p>
+
+<pre>
+  static void primoQuadrante(HashSet s) {
+    ...
+  }
+</pre>
+
+<hr>
+
+
+<h4>Algoritmo risolutivo</h4>
+
+<pre>
+per ogni elemento dell'insieme
+  se e' nel primo quadrante, stampalo
+</pre>
+
+<p>
+Nelle liste, la parte
+"<tt>per ogni elemento</tt>" si pu&ograve;
+implementare con un iteratore oppure con
+il ciclo solito
+</p>
+
+<p>
+Per gli insiemi, posso solo usare l'iteratore
+</p>
+
+<hr>
+
+
+<h4>Soluzione</h4>
+
+<p>
+Creo un iteratore, e lo uso nel ciclo
+</p>
+
+<p>
+Per vedere le coordinate, devo fare il cast
+</p>
+
+<pre>
+  static void primoQuadrante(HashSet s) {
+    Point p;
+
+    Iterator i;
+    i=s.iterator();
+
+    while(i.hasNext()) {
+      p=(Point) i.next();
+
+      if(p.x&gt;=0 &amp;&amp; p.y&gt;=0)
+        System.out.println(p);
+    }
+  }
+</pre>
+
+<hr>
+
+
+<h4>Altro esercizio</h4>
+
+<p>
+Verificare se un insieme di interi contiene
+due numeri consecutivi
+</p>
+
+<pre>
+  static boolean consecutivi(HashSet s) {
+    ...
+  }
+</pre>
+
+<p>
+Il metodo di prima lo faceva solo per interi
+da <tt>-10</tt> a <tt>10</tt>
+</p>
+
+<p>
+Ora lo voglio per tutti gli interi
+</p>
+
+<p>
+Non si pu&ograve; fare un ciclo su tutti i
+possibili valori interi
+</p>
+
+<hr>
+
+
+<h4>Soluzione</h4>
+
+<p>
+Si fa un ciclo su tutti gli elementi dell'insieme
+</p>
+
+<p>
+Per ogni elemento, se c'&egrave; anche quello
+pi&ugrave; grande di uno, si ritorna <tt>true</tt>
+</p>
+
+<p>
+Se questo non &egrave; mai vero, si ritorna <tt>false</tt>
+</p>
+
+<hr>
+
+
+<h4>Implementazione del metodo</h4>
+
+<pre>
+  static boolean consecutivi(HashSet s) {
+    int i;
+    Integer v, t;
+
+    Iterator it;
+    it=s.iterator();
+
+    while(it.hasNext()) {
+      v=(Integer) it.next();
+      i=v.intValue();
+      t=new Integer(i+1);
+
+      if(s.contains(t))
+        return true;
+    }
+
+    return false;
+  }
+</pre>
+
+<hr>
+
+
+<h4>Metodi dell'insieme e dell'iteratore</h4>
+
+<p>
+Attenzione a non confondere <tt>s</tt> e <tt>it</tt>,
+e usare i metodi sull'oggetto sbagliato:
+</p>
+
+<dl>
+
+<dt><tt>s.contains(...)</tt>
+<dd>la verifica di contenimento, cos&iacute; come
+l'inserimento, cancellazione, ecc. vanno fatte
+sull'insieme
+
+<dt><tt>it.hasNext()</tt> e <tt>it.next()</tt>
+<dd>questi due sono i metodi degli iteratori:
+sono quelli che permettono di fare il ciclo
+(trova l'elemento successivo, e verifica se ci
+sono elementi successivi)
+
+</dl>
+
+<hr>
+
+
+<h4>Iteratori e rimozione</h4>
+
+<p>
+Se:
+</p>
+
+<ul>
+
+<li>si crea un iteratore con <tt>it=s.iterator()</tt>
+
+<li>si modifica la lista con <tt>s.add</tt> oppure
+<tt>s.remove</tt>
+
+</ul>
+
+<p>
+L'iteratore diventa non pi&ugrave; valido (non si
+pu&ograve; pi&ugrave; usare)
+</p>
+
+<p>
+Quindi, dopo la modifica non si pu&ograve; pi&ugrave;
+invocare <tt>it.hasNext()</tt> oppure
+<tt>it.next()</tt>
+</p>
+
+<hr>
+
+
+<h4>Esercizio</h4>
+
+<p>
+Eliminare tutti gli elementi di valore pari
+da un insieme
+</p>
+
+<hr>
+
+
+<h4>Soluzione sbagliata</h4>
+
+<p>
+Faccio il solito ciclo
+</p>
+
+<p>
+Quando trovo un elemento pari, lo elimino
+</p>
+
+<pre>
+  static void eliminaPari(HashSet s) {
+    Integer v;
+
+    Iterator i;
+    i=s.iterator();
+
+    while(i.hasNext()) {
+      v=(Integer) i.next();
+      if(v.intValue()%2==0)
+        s.remove(v);
+    }
+  }
+</pre>
+
+<p>
+Perch&egrave; non funziona?
+</p>
+
+<hr>
+
+
+<h4>Modifiche e iteratori</h4>
+
+<p>
+Dopo una modifica a un insieme, tutti i suoi
+iteratori diventano non validi
+</p>
+
+<p>
+Invocare un metodo su un iteratore non
+valido produce un errore
+</p>
+
+<p>
+Nel metodo di prima, dopo aver fatto
+<tt>s.remove(v)</tt>, si proseguiva il
+ciclo, per cui venivano fatte le invocazioni
+<tt>i.hasNext()</tt> e <tt>i.next()</tt>,
+che producono un errore
+</p>
+
+<hr>
+
+
+<h4>Prima soluzione corretta</h4>
+
+<p>
+Ogni volta che viene invocato <tt>s.iterator()</tt>
+viene creato un nuovo iteratore
+</p>
+
+<p>
+Questo iteratore riparte dall'inizio
+</p>
+
+<p>
+La soluzione: ogni volta che trovo un elemento
+pari, lo elimino e ricreo l'iteratore
+</p>
+
+<pre>
+  static void eliminaPari(HashSet s) {
+    Integer v;
+
+    Iterator i;
+    i=s.iterator();
+
+    while(i.hasNext()) {
+      v=(Integer) i.next();
+      if(v.intValue()%2==0) {
+        s.remove(v);
+        i=s.iterator();
+      }
+    }
+  }
+</pre>
+
+<hr>
+
+
+<h4>Seconda soluzione corretta</h4>
+
+<p>
+Richiede due metodi
+</p>
+
+<ul>
+
+<li>verifica se ci sono elementi pari
+
+<li>elimina primo elemento pari
+
+</ul>
+
+<p>
+Intanto: implementare questi due metodi
+</p>
+
+<hr>
+
+
+<h4>Verifica se ci sono elementi pari</h4>
+
+<p>
+Solita cosa: ciclo su tutti gli elementi
+</p>
+
+<pre>
+  static boolean contienePari(HashSet s) {
+    Integer v;
+
+    Iterator i;
+    i=s.iterator();
+
+    while(i.hasNext()) {
+      v=(Integer) i.next();
+      if(v.intValue()%2==0)
+        return true;
+    }
+
+    return false;
+  }
+</pre>
+
+<hr>
+
+
+<h4>Eliminazione primo elemento pari</h4>
+
+<p>
+Solito ciclo: quando trovo un elemento
+pari lo elimino
+</p>
+
+<p>
+Dopo l'eliminazione, esco
+</p>
+
+<pre>
+  static void eliminaPrimoPari(HashSet s) {
+    Integer v;
+
+    Iterator i;
+    i=s.iterator();
+
+    while(i.hasNext()) {
+      v=(Integer) i.next();
+      if(v.intValue()%2==0) {
+        s.remove(v);
+        break;
+      }
+    }
+  }
+</pre>
+
+<p>
+Attenzione: se invoco un metodo su <tt>i</tt>
+dopo una modifica, viene dato errore in
+esecuzione
+</p>
+
+<p>
+Verificare che non vengano fatte, per sbaglio,
+invocazioni di metodo sugli iteratori dopo una
+modifica
+</p>
+
+<hr>
+
+
+<h4>Cosa ci faccio con questi due metodi?</h4>
+
+<p>
+Domanda: ora che ho realizzato i due metodi,<br>
+come faccio il metodo di eliminazione di tutti
+gli elementi?
+</p>
+
+<hr>
+
+
+<h4>Soluzione</h4>
+
+<p>
+Devo seguire questo algoritmo:
+</p>
+
+<pre>
+elimina primo elemento pari
+elimina primo elemento pari
+elimina primo elemento pari
+elimina primo elemento pari
+...
+</pre>
+
+<p>
+Quando non ho pi&ugrave; elementi pari, mi
+posso anche fermare
+</p>
+
+<hr>
+
+
+<h4>Implementazione</h4>
+
+<p>
+Per eliminare tutti gli elementi pari
+da un insieme:
+</p>
+
+<p>
+Finch&egrave; ci sono elementi pari,
+elimino il primo
+</p>
+
+<pre>
+  static void eliminaPari(HashSet s) {
+    while(contienePari(s))
+      eliminaPrimoPari(s);
+  }
+</pre>
+
+<hr>
+
+
+<h4>Insiemi di oggetti arbitrari</h4>
+
+<p>
+Si possono fare insiemi di <tt>Point</tt>,
+<tt>String</tt>, <tt>Integer</tt>, ecc.
+</p>
+
+<p>
+Se creo una nuova classe, come <tt>Studente</tt>,
+questa deve avere due metodi:
+</p>
+
+<dl>
+
+<dt><tt>equals</tt>
+<dd>confronta due oggetti
+
+<dt><tt>hashCode</tt>
+<dd>d&agrave; un intero che viene usato
+dalla classe
+
+</dl>
+
+<hr>
+
+
+<h4>Metodo <tt>hashCode</tt></h4>
+
+<p>
+Non ci interessa sapere a cosa serve
+</p>
+
+<p>
+Questo qui sotto funziona:
+</p>
+
+<pre>
+class NomeClasse {
+  ...
+
+  public int hashCode() {
+    return 0;
+  }
+}
+</pre>
+
+<p>
+Usate sempre questo metodo, esattamente come
+&egrave; scritto
+</p>
+
+<p>
+Nella classe ci deve stare sia <tt>equals</tt> che
+<tt>hashCode</tt>!
+</p>
+
+<hr>
+
+
+<h4>Cosa succede se non lo metto?</h4>
+
+<p>
+Non viene dato nessun errore,<br>
+n&egrave; in compilazione, n&egrave; in esecuzione
+</p>
+
+<p>
+Cosa cambia?
+</p>
+
+<dl>
+
+<dt>con <tt>hashCode</tt>
+<dd>i metodi lavorano correttamente
+
+<dt>senza <tt>hashCode</tt>
+<dd>i metodi lavorano come se <tt>equals</tt>
+fosse quello di <tt>Object</tt>
+
+</dl>
+
+<p>
+Senza <tt>hashCode</tt>, il metodo <tt>contains</tt>
+verifica se c'&egrave; un oggetto <tt>==</tt> a quello
+passato, invece di verificare se c'&egrave; un oggetto
+<tt>equals</tt>
+</p>
+
+<hr>
+
+
+<h4>Attenzione a <tt>equals</tt>!</h4>
+
+<p>
+Ci vuole <i>anche</i> il metodo <tt>equals</tt>
+</p>
+
+<pre>
+class Studente {
+  String nome;
+  int esami;
+  double media;
+
+  public String toString() {
+    return "["+this.nome+" "+
+           this.esami+" "+
+           this.media+"]";
+  }
+
+  public boolean equals(Object o) {
+    if(o==null)
+      return false;
+
+    if(this.getClass()!=o.getClass())
+      return false;
+
+    Studente s;
+    s=(Studente) o;
+
+    if(s.nome==null) {
+      if(this.nome!=null)
+        return false;
+    }
+    else
+      if(!s.nome.equals(this.nome))
+        return false;
+
+    return ((s.esami==this.esami) &amp;&amp;
+            (s.media==this.media));
+  }
+
+  public int hashCode() {
+    return 0;
+  }
+}
+</pre>
+
+<hr>
+
+
+<h4>Un esempio complesso</h4>
+
+<p>
+Aggiungere a <tt>Studente</tt> un metodo statico
+<tt>leggiStudente</tt> che legge uno studente da
+un <tt>BufferedReader</tt>
+(ogni componente sta su una linea)
+</p>
+
+<p>
+Scrivere un metodo statico <tt>leggiFile</tt> della
+classe <tt>Studente</tt> che legge un intero file, il
+cui nome viene passato come argomento, e resituisce
+un oggetto <tt>HashSet</tt> che contiene gli studenti
+letti
+</p>
+
+<hr>
+
+
+<h4>Soluzione</h4>
+
+<p>
+Dato che serve un <tt>HashSet</tt>, devo avere i metodi
+<tt>equals</tt> e <tt>hashCode</tt>:
+</p>
+
+<pre>
+class Studente {
+  String nome;
+  int esami;
+  double media;
+
+  public String toString() {
+    return "["+this.nome+" "+
+           this.esami+" "+
+           this.media+"]";
+  }
+
+  public boolean equals(Object o) {
+    if(o==null)
+      return false;
+
+    if(this.getClass()!=o.getClass())
+      return false;
+
+    Studente s;
+    s=(Studente) o;
+
+    return ((s.nome.equals(this.nome)) &amp;&amp;
+            (s.esami==this.esami) &amp;&amp;
+            (s.media==this.media));
+  }
+
+  public int hashCode() {
+    return 0;
+  }
+
+  // altri metodi
+}
+</pre>
+
+<p>
+Il metodo <tt>toString</tt> va messo sempre,
+perch&egrave; &egrave; comodo
+</p>
+
+<hr>
+
+
+<h4>Lettura di uno studente da file</h4>
+
+<p>
+Il metodo prende come paramentro un
+<tt>BufferedReader</tt>
+</p>
+
+<p>
+Deve solo leggere tre linee, e convertirle
+se necessario
+</p>
+
+<p>
+Dato che uso i file, serve l'<tt>import</tt>,
+e devo fare <tt>throws IOException</tt>
+</p>
+
+<pre>
+import java.io.*;
+
+class Studente {
+  // componenti e metodi
+
+  static Studente leggiStudente
+    (BufferedReader b)
+    throws IOException {
+    Studente t;
+    t=new Studente();
+
+    String s;
+
+    s=b.readLine();
+    if(s==null)
+      return null;
+    t.nome=s;
+
+    s=b.readLine();
+    if(s==null)
+      return null;
+    t.esami=Integer.parseInt(s);
+
+    s=b.readLine();
+    if(s==null)
+      return null;
+    t.media=Double.parseDouble(s);
+
+    return t;
+  }
+</pre>
+
+<p>
+Sembra lungo, ma fa solo questo:
+legge tre linee, per ogni linea controlla
+se vale <tt>null</tt> (e in questo caso,
+ritorna <tt>null</tt>), la converte se
+necessario, e la mette nell'oggetto creato
+</p>
+
+<hr>
+
+
+<h4>Perch&egrave; tornare <tt>null</tt>?</h4>
+
+<p>
+Il metodo <tt>leggiStudente</tt> ritorna
+<tt>null</tt> quando il file &egrave; finito
+</p>
+
+<p>
+Il metodo/programma che lo invoca, pu&ograve;
+vedere il valore di ritorno per capire se
+il file &egrave; finito
+</p>
+
+<p>
+Esempio: il metodo <tt>leggiFile</tt>
+(prox pagina) usa questo fatto per capire
+quando non ci sono pi&ugrave; oggetti da
+leggere
+</p>
+
+<hr>
+
+
+<h4>Lettura di un <tt>HashSet</tt></h4>
+
+<p>
+Qui il parametro &egrave; il <i>nome</i> di
+un file
+</p>
+
+<p>
+Quindi, il <tt>FileReader</tt> e il
+<tt>BufferedReader</tt> vanno creati
+</p>
+
+<p>
+Dato che sono operazioni su file, bisogna
+mettere <tt>throws IOException</tt>
+</p>
+
+<p>
+Dato che serve il tipo <tt>HashSet</tt>,
+devo anche fare <tt>import java.util.*;</tt>
+</p>
+
+<pre>
+import java.io.*;
+import java.util.*;
+
+class Studente {
+  // componenti e altri metodi
+
+  static HashSet leggiFile(String nomefile)
+    throws IOException {
+    FileReader r=new FileReader(nomefile);
+    BufferedReader b=new BufferedReader(r);
+
+    HashSet h;
+    h=new HashSet();
+
+    Studente s;
+
+    while(true) {
+      s=leggiStudente(b);
+      if(s==null)
+        break;
+      h.add(s);
+    }
+
+    return h;
+  }
+}
+</pre>
+
+<p>
+Si tratta soltanto di leggere oggetti <tt>Studente</tt>
+da file, e metterli nell'insieme, fino a che non si
+legge un oggetto <tt>null</tt>
+</p>
+
+<hr>
+
+
+<h4>Un programma di prova</h4>
+
+<p>
+Leggere il file <tt>roma1.txt</tt> in un <tt>HashSet</tt>
+</p>
+
+<p>
+Stampare l'insieme (un oggetto per linea)
+</p>
+
+<p>
+Contare quanti studenti hanno dato meno di
+cinque esami
+</p>
+
+<p>
+Stampare i dati dello studente <tt>Totti</tt>, se
+si trova nell'insieme
+</p>
+
+<hr>
+
+
+<h4>Soluzione</h4>
+
+<p>
+Anche se non &egrave; richiesto: conviene fare un
+metodo per ognuna delle cose da fare
+</p>
+
+<p>
+Metodo di stampa:
+</p>
+
+<pre>
+  static void stampa(HashSet s) {
+    Iterator i;
+    i=s.iterator();
+
+    while(i.hasNext())
+      System.out.println(i.next());
+  }
+</pre>
+
+<hr>
+
+
+<h4>Trovare studenti con pochi esami</h4>
+
+<p>
+Metodo che trova gli studenti con meno di
+un certo numero di esami:
+</p>
+
+<pre>
+  static int contaMeno(HashSet s, int quanti) {
+    Iterator i;
+    i=s.iterator();
+
+    int conta=0;
+
+    Studente q;
+
+    while(i.hasNext()) {
+      q=(Studente) i.next();
+      if(q.esami&lt;quanti)
+        conta++;
+    }
+
+    return conta;
+  }
+</pre>
+
+<p>
+Perch&egrave; il parametro <tt>quanti</tt>?
+</p>
+
+<p>
+&Egrave; bene cercare di fare metodi generali,
+perch&egrave; si possono riusare
+</p>
+
+<p>
+In questo caso: l'unica cosa che cambiava era
+che: <tt>if(q.esami&lt;5)</tt> diventa
+<tt>if(q.esami&lt;quanti)</tt>
+</p>
+
+<p>
+Se la differenza &egrave; piccola conviene cercare
+di scrivere metodi pi&ugrave; generali
+</p>
+
+<p>
+Se la generalit&agrave; comporta una complicazione,
+meglio il metodo non generale
+</p>
+
+<hr>
+
+
+<h4>Stampa i dati di <tt>Totti</tt></h4>
+
+<p>
+Faccio un ciclo di scansione
+</p>
+
+<p>
+Se il nome dello studente &egrave; <tt>Totti</tt>,
+stampo tutto lo studente
+</p>
+
+<pre>
+  static void stampaStudente(HashSet s, String nome) {
+    Iterator i;
+    i=s.iterator();
+
+    Studente q;
+
+    while(i.hasNext()) {
+      q=(Studente) i.next();
+      if(q.nome.equals(nome))
+        System.out.println(q);
+    }
+  }
+</pre>
+
+<p>
+Notare anche qui: fare un metodo generale comporta
+solo una piccola complicazione (un parametro in
+pi&ugrave;, e poi la modifica della condizione
+dell'<tt>if</tt>)
+</p>
+
+<hr>
+
+
+<h4>Il metodo <tt>main</tt></h4>
+
+<p>
+Il programma completo &egrave; fatto cos&iacute;
+</p>
+
+<pre>
+import java.util.*;
+import java.io.*;
+
+class ProvaStudente {
+  // altri metodi
+
+  public static void main(String args[])
+    throws IOException {
+    HashSet tutti;
+    tutti=Studente.leggiFile("roma1.txt");
+
+    stampa(tutti);
+
+    System.out.println(contaMeno(tutti, 5));
+
+    stampaStudente(tutti, "Totti");
+  }
+</pre>
+
+<p>
+Notare che il metodo <tt>main</tt> invoca il metodo
+<tt>Studente.leggiFile</tt> che opera con file.
+</p>
+
+<p>
+Quindi, devo fare <tt>throws IOException</tt>
+</p>
+
+<p>
+In generale: se si presenta l'errore di compilazione
+<tt>unreported exception...</tt>, basta aggiungere
+<tt>throws</tt>
+</p>
+
+</body>
+</html>
+

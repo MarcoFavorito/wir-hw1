@@ -1,0 +1,119 @@
+<!DOCTYPE html PUBLIC "-//w3c//dtd html 4.0 transitional//en">
+<html>
+<head>
+   <title>Tecniche di Programmazione -- Esercitazione 7</title>
+</head>
+<body>
+
+<center>
+  <p><B>Tecniche di Programmazione</B> <BR>
+    <B>Corsi di Laurea in Ingegneria Informatica e Automatica</B></p>
+  <p><b>A.A. 2003/04</b></p>
+  <p><b>Esercitazione 7</b></p>
+  <p><b>Sportello -- Esercizio di esame</b> </p>
+  </center>
+
+<hr>
+
+<p>Si vogliono gestire le code di prenotazioni presso sportelli per servizi
+anagrafici.  Nell'ambito di uno sportello, ad ogni prenotazione &egrave;
+associato un numero d'ordine, e i numeri d'ordine devono essere associati alle
+prenotazioni in modo univoco e progressivo, nell'ordine in cui vengono
+effettuate.  Le prenotazioni devono essere servite (estratte dalla coda) in
+base al loro numero d'ordine.
+
+<hr>
+<p><b>Domanda 1.</b>
+Si realizzi una classe <code>Prenotazione</code>, i cui oggetti mantengono le
+seguenti informazioni su una prenotazione:
+<ul>
+  <li>il nome della persona che la ha effettuata (una stringa);
+  <!-- <li>il nome del servizio per il quale la persona si &egrave; prenotata
+      (una stringa); -->
+  <li>il numero d'ordine della prenotazione (un intero).
+</ul>
+
+<p>Della classe sono d'interesse le seguenti funzionalit&agrave;:
+<ul>
+  <li>creazione di una prenotazione, dati il nome della persona
+      <!-- il nome del servizio, -->
+      ed il numero d'ordine;
+  <li><i>persona</i>, che restituisce il nome della persona;
+  <!-- <li><i>servizio</i>, che restituisce il nome del servizio; -->
+  <li><i>numero</i>, che restituisce il numero d'ordine;
+  <li>restituzione di una stringa che rappresenta le informazioni associate ad
+      una prenotazione (su un'unica linea), realizzata effettuando overriding
+      del metodo <code>toString</code> di <code>Object</code>.
+</ul>
+
+<p>Soluzione: <a href="soluzione/Prenotazione_scheletro.java">scheletro della classe</a>,
+<a href="soluzione/Prenotazione.java">classe <code>Prenotazione</code></a></p>
+
+
+<hr>
+<p><b>Domanda 2.</b>
+Si realizzi una classe <code>Sportello</code> in cui ogni oggetto che
+&egrave; istanza della classe mantiene l'insieme di prenotazioni effettuate
+presso uno sportello.
+
+<p>Della classe sono d'interesse le seguenti funzionalit&agrave;:
+<ul>
+  <li>creazione di uno sportello, in cui inizialmente la coda di prenotazioni
+      &egrave; vuota;
+
+  <li><i>prenota</i>, che dato il nome di una persona,
+      <!-- ed il nome di un servizio, -->
+      inserisce una nuova prenotazione in coda presso lo sportello, e
+      restituisce il numero d'ordine associato alla prenotazione;
+
+  <li><i>estrai</i>, che estrae dalla coda presso lo sportello la prossima
+      prenotazione
+      <!-- (indipendentemente dal tipo di servizio richiesto) -->
+      e la restituisce;  se la coda &egrave; vuota lancia una eccezione;
+
+  <!-- <li><i>estrai</i>, che preso il nome di un servizio, estrae dalla coda
+      presso lo sportello la prossima prenotazione per quel servizio, e la
+      restituisce;  se non vi &egrave; alcuna prenotazione presso lo sportello
+      per quel servizio, viene lanciata una eccezione;
+  -->
+
+  <li><i>rinuncia</i>, che preso un numero d'ordine, elimina dalla coda la
+      prenotazione con quel numero d'ordine; se non vi &egrave; una
+      prenotazione con quel numero d'ordine, lancia una eccezione;
+
+  <li><i>tempoAttesa</i>, che preso un numero d'ordine, restituisce il numero
+      di prenotazioni che precedono quella col numero d'ordine specificato; se
+      non vi &egrave; una prenotazione col numero d'ordine specificato, lancia
+      una eccezione;
+
+  <li>restituzione di una stringa che rappresenta la coda di prenotazioni (con
+      una prenotazione per linea), realizzata effettuando overriding del
+      metodo <code>toString</code> di <code>Object</code>.
+</ul>
+
+<p>Soluzione: <a href="soluzione/Sportello_rappresent_oggetti.java">rappresentazione
+degli oggetti</a>,
+<a href="soluzione/Sportello_scheletro.java">scheletro della classe</a>,
+<a href="soluzione/Sportello.java">classe <code>Sportello</code></a>,
+<a href="soluzione/EccezioneSportello.java">classe <code>EccezioneSportello</code></a></p>
+
+<hr>
+<p><b>Domanda 3.</b>
+Si realizzi una classe cliente della classe <code>Sportello</code>
+contenente un metodo statico <code>leggiDaFile</code> che, dati una stringa
+<i>f</i> che rappresenta il nome di un file contenente nomi di persona, uno per
+riga, ed uno <i>Sportello</i> <i>s</i>, effettui per ciascuna persona nel file
+<i>f</i> una prenotazione presso lo sportello <i>s</i>, e restituisca un array
+di interi contenente i numeri d'ordine associati alle prenotazioni.</p>
+
+<p><a href="soluzione/ClienteSportello.java">Soluzione</a>
+
+<hr>
+
+<p>
+<em>Nota:</em> si provi il codice sviluppato utilizzando la classe definita nel
+file <a href="Main.java">Main.java</a> ed il file di esempio
+<a href="paperopoli.txt">paperopoli.txt</a>.
+
+</body>
+</html>

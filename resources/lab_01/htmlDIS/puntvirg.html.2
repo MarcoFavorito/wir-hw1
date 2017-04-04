@@ -1,0 +1,152 @@
+<html>
+<head>
+<title>Nota sul punto e virgola</title>
+      <link rel="top" href="../lezioni.html">
+      <link rel="up" href="../lezioni.html">
+      <link rel="contents" href="../lezioni.html">
+      <link rel="previous" href="../applet/applet.html">
+      <link rel="next" href="../cast/cast.html">
+</head>
+
+<body>
+
+<h1>Nota sul punto e virgola</h1>
+
+<p>
+Questo programma compila?
+</p>
+
+<pre>
+class Prova {
+  public static void main(String args[]) {
+    int a=-5;
+
+    if(a&gt;0);
+      System.out.println("Il numero e' positivo");
+  }
+}
+</pre>
+
+<hr>
+
+
+<h4>Risposta</h4>
+
+<p>
+Il programma viene compilato senza errori.
+</p>
+
+<p>
+Cosa viene stampato?
+</p>
+
+<hr>
+
+
+<h4>Risposta</h4>
+
+<p>
+Viene stampato che il numero &egrave;
+positivo.
+</p>
+
+<hr>
+
+
+<h4>Intepretazione della sintassi</h4>
+
+<pre>
+  if(condizione)
+    istruzione;
+
+  altre istruzioni;
+</pre>
+
+<p>
+Nel nostro caso:
+</p>
+
+<pre>
+  if(a&gt;0)
+    ;
+
+  System.out.println("Il numero e' positivo");
+</pre>
+
+<p>
+L'istruzione dell'<tt>if</tt> viene interpretata
+come istruzione vuota.
+</p>
+
+<p>
+Cosa succede: se <tt>a</tt> &egrave; maggiore di zero,
+esegue l'istruzione vuota. In ogni caso, stampa il
+messaggio.
+</p>
+
+<p>
+Si pu&ograve; sempre scrivere <tt>;</tt> in
+un programma (istruzione che non fa niente).
+</p>
+
+<hr>
+
+
+<h4>Punto e virgola dopo il <tt>while/for</tt></h4>
+
+<pre>
+  for(i=0; i&lt;10; i++) ;
+    System.out.println(i);
+</pre>
+
+<p>
+Viene interpretato come:
+</p>
+
+<pre>
+  for(...)
+    ;
+
+  System.out.println(i);
+</pre>
+
+<p>
+Viene fatto il ciclo, ma poi si stampa <tt>i</tt>
+solo alla fine.
+</p>
+
+<hr>
+
+
+<h4>Soluzione generale</h4>
+
+<p>
+Usare le parentesi graffe anche per una singola
+istruzione.
+</p>
+
+<pre>
+  if(a&gt;0) {
+    System.out.println("Il numero e' positivo");
+  }
+</pre>
+
+<p>
+Questo risolve anche il problema dell'ambiguit&agrave;
+sintattica dell'<tt>if</tt>
+</p>
+
+<pre>
+  for(i=0; i&lt;10; i++) {
+    System.out.println(i);
+  }
+</pre>
+
+<p>
+Mettere parentesi in pi&ugrave; (se sono nella posizione
+corretta!) non &egrave; un errore.
+</p>
+
+</body>
+</html>
+

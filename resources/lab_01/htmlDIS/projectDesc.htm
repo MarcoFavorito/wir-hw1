@@ -1,0 +1,182 @@
+<html>
+<head>
+<title>DISatDIS: project description</title>
+</head>
+
+<body>
+
+<a name="top">
+<h1>DISatDIS: project description</h1>
+
+<!-- menu -->
+<p>
+<h3>Summary</h3>
+<ol>
+	<li><b><a href="#ps">Problem Studied</a></b></li>
+	<li><b><a href="#of">Our framework</a></b></li>
+	<li><b><a href="#os">Our solution</a></b></li>
+	<li><b><a href="#pg">Project Goal</a></b></li>
+	<li><b><a href="#oc">Our contribution</a></b></li>
+	<li><b><a href="#ref">References</a></b></li>
+</ol>
+</p>
+<!-- fine menu -->
+
+<a name="ps">
+<h2>Problem studied</h2>
+
+The task of a data integration system is combining the data residing
+at different sources, and providing the user with a unified view of
+these data, called <em>global schema</em> [Hale01,Lenz02].  Users
+query the global schema, while the system carries out the task of
+suitably accessing different sources and assembling the data retrieved
+at each source into the final answer to the query.
+
+To this aim, the system needs the specification, called
+<em>mapping</em>, of the relationship between the sources and the
+global schema.  There are two basic approaches to specify such a
+mapping [Ullm97,Hale01,Levy00].  The first approach, called
+<em>global-as-view</em> (GAV) [GPQR*97], consists of
+associating views over the sources to elements of the global
+schema, so that the information of the global schema is expressed
+in terms of the sources.  The second approach, called
+<em>local-as-view</em> (LAV) [LMSS95,DuGL00,MaFK01], consists
+of associating views over the global schema to data sources; in
+this case, the information content of the sources is defined in
+terms of the global schema.
+
+Since the global schema has to represent complex real-world domains,
+integrity constraints need to be expressed on it, thus enhancing the
+expressiveness of the data integration system.
+
+The main issue related to the presence of integrity constraints is
+that data at the sources may not satisfy such constraints.  In such a
+situation, a common assumption is to consider the views constituting
+the mapping as <em>sound</em>, i.e., it is assumed that the sources
+provide (through the mapping) a subset of the data that satisfy the
+global schema.
+<br><b><a href="#top">(back to top...)</a></b>
+
+<a name="of">
+<h2>Our framework</h2>
+
+In this phase of the project, we are addressing query processing in
+both GAV and LAV data integration systems in a relational setting, in
+the presence of <em>key dependencies</em> (KDs), <em>inclusion
+dependencies</em> (IDs), and <em>exclusion dependencies</em> (EDs) on the
+global schema, under the assumption of sound views.  The language
+adopted for views in the mapping is that of conjunctive queries in the
+LAV case, and union of conjunctive queries in the GAV case, while the
+language allowed for user queries is that of union of conjunctive
+queries.
+<br><b><a href="#top">(back to top...)</a></b>
+
+<a name="os">
+<h2>Our solution</h2>
+
+In the above setting, we hace identified decidable classes of
+integrity constraints, i.e., classes of key, exclusion and inclusion
+dependencies that allow for sound and complete query processing in the
+data integration setting defined above. For such classes of
+constraints, we have defined effective techniques for query processing
+(see the <a href="publications.html">publications related to this
+project</a>). 
+<br><b><a href="#top">(back to top...)</a></b>
+
+<a name="pg">
+<h2>Project goal</h2>
+
+In this project, we are implementing and experimenting the above
+mentioned query processing techniques in a prototype system for data
+integration under integrity
+constraints. 
+
+The main purpose of the system is to experiment the
+effectiveness of our intensional approach to query processing. Indeed,
+our aim is not only to arrive at an implementation of a general query
+answering mechanism in an expressive data integration setting, but also to
+push query processing as much as possible at the intensional level,
+following the well-established approaches and technology in standard
+database systems. This is a crucial issue especially in data integration
+applications, where the real system bottleneck is typically the access to
+data sources.
+<br><b><a href="#top">(back to top...)</a></b>
+
+<a name="oc">
+<h2>Our contribution</h2>
+
+Our work is the first to provide a thorough analysis of data
+integration (both in the GAV and in the LAV approach) in the
+presence of both KDs, IDs and EDs. More specifically, our results
+advance the state of the art in data integration in terms of: (i)
+decidability results; (ii) new algorithms: our technique is the
+first to compute query answering in the presence of both KDs and
+cyclic IDs; (iii) a modular treatment of GAV and LAV systems in
+the presence of integrity constraints, through the compilation of
+LAV into GAV, and of KDs, IDs and EDs, through the separability
+property of NKC dependencies; (iv) <em>effective</em> techniques for
+data integration (based on such a modularity), which exploit both
+off-line and intensional processing of queries: in particular,
+although developed for dealing with integrity constraints, our
+technique for LAV systems turns out to be simpler than the
+well-known technique called <em>inverse rules</em> [DuGL00]
+even in the absence of inclusion dependencies.
+<br><b><a href="#top">(back to top...)</a></b>
+
+<a name="ref">
+<h2>References</h2>
+
+<p>
+[DuGL00]
+Oliver M. Duschka, Michael R. Genesereth, and Alon Y. Levy.
+ Recursive query plans for data integration.
+ <em>Journal of Logic Programming</em>, 43(1):49--73, 2000.
+</p>
+
+<p>
+[GPQR*97]
+Hector Garcia-Molina, Yannis Papakonstantinou, Dallan Quass, Anand Rajaraman,
+  Yehoshua Sagiv, Jeffrey D. Ullman, Vasilis Vassalos, and Jennifer Widom.
+ The TSIMMIS approach to mediation: Data models and languages.
+ <em>Journal of Intelligent Information Systems</em>, 8(2):117--132, 1997.
+</p>
+
+<p>
+[Hale01]
+Alon Y. Halevy.
+ Answering queries using views: A survey.
+ <em>VLDB Journal</em>, 10(4):270--294, 2001.
+</p>
+
+<p>
+[JoKl84]
+David S. Johnson and Anthony C. Klug.
+ Testing containment of conjunctive queries under functional and
+  inclusion dependencies.
+ <em>Journal of Computer and System Sciences</em>, 28(1):167--189, 1984.
+</p>
+
+<p>
+[Lenz02]
+Maurizio Lenzerini.
+ Data integration: A theoretical perspective.
+ In <em>Proceedings of PODS 2002</em>, pages 233--246, 2002.
+</p>
+
+<p>
+[LMSS95]
+Alon Y. Levy, Alberto O. Mendelzon, Yehoshua Sagiv, and Divesh Srivastava.
+ Answering queries using views.
+ In <em>Proceedings of PODS'95</em>, pages 95--104, 1995.
+</p>
+
+<p>
+[MaFK01]
+Ioana Manolescu, Daniela Florescu, and Donald Kossmann.
+ Answering XML queries on heterogeneous data sources.
+ In <em>Proceedings of VLDB 2001</em>, pages 241--250, 2001.
+</p>
+<br><b><a href="#top">(back to top...)</a></b>
+</body>
+</html>
+

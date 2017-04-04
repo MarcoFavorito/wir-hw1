@@ -1,0 +1,508 @@
+<HTML>
+<HEAD>
+<TITLE>Calibration of Stereo Cameras for Mobile Robots</TITLE>
+</HEAD>
+
+<BODY>
+
+<P><CENTER>
+<H1>Calibration of Stereo Cameras for<BR> Mobile Robots</H1>
+<H3><A HREF="http://www.dis.uniroma1.it/~iocchi">Luca Iocchi</A></H3>
+Dipartimento di Informatica e Sistemistica<BR>
+Universit&agrave di Roma "La Sapienza", Italy.
+</CENTER></P>
+
+&nbsp<BR>&nbsp<BR>
+
+<H2>1. Introduction</H2>
+
+Camera calibration is the process of relating the ideal model
+of the camera to the actual physical device and of determining the position and
+orientation of the camera with respect to a world reference system.<BR>
+Depending on the model used, there are different parameters to
+be determined.<BR>
+The <I>pinhole camera model</I> is broadly used and the parameters
+to be calibrated are classified in two groups:
+<OL>
+<LI>Internal (or intrinsic) parameters. Internal geometric and optical characteristics 
+    of the lenses and the imaging device.
+<LI>External (or extrinsic) parameters. Position and orientation of the camera in a
+    world reference system.
+</OL>
+
+<P>
+Calibration is important for accuracy in 3D reconstruction.
+In particular it is a critical task for stereovision analysis.
+
+<P>
+Calibrating stereo cameras is usually dealt with by calibrating each camera
+independently and then applying geometric transformation of the external
+parameters to find out the geometry of the stereo setting.<BR>
+
+
+
+<P>
+Existing camera calibration methods can be roughly divided in:
+<OL>
+<LI> Closed form solution.
+<LI> Full nonlinear optimization.
+<LI> Two steps methods.
+</OL>
+
+Methods in the first class [Faugeras and Toscani] cannot consider lens distortion,
+while full nonlinear optimization can be very hard since the total number 
+of parameters to be calibrated is at least 11.<BR>
+Two steps methods are more efficient and accurate.
+
+<P>
+A well known method for calibrating a camera has been proposed by Tsai (1986-88). 
+The method is based on the knowledge of the position of some points in the world
+and the correspondent projections on the image.
+It required the camera to be pointed to a [nonplanar] calibration grid
+(that must be accurately prepared).<BR>
+The first step is to solve a linear equation to find the external parameters
+R, T (except for Tz) [and the scale factor ax], and then a nonlinear optimization
+is performed over Tz,f,k1. Finally Ox,Oy are determined with another nonlinear
+optimization step. <BR>
+The procedure can be iterated in order to improve accuracy.
+
+
+<P>
+Every calibration technique for radial distortion, that is based on the knowledge 
+of the position of points in the world, needs to search for 
+the overall set of parameters at the same time, even 
+though it is possible to separate the parameters in two groups, so that
+nonlinear optimization is performed only on a subset of the parameters [Tsai].<BR>
+
+The calibration procedure requires the user to
+<UL>
+<LI>Use a calibration grid.
+<LI>Individuate the projections of calibration points in the image.
+</UL>
+
+
+<P>
+Another class of calibration methods includes those that do not need any knowledge 
+about the position of points in the world.
+In this case it is possible to separate internal calibration from external calibration,
+and the optimization step can be performed for instance
+over the four internal parameters k1, Ox, Oy, ax.<BR>
+
+<P>
+An example of this method for internal calibration
+has been proposed by Devernay and Faugeras (1995).
+It is based on  minimizing the curvature of segments in the world determined 
+with edge detection and polynomial approximation from scenes of structured
+environments.
+
+<P>
+The optimization step can be very time consuming, as the solution 
+space has dimension 4. So the overall time needed to compute the distortion 
+of an image must be as low as possible and a godd search strategy is required.
+
+<P>
+The technique we are proposing here allows for the calibration of the internal
+parameters of the camera (k1, Ox, Oy, ax) by simply point the camera to a
+drawing containing only straight lines.<BR>
+<!-- Accuracy and time performances <B>WILL BE</B> compared with other
+methods.-->
+
+
+<P>
+The method has been used for calibrating a pair of stereo cameras for a mobile robot.
+Disparity and range from stereo have been used for evaluating calibration accuracy.
+
+
+
+
+
+<P>&nbsp</P>
+
+<H2>2. Internal Calibration</H2>
+
+The internal parameters of a camera (in the pinhole camera model) are:
+f, Px, Py, k1, Ox, Oy, ax.
+If we know from the technical specifications of the cameras 
+the values of f, Px, Py, the parameters to be calibrated are
+k1, Ox, Oy, ax.
+
+
+
+<H3>2.1 Calibrating k1, Ox, Oy, ax</H3>
+
+In order to calibrate the internal parameters of each camera, we are defining
+the relation between the coordinates of the distorted and the undistorted image.
+
+<P>
+The undistorted image coordinates are
+<PRE>
+   x = ( id - Ox ) * ax * Px * ( 1 + k1 * rd^2 )
+   y = ( jd - Oy ) * Py * ( 1 + k1 * rd^2 )
+</PRE>
+where (id,jd) are the frame coordinates of the distorted image, and
+<!--P><IMG SRC="formulas/rd2.gif"></P-->
+<PRE>rd^2 = ((id-Ox)*ax*Px)^2 + ((jd-Oy)*Py)^2</PRE>
+
+<P>
+In the ideal case they would be 
+<PRE>
+   x = ( i - Ox ) * Px         (1)
+   y = ( j - Oy ) * Py
+</PRE>
+
+Therefore the relation between distorted and undistorted frame coordinates is
+<PRE>
+   i = ( id - Ox ) * ax * ( 1 + k1 * rd^2 ) + Ox
+   j = ( jd - Oy ) * ( 1 + k1 * rd^2 ) + Oy
+</PRE>
+
+By knowing k1, Ox, Oy, ax, (Px and Py) it is possible to undistort the image
+so that it can be considered as coming from a pinhole camera, 
+and the equations (1) are valid.
+
+<P>
+In the following pictures the distorted and undistorted images of left
+and right camera are shown.
+
+<P>
+<TABLE>
+<TD><IMG SRC="images/dist01L.gif" ALIGN=LEFT width=160>&nbsp;&nbsp;&nbsp;&nbsp;
+<TD><IMG SRC="images/undist01L.gif" width=160>
+<TR>
+<TD><IMG SRC="images/dist01R.gif" ALIGN=LEFT width=160>&nbsp;&nbsp;&nbsp;&nbsp;
+<TD><IMG SRC="images/undist01R.gif" width=160>
+</TABLE>
+</P>
+
+<P>
+<A HREF="houghcalib.html">How to find the calibration parameters?</A>
+</P>
+
+<P>
+Typical values for the internal parameters are
+<UL>
+<LI>k1 = 0.010 , 0.015 [mm^-2] (for barrel distortion)
+<LI>Ox,Oy = 0 , +-0.2 [% of image dimension]
+</UL>
+
+
+
+
+<H3>2.2 Accuracy of Calibration</H3>
+
+<P>
+Determining the internal calibration parameters with a good precision 
+is a difficult task, and we found out that the disparities are very sensitive to them
+(even a little modification leads to bad disparities).<BR>
+Furthermore evaluation of calibration accuracy is not easy.
+Accuracy in camera calibration is often measured by how well it can measure the 3D world.
+
+
+<P>
+In the following  k1, Ox, Oy, ax and k1', Ox', Oy', ax' are the optimal parameters of the left and 
+the right camera respectively, while k1~, Ox~, Oy~, ax~, k1'~, Ox'~, Oy'~, ax'~
+are the correspondent approximate parameters.<BR>
+When yd = 0 the absolute disparity error between an approximate and the ideal solution is
+<PRE>
+  eD = D~ - D =   ax~ * id  + (1-ax~)  * Ox~   + k1~ * ax~^3 * Px^2 * (id-Ox~)^3 
+                - ax'~* id' - (1-ax'~) * Ox'~  - k1'~* ax'~^3* Px^2 * (id'-Ox'~)^3  
+                + ax  * id  + (1-ax)   * Ox    + k1  * ax^3  * Px^2 * (id-Ox)^3 
+                - ax' * id' - (1-ax')  * Ox'   - k1' * ax'^3 * Px^2 * (id'-Ox')^3 
+</PRE>
+
+Now suppose that the only error is in the determination of k1 and k1',
+that is ax~=ax, Ox~=Ox, ax'~=ax', Ox~'=Ox', and, for simplify formulas,
+that ax=ax'=1 and Ox=Ox'.<BR>
+Let a=k1~-k1, b=k1~-k1', and c=id-Ox, then
+<P>eD = Px^2 * [ a * c^3 - b * (c + D)^3 ]</P>
+
+<P>
+Range relative error is
+<PRE>
+        Z~ - Z          Px^2 * [ a * c^3 - b * (c+D)^3 ] 
+  eZ = -------- = - ------------------------------------------
+           Z          Px^2 ( a * c^3 - b * (c+D)^3 )   +   D 
+</PRE>
+
+<P>
+Theoretical error analysis generates the following table, by using the values
+f=5 mm, b=100 mm, Px = 0.01 mm, ax =1
+<P>
+<TABLE BORDER=1>
+<TD WIDTH=80 ALIGN=CENTER><B>Z [m]</B></TD>
+<TD WIDTH=60><B>D [pix]</B></TD>
+<TD WIDTH=60><B>a</B></TD>
+<TD WIDTH=60><B>b</B></TD>
+<TD WIDTH=60><B>c [pix]</B></TD>
+<TD WIDTH=80><B>eZ [%]</B></TD>
+<TD WIDTH=80><B>Z~ - Z [mm]</B></TD>
+<TR>
+<TD ALIGN=CENTER>5</TD>
+<TD ALIGN=CENTER>10</TD>
+<TD ALIGN=CENTER>0.01</TD>
+<TD ALIGN=CENTER>0.01</TD>
+<TD ALIGN=CENTER>150</TD>
+<TD ALIGN=CENTER>7.8%</TD>
+<TD ALIGN=CENTER>390</TD>
+<TR>
+<TD ALIGN=CENTER>5</TD>
+<TD ALIGN=CENTER>10</TD>
+<TD ALIGN=CENTER>0.01</TD>
+<TD ALIGN=CENTER>0.01</TD>
+<TD ALIGN=CENTER>75</TD>
+<TD ALIGN=CENTER>2.0%</TD>
+<TD ALIGN=CENTER>100</TD>
+<TR>
+<TD ALIGN=CENTER>1</TD>
+<TD ALIGN=CENTER>50</TD>
+<TD ALIGN=CENTER>0.01</TD>
+<TD ALIGN=CENTER>0.01</TD>
+<TD ALIGN=CENTER>150</TD>
+<TD ALIGN=CENTER>10.2%</TD>
+<TD ALIGN=CENTER>102</TD>
+<TR>
+<TD ALIGN=CENTER>1</TD>
+<TD ALIGN=CENTER>50</TD>
+<TD ALIGN=CENTER>0.01</TD>
+<TD ALIGN=CENTER>0.01</TD>
+<TD ALIGN=CENTER>75</TD>
+<TD ALIGN=CENTER>3.2%</TD>
+<TD ALIGN=CENTER>32</TD>
+<TR>
+<TD ALIGN=CENTER>1</TD>
+<TD ALIGN=CENTER>50</TD>
+<TD ALIGN=CENTER>0.001</TD>
+<TD ALIGN=CENTER>0.001</TD>
+<TD ALIGN=CENTER>150</TD>
+<TD ALIGN=CENTER>0.9%</TD>
+<TD ALIGN=CENTER>9</TD>
+
+</TABLE>
+</P>
+
+<P>
+The table shows that significant errors (up to 10%) are present when close objects are in
+the image board.
+However if the distortion coefficients are known with an approximation within 10%, 
+then this error becomes less then 1%.
+
+
+<P>
+Moreover error analysis on eD and experimentation have shown different kinds of distortion, 
+depending on which paramters are badly calibrated.<BR>
+Suppose that the only error is in the determination of k1 (that is
+Ox~=Ox, ax'~=ax', Ox'~=Ox', and k1'~=k1'), then the error will be
+<P>D~ - D = Px^2 * (ax * k1 - ax~ * k1~) * (id - Ox)^3</P>
+resulting in a cubic distortion over id.
+
+<P>
+While an error in determining Ox (ax~=ax, k1~=k1, ax'~=ax', Ox'~=Ox', and k1'~=k1')
+corresponds to a quadratic distortion
+<PRE>D~ - D = Px^2 * ax * k1 * (Ox~ - Ox) * 
+                [ 3 * id^2 - 3 * (Ox+Ox~) * id + Ox^2 + Ox*Ox~ + Ox~^2]</PRE>
+
+
+<P><B>Example</B></P>
+
+<P>
+In this example the camera has been put in front of a door, as shown by the
+first two (undistortedd) images below.<BR>
+The other images represents the range data mapped on the Saphira environment,
+in the following situations:
+<OL>
+<LI>Distorted images
+<LI>Undistorted images
+<LI>Error in radial coefficient (around 30%)
+<LI>Error in center of distortion (around 30%)
+</OL>
+</P>
+
+<P>
+<IMG SRC="images/no-dist-im.gif">
+</P>
+
+<P>
+<TABLE>
+<TD><IMG SRC="images/all-dist.gif">
+<TD><IMG SRC="images/no-dist.gif">
+<TR>
+<TD><IMG SRC="images/cubic-dist.gif">
+<TD><IMG SRC="images/quad-dist.gif">
+</TABLE>
+</P>
+
+
+<P>
+In this example the relative error in the determination of the distance from the door 
+(that was 1.5 m), was above 30% at the borders of the distorted images, while
+even an approximate correction (within 10%) gave us an error around 5%.
+</P>
+
+
+
+
+<H3>2.3 Refining internal parameters</H3>
+
+A simple measure in stereo vision is the curvature of the disparity line 
+when looking at a straight wall. It does not require the knowledge of position
+of points in the world.
+After external calibration is performed the disparity line only depends on
+the internal parameters of the camera.
+
+<P>
+Let D = i - i' be the ideal disparity values (when optimal parameters are used) 
+and D~ = i~ - i'~ be the disparity computed with approximate parameters, 
+an error function can be defined as
+<P>eD = SUM_i~ ((D~ - D)^2)</P>
+
+If the stereo camera is perpendicular to a straight wall and sufficiently far away from it, 
+and Ox~ =~ Ox, then D can be approximate by the value of D~ when i~=Ox~, and eD
+can be actually computed.<BR>
+Moreover the above error function can be used in order to improve accuracy
+by finding the parameters that minimize it.
+
+<P>
+Summarizing, after approximately good values for the internal parameters
+are independently found for the left and the right camera,
+a further step for refining these values is peformed by adding
+constraints on properties of the environment seen through the stereo camera.
+
+<P>
+As the variations of the parameters in this second step are usually very small, 
+there is no need (in general) to come back to the first step.
+
+
+
+
+
+
+<P>&nbsp</P>
+
+<H2>3. External parameters</H2>
+
+External parameters are needed for both the correspondence problem (determining
+the epipolar lines for determining point correspondences), and triangulation
+(for reconstruction).
+
+<P>
+We assume in the following to deal with a stereo camera in the standard setting
+(i.e. with parallel optical axes and coplanar image planes), and that 
+<I>small angle approximation</I> is valid (angles determining R are small).
+
+
+<P>
+We choose the world reference system to be the left camera one, and the parameters to be found
+are the translation vector T and rotation matrix R
+of the right camera with respect to the left one.
+
+
+<H3>3.1 Finding the translation vector T</H3>
+
+<P>
+Usually a measure of the distance between the center of the cameras
+is sufficient for determining Tx (that equals the baseline b).
+
+<P>
+As for Ty and Tz, we consider them to be 0.
+
+
+<H3>3.2 Finding the rotation matrix R</H3>
+
+The rotation matrix R is determined by the three rotation angles around the right
+camera axes ( <I>phi</I>, <I>theta</I>, and <I>psi</I>).
+Under <I>small angle approximation</I> the rotation around X axis (<I>phi</I>)
+and around Y axis (<I>theta</I>) can be approximate as a displacement over Ty (Yoff)
+and Tx (Xoff) respectively.
+
+
+<P><B>Rotation around X axis (<I>phi</I>)</B></P>
+
+<P>
+The angle <I>phi</I> can be easily found by looking at the uniformity of
+the disparity map. Indeed, as the matching algorithm looks for corrispondent points
+in the same rows of the two images, when the images are not vertically aligned
+(phi != 0) there is a significant noise in the disparity map.<BR>
+An automatic procedure for finding out the vertical displacement Yoff of the two image
+has been realized. <I>phi</I> can be easily derived from Yoff.
+
+
+<P><B>Rotation around Y axis (<I>theta</I>)</B></P>
+
+<P>
+The angle <I>theta</I> can be derived by the Z component of the fixation point (Z0).
+Z0 can be found by imposing the disparity of a point at infinity to be zero.<BR>
+
+This can be easily obtained by looking at a far object (as in the picture below),
+and by horizontally shifting one image to the other, until the disparity of that
+point is zero.<BR>
+Z0 and <I>theta</I> are then computed from the horizontal displacement (Xoff).
+
+<P>
+<img src="images/corr.gif">
+
+<P>
+<TABLE>
+<TD><img src="images/corrdisp3.gif"></TD>
+<TD><B>Too low</B></TD>
+<TR>
+<TD><img src="images/corrdisp1.gif"></TD>
+<TD><B>Good</B></TD>
+<TR>
+<TD><img src="images/corrdisp2.gif"></TD>
+<TD><B>Too high</B></TD>
+</TABLE>
+</P>
+
+<P>
+Moreover, when looking at a corridor (with parallel walls), bad values in Z0 
+lead to disparities that arise convergence (or divergence) of the reconstucted walls.
+The correct value for Z0 is the one that allows for the reconstruction of parallel
+lines as walls.
+
+
+<P><B>Rotation around Z axis (<I>psi</I>)</B></P>
+
+<P>
+The angle <I>psi</I> can be again found by looking at the uniformity of
+the disparity map. Indeed rotation of one image with respect to the other 
+leads to significant noise in the disparity map.<BR>
+
+
+
+<P>&nbsp</P>
+<H2>References</H2>
+
+<P>
+F. Devernay and O. Faugeras.
+Automatic Calibration and Removal of Distortion from Scenes of
+Structured Environments.
+In <I>Proc. of SPIE'95</I>. 1995.
+
+<P>
+R. Tsai. 
+An Efficient and Accurate Camera Calibration Technique for 3D Machine Vision.
+In <I>Proc. of CVPR'86</I>. 1986.
+
+<P>
+R. Lenz and R. Tsai.
+Techniques for Calibration of the Scale Factor and Image Center for 
+High Accuracy 3-D Machine Vision Metrology},
+<I>IEEE Trans. on Pattern Analysis and Machine Intelligence</I>
+Vol. 10, N. 5. 1988
+
+<P>&nbsp</P>
+
+<HR>
+
+<I>Luca Iocchi</I>. April 6 1998.
+
+<P>
+Go to:<BR>
+<A HREF="stereo.html">Multiresolution Stereo Vision System</A><BR>
+<A HREF="triang.html">Stereo triangulation</A><BR>
+<A HREF="houghcalib.html">Hough Internal Calibration</A><BR>
+
+</BODY>
+</HTML>
+
+

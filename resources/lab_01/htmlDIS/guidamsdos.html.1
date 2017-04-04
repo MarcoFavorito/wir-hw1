@@ -1,0 +1,856 @@
+<html><head><!-- This document was created from RTF source by rtftohtml version
+2.5 --><p>
+<p>
+<p>
+<b><p>
+<center>
+UNIVERSITA' DEGLI STUDI DI ROMA <p>
+"LA SAPIENZA"</b><p>
+<b><p>
+FACOLTA'  DI  INGEGNERIA</b><p>
+<p>
+<p>
+<p>
+<p>
+<p>
+<p>
+<p>
+<p>
+<p>
+Guida al sistema MS/DOS<p>
+<p>
+a cura di Giuseppe Basile<p>
+<p>
+<p>
+<p>
+<p>
+<p>
+<p>
+ANNO ACCADEMICO 1995/96</b><p>
+</center>
+<h3>
+Indice dei principali argomenti<br>
+<a name="B_Toc325451456"><br>
+1. Introduzione al sistema MS/DOS.</a></h3>
+<p>
+MS/DOS &egrave; il sistema operativo rilasciato dalla MicroSoft per le macchine
+IBM e compatibili basate sulla famiglia di processori 8086. La sigla MS/DOS
+&egrave; un acronimo e sta per <i>MicroSoft Disk Operating System</i>,
+cio&egrave; Sistema Operativo basato su Disco.<p>
+Il sistema operativo &egrave; un programma che consente un utilizzo corretto ed
+efficiente del calcolatore e facilita le operazioni dell'utente mettendo a
+disposizione un ambiente all'interno del quale &egrave; possibile accedere, in
+maniera semplice, a tutte le risorse dell'elaboratore (dischi, memoria,
+stampante).<p>
+MS/DOS &egrave; nato per il Personal Computing e consente ad un solo utente di
+accedere alle risorse del computer mediante un solo programma. Questa
+caratteristica si esprime dicendo che MS/DOS &egrave; un sistema monoutente che
+non ammette multiprogrammazione.<p>
+In queste note si intende fornire le indicazioni essenziali per l'utilizzo dei
+principali e pi&ugrave; importanti comandi di MS/DOS, illustrando alcuni
+concetti fondamentali (come <i>direttorio corrente</i>, <i>cammino</i>) che
+consentono di navigare tra le informazioni contenute sui dischi.<p>
+<p>
+Quando si accende il calcolatore per incominciare una sessione di lavoro, una
+procedura automatica detta <i>boot-strap</i>, prepara l'ambiente MS/DOS
+caricando dal disco rigido i programmi opportuni.<p>
+Terminata la procedura, il sistema operativo MS/DOS ci avverte che &egrave;
+pronto ad eseguire i nostri comandi. Tipicamente dopo l'accensione il sistema
+risponde con la sequenza:<p>
+<p>
+	<b><i>C:\&gt;</i></b><p>
+<p>
+con il cursore lampeggiante alla destra del simbolo <b><i>&gt;</i></b>. <p>
+La sequenza &egrave; detta <i>prompt</i>. A questo punto &egrave; possibile
+introdurre un comando. Si osservi che digitare il comando non &egrave;
+sufficiente; affinch&egrave; venga eseguito &egrave; necessario premere il
+tasto <b><i>INVIO</i></b>.<p>
+<p>
+<a name="B_Toc325451457">
+<h3>
+2. Concetti fondamentali: organizzazione dei dati su disco.</a></h3>
+<a name="B_Toc325451458">
+<h4>
+2.1. Le Unit&agrave; a Dischi.</a></h4>
+Il sistema MS/DOS, come gi&agrave; sottolineato, &egrave; un sistema basato su
+disco. L'utente interagisce continuamente con informazioni presenti sui dischi
+(rigidi o floppy). In ogni istante per&ograve;, l'utente pu&ograve; interagire,
+in modo diretto, con una sola unit&agrave; a dischi detta <i>unit&agrave;
+corrente</i> (o <i>attiva).</i><p>
+Le unit&agrave; a dischi sono individuate da lettere dell'alfabeto. Ad esempio,
+<b><i>C</i></b> individua il disco rigido (quello attivo all'accensione),
+mentre solitamente <b><i>A </i></b> (e <b><i>B</i></b>,<b><i> </i></b>quando
+presente) individuano le unit&agrave; a dischi floppy. Presso il laboratorio di
+via Tiburtina gli utenti hanno a disposizione anche l'unit&agrave;
+<b><i>F</i></b> che &egrave; quella relativa al server di rete.<b><p>
+</b><i><p>
+<a name="B_Toc325451459"></i>
+<h4>
+2.2. I File.</a></h4>
+Tutte le informazioni utilizzate dal computer sono memorizzate in <i>file</i>.
+Un <i>file</i> (la cui traduzione in italiano &egrave; <i>archivio</i>, ma la
+dizione &egrave; poco usata) &egrave; un insieme di informazioni memorizzate su
+disco al quale &egrave; associato un nome.<p>
+Tutti i file hanno un <i>nome</i>, la maggior parte ha poi anche una
+<i>estensione</i>. L'estensione segue sempre il nome ed &egrave; separata dal
+nome da un punto (<b><i>.</i></b>). Ad esempio <b><i>COMMAND.COM</i></b>
+indica il file di nome <b><i>COMMAND</i></b> ed estensione <b><i>COM</i></b>.<p>
+Il nome non pu&ograve; essere pi&ugrave; lungo di otto caratteri e non deve
+contenere spazi, virgole, barre rovesciate e/o punti. Le estensioni aiutano ad
+identificare il tipo di file. <p>
+<p>
+Le estensioni pi&ugrave; utilizzate sono:<p>
+<p>
+	<b><i>.EXE</i></b><i> (</i>eseguibile) o  <b><i>.COM</i></b> (comando) per i
+file di programma;<p>
+	<b><i>.SYS</i></b> (sistema) per i file che contengono informazioni relative
+all'hardware in uso;<p>
+	<b><i>.BAT </i></b>(batch) per i file che contengono sequenze di comandi
+MS/DOS per 				automatizzare alcune operazioni;<p>
+<p>
+Le estensioni non devono superare i tre caratteri. E' buona norma utilizzare
+nomi ed estensioni significativi che facilitino la individuazione dei file.<p>
+Esistono due principali tipi di file: i <i>file di programma</i> ed i <i>file
+di dati</i>. Il primo tipo contiene i programmi eseguibili, mentre le
+informazioni generate od utilizzate all'interno di un programma sono
+memorizzate in file del secondo tipo.<p>
+<a name="B_Toc325451460">
+<h4>
+2.3. I Direttori  (Directory).</a></h4>
+Poich&egrave; ciascun utente, in condizioni normali, utilizza diverse decine di
+file, risulta utile organizzare tali file in direttori e subdirettori sulle
+unit&agrave; a disco. Per una migliore comprensione &egrave; utile il paragone
+tra direttori (e subdirettori) e raccoglitori per documenti o schedari
+contenenti cartelle di documenti. Come le cartelle di uno schedario contengono
+gruppi di documenti correlati, cos&igrave; le direttori contengono gruppi di
+file correlati.<p>
+E' possibile utilizzare i comandi MS/DOS per creare direttori e garantire una
+migliore organizzazione dei file. In particolare &egrave; possibile creare un
+direttorio all'interno di un altro direttorio. Il nuovo direttorio &egrave;
+detto <i>subdirettorio</i> o <i>direttorio figlio, </i>per enfatizzare la
+relazione di parentela con quello che lo contiene (detto talvolta
+<i>padre</i>).<p>
+L'insieme dei direttori, subdirettori  e file costituisce la <i>struttura dei
+direttori</i>.. Quando viene formattato un disco (in seguito sar&agrave;
+chiarito il significato di tale operazione), MS/DOS crea un <i>direttorio
+principale </i> o <i>direttorio radice</i>. Tutte i direttori che verranno
+creati in seguito saranno diramazioni di tale direttorio. La struttura dei
+direttori assume dunque una forma ad albero rovesciato. Un esempio di struttura
+dei direttori &egrave; data dalla fig.1 seguente:	<p>
+			<p>
+<p>
+						   \<p>
+<p>
+<p>
+<p>
+				      TPI        ....            ....<p>
+<p>
+<p>
+<p>
+		      SCHAERF    NARDI   CORRETTI    VARI<p>
+<p>
+<p>
+<p>
+La figura riporta solo una parte della struttura. Si noti che tutte i direttori
+hanno un nome, ad eccezione del direttorio radice che &egrave; sempre
+rappresentato dalla barra rovesciata, detta <i>back-slash</i> (<b>\</b>). Un
+direttorio pu&ograve; anche avere una estensione, analogamente a quanto accade
+per i file.<p>
+Due subdirettori dello stesso direttorio non possono avere lo stesso nome. Al
+contrario, due o pi&ugrave; subdirettori di due direttori differenti possono
+avere nome uguale.<p>
+Osserviamo, infine, che ciascuna unit&agrave; a dischi ha un direttorio, detto
+<i>attivo o corrente</i>, con il quale l'utente interagisce direttamente.<p>
+<p>
+<a name="B_Toc325451461">
+<h4>
+2.4. I Cammini.</a> </h4>
+Come abbiamo visto il prompt &egrave; una sequenza costituita dalla lettera che
+individua il disco corrente e da una sottosequenza (quella che segue i due
+punti) che individua il particolare direttorio corrente. Tale sottosequenza
+&egrave; detta <i>percorso </i>o <i>cammino </i>(in inglese <i>path</i>).<p>
+Il <i>cammino assoluto </i> indica la posizione di un file o di un direttorio
+all'interno della struttura dei direttori di una unit&agrave; a dischi. Esso
+rappresenta il percorso che MS/DOS deve seguire, a partire dal direttorio
+principale di una unit&agrave; a dischi, per raggiungere un file o un
+direttorio.<p>
+Per chiarire il concetto di cammino &egrave; utile far riferimento al ramo
+della struttura dei direttori in fig.1, relativa a programmi di esercitazione
+disponibili per il linguaggio Turbo Pascal. La fig.2 rappresenta lo stesso ramo
+della struttura dei direttori in forma differente:<p>
+<p>
+<p>
+Elenco dei percorsi dei direttori del volume 50         <p>
+Il numero di serie del volume &egrave; 3116-19D3<p>
+C:\					<p>
++---TPI<p>
+	+---SCHAERF<p>
+	|   +---LIVELLO2<p>
+	|   +---LIVELLO6<p>
+	|   +---EXDIFF<p>
+	|   +---LIVELLO1		<b><i></i></b><p>
+	|   +---LIVELLO3		<p>
+	|   +---LIVELLO4		<p>
+	|   +---LIVELLO5<p>
+	|   +---LIVELLO7<p>
+	+---CORRETTI<p>
+	+---NARDI<p>
+	+---VARI<p>
+			(fig.2)<i><p>
+</i><p>
+La fig.2 riporta i nomi dei subdirettori del direttorio di nome
+<b><i>SCHAERF</i></b> non riportati in fig.1.<p>
+<p>
+Il cammino che individua il sottodirettorio <b><i>TPI</i></b>, figlia del
+direttorio radice, &egrave; il seguente:<p>
+<b><p>
+	C:\TPI<p>
+</b><p>
+Analizziamo la sequenza precedente. Il primo carattere (<b><i>C:</i></b> )
+individuano la unit&agrave; a dischi interessata, i caratteri successivi
+(quelli che seguono i due punti) appartengono al cammino; Il cammino incomincia
+con il simbolo (<b><i>\</i></b>), che individua il direttorio radice, e
+continua con il nome del direttorio <b><i>TPI</i></b>.. Il percorso parte dal
+direttorio radice e arriva al sottodirettorio <b><i>TPI</i></b>.<i></i><p>
+Se il direttorio attivo &egrave; la radice, il prompt visualizzato sullo
+schermo &egrave;:<p>
+<p>
+	<b>C:\&gt;<i><p>
+</i></b><p>
+Per individuare il direttorio <b><i>EXDIFF  </i></b>utilizziamo il seguente
+cammino:<p>
+<p>
+	<b>\TPI\SCHAERF\EXDIFF</b><p>
+<p>
+Il punto di partenza &egrave; il direttorio radice individuato dalla prima
+barra (<b>\</b>). Segue quindi il nome del direttorio figlio (della radice)
+<b><i>TPI</i></b>, quindi di nuovo una barra (<b>\</b>). Quest'ultima, come
+tutte quelle che seguono, non ha il significato di direttorio radice. Essa ha
+invece la funzione di separatore tra un direttorio ed un direttorio figlio.
+Segue quindi il nome <b><i>SCHAERF</i></b> che individua un sottodirettorio di
+<b><i>TPI</i></b>, di nuovo un back-slash (<b>\</b>) ed infine il direttorio di
+arrivo <b><i>EXDIFF</i></b> che &egrave; quello individuata dal cammino. Il
+percorso cos&igrave; individuato pu&ograve; essere seguito sulla fig.2. ed, in
+parte, sulla fig.1.<p>
+	Specificare il cammino di un direttorio, una volta nota la struttura dei
+direttori dell'unit&agrave; sulla quale ha interesse lavorare, &egrave; dunque
+piuttosto semplice. E' sufficiente specificare il direttorio radice (<b>\</b>)
+seguita dai nomi dei direttori che si incontrano partendo dal direttorio radice
+e seguendo il percorso sino al direttorio di interesse. I nomi dei direttori
+devono essere separati usando il <i>back-slash</i>.<p>
+	Un cammino che parte dal direttorio radice &egrave; detto <i>assoluto</i>. Un
+cammino &egrave; anche detto <i>nome</i>. Il cammino &egrave; infatti il
+<i>nome</i> di un direttorio in una specifica <i>unit&agrave;</i> a dischi; il
+suo scopo &egrave; quello di facilitare l'individuazione del direttorio. Oltre
+ai <i>nomi </i>(o <i>percorsi</i>) <i>assoluti,</i> MS/DOS consente di
+specificare anche <i>nomi relativi</i>. Essi non partono dal direttorio radice,
+ma dal direttorio corrente della unit&agrave; attiva. Si torner&agrave; sui
+percorsi relativi in seguito.<p>
+<p>
+<a name="B_Toc325451462">
+<h3>
+3. Comandi per la gestione dei dischi.</a></h3>
+<a name="B_Toc325451463">
+<h4>
+3.1. Cambiamento di unit&agrave; corrente.</a> </h4>
+Si sono illustrati i concetti di unit&agrave; a dischi attiva e direttorio
+corrente. Se il nostro sistema ha a disposizione pi&ugrave; di un disco,
+cio&egrave; possiede lettori di dischi floppy oltre al disco rigido, o altri
+dischi rigidi diversi da <b><i>C</i></b>, come ad esempio <b><i>F</i></b>,
+pu&ograve; essere necessario doversi spostare da un disco all'altro,
+cio&egrave; rendere attivo un disco differente da quello rigido. Per rendere
+attivo un disco differente da quello correntemente attivo &egrave; sufficiente
+digitare la lettera ad esso associata seguita dai due punti (<b><i>:</i></b>) e
+premere quindi <b><i>INVIO</i></b>.<p>
+Ad esempio se il disco corrente &egrave; <b><i>C, </i></b>e si vuole rendere
+attiva l'unit&agrave; a dischetti <b>A</b>, &egrave; sufficiente digitare al
+prompt:<p>
+<p>
+	<b>A:<i><p>
+</i></b><p>
+ e premere <b><i>INVIO</i></b>. Il prompt cambier&agrave;, indicando la nuova
+unit&agrave; corrente:<p>
+<p>
+	<b>A:\&gt;<i><p>
+</i></b><p>
+In realt&agrave; ciascuna unit&agrave; ha una suo direttorio corrente di cui
+conserva memoria anche quando non &egrave; attiva. Pertanto se la unit&agrave;
+<b><i>A</i></b> avesse un direttorio corrente diverso dal direttorio radice,
+ci&ograve; sarebbe correttamente comunicato dal prompt di MS/DOS.<b><p>
+</b><i><p>
+<a name="B_Toc325451464"></i>
+<h4>
+3.2. Formattazione dei supporti magnetici: comando FORMAT.</a></h4>
+Di solito un disco nuovo, per essere utilizzato da MS/DOS, ha bisogno di essere
+formattato. Questa operazione inizializza il disco, cio&egrave; organizza la
+sua struttura fornendo ad essa un formato (e da qui il termine
+<i>formattazione</i>) riconoscibile ed utilizzabile dal sistema operativo.<p>
+La formattazione pu&ograve; essere effettuata su un disco che contiene
+gi&agrave; delle informazioni. In tal caso le informazioni vengono distrutte e
+non sono pi&ugrave; ripristinabili. Per questo motivo &egrave; sempre bene
+controllare con attenzione il disco da formattare.<p>
+Per formattare un floppy disk su una unit&agrave; occorre impartire il comando
+<b><i>FORMAT</i></b> seguito dalla sequenza che individua lo specifico floppy
+(<b><i>A</i> </b>oppure <b><i>B</i></b>). Ad esempio:<p>
+<p>
+	<b>FORMAT  A:<p>
+</b><p>
+formatta il dischetto contenuto nell'unit&agrave; <b><i>A</i></b>. Si noti che
+tra il comando e la sequenza <b><i>A:</i></b> &egrave; presente uno spazio.
+Quando viene introdotto il comando, appare il seguente messaggio:<p>
+<p>
+	<b>Inserire un nuovo disco nell'unit&agrave; A:<i><p>
+	</i>e premere INVIO quando si &egrave; pronti...<i><p>
+</i></b><p>
+E' sufficiente seguire le istruzioni per incominciare l'operazione. Durante la
+formattazione vengono visualizzate sullo schermo alcune informazioni che
+riguardano lo stato della operazione. Al termine viene visualizzato il
+messaggio<b> </b>di completamento:<b><p>
+<p>
+	Formattazione completata.<p>
+</b><p>
+e viene richiesto il nome che identifica il disco:<b><p>
+<p>
+	Etichetta di volume (11 caratteri, INVIO per non darne):<p>
+</b><p>
+Una volta inserito il nome (seguito da <b><i>INVIO</i></b>) vengono fornite
+alcune informazioni (spazio totale e disponibile su disco, lunghezza e numero
+delle unit&agrave; di allocazione, numero di serie del volume) e viene
+richiesto se effettuare un'altra formattazione:<b><p>
+</b><i><p>
+	</i><b>Altro disco da formattare (S/N)?</b><p>
+<p>
+al quale si dovr&agrave; rispondere con <b><i>s</i> </b>o <b><i>n</i>
+</b>seguito da <b><i>INVIO</i></b> a seconda che si voglia formattare o meno un
+altro dischetto.<p>
+La sintassi qui mostrata &egrave; la pi&ugrave; semplice. In questo modo MS/DOS
+analizza il disco e seleziona automaticamente il formato pi&ugrave; capiente
+per esso. I dischi pi&ugrave; diffusi hanno una capienza di 1,4 Mbyte (Doppia
+Faccia(DF), Alta Densit&agrave;(HD)).<b><i></i></b><p>
+<a name="B_Toc325451465">
+<h4>
+3.3. Copia del contenuto di un disco: comando DISKCOPY.</a></h4>
+Quando si lavora al computer &egrave; molto importante fare delle copie dei
+dischi che usiamo. Ci&ograve;  &egrave; utile per motivi di sicurezza, in modo
+da avere da parte una versione funzionante del programma che si utilizza o che
+si sta scrivendo. Un discorso analogo vale per i file di dati. Il disco che
+utilizzate, infatti, pu&ograve; rompersi e ed il suo contenuto pu&ograve;
+essere interamente o parzialmente perduto. Una copia di salvataggio consente di
+ripristinare le informazioni perdute,  presenti sulla copia originale. MS/DOS
+consente di copiare il contenuto di un disco su un altro disco, con il comando
+<b><i>DISKCOPY</i></b> seguito da due parametri. I parametri sono le sequenze
+che individuano rispettivamente il disco <i>origine</i>, cio&egrave; quello
+contenente le informazioni da copiare, ed il disco <i>destinazione</i> che
+conterr&agrave; la copia. Quest'ultimo deve essere gi&agrave; formattato. Se il
+calcolatore &egrave; provvisto di due lettori floppy (<b><i>A </i></b>e
+<b><i>B</i></b>), per effettuare la copia si usa il comando nella forma:<p>
+<p>
+	<b>DISKCOPY    A:   B:<p>
+</b><p>
+Esso ordina una copia del disco contenuto in <b><i>A</i></b> (disco origine)
+sul disco contenuto in <b><i>B</i></b> (disco destinazione). A questo punto
+viene richiesto di inserire i dischi nelle unit&agrave; corrispondenti con
+messaggi del tipo:<p>
+<p>
+	<b>Inserisci il disco ORIGINE nell'unit&agrave; A:<p>
+	Inserisci il disco DESTINAZIONE nell'unit&agrave; B:<i><p>
+	</i>Premi un tasto per continuare...<i><p>
+</i></b><p>
+Occorre fare molta attenzione ed eseguire correttamente le operazioni
+richieste. Se si commette un errore in questa fase si rischia di perdere la
+copia originale. Per questo motivo si raccomanda sempre di proteggere in
+scrittura il disco originale prima di effettuare una copia.<p>
+Se il computer &egrave; provvisto di una sola unit&agrave; a dischi floppy, per
+effettuare la copia bisogna introdurre il comando:<p>
+<p>
+	<b>DISKCOPY   A:   A:<p>
+</b><p>
+questo informa MS/DOS che, durante la copia, dovr&agrave; utilizzare la stessa
+unit&agrave; a dischi sia come origine che come destinazione. Ci verr&agrave;
+richiesto pi&ugrave; volte di alternare il disco originale con quello di copia
+con messaggi analoghi a quelli s&ugrave; visti. Quando la copia sar&agrave;
+completata sul video apparir&agrave; il messaggio:<p>
+<p>
+	<b>Il numero di serie del volume &egrave; .......<p>
+	Altro disco da copiare (S/N)?<i><p>
+</i></b><p>
+rispondendo <b><i>s</i></b> (s&igrave;) si da luogo ad un'altra operazione di
+copia, con <b><i>n</i></b> (no) si termina il comando <b><i>DISKCOPY</i></b> e
+si torna al prompt di MS/DOS.<p>
+<p>
+<a name="B_Toc325451466">
+<h3>
+4. Comandi per la gestione dei file.</a></h3>
+<a name="B_Toc325451467">
+<h4>
+4.1. Contenuto di un direttorio: comando DIR.</a></h4>
+Il comando <b><i>DIR </i></b>consente di visualizzare il contenuto di un
+direttorio ed &egrave; un valido supporto per la individuazione dei file
+all'interno della struttura dei direttori. Nella sua forma pi&ugrave;
+semplice:<p>
+<p>
+	<b>DIR<p>
+</b><p>
+visualizza l'elenco di tutti i file presenti nel direttorio corrente. Quando
+usato in questa forma,<b><i>  </i></b>&egrave; necessario che l'unit&agrave; e
+il direttorio di interesse siano correntemente attivi. Ci&ograve; pu&ograve;
+essere piuttosto scomodo. Per tale motivo MS/DOS fornisce una variante del
+comando che non richiede il cambiamento di unit&agrave;. In termini pi&ugrave;
+semplici, se si sta lavorando su una unit&agrave;, MS/DOS offre la
+possibilit&agrave; di analizzare il contenuto di un direttorio di un'altra
+unit&agrave;. La unit&agrave; ed il percorso del direttorio di cui vogliamo
+visualizzare il contenuto vengono specificati direttamente all'interno del
+comando, ad esempio:<p>
+<p>
+	<b>DIR  A:\</b><p>
+<p>
+visualizza il contenuto della radice del disco <b><i>A</i></b>..<p>
+Se, ad esempio, l'unit&agrave; corrente &egrave; <b><i>A</i></b> e vogliamo
+visualizzare il contenuto del direttorio in <b><i>C</i></b>, individuatao dal
+percorso <b><i>\TPI\SCHAERF</i></b>, si pu&ograve; introdurre dal prompt il
+comando:<p>
+<p>
+	<b>DIR C:\TPI\SCHAERF<i><p>
+</i></b><p>
+Accade spesso che un direttorio contenga troppi nomi di file per essere
+visualizzato in una sola schermata. MS/DOS offre la possibilit&agrave; di
+suddividere la visualizzazione in pi&ugrave; schermate aggiungendo l'opzione
+<b><i>/P </i></b>al comando <b><i>DIR</i></b>. Si faccia attenzione a non
+confondere il back-slash (\) con il carattere (<b><i>/</i></b>) usato per
+specificare i parametri nei comandi MS/DOS. Introducendo il comando:<p>
+<p>
+	<b>DIR A:\  /P<i><p>
+</i></b><p>
+si ottiene la visualizzazione del contenuto del direttorio radice di
+<b><i>A</i></b> su pi&ugrave; pagine. Visualizzata la prima schermata MS/DOS si
+ferma. Per continuare la visualizzazione &egrave; sufficiente premere un
+qualsiasi tasto.<p>
+<p>
+Quando la dimensione del direttorio eccede la capacit&agrave; dello schermo
+&egrave; anche possibile utilizzare un'altra variante. E' possibile
+visualizzare solamente i nomi dei direttori e dei file, escludendo tutte le
+informazioni normalmente visualizzate dal comando <b><i>DIR</i></b>
+(dimensione, data e ora di creazione, etc..). Ci&ograve; &egrave; possibile
+aggiungendo l'opzione <b><i>/W</i></b>. Il comando:<p>
+<p>
+	<b>DIR C:\  /W<i><p>
+</i></b><p>
+visualizza i nomi di file e del direttorio radice di <b><i>C</i></b>
+disponendoli su (un massimo di) cinque colonne. Il nome del direttorio &egrave;
+riportato tra parentesi quadre (<b>[..]</b>)<b><p>
+<p>
+<a name="B_Toc325451468"></b>
+<h4>
+4.2. Visualizzazione del contenuto di un file: comando MORE.</a></h4>
+E' utile spesso poter analizzare il contenuto di un file. Ci&ograve; puo essere
+fatto utilizzando il comando <b><i>MORE</i></b> che sfrutta una particolare
+tecnica avanzata del DOS chiamata <i>redirezione dell'input</i><b> </b>sulla
+quale per&ograve; non scendiamo in dettaglio.<p>
+Ci limitiamo ad osservare che se, ad esempio, il file
+<b><i>AUTOEXEC.BAT</i></b> &egrave; molto lungo, &egrave; possibile
+visualizzarlo digitando, al prompt:<p>
+<p>
+	<b>MORE &lt; C:\AUTOEXEC.BAT<p>
+</b><p>
+Il comando <b><i>MORE</i></b> visualizzer&agrave; la prima pagina del file e
+poi si fermer&agrave; mostrando il seguente messaggio:<p>
+<p>
+	<b>- Continua -<p>
+</b><p>
+A questo punto sar&agrave; sufficiente premere un tasto qualsiasi per
+continuare con la visualizzazione della successiva pagina.<p>
+<a name="B_Toc325451469">
+<h4>
+4.3. Copia del contenuto di un file: comando COPY.</a></h4>
+Il principale motivo per il quale &egrave; necessario effettuare copie di un
+file, sia esso di programma o di dati, &egrave; la sicurezza. I file di
+interesse per l'utente sono infatti memorizzati su dispositivi fisici che
+possono avere problemi dovuti all'usura e alla utilizzazione non corretta.<p>
+Lo strumento che il sistema operativo MS/DOS offre per la protezione dei dati
+(e del lavoro)  dell'utente &egrave; il comando <b><i>COPY</i></b>. Esso
+consente di copiare un file tra direttori o dischi, rinominare i file durante
+la copia e copiare un gruppo di file.<p>
+Occorre molta attenzione quando si utilizza il comando <b><i>COPY</i></b>;
+c'&egrave; il rischio di sovrascrivere inavvertitamente un file gi&agrave;
+esistente perdendo i dati in esso contenuti.<p>
+L'operazione di copia richiede che vengano specificati il nome (o percorso) sia
+del file da copiare (<i>origine</i>), sia di quello in cui si desidera copiare
+(<i>destinazione</i>).<p>
+Se, ad esempio, si vuole copiare il file <b><i>COMP1.PAS</i></b>, contenuto nel
+direttorio <b><i>EXDIFF</i></b> (vedi fig.2.), nel direttorio
+<b><i>VARI</i></b>, il comando da introdurre &egrave; il seguente:<p>
+<p>
+	<b>COPY  C:\TPI\SCHAERF\EXDIFF\COMP1.PAS  C:\TPI\VARI<p>
+</b><p>
+Si osservi che il file <i>origine</i> <b><i>COMP1.PAS</i></b> &egrave; il primo
+parametro del comando. Il secondo parametro &egrave; il percorso assoluto (o
+nome assoluto) del direttorio <i>destinazione</i> <b><i>VARI</i></b> che
+conterr&agrave; la copia. I nomi dei file origine e destinazione devono essere
+introdotti sempre in questo ordine. Il comando effettua una copia del file, nel
+direttorio destinazione specificata, assegnando ad esso lo stesso nome
+dell'originale.<p>
+Se si desidera assegnare un nuovo nome al file che si sta copiando, &egrave;
+necessario specificarlo come destinazione. Il nuovo nome per&ograve; non deve
+far riferimento ad un file gi&agrave; esistente. Nell'esempio precedente, se
+vogliamo che la copia di <b><i>COMP1.PAS</i></b> abbia nel direttorio
+destinazione <b><i>VARI</i></b> il nome <b><i>COMP.PAS</i></b> &egrave;
+sufficiente introdurre:<p>
+<p>
+	<b>COPY C:\TPI\SCHAERF\EXDIFF\COMP1.PAS  C:\TPI\VARI\COMP.PAS<p>
+</b><p>
+Supponiamo ora di voler fare la copia di tutti i file presenti in un
+direttorio. Piuttosto che introdurre tanti comandi di copia quanti sono i file,
+possiamo sfruttare alcune facilitazioni di MS/DOS. Se ad esempio, desideriamo
+copiare tutti i file del direttorio <b><i>EXDIFF </i></b>figlio di
+<b><i>SCHAERF </i></b> nel direttorio <b><i>VARI </i></b> conservando gli
+stessi nomi, quel che occorre digitare &egrave;:<p>
+<p>
+	<b>COPY C:\TPI\SCHAERF\EXDIFF\*.*   C:\TPI\VARI<p>
+</b><p>
+Nel comando si &egrave; utilizzata la sequenza <b>*.*</b> per specificare tutti
+i file del direttorio. In effetti il carattere <b>*</b> (asterisco) ha, in
+MS/DOS, il significato di <i>sequenza qualunque</i>. La sequenza <b>*.*</b>
+individua allora tutti i file il cui nome (rappresentato dal primo asterisco)
+&egrave; una qualsiasi sequenza di al piu' 8 caratteri e l'estensione
+(rappresentata dal secondo asterisco e separata dal punto) &egrave; una
+qualsiasi estensione di 3 caratteri. E' ovvio che in questo modo si individuano
+<i>tutti</i> i file del direttorio, ottenendo il risultato voluto. Il carattere
+<b>*</b> detto carattere <i>jolly</i> (per le propriet&agrave; appena viste),
+pu&ograve; essere combinato in diversi modi per specificare gruppi di file, ad
+esempio:<p>
+<p>
+	<b>*.PAS<p>
+</b><p>
+individua tutti i file con estensione <b><i>.PAS</i></b>, mentre la sequenza:<p>
+<p>
+	<b>PROGETTO.*</b><p>
+<p>
+individua tutti i file di nome progetto (che hanno una qualsiasi
+estensione).<b><p>
+<a name="B_Toc325451470"></b>
+<h4>
+4.4. Assegnazione di un nuovo nome ad un file: comando RENAME.</a></h4>
+Il comando <b><i>RENAME</i></b> viene utilizzato per ridenominare i file
+lasciandone inalterato il contenuto ed il percorso. Esso risulta
+particolarmente utile per la riorganizzazione dei file. Supponiamo, per
+esempio, di avere due versioni del file <b><i>PROG.PAS</i></b>. La versione
+nella radice del disco <b><i>C</i></b> &egrave; aggiornata con alcune
+modifiche, mentre quella nella radice del disco <b><i>A</i></b> &egrave; una
+versione vecchia del file. Per non generare confusione tra i due file e sapere
+sempre con esattezza quale &egrave; la versione pi&ugrave; recente &egrave;
+possibile rinominare il file relativo alla vecchia versione, in questo modo:<p>
+<p>
+	<b>REN A:\PROG.PAS   PROG_VEC.PAS<p>
+</b><p>
+Si &egrave; riportato come primo parametro il nome assoluto del file da
+rinominare e come secondo il nuovo nome. Con <b><i>RENAME</i></b> si pu&ograve;
+utilizzare anche il carattere jolly <b>*</b>.  Ad esempio, se si desidera
+rinominare tutti i file del direttorio corrente con estensione
+<b><i>TMP</i></b> in file con stesso nome ed estensione <b><i>TXT</i></b>, si
+pu&ograve; utilizzare il comando:<p>
+	<b>REN *.TMP  *.TXT</b><p>
+<a name="B_Toc325451471">
+<h4>
+4.5. Eliminazione di un file: comando DELETE.</a></h4>
+Utilizzando MS/DOS potrebbe essere necessario eliminare dei file non pi&ugrave;
+necessari. E' possibile eliminare un solo file , gruppi di file selezionati o
+tutti i file presenti in un direttorio. Attenzione! Una volta eliminati i file,
+potrebbe non essere pi&ugrave; possibile recuperarli. Occorre, pertanto, sempre
+accertarsi che i file selezionati siano proprio quelli che si desidera
+eliminare.<p>
+Per eliminare un singolo file, occorre digitare il comando <b><i>DEL</i></b>
+(che sta per Delete) seguito dal nome del file che si desidera eliminare. Ad
+esempio, per eliminare il file <b><i>COMP1.PAS</i></b> dal direttorio
+<b><i>VARI  </i></b>&egrave; sufficiente scrivere:<p>
+<p>
+	<b>DEL C:\TPI\VARI\COMP1.PAS<p>
+</b><p>
+Il carattere jolly <b>*</b>  pu&ograve; essere utilizzato per eliminare un
+gruppo di file. Ad esempio, per cancellare tutti i file del direttorio corrente
+aventi estensione <b><i>.TXT</i></b> si pu&ograve; introdurre il comando:<p>
+<p>
+	<b>DEL *.TXT<p>
+</b><p>
+Prima di eliminare un gruppo di file, &egrave; consigliabile visualizzarli con
+il comando <b><i>DIR</i></b> per controllo. Semplici verifiche  consentono di
+evitare eliminazioni indesiderate.<p>
+Per cancellare tutti i file di un direttorio occorre specificare la sequenza
+<b>*.*</b>.Ad esempio, per cancellare tutti i file nel direttorio
+<b><i>VARI</i></b> , si digiti:<p>
+<p>
+	<b>DEL C:\TPI\VARI\*.*<p>
+</b><p>
+Se nel comando non viene specificato un percorso, vengono eliminati tutti i
+file del direttorio corrente.<p>
+Si osservi che ogni volta che con il comando <b><i>DEL</i></b> viene utilizzata
+la sequenza <b>*.*</b>, MS/DOS chieder&agrave; conferma della eliminazione. Se
+si &egrave; certi di voler eliminare tutti i file, digitare <b><i>s</i></b>.<p>
+Il comando <b><i>DEL</i></b> presenta una opzione interessante che consente di
+effettuare delle eliminazioni selettive. Se si aggiunge  <b><i>/P </i></b>al
+comando <b><i>DEL</i></b> , MS/DOS chiede conferma per ciascuno dei file
+individuati dal parametro. Nell'esempio che segue:<p>
+<p>
+	<b>DEL *.*  /P<p>
+</b><p>
+viene richiesto, per ciascun file del direttorio corrente, se si vuole
+effettuare l'eliminazione o meno. Per confermare l'operazione digitare
+<b><i>s</i></b>, per annullarla digitare <b><i>n</i></b>.<p>
+<a name="B_Toc325451472">
+<h4>
+4.6. Stampa di un file: comando PRINT.</a></h4>
+Dal prompt di MS/DOS &egrave; possibile stampare file di testo formattati (come
+sorgenti di programmi in Pascal) utilizzando il comando<b><i> PRINT</i></b>. Di
+solito, &egrave; consigliabile stampare i file di testo formattati ed altri
+particolari file direttamente dal programma con il quale sono stati creati. Per
+stampare il contenuto di un file, occorre prima selezionare una stampante di
+rete, quindi specificare il comando <b><i>PRINT</i></b> seguito dal nome del
+file da stampare. Supponiamo di voler stampare il contenuto del file
+<b><i>PROGRAM.TXT</i></b> registrato nella radice della unit&agrave;
+<b><i>C</i></b>, il comando da introdurre &egrave;:<p>
+<p>
+	<b>PRINT C:\PROGRAM.TXT</b><p>
+<p>
+Per inviare pi&ugrave; file alla stampante in una sola volta &egrave; possibile
+digitare i vari nomi separandoli da uno spazio. Si pu&ograve; anche utilizzare
+il carattere jolly <b>*</b>. Ad esempio, per stampare i file <b><i>PROG1.PAS
+</i></b>, <b><i>TESTO.PAS</i></b> e tutti i file con estensione
+<b><i>.TXT</i></b> si pu&ograve; introdurre il comando:<p>
+<p>
+	<b>PRINT  PROG1.PAS  TESTO.PAS  *.TXT</b><b><p>
+<p>
+<a name="B_Toc325451473"></b>
+<h3>
+5. Comandi per la gestione dei direttori</a></h3>
+<p>
+Una abilit&agrave; fondamentale che l'utente che si avvicina all'utilizzo del
+sistema MS/DOS deve acquisire &egrave; la capacit&agrave; di muoversi
+all'interno dei direttori. L'utente deve cio&egrave; imparare a <i>navigare</i>
+all'interno della struttura dei direttori. Seguono i principali comandi che
+facilitano la navigazione.<p>
+<a name="B_Toc325451474">
+<h4>
+5.1. Navigazione tra i direttori: comando CD e percorsi relativi.</a></h4>
+Si &egrave; visto che ciascuna unit&agrave; ha un suo direttorio corrente. Se
+il sistema dispone,ad esempio, di due dischi floppy ed un disco rigido, i
+direttori correnti sono, in tutto, tre.<p>
+Se su un disco non esistono subdirettori, il direttorio principale &egrave;
+sempre il direttorio corrente, se invece contiene dei subdirettori, &egrave;
+possibile utilizzare il comando <b><i>CD </i></b>(che sta per <i>Change
+Directory</i>) per spostarsi da un direttorio all'altro.<p>
+La forma pi&ugrave; semplice del comando <b><i>CD</i></b> consente di spostarsi
+da un direttorio ad un figlio e viceversa, da un sottodirettorio al suo
+direttorio padre. Quando si usa il comando <b><i>CD</i></b> &egrave; bene che
+sia nota la struttura dei direttori e cio&egrave; la relazione di parentela che
+intercorre tra i direttori.<p>
+Se ad esempio il direttorio corrente &egrave; <b><i>C:\</i></b> e si vuole
+rendere corrente il direttorio <b><i>TPI</i></b>, &egrave; sufficiente
+digitare:<p>
+<p>
+	<b>CD TPI<p>
+</b><p>
+Nel comando si &egrave; specificato il nome del direttorio figlio di quello
+corrente.<p>
+Eseguito il comando, il prompt diviene:<p>
+<p>
+	<b>C:\TPI&gt;<p>
+</b><p>
+il direttorio <b><i>TPI</i></b> &egrave; ora corrente.<b><i></i></b><p>
+Per tornare al direttorio radice di <b><i>C</i></b>, &egrave; sufficiente
+digitare:<p>
+<p>
+	<b>CD ..</b><p>
+<p>
+I due punti (<b><i>..</i></b>) hanno il significato di direttorio precedente o
+direttorio padre di quello corrente. Il sottodirettorio <b><i>TPI</i></b>
+&egrave; figlio del direttorio radice di <b><i>C </i></b>(vedi fig.1.)<p>
+Se dalla radice del disco <b><i>C</i></b> si volesse raggiungere il
+sottodirettorio <b><i>LIVELLO7</i></b>  del direttorio <b><i>SCHAERF</i></b>,
+sarebbe sufficiente digitare:<p>
+<p>
+	<b>CD \TPI\SCHAERF\LIVELLO7<i><p>
+</i></b><p>
+Si noti che il  percorso parte dal direttorio radice. Si sarebbe potuto
+raggiungere lo stesso risultato digitando in successione i tre seguenti
+comandi:<p>
+<p>
+	<b>CD TPI<p>
+	CD SCHAERF<p>
+	CD LIVELLO7<p>
+</b><p>
+Infine, se il direttorio corrente &egrave; <b><i>LIVELLO7</i></b>, e si vuole
+passare al direttorio <b><i>LIVELLO6</i></b>  "<i>fratello"</i> (perch&egrave;
+figlio dello stesso direttorio padre), occorre prima tornare al livello
+precedente (<b><i>SCHAERF</i></b>) e quindi spostarsi sul nuovo direttorio con
+il comando <b><i>CD</i></b>. L'operazione si pu&ograve; eseguire con la coppia
+di comandi:<p>
+<p>
+	<b>CD ..<p>
+	CD LIVELLO6<p>
+</b><p>
+Fino ad ora abbiamo utilizzato nomi (o percorsi) <i>assoluti</i>. Tali percorsi
+iniziano sempre con il carattere (<b>\</b>) che denota appunto la radice.<p>
+MS/DOS consente anche di specificare cammini <i>relativi. </i>Tali cammini,
+diversamente da quelli assoluti, non partono dal direttorio radice ma dal
+direttorio corrente. Il concetto pu&ograve; essere chiarito con un esempio.<p>
+Se il direttorio corrente fosse <b><i>TPI</i></b>, avendosi cos&igrave; un
+prompt del tipo:<p>
+<p>
+	<b>C:\TPI&gt;</b> <p>
+<p>
+si potrebbe specificare il cammino necessario all'individuazione del direttorio
+<b><i>EXDIFF </i></b>in maniera relativa (percorso relativo) al direttorio
+corrente e cio&egrave;:<p>
+<p>
+	<b>SCHAERF\EXDIFF<i><p>
+</i></b><p>
+Si noti come in questo caso il primo carattere non sia (<b>\</b>) ma
+direttamente il nome del direttorio figlio di <b><i>TPI</i></b>. La barra
+(\)<i> </i>tra i due direttori ha ancora il significato di separatore.<p>
+Il comando per spostarsi nei direttori diviene quindi:<p>
+<p>
+	<b>CD SCHAERF\EXDIFF</b>		(percorso relativo)<p>
+<p>
+		oppure<p>
+<p>
+	<b>CD \TPI\SCHAERF\EXDIFF	</b>(percorso assoluto)<p>
+<p>
+Si osservi che i nomi (o cammini) assoluti incominciano sempre con un carattere
+back-slash (<b>\</b>), mentre ci&ograve; non avviene per i nomi relativi.<p>
+I cammini relativi possono essere combinati anche con i due punti (<b>..</b>)
+il cui significato &egrave; stato gi&agrave; illustrato.<p>
+Se, ad esempio, il direttorio corrente &egrave; <b><i>EXDIFF</i></b> e vogliamo
+spostarci nel direttorio fratello <b><i>LIVELLO6</i></b>  si pu&ograve;
+sinteticamente scrivere:<p>
+<p>
+	<b>CD ..\LIVELLO6<p>
+</b><p>
+in tal modo specifichiamo il ritorno al livello precedente (direttorio
+<b><i>SCHAERF</i></b>) e quindi di nuovo nel direttorio
+<b><i>LIVELLO6.</i></b><p>
+L'utente &egrave; invitato a sperimentare attentamente il comando
+<b><i>CD</i></b>.<p>
+<a name="B_Toc325451475">
+<h4>
+5.2. Creazione ed eliminazione di direttori: comandi MD e RD</a></h4>
+Quando si dispone di un gruppo di file che sono tra loro in relazione potrebbe
+essere comodo disporli in un direttorio a parte. In tal modo sono isolati dal
+resto dei programmi e risultano reperibili pi&ugrave; facilmente. Per creare un
+direttorio &egrave; possibile utilizzare il comando <b><i>MD</i></b> (<i>Make
+Directory</i>). Prima di creare un direttorio occorre individuare la posizione
+in cui verr&agrave; inserito. Nella forma pi&ugrave; semplice <b><i>MD</i></b>
+crea il nuovo direttorio come figlio di quello corrente. Quindi prima di
+inserire tale comando &egrave; necessario rendere attivo il direttorio
+corretto, utilizzando il comando <b><i>CD  </i></b>gi&agrave; visto.<p>
+Ad esempio, se il direttorio corrente &egrave; il <b><i>C:</i>\</b> (radice del
+disco rigido), &egrave; possibile creare un sottodirettorio
+<b><i>PROVA</i></b>,  con il comando:<p>
+<p>
+	<b>MD PROVA</b><p>
+<p>
+il cammino assoluto del nuovo direttorio cos&igrave; creato sar&agrave;
+<b><i>\PROVA</i></b>. In realt&agrave; non &egrave; necessario che il
+direttorio all'interno del quale creiamo il nuovo direttorio sia attivo.
+Utilizziamo ancora il concetto di cammino (assoluto o relativo).<p>
+Ad esempio, se il direttorio corrente &egrave; <b><i>C:\TPI\CORRETTI</i></b>,
+&egrave; possibile creare il sottodirettorio <b><i>COMP2</i></b>  del
+direttorio <b><i>NARDI</i></b>  semplicemente specificando il percorso corretto
+nel comando <b><i>MD</i></b>, come segue:<p>
+<p>
+	<b>MD \TPI\NARDI\COMP2<i><p>
+</i></b><p>
+Si pu&ograve; anche creare un sottodirettorio su una unit&agrave; non attiva.
+Ad esempio, se l'unit&agrave; corrente &egrave; <b><i>C</i></b> (non importa
+quale sia il direttorio corrente), si pu&ograve; creare un nuovo direttorio
+<b><i>PROVA1</i></b><i> </i> sulla radice del disco nel floppy <b><i>A
+</i></b>usando il comando seguente:<p>
+<p>
+	<b>MD A:\PROVA1</b><p>
+<p>
+Si pu&ograve; utilizzare il comando <b><i>MD</i></b> con un qualsiasi percorso
+assoluto o relativo.<p>
+<p>
+Un direttorio non pi&ugrave; necessario pu&ograve; essere eliminato con il
+comando <b><i>RD</i></b> (<i>Remove Directory</i>). Questa operazione &egrave;
+sempre raccomandabile sia per motivi di ordine, sia per motivi di efficienza ed
+occupazione dello spazio su disco. Una condizione necessaria perch&egrave; la
+cancellazione sia effettuata &egrave; che il direttorio da eliminare sia vuoto
+(cio&egrave; non contenga file). Se infatti si specifica il comando <b><i>RD
+</i></b>per un direttorio che contiene ancora dei file, MS/DOS ci avverte che
+l'operazione non pu&ograve; essere portata a termine.<p>
+Prima di eliminare un direttorio occorre quindi assicurarsi che non contenga
+file. <p>
+Supponiamo di aver creato il direttorio <b><i>PROVA1</i></b>  come
+sottodirettorio della radice del disco <b><i>A</i></b>, e di aver registrato
+dei file al suo interno, ma di non aver creato altri subdirettori. Se si
+desidera cancellare il direttorio occorre eliminare i file contenuti al suo
+interno e poi utilizzare il comando <b><i>RD</i></b>. La prima operazione
+pu&ograve; essere specificata mediante il comando <b><i>DEL</i></b>, gi&agrave;
+visto. La sequenza di comandi per ottenere l'effetto voluto &egrave; la
+seguente:<p>
+<p>
+	<b>DEL A:\PROVA1\*.*<p>
+	RD A:\PROVA1<i><p>
+</i></b><p>
+Il primo comando specifica la cancellazione dei file contenuti nel direttorio
+<b><i>PROVA1</i></b>, mentre il secondo specifica la cancellazione del
+direttorio. Si noti come, analogamente a quanto accade per il comando
+<b><i>MD</i></b>, anche con <b><i>RD</i></b>  &egrave; possibile utilizzare
+nomi assoluti (come nell'esempio) o relativi.<p>
+Se, ad esempio, si deve cancellare il direttorio <b><i>VARI</i></b> (vedi
+fig.1.) il cui cammino completo &egrave; <b><i>C:\TPI\VARI</i></b>, occorre
+digitare al prompt di MS/DOS:<p>
+	<b>RD C:\TPI\VARI<i></i></b><p>
+comando che sar&agrave; eseguito solamente se il direttorio <b><i>VARI
+</i></b>&egrave; vuoto.
+<a name="B_Toc325451476">
+<h3>
+6. Riepilogo dei principali comandi MS/DOS</a></h3>
+<p>
+<p>
+DIR<p>
+Visualizza l'elenco dei file e dei sottodirettori di un direttorio.<i><p>
+Sintassi</i>:<i>  </i>DIR [unit&agrave; :] [percorso \] [nomefile]  [/P] [/W]<p>
+<p>
+<b><p>
+MD</b><p>
+Crea un nuovo sottodirettorio.<i><p>
+Sintassi</i>:  MD [unit&agrave; :] percorso<p>
+<b><p>
+<p>
+CD</b><p>
+Cambia il direttorio corrente.<b></b><i><p>
+Sintassi</i>:  CD [unit&agrave; :] [percorso]<p>
+                CD [ .. ]<p>
+<b><p>
+<p>
+RD</b><p>
+Elimina (rimuove) un direttorio (dopo che sono stati eliminati tutti i file in
+esso contenuti).<i><p>
+Sintassi</i>:  RD [unit&agrave; :] percorso<p>
+<b><p>
+<p>
+MORE</b><p>
+Visualizza il contenuto di un file di testo.<i><p>
+Sintassi</i>:  MORE &lt; [unit&agrave; :] [percorso] nomefile<p>
+<b><p>
+<p>
+COPY</b><p>
+Copia uno o pi&ugrave; file in un'altra posizione.<i><p>
+Sintassi</i>:  COPY origine [destinazione] [/V]<p>
+<b><p>
+<p>
+FORMAT</b><p>
+Formatta il disco nell'unit&agrave; specificata per accettare i file di
+MS/DOS.<i><p>
+Sintassi</i>:  FORMAT  unit&agrave; : [/U] [/F:dimensione] [/S]<p>
+<b><p>
+<p>
+DEL</b><p>
+Elimina i file specificati.<i><p>
+Sintassi</i>: [unit&agrave; :] [percorso] nomefile [/P]<b><p>
+<p>
+<p>
+EDIT</b><p>
+Avvia MS/DOS Editor.<i><p>
+Sintassi</i>:  EDIT [ [unit&agrave; :] [percorso] nomefile]
+</body></html>

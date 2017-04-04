@@ -1,0 +1,905 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1">
+<META NAME="Generator" CONTENT="Microsoft Word 98">
+<TITLE>LEZIONE 21 03 2001</TITLE>
+</HEAD>
+<BODY>
+
+<FONT FACE="Times"><P ALIGN="CENTER"> </FONT><B><U><FONT FACE="Times" SIZE=4>Fond. di Informatica (C.E.M.N.)</U>&#9;  &#9;&#9;  <U>secondo complemento didattico</P>
+</FONT><FONT FACE="Times" SIZE=5><P ALIGN="CENTER"></P>
+</B></U></FONT><FONT FACE="Times" SIZE=2><P ALIGN="JUSTIFY">Come rappresentare un numero avente parte frazionaria in una cella di</FONT><FONT FACE="Courier New" SIZE=2> n </FONT><FONT FACE="Times" SIZE=2>bit?</P>
+<P ALIGN="JUSTIFY">(n=<B>32</B>, 64 bit ... nel seguito assumiamo 32).</P><DIR>
+<DIR>
+<DIR>
+<DIR>
+<DIR>
+<DIR>
+<DIR>
+<DIR>
+<DIR>
+<DIR>
+<DIR>
+<DIR>
+<DIR>
+
+</FONT><B><FONT FACE="Courier New" SIZE=4><P ALIGN="JUSTIFY">-25.5625 &lt;=&gt; -11001.1001</P></DIR>
+</DIR>
+</DIR>
+</DIR>
+</DIR>
+</DIR>
+</DIR>
+</DIR>
+</DIR>
+</DIR>
+</DIR>
+</DIR>
+</DIR>
+</B></FONT>
+<TABLE BORDER CELLSPACING=1 CELLPADDING=5 WIDTH=511>
+<TR><TD WIDTH="3%" VALIGN="MIDDLE" HEIGHT=15>
+<B><FONT FACE="Courier New" SIZE=1><P ALIGN="JUSTIFY">-</B></FONT></TD>
+<TD WIDTH="3%" VALIGN="MIDDLE" HEIGHT=15>
+<B><FONT FACE="Courier New" SIZE=1><P ALIGN="JUSTIFY">1</B></FONT></TD>
+<TD WIDTH="3%" VALIGN="MIDDLE" HEIGHT=15>
+<B><FONT FACE="Courier New" SIZE=1><P ALIGN="JUSTIFY">1</B></FONT></TD>
+<TD WIDTH="3%" VALIGN="MIDDLE" HEIGHT=15>
+<B><FONT FACE="Courier New" SIZE=1><P ALIGN="JUSTIFY">0</B></FONT></TD>
+<TD WIDTH="3%" VALIGN="MIDDLE" HEIGHT=15>
+<B><FONT FACE="Courier New" SIZE=1><P ALIGN="JUSTIFY">0</B></FONT></TD>
+<TD WIDTH="3%" VALIGN="MIDDLE" HEIGHT=15>
+<B><FONT FACE="Courier New" SIZE=1><P ALIGN="JUSTIFY">1</B></FONT></TD>
+<TD WIDTH="3%" VALIGN="MIDDLE" HEIGHT=15>
+<B><FONT FACE="Courier New" SIZE=1><P ALIGN="JUSTIFY">.</B></FONT></TD>
+<TD WIDTH="3%" VALIGN="MIDDLE" HEIGHT=15>
+<B><FONT FACE="Courier New" SIZE=1><P ALIGN="JUSTIFY">1</B></FONT></TD>
+<TD WIDTH="3%" VALIGN="MIDDLE" HEIGHT=15>
+<B><FONT FACE="Courier New" SIZE=1><P ALIGN="JUSTIFY">0</B></FONT></TD>
+<TD WIDTH="3%" VALIGN="MIDDLE" HEIGHT=15>
+<B><FONT FACE="Courier New" SIZE=1><P ALIGN="JUSTIFY">0</B></FONT></TD>
+<TD WIDTH="3%" VALIGN="MIDDLE" HEIGHT=15>
+<B><FONT FACE="Courier New" SIZE=1><P ALIGN="JUSTIFY">1</B></FONT></TD>
+<TD WIDTH="3%" VALIGN="MIDDLE" HEIGHT=15>
+<B><FONT FACE="Courier New" SIZE=1><P ALIGN="JUSTIFY">0</B></FONT></TD>
+<TD WIDTH="3%" VALIGN="MIDDLE" HEIGHT=15>
+<B><FONT FACE="Courier New" SIZE=1><P ALIGN="JUSTIFY">0</B></FONT></TD>
+<TD WIDTH="3%" VALIGN="MIDDLE" HEIGHT=15><P></P></TD>
+<TD WIDTH="3%" VALIGN="MIDDLE" HEIGHT=15><P></P></TD>
+<TD WIDTH="3%" VALIGN="MIDDLE" HEIGHT=15><P></P></TD>
+<TD WIDTH="3%" VALIGN="MIDDLE" HEIGHT=15><P></P></TD>
+<TD WIDTH="3%" VALIGN="MIDDLE" HEIGHT=15><P></P></TD>
+<TD WIDTH="3%" VALIGN="MIDDLE" HEIGHT=15><P></P></TD>
+<TD WIDTH="3%" VALIGN="MIDDLE" HEIGHT=15><P></P></TD>
+<TD WIDTH="3%" VALIGN="MIDDLE" HEIGHT=15><P></P></TD>
+<TD WIDTH="3%" VALIGN="MIDDLE" HEIGHT=15><P></P></TD>
+<TD WIDTH="3%" VALIGN="MIDDLE" HEIGHT=15><P></P></TD>
+<TD WIDTH="3%" VALIGN="MIDDLE" HEIGHT=15><P></P></TD>
+<TD WIDTH="3%" VALIGN="MIDDLE" HEIGHT=15><P></P></TD>
+<TD WIDTH="3%" VALIGN="MIDDLE" HEIGHT=15><P></P></TD>
+<TD WIDTH="3%" VALIGN="MIDDLE" HEIGHT=15><P></P></TD>
+<TD WIDTH="3%" VALIGN="MIDDLE" HEIGHT=15><P></P></TD>
+<TD WIDTH="3%" VALIGN="MIDDLE" HEIGHT=15><P></P></TD>
+<TD WIDTH="3%" VALIGN="MIDDLE" HEIGHT=15><P></P></TD>
+<TD WIDTH="3%" VALIGN="MIDDLE" HEIGHT=15><P></P></TD>
+<TD WIDTH="3%" VALIGN="MIDDLE" HEIGHT=15><P></P></TD>
+</TR>
+</TABLE>
+
+<B><FONT FACE="Times">
+</FONT><FONT FACE="Times" SIZE=4><P ALIGN="CENTER">Rappresentazione &quot;Fixed Point&quot;</P>
+</B></FONT><FONT FACE="Times" SIZE=2><P ALIGN="JUSTIFY"></P>
+<P>primo bit per il segno; un certo numero di bit per la parte intera; gli altri bit per la parte frazionaria</P></FONT>
+<TABLE BORDER CELLSPACING=1 CELLPADDING=5 WIDTH=511>
+<TR><TD WIDTH="3%" VALIGN="MIDDLE" HEIGHT=15>
+<B><FONT FACE="Courier New" SIZE=1><P ALIGN="JUSTIFY">-</B></FONT></TD>
+<TD WIDTH="3%" VALIGN="MIDDLE" HEIGHT=15>
+<B><FONT FACE="Courier New" SIZE=1><P ALIGN="JUSTIFY">0</B></FONT></TD>
+<TD WIDTH="3%" VALIGN="MIDDLE" HEIGHT=15>
+<B><FONT FACE="Courier New" SIZE=1><P ALIGN="JUSTIFY">0</B></FONT></TD>
+<TD WIDTH="3%" VALIGN="MIDDLE" HEIGHT=15>
+<B><FONT FACE="Courier New" SIZE=1><P ALIGN="JUSTIFY">0</B></FONT></TD>
+<TD WIDTH="3%" VALIGN="MIDDLE" HEIGHT=15>
+<B><FONT FACE="Courier New" SIZE=1><P ALIGN="JUSTIFY">0</B></FONT></TD>
+<TD WIDTH="3%" VALIGN="MIDDLE" HEIGHT=15>
+<B><FONT FACE="Courier New" SIZE=1><P ALIGN="JUSTIFY">0</B></FONT></TD>
+<TD WIDTH="3%" VALIGN="MIDDLE" HEIGHT=15>
+<B><FONT FACE="Courier New" SIZE=1><P ALIGN="JUSTIFY">0</B></FONT></TD>
+<TD WIDTH="3%" VALIGN="MIDDLE" HEIGHT=15>
+<B><FONT FACE="Courier New" SIZE=1><P ALIGN="JUSTIFY">0</B></FONT></TD>
+<TD WIDTH="3%" VALIGN="MIDDLE" HEIGHT=15>
+<B><FONT FACE="Courier New" SIZE=1><P ALIGN="JUSTIFY">0</B></FONT></TD>
+<TD WIDTH="3%" VALIGN="MIDDLE" HEIGHT=15>
+<B><FONT FACE="Courier New" SIZE=1><P ALIGN="JUSTIFY">0</B></FONT></TD>
+<TD WIDTH="3%" VALIGN="MIDDLE" HEIGHT=15>
+<B><FONT FACE="Courier New" SIZE=1><P ALIGN="JUSTIFY">0</B></FONT></TD>
+<TD WIDTH="3%" VALIGN="MIDDLE" HEIGHT=15>
+<B><FONT FACE="Courier New" SIZE=1><P ALIGN="JUSTIFY">1</B></FONT></TD>
+<TD WIDTH="3%" VALIGN="MIDDLE" HEIGHT=15>
+<B><FONT FACE="Courier New" SIZE=1><P ALIGN="JUSTIFY">1</B></FONT></TD>
+<TD WIDTH="3%" VALIGN="MIDDLE" HEIGHT=15>
+<B><FONT FACE="Courier New" SIZE=1><P ALIGN="JUSTIFY">0</B></FONT></TD>
+<TD WIDTH="3%" VALIGN="MIDDLE" HEIGHT=15>
+<B><FONT FACE="Courier New" SIZE=1><P ALIGN="JUSTIFY">0</B></FONT></TD>
+<TD WIDTH="3%" VALIGN="MIDDLE" HEIGHT=15>
+<B><FONT FACE="Courier New" SIZE=1><P ALIGN="JUSTIFY">1</B></FONT></TD>
+<TD WIDTH="3%" VALIGN="MIDDLE" HEIGHT=15>
+<B><FONT FACE="Courier New" SIZE=1><P ALIGN="JUSTIFY">1</B></FONT></TD>
+<TD WIDTH="3%" VALIGN="MIDDLE" HEIGHT=15>
+<B><FONT FACE="Courier New" SIZE=1><P ALIGN="JUSTIFY">0</B></FONT></TD>
+<TD WIDTH="3%" VALIGN="MIDDLE" HEIGHT=15>
+<B><FONT FACE="Courier New" SIZE=1><P ALIGN="JUSTIFY">0</B></FONT></TD>
+<TD WIDTH="3%" VALIGN="MIDDLE" HEIGHT=15>
+<B><FONT FACE="Courier New" SIZE=1><P ALIGN="JUSTIFY">1</B></FONT></TD>
+<TD WIDTH="3%" VALIGN="MIDDLE" HEIGHT=15>
+<B><FONT FACE="Courier New" SIZE=1><P ALIGN="JUSTIFY">0</B></FONT></TD>
+<TD WIDTH="3%" VALIGN="MIDDLE" HEIGHT=15>
+<B><FONT FACE="Courier New" SIZE=1><P ALIGN="JUSTIFY">0</B></FONT></TD>
+<TD WIDTH="3%" VALIGN="MIDDLE" HEIGHT=15>
+<B><FONT FACE="Courier New" SIZE=1><P ALIGN="JUSTIFY">0</B></FONT></TD>
+<TD WIDTH="3%" VALIGN="MIDDLE" HEIGHT=15>
+<B><FONT FACE="Courier New" SIZE=1><P ALIGN="JUSTIFY">0</B></FONT></TD>
+<TD WIDTH="3%" VALIGN="MIDDLE" HEIGHT=15>
+<B><FONT FACE="Courier New" SIZE=1><P ALIGN="JUSTIFY">0</B></FONT></TD>
+<TD WIDTH="3%" VALIGN="MIDDLE" HEIGHT=15>
+<B><FONT FACE="Courier New" SIZE=1><P ALIGN="JUSTIFY">0</B></FONT></TD>
+<TD WIDTH="3%" VALIGN="MIDDLE" HEIGHT=15>
+<B><FONT FACE="Courier New" SIZE=1><P ALIGN="JUSTIFY">0</B></FONT></TD>
+<TD WIDTH="3%" VALIGN="MIDDLE" HEIGHT=15>
+<B><FONT FACE="Courier New" SIZE=1><P ALIGN="JUSTIFY">0</B></FONT></TD>
+<TD WIDTH="3%" VALIGN="MIDDLE" HEIGHT=15>
+<B><FONT FACE="Courier New" SIZE=1><P ALIGN="JUSTIFY">0</B></FONT></TD>
+<TD WIDTH="3%" VALIGN="MIDDLE" HEIGHT=15>
+<B><FONT FACE="Courier New" SIZE=1><P ALIGN="JUSTIFY">0</B></FONT></TD>
+<TD WIDTH="3%" VALIGN="MIDDLE" HEIGHT=15>
+<B><FONT FACE="Courier New" SIZE=1><P ALIGN="JUSTIFY">0</B></FONT></TD>
+<TD WIDTH="3%" VALIGN="MIDDLE" HEIGHT=15>
+<B><FONT FACE="Courier New" SIZE=1><P ALIGN="JUSTIFY">0</B></FONT></TD>
+</TR>
+</TABLE>
+
+<FONT FACE="Times"><P ALIGN="JUSTIFY"></P>
+<P ALIGN="JUSTIFY">numeri rappresentabili: &#9;QUANTI? 2<SUP>32</SUP> &#9;&#9;&#9;QUALI? [-(2<SUP>15</SUP>-1)<B>. </B>... , (2<SUP>15</SUP>-1)<B>. </B>...]</P>
+<B>
+</FONT><FONT FACE="Times" SIZE=4><P ALIGN="CENTER">Rappresentazione dei numeri reali in Floating Point</P>
+</B></FONT><FONT FACE="Times"><P ALIGN="JUSTIFY"></P>
+<P ALIGN="JUSTIFY">Ci si basa sulla rappresentazione mediante MANTISSA ed ESPONENTE (e SEGNO...)</P>
+</FONT><FONT FACE="Courier New"><P ALIGN="CENTER"></P>
+<P>-25.5625</P>
+<P>&lt;==&gt;&#9;-<B>0.255625</B>*10<SUP>2</SUP>&#9;&lt;==&gt;&#9;-0.00255625*10<SUP>4</SUP>&#9;&lt;==&gt;&#9;-255625.*10<SUP>-4</P>
+</SUP><P>&lt;==&gt;&#9;-<B>.110111001</B>*2<SUP>5</SUP></FONT><FONT FACE="Times">&#9;</FONT><FONT FACE="Courier New">&lt;==&gt;&#9;-11011.1001*2<SUP>0 &#9;&#9;</SUP>&lt;==&gt; -11011100.1*2<SUP>-3</P>
+</SUP></FONT><FONT FACE="Times"><P ALIGN="JUSTIFY"></P>
+</FONT><FONT FACE="Times" SIZE=4><P ALIGN="JUSTIFY">Per&ograve; non si usa una mantissa qualsiasi ...&#9;Mantissa in <B>forma normalizzata</B>:</P><DIR>
+<DIR>
+<DIR>
+<DIR>
+<DIR>
+<DIR>
+<DIR>
+<DIR>
+<DIR>
+<DIR>
+<DIR>
+<DIR>
+
+<B><P ALIGN="JUSTIFY">1/base &lt;= |mantissa| &lt; 1</P>
+</B></FONT><FONT FACE="Times"><P ALIGN="JUSTIFY"></P></DIR>
+</DIR>
+</DIR>
+</DIR>
+</DIR>
+</DIR>
+</DIR>
+</DIR>
+</DIR>
+</DIR>
+</DIR>
+</DIR>
+
+<P ALIGN="JUSTIFY">In generale: con base <B>b</B>, un numero <B>X</B> si rappresenta mediante la mantissa <B>m</B> e la caratteristica (esponente) <B>e</B> come:&#9;&#9;&#9;&#9;&#9;&#9;</FONT><B><FONT FACE="Times" SIZE=4>X = m*b<SUP>e</SUP>&#9;(1/b &lt;= |m| &lt;1)</P>
+</B></FONT><FONT FACE="Times"><P ALIGN="JUSTIFY"></P>
+<P ALIGN="CENTER">Es. per X=25.5625&#9;&#9;&#9;&#9;&#9;&#9;&#9;<B>m = .110011001&#9;e = 00101</P>
+</B><P ALIGN="JUSTIFY"></P>
+<P ALIGN="JUSTIFY">In base b=2, la mantissa normalizzata deve essere un numero in valore assoluto maggiore di 1/2 e minore di uno. In altre parole comincia sempre per 1...&#9;&#9;&#9;&#9;</FONT><B><FONT FACE="Times" SIZE=4>m = .1.......</P>
+</B></FONT><FONT FACE="Times"><P ALIGN="JUSTIFY"></P>
+</FONT><B><FONT FACE="Times" SIZE=4><P ALIGN="JUSTIFY">Disposizione dei bit nella cella (modello di comodo...): </P>
+
+<UL><DIR>
+<DIR>
+
+
+<UL>
+</B><P ALIGN="JUSTIFY"><LI>un bit per il <B>segno della mantissa</B>; </LI></P>
+<P ALIGN="JUSTIFY"><LI>7 bit per l&#146;<B>esponente</B> (intero rappresentato in complemento a due); </LI></P>
+<P ALIGN="JUSTIFY"><LI>24 bit per la <B>mantissa</B>.</LI></P></UL>
+</DIR>
+</DIR>
+</UL>
+
+</FONT><FONT FACE="Times" SIZE=2><P>-25.5625 </P></FONT>
+<TABLE BORDER CELLSPACING=1 CELLPADDING=5 WIDTH=511>
+<TR><TD WIDTH="3%" VALIGN="MIDDLE" HEIGHT=15>
+<B><FONT FACE="Courier New" SIZE=1><P ALIGN="JUSTIFY">1</B></FONT></TD>
+<TD WIDTH="3%" VALIGN="MIDDLE" HEIGHT=15>
+<B><FONT FACE="Courier New" SIZE=1><P ALIGN="JUSTIFY">0</B></FONT></TD>
+<TD WIDTH="3%" VALIGN="MIDDLE" HEIGHT=15>
+<B><FONT FACE="Courier New" SIZE=1><P ALIGN="JUSTIFY">0</B></FONT></TD>
+<TD WIDTH="3%" VALIGN="MIDDLE" HEIGHT=15>
+<B><FONT FACE="Courier New" SIZE=1><P ALIGN="JUSTIFY">0</B></FONT></TD>
+<TD WIDTH="3%" VALIGN="MIDDLE" HEIGHT=15>
+<B><FONT FACE="Courier New" SIZE=1><P ALIGN="JUSTIFY">0</B></FONT></TD>
+<TD WIDTH="3%" VALIGN="MIDDLE" HEIGHT=15>
+<B><FONT FACE="Courier New" SIZE=1><P ALIGN="JUSTIFY">1</B></FONT></TD>
+<TD WIDTH="3%" VALIGN="MIDDLE" HEIGHT=15>
+<B><FONT FACE="Courier New" SIZE=1><P ALIGN="JUSTIFY">0</B></FONT></TD>
+<TD WIDTH="3%" VALIGN="MIDDLE" HEIGHT=15>
+<B><FONT FACE="Courier New" SIZE=1><P ALIGN="JUSTIFY">1</B></FONT></TD>
+<TD WIDTH="3%" VALIGN="MIDDLE" HEIGHT=15>
+<B><FONT FACE="Courier New" SIZE=1><P ALIGN="JUSTIFY">1</B></FONT></TD>
+<TD WIDTH="3%" VALIGN="MIDDLE" HEIGHT=15>
+<B><FONT FACE="Courier New" SIZE=1><P ALIGN="JUSTIFY">1</B></FONT></TD>
+<TD WIDTH="3%" VALIGN="MIDDLE" HEIGHT=15>
+<B><FONT FACE="Courier New" SIZE=1><P ALIGN="JUSTIFY">0</B></FONT></TD>
+<TD WIDTH="3%" VALIGN="MIDDLE" HEIGHT=15>
+<B><FONT FACE="Courier New" SIZE=1><P ALIGN="JUSTIFY">0</B></FONT></TD>
+<TD WIDTH="3%" VALIGN="MIDDLE" HEIGHT=15>
+<B><FONT FACE="Courier New" SIZE=1><P ALIGN="JUSTIFY">1</B></FONT></TD>
+<TD WIDTH="3%" VALIGN="MIDDLE" HEIGHT=15>
+<B><FONT FACE="Courier New" SIZE=1><P ALIGN="JUSTIFY">1</B></FONT></TD>
+<TD WIDTH="3%" VALIGN="MIDDLE" HEIGHT=15>
+<B><FONT FACE="Courier New" SIZE=1><P ALIGN="JUSTIFY">0</B></FONT></TD>
+<TD WIDTH="3%" VALIGN="MIDDLE" HEIGHT=15>
+<B><FONT FACE="Courier New" SIZE=1><P ALIGN="JUSTIFY">0</B></FONT></TD>
+<TD WIDTH="3%" VALIGN="MIDDLE" HEIGHT=15>
+<B><FONT FACE="Courier New" SIZE=1><P ALIGN="JUSTIFY">1</B></FONT></TD>
+<TD WIDTH="3%" VALIGN="MIDDLE" HEIGHT=15>
+<B><FONT FACE="Courier New" SIZE=1><P ALIGN="JUSTIFY">0</B></FONT></TD>
+<TD WIDTH="3%" VALIGN="MIDDLE" HEIGHT=15>
+<B><FONT FACE="Courier New" SIZE=1><P ALIGN="JUSTIFY">0</B></FONT></TD>
+<TD WIDTH="3%" VALIGN="MIDDLE" HEIGHT=15>
+<B><FONT FACE="Courier New" SIZE=1><P ALIGN="JUSTIFY">0</B></FONT></TD>
+<TD WIDTH="3%" VALIGN="MIDDLE" HEIGHT=15>
+<B><FONT FACE="Courier New" SIZE=1><P ALIGN="JUSTIFY">0</B></FONT></TD>
+<TD WIDTH="3%" VALIGN="MIDDLE" HEIGHT=15>
+<B><FONT FACE="Courier New" SIZE=1><P ALIGN="JUSTIFY">0</B></FONT></TD>
+<TD WIDTH="3%" VALIGN="MIDDLE" HEIGHT=15>
+<B><FONT FACE="Courier New" SIZE=1><P ALIGN="JUSTIFY">0</B></FONT></TD>
+<TD WIDTH="3%" VALIGN="MIDDLE" HEIGHT=15>
+<B><FONT FACE="Courier New" SIZE=1><P ALIGN="JUSTIFY">0</B></FONT></TD>
+<TD WIDTH="3%" VALIGN="MIDDLE" HEIGHT=15>
+<B><FONT FACE="Courier New" SIZE=1><P ALIGN="JUSTIFY">0</B></FONT></TD>
+<TD WIDTH="3%" VALIGN="MIDDLE" HEIGHT=15>
+<B><FONT FACE="Courier New" SIZE=1><P ALIGN="JUSTIFY">0</B></FONT></TD>
+<TD WIDTH="3%" VALIGN="MIDDLE" HEIGHT=15>
+<B><FONT FACE="Courier New" SIZE=1><P ALIGN="JUSTIFY">0</B></FONT></TD>
+<TD WIDTH="3%" VALIGN="MIDDLE" HEIGHT=15>
+<B><FONT FACE="Courier New" SIZE=1><P ALIGN="JUSTIFY">0</B></FONT></TD>
+<TD WIDTH="3%" VALIGN="MIDDLE" HEIGHT=15>
+<B><FONT FACE="Courier New" SIZE=1><P ALIGN="JUSTIFY">0</B></FONT></TD>
+<TD WIDTH="3%" VALIGN="MIDDLE" HEIGHT=15>
+<B><FONT FACE="Courier New" SIZE=1><P ALIGN="JUSTIFY">0</B></FONT></TD>
+<TD WIDTH="3%" VALIGN="MIDDLE" HEIGHT=15>
+<B><FONT FACE="Courier New" SIZE=1><P ALIGN="JUSTIFY">0</B></FONT></TD>
+<TD WIDTH="3%" VALIGN="MIDDLE" HEIGHT=15>
+<B><FONT FACE="Courier New" SIZE=1><P ALIGN="JUSTIFY">0</B></FONT></TD>
+</TR>
+</TABLE>
+
+<FONT FACE="Times" SIZE=4><P ALIGN="JUSTIFY"></P>
+</FONT><FONT FACE="Times" SIZE=2><P>23.5 (soluzione pagina dopo)</P></FONT>
+<TABLE BORDER CELLSPACING=1 CELLPADDING=5 WIDTH=511>
+<TR><TD WIDTH="3%" VALIGN="TOP" HEIGHT=15><P></P></TD>
+<TD WIDTH="3%" VALIGN="TOP" HEIGHT=15><P></P></TD>
+<TD WIDTH="3%" VALIGN="TOP" HEIGHT=15><P></P></TD>
+<TD WIDTH="3%" VALIGN="TOP" HEIGHT=15><P></P></TD>
+<TD WIDTH="3%" VALIGN="TOP" HEIGHT=15><P></P></TD>
+<TD WIDTH="3%" VALIGN="TOP" HEIGHT=15><P></P></TD>
+<TD WIDTH="3%" VALIGN="TOP" HEIGHT=15><P></P></TD>
+<TD WIDTH="3%" VALIGN="TOP" HEIGHT=15><P></P></TD>
+<TD WIDTH="3%" VALIGN="TOP" HEIGHT=15><P></P></TD>
+<TD WIDTH="3%" VALIGN="TOP" HEIGHT=15><P></P></TD>
+<TD WIDTH="3%" VALIGN="TOP" HEIGHT=15><P></P></TD>
+<TD WIDTH="3%" VALIGN="TOP" HEIGHT=15><P></P></TD>
+<TD WIDTH="3%" VALIGN="TOP" HEIGHT=15><P></P></TD>
+<TD WIDTH="3%" VALIGN="TOP" HEIGHT=15><P></P></TD>
+<TD WIDTH="3%" VALIGN="TOP" HEIGHT=15><P></P></TD>
+<TD WIDTH="3%" VALIGN="TOP" HEIGHT=15><P></P></TD>
+<TD WIDTH="3%" VALIGN="TOP" HEIGHT=15><P></P></TD>
+<TD WIDTH="3%" VALIGN="MIDDLE" HEIGHT=15><P></P></TD>
+<TD WIDTH="3%" VALIGN="MIDDLE" HEIGHT=15><P></P></TD>
+<TD WIDTH="3%" VALIGN="MIDDLE" HEIGHT=15><P></P></TD>
+<TD WIDTH="3%" VALIGN="MIDDLE" HEIGHT=15><P></P></TD>
+<TD WIDTH="3%" VALIGN="MIDDLE" HEIGHT=15><P></P></TD>
+<TD WIDTH="3%" VALIGN="MIDDLE" HEIGHT=15><P></P></TD>
+<TD WIDTH="3%" VALIGN="MIDDLE" HEIGHT=15><P></P></TD>
+<TD WIDTH="3%" VALIGN="MIDDLE" HEIGHT=15><P></P></TD>
+<TD WIDTH="3%" VALIGN="MIDDLE" HEIGHT=15><P></P></TD>
+<TD WIDTH="3%" VALIGN="MIDDLE" HEIGHT=15><P></P></TD>
+<TD WIDTH="3%" VALIGN="MIDDLE" HEIGHT=15><P></P></TD>
+<TD WIDTH="3%" VALIGN="MIDDLE" HEIGHT=15><P></P></TD>
+<TD WIDTH="3%" VALIGN="MIDDLE" HEIGHT=15><P></P></TD>
+<TD WIDTH="3%" VALIGN="MIDDLE" HEIGHT=15><P></P></TD>
+<TD WIDTH="3%" VALIGN="MIDDLE" HEIGHT=15><P></P></TD>
+</TR>
+</TABLE>
+
+<FONT FACE="Times" SIZE=4><P ALIGN="JUSTIFY"></P>
+</FONT><FONT FACE="Times" SIZE=2><P>0.156251 (soluzione pagina dopo)</P></FONT>
+<TABLE BORDER CELLSPACING=1 CELLPADDING=5 WIDTH=511>
+<TR><TD WIDTH="3%" VALIGN="TOP" HEIGHT=15><P></P></TD>
+<TD WIDTH="3%" VALIGN="TOP" HEIGHT=15><P></P></TD>
+<TD WIDTH="3%" VALIGN="TOP" HEIGHT=15><P></P></TD>
+<TD WIDTH="3%" VALIGN="TOP" HEIGHT=15><P></P></TD>
+<TD WIDTH="3%" VALIGN="TOP" HEIGHT=15><P></P></TD>
+<TD WIDTH="3%" VALIGN="TOP" HEIGHT=15><P></P></TD>
+<TD WIDTH="3%" VALIGN="TOP" HEIGHT=15><P></P></TD>
+<TD WIDTH="3%" VALIGN="TOP" HEIGHT=15><P></P></TD>
+<TD WIDTH="3%" VALIGN="TOP" HEIGHT=15><P></P></TD>
+<TD WIDTH="3%" VALIGN="TOP" HEIGHT=15><P></P></TD>
+<TD WIDTH="3%" VALIGN="TOP" HEIGHT=15><P></P></TD>
+<TD WIDTH="3%" VALIGN="TOP" HEIGHT=15><P></P></TD>
+<TD WIDTH="3%" VALIGN="TOP" HEIGHT=15><P></P></TD>
+<TD WIDTH="3%" VALIGN="TOP" HEIGHT=15><P></P></TD>
+<TD WIDTH="3%" VALIGN="TOP" HEIGHT=15><P></P></TD>
+<TD WIDTH="3%" VALIGN="TOP" HEIGHT=15><P></P></TD>
+<TD WIDTH="3%" VALIGN="TOP" HEIGHT=15><P></P></TD>
+<TD WIDTH="3%" VALIGN="MIDDLE" HEIGHT=15><P></P></TD>
+<TD WIDTH="3%" VALIGN="MIDDLE" HEIGHT=15><P></P></TD>
+<TD WIDTH="3%" VALIGN="MIDDLE" HEIGHT=15><P></P></TD>
+<TD WIDTH="3%" VALIGN="MIDDLE" HEIGHT=15><P></P></TD>
+<TD WIDTH="3%" VALIGN="MIDDLE" HEIGHT=15><P></P></TD>
+<TD WIDTH="3%" VALIGN="MIDDLE" HEIGHT=15><P></P></TD>
+<TD WIDTH="3%" VALIGN="MIDDLE" HEIGHT=15><P></P></TD>
+<TD WIDTH="3%" VALIGN="MIDDLE" HEIGHT=15><P></P></TD>
+<TD WIDTH="3%" VALIGN="MIDDLE" HEIGHT=15><P></P></TD>
+<TD WIDTH="3%" VALIGN="MIDDLE" HEIGHT=15><P></P></TD>
+<TD WIDTH="3%" VALIGN="MIDDLE" HEIGHT=15><P></P></TD>
+<TD WIDTH="3%" VALIGN="MIDDLE" HEIGHT=15><P></P></TD>
+<TD WIDTH="3%" VALIGN="MIDDLE" HEIGHT=15><P></P></TD>
+<TD WIDTH="3%" VALIGN="MIDDLE" HEIGHT=15><P></P></TD>
+<TD WIDTH="3%" VALIGN="MIDDLE" HEIGHT=15><P></P></TD>
+</TR>
+</TABLE>
+
+<FONT FACE="Times" SIZE=4>
+<P ALIGN="CENTER">&nbsp;</P>
+<B><P ALIGN="CENTER">F = insieme dei numeri reali rappresentabili in Floating Point:</P>
+</FONT><FONT FACE="Times">
+<P>QUANTI</B>&#9;2<SUP>32</SUP> !!!! &#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;      </FONT><B><U><FONT FACE="Times" SIZE=4>F &egrave; FINITO</P>
+</B></U></FONT><FONT FACE="Times"><P ALIGN="JUSTIFY"></P>
+</FONT>
+<FONT FACE="Times"><P ALIGN="JUSTIFY">solo alcuni numeri sono rappresentati precisamente; per gli altri si pu&ograve; solo scrivere una </P><DIR>
+<DIR>
+<DIR>
+<DIR>
+<DIR>
+<DIR>
+<DIR>
+<DIR>
+<DIR>
+<DIR>
+<DIR>
+<DIR>
+<DIR>
+<DIR>
+<DIR>
+<DIR>
+<DIR>
+<DIR>
+<DIR>
+<DIR>
+
+</FONT><B><U><FONT FACE="Times" SIZE=4><P ALIGN="RIGHT">approssimazione</P>
+</B></U></FONT><FONT FACE="Courier New" SIZE=1></DIR>
+</DIR>
+</DIR>
+</DIR>
+</DIR>
+</DIR>
+</DIR>
+</DIR>
+</DIR>
+</DIR>
+</DIR>
+</DIR>
+</DIR>
+</DIR>
+</DIR>
+</DIR>
+</DIR>
+</DIR>
+</DIR>
+</DIR>
+
+</FONT><FONT FACE="Times"><P ALIGN="JUSTIFY">Dato che per ogni numero positivo in <B>F</B>, il corrispondente negativo &egrave; in <B>F </B>(basta cambiare  segno) </P>
+</FONT><B><U><FONT FACE="Times" SIZE=4><P ALIGN="RIGHT">F &egrave; SIMMETRICO rispetto allo ZERO</B></U>.</P>
+</FONT><B><FONT FACE="Times">
+<P>QUALI</B>:&#9;&#9;&#9;<B>mantissa</B> &#9;&#9;&#9;&#9;&#9;<B>caratteristica</P>
+<P>massima</B>&#9;</FONT><FONT FACE="Courier New">.111111111111111111111111 = 1-2<SUP>-24&#9;&#9;</SUP>0111111 = 63</P>
+</FONT><B><FONT FACE="Times"><P>minima</B>&#9;</FONT><FONT FACE="Courier New">.100000000000000000000000 = 2<SUP>-1</SUP>&#9;&#9;1000000 = -64</P>
+</FONT><FONT FACE="Courier New" SIZE=2>
+</FONT><B><FONT FACE="Courier New"><P>X<SUB>MAX</B></SUB>&#9;</FONT>= massimo numero positivo rappresentabile: mantissa ed esp. massimi, segno positivo</P>
+<P>&#9;= (<FONT FACE="Courier New">1-2<SUP>-24</SUP></FONT>)*2<SUP>63&#9;</SUP>=  2<SUP>63 </SUP><FONT FACE="Courier New">- 2<SUP>39 </SUP></FONT>= circa <B>2<SUP>63</P>
+</B></SUP><FONT FACE="Courier New">
+<B><P>X<SUB>MIN</B></SUB>&#9;</FONT>= minimo numero <B>positivo</B> rappresentabile: mantissa ed esp. minimi, segno positivo</P>
+<P>&#9;= (2<SUP>-1</SUP>)*2<SUP>-64&#9;</SUP>=  <B>2<SUP>-65</P>
+</B></SUP><FONT FACE="Courier New">
+</FONT><B><FONT FACE="Times"><P ALIGN="JUSTIFY">0</B> nel nosto modello non c&#146;&egrave;! Una<B> convenzione </B>pu&ograve; essere: <B>se m=0, X=0</P>
+</FONT><FONT FACE="Courier New">
+<P>X&#146;<SUB>MAX</B></SUB>&#9;</FONT>=<FONT SIZE=2> numero rappresentabile pi&ugrave; vicino a </FONT><B><FONT FACE="Courier New" SIZE=2>X<SUB>MAX&#9;</SUB></FONT>m</B>=<FONT FACE="Courier New">.11111111111111111111111<B>0</B> = 1-2<SUP>-<B>23</P>
+</B></SUP></FONT><P>&#9;= (<FONT FACE="Courier New">1-2<SUP>-23</SUP></FONT>)*2<SUP>63&#9;</SUP>=  <B>2<SUP>63 </SUP><FONT FACE="Courier New">- 2<SUP>40</B> </P>
+</SUP><B>
+<P>X&#146;<SUB>MIN</B></SUB>&#9;</FONT>= <FONT SIZE=2>numero rappresentabile pi&ugrave; vicino a </FONT><B><FONT FACE="Courier New" SIZE=2>X<SUB>MIN&#9;</SUB></FONT>m</B>=<FONT FACE="Courier New">.10000000000000000000000<B>1</B> = 2<SUP>-<B>1</B></SUP>+2<SUP>-<B>24</P>
+</B></SUP></FONT><P>&#9;= (<FONT FACE="Courier New">2<SUP>-1</SUP>+2<SUP>-24</SUP></FONT>)*2<SUP>-64&#9;</SUP>=  <B>2<SUP>-65 </SUP><FONT FACE="Courier New">- 2<SUP>-88</P>
+</B></SUP>
+</FONT><FONT SIZE=2><P>Quindi la distanza che c&#146;&egrave; tra il massimo e quello subito prima<B> |X<SUB>MAX</SUB> &#151; X&#146;<SUB>MAX</SUB>|=2<SUP>-39 </B></SUP>&egrave; molto pi&ugrave; grande della distanza che c&#146;&egrave; tra il minimo positivo e quello successivo <B>|X<SUB>MIN</SUB> &#151; X&#146;<SUB>MIN</SUB>|=2<SUP>-88</B></SUP>: si tratta di un effetto del fatto che </P>
+</FONT><B><U><FONT FACE="Times"><P ALIGN="RIGHT">F ha una distribuzione NON UNIFORME dei numerali sulla retta reale</P>
+</B></U><P ALIGN="JUSTIFY">Quel che succede &egrave; che i numeri rappresentabili si addensano intorno allo zero e si diradano verso gli estremi</P>
+<P ALIGN="JUSTIFY"></P>
+</FONT><B><FONT FACE="Courier New" SIZE=1><P ALIGN="CENTER">---|-------|------|-----|----|---|--|-||-|--|---|----|-----|------|-------|---</P>
+</B></FONT><FONT FACE="Times">
+<B><P ALIGN="CENTER">Note sul modello spiegato nel libro (Bergamaschi)</P>
+
+<UL>
+</B><LI>48 bit complessivi (1 per il segno, 39 per la mantissa <B>f</B>, 8 per l&#146;esponente <B>e</B>)</LI>
+<B><LI>e</B> in [-128, 128], ma l&#146;esponente effettivamente rappresentato &egrave; in [0,255]</LI>
+<B><LI>f effettiva</B> = 40 bit! (perch&eacute;, visto che il primo bit deve essere sempre 1, si rinuncia direttamente a scriverlo, lasciandolo sottinteso)</LI></UL>
+
+<P>Quindi nei conti bisogna tener presente la sostituzione fatta nella rappresentazione (e &lt;-- e+128) e bisogna usare <B>(1.f)*2<SUP>-1</B></SUP> come mantissa (anzich&eacute; f direttamente come nel modello precedente).</P>
+
+<P>________________________________________________________________________________</P>
+</FONT><FONT FACE="Times" SIZE=4><P>23.5</P></FONT>
+<TABLE BORDER CELLSPACING=1 CELLPADDING=5 WIDTH=511>
+<TR><TD WIDTH="3%" VALIGN="TOP" HEIGHT=15>
+<FONT FACE="Times" SIZE=4><P ALIGN="JUSTIFY">0</FONT></TD>
+<TD WIDTH="3%" VALIGN="TOP" HEIGHT=15>
+<FONT FACE="Times" SIZE=4><P ALIGN="JUSTIFY">0</FONT></TD>
+<TD WIDTH="3%" VALIGN="TOP" HEIGHT=15>
+<FONT FACE="Times" SIZE=4><P ALIGN="JUSTIFY">0</FONT></TD>
+<TD WIDTH="3%" VALIGN="TOP" HEIGHT=15>
+<FONT FACE="Times" SIZE=4><P ALIGN="JUSTIFY">0</FONT></TD>
+<TD WIDTH="3%" VALIGN="TOP" HEIGHT=15>
+<FONT FACE="Times" SIZE=4><P ALIGN="JUSTIFY">0</FONT></TD>
+<TD WIDTH="3%" VALIGN="TOP" HEIGHT=15>
+<FONT FACE="Times" SIZE=4><P ALIGN="JUSTIFY">1</FONT></TD>
+<TD WIDTH="3%" VALIGN="TOP" HEIGHT=15>
+<FONT FACE="Times" SIZE=4><P ALIGN="JUSTIFY">0</FONT></TD>
+<TD WIDTH="3%" VALIGN="TOP" HEIGHT=15>
+<FONT FACE="Times" SIZE=4><P ALIGN="JUSTIFY">1</FONT></TD>
+<TD WIDTH="3%" VALIGN="TOP" HEIGHT=15>
+<FONT FACE="Times" SIZE=4><P ALIGN="JUSTIFY">1</FONT></TD>
+<TD WIDTH="3%" VALIGN="TOP" HEIGHT=15>
+<FONT FACE="Times" SIZE=4><P ALIGN="JUSTIFY">0</FONT></TD>
+<TD WIDTH="3%" VALIGN="TOP" HEIGHT=15>
+<FONT FACE="Times" SIZE=4><P ALIGN="JUSTIFY">1</FONT></TD>
+<TD WIDTH="3%" VALIGN="TOP" HEIGHT=15>
+<FONT FACE="Times" SIZE=4><P ALIGN="JUSTIFY">1</FONT></TD>
+<TD WIDTH="3%" VALIGN="TOP" HEIGHT=15>
+<FONT FACE="Times" SIZE=4><P ALIGN="JUSTIFY">1</FONT></TD>
+<TD WIDTH="3%" VALIGN="TOP" HEIGHT=15>
+<FONT FACE="Times" SIZE=4><P ALIGN="JUSTIFY">1</FONT></TD>
+<TD WIDTH="3%" VALIGN="TOP" HEIGHT=15>
+<FONT FACE="Times" SIZE=4><P ALIGN="JUSTIFY">0</FONT></TD>
+<TD WIDTH="3%" VALIGN="TOP" HEIGHT=15>
+<FONT FACE="Times" SIZE=4><P ALIGN="JUSTIFY">0</FONT></TD>
+<TD WIDTH="3%" VALIGN="TOP" HEIGHT=15>
+<FONT FACE="Times" SIZE=4><P ALIGN="JUSTIFY">0</FONT></TD>
+<TD WIDTH="3%" VALIGN="TOP" HEIGHT=15>
+<FONT FACE="Times" SIZE=4><P ALIGN="JUSTIFY">0</FONT></TD>
+<TD WIDTH="3%" VALIGN="TOP" HEIGHT=15>
+<FONT FACE="Times" SIZE=4><P ALIGN="JUSTIFY">0</FONT></TD>
+<TD WIDTH="3%" VALIGN="TOP" HEIGHT=15>
+<FONT FACE="Times" SIZE=4><P ALIGN="JUSTIFY">0</FONT></TD>
+<TD WIDTH="3%" VALIGN="TOP" HEIGHT=15>
+<FONT FACE="Times" SIZE=4><P ALIGN="JUSTIFY">0</FONT></TD>
+<TD WIDTH="3%" VALIGN="TOP" HEIGHT=15>
+<FONT FACE="Times" SIZE=4><P ALIGN="JUSTIFY">0</FONT></TD>
+<TD WIDTH="3%" VALIGN="TOP" HEIGHT=15>
+<FONT FACE="Times" SIZE=4><P ALIGN="JUSTIFY">0</FONT></TD>
+<TD WIDTH="3%" VALIGN="TOP" HEIGHT=15>
+<FONT FACE="Times" SIZE=4><P ALIGN="JUSTIFY">0</FONT></TD>
+<TD WIDTH="3%" VALIGN="TOP" HEIGHT=15>
+<FONT FACE="Times" SIZE=4><P ALIGN="JUSTIFY">0</FONT></TD>
+<TD WIDTH="3%" VALIGN="TOP" HEIGHT=15>
+<FONT FACE="Times" SIZE=4><P ALIGN="JUSTIFY">0</FONT></TD>
+<TD WIDTH="3%" VALIGN="TOP" HEIGHT=15>
+<FONT FACE="Times" SIZE=4><P ALIGN="JUSTIFY">0</FONT></TD>
+<TD WIDTH="3%" VALIGN="TOP" HEIGHT=15>
+<FONT FACE="Times" SIZE=4><P ALIGN="JUSTIFY">0</FONT></TD>
+<TD WIDTH="3%" VALIGN="TOP" HEIGHT=15>
+<FONT FACE="Times" SIZE=4><P ALIGN="JUSTIFY">0</FONT></TD>
+<TD WIDTH="3%" VALIGN="TOP" HEIGHT=15>
+<FONT FACE="Times" SIZE=4><P ALIGN="JUSTIFY">0</FONT></TD>
+<TD WIDTH="3%" VALIGN="TOP" HEIGHT=15>
+<FONT FACE="Times" SIZE=4><P ALIGN="JUSTIFY">0</FONT></TD>
+<TD WIDTH="3%" VALIGN="TOP" HEIGHT=15>
+<FONT FACE="Times" SIZE=4><P ALIGN="JUSTIFY">0</FONT></TD>
+</TR>
+</TABLE>
+
+<FONT FACE="Times" SIZE=4><P>0.156251 </P></FONT>
+<TABLE BORDER CELLSPACING=1 CELLPADDING=5 WIDTH=511>
+<TR><TD WIDTH="3%" VALIGN="TOP" HEIGHT=15>
+<FONT FACE="Times" SIZE=4><P ALIGN="JUSTIFY">0</FONT></TD>
+<TD WIDTH="3%" VALIGN="TOP" HEIGHT=15>
+<FONT FACE="Times" SIZE=4><P ALIGN="JUSTIFY">1</FONT></TD>
+<TD WIDTH="3%" VALIGN="TOP" HEIGHT=15>
+<FONT FACE="Times" SIZE=4><P ALIGN="JUSTIFY">1</FONT></TD>
+<TD WIDTH="3%" VALIGN="TOP" HEIGHT=15>
+<FONT FACE="Times" SIZE=4><P ALIGN="JUSTIFY">1</FONT></TD>
+<TD WIDTH="3%" VALIGN="TOP" HEIGHT=15>
+<FONT FACE="Times" SIZE=4><P ALIGN="JUSTIFY">1</FONT></TD>
+<TD WIDTH="3%" VALIGN="TOP" HEIGHT=15>
+<FONT FACE="Times" SIZE=4><P ALIGN="JUSTIFY">1</FONT></TD>
+<TD WIDTH="3%" VALIGN="TOP" HEIGHT=15>
+<FONT FACE="Times" SIZE=4><P ALIGN="JUSTIFY">1</FONT></TD>
+<TD WIDTH="3%" VALIGN="TOP" HEIGHT=15>
+<FONT FACE="Times" SIZE=4><P ALIGN="JUSTIFY">0</FONT></TD>
+<TD WIDTH="3%" VALIGN="TOP" HEIGHT=15>
+<FONT FACE="Times" SIZE=4><P ALIGN="JUSTIFY">1</FONT></TD>
+<TD WIDTH="3%" VALIGN="TOP" HEIGHT=15>
+<FONT FACE="Times" SIZE=4><P ALIGN="JUSTIFY">0</FONT></TD>
+<TD WIDTH="3%" VALIGN="TOP" HEIGHT=15>
+<FONT FACE="Times" SIZE=4><P ALIGN="JUSTIFY">1</FONT></TD>
+<TD WIDTH="3%" VALIGN="TOP" HEIGHT=15>
+<FONT FACE="Times" SIZE=4><P ALIGN="JUSTIFY">0</FONT></TD>
+<TD WIDTH="3%" VALIGN="TOP" HEIGHT=15>
+<FONT FACE="Times" SIZE=4><P ALIGN="JUSTIFY">0</FONT></TD>
+<TD WIDTH="3%" VALIGN="TOP" HEIGHT=15>
+<FONT FACE="Times" SIZE=4><P ALIGN="JUSTIFY">0</FONT></TD>
+<TD WIDTH="3%" VALIGN="TOP" HEIGHT=15>
+<FONT FACE="Times" SIZE=4><P ALIGN="JUSTIFY">0</FONT></TD>
+<TD WIDTH="3%" VALIGN="TOP" HEIGHT=15>
+<FONT FACE="Times" SIZE=4><P ALIGN="JUSTIFY">0</FONT></TD>
+<TD WIDTH="3%" VALIGN="TOP" HEIGHT=15>
+<FONT FACE="Times" SIZE=4><P ALIGN="JUSTIFY">0</FONT></TD>
+<TD WIDTH="3%" VALIGN="TOP" HEIGHT=15>
+<FONT FACE="Times" SIZE=4><P ALIGN="JUSTIFY">0</FONT></TD>
+<TD WIDTH="3%" VALIGN="TOP" HEIGHT=15>
+<FONT FACE="Times" SIZE=4><P ALIGN="JUSTIFY">0</FONT></TD>
+<TD WIDTH="3%" VALIGN="TOP" HEIGHT=15>
+<FONT FACE="Times" SIZE=4><P ALIGN="JUSTIFY">0</FONT></TD>
+<TD WIDTH="3%" VALIGN="TOP" HEIGHT=15>
+<FONT FACE="Times" SIZE=4><P ALIGN="JUSTIFY">0</FONT></TD>
+<TD WIDTH="3%" VALIGN="TOP" HEIGHT=15>
+<FONT FACE="Times" SIZE=4><P ALIGN="JUSTIFY">0</FONT></TD>
+<TD WIDTH="3%" VALIGN="TOP" HEIGHT=15>
+<FONT FACE="Times" SIZE=4><P ALIGN="JUSTIFY">0</FONT></TD>
+<TD WIDTH="3%" VALIGN="TOP" HEIGHT=15>
+<FONT FACE="Times" SIZE=4><P ALIGN="JUSTIFY">0</FONT></TD>
+<TD WIDTH="3%" VALIGN="TOP" HEIGHT=15>
+<FONT FACE="Times" SIZE=4><P ALIGN="JUSTIFY">0</FONT></TD>
+<TD WIDTH="3%" VALIGN="TOP" HEIGHT=15>
+<FONT FACE="Times" SIZE=4><P ALIGN="JUSTIFY">0</FONT></TD>
+<TD WIDTH="3%" VALIGN="TOP" HEIGHT=15>
+<FONT FACE="Times" SIZE=4><P ALIGN="JUSTIFY">0</FONT></TD>
+<TD WIDTH="3%" VALIGN="TOP" HEIGHT=15>
+<FONT FACE="Times" SIZE=4><P ALIGN="JUSTIFY">0</FONT></TD>
+<TD WIDTH="3%" VALIGN="TOP" HEIGHT=15>
+<FONT FACE="Times" SIZE=4><P ALIGN="JUSTIFY">0</FONT></TD>
+<TD WIDTH="3%" VALIGN="TOP" HEIGHT=15>
+<FONT FACE="Times" SIZE=4><P ALIGN="JUSTIFY">0</FONT></TD>
+<TD WIDTH="3%" VALIGN="TOP" HEIGHT=15>
+<FONT FACE="Times" SIZE=4><P ALIGN="JUSTIFY">0</FONT></TD>
+<TD WIDTH="3%" VALIGN="TOP" HEIGHT=15>
+<FONT FACE="Times" SIZE=4><P ALIGN="JUSTIFY">0</FONT></TD>
+</TR>
+</TABLE>
+
+<FONT FACE="Times" SIZE=4><P ALIGN="JUSTIFY">X = (0.00101)<SUB>2</SUB>&#9;<B>m=.101</B> (non .00101, altrimenti non &egrave; normalizzata)&#9;     <B>e=-2</P>
+</B></FONT><FONT FACE="Courier New" SIZE=2><P ALIGN="JUSTIFY"></P>
+</FONT>
+<p>
+<hr size=4>
+</p
+<B><FONT FACE="Times" SIZE=4><P ALIGN="JUSTIFY">REPEAT/UNTIL:</P></B></FONT>
+<TABLE CELLSPACING=0 BORDER=0 CELLPADDING=3 WIDTH=485>
+<TR><TD WIDTH="56%" VALIGN="TOP"><DIR>
+<DIR>
+
+<B><FONT FACE="Courier" SIZE=4><P ALIGN="JUSTIFY">program </B>RR;</P>
+<B><P ALIGN="JUSTIFY">var </B>i: integer;</P>
+<B><P ALIGN="JUSTIFY">begin</P>
+</B><P ALIGN="JUSTIFY">i:=1;</P>
+<B><P ALIGN="JUSTIFY">repeat</P>
+</B><P ALIGN="JUSTIFY">  writeln('i = ', i);</P>
+<P ALIGN="JUSTIFY">  i:=i+1;</P>
+<B><P ALIGN="JUSTIFY">until (i&gt;10)</P>
+<P ALIGN="JUSTIFY">end</B>.</P>
+</FONT><FONT FACE="Times"><P ALIGN="JUSTIFY"></DIR>
+</DIR>
+</FONT></TD>
+<TD WIDTH="44%" VALIGN="TOP"><DIR>
+<DIR>
+
+<B><FONT FACE="Courier" SIZE=4><P ALIGN="JUSTIFY">program </B>RW;</P>
+<B><P ALIGN="JUSTIFY">var </B>i: integer;</P>
+<B><P ALIGN="JUSTIFY">begin       </P>
+<P ALIGN="JUSTIFY"> </B>i:=1;</P>
+<B><P ALIGN="JUSTIFY">while (i&lt;=10) do</P>
+<P ALIGN="JUSTIFY"> begin</B> </FONT><FONT FACE="Courier" SIZE=2>writeln('i= ',i);</P>
+</FONT><FONT FACE="Courier" SIZE=4><P ALIGN="JUSTIFY">        i:=i+1;</P>
+<P ALIGN="JUSTIFY">  <B>end;</P>
+<P ALIGN="JUSTIFY">end</B>.</P>
+</FONT><FONT FACE="Times"><P ALIGN="JUSTIFY"></DIR>
+</DIR>
+</FONT></TD>
+</TR>
+</TABLE>
+
+<FONT FACE="Times" SIZE=4><P ALIGN="JUSTIFY">&nbsp;</P>
+<P ALIGN="JUSTIFY">Programmi <B>quasi</B> equivalenti &#133; (se l'init fosse </FONT><FONT FACE="Courier" SIZE=4>i:=100</FONT><FONT FACE="Times" SIZE=4> ?)</P>
+<P ALIGN="JUSTIFY"></P>
+<B><P ALIGN="JUSTIFY">ES:</P>
+</B></FONT><FONT FACE="Times"><P ALIGN="JUSTIFY">Programma che legge una sequenza di numeri intreri interrotta da 0 e restituisce la somma totale, la somma dei soli positivi inseriti e la somma dei soli negativi inseriti.</P></FONT>
+<TABLE BORDER CELLSPACING=1 CELLPADDING=3 WIDTH=485>
+<TR><TD WIDTH="64%" VALIGN="TOP">
+<FONT FACE="Times" SIZE=4><P ALIGN="JUSTIFY">Init SOMMA, SOMMAPOS, SOMMANEG</FONT></TD>
+<TD WIDTH="36%" VALIGN="TOP">&nbsp;</TD>
+</TR>
+<TR><TD WIDTH="64%" VALIGN="TOP">
+<FONT FACE="Times" SIZE=4><P ALIGN="JUSTIFY">- Leggi NUM</P>
+<P ALIGN="JUSTIFY">- Se NUM&gt;0 SOMMAPOS<FONT FACE="Wingdings">&#223;</FONT>
+SOMMAPOS+NUM</P>
+<P ALIGN="JUSTIFY">- Se NUM&lt;0 SOMMANEG<FONT FACE="Wingdings">&#223;</FONT>
+SOMMANEG+NUM</P>
+<P ALIGN="JUSTIFY">- SOMMA <FONT FACE="Wingdings">&#223;</FONT>
+ SOMMA + NUM</FONT></TD>
+<TD WIDTH="36%" VALIGN="TOP">
+<FONT FACE="Times" SIZE=4><P ALIGN="JUSTIFY">&nbsp;</P><DIR>
+<DIR>
+<DIR>
+
+<P ALIGN="JUSTIFY">Ripetere fino al verificarsi della condizione NUM=0 </DIR>
+</DIR>
+</DIR>
+</FONT></TD>
+</TR>
+<TR><TD WIDTH="64%" VALIGN="TOP">
+<FONT FACE="Times" SIZE=4><P ALIGN="JUSTIFY">STAMPA SOMMAPOS SOMMANEG E SOMMA</FONT></TD>
+<TD WIDTH="36%" VALIGN="TOP">&nbsp;</TD>
+</TR>
+</TABLE>
+
+<B><FONT FACE="Courier" SIZE=4><P ALIGN="JUSTIFY">program </B>SPN;</P><DIR>
+<DIR>
+
+<B><P ALIGN="JUSTIFY">var </B>&#133;</P>
+<B><P ALIGN="JUSTIFY">begin</P>
+</B><P ALIGN="JUSTIFY">somma:=0;&#9;&#9;sommapos:=0;&#9;&#9;&#9;sommaneg:=0;</P>
+<B><P ALIGN="JUSTIFY">repeat</P>
+</B><P ALIGN="JUSTIFY"> write('dare un numero (0 per finire): ');</P>
+<P ALIGN="JUSTIFY"> readln(num);</P>
+<P ALIGN="JUSTIFY"> if num&gt;0 then sommapos:=sommapos+num;</P>
+<P ALIGN="JUSTIFY"> if num&lt;0 then sommaneg:=sommaneg+num;</P>
+<P ALIGN="JUSTIFY"> somma:= somma+num;</P>
+<B><P ALIGN="JUSTIFY">until (num=0)</P>
+<P ALIGN="JUSTIFY">&#133;</P>
+<P ALIGN="JUSTIFY">end</B>.</P>
+</FONT><FONT FACE="Times" SIZE=4><P ALIGN="JUSTIFY"></P></DIR>
+</DIR>
+
+<P ALIGN="JUSTIFY">In questo caso l'uso di repeat &egrave; pi&ugrave; "naturale". Si pu&ograve; evidentemente fare esattamente la stessa cosa anche con while, a patto di stare attenti al fatto che </P>
+<P ALIGN="JUSTIFY">&#9;Nel <B><I>repeat</B></I> la <B>condizione</B> &egrave; <B><I>di uscita</P>
+</B></I><P ALIGN="JUSTIFY">&#9;Nel <B><I>while</B></I> la <B>condizione</B> &egrave; <B><I>di ripetizione</P>
+</B></I><P ALIGN="JUSTIFY">La condizione in cui RIPETERE una iterazione di lettura e processazione &egrave; che sia NUM&lt;&gt;0.</P>
+<P ALIGN="JUSTIFY">(Ma NUM lo leggiamo da input quando ormai siamo gi&agrave; DENTRO L'ITERAZIONE &#133;</P>
+<P ALIGN="JUSTIFY"></P>
+<B><P ALIGN="JUSTIFY">SOLUZIONE 1)</B>  Assegnazione di comodo per l'inizializzazione di NUM (<B>&lt;&gt;0</B> !!)</P>
+<P ALIGN="JUSTIFY"></P>
+</FONT><B><FONT FACE="Courier" SIZE=4><P ALIGN="JUSTIFY">NUM:=1000&#9;</P>
+<P ALIGN="JUSTIFY">while</B> NUM&lt;&gt;0 do </P><DIR>
+<DIR>
+
+<B><P ALIGN="JUSTIFY">begin</P>
+</B><P ALIGN="JUSTIFY">write('dare un numero (0 per finire): ');</P>
+<P ALIGN="JUSTIFY">readln(num);</P>
+<P ALIGN="JUSTIFY">if num&gt;0 then &#133;</P>
+<P ALIGN="JUSTIFY"> &#9;if num&lt;0 then &#133;</P>
+<P ALIGN="JUSTIFY"> &#9;somma:= </P>
+<B><P ALIGN="JUSTIFY">end</B>;</P>
+</FONT><FONT FACE="Times" SIZE=4><P ALIGN="JUSTIFY"></P></DIR>
+</DIR>
+
+<B><P ALIGN="JUSTIFY">SOLUZIONE 2)</B>  Inizializzazione di NUM mediante lettura del primo dato di input</P>
+<P ALIGN="JUSTIFY"></P>
+</FONT><FONT FACE="Courier" SIZE=4><P ALIGN="JUSTIFY">write('dare un numero (0 per finire): ');   {IL PRIMO}</P><DIR>
+<DIR>
+
+<P ALIGN="JUSTIFY">readln(num);</P></DIR>
+</DIR>
+
+<B><P ALIGN="JUSTIFY">while</B> NUM&lt;&gt;0 do </P><DIR>
+<DIR>
+
+<B><P ALIGN="JUSTIFY">begin</P>
+</B><P ALIGN="JUSTIFY">if num&gt;0 then &#133;</P>
+<P ALIGN="JUSTIFY"> &#9;if num&lt;0 then &#133;</P>
+<P ALIGN="JUSTIFY"> &#9;somma:= </P>
+<P ALIGN="JUSTIFY">write('dare un numero (0 per finire): ');  </FONT><FONT FACE="Courier" SIZE=2>{I SUCCESSIVI}</P>
+</FONT><FONT FACE="Courier" SIZE=4><P ALIGN="JUSTIFY">readln(num);</P>
+<B><P ALIGN="JUSTIFY">end</B>;</P></DIR>
+</DIR>
+
+</FONT><FONT FACE="Times"><P ALIGN="JUSTIFY">La cosa viene qui un po&#146; pi&ugrave; elegante: quando l'utente inserisce 0, il dato di input non viene processato dalle istruzioni if e assegnazione. Nella soluzione con repeat abbiamo infatti contato sul fatto che quando 0 veniva processato non alterava mai i valori raggiunti da sommapos, sommaneg e somma.</P>
+</FONT><FONT FACE="Times" SIZE=4><P ALIGN="JUSTIFY"></P>
+<B><P ALIGN="JUSTIFY">ES:</P>
+</B><P ALIGN="JUSTIFY">sapendo che (Kelvin) K=C+273.16; (Farenheit) F=C*9/5 + 32; (Celsius) C=(F-32)*5/9</P>
+<P ALIGN="JUSTIFY">scrivere un programma che legge una temperatura celsius e ne stampa i corrispondenti valori farenheit e kelvin. Dopo ogni lettura/processazione, il programma chiede all'utente se si vuole inserire un'altra temperatura. La risposta deve essere 0 (no) oppure 1 (si).</P>
+<P ALIGN="JUSTIFY">Diciamo che almeno una lettura ce l'aspettiamo &#133; quindi uno schema repeat va bene</P><DIR>
+<DIR>
+
+</FONT><B><FONT FACE="Courier" SIZE=4><P ALIGN="JUSTIFY">repeat</P>
+</B><P ALIGN="JUSTIFY">   Read(C)</P>
+<P ALIGN="JUSTIFY">   F:= &#133;</P>
+<P ALIGN="JUSTIFY">   K:= &#133;</P>
+</FONT><FONT FACE="Courier"><P ALIGN="JUSTIFY">   writeln('Celsius ', C:7:2, ' = ', 'Farenheit ',F:7:2, ' = ', Kelvin ',K:7:2)</P>
+</FONT><FONT FACE="Courier" SIZE=4><P ALIGN="JUSTIFY">   write(' altra temperatura? (0/1)');</P>
+<P ALIGN="JUSTIFY">   readln(risp);</P>
+<B><P ALIGN="JUSTIFY">until</B> risp=0;</P>
+</FONT><FONT FACE="Times" SIZE=4><P ALIGN="JUSTIFY"></P></DIR>
+</DIR>
+
+<P ALIGN="JUSTIFY">NB se risp = 1256?</P>
+<P ALIGN="JUSTIFY">NB niente begin end &#133;</P>
+<P ALIGN="JUSTIFY"></P>
+<P ALIGN="JUSTIFY">ES: &#9;R=F+459.69</P>
+<P ALIGN="JUSTIFY">programma che stampa una tabella </P></FONT>
+<P ALIGN="CENTER"><CENTER><TABLE CELLSPACING=0 BORDER=0 CELLPADDING=3 WIDTH=545>
+<TR><TD WIDTH="25%" VALIGN="TOP">
+<FONT FACE="Times" SIZE=4><P ALIGN="CENTER">Celsius</FONT></TD>
+<TD WIDTH="25%" VALIGN="TOP">
+<FONT FACE="Times" SIZE=4><P ALIGN="CENTER">Farenheit</FONT></TD>
+<TD WIDTH="25%" VALIGN="TOP">
+<FONT FACE="Times" SIZE=4><P ALIGN="CENTER">Kelvin</FONT></TD>
+<TD WIDTH="25%" VALIGN="TOP">
+<FONT FACE="Times" SIZE=4><P ALIGN="CENTER">Rankine</FONT></TD>
+</TR>
+<TR><TD WIDTH="25%" VALIGN="TOP">
+<FONT FACE="Times" SIZE=4><P ALIGN="CENTER">-5</FONT></TD>
+<TD WIDTH="25%" VALIGN="TOP">&nbsp;</TD>
+<TD WIDTH="25%" VALIGN="TOP">&nbsp;</TD>
+<TD WIDTH="25%" VALIGN="TOP">&nbsp;</TD>
+</TR>
+<TR><TD WIDTH="25%" VALIGN="TOP">
+<FONT FACE="Times" SIZE=4><P ALIGN="CENTER">-4</FONT></TD>
+<TD WIDTH="25%" VALIGN="TOP">&nbsp;</TD>
+<TD WIDTH="25%" VALIGN="TOP">&nbsp;</TD>
+<TD WIDTH="25%" VALIGN="TOP">&nbsp;</TD>
+</TR>
+<TR><TD WIDTH="25%" VALIGN="TOP">
+<FONT FACE="Times" SIZE=4><P ALIGN="CENTER">&#133;</FONT></TD>
+<TD WIDTH="25%" VALIGN="TOP">&nbsp;</TD>
+<TD WIDTH="25%" VALIGN="TOP">&nbsp;</TD>
+<TD WIDTH="25%" VALIGN="TOP">&nbsp;</TD>
+</TR>
+<TR><TD WIDTH="25%" VALIGN="TOP">
+<FONT FACE="Times" SIZE=4><P ALIGN="CENTER">5</FONT></TD>
+<TD WIDTH="25%" VALIGN="TOP">&nbsp;</TD>
+<TD WIDTH="25%" VALIGN="TOP">&nbsp;</TD>
+<TD WIDTH="25%" VALIGN="TOP">&nbsp;</TD>
+</TR>
+</TABLE>
+</CENTER></P>
+
+<FONT FACE="Times" SIZE=4><P ALIGN="JUSTIFY"></P>
+<P ALIGN="JUSTIFY">&nbsp;</P>
+<P ALIGN="JUSTIFY">&nbsp;</P>
+
+<UL>
+<B><P ALIGN="JUSTIFY"><LI>PRECEDENZA TRA OPERATORI:</LI></P></UL>
+
+<P ALIGN="JUSTIFY"></P>
+<P ALIGN="CENTER">(A + B) * C &lt;&gt; A + (B * C)</P>
+<P ALIGN="CENTER"></P>
+<P ALIGN="CENTER">A + B * C = A + (B * C) </B>perch&eacute; <B><I>* ha precedenza su +</P>
+</I><P ALIGN="JUSTIFY"></P></B></FONT>
+<P ALIGN="CENTER"><CENTER><TABLE BORDER CELLSPACING=1 CELLPADDING=3 WIDTH=283>
+<TR><TD WIDTH="50%" VALIGN="TOP">
+<B><FONT FACE="Times" SIZE=4><P ALIGN="CENTER">Operatori</B></FONT></TD>
+<TD WIDTH="50%" VALIGN="TOP">
+<B><FONT FACE="Times" SIZE=4><P ALIGN="CENTER">Precedenze</B></FONT></TD>
+</TR>
+<TR><TD WIDTH="50%" VALIGN="TOP">
+<B><FONT FACE="Times" SIZE=4><P ALIGN="CENTER">NOT</B></FONT></TD>
+<TD WIDTH="50%" VALIGN="TOP">
+<B><FONT FACE="Times" SIZE=4><P ALIGN="CENTER">4</B></FONT></TD>
+</TR>
+<TR><TD WIDTH="50%" VALIGN="TOP">
+<B><FONT FACE="Times" SIZE=4><P ALIGN="CENTER">* / div mod AND</B></FONT></TD>
+<TD WIDTH="50%" VALIGN="TOP">
+<B><FONT FACE="Times" SIZE=4><P ALIGN="CENTER">3</B></FONT></TD>
+</TR>
+<TR><TD WIDTH="50%" VALIGN="TOP">
+<B><FONT FACE="Times" SIZE=4><P ALIGN="CENTER">+ - OR</B></FONT></TD>
+<TD WIDTH="50%" VALIGN="TOP">
+<B><FONT FACE="Times" SIZE=4><P ALIGN="CENTER">2</B></FONT></TD>
+</TR>
+<TR><TD WIDTH="50%" VALIGN="TOP">
+<B><FONT FACE="Times" SIZE=4><P ALIGN="CENTER">&lt; &lt;= &gt; &#133; =</B></FONT></TD>
+<TD WIDTH="50%" VALIGN="TOP">
+<B><FONT FACE="Times" SIZE=4><P ALIGN="CENTER">1</B></FONT></TD>
+</TR>
+</TABLE>
+</CENTER></P>
+
+<B><FONT FACE="Times" SIZE=4><P ALIGN="CENTER"></P>
+<P ALIGN="JUSTIFY">A + B + C * D =  </P>
+<P ALIGN="JUSTIFY"></P>
+<P>b1 AND b2 OR b3 = </P>
+</FONT><FONT FACE="Times"><P ALIGN="JUSTIFY"></P>
+</FONT><FONT FACE="Times" SIZE=4><P ALIGN="CENTER">A + B + C = (A + B) + C </B>tra operatori con la stessa precedenza si segue l'ordine </P>
+<B><P ALIGN="CENTER"></P>
+<P ALIGN="CENTER">A + B - C = (A + B) - C </P>
+</B><P ALIGN="CENTER"></P>
+<B><P ALIGN="CENTER">A * B / C = (A * B) / C </P>
+</B><P ALIGN="CENTER"></P>
+<B><P ALIGN="JUSTIFY">A * B / C - D * E =  ((A*B)/C)-(D*E)</P>
+</B><P ALIGN="CENTER"></P>
+<B><P ALIGN="JUSTIFY">NOT b1 AND b2 = (NOT b1) AND (b2)</P>
+</B><P ALIGN="CENTER"></P>
+<B><P ALIGN="JUSTIFY">10 + A mod 2 =  10 + (a mod 2)</P>
+</B><P ALIGN="CENTER"></P>
+<B><P ALIGN="JUSTIFY">10 mod 3 2 =  (10 mod 3)2</P>
+</B><P ALIGN="CENTER"></P>
+<B><P ALIGN="CENTER">A &gt;= B AND C &lt;= 10  !!!!  </P>
+</B><P ALIGN="CENTER">Sarebbe interpretata cme <B>A&gt;= (B AND C) =10</B> privo di senso </P>
+<P ALIGN="CENTER">bisogna scrivere esplicitamente (A &gt;= B) AND (C = 10)</P>
+<P ALIGN="CENTER"></P>
+<P ALIGN="CENTER">&nbsp;</P>
+<P ALIGN="CENTER">&nbsp;</P>
+<P ALIGN="CENTER">&nbsp;</P>
+<P ALIGN="CENTER">&nbsp;</P>
+<P ALIGN="CENTER">&nbsp;</P>
+<P ALIGN="CENTER">&nbsp;</P>
+
+<UL>
+<B><P ALIGN="JUSTIFY"><LI>VALUTAZIONE ABBREVIATA DI ESPRESSIONI BOOLEANE:</LI></P></UL>
+
+</B><P ALIGN="CENTER"></P>
+<P ALIGN="CENTER">&nbsp;</P>
+<P ALIGN="CENTER">(D=7) AND (C&gt;7) AND (NUM&lt;&gt;0) = ?</P>
+<P ALIGN="CENTER"></P>
+<P ALIGN="CENTER">se D&lt;&gt;7 sicuramente tutto FALSE ! senza bisogno di valutare C&gt;7 e NUM&lt;&gt;0</P>
+<P ALIGN="CENTER"></P>
+<P ALIGN="CENTER">&nbsp;</P>
+<P ALIGN="JUSTIFY">b1 AND b2 AND b3 AND &#133; AND bk</P>
+<P ALIGN="JUSTIFY"></P>
+<P ALIGN="JUSTIFY">quando questa espressione deve essere valutata, il valutatore si pu&ograve; risparmiare di valutare tutte le singole sottoespressioni b1 &#133; bk.</P>
+<P ALIGN="JUSTIFY"></P>
+<P ALIGN="JUSTIFY">Si comincia valutando la prima sottoespressione e si prosegue con le altre: quando una sottoespressione &egrave; FALSE allora TUTTO l'AND &egrave; FALSE</P>
+<P ALIGN="JUSTIFY"></P>
+<P ALIGN="JUSTIFY">Se b1=FALSE then TUTTO FALSE</P>
+<P ALIGN="JUSTIFY">    Else</P>
+<P ALIGN="JUSTIFY">Se b2=FALSE then TUTTO FALSE</P>
+<P ALIGN="JUSTIFY">    &#9;Else &#133;</P>
+<P ALIGN="JUSTIFY">&#9;&#9;&#9;&#133;</P><DIR>
+<DIR>
+
+<P ALIGN="JUSTIFY">Se bk=FALSE then TUTTO FALSE</P></DIR>
+</DIR>
+
+<P ALIGN="JUSTIFY">    &#9;&#9;Else&#9;TUTTO TRUE</P>
+<P ALIGN="JUSTIFY"></P>
+<B><P ALIGN="CENTER">&nbsp;</P>
+</FONT><FONT FACE="Times"><P ALIGN="JUSTIFY">&nbsp;</P>
+</B></FONT><FONT FACE="Times" SIZE=4><P ALIGN="JUSTIFY">b1 OR b2 OR b3 OR &#133; OR bk</P>
+<P ALIGN="JUSTIFY"></P>
+<P ALIGN="JUSTIFY">analogamente &#133;</P>
+<P ALIGN="JUSTIFY">solo che ci si ferma quando si trova la prima sottoespressione che ha valore TRUE (infatti se ce n'&egrave; una con valore TRUE, allora tutta l'espressione ha valore TRUE.</P>
+<P ALIGN="JUSTIFY"></P>
+<P ALIGN="JUSTIFY">Se b1=TRUE then TUTTO TRUE</P>
+<P ALIGN="JUSTIFY">    Else</P>
+<P ALIGN="JUSTIFY">Se b2=TRUE then TUTTO TRUE</P>
+<P ALIGN="JUSTIFY">    &#9;Else &#133;</P>
+<P ALIGN="JUSTIFY">&#9;&#9;&#9;&#133;</P><DIR>
+<DIR>
+
+<P ALIGN="JUSTIFY">Se bk=TRUE then TUTTO TRUE</P></DIR>
+</DIR>
+
+<P ALIGN="JUSTIFY">    &#9;&#9;Else&#9;TUTTO FALSE</P>
+<P ALIGN="JUSTIFY"></P>
+</FONT><B><FONT FACE="Times"><P ALIGN="JUSTIFY">&nbsp;</P>
+</B></FONT><FONT FACE="Courier New" SIZE=2><P ALIGN="JUSTIFY">&nbsp;</P></FONT></BODY>
+</HTML>

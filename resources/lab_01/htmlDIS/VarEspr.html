@@ -1,0 +1,516 @@
+<!doctype html public "-//w3c//dtd html 4.0 transitional//en">
+<html>
+<head>
+<link href="java.css" rel="stylesheet" type="text/css">
+<title>Java</title>
+</head>
+
+<body>
+
+
+
+<h1>Variabili ed espressioni</h1>
+
+
+
+<h2>Uso di variabili in Java</h2>
+
+<p>
+Le variabili dei linguaggi di programmazione sono dei
+"contenitori" in cui &egrave; possibile memorizzare
+dei valori che serviranno in seguito. Si pu&ograve;
+pensare a una variabile come a una "memoria" di una
+calcolatrice tascabile, in cui si possono mettere dei
+risultati parziali che &egrave; possible riutilizzare
+in seguito. Una altro paragone &egrave; quello delle
+memorie di un telefonino o di una agendina elettronica,
+in cui si pu&ograve; mettere un numero di telefono che
+verr&agrave; utilizzato in seguito.<p>
+
+Il programma <a href="Variabili.java">Variabili.java</a>
+contiene una variabile. In questa variabile viene memorizzato
+un valore, che viene poi alterato.<p>
+
+<pre>
+/*
+  Un programma Java che usa una variabile.
+*/
+
+class Variabili {
+  public static void main (String args[]) {
+
+    int a;
+
+    a=10;
+    System.out.println("La variabile vale " + a);
+   
+    a=-345;
+    System.out.println("La variabile vale " + a);
+
+  }
+}
+
+</pre>
+
+<p>
+Quando viene compilato ed eseguito, questo programma stampa
+le due linee:
+
+<pre>
+La variabile vale 10
+La variabile vale -345
+</pre>
+
+<p>
+Il programma &egrave; costituito dalla seguenti parti. Prima
+un commento, poi le due solite linee di intestazione
+(<tt>class...</tt> e <tt>public...</tt>). La prima istruzione
+del programma &egrave; <tt>int a;</tt> Questa istruzione serve
+a <b>dichiarare</b> che vogliamo utilizzare una variabile, il
+cui nome &egrave; <tt>a</tt>, e che serve a contenere un valore
+di tipo intero. In generale, la dichiarazione di una variabile
+&egrave; costituita da due parti: prima il tipo della variabile
+(cio&egrave; il tipo di valori che la variabile deve contenere,
+per esempio se interi o reali), e poi il nome della variabile.<p>
+
+Una volta dichiarata una variabile di nome <tt>a</tt>, &egrave;
+possibile farci due cose: memorizzare un numero intero nella
+variabile, e stampare il valore memorizzato.<p>
+
+La istruzione <tt>a=10;</tt> memorizza il valore 10 nella variabile
+<tt>a</tt>, mentre <tt>a=-345;</tt> cambia questo valore a
+-345. L'operazione di memorizzare un valore in una variabile
+viene detto <b>assegnamento di valore</b> alla variabile, per
+cui <tt>a=10;</tt> &egrave; l'assegnamento del valore 10 alla
+variabile <tt>a</tt>.<p>
+
+Il programma contiene anche due istruzioni di stampa del valore
+della variabile <tt>a</tt>. La stampa viene fatta usando ancora
+il comando <tt>System.out.println</tt>. In questo caso,
+usiamo la istruzione <tt>System.out.println("La variabile vale " + a);</tt>,
+che significa: stampa la sequenza di caratteri
+<tt>La variabile vale </tt> seguita dal valore della
+variabile <tt>a</tt>. La prima volta viene stampato il valore
+che ha la variabile in quel momento, cio&egrave; 10; la seconda
+volta la variabile contiene il valore -345, per cui questo &egrave;
+il numero che viene stampato.<p> 
+
+&Egrave; possibile visualizzare graficamente l'esecuzione del
+programma istruzione per istruzione, utilizzando dei riquadri
+per indicare il contenuto delle variabili. Vedi
+la <a href="Variabili/Variabili-6.shtml">esecuzione del programma
+Variabili.java</a>.<p>
+
+</body>
+
+
+
+
+
+
+<h2>Somma di valori</h2>
+
+<p>
+Il seguente programma <a href="Somma.java">Somma.java</a>
+assegna tre valori differenti a tre variabili, e poi le
+somma tra loro.
+
+<pre>
+/*
+  Somma di tre numeri.
+*/
+
+class Somma {
+  public static void main (String args[]) {
+    int a,b,c;
+    int d;
+
+    a=10;
+    b=4;
+    c=5-2;
+
+    d=a+b+c;
+
+    System.out.println("Il risultato della somma e': " + d );
+  }
+}
+
+</pre>
+
+<p>
+Alcune osservazioni su questo programma. La prima &egrave;
+che un programma pu&ograve; contenere anche pi&ugrave; di
+una variabile. In questo caso, le dichiarazioni si possono
+anche mettere su una sola riga: <tt>int a,b,c;</tt> indica
+che ci servono tre variabili per contenere dei valori
+interi (<tt>int</tt>), e che i nomi di queste tre variabili
+sono <tt>a</tt>, <tt>b</tt> e <tt>c</tt>. &Egrave; anche
+possibile dichiarare altre variabili su altre linee, come
+&egrave; fatto per esempio per la variabile <tt>d</tt>.<p>
+
+Le successive tre istruzioni assegnano dei valori alle
+variabili <tt>a</tt>, <tt>b</tt> e <tt>c</tt>. La assegnazione
+di <tt>c</tt> &egrave; interessante, perch&egrave; fa notare
+che a una variabile si pu&ograve; assegnare il valore che
+risulta da un calcolo. Infatti, la istruzione <tt>c=5-2;</tt>
+calcola il valore 5-2 (che vale 3), e poi assegna a <tt>c</tt>
+il valore risultato, che &egrave; 3. In generale, una istruzione
+di assegnamento ha la struttura
+
+<pre>
+nomevariabile = espressione;
+</pre>
+
+<p>
+Quello che avviene &egrave; che la espressione viene valutata,
+cio&egrave; si calcola il suo valore, e questo valore viene
+memorizzato nella variabile con quel nome.<p>
+
+La istruzione <tt>d=a+b+c;</tt> fa vedere come sia possibile
+utilizzare i valori delle variabili. Infatti, in questo caso
+la espressione <tt>a+b+c;</tt> contiene la variabili
+<tt>a</tt>, <tt>b</tt> e <tt>c</tt>. L'effetto di questa
+istruzione &egrave; quello di calcolare la somma dei valori
+memorizzati nelle variabili <tt>a</tt>, <tt>b</tt> e <tt>c</tt>,
+e di memorizzare il risultato nella variabile <tt>d</tt>.<p>
+
+&Egrave; da notare che questa istruzione <tt>d=a+b+c;</tt>
+non &egrave; differente dalle precedenti: ha sempre la
+struttura <tt>nomevariabile = espressione;</tt> l'unica
+differenza &egrave; che la espressione in questo caso contiene
+dei riferimenti ad altre variabili.<p>
+
+<h4>Riassunto</h4>
+
+<p>
+&Egrave; possibile utilizzare pi&ugrave; di una variabile in
+un programma. Ogni variabile deve venire dichiarata, ed &egrave;
+possibile dichiarare anche pi&ugrave; variabili nella stessa
+linea. Per assegnare (memorizzare) un valore a una variabile,
+si usa l'istruzione <tt>nomevariabile = espressione;</tt>, in
+cui la espressione pu&ograve; contenere sia costanti (come
+per esempio 10, 4 o 5) che riferimenti ad altre variabili
+(come &egrave; il caso per <tt>a+b+c</tt>).<p>
+
+&Egrave; possibile vedere la
+<a href="Somma/Somma-6.shtml">esecuzione di Somma.java</a>,
+passo per passo.<p>
+
+
+
+</body>
+
+
+
+
+<h2>Incremento del valore di una variabile</h2>
+
+<p>
+Il programma 
+<a href="Incremento.java">Incremento.java</a> permette di
+fare due osservazioni. La prima &egrave; che &egrave;
+possibile assegnare una valore ad una variabile anche nella
+dichiarazione della variabile stessa. La linea
+<tt>int i=12;</tt> indica infatti che si vuole usare una
+variabile di tipo intero, e che il valore iniziale di questa
+variabile &egrave; 12. Questo &egrave; il valore che viene
+inizialmente assegnato alla variabile <tt>i</tt>: chiaramente,
+questo valore pu&ograve; venire cambiato dalle istruzioni
+successive.<p>
+
+<pre>
+/*
+  Incremento del valore di una variabile.
+*/
+
+class Incremento {
+  public static void main (String args[]) {
+    int i=12;
+
+    System.out.println("La variabile i vale " + i);
+
+    i=i+1;
+
+    System.out.println("Ora i vale " + i);
+  }
+}
+
+
+</pre>
+
+<p>
+La istruzione <tt>i=i+1;</tt> serve ad aggiungere 1 al valore
+attualmente memorizzato nella variabile <tt>i</tt>. Questo
+esempio serve a chiarire che il simbolo <tt>=</tt> nel contesto
+della programmazione ha un significato differente da quello
+che ha in algebra o analisi matematica. In algebra, = indica
+una uguaglianza di valori, per cui 3=5-2 &egrave; vero, mentre
+12=100/10 &egrave; falso. In questo senso, la espressione
+i=i+1 &egrave; falsa per ogni possibile valore di i.<p>
+
+Nell'ambito della programmazione, il simbolo <tt>=</tt> indica
+una assegnazione, per cui <tt>i=espressione;</tt> significa:
+valuta il valore della espressione, e il risultato memorizzalo
+nella variabile <tt>i</tt>. Nel caso della istruzione
+<tt>i=i+1;</tt> questo significa:
+
+<ul>
+
+<li>valuta il valore di <tt>i+1</tt>; dal momento che <tt>i</tt>
+vale 12, il valore di questa espressione &egrave; 13;
+
+<li>il risultato della espressione viene memorizzato nella
+variabile <tt>i</tt>, quandi <tt>i</tt> da ora in poi contiene
+il valore 13.
+
+</ul>
+
+<p>
+Tutto questo fa notare come il simbolo = ha in programmazione un
+significato diverso da quello che ha in algebra. Alcuni
+linguaggi di programmazione (non Java) evitano questa confusione
+usando un simbolo diverso per l'assegnamento. Per esempio,
+la istruzione di assegnamento del programma di sopra in alcuni
+linguaggi si scrive <tt>i<-i+1</tt>. La freccia fa capire che
+il significato della istruzione &egrave; che nella variabile
+<tt>i</tt> viene messo il valore della
+espressione che segue la freccia. Nel caso di Java, si usa
+il simbolo =, anche se questo all'inizio pu&ograve; generare
+confusione.<p>
+
+Per ulteriori chiarimenti, vedere la
+<a href="Incremento/Incremento-6.shtml">esecuzione del
+programma Incremento.java</a>.<p>
+
+</body>
+
+
+
+
+<h2>Variabili reali</h2>
+
+<p>
+Le variabili intere possono -per definizione- contenere
+solo valori interi. Questo chiaramente crea dei problemi
+nel caso in cui i valori o i risultati delle espressioni
+possono essere non interi. Il seguente programma
+<a href="DivisioneIntera.java">DivisioneIntera.java</a>
+illustra questi problemi.
+
+<pre>
+/*
+  In questo programma si fa la divisione di due variabili intere
+*/
+
+class DivisioneIntera {
+  public static void main(String[] args) {
+    int a,b,c;
+
+    a=22;
+    b=8;
+
+    c=a/b;
+
+    System.out.println("Il risultato della divisione e': "+c);
+  }
+}
+
+
+</pre>
+
+<p>
+Se si compila ed esegue il programma, viene stampata la
+seguente linea:
+
+<pre>
+Il risultato della divisione e': 2
+</pre>
+
+<p>
+Questo risultato &egrave; impreciso, visto che
+22/8=2.75 Il problema &egrave; che il risultato della
+divisione 22/8 viene memorizzato nella variabile <tt>c</tt>,
+che &egrave; stata dichiarata per contenere solo variabili di
+tipo intero. Per risolvere questo problema, il valore che
+viene memorizzato in <tt>c</tt> &egrave; la parte intera del
+risultato della espressione, ossia quello che sta prima della
+virgola decimale. Nel nostro caso, il risultato era 2.75, per
+cui viene memorizzato solo il 2.<p>
+
+Se si devono eseguire dei calcoli di cui si vuole conoscere anche
+il valore dei decimali, &egrave; necessario usare variabili di
+tipo reale. Contrariamente a quello che ci si aspetta, una
+variabile reale viene dichiarata usando una linea
+<tt>double nomevariabile;</tt> Il programma
+<a href="DivisioneReale.java">DivisioneReale.java</a> &egrave;
+una versione modificata del precedente, in cui si usano
+variabile reali invece che intere.<p>
+
+<pre>
+/*
+  In questo programma si fa la divisione di due variabili reali
+*/
+
+class DivisioneReale {
+  public static void main(String[] args) {
+    double a,b,c;
+
+    a=22;
+    b=8;
+
+    c=a/b;
+
+    System.out.println("Il risultato della divisione e': "+c);
+  }
+}
+
+
+</pre>
+
+<p>
+Il risultato stampato questa volta contiene anche le cifre
+decimali. In generale, se si pensa che il risulato di una
+espressione potrebbe contenere cifre decimali, &egrave; bene
+usare variabili reali invece che intere.<p>
+
+
+<h4>Nota sulle conversioni</h4>
+
+<p>
+Si consideri il seguente programma di divisione:
+<a href="DivisioneIntera2.java">DivisioneIntera2.java</a>,
+riportato qui sotto.<p>
+
+<pre>
+/*
+  In questo programma si fa la divisione di due variabili intere
+*/
+
+class DivisioneIntera2 {
+  public static void main(String[] args) {
+    int a,b;
+    double c;
+
+    a=22;
+    b=8;
+
+    c=a/b;
+
+    System.out.println("Il risultato della divisione e': "+c);
+  }
+}
+
+
+</pre>
+
+<p>
+In base a quanto detto finora, il risultato dovrebbe essere
+corretto: si calcola <tt>a/b</tt>, e il risultato si mette nella
+variabile reale <tt>c</tt>. Quello che succede compilando ed
+eseguendo il programma &egrave; che viene stampato ancora
+il valore 2, ossia solo la parte intera della divisione.<p>
+
+La spiegazione richiede di addentrarsi nei meccanismi di
+conversione dei tipi usato da Java.
+Quando &egrave; necessario fare una divisione fra
+due variabili, se entrambe sono intere allora la divisione
+produce un risultato intero. In altre parole, la divisione
+<tt>a/b</tt> produce sempre un risultato intero (approssimato),
+indipendentemente dall'uso che si fa di questo risultato,
+se <tt>a</tt> e <tt>b</tt> sono variabili di tipo intero.
+
+
+</body>
+
+
+
+
+<h2>Esempi di espressioni</h2>
+
+<p>
+Il programma <a href="Espressioni.java">Espressioni.java</a>
+contiene alcuni esempi di espressioni.
+
+<pre>
+/*
+  Alcuni esempi di espressioni
+*/
+
+class Espressioni {
+  public static void main(String[] args) {
+    double a=12.23,b=0.1e+2,c;
+
+    c=(a+b)/12.1;
+    System.out.println("Risultato della prima espressione: "+c);
+
+    c=a*2+b;
+    System.out.println("Risultato della seconda espressione: "+c);
+
+    c=1/(a-1)/(b-4);
+    System.out.println("Risultato della terza espressione: "+c);
+
+    c=Math.sqrt(a*a - b*b);
+    System.out.println("Risultato della quarta espressione: "+c);
+  }
+}
+
+</pre>
+
+<p>
+In questo esempio si vede come sia possibile assegnare un
+valore a una variabile anche nella stessa dichiarazione.
+Questo si pu&ograve; fare anche nel caso in cui nella stessa
+linea vengono dichiarate anche altre variabili.
+
+
+
+</body>
+
+
+
+
+<h2>Discriminante di una equazione di secondo grado</h2>
+
+<p>
+In questo esempio vediamo come calcolare il discriminante
+di una equazione di secondo grado. Il file sorgente del
+programma si chiama
+<a href="Discriminante.java">Discriminante.java</a>, e il
+codice &egrave; quello che segue.
+
+<pre>
+/*
+  Calcola il discriminante di una equazione di secondo grado
+*/
+
+class Discriminante {
+  public static void main(String[] args) {
+    int a=10, b=3, c=4;
+    int d;
+
+    d=b*b-4*a*c;
+
+    System.out.println("Il discriminante vale " + d);
+  }
+}
+
+</pre>
+
+<p>
+Questo esempio non ha nulla di particolare rispetto a quelli
+visti in precedenza. D'altra parte, lo scopo del calcolo del
+discriminante &egrave; di permettere la soluzione delle
+equazioni di secondo grado. Questo procedimento cambia
+a seconda del valore del
+discriminante (e in particolare, a seconda se &egrave; positivo
+o negativo), e questo richiede un programma che possa agire
+diversamente a seconda dei valori delle variabili. Questa
+&egrave; la funzione delle istruzioni condizionali, che
+si vedranno in seguito.<p>
+
+</body>
+
+
+</body>
+</body>
+</html>

@@ -1,0 +1,860 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 
+Transitional//EN">
+<HTML>
+
+<HEAD>
+
+<TITLE>Soluzioni Capitolo 2 del 
+Bellini Guidi</TITLE>
+
+
+</HEAD>
+
+<BODY>
+
+
+<PRE>
+
+
+/*ESERCIZIO 1 DEL 
+CAPITOLO 2 DEL 
+BELLINI_GUIDI*/
+/********************************************/
+/****** 
+**************************************/
+#include 
+&lt;stdio.h>
+main()
+{
+/* esercizio 1 del capitolo 2 */
+int 
+a,b,c,max;
+printf("Dammi tre numeri interi 
+distinti\n");
+scanf("%d",&a);
+scanf("%d",&b);
+scanf("%d",&c);
+max=(a>b 
+?a:b);
+max=(max>c?max:c);
+printf("\nIl maggiore 
+e':%d\n",max);
+}
+
+
+/*ESERCIZIO 2 DEL CAPITOLO 2 DEL 
+BELLINI_GUIDI*/
+/********************************************/
+/****** 
+**************************************/
+#include 
+&lt;stdio.h>
+main()
+{
+/* esercizio 2 del capitolo 2 */
+int 
+a,b,c,d,max;
+printf("Dammi quattro numeri interi 
+distinti\n");
+scanf("%d",&a);
+scanf("%d",&b);
+scanf("%d",&c);
+scanf("% 
+d",&d);
+max = (a>b?a:b);
+max = (max>c?max:c);
+max = 
+(max>d?max:d);
+printf("\nIl maggiore e':%d\n",max);
+ 
+
+}
+
+
+/*ESERCIZIO 3 DEL CAPITOLO 2 DEL 
+BELLINI_GUIDI*/
+/********************************************/
+/****** 
+**************************************/
+#include 
+&lt;stdio.h>
+main()
+{
+/* esercizio 3 del capitolo 2 */
+int 
+a,b,c,d,max;
+printf("Dammi quattro numeri interi 
+\n");
+scanf("%d",&a);
+scanf("%d",&b);
+scanf("%d",&c);
+scanf("%d",&d);
+ 
+if ((a==b)&&(a==c)&&(a==d)) printf("\nValori identici\n");
+else{
+ 
+max=a;
+     max=(max>b?max:b);
+     max=(max>c?max:c);
+ 
+max=(max>d?max:d);
+     printf("\nIl maggiore e':%d\n",max);
+ 
+}
+}
+
+
+/*ESERCIZIO 4 DEL CAPITOLO 2 DEL 
+BELLINI_GUIDI*/
+/********************************************/
+/****** 
+**************************************/
+#include 
+&lt;stdio.h>
+main()
+{
+/* esercizio 4 del capitolo 2 */
+int a,b,c,max 
+,min;
+printf("Dammi tre numeri interi 
+distinti\n");
+scanf("%d",&a);
+scanf("%d",&b);
+scanf("%d",&c);
+max=(a>b 
+?a:b);
+max=(max>c?max:c);
+printf("\nIl maggiore 
+e':%d\n",max);
+min=(a&lt;b?a:b);
+min=(min&lt;c?min:c);
+printf("\nIl 
+minore e':%d\n",min);
+}
+
+
+/*ESERCIZIO 5 DEL CAPITOLO 2 DEL 
+BELLINI_GUIDI*/
+/********************************************/
+/****** 
+**************************************/
+#include 
+&lt;stdio.h>
+main()
+{
+/* esercizio 5 del capitolo 2 */
+int a,b,c;
+a = 
+5;
+b = 35;
+c = 7;
+printf("\n Se a =  %d, b =  %d e c =  %d", 
+a,b,c);
+printf("\n 1) a+b*c vale  %d", a+b*c);
+printf("\n 2) (a>b) 
+vale  %d", (a>b));
+printf("\n 3) (a+b)*(a&lt;b) vale  %d", 
+(a+b)*(a&lt;b));
+printf("\n 4) (a+b) && (a&lt;b) vale  %d", (a+b) && 
+(a&lt;b));
+printf("\n 5) (a+b) || (a&lt;b) vale  %d", (a+b) || 
+(a&lt;b));
+printf("\n 6) (a*c-b) || (a>b) vale  %d", (a*c-b) || 
+(a>b));
+printf("\n 7) ((a*c) != b) || (a>b) vale  %d", ((a*c) != b) 
+|| (a>b));
+printf("\n 8) (a>b) || (a&lt;c) || (c==b) vale  %d", (a>b) 
+|| (a&lt;c) || (c==b));
+}
+
+
+/*ESERCIZIO 6 DEL CAPITOLO 2 DEL 
+BELLINI_GUIDI*/
+/********************************************/
+/****** 
+**************************************/
+#include 
+&lt;stdio.h>
+main()
+{
+/* esercizio 6 del capitolo 2 */
+int a,b,c;
+a = 
+5;
+b = 35;
+c = 7;
+printf("\n Se a =  %d, b =  %d e c =  %d", 
+a,b,c);
+
+if ((a>b) || (c>a)) printf("\n 1) (a>b) || (c>a) vale 
+vero");
+	else printf("\n 1) (a>b) || (c>a) vale  falso");
+
+if 
+((c>a) &&  (a>b))  printf("\n 2) (c>a) &&  (a>b) vale  vero");
+	else 
+printf("\n 2) (c>a) &&  (a>b) vale  falso");
+
+if (!(a>b)  &&  (c>a)) 
+printf("\n 3) !(a>b)  &&  (c>a) vale  vero");
+	else printf("\n 3) 
+!(a>b)  &&  (c>a) vale  falso");
+
+if (!(a>b)  ||  !(c>a) ) printf("\n 
+4) !(a>b)  ||  !(c>a) vale  vero");
+	else printf("\n 4) !(a>b)  || 
+!(c>a) vale  falso");
+	
+if ((a==c)  || ((a&lt;b) && (b&lt;c))) 
+printf("\n 5) (a==c)  || ((a&lt;b) && (b&lt;c))  vale  vero");
+	else 
+printf("\n 5) (a==c)  || ((a&lt;b) && (b&lt;c))  vale  falso");
+
+if 
+((a!=c)  || ((a&lt;b) && (b&lt;c)))  printf("\n 6) (a!=c)  || 
+((a&lt;b) && (b&lt;c))  vale  vero");
+	else printf("\n 6) (a!=c)  || 
+((a&lt;b) && (b&lt;c))  vale  falso");
+
+
+}
+
+
+/*ESERCIZIO 7 DEL 
+CAPITOLO 2 DEL 
+BELLINI_GUIDI*/
+/********************************************/
+/****** 
+**************************************/
+#include 
+&lt;stdio.h>
+main()
+{
+/* esercizio 7 del capitolo 2 */
+int x,y;
+char 
+a,b;
+
+x = 12;
+y = 45;
+a = 't';
+b ='T';
+
+printf("\n Se x = 12, y = 45, 
+a = 't' e b ='T'");
+
+if ((x>y) || (a!=b)) printf("\n 1) (x>y) || 
+(a!=b) vale  vero");
+	else printf("\n 1) (x>y) || (a!=b) vale 
+falso");
+
+if ((y>x) &&  (a==b))  printf("\n 2) (y>x) &&  (a==b) vale 
+vero");
+	else printf("\n 2) (y>x) &&  (a==b) vale 
+falso");
+
+if ((a!=b)  &&  !(x>y))  printf("\n 3) (a!=b)  &&  !(x>y) 
+vale  vero");
+	else printf("\n 3) (a!=b)  &&  !(x>y) vale 
+falso");
+
+if (x || (y&lt;x)) printf("\n 4) x || (y&lt;x) vale 
+vero");
+	else printf("\n 4) x || (y&lt;x) vale  falso");
+ 
+	
+if (a == (b ='t')) printf("\n 5) a == (b ='t')  vale 
+vero");
+	else printf("\n 5) a == (b ='t') vale  falso");
+
+if 
+(!x)  printf("\n 6) !x vale  vero");
+	else printf("\n 6) !x  vale 
+falso");
+}
+
+
+
+/*ESERCIZIO 8 DEL CAPITOLO 2 DEL 
+BELLINI_GUIDI*/
+/********************************************/
+/****** 
+**************************************/
+#include 
+&lt;stdio.h>
+main()
+{
+/* esercizio 8 del capitolo 2 */
+int 
+a,b,c,d;
+printf("Dammi tre numeri interi 
+\n");
+scanf("%d",&a);
+scanf("%d",&b);
+scanf("%d",&c);
+d= 
+((a*a+b)!=c?a*b*c:a+b+c);
+printf("\nIl risultato di questo difficile 
+sforzo  e':%d\n",d);
+     
+}
+
+
+/*ESERCIZIO 9 DEL CAPITOLO 2 DEL 
+BELLINI_GUIDI*/
+/********************************************/
+/****** 
+**************************************/
+#include 
+&lt;stdio.h>
+main()
+{
+/* esercizio 9 del capitolo 2 */
+char 
+ch;
+printf("        MENU DI PROVA \n\n");
+printf("a) Per immettere 
+dati \n");
+printf("b) Per determinare il maggiore \n");
+printf("c) 
+Per determinare il minore \n");
+printf("d) Per ordinare 
+\n");
+printf("e) Per visualizzare \n\n");
+printf(" 
+Scelta:");
+ch = getchar();
+switch(ch){
+case 'a':
+printf(" \nIn 
+esecuzione l'opzione a\n");
+break;
+case 'b':
+printf(" \nIn esecuzione 
+l'opzione b\n");
+break;
+case 'c':
+printf(" \nIn esecuzione l'opzione 
+c\n");
+break;
+case 'd':
+printf(" \nIn esecuzione l'opzione 
+d\n");
+break;
+case 'e':
+printf(" \nIn esecuzione l'opzione 
+e\n");
+break;
+default:
+printf(" \nOpzione 
+inesistente\n");
+break;
+}
+}
+
+
+
+
+/*ESERCIZIO 10 DEL CAPITOLO 2 DEL 
+BELLINI_GUIDI*/
+/********************************************/
+/****** 
+**************************************/
+#include 
+&lt;stdio.h>
+main()
+{
+/* esercizio 10 del capitolo 2 */
+/* troppo 
+criptico, evitare  quanto piu' possibile */
+
+int a,b,c;
+printf("Dammi 
+tre numeri interi 
+distinti\n");
+scanf("%d",&a);
+scanf("%d",&b);
+scanf("%d",&c);
+printf(" 
+\nIl maggiore e':%d\n",((a>b?a:b)>c?(a>b?a:b):c));
+}
+
+
+
+/*ESERCIZIO 
+11 DEL CAPITOLO 2 DEL 
+BELLINI_GUIDI*/
+/********************************************/
+/****** 
+**************************************/
+#include 
+&lt;stdio.h>
+main()
+{
+/* esercizio 11 del capitolo 2 */
+
+int 
+MM;
+printf("Dammi un intero\n");
+scanf("%d",&MM);
+switch(MM){
+case 
+1:
+printf("\nIl numero %d corrisponde al mese di gennaio 
+\n",MM);
+break;
+case 2:
+printf("\nIl numero %d corrisponde al mese di 
+febbraio \n",MM);
+break;
+case 3:
+printf("\nIl numero %d corrisponde 
+al mese di marzo\n",MM);
+break;
+case 4:
+printf("\nIl numero %d 
+corrisponde al mese di aprile \n",MM);
+break;
+case 5:
+printf("\nIl 
+numero %d corrisponde al mese di maggio \n",MM);
+break;
+case 
+6:
+printf("\nIl numero %d corrisponde al mese di giugno 
+\n",MM);
+break;
+case 7:
+printf("\nIl numero %d corrisponde al mese di 
+luglio \n",MM);
+break;
+case 8:
+printf("\nIl numero %d corrisponde al 
+mese di agosto \n",MM);
+break;
+case 9:
+printf("\nIl numero %d 
+corrisponde al mese di settembre\n",MM);
+break;
+case 10:
+printf("\nIl 
+numero %d corrisponde al mese di ottobre \n",MM);
+break;
+case 
+11:
+printf("\nIl numero %d corrisponde al mese di novembre 
+\n",MM);
+break;
+case 12:
+printf("\nIl numero %d corrisponde al mese 
+di dicembre \n",MM);
+break;
+default:
+printf("\nIl numero %d  non 
+corrisponde a nessun mese dell'anno 
+\n",MM);
+break;
+}
+}
+
+
+
+/*ESERCIZIO 12 DEL CAPITOLO 2 DEL 
+BELLINI_GUIDI*/
+/********************************************/
+/****** 
+**************************************/
+#include 
+&lt;stdio.h>
+main()
+{
+/* esercizio 12 del capitolo 2 */
+
+int 
+AA,flag;
+printf("Dammi un intero\n");
+scanf("%d",&AA);
+flag=2;
+if 
+((AA%4)==0 && (AA%100)!=0) flag = 1; 
+switch(flag){
+case 
+1:
+printf("\nIl numero %d corrisponde ad un anno bisesto 
+\n",AA);
+break;
+default:
+printf("\nIl numero %d  non corrisponde ad 
+un anno bisesto \n",AA);
+break;
+}
+}
+
+
+
+/*ESERCIZIO 13 DEL CAPITOLO 2 
+DEL 
+BELLINI_GUIDI*/
+/********************************************/
+/****** 
+**************************************/
+#include 
+&lt;stdio.h>
+main()
+{
+/* esercizio 13 del capitolo 2 */
+
+int 
+GG,MM,AA,bisesto, gmese;
+printf("Dammi tre 
+interi\n");
+scanf("%d%d%d",&GG,&MM,&AA);
+
+bisesto=0;
+if ((AA%4)==0 && 
+(AA%100)!=0) bisesto= 1;
+
+gmese = 30; 
+
+if (AA&lt;0) printf("%d non 
+e' un anno possibile\n", AA);
+   else if(MM&lt;1 || MM>12) printf("%d 
+non e' un mese possibile\n", MM);
+         else {
+               if 
+(MM==1 || MM==3 || MM==5 || MM==7 || MM==8 || MM==10 || MM==12)
+ 
+gmese = 31;
+                   else if (MM==2 && bisesto) gmese = 29; 
+gmese = 28;
+               if (GG>0 && GG&lt;gmese) 
+ 
+printf("%d/%d/%d  e' una data possibile\n",GG,MM,AA);
+ 
+else
+                  
+                  
+    switch(MM){
+case 
+1:
+printf("\n%d non e' un giorno possibile per il mese di gennaio 
+\n",GG);
+break;
+case 2:
+printf("\n%d non e' un giorno possibile per 
+il mese di febbraio \n",GG);
+break;
+case 3:
+printf("\n%d non e' un 
+giorno possibile per il mese di  marzo\n",GG);
+break;
+case 
+4:
+printf("\n%d non e' un giorno possibile per il mese di aprile 
+\n",GG);
+break;
+case 5:
+printf("\n%d non e' un giorno possibile per 
+il mese di maggio \n",GG);
+break;
+case 6:
+printf("\n%d non e' un 
+giorno possibile per il mese di giugno \n",GG);
+break;
+case 
+7:
+printf("\n%d non e' un giorno possibile per il mese di luglio 
+\n",GG);
+break;
+case 8:
+printf("\n%d non e' un giorno possibile per 
+il mese di agosto \n",GG);
+break;
+case 9:
+printf("\n%d non e' un 
+giorno possibile per il mese di settembre\n",GG);
+break;
+case 
+10:
+printf("\n%d non e' un giorno possibile per il mese di ottobre 
+\n",GG);
+break;
+case 11:
+printf("\n%d non e' un giorno possibile per 
+il mese di novembre \n",GG);
+break;
+case 12:
+printf("\n%d non e' un 
+giorno possibile per il mese di dicembre 
+\n",GG);
+break;
+}
+
+}
+}
+
+
+/*ESERCIZIO 14 DEL CAPITOLO 2 DEL 
+BELLINI_GUIDI*/
+/********************************************/
+/****** 
+**************************************/
+#include &lt;stdio.h>
+#define 
+AACORRENTE 2000
+main()
+{
+/* esercizio 14 del capitolo 2 */
+
+int 
+GG,MM,AA,GG2,MM2,AA2, bisesto,gmese, flag;
+
+printf("Dammi la prima 
+data nella forma: giorno mese 
+anno\n");
+
+scanf("%d%d%d",&GG,&MM,&AA);
+getchar();
+
+printf("Dammi la 
+seconda data nella forma: giorno mese 
+anno\n");
+scanf("%d%d%d",&GG2,&MM2,&AA2);
+
+printf("\nprima 
+data:%d/%d/%d\n", GG,MM,AA);
+printf("\nseconda  data:%d/%d/%d\n\n\n", 
+GG2,MM2,AA2);
+flag = 0;
+/* verifica congruita' prima 
+data*/
+bisesto=0;
+if ((AA%4)==0 && (AA%100)!=0) bisesto= 1;
+
+gmese = 
+30; 
+
+if (AA&lt;0) printf("%d non e' un anno possibile\n", AA);
+ 
+else if(MM&lt;1 || MM>12) printf("%d non e' un mese possibile\n", 
+MM);
+         else {
+               if (MM==1 || MM==3 || MM==5 || 
+MM==7 || MM==8 || MM==10 || MM==12)
+                   gmese = 31;
+ 
+else if (MM==2 && bisesto) gmese = 29; gmese = 28;
+               if 
+(GG>0 && GG&lt;gmese) 
+                  {
+ 
+printf("%d/%d/%d  e' una data possibile\n",GG,MM,AA);
+ 
+flag = 1;
+                  }
+                  else
+ 
+
+                  
+    switch(MM){
+case 1:
+printf("\n%d non e' un 
+giorno possibile per il mese di gennaio \n",GG);
+break;
+case 
+2:
+printf("\n%d non e' un giorno possibile per il mese di febbraio 
+\n",GG);
+break;
+case 3:
+printf("\n%d non e' un giorno possibile per 
+il mese di  marzo\n",GG);
+break;
+case 4:
+printf("\n%d non e' un 
+giorno possibile per il mese di aprile \n",GG);
+break;
+case 
+5:
+printf("\n%d non e' un giorno possibile per il mese di maggio 
+\n",GG);
+break;
+case 6:
+printf("\n%d non e' un giorno possibile per 
+il mese di giugno \n",GG);
+break;
+case 7:
+printf("\n%d non e' un 
+giorno possibile per il mese di luglio \n",GG);
+break;
+case 
+8:
+printf("\n%d non e' un giorno possibileper il mese di agosto 
+\n",GG);
+break;
+case 9:
+printf("\n%d non e' un giorno possibile per 
+il mese di settembre\n",GG);
+break;
+case 10:
+printf("\n%d non e' un 
+giorno possibile per il mese di ottobre \n",GG);
+break;
+case 
+11:
+printf("\n%d non e' un giorno possibile per il mese di novembre 
+\n",GG);
+break;
+case 12:
+printf("\n%d non e' un giorno possibile per 
+il mese di dicembre \n",GG);
+break;
+}
+
+}
+/* verifica congruita' 
+seconda  data*/
+bisesto=0;
+if ((AA2%4)==0 && (AA2%100)!=0) bisesto= 
+1;
+
+gmese = 30; 
+
+if (AA2&lt;0) printf("%d non e' un anno 
+possibile\n", AA2);
+   else if(MM2&lt;1 || MM2>12) printf("%d non e' 
+un mese possibile\n", MM2);
+         else {
+               if (MM2==1 
+|| MM2==3 || MM2==5 || MM2==7 || MM2==8 || MM2==10 || MM2==12)
+ 
+gmese = 31;
+                   else if (MM2==2 && bisesto) gmese = 
+29; gmese = 28;
+               if (GG2>0 && GG2&lt;gmese) 
+ 
+{
+                  printf("%d/%d/%d  e' una data 
+possibile\n",GG2,MM2,AA2);
+                  flag = flag + 1;
+ 
+}
+                  else
+                  
+                  
+ 
+switch(MM2){
+case 1:
+printf("\n%d non e' un giorno possibile per il 
+mese di gennaio \n",GG2);
+break;
+case 2:
+printf("\n%d non e' un 
+giorno possibile per il mese di febbraio \n",GG2);
+break;
+case 
+3:
+printf("\n%d non e' un giorno possibile per il mese di 
+marzo\n",GG2);
+break;
+case 4:
+printf("\n%d non e' un giorno possibile 
+per il mese di aprile \n",GG2);
+break;
+case 5:
+printf("\n%d non e' un 
+giorno possibile per il mese di maggio \n",GG2);
+break;
+case 
+6:
+printf("\n%d non e' un giorno possibile per il mese di giugno 
+\n",GG2);
+break;
+case 7:
+printf("\n%d non e' un giorno possibile per 
+il mese di luglio \n",GG2);
+break;
+case 8:
+printf("\n%d non e' un 
+giorno possibile per il mese di agosto \n",GG2);
+break;
+case 
+9:
+printf("\n%d non e' un giorno possibile per il mese di 
+settembre\n",GG2);
+break;
+case 10:
+printf("\n%d non e' un giorno 
+possibile per il mese di ottobre \n",GG2);
+break;
+case 
+11:
+printf("\n%d non e' un giorno possibile per il mese di novembre 
+\n",GG2);
+break;
+case 12:
+printf("\n%d non e' un giorno possibile per 
+il mese di dicembre \n",GG2);
+break;
+}
+
+}
+if (flag == 2)
+   {
+   if 
+((AA>AACORRENTE)||(AA2>AACORRENTE)) 
+       printf("\n errore 
+nell'input: data/e futura/e\n");
+       else if ((AA&lt;AA2) || 
+((AA=AA2) &&(MM&lt;MM2)) ||((AA=AA2) &&(MM=MM2) && (GG&lt;GG2)))
+ 
+printf("\nla seconda data e' piu' recente\n");
+               else 
+printf("\nla prima data e' piu' recente\n");
+   }
+   else printf("\n 
+errore nell'input: data/e errata/e\n");
+}
+
+
+
+/*ESERCIZIO 15 DEL 
+CAPITOLO 2 DEL 
+BELLINI_GUIDI*/
+/********************************************/
+/****** 
+**************************************/
+#include 
+&lt;stdio.h>
+main()
+{
+/* esercizio 15 del capitolo 2 */
+
+int 
+a,b,c;
+
+printf("Dammi tre interi \n");
+
+scanf("%d%d%d",&a,&b,&c);
+ 
+
+printf("\nI tre interi:%d, %d e %d sono ", a, b,c);
+if (a==b) 
+   if 
+(b==c)  printf("tutti uguali");
+       else printf("due uguali e uno 
+diverso");
+   else if (b==c) printf("due uguali e uno diverso");
+ 
+else if (a==c)  printf("due uguali e uno diverso");
+ 
+else printf("tutti diversi");
+      
+
+}
+
+</PRE>
+
+</BODY>
+
+</HTML>

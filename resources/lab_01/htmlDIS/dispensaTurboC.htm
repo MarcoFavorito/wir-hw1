@@ -1,0 +1,1235 @@
+<!doctype html public "-//w3c//dtd html 4.0 transitional//en">
+<html>
+<head>
+<title>Introduzione all'ambiente turboC/C++</title>
+</head>
+<body>
+
+<center>
+<b>UNIVERSITA' DEGLI STUDI DI ROMA "LA SAPIENZA"</b>
+<p><b>FACOLTA' DI INGEGNERIA</b>
+</center>
+
+<center> <h1>Guida all'uso del TurboC/C++ per la programmazione in C</h1>
+</center>
+
+<center>
+  <b>ANNO ACCADEMICO 2002/03</b> 
+</center>
+
+<br>&nbsp;
+<br>&nbsp;
+
+<h2>1. Ambiente TurboC/C++</h2>
+
+Il TurboC/C++ &egrave; un ambiente integrato per la messa a punto di programmi
+in C e in C++. In questo ambiente &egrave; possibile creare, correggere,
+compilare, mandare in esecuzione e memorizzare su disco programmi C/C++.
+
+<h3>1.1. L'Ambiente di sviluppo programmi</h3>
+
+Lanciando il TurboC/C++ viene visualizzata la schermata seguente:
+<p><img SRC="./tcwindow.gif" >
+
+<p>Tramite i men&ugrave; &egrave; possibile selezionare i comandi
+desiderati. Questo pu&ograve; avvenire sia utilizzando il mouse sia
+posizionandosi con le frecce sul comando desiderato e premendo quindi il tasto
+invio. Ad un comando pu&ograve; inoltre essere associato un tasto <tt>F</tt>
+(<tt>F1...F10</tt>) oppure la combinazione <tt>Alt-TASTO F</tt>, oppure una
+sequenza costituita dal tasto <tt>Alt</tt> seguito da una lettera.
+
+La linea in fondo allo schermo indica alcuni comandi  eseguibili direttamente
+con i tasti <tt>F</tt>. Tra questi il comando <tt>F1</tt>
+per richiedere aiuto (<i>help</i>), cio&egrave; spiegazioni sulle operazioni
+eseguibili nel contesto in cui si lavora ed il comando <tt>F10</tt> per
+spostare il cursore sulla barra dei men&ugrave; (linea superiore dello
+schermo).
+
+
+<p>Se si vuole uscire definitivamente dal TurboC/C++ basta eseguire il comando
+<tt>Quit</tt> del men&ugrave; <tt>File</tt> (<tt>Alt-f</tt> e poi <tt>q</tt>).
+Se invece si vuole abbandonare temporaneamente l'ambiente TurboC/C++ si usa il
+comando <tt>DOS shell</tt> del men&ugrave; <tt>File</tt>. Per rientrare in
+TurboC/C++ si usa il comando DOS <tt>exit</tt>.
+
+<p>Lo schermo iniziale &egrave; diviso in pi&ugrave; parti, corrispondenti a
+<i>finestre</i> denominate: 
+<tt>&lt;noname00.c/cpp></tt> (sempre presente), <tt>&lt;Output></tt>, 
+<tt>&lt;Message></tt>... La finestra di output &egrave; quella in cui
+vengono mostrati i risultati dell'esecuzione dei programmi. La finestra
+<tt>noname00.c/cpp</tt> &egrave; quella in cui viene scritto il testo del
+programma, e si chiama <i>finestra di edit</i>.  E' possibile ingrandire e
+spostare queste finestre, se ne possono inserire di nuove e chiudere quelle
+gi&agrave; aperte. Per aprire finestre vedi: men&ugrave; <tt>File</tt> comando
+<tt>Open</tt> o <tt>New</tt>, per spostarle, ingrandirle, chiuderle:
+men&ugrave; <tt>Window</tt> comando <tt>Zoom</tt>, <tt>Size/Move</tt>,
+<tt>Close</tt>.  Tutte le finestre che l'utente apre vengono messe una sotto
+l'altra, e resta visibile di esse solo il nome (<tt>noname00.c/cpp</tt> o
+<tt>Output</tt>) ed il numero di controllo. Il numero di controllo &egrave;
+quel numero che sta a destra del nome della finestra (ad
+es. <tt>nomame00.c/cpp</tt> ha il numero di controllo <tt>1</tt> mentre
+<tt>Output</tt> ha il numero di controllo <tt>2</tt>) . Solo l'ultima finestra
+aperta &egrave; completamente visibile e tutti i comandi o le
+funzionalit&agrave; che si attivano si riferiscono ad essa. Si dice che tale
+finestra &egrave; <i>attiva</i>.  Per rendere attiva una finestra si usa
+<tt>Alt-n</tt>, con <tt>n</tt> numero di controllo della finestra che si vuole
+attivare. Per cambiare finestra attiva, basta premere il tasto <tt>F6</tt>.
+
+
+<h3>1.2. Come assicurarsi che le compilazioni avvengano tramite il compilatore
+ANSI C (e non il compilatore C++)</h3>
+
+<ol>
+
+  <li><b>Memorizzare il programma sorgente C in un file avente
+       estensione <tt>.C</tt> (e non <tt>.CPP</tt>)</b>.
+       Allo scopo di rendere automatico
+       l'uso dell'estensione <tt>.c</tt> si pu&ograve; intervenire
+       sulla finestra <tt>Editor options</tt>
+       specificando il suffisso <tt>c</tt>
+       come <tt>Default extension</tt> (e non <tt>CPP</tt>).
+       Tale finestra &egrave; accessibile selezionando dal men&ugrave;
+       <tt>Options</tt> la voce <tt>Editor</tt> e
+       nel sottomen&ugrave; risultante la voce <tt>Editor</tt>
+       <br>&nbsp;
+
+
+  <li><b>Verificare nella finestra <tt>C++ options</tt> che
+       la scelta corrispondente a <tt>Use C++ Compiler</tt> sia <tt>CPP
+       extension</tt> e non <tt>C++ always</tt></B>. Tale finestra &egrave;
+       accessibile tramite selezionando dal men&ugrave; <tt>Options</tt>
+       la voce <tt>Compiler</tt> e nel sottomen&ugrave; risultante la voce
+       <tt>C++ options</tt>.
+       <br>&nbsp;
+
+  <li><b>Infine, per fare riferimento allo standard
+       ANSI del linguaggio C, &egrave; opportuno scegliere
+       nella finestra <tt>Source options</tt> le <tt>Keywords</tt> ANSI</b>.
+       Tale finestra &egrave; accessibile tramite selezionando dal men&ugrave;
+       <tt>Options</tt> la voce <tt>Compiler</tt> e nel sottomen&ugrave;
+       risultante la voce <tt>Source</tt>.
+
+
+</ol>
+
+<br>&nbsp;
+
+
+
+<h2>2. Realizzazione di un programma</h2>
+
+Mostriamo le operazioni principali da effettuare per redigere, compilare,
+eseguire e memorizzare su disco un programma C.
+
+<h4>Apertura della finestra di editor</h4>
+
+Si esegue il comando <tt>Open</tt> del men&ugrave; <tt>File</tt> (<tt>F3</tt>),
+si inserisce nella casella <tt>name</tt> il nome di un file (cone estensione
+<tt>.c</tt>). In questo modo si crea un file con il nome specificato in cui
+verr&agrave; memorizzato il testo del programma (vedi comando <tt>Save</tt>
+pi&ugrave; avanti).  Se il file gi&agrave; esiste in memoria di massa e deve
+essere modificato, occorre specificarne il nome, ed il direttorio se esso si
+trova in un direttorio diverso da quello corrente. Viene quindi aperta una
+finestra col nome specificato, in cui compare il testo del programma contenuto
+nel file.
+
+
+<h4>Scrittura del programma</h4>
+
+Per i comandi dell'editor si rimanda al men&ugrave; <tt>Edit</tt> per le
+operazioni di inserimento e cancellazione del testo ed al men&ugrave;
+<tt>Search</tt> per la ricerca e sostituzione di parti del testo. Si ricorda
+che le frecce consentono di posizionare il cursore nel punto sul quale si
+intende lavorare.  Quando si ritiene completato il testo del programma questo
+pu&ograve; essere salvato nel file associato alla finestra tramite il comando
+<tt>Save</tt> del men&ugrave; <tt>File</tt> (<tt>F2</tt>). Se si vuole salvare
+su un nuovo file il comando da utilizzare &egrave; <tt>Save as</tt>, che ne
+richiede il nome; in questo caso il file di partenza rimane inalterato.
+
+
+<h4>Compilazione del programma</h4>
+
+Tramite il comando <tt>Compile</tt> del men&ugrave; <tt>Compile</tt>
+(<tt>Alt-c</tt> e poi <tt>c</tt>).  Se la compilazione ha successo, il 
+compilatore segnala <TT>Success</TT> e premendo un tasto ci si riporta 
+sulla finestra di edit.
+
+Se invece ci sono errori o avvertimenti, la finestra di compilazione segnala <TT>Errors</TT> o
+<TT>Warnings</TT> in basso a sinistra.  Premendo un tasto, appare la
+finestra <TT>Messages</TT> con i messaggi di avvertimento o errore.  I messaggi possono
+essere evidenziati con i tasti freccia.  Quando un messaggio &egrave;
+evidenziato, premendo <TT>F1</TT> si ottiene una spiegazione estesa
+dell'errore (<TT>ESC</TT> per chiudere la finestra).  Premendo invio, il
+cursore si posiziona automaticamente sulla parte di programma in cui
+&egrave; stato commesso l'errore, facilitando cos&igrave; la correzione.
+
+Una volta corretto l'errore si deve ricompilare di nuovo il programma, e 
+cos&igrave; via fino a ottenere il messaggio <tt>Success</tt>.  A questo
+punto conviene salvare nuovamente il programma su file.
+
+
+<h4>Esecuzione del programma</h4>
+
+Il comando <tt>Run</tt> del men&ugrave; <tt>Run</tt> (<tt>Alt-r</tt>
+seguito da <tt>r</tt>) compila il programma e, se non vengono individuati
+errori, lo esegue. L'input e l'output dei dati avvengono nella finestra
+<tt>Output</tt>.
+Per vedere il risultato dell'esecuzione del programma occorre quindi rendere
+tale finestra attiva. Per interrompere il programma (ad esempio nei casi
+di non terminazione) si usano i tasti
+<tt>Ctrl-Pausa</tt>.
+
+
+<h4>Creazione di una versione eseguibile del programma</h4>
+
+Se il programma viene considerato corretto si pu&ograve; costruire una versione
+eseguibile del programma una versione cio&egrave;, che si possa utilizzare
+senza entrare in TurboC/C++ mandandola in esecuzione direttamente dal DOS. Per
+fare ci&ograve;, si utilizza il comando <tt>Make</tt> del men&ugrave;
+<tt>Compile</tt> (<tt>Alt-c</tt> seguito da <tt>m</tt>). In risposta a tale
+comando il compilatore memorizza nel direttorio corrente (cio&egrave; sul disco
+rigido o sul floppy) la versione eseguibile del programma (cio&egrave; in
+linguaggio macchina che &egrave; direttamente comprensibile dal calcolatore).
+Si pu&ograve; verificare che nel direttorio corrente viene incluso un file col
+nome del programma ed estensione <tt>exe</tt>.
+
+<br>&nbsp;
+
+<h2>3. Individuazione degli errori</h2>
+
+Uno degli aspetti pi&ugrave; importanti dell'ambiente di programmazione
+riguarda gli strumenti per l'individuazione degli errori logici contenuti
+nei programmi. A questo proposito risulta molto utile fare uso degli strumenti
+offerti dall'ambiente di programmazione.
+
+<h3>3.1. Esecuzione del programma istruzione per istruzione</h3>
+
+Per ottenere una esecuzione istruzione per istruzione del programma occorre
+eseguire il comando <tt>Trace into</tt> del men&ugrave; <tt>Run</tt>. Il
+programma viene compilato e viene posta la barra di esecuzione all'inizio della
+funzione <tt>main()</tt>. Ogni volta che si preme <tt>F7</tt> viene eseguita
+l'istruzione successiva.
+
+<p>Consideriamo il programma seguente che somma <tt>n</tt> interi specificati
+dall'utente.
+
+
+<br>&nbsp;
+
+<pre>#include &lt;stdio.h>
+
+int main(void)
+{
+&nbsp; int i,m,n;
+&nbsp; int somma = 0;
+&nbsp; printf("Numero dati da sommare = ");
+&nbsp; <u>scanf("%d", &amp;n);</u>
+&nbsp; for (i = 1; i &lt;= n; i++) {
+&nbsp;&nbsp;&nbsp; printf("Prossimo dato = ");
+&nbsp;&nbsp;&nbsp; scanf("%d", &amp;m);
+&nbsp;&nbsp;&nbsp; somma = somma + m;
+&nbsp; }
+&nbsp; printf("Somma = %d\n", somma);
+&nbsp; return 0;
+}
+</pre>
+
+Premendo pi&ugrave; volte <tt>F7</tt> si esegue il programma passo
+passo. Quando si arriva all'istruzione sottolineata, vengono chiesti dati di
+input, mostrando la finestra <tt>Output</tt>, e, per proseguire, occorre
+inserirli. Nella finiestra <tt>Output</tt> si pu&ograve; anche verificare
+l'effetto delle istruzioni di output.  <p>Il comando <tt>Step over</tt> del
+men&ugrave; <tt>Run</tt> (<tt>F8</tt>), consente di eseguire in un unico passo
+l'istruzione corrente, durante l'esecuzione istruzione per istruzione. In
+particolare quindi, quando si esegue la chiamata ad una funzione in questa
+modalit&agrave;, non se ne esegue il flusso completo.  Ad esempio:
+
+<pre>
+#include &lt;stdio.h>
+int fattoriale(int x)
+{
+&nbsp; int i;
+&nbsp; int somma = 1;
+&nbsp; for (i = x; i >= 1; i--)
+&nbsp;&nbsp;&nbsp; somma = somma * i;
+&nbsp; return somma;
+}
+
+int main(void)
+{
+&nbsp; int numero, fatt;
+&nbsp; printf("Numero = ");
+&nbsp; scanf("%d", &amp;numero);
+&nbsp; <u>fatt = fattoriale(numero);
+</u>&nbsp; printf("Il fattoriale di %d e' %d", numero, fatt);
+&nbsp; return 0;
+}
+</pre>
+
+Eseguendo il programma passo passo, arrivati all'istruzione sottolineata dando
+il comando <tt>Step over</tt> il sistema restituisce il valore del fattoriale
+senza eseguire la funzione istruzione per istruzione come invece avrebbe fatto
+con <tt>Trace into</tt>.
+
+<h3>3.2. Ispezione delle variabili</h3>
+
+Durante l'esecuzione passp passo &egrave; molto utile verificare
+il valore delle variabili del programma. A questo scopo occorre specificare le
+variabili di cui si vuole controllare il valore. Per fare ci&ograve; si apre il
+men&ugrave; <tt>Debug</tt> (<tt>Alt-d</tt>;) e si esegue il comando
+<tt>Watches</tt>. Cos&igrave; facendo si attiva un sottomen&ugrave; nel quale
+si deve scegliere <tt>Add watch</tt>. <tt>Add watch</tt> chiede le <tt>Watch
+Expression</tt>, cio&egrave; il nome delle variabili di cui si vuole
+controllare il flusso (si pu&ograve; attivare direttamente l'opzione <tt>Add
+watch</tt> premendo <tt>Ctrl-F7</tt>). Facendo riferimento al programma
+precedente che somma n interi, pu&ograve; essere utile controllare il valore che assumeranno
+istruzione dopo istruzione le variabili <tt>somma</tt> ed <tt>n</tt>: queste
+sono le <tt>Watch Expression</tt> che vanno inserite.  Per vedere il valore di
+tali variabili occorre attivare la finestra <tt>Watch</tt>, tramite il
+men&ugrave; <tt>Windows</tt> (<tt>Alt-w</tt>) e si esegue il comando
+<tt>Watch</tt>. In tale finestra compaiono i valori che assumono le variabili
+specificate in precedenza. Se il programma ancora non &egrave; stato mandato in
+esecuzione nella finestra <tt>Watch</tt> accanto al nome della generica
+variabile ci sar&agrave;: <tt>Unknown symbol</tt>. Non appena si manda in
+esecuzione passo passo il programma le variabili assumono i valori determinati
+dall'esecuzione del programma. Si noti che quando ci sono due variabili
+con lo
+stesso nome in due blocchi diversi, viene mostrato il valore della variabile
+visibile nella parte di programma in esecuzione.
+
+<p>Durante l'esecuzione passo passo, si pu&ograve; anche effettuare un 
+controllo pi&ugrave; fine sulle variabili mediante il comando <TT>Inspect...</TT> 
+dal men&ugrave; <tt>Debug</tt>. Questa modalit&agrave; di ispezione, che 
+funziona solo quando il programma &egrave; in esecuzione, permette di 
+visualizzare, oltre al <I>valore</I> di una variabile, anche il <I>tipo</I> dichiarato, 
+e l'<I>indirizzo</I> a partire dal quale essa &egrave; memorizzata. Questo 
+&egrave; molto utile quando si hanno assegnazioni inaspettate, dovute ad indirizzi 
+fuori controllo. Si consideri il seguente programma, che contiene un errore 
+molto comune in C:
+
+<pre>#include &lt;stdio.h>
+
+int main(void)
+{
+&nbsp; int a = 5;
+&nbsp; int b[3];
+&nbsp; int i;
+
+&nbsp; for (i = 0; i &lt;= 3; i++) 
+&nbsp;&nbsp;   b[i] = 1;
+&nbsp; printf("valore di a = %d; valori di b = [%d, %d, %d]", 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; a, &nbsp;&nbsp; b[0], b[1], b[2]);
+&nbsp; return 0;
+}
+</pre>
+il programma stampa: 
+<TT>valore di a = 1; valori di b = [1, 1, 1]</TT><br>
+e quindi ha cambiato anche il valore di <TT>a</TT>; perch&eacute?  
+<P>La risposta si
+pu&ograve; trovare usando l'esecuzione passo passo, e, dopo aver passato le
+dichiarazioni, facendo <TT>Inspect...</TT> sia di <TT>a</TT>, che di <TT>b</TT>.  Osservate
+che ispezionare un vettore significa ispezionare tutte le sue componenti. 
+L'indirizzo di <TT>a</TT> &egrave; visibile in alto a sinistra nella 
+finestra di <TT>Inspect</TT>. Nell'installazione in Laboratorio, esso &egrave; DS:FFF4; 
+(DS sta per Data Segment; si veda lo Help per maggiori dettagli)
+quello di <TT>b[0]</TT>, &egrave; DS:FFEE (entrambi in notazione 
+esadecimale). Poich&eacute; un intero in TurboC occupa due byte, <TT>b[1]</TT> ha 
+indirizzo DS:FFF0, <TT>b[2]</TT> DS:FFF2. Quando <TT>i</TT> giunge a 3, <TT>b[3]</TT> ha indirizzo 
+DS:FFF4, che &egrave; lo stesso di <TT>a</TT>, e quindi, assegnando 1 a 
+<TT>b[3]</TT>, in realt&agrave; assegna 1 ad <TT>a</TT>. 
+
+<H4>3.2.1 Finestre durante l'esecuzione passo passo con ispezione</H4>
+
+<p>In questa fase &egrave; utile posizionare le finestre in modo da avere
+sempre sotto gli occhi la finestra <tt>Watch</tt>, e quella del programma da
+controllare. Per ridimensionare una finestra si usa il comando <tt>Tile</tt>
+del men&ugrave; <tt>Windows</tt>. In alternativa si pu&ograve; usare il comando
+<tt>Size/Move</tt> del men&ugrave; <tt>Windows</tt>: muovendo il mouse o usando
+le frecce la finestra attiva si sposta e si pu&ograve; organizzare lo schermo a
+proprio piacimento. Le finestre di <TT>Inspect</TT> sono invece 
+ visibili durante l'esecuzione passo passo, e vengono automaticamete chiuse 
+ alla fine dell'esecuzione.
+
+
+<h3> 3.3. Punti di arresto</h3>
+
+L'esecuzione istruzione per istruzione risulta impraticabile non appena le
+dimensioni dei programmi e dei dati diventano significative. Si pu&ograve; per
+questo eseguire il comando <tt>Go to cursor </tt>del men&ugrave; <tt>Run</tt>,
+che provoca l'esecuzione di tutte le istruzioni da quella corrente fino al
+punto in cui &egrave; posizionato il cursore. Nella finestra <tt>Watch</tt>
+compaiono i valori delle variabili aggiornate fino all'ultima istruzione
+eseguita.
+
+<p>Si pu&ograve; infine richiedere l'arresto dell'esecuzione del programma solo
+in determinati punti usando i comandi <tt>Toggle breakpoint</tt> e
+<tt>Breakpoint</tt> del men&ugrave; <tt>Debug</tt>.
+
+<p><tt>Toggle Breakpoint</tt> attiva e disattiva punti di arresto
+incondizionato, mentre <tt>Breakpoint</tt> permette di definire e controllare i
+punti di arresto. All'esecuzione di tale comando si apre una finestra in cui
+c'&egrave; l'elenco dei punti di arresto, la condizione ed il passaggio a cui
+tale punto di arresto si attiva. Se sono presenti dei punti di arresto
+incondizionati, cio&egrave; inseriti col comando <tt>Toggle breakpoint</tt> non
+c'&egrave; n&eacute; la condizione che li determina n&egrave; il passaggio in
+cui vengono attivati. Se si vuole inserire un punto di arresto, si deve
+scegliere l'opzione <tt>Edit</tt> con <tt>Alt-e</tt> : si apre cos&igrave; una
+finestra di dialogo in cui si possono inserire le seguenti informazioni:
+<br>&nbsp;
+
+<p><tt>Condition</tt> - condizione
+<br><tt>Pass Count</tt> - numero di passaggio prima dell'attivazione
+<br><tt>File Name</tt> - nome del file
+<br><tt>Line Number</tt> - numero della riga del punto d'arresto
+
+
+<h3>3.4. La pila delle attivazioni</h3>
+
+La pila delle attivazioni (chiamate) di funzione pu&ograve; essere molto
+utile per esaminare l'esecuzione del programma. Per vedere la pila delle
+chiamate di funzione si deve esegue il comando <tt>Call stack</tt> nel
+men&ugrave; <tt>Debug</tt>, durante l'esecuzione passo passo. Questo comando
+apre una finestra in cui &egrave; mostrata la pila delle attivazioni nello
+stato corrente del programma. Si consideri il seguente programma che contiene
+una procedura ricorsiva per il calcolo del fattoriale.
+
+<pre>
+#include&lt;stdio.h>
+
+void fattoriale(int* totale, int numero)
+{
+&nbsp; if (numero > 1) {
+&nbsp;&nbsp;&nbsp; *totale = numero * (*totale);
+&nbsp;&nbsp;&nbsp; fattoriale(totale, numero-1);
+&nbsp; }
+}
+
+int main(void)
+{
+&nbsp; int fatt = 1;
+&nbsp; int n;
+&nbsp; printf("Inserisci un numero:&nbsp; ");
+&nbsp; scanf("%d", &amp;n);
+&nbsp; fattoriale(&amp;fatt, n);
+&nbsp; printf("Il fattoriale e' %d\n", fatt);
+&nbsp; return 0;
+}
+</pre>
+
+Supponendo che al programma venga fornito il valore <tt>4</tt>, eseguendo il
+comando <tt>Call stack</tt> subito dopo la quarta chiamanta alla funzione
+<tt>fattoriale()</tt> si ottiene:
+
+<pre>
+fattoriale(1,DS:FFF4)
+fattoriale(2,DS:FFF4)
+fattoriale(3,DS:FFF4)
+fattoriale(4,DS:FFF4)
+main()
+</pre>
+
+Si noti che l'ordine dei parametri &egrave; invertito rispetto a come essi sono
+dichiarati nell'intestazione della funzione. Si noti inoltre che tutte
+attivazioni della funzione <tt>fattoriale()</tt> hanno il parametro
+<tt>totale</tt> pari a <tt>DS:FFF4</tt> perch&egrave; tutte le chiamate fanno
+riferimento alla stessa locazione di memoria (la locazione memorizzata nel
+parametro <tt>totale</tt>, che &egrave; un puntatore).
+
+<br>&nbsp;
+
+<h2>4. I comandi dei men&ugrave;</h2>
+
+<h3> <tt>4.1. Men&ugrave; File</tt></h3>
+
+<ul>
+  <li><tt>New</tt><br>
+
+Apre una nuova finestra di edit con il nome fittizio <tt>nomamexx.c/cpp</tt>
+(<tt>xx</tt> &egrave; un numero da <tt>00</tt> a <tt>99</tt>) ed
+automaticamente rende la finestra attiva.
+
+       <br>&nbsp;
+
+  <li><tt>Open</tt><br>
+
+Questo comando introduce ad una "<i>finestra di dialogo</i>". In essa troviamo
+una casella, <tt>Name</tt>, in cui va inserito il nome del file da
+caricare. Premendo il tasto freccia in gi&ugrave; compare una finestra in cui
+ci sono tutti i file che sono stati aperti dall'inizio della sessione di
+lavoro, e che quindi possono essere facilmente richiamati. Sotto la casella
+<tt>Name</tt> c'&egrave; la finestra <tt>Files</tt>. Essa contiene il nome dei
+file nel direttorio corrente e che quindi &egrave; possibile caricare. Per
+entrare nella finestra si deve premere <tt>Alt-f</tt>, e poi spostarsi sul file
+che interessa attraverso le frecce. Premendo invio si apre il file
+selezionato. Le operazioni possibili in questa "<i>finestra di dialogo"</i>
+sono: <tt>Open</tt> apre una nuova finestra di edit e mette il file selezionato
+in questa finestra. <tt>Replace</tt> invece di aprire una nuova finestra
+sostituisce il file nella finestra attiva con il file selezionato.  <br>&nbsp;
+
+       <br>&nbsp;
+
+  <li><tt>Save</tt><br>
+
+Salva il file che &egrave; nella finestra attiva su disco. Se il file ha il
+nome fittizio <tt>nonamexx.c/cpp</tt> allora viene automaticamente aperta la
+finestra (<tt>Save as</tt>).
+
+       <br>&nbsp;
+
+  <li><tt>Save as</tt><br>
+
+Non appena viene aperto questo sottomen&ugrave;, il cursore si trova nella
+casella <tt>Save File As</tt> in cui si deve inserire il nome con il quale si
+vuole registrare il programma. Al di sotto di questa casella c'&egrave; una finestra
+<tt>Files</tt> in cui appare la lista dei file presenti nel direttorio
+corrente. Ancora al di sotto c'&egrave; un'ultima finestra (blu) nella quale vengono
+date informazioni sui file gi&agrave; esistenti nel direttorio corrente (ad
+es. nome, data di esecuzione, memoria occupata) e sulla maschera di 
+visualizzazione (se ad esempio appare la maschera <TT>A:\*.CPP</TT>, si 
+visualizzeranno solo i file che terminano con <TT>CPP</TT>).
+
+       <br>&nbsp;
+
+  <li><tt>Save all</tt><br>
+
+Salva tutti i file nelle finestre aperte.
+
+       <br>&nbsp;
+
+  <li><tt>Change dir</tt><br>
+
+Il comando <tt>Change dir</tt> conduce ad un sottomen&ugrave;
+nel quale &egrave; possibile cambiare il direttorio corrente.
+
+       <br>&nbsp;
+
+  <li><tt>Print</tt><br>
+
+Stampa il contenuto della finestra attiva.
+
+       <br>&nbsp;
+
+  <li><tt>Dos Shell</tt><br>
+
+Questo programma permette di abbandonare temporaneamente il TurboC/C++
+ed eseguire comandi MS-DOS e programmi. Digitando <tt>Exit</tt> si rientra
+nell'ambiente TurboC/C++.
+
+       <br>&nbsp;
+
+
+  <li><tt>Quit</tt><br>
+
+       Serve ad uscire dal TurboC/C++.
+</ul>
+
+
+
+<h3><tt>4.2.Men&ugrave; Edit</tt></h3>
+
+<ul>
+  <li><tt>Undo</tt><br>
+
+Serve una volta modificata una linea a tornare allo stato precedente.
+Ad esempio, se si modifica la linea
+<p><tt>int a,b,c;</tt>
+<p>introducendo nuove variabili
+<p><tt>int a,b,c,d; char y;</tt>
+<p>usando <tt>Undo</tt> torno ad avere la linea iniziale.
+
+       <br>&nbsp;
+
+  <li><tt>Redo</tt><br>
+
+Serve per annullare il comando <tt>Undo</tt>.
+
+       <br>&nbsp;
+
+  <li><tt>Show clipboard</tt><br>
+
+Apre la finestra <tt>Clipboard</tt>, contiene ogni testo che si porta in essa
+attraverso i comandi <tt>Cut</tt> e <tt>Copy</tt>. I testi vengono inseriti uno
+di seguito al' altro. Il testo che compare evidenziato &egrave; quello che
+viene usato dal TurboC/C++ attraverso il comando <tt>Paste</tt>.
+
+       <br>&nbsp;
+
+  <li><tt>Cut</tt><br>
+
+Si pu&ograve; usare solo dopo avere selezionato un testo. Il testo si seleziona
+in questo modo: si posiziona il cursore all'inizio del testo da selezionare, si
+preme <tt>Ctrl-k</tt> poi <tt>b</tt>, si posiziona il cursore alla fine del
+testo e si preme <tt>Crtl-k</tt> poi <tt>k</tt>. Un modo molto pi&ugrave;
+comodo &egrave; selezionare il testo premendo la freccia verso l'alto
+(<tt>Shift</tt>) e contemporaneamente spostare il cursore con le frecce sul
+testo da selezionare. Il comando <tt>Cut</tt> (taglia) cancella il testo
+selezionato nella finestra attiva e lo colloca nella <tt>Clipboard</tt>.
+
+       <br>&nbsp;
+
+  <li><tt>Copy</tt><br>
+
+E' simile al <tt>Cut</tt>: come <tt>Cut</tt> fa una copia del testo selezionato
+sulla <tt>Clipboard</tt> tuttavia a differenza del <tt>Cut</tt> tale comando
+lascia intatto il testo selezionato. E' possibile copiare testi dalle finestre
+<tt>Help</tt>: si seleziona il testo nei modi precedentemente descritti e poi
+premendo <tt>Ctrl-Ins</tt> si copia il testo nella <tt>Clipboard</tt>.
+
+       <br>&nbsp;
+
+  <li><tt>Paste</tt><br>
+
+Trasferisce il testo selezionato nella <tt>Clipboard</tt> sulla finestra di
+edit attiva nella posizione indicata dal cursore. Si pu&ograve; ripetere questa
+operazione tutte le volte che si desidera.
+
+       <br>&nbsp;
+
+  <li><tt>Clear</tt><br>
+
+Cancella il testo selezionato; &egrave; una funzione irreversibile.
+
+       <br>&nbsp;
+
+  <li><tt>Copy example</tt><br>
+
+I quadri di <tt>Help</tt> contengono degli esempi di particolari funzioni che
+&egrave; possibile copiare nella <tt>Clipboard</tt> e quindi trasferire nelle
+finestre di <tt>Edit</tt> attraverso il comando <tt>Paste</tt>.
+
+</ul>
+
+
+<h3><tt>4.3. Men&ugrave; Search</tt></h3>
+
+<ul>
+  <li><tt>Find</tt></br>
+
+Nella riga <tt>Text to Find</tt> va inserita la stringa da ricercare. Per
+iniziare la ricerca va scelto <tt>OK</tt> altrimenti va scelto <tt>Cancel</tt>
+per tornare alla finestra attiva. Se si vuole inserire una stringa che
+si &egrave; gi&agrave; ricercato si preme la freccia verso il basso e viene
+mostrata l'H<tt>istory list,</tt> cio&egrave; la lista di tutte le ricerche
+fatte da inizio sessione di lavoro. Attraverso le frecce &egrave; possibile
+selezionare la stringa desiderata, premendo invio si avvia la ricerca.
+Se non si vuole ricercare una stringa gi&agrave; cercata basta digitarla
+e premere invio. Va notato che inizialmente nella riga del <tt>Text to
+Find</tt> compare la parola su cui si trova il cursore nella finestra di
+E<tt>dit</tt> attiva. In <tt>Text to find</tt> ho varie opzioni:
+
+<ul>
+
+  <li><tt>Options</tt><br>
+
+       <ul>
+         <li><tt>Case sensitive</tt><br>
+
+Selezionandola il TurboC/C++ fa differenza tra maiuscole e minuscole.
+
+
+         <li><tt>Whole word only</tt><br>
+
+Cerca solo le parole intere (e non sotto-stringhe).
+
+
+         <li><tt>Regular expression</tt><br>
+
+Riconosce i caratteri <tt>[]\*.$^</tt>.
+              
+       </ul>
+
+  <li><tt>Scope</tt><br>
+
+       <ul>
+         <li><tt>Global</tt><br>
+
+Ci si riferisce al testo globale.
+
+         <li><tt>Selected text</tt><br>
+
+Ci si riferisce al testo selezionato.
+
+       </ul>
+
+  <li><tt>Direction</tt><br>
+
+       <ul>
+         <li><tt>Forward</tt><br>
+
+La direzione della ricerca va dall'origine alla fine.
+
+         <li><tt>Backward</tt><br>
+
+La direzione della ricerca &egrave; opposta.
+       </ul>
+
+  <li><tt>Origin</tt><br>
+
+       <ul>
+
+         <li><tt>From cursor</tt><br>
+
+La ricerca inizia da dove &egrave; il cursore fino alla fine.
+
+         <li><tt>Entire scope</tt><br>
+
+La ricerca copre l'intero testo.
+
+       </ul>
+</ul>
+
+     <br>&nbsp;
+
+<li><tt>Replace</tt><br>
+
+Mostra una finestra di dialogo che consente di introdurre un testo da ricercare
+ed il testo da sostituirgli. Ha tutte le opzioni del comando text to find ,in
+pi&ugrave; c'&egrave; un'opzione <tt>Prompt on replace</tt> la quale se
+attivata fa s&igrave; che TurboC/C++. prima di operare la sostituzione chieda
+un'ulteriore conferma. Si pu&ograve; inoltre sfruttare la funzionalit&agrave;
+<tt>Change all</tt> che consente di cambiare tutte le corrispondenze trovate (e
+non solo la prima).
+
+     <br>&nbsp;
+
+<li><tt>Search again</tt><br>
+
+Ripete l'ultimo comando <tt>Find</tt> o <tt>Replace</tt> eseguito.
+
+     <br>&nbsp;
+
+<li><tt>Go to line number</tt><br>
+
+Sposta il cursore sulla linea di cui si &egrave; indicato il numero.
+
+     <br>&nbsp;
+
+<li><tt>Previous error</tt><br>
+
+Sposta il cursore sulla linea in cui si &egrave; commesso l'errore precedente.
+
+     <br>&nbsp;
+
+<li><tt>Next error</tt><br>
+
+Sposta il cursore sulla linea in cui si &egrave; commesso l'errore successivo.
+
+     <br>&nbsp;
+
+
+<li><tt>Locate function</tt><br>
+
+Attivo soltanto durante una fase di debugging, apre una finestra di dialogo
+in cui si pu&ograve; inserire il nome della funzione da ricercare.
+
+</ul>
+
+
+<h3><tt>4.4. Men&ugrave; Run</tt></h3>
+
+<ul>
+  <li><tt>Run</tt><br>
+
+       Esegue il programma fino al successivo punto d'arresto, o fino
+       alla fine se non ce ne sono.
+       <br>&nbsp;
+
+  <li><tt>Program reset</tt><br>
+
+       Ferma l'attuale sessione di debug, rilascia la memoria
+       allocata, chiude ogni file aperto che il programma stava usando.
+       <br>&nbsp;
+
+  <li><tt>Go to cursor</tt><br>
+       Serve per far eseguire al TurboC/C++ tutte le istruzioni dal inizio
+della funzione <tt>main()</tt> fino al punto in cui &egrave; posizionato il
+cursore.
+
+       <br>&nbsp;
+
+  <li><tt>Trace into</tt><br>
+       Esegue il programma una riga per volta.
+
+       <br>&nbsp;
+
+  <li><tt>Step over</tt><br>
+
+       Consente di eseguire in un unico passo la chiamata ad una
+procedura, o funzione, senza cio&egrave; seguire il flusso completo della
+procedura.
+
+       <br>&nbsp;
+
+  <li><tt>Arguments</tt><br>
+
+       Permette di passare argomenti al programma da eseguire come
+se fossero scritti nella riga di comando DOS.
+
+</ul>
+
+
+<h3><tt>4.5. Men&ugrave; Compile</tt></h3>
+
+<ul>
+  <li><tt>Compile</tt><br>
+
+       Compila il programma nella finestra di <tt>Edit</tt> attiva.
+
+       <br>&nbsp;
+
+  <li><tt>Make</tt><br>
+
+       Compila il programma nella finestra di <tt>Edit</tt> attiva,
+generando un file eseguibile, con il nome della finestra e l'estensione
+       <tt>exe</tt>. Tale file viene memorizzato nel direttorio corrente.
+
+       <br>&nbsp;
+
+  <li><tt>Link</tt><br>
+
+       Non trattato (serve se definiamo un progetto -
+       programma C/C++ diviso su pi&ugrave; file).
+
+       <br>&nbsp;
+
+  <li><tt>Build all</tt><br>
+
+       Non trattato (serve se definiamo un progetto -
+       programma C/C++ diviso su pi&ugrave; file).
+
+</ul>
+
+
+<h3><tt>4.6. Men&ugrave; Debug</tt></h3>
+
+<ul>
+  <li><tt>Inspect</tt><br>
+  
+        Permette di visualizzare l'indirizzo, il tipo, il valore in 
+        decimale ed in esadecimale di una variabile. Se la variabile 
+        &egrave; strutturata, si visualizzano tutte le componenti. 
+        Funziona solo nel mentre il programma &egrave; in esecuzione, 
+        quindi si pu&ograve; usare solo nell'esecuzione passo passo o con 
+        punti d'arresto.
+        <br>&nbsp;
+
+  <li><tt>Evaluate/modify</tt><br>
+
+       Calcola il valore di una variabile, o di un'espressione, lo visualizza e
+permette all' utente di cambiarlo.
+
+       <br>&nbsp;
+
+  <li><tt>Call stack</tt><br>
+
+       Apre una finestra che mostra la pila di chiamate a funzioni con i
+relativi parametri dalla pi&ugrave; recente alla pi&ugrave; vecchia.  In fondo
+c'&egrave; quindi la funzione <tt>main()</tt>. Ovviamente la finestra &egrave;
+visibile solo se si sono predisposti punti di arresto, o si sta eseguendo il
+programma passo passo.
+
+       <br>&nbsp;
+
+  <li><tt>Watches</tt><br>
+
+       Apre un men&ugrave; per la gestione dei punti di osservazione,
+cio&egrave; delle variabili di cui si vuole controllare l'evoluzione.
+
+       <ul>
+         <li><tt>Add watches</tt><br>
+
+              Inserisce un punto di osservazione; attivando questo comando
+compare una finestra di dialogo in cui bisogna inserire l' identificatore
+del punto di osservazione e premere invio. Inizialmente nella finestra
+compare la parola su cui &egrave; posizionato il cursore; &egrave; anche
+disponibile un elenco delle watches inserite dall'inizio della sessione
+di lavoro (si attiva premendo la freccia verso il basso).
+
+         <li><tt>Delete watch</tt><br>
+
+              Cancella un punto di osservazione.
+
+         <li><tt>Edit watch</tt><br>
+
+              Serve per modificare l'espressione attiva nella finestra
+Watch. Selezionando questo comando compare una finestra di dialogo in cui
+c'&egrave; l'espressione che si vuole modificare.
+
+         <li><tt>Remove all watches</tt><br>
+              Cancella tutte le espressioni di controllo.
+       </ul>
+
+       <br>&nbsp;
+
+  <li><tt>Toggle breakpoint</tt><br>
+
+       Attiva e disattiva punti di arresto incondizionato.
+
+       <br>&nbsp;
+
+  <li><tt>Breakpoint</tt><br>
+
+       Permette di gestire i punti di arresto.
+
+
+</ul>
+
+
+
+<h3><tt>4.7. Men&ugrave; Project</tt></h3>
+
+Non trattato (serve per definire un progetto - programma C/C++ diviso su pi&ugrave; file).
+
+
+
+
+<h3><tt>4.8. Men&ugrave; Options</tt></h3>
+
+Non trattato. Qui ricordiamo solo che per lavorare con il compilatore ANSI C si
+devono selezionare le seguenti opzioni:
+
+<ul>
+  <li> Per rendere automatico l'uso dell'estensione <tt>.c</tt> per i file
+       contenente i programmi sorgenti, (estensione necessaria per compilare
+       con il compilatore C), specificare nella finestra
+       <tt>Editor options</tt> il suffisso
+       <tt>c</tt> come <tt>Default extension</tt> (e non <tt>CPP</tt>).
+       Tale finestra &egrave; accessibile selezionando dal men&ugrave;
+       <tt>Options</tt> la voce <tt>Editor</tt> e
+       nel sottomen&ugrave; risultante la voce <tt>Editor</tt>
+       <br>&nbsp;
+
+
+  <li> Per evitare che venga chiamanto indipendentemente dall'estensione il compilatore C++, selezionare nella finestra <tt>C++ options</tt>
+       alla voce <tt>Use C++ Compiler</tt> l'opzione <tt>CPP
+       extension</tt> e non <tt>C++ always</tt>. Tale finestra &egrave;
+       accessibile tramite selezionando dal men&ugrave; <tt>Options</tt>
+       la voce <tt>Compiler</tt> e nel sottomen&ugrave; risultante la voce
+       <tt>C++ options</tt>.
+       <br>&nbsp;
+
+  <li> Per fare riferimento allo standard
+       ANSI del linguaggio C, &egrave; opportuno selezionare
+       nella finestra <tt>Source options</tt> alla voce <tt>Keywords</tt>
+       l'opzione <tt>ANSI</tt>. Tale finestra &egrave;
+       accessibile tramite selezionando dal men&ugrave; <tt>Options</tt>
+       la voce <tt>Compiler</tt> e nel sottomen&ugrave; risultante la voce
+       <tt>Source</tt>.
+</ul>
+
+
+<h3><tt>4.9. Men&ugrave; Window</tt></h3>
+
+<ul>
+  <li><tt>Size/Move</tt><br>
+
+       Usando le frecce si pu&ograve; cambiare la posizione
+della finestra attiva (la cui cornice diventa azzurra). Scelta la posizione
+si preme invio.
+
+       <br>&nbsp;
+
+  <li><tt>Zoom</tt><br> Consente di ingrandire al massimo la finestra
+attiva. Se essa &egrave; gi&agrave; stata zoomata tale comando la riporta allo
+stato precedente.
+
+       <br>&nbsp;
+
+  <li><tt>Cascade</tt>
+
+       E' il modulo attivo quando si entra in TurboC/C++: le finestre
+sono accatastate ed &egrave; visibile solo la finestra attiva, delle altre
+si vede solo il nome e il numero.
+
+       <br>&nbsp;
+
+  <li><tt>Tile</tt><br>
+       Serve a vedere contemporaneamente tutte le finestre di editing
+aperte. Tutte le finestre sono grandi uguali e messe una accanto all'altra
+senza sovrapposizioni.
+
+       <br>&nbsp;
+
+  <li><tt>Next</tt><br>
+
+       Rende attiva la finestra successiva.
+
+       <br>&nbsp;
+
+  <li><tt>Close</tt><br>
+
+       Chiude la finestra attiva.
+
+       <br>&nbsp;
+
+  <li><tt>Close all</tt><br>
+
+       Chiude tutte la finestre.
+
+       <br>&nbsp;
+
+  <li><tt>Message</tt><br>
+
+       Apre la finestra Message e la rende attiva.
+
+       <br>&nbsp;
+
+  <li><tt>Output</tt><br>
+
+       Apre la finestra Output e la rende attiva.
+
+       <br>&nbsp;
+
+  <li><tt>Watch</tt><br>
+
+       Apre la finestra Watch e la rende attiva.
+
+       <br>&nbsp;
+
+  <li><tt>User screen</tt><br>
+
+       Consente di vedere l'output di un programma a schermo pieno (tasti 
+       <TT>Alt-F5</TT>).
+
+       <br>&nbsp;
+
+  <li><tt>Register</tt><br>
+
+       Apre la finestra Register che mostra i registri della CPU.
+
+       <br>&nbsp;
+
+  <li><tt>List all</tt><br>
+
+       Serve per ottenere un elenco di tutte le finestre aperte.
+
+</ul>
+
+
+<h3><tt>4.10. Men&ugrave; Help</tt></h3>
+
+<UL>
+    <LI><TT>Index</TT><br>
+    
+    Visualizza l'elenco di tutte le parole chiave, le librerie, gli operatori,
+    le direttive, etc., del TurboC. Molto utile come manuale di 
+    riferimento in linea, per
+    richiamare la sintassi delle istruzioni, le precedenze tra operatori, e
+    approfondire aspetti particolari del TurboC,  (ad es., l'intervallo dei valori
+    di <TT>int</TT>). Il cursore si posiziona sulle parole le cui lettere 
+    sono premute da tastiera (ad es., per trovare il while, basta 
+    immettere "wh").
+    
+    <br>&nbsp;
+    
+    <LI><TT>Altri comandi</TT><br>
+    
+    Non trattati.
+   
+</UL>
+
+<br>&nbsp;
+
+<h2>5. Ambiente TurboC/C++: Domande poste frequentemente (FAQ)</h2>
+
+<h4><A NAME="INDICE">Indice FAQ</h4>
+<ul>
+  <li><a href="#T:ENTRARE">Generalit&agrave; </a>
+  <li><a href="#T:EDITOR">Interagire con l'editor</a>
+  <li><a href="#T:FILE">Caricare e salvare file</a>
+  <li><a href="#T:COMPILE">Compilare ed eseguire un programma</a>
+<!--   <li><a href="#WIN">Ambiente Windows</a>
+  <li><a href="#LAB">Rete,stampa file, etc.</a> -->
+</ul>
+
+
+
+<h3> <a name="T:ENTRARE">5.1. Generalit&agrave;</h3>
+
+<ul>
+<li> <b> D:</b> <i> Come entro nell'ambiente TurboC/C++? </i> <br>
+     <b> R: </b> Cliccando sull'icona presente sullo schermo. In alternativa si
+pu&ograve; lanciare il comando <tt>tc</tt> da una finestra DOS. Se tale comando
+non viene riconosciuto, ci si deve prima portare nel sotto-direttorio
+<tt>bin</tt> del direttorio di istallazione del TurboC/C++.
+
+<li> <b> D: </b> <i> Come esco dall'ambiente TurboC/C++? </i> <br>
+     <b> R: </b> Usando il menu a tendina <tt>File</tt>,
+            e scegliendo <tt>Quit</tt>.
+
+<li> <b> D: </b> <i> Come esco temporaneamente al DOS? </i> <br>
+     <b> R: </b> Usando il menu a tendina <tt>File</tt>, e scegliendo <tt>DOS</tt>.
+
+<li> <b> D: </b> <i> Sono in DOS. Come ritorno all'ambiente TurboC/C++? </i>
+            <br>
+     <b> R: </b> Con il comando DOS <tt>exit</tt>.
+
+<li> <b> D: </b> <i> Come faccio a visualizzare la finestra del TurboC/C++ a schermo intero? </i>
+            <br>
+     <b> R: </b> Con il comando <tt>Alt-invio</tt>. Per farla ritornare di
+dimensioni normali premere <tt>Alt-invio</tt> nuovamente.
+<li> <b> D: </b> <i> Come faccio a visualizzare la finestra del TurboC/C++ con 43/50 linee invece di 25? </i>
+            <br>
+     <b> R: </b> Selezionando dal men&ugrave; <tt>Options</tt> la voce
+<tt>Enviroment</tt> e nel men&ugrave; risultante la voce <tt>Preference</tt>, e
+ponendo l'opzione <tt>Screen Size</tt> a <tt>43/50 lines</tt>.
+</ul>
+
+
+
+<h3> <A NAME="T:EDITOR">5.2. Interagire con l'editor</h3>
+
+<ul>
+<li> <b> D: </b> <i> Come attivo i menu a tendina? </i>  <br>
+     <b> R: </b> Premendo il tasto <tt>Alt</tt> e l'iniziale del men&ugrave;
+richiesto (ad
+            es. <tt>f</tt> per <tt>File</tt>, <tt>w</tt> per <tt>Windows</tt>,
+etc.). Nella tendina sono attivi
+            i tasti cursore.  
+<li> <b> D: </b> <i> Non trovo sulla tastiera un carattere (ad esempio
+            <tt>{</tt>). Come lo posso digitare? </i>  <br>
+     <b> R: </b> E' possibile comporre un carattere eseguendo in sequenza i
+            seguenti passi: 
+     <ul>
+       <li> verificare che l'indicatore "Num Lock" sia acceso, se non lo 
+       fosse, accenderlo premendo il tasto "Num Lock"	 
+       <li> premere il tasto <tt>Alt</tt>, o il tasto <tt>Alt Gr</tt>
+       <li> (senza lasciare il tasto <tt>Alt</tt>/<tt>Alt Gr</tt>) 
+       comporre il  codice ASCII del carattere con il tastierino numerico sulla destra
+       <li> rilasciare il tasto <tt>Alt</tt>/<tt>Alt Gr</tt>.
+     </ul>
+     I codici ASCII pi&ugrave usati sono i seguenti:
+     <ul>
+     <li> 35 per <tt>#</tt>
+     <li> 91 per <tt>[</tt>
+     <li> 93 per <tt>]</tt>
+     <li> 123 per <tt>{</tt>
+     <li> 125 per <tt>}</tt>
+     <li> 126 per <tt>~</tt>
+     </ul>
+<li> <b> D: </b> <i> Come passo da una finestra all'altra? </i>  <br>
+     <b> R: </b> Il menu <tt>Windows</tt> (<tt>Alt-w</tt>) fornisce tutti i comandi per le
+            finestre. I pi&ugrave usati sono: 
+     <ul>
+     <li> <tt>Alt-F3</tt> per chiudere una finestra
+     <li> <tt>F5</tt> per lo "zoom" (allargare se &egrave piccola, rimpicciolire se
+          &egrave grande)  
+     <li> <tt>F6</tt> per passare dall'una all'altra
+     </ul>
+</ul>
+
+
+
+<h3> <a name="T:FILE">5.3. Caricare e salvare file</h3>
+
+<ul>
+<li> <b> D: </b> <i> Come carico un file? </i>  <br>
+     <b> R: </b> Tramite il menu a tendina <tt>File</tt> (in alternativa, tasto
+            <tt>F3</tt>).  
+<!-- <li> <b> D: </b> <i> Dove si trova il file <tt>cosasifa.txt</tt>? </i>  <BR>
+     <B> R: </B> Da DOS, il direttorio delle esercitazioni &egrave il
+        seguente:<BR>
+            E:\program\fondii\diploma\esercitazioni\aa-98-99
+<LI> <B> D: </B> <i> Credo di essere sul direttorio giusto, ma non vedo il file
+        <tt>cosasifa.txt</tt>. Come mai? </i>  <BR> 
+     <B> R: </B> Per default il TurboC/C++ assume che i file abbiano estensione
+            <tt>.cpp</tt> (ci&ograve si pu&ograve verificare notando il contenuto
+            della finestra dove si inserisce il nome del file). Per scegliere
+            file con estensione diversa, va modificata tale estensione (si
+            ricorda che l'estensione <tt>.*</tt> &egrave valida per tutti i file).  -->
+
+<li> <b> D: </b> <i> Non vedo il file <tt>nomefile.txt</tt>. Come mai? </i>
+<br>
+     <B> R: </B> Per default il TurboC/C++ assume che i file abbiano estensione
+            <tt>.c/.cpp</tt> (ci&ograve si pu&ograve verificare notando il contenuto
+            della finestra dove si inserisce il nome del file). Per scegliere
+            file con estensione diversa, va modificata tale estensione (si
+            ricorda che l'estensione <tt>.*</tt> &egrave valida per tutti i file).
+
+<li> <b> D: </b> <i> Dove devo salvare i miei file? </i>  <br>
+     <b> R: </b> Conviene crearsi un direttorio personale, dove salvare tutti i
+  propri file. Ad esempio, si pu&ograve creare il direttorio <tt>C:\MIO_DIR</tt>,
+  tramite il comando DOS <tt>mkdir</tt>.<br>
+  Conviene inoltre fissare come direttorio corrente del TurboC/C++ il direttorio
+  cos&igrave creato, scegliendo <tt>Current directory</tt> dal menu a tendina
+<tt>File</tt>. 
+</ul>
+
+
+
+<h3> <a name="T:COMPILE">5.4. Compilare ed eseguire un
+programma</h3>
+<ul>
+<li> <b> D: </b> <i> Come si compilano e si eseguono i programmi? </i>  <br>
+     <b> R: </b> Si possono usare i menu a tendina. In alternativa, si possono
+         usare i tasti <tt>Alt-F9</tt> per la compilazione e <tt>Ctrl-F9</tt> per
+         l'esecuzione.  
+<LI> <B> D: </B> <i> Come posso vedere i risultati dell'elaborazione del mio
+         programma? </i> <BR>  
+     <B> R: </B> La maniera pi&ugrave semplice &egrave aprire una finestra per
+        l'output, 
+        scegliendo <tt>Output</tt> nel menu a tendina <tt>Windows</tt>. A questo punto posso
+        passare dalla finestra del programma a quella dove viene visualizzato
+        l'output, e viceversa.
+<LI> <B> D: </B> <i> Esiste un modo per "pulire" la finestra di output? </i>
+         <BR>  
+     <B> R: </B> Occorre includere nel programma C/C++ la direttiva <tt>#include&lt;conio.h&gt;</tt>. La funzione per pulire lo schermo &egrave <tt>clrscr()</tt>.
+<li> <b> D: </b> <i> Ho fatto eseguire un programma ed il computer si &egrave
+         bloccato. Cosa devo fare? </i> <br>
+     <b> R: </b> Probabilmente si &egrave acceduta un'area di memoria riservata
+         (ad esempio attraverso un puntatore), oppure il programma &egrave
+         entrato in un  ciclo 
+        infinito. Si possono provare i seguenti metodi (nell'ordine): 
+     <ul>
+     <li> Premere <tt>Ctrl-Pausa</tt> o <tt>Ctrl-z</tt> per abortire il programma.
+     <li> Premere <tt>Ctrl-Alt-Canc</tt> per fare ripartire il calcolatore.
+     <li> Spegnere l'interruttore del calcolatore, attendere 10 secondi, e
+          riaccenderlo.
+     </ul>
+</ul>
+
+<!-- 
+
+<h3> <a name="WIN">5.5. Ambiente Windows</h3>
+
+<ul>
+<li> <b> D: </b> <i> Ho diverse applicazioni Windows attive. Come passo da una
+                     all'altra? </i>  <br>
+     <b> R: </b> Premendo contemporaneamente <tt>Alt</tt> e <tt>Tab</tt> (una o pi&ugrave
+                 volte) si passa da un'applicazione all'altra. 
+     DOS<BR> 
+<li> <b> D: </b> <i> Sono in DOS. Come ritorno all'applicazione precedente
+     (es. TurboC/C++)? </i> <br>
+     <b> R: </b> Con il comando DOS <tt>exit</tt>
+</ul>
+
+
+
+<h3> <a name ="LAB">5.6. Rete, stampa file, etc.</h3>
+
+Consultare la guida utenti del laboratorio "Paolo Ercoli" di Via Tiburtina 205:
+
+<p><tt>http://tibur.dis.uniroma1.it/GUIDA_UTENTI/index_guida.html</tt>
+ -->
+
+<hr>
+
+<font size =-1> Il presente documento &egrave; stato redatto da Giuseppe De
+Giacomo e Francesco M. Donini, Dipartimento di Informatica e Sistemistica, Universita' di Roma "La
+Sapienza", ed &egrave; basato sul materiale di diversi colleghi, in particolare
+Marco Cadoli, Diego Calvanese, Fabrizio D'Amore, Carla Limongelli, Marco 
+Temperini.</font>
+
+<hr>
+
+</body>
+</html>
+
+--p5FhZQCZHO
+Content-Type: text/plain; charset=us-ascii
+Content-Transfer-Encoding: 7bit
+
+
+
+
+--p5FhZQCZHO--

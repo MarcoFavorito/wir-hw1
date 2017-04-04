@@ -1,0 +1,260 @@
+<!-- saved from url=(0022)http://internet.e-mail -->
+<!doctype html public "-//w3c//dtd html 4.0 transitional//en">
+<html>
+<head>
+   <title>Tecniche di Programmazione - Esercitazione 2</title>
+   <link rel="stylesheet" href="../../tp.css" type="text/css">
+</head>
+<body>
+<center>
+  <h3>  Tecniche di Programmazione <BR>
+      Corsi di Laurea in Ingegneria Informatica e Automatica
+  </h3>
+  <h3>A.A. 2004/05</h3>
+  <h3>Esercitazione 2 </h3>
+</center>
+<hr>
+<H3 align="center">Ricerca binaria </H3>
+<H3 align="center">&nbsp;</H3>
+<blockquote>
+La ricerca di un elemento in un vettore pu&#242; essere resa efficiente sfruttando
+l'informazione che il vettore &#232; ordinato.
+
+<P>
+Sia <SPAN CLASS="MATH"><I>a</I></SPAN> un vettore di <SPAN CLASS="MATH"><I>n</I></SPAN> elementi interi <!-- MATH
+ $a_0,\ldots,a_{n-1}$
+ -->
+<SPAN CLASS="MATH"><I>a</I><SUB>0</SUB>,..., <I>a</I><SUB>n-1</SUB></SPAN> ordinati in modo
+crescente e <SPAN CLASS="MATH"><I>k</I></SPAN> l'intero cercato in <SPAN CLASS="MATH"><I>a</I></SPAN>.
+
+<P>
+<em>Idea</em>:
+Consideriamo l'elemento mediano del vettore, <SPAN CLASS="MATH"><I>a</I><SUB>n/2</SUB></SPAN>.
+
+<UL>
+<LI>Se <SPAN CLASS="MATH"><I>k</I> = <I>a</I><SUB>n/2</SUB></SPAN>, allora abbiamo trovato il valore <SPAN CLASS="MATH"><I>k</I></SPAN>;
+</LI>
+<LI>se <SPAN CLASS="MATH"><I>k</I> &lt; <I>a</I><SUB>n/2</SUB></SPAN>, allora dobbiamo cercare il valore <SPAN CLASS="MATH"><I>k</I></SPAN> tra gli elementi
+  <!-- MATH
+ $a_0,\ldots,a_{n/2-1}$
+ -->
+<SPAN CLASS="MATH"><I>a</I><SUB>0</SUB>,..., <I>a</I><SUB>n/2-1</SUB></SPAN>;
+</LI>
+<LI>se <SPAN CLASS="MATH"><I>k</I> &gt; <I>a</I><SUB>n/2</SUB></SPAN>, allora dobbiamo cercare il valore <SPAN CLASS="MATH"><I>k</I></SPAN> tra gli elementi
+  <!-- MATH
+ $a_{n/2+1},\ldots,a_{n}$
+ -->
+<SPAN CLASS="MATH"><I>a</I><SUB>n/2+1</SUB>,..., <I>a</I><SUB>n</SUB></SPAN>.
+</LI>
+</UL>
+
+<h4>Implementazione</h4>
+<P>
+Per delimitare la ricerca nel vettore definiamo due variabili: <SPAN CLASS="MATH"><IMG
+ WIDTH="10" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img6.png"
+ ALT="$ \ell$"></SPAN> &#232;
+l'indice del primo elemento di <SPAN CLASS="MATH"><I>a</I></SPAN> in cui cercare, <SPAN CLASS="MATH"><I>r</I></SPAN> &#232; l'indice dell'ultimo
+elemento di <SPAN CLASS="MATH"><I>a</I></SPAN> in cui cercare.  Inizialmente poniamo: <SPAN CLASS="MATH"><IMG
+ WIDTH="10" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img6.png"
+ ALT="$ \ell$"> = 0</SPAN> e <SPAN CLASS="MATH"><I>r</I> = <I>n</I> - 1</SPAN>.
+
+<P>
+L'algoritmo di ricerca binaria &#232; il seguente:
+
+<OL>
+<LI>se <SPAN CLASS="MATH"><IMG
+ WIDTH="10" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img6.png"
+ ALT="$ \ell$"> &gt; <I>r</I></SPAN> allora abbiamo finito la visita del vettore senza aver
+  trovato l'elemento, quindi restituiamo <TT>false</TT>;
+</LI>
+<LI>poniamo <!-- MATH
+ $m=(\ell+r)/2$
+ -->
+<SPAN CLASS="MATH"><I>m</I> = (<IMG
+ WIDTH="10" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img6.png"
+ ALT="$ \ell$"> + <I>r</I>)/2</SPAN>;
+</LI>
+<LI>se <SPAN CLASS="MATH"><I>a</I><SUB>m</SUB> = <I>k</I></SPAN> allora abbiamo trovato l'elemento, quindi restituiamo
+    <TT>true</TT>;
+</LI>
+<LI>se <SPAN CLASS="MATH"><I>a</I><SUB>m</SUB> &lt; <I>k</I></SPAN> allora cerchiamo <SPAN CLASS="MATH"><I>k</I></SPAN> nella met&#224; destra del vettore,
+    ponendo <SPAN CLASS="MATH"><IMG
+ WIDTH="10" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img6.png"
+ ALT="$ \ell$"> = <I>m</I> + 1</SPAN> e ripetendo la procedura;
+</LI>
+<LI>se <SPAN CLASS="MATH"><I>a</I><SUB>m</SUB> &gt; <I>k</I></SPAN> allora cerchiamo <SPAN CLASS="MATH"><I>k</I></SPAN> nella met&#224; sinistra del vettore,
+    ponendo <SPAN CLASS="MATH"><I>r</I> = <I>m</I> - 1</SPAN> e ripetendo la procedura.
+</LI>
+
+</OL>
+
+
+<h4>Note sulla ricorsione su array</h4>
+
+<p>Nell'implementazione di metodi ricorsivi su array si deve tener conto che normalmente
+il passo base si verifica quando <i>l'array &egrave; vuoto</i>, mentre il passo ricorsivo esamina
+uno o pi&ugrave; elementi dell'array e poi effettua la chiamata ricorsiva sulla 
+<i>parte restante dell'array</i>.</p>
+
+<p>Per implementare efficientemente l'individuazione della <i>parte restante dell'array</i>
+non &egrave; opportuno creare un nuovo array di dimensioni ridotte, copiare i dati
+e fare la chiamata ricorsiva su questo nuovo array.
+Invece &egrave; conveniente far uso di indici che delimitano la porzione di array da
+considerare nella chiamata ricorsiva. Analogamente il caso <i>array vuoto</i> si
+verifichera' in funzione di tali indici.</p>
+
+<p>Il seguente esempio mostra una procedura ricorsiva di stampa degli elementi di
+un array che fa ricorsione mediante l'uso di un indice dell'array. Si noti
+che in molti casi &egrave; necessario far uso di metodi ausiliari privati.</p>
+
+<blockquote>
+<pre>
+public void stampaArray (int[] a) {
+   stampaRic(a,0);
+}
+
+private void stampaRic(int[] a, int i) {
+   if (i>=a.length)  
+      // passo base array vuoto 
+      // cioe' la parte di array da analizzare e' vuota
+      return;
+   else {
+      // passo ricorsivo
+      System.out.println(a[i]);  // stampa l'elemento dell'array
+      stampaRic(a,i+1);          // chiamata ricorsiva sulla 
+                                 // parte restante dell'array
+   }
+}
+</pre>
+</blockquote>
+
+
+</blockquote>
+<P>
+<P>
+<hr>
+<p align="center"><b>Parte 1: Ricerca di dati sperimentali</b><br>
+<blockquote> 
+  <p>Scrivere una classe <code>RicercaDati</code> che mantenga informazioni 
+riguardo ai dati sperimentali misurati durante un esperimento. 
+I dati vengono forniti sotto forma di valori interi
+positivi memorizzati su file (uno per ciascuna linea) e ordinati in modo crescente. La prima linea del file contiene il numero di dati contenuti nel file stesso. </P>
+
+
+<P>
+La classe <code>RicercaDati</code> deve avere la seguente interfaccia:</p>
+<pre>
+public class RicercaDati {
+
+
+  public RicercaDati(String nomeFile) throws IOException{
+  // legge un file di dati sperimentali e memorizza in un array il suo contenuto
+  }
+ 
+  public boolean ricercaSequenzialeIt(int k){<br>  // verifica se se k e' un dato ottenuto sperimentalmente, 
+  //realizzando l'algoritmo di ricerca sequenziale in modo iterativo<br>  }
+
+  public boolean ricercaSequenzialeRic(int k){<br>  // verifica se k e' un dato ottenuto sperimentalmente, 
+  //realizzando l'algoritmo di ricerca sequenziale in modo ricorsivo<br>  }
+
+  public boolean ricercaBinariaIt(int k){<br>  // verifica se se k e' un dato ottenuto sperimentalmente, 
+  //realizzando l'algoritmo di ricerca binaria in modo iterativo<br>  }
+
+  public boolean ricercaBinariaRic(int k){<br>  // verifica se k e' un dato ottenuto sperimentalmente, 
+  //realizzando l'algoritmo di ricerca binaria in modo ricorsivo<br>  }
+}
+</pre>
+Si calcoli, infine, il costo asintotico dei quattro metodi di ricerca, sia rispetto al tempo che rispetto allo spazio.
+<p>
+<i>Nota</i>: si usi il file <a href="dati.txt">dati.txt</a> come file di dati
+      di prova per la classe e il  programma <a href="Main.java">Main.java</a> per verificare il funzionamento della
+    classe.  
+
+<p><a href="RicercaDati">Soluzione</a></p> 
+
+</blockquote>
+<hr>
+
+
+
+<p></p>
+<center><b>Parte 2: Sequenza Binaria (ricorsiva)</b></center>
+<blockquote> 
+
+
+<p>Scrivere una classe <code>SequenzaBinaria</code> che rappresenti
+  delle sequenze di caratteri '0' e '1' e implementi le operazioni indicate
+  nel seguente scheletro della classe,
+  in maniera ricorsiva e quindi senza far uso dei relativi metodi della 
+  classe <code>String</code>.</p>
+<blockquote>
+<pre>
+public class SequenzaBinaria {
+
+
+    // costruisce l'oggetto SequenzaBinaria da una stringa
+    public SequenzaBinaria(String x) { }
+
+
+    // calcola la lunghezza della sequenza
+    public int lunghezza() { }
+
+
+    // concatena la sequenza binaria t
+    public SequenzaBinaria concatena (SequenzaBinaria t) { }
+
+
+    // restituisce la posizione del primo carattere c nella sequenza
+    // oppure -1 se esso non e' presente
+    public int indiceDi (char c) { }
+
+
+    // verifica se la sequenza e' uguale a t
+    public boolean uguale (SequenzaBinaria t) { }
+
+
+    // verifica se p e' un prefisso della sequenza binaria
+    public boolean prefisso (SequenzaBinaria p) { }
+
+
+    // restituisce la lunghezza della sequenza piu' lunga di 
+    // caratteri c consecutivi
+    public int lungSequenzaMassima (char c) { }
+}
+</pre>
+</blockquote>
+Suggerimento: per facilitare l'implementazione dei metodi richiesti &egrave; conveniente
+implementare i seguenti metodi ausiliari:
+<pre>
+    // restituisce il primo carattere della sequenza
+    private char primo() {}
+	
+    // restituisce una nuova sequenza ottenuta dall'oggetto di invocazione eliminando il primo carattere
+    private SequenzaBinaria resto() {}
+	
+    // restituisce la sequenza ottenuta dall'oggetto di invocazione aggiungendo c,
+    // nota non modifica la sequenza originale
+    private SequenzaBinaria aggiungi(char c)
+	 
+    // verifica se la sequenza e' vuota
+    private boolean estVuota() {}
+</pre>
+<p></p>
+<p></p>
+Si calcoli, infine, il costo asintotico dei metodi ricorsivi, sia rispetto al tempo che rispetto allo spazio.
+<p>
+<i>Nota</i>: si usi il  programma <a href="ProvaSequenzaBinaria.java">ProvaSequenzaBinaria.java</a> per verificare il funzionamento della
+    classe.  
+
+
+<p><a href="SequenzaBinaria">Soluzione</a></p> 
+
+</blockquote>
+
+</body>
+</html>

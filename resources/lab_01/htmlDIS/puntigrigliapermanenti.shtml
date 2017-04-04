@@ -1,0 +1,169 @@
+<!doctype html public "-//w3c//dtd html 4.0 transitional//en">
+<html>
+<head>
+<link href="java.css" rel="stylesheet" type="text/css">
+<title>Rendere permanenti tutte le modifiche</title>
+</head>
+
+<body>
+
+<h2>Rendere permanenti tutte le modifiche</h2>
+
+Analizziamo ora il problema di evitare la cancellazione
+di <i>tutte</i> le figure geometriche che vengono
+disegnate da <tt>mouseDown</tt>. In effetti, abbiamo
+gi&agrave; tutte le informazioni necessarie per realizzare
+un programma del genere. Si tratta infatti di memorizzare
+le caratteristiche di tutti i punti in cui il mouse viene
+premuto in delle variabili globali, in modo tale che
+<tt>paint</tt> possa fare tutti i disegni da capo.<p>
+
+Consideriamo quindi il programma
+<a href="DrawAndClick.java">DrawAndClick.java</a>. Cos&iacute;
+come &egrave; scritto, i quadratini che corrispondono ai click
+del mouse non vengono disegnati ogni volta che la
+finestra diventa visibile. Il motivo &egrave; chiaro:
+viene fatto solo quello che si trova nel blocco
+del <tt>paint(){ ... }</tt>, e il disegno dei quadratini
+non si trova l&iacute; dentro.<p>
+
+Per rendere questi quadratini permanenti, &egrave;
+necessario che all'interno di <tt>paint</tt> vengano
+disegnati <i>tutti i quadratini</i> che corrispondono
+a tutti i punti in cui &egrave; stato premuto il
+pulsante. &Egrave; quindi necessario memorizzare via
+via tutti i punti in cui &egrave; stato premuto il
+pulsante.<p>
+
+Dal momento che occorre memorizzare un numero non noto
+di valori per le coordinate <i>x</i> e <i>y</i> di ogni
+punto, usiamo due vettori: <tt>xvett</tt> e <tt>yvett</tt>.
+Ci serve poi sapere quanti punti sono stati disegnati
+fino a questo momento, e per questo usiamo una variabile
+intera <tt>npunti</tt>.<p>
+
+All'inizio, il numero dei punti disegnati &egrave; zero:
+questo &egrave; quindi il valore iniziale della
+variabile <tt>npunti</tt>. Il primo punto viene memorizzato
+nelle variabili <tt>xvett[0]</tt> e <tt>yvett[0]</tt>,
+e a questo corrisponde un incremento della variabile
+<tt>npunti</tt>. Al secondo click del mouse, le variabili
+da usare sono <tt>xvett[1]</tt> e <tt>yvett[1]</tt>,
+e si incrementa nuovamente <tt>npunti</tt>. In poche parole:
+a ogni click si memorizza il valore di <tt>x</tt>
+in <tt>xvett[npunti]</tt> e il valore di <tt>y</tt> in
+<tt>yvett[npunti]</tt>. La struttura di
+<tt>mouseDown()</tt> diventa quindi:<p>
+
+<pre>
+  public boolean mouseDown(Event e, int x, int y) {
+    int i;
+
+    g.fillRect(x-2,y-2,4,4);
+
+    xvett[npunti]=x;
+    yvett[npunti]=y;
+    npunti=npunti+1;
+
+    return true;
+  }
+</pre>
+
+Per quello che riguarda il disegno: all'interno di
+<tt>paint()</tt> occorre fare il disegno di tutti i punti
+che sono stati toccati fino a questo momento. Dal momento
+che le coordinate del primo punto sono memorizzate in
+<tt>xvett[0]</tt> e <tt>yvett[0]</tt>, mentre le ultime
+sono in <tt>xvett[npunti-1]</tt> e <tt>yvett[npunti-1]</tt>,
+&egrave; chiaro che occorre fare un ciclo in cui una
+variabile va da <tt>0</tt> a <tt>npunti-1</tt> aumentando di 1
+ogni volta:<p>
+
+<pre>
+  public void paint(Graphics g) {
+    int i;
+
+    for(i=0; i<=npunti-1; i++) 
+      g.fillRect(xvett[i]-2,yvett[i]-2,4,4);
+  }
+</pre>
+
+
+<p>
+
+I due vettori <tt>xvett</tt> e <tt>yvett</tt> e la
+variabile <tt>npunti</tt> vanno dichiarati come variabili
+globali, dal momento che sia <tt>mouseDown</tt> che
+<tt>paint</tt> li devono usare.<p>
+
+<pre>
+public class PuntiMouseDue extends java.applet.Applet {
+  int xvett[] = new int[100];
+  int yvett[] = new int[100];
+  int npunti=0;
+
+  public boolean mouseDown(Event e, int x, int y) {
+    ...
+  }
+
+  public void paint(Graphics g) {
+    ...
+  }
+}
+</pre>
+
+Con questo tipo di dichiarazione, i due vettori <tt>xvett</tt>
+e <tt>yvett</tt> e la variabile <tt>npunti</tt> si possono
+usare in entrambi i blocchi di istruzioni, e sono esattamente
+gli stessi. In questo modo, ogni volta che viene premuto il
+pulsante del mouse, si attiva la sequenza <tt>mouseDown</tt>,
+che disegna il punto, memorizza le posizioni nei vettori e
+incrementa la variabile <tt>npunti</tt>. Ogni volta che la
+finestra diventa visibile, si ridisegnano tutti i punti
+memorizzati nei vettori. Il programma finale
+<a href="PuntiMouseDue.java">PuntiMouseDue.java</a>
+risulta quindi il seguente:<p>
+
+<pre>
+/*
+  Disegna dei punti, sulla base del click del mouse
+*/
+
+import java.awt.*;
+
+public class PuntiMouseDue extends java.applet.Applet {
+  int xvett[] = new int[100];
+  int yvett[] = new int[100];
+  int npunti=0;
+
+  public boolean mouseDown(Event e, int x, int y) {
+    Graphics g=getGraphics();
+
+    g.fillRect(x-2,y-2,4,4);
+
+    xvett[npunti]=x;
+    yvett[npunti]=y;
+    npunti=npunti+1;
+
+    return true;
+  }
+
+  public void paint(Graphics g) {
+    int i;
+
+    for(i=0; i<=npunti-1; i++) 
+      g.fillRect(xvett[i]-2,yvett[i]-2,4,4);
+  }
+}
+
+</pre>
+<p>
+
+<applet code="PuntiMouseDue.class" width="500" height="500">
+</applet>
+
+
+
+</body>
+</html>
+

@@ -1,0 +1,49 @@
+
+<HTML>
+
+<HEAD>
+<META HTTP-EQUIV="Context-Type" CONTEXT="text/html;charset=PREDEFINITA (AUTOMATICA)">
+<meta name="GENERATOR" content="Microsoft Internet Assistant for PowerPoint 97">
+ <TITLE>Reasoning About FDs  (Contd.)</TITLE> 
+</HEAD>
+
+<BODY     >
+
+ <H1>Reasoning About FDs  (Contd.)</H1> 
+ <P><UL>
+<LI><H2>Couple of additional rules (that follow from AA):
+</H2>
+<UL>
+<LI>Union:   If X       Y  and  X        Z,   then  X          YZ
+<LI>Decomposition:   If X         YZ,   then  X        Y  and  X        Z
+</UL></UL><UL>
+<LI><H2>Example:    Contracts(cid,sid,jid,did,pid,qty,value), and:
+</H2>
+<UL>
+<LI>C is the key:   C         CSJDPQV
+<LI>Project purchases each part using single contract:  JP        C
+<LI>Dept purchases at most one part from a supplier:  SD        P
+</UL></UL><UL>
+<LI><H2>JP      C,  C       CSJDPQV   imply   JP       CSJDPQV
+</H2>
+</UL><UL>
+<LI><H2>SD      P   implies   SDJ      JP
+</H2>
+</UL><UL>
+<LI><H2>SDJ      JP,   JP      CSJDPQV   imply   SDJ       CSJDPQV</H2>
+</UL></P>
+<P></P> 
+<P>
+<TABLE>
+  <TD HEIGHT=100 WIDTH=100> <A HREF="tsld007.htm">Diapositiva precedente</A> </TD>
+  <TD HEIGHT=100 WIDTH=100> <A HREF="tsld009.htm">Diapositiva successiva</A> </TD>
+  <TD HEIGHT=100 WIDTH=150> <A HREF="tsld001.htm">Torna alla prima diaposiva</A> </TD>
+  <TD HEIGHT=100 WIDTH=150> <A HREF="sld008.htm">Visualizza versione grafica</A> </TD>
+</TABLE>
+<BR>
+</P>
+
+
+
+</Body>
+</HTML>

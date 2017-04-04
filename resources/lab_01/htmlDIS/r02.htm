@@ -1,0 +1,225 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=windows-1252">
+<TITLE>Reti di Calcolatori</TITLE>
+</HEAD>
+<BODY background="bgrnd.jpg">
+
+<B><FONT SIZE=5><P>2) Introduzione a Java</P>
+<hr>
+</FONT>
+</B>1.&nbsp; Il JDK
+
+
+<UL>
+
+<UL>
+<LI>Come reperirlo e installarlo (vedere pagina dedicata al "download").</LI><LI>I tool inclusi nel JDK - javac, java, appletviewer, javadoc, javah</LI><LI>I package principali - java.lang, java.io, java.net, javax.swing</LI><LI>Utilizzo della documentazione </LI></UL>
+</UL>
+
+<p>2.&nbsp; Formato delle classi</p>
+
+<OL>
+
+<P ALIGN="JUSTIFY">Gli oggetti sono "istanze delle classi".  E' possibile istanziare un nuovo oggetto con l'operatore <I>new</I>, per poi utilizzare i suoi metodi e attributi (<B>Circle1.java</B>)</P>
+<I><P ALIGN="JUSTIFY">Circle1  c;</P>
+<P ALIGN="JUSTIFY">c = new Circle1();</P>
+</I><P ALIGN="JUSTIFY">o equivalentemente</P>
+<I><P ALIGN="JUSTIFY">Circle1  c = new Circle1();</P>
+<P ALIGN="JUSTIFY">c.x = 1.0;</P>
+<P ALIGN="JUSTIFY">c.y = 1.5;</P>
+<P ALIGN="JUSTIFY">c.r = 3;</P>
+<P ALIGN="JUSTIFY">double valore_area = c.area();</P>
+</I></OL>
+3.&nbsp; Costruttori di una classe
+
+<OL>
+
+<P ALIGN="JUSTIFY">Normalmente una definizione di classe comprende un <I>costruttore</I>, che provvede all'inizializzazione dell'oggetto (<B>Circle2.java</B>).  E' possibile definirne pi&ugrave; di uno, purch&egrave; i parametri siano diversi nel numero, tipo e posizione degli argomenti (overloading dei metodi).  Se non specificato un costruttore, l'interprete ne associa uno di default che non provvede a nulla, se non all'inizializzazione a <I>null</I> degli attributi.</P>
+</OL>
+4.&nbsp; La <I>Garbage Collection
+</I>
+
+<OL>
+
+<P ALIGN="JUSTIFY">Al contrario di altri linguaggi, in Java non devono essere definiti metodi "distruttori". E' l'interprete che gestisce (quindi dealloca) lo spazio in memoria, nel momento in cui nulla fa pi&ugrave; riferimento ad un oggetto.  Viene gestita con un <I>Thread</I> a bassa priorit&agrave;, e questo provoca a volte non pochi problemi.  In applicazioni complesse, nelle quali i riferimenti ad oggetti da allocare e deallocare sono molti, si riscontra un'utilizzo di memoria eccessivo da parte dell'interprete; il <I>garbage collector</I> fatica ad entrare in azione proprio a causa della presenza di <I>thread</I> a pi&ugrave; alta priorit&agrave;.</P>
+</OL>
+5.&nbsp; L'operatore <I>this
+</I>
+
+<OL>
+
+<P ALIGN="JUSTIFY">&Egrave; l'operatore implicitamente utilizzato quando non si fa riferimento, nell'implementazione, ad uno specifico oggetto.  Per fare un esempio, nella definizione di classe vista prima avevamo</P>
+<I><P ALIGN="JUSTIFY">Public double getArea()</P>
+<P ALIGN="JUSTIFY">{  return r * r * 3.14159;</P>
+<P ALIGN="JUSTIFY">}</P>
+</I><P ALIGN="JUSTIFY">questa implementazione del metodo &egrave; equivalente a</P>
+<I><P ALIGN="JUSTIFY">Public double getArea()</P>
+<P ALIGN="JUSTIFY">{  return this.r * this.r * 3.14159;</P>
+<P ALIGN="JUSTIFY">}</P>
+</I><P ALIGN="JUSTIFY">il riferimento implicito &egrave; fatto all'oggetto al quale il metodo &egrave; applicato.</P>
+<I><P>Circle2 pippo = new Circle2(1.0, 2.0, 3.0);</P>
+<P>pippo.getArea();</P>
+</I><P ALIGN="JUSTIFY">restituir&agrave; il valore pippo.r * pippo.r * 3.14159, mentre</P>
+<I><P>Circle2 pluto = new Circle2(4.0, 5.0, 6.0);</P>
+<P>pluto.getArea();</P>
+</I><P ALIGN="JUSTIFY">restituir&agrave; il valore pluto.r * pluto.r * 3.14159.</P>
+</OL>
+6.&nbsp; Variabili e metodi "statici" (o "di classe")
+
+<OL>
+
+<P ALIGN="JUSTIFY">In alcuni casi pu&ograve; essere utile l'utilizzo di variabili cosidette "di classe", delle quali viene mantenuta un'unica copia (e valore) che prescinde dal numero di oggetti istanziati. La definizione "di classe" &egrave; significativa della differenza esistente con le variabili "di istanza" (<B>Circle3.java</B>).  Analogamente pu&ograve; sorgere l'esigenza di implementare un metodo "di classe", indipendente nei riferimenti, da qualsiasi oggetto della classe stessa.  Per definire un attributo o un metodo statico viene utilizzata la parola chiave <I>static </I>e il riferimento alla variabile o al metodo avviene non attraverso un oggetto, bens&igrave; al nome della classe.</P>
+<I><P ALIGN="JUSTIFY">Circle3 a = new Circle3(1.0, 2.0, 3.0);</P>
+<P ALIGN="JUSTIFY">Circle3 b = new Circle3(4.0, 5.0, 6.0);</P>
+<P ALIGN="JUSTIFY">Circle3 c = Circle3.getBigger(a, b);</P>
+</I><P ALIGN="JUSTIFY">Per rendere meglio l'idea, mostriamo un'implementazione non statica del metodo</P>
+<I><P ALIGN="JUSTIFY">Public Circle3 getBigger(Circle3 c)</P>
+<P ALIGN="JUSTIFY">{  if (c.r &gt; r) return c;</P>
+<P ALIGN="JUSTIFY">    else return this;}</P>
+</I><P ALIGN="JUSTIFY">che prevede un'invocazione associata ad uno specifico oggetto</P>
+<I><P ALIGN="JUSTIFY">Circle3 a = new Circle3(1.0, 2.0, 3.0);</P>
+<P ALIGN="JUSTIFY">Circle3 b = new Circle3(4.0, 5.0, 6.0);</P>
+<P ALIGN="JUSTIFY">Circle3 c = a.getBigger(b);</P>
+</I><P ALIGN="JUSTIFY">L'inizializzazione delle variabili statiche avviene attraverso un metodo particolare, chiamato automaticamente una sola volta, quando la classe viene istanziata per la prima volta.</P>
+</OL>
+7.&nbsp; Ereditariet&agrave; in Java
+<DIR>
+<DIR>
+
+<P ALIGN="JUSTIFY">A differenza di altri linguaggi, Java non supporta l'ereditariet&agrave; multipla.  E' possibile indicare che una classe deriva da un'altra, mediante la parola chiave <I>extends</I> (<B>Circle4.java</B>).  A questo proposito &egrave; bene chiarire come l'interprete fa uso dei costruttori:</P></DIR>
+</DIR>
+
+
+<UL>
+
+<UL>
+<LI>Abbiamo detto che se non definito, il compilatore assegna ad una classe un costruttore di default, che non fa nulla e che &egrave; privo di argomenti</LI></UL>
+</UL>
+<DIR>
+<DIR>
+<DIR>
+<DIR>
+<DIR>
+
+<I><P ALIGN="JUSTIFY">public &lt;classe&gt;()</P>
+<P ALIGN="JUSTIFY">{} </P></DIR>
+</DIR>
+</DIR>
+</DIR>
+</DIR>
+
+
+<UL>
+
+<UL>
+</I><LI>Quando estendiamo una classe, se non specificato un richiamo esplicito al costruttore della superclasse, il compilatore include (come prima specifica del costruttore della sottoclasse) una chiamata al metodo <I>super()</I> (invocazione del costruttore della superclasse) </LI></UL>
+</UL>
+<DIR>
+<DIR>
+<DIR>
+<DIR>
+<DIR>
+
+<I><P ALIGN="JUSTIFY">public Circle4(double p1, double p2, double p3)</P>
+<P ALIGN="JUSTIFY">{   super();</P>
+<P ALIGN="JUSTIFY">     ……</P>
+<P ALIGN="JUSTIFY">     ……}</P></DIR>
+</DIR>
+</DIR>
+
+</I><P ALIGN="JUSTIFY">Per questo motivo, quando estendiamo una classe che implementa un costruttore che prevede argomenti, dobbiamo necessariamente definire un costruttore anche nella sottoclasse, che preveda una chiamata esplicita al costruttore della superclasse.</P></DIR>
+</DIR>
+
+<p>8.&nbsp; Costanti</p>
+
+<OL>
+
+<P ALIGN="JUSTIFY">Nell'esempio (<B>Circle5.java</B>), la parola chiave <I>final</I>, rende impossibile qualunque tentativo di modifica della variabile <I>p_greco</I>.  Quando il compilatore incontra una variabile che, oltre ad esse definita <I>final</I>, risulta essere anche <I>static</I>, cerca di pre-compilare le espressioni in cui &egrave; presente semplificando cos&igrave; il lavoro dell'interprete.  E' importante segnalare gli altri usi possibili della parola chiave <I>final</I>.  Applicata ad un metodo indica che non &egrave; possibile ridefinire in una sua sottoclasse l'implementazione dello stesso metodo, mentre applicato ad una classe indica che non &egrave; possibile definire sottoclassi che la estendono.  </P>
+</OL>
+
+
+9.&nbsp; Visibilit&agrave; dei membri e "Data-Hiding"
+
+<OL>
+
+<P ALIGN="JUSTIFY">Abbiamo finora utilizzato solo <I>public</I>, ma in realt&agrave; un membro di una classe (attributo, metodo o classe stessa) pu&ograve; essere definito (<B>Circle6.java</B>):</P>
+<P ALIGN="RIGHT"><TABLE BORDER CELLSPACING=1 CELLPADDING=4 WIDTH=609>
+<TR><TD WIDTH="48%" VALIGN="TOP">
+<B><P ALIGN="CENTER">Accessibilit&agrave;</B></TD>
+<TD WIDTH="14%" VALIGN="TOP">
+<B><P ALIGN="CENTER">public</B></TD>
+<TD WIDTH="14%" VALIGN="TOP">
+<B><P ALIGN="CENTER">protected</B></TD>
+<TD WIDTH="12%" VALIGN="TOP">
+<B><P ALIGN="CENTER">package</B></TD>
+<TD WIDTH="12%" VALIGN="TOP">
+<B><P ALIGN="CENTER">private</B></TD>
+</TR>
+<TR><TD WIDTH="48%" VALIGN="TOP">
+<P ALIGN="JUSTIFY">Alla stessa classe</TD>
+<TD WIDTH="14%" VALIGN="TOP">
+<P ALIGN="JUSTIFY">Si</TD>
+<TD WIDTH="14%" VALIGN="TOP">
+<P ALIGN="JUSTIFY">Si</TD>
+<TD WIDTH="12%" VALIGN="TOP">
+<P ALIGN="JUSTIFY">Si</TD>
+<TD WIDTH="12%" VALIGN="TOP">
+<P ALIGN="JUSTIFY">Si</TD>
+</TR>
+<TR><TD WIDTH="48%" VALIGN="TOP">
+<P ALIGN="JUSTIFY">A classi dello stesso package</TD>
+<TD WIDTH="14%" VALIGN="TOP">
+<P ALIGN="JUSTIFY">Si</TD>
+<TD WIDTH="14%" VALIGN="TOP">
+<P ALIGN="JUSTIFY">Si</TD>
+<TD WIDTH="12%" VALIGN="TOP">
+<P ALIGN="JUSTIFY">Si</TD>
+<TD WIDTH="12%" VALIGN="TOP">
+<P ALIGN="JUSTIFY">No</TD>
+</TR>
+<TR><TD WIDTH="48%" VALIGN="TOP">
+<P ALIGN="JUSTIFY">A sottoclassi in package diversi</TD>
+<TD WIDTH="14%" VALIGN="TOP">
+<P ALIGN="JUSTIFY">Si</TD>
+<TD WIDTH="14%" VALIGN="TOP">
+<P ALIGN="JUSTIFY">Si</TD>
+<TD WIDTH="12%" VALIGN="TOP">
+<P ALIGN="JUSTIFY">No</TD>
+<TD WIDTH="12%" VALIGN="TOP">
+<P ALIGN="JUSTIFY">No</TD>
+</TR>
+<TR><TD WIDTH="48%" VALIGN="TOP">
+<P ALIGN="JUSTIFY">Classi (non derivate) di differenti package</TD>
+<TD WIDTH="14%" VALIGN="TOP">
+<P ALIGN="JUSTIFY">Si</TD>
+<TD WIDTH="14%" VALIGN="TOP">
+<P ALIGN="JUSTIFY">No</TD>
+<TD WIDTH="12%" VALIGN="TOP">
+<P ALIGN="JUSTIFY">No</TD>
+<TD WIDTH="12%" VALIGN="TOP">
+<P ALIGN="JUSTIFY">No</TD>
+</TR>
+</TABLE>
+<P ALIGN="JUSTIFY">Se non specificata, la visibilit&agrave; del membro &egrave; package.  Il Data-Hiding viene ottenuto assegnando con criterio la visibilit&agrave; di ogni membro della classe, rendendo impossibile la modifica (incontrollata) diretta degli attributi e fornendo metodi per la loro manipolazione (controllata).</P>
+</OL>
+
+
+10.&nbsp; Interfacce ed ereditariet&agrave; multipla
+
+<OL>
+
+<P ALIGN="JUSTIFY">Java non consente l'ereditariet&agrave; multipla; le interfacce consentono di superare questo limite.  Un'interfaccia (<B>Drawable.java</B>) &egrave; costituita dalla <I>signature</I> di un'insieme di metodi (astratti).  Una classe pu&ograve; estendere una sola classe, ma pu&ograve; implementare pi&ugrave; interfacce.  Quando una classe implementa un'interfaccia, deve implementarne tutti i metodi (<B>Circle7.java</B>).</P>
+</OL>
+
+
+11.&nbsp; Differenze tra Applet ed applicazioni
+
+
+<UL>
+
+<UL>
+<LI>Una semplice applicazione (<B>SempliceApplicazione.java</B>)</LI><LI>Struttura di un'Applet (<B>SempliceApplet.java</B>).</LI></UL>
+</UL>
+</BODY>
+</HTML>

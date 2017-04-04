@@ -1,0 +1,263 @@
+<html xmlns:o="urn:schemas-microsoft-com:office:office"
+xmlns:w="urn:schemas-microsoft-com:office:word"
+xmlns="http://www.w3.org/TR/REC-html40">
+
+<head>
+<meta http-equiv=Content-Type content="text/html; charset=windows-1252">
+<meta name=ProgId content=Word.Document>
+<meta name=Generator content="Microsoft Word 9">
+<meta name=Originator content="Microsoft Word 9">
+<link rel=File-List href="./spiegazioni_files/filelist.xml">
+<title>Spiegazioni dell'esercitazione del 3 Aprile 2003</title>
+<!--[if gte mso 9]><xml>
+ <o:DocumentProperties>
+  <o:Author>Marco Schaerf</o:Author>
+  <o:LastAuthor>Marco Schaerf</o:LastAuthor>
+  <o:Revision>2</o:Revision>
+  <o:TotalTime>20</o:TotalTime>
+  <o:Created>2004-05-31T13:26:00Z</o:Created>
+  <o:LastSaved>2004-05-31T13:26:00Z</o:LastSaved>
+  <o:Pages>1</o:Pages>
+  <o:Words>343</o:Words>
+  <o:Characters>1956</o:Characters>
+  <o:Company>DIS Univ. Roma &quot;La Sapienza&quot;</o:Company>
+  <o:Lines>16</o:Lines>
+  <o:Paragraphs>3</o:Paragraphs>
+  <o:CharactersWithSpaces>2402</o:CharactersWithSpaces>
+  <o:Version>9.6926</o:Version>
+ </o:DocumentProperties>
+</xml><![endif]-->
+<style>
+<!--
+ /* Font Definitions */
+@font-face
+	{font-family:Wingdings;
+	panose-1:5 0 0 0 0 0 0 0 0 0;
+	mso-font-charset:2;
+	mso-generic-font-family:auto;
+	mso-font-pitch:variable;
+	mso-font-signature:0 268435456 0 0 -2147483648 0;}
+ /* Style Definitions */
+p.MsoNormal, li.MsoNormal, div.MsoNormal
+	{mso-style-parent:"";
+	margin:0cm;
+	margin-bottom:.0001pt;
+	mso-pagination:widow-orphan;
+	font-size:12.0pt;
+	font-family:"Times New Roman";
+	mso-fareast-font-family:"Times New Roman";}
+a:link, span.MsoHyperlink
+	{color:blue;
+	text-decoration:underline;
+	text-underline:single;}
+a:visited, span.MsoHyperlinkFollowed
+	{color:purple;
+	text-decoration:underline;
+	text-underline:single;}
+@page Section1
+	{size:595.3pt 841.9pt;
+	margin:72.0pt 89.85pt 72.0pt 89.85pt;
+	mso-header-margin:35.45pt;
+	mso-footer-margin:35.45pt;
+	mso-paper-source:0;}
+div.Section1
+	{page:Section1;}
+ /* List Definitions */
+@list l0
+	{mso-list-id:764616577;
+	mso-list-type:hybrid;
+	mso-list-template-ids:678230756 67698705 67698713 67698689 67698703 67698713 67698715 67698703 67698713 67698715;}
+@list l0:level1
+	{mso-level-text:"%1\)";
+	mso-level-tab-stop:36.0pt;
+	mso-level-number-position:left;
+	text-indent:-18.0pt;}
+@list l0:level2
+	{mso-level-number-format:alpha-lower;
+	mso-level-tab-stop:72.0pt;
+	mso-level-number-position:left;
+	text-indent:-18.0pt;}
+@list l0:level3
+	{mso-level-number-format:bullet;
+	mso-level-text:\F0B7;
+	mso-level-tab-stop:117.0pt;
+	mso-level-number-position:left;
+	margin-left:117.0pt;
+	text-indent:-18.0pt;
+	font-family:Symbol;}
+@list l1
+	{mso-list-id:1203133240;
+	mso-list-type:hybrid;
+	mso-list-template-ids:-1701293414 67698703 67698713 67698715 67698703 67698713 67698715 67698703 67698713 67698715;}
+@list l1:level1
+	{mso-level-tab-stop:36.0pt;
+	mso-level-number-position:left;
+	text-indent:-18.0pt;}
+ol
+	{margin-bottom:0cm;}
+ul
+	{margin-bottom:0cm;}
+-->
+</style>
+</head>
+
+<body lang=EN-GB link=blue vlink=purple style='tab-interval:36.0pt'>
+
+<div class=Section1>
+
+<p class=MsoNormal align=center style='text-align:center'><b><span lang=IT
+style='font-size:16.0pt;mso-bidi-font-size:12.0pt;mso-ansi-language:IT'>Spiegazioni
+dell'esercitazione del 13 Maggio 2004<o:p></o:p></span></b></p>
+
+<p class=MsoNormal><b><span lang=IT style='mso-ansi-language:IT'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></b></p>
+
+<p class=MsoNormal style='text-align:justify'><b><span lang=IT
+style='mso-ansi-language:IT'>Scopo dell’esercitazione</span></b><span lang=IT
+style='mso-ansi-language:IT'>: scopo dell’esercitazione è di prendere
+confidenza con i principali comandi di OpenGL e di GLUT attraverso la modifica
+e completamento di un semplice programma che visualizza un cubo.<o:p></o:p></span></p>
+
+<p class=MsoNormal><span lang=IT style='mso-ansi-language:IT'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify'><b><span lang=IT
+style='mso-ansi-language:IT'>Nota bene: </span></b><span lang=IT
+style='mso-ansi-language:IT'>Tutte le operazioni di disegno e di modifica delle
+matrici devono (preferibilmente) essere effettuate nella Display Function,
+chiamata <i>disegna</i> nel nostro caso. Nelle altre funzioni, dovete soltanto
+cambiare i valori dei parametri che vengono usati dalla Display Function.<o:p></o:p></span></p>
+
+<p class=MsoNormal><span lang=IT style='mso-ansi-language:IT'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=MsoNormal><span lang=IT style='mso-ansi-language:IT'>Cose da fare:<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-left:36.0pt;text-indent:-18.0pt;mso-list:l0 level1 lfo2;
+tab-stops:list 36.0pt'><![if !supportLists]><span lang=IT style='mso-ansi-language:
+IT'>1)<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><![endif]><span lang=IT style='mso-ansi-language:IT'>Su risorse
+del Computer selezionare Tools </span><span lang=IT style='font-family:Wingdings;
+mso-ascii-font-family:"Times New Roman";mso-hansi-font-family:"Times New Roman";
+mso-ansi-language:IT;mso-char-type:symbol;mso-symbol-font-family:Wingdings'><span
+style='mso-char-type:symbol;mso-symbol-font-family:Wingdings'>à</span></span><span
+lang=IT style='mso-ansi-language:IT'> Map Network Drive. Selezionate il Drive S
+ed inserite il Folder \\SAMBADMN\PUBLIC<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-left:36.0pt;text-indent:-18.0pt;mso-list:l0 level1 lfo2;
+tab-stops:list 36.0pt'><![if !supportLists]><span lang=IT style='mso-ansi-language:
+IT'>2)<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><![endif]><span lang=IT style='mso-ansi-language:IT'>Spostatevi
+nel Folder Corsi\InfoGrafica<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-left:36.0pt;text-indent:-18.0pt;mso-list:l0 level1 lfo2;
+tab-stops:list 36.0pt'><![if !supportLists]><span lang=IT style='mso-ansi-language:
+IT'>3)<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><![endif]><span lang=IT style='mso-ansi-language:IT'>Create nella
+vostra Home Directory (selzionabile dal desktop) una directory per
+l’esercitazione<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-left:36.0pt;text-indent:-18.0pt;mso-list:l0 level1 lfo2;
+tab-stops:list 36.0pt'><![if !supportLists]><span lang=IT style='mso-ansi-language:
+IT'>4)<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><![endif]><span lang=IT style='mso-ansi-language:IT'>Copiate in
+questa directory sul vostro computer il file cubo.c<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-left:36.0pt;text-indent:-18.0pt;mso-list:l0 level1 lfo2;
+tab-stops:list 36.0pt'><![if !supportLists]><span lang=IT style='mso-ansi-language:
+IT'>5)<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><![endif]><span lang=IT style='mso-ansi-language:IT'>Avviate
+Visual C++ ed aprite la vostra copia del file cubo.c<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-left:36.0pt;text-indent:-18.0pt;mso-list:l0 level1 lfo2;
+tab-stops:list 36.0pt'><![if !supportLists]><span lang=IT style='mso-ansi-language:
+IT'>6)<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><![endif]><span lang=IT style='mso-ansi-language:IT'>Compilate il
+file. Vi verrà chiesto di creare un default workspace. Rispondete di si.<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-left:36.0pt;text-indent:-18.0pt;mso-list:l0 level1 lfo2;
+tab-stops:list 36.0pt'><![if !supportLists]><span lang=IT style='mso-ansi-language:
+IT'>7)<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><![endif]><span lang=IT style='mso-ansi-language:IT'>Se non ci
+sono errori, mandate in esecuzione il programma. <o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-left:36.0pt;text-indent:-18.0pt;mso-list:l0 level1 lfo2;
+tab-stops:list 36.0pt'><![if !supportLists]><span lang=IT style='mso-ansi-language:
+IT'>8)<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><![endif]><span lang=IT style='mso-ansi-language:IT'>Aprite il
+codice e cercate di capirne il funzionamento.<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-left:36.0pt;text-indent:-18.0pt;mso-list:l0 level1 lfo2;
+tab-stops:list 36.0pt'><![if !supportLists]><span lang=IT style='mso-ansi-language:
+IT'>9)<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><![endif]><span lang=IT style='mso-ansi-language:IT'>Introducete
+le seguenti modifiche in ordine:<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-left:72.0pt;text-align:justify;text-indent:
+-18.0pt;mso-list:l0 level2 lfo2;tab-stops:list 72.0pt'><![if !supportLists]><span
+lang=IT style='mso-ansi-language:IT'>a.<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><![endif]><span lang=IT style='mso-ansi-language:IT'>Ruotate il
+cubo di 20 gradi anche rispetto all’asse y<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-left:72.0pt;text-align:justify;text-indent:
+-18.0pt;mso-list:l0 level2 lfo2;tab-stops:list 72.0pt'><![if !supportLists]><span
+lang=IT style='mso-ansi-language:IT'>b.<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><![endif]><span lang=IT style='mso-ansi-language:IT'>Inserite una
+sfera di colore blu posizionata coon il centro in (0, 3, 0). L’istruzione per
+il disegno della sfera è glutSolidSphere(r, 10, 10) che disegna una sfera di
+raggio r con centro nell’origine. Il secondo e terzo parametro definisco il
+numero di spicchi orizzontali e verticali in cui è divisa la sfera, che in
+realtà è sfaccettata. Deformate la sfera in modo che diventi un ellissoide con
+il raggio sull’asse y maggiore di quello sugli assi x e z. Usare le push e pop.<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-left:72.0pt;text-align:justify;text-indent:
+-18.0pt;mso-list:l0 level2 lfo2;tab-stops:list 72.0pt'><![if !supportLists]><span
+lang=IT style='mso-ansi-language:IT'>c.<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><![endif]><span lang=IT style='mso-ansi-language:IT'>Provate a
+modificare la gluPerspective, e la gluLookAt per vedere l’effetto e per
+centrare la scena complessiva con l’ellissoide.<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-left:72.0pt;text-align:justify;text-indent:
+-18.0pt;mso-list:l0 level2 lfo2;tab-stops:list 72.0pt'><![if !supportLists]><span
+lang=IT style='mso-ansi-language:IT'>d.<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><![endif]><span lang=IT style='mso-ansi-language:IT'>Permettete
+la modifica da tastiera della posizione dell’osservatore<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-left:72.0pt;text-align:justify;text-indent:
+-18.0pt;mso-list:l0 level2 lfo2;tab-stops:list 72.0pt'><![if !supportLists]><span
+lang=IT style='mso-ansi-language:IT'>e.<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><![endif]><span lang=IT style='mso-ansi-language:IT'>Fate in modo
+che in caso di modifica delle dimensioni della finestra sullo schermo anche la
+finestra sul piano di proiezione venga modificata di conseguenza per rispettare
+le proporzioni<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-left:72.0pt;text-align:justify;text-indent:
+-18.0pt;mso-list:l0 level2 lfo2;tab-stops:list 72.0pt'><![if !supportLists]><span
+lang=IT style='mso-ansi-language:IT'>f.<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><![endif]><span lang=IT style='mso-ansi-language:IT'>Fate in modo
+che ad ogni click del mouse il cubo venga ruotato rispetto all’asse y di 5
+gradi<o:p></o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify'><span lang=IT style='mso-ansi-language:
+IT'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify'><b><span lang=IT
+style='mso-ansi-language:IT'>Documentazione:</span></b><span lang=IT
+style='mso-ansi-language:IT'> Tutta la documentazione su OpenGL è disponibile
+nella directory<span style="mso-spacerun: yes">  </span>Corsi\InfoGrafica. Questa
+contiene i tre files:<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-left:117.0pt;text-align:justify;text-indent:
+-18.0pt;mso-list:l0 level3 lfo2;tab-stops:list 117.0pt'><![if !supportLists]><span
+style='font-family:Symbol'>·<span style='font:7.0pt "Times New Roman"'>&nbsp; </span></span><![endif]>glspec15.pdf</p>
+
+<p class=MsoNormal style='margin-left:117.0pt;text-align:justify;text-indent:
+-18.0pt;mso-list:l0 level3 lfo2;tab-stops:list 117.0pt'><![if !supportLists]><span
+style='font-family:Symbol'>·<span style='font:7.0pt "Times New Roman"'>&nbsp; </span></span><![endif]>glu1.3.pdf</p>
+
+<p class=MsoNormal style='margin-left:117.0pt;text-align:justify;text-indent:
+-18.0pt;mso-list:l0 level3 lfo2;tab-stops:list 117.0pt'><![if !supportLists]><span
+style='font-family:Symbol'>·<span style='font:7.0pt "Times New Roman"'>&nbsp; </span></span><![endif]>glut-3-spec.pdf</p>
+
+</div>
+
+</body>
+
+</html>

@@ -1,0 +1,39 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1">
+<META NAME="Generator" CONTENT="Microsoft Word 98">
+<TITLE>5&#170; Esercitazione in laboratorio (a.a. 1997/98)</TITLE>
+</HEAD>
+<BODY>
+
+<B><FONT FACE="Times"><P ALIGN="CENTER">Fondamenti di Informatica - Ingegneria per l'Ambiente e il Territorio - A.A. 97/98</P>
+<P ALIGN="CENTER"> - Quinta esercitazione in laboratorio - </P>
+</B>
+<P>Si consideri il gioco denominato <I>Life</I> (Gioco della Vita). In <I>Life</I> il giocatore colloca un insieme di individui su una scacchiera toroidale di <I>M</I> righe e <I>N</I> colonne (ogni casella pu&ograve; contenere al pi&ugrave; un individuo). Con il passare del tempo, in ogni casella, possono nascere o morire individui, in accordo con le seguenti regole: </P>
+<OL>
+
+<LI>ogni casella ha esattamente 8 caselle adiacenti;</LI>
+<LI VALUE=1>se il numero di vicini di un individuo &egrave; 0 o 1, l&#146;individuo muore per solitudine;</LI>
+<LI VALUE=1>se il numero di vicini di un individuo &egrave; 4 o pi&ugrave;, l&#146;individuo muore per sovraffollamento;</LI>
+<LI VALUE=1>se attorno una casella vuota ci sono esattamente 3 individui, nella casella nasce un nuovo individuo.</LI></OL>
+
+
+<P>Ci&ograve; premesso, scrivere un programma in C, che fa anche uso di funzioni e di alcune variabili globali, che illustri graficamente sullo schermo l&#146;evoluzione di <I>Life</I>. A tal scopo pu&ograve; essere usata la funzione </FONT><FONT FACE="Courier" SIZE=2>gotoxy(int x, int y)</FONT><FONT FACE="Times"> (richiede l&#146;inclusione di </FONT><FONT FACE="Courier" SIZE=2>&lt;conio.h&gt;</FONT><FONT FACE="Times">) del TurboC, che modifica la posizione della prossima stampa facendo in modo che essa avvenga sulla riga </FONT><FONT FACE="Courier" SIZE=2>y</FONT><FONT FACE="Times"> e sulla colonna </FONT><FONT FACE="Courier" SIZE=2>x</FONT><FONT FACE="Times"> dello schermo. Si noti che tale funzione non &egrave; prevista dallo standard ANSI C.</P>
+<P>&#9;Il programma d&agrave; inizialmente all&#146;utente la possibilit&agrave; di collocare individui sulla scacchiera, ma consente allo stesso tempo, per velocizzare l&#146;interazione, anche di avvalersi di una eventuale matrice inizializzata direttamente nel sorgente. Il programma quindi effettua un numero imprecisato di iterazioni, in ciascuna delle quali si provvede ad aggiornare e visualizzare la scacchiera, chiedendo poi all&#146;utente se egli intenda continuare o terminare l&#146;elaborazione.</P>
+
+<P>Si consiglia di utilizzare i tipi e le funzioni deducibili dallo schema che segue (notare che &egrave; comunque utile definire anche altre funzioni):</P>
+
+</FONT><FONT FACE="Courier" SIZE=2><P>typedef char MatriceLife[M][N];</P>
+
+<P>main() {</P>
+
+<P>&#9;printf("Benvenuti a LIFE\n\n");</P>
+
+<P>&#9;Inizio();</P>
+<P>&#9;Gioca();</P>
+<P>&#9;Fine();</P>
+
+<P>&#9;return 0;</P>
+<P>}</P>
+</FONT><FONT FACE="Times"></FONT></BODY>
+</HTML>

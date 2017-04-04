@@ -1,0 +1,224 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<!--Converted with LaTeX2HTML 98.1 release (February 19th, 1998)
+originally by Nikos Drakos (nikos@cbl.leeds.ac.uk), CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>Esame di Fondamenti di Informatica II
+A.A. 1998/99 - Appello del 5 luglio 1999</TITLE>
+</HEAD>
+<BODY >
+
+<DIV ALIGN="CENTER">
+<FONT SIZE="+1"><B>Esame di Fondamenti di Informatica II
+<BR>
+A.A. 1998/99 - Appello del 5 luglio 1999 - Prima parte
+</B></FONT></DIV> 
+
+<P>
+<P>
+
+<B>Problema 1</B>&nbsp;&nbsp;Un deposito auto riceve automobili dai costruttori, le
+custodisce per un certo tempo, e le spedisce, su richiesta, ad un
+concessionario. La specifica del tipo astratto <I>Deposito</I> &egrave;:
+
+<P><DL>
+<DT><STRONG><U>TipoAstratto</U> <I>Deposito</I></STRONG>
+<DD><DT><STRONG><U>Sorte</U></STRONG>
+<DD><I>Dep</I> (sorta per il dominio di interesse)
+<DT><STRONG><U>Funzioni</U></STRONG>
+<DD>&nbsp;&nbsp;
+<DL>
+<DT><STRONG><I>Crea</I></STRONG> 
+:
+<I>() ==> Dep</I>
+<BR>
+precondizioni e postcondizioni per 
+<I>Crea</I>() = <I>d</I>
+<BR>
+  <U>pre</U>: nessuna
+<BR>
+  <U>post</U>: <I>d</I> &egrave; un deposito con 0 auto
+<DT><STRONG>
+<I>QuanteAuto</I></STRONG>
+: 
+<I>(Dep) ==> Intero</I>
+<BR>
+precondizioni e postcondizioni per 
+<I>QuanteAuto</I>(<I>d</I>) = <I>n</I>
+<BR>
+  <U>pre</U>: nessuna
+<BR>
+  <U>post</U>: <I>n</I> &egrave; il numero di auto presenti in <I>d</I>; le auto sono
+  identificate dai numeri interi da 1 a 
+<I>QuanteAuto</I>(<I>d</I>)
+<DT><STRONG><I>NuovaAuto</I></STRONG>
+: 
+<I>(Dep,Reale) ==> Dep</I>
+<BR>
+precondizioni e postcondizioni per 
+<I>NuovaAuto</I>(<I>d</I>,<I>m</I>) = <I>e</I>
+<BR>
+  <U>pre</U>: <I>m</I> &gt; 0
+<BR>
+  <U>post</U>:  <I>e</I> &egrave; il deposito ottenuto da <I>d</I> aggiungendo una nuova
+  auto di lunghezza <I>m</I> metri; la nuova auto &egrave; identificata da
+  
+<I>QuanteAuto</I>(<I>d</I>)+1, e il numero di auto in <I>e</I> &egrave;
+<I>QuanteAuto</I>(<I>d</I>)+1
+<DT><STRONG>
+<I>DammiLunghezza</I></STRONG>
+: 
+<I>(Dep, Intero) ==> Reale</I>
+<BR>
+precondizioni e postcondizioni per 
+<I>DammiLunghezza</I>(<I>d</I>,<I>a</I>) = <I>m</I>
+<BR>
+  <U>pre</U>: 
+<I>1 <= a <= QuanteAuto(d)</I>
+<BR>
+  <U>post</U>: <I>m</I> &egrave; la lunghezza dell'auto numero <I>a</I> nel deposito
+  <I>d</I>
+<DT><STRONG><I>Svuota</I></STRONG>
+: 
+<I>(Dep) ==> Dep</I>
+<BR>
+precondizioni e postcondizioni per 
+<I>Svuota</I>(<I>d</I>) = <I>e</I>
+<BR>
+  <U>pre</U>: 
+<I>QuanteAuto</I>(<I>d</I>) &gt; 0
+<BR>
+  <U>post</U>: <I>e</I> &egrave; il deposito ottenuto da <I>d</I> togliendo tutte le
+    auto
+</DL>
+<DT><STRONG><U>FineTipoAstratto</U></STRONG>
+</DL>
+
+<P>
+
+<P>
+<BR>
+
+<B>Domanda 1 (7 punti)</B>&nbsp;&nbsp;Basandosi sulla specifica riportata sopra,
+realizzare il tipo astratto <I>Deposito</I> mediante una classe.
+
+<P>
+
+<P>
+<BR>
+
+<B>Domanda 2 (8 punti)</B>&nbsp;&nbsp;Al momento di svuotare un deposito, tutte le sue
+auto vengono trasportate al concessionario, usando opportuni camion per il
+trasporto. Il problema del <EM>trasporto al concessionario</EM> &egrave; il seguente.
+Dati
+<UL>
+<LI>un oggetto <TT>d</TT> della classe <TT>Deposito</TT>,
+<LI>un numero reale positivo che indica la lunghezza di ognuno dei
+     camion disponibili (si noti che tutti i camion hanno la stessa
+     lunghezza),
+<LI>un numero intero positivo <TT>k</TT>,
+</UL>
+verificare se esiste la possibilit&#224; di trasportare tutte le auto di <TT>d</TT>
+al concessionario usando non pi&#249; di <TT>k</TT> camion.  Illustrare un
+possibile albero di ricerca (detto anche albero del backtracking) per il
+problema, e progettare la classe <TT>EspBtrTrasp</TT> derivata dalla classe <TT>
+ EspBtrRic</TT> per risolvere il problema mediante un algoritmo di backtracking.
+Della classe <TT>EspBtrTrasp</TT> &egrave; necessario scrivere la dichiarazione (file
+<TT>.h</TT>), la definizione del costruttore e la definizione della funzione
+<TT>ViolaVincoli()</TT>. Tutto il resto &egrave; facoltativo.
+
+<P>
+
+<P>
+
+<P>
+<DIV ALIGN="CENTER">
+<FONT SIZE="+1"><B>Esame di Fondamenti di Informatica II
+<BR>
+A.A. 1998/99 - Appello del 5 luglio 1999 - Seconda parte
+</B></FONT></DIV> 
+
+<P>
+
+<P>
+
+<B>Problema 2 (5 punti)</B>&nbsp;&nbsp;Supponiamo che in un programma vi sia la
+necessit&#224; di gestire dei bersagli, e supponiamo che il progettista abbia
+definito il seguente file per questo scopo:<PRE>
+class Bersaglio
+{public:
+  Bersaglio() { quantiColpi = 0; iniziato = false; }
+  void Start() { if (!iniziato) { iniziato = true; quantiColpi = 0; } }
+  int End()  { if (iniziato)  { iniziato = false; return quantiColpi; } else return -1; }
+  void Colpito() { if (iniziato) quantiColpi++; }
+  int quantiColpi;
+ private:
+  bool iniziato;
+};
+
+int  NumeroColpi(Bersaglio b)
+{ return b.quantiColpi; }
+</PRE>
+Dare una descrizione del significato della classe <TT>Bersaglio</TT>, fornire un
+giudizio motivato sul frammento di software sopra riportato rispetto alla
+<EM>coesione</EM> e all'<EM>information hiding</EM>, e dare indicazioni su
+eventuali miglioramenti da apportare.
+
+<P>
+
+<B>Problema 3 (5 punti)</B>&nbsp;&nbsp;Si consideri la seguente classe C++.<PRE>
+class Grafo
+{ public:
+   Grafo(int n);        // costruisce grafo con n nodi (denotati da 1..n), e senza archi
+   virtual void AggiungiArco(int n, int m)=0; // aggiunge arco da n a m
+   virtual void CancellaArco(int n, int m)=0; // cancella arco da n a m
+   virtual bool EsisteArco(int n, int m)=0;   // verifica se esiste l'arco da n a m
+   int  NumNodi() { return num; }             // restituisce il numero di nodi del grafo
+  protected:
+   int num;
+};
+</PRE>
+Scrivere una classe <TT>GrafoMA</TT> derivata dalla classe <TT>Grafo</TT> che
+risponda alle seguenti specifiche:
+<UL>
+<LI>la classe <TT>GrafoMA</TT> rappresenta i grafi mediante matrice di
+    adiacenza;
+<LI>le funzioni <TT>AggiungiArco()</TT>, <TT>CancellaArco()</TT>, e <TT>
+    EsisteArco()</TT> hanno complessit&#224;  <I>O</I>(1);
+<LI>ad ogni nodo del grafo si pu&#242; associare una etichetta di tipo <TT>
+     float</TT>.
+</UL>
+Nel file <TT>.cpp</TT> della classe <TT>GrafoMA</TT> la definizione dell'eventuale
+costruttore di copia e dell'operatore di assegnazione &egrave; facoltativa.
+
+<P>
+
+<B>Problema 4 (5 punti)</B>&nbsp;&nbsp;Facendo riferimento alle classi relative al
+Problema 3, si consideri il seguente frammento di programma:<PRE>
+int Boh(Grafo&amp; g, int n, bool* k)
+{ k[n] = true; int b = 0;
+  for (int i = 1; i &lt;= g.NumNodi(); i++) if (g.EsisteArco(n,i)) b = b + 1;
+  for (int j = 1; j &lt;= g.NumNodi(); j++)
+    if (!k[j] &amp;&amp; g.EsisteArco(n,j)) { int a = Boh(g,j,k); if (a &gt; b) b = a; }
+  return b;
+}
+
+GrafoMA f;  .....;  bool* v = new bool[f.NumNodi()+1];
+for (int i = 1; i &lt;= f.NumNodi(); i++) v[i] = false;
+int h = Boh(f,1,v);
+</PRE>
+Si chiede di
+<UL>
+<LI>descrivere cosa fa (non come lo fa) la funzione <TT>Boh()</TT>,
+<LI>stabilire un parametro che caratterizzi la dimensione dei dati di
+  ingresso della funzione <TT>Boh()</TT>,
+<LI>calcolare la complessit&#224; di tempo della chiamata <TT>Boh(f,1,v)</TT>
+  sulla base del parametro scelto, illustrando dettagliatamente il
+  ragionamento seguito per il calcolo.
+</UL>
+
+</BODY>
+</HTML>

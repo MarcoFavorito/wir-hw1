@@ -1,0 +1,110 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+
+<!--Converted with jLaTeX2HTML 2002 (1.62) JA patch-1.4
+patched version by:  Kenshi Muto, Debian Project.
+LaTeX2HTML 2002 (1.62),
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>2003-01-11-a</TITLE>
+<META NAME="description" CONTENT="2003-01-11-a">
+<META NAME="keywords" CONTENT="2003-01-11-a">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1">
+<META NAME="Generator" CONTENT="jLaTeX2HTML v2002 JA patch-1.4">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+</HEAD>
+
+<BODY >
+
+<P>
+
+<P>
+<DIV ALIGN="CENTER">
+<FONT SIZE="+1"><B>  Laurea in Ingegneria Informatica - Nuovo Ordinamento
+<BR>
+Esame di Basi di Dati
+<BR>
+A.A.&nbsp;2002/2003 - Appello del 11/1/2003
+<BR>
+Compito A
+<BR>  <I>tempo a disposizione: 2 ore</I>
+
+</B></FONT></DIV>
+
+<P>
+
+<H2><A NAME="SECTION00001000000000000000">
+Problema 1</A>
+</H2>
+
+<P>
+Si richiede di progettare lo schema concettuale Entit&#224;-Relazione di
+un'applicazione relativa alle stazioni radiofoniche e le loro trasmissioni. Di
+ogni stazione radiofonica interessa il codice identificativo, la potenza di
+trasmissione, la citt&#224; in cui &#232; situata la sede, gli spettacoli che essa
+produce, e le trasmissioni che essa manda in onda. Ogni spettacolo &#232; prodotto
+da una ed una sola stazione radiofonica in un certo anno, ed &#232; caratterizzato
+da un numero unico nell'ambito della stazione radiofonica che lo ha prodotto,
+dalla durata in minuti, dal presentatore (uno ed uno solo) che lo ha presentato
+e dal regista (uno ed uno solo) che lo ha diretto. Ogni trasmissione riguarda
+uno spettacolo, ed &#232; mandata in onda da una ed una sola stazione radiofonica
+in una certa ora di un certo giorno. Ogni trasmissione viene irradiata in una o
+pi&#249; citt&#224;. Si noti che trasmissioni diverse, anche mandate in onda dalla
+stessa stazione radiofonica, possono riguardare lo stesso spettacolo, ma una
+stazione radiofonica non pu&#242; mandare in onda nello stesso giorno due
+trasmissioni che riguardano lo stesso spettacolo. Si noti anche che non &#232;
+necessario che ogni spettacolo prodotto sia stato oggetto di una trasmissione.
+Di ogni regista interessa il codice fiscale, lo stato di nascita, la data di
+nascita, e la citt&#224; di residenza. Di ogni presentatore interessa il codice
+fiscale, lo stato di nascita, e lo stipendio annuo. Si noti che un presentatore
+pu&#242; essere anche regista. Infine di ogni citt&#224; interessa la regione, il
+nome (unico nell'ambito della regione), ed il numero di abitanti.
+
+<P>
+
+<H2><A NAME="SECTION00002000000000000000">
+Problema 2</A>
+</H2>
+
+<P>
+Si richiede di effettuare la progettazione logica dell'applicazione, producendo
+lo schema relazionale completo di vincoli, e seguendo l'indicazione di evitare
+valori nulli nella base di dati (si noti che le interrogazioni menzionate nel
+problema&nbsp;3 non sono da considerarsi significative per le indicazioni di
+progetto).
+
+<P>
+
+<H2><A NAME="SECTION00003000000000000000">
+Problema 3</A>
+</H2>
+
+<P>
+Sulla base dello schema relazionale definito per il problema&nbsp;2, esprimere in
+SQL le seguenti interrogazioni:
+
+ <OL>
+<LI>Calcolare nome e regione delle citt&#224; in cui sono state irradiate le
+  varie trasmissioni mandate in onda nel 2002.
+</LI>
+<LI>Calcolare il codice fiscale e la data di nascita dei registi che hanno
+  presentato uno spettacolo che &#232; stato oggetto di almeno una trasmissione.  
+</LI>
+<LI>Per ogni stazione radiofonica, calcolare quanti spettacoli non ancora
+  trasmessi essa ha prodotto.
+</LI>
+<LI>Calcolare il codice delle stazioni radiofoniche che hanno mandato in onda
+  almeno una trasmissione irradiata solo nella citt&#224; in cui &#232; situata la
+  loro sede.
+</LI>
+</OL>
+
+</BODY>
+</HTML>

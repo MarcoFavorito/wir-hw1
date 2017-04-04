@@ -1,0 +1,96 @@
+<!-- file generated with webcpp 0.6.2 http://webcpp.sf.net -->
+<html>
+<head>
+<title>C:\Documenti\Web\igea\lab\20020204\ConsoleReader.java</title>
+<meta name="Microsoft Border" content="tb, default">
+</head>
+<body bgcolor=#ffffff text=#000000 link=#ff0000 vlink=#666666 alink=#0000ff><!--msnavigation--><table border="0" cellpadding="0" cellspacing="0" width="100%"><tr><td>
+
+<p align="center">
+</p>
+<hr>
+<p align="center">&nbsp;</p>
+
+</td></tr><!--msnavigation--></table><!--msnavigation--><table border="0" cellpadding="0" cellspacing="0" width="100%"><tr><!--msnavigation--><td valign="top">
+<pre>
+<b><font COLOR=#0000ff>import</font></b> java.io.BufferedReader;
+<b><font COLOR=#0000ff>import</font></b> java.io.InputStream;
+<b><font COLOR=#0000ff>import</font></b> java.io.InputStreamReader;
+<b><font COLOR=#0000ff>import</font></b> java.io.IOException;
+
+<font COLOR=#666666>/** 
+   Una classe per leggere stringhe e numeri da un flusso di input.
+   Questa classe è particolarmente adatta per chi comincia 
+   a programmare in Java.
+   Costruisce il necessario lettore bufferizzato, 
+   gestisce le eccezioni I/O e converte le stringhe in numeri.
+*/</font>
+
+<b><font COLOR=#0000ff>public</font></b> <b><font COLOR=#0000ff>class</font></b> ConsoleReader
+{  <font COLOR=#666666>/**
+      Costruisce un lettore da console da un flusso di input 
+      come per esempio System.in
+      @param inStream un flusso di input 
+   */</font>
+   <b><font COLOR=#0000ff>public</font></b> ConsoleReader(InputStream inStream)
+   {  reader = <b><font COLOR=#0000ff>new</font></b> BufferedReader
+         (<b><font COLOR=#0000ff>new</font></b> InputStreamReader(inStream)); 
+   }
+   
+   <font COLOR=#666666>/**
+      Legge una riga di input e la converte in un integer.
+      La riga di input non può contenere altro che un integer.
+      Non sono neppure ammessi spazi vuoti.
+      @return l'integer digitato dall'utente
+   */</font>
+   <b><font COLOR=#0000ff>public</font></b> <b><font COLOR=#0000ff>int</font></b> readInt() 
+   {  String inputString = readLine();
+      <b><font COLOR=#0000ff>int</font></b> n = Integer.parseInt(inputString);
+      <b><font COLOR=#0000ff>return</font></b> n;
+   }
+   
+   <font COLOR=#666666>/**
+      Legge una riga di input e la converte in un numero in virgola
+      Mobile. La riga di input non può contenere altro che un  
+      numero. Non sono neppure ammessi spazi vuoti.
+      @return il numero digitato dall'utente
+   */</font>
+   <b><font COLOR=#0000ff>public</font></b> <b><font COLOR=#0000ff>double</font></b> readDouble() 
+   {  String inputString = readLine();
+      <b><font COLOR=#0000ff>double</font></b> x = Double.parseDouble(inputString);
+      <b><font COLOR=#0000ff>return</font></b> x;
+   }
+   
+   <font COLOR=#666666>/**
+      Legge una riga di input. Nel caso (improbabile) di
+      una eccezione I/O, il programma si arresta. 
+      @return la riga di input digitata dall'utente, null
+      alla fine dell'input
+   */</font>
+   <b><font COLOR=#0000ff>public</font></b> String readLine() 
+   {  String inputLine = <font COLOR=#ff0000>""</font>;
+
+      <b><font COLOR=#0000ff>try</font></b>
+      {  inputLine = reader.readLine();
+      }
+      <b><font COLOR=#0000ff>catch</font></b>(IOException e)
+      {  System.out.println(e);
+         System.exit(<font COLOR=#a900a9>1</font>);
+      }
+
+      <b><font COLOR=#0000ff>return</font></b> inputLine;
+   }
+
+   <b><font COLOR=#0000ff>private</font></b> BufferedReader reader; 
+}
+
+
+</pre>
+<!--msnavigation--></td></tr><!--msnavigation--></table><!--msnavigation--><table border="0" cellpadding="0" cellspacing="0" width="100%"><tr><td>
+<hr>
+      <h5 align="left">Questa è la bacheca di <b><i>Informatica Grafica</i>,
+      corso di laurea specialistica in <i>Ing. Edile-architettura<br>
+      </i></b>by <a href="mailto:damore@dis.uniroma1.it"> FdA</a></h5>
+      <h6 align="left">ultima modifica: 02/02/2005 11.30</h6>
+</td></tr><!--msnavigation--></table></body>
+</html>

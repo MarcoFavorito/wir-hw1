@@ -1,0 +1,69 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+
+<html>
+<head>
+<title>Esame di Basi di Dati A.A. 2000/2001 - 2002-02-15</title>
+</head>
+
+<center>
+<h1>Esame di Basi di Dati<br>
+A.A. 2000/2001 - Appello del 15/02/2002</h1>
+</center>
+
+<h2>Problema 1</h2>
+
+Si progetti lo schema concettuale Entit&agrave;-Relazione di un'applicazione
+relativa ad una catena di garage, descritta dalle seguenti specifiche:
+<ul>
+  <li>Di ogni garage interessa il codice identificativo, il proprietario (con
+      codice fiscale, nome, cognome, e indirizzo e la citt&agrave;),
+      l'indirizzo e la citt&agrave;. Ogni posto auto di un garage ha un numero
+      progressivo unico nell'ambito del garage, ed appartiene ad una ed una
+      sola categoria. Ogni categoria di posto auto &egrave; caratterizzata da
+      un codice identificativo e dalle dimensioni (area e altezza).
+  <li>I garage affittano i posti alle automobili per tutto il giorno. Di ogni
+      giorno interessa conoscere quale automobile ha occupato quale posto auto
+      dei vari garage della catena. Il prezzo giornaliero di un posto auto
+      fissato da un garage dipende della categoria del posto auto. Alcuni posti
+      auto sono speciali, nel senso che sono riservati ad uffici convenzionati,
+      ed il loro utilizzo prevede il beneficio di uno sconto. Di ogni posto
+      convenzionato interessa l'ammontare dello sconto per esso praticato, a
+      quale piano si trovi nel garage corrispondente, e l'ufficio con il quale
+      &egrave; in convenzione. Ovviamente, i posti convenzionati con un ufficio
+      possono essere utilizzati solo da automobili i cui proprietari lavorano
+      in quell'ufficio.
+  <li>Delle automobili interessa la targa, l'anno di immatricolazione, la
+      marca, il modello, e il proprietario.
+  <li>Di ogni proprietario di automobile interessano il codice fiscale, il
+      nome, il cognome, l'indirizzo, la citt&agrave; di residenza, e
+      l'eventuale ufficio in cui lavora.
+  <li>Di ogni ufficio interessa il nome (unico), l'indirizzo e la citt&agrave;
+      in cui &egrave; situato.
+</ul>
+
+<h2>Problema 2</h2>
+
+Si progetti lo schema logico dell'applicazione, indicando lo schema relazionale
+corrispondente completo di vincoli (con qualunque metodo, non necessariamente
+in SQL). L'indicazione di progetto &egrave; di evitare valori nulli nella base
+di dati. 
+
+<h2>Problema 3</h2>
+
+Sulla base dello schema relazionale definito per il problema 2, esprimere in
+SQL le seguenti interrogazioni:
+<ol>
+  <li>Fornire i dati dei garage localizzati a Roma.
+  <li>Data un'automobile A, fornire le informazioni sui garage ed i relativi
+      posti in cui &egrave; stata parcheggiata l'automobile A nel mese di
+      dicembre 2001.
+  <li>Fornire informazioni sui posto auto (di qualunque garage) che sono stati
+      occupati sempre dalla stessa automobile nel mese di gennaio 2002.
+  <li>Dato un garage e dato un suo posto auto non convenzionato, calcolare
+      quanto denaro tale posto abbia fruttato nel mese di novembre 2002 al
+      garage.
+</ol>
+
+</body>
+</html>
+

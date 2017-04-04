@@ -1,0 +1,50 @@
+
+<HTML>
+
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html;charset=iso-8859-1">
+<meta name="GENERATOR" content="Microsoft Internet Assistant for Macintosh PowerPoint 98">
+ <TITLE>Prefix Key Compression</TITLE> 
+</HEAD>
+
+<BODY     >
+
+ <H1>Prefix Key Compression</H1> 
+ <P><UL></P>
+
+<P><LI><H2>Important to increase fan-out.  (Why?)
+</H2></P>
+
+<P></UL><UL></P>
+
+<P><LI><H2>Key values in index entries only `direct traffic’; can often compress them.
+</H2></P>
+
+<P><UL></P>
+
+<P><LI>E.g., If we have adjacent index entries with search key values Dannon Yogurt, David Smith and Devarakonda Murthy, we can abbreviate David Smith to Dav.  (The other keys can be compressed too ...)
+<UL></P>
+
+<P><LI>Is this correct?  Not quite!  What if there is a data entry Davey Jones?  (Can only compress David Smith to Davi)
+<LI>In general, while compressing, must leave each index entry greater than every key value (in any subtree) to its left.
+</UL></UL></UL><UL></P>
+
+<P><LI><H2>Insert/delete must be suitably modified.</H2></P>
+
+<P></UL></P>
+
+<P></P> 
+<P>
+<TABLE>
+  <TD HEIGHT=100 WIDTH=100> <A HREF="tsld012.htm">Previous slide</A> </TD>
+  <TD HEIGHT=100 WIDTH=100> <A HREF="tsld014.htm">Next slide</A> </TD>
+  <TD HEIGHT=100 WIDTH=150> <A HREF="tsld001.htm">Back to first slide</A> </TD>
+  <TD HEIGHT=100 WIDTH=150> <A HREF="sld013.htm">View graphic version</A> </TD>
+</TABLE>
+<BR>
+</P>
+
+
+
+</Body>
+</HTML>

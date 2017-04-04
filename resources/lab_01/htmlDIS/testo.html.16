@@ -1,0 +1,113 @@
+<html>
+<head>
+<title>
+Diploma Universitario di Ingegneria Informatica,
+Esame di Fondamenti di Informatica II - primo modulo,
+A.A. 2000/01 - Appello del 24 aprile 2001
+</title>
+</head>
+
+<body>
+
+<h3 align="center">
+Diploma Universitario di Ingegneria Informatica<br>
+Esame di Fondamenti di Informatica II - primo modulo <br>
+A.A. 2000/01 - Appello del 24 aprile 2001</h3>
+
+<p><b>Problema 1</b>&nbsp;&nbsp; Si consideri la seguente specifica del
+tipo astratto <i>PlayList</i>:
+
+<dl>
+  <dt><b><u>TipoAstratto</u></b> <i>PlayList</i><p>
+  <dt><b><u>Sorte</u></b> <i>PL</i> (sorta per il dominio di interesse)<p>
+  <dt><b><u>Funzioni</u></b><p>
+
+       <ul>
+         <li><i>Crea : (URL) --&gt; PL</i> <br>
+              precondizioni e postcondizioni per <i>crea(u) = p</i> <br>
+              <u>pre</u>: nessuna <br>
+              <u>post</u>: <i>p</i> &egrave;
+              una playlist avente url (uniform resource locator)
+              <i>u</i> e nessun file MP3 associato
+              <p>
+
+
+         <li><i>URL : (PL) --&gt; URL</i><br>
+              precondizioni e postcondizioni per <i>URL(p) = u</i><br>
+              <u>pre</u>: nessuna<br>
+              <u>post</u>: <i>u</i> &egrave; l'url della playlist
+              <i>p</i>
+              <p>
+
+         <li><i>NumMP3 : (PL) --&gt; Int</i><br>
+              precondizioni e postcondizioni per <i>NumMP3(p) = i</i><br>
+              <u>pre</u>: nessuna<br>
+              <u>post</u>: <i>i</i> &egrave; il numero di file MP3 presenti
+              nella playlist
+              <i>p</i>
+              <p>
+
+
+         <li><i>Inserisci : (PL, MP3) --&gt; PL</i><br>
+              precondizioni e postcondizioni per
+              <i>Inserisci(p,m) = q</i><br>
+              <U>pre</u>:  nessuna<br>
+              <U>post</u>: <i>q</i> &egrave; la playlist ottenuta da
+              <i>p</i> aggiungendo il file MP3 <i>m</i>
+              in fondo alla playlist <i>p</i>
+              <p>
+
+         <li><i>Elimina : (PL, Int) --&gt; PL</i><br>
+              precondizioni e postcondizioni per<I> Elimina(p,i) = q</i> <br>
+              <u>pre</u>:  <i>1 &lt;= i &lt;= NumMP3(p) </i> <br>
+              <u>post</u>: <i>q</i> &egrave; la playlist ottenuta da
+              <i>p</i> eliminando il file MP3 in posizione  <i>i</i>
+              <p>
+
+         <li><i>Restituisci : (PL, Int) --&gt; MP3</i><br>
+              precondizione e postcondizioni per
+              <i>Restituisci(p,i) = m</i><br>
+              <u>pre</u>:  <i>1 &lt;= i &lt;= NumMP3(p) </i> <br>
+              <u>post</u>: <i>m</i> &egrave; il file MP3 in posizione <i>i</i>
+              <p>
+
+       </dl>
+       <dt><b><u>FineTipoAstratto</u></b></dt>
+<p>
+
+Si vuole scrivere una classe C++ <code>PlayList</code> che realizzi il tipo
+astratto <i>PlayList</i>, considerando che per riferirsi al tipo astratto
+<i>MP3</i> &egrave; necessario utilizzare la classe <code>MP3</code> che si
+suppone gi&agrave; realizzata, della quale per&ograve; non &egrave; nota la
+definizione, eccetto che per la funzione <code>autore</code>, che dato un
+oggetto <i>m</i> di tipo <code>MP3</code> va invocata con la sintassi
+<code>m.autore()</code> e restituisce un oggetto di tipo
+<code>Autore</code>. Inoltre si assuma che <code>URL</code> ed
+<code>Autore</code> siano rappresentati da oggetti di una classe
+<code>Stringa</code> per la quale sono disponibili, assegnazione, construttore
+di copia ed uguaglianza.
+
+
+<p><b>Domanda 1</b>&nbsp;&nbsp; Si illustrino le scelte di progetto relative
+alla realizzazione del tipo astratto <i>PlayList</i> mediante la classe C++
+<code>PlayList</code>. </p>
+
+<p><b>Domanda 2</b>&nbsp;&nbsp; Si scriva la classe <code>PlayList</code> (file
+.h e file .cpp) secondo le scelte di progetto illustrate per la Domanda
+1. Scrivere il codice di tutte le funzioni pubbliche e private della
+classe. </p>
+
+<p><b>Problema 2</b>&nbsp;&nbsp; Realizzare una funzione esterna (non friend)
+della classe <code>PlayList</code> che dato un oggetto <i>p</i> di tipo
+<code>PlayList</code>, e due oggetti <i>u</i> e <i>a</i> di tipo
+<code>Stringa</code> che rappresentano rispettivamente una url ed un autore,
+restituisca un nuovo oggetto playlist avente come url <i>u</i> e contenente (in
+un qualsiasi ordine) i file MP3 presenti in <i>p</i> aventi come autore
+<i>a</i>.</P>
+
+<b><p>Problema 3</b>&nbsp;&nbsp; Discutere brevemente la nozione di uguaglianza
+negli oggetti astrazione di valore semplice, astrazione di valore collezione e
+astrazione di entit&agrave;.
+
+</body>
+</html>

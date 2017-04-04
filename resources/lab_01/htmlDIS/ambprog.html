@@ -1,0 +1,103 @@
+<!doctype html public "-//w3c//dtd html 4.0 transitional//en">
+<html>
+<div align="left">
+  <h2 align=center>Ambiente di programmazione Java da linea di comando</h2>
+  <b>1. Accesso al sito del corso java</b> <br>
+    &nbsp; 
+  <blockquote>Il sito del corso si trova nell'indirizzo <a href="http://tibur.dis.uniroma1.it/~fi/" target="frameRight">http://tibur.dis.uniroma1.it/~fi/</a>. 
+    <br>
+    Per accedere al sito &egrave; sufficiente eseguire il programma <i>Internet 
+    Explorer </i>dal menu' <i>Start / Accessori</i> o cliccando sull'icona relativa.
+    <br>
+    Una volta avviato il browser &egrave; possibile digitare direttamente l'indirizzo 
+    del sito.
+    Per navigare nel sito &egrave; sufficiente utilizzare il mouse e cliccare 
+    sugli argomenti che interessano. </blockquote><br>
+  <b>2. Scrittura, compilazione ed esecuzione di un programma Java</b> <br>
+    &nbsp; 
+  <blockquote>&Egrave; possibile scrivere, compilare ed eseguire un programma 
+    Java in ambiente Windows/MSDOS, ovvero senza usare ambienti di sviluppo aggiuntivi. 
+    <p>Per scrivere un programma Java in ambiente Windows si puo' utilizzare un 
+      qualsiasi editor di testi (Notepad, WordPad, ecc.) Una volta scritto, il 
+      programma deve essere salvato su un file che deve avere il nome uguale alla 
+      classe definita nel programma ed estensione <tt>.java</tt>. Ad esempio un 
+      file che contiene la classe <tt>Program1</tt> deve essere salvato con il 
+      nome <tt>Program1.java</tt> 
+    <p>Per compilare in ambiente MSDOS un programma scritto mediante un editor 
+      oppure scaricato dal sito del corso, eseguire il programma <i>Prompt dei 
+      comandi</i> cliccando due volte sull'icona presente sul Desktop oppure avviandolo 
+      dal menu' <i>Start / Programmi / Accessori</i>. Spostarsi quindi nel disco 
+      e nella cartella in cui avete salvato il file java. Ad esempio se il file 
+      si trova nella cartella <tt>Programmi\Java</tt> del disco D, digitare al 
+      prompt MSDOS i seguenti comandi: 
+    <blockquote><tt>> d:</tt> <br>
+      <tt>> cd \Programmi\Java</tt></blockquote>
+    La compilazione del file avviene tramite il comando <tt>javac</tt> (Java Compiler): 
+    <blockquote><tt>> javac Program1.java</tt></blockquote>
+    Se non viene visualizzato alcun messaggio, allora il programma &egrave; stato
+    compilato correttamente ed &egrave; stato generato il file <tt>Program1.class</tt>. 
+    Se si sono verificati errori durante la compilazione questi verranno segnalati 
+    e il programma dovr&agrave; essere corretto. 
+    <p>L'esecuzione di un programma Java avviene mediante il comando java (Java 
+      Interpreter):
+    <blockquote><tt> java Program1</tt></blockquote>
+    Si noti che non va aggiunta l'estensione <tt>.class</tt> e che le lettere
+    maiuscole/minuscole sono significative nell'uso di questo comando, cio&egrave;
+    devono corrispondere esattamente al nome della classe che &egrave; stata definita.
+    Ad esempio se la classe definita &egrave; <tt>Program1</tt> il comando <tt>java
+    program1</tt> segnaler&agrave; un errore.</blockquote>
+  <p><br>
+    <b>3. Uso di un ambiente di sviluppo</b> <br>
+  <blockquote>
+    <p>Aprire un ambiente di sviluppo (BlueJ o JCreator) e scrivere un programma
+      Java nella finestra di editing. Notate che alcune istruzioni java sono gi&agrave;
+      impostate nella finestra di editing. Un esempio di programma (<a href="Program1.java">Program1.java</a>)
+      &egrave; il seguente:
+    <blockquote>
+      <pre>
+
+
+public class Program1 {
+   public static void main(String[] args)  {
+      System.out.println("Welcome To Java!");
+   }
+}
+</pre>
+    </blockquote>
+    <p> <u>Note:</u>
+    <ul>
+      <li> Usate i quattro tasti freccia per posizionarvi sui caratteri del testo
+        e il tasto <b>Canc</b> per cancellarli (cancella a destra del cursore).
+      </li>
+      <li> I caratteri <b>{ } [ ]</b> non si trovano sulla tastiera. Per scrivere
+        tali caratteri tenere premuto il tasto <b>ALT GR </b>e digitare sulla
+        tastiera numerica di destra i caratteri <b>123</b> per il carattere '<b>{</b>',
+        <b>125</b> per '<b>}</b>',&nbsp; <b>91</b> per '<b>[</b>', <b>93</b> per
+        '<b>]</b>' e <b>126</b> per '~'.</li>
+      <!--<li>Per accedere alla documentazone Java seguire il link <a href = "http://sauron/javadocs/api">http://sauron/javadocs/api</a>
+        (solo dall'interno del laboratorio).</li>-->
+    </ul>
+  </blockquote>
+  Operazioni comuni:
+  <P><i>&nbsp;&nbsp;&nbsp;&nbsp; Apertura di un file da disco</i>
+  <P><i>&nbsp;&nbsp;&nbsp;&nbsp; Salvataggio del programma su disco</i>
+  <blockquote>&Egrave; sempre opportuno salvare il programma su disco periodicamente,
+    in quanto le modifiche vengono registrate solo nella memoria RAM, il cui contenuto
+    viene perso ogni volta che il calcolatore viene spento. La frequenza con cui
+    eseguire i salvataggi va valutata considerando il rapporto tra il tempo necessario
+    a compiere tale operazione e quello necessario a riscrivere il programma (o
+    le ultime variazioni) nel caso di una interruzione di corrente o del blocco
+    del sistema opearativo. </blockquote>
+  <P><i>&nbsp;&nbsp;&nbsp;&nbsp; Compilazione</i>
+  <blockquote>Il programma scritto, per poter essere eseguito dal calcolatore,
+    deve essere prima compilato. In una apposita finestra viene visualizzato il
+    risultato della compilazione. Se si sono verificati errori durante la compilazione,
+    questi verranno segnalati e il programma dovr&agrave; essere corretto e compilato
+    di nuovo.</blockquote>
+  <P><i>&nbsp;&nbsp;&nbsp;&nbsp; Esecuzione e visualizzazione dell'output</i>
+  <blockquote>Quando la compilazione ha avuto successo, si pu&ograve; finalmente
+    eseguire il programma. In una apposita finestra comparir&agrave l'output del
+    programma. </blockquote>
+  <p></div>
+</body>
+</html>

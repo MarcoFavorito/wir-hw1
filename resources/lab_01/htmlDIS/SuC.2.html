@@ -1,0 +1,58 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0//IT"
+    "http://www.w3.org/TR/REC-html40/frameset.dtd">
+<HTML>
+<HEAD>
+<TITLE>Un form</TITLE>
+<LINK rel="stylesheet" HREF="css/stileForm.css" type="text/css">
+</HEAD>
+
+<BODY>
+
+<FORM action="http://localhost/cgi-local-bin/c/2004/catturaNome"
+method="GET" class="mio_form">
+
+<P>
+Qui non vedi niente (INPUT type=&quot;hidden&quot;):
+<INPUT type="hidden" name="language" value="italiano">
+</P>
+
+<P>
+Password: <INPUT type="password" name="psw" value="segreto">
+</P>
+
+<P>
+Nome: <INPUT type="text" name="nome" value="Susanna" size="30">
+</P>
+
+<P>
+<INPUT type="submit" name="invio" value="Invio con GET">
+<INPUT type="reset" value="Annulla le scelte">
+</P>
+
+</FORM>
+
+ <HR align = "center" color ="red">
+<FORM action="http://localhost/cgi-local-bin/c/2004/catturaNome"
+method="POST" class="mio_form">
+
+<P>
+Qui non vedi niente (INPUT type=&quot;hidden&quot;):
+<INPUT type="hidden" name="language" value="italiano">
+</P>
+
+<P>
+Password: <INPUT type="password" name="psw" value="segreto">
+</P>
+
+<P>
+Nome: <INPUT type="text" name="nome" value="Susanna" size="30">
+</P>
+
+<P>
+<INPUT type="submit" name="invio" value="Invio con POST">
+<INPUT type="reset" value="Annulla le scelte">
+</P>
+
+</FORM>
+</BODY>
+</HTML>

@@ -1,0 +1,226 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0//EN">
+<!-- Created by htmlize-0.46 in css mode. -->
+<html>
+  <head>
+    <title>svol99-01-15.c</title>
+    <style type="text/css">
+    <!--
+      BODY {
+        color: #000000;
+        background-color: #ffffff;
+      } /* default */
+      span.keyword {
+        color: #006400;
+      } /* font-lock-keyword-face */
+      span.function-name {
+        color: #0000cd;
+      } /* font-lock-function-name-face */
+      span.comment {
+        color: #4682b4;
+      } /* font-lock-comment-face */
+      span.string {
+        color: #b22222;
+      } /* font-lock-string-face */
+      span.variable-name {
+        color: #a52a2a;
+      } /* font-lock-variable-name-face */
+      span.type {
+        color: #ff00ff;
+      } /* font-lock-type-face */
+      span.builtin {
+        color: #da70d6;
+      } /* font-lock-builtin-face */
+    -->
+    </style>
+  </head>
+  <body>
+    <pre>
+<span class="comment">/* soluzione compito Fondamenti di Informatica (Ambiente e Territorio), 15-1-99 */</span>
+
+#<span class="builtin">include</span> <span class="string">&lt;stdio.h&gt;</span>
+#<span class="builtin">include</span> <span class="string">&lt;stdlib.h&gt;</span>
+#<span class="builtin">include</span> <span class="string">&lt;string.h&gt;</span>
+
+#<span class="builtin">define</span> <span class="variable-name">N</span> 60
+#<span class="builtin">define</span> <span class="variable-name">L</span> 30
+
+<span class="type">typedef</span> <span class="type">enum</span> {uno=1,due=2,tre=3} <span class="variable-name">rilgio</span>; <span class="comment">/* per numerare le rilevazioni giornaliere */</span>
+
+<span class="type">struct</span> <span class="variable-name">el</span> {
+	<span class="type">unsigned</span> <span class="type">short</span> <span class="variable-name">numero</span>;
+	<span class="type">char</span> <span class="variable-name">data</span>[9];
+	rilgio numrilgio;
+	<span class="type">float</span> <span class="variable-name">temp</span>,<span class="variable-name">press</span>,<span class="variable-name">umid</span>;
+	<span class="type">struct</span> el *<span class="variable-name">pross</span>;
+};
+
+<span class="type">typedef</span> <span class="type">struct</span> el <span class="variable-name">elem</span>;
+
+<span class="comment">/* prototipi */</span>
+	<span class="type">FILE</span> *<span class="function-name">ApriFile</span>(<span class="type">char</span> *, <span class="type">char</span> *);
+	<span class="type">unsigned</span> <span class="type">short</span> <span class="function-name">Temp2Indice</span>(<span class="type">float</span>);
+	<span class="type">void</span> <span class="function-name">InserisciInTesta</span>(elem *, elem **);
+	<span class="type">void</span> <span class="function-name">CostruisciVettore</span>(<span class="type">char</span> *, elem *[]);
+	<span class="type">void</span> <span class="function-name">CostruisciFile</span>(<span class="type">char</span> *, elem *[], <span class="type">float</span>);
+	<span class="type">void</span> <span class="function-name">LeggiStringa</span>(<span class="type">char</span> *, <span class="type">char</span> *);
+	<span class="type">void</span> <span class="function-name">StampaStruttura</span>(elem *);
+	<span class="type">void</span> <span class="function-name">StampaTutto</span>(elem *[]);
+
+
+<span class="type">FILE</span> *<span class="function-name">ApriFile</span>(<span class="type">char</span> *<span class="variable-name">nome</span>, <span class="type">char</span> *<span class="variable-name">modo</span>)
+{
+	<span class="type">FILE</span> *<span class="variable-name">f</span>;
+	f=fopen(nome,modo);
+	<span class="keyword">if</span>(f==NULL) {
+		fprintf(stderr,<span class="string">&quot;Errore apertura file %s in modalita` %s. Programma terminato.\n&quot;</span>,nome,modo);
+		exit(2);
+	}
+	<span class="keyword">return</span> f;
+}
+
+
+<span class="type">unsigned</span> <span class="type">short</span> <span class="function-name">Temp2Indice</span>(<span class="type">float</span> <span class="variable-name">t</span>)
+<span class="comment">/* trasforma una temperatura nell'indice corripondente nel vettore */</span>
+{
+	<span class="type">unsigned</span> <span class="type">short</span> <span class="variable-name">i</span>;
+	i=t;
+	<span class="keyword">if</span>(t&lt;0)
+		i=i-1;
+	<span class="comment">/* equivalentemente, i=floor(t), includendo &lt;math.h&gt; */</span>
+	
+	<span class="keyword">return</span> i;
+}
+
+
+<span class="type">void</span> <span class="function-name">InserisciInTesta</span>(elem *nuovo, elem **testa)
+{
+	nuovo-&gt;pross=*testa;		
+	*testa=nuovo;
+	<span class="keyword">return</span>;
+}
+
+
+<span class="type">void</span> <span class="function-name">CostruisciVettore</span>(<span class="type">char</span> *<span class="variable-name">nomefile</span>, <span class="variable-name">elem</span> *vett[])
+<span class="comment">/* domanda 1.2 */</span>
+{
+	<span class="type">FILE</span> *<span class="variable-name">inputfile</span>;
+	<span class="type">unsigned</span> <span class="type">short</span> <span class="variable-name">i</span>,<span class="variable-name">numril</span>;
+	rilgio nrilgio;
+	<span class="type">float</span> <span class="variable-name">t</span>,<span class="variable-name">p</span>,<span class="variable-name">u</span>; <span class="comment">/* per leggere temperatura, pressione e umidita` da file */</span>
+	<span class="type">char</span> <span class="variable-name">d</span>[9];
+	<span class="type">int</span> <span class="variable-name">z</span>;
+	elem *nuovo;
+	
+	<span class="comment">/* inizializza vettore a NULL */</span>
+	<span class="keyword">for</span>(i=0; i&lt;N ; i=i+1)
+		vett[i]=NULL;
+	
+	inputfile=ApriFile(nomefile,<span class="string">&quot;r&quot;</span>);
+	
+	<span class="keyword">while</span>(!feof(inputfile)) {
+		z=fscanf(inputfile,<span class="string">&quot;%hu %s %d %f %f %f\n&quot;</span>, &amp;numril, d, &amp;nrilgio, &amp;t, &amp;u, &amp;p);
+		<span class="keyword">if</span>(z==EOF)
+			<span class="keyword">break</span>;
+		<span class="keyword">if</span>(z!=6) {
+			printf(<span class="string">&quot;Errore nel formato del file %s. Programma terminato.\n&quot;</span>,nomefile);
+			exit(1);
+		}
+		nuovo=malloc(<span class="keyword">sizeof</span>(elem));
+		nuovo-&gt;numero=numril;;
+		strcpy(nuovo-&gt;data,d);
+		nuovo-&gt;numrilgio=nrilgio;
+		nuovo-&gt;temp=t;
+		nuovo-&gt;press=p;
+		nuovo-&gt;umid=u;
+		<span class="comment">/* inutile inizializzare a NULL il campo pross */</span>
+				
+		i=Temp2Indice(t);
+		InserisciInTesta(nuovo,vett+i);
+		<span class="comment">/* vett+i e` eguale a &amp;vett[i], per l'aritmetica dei puntatori */</span>
+	}
+	
+	fclose(inputfile);
+	<span class="keyword">return</span>;
+}
+
+
+
+<span class="type">void</span> <span class="function-name">CostruisciFile</span>(<span class="type">char</span> *<span class="variable-name">nomefile</span>, <span class="variable-name">elem</span> *vett[], <span class="type">float</span> <span class="variable-name">t</span>)
+<span class="comment">/* domanda 1.3 */</span>
+{
+	<span class="type">FILE</span> *<span class="variable-name">outputfile</span>;
+	<span class="type">unsigned</span> <span class="type">short</span> <span class="variable-name">i</span>;
+	elem *scorri;
+	
+	outputfile=ApriFile(nomefile,<span class="string">&quot;w&quot;</span>);
+	i=Temp2Indice(t);
+	scorri=vett[i];
+	<span class="keyword">while</span>(scorri!=NULL) {
+		<span class="keyword">if</span>(scorri-&gt;temp&gt;=t)
+			fprintf(outputfile,<span class="string">&quot;%s\n&quot;</span>,scorri-&gt;data);
+		scorri=scorri-&gt;pross;
+	}
+	<span class="keyword">for</span>(i=Temp2Indice(t)+1; i&lt;N; i=i+1) {
+		scorri=vett[i];
+		<span class="keyword">while</span>(scorri!=NULL) {
+			fprintf(outputfile,<span class="string">&quot;%s\n&quot;</span>,scorri-&gt;data);
+			scorri=scorri-&gt;pross;
+		}
+	}
+	
+	fclose(outputfile);
+	<span class="keyword">return</span>;
+}
+
+
+<span class="type">void</span> <span class="function-name">LeggiStringa</span>(<span class="type">char</span> *<span class="variable-name">st</span>, <span class="type">char</span> *<span class="variable-name">messaggio</span>)
+{
+	printf(<span class="string">&quot;%s&quot;</span>, messaggio);
+	gets(st);
+	<span class="keyword">return</span>;
+}
+
+
+<span class="type">void</span> <span class="function-name">StampaStruttura</span>(elem *s)
+{
+	printf(<span class="string">&quot;[%hu %s %d %f %f %f] &quot;</span>,s-&gt;numero,s-&gt;data,s-&gt;numrilgio,s-&gt;temp,s-&gt;umid,s-&gt;press);
+	<span class="keyword">return</span>;
+}
+
+<span class="type">void</span> <span class="function-name">StampaTutto</span>(elem *vett[])
+<span class="comment">/* usata per il debugging */</span>
+{
+	<span class="type">unsigned</span> <span class="type">short</span> <span class="variable-name">i</span>;
+	elem *scorri;
+	<span class="keyword">for</span>(i=0; i&lt;N ; i=i+1) {
+		printf(<span class="string">&quot;\nComponente #%hu: &quot;</span>,i);
+		scorri=vett[i];
+		<span class="keyword">while</span>(scorri!=NULL) {
+			StampaStruttura(scorri);
+			scorri=scorri-&gt;pross;
+		}
+	}
+
+	<span class="keyword">return</span>;
+}
+
+<span class="function-name">main</span>(<span class="type">void</span>)
+{
+	elem *vett[N];
+	<span class="type">char</span> <span class="variable-name">nomefile</span>[L];
+	<span class="type">float</span> <span class="variable-name">t</span>;
+	
+	LeggiStringa(nomefile,<span class="string">&quot;Nome file di input: &quot;</span>);
+	CostruisciVettore(nomefile,vett);
+	
+<span class="function-name">StampaTutto</span>(vett);
+	printf(<span class="string">&quot;Inserisci temperatura per costruire file di output: &quot;</span>);
+	scanf(<span class="string">&quot;%f&quot;</span>,&amp;t);
+	getchar(); <span class="comment">/* legge il newline in avanzo */</span>
+	LeggiStringa(nomefile,<span class="string">&quot;Nome file di output: &quot;</span>);
+	CostruisciFile(nomefile, vett, t);
+	
+	<span class="keyword">return</span> 0;
+}</pre>
+  </body>
+</html>

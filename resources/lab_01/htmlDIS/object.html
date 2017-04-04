@@ -1,0 +1,1822 @@
+<html>
+<head>
+<title>Ereditariet&agrave;: nozioni avanzate</title>
+</head>
+
+<body>
+
+<h1>Ereditariet&agrave;: nozioni avanzate</h1>
+
+<p>
+Cose viste finora:
+</p>
+
+<ul>
+
+<li>creo una nuova classe (ma quella di partenza rimane)
+
+<li>scrivo <tt>class NomeClasse extends AltraClasse</tt>
+
+<li>tutti i campi e i metodi di <tt>AltraClasse</tt>
+si trovano automaticamente nella nuova classe
+
+</ul>
+
+<p>
+Ora: due precisazioni, pi&ugrave; cose particolari
+</p>
+
+<hr>
+
+
+<h4>Precisazione sui metodi ereditati</h4>
+
+<p>
+I tipi dei parametri e del valore di ritorno
+<i>non</i> vengono cambiati:
+</p>
+
+<pre>
+class Sopra {
+  Sopra esempio(Sopra x) {
+    ...
+  }
+}
+</pre>
+
+<p>
+Se faccio una classe estesa:
+</p>
+
+<pre>
+class Sotto extends Sopra {
+}
+</pre>
+
+<p>
+Il metodo <tt>esempio</tt> ha sempre
+<tt>Sopra</tt> come parametro e valore
+di ritorno
+</p>
+
+<p>
+&Egrave; come se il metodo fosse scritto,
+<i>identico</i>, nella classe di sotto
+</p>
+
+<pre>
+class Sotto extends Sopra {
+  Sopra esempio(Sopra x) {
+    ...
+  }
+}
+</pre>
+
+<p>
+Notare i tipi dei valori di ritorno e argomenti<br>
+(sono sempre di tipo <tt>Sopra</tt>)
+</p>
+
+<hr>
+
+
+<h4>Cosa cambia</h4>
+
+<p>
+Il metodo ereditato si invoca su un
+oggetto della sottoclasse,<br>
+ma parametri e valori
+di ritorno sono come prima.
+</p>
+
+<pre>
+  Sopra a, b, c;
+  Sotto z;
+
+  a=b.esempio(c);
+  a=z.esempio(c);
+</pre>
+
+<p>
+Come oggetto di invocazione posso usare
+un <tt>Sopra</tt> o un <tt>Sotto</tt><br>
+(il metodo &egrave; sia in <tt>Sopra</tt>
+che in <tt>Sotto</tt>)
+</p>
+
+<p>
+I parametri e il valore di ritorno
+rimangono <tt>Sopra</tt>
+</p>
+
+<hr>
+
+
+<h4>Costruttore</h4>
+
+<p>
+Il costruttore &egrave; un metodo che ritorna
+un oggetto
+</p>
+
+<p>
+Il fatto che i costruttori non si ereditano
+si pu&ograve; vedere cos&iacute;:
+</p>
+
+<blockquote>
+<i>
+il costruttore della sovraclasse restiuisce
+sempre un oggetto della sovraclasse
+</i>
+</blockquote>
+
+<p>
+Quindi, il costruttore rimane un costruttore
+della sovraclasse, ossia non si eredita
+</p>
+
+<hr>
+
+
+<h4>Precisazione sui diritti</h4>
+
+<p>
+Quando si ridefinisce un metodo, non si possono
+restringere gli accessi
+</p>
+
+<p>
+Se un metodo &egrave; <tt>public</tt> in una
+classe, nella classe estesa non pu&ograve;
+essere <tt>private</tt> o con accesso di
+pacchetto
+</p>
+
+<p>
+Se &egrave; con accesso di pacchetto, nella
+classe estesa non pu&ograve; essere
+<tt>private</tt>
+</p>
+
+<p>
+Se &egrave; <tt>protected</tt>, allora deve rimanere
+tale, oppure diventare <tt>public</tt>
+</p>
+
+<hr>
+
+
+<h4>Ha importanza?</h4>
+
+<p>
+Capita di ridefinire classi predefinite, che
+hanno metodi <tt>public</tt>
+</p>
+
+<pre>
+import java.awt.*;
+
+class NewPoint extends Point {
+  void move(int x, int y) {
+    ...
+  }
+}
+</pre>
+
+<p>
+Viene segnalato questo errore:
+</p>
+
+<pre>
+move(int,int) in NewPoint
+cannot override move(int,int) in
+java.awt.Point;
+attempting to assign weaker access
+privileges; was public
+</pre>
+
+<p>
+Il problema: il metodo <tt>move</tt>
+ha modificatore <tt>public</tt> in <tt>Point</tt>
+</p>
+
+<p>
+In <tt>NewPoint</tt>, sto dando diritti
+di pacchetto
+</p>
+
+<p>
+&Egrave; un accesso pi&ugrave; restrittivo,
+quindi non si pu&ograve; fare
+</p>
+
+<hr>
+
+
+<h4>Soluzione</h4>
+
+<p>
+Soluzione: dichiaro <tt>move</tt> come
+<tt>public</tt> nella classe estesa
+</p>
+
+<pre>
+import java.awt.*;
+
+class NewPoint extends Point {
+  public void move(int x, int y) {
+    ...
+  }
+}
+</pre>
+
+<p>
+Quando appare questo errore, basta mettere
+<tt>public</tt> il metodo ridefinito
+</p>
+
+<hr>
+
+
+<h4>Argomenti nuovi</h4>
+
+<ul>
+
+<li>variabili e oggetti, cast
+
+<li>la classe <tt>Object</tt>
+
+<li>cosa succede se definisco una nuova
+componente con lo stesso nome
+
+<li>cosa succede se definisco un nuovo metodo
+con lo stesso nome
+
+</ul>
+
+<hr>
+
+
+<h4>Variabili e oggetti</h4>
+
+<pre>
+class NewPoint extends Point {
+  ...
+}
+</pre>
+
+<p>
+Posso anche fare:
+</p>
+
+<pre>
+  NewPoint q=new NewPoint();
+  Point p;
+  p=q;
+</pre>
+
+<p>
+Regola generale:
+</p>
+
+<blockquote>
+<i>
+in una variabile di un tipo, posso sempre
+mettere l'indirizzo di un oggetto di una
+sottoclasse
+</i>
+</blockquote>
+
+<hr>
+
+
+<h4>Rappresentazione grafica</h4>
+
+<p>
+Serve a far capire quali classi sono estensioni
+di altre
+</p>
+
+<img src="extpoint.jpg">
+
+<p>
+Ogni riferimento a oggetto si pu&ograve; mettere
+in una variabile del suo tipo, oppure di un tipo
+ottenuto seguendo le freccie.
+</p>
+
+<hr>
+
+
+<h4>E il contrario?</h4>
+
+<p>
+Non si pu&ograve; fare!
+</p>
+
+<pre>
+  Point p=new Point();
+
+  NewPoint q;
+
+  q=p;		// errore!
+</pre>
+
+<p>
+Non si pu&ograve; mettere l'indirizzo di
+un oggetto di una sovraclasse in una sottoclasse
+</p>
+
+<p>
+Regola mnemonica basata su <tt>Object</tt>:
+pi&ugrave; avanti
+</p>
+
+<hr>
+
+
+<h4>Ridefinizione di componenti e metodi</h4>
+
+<pre>
+class Sopra {
+  int x;
+
+  void metodo() {
+    System.out.println("Sono Sopra");
+  }
+}
+</pre>
+
+<p>
+Poi la estendo, con nuove componenti e metodi:
+</p>
+
+<pre>
+class Sotto extends Sopra {
+  String x;
+
+  void metodo() {
+    System.out.println("Sono Sotto");
+  }
+}
+</pre>
+
+<hr>
+
+
+<h4>Ridefinizione di componenti</h4>
+
+<p>
+Le componenti vecchie sono ancora l&iacute;:
+</p>
+
+<img src="componenti.jpg">
+
+<p>
+Ora vediamo come si accedono
+</p>
+
+<hr>
+
+
+<h4>Oggetti e variabili</h4>
+
+<p>
+Cosa succede se metto un riferimento a
+un oggetto in una variabile dell'altro?
+</p>
+
+<pre>
+class Prova {
+  public static void main(String args[]) {
+
+    Sotto b;
+    b=new Sotto();
+
+    Sopra o;
+
+    o=b;		// valido
+  }
+}
+
+</pre>
+
+<p>
+Posso mettere gli oggetti in variabili di
+sovraclassi (ma non il contrario)
+</p>
+
+<hr>
+
+
+<h4>In memoria</h4>
+
+<p>
+Nell'esempio di sopra, ho due variabili
+di tipi diversi che puntano allo stesso
+oggetto.
+</p>
+
+<img src="duevar.jpg">
+
+<hr>
+
+
+<h4>Componenti e metodi</h4>
+
+<p>
+Dopo aver fatto <tt>o=b</tt>,
+cosa succede quando faccio <tt>o.x</tt>
+oppure <tt>o.metodo()</tt>?
+</p>
+
+<dl compact="compact">
+
+<dt>variabile
+<dd>tipo <tt>Sopra</tt>
+
+<dt>oggetto
+<dd>tipo <tt>Sotto</tt>
+
+</dl>
+
+<pre>
+class Prova {
+  public static void main(String args[]) {
+    Sopra o;
+    o=new Sotto();	// valido
+
+    o.x=12;		// ok
+    o.x="abcd";		// errore!
+
+    o.metodo();		// stampa "Sono Sotto"
+  }
+}
+</pre>
+
+<p>
+Le componenti sono quelle del
+tipo della variabile.
+</p>
+
+<p>
+Il metodo &egrave; quello del tipo dell'oggetto
+</p>
+
+<hr>
+
+
+<h4>Tipo della variabile e dell'oggetto</h4>
+
+<p>
+Metto il riferimento a un oggetto in una
+variabile di una sovraclasse
+</p>
+
+<p>
+Ho due tipi (tipo dell'oggetto e della variabile)
+</p>
+
+<p>
+Cosa succede quando uso una componente oppure
+un metodo?
+</p>
+
+<dl>
+
+<dt>componenti
+<dd>sono quelli della variabile
+
+<dt>metodi
+<dd>sono quelli dell'oggetto
+
+</dl>
+
+<hr>
+
+
+<h4>Cast fra oggetti</h4>
+
+<p>
+Oggetto in una variabile di sovraclasse:
+si pu&ograve; sempre fare
+</p>
+
+<p>
+Il contrario: serve il cast
+</p>
+
+<pre>
+    Sopra o;
+    Sotto b;
+
+    b=new Sotto();
+    o=b;
+
+    Sotto c;
+    c=b;		// ok
+
+    c=o;		// errore
+    c=(Sotto) o;	// ok
+  }
+}
+</pre>
+
+<p>
+Se voglio rimettere l'oggetto in una variabile
+dello stesso tipo, devo rifare il cast
+</p>
+
+<hr>
+
+
+<h4>Riepilogo</h4>
+
+<p>
+Sulle variabili:
+</p>
+
+<ol>
+
+<li>gli oggetti si possono mettere in variabili
+delle sovraclassi
+
+<li>a questo punto, si possono rimettere nella
+sottoclasse originaria solo con un cast
+
+</ol>
+
+<p>
+Se la variabile &egrave; di un tipo, ma l'oggetto
+&egrave; di un altro:
+</p>
+
+<ol>
+
+<li>le componenti sono quelle della variabile
+
+<li>i metodi sono quelli dell'oggetto
+
+</ol>
+
+<hr>
+
+
+<h4>Altre classi</h4>
+
+<p>
+Esistono molte classi che non abbiamo visto
+</p>
+
+<p>
+Esempio:
+</p>
+
+<img src="molte.jpg">
+
+<hr>
+
+
+<h4>La classe <tt>Object</tt></h4>
+
+<p>
+Tutte le classi Java sono sottoclassi
+di <tt>Object</tt>:
+</p>
+
+<img src="sovratutti.jpg">
+
+<p>
+Se una classe non ha <tt>extends AltraClasse</tt>,
+&egrave; come se avesse <tt>extends Object</tt>
+</p>
+
+<hr>
+
+
+<h4><tt>Object</tt>: conseguenze</h4>
+
+<p>
+Per quello che si &egrave; detto finora:
+</p>
+
+<ul>
+
+<li>i metodi e le componenti di <tt>Object</tt>
+sono ereditati da tutti gli altri oggetti
+
+<li>le altre classi possono aggiungere componenti
+e metodi (anche con gli stessi nomi)
+
+<li>il riferimento a un oggetto qualsiasi si
+pu&ograve; mettere in una variabile <tt>Object</tt>
+
+<pre>
+  Object o;
+
+  o=new Point();
+
+  o=new Rectangle();
+
+  o=new FileReader("prova.txt");
+</pre>
+
+<p>
+Sono tutti assegnamenti validi
+</p>
+
+</ul>
+
+<hr>
+
+
+<h4>Regola facile</h4>
+
+<p>
+L'indirizzo di un oggetto si pu&ograve;
+sempre mettere in una variabile di una...
+sovraclasse? sottoclasse?
+</p>
+
+<p>
+Regola facile per ricordare cosa si pu&ograve;
+fare:
+</p>
+
+<blockquote>
+<i>
+tutti gli oggetti si possono memorizzare in
+una variabile <tt>Object</tt>
+</i>
+</blockquote>
+
+<p>
+Dato che <tt>Object</tt> &egrave; sovraclasse
+di tutte le altre...
+</p>
+
+<hr>
+
+
+<h4>Metodi di <tt>Object</tt></h4>
+
+<p>
+La class <tt>Object</tt> non ha componenti
+</p>
+
+<p>
+Ha alcuni metodi che ci interessano
+(ne ha altri):
+</p>
+
+<dl>
+
+<dt><tt>clone</tt>
+<dd>crea una copia di questo oggetto
+
+<dt><tt>equals</tt>
+<dd>confronta l'oggetto con un altro
+
+<dt><tt>toString</tt>
+<dd>converte l'oggetto in stringa
+
+</dl>
+
+<p>
+Nota: <tt>equals</tt> confronta l'indirizzo degli oggetti
+</p>
+
+<p>
+Quindi, ritorna <tt>true</tt> solo se i due oggetti
+sono lo stesso oggetto
+</p>
+
+<p>
+<tt>toString</tt> ritorna la stringa con il
+nome della classe e l'indirizzo dell'oggetto
+</p>
+
+<hr>
+
+
+<h4>Ridefinire i metodi di <tt>Object</tt></h4>
+
+<p>
+Di solito, i metodi <tt>equals</tt> e
+<tt>toString</tt> vengono ridefiniti
+</p>
+
+<p>
+<tt>toString</tt> dovrebbe convertire l'oggetto
+in stringa.
+</p>
+
+<p>
+<tt>equals</tt> confronta gli oggetti
+</p>
+
+<hr>
+
+
+<h4>Ridefinire <tt>toString</tt></h4>
+
+<pre>
+class Studente {
+  String nome;
+  int esami;
+  double media;
+}
+</pre>
+
+<p>
+Questa classe eredita il metodo <tt>toString</tt>
+da <tt>Object</tt>
+</p>
+
+<p>
+Per&ograve; il metodo di <tt>Object</tt>
+restituisce solo l'indirizzo dell'oggetto,
+non il suo contenuto
+</p>
+
+<pre>
+  Studente s;
+  s=new Studente("Pippo", 12, 19.2);
+
+  System.out.println(s.toString());
+</pre>
+
+<p>
+Stampa:
+</p>
+
+<pre>
+Studente@256a7c
+</pre>
+
+<p>
+Ridefinizione di <tt>toString</tt>: dovrebbe
+restituire i dati dello studente
+</p>
+
+<hr>
+
+
+<h4>Ridefinizione di <tt>toString</tt></h4>
+
+<p>
+Deve restituire una stringa che rappresenta
+l'oggetto
+</p>
+
+<p>
+Di solito, si ottiene concatenando i dati
+</p>
+
+<pre>
+class Studente {
+  String nome;
+  int esami;
+  double media;
+
+  public String toString() {
+    return "["+this.nome+" "+
+           this.esami+" "+
+           this.media+"]";
+  }
+}
+</pre>
+
+<p>
+il <tt>+</tt> fra stringhe restituisce
+la concatenazione
+</p>
+
+<p>
+Notare <tt>public</tt>
+</p>
+
+<p>
+Dato che il metodo di <tt>Object</tt> ha
+il modificatore <tt>public</tt>, anche
+questo lo deve avere
+</p>
+
+<hr>
+
+
+<h4>Uso di <tt>toString</tt></h4>
+
+<p>
+Posso stampare i dati di uno studente:
+</p>
+
+<pre>
+class ProvaStudente {
+  public static void main(String args[]) {
+    Studente s;
+    s=new Studente();
+
+    s.nome="Pippo";
+    s.esami=1;
+    s.media=19;
+
+    System.out.println(s.toString());
+  }
+}
+</pre>
+
+<hr>
+
+
+<h4>Metodo sovraccarico</h4>
+
+<p>
+Se <tt>println</tt> viene invocato su
+un oggetto, invoca <tt>toString</tt> su
+di esso
+</p>
+
+<pre>
+class ProvaStudente {
+  public static void main(String args[]) {
+    Studente s;
+    s=new Studente();
+
+    s.nome="Pippo";
+    s.esami=1;
+    s.media=19;
+
+    System.out.println(s);
+  }
+}
+</pre>
+
+<p>
+Funziona anche cos&iacute;
+</p>
+
+<hr>
+
+
+<h4>Ridefinire <tt>equals</tt></h4>
+
+<p>
+Pi&ugrave; complesso
+</p>
+
+<p>
+Firma di <tt>equals</tt> in <tt>Object</tt>:
+</p>
+
+<pre>
+  public boolean equals(Object o) {
+    ...
+  }
+</pre>
+
+<p>
+Il parametro &egrave; un <tt>Object</tt>!
+</p>
+
+<p>
+Quando si eredita:
+</p>
+
+<pre>
+class Studente {
+  ...
+
+  public boolean equals(Object o) {
+    ...
+  }
+}
+</pre>
+
+<p>
+Viene restituito <tt>true</tt> solo se
+l'oggetto passato &egrave; lo stesso
+</p>
+
+<p>
+Di solito, voglio che ritorni <tt>true</tt>
+se le componenti hanno gli stessi valori
+</p>
+
+<hr>
+
+
+<h4>Sovrascrivere <tt>equals</tt></h4>
+
+<p>
+Se definisco un metodo <tt>equals(Studente)</tt>
+sto usando il sovraccarico:
+</p>
+
+<pre>
+class Studente {
+  ...
+
+  public boolean equals(Studente o) {
+    ...
+  }
+}
+</pre>
+
+<p>
+&Egrave; come se avesse tutti e due i metodi
+(quello nuovo e quello ereditato)
+</p>
+
+<pre>
+class Studente {
+  ...
+
+		// ereditato
+  public boolean equals(Object o) {
+    ...
+  }
+
+		// nuovo
+  public boolean equals(Studente o) {
+    ...
+  }
+}
+</pre>
+
+<p>
+Non si fa in questo modo!
+</p>
+
+<hr>
+
+
+<h4>Sovrascrivere per davvero</h4>
+
+<p>
+Devo scrivere un metodo che abbia questa
+firma:
+</p>
+
+<pre>
+  public boolean equals(Object o)
+</pre>
+
+<p>
+Dato che <tt>o</tt> &egrave; una variabile
+<tt>Object</tt>, non posso usare <tt>o.nome</tt>,
+<tt>o.esami</tt>, ecc:
+</p>
+
+<pre>
+  return o.esami==this.esami ... // errore
+</pre>
+
+<hr>
+
+
+<h4>Cast</h4>
+
+<p>
+Prima faccio il cast, e poi confronto:
+</p>
+
+<pre>
+class Studente {
+  ...
+
+  public boolean equals(Object o) {
+    Studente s;
+    s=(Studente) o;
+
+    return ((s.nome.equals(this.nome)) &amp;&amp;
+            (s.esami==this.esami) &amp;&amp;
+            (s.media==this.media));
+  }
+}
+</pre>
+
+<p>
+Questo sovrascrive il metodo <tt>equals</tt>
+</p>
+
+<hr>
+
+
+<h4>Perch&egrave; devo per forza sovrascrivere?</h4>
+
+<p>
+Alcune classi rappresentano insiemi di oggetti
+</p>
+
+<p>
+Alcuni metodi di queste classi invocano il metodo
+<tt>equals</tt>
+</p>
+
+<p>
+Il metodo che viene invocato &egrave;
+<tt>equals(Object)</tt>, ossia il metodo che ha
+un <tt>Object</tt> come argomento
+</p>
+
+<p>
+Non viene usato l'eventuale metodo
+<tt>equals(Studente)</tt>
+</p>
+
+<hr>
+
+
+<h4>Regola generale</h4>
+
+<p>
+Per ogni classe:
+</p>
+
+<dl>
+
+<dt><tt>public String toString() { ... }</tt>
+<dd>restituisce una stringa con dentro le
+componenti dell'oggetto di invocazione
+
+<dt><tt>public boolean equals(Object o) { ... }</tt>
+<dd>fa il cast di <tt>o</tt> nel tipo dell'oggetto,
+e poi confronta componente per componente
+
+</dl>
+
+<hr>
+
+
+<h4>Metodo <tt>equals</tt>: controllo <tt>null</tt></h4>
+
+<p>
+Va prima controllato che il parametro non
+sia <tt>null</tt>
+</p>
+
+<pre>
+  public boolean equals(Object o) {
+    if(o==null)
+      return false;
+
+    Studente s;
+    s=(Studente) o;
+
+    return ((s.nome.equals(this.nome)) &amp;&amp;
+            (s.esami==this.esami) &amp;&amp;
+            (s.media==this.media));
+  }
+</pre>
+
+<hr>
+
+
+<h4>Metodo <tt>equals</tt>: controllo oggetti</h4>
+
+<p>
+Se <tt>s.nome</tt> vale <tt>null</tt>, l'invocazione
+di <tt>equals</tt> d&agrave; errore
+</p>
+
+<p>
+Soluzione: se <tt>s.nome</tt> vale <tt>null</tt>,
+allora devo solo controllare se <tt>this.nome</tt>
+vale <tt>null</tt>
+</p>
+
+<p>
+Per gli oggetti: se il primo vale <tt>null</tt>, faccio
+il confronto diretto, altrimenti faccio il confronto
+con <tt>equals</tt>
+</p>
+
+<pre>
+  public boolean equals(Object o) {
+    if(o==null)
+      return false;
+
+    Studente s;
+    s=(Studente) o;
+
+    if(s.nome==null) {
+      if(this.nome!=null)
+        return false;
+    }
+    else
+      if(!s.nome.equals(this.nome))
+        return false;
+
+    return ((s.esami==this.esami) &amp;&amp;
+            (s.media==this.media));
+  }
+}
+</pre>
+
+<hr>
+
+
+<h4>Per il seguito...</h4>
+
+<p>
+I riferimenti a oggetti si possono tutti
+memorizzare nelle variabili <tt>Object</tt>
+</p>
+
+<p>
+Memorizzate i metodi di <tt>Studente</tt>:
+per la altre classi, saranno sempre fatti
+in questo modo
+</p>
+
+<pre>
+class Studente {
+  String nome;
+  int esami;
+  double media;
+
+  public String toString() {
+    return "["+this.nome+" "+
+           this.esami+" "+
+           this.media+"]";
+  }
+
+  public boolean equals(Object o) {
+    if(o==null)
+      return false;
+
+    Studente s;
+    s=(Studente) o;
+
+    return ((s.nome.equals(this.nome)) &amp;&amp;
+            (s.esami==this.esami) &amp;&amp;
+            (s.media==this.media));
+  }
+}
+</pre>
+
+<hr>
+
+
+<h4>Ridefinire <tt>clone</tt></h4>
+
+<p>
+Firma del metodo:
+</p>
+
+<pre>
+  Object clone()
+</pre>
+
+<p>
+Va ridefinito, se lo voglio usare
+</p>
+
+<p>
+Non lo facciamo (usiamo solo il <tt>clone</tt>
+per classi predefinite)
+</p>
+
+<hr>
+
+
+<h4>Il cast dopo <tt>clone</tt></h4>
+
+<p>
+Se faccio:
+</p>
+
+<pre>
+  Point q=p.clone();
+</pre>
+
+<p>
+Il risultato di <tt>clone</tt> &egrave;
+un <tt>Object</tt>, mentre <tt>Point</tt>
+&egrave; una sua sottoclasse
+</p>
+
+<p>
+&Egrave; il contrario che si pu&ograve;
+fare senza cast<br>
+(mettere un oggetto di una sottoclasse
+in una variabile della sovraclsse)
+</p>
+
+<p>
+Per la cosa inversa, serve il cast:
+</p>
+
+<pre>
+  Point q=(Point) p.clone();
+</pre>
+
+<hr>
+
+
+<h4>Ridefinire <tt>hashCode</tt></h4>
+
+<p>
+&Egrave; un altro metodo di <tt>Object</tt>
+</p>
+
+<p>
+Ci servir&agrave; ridefinirlo
+</p>
+
+<p>
+Cos&iacute; pu&ograve; andare:
+</p>
+
+<pre>
+  public int hashCode() {
+    return 0;
+  }
+</pre>
+
+<hr>
+
+
+<h4>Si fa cos&iacute;</h4>
+
+<p>
+Per le variabili:
+</p>
+
+<ul>
+
+<li>ogni oggetto si pu&ograve; mettere in una
+variabile <tt>Object</tt>
+
+<li>si pu&ograve; fare il passo contrario con
+un cast
+
+</ul>
+
+<p>
+Ridefinizione:
+</p>
+
+<ul>
+
+<li>i metodi <tt>toString()</tt> e <tt>equals</tt>
+devono essere <tt>public</tt>
+
+<li>il metodo <tt>toString()</tt> ritorna una
+stringa con dentro i valori dell'oggetto
+
+<li>il metodo di uguaglianza ha firma
+<tt>public boolean equals(Object o)</tt>
+
+<li>il metodo <tt>equals</tt> deve fare il cast di
+<tt>o</tt> al tipo della classe che sto definendo
+
+<li>il metodo <tt>equals</tt> deve prima verificare
+che <tt>o</tt> non sia <tt>null</tt>
+
+</ul>
+
+<hr>
+
+
+<h4>A cosa serve <tt>equals</tt>?</h4>
+
+<p>
+Definire un metodo che funziona su tutte
+le classi
+</p>
+
+<p>
+Esempio: ricerca in un vettore di oggetti
+</p>
+
+<pre>
+  static boolean presente(Object v[], Object e) {
+    int i;
+
+    for(i=0; i&lt;v.length; i++)
+      if(e.equals(v[i]))
+        return true;
+
+    return false;
+  }
+</pre>
+
+<p>
+Funziona per tutti i vettori di oggetti
+</p>
+
+<p>
+Attenzione a <tt>null</tt>:
+</p>
+
+<p>
+L'elemento <tt>e</tt> potrebbe valore <tt>null</tt>
+</p>
+
+<p>
+In questo caso, <tt>e.equals(...)</tt> &egrave;
+un errore
+</p>
+
+<hr>
+
+
+<h4>Un programma</h4>
+
+<p>
+Dato che ogni oggetto si pu&ograve; mettere
+in un <tt>Object</tt>, posso passare un
+punto a un metodo che si aspetta un <tt>Object</tt>
+</p>
+
+<p>
+Lo stesso vale per i vettori
+</p>
+
+<pre>
+  public static void main(String args[]) {
+    Point p=new Point(0,0);
+
+    Point vp[]=new Point[5];
+    // creazione del vettore
+
+    System.out.println(presente(vp, p));
+
+
+    Rectangle vr[]=new Rectangle[5];
+    Rectangle r=new Rectangle(0,0,10,10);
+
+    Rectangle vr[]=new Rectangle[5];
+    // creazione del vettore
+
+    System.out.println(presente(vr, r));
+  }
+</pre>
+
+<p>
+Quando faccio <tt>e.equals</tt> nel metodo,
+viene invocato quello dell'oggetto
+</p>
+
+<p>
+Quindi, se il parametro &egrave; un <tt>Point</tt>,
+viene invocato l'<tt>equals</tt> di <tt>Point</tt>
+</p>
+
+<p>
+Se il parametro &egrave; un <tt>Rectangle</tt>, viene
+invocato il suo <tt>equals</tt>, ecc.
+</p>
+
+<hr>
+
+
+<h4>Metodi con oggetti arbitrari</h4>
+
+<p>
+D'ora in avanti, se possibile, facciamo
+metodi che ricevono <tt>Object</tt>
+</p>
+
+<p>
+Questi possono ricevere come parametro un
+oggetto qualsiasi
+</p>
+
+<p>
+Cosa importante: ridefinire <tt>equals</tt>
+</p>
+
+<hr>
+
+
+<h4>Insiemi di oggetti</h4>
+
+<p>
+Come definire oggetti di un certo tipo:<br>
+visto
+</p>
+
+<p>
+Esempio: insiemi di punti
+</p>
+
+<pre>
+import java.awt.*;
+
+class InsiemePoint {
+  private Point elementi[];
+
+  InsiemePoint() {
+    this.elementi=new Point[0];
+  }
+
+  void stampa() {
+    int i;
+
+    for(i=0; i&lt;this.elementi.length; i++)
+      System.out.println(this.elementi[i]);
+  }
+
+  boolean verificaVuoto() {
+    return this.elementi.length==0;
+  }
+
+  boolean presente(Point x) {
+    int i;
+
+    for(i=0; i&lt;this.elementi.length; i++)
+      if(this.elementi[i].equals(x))
+        return true;
+
+    return false;
+  }
+
+  void inserisci(Point x) {
+    if(this.presente(x))
+      return;
+
+    Point nuovo[];
+    nuovo=new Point[this.elementi.length+1];
+
+    System.arraycopy(this.elementi, 0,
+                     nuovo, 0,
+                     this.elementi.length);
+
+    nuovo[nuovo.length-1]=x;
+
+    this.elementi=nuovo;
+  }
+
+  void elimina(Point x) {
+    if(!this.presente(x))
+      return;
+
+    Point nuovo[];
+    nuovo=new Point[this.elementi.length-1];
+
+    System.arraycopy(this.elementi, 0,
+                     nuovo, 0,
+                     this.elementi.length-1);
+
+    int i;
+    for(i=0; i&lt;this.elementi.length-1; i++)
+      if(this.elementi[i]==x) {
+        nuovo[i]=this.elementi[this.elementi.length-1];
+        break;
+      }
+
+    this.elementi=nuovo;
+  }
+}
+</pre>
+
+<hr>
+
+
+<h4>Altri insiemi</h4>
+
+<p>
+Se voglio un insieme di <tt>Studente</tt>,
+devo riscrivere tutta la classe
+</p>
+
+<p>
+Soluzione: faccio un insieme di <tt>Object</tt>:
+</p>
+
+<pre>
+class InsiemeObj {
+  private Object elementi[];
+
+  InsiemeObj() {
+    this.elementi=new Object[0];
+  }
+
+  void stampa() {
+    int i;
+
+    for(i=0; i&lt;this.elementi.length; i++)
+      System.out.println(this.elementi[i]);
+  }
+
+  boolean verificaVuoto() {
+    return this.elementi.length==0;
+  }
+
+  boolean presente(Object x) {
+    int i;
+
+    for(i=0; i&lt;this.elementi.length; i++)
+      if(this.elementi[i].equals(x))
+        return true;
+
+    return false;
+  }
+
+  void inserisci(Object x) {
+    if(this.presente(x))
+      return;
+
+    Object nuovo[];
+    nuovo=new Object[this.elementi.length+1];
+
+    System.arraycopy(this.elementi, 0,
+                     nuovo, 0,
+                     this.elementi.length);
+
+    nuovo[nuovo.length-1]=x;
+
+    this.elementi=nuovo;
+  }
+
+  void elimina(Object x) {
+    if(!this.presente(x))
+      return;
+
+    Object nuovo[];
+    nuovo=new Object[this.elementi.length-1];
+
+    System.arraycopy(this.elementi, 0,
+                     nuovo, 0,
+                     this.elementi.length-1);
+
+    int i;
+    for(i=0; i&lt;this.elementi.length-1; i++)
+      if(this.elementi[i]==x) {
+        nuovo[i]=this.elementi[this.elementi.length-1];
+        break;
+      }
+
+    this.elementi=nuovo;
+  }
+}
+</pre>
+
+<hr>
+
+
+<h4>Come si usa</h4>
+
+<p>
+Esempio di programma:
+</p>
+
+<pre>
+import java.awt.*;
+
+class ProvaIns {
+  public static void main(String args[]) {
+    InsiemeObj io;
+    io=new InsiemeObj();
+
+    io.inserisci(new Point(12,43));
+    io.inserisci(new Point(3,-2));
+    io.inserisci(new Point(4,12));
+    io.inserisci(new Point(3,-2));
+
+    io.elimina(new Point(3,-2));
+    io.stampa();
+  }
+}
+</pre>
+
+<p>
+Quando faccio <tt>io.inserisci(new Point(12,43));</tt>:
+</p>
+
+<ul>
+
+<li>il parametro attuale &egrave; un riferimento a
+un <tt>Point</tt>
+
+<li>
+Il parametro formale di <tt>inserisci</tt> &egrave; 
+un <tt>Object</tt>
+
+</ul>
+
+<p>
+In una variabile <tt>Object</tt> posso mettere un
+oggetto qualsiasi
+</p>
+
+<p>
+Quindi si pu&ograve; fare
+</p>
+
+<hr>
+
+
+<h4>Nei metodi</h4>
+
+<p>
+Quando faccio <tt>presente(p)</tt> cosa succede?
+</p>
+
+<pre>
+  boolean presente(Object x) {
+    int i;
+
+    for(i=0; i&lt;this.elementi.length; i++)
+      if(x.equals(this.elementi[i]))
+        return true;
+
+    return false;
+  }
+</pre>
+
+<p>
+<tt>x</tt> &egrave; una variabile <tt>Object</tt>
+</p>
+
+<p>
+Ma contiene un riferimento a un oggetto <tt>Point</tt>
+</p>
+
+<p>
+Viene invocato <tt>equals</tt> di <tt>Point</tt>
+</p>
+
+<hr>
+
+
+<h4>Se non ridefinisco <tt>equals</tt></h4>
+
+<p>
+Il metodo <tt>equals</tt> di <tt>Object</tt>
+&egrave; fatto (pi&ugrave; o meno) cos&iacute;:
+</p>
+
+<pre>
+  public boolean equals(Object o) {
+    if(o==null)
+      return false;
+
+    return this==o;
+  }
+</pre>
+
+<p>
+Vale <tt>true</tt> solo se si tratta dello
+stesso oggetto
+</p>
+
+<p>
+Di solito, due oggetti vanno considerati uguali
+se hanno gli stessi valori
+</p>
+
+<p>
+Se non faccio la ridefinizione, viene invocato
+il metodo <tt>equals</tt> di <tt>Object</tt>, che
+non funziona
+</p>
+
+<hr>
+
+
+<h4>Un problema...</h4>
+
+<p>
+In un insieme posso mettere sia punti che
+rettangoli!
+</p>
+
+<pre>
+import java.awt.*;
+
+class Sia {
+  public static void main(String args[]) {
+    InsiemeObj io;
+    io=new InsiemeObj();
+
+    io.inserisci(new Point(12,43));
+    io.inserisci("abcd");
+    io.inserisci(new Rectangle(0,0,10,10));
+
+    io.elimina(new Point(3,-2));
+    io.stampa();
+  }
+}
+</pre>
+
+<p>
+Fin qui, va bene (&egrave; un insieme misto)
+</p>
+
+<hr>
+
+
+<h4>Oggetti definiti da noi</h4>
+
+<pre>
+import java.awt.*;
+
+class Sia {
+  public static void main(String args[]) {
+    InsiemeObj io;
+    io=new InsiemeObj();
+
+    io.inserisci(new Point(12,43));
+    io.inserisci("abcd");
+    io.inserisci(new Rectangle(0,0,10,10));
+    io.inserisci(new Studente());
+
+    if(io.presente(new Point(12,43))
+      System.out.println("Ci sta");
+  }
+}
+</pre>
+
+<p>
+Quando si va a fare <tt>io.presente(new Point(12,43)</tt>,
+viene invocato, a un certo punto, il confronto fra
+lo <tt>Studente</tt> e questo punto.
+</p>
+
+<p>
+Ma <tt>equals</tt> di <tt>Studente</tt> &egrave;
+fatto cos&iacute;:
+</p>
+
+<pre>
+  public boolean equals(Object o) {
+    if(o==null)
+      return false;
+
+    Studente s;
+    s=(Studente) o;
+
+    return ((s.nome.equals(this.nome)) &amp;&amp;
+            (s.esami==this.esami) &amp;&amp;
+            (s.media==this.media));
+  }
+</pre>
+
+<p>
+Non si pu&ograve; fare il cast da <tt>Point</tt>
+a <tt>Studente</tt> (non sono sottoclassi l'uno
+dell'altro)
+</p>
+
+<p>
+Viene prodotto un errore
+</p>
+
+<hr>
+
+
+<h4>La soluzione</h4>
+
+<p>
+Se due oggetti sono di classi diverse, <tt>equals</tt>
+deve dare <tt>false</tt>, e non tentare il cast
+</p>
+
+<pre>
+  public boolean equals(Object o) {
+    if(o==null)
+      return false;
+
+    if(this.getClass()!=o.getClass())
+      return false;
+
+    Studente s;
+    s=(Studente) o;
+
+    if(s.nome==null) {
+      if(this.nome!=null)
+        return false;
+    }
+    else
+      if(!s.nome.equals(this.nome))
+        return false;
+
+    return ((s.esami==this.esami) &amp;&amp;
+            (s.media==this.media));
+  }
+}
+</pre>
+
+<p>
+Il metodo <tt>getClass</tt> ritorna il tipo
+dell'oggetto
+</p>
+
+<p>
+Non serve sapere come funziona: il metodo
+<tt>equals</tt> va fatto sempre con queste
+tre parti prima: confronto con <tt>null</tt>
+confronto classi, e cast. Soltanto dopo viene
+il confronto vero e proprio.
+</p>
+
+</body>
+</html>
+
+
+

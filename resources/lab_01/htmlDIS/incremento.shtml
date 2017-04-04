@@ -1,0 +1,91 @@
+<!doctype html public "-//w3c//dtd html 4.0 transitional//en">
+<html>
+<head>
+<link href="java.css" rel="stylesheet" type="text/css">
+<title>Incremento del valore di una variabile</title>
+</head>
+
+<body>
+
+<h2>Incremento del valore di una variabile</h2>
+
+<p>
+Il programma 
+<a href="Incremento.java">Incremento.java</a> permette di
+fare due osservazioni. La prima &egrave; che &egrave;
+possibile assegnare una valore ad una variabile anche nella
+dichiarazione della variabile stessa. La linea
+<tt>int i=12;</tt> indica infatti che si vuole usare una
+variabile di tipo intero, e che il valore iniziale di questa
+variabile &egrave; 12. Questo &egrave; il valore che viene
+inizialmente assegnato alla variabile <tt>i</tt>: chiaramente,
+questo valore pu&ograve; venire cambiato dalle istruzioni
+successive.<p>
+
+<pre>
+/*
+  Incremento del valore di una variabile.
+*/
+
+class Incremento {
+  public static void main (String args[]) {
+    int i=12;
+
+    System.out.println("La variabile i vale " + i);
+
+    i=i+1;
+
+    System.out.println("Ora i vale " + i);
+  }
+}
+
+
+</pre>
+
+<p>
+La istruzione <tt>i=i+1;</tt> serve ad aggiungere 1 al valore
+attualmente memorizzato nella variabile <tt>i</tt>. Questo
+esempio serve a chiarire che il simbolo <tt>=</tt> nel contesto
+della programmazione ha un significato differente da quello
+che ha in algebra o analisi matematica. In algebra, = indica
+una uguaglianza di valori, per cui 3=5-2 &egrave; vero, mentre
+12=100/10 &egrave; falso. In questo senso, la espressione
+i=i+1 &egrave; falsa per ogni possibile valore di i.<p>
+
+Nell'ambito della programmazione, il simbolo <tt>=</tt> indica
+una assegnazione, per cui <tt>i=espressione;</tt> significa:
+valuta il valore della espressione, e il risultato memorizzalo
+nella variabile <tt>i</tt>. Nel caso della istruzione
+<tt>i=i+1;</tt> questo significa:
+
+<ul>
+
+<li>valuta il valore di <tt>i+1</tt>; dal momento che <tt>i</tt>
+vale 12, il valore di questa espressione &egrave; 13;
+
+<li>il risultato della espressione viene memorizzato nella
+variabile <tt>i</tt>, quandi <tt>i</tt> da ora in poi contiene
+il valore 13.
+
+</ul>
+
+<p>
+Tutto questo fa notare come il simbolo = ha in programmazione un
+significato diverso da quello che ha in algebra. Alcuni
+linguaggi di programmazione (non Java) evitano questa confusione
+usando un simbolo diverso per l'assegnamento. Per esempio,
+la istruzione di assegnamento del programma di sopra in alcuni
+linguaggi si scrive <tt>i<-i+1</tt>. La freccia fa capire che
+il significato della istruzione &egrave; che nella variabile
+<tt>i</tt> viene messo il valore della
+espressione che segue la freccia. Nel caso di Java, si usa
+il simbolo =, anche se questo all'inizio pu&ograve; generare
+confusione.<p>
+
+Per ulteriori chiarimenti, vedere la
+<a href="Incremento/Incremento-6.shtml">esecuzione del
+programma Incremento.java</a>.<p>
+
+</body>
+</html>
+

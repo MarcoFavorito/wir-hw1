@@ -1,0 +1,200 @@
+<HTML>
+<HEAD>
+<TITLE>Compito B gestionale</TITLE>
+</HEAD>
+<BODY>
+
+<B><P ALIGN="CENTER">Fondamenti di Informatica I</B><BR>
+<B>Corso di Laurea in Ingegneria Informatica</P>
+</B><H2 ALIGN="CENTER">Prova al calcolatore 23/2/02 - Compito B</H2>
+<P ALIGN="CENTER"><small><B>Durata: 105 minuti</small></P>
+</B>
+
+<P><HR></P>
+
+<P><b>Istruzioni per la prova al calcolatore</b></P>
+
+<ol>
+
+<li><I>Accesso al PC</I>:&nbsp; il PC sar&agrave; gi&agrave; connesso;
+se non lo fosse chiedete assistenza ai professori o ai tutori.
+<B>Non dovete eseguire quindi nessuna operazione di connessione/disconnessione</B>.
+
+<li><I>Cartella in cui svolgere l'esame</I>:
+all'interno delle Risorse del computer c'&egrave; un unico disco T:
+all'interno del quale c'&egrave; una sola cartella Esame.
+La cartella Esame contiene tutti i file di cui avete bisogno per svolgere
+il compito e dovr&agrave; contenere i file scritti da voi per la soluzione
+dell'esercizio. Assicuratevi in Jcreator\SitePad di creare i nuovi file Java
+utilizzando il path T:\Esame. <B>Non create altre cartelle e non scrivete
+al di fuori della cartella Esame</B>.
+
+<li><I>Ambiente di sviluppo</I>: sul PC trovate il programma JCreator
+oppure SitePad, e inoltre sono presenti NotePad e il prompt dei comandi
+per compilare ed eseguire le classi Java.
+
+<li><I>Accesso al sito del corso</I>:
+il sito del corso pu&ograve; essere consultato tramite Internet Explorer
+
+<li><I>Consegna del compito</I>:
+al termine del compito si devono lasciare i programmi nella cartella Esame 
+e si deve consegnare il foglio con il testo del compito. <B>Non spegnere il 
+PC e non chiudere la connessione.</b>
+
+</ol>
+
+<P>Durante il compito non &egrave; consentito uscire dall'aula, parlare con
+altri studenti, utilizzare telefoni cellulari, utlizzare dischetti floppy,
+trasmettere in qualunque modo informazioni da una macchina all'altra. Il
+mancato rispetto delle indicazioni sopra riportate comporta l'annullamento
+della prova.</P>
+
+<h2>Testo del compito </h2>
+
+<P>Si vuole realizzare un programma per la gestione delle
+camere di un albergo. Per ogni camera, si deve memorizzare
+il suo numero, il fatto che la camera sia occupata o meno,
+e in tal caso, il nome della persona che la occupa. Dal
+momento che le camere hanno prezzi diversi, va anche
+memorizzato il prezzo, nel caso in cui la camera &egrave;
+occupata.</P>
+
+<h4>Parte 1.</h4>
+
+<p>
+Scrivere una classe <tt>Camera</tt> in modo che ogni istanza
+rappresenti un singolo oggetto, e che abbia i seguenti metodi: </P>
+
+<UL>
+<LI>costruttore <tt>Camera(int, String, boolean, int)</tt>
+<LI><tt>int getNumero()</tt>, che ritorna il numero della stanza
+<li><tt>String getNome()</tt>, che ritorna il nome della persona che 
+occupa attualmente la stanza, oppure la stringa vuota se la camera
+&egrave; libera;
+<li><tt>boolean getOccupata()</tt>, che restituisce il valore
+<tt>true</tt> se la camera &egrave; attualmente occupata;
+<li><tt>int getPrezzo()</tt>, che restituisce il prezzo a cui
+la camera &egrave; stata data;
+<li><tt>void occupa(String nome, int prezzo)</tt>, che occupa la
+stanza con il nome della persona, a un certo prezzo;
+<li><tt>void stampa()</tt> che stampa i dati di una camera;
+<LI><tt>Camera read(BufferedReader)</tt> che legge i dati di
+una camera da un canale di input gi&agrave; aperto; i dati degli
+oggetti sono nel seguente formato:</P>
+
+<pre>
+numero della prima stanza
+occupazione
+persona occupante
+prezzo
+numero della seconda stanza
+...
+</pre>
+
+<p>
+Se la stanza &egrave; occupata, il nome dell'occupante non
+&egrave; significativo; ogni stanza occupa comunque quattro
+righe nel file; se il canale di input termina, il metodo deve
+restituire <tt>null</tt>; il dato occupazione &egrave; la
+stringa "occupata" oppure "libera"
+</p>
+</ul>
+
+<b>Nota</b> il nome della persona &egrave; memorizzato come
+una unica stringa.
+
+
+<h4>Programma di esempio</h4>
+
+<pre>
+import java.io.*;
+
+class ProvaCamera {
+  public static void main(String arg[]) throws Exception {
+    File f=new File("lista.txt");
+    FileInputStream fs=new FileInputStream(f);
+    InputStreamReader isr=new InputStreamReader(fs);
+    BufferedReader br=new BufferedReader(isr); 
+
+    Camera c, d;
+
+    
+		// legge le prime due camere dal file
+
+    c=Camera.read(br);
+    d=Camera.read(br);
+
+
+		// stampa le prime due camere
+
+    c.stampa();
+    d.stampa();
+
+
+		// stampa il nome dell'occupante della prima
+
+    System.out.println(c.getNome());
+
+
+		// occupa la seconda stanza
+
+    d.occupa("Francesco Totti", 80);
+
+
+		// stampa di nuovo la seconda stanza
+
+    d.stampa();
+  }
+}
+</pre>
+
+
+<h4>File di prova</h4>
+
+<pre>
+11
+occupata
+Pinco Pallino
+55
+2
+libera
+Signor Nessuno
+112
+6
+libera
+x
+0
+2
+occupata
+Tizio Sempronio
+100
+</pre>
+
+<h4>Parte 2.</h4>
+
+<p>Scrivere una classe <B>Albergo</B> che gestisce l'insieme di
+tutte le stanze dell'albergo. I dati si trovano memorizzati
+in un file. La classe deve implementare i seguenti metodi:</p>
+
+<ul>
+
+<li>costruttore <tt>Albergo(String)</tt>: prende come argomento
+il nome del file che contiene i dati
+
+<li><tt>void stampaOccupate(int p)</tt> stampa l'elenco
+della stanze attualmente occupate e che hanno un prezzo
+inferiore a <tt>p</tt>
+
+<li><tt>int totalePrezzo()</tt> dice la cifra totale
+che l'albergo ricever&agrave; per tutte le stanze,
+
+</ul>
+
+<h4>Programma di esempio: ProvaAlbergo.java</h4>
+
+<pre>
+...
+</pre>
+
+</BODY>
+</HTML>

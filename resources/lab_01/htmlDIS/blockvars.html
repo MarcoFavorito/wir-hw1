@@ -1,0 +1,132 @@
+<html>
+<head>
+<title>Variabili dei blocchi</title>
+</head>
+
+<body>
+
+<h1>Variabili dei blocchi</h1>
+
+<p>
+Sono variabili definite all'interno di
+un blocco
+</p>
+
+<p>
+Si possono usare solo all'interno del blocco
+in cui sono definite
+</p>
+
+<hr>
+
+
+<h4>Esempio di uso</h4>
+
+<pre>
+class Blocco {
+  public static void main(String args[]) {
+    int x=12;
+
+    if(true) {
+      String y;
+
+      y="abcd";
+      System.out.println(y);
+    }
+
+    System.out.println(y);  // errore
+  }
+}
+</pre>
+
+<p>
+Le variabili esistono solo all'interno
+del blocco
+</p>
+
+<p>
+Si pu&ograve; dichiarare la stessa
+variabile anche in pi&ugrave; blocchi:
+</p>
+
+<pre>
+class Blocco {
+  public static void main(String args[]) {
+    int x=12;
+
+    if(true) {
+      String y="abcd";
+
+      System.out.println(y);
+    }
+
+    if(x&gt;2) {
+      double y=12.2;
+
+      System.out.println(y);
+    }
+
+  }
+}
+</pre>
+
+<hr>
+
+
+<h4>Semplificazione dei cicli</h4>
+
+<p>
+La variabile che uso nel ciclo <tt>for</tt>
+la posso anche dichiarare nel ciclo
+</p>
+
+<pre>
+class Blocco {
+  public static void main(String args[]) {
+
+    for(int i=0; i&lt;10; i++)
+      System.out.println(i);
+
+  }
+}
+</pre>
+
+<p>
+La variabile si deve solo dentro il ciclo:
+</p>
+
+<pre>
+class Blocco {
+  public static void main(String args[]) {
+
+    for(int i=0; i&lt;10; i++)
+      System.out.println(i);
+
+    System.out.println(i); // errore!!!
+  }
+}
+</pre>
+
+<hr>
+
+
+<h4>Quando si usano</h4>
+
+<p>
+Se devo fare un ciclo, e la variabile
+non mi serve dopo
+</p>
+
+<p>
+Cosa tipica: stampare un array
+</p>
+
+<pre>
+  for(int i=0; i&lt;v.length; i++)
+    System.out.println(v[i]);
+</pre>
+
+</body>
+</html>
+
+

@@ -1,0 +1,295 @@
+  <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN"
+           "http://www.w3.org/TR/REC-html40/loose.dtd">
+<HTML>
+<META NAME="GENERATOR" CONTENT="TtH 2.25">
+                                                                      
+<center>  <b>   
+<title>cemn quarto appello</title>
+Universit&#224; di Roma ``La Sapienza''<br>
+   Facolt&#224; di Ingegneria<br>
+   Corso di Fondamenti di Informatica - A.A. 2000/2001<br>
+   Corsi di Laurea: </b>Chimica, Elettrica, 
+Materiali,
+    Meccanica, Nucleare (vecchio ordinamento)</b><br>
+  Appello del <b>17 luglio 2001</b> - 1<sup>a</sup> prova scritta<br>
+  <em>tempo a disposizione: 2 ore</em>
+</center>
+<p>
+<b>Problema 1 (18 punti)</b>
+
+<p>
+I piatti offerti da un ristorante sono memorizzati in un file di testo (ad 
+esempio <tt>menu.txt</tt>):
+
+<UL>
+<p>
+
+<li> per ogni piatto, le seguenti informazioni sono memorizzate su
+una singola linea del file men&#250;:
+
+<OL type="1">
+<p>
+
+<li> <tt>nome</tt> (stringa di al massimo 30 caratteri);
+
+<li> <tt>richieste</tt> (numero di volte che quel piatto &#232; stato 
+ordinato 
+finora).
+</OL>
+<p>
+
+<li> nel file men&#250; i piatti sono riportati <u>ordinatamente</u>, 
+dal meno richiesto al pi&#249; richiesto.
+</UL>
+<p>
+Alla fine della giornata, tutti i piatti richiesti sono stati memorizzati 
+in un file testo (ad esempio <tt>richieste.txt</tt>).
+Per ogni piatto richiesto durante la giornata, in questo file di richieste 
+viene indicato il nome. Un nome per linea.
+
+<p>
+Nel seguito immagineremo che i piatti del men&#250; vengano memorizzati in 
+memoria centrale mediante una lista (rappresentata mediante record e 
+puntatori).
+
+<p>
+
+<OL type="1">
+<li> Definire i tipi di dato Pascal adeguati a risolvere i problemi di cui 
+ai 
+successivi punti 2) e 3). 
+Chiamare <tt>TIPOLISTAMENU</tt> la lista dei piatti offerti dal ristorante.
+
+<p>
+
+<li>	Siamo a fine giornata e dobbiamo aggiornare la lista men&#250;, 
+aggiungendo 
+al numero di richieste di ciascun piatto, le richieste fatte oggi.
+
+<p>
+Scrivere un sottoprogramma Pascal, ESER2, che, ricevendo 
+
+<UL>
+<p>
+
+<li> una lista men&#250; <tt>LM</tt> 
+
+<li> e il nome di un file di richieste <tt>nmf</tt> in cui si suppone 
+siano 
+contenuti i piatti richiesti oggi, 
+</UL>
+<p>
+leggendo dal file i piatti richiesti, aggiorni i campi <tt>richieste</tt> 
+in 
+<tt>LM</tt>.
+
+<p>
+
+<li> Adesso vogliamo salvare in un file men&#250; i dati aggiornati con le 
+richieste di oggi. 
+
+<p>
+Scrivere una procedura Pascal ESER3 che, ricevendo
+
+<UL>
+<p>
+
+<li> il nome di un file di testo <tt>nmf</tt> (sar&#224; il nuovo file 
+men&#250;),
+
+<li> una lista men&#250; <tt>LM</tt> gi&#224; aggiornata con i dati di oggi
+
+<p>
+(che, quindi <u>non &#232; detto sia ordinata per richieste</u>),
+</UL>
+<p>
+scarichi in <tt>nmf</tt> i dati contenuti in <tt>LM</tt>, un piatto per 
+linea 
+(con relativo numero di richieste) facendo in modo che i piatti siano 
+memorizzati in ordine di <tt>richieste</tt> (dal meno richiesto al 
+pi&#249; 
+richiesto).
+
+<p>
+<font size="-1"><b>suggerimento</b>: se si vuole, si pu&#242; costruire 
+una copia 
+ordinata di <tt>LM</tt> mediante inserimenti ordinati, scaricarla nel file 
+e 
+poi deallocarla.</font>
+
+<p>
+</OL>
+<center>  <b>   Universit&#224; di Roma ``La Sapienza''<br>
+   Facolt&#224; di Ingegneria<br>
+   Corso di Fondamenti di Informatica - A.A. 2000/2001<br>
+   Corsi di Laurea: </b>Chimica, Elettrica, 
+Materiali,
+    Meccanica, Nucleare (vecchio ordinamento)</b><br>
+  Appello del <b>17 luglio 2001</b> - 2<sup>a</sup> prova scritta<br>
+  <em>tempo a disposizione: 1 ora</em>
+</center>
+<p>
+<b>Problema (a) (4 punti)</b>
+Relativamente alla struttura di PILA, descrivere le operazioni 
+fondamentali e la politica di gestione dei dati, mediante un esempio. 
+Illustrare i diversi tipi di rappresentazione in PASCAL, mostrando per 
+ciascuna rappresentazione l'implementazione di un'operazione base non 
+banale.
+
+<p>
+<b>Problema (b) (4 punti)</b>
+Spiegare in cosa consiste un'istruzione macchina. Discutere i dispositivi 
+costituenti una CPU e mostrare come la CPU esegue un programma scritto in 
+linguaggio macchina.
+
+<p>
+<b>Problema (c) (4 punti)</b> 
+Sia MATRIX una matrice di NxM numeri interi. 
+Definiamo che MATRIX 
+&#232; <em>a scacchiera</em> se contiene zeri e numeri diversi da zero in 
+modo 
+alternato, come nella figura sotto: in particolare, le righe di indice 
+dispari iniziano con uno zero; le righe di indice pari iniziano con un 
+numero diverso da zero. 
+
+<p>
+Scrivere una unit&#224; di programma FORTRAN (denominata ESERFORTRAN)
+che, ricevendo 
+
+<DL compact>
+<p>
+<dt><b>-</b></dt>
+	<dd> una matrice <em>MAT</em> di NxM numeri interi, 
+<dt><b>-</b></dt>
+	<dd> il nome di un file NMF 
+<dt><b>-</b></dt>
+	<dd> e quanti altri parametri si ritenga opportuno,
+</DL>
+<p>
+
+<OL type="1">
+<li> restituisca <tt>.TRUE.</tt> se <em>MAT</em> &#232; a scacchiera (<tt>
+.FALSE.</tt> altrimenti) e 
+
+<li> stampi nel file NMF la matrice, stampando per&#242; <em>1</em> al 
+posto 
+dei numeri diversi da zero.
+</OL>
+<p>
+<b>Scrivere inoltre</b> un esempio di main program contenente 
+un'invocazione dell'unit&#224; progettata. 
+In questo main program, comunque, le unit&#224; ulteriori
+che dovessero servire non vanno implementate: basta specificarne 
+le intestazioni (nome e parametri).
+
+<p>
+Ecco un esempio di matrice 3x7 <em>a scacchiera</em> (a sinistra) e di 
+come 
+bisognerebbe stamparla nel file (a destra)
+
+<p>
+
+<TaBle>
+<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td><td>[ 
+</td><td nowrap align=center>
+<TaBle>
+<tr><td align="center"><TablE border=0><tr><td nowrap align=center>
+0 </td></TABle></td><td align="center"><TablE border=0><tr><td nowrap 
+align=center>
+1 </td></TABle></td><td align="center"><TablE border=0><tr><td nowrap 
+align=center>
+0 </td></TABle></td><td align="center"><TablE border=0><tr><td nowrap 
+align=center>
+1 </td></TABle></td><td align="center"><TablE border=0><tr><td nowrap 
+align=center>
+0 </td></TABle></td><td align="center"><TablE border=0><tr><td nowrap 
+align=center>
+10 </td></TABle></td><td align="center"><TablE border=0><tr><td nowrap 
+align=center>
+0</td></TABle></td>
+<tr><td align="center"><TablE border=0><tr><td nowrap align=center>
+7 </td></TABle></td><td align="center"><TablE border=0><tr><td nowrap 
+align=center>
+0 </td></TABle></td><td align="center"><TablE border=0><tr><td nowrap 
+align=center>
+8 </td></TABle></td><td align="center"><TablE border=0><tr><td nowrap 
+align=center>
+0 </td></TABle></td><td align="center"><TablE border=0><tr><td nowrap 
+align=center>
+-10 </td></TABle></td><td align="center"><TablE border=0><tr><td nowrap 
+align=center>
+0 </td></TABle></td><td align="center"><TablE border=0><tr><td nowrap 
+align=center>
+9</td></TABle></td>
+<tr><td align="center"><TablE border=0><tr><td nowrap align=center>
+0 </td></TABle></td><td align="center"><TablE border=0><tr><td nowrap 
+align=center>
+7 </td></TABle></td><td align="center"><TablE border=0><tr><td nowrap 
+align=center>
+0 </td></TABle></td><td align="center"><TablE border=0><tr><td nowrap 
+align=center>
+97 </td></TABle></td><td align="center"><TablE border=0><tr><td nowrap 
+align=center>
+0 </td></TABle></td><td align="center"><TablE border=0><tr><td nowrap 
+align=center>
+5 </td></TABle></td><td align="center"><TablE border=0><tr><td nowrap 
+align=center>
+0</td></TABle></td></TaBle>
+</td><td nowrap align=center>
+]
+</td><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td><td>[ 
+</td><td nowrap align=center>
+<TaBle>
+<tr><td align="center"><TablE border=0><tr><td nowrap align=center>
+0 </td></TABle></td><td align="center"><TablE border=0><tr><td nowrap 
+align=center>
+1 </td></TABle></td><td align="center"><TablE border=0><tr><td nowrap 
+align=center>
+0 </td></TABle></td><td align="center"><TablE border=0><tr><td nowrap 
+align=center>
+1 </td></TABle></td><td align="center"><TablE border=0><tr><td nowrap 
+align=center>
+0 </td></TABle></td><td align="center"><TablE border=0><tr><td nowrap 
+align=center>
+1 </td></TABle></td><td align="center"><TablE border=0><tr><td nowrap 
+align=center>
+0</td></TABle></td>
+<tr><td align="center"><TablE border=0><tr><td nowrap align=center>
+1 </td></TABle></td><td align="center"><TablE border=0><tr><td nowrap 
+align=center>
+0 </td></TABle></td><td align="center"><TablE border=0><tr><td nowrap 
+align=center>
+1 </td></TABle></td><td align="center"><TablE border=0><tr><td nowrap 
+align=center>
+0 </td></TABle></td><td align="center"><TablE border=0><tr><td nowrap 
+align=center>
+1 </td></TABle></td><td align="center"><TablE border=0><tr><td nowrap 
+align=center>
+0 </td></TABle></td><td align="center"><TablE border=0><tr><td nowrap 
+align=center>
+1</td></TABle></td>
+<tr><td align="center"><TablE border=0><tr><td nowrap align=center>
+0 </td></TABle></td><td align="center"><TablE border=0><tr><td nowrap 
+align=center>
+1 </td></TABle></td><td align="center"><TablE border=0><tr><td nowrap 
+align=center>
+0 </td></TABle></td><td align="center"><TablE border=0><tr><td nowrap 
+align=center>
+1 </td></TABle></td><td align="center"><TablE border=0><tr><td nowrap 
+align=center>
+0 </td></TABle></td><td align="center"><TablE border=0><tr><td nowrap 
+align=center>
+1 </td></TABle></td><td align="center"><TablE border=0><tr><td nowrap 
+align=center>
+0</td></TABle></td></TaBle>
+</td><td nowrap align=center>
+] </td></TaBle>
+
+
+<p>
+
+<p><hr><small>File translated from T<sub><font size="-1">E</font></sub>X 
+by <a href="http://hutchinson.belmont.ma.us/tth/">T<sub><font 
+size="-1">T</font></sub>H</a>, version 2.25.<br>On 17 Jul 2001, 
+16:13.</small>
+</HTML>

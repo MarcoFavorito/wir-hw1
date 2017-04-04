@@ -1,0 +1,138 @@
+<html>
+<head>
+<title>Primo appello 2004 - Compito Disco</title>
+</head>
+
+<body>
+
+<h1>Primo appello 2004</h1>
+
+<p>
+La prova dura un'ora e tre quarti.
+</p>
+
+<p>
+<b>Riempire il file <tt>studenteid.txt</tt> con i propri
+dati.</b>
+</p>
+
+<p>
+Vengono dati: due programmi di prova, un file di prova, e il
+testo del compito in formato html. Lo studente deve
+realizzare due classi che vengono usate dai due programmi di
+prova. <b>Le soluzioni devono trovarsi nella stessa cartella
+<tt>Esame</tt> dove si trovano i programmi di prova</tt>
+pena l'annullamento dell'esame.</b>
+</p>
+
+<hr>
+
+<h3>Prima parte</h3>
+
+<p>
+Per realizzare il programma di gestione dei dischi di un
+negozio, vanno realizzate delle classi che rappresentano i
+singoli dischi e l'insieme dei dischi di una certa casa
+discografica. La prima classe da realizzare si deve chiamare
+<tt>Disco</tt>; gli oggetti di questa classe rappresentano i
+CD. Le componenti di questi oggetti devono essere:
+</p>
+
+<dl>
+
+<dt><tt>titolo</tt>
+<dd>titolo del CD
+
+<dt><tt>autore</tt>
+<dd>cantante o gruppo
+
+<dt><tt>durata</tt>
+<dd>durata del CD, in minuti (un intero)
+
+<dt><tt>brani</tt>
+<dd>numero dei brani contenuti nel CD
+
+</dl>
+
+<p>
+Definire la classe incapsulata <tt>Disco</tt>  i cui
+oggetti siano rappresentazione di dischi. I nomi delle
+componenti devono essere: <tt>titolo</tt>, <tt>autore</tt>,
+<tt>durata</tt>, e <tt>brani</tt>. Devono essere realizzati
+i seguenti metodi:
+</p>
+
+<ul>
+
+<li>metodi <tt>get</tt> e <tt>set</tt> per tutte le
+componenti; i metodi <tt>set</tt> per le componenti brani e
+durata devono verificare che il numero di brani sia almeno
+uno, e che la durata sia almeno di due minuti; in caso di
+errore, stampare un messaggio di errore e terminare il
+programma;
+
+<li>metodo costruttore che ha come argomento un
+<tt>BufferedReader</tt>; il metodo deve leggere i valori da
+mettere nell'oggetto da file; questi valori sono 
+memorizzati uno per linea; nel caso in cui il file
+finisca prima che si riescano a leggere tutte le componenti,
+si stampi un messaggio di errore e si esca dal programma;
+
+<li>un metodo toString che restituisce una stringa in cui ci
+sono tutte le componenti dell'oggetto.
+
+</ul>
+
+<hr>
+
+
+<h3>Seconda parte</h3>
+
+<p>
+Definire una seconda classe <tt>Casa</tt> i cui oggetti
+rappresentano tutti i dischi di una certa casa discografica.
+Ogni oggetto di questa classe &egrave; quindi la
+rappresentazione di un insieme di oggetti <tt>Disco</tt>.
+Per rappresentare insiemi di oggetti, usare un array.
+</p>
+
+<p>
+Costruttore della classe: 
+</p>
+
+<dl>
+
+<dt>
+<tt>Casa(String nomefile)</tt>
+<dd>
+crea un oggetto <tt>Casa</tt> che rappresenta l'insieme
+di tutti gli oggetti <tt>Disco</tt> che sono memorizzati
+nel file il cui nome &egrave; dato dalla stringa passata
+come argomento; la prima linea del file contiene il numero
+degli oggetti memorizzati su file.
+
+</dl>
+
+<p>
+Metodi della classe:
+</p>
+
+<dl>
+
+<dt><tt>public void stampaTutti()</tt>
+<dd>stampa tutti gli oggetti dell'array
+
+<dt><tt>double durataMedia()</tt>
+<dd>calcola la durata media dei CD singoli, che sono i CD
+per i quali il numero di brani &egrave; minore o uguale a
+quattro;
+
+<dt><tt>int quantiAutore(String autore)</tt>
+<dd>calcola il numero di dischi di un autore, il cui nome
+viene passato come argomento
+
+</dl>
+
+</body>
+</html>
+

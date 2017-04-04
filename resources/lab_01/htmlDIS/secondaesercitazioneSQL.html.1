@@ -1,0 +1,172 @@
+<!doctype html public "-//w3c//dtd html 4.0 transitional//en">
+<html>
+<head>
+<title>Esercitazione 2</title>
+</head>
+<body>
+
+<center><b>&nbsp;Laurea in Ingegneria Informatica - Universit&agrave; di Roma "La
+Sapienza"</b>
+<h3>Corso di Basi di Dati - A.A. 2003/2004</h3>
+</center>
+
+<center>
+<h1>Seconda Esercitazione Autoguidata</h1>
+</center>
+
+<blockquote>
+
+<h3>OBIETTIVI DELL'ESERCITAZIONE:</h3>
+
+  Utilizzare Oracle 9i Lite e l'ambiente MSQL per:
+</blockquote>
+
+<ul>
+
+<ul type="disc">
+   <li>effettuare query con group-by e operatori di aggregazione</li>
+   <li>effettuare query annidate</li>
+   <li>definizione e uso di viste</li>
+</ul>
+
+<h3>1. CREARE UNA BASE DI DATI</h3>
+
+<p>Per creare una nuova base di dati, operate dal prompt dei comandi. 
+Se, ad esempio, volete creare una base di dati chiamata <em>persone</em>:<br>
+
+<ul type="disc">
+  <li>aprite un <tt>Prompt dei comandi</tt>;</li>
+  <li>digitate la stringa
+
+   <pre>createdb polite persone</pre>
+
+   e premete <tt>Invio</tt>. In questo modo viene creato il database <em>persone</em> con DSN polite. 
+   A questo punto, &egrave; possibile connettersi al database <em>persone</em>  attraverso il comando
+
+<P><tt>msql system/manager@jdbc:polite:persone</tt></P>
+</ul>
+  
+<b>Nota:</b> per digitare il carattere <tt>@</tt> utilizzate la combinazione di tasti <tt>Altr Gr</tt> + 
+<tt>&ograve;</tt>
+
+
+<h3>2. CREARE LE TABELLE</h3>
+
+<p>Si consideri la tabella <tt>PERSONE</tt>, contenente i seguenti attributi 
+<ul>
+<li>nome      : 20 caratteri (chiave);</li>
+<li>eta       : intero (3 cifre);</li>
+<li>reddito   : intero (10 cifre);</li>
+</ul>
+
+<ul>
+<li>sesso     : 'M' oppure 'F';</li>
+<li>residenza : 20 caratteri.</li>
+</ul>
+
+e la tabella <tt>GENITORI</tt>, contenente i seguenti attributi 
+<ul>
+<li>genitore  : 20 caratteri;</li>
+<li>figlio    : 20 caratteri;</li>
+<li>ordFiglio : intero (2 cifre).</li>
+</ul>
+
+<p>(Figlio,Genitore) e` chiave primaria. Inoltre, ogni figlio &egrave; una persona ed ogni genitore &egrave; una persona.
+
+Si forniscano le istruzioni SQL per creare le due tabelle.
+
+<p>Per scrivere le istruzioni SQL, utilizzate un qualsiasi editor di testo (ad esempio <tt>Notepad</tt>). Una volta scritto il codice 
+salvatelo su un file, ad esempio <tt>c:\persone.sql</tt>, e richiamate lo script da MSQL tramite il comando&nbsp;
+
+<p>
+<tt>Start persone.sql</tt>.&nbsp;
+
+<p> Se il file non si trova direttamente in <tt>c:\</tt>, sostituite il nome del file con
+il path relativo.
+
+
+<h3>3. EFFETTUARE INTERROGAZIONI</h3>
+
+<p>Fornite le interrogazioni SQL per rispondere alle seguenti domande.&nbsp;<br>
+
+<ol>
+<li>Trovare il numero di luoghi di residenza distinti;</li>
+<li>Trovare il minimo, il massimo, la somma e la media dei redditi di
+   persone raggruppate per residenza;</li>
+<li>Trovare il reddito medio dei padri per citt&agrave; di residenza;</li>
+<li>Trovare le persone che sono genitori di almeno 2 figli;</li>
+<li>Trovare l'elenco ordinato dei genitori i cui figli guadagnano tutti
+   piu` di 20 milioni.<br>
+   Dare una soluzione che fa uso dell'operatore di differenza MINUS, una che fa uso di una query annidata, ed una che fa uso di una vista;</li>
+<li>Definire una vista EtaMediaFigli che restituisce per ogni persona  l'et&agrave; media dei suoi figli.<br>
+   Visualizzare il contenuto della vista;</li>
+<li>Utilizzare la vista EtaMediaFigli per trovare tra tutti i genitori quello i cui figli hanno
+    la massima et&agrave; media.</li>
+</ol>
+
+
+</ul>
+<blockquote>
+<!--
+<p>Per verificare la correttezza delle proprie soluzioni, popolate la base di
+dati con il file
+<tt>\\Sauron\Esercitazioni\Basidati\Eser-2003-10-24\eser2-db.sql</tt>,
+e confrontate i risultati ottenuti con quelli contenuti nel file
+<tt>\\Sauron\Esercitazioni\Basidati\Eser-2003-10-24\eser2-3-ris.txt</tt>. Per
+popolare la base di dati eseguite lo script SQL come descritto al punto
+precedente.</p>
+-->
+<p>Per verificare la correttezza delle proprie soluzioni, popolate la base di
+dati con il file
+<tt><a href="eser2-db.sql">eser2-db.sql</a></tt>,
+e confrontate i risultati ottenuti con quelli contenuti nel file
+<tt><a href="eser2-3-ris.txt">eser2-3-ris.txt</a></tt>. Per
+popolare la base di dati, copiate nell'unit&agrave; <tt>C </tt>del vostro calcolatore il file <tt>eser2-db.sql</tt>,
+ed eseguite il comando
+
+<p>
+<tt>start eser2-db.sql</tt>
+</blockquote>
+
+<ul>
+
+<h3>4. ULTERIORI INTERROGAZIONI</h3>
+
+<p>Fornite le interrogazioni SQL per rispondere alle seguenti domande.<br>
+
+<ol>
+<li>Trovare l'et&agrave; media dei geniori di Olga;</li>
+<li>Trovare il reddito complessivo dei figli di Anna e Luigi;</li>
+<li>Trovare il minimo, il massimo, la somma e la media dei redditi delle
+   donne residenti a Milano;</li>
+<li>Trovare per ogni persona il numero dei suoi figli;</li>
+<li>Trovare il reddito delle persone che sono genitori di almeno 2 figli.<br>
+
+   Fornire una soluzione senza usare raggruppamento, ed una usando
+   reggruppamento.<br>
+   Come si generalizzano le due soluzioni al caso in cui si voglia trovare il
+   reddito di persone con almeno 3, 4, 5, ... figli?</li>
+
+<li>Definire due viste PrimoFiglioOrd e PrimoFiglioEta che restituiscono
+    per ogni persona il primo figlio.<br>
+    PrimoFiglioOrd deve usare il valore dell'attributo ordFiglio.<br>
+    PrimoFiglioEta deve usare l'et&agrave; dei figli.<br>
+
+    Visualizzare i contenuti delle due viste e confrontarli.
+    Motivare le differenze sulla base dei dati memorizzati nelle tabelle
+    Persone e Genitori.</li>
+</ol>
+
+
+<p>Confrontate i risultati ottenuti con quelli contenuti nel file <a href="./eser2-4-ris.txt"><tt>eser2-4-ris.txt</tt></a>.</p>
+<hr>
+
+<p>Le soluzioni degli esercizi 3 e 4 saranno disponibili fra una settimana all'indirizzo
+<a href="soluzioni"> <i>homepage-corso</i>/esercitazioni/primaesercitazioneSQL/soluzioni</a>.</p>
+
+
+
+</body>
+</html>
+
+

@@ -1,0 +1,75 @@
+<!DOCTYPE doctype PUBLIC "-//w3c//dtd html 4.0 transitional//en"><html><head>
+   <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   
+   <title>Esercitazione 6 - Laboratorio di Programmazione - aa 2004/05</title><link rel="stylesheet" href="index_files/lp2003.html" type="text/css"></head>
+
+<body>
+<br>
+<center>
+  <p><b>Laboratorio di Programmazione - A.A. 2004/05</b></p>
+  <h2>Esercitazione 6</h2>
+</center>
+
+<p><strong>Parte 1.</strong></p>
+
+<P> Realizzare una classe <code>Sequencer</code> che gestisca una serie di processi. 
+  Ogni processo &egrave; caratterizzato da varie propriet&agrave; tra cui il &quot;<em>tipo</em>&quot; 
+  (una stringa). La classe <code>Processo</code> è fornita nel file <a href="./">Processo.java</a>. 
+  <br>
+
+<P>Gli oggetti <i>Sequencer</i> devono supportare le seguenti funzionalit&agrave;: 
+<ul>
+  <li> <em>crea</em>, che crea un oggetto <em>Sequencer</em> che inizialmente 
+    non ha alcun processo da gestire; </li>
+  <li><em> aggiungiProcesso</em>, che, dato un processo <em>p</em>, aggiunge <em>p</em> 
+    in coda al <em>Sequencer;</em></li>
+  <li><em> rimuoviProcesso</em>, che, dato un processo <em>p</em>, rimuove <em>p</em> 
+    dal <em>Sequencer</em> se presente; non fa nulla altrimenti;</li>
+  <li> <em>rimuoviProcessiTipo</em>, che, dato un tipo di processo <em>t</em>, 
+    rimuove tutti i processi di tipo <em>t</em> dal <em>Sequencer</em> se presenti; 
+    non fa nulla altrimenti;</li>
+  <li> <em>quantiProcessi</em>, che restituisce il numero di processi del <em>Sequencer</em>;</li>
+  <li> <em>primoProcesso</em>, che restituisce il primo processo che &egrave; 
+    stato inserito nel <em>Sequencer</em>, se esiste; restituisce <code>null</code> 
+    altrimenti;</li>
+  <li> <em>ultimoProcesso</em>, che restituisce l'ultimo processo che &egrave; 
+    stato inserito nel <em>Sequencer</em>, se esiste; restituisce <code>null</code> 
+    altrimenti;</li>
+  <li> <em>primoProcessoTipo</em>, che, dato un tipo di processo <em>t</em>, restituisce 
+    il processo di tipo <em>t</em> che &egrave; stato inserito per primo; restituisce 
+    <code>null</code> se tale processo non esiste; </li>
+  <li> <em>ultimoProcessoTipo</em>, che, dato un tipo di processo <em>t</em>, 
+    restituisce il processo di tipo <em>t</em> che &egrave; stato inserito per 
+    ultimo; restituisce <code>null</code> se tale processo non esiste;</li>
+  <li><em>processoPrimaDi</em>, che, dato un processo <em>p</em>, restituisce 
+    il processo che &egrave; stato inserito immediatamente prima di <em>p</em>; 
+    restituisce <code>null</code> se tale processo non esiste;</li>
+  <li><em>processoDopoDi</em>, che, dato un processo <em>p</em>, restituisce il 
+    processo che &egrave; stato inserito immediatamente dopo di <em>p</em>; restituisce 
+    <code>null</code> se tale processo non esiste;</li>
+  <li> <em>processoStessoTipoPrimaDi</em>, che, dato un processo <em>p</em>, restituisce 
+    il processo che &egrave; stato inserito immediatamente prima di <em>p</em>, 
+    e avente stesso tipo di <em>p</em>; restituisce <code>null</code> se tale 
+    processo non esiste;</li>
+  <li><em>processoStessoTipoDopoDi</em>, che, dato un processo <em>p</em>, restituisce 
+    il processo che &egrave; stato inserito immediatamente dopo di <em>p</em>, 
+    e avente stesso tipo di <em>p</em>; restituisce <code>null</code> se tale 
+    processo non esiste;</li>
+  <li><em>spostaInTesta</em>, che, dato un processo <em>p</em>, sposta <em>p</em> 
+    in testa al <em>Sequencer</em>; </li>
+  <li><em>processiDiTipo</em>, che, dato un tipo di processo <em>t</em>, restituisce 
+    una <code>List</code> contenente tutti i processi di tipo <em>t</em>, nell'ordine 
+    con cui sono stati inseriti nel <em>Sequencer</em>;</li>
+  <li> <em>tipiDiProcessi</em>, che restituisce un <code>Set</code> contenete 
+    i tipi di processo presenti nel <em>Sequencer</em>.</li>
+</ul>
+<p><strong>Parte 2.</strong></p>
+<p>Realizzare una classe che implementi l'interfaccia <code>List</code> (usando 
+  liste doppie o array dinamici).Si realizzino le &quot;bulk operation&quot; e 
+  <code> subList()</code> lanciando l'eccezione <code>UnsupportedOperationException</code>. 
+  Realizzare inoltre il relativo iteratore che implementi l'interfaccia <code>ListIterator</code> 
+  Si realizzino i metodi che modificano la lista lanciando l'eccezione <code>UnsupportedOperationException</code>. 
+  Riscrivere la classe realizzata nella Parte 1 utilizzando come <code>List</code> 
+  l'implementazione appena realizzata.</p>
+</body>
+</html>

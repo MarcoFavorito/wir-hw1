@@ -1,0 +1,104 @@
+<html>
+<head>
+<title>Prova al calcolatore 18/9/2002</title>
+</head>
+
+<body>
+
+<h1>Prova al calcolatore 18/9/2002</h1>
+
+<p>
+Si vuole realizzare un sistema di memorizzatione
+dei dati metereologici. In particolare, per ogni
+giorno dell'anno vanno memorizzati i dati relativi,
+ossia: la temperatura massima e minima del giorno,
+il numero di millimetri di pioggia del giorno
+(se non &egrave; piovuto questo numero sar&agrave;
+evidentemente zero)
+e un campo di tipo stringa in cui i metereologi
+possono memorizzare note particolari su quel
+giorno.
+</p>
+
+
+<h4>Parte I</h4>
+
+<p>
+Realizzare la classe <tt>Giorno</tt>, con i
+seguenti metodi:
+</p>
+
+<dl>
+
+<dt>costruttore
+<dd>ha come argomenti tre reali e una stringa
+
+<dt><tt>getMassima</tt>
+<dd>restituisce la temperatura massima del giorno
+
+<dt><tt>getMinima</tt>
+<dd>restituisce la temperatura minima del giorno
+
+<dt><tt>getPioggia</tt>
+<dd>restituisce il numero di millimetri di pioggia
+della giornata
+
+<dt><tt>getNote</tt>
+<dd>restituisce le note relative al giorno
+
+<dt><tt>stampa</tt>
+<dd>stampa tutti dati relativi al giorno
+(incluse le note)
+
+<dt><tt>read</tt>
+<dd>unico metodo statico: restituisce un oggetto
+di tipo <tt>giorno</tt>, i cui dati vengono letti
+da un <tt>BufferedReader</tt>;
+restituisce <tt>null</tt> se il primo tentativo di
+lettura da file fallisce.
+
+</dl>
+
+<p>
+I dati sono memorizzati su file in modo sequenziale:
+prima la temperatura massima, poi la minima, ecc.
+</p>
+
+
+<h4>Parte II</h4>
+
+<p>
+Realizzare la classe <tt>Anno</tt> le cui istanze
+modellano interi anni. Ogni istanza
+rappresenta i dati meteo dell'anno, ed &egrave;
+associata a un file che contiene i dati di tutti i
+giorni dell'anno.
+</p>
+
+<p>
+La classe deve contenere i seguenti metodi:
+</p>
+
+<dl>
+
+<dt>costruttore
+<dd>prende come parametro una stringa, e crea l'oggetto
+che rappresenta l'anno associato;
+
+<dt><tt>giorniPioggia</tt>
+<dd>determina il numero di giorni di pioggia dell'anno;
+
+<dt><tt>noteDifferenza</tt>
+<dd>dato un numero <tt>x</tt>, stampa le note relative
+a tutti i giorni dell'anno in cui la differenza di
+temperatura fra la minima e la massima &egrave;
+superiore a <tt>x</tt>
+
+</dl>
+
+</body>
+</html>
+
+
+
+

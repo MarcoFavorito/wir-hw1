@@ -1,0 +1,130 @@
+<!doctype html public "-//w3c//dtd html 4.0 transitional//en">
+<html>
+<head>
+<link href="java.css" rel="stylesheet" type="text/css">
+<title>Grafico elementi di un vettore</title>
+</head>
+
+<body>
+
+<h2>Grafico elementi di un vettore</h2>
+
+Si supponga dato un vettore di interi <tt>vett</tt>. Si vuole
+stampare la sua rappresentazione grafica con rettangoli. In
+altre parole, si vogliono tanti rettangoli l'uno accanto
+all'altro quanti sono gli elementi del vettore, e ogni
+rettangolo deve essere di altezza proporzionale al contenuto
+dell'elemento del vettore (si veda pi&ugrave; sotto per
+degli esempi).<p>
+
+Dal momento che occorre un rettangolo per ogni elemento
+del vettore, &egrave; necessario un ciclo in cui una
+variabile <tt>i</tt> assume tutti i valori da 0 fino al
+numero di elementi del vettore meno 1. Ad ogni passo,
+&egrave; necessario disegnare un rettangolo. Occorre decidere
+come deve esseere fatto questo rettangolo. Sappiamo che
+la sua altezza deve essere proporzionale a <tt>vett[i]</tt>.
+Per quello che riguarda la specifica dell'altezza siamo
+quindi a posto. Per la larghezza, possiamo assumere che tutti
+i rettangoli siano larghi 10.<p>
+
+Ci mancano quindi solo la coordinate dell'angolo in alto
+a sinistra del rettangolo. Per quello che riguarda la
+coordinata <tt>y</tt>, &egrave; facile: da momento che
+tutti i rettangoli devono partire dallo stesso piano,
+possiamo mettere per esempio <tt>y=100</tt> per tutti i
+rettangoli.<p>
+
+La coordinata <tt>x</tt> si determina sapendo che i
+rettangoli vanno messi l'uno dietro l'altro. Il rettangolo
+che corrisponde a <tt>vett[0]</tt>, per esempio, pu&ograve;
+essere compreso fra le coordinate 0 e 10, mentre quello
+di <tt>vett[1]</tt> sta fra 10 e 20, ecc. Non &egrave;
+difficile capire che il rettangolo che corrisponde a
+<tt>vett[i]</tt> si trova tra le coordinate <tt>x</tt>
+di valore <tt>i*10</tt> e <tt>(i+1)*10</tt>. La
+coordinata <tt>x</tt> dell'angolo in alto a sinistra 
+&egrave; quindi data da <tt>i*10</tt>.<p>
+
+Il programma
+<a href="GraficoRect.java">GraficoRect.java</a>
+realizza il grafico usando esattamente questo tipo di
+coordinate.<p>
+
+<pre>
+/*
+  Grafico dei valori di un vettore usando rettangoli.
+*/
+
+import java.awt.*;
+
+public class GraficoRect extends java.applet.Applet {
+  public void paint(Graphics g) {
+    int vett[]={3, 4, -5, -6, 2, 4, 4, -2, 0, 2, -9, 2, 9, 4, 5};
+    int i;
+
+    for(i=0; i<=vett.length-1; i=i+1) {
+      g.drawRect(10*i, 100, 10, vett[i]*10);
+    }
+  }
+}
+
+</pre>
+
+L'output prodotto dal programma &egrave; il seguente:<p>
+
+<center>
+<img src="GraficoRect.gif">
+</center>
+<p>
+
+Naturalmente, non &egrave; esattamente quello che si voleva
+ottenere. Per prima cosa, i valori negativi non sono stati
+disegnati. Secondo, i valori positivi corrispondono a
+rettangoli che ``scendono'' anzich&egrave; salire. Il primo
+problema si risolve con una istruzione condizionale che
+controlla se il contenuto di un elemento del vettore &egrave;
+positivo oppure negativo. Per quello che riguard il secondo
+problema, occorre cambiare gli argomenti della istruzione
+di stampa del rettangolo. Non si entra qui nel dettaglio di
+come questa cosa vada fatta. Il programma completo &egrave; 
+<a href="GraficoRectDue.java">GraficoRectDue.java</a>:
+
+<p>
+<pre>
+/*
+  Grafico dei valori di un vettore usando rettangoli:
+  versione corretta che ammette valori negativi.
+*/
+
+import java.awt.*;
+
+public class GraficoRectDue extends java.applet.Applet {
+  public void paint(Graphics g) {
+    int vett[]={3, 4, -5, -6, 2, 4, 4, -2, 0, 2, -9, 2, 9, 4, 5};
+    int i;
+
+    for(i=0; i<=vett.length-1; i=i+1) {
+      if( vett[i]<0 ) {
+        g.drawRect(10*i, 100, 10, -vett[i]*10);
+      }
+      else {
+        g.drawRect(10*i, 100-vett[i]*10, 10, vett[i]*10);
+      }
+    }
+  }
+}
+
+</pre>
+
+Il grafico che viene prodotto &egrave;:<p>
+
+<center>
+<img src="GraficoRectDue.gif">
+</center>
+<p>
+
+
+</body>
+</html>
+

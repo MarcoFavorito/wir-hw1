@@ -1,0 +1,97 @@
+<html>
+<head>
+<title>Un esercizio</title>
+</head>
+
+<body>
+<h4>Testo del compito </h4>
+
+<p>
+Si vuole realizzare un programma per la gestione delle
+camere di un albergo. Per ogni camera, si deve memorizzare
+il suo numero, il fatto che la camera sia occupata o meno,
+e in tal caso, il nome della persona che la occupa. Dal
+momento che le camere hanno prezzi diversi, va anche
+memorizzato il prezzo, nel caso in cui la camera &egrave;
+occupata.
+</p>
+
+<hr>
+
+
+<h4>Parte 1.</h4>
+
+<p>
+Scrivere una classe <tt>Camera</tt> in modo che ogni istanza
+rappresenti un singolo oggetto, e che abbia i seguenti metodi:
+</p>
+
+<dl>
+
+<dt><tt>Camera(int, String, boolean, int)</tt>
+<dd>costruttore
+<dt><tt>Camera(BufferedReader)</tt>
+<dd>costruttore che legge i dati di una camera da un canale di input gi&agrave; aperto; i dati degli oggetti sono nel seguente formato:
+    <pre>numero di stanze
+numero della prima stanza
+occupazione
+persona occupante
+prezzo
+numero della seconda stanza
+...</pre>
+    <p> Se la stanza &egrave; occupata, il nome dell'occupante non &egrave; significativo; ogni stanza occupa comunque quattro righe nel file; se il canale di input termina, il metodo deve restituire <tt>null</tt>; il dato occupazione &egrave; la stringa "occupata" oppure "libera" . In caso di lettura incompleta dei dati di una stanza, stampare un messaggio di errore e uscire dal programma. </p>
+</dl>
+
+<p> <b>Nota:</b> il nome della persona &egrave; memorizzato come una unica stringa.</p>
+<dl>
+  <dt>&nbsp; </dt>
+  <dt><tt>int getNumero()</tt>
+  <dd>ritorna il numero della stanza
+    
+<dt><tt>String getNome()</tt>
+  <dd>ritorna il nome della persona che occupa attualmente la
+    stanza, oppure la stringa vuota se la camera &egrave; libera;
+    
+<dt><tt>boolean getOccupata()</tt>
+  <dd>restituisce il valore <tt>true</tt> se la camera &egrave;
+    attualmente occupata;
+    
+<dt><tt>int getPrezzo()</tt>
+  <dd>restituisce il prezzo a cui la camera &egrave; stata data;
+    
+<dt><tt>void occupa(String nome, int prezzo)</tt>
+  <dd>occupa la stanza con il nome della persona, a un certo prezzo;
+    
+se il prezzo indicato &egrave; negativo, stampare un messaggio di errore e uscire dal programma. 
+  <dt><tt>void stampa()</tt>
+  <dd>stampa i dati di una camera;
+Se la stanza &egrave; libera non stampare nome e prezzo ma solo la stringa &quot;libera&quot;. <dt>
+</dl>
+<hr>
+
+
+<h4>Parte 2.</h4>
+
+<p>Scrivere una classe <B>Albergo</B> che gestisce l'insieme di
+tutte le stanze dell'albergo. I dati si trovano memorizzati
+in un file. La classe deve implementare i seguenti metodi:</p>
+
+<dl>
+
+<dt><tt>Albergo(String)</tt>
+<dd>costruttore: prende come argomento
+il nome del file che contiene i dati. Il numero di stanze &egrave; memorizzato come prima riga del file. Se il file contiene meno elementi di quelli previsti, o se non contiene la prima riga, stampare un messaggio di errore e uscire dal programma. 
+<dt><tt>void stampaOccupate(int p)</tt>
+<dd>stampa l'elenco della stanze attualmente occupate e che
+hanno un prezzo inferiore a <tt>p</tt>
+
+<dt><tt>int totalePrezzo()</tt>
+<dd>dice la cifra totale che l'albergo ricever&agrave;
+per tutte le stanze occupate 
+</dl>
+
+<p>&nbsp;</p>
+
+</body>
+</html>
+

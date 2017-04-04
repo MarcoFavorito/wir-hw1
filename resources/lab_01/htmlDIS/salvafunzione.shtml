@@ -1,0 +1,145 @@
+<!doctype html public "-//w3c//dtd html 4.0 transitional//en">
+<html>
+<head>
+<link href="java.css" rel="stylesheet" type="text/css">
+<title>Salva valori di una funzione</title>
+</head>
+
+<body>
+
+<h2>Salva valori di una funzione</h2>
+
+Un possibile uso dei vettori &egrave; quello di memorizzare
+i valori che una funzione assume in un certo intervallo. Si
+supponga per esempio di voler stampare alcuni valori di una
+funzione in un certo intervallo, e poi di volere il valore medio,
+minimo e massimo. Il modo pi&ugrave; semplice &egrave; quello
+di scrivere prima le istruzioni di stampa di una funzione,
+poi scrivere delle istruzioni che calcolano la media, poi 
+quelle che calcolano il massimo, ecc.<p>
+
+Questo tipo di approccio ha lo svantaggio che i valori della
+funzione vengono calcolati una prima volta per la stampa,
+una seconda volta per fare la somma, ecc. Questo non &egrave;
+un problema per le funzioni viste fino ad ora, che sono
+facili da valutare per il calcolatore. D'altra parte,
+esistono funzioni la cui valutazione pu&ograve; richiedere
+molto tempo.<p>
+
+Per evitare di ripetere pi&ugrave; volte le stessa operazioni
+di calcolo della funzione, &egrave; possibile memorizzare
+alcuni valori calcolati in un vettore, per poi poterli usare
+in seguito quando servono senza dover ogni volta valutare di
+nuovo la funzione.<p>
+
+Per fare questo, il primo passo &egrave; decidere quali sono
+i valori che potrebbero essere utili in seguito. Per esempio,
+assumiamo che i valori di <i>f(x)</i> con <i>x</i> intero che
+va da 0 a 100 saranno molto usati. Possiamo quindi calcolare
+questi valori una volta sola all'inizio e memorizzarli in un
+vettore. Dal momento che da 0 a 100 ci sono 101 numeri interi,
+il vettore deve avere dimensione 101. Se la funzione d&agrave;
+risultati reali, il tipo del vettore deve essere
+<tt>double</tt>:<p>
+
+<pre>
+class SalvaFunzione {
+  public static void main(String[] args) {
+    double[] fvett=new double[101];
+</pre>
+
+La successiva operazione &egrave; quella di calcolare il valore
+di <i>f(x)</i> con <i>x</i> che va da 0 a 101, e memorizzare
+questi valori nel vettore. Per fare questo &egrave; necessaria
+una variabile intera <tt>x</tt> e un ciclo for.<p>
+
+<pre>
+    int x;
+
+    /* inizializza il vettore */
+    for(x=0; x<=100; x=x+1) {
+      fvett[x]=x*x/2+Math.sqrt(Math.abs(x))-12;
+    }
+</pre>
+
+A questo punto, ogni volta che ci serve il valore di <i>f(x)</i>,
+e <i>x</i> ha una valore intero compreso fra 0 e 100, possiamo
+utilizzare i valori memorizzati nel vettore. Per esempio, se
+vogliamo la media dei valori della funzione fra 10 e 110,
+calcoliamo la somma e dividiamo per il numero di punti:<p>
+
+<pre>
+    /* valore medio della funzione da 10 a 110 */
+    somma=0;
+    for(x=10; x<=110; x=x+1) {
+      if( (x>=0) && (x<=100) ) {
+        somma=somma+fvett[x];
+      }
+      else
+        somma=somma+x*x/2+Math.sqrt(Math.abs(x))-12;
+      }
+    }
+    System.out.println("La media fra 10 e 110 vale "+somma/101);
+</pre>
+
+Queste istruzioni non differiscono da quelle di calcolo
+di una media. L'unica differenza &egrave; che ogni volta
+che si vuole il valore <i>f(x)</i>, prima di tutto si controlla
+se <i>x</i> sta fra 0 e 100. Se ci sta, si usa il valore
+memorizzato nel vettore. Se non c'&egrave;, si calcola la
+funzione usando la sua definizione.<p>
+
+Il programma completo
+<a href="SalvaFunzione.java">SalvaFunzione.java</a>
+contiene anche la stampa dei valori della funzione fra -200
+e +200, sempre cercando di usare i valori memorizzati.<p>
+
+<pre>
+/*
+  Salva alcuni valori di una funzione in un vettore,
+  per poterli usare di nuovo quando servono.
+*/
+
+class SalvaFunzione {
+  public static void main(String[] args) {
+    double[] fvett=new double[101];
+    int x;
+    double somma;
+
+    /* inizializza il vettore */
+    for(x=0; x<=100; x=x+1) {
+      fvett[x]=x*x/2+Math.sqrt(Math.abs(x))-12;
+    }
+
+    /* valore medio della funzione da 10 a 110 */
+    somma=0;
+    for(x=10; x<=110; x=x+1) {
+      if( (x>=0) && (x<=100) ) {
+        somma=somma+fvett[x];
+      }
+      else {
+        somma=somma+x*x/2+Math.sqrt(Math.abs(x))-12;
+      }
+    }
+    System.out.println("La media fra 10 e 110 vale "+somma/101);
+
+    /* stampa i valori della funzione da -200 a +200 */
+    for(x=-200; x<=200; x=x+1) {
+      if( (x>=0) && (x<=100) ) {
+        System.out.println(fvett[x]);
+      }
+      else {
+        System.out.println(x*x/2+Math.sqrt(Math.abs(x))-12);
+      }
+    }
+  }
+}
+
+</pre>
+
+</body>
+</html>
+
+
+
+

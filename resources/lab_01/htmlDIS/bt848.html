@@ -1,0 +1,53 @@
+<html>
+<head>
+<title>Softw-ART-isti - BT848</title>
+</head>
+
+<body>
+
+<center><h1>Configurazione ed uso del BT848</h1></center>
+
+La <font color=#800000>nuova versione 0.3</font>
+del driver per la scheda frame grabber e' disponibile in
+<A href="ftp://ftp.dis.uniroma1.it/pub/iocchi/Linux/drivers/bt848/bt848-0.3.tgz">
+ftp://ftp.dis.uniroma1.it/pub/iocchi/Linux/drivers/bt848/bt848-0.3.tgz</A>.<BR>
+
+
+<P>
+Per il corretto funzionamento del driver e' necessaria
+la patch bigphysarea del kernel.
+
+
+<P>
+Istruzioni per l'installazione:
+
+<pre>
+4. Compile and install the bt848 driver
+
+   Type 'make install' as root from the bt848 directory.
+   If everithing is ok a file bt848.o will be generated,
+   the devices will be created in the /dev directory,
+   and the module will be loaded into the kernel.
+   Check out /proc/modules to be sure it is loaded.
+
+5. You may want to load the module during Linux bootstrap.
+   Just add the following line in /etc/rc.d/rc.modules
+   /sbin/modprobe bt848
+</pre>
+
+<P><B>Test</B></P>
+
+Per verificare l'effettivo funzionamento del driver e delle telecamere
+si possono usare i programmi
+<a href="ftp://ftp.dis.uniroma1.it/pub/iocchi/Linux/programs/continuous.tgz">
+continuous</a> e
+<a href="ftp://ftp.dis.uniroma1.it/pub/iocchi/Linux/programs/camview-1.1b.tgz">
+camview 1.1b</a>.
+
+
+<P>
+<a href="doc/l848a_a.pdf">Documentazione sul chip BT848</a>
+</p>
+
+</body>
+</html>

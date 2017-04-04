@@ -1,0 +1,79 @@
+<!DOCTYPE html PUBLIC "-//w3c//dtd html 4.0 transitional//en">
+<html>
+<head>
+   <title>Esercizio 2</title>
+</head>
+<body>
+
+<center>
+  <p><b>Esercizio 2</b> </p>
+  <p>NB: Realizzare questo esercizio con ARRAY DINAMICI.</p>
+</center>
+
+<center></center>
+
+Si vuole tenere traccia delle visite da effettuare presso uno studio medico.
+Ogni <em>ListaVisite</em> &egrave; associata al nominativo di un medico (una
+stringa) ed &egrave; costituita da un insieme ordinato di visite.
+Di ogni visita sono di interesse le seguenti informazioni:
+<ul>
+  <li>il nome del paziente (una stringa);
+  <li>il tipo di visita (una stringa).
+</ul>
+Si noti che uno stesso paziente pu&ograve; comparire pi&ugrave; volte in una
+stessa <em>ListaVisite</em>.
+
+Gli oggetti <em>ListaVisite</em> supportano le seguenti funzionalit&agrave;:
+
+<ul>
+  <li><em>crea:</em> che data una stringa <em>m</em> che rappresenta il
+      nominativo di un medico crea un oggetto <em>ListaVisite</em> associato ad
+      <em>m</em> che inizialmente non ha alcuna visita associata;
+  </li>
+  <li><em>medico:</em> che restituisce il nominativo del medico (non richiesto
+      all'esame);
+  </li>
+  <li><em>aggiungiVisita:</em> che dati il nome <em>p</em> di un paziente e il
+      tipo <em>t</em> di una visita, inserisce in coda alla lista di visite una
+      nuova visita di tipo <em>t</em> per il paziente <em>p</em>;
+  </li>
+  <li><em>estraiVisita:</em> che elimina la visita in testa alla lista; se la
+      lista di visite &egrave; vuota lancia un'eccezione;
+  </li>
+  <li><em>numVisite:</em> che restituisce il numero di visite;
+  </li>
+  <li><em>pazienteVisita:</em> che dato un intero <em>i</em> che rappresenta il
+      numero d'ordine di una visita, restituisce il nome del paziente per
+      quella visita; per numero d'ordine di una visita si intende il numero di
+      visite che la precedono nella lista (ad esempio, <em>i=0</em> rappresenta
+      il numero d'ordine della visita in testa alla lista); se l'intero
+      <em>i</em> non rappresenta un numero d'ordine valido lancia un'eccezione;
+  </li>
+  <li><em>tipoVisita:</em> che dato un intero <em>i</em> che rappresenta il
+      numero d'ordine di una visita, restituisce il tipo della visita; se
+      l'intero <em>i</em> non rappresenta un numero d'ordine valido lancia
+      un'eccezione;
+  </li>
+  <li><em>numVisitePaziente:</em> che dato il nome <em>p</em> di un paziente,
+      restituisce il numero di visite per il paziente <em>p</em>;
+  </li>
+  <li><em>visitePaziente:</em> che dato il nome <em>p</em> di un paziente,
+      restituisce un array di interi contenente il numero d'ordine di ciascuna
+      delle visite del paziente <em>p</em>.
+  </li>
+</ul>
+
+<p><strong>Domanda 1.</strong> Scrivere una classe Java
+<code>ListaVisite</code> per rappresentare oggetti <em>ListaVisite</em>.
+
+<p><strong>Domanda 2.</strong> Realizzare un metodo statico <code>tipoVisitePaziente</code> 
+  cliente della classe <code>ListaVisite</code> che, dati un oggetto <em>v</em> 
+  istanza della classe <code>ListaVisite</code>, il nome <em>p</em> di un paziente, 
+  stampa il tipo di tutte le visite del paziente <em>p</em> in <em>v</em>, una 
+  visita per riga. </p>
+
+<blockquote>&nbsp;</blockquote>
+
+
+</body>
+</html>

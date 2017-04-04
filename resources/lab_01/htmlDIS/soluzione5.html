@@ -1,0 +1,71 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"         "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="it">
+<head>
+	<title>Soluzione domanda FIFO</title>
+</head>
+<body>
+
+<h3>Corso di Laurea in Ing. Informatica, Universita' La Sapienza<br>
+  Sistemi Operativi II<br>
+  Docente Roberto Baldoni</h3>
+<h3> Soluzione della domanda di programmazione (argomento: FIFO - Appello del 5 Aprile 2004).</h3>
+<p>Le operazioni che devono essere effettuate per implementare le funzionalit&agrave; richieste sono illustrate di seguito:</p>
+<ol>
+  <li>prima di tutto si devono creare due processi/thread (la soluzione proposta usa processi), uno che si occupa dell'ascolto sulla fifo, che quindi gioca il ruolo di server, e l'altro che gioca il ruolo di client interagendo con la fifo del partner con cui si vuole comunicare;</li>
+  <li>per quanto riguarda il processo che fa da server, le operazioni da effettuare sono principalmente l'apertura della fifo e la lettura dei dati spediti dal partner con qui si sta parlando;</li>
+  <li>per il processo che fa da client, si deve aprire in scrittura la fifo del partner, e scrivere il codice relativo alla lettura di stringhe da tastiera e alla successiva scrittura sulla fifo;</li>
+  <li>l'ultimo passo &egrave; quello della chiusura della fifo in ascolto;</li>
+</ol>
+<p>Di seguito viene riportato il codice della soluzione proposta. E' possibile prelevare il file completo <a href="chat.zip">qui</a>. </p>
+<pre>
+   ret = fork();
+   if (ret == 0) {
+      // il processo figlio si mette in ascolto sulla
+      // propria fifo per la ricezione dei messaggi da
+      // parte del partner
+      printf("In ascolto su '%s'\n",fifo_name);
+      if ((fd = open(fifo_name,O_RDONLY)) &lt; 0) {
+         perror("Couldn't open FIFO for reading");
+         exit(1);
+      }
+
+      while(read(fd,buff,256) &gt; 0) {
+         printf("%s: %s",user, buff);
+         memset(buff, 0, 256);
+      }
+      exit(0);
+   }
+   else {
+      // il processo padre si collega alla fifo del
+      // partner per mandare i messaggi al partner
+      printf("In scrittura su '%s'\n",user);
+      if ((fd = open(user,O_WRONLY)) &lt; 0 ) {
+         perror("Couldn't open FIFO for writing");
+         exit(1);
+      }
+      while (1) {
+         memset(line, 0, COMMAND_LENGTH+1);
+         fgets(line,COMMAND_LENGTH,stdin);
+         line[COMMAND_LENGTH] = '\0';
+
+         if (strlen(line) == COMMAND_LENGTH) {
+            printf("\nCommand too long!\n");
+            continue;
+         }
+         if (strcmp(line, "exit\n") == 0) break;
+
+         if (write(fd,line,strlen(line)) &lt; strlen(line)) {
+           fprintf(stderr,"Problem with write\n");
+           exit(1);
+         }
+      }
+      printf("Opened communications, please wait.....\n");
+      kill(ret, SIGTERM);
+      wait(&ret);
+      printf("All connections are closed... exit\n");
+   }
+   unlink(fifo_name);
+   exit(0);
+</pre>
+</body>
+</html>

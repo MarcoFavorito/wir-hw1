@@ -1,0 +1,67 @@
+
+<HTML>
+
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html;charset=iso-8859-1">
+<meta name="GENERATOR" content="Microsoft Internet Assistant for Macintosh PowerPoint 98">
+ <TITLE>Example</TITLE> 
+</HEAD>
+
+<BODY     >
+
+ <H1>Example</H1> 
+ <P><UL></P>
+
+<P><LI><H2>If we have an index on rating:
+</H2></P>
+
+<P><UL></P>
+
+<P><LI>(1/NKeys(I)) * NTuples(R) = (1/10) * 40000 tuples retrieved.
+<LI>Clustered index: (1/NKeys(I)) * (NPages(I)+NPages(R)) = (1/10) * (50+500) pages are retrieved. (This is the cost.)
+<LI>Unclustered index: (1/NKeys(I)) * (NPages(I)+NTuples(R)) = (1/10) * (50+40000) pages are retrieved.  
+</UL></UL><UL></P>
+
+<P><LI><H2>If we have an index on sid:
+</H2></P>
+
+<P><UL></P>
+
+<P><LI>Would have to retrieve all tuples/pages.  With a clustered index, the cost is 50+500, with unclustered index, 50+40000.
+</UL></UL><UL></P>
+
+<P><LI><H2>Doing a file scan:
+</H2></P>
+
+<P><UL></P>
+
+<P><LI>We retrieve all file pages (500).</UL></UL></P>
+
+<P><UL></P>
+
+<P>SELECT  S.sid
+</UL><UL></P>
+
+<P>FROM  Sailors S
+</UL><UL></P>
+
+<P>WHERE  S.rating=8</UL></P>
+
+<P></P> 
+<P>
+<TABLE>
+  <TD HEIGHT=100 WIDTH=100> <A HREF="tsld011.htm">Previous slide</A> </TD>
+  <TD HEIGHT=100 WIDTH=100> <A HREF="tsld013.htm">Next slide</A> </TD>
+  <TD HEIGHT=100 WIDTH=150> <A HREF="tsld001.htm">Back to first slide</A> </TD>
+  <TD HEIGHT=100 WIDTH=150> <A HREF="sld012.htm">View graphic version</A> </TD>
+</TABLE>
+<BR>
+</P>
+
+ <FONT size=4><STRONG> Notes: </FONT></STRONG>
+  <HR SIZE=3> <P> <UL>
+
+14</UL> </P> 
+
+</Body>
+</HTML>

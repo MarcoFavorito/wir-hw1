@@ -1,0 +1,179 @@
+<HTML>
+<HEAD>
+   <META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1">
+   <META NAME="Generator" CONTENT="Microsoft Word 97">
+   <META NAME="GENERATOR" CONTENT="Mozilla/4.03 [en] (Win95; I) [Netscape]">
+   <TITLE>Un grafico pu&ograve; essere rappresentato mediante una sequenza di coppie di valori (ascissa, ordinata)</TITLE>
+</HEAD>
+<BODY>
+
+<CENTER><B><FONT FACE="Palatino,Book Antiqua">Fondamenti di Informatica</FONT></B></CENTER>
+
+<CENTER></CENTER>
+
+<CENTER><B><FONT FACE="Palatino,Book Antiqua">Aeronautica, Meccanica, Elettrica,
+Materiali, Nucleare, Chimica,</FONT></B></CENTER>
+
+<CENTER></CENTER>
+
+<CENTER><B><FONT FACE="Palatino,Book Antiqua">Ambiente e Territorio (vecchio
+programma)</FONT></B></CENTER>
+
+<CENTER></CENTER>
+
+<CENTER><B><FONT FACE="Palatino,Book Antiqua">Appello del 1-7-1998</FONT></B></CENTER>
+
+
+<P><B><FONT FACE="Palatino,Book Antiqua">&nbsp;</FONT></B>
+
+<P><B><FONT FACE="Palatino,Book Antiqua">&nbsp;</FONT></B>
+
+<P><B><FONT FACE="Palatino,Book Antiqua">Esercizio 1 (18 punti)</FONT></B>
+
+<P><B><FONT FACE="Palatino,Book Antiqua">&nbsp;</FONT></B>
+
+<P><B>In un sistema per la progettazione assistita da elaboratore (CAD)
+un disegno (tecnico) &egrave; composto da un insieme (massimo 10) di poligoni.
+Ciascuno di questi viene rappresentato tramite una sequenza di elementi
+di tipo <I>Vertice</I>, assumendo che ciascun vertice sia un punto del
+piano cartesiano a coordinate intere e che il vertice finale di ogni poligono
+coincida con quello iniziale.</B>
+
+<P><B>&nbsp;</B>
+
+<P><B>Si consideri un file DISEGNO.TXT in cui &egrave; memorizzato un disegno:
+il file (di tipo testo) contiene le rappresentazioni dei poligoni che compongono
+il disegno, una per riga.</B>
+<UL>
+<LI>
+<B>Definire i tipi di dato Pascal adeguati a risolvere i problemi di cui
+ai successivi punti (2) e (3);</B></LI>
+
+<LI VALUE="1">
+<B>Scrivere una procedura Pascal che, dato come parametro il file DISEGNO.TXT,
+restituisca una rappresentazione di tipo<I> Disegno</I> del disegno memorizzato
+nel file. In particolare, la procedura costruisce una lista per ciascun
+poligono nel disegno e organizza nella maniera che si ritiene pi&ugrave;
+opportuna i puntatori alla testa delle varie liste;</B></LI>
+
+<LI VALUE="1">
+<B>Scrivere una procedura Pascal che, ricevendo come parametro una struttura
+di tipo <I>Disegno</I> elimini dalla struttura tutti i poligoni che contengono
+un segmento parallelo all’asse delle <I>x.</I></B></LI>
+</UL>
+<B>A titolo di esempio, si consideri la Fig. 1: in (a) &egrave; illustrato
+un poligono qualsiasi, in (b) un poligono con un segmento parallelo all’asse
+delle <I>x</I>..</B>
+
+<P><B>&nbsp;</B>
+<CENTER><TABLE BORDER=0 CELLSPACING=0 CELLPADDING=7 WIDTH="434" >
+<TR>
+<TD VALIGN=TOP WIDTH="50%"><IMG SRC="980701-1.jpg" HEIGHT=148 WIDTH=291></TD>
+
+<TD VALIGN=TOP WIDTH="50%"><IMG SRC="980701-2.jpg" HEIGHT=137 WIDTH=291></TD>
+</TR>
+
+<TR>
+<TD VALIGN=TOP WIDTH="50%"><FONT FACE="Palatino,Book Antiqua"><FONT SIZE=+0>(a)
+Poligono privo di&nbsp;</FONT></FONT>
+<BR><FONT FACE="Palatino,Book Antiqua"><FONT SIZE=+0>segmenti paralleli&nbsp;</FONT></FONT>
+<BR><FONT FACE="Palatino,Book Antiqua"><FONT SIZE=+0>all’asse delle x</FONT></FONT></TD>
+
+<TD VALIGN=TOP WIDTH="50%"><FONT FACE="Palatino,Book Antiqua"><FONT SIZE=+0>(b)Poligono
+con segmento&nbsp;</FONT></FONT>
+<BR><FONT FACE="Palatino,Book Antiqua"><FONT SIZE=+0>parallelo all’asse
+delle x</FONT></FONT></TD>
+</TR>
+
+<TR>
+<TD VALIGN=TOP WIDTH="50%"><FONT FACE="Palatino,Book Antiqua">Fig. 1</FONT></TD>
+
+<TD VALIGN=TOP WIDTH="50%">&nbsp;</TD>
+</TR>
+</TABLE></CENTER>
+<FONT FACE="Palatino,Book Antiqua">&nbsp;</FONT>
+<CENTER></CENTER>
+
+<CENTER><FONT FACE="Palatino,Book Antiqua">&nbsp;</FONT></CENTER>
+
+<CENTER></CENTER>
+
+<CENTER><B><FONT FACE="Palatino,Book Antiqua">Fondamenti di Informatica</FONT></B></CENTER>
+
+<CENTER><B><FONT FACE="Palatino,Book Antiqua">Aeronautica, Meccanica, Elettrica,
+Materiali, Nucleare, Chimica,</FONT></B></CENTER>
+
+<CENTER><B><FONT FACE="Palatino,Book Antiqua">Ambiente e Territorio (vecchio
+programma)</FONT></B></CENTER>
+
+<CENTER><B><FONT FACE="Palatino,Book Antiqua">Appello del 1-7-1998</FONT></B></CENTER>
+
+
+<P><B><FONT FACE="Palatino,Book Antiqua">Esercizio 2 (4 punti)</FONT></B>
+
+<P><FONT FACE="Palatino,Book Antiqua">Con riferimento al linguaggio Pascal,
+si considerino</FONT>
+<OL>
+<LI>
+<FONT FACE="Palatino,Book Antiqua">un tipo (record) ElementoLista, con
+campi</FONT></LI>
+
+<OL>
+<LI>
+<FONT FACE="Palatino,Book Antiqua">info, di tipo<U> integer</U>,</FONT></LI>
+
+<LI>
+<FONT FACE="Palatino,Book Antiqua">prox, di tipo <U>punt</U> a ElementoLista;</FONT></LI>
+</OL>
+</OL>
+
+<UL>
+<LI>
+<FONT FACE="Palatino,Book Antiqua">una procedura <B>insertfine</B> che,
+data una <U>lista collegata</U> e dato un nuovo elemento, dovrebbe collegare
+tale elemento alla <U>coda</U> della lista.</FONT></LI>
+</UL>
+<FONT FACE="Palatino,Book Antiqua">&nbsp;</FONT>
+
+<P><FONT FACE="Palatino,Book Antiqua">procedure <B>insertfine</B> ( p:
+punt; nuovo: integer);</FONT>
+<BR><FONT FACE="Palatino,Book Antiqua">begin</FONT>
+<BR><FONT FACE="Palatino,Book Antiqua">if p &lt;> nil then</FONT>
+<BR><FONT FACE="Palatino,Book Antiqua">begin</FONT>
+<BR><FONT FACE="Palatino,Book Antiqua">while p^.prox &lt;> nil do</FONT>
+<BR><FONT FACE="Palatino,Book Antiqua">p := p^.prox;</FONT>
+<BR><FONT FACE="Palatino,Book Antiqua">new(p^.prox);</FONT>
+<BR><FONT FACE="Palatino,Book Antiqua">p^.prox^.info := nuovo;</FONT>
+<BR><FONT FACE="Palatino,Book Antiqua">p^.prox^.prox := nil;</FONT>
+<BR><FONT FACE="Palatino,Book Antiqua">end</FONT>
+<BR><FONT FACE="Palatino,Book Antiqua">else</FONT>
+<BR><FONT FACE="Palatino,Book Antiqua">begin</FONT>
+<BR><FONT FACE="Palatino,Book Antiqua">new(p);</FONT>
+<BR><FONT FACE="Palatino,Book Antiqua">p^.info := nuovo;</FONT>
+<BR><FONT FACE="Palatino,Book Antiqua">p^.prox := nil</FONT>
+<BR><FONT FACE="Palatino,Book Antiqua">end;</FONT>
+<BR><FONT FACE="Palatino,Book Antiqua">end;</FONT>
+<BR>&nbsp;
+
+<P><FONT FACE="Palatino,Book Antiqua">La procedura proposta contiene degli
+errori. Indicarli, spiegarne l’effetto e correggerli.</FONT>
+<BR>&nbsp;
+
+<P><B><FONT FACE="Palatino,Book Antiqua">Esercizio 3 (4 punti)</FONT></B>
+
+<P><FONT FACE="Palatino,Book Antiqua">Il candidato descriva almeno due
+algoritmi di ordinamento su vettori e discuta la loro efficienza.</FONT>
+
+<P><FONT FACE="Palatino,Book Antiqua">Gli algoritmi descritti possono essere
+utilizzati anche per l’ordinamento su file? Giustificare la risposta.</FONT>
+
+<P><FONT FACE="Palatino,Book Antiqua">&nbsp;</FONT>
+<BR><B><FONT FACE="Palatino,Book Antiqua">Esercizio 4 (4 punti)</FONT></B>
+
+<P><FONT FACE="Palatino,Book Antiqua">Scrivete un programma in Fortran
+che, ricevendo in input 50 coppie di NomeStudente(15 caratteri) e VotoStudente(intero),
+li memorizzi, trovi il voto pi&ugrave; alto, lo stampi e stampi anche i
+nomi di tutti gli studenti che hanno preso il voto pi&ugrave; alto.</FONT>
+<BR><FONT FACE="Palatino,Book Antiqua"></FONT>&nbsp;
+</BODY>
+</HTML>

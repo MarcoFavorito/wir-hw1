@@ -1,0 +1,185 @@
+<HTML>
+<HEAD>
+<TITLE>Fondamenti di Informatica -
+Appello del 10 luglio 2000</TITLE>
+<P>
+<DIV ALIGN="CENTER">
+<B>
+   Universit&#224; di Roma ``La Sapienza''
+<BR>
+Facolt&#224; di Ingegneria
+<BR>
+Corso di Fondamenti di Informatica - A.A. 1999-2000
+<BR>
+Corsi di Laurea: Aerospaziale, Chimica, Elettrica, Materiali,
+    Meccanica, Nucleare</B>
+<BR>
+Appello del <B>10 luglio 2000</B> -- 1<SUP><I>a</I></SUP> prova scritta
+<BR>
+  <EM>tempo a disposizione: 2 ore</EM>
+</DIV>
+<P>
+
+<B>Problema 1</B>&nbsp;&nbsp;Il proprietario di una galleria d'arte possiede quadri e
+sculture, e memorizza su un file di testo i dati di tutte le sue opere.  Per
+ogni opera scrive nel file le seguenti informazioni:
+<UL>
+<LI>nome autore  (15 caratteri, compresi spazi finali);
+<LI>titolo opera  (10 caratteri, compresi spazi finali);
+<LI>tipo opera (un carattere: `<TT>Q</TT>' per quadro e `<TT>S</TT>' per scultura);
+<LI>prezzo in euro (reale positivo).
+</UL>
+
+<P>
+Ad esempio, in un certo istante il file potrebbe contenere le seguenti
+informazioni:<PRE>
+SCROFOLO      PAESAGGIO Q 1000.0
+BUONARROTI    PIETA     S 1.0E+9
+LEONARDO      GIOCONDA  Q 1.5E+9
+DONATELLO     DAVID     S 1.0E+9
+BUONARROTI    SISTINA   Q 0.8E+9
+VANGOGH       GIRASOLI  Q 1.5E+9
+</PRE>
+
+<P>
+Si richiede di risolvere i seguenti punti:
+<DL COMPACT>
+<DT>1.
+<DD>Scrivere le dichiarazioni dei tipi di dato Pascal da utilizzarsi
+per risolvere i punti successivi.
+<DT>2.
+<DD>Scrivere una (o pi&#249;) unit&#224; di programma Pascal che riceve come
+  argomento il nome fisico
+del file <I>f</I> che contiene i dati e 
+restituisce due liste <I>l</I>1 ed <I>l</I>2 contenenti, rispettivamente, i dati 
+relativi a tutti i quadri pi&#249; costosi e i dati relativi a tutte le
+sculture pi&#249; costose.
+
+<P>
+Ad esempio, facendo riferimento al file sopra riportato, l'unit&#224; deve
+restituire le liste con le seguenti informazioni:
+
+<P><PRE>
+    __    _________________________ __    _____________________________
+   |  |  |       |        | |      |  |  |        |        | |      |\ |
+l1 | -+-&gt;|VANGOGH|GIRASOLI|Q|1.5E+9| -+-&gt;|LEONARDO|GIOCONDA|Q|1.5E+9| \|
+   |__|  |_______|________|_|______|__|  |________|________|_|______|__|
+
+    __    _________________________ __    ___________________________
+   |  |  |          |     | |      |  |  |         |     | |      |\ |
+l2 | -+-&gt;|BUONARROTI|PIETA|S|1.0E+9| -+-&gt;|DONATELLO|DAVID|S|1.0E+9| \|
+   |__|  |__________|_____|_|______|__|  |_________|_____|_|______|__|
+</PRE>
+
+<P>
+<DT>3.
+<DD>Ad ogni autore &#232; associato un valore complessivo delle opere (di
+  entrambi i tipi) rappresentate.  Scrivere una (o pi&#249;) unit&#224; di programma
+  Pascal che riceve come argomento il nome fisico del file <I>f</I> che contiene i
+  dati e restituisce il valore massimo complessivo delle opere (di entrambi i
+  tipi) di uno stesso autore.
+  
+  Ad esempio, facendo riferimento al file sopra riportato, l'unit&#224; deve
+  restituire il valore 1.8E+09, che coincide con la somma dei valori delle
+  opere di Buonarroti.
+
+<P>
+</DL>
+
+<P>
+
+<P>
+
+<P>
+<DIV ALIGN="CENTER">
+<B>
+   Universit&#224; di Roma ``La Sapienza''
+<BR>
+Facolt&#224; di Ingegneria
+<BR>
+Corso di Fondamenti di Informatica - A.A. 1999-2000
+<BR>
+Corsi di Laurea: Aerospaziale, Chimica, Elettrica, Materiali,
+   Meccanica,    Nucleare</B>
+<BR>
+Appello del <B>10 luglio 2000</B> -- 2<SUP><I>a</I></SUP> prova scritta
+<BR>
+  <EM>tempo a disposizione: 1 ora</EM>
+</DIV>
+
+<P>
+<B>Problema 2 (4 punti)</B>
+<DL COMPACT>
+<DT>1.
+<DD>Scrivere la propria data di nascita in formato <TT>gg mm aa</TT>.
+<DT>2.
+<DD>Considerare le seguenti definizioni di <TT>g, m, a</TT>.<PRE>
+   g:= gg mod 10
+   m:= - mm
+   a:= aa mod 10
+</PRE>
+<P>
+<DT>3.
+<DD>Scrivere la rappresentazione di <TT>g</TT>, <TT>m</TT> ed <TT>a</TT> in
+  complemento a 1, usando 5 bit.
+</DL>
+
+<P>
+
+<B>Problema 3 (4 punti)</B>
+Si consideri il seguente programma Pascal.<PRE>
+program Main;
+const MAX =  8;
+type
+  CIFRA = 0..9;
+  ARR   = array [1..MAX] of CIFRA;
+function Cosa(a : ARR; i: integer): integer;
+  begin
+    if i &gt; MAX then
+      Cosa := 0
+    else
+      Cosa := a[i] + Cosa(a, i+1);
+  end; { Cosa }
+var io :  ARR;
+    j  :  integer;
+begin
+  writeln('Inserire ordinatamente le 8 cifre del proprio numero di matricola');
+  for j:= 1 to MAX do
+    readln(io[j]);
+  writeln(Cosa(io,1));
+end. { Main }
+</PRE>
+<UL>
+<LI>Descrivere cosa fa (non come lo fa) la funzione <TT>Cosa</TT>.
+<LI>Che valore viene stampato dal programma quando vengono inserite da
+  tastiera le cifre del proprio numero di matricola?  Mostrare l'evoluzione
+  della pila dei record di attivazione.
+</UL>
+
+<P>
+
+<B>Problema 4 (4 punti)</B> Un file il cui nome fisico &#232; di non pi&#249; di 12
+caratteri contiene righe costituite da un solo carattere.
+L'ultima riga contiene il carattere '<TT>$</TT>', mentre le altre righe
+contengono caratteri alfabetici maiuscoli.
+
+<P>
+Scrivere  un sottoprogramma Fortran che:
+<UL>
+<LI>riceve come parametro una stringa che rappresenta il nome fisico
+  del file;
+<LI>restituisce la lettera maggiore, secondo l'ordinamento alfabetico, fra
+  quelle presenti nel file.
+</UL>
+
+<P>
+Scrivere inoltre un programma principale che:
+<UL>
+<LI>usi il sottoprogramma progettato con il file il cui nome fisico &#232; <TT>
+   DATI.TXT</TT>;
+<LI>stampi la lettera restituita dal sottoprogramma.
+</UL>
+
+<P>
+</BODY>
+</HTML>

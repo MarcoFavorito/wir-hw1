@@ -1,0 +1,990 @@
+<html>
+<head>
+<title>I costruttori</title>
+      <link rel="top" href="../lezioni.html">
+      <link rel="up" href="../lezioni.html">
+      <link rel="contents" href="../lezioni.html">
+      <link rel="previous" href="../statici/statici.html">
+      <link rel="next" href="../accesso/accesso.html">
+</head>
+
+<body>
+
+<h1>I costruttori</h1>
+
+<p>
+Servono a inizializzare i valori dei campi
+degli oggetti.
+</p>
+
+<p>
+Vengono invocati automaticamente dopo che
+l'oggetto &egrave; stato creato.
+</p>
+
+<hr>
+
+
+<h4>Creazione di un oggetto</h4>
+
+<p>
+p=new Point();
+</p>
+
+<p>
+Si poteva anche fare:
+</p>
+
+<pre>
+System.out.println(new Point());
+</pre>
+
+<p>
+Viene creato l'oggetto e restituito il
+suo riferimento (l'indirizzo di memoria
+in cui si trova)
+</p>
+
+<p>
+Si pu&ograve; invocare il costruttore in ogni
+punto del programma in cui serve un oggetto.
+</p>
+
+<hr>
+
+
+<h4>Il costruttore standard</h4>
+
+<p>
+Questo tipo di costruzione mette dei
+valori iniziali nelle componenti:
+</p>
+
+<dl>
+
+<dt>scalari:
+<dd>il valore zero
+
+<dt>oggetti:
+<dd>il valore <tt>null</tt>
+
+</dl>
+
+<hr>
+
+
+<h4>Esempio di valori di default</h4>
+
+<p>
+Classe:
+</p>
+
+<pre>
+import java.awt.*;
+
+class NomeClasse {
+  Point p;
+  int x;
+}
+</pre>
+
+<p>
+Programma:
+</p>
+
+<pre>
+class ProvaCostr {
+  public static void main(String args[]) {
+    NomeClasse a;
+    a=new NomeClasse();
+
+    System.out.println(a.p);
+    System.out.println(a.x);
+  }
+}
+</pre>
+
+<p>
+Stampa:
+</p>
+
+<pre>
+null
+0
+</pre>
+
+<hr>
+
+
+<h4>Alterare il costruttore standard</h4>
+
+<p>
+&Egrave; possibile ridefinire il comportamento
+del costruttore.
+</p>
+
+<pre>
+import java.awt.*;
+
+class NomeClasse {
+  Point p;
+  int x;
+
+  NomeClasse() {
+    this.p=new Point();
+    this.p.move(10,20);
+
+    this.x=100;
+  }
+}
+</pre>
+
+<hr>
+
+
+<h4>Il programma</h4>
+
+<p>
+Uso lo stesso programma di prima:
+</p>
+
+<pre>
+class ProvaCostr {
+  public static void main(String args[]) {
+    NomeClasse a;
+    a=new NomeClasse();
+
+    System.out.println(a.p);
+    System.out.println(a.x);
+  }
+}
+</pre>
+
+<p>
+Solo che ora stampa:
+</p>
+
+<pre>
+java.awt.Point[x=10,y=20]
+100
+</pre>
+
+<hr>
+
+
+<h4>Sintassi del costruttore</h4>
+
+<pre>
+class NomeClasse {
+  ...
+
+  NomeClasse() {
+    istruzioni;
+  }
+}
+</pre>
+
+<ul>
+
+<li>&egrave; un metodo
+
+<li>ha lo stesso nome della classe
+
+<li>non ha valore di ritorno (&egrave; implicito)
+
+</ul>
+
+<p>
+Se voglio un costruttore per la classe
+<tt>NewPoint</tt>, si deve chiamare
+<tt>NewPoint()</tt>.
+</p>
+
+<p>
+Il costruttore per <tt>Studente</tt> si
+chiama <tt>Studente()</tt>, ecc.
+</p>
+
+<hr>
+
+
+<h4>&Egrave; un metodo statico?</h4>
+
+<p>
+Si e no.
+</p>
+
+<dl compact="compact">
+
+<dt><i>si:</i>
+<dd>non richiede oggetto di invocazione (lo crea!)
+
+<dt><i>no:</i>
+<dd>al suo interno, <tt>this</tt> &egrave; definito
+
+</dl>
+
+<hr>
+
+
+<h4>Cosa succede quando si crea un oggetto</h4>
+
+<pre>
+  a=new NomeClasse();
+</pre>
+
+<p>
+Vengono fatte due cose:
+</p>
+
+<ul>
+
+<li>viene creata la zona di memoria per l'oggetto
+
+<li>vengono eseguite le istruzioni del metodo
+<tt>NomeClasse()</tt> della classe, se c'&egrave;
+
+</ul>
+
+<p>
+Viene poi ritornato l'indirizzo della zona di
+memoria creata.
+</p>
+
+<hr>
+
+
+<h4>Stato della memoria</h4>
+
+<pre>
+  NomeClasse a;
+  a=new NomeClasse();	// invocazione
+</pre>
+
+<pre>
+classe NomeClasse {
+  ...
+
+  NomeClasse() {	// def costruttore
+    istruzioni;
+</pre>
+
+<p>
+Dopo <tt>NomeClasse a</tt>, ma prima
+di invocare il costruttore:
+</p>
+
+<img src="prima.jpg">
+
+<p>
+Notare che <tt>a</tt> contiene un valore
+indefinito.
+</p>
+
+<hr>
+
+
+<h4>Quando si inizia il metodo</h4>
+
+<p>
+Quando si invoca il costruttore:
+</p>
+
+<ul>
+
+<li>si crea automaticamente l'oggetto
+
+<li>si invoca il costruttore
+
+</ul>
+
+<p>
+La creazione viene fatta <i>prima</i>
+dell'esecuzione delle istruzioni del
+costruttore.
+</p>
+
+<p>
+Quando si eseguono queste istruzioni,
+ho gi&agrave; l'oggetto:
+</p>
+
+<img src="durante.jpg">
+
+<hr>
+
+
+<h4>Istruzioni del costruttore</h4>
+
+<pre>
+  NomeClasse() {
+    this.p=new Point();
+    this.p.move(10,20);
+
+    this.x=100;
+  }
+</pre>
+
+<p>
+<tt>this</tt> indica l'oggetto
+che &egrave; stato creato.
+</p>
+
+<p>
+Viene modificato l'oggetto.
+</p>
+
+<img src="valori.jpg">
+
+<hr>
+
+
+<h4>Valore di ritorno</h4>
+
+<p>
+Il valore di ritorno &egrave; l'indirizzo
+dell'oggetto che &egrave; stato appena creato.
+</p>
+
+<p>
+Se ho fatto <tt>a=new NomeClasse()</tt>,
+questo indirizzo viene scritto in <tt>a</tt>
+</p>
+
+<img src="dopo.jpg">
+
+<hr>
+
+
+<h4>Riassunto</h4>
+
+<p>
+Quando faccio <tt>new NomeClasse()</tt> creo un oggetto.
+</p>
+
+<p>
+Il metodo <tt>NomeClasse()</tt> della classe contiene solo
+le istruzioni per <i>inizializzare</i> l'oggetto<br>
+(quando viene invocato, l'oggetto esiste gi&agrave;)
+</p>
+
+<hr>
+
+
+<h4>A cosa serve?</h4>
+
+<p>
+Quando creo un oggetto, posso mettere nelle
+componenti valori diversi da <tt>0</tt> e
+<tt>null</tt>.
+</p>
+
+<p>
+Pi&ugrave; utile: costruttore con argomenti.
+</p>
+
+<hr>
+
+
+<h4>I costruttori di <tt>Point</tt></h4>
+
+<p>
+Questi costruttori sono gi&agrave; definiti:
+</p>
+
+<pre>
+  p=new Point();
+</pre>
+
+<p>
+Crea un oggetto punto di coordinate <tt>(0,0)</tt>
+</p>
+
+<pre>
+  p=new Point(12,32);
+</pre>
+
+<p>
+Crea un oggetto punto di coordinate <tt>(12,32)</tt>
+</p>
+
+<hr>
+
+
+<h4>Costruttore con argomenti</h4>
+
+<p>
+Assomiglia a un metodo.
+</p>
+
+<pre>
+class Abcd {
+  int x;
+  Point p;
+
+  Abcd(int x, Point p) {
+    this.x=x;
+    this.p=p;
+  }
+}
+</pre>
+
+<p>
+L'invocazione &egrave; come per i punti.
+</p>
+
+<pre>
+  Point p;
+  p=new Point(12,32);
+
+  Abcd o;
+  o=new Abcd(12, p);
+</pre>
+
+<hr>
+
+
+<h4>Differenza metodo-costruttore</h4>
+
+<p>
+Quando si invoca un metodo, viene fatta
+la copiatura dei parametri e poi si eseguono
+le istruzioni del metodo.
+</p>
+
+<p>
+Nel caso dei costruttori, viene <i>prima</i>
+creato l'oggetto, e <i>poi</i> si esegue
+il costruttore come fosse un metodo.
+</p>
+
+<p>
+C'&egrave; un passo in mezzo, in cui
+l'oggetto viene creato.
+</p>
+
+<hr>
+
+
+<h4>Di solito...</h4>
+
+<p>
+Il costruttore si usa per inizializzare le
+componenti degli oggetti.
+</p>
+
+<p>
+Per&ograve; pu&ograve; fare qualsiasi cosa
+fa un metodo.
+</p>
+
+<p>
+Per esempio, pu&ograve; stampare una stringa:
+</p>
+
+<pre>
+class Abcd {
+  int x;
+  Point p;
+
+  Abcd() {
+    System.out.println("Questa e' una stringa");
+  }
+}
+</pre>
+
+<p>
+&Egrave; sbagliato <i>metodologicamente</i>,
+ma si pu&ograve; fare.
+</p>
+
+<hr>
+
+
+<h4>Definire un nuovo costruttore</h4>
+
+<p>
+Definire un costruttore con argomenti per
+la classe <tt>Studente</tt>
+</p>
+
+<p>
+Argomenti: i tre valori iniziali.
+</p>
+
+<pre>
+class Studente {
+  String nome;
+  int eta;
+  double media;
+
+  ...
+}
+</pre>
+
+<hr>
+
+
+<h4>Soluzione</h4>
+
+<p>
+Il nome del costruttore &egrave; uguale al
+nome della classe.
+</p>
+
+<p>
+Non ha valore di ritorno.
+</p>
+
+<p>
+Ha tre argomenti.
+</p>
+
+<p>
+<tt>this</tt> indica l'oggetto che &egrave; 
+stato appena creato.
+</p>
+
+<pre>
+class Studente {
+  String nome;
+  int eta;
+  double media;
+
+  Studente(String nome, int eta, double media) {
+    this.nome=nome;
+    this.eta=eta;
+    this.media=media;
+  }
+}
+</pre>
+
+<p>
+Notare che il parametro formale <tt>nome</tt> si
+poteva anche chiamare in una altro modo, per
+esempio <tt>a</tt>
+</p>
+
+<p>
+Non c'&egrave; relazione fra il nome del parametro
+formale e la componente dell'oggetto.
+</p>
+
+<hr>
+
+
+<h4>Esercizio</h4>
+
+<p>
+Estendere la classe <tt>Point</tt> in modo
+che abbia un nuovo costruttore, che prende come
+argomento un rettangolo, e mette nel punto il
+suo centro.
+</p>
+
+<p>
+Nota: la nuova classe si chiama <tt>NewPoint</tt>
+</p>
+
+<hr>
+
+
+<h4>Soluzione</h4>
+
+<p>
+Per estendere serve un nuovo nome:
+</p>
+
+<pre>
+class NewPoint extends Point {
+  ...
+}
+</pre>
+
+<p>
+Si comincia con l'intestazione del metodo come
+al solito.
+</p>
+
+<pre>
+import java.awt.*;
+
+class NewPoint extends Point {
+  NewPoint(Rectangle r) {
+    ...
+  }
+}
+</pre>
+
+<hr>
+
+
+<h4>Definizione del costruttore</h4>
+
+<p>
+Si tratta quasi di un metodo come gli altri.
+</p>
+
+<pre>
+import java.awt.*;
+
+class NewPoint extends Point {
+  NewPoint(Rectangle r) {
+    this.x=r.x+r.width/2;
+    this.y=r.y+r.height/2;
+  }
+}
+</pre>
+
+<p>
+Calcolo, sulla base degli argomenti, i valori
+da mettere nelle componenti dell'oggetto appena
+creato.
+</p>
+
+<hr>
+
+
+<h4>Programma di prova</h4>
+
+<pre>
+import java.awt.*;
+
+class ProvaNewPoint {
+  public static void main(String args[]) {
+    Rectangle r;
+    r=new Rectangle(10,10,20,30);
+
+    NewPoint q;
+    q=new NewPoint(r);
+
+    System.out.println(q);
+  }
+}
+</pre>
+
+<hr>
+
+
+<h4>I costruttori si ereditano?</h4>
+
+<p>
+I costruttori non si ereditano.
+</p>
+
+<pre>
+import java.awt.*;
+
+class ProvaNewPoint {
+  public static void main(String args[]) {
+    NewPoint p;
+    p=new NewPoint(2,4);
+
+    NewPoint q;
+    q=new NewPoint();
+
+    System.out.println(p);
+  }
+}
+</pre>
+
+<p>
+Le due <tt>new NewPoint(...)</tt> danno errore.
+</p>
+
+<hr>
+
+
+<h4>Ridefinizione dei costruttori</h4>
+
+<p>
+Se voglio un costruttore, lo devo definire.
+</p>
+
+<pre>
+import java.awt.*;
+
+class NewPoint extends Point {
+  NewPoint() {
+  }
+
+  NewPoint(int x, int y) {
+    this.x=x;
+    this.y=y;
+  }
+
+  NewPoint(Rectangle r) {
+    this.x=r.x+r.width/2;
+    this.y=r.y+r.height/2;
+  }
+}
+</pre>
+
+<hr>
+
+
+<h4>Il costruttore vuoto</h4>
+
+<p>
+Se non ci sono costruttori, si assume che ci sia
+quello vuoto.
+</p>
+
+<p>
+Se per&ograve; metto un costruttore, quello vuoto
+(se serve) va definito.
+</p>
+
+<pre>
+class Esempio1 {
+  int x;
+}
+</pre>
+
+<p>
+Si pu&ograve; fare <tt>new Esempio1();</tt>
+</p>
+
+<pre>
+class Esempio2 {
+  int x;
+
+  Esempio2(int a) {
+    this.x=a;
+  }
+</pre>
+
+<p>
+Si pu&ograve; fare <tt>new Esempio2(valore)</tt>,
+ma <i>non</i> si pu&ograve; fare
+<tt>new Esempio2()</tt>
+</p>
+
+<pre>
+class Esempio3 {
+  int x;
+
+  Esempio3() {
+  }
+
+  Esempio3(int a) {
+    this.x=a;
+  }
+</pre>
+
+<p>
+Si possono fare tutte e due le cose.
+</p>
+
+<hr>
+
+
+<h4>Ereditare i costruttori</h4>
+
+<p>
+Se voglio solo ``ereditare'' il costruttore:
+definisco il costruttore con <tt>super(args)</tt>
+come corpo:
+</p>
+
+<pre>
+import java.awt.*;
+
+class NewPoint extends Point {
+  NewPoint() {
+    super();
+  }
+
+  NewPoint(int x, int y) {
+    super(x, y);
+  }
+
+  NewPoint(Rectangle r) {
+    this.x=r.x+r.width/2;
+    this.y=r.y+r.height/2;
+  }
+}
+</pre>
+
+<p>
+Di solito, conviene ridefinire il costruttore.
+</p>
+
+<hr>
+
+
+<h4>Il costruttore della sovraclasse</h4>
+
+<p>
+<tt>super(argomenti)</tt> invoca un costruttore
+della classe che &egrave; stata estesa
+</p>
+
+<p>
+Quando si invoca il costruttore della superclasse,
+questa deve essere la prima istruzione del metodo.
+</p>
+
+<pre>
+import java.awt.*;
+
+class TriPoint extends Point {
+  int z;
+
+  TriPoint() {
+  }
+
+  TriPoint(int x, int y, int z) {
+    super(x, y);
+    this.z=z;
+  }
+}
+</pre>
+
+<p>
+Quando un metodo non inizia con <tt>super(argomenti)</tt>,
+si assume automaticamente <tt>super()</tt>, ossia il
+costruttore senza argomenti.
+</p>
+
+<hr>
+
+
+<h4>Costruttori sovraccarichi</h4>
+
+<p>
+Come per i metodi, posso avere costruttori
+con argomenti in numero o tipo diverso:
+</p>
+
+<pre>
+  NewPoint()
+  NewPoint(int, int)
+  NewPoint(Rectangle)
+</pre>
+
+<hr>
+
+
+<h4>Esercizio</h4>
+
+<p>
+Definire i costruttori per <tt>Studente</tt>:
+</p>
+
+<ul>
+
+<li>senza argomenti
+
+<li>solo il nome
+
+<li>tutti i dati
+
+</ul>
+
+<hr>
+
+
+<h4>Soluzione</h4>
+
+<p>
+Si definiscono pi&ugrave; costruttori.
+</p>
+
+<pre>
+class Studente {
+  String nome;
+  int eta;
+  double media;
+
+  Studente() {
+  }
+
+  Studente(String nome) {
+    this.nome=nome;
+  }
+
+  Studente(String nome, int eta, double media) {
+    this.nome=nome;
+    this.eta=eta;
+    this.media=media;
+  }
+}
+</pre>
+
+<hr>
+
+
+<h4>Nota</h4>
+
+<p>
+Tutti i costruttori, se non iniziano con
+<tt>super(argomenti)</tt>, si considerano
+come se iniziassero con <tt>super()</tt>.
+</p>
+
+<p>
+Quindi, se si definisce una classe senza
+il costruttore senza argomenti, allora nelle
+sottoclassi bisogna chiamare esplicitamente
+<tt>super(argomenti)</tt> come prima istruzione.
+</p>
+
+<p>
+Altrimenti, lui assume <tt>super()</tt>, che
+non esiste.
+</p>
+
+<hr>
+
+
+<h4>Regoletta</h4>
+
+<p>
+Fare cos&iacute;:
+</p>
+
+<ul>
+
+<li>non definire costruttori (equivale a definire
+solo il costruttore vuoto)
+
+<li>definire tutti i costruttori che servono, incluso
+quello vuoto
+
+</ul>
+
+<p>
+Nel caso di classi estese, si pu&ograve; usare
+<tt>super</tt><br>
+(per questo corso: non &egrave; necessario)
+</p>
+
+<hr>
+
+
+<h4>Argomenti dei costruttori</h4>
+
+<p>
+Di solito: gli argomenti sono i valori che vengono
+messi nelle componenti dell'oggetto creato (es.
+il costruttore di <tt>Studente</tt> qui sopra)
+</p>
+
+<p>
+Qualche volta: permettono di capire i valori iniziali
+delle componenti (es. il rettangolo di cui si usavano
+i valori <tt>x</tt> e <tt>y</tt> per la classe
+<tt>NewPoint</tt>
+</p>
+
+<p>
+In generale: il costruttore &egrave; come tutti
+gli altri metodi (pu&ograve; fare quello che vuole
+con gli argomenti)
+</p>
+
+</body>
+</html>
+
+

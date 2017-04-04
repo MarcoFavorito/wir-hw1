@@ -1,0 +1,98 @@
+<html>
+<head>
+<title>
+Diploma Universitario di Ingegneria Informatica,
+Esame di Fondamenti di Informatica II - primo modulo,
+A.A. 1999/2000 - Appello del 18 luglio 2000
+</title>
+</head>
+
+<body>
+
+<h3 align="center">
+Diploma Universitario di Ingegneria Informatica<br>
+Esame di Fondamenti di Informatica II - primo modulo <br>
+A.A. 1999/2000 - Appello del 18 luglio 2000</h3>
+
+<b>Problema 1</b>&nbsp;&nbsp; Ci si riferisca ad una schema concettuale in cui
+sono definiti tre moduli per tipo astratto: <i>Appartamento</i>, <i>Stanza</i>,
+<i>Colore</i>. Da <i>Appartamento</i> a <i>Stanza</i> &egrave; definita una
+relazione <i>has-many</i> (contiene), e da <i>Stanza</i> a <i>Colore</i>
+&egrave; definita una relazione <i>has-a</i> (&egrave; colorata).
+La specifica del modulo <i>Appartamento</i> &egrave:
+
+<dl>
+  <dt><b><u>TipoAstratto</u></b> <i>Appartamento</i><p>
+  <dt><b><u>Sorte</u></b> <i>App</i> (sorta per il dominio di interesse)<p>
+  <dt><b><u>Funzioni</u></b><p>
+
+       <ul>
+         <li><i>Crea : () --&gt; App</i> <br>
+              precondizioni e postcondizioni per <i>crea</i>() = <i>a</i> <br>
+              <u>pre</u>: nessuna <br>
+              <u>post</u>: <i>a</i> &egrave; un appartamento senza stanze <p>
+
+
+         <li><i>NumeroStanze : (App) --&gt; Intero</i><br>
+              precondizione e postocondizioni per <i>NumeroStanze(a) = n</i><br>
+              <u>pre</u>: nessuna<br>
+              <u>post</u>: <i>n</i> &egrave; il numero delle stanze di <i>a</i> <p>
+
+
+         <li><i>AggiungiStanza : (App,Stanza) --&gt; (App,Intero)</i><br>
+              precondizione e postocondizioni per <i>AggiungiStanza(a,s) = (b,n)</i><br>
+              <U>pre</u>: nessuna<br>
+              <U>post</u>: <i>b</i> &egrave; l'appartamento ottenuto da <i>a</i>
+              aggiungendo la stanza <i>s</i> come (<i>NumeroStanze(a)+1</i>)-esima, ed
+              <i>n=NumeroStanze(a)+1</i>;
+              se <i>a</i> gi&agrave; contiene <i>s</i> allora <i>b=a</i>
+              ed <i>n=NumeroStanze(a)</i> <p>
+
+         <li><i>QualeStanza : (App,Intero) --&gt; Stanza</i><br>
+              precondizioni e postcondizioni per<I> QualeStanza(a,i) = s</i> <br>
+              <u>pre</u>: <i>1 &lt;= i &lt;= NumeroStanze(a)</i> <br>
+              <u>post</u>: <i>s</i> &egrave; la <i>i</i>-esima stanza
+              dell'appartamento <i>a</i> <p>
+
+       </ul>
+
+       <dt><b><u>FineTipoAstratto</u></b></dt>
+</dl>
+
+Si vuole progettare una classe C++ <code>Appartamento</code> che realizzi il tipo
+astratto <i>Appartamento</i>, tenendo conto che i moduli <i>Stanza</i> e
+<i>Colore</i> sono gi&agrave; stati realizzati mediante le classi C++. In
+particolare il modulo <i>Stanza</i> &egrave realizzato come segue:
+
+<pre>
+class Stanza
+{public:
+   void FissaColore(Colore);
+   Colore QualeColore();
+   //...
+ private:
+   Stanza(const Stanza&);
+   Stanza& operator=(const Stanza&);
+   //...
+};
+</pre>
+
+Mente il modulo <i>Colore</i> &egrave stato realizzato con una classe C++ <code>Colore</code> equipaggiata con opportuni costruttori, costruttore di copia e assegnazione.
+
+
+<p><b>Domanda 1</b>&nbsp;&nbsp; Si illustrino le scelte di progetto relative
+alla realizzazione del tipo astratto <i>Appartamento</i> mediante la classe C++
+<code>Appartamento</code>. </p>
+
+<p><b>Domanda 2</b>&nbsp;&nbsp;Si scriva la classe <code>Appartamento</code> (file .h e file .cpp) secondo le scelte di progetto illustrate per la Domanda 1. Scrivere il codice di tutte le funzioni pubbliche e private della classe. </p>
+
+<p><b>Problema 2</b>&nbsp;&nbsp;Realizzare una funzione esterna (non friend)
+della classe <code>Appartamento</code> che dato un appartamento <i>a</i> ed un colore
+<i>c</i> fissi il colore di tutte le stanze dell'appartamento a <i>c</i>. </P>
+
+<b><p>Problema 3</b>&nbsp;&nbsp; Spiegare i vantaggi e gli svantaggi degli
+schemi raelizzativi: funzionale con condivisione e funzionale senza
+condivisione.
+
+</body>
+</html>

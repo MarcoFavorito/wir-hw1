@@ -1,0 +1,214 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<!-- saved from url=(0049)http://www.dis.uniroma1.it/~mannino/HeuStab1.html -->
+<html xmlns:v="urn:schemas-microsoft-com:vml"
+xmlns:o="urn:schemas-microsoft-com:office:office"
+xmlns:w="urn:schemas-microsoft-com:office:word"
+xmlns="http://www.w3.org/TR/REC-html40">
+
+<head>
+<meta http-equiv=Content-Type content="text/html; charset=windows-1252">
+<meta name=ProgId content=Word.Document>
+<meta name=Generator content="Microsoft Word 9">
+<meta name=Originator content="Microsoft Word 9">
+<link rel=File-List href="./HeuStab1_file/filelist.xml">
+<link rel=Edit-Time-Data href="./HeuStab1_file/editdata.mso">
+<!--[if !mso]>
+<style>
+v\:* {behavior:url(#default#VML);}
+o\:* {behavior:url(#default#VML);}
+w\:* {behavior:url(#default#VML);}
+.shape {behavior:url(#default#VML);}
+</style>
+<![endif]-->
+<title>An augmentation algorithm for the maximum weighted stable set problem</title>
+<!--[if gte mso 9]><xml>
+ <o:DocumentProperties>
+  <o:Author>mannino</o:Author>
+  <o:LastAuthor>mannino</o:LastAuthor>
+  <o:Revision>4</o:Revision>
+  <o:TotalTime>19</o:TotalTime>
+  <o:Created>2000-08-25T18:48:00Z</o:Created>
+  <o:LastSaved>2000-08-31T12:37:00Z</o:LastSaved>
+  <o:Pages>1</o:Pages>
+  <o:Words>164</o:Words>
+  <o:Characters>936</o:Characters>
+  <o:Company>Mac Dobnald's</o:Company>
+  <o:Lines>7</o:Lines>
+  <o:Paragraphs>1</o:Paragraphs>
+  <o:CharactersWithSpaces>1149</o:CharactersWithSpaces>
+  <o:Version>9.2812</o:Version>
+ </o:DocumentProperties>
+</xml><![endif]--><!--[if gte mso 9]><xml>
+ <w:WordDocument>
+  <w:HyphenationZone>14</w:HyphenationZone>
+ </w:WordDocument>
+</xml><![endif]-->
+<style>
+<!--
+ /* Style Definitions */
+p.MsoNormal, li.MsoNormal, div.MsoNormal
+	{mso-style-parent:"";
+	margin:0cm;
+	margin-bottom:.0001pt;
+	mso-pagination:widow-orphan;
+	font-size:12.0pt;
+	font-family:"Times New Roman";
+	mso-fareast-font-family:"Times New Roman";}
+a:link, span.MsoHyperlink
+	{color:blue;
+	text-decoration:underline;
+	text-underline:single;}
+a:visited, span.MsoHyperlinkFollowed
+	{color:blue;
+	text-decoration:underline;
+	text-underline:single;}
+p
+	{margin-right:0cm;
+	mso-margin-top-alt:auto;
+	mso-margin-bottom-alt:auto;
+	margin-left:0cm;
+	mso-pagination:widow-orphan;
+	font-size:12.0pt;
+	font-family:"Times New Roman";
+	mso-fareast-font-family:"Times New Roman";}
+@page Section1
+	{size:595.3pt 841.9pt;
+	margin:70.85pt 2.0cm 2.0cm 2.0cm;
+	mso-header-margin:35.4pt;
+	mso-footer-margin:35.4pt;
+	mso-paper-source:0;}
+div.Section1
+	{page:Section1;}
+ /* List Definitions */
+@list l0
+	{mso-list-id:618299303;
+	mso-list-type:hybrid;
+	mso-list-template-ids:34391928 -980525322 2051045828 -204075274 1321252294 -381629254 -2066554872 310393318 -1698528240 -641942298;}
+@list l0:level1
+	{mso-level-number-format:bullet;
+	mso-level-text:\F0B7;
+	mso-level-tab-stop:36.0pt;
+	mso-level-number-position:left;
+	text-indent:-18.0pt;
+	mso-ansi-font-size:10.0pt;
+	font-family:Symbol;}
+ol
+	{margin-bottom:0cm;}
+ul
+	{margin-bottom:0cm;}
+-->
+</style>
+<!--[if gte mso 9]><xml>
+ <o:shapedefaults v:ext="edit" spidmax="1027">
+  <o:colormenu v:ext="edit" fillcolor="#cff"/>
+ </o:shapedefaults></xml><![endif]--><!--[if gte mso 9]><xml>
+ <o:shapelayout v:ext="edit">
+  <o:idmap v:ext="edit" data="1"/>
+ </o:shapelayout></xml><![endif]--><!-- Changed by: Carlo Mannino, 16-May-1997 -->
+</head>
+
+<body bgcolor="#ccffff" lang=IT link=blue vlink=blue style='tab-interval:35.4pt'>
+
+<div class=Section1>
+
+<h2><span lang=EN-GB style='mso-ansi-language:EN-GB'>An augmentation algorithm
+for the maximum weighted stable set problem <o:p></o:p></span></h2>
+
+<ul type=disc>
+ <li class=MsoNormal style='mso-margin-top-alt:auto;mso-margin-bottom-alt:auto;
+     mso-list:l0 level1 lfo3;tab-stops:list 36.0pt'><b><span lang=EN-GB
+     style='mso-ansi-language:EN-GB'>Authors </span></b><span lang=EN-GB
+     style='mso-ansi-language:EN-GB'>: <i>Carlo Mannino and Egidio Stefanutti </i><o:p></o:p></span></li>
+ <li class=MsoNormal style='mso-margin-top-alt:auto;mso-margin-bottom-alt:auto;
+     mso-list:l0 level1 lfo3;tab-stops:list 36.0pt'><b><span lang=EN-GB
+     style='mso-ansi-language:EN-GB'>Abstract </span></b><span lang=EN-GB
+     style='mso-ansi-language:EN-GB'>: <i>Edge projection is a specialization
+     of Lovasz and Plummer's clique reduction when restricted to edges. A concept
+     of augmenting sequences of edge-projections is defined w.r.t. a given
+     stable set. It is then proved the equivalence between the optimality of S
+     and the existence of an augmenting sequence w.r.t. S. This result is then
+     exploited to develop a new tabu-search heuristic for the Maximum Stable
+     Set Problem (weighted and unweighted). The main component of this
+     heuristic is an augmentation algorithm which tries to find augmenting
+     sequences of edge projection in order to improve the weight of a given
+     stable set $S$. The resulting code proved to be competitive with the best
+     codes presented in the literature. <o:p></o:p></i></span></li>
+</ul>
+
+
+<div class=MsoNormal align=center style='margin-top:5.0pt;mso-margin-bottom-alt:
+auto;margin-left:36.0pt;text-align:center'>
+
+<hr size=2 width="100%" align=center>
+
+</div>
+
+<span style='font-size:12.0pt;font-family:"Times New Roman";mso-fareast-font-family:
+"Times New Roman";mso-ansi-language:IT;mso-fareast-language:IT;mso-bidi-language:
+AR-SA'>
+
+<ul type=disc>
+ <li class=MsoNormal style='mso-margin-top-alt:auto;mso-margin-bottom-alt:auto;
+     mso-list:l0 level1 lfo3;tab-stops:list 36.0pt'><b>Status </b>: <i>Published
+     <o:p></o:p></i></li>
+</ul>
+
+</span>
+
+<div class=MsoNormal align=center style='margin-top:5.0pt;mso-margin-bottom-alt:
+auto;margin-left:36.0pt;text-align:center'>
+
+<hr size=2 width="100%" align=center>
+
+</div>
+
+<span style='font-size:12.0pt;font-family:"Times New Roman";mso-fareast-font-family:
+"Times New Roman";mso-ansi-language:IT;mso-fareast-language:IT;mso-bidi-language:
+AR-SA'>
+
+<ul type=disc>
+ <li class=MsoNormal style='mso-margin-top-alt:auto;mso-margin-bottom-alt:auto;
+     mso-list:l0 level1 lfo3;tab-stops:list 36.0pt'><b>Dimension </b>: <i>86,5
+     Kb (compressed) </i></li>
+</ul>
+
+</span>
+
+<div class=MsoNormal align=center style='text-align:center'>
+
+<hr size=2 width="100%" align=center>
+
+</div>
+
+
+<h4><a href="HeuStab1.ps.gz"><span lang=EN-GB style='mso-ansi-language:EN-GB'>Click
+here to get the postscript version of the paper </span></a><span lang=EN-GB
+style='mso-ansi-language:EN-GB'><o:p></o:p></span></h4>
+
+<p class=MsoNormal>. </p>
+
+<p class=MsoNormal align=center style='text-align:center'>. </p>
+
+
+<div class=MsoNormal align=center style='text-align:center'>
+
+<hr size=2 width="100%" align=center>
+
+</div>
+
+
+<address>Dipartimento di Informatica e Sistemistica, via Buonarroti 12, 00185
+Roma, Italy </address>
+
+
+<div class=MsoNormal align=center style='text-align:center'>
+
+<hr size=2 width="100%" align=center>
+
+</div>
+
+</div>
+
+</body>
+
+</html>

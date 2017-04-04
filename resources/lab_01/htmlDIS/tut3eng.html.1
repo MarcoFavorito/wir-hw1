@@ -1,0 +1,149 @@
+<HTML>
+
+<HEAD>
+<TITLE>Workshops & Tutorials</TITLE>
+</HEAD>
+
+<BODY background="images/aiiabg1.gif">
+
+<P>
+<CENTER>
+<FONT SIZE="+5"><B>Tutorial:</B></FONT><P>
+<FONT SIZE="+3">
+Development systems for grammatical representations based on Typed Feature Structures
+</FONT><BR>
+<p>
+<FONT SIZE="+2">Rome-September 16, 1997<P>
+Universit&agrave La Sapienza<BR>
+Facolt&agrave di Ingegneria</FONT>
+</CENTER>
+<P><BR>
+
+<table border=0>
+<tr>
+<td><b>Proposer</b>:
+<td><i>Fabio Pianesi</i>
+<tr>
+<td><b>Length</b>:
+<td><i>3 hours</i>
+<tr>
+<td><b>Date</b>:
+<td><i>September 16, 9:00-10:30 am + 11:00-12:30 am<BR>Aula del chiostro</i>
+</table>
+<p>
+
+La produzione di sistemi che impiegano l'elaborazione del linguaggio
+naturale a vario titolo si sta sempre piu' diffondendo. Si va dai sistemi
+per l'estrazione di informazioni da testi, alla produzione automatica dei
+testi, alle interfacce uomo-macchina che impiegano il linguaggio naturale, magari combinato con altre modalit&agrave comunicative.<br>
+In molti casi, i moduli di <i>NLP</i> rappresentano solo una parte, spesso neppure la pi&ugrave rilevante,
+all'interno di sistemi complessi. Solitamente, lo sviluppo ex-novo di tali
+moduli richiede tempi lunghi e risorse umane costose. Si pensi al caso di una
+interfaccia multimodale che impieghi &quot;anche&quot; il linguaggio naturale. Essa
+avr&agrave comunque bisogno di un analizzatore sintattico (parser), di una serie
+di specifiche sulla tipologia dei dati linguistici da analizzare
+(grammatiche e lessici) pi&ugrave altre informazioni su come tali dati
+linguistici vadano utilizzati ed integrati nel sistema complessivo.  Anche
+se il ruolo del <i>NLP</i> all'interno del sistema finale non &egrave preponderante,
+tuttavia occorrer&agrave investire, in fase di sviluppo, nella costruzione dei
+moduli software rilevanti e, soprattutto, nella specifica dei dati
+linguistici. Questi ultimi richiedono l'intervento di personale
+particolarmente qualificato (con adeguata formazione linguistica), spesso
+non avvezzo ai particolari formati computazionali richiesti dal sistema
+stesso. Inoltre, dei moduli di <i>NLP</i> cos&igrave costruiti avranno difficolt&agrave ad
+essere riutilizzati in sistemi che rispondano a specifiche diverse da quelle
+originarie. Richeste funzionali differenti possono risultare nella
+riscrittura di intere parti software e/o dei dati che queste ultime
+impiegano.
+<p>
+In una situazione ideale, l'utente che si proponga di sviluppare uno
+o pi&ugrave moduli di <i>NLP</i> dovrebbe concentrare la propria attenzione
+nell'analizzare lo scenario applicativo e lavorare essenzialmente nella
+specifica dei dati. Le fasi di sviluppo software dovrebbero essere ridotte
+al minimo od assenti, sfruttando l'amplia gamma di tecniche di parsing e/o
+generazione messe a disposizione dalla ricerca di base. In modo simile,
+l'aggiornamento moduli esistenti od il loro trasporto in applicazioni
+diverse dovrebbe limitarsi ad una modifica dei dati linguistici.
+<p>
+	Anche per fare fronte a tali problemi, si vanno moltiplicando gli
+sforzi per mettere a disposizione sistemi di ausilio nello sviluppo di
+moduli per il <i>NLP</i> (<i>ALEP</i>, <i>ALE</i>, etc..). Tali sistemi, di solito basati su
+formati per la specifica dei dati linguistici oramai  standard nella
+comunit&agrave di <i>NLP</i> (grammatiche ad unificazione e/o loro derivati), si
+propongono di:
+
+<ul>
+<li>fornire ausilii allo sviluppo di grammatiche e lessici: sistemi di editing
+e debugging amichevoli ed orientati alla scrittura e verifica rapida delle
+regole e/o delle specifiche per le singole entrate lessicali. Ausilii per il
+riutilizzo delle risorse disponibili.
+
+<li>fornire un insieme di processori linguistici (parsers, generatori) tra i quali l'utente possa scegliere quello piu' adatto alle proprie esigenze
+applicative. 
+
+<li>fornire un insieme di interfacce funzionali con moduli esterni che
+elaborino altri tipi di informazioni linguistiche e/o paralinguistiche:
+analizzatori o sintetizzatori morfologici, basi di conoscenza e basi dati,
+sistemi per la semantica lessicale, lessici.
+</ul>
+
+<p>
+
+	Il tutorial qui proposto si propone di avvicinare il partecipante
+all'uso di tali sistemi. In particolare, si porr&agrave l'attenzione alle fasi di
+sviluppo, verifica e messa in opera dei dati linguistici ed alla scelta dei
+parametri di sistema necessari per "costruire" un modulo di <i>NLP</i> da inserire all'interno di sistemi piu' complessi.
+
+<p>
+L'articolazione del tutorial e' come segue:
+
+<ul>
+<ul>
+	<li><b>Breve introduzione alle grammatiche basate su logiche
+	  attributo-valore tipizzate (<i>TFS</i>).</b>
+	<li><b>Architettura di un sistema per la produzione di moduli per il <i>NLP</i>.</b>
+	<li><b>Algoritmi di unificazione  e loro scelta.</b>
+	<li><b>Specifica dei dati linguistici a partire da un corpus di
+	  riferimento: la gerarchia dei tipi linguistici, la grammatica ed
+	  il lessico. Verifica dei dati editati. Loro riutilizzo.</b>
+	<li><b>Interazione run time con i processori linguistici ed integrazione
+	  di questi ultimi nel sistema <i>TFS</i>.</b>
+	<li><b>Uso delle interfacce funzionali verso sistemi esterni.</b>
+</ul>
+</ul>
+
+<p>
+
+Come sistema di riferimento, si utilizzer&agrave <i><b>GePpeTto</b></i>, sviluppato all'<i>IRST</i>
+dal proponente.  Verr&agrave dato ampio spazio alle esemplificazioni, soprattutto
+in merito alle tecniche e modalit&agrave per la specifica dei dati linguistici.
+Non sono richiesti prerequisiti particolari ai partecipanti. Una conoscenza
+minima delle problematiche e delle metodologie della linguistica
+computazionale e del <i>NLP</i> &egrave utile ma non indispensabile.
+
+
+
+<P><BR><P><BR><HR>
+
+
+<center>
+<p>
+<font size="+3">
+This page is still under construction!
+</font>
+</p>
+<p>
+<img src="images/at_work.gif">
+</p>
+</center>
+
+
+
+<hr size=3>
+<address>Written by Neurodancer</address>
+
+
+</BODY>
+
+</HTML>
+

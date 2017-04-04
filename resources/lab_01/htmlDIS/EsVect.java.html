@@ -1,0 +1,100 @@
+<!-- file generated with webcpp 0.6.2 http://webcpp.sf.net -->
+<html>
+<head>
+<title>C:\Documents and Settings\Administrator\Documenti\Web\asd\listati\EsVect.java</title>
+<meta name="Microsoft Border" content="tb, default">
+</head>
+<body bgcolor=#ffffff text=#000000 link=#ff0000 vlink=#666666 alink=#0000ff><!--msnavigation--><table border="0" cellpadding="0" cellspacing="0" width="100%"><tr><td>
+
+
+
+<p align="center">
+
+</p>
+
+<hr>
+
+<p align="center">&nbsp;</p>
+
+
+
+</td></tr><!--msnavigation--></table><!--msnavigation--><table border="0" cellpadding="0" cellspacing="0" width="100%"><tr><!--msnavigation--><td valign="top">
+<pre>
+<b><font COLOR=#0000ff>import</font></b> java.util.Vector;
+<b><font COLOR=#0000ff>import</font></b> java.util.Iterator; <font COLOR=#666666>// interface</font>
+
+<b><font COLOR=#0000ff>public</font></b> <b><font COLOR=#0000ff>class</font></b> EsVect {
+	<b><font COLOR=#0000ff>public</font></b> <b><font COLOR=#0000ff>static</font></b> <b><font COLOR=#0000ff>void</font></b> main(String[] args) {
+		ConsoleReader br = <b><font COLOR=#0000ff>new</font></b> ConsoleReader(System.in);
+		
+		Vector v = <b><font COLOR=#0000ff>new</font></b> Vector(); 
+		
+		String st = br.readLine(); <font COLOR=#666666>// br di tipo BufferedReader </font>
+		
+<font COLOR=#666666>/*
+		while (st != null) {
+			v.addElement(st); 
+			st = br.readLine(); 
+		} 
+*/</font>
+		
+		<b><font COLOR=#0000ff>while</font></b> (st != <b><font COLOR=#0000ff>null</font></b>) {
+			<b><font COLOR=#0000ff>int</font></b> num = Integer.parseInt(st); 
+			v.addElement(<b><font COLOR=#0000ff>new</font></b> Integer(num)); 
+			st = br.readLine(); 
+		} 
+		
+		System.out.println();
+
+		Iterator it  = v.iterator(); 
+		<b><font COLOR=#0000ff>while</font></b> (it.hasNext()) { 
+			System.out.println(it.next()); 
+		} 
+	}
+}
+
+
+
+</pre>
+<!--msnavigation--></td></tr><!--msnavigation--></table><!--msnavigation--><table border="0" cellpadding="0" cellspacing="0" width="100%"><tr><td>
+
+
+
+<p>&nbsp;</p>
+
+<hr>
+<table border="0" width="100%">
+
+  <tr>
+
+    <td width="505" valign="top">
+
+      <h5 align="left">Bacheca di <i>Algoritmi e Strutture Dati </i>a.a. 2004-05 - canale
+      A - L</h5>
+
+    </td>
+
+    <td width="381" valign="top">
+      <p align="right"><font size="1"><a href="http://algo.mastertopforum.com/" target="_blank">forum
+      del corso</a></font></td>
+
+  </tr>
+
+  <tr>
+
+    <td width="505" valign="top">
+
+      <h6>ultima modifica: 19/04/2005 16.30</h6>
+
+    </td>
+
+    <td width="381" valign="top">
+
+      <h5 align="right">by <a href="mailto:damore@dis.uniroma1.it"> FdA</a></h5>
+
+    </td>
+
+  </tr>
+
+</table></td></tr><!--msnavigation--></table></body>
+</html>

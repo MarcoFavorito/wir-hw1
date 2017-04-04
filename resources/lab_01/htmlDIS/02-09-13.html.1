@@ -1,0 +1,59 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+
+<html>
+<head>
+<title>Esame di Basi di Dati A.A. 2000/2001 - 2002-09-13</title>
+</head>
+
+<center>
+<h1>Esame di Basi di Dati<br>
+A.A. 2000/2001 - Appello del 13/09/2002</h1>
+</center>
+
+<h2>Problema 1</h2>
+
+Si richiede di progettare lo schema concettuale Entit&agrave;-Relazione di
+un'applicazione relativa ai finanziamenti ottenuti dai comuni italiani. Di ogni
+comune interessa il codice (identificativo), il nome, il numero di abitanti, la
+regione a cui appartiene, ed i finanziamenti ricevuti dalle varie
+istituzioni. In particolare, per ogni finanziamento, interessa la quota di
+soldi ricevuta, l'anno in cui il finanziamento &egrave; stato erogato, e
+l'istituzione che ha erogato il finanziamento stesso. Si noti che un comune, in
+uno stesso anno, pu&ograve; ricevere al massimo un finanziamento da ogni
+istituzione. Di ogni comune interessa anche sapere chi sono stati i vari
+sindaci (con codice fiscale, nome, cognome) eletti nei vari anni in cui si sono
+tenute le elezioni. Di ogni istituzione che pu&ograve; erogare fondi ai comuni,
+interessa il codice (identificativo) ed il nome. Esistono due e solo due tipi
+di istituzioni: regioni e altri. Di ogni regione interessa il nome
+(identificativo), il comune capoluogo della regione, le regioni confinanti, ed
+il budget previsto come bilancio nei vari anni. Di ogni istituzione che non sia
+una regione interessa l'anno di fondazione, ed il presidente attuale (con
+codice fiscale, nome, cognome).
+
+<h2>Problema 2</h2>
+
+Si progetti lo schema logico dell'applicazione, indicando lo schema relazionale
+corrispondente completo di vincoli espresso in SQL, e seguendo l'indicazione di
+evitare valori nulli nella base di dati.
+
+<h2>Problema 3</h2>
+
+Sulla base dello schema relazionale definito per il problema 2, esprimere in
+SQL le seguenti interrogazioni/aggiornamenti:
+<ol>
+  <li>Fornire le informazioni (quota di finanziamento, anno di erogazione) sui
+      finanziamenti che i vari comuni hanno ottenuto dalla regione di
+      appartenenza.
+  <li>Aumentare del 10% la quota di tutti i finanziamenti che la regione
+      Toscana ha erogato nel 2002 ai suoi comuni.
+  <li>Dato il codice fiscale di una persona, calcolare la somma complessiva che
+      tale persona ha ottenuto come finanziamento per il comune di cui era o
+      &egrave; sindaco da istituzioni diverse dalle regioni.
+  <li>Per ogni regione, calcolare la percentuale del budget complessivo degli
+      ultimi cinque anni che essa ha destinato a finanziamenti erogati a comuni
+      di regioni confinanti.
+</ol>
+
+</body>
+</html>
+

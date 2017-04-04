@@ -1,0 +1,54 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=windows-1252">
+<TITLE>Reti di Calcolatori</TITLE>
+</HEAD>
+<BODY background="bgrnd.jpg">
+
+<B><FONT SIZE=5><P>9) Client/Server ed Elaborazione Distribuita</P>
+<hr>
+</FONT>
+</B>1.&nbsp; Significato dei termini
+<OL>
+
+<P ALIGN="JUSTIFY">Il <I>Client/Server</I> &egrave; un modello che prevede la scomposizione di un'applicazione in due processi cooperanti - il Client e il Server.  L'elaborazione distribuita &egrave; invece un concetto pi&ugrave; ampio, in quanto prevede la distribuzione del lavoro tra pi&ugrave; macchine; molte macchine possono elaborare il lavoro per conto dei Client.  La richiesta di un Client pu&ograve; essere accettata da un Server che, per portarla a termine, puo' chiedere servizi ad altri Server (comportandosi quindi a sua volta da Client).  Il <I>World Wide Web</I> &egrave; un esempio di ambiente distribuito (eterogeneo).</P>
+</OL>
+2.&nbsp; Paradigmi per la realizzazione di applicazioni distribuite
+<DIR>
+<DIR>
+
+<P ALIGN="JUSTIFY">I linguaggi per la realizzazione di applicazioni distribuite, forniscono costrutti per la comunicazione e la sincronizzazione dei processi, ma anche costrutti per la gestione del cosidetto "Codice Mobile" - Paradigmi per la realizzazione di applicazioni distribuite:</P></DIR>
+</DIR>
+
+
+<UL>
+
+<UL>
+<I><LI>Client/Serve</I>r - un astrazione per distribuire compiti a componenti diverse della stessa applicazione.  Client e Server non devono necessariamente risiedere sulla stessa macchina.  Un esempio: <I>X-Windows</I>.</LI>
+<I><LI>Remote Eval</I>uation - X &egrave; un processo Client che non ha le risorse necessarie.  Y &egrave; un processo Server che risiede su una macchina che possiede le risorse necessarie ad X. Y mette a disposizione le risorse sulla propria macchina, purch&egrave; X gli fornisca il codice da eseguire.  E' un modello pi&ugrave; flessibile del precedente; nel <I>Client/Server</I> il Server mette a disposizione un numero finito di servizi, nel <I>Remote Evaluation</I> il server mette a disposizione un servizio "programmabile".  Un esempio: le stampanti <I>postscript</I>.</LI>
+<I><LI>Code on Demand</I> - X ha le risorse ma non sa come utilizzarle e chiede ad Y il codice (esattamente il caso opposto al precedente).  Un esempio: il browser ed il server HTTP (il downloading dinamico delle classi Java).</LI>
+<I><LI>Agenti Mobili</I> - E' un estremizzazione del <I>Remote Evaluation</I>.  X, anzich&eacute; spedire codice ad Y, si trasferisce sulla macchina di Y e continua l&igrave; la sua esecuzione.  Consente la riduzione del traffico di rete (2 interazioni tra client e server anzich&eacute; N). </LI></UL>
+</UL>
+
+3.&nbsp; Client/Server a 2 o a 3 livelli e tecniche di accesso ai dati (JDBC)
+
+
+<UL>
+
+<UL>
+<LI>accesso diretto - interfacciamento diretto ai dati per mezzo di librerie lato client.  Un modello semplice (non distribuito) utilizzabile in assenza di concorrenza, quindi di accesso multiplo alle informazioni.</LI><LI>modello 2-tier - un modello che prevede la suddivisione delle competenze tra un client (richiesta dei dati, elaborazione, presentazione) e un server (fornitura dei dati e coordinamento degli accessi).</LI><LI>modello 3-tier - un modello che consente una maggiore specializzazione dei componenti coinvolti.  Prevede un client che provvede alla presentazione dei risultati (interfaccia utente in genere), un middleware che provvede alla richiesta e all'elaborazione dei dati e un server database per la gestione e il coordinamento degli accessi. </LI></UL>
+</UL>
+
+4.&nbsp; Cosa offre Java per la realizzazione di applicazioni distribuite
+
+
+<UL>
+
+<UL>
+<I><LI>Socket</I> - permettono la realizzazione di un canale di comunicazione tra due processi</LI>
+<I><LI>RMI </I>- invocazione di un metodo di un oggetto remoto (analogo alla RPC) </LI>
+<I><LI>serializzazione di un oggetto </I>- che permette di "spedire" un oggetto via stream, quindi di eseguirlo su un'altra macchina.</LI></UL>
+</UL>
+
+</BODY>
+</HTML>

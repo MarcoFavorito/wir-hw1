@@ -1,0 +1,1256 @@
+<html>
+<head>
+<title>Definizioni di nuove classi</title>
+      <link rel="top" href="../lezioni.html">
+      <link rel="up" href="../lezioni.html">
+      <link rel="contents" href="../lezioni.html">
+      <link rel="previous" href="../stringhe/stringhe.html">
+      <link rel="next" href="../ered/ered.html">
+</head>
+
+<body>
+
+<h1>Definizioni di nuove classi</h1>
+
+<p>
+<b>classe</b>=tipo degli oggetti
+(es. String, Point, Rectangle)
+</p>
+
+<p>
+Da non confondere con la parola class che 
+va messa all'inizio del programma!
+</p>
+
+<p>
+tutti gli oggetti di uno stesso tipo
+hanno in comune:
+</p>
+
+<ol>
+
+<li>componenti
+<li>metodi
+
+</ol>
+
+<p>
+Definire una nuova classe=specificare
+quali componenti o metodi ha una classe
+</p>
+
+<p>
+In questa lezione: definire le componenti
+di una classe
+</p>
+
+<hr>
+
+
+<h4>Progettazione di una classe</h4>
+
+<p>
+Primo: a cosa serve la classe?
+</p>
+
+<p>
+Esempio: dati di uno studente:
+</p>
+
+<ol>
+
+<li>nome: una stringa
+
+<li>data di nascita: una stringa
+
+<li>media: un intero
+
+</ol>
+
+<p>
+Sarebbe comodo avere oggetti cos&iacute;:
+</p>
+
+<pre>
+public static void main() {
+  Studente s, q;
+
+  s.nome="Tizio Semproni";
+  s.data="12/3/1932";
+  s.media="18";
+
+  ...
+}
+</pre>
+
+<p>
+Se si compila questo programma, d&agrave; errore
+(il tipo <tt>Studente</tt> non esiste).
+</p>
+
+<p>
+Utile: quando si deve definire un nuovo tipo
+di dati, scrivere <i>prima</i> un programma
+in cui si usa.
+</p>
+
+<p>
+Serve a capire come deve essere fatto
+l'oggetto.
+</p>
+
+<hr>
+
+
+<h4>Progettazione: dati</h4>
+
+<p>
+Dal programma di esempio, si capisce che il
+nuovo tipo dovrebbe essere fatto cos&iacute;:
+</p>
+
+<ul>
+
+<li>nome del nuovo tipo: <tt>Studente</tt>
+
+<li>componenti di ogni oggetto:
+<tt>.nome</tt>, <tt>.data</tt> e <tt>.media</tt>,
+di tipo <tt>String</tt> i primi due e <tt>int</tt>
+l'ultimo
+
+</ul>
+
+<p>
+A parole, il nuovo tipo viene specificato
+cos&iacute;:
+</p>
+
+<pre>
+Crea nuovo tipo di oggetti Studente con:
+|  componente String, di nome .nome
+|  componente String, di nome .data
+|  componente int, di nome .media
+</pre>
+
+<p>
+Questa definizione a parole si pu&ograve;
+ottenere guardando il programma di esempio.
+</p>
+
+<p>
+Infatti, dal programma si vede che il tipo si
+chiama <tt>Studente</tt>, mentre ogni variabile di
+questo tipo ha queste tre componenti.
+</p>
+
+<hr>
+
+
+<h4>Traduzione: specifica a parole -&gt; linguaggio</h4>
+
+<p>
+Questo &egrave; quello che voglio dire al calcolatore:
+</p>
+
+<pre>
+Crea nuovo tipo di oggetti Studente con:
+|  componente String, di nome .nome
+|  componente String, di nome .data
+|  componente int, di nome .media
+</pre>
+
+<p>
+Non &egrave; codice Java.
+</p>
+
+<p>
+Nella sintassi del linguaggio, diventa:
+</p>
+
+<pre>
+class Studente {
+  String nome;
+  String data;
+  int media;
+}
+</pre>
+
+<hr>
+
+
+<h4>Osservazioni</h4>
+
+<p>
+Fare attenzione:
+</p>
+
+<ul>
+
+<li>la definizione si ottiene con una traduzione
+meccanica dalla descrizione a parole (non serve
+pensarci sopra)
+
+<p />
+
+<li>inizia con <tt>class</tt>, ma &egrave;
+diverso da quello che fa il programma
+
+<dl>
+
+<dt><b>programma:</b>
+<dd>una sequenza di istruzioni che vanno eseguite
+
+<dt><b>nuova classe:</b>
+<dd>definizione di un nuovo tipo di dati composto
+
+</dl>
+
+Il programma comporta la esecuzione di istruzioni,
+la nuova classe definisce un tipo di dato che il
+programma pu&ograve; usare.
+
+</ul>
+
+<hr>
+
+
+<h4>Definizione e uso di una nuova classe, in pratica</h4>
+
+<p>
+La definizione della classe va in un file,<br />
+il programma va in una altro.
+</p>
+
+<p>
+Sono due file separati
+</p>
+
+<table>
+
+<tr>
+<td valign="top">
+File Studente.java:
+
+<table border="2">
+<tr>
+<td>
+<pre>
+class Studente {
+  String nome;
+  String data;
+  int media;
+}
+</pre>
+</td>
+</tr>
+</table>
+
+</td>
+
+<td>&nbsp;&nbsp;&nbsp;</td>
+
+<td>
+File DBUniv.java:
+
+<table border="2">
+<tr>
+<td>
+<pre>
+class DBUniv {
+  public static void main(String args[]) {
+    Studente x;
+    x=new Studente();
+
+    x.nome="Ciccio";
+    x.data="12/12/1959";
+    x.media=18;
+
+    System.out.println(x.nome);
+
+    x.media=x.media+1;
+    System.out.println(x.media);
+  }
+}
+</pre>
+</td>
+</tr>
+</table>
+
+</td>
+</tr>
+</table>
+
+<p>
+<b>Attenzione!</b>
+</p>
+
+<ul>
+
+<li>sono due file diversi
+
+<li>quindi, devono avere nomi diversi
+
+<li>dato che la parola dopo <tt>class</tt>
+&egrave; il nome del file (senza .java</tt>)<br>
+
+le parole dopo <tt>class</tt> devono essere diverse
+
+</ul>
+
+<p>
+Non posso fare <tt>class Studente</tt> in
+tutti e due i file.
+</p>
+
+<hr>
+
+
+<h4>Compilazione</h4>
+
+<p>
+Cosa devo fare?
+</p>
+
+<ul>
+
+<li>scrivo i due file separati
+
+<li>compilo tutti e due i file (<tt>javac</tt>)
+
+<li>eseguo solo il programma
+
+</ul>
+
+<p>
+Le istruzioni da eseguire stanno nel programma.<br />
+Quindi, eseguo il programma.
+</p>
+
+<p>
+La classe dice solo come sono fatti i dati
+di un certo tipo.
+</p>
+
+<hr>
+
+
+<h4>Dichiarazione di variabile e di componente</h4>
+
+<p>
+Una dichiarazione <tt>int x</tt> ha significato
+diverso se sta nel programma o nella classe:
+</p>
+
+<dl>
+
+<dt>nel programma:
+<dd>crea una variabile intera di nome <tt>x</tt>
+
+<dt>nella classe:
+<dd>ogni oggetto <tt>o</tt> di questo tipo deve avere una
+componente intera di nome <tt>o.x</tt>
+
+</dl>
+
+<p>
+Nel programma: definisco una variabile; nella classe:
+dico come saranno fatti internamente gli oggetti.
+</p>
+
+<hr>
+
+
+<h4>Memoria, dopo <tt>int x</tt></h4>
+
+<p>
+Se fa <tt>int x</tt>, cosa succede?
+</p>
+
+<dl>
+
+<dt>nel programma
+<dd>crea una zona di memoria (rettangolo)
+in cui si pu&ograve; memorizzare un intero
+
+<dt>nella classe
+<dd>non si crea nessuna zona di memoria;
+verr&agrave; creata una casella <tt>.x</tt>
+per ogni oggetto del nuovo tipo.
+
+</dl>
+
+<hr>
+
+
+<h4>Dalla classe alla descrizione a parole</h4>
+
+<p>
+Finora: descrizione a parole --&gt; definizione di classe
+</p>
+
+<p>
+Ora, il contrario: classe --&gt; descrizione a parole
+</p>
+
+<pre>
+class Studente {
+  String nome;
+  String data;
+  int media;
+}
+</pre>
+
+<p>
+significa the Studente &egrave; un nuovo tipo di dato,
+e che ogni variabile di questo tipo ha una
+componente String di nome .nome, una componente
+String di nome .data e una int di nome .media
+</p>
+
+<hr>
+
+
+<h4>Traduzione inversa: esercizio</h4>
+
+<p>
+Dare la descrizione a parole di questo nuovo tipo:
+</p>
+
+<pre>
+class Abcd {
+  int x;
+  int y;
+}
+</pre>
+
+<hr>
+
+
+<h4>Soluzione</h4>
+
+<p>
+Facciamo il processo meccanico inverso:
+</p>
+
+<pre>
+class Abcd {
+  int x;
+  int y;
+}
+</pre>
+
+<p>
+Con le regole di prima, significa:
+</p>
+
+<pre>
+Crea nuovo tipo di dato Abcd con:
+| componente int di nome x
+| componente int di nome y
+</pre>
+
+<p>
+&Egrave; semplicemente l'inversione della
+traduzione di prima.
+</p>
+
+<hr>
+
+<h4>Altro esercizio sulla stessa classe</h4>
+
+<pre>
+Crea nuovo tipo di dato Abcd con:
+| componente int di nome x
+| componente int di nome y
+</pre>
+
+<p>
+Sulla base di questa descrizione,
+scrivere un programma di esempio.
+</p>
+
+<p>
+Ossia, voglio un programma che usa questa classe
+</p>
+
+<hr>
+
+
+<h4>Soluzione</h4>
+
+<p>
+Dato che <tt>Abcd</tt> &egrave; il
+nome della classe, si possono definire
+variabili di quel tipo, e creare:
+</p>
+
+<pre>
+class Prova {
+  public static void main(String args[]) {
+    Abcd a, b;
+    a=new Abcd();
+    b=new Abcd();
+
+    ...
+</pre>
+
+<p>
+<b>Attenzione!</b> Questo &egrave; il programma
+(l'altro era il file di definizione del tipo).
+</p>
+
+<hr>
+
+
+<h4>Soluzione: uso delle variabili</h4>
+
+<p>
+Dato che <tt>Abcd</tt> ha componenti <tt>x</tt>
+e <tt>y</tt>, sono definite le variabili intere
+<tt>a.x</tt>, <tt>a.y</tt>, <tt>b.x</tt>
+e <tt>b.y</tt>
+</p>
+
+<pre>
+class Prova {
+  public static void main(String args[]) {
+    Abcd a, b;
+    a=new Abcd();
+    b=new Abcd();
+
+    a.x=12;
+    a.y=3;
+
+    b.x=4;
+    b.y=-1;
+
+    System.out.println(a.x);
+  }
+}
+</pre>
+
+<hr>
+
+
+<h4>Osservazione</h4>
+
+<p>
+Quando faccio <tt>int x</tt> nella classe, non
+&egrave; una dichiarazione di variabile.
+</p>
+
+<p>
+Se non creo nessun oggetto <tt>Abcd</tt>, allora
+non viene creata nessuna variabile <tt>.x</tt>,
+se creo cento oggetti creo cento variabili
+<tt>.x</tt>, ecc.
+</p>
+
+<p>
+Ho due variabili in questo programma, ma potevo
+usarne uno, tre, cento, ecc.<br>
+Non c'entra con il fatto che questi oggetti
+hanno due componenti.
+</p>
+
+<hr>
+
+
+<h4>Metodi della classe</h4>
+
+<p>
+Abbiamo visto solo come definire classi senza
+metodi.
+</p>
+
+<p>
+Anche se sono definite la componenti <tt>x</tt>
+e <tt>y</tt>, non &egrave; definito il metodo
+<tt>distance</tt>, ecc.
+</p>
+
+<p>
+Vedremo poi come si fanno a definire i metodi
+per le nuove classi.
+</p>
+
+<hr>
+
+
+<h4>Esercizio: progettare e usare un nuovo tipo</h4>
+
+<p>
+Ogni oggetto contiene i dati di un film: titolo,
+regista, anno di uscita e durata del film.
+</p>
+
+<p>
+Seguire la solita procedura:
+</p>
+
+<ol>
+
+<li>dare una definizione a parole dei nuovi dati
+
+<li>scrivere un programma di esempio
+
+<li>tradurre la definizione nel linguaggio Java
+
+<li>compilare ed eseguire
+
+</ol>
+
+<hr>
+
+
+<h4>Film: definizione a parole</h4>
+
+<p>
+So quali sono i dati:
+</p>
+
+<pre>
+crea un nuovo tipo di dati Film con:
+| componente String di nome titolo
+| componente String di nome regista
+| componente int di nome anno
+| componente int di nome durata
+</pre>
+
+<hr>
+
+
+<h4>Film: programma di esempio</h4>
+
+<p>
+Un qualsiasi programma che usa variabili
+di tipo <tt>Film</tt> va bene, per ora:
+</p>
+
+<pre>
+class ProvaFilm {
+  public static void main(String args[]) {
+    Film f;
+    f=new Film();
+
+    f.titolo="Ombre rosse";
+    f.regista="Ford";
+    f.anno=1958;
+    f.durata=120;
+
+    int x;
+    x=f.anno-2;
+
+    System.out.println(f.titolo);
+  }
+}
+</pre>
+
+<p>
+Nota: l'istruzione <tt>System.out.println(f)</tt>
+<b>non</b> stampa tutte le componenti di <tt>f</tt>
+</p>
+
+<hr>
+
+
+<h4>Film: la classe</h4>
+
+<p>
+Si tratta di tradurre la descrizione a parole:
+</p>
+
+<pre>
+class Film {
+  String regista;
+  String titolo;
+  int anno;
+  int durata;
+}
+</pre>
+
+<hr>
+
+
+<h4>Esercizio: tipo corso</h4>
+
+<p>
+Specifiche del tipo:
+</p>
+
+<ol>
+
+<li>nome del tipo: <tt>Corso</tt>
+
+<li>dati da rappresentare:
+
+<ol type="a">
+
+<li>nome del corso
+<li>nome del docente
+<li>anno in cui si tiene
+<li>numero di ore
+
+</ol>
+
+</ol>
+
+<p>
+Da questa definizione &egrave; possibile
+definire il tipo in modo univoco!
+</p>
+
+<hr>
+
+
+<h4>Primo passo: definizione informale</h4>
+
+<p>
+In base quanto detto sopra:
+</p>
+
+<pre>
+crea un nuovo tipo Corso con:
+| componente String di nome .titolo
+| componente String di nome .docente
+| componente int di nome .anno
+| componente int di nome .ore
+</pre>
+
+<hr>
+
+
+<h4>Secondo passo: un programma di esempio</h4>
+
+<p>
+Questo serve per due motivi:
+</p>
+
+<ol>
+
+<li>verificare se la definizione &egrave; corretta <br />
+(ossia, se poi il tipo si pu&ograve; usare come ci
+aspettiamo)
+
+<li>fare il test del file che definisce la classe <br />
+(nella classe non ci sono istruzioni: per fare la
+verifica serve un programma che usa la classe)
+
+</ol>
+
+<p>
+Un esempio di possibile programma:
+</p>
+
+<pre>
+class Ing {
+  public static void main(String args[]) {
+    Corso fondam;
+    fondam=new Corso();
+
+    fondam.titolo="Fondamenti di Informatica";
+    fondam.docente="Paolo Liberatore";
+    fondam.anno=2002;
+    fondam.ore=100;
+
+    // aggiornare al nuovo anno
+    fondam.anno=fondam.anno+1;
+
+    System.out.println(fondam.titolo);
+    System.out.println(fondam.docente);
+    System.out.println(fondam.ore);
+  }
+}
+</pre>
+
+<p>
+Il nome del file in cui questo va messo
+&egrave; <tt>Ing.java</tt>
+</p>
+
+<p>
+Il nome del file deve coincidere con quello
+che &egrave; scritto dopo <tt>class</tt> 
+</p>
+
+<p>
+Qualsiasi altro programma che definiva una
+o pi&ugrave; variabili del nuovo tipo, e
+poi le usava in qualche modo, andava bene!
+</p>
+
+<hr>
+
+
+<h4>Terzo passo: definire le componenti</h4>
+
+<p>
+Si tratta solo di tradurre la definizione in Java:
+</p>
+
+<pre>
+crea un nuovo tipo Corso contenente:
+| componente String di nome .titolo
+| componente String di nome .docente
+| componente int di nome .anno
+| componente int di nome .ore
+</pre>
+
+<p>
+Solito metodo di traduzione:
+</p>
+
+<pre>
+class Corso {
+  String titolo;
+  String docente;
+  int anno;
+  int ore;
+}
+</pre>
+
+<p>
+Lo scriviamo su un file <tt>Corso.java</tt>
+</p>
+
+<hr>
+
+
+<h4>Compilare ed eseguire</h4>
+
+<p>
+Tutti e due i file vanno compilati:
+</p>
+
+<pre>
+  javac Corso.java
+  javac Ing.java
+</pre>
+
+<p>
+Il primo file dice solo come sono fatti
+gli oggetti di tipo <tt>Corso</tt>, mentre
+il secondo &egrave; il programma. Quindi
+solo il secondo va eseguito:
+</p>
+
+<pre>
+  java Ing
+</pre>
+
+<p>
+Questo fa capire a cosa serve il programma
+di esempio: con <tt>Corso.java</tt> da solo
+non potevo eseguire nessun programma.
+</p>
+
+<p>
+Con il programma di esempio, ho un programma
+da eseguire per vedere se la definizione
+di tipo va bene.
+</p>
+
+<hr>
+
+
+<h4>Esercizio: nuovo tipo per i triangoli</h4>
+
+<p>
+Definire una classe per rappresentare triangoli.
+</p>
+
+<p>
+Non servono altre specifiche.
+</p>
+
+<hr>
+
+
+<h4>Primo passo: definizione informale</h4>
+
+<p>
+Ogni oggetto &egrave; un triangolo
+</p>
+
+<p>
+Nome della classe: <tt>Triangolo</tt>
+</p>
+
+<p>
+Ogni triangolo &egrave; rappresentato da tre
+punti.
+</p>
+
+<p>
+Quindi, ho tre componenti di tipo <tt>Point</tt>
+</p>
+
+<p>
+Definizione del tipo:
+</p>
+
+<pre>
+crea nuovo tipo Triangolo con:
+| componente tipo Point di nome .primo
+| componente tipo Point di nome .secondo
+| componente tipo Point di nome .terzo
+</pre>
+
+<hr>
+
+
+<h4>Secondo passo: scrivere il programma di esempio</h4>
+
+<p>
+Basta che sia un qualsiasi programma che fa qualcosa
+su oggetti del tipo.
+</p>
+
+<p>
+Per esempio, definire due triangoli, calcolare il
+perimetro del primo e l'area del secondo.
+</p>
+
+<pre>
+import java.awt.*;
+
+class PerArea {
+  public static void main(String args[]) {
+    Triangolo a;
+    a=new Triangolo();
+
+    Triangolo b;
+    b=new Triangolo();
+
+    a.primo=new Point();
+    a.primo.x=10;
+    a.primo.y=20;
+
+    a.secondo=new Point();
+    a.secondo.move(20,30);
+
+    a.terzo=new Point();
+    a.terzo.move(15,20);
+
+    int dx=a.primo.x - a.secondo.x;
+    int dy=a.primo.y - a.secondo.x;
+
+    double lato1;
+    lato1=Math.sqrt(dx*dx+dy*dy);
+
+    System.out.println(lato1);
+  }
+}
+</pre>
+
+<p>
+Questo programma contiene solo il calcolo
+di un lato: il perimentro e l'area si calcolano
+nel solito modo.
+</p>
+
+<p>
+Prima vediamo la definizione di tipo e poi
+facciamo commenti su questo programma.
+</p>
+
+<hr>
+
+
+<h4>Terzo passo: traduzione della classe</h4>
+
+<p>
+La specifica informale era:
+</p>
+
+<pre>
+crea nuovo tipo Triangolo con:
+| componente Point di nome .primo
+| componente Point di nome .secondo
+| componente Point di nome .terzo
+</pre>
+
+<p>
+La traduzione avviene nel modo ovvio.
+</p>
+
+<pre>
+import java.awt.*;
+
+class Triangolo {
+  Point primo;
+  Point secondo;
+  Point terzo;
+}
+</pre>
+
+<hr>
+
+
+<h4>Importante: come usare gli oggetti</h4>
+
+<p>
+Regola generale:
+</p>
+
+<p>
+Se <tt>og</tt> &egrave; una variabile di un tipo oggetto, e<br />
+<tt>.comp</tt> &egrave; una sua componente,<br />
+allora <tt>og.comp</tt> &egrave; una variabile.
+</p>
+
+<p>
+Se <tt>og.comp</tt> &egrave; una variabile oggetto,<br>
+valgono tutte le regole degli oggetti
+</p>
+
+<p>
+Nell'esempio, <tt>a.primo</tt> &egrave; una variabile
+di tipo <tt>Point</tt>:<br>
+vale tutto quello che vale per le variabili <tt>Point</tt>
+</p>
+
+<hr>
+
+
+<h4>Oggetti come componenti</h4>
+
+<p>
+Dato che <tt>a.primo</tt> &egrave; una variabile
+di tipo <tt>Point</tt>
+</p>
+
+<ol>
+
+<li>prima di usare l'oggetto <tt>a.primo</tt><br />
+lo devo creare
+
+<p />
+
+<li><tt>a.primo.x</tt> e <tt>a.primo.y</tt> sono
+variabili intere
+
+<p />
+
+<li>posso invocare il metodo <tt>a.primo.move(10,20)</tt>
+
+</ol>
+
+<p>
+Per quello che riguarda il punto 3, ora vediamo
+l'evoluzione della memoria.
+</p>
+
+<hr>
+
+
+<h4>Definizione variabile <tt>Triangolo</tt></h4>
+
+<pre>
+    Triangolo a;
+</pre>
+
+<p>
+Produce il seguente stato della memoria:
+</p>
+
+<img src="triangolo-1.jpg">
+
+<p>
+Esiste solo la variabile, ma non l'oggetto.
+</p>
+
+<p>
+<b>Non esistono</b>
+le variabili <tt>a.primo</tt> ecc.
+</p>
+
+<hr>
+
+
+<h4>Creazione dell'oggetto <tt>Triangolo</tt></h4>
+
+<pre>
+  a=new Triangolo();
+</pre>
+
+<p>
+La <tt>new</tt> crea effettivamente il
+nuovo oggetto:
+</p>
+
+<img src="triangolo-2.jpg">
+
+<p>
+Esistono le variabili <tt>a.primo</tt> ecc.
+</p>
+
+<p>
+<b>Importante:</b> non esistono (ancora) gli oggetti punto!
+</p>
+
+<p>
+Quindi, <tt>a.primo.x</tt>, <tt>a.primo.y</tt>, ecc.
+<i>non esistono ancora</i>
+</p>
+
+<p>
+Fare <tt>a.primo.x=10;</tt> oppure <tt>a.primo.move(10,20)</tt>
+a questo punto d&agrave; un errore<br />
+(prima di poter usare un oggetto, lo devo creare)
+</p>
+
+<hr>
+
+
+<h4>Creazione del punto</h4>
+
+<pre>
+    a.primo=new Point();
+</pre>
+
+<p>
+Questo crea effettivamente il punto.
+</p>
+
+<img src="triangolo-3.jpg">
+
+<p>
+Solo ora l'oggetto <tt>a.primo</tt> si pu&ograve;
+usare.
+</p>
+
+<p>
+Ora si pu&ograve; fare <tt>a.primo.x=10</tt>
+oppure <tt>a.primo.move(10,20)</tt>
+</p>
+
+<hr>
+
+
+<h4>Copiatura degli oggetti</h4>
+
+<table>
+<tr>
+<td valign=top>
+Copiare=
+</td>
+<td>
+creare una nuova zona di memoria+<br />
+copiarci i dati della zona di memoria originaria.
+</td>
+</tr>
+</table>
+
+<p>
+Dopo aver fatto:
+</p>
+
+<pre>
+  Point p;
+  p=new Point();
+  p.move(10,20);
+</pre>
+
+<p>
+Questo codice fa la copia
+</p>
+
+<pre>
+  a.primo=new Point();
+  a.primo.move(p.x, p.y);
+</pre>
+
+<p>
+Questo invece indica lo stesso oggetto:
+</p>
+
+<pre>
+  a.primo=p;
+</pre>
+
+<hr>
+
+
+<h4>Stato della memoria</h4>
+
+<p>
+Prima:
+</p>
+
+<img src="triangolo-6.jpg">
+
+<p>
+Dopo aver fatto <tt>a.primo=p</tt>
+</p>
+
+<img src="triangolo-7.jpg">
+
+<p>
+Si tratta sempre dello stesso punto!
+</p>
+
+<p>
+Se faccio <tt>p.x=12</tt>, viene modificato
+anche <tt>a.primo.x</tt>
+</p>
+
+<p>
+Se copio con <tt>  a.primo=new Point();
+a.primo.move(p.x, p.y);</tt>:
+</p>
+
+<img src="triangolo-5.jpg">
+
+<p>
+La copia crea un nuovo oggetto punto
+</p>
+
+<hr>
+
+
+<h4>La <tt>new</tt> nella classe</h4>
+
+<p>
+Non si pu&ograve; fare una cosa del genere:
+</p>
+
+<pre>
+// Codice errato
+import java.awt.*;
+
+class Triangolo {
+  Point primo;
+  primo=new Primo();
+
+  Point secondo;
+  secondo=new Secondo();
+
+  Point terzo;
+  terzo=new Terzo();
+}
+</pre>
+
+<p>
+&Egrave; una regola del linguaggio.
+</p>
+
+<p>
+&Egrave; possibile creare oggetti in una
+classe, ma soltanto nella definizione di
+un metodo.
+</p>
+
+<p>
+In altre parole: si possono creare oggetti,
+ma non in questo modo.
+</p>
+
+</body>
+</html>
+
+
+
+
+
+

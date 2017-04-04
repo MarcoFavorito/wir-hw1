@@ -1,0 +1,140 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<!-- saved from url=(0051)http://www-db.deis.unibo.it/projects/D2I/D3-P2.html -->
+<!-- saved from url=(0022)http://internet.e-mail --><HTML><HEAD><TITLE>Progetto D2I - Prodotto D3-P2</TITLE>
+<META content="text/html; charset=windows-1252" http-equiv=Content-Type>
+<STYLE type=text/css>A:link {
+	TEXT-DECORATION: none
+}
+A:visited {
+	TEXT-DECORATION: none
+}
+A:hover {
+	COLOR: red; TEXT-DECORATION: underline
+}
+</STYLE>
+
+<META content="Microsoft FrontPage 4.0" name=GENERATOR></HEAD>
+<BODY bgColor=#cccccc leftMargin=5 topMargin=10 marginheight="10" 
+marginwidth="5">
+<CENTER>
+<TABLE border=0 cellPadding=0 cellSpacing=0 cols=2 width="98%">
+  <TBODY>
+  <TR>
+    <TD align=right width="19%">
+      <TABLE border=1 height=65 width="100%">
+        <TBODY>
+        <TR bgColor=#99ccff borderColor=#000099>
+          <TD height=94>
+            <DIV align=center><B><FONT size=7><EM><FONT 
+            color=#000080>D2I</FONT></EM></FONT></B></DIV></TD></TR></TBODY></TABLE></TD>
+    <TD align=left width="81%">
+      <TABLE border=1 height=83 width="100%">
+        <TBODY>
+        <TR align=left bgColor=#99ccff borderColor=#000099>
+          <TD height=94>
+            <DIV align=center><FONT size=6><EM><DFN><FONT color=#0000ff 
+            size=5><B><FONT size=+3><FONT color=#000080>Integrazione, 
+            Warehousing e Mining di sorgenti 
+            eterogenee</FONT></FONT></B></FONT></DFN></EM></FONT></DIV></TD></TR></TBODY></TABLE></TD></TR></TBODY></TABLE>
+<TABLE border=0 cellPadding=0 cellSpacing=0 cols=2 width="98%">
+  <TBODY>
+  <TR><!--fine prima colonna-->
+    <TD align=middle colSpan=2 vAlign=top>
+      <DIV align=justify style="MARGIN-TOP: 20pt">
+      <DIV align=justify style="MARGIN-TOP: 20pt">
+      <TABLE height=45 width="100%">
+        <TBODY>
+        <TR align=left bgColor=#000099 borderColor=#000099>
+          <TD height=46><FONT color=#fff907 face=Arial size=5>Risoluzione di 
+            query approssimate</FONT></TD></TR></TBODY></TABLE>
+      <H3><B>Paolo Ciaccia e Marco Patella</B></H3>&nbsp; 
+      <CENTER>
+      <TABLE border=1 width="80%">
+        <TBODY>
+        <TR>
+          <TD vAlign=top><B>Tema</B></TD>
+          <TD><A 
+            href="http://www.dis.uniroma1.it/~lembo/D2I/Temi/tema3.html"><U>Tema 
+            3:&nbsp;Data Mining</U></A></TD></TR>
+        <TR>
+          <TD vAlign=top><B>Codice</B></TD>
+          <TD>D3-P2</TD></TR>
+        <TR>
+          <TD vAlign=top><B>Data</B></TD>
+          <TD>31 luglio 2002</TD></TR>
+        <TR>
+          <TD vAlign=top><B>Tipo di prodotto</B></TD>
+          <TD>Prodotto software</TD></TR>
+        <TR>
+          <TD vAlign=top><B>Unità responsabile</B></TD>
+          <TD>BO</TD></TR>
+        <TR>
+          <TD vAlign=top><B>Unità coinvolte</B></TD>
+          <TD>BO</TD></TR>
+        <TR>
+          <TD vAlign=top><B>Autori</B></TD>
+          <TD>Paolo Ciaccia e Marco Patella</TD></TR>
+        <TR>
+          <TD vAlign=top><B>Autore da contattare</B></TD>
+          <TD>Marco Patella <BR>DEIS - Università di Bologna <BR><A 
+            href="mailto:mpatella@deis.unibo.it">mpatella@deis.unibo.it</A></TD></TR>
+        <TR>
+          <TD vAlign=top><B>Documentazione in linea&nbsp;</B></TD>
+          <TD><A 
+            href="http://www-db.deis.unibo.it/Mtree"><U>http://www-db.deis.unibo.it/Mtree<U></A></U></U></TD></TR></TBODY></TABLE></CENTER>&nbsp; 
+
+      <P>
+      <HR color=#000099 height="15">
+
+      <CENTER>
+      <H3><B>Descrizione</B></H3></CENTER>
+      <P>Il prototipo realizzato estende la libreria <A 
+      href="http://www-db.deis.unibo.it/Mtree">M-tree</A> implementando gli 
+      algoritmi PAC (Probabilmente Approssimativamente Corretti) per la 
+      risoluzione di query di similarità dettagliati nel prodotto <A 
+      href="http://www.dis.uniroma1.it/~lembo/D2I/Prodotti/deliverable2/D3.R3.ps">D3.R3</A> 
+      (parte III). Tali algoritmi garantiscono la possibilità, in fase di 
+      interrogazione, di controllare in maniera probabilistica l’approssimazione 
+      del risultato e di ottenere, quindi, un compromesso tra velocità di 
+      risoluzione della query e qualità del risultato.</P>È stato considerato lo 
+      scenario generale degli spazi metrici, in cui ad ogni query di similarità 
+      corrisponde un'interrogazione di prossimità. In particolare, sono state 
+      considerate query di <I>range</I> (con le quali si cercano tutti i punti 
+      aventi una distanza dal punto query minore di una soglia) e <I>k nearest 
+      neighbor</I> (per le quali sono richiesti i <I>k</I> punti più vicini al 
+      punto query). 
+      <P>L'utilizzo degli algoritmi PAC richiede una definizione di un errore 
+      ERR sul risultato della query. Per le query di range tale errore è 
+      definito sulla cardinalità dell'insieme risultato, in quanto il risultato 
+      approssimato può escludere alcuni punti che soddisfano la query; per le 
+      query k-NN, invece, l'errore è definito sulla distanza di ciascuno dei 
+      <I>k</I> punti dalla query. In ogni caso, dato il valore per i due 
+      parametri di precisione <FONT face=symbol>e</FONT> e confidenza <FONT 
+      face=symbol>d</FONT>, gli algoritmi garantiscono che l'errore ERR non 
+      superi il valore <FONT face=symbol>e</FONT> per più di una frazione <FONT 
+      face=symbol>d</FONT> dei casi. Per garantire ciò gli algoritmi sfruttano 
+      (un campione del) la distribuzione delle distanze F(x), che definisce la 
+      probabilità che la distanza di un punto dalla query sia minore o uguale a 
+      x: F(x) = Pr{d(q,p)&lt;=x}.</P>
+      <HR color=#000099 height="15">
+
+      <CENTER>
+      <H3><B>Ambiente di sviluppo e di esecuzione</B></H3></CENTER>Sviluppato in 
+      C++.<BR>Richiede la libreria GiST 0.9.<BR>
+      <P></P>
+      <HR color=#000099 height="15">
+      &nbsp; 
+      <P><FONT color=#0000ff><a href="../index.html"><U>Back</U></a></FONT> 
+      </P></DIV></DIV>
+  <TR>
+    <TD bgColor=#cccccc colSpan=2>&nbsp;</TD></TR>
+  <TR>
+    <TD bgColor=#000099 colSpan=2>&nbsp;</TD></TR>
+  <TR>
+    <TD bgColor=#cccccc colSpan=2>&nbsp;</TD></TR>
+  <TR>
+    <TD bgColor=#cccccc colSpan=2 height=38>
+      <DIV align=center><FONT color=#4e4b4a face=Arial size=1><B>Sito a cura di 
+      Domenico Lembo<BR></B></FONT><A href="mailto:lembo@dis.uniroma1.it"><FONT 
+      color=#000099 face=Arial 
+    size=1>lembo@dis.uniroma1.it</FONT></A><BR></DIV></TD></TR><!--fine seconda colonna--></TBODY></TABLE></CENTER></BODY></HTML>

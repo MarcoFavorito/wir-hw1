@@ -1,0 +1,128 @@
+<!doctype html public "-//w3c//dtd html 4.0 transitional//en">
+<html>
+<head>
+<link href="java.css" rel="stylesheet" type="text/css">
+<title>Grafico di una funzione in solo testo</title>
+</head>
+
+<body>
+
+<h2>Grafico di una funzione in solo testo</h2>
+
+<p>
+Si vuole stampare il grafico della funzione
+<i>f(x)=|x|/20+20*sin(x/10)+30</i>, usando solo le
+istruzioni viste fino ad ora. Un metodo semplice per fare
+questo &egrave; usare una riga di testo per ogni valore
+di <i>x</i>: su ogni riga viene stampata una sequenza
+di caratteri <tt>*</tt> lunga quando il valore della
+funzione <i>f(x)</i>.<p>
+
+Supponendo di volere il grafico per <i>x</i> che va da
+-100 a +100, occorre un ciclo for in cui la <i>x</i>
+assume valori progressivi da -100 a +100. Ad ogni passo,
+si calcola il valore di <i>f(x)</i>. A questo punto,
+occorre stampare una stringa composta da tanti asterischi
+quanto &egrave; il valore della funzione.<p>
+
+Il problema &egrave; ora come realizzare questa stringa.
+Il programma
+<a href="GraficoTesto.java">GraficoTesto.java</a>
+risolve questo problema con un ciclo for, in cui si parte
+da 1 e si arriva al valore della funzione. Ad ogni
+iterazione si aggiunge un asterisco alla variabile
+<tt>riga</tt>. Dal momento che le iterazioni sono tante
+quanto &egrave; il valore della funzione, la stringa
+alla fine &egrave; fatta da tanti <tt>*</tt> quanto 
+&egrave; il valore della funzione.<p>
+
+<pre>
+/*
+  Grafico solo testo di una funzione.
+*/
+
+class GraficoTesto {
+  public static void main(String[] args) {
+    double x,f;
+    int i;
+    String riga;
+
+    for(x=-100; x<=100; x=x+1) {
+      f=Math.abs(x)/20+20*Math.sin(x/10)+30;
+
+      riga="";
+      for(i=1; i<=f; i=i+1) {
+        riga=riga+"*";
+      }
+
+      System.out.println(riga);
+    }
+  }
+}
+
+</pre>
+
+<p>
+Alcune precisazioni: le funzioni <tt>Math.abs</tt> e
+<tt>Math.sin</tt> calcolano il valore assoluto e il seno
+di un numero reale. La istruzione <tt>riga="";</tt>
+assegna alla variabile <tt>riga</tt> la stringa vuota:
+questa &egrave; la sequenza di caratteri che non contiene
+nessun carattere, ossia la stringa di lunghezza 0. Questa
+&egrave; una stringa valida come tutte le altre. Si
+pu&ograve; quindi usare come una qualsiasi altra stringa.
+Quando la stringa vuota viene concatenata a un'altra
+stringa, si ottiene questa seconda stringa. In termini
+algebrici, la stringa vuota &egrave; l'elemento neutro
+della operazione di concatenazione fra stringhe.<p>
+
+Il programma
+<a href="GraficoTestoLimitato.java">GraficoTestoLimitato.java</a>
+&egrave; una variante del precedente in cui si &egrave;
+tenuto conto del fatto che la funzione pu&ograve; superare
+in valore la larghezza dello schermo. In questo caso, si
+&egrave; scelto di limitare la stringa <tt>riga</tt> a
+60 caratteri. Se la funzione supera questo valore, si
+aggiunge a riga il carattere "+", e si esce dal ciclo.
+
+<pre>
+/*
+  Grafico solo testo di una funzione.
+*/
+
+class GraficoTestoLimitato {
+  public static void main(String[] args) {
+    double x,f;
+    int i;
+    String riga;
+
+    for(x=-100; x<=100; x=x+1) {
+      f=Math.abs(x)/5+20*Math.sin(x/10)+30;
+
+      riga="";
+      for(i=1; i<=f; i=i+1) {
+        riga=riga+"*";
+        if( i>60 ) {
+          riga=riga+"+";
+          break;
+        }
+      }
+
+      System.out.println(riga);
+    }
+  }
+}
+
+</pre>
+
+<p>
+L'unica differenza rispetto al programma precedente &egrave;
+la presenza della istruzione condizionale in cui si controlla
+se <tt>i</tt> ha raggiunto il valore 60. In questo caso,
+si aggiunge il + alla stringa, e si esce dal ciclo,
+per cui la stringa risulta fatta di 60 asterischi pi&ugrave;
+il segno di addizione.<p>
+
+</body>
+</html>
+

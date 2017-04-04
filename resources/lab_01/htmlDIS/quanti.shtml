@@ -1,0 +1,76 @@
+<!doctype html public "-//w3c//dtd html 4.0 transitional//en">
+<html>
+<head>
+<link href="java.css" rel="stylesheet" type="text/css">
+<title>Presenze in un vettore</title>
+</head>
+
+<body>
+
+<h2>Presenze in un vettore</h2>
+
+<p>
+Risolvere questo esercizio: di contare il
+numero di volte che un elemento &egrave; presente in un
+vettore. Sono quindi dati: una variabile e un vettore. Si
+vuole sapere quanti sono gli elementi del vettore il cui
+contenuto coincide con quello della variabile. Per esempio,
+se la variabile contiene il valore 12, e nel vettore ci sono
+tre elementi che valgono 12, allora il risultato deve essere
+tre.
+
+<p>
+Sia quindi per esempio <tt>vett</tt> il nome del vettore,
+e <tt>a</tt> il nome della variabile in cui c'&egrave; il
+numero da contare. Inizialmente, assumiamo che il numero
+non appare mai nel vettore. Poi guardiamo, uno per volta,
+tutti gli elementi del vettore. Per ogni elemento, se
+troviamo che il suo valore &egrave; uguale a quello di
+<tt>a</tt>, allora aumentiamo il numero di presenze di uno.
+Questo meccanismo &egrave; simile a quello che si userebbe
+per contare manualmente: si tiene a mente il numero di
+elementi da contare; questo numero parte da zero; poi si
+guardano uno per volta gli elementi, aumentando di uno
+il numero memorizzato se &egrave; uno degli elementi che
+vanno effettivamente contati.
+
+<p>
+Il programma complessivo
+<a href="Quanti.java">Quanti.java</a>
+&egrave; il seguente.
+
+<p>
+<pre>
+/*
+  Quante volte un elemento compare in un vettore.
+*/
+
+class Quanti {
+  public static void main(String[] args) {
+    int vett[]={19, 52, 85, 18, 51, 84, 17, 50, 83, 16, 49, 82, 15, 48, 81, 14, 47, 80, 15, 46, 79};
+    int a=15;
+    int presenze;
+    int i;
+
+    presenze=0;
+
+    for(i=0; i<=vett.length-1; i=i+1) {
+      if( vett[i]==a ) {
+        presenze=presenze+1;
+      }
+    }
+
+    System.out.println("L'elemento "+15+" appare "+presenze+" volte");
+  }
+}
+
+</pre>
+
+<p>
+Lo stesso esercizio si pu&ograve; risolvere usando una funzione,
+come &egrave; fatto nel programma
+<a href="QuantiFunzione.java">QuantiFunzione.java</a>
+
+</body>
+</html>
+

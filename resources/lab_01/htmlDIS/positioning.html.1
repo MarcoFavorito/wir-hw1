@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+<title>posizionamenti vari</title>
+<script type="text/javascript">
+<!--
+// This style sheet works for IE 4+ and Netscape 6
+if ((navigator.appName == "Microsoft Internet Explorer" &&
+    parseInt(navigator. appVersion) >=4)
+       ||
+(navigator.userAgent.toLowerCase().indexOf('gecko' != -1))) {
+      document.write("<link rel='stylesheet' href='positioning.css'>")
+}
+// -->
+</script>
+
+<!--<link rel="stylesheet" href="positioning.css" />-->
+</head>
+<body>
+<div class="browserWarning">
+** This page is best viewed with Internet Explorer 4 or above with
+JavaScript enabled **
+</div>
+
+<div class="navbuttons">
+<a href="dummy.html">
+<img class="button" src="prev.gif" alt="back" width="50" /></a>
+<a href="dummy.html">
+<img class="button" src="next.gif" alt="next" width="50" /></a>
+<a href="dummy.html">
+<img class="button" src="info.gif" alt="home" width="50" /></a>
+</div>
+
+<div class="headerText">
+Posizionamento assoluto di oggetti
+</div>
+
+<div class="picture">
+<img src="Casablanca.jpg" alt="il film!" width="300px" /><br />
+<div class="caption">Fig 3 - poster</div>
+<!--
+per provare qual e' la posizione naturale
+<div>Fig 3 - poster</div>
+-->
+</div>
+
+<div class="text">
+<h2>bottoni di navigazione</h2>
+<p>
+applicazione del posizionamento assoluto: i bottoni sono resi in questo documento html
+usando la classe navbutton</p>
+<pre>
+&lt;div class="navbuttons"&gt;
+   &lt;a href="dummy.html"&gt;
+   &lt;img class="button" src="2.1.jpg" alt="back" width="50" /&gt;
+
+   &lt;/a&gt; &lt;a href="dummy.html"&gt;
+   &lt;img class="button" src="anim_earth.gif" alt="next" width="50" /&gt;&lt;/a&gt;
+
+   &lt;a href="dummy.html"&gt;
+   &lt;img class="button" src="2.1.jpg" alt="home" width="50" /&gt;&lt;/a&gt;
+&lt;/div&gt;
+</pre>
+
+<p>
+la classe navbutton e quella button (notare che il posizionamento della caption e' "relative",
+volendo cosi' dire che le specifiche date vengono attuate "a partire dalla posizione naturale
+dell'elemento":</p>
+<pre>
+.navbuttons {
+   position:absolute;
+   top:0%;
+   left:0%;
+   background: #09F;
+   border:5px outset;
+   margin:10px;
+   z-index:7
+}
+
+.button {border:5px outset #339933; margin:4px}
+
+</pre>
+
+<h2>Intestazione (titolo?)</h2>
+<p>
+il titolo e' posizionato in modo assoluto, usando la classe headerText</p>
+<pre>
+&lt;div class="headerText"&gt;
+Posizionamento assoluto di oggetti
+&lt;/div&gt;
+</pre>
+
+<p>
+la classe headerText:</p>
+<pre>
+.headerText {
+   position:absolute;
+   top:0%;
+   left:30%;
+   background: black;
+   border-style: ridge;
+   margin-top:10px;
+   padding:.5ex .5em;
+   text-align:center;
+   font-weight:bold;
+   z-index:1
+}
+</pre>
+
+<h2>L'immagine a sinistra, cosi' e cosi'</h2>
+<p>
+e pure l'immagine e' sistemata in modo assoluto,
+usando la classe picture pe il suo posizionamento e usando la classe aption per
+formattare e posizionare il testo che funge da "caption" della figura</p>
+<pre>
+&lt;div class="picture"&gt;
+&lt;img src="Casablanca.jpg" alt="il film!" width="300px" /&gt;&lt;br /&gt;
+&lt;div class="caption"&gt;Fig 3 - poster&lt;/div&gt;
+&lt;/div&gt;
+</pre>
+
+<p>
+le classi picture e caption:</p>
+<pre>
+.picture  {
+   position:absolute;
+   top:20%;
+   left:2%;
+   z-index:2
+}
+
+.caption {
+   position:relative;
+   top:-1.5ex;
+   left:0.5em;
+   font-style:italic;
+   font-size: 120%;
+   font-weight: bold;
+   color: black;
+   z-index:3
+}
+
+
+</pre>
+
+</div>  <!-- fine del blocco class text -->
+
+</body>
+</html>
+bla bla bla bla bla bla bla bla bla

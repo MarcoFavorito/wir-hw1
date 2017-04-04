@@ -1,0 +1,549 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1">
+<META NAME="Generator" CONTENT="Microsoft Word 98">
+<TITLE>lezione 230301</TITLE>
+</HEAD>
+<BODY>
+
+<B><U><FONT FACE="Times" SIZE=4><P ALIGN="CENTER">Fond. di Informatica (C.E.M.N.)</U>&#9;&#9;&#9;      <U>quarto complemento didattico</P>
+</U></FONT><FONT FACE="Times"><P ALIGN="CENTER">Problema di ordinamento</P>
+</B><P ALIGN="JUSTIFY">Immaginiamo di voler scrivere il programma specificato dal seguente algoritmo (in pseudocodice)</P><DIR>
+<DIR>
+<DIR>
+<DIR>
+<DIR>
+<DIR>
+<DIR>
+<DIR>
+<DIR>
+<DIR>
+<DIR>
+
+<B><P ALIGN="JUSTIFY">readln(x1,x2)</P>
+<P ALIGN="JUSTIFY">if </B>x1 &gt; x2<B> then </B>scambia i contenuti di x1 e x2</P>
+<B><P ALIGN="JUSTIFY">writeln(x1,x2)</P>
+</B><P ALIGN="JUSTIFY"></P></DIR>
+</DIR>
+</DIR>
+</DIR>
+</DIR>
+</DIR>
+</DIR>
+</DIR>
+</DIR>
+</DIR>
+</DIR>
+
+<P>SCHEMA DI SCAMBIO TRA DUE VARIABILI</P><DIR>
+<DIR>
+<DIR>
+<DIR>
+
+<B><P ALIGN="JUSTIFY">Es</B>.&#9;&#9;&#9;<B>Prima</B> x1=20, x2=40&#9;&#9;&#9;<B>Poi</B> x=40, y=20</P></DIR>
+</DIR>
+</DIR>
+</DIR>
+
+<P ALIGN="RIGHT">SERVE UNA <I>VARIABILE DI APPOGGIO</P>
+</I><B><P ALIGN="JUSTIFY">AUX</B> := x&#9;&#9;&#9;<B>]</P>
+</B><P ALIGN="JUSTIFY">x := y&#9;&#9;&#9;<B>] scambia x con y</P>
+</B><P ALIGN="JUSTIFY">y := <B>AUX&#9;&#9;&#9;]</P>
+</B><P ALIGN="JUSTIFY"></P>
+<B><P ALIGN="CENTER">UN METODO DI ORDINAMENTO</P>
+</B><P ALIGN="JUSTIFY">Un metodo &egrave; quello di "passare" sulla sequenza di numeri: &#9;&#9;4 numeri, x1, x2, x3, x4:<B> </P><DIR>
+<DIR>
+<DIR>
+<DIR>
+<DIR>
+<DIR>
+<DIR>
+<DIR>
+<DIR>
+<DIR>
+<DIR>
+<DIR>
+<DIR>
+<DIR>
+<DIR>
+<DIR>
+
+<P ALIGN="JUSTIFY">(ordinamento ---- x1&lt;=x2&lt;=x3&lt;=x4)</P></DIR>
+</DIR>
+</DIR>
+</DIR>
+</DIR>
+</DIR>
+</DIR>
+</DIR>
+</DIR>
+</DIR>
+</DIR>
+</DIR>
+</DIR>
+</DIR>
+
+<U><P ALIGN="JUSTIFY">coppie di numeri</B></U> vengono via via confrontati (<B><U>x1 e x2</B></U>, <B><U>x2 e x3</B></U>, <B><U>x3 e x4</B></U>) e scambiate se non sono gi&agrave; in ordine.&#9;&#9;&#9;&#9;<B>NB.</B> Una sola passata pu&ograve; non bastare &#133;</P>
+<P ALIGN="JUSTIFY"></P></DIR>
+</DIR>
+
+<P ALIGN="JUSTIFY">Es.&#9;inizialmente  &#9;&#9;&#9;&#9;<B>x1=11, x2=9, x3=7, x4=6</P>
+<P ALIGN="JUSTIFY"></P>
+<P ALIGN="JUSTIFY">&#9;&#9;&#9;x1&#9;x2&#9;x3&#9;x4&#9;    diventa&#9;&#9;x1&#9;x2&#9;x3&#9;x4</P>
+<P ALIGN="JUSTIFY">1<SUP>a</B></SUP> Confronto x1 x2&#9;<B>11 &#9;9</B> &#9;7&#9;6 &#9;------------- &gt; &#9;&#9;<B>9 &#9;11</B> &#9;7 &#9;6</P>
+<P ALIGN="JUSTIFY">    Confronto x2 x3&#9;9 &#9;<B>11 &#9;7</B> &#9;6&#9;------------- &gt; &#9;&#9;9 &#9;<B>7&#9;11</B> &#9;6  </P>
+<P ALIGN="JUSTIFY">    Confronto x3 x4&#9;9 &#9;7&#9;<B>11 &#9;6</B>&#9;------------- &gt; &#9;&#9;9 &#9;7&#9;<B>6&#9;11</P>
+</B><P ALIGN="JUSTIFY">Il numero pi&ugrave; grande sta a posto in x4). La sequenza NON &egrave; ancora ordinata: seconda "passata"<B>&#9;</P>
+<P ALIGN="JUSTIFY"></P>
+<P ALIGN="JUSTIFY">&#9;&#9;&#9;x1&#9;x2&#9;x3&#9;x4&#9;    diventa&#9;&#9;x1&#9;x2&#9;x3&#9;x4</P>
+<P ALIGN="JUSTIFY">2<SUP>a</B></SUP> Confronto x1 x2&#9;<B>9 &#9;7</B>&#9;6&#9;11&#9;------------- &gt; &#9;&#9;<B>7 &#9;9</B> &#9;6 &#9;11</P>
+<P ALIGN="JUSTIFY">    Confronto x2 x3&#9;7&#9;<B>9&#9;6</B> &#9;11&#9;------------- &gt; &#9;&#9;7 &#9;<B>6&#9;9</B> &#9;11 </P>
+<P ALIGN="JUSTIFY">    Confronto x3 x4&#9;7 &#9;<B>6&#9;9</B> &#9;11&#9;!!!!!!!!&#9;&#9;&#9;7 &#9;6&#9;<B>9&#9;11</P>
+</B><U><P ALIGN="JUSTIFY">L'ultimo confronto</U> (tra un numero in x3 e quello in x4, &egrave; <U>inutile</U> . Seq non ordinata, terza passata:</P>
+<B><P ALIGN="JUSTIFY"></P>
+<P ALIGN="JUSTIFY">&#9;&#9;&#9;x1&#9;x2&#9;x3&#9;x4&#9;    diventa&#9;&#9;x1&#9;x2&#9;x3&#9;x4</P>
+<P ALIGN="JUSTIFY">3<SUP>a</B></SUP> Confronto x1 x2&#9;7 &#9;6&#9;<B>9&#9;11</B>&#9;------------- &gt; &#9;&#9;<B>6 &#9;7</B> &#9;9 &#9;11</P>
+<P ALIGN="JUSTIFY">    Confronto x2 x3&#9;6&#9;<B>7&#9;9</B> &#9;11&#9;&#9;!!!!&#9;&#9;6 &#9;<B>7&#9;9</B> &#9;11</P>
+<P ALIGN="JUSTIFY">    Confronto x3 x4&#9;6 &#9;<B>7&#9;9</B> &#9;11&#9;&#9;!!!!&#9;&#9;6&#9;7&#9;<B>9&#9;11</P>
+</B><U><P ALIGN="JUSTIFY">Gli ultimi due confronti</U> sono <U>inutili</U> <U>(</U>effettuati tra numeri  che sono stati gi&agrave; messi al posto giusto).</P>
+<P ALIGN="JUSTIFY"></P>
+<P ALIGN="JUSTIFY">SCHEMA DI ORDINAMENTO DI N NUMERI: </P>
+<B><P ALIGN="JUSTIFY">eseguire al pi&ugrave; (N-1) passate di confronti e scambi</P>
+</B><P ALIGN="JUSTIFY"></P>
+<P ALIGN="JUSTIFY">SCHEMA DI UNA PASSATA:</P>
+<B><P ALIGN="JUSTIFY">tanti confronti/scambi</B>&#9;&#9;<B>if</B> x1&gt;x2 <B>then begin&#9;&#9;{scambio tra x1 e x2}</P>
+<P ALIGN="JUSTIFY">quanti sono i numeri - 1</B>&#9;&#9;&#9;&#9;   aux:=x1;</P><DIR>
+<DIR>
+<DIR>
+<DIR>
+
+<P ALIGN="JUSTIFY">  &#9;&#9;&#9;&#9;&#9;   x1:=x2;</P>
+<P ALIGN="JUSTIFY">  &#9;&#9;&#9;&#9;&#9;   x2:=aux; </P><DIR>
+<DIR>
+<DIR>
+<DIR>
+<DIR>
+<DIR>
+<DIR>
+<DIR>
+<DIR>
+<DIR>
+
+<B><P ALIGN="JUSTIFY">end</B>;</P></DIR>
+</DIR>
+</DIR>
+</DIR>
+</DIR>
+</DIR>
+</DIR>
+</DIR>
+</DIR>
+</DIR>
+</DIR>
+</DIR>
+</DIR>
+</DIR>
+
+<P ALIGN="JUSTIFY">&#9;&#9;&#9;&#9;&#9;&#9;<B>if</B> x2&gt;x3 <B>then </B>&#133;&#9;&#9;{scambio tra x2 e x3}</P>
+<P ALIGN="JUSTIFY">&#9;&#9;&#9;&#9;&#9;&#9;<B>if</B> x3&gt;x4 <B>then </B>&#133;&#9;&#9;{scambio tra x3 e x4}</P>
+<P ALIGN="JUSTIFY"></P>
+<B><P ALIGN="JUSTIFY">N=3 <FONT FACE="Wingdings">&#232;</FONT>
+ 2 if.&#9;N=5 <FONT FACE="Wingdings">&#232;</FONT>
+ 4 if &#9;&#9;&#9;&#9;&#9;&#9;in generale N numeri <FONT FACE="Wingdings">&#232;</FONT>
+ N-1 if </P>
+<P ALIGN="JUSTIFY"></P>
+<P ALIGN="JUSTIFY">Se dovessimo ordinare e stampare 100 numeri?</P>
+
+<UL>
+</B><P ALIGN="JUSTIFY"><LI>100 variabili diverse (TUTTE CONTEMPORANEAMENTE IN MEMORIA)</LI></P>
+<P ALIGN="JUSTIFY"><LI>al pi&ugrave;i 99 passate</LI></P></UL>
+
+
+<UL>
+<P ALIGN="JUSTIFY"><LI>ogni passata = 99 confronti e scambi (x1/x2, x2/x3, ...x99/x100)</LI></P></UL>
+
+<P ALIGN="JUSTIFY"></P>
+<P ALIGN="JUSTIFY">Esiste un modo per dichiarare  N variabili, <B>tutte dello stesso tipo</B>, con un'unica dichiarazione: </P>
+<P ALIGN="JUSTIFY"></P>
+<B><P ALIGN="JUSTIFY">variabile ARRAY </B>&#9;=&#9;<B>variabile </B>che rappresenta un<B> </B> <B>insieme di variabili, </B>del medesimo tipo,</P>
+
+<UL><DIR>
+<DIR>
+<DIR>
+<DIR>
+<DIR>
+<DIR>
+
+
+<UL>
+<B><P ALIGN="JUSTIFY"><LI>tutte </B>classificate sotto il<B> nome della variabile array </LI></P>
+<P ALIGN="JUSTIFY"><LI>tutte distinguibili </B>mediante un<B> indice </B>(valore di tipo ordinale)</LI></P></UL>
+</DIR>
+</DIR>
+</DIR>
+</DIR>
+</DIR>
+</DIR>
+</UL>
+
+<B><P ALIGN="JUSTIFY"></P></B></FONT>
+<TABLE BORDER CELLSPACING=1 CELLPADDING=3 WIDTH=488>
+<TR><TD WIDTH="50%" VALIGN="TOP" ROWSPAN=4 HEIGHT=17>
+<B><FONT FACE="Times"><P ALIGN="JUSTIFY">var </B>v:<B> ARRAY [1..5] of </B>integer;</P>
+<P ALIGN="JUSTIFY"></P>
+<P ALIGN="JUSTIFY">collezione di 5 variabili intere, ciascuna riconoscibile mediante </P>
+<P ALIGN="JUSTIFY">NOME COMUNE (v) + INDICE</FONT></TD>
+<TD WIDTH="7%" VALIGN="TOP" HEIGHT=17><P></P></TD>
+<TD WIDTH="7%" VALIGN="TOP" HEIGHT=17><P></P></TD>
+<TD WIDTH="7%" VALIGN="TOP" HEIGHT=17><P></P></TD>
+<TD WIDTH="7%" VALIGN="TOP" HEIGHT=17><P></P></TD>
+<TD WIDTH="7%" VALIGN="TOP" HEIGHT=17><P></P></TD>
+<TD WIDTH="7%" VALIGN="TOP" HEIGHT=17><P></P></TD>
+<TD WIDTH="7%" VALIGN="TOP" HEIGHT=17><P></P></TD>
+</TR>
+<TR><TD WIDTH="7%" VALIGN="TOP" HEIGHT=17><P></P></TD>
+<TD WIDTH="7%" VALIGN="TOP" HEIGHT=17>
+<B><FONT FACE="Times"><P ALIGN="JUSTIFY">V[1]</B></FONT></TD>
+<TD WIDTH="7%" VALIGN="TOP" HEIGHT=17>
+<B><FONT FACE="Times"><P ALIGN="JUSTIFY">V[2]</B></FONT></TD>
+<TD WIDTH="7%" VALIGN="TOP" HEIGHT=17>
+<B><FONT FACE="Times"><P ALIGN="JUSTIFY">V[3]</B></FONT></TD>
+<TD WIDTH="7%" VALIGN="TOP" HEIGHT=17>
+<B><FONT FACE="Times"><P ALIGN="JUSTIFY">V[4]</B></FONT></TD>
+<TD WIDTH="7%" VALIGN="TOP" HEIGHT=17>
+<B><FONT FACE="Times"><P ALIGN="JUSTIFY">V[5]</B></FONT></TD>
+<TD WIDTH="7%" VALIGN="TOP" HEIGHT=17><P></P></TD>
+</TR>
+<TR><TD WIDTH="7%" VALIGN="TOP" HEIGHT=17><P></P></TD>
+<TD WIDTH="7%" VALIGN="TOP" HEIGHT=17><P></P></TD>
+<TD WIDTH="7%" VALIGN="TOP" HEIGHT=17>
+<B><FONT FACE="Times"><P ALIGN="CENTER"></P>
+<P ALIGN="CENTER">7</B></FONT></TD>
+<TD WIDTH="7%" VALIGN="TOP" HEIGHT=17><P></P></TD>
+<TD WIDTH="7%" VALIGN="TOP" HEIGHT=17>
+<B><FONT FACE="Times"><P ALIGN="JUSTIFY"></P>
+<P ALIGN="JUSTIFY">16</B></FONT></TD>
+<TD WIDTH="7%" VALIGN="TOP" HEIGHT=17><P></P></TD>
+<TD WIDTH="7%" VALIGN="TOP" HEIGHT=17><P></P></TD>
+</TR>
+<TR><TD WIDTH="7%" VALIGN="TOP" HEIGHT=17><P></P></TD>
+<TD WIDTH="7%" VALIGN="TOP" HEIGHT=17><P></P></TD>
+<TD WIDTH="7%" VALIGN="TOP" HEIGHT=17><P></P></TD>
+<TD WIDTH="7%" VALIGN="TOP" HEIGHT=17><P></P></TD>
+<TD WIDTH="7%" VALIGN="TOP" HEIGHT=17><P></P></TD>
+<TD WIDTH="7%" VALIGN="TOP" HEIGHT=17><P></P></TD>
+<TD WIDTH="7%" VALIGN="TOP" HEIGHT=17><P></P></TD>
+</TR>
+</TABLE>
+
+<FONT FACE="Times"><P ALIGN="JUSTIFY">In conseguenza della dichiarazione vengono ALLOCATE 5 locazioni  capaci di contenere interi, </P>
+<P ALIGN="JUSTIFY">una dopo l'altra in memoria centrale.</P>
+<B><P ALIGN="JUSTIFY"></P>
+<P ALIGN="JUSTIFY">Con le variabili indicizzate si fa tutto quel che si pu&ograve; fare con le normali variabili:</P>
+<P ALIGN="JUSTIFY"></P>
+
+<UL>
+<P ALIGN="JUSTIFY"><LI>assegnazione&#9;v[2] := 7</LI></P>
+<P ALIGN="JUSTIFY"><LI>accesso&#9;&#9;if (v[3] = 5) AND (v[2] = v[5]) &#133;</LI></P></UL>
+
+</B><P ALIGN="JUSTIFY">&#9;&#9;&#9;&#9;write(A[2])</P>
+<P ALIGN="JUSTIFY"></P>
+<B><P ALIGN="RIGHT">v[j] = j-esima componente</P>
+</B><P ALIGN="JUSTIFY">v[&lt;exp&gt;]      &lt;exp&gt; valore di tipo previsto per l&#146;indice (nell&#146;es. 1..5)</P>
+</FONT><FONT FACE="Times" SIZE=4><P ALIGN="CENTER">k:=1; j:=2;  &#133; v[j] &egrave; 7</P>
+<P ALIGN="CENTER">&#133; <B>v[j+2]</B> contiene 16</P>
+<P ALIGN="CENTER">&#133; <B>v[j+k+1]</B> contiene 16</P>
+</FONT><FONT FACE="Times"><P ALIGN="CENTER"></P><DIR>
+<DIR>
+
+<B><P ALIGN="JUSTIFY">ATTENZIONE: </B>il <I>range</I> di variabilit&agrave; degli indici &egrave; stato stabilito nella definizione della singola variabile array!                          v[0] = ???&#9;&#9;&#9;v[6] = ???</P></DIR>
+</DIR>
+
+<P ALIGN="JUSTIFY">---------------------------------------------------------------------------------------------------------------------</P>
+<B><P ALIGN="CENTER">LETTURA DI UN ARRAY:</P></B></FONT>
+<TABLE BORDER CELLSPACING=1 CELLPADDING=3 WIDTH=488>
+<TR><TD WIDTH="50%" VALIGN="TOP">
+<FONT FACE="Courier"><P ALIGN="JUSTIFY">readln(V[1])</P>
+<P ALIGN="JUSTIFY">readln(V[2])</P>
+<P ALIGN="JUSTIFY">readln(V[3])</P>
+<P ALIGN="JUSTIFY">readln(V[4])</P>
+<P ALIGN="JUSTIFY">readln(V[5])</FONT></TD>
+<TD WIDTH="50%" VALIGN="TOP">
+<FONT FACE="Courier"><P ALIGN="JUSTIFY"></P>
+<P ALIGN="JUSTIFY">&nbsp;</P>
+<P ALIGN="JUSTIFY">Readln(V[i] </P>
+<P ALIGN="JUSTIFY">           con i = 1, 2, 3, 4, 5</FONT></TD>
+</TR>
+</TABLE>
+
+<B><FONT FACE="Courier"><P ALIGN="JUSTIFY">&#9;&#9;for i:=1 to 5 do </P><DIR>
+<DIR>
+
+<P ALIGN="JUSTIFY">    readln(v[i])</P></DIR>
+</DIR>
+
+</B></FONT><FONT FACE="Times"><P ALIGN="JUSTIFY">---------------------------------------------------------------------------------------------------------------------</P>
+<B><P ALIGN="CENTER">STAMPA DI UN ARRAY:</P>
+</FONT><FONT FACE="Courier"><P ALIGN="JUSTIFY">&#9;&#9;for i:=1 to 5 do </P><DIR>
+<DIR>
+<DIR>
+<DIR>
+
+<P ALIGN="JUSTIFY">    writeln(v[i])</P></DIR>
+</DIR>
+</DIR>
+</DIR>
+
+</B></FONT><FONT FACE="Times"><P ALIGN="JUSTIFY">---------------------------------------------------------------------------------------------------------------------</P>
+<P ALIGN="CENTER">Cio&egrave; &egrave; possibile "automatizzare" il trattamento di un array,</P>
+<B><P ALIGN="CENTER">processando ciascuna variabile "al variare dell'indice in un ciclo"</P>
+<P ALIGN="JUSTIFY"></P>
+<P ALIGN="JUSTIFY">Tornando al problema dell'ordinamento: </P>
+<P ALIGN="JUSTIFY">ordinamento di N numeri letti in input:</P>
+<OL>
+
+<P ALIGN="JUSTIFY"><LI>lettura degli N numeri in un array v (da 1 a N)</LI></P>
+<P ALIGN="JUSTIFY"><LI>eseguire N-1 passate di confronto/scambio</LI></P>
+<P ALIGN="JUSTIFY"><LI>stampa dell'array da 1 a N</LI></P></OL>
+
+<OL>
+
+</B><P ALIGN="JUSTIFY"><LI>eseguire N-1 volte</LI></P></OL>
+
+<P ALIGN="JUSTIFY">2.1)&#9;operazione di confronto/scambio tra v[j] e v[j+1] &#9;<B>} con j = 1 .. N-1</P>
+</B></FONT><FONT FACE="Times" SIZE=4><P ALIGN="JUSTIFY">for i:=1 to N-1 do</FONT><FONT FACE="Times"> &#9;</P>
+<P ALIGN="JUSTIFY">                        {una passata}</P>
+</FONT><FONT FACE="Courier"><P ALIGN="JUSTIFY">if v[1]&gt;v[2]  <B>then</B> &#9;begin   SCAMBIO TRA V[1] E V[2];   end; </P>
+<P ALIGN="JUSTIFY">if v[2]&gt;v[3]  <B>then</B> &#9;begin   SCAMBIO TRA V[1] E V[2];   end; </P>
+<P ALIGN="JUSTIFY">if v[3]&gt;v[4]  <B>then</B> &#9;begin   SCAMBIO TRA V[1] E V[2];   end; </P>
+<P ALIGN="JUSTIFY">&#133;</P>
+<P ALIGN="JUSTIFY">if v[N-1]&gt;v[N]  <B>then</B> begin   SCAMBIO TRA V[1] E V[2];   end; </P><DIR>
+<DIR>
+
+<P ALIGN="JUSTIFY">for i:=1 to N-1 do &#9;</P><DIR>
+<DIR>
+
+<B><P ALIGN="JUSTIFY">for j:=1 to N-1 do&#9;</P><DIR>
+
+</B><P ALIGN="JUSTIFY">if v[j] &gt; v[j<B>+</B>1] </P></DIR>
+</DIR>
+</DIR>
+
+<P ALIGN="JUSTIFY">&#9;&#9; &#9;   then begin</P><DIR>
+<DIR>
+<DIR>
+<DIR>
+<DIR>
+<DIR>
+
+<P ALIGN="JUSTIFY">aux:=v[j]; </P>
+<P ALIGN="JUSTIFY">v[j]:=v[j+1]; </P>
+<P ALIGN="JUSTIFY">v[j+1]:=aux;   </P>
+<P>   end; </P>
+</FONT><B><FONT FACE="Times"><P ALIGN="JUSTIFY"></P></DIR>
+</DIR>
+</DIR>
+</DIR>
+</DIR>
+</DIR>
+</DIR>
+</DIR>
+
+</B><P ALIGN="JUSTIFY">(Specifica e resto del codice in GUADAGNI.PAS)&#9;&#9;<B>program GUADAGNI (input, output)</P>
+</B><P ALIGN="JUSTIFY"></P>
+<B><P ALIGN="JUSTIFY">Rappresentiamo gli N guadagni in un array di N numeri reali.</P><DIR>
+<DIR>
+<DIR>
+<DIR>
+<DIR>
+<DIR>
+<DIR>
+<DIR>
+<DIR>
+
+</B></FONT><FONT FACE="Courier"><P ALIGN="JUSTIFY">const <B>N</B>=20; var <B>negozi</B>: array[1..N] of real;</P></DIR>
+</DIR>
+</DIR>
+</DIR>
+</DIR>
+</DIR>
+</DIR>
+</DIR>
+</DIR>
+
+</FONT><B><FONT FACE="Times"><P ALIGN="JUSTIFY">Alg.</P>
+</B><P ALIGN="JUSTIFY">1) Lettura degli N valori reali, con memoriazzazione nell'array.</P>
+<P ALIGN="JUSTIFY">"Scandire " il vettore, componente per componente, assegnando alle componenti i valori letti da Input</P><DIR>
+<DIR>
+<DIR>
+<DIR>
+<DIR>
+<DIR>
+<DIR>
+<DIR>
+<DIR>
+<DIR>
+<DIR>
+<DIR>
+
+</FONT><FONT FACE="Courier"><P ALIGN="JUSTIFY">for i:=1 to N do </P>
+<B><P ALIGN="JUSTIFY">   </B>begin write('negozio ', i,, '?');</P>
+<P ALIGN="JUSTIFY">         readln((negozi[i]);</P>
+<P ALIGN="JUSTIFY">   end;</P></DIR>
+</DIR>
+</DIR>
+</DIR>
+</DIR>
+</DIR>
+</DIR>
+</DIR>
+</DIR>
+</DIR>
+</DIR>
+</DIR>
+
+</FONT><FONT FACE="Times"><P ALIGN="JUSTIFY">2) Calcolo Media dei guadagni nell'array.</P><DIR>
+<DIR>
+<DIR>
+<DIR>
+<DIR>
+<DIR>
+<DIR>
+<DIR>
+<DIR>
+
+</FONT><FONT FACE="Courier"><P ALIGN="JUSTIFY">Init <B>somguad</B>:=0</P>
+<P ALIGN="JUSTIFY">Accumulare in <B>somguad</B> i valori mem in <B>negozi</P>
+</B><P ALIGN="JUSTIFY">MEDIA:=SOMGUAD/N</P>
+</FONT><FONT FACE="Times"><P ALIGN="JUSTIFY"></P></DIR>
+</DIR>
+</DIR>
+</DIR>
+</DIR>
+</DIR>
+</DIR>
+</DIR>
+</DIR>
+
+<P ALIGN="JUSTIFY">3) Scansione dell'array, con stampa di </FONT><B><FONT FACE="Courier">i</B></FONT><FONT FACE="Times"> e </FONT><B><FONT FACE="Courier">negozi[i]</FONT><FONT FACE="Times">,</B> quando </FONT><B><FONT FACE="Courier">negozi[i]&lt;MEDIA/3</P>
+</B></FONT><FONT FACE="Times"><P ALIGN="JUSTIFY"></P>
+<P ALIGN="JUSTIFY">4) Calcolo del Max valore nell'array (massimo guadagno ottenuto da un negozio).</P><DIR>
+<DIR>
+<DIR>
+<DIR>
+<DIR>
+<DIR>
+<DIR>
+<DIR>
+<DIR>
+
+</FONT><FONT FACE="Courier"><P ALIGN="JUSTIFY">Init <B>maxparz</B>:=0</P>
+<P ALIGN="JUSTIFY">Scansione di negozi: <B>per i=1..N</B> </P>
+<P ALIGN="JUSTIFY">if <B>negozi[i]&gt;maxparz</B> then <B>maxparz:=negozi[i]</P>
+</B><P ALIGN="JUSTIFY"></P></DIR>
+</DIR>
+</DIR>
+</DIR>
+</DIR>
+</DIR>
+</DIR>
+</DIR>
+</DIR>
+
+</FONT><FONT FACE="Times"><P ALIGN="JUSTIFY">5) Calcolo del Min valore nell'array (minimo guadagno ottenuto da un negozio).</P>
+<P ALIGN="JUSTIFY"></P>
+<P ALIGN="JUSTIFY">6) Calcolo di media2 = media ridotta.               </FONT><B><FONT FACE="Courier">media2 := (somguad - max - min)/(N-2)</P>
+</B></FONT><FONT FACE="Times"><P ALIGN="JUSTIFY"></P>
+<P ALIGN="JUSTIFY">7) Scansione dell'array, con stampa di </FONT><B><FONT FACE="Courier">i</B></FONT><FONT FACE="Times"> e </FONT><B><FONT FACE="Courier">negozi[i]</FONT><FONT FACE="Times">,</B> quando </FONT><B><FONT FACE="Courier">negozi[i]&lt;media2</P>
+</B></FONT><FONT FACE="Times"><P ALIGN="JUSTIFY"></P>
+<P ALIGN="JUSTIFY">&nbsp;</P>
+</FONT><FONT FACE="Courier"><P ALIGN="JUSTIFY">const N=20 --- const DIM=5; RAGIONE=1/3 in GUADAGNI.PAS</P>
+<P ALIGN="JUSTIFY"></P>
+<P ALIGN="JUSTIFY">var&#9;negozi: array[1..N] of real;</P>
+<P ALIGN="JUSTIFY">&#9;i: 1..N;   </P>
+<P ALIGN="JUSTIFY">SommaGuadagni, Media, Media2, Min, Max: real;</P>
+<P ALIGN="JUSTIFY"></P>
+<P ALIGN="JUSTIFY">begin {main program}</P>
+<P ALIGN="JUSTIFY"> writeln(' Elencare i guadagni dei negozi:');</P>
+<P ALIGN="JUSTIFY"> <B>&#9;&#133; {1}</P>
+</B><P ALIGN="JUSTIFY"></P>
+<P ALIGN="JUSTIFY">SommaGuadagni:=0;     &#9;&#9;&#9;&#9;&#9;<B>{2}</P>
+</B><P ALIGN="JUSTIFY"> &#9;for i:=1 to N do </P><DIR>
+<DIR>
+
+<P ALIGN="JUSTIFY">Sommaguadagni := Sommaguadagni + Negozi[i];</P></DIR>
+</DIR>
+
+<B><P ALIGN="JUSTIFY">Media:= Sommaguadagni/DIM;</P>
+</B><P ALIGN="JUSTIFY"> writeln;</P>
+<P ALIGN="JUSTIFY"> writeln(' Media dei guadagni = ', Media:10:2);</P>
+<P ALIGN="JUSTIFY"> writeln;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;<B>{3}</P>
+</B><P ALIGN="JUSTIFY"> writeln(' Stampa delle Pecore Nere:');</P>
+<B><P ALIGN="JUSTIFY"> for i:=1 to DIM do</P>
+<P ALIGN="JUSTIFY">   if Negozi[i] &lt; Media*RAGIONE</P>
+<P ALIGN="JUSTIFY">      then writeln('- Negozio numero ', i:2, ' con guadagno = ', Negozi[i]:10:2);</P>
+</B><P ALIGN="JUSTIFY"></P>
+<B><P ALIGN="JUSTIFY"> max := Negozi[1]; &#9;&#9;&#9;&#9;&#9;&#9;&#9;{4}</P>
+</B><P ALIGN="JUSTIFY"> <B>for i:=2 to N do   </P>
+</B><P ALIGN="JUSTIFY">   if (max &lt; negozi[i]) then max := negozi[i];</P>
+<P ALIGN="JUSTIFY"></P>
+<B><P ALIGN="JUSTIFY"> min := Negozi[1]; &#9;&#9;&#9;&#9;&#9;&#9;&#9;{5}</P>
+</B><P ALIGN="JUSTIFY"> <B>for i:=2 to N do   </P>
+</B><P ALIGN="JUSTIFY">   if (min &gt; Negozi[i]) then min := Negozi[i];</P>
+<P ALIGN="JUSTIFY"></P>
+<P ALIGN="JUSTIFY"> writeln;</P>
+<P ALIGN="JUSTIFY"> writeln(' Massimo guadagno: ', Max:10:2);</P>
+<P ALIGN="JUSTIFY"> writeln(' Minimo guadagno:  ', Min:10:2);</P>
+<P ALIGN="JUSTIFY"></P>
+<B><P ALIGN="JUSTIFY"> media2:=(Sommaguadagni - Max - Min)/(DIM-2);&#9;&#9;{6}</P>
+</B><P ALIGN="JUSTIFY"> writeln;</P>
+<P ALIGN="JUSTIFY"> writeln(' Media ridotta: ', Media2:12:4);</P>
+<P ALIGN="JUSTIFY"></P>
+<P ALIGN="JUSTIFY"> writeln(' Stampa di &#133; guadagnato meno della media ridotta:');<B> &#9; </P>
+<P ALIGN="JUSTIFY"> for i:=1 to DIM do&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;{7}</P>
+</B><P ALIGN="JUSTIFY">  if (Media2 &gt; Negozi[i])</P>
+<P ALIGN="JUSTIFY">     then </FONT><FONT FACE="Courier" SIZE=2>write('- Negozio numero ', i:2, ' con guadagno = ', Negozi[i]:10:2);</P>
+</FONT><FONT FACE="Courier"><P ALIGN="JUSTIFY">readln;</P>
+<P ALIGN="JUSTIFY">end.</P>
+</FONT><B><FONT FACE="Times"><P ALIGN="CENTER">Miglioramenti</P>
+
+<UL>
+</B><P ALIGN="JUSTIFY"><LI>eseguire il calcolo del max e del min contemporaneamente  (non due, ma un ciclo &#133;)</LI></P>
+<P ALIGN="JUSTIFY"><LI>eseguire le lettura dei dati di input,  il calcolo della media, dela max e del min usando un solo ciclo</LI></P>
+<P ALIGN="JUSTIFY"><LI>nel punto {7} stampare '***' vicino al negozio che ha guadagno minimo </LI></P></UL>
+
+<B><P ALIGN="JUSTIFY">---------------------------------------------------------------------------------------------------------------------------</P>
+<P ALIGN="JUSTIFY">TIPO INDICE NEGLI ARRAY</P>
+<P ALIGN="RIGHT"></P>
+<P ALIGN="RIGHT">&lt;tipo_array&gt; :== <U>array </U>[ &lt;tipo_indice&gt;</B>{,&lt;tipo_indice&gt;<B> </B>} <B>] <U>of</U> </B>&lt;tipo_elemento&gt;</P>
+<P ALIGN="JUSTIFY">Il campo di variabilit&agrave; degli indici di un array viene definito fornendo un TIPO. Il tipo fornito com e &lt;tipo_indice&gt; deve essere un <I>tipo ordinale</I>.</P>
+</FONT><B><FONT FACE="Courier"><P ALIGN="JUSTIFY"></P>
+<P ALIGN="JUSTIFY">type</B> INDICE = 1..N;&#9;&#9;&#9;&#9;<B>var</B> negozi : array[INDICE] of real;</P>
+</FONT><FONT FACE="Times"><P ALIGN="CENTER">ma si pu&ograve; anche defire negozi come segue</P>
+</FONT><B><FONT FACE="Courier"><P ALIGN="JUSTIFY">type</B> VETTORENEGOZI = array[INDICE] of real;&#9;</P>
+<B><P ALIGN="JUSTIFY">var</B> negozi: VETTOREGOZI;</P>
+</FONT><FONT FACE="Times"><P ALIGN="JUSTIFY"></P>
+<B><P ALIGN="JUSTIFY">Es.</P>
+</B></FONT><FONT FACE="Courier"><P ALIGN="JUSTIFY">var presenze: array[GIORNO] of integer;&#9;{presenze giorn. in aula}</P>
+<P ALIGN="JUSTIFY">Presenze[Ven] := 151</P>
+<P ALIGN="JUSTIFY"></P>
+<P ALIGN="JUSTIFY">Var g: GIORNO&#9;&#9;&#9;For g:=Lun to Ven do writeln(presenze[g]);</P>
+<P ALIGN="JUSTIFY"></P>
+<P ALIGN="JUSTIFY">var persone: array['A'..'Z'] of integer; </P>
+<P ALIGN="JUSTIFY">persone['M'] = numero di persone il cui nome comincia per M </P>
+<B><P ALIGN="JUSTIFY"></P>
+<P ALIGN="JUSTIFY">for c:='L' to 'Y' do </P>
+</B><P ALIGN="JUSTIFY">writeln('ci sono ',persone[c], ' persone il cui nome inizia per ',c);</P>
+</FONT><B><FONT FACE="Times"><P ALIGN="JUSTIFY">---------------------------------------------------------------------------------------------------------------------------</P>
+<P ALIGN="JUSTIFY">Esercizio</B>&#9;<B>I=</B> due parole di alpi&ugrave; 4 caratteri&#9;<B>O=</B> messaggio di conferma/smentita parole uguali</P>
+<P ALIGN="JUSTIFY">Type &#9;TIPO_PAROLA = array[1..4] of char;</P>
+<P ALIGN="JUSTIFY">var &#9;par1, par2: TIPO_PAROLA;</P>
+<P ALIGN="JUSTIFY">&#9;uguali: boolean;</P>
+<P ALIGN="JUSTIFY">Alg.</P>
+<P ALIGN="JUSTIFY">1) lettura prima parola&#9;&#9;2) lettura seconda parola&#9;</P>
+<P ALIGN="JUSTIFY">3) confronto tra par1 e par2: se sono uguali, uguali=TRUE &#133;</P>
+<P ALIGN="JUSTIFY">4) <B>if</B> UGUALI=TRUE <B>then</B> writeln('le parole sono uguali') <B>else</B> writeln('le parole sono diverse');</P>
+<P ALIGN="JUSTIFY"></P>
+<B><P ALIGN="JUSTIFY">---------------------------------------------------------------------------------------------------------------------------</P>
+</B><P ALIGN="JUSTIFY"></P></FONT></BODY>
+</HTML>

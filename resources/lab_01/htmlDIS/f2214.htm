@@ -1,0 +1,160 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=windows-1252">
+<TITLE>1</TITLE>
+</HEAD>
+<BODY background="bgrnd.jpg">
+
+<B><FONT SIZE=5><P>14)</FONT><FONT SIZE=5> </FONT><FONT SIZE=5>Divide et Impera </P>
+</B></FONT><P ALIGN="RIGHT">Riferimenti: <B>[1]</B> capitolo 19</P>
+<hr>
+
+<I>1. La tecnica
+<DIR>
+<DIR>
+
+</I><P ALIGN="JUSTIFY">Si basa sull'accorta suddivisione di un problema in sottoproblemi;</P></DIR>
+</DIR>
+
+<OL>
+
+<OL>
+
+<LI>se l'input ha dimensione minore di un certo "k", si risolve direttamente il problema</LI><LI>si individuano X sottoproblemi</LI><LI>si risolvono ricorsivamente</LI><LI>si utilizzano le loro soluzioni per determinare quella del problema originario</LI></OL>
+</OL>
+
+<I>2. Bilanciamento dell'input
+
+<OL>
+
+</I><P ALIGN="JUSTIFY">Riguarda la scomposizione di un problema in sottoproblemi;  se l'input viene suddiviso in <I>a</I> parti, ciascuna di dimensioni <I>n/b</I>, dove <I>a</I> e <I>b</I> sono costanti positive, ed <I>n</I> &egrave; la dimensione dell'input, diremo che l'algoritmo si basa su una suddivisione bilanciata.</P>
+<I></OL>
+3. Equazioni di ricorrenza
+<DIR>
+<DIR>
+
+</I><P ALIGN="JUSTIFY">Complessit&agrave; asintotica dell'algoritmo per n=&lt;k <FONT FACE="Wingdings">&#224;</FONT>
+ <FONT FACE="Symbol">&#81;</FONT>
+(1), mentre per n&gt;k</P>
+<P ALIGN="CENTER"><IMG SRC="Image21.gif" width=148 height=45>, con:</P></DIR>
+</DIR>
+
+
+<UL><DIR>
+<DIR>
+
+
+<UL>
+<LI>a <FONT FACE="Wingdings">&#224;</FONT>
+ numero di sottoproblemi generati</LI><LI>b <FONT FACE="Wingdings">&#224;</FONT>
+ fattore di decomposizione, denominatore di "n" per la determinazione della dimensione di ogni sottoproblema</LI><LI>c*n<SUP>d</SUP> <FONT FACE="Wingdings">&#224;</FONT>
+ costo della ricomposizione delle soluzioni</LI></UL>
+</DIR>
+</DIR>
+</UL>
+
+<I>4. Soluzioni dell'equazione di ricorrenza
+<DIR>
+<DIR>
+
+</I><P ALIGN="JUSTIFY">In molti casi &egrave; possibile risolverla per sostituzione.  In generale, se </P>
+<P ALIGN="CENTER">d=0 e a=1</P>
+<P ALIGN="JUSTIFY">quindi un sottoproblema e costo della ricomposizione costante, la complessit&agrave; risulta essere</P>
+<P ALIGN="CENTER">O(log n)</P>
+<P ALIGN="JUSTIFY">Se invece d=1, se quindi il costo della ricomposizione &egrave; lineare in n, distinguiamo</P></DIR>
+</DIR>
+
+
+<UL>
+
+<UL>
+<LI>a = b <FONT FACE="Wingdings">&#224;</FONT>
+ O(n log n)</LI></UL>
+</UL>
+
+
+<UL>
+
+<UL>
+<LI>a &lt; b <FONT FACE="Wingdings">&#224;</FONT>
+ O(n)</LI><LI>a &gt; b <FONT FACE="Wingdings">&#224;</FONT>
+ O<IMG SRC="Image22.gif" width=52 height=28></UL>
+</UL>
+
+<I>5. Ricerca del massimo e del minimo in un insieme
+<OL>
+
+</I><P ALIGN="JUSTIFY">Il massimo pu&ograve; essere determinato con n-1 confronti, massimo+minimo con 2(n-1) confronti.  Una valida alternativa &egrave; applicare la tecnica divide et impera, scomponendo il problema originario in una "gerarchia" di sottoproblemi (es: organizzazione di un torneo) ed evitando, per la ricerca del minimo, il confronto con il maggiore dei primi n/2 confronti (risparmiando di fatto n/2 confronti).  c*n<SUP>d</SUP> ha costo costante (2)</P>
+<P ALIGN="CENTER">T(n)=2T(n/2)+2=2(T(n/4)+2)+2=4T(n/4)+6=….=2<SUP>k</SUP>T(n/2<SUP>k</SUP>)+(2<SUP>k</SUP>-1)2</P>
+<P ALIGN="JUSTIFY">Arrivando nelle condizioni del passo base (quando n/2<SUP>k</SUP>=2), T(n/2<SUP>k</SUP>)=1, per cui</P>
+<P ALIGN="CENTER">T(n)=n/2+(n/2-1)2=3n/2-2</P>
+<I></OL>
+6. Ricerca binaria
+</I>
+<OL>
+
+<P ALIGN="JUSTIFY">L'algoritmo &egrave; caratterizzato dai seguenti valori (per l'equazione di ricorrenza):</P>
+<P ALIGN="CENTER">k=1, a=1, b=2, d=0</P>
+<P>d=0 e a=1, per cui l'algoritmo ha complessit&agrave; O(log n).</P>
+<I></OL>
+7. Merge-sort
+</I>
+<OL>
+
+<P ALIGN="JUSTIFY">L'algoritmo &egrave; caratterizzato dai seguenti valori (per l'equazione di ricorrenza):</P>
+<P ALIGN="CENTER">k=1, a=2, b=2, d=1</P>
+<P>a = b, per cui l'algoritmo ha complessit&agrave; O(n log n), infatti:</P>
+<P ALIGN="CENTER">T(n)=2T(n/2)+cn=2(T(n/4)+cn/2)+cn=4T(n/4)+2cn=….=2<SUP>h</SUP>T(n/2<SUP>h</SUP>)+hcn</P>
+<P ALIGN="JUSTIFY">Arrivando nelle condizioni del passo base dopo h sostituzioni (quando 2<SUP>h</SUP>=n ovvero quando h=log n), T(n/2<SUP>h</SUP>)=1, per cui</P>
+<P ALIGN="CENTER">T(n)=n+cn log n</P>
+<I></OL>
+8. Moltiplicazione tra interi di n cifre
+</I>
+<OL>
+
+<P ALIGN="JUSTIFY">Scegliendo come misura di complessit&agrave; il numero di operazioni aritmetiche fra le cifre, abbiamo che il metodo classico impiega <FONT FACE="Symbol">&#81;</FONT>
+(n<SUP>2</SUP>) operazioni.  Consideriamo invece il seguente approccio divide et impera per il prodotto X * Y (in base B).</P>
+<P ALIGN="CENTER">X <FONT FACE="Wingdings">&#224;</FONT>
+ X<SUB>1</SUB> B<SUP>n/2</SUP> + X<SUB>0</P>
+</SUB><P ALIGN="CENTER">Y <FONT FACE="Wingdings">&#224;</FONT>
+ Y<SUB>1</SUB> B<SUP>n/2</SUP> + Y<SUB>0</P>
+</SUB><P ALIGN="CENTER">X * Y = X<SUB>0</SUB> Y<SUB>0</SUB> + (X<SUB>0</SUB> Y<SUB>1</SUB> + X<SUB>1</SUB> Y<SUB>0</SUB>) B<SUP>n/2</SUP> + X<SUB>1</SUB> Y<SUB>1</SUB> B<SUP>n</P>
+</SUP><P ALIGN="JUSTIFY">L'algoritmo &egrave; caratterizzato dai seguenti valori (per l'equazione di ricorrenza): </P>
+<P ALIGN="CENTER">a=4, b=2, d=1</P>
+<P>d=1 e a&gt;b, per cui l'algoritmo ha complessit&agrave; O(n<SUP>2</SUP>) e un approccio di questo tipo non porta vantaggi.  Se per&ograve; poniamo:</P>
+<P ALIGN="CENTER">m<SUB>1</SUB> = X<SUB>0</SUB> Y<SUB>0</SUB>, m<SUB>2</SUB> = X<SUB>1</SUB> Y<SUB>1</SUB>, m<SUB>3</SUB> = (X<SUB>0</SUB>-X<SUB>1</SUB>) (Y<SUB>1</SUB>-Y<SUB>0</SUB>)</P>
+<P>otteniamo un prodotto tra interi dato da:</P>
+<P ALIGN="CENTER">X * Y = m<SUB>1</SUB> + (m<SUB>1</SUB> + m<SUB>2</SUB> + m<SUB>3</SUB>) B<SUP>n/2</SUP> + m<SUB>2</SUB> B<SUP>n</P>
+</SUP><P>con tre sole moltiplicazioni e complessit&agrave; O(<IMG SRC="Image23.gif" width=37 height=21>).</P>
+<I><P ALIGN="JUSTIFY"></OL>
+9. Metodo di Strassen per il prodotto tra matrici
+<DIR>
+<DIR>
+
+</I><P ALIGN="CENTER"><IMG SRC="Image24.gif" width=248 height=48></P>
+<P ALIGN="JUSTIFY">Metodo classico con 8 moltiplicazioni e 4 addizioni:</P>
+<P ALIGN="CENTER">C<SUB>11</SUB> = A<SUB>11</SUB> * B<SUB>11</SUB> + A<SUB>12</SUB> * B<SUB>21</P>
+</SUB><P ALIGN="CENTER">C<SUB>12</SUB> = A<SUB>11</SUB> * B<SUB>12</SUB> + A<SUB>12</SUB> * B<SUB>22</P>
+</SUB><P ALIGN="CENTER">C<SUB>21</SUB> = A<SUB>21</SUB> * B<SUB>11</SUB> + A<SUB>22</SUB> * B<SUB>21</P>
+</SUB><P ALIGN="CENTER">C<SUB>22</SUB> = A<SUB>21</SUB> * B<SUB>12</SUB> + A<SUB>22</SUB> * B<SUB>22</P>
+</SUB><P ALIGN="JUSTIFY">Metodo di Strassen:</P><DIR>
+<DIR>
+<DIR>
+
+<P>D<SUB>1</SUB> = (A<SUB>11</SUB> + A<SUB>22</SUB>) * (B<SUB>11</SUB> + B<SUB>22</SUB>)</P>
+<P>D<SUB>2</SUB> = (A<SUB>21</SUB> + A<SUB>22</SUB>) * B<SUB>11</P>
+</SUB><P>D<SUB>3</SUB> = A<SUB>11</SUB> * (B<SUB>12</SUB> - B<SUB>22</SUB>)</P>
+<P>D<SUB>4</SUB> = A<SUB>22</SUB> * (B<SUB>21</SUB> - B<SUB>11</SUB>)</P>
+<P>D<SUB>5</SUB> = (A<SUB>11</SUB> + A<SUB>12</SUB>) * B<SUB>22</P>
+</SUB><P>D<SUB>6</SUB> = (A<SUB>21</SUB> - A<SUB>11</SUB>) * (B<SUB>11</SUB> + B<SUB>12</SUB>)</P>
+<P>D7 = (A<SUB>12</SUB> - A<SUB>22</SUB>) * (B<SUB>21</SUB> + B<SUB>22</SUB>)</P>
+<P>C<SUB>11</SUB> = D<SUB>1</SUB> + D<SUB>4</SUB> - D<SUB>5</SUB> + D<SUB>7</P>
+</SUB><P>C<SUB>12</SUB> = D<SUB>3</SUB> + D<SUB>5</P>
+</SUB><P>C<SUB>21</SUB> = D<SUB>2</SUB> + D<SUB>4</P>
+</SUB><P>C<SUB>22</SUB> = D<SUB>1</SUB> + D<SUB>3</SUB> - D<SUB>2</SUB> + D<SUB>6</P></DIR>
+</DIR>
+</DIR>
+</DIR>
+</DIR>
+</SUB></BODY>
+</HTML>

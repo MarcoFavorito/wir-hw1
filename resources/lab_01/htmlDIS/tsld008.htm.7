@@ -1,0 +1,42 @@
+
+<HTML>
+
+<HEAD>
+<META HTTP-EQUIV="Context-Type" CONTEXT="text/html;charset=PREDEFINITA (AUTOMATICA)">
+<meta name="GENERATOR" content="Microsoft Internet Assistant for PowerPoint 97">
+ <TITLE>Expressions and Strings</TITLE> 
+</HEAD>
+
+<BODY     >
+
+ <H1>Expressions and Strings</H1> 
+ <P><UL>
+<LI><H2>Illustrates use of arithmetic expressions and string pattern matching:  Find triples (of ages of sailors and two fields defined by expressions) for sailors whose names begin and end with B and contain at least three characters.
+</H2>
+</UL><UL>
+<LI><H2>AS and = are two ways to name fields in result.
+</H2>
+</UL><UL>
+<LI><H2>LIKE is used for string matching. `_’ stands for any one character and `%’ stands for 0 or more arbitrary characters.  </H2>
+</UL></P>
+<P><UL>
+SELECT  S.age, age1=S.age-5, 2*S.age AS age2
+<BR></UL><UL>
+FROM  Sailors S
+</UL><UL>
+WHERE  S.sname LIKE ‘B_%B’</UL></P>
+<P></P> 
+<P>
+<TABLE>
+  <TD HEIGHT=100 WIDTH=100> <A HREF="tsld007.htm">Diapositiva precedente</A> </TD>
+  <TD HEIGHT=100 WIDTH=100> <A HREF="tsld009.htm">Diapositiva successiva</A> </TD>
+  <TD HEIGHT=100 WIDTH=150> <A HREF="tsld001.htm">Torna alla prima diaposiva</A> </TD>
+  <TD HEIGHT=100 WIDTH=150> <A HREF="sld008.htm">Visualizza versione grafica</A> </TD>
+</TABLE>
+<BR>
+</P>
+
+
+
+</Body>
+</HTML>

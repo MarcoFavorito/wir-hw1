@@ -1,0 +1,540 @@
+<!doctype html public "-//w3c//dtd html 4.0 transitional//en">
+<html>
+<head>
+   <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <meta name="GENERATOR" content="Mozilla/4.5 [en] (Win98; I) [Netscape]">
+   <title>1</title>
+</head>
+<body text="#000000" bgcolor="#FFFFFF" link="#0000EE" vlink="#551A8B" alink="#FF0000" background="bgrnd.jpg">
+<b><font size=+2>10) Analizzatori bottom up 1</font></b>
+<div align=right>
+<p>Riferimenti: "<i>Linguaggi formali e compilatori</i>" - 4.6
+<p><b>Aho</b>, sez 4.5, 4.7</div>
+
+<center>
+<p>
+<hr></center>
+
+<p><b><u><font size=+1>Aula</font></u></b>
+<ol>
+<li>
+<i>Analizzatori bottom up</i></li>
+</ol>
+
+<dir>
+<dir>
+<dir>Il processo inverso alla derivazione &egrave; la riduzione. Negli
+analizzatori bottom up, l'albero sintattico corrispondente alla frase in
+ingresso viene costruito in modalit&agrave; ascendente, dalle foglie alla
+radice, riducendo la <i>forma di frase</i> corrente. Vengono utilizzati
+analizzatori LR, che riducono la forma di frase corrente al simbolo iniziale
+della grammatica. Rispetto all'analisi top down, l'analisi sintattica bottom
+up consente il trattamento di una pi&ugrave; ampia classe di linguaggi.
+Tuttavia l'onerosit&agrave; dell'implementazione rende necessario l'utilizzo
+di generatori come Yacc, Bison o Cup.
+<p>La classe di grammatiche presa in considerazione in questo caso &egrave;
+la LR(K) dove:</dir>
+</dir>
+</dir>
+
+<ul>
+<ul>
+<li>
+L - indica che la stringa in ingresso &egrave; esaminata da sinistra verso
+destra;</li>
+
+<li>
+R - indica che viene effettuata la riduzione destra;</li>
+
+<li>
+K - &egrave; il numero di simboli successivi alla parte gi&agrave; riconosciuta
+della stringa in ingresso, che l'analizzatore sintattico considera per
+decidere l'azione da intraprendere. Quando k &egrave; omesso, si intende
+pari a 1.</li>
+</ul>
+</ul>
+
+<dir>
+<dir>
+<dir>Esempio: data la grammatica
+<p><i>S <font face="Wingdings">&agrave;</font> E</i>
+<p><i>E <font face="Wingdings">&agrave;</font> E + T</i>
+<p><i>E <font face="Wingdings">&agrave;</font> T</i>
+<p><i>T <font face="Wingdings">&agrave;</font> T * F</i>
+<p><i>T <font face="Wingdings">&agrave;</font> F</i>
+<p><i>F <font face="Wingdings">&agrave;</font> ( E )</i>
+<p><i>F <font face="Wingdings">&agrave;</font> i</i>
+<p>Proviamo a descrivere il processo di derivazione canonica destra, in
+un analizzatore discendente, per la frase in ingresso 'i + i * i':
+<p>passo 1)
+<center>
+<p><img SRC="Image34.gif" height=67 width=16></center>
+
+<p>passo 2)
+<center>
+<p><img SRC="Image35.gif" height=185 width=154></center>
+
+<p>passo 3)
+<center>
+<p><img SRC="Image36.gif" height=185 width=192></center>
+
+<p>passo 4)
+<center>
+<p><img SRC="Image37.gif" height=188 width=195></center>
+
+<p>&nbsp;passo 5)
+<center>
+<p><img SRC="Image38.gif" height=185 width=193></center>
+
+<p>passo 6)
+<center>
+<p><img SRC="Image39.gif" height=188 width=193></center>
+
+<p><br>
+<p>La riduzione destra, procedendo esattamente in ordine inverso, genera
+le forme di frase:
+<center>
+<p><i>i + i * i</i>
+<p><i>F + i * i</i>
+<p><i>T + i * i</i>
+<p><i>E + i * i</i>
+<p><i>E + F * i</i>
+<p><i>E + T * i</i>
+<p><i>E + T * F</i>
+<p><i>E + T</i>
+<p><i>E</i>
+<p><i>S</i></center>
+
+<br>&nbsp;</dir>
+</dir>
+</dir>
+
+<ol>
+<li>
+<i>Concetti fondamentali</i></li>
+
+<center>
+<p><br><i>Def: si definisce <b>parte destra riducibile</b> di una forma
+di frase f<sub>i</sub> quell'unica parte destra che, sostituita con la
+parte sinistra corrispondente, permette di ridurre f<sub>i</sub> alla forma
+di frase f<sub>i+1</sub>, che &egrave; la forma di frase successiva nell'ambito
+della riduzione destra della stringa in ingresso.</i>
+<p><i>Def: si definisce <b>prefisso LR riducibile</b> di una forma di frase,
+il prefisso che contiene la parte destra riducibile, ma non altri simboli
+alla sua destra.</i>
+<p><i>Def: si definisce <b>prefisso candidato</b> di una forma di frase,
+il prefisso che ha come suffisso una parte destra di regola (non necessariamente
+l'unica parte destra riducibile).</i>
+<p><i>Def: si definisce <b>prefisso LR</b>, un qualsiasi prefisso di un
+prefisso riducibile.</i></center>
+
+<br>&nbsp;
+<br>&nbsp;
+<li>
+<i>Princ&igrave;pi di funzionamento dell'analizzatore Shift-Reduce</i></li>
+</ol>
+
+<dir>
+<dir>
+<dir>Come gi&agrave; visto in occasione dei parser non ricorsivi, &egrave;
+possibile realizzare un parser bottom up, facendo uso di una tabella e
+di uno stack. Lo stack contiene ad ogni passo, il prefisso LR corrente
+e l'implementazione ne prevede l'inizializzazione con il primo simbolo
+della frase in ingresso.
+<br>&nbsp;
+<p>L'esecuzione del programma, prevede ad ogni passo la lettura del prefisso
+LR contenuto nello stack e l'esecuzione di una delle possibili azioni:</dir>
+</dir>
+</dir>
+
+<ul>
+<ul>
+<li>
+<b>Shift</b> - se non &egrave; possibile effettuare la riduzione del prefisso
+LR presente in cima allo stack, viene letto il successivo simbolo della
+frase in ingresso e posto in cima allo stack</li>
+
+<li>
+<b>Reduce</b> - se &egrave; possibile effettuare la riduzione del prefisso
+LR presente in cima allo stack, viene sostituita la parte destra riducibile
+con il corrispondente simbolo non terminale.</li>
+</ul>
+</ul>
+
+<dir>
+<dir>
+<dir>Per sapere se &egrave; possibile o meno ridurre il prefisso presente
+nello stack, l'analizzatore usa l'informazione contenuta nel successivo
+simbolo della stringa in ingresso, per consultare la tabella guida. L'esecuzione
+termina quando la frase in ingresso &egrave; stata ridotta all'assioma,
+ovvero quando non ci sono pi&ugrave; simboli in ingresso (lettura del carattere
+terminatore $, della stringa in ingresso) e nello stack &egrave; presente
+il solo simbolo iniziale.
+<p>Esempio precedente:</dir>
+</dir>
+</dir>
+
+<table BORDER CELLPADDING=4 WIDTH="448" >
+<tr>
+<td VALIGN=TOP WIDTH="34%">&nbsp;
+<center>
+<p><b>Stack</b></center>
+</td>
+
+<td VALIGN=TOP WIDTH="34%">
+<center><b>Parte destra riducibile</b></center>
+</td>
+
+<td VALIGN=TOP WIDTH="33%">&nbsp;
+<center>
+<p><b>Regola applicata</b></center>
+</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP WIDTH="34%" HEIGHT="20">i</td>
+
+<td VALIGN=TOP WIDTH="34%" HEIGHT="20">i&nbsp;</td>
+
+<td VALIGN=TOP WIDTH="33%" HEIGHT="20">F <font face="Wingdings">&agrave;</font>
+i</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP WIDTH="34%" HEIGHT="20">F</td>
+
+<td VALIGN=TOP WIDTH="34%" HEIGHT="20">F</td>
+
+<td VALIGN=TOP WIDTH="33%" HEIGHT="20">T <font face="Wingdings">&agrave;</font>
+F</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP WIDTH="34%" HEIGHT="20">T</td>
+
+<td VALIGN=TOP WIDTH="34%" HEIGHT="20">T</td>
+
+<td VALIGN=TOP WIDTH="33%" HEIGHT="20">E <font face="Wingdings">&agrave;</font>
+T</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP WIDTH="34%" HEIGHT="20">E</td>
+
+<td VALIGN=TOP WIDTH="34%" HEIGHT="20"></td>
+
+<td VALIGN=TOP WIDTH="33%" HEIGHT="20"></td>
+</tr>
+
+<tr>
+<td VALIGN=TOP WIDTH="34%" HEIGHT="20">E +&nbsp;</td>
+
+<td VALIGN=TOP WIDTH="34%" HEIGHT="20"></td>
+
+<td VALIGN=TOP WIDTH="33%" HEIGHT="20"></td>
+</tr>
+
+<tr>
+<td VALIGN=TOP WIDTH="34%" HEIGHT="20">E + i</td>
+
+<td VALIGN=TOP WIDTH="34%" HEIGHT="20">i&nbsp;</td>
+
+<td VALIGN=TOP WIDTH="33%" HEIGHT="20">F <font face="Wingdings">&agrave;</font>
+i</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP WIDTH="34%" HEIGHT="20">E + F</td>
+
+<td VALIGN=TOP WIDTH="34%" HEIGHT="20">F</td>
+
+<td VALIGN=TOP WIDTH="33%" HEIGHT="20">T <font face="Wingdings">&agrave;</font>
+F</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP WIDTH="34%" HEIGHT="20">E + T</td>
+
+<td VALIGN=TOP WIDTH="34%" HEIGHT="20"></td>
+
+<td VALIGN=TOP WIDTH="33%" HEIGHT="20"></td>
+</tr>
+
+<tr>
+<td VALIGN=TOP WIDTH="34%" HEIGHT="20">E + T *</td>
+
+<td VALIGN=TOP WIDTH="34%" HEIGHT="20"></td>
+
+<td VALIGN=TOP WIDTH="33%" HEIGHT="20"></td>
+</tr>
+
+<tr>
+<td VALIGN=TOP WIDTH="34%" HEIGHT="20">E + T * i</td>
+
+<td VALIGN=TOP WIDTH="34%" HEIGHT="20">i&nbsp;</td>
+
+<td VALIGN=TOP WIDTH="33%" HEIGHT="20">F <font face="Wingdings">&agrave;</font>
+i</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP WIDTH="34%" HEIGHT="20">E + T * F</td>
+
+<td VALIGN=TOP WIDTH="34%" HEIGHT="20">T * F</td>
+
+<td VALIGN=TOP WIDTH="33%" HEIGHT="20">T <font face="Wingdings">&agrave;</font>
+T * F</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP WIDTH="34%" HEIGHT="20">E + T</td>
+
+<td VALIGN=TOP WIDTH="34%" HEIGHT="20">E + T</td>
+
+<td VALIGN=TOP WIDTH="33%" HEIGHT="20">E <font face="Wingdings">&agrave;</font>
+E + T</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP WIDTH="34%" HEIGHT="20">E</td>
+
+<td VALIGN=TOP WIDTH="34%" HEIGHT="20">E</td>
+
+<td VALIGN=TOP WIDTH="33%" HEIGHT="20">S <font face="Wingdings">&agrave;</font>
+E</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP WIDTH="34%" HEIGHT="20">S</td>
+
+<td VALIGN=TOP WIDTH="34%" HEIGHT="20"></td>
+
+<td VALIGN=TOP WIDTH="33%" HEIGHT="20"></td>
+</tr>
+</table>
+
+<br>&nbsp;
+<ol>
+<li>
+<i>Scelta della regola</i></li>
+</ol>
+
+<dir>
+<dir>
+<dir>Il problema &egrave; analogo a quello che ci siamo posti nel caso
+degli analizzatori top down. In quel caso ci siamo chiesti quale regola
+applicare e quindi quale parte destra utilizzare, per la derivazione di
+simboli non terminali che comparivano nella parte sinistra di pi&ugrave;
+regole. Ora ci chiediamo quale parte sinistra sostituire al nostro prefisso,
+se questo compare in pi&ugrave; di una parte destra.
+<p>Cos&igrave; come per l'analisi top down, nell'analisi bottom up ci facciamo
+guidare da una tabella. Ci sono due diversi tipi di parser Shift-Reduce;
+due diverse tecniche che utilizzano anche tipi di tabelle diverse:</dir>
+</dir>
+</dir>
+
+<ul>
+<ul>
+<li>
+Parser LR</li>
+
+<li>
+Parser a precedenza di operatori</li>
+</ul>
+</ul>
+
+<ol>
+<li>
+<i>Parser LR</i></li>
+</ol>
+
+<dir>
+<dir>
+<dir>Nei parser LR, la costruzione della tabella consente di capire a priori
+se &egrave; possibile, data la grammatica G, costruire un analizzatore
+bottom up deterministico con un solo simbolo di lookahead per tale grammatica.
+E' infatti possibile che, durante la costruzione di tale tabella, si arrivi
+a porre in un elemento due diverse azioni in contrasto tra loro (conflitto
+shift-reduce), o due azioni identiche che presuppongono per&ograve;, la
+riduzione attraverso l'applicazione di due diverse regole (conflitto reduce-reduce).
+Se durante il processo di costruzione si rilevano conflitti, non &egrave;
+possibile realizzare un parser shift-reduce per tale grammatica.
+<p>Ci sono tre modi per costruire tale tabella, ci sono quindi 3 tipi di
+tabelle:</dir>
+</dir>
+</dir>
+
+<ul>
+<ul>
+<li>
+LR(1) - &egrave; la pi&ugrave; precisa di tutte, ed &egrave; la tabella
+di riferimento per dire se una grammatica &egrave; LR(1). E' la pi&ugrave;
+onerosa in termini di dimensioni e realizzazione.</li>
+
+<li>
+LALR(1) (Lookahead LR) - &egrave; un'approssimazione della LR(1), nel senso
+che possono esistere grammatiche LR(1) per le quali la tabella LALR(1)
+presenta conflitti. Il vantaggio della LALR(1) &egrave; che si genera una
+tabella pi&ugrave; compatta (fino a 10 volte) della LR(1), anche se si
+deve sacrificare un po' di precisione. E' la scelta anche di Bison e Cup
+che accettano come specifiche, solo grammatiche LALR(1) (la tabella viene
+realizzata dal generatore).</li>
+
+<li>
+SLR(1) (Simple LR) - E' un'altra approssimazione (peggiore della LALR(1)).
+Non &egrave; sicuramente tra le preferite, ma &egrave; comunque la pi&ugrave;
+semplice da implementare.</li>
+</ul>
+</ul>
+
+<dir>
+<dir>
+<dir>
+<center><i>Def: la grammatica G &egrave; LR(1) se la tabella LR(1) relativa
+a G non presenta conflitti, ovvero se non ci sono caselle nella tabella
+contenenti due o pi&ugrave; azioni.</i></center>
+
+<p><br>
+<p>Inoltre, per convenienza, si assume che il simbolo iniziale della grammatica
+non compaia in nessuna parte destra; &egrave; possibile in caso contrario
+trasformarla mediante l'aggiunta di una regola aggiuntiva.
+<p>Ad ogni passo, il parser LR accede alla tabella, all'elemento [s<sub>i</sub>,
+a<sub>i</sub>], dove a<sub>i</sub> rappresenta il simbolo letto dalla frase
+in ingresso ed s<sub>i</sub> rappresenta lo "stato corrente" del parser.
+Nell'elemento acceduto &egrave; contenuta l'indicazione sull'azione da
+eseguire (shift o reduce). Per capire cosa rappresenta lo stato, &egrave;
+necessario approfondire il problema della costruzione della tabella di
+parsing. Per ora &egrave; sufficiente capire che ad ogni passo il parser
+deve poter capire se il prefisso presente in cima allo stack &egrave; riducibile.
+L'insieme dei prefissi LR di una grammatica rappresentano un linguaggio
+regolare, rappresentabili quindi attraverso un automa a stati finiti. Lo
+stato corrente ad ogni passo del processo di parsing, rappresenta lo stato
+intermedio nel cammino di riconoscimento di un prefisso LR riducibile.
+<p>Come detto in precedenza, se una grammatica non &egrave; LR, non &egrave;
+possibile costruire un analizzatore bottom up deterministico. Per fare
+un esempio, consideriamo l'ambiguit&agrave; presente nella grammatica:
+<p>…………
+<p><i>Istruzione <font face="Wingdings">&agrave;</font> <b>if</b> Espressione
+<b>then</b> Istruzione</i>
+<p><i>Istruzione <font face="Wingdings">&agrave;</font> <b>if</b> Espressione
+<b>then</b> Istruzione <b>else</b> Istruzione</i>
+<p>…………
+<p>Una grammatica ambigua, non pu&ograve; essere in nessun caso una grammatica
+LR. Provando a costruire l'albero sintattico per la frase in ingresso
+<center>
+<p><i>If (c==4) then if (b ==5) then a=1 else a=2</i></center>
+
+<p>ci accorgiamo (non poteva essere altrimenti, in quanto ambigua) che
+possono essere costruiti due alberi sintattici distinti per la stessa frase
+<br>&nbsp;
+<p><b>Albero 1</b>
+<center>
+<p><img SRC="Image40.gif" height=152 width=382></center>
+
+<p><br>
+<br>
+<p><b>Albero 2</b>
+<center>
+<p><img SRC="Image41.gif" height=152 width=312></center>
+
+<p><br>
+<br>
+<p>e il parser LR</dir>
+</dir>
+</dir>
+
+<table BORDER CELLPADDING=4 WIDTH="448" >
+<tr>
+<td VALIGN=TOP WIDTH="51%">
+<center><b>Stack</b></center>
+</td>
+
+<td VALIGN=TOP WIDTH="23%">
+<center><b><font size=-1>Parte destra riducibile</font></b></center>
+</td>
+
+<td VALIGN=TOP WIDTH="26%">
+<center><b><font size=-1>Regola applicata</font></b></center>
+</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP WIDTH="51%" HEIGHT="20">If</td>
+
+<td VALIGN=TOP WIDTH="23%" HEIGHT="20"></td>
+
+<td VALIGN=TOP WIDTH="26%" HEIGHT="20"></td>
+</tr>
+
+<tr>
+<td VALIGN=TOP WIDTH="51%" HEIGHT="20">if (c==4)</td>
+
+<td VALIGN=TOP WIDTH="23%" HEIGHT="20"></td>
+
+<td VALIGN=TOP WIDTH="26%" HEIGHT="20"></td>
+</tr>
+
+<tr>
+<td VALIGN=TOP WIDTH="51%" HEIGHT="20">if (c==4) then</td>
+
+<td VALIGN=TOP WIDTH="23%" HEIGHT="20"></td>
+
+<td VALIGN=TOP WIDTH="26%" HEIGHT="20"></td>
+</tr>
+
+<tr>
+<td VALIGN=TOP WIDTH="51%" HEIGHT="20">if (c==4) then if</td>
+
+<td VALIGN=TOP WIDTH="23%" HEIGHT="20"></td>
+
+<td VALIGN=TOP WIDTH="26%" HEIGHT="20"></td>
+</tr>
+
+<tr>
+<td VALIGN=TOP WIDTH="51%" HEIGHT="20">if (c==4) then if (b==5)</td>
+
+<td VALIGN=TOP WIDTH="23%" HEIGHT="20"></td>
+
+<td VALIGN=TOP WIDTH="26%" HEIGHT="20"></td>
+</tr>
+
+<tr>
+<td VALIGN=TOP WIDTH="51%" HEIGHT="20">if (c==4) then if (b==5) then</td>
+
+<td VALIGN=TOP WIDTH="23%" HEIGHT="20"></td>
+
+<td VALIGN=TOP WIDTH="26%" HEIGHT="20"></td>
+</tr>
+
+<tr>
+<td VALIGN=TOP WIDTH="51%" HEIGHT="20">if (c==4) then if (b==5) then a=1</td>
+
+<td VALIGN=TOP WIDTH="23%" HEIGHT="20"></td>
+
+<td VALIGN=TOP WIDTH="26%" HEIGHT="20"></td>
+</tr>
+
+<tr>
+<td VALIGN=TOP WIDTH="51%" HEIGHT="20">…………………………….</td>
+
+<td VALIGN=TOP WIDTH="23%" HEIGHT="20">…………..</td>
+
+<td VALIGN=TOP WIDTH="26%" HEIGHT="20">………………</td>
+</tr>
+</table>
+
+<dir>
+<dir>
+<dir>a questo passo della riduzione, pu&ograve; scegliere (non determinismo)
+tra lo shift del simbolo "else" e la reduce dell'istruzione "if (b==5)
+then a=1". E' presente un conflitto shift-reduce per cui la grammatica
+non &egrave; LR(1). Quello della grammatica ambigua &egrave; solo un caso
+molto particolare, che puo' essere facilmente risolto, decidendo in favore
+dello shifting.
+<br>&nbsp;
+<br>&nbsp;</dir>
+</dir>
+</dir>
+
+</body>
+</html>

@@ -1,0 +1,336 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1">
+<META NAME="Generator" CONTENT="Microsoft Word 98">
+<TITLE>Esame 15/1/1999</TITLE>
+</HEAD>
+<BODY>
+
+<B><FONT SIZE=2><P ALIGN="CENTER">Universit&agrave; di Roma "La Sapienza"</P>
+<P ALIGN="CENTER">Facolt&agrave; di Ingegneria </P>
+<P ALIGN="CENTER">Corso di Fondamenti di Informatica </P>
+<P ALIGN="CENTER">Corso di Laurea: Ambiente e Territorio</P>
+<P ALIGN="CENTER"></P>
+<P ALIGN="CENTER">Appello del 15-1-1999</P>
+</B><P ALIGN="JUSTIFY"></P>
+<B><P ALIGN="JUSTIFY">Esercizio 1 (18 punti)</P>
+</B><P ALIGN="JUSTIFY">In una centrale per rilevazioni meteorologiche sita in prossimit&agrave; del mare &egrave; installato un dispositivo che acquisisce tre volte al giorno, ad orari prestabiliti, temperatura, umidit&agrave; relativa e pressione atmosferica. La centralina &egrave; collegata ad un personal computer che, ricevendo in ingresso tali dati, li memorizza in un file di testo come segue: </P>
+
+<UL>
+<P ALIGN="JUSTIFY"><LI>numero rilevazione (un intero in {1,...,1098});</LI></P>
+<P ALIGN="JUSTIFY"><LI>data rilevazione (8 caratteri numerici nel formato GGMMAAAA);</LI></P>
+<P ALIGN="JUSTIFY"><LI>numero rilevazione giornaliera (un intero in {1,2,3});</LI></P>
+<P ALIGN="JUSTIFY"><LI>temperatura rilevata (un razionale nell'intervallo [-10,+50));</LI></P>
+<P ALIGN="JUSTIFY"><LI>umidit&agrave; relativa rilevata (un razionale nell'intervallo [0,1]);</LI></P>
+<P ALIGN="JUSTIFY"><LI>pressione atmosferica rilevata (un razionale nell'intervallo [800,1200]). </LI></P></UL>
+
+<P ALIGN="JUSTIFY">Le rilevazioni sono memorizzate nel file (una per riga) in ordine temporale crescente (dalla pi&ugrave; vecchia alla pi&ugrave; recente).</P>
+<OL>
+
+<P ALIGN="JUSTIFY"><LI>Scrivere in C le dichiarazioni dei tipi e delle eventuali variabili globali da utilizzarsi per risolvere i due punti successivi (le dichiarazioni locali potranno essere direttamente specificate nello svolgimento dei punti successivi).</LI></P>
+<P ALIGN="JUSTIFY"><LI>Scrivere una funzione C che, ricevendo come parametro il nome di un file contenente le rilevazioni effettuate durante il 1998, costruisca, restituendola in uscita, una struttura di dati consistente in un vettore di 60 elementi, in cui l'<I>i</I>-esimo (<I>i</I>=0,&#133;,59) &egrave; un puntatore a una lista i cui elementi sono tutte e sole le rilevazioni contenute nel file di ingresso contraddistinte da una temperatura nell'intervallo [<I>i</I>-10,<I>i</I>-9) (ogni elemento della lista contiene le seguenti informazioni: numero, data, numero giornaliero, temperatura, umidit&agrave; relativa e pressione atmosferica).</LI></P>
+<P ALIGN="JUSTIFY"><LI>Scrivere una funzione C che, ricevendo come parametri la struttura di dati costruita al punto precedente, il nome di un file e un razionale <I>t</I>, memorizzi nel file le date dei giorni in cui &egrave; stata rilevata almeno una volta una temperatura pari o superiore a <I>t</I>.</LI></P></OL>
+
+<P ALIGN="JUSTIFY"></P>
+<P ALIGN="JUSTIFY">Le figure seguenti illustrano un esempio.</P>
+<P ALIGN="JUSTIFY"></P></FONT>
+<TABLE BORDER CELLSPACING=1 CELLPADDING=2 WIDTH=151>
+<TR><TD VALIGN="MIDDLE" COLSPAN=6 HEIGHT=9>
+<P ALIGN="CENTER"><IMG SRC="Image7.gif" WIDTH=221 HEIGHT=332><FONT FACE="Helvetica" SIZE=1>...</FONT></TD>
+</TR>
+<TR><TD WIDTH="16%" VALIGN="MIDDLE" HEIGHT=9>
+<FONT FACE="Helvetica" SIZE=1><P ALIGN="CENTER">571</FONT></TD>
+<TD WIDTH="28%" VALIGN="MIDDLE" HEIGHT=9>
+<FONT FACE="Helvetica" SIZE=1><P ALIGN="CENTER">10071998</FONT></TD>
+<TD WIDTH="9%" VALIGN="MIDDLE" HEIGHT=9>
+<FONT FACE="Helvetica" SIZE=1><P ALIGN="CENTER">1</FONT></TD>
+<TD WIDTH="14%" VALIGN="MIDDLE" HEIGHT=9>
+<FONT FACE="Helvetica" SIZE=1><P ALIGN="CENTER">22.2</FONT></TD>
+<TD WIDTH="14%" VALIGN="MIDDLE" HEIGHT=9>
+<FONT FACE="Helvetica" SIZE=1><P ALIGN="CENTER">0.89</FONT></TD>
+<TD WIDTH="19%" VALIGN="MIDDLE" HEIGHT=9>
+<FONT FACE="Helvetica" SIZE=1><P ALIGN="CENTER">1049.2</FONT></TD>
+</TR>
+<TR><TD WIDTH="16%" VALIGN="MIDDLE" HEIGHT=9>
+<FONT FACE="Helvetica" SIZE=1><P ALIGN="CENTER">572</FONT></TD>
+<TD WIDTH="28%" VALIGN="MIDDLE" HEIGHT=9>
+<FONT FACE="Helvetica" SIZE=1><P ALIGN="CENTER">10071998</FONT></TD>
+<TD WIDTH="9%" VALIGN="MIDDLE" HEIGHT=9>
+<FONT FACE="Helvetica" SIZE=1><P ALIGN="CENTER">2</FONT></TD>
+<TD WIDTH="14%" VALIGN="MIDDLE" HEIGHT=9>
+<FONT FACE="Helvetica" SIZE=1><P ALIGN="CENTER">28.1</FONT></TD>
+<TD WIDTH="14%" VALIGN="MIDDLE" HEIGHT=9>
+<FONT FACE="Helvetica" SIZE=1><P ALIGN="CENTER">0.65</FONT></TD>
+<TD WIDTH="19%" VALIGN="MIDDLE" HEIGHT=9>
+<FONT FACE="Helvetica" SIZE=1><P ALIGN="CENTER">1049.1</FONT></TD>
+</TR>
+<TR><TD WIDTH="16%" VALIGN="MIDDLE" HEIGHT=9>
+<FONT FACE="Helvetica" SIZE=1><P ALIGN="CENTER">573</FONT></TD>
+<TD WIDTH="28%" VALIGN="MIDDLE" HEIGHT=9>
+<FONT FACE="Helvetica" SIZE=1><P ALIGN="CENTER">10071998</FONT></TD>
+<TD WIDTH="9%" VALIGN="MIDDLE" HEIGHT=9>
+<FONT FACE="Helvetica" SIZE=1><P ALIGN="CENTER">3</FONT></TD>
+<TD WIDTH="14%" VALIGN="MIDDLE" HEIGHT=9>
+<FONT FACE="Helvetica" SIZE=1><P ALIGN="CENTER">26.5</FONT></TD>
+<TD WIDTH="14%" VALIGN="MIDDLE" HEIGHT=9>
+<FONT FACE="Helvetica" SIZE=1><P ALIGN="CENTER">0.78</FONT></TD>
+<TD WIDTH="19%" VALIGN="MIDDLE" HEIGHT=9>
+<FONT FACE="Helvetica" SIZE=1><P ALIGN="CENTER">1049.2</FONT></TD>
+</TR>
+<TR><TD WIDTH="16%" VALIGN="MIDDLE" HEIGHT=9>
+<FONT FACE="Helvetica" SIZE=1><P ALIGN="CENTER">574</FONT></TD>
+<TD WIDTH="28%" VALIGN="MIDDLE" HEIGHT=9>
+<FONT FACE="Helvetica" SIZE=1><P ALIGN="CENTER">11071998</FONT></TD>
+<TD WIDTH="9%" VALIGN="MIDDLE" HEIGHT=9>
+<FONT FACE="Helvetica" SIZE=1><P ALIGN="CENTER">1</FONT></TD>
+<TD WIDTH="14%" VALIGN="MIDDLE" HEIGHT=9>
+<FONT FACE="Helvetica" SIZE=1><P ALIGN="CENTER">23.6</FONT></TD>
+<TD WIDTH="14%" VALIGN="MIDDLE" HEIGHT=9>
+<FONT FACE="Helvetica" SIZE=1><P ALIGN="CENTER">0.88</FONT></TD>
+<TD WIDTH="19%" VALIGN="MIDDLE" HEIGHT=9>
+<FONT FACE="Helvetica" SIZE=1><P ALIGN="CENTER">1049.0</FONT></TD>
+</TR>
+<TR><TD WIDTH="16%" VALIGN="MIDDLE" HEIGHT=9>
+<FONT FACE="Helvetica" SIZE=1><P ALIGN="CENTER">575</FONT></TD>
+<TD WIDTH="28%" VALIGN="MIDDLE" HEIGHT=9>
+<FONT FACE="Helvetica" SIZE=1><P ALIGN="CENTER">11071998</FONT></TD>
+<TD WIDTH="9%" VALIGN="MIDDLE" HEIGHT=9>
+<FONT FACE="Helvetica" SIZE=1><P ALIGN="CENTER">2</FONT></TD>
+<TD WIDTH="14%" VALIGN="MIDDLE" HEIGHT=9>
+<FONT FACE="Helvetica" SIZE=1><P ALIGN="CENTER">31.1</FONT></TD>
+<TD WIDTH="14%" VALIGN="MIDDLE" HEIGHT=9>
+<FONT FACE="Helvetica" SIZE=1><P ALIGN="CENTER">0.88</FONT></TD>
+<TD WIDTH="19%" VALIGN="MIDDLE" HEIGHT=9>
+<FONT FACE="Helvetica" SIZE=1><P ALIGN="CENTER">1049.2</FONT></TD>
+</TR>
+<TR><TD WIDTH="16%" VALIGN="MIDDLE" HEIGHT=9>
+<FONT FACE="Helvetica" SIZE=1><P ALIGN="CENTER">576</FONT></TD>
+<TD WIDTH="28%" VALIGN="MIDDLE" HEIGHT=9>
+<FONT FACE="Helvetica" SIZE=1><P ALIGN="CENTER">11071998</FONT></TD>
+<TD WIDTH="9%" VALIGN="MIDDLE" HEIGHT=9>
+<FONT FACE="Helvetica" SIZE=1><P ALIGN="CENTER">3</FONT></TD>
+<TD WIDTH="14%" VALIGN="MIDDLE" HEIGHT=9>
+<FONT FACE="Helvetica" SIZE=1><P ALIGN="CENTER">28.1</FONT></TD>
+<TD WIDTH="14%" VALIGN="MIDDLE" HEIGHT=9>
+<FONT FACE="Helvetica" SIZE=1><P ALIGN="CENTER">0.90</FONT></TD>
+<TD WIDTH="19%" VALIGN="MIDDLE" HEIGHT=9>
+<FONT FACE="Helvetica" SIZE=1><P ALIGN="CENTER">1050.0</FONT></TD>
+</TR>
+<TR><TD WIDTH="16%" VALIGN="MIDDLE" HEIGHT=9>
+<FONT FACE="Helvetica" SIZE=1><P ALIGN="CENTER">577</FONT></TD>
+<TD WIDTH="28%" VALIGN="MIDDLE" HEIGHT=9>
+<FONT FACE="Helvetica" SIZE=1><P ALIGN="CENTER">12071998</FONT></TD>
+<TD WIDTH="9%" VALIGN="MIDDLE" HEIGHT=9>
+<FONT FACE="Helvetica" SIZE=1><P ALIGN="CENTER">1</FONT></TD>
+<TD WIDTH="14%" VALIGN="MIDDLE" HEIGHT=9>
+<FONT FACE="Helvetica" SIZE=1><P ALIGN="CENTER">24.7</FONT></TD>
+<TD WIDTH="14%" VALIGN="MIDDLE" HEIGHT=9>
+<FONT FACE="Helvetica" SIZE=1><P ALIGN="CENTER">0.86</FONT></TD>
+<TD WIDTH="19%" VALIGN="MIDDLE" HEIGHT=9>
+<FONT FACE="Helvetica" SIZE=1><P ALIGN="CENTER">1050.1</FONT></TD>
+</TR>
+<TR><TD WIDTH="16%" VALIGN="MIDDLE" HEIGHT=9>
+<FONT FACE="Helvetica" SIZE=1><P ALIGN="CENTER">578</FONT></TD>
+<TD WIDTH="28%" VALIGN="MIDDLE" HEIGHT=9>
+<FONT FACE="Helvetica" SIZE=1><P ALIGN="CENTER">12071998</FONT></TD>
+<TD WIDTH="9%" VALIGN="MIDDLE" HEIGHT=9>
+<FONT FACE="Helvetica" SIZE=1><P ALIGN="CENTER">2</FONT></TD>
+<TD WIDTH="14%" VALIGN="MIDDLE" HEIGHT=9>
+<FONT FACE="Helvetica" SIZE=1><P ALIGN="CENTER">32.3</FONT></TD>
+<TD WIDTH="14%" VALIGN="MIDDLE" HEIGHT=9>
+<FONT FACE="Helvetica" SIZE=1><P ALIGN="CENTER">0.92</FONT></TD>
+<TD WIDTH="19%" VALIGN="MIDDLE" HEIGHT=9>
+<FONT FACE="Helvetica" SIZE=1><P ALIGN="CENTER">1050.6</FONT></TD>
+</TR>
+<TR><TD WIDTH="16%" VALIGN="MIDDLE" HEIGHT=9>
+<FONT FACE="Helvetica" SIZE=1><P ALIGN="CENTER">579</FONT></TD>
+<TD WIDTH="28%" VALIGN="MIDDLE" HEIGHT=9>
+<FONT FACE="Helvetica" SIZE=1><P ALIGN="CENTER">12071998</FONT></TD>
+<TD WIDTH="9%" VALIGN="MIDDLE" HEIGHT=9>
+<FONT FACE="Helvetica" SIZE=1><P ALIGN="CENTER">3</FONT></TD>
+<TD WIDTH="14%" VALIGN="MIDDLE" HEIGHT=9>
+<FONT FACE="Helvetica" SIZE=1><P ALIGN="CENTER">30.8</FONT></TD>
+<TD WIDTH="14%" VALIGN="MIDDLE" HEIGHT=9>
+<FONT FACE="Helvetica" SIZE=1><P ALIGN="CENTER">0.93</FONT></TD>
+<TD WIDTH="19%" VALIGN="MIDDLE" HEIGHT=9>
+<FONT FACE="Helvetica" SIZE=1><P ALIGN="CENTER">1050.6</FONT></TD>
+</TR>
+<TR><TD WIDTH="16%" VALIGN="MIDDLE" HEIGHT=9>
+<FONT FACE="Helvetica" SIZE=1><P ALIGN="CENTER">580</FONT></TD>
+<TD WIDTH="28%" VALIGN="MIDDLE" HEIGHT=9>
+<FONT FACE="Helvetica" SIZE=1><P ALIGN="CENTER">13071998</FONT></TD>
+<TD WIDTH="9%" VALIGN="MIDDLE" HEIGHT=9>
+<FONT FACE="Helvetica" SIZE=1><P ALIGN="CENTER">1</FONT></TD>
+<TD WIDTH="14%" VALIGN="MIDDLE" HEIGHT=9>
+<FONT FACE="Helvetica" SIZE=1><P ALIGN="CENTER">24.0</FONT></TD>
+<TD WIDTH="14%" VALIGN="MIDDLE" HEIGHT=9>
+<FONT FACE="Helvetica" SIZE=1><P ALIGN="CENTER">0.88</FONT></TD>
+<TD WIDTH="19%" VALIGN="MIDDLE" HEIGHT=9>
+<FONT FACE="Helvetica" SIZE=1><P ALIGN="CENTER">1031.2</FONT></TD>
+</TR>
+<TR><TD WIDTH="16%" VALIGN="MIDDLE" HEIGHT=9>
+<FONT FACE="Helvetica" SIZE=1><P ALIGN="CENTER">581</FONT></TD>
+<TD WIDTH="28%" VALIGN="MIDDLE" HEIGHT=9>
+<FONT FACE="Helvetica" SIZE=1><P ALIGN="CENTER">13071998</FONT></TD>
+<TD WIDTH="9%" VALIGN="MIDDLE" HEIGHT=9>
+<FONT FACE="Helvetica" SIZE=1><P ALIGN="CENTER">2</FONT></TD>
+<TD WIDTH="14%" VALIGN="MIDDLE" HEIGHT=9>
+<FONT FACE="Helvetica" SIZE=1><P ALIGN="CENTER">27.1</FONT></TD>
+<TD WIDTH="14%" VALIGN="MIDDLE" HEIGHT=9>
+<FONT FACE="Helvetica" SIZE=1><P ALIGN="CENTER">0.76</FONT></TD>
+<TD WIDTH="19%" VALIGN="MIDDLE" HEIGHT=9>
+<FONT FACE="Helvetica" SIZE=1><P ALIGN="CENTER">1022.1</FONT></TD>
+</TR>
+<TR><TD WIDTH="16%" VALIGN="MIDDLE" HEIGHT=9>
+<FONT FACE="Helvetica" SIZE=1><P ALIGN="CENTER">582</FONT></TD>
+<TD WIDTH="28%" VALIGN="MIDDLE" HEIGHT=9>
+<FONT FACE="Helvetica" SIZE=1><P ALIGN="CENTER">13071998</FONT></TD>
+<TD WIDTH="9%" VALIGN="MIDDLE" HEIGHT=9>
+<FONT FACE="Helvetica" SIZE=1><P ALIGN="CENTER">3</FONT></TD>
+<TD WIDTH="14%" VALIGN="MIDDLE" HEIGHT=9>
+<FONT FACE="Helvetica" SIZE=1><P ALIGN="CENTER">25.2</FONT></TD>
+<TD WIDTH="14%" VALIGN="MIDDLE" HEIGHT=9>
+<FONT FACE="Helvetica" SIZE=1><P ALIGN="CENTER">0.66</FONT></TD>
+<TD WIDTH="19%" VALIGN="MIDDLE" HEIGHT=9>
+<FONT FACE="Helvetica" SIZE=1><P ALIGN="CENTER">1020.9</FONT></TD>
+</TR>
+<TR><TD WIDTH="16%" VALIGN="MIDDLE" HEIGHT=9>
+<FONT FACE="Helvetica" SIZE=1><P ALIGN="CENTER">583</FONT></TD>
+<TD WIDTH="28%" VALIGN="MIDDLE" HEIGHT=9>
+<FONT FACE="Helvetica" SIZE=1><P ALIGN="CENTER">14071998</FONT></TD>
+<TD WIDTH="9%" VALIGN="MIDDLE" HEIGHT=9>
+<FONT FACE="Helvetica" SIZE=1><P ALIGN="CENTER">1</FONT></TD>
+<TD WIDTH="14%" VALIGN="MIDDLE" HEIGHT=9>
+<FONT FACE="Helvetica" SIZE=1><P ALIGN="CENTER">20.0</FONT></TD>
+<TD WIDTH="14%" VALIGN="MIDDLE" HEIGHT=9>
+<FONT FACE="Helvetica" SIZE=1><P ALIGN="CENTER">0.60</FONT></TD>
+<TD WIDTH="19%" VALIGN="MIDDLE" HEIGHT=9>
+<FONT FACE="Helvetica" SIZE=1><P ALIGN="CENTER">1023.4</FONT></TD>
+</TR>
+<TR><TD WIDTH="16%" VALIGN="MIDDLE" HEIGHT=9>
+<FONT FACE="Helvetica" SIZE=1><P ALIGN="CENTER">584</FONT></TD>
+<TD WIDTH="28%" VALIGN="MIDDLE" HEIGHT=9>
+<FONT FACE="Helvetica" SIZE=1><P ALIGN="CENTER">14071998</FONT></TD>
+<TD WIDTH="9%" VALIGN="MIDDLE" HEIGHT=9>
+<FONT FACE="Helvetica" SIZE=1><P ALIGN="CENTER">2</FONT></TD>
+<TD WIDTH="14%" VALIGN="MIDDLE" HEIGHT=9>
+<FONT FACE="Helvetica" SIZE=1><P ALIGN="CENTER">30.2</FONT></TD>
+<TD WIDTH="14%" VALIGN="MIDDLE" HEIGHT=9>
+<FONT FACE="Helvetica" SIZE=1><P ALIGN="CENTER">0.58</FONT></TD>
+<TD WIDTH="19%" VALIGN="MIDDLE" HEIGHT=9>
+<FONT FACE="Helvetica" SIZE=1><P ALIGN="CENTER">1024.1</FONT></TD>
+</TR>
+<TR><TD WIDTH="16%" VALIGN="MIDDLE" HEIGHT=9>
+<FONT FACE="Helvetica" SIZE=1><P ALIGN="CENTER">585</FONT></TD>
+<TD WIDTH="28%" VALIGN="MIDDLE" HEIGHT=9>
+<FONT FACE="Helvetica" SIZE=1><P ALIGN="CENTER">14071998</FONT></TD>
+<TD WIDTH="9%" VALIGN="MIDDLE" HEIGHT=9>
+<FONT FACE="Helvetica" SIZE=1><P ALIGN="CENTER">3</FONT></TD>
+<TD WIDTH="14%" VALIGN="MIDDLE" HEIGHT=9>
+<FONT FACE="Helvetica" SIZE=1><P ALIGN="CENTER">26.2</FONT></TD>
+<TD WIDTH="14%" VALIGN="MIDDLE" HEIGHT=9>
+<FONT FACE="Helvetica" SIZE=1><P ALIGN="CENTER">0.60</FONT></TD>
+<TD WIDTH="19%" VALIGN="MIDDLE" HEIGHT=9>
+<FONT FACE="Helvetica" SIZE=1><P ALIGN="CENTER">1024.0</FONT></TD>
+</TR>
+<TR><TD VALIGN="MIDDLE" COLSPAN=6 HEIGHT=9>
+<FONT FACE="Helvetica" SIZE=1><P ALIGN="CENTER">...</FONT></TD>
+</TR>
+<TR><TD VALIGN="MIDDLE" COLSPAN=6>
+<FONT SIZE=1><P>Fig. 1: frammento di file in ingresso alla funzione del punto 1.1.</FONT></TD>
+</TR>
+</TABLE>
+
+<P ALIGN="JUSTIFY"></P>
+<P ALIGN="JUSTIFY">&nbsp;</P>
+<P ALIGN="JUSTIFY">&nbsp;</P>
+<TABLE BORDER CELLSPACING=1 CELLPADDING=2 WIDTH=151>
+<TR><TD VALIGN="MIDDLE" HEIGHT=9>
+<FONT FACE="Helvetica" SIZE=1><P ALIGN="CENTER">...</FONT></TD>
+</TR>
+<TR><TD VALIGN="MIDDLE" HEIGHT=9>
+<FONT FACE="Helvetica" SIZE=1><P ALIGN="CENTER">12071998</FONT></TD>
+</TR>
+<TR><TD VALIGN="MIDDLE" HEIGHT=9>
+<FONT FACE="Helvetica" SIZE=1><P ALIGN="CENTER">14071998</FONT></TD>
+</TR>
+<TR><TD VALIGN="MIDDLE" HEIGHT=9>
+<FONT FACE="Helvetica" SIZE=1><P ALIGN="CENTER">11071998</FONT></TD>
+</TR>
+<TR><TD VALIGN="MIDDLE" HEIGHT=9>
+<FONT FACE="Helvetica" SIZE=1><P ALIGN="CENTER">12071998</FONT></TD>
+</TR>
+<TR><TD VALIGN="MIDDLE" HEIGHT=9>
+<FONT FACE="Helvetica" SIZE=1><P ALIGN="CENTER">...</FONT></TD>
+</TR>
+<TR><TD VALIGN="TOP" HEIGHT=9><P></P></TD>
+</TR>
+<TR><TD VALIGN="MIDDLE">
+<FONT SIZE=1><P>Fig. 3: frammento di file costruito al punto 1.3 a partire dalla struttura illustrata in Fig. 2, per <I>t</I>=30.</FONT></TD>
+</TR>
+</TABLE>
+
+<P ALIGN="JUSTIFY"></P>
+<P ALIGN="JUSTIFY">&nbsp;</P>
+<P ALIGN="JUSTIFY">&nbsp;</P>
+<P ALIGN="CENTER">&nbsp;</P>
+<B><FONT SIZE=2><P ALIGN="CENTER">Universit&agrave; di Roma "La Sapienza"</P>
+<P ALIGN="CENTER">Facolt&agrave; di Ingegneria </P>
+<P ALIGN="CENTER">Corso di Fondamenti di Informatica </P>
+<P ALIGN="CENTER">Corso di Laurea: Ambiente e Territorio</P>
+<P ALIGN="CENTER"></P>
+<P ALIGN="CENTER">Appello del 15-1-1999</P>
+</B><P ALIGN="JUSTIFY"></P>
+<P ALIGN="JUSTIFY">&nbsp;</P>
+<B><P ALIGN="JUSTIFY">Esercizio 2 (4 punti)</P>
+</B><P ALIGN="JUSTIFY">Si consideri il metodo di rappresentazione degli interi relativi &quot;in complemento a due&quot;.</P>
+<OL>
+
+<P ALIGN="JUSTIFY"><LI>Supponendo di lavorare con 8 bit, scrivere l&#146;intervallo dei numeri rappresentabili in complemento a due.</LI></P>
+<P ALIGN="JUSTIFY"><LI>Sia <I>G</I> il giorno della data di nascita del candidato e si supponga di lavorare con 10 bit. Scrivere le rappresentazioni in complemento a due di <I>G</I> e di -<I>G</I>.</LI></P>
+<P ALIGN="JUSTIFY"><LI>Eseguire il calcolo dell&#146;espressione (-<I>G</I> - 3).</LI></P></OL>
+
+<P ALIGN="JUSTIFY"></P>
+<P ALIGN="JUSTIFY">&nbsp;</P>
+<B><P ALIGN="JUSTIFY">Esercizio 3 (4 punti)</P>
+</B><P ALIGN="JUSTIFY">Con riferimento al seguente programma C, dire quale output fornisce quando riceve in ingresso, una alla volta, le ultime cinque cifre del vostro numero di matricola.</P>
+<P ALIGN="JUSTIFY"></P>
+</FONT><FONT FACE="Courier" SIZE=1><P>#include &lt;stdio.h&gt;</P>
+
+<P>int a(int B[])</P>
+<P>{</P>
+<P>&#9;int A[5], i;</P>
+<P>&#9;</P>
+<P>&#9;A[4]=2;</P>
+<P>&#9;A[3]=1;</P>
+<P>&#9;A[0]=A[4];</P>
+<P>&#9;A[1]=A[3];</P>
+<P>&#9;A[2]=A[1];</P>
+<P>&#9;A[3]=A[4];</P>
+<P>&#9;A[4]=A[1];</P>
+<P>&#9;for(i=0; i&lt;5; i=i+1)</P>
+<P>&#9;&#9;B[i]=*(B+i)/A[i];</P>
+<P>&#9;return -1;</P>
+<P>}</P>
+
+<P>int main()</P>
+<P>{</P>
+<P>&#9;int A[5], B[5], i;</P>
+<P>&#9;</P>
+<P>&#9;for(i=0; i&lt;5; i=i+1) {</P>
+<P>&#9;&#9;scanf("%d",A+i);</P>
+<P>&#9;&#9;B[i]=4-i;</P>
+<P>&#9;}</P>
+<P>&#9;</P>
+<P>&#9;a(&amp;A[0]);</P>
+<P>&#9;</P>
+<P>&#9;for(i=0; i&lt;5; i=i+1)</P>
+<P>&#9;&#9;printf("A[%d]=%d\n",B[i],A[B[i]]);</P>
+
+<P>&#9;return 0;</P>
+<P>}</P>
+</FONT><FONT SIZE=2><P ALIGN="JUSTIFY"></P>
+<P ALIGN="JUSTIFY">&nbsp;</P>
+<B><P ALIGN="JUSTIFY">Esercizio 4 (4 punti)</P>
+</B><P ALIGN="JUSTIFY">Si illustrino le modalit&agrave; di rappresentazione delle immagini raster e vettoriali, spiegando, anche servendosi di esempi, in quali casi una modalit&agrave; sia da preferirsi rispetto all&#146;altra, e viceversa.</P></FONT></BODY>
+</HTML>

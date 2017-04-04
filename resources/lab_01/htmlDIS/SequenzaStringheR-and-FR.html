@@ -1,0 +1,298 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+
+<!--Converted with jLaTeX2HTML 2002 (1.62) JA patch-1.4
+patched version by:  Kenshi Muto, Debian Project.
+LaTeX2HTML 2002 (1.62),
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>Implementazioni ricorsive delle operazioni sulle liste</TITLE>
+<META NAME="description" CONTENT="Implementazioni ricorsive delle operazioni sulle liste">
+<META NAME="keywords" CONTENT="html-main-11">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1">
+<META NAME="Generator" CONTENT="Microsoft FrontPage 4.0">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="lezione/uni11/html-main-11.css">
+
+<LINK REL="next" HREF="lezione/uni11/node40.html">
+<LINK REL="previous" HREF="lezione/uni11/node38.html">
+<LINK REL="up" HREF="lezione/uni11/html-main-11.html">
+<LINK REL="next" HREF="lezione/uni11/node40.html">
+</HEAD>
+
+<BODY >
+
+<H2><A NAME="SECTION1011039000000000000000">
+Implementazioni ricorsive delle operazioni sulle liste</A>
+</H2>
+
+<P>
+L'implementazione ricorsiva delle operazioni sulle liste risulta generalmente
+pi&#249; semplice di quella iterativa. Ci&#242; deriva dal fatto che la lista pu&#242;
+essere definita in maniera induttiva nel seguente modo:
+
+<UL>
+<LI>la lista  vuota &#232; una lista;
+</LI>
+<LI>se <EM>l</EM> &#232; una lista, allora un elemento seguito da <EM>l</EM>
+&#232; una lista;
+</LI>
+<LI>niente altro &#232; una lista.
+</LI>
+</UL>
+
+<P>
+Questa definizione ricorsiva consente di implementare le operazioni che 
+accedono o modificano la struttura collegata lineare seguendo gli schemi 
+di ricorsione riportati di seguito.
+
+<P>
+Schema di ricorsione per operazioni su tutti gli elementi della lista
+
+<P>
+<blockquote>
+
+<DIV ALIGN="LEFT">
+<TT>
+ if (<I>lista vuota</I>) <code>{</code>
+<BR>&nbsp;&nbsp;&nbsp;<I>passo base</I>
+<BR><code>}</code>
+<BR>
+else <code>{</code>
+<BR>&nbsp;&nbsp;&nbsp;<I>elaborazione primo elemento della lista</I>
+<BR>&nbsp;&nbsp;&nbsp;<I>chiamata ricorsiva sul resto della lista</I>
+<BR><code>}</code>
+<BR></TT>
+</DIV>
+
+</blockquote>
+
+<P>
+Schema di ricorsione per operazioni sull'elemento di indice k nella lista
+
+<P>
+<blockquote>
+
+<DIV ALIGN="LEFT">
+<TT>
+ if (k==0) <code>{</code>
+<BR>&nbsp;&nbsp;&nbsp;<EM> passo base: elaborazione dell'elemento in posizione k</EM>
+<BR><code>}</code>
+<BR>
+else <code>{</code>
+<BR>&nbsp;&nbsp;&nbsp;<EM> chiamata ricorsiva sul resto della lista con indice k-1</EM>
+<BR><code>}</code>
+<BR></TT>
+</DIV>
+
+</blockquote> 
+
+<p>Vi richiamo alcune funzioni realizzate tramite l'uso della ricorsione che
+abbiamo già visto nelle scorse lezioni</p>
+
+<p><b><font size="4">Classe NodoLista</font></b></p>
+
+<pre>
+class NodoLista {
+  public String info;
+  public NodoLista next;
+  
+  public NodoLista(String i, NodoLista n) {
+     info = i; next = n;
+  }
+}
+</pre>
+
+<p><b><font size="4">Inserimento in posizione k (metodo statico)</font></b></p>
+
+<pre>
+ public static NodoLista addR (NodoLista p, int k, String x){
+    if(k==0)
+       return new NodoLista(x,p);
+    
+    if(p==null)
+       return null;
+    
+    p.next = addR(p.next,k-1,x);
+    return p;     	
+}
+</pre>
+
+<p><b><font size="4">Eliminazione da posizione k&nbsp; (metodo statico)</font></b></p>
+
+<pre>
+ public static NodoLista removeR (NodoLista p, int k){  
+    if(p==null)
+       return null;
+
+    if(k==0)
+       return p.next;
+    
+    p.next = removeR(p.next,k-1);
+    return p;     	
+}
+</pre>
+
+
+
+<HR>
+
+<H2><A NAME="SECTION1011040000000000000000">
+Implementazione ricorsiva di metodi con side-effect</A>
+</H2>
+
+<blockquote>
+<PRE>
+class NodoLista {
+  public String info;
+  public NodoLista next;
+  
+  public NodoLista(String i, NodoLista n) {
+     info = i; next = n;
+   }
+ }</PRE>
+<PRE>
+public class SequenzaStringheR {
+   private NodoLista nodoinit;
+   
+   public SequenzaStringheR() {
+      nodoinit = null;
+   }
+   
+   public void add (int k, String x) {
+       nodoinit = addR(nodoinit,k,x);
+   }
+</PRE>
+<PRE>   private static NodoLista addR (NodoLista p, int k, String x){
+      if(k==0)
+         return new NodoLista(x,p);
+    
+      if(p==null)
+        return null;
+    
+      p.next = addR(p.next,k-1,x);
+      return p;     	
+   }
+</PRE>
+<PRE>   public void remove (int k) {
+       nodoinit = removeR(nodoinit,k);
+   }
+</PRE>
+<PRE>   private static NodoLista removeR (NodoLista p, int k){  
+      if(p==null)
+        return null;
+
+      if(k==0)
+        return p.next;
+    
+      p.next = removeR(p.next,k-1);
+      return p;     	
+    }
+</PRE>
+<PRE>}
+</PRE>
+</blockquote>
+
+<P>
+L'implementazione ricorsiva dei metodi con side-effect necessita
+di introdurre un metodo ausiliario privato su cui effettuare
+la ricorsione, in quanto abbiamo bisogno della restituzione
+della lista calcolata ricorsivamente per combinarla con l'elemento
+corrente.
+
+<P>
+Lo schema di ricorsione prevede come passo base il caso 
+<TT>k==0</TT>, in cui possiamo effettuare l'operazione di base
+e come passo ricorsivo la chiamata ricorsiva sulla
+parte restante della lista <TT>p.next</TT>.
+I metodi verificano anche le possibili situazioni di errore
+in cui vengono segnalate le opportune eccezioni.
+
+<P>
+<HR>
+
+<H2><A NAME="SECTION1011041000000000000000">
+Implementazione ricorsiva di metodi funzionali con condivisione di memoria</A>
+</H2>
+
+<blockquote>
+<PRE>
+class NodoLista {
+  public String info;
+  public NodoLista next;
+  
+  public NodoLista(String i, NodoLista n) {
+     info = i; next = n;
+   }
+ }</PRE>
+<PRE>
+public class SequenzaStringheRF {
+   private NodoLista nodoinit;
+   
+   public SequenzaStringheRF() {
+      nodoinit = null;
+   }
+   
+   private SequenzaStringheRF(NodoLista n) {
+      nodoinit = n;
+   }
+
+   public SequenzaStringheRF addR (int k, String x) {
+       if ((k&gt;0)&amp;&amp;(nodoinit==null))
+          return this;
+       if (k==0) {
+         // Passo base
+         NodoLista a = new NodoLista(x,nodoinit); 
+         return new SequenzaStringheRF(a);
+        }
+       else {
+         // Chiamata ricorsiva
+         NodoLista a = new NodoLista(nodoinit.info,null);
+         SequenzaStringheRF l = new SequenzaStringheRF(nodoinit.next).addR(k-1,x);                                                 
+         a.next = l.nodoinit;
+         return new SequenzaStringheRF(a);
+       }
+    }
+
+   public SequenzaStringheRF removeR (int k) {
+       if (nodoinit==null)
+          return this;
+       if (k==0) {
+         // Passo base
+         return new SequenzaStringheRF(nodoinit.next);
+        }
+       else {
+         // Chiamata ricorsiva
+         NodoLista a = new NodoLista(nodoinit.info,null);
+         SequenzaStringheRF l = new SequenzaStringheRF(nodoinit.next).removeR(k-1);
+         a.next = l.nodoinit;
+         return new SequenzaStringheRF(a);
+      }
+   }
+
+}
+</PRE>
+</blockquote>
+
+<P>
+L'implementazione ricorsiva dei metodi funzionali non necessita di metodi
+ausiliari in quanto essi stessi restituiscono la lista corrispondente
+all'operazione da effettuare. Si noti in particolare, che in questi
+metodi si effettua la ricorsione non solo sull'argomento <TT>k</TT>
+ma anche sull'oggetto stesso di invocazione. In questo modo
+viene effettuata la chiamata ricorsiva sul resto della
+lista (denotata dall'espressione <TT>new SequenzaInteriF(nodoinit.next)</TT> )
+e sul valore <TT>k-1</TT>.
+
+<P>
+<HR>
+
+</BODY>
+</HTML>

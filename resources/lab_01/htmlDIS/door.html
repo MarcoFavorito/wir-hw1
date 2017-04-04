@@ -1,0 +1,92 @@
+<html>
+<title>3D Map Building</title>
+
+<body>
+
+<br><br>
+<P><h1><center>Special Features: Doorways</center></h1></p>
+<BR><BR>
+
+<UL>
+
+<P>
+Doorways are detected as "holes in the walls".
+</P>
+
+<p>
+Given a set of 3D range points and the position and orientation
+of a wall passing through these points, the following
+histograms are created along the direction of the wall.
+</p>
+
+<br>
+
+<P><img width=420 src="map3d/histo/ima1.gif">&nbsp;&nbsp;&nbsp
+<img src="map3d/histo/h1.gif"></p>
+
+<P>
+<font color=#C00000>RED</font>: number of points on the wall surface
+
+<P>
+<font color=#0000C0>BLUE</font>: distances of points from the wall
+
+
+<br><br>
+
+<P>The histogram is interpreted as follows:<BR><br>
+<ol>
+<li> peaks in the <font color=#C00000>red histograms</font> correspond to 
+<b>door frames</b><br><br>
+<li> the presence of points in the <font color=#0000C0>blue histogram</font> 
+within a pair of red peaks correspond to an <b>open door</b>.
+</ol>
+
+<P>In the above picture we can see two open doors:
+one is represented by the highest peaks (at 150 and 270)
+with the blue area inside; the other comes from
+the two shorter peaks (at 300 and 400) and the small blue
+area inside.</P>
+
+<br><br>
+
+
+
+<p>
+Histograms are used for:<br><br>
+<ol>
+<li>removing object that are not on the wall surface doorways 
+from the wall texture.
+
+<p><img width=800 src="map3d/texture/text2.gif"></p>
+
+<br>
+
+<li>evaluating the displacement between two locations
+of the robot along the wall direction.<br><br>
+
+<P>
+<table>
+<tr>
+<td width=420><img width=400 src="map3d/histo/ima1.gif"></td>
+<td><img src="map3d/histo/h1.gif"></td>
+</tr>
+<tr>
+<td width=420><img width=400 src="map3d/histo/ima2.gif"></td>
+<td><img src="map3d/histo/h2.gif"></td>
+</tr>
+</table>
+</P>
+
+<br><br>
+
+<P>The x coordinates of the histograms correspond to 
+a linear reference system on the wall, so they permit to
+measure actual position of door frames with respect
+to the robot (on the wall direction).</P>
+
+<P>A correlation between histograms provides for a simple and 
+quite precise robot self-localization along the direction
+of the wall.<P>
+
+</boby>
+</html>

@@ -1,0 +1,51 @@
+
+<HTML>
+
+<HEAD>
+<META HTTP-EQUIV="Context-Type" CONTEXT="text/html;charset=PREDEFINITA (AUTOMATICA)">
+<meta name="GENERATOR" content="Microsoft Internet Assistant for PowerPoint 97">
+ <TITLE>Find those ratings for which the average age is the minimum over all ratings</TITLE> 
+</HEAD>
+
+<BODY     >
+
+ <H1>Find those ratings for which the average age is the minimum over all ratings</H1> 
+ <P><UL>
+<LI><H2>Aggregate operations cannot be nested!  WRONG:  </H2>
+</UL></P>
+<P><UL>
+SELECT  S.rating
+<BR></UL><UL>
+FROM  Sailors S
+</UL><UL>
+WHERE  S.age =  (SELECT  MIN (AVG (S2.age))  FROM Sailors S2)</UL></P>
+<P><UL>
+SELECT  Temp.rating, Temp.avgage
+<BR></UL><UL>
+FROM  (SELECT  S.rating, AVG (S.age) AS avgage
+</UL><UL>
+             FROM  Sailors S
+</UL><UL>
+             GROUP BY  S.rating) AS Temp
+</UL><UL>
+WHERE  Temp.avgage = (SELECT  MIN (Temp.avgage)
+</UL><UL>
+                                            FROM  Temp)
+</UL></P>
+<P><UL>
+<LI> Correct solution (in SQL/92):</UL></P>
+<P></P> 
+<P>
+<TABLE>
+  <TD HEIGHT=100 WIDTH=100> <A HREF="tsld023.htm">Diapositiva precedente</A> </TD>
+  <TD HEIGHT=100 WIDTH=100> <A HREF="tsld025.htm">Diapositiva successiva</A> </TD>
+  <TD HEIGHT=100 WIDTH=150> <A HREF="tsld001.htm">Torna alla prima diaposiva</A> </TD>
+  <TD HEIGHT=100 WIDTH=150> <A HREF="sld024.htm">Visualizza versione grafica</A> </TD>
+</TABLE>
+<BR>
+</P>
+
+
+
+</Body>
+</HTML>

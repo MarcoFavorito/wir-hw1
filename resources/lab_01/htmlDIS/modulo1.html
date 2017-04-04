@@ -1,0 +1,50 @@
+<html>
+
+<head>
+<meta http-equiv="Content-Language" content="it">
+<meta name="GENERATOR" content="Microsoft FrontPage 5.0">
+<meta name="ProgId" content="FrontPage.Editor.Document">
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<title>Acquisto libri</title>
+
+<script language="Javascript">
+	function calcolaTotale() {
+		var costo=0;
+		var i=0;
+		while (i<document.modulolibri.length-2) {
+			costo=costo+parseFloat(document.modulolibri[i].value);
+			i=i+1;
+		}
+
+		document.modulolibri.totale.value=costo;
+	}
+</script>
+</head>
+
+<body>
+
+	<form name="modulolibri">
+<table>
+  <tr>
+      <th>Titolo
+      <th>Prezzo
+  <tr>
+	  <td>Libro A
+       <td>   <input type="text" name="T1" size="20" value="13.45" readonly="true">
+<tr>
+	  <td>Libro B
+	  <td>
+          <input type="text" name="T2" size="20" value="26.00" readonly="true">
+<tr>
+	  <td>Libro C
+	  <td>
+          <input type="text" name="T3" size="20" value="15.50" readonly="true">
+<tr>
+      <td><input type="button" value="calcola totale" name="calcola" onclick="calcolaTotale();">
+      <td><input type="text" name="totale" value="0" size="20">
+</table>
+    </form>
+
+</body>
+
+</html>

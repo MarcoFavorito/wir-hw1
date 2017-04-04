@@ -1,0 +1,611 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<!-- saved from url=(0102)http://www.dis.uniroma1.it/~lenzerin/didattica/laureabasididati/esercitazioni/oracle8i-lite-intro.html -->
+<HTML><HEAD><TITLE>Introduzione ad Oracle8i Lite</TITLE>
+<META content="text/html; charset=windows-1252" http-equiv=Content-Type>
+<META content="Microsoft FrontPage 4.0" name=GENERATOR></HEAD>
+<BODY>
+<H1>Introduzione ad Oracle10g Lite</H1>
+<P>
+<HR>
+
+<UL>
+  <LI><a href="#introduzione"><U><FONT 
+  color=#0000ff>Introduzione</FONT></U></a> 
+  <LI><u><font color="#0000ff"><a href="#install">Installazione del DBMS Oracle10g Lite</a></font></u> 
+  <LI><a href="#accesso-DBMS"><U><FONT 
+  color=#0000ff>Accesso al DBMS via MSQL</FONT></U></a> 
+  <LI><a href="#crea-base-dati"><u><font color="#0000ff">Creare una base di dati</font></u></a> 
+  <LI><a href="#creare-eliminare-utenti"><U><FONT 
+  color=#0000ff>Creare ed eliminare utenti</U></FONT></U></a> 
+  <LI><a href="#privilegi-ruoli"><U><FONT 
+  color=#0000ff>Privilegi e ruoli di un utente</U></FONT></U></a> 
+  <LI><u><font color="#0000ff"><a href="#schema">Creare Schemi</a></font></u>
+  <LI><a href="#creare-tavole"><U><FONT 
+  color=#0000ff>Creare tavole</U></FONT></U></a> 
+  <LI><a href="#inserire-tuple"><U><FONT 
+  color=#0000ff>Inserire tuple</U></FONT></U></a> 
+  <LI><a href="#interrogare-tavole"><U><FONT 
+  color=#0000ff>Interrogare tavole</U></FONT></U></a> 
+  <LI><a href="#eliminare-tavole"><U><FONT 
+  color=#0000ff>Eliminare tavole</U></FONT></U></a> 
+  <LI><a href="#commit-rollback"><U><FONT 
+  color=#0000ff>Commit e rollback</FONT></U></a> 
+<!--  <LI><u><font color="#0000ff"><a href="#transazioni">Transazioni</a></font></u> -->
+  <LI><a href="#catalogo"><U><FONT 
+  color=#0000ff>Utilizzo del catalogo</U></FONT></U></a> 
+  <LI><a href="#eseguire-comandi-file"><U><FONT 
+  color=#0000ff>Eseguire comandi memorizzati su file</U></FONT></U></a> 
+  <LI><a href="#buffer-di-editing"><U><FONT 
+  color=#0000ff>Buffer di editing</U></FONT></U></a> 
+  <LI><a href="#registrare-sessione"><U><FONT 
+  color=#0000ff>Registrare una sessione di lavoro</U></FONT></U></a> 
+  <LI><a href="#caratteri-speciali"><U><FONT 
+  color=#0000ff>Caratteri speciali</FONT></U></a> </LI> 
+  <LI><a href="#uscire-da-msql"><U><FONT 
+  color=#0000ff>Uscire da MSQL</FONT></U></a> 
+  <LI><u><font color="#0000ff"><a href="#limitazioni">Alcune limitazioni di
+    Oracle 10g</a></font></u> </LI> 
+  <LI><u><font color="#0000ff"><a href="#uninstall">Disinstallazione di Oracle
+    10g</a></font></u> </LI></UL>
+<P>
+<HR>
+
+<H3><A name=introduzione></A>Introduzione</H3>
+<P>Per le esercitazioni in laboratorio e la parte realizzativa del progetto da
+realizzare durante il corso di progetto di basi di dati, si fa uso di DBMS commerciale,
+Oracle10g Lite, una versione semplificata di Oracle10g che 
+gira sotto WindowsNT/2000/XP e sotto Linux. Per maggiori informazioni su questo 
+sistema si faccia riferimento alla <font size="3"><a href="http://http://www.oracle.com/technology/documentation/database10g.html">Oracle10g
+Lite Documentation</a> (questa documentazione viene parzialmente installata
+durante l'installazione di Oracle
+10g Lite, ed è accessibile dal&nbsp;</font> men&ugrave; di Windows <code>&quot;Start\Programmi\Oracle
+10g Lite\Oracle 10g Lite Documentation&quot;</code><font size="3">).</font></P>
+<P>Nota: Oracle 10g Lite non presenta sostanziali
+cambiamenti rispetto alla versione 9i Lite, per cui per lo sviluppo del progetto è
+possibile utilizzare indifferentemente una delle due versioni. Inoltre, quanto
+contenuto in questa guida si può considerare valido anche per Oracle 9i Lite.</P>
+<HR>
+
+<H3><a name="install"></a>Installazione del DBMS Oracle10g Lite in ambiente
+Windows<br>
+</H3>
+<p>Per installare Oracle 10g Lite è necessario installare precedentemente Java 2
+Standard Development Kit (J2SDK), (disponibile in diverse versioni sul sito <a href="http://java.sun.com/j2se/downloads.html"><u>java.sun.com</u></a><u>
+</u>). Per eseguire Oracle10g è raccomandata la versione 1.3.1 (o
+successiva). Si consiglia l'installazione della versione 1.4.2 (alla pagina <a href="http://java.sun.com/j2se/1.4.2/download.html">http://java.sun.com/j2se/1.4.2/download.html</a>
+selezionate <code><b>Download J2SE SDK</b></code>. Notate che il file per
+l'installazione offline è di circa 52 MB).&nbsp;</p>
+<p>Una volta eseguita l'installazione del J2SDK, settate opportunamente <a href="VariabiliAmbiente.html">la variabile di ambiente PATH</a></p>
+<p>Per installare Oracle10g procedete come segue: 
+<ol>
+  <li>Scaricate il file <tt>10g_w32_dblite.zip</tt>  accessibile dalla pagina web <a href="http://otn.oracle.com/software/index.html">http://www.oracle.com/technology/software/products/lite/index.html</a>
+    (selezionate la versione per MS Windows (32 bit)).
+    Il file è piuttosto grande (circa 352 MB), quindi questa operazione può richiedere molto tempo;
+  <li>Scompattate il file in una cartella di appoggio, ad esempio <tt>c:\oracle-install</tt>;
+  <li>Lanciate il programma <code>setup.exe</code>;</li>
+  <li>Selezionate per due volte la voce Avanti, lasciando le impostazioni di
+    default. Alla terza schermata selezionate la seconda voce Mobile Development
+    Kit e selezionate ancora Avanti;</li>
+  <li>A questo punto, l'installazione procede automaticamente.</li>
+  <li>Al termine dell'installazione potete cancellare la cartella&nbsp; <tt>c:\oracle-install;</tt></li>
+</ol>
+<HR>
+
+<H3><A name=accesso-DBMS></A>Accesso al DBMS via MSQL</H3>
+<P>Lo strumento base per accedere al DBMS di Oracle10g Lite &egrave; l' interprete di 
+comandi SQL, MSQL (Mobile SQL). Per utilizzare questo programma, bisogna operare
+dal prompt di comandi MS-DOS attraverso i seguenti parametri in linea</P>
+<P><tt>msql &lt;user'sname&gt;/&lt;password&gt;@&lt;host string&gt;</tt></P>
+<P>dove</P>
+<ul>
+  <li><tt>&lt;user'sname&gt;</tt> &egrave; l'utente che effettua la connessione.
+    Oracle10g Lite
+    mette a disposizione l'utente di default <tt>system</tt>. Tale utente ha
+    tutti i privilegi sul database.
+  <li><tt>&lt;password&gt;</tt> &egrave; la password per l'utente che effettuea la connessione.
+    L'utente <tt>system</tt> non richiede una password (nel senso che può
+    essere inserita qualsiasi stringa).
+  <li>la <tt>&lt;host string&gt;</tt> ha la forma <tt>jdbc:&lt;mysdn&gt;:&lt;mydb&gt;</tt>, ed
+    indica il driver <tt>jdbc</tt> usato per la connessione, il
+    Data Source Name (DSN) <tt>&lt;mydsn&gt;</tt> ed il database <tt>&lt;mydb&gt;</tt>.
+    Il DSN &egrave; il nome usato per indentificare la sorgente di dati per JDBC
+    e per applicazioni che accedono tramite ODBC.
+    Oracle10g Lite mette a disposizione un DSN di default chiamato <code>polite</code>, ed un
+    database di default dallo stesso nome <code>polite</code>. Quindi, se ci si vuole
+    connettere al database di default, con l'utente di default, la <tt>&lt;host
+    string&gt;</tt> &egrave; la seguente&nbsp;
+    
+    <P><tt>msql system/manager@jdbc:polite:polite</tt></P>
+    <P>dove <tt>manager</tt> può essere sostituita da qualsiasi altra password.&nbsp;</P>
+    <P> 
+    
+    Per il DSN <tt>polite</tt>, la sorgente di dati &egrave; localizzata in <tt><i>&lt;oracle_home&gt;</i>\Mobile\SDK\oldb40</tt>.
+    Quindi, ogni database con DSN <tt>polite</tt> &egrave; creato nella cartella
+    <tt><i>&lt;oracle_home&gt;</i>\Mobile\SDK\oldb40</tt>. 
+    Pi&ugrave; precisamente, per il database <tt>polite</tt>, in questa cartella
+    trovate il file <tt>polite.odb</tt>.</P>
+  </li>
+</ul>
+<P>Una volta connessi alla base di dati, dopo una serie di messaggi, appare il 
+prompt di MSQL: <PRE>&nbsp;&nbsp;&nbsp;&nbsp; SQL &gt;</PRE>A questo punto si possono digitare 
+comandi SQL che andranno ad operare sulla base di dati a cui si &egrave; connessi.
+<HR>
+
+<H3><a name="#crea-base-dati"></a>Creare una base di dati</H3>
+
+<p>Di seguito vengono fornite indicazioni su come creare una base di dati di nome
+<code>newDB
+</code>associata al DSN&nbsp; <code>newDSN</code>
+in
+ambiente MS Windows. Questa procedura eseguita su altre
+piattaforme pu&ograve; differire sensibilmente da quanto riportato nel seguito.
+Per ulteriori informazioni su questi aspetti si rimanda alla
+documentazione associata ad Oracle Lite.<p>&nbsp;Per creare una nuova base di dati, operate dal prompt dei
+comandi come indicato in seguito:
+<ol>
+  <li>aprite un <tt>Prompt dei comandi</tt>, utilizzando l'icona relativa sul desktop. Se l'icona 
+   non è sul desktop selezionate la voce <tt>Esegui</tt> (<tt>Run</tt> per la versione inglese) 
+   dal men&ugrave; <tt>Start</tt>, digitate <tt>cmd</tt> e premete <tt>Invio</tt>;<br>
+  </li>
+  <li>digitate la stringa
+
+   <pre>createdb newDSN newDB</pre>
+
+   e premete <tt>Invio</tt>. In questo modo viene creato il database <tt>newDB</tt>
+    con DSN <tt>newDSN</tt>.&nbsp;<br>
+  <li>registrate la base dati associando il DSN <tt>newDSN</tt>:<br>
+    <ol type="a">
+      <li>selezionare la voce del men&ugrave; di Windows <code>&quot;Start\Impostazioni\Pannello di Controllo\Origine Dati (ODBC)".&nbsp;<br>
+        </code>Comparirà la finestra<br>
+ <code><br>
+        </code><img src="ImmaginiOracle10gIntro/image004.jpg" v:shapes="_x0000_i1026" width="461" height="377"><br>
+      </li>
+      <li>selezionare il pannello <code>"User DSN"</code> e premere il
+pulsante <code>"Add...". </code>Comparirà la finestra <code><br>
+        <br>
+        </code><img src="ImmaginiOracle10gIntro/image006.jpg" v:shapes="_x0000_i1027" width="468" height="345"><br>
+      </li>
+      <li>selezionare dall'elenco la voce <code>"Oracle Lite 40 ODBC
+Driver"</code>
+e
+premere il pulsante <code>"Finish". </code>Se è stato <span class="GramE">eseguito</span>
+        tutto correttamente deve apparire la seguente finestra:
+        <p><img src="ImmaginiOracle10gIntro/image008.jpg" v:shapes="_x0000_i1028" width="344" height="264"> <br>
+ </li>
+    <li>
+    <p>Riempire i campi
+    opportunamente, ovvero seguire la seguente convenzione:</p>
+    <p><b style="mso-bidi-font-weight:normal">Nome origine dati</b>: <span class="SpellE">NEW_DSN</span></p>
+    <p><span class="GramE">dove</span> <span class="SpellE">NEW_</span>DSN è il data source name associato al nuovo database che
+    si è creato con il comando <code>createdb</code> utilizzato in precedenza.
+    Nel nostro esempio <span class="SpellE">NEW_DSN</span> deve esssere uguale a <code>newDSN</code>.
+    (Notate che in seguito sarà possibile fare riferimento al nuovo database
+    attraverso il DSN associato).
+    </p>
+    <p><o:p><b style="mso-bidi-font-weight:normal">Descrizione dati</b>: STRINGA
+    </p>
+    <p><span class="GramE">dove</span>
+    STRINGA è una stringa di commento sul database che si sta creando. Nel
+    nostro esempio si potrebbe digitare “Database di esempio”.
+    </p>
+    <p><b style="mso-bidi-font-weight:normal">Directory database</b>: 
+    <span class="GramE">MY_DIRECTORY</span>
+    </p>
+    <p><span class="GramE">dove
+    MY_DIRECTORY</span> è la cartella in cui vogliamo memorizzare il database.
+    Nel nostro esempio potremmo digitare <code>c:\mia_cartella\db</code>.</p>
+    <p><b style="mso-bidi-font-weight:normal">Database</b>: <span class="SpellE">NEW_DATABASE</span></p>
+    <p><span class="GramE">dove</span>
+    <span class="SpellE">NEW_DATABASE</span> è il nome del nuovo database che
+    si è creato con il comando <code>createdb</code> utilizzato in precedenza.
+    Nel nostro esempio <span class="SpellE">NEW_DATABASE</span> deve esssere uguale a <code>newDB</code>.
+    </p>
+    <p>Riepilogando:</p>
+    <table style="text-align: left;" border="1" cellspacing="2"cellpadding="2">
+        <tr>
+          <td style="vertical-align: top;" align="left">Nome Origine Dati<br>
+          </td>
+          <td style="vertical-align: top;" align="left"><code>newDSN</code><br>
+          </td>
+        </tr>
+        <tr>
+          <td style="vertical-align: top;" align="left">Descrizione Dati<br>
+          </td>
+          <td style="vertical-align: top;" align="left">Database di Esempio<br>
+          </td>
+        </tr>
+        <tr>
+          <td style="vertical-align: top;" align="left">Directory database<br>
+          </td>
+          <td style="vertical-align: top;" align="left"><code>c:\mia_cartella\db</code><br>
+          </td>
+        </tr>
+        <tr>
+          <td style="vertical-align: top;" align="left">Database<br>
+          </td>
+          <td style="vertical-align: top;" align="left"><code>EXDB</code><br>
+          </td>
+        </tr>
+    </table>
+    &nbsp;
+   </li>
+      <li>confermare i valori immessi e chiudere l'applicazione di gestione
+delle sorgenti dati ODBC<br>
+      </li>
+   </ol>
+  <li> 
+   A questo punto, &egrave; possibile connettersi al database <tt>newDB </tt>tramite
+   il DSN <tt>newDSN </tt>eseguendo dal prompt dei comandi l'istruzione&nbsp;<P><tt>msql
+   system/manager@jdbc:polite:newDSN</tt></P>
+  
+<p>Potete verificare il corretto completamento delle operazioni eseguendo il
+comando&nbsp;
+</p>
+  
+<p>SQL <code>SELECT * FROM DUAL;</code> &nbsp;
+</p>
+  
+<p> il
+risultato deve essere il seguente: <br>
+    <br>
+<samp>Oracle Lite MSQL versione 10.0.0.0.0<br>
+Copyright (c) 1997-2004 Oracle Corporation. Tutti i diritti riservati.<br>
+    <br>
+Connesso a: Oracle Lite ORDBMS<br>
+Nome database: newDB (Lettura/scrittura)<br>
+Versione database: 10.0.0.0.0<br>
+Commit automatico: off<br>
+Nome driver: oracle.lite.poljdbc.POLJDBCDriver (OLite 4.0)<br>
+    <br>
+SQL&gt; SELECT * FROM DUAL;<br>
+DUMMY<br>
+-----<br>
+X<br>
+    <br>
+1 riga/e restituite<br>
+    <br>
+SQL&gt;</samp> <br>
+<br>
+Chiudete la connessione con la base dati con il comando <code>EXIT;</code>
+</p>
+
+  </li>
+</ol>
+
+
+Si osservi che questa sequenza di istruzioni registra la base dati per
+il solo utente del sistema operativo che esegue le operazioni. Per
+condividere la base dati tra tutti gli utenti del sistema, al punto 3
+(registrazione del DSN) dovete utilizzare il
+pannello&nbsp; <code>System DSN </code>al posto di&nbsp; <code>User DSN </code>e
+procedere in modo analogo.&nbsp;
+  
+<HR>
+
+<H3><A name=creare-eliminare-utenti></A>Creare ed eliminare utenti</H3>In 
+risposta al prompt <CODE>SQL&gt;</CODE> possiamo scrivere qualsiasi comando SQL. 
+Iniziamo creando un nuovo utente, il comando SQL ha la seguente forma: <PRE>&nbsp;&nbsp;&nbsp;&nbsp; create user &lt;nome-utente&gt; identified by &lt;password&gt; ;</PRE>
+<P>dove <CODE>&lt;nome-utente&gt;</CODE> &egrave; il nome del nuovo utente e 
+<CODE>&lt;password&gt;</CODE> &egrave; la password assegnatagli (l'utente una volta 
+connessosi alla base di dati potr&agrave; cambiare la password attraverso il comando 
+<CODE>alter user &lt;nome-utente&gt; identified by &lt;nuova-password&gt; 
+;</CODE>). Si noti che in MSQL tutti i comandi SQL devono terminare con il 
+punto e virgola. 
+<P>Si tenga presente che SQL &egrave; "case-insensitive". Quindi in MSQL, si 
+possono usare indifferentemente maiuscole o minuscole (questo vale anche per la 
+password). Si noti per&ograve; che i dati di tipo stringa fanno distinzione tra 
+maiuscole e minuscole.</P>Per eliminare un utente si usa il comando: <PRE>&nbsp;&nbsp;&nbsp;&nbsp; drop user &lt;nome-utente&gt; ;</PRE>che elimina 
+l'utente e tutti gli oggetti della base di dati ad esso associati.<P><b>Nota: </b>In
+Oracle 10g Lite, ad ogni utente è associato uno schema (<a href="#schema">vedi
+oltre</a>) che ha lo
+stesso nome dell'utente. Pertanto, ogni tabella (vista, constraint, etc.) creata da un
+utente <code>user_A</code>, che non sia esplicitamente inserita in uno schema, è
+implicitamente associata allo schema&nbsp; di nome <code>user_A</code>. Di
+conseguenza, l'utente
+<code>user_B</code>, che accede alla stessa base di dati, potrà fare riferimento alle tabelle create da
+user_A solo 
+indicando esplicitamente che esse appartengono allo schema <code>user_A</code>. Ad esempio, se
+<code>user_A</code> 
+crea la tabella <code>tabella_di_A</code>, l'utente <code>user_B</code> potrà farvi riferimento solo
+tramite il nome completo
+<code>user_A.tabella_di_A</code> (ad esempio, se vuole cancellare la tabella dovrà eseguire il comando 
+<code>drop table user_A.tabella_di_A</code>). Ovviamente stiamo assumendo che <code>user_B</code> abbia i privilegi per accedere 
+alla tabella nella modalità desiderata.</p>
+<p>E' facile capire che questo può essere sconveniente in quei casi in cui più utenti accedono alla stessa base di dati, 
+dovendo ciascuno di essi avere memoria degli altri utenti e delle tabelle che
+hanno creato. Inoltre, in genere non è desiderabile che le tabelle siano
+catalogate per utente.&nbsp; Per evitare questi inconvenienti è bene che le
+tabelle (e tutti gli altri costrutti SQL creati in un database) siano
+esplicitamente associate ad un uno schema (<a href="#schema">vedi oltre</a>).&nbsp;<p>&nbsp;
+<HR>
+
+<H3><A name=privilegi-ruoli></A>Privilegi e ruoli di un utente</H3>
+<P>Una volta creato l'utente si devono associare ad esso gli opportuni permessi 
+attraverso il comando SQL <CODE>grant</CODE>. Si ricorda che il comando 
+<CODE>grant</CODE> permette di dare diritti di inserimento, cancellazione, 
+aggiornamento, e interrogazione di una tavola a determinati utenti. Inoltre 
+<CODE>grant</CODE> pu&ograve; essere usato per associare <I>ruoli</I> prestabiliti, in 
+particolare in Oracle10g Lite permette di associare due ruoli: 
+<UL>
+  <LI><CODE>admin</CODE>, con tutti i privilegi per la gestione di utenti; 
+  <LI><CODE>ddl</CODE>, con in aggiunta tutti i privilegi per la gestione delle 
+  tavole. </LI></UL>Ad esempio: <PRE>&nbsp;&nbsp;&nbsp;&nbsp; grant ddl to &lt;nome-utente&gt; ;</PRE>d&agrave; tutti 
+i diritti all'utente <CODE>&lt;nome-utente&gt;</CODE>.
+<P>Per rievocare privilegi ad un utente si usa il comando SQL 
+<CODE>revoke</CODE>. Questo si utilizza pure per revocare ruoli. Ad esempio: <PRE>&nbsp;&nbsp;&nbsp;&nbsp; revoke 
+ddl from &lt;nome-utente&gt; ;</PRE>revoca 
+il ruolo <CODE>ddl</CODE> a <CODE>&lt;nome-utente&gt;</CODE>.
+<p>&nbsp;</p>
+<HR>
+
+<H3><a name="schema"></a>Creare schemi</H3>
+<P>Oracle Lite tratta gli schemi come se fossero database privati degli utenti
+che li hanno creati. Informalmente, uno schema definisce uno spazio dei nomi
+separato, e delimita il campo di visibilità di un utente all'interno di un DSN
+(è per questo che ogni utente ha uno schema associato di default che ha come
+nome l'identificatore dell'utente stesso). Di conseguenza, due tabelle possono
+avere lo stesso nome se esse appartengono a schemi differenti.&nbsp;</P>
+<P>Notate che in Oracle Lite, gli oggetti sono identificati dal catalogo (non
+trattato in questa dispensa) e dallo schema a cui appartengono, separati dal punto &quot;.&quot;. Per esempio:</P>
+<pre>production.payroll.emp.salary</pre>
+
+In questo esempio ci riferiamo alla colonna <code>salary</code> della tabella <code>emp</code> di proprietà 
+dello schema <code>payroll</code> nel catalogo <code>production</code>.<P>In
+sostanza, gli schemi possono essere utilizzati per suddividere opportunamente i
+nomi dei costrutti, evitando così possibili conflitti.&nbsp;</P>
+<P>Il comando CREATE SCHEMA può includere i comandi CREATE TABLE, CREATE VIEW,
+e GRANT. Per eseguire il comando CREATE SCHEMA, bisogna essere connessi al
+database come utente SYSTEM o come utente con privilegi&nbsp; DBA/DDL or ADMIN.
+Il comando può anche essere usato per creare più tabelle e\o viste in una sola
+transazione (che ovviamente appartengono tutte allo stesso schema). Nell'esempio
+seguente viene creato lo schema HOTEL_OPERATION contenente la tabella HOTEL_DIR.</P>
+<P><font size="2">CREATE SCHEMA HOTEL_OPERATION&nbsp;<br>
+CREATE TABLE HOTEL_DIR(&nbsp;<br>
+HOTELNAME CHAR(40) NOT NULL,&nbsp;<br>
+RATING INTEGER,&nbsp;<br>
+ROOMRATE FLOAT,&nbsp;<br>
+LOCATION CHAR(20) NOT NULL,&nbsp;<br>
+CAPACITY INTEGER);</font></P>
+<p>Diversamente, di seguito creiamo prima lo schema HOTEL_OPERATION e poi
+creiamo in esso la tabella HOTEL_DIR.<font size="2">&nbsp;</font></p>
+<p><font size="2">CREATE SCHEMA HOTEL_OPERATION;<br>
+<br>
+CREATE TABLE </font><font size="2">HOTEL_OPERATION.HOTEL_DIR(&nbsp;<br>
+HOTELNAME CHAR(40) NOT NULL,&nbsp;<br>
+RATING INTEGER,&nbsp;<br>
+ROOMRATE FLOAT,&nbsp;<br>
+LOCATION CHAR(20) NOT NULL,&nbsp;<br>
+CAPACITY INTEGER);</font></p>
+<HR>
+
+<H3><A name=creare-tavole></A>Creare tavole</H3>
+<P>In MSQL possiamo eseguire qualsiasi comando SQL. Per creare una tavola si 
+usa il comando SQL standard <CODE>create table</CODE> avente la forma 
+seguente:</P><PRE>&nbsp;&nbsp;&nbsp;&nbsp; create table &lt;nome-tavola&gt; ( 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &lt;lista di attributi e tipi ad essi associati&gt;
+&nbsp;&nbsp;&nbsp;&nbsp; );
+</PRE>
+<P>Nello scrivere un comando si pu&ograve; andare a capo. Se il comando occupa pi&ugrave; 
+linee, ad ogni return viene dato un prompt speciale con il numero di linea 
+corrente fino a che non si digita il punto e virgola o un return lasciando una 
+riga vuota. Nel primo caso viene eseguito il comando; nel secondo caso il 
+comando viene memorizzato su un buffer (si veda <a href="#buffer-di-editing"><U><FONT 
+color=#0000ff>Buffer di editing</U></FONT></U></a>). 
+<P>Un esempio di creazione &egrave; il seguente: </P><PRE>&nbsp;&nbsp;&nbsp;&nbsp; create table Test (
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; i int,
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; s char(10)
+&nbsp;&nbsp;&nbsp;&nbsp; );</PRE>
+<P>Questo comando crea una tavola chiamata <CODE>TEST</CODE> con due attributi: 
+il primo, chiamato <CODE>i</CODE>, &egrave; un intero; il secondo, chiamato 
+<CODE>s</CODE>, &egrave; una stringa lunga al pi&ugrave; 10 caratteri. </P>
+<P>
+<HR>
+
+<H3><A name=inserire-tuple></A>Inserire tuple</H3>
+<P>Dopo aver creato una tavola possiamo inserirvi tuple utilizzando il comando 
+<CODE>insert</CODE>. La maniera pi&ugrave; semplice &egrave; inserire direttamente i 
+valori:</P><PRE>&nbsp;&nbsp;&nbsp;&nbsp; insert into &lt;nome-tavola&gt;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; values( &lt;lista ordinata dei valori da inserrire negli attributi);</PRE>
+<P>Per esempio, possiamo inserire la tupla <CODE>(10, 'foobar')</CODE> nella 
+tavola <CODE>Test</CODE> come segue:</P><PRE>&nbsp;&nbsp;&nbsp;&nbsp; insert into Test values(10,'foobar');</PRE>Analogamente, 
+per cancellare ed aggiornare tuple si utilizzano i comandi <CODE>delete</CODE> e 
+<CODE>update</CODE>. 
+<P>
+<HR>
+
+<H3><A name=interrogare-tavole></A>Interrogare tavole</H3>
+<P>Possiamo vedere quali sono i valori memorizzati in una tavola attraverso una 
+semplice query: </P><PRE>&nbsp;&nbsp;&nbsp;&nbsp; select * 
+&nbsp;&nbsp;&nbsp;&nbsp; from &lt;nome-tavola&gt; ;</PRE>
+<P>Per esempio, dopo aver creato la tavola <CODE>test</CODE> ed aver inserito la 
+tupla <CODE>(10,'foobar')</CODE> il comando: </P><PRE>&nbsp;&nbsp;&nbsp;&nbsp;select * from Test;</PRE>
+<P>restituisce il seguente risultato </P><PRE>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;I S 
+&nbsp;&nbsp;&nbsp; ---------- ----------
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;10 foobar
+</PRE>
+<P>
+<HR>
+
+<H3><A name=eliminare-tavole></A>Eliminare tavole</H3>
+<P>Per eliminare una tavola dalla base di dati, si esegue: </P><PRE>&nbsp;&nbsp;&nbsp;&nbsp; drop table &lt;nome-tavola&gt; ;</PRE>
+<P>In generale dopo aver creato tavole di prova si suggerisce di eliminarle con 
+<CODE>drop table</CODE> per mantere pulita la base di dati. Ad esempio 
+eseguire:</P><PRE>&nbsp;&nbsp;&nbsp;&nbsp; drop table Test;</PRE>
+<P>alla fine della sessione di prova.</P>
+<P>
+<HR>
+
+<H3><A name=commit-rollback></A>Commit e rollback</H3>
+<P>Le modifiche che si effettuano sulla base di dati non sono permanenti fino a 
+che non si d&agrave; il comando: <PRE>&nbsp;&nbsp;&nbsp; commit;</PRE>a fronte di tale comando la base di dati 
+viene permanentemente modificata.
+<p>Prima che sia dato il <CODE>commit</CODE> &egrave; possibile eliminare tutte le 
+modifiche fino al <CODE>commit</CODE> precedente con il comando: <PRE>&nbsp;&nbsp;&nbsp; rollback;</PRE>
+<P>Si noti che i comandi di aggiornamento tra due <CODE>commit</CODE> formano 
+una <I>transazione</I>, cio&egrave; un'azione sulla base di dati da considerarsi come 
+una unit&agrave;.</P>
+<P>&egrave; possibile far generare i comandi di <CODE>commit</CODE> in modo automatico 
+da MSQL dopo ogni istruzione DDL di SQL, digitando: <PRE>&nbsp;&nbsp;&nbsp; set autocommit on</PRE>L'<CODE>autocommit</CODE> si 
+disattiva digitando: <PRE>&nbsp;&nbsp;&nbsp; set autocommit off</PRE>Infine digitando: <PRE>&nbsp;&nbsp;&nbsp; show autocommit</PRE>si verifica lo stato attuale 
+dell'<CODE>autocommit</CODE>.<P><b>Nota:</b> il comando <tt>set autocommit</tt> protrebbe
+non avere effetti sulla base dati, nonostante quanto riportato dalla documentazione di Oracle
+<HR>
+
+<H3><A name=catalogo></A>Utilizzare il catalogo</H3>
+<P>Il DBMS mantiene tutte le informazioni sulla base di dati (<I>metadati</I>) 
+in delle tavole di sistema che formano il cosiddetto <I>catalogo</I>. Le tavole 
+del catalogo sono interrogabili attraverso SQL esattamente come le tavole create 
+dagli utenti. L'elenco completo delle tavole lo si trova in <I>Oracle10g Lite 
+User's Guide</I>. Qui ci occupiamo solo della tavola <CODE>ALL_TABLES</CODE> che 
+contiene le infomazioni su tutte le tavole della base di dati. In particolare se 
+non ci si ricorda quali sono le tavole dell'utente 
+<CODE>&lt;nome-utente&gt;</CODE> si pu&ograve; utilizzare la seguente query: </P><PRE>&nbsp;&nbsp;&nbsp;&nbsp; select TABLE_NAME
+&nbsp;&nbsp;&nbsp;&nbsp; from ALL_TABLES
+&nbsp;&nbsp;&nbsp;&nbsp; where OWNER = '&lt;nome-utente&gt;'</PRE>
+<P>Dato il nome della tavola &egrave; possibile ottenere i suoi attributi (nome e 
+tipo) con il comando: <PRE>&nbsp;&nbsp;&nbsp;&nbsp; describe &lt;nome-tavola&gt;</PRE>
+<P>Per esempio, per sapere gli attributi memorizzati dal sistema in 
+<CODE>ALL_TABLES</CODE> si pu&ograve; usare: <PRE>&nbsp;&nbsp;&nbsp;&nbsp; describe ALL_TABLES</PRE>
+<P>Altre tavole del catalogo di utile consultazione sono le tavole <code>ALL_TAB_COLUMS,
+ALL_VIEWS,
+ALL_CONSTRAINTS, ALL_USERS</code>. Si noti che i valori contenuti in tutte
+queste tabelle (nomi di tabelle, colonne, viste, vincoli, utenti, schemi, etc.)
+sono stringhe scritte completamente in MAIUSCOLO. Per cui se si vuole far
+riferimento a questi nomi in query SQL bisogna scrivere le stringhe
+completamente in maiuscolo. Nell'esempio precedente, se vogliamo le tabelle
+create dall'utente system dobbiamo sotituire <code>&lt;nome-utente&gt; </code>
+con la stringa SYSTEM.
+<HR>
+
+<H3><A name=eseguire-comandi-file></A>Eseguire comandi memorizzati su file</H3>
+<P>Anzich&egrave; eseguire comandi SQL digitandoli su terminale &egrave; spesso pi&ugrave; 
+conveniente scriverli in un file di testo e poi richiamarli da MSQL.</P>
+<P>Supponiamo di aver scritto alcuni comandi SQL in un file <CODE>foo.sql</CODE> 
+nella directory corrente. Possiamo eseguire il file da MSQL con il 
+comando:</P><PRE>&nbsp;&nbsp;&nbsp;&nbsp; @foo.sql</PRE>oppure: <PRE>&nbsp;&nbsp;&nbsp;&nbsp; start foo.sql</PRE>
+<P>Se non viene specificata nessuna estensione per il file, cio&egrave; se scriviamo 
+<CODE>@foo</CODE>, allora MSQL assume che l'estensione sia <CODE>sql</CODE>. 
+&egrave; ovviamente possibile anche specificare il path completo del file. Ad esempio possiamo scrivere 
+<CODE>@d:\mia_cartella\foo.sql</CODE>. </P><B>Nota:</B> per realizzare una base 
+di dati &egrave; utile preparare i seguenti file: 
+<UL>
+  <LI>Un file per creare tavole e viste. 
+  <LI>Un file per rimuovere tutte le tavole e le viste. 
+  <LI>Un file per popolare le tavole, cio&egrave; per inserire tuple nelle tavole. 
+  </LI></UL><!--
+<P><B>NOTE:</B> If you are getting an error of the form "Input truncated to 2 characters" when you try to run your file, try putting an empty line at the bottom of your .sql file. This seems to make the error go away. </P>
+-->
+<P>
+<HR>
+
+<H3><A name=buffer-di-editing></A>Buffer di editing</H3>
+<P>Se si termina un comando con una riga vuota, invece del punto e virgola, il 
+comando viene memorizzato in un buffer. Questo comando pu&ograve; essere eseguito dal 
+buffer&nbsp; digitando un singolo slash (/).</P>
+<P>Il comando nel buffer pu&ograve; essere editato prima di eseguirlo. Per fare ci&ograve; 
+si pu&ograve; utilizzare un editor di linea interno a MSQL, oppure un editor 
+esterno. I comandi principali dell'editor di linea sono i seguenti:</P>
+<TABLE border=1 borderColor=#000000 cellSpacing=1 width=780>
+  <TBODY>
+  <TR>
+    <TD vAlign=center>
+      <P><CODE>L</CODE></P></TD>
+    <TD vAlign=center>
+      <P>mostra il contenuto del buffer e pone l'ultima linea del buffer come 
+      "linea corrente"</P></TD></TR>
+  <TR>
+    <TD vAlign=center><CODE>
+      <P>L</CODE> <I>n</I></P></TD>
+    <TD vAlign=center>
+      <P>mostra la linea <I>n</I>-esima del buffer, and la rende la linea 
+      corrente</P></TD></TR>
+  <TR>
+    <TD vAlign=center><CODE>
+      <P>L</CODE> <I>m n</I></P></TD>
+    <TD vAlign=center>
+      <P>mostra le linee da <I>m</I> a <I>n</I> e rende la linea <I>n</I> la 
+      linea corrente</P></TD></TR>
+  <TR>
+    <TD vAlign=center><CODE>
+      <P>I</CODE></P></TD>
+    <TD vAlign=center>
+      <P>permette di inserire nuove linee dopo la linea corrente;<BR>per 
+      terminare l'inserimento bisogna digitare return due volte</P></TD></TR>
+  <TR>
+    <TD vAlign=center><CODE>
+      <P>C /vecchio/nuovo</CODE></P></TD>
+    <TD vAlign=center>
+      <P>sostituisce il testo "<CODE>vecchio</CODE>" con "<CODE>nuovo</CODE>" 
+      nella linea corrente</P></TD></TR>
+  <TR>
+    <TD vAlign=center><CODE>
+      <P>A testo</CODE></P></TD>
+    <TD vAlign=center>
+      <P>aggiunge "<CODE>testo</CODE>" alla fine della linea corrente</P></TD></TR>
+  <TR>
+    <TD vAlign=center><CODE>
+      <P>DEL</CODE></P></TD>
+    <TD vAlign=center>
+      <P>cancella la linea corrente</P></TD></TR></TBODY></TABLE>
+<!--
+<P>In alternativa si pu&ograve; chiamare da MSQL un editor esterno attraverso il 
+comando <CODE>edit</CODE>. Se digitiamo: <PRE>&nbsp;&nbsp;&nbsp;&nbsp;edit &lt;nome-file.sql&gt;</PRE>
+<P>il buffer viene memorizzato come file di testo <CODE>nome-file.sql</CODE> 
+nella directory corrente e poi viene passato a editor di testo di Windows 
+(tipicamente "Blocco Note"). &egrave; possibile ridefinire l'editor chiamato 
+attraverso il comando <CODE>define_editor</CODE>. Ad esempio:</P><PRE>&nbsp;&nbsp;&nbsp;&nbsp;define_editor = &quot;emacs&quot;
+</PRE>
+<P>definisce l'editor emacs come editor da chiamare con <CODE>edit</CODE>.</P>&egrave; 
+anche possibile salvare il buffer (senza editarlo) attraverso il comando <PRE>&nbsp;&nbsp;&nbsp;&nbsp;save &lt;nome-file.sql&gt;</PRE>
+<P> -->
+<HR>
+
+<H3><A name=registrare-sessione></A>Registrare una sessione di lavoro</H3>
+<P>Per avere una copia su file di una sessione di lavoro su pu&ograve; usare il 
+comando <CODE>spool</CODE> di MSQL. In particolare digitando: <PRE>&nbsp;&nbsp;&nbsp; spool &lt;nome-file&gt;</PRE>
+<P>viene creato un file con estensione di default <CODE>.lst</CODE> nella 
+directory corrente e in esso viene copiato tutto ci&ograve; che appare su terminale 
+fino a che non si esce da MSQL o non si digita <PRE>&nbsp;&nbsp;&nbsp; spool off</PRE>
+<P>
+<HR>
+
+<P></P>
+<H3><A name=caratteri-speciali></A>Caratteri speciali</H3>
+<P>I caratteri speciali non possono essere utilizzati se non in stringhe. In 
+queste, per ottenere l'apostrofo (poich&egrave; una stringa &egrave; delimitata da singoli 
+apici) si usano due apostrofi. Ad esempio:</P><PRE>&nbsp;&nbsp;&nbsp; 'città' del solè</PRE>
+<P>Per altri caratteri, ad esempio &amp; si usano sequenze di escape. Per 
+definire il carattere di escape si usa il comando: <PRE> &nbsp;&nbsp;&nbsp; set escape &lt;char&gt;</PRE>Ad esempio, con il 
+comando: <PRE> &nbsp;&nbsp;&nbsp; set escape ^</PRE>possiamo scrivere <CODE>'Johnson 
+^&amp; son'</CODE>. Per farsi mostrare il carattere di escape attuale si usa il 
+comando: <PRE> &nbsp;&nbsp;&nbsp; show escape</PRE>Per eliminare il carattere di escape 
+definito si usa il comando: <PRE> &nbsp;&nbsp;&nbsp; set escape off</PRE>
+<HR>
+
+<H3><a name="uscire-da-msql"></a>Uscire da MSQL</H3>
+<P>Per uscire da MSQL, si deve digitare: </P><PRE>&nbsp;&nbsp;&nbsp;&nbsp; quit</PRE>oppure <PRE>&nbsp;&nbsp;&nbsp;&nbsp; exit</PRE>in risposta al prompt.<br>
+<HR>
+
+<H3><a name="limitazioni"></a>Alcune limitazioni di Oracle 10g Lite</H3>
+<P>Il DBMS Oracle 10g Lite non supporta la sintassi SQL per la definizione di
+dominii utente. In questi casi ricorrere all'uso di dominii predefiniti ed
+all'uso di opportune check specificate sugli attributi.&nbsp;</P>
+<P>Non è supportato il costrutto di&nbsp; assertion, né il check con subquery che coinvolgono tabelle
+ diverse dalla tabella che contiene la check stessa. Pertanto non è possibile
+implementare in SQL inclusioni e disgiunzioni presenti sullo schema relazionale.</P>
+<P>Non &egrave; possibile specificare join espliciti nelle
+ interrogazioni.</P>
+<HR>
+
+<H3><a name="uninstall"></a>Disinstallazione</H3>
+<p>Per disinstallare Oracle 10g Lite, selezionare dal men&ugrave; di Windows <code>&quot;Start\Programmi\Oracle
+Installation Products\Universal Installer</code> e seguire le istruzioni per la disinstallazione.</p>
+<HR>
+
+<FONT size=1>Questo documento &egrave; stato scritto da Domenico Lembo per 
+il Corso di Progetto di Basi di Dati, Laurea in Ingegneria Informatica, Universit&agrave; di Roma "La 
+Sapienza", anno accademico 2004/2005. Nello scrivere lo stesso si &egrave; fatto 
+riferimento a documenti analoghi scritti da Giuseppe De Giacomo, Universit&agrave; di Roma "La 
+Sapienza", Shuguang Hong, Georgia State 
+University, USA, Tim Finin, University of Maryland, USA, e Jeff Ullman, Stanford 
+University, USA.</FONT></BODY></HTML>

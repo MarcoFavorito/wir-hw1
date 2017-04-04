@@ -1,0 +1,153 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1">
+<META NAME="Generator" CONTENT="Microsoft Word 98">
+<TITLE>2&#170; Esercitazione in laboratorio (a.a. 1997/98)</TITLE>
+</HEAD>
+<BODY>
+<DIR>
+
+<B><FONT FACE="Times" SIZE=3><P ALIGN="CENTER">Fondamenti di Informatica - <I>Ingegneria per l'Ambiente e il Territorio</I> - A.A. 97/98</P>
+<P ALIGN="CENTER"> - Seconda esercitazione in laboratorio - </P>
+<P ALIGN="CENTER"></P></DIR>
+
+</FONT><FONT FACE="Times" SIZE=2><P>2.1.1 Problema (test di primalit&agrave;)</P>
+</B><P>"Dato un naturale <I>n</I>, stabilire se esso &egrave; primo oppure no"</P>
+
+<P>Si propone di seguito il codice C di un programma che risolve il problema. Si invitano gli studenti a:</P>
+<OL>
+
+<LI>Analizzare il programma per comprenderne la modalit&agrave; di funzionamento.</LI>
+<LI VALUE=1>Scrivere il programma in un ambiente di sviluppo per il linguaggio C (ad es., TurboC).</LI></OL>
+
+<DIR>
+<DIR>
+<DIR>
+
+</FONT><FONT FACE="Courier" SIZE=2><P>#include &lt;stdio.h&gt;</P>
+
+<P>main () {</P>
+<P>  int n, primo, divisore;</P>
+
+<P>  /* n e` il naturale da testare</P>
+
+<P>     primo e` una variabile che alla fine della esecuzione contiene uno fra i seguenti valori:</P>
+<P>       0 (il numero non e` primo)</P>
+<P>       1 (il numero e` primo)</P>
+<P>       2 (errore, il numero inserito e` negativo</P>
+
+<P>     divisore contiene i vari divisori che si provano (2, 3, 4, ...) per stabilire se n e` primo</P>
+<P>  */</P>
+
+<P>  printf("\n\n\nTest di primalita`. Benvenuti.\n");</P>
+<P>  printf("Digita il numero da testare: ");</P>
+<P>  scanf("%d", &amp;n);</P>
+
+<P>  if (n &lt;= 0)</P>
+<P>    primo = 2;</P>
+<P>  else {</P>
+<P>    primo = 1; /* assumiamo che n sia primo */</P>
+<P>    divisore = 2;</P>
+<P>    while (divisore &lt; n) {</P>
+<P>      if (n % divisore == 0)</P>
+<P>        primo = 0; /* e` stato trovato un divisore */</P>
+<P>      divisore = divisore + 1;</P>
+<P>    }</P>
+<P>  }</P>
+
+<P>  if (primo == 0)</P>
+<P>    printf("Il numero %d non e` primo.", n);</P>
+<P>  else if (primo == 1)</P>
+<P>    printf("Il numero %d e` primo.", n);</P>
+<P>  else /* (primo == 2) */</P>
+<P>    printf("Errore: hai immesso un numero negativo.");</P>
+
+<P>    printf(" Arrivederci.\n");</P>
+<P>}</P>
+</FONT><FONT FACE="Times" SIZE=2></DIR>
+</DIR>
+</DIR>
+
+<B><P>2.1.2 Attivit&agrave; di raffinamento</P>
+</B><P>Con riferimento al programma di cui sopra, sono evidenti alcuni limiti dello stesso:</P>
+<OL>
+
+<LI>In caso di numero non primo, il programma continua (inutilmente) a lavorare.</LI>
+<LI VALUE=1>Il test utilizzato nel ciclo </FONT><FONT FACE="Courier" SIZE=2>while</FONT><FONT FACE="Times" SIZE=2> usa un valore limite (<I>n</I>) inutilmente elevato (per verificare se un naturale <I>m</I> &egrave; primo basta cercare un divisore nell'intervallo <IMG SRC="Image37.gif" WIDTH=48 HEIGHT=22>).</LI>
+<LI VALUE=1>Se il numero non &egrave; primo il programma non ci d&agrave; informazione alcuna sui suoi divisori.</LI></OL>
+
+<P>Ci&ograve; premesso, si invitano gli studenti a modificare il programma in modo da ovviare ai limiti descritti. In particolare, scrivere un programma per il test di primalit&agrave; che termini non appena la risposta al test sia "certa" e restituisca, in caso di numero non primo, il pi&ugrave; piccolo divisore del numero.</P>
+
+<B><P>2.2.1 Problema (ricerca di occorrenze di una parola in una frase)</P>
+</B><P>"Date una frase e una parola, determinare tutte le occorrenza della parola nella frase"</P>
+
+<P>Si propone di seguito il codice C di un programma che risolve il problema. Si invitano gli studenti a:</P>
+<OL>
+
+<LI>Analizzare il programma per comprenderne la modalit&agrave; di funzionamento.</LI>
+<LI VALUE=1>Scrivere il programma in un ambiente di sviluppo per il linguaggio C (ad es., TurboC).</LI></OL>
+
+<DIR>
+<DIR>
+<DIR>
+
+</FONT><FONT FACE="Courier" SIZE=2><P>#include &lt;stdio.h&gt;</P>
+
+<P>#define LUN_FRASE 200</P>
+<P>#define LUN_PAROLA 20</P>
+
+<P>main()</P>
+<P>{</P>
+<P>  char frase[LUN_FRASE], parola[LUN_PAROLA];</P>
+<P>  int i, j, k, primo, conta_occ;</P>
+<P>  </P>
+<P>  /* scanf non consente di leggere spazi; viene usata gets per leggere le stringhe */</P>
+<P>  printf("Ricerca delle occorrenze di una parola in un frase. Benvenuti.\n");</P>
+<P>  printf("\nScrivi la frase:\n\t");</P>
+<P>  gets(frase); </P>
+<P>  printf("\nScrivi ora la parola:\n\t");</P>
+<P>  gets(parola);</P>
+<P>  </P>
+<P>  /* inizializzazioni */</P>
+<P>  conta_occ=0;</P>
+<P>  i = 0;</P>
+<P>  </P>
+<P>  /* ciclo principale */</P>
+<P>  do {</P>
+<P>    j = 0;</P>
+<P>    primo = i;</P>
+<P>    k = i;</P>
+<P>    /* ciclo verifica occorrenza */</P>
+<P>    while((frase[k] != '\0')&amp;&amp;<BR>
+(parola[j] != '\0')&amp;&amp;<BR>
+(frase[k] == parola[j])) {</P>
+<P>      k = k+1;</P>
+<P>      j = j+1;</P>
+<P>    }</P>
+<P>    if(parola[j] == '\0') {</P>
+<P>      conta_occ = conta_occ+1;</P>
+<P>      printf("\nOccorrenza in posizione %d.\n%s\n", primo, frase);</P>
+<P>      while(primo &gt; 0) {</P>
+<P>        printf(" ");</P>
+<P>        primo = primo-1;</P>
+<P>      }</P>
+<P>      printf("%s\n", parola);</P>
+<P>    }</P>
+<P>    i = i+1;</P>
+<P>  } while(frase[i] != '\0');</P>
+<P>  </P>
+<P>  printf("\nSi sono verificate %d occorrenze. Arrivederci.\n", conta_occ);</P>
+<P>}</P>
+</FONT><FONT FACE="Times" SIZE=2></DIR>
+</DIR>
+</DIR>
+
+<B><P>2.2.2 Attivit&agrave; di raffinamento</P>
+</B><P>Con riferimento al programma di cui sopra, si invitano gli studenti a:</P>
+<OL>
+
+<LI>Generalizzare il programma, prevedendo la possibilit&agrave; di un carattere '?' nella parola, in corrispondenza di cui <I>ogni</I> carattere della frase &egrave; accettabile.</LI>
+<LI VALUE=1>Poich&eacute; la tecnica introdotta al punto precedente di fatto elimina la possibilit&agrave; di verificare la presenza effettiva del carattere '?' nella frase, generalizzare ulteriormente il programma allo scopo di prevedere anche tale possibilit&agrave;.</LI></OL>
+
+</FONT></BODY>
+</HTML>

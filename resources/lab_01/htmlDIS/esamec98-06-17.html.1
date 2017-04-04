@@ -1,0 +1,108 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1">
+<META NAME="Generator" CONTENT="Microsoft Word 98">
+<TITLE>Esame 17/6/1998</TITLE>
+</HEAD>
+<BODY>
+
+<B><FONT SIZE=3><P ALIGN="CENTER">Fondamenti di Informatica</P>
+<P ALIGN="CENTER">Ambiente e Territorio</P>
+</B><P ALIGN="CENTER">Appello del 17-6-1998</P>
+
+<B><P>Esercizio 1 (18 punti)</P>
+</B>
+<P>Una fabbrica di componenti produce 12 componenti diversi che vengono prodotti utilizzando <U>macchine dedicate</U>, cio&egrave; ogni macchina produce un solo componente ed &egrave; quindi univocamente individuata dal codice di questo.</P>
+<P>Ogni luned&igrave; mattina la fabbrica riceve il file <B>Ordini.dat</B> contenente tutti gli ordinativi arrivati nella settimana precedente e prepara un piano di lavoro per le singole macchine. Al termine di ogni giornata lavorativa il piano di lavoro viene aggiornato eliminando tutti i pezzi gi&agrave; prodotti.</P>
+<P>Il file <B>Ordini.dat</B> &egrave; un file di strutture e ogni struttura contiene le seguenti informazioni:</P>
+<P>codice componente (4 caratteri), codice cliente (6 caratteri), numero di pezzi ordinati (intero positivo).</P>
+<P>Il piano di lavorazione viene memorizzato in un array <B>Lavoro</B> di 12 componenti, ciascuna delle quali &egrave; una struttura contenente il codice componente, che individua anche la macchina che lo produce, e un puntatore alla lista degli ordini per quel componente.</P>
+
+<P>Il candidato:</P>
+
+<OL>
+
+<LI>fornisca le opportune dichiarazioni dei tipi di dati C per risolvere i punti successivi;</LI>
+
+<LI VALUE=1>scriva una funzione (o pi&ugrave;) C che, leggendo il file <B>Ordini.dat</B>, produca e restituisca come parametro di output l&#146;array <B>Lavoro</B>;</LI>
+
+<LI VALUE=1>scriva una funzione (o pi&ugrave;) C che, ricevendo come parametri di input l&#146;array <B>Lavoro</B> (prodotto in accordo al punto precedente) e la quantit&agrave; <B>Q</B> di pezzi prodotti dalla macchina di codice <B>K</B>, aggiorni l&#146;array <B>Lavoro</B> eliminando gli ordini eseguiti. Se un ordine &egrave; stato eseguito eliminare la struttura relativa e se non &egrave; stato <U>completamente</U> eseguito decrementare il numero di pezzi nella struttura stessa.</LI></OL>
+
+
+<P>NB: il numero di pezzi eseguiti pu&ograve; anche soddisfare pi&ugrave; di un ordine o esaurire la lista degli ordini per quel componente.</P>
+
+<P>Nell&#146;esempio riportato sotto, a sinistra (a) c&#146;&egrave; la situazione iniziale dell&#146;array <B>Lavoro</B> (si mostra solo la lista della macchina M04) e a destra (b) lo stato dell&#146;array dopo l&#146;esecuzione della funzione di cui al punto 3. con <B>K</B>=M04 e <B>Q</B>=14. In (b), il primo ordinativo in lista &egrave; stato eliminato perch&eacute; totalmente soddisfatto (14&gt;9); il secondo &egrave; stato solo modificato perch&eacute; dopo aver soddisfatto il primo ordine ci sono ancora solo 5 (14-9) componenti disponibili, che bastano per soddisfare solo parzialmente l&#146;ordine. Quindi il secondo ordine rimane in lista con numero di pezzi richiesti diminuito di 5. Il terzo ordine non &egrave; stato soddisfatto, n&eacute; parzialmente n&eacute; totalmente e rimane invariato in lista.</P>
+</FONT>
+<P ALIGN="CENTER"><CENTER><TABLE CELLSPACING=0 BORDER=0 CELLPADDING=7 WIDTH=425>
+<TR><TD WIDTH="52%" VALIGN="TOP">
+<FONT SIZE=3><P ALIGN="CENTER">(a)</FONT></TD>
+<TD WIDTH="48%" VALIGN="TOP">
+<FONT SIZE=3><P ALIGN="CENTER">(b)</FONT></TD>
+</TR>
+<TR><TD WIDTH="52%" VALIGN="TOP">
+<FONT SIZE=3><P><IMG SRC="Image13.gif" WIDTH=116 HEIGHT=78></FONT></TD>
+<TD WIDTH="48%" VALIGN="TOP">
+<FONT SIZE=3><P><IMG SRC="Image14.gif" WIDTH=88 HEIGHT=78></FONT></TD>
+</TR>
+</TABLE>
+</CENTER></P>
+
+<FONT SIZE=3><P ALIGN="CENTER"></P>
+<B><P ALIGN="CENTER">Fondamenti di Informatica</P>
+<P ALIGN="CENTER">Ambiente e Territorio</P>
+</B><P ALIGN="CENTER">Appello del 17-6-1998</P>
+
+<P>&nbsp;</P>
+<P>&nbsp;</P>
+<B><P>Esercizio 2 (4 punti)</P>
+</B>
+<P>Descrivere la rappresentazione binaria in complemento a 2 dei numeri interi. In particolare, supponendo che gli interi siano rappresentati con 8 bit, rappresentare in tale forma il proprio giorno e mese di nascita e calcolarne la differenza.</P>
+
+<P>&nbsp;</P>
+<B><P>Esercizio 3 (4 punti)</P>
+</B>
+<P>Definire le seguenti relazioni:</P>
+
+<UL>
+<LI>Impiegato, con attributi Nome, Cognome, Dipartimento (Amministrazione, Produzione, Distribuzione ecc.), Ufficio (codice numerico) e Stipendio (annuo lordo);</LI>
+<LI>Dipartimento, con attributi Nome, Indirizzo e Citt&agrave;.</LI></UL>
+
+<P>Il candidato:</P>
+<OL>
+
+<LI>indichi le chiavi delle relazioni;</LI>
+<LI VALUE=1>scriva una interrogazione SQL per determinare i nomi di tutti gli impiegati che lavorano a Roma il cui stipendio annuo lordo &egrave; superiore a Lit. 70™000™000.</LI></OL>
+
+
+<P>&nbsp;</P>
+<B><P>Esercizio 4 (4 punti)</P>
+</B>
+<U><P>Che cosa stampa</U> questo programma quando gli vengono forniti in ingresso il vostro giorno e mese di nascita? <U>Motivare la risposta</U>.</P>
+<DIR>
+<DIR>
+
+</FONT><FONT FACE="Courier New" SIZE=3><P>#include &lt;stdio.h&gt;</P>
+
+<P>int m, n;</P>
+
+<P>int F (int m, int n)</P>
+<P>{</P>
+<P>&#9;if ((n &lt;= m)&amp;&amp;(m % n == 0))</P>
+<P>&#9;&#9; return n;</P>
+<P>&#9;else if (n &gt; m)</P>
+<P>&#9;&#9; &#9;return F(n, m);</P>
+<P>&#9;&#9;else</P>
+<P>&#9;&#9;&#9;return F(n, m % n);</P>
+<P>}</P>
+
+<P>main() {</P>
+<P>&#9;scanf("%d%d", &amp;m, &amp;n);</P>
+<P>&#9;if ((n &gt; 0)&amp;&amp;(m &gt; 0))</P>
+<P>&#9;&#9;printf("%d\n", F(m, n));</P>
+<P>&#9;else</P>
+<P>&#9;&#9;printf("Input errato\n");</P>
+<P>&#9;return 0;</P>
+<P>}</P></DIR>
+</DIR>
+</FONT></BODY>
+</HTML>

@@ -1,0 +1,26 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+"http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<title>Esempio domanda CORBA</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+</head>
+
+<body>
+<h3>Corso di Laurea in Ing. Informatica, 
+Universita' La Sapienza<br>
+Sistemi Operativi II<br>
+Docente Roberto Baldoni</h3>
+<h3> Esempio di domanda di programmazione (argomento: CORBA). </h3>
+<p>Un circuito di biblioteche mette a disposizione un servizio di prenotazione libri. In ogni biblioteca &egrave; presente un server in cui sono memorizzati i libri presenti. I client del servizio usano un Server Coordinatore (SC) per effettuare le ricerche dei libri da prendere in prestito. </p>
+<p align="center"><img width="366" height="186" src="testo3_clip_image001.gif"></p>
+<p>Il server coordinatore offre i seguenti servizi ai client: </p>
+<ul>
+  <li>Ricerca di un libro: SC interroga tutte le biblioteche e ritorna al client il riferimento alle biblioteche che hanno il libro cercato o un'eccezione per segnalare il fallimento della ricerca. </li>
+  <li>Prenotazione di un libro su una qualsiasi biblioteca: SC cerca il libro in questione, e se presente in una (o pi&ugrave;) biblioteche lo richiede in prestito restituendo il riferimento al server della biblioteca interessata, altrimenti segnala il fallimento della ricerca. </li>
+</ul>
+<p>Per quanto riguarda i servizi offerti dai server delle biblioteche deve poter essere possibile cercare direttamente un libro e richiederlo in prestito. </p>
+<p>Le ricerche (sia sul server coordinatore che sulle singole biblioteche) devono essere fatte specificando alcuni o tutti i campi che identificano un libro: il codice ISBN, il titolo, l'autore/autori, la casa editrice, l'anno di pubblicazione e il genere. </p>
+<p>Definire le interfacce IDL di SC e dei server delle biblioteche motivando e descrivendo le scelte fatte, e mostrando con il maggior dettaglio possibile il relativo mapping nel linguaggio Java.</p>
+</body>
+</html>

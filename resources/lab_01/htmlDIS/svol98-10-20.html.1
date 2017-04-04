@@ -1,0 +1,236 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0//EN">
+<!-- Created by htmlize-0.46 in css mode. -->
+<html>
+  <head>
+    <title>svol98-10-20.c</title>
+    <style type="text/css">
+    <!--
+      BODY {
+        color: #000000;
+        background-color: #ffffff;
+      } /* default */
+      span.keyword {
+        color: #006400;
+      } /* font-lock-keyword-face */
+      span.function-name {
+        color: #0000cd;
+      } /* font-lock-function-name-face */
+      span.comment {
+        color: #4682b4;
+      } /* font-lock-comment-face */
+      span.string {
+        color: #b22222;
+      } /* font-lock-string-face */
+      span.variable-name {
+        color: #a52a2a;
+      } /* font-lock-variable-name-face */
+      span.type {
+        color: #ff00ff;
+      } /* font-lock-type-face */
+      span.builtin {
+        color: #da70d6;
+      } /* font-lock-builtin-face */
+    -->
+    </style>
+  </head>
+  <body>
+    <pre>
+<span class="comment">/* Svolgimento esercizio d'esame del 20/10/1998 */</span>
+
+#<span class="builtin">define</span> <span class="variable-name">M</span> 9
+#<span class="builtin">define</span> <span class="variable-name">N</span> 12
+
+#<span class="builtin">include</span> <span class="string">&lt;stdio.h&gt;</span>
+#<span class="builtin">include</span> <span class="string">&lt;stdlib.h&gt;</span>
+
+<span class="type">struct</span> <span class="variable-name">elem</span> {
+	<span class="type">char</span> <span class="variable-name">parola</span>[2]; <span class="comment">/* attenzione: assenza terminatore!!
+	                   non verranno usate funzioni per manipolare e/o stampare stringhe */</span>
+	<span class="type">struct</span> elem *<span class="variable-name">next</span>;
+};
+
+<span class="type">typedef</span> <span class="type">struct</span> elem <span class="variable-name">elementolista</span>;
+
+<span class="comment">/* PROTOTIPI */</span>
+<span class="type">FILE</span> *<span class="function-name">ApriFile</span>(<span class="type">char</span> *, <span class="type">char</span> *);
+<span class="type">void</span> <span class="function-name">StampaLista</span>(elementolista *);
+<span class="type">elementolista</span> *<span class="function-name">CreaElemento</span>(<span class="type">char</span>, <span class="type">char</span>);
+<span class="type">void</span> <span class="function-name">InserisciInCoda</span>(<span class="type">char</span>, <span class="type">char</span>, elementolista **, elementolista **);
+<span class="type">elementolista</span> *<span class="function-name">CostrusciListaParole</span>(<span class="type">FILE</span> *);
+<span class="type">int</span> <span class="function-name">VocalePresente</span>(<span class="type">char</span> *);
+<span class="type">void</span> <span class="function-name">EliminaElemento</span>(elementolista **, elementolista *);
+<span class="type">elementolista</span> *<span class="function-name">EliminaVocali</span>(elementolista *);
+<span class="type">int</span> <span class="function-name">main</span>(<span class="type">void</span>);
+<span class="comment">/* FINE PROTOTIPI */</span>
+
+
+<span class="type">FILE</span> *<span class="function-name">ApriFile</span>(<span class="type">char</span> *<span class="variable-name">nome</span>, <span class="type">char</span> *<span class="variable-name">modo</span>)
+{
+	<span class="type">FILE</span> *<span class="variable-name">f</span>;
+	f=fopen(nome,modo);
+	<span class="keyword">if</span>(f==NULL) {
+		fprintf(stderr,<span class="string">&quot;Errore apertura file %s in modalita` %s. Programma terminato.\n&quot;</span>,nome,modo);
+		exit(2);
+	}
+	<span class="keyword">return</span> f;
+}
+
+
+
+<span class="type">void</span> <span class="function-name">StampaLista</span>(elementolista *e)
+{
+	<span class="type">int</span> <span class="variable-name">conta</span>=0;
+	
+	<span class="keyword">while</span>(e != NULL) {
+		conta++;
+		printf(<span class="string">&quot;Parola num. %d: %c%c\n&quot;</span>, conta, e-&gt;parola[0], e-&gt;parola[1]);
+		e=e-&gt;next;
+	}
+	<span class="keyword">return</span>;
+}
+
+
+
+<span class="type">elementolista</span> *<span class="function-name">CreaElemento</span>(<span class="type">char</span> <span class="variable-name">ch1</span>, <span class="type">char</span> <span class="variable-name">ch2</span>)
+{
+	elementolista *nuovo;
+	nuovo=malloc(<span class="keyword">sizeof</span>(elementolista));
+	<span class="keyword">if</span>(nuovo==NULL) {
+		fprintf(stderr,<span class="string">&quot;Memoria esaurita. Programma terminato.\n&quot;</span>);
+		exit(3); 
+	}
+	nuovo-&gt;parola[0]=ch1;
+	nuovo-&gt;parola[1]=ch2;
+	nuovo-&gt;next=NULL;
+	<span class="keyword">return</span> nuovo;
+}
+
+
+
+<span class="type">void</span> <span class="function-name">InserisciInCoda</span>(<span class="type">char</span> <span class="variable-name">ch1</span>, <span class="type">char</span> <span class="variable-name">ch2</span>, <span class="variable-name">elementolista</span> **testa, <span class="variable-name">elementolista</span> **coda)
+{
+	elementolista *nuovo;
+	
+	nuovo=CreaElemento(ch1, ch2);
+	<span class="keyword">if</span>(*coda==NULL)
+		*testa=nuovo;
+	<span class="keyword">else</span>
+		(*coda)-&gt;next=nuovo;
+	*coda=nuovo;
+	<span class="keyword">return</span>;
+}
+
+
+
+<span class="type">int</span> <span class="function-name">VocalePresente</span>(<span class="type">char</span> *<span class="variable-name">parola</span>)
+{
+	<span class="type">int</span> <span class="variable-name">i</span>;
+	<span class="keyword">for</span>(i=0; i&lt;2; i++)
+		<span class="comment">/* sfrutta fortemente le caratteristiche della switch!! */</span>
+		<span class="keyword">switch</span> (parola[i])
+		{
+			<span class="keyword">case</span> <span class="string">'a'</span>:
+			<span class="keyword">case</span> <span class="string">'A'</span>:
+			<span class="keyword">case</span> <span class="string">'e'</span>:
+			<span class="keyword">case</span> <span class="string">'E'</span>:
+			<span class="keyword">case</span> <span class="string">'i'</span>:
+			<span class="keyword">case</span> <span class="string">'I'</span>:
+			<span class="keyword">case</span> <span class="string">'o'</span>:
+			<span class="keyword">case</span> <span class="string">'O'</span>:
+			<span class="keyword">case</span> <span class="string">'u'</span>:
+			<span class="keyword">case</span> <span class="string">'U'</span>: <span class="keyword">return</span> 1;
+		}
+	<span class="keyword">return</span> 0;
+}
+
+
+
+<span class="type">void</span> <span class="function-name">EliminaElemento</span>(elementolista **testa, elementolista *prec)
+<span class="comment">/* prec punta all'elemento che precede quello da eliminare; vale NULL se quest'ultimo e` il primo */</span>
+{
+	elementolista *morituro;
+	<span class="keyword">if</span>(prec==NULL) { <span class="comment">/* elimino il primo */</span>
+		morituro=*testa;
+		*testa=(*testa)-&gt;next;
+	} <span class="keyword">else</span> {
+		morituro=prec-&gt;next;
+		prec-&gt;next=prec-&gt;next-&gt;next;
+	}
+	free(morituro);
+	<span class="keyword">return</span>;
+}
+
+
+
+<span class="type">elementolista</span> *<span class="function-name">EliminaVocali</span>(elementolista *testa)
+{
+	elementolista *e, *prec;
+	
+	e=testa;
+	prec=NULL;
+	<span class="keyword">while</span>(e!=NULL) {
+		<span class="keyword">if</span>(VocalePresente(e-&gt;parola))
+			EliminaElemento(&amp;testa,prec); <span class="comment">/* il prec non cambia in questo caso */</span>
+		<span class="keyword">else</span>
+			prec=e;
+		e=prec-&gt;next;
+	}
+	<span class="keyword">return</span> testa;
+}
+
+
+
+<span class="type">elementolista</span> *<span class="function-name">CostrusciListaParole</span>(<span class="type">FILE</span> *<span class="variable-name">f</span>)
+{
+	elementolista *lista = NULL, *coda = NULL;
+	<span class="type">char</span> <span class="variable-name">uno</span>, <span class="variable-name">due</span>, <span class="variable-name">tre</span>;
+	<span class="type">int</span> <span class="variable-name">lunghezza</span>;
+	
+	uno=<span class="string">'\0'</span>;
+	due=<span class="string">'\0'</span>;
+	<span class="comment">/* inizializzazioni a un valore sicuramente estraneo al cruciverba */</span>
+	
+	<span class="keyword">while</span>(!feof(f)) {
+		lunghezza=0;
+		tre=fgetc(f);
+		<span class="keyword">if</span>(tre==EOF)
+			<span class="keyword">break</span>; <span class="comment">/* in realta` si esce qui dal ciclo!! */</span>
+
+		<span class="keyword">while</span>((tre != <span class="string">'*'</span>)&amp;&amp;(tre != <span class="string">'\n'</span>)) { <span class="comment">/* le parole terminano con '*' o con '\n' */</span>
+		                                     <span class="comment">/* non c'e` bisogno di testare end-of-file */</span>
+			lunghezza++;
+			uno=due;
+			due=tre;
+			tre=fgetc(f);
+		}
+		<span class="keyword">if</span>(lunghezza==2)
+			InserisciInCoda(uno,due,&amp;lista,&amp;coda);
+	}	
+	
+	<span class="keyword">return</span> lista;
+}
+
+
+<span class="type">int</span> <span class="function-name">main</span>(<span class="type">void</span>)
+{
+	<span class="type">FILE</span> *<span class="variable-name">f</span>;
+	elementolista *listaparole2;
+	
+	f=ApriFile(<span class="string">&quot;CRUCI.TXT&quot;</span>,<span class="string">&quot;r&quot;</span>);
+	listaparole2 = CostrusciListaParole(f);
+	fclose(f);
+	
+	printf(<span class="string">&quot;Risultato funzione &quot;&quot;CostrusciListaParole&quot;&quot;:\n&quot;</span>);
+	StampaLista(listaparole2);
+	
+	listaparole2 = EliminaVocali(listaparole2);
+
+	printf(<span class="string">&quot;--\nRisultato funzione &quot;&quot;EliminaVocali&quot;&quot;:\n&quot;</span>);
+	StampaLista(listaparole2);
+	
+	<span class="keyword">return</span> 0;
+}
+
+</pre>
+  </body>
+</html>

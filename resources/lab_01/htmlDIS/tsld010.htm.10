@@ -1,0 +1,50 @@
+
+<HTML>
+
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html;charset=iso-8859-1">
+<meta name="GENERATOR" content="Microsoft Internet Assistant for Macintosh PowerPoint 98">
+ <TITLE>Sort-Merge Join  (R     S)</TITLE> 
+</HEAD>
+
+<BODY     >
+
+ <H1>Sort-Merge Join  (R     S)</H1> 
+ <P><UL></P>
+
+<P><LI><H2>Sort R and S on the join column, then scan them to do a ``merge’’ (on join col.), and output result tuples.
+</H2></P>
+
+<P><UL></P>
+
+<P><LI>Advance scan of R until current R-tuple >= current S tuple, then advance scan of S until current S-tuple >= current R tuple; do this until current R tuple = current S tuple.
+<LI>At this point, all R tuples with same value in Ri (current R group) and all S tuples with same value in Sj (current S group) match;  output <r, s> for all pairs of such tuples.
+<LI>Then resume scanning R and S.
+</UL></UL><UL></P>
+
+<P><LI><H2>R is scanned once; each S group is scanned once per matching R tuple.  (Multiple scans of an S group are likely to find needed pages in buffer.)</H2></P>
+
+<P></UL></P>
+
+<P><UL></P>
+
+<P>i=j</UL></P>
+
+<P></P> 
+<P>
+<TABLE>
+  <TD HEIGHT=100 WIDTH=100> <A HREF="tsld009.htm">Previous slide</A> </TD>
+  <TD HEIGHT=100 WIDTH=100> <A HREF="tsld011.htm">Next slide</A> </TD>
+  <TD HEIGHT=100 WIDTH=150> <A HREF="tsld001.htm">Back to first slide</A> </TD>
+  <TD HEIGHT=100 WIDTH=150> <A HREF="sld010.htm">View graphic version</A> </TD>
+</TABLE>
+<BR>
+</P>
+
+ <FONT size=4><STRONG> Notes: </FONT></STRONG>
+  <HR SIZE=3> <P> <UL>
+
+11</UL> </P> 
+
+</Body>
+</HTML>

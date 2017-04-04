@@ -1,0 +1,133 @@
+<html>
+<head>
+<link href="java.css" rel="stylesheet" type="text/css">
+<title>Presenza di valori negativi</title>
+</head>
+
+<body>
+
+<h2>Presenza di valori negativi</h2>
+
+<p>
+Questo esercizio riguarda ancora l'uso dei cicli. Sia
+data una funzione f(x) a valori interi; si vuole sapere
+se esiste un valore intero x compreso in un certo intervallo
+dato in cui f(x) &egrave; negativa. Per esempio, dato
+f(x)=-x*x+90*i, ci si chiede se esiste un valore di x
+compreso fra 0 e 100 tale che f(x) sia negativa per quel
+valore.<p>
+
+Questo &egrave; un tipico esempio di utilizzo dei cicli.
+Infatti, il problema si pu&ograve; risolvere con un ciclo
+in cui una variabile assume tutti i valori interi compresi
+nell'intervallo. Per ogni valore, si valuta la funzione e
+si verifica se &egrave; positiva o negativa. Il programma
+<a href="SottoZero.java">SottoZero.java</a> risolve il
+problema in questo modo.<p>
+
+<pre>
+/* 
+  Verifica se esistono valori negativi per una funzione.
+  Si valutano solo valori interi dell'argomento, e solo
+  per un intervallo fissato.
+*/
+
+class SottoZero {
+  public static void main(String[] args) {
+    int x;
+    int f;
+    int positivo;
+
+    positivo=1;
+
+    for(x=0; x<=100; x=x+1) {
+      f=-x*x+90*x;
+      if( f<0 ) {
+        positivo=0;
+      }
+    }
+
+    if( positivo==1 ) {
+      System.out.println("La funzione e' positiva nell'intervallo");
+    }
+    else {
+      System.out.println("La funzione ha valori negativi");
+    }
+  }
+}
+
+</pre>
+
+<p>
+Naturalmente, esistono altri programmi che fanno la stessa
+cosa. D'altra parte, molti programmi che sembrano risolvere
+questo problema sono in effetti errati. Per esempio, &egrave;
+facile pensare che la variabile <tt>positivo</tt> non sia
+necessaria, e procedere quindi secondo il programma seguente:<p>
+
+<pre>
+    for(i=0; i<=100; i=i+1) {		/* ERRATO */
+      f=-i*i+90*i;
+      if( f<0 ) {
+        System.out.println("La funzione e' positiva nell'intervallo");
+      }
+      else {
+        System.out.println("La funzione ha valori negativi");
+      }
+    }
+</pre>
+
+<p>
+In questo caso, per ogni valore di <tt>x</tt> viene stampato
+il messaggio che dice se la funzione &egrave; positiva oppure
+negativa. Si voleva invece una stampa sola, che riassumesse
+la presenza o meno di valori negativi nell'intervallo. Questo
+indica chiaramente che la stampa non si pu&ograve; fare
+all'interno del ciclo, perch&egrave; altrimenti si avrebbe
+un messaggio per ogni valore, e non uno solo alla fine. Per
+questa ragione &egrave; necessaria la variabile <tt>positivo</tt>,
+il cui valore alla fine indica la presenza di valori negativi,
+e permette quindi di decidere cosa stampare.<p>
+
+<pre>
+    for(i=0; i<=100; i=i+1) {		/* ERRATO */
+      f=-i*i+90*i;
+      if( f<0 ) {
+        positivo=0;
+      }
+      else {
+        positivo=1;
+      }
+    }
+</pre>
+
+<p>
+Questo &egrave; un altro errore tipico. A prima vista, il programma
+pu&ograve; sembrare corretto, dal momento che, per ogni valore di
+<tt>x</tt> si verifica se la funzione &egrave; positiva o negativa.
+Si supponga per&ograve; che la funzione sia negativa in tutto
+l'intervallo tranne che per l'estremo superiore, ossia che f(x)
+sia negativa per x che va da 0 a 99, e sia positiva solo per x=100.
+Questo programma effettua la valutazione delle istruzioni interne
+al ciclo per ogni valore di <tt>x</tt>; l'ultima esecuzione avviene
+assegnando 100 ad <tt>x</tt>. A questo punto, si valuta <tt>f</tt>,
+che risulta positiva, per cui la condizione <tt>f<0</tt> risulta
+falsa, e si assegna <tt>positivo=1;</tt>. La istruzione che segue
+il ciclo &egrave; la istruzione condizionale in cui la condizione
+&egrave; sul valore di <tt>positivo</tt>. A questo punto, viene
+stampato il messaggio che dice che la funzione &egrave; sempre
+positiva nell'intervallo. Questo comportamento &egrave; chiaramente
+errato, dal momento che, al contrario, la funzione &egrave; quasi
+sempre negativa nell'intervallo.<p>
+
+L'errore &egrave; che la variabile <tt>positivo</tt> cambia valore
+ad ogni esecuzione del ciclo. Questo &egrave; un errore, perch&egrave;
+in questo modo assume un valore che dipende solo dall'ultimo valore
+di <tt>x</tt>. Quello che invece si vuole fare &egrave;: si
+comincia assumendo che la funzione sia sempre positiva; se
+si trova un valore per cui &egrave; negativa si cambia il valore
+della variabile.<p>
+
+</body>
+</html>
+

@@ -1,0 +1,235 @@
+  <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN"
+           "http://www.w3.org/TR/REC-html40/loose.dtd">
+<HTML>
+<META NAME="GENERATOR" CONTENT="TtH 2.25">
+                                                                      
+<center>  <b>   
+<title>cemn terzo appello</title>
+Universit&#224; di Roma ``La Sapienza''<br>
+   Facolt&#224; di Ingegneria<br>
+   Corso di Fondamenti di Informatica - A.A. 2000/2001<br>
+   Corsi di Laurea: </b>Chimica, Elettrica, 
+Materiali,
+    Meccanica, Nucleare (vecchio ordinamento)</b><br>
+  Appello del <b>5 luglio 2001</b> - 1<sup>a</sup> prova scritta<br>
+  <em>tempo a disposizione: 2 ore</em>
+</center>
+<p>
+<b>Problema 1 (18 punti)</b>
+
+<p>
+Una compagnia aerea gestisce l'insieme dei viaggiatori per un dato 
+volo dividendoli in due liste: la <em>lista dei viaggiatori</em>, che 
+hanno un posto assegnato sul volo, e la <em>lista di attesa</em>, 
+composta da coloro che non hanno un posto assicurato sul volo ma 
+potrebbero averlo, se qualcuno dei lista dei viaggiatori rinuncia.
+Nel caso in cui un viaggiatore della prima lista rinunci al volo, 
+uno degli appartenenti alla lista di attesa (secondo il numero 
+d'ordine della sua prenotazione) viene estratto dalla lista d'attesa 
+e inserito in quella dei viaggiatori.
+
+<p>
+<u>Le liste in questione sono rappresentate
+mediante record e puntatori</u>.
+
+<p>
+
+<UL> 
+<li> la lista dei viaggiatori contiene, per ogni viaggiatore, <tt>
+nome</tt> (una stringa di al pi&#249; 30 caratteri) e <tt>codice</tt> del 
+volo (stringa di 5 caratteri);
+
+<li> la lista di attesa contiene, per ogni potenziale viaggiatore, 
+<tt>nome</tt> (una stringa di al pi&#249; 30 caratteri), <tt>codice</tt> 
+del 
+volo e <tt>numero d'ordine</tt> della prenotazione (intero).
+</UL>
+<p>
+Inoltre <u>la lista d'attesa &#232; ordinata secondo il numero 
+d'ordine</u>.
+
+<p>
+
+<OL type="1">
+<li> Definire i tipi di dato Pascal adeguati a risolvere i problemi di cui 
+ai 
+successivi punti 2) e 3). 
+Chiamare <tt>TIPOLISTAVIAGGIATORI</tt> e <tt>TIPOLISTATTESA</tt> i tipi 
+definiti per le liste descritte sopra.
+
+<p>
+
+<li>	Dobbiamo verificare se la lista di attesa &#232; effettivamente 
+ordinata.
+
+<p>
+Scrivere una funzione o procedura Pascal, ESER2, che, ricevendo 
+come parametro una lista d'attesa <tt>LATT</tt>, restituisca il valore 
+di verit&#224; dell'affermazione: <em>LATT &#232; ordinata in senso 
+crescente di numero d'ordine</em>.
+
+<p>
+Motivare la scelta del tipo di sottoprogramma realizzato.
+
+<p>
+
+<li> Si sono liberati dei posti nella lista dei viaggiatori: bisogna 
+riempirli con persone in lista d'attesa.
+
+<p>
+Scrivere una procedura Pascal ESER3 che, ricevendo
+
+<UL>
+<p>
+
+<li> una lista di viaggiatori;
+
+<li> una lista di attesa;
+
+<li> un intero <tt>n</tt>
+</UL>
+<p>
+<u>sposti</u> in coda alla prima lista i primi <tt>n</tt> 
+viaggiatori in attesa.
+
+<p>
+Se nella lista di attesa non ci sono abbastanza viaggiatori, spostare 
+quelli presenti e stampare un messaggio opportuno.
+
+<p>
+</OL>
+<center>  <b>   Universit&#224; di Roma ``La Sapienza''<br>
+   Facolt&#224; di Ingegneria<br>
+   Corso di Fondamenti di Informatica - A.A. 2000/2001<br>
+   Corsi di Laurea: </b>Chimica, Elettrica, 
+Materiali,
+    Meccanica, Nucleare (vecchio ordinamento)</b><br>
+  Appello del <b>5 luglio 2001</b> - 2<sup>a</sup> prova scritta<br>
+  <em>tempo a disposizione: 1 ora</em>
+</center>
+<p>
+<b>Problema 2 (4 punti)</b>
+Illustrare le caratteristiche e la rappresentazione della struttura 
+di 
+CODA, mostrando, per ciascuna rappresentazione, l'implementazione in 
+PASCAL di almeno una operazione fondamentale.
+
+<p>
+<b>Problema 3 (4 punti)</b>
+
+<p>
+Supponendo di definire le costanti C1 e C2 come la quinta e sesta 
+cifra
+del proprio numero di matricola, cosa stampa il programma pif?
+
+<p>
+
+<pre>
+program pif;
+const C1=...; C2=...;          var a, b:integer;
+
+procedure proc1(var b:integer);
+ var a:integer;
+
+ procedure proc2(b:integer);
+  begin    a:=10;  b:=10     end; {proc2}
+
+ begin {proc1}
+  a:=30;
+  b:=90;
+  writeln(a,'--',b);
+  proc2(b);
+  writeln(a,'--',b);
+ end;
+
+ begin {main program}
+  a:=C1;
+  b:=C2;
+  writeln(a,'-',b);
+  proc1(a);
+  writeln(a,'-',b);
+ end.
+</pre>
+
+<p>
+<b>Problema 4 (4 punti)</b> 
+Sia MATRIX una matrice di NxM numeri reali. 
+Definiamo che MATRIX 
+&#232; <em>parallela</em> se ogni coppia di colonne opposte
+(la prima e l'ultima, la seconda e la penultima, etc ...)
+ha uguale media degli elementi.
+
+<p>
+Scrivere una unit&#224; di programma FORTRAN (denominata ESER4)
+che, ricevendo 
+
+<DL compact>
+<p>
+<dt><b>-</b></dt>
+	<dd> una matrice <em>MAT</em> di NxM numeri reali, 
+<dt><b>-</b></dt>
+	<dd> il nome di un file NMF 
+<dt><b>-</b></dt>
+	<dd> e quanti altri parametri si ritenga opportuno,
+</DL>
+<p>
+stampi nel file NMF
+
+<UL>
+<p>
+
+<li> un messaggio che dice se MAT &#232; parallela o no 
+
+<li> la matrice <em>MAT</em>
+</UL>
+<p>
+<b>Scrivere inoltre</b> un esempio di main program contenente 
+un'invocazione dell'unit&#224; progettata. 
+In questo main program, comunque, le unit&#224; ulteriori
+che dovessero servire non vanno implementate: basta specificarne 
+le intestazioni (nome e parametri).
+
+<p>
+Ecco un esempio di matrice 2x7 parallela
+
+<p>
+[ </td><td nowrap align=center>
+<TaBle>
+<tr><td align="center"><TablE border=0><tr><td nowrap align=center>
+7 </td></TABle></td><td align="center"><TablE border=0><tr><td nowrap 
+align=center>
+6 </td></TABle></td><td align="center"><TablE border=0><tr><td nowrap 
+align=center>
+8 </td></TABle></td><td align="center"><TablE border=0><tr><td nowrap 
+align=center>
+712 </td></TABle></td><td align="center"><TablE border=0><tr><td nowrap 
+align=center>
+-10 </td></TABle></td><td align="center"><TablE border=0><tr><td nowrap 
+align=center>
+8 </td></TABle></td><td align="center"><TablE border=0><tr><td nowrap 
+align=center>
+9</td></TABle></td>
+<tr><td align="center"><TablE border=0><tr><td nowrap align=center>
+2 </td></TABle></td><td align="center"><TablE border=0><tr><td nowrap 
+align=center>
+7 </td></TABle></td><td align="center"><TablE border=0><tr><td nowrap 
+align=center>
+6 </td></TABle></td><td align="center"><TablE border=0><tr><td nowrap 
+align=center>
+97 </td></TABle></td><td align="center"><TablE border=0><tr><td nowrap 
+align=center>
+24 </td></TABle></td><td align="center"><TablE border=0><tr><td nowrap 
+align=center>
+5 </td></TABle></td><td align="center"><TablE border=0><tr><td nowrap 
+align=center>
+0</td></TABle></td></TaBle>
+</td><td nowrap align=center>
+]
+
+<p>
+
+<p><hr><small>File translated from T<sub><font size="-1">E</font></sub>X 
+by <a href="http://hutchinson.belmont.ma.us/tth/">T<sub><font 
+size="-1">T</font></sub>H</a>, version 2.25.<br>On 17 Jul 2001, 
+16:20.</small>
+</HTML>

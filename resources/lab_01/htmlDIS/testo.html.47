@@ -1,0 +1,55 @@
+<!DOCTYPE doctype PUBLIC "-//w3c//dtd html 4.0 transitional//en"><html><head>
+   <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   
+   <title>Es. esame:espressioni booleane - Laboratorio di Programmazione - aa 2004/05</title><link rel="stylesheet" href="index_files/lp2003.html" type="text/css"></head>
+
+<body>
+<br>
+<center>
+  <p><b>Laboratorio di Programmazione - A.A. 2004/05</b></p>
+  <h2>Esercitazione 8<br>
+    ( esercizio d'esame)</h2>
+  <h2>Espressioni Booleane</h2>
+</center>
+
+<P><b>Parte 1</b></P>
+
+<P> Si rappresentino attraverso classi Java espressioni booleane formate da: <em>(i)</em> 
+  espressioni atomiche (<em>atomi</em>) che denotano variabili <em>(ii) </em>not 
+  di una espressione, <em>(iii) </em>and di due espressioni e <em>(iv) </em>or 
+  di due espressioni. 
+<P><b>Parte 2</b></P>
+
+<P>Si definisca una classe <code>EspressioneUtil</code> contenente due metodi 
+  statici che implementino rispettivamente le procedure di conversione da stringa 
+  ad espressione e da espressione a stringa. Per la trasformazione da stringa 
+  a espressione si utilizzi la seguente grammatica.</P>
+<blockquote>
+  <p> <code>E -&gt; EE | EE <strong>&amp;</strong> EE | EE<strong> | </strong>EE</code><br>
+    <code>EE -&gt; <strong>!</strong>EE | EEE</code><br>
+    <code>EEE -&gt; <strong>(</strong> E <strong>)</strong> | atomo</code></p>
+  </blockquote>
+<P>Equipaggiare inoltre la classe con un metodo statico che data una espressione 
+  restituisca l'insieme (<sc><code>Set</code></sc>) delle sue variabili.</P>
+
+
+<P><b>Parte 3</b></P>
+
+<P>Definire una classe per rappresentare <em>assegnazioni</em> di valori a variabili 
+  con le seguenti funzionalit&agrave;:
+<ul>
+  <li><em>crea()</em>: crea una assegnazione vuota;</li>
+  <li><em>crea(Set vars</em>): che dato un inisieme di variabili <em>vars</em> 
+    crea una assegnazione contenente tali variabili ed in cui ciascuna variabile 
+    &egrave; assegnata a false;</li>
+  <li><em>valore(String var)</em> che presa una variabile <em>var</em> ne restituiscono 
+    il valore assegnato dalla assegnazione;</li>
+  <li><em>assegna(String var, boolean val)</em> che inserisce nella assegnazione 
+    la variabile <em>var</em> con il valore <em>val</em>, se tale variabile &egrave; 
+    gi&agrave; presente ne sostituisce il valore con <em>val</em>.</li>
+</ul>
+<P> <strong>Parte 4</strong>
+<P>Definire una classe Valutazione contenente un metodo statico che data una espressione 
+  ed una assegnazione dele sue variabili, valuta l'espressione.
+</body>
+</html>

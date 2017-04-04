@@ -1,0 +1,509 @@
+<HTML>
+<HEAD>
+   <META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1">
+   <META NAME="Generator" CONTENT="Microsoft Word 97">
+   <META NAME="GENERATOR" CONTENT="Mozilla/4.01 [en] (Win95; I) [Netscape]">
+   <META NAME="Author" CONTENT="Paolo Terrevoli">
+   <TITLE>Research Report 1997</TITLE>
+</HEAD>
+<BODY BACKGROUND="../../images/paper.gif">
+&nbsp;
+<TABLE WIDTH="100%" >
+<TR ALIGN=CENTER>
+<TD></TD>
+<TD WIDTH="100%">
+<H1>
+<BR>
+Algorithm Engineering Research Group&nbsp;</H1>
+</TD>
+</TR>
+</TABLE>
+
+<CENTER>
+<H2>
+
+<HR WIDTH="100%"><FONT SIZE=+2>Research Report 1997</FONT></H2></CENTER>
+The central aim of Algorithms Engineering is the study of the techniques
+for the design of efficient algorithms and for the formal and experimental
+analysis of their performance. Computer systems are becoming more and more
+demanding in terms of performance, due to the increasing complexity of
+both applications (that, for example, require the repeated solution of
+large optimization problems on large sets of data), and computer systems
+(that, for example, require a very efficient management of processors,
+memories and interconnection networks). In the past twenty years, the theory
+of algorithms has laid down the principles of algorithms design and of
+complexity analysis of problems. Now, in order to approach the practical
+solution of efficiency critical applications, many more aspects have to
+be addressed, ranging from the study of realistic computation models, to
+the definition of various types of algorithms that have to perform efficiently
+in a dynamically changing environment, to the definition of new complexity
+measures that allow to assess the practical usability of algorithms.
+
+<P>Research work done in the area of Algorithms Engineering is report in
+five subsections, the first three related to two large and very important
+problem domains (Graph and combinatorial algorithms, Geometric computing
+and Distributed and network algorithms) the last two devoted to two important
+methods of processing information and solving problems in very complex
+environments.
+<UL>
+<LI>
+<A HREF="#Graph">Graph and combinatorial algorithms</A></LI>
+
+<LI>
+<A HREF="#Geometric">Geometric computing</A></LI>
+
+<LI>
+<A HREF="#Distributed">Distributed and network algorithms</A></LI>
+
+<LI>
+<A HREF="#Complexity">Complexity and approximation</A></LI>
+
+<LI>
+<A HREF="#Online">On-line algorithms</A></LI>
+</UL>
+
+<H3>
+<B>1.&nbsp;<A NAME="Graph"></A>Graph and combinatorial algorithms</B></H3>
+In this area the research has been focusing on dynamic graph algorithms,
+dynamic hypergraph algorithms, and algorithmic techniques for several combinatorial
+problems.
+
+<P>In <A HREF="#[I2-C-13]">[I2-C-13]</A> the authors maintain the information
+on connectivity in a planar graph during arbitrary sequences of insertions
+and deletions of edges, and switch-on and switch-off operations on the
+vertices. They solve the problem in O(log<SUP>3</SUP> n) time per operation,
+improving sharply on previous approaches.
+
+<P>In <A HREF="#[I2-C-12]">[I2-C-12]</A> the authors perform an extensive
+experimental study of fully dynamic algorithms for the single source shortest
+path problem in digraphs with positive real edge weights. They report experiments
+both on random graphs and on real world graphs subject to random sequences
+of updates.
+
+<P>In <A HREF="#[I2-C-11]">[I2-C-11]</A> the authors propose the first
+semi-dynamic solutions for the single source shortest path problem on digraphs
+with integer edge weights, and for the breadth first search problem, which
+are more efficient than recomputing the solution from scratch after each
+update, taking O(n) amortized time per operation, where n is the number
+of nodes. Along the same line of research, in <A HREF="#[I2-J-3]">[I2-J-3]</A>
+an incremental algorithm is proposed to maintain a DFS-forest in a directed
+acyclic graph under a sequence of arc insertions in O(n) amortized time
+per operation. This compares favorably with the time required to recompute
+a DFS-forest from scratch. This algorithm relies on an original characterization
+of a DFS-forest in terms of a relaxed planar embedding of the graph. These
+techniques have been extended to the decremental maintenance of minimum
+rank hyperpaths on directed hypergraphs in <A HREF="#[I2-C-4]">[I2-C-4].</A>
+
+<P>In <A HREF="#[I2-C-9]">[I2-C-9]</A> a semi-dynamic setting for the Temporal
+Constraint Satisfaction Problem is considered, where one is requested to
+maintain the path-consistency of a network under a sequence of insertions
+of new (further) constraints between pairs of variables. An algorithm is
+presented, running in O(n R<SUP>3</SUP>) amortized time on a sequence of
+Q (n<SUP>2</SUP>) insertions, where n is the number of vertices of the
+network and R is its range (defined as the maximum size of the minimum
+interval containing all the intervals of a single constraint). The algorithm
+is general and extendible.
+
+<P>Dynamic algorithms for the on-line maintenance of weighted hypergraphs
+have been devised with application to satisfiability of propositional Horn
+formulae with uncertainty in <A HREF="#[I2-J-1]">[I2-J-1]</A>, where the
+authors show how to represent a significant class of formulae by weighted
+directed hypergraphs and present two algorithms that solve the on-line
+Horn-SAT problem and find a minimum model for the formula working on the
+dynamic weighted hypergraph representation. These algorithms make increasing
+assumptions on the formula and the second one solves the on-line Horn-SAT
+problem with a total time linear in the size of the formula, matching the
+optimal result for Boolean Horn formulae.
+<BR>&nbsp;
+<H3>
+<B>2.&nbsp;<A NAME="Geometric"></A>Geometric computing</B></H3>
+The research on Geometric computing followed four main directions.
+
+<P>One main task was the design of robust algorithms for computational
+geometry, i.e. algorithms that are not affected by numerical errors and
+that can handle degenerate configurations of the input. In <A HREF="#[I2-R-8]">[I2-R-8]</A>
+and in <A HREF="#[I2-C-16]">[I2-C-16]</A> research has focused on developing
+a methodology for designing robust algorithms with low precision arithmetics
+demand. In <A HREF="#[I2-C-10]">[I2-C-10]</A> the problem of checking the
+output correctness of several geometric algorithms, including those that
+compute convex polytopes and those that compute planar subdivisions, is
+investigated. A new architectural frame for visualization of geometric
+algorithms over the world wide web is described in <A HREF="#[I2-R-5]">[I2-R-5]</A>.
+
+<P>A second direction of research is about characterizing and computing
+proximity drawings of graphs. Such family of drawings include minimum weight
+triangulations, visibility representations, Gabriel drawings, and rectangle
+of influence drawings as special cases. The results obtained combine geometric
+graph theory and efficient algorithm design. The geometric constraints
+that are taken into account by the algorithms include the clusterization
+of groups of adjacent vertices in the drawing, and area minimization. The
+area required by visibility representations and by Gabriel drawings is
+studied in <A HREF="#[I2-J-4]">[I2-J-4]</A> and in <A HREF="#[I2-C-17]">[I2-C-17]</A>.
+Several classes of graphs that admit a rectangle of influence drawing are
+characterized in <A HREF="#[I2-J-5]">[I2-J-5]</A>. The relationship between
+topology and geometry for well known structures such as minimum weight
+triangulations and Delaunay triangulations is investigated in <A HREF="#[I2-C-14]">[I2-C-14]</A>.
+The problem of computing orthogonal representations with the minimum number
+of bends is studied in <A HREF="#[I2-R-6]">[I2-R-6]</A>.
+
+<P>A third direction of research focused on the study of basic computational
+geometry problems. In <A HREF="#[I2-C-8]">[I2-C-8]</A> the authors consider
+the problem of maintaining and reporting the maxima of a set of points
+in the plane in the partially dynamic setting of boundary updates, defined
+by a movable and resizable vertical window on the point set. The authors
+present a data structure capable of answering maxima queries in optimal
+O(k) worst case time, where k is the size of the answer, and an algorithm
+for maintaining the data structure under boundary updates in O(log n) time
+per update.
+
+<P>Finally a fourth direction of research applies computational geometry
+techniques to data base applications. In <A HREF="#[I2-R-1]">[I2-R-1]</A>
+data structures are presented for the efficient implementation of half-space
+queries in 2 and 3 dimensions, suitable to secondary memory applications.
+<BR>&nbsp;
+<H3>
+<B>3.&nbsp;<A NAME="Distributed"></A>Distributed and network algorithms</B></H3>
+In this area, applicative problems have been considered. The problem of
+deciding the feasibility of a scheduling for broadcast transmission under
+the TDMA protocol is studied in <A HREF="#[I2-J-2]">[I2-J-2]</A>. The problem
+is proved to be NP-hard. Polynomial time distributed algorithms are proved
+to obtain solutions close to the optimum on practical instances of the
+problem.
+
+<P>In <A HREF="#[I2-C-7]">[I2-C-7]</A> the authors consider the problem
+of constructing embeddings of 2-dimensional FEM graphs into grids with
+the goal of minimizing the edge-congestion and dilation and optimize the
+load. The authors introduce some heuristics, analyze their performance,
+and present experimental results comparing the heuristics with the methods
+based on the usage of standard graph partitioning libraries.
+
+<P>In <A HREF="#[I2-C-6]">[I2-C-6]</A> the problem of realizing ATM routing
+schemes with fixed hop-count and minimum load is addressed. Lower bounds
+for the general case and for fixed connection patterns and networks are
+presented.
+<BR>&nbsp;
+<H3>
+<B>4.&nbsp;<A NAME="Complexity"></A>Complexity and approximation</B></H3>
+Due to their intrinsic complexity, for NP-hard optimization problems we
+cannot hope to find efficient general solution algorithms and we need to
+restrict ourselves to approximate solutions. Hence, the study of approximate
+algorithms for NP-hard optimization problems has a considerable importance
+both from the theoretical point of view and with respect to the practical
+aim of designing efficient approximation algorithms which are guaranteed
+to provide a solution within a maximum relative error. In this area three
+research directions are being pursued.
+
+<P>Along the first direction theoretical aspects of approximability have
+been studied. In particular the class of problems that can be efficiently
+approximated by means of local search algorithms has been studied and a
+new and more powerful local search approximation techniques, that generalizes
+the standard technique and enlarge the power of this general paradigm,
+have been developed <A HREF="#[I2-R-3]">[I2-R-3]</A>. Using these techniques,
+in <A HREF="#[I2-C-1]">[I2-C-1]</A> the authors give a fully dynamic 5/2-approximate
+algorithm for the class of Maximum binary conjunctive constraint satisfaction
+problem, and thus for the Maximum directed cut problem. The proposed algorithm
+is based on the non-oblivious local search technique and on a neighborhood
+mapping that allows to change either one item, or all the items in the
+current solution. Besides, in <A HREF="#[I2-C-3]">[I2-C-3]</A> APX-hardness
+results for several optimization problems on cubic and at-most-cubic graphs
+that belong to MAX SNP, namely Minimum vertex cover, Maximum independent
+set, Minimum dominating set and Maximum cut.
+
+<P>Along the second line, approximation algorithms have been designed for
+specific combinatorial problems. Namely, in <A HREF="#[I2-C-2]">[I2-C-2]</A>
+the minimum independent dominating set problem in bounded degree graphs
+has been studied, and approximate algorithms based on greedy and local
+search techniques have been developed. The max and the min weighted satisfiability
+problems are variants of the standard max satisfiability problem, in which
+every variable is assigned a non-negative weight and one tries to find
+a truth assignment satisfying the formula, that maximize or minimize the
+sum of the weights of the variables set to true. In <A HREF="#[I2-R-4]">[I2-R-4]</A>
+a complete classification of the problems obtained by making restrictions
+on the size of variables per clause and on the number of occurrences of
+variables in the clauses is given.
+
+<P>Along the third direction, applicative problems have been considered.
+In particular, algorithms for integrated prefetching and caching for minimizing
+stall time in single and parallel disk systems while moving blocks from
+disk to cache are proposed in <A HREF="#[I2-R-2]">[I2-R-2]</A>. In this
+work approximation algorithms for the parallel disk case are devised through
+a linear programming formulation of the problem. It is also presented the
+first polynomial time algorithm for the single disk case, thus settling
+a basic open problem in the field. The first approximation algorithms with
+performance guarantee for minimizing the total flow time of a set of jobs
+released over time in a multiprocessor setting are proposed in <A HREF="#[I2-C-15]">[I2-C-15]</A>.
+The total flow time is the overall time spent in the system by a set of
+jobs. Approximation algorithms are presented for both the preemptive a
+and the non-preemptive case. In <A HREF="#[I2-R-9]">[I2-R-9]</A> the multicast
+problem in hierarchical networks with tree topology is studied. Users distributed
+in the newtwork ask to be connected to various active multicast groups.
+The first algorithms with constant approximation ratio for maximizing the
+number of accepted subscriptions without exceeding links capacity are presented
+in this paper.
+<BR>&nbsp;
+<H3>
+<B>5.&nbsp;<A NAME="Online"></A>On-line algorithms</B></H3>
+The research on On-line algorithms followed two directions.
+
+<P>Along the first direction, on-line algorithms for network routing problems
+are proposed for various network architectures and communication regimes.
+In <A HREF="#[I2-B-1]">[I2-B-1]</A> a survey of the main results in the
+field it is presented. The first randomized on-line virtual circuit routing
+algorithms that achieve both good expected competitive ratio and good variance
+are proposed in <A HREF="#[I2-R-7]">[I2-R-7]</A>. The on-line virtual circuit
+routing problem is motivated by its application to routing in ATM networks.
+This paper presents the first study of the competitive ratio - variance
+trade-off for randomized on-line algorithms. On-line algorithms for multicast
+communication in trees and meshes topology are presented in <A HREF="#[I2-R-9]">[I2-R-9]</A>.
+A set of users distributed in the network issues in an on-line fashion
+connection requests to various active multicast groups. The first on-line
+algorithms with polylogarithmic competitive ratio for the above mentioned
+network topologies are presented for the case of high bandwidth communication
+demand. The problem of minimizing the number of wavelength required to
+accept a sequence of unicast communication requests in Wavelength Division
+Multiplexing (WDM) optical networks is studied in <A HREF="#[I2-C-5]">[I2-C-5]</A>.
+Algorithms with optimal competitive ratio are proposed for trees, trees
+of rings and meshes topologies. For arbitrary topology networks, efficient
+algorithms are proposed when the WDM technology is combined with the Space
+Division Multiplexing technology that allows parallel fiber optic links.
+
+<P>A second line of research focused on on-line Scheduling algorithms.
+In particular, the first algorithms with optimal competitive ratio for
+the problem of minimizing the total flow time of a set of jobs in a multiprocessor
+setting when preemption is allowed are presented in <A HREF="#[I2-R-9]">[I2-R-9]</A>
+for the on-line version of the problem when jobs are known at their release
+times.
+<BR>&nbsp;
+<H3>
+<B>National and International Research Projects</B></H3>
+Research in the area of Algorithm Engineering has been supported under
+various contracts during 1997. In particular:
+<UL>
+<LI>
+MURST 40% National Project on "Efficiency of algorithms and design of information
+structures" (under the direction of a member of DIS).</LI>
+
+<LI>
+ESPRIT Basic Research Action on " Algorithms and Complexity in Information
+Technology (ALCOM IT)", under the coordination of Giorgio Ausiello.</LI>
+
+<LI>
+Progetto Finalizzato "Trasporti 2" of the National Research Council.</LI>
+</UL>
+Due both to the well established quality of the research and to the participation
+to international projects the scientific cooperation in this area has been
+very active both at national level (University of L'Aquila, University
+of Rome "Tor Vergata," University of Salerno, IASI-CNR, etc.) and at international
+level. Perticularly relevant have been the scientific relationships with
+INRIA (Paris), Charles University (Prague), University of Utrecht, Columbia
+University, Brown University, University of Maryland, IBM T. J. Watson
+Research Center, International Computer Science Institute (Berkeley), ETH
+(Zurich), Tel-Aviv University, INRIA (Sophia Antipolis), Mc Gill University
+(Canada), Paderborn University (Germany), Carleton University (Canada).
+<BR>&nbsp;
+<H3>
+<B>Publications</B></H3>
+&nbsp;
+<H4>
+Books</H4>
+<A NAME="[I2-B-1]"></A><B>[I2-B-1]</B> S. Leonardi. On-line network routing.
+To appear as a chapter of the book “On-line Algorithms”, A. Fiat and G.
+Woeginger eds., Springer-Verlag, 1998.
+<H4>
+Journals</H4>
+<A NAME="[I2-J-1]"></A><B>[I2-J-1]</B> G. Ausiello, R. Giaccio, On-line
+algorithms for satisfiabillity problems with uncertainty, <I>Theoretical
+Computer Science</I>, special issue on Uncertainty in Databases and Deductive
+Systems, vol. 171 (1997), pp. 3-24.
+
+<P><A NAME="[I2-J-2]"></A><B>[I2-J-2]</B> M. Bonuccelli, S. Leonardi. Scheduling
+broadcasts in wireless networks. <I>Telecommunication Systems</I>, Vol.
+8, Nos. 2-4 (1997), pp. 211-227.
+
+<P><A NAME="[I2-J-3]"></A><B>[I2-J-3] </B>P. G. Franciosa, G. Gambosi,
+U. Nanni, The incremental maintenance of a Depth-First-Search tree in directed
+acyclic graphs, <I>Inform. Process. Lett</I>., 61, 1997, 113-120
+
+<P><A NAME="[I2-J-4]"></A><B>[I2-J-4]</B> G. Kant, G. Liotta, R. Tamassia,
+I. G. Tollis, Area Requirement of Visibility Representations of Trees,
+<I>Inform. Process. Lett</I>., 62, 1997, 81–88.
+
+<P><A NAME="[I2-J-5]"></A><B>[I2-J-5]</B> G. Liotta, A. Lubiw, H. Meijer,
+S. H. Whitesides, The Rectangle of Influence Drawability Problem, <I>Computational
+Geometry: Theory and Applications</I>, 8 , 1997, 1–22.
+<H4>
+Conferences</H4>
+<A NAME="[I2-C-1]"></A><B>[I2-C-1]</B> P. Alimonti, Non-oblivious Local
+Search for MAX 2-CCSP withApplication to MAX DICUT, <I>Proc. 23rd International
+Workshopon Graph-Theoretic Concepts in Computer Science</I>, Lecture Notes
+in Computer Science 1335, Springer-Verlag, 2-14, 1997.
+
+<P><A NAME="[I2-C-2]"></A><B>[I2-C-2]</B> P. Alimonti, T. Calamoneri, Improved
+Approximations of Independent Dominating Set in Bounded Degree Graphs,
+<I>Proc. of the 22nd International Workshop on Graph-Theoretic Concepts
+in Computer Science</I>, Lecture Notes in Computer Science 1197, Springer-Verlag,
+2-16, 1997; submitted to Theoretical Computer Science.
+
+<P><A NAME="[I2-C-3]"></A><B>[I2-C-3]</B> P. Alimonti, V. Kann, Hardness
+of Approximating Problems on Cubic Graphs, <I>Proc. 3rd Italian Conference
+on Algorithms and Complexity</I>, Lecture Notes in Computer Science 1203,
+Springer-Verlag, 288-298, 1997; submitted to Theoretical Computer Science.
+
+<P><A NAME="[I2-C-4]"></A><B>[I2-C-4]</B> G. Ausiello, P. G. Franciosa,
+D. Frigioni, R. Giaccio. Decremental Maintenance of Reachability in Hypergraphs
+and Minimum Models of Horn Formulae. <I>Proceedings of the 8th annual International
+Symposium on Algorithms and Computation (ISAAC'97)</I>, Singapore, December
+17–19 1997. Lecture Notes in Computer Science 1350, pp. 122–131.
+
+<P><A NAME="[I2-C-5]"></A><B>[I2-C-5]</B> Y. Bartal, S. Leonardi. On-line
+routing in all-optical networks. <I>Proceedings of the 24th International
+Colloquium on Automata, Languages, and Programming (ICALP 97)</I>, pp.
+516-526, Lecture Notes in Computer Science 1256, pp. 516-526, Springer-Verlang,
+1997.
+
+<P><A NAME="[I2-C-6]"></A><B>[I2-C-6]</B> L. Becchetti, C. Gaibisso. Lower
+Bounds for the Virtual Path Layout Problem in ATM Networks. <I>Proc. of
+SOFSEM 97</I>, Lectures Notes in Computer Science, Springer-Verlag, Vol.
+No. 1338. 1997
+
+<P><A NAME="[I2-C-7]"></A><B>[I2-C-7]</B> F. d'Amore, L. Becchetti, S.
+L. Bezrukov, A. Marchetti Spaccamela, M. Ottaviani, R. Preis, M. R&ouml;ttger
+and U. P. Schroeder, On the Embedding of Refinements of 2-dimensional Grids,
+<I>Proc. of EuroPAR 97</I>, Springer, Lecture Notes in Computer Science
+1300, 1997, 950–957.
+
+<P><A NAME="[I2-C-8]"></A><B>[I2-C-8] </B>F. d'Amore, P. G. Franciosa,
+R. Giaccio and M. Talamo, Maintaining maxima under boundary updates, <I>Proc.
+of Italian Conf. on Algorithms and Complexity (CIAC '97)</I>, Springer,
+Lecture Notes in Computer Science 1203, 1997, 100–109.
+
+<P><A NAME="[I2-C-9]"></A><B>[I2-C-9]</B> F. d'Amore, F. Iacobini, On-line
+algorithms for networks of temporal constraints, <I>Proc. of Work. on Graph-Theoretic
+Concepts in Computer Science (WG '97)</I>, Springer, Lecture Notes in Computer
+Science 1335, 1997, 144–156.
+
+<P><A NAME="[I2-C-10]"></A><B>[I2-C-10]</B> O. Devillers, G. Liotta, F.
+P. Preparata, R. Tamassia, Checking the Convexity of Polytopes and the
+Planarity of Subdivisions, <I>Proceedings of the Fifth Workshop on Algorithms
+and Data Structures (WADS '97)</I> , Lecture Notes Comput. Sci. , 1272
+, Springer-Verlag, 1997, 186–199.
+
+<P><A NAME="[I2-C-11]"></A><B>[I2-C-11]</B> P. G. Franciosa, D. Frigioni,
+R. Giaccio. Semi Dynamic Shortest Paths and Breadth First Search in Digraphs.
+<I>Proceedings of the 14th international Symposium on Theoretical Aspects
+of Computer Science (STACS'97)</I>, Luebeck, Germany, February 27 – March
+1 1997. Lecture Notes in Computer Science 1200, pp. 33–46. Full version
+submitted for publication.
+
+<P><A NAME="[I2-C-12]"></A><B>[I2-C-12]</B> D. Frigioni, M. Ioffreda, U.
+Nanni, G. Pasqualone. Experimental Analysis of Dynamic Algorithms for the
+Single Source Shortest Path Problem. <I>Proceedings of the 1st Workshop
+on Algorithm Engineering (WAE'97)</I>, Venice, Italy, September 11–13 1997,
+pp. 54–63. Full version submitted for publication.
+
+<P><A NAME="[I2-C-13]"></A><B>[I2-C-13]</B> D. Frigioni, G. F. Italiano.
+Dynamically Switching Vertices in Planar Graphs. <I>Proceedings of the
+5th European Symposium on Algorithms (ESA'97)</I>, Graz, Austria, September
+15–17 1997. Lecture Notes in Computer Science 1284, pp. 186–199. A full
+version appears as Tech. Rep. n. TR-203-97 of the EU ESPRIT Long Term Research
+Project ALCOM-IT, 1997, and has been submitted for publication.
+
+<P><A NAME="[I2-C-14]"></A><B>[I2-C-14]</B> W. Lenhart, G. Liotta, Drawable
+and Forbidden Minimum Weight Triangulations, <I>Graph Drawing (Proc. GD
+'97)</I>, Lecture Notes Comput. Sci. , 1353 , Springer-Verlag, 1998, 1–12.
+
+<P><A NAME="[I2-C-15]"></A><B>[I2-C-15]</B> S. Leonardi, D. Raz. Approximating
+total flow time on parallel machines. <I>Proceedings of the 29th ACM Symposium
+on Theory of Computing (STOC 97)</I>, pp. 110-119, 1997.
+
+<P><A NAME="[I2-C-16]"></A><B>[I2-C-16]</B> G. Liotta, F. P. Preparata,
+R. Tamassia, Robust Proximity Queries: an Illustration of Degree-Driven
+Algorithm Design, <I>Proc. 13th Annu. ACM Sympos. Comput. Geom.</I>., 1997
+, 156–165.
+
+<P><A NAME="[I2-C-17]"></A><B>[I2-C-17]</B> G. Liotta, R. Tamassia, I.G.
+Tollis, P. Vocca, Area requirement of Proximity Drawings, <I>Proceedings
+of the 3rd Italian Conference on Algorithms and Complexity (CIAC97)</I>
+, Lecture Notes Comput. Sci., 1203 , Springer-Verlag, 1997, 135–146.
+<H4>
+Technical Reports and Submitted Papers</H4>
+<A NAME="[I2-R-1]"></A><B>[I2-R-1]</B> P. Agarwal, L. Arge, J. Erickson,
+P. G. Franciosa, J. S. Vitter, Efficient Searching with Linear Constraints,
+<I>17th Symp. on Principles of Database Systems (PODS '98)</I>, Seattle,
+1998, accepted for presentation.
+
+<P><A NAME="[I2-R-2]"></A><B>[I2-R-2]</B> S. Albers, N. Garg, S. Leonardi.
+Minimizing stall time in single and parallel disk systems. To appear in
+<I>Proceedings of the 30th Annual ACM Symposium on Theory of Computing
+(STOC 98)</I>, Dallas, 23-26 May, 1998.
+
+<P><A NAME="[I2-R-3]"></A><B>[I2-R-3]</B> P. Alimonti, Local Search and
+Approximability of MAX SNP Problems, <I>Tesi di Dottorato, Dottorato di
+Ricerca in Informatica, Universita` degli Studi di Roma La Sapienza</I>,
+IX-97-1, 1997.
+
+<P><A NAME="[I2-R-4]"></A><B>[I2-R-4]</B> P. Alimonti, G. Ausiello, L.
+Giovaniello, M. Protasi, On the Complexity of Approximating Weighted Satisfiability,
+<I>Rapporto Tecnico, RAP 38.97, Dipartimento di Informatica e Sistemistica,
+Universit&agrave; degli Studi di Roma “La Sapienza”</I>, 1997.
+
+<P><A NAME="[I2-R-5]"></A><B>[I2-R-5]</B> J. E. Baker, I. F. Cruz, G. Liotta,
+R. Tamassia, Visualizing Geometric Algorithms over the Web, <I>Computational
+Geometry: Theory and Applications</I>, to appear.
+
+<P><A NAME="[I2-R-6]"></A><B>[I2-R-6]</B> G. Di Battista, G. Liotta, F.
+Vargiu, Spirality and Optimal Grid Drawings, <I>SIAM J. Comput</I>., to
+appear.
+
+<P><A NAME="[I2-R-7]"></A><B>[I2-R-7]</B> S. Leonardi, A. Marchetti-Spaccamela,
+A. Presciutti and A. Rosen. On-line Randomized Call-Control Revisited.
+Proceedings of the 9th ACM-SIAM Symposium on Discrete Algorithms (SODA
+'98), pp. 323-332, 1998.
+
+<P><A NAME="[I2-R-8]"></A><B>[I2-R-8]</B> G. Liotta, F. P. Preparata, R.
+Tamassia, Robust Proximity Queries: an Illustration of Degree-driven Algorithm
+Design , SIAM J. Comput., to appear.
+
+<P><A NAME="[I2-R-9]"></A><B>[I2-R-9]</B> M. Rauch-Henzinger, S. Leonardi.
+Scheduling multicasts on trees and meshes. Rapporto Tecnico n. 33–97 del
+Dipartimento di Informatica e Sistemistica dell'Universit&agrave; di Roma
+“La Sapienza”.
+<BR>&nbsp;
+<BR>
+<HR>
+<TABLE>
+<TR>
+<TD><A HREF="../main/index.html"><IMG SRC="../pics/home.gif" ALT="AE" BORDER=0 HEIGHT=40 WIDTH=40></A>&nbsp;</TD>
+
+<TD>Go back to the Home Page of <A HREF="../main/index.html">Algorithm
+Engineering</A>.&nbsp;</TD>
+
+<TD WIDTH="10%"></TD>
+
+<TD><A HREF="http://www.dis.uniroma1.it/index.html"><IMG SRC="../pics/bighome.gif" ALT="DIS" BORDER=0 HEIGHT=40 WIDTH=40></A>&nbsp;</TD>
+
+<TD>Go back to the Home Page of <A HREF="http://www.dis.uniroma1.it/index.html">Dipartimento
+di Informatica e Sistemistica</A>.&nbsp;</TD>
+</TR>
+
+<TR>
+<TD><A HREF="mailto:ae@dis.uniroma1.it"><IMG SRC="../pics/mail.gif" ALT="DIS" BORDER=0 HEIGHT=40 WIDTH=40 ALIGN=CENTER></A>&nbsp;</TD>
+
+<TD>For problems or comments about this page, please send email to <A HREF="mailto:ae@dis.uniroma1.it">ae@dis.uniroma1.it</A>.</TD>
+
+<TD></TD>
+
+<TD><A HREF="../main/search.html"><IMG SRC="../pics/search.gif" ALT="DIS" BORDER=0 HEIGHT=40 WIDTH=40></A>&nbsp;</TD>
+
+<TD><A HREF="../main/search.html">Search</A> pages of Algorithm Engineering.&nbsp;</TD>
+</TR>
+</TABLE>
+&nbsp;
+<DIR>
+<DIR>
+<DIR>&nbsp;</DIR>
+</DIR>
+</DIR>
+
+</BODY>
+</HTML>

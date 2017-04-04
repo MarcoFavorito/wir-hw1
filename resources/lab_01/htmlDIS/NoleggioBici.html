@@ -1,0 +1,119 @@
+<!DOCTYPE html PUBLIC "-//w3c//dtd html 4.0 transitional//en">
+<html>
+<head>
+   <title>Esame del 8/4/2003 - Compito D</title>
+</head>
+<body>
+
+<center>
+<b>Fondamenti di Informatica 1</b> <br>
+<b>Corso di Laurea in Ingegneria Informatica</b> <br>
+<b>Corso di Laurea in Ingegneria Automatica</b> <br>
+A.A. 2002/03
+</center>
+
+<center>
+<h2>Appello del 8/4/2003 - Compito D</h2>
+</center>
+
+Si vuole gestire il noleggio di biciclette.  Di un oggetto
+<em>NoleggioBici</em> sono di interesse il nome dell'agenzia di noleggio bici
+(una stringa) ed il suo parco biciclette. Di ogni bicicletta sono di interesse
+le seguenti informazioni:
+<ul>
+  <li>il codice (un intero);
+  <li>se &egrave; noleggiata oppure no, e nel caso lo sia, il nominativo della
+      persona che la ha noleggiata.
+</ul>
+
+Gli oggetti <em>NoleggioBici</em> supportano le seguenti funzionalit&agrave;:
+
+<ul>
+  <li><em>crea:</em> che, data una stringa <em>n</em> che rappresenta il nome
+      di un'agenzia di noleggio bici, crea un oggetto <em>NoleggioBici</em> con
+      nome <em>n</em> che inizialmente non ha alcuna bicicletta;
+  </li>
+  <li><em>agenzia:</em> che restituisce il nome dell'agenzia di noleggio bici;
+  </li>
+  <li><em>verificaCodice:</em> che, dato il codice <em>b</em> di una
+      bicicletta, restituisce <em>true</em> se il codice <em>b</em> &egrave;
+      quello di una bicicletta del noleggio bici, <em>false</em> altrimenti;
+  </li>
+  <li><em>noleggiata:</em> che, dato il codice <em>b</em> di una bicicletta,
+      restituisce il nominativo della persona che ha noleggiato la bicicletta
+      <em>b</em>, se la bicicletta &egrave; noleggiata; restituisce
+      <code>null</code> se la bicicletta non &egrave; noleggiata; infine,
+      lancia un'eccezione se il codice non &egrave; quello di una bicicletta
+      del noleggio bici;
+  </li>
+  <li><em>acquisisci:</em> che, dato un intero <em>b</em>, aggiunge una
+      bicicletta di codice <em>b</em> al parco biciclette dell'agenzia, se
+      tale codice non &egrave; gi&agrave; utilizzato; altrimenti lancia
+      un'eccezione; si noti che una bicicletta appena acquisita non &egrave;
+      noleggiata;
+  </li>
+  <li><em>dismetti:</em> che, dato il codice <em>b</em> di una bicicletta,
+      elimina la bicicletta <em>b</em> dal parco biciclette; se il codice
+      <em>b</em> non &egrave; utilizzato non fa nulla; se il codice <em>b</em>
+      &egrave; utilizzato ma la bicicletta corrispondente &egrave; gi&agrave;
+      noleggiata lancia un'eccezione;
+  </li>
+  <li><em>noleggia:</em> che, dati il codice <em>b</em> di una bicicletta e il
+      nominativo <em>p</em> di una persona, noleggia la bicicletta <em>b</em>
+      alla persona <em>p</em>; se il codice <em>b</em> non &egrave; utilizzato
+      oppure la bicicletta <em>b</em> &egrave; gi&agrave; noleggiata lancia
+      un'eccezione;
+  </li>
+  <li><em>numBiciNoleggiate:</em> che, dato il nominativo <em>p</em> di una
+      persona, restituisce il numero di biciclette che la persona <em>p</em> ha
+      noleggiato;
+  </li>
+  <li><em>biciNoleggiate:</em> che, dato il nominativo <em>p</em> di una
+      persona, restituisce un array di interi contenente i codici delle
+      biciclette che la persona <em>p</em> ha noleggiato.
+  </li>
+</ul>
+
+<p><strong>Domanda 1.</strong> Scrivere una classe Java
+<code>NoleggioBici</code> per rappresentare oggetti <em>NoleggioBici</em>.
+
+<p>Soluzione:
+<a href="soluzione/NoleggioBici_rappresentazione_oggetti.java">rappresentazione
+degli oggetti</code></a>,
+<a href="soluzione/NoleggioBici_scheletro.java">scheletro della classe</a>,
+<a href="soluzione/NoleggioBici.java">classe <code>NoleggioBici</code></a>,
+<a href="soluzione/EccezioneNoleggioBici.java">classe
+<code>EccezioneNoleggioBici</code></a></p>
+
+
+<p><strong>Domanda 2.</strong> Realizzare un metodo statico
+<code>biciNoleggiate</code> cliente della classe <code>NoleggioBici</code> che,
+dati
+<ul>
+  <li>un oggetto <em>nb</em> della classe <code>NoleggioBici</code>,
+  <li>il nome <em>fin</em> di un file contenente nominativi di persone, uno per
+      riga, ed
+  <li>il nome <em>fout</em> di un file,
+</ul>
+scrive sul file <em>fout</em>, uno per riga, i codici di tutte le biciclette
+di <em>nb</em> noleggiate a ciascuna persona il cui nominativo &egrave;
+presente nel file <em>fin</em>.</p>
+
+<p><a href="soluzione/ClienteNoleggioBici.java">Soluzione</a></p>
+
+
+<p><strong>Domanda 3.</strong> Spiegare la rappresentazione collegata di alberi
+binari in cui l'informazione in ciascun nodo &egrave; una stringa.  Spiegare
+l'algoritmo di visita (ricorsiva) in preordine di alberi binari.  Facendo uso
+della rappresentazione collegata, realizzare un metodo statico pubblico che,
+dati una stringa <em>s</em> ed il riferimento alla radice di un albero binario
+<em>alb</em> i cui nodi contengono stringhe, restituisca il numero di
+occorrenze di <em>s</em> in <em>alb</em>.
+
+<p>Soluzione:
+<a href="soluzione/NodoBin.java">rappresentazione di alberi binari</a>,
+<a href="soluzione/AlberoD.java">metodo richiesto</a></p>
+
+
+</body>
+</html>

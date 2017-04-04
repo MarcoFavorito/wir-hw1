@@ -1,0 +1,35 @@
+<!doctype html public "-//w3c//dtd html 4.0 transitional//en">
+<html>
+<head>
+   <meta name="Content-Type" content="text/html; charset=iso-8859-1">
+   <meta name="Author" content="Fabrizio d'Amore">
+   <meta name="GENERATOR" content="Mozilla/4.61 (Macintosh; I; PPC) [Netscape]">
+   <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <title>Esercizio SQL -- 14/7/99</title>
+</head>
+<body text="#000080" bgcolor="#FFC040" link="#0000FF" vlink="#008000" alink="#00FFFF">
+
+<center>
+<h3>
+Interrogazione SQL
+<hr WIDTH="100%"></h3></center>
+
+<blockquote>
+<pre><tt>select v1.Partenza as Partenza, v1.Destinazione as Scalo,</tt></pre>
+
+<pre><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; v2.Destinazione as Destinazione, v2.Compagnia as Compagnia</tt></pre>
+
+<pre><tt>from Voli as v1, Voli as v2</tt></pre>
+
+<pre><tt>where (v1.Destinazione=v2.Partenza) and (v1.Partenza='Roma') and</tt></pre>
+
+<pre><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; (v2.Destinazione='Parigi') and (v1.Compagnia=v2.Compagnia);</tt></pre>
+</blockquote>
+
+<p><br>
+<hr WIDTH="100%">
+<p><b>Commento</b>
+<p>Non ci sono commenti specifici.
+<br>&nbsp;
+</body>
+</html>

@@ -1,0 +1,115 @@
+    <H2>Non-Monotonic Reasoning and Non-Classical Logics</H2>
+    The  complexity  of  non-monotonic  applications  has  been  studied  since  the
+'80s.  It  is  an  important  question  to  decide  whether  a  non-monotonic  way  of
+reasoning is effectively computable.  Several studies about complexity of NonMonotonic Reasoning showed that inference in non-monotonic knowledge bases
+is significantly harder than inference in monotonic ones. This contrasts with the
+general  idea  that  Non-Monotonic  Reasoning  can  be  used  to  make  knowledge
+representation  and  reasoning  simpler,  not  harder.   The  work  <A HREF="CDS95.html">[CDS95]</A>  shows
+that Non-Monotonic Reasoning has fulfilled a different goal, namely the efficient
+representation of knowledge with respect to space.<p>
+    In particular,  circumscription allows for a more compact and natural representation of knowledge.  Results about intractability of circumscription can
+therefore be interpreted as the price one has to pay for having such an extracompact representation.  Namely, it can be shown that circumscription is more
+succinct than other formalisms, i.e. it allows a more compact definition of the
+knowledge.  The paper <A HREF="CDS95.html">[CDS95]</A> outlines a method for proving that the size of a
+purely propositional representation of the circumscription CIRC(T ) of a propositional formula T  grows faster than any polynomial as the size of T  increases.<p>
+Significant results can also be exported in the related field of closed-word reasoning.<p>
+    Closed-world reasoning is a common non-monotonic technique that allows
+for dealing with negative information in knowledge and data bases.  Several formalisms have been proposed in the literature, ranging from Closed World Assumption, introduced in the context of data bases, to Extended Closed World
+Assumption,  which  is  equivalent  to  Circumscription.   A  detailed  analysis  of
+the  computational  complexity  of  these  different  forms  for  various  fragments
+of propositional logic is presented in <A HREF="CL94a.html">[CL94a]</A>.  Such an analysis draws a almost
+complete picture of the boundary between tractability and intractability of such
+forms of Non-Monotonic Reasoning.  It also discusses how to extend these results to other Non-Monotonic Reasoning problems, namely multiple inheritance,
+diagnosis, and default reasoning.<p>
+    Belief Revision is an area of Non-Monotonic Reasoning involving the problem
+of changing the knowledge as a result of a contradictory observation.  A specific
+computational aspect of Belief Revision is the size of the propositional formula
+obtained by revising a formula with another new formula.  The paper <A HREF="CDLS95.html">[CDLS95]</A>
+focuses on the size of the smallest formula equivalent to the revised knowledge
+base.  Its main result is that not all formalizations of belief revision are equal
+
+
+from  this  point  of  view.   For  some  of  them  the  revised  knowledge  base  can
+be expressed with a formula admitting a polynomial-space representation but
+for  others  the  revised  knowledge  base  does  not  always  admit  a  polynomialspace representation:  formalisms with the same complexity may have different
+compactability properties.  The Horn case (relevant due to its computational
+tractability) is studied in <A HREF="Lib95.html">[Lib95]</A>.<p>
+    The relationship between Belief Revision and Circumscription has been analyzed in <A HREF="LS95b.html">[LS95b]</A>, where relations between different Belief Revision operators and
+forms of Circumscription are established and characterized, thus largely extending the pioneering work of Winslett.  A particular operator for belief change,
+which satisfies the property of commutativity, has also been studied in <A HREF="LS95a.html">[LS95a]</A>,
+where a set of postulates is given and a representation theorem has been proved.<p>
+    Reasoning by default constitutes another important field of research in nonmonotonic logic, since it provide a formalism to reason about rules which are
+generally true but can be defeated.  In <A HREF="CEG94.html">[CEG94]</A> the possibility of using Default
+Logic  as  a  query  language  for  a  relational  database  is  studied.   It  si  proven
+that DQL is as expressive as the existential universal fragment of second order
+logic and complexity result are discussed.  Moreover practical cases are shown
+where default query languages have more expressive power than traditional non
+monotonic relational database such as DATALOG with non monotonic negation.<p>
+    An automated reasoning approach to Default Logic is pursued in <A HREF="ACAGP95a.html">[ACAGP95a]</A>,
+where tableaux for default reasoning are presented.  The proposed calculus covers in a uniform way a wide number of different proposals of default formalism
+such as Reiter's,  Brewka's and Lukaszewicz' ones.  One of the major features
+of this tableau calculus it that it can be generalized to every logic which has a
+tableau calculus.  A further study on the theoretical aspects of Default Logic
+has been carried in <A HREF="ACAP95.html">[ACAP95]</A> with a focus on Hilbert-style proof systems.  The
+aim  is  to  describe  default  logic  as  a  logic  where  the  juxtaposition  of  default
+(Hilbert-style) proofs is subordinate to a restriction condition.  This property is
+applied to different default systems presented in the literature and new default
+logics are also presented.<p>
+    The relationship between Default and Modal Logic provability theory has
+been  thoroughly  analyzed  in  <A HREF="ACAGP95b.html">[ACAGP95b]</A><A HREF="ACAGP94a.html">[ACAGP94a]</A><A HREF="ACAGP94b.html">[ACAGP94b]</A>.   These
+works identify a family of modal logics (namely those between KD4 and KD4LZ)
+which  can  suitably  represent  the  different  non  monotonic  features  of  Default
+Logic in a monotonic context.  A systematic translation of default theories into
+modal formulas is provided so that a suitable self-referential sentence is associated with the fix point of each default theory.  One of the major features of this
+approach is that KD4Z  is an amalgamated formalism that allows formulas of
+the language to represent meta-logical constructions.<p>
+    The different possibilities for representing and reasoning about meta-logical
+properties,  knowledge  and  belief  in  a  multi-agent  scenario  are  also  reviewed
+in <A HREF="CACMNS95.html">[CACMNS95]</A>.  The paper surveys two family of languages, those based on
+modal operators and those based on first-order logic enriched with meta-level
+
+
+capabilities.   These  approaches  are  thoroughly  compared  with  respect  to  the
+issues of consistency, expressiveness and translation of modal systems into metalevel first-order formalisms.<p>
+    An  automated  reasoning  approach  towards  Modal  Logics  for  representing
+knowledge and belief can be found in <A HREF="Mas94b.html">[Mas94b]</A>, where strongly analytic tableaux
+for a wide range of modal logics are provided, including also the logic for negative introspection like KD45 and S5.  The calculus proved to be effective for
+automated proof search, easy to use for proof presentation, and applicable to
+a wide range of modal logics for knowledge representation.  The system is then
+extended in <A HREF="Mas94a.html">[Mas94a]</A><A HREF="Mas95.html">[Mas95]</A> to cope with inconsistent belief sets, with a form
+of Local Reasoning.  The resulting tableaux calculus combines the full power of
+a theorem prover for Modal Logics with a system for handling inconsistency and
+Contextual Reasoning: it is weak enough to describe knowledge bases where two
+different consistent statements may contradict each other (in classical logic), but
+strong enough to rule out the possibility of an inconsistent statement.<p>
+    The study of Non-Monotonic Modal Logics has been carried out in <A HREF="NR94.html">[NR94]</A>.<p>
+The paper provides a semantic characterization of a variant of the Non-Monotonic
+Modal Logics due to Mc Dermott and Doyle.  The basic intuition is to minimize  the  knowledge  expressed  by  non-modal  formulae.   This  is  accomplished
+through a preference relation on Kripke models that generalizes the notion of
+minimal knowledge and provides a semantic characterization of ground logics.<p>
+The epistemological and the computational properties of ground logics are further  analyzed  in  <A HREF="DNR94.html">[DNR94]</A>.   A  major  result  is  that  reasoning  for  this  ground
+logic can be placed at the third level of the polynomial hierarchy, and that this
+proven to be also an upper bound for reasoning in most ground logics.<p>
+    One  of  the  major  problems  in  the  use  of  Non-Monotonic  Reasoning  and
+Non-Classical Logics is their high computational complexity,  which is usually
+far beyond NP. As efficiency of AI systems is crucial for their success, feasible
+aspects  of  the  logical  approach  to  Artificial  Intelligence  has  been  thoroughly
+investigated.  The first strategy is language restriction:  the language used for
+representing knowledge is restricted so that the formalization of interesting cases
+is still possible,  but inference tasks are computationally feasible.  The second
+strategy  is  theory  approximation:  a  form  of  logic  is  approximated  by  using
+another one that allows weaker (yet computationally feasible) inferential power.<p>
+A general overview of problems and solutions for these approaches can be found
+in <A HREF="Cad95.html">[Cad95]</A>.  The book analyzes the tractability threshold of several problems,
+finding polynomially tractable cases _ for which polynomial-time algorithms
+are given _ and intractable cases.  Propositional as well as first-order formulae,
+decision as well as constructive problems are taken into account, thus modeling
+several reasoning patterns.<p>
+    The problem of tractable reasoning via approximation has been also extensively studied in <A HREF="SC95.html">[SC95]</A>, where semantically well-founded logics for approximate
+reasoning and fast algorithms (even for fully expressive languages) are provided.<p>
+The method provides both sound approximations and complete ones and is flex
+
+ible enough to be applied to a wide range of reasoning problems:  Propositional
+Logic,  fragments  of  First  Order  Logic  (Concept  Description  Languages)  and
+Modal Logic.  In <A HREF="CS94.html">[CS94]</A> it has been extended to cope with Default Reasoning
+and Circumscription with a clear semantics based on multi-valued logic.<p>

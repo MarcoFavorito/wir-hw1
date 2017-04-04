@@ -1,0 +1,97 @@
+<html>
+<head>
+<title>Prova al calcolatore - compito D</title>
+</head>
+
+<body>
+
+<h2>Prova al calcolatore</h2>
+<b>Compito D<br>
+Durata: 1:45</b>
+<hr>
+
+<h4>Prima parte</h4>
+
+<p>
+La catena di enoteche ``Nonsolovini'' vuole realizzare un
+programma di memorizzazione dei dati relativi ai magazzini.
+A questo scopo, va realizzata la classe <tt>Annata</tt>, che
+rappresenta i dati relativi alle bottiglie di un certo vino
+e di una certa annata. Per ogni annata, vanno memorizzati i
+seguenti dati:
+</p>
+
+<dl>
+
+<dt><tt>nome</tt>
+<dd>nome del vino (una stringa)
+
+<dt><tt>produttore</tt>
+<dd>il nome del produttore del vino (una stringa)
+
+<dt><tt>anno</tt>
+<dd>l'anno in cui il vino &egrave; stato prodotto
+(un intero)
+
+<dt><tt>gradazione</tt>
+<dd>la gradazione alcolica del vino (un reale)
+
+</dl>
+
+<p>
+Si realizzi la classe <tt>Annata</tt>, le cui componenti
+(variabili di istanza) sono <tt>nome, produttore, anno,
+gradazione</tt>. La classe deve essere incapsulata, ossia deve
+avere tutte le variabili di istanza private e i tutti i
+metodi <tt>get</tt> e <tt>set</tt>. Deve essere realizzato
+anche un costruttore con quattro argomenti, e i metodi
+<tt>toString</tt> ed <tt>equals</tt>
+</p>
+
+<hr>
+
+
+<h4>Seconda parte</h4>
+
+<p>
+&Egrave; necessario realizzare la classe che rappresenta
+l'insieme di tutte le annate di tutti i tipi di vino vendute
+da una enoteca della catena. A questo scopo, si realizzi la classe
+<tt>Enoteca</tt>; un oggetto di questa classe rappresenta un
+insieme di oggetti <tt>Annata</tt> usando un array, oppure
+una <tt>LinkedList</tt>, oppure un <tt>HashSet</tt> oppure
+una <tt>Lista</tt>. I metodi da implementare sono i
+seguenti:
+</p>
+
+<dl>
+
+<dt><tt>static Annata readAnnata(BufferedReader br)</tt>
+<dd>legge i dati di una annata dal BufferedReader passato come
+argomento: ritorna un oggetto <tt>Annata</tt> con questi dati,
+oppure <tt>null</tt> se non &egrave; stato possibile leggere
+i dati perch&egrave; il file &egrave; finito;
+
+<dt><tt>Enoteca(String nomefile)</tt>
+<dd>il costruttore ha come parametro il nome di un file: i
+dati delle annate contenute nel file vengono lette e
+memorizzate nella struttura dati usata per la loro
+memorizzazione
+
+<dt><tt>boolean gradiOk()</tt>
+<dd>per effettuare il controllo di qualit&agrave;, si vuole
+verificare se tutti i vini hanno gradazione alcolica
+compresa fra 5 e 12,5; questo metodo restituisce
+<tt>true</tt> se questa condizione &egrave; vera per tutte
+le annate
+
+<dt><tt>double mediaGradi(String nome)</tt>
+<dd>calcola la gradazione alcolica media per tutte le annate
+di un vino il cui nome viene passato come parametro
+
+</dl>
+
+</body>
+</html>
+
+

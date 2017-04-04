@@ -1,0 +1,137 @@
+<html>
+
+<head>
+
+<script language="javascript">
+
+function scroller_Left(seed)
+
+{
+
+        var m1  = "Diploma d'Ingegneria Informatica ed Automatica...";
+
+        var m2  = "";
+
+        
+
+        var msg=m1+m2;
+
+        var out = " ";
+
+        var c   = 1;
+
+
+
+        if (seed > 100) {
+
+                seed--;
+
+                var cmd="scroller_Left(" + seed + ")";
+
+                timerTwo=window.setTimeout(cmd,100);
+
+        }
+
+        else if (seed <= 100 && seed > 0) {
+
+                for (c=0 ; c < seed ; c++) {
+
+                        out+=" ";
+
+                }
+
+                out+=msg;
+
+                seed--;
+
+                var cmd="scroller_Left(" + seed + ")";
+
+                    window.status=out;
+
+                timerTwo=window.setTimeout(cmd,100);
+
+        }
+
+        else if (seed <= 0) {
+
+                if (-seed < msg.length) {
+
+                        out+=msg.substring(-seed,msg.length);
+
+                        seed--;
+
+                        var cmd="scroller_Left(" + seed + ")";
+
+                        window.status=out;
+
+                        timerTwo=window.setTimeout(cmd,100);
+
+                }
+
+                else {
+
+                        window.status=" ";
+
+                        timerTwo=window.setTimeout("scroller_Left(100)",75);
+
+                }
+
+        }
+
+}
+
+</script>
+
+</head>
+
+<BODY background="images/tela.jpg" onLoad="timerONE=window.setTimeout('scroller_Left(30)',10);">
+
+<CENTER>
+
+<h1><i>University of Rome "La Sapienza"</i></h1> 
+
+</CENTER>
+
+<HR>
+
+<A Href = "index.html" target="_top">Italiano</a><br>
+
+Welcome to the HomePage<A HREF="help/WWWhelp.html"> WWW</A> (World Wide Web) of the <b>Computer and Automation Engineering Departement of the University of Rome "La Sapienza".</b>.<BR>
+
+This document contains detailed information on the Departement and is designed to assist students who are currently enrolled in the Department as well as those who may wish to enroll.<BR> 
+
+You are advised to read this document carefully before requesting additional information.<BR>
+
+This document is available at the following locations :<P>
+
+<CENTER>
+
+<A HREF = "infogen/infochi.html#SEDERM"> Office of the Secretary of the Department</A><BR>  
+
+<A HREF = "infogen/infochi.html#SEDERM"> Rome, Study Center</A><BR>
+
+<A HREF = "infogen/infochi.html#SEDEFR"> Frosinone, Study Center</A><BR>
+
+<A HREF = "infogen/infochi.html#SEDELT"> Latina, Study Center</A><BR>
+
+</CENTER>
+
+<P>
+
+In addition to the Diploma in Computer and Automation Engineering, the Faculty of Engineering of the University of Rome "La Sapienza" also offers diplomas in Chemical Engineering, Mechanical Engineering, 
+
+Elettrical Engineering, and Environmental and Earth Engineering.<BR>
+
+For further information, please addres your written or telephone inquiries to the Presidency,<BR>
+
+<a href="infogen/eudo.html"> Via Eudossiana 18</a>, 00184 Roma, tel.+39-6-44585706, Sig.Zanelli.<BR>
+
+<p>
+
+For additional information or suggestions:<br>
+
+<a Href=mailto:"diploma@record.dis.uniroma1.it"><img SRC="images/mail.gif" width="14" height="10">(diploma@record.dis.uniroma1.it)</a><p>
+
+</body>
+
+</html>

@@ -1,0 +1,104 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+"http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<title>Esempio domanda PIPE</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+</head>
+
+<body>
+<h3>Corso di Laurea in Ing. Informatica, 
+Universita' La Sapienza<br>
+Sistemi Operativi II<br>
+Docente Roberto Baldoni</h3>
+<h3> Esempio di domanda di programmazione (argomento: PIPE - Appello del 19 Luglio 2004). </h3>
+<p>Si vuole realizzare un  programma in cui viene creata una lista di processi (un
+progenitore istanzia un processo figlio, che a sua volta ne istanzia un'altro e cos&igrave; via). La lunghezza della lista di processi è arbitraria e scelta a tempo di esecuzione. Ogni processo una volta istanziato genera un numero random. L'ultimo processo istanziato (il numero 6 della figura) comunica il numero generato al padre; tutti i processi intermedi leggono dal loro processo figlio un numero (il processo 5 ad esempio legge 4 dal processo 6), lo sommano al proprio e mandano la somma al loro processo padre. Una volta ottenuta la somma totale, il processo progenitore (nell'esempio il processo 1) la stampa a video.</p>
+<p align="center"><img src="testo6_clip_image001.png" width="80%"></p>
+<p align="left">Di seguito viene riportato lo scheletro del codice, <u>da completare</u> a cura dello studente, che realizza l'applicazione descritta Notare che la comunicazione tra i vari processi avviene tramite PIPE.</p>
+
+<p align="left">&nbsp;</p>
+<pre>
+#include &lt;fcntl.h>
+#include &lt;stdio.h>
+#include &lt;stdlib.h>
+#include &lt;string.h>
+#include &lt;sys/errno.h>
+#include &lt;sys/stat.h>
+#include &lt;sys/types.h>
+#include &lt;sys/time.h>
+#include &lt;unistd.h>
+
+int
+my_random();
+
+int
+main(int argc, char * argv[]) {
+   int lunghezza, figlio, i, status, num, num2;
+   int nextPIPE[2], pipeSUP;
+
+   if (argc==1) {
+      printf("Sintassi: %s numero nodi\n",argv[0]);
+      exit(1);
+   }
+
+   lunghezza = atoi(argv[1]);
+   if (lunghezza == 1) {
+      printf("Immettere un valore maggiore o uguale a 2\n");
+      exit(1);
+   }
+
+   // init della pipe che collega un nodo con il padre
+   // solo per il nodo iniziale pipeSUP sarà
+   // uguale a -1
+   pipeSUP = -1;
+
+   i = 1;
+   while (i &lt; lunghezza) { // si devono generare figli
+
+      // creo la pipe che collega un nodo col figlio
+      if (pipe(nextPIPE) &lt; 0) {
+         printf("Processo %d: errore nella creazione della pipe per la comunicazione col figlio\n", getpid());
+         exit(1);
+      }
+      figlio = fork();
+      if (figlio != 0) { // processo padre
+<em><strong>         //
+         // codice mancante
+         //
+</strong></em>      }
+      else { // processo figlio
+         pipeSUP = nextPIPE[1];
+         close(nextPIPE[0]);
+         i++;
+         if (i == lunghezza) { // non si devono più creare processi
+            printf("Processo %d: nodo figlio; ",getpid());
+
+            num = my_random();
+            printf("valore generato = %d\n",num);
+            if (write(pipeSUP, &num, sizeof(int))==-1) {
+               printf("Processo %d: errore durante la send\n", getpid());
+               exit(1);
+            }
+            else
+               printf("Processo %d: send di %d al processo %d riuscita\n", getpid(), num, getppid());
+
+            close(pipeSUP);
+            break;
+         }
+      }
+   }
+}
+
+int
+my_random() { // genera un numero casuale tra 1 e 10
+   struct timeval t;
+
+   gettimeofday(&t, NULL);
+
+   srand(t.tv_sec/1000+t.tv_usec*1000);
+   return (1+(int) (10.0*rand()/(RAND_MAX+1.0)));
+}
+</pre>
+</body>
+</html>

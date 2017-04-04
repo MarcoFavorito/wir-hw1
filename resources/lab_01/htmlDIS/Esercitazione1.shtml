@@ -1,0 +1,262 @@
+<!doctype html public "-//w3c//dtd html 4.0 transitional//en">
+<html>
+<head>
+   <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <meta name="GENERATOR" content="Mozilla/4.78 [en] (X11; U; Linux 2.4.18 i686) [Netscape]">
+</head>
+<body>
+
+<center>
+<h2>
+<font size=+4>Esercitazione 1: Agenti</font></h2></center>
+
+<center><font size=+2>Ing. <a href="mailto:grisetti@dis.uniroma1.it">Giorgio
+Grisetti</a></font></center>
+
+<p><font size=+2>Sommario</font>
+<ul>
+<li>
+Installazione delle librerie AIMA in java</li>
+
+<li>
+Uso delle librerie per la definizione di agenti</li>
+
+<li>
+Un semplice agente</li>
+
+<li>
+Un agente con memoria</li>
+
+<li>
+Valutazione delle prestazioni</li>
+
+<li>
+Esercizi</li>
+</ul>
+
+<hr width="100%" size="2" align="Left">
+<br>&nbsp;
+<p><font size=+2>Installazione delle librerie AIMA in java</font>
+<ul>
+<li>
+Decomprimere il file <tt>aima-java.ta</tt>r, usando WinZip. Verra' creata
+una directory "<tt>C:\aima-java\</tt>"</li>
+
+<li>
+Impostare il valore della variabile di ambiente CLASSPATH a "<tt>C:\aima-java\classes\:%CLASSPATH%;.</tt>"</li>
+
+<li>
+Eseguire un test, con "<tt>java aima.agents.VacuumEnvironment</tt>" .</li>
+</ul>
+
+<hr width="100%" size="2" align="Left"><font size=+2>Uso delle librerie
+AIMA per la definizione di agenti</font>
+<p>Nel package aima.agents viene definita una struttura di classi che permette
+la definizione e simulazione di ambienti in cui operano agenti software
+(softbot). Gli oggetti di aima.agents appartengono a tre categorie:
+<ul>
+<li>
+<b>Ambienti (environment)</b>: un ambiente consiste in un "contenitore"
+di oggetti del dominio, in un insieme di regole che dicono come evolve
+il dominio in relazione alle azioni degli agenti, ed un unsieme di regole
+che specificano le percezioni degli agenti.</li>
+
+<li>
+<b>Oggetti del mondo</b></li>
+
+<li>
+<b>Agenti</b>: oggetti del mondo, aventi un comportamento "dinamico", descritto
+da un programma.</li>
+</ul>
+
+<hr width="100%" size="2" align="Left"><font size=+2>Le classi definite
+in AIMA</font><font size=+1>:</font>
+<ul>
+<li>
+<tt>Percept</tt>: rappresenta una percezione che puo' essere fatta da una
+agente</li>
+
+<li>
+<tt>Action</tt>: rappresenta un'azione che l'agente puo' compiere sull'ambiente</li>
+</ul>
+
+<ul>
+<li>
+<tt>Environment</tt>: e' un contenitore astratto di oggetti del mondo,
+ed agenti. Per implementare un mondo di simulazione e' necessario ridefinire
+i seguenti metodi:</li>
+
+<ul>
+<li>
+<tt>Percept presentPercept(Agent)</tt>, che ritorna la percezione dell'agente
+in funzione dello stato dell'ambiente.</li>
+
+<li>
+<tt>void execute(Agent, Action)</tt>, che fa side effect sull'ambiente,
+in funzione di un'azione compiuta da un agente .</li>
+</ul>
+
+<li>
+<tt>Thing</tt>: e' una oggetto nell'ambiente.</li>
+
+<li>
+<tt>AgentThing</tt>: e' la rappresentazione dell'agente all'interno dell'ambiente;
+contiene le informazioni sull'agente necessarie all'ambiente per eseguire
+la simulazione.</li>
+
+<li>
+<tt>AgentProgram</tt>: e' il programma che gestisce l'agente vero e proprio;
+occorre definire il metodo <tt>Action execute(Percept)</tt>, che ritorna
+un'azione in funzione di una percezione.</li>
+</ul>
+
+<hr width="100%" size="2" align="Left"><font size=+2>Il mondo dell'aspirapolvere:</font>
+<ul>
+<li>
+Oggetti del mondo:</li>
+
+<ul>
+<li>
+<b>Dirt</b> (sporco)</li>
+
+<li>
+<b>Wall</b>(muro)</li>
+
+<li>
+<b>AgentThing</b>(agente)</li>
+</ul>
+
+<li>
+Ambiente: una griglia n*m.</li>
+
+<li>
+Percezioni:</li>
+
+<ul>
+<li>
+<b>isDirt</b>: c'e' dello sporco sotto l'agente</li>
+
+<li>
+<b>isBump</b>: c'e' un muro di fronte e l'agente ci sbatte contro.</li>
+
+<li>
+<b>isHome</b>: l'agente si trova in (1,1)</li>
+</ul>
+
+<li>
+Azioni:</li>
+
+<ul>
+<li>
+<b>turnLeft</b>, <b>turnRight</b>: ruotano l'agente di 90 gradi</li>
+
+<li>
+<b>forward</b>: muove l'agente in avanti. Se la casella davanti a lue e'
+occupata viene generato un "bump"</li>
+
+<li>
+<b>suck</b>: aspira lo sporco nella casella in cui si trova l'aspirapolvere.</li>
+
+<li>
+<b>shut-off</b>: svuota</li>
+</ul>
+</ul>
+
+<hr width="100%" size="2" align="Left">
+<p><font size=+2>Un semplice agente</font>
+<br><b><font size=+1>I</font>dea:</b>
+<blockquote>L'agente si muove casualmente nell'ambiente, se percepisce
+una casella sporca la pulisce.</blockquote>
+<b>Stato</b>:
+<blockquote>Assente, l'agente reattivo determina la azione da compiere
+solamente sulla base della posizione corrente</blockquote>
+<b>Azioni</b>:
+<blockquote>Se sporco, aspira.
+<br>Se bump gira a destra o sinistra con probabilita' 0.5 .
+<br>altrimenti va avanti con probabilita' 0.8, e gira con probabilita'
+0.2.</blockquote>
+<a href="SimpleVacuumAgent.java">codice</a>
+<br>
+<hr width="100%" size="2" align="Left">
+<p><font size=+2>Agente con memoria</font>
+<p><b>Idea</b>:
+<blockquote>ad ogni passo aggiornare la stima dello stato del mondo a seconda
+di azioni e precezioni</blockquote>
+<b>Stato</b>:
+<blockquote>posizione (x,y) ed orientazione(h), l'orientazione e' descritta
+da un intero compreso tra 0 e 3, corrispondente alle direzioni est, nord,
+ovest e sud.
+<br>per ogni cella della griglia lo stato della cella: esplorata, non esplorata,
+contiene un muro.</blockquote>
+<b>Azioni</b>:
+<blockquote>utilizzando lo stato visita la cella inesplorata piu' vicina,
+se sono state esplorate tutte ritorna in (1,1).</blockquote>
+<a href="MemoryVacuumAgent.java">codice</a>
+<p><br>
+<hr width="100%" size="2" align="Left">
+<br><font size=+2>Valutazione delle prestazioni</font>
+<p>Ogni azione ha un costo,ed un eventuale premio.
+<br>Nel nostro mondo:
+<ul>
+<li>
+ogni azione compiuta -1</li>
+
+<li>
+ogni cella pulita: +100</li>
+
+<li>
+se si ritorna in home(1,1), dopo aver finito: +1000</li>
+</ul>
+
+<p><br>
+<hr width="100%" size="2" align="Left">
+<br><font size=+2>Esercizi</font>
+<ul>
+<li>
+Modificare il programma dell'agente reattivo in&nbsp; modo che dopo un
+certo numero di passi torni in (1,1).</li>
+
+<li>
+Modificare il programma dell'agente in modo che abbia migliori prestazioni,
+migliorando la funzione di ricerca della prossima casella da visitare.</li>
+
+<li>
+Modificare il programma dell'agente con memoria in modo da aggirare eventuali
+ostacoli fissi presenti nell'arena di gioco, e di cui non conosce a priori
+l'esistenza.</li>
+</ul>
+<font size=+2>Mandatemi i programmi entro la mezzanotte di lunedi' per
+fare un test comparativo delle prestazioni,</font>
+<br><font size=+2>specificando "[gara AI]", all'inizio del subject della
+mail.</font>
+<center><a href="mailto:grisetti@dis.uniroma1.it">mail</a>
+</center>
+
+<p><font size=+2>Istruzioni per l'uso del pacchetto:</font>
+<ul>
+<li>
+decomprimere l'archivio con WinZip</li>
+
+<li>
+settare il <tt>CLASSPATH</tt> alla directory corrente, digitando dal prompt</li>
+
+<ul><tt>set CLASSPATH .</tt></ul>
+
+<li>
+per ottenere le istruzioni sulla linea di comando da impostare per il test
+di un agente</li>
+
+<ul><tt>java&nbsp; SimpleVacuumAgentProgram</tt></ul>
+
+<li>
+il vostro metodo main va fatto sul modello di quelli proposti per i modelli
+di agente descritti nell'esercitazione,&nbsp; in modo da presentare un'interfaccia
+utente omoegenea. In particolare, dopo la creazione dell'ambiente e dell'agente
+va invocato il metodo</li>
+
+<ul><tt>AgentsUtil.parseCommandLine(&lt;argomenti della linea di comando>,&nbsp;
+&lt;ambiente>,&nbsp; &lt;agente di cui si vogliono misurare le prestazioni>)</tt></ul>
+</ul>
+
+</body>
+</html>

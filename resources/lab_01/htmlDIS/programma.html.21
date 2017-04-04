@@ -1,0 +1,1722 @@
+<html>
+<head>
+<title>Metodi del programma</title>
+      <link rel="top" href="../lezioni.html">
+      <link rel="up" href="../lezioni.html">
+      <link rel="contents" href="../lezioni.html">
+      <link rel="previous" href="../cast/cast.html">
+      <link rel="next" href="../param/param.html">
+</head>
+
+<body>
+
+<h1>Metodi del programma</h1>
+
+<p>
+Sono metodi associati al programma,
+invece che a una classe.
+</p>
+
+<p>
+Si fanno metodi di questo tipo quando
+il metodo &egrave; utile solo in un
+programma.
+</p>
+
+<hr>
+
+
+<h4>Il problema</h4>
+
+<p>
+Consideriamo questo problema:
+stampare una serie di espressioni,
+separate da una linea di asterischi.
+</p>
+
+<pre>
+class Linea {
+  public static void main(String args[]) {
+    int x=12;
+    int y=42;
+
+    System.out.println("**********************************");
+
+    System.out.println(x+2);
+
+    System.out.println("**********************************");
+
+    System.out.println(2*x+1);
+
+    System.out.println("**********************************");
+
+    System.out.println(y/2);
+
+    System.out.println("**********************************");
+
+    System.out.println(x+y/2);
+
+    System.out.println("**********************************");
+  }
+}
+</pre>
+
+<p>
+Questa istruzione si ripete sempre uguale.
+</p>
+
+<hr>
+
+
+<h4>Un metodo?</h4>
+
+<p>
+Potrei definire un metodo che fa la stampa,
+e poi invocare il metodo quando serve.
+</p>
+
+<p>
+Per&ograve; il metodo va messo in una classe.
+</p>
+
+<p>
+Devo creare una classe solo per metterci dentro
+il metodo:
+</p>
+
+<pre>
+class Inutile {
+  void stampaLinea() {
+    System.out.println("**********************************");
+  }
+}
+</pre>
+
+<hr>
+
+
+<h4>Il programma</h4>
+
+<p>
+Devo creare un oggetto solo per poter invocare
+il metodo:
+</p>
+
+<pre>
+class ProcInutile {
+  public static void main(String args[]) {
+    int x=12;
+    int y=42;
+
+    Inutile i;
+    i=new Inutile();
+
+    i.stampaLinea();
+
+    System.out.println(x+2);
+
+    i.stampaLinea();
+
+    System.out.println(2*x+1);
+
+    i.stampaLinea();
+
+    System.out.println(y/2);
+
+    i.stampaLinea();
+
+    System.out.println(x+y/2);
+
+    i.stampaLinea();
+  }
+}
+</pre>
+
+<p>
+Soluzione alternativa: definire il metodo
+dentro il programma.
+</p>
+
+<hr>
+
+
+<h4>Metodi del programma</h4>
+
+<p>
+Posso scrivere metodi che sono associati
+al programma e non a una classe.
+</p>
+
+<pre>
+class Proc {
+  static void stampaLinea() {
+    System.out.println("**********************************");
+  }
+
+  public static void main(String args[]) {
+    int x=12;
+    int y=42;
+
+    stampaLinea();
+
+    System.out.println(x+2);
+
+    stampaLinea();
+
+    System.out.println(2*x+1);
+
+    stampaLinea();
+
+    System.out.println(y/2);
+
+    stampaLinea();
+
+    System.out.println(x+y/2);
+
+    stampaLinea();
+  }
+}
+</pre>
+
+<p>
+Ci sono delle somiglianze con i metodi
+delle classi, e delle differenze.
+</p>
+
+<hr>
+
+
+<h4>Somiglianze</h4>
+
+<p>
+La dichiarazione &egrave; quasi uguale,
+ma si mette <tt>static</tt> davanti.
+</p>
+
+<pre>
+  static TipoValoreRitorno nomeMetodo(argomenti) {
+    istruzioni
+  }
+</pre>
+
+<p>
+Per invocare il metodo nel programma (=far
+eseguire le istruzioni), si mette il nome
+del metodo con gli argomenti fra parentesi.
+</p>
+
+<pre>
+    stampaLinea();
+
+    System.out.println(x+y/2);
+
+    stampaLinea();
+</pre>
+
+<hr>
+
+
+<h4>Differenze</h4>
+
+<p>
+Non c'&egrave; un oggetto di invocazione.
+</p>
+
+<p>
+Quindi:
+</p>
+
+<ul>
+
+<li>non si invoca su un oggetto<br>
+(si fa <tt>nomeMetodo(argomenti);</tt> e
+non <tt>oggetto.nomeMetodo(argomenti);</tt>)
+
+<li>nelle istruzioni del metodo, non si
+pu&ograve; usare <tt>this</tt>
+
+</ul>
+
+<p>
+Sono tutte e due conseguenze del fatto che
+questi metodi non hanno un oggetto di
+invocazione.
+</p>
+
+<hr>
+
+
+<h4>Esercizio</h4>
+
+<p>
+Realizzare un metodo che stampa la
+stringa <tt>"Positivo"</tt> oppure
+<tt>"Negativo"</tt> oppure <tt>"Zero"</tt>
+a seconda del segno di un numero passato
+come argomento.
+</p>
+
+<p>
+Realizzare anche un programma di prova.
+</p>
+
+<hr>
+
+
+<h4>Intestazione</h4>
+
+<p>
+Il metodo ha:
+</p>
+
+<dl>
+
+<dt>valore di ritorno
+<dd>nessuno, ossia <tt>void</tt>
+
+<dt>nome
+<dd>per esempio, <tt>stampaSegno</tt>
+
+<dt>argomenti
+<dd>un intero
+
+</dl>
+
+<p>
+L'intestazione del metodo &egrave; di
+conseguenza:
+</p>
+
+<pre>
+  static void stampaSegno(int n)
+</pre>
+
+<hr>
+
+
+<h4>Corpo del metodo</h4>
+
+<p>
+Devo stampare una stringa diversa a
+seconda se il numero &egrave; positivo,
+negativo, oppure zero.
+</p>
+
+<p>
+Un modo possibile (ce ne sono altri):
+</p>
+
+<pre>
+  static void stampaSegno(int n) {
+    if(n==0)
+      System.out.println("Zero");
+    else if(n&gt;0)
+      System.out.println("Positivo");
+    else
+      System.out.println("Negativo");
+  }
+</pre>
+
+<hr>
+
+
+<h4>Un programma di prova</h4>
+
+<p>
+Questo &egrave; un possibile programma che
+usa il metodo:
+</p>
+
+<pre>
+class Segno {
+  static void stampaSegno(int n) {
+    if(n==0)
+      System.out.println("Zero");
+    else if(n&gt;0)
+      System.out.println("Positivo");
+    else
+      System.out.println("Negativo");
+  }
+
+  public static void main(String args[]) {
+    int a=2;
+
+    stampaSegno(a);
+    stampaSegno(-9);
+    stampaSegno(2*a-4);
+  }
+}
+</pre>
+
+<p>
+Posso invocare il metodo passando il risultato
+di una qualsiasi espressione, per esempio:
+</p>
+
+<ul>
+
+<li>il valore di una variabile<br>
+(<tt>stampaSegno(a);</tt>)
+
+<li>un valore costante (<tt>stampaSegno(-9);</tt>)
+
+<li>il risultato di una espressione complessa,
+che pu&ograve; anche contenere variabili<br>
+(<tt>stampaSegno(2*a-4);</tt>)
+
+</ul>
+
+<hr>
+
+
+<h4>Esercizio</h4>
+
+<p>
+Stampare questa figura:
+</p>
+
+<pre>
+*
+**
+***
+****
+*****
+******
+*******
+********
+*********
+**********
+</pre>
+
+<p>
+Definire un metodo che stampa una linea di
+<tt>n</tt><br>
+(per stampare un singolo asterisco,<br>
+fare <tt>System.out.print("*");</tt>)
+</p>
+
+<hr>
+
+
+<h4>Il metodo</h4>
+
+<p>
+Il metodo ha:
+</p>
+
+<dl compact="compact">
+
+<dt>tipo valore di ritorno
+<dd><tt>void</tt>
+
+<dt>nome
+<dd>per esempio, <tt>asterischi</tt>
+
+<dt>argomenti
+<dd>un intero
+
+</dl>
+
+<p>
+Per l'intestazione, &egrave; come un metodo
+di una classe:
+</p>
+
+<pre>
+  static void asterischi(int n) {
+    ...
+  }
+</pre>
+
+<p>
+L'unica differenza, nell'intestazione,
+&egrave; la parola <tt>static</tt>
+</p>
+
+<hr>
+
+
+<h4>Corpo del metodo</h4>
+
+<p>
+In <tt>n</tt> viene messo il numero di
+asterischi da stampare.
+</p>
+
+<p>
+Dopo aver stampato, vado a capo.
+</p>
+
+<pre>
+  static void asterischi(int n) {
+    int a;
+
+    for(a=0; a&lt;n; a++)
+      System.out.print("*");
+
+    System.out.println();
+  }
+</pre>
+
+<hr> 
+
+
+<h4>Soluzione completa</h4>
+
+<p>
+Se invoco il metodo come <tt>asterischi(x)</tt>,
+viene stampata una linea di <tt>n</tt> asterischi.
+</p>
+
+<p>
+Questo va fatto per <tt>x=1, 2, 3, ..., 10</tt>
+</p>
+
+<pre>
+class Aster {
+  static void asterischi(int n) {
+    int a;
+
+    for(a=0; a&lt;n; a++)
+      System.out.print("*");
+
+    System.out.println();
+  }
+
+  public static void main(String args[]) {
+    int x;
+
+    for(x=1; x&lt;=10; x++)
+      asterischi(x);
+  }
+}
+</pre>
+
+<hr>
+
+
+<h4>Fasi di esecuzione di un metodo</h4>
+
+<p>
+Quando si invoca un metodo <tt>void</tt>:
+</p>
+
+<ol>
+
+<li>si valutano i parametri attuali
+
+<li>si crea la zona di memoria per il metodo,
+in cui si sono parametri formali e parametri
+attuali
+
+<li>si copiano i valori dei parametri attuali
+in quelli formali
+
+<li>si esegue il corpo del metodo
+
+</ol>
+
+<p>
+Nel corpo del metodo le variabili del programma
+non si possono usare.
+</p>
+
+<p>
+I parametri attuali sono valori, che possono
+anche risultare dalla valutazione di espressioni:
+</p>
+
+<pre>
+  asterischi(12);
+  asterischi(a*2-b);
+  asterischi(2+(int) p.distance(q));
+</pre>
+
+<hr>
+
+
+<h4>Le variabili locali</h4>
+
+<p>
+Le variabili del metodo e del programma
+possono anche avere lo stesso nome.
+</p>
+
+<p>
+Sono comunque due variabili diverse.
+</p>
+
+<pre>
+class Stesso {
+  static void asterischi(int n) {
+    int x;
+
+    for(x=0; x&lt;n; x++)
+      System.out.print("*");
+    System.out.println();
+  }
+
+  public static void main(String args[]) {
+    int x;
+
+    for(x=1; x&lt;=10; x++)
+      asterischi(x);
+  }
+}
+</pre>
+
+<hr>
+
+
+<h4>Invocazione di metodo, in memoria</h4>
+
+<p>
+Prima di invocare il metodo:
+</p>
+
+<img src="invoke-1.jpg">
+
+<p>
+Le variabili del metodo <b>non esistono</b>
+</p>
+
+<hr>
+
+
+<h4>Zona di memoria associata al metodo</h4>
+
+<p>
+Ogni volta che viene invocato un metodo,
+si crea una zona di memoria per tutte le
+sue variabili (variabili locali e parametri
+formali).
+</p>
+
+<img src="invoke-2.jpg">
+
+<p>
+Prima di eseguire le istruzioni, c'&egrave;
+la copiatura dei parametri attuali in quelli
+formali.
+</p>
+
+<hr>
+
+
+<h4>Memoria, quando si esegue il corpo</h4>
+
+<p>
+Quando si eseguono le istruzioni, nei parametri
+attuali sono stati messi i valori dei parametri
+attuali.
+</p>
+
+<img src="invoke-3.jpg">
+
+<hr>
+
+
+<h4>Attenzione ai nomi!</h4>
+
+<p>
+Il valore di <tt>x</tt> va in <tt>n</tt>:
+questo dipende dell'invocazione!</p>
+
+<img src="invoke-4.jpg">
+
+<dl>
+
+<dt>invocazione:
+<dd><tt>asterischi(x)</tt>
+
+<dt>definizione:
+<dd><tt>static ... (int n)</tt>
+
+</dl>
+
+<p>
+Quindi, il valore di <tt>x</tt> viene
+copiato dentro <tt>n</tt>
+</p>
+
+<p>
+&Egrave; come se venisse fatto <tt>n=x;</tt>
+</p>
+
+<hr>
+
+
+<h4>Durante l'esecuzione</h4>
+
+<p>
+Ogni metodo pu&ograve; accedere solo alle
+sue variabili:
+</p>
+
+<ul>
+
+<li><tt>asterischi</tt> pu&ograve;
+usare <tt>n</tt> e la sua <tt>x</tt>
+
+<li><tt>main</tt> pu&ograve; usare
+soltanto la sua <tt>x</tt>
+
+</ul>
+
+<hr>
+
+
+<h4>Fine del metodo</h4>
+
+<p>
+La zona di memoria di <tt>asterischi</tt>
+viene rimossa, e si torna allo stato
+originario.
+</p>
+
+<img src="invoke-1.jpg">
+
+<p>
+Attenzione! Quando si invoca nuovamente
+il metodo, le sue variabili vengono create
+di nuovo.
+</p>
+
+<p>
+Da una invocazione all'altra, i valori delle
+variabili locali vengono persi.
+</p>
+
+<hr>
+
+
+<h4>Modifica delle variabili</h4>
+
+<p>
+Cosa stampa questo programma?
+</p>
+
+<pre>
+class Trab1 {
+  static void prova(int x) {
+    x=0;
+  }
+
+  public static void main(String args[]) {
+    int x;
+
+    x=12;
+
+    prova(x);
+
+    System.out.println(x);
+  }
+}
+</pre>
+
+<hr>
+
+
+<h4>Risposta</h4>
+
+<p>
+Si <i>deve</i> fare la figura.
+</p>
+
+<p>
+Durante l'esecuzione del programma,
+esiste solo la zona di memoria del
+programma:
+</p>
+
+<img src="trab1-1.jpg">
+
+<hr>
+
+
+<h4>Invocazione del metodo</h4>
+
+<p>
+Viene creata la zona di memoria
+del metodo:
+</p>
+
+<img src="trab1-2.jpg">
+
+<hr>
+
+
+<h4>Parametri</h4>
+
+<p>
+Il valore di <tt>x</tt> del <tt>main</tt>
+viene copiato nella <tt>x</tt> di <tt>prova</tt>
+</p>
+
+<img src="trab1-3.jpg">
+
+<p>
+Solo ora si esegue il corpo del metodo.
+</p>
+
+<hr>
+
+
+<h4>Modifica</h4>
+
+<p>
+Se <tt>x=0</tt> compare nel metodo <tt>prova</tt>,
+viene messo <tt>0</tt> nella <tt>x</tt> di <tt>prova</tt>
+</p>
+
+<img src="trab1-4.jpg">
+
+<p>
+Notare: la <tt>x</tt> di <tt>main</tt> non
+<b>pu&ograve;</b> venire modificata: &egrave;
+inaccessibile dal metodo <tt>prova</tt>
+</p>
+
+<hr>
+
+
+<h4>Ritorno</h4>
+
+<p>
+Viene cancellata la zona di <tt>prova</tt>
+</p>
+
+<img src="trab1-1.jpg">
+
+<p>
+Viene quindi stampato <tt>12</tt>
+</p>
+
+<hr>
+
+
+<h4>Attenzione all'ordine</h4>
+
+<p>
+Cosa stampa questo programma?
+</p>
+
+<pre>
+class Ordine {
+  static void prova(int x, int y) {
+    System.out.println(x);
+  }
+
+  public static void main(String args[]) {
+    int x=10;
+    int y=20;
+
+    prova(y,x);
+  }
+}
+</pre>    
+
+<hr>
+
+
+<h4>Nomi delle variabili</h4>
+
+<p>
+I nomi delle variabili sono irrilevanti.
+</p>
+
+<p>
+Se invece del nome <tt>x</tt> uso il nome
+<tt>abcd</tt> il programma fa lo stesso.
+</p>
+
+<p>
+Il passaggio avviene sulla base della
+posizione:
+</p>
+
+<img src="posizione.jpg">
+
+<p>
+Nella <tt>x</tt> di <tt>prova</tt> viene
+messo il valore della <tt>y</tt> di <tt>main</tt>
+</p>
+
+<p>
+Viene stampato <tt>20</tt>
+</p>
+
+<hr>
+
+
+<h4>Suggerimento</h4>
+
+<p>
+Se non &egrave; chiaro:
+</p>
+
+<blockquote>
+<i>
+usate nomi di variabili diverse, se
+possibile, per evitare confusione
+</i>
+</blockquote>
+
+<p>
+Se invece il meccanismo &egrave; chiaro,
+potete anche usare gli stessi nomi.
+</p>
+
+<hr>
+
+
+<h4>Quindi, <tt>x=0;</tt> nel metodo non ha effetto?</h4>
+
+<p>
+Altro suggerimento:
+</p>
+
+<blockquote>
+<i>
+non modificate i parametri formali,
+per evitare confusione
+</i>
+</blockquote>
+
+<hr>
+
+
+<h4>I parametri attuali</h4>
+
+<p>
+Il programma trasmette dei <i>valori</i>
+al metodo (es. 3, 12, -2, ecc.)
+</p>
+
+<p>
+Il metodo li riceve: per poterli usare,
+vengono messi in alcune <i>variabili</i>
+</p>
+
+<hr>
+
+
+<h4>Esempio</h4>
+
+<pre>
+  int a=12, b=-2;
+
+  nomemetodo(12*2, a-b/2, a+b);
+</pre>
+
+<p>
+Vengono valutate le tre espressioni.
+</p>
+
+<p>
+I valori calcolati sono <tt>24, 13, 10</tt>
+</p>
+
+<p>
+L'invocazione del metodo equivale a:
+</p>
+
+<pre>
+  nomemetodo(24, 13, 10);
+</pre>
+
+<hr>
+
+
+<h4>La variabile non pu&ograve; venire modificata!</h4>
+
+<p>
+Per lo stesso motivo:
+</p>
+
+<pre>
+  int x=12;
+
+  prova(x);
+</pre>
+
+<p>
+&Egrave; equivalente a:
+</p>
+
+<pre>
+  int x=12;
+
+  prova(12);
+</pre>
+
+<p>
+Perch&egrave; il valore di <tt>x</tt>
+dovrebbe cambiare.
+</p>
+
+<hr>
+
+
+<h4>Concetto fondamentale</h4>
+
+<p>
+I parametri attuali sono valori.
+<p>
+
+<p>
+Quando si invoca il metodo, le espressioni
+fra parentesi vengono valutate.
+</p>
+
+<p>
+Il fatto che il valore <tt>12</tt> derivi
+dal fatto che in <tt>x</tt> c'era questo
+valore viene dimenticato:
+</p>
+
+<p>
+<tt>prova(x)</tt> diventa come <tt>prova(12)</tt>,
+che non ha nessuna relazione con <tt>x</tt>
+</p>
+
+<blockquote>
+<i>
+i parametri attuali sono valori: il programma
+"trasmette" dei valori ai metodi; la
+provenienza dei valori (costanti, valori di
+variabili, valori di espressioni) &egrave;
+irrilevante
+</i>
+</blockquote>
+
+<p>
+Quando faccio <tt>prova(x)</tt> &egrave; il valore
+contenuto in <tt>x</tt> che viene inviato. Il fatto
+che provenga da <tt>x</tt> non ha importanza.
+</p>
+
+<hr>
+
+
+<h4>Valore di ritorno</h4>
+
+<p>
+La sequenza effettiva &egrave;:
+</p>
+
+<ol>
+
+<li>si calcolano i valori dei parametri attuali
+
+<li>si crea la zona di memoria del metodo
+
+<li>si copiano i parametri attuali nei
+parametri formali
+
+<li>si esegue il corpo del metodo
+
+<li>il valore di ritorno viene usato come
+se fosse scritto al posto della invocazione
+
+</ol>
+
+<p>
+I passi vengono fatti in questa sequenza.
+</p>
+
+<hr>
+
+
+<h4>Esercizio</h4>
+
+<p>
+Cosa stampa questo programma?
+</p>
+
+<pre>
+class Ritorno {
+  static int prova(int x) {
+    x=x+10;
+
+    return x+2;
+  }
+
+  public static void main(String args[]) {
+    int x=12;
+
+    x=prova(x);
+
+    System.out.println(x);
+  }
+}
+</pre>
+
+<hr>
+
+
+<h4>Risposta</h4>
+
+<p>
+Viene stampato <tt>24</tt>
+</p>
+
+<p>
+Perch&egrave;?
+</tt>
+
+<hr>
+
+
+<h4>Motivazione</h4>
+
+<p>
+Inizio del metodo:
+</p>
+
+<img src="ritorno-1.jpg">
+
+<hr>
+
+
+<h4>Alla fine del metodo</h4>
+
+<img src="ritorno-2.jpg">
+
+<p>
+Viene ritornato il valore di <tt>x+2</tt>
+</p>
+
+<p>
+Per <tt>x</tt> si intende la <tt>x</tt> di
+<tt>prova</tt>, che &egrave; <tt>22</tt>
+</p>
+
+<hr>
+
+
+<h4>Valore di ritorno</h4>
+
+<img src="ritorno-3.jpg">
+
+<p>
+Dato che il metodo era stato invocato
+con <tt>x=prova(x)</tt>, e il valore
+di ritorno &egrave; <tt>24</tt>, questo
+equivale a <tt>x=24</tt>
+</p>
+
+<p>
+Il valore di ritorno viene messo in <tt>x</tt>
+</p>
+
+<img src="ritorno-4.jpg">
+
+<hr>
+
+
+<h4>Vero e falso</h4>
+
+<dl>
+
+<dt>falso:
+<dd>si stampa <tt>24</tt> perch&egrave; il metodo
+<tt>prova</tt> aumenta di <tt>10</tt> il valore
+della variabile <tt>x</tt> e poi ancora di due
+
+<dt>vero:
+<dd>il <i>valore di ritorno</i> del metodo <tt>prova</tt>
+&egrave; <tt>24</tt>, e questo numero viene messo
+in <tt>x</tt>
+
+</dl>
+
+<p>
+Se non fate modifiche ai parametri
+formali, non avrete questi problemi:
+</p>
+
+<pre>
+// programma piu' chiaro
+
+class Chiaro {
+  static int prova(int x) {
+    int altronome;
+
+    altronome=x+10;
+
+    return altronome+2;
+  }
+
+  public static void main(String args[]) {
+    int x=12;
+
+    x=prova(x);
+
+    System.out.println(x);
+  }
+}
+</pre>
+
+<hr>
+
+
+<h4>Spezzare gli assegnamenti</h4>
+
+<pre>
+  x=prova(x);
+</pre>
+
+<p>
+Se non vi risulta chiaro, usate una
+variabile in pi&ugrave;:
+</p>
+
+<pre>
+  int y;
+  y=prova(x);
+  x=y;
+</pre>
+
+<p>
+Da questo si capisce la sequenza:
+prima invocazione, poi assegnamento.
+</p>
+
+<hr>
+
+
+<h4>Esercizio sui metodi</h4>
+
+<p>
+Date due variabili intere <tt>a</tt> e <tt>b</tt>,
+stampare i valori delle espressioni
+<tt>a-b</tt>, <tt>a-b*b</tt>, <tt>-a/b</tt>, <tt>a/b</tt>
+</p>
+
+<p>
+Stampare solo i valori di queste espressioni che
+risultano positivi (maggiori o uguali a zero).
+</p>
+
+<hr>
+
+
+<h4>Soluzione senza metodo</h4>
+
+<p>
+Valuto ogni espressione e vedo se
+&egrave; positiva:
+</p>
+
+<pre>
+class SenzaMetodo {
+  public static void main(String args[]) {
+    int a=12, b=32;
+
+    if(a-b &gt;= 0)
+      System.out.println(a-b);
+    else
+      System.out.println("Espressione negativa");
+
+    if(a-b*b &gt;= 0)
+      System.out.println(a-b*b);
+    else
+      System.out.println("Espressione negativa");
+
+    if(-a/b &gt;= 0)
+      System.out.println(-a/b);
+    else
+      System.out.println("Espressione negativa");
+
+    if(a/b &gt;= 0)
+      System.out.println(a/b);
+    else
+      System.out.println("Espressione negativa");
+  }
+}
+</pre>
+
+<p>
+Farlo usando un metodo.
+</p>
+
+<hr>
+
+
+<h4>Quale metodo?</h4>
+
+<p>
+Quale &egrave; l'operazione che si ripete?
+</p>
+
+<p>
+Stampare un valore se positivo.
+</p>
+
+<p>
+``calcolare l'espressione'' non &egrave;
+l'operazione che si ripete, dato che ogni
+volta si tratta di una operazione diversa.
+</p>
+
+<p>
+Si pu&ograve; riscrivere il programma:
+</p>
+
+<pre>
+class Ripetizione {
+  public static void main(String args[]) {
+    int a=12, b=32;
+    int f;
+
+    f=a-b;
+    if(f &gt;= 0)
+      System.out.println(f);
+    else
+      System.out.println("Espressione negativa");
+
+    f=a-b*b;
+    if(f &gt;= 0)
+      System.out.println(f);
+    else
+      System.out.println("Espressione negativa");
+
+    f=-a/b;
+    if(f &gt;= 0)
+      System.out.println(f);
+    else
+      System.out.println("Espressione negativa");
+
+    f=a/b;
+    if(f &gt;= 0)
+      System.out.println(f);
+    else
+      System.out.println("Espressione negativa");
+  }
+}
+</pre>
+
+<p>
+&Egrave; chiaro che la valutazione di una espressione
+va fatta nel programma, dato che sono quattro espressioni
+diverse.
+</p>
+
+<p>
+Per&ograve; la verifica se positivo e la stampa si
+ripetono sempre uguali.
+</p>
+
+<hr>
+
+
+<h4>Il programma</h4>
+
+<p>
+Il metodo prende un valore intero,
+e non restituisce nulla.
+</p>
+
+<pre>
+class ConMetodo {
+  static void stampaSePositivo(int val) {
+    if(val&gt;=0)
+      System.out.println(val);
+    else
+      System.out.println("Espressione negativa");
+  }
+
+  public static void main(String args[]) {
+    int a=12, b=32;
+
+    stampaSePositivo(a-b);
+    stampaSePositivo(a-b*b);
+    stampaSePositivo(-a/b);
+    stampaSePositivo(a/b);
+  }
+}
+</pre>
+
+<p>
+Cosa succede quando si invoca
+<tt>stampaSePositivo(a-b*b)</tt>?
+</p>
+
+<p>
+Equivale a fare: <tt>val=a-b*b</tt> e poi
+eseguire il corpo del metodo.
+</p>
+
+<p>
+Si intende che  dove <tt>val</tt> &egrave;
+la variabile del metodo mentre
+<tt>a</tt> e <tt>b</tt> sono variabili del
+programma.
+</p>
+
+<hr>
+
+
+<h4>Esercizio</h4>
+
+<p>
+Scrivere un metodo che calcola il
+fattoriale di un numero intero.
+</p>
+
+<p>
+Scrivere poi il programma che stampa
+i fattoriali dei valori da 1 a 4, il
+fattoriale di 6 e poi verifica se il
+fattoriale di 5 &egrave; maggiore di
+50 oppure no.
+</p>
+
+<hr>
+
+
+<h4>Il metodo per il fattoriale</h4>
+
+<p>
+Ha valore di ritorno intero.
+</p>
+
+<p>
+Ha come argomento un intero.
+</p>
+
+<pre>
+  static int fattoriale(int n)
+</pre>
+
+<hr>
+
+
+<h4>Corpo del metodo</h4>
+
+<p>
+Calcolo il fattoriale del numero che sta in <tt>n</tt>,<br>
+e ritorno il valore calcolato.
+</p>
+
+<pre>
+  static int fattoriale(int n) {
+    int a;
+    int f;
+
+    f=1;
+    for(a=1; a&lt;=n; a++)
+      f=f*a;
+
+    return f;
+  }
+</pre>
+
+<hr>
+
+
+<h4>Programma</h4>
+
+<p>
+Basta a questo punto invocare il metodo
+tutte le volte che serve.
+</p>
+
+<pre>
+  public static void main(String args[]) {
+    int i;
+
+    for(i=1; i&lt;=4; i++)
+      System.out.println(fattoriale(i));
+
+    System.out.println(fattoriale(6));
+
+    if(fattoriale(5)&gt;50)
+      System.out.println("Il fattoriale di 5 e' maggiore di 50");
+    else
+      System.out.println("Il fattoriale di 5 e' minore di 50");
+  }
+</pre>
+
+<p>
+Provare senza metodo: andava ripetuto lo stesso
+codice almeno tre volte.
+</p>
+
+<hr>
+
+
+<h4>Altra versione</h4>
+
+<p>
+Anche in questo modo funziona:
+</p>
+
+<pre>
+  static int fattoriale(int n) {
+    int f=1;
+
+    for(; n&gt;=1; n--)
+      f=f*n;
+
+    return f;
+  }
+</pre>
+
+<p>
+Molto meno chiaro.
+</p>
+
+<hr>
+
+
+<h4>Altro esercizio</h4>
+
+<p>
+Scrivere un metodo che calcola il valore
+assoluto di un numero intero.
+</p>
+
+<p>
+Scrivere un programma che legge da tastiera
+un intero, e stampa la radice del valore
+assoluto.
+</p>
+
+<hr>
+
+
+<h4>Intestazione</h4>
+
+<p>
+Ha come parametro un intero, e ritorna
+un intero.
+</p>
+
+<pre>
+  static int valoreAssoluto(int)
+</pre>
+
+<hr>
+
+
+<h4>Corpo del metodo</h4>
+
+<p>
+Se il numero &egrave; positivo, ritorno
+il suo valore.
+</p>
+
+<p>
+Se &egrave; negativo, ritorno l'opposto
+del suo valore.
+</p>
+
+<pre>
+  static int valoreAssoluto(int n) {
+    if(n&gt;=0)
+      return n;
+    else
+      return -n;
+  }
+</pre>
+
+<hr>
+
+
+<h4>Programma</h4>
+
+<dl>
+
+<dt>programma di prova
+<dd>serve per verificare se il metodo funziona
+
+<dt>programma vero
+<dd>quello in cui si usa il metodo
+
+</dl>
+
+<p>
+Nel programma di prova, &egrave; bene fare
+pi&ugrave; invocazioni, per verificare se
+il metodo funziona.
+</p>
+
+<p>
+Nel programma vero potrebbe anche esserci solo
+una invocazione.
+</p>
+
+<hr>
+
+
+<h4>Esempio di programma di prova</h4>
+
+<pre>
+class ValAssoluto {
+  static int valoreAssoluto(int n) {
+    if(n&gt;=0)
+      return n;
+    else
+      return -n;
+  }
+
+  public static void main(String args[]) {
+    int x;
+
+    for(x=-10; x&lt;=10; x++) {
+      System.out.println(valoreAssoluto(x));
+    }
+  }
+}
+</pre>
+
+<hr>
+
+
+<h4>Programma di uso</h4>
+
+<p>
+Il programma che voglio fare &egrave; quello
+che legge un intero da tastiera, fa la radice
+del valore assoluto, e stampa.
+</p>
+
+<pre>
+import javax.swing.*;
+
+class Radice {
+  static int valoreAssoluto(int n) {
+    if(n&gt;=0)
+      return n;
+    else
+      return -n;
+  }
+
+  public static void main(String args[]) {
+    int x;
+
+    String s;
+    s=JOptionPane.showInputDialog("Dammi un intero");
+
+    x=Integer.parseInt(s);
+
+    System.out.println(Math.sqrt(valoreAssoluto(x)));
+
+    System.exit(0);
+  }
+}
+</pre>
+
+<hr>
+
+
+<h4>Esercizio</h4>
+
+<p>
+Scrivere un metodo che riceve due
+interi e restituisce la somma dei loro
+fattoriali.
+</p>
+
+<p>
+Usare il metodo fattoriale.
+</p>
+
+<p>
+Si pu&ograve; invocare un metodo anche
+all'interno di un altro metodo.
+</p>
+
+<hr>
+
+
+<h4>Primo: il solito metodo fattoriale.</h4>
+
+<pre>
+  static int fattoriale(int n) {
+    int a;
+    int f;
+
+    f=1;
+    for(a=1; a&lt;=n; a++)
+      f=f*a;
+
+    return f;
+  }
+</pre>
+
+<hr>
+
+
+<h4>Secondo: l'intestazione del nuovo metodo</h4>
+
+<p>
+Prende due interi e torna un intero.
+</p>
+
+<pre>
+  static int sommaFatt(int, int) 
+</pre>
+
+<hr>
+
+
+<h4>Terzo: corpo del metodo</h4>
+
+<p>
+Devo calcolare i fattoriali, e sommarli.
+</p>
+
+<pre>
+  static int sommaFatt(int x, int y) {
+    int f1, f2;
+
+    f1=fattoriale(x);
+    f2=fattoriale(y);
+
+    return f1+f2;
+  }
+</pre>
+
+<hr>
+
+
+<h4>Un programma completo</h4>
+
+<pre>
+class SommaFatt {
+  static int fattoriale(int n) {
+    int a;
+    int f;
+
+    f=1;
+    for(a=1; a&lt;=n; a++)
+      f=f*a;
+
+    return f;
+  }
+
+  static int sommaFatt(int x, int y) {
+    int f1, f2;
+
+    f1=fattoriale(x);
+    f2=fattoriale(y);
+
+    return f1+f2;
+  }
+
+  public static void main(String args[]) {
+    int i;
+
+    System.out.println(sommaFatt(1,4)/2);
+  }
+}
+</pre>
+
+</body>
+</html>
+
+
+

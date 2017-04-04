@@ -1,0 +1,50 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML>
+
+<HEAD>
+
+<TITLE>prova Banner scorrevoli</TITLE>
+
+<META CONTENT="text/html; charset=us-ascii" HTTP-EQUIV="Content-Type">
+<SCRIPT TYPE="text/javascript" LANGUAGE="Javascript">
+<!-- /* Hide content from old browsers */
+// versione con informazioni globali
+var serieImmagini = new Array(4);
+    serieImmagini[0] = new Image (200,150);
+    serieImmagini[0].src = "J0295241.GIF";
+    serieImmagini[1] = new Image (200,150);
+    serieImmagini[1].src = "J0305493.WMF";    
+    serieImmagini[2] = new Image (200,150);
+    serieImmagini[2].src = "J0183290.WMF";    
+    serieImmagini[3] = new Image (200,150);
+    serieImmagini[3].src = "J0301480.WMF";    
+
+var indice = 0;
+
+function cambiaBanner() {
+    if (indice < 3) { // le immagini hanno indice 0,1,2
+        indice=indice+1;
+    } else {
+	indice = 0;
+    }
+    document.banner.src = serieImmagini[indice].src;
+    setTimeout("cambiaBanner()",document.modulo.durata.value);
+    return true;
+}
+// end hiding content from old browsers  -->
+</SCRIPT>
+
+</HEAD>
+
+<BODY onLoad='cambiaBanner()'>
+
+<IMG ALIGN="left" NAME="banner" SRC="J0295241.GIF" WIDTH="200" HEIGHT="150">
+<H1>Buone Feste</H1>
+
+<form method="POST" action="javascript:void(0);" name="modulo">
+  Millisecondi tra una immagine e l'altra?<br><input type="text" name="durata" size="10" value="400">
+</form>
+
+</BODY>
+
+</HTML>

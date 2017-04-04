@@ -1,0 +1,332 @@
+<!doctype html public "-//w3c//dtd html 4.0 transitional//en">
+<html>
+<head>
+   <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <meta name="Author" content="DANIELE NARDI">
+   <meta name="GENERATOR" content="Microsoft FrontPage 4.0">
+   <title>settimana1</title>
+</head>
+<body>
+
+<p><b>Lezione 6: Metodologia di progetto</b></p>
+<p>Combina:</p>
+<ol>
+  <li>Progettazione sistemi informativi</li>
+  <li>Progettazione di sistemi ipermediali</li>
+</ol>
+<p>Riguarda: Contenuto e Navigazione.</p>
+<p>Orientata all'uso di XML per la progettazione logica.</p>
+<p>NON TRATTA: la presentazione, la definizione dei processi di interfaccia </p>
+<hr>
+<p><b>Fasi della metodologia</b></p>
+<ol>
+  <li>Concettuale</li>
+  <li>Logica</li>
+  <li>Fisica</li>
+  <li>Lessicale-Sintattica</li>
+  <li>Semantica</li>
+</ol>
+<p>Le prime tre fasi riguardano la generazione dei documenti, le ultime due
+riguardano l'elaborazione dei documenti.</p>
+<hr>
+<p><b>Obiettivi</b>
+<ol>
+  <li>FASE CONCETTUALE: L'obiettivo della <b>prima fase</b> è l'individuazione
+    del dominio di interesse.</li>
+  <li>FASE LOGICA: Nella <b>seconda fase </b>si individuano le tipologie di
+    documenti di interesse per l'applicazione e si scrivono i relativi DTD.</li>
+  <li>FASE FISICA: La <b>terza fase</b> riguarda la scrittura dei documenti XML.</li>
+  <li>FASE LESSICALE-SINTATTICA: Nella <b>quarta fase</b> il documento viene
+    analizzato da un parser per verificarne la conformità allo standard XML e
+    in alcuni casi al suo DTD.</li>
+  <li>FASE SEMANTICA: Nella <b>quinta fase</b> si interpreta la struttura del
+    documento e se ne elabora il contenuto.</li>
+</ol>
+<hr>
+<p><b>Fase concettuale</b></p>
+<p>INPUT: Dominio di interesse derivato dall'analisi svolta con l'utente</p>
+<p class="MsoNormal">OUTPUT: Schema ER</p>
+<p class="MsoNormal">Si utilizzano i metodi classici della progettazione
+concettuale di DB.</p>
+<hr>
+<p><b>Esempio</b></p>
+<p class="MsoNormal"><img border="0" src="figura5.gif" width="730" height="474"></p>
+<p class="MsoNormal">Fig. 10.2.1</p>
+<hr>
+<p><b>Fase logica</b></p>
+<p>INPUT: Schema ER</p>
+<p class="MsoNormal">OUTPUT: DTD dei documenti</p>
+<p class="MsoNormal">Nella fase logica tramite XML si combina ipermedialità e
+modellazione dei dati.</p>
+<p class="MsoNormal">Passo 1: Individuazione delle tipologie di documenti e
+delle relazioni</p>
+<p class="MsoNormal">Passo 2: Costruzione dei DTD relativi alle tipologie
+definite al passo 1.</p>
+<hr>
+<p><b>Fase logica: Tipologie di documenti e relazioni</b></p>
+<p>INPUT: Schema ER</p>
+<p class="MsoNormal">OUTPUT: tipologie dei documenti e loro inter-relazioni</p>
+<p class="MsoNormal">Una tipologia di documento è rappresentata da un frammento
+del diagramma ER in cui viene stabilito un criterio di navigazione e fatta una
+selezione degli attributi.</p>
+<ul>
+  <li>
+    <p class="MsoNormal">Individuazione delle tipologie di documento candidate</li>
+  <li>
+    <p class="MsoNormal">Selezione delle tipologie di interesse</li>
+  <li>
+    <p class="MsoNormal">Analisi delle gerarchie</li>
+  <li>
+    <p class="MsoNormal">Individuazione delle relazioni tra tipologie di
+    documenti</li>
+</ul>
+<hr>
+<p class="MsoNormal"><b>Individuazione delle tipologie di documento candidate</b></p>
+<ul>
+  <li>
+    <p class="MsoNormal">entità </li>
+  <li>
+    <p class="MsoNormal">relazioni con le entità che vi partecipano </li>
+  <li>
+    <p class="MsoNormal">viste</li>
+</ul>
+<p class="MsoNormal">Per ciascuna tipologia che contiene più di una entità
+occorre definire una entità <i>proprietaria</i> che verrà utilizzata per
+l'accesso.</p>
+<hr>
+<p class="MsoNormal"><b>Linee guida per la selezione delle tipologie di
+documenti</b></p>
+<ul>
+  <li>
+    <p class="MsoNormal">documenti/viste interessanti</li>
+  <li>
+    <p class="MsoNormal">specializzazione dei DTD per favorire la ricerca delle
+    informazioni</li>
+  <li>
+    <p class="MsoNormal">incorporare le entità che corrispondono ad attributi
+    multivalore</li>
+  <li>
+    <p class="MsoNormal">incorporare le entità che possono essere ricondotte ad
+    attributi strutturati</li>
+</ul>
+<hr>
+<p class="MsoNormal"><b>Esempio di assorbimento di una entità</b></p>
+<p class="MsoNormal"><img border="0" src="dtd.gif" width="473" height="302"></p>
+<hr>
+<p class="MsoNormal"><b>Gerarchie</b></p>
+<ol>
+  <li>
+    <p class="MsoNormal">definire un unico DTD per tutta la gerarchia</li>
+  <li>
+    <p class="MsoNormal">definire una tipologia di documento per ogni foglia</li>
+</ol>
+<p class="MsoNormal">Ad esempio possono essere definite tipologie di documento
+per&nbsp;</p>
+<ul>
+  <li>
+    <p class="MsoNormal"><font face="Courier">support-staff</font> (che
+    comprende <font face="Courier">Administartive</font> e <font face="Courier">Technician</font>)</li>
+  <li>
+    <p class="MsoNormal"><font face="Courier">PhD Student</font></li>
+  <li>
+    <p class="MsoNormal"><font face="Courier">Faculty</font></li>
+  <li>
+    <p class="MsoNormal"><font face="Courier">Researcher</font></li>
+</ul>
+<p class="MsoNormal">La soluzione adottata ha implicazioni sulle fasi
+successive:</p>
+<ol>
+  <li>
+    <p class="MsoNormal">interpretazione unica dei documenti con diverse azioni
+    semantiche</li>
+  <li>
+    <p class="MsoNormal">interpretazione di documenti separati</li>
+</ol>
+<hr>
+<p class="MsoNormal"><b>Collegamenti/relazioni&nbsp; tra le tipologie di
+documento</b></p>
+<ol>
+  <li>
+    <p class="MsoNormal">Si considerano tutte le relazioni tra le entità che
+    formano le tipologie di documenti</li>
+  <li>
+    <p class="MsoNormal">Si selezionano i collegamenti scegliendo per i due
+    versi di ciascuna relazione se rappresentarla tramite un collegamento</li>
+</ol>
+<hr>
+<p><b>Fase logica: Scrittura dei DTD</b></p>
+<p>INPUT: Schema ER e tipologie di documenti</p>
+<p class="MsoNormal">OUTPUT: DTD dei documenti</p>
+<ol>
+  <li>
+    <p class="MsoNormal">Costruzione del Root element</li>
+  <li>
+    <p class="MsoNormal">Mapping degli attributi</li>
+  <li>
+    <p class="MsoNormal">Mapping delle relazioni</li>
+  <li>
+    <p class="MsoNormal">Costruzione del content model</li>
+</ol>
+<hr>
+<p><b>Costruzione del Root element</b></p>
+<p>Il root element viene designato dal nome della entità proprietaria.</p>
+<p>Ad esempio:</p>
+<p><font face="Courier">&lt;department&gt; &lt;research-group&gt;
+&lt;faculty&gt;</font></p>
+<hr>
+<p><b>Mapping degli attributi</b></p>
+<p>Attributi monovalore non strutturati possono essere modellati da</p>
+<ul>
+  <li>attibuti XML (indipendenti dall'ordine)</li>
+  <li>elementi XML con content <font face="Lucida Console">PCDATA</font>
+    (ordinati)</li>
+</ul>
+<p>Attributi multivalore o strutturati</p>
+<ul>
+  <li>elementi XML con content <font face="Lucida Console">PCDATA</font></li>
+</ul>
+<hr>
+<p><b>Mapping delle relazioni</b></p>
+<ol>
+  <li>Relazioni interne alla tipologia di documento -&gt; attributi</li>
+  <li>Relazioni tra tipologie di documento diverse -&gt; link</li>
+</ol>
+<p>Si usa il linguaggio XLink che consente di specificare i collegamenti tra i
+tag dei documenti.</p>
+<hr>
+<p><b>Costruzione del content model</b></p>
+<p>Ordinamento degli elementi derivati dagli attributi&nbsp; e dalle relazioni
+interne.</p>
+<p>Cardinalità degli elementi</p>
+<hr>
+<p><b>Esempio</b></p>
+<p><font face="Courier">&lt;!element faculty(name,address,phone-number,birthday,e-mail,home-page,
+student-hour,interested-in+,member-of*,issues*,teaches*)+&gt;</font></p>
+<p>Attributi<font face="Courier"><br>
+NAME<br>
+&lt;!element name EMPTY&gt;&nbsp;<br>
+&lt;!attlist name<br>
+key id #REQUIRED<br>
+type CDATA #FIXED &quot;string&quot;<br>
+lengthmax CDATA #FIXED &quot;30&quot;&gt;<br>
+<br>
+BIRTHDAY<br>
+&lt;!element birthday EMPTY&gt;&nbsp;<br>
+&lt;!attlist birthday<br>
+type CDATA #FIXED &quot;data&quot;<br>
+day CDATA #REQUIRED<br>
+month CDATA #REQUIRED<br>
+year CDATA #REQUIRED&gt;<br>
+<br>
+STUDENT-HOUR<br>
+&lt;!element student-hour EMPTY&gt;&nbsp;<br>
+&lt;!attlist student-hour<br>
+day (lun|mar|mer|gio|ven) #REQUIRED<br>
+hour CDATA #REQUIRED&gt;<br>
+<br>
+</font>Relazioni</p>
+<p><font face="Courier">INTERESTED-IN<br>
+&lt;!element interested-in EMPTY&gt;&nbsp;<br>
+&lt;!attlist interested-in<br>
+name ID #REQUIRED&gt;<br>
+<br>
+TEACHES<br>
+&lt;!element teaches PCDATA&gt;&nbsp;<br>
+&lt;!attlist teaches<br>
+key CDATA #FIXED &quot;yes&quot;<br>
+xml:link CDATA #FIXED &quot;simple&quot;<br>
+href CDATA #REQUIRED&gt;<br>
+</font></p>
+<hr>
+<p><b>Fase fisica</b></p>
+<p>INPUT: Archivio, Base Dati (XML/Tradizionale), DTD dei documenti</p>
+<p class="MsoNormal">OUTPUT: Documento XML (Statico/Dinamico)</p>
+<p class="MsoNormal">Si utilizzano strumenti diversi a seconda di:</p>
+<ul>
+  <li>
+    <p class="MsoNormal">sorgente dei dati</li>
+  <li>
+    <p class="MsoNormal">realizzazione statica/dinamica</li>
+</ul>
+<hr>
+<p><b>Fase fisica (caso statico)</b></p>
+<p>I dati vengono estratti al momento della creazione del sito inizialmente ed
+inseriti in un documento XML.</p>
+<ol>
+  <li>Programma di importazione (traduttore).</li>
+  <li>Estrazione dati dal dbms (tramite connessione col DB o tramite la
+    creazione di un archivio)</li>
+  <li>Estrazione diretta da archivio XML tramite parser o XML-QL</li>
+</ol>
+<p>Se i dati provengono da diverse sorgenti occorre prevedere dei processi di
+integrazione.</p>
+<p>L'output (documento XML) può essere memorizzato:</p>
+<ol>
+  <li>direttamente nel file system</li>
+  <li>tramite DBMS (testuale o XML)</li>
+</ol>
+<hr>
+<p><b>Fase fisica (caso dinamico)</b></p>
+<p>I dati vengono estratti al momento della creazione del documento XML che
+avviene sulla base delle richieste dell'applicazione ed inseriti in un documento
+XML dinamico.</p>
+<p>L'estrazione può avvenire:</p>
+<ol>
+  <li>Lettura dell'archivio </li>
+  <li>Connessione con DBMS</li>
+  <li>Estrazione diretta da archivio XML tramite parser o XML-QL</li>
+</ol>
+<p>Nel caso dinamico:</p>
+<ol>
+  <li>il processo di creazione delle pagine è controllato dall'applicazione che
+    richiede il documento XML</li>
+  <li>si complica notevolmente il problema di gestire dinamicamente
+    l'integrazione dei dati.</li>
+</ol>
+<hr>
+<p><b>Fase lessicale-sintattica</b></p>
+<p>INPUT: Documento XML e relativo DTD</p>
+<p class="MsoNormal">OUTPUT:Analisi del documento</p>
+<p class="MsoNormal">Strumenti: Parser XML, Parser ad hoc</p>
+<p class="MsoNormal">Il parser può essere validante, ma la fase lessicale
+sintattica perse di importanza quando il documento XML viene generato
+automaticamente.</p>
+<hr>
+<p><b>Fase semantica</b></p>
+<p>INPUT: contenuto del documento XML</p>
+<p class="MsoNormal">OUTPUT: Elaborazione del documento</p>
+<p class="MsoNormal">Strumenti: Parser XML, XSL, DOM, SAX, Parser ad hoc</p>
+<p class="MsoNormal">L'obbiettivo di questa fase è la determinazione delle
+azioni semantiche per:</p>
+<ol>
+  <li>
+    <p class="MsoNormal">il mapping dei documenti sulle unità di
+    visualizzazione</li>
+  <li>
+    <p class="MsoNormal">struttura navigazionale dell'applicazione</li>
+  <li>
+    <p class="MsoNormal">gestione delle transazioni e dell'interazione con
+    l'utente</li>
+</ol>
+<hr>
+<p class="MsoNormal"><b>Il mapping dei documenti sulle unità di visualizzazione</b></p>
+<p>HTML (browser)</p>
+<p>WML (cellulari)</p>
+<p>VOCE</p>
+<p>...</p>
+<hr>
+<p class="MsoNormal"><b>Struttura navigazionale dell'applicazione</b></p>
+<p class="MsoNormal">Collegamenti derivati dal modello concettuale</p>
+<p class="MsoNormal">Collegamenti di ausilio</p>
+<ol>
+  <li>
+    <p class="MsoNormal">pagina iniziale</li>
+  <li>
+    <p class="MsoNormal">mappa</li>
+  <li>
+    <p class="MsoNormal">aiuto ed assistenza</li>
+</ol>
+
+
+</body>
+</html>

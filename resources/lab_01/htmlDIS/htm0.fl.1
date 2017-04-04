@@ -1,0 +1,81 @@
+/*
+ * Analizzatore lessicale per miniHTML, versione 1
+ * (da usare insieme all'analizzatore sintattico realizzato con BISON
+ *  a partire da htm0.y).
+ *
+ * Sequenza di comandi per generare il parser:
+ *
+ *     flex htm0.fl
+ *     bison -d htm0.y
+ *     PER DOS/WINDOWS: gcc lexyy.c htm0_tab.c -lfl -o mini0
+ *     PER LINUX/UNIX: gcc lex.yy.c htm0.tab.c -lfl -o mini0
+ *
+ * Richiamare il parser tramite il comando:
+ *
+ *     mini0 < nomefileinput
+ *
+ * oppure ridirigendo l'output su un file:
+ *
+ *     mini0 < nomefileinput > nomefileoutput
+ */
+
+%{
+ #include <string.h>
+ #include <stdlib.h>
+ #include "htm0_tab.h" /* PER LINUX/UNIX: cambiare in questa include il
+                          nome del file in htm0.tab.h */
+%}
+
+delim ([ \t\n])+
+
+%%
+
+"<html>"	{return(Shtml); }
+"</html>"	{return(Ehtml);}
+"<head>"	{return(Shead);}
+"</head>"	{return(Ehead);}
+"<body>"	{return(Sbody);}
+"</body>"	{return(Ebody);}
+"<title>"	{return(Stitle);}
+"</title>"	{return(Etitle);}
+"<ol>"		{return(Sol);}
+"</ol>"		{return(Eol);}
+"<ul>"		{return(Sul);}
+"</ul>"		{return(Eul);}
+"<li>"		{return(Sli);}
+"</li>"		{return(Eli);}
+"<h1>"		{return(Sh1);}
+"</h1>"		{return(Eh1);}
+"<h2>"		{return(Sh2);}
+"</h2>"		{return(Eh2);}
+"<h3>"		{return(Sh3);}
+"</h3>"		{return(Eh3);}
+"<h4>"		{return(Sh4);}
+"</h4>"		{return(Eh4);}
+"<h5>"		{return(Sh5);}
+"</h5>"		{return(Eh5);}
+"<h6>"		{return(Sh6);}
+"</h6>"		{return(Eh6);}
+"<em>"		{return(Sem);}
+"</em>"		{return(Eem);}
+"<center>"	{return(Scenter);}
+"</center>"	{return(Ecenter);}
+"<code>"	{return(Scode);}
+"</code>"	{return(Ecode);}
+"<b>"		{return(Sb);}
+"</b>"		{return(Eb);}
+"<i>"		{return(Si);}
+"</i>"		{return(Ei);}
+"<dd>"		{return(Sdd);}
+"</dd>"   	{return(Edd);}
+"<br>"		{return(Br);}
+"<p>"		{return(Sp);}
+"<hr>"	        {return(Hr);}
+
+{delim}
+[^\<\>]+	{return(Text);}
+"<!"[^\>]*">"		
+
+
+%%
+

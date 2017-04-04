@@ -1,0 +1,48 @@
+
+<HTML>
+
+<HEAD>
+<META HTTP-EQUIV="Context-Type" CONTEXT="text/html;charset=PREDEFINITA (AUTOMATICA)">
+<meta name="GENERATOR" content="Microsoft Internet Assistant for PowerPoint 97">
+ <TITLE>Translating Weak Entity Sets</TITLE> 
+</HEAD>
+
+<BODY     >
+
+ <H1>Translating Weak Entity Sets</H1> 
+ <P><UL>
+<LI><H2>Weak entity set and identifying relationship set are translated into a single table.
+</H2>
+<UL>
+<LI>When the owner entity is deleted, all owned weak entities must also be deleted.</UL></UL></P>
+<P><UL>
+CREATE TABLE  Dep_Policy (
+<BR></UL><UL>
+   pname  CHAR(20),
+</UL><UL>
+   age  INTEGER,
+</UL><UL>
+   cost  REAL,
+</UL><UL>
+   ssn  CHAR(11) NOT NULL,
+</UL><UL>
+   PRIMARY KEY  (pname, ssn),
+</UL><UL>
+   FOREIGN KEY  (ssn) REFERENCES Employees,
+</UL><UL>
+      ON DELETE CASCADE)</UL></P>
+<P></P> 
+<P>
+<TABLE>
+  <TD HEIGHT=100 WIDTH=100> <A HREF="tsld011.htm">Diapositiva precedente</A> </TD>
+  <TD HEIGHT=100 WIDTH=100> <A HREF="tsld013.htm">Diapositiva successiva</A> </TD>
+  <TD HEIGHT=100 WIDTH=150> <A HREF="tsld001.htm">Torna alla prima diaposiva</A> </TD>
+  <TD HEIGHT=100 WIDTH=150> <A HREF="sld012.htm">Visualizza versione grafica</A> </TD>
+</TABLE>
+<BR>
+</P>
+
+
+
+</Body>
+</HTML>

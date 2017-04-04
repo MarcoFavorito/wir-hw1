@@ -1,0 +1,68 @@
+
+<HTML>
+
+<HEAD>
+<META HTTP-EQUIV="Context-Type" CONTEXT="text/html;charset=PREDEFINITA (AUTOMATICA)">
+<meta name="GENERATOR" content="Microsoft Internet Assistant for PowerPoint 97">
+ <TITLE>Find sid’s of sailors who’ve reserved a red and a green boat</TITLE> 
+</HEAD>
+
+<BODY     >
+
+ <H1>Find sid’s of sailors who’ve reserved a red and a green boat</H1> 
+ <P><UL>
+<LI><H2>INTERSECT: Can be used to compute the intersection of any two  union-compatible sets of tuples. 
+</H2>
+</UL><UL>
+<LI><H2>Included in the SQL/92 standard, but some systems don’t support it.
+</H2>
+</UL><UL>
+<LI><H2>Contrast symmetry of the UNION and INTERSECT queries with how much the other versions differ.</H2>
+</UL></P>
+<P><UL>
+SELECT  S.sid
+<BR></UL><UL>
+FROM  Sailors S, Boats B1, Reserves R1,
+</UL><UL>
+             Boats B2, Reserves R2
+</UL><UL>
+WHERE  S.sid=R1.sid AND R1.bid=B1.bid
+</UL><UL>
+  AND  S.sid=R2.sid AND R2.bid=B2.bid
+</UL><UL>
+  AND (B1.color=‘red’ AND B2.color=‘green’)</UL></P>
+<P><UL>
+SELECT  S.sid
+<BR></UL><UL>
+FROM  Sailors S, Boats B, Reserves R
+</UL><UL>
+WHERE  S.sid=R.sid AND R.bid=B.bid
+</UL><UL>
+                AND B.color=‘red’
+</UL><UL>
+INTERSECT
+</UL><UL>
+SELECT  S.sid
+</UL><UL>
+FROM  Sailors S, Boats B, Reserves R
+</UL><UL>
+WHERE  S.sid=R.sid AND R.bid=B.bid
+</UL><UL>
+                AND B.color=‘green’</UL></P>
+<P><UL>
+Key field!<BR></UL></P>
+<P></P> 
+<P>
+<TABLE>
+  <TD HEIGHT=100 WIDTH=100> <A HREF="tsld009.htm">Diapositiva precedente</A> </TD>
+  <TD HEIGHT=100 WIDTH=100> <A HREF="tsld011.htm">Diapositiva successiva</A> </TD>
+  <TD HEIGHT=100 WIDTH=150> <A HREF="tsld001.htm">Torna alla prima diaposiva</A> </TD>
+  <TD HEIGHT=100 WIDTH=150> <A HREF="sld010.htm">Visualizza versione grafica</A> </TD>
+</TABLE>
+<BR>
+</P>
+
+
+
+</Body>
+</HTML>

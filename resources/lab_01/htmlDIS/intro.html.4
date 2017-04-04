@@ -1,0 +1,109 @@
+<html>
+<title>3D Reconstruction with Stereo</title>
+
+<body>
+
+<BR><BR>
+<P><h1><center>Introduction</center></h1></p>
+
+<UL>
+
+<BR><BR><BR>
+
+<P>
+<B>General task</B>:
+a mobile robot starts at an unknown position in an unknown
+environment and incrementally builds a 3D model of the visited area.
+</P>
+
+<br><P>Finding an effective way to accomplish this task is deeply related
+to some design choices: <br><br>
+<ol>
+ <li>robot sensors<br><br>
+ <li>environment representation.
+</ol>
+</P>
+
+<br><br><P>
+<b>Previous approaches</b>
+</P>
+
+<UL>
+
+<LI><b>Simultaneous Localization and Mapping</b> (SLAM)
+is addressed by a mathematical formalization of the dynamic
+system formed by the robot location and the location of all
+the features in the map and by computing the status of these
+system (for example by using an Extended Kalman Filter).<br><br>
+
+The need of considering all the relationships between 
+the features in the map makes the use of these approaches 
+computationally intractable in many real applications.<br><br><br>
+
+
+<LI><b>Camera Motion Estimation</b> is addressed by using a
+mathematical formalization of the camera device and
+solving a over-constrained linear system with features extracted
+from images (e.g. lines and corners from images, etc.).<br><br>
+
+Motion estimation from two or three images at a time is affected
+by error accumulation over long sequences.
+</UL>
+
+<br><br>
+
+<P>Common Problem:<br><br>
+<ol>
+point/feature correspondences (i.e. data association).
+</ol>
+</P>
+
+
+
+
+
+<br><br><P>
+<b>New approach</b>
+</P>
+
+<UL>
+
+<P>
+We have investigated a new approach in which we focus our attention at the 
+solution of both the <b>motion estimation</b> and the <b>data association</b> 
+problems at the same time.
+</P>
+
+<P>
+The general idea is to divide the process in two steps:<br><br>
+<ol>
+<li>rough motion prediction by odometry and stereo<br><br>
+<li>fine data matching and motion estimation by a local search 
+in the robot's pose space.
+</ol>
+</P>
+
+
+</UL>
+
+<br><br><P>
+<b>Applications</b>
+</P>
+
+<ol>
+<li><b>Environment 3D modelling</b> by using Hough Localization and Image Correlation,
+<br>under the assumption of <i>planar motion</i>
+and <i>planar surfaces</i>.<br><br> 
+<li><b>Camera motion estimation and 3D object modelling</b> by using Large Baseline 
+Stereo.
+</ol>
+</P>
+
+
+
+</UL>
+
+</body>
+</html>
+
+

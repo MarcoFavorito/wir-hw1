@@ -1,0 +1,92 @@
+<html>
+<head>
+<title>Scritto 13 Luglio 2004 - Compito A</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+</head>
+
+<body bgcolor="#FFFFFF" text="#000000">
+<p align="center"><font size="+1"><i>Facolt&agrave; di Ingegneria<br>
+  Corso di Laurea in Ingegneria Gestionale<br>
+  Tecniche di Programmazione<br>
+  A.A. 2003-2004</i></font></p>
+<p align="center"><font size="+1">Appello del 13 Luglio 2004 - Compito A</font></p>
+<p align="center"><font size="+1">Durata: 1 ora e 45 minuti</font></p>
+<hr>
+<p><b>Parte I</b></p>
+<ol>
+  <li> Una sequenza di N numeri si dice bitonica se i primi K numeri (dove 0&lt;=K&lt;=N) 
+    sono ordinati in modo crescente e i restanti N-K numeri sono ordinati in modo 
+    decrescente (ad esempio, 2, 4, 5, 7, 3, 1 &egrave; una sequenza bitonica). 
+    Scrivere un metodo statico <tt>sequenzaBitonica</tt> (possibilmente ricorsivo) 
+    che, data una <tt>LinkedList</tt> (o un array) di <tt>Integer</tt>, restituisce 
+    <tt>TRUE</tt> se rappresenta una sequenza bitonica, e <tt>FALSE</tt> altrimenti.</li>
+  <li>Scrivere un metodo statico <tt>livelloFogliaSinistra</tt> che, dato albero 
+    binario, restituisce il livello della foglia pi&ugrave; a sinistra nell'albero 
+    (si assuma che la radice ha livello 0, i figli della radice hanno livello 
+    1, ecc.), oppure -1 se l'albero &egrave; vuoto.</li>
+</ol>
+<hr>
+<p><b>Parte II</b></p>
+<p><i>Domanda 1</i></p>
+<blockquote>
+  <p>Dire cosa stampa il seguente programma:</p>
+  <pre>public class Mistero {
+    public static int mistero(int x){
+        if (x==0) return 0;
+        else if (x&lt;0) return 1+mistero(x+1);
+        else return 1+mistero(x-1);
+    }
+    public static void main(String[] args){
+        System.out.println(mistero(-10));
+        System.out.println(mistero(10));
+    }
+}</pre>
+  <p>Quale funzione matematica f(x) &egrave; calcolata dal metodo <tt>mistero</tt>? 
+    Motivare le risposte (N.B. risposte non motivate saranno considerate nulle).</p>
+</blockquote>
+<p><i>Domanda 2</i></p>
+<blockquote>
+  <p>Illustrare l'algoritmo di ordinamento a bolle (Bubblesort) usando come esempio 
+    il seguente array di interi:</p>
+
+<table width="100" border="1" cellspacing="0" cellpadding="0">
+  <tr> 
+    <td> 
+        <div align="center">5</div>
+    </td>
+    <td> 
+        <div align="center">2</div>
+    </td>
+    <td> 
+        <div align="center">4</div>
+    </td>
+    <td> 
+        <div align="center">1</div>
+    </td>
+    <td> 
+        <div align="center">3</div>
+    </td>
+  </tr>
+</table>
+
+  <p> Valutare il tempo richiesto dall'algoritmo in funzione del numero di elementi 
+    n dell'array nel caso peggiore e nel caso migliore usando la notazione asintotica. 
+    Motivare la risposta (N.B. risposte non motivate saranno considerate nulle).</p>
+  </blockquote>
+<p><i>Domanda 3</i></p>
+<blockquote>
+  <p>Rispondere a <b>una sola</b> delle due domande seguenti, a scelta:</p>
+</blockquote>
+<ol>
+  <li>spiegare cosa sono le strutture collegate. In particolare, dire: 
+    <ul>
+      <li>come realizzare una struttura collegata in Java</li>
+      <li>quali differenze ci sono tra array e strutture collegate</li>
+    </ul>
+  </li>
+  <li>???</li>
+</ol>
+<p>&nbsp;</p>
+</body>
+</html>
+

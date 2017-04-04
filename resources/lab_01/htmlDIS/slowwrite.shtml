@@ -1,0 +1,83 @@
+<!doctype html public "-//w3c//dtd html 4.0 transitional//en">
+<html>
+<head>
+<link href="java.css" rel="stylesheet" type="text/css">
+<title>Scrittura carattere per carattere</title>
+</head>
+
+<body>
+
+<h2>Scrittura carattere per carattere</h2>
+
+<hr>
+
+<a href="SlowWrite.java">SlowWrite.java</a>
+
+<p>
+
+<pre>
+/*
+  Scrive una stringa carattere per carattere
+*/
+
+import java.awt.*;
+
+public class SlowWrite extends java.applet.Applet implements Runnable {
+  Thread runner;
+  Font f;
+  String towrite="Questa stringa viene scritta lentamente";
+  int writeto=0;
+
+  public void start() {
+    if( runner==null ) {
+      runner=new Thread(this);
+      runner.start();
+    }
+  }
+
+  public void stop() {
+    if( runner!=null ) {
+      runner.stop();
+      runner=null;
+    }
+  }
+
+  public void run() {
+    int i;
+
+    for(writeto=0;; writeto=writeto+1) {
+      writeto=writeto%towrite.length();
+      repaint();
+      if( towrite.charAt(writeto)!=' ' ) {
+        try {
+          Thread.sleep(200);
+        }
+        catch( InterruptedException e ) { }
+      }
+    }
+  }
+
+  public void paint(Graphics g) {
+    f=new Font("Courier", Font.PLAIN, 18);
+    int i;
+
+    g.setFont(f);
+
+    for(i=0; i<=writeto; i++)
+      g.drawString(towrite.substring(i,i+1) , i*10, 20 );
+  }
+
+}
+
+
+</pre>
+
+<p>
+
+<applet code="SlowWrite.class" height="50" width="400">
+</applet>
+
+
+</body>
+</html>
+

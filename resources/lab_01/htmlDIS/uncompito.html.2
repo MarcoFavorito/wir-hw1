@@ -1,0 +1,170 @@
+<html>
+<head>
+<title>Un compito di esame completo</title>
+</head>
+
+<body>
+
+<h1>Un compito di esame completo</h1>
+
+<p>
+L'esame si svolge al calcolatore, e dura un'ora e tre
+quarti.
+</p>
+
+<p>
+Vengono dati: due programmi di prova, un file di prova, e il
+testo del compito in formato html. Lo studente deve
+realizzare due classi che vengono usate dai due programmi di
+prova:
+</p>
+
+<ul>
+
+<li>la prima classe &egrave; piuttosto semplice;
+
+<li>gli oggetti della seconda classe rappresentano un
+insieme di oggetti della prima classe; si usano vettori e
+i metodi richiedono l'uso dei cicli.
+
+</ul>
+
+<hr>
+
+
+<h4>Prima classe</h4>
+
+<p>
+Una libreria vuole realizzare un programma di
+gestione del magazzino. Per ogni libro, i dati
+da rappresentare sono i seguenti:
+</p>
+
+<dl>
+
+<dt><tt>titolo</tt>
+<dd>una stringa
+
+<dt><tt>autore</tt>
+<dd>una stringa
+
+<dt><tt>prezzo</tt>
+<dd>un numero reale
+
+<dt><tt>copie</tt>
+<dd>numero di copie presenti in magazzino: un intero
+
+</dl>
+
+<p>
+Definire la classe incapsulata <tt>Libro</tt> i cui
+oggetti siano rappresentazione di libri. I nomi delle
+componenti devono essere: <tt>titolo</tt>, <tt>autore</tt>,
+<tt>prezzo</tt>, <tt>copie</tt>. Devono essere
+realizzati i seguenti metodi:
+</p>
+
+<ul>
+
+<li>metodi <tt>get</tt> e <tt>set</tt> per tutte le
+componenti; i metodi <tt>set</tt> per le componenti
+numeriche devono verificare che il prezzo sia maggiore di
+zero e il numero non sia negativo;
+
+<li>metodo costruttore che ha come argomento un
+<tt>BufferedReader</tt>; il metodo deve leggere i valori da
+mettere nell'oggetto da file.
+
+<li>un metodo toString the restituisce una stringa in cui ci
+sono tutte le componenti dell'oggetto
+
+</ul>
+
+<hr>
+
+
+<h4>Seconda classe</h4>
+
+<p>
+Definire una seconda classe i cui oggetti rappresentano
+tutti i libri di una certa casa editrice. Ogni oggetto di
+questa classe <tt>Editore</tt> &egrave; quindi la
+rappresentazione di un insieme di oggetti <tt>Libro</tt>.
+Per rappresentare insiemi di oggetti, usare un array.
+</p>
+
+<p>
+Costruttore della classe:
+</p>
+
+<dl>
+
+<dt>
+<tt>Editore(String nomefile)</tt>
+<dd>
+crea un oggetto <tt>Editore</tt> che rappresenta l'insieme
+di tutti gli oggetti <tt>Libro</tt> che sono memorizzati
+nel file il cui nome &egrave; dato dalla stringa passata
+come argomento; la prima linea del file contiene il numero
+degli oggetti memorizzati su file.
+
+</dl>
+
+<p>
+Metodi della classe:
+</p>
+
+<dl>
+
+<dt>
+<tt>void stampaEsauriti()</tt>
+<dd>stampa il titolo e l'autore dei libri esauriti (quelli
+per i quali non ci sono copie in magazzino)
+
+<dt>
+<tt>int quantiEconomici(double prezzoMax)</tt>
+<dd>trova il numero totale di libri il cui prezzo &egrave;
+inferiore a <tt>prezzoMax</tt>
+
+</dl>
+
+<hr>
+
+<h4>Soluzione</h4>
+
+<p>
+Vengono dati i seguenti file, che lo studente trova gia'
+sul calcolatore.
+</p>
+
+<ul>
+
+<li><a href="ProvaLibro.java">ProvaLibro.java</a>, il
+programma di prova per la prima classe
+
+<li><a href="ProvaEditore.java">ProvaEditore.java</a>, il
+programma di prova per la seconda classe
+
+<li><a href="appoggiato.txt">appoggiato.txt</a>, un file
+di esempio che contiene i dati di alcuni libri
+
+</ul>
+
+<p>
+La soluzione consiste in due file che lo studente
+dovr&agrave; realizzare:
+</p>
+
+<ul>
+
+<li><a href="Libro.java">Libro.java</a>, la prima classe;
+
+<li><a href="Editore.java">Editore.java</a>, la seconda
+classe.
+
+</ul>
+
+
+</body>
+</html>
+

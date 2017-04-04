@@ -1,0 +1,1124 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<!--Converted with LaTeX2HTML 98.2 beta6 (August 14th, 1998)
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>Corso di Laurea in Ingegneria Aerospaziale
+Corso di Fondamenti di Informatica - A.A.&nbsp;1998/99
+Elenco degli esercizi per lo svolgimento dei progetti</TITLE>
+<META NAME="description" CONTENT="Corso di Laurea in Ingegneria Aerospaziale
+Corso di Fondamenti di Informatica - A.A.&nbsp;1998/99
+Elenco degli esercizi per lo svolgimento dei progetti">
+<META NAME="keywords" CONTENT="progetti">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1">
+<LINK REL="STYLESHEET" HREF="elenco-esercizi.css">
+</HEAD>
+<BODY >
+
+<P>
+<H1 ALIGN="CENTER"><FONT SIZE="+2">Corso di Laurea in Ingegneria Aerospaziale</FONT>
+<BR>
+ <FONT SIZE="+2">Corso di Fondamenti di Informatica - A.A.&nbsp;1998/99</FONT>
+<BR>
+Elenco degli esercizi per lo svolgimento dei progetti</H1>
+<P ALIGN="CENTER"><STRONG>Estratti da D.&nbsp;Calvanese, P.&nbsp;Liberatore, F.&nbsp;Massacci, R.&nbsp;Rosati.
+<BR>
+Complementi ed esercizi di programmazione in PASCAL.
+<BR>
+Esculapio Progetto Leonardo, seconda edizione, 1999</STRONG></P>
+<P ALIGN="CENTER"></P>
+
+<P>
+
+<H1><A NAME="SECTION00040000000000000000">
+Esercizi sulle matrici</A>
+</H1>
+
+<P>
+<P>
+<DIV><B>Esercizio  4.1</B> &nbsp; 
+Scrivere una procedura di scrittura di matrice su file.<IMG
+ WIDTH="16" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img1.gif"
+ ALT="$\Box$"></DIV><P></P>
+
+<P>
+<P>
+<DIV><B>Esercizio  4.2</B> &nbsp; 
+La funzione che determina se una matrice &#232; un quadrato magico non &#232;
+  ottimizzata, dal momento che vengono eseguite tutte le somme delle righe,
+  delle colonne e delle diagonali anche se per esempio la somma delle prime due
+  righe &#232; differente. L'efficienza del programma pu&#242; venire migliorata in
+  due modi:
+
+<P>
+<DL COMPACT>
+<DT>1.
+<DD>Alla fine del ciclo sulle righe, se <TT>mag=FALSE</TT> allora non si esegue
+tutto il resto. Lo stesso alla fine del ciclo sulle colonne e della
+    verifica della diagonale principale.
+  <DT>2.
+<DD>All'interno di ogni ciclo, si pu&#242; uscire appena <TT>mag=FALSE</TT>.
+    Questo pu&#242; venire realizzato sostituendo le istruzioni <TT>for</TT> con
+    istruzioni <TT>while</TT>, come gi&#224; visto in precedenza.
+  </DL>
+  Implementare le due ottimizzazioni della funzione che determina se una
+  matrice &#232; un quadrato magico.<IMG
+ WIDTH="16" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img1.gif"
+ ALT="$\Box$"></DIV><P></P>
+
+<P>
+<P>
+<DIV><B>Esercizio  4.3</B> &nbsp; 
+Scrivere una funzione che calcoli la somma di tutti gli elementi di una
+  matrice a valori interi.<IMG
+ WIDTH="16" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img1.gif"
+ ALT="$\Box$"></DIV><P></P>
+
+<P>
+<P>
+<DIV><B>Esercizio  4.4</B> &nbsp; 
+Scrivere una funzione che determini quale &#232; la riga di una matrice la cui
+  somma degli elementi &#232; massima.<IMG
+ WIDTH="16" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img1.gif"
+ ALT="$\Box$"></DIV><P></P>
+
+<P>
+<P>
+<DIV><B>Esercizio  4.5</B> &nbsp; 
+Scrivere una funzione che determini se due matrici sono uguali.<IMG
+ WIDTH="16" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img1.gif"
+ ALT="$\Box$"></DIV><P></P>
+
+<P>
+<P>
+<DIV><B>Esercizio  4.6</B> &nbsp; 
+Scrivere una funzione che determini se una matrice coincide con un'altra
+  ruotata di <IMG
+ WIDTH="27" HEIGHT="15" ALIGN="BOTTOM" BORDER="0"
+ SRC="img2.gif"
+ ALT="$90^\circ$">.<IMG
+ WIDTH="16" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img1.gif"
+ ALT="$\Box$"></DIV><P></P>
+
+<P>
+<P>
+<DIV><B>Esercizio  4.7</B> &nbsp; 
+La funzione di verifica degli elementi nulli su una riga data nella sezione
+  precedente &#232; corretta, ma non ottimizzata. Infatti, se si trova un elemento
+  non nullo non &#232; necessario continuare la scansione. Fornire una versione
+  ottimizzata di tale procedura.<IMG
+ WIDTH="16" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img1.gif"
+ ALT="$\Box$"></DIV><P></P>
+
+<P>
+<P>
+<DIV><B>Esercizio  4.8</B> &nbsp; 
+Una matrice quadrata si dice simmetrica se per ogni coppia di indici <I>i</I> e
+  <I>j</I> l'elemento 
+<!-- MATH
+ $\langle i,j\rangle$
+ -->
+<IMG
+ WIDTH="36" HEIGHT="31" ALIGN="MIDDLE" BORDER="0"
+ SRC="img3.gif"
+ ALT="$\langle i,j\rangle $">
+&#232; uguale all'elemento 
+<!-- MATH
+ $\langle j,i\rangle$
+ -->
+<IMG
+ WIDTH="36" HEIGHT="31" ALIGN="MIDDLE" BORDER="0"
+ SRC="img4.gif"
+ ALT="$\langle j,i\rangle $">.
+Scrivere una
+  funzione che verifichi se una matrice quadrata &#232; simmetrica.<IMG
+ WIDTH="16" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img1.gif"
+ ALT="$\Box$"></DIV><P></P>
+
+<P>
+<P>
+<DIV><B>Esercizio  4.9</B> &nbsp; 
+Una matrice quadrata si dice triangolare superiore se tutti gli elementi
+  
+<!-- MATH
+ $\langle i,j\rangle$
+ -->
+<IMG
+ WIDTH="36" HEIGHT="31" ALIGN="MIDDLE" BORDER="0"
+ SRC="img3.gif"
+ ALT="$\langle i,j\rangle $">
+con <I>i</I> minore di <I>j</I> (cio&#232; che stanno ``sotto'' alla diagonale
+  principale) hanno valore nullo.  Scrivere una funzione che verifichi se una
+  matrice quadrata &#232; triangolare superiore.<IMG
+ WIDTH="16" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img1.gif"
+ ALT="$\Box$"></DIV><P></P>
+
+<P>
+<P>
+<DIV><B>Esercizio  4.10</B> &nbsp; 
+Una matrice quadrata si dice triangolare inferiore se tutti gli elementi
+  
+<!-- MATH
+ $\langle i,j\rangle$
+ -->
+<IMG
+ WIDTH="36" HEIGHT="31" ALIGN="MIDDLE" BORDER="0"
+ SRC="img3.gif"
+ ALT="$\langle i,j\rangle $">
+con <I>i</I> maggiore di <I>j</I> (cio&#232; che stanno ``sopra'' alla
+  diagonale principale) hanno valore nullo.  Scrivere una funzione che
+  verifichi se una matrice quadrata &#232; triangolare inferiore.<IMG
+ WIDTH="16" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img1.gif"
+ ALT="$\Box$"></DIV><P></P>
+
+<P>
+<P>
+<DIV><B>Esercizio  4.11</B> &nbsp; 
+Scrivere una funzione che restituisca il vettore delle somme delle righe di
+  una matrice, cio&#232; un vettore che per ogni riga della matrice ha un elemento
+  il cui valore &#232; pari alla somma degli elementi della riga.<IMG
+ WIDTH="16" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img1.gif"
+ ALT="$\Box$"></DIV><P></P>
+
+<P>
+<P>
+<DIV><B>Esercizio  4.12</B> &nbsp; 
+Scrivere una procedura che restituisca il vettore delle somme delle colonne
+  di una matrice.<IMG
+ WIDTH="16" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img1.gif"
+ ALT="$\Box$"></DIV><P></P>
+
+<P>
+<P>
+<DIV><B>Esercizio  4.13</B> &nbsp; 
+La trasposta di una matrice <I>N</I> x  <I>M</I> &#232; una matrice <I>M</I> x  <I>N</I> tale che
+  per ogni coppia di indici <I>i</I> e <I>j</I> il valore dell'elemento 
+<!-- MATH
+ $\langle i,j\rangle$
+ -->
+<IMG
+ WIDTH="36" HEIGHT="31" ALIGN="MIDDLE" BORDER="0"
+ SRC="img3.gif"
+ ALT="$\langle i,j\rangle $">
+della
+  trasposta &#232; pari al valore dell'elemento 
+<!-- MATH
+ $\langle j,i\rangle$
+ -->
+<IMG
+ WIDTH="36" HEIGHT="31" ALIGN="MIDDLE" BORDER="0"
+ SRC="img4.gif"
+ ALT="$\langle j,i\rangle $">
+della matrice.
+  Scrivere una procedura che restituisca la trasposta di una matrice.<IMG
+ WIDTH="16" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img1.gif"
+ ALT="$\Box$"></DIV><P></P>
+
+<P>
+
+<H1><A NAME="SECTION00050000000000000000">
+Esercizi sulle liste</A>
+</H1>
+
+<P>
+<P>
+<DIV><B>Esercizio  5.1</B> &nbsp; 
+<A NAME="exe-tec-liste-cancella-elemento-lista"></A>  Si forniscano due implementazione della procedura <TT>CancellaElementoLista</TT>
+  utilizzando la tecnica del record generatore, e rispettivamente 1&nbsp;puntatore e
+  2&nbsp;puntatori per la scansione della lista in ingresso.<IMG
+ WIDTH="16" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img1.gif"
+ ALT="$\Box$"></DIV><P></P>
+
+<P>
+<P>
+<DIV><B>Esercizio  5.2</B> &nbsp; 
+Si implementi una procedura <TT>ConcatenaListe</TT>, che prenda in ingresso due
+  liste e restituisca la lista ottenuta per concatenazione delle due liste.
+  <DL COMPACT>
+<DT>1.
+<DD>Si implementi <TT>ConcatenaListe</TT> con condivisione di memoria ed in
+modo distruttivo sulla prima lista utilizzando l'intestazione
+<PRE>
+procedure ConcatenaListe (var lis1: TipoLista;
+                          lis2: TipoLista);
+</PRE>
+    ``Con condivisione di memoria ed in modo distruttivo sulla prima lista''
+    significa che <TT>lis2</TT> va attaccata in coda a <TT>lis1</TT>.
+
+<P>
+<DT>2.
+<DD>Si implementi <TT>ConcatenaListe</TT> con condivisione di memoria (rispetto
+    alla seconda lista) ed in modo non distruttivo utilizzando l'intestazione
+<PRE>
+procedure ConcatenaListe (lis1, lis2: TipoLista;
+                          var lis3: TipoLista);
+</PRE>
+    ``Con condivisione di memoria (rispetto alla seconda lista) ed in modo non
+    distruttivo'' significa che <TT>lis1</TT> va prima copiata in <TT>lis3</TT> e poi
+    <TT>lis2</TT> va attaccata in coda a <TT>lis3</TT>.
+
+<P>
+<DT>3.
+<DD>Si implementi <TT>ConcatenaListe</TT> senza condivisione di memoria ed in
+    modo non distruttivo utilizzando l'intestazione
+<PRE>
+procedure ConcatenaListe (lis1, lis2: TipoLista;
+                          var lis3: TipoLista);
+</PRE>
+    ``Senza condivisione di memoria ed in modo non distruttivo'' significa che
+    che <TT>lis1</TT> va prima copiata in <TT>lis3</TT> e poi una copia di <TT>lis2</TT> va
+    attaccata in coda a <TT>lis3</TT>.
+  </DL>
+  Per ognuno dei casi si fornisca un'implementazione iterativa, una ricorsiva
+  ed una utilizzando le procedure e funzioni (anche non primitive) gi&#224;
+  sviluppate.<IMG
+ WIDTH="16" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img1.gif"
+ ALT="$\Box$"></DIV><P></P>
+
+<P>
+<P>
+<DIV><B>Esercizio  5.3</B> &nbsp; 
+Si implementi una funzione <TT>EsisteInListaOrdinata</TT>, che prenda in ingresso
+  una lista con gli elementi in ordine crescente ed un elemento e restituisca
+  <TT>TRUE</TT> se l'lemento compare nella lista e <TT>FALSE</TT> altrimenti.  Rispetto alla
+  funzione <TT>EsisteInLista</TT> si sfrutti il fatto che la lista &#232; ordinata per
+  interrompere la scansione della lista quando si arriva ad un elemento
+  maggiore di quello da cercare.  In questo caso l'elemento non pu&#242;
+  sicuramente comparire nel resto della lista.<IMG
+ WIDTH="16" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img1.gif"
+ ALT="$\Box$"></DIV><P></P>
+
+<P>
+<P>
+<DIV><B>Esercizio  5.4</B> &nbsp; 
+Si implementi una procedura <TT>CancellaElementoListaOrdinata</TT>, che prenda in
+  ingresso una lista con gli elementi in ordine crescente ed un elemento e
+  restituisca la lista modificata avendo cancellato la prima occorrenza
+  dell'elemento.  Si sfrutti anche in questo caso il fatto che la lista &#232;
+  ordinata.<IMG
+ WIDTH="16" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img1.gif"
+ ALT="$\Box$"></DIV><P></P>
+
+<P>
+<P>
+<DIV><B>Esercizio  5.5</B> &nbsp; 
+Si implementino procedure o funzioni P<SMALL>ASCAL</SMALL> che realizzano le seguenti
+  funzionalit&#224; su liste rappresentate tramite record e puntatori.  Si
+  utilizzi per ogni procedura o funzione una intestazione opportuna e si
+  forniscano diverse implementazioni (iterative, ricorsive ed utilizzando le
+  funzioni elementari e/o non elementari) adottando le tecniche di
+  programmazione mostrate nel presente capitolo:
+  <DL COMPACT>
+<DT>1.
+<DD>somma e/o media degli elementi di una lista di interi;
+<DT>2.
+<DD>conteggio del numero di volte che un dato elemento compare in una
+    lista;
+  <DT>3.
+<DD>lunghezza della massima sequenza di elementi uguali ad un dato
+    elemento;
+  <DT>4.
+<DD>lunghezza della massima sequenza di elementi consecutivi uguali;
+  <DT>5.
+<DD>inserimento di un elemento dopo un elemento dato;
+  <DT>6.
+<DD>cancellazione di tutti gli elementi pari da una lista di interi;
+  <DT>7.
+<DD>cancellazione dell'ultimo elemento di una lista;
+  <DT>8.
+<DD>cancellazione dell'ultima occorrenza di un dato elemento da una lista;
+  <DT>9.
+<DD>cancellazione di tutti gli elementi di ordine pari da una lista (cio&#232;
+    del secondo, del quarto, etc.);
+  <DT>10.
+<DD>cancellazione di tutti gli elementi di ordine dispari da una lista
+    (cio&#232; del primo, del terzo, etc.);
+  <DT>11.
+<DD>cancellazione di tutte le occorrenze successive alla prima di un dato
+    elemento;
+  <DT>12.
+<DD>cancellazione di tutte le occorrenze successive alla prima di tutti gli
+    elementi;
+  <DT>13.
+<DD>creazione di una lista che contenga gli stessi elementi di una lista
+    passata come parametro, ma in ordine inverso;
+  <DT>14.
+<DD>[Difficile] inversione di una lista, realizzata attraverso
+    l'inversione dei puntatori senza allocare o deallocare nuovi record.
+  </DL><IMG
+ WIDTH="16" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img1.gif"
+ ALT="$\Box$"></DIV><P></P>
+
+<P>
+<P>
+<DIV><B>Esercizio  5.6</B> &nbsp; 
+Una lista 
+<!-- MATH
+ $\ensuremath{\mathit{lis1}}$
+ -->
+<IMG
+ WIDTH="30" HEIGHT="15" ALIGN="BOTTOM" BORDER="0"
+ SRC="img5.gif"
+ ALT="\ensuremath{\mathit{lis1}}">
+si dice <I>prefisso</I> di una lista 
+<!-- MATH
+ $\ensuremath{\mathit{lis2}}$
+ -->
+<IMG
+ WIDTH="30" HEIGHT="15" ALIGN="BOTTOM" BORDER="0"
+ SRC="img6.gif"
+ ALT="\ensuremath{\mathit{lis2}}">
+se
+  
+<!-- MATH
+ $\ensuremath{\mathit{lis1}}$
+ -->
+<IMG
+ WIDTH="30" HEIGHT="15" ALIGN="BOTTOM" BORDER="0"
+ SRC="img5.gif"
+ ALT="\ensuremath{\mathit{lis1}}">
+coincide con la parte iniziale di 
+<!-- MATH
+ $\ensuremath{\mathit{lis2}}$
+ -->
+<IMG
+ WIDTH="30" HEIGHT="15" ALIGN="BOTTOM" BORDER="0"
+ SRC="img6.gif"
+ ALT="\ensuremath{\mathit{lis2}}">
+(ma 
+<!-- MATH
+ $\ensuremath{\mathit{lis2}}$
+ -->
+<IMG
+ WIDTH="30" HEIGHT="15" ALIGN="BOTTOM" BORDER="0"
+ SRC="img6.gif"
+ ALT="\ensuremath{\mathit{lis2}}">
+pu&#242;
+  eventualmente contenere altri elementi che seguono questa parte iniziale).
+  
+  Una lista 
+<!-- MATH
+ $\ensuremath{\mathit{lis1}}$
+ -->
+<IMG
+ WIDTH="30" HEIGHT="15" ALIGN="BOTTOM" BORDER="0"
+ SRC="img5.gif"
+ ALT="\ensuremath{\mathit{lis1}}">
+si dice <I>postfisso</I> di una lista 
+<!-- MATH
+ $\ensuremath{\mathit{lis2}}$
+ -->
+<IMG
+ WIDTH="30" HEIGHT="15" ALIGN="BOTTOM" BORDER="0"
+ SRC="img6.gif"
+ ALT="\ensuremath{\mathit{lis2}}">
+se
+  
+<!-- MATH
+ $\ensuremath{\mathit{lis1}}$
+ -->
+<IMG
+ WIDTH="30" HEIGHT="15" ALIGN="BOTTOM" BORDER="0"
+ SRC="img5.gif"
+ ALT="\ensuremath{\mathit{lis1}}">
+coincide con la parte finale di 
+<!-- MATH
+ $\ensuremath{\mathit{lis2}}$
+ -->
+<IMG
+ WIDTH="30" HEIGHT="15" ALIGN="BOTTOM" BORDER="0"
+ SRC="img6.gif"
+ ALT="\ensuremath{\mathit{lis2}}">
+(ma 
+<!-- MATH
+ $\ensuremath{\mathit{lis2}}$
+ -->
+<IMG
+ WIDTH="30" HEIGHT="15" ALIGN="BOTTOM" BORDER="0"
+ SRC="img6.gif"
+ ALT="\ensuremath{\mathit{lis2}}">
+pu&#242;
+  eventualmente contenere altri elementi che  precedono questa parte finale).
+  
+  Una lista 
+<!-- MATH
+ $\ensuremath{\mathit{lis1}}$
+ -->
+<IMG
+ WIDTH="30" HEIGHT="15" ALIGN="BOTTOM" BORDER="0"
+ SRC="img5.gif"
+ ALT="\ensuremath{\mathit{lis1}}">
+si dice <I>sottolista</I> di una lista 
+<!-- MATH
+ $\ensuremath{\mathit{lis2}}$
+ -->
+<IMG
+ WIDTH="30" HEIGHT="15" ALIGN="BOTTOM" BORDER="0"
+ SRC="img6.gif"
+ ALT="\ensuremath{\mathit{lis2}}">
+se
+  
+<!-- MATH
+ $\ensuremath{\mathit{lis1}}$
+ -->
+<IMG
+ WIDTH="30" HEIGHT="15" ALIGN="BOTTOM" BORDER="0"
+ SRC="img5.gif"
+ ALT="\ensuremath{\mathit{lis1}}">
+coincide con una parte di 
+<!-- MATH
+ $\ensuremath{\mathit{lis2}}$
+ -->
+<IMG
+ WIDTH="30" HEIGHT="15" ALIGN="BOTTOM" BORDER="0"
+ SRC="img6.gif"
+ ALT="\ensuremath{\mathit{lis2}}">
+(ma 
+<!-- MATH
+ $\ensuremath{\mathit{lis2}}$
+ -->
+<IMG
+ WIDTH="30" HEIGHT="15" ALIGN="BOTTOM" BORDER="0"
+ SRC="img6.gif"
+ ALT="\ensuremath{\mathit{lis2}}">
+pu&#242;
+  eventualmente contenere elementi che precedono ed altri che seguono questa
+  parte).
+  
+  Si forniscano diverse implementazioni in P<SMALL>ASCAL</SMALL> (iterative, ricorsive ed
+  utilizzando le funzioni elementari e/o non elementari) delle seguenti
+  procedure e/o funzioni:
+  <DL COMPACT>
+<DT>1.
+<DD>funzione che verifica se una lista &#232; prefisso di un'altra lista;
+<DT>2.
+<DD>funzione che verifica se una lista &#232; posfisso di un'altra lista;
+  <DT>3.
+<DD>funzione che verifica se una lista &#232; sottolista di un'altra lista.
+  <DT>4.
+<DD>procedura che cancella da una lista un prefisso di una data lunghezza;
+  <DT>5.
+<DD>procedura che cancella da una lista un postfisso di una data lunghezza;
+  <DT>6.
+<DD>procedura che in una lista cancella da una data posizione in poi una
+    sottolista di una data lunghezza;
+  <DT>7.
+<DD>procedura che in una lista cancella da un dato elemento in poi una
+    sottolista di una data lunghezza;
+  <DT>8.
+<DD>procedura che sostituisce in una lista 
+<!-- MATH
+ $\ensuremath{\mathit{lis1}}$
+ -->
+<IMG
+ WIDTH="30" HEIGHT="15" ALIGN="BOTTOM" BORDER="0"
+ SRC="img5.gif"
+ ALT="\ensuremath{\mathit{lis1}}">
+un prefisso di
+    lunghezza pari alla lunghezza di una lista 
+<!-- MATH
+ $\ensuremath{\mathit{lis2}}$
+ -->
+<IMG
+ WIDTH="30" HEIGHT="15" ALIGN="BOTTOM" BORDER="0"
+ SRC="img6.gif"
+ ALT="\ensuremath{\mathit{lis2}}">
+con 
+<!-- MATH
+ $\ensuremath{\mathit{lis2}}$
+ -->
+<IMG
+ WIDTH="30" HEIGHT="15" ALIGN="BOTTOM" BORDER="0"
+ SRC="img6.gif"
+ ALT="\ensuremath{\mathit{lis2}}">;
+  <DT>9.
+<DD>procedura che sostituisce in una lista 
+<!-- MATH
+ $\ensuremath{\mathit{lis1}}$
+ -->
+<IMG
+ WIDTH="30" HEIGHT="15" ALIGN="BOTTOM" BORDER="0"
+ SRC="img5.gif"
+ ALT="\ensuremath{\mathit{lis1}}">
+un postfisso di
+    lunghezza pari alla lunghezza di una lista 
+<!-- MATH
+ $\ensuremath{\mathit{lis2}}$
+ -->
+<IMG
+ WIDTH="30" HEIGHT="15" ALIGN="BOTTOM" BORDER="0"
+ SRC="img6.gif"
+ ALT="\ensuremath{\mathit{lis2}}">
+con 
+<!-- MATH
+ $\ensuremath{\mathit{lis2}}$
+ -->
+<IMG
+ WIDTH="30" HEIGHT="15" ALIGN="BOTTOM" BORDER="0"
+ SRC="img6.gif"
+ ALT="\ensuremath{\mathit{lis2}}">;
+  <DT>10.
+<DD>[Difficile] procedura che sostituisce in una lista 
+<!-- MATH
+ $\ensuremath{\mathit{lis1}}$
+ -->
+<IMG
+ WIDTH="30" HEIGHT="15" ALIGN="BOTTOM" BORDER="0"
+ SRC="img5.gif"
+ ALT="\ensuremath{\mathit{lis1}}">
+un
+    prefisso di una data lunghezza con una lista 
+<!-- MATH
+ $\ensuremath{\mathit{lis2}}$
+ -->
+<IMG
+ WIDTH="30" HEIGHT="15" ALIGN="BOTTOM" BORDER="0"
+ SRC="img6.gif"
+ ALT="\ensuremath{\mathit{lis2}}">;
+  <DT>11.
+<DD>[Difficile] procedura che sostituisce in una lista 
+<!-- MATH
+ $\ensuremath{\mathit{lis1}}$
+ -->
+<IMG
+ WIDTH="30" HEIGHT="15" ALIGN="BOTTOM" BORDER="0"
+ SRC="img5.gif"
+ ALT="\ensuremath{\mathit{lis1}}">
+un
+    postfisso di una data lunghezza con una lista 
+<!-- MATH
+ $\ensuremath{\mathit{lis2}}$
+ -->
+<IMG
+ WIDTH="30" HEIGHT="15" ALIGN="BOTTOM" BORDER="0"
+ SRC="img6.gif"
+ ALT="\ensuremath{\mathit{lis2}}">;
+  <DT>12.
+<DD>[Difficile] procedura che sostituisce in una lista 
+<!-- MATH
+ $\ensuremath{\mathit{lis1}}$
+ -->
+<IMG
+ WIDTH="30" HEIGHT="15" ALIGN="BOTTOM" BORDER="0"
+ SRC="img5.gif"
+ ALT="\ensuremath{\mathit{lis1}}">
+una
+    sottolista 
+<!-- MATH
+ $\ensuremath{\mathit{lis2}}$
+ -->
+<IMG
+ WIDTH="30" HEIGHT="15" ALIGN="BOTTOM" BORDER="0"
+ SRC="img6.gif"
+ ALT="\ensuremath{\mathit{lis2}}">
+di 
+<!-- MATH
+ $\ensuremath{\mathit{lis1}}$
+ -->
+<IMG
+ WIDTH="30" HEIGHT="15" ALIGN="BOTTOM" BORDER="0"
+ SRC="img5.gif"
+ ALT="\ensuremath{\mathit{lis1}}">
+con una lista 
+<!-- MATH
+ $\ensuremath{\mathit{lis3}}$
+ -->
+<IMG
+ WIDTH="30" HEIGHT="15" ALIGN="BOTTOM" BORDER="0"
+ SRC="img7.gif"
+ ALT="\ensuremath{\mathit{lis3}}">.
+  </DL><IMG
+ WIDTH="16" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img1.gif"
+ ALT="$\Box$"></DIV><P></P>
+
+<P>
+<P>
+<DIV><B>Esercizio  5.7</B> &nbsp; 
+Si forniscano diverse implementazioni in P<SMALL>ASCAL</SMALL> (iterative, ricorsive ed
+  utilizzando le funzioni elementari e/o non elementari) di procedure che
+  effettuano l'ordinamento di una lista.  Si utilizzino gli algoritmi di
+  ordinamento su vettori presentati nel capitolo&nbsp;9
+  Si forniscano:
+  <DL COMPACT>
+<DT>1.
+<DD>[Difficile] implementazioni che effettuano scambi tra i campi
+<TT>info</TT> dei record contenenti gli elementi della lista, senza modificare
+    i puntatori della lista;
+  <DT>2.
+<DD>[Molto difficile] implementazioni che effettuano scambi tra i
+    puntatori dei record contenenti gli elementi della lista, senza modificare
+    i campi <TT>info</TT> della lista;
+  </DL><IMG
+ WIDTH="16" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img1.gif"
+ ALT="$\Box$"></DIV><P></P>
+
+<P>
+
+<H1><A NAME="SECTION000100000000000000000">
+Varianti di esercizi di esame sulle matrici</A>
+</H1>
+
+<P>
+
+<H2><A NAME="SECTION000101000000000000000">
+Sezione 10.1</A>
+</H2>
+
+<P>
+<P>
+<DIV><B>Esercizio  10.1</B> &nbsp; 
+Modificare la procedura richiesta al punto&nbsp;(2) in modo tale che restituisca
+  il valore vero se in <I>T</I> esistono <I>k</I> posti liberi, <I>non necessariamente
+   adiacenti</I>, su una riga con costo unitario <IMG
+ WIDTH="29" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img8.gif"
+ ALT="$\leq q$">.<IMG
+ WIDTH="16" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img1.gif"
+ ALT="$\Box$"></DIV><P></P>
+
+<P>
+<P>
+<DIV><B>Esercizio  10.2</B> &nbsp; 
+Modificare la procedura richiesta al punto&nbsp;(2) in modo tale che restituisca
+  il valore vero se in <I>T</I> esistono <I>k</I> posti liberi, <I>non necessariamente
+   adiacenti e non necessariamente sulla stessa riga</I>, con costo unitario <IMG
+ WIDTH="29" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img8.gif"
+ ALT="$\leq q$">.<IMG
+ WIDTH="16" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img1.gif"
+ ALT="$\Box$"></DIV><P></P>
+
+<P>
+<P>
+<DIV><B>Esercizio  10.3</B> &nbsp; 
+Modificare la procedura richiesta al punto&nbsp;(2) in modo tale che restituisca
+  il valore vero se in <I>T</I> esistono <I>k</I> posti liberi adiacenti con costo
+  unitario <IMG
+ WIDTH="29" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img8.gif"
+ ALT="$\leq q$">,
+dove per adiacenti si intendono, oltre a due posti
+  successivi sulla stessa riga, anche l'ultimo posto (colonna <I>m</I>) di una riga
+  ed il primo posto (colonna 1) della riga successiva.<IMG
+ WIDTH="16" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img1.gif"
+ ALT="$\Box$"></DIV><P></P>
+
+<P>
+
+<H2><A NAME="SECTION000102000000000000000">
+Sezione 10.2</A>
+</H2>
+
+<P>
+<P>
+<DIV><B>Esercizio  10.4</B> &nbsp; 
+Modificare la procedura richiesta al punto&nbsp;(2) in modo che stampi la lettera
+  (o le lettere) che compare il maggior numero di volte nelle copie degli
+  elementi di stampa a disposizione.<IMG
+ WIDTH="16" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img1.gif"
+ ALT="$\Box$"></DIV><P></P>
+
+<P>
+<P>
+<DIV><B>Esercizio  10.5</B> &nbsp; 
+Modificare la procedura richiesta al punto&nbsp;(3) in modo che funzioni anche con
+  parole composte da un numero dispari di caratteri. Per questo tipo di parole,
+  la stampa dell'ultimo carattere pu&#242; avvenire utilizzando una qualsiasi
+  coppia che ha come primo carattere l'ultimo carattere della parola.<IMG
+ WIDTH="16" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img1.gif"
+ ALT="$\Box$"></DIV><P></P>
+
+<P>
+
+<H2><A NAME="SECTION000103000000000000000">
+Sezione 10.4</A>
+</H2>
+
+<P>
+<P>
+<DIV><B>Esercizio  10.6</B> &nbsp; 
+Modificare la procedura proposta al punto (1) in modo tale che esca dal ciclo
+  di scansione non appena:
+  <DL COMPACT>
+<DT>a)
+<DD>si &#232; trovato un elemento dominante;
+  <DT>b)
+<DD>non si pu&#242; pi&#249; trovare un elemento dominante perch&#233; si &#232;
+    gi&#224; scandita pi&#249; di met&#224; della matrice.
+  </DL><IMG
+ WIDTH="16" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img1.gif"
+ ALT="$\Box$"></DIV><P></P>
+
+<P>
+<P>
+<DIV><B>Esercizio  10.7</B> &nbsp; 
+Modificare la procedura proposta al punto (1) in modo tale che i due cicli
+for pi&#249; interni vengano eseguiti solo se l'elemento corrente dei cicli
+pi&#249; esterni (<TT>m[i,j]</TT>) &#232; un carattere che <I>non</I> era gi&#224; stato
+considerato in precedenza. Si utilizzi a tale scopo una matrice di valori
+booleani, per tenere traccia degli elementi gi&#224; considerati.<IMG
+ WIDTH="16" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img1.gif"
+ ALT="$\Box$"></DIV><P></P>
+
+<P>
+
+<H1><A NAME="SECTION000110000000000000000">
+Varianti di esercizi di esame sulle liste</A>
+</H1>
+
+<P>
+
+<H2><A NAME="SECTION000111000000000000000">
+Sezione 11.1</A>
+</H2>
+
+<P>
+<P>
+<DIV><B>Esercizio  11.1</B> &nbsp; 
+Modificare la procedura sviluppata al punto&nbsp;(2) in modo da riutilizzare la
+  memoria occupata dagli insiemi in ingresso per la creazione dell'insieme
+  unione.  Le liste in ingresso vanno perdute, e la memoria occupata da
+  eventuali elementi non utilizzati deve essere di nuovo resa disponibile.<IMG
+ WIDTH="16" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img1.gif"
+ ALT="$\Box$"></DIV><P></P>
+
+<P>
+<P>
+<DIV><B>Esercizio  11.2</B> &nbsp; 
+Si scriva una procedura P<SMALL>ASCAL</SMALL> che, ricevendo in due parametri di ingresso
+  due insiemi rappresentati mediante liste semplici, fornisca in un parametro
+  di uscita l'intersezione degli insiemi dati, nella stessa rappresentazione,
+  creando una nuova lista senza modificare gli insiemi dati.<IMG
+ WIDTH="16" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img1.gif"
+ ALT="$\Box$"></DIV><P></P>
+
+<P>
+<P>
+<DIV><B>Esercizio  11.3</B> &nbsp; 
+Si scriva una procedura P<SMALL>ASCAL</SMALL> che, ricevendo in un parametro di ingresso
+  un insieme rappresentato tramite vettore caratteristico, fornisca in un
+  parametro di uscita lo stesso insieme rappresentato mediante lista semplice.<IMG
+ WIDTH="16" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img1.gif"
+ ALT="$\Box$"></DIV><P></P>
+
+<P>
+
+<H2><A NAME="SECTION000112000000000000000">
+Sezione 11.4</A>
+</H2>
+
+<P>
+<P>
+<DIV><B>Esercizio  11.4</B> &nbsp; 
+Scrivere una procedura P<SMALL>ASCAL</SMALL> che, ricevendo come parametri di input un
+  numero di inventario e un numero di utente, aggiorni la lista dei prestiti
+  dell'utente, eliminando (se esiste) il record con il numero di inventario in
+  input nella lista dei prestiti dell'utente il cui numero &#232; ricevuto in
+  input dalla procedura.<IMG
+ WIDTH="16" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img1.gif"
+ ALT="$\Box$"></DIV><P></P>
+
+<P>
+
+<H2><A NAME="SECTION000113000000000000000">
+Sezione 11.5</A>
+</H2>
+
+<P>
+<P>
+<DIV><B>Esercizio  11.5</B> &nbsp; 
+Scrivere una procedura P<SMALL>ASCAL</SMALL> che, ricevendo come parametro di input
+  l'immagine in forma compatta prodotta dalla procedura richiesta al punto&nbsp;(2),
+  crei una rappresentazione compatta dell'immagine ottenuta invertendo ogni
+  riga. Ad esempio, se la riga <I>i</I>-esima &#232;
+<PRE>
+         B B B B B V V V V V V G G G B B .....
+</PRE>
+  la riga <I>i</I>-esima invertita &#232;
+<PRE>
+         ..... B B G G G V V V V V V B B B B B
+</PRE><IMG
+ WIDTH="16" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img1.gif"
+ ALT="$\Box$"></DIV><P></P>
+
+<P>
+
+<H2><A NAME="SECTION000114000000000000000">
+Sezione 11.6</A>
+</H2>
+
+<P>
+<P>
+<DIV><B>Esercizio  11.6</B> &nbsp; 
+Fornire una implementazione iterativa della procedura richiesta al punto&nbsp;(3).<IMG
+ WIDTH="16" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img1.gif"
+ ALT="$\Box$"></DIV><P></P>
+
+<P>
+<P>
+<DIV><B>Esercizio  11.7</B> &nbsp; 
+Modificare la procedura richiesta al punto&nbsp;(3) in modo tale che restituisca
+  come parametro di uscita la lista ottenuta dalla lista di ingresso 
+<!-- MATH
+ $\ensuremath{\mathit{Ita}}$
+ -->
+<IMG
+ WIDTH="25" HEIGHT="15" ALIGN="BOTTOM" BORDER="0"
+ SRC="img9.gif"
+ ALT="\ensuremath{\mathit{Ita}}">
+  eliminando tutti i record con quantit&#224; di pioggia maggiore o uguale a
+  
+<!-- MATH
+ $\ensuremath{\mathit{Mp}}$
+ -->
+<IMG
+ WIDTH="28" HEIGHT="29" ALIGN="MIDDLE" BORDER="0"
+ SRC="img10.gif"
+ ALT="\ensuremath{\mathit{Mp}}">.<IMG
+ WIDTH="16" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img1.gif"
+ ALT="$\Box$"></DIV><P></P>
+
+<P>
+<P>
+<DIV><B>Esercizio  11.8</B> &nbsp; 
+Modificare la procedura richiesta al punto&nbsp;(3), nell'ipotesi che la lista di
+  input 
+<!-- MATH
+ $\ensuremath{\mathit{Ita}}$
+ -->
+<IMG
+ WIDTH="25" HEIGHT="15" ALIGN="BOTTOM" BORDER="0"
+ SRC="img9.gif"
+ ALT="\ensuremath{\mathit{Ita}}">
+<I>non</I> sia ordinata per quantit&#224; di pioggia
+  decrescenti.<IMG
+ WIDTH="16" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img1.gif"
+ ALT="$\Box$"></DIV><P></P>
+
+<P>
+
+<H2><A NAME="SECTION000115000000000000000">
+Sezione 11.7</A>
+</H2>
+
+<P>
+<P>
+<DIV><B>Esercizio  11.9</B> &nbsp; 
+Si modifichi la procedura sviluppata al punto&nbsp;(3) in modo che, ricevendo per
+  parametri le liste 
+<!-- MATH
+ $\ensuremath{\mathit{L}}_a$
+ -->
+<IMG
+ WIDTH="22" HEIGHT="29" ALIGN="MIDDLE" BORDER="0"
+ SRC="img11.gif"
+ ALT="$\ensuremath{\mathit{L}}_a$">
+e 
+<!-- MATH
+ $\ensuremath{\mathit{L}}_b$
+ -->
+<IMG
+ WIDTH="22" HEIGHT="29" ALIGN="MIDDLE" BORDER="0"
+ SRC="img11.gif"
+ ALT="$\ensuremath{\mathit{L}}_a$">,
+crei la lista delle localit&#224;
+  che soddisfano <I>entrambe</I> le condizioni&nbsp;(a) e &nbsp;(b) e la restituisca in
+  un parametro di uscita.  Tale lista deve essere ordinata in base alla
+  distanza crescente dal giacimento conosciuto e ciascuna localit&#224; deve
+  occorrere una sola volta.  La procedura deve anche stampare su standard
+  output le localit&#224; in 
+<!-- MATH
+ $\ensuremath{\mathit{L}}_a$
+ -->
+<IMG
+ WIDTH="22" HEIGHT="29" ALIGN="MIDDLE" BORDER="0"
+ SRC="img11.gif"
+ ALT="$\ensuremath{\mathit{L}}_a$">
+la cui distanza dal giacimento conosciuto
+  risulti inferiore a 100 chilometri.<IMG
+ WIDTH="16" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img1.gif"
+ ALT="$\Box$"></DIV><P></P>
+
+<P>
+
+<H2><A NAME="SECTION000116000000000000000">
+Sezione 11.8</A>
+</H2>
+
+<P>
+<P>
+<DIV><B>Esercizio  11.10</B> &nbsp; 
+Si modifichi la procedura sviluppata al punto&nbsp;(3) in modo che effettui
+  l'eliminazione delle rimanenze rispetto ad una soglia 
+<!-- MATH
+ $\ensuremath{\mathit{Q}}$
+ -->
+<IMG
+ WIDTH="18" HEIGHT="29" ALIGN="MIDDLE" BORDER="0"
+ SRC="img12.gif"
+ ALT="\ensuremath{\mathit{Q}}">
+per tutti i
+  generi di prodotti presenti in 
+<!-- MATH
+ $\ensuremath{\mathit{L}}$
+ -->
+<IMG
+ WIDTH="22" HEIGHT="29" ALIGN="MIDDLE" BORDER="0"
+ SRC="img11.gif"
+ ALT="$\ensuremath{\mathit{L}}_a$">.<IMG
+ WIDTH="16" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img1.gif"
+ ALT="$\Box$"></DIV><P></P>
+
+<P>
+
+<H2><A NAME="SECTION000117000000000000000">
+Sezione 11.9</A>
+</H2>
+
+<P>
+<P>
+<DIV><B>Esercizio  11.11</B> &nbsp; 
+Estendere la funzione proposta come soluzione al punto&nbsp;(2) in modo che valuti
+  correttamente un'espressione banale nella quale l'operatore `<TT>-</TT>'
+  pu&#242; comparire pi&#249; volte consecutivamente.<IMG
+ WIDTH="16" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img1.gif"
+ ALT="$\Box$"></DIV><P></P>
+
+<P>
+<P>
+<DIV><B>Esercizio  11.12</B> &nbsp; 
+Estendere la funzione proposta come soluzione al punto&nbsp;(2) in modo che stampi
+  un messaggio di errore e restituisca il valore&nbsp;0 nel caso in cui la lista
+  passata come parametro non rappresenti un'espressione banale corretta.<IMG
+ WIDTH="16" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img1.gif"
+ ALT="$\Box$"></DIV><P></P>
+
+<P>
+<P>
+<DIV><B>Esercizio  11.13</B> &nbsp; 
+Implementare una funzione ricorsiva che valuti un'espressione banale
+  applicando le operazioni da destra a sinistra.  Si utilizzi l'algoritmo
+  ricorsivo fornito come soluzione errata alla funzione richiesta al punto&nbsp;(2).<IMG
+ WIDTH="16" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img1.gif"
+ ALT="$\Box$"></DIV><P></P>
+
+<P>
+<P>
+<DIV><B>Esercizio  11.14</B> &nbsp; 
+[Difficile]
+  Scrivere una funzione ricorsiva per la valutazione di un'espressione banale
+  come richiesto al punto&nbsp;(2), cio&#232; applicando le operazioni da sinistra a
+  destra.<IMG
+ WIDTH="16" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img1.gif"
+ ALT="$\Box$"></DIV><P></P>
+
+<P>
+<P>
+<DIV><B>Esercizio  11.15</B> &nbsp; 
+[Molto difficile]
+  Scrivere una funzione (ricorsiva o iterativa) per la valutazione di
+  un'espressione banale, tenendo conto della precedenza dell'operatore
+  `<TT>*</TT>' sull'operatore `<TT>+</TT>'.<IMG
+ WIDTH="16" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img1.gif"
+ ALT="$\Box$"></DIV><P></P>
+
+<P>
+
+<H2><A NAME="SECTION000118000000000000000">
+Sezione 11.10</A>
+</H2>
+
+<P>
+<P>
+<DIV><B>Esercizio  11.16</B> &nbsp; 
+[Difficile]
+  Si modifichino le procedure sviluppate ai punti&nbsp;(2) e&nbsp;(3) in modo che le
+  righe vengano spezzate solo in prossimit&#224; degli spazi bianchi.  Si ammette
+  quindi che una riga possa contenere meno di 
+<!-- MATH
+ $\ensuremath{\mathit{dim}}$
+ -->
+<IMG
+ WIDTH="31" HEIGHT="15" ALIGN="BOTTOM" BORDER="0"
+ SRC="img13.gif"
+ ALT="\ensuremath{\mathit{dim}}">
+caratteri.<IMG
+ WIDTH="16" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img1.gif"
+ ALT="$\Box$"></DIV><P></P>
+
+<P>
+<P>
+<DIV><B>Esercizio  11.17</B> &nbsp; 
+[Difficile]
+  Si modifichino le procedure sviluppate ai punti&nbsp;(2) e&nbsp;(3) in modo che le
+  righe vengano spezzate solo in prossimit&#224; degli spazi bianchi.  Le righe
+  che sono state spezzate devono essere portate tutte a lunghezza 
+<!-- MATH
+ $\ensuremath{\mathit{dim}}$
+ -->
+<IMG
+ WIDTH="31" HEIGHT="15" ALIGN="BOTTOM" BORDER="0"
+ SRC="img13.gif"
+ ALT="\ensuremath{\mathit{dim}}">,
+  eventualmente spaziando le parole in modo uniforme attraverso l'inserimento
+  di spazi bianchi.<IMG
+ WIDTH="16" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img1.gif"
+ ALT="$\Box$"></DIV><P></P>
+
+<P>
+<BR><HR>
+<ADDRESS>
+<I></I>
+<BR><I>1999-05-21</I>
+</ADDRESS>
+</BODY>
+</HTML>

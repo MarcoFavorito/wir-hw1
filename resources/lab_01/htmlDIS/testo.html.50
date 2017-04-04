@@ -1,0 +1,125 @@
+<HTML>
+<HEAD>
+<TITLE>Testo appello Fondamenti di Informatica 12/01/2000</TITLE>
+</HEAD>
+<BODY>
+
+<B>
+<P ALIGN="CENTER">Universit&agrave; di Roma "La Sapienza"<BR>
+Facolt&agrave; di Ingegneria<BR>
+Corso di Fondamenti di Informatica</P>
+<P ALIGN="CENTER">Corsi di Laurea: Aerospaziale, Chimica, Elettrica, Materiali,
+Meccanica, Ambiente e Territorio (v.p.)</P>
+</B>
+
+<P ALIGN="CENTER"><I>Appello del 12-1-2000. Prima prova (tempo: 2 ore).</I></P>
+
+<P><B>Esercizio 1</B> (18 punti)</P>
+
+<P>Un cliente di una banca decide di memorizzare su un file (denominato
+PORTFOL.DAT) il suo portafoglio titoli. Nel file sono riportate, per ogni
+titolo posseduto dal cliente, le seguenti informazioni:</P>
+
+<UL>
+  <LI>Codice del titolo (4 caratteri);</LI>
+  <LI>Numero di azioni possedute dal cliente;</LI>
+  <LI>Prezzo unitario delle azioni, in Euro.</LI>
+</UL>
+
+<P>Alla fine di ogni settimana la banca invia a tutti i clienti possessori di
+titoli un file (denominato VALORI.DAT) in cui sono memorizzate, per ogni titolo
+trattato dalla banca, le seguenti informazioni:</P>
+
+<UL>
+  <LI>Codice del titolo (4 caratteri);</LI>
+  <LI>Prezzo unitario delle azioni, in Euro, fissato nell'ultima seduta
+      settimanale della borsa.</LI>
+</UL>
+
+<P>1) Scrivere le dichiarazioni dei tipi di dato Pascal da utilizzarsi per
+  risolvere i due punti successivi.</P>
+
+<P>2) Scrivere una (o pi&ugrave;) unit&agrave; Pascal che, dato il file
+  PORTFOL.DAT costruisca, e restituisca attraverso opportuni parametri di
+  uscita, una lista, rappresentata mediante record e puntatori, in cui sono
+  memorizzati i codici dei titoli posseduti dal cliente il cui valore
+  complessivo, all’acquisto, &egrave; superiore a 10000 Euro.</P> 
+
+<P> 3) Scrivere una (o pi&ugrave;) unit&agrave; Pascal che, dati i due file
+PORTFOL.DAT e VALORI.DAT di cui sopra, memorizzi in un nuovo file i codici di
+tutti e soli i titoli che nella settimana considerata hanno ottenuto un
+guadagno. L'unit&agrave; Pascal dovr&agrave; anche fornire in output il nome
+fisico del file costruito.</P>
+
+<BR>
+<BR>
+
+<B>
+<P ALIGN="CENTER">Universit&agrave; di Roma "La Sapienza"<BR>
+Facolt&agrave; di Ingegneria<BR>
+Corso di Fondamenti di Informatica </P>
+<P ALIGN="CENTER">Corsi di Laurea: Aerospaziale, Chimica, Elettrica, Materiali,
+Meccanica, Ambiente e Territorio (v.p.)</P>
+</B>
+
+<I><P ALIGN="CENTER">Appello del 12-1-2000. Seconda prova (tempo: 1 ora).</P>
+</I>
+
+<P><B>Esercizio 2</B> (4 punti)</P>
+
+<P>Si illustri un algoritmo di visita di grafi e se ne discuta la
+complessit&agrave;.</P>
+
+<P><B>Esercizio 3</B> (4 punti)</P>
+
+<P>Siano date le seguenti dichiarazioni di tipo e di variabile. Il candidato
+quindi consideri i quattro successivi frammenti di programma Pascal e ne
+discuta la correttezza sintattica, rilevando e spiegando, per ciascuno dei
+frammenti, la presenza di eventuali errori di sintassi. </P>
+
+<PRE>
+type
+  t_ai  = array [1..3] of integer;
+  t_fai = file of t_ai;
+  t_fi  = file of integer;
+
+var
+  i    : integer;
+  x    : t_ai;
+  y    : array [1..3] of t_ai;
+  f_ai : t_fai;
+  f_i  : t_fi;
+</PRE>
+
+<OL>
+  <LI><PRE>
+reset(f_ai);
+for i:= 1 to 3 do read(f_ai, x[i]);
+...
+</PRE>
+  <LI><PRE>
+reset(f_ai);
+for i:= 1 to 3 do read(f_ai, y[i]);
+...
+      </PRE>
+  <LI><PRE>
+reset(f_i);
+for i:= 1 to 3 do read(f_i, x[i]);
+...
+      </PRE>
+
+  <LI><PRE>
+reset(f_i);
+for i:= 1 to 3 do read(f_i, y[i]);
+...
+      </PRE>
+</OL>
+
+<P><B>Esercizio 4</B> (4 punti)</P> <P>Si scriva un sottoprogramma Fortran che,
+dato come parametro una matrice <I>M</I> quadrata di ordine <I>N</I>, a valori
+interi, verifichi se per la matrice <I>M</I> vale la seguente propriet&agrave;:
+la somma degli elementi della diagonale principale &egrave; minore della somma
+degli elementi della diagonale secondaria.</P>
+
+</BODY>
+</HTML>

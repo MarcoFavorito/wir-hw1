@@ -1,0 +1,58 @@
+<!-- file generated with webcpp 0.6.2 http://webcpp.sf.net -->
+<html>
+<head>
+<title>C:\Documents and Settings\Administrator\Documenti\Web\igea\lab\20020325\RosaDeiVenti.java</title>
+<meta name="Microsoft Border" content="tb, default">
+</head>
+<body bgcolor=#ffffff text=#000000 link=#ff0000 vlink=#666666 alink=#0000ff><!--msnavigation--><table border="0" cellpadding="0" cellspacing="0" width="100%"><tr><td>
+
+<p align="center">
+</p>
+<hr>
+<p align="center">&nbsp;</p>
+
+</td></tr><!--msnavigation--></table><!--msnavigation--><table border="0" cellpadding="0" cellspacing="0" width="100%"><tr><!--msnavigation--><td valign="top">
+<pre>
+<b><font COLOR=#0000ff>import</font></b> java.applet.Applet;
+<b><font COLOR=#0000ff>import</font></b> java.awt.*;
+<b><font COLOR=#0000ff>import</font></b> java.awt.geom.Rectangle2D;
+
+<b><font COLOR=#0000ff>public</font></b> <b><font COLOR=#0000ff>class</font></b> RosaDeiVenti <b><font COLOR=#0000ff>extends</font></b> Applet
+{   <b><font COLOR=#0000ff>public</font></b> <b><font COLOR=#0000ff>void</font></b> paint(Graphics g)
+    {   <font COLOR=#666666>// ristabilisci il riferimento a Graphics2D</font>
+        Graphics2D g2=(Graphics2D)g;
+        
+        <b><font COLOR=#0000ff>final</font></b> <b><font COLOR=#0000ff>double</font></b> maxparam=<font COLOR=#a900a9>7</font>;
+        <b><font COLOR=#0000ff>final</font></b> <b><font COLOR=#0000ff>int</font></b> numeroPunti=<font COLOR=#a900a9>30000</font>;
+        <b><font COLOR=#0000ff>final</font></b> <b><font COLOR=#0000ff>double</font></b> passo=maxparam/(numeroPunti-<font COLOR=#a900a9>1</font>);
+        
+        <font COLOR=#666666>//istanzia oggetto rettangolo per disegnare traiettoria</font>
+        Rectangle2D.Double rect=<b><font COLOR=#0000ff>new</font></b> Rectangle2D.Double();
+                               
+        <font COLOR=#666666>//calcola i punti e disegna traiettoria</font>
+        <b><font COLOR=#0000ff>for</font></b> (<b><font COLOR=#0000ff>double</font></b> param=-maxparam;param&lt;maxparam;param=param+<font COLOR=#a900a9>0.2</font>)
+        {	
+           	rect.setRect(xCoord(param),yCoord(param), <font COLOR=#a900a9>5</font>, <font COLOR=#a900a9>5</font>);
+        	g2.draw(rect);
+       	}  
+    }
+    <b><font COLOR=#0000ff>private</font></b> <b><font COLOR=#0000ff>double</font></b> xCoord(<b><font COLOR=#0000ff>double</font></b> t)
+    {
+    	<b><font COLOR=#0000ff>return</font></b> (<font COLOR=#a900a9>160</font> + <font COLOR=#a900a9>120</font>*Math.cos(<font COLOR=#a900a9>2</font>*t)*Math.cos(t));
+	}
+	<b><font COLOR=#0000ff>private</font></b> <b><font COLOR=#0000ff>double</font></b> yCoord(<b><font COLOR=#0000ff>double</font></b> t)
+    {
+    	<b><font COLOR=#0000ff>return</font></b> (<font COLOR=#a900a9>160</font> + <font COLOR=#a900a9>120</font>*Math.cos(<font COLOR=#a900a9>2</font>*t)*Math.sin(t));
+	}
+}
+        
+
+</pre>
+<!--msnavigation--></td></tr><!--msnavigation--></table><!--msnavigation--><table border="0" cellpadding="0" cellspacing="0" width="100%"><tr><td>
+<hr>
+      <h5 align="left">Questa è la bacheca di <b><i>Informatica Grafica</i>,
+      corso di laurea specialistica in <i>Ing. Edile-architettura<br>
+      </i></b>by <a href="mailto:damore@dis.uniroma1.it"> FdA</a></h5>
+      <h6 align="left">ultima modifica: 02/02/2005 11.30</h6>
+</td></tr><!--msnavigation--></table></body>
+</html>

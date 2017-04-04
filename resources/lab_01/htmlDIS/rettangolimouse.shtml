@@ -1,0 +1,156 @@
+<!doctype html public "-//w3c//dtd html 4.0 transitional//en">
+<html>
+<head>
+<link href="java.css" rel="stylesheet" type="text/css">
+<title>Disegno di rettangoli usando mouseDown, mouseDrag e mouseUp</title>
+</head>
+
+<body>
+
+<h2>Disegno di rettangoli usando mouseDown, mouseDrag e mouseUp</h2>
+
+Vediamo ora un programma che disegna dei rettangoli nella
+finestra. Per disegnare un rettangolo, l'utente deve
+premere il pulsante nel punto in alto a sinistra del rettangolo,
+e poi muovere il cursore tenendo premuto il pulsante. Il
+punto in cui il pulsante viene rilasciato &egrave; il punto
+in basso a destra del rettangolo.<p>
+
+Il metodo da usare &egrave; molto semplice: ci servono
+quattro vettori per rappresentare i dati di ciascuno dei
+rettangoli disegnati (per ogni rettangolo ci servono le
+coordinate del punto in alto a sinistra, la larghezza e
+l'altezza). Questi dati sono modificati dalle funzioni
+<tt>mouseDown</tt> e <tt>mouseDrag</tt>, e sono poi usati
+da <tt>paint</tt> per disegnare effettivamente i rettangoli.
+Quindi, questi vettori devono essere variabili globali.
+Un'altra variabile globale che ci serve &egrave; quella che
+contiene il numero di rettangoli che sono stati disegnati
+fino ad ora. Il programma inizia quindi cos&iacute;:<p>
+
+<pre>
+import java.awt.*;
+
+public class RettangoliMouse extends java.applet.Applet {
+  int xvett[] = new int[100];
+  int yvett[] = new int[100];
+  int wvett[] = new int[100];
+  int hvett[] = new int[100];
+  int nrettangoli=0;
+</pre>
+
+La funzione <tt>mouseDown</tt> viene chiamata ogni volta che
+il pulsante viene premuto. A questo deve corrispondere la
+definizione del punto in alto a sinistra di un nuovo
+rettangolo. Quindi, la funzione <tt>mouseDown</tt> contiene
+le due istruzioni:<p>
+
+<pre>
+  public boolean mouseDown(Event e, int x, int y) {
+
+    xvett[nrettangoli]=x;
+    yvett[nrettangoli]=y;
+
+    return true;
+  }
+</pre>
+
+La funzione <tt>mouseUp</tt> viene chiamata quando il pulsante
+viene rilasciato. Quindi, questa funzione deve definire la
+largezza e l'altezza del rettangolo. Inoltre, dato che il
+rettangolo &egrave; terminato, deve incrementare di uno il
+valore della variabile che conta il numero di rettangoli.
+A questo punto, si pu&ograve; disegnare di nuovo tutta la
+figura.<p>
+
+<pre>
+  public boolean mouseUp(Event e, int x, int y) {
+    wvett[nrettangoli]=x-xvett[nrettangoli];
+    hvett[nrettangoli]=y-yvett[nrettangoli];
+
+    nrettangoli=nrettangoli+1;
+
+    repaint();
+
+    return true;
+  }
+</pre>
+
+Il programma
+<a href="RettangoliMouse.java">RettangoliMouse.java</a>
+effettua anche il tracciamento dei rettangoli
+durante il disegno.<p>
+
+<pre>
+/*
+  Disegna dei rettangoli con il trascinamento del mouse.
+*/
+
+import java.awt.*;
+
+public class RettangoliMouse extends java.applet.Applet {
+  int xprec=0, yprec=0;
+
+  int xvett[] = new int[100];
+  int yvett[] = new int[100];
+  int wvett[] = new int[100];
+  int hvett[] = new int[100];
+  int nrettangoli=0;
+
+
+  public boolean mouseDown(Event e, int x, int y) {
+    xvett[nrettangoli]=x;
+    yvett[nrettangoli]=y;
+
+    xprec=0;
+    yprec=0;
+
+    return true;
+  }
+
+  public boolean mouseUp(Event e, int x, int y) {
+    wvett[nrettangoli]=x-xvett[nrettangoli];
+    hvett[nrettangoli]=y-yvett[nrettangoli];
+
+    nrettangoli=nrettangoli+1;
+
+    repaint();
+
+    return true;
+  }
+
+  public boolean mouseDrag(Event e, int x, int y) {
+    Graphics g=getGraphics();
+
+    g.setColor(getBackground());
+    g.drawRect(xvett[nrettangoli],yvett[nrettangoli],
+               xprec-xvett[nrettangoli],yprec-yvett[nrettangoli]);
+
+    g.setColor(Color.black);
+    g.drawRect(xvett[nrettangoli],yvett[nrettangoli],
+               x-xvett[nrettangoli],y-yvett[nrettangoli]);
+
+    xprec=x;
+    yprec=y;
+
+    return true;
+  }
+
+  public void paint(Graphics g) {
+    int i;
+
+    for(i=0; i<=nrettangoli-1; i++) 
+      g.drawRect(xvett[i],yvett[i],wvett[i],hvett[i]);
+  }
+}
+
+</pre>
+<p>
+
+<applet code="RettangoliMouse.class" width="500" height="500">
+</applet>
+
+</body>
+</html>
+
+

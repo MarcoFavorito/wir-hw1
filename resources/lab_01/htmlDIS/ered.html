@@ -1,0 +1,932 @@
+<html>
+<head>
+<title>Ereditarieta'</title>
+</head>
+
+<body>
+
+<h1>Ereditariet&agrave;</h1>
+
+<p>
+Permette di <i>estendere</i> classi esistenti,
+aggiungendo metodi e componenti.
+</p>
+
+<hr>
+
+
+<h4>Principi e tecnica</h4>
+
+<p>
+Differenza fra concetto e implementazione:
+</p>
+
+<dl>
+
+<dt>implementazione:
+<dd>prendo una classe, e ci metto dentro nuovi metodi e
+componenti
+
+<dt>concetto:
+<dd>creo una classe che rappresenta un <i>sottoinsieme</i>
+della classe di partenza.
+
+</dl>
+
+<p>
+Sulla seconda cosa ci torneremo.
+</p>
+
+<hr>
+
+
+<h4>Aggiungere componenti</h4>
+
+<p>
+Data la classe <tt>Studente</tt>
+</p>
+
+<pre>
+class Studente {
+  String nome;
+  int anno;
+}
+</pre>
+
+<p>
+Aggiungere la componente <tt>int stipendio</tt> per studenti
+borsisti.
+</p>
+
+<pre>
+class Borsista extends Studente {
+  int stipendio;
+}
+</pre>
+
+<hr>
+
+
+<h4>Classe e sottoclasse</h4>
+
+<p>
+Nomenclatura:
+</p>
+
+<dl>
+
+<dt><tt>Studente</tt>
+<dd>classe
+
+<dt><tt>Borsista</tt>
+<dd>sottoclasse
+
+</dl>
+
+<p>
+Si dice <i>estendere la classe</i>
+</p>
+
+<p>
+In effetti: <i>creare una nuova classe</i> che estende
+quella esistente.
+</p>
+
+<p>
+La classe di partenza non cambia:
+</p>
+
+<table border=1>
+<tr><th>Classe</th><th>Componenti</th></tr>
+<tr><td>Studente</td><td><tt>nome</tt>, <tt>anno</tt></td></tr>
+<tr><td>Borsista</td><td><tt>nome</tt>, <tt>anno</tt>, <tt>stipendio</tt></td></tr>
+</table>
+
+<hr>
+
+
+<h4>Aggiungere metodi</h4>
+
+<p>
+Stesso sistema:
+</p>
+
+<pre>
+class Borsista extends Studente {
+  int stipendio;
+
+  int getStipendio() {
+    return this.stipendio;
+  }
+}
+</pre>
+
+<p>
+La classe di partenza <tt>Studente</tt> rimane la stessa
+(non ha il metodo <tt>getStipendio</tt>)
+</p>
+
+<p>
+La sottoclasse <tt>Borsista</tt> ha tutti i metodi di
+<tt>Studente</tt> pi&ugrave; quelli nuovi.
+</p>
+
+<hr>
+
+
+<h4>Rappresentazione grafica degli oggetti</h4>
+
+<p>
+Per gli oggetti delle sottoclassi, usiamo una
+rappresentazione che evidenzia le parti aggiunte.
+</p>
+
+
+<img src="aggiunti.gif">
+
+<p>
+Poi vedremo il perch&egrave;
+</p>
+
+<hr>
+
+
+<h4>Perch&egrave; il nome "sottoclasse"?</h4>
+
+<p>
+Esempio specifico: i borsisti sono una particolare categoria
+di studenti.
+</p>
+
+<p>
+In generale: gli oggetti di una sottoclasse possono avere
+propriet&agrave; che non tutti gli oggetti della classe di
+partenza hanno.
+</p>
+
+<p>
+Usare l'ereditariet&agrave; in questi casi.
+</p>
+
+<hr>
+
+
+<h4>Errore metodologico</h4>
+
+<pre>
+class Point3D extends Point {
+  int z;
+}
+</pre>
+
+<p>
+I punti nello spazio non sono un sottoinsieme dei punti
+del piano!
+</p>
+
+<p>
+Uso metodologicamente sbagliato dell'ereditariet&agrave;
+</p>
+
+<dl>
+
+<dt>metodologicamente:
+<dd>usare <tt>extends</tt> per caratterizzare sottoinsiemi;
+
+<p />
+
+<dt>tecnicamente:
+<dd>si possono aggiungere componenti e metodi a una classe,
+anche se il risultato non &egrave; la rappresentazione di un
+sottoinsieme.
+
+</dl>
+
+<hr>
+
+
+<h4>Giustificazione della regole</h4>
+
+<p>
+Classe <tt>B</tt> rappresenta un sottoinsieme di <tt>A</tt>
+</p>
+
+<p>
+Tutti gli oggetti di <tt>B</tt> sono oggetti di <tt>A</tt>
+</p>
+
+<p>
+Gli oggetti di <tt>B</tt> hanno (almeno) le stesse
+componenti e gli stessi metodi di quelli di <tt>A</tt>
+</p>
+
+<p>
+Le regole sull'ereditariet&agrave; derivano dal concetto di
+sottoinsieme.
+</p>
+
+<hr>
+
+
+<h4>Variabili e oggetti</h4>
+
+
+<p>
+Tutti i Borsisti sono Studenti.
+</p>
+
+<p>
+Quindi, uno <tt>Studente</tt> pu&ograve; <i>anche</i> essere
+un <tt>Borsista</tt>.
+</p>
+
+<p>
+In una variabile <tt>Studente</tt> posso mettere il
+riferimento a un oggetto <tt>Borsista</tt>:
+</p>
+
+<pre>
+  public static void main(String args[]) {
+    Studente s;
+    Borsista b=new Borsista();
+
+    s=b;
+  }
+</pre>
+
+<img src="due.gif">
+
+<p>
+Tecnicamente: da una variabile <tt>Studente</tt> mi aspetto
+un oggetto che abbia almeno le componenti <tt>nome</tt> e
+<tt>anno</tt>
+</p>
+
+<hr>
+
+
+<h4>Variabili e oggetti</h4>
+
+<p>
+Non tutti gli studenti sono borsisti:
+</p>
+
+<pre>
+  public static void main(String args[]) {
+    Studente s=new Studente();
+    Borsista b;
+
+    b=s; // errore: incompatible type
+  }
+</pre>
+
+<hr>
+
+
+<h4>Estensione e aggiunta di componenti</h4>
+
+<p>
+Mettere un riferimento a un <tt>Point3D</tt> in una
+variabile <tt>Point</tt>: si pu&ograve; fare, ma non ha senso.
+</p>
+
+<p>
+La classe <tt>Point3D</tt> va definita da zero, anche se
+tecnicamente si potrebbe realizzare come sottoclasse di
+<tt>Point</tt>:
+</p>
+
+<pre>
+class Point3D {
+  int x;
+  int y;
+  int z;
+}
+</pre>
+
+<hr>
+
+
+<h4>Variabili e oggetti</h4>
+
+<p>
+Alcuni studenti sono borsisti.
+</p>
+
+<p>
+Si pu&ograve; trasferire il contenuto di una variabile
+<tt>Studente</tt> in una variabile <tt>Borsista</tt>, ma
+solo se la variabile <tt>Studente</tt> contiene
+effettivamente un <tt>Borsista</tt>.
+</p>
+
+<pre>
+  public static void main(String args[]) {
+    Studente s;
+    Borsista b=new Borsista();
+    Borsista c;
+
+    s=b;
+
+    c=(Borsista) s;
+  }
+</pre>
+
+<p>
+Si pu&ograve; sempre fare?
+</p>
+
+<hr>
+
+
+<h4>Funziona sempre?</h4>
+
+<p>
+Sintatticamente, <tt>borsista1=(Borsista) studente1;</tt> si
+pu&ograve; sempre fare.
+</p>
+
+<p>
+A run time:
+</p>
+
+<p>
+OK: <img src="si.gif">
+</p>
+
+<p>
+NO: <img src="no.gif">
+</p>
+
+<p>
+Esempio:
+</p>
+
+<pre>
+  public static void main(String args[]) {
+    Studente s=new Studente();
+    Borsista c;
+
+    c=(Borsista) s;
+  }
+</pre>
+
+<p>
+Il compilatore non d&agrave; errori.
+</p>
+
+<p>
+Quando si esegue:
+</p>
+
+<pre>
+Exception in thread "main" java.lang.ClassCastException
+        at Runtime.main(Runtime.java:6)
+</pre>
+
+<hr>
+
+
+<h4>Perch&egrave; il compilatore non se ne accorge?</h4>
+
+<pre>
+  Studente s;
+
+  if(metodo())
+    s=new Studente();
+  else
+    s=new Borsista();
+
+  Borsista b=(Borsista) s;
+</pre>
+
+<p>
+Il contenuto di <tt>s</tt> dipende dal risultato del
+metodo...
+</p>
+
+<p>
+...che pu&ograve; dipendere dall'input dell'utente, dal
+contenuto di un file, ecc.
+</p>
+
+<hr>
+
+
+<h4>Variabili e oggetti, in generale</h4>
+
+<p>
+Si pu&ograve; usare una espressione che ritorna un
+oggetto della sottoclasse in ogni punto del programma dove
+va messo un oggetto della sovraclasse.
+</p>
+
+<p>
+Il contrario si pu&ograve; fare con un cast. Pu&ograve; dare
+errore a runtime.
+</p>
+
+<p>
+Esempio: a un metodo con argomento <tt>Studente</tt> si
+pu&ograve; passare <tt>new Borsista()</tt>
+</p>
+
+<hr>
+
+
+<h4>Gerarchia di classi</h4>
+
+<p>
+Si pu&ograve; estendere una classe qualsiasi.
+</p>
+
+<p>
+Anche una classe che &egrave; gi&agrave; il risultato di una
+estensione:
+</p>
+
+<pre>
+class Borsista extends Studente {
+  int stipendio;
+}
+
+class BorsistaLaureando
+  extends Borsista {
+  String data_prevista_laurea;
+}
+</pre>
+
+<p>
+Tutti i metodi e le componenti di <tt>Studente</tt> sono in
+<tt>Borsista</tt>, e quindi anche in
+<tt>BorsistaLaureando</tt>
+</p>
+
+<hr>
+
+
+<h4>Classi estese in pi&ugrave; modi</h4>
+
+<p>
+Una stessa classe si pu&ograve; estendre in pi&ugrave; modi:
+</p>
+
+<pre>
+class StudenteLavoratore extends Studente {
+  String azienza;
+}
+</pre>
+
+<p>
+Le classi <tt>Borsista</tt> e <tt>StudenteLavoratore</tt>
+sono entrambe sottoclassi di <tt>Studente</tt>
+</p>
+
+<p>
+Entrambe le classi hanno tutte le componenti e i metodi di
+<tt>Studente</tt>
+</p>
+
+<p>
+Le componenti aggiuntive di <tt>Borsista</tt> e
+<tt>StudenteLavoratore</tt> possono essere diverse
+</p>
+
+<hr>
+
+
+<h4>Ereditariet&agrave; multipla</h4>
+
+<p>
+Uno studente potrebbe essere sia borsista che studente
+lavoratore.
+</p>
+
+<pre>
+// errore
+class BorsistaLavoratore
+  extends Borsista, StudenteLavoratore {
+  ...
+}
+</pre>
+
+<p>
+Creare una classe che estende due classi date:
+ereditariet&agrave; multipla.
+</p>
+
+<p>
+Non si pu&ograve; fare in Java.
+</p>
+
+<p>
+Esistono linguaggio in cui si pu&ograve; fare
+</p>
+
+<p>
+In Java, il problema &egrave; parzialmente risolto con le
+interfaccie.
+</p>
+
+<hr>
+
+
+<h4>Gerarchie di classi</h4>
+
+<p>
+Rappresentazione grafica delle classi definite ora:
+</p>
+
+<img src="gerarchia.gif">
+
+<p>
+La freccia indica una relazione sottoclasse->classe
+</p>
+
+<hr>
+
+
+<h4>Gerarchie di classi predefinite</h4>
+
+<p>
+Esempio di gerarchia che esiste nelle classi predefinite di
+Java:
+</p>
+
+<img src="molte.gif">
+
+<p>
+Quando possibile, si tende sempre a definire sottoclassi
+invece di definire classi da zero.
+</p>
+
+<hr>
+
+
+<h4>La classe <tt>Object</tt></h4>
+
+<p>
+In cima alla gerarchia di tutte le classi c'&egrave; la
+classe predefinita <tt>Object</tt>:
+</p>
+
+<img src="sovratutti.gif">
+
+<p>
+&Egrave; una classe predefinita del linguaggio.
+</p>
+
+<p>
+Quando si crea una nuova classe senza mettere <tt>extends
+SovraClasse</tt>, &egrave; implicito <tt>extends Object</tt>
+</p>
+
+<table border=1>
+<tr>
+<td>
+<pre>
+class Studente {
+...
+}
+</pre>
+</td>
+<td>
+=
+</td>
+<td>
+<pre>
+class Studente
+  extends Object {
+...
+}
+</pre>
+</td>
+</tr>
+</table>
+
+<hr>
+
+
+<h4>Ogni classe deriva da <tt>Object</tt></h4>
+
+<p>
+Ogni classe &egrave; sottoclasse di <tt>Object</tt>
+(direttamente o indirettamente):
+</p>
+
+<dl>
+
+<dt>direttamente
+<dd>quando si omette <tt>extends</tt> oppure si scrive
+l'inutile <tt>extends Object</tt>
+
+<p />
+
+<dt>indirettamente
+<dd>si mette <tt>extends SovraClasse</tt>: a sua volta,
+<tt>SovraClasse</tt> &egrave; sottoclasse (direttamente o
+indirettamente) di <tt>Object</tt>
+
+</dl>
+
+<p>
+Ogni classe ha un metodo <tt>equals</tt> e <tt>toString</tt>
+</p>
+
+<hr>
+
+
+<h4>Cosa c'&egrave; nella classe <tt>Object</tt>?</h4>
+
+<p>
+Tutte le classi sono sottoclassi di <tt>Object</tt>
+</p>
+
+<p>
+Tutte le classi hanno i metodi e componenti di
+<tt>Object</tt>, che sono:
+</p>
+
+<dl>
+
+<dt>componenti
+<dd>nessuna
+
+<dt>metodi
+<dd><tt>equals</tt>, <tt>toString</tt>, e altri
+
+</dl>
+
+<p>
+Tutte le classi hanno <tt>equals</tt>, <tt>toString</tt>
+ecc.
+</p>
+
+<hr>
+
+
+<h4>Regola mnemonica</h4>
+
+<p>
+L'indirizzo di un oggetto si pu&ograve; sempre mettere in una
+variabile di una... sovraclasse? sottoclasse?
+</p>
+
+<p>
+Regola facile:
+</p>
+
+<blockquote>
+<i>
+tutti gli oggetti si possono memorizzare in una variabile
+Object
+</i>
+</blockquote>
+
+<p>
+Ricordare poi che <tt>Object</tt> &egrave; sovraclasse di
+tutte le altre.
+</p>
+
+<hr>
+
+
+<h4>Attenzione!</h4>
+
+<p>
+Il controllo di esistenza di componenti e metodi viene fatto
+in fase di compilazione.
+</p>
+
+<p>
+Si assume quindi che in una variabile <tt>Classe x</tt> ci
+sia un oggetto di tipo <tt>Classe</tt>:
+</p>
+
+<pre>
+  public static void main(String args[]) {
+    Object o;
+    Point p=new Point();
+
+    o=p;
+
+    System.out.println(o.x); // errore!
+  }
+</pre>
+
+<p>
+L'errore &egrave; che <tt>Object</tt> non ha la componente
+<tt>x</tt>.
+</p>
+
+<p>
+In fase di compilazione, si sa solo che <tt>o</tt> &egrave;
+un <tt>Object</tt>
+</p>
+
+<p>
+In alcuni casi, cosa c'&egrave; nella variabile si pu&ograve;
+sapere con certezza solo quando si esegue il programma:
+</p>
+
+<pre>
+  public static void main(String args[]) {
+    Object o;
+
+    if(metodo())
+      o=new Object();
+    else
+      o=new Point();
+
+    System.out.println(o.x);
+  }
+</pre>
+
+<hr>
+
+
+<h4>Inciso</h4>
+
+<pre>
+    if(metodo())
+      o=new Object();
+    else
+      o=new Point();
+</pre>
+
+<p>
+Il valore di ritorno di <tt>metodo()</tt> pu&ograve;
+dipendere dai dati di input, da valori su file, ecc.
+</p>
+
+<p>
+Se <tt>metodo()</tt> ritorna sempre <tt>false</tt>, allora
+<tt>o.x</tt> esiste sempre.
+</p>
+
+<p>
+Decidere se un metodo ritorna sempre <tt>false</tt> &egrave;
+<i>indecidibile</i>
+</p>
+
+<p>
+Non esiste nessuna procedura algoritmica per fare questo
+controllo.
+</p>
+
+<hr>
+
+
+<h4>Indecidibilit&agrave;</h4>
+
+<p>
+Variabili non inizializzate:
+</p>
+
+<pre>
+  public static void main(String args[]) {
+    int x=10;
+    int y;
+    int z;
+
+    y=x;
+
+    if((x==10)||(y!=10))
+      z=20;
+
+    System.out.println(z);
+  }
+</pre>
+
+<p>
+Errore: <tt>z</tt> <i>potrebbe</i> non essere stata
+inizializzata.
+</p>
+
+<p>
+In questo caso, lo &egrave; sicuramente!
+</p>
+
+<p>
+In generale, non c'&egrave; modo per sapere se una certa
+istruzione verr&agrave; sempre eseguita.
+</p>
+
+<p>
+Il compilatore non ci prova nemmeno
+</p>
+
+<hr>
+
+
+<h4>if/else</h4>
+
+<p>
+Il compilatore usa solo alcune regole semplici, es. si
+esegue sempre o l'<tt>if</tt> oppure l'<tt>else</tt>:
+</p>
+
+<pre>
+  public static void main(String args[]) {
+    int x=10;
+    int y;
+    int z;
+
+    y=x;
+
+    if(x==10)
+      z=20;
+    else
+      z=40;
+
+    System.out.println(z); // ok
+  }
+</pre>
+
+<hr>
+
+
+<h4>Parametri e valori di ritorno</h4>
+
+<p>
+Se un metodo ha un parametro o un valore di ritorno,
+lo mantiene anche quando il metodo viene ereditato.
+</p>
+
+<p>
+Lo stesso vale se il parametro o il valore di ritorno sono
+del tipo della classe:
+</p>
+
+<pre>
+class Studente {
+  Studente cambioCanale(Studente s) {
+    ...
+  }
+}
+
+class Borsista
+  extends Studente {
+}
+</pre>
+
+<p>
+Nella classe <tt>Borsista</tt> il metodo
+<tt>cambioCanale</tt> ha sempre come valore di ritorno uno
+<tt>Studente</tt> (non un <tt>Borsista</tt>!)
+</p>
+
+<table border=1>
+<tr>
+<th>classe</th>
+<th>metodo</th>
+</tr>
+<tr>
+<td><tt>Studente</tt></td>
+<td><tt>Studente cambioCanale(Studente s)</tt></td>
+</tr>
+<tr>
+<td><tt>Borsista</tt></td>
+<td><tt>Studente cambioCanale(Studente s)</tt></td>
+</tr>
+</table>
+
+<p>
+Il metodo <tt>cambioCanale</tt> della classe
+<tt>Borsista</tt> ha come parametro e valore di ritorno uno
+<tt>Studente</tt>, non un <tt>Borsista</tt>
+</p>
+
+<hr>
+
+
+<h4>Costruttori</h4>
+
+<p>
+I costruttori non si ereditano.
+</p>
+
+<p>
+Si puo&ograve; vedere cos&iacute;:
+</p>
+
+<ul>
+
+<li>il costruttore di <tt>Studente</tt> ritorna uno
+<tt>Studente</tt>
+
+<li>quando si eredita in <tt>Borsista</tt>, dovrebbe avere
+lo stesso tipo del valore di ritorno (<tt>Studente</tt>)
+
+<li>invece, un costruttore di <tt>Borsista</tt> dovrebbe
+avere valore di ritorno <tt>Borsista</tt>
+
+</ul>
+
+<p>
+I costruttori delle sovraclassi si possono per&ograve;
+riusare (poi vediamo come)
+</p>
+
+</body>
+</html>

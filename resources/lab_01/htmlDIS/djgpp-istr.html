@@ -1,0 +1,88 @@
+<HTML>
+<HEAD>
+   <META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1">
+   <META NAME="GENERATOR" CONTENT="Mozilla/4.03 [en] (X11; I; SunOS 5.5.1 sun4u) [Netscape]">
+</HEAD>
+<BODY TEXT="#000000" BGCOLOR="#FFFFFF" LINK="#0000EE" VLINK="#551A8B" ALINK="#FF0000">
+
+<H1>
+Istruzioni per l'installazione di DJGPP</H1>
+
+<OL>
+<LI>
+create una directory dove installare DJGPP (es. C:\DJGPP)</LI>
+
+<LI>
+scaricate in questa directory tutti i file che trovate in</LI>
+
+
+<P><A HREF="http://ftp.dis.uniroma1.it/pub/rosati/lingtrad/djgpp">http://ftp.dis.uniroma1.it/pub/rosati/lingtrad/djgpp</A>
+<BR><A HREF="http://ftp.dis.uniroma1.it/pub/rosati/lingtrad/djgpp">&nbsp;</A>
+<LI>
+unzippate tutti i file; potete usare sia pkunzip (con l'opzione -d) oppure
+il programma unzip386.exe che avete appena scaricato (con unzip386 non
+serve nessuna opzione)</LI>
+
+<LI>
+modificare il file autoexec.bat, aggiungendo le seguenti righe (se al punto
+1 avete scelto una directory diversa da C:\DJGPP modificate opportunamente
+le istruzioni):</LI>
+
+
+<P>set DJGPP=C:\DJGPP\DJGPP.ENV
+
+<P>set PATH=C:\DJGPP\BIN;%PATH%
+<LI>
+a questo punto battete il comando</LI>
+
+
+<P>go32-v2
+<BR>&nbsp;
+<LI>
+che (se tutto va bene) dovrebbe darvi come risposta qualcosa del tipo</LI>
+
+
+<P>DPMI memory available: ..... Kb
+
+<P>DPMI swap space available: ......Kb
+<BR>&nbsp;
+<LI>
+ora potete provare il compilatore C, che si invoca col comando</LI>
+
+
+<P>gcc &lt;nome-file-c>
+<BR>&nbsp;
+<LI>
+se riuscite a compilare, allora siete a posto. Altrimenti, se vi da' errore
+perche' non riesce a scrivere in una directory temporanea, dovete andare
+a modificare il file</LI>
+
+
+<P>djgpp.env
+<BR>&nbsp;
+<LI>
+cambiando il valore della variabile tmpdir (in una delle primissime righe
+del file) in modo che punti ad una directory (temporanea) che esista e
+che voi possiate scrivere (es. C:\WINDOWS\TEMP)</LI>
+
+<LI>
+a questo punto non dovreste avere altri problemi di setup, e siete cosi'
+pronti per usare <A HREF="flexbis.html">FLEX</A> e <A HREF="flexbis.html">BISON</A>
+(che sono gia' nell'ambiente)</LI>
+
+<LI>
+se invece avete ancora problemi.... andate a leggervi il file <A HREF="http://ftp.dis.uniroma1.it/pub/rosati/lingtrad/djgpp/readme.1st">readme.1st</A></LI>
+
+<LI>
+NOTA. L'installazione che avete eseguito e' solo una versione minimale
+di djgpp, necessaria per poter lavorare con FLEX e BISON (e il C). Chi
+volesse estendere tale installazione con gli altri programmi di DJGPP (es.
+compilatore C++), puo' andare sul sito</LI>
+
+
+<P><A HREF="http://sunsite.cnlab-switch.ch/ftp/mirror/simtelnet/gnu/djgpp/v2/">http://sunsite.cnlab-switch.ch/ftp/mirror/simtelnet/gnu/djgpp/v2/</A>
+<BR>&nbsp;
+<BR>e da li' scaricarsi anche gli altri file per completare l'installazione.</OL>
+
+</BODY>
+</HTML>

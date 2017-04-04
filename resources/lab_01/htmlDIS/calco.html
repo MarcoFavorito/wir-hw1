@@ -1,0 +1,130 @@
+<html>
+<head>
+<title></title>
+</head>
+
+<body>
+
+<h1>Prova al calcolatore 26/3/2002</h1>
+
+<b>Canale A-L (Liberatore)/ Prova al calcolatore</b>
+
+<hr>
+
+<h4>Parte I</h4>
+
+<p>
+Si vuole realizzare il sistema di gestione dei
+calcolatori di una grande azienda. La prima classe
+da realizzare ha oggetti che modellano i singoli
+calcolatori. In particolare, per ogni calcolatore
+vanno memorizzati i seguenti dati:
+</p>
+
+<ul>
+
+<li>numero:
+un numero identificativo (il ``nome'' proprio
+del calcolatore)
+
+<li>ufficio:
+il nome dell'ufficio in cui il calcolatore si trova
+(una stringa)
+
+<li>funziona:
+un booleano, che indica se il calcolatore funziona
+o no
+
+<li>et&agrave;:
+quanti giorni fa il calcolatore &egrave; stato comprato
+
+</ul>
+
+<p>
+La classe <tt>Calcolatore</tt> deve avere i seguenti metodi:
+</p>
+
+<table>
+
+<tr>
+<td>costruttore</td>
+<td>prende come parametro i dati di un calcolatore</td>
+</tr>
+
+<tr>
+<td><tt>getNumero</tt></td>
+<td>trova il numero del calcolatore</td>
+</tr>
+
+<tr>
+<td><tt>getUfficio</tt></td>
+<td>trova il nome dell'ufficio</td>
+</tr>
+
+<tr>
+<td><tt>getFunziona</tt></td>
+<td>determina se il calcolatore funziona</td>
+</tr>
+
+<tr>
+<td><tt>getEta</tt></td>
+<td>trova l'et&agrave; del calcolatore</td>
+</tr>
+
+</table>
+
+
+<hr>
+
+<h4>Esercizio II</h4>
+
+<p>
+Creare la classe <tt>CalcDue</tt> che &egrave; uguale
+alla classe di sopra, ma contiene anche il metodo statico
+<tt>Read</tt> che riceve come parametro un
+<tt>BufferedReader</tt> e restituisce il prossimo oggetto
+<tt>CalcDue</tt> letto dal buffered reader. I dati sono
+memorizzati in ordine (prima il numero, poi il nome
+dell'ufficio, ecc). Il funzionamento del calcolatore
+viene memorizzato come un numero: <tt>0</tt> se il
+calcolatore non funziona e un qualsiasi altro numero
+se funziona (attenzione! la variabile di istanza deve
+essere sempre un boolean).
+</p>
+
+<p>
+Creare poi la classe <tt>Gestione</tt> che serve alla
+gestione dell'insieme dei calcolatori dell'azienda.
+Ogni oggetto ha come (unica) variabile di istanza il
+nome di un file in cui si trovano i dati dei calcolatori.
+</p>
+
+<p>
+Questa classe deve avere i seguenti metodi:
+</p>
+
+<dl>
+
+<dt>costruttore
+<dd>prende come parametro il nome del file
+
+<dt><tt>int etaMedia()</tt>
+<dd>calcola l'et&agrave; media dei calcolatori di tutta
+l'azienda
+
+<dt><tt>int maxFunzionante(String uff)</tt>
+<dd>trova l'et&agrave; del calcolatore dell'ufficio
+<tt>uff</tt> pi&ugrave; vecchio che sia ancora
+funzionante.
+
+</dl>
+
+</body>
+</html>
+
+
+
+
+
+
+

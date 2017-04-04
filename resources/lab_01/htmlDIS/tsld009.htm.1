@@ -1,0 +1,44 @@
+
+<HTML>
+
+<HEAD>
+<META HTTP-EQUIV="Context-Type" CONTEXT="text/html;charset=PREDEFINITA (AUTOMATICA)">
+<meta name="GENERATOR" content="Microsoft Internet Assistant for PowerPoint 97">
+ <TITLE>Reasoning About FDs  (Contd.)</TITLE> 
+</HEAD>
+
+<BODY     >
+
+ <H1>Reasoning About FDs  (Contd.)</H1> 
+ <P><UL>
+<LI><H2>Computing the closure of a set of FDs can be expensive.  (Size of closure is exponential in # attrs!)
+</H2>
+</UL><UL>
+<LI><H2>Typically, we just want to check if a given FD X     Y is in the closure of a set of FDs F.  An efficient check:
+</H2>
+<UL>
+<LI>Compute attribute closure of X (denoted        ) wrt F:
+<UL>
+<LI>Set of all attributes A such that X       A is in
+<LI>There is a linear time algorithm to compute this. 
+</UL><LI>Check if Y is in
+</UL></UL><UL>
+<LI><H2>Does F = {A      B,  B      C,  C D      E }  imply  A      E?
+</H2>
+<UL>
+<LI>i.e,  is  A      E  in the closure       ?  Equivalently, is E in       ? </UL></UL></P>
+<P></P> 
+<P>
+<TABLE>
+  <TD HEIGHT=100 WIDTH=100> <A HREF="tsld008.htm">Diapositiva precedente</A> </TD>
+  <TD HEIGHT=100 WIDTH=100> <A HREF="tsld010.htm">Diapositiva successiva</A> </TD>
+  <TD HEIGHT=100 WIDTH=150> <A HREF="tsld001.htm">Torna alla prima diaposiva</A> </TD>
+  <TD HEIGHT=100 WIDTH=150> <A HREF="sld009.htm">Visualizza versione grafica</A> </TD>
+</TABLE>
+<BR>
+</P>
+
+
+
+</Body>
+</HTML>

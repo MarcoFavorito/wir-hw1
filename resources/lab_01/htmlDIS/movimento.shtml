@@ -1,0 +1,64 @@
+<!doctype html public "-//w3c//dtd html 4.0 transitional//en">
+<html>
+<head>
+<link href="java.css" rel="stylesheet" type="text/css">
+<title>Figure geometriche in movimento</title>
+</head>
+
+<body>
+
+<h2>Figure geometriche in movimento</h2>
+
+<hr>
+
+<a href="Ball.java">Ball.java</a>
+
+<p>
+
+<pre>
+import java.awt.*;
+
+public class Ball extends java.applet.Applet implements Runnable {
+  Thread runner;
+  int x,y;
+
+  public void start() {
+    if( runner==null ) {
+      runner=new Thread(this);
+      runner.start();
+    }
+  }
+
+  public void stop() {
+    if( runner!=null ) {
+      runner.stop();
+      runner=null;
+    }
+  }
+
+  public void run() {
+    int i=0;
+
+    for(x=0; x<=255; x++) {
+      y=x;
+
+      repaint();
+      try { Thread.sleep(100); }
+      catch( InterruptedException e ) { }
+    }
+  }
+
+  public void paint(Graphics g) {
+    g.fillOval(x,y,20,20);
+  }
+}
+
+</pre>
+
+<p>
+<applet code="Ball.class" height="400" width="400">
+</applet>
+
+</body>
+</html>
+

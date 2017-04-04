@@ -1,0 +1,384 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0//EN">
+<!-- Created by htmlize-0.46 in css mode. -->
+<html>
+  <head>
+    <title>liste.c</title>
+    <style type="text/css">
+    <!--
+      BODY {
+        color: #000000;
+        background-color: #ffffff;
+      } /* default */
+      span.constant {
+        color: #9400d3;
+      } /* font-lock-constant-face */
+      span.keyword {
+        color: #006400;
+      } /* font-lock-keyword-face */
+      span.function-name {
+        color: #0000cd;
+      } /* font-lock-function-name-face */
+      span.string {
+        color: #b22222;
+      } /* font-lock-string-face */
+      span.comment {
+        color: #4682b4;
+      } /* font-lock-comment-face */
+      span.variable-name {
+        color: #a52a2a;
+      } /* font-lock-variable-name-face */
+      span.type {
+        color: #ff00ff;
+      } /* font-lock-type-face */
+      span.builtin {
+        color: #da70d6;
+      } /* font-lock-builtin-face */
+    -->
+    </style>
+  </head>
+  <body>
+    <pre>
+#<span class="builtin">include</span> <span class="string">&lt;stdio.h&gt;</span>
+#<span class="builtin">include</span> <span class="string">&lt;stdlib.h&gt;</span>
+
+#<span class="builtin">define</span> <span class="variable-name">LEN</span> 10
+
+<span class="type">typedef</span> <span class="type">char</span> <span class="variable-name">stringa</span>[LEN];
+
+<span class="type">typedef</span> <span class="type">struct</span> <span class="variable-name">el</span> {
+	<span class="type">int</span> <span class="variable-name">info1</span>;
+	stringa info2;
+	<span class="type">struct</span> el *<span class="variable-name">next</span>;
+} <span class="variable-name">elem</span>;
+
+
+<span class="type">elem</span> *<span class="function-name">CreaElem</span>()
+{
+	elem *e;
+	
+	e=malloc(<span class="keyword">sizeof</span>(elem));
+	<span class="keyword">if</span>(e==NULL) {
+		printf(<span class="string">&quot;Memoria esaurita\n&quot;</span>);
+		exit(1);
+	} <span class="keyword">else</span>
+		<span class="keyword">return</span> e;
+}
+
+<span class="type">void</span> <span class="function-name">Appendi</span>(elem *nuovo, elem **testa, elem **coda)
+{
+	nuovo-&gt;next=NULL; <span class="comment">/* la coda punta a NULL */</span>
+	<span class="keyword">if</span>(*testa==NULL)
+		*testa=nuovo;
+	<span class="keyword">else</span>
+		(*coda)-&gt;next=nuovo;
+	*coda=nuovo;
+	<span class="keyword">return</span>;
+}
+
+
+<span class="type">void</span> <span class="function-name">StampaLista</span>(elem *l)
+{
+	printf(<span class="string">&quot;---inizio lista---\n&quot;</span>);
+	<span class="keyword">for</span>(;l!=NULL;l=l-&gt;next)
+		printf(<span class="string">&quot;Info1: %d\t\tInfo2: %s\n&quot;</span>,l-&gt;info1,l-&gt;info2);
+	printf(<span class="string">&quot;---fine lista---\n&quot;</span>);
+	<span class="keyword">return</span>;
+}
+
+<span class="type">elem</span> *<span class="function-name">LeggiElem</span>(elem *e)
+{
+	printf(<span class="string">&quot;Campo info1 = &quot;</span>);
+	scanf(<span class="string">&quot;%d&quot;</span>,&amp;e-&gt;info1);getchar();
+	printf(<span class="string">&quot;Campo info2 = &quot;</span>);
+	gets(e-&gt;info2);<span class="comment">/*getchar();*/</span>
+
+	<span class="keyword">return</span> e;
+}
+
+
+<span class="type">elem</span> *<span class="function-name">CostruisciLista</span>()
+<span class="comment">/* legge valori e aggiunge in coda */</span>
+{	elem *testa,*coda, *nuovo;
+	<span class="type">int</span> <span class="variable-name">ch</span>;
+	
+	testa=NULL;
+	coda=NULL;
+	
+	<span class="keyword">do</span> {
+		printf(<span class="string">&quot;Elemento? &quot;</span>);
+		ch=getchar();getchar();
+		<span class="keyword">if</span>((ch==<span class="string">'s'</span>)||(ch==<span class="string">'S'</span>)) {
+			nuovo=LeggiElem(CreaElem());
+			nuovo-&gt;next=NULL;
+			<span class="keyword">if</span>(testa==NULL)
+				testa=nuovo;
+			<span class="keyword">else</span> <span class="comment">/* nemmeno coda e` NULL */</span>
+				coda-&gt;next=nuovo;
+			coda=nuovo;
+		} <span class="keyword">else</span>
+			<span class="keyword">return</span> testa;
+	} <span class="keyword">while</span> (1);
+}
+
+
+<span class="type">void</span> <span class="function-name">menu</span>()
+{
+	<span class="type">char</span> <span class="variable-name">lettera</span>;
+	
+	printf(<span class="string">&quot;\n\n&quot;</span>);
+	<span class="keyword">for</span>(lettera=<span class="string">'A'</span>;lettera&lt;=<span class="string">'D'</span>;lettera++)
+		printf(<span class="string">&quot;[%c] Compito %c\n&quot;</span>,lettera,lettera);
+	printf(<span class="string">&quot;[0] Termine\n&quot;</span>);
+	printf(<span class="string">&quot;\tscegli opzione...&quot;</span>);
+	<span class="keyword">return</span>;
+}
+
+<span class="type">int</span> <span class="function-name">IniziaPer</span>(<span class="type">char</span> <span class="variable-name">ch</span>, <span class="variable-name">elem</span> *e)
+{
+	<span class="keyword">if</span>(e-&gt;info2[0]==ch)
+		<span class="keyword">return</span> 1;
+	<span class="keyword">else</span>
+		<span class="keyword">return</span> 0;
+}
+
+
+<span class="type">void</span> <span class="function-name">CompitoA</span>(elem **L, elem **Lprimo)
+{
+	elem *e, 	<span class="comment">/* scorre L */</span>
+		 *coda, <span class="comment">/* di Lprimo */</span>
+		 *prec; <span class="comment">/* precede e */</span>
+	
+	*Lprimo=NULL;
+	coda=NULL;
+	
+	e=*L;
+	<span class="keyword">while</span>(e!=NULL) {
+		<span class="keyword">if</span>(IniziaPer(<span class="string">'a'</span>,e)||IniziaPer(<span class="string">'A'</span>,e)) {
+			<span class="comment">/* scollega prima e da L */</span>
+			<span class="keyword">if</span>(e==*L)
+				*L=e-&gt;next;
+			<span class="keyword">else</span>
+				prec-&gt;next=e-&gt;next;
+			
+			<span class="comment">/* collega ora e in coda a Lprimo */</span>
+			<span class="keyword">if</span>(*Lprimo==NULL)
+				*Lprimo=e;
+			<span class="keyword">else</span> <span class="comment">/* nemmeno coda e` NULL */</span>
+				coda-&gt;next=e;
+			coda=e;
+		} <span class="keyword">else</span> <span class="comment">/* aggiorno prec solo se non estraggo niente da L */</span>
+			prec=e;
+		e=e-&gt;next;
+		coda-&gt;next=NULL;
+	}
+	
+	<span class="keyword">return</span>;
+}
+
+<span class="type">void</span> <span class="function-name">CompitoB</span>(elem *L1, elem *L2, elem **L)
+{
+	elem *l,
+		 *coda, <span class="comment">/* di L */</span>
+		 *nuovo,
+		 buffer;
+	
+	*L=NULL;
+	coda=NULL;
+	
+	<span class="keyword">while</span>((L1!=NULL)&amp;&amp;(L2!=NULL)) {
+		<span class="keyword">if</span>(L1-&gt;info1&lt;L2-&gt;info1) {
+			buffer=*L1;
+			L1=L1-&gt;next;
+		} <span class="keyword">else</span> {
+			<span class="keyword">if</span>(L1-&gt;info1==L2-&gt;info1)
+				L1=L1-&gt;next;
+			buffer=*L2;
+			L2=L2-&gt;next;
+		}
+		nuovo=CreaElem();
+		*nuovo=buffer;
+		Appendi(nuovo,L,&amp;coda);
+	}
+	
+	<span class="comment">/* almeno uno fra L1 e L2 e` NULL */</span>
+	<span class="keyword">if</span>(L1!=NULL)
+		l=L1;
+	<span class="keyword">else</span> <span class="keyword">if</span>(L2!=NULL)
+		l=L2;
+	<span class="keyword">else</span>
+		l=NULL;
+	<span class="keyword">while</span>(l!=NULL) {
+		nuovo=CreaElem();
+		*nuovo=*l;
+		Appendi(nuovo,L,&amp;coda);
+		l=l-&gt;next;
+	}
+	
+	<span class="keyword">return</span>;
+}
+
+<span class="type">elem</span> *<span class="function-name">CercaPosizione</span>(elem *l, <span class="type">int</span> <span class="variable-name">n</span>)
+<span class="comment">/* ritorna l'indirizzo dell'elemento che precede la posizione cercata 
+   NULL se l'elemento non c'e` o e` il primo */</span>
+{
+	<span class="keyword">if</span>(n==1)
+		<span class="keyword">return</span> NULL;
+		
+	<span class="keyword">for</span>(;n&gt;2;n--)
+		<span class="keyword">if</span>(l==NULL)
+			<span class="keyword">break</span>;
+		<span class="keyword">else</span>
+			l=l-&gt;next;
+	
+	<span class="keyword">return</span> l;
+}
+
+<span class="type">void</span> <span class="function-name">CompitoC</span>(elem **L1, elem *L2)
+{
+	elem *morituro, *prec;
+	
+	<span class="keyword">for</span>(;L2!=NULL;L2=L2-&gt;next) {
+		<span class="keyword">if</span>(L2-&gt;info1==1) {<span class="comment">/* devo eliminare la testa di L1 */</span>
+			morituro=*L1;
+			*L1=(*L1)-&gt;next;
+		} <span class="keyword">else</span> {
+			prec=CercaPosizione(*L1,L2-&gt;info1);
+			<span class="keyword">if</span>(prec==NULL)
+				<span class="keyword">continue</span>;
+			morituro=prec-&gt;next;
+			prec-&gt;next=morituro-&gt;next;
+		}
+		free(morituro);
+	}
+	
+	<span class="keyword">return</span>;
+}
+
+
+<span class="type">void</span> <span class="function-name">CompitoD</span>(elem **L, elem **L1, elem **L2)
+{
+	elem *e, *coda1, *coda2;
+	
+	*L1=NULL;
+	coda1=NULL;
+	
+	*L2=NULL;
+	coda2=NULL;
+	
+	<span class="keyword">while</span>(*L!=NULL) {
+		e=*L;
+		*L=e-&gt;next;
+		<span class="keyword">if</span>((e-&gt;info2[0]&gt;=<span class="string">'A'</span>)&amp;&amp;(e-&gt;info2[0]&lt;=<span class="string">'Z'</span>))
+			Appendi(e,L1,&amp;coda1);
+		<span class="keyword">else</span>
+			Appendi(e,L2,&amp;coda2);
+	}
+	
+	<span class="keyword">return</span>;
+}
+
+
+<span class="type">void</span> <span class="function-name">DistruggiLista</span>(elem *l)
+{
+	elem *morituro;
+	<span class="keyword">while</span>(l!=NULL) {
+		morituro=l;
+		l=l-&gt;next;
+		free(morituro);
+	}
+	
+	<span class="keyword">return</span>;
+}
+
+
+<span class="function-name">main</span>()
+{
+	<span class="type">char</span> <span class="variable-name">compito</span>;
+	
+	<span class="keyword">do</span> {
+		menu();
+		compito=getchar();getchar();
+		<span class="keyword">switch</span> (compito) {
+			<span class="keyword">case</span> <span class="string">'a'</span>:
+			<span class="keyword">case</span> <span class="string">'A'</span>: 
+				{
+					elem *L, *Lprimo;
+					L=CostruisciLista();
+					printf(<span class="string">&quot;Lista L:\n&quot;</span>);
+					StampaLista(L);
+					CompitoA(&amp;L,&amp;Lprimo);
+					printf(<span class="string">&quot;Lista L dopo estrazione:\n&quot;</span>);
+					StampaLista(L);
+					printf(<span class="string">&quot;Lista Lprimo:\n&quot;</span>);
+					StampaLista(Lprimo);
+					DistruggiLista(L);
+					DistruggiLista(Lprimo);
+					<span class="keyword">break</span>;
+				}
+			<span class="keyword">case</span> <span class="string">'b'</span>:
+			<span class="keyword">case</span> <span class="string">'B'</span>:
+				{
+					elem *L1, *L2, *L;
+					<span class="comment">/* non c'e` controllo sui valori strettamente crescenti! */</span>
+					L1=CostruisciLista();
+					printf(<span class="string">&quot;Lista L1:\n&quot;</span>);
+					StampaLista(L1);
+					L2=CostruisciLista();
+					printf(<span class="string">&quot;Lista L2:\n&quot;</span>);
+					StampaLista(L2);
+					CompitoB(L1,L2,&amp;L);
+					printf(<span class="string">&quot;Lista L (risultato fusione):\n&quot;</span>);
+					StampaLista(L);
+					DistruggiLista(L1);
+					DistruggiLista(L2);
+					DistruggiLista(L);
+					<span class="keyword">break</span>;
+				}
+			<span class="keyword">case</span> <span class="string">'c'</span>:
+			<span class="keyword">case</span> <span class="string">'C'</span>:
+				{
+					elem *L1, *L2;
+					L1=CostruisciLista();
+					printf(<span class="string">&quot;Lista L1:\n&quot;</span>);
+					StampaLista(L1);
+					L2=CostruisciLista();
+					printf(<span class="string">&quot;Lista L2:\n&quot;</span>);
+					StampaLista(L2);
+					CompitoC(&amp;L1,L2);
+					printf(<span class="string">&quot;Lista L1:\n&quot;</span>);
+					StampaLista(L1);
+					DistruggiLista(L1);
+					DistruggiLista(L2);
+					<span class="keyword">break</span>;
+				}
+			<span class="keyword">case</span> <span class="string">'d'</span>:
+			<span class="keyword">case</span> <span class="string">'D'</span>:
+				{
+					elem *L1, *L2, *L;
+					L=CostruisciLista();
+					printf(<span class="string">&quot;Lista L:\n&quot;</span>);
+					StampaLista(L);
+					CompitoD(&amp;L,&amp;L1,&amp;L2);
+					printf(<span class="string">&quot;Lista L1:\n&quot;</span>);
+					StampaLista(L1);
+					printf(<span class="string">&quot;Lista L2:\n&quot;</span>);
+					StampaLista(L2);
+					printf(<span class="string">&quot;Lista L:\n&quot;</span>);
+					StampaLista(L);
+					DistruggiLista(L1);
+					DistruggiLista(L2);
+					DistruggiLista(L);
+					<span class="keyword">break</span>;
+				}
+			<span class="keyword">case</span> <span class="string">'0'</span>:
+				<span class="keyword">break</span>;
+			<span class="constant">default</span>:
+				printf(<span class="string">&quot;Opzione illegale\n&quot;</span>);
+		}
+	} <span class="keyword">while</span>(compito!=<span class="string">'0'</span>);
+	
+	<span class="keyword">return</span> 0;
+
+}</pre>
+  </body>
+</html>

@@ -1,0 +1,52 @@
+<HTML>
+<HEAD>
+<TITLE>TINO Control System</TITLE>
+</HEAD>
+
+<BODY>
+<CENTER>
+<H1>Control System</H1>
+</CENTER>
+
+<P>
+A fuzzy controller, based on 
+<A HREF="http://www.ai.sri.com/~konolige/saphira">
+software developed at SRI International</A>,
+is responsible for the reactive behavior of the robot.
+</P>
+
+<P>
+Inside the fuzzy controller, primitive actions are mapped into
+<I>behaviors</I>, which are basic control activities. Behaviors are
+distinguished in reactive ones, like avoiding obstacles, and (low-level)
+goal-oriented ones, like following a corridor.  A blending mechanism is
+used to integrate reactive and goal-oriented behaviors, so that the robot
+can follow a corridor while avoiding obstacles.<BR>
+
+In practice, each behavior is implemented by a set of fuzzy rules
+specifying control actions to be performed in determined situations.
+<!--
+For example, the Avoid-Collision behavior includes a rule like
+<P>
+IF collision-right AND NOT collision-left THEN turn-left
+</P>
+where collision-right and collision-left are fuzzy variables
+and turn-left is the control action. An activity level computed from
+evaluation of rule antecedent is associated with the control action. The
+activity level measures how much the control action is desirable in the
+current situation.
+-->
+</P>
+
+<P>
+Integrated routines for sonar sensor interpretation, map building,
+and navigation are also present.
+</P>
+
+<HR>
+<P>
+Back to <A HREF="tino.html">Tino Home Page</A>
+</P>
+
+</BODY>
+</HTML>

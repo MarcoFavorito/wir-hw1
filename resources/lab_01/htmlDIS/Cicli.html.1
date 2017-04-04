@@ -1,0 +1,1437 @@
+<!doctype html public "-//w3c//dtd html 4.0 transitional//en">
+<html>
+<head>
+<link href="java.css" rel="stylesheet" type="text/css">
+<title>Java</title>
+</head>
+
+<body>
+
+
+
+<h1>Cicli</h1>
+
+
+
+<h2>Stampa di numeri interi</h2>
+
+<p>
+Si vogliono stampare su schermo i numeri interi
+da 10 a 50. In Java si potrebbe fare un programma
+con una linea per ogni valore di da 10 a 50,
+ossia un programma di questo genere:<p>
+
+<pre>
+class Interi {
+  public static void main(String[] args) {
+
+    System.out.println("10");
+    System.out.println("11");
+    System.out.println("12");
+
+    ...
+
+    System.out.println("50");
+  }
+}
+</pre>
+
+<p>
+Come &egrave; facile immaginare, il programma completo
+<a href="Interi.java">Interi.java</a> in cui ci sono
+tutte le istruzioni al posto dei puntini <tt>...</tt> 
+&egrave; piuttosto lungo. Se si pensa a quando potrebbe
+essere lungo un programma che stampa i numeri interi da
+-400 a +23000, risulta evidente che questo tipo di
+programmi sequenziali non &egrave; fattibile.<p>
+
+In Java esistono delle istruzioni composte, dette
+istruzioni di ciclo, che permettono di ripetere una
+stessa istruzione per pi&ugrave; volte. Questo &egrave;
+utile per esempio nel caso della stampa dei numeri
+interi, in cui vogliamo ripetere molte volte la
+istruzione di stampa.
+
+<p>
+Una tipica istruzione di ciclo &egrave; il for. Iniziamo
+dando una versione semplificata.
+
+<p>
+<pre>
+for( variabile=valore1; variabile<=valore2; variabile=variabile+1 ) {
+  istruzione1
+  istruzione2
+  ...
+}
+</pre>
+
+<p>
+Questa istruzione composta viene detta <b>ciclo for</b>.
+Le istruzioni dentro il
+blocco (<tt>istruzione1</tt>, <tt>istruzione2</tt>, ecc.)
+vengono eseguite una prima volta con <tt>variabile=valore1</tt>,
+una seconda volta con <tt>variabile=valore1+1</tt>, una
+terza volta con  <tt>variabile=valore1+2</tt>, ecc. fino a
+che non si arriva alla esecuzione con <tt>variabile=valore2</tt>,
+e a questo punto l'esecuzione del ciclo finisce, cio&egrave; 
+si passa ad eseguire la prima instruzione che sta fuori dal
+ciclo.<p>
+
+Riconsideriamo ora il programma di stampa di interi da 10 a
+50. Il problema si risolve con una operazione di stampa 
+che viene ripetuta per ogni numero intero da 10 a 50. In
+altre parole, si pu&ograve; pensare a ripetere la singola
+istruzione
+
+<pre>
+System.out.println(i);
+</pre>
+
+<p>
+una volta con <tt>i=10</tt>, una volta con <tt>i=11</tt>,
+una volta con <tt>i=12</tt>, ecc fino all'ultima volta con
+<tt>i=50</tt>. Questo &egrave; chiaramente equivalente al
+problema di partenza. Inoltre, &egrave; esattamente il tipo
+di problema che si risolve con un ciclo for: la ripetizione
+di una stessa istruzione con valori crescenti di una
+variabile. Dal momento che la variabile che deve cambiare
+valore &egrave; <tt>i</tt>, e deve andare da 10 a 50, un
+programma complessivo che usa il ciclo for &egrave; il
+seguente <a href="InteriFor.java">InteriFor.java</a>.<p>
+
+<pre>
+/*
+  Stampa i numeri interi da 10 a 50.
+*/
+
+class InteriFor {
+  public static void main(String[] args) {
+    int i;
+
+    for(i=10; i<=50; i=i+1) {
+      System.out.println(i);
+    }
+  }
+}
+
+</pre>
+
+<p>
+Nel caso ci fossero dubbi sulla interpretazione dei cicli
+for, un meccanismo che permette di chiarire in che modo
+vengono eseguite le istruzioni &egrave; quello di scrivere
+esplicitamente il ciclo per esteso. Si parte da un generico
+ciclo for:
+
+<pre>
+for( variabile=valore1; variabile<=valore2; variabile=variabile+1 ) {
+  istruzione1;
+  istruzione2;
+  istruzione3;
+}
+</pre>
+
+<p>
+Per semplicit&agrave; si considerano solo tre istruzioni. Per
+definizione, le istruzioni interne al ciclo vengono eseguite
+una volta con <tt>variabile=valore1</tt>, una volta con
+<tt>variabile=valore1+1</tt>, ecc. Quindi, per definizione,
+si pu&ograve; pensare al ciclo di sopra come al programma senza
+cicli di sotto:
+
+<pre>
+variabile=valore1;
+istruzione1;
+istruzione2;
+istruzione3;
+variabile=valore1+1;
+istruzione1;
+istruzione2;
+istruzione3;
+variabile=valore1+2;
+istruzione1;
+istruzione2;
+istruzione3;
+
+...
+
+variabile=valore2;
+istruzione1;
+istruzione2;
+istruzione3;
+</pre>
+
+<p>
+Il programma di sotto, per poter essere effettivamente scritto
+ed eseguito, richiede tutte le istruzioni scritte per esteso:
+non si possono lasciare i puntini <tt>...</tt> per indicare le
+istruzioni in mezzo. Questo procedimento di scrivere per esteso
+il ciclo conviene solo per capire cosa viene effettivamente
+fatto da un ciclo, mentre non &egrave; conveniente programmare
+scrivendo i cicli per esteso.
+
+<p>
+Per esercizio, provare a seguire questo procedimento
+di scrittura esplicita del ciclo for sul programma
+<a href="InteriFor.java">InteriFor.java</a> che stampa i numeri
+interi da 10 a 50 con un ciclo for.<p>
+
+</body>
+
+
+
+
+<h2>Stampa dei valori di una funzione</h2>
+
+<p>
+Si vogliono stampare su schermo i valori di una
+funzione a numeri interi. Sia x<sup>2</sup>+10x-2
+questa funzione: vogliamo stampare i valori che
+assume per tutti i valori interi da -50 a +100.
+Un programma Java per fare questo potrebbe essere
+fatto in questo modo: si definiscono due variabili
+x e f, poi si assegna x=-50, si calcola f e si
+stampa. Poi si ripete per x=-49, ecc:
+
+<pre>
+class Valori {
+  public static void main(String[] args) {
+    int x,f;
+
+    x=-50;
+    f=x*x+10*x-2;
+    System.out.println("f vale "+f);
+
+    x=-49;
+    f=x*x+10*x-2;
+    System.out.println("f vale "+f);
+
+    ...
+
+    x=100;
+    f=x*x+10*x-2;
+    System.out.println("f vale "+f);
+  }
+}
+</pre>
+
+<p>
+Come &egrave; facile immaginare, il programma completo
+(senza i puntini <tt>...</tt>) &egrave; piuttosto lungo:
+<a href="Valori.java">Valori.java</a> &egrave; composto
+di 458 linee di testo. &Egrave; chiaramente impensabile
+usare programmi di questo genere per risolvere il problema.
+Se si pensa che potrebbero verificarsi casi in cui si
+vuole la stampa di valori da -1000 a +2000, risulta
+evidente che occorre qualche meccanismo che permetta di
+dire all'interprete che certe istruzioni vanno ripetute
+pi&ugrave; volte.<p>
+
+Il programma si semplifica notevolmente grazie ai cicli
+for. Quello che si richiede &egrave; il calcolo
+della funzione, e la sua stampa, per valori di <tt>x</tt>
+crescenti, in cui si parte dal valore -50 e si arriva al
+valore 100. Le due istruzioni che vanno ripetute sono
+in questo caso:
+
+<pre>
+   f=x*x+10*x-2;
+   System.out.println("f vale "+f);
+</pre>
+
+<p>
+Queste due istruzioni vanno ripetute una prima volta
+con <tt>x=-50</tt>, poi <tt>x=-49</tt>, poi <tt>x=-48</tt>,
+eccetera, fino a <tt>x=100</tt>. Il programma
+<a href="ValoriFor.java">ValoriFor.java</a> contiene
+un ciclo for al cui interno ci sono queste due istruzioni.
+
+<pre>
+/*
+  Stampa i valori di una funzione in un intervallo
+*/
+
+class ValoriFor {
+  public static void main(String[] args) {
+    int x,f;
+
+    for(x=-50; x<=100; x=x+1) {
+      f=x*x+10*x-2;
+      System.out.println("f vale "+f);
+    }
+  }
+}
+
+</pre>
+
+<p>
+Per esercizio, si pu&ograve; verificare che scrivendo
+le istruzioni del ciclo in modo esplicito si ottiene
+esattamente il programma di prima.<p>
+
+
+</body>
+
+
+
+
+<h2>Somma dei primi elementi di una serie</h2>
+
+<p>
+Consideriamo questo problema: abbiamo una serie definitita
+come la somma dei valori di una funzione f(x). Vogliamo
+calcolare la somma di questi valori per x che va da 0 a
+un certo valore prefissato, per esempio 5 oppure 29. In
+altre parole, si vuole sapere il valore di: 
+
+<center>
+<img src="sommatoria.jpeg">
+</center>
+
+<p>
+Per fare questo, si pu&ograve; procedere nel modo seguente:
+si dichiara una variabile <tt>somma</tt> che contiene la
+somma parziale calcolata fino a questo punto. Si comincia
+con <tt>somma=0;</tt>. Poi si aggiunge a questa variabile
+il valore della funzione valutata con argomento 0, poi con
+argomento 1, poi 2, ecc. fino al limite considerato. Questo
+procedimento &egrave; stato seguito nel programma
+<a href="Serie.java">Serie.java</a> per la funzione
+f(x)=x*x.
+
+<pre>
+/* 
+  Calcola la somma dei primi valori di una serie.
+*/
+
+class Serie {
+  public static void main(String[] args) {
+    int x;
+    int somma;
+
+    somma=0;
+
+    x=0;
+    somma=somma+x*x;
+
+    x=1;
+    somma=somma+x*x;
+
+    x=2;
+    somma=somma+x*x;
+
+    x=3;
+    somma=somma+x*x;
+
+    x=4;
+    somma=somma+x*x;
+
+    x=5;
+    somma=somma+x*x;
+  
+    System.out.println("La somma vale "+somma);
+  }
+}
+    
+
+</pre>
+
+<p>
+Tutto questo funziona perfettamente, ma &egrave; possibile
+solo se i valori da calcolare sono pochi. Se si volesse per
+esempio la somma dei valori della funzione da 0 a 100,
+sarebbero necessarie pi&ugrave; di 200 linee di codice.
+Questo meccanismo risolutivo ha un altro problema: ogni
+volta che si vuole effettuare un calcolo su un intervallo
+diverso (per esempio di vuole passare da 200 a 90) occorre
+modificare radicalmente il codice del programma, eliminando
+o aggiungendo istruzioni.<p>
+
+Il programma di somma dei valori di una funzione si pu&ograve;
+facilmente realizzare usando un ciclo. Vogliamo infatti eseguire
+la istruzione <tt>somma=somma+x*x</tt> per <tt>i</tt> che vale
+prima 0, poi 1, poi 2, ecc, fino a un valore da noi scelto.
+Il programma <a href="SerieFor.java">SerieFor.java</a>
+calcola il valore della somma usando un ciclo.<p>
+
+<pre>
+/*
+  Somma dei primi valori di una serie
+*/
+
+class SerieFor {
+  public static void main(String[] args) {
+    int x;
+    int somma;
+
+    somma=0;
+    for(x=0; x<=5; x=x+1) {
+      somma=somma+x*x;
+    }
+
+    System.out.println("La somma vale "+somma);
+  }
+}
+
+
+</pre>
+
+<p>
+A parte la brevit&agrave; del programma, si fa notare come sia
+facimente modificabile: per esempio, se si vuole calcolare la
+somma da 0 a 100 (invece che da 0 a 5), basta modificare la
+istruzione for, facendola diventare
+<tt>for(x=0; x<=100; x=x+1) {</tt>.<p>
+
+</body>
+
+
+
+
+
+<h2>Stampa dei valori positivi di una funzione</h2>
+
+<p>
+Sia data una funzione da interi a interi, per esempio
+<tt>x*x-10*x+2</tt>. Si scriva un programma Java che
+stampi i soli valori positivi che la funzione assume
+in un certo intervallo, per esempio da -100 a +100.<p>
+
+Il problema si pu&ograve; riformulare cos&iacute;: per
+ogni valore di <tt>x</tt> da -100 a +100, se la funzione
+assume valore positivo, si stampi il valore. In
+termini di programmazione, &egrave; quindi necessario
+un ciclo in cui <tt>x</tt> va da -100 a +100; in ogni
+passo, si controlla se il valore della funzione &egrave;
+positivo oppure no, stampando eventualmente il valore.
+Il programma
+<a href="SoloPositivi.java">SoloPositivi.java</a> risolve
+il problema in questo modo.<p>
+
+<pre>
+/*
+  Stampa i valori positivi che una funzione assume
+  in un certo intervallo.
+*/
+
+class SoloPositivi {
+  public static void main(String[] args) {
+    int x,f;
+
+    for(x=-100; x<=100; x=x+1) {
+      f=x*x-10*x+2;
+      if( f>=0 ) {
+        System.out.println("Per x="+x+" la funzione vale "+f);
+      }
+    }
+  }
+}
+
+</pre>
+
+<p>
+L'unica cosa nuova di questo programma rispetto a quelli
+precedenti &egrave; che all'interno del ciclo, oltre a
+istruzioni semplici, compare anche una istruzione
+condizionale. In effetti, all'interno di un ciclo
+possono apparire istruzioni qualsiasi, incluse istruzioni
+condizionali, e anche altri cicli (questo risulta utile
+sulle matrici, che si vedranno pi&ugrave; avanti). Lo
+stesso vale anche per le istruzioni condizionali:
+all'interno si possono mettere altre istruzioni condizionali,
+e anche dei cicli.<p>
+
+
+
+</body>
+
+
+
+
+<h2>Presenza di valori negativi</h2>
+
+<p>
+Questo esercizio riguarda ancora l'uso dei cicli. Sia
+data una funzione f(x) a valori interi; si vuole sapere
+se esiste un valore intero x compreso in un certo intervallo
+dato in cui f(x) &egrave; negativa. Per esempio, dato
+f(x)=-x*x+90*i, ci si chiede se esiste un valore di x
+compreso fra 0 e 100 tale che f(x) sia negativa per quel
+valore.<p>
+
+Questo &egrave; un tipico esempio di utilizzo dei cicli.
+Infatti, il problema si pu&ograve; risolvere con un ciclo
+in cui una variabile assume tutti i valori interi compresi
+nell'intervallo. Per ogni valore, si valuta la funzione e
+si verifica se &egrave; positiva o negativa. Il programma
+<a href="SottoZero.java">SottoZero.java</a> risolve il
+problema in questo modo.<p>
+
+<pre>
+/* 
+  Verifica se esistono valori negativi per una funzione.
+  Si valutano solo valori interi dell'argomento, e solo
+  per un intervallo fissato.
+*/
+
+class SottoZero {
+  public static void main(String[] args) {
+    int x;
+    int f;
+    int positivo;
+
+    positivo=1;
+
+    for(x=0; x<=100; x=x+1) {
+      f=-x*x+90*x;
+      if( f<0 ) {
+        positivo=0;
+      }
+    }
+
+    if( positivo==1 ) {
+      System.out.println("La funzione e' positiva nell'intervallo");
+    }
+    else {
+      System.out.println("La funzione ha valori negativi");
+    }
+  }
+}
+
+</pre>
+
+<p>
+Naturalmente, esistono altri programmi che fanno la stessa
+cosa. D'altra parte, molti programmi che sembrano risolvere
+questo problema sono in effetti errati. Per esempio, &egrave;
+facile pensare che la variabile <tt>positivo</tt> non sia
+necessaria, e procedere quindi secondo il programma seguente:<p>
+
+<pre>
+    for(i=0; i<=100; i=i+1) {		/* ERRATO */
+      f=-i*i+90*i;
+      if( f<0 ) {
+        System.out.println("La funzione e' positiva nell'intervallo");
+      }
+      else {
+        System.out.println("La funzione ha valori negativi");
+      }
+    }
+</pre>
+
+<p>
+In questo caso, per ogni valore di <tt>x</tt> viene stampato
+il messaggio che dice se la funzione &egrave; positiva oppure
+negativa. Si voleva invece una stampa sola, che riassumesse
+la presenza o meno di valori negativi nell'intervallo. Questo
+indica chiaramente che la stampa non si pu&ograve; fare
+all'interno del ciclo, perch&egrave; altrimenti si avrebbe
+un messaggio per ogni valore, e non uno solo alla fine. Per
+questa ragione &egrave; necessaria la variabile <tt>positivo</tt>,
+il cui valore alla fine indica la presenza di valori negativi,
+e permette quindi di decidere cosa stampare.<p>
+
+<pre>
+    for(i=0; i<=100; i=i+1) {		/* ERRATO */
+      f=-i*i+90*i;
+      if( f<0 ) {
+        positivo=0;
+      }
+      else {
+        positivo=1;
+      }
+    }
+</pre>
+
+<p>
+Questo &egrave; un altro errore tipico. A prima vista, il programma
+pu&ograve; sembrare corretto, dal momento che, per ogni valore di
+<tt>x</tt> si verifica se la funzione &egrave; positiva o negativa.
+Si supponga per&ograve; che la funzione sia negativa in tutto
+l'intervallo tranne che per l'estremo superiore, ossia che f(x)
+sia negativa per x che va da 0 a 99, e sia positiva solo per x=100.
+Questo programma effettua la valutazione delle istruzioni interne
+al ciclo per ogni valore di <tt>x</tt>; l'ultima esecuzione avviene
+assegnando 100 ad <tt>x</tt>. A questo punto, si valuta <tt>f</tt>,
+che risulta positiva, per cui la condizione <tt>f<0</tt> risulta
+falsa, e si assegna <tt>positivo=1;</tt>. La istruzione che segue
+il ciclo &egrave; la istruzione condizionale in cui la condizione
+&egrave; sul valore di <tt>positivo</tt>. A questo punto, viene
+stampato il messaggio che dice che la funzione &egrave; sempre
+positiva nell'intervallo. Questo comportamento &egrave; chiaramente
+errato, dal momento che, al contrario, la funzione &egrave; quasi
+sempre negativa nell'intervallo.<p>
+
+L'errore &egrave; che la variabile <tt>positivo</tt> cambia valore
+ad ogni esecuzione del ciclo. Questo &egrave; un errore, perch&egrave;
+in questo modo assume un valore che dipende solo dall'ultimo valore
+di <tt>x</tt>. Quello che invece si vuole fare &egrave;: si
+comincia assumendo che la funzione sia sempre positiva; se
+si trova un valore per cui &egrave; negativa si cambia il valore
+della variabile.<p>
+
+</body>
+
+
+
+
+<h2>Uscita forzata da un ciclo</h2>
+
+<p>
+Nel programma di <a href="negativi.shtml">verifica di
+esistenza di valori negativi</a>, si pu&ograve; fare
+una osservazione riguardo al numero di istruzioni che
+vengono effettivamente eseguite. Supponiamo che la
+funzione sia positiva per <tt>x</tt> che va da 0 a 34,
+sia negativa per <tt>x=35</tt>. Simulando l'esecuzione
+del programma, si esegue il contenuto del ciclo una
+prima volta per <tt>x</tt> che vale 0, e qui la <tt>f</tt>
+risulta positiva, e quindi la condizione <tt>f&lt;0</tt>
+&egrave; falsa, e la variabile <tt>positivo</tt> non
+cambia valore. Lo stesso avviene per <tt>x=1</tt>,
+<tt>x=2</tt>, .... , <tt>x=34</tt>. Quando si arriva al
+valore 35, la funzione diventa negativa, per cui la
+condizione <tt>f&lt;0</tt> &egrave; verificata, per cui
+la variabile <tt>positivo</tt> diventa 0.<p>
+
+Cosa succede sulle successive esecuzioni con
+<tt>x=36,...,100</tt>? Se ci sono altri valori di <tt>x</tt>
+per i quali la <tt>f</tt> assume valori negativi, si esegue
+ancora la istruzione <tt>positivo=0</tt>, ma la variabile
+aveva gi&agrave; valore 0. Per i valori positivi, non
+succede niente. In altre parole, i valori successivi di
+<tt>x</tt> non possono cambiare pi&ugrave; niente.<p>
+
+In questo caso, una volta raggiunto il primo valore in
+cui la funzione &egrave; negativa, non &egrave; necessario
+controllare i valori successivi. In effetti, il problema
+di verifica dei valori negativi si pu&ograve; riformulare
+come: per ogni valore di x, controlla se f(x) &egrave;
+negativa: se lo &egrave;, fermati e stampa che la funzione
+assume valori negativi.<p>
+
+La istruzione <tt>break</tt> &egrave; stata introdotta per
+permettere di uscire dai cicli senza aspettare che l'ultimo
+valore sia stato raggiunto. L'uso della istruzione &egrave;
+molto semplice: ogni volta che ci si trova all'interno di
+un ciclo, se si raggiunge una istruzione <tt>break</tt> si
+interrompe il ciclo e si passa direttamente alla prima
+istruzione che segue il ciclo. Nel caso della verifica
+di valori negativi, il <tt>break</tt> si pu&ograve; usare
+come nel programma
+<a href="SottoZeroBreak.java">SottoZeroBreak.java</a>.<p>
+
+<pre>
+/*
+  Dice se una funzione assume valori negativi in un
+  certo intervallo
+*/
+
+class SottoZeroBreak {
+  public static void main(String[] args) {
+    int x;
+    int f;
+    int positivo;
+
+    positivo=1;
+
+    for(x=0; x<=100; x=x+1) {
+      f=-x*x+90*x;
+      if( f<0 ) {
+        positivo=0;
+        break;
+      }
+    }
+
+    if( positivo==1 ) {
+      System.out.println("La funzione e' positiva nell'intervallo");
+    }
+    else {
+      System.out.println("La funzione ha valori negativi");
+    }
+  }
+}
+
+</pre>
+
+<p>
+L'unica cosa che cambia rispetto al programma precedente
+<a href="SottoZero.java">SottoZero.java</a> &egrave; l'istruzione
+<tt>break</tt> all'interno della istruzione condizionale dentro
+il ciclo. L'effetto di questa istruzione &egrave; che si esce
+dal ciclo se la istruzione viene eseguita, ossia il ciclo
+si interrompe se la condizione <tt>f&lt;0</tt> &egrave;
+verificata.<p>
+
+Possiamo considerare due casi:<p>
+
+<ol>
+
+<li>la funzione &egrave; sempre positiva;
+<li>la funzione ha valori negativi.
+
+</ol>
+
+<p>
+Nel primo caso, si procede alla valutazione per x che assume
+valori crescenti da 0 a 100, nei quali la condizione <tt>f&lt;0</tt>
+&egrave; sempre falsa, per cui la variabile <tt>positivo</tt>
+non cambia mai valore, e la istruzione <tt>break</tt> non viene
+mai eseguita (questo fa s&iacute; che il ciclo proceda come al
+solito).<p>
+
+Nel secondo caso, si parte sempre con <tt>x=0</tt> e,
+finch&egrave; la funzione &egrave; positiva,
+si procede come al solito. Non appena la <tt>x</tt> assume un
+valore per cui <tt>f&lt;0</tt>, si esegue
+<tt>positivo=0;</tt>, e si arriva alla istruzione
+<tt>break;</tt> Questa istruzione fa s&iacute; che il ciclo
+venga interrotto sul momento, ossia non si incrementa nuovamente
+la variabile <tt>x</tt>, ma si passa direttamente ad eseguire
+la prima istruzione dopo il ciclo, ossia
+<tt>if( positivo==1 ) ... </tt>. Questo &egrave; esattamente il
+comportamento voluto: quando si trova un valore negativo, si
+esce dal ciclo senza terminare il controllo sui rimanenti valori
+di <tt>x</tt>.
+
+
+<h4>Esempio</h4>
+
+<p>
+Stampare il pi&ugrave; piccolo valore intero di <tt>x</tt>
+nell'intervallo [-100,250] in cui la funzione
+f(x)=x<sup>2</sup>-20x assume un valore nullo.<p>
+
+Questo problema si pu&ograve; riformulare come segue: per
+ogni valore di <tt>x</tt> che va da -100 a +250, se la funzione
+vale 0, si stampi il valore di <tt>x</tt> e si esca dal ciclo.
+Se la funzione non vale 0, si continua la esecuzione del ciclo.
+Il programma <a href="Zero.java">Zero.java</a> usa un ciclo
+in cui a seconda del valore di <tt>f</tt> si decide se uscire
+dal ciclo oppure no.<p>
+
+<pre>
+/*
+  Trova il primo valore di x nell'intervallo [-100,250]
+  in cui f(x)=xx-20x+2 vale 0.
+*/
+
+class Zero {
+  public static void main(String[] args) {
+    int x,f;
+
+    for(x=-100; x<=250; x=x+1) {
+      f=x*x+20*x;
+      if( f==0 ) {
+        System.out.println("La funzione vale 0 quando x vale "+x);
+        break;
+      }
+    }
+  }
+}
+
+</pre>
+
+<p>
+In altre parole, si esegue un ciclo con <tt>x</tt> che va da -100
+a +250. Se per un qualche valore si trova che la funzione vale 0,
+si stampa il valore di <tt>x</tt> che ha reso nulla la funzione e
+si esce dal ciclo. Si noti che il <tt>break</tt> in questo caso
+&egrave; necessario: si veda per esempio il programma
+<a href="ZeroNoBrk.java">ZeroNoBrk.java</a> che &egrave; uguale
+al precedente tranne che per la assenza del <tt>break</tt>.
+Compilando ed eseguendo questo secondo programma, si vede che
+il messaggio viene stampato per tutti i valori di <tt>x</tt> per
+i quali la funzione vale zero, e non solo per il primo, come era
+specificato.<p>
+
+
+</body>
+
+
+
+
+<h2>Cicli con decremento</h2>
+
+<p>
+Tutti i cicli visti fino ad ora consistevano nella ripetizione
+di istruzioni, con una variabile che assumeva valori crescenti.
+In particolare, ad ogni esecuzione delle istruzioni, questa
+variabile viene aumentata di 1. In alcuni casi, &egrave;
+invece necessario ripetere delle istruzioni decrementando una
+variabile ad ogni passo, per esempio se si vuole eseguire delle
+istruzioni mettendo prima <tt>x=100</tt> poi <tt>x=99</tt>,
+ecc. Un altro caso che non si pu&ograve; fare con i cicli visti
+fino ad ora &egrave; quello in cui la variabile deve aumentare
+o diminuire di 10 ad ogni passo. Per questo genere di casi,
+occorre introdurre la struttura generica del ciclo for. Il
+generico ciclo for contiene come argomenti una istruzione,
+una condizione e un'altra istruzione:
+
+<p>
+<pre>
+for(istruzione1, condizione, istruzione2) {
+  A
+}
+</pre>
+
+<p>
+In questo schema, <tt>A</tt> &egrave; un blocco di istruzioni.
+La esecuzione di questo ciclo equivale alla seguente sequenza
+di istruzioni:<p>
+
+<pre>
+instruzione1;
+if( condizione ) {
+  A;
+  istruzione2;
+  if( condizione ) {
+    A;
+    istruzione2;
+    ....
+</pre>
+
+<p>
+In altre parole, si esegue <tt>istruzione1</tt> e si controlla
+la condizione. Se la condizione &egrave; verificata, si eseguono
+prima <tt>A</tt> e poi <tt>istruzione2</tt>, si verifica di
+nuovo la condizione e si ripete da capo. In altre parole, una
+volta eseguita <tt>istruzione1</tt>, si ripete la esecuzione di
+<tt>A</tt> e <tt>istruzione2</tt>, e questo viene ripetuto ancora
+e ancora se <tt>condizione</tt> &egrave; verificata. In italiano:
+
+<p>
+<pre>
+esegui instruzione1
+se la condizione e' verificata
+allora: -esegui A
+        -esegui istruzione2
+        -se la condizione e' verificata
+         allora: .esegui A
+                 .esegui istruzione2
+                 .se la condizione e' verificata
+                  ....
+</pre>
+
+<p>
+Si noti che non &egrave; sempre possibile scrivere esplicitamente
+il blocco di istruzioni condizionali che corrisponde a un ciclo
+for. Questa traduzione &egrave; utile nel caso in cui si abbia
+qualche dubbio sul comportamento di un certo ciclo for: in questo
+caso si pu&ograve; pensare di sviluppare la espansione in
+istruzioni condizionali (fino a un certo punto) per verificare
+se il comportamento del ciclo &egrave; quello previsto.<p>
+
+Con questa definizione, &egrave; facile realizzare dei cicli nei
+quali una variabile, invece di assumere valori crescenti, prende
+valori decrescenti. Per esempio, se si vogliono stampare i numeri
+interi da 100 a 0 in ordine decrescente (si parte da 100 e si
+arriva a 0), si pu&ograve; usare un ciclo for in cui la
+<tt>istruzione2</tt> decrementa a ogni passo il valore di una
+variabile, come viene fatto nel programma
+<a href="ContaIndietro.java">ContaIndietro.java</a>:
+
+<pre>
+/*
+  Stampa gli interi da 100 a 0 in ordine decrescente.
+*/
+
+class ContaIndietro {
+  public static void main(String[] args) {
+    int x;
+
+    for(x=100; x>=0; x=x-1) {
+      System.out.println(x);
+    }
+  }
+}
+
+</pre>
+
+<p>
+Il ciclo questa volta contiene <tt>x=x-1</tt> come seconda
+istruzione. Questo vuol dire che, ad ogni passo, il valore di
+<tt>i</tt> scende di uno. Si noti l'inversione della
+condizione: dal momento che occorre terminare il ciclo quando
+<tt>x</tt> raggiunge il valore 0, e <tt>x</tt> vale pi&ugrave;
+di zero prima, la condizione che fa continuare ad eseguire il
+ciclo delve essere <tt>x>=0</tt>. Nel caso di cicli con
+incremento la condizione sarebbe stata, sempre nel caso in
+cui l'ultimo valore con cui eseguire il ciclo &egrave; 10,
+<tt>x<=10</tt>.
+
+
+
+<h4>Esempio</h4>
+
+<p>
+Stampare i valori della funzione f(x)=x<sup>3</sup>-45 per
+<tt>x</tt> che vale 100, 90, 80, ..., -100, ossia valori che
+decrescono di 10 per volta, partendo da 100 e arrivando a -100.
+Si tratta chiaramente di un problema risolubile con
+un ciclo for in cui la variabile <tt>x</tt> parte da 100,
+viene decrementata di dieci ad ogni passo, e si
+continua ad eseguire un ciclo se <tt>x</tt> &egrave; maggiore o
+uguale a -100. Il ciclo for &egrave; simile al precedente, in
+cui la istruzione che viene eseguita per prima assegna 100 alla
+variabile <tt>x</tt>, la istruzione che viene eseguita ogni volta
+&egrave; il decremento di <tt>x</tt>, e la condizione &egrave;
+<tt>x>=-100</tt>. Il programma
+<a href="ValoriDecrescenti.java">ValoriDecrescenti.java</a>
+risolve questo problema.<p>
+
+<pre>
+/*
+  Stampa i valori di una funzione con valori
+  decrescenti dall'argomento.
+*/
+
+class ValoriDecrescenti {
+  public static void main(String[] args) {
+    int x,f;
+
+    for(x=100; x>=-100; x=x-10) {
+      f=x*x-10*x+50;
+      System.out.println("Per x="+x+" la funzione vale "+f);
+    }
+  }
+}
+
+</pre>
+
+<p>
+La istruzione che viene eseguita ad ogni passo &egrave; la
+istruzione <tt>x=x-10;</tt> che decremea il contenuto di
+<tt>x</tt> di 10.
+
+
+</body>
+
+
+
+
+<h2>Cicli while</h2>
+
+<p>
+I cicli while sono la forma pi&ugrave; generica di ciclo. La
+struttura generale &egrave; questa:
+
+<pre>
+while( condizione ) {
+  istruzione1;
+  istruzione2;
+  ...
+}
+</pre>
+
+<p>
+Quando questo blocco viene eseguito, si compiono i seguenti
+passi:
+
+<ol>
+<li>si verifica se la condizione &egrave; vera;
+<li>se lo &egrave;, si eseguono in sequenza le istruzioni
+<tt>istruzione1</tt>, <tt>istruzione2</tt>, ecc., altrimenti
+si esce dal ciclo
+<li>si verifica di nuovo la condizione,
+<li>se &egrave; verificata si eseguono di nuovo le istruzioni;
+<li>...
+</ol>
+
+<p>
+La frase "si esce dal ciclo" indica che si passa ad eseguire la
+prima istruzione che segue il blocco, ossia la prima istruzione
+che viene dopo il <tt>}</tt>. In italiano, il ciclo while si
+potrebbe tradurre come: "finch&egrave; la condizione &egrave;
+verificata, continua ad eseguire le istruzioni".<p>
+
+&Egrave; facile far vedere che ogni ciclo for si pu&ograve;
+tradurre in un ciclo while:<p>
+
+<pre>
+for(istruz1; condiz; istruz2) {           istruz1;
+  A;                                -->   while(condiz) {
+}                                           A;
+                                            istruz2;
+                                          }
+</pre>
+
+<p>
+D'altra parte, i cicli in cui una variabile deve venire assegnata
+a valori crescenti o decrescenti in un intervallo si codificano
+in maniera pi&ugrave; naturale usando cicli for: il codice
+risulta in questo modo pi&ugrave; breve da scrivere e pi&ugrave;
+facile da capire. D'altra parte, i cicli while sono pi&ugrave;
+conveniente negli altri casi di iterazione di istruzioni ma non
+c'&egrave; una variabile che si incrementa o decrementa.<p>
+
+
+
+<h4>Esempio: serie di Fibonacci</h4>
+
+<p>
+Si vogliono i valori inferiori a 10000 della serie di Fibonacci.
+La serie di Fibonacci &egrave; definita in questo modo: i primi
+due elementi <i>f<sub>0</sub></i> e <i>f<sub>1</sub></i> valgono
+1. Gli elementi successivi sono determinati con la formula:<p>
+
+<center>
+<i>
+f<sub>i</sub>=f<sub>i-1</sub>+f<sub>i-2</sub>
+</i>
+</center>
+
+<p>
+Il problema si risolve facimente usando due variabili
+<tt>penultimo</tt> e <tt>ultimo</tt> in cui si memorizzano
+gli ultimi due valori trovati
+della serie. All'inizio, queste due variabili hanno valore 1,
+dato che i primi due elementi della serie valgono 1 per definizione.
+Per determinare il successivo elemento della serie, &egrave;
+sufficiente sommare queste due variabili. A questo punto, la
+variabile <tt>ultimo</tt> deve assumere il valore dell'ultimo elemento
+della serie, e quindi il valore della somma, mentre <tt>penultimo</tt>
+deve diventare il valore del penultimo elemento trovato, per
+cui deve prendere il valore che aveva <tt>ultimo</tt> in precedenza.
+Il programma <a href="Fibonacci.java">Fibonacci.java</a> risolve
+il problema in questo modo.<p>
+
+<pre>
+/*
+  La serie di Fibonacci per valori minori di 10000.
+*/
+
+class Fibonacci {
+  public static void main(String[] args) {
+    int penultimo, ultimo, nuovo;
+    int limite=10000;
+
+    penultimo=1;
+    ultimo=1;
+
+    System.out.println(penultimo);
+
+    while( ultimo < limite ) {
+      System.out.println(ultimo);
+
+      nuovo=penultimo+ultimo;
+      penultimo=ultimo;
+      ultimo=nuovo;
+    }
+  }
+}
+
+</pre>
+
+<p> Il programma funziona nel modo seguente. Ad ogni passo,
+<tt>penultimo</tt> e <tt>ultimo</tt> sono gli ultimi due valori
+trovati della serie, e si stampa <tt>ultimo</tt>. Si calcola il
+nuovo valore della serie, che &egrave; la somma di questi due,
+e lo si memorizza nella variabile <tt>nuovo</tt>. A questo
+punto, <tt>penultimo</tt> e <tt>ultimo</tt> sono diventati il
+terz'ultimo e il penultimo elemento della serie, per cui &egrave;
+necessario cambiarli per far s&iacute; ritornino ad essere il
+penultimo e l'ultimo.  Questo significa che <tt>penultimo</tt>
+prende il valore di <tt>ultimo</tt>, mentre <tt>ultimo</tt> prende il
+valore di <tt>nuovo</tt>. Dal momento che questa sequenza di passi
+si trova all'interno di un ciclo while, viene eseguita fino a che
+la condizione &egrave; verificata. In questo caso, si continua
+fino a che l'ultimo valore trovato non supera il limite
+imposto.<p>
+
+Ultima nota: dal momento che a venire stampato &egrave; sempre il 
+valore di <tt>ultimo</tt> dopo questo cambiamento, nelle stampe si
+perde il primo elemento della serie. Per questa ragione &egrave;
+stata messa l'istruzione <tt>System.out.println(penultimo);</tt>
+prima della esecuzione del ciclo.<p>
+
+
+
+<h4>Esempio: zero di una funzione</h4>
+
+<p>
+&Egrave; noto che una funzione, se &egrave; continua in un
+intervallo <i>[a,b]</i>, ha valore positivo in <i>a</i> e
+negativo in <i>b</i>, allora &egrave; nulla in almeno un punto
+dell'intervallo. Si vuole un programma che calcola un intervallo
+sufficientemente piccolo in cui la funzione ha (almeno) uno zero.
+Siano quindi dati la funzione, i valori (reali) di <i>a</i>
+e <i>b</i>, e un terzo valore <i>e</i>, e si vuole un
+intervallo <i>[c,d]</i> che sia contenuto in <i>[a,b]</i>,
+che contenga un punto <i>x</i> tale che <i>f(x)=0</i>,
+e la dimensione di questo intervallo sia minore di <i>e</i>,
+ossia <i>d-c <= e</i>.<p>
+
+Un possibile meccanismo risolutivo &egrave; il seguente: si
+parte con <i>c,d</i> pari agli estremi dell'intervallo dato.
+Poi si assegna <i>x=(c+d)/2</i>, e si valuta <i>f(x)</i>.
+In altre parole, si fissa <i>x</i> al punto esattamente in
+mezzo all'intervallo, e si valuta <i>f</i> nel punto.
+Dal momento che <i>f(c)</i> e <i>f(d)</i> hanno segni diversi,
+almeno uno dei due ha un segno uguale a quello di <i>f(x)</i>.
+Nel caso in cui <i>f(c)</i> e <i>f(x)</i> hanno lo stesso
+segno, si assegna <i>c=x</i>. Nel caso in cui sono <i>f(d)</i>
+e <i>f(x)</i> ad avere lo stesso segno, si assegna <i>d=x</i>.
+Alla fine di questo passo, la propriet&agrave; che <i>f(c)</i>
+e <i>f(d)</i> hanno segni diversi continua a valere. D'altra
+parte, la differenza fra <i>d</i> e <i>c</i> si &egrave;
+dimezzata.<p>
+
+Il programma <a href="Nullo.java">Nullo.java</a> contiene il
+programma Java che ripete questi passi fino a che la ampiezza
+dell'intervallo non diventa minore o uguale del numero
+dato <tt>e</tt>.<p>
+
+<pre>
+/*
+  Trova un punto in cui una funzione f(x) ha un
+  valore sufficientemente vicino allo zero.
+  Siano a e b due valori tali che f(a) ha segno
+  opposto a f(b). Si assume che la funzione sia
+  continua.
+*/
+
+class Nullo {
+  public static void main(String[] args) {
+    double a=0,b=10;
+    double c,d;
+    double e=0.01;
+    double x,f,f1,f2;
+
+    f1=a*a-5*a-2;
+    f2=b*b-5*b-2;
+
+    if( f1*f2 >0 ) {
+      System.out.println("La funzione non ha segno diverso negli estremi");
+      System.out.println(f1+" "+f2);
+    }
+    else {
+      c=a;
+      d=b;
+  
+      while( d-c>e ) {
+        x=(c+d)/2;
+        System.out.println("Intervallo: ["+c+","+d+"], Medio: "+x);
+  
+        f=x*x-5*x-2;
+        f1=c*c-5*c-2;
+        f2=d*d-5*d-2;
+  
+        if( f*f2 < 0 ) {
+          c=x;
+        }
+        else if( f*f1 < 0 ) {
+          d=x; 
+        }
+        else {
+          c=x;
+          d=x;
+          break;
+        }
+      }
+  
+      System.out.println("Trovato intervallo ["+c+","+d+"]");
+    }
+  }
+}
+
+</pre>
+
+<p>
+Usiamo la condizione <tt>f*f1>0</tt> per decidere se due numeri
+hanno lo stesso segno. Una delle prime istruzioni del programma
+&egrave; la verifica se effettivamente la funzione ha segno
+differente pre <i>a</i> e per <i>b</i>. Se il segno risulta
+uguale, si stampa un messaggio di errore e basta. In caso contrario,
+si esegue il resto della procedura.<p>
+
+</body>
+
+
+
+
+<h2>Correttezza dei cicli</h2>
+
+
+<h4>Assunzioni</h4>
+
+<p>
+Quando si usano dei cicli, &egrave; facile commettere degli
+errori legati alle assunzioni che vengono fatte. Molto spesso,
+ci sono delle assunzioni che sono valide all'inizio della
+prima esecuzione del ciclo, ma che non sono valide alle
+successive iterazioni. Prendiamo il seguente programma
+<a href="FibonacciErrato.java">FibonacciErrato.java</a>,
+che dovrebbe stampare gli elementi della serie di
+fibonacci.<p>
+
+<pre>
+/*
+  La serie di Fibonacci per valori minori di 10000.
+*/
+
+class FibonacciErrato {
+  public static void main(String[] args) {
+    int penultimo, ultimo, nuovo;
+    int limite=10000;
+
+    penultimo=1;
+    ultimo=1;
+
+    System.out.println(penultimo);
+    System.out.println(ultimo);
+
+    while( penultimo+ultimo < limite ) {
+      nuovo=penultimo+ultimo;
+      System.out.println(nuovo);
+    }
+  }
+}
+
+</pre>
+
+<p>
+Eseguendo questo programma, vengono stampati i primi due
+valori della sequenza 1 e 1, e poi viene stampato ripetutamente
+il terzo valore 2. Quindi, i primi tre valori che escono sono
+giusti, ma dal quarto valore in poi si ottengono risultati
+errati.<p>
+
+L'errore &egrave; che le variabili <tt>penultimo</tt> e
+<tt>ultimo</tt> dovrebbero sempre rappresentare il penultimo
+e l'ultimo elemento trovato della serie. Questo &egrave; vero
+alla prima iterazione del ciclo, dal momento che i primi due
+valori trovati sono 1 e 1 (e questi sono i valori delle due
+variabili). A questo punto viene calcolato il nuovo valore
+<tt>nuovo=1+1</tt>, e questo &egrave; effettivamente il terzo
+elemento della serie. A questo punto si parte con una nuova
+iterazione del ciclo. Questa volta per&ograve; la assunzione
+che <tt>penultimo</tt> e <tt>ultimo</tt> rappresentano gli
+ultimo due valori trovati non &egrave; pi&ugrave; valida,
+dal momento che l'ultimo valore trovato &egrave; quello che
+sta nella variabile <tt>nuovo</tt>, mentre il valore che sta
+in <tt>ultimo</tt> &egrave; il penultimo valore trovato. Questo
+&egrave; il motivo per cui il programma non funziona: la
+assunzione che &egrave; vera alla prima iterazione del ciclo
+non lo &egrave; pi&ugrave; alle successive iterazioni. Per
+rendere il programma corretto occorre fare in modo che la
+assunzione risulti valida anche alle successive iterazioni.
+Il programma corretto <a href="Fibonacci.java">Fibonacci.java</a>
+modifica il contenuto delle variabili <tt>penultimo</tt> e
+<tt>ultimo</tt> in modo tale che, alla fine di ogni iterazione
+del ciclo, contenengano gli ultimi due elementi trovati.<p>
+
+Analogamente, nel programma di ricerca di un intervallo che
+contiene uno zero di una funzione,
+<a href="Nullo.java">Nullo.java</a>,
+si parte dall'assunzione che <tt>c,d</tt> siano due valori
+per i quali la funzione ha segno diverso. &Egrave; quindi
+necessario che la stessa condizione sia verificata alla fine
+di ogni singola iterazione del ciclo. Il concetto si pu&ograve;
+riassumere come segue:<p>
+
+<object type="application/tex" data="data:\noindent\framebox{\vbox{">
+<table frame=box rules=none border=2>
+<tr>
+<td>
+</object>
+Se nel corpo un ciclo uso una assunzione A, allora:
+
+<ul>
+<li>la assunzione A deve essere vera la prima volta che eseguo
+il ciclo;
+<li>devo verificare che, assumendo A vera all'inizio del
+corpo del ciclo, allora A risulta vera anche alla fine.
+</ul>
+<object type="application/tex" data="data:}}">
+</td>
+</tr>
+</table>
+</object>
+<p>
+
+In genere nei cicli c'&egrave; sempre una propriet&agrave; che
+viene mantenuta in tutte le iterazioni, e che &egrave; necessaria
+perch&eacute; il tutto funzioni. La prima cosa da controllare
+&egrave; che la assunzione sia vera alla prima iterazione
+del ciclo. Questo risulta di solito abbastanza naturale, ed
+&egrave; quindi difficile trovare errori legati a questo. La
+seconda cosa che si deve fare &egrave; controllare che,
+assumendo che la assunzione si vera all'inizio <i>di una
+generica iterazione del ciclo</i>, ed eseguendo il corpo del
+ciclo, la assunzione alla fine &egrave; ancora verificata.<p>
+
+Naturalmente, non &egrave; necessario che la assunzione valga
+anche in mezzo al corpo del ciclo. Per esempio, il fatto che
+le due variabili contenessere gli ultimi due valori trovati
+non vale a met&agrave; della iterazione (per esempio non vale
+subito dopo la istruzione <tt>System.out.println(nuovo)</tt>).<p>
+
+
+<h4>Terminazione</h4>
+
+<p>
+Non &egrave; difficile fare esempi di cicli che non terminano.
+Per esempio, il ciclo
+
+<pre>
+while( 1==1 ) {
+  ...
+}
+</pre>
+
+<p>
+viene eseguito all'infinito, dal momento che la condizione &egrave;
+sempre vera (a meno che non ci sia un <tt>break</tt> all'interno
+del ciclo).<p>
+
+In alcuni casi, il ciclo infinito &egrave; esattamente quello che
+si vuole. Di solito per&ograve; si vuole che un programma faccia
+delle operazioni le sue escuzioni e poi termini, il che implica
+che tutti i cicli che contiene devono prima o poi terminare. In
+particolare, se dopo il ciclo ci sono altre istruzioni da eseguire,
+allora la mancata terminazione fa s&iacute; che le istruzioni
+seguenti non siano eseguite, il che &egrave; chiaramente un errore.
+In generale, <b>i cicli devono sempre terminare</b>.
+
+<p>
+Nel caso dei cicli for usati per assegnare ripetutamente
+a una variabile valori crescenti o decrescenti la terminazione di
+rado &egrave; un problema: i cicli
+<tt>for(var=val1; var&lt;=val2; var=var+1)</tt> terminano sempre:
+l'unico problema che pu&ograve; verificarsi &egrave; quello di
+scrivere una condizione con il <tt>&lt;=</tt> mentre la istruzione
+che segue &egrave; un decremento <tt>x=x-1</tt>. In altre parole,
+questi cicli possono non terminare se si scrive per errore una delle
+due cose seguenti:
+
+<ul>
+<li><tt>for(var=val1; var<=val2; var=var-val3)</tt>
+<li><tt>for(var=val1; var>=val2; var=var+val3)</tt>
+</ul>
+
+<p>
+Il problema pu&ograve; essere pi&ugrave; grave nel caso dei cicli
+while e dei cicli for generici (cio&egrave; quelli di tipo
+<tt>for(istruzione1; condizione; istruzione2)</tt> in cui condizioni
+e istruzioni sono generiche). In questi casi, la verifica di
+terminazione pu&ograve; essere pi&ugrave; complicata. Per esempio,
+il programma <a href="FibonacciErrato.java">FibonacciErrato.java</a>
+non termina, e il motivo &egrave; che le variabili che si trovano
+nella condizione di terminazione non vengono modificate dopo la
+prima iterazione del ciclo (questo &egrave; a sua volta dovuto
+al fatto che una assunzione che veniva usata non era pi&ugrave;
+vera alla fine della prima iterazione).<p>
+
+In generale, verificare se un ciclo termina &egrave; difficile. Ci
+sono per&ograve; delle cose che &egrave; possibile controllare
+facilmente. Per esempio, all'interno del ciclo deve esistere sempre
+la possibilit&agrave; di cambiare le variabili della condizione, e
+deve essere sempre possibile che queste variabili assumano valori
+che fanno uscire dal ciclo. Per esempio, se si ha un ciclo
+<tt>while( a!=0 )</tt>, e all'interno del ciclo le uniche operazioni
+che modificano il valore di <tt>a</tt> sono le assegnazioni
+<tt>a=1</tt> e <tt>a=-1</tt>, &egrave; chiaro che la variabile
+non assume mai il valore nullo che fa uscire dal ciclo.<p>
+
+Si tenga altres&iacute; presente che la istruzione <tt>break</tt>
+fa comunque uscire dai cicli. A volte si usano cicli in cui si
+sa che la condizione &egrave; sempre verificata, come per
+esempio <tt>while( 1!=0 )</tt>, semplicemente perch&egrave; la
+uscita dal ciclo &egrave; garantita da una istruzione
+<tt>break</tt>. In questo caso, occorre verificare se &egrave;
+sempre possibile che la istruzione di break venga effettivamente
+eseguita.<p>
+
+
+
+</body>
+
+
+
+
+<h2>Note sulla nidificazione e sull'allineamento</h2>
+
+<p>
+In alcuni programmi visti, alcune istruzioni composte come
+per esempio i cicli contenevano al loro interno altre
+istruzioni composte come per esempio le istruzioni 
+condizionali. Questo &egrave; vero in generale: una
+istruzione composta pu&ograve; contenere al suo interno
+altre istruzioni, siano esse semplici o composte a loro
+volta. Per esempio, all'interno di un ciclo for si
+pu&ograve; mettere un altro ciclo for che pu&ograve;
+contenere una istruzione condizionale, ecc. In questi
+casi, occorre prestare attenzione alla chiusura delle
+parentesi. Se per esempio abbiamo due istruzioni di
+ciclo messe l'una dentro l'altra, nel modo seguente:
+
+<pre>
+for(....) {
+  ...
+  ...
+  for(....) {
+    ...
+    ...
+  }
+  ...
+  ...
+}
+</pre>
+
+<p>
+allora ognuna delle due istruzioni ha la struttura
+<tt>for(....) {<i>istruzioni</i>}</tt>. Se una delle
+istruzioni &egrave; ancora un ciclo, questa contiene
+ancora <tt>for(....) {<i>istruzioni</i>}</tt>. Per
+questa ragione, alla fine del blocco occorrono due
+parentesi graffe chiuse: la prima &egrave; l'ultimo
+carattere del ciclo pi&ugrave; interno, mentre la
+seconda &egrave; l'ultimo carattere del ciclo
+esterno.<p>
+
+In programmi complicati la struttura dei programmi con
+molte istruzioni composte l'una dentro l'altra pu&ograve;
+non risultare molto chiara. Questo pu&ograve; portare a
+degli errori di programmazione.<p>
+
+L'<b>allineamento</b> serve a rendere pi&ugrave; chiaro
+un programma, e permette quindi di individuare errori
+legati alla struttura del programma. Il metodo generale
+&egrave; molto semplice: ogni volta che si ha una
+istruzione composta, le sue istruzioni componenti vengono
+scritte uno o due caratteri pi&ugrave; avanti di tutte
+le altre. Se all'interno di una istruzione composta appare
+un'altra istruzione composta, le istruzioni che compongono
+quest'ultima vengono scritte altri due caratteri pi&ugrave;
+avanti, per cui si lasciano quattro spazi prima
+dell'istruzione.<p>
+
+Dal punto di vista del compilatore, l'allineamento non
+&egrave; necessario, dal momento che tutti gli spazi
+vengono ignorati. D'altra parte, l'uso di questa tecnica
+permette di:
+
+<ol>
+<li>capire di quale istruzione composta una istruzione semplice
+fa parte;
+
+<li>capire se mancano parentesi chiuse, e dove;
+
+<li>capire se le parentesi sono state chiuse nel punto
+sbagliato.
+</ol>
+
+<p>
+Nella scrittura di programmi lunghi questi vantaggi risultano
+immediatamente chiari.<p>
+
+
+</body>
+
+
+
+</body>
+
+</body>
+</html>

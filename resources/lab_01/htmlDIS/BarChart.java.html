@@ -1,0 +1,91 @@
+<!-- file generated with webcpp 0.6.2 http://webcpp.sf.net -->
+<html>
+<head>
+<title>C:\Documents and Settings\Administrator\Documenti\Web\igea\lab\20020415\BarChart.java</title>
+<meta name="Microsoft Border" content="tb, default">
+</head>
+<body bgcolor=#ffffff text=#000000 link=#ff0000 vlink=#666666 alink=#0000ff><!--msnavigation--><table border="0" cellpadding="0" cellspacing="0" width="100%"><tr><td>
+
+<p align="center">
+</p>
+<hr>
+<p align="center">&nbsp;</p>
+
+</td></tr><!--msnavigation--></table><!--msnavigation--><table border="0" cellpadding="0" cellspacing="0" width="100%"><tr><!--msnavigation--><td valign="top">
+<pre>
+<b><font COLOR=#0000ff>import</font></b> java.applet.Applet;
+<b><font COLOR=#0000ff>import</font></b> java.awt.*;
+<b><font COLOR=#0000ff>import</font></b> java.awt.geom.*;
+<b><font COLOR=#0000ff>import</font></b> java.util.*;
+
+<b><font COLOR=#0000ff>public</font></b> <b><font COLOR=#0000ff>class</font></b> BarChart <b><font COLOR=#0000ff>extends</font></b> Applet {   
+	
+	<font COLOR=#666666>//costanti tipiche del grafico: numero di campioni e distanza tra gruppi di campioni</font>
+	<b><font COLOR=#0000ff>public</font></b>	<b><font COLOR=#0000ff>final</font></b>	<b><font COLOR=#0000ff>int</font></b>		NUMSAMPLES= <font COLOR=#a900a9>25</font>;
+	<b><font COLOR=#0000ff>public</font></b>	<b><font COLOR=#0000ff>final</font></b>	<b><font COLOR=#0000ff>int</font></b>		SPACE=<font COLOR=#a900a9>5</font>;
+		
+	<font COLOR=#666666>//variabile per dimensionare il disegno</font>
+	<b><font COLOR=#0000ff>private</font></b>	<b><font COLOR=#0000ff>double</font></b>	MAXX;
+    <b><font COLOR=#0000ff>private</font></b>	<b><font COLOR=#0000ff>double</font></b>	MAXY;
+    <b><font COLOR=#0000ff>private</font></b>	<b><font COLOR=#0000ff>double</font></b>	BARWIDTH;
+	<b><font COLOR=#0000ff>private</font></b>	<b><font COLOR=#0000ff>double</font></b>	X0;
+	<b><font COLOR=#0000ff>private</font></b>	<b><font COLOR=#0000ff>double</font></b>	Y0;
+	<b><font COLOR=#0000ff>private</font></b>	<b><font COLOR=#0000ff>int</font></b>		MAXELEM;
+	
+	<font COLOR=#666666>//array per contenere le barre da graficare</font>
+	<b><font COLOR=#0000ff>private</font></b>	Rectangle2D.Double[] 	set1= <b><font COLOR=#0000ff>new</font></b> Rectangle2D.Double[NUMSAMPLES];
+	<b><font COLOR=#0000ff>private</font></b>	Rectangle2D.Double[] 	set2= <b><font COLOR=#0000ff>new</font></b> Rectangle2D.Double[NUMSAMPLES];
+	<b><font COLOR=#0000ff>private</font></b>	Rectangle2D.Double[] 	set3= <b><font COLOR=#0000ff>new</font></b> Rectangle2D.Double[NUMSAMPLES];
+	
+	<b><font COLOR=#0000ff>public</font></b> <b><font COLOR=#0000ff>void</font></b> paint(Graphics g)    { 
+  		Graphics2D g2=(Graphics2D)g;
+  		MAXX=getWidth();
+        MAXY=getHeight();
+        BARWIDTH=(MAXX-<font COLOR=#a900a9>20</font>-SPACE*(NUMSAMPLES-<font COLOR=#a900a9>1</font>))/<font COLOR=#a900a9>3</font>/NUMSAMPLES;
+		X0=<font COLOR=#a900a9>10</font>;
+		Y0=MAXY-<font COLOR=#a900a9>10</font>;
+		MAXELEM=(<b><font COLOR=#0000ff>int</font></b>)(MAXY-<font COLOR=#a900a9>20</font>);
+		Rectangle2D.Double frame=<b><font COLOR=#0000ff>new</font></b> Rectangle2D.Double(X0,Y0-MAXELEM,MAXX-<font COLOR=#a900a9>20</font>,MAXY-<font COLOR=#a900a9>20</font>);
+        
+        CreateRandomSets(set1, set2, set3);        
+		g2.draw(frame);
+		DrawSet(set1,Color.blue, g2);
+		DrawSet(set2,Color.red, g2);
+		DrawSet(set3,Color.black, g2);
+	}
+ 	
+ 	<font COLOR=#666666>//funzione ausiliaria di paint per creare 3 insiemi di dati</font>
+ 	<b><font COLOR=#0000ff>private</font></b> <b><font COLOR=#0000ff>void</font></b> CreateRandomSets(Rectangle2D.Double[] s1, Rectangle2D.Double[] s2, Rectangle2D.Double[] s3)    { 
+ 		
+ 		Random generator=<b><font COLOR=#0000ff>new</font></b> Random();         
+        <b><font COLOR=#0000ff>int</font></b> 	randomSample;
+        
+        <b><font COLOR=#0000ff>for</font></b>(<b><font COLOR=#0000ff>int</font></b> i=<font COLOR=#a900a9>0</font>; i&lt;NUMSAMPLES; i++)	{
+			randomSample=generator.nextInt(MAXELEM);
+			s1[i]=<b><font COLOR=#0000ff>new</font></b> Rectangle2D.Double(X0+i*(SPACE+<font COLOR=#a900a9>3</font>*BARWIDTH), Y0-randomSample,BARWIDTH,randomSample);
+			randomSample=generator.nextInt(MAXELEM);
+			s2[i]=<b><font COLOR=#0000ff>new</font></b> Rectangle2D.Double(X0+BARWIDTH+i*(SPACE+<font COLOR=#a900a9>3</font>*BARWIDTH), Y0-randomSample,BARWIDTH,randomSample);
+			randomSample=generator.nextInt(MAXELEM);
+			s3[i]=<b><font COLOR=#0000ff>new</font></b> Rectangle2D.Double(X0+<font COLOR=#a900a9>2</font>*BARWIDTH+i*(SPACE+<font COLOR=#a900a9>3</font>*BARWIDTH), Y0-randomSample,BARWIDTH,randomSample);
+		} 
+	}
+	
+	<font COLOR=#666666>//funzione ausiliaria di paint per disegnare un insieme di dati con un colore specifico</font>
+	<b><font COLOR=#0000ff>private</font></b> <b><font COLOR=#0000ff>void</font></b> DrawSet(Rectangle2D.Double[] set, Color col,Graphics2D graph)	{
+		graph.setColor(col);
+		<b><font COLOR=#0000ff>for</font></b>(<b><font COLOR=#0000ff>int</font></b> i=<font COLOR=#a900a9>0</font>; i&lt;NUMSAMPLES; i++)				
+			graph.fill(set[i]);	
+	}
+	
+}
+        
+
+</pre>
+<!--msnavigation--></td></tr><!--msnavigation--></table><!--msnavigation--><table border="0" cellpadding="0" cellspacing="0" width="100%"><tr><td>
+<hr>
+      <h5 align="left">Questa è la bacheca di <b><i>Informatica Grafica</i>,
+      corso di laurea specialistica in <i>Ing. Edile-architettura<br>
+      </i></b>by <a href="mailto:damore@dis.uniroma1.it"> FdA</a></h5>
+      <h6 align="left">ultima modifica: 02/02/2005 11.30</h6>
+</td></tr><!--msnavigation--></table></body>
+</html>

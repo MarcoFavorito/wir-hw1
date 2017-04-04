@@ -1,0 +1,129 @@
+<!doctype html public "-//w3c//dtd html 4.0 transitional//en">
+<html>
+<head>
+   <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <title>Laboratorio di Programmazione 2004-05 - Esercitazione 3</title>
+   <link rel="stylesheet" href="../lp2003.css" type="text/css">
+</head>
+<body>
+<br>
+<center>
+  <p><b>Laboratorio di Programmazione - A.A. 2004/05</b></p>
+  <h2>Esercitazione 3</h2>
+</center>
+
+<p><strong>Parte 1.</strong></p>
+
+<p>Realizzare l'interfaccia <code>Confrontabile</code> per il confronto di due 
+  oggetti. Tale interfaccia contiene la seguente dichiarazione di funzione:
+<blockquote> <code>public int confrontaCon(Confrontabile c)</code></blockquote>
+<p>Il significato inteso di questa funzione &egrave; che essa 
+restituisce -1 se l'oggetto di invocazione &egrave; pi&ugrave; piccolo 
+  di c, restituisce 0 se l'oggetto di invocazione &egrave; grande come c, restituisce 
+  1 se l'oggetto di invocazione &egrave; pi&ugrave; grande di c. Tale interfaccia 
+  deve essere contenuta nel package <code>utilita</code>. <br>
+  <p><strong>Parte 2.</strong></p>
+<p>Realizzare una <em>Collezione Ordinata</em> di oggetti qualsiasi che implementano l'interfaccia <code>Confrontabile</code>. 
+  La classe <code>CollezioneOrdinata</code> presenta le seguenti funzionalit&agrave;: 
+<ul>
+  <li><em>crea</em>: che crea una <em>Collezione Ordinata</em>, inizialmente vuota<code></code>; 
+  </li>
+  <li><em>inserisci</em>: che, dato un riferimento <em>c</em> di tipo <code>Confrontabile</code> 
+    , lo aggiunge alla <em>Collezione Ordinata </em> (mantenendo la collezione 
+    ordinata); se <em>c</em> &egrave; gi&agrave; presente nella collezione, non 
+    fa nulla; </li>
+  <li><em>elimina</em>: che, dato un riferimento <em>c</em> di tipo <code>Confrontabile</code>, 
+    lo elimina dalla collezione; se <em>c</em> non &egrave; presente non fa nulla; 
+  </li>
+  <li><em>quantiElementi</em> che restituisce il numero di riferimenti di tipo 
+    <code>Confrontabile</code> presenti nella collezione;</li>
+  <li><em>posizione</em>: che, dato un riferimento <em>c</em> di tipo <code>Confrontabile</code>, 
+    restituisce un intero rappresentante la posizione di <em>c</em> nella collezione 
+    (0 per il primo elemento, <em>quantiElementi</em>-1 per l'ultimo), oppure 
+    restituisce -1 se tale riferimento non &egrave presente nella collezione. 
+  </li>
+  <li><em>elementoInPosizione</em> che, dato un intero <em>n</em> rappresentante 
+    la posizione di un riferimento di tipo <code>Confrontabile</code> nella collezione 
+    ordinata (0 per il primo elemento, <em>quantiElementi</em>-1 per l'ultimo), 
+    restituisce il riferimento di tipo <code>Confrontabile</code> che si trova 
+    in posizione <em>n</em> nella collezione; se l'indice della posizione &egrave; 
+    fuori dai limiti si restituisce <code>null</code>; </li>
+  <li><em>tuttiGliElementi</em> che restituisce un array di riferimenti di tipo 
+    <code>Confrontabile</code> contenente tutti i riferimenti di tipo <code>Confrontabile</code> 
+    presenti nella collezione ordinata</li>
+</ul>
+
+<P> La classe <code>CollezioneOrdinata</code> deve essere implementata all'interno del package <code>utilita</code>. 
+<P>
+<P> Suggerimento: Per realizzare i metodi della classe 
+<code>CollezioneOrdinata</code> si 
+  prenda spunto dai metodi della classe <code>Guardaroba</code>
+svolti nell'<a href="../esercitazione2/">esercitazione 2</a>. </P>
+
+
+
+<p><strong>Parte 3.</strong></p>
+
+<p> Realizzare la classe <code>Guardaroba</code> 
+(vedi <a href="../esercitazione2/">esercitazione 2</a>), 
+all'interno del package <code>packg</code>, 
+<em>facendo uso della classe</em> <code>CollezioneOrdinata</code>. Si ricorda 
+  che il <em>Guardaroba</em> ha un nome e una collezione di abiti depositati. 
+  Ogni abito consegnato &egrave; contrassegnato da un codice (una stringa) che 
+  lo identifica univocamente e la collezione degli abiti depositati nel guardaroba 
+  deve essere mantenuta ordinata rispetto a questo codice. Gli oggetti di tipo 
+  <em>Abito</em> sono rappresentati tramite una classe Java <code>Abito</code> 
+  gi&agrave; definita che si trova in un package <code>packa</code>, il cui codice 
+  &egrave; in <a href="../esercitazione2/">packa</a>. 
+<p>Gli oggetti <em>Guardaroba</em> supportano le seguenti funzionalit&agrave;: 
+<ul>
+  <li><em>crea</em>: che, data una stringa <em>n</em> che rappresenta il nome 
+    del <em>Guardaroba</em>, crea un oggetto <em>Guardaroba</em> con nome <em>n</em>, 
+    che inizialmente non ha alcun abito depositato; </li>
+  <li><em>nome</em>: che restituisce il nome del <em>Guardaroba</em>; </li>
+  <li><em>presente</em>: che, data una stringa <em>c</em> rappresentante il codice 
+    di un abito depositato, restituisce <em>true</em> se il codice <em>c</em> 
+    &egrave; associato ad un abito depositato nel <em>Guardaroba</em>, <em>false</em> 
+    altrimenti; </li>
+  <li><em>numeroAbitiDepositati</em>: che restituisce il numero di abiti depositati 
+    nel <em>Guardaroba</em>; </li>
+  <li><em>qualePosizione</em>: che, data una stringa <em>c</em> rappresentante 
+    il codice di un abito depositato, restituisce un intero rappresentante la 
+    posizione dell'abito depositato nella collezione (0 per il primo elemento, 
+    <em>numeroAbitiDepositati</em>-1 per l'ultimo), oppure lancia una eccezione 
+    se tale codice non &egrave presente nel guardaroba. Poich&eacute; la collezione 
+    degli abiti depositati deve essere ordinata questo metodo deve soddisfare 
+    la seguente condizione: dati due codici <em>c1</em> e <em>c2</em> tali che 
+    <em>c1</em> precede <em>c2</em> secondo l'ordine lessicografico delle stringhe, 
+    allora <em>qualePosizione(c1)</em> deve essere minore di <em>qualePosizione(c2)</em>. 
+  </li>
+  <li><em>qualeCodice</em>: che, dato un intero <em>n</em> rappresentante la posizione 
+    di un abito nella collezione (0 per il primo elemento, <em>numeroAbitiDepositati</em>-1 
+    per l'ultimo), restituisce la stringa corrispondente al codice dell'abito 
+    depositato; se l'indice della posizione &egrave; fuori dai limiti si generi 
+    una eccezione; </li>
+  <li><em>qualeAbito</em>: che, data una stringa <em>c</em> rappresentante il 
+    codice di un abito depositato, restituisce l'oggetto <code>Abito</code> corrispondente, 
+    oppure lancia una eccezione se tale codice non &egrave presente nel guardaroba; 
+  </li>
+  <li><em>consegnaAbito</em>: che, dati un abito <em>a</em> e un codice <em>c</em>, 
+    aggiunge l'informazione nel <em>Guardaroba</em>, mantenendo la collezione 
+    ordinata secondo il codice; se esiste gi&agrave; un abito associato al codice 
+    <em>c</em>, si lanci una eccezione; </li>
+  <li><em>ritiraAbito</em>: che, dato il codice <em>c</em> di un abito, elimina 
+    l'abito dal guardaroba; se il codice non &egrave; presente non fa nulla; </li>
+</ul>
+<P> 
+<P> Suggerimento: Per realizzare la classe <code>Guardaroba</code> facendo 
+  uso della classe <code>CollezioneOrdinata</code>, si realizzi
+  una ulteriore classe <code>CodiceAbito</code> 
+contenente un campo per il codice, 
+  un campo per l'abito e che implementi l'interfaccia <code>Confrontabile</code>.</P>
+
+<p><strong>Parte 4.</strong></p>
+
+<p>Verificare che i clienti della <code>Guardaroba</code>
+sviluppati nell'<a href="../esercitazione2/">esercitazione 2</a>
+funzionino correttamente per questa seconda versione della classe <code>Guardaroba</code>.
+</body>
+</html>

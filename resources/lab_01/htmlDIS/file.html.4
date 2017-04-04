@@ -1,0 +1,209 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0//EN">
+<!-- Created by htmlize-0.46 in css mode. -->
+<html>
+  <head>
+    <title>file.c</title>
+    <style type="text/css">
+    <!--
+      BODY {
+        color: #000000;
+        background-color: #ffffff;
+      } /* default */
+      span.keyword {
+        color: #006400;
+      } /* font-lock-keyword-face */
+      span.function-name {
+        color: #0000cd;
+      } /* font-lock-function-name-face */
+      span.string {
+        color: #b22222;
+      } /* font-lock-string-face */
+      span.variable-name {
+        color: #a52a2a;
+      } /* font-lock-variable-name-face */
+      span.type {
+        color: #ff00ff;
+      } /* font-lock-type-face */
+      span.builtin {
+        color: #da70d6;
+      } /* font-lock-builtin-face */
+    -->
+    </style>
+  </head>
+  <body>
+    <pre>
+#<span class="builtin">include</span> <span class="string">&lt;stdio.h&gt;</span>
+#<span class="builtin">include</span> <span class="string">&lt;stdlib.h&gt;</span>
+
+<span class="type">typedef</span> <span class="type">char</span> <span class="variable-name">nomefile</span>[20];
+
+<span class="type">void</span> <span class="function-name">LeggiNomeFile</span>(<span class="type">char</span> *<span class="variable-name">messaggio</span>,<span class="variable-name">nomefile</span> nome)
+{
+	printf(<span class="string">&quot;%s, inserisci nome: &quot;</span>,messaggio);
+	gets(nome);
+	<span class="keyword">return</span>;
+} 
+
+
+<span class="type">FILE</span> *<span class="function-name">ApriFile</span>(nomefile nome, <span class="type">char</span> *<span class="variable-name">modo</span>)
+{
+	<span class="type">FILE</span> *<span class="variable-name">f</span>;
+	
+	f=fopen(nome,modo);
+	<span class="keyword">if</span>(f==NULL) {
+		printf(<span class="string">&quot;Impossibile aprire %s in modalita` %s\n&quot;</span>,nome,modo);
+		exit(1);
+	}
+	
+	<span class="keyword">return</span> f;
+}
+
+<span class="type">void</span> <span class="function-name">LeggiScriviRiga</span>(<span class="type">FILE</span> *<span class="variable-name">sorg</span>, <span class="type">FILE</span> *<span class="variable-name">dest</span>)
+{
+	<span class="type">int</span> <span class="variable-name">ch</span>;
+	
+	<span class="keyword">do</span> {
+		ch=fgetc(sorg);
+		<span class="keyword">if</span>(ch==EOF)
+			<span class="keyword">break</span>;
+		fputc(ch,dest);
+	} <span class="keyword">while</span>(ch != <span class="string">'\n'</span>);
+	
+	<span class="keyword">return</span>;
+}
+
+
+<span class="type">void</span> <span class="function-name">SaltaRiga</span>(<span class="type">FILE</span> *<span class="variable-name">f</span>)
+{
+	<span class="type">int</span> <span class="variable-name">ch</span>;
+	
+	<span class="keyword">do</span>
+		ch=fgetc(f);
+	<span class="keyword">while</span>((ch!=<span class="string">'\n'</span>)&amp;&amp;(ch!=EOF));
+	
+	<span class="keyword">return</span>;
+}
+
+
+<span class="type">void</span> <span class="function-name">CompitoD</span>()
+{
+	<span class="type">FILE</span> *<span class="variable-name">f</span>, *<span class="variable-name">f1</span>, *<span class="variable-name">f2</span>, *<span class="variable-name">dest</span>;
+	nomefile nome1,nome2,nome;
+	
+	LeggiNomeFile(<span class="string">&quot;File F1&quot;</span>,nome1);
+	f1=ApriFile(nome1,<span class="string">&quot;w&quot;</span>);
+
+	LeggiNomeFile(<span class="string">&quot;File F2&quot;</span>,nome2);
+	f2=ApriFile(nome2,<span class="string">&quot;w&quot;</span>);
+
+	LeggiNomeFile(<span class="string">&quot;File F&quot;</span>,nome);	
+	f=ApriFile(nome,<span class="string">&quot;r&quot;</span>);
+	
+	dest=f1;
+	
+	<span class="keyword">while</span>(!feof(f)) {
+		LeggiScriviRiga(f,dest);
+		<span class="keyword">if</span>(dest==f1)
+			dest=f2;
+		<span class="keyword">else</span>
+			dest=f1;
+	}
+	
+	fclose(f);
+	fclose(f1);
+	fclose(f2);
+
+	<span class="keyword">return</span>;
+}
+
+<span class="type">void</span> <span class="function-name">CompitoB</span>()
+{
+	<span class="type">FILE</span> *<span class="variable-name">f1</span>, *<span class="variable-name">f2</span>;
+	nomefile nome1,nome2;
+	<span class="type">int</span> <span class="variable-name">ch</span>;
+	
+	LeggiNomeFile(<span class="string">&quot;File F1&quot;</span>,nome1);
+	f1=ApriFile(nome1,<span class="string">&quot;r&quot;</span>);
+
+	LeggiNomeFile(<span class="string">&quot;File F2&quot;</span>,nome2);
+	f2=ApriFile(nome2,<span class="string">&quot;w&quot;</span>);
+
+	ch=fgetc(f1);
+	<span class="keyword">while</span>(!feof(f1)) {
+		<span class="keyword">if</span>((ch&lt;<span class="string">'A'</span>)||(ch&gt;<span class="string">'Z'</span>)) {
+			fputc(ch,f2);
+			<span class="keyword">if</span>(ch!=<span class="string">'\n'</span>)
+				LeggiScriviRiga(f1,f2);
+		} <span class="keyword">else</span>
+			SaltaRiga(f1);
+		ch=fgetc(f1);
+	}
+	
+	fclose(f1);
+	fclose(f2);
+
+	<span class="keyword">return</span>;
+}
+
+<span class="type">void</span> <span class="function-name">CompitoA</span>()
+{
+	<span class="type">FILE</span> *<span class="variable-name">f</span>, *<span class="variable-name">f1</span>, *<span class="variable-name">f2</span>, *<span class="variable-name">dest</span>;
+	nomefile nome1,nome2,nome;
+	
+	LeggiNomeFile(<span class="string">&quot;File F1&quot;</span>,nome1);
+	f1=ApriFile(nome1,<span class="string">&quot;r&quot;</span>);
+
+	LeggiNomeFile(<span class="string">&quot;File F2&quot;</span>,nome2);
+	f2=ApriFile(nome2,<span class="string">&quot;r&quot;</span>);
+
+	LeggiNomeFile(<span class="string">&quot;File F&quot;</span>,nome);	
+	f=ApriFile(nome,<span class="string">&quot;w&quot;</span>);
+	
+	<span class="keyword">while</span>(!feof(f1)||!feof(f2)) {
+		<span class="keyword">if</span>(!feof(f1))
+			LeggiScriviRiga(f1,f);
+		<span class="keyword">if</span>(!feof(f2))
+			LeggiScriviRiga(f2,f);
+	}
+	
+	fclose(f);
+	fclose(f1);
+	fclose(f2);
+
+	<span class="keyword">return</span>;
+}
+
+<span class="type">void</span> <span class="function-name">CompitoC</span>()
+{
+	<span class="type">FILE</span> *<span class="variable-name">f</span>, *<span class="variable-name">f1</span>, *<span class="variable-name">f2</span>, *<span class="variable-name">dest</span>;
+	nomefile nome1,nome2,nome;
+	
+	LeggiNomeFile(<span class="string">&quot;File F1&quot;</span>,nome1);
+	f1=ApriFile(nome1,<span class="string">&quot;r&quot;</span>);
+
+	LeggiNomeFile(<span class="string">&quot;File F2&quot;</span>,nome2);
+	f2=ApriFile(nome2,<span class="string">&quot;r&quot;</span>);
+
+	LeggiNomeFile(<span class="string">&quot;File F&quot;</span>,nome);	
+	f=ApriFile(nome,<span class="string">&quot;w&quot;</span>);
+	
+	<span class="keyword">while</span>(!feof(f1))
+			LeggiScriviRiga(f1,f);
+	
+	<span class="keyword">while</span>(!feof(f2))
+			LeggiScriviRiga(f2,f);
+	
+	fclose(f);
+	fclose(f1);
+	fclose(f2);
+
+	<span class="keyword">return</span>;
+}
+
+<span class="function-name">main</span>() {
+	CompitoC();
+	<span class="keyword">return</span> 0;
+}
+</pre>
+  </body>
+</html>

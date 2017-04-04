@@ -1,0 +1,96 @@
+<html>
+<head>
+<title>Compito di esonero 27 aprile 1997</title>
+</head>
+
+<body>
+<h2>Compito di esonero 27 aprile 1997</h2>
+
+<ol>
+
+<li> (4 punti) Siano G<sub>1</sub> e G<sub>2</sub> le seguenti grammatiche
+
+<center>
+<table>
+<tr><td>
+G<sub>1</sub> = <{a, b}, {S, X}, S, {S -> aX, S -> epsilon, X -> bS}><br>
+G<sub>2</sub> = <{a, b}, {S, X}, S, {S -> aX, X -> bS}>
+</td></tr>
+</table>
+</center>
+
+Determinare
+<ol>
+<li> se la stringa abab appartiene al linguaggio generato da G<sub>1</sub>;
+<li>  se la stringa abab appartiene al linguaggio generato da G<sub>2</sub>.
+</ol>
+Giustificare entrambe le risposte.
+
+<p>
+
+<li> (4 punti) Scrivere l'automa a stati finiti che riconosce il linguaggio
+
+<center>
+{a, bab, bbabb}
+</center>
+
+Se l'automa proposto &egrave; non deterministico, trasformarlo in un automa
+deterministico.
+
+<p>
+
+<li> (6 punti) Il file list contiene il listato di una directory nel seguente formato:
+
+<pre>
+  -rw-rw-r--    1 liberato liberato        721 Apr 24 11:37 Apr_nota.doc
+  -rwxrwxr-x    1 liberato liberato       4866 Apr 24 11:38 a.out*
+  -rw-r--r--    1 liberato liberato        804 Mar 24 11:37 copia.c
+  -rw-rw-r--    1 liberato liberato       1584 Apr 24 11:37 copia.o
+  -rw-r--r--    1 liberato liberato        804 Mar 24 11:37 dASAprt.c
+  -rw-rw-r--    1 liberato liberato       2028 Apr 24 11:38 esonero.dvi
+  -rw-rw-r--    1 liberato liberato        215 Apr 24 11:38 esonero.log
+  -rw-rw-r--    1 liberato liberato       1634 Apr 24 11:38 esonero.tex
+  -rw-rw-r--    1 liberato liberato         10 Apr 24 11:37 test.c
+  -rw-rw-r--    1 liberato liberato        663 Apr 24 11:37 test.o
+</pre>
+
+Si vogliono stampare solo le linee che contengono programmi C relativi al mese
+di aprile. Nell'esempio di sopra occorre produrre
+<pre>
+  -rw-rw-r--    1 liberato liberato         10 Apr 24 11:37 test.c
+</pre>
+
+Si realizzi la espressione regolare che permette a grep di effettuare questa
+selezione.
+
+<p>
+
+<li> (6 punti) Si vuole realizzare in flex un preprocessore che elimini da un
+programma C tutto il codice che si trova all'interno dei commenti. Si tenga
+presente che i commenti possono essere nidificati. Sono quindi possibili
+situazioni di questo genere:
+
+<pre>
+  printf("Inizio");
+  /*
+  i++; /* incrementa il contatore i di uno */
+  j++; /* incrementa il contatore j di uno */
+  */
+  a=i+j;
+  /* somma i e j */
+</pre>
+
+In questo caso, va stampato:
+
+<pre>
+   printf("Inizio");
+   a=i+j;
+</pre>
+
+
+Si tenga presente che il livello di nesting di commenti puo essere
+arbitrariamente alto.
+
+</body>
+</html>
+

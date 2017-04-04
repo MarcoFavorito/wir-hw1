@@ -1,0 +1,89 @@
+html_document -> "<html>" html_content "</html>"
+
+html_content -> head_tag body_tag 
+
+head_tag -> "<head>" lista_head_content "</head>"
+
+lista_head_content -> lista_head_content head_content | EPSILON
+
+head_content -> meta_tag | title_tag 
+
+meta_tag -> "<meta" lista_attr_meta ">"
+
+lista_attr_meta -> lista_attr_meta attr_meta | EPSILON
+
+attr_meta -> "CONTENT" "=" String | "NAME" "=" String |
+             "HTTP-EQUIV" "=" String
+
+title_tag -> "<title>" Text "</title>"
+ 
+body_tag -> "<body" lista_body_attr ">" lista_body_content "</body>"
+
+lista_body_attr -> lista_body_attr body_attr | EPSILON
+
+body_attr-> "TEXT" "=" String | "LINK" "=" String | "BGCOLOR" "=" String |
+            "VLINK" "=" String | "ALINK" "=" String
+
+lista_body_content -> lista_body_content body_content | EPSILON
+
+body_content -> hr_tag | block | heading | text_content 
+ 
+hr_tag -> "<hr>" | "<hr" "WIDTH" "=" String ">"
+
+block -> block_content lista_block_content 
+
+lista_block_content -> lista_block_content block_content | EPSILON
+
+block_content -> ol_tag | ul_tag | center_tag 
+
+ol_tag -> "<ol>" lista_li_tag "</ol>"
+
+ul_tag -> "<ul>" lista_li_tag "</ul>"
+
+lista_li_tag -> lista_li_tag li_tag | EPSILON
+
+li_tag -> "<li>" lista_flow_content "</li>"
+
+lista_flow_content -> lista_flow_content flow_content | EPSILON
+
+flow_content -> block | block_text 
+
+center_tag -> "<center>" lista_body_content "</center>"
+
+heading -> h1_tag | h2_tag | h3_tag | h4_tag | h5_tag | h6_tag 
+
+h1_tag -> "<h1>" block_text "</h1>"
+
+h2_tag -> "<h2>" block_text "</h2>"
+
+h3_tag -> "<h3>" block_text "</h3>"
+
+h4_tag -> "<h4>" block_text "</h4>"
+
+h5_tag -> "<h5>" block_text "</h5>"
+
+h6_tag -> "<h6>" block_text "</h6>"
+
+block_text -> lista_text_content 
+
+lista_text_content -> lista_text_content text_content | EPSILON
+
+text_content -> Text | "<br>" | "<p>" | a_tag | code_tag | em_tag | b_tag |
+               i_tag | font_tag | dd_tag 
+
+a_tag -> "<a" "HREF" "=" String ">" block_text "</a>" |
+         "<a" "NAME" "=" String ">" block_text "</a>"
+
+code_tag -> "<code>" block_text "</code>"
+
+em_tag -> "<em>" block_text "</em>"
+
+b_tag -> "<b>" block_text "</b>"
+
+i_tag -> "<i>" block_text "</i>"
+
+font_tag -> "<font" "SIZE" "=" Integer ">" block_text "</font>" |
+      "<font" "SIZE" "=" Integer "FACE" "=" String ">" block_text "</font>"
+
+dd_tag -> "<dd>" block_text "</dd>"
+

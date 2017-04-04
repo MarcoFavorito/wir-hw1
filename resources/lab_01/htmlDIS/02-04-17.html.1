@@ -1,0 +1,73 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+
+<html>
+<head>
+<title>Esame di Basi di Dati A.A. 2000/2001 - 2002-04-17</title>
+</head>
+
+<center>
+<h1>Esame di Basi di Dati<br>
+A.A. 2000/2001 - Appello del 17/04/2002</h1>
+</center>
+
+<h2>Problema 1</h2>
+
+<ul>
+  <li>Si progetti lo schema concettuale Entit&agrave;-Relazione di
+      un'applicazione relativa ad un insieme di pozzi petroliferi. I pozzi sono
+      di propriet&agrave; di compagnie petrolifere (ogni pozzo ha almeno un
+      proprietario). Di ogni compagnia petrolifera interessa il codice
+      identificativo, il numero di dipendenti, e la nazione in cui &egrave;
+      registrata fiscalmente.
+  <li>Ogni pozzo &egrave; identificato da un numero unico nell'ambito della
+      compagnia petrolifera che ne &egrave; proprietaria. Di ogni pozzo
+      interessa l'anno di installazione, e le raffinerie che estraggono greggio
+      dal pozzo, con l'informazione sulla quantit&agrave; (in numero di barili)
+      di greggio estratto all'anno da ognuna di tali raffinerie.  Di ogni
+      raffineria interessa il codice fiscale, ed il numero di dipendenti. Si
+      noti che da ogni pozzo estrae greggio un numero qualunque di raffinerie,
+      ed ogni raffineria estrae greggio da almeno un pozzo.  Esistono due e
+      solo due categorie di pozzi: i pozzi terrestri ed i pozzi marini.
+      <ul>
+        <li>Dei pozzi terrestri interessa la superficie di estensione del pozzo
+            ed il tasso di inquinamento.
+        <li>Dei pozzi marini interessa l'anno di ultimo controllo, e l'area
+            geografica in cui si trova.
+      </ol>
+  <li>Ogni area &egrave; identificata da un codice, ed &egrave; caratterizzata
+      da un grado di importanza ambientale (un numero intero).
+  <li>Infine, &egrave; necessario tenere traccia delle convenzioni tra
+      compagnie petrolifere e raffinerie. Una convenzione tra una compagnia
+      petrolifera C ed una raffineria R ha per oggetto un pozzo terrestre P di
+      propriet&agrave; della compagnia petrolifera C, e stabilisce che una
+      certa percentuale dei barili estratti dalla raffineria R sono soggetti a
+      sconto.
+</ul>
+
+<h2>Problema 2</h2>
+
+Si progetti lo schema logico dell'applicazione, indicando lo schema relazionale
+corrispondente completo di vincoli (con qualunque metodo, non necessariamente
+in SQL). L'indicazione di progetto &egrave; di evitare valori nulli nella base
+di dati.
+
+<h2>Problema 3</h2>
+
+Sulla base dello schema relazionale definito per il problema 2, esprimere in
+SQL le seguenti interrogazioni:
+<ol>
+  <li>Fornire il codice delle compagnie petrolifere registrate fiscalmente in
+      Egitto.
+  <li>Fornire il codice fiscale delle raffinerie che estraggono greggio da
+      almeno un pozzo situato in un'area con importanza ambientale maggiore di
+      20.
+  <li>Fornire il codice ed il numero di dipendenti delle compagnie petrolifere
+      che sono proprietarie  di almeno 5 pozzi situati in aree con importanza
+      ambientale maggiore di 20.
+  <li>Calcolare quanti numeri di barili estratti da una raffineria sono oggetto
+      di convenzioni.
+</ol>
+
+</body>
+</html>
+

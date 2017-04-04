@@ -1,0 +1,229 @@
+<!doctype html public "-//w3c//dtd html 4.0 transitional//en">
+<html>
+<head>
+   <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <meta name="Generator" content="Microsoft Word 98">
+   <meta name="GENERATOR" content="Mozilla/4.7 [en] (X11; I; SunOS 5.6 sun4u) [Netscape]">
+   <title>esercitazione15/3</title>
+</head>
+<body text="#000000" bgcolor="#FFFFFF" link="#0000EE" vlink="#551A8B" alink="#FF0000">
+
+<dir>
+<dir><b><font face="Times"><font color="#FF0000"><font size=+4>Nona esercitazione
+autoguidata</font></font></font></b></dir>
+</dir>
+
+<ol START=7>
+<h3>
+<b><u><font face="New York"><font color="#FF0000"><font size=+2>Altra simulazione
+di (parte di) una prova di esonero</font></font></font></u></b></h3>
+</ol>
+Per questa esercitazione si pu&ograve; continuare ad usare il dischetto
+usato nella precedente simulazione di esonero.
+<p>Attivare il TurboPascal. Scegliere il comando <b>Dos Shell</b> dal men&ugrave;
+File.
+<p>Posizionarsi sulla directory di rete E:\PROGRAM\FOND\TEMPERIN\AUTOGUID\NONA\.
+<p>Copiare sul dischetto, nella directory "radice" A:\, i file contenuti
+in questa directory.
+<p>Posizionarsi sul driver del dischetto (A:) e tornare al TurboPascal,
+inviando il comando EXIT.
+<p>Nella precedente esercitazione abbiamo usato i file ESO1.PAS e ESO2.PAS.
+Quindi qui usiamo ESO3 e ESO4 &Ouml;
+<p>I file ESO3.PAS e ESO4.PAS contengono due esercizi da risolvere. In
+particolare ciascun ESO?.PAS contiene un programma <b>quasi </b>completo
+che manipola liste di numeri complessi.
+<p>Il file LISTCOMP.PAS &egrave; un file di definizioni che contiene tipi,
+procedure e funzioni necessarie alla gestione di liste di numeri complessi.
+Il contenuto di questo file &egrave; elencato in fondo.
+<p>I file INPUT<b>3</b>.1, INPUT<b>3</b>.2, INPUT<b>3</b>.3, INPUT<b>3</b>.4
+contengono dati di prova da usare nei test sul programma. ESO3.PAS.
+<p>I file INPUT<b>4</b>.1, INPUT<b>4</b>.2, INPUT<b>4</b>.3, INPUT<b>4</b>.4
+contengono dati di prova da usare nei test sul programma. ESO<b>4</b>.PAS.
+<br>&nbsp;
+<br>&nbsp;
+<p>I due file ESO3.PAS e ESO4.PAS contengono il medesimo programma, dal
+quale sono state estratte due distinte procedure.
+<p>In ciascuno dei due file, il programma completo deve (dovrebbe) seguire
+le seguenti specifiche:
+<blockquote>
+<li>
+costruire e stampare due liste di numeri complessi, leggendo i numeri da
+un file text. (Notare che il nome del file &egrave; dato in input).</li>
+
+<li>
+Le liste costruite verranno puntate dai puntatori LISTA1 e LISTA2.</li>
+
+<li>
+I file di dati (es. INPUT3.1) contengono ciascuno <b>due</b> sequenze di
+numeri complessi: c'&egrave; un complesso (parte reale e poi parte immaginaria)
+su ogni riga. Ognuna delle due sequenze &egrave; interrotta da 0 0.</li>
+
+<li>
+<u>costruire una terza lista, puntata da LISTA3, contenente tutti i complessi
+presenti in LISTA1 e LISTA2, disposti in ordine crescente di valore assoluto
+(il primo in lista avr&agrave; il valore assoluto minimo).</u></li>
+
+<li>
+Memorizzare in un terzo file text (LISTE.RIS) la lista di complessi LISTA3.</li>
+
+<li>
+<u>Deallocare le liste (cio&egrave; deallocare i nodi delle tre liste create)
+prima di terminare l'esecuzione.</u></li>
+
+<br>&nbsp;</blockquote>
+Ci sono due parti sottolineate nella specifica appena detta.
+<ul>
+<li>
+In ESO3.PAS la prima parte sottolineata &egrave; a cura dello studente/studentessa
+mentre la seconda &egrave; compresa nel programma.</li>
+
+<li>
+In ESO4.PAS &egrave; la seconda parte ad essere compito dello studente/studentessa.</li>
+</ul>
+<b><i><font color="#3366FF"><font size=+2>RICHIESTE DELL'ESERCIZIO</font></font></i></b>
+<p>Bisogna completare ESO3.PAS e ESO4.PAS in modo che funzionino come atteso.
+<p>Per&ograve; attenzione, perch&eacute; l'interazione richiesta al solutore
+dell'esercizio &egrave; qui un po&iacute; diversa rispetto al capitolo
+precedente.
+<p>Qui non si usa l'inclusione del file soluzione nel programma principale.
+Invece si richiede di completare ESO3 e ESO4, scrivendo nelle aree appositamente
+indicate
+<blockquote>
+<li>
+la dichiarazione del sottoprogramma richiesto (ESERCIZIO3 e DEALLOCA)</li>
+
+<li>
+la chiamata del sottoprogramma necessaria a far funzionare tutto secondo
+le richieste.</li>
+</blockquote>
+In particolare le richieste sono:
+<br>&nbsp;
+<p><b><font color="#3366FF"><font size=+2>In ESO3.PAS</font></font></b>
+<ul>
+<li>
+Aggiungere (dove segnalato) una procedura ESERCIZIO3 che, ricevendo per
+parametri di input i puntatori a due liste di complessi, LIS1, LIS2 e per
+parametro di output il puntatore LIS3 di tipo TIPOLISTACOMPLESSI, costruisca
+una lista puntata da LIS3 e contenente i dati delle liste LIS1 e LIS2,
+in ordine crescente di valore assoluto.</li>
+
+<li>
+Aggiungere anche (dove segnalato) la necessaria chiamata della procedura
+scritta.</li>
+</ul>
+Per operare bene &egrave; sicuramente necessario consultare il file LISTCOMP.PAS
+, per capire come sono definite le strutture dati da usare e le procedure
+che si possono usare. Tali procedure sono "disponibili", gi&agrave; dichiarate
+nel programma e quindi utilizzabili mediante semplice chiamata, ove si
+ritenga utile.
+<p>Inoltre un'occhiata al programma complessivo &egrave; utile, per capire
+il suo funzionamento generale.
+<p>Notare per&ograve; che il programma scritto in <b>ESO3.PAS NON VA MODIFICATO
+AL DI FUORI DELLE AREE CHIARAMENTE INDICATE. Anche una semplice </b>writeln
+aggiunta o tolta renderebbe vano il confronto tra l'output del programma
+e quello atteso (del programma "giusto"), e renderebbe IRRIMEDIABILMENTE
+scorretto il programma nel processo di correzione automatica.
+<p>Quando la procedura &egrave; stata scritta in ESO3.PAS , si pu&ograve;
+provare il programma eseguendolo con uno o pi&ugrave; dei file di dati
+di prova disponibili (o con altri fatti da s&eacute;).
+<p><b>Suggerimento</b>: definire dentro alla procedura ESERCIZIO3 una procedura
+di inserimento ordinato di un complesso in una lista di complessi, che
+usi la function PRECEDE messa a disposizione in LISTCOMP.PAS. Poi costruire
+la LIS3 mediante inserimenti ordinati dei dati della LIS1 e della LIS2.
+<ul>&nbsp;</ul>
+<b><font color="#3366FF"><font size=+2>In ESO3.PAS</font></font></b>
+<ul>
+<li>
+Aggiungere in ESO4.PAS la procedura DEALLOCA che, ricevendo per parametro
+il puntatore LIS ad una lista di complessi, dealloca tutti i nodi della
+lista.</li>
+
+<li>
+Aggiungere inoltre, nei punti chiaramente indicati, le chiamate della procedura,
+necessarie per deallocare effettivamente le liste.</li>
+</ul>
+Valgono su ESO4.PAS le medesime considerazioni fatte per ESO3.PAS.
+<br>&nbsp;
+<br>&nbsp;
+<p><b><i><font color="#3366FF"><font size=+2>LISTCOMP.PAS</font></font></i></b>
+<br>Ecco alcuni dei tipi e delle procedure/funzioni definite nel file LISTCOMP.PAS
+<dir>&nbsp;
+<dir><b><font face="Courier">Type</font> </b>complex =<b> record</b>
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+parte_reale,
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+parte_imm: real;
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+<b>end;</b>
+<p><b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </b>TIPODATO = complex;
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; punt = ^nodo;
+<p><b>&nbsp;&nbsp;</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; nodo =<b> record</b>
+<br><b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</b>dato: TIPODATO;
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+next: punt;
+<br><b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+end;</b>
+<dir>
+<dir><b></b>&nbsp;</dir>
+</dir>
+<b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </b>TIPOLISTACOMPLESSI = punt;<b></b>
+<p><b>function</b> inputcomplex(var f:text): punt;
+<dir>
+<dir>
+<dir>{legge un complesso dal file testo f, crea il nodo corrispondente
+e ne fornisce il puntatore all'inizio.
+<p>Il formato atteso per il file e': un complesso (cio&egrave; due numeri
+reali) per riga; ultima riga: due zeri.}
+<br>&nbsp;</dir>
+</dir>
+</dir>
+<b>function </b>ValoreAssoluto(c: complex): real;
+<dir>
+<dir>
+<dir>{restituisce il valore assoluto di c}
+<br>&nbsp;</dir>
+</dir>
+</dir>
+<b>function </b>somma_c_punt (pc1, pc2: punt): punt;
+<dir>
+<dir>
+<dir>{dati i puntatori a due nodi complessi, produce un nodo con la somma
+e ne fornisce il puntatore}
+<br>&nbsp;</dir>
+</dir>
+</dir>
+<b>function </b>ZERO_C: punt;
+<dir>
+<dir>
+<dir>{produce un nodo "zero" e ne fornisce il puntatore}
+<br>&nbsp;</dir>
+</dir>
+</dir>
+<b>function </b>PRECEDE(c1, c2:COMPLEX): boolean;
+<dir>
+<dir>
+<dir>{true se val assoluto di c1 &lt; val assol c2}
+<br>&nbsp;</dir>
+</dir>
+</dir>
+<b>procedure </b>CaricaListaComplessi (var f:text;var inizio:TipoListaComplessi);
+<dir>
+<dir>{costruisce una lista di complessi, letti dal file f. La lista costruita
+&egrave; puntata da inizio. Formato del file f: un complesso per linea.
+Ultima linea: due zeri.}
+<br>&nbsp;</dir>
+</dir>
+<b>procedure</b> SalvaListaComplessi (var f:text; inizio: tipolistaComplessi);
+<dir>
+<dir>{scarica nel file testo f il contenuto della lista di complessi; i
+numeri complessivengono memorizzati, uno per linea (cio&egrave; su ogni
+linea del file ci sar&agrave; la parte reale seguita dalla parte immaginaria).
+Sull'ultima linea vengono messi due zeri.}</dir>
+</dir>
+</dir>
+</dir>
+
+</body>
+</html>

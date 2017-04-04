@@ -1,0 +1,49 @@
+
+<HTML>
+
+<HEAD>
+<META HTTP-EQUIV="Context-Type" CONTEXT="text/html;charset=PREDEFINITA (AUTOMATICA)">
+<meta name="GENERATOR" content="Microsoft Internet Assistant for PowerPoint 97">
+ <TITLE>Rewriting INTERSECT Queries Using IN</TITLE> 
+</HEAD>
+
+<BODY     >
+
+ <H1>Rewriting INTERSECT Queries Using IN</H1> 
+ <P><UL>
+<LI><H2>Similarly, EXCEPT queries re-written using NOT IN.  
+</H2>
+</UL><UL>
+<LI><H2>To find names (not sid’s) of Sailors who’ve reserved both red and green boats, just replace S.sid by S.sname in SELECT clause.  (What about INTERSECT query?)</H2>
+</UL></P>
+<P><UL>
+Find sid’s of sailors who’ve reserved both a red and a green boat:<BR></UL></P>
+<P><UL>
+SELECT  S.sid
+<BR></UL><UL>
+FROM  Sailors S, Boats B, Reserves R
+</UL><UL>
+WHERE  S.sid=R.sid AND R.bid=B.bid AND B.color=‘red’
+</UL><UL>
+              AND S.sid IN  (SELECT  S2.sid
+</UL><UL>
+                                       FROM  Sailors S2, Boats B2, Reserves R2
+</UL><UL>
+                                       WHERE  S2.sid=R2.sid AND R2.bid=B2.bid
+</UL><UL>
+                                                     AND  B2.color=‘green’)</UL></P>
+<P></P> 
+<P>
+<TABLE>
+  <TD HEIGHT=100 WIDTH=100> <A HREF="tsld013.htm">Diapositiva precedente</A> </TD>
+  <TD HEIGHT=100 WIDTH=100> <A HREF="tsld015.htm">Diapositiva successiva</A> </TD>
+  <TD HEIGHT=100 WIDTH=150> <A HREF="tsld001.htm">Torna alla prima diaposiva</A> </TD>
+  <TD HEIGHT=100 WIDTH=150> <A HREF="sld014.htm">Visualizza versione grafica</A> </TD>
+</TABLE>
+<BR>
+</P>
+
+
+
+</Body>
+</HTML>

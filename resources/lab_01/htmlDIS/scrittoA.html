@@ -1,0 +1,102 @@
+<html>
+<head>
+<title>Scritto 31 Marzo 2003 - Compito A</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+</head>
+
+<body bgcolor="#FFFFFF" text="#000000">
+<p align="center"><font size="+1"><i>Facolt&agrave; di Ingegneria<br>
+  Corso di Laurea in Ingegneria Gestionale<br>
+  Fondamenti di Informatica<br>
+  A.A. 2002-2003</i></font></p>
+<p align="center"><font size="+1">Appello del 31 Marzo 2003 - Compito A</font></p>
+<p align="center"><font size="+1">Durata: 1 ora e 45 minuti</font></p>
+<hr>
+<p><b>Parte I</b></p>
+<ol>
+  <li>Scrivere un metodo statico <tt>contaOccorrenzeFoglie</tt> che, dato un intero 
+    <tt>x</tt> e un albero binario i cui nodi contengono oggetti <tt>Integer</tt>, 
+    restituisce il numero di foglie che contengono il valore <tt>x</tt>.</li>
+
+  <li>Scrivere un metodo statico
+<tt>verificaPariDispari</tt> che, data una
+<tt>LinkedList</tt> di <tt>Integer</tt>,
+restituisce <tt>true</tt> se ci sono lo stesso numero di
+elementi pari e dispari, e <tt>false</tt> altrimenti.</li>
+
+</ol>
+<hr>
+<p><b>Parte II</b></p>
+<p><i>Domanda 1</i></p>
+<blockquote>
+  <p>Dire cosa succede quando viene eseguito il seguente programma:</p>
+  <pre>public class Mistero {
+    public static int mistero(int x){
+        if (x==0) return x;
+        else return mistero(x-2)+1;
+    }
+    public static void main(String[] args){
+        System.out.println(mistero(4));
+        System.out.println(mistero(5));
+    }
+}</pre>
+  <p>Dire per quali valori di <tt>x</tt> il metodo <tt>mistero</tt> termina e 
+    cosa calcola. Motivare le risposte (N.B. risposte non motivate saranno considerate 
+    nulle).</p>
+</blockquote>
+<p><i>Domanda 2</i></p>
+<blockquote>
+  <p>Illustrare l'algoritmo di ordinamento a bolle (bubblesort) usando come esempio 
+    il seguente array di interi:</p>
+
+<table width="100" border="1" cellspacing="0" cellpadding="0">
+  <tr> 
+    <td> 
+      <div align="center">9</div>
+    </td>
+    <td> 
+      <div align="center">2</div>
+    </td>
+    <td> 
+      <div align="center">7</div>
+    </td>
+    <td> 
+      <div align="center">4</div>
+    </td>
+    <td> 
+      <div align="center">5</div>
+    </td>
+  </tr>
+</table>
+
+<p> Dare il costo in funzione del numero di elementi n
+dell'array nel caso peggiore usando la notazione asintotica.
+Motivare informalmente le risposte (N.B. risposte non
+motivate saranno considerate nulle).</p>
+
+</blockquote>
+<p><i>Domanda 3</i></p>
+<blockquote> 
+  <p>Rispondere a <b>una sola</b> delle due domande seguenti, a scelta:</p>
+</blockquote>
+<ol>
+  <li>discutere il meccanismo delle eccezioni in Java, usando degli esempi se 
+    necessario. In particolare, dire: 
+    <ul>
+      <li>a cosa servono</li>
+      <li>come si generano</li>
+      <li>come si catturano e cosa succede se non vengono catturate</li>
+      <li>la differenza tra eccezioni verificate e non verificate</li>
+    </ul>
+  </li>
+
+  <li>Scrivere un applet con un solo pulsante <tt>OK</tt>,
+che esegue l'istruzione
+<tt>System.out.println("Premuto")</tt> ogni volta che il
+pulsante viene premuto.</li>
+
+</ol>
+<p>&nbsp;</p>
+</body>
+</html>
+

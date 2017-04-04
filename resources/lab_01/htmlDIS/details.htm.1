@@ -1,0 +1,559 @@
+<!doctype html public "-//w3c//dtd html 4.0 transitional//en">
+
+<html>
+
+<head>
+
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+
+<meta name="GENERATOR" content="Mozilla/4.76 [en] (X11; U; Linux 2.2.18 i686) [Netscape]">
+
+<title>IRL : Architectural Overview</title>
+
+   
+
+<style type="text/css">
+
+<!--
+
+.testo {font-family: Arial; font-size: 10pt}
+
+.code  {font-family: Monospace; font-size: 10pt}
+
+h1     {font-family: Arial; font-size: 18pt}
+
+h2     {font-family: Arial; font-size: 14pt}
+
+h3     {font-family: Arial; font-size: 11pt}
+
+.irl   {color: #0000CC; text-decoration: none}
+
+a      {color: #0000CC}
+
+-->
+
+</style>
+
+</head>
+
+
+
+<body bgcolor="#FFFFFF">
+
+<table BORDER=0 WIDTH="100%">
+
+<tr BGCOLOR="#CC3333">
+
+<td WIDTH="22%" HEIGHT="73" BGCOLOR="#FFFFFF">
+
+<center>
+        <img SRC="Immagini/headtitle.gif" NOSAVE height=100 width=300> 
+      </center>
+
+</td>
+
+<td WIDTH="78%" HEIGHT="73">
+
+<center>
+        <font color="#FFFFFF" size="+4" face="Arial, Helvetica, sans-serif">Architecture</font> 
+      </center>
+
+</td>
+
+</tr>
+
+</table>
+
+
+
+<table BORDER=0 CELLSPACING=5 WIDTH="100%" >
+  <tr> 
+    <td ALIGN=CENTER VALIGN=TOP WIDTH="120" BGCOLOR="#93B6FF"> 
+      <center>
+        <!-- #BeginLibraryItem "/Library/navbar.lbi" -->
+<hr>
+<table cols=1 border=1 align="center" width="100">
+  <tbody> 
+  <tr bordercolor=#000099 bgcolor=#CC3333> 
+    <td align=top width=132> 
+      <div style="MARGIN-LEFT: 3pt" align="center"><a 
+                  href="index.htm"><font 
+                  face=Arial color=#4e4bf3 size=2><font 
+                  color=#000080><u><font color="#FFFFFF" size="3">Home</font></u></font></font></a></div>
+    </td>
+  </tr>
+  <tr bordercolor=#000099 bgcolor=#CC3333> 
+    <td align=top width=132> 
+      <div align="center"><a 
+                  href="features.htm"><font 
+                  face=Arial color=#4e4bf3 size=2><font 
+                  color=#000080><u><font size="3" color="#FFFFFF">Features</font></u></font></font></a></div>
+    </td>
+  </tr>
+  <tr bordercolor=#000099 bgcolor=#CC3333> 
+    <td align=top width=132> 
+      <div align="center"><a 
+                  href="details.htm"><font 
+                  face=Arial color=#4e4bf3 size=2><font 
+                  color=#000080><u><font size="3" color="#FFFFFF">Architecture</font></u></font></font></a></div>
+    </td>
+  </tr>
+  <tr bordercolor=#000099 bgcolor=#CC3333> 
+    <td align=top width=132> 
+      <div align="center"><a 
+                  href="people.htm"><font 
+                  face=Arial color=#4e4bf3 size=2><font 
+                  color=#000080><u><font color="#FFFFFF" size="3">People</font></u></font></font></a></div>
+    </td>
+  </tr>
+  <tr bordercolor=#000099 bgcolor=#CC3333> 
+    <td align=top width=132> 
+      <div align="center"><a 
+                  href="tools.htm"><font 
+                  face=Arial color=#4e4bf3 size=2><font 
+                  color=#000080><u><font size="3" color="#FFFFFF">Download</font></u></font></font></a></div>
+    </td>
+  </tr>
+  <tr bordercolor=#000099 bgcolor=#CC3333> 
+    <td align=top width=132> 
+      <div align="center"><a 
+                  href="pi.htm"><font 
+                  face=Arial color=#4e4bf3 size=2><font 
+                  color=#000080><u><font color="#FFFFFF" size="3">Interceptors</font></u></font></font></a></div>
+    </td>
+  </tr>
+  <tr bordercolor=#000099 bgcolor=#CC3333> 
+    <td align=top width=132> 
+      <div align="center"><a 
+                  href="publications.htm"><font 
+                  face=Arial color=#4e4bf3 size=2><font 
+                  color=#000080><u><font color="#FFFFFF" size="3">Papers</font></u></font></font></a></div>
+    </td>
+  </tr>
+  <tr bordercolor=#000099 bgcolor=#CC3333> 
+    <td align=top width=132> 
+      <div align="center"><a 
+                  href="links.htm"><font 
+                  face=Arial color=#4e4bf3 size=2><font 
+                  color=#000080><u><font color="#FFFFFF" size="3">Links</font></u></font></font></a></div>
+    </td>
+  </tr>
+  <tr bordercolor=#000099 bgcolor=#CC3333>
+    <td align=top width=130 height="30"><a href="http://www.dis.uniroma1.it/%7Emidlab"><img src="Library/top_midlab.gif" width="100%" height="100%" border="0" align="absmiddle"></a></td>
+  </tr>
+  </tbody> 
+</table>
+<hr>
+<!-- #EndLibraryItem --> 
+      </center>
+    </td>
+    <td WIDTH="844" BGCOLOR="#CCCCCC" class="testo" valign="top"> 
+      <blockquote> 
+        <h3><font color="#FF6633"><a name="TOP"></a><font color="#000066"><a href="#overview">Overview</a></font></font></h3>
+        <blockquote> 
+          <h3><font color="#000066"> <a href="#faulttolerance">IRL Infrastructure 
+            Fault-Tolerance</a></font></h3>
+          <blockquote> 
+            <h3><font color="#000066"><a href="#csandogh">Client-Server Interactions 
+              in IRL and OGH behaviour</a></font></h3>
+          </blockquote>
+        </blockquote>
+      </blockquote>
+      <hr>
+      <h2><font color="#CC3333"><a name="overview"></a>Overview</font></h2>
+      <p><font face="Arial, Helvetica, sans-serif" size="2">In order to implement 
+        object replication and to preserve infrastructure portability and interoperability, 
+        IRL core is designed as a functional level logically set <b>above</b> 
+        the ORB:</font></p>
+      <p align="center"><img src="Immagini/irlarch.jpg" width="469" height="185"> 
+      </p>
+      <p class="testo">In order not to introduce single points of failure, each 
+        IRL component is replicated and fault-tolerant. IRL components are classified 
+        into two main classes, i.e. <i>domain</i> and <i>host</i> specific components. 
+        In the picture above, only domain specific components (i.e. the main IRL 
+        components) have been shown. </p>
+      <blockquote> 
+        <p><font face="Arial, Helvetica, sans-serif" size="2">IRL <b>ReplicationManager</b> 
+          (<b>RM</b>) represents the management interface of the IRL infrastructure. 
+          It exports the ReplicationManager FT-CORBA interface and then allows 
+          object group creation/disposal, and membership modification. </font></p>
+        <p><font face="Arial, Helvetica, sans-serif" size="2">IRL <b>FaultNotifier</b> 
+          (<b>FN</b>) implements a publish and subscribe engine to provide subscribers 
+          with fault notifications. It essentially receives fault reports, detects 
+          host failures and propagates object and host fault reports to every 
+          object that subscribed for a report about the failure event. </font></p>
+        <p><font face="Arial, Helvetica, sans-serif" size="2">IRL <b>ObjectGroupHandler</b> 
+          (<b>OGH</b>) component, is in charge of maintaining consistency among 
+          the state of the members of a stateful object group. In particular, 
+          an OGH component is associated to each stateful object group. It receives 
+          client requests and transforms them in a set of requests addressed to 
+          a object group members. OGH knows the composition of its group and can 
+          therefore create the real request to all server object belonging to 
+          its group. This entity is composed by a set of objects (<i>replicated 
+          in order to not introduce a single point of failure</i>) distributed 
+          on the hosts of a fault tolerance domain. Shortly speaking, to maintain 
+          consistency among the state of the replicas belonging to an object group, 
+          IRL interposes a mid-tier between clients and servers. This is necessary 
+          only for stateful objects.</font></p>
+      </blockquote>
+      <p class="testo"><font face="Arial, Helvetica, sans-serif" size="2">As domain 
+        specific components implement functionality that have to survive to host 
+        crashes, they are replicated by deploying their replicas on different 
+        hosts. In current IRL prototype implementation, we adopt a passive replication 
+        technique to replicate domain specific components. </font></p>
+      <p class="testo"><font face="Arial, Helvetica, sans-serif" size="2">Host 
+        specific components implement functionality which have not to survive 
+        to their host crash. They are:</font></p>
+      <blockquote> 
+        <p><font face="Arial, Helvetica, sans-serif" size="2">IRL <b>LocalFailureDetector</b> 
+          (<b>LFD</b>). LFD is in charge of monitoring for failures the object 
+          residing on its host. An object to be monitored exports a simple method, 
+          which LFD periodically invokes to discover object faults. Moreover, 
+          LFD periodically sends an heartbeat to FN, in order to let FN perform 
+          host-level failure detection.</font></p>
+        <p><font face="Arial, Helvetica, sans-serif" size="2">IRL <b>Factory</b>. 
+          This is the only component that should be installed on every host of 
+          a fault tolerance domain in order to let IRL Infrastructure perform 
+          startup and be able to create and manage new object groups. In particular, 
+          IRL Factory creates new copies of the aforementioned domain and host 
+          specific components.</font></p>
+      </blockquote>
+      <table border="0" width="100%">
+        <tr> 
+          <td align="right" background="Immagini/separator.gif"><a href="#TOP"><img src="Immagini/back.gif" width="61" height="25" border="0"></a></td>
+        </tr>
+      </table>
+      <p class="testo">&nbsp;</p>
+      <h2><font color="#CC3333"><a name="faulttolerance"></a>IRL Infrastructure 
+        Fault-Tolerance</font></h2>
+      <p><font face="Arial, Helvetica, sans-serif" size="2">In order to avoid 
+        single points of failure, each IRL component is replicated. However, different 
+        components need different replication techniques for enhancing their availability. 
+        The choice of the replication technique for each IRL component is based 
+        on the state it maintains (if any) and on its deployment and fault-tolerance 
+        requirements. The following table summarizes the replication techniques 
+        applied in the current IRL prototype:</font></p>
+      <table width="74%" border="1" cellspacing="1" align="center">
+        <tr bgcolor="#CC3333"> 
+          <td width="21%"> 
+            <div align="center"> 
+              <h3><font color="#FFFFFF">Type</font></h3>
+            </div>
+          </td>
+          <td width="31%"> 
+            <div align="center"> 
+              <h3><font color="#FFFFFF">Component</font></h3>
+            </div>
+          </td>
+          <td width="13%"> 
+            <div align="center"> 
+              <h3><font color="#FFFFFF">Stateful</font></h3>
+            </div>
+          </td>
+          <td width="35%"> 
+            <div align="center"> 
+              <h3><font color="#FFFFFF">Technique</font></h3>
+            </div>
+          </td>
+        </tr>
+        <tr bgcolor="#9999FF"> 
+          <td rowspan="2" width="21%"><font face="Arial, Helvetica, sans-serif">Host 
+            Specific</font></td>
+          <td width="31%"><font face="Arial, Helvetica, sans-serif">Local Failure 
+            Detector</font></td>
+          <td width="13%"> 
+            <div align="center"><font face="Arial, Helvetica, sans-serif">Yes</font></div>
+          </td>
+          <td width="35%"> 
+            <div align="center"><font face="Arial, Helvetica, sans-serif">Cold 
+              Passive</font></div>
+          </td>
+        </tr>
+        <tr> 
+          <td bgcolor="#9999FF" width="31%"><font face="Arial, Helvetica, sans-serif">IRL 
+            Factory</font></td>
+          <td bgcolor="#9999FF" width="13%"> 
+            <div align="center"><font face="Arial, Helvetica, sans-serif">No</font></div>
+          </td>
+          <td bgcolor="#9999FF" width="35%"> 
+            <div align="center"><font face="Arial, Helvetica, sans-serif">Stateless</font></div>
+          </td>
+        </tr>
+        <tr bgcolor="#CCCC33"> 
+          <td rowspan="3" width="21%"><font face="Arial, Helvetica, sans-serif">Domain 
+            Specific</font></td>
+          <td width="31%"><font face="Arial, Helvetica, sans-serif">ReplicationManager</font></td>
+          <td width="13%"> 
+            <div align="center"><font face="Arial, Helvetica, sans-serif">Yes</font></div>
+          </td>
+          <td width="35%"> 
+            <div align="center"><font face="Arial, Helvetica, sans-serif">Hot 
+              Passive</font></div>
+          </td>
+        </tr>
+        <tr> 
+          <td bgcolor="#CCCC33" width="31%"><font face="Arial, Helvetica, sans-serif">FaultNotifier</font></td>
+          <td bgcolor="#CCCC33" width="13%"> 
+            <div align="center"><font face="Arial, Helvetica, sans-serif">Yes</font></div>
+          </td>
+          <td bgcolor="#CCCC33" width="35%"> 
+            <div align="center"><font face="Arial, Helvetica, sans-serif">Active</font></div>
+          </td>
+        </tr>
+        <tr> 
+          <td bgcolor="#CCCC33" width="31%"><font face="Arial, Helvetica, sans-serif">ObjectGroupHandler</font></td>
+          <td bgcolor="#CCCC33" width="13%"> 
+            <div align="center"><font face="Arial, Helvetica, sans-serif">Yes</font></div>
+          </td>
+          <td bgcolor="#CCCC33" width="35%"> 
+            <div align="center"><font face="Arial, Helvetica, sans-serif">Hot 
+              Passive<sup>(1)</sup></font></div>
+          </td>
+        </tr>
+      </table>
+      <p align="left"><sup><font face="Arial, Helvetica, sans-serif" size="2">(1)</font></sup><font face="Arial, Helvetica, sans-serif" size="2"> 
+        The hot-passive technique adopted to replicate OGH is quite different 
+        from the technique implemented to replicate FN and RM (see <font color="#CC3333"><a href="#csandogh">Client-Server 
+        Interactions in IRL and OGH behaviour</a></font>).</font></p>
+      <h3 align="left"><font face="Arial, Helvetica, sans-serif" size="2">IRL 
+        Factory</font></h3>
+      <p align="left"><font face="Arial, Helvetica, sans-serif" size="2"><br>
+        As IRL Factory is stateless, we adopted a stateless replication configuration: 
+        on each host run two separate processes, both implementing IRL Factory. 
+        Failure detection is based on bi-directional <i>I'm alive</i> local messages 
+        exchange. When one replica detects the crash of the other, it spawns a 
+        new IRL Factory replica, forwards an IRL Factory failure notification 
+        to RM, along with the new IRL Factory reference. </font></p>
+      <h3 align="left"><font face="Arial, Helvetica, sans-serif" size="2">Local 
+        Failure Detector</font></h3>
+      <p align="left" class="testo"><font face="Arial, Helvetica, sans-serif" size="2">LFD 
+        maintains a state composed by the list of objects to monitor and their 
+        monitoring properties. Hence, we adopt a cold passive replication style 
+        for LFD: each time LFD receives reference and properties of a new monitorable 
+        object, it stores them on a local log before acknowledging the client. 
+        If LFD crashes, IRL Factory creates a new instance that sets its initial 
+        state using the log and returns to IRL Factory its reference, which is 
+        then forwarded to RM. LFD crash events are monitored by IRL Factory. For 
+        this purpose, each IRL Factory replica registers itself within LFD to 
+        be monitored. Each time LFD invokes an IRL Factory replica, the latter 
+        sets a timeout in order to discover LFD crashes. Furthermore, LFD periodically 
+        sends heartbeats to FN replicas that implement push-style failure detection. 
+        When LFD crashes, FN stops receiving its heartbeats and detects an host 
+        failure on the basis of a local timeout. </font></p>
+      <p align="left" class="testo"><font face="Arial, Helvetica, sans-serif" size="2">The 
+        following picture shows host specific components replication, the message 
+        they exchange and their relationships.</font></p>
+      <p align="center"><img src="Immagini/hsc.gif" width="579" height="260"></p>
+      <p align="left" class="testo">&nbsp;</p>
+      <p align="left" class="testo">Domain specific components adopts a hot passive 
+        replication technique. However, RM is replicated by a wrapper CORBA object 
+        that transparently replicates a singleton server object in a passive way, 
+        while OGH benefits of the faul notification service implemented by the 
+        FaultNotifier to implement failure detection. FN is currently non-replicated. 
+        In the following, we shortly describe the pattern implemented to replicate 
+        FN and RM. Details on OGH replication are given in &quot;<font color="#CC3333"><a href="#csandogh">Client-Server 
+        Interactions in IRL and OGH behaviour</a></font>&quot;.</p>
+      <h3 align="left" class="testo">IRL RM and IRL FN</h3>
+      <p align="left" class="testo">IRL replication manager is nondeterministic. 
+        As an example, at object group creation and modification time, IRL RM 
+        performs outgoing invocations to local factories which nondeterministically 
+        return their results. Hence, we implemented a fault tolerant version of 
+        RM exploiting an hot passive replication technique. Such replication technique 
+        is based on a wrapper implementing the facade pattern. The wrapper encapsulates 
+        a generic nondeterministic component. A component implements both Checkpointable 
+        and Updateable interfaces, respectively exporting the get_state(), set\_state() 
+        and get_update() and set_update() methods, which allow for state and updates 
+        writings and readings. The component is wrapped by the Wrapper CORBA object, 
+        which dynamically reads the component interface from the CORBA Interface 
+        Repository at wrapper creation time and accepts incoming client requests 
+        in spite of the actual component implementation. Then, the wrapped component 
+        is run on different hosts at FT-infrastructure initialization time. </p>
+      <p align="left" class="testo">The following picture illustrates the main 
+        steps carried out to serve a client request addressed to the wrapped, 
+        passively replicated, object.</p>
+      <p align="center" class="testo"><img src="Immagini/dsc.gif" width="472" height="260"></p>
+      <p align="left" class="testo">&nbsp;</p>
+      <p align="left" class="testo"> The steps are: </p>
+      <ol>
+        <li class="testo">Upon receiving a client request <i>req</i>, a <a href="pi.htm">CORBA 
+          Portable Server Interceptor</a> implementing the transparent request 
+          redirection mechanism, checks if the wrapper replica is the primary. 
+          If it is not the case, it throws a LOCATION_FORWARD exception to the 
+          client ORB that will reinvoke the primary replica. Otherwise it let 
+          the request flow into the wrapper, which parses the request exploiting 
+          the Dynamic Skeleton Interface and then </li>
+        <li class="testo">checks if the request has already been already executed 
+          by the component by accessing an internal request logging mechanism. 
+          In the affirmative, it immediately returns the result to the client, 
+          otherwise </li>
+        <li class="testo">The wrapper forwards the request to the component; </li>
+        <li class="testo">the component performs the operation contained into 
+          the request. Then </li>
+        <li class="testo">the primary wrapper invokes the get_update() method 
+          of the replicated object. If the update is not empty (i.e. the request 
+          invocation modified the object internal state), the wrapper atomically 
+          updates the backup(s) by sending an update message composed by a triple 
+          &lt;req,res,upd&gt;. </li>
+        <li class="testo">upon receiving the update, the backup(s) (i) updates 
+          its replica by invoking the set_update(upd) method and (ii) inserts 
+          the &lt;req,res&gt; pair into its log. Then </li>
+        <li class="testo">when the backup(s) has acknowledged the update, </li>
+        <li class="testo">the primary wrapper inserts the &lt;req,res&gt; into 
+          its local log. Finally, </li>
+        <li class="testo">the request result is returned to the client </li>
+      </ol>
+      <p class="testo">In the IRL current prototype, we exploit the <a href="http://www.cs.unibo.it/projects/jgroup/">Jgroup</a> 
+        group membership service and view-synchronous multicast primitive to implement 
+        the ReplicationEngine wrapper sub-component. When a view change event 
+        occurs (e.g. because of a primary crash), the first action undertaken 
+        by the new primary (i.e., the first member of the new view) is to ask 
+        each member for its reference (IOR) to build a new object group refernce 
+        (IOGR) and to multicast the new IOGR to each backup wrapper. In this way 
+        wrapper replicas update the state of their Portable Server Interceptor. 
+        The Checkpointable interface is exploited by the wrapper to perform full 
+        state transfer, e.g. when a new wrapped component joins the group. Note 
+        that the introduced technique is suitable for being applied to any nondeterministic 
+        CORBA object. Moreover, it only requires a CORBA object to implement Checkpointable 
+        and Updateable interfaces in order to be passively replicated. Exploiting 
+        this technique, we are able to overcome a FT-CORBA limitation, i.e. the 
+        limitation of replicating only deterministic CORBA objects. However, in 
+        its current implementation, such replication technique has been applied 
+        only to IRL RM.</p>
+      <p class="testo">In the current IRL prototype, FN is non replicated, i.e. 
+        non fault-tolerant. We are currently working on an actively replicated 
+        IRL Fault Notifier as well as to implement RM as a stateless gateway wrapping 
+        a COTS fault-tolerant DBMS. </p>
+      <table border="0" width="100%">
+        <tr> 
+          <td align="right" background="Immagini/separator.gif"><a href="#TOP"><img src="Immagini/back.gif" width="61" height="25" border="0"></a></td>
+        </tr>
+      </table>
+      <h2>&nbsp;</h2>
+      <h2><font color="#CC3333"><a name="csandogh"></a>Client-Server Interactions 
+        in IRL and OGH behaviour</font></h2>
+      <p>The mid-tier passive replication protocol implemented by OGH is based 
+        on perfect failure detection, i.e. FN does not make mistakes when detecting 
+        host crashes. This assumption allows to simplify the mid-tier replication 
+        protocol implemented by OGH. </p>
+      <h3>Deployment and Initialization</h3>
+      <p><b>Client-tier</b>. In order to let client applications benefit of transparent 
+        client reinvocation even on non FT-CORBA compliant client ORBs, client 
+        applications are augmented with the IRL Object Request Gateway (ORGW) 
+        component. In short, ORGW is a CORBA Client Request Portable Interceptor 
+        that (i) intercept requests addressed to object groups (i.e. using an 
+        IOGR), (ii) uniquely identifies them as the FT-CORBA standard prescribes 
+        and (iii) iteratively tries to send the request to a correct member, until 
+        either it receives a reply (that it returns to the client application) 
+        or it has tried all of the IOGR profiles without receiving a reply.</p>
+      <p><b>End-tier</b>. Each stateful object group member is transparently wrapped 
+        by the IRL Incoming Request Gateway Component (IRGW) that implements a 
+        basic FT-CORBA logging mechanism. In short, IRGW adopts the same interface 
+        (by exploiting the Dynamic Skeleton Interface and the Interface Repository) 
+        and receives all the requests of the member it wraps. Upon receiving a 
+        request, IRGW first checks if the request is a reinvocation (exploiting 
+        the FT-CORBA compliant unique request identifier). If it is the case, 
+        IRGW returns the result that it has previously logged. Otherwise it (i) 
+        forwards the request to the member, (ii) waits until a result is produced, 
+        (iii) logs the request/reply pair and (iv) it finally returns the result 
+        to the client. To perform garbage collection of outdated request/reply 
+        pairs, IRGW exploits the FT-CORBA request expiration time contained in 
+        the unique request identifier. In order to let OGH perform state synchronization, 
+        we assume object group members to implement at least the Checkpointable 
+        and optionally the Updateable FT-CORBA interfaces. </p>
+      <p><b>Mid-Tier</b>. When IRL RM creates a new stateful object group, it 
+        starts a set of OGH replica (each running on a distinct host), other than 
+        object group members. Each OGH replica reads the interface of its object 
+        group member type from the CORBA Interface Repository in order to parse 
+        incoming requests on behalf of its object group members by exploiting 
+        a Dynamic Skeleton Interface. Moreover, each replica receives from IRL 
+        RM two initial views, i.e. a view containing the identifiers of the OGH 
+        replicas (VOGH) and the view containing the identifiers of the object 
+        group members Vmembers. Views are dynamically updated by OGH upon receiving 
+        object and host fault reports from IRL FN, to which each OGH subscribes 
+        as consumer for the objects contained in VOGH+Vmembers. </p>
+      <h3>The Protocol</h3>
+      <table width="100%" border="0" cellspacing="1">
+        <tr> 
+          <td width="58%" height="557">
+            <p><img src="Immagini/scen1.gif" width="666" height="444"></p>
+            <p align="center">Scenario 1</p>
+          </td>
+          <td width="42%" height="557" class="testo">The IRL three-tier prototype 
+            protocol is illustrated in the following figures. In Scenario 1 client 
+            C1 issues request req1 that reaches the primary OGH1. Upon receiving 
+            the request, OGH1 piggybacks onto req1 a local sequence number (increased 
+            for each served request) and forwards the request to every member 
+            R of Vmembers. Each IRGW wrapping a member, upon receiving a request 
+            stores the sequence number and then forwards the request to its replica. 
+            Then it waits for the result, logs the request and the result and 
+            returns the reply to OGH1. Once OGH1 has received the results from 
+            all R in Vmembers, it returns the reply to the client. Note that if 
+            OGH1 receives another request req2 before completing a request processing 
+            (e.g. req1), then req_2 is queued until rep1 is sent to C1. This preserves 
+            request ordering at object group members in absence of primary failures. 
+            When a member crashes (e.g. R3), FN forwards a fault report to every 
+            OGH in VOGH, allowing the primary OGH not to undefinitevely block 
+            by waiting a reply from a crashed member.</td>
+        </tr>
+        <tr> 
+          <td width="58%" height="522" class="testo">Scenario 2 illustrates how 
+            a primary OGH crash is handled. Backup OGH crashes are simply notified 
+            by FN to every OGH that updates VOGH. When OGH1 crashes, FN notifies 
+            each backup of the fault. Hence, each OGH updates its local copy of 
+            VOGH and decides if it is the new primary. In Scenario 2, OGH2 is 
+            the new primary as its id appears as the first element of VOGH, whose 
+            elements are ordered basing on replica identifiers. As a primary can 
+            fail during the processing of a request without updating all the members 
+            of Vmember (e.g. OGH1), OGH2 performs a recovery protocol before starting 
+            to serve client requests. Recovery is needed to ensure update atomicity 
+            on the members of Vmembers after primary failures. To achieve this, 
+            OGH2 first determines if all the members are in the same state by 
+            invoking the IRGW get_last() method. Actually, this invocations would 
+            be not necessary if the FT-CORBA get_update (get_state) method would 
+            return an update (state) sequence number along with their current 
+            result. The get_last method takes as input parameter the new primary 
+            identifier (the new primary identifier allows IRGW to filter out outdated 
+            request coming from crashed primaries) and returns the sequence number 
+            of the last request received by IRGW. If all the members return the 
+            same sequence number, then they are in a consistent state and OGH2 
+            starts serving client requests. Conversely, i.e. if some member executed 
+            an update not executed by some other members, OGH2 gets a state update 
+            from one of the most updated members and set the update to the least 
+            updated ones. Incremental updates are executed exploiting the FT-CORBA 
+            Updateable interface methods (if implemented). Otherwise the Checkpointable 
+            interface methods are exploited, performing full state transfers. 
+            Then OGH2 starts serving client requests as the new primary, having 
+            ensured update atomicity on object group members. As clients implement 
+            request retransmission (e.g. by ORGW), C1 reinvokes req1 onto OGH2. 
+            In this situation, members are already updated and then the IRGW wrapping 
+            each member returns the logged result without repeating the member 
+            invocation and preserving the CORBA at-most-once request invocation 
+            semantic.</td>
+          <td width="42%" height="522">
+            <p><img src="Immagini/scen2.gif" width="632" height="428"></p>
+            <p align="center">Scenario 2</p>
+          </td>
+        </tr>
+      </table>
+      <p>&nbsp;</p>
+      <p>&nbsp;</p>
+      <table border="0" width="100%">
+        <tr> 
+          <td align="right" background="Immagini/separator.gif"><a href="#TOP"><img src="Immagini/back.gif" width="61" height="25" border="0"></a></td>
+        </tr>
+      </table>
+      <p class="testo">&nbsp;</p>
+      </td>
+  </tr>
+  <tr></tr>
+  <tr> </tr>
+</table>
+
+
+
+<br>&nbsp;
+
+</body>
+
+</html>
+

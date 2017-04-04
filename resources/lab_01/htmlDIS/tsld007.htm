@@ -1,0 +1,66 @@
+
+<HTML>
+
+<HEAD>
+<META HTTP-EQUIV="Context-Type" CONTEXT="text/html;charset=PREDEFINITA (AUTOMATICA)">
+<meta name="GENERATOR" content="Microsoft Internet Assistant for PowerPoint 97">
+ <TITLE>Translating ER Diagrams with Key Constraints</TITLE> 
+</HEAD>
+
+<BODY     >
+
+ <H1>Translating ER Diagrams with Key Constraints</H1> 
+ <P><UL>
+<LI><H2>Map relationship to a table:
+</H2>
+<UL>
+<LI>Note that did is the key now!
+<LI>Separate tables for Employees and Departments.
+</UL></UL><UL>
+<LI><H2>Since each department has a unique manager, we could instead combine Manages and Departments.</H2>
+</UL></P>
+<P><UL>
+CREATE TABLE  Manages(
+<BR></UL><UL>
+   ssn  CHAR(11),
+</UL><UL>
+   did  INTEGER,
+</UL><UL>
+   since  DATE,
+</UL><UL>
+   PRIMARY KEY  (did),
+</UL><UL>
+   FOREIGN KEY (ssn) REFERENCES Employees,
+</UL><UL>
+   FOREIGN KEY (did) REFERENCES Departments)</UL></P>
+<P><UL>
+CREATE TABLE  Dept_Mgr(
+<BR></UL><UL>
+   did  INTEGER,
+</UL><UL>
+   dname  CHAR(20),
+</UL><UL>
+   budget  REAL,
+</UL><UL>
+   ssn  CHAR(11),
+</UL><UL>
+   since  DATE,
+</UL><UL>
+   PRIMARY KEY  (did),
+</UL><UL>
+   FOREIGN KEY (ssn) REFERENCES Employees)</UL></P>
+<P></P> 
+<P>
+<TABLE>
+  <TD HEIGHT=100 WIDTH=100> <A HREF="tsld006.htm">Diapositiva precedente</A> </TD>
+  <TD HEIGHT=100 WIDTH=100> <A HREF="tsld008.htm">Diapositiva successiva</A> </TD>
+  <TD HEIGHT=100 WIDTH=150> <A HREF="tsld001.htm">Torna alla prima diaposiva</A> </TD>
+  <TD HEIGHT=100 WIDTH=150> <A HREF="sld007.htm">Visualizza versione grafica</A> </TD>
+</TABLE>
+<BR>
+</P>
+
+
+
+</Body>
+</HTML>

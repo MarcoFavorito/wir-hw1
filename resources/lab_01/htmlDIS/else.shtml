@@ -1,0 +1,135 @@
+<!doctype html public "-//w3c//dtd html 4.0 transitional//en">
+<html>
+<head>
+<link href="java.css" rel="stylesheet" type="text/css">
+<title>Alternative</title>
+</head>
+
+<body>
+
+<h2>Istruzioni in alternativa</h2>
+
+<p>
+In questa pagina si introducono le istruzioni in alternativa
+(<tt>else</tt>), che sono una estensione delle istruzioni
+condizionali. Consideriamo un facile esempio: dato il valore
+di una variabile, stampare il messaggio
+<tt>La variabile e' positiva</tt> se la variabile &egrave;
+maggiore oppure uguale a zero, altrimenti stampare
+<tt>Valore negativo</tt>. Usando le istruzioni condizionali,
+questo risulta abbastanza facile. Il programma
+<a href="NoElse.java">NoElse.java</a> risolve questo
+problema.<p>
+
+<pre>
+/*
+  Esecuzioni diverse a seconda di una condizione
+*/
+
+class NoElse {
+  public static void main(String[] args) {
+    int a=-3;
+
+    if( a>=0 ) {
+      System.out.println("La variabile e' positiva");
+    }
+
+    if( a<0 ) {
+      System.out.println("Valore negativo");
+    }
+  }
+}
+
+</pre>
+
+<p>
+Il simbolo <tt>>=</tt> indica "maggiore o uguale", per cui
+la condizione <tt>a>=0</tt> &egrave; verificata solo se la
+variabile ha valore maggiore o uguale a zero (per confronto:
+la condizione <tt>a>0</tt> &egrave; vera solo se <tt>a</tt>
+&egrave; maggiore di zero, ed &egrave; false se <tt>a</tt>
+vale zero).<p>
+
+In questo programma, si pu&ograve; notare come le due
+condizioni delle due istruzioni condizionali sono esattamente
+l'una l'opposto dell'altra, per cui una condizione &egrave;
+vera se e solo se l'altra &egrave; falsa. In questo caso,
+si esegue una sequenza di istruzioni se la condizione
+&egrave; vera, un'altra se &egrave; falsa. Situazioni di
+questo genere, in cui occorre eseguire una sequenza o
+un'altra a seconda se una condizione &egrave; vera o falsa,
+si presentano molto spesso nella programmazione. Per questa
+ragione, le istruzioni condizionali sono state estese, in
+questo modo:
+
+<pre>
+if( condizione ) {
+  istruzione1
+  istruzione2
+  ...
+}
+else {
+  istruzioneA
+  istruzioneB
+  ...
+}
+</pre>
+
+<p>
+La prima parte coincide con le istruzioni condizionali gi&agrave;
+viste in precedenza. Per prima cosa si valuta la condizione, e si
+vede se &egrave; vera o falsa. Nel primo caso si procede come al
+solito, ossia si eseguono le istruzioni
+<tt>istruzione1, istruzione2, ... </tt>. Se la condizione
+&egrave; falsa, si eseguono invece le istruzioni
+<tt>istruzioneA, istruzioneB, ... </tt>. In entrambi i casi, si
+prosegue poi con la istruzione che segue tutto il blocco, ossia
+la istruzione che viene dopo l'ultima parentesi graffa chiusa
+nello schema di sopra.
+
+<p>
+Tradotta in italiano, questa istruzione equivale a:
+
+<pre>
+se la condizione e' vera
+allora esegui istruzione1, istruzione2, ecc.
+altrimenti esegui istruzioneA, istruzioneB, ecc
+</pre>
+
+<p>
+Il programma <a href="Else.java">Else.java</a> fa la stessa cosa
+del programma visto sopra, ma usa una istruzione condizionale
+con <tt>else</tt> invece di due istruzioni condizionali separate.<p>
+
+<pre>
+/*
+  Esecuzioni diverse a seconda di una condizione
+*/
+
+class Else {
+  public static void main(String[] args) {
+    int a=-3;
+
+    if( a>=0 ) {
+      System.out.println("La variabile e' positiva");
+    }
+    else {
+      System.out.println("Valore negativo");
+    }
+  }
+}
+
+</pre>
+
+<p>
+Questo programma stampa "La variabile e' positiva" se il valore
+di <tt>a</tt> &egrave; maggiore o uguale a zero, altrimenti
+stampa "Valore negativo". Se ci fossero state altre istruzioni
+sotto il blocco condizionale, sarebbero state eseguite in ogni
+caso.<p>
+
+
+
+
+</body>
+</html>

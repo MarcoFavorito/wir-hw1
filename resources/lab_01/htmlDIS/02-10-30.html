@@ -1,0 +1,74 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+
+<html>
+<head>
+<title>Esame di Basi di Dati A.A. 2000/2001 - 2002-10-30</title>
+</head>
+
+<center>
+<h1>Esame di Basi di Dati<br>
+A.A. 2000/2001 - Appello del 30/10/2002</h1>
+</center>
+
+<h2>Problema 1</h2>
+
+Si richiede di progettare lo schema concettuale Entit&agrave;-Relazione di
+un'applicazione relativa alle macchine che erogano bibite. Di ogni macchina
+erogatrice interessa il codice (unico fra quelle prodotte dalla stessa ditta
+produttrice), la ditta produttrice (ogni macchina erogatrice &egrave; prodotta
+da una ed una sola ditta), il tipo, e le bibite che la macchina eroga
+attualmente, con il relativo prezzo praticato, e la data in cui si &egrave;
+iniziato a praticare tale prezzo. Di ogni macchina interessa anche i prezzi
+eventualmente praticati precedentemente per le bibite attualmente erogate (con
+il relativo periodo specificato con data di inizio e data di fine), e le bibite
+che la macchina ha erogato e che non eroga pi&ugrave;, sempre con i relativi
+prezzi nei vari periodi. Tutti i prezzi sono espressi in Euro. Ad esempio, la
+macchina erogatrice numero 5 della ditta "Pluto" eroga attualmente il Chinotto
+al prezzo di 35 Euro dal 1 marzo 2002, mentre lo erogava al prezzo di 30 Euro
+dal 1 gennaio 2001 al 28 febbraio 2002, e al prezzo di 25 Euro dal 1 gennaio
+del 1998 al 31 dicembre 2000. Inoltre, la stessa macchina erogatrice erogava il
+tea alla pesca, che adesso non eroga pi&ugrave;, dal 1 gennaio 1995 al 31
+dicembre del 1999 al prezzo di 25 Euro, e dal 1 aprile 2000 al 31 dicembre 2000
+al prezzo di 28 Euro. Per ogni macchina erogatrice e per ogni bibita, interessa
+poi avere informazioni su ogni prelevamento effettuato dai clienti, con data e
+orario (espresso in ora, minuti e secondi) in cui &egrave; stato
+effettuato. Ogni prelevamento riguarda una ed una sola bibita, e si assume che
+le macchine erogatrici consentano al massimo un prelevamento al secondo. Di
+ogni macchina erogatrice interessa anche in quale quartiere di quale
+citt&agrave; &egrave; ubicata. Di ogni quartiere interessa il codice (unico
+all'interno della citt&agrave;), ed il livello sociale (numero intero
+positivo). Ogni citt&agrave; &egrave; identificata da un codice, e di ogni
+citt&agrave; interessa la nazione ed il numero di abitanti. Di ogni bibita
+interessa il codice (identificativo) ed il prezzo standard praticato al bar. Di
+ogni ditta produttrice di macchine erogatrice interessa la ragione sociale
+(identificativo), il fatturato, e la nazione in cui &egrave; situata la sede
+ufficiale.
+
+<h2>Problema 2</h2>
+
+Si progetti lo schema logico dell'applicazione, illustrando lo schema
+relazionale corrispondente completo di vincoli, e seguendo l'indicazione di
+evitare valori nulli nella base di dati.
+
+<h2>Problema 3</h2>
+
+Sulla base dello schema relazionale definito per il problema 2, esprimere in
+SQL le seguenti interrogazioni/aggiornamenti:
+<ol>
+  <li>Per ogni bibita attualmente erogata da qualche macchina, calcolare il
+      pi&ugrave; basso prezzo praticato.
+  <li>Calcolare tutti i prelevamenti (con bibita prelevata, data, orario, e
+      macchina erogatrice utilizzata) effettuati da macchine erogatrici
+      prodotte da ditte italiane.
+  <li>Calcolare tutte le macchine erogatrici che attualmente erogano il
+      Chinotto a Napoli, con il relativo prezzo praticato.
+  <li>Delle macchine situate a Roma, calcolare, per ogni bibita, la somma dei
+      proventi ottenuti dai prelevamenti dal 2000 in poi, indicando macchina
+      erogatrice, bibita, e somma dei proventi.
+  <li>Aumentare del 20% tutti i prezzi attualmente praticati dalle macchine
+      della casa produttrice "Pluto" che si trovano in quartieri di livello
+      sociale 10 di citt&agrave; inglesi.
+</ol>
+
+</body>
+</html>

@@ -1,0 +1,127 @@
+
+<HTML>
+
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html;charset=iso-8859-1">
+<meta name="GENERATOR" content="Microsoft Internet Assistant for Macintosh PowerPoint 98">
+ <TITLE>Index-Only Plans</TITLE> 
+</HEAD>
+
+<BODY     >
+
+ <H1>Index-Only Plans</H1> 
+ <P><UL></P>
+
+<P><LI><H2>A number of queries can be answered without retrieving any tuples from one or more of the relations involved if a suitable index is available.</H2></P>
+
+<P></UL></P>
+
+<P><UL></P>
+
+<P>SELECT  D.mgr
+</UL><UL></P>
+
+<P>FROM  Dept D, Emp E
+</UL><UL></P>
+
+<P>WHERE  D.dno=E.dno</UL></P>
+
+<P><UL></P>
+
+<P>SELECT  D.mgr, E.eid
+</UL><UL></P>
+
+<P>FROM  Dept D, Emp E
+</UL><UL></P>
+
+<P>WHERE  D.dno=E.dno</UL></P>
+
+<P><UL></P>
+
+<P>SELECT  E.dno, COUNT(*)
+</UL><UL></P>
+
+<P>FROM  Emp E
+</UL><UL></P>
+
+<P>GROUP BY  E.dno</UL></P>
+
+<P><UL></P>
+
+<P>SELECT  E.dno, MIN(E.sal)
+</UL><UL></P>
+
+<P>FROM  Emp E
+</UL><UL></P>
+
+<P>GROUP BY  E.dno</UL></P>
+
+<P><UL></P>
+
+<P>SELECT AVG(E.sal)
+</UL><UL></P>
+
+<P>FROM  Emp E
+</UL><UL></P>
+
+<P>WHERE  E.age=25 AND
+</UL><UL></P>
+
+<P>  E.sal BETWEEN 3000 AND 5000</UL></P>
+
+<P><UL></P>
+
+<P><E.dno></UL></P>
+
+<P><UL></P>
+
+<P><E.dno,E.eid></UL></P>
+
+<P><UL></P>
+
+<P>Tree index!</UL></P>
+
+<P><UL></P>
+
+<P><E.dno></UL></P>
+
+<P><UL></P>
+
+<P><E.dno,E.sal></UL></P>
+
+<P><UL></P>
+
+<P>Tree index!</UL></P>
+
+<P><UL></P>
+
+<P><E. age,E.sal>
+</UL><UL></P>
+
+<P>          or
+</UL><UL></P>
+
+<P><E.sal, E.age></UL></P>
+
+<P><UL></P>
+
+<P>Tree!</UL></P>
+
+<P></P> 
+<P>
+<TABLE>
+  <TD HEIGHT=100 WIDTH=100> <A HREF="tsld010.htm">Previous slide</A> </TD>
+  <TD HEIGHT=100 WIDTH=100> <A HREF="tsld012.htm">Next slide</A> </TD>
+  <TD HEIGHT=100 WIDTH=150> <A HREF="tsld001.htm">Back to first slide</A> </TD>
+  <TD HEIGHT=100 WIDTH=150> <A HREF="sld011.htm">View graphic version</A> </TD>
+</TABLE>
+<BR>
+</P>
+
+ <FONT size=4><STRONG> Notes: </FONT></STRONG>
+  <HR SIZE=3> <P> <UL>
+
+21</UL> </P> 
+
+</Body>
+</HTML>

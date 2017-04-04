@@ -1,0 +1,67 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+
+<html>
+<head>
+<title>Esame di Basi di Dati A.A. 2000/2001 - 2002-06-13</title>
+</head>
+
+<center>
+<h1>Esame di Basi di Dati<br>
+A.A. 2000/2001 - Appello del 13/06/2002</h1>
+</center>
+
+<h2>Problema 1</h2>
+
+Si progetti lo schema concettuale Entit&agrave;-Relazione di un'applicazione
+relativa ad un insieme di navi passeggeri. Le navi hanno un codice
+identificativo, l'anno di varo, ed il porto di varo. Una nave pu&ograve;
+stipulare convenzioni con agenzie di viaggi. Ogni convenzione riguarda una nave
+ed una agenzia, e fissa il numero di passeggeri dell'agenzia di viaggi che
+avranno uno sconto per l'anno in corso. Ogni agenzia &egrave; caratterizzata da
+un nome (unico), dal numero di dipendenti, e dalla citt&agrave; in cui
+opera. Di ogni citt&agrave; interessa il nome, che &egrave; unico all'interno
+della nazione in cui si trova, ed il numero di abitanti.
+
+Esistono due e solo due categorie di navi: le navi da spola e le navi da
+crociera.
+<ul>
+  <li>Una nave da spola percorre continuamente il tragitto da un porto ad un
+      altro porto (avanti e indietro). Di ogni nave da spola interessa il
+      numero massimo di passeggeri che pu&ograve; ospitare in ogni tragitto, i
+      due porti interessati dal tragitto, e le miglia che separano tali due
+      porti.
+  <li>Di ogni nave da crociera interessa il peso in tonnellate, ed il porto in
+      cui eventualmente staziona quando non &egrave; in crociera. Si noti che
+      non tutte le navi da crociera hanno il porto di stazionamento, ma se una
+      nave da crociera ha un porto di stazionamento, allora ne ha uno solo.
+</ul>
+Di ogni porto interessa il codice identificativo, la citt&agrave; in cui
+&egrave; ubicato, e l'estensione in ettari.
+
+
+<h2>Problema 2</h2>
+
+Si progetti lo schema logico dell'applicazione, indicando lo schema relazionale
+corrispondente completo di vincoli espresso in SQL. L'indicazione di progetto
+&egrave; di evitare valori nulli nella base di dati.
+
+
+<h2>Problema 3</h2>
+
+Sulla base dello schema relazionale definito per il problema 2, esprimere in
+SQL le seguenti interrogazioni/aggiornamenti:
+<ol>
+  <li>Fornire il codice delle navi il cui varo &egrave; stato effettuato in
+      Tunisia.
+  <li>Dimezzare il numero massimo di passeggeri ospitati dalle navi che fanno
+      la spola in tragitti maggiori di 10.000 miglia.
+  <li>Data un'agenzia di viaggi, determinare tutte le navi che stazionano in
+      porti della stessa citt&agrave; in cui opera l'agenzia.
+  <li>Data un'agenzia di viaggi, determinare il numero medio di passeggeri che
+      sono oggetto di convenzione con navi che fanno la spola tra porti che
+      distano meno di 5.000 miglia.
+</ol>
+
+</body>
+</html>
+

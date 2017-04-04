@@ -1,0 +1,875 @@
+<html>
+<head>
+<title>Il collection framework</title>
+</head>
+
+<body>
+
+<h1>Il collection framework</h1>
+
+<p>
+Contiene tutte le interfacce e classi che realizzano
+insiemei ordinati o no di elementi
+</p>
+
+<hr>
+
+
+<h4>L'interfaccia <tt>Collection</tt></h4>
+
+<p>
+Dalle API:
+</p>
+
+<blockquote>
+Interface Collection: the root interface in the collection
+hierarchy. A collection represents a group of objects, known
+as its elements. Some collections allow duplicate elements
+and others do not. Some are ordered and others unordered.
+</blockquote>
+
+<p>
+Idea: mettere in una interfaccia tutte le caratteristiche
+comuni degli insiemi di oggetti (ordinati o no, con
+duplicazioni o no).
+</p>
+
+<hr>
+
+
+<h4>Metodi di <tt>Collection</tt></h4>
+
+<p>
+I pi&ugrave; importanti:
+</p>
+
+<dl>
+
+<dt><tt>add(Object o)</tt>
+<dd>aggiungi un oggetto a una collezione
+
+<dt><tt>boolean contains(Object o)</tt>
+<dd>vede se un oggetto &egrave; contenuto nella collezione
+
+<dt><tt>boolean isEmpty()</tt>
+<dd>verifica se la collezione &egrave; vuota
+
+<dt><tt>Iterator iterator()</tt>
+<dd>fornisce un iteratore per fare una scansione della
+collezione
+
+<dt><tt>boolean remove(Object o)</tt>
+<dd>rimuove un elemento dalla collezione<br>
+
+<dt><tt>int size()</tt>
+<dd>numero di elementi della collezione
+
+</dl>
+
+<hr>
+
+
+<h4>Nota sul metodo <tt>remove</tt></h4>
+
+<p>
+Il metodo <tt>remove</tt> ritorna un booleano
+</p>
+
+<p>
+Questo booleano dovrebbe valere <tt>True</tt> se la
+collezione cambia come risultato della <tt>remove</tt>
+(l'elemento da eliminare era presente)
+</p>
+
+<hr>
+
+
+<h4>Contratto e firma</h4>
+
+<p>
+Dei metodi delle interfacce si distinguono:
+</p>
+
+<dl>
+
+<dt>firma
+<dd>l'intestazione del metodo
+
+<dt>contratto
+<dd>una definizione (a parole!) di cosa si intende che
+faccia il metodo
+
+</dl>
+
+<p>
+Per esempio, il contratto di <tt>remove</tt> &egrave; che si
+tratta di un metodo che rimuove un elemento e che il valore
+di ritorno indica se la rimozione &egrave; stata
+effettuata.
+</p>
+
+<p>
+La firma dice soltanto che &egrave; un metodo che ha un
+<tt>Object</tt> come argomento e un <tt>boolean</tt> come
+valore di ritorno
+</p>
+
+<p>
+In Java si pu&ograve; solo specificare la firma
+</p>
+
+<p>
+Il contratto viene dato a parole
+</p>
+
+<hr>
+
+
+<h4>Contratto e firma</h4>
+
+<p>
+Se non si rispetta il contratto o la firma:
+</p>
+
+<table border=1>
+
+<tr>
+<td>Non si rispetta</td>
+<td>quando per esempio</td>
+<td>cosa succede</td>
+</tr>
+
+<tr>
+<td>firma</td>
+<td>viene implementato un metodo <tt>remove</tt> che non ha
+come argomento un <tt>Object</tt> o un valore di ritorno
+<tt>boolean</tt></td>
+<td>la classe non implementa l'interfaccia, e quindi viene
+segnalato un errore</td>
+</tr>
+
+<tr>
+<td>contratto</td>
+<td>il metodo <tt>remove</tt> ha la firma giusta, ma invece
+di rimuovere l'elemento lo aggiunge</td>
+<td>chi usa la classe non riesce a far funzionare i suoi
+programmi</td>
+</tr>
+
+</table>
+
+<p>
+Non rispettare la firma &egrave; un errore di linguaggio
+</p>
+
+<p>
+Non rispettare il contratto &egrave; un errore semantico
+</p>
+
+<hr>
+
+
+<h4>Costruttori</h4>
+
+<p>
+Le interfacce non possono contenere costruttori
+(&egrave; nel linguaggio)
+</p>
+
+<p>
+Il contratto dell'interfaccia <tt>Collection</tt>
+specifica per&ograve; che ci deve essere un costruttore
+vuoto, che crea la collezione senza elementi
+</p>
+
+<hr>
+
+
+<h4>Esempio di implementazione</h4>
+
+<p>
+Le classi che implementano direttamente <tt>Collection</tt>
+rappresentano multi-insiemi non ordinati di oggetti.
+</p>
+
+<p>
+Esempio di implementazione: usiamo una lista.
+</p>
+
+<pre>
+import java.util.*;
+
+class MultiSet implements Collection {
+private LinkedList l;
+
+public MultiSet() {
+l=new LinkedList();
+}
+
+public void add(Object o) {
+l.add(o);
+}
+
+public boolean contains(Object o) {
+return l.contains(o);
+}
+
+public boolean isEmpty() {
+return l.isEmpty();
+}
+
+public Iterator iterator() {
+return l.iterator();
+}
+
+public boolean remove(Object o) {
+return l.remove(o);
+}
+
+public int size() {
+return l.size();
+}
+
+// mancano altri metodi
+}
+</pre>
+
+<hr>
+
+
+<h4>Implementazione: commenti</h4>
+
+<p>
+Posso aggiungere un metodo <tt>add(int i, Object p)</tt>?
+</p>
+
+<dl>
+
+<dt>nel linguaggio
+<dd>quando si implementa una interfaccia: si devono
+implementare tutti i metodi, pi&ugrave; tutti quelli che
+voglio
+
+<dt>nel contratto
+<dd>un <tt>MultiSet</tt> deve rappresentare insiemi non
+ordinati; quindi, un metodo <tt>add(i, o)</tt> &egrave;
+concettualmente sbagliato
+
+</dl>
+
+<hr>
+
+<h4>Gerarchia delle interfacce</h4>
+
+<p>
+Le interfacce del collection framework sono organizzate
+cos&iacute;:
+</p>
+
+<img src="gerarchia.gif">
+
+<p>
+Il loro significato:
+</p>
+
+<dl>
+
+<dt><tt>Collection</tt>
+<dd>un multiinsieme non ordinato
+
+<dt><tt>List</tt>
+<dd>una sequenza ordinata di elementi
+
+<dt><tt>Set</tt>
+<dd>un insieme (non ordinato) di elementi
+
+<dt><tt>SortedSet</tt>
+<dd>un insieme ordinato per <tt>compareTo</tt>
+
+<dt><tt>Map</tt>
+<dd>un tabella (vediamo tra un momento)
+
+</dl>
+
+<hr>
+
+
+<h4>Differenza <tt>List</tt> e <tt>SortedSet</tt></h4>
+
+<dl>
+
+<dt><tt>List</tt>
+<dd>gli elementi sono in una sequenza qualsiasi
+
+<dt><tt>SortedSet</tt>
+<dd>gli elementi sono ordinati secondo l'ordinamento
+specificato da <tt>compareTo</tt>
+
+</dl>
+
+<p>
+Attenzione! Nell'interfaccia <tt>SortedSet</tt> non
+esiste il metodo <tt>get(int index)</tt>
+</p>
+
+<p>
+Gli iteratori di <tt>SortedSet</tt> scandiscono l'insieme in
+ordine crescente
+</p>
+
+<hr>
+
+
+<h4>Esempio di <tt>SortedSet</tt></h4>
+
+<p>
+La classe <tt>TreeSet</tt> implementa l'interfaccia
+<tt>SortedSet</tt>
+</p>
+
+<p>
+Esempio: inserisco alcuni interi e poi li stampo:
+</p>
+
+<pre>
+  public static void main(String args[]) {
+    SortedSet s=new TreeSet();
+
+    s.add(new Integer(21));
+    s.add(new Integer(0));
+    s.add(new Integer(4));
+
+    Iterator i=s.iterator();
+
+    while(i.hasNext()) 
+      System.out.println(i.next());
+  }
+</pre>
+
+<p>
+Viene stampato:
+</p>
+
+<pre>
+0
+4
+21
+</pre>
+
+<p>
+Gli iteratori scandiscono l'insieme in ordine
+</p>
+
+<p>
+L'ordinamento che is usa &egrave; quello dato da
+<tt>compareTo</tt>
+
+<hr>
+
+
+<h4>Ordinamento con comparatore</h4>
+
+<p>
+Si pu&egrave; creare un oggetto <tt>TreeSet</tt> che non usa
+l'ordinamento dato da <tt>compareTo</tt>
+</p>
+
+<ol>
+
+<li>si crea una classe che implementa l'interfaccia
+<tt>Comparable</tt>
+
+<li>questa classe deve contenere un metodo (dinamico)
+<tt>int compare(Object o1, Object o2)</tt>
+
+<li>quando si crea l'oggetto <tt>TreeSet</tt>, si specifica
+un oggetto (qualsiasi) di questa classe
+
+</ol>
+
+<p>
+Gli elementi sono nell'ordine dato da <tt>compare</tt> di
+questa classe, e non pi&ugrave; nell'ordine di
+<tt>compareTo</tt> degli oggetti dell'insieme
+</p>
+ 
+<hr>
+
+
+<h4>Esempio di comparatore</h4>
+
+<pre>
+class Compara implements Comparator {
+  public int compare(Object o1, Object o2) {
+    int i, j;
+
+    i=((Integer) o1).intValue();
+    j=((Integer) o2).intValue();
+
+    if(i&lt;j)
+      return 1;
+    else if(i==j)
+      return 0;
+    else 
+      return -1;
+  }
+}
+</pre>
+
+<p>
+&Egrave; l'ordine inverso di confronto fra interi
+</p>
+
+<p>
+Il programma di prima, modificato:
+</p>
+
+<pre>
+class Inverso {
+  public static void main(String args[]) {
+    Compara c=new Compara();
+    SortedSet s=new TreeSet(c);
+
+    s.add(new Integer(21));
+    s.add(new Integer(0));
+    s.add(new Integer(4));
+
+    Iterator i=s.iterator();
+
+    while(i.hasNext()) 
+      System.out.println(i.next());
+  }
+}
+</pre>
+
+<p>
+Ora viene stampato:
+</p>
+
+<pre>
+21
+4
+0
+</pre>
+
+<hr>
+
+
+<h4>Le mappe</h4>
+
+<p>
+Servono a implementare "tavole con due colonne"
+</p>
+
+<p>
+Esempio: una tavola con un numero di matricola e il nome
+dello studente:
+</p>
+
+<table border=1>
+
+<tr>
+<td>980123</td>
+<td>"Ciccio"</td>
+</tr>
+
+<tr>
+<td>879231</td>
+<td>"Aldo"</td>
+</tr>
+
+<tr>
+<td>843098</td>
+<td>"Totti"</td>
+</tr>
+
+<tr>
+<td>732108</td>
+<td>"Aldo"</td>
+</tr>
+
+</table>
+
+<p>
+Due studenti possono avere lo stesso nome, ma non lo stesso
+numero di matricola
+</p>
+
+<p>
+Gli oggetti mappa sono una generalizzazione
+</p>
+
+<hr>
+
+
+<h4>Astrazione</h4>
+
+<p>
+Una tabella &egrave; caratterizzata da:
+</p>
+
+<ul>
+
+<li>numero arbitrario di righe
+
+<li>in ogni riga ci sono due caselle
+
+<li>la prima casella contiene un identificatore univoco<br>
+(nell' esempio: numero di matricola)
+
+</ul>
+
+<p>
+Due caselle della prima riga non possono contenere lo
+stesso valore
+</p>
+
+<p>
+Le due colonne non hanno lo stesso significato:
+</p>
+
+<dl>
+
+<dt>prima colonna
+<dd>un valore che permette di individuare univocamente la
+riga
+
+<dt>seconda colonna
+<dd>un valore qualsiasi
+
+</dl>
+
+<hr>
+
+
+<h4><tt>Map</tt> e <tt>HashMap</tt></h4>
+
+<dl>
+
+<dt><tt>Map</tt>
+<dd>interfaccia
+
+<dt><tt>HashMap</tt>
+<dd>un oggetto <tt>HashMap</tt> rappresenta una tabella
+
+<dt><tt>TreeMap</tt>
+<dd>una implementazione di <tt>Map</tt> che usa algoritmi
+diversi
+
+</dl>
+
+<hr>
+
+
+<h4>Key e value</h4>
+
+<dl>
+
+<dt>key
+<dd>un oggetto della prima colonna
+
+<dt>value
+<dd>un oggetto della seconda collonna
+
+</dl>
+
+<hr>
+
+
+<h4>Metodi di <tt>Map</tt> e <tt>HashMap</tt></h4>
+
+<p>
+Metodi fondamentali:
+</p>
+
+<dl>
+
+<dt><tt>void put(Object key, Object value)</tt> 
+<dd>inserisce la riga composta da <tt>key</tt> e
+<tt>value</tt> nella tabella
+
+<dt><tt>boolean containsKey(Object key)</tt>
+<dd>vede se la tabella contiene una riga il cui primo
+elemento &egrave; <tt>key</tt>
+
+<dt><tt>Object get(Object key)</tt>
+<dd>se la tabella contiene una riga con <tt>key</tt> in
+prima colonna, ritorna l'elemento in seconda
+
+</dl>
+
+<hr>
+
+
+<h4>Creare una tabella</h4>
+
+<table border=1>
+
+<tr>
+<td>980123</td>
+<td>"Ciccio"</td>
+</tr>
+
+<tr>
+<td>879231</td>
+<td>"Aldo"</td>
+</tr>
+
+<tr>
+<td>843098</td>
+<td>"Totti"</td>
+</tr>
+
+<tr>
+<td>732108</td>
+<td>"Aldo"</td>
+</tr>
+
+</table>
+
+<p>
+Questa tabella si pu&ograve; creare cos&iacute;:
+</p>
+
+<pre>
+  public static void main(String args[]) {
+    HashMap m;
+
+    m=new HashMap();	// tabella vuota
+
+    m.put(new Integer(980123),
+          "Ciccio");
+
+    m.put(new Integer(879231),
+          "Aldo");
+
+    m.put(new Integer(843098),
+          "Totti");
+
+    m.put(new Integer(732108),
+          "Aldo");
+
+  }
+</pre>
+
+<p>
+In memoria: la tabella contiene in effetti i
+<i>riferimenti</i> agli oggetti inseriti
+</p>
+
+<hr>
+
+
+<h4>Presenza elemento</h4>
+
+<p>
+Per verificare se c'&egrave; uno studente con una certa
+matricola:
+</p>
+
+<pre>
+  public static void main(String args[]) {
+    HashMap m;
+
+    // creazione tabella
+
+    if(m.containsKey(new Integer(843040)))
+      System.out.println("Matricola "+843040+" esistente");
+    else
+      System.out.println("Matricola "+843040+" non esistente");
+
+    if(m.containsKey(new Integer(843098)))
+      System.out.println("Matricola "+843098+" esistente");
+    else
+      System.out.println("Matricola "+843098+" non esistente");
+
+  }
+}
+</pre>
+
+<hr>
+
+
+<h4>Trovare un elemento</h4>
+
+<p>
+Trovare un elemento con una certa matricola:
+</p>
+
+<pre>
+  public static void main(String args[]) {
+
+    // creazione tabella
+    // verifica presenza matricola 843098
+
+    System.out.println("Lo studente con matricola "+843098+
+                       " e': "+m.get(new Integer(843098)));
+  }
+}
+</pre>
+
+<hr>
+
+
+<h4>Generalizzazione</h4>
+
+<p>
+Come key e value, al posto del numero di matricola e del
+nome, posso usare oggetti qualsiasi
+</p>
+
+<p>
+Esempio: numero di matricola e oggetto <tt>Studente</tt>
+
+<hr>
+
+
+<h4>Realizzazione di <tt>HashSet</tt></h4>
+
+<p>
+In effetti, gli <tt>HashSet</tt> sono realizzati usando una
+<tt>HashMap</tt> in cui si usa solo il campo <tt>key</tt>
+</p>
+
+<hr>
+
+
+<h4>Gli iteratori</h4>
+
+<p>
+Un interatore &egrave; un oggetto che permette la scansione
+di un insieme
+</p>
+
+<p>
+Esiste un metodo della interfaccia <tt>Collection</tt> che
+restituisce un iteratore
+</p>
+
+<p>
+Quindi, tutte le collezioni devono avere un iteratore
+associato
+</p>
+
+<hr>
+
+
+<h4>Gerarchia degli iteratori</h4>
+
+<p>
+Esistono due interfacce:
+</p>
+
+<img src="iteratori.gif">
+
+<dl>
+
+<dt><tt>Iterator</tt>
+<dd>un cursore per fare la scansione di un insieme non
+necessariamente ordinato
+
+<dt><tt>ListIterator</tt>
+<dd>un iteratore di una classe che implementa <tt>List</tt>,
+ossia un insieme ordinato
+
+</dl>
+
+<hr>
+
+
+<h4>Metodi in pi&ugrave; di <tt>ListIterator</tt></h4>
+
+<p>
+Un oggetto <tt>ListIterator</tt> &egrave; un cursore per un
+oggetto che implementa <tt>List</tt>
+</p>
+
+<p>
+Consente di andare avanti e indietro
+</p>
+
+<p>
+Consente di inserire un elemento nella posizione corrente
+</p>
+
+<dl>
+
+<dt><tt>hasPrevious()</tt>
+<dd>ritorna <tt>True</tt> se esiste un elemento precedente
+nella lista
+
+<dt><tt>Object previous()</tt>
+<dd>ritorna l'elemento precedente della lista
+
+<dt><tt>void add(Object o) </tt>
+<dd>inserisce un elemento
+
+<dt><tt>void set(Object o)</tt>
+<dd>rimpiazza l'elemento con quello passato
+
+</dl>
+
+<hr>
+
+
+<h4>Metodi opzionali</h4>
+
+<p>
+Nelle interfacce, viene spesso specificato che un metodo
+&egrave; opzionale
+</p>
+
+<p>
+Naturalmente, <b>deve</b> essere implementato, altrimenti
+viene dato errore
+</p>
+
+<dl>
+
+<dt>linguaggio
+<dd>una classe che implementa una interfaccia deve
+implementare tutti i suoi metodi
+
+<dt>contratto
+<dd>se un metodo &egrave; opzionale, la sua implementazione
+pu&ograve; semplicemente lanciare una eccezione:
+
+<pre>
+throw new UnsupportedOperationException("Operation not supported");
+</pre>
+
+</dl>
+
+<hr>
+
+
+<h4>Esempio</h4>
+
+<p>
+L'interfaccia <tt>Collection</tt> contiene un metodo
+<tt>add</tt> opzionale
+</p>
+
+<p>
+Ogni classe che implementa <tt>Collection</tt> lo deve
+contenere (altrimenti il compilatore d&agrave; errore)
+</p>
+
+<p>
+Dal momento che &egrave; opzionale, si pu&ograve; anche
+implementare in questo modo:
+</p>
+
+<pre>
+class Prova implements Collection {
+  ...
+  public boolean add(Object o) {
+    throw new UnsupportedOperationException("Add operation not supported");
+  }
+}
+</pre>
+
+</body>
+</html>
+
+

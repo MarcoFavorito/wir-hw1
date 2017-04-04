@@ -1,0 +1,289 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=windows-1252">
+<TITLE>Reti di Calcolatori</TITLE>
+</HEAD>
+<BODY background="bgrnd.jpg">
+
+<B><FONT SIZE=5><P>3) Architetture di rete</P>
+<hr>
+</FONT>
+</B>1.&nbsp; Gerarchie di protocollo (strati di un’architettura)
+
+
+<UL>
+
+<UL>
+<LI>Strati adiacenti comunicano attraverso le interfacce o SAP (Service Access Point).</LI><LI>La conversazione tra strati paritari a livello n &egrave; governata da un’insieme di regole, dette &quot;<I>protocolli</I>&quot;, e si basa sull’attivazione di una conversazione a livello n-1 (attraverso una richiesta di servizio verso lo strato sottostante).</LI><LI>Ogni livello n aggiunge ai dati ricevuti dal livello superiore un &quot;<I>header</I>&quot;. L’intero pacchetto viene detto PDU (Protocol Data Unit) e una volta attraversata l’interfaccia, diventa l’SDU (Service Data Unit) del livello n-1.  In maniera analoga, la PDU del livello n-1 verr&agrave; costruita a partire dall’SDU e dall’header (detto anche PCI, Protocol Control Information) del livello n-1.  </LI><LI>L’insieme di strati e di protocolli &egrave; noto come architettura di rete. </LI></UL>
+</UL>
+
+<p>2.&nbsp; Il modello di riferimento OSI</p>
+<DIR>
+<DIR>
+
+<P ALIGN="JUSTIFY">L’International Standard Organizzation ha proposto un modello di riferimento per l’interconnessione di sistemi aperti, allo scopo di:</P></DIR>
+</DIR>
+
+<OL TYPE="a">
+
+<OL TYPE="a">
+
+<LI>fornire una base comune su cui sviluppare standard</LI><LI>fornire un modello rispetto a cui confrontare le architetture di rete</LI></OL>
+</OL>
+
+<DIR>
+<DIR>
+
+<P ALIGN="JUSTIFY">I livelli previsti sono 7</P></DIR>
+</DIR>
+
+<CENTER><TABLE BORDER CELLSPACING=1 CELLPADDING=4 WIDTH=236>
+<TR><TD WIDTH="16%" VALIGN="TOP" HEIGHT=33>
+<P ALIGN="CENTER">7</TD>
+<TD WIDTH="84%" VALIGN="TOP" HEIGHT=33>
+<P ALIGN="CENTER">Application</TD>
+</TR>
+<TR><TD WIDTH="16%" VALIGN="TOP" HEIGHT=33>
+<P ALIGN="CENTER">6</TD>
+<TD WIDTH="84%" VALIGN="TOP" HEIGHT=33>
+<P ALIGN="CENTER">Presentation</TD>
+</TR>
+<TR><TD WIDTH="16%" VALIGN="TOP" HEIGHT=33>
+<P ALIGN="CENTER">5</TD>
+<TD WIDTH="84%" VALIGN="TOP" HEIGHT=33>
+<P ALIGN="CENTER">Session</TD>
+</TR>
+<TR><TD WIDTH="16%" VALIGN="TOP" HEIGHT=33>
+<P ALIGN="CENTER">4</TD>
+<TD WIDTH="84%" VALIGN="TOP" HEIGHT=33>
+<P ALIGN="CENTER">Transport</TD>
+</TR>
+<TR><TD WIDTH="16%" VALIGN="TOP" HEIGHT=33>
+<P ALIGN="CENTER">3</TD>
+<TD WIDTH="84%" VALIGN="TOP" HEIGHT=33>
+<P ALIGN="CENTER">Network</TD>
+</TR>
+<TR><TD WIDTH="16%" VALIGN="TOP" HEIGHT=33>
+<P ALIGN="CENTER">2</TD>
+<TD WIDTH="84%" VALIGN="TOP" HEIGHT=33>
+<P ALIGN="CENTER">Data Link</TD>
+</TR>
+<TR><TD WIDTH="16%" VALIGN="TOP" HEIGHT=33>
+<P ALIGN="CENTER">1</TD>
+<TD WIDTH="84%" VALIGN="TOP" HEIGHT=33>
+<P ALIGN="CENTER">Physical</TD>
+</TR>
+</TABLE>
+</CENTER>
+<OL>
+<OL>
+
+<LI>Il <I>livello fisico</I> definisce gli aspetti che riguardano la trasmissione dei bit lungo un canale – Tensioni, caratteristiche dei cavi e dei connettori.</LI><LI>Il <I>livello di collegamento dati</I> si occupa della trasmissione dei pacchetti del livello soprastante, del riconoscimento di errori di trasmissione e dei meccanismi di correzione tramite ritrasmissione.  Lo scopo del &quot;Data Link Layer&quot; &egrave; far apparire esente da errori, lo strato sottostante il livello di rete.</LI><LI>Il <I>livello di rete</I> gestisce l’instradamento dei messaggi.  Determina se e quali dispositivi intermedi devono essere attraversati.</LI><LI>Il <I>livello di trasporto</I> &egrave; il primo livello detto &quot;end-to-end&quot; perch&eacute; ignora la topologia della rete e la presenza di sistemi intermedi.  Accetta pacchetti dallo strato di sessione le suddivide in unit&agrave; pi&ugrave; piccole.  Gestisce l’ottimizzazione delle risorse di rete, multiplexando piu’ connessioni di trasporto verso un’unica connessione di rete, o al contrario (per migliorare la congestione della rete), suddividendo una singola richiesta dello strato di sessione in pi&ugrave; richieste verso lo strato di rete.</LI><LI>Il <I>livello di sessione</I> gestisce la sincronizzazione del &quot;dialogo&quot; tra due entit&agrave; su macchine diverse</LI><LI>Il <I>livello di presentazione</I> gestisce sintassi e semantica dell’informazione da trasferire.  Al fine di rendere possibile la comunicazione tra computer che adottano rappresentazioni dei dati differenti, le strutture dati da scambiare possono essere definite in modo astratto e codificate in forma standard per il trasferimento.  In questo strato vengono anche affrontati gli aspetti legati alla compressione dei dati e alla crittografia.</LI><LI>Il <I>livello applicativo</I> &egrave; costituito dalle applicazioni attraverso le quali l’utente utilizza la rete.</LI></OL>
+</OL>
+
+<p>3.&nbsp; Architetture a confronto – OSI e  TCP/IP</p>
+
+<OL>
+
+<CENTER><TABLE BORDER CELLSPACING=1 CELLPADDING=4 WIDTH=380>
+<TR><TD WIDTH="11%" VALIGN="TOP" HEIGHT=26><P></P></TD>
+<TD WIDTH="45%" VALIGN="TOP" HEIGHT=26>
+<B><P ALIGN="CENTER">OSI</B></TD>
+<TD WIDTH="45%" VALIGN="TOP" COLSPAN=2 HEIGHT=26>
+<B><P ALIGN="CENTER">TCP/IP</B></TD>
+</TR>
+<TR><TD WIDTH="11%" VALIGN="TOP" HEIGHT=26>
+<P ALIGN="CENTER">7</TD>
+<TD WIDTH="45%" VALIGN="TOP" HEIGHT=26>
+<P ALIGN="CENTER">Application</TD>
+<TD WIDTH="22%" VALIGN="TOP" ROWSPAN=3 HEIGHT=26>
+<P ALIGN="CENTER">Telnet</P>
+<FONT SIZE=2><P ALIGN="CENTER">FTP, SMTP</P>
+<P ALIGN="CENTER">SNMP</FONT></TD>
+<TD WIDTH="22%" VALIGN="TOP" HEIGHT=26>
+<P ALIGN="CENTER">NFS</TD>
+</TR>
+<TR><TD WIDTH="11%" VALIGN="TOP" HEIGHT=26>
+<P ALIGN="CENTER">6</TD>
+<TD WIDTH="45%" VALIGN="TOP" HEIGHT=26>
+<P ALIGN="CENTER">Presentation</TD>
+<TD WIDTH="22%" VALIGN="TOP" HEIGHT=26>
+<P ALIGN="CENTER">XDR</TD>
+</TR>
+<TR><TD WIDTH="11%" VALIGN="TOP" HEIGHT=26>
+<P ALIGN="CENTER">5</TD>
+<TD WIDTH="45%" VALIGN="TOP" HEIGHT=26>
+<P ALIGN="CENTER">Session</TD>
+<TD WIDTH="22%" VALIGN="TOP" HEIGHT=26>
+<P ALIGN="CENTER">RPC</TD>
+</TR>
+<TR><TD WIDTH="11%" VALIGN="TOP" HEIGHT=26>
+<P ALIGN="CENTER">4</TD>
+<TD WIDTH="45%" VALIGN="TOP" HEIGHT=26>
+<P ALIGN="CENTER">Transport</TD>
+<TD WIDTH="45%" VALIGN="TOP" COLSPAN=2 HEIGHT=26>
+<P ALIGN="CENTER">TCP, UDP</TD>
+</TR>
+<TR><TD WIDTH="11%" VALIGN="TOP" HEIGHT=26>
+<P ALIGN="CENTER">3</TD>
+<TD WIDTH="45%" VALIGN="TOP" HEIGHT=26>
+<P ALIGN="CENTER">Network</TD>
+<TD WIDTH="45%" VALIGN="TOP" COLSPAN=2 HEIGHT=26>
+<P ALIGN="CENTER">IP</TD>
+</TR>
+<TR><TD WIDTH="11%" VALIGN="TOP" HEIGHT=26>
+<P ALIGN="CENTER">2</TD>
+<TD WIDTH="45%" VALIGN="TOP" HEIGHT=26>
+<P ALIGN="CENTER">Data Link</TD>
+<TD WIDTH="45%" VALIGN="TOP" COLSPAN=2 ROWSPAN=2 HEIGHT=26>
+<P ALIGN="CENTER">Non specificato</TD>
+</TR>
+<TR><TD WIDTH="11%" VALIGN="TOP" HEIGHT=26>
+<P ALIGN="CENTER">1</TD>
+<TD WIDTH="45%" VALIGN="TOP" HEIGHT=26>
+<P ALIGN="CENTER">Physical</TD>
+</TR>
+</TABLE>
+</CENTER>
+<P ALIGN="JUSTIFY">Questa seconda &quot;suite&quot; di protocolli &egrave; denominata <I>Internet Protocol Suite</I>, anche se si fa riferimento ad essa con la sigla TCP/IP, dai due protocolli pi&ugrave; noti (il Transmission Control Protocol e l’Internet Protocol).  E’ l’architettura adottata dalla rete Internet.</P>
+</OL>
+4.&nbsp; Indirizzamento IP
+<DIR>
+<DIR>
+
+<P ALIGN="JUSTIFY"> L’<I>Internet Protocol </I>&egrave; il protocollo utilizzato a livello network per gestire l’instradamento dei messaggi; utilizza un’indirizzamento a 32 bit (4 byte), espressi con i valori decimali corrispondenti, separati da un punto</P>
+<I><P ALIGN="CENTER">es:  192.168.20.11</P>
+</I><P ALIGN="JUSTIFY">Sono scomponibili in due o tre parti: <I>network</I>, <I>subnet</I> (se presente) e <I>host</I>.  Sono assegnati da un’unica entit&agrave; e quindi garantiti univoci a livello mondiale.</P>
+<P ALIGN="JUSTIFY">Sono suddivisi in 5 classi:</P></DIR>
+</DIR>
+
+<OL TYPE="a">
+
+<LI>riconoscibili dal primo bit a zero (quindi dal primo campo dell’indirizzo che assume valori tra 0 e 127) prevedono 7 bit per l’indirizzo network e 24 bit per l’indirizzo host.  Sono concepiti per poche reti di dimensioni molto grandi (max 128 reti con al pi&ugrave; 2<SUP>24</SUP> host).</LI><CENTER><TABLE BORDER CELLSPACING=1 CELLPADDING=4 WIDTH=312>
+<TR><TD WIDTH="3%" VALIGN="TOP">
+<FONT SIZE=1><P ALIGN="CENTER">0</FONT></TD>
+<TD WIDTH="19%" VALIGN="TOP">
+<FONT SIZE=1><P ALIGN="CENTER">1:7</FONT></TD>
+<TD WIDTH="77%" VALIGN="TOP">
+<FONT SIZE=1><P ALIGN="CENTER">8:31</FONT></TD>
+</TR>
+<TR><TD WIDTH="3%" VALIGN="TOP">
+<FONT SIZE=1><P ALIGN="CENTER">0</FONT></TD>
+<TD WIDTH="19%" VALIGN="TOP">
+<FONT SIZE=1><P ALIGN="CENTER">Network</FONT></TD>
+<TD WIDTH="77%" VALIGN="TOP">
+<FONT SIZE=1><P ALIGN="CENTER">Host</FONT></TD>
+</TR>
+</TABLE>
+</CENTER>
+<P ALIGN="JUSTIFY"><LI>riconoscibili dai primi due bit posti a &quot;10&quot; (quindi dal primo campo dell’indirizzo che assume valori tra 128 e 191) prevedono 14 bit per l’indirizzo network e 16 bit per l’indirizzo host.  Sono concepiti per un numero medio di reti di dimensioni medio-grandi (max 2<SUP>14</SUP> reti con al pi&ugrave; 2<SUP>16</SUP> host).</LI><CENTER><TABLE BORDER CELLSPACING=1 CELLPADDING=4 WIDTH=312>
+<TR><TD WIDTH="3%" VALIGN="TOP">
+<FONT SIZE=1><P ALIGN="CENTER">0</FONT></TD>
+<TD WIDTH="3%" VALIGN="TOP">
+<FONT SIZE=1><P ALIGN="CENTER">1</FONT></TD>
+<TD WIDTH="45%" VALIGN="TOP">
+<FONT SIZE=1><P ALIGN="CENTER">2:15</FONT></TD>
+<TD WIDTH="48%" VALIGN="TOP">
+<FONT SIZE=1><P ALIGN="CENTER">16:31</FONT></TD>
+</TR>
+<TR><TD WIDTH="3%" VALIGN="TOP">
+<FONT SIZE=1><P ALIGN="CENTER">1</FONT></TD>
+<TD WIDTH="3%" VALIGN="TOP">
+<FONT SIZE=1><P ALIGN="CENTER">0</FONT></TD>
+<TD WIDTH="45%" VALIGN="TOP">
+<FONT SIZE=1><P ALIGN="CENTER">Network</FONT></TD>
+<TD WIDTH="48%" VALIGN="TOP">
+<FONT SIZE=1><P ALIGN="CENTER">Host</FONT></TD>
+</TR>
+</TABLE>
+</CENTER>
+<P ALIGN="JUSTIFY"><LI>riconoscibili dai primi tre bit posti a &quot;110&quot; (quindi dal primo campo dell’indirizzo che assume valori tra 192 e 223) prevedono 21 bit per l’indirizzo network e 8 bit per l’indirizzo host.  Sono concepiti per un numero elevato di reti di piccole dimensioni (max 2<SUP>21</SUP> reti con al pi&ugrave; 256 host).</LI><CENTER><TABLE BORDER CELLSPACING=1 CELLPADDING=4 WIDTH=316>
+<TR><TD WIDTH="3%" VALIGN="TOP">
+<FONT SIZE=1><P ALIGN="CENTER">0</FONT></TD>
+<TD WIDTH="3%" VALIGN="TOP">
+<FONT SIZE=1><P ALIGN="CENTER">1</FONT></TD>
+<TD WIDTH="3%" VALIGN="TOP">
+<FONT SIZE=1><P ALIGN="CENTER">2</FONT></TD>
+<TD WIDTH="64%" VALIGN="TOP">
+<FONT SIZE=1><P ALIGN="CENTER">3:23</FONT></TD>
+<TD WIDTH="26%" VALIGN="TOP">
+<FONT SIZE=1><P ALIGN="CENTER">24:31</FONT></TD>
+</TR>
+<TR><TD WIDTH="3%" VALIGN="TOP">
+<FONT SIZE=1><P ALIGN="CENTER">1</FONT></TD>
+<TD WIDTH="3%" VALIGN="TOP">
+<FONT SIZE=1><P ALIGN="CENTER">1</FONT></TD>
+<TD WIDTH="3%" VALIGN="TOP">
+<FONT SIZE=1><P ALIGN="CENTER">0</FONT></TD>
+<TD WIDTH="64%" VALIGN="TOP">
+<FONT SIZE=1><P ALIGN="CENTER">Network</FONT></TD>
+<TD WIDTH="26%" VALIGN="TOP">
+<FONT SIZE=1><P ALIGN="CENTER">Host</FONT></TD>
+</TR>
+</TABLE>
+</CENTER>
+<P ALIGN="JUSTIFY"><LI>riconoscibili dai primi quattro bit posti a &quot;1110&quot; (quindi dal primo campo dell’indirizzo che assume valori tra 224 e 239) sono riservati ad applicazioni multicast.</LI><CENTER><TABLE BORDER CELLSPACING=1 CELLPADDING=4 WIDTH=316>
+<TR><TD WIDTH="3%" VALIGN="TOP">
+<FONT SIZE=1><P ALIGN="CENTER">0</FONT></TD>
+<TD WIDTH="3%" VALIGN="TOP">
+<FONT SIZE=1><P ALIGN="CENTER">1</FONT></TD>
+<TD WIDTH="3%" VALIGN="TOP">
+<FONT SIZE=1><P ALIGN="CENTER">2</FONT></TD>
+<TD WIDTH="3%" VALIGN="TOP">
+<FONT SIZE=1><P ALIGN="CENTER">3</FONT></TD>
+<TD WIDTH="87%" VALIGN="TOP">
+<FONT SIZE=1><P ALIGN="CENTER">4:31</FONT></TD>
+</TR>
+<TR><TD WIDTH="3%" VALIGN="TOP">
+<FONT SIZE=1><P ALIGN="CENTER">1</FONT></TD>
+<TD WIDTH="3%" VALIGN="TOP">
+<FONT SIZE=1><P ALIGN="CENTER">1</FONT></TD>
+<TD WIDTH="3%" VALIGN="TOP">
+<FONT SIZE=1><P ALIGN="CENTER">1</FONT></TD>
+<TD WIDTH="3%" VALIGN="TOP">
+<FONT SIZE=1><P ALIGN="CENTER">0</FONT></TD>
+<TD WIDTH="87%" VALIGN="TOP">
+<FONT SIZE=1><P ALIGN="CENTER">Indirizzo multicast</FONT></TD>
+</TR>
+</TABLE>
+</CENTER>
+<P ALIGN="JUSTIFY"><LI>riconoscibili dai primi quattro bit posti a &quot;1111&quot; (quindi dal primo campo dell’indirizzo che assume valori tra 240 e 255) sono riservati per usi futuri.</LI></OL>
+
+<CENTER><TABLE BORDER CELLSPACING=1 CELLPADDING=4 WIDTH=316>
+<TR><TD WIDTH="3%" VALIGN="TOP">
+<FONT SIZE=1><P ALIGN="CENTER">0</FONT></TD>
+<TD WIDTH="3%" VALIGN="TOP">
+<FONT SIZE=1><P ALIGN="CENTER">1</FONT></TD>
+<TD WIDTH="3%" VALIGN="TOP">
+<FONT SIZE=1><P ALIGN="CENTER">2</FONT></TD>
+<TD WIDTH="3%" VALIGN="TOP">
+<FONT SIZE=1><P ALIGN="CENTER">3</FONT></TD>
+<TD WIDTH="87%" VALIGN="TOP">
+<FONT SIZE=1><P ALIGN="CENTER">4:31</FONT></TD>
+</TR>
+<TR><TD WIDTH="3%" VALIGN="TOP">
+<FONT SIZE=1><P ALIGN="CENTER">1</FONT></TD>
+<TD WIDTH="3%" VALIGN="TOP">
+<FONT SIZE=1><P ALIGN="CENTER">1</FONT></TD>
+<TD WIDTH="3%" VALIGN="TOP">
+<FONT SIZE=1><P ALIGN="CENTER">1</FONT></TD>
+<TD WIDTH="3%" VALIGN="TOP">
+<FONT SIZE=1><P ALIGN="CENTER">1</FONT></TD>
+<TD WIDTH="87%" VALIGN="TOP">&nbsp;</TD>
+</TR>
+</TABLE>
+</CENTER><DIR>
+<DIR>
+
+<P ALIGN="JUSTIFY">L’indirizzo host pu&ograve; essere ulteriormente suddiviso nelle due parti: <I>subnet</I> e <I>host</I> mediante un particolare indirizzo detto <I>netmask</I> (o subnet-mask) che contiene bit a 1 in corrispondenza dei campi network e subnet, e bit a 0 in corrispondenza del campo host</P>
+<I><P ALIGN="CENTER">es:  255.255.255.0</P>
+</I><P ALIGN="JUSTIFY">Normalmente una rete locale coincide con uno specifico indirizzo network-subnet; tutti gli host della sottorete hanno lo stesso indirizzo di sottorete, determinabile dall’<I>and</I> logico dell’indirizzo IP con la corrispondente netmask.</P>
+<P ALIGN="JUSTIFY">Esempio:</P>
+<P ALIGN="CENTER">L’host 192.168.20.11 con netmask 255.255.255.0 appartiene alla sottorete 192.168.20.0</P>
+<P ALIGN="CENTER">L’host 192.168.20.20 con netmask 255.255.255.0 appartiene alla sottorete 192.168.20.0</P>
+<P ALIGN="CENTER">L’host 192.168.30.10 con netmask 255.255.255.0 appartiene alla sottorete 192.168.30.0</P>
+<P ALIGN="JUSTIFY">A livello IP, &egrave; fondamentale sapere se il destinatario appartiene o meno alla stessa sottorete, per i meccanismi che regolano l’instradamento di un pacchetto. Se il destinatario di un pacchetto appartiene ad una sottorete diversa dalla sottorete di partenza, il pacchetto verr&agrave; instradato attraverso un router.  I router sono i dispositivi utilizzati per collegare pi&ugrave; sottoreti (normalmente in un’unica configurazione geografica).</P>
+</DIR>
+</DIR>
+</BODY>
+</HTML>

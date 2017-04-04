@@ -1,0 +1,97 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=windows-1252">
+<TITLE>1</TITLE>
+</HEAD>
+<BODY background="bgrnd.jpg">
+
+<B><FONT SIZE=5><P>15)</FONT><FONT SIZE=5> </FONT><FONT SIZE=5>Tecnica greedy </P>
+</B></FONT><P ALIGN="RIGHT">Riferimenti: <B>[1]</B> capitolo 18, <B>[2]</B> capitolo 17</P>
+<hr>
+
+<I>1. La tecnica golosa
+<OL>
+
+</I><P ALIGN="JUSTIFY">Gli algoritmi basati su tecnica golosa determinano la soluzione in N passi.  Ad ogni passo effettuano una scelta di ottimo locale, quella cio&egrave; pi&ugrave; conveniente al momento.  Rispetto alla tecnica del backtracking, che prevede la visita in profondit&agrave; dell'albero di ricerca, nella tecnica golosa si passa da un livello ad un altro dell'albero, attraverso una scelta golosa.  Potrebbe essere vista come caso limite del "Divide et Impera" (ad ogni passo gli algoritmi golosi generano un solo sottoproblema). E' utilizzata nella risoluzione di problemi di ottimizzazione, di massimo</P>
+<P ALIGN="CENTER">massimizzare <IMG SRC="Image36.gif" width=154 height=45></P>
+<P ALIGN="CENTER">con i vincoli <IMG SRC="Image37.gif" WIDTH=140 HEIGHT=50></P>
+<P ALIGN="JUSTIFY">e di minimo</P>
+<P ALIGN="CENTER">minimizzare <IMG SRC="Image38.gif" width=157 height=45></P>
+<P ALIGN="CENTER">con i vincoli <IMG SRC="Image39.gif" WIDTH=136 HEIGHT=50></P>
+<I></OL>
+2. Esempio - percorso autostradale con numero minimo di fermate
+<DIR>
+<DIR>
+
+</I><P ALIGN="JUSTIFY">Dati:</P></DIR>
+</DIR>
+
+<OL>
+
+<OL>
+
+<LI>autonomia <FONT FACE="Wingdings">&#224;</FONT>
+ k chilometri</LI><LI>stazioni di rifornimento <FONT FACE="Wingdings">&#224;</FONT>
+ n, con distanza d<SUB>i</SUB> dall'origine</LI></OL>
+</OL>
+<DIR>
+<DIR>
+
+<P ALIGN="JUSTIFY">la scelta golosa consiste nello scegliere ad ogni passo, la stazione di rifornimento pi&ugrave; lontana, raggiungibile con l'autonomia a disposizione. </P></DIR>
+</DIR>
+
+<I>3. Soluzione ottima o subottima
+</I>
+
+<OL>
+
+<P ALIGN="JUSTIFY">La tecnica golosa effettua scelte di ottimo locale ma non per questo garantisce la soluzione ottima.  L'eventuale ottimo globale garantito da un algoritmo goloso, non &egrave; nemmeno semplice da dimostrare; va dimostrato che la soluzione ottima prevede la stessa prima scelta effettuata dall'algoritmo e che il sottoproblema rimanente ha una struttura analoga a quella del problema originario.  Anche per il sottoproblema (e per quelli che seguono) esiste una soluzione ottima che inizia con una scelta golosa.</P>
+<I></OL>
+4. Esempio - problema della bisaccia 0-1
+<DIR>
+<DIR>
+
+</I><P ALIGN="JUSTIFY">Dati:</P></DIR>
+</DIR>
+
+<OL>
+
+<OL>
+
+<LI>oggetti <FONT FACE="Wingdings">&#224;</FONT>
+ n, ognuno con valore V<SUB>i</SUB> e costo C<SUB>i</LI>
+</SUB><LI>disponibilit&agrave; massima nella bisaccia <FONT FACE="Wingdings">&#224;</FONT>
+ C</LI></OL>
+</OL>
+<DIR>
+<DIR>
+
+<P ALIGN="CENTER">massimizzare <IMG SRC="Image40.gif" WIDTH=92 HEIGHT=45></P>
+<P ALIGN="CENTER">con i vincoli <IMG SRC="Image41.gif" width=106 height=66></P>
+<P ALIGN="JUSTIFY">Le scelte vengono effettuate sulla base del valore specifico (per unit&agrave; di costo) V<SUB>i</SUB>/C<SUB>i</SUB> e l'algoritmo non garantisce soluzione ottima (esempio: disponibilit&agrave; 50 e oggetti 60/10, 100/20 e 120/30).  Per il problema della bisaccia frazionario &egrave; garantita invece soluzione ottima. </P></DIR>
+</DIR>
+
+<I>5. Esempio - Selezione di attivit&agrave;
+</I>
+
+<OL>
+
+<P ALIGN="JUSTIFY">Avendo a disposizione N attivit&agrave;, ognuna con un istante di inizio e di fine, si vogliono selezionare il numero massimo di attivit&agrave; possibili, tra loro compatibili.  La scelta golosa consiste nello scegliere ad ogni passo, l'attivit&agrave; con tempo di fine pi&ugrave; piccolo. </P>
+<I></OL>
+6. Complessit&agrave; dell'algoritmo tipico
+</I>
+
+<OL>
+
+<P ALIGN="JUSTIFY">O(n*K) dove K<SUB> </SUB>rappresenta la complessit&agrave; della scelta golosa.  Spesso K &egrave; lineare per cui la complessit&agrave; dell'algoritmo tipico &egrave; O(n<SUP>2</SUP>).  Quando la scelta golosa viene effettuata su valori che non dipendono dalla soluzione corrente (caso "statico"), ma che possono essere ad esempio ordinati (con costo costante) a priori, la complessit&agrave; dipende dalla funzione di ordinamento (O(n log n)). </P>
+<I></OL>
+7. Un algoritmo generico - la classe "esploratore" - e una sua applicazione al problema della bisaccia
+<DIR>
+<DIR>
+
+</I><P ALIGN="CENTER">Analisi di <a href="esp-greedy.h"> esp-greedy.h</a> e <a href="esp-greedy.cpp"> esp-greedy.cpp</a></P>
+<P ALIGN="CENTER">Analisi di <a href="greedy-bisaccia.h"> greedy-bisaccia.h</a> e
+<a href="greedy-bisaccia.cpp"> greedy-bisaccia.cpp</a></P></DIR>
+</DIR>
+</BODY>
+</HTML>

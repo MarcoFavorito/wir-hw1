@@ -1,0 +1,46 @@
+<!doctype html public "-//w3c//dtd html 4.0 transitional//en">
+<html>
+<head>
+   <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <meta name="Author" content="Fabrizio d'Amore">
+   <meta name="GENERATOR" content="Mozilla/4.61 (Macintosh; I; PPC) [Netscape]">
+   <title>Esercizio SQL</title>
+</head>
+<body text="#000080" bgcolor="#FFC040" link="#0000FF" vlink="#008000" alink="#00FFFF">
+
+<center>
+<h3>
+Interrogazione SQL
+<hr WIDTH="100%"></h3></center>
+
+<blockquote><tt><font color="#5B3D23">select Indirizzo</font></tt>
+<br><tt><font color="#5B3D23">from Categorie, Negozi, Articoli</font></tt>
+<br><tt><font color="#5B3D23">where (Categorie.Descrizione='Ferramenta')
+and</font></tt>
+<br><tt><font color="#5B3D23">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; (Codice=Categoria)
+and (Nome=Negozio) and</font></tt>
+<br><tt><font color="#5B3D23">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; (Articoli.Descrizione='scala')</font></tt><tt><font color="#5B3D23"></font></tt>
+<p><tt><font color="#5B3D23">except</font></tt><tt><font color="#5B3D23"></font></tt>
+<p><tt><font color="#5B3D23">select Indirizzo</font></tt>
+<br><tt><font color="#5B3D23">from Categorie, Negozi, Articoli</font></tt>
+<br><tt><font color="#5B3D23">where (Categorie.Descrizione='Ferramenta')
+and</font></tt>
+<br><tt><font color="#5B3D23">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; (Codice=Categoria)
+and (Nome=Negozio) and</font></tt>
+<br><tt><font color="#5B3D23">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; (Articoli.Descrizione='antenna');</font></tt></blockquote>
+<tt></tt>
+<p><br>
+<hr WIDTH="100%">
+<p><b>Commento</b>
+<p>Per ottenere quanto voluto bisogna prima costruire l'insieme degli indirizzi
+di ferramenta che vendono scale e da questi eliminare quelli che vendono
+antenne. Specificare la clausola
+<blockquote><tt>where (Categorie.Descrizione='Ferramenta') and</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; (Codice=Categoria) and (Nome=Negozio)
+and</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; (Articoli.Descrizione='scala') and</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; (Articoli.Descrizione&lt;>'antenna')</tt></blockquote>
+non ha senso in quanto &egrave; evidente (tautologico) che se un articolo
+&egrave; una scala non pu&ograve; essere anche un'antenna!
+</body>
+</html>

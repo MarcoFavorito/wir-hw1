@@ -1,0 +1,456 @@
+<HTML>
+<!--This file created 30-04-2003 10:58 by Claris Home Page version 3.0 30 Day Trial-->
+<HEAD>
+   <TITLE>Matlab Basics</TITLE>
+   <META NAME=GENERATOR CONTENT="Claris Home Page 3.0 30 Day Trial">
+   <X-CLARIS-WINDOW TOP=48 BOTTOM=733 LEFT=36 RIGHT=793>
+   <X-CLARIS-REMOTESAVE SERVER="labrob.ing.uniroma1.it" USER=www DIR="/home/WWW/WWW_home/people/vendittelli/didattica/laut/" FILE="">
+   <X-CLARIS-TAGVIEW MODE=minimal>
+</HEAD>
+<BODY BGCOLOR="#FFFFFF" BACKGROUND="../back.gif">
+<P><FONT SIZE="-2">&nbsp;</FONT></P>
+
+<CENTER><FONT SIZE="+2">Introduzione a MATLAB</FONT></CENTER>
+
+<P><A HREF="#vars"><FONT SIZE="+1">Variabili, numeri,
+operatori</FONT></A><FONT SIZE="+1"><BR>
+</FONT><A HREF="#vector"><FONT SIZE="+1">Vettori</FONT></A><FONT SIZE="+1"><BR>
+</FONT><A HREF="#polynomial"><FONT SIZE="+1">Polinomi</FONT></A><FONT SIZE="+1"><BR>
+</FONT><A HREF="#matrix"><FONT SIZE="+1">Matrici</FONT></A><FONT SIZE="+1"><BR>
+</FONT><A HREF="#function"><FONT SIZE="+1">Funzioni</FONT></A><FONT SIZE="+1"><BR>
+</FONT><A HREF="#plot"><FONT SIZE="+1">Grafica</FONT></A><FONT SIZE="+1"><BR>
+</FONT><A HREF="#mfile"><FONT SIZE="+1">M-files</FONT></A><FONT SIZE="+1"><BR>
+</FONT><A HREF="#help"><FONT SIZE="+1">Help</FONT></A><FONT SIZE="+1"><BR>
+</FONT></P>
+
+<P><A NAME=vars></A></P>
+
+<H2><B>Variabili, numeri, operatori</B></H2>
+
+<P>Matlab non richede alcun tipo di dichiarazione o
+dimensionamento</P>
+
+<BLOCKQUOTE><PRE>a = 25</PRE></BLOCKQUOTE>
+
+<P>il valore di a</P>
+
+<BLOCKQUOTE><PRE>a</PRE></BLOCKQUOTE>
+
+<P>la variabile "ans"</P>
+
+<BLOCKQUOTE><PRE>3*25</PRE></BLOCKQUOTE>
+
+<P>Notazione decimale convenzionale. La notazione scientifica usa la
+lettera e per specificare un fattore di scala potenza di dieci. I
+numeri immaginari usano i o j. Tutti i numeri sono internamente
+rappresentati nel formato <I>long </I>con la precisione di 16 cifre
+decimali.</P>
+
+<P>Le espressioni usano i familiari operatori aritmetici con le
+regole di precedenza convenzionali.</P>
+
+<P><B>Operatori aritmetici</B></P>
+
+<PRE>A+B 
+A-B
+A*B     A.*B
+A/B     A./B
+A\B     A.\B
+A^B     A.^B
+A'      A.'</PRE>
+
+<P><B>Operatori relazionali</B></P>
+
+<PRE>A &lt; B
+A &gt; B
+A &lt;= B
+A &gt;= B
+A == B
+A ~= B</PRE>
+
+<P><B>Operatori logici</B></P>
+
+<PRE>Element-Wise
+
+A = &#91;0 1 1 0 1&#93;;
+B = &#91;1 1 0 0 1&#93;;
+
+&amp;		A &amp; B = 01001
+
+|		A | B = 11101
+
+~		~A = 10010
+
+xor	 xor(A,B)=10100</PRE>
+
+<P><FONT SIZE="-2">&nbsp;</FONT></P>
+
+<PRE>Short-Circuit
+
+%operano su scalari
+
+&amp;&amp;	true (1) se entrambi gli argomenti sono true, false (0) altrimenti
+
+||	true (1) uno degli argomenti, o entrambi, sono true, false (0) altrimenti</PRE>
+
+<P><FONT SIZE="-2">&nbsp;</FONT></P>
+
+<PRE>Bit-Wise
+
+%argomenti non negativi
+
+A = 28;               % binary 11100
+B = 21;               % binary 10101
+
+bitand(A,B) = 20 (binary 10100)
+
+bitor(A,B) = 29  (binary 11101)
+
+bitcmp(A,5) = 3  (binary 00011) % risultato in un numero a 5 bit
+
+bitxor(A,B) = 9  (binary 01001)</PRE>
+
+<P><FONT SIZE="-2">&nbsp;</FONT></P>
+
+<P>Precedenze</P>
+
+<PRE>1. () 
+2.	.', .^,  ', ^ 
+3.	+ (segno), - (segno), ~
+4.	.*, ./, .\, *, /, \
+5.	+ (somma), - (differenza)
+6.	:
+7.	&lt;, &lt;=, &gt;, &gt;=, ==, ~=
+8.	&amp; (element-wise)
+9.	| (element-wise) 
+10.  &amp;&amp; (short-circuit) 
+11.  || (short-circuit)
+</PRE>
+
+<P>&nbsp;</P>
+
+<P><A NAME=vector></A></P>
+
+<H2>Vettori</H2>
+
+<P>Creazione di un vettore come lista esplicita di elementi:</P>
+
+<BLOCKQUOTE><PRE>a = &#91;1 2 3 4 5 6 9 8 7&#93;</PRE></BLOCKQUOTE>
+
+<P>oppure</P>
+
+<BLOCKQUOTE><PRE>a = &#91;1,2,3,4,5,6,9,8,7&#93;</PRE>
+   
+   <P><FONT SIZE="-2">&nbsp;</FONT></P></BLOCKQUOTE>
+
+<P>Creazione di un vettore i cui elementi vanno da 0 a 20 con
+incrementi di 2:</P>
+
+<BLOCKQUOTE><PRE>t = 0:2:20</PRE></BLOCKQUOTE>
+
+<P>Come si puo' creare il vettore a usando l'operatore ":"?</P>
+
+<P><FONT SIZE="-2">&nbsp;</FONT></P>
+
+<P>Somma di uno scalare a ciascun elemento di un vettore:</P>
+
+<BLOCKQUOTE><PRE>b = a + 2</PRE></BLOCKQUOTE>
+
+<P><FONT SIZE="-2">&nbsp;</FONT></P>
+
+<P>Somma di due vettori di uguale dimensione:</P>
+
+<BLOCKQUOTE><PRE>c = a + b</PRE></BLOCKQUOTE>
+
+<P><FONT SIZE="-2">&nbsp;</FONT></P>
+
+<P><A NAME=polynomial></A></P>
+
+<H2>Polinomi</H2>
+
+<P>In Matlab, un polinomio viene rappresentato come vettore. Per
+rappresentare il polinomio</P>
+
+<CENTER><IMG SRC="poly.GIF" WIDTH=161 HEIGHT=21 ALIGN=bottom></CENTER>
+
+<P>basta creare il vettore</P>
+
+<BLOCKQUOTE><PRE>p = &#91;1 3 -15 -2 9&#93;</PRE>
+   
+   <P><FONT SIZE="-2">&nbsp;</FONT></P></BLOCKQUOTE>
+
+<P>Matlab interpreta un vettore di lunghezza n+1 come un polinomio di
+grado n. Per rappresentare il polinomio</P>
+
+<CENTER><IMG SRC="poly2.GIF" WIDTH=41 HEIGHT=21 ALIGN=bottom></CENTER>
+
+<P>occorre creare il vettore</P>
+
+<BLOCKQUOTE><PRE>p1= &#91;1 0 0 0 1&#93;</PRE></BLOCKQUOTE>
+
+<PRE>
+</PRE>
+
+<P>Per valutare il polinomio p in s=2</P>
+
+<BLOCKQUOTE><PRE>z = polyval(p,2)
+   
+z = polyval(&#91;1 3 -15 -2 9&#93;,2)</PRE></BLOCKQUOTE>
+
+<PRE></PRE>
+
+<P>Per estrarre le radici del polinomio</P>
+
+<CENTER><IMG SRC="poly.GIF" WIDTH=161 HEIGHT=21 ALIGN=bottom></CENTER>
+
+<BLOCKQUOTE><PRE>roots(&#91;1 3 -15 -2 9&#93;)</PRE></BLOCKQUOTE>
+
+<PRE></PRE>
+
+<P>Per moltiplicare i polinomi p e p1</P>
+
+<BLOCKQUOTE><PRE>z = conv(p,p1)</PRE></BLOCKQUOTE>
+
+<P><FONT SIZE="-2">&nbsp;</FONT></P>
+
+<P>Per sommare due polinomi di ugual grado</P>
+
+<BLOCKQUOTE><PRE>z=p+p1</PRE></BLOCKQUOTE>
+
+<P><FONT SIZE="-2">&nbsp;</FONT></P>
+
+<P>Per polinomi di grado diverso occorre definire una <A HREF="#function">funzione</A>
+in un <A HREF="#mfile">M-file</A>.</P>
+
+<P><A NAME=matrix></A></P>
+
+<H2>Matrici</H2>
+
+<P>Creazione di un vettore come lista esplicita di elementi</P>
+
+<BLOCKQUOTE><PRE>B = &#91;1 2 3 4;5 6 7 8;9 10 11 12&#93;</PRE></BLOCKQUOTE>
+
+<P>oppure</P>
+
+<BLOCKQUOTE><PRE>B = &#91; 1  2  3  4
+   
+      5  6  7  8
+   
+      9 10 11 12&#93;</PRE></BLOCKQUOTE>
+
+<P>oppure</P>
+
+<BLOCKQUOTE><PRE>B = &#91;1:4;5 6 7 8;9 10 11 12&#93;</PRE></BLOCKQUOTE>
+
+<P>Generazione di matrici "speciali"</P>
+
+<BLOCKQUOTE><PRE>zeros (2,3)
+ones(3,3)
+eye(4,4)</PRE>
+   
+   <P><FONT SIZE="-2">&nbsp;</FONT></P></BLOCKQUOTE>
+
+<P>L'elemento (i,j) della matrice B</P>
+
+<BLOCKQUOTE><PRE>B(2,3)</PRE></BLOCKQUOTE>
+
+<P>oppure</P>
+
+<BLOCKQUOTE><PRE>B(8)</PRE></BLOCKQUOTE>
+
+<P><FONT SIZE="-2">&nbsp;</FONT></P>
+
+<P>La matrice trasposta di B</P>
+
+<BLOCKQUOTE><PRE>C = B'</PRE></BLOCKQUOTE>
+
+<P><FONT SIZE="-2">&nbsp;</FONT></P>
+
+<P>Il prodotto tra matrici</P>
+
+<BLOCKQUOTE><PRE>D = B * C
+D  = C * B</PRE></BLOCKQUOTE>
+
+<PRE></PRE>
+
+<P>Il prodotto tra elementi corrispondenti (le matrici devono avere
+la stessa dimensione)</P>
+
+<BLOCKQUOTE><PRE>E = &#91;1 2;3 4&#93;
+   
+F = &#91;2 3;4 5&#93;
+   
+G = E .* F</PRE></BLOCKQUOTE>
+
+<P><FONT SIZE="-2">&nbsp;</FONT></P>
+
+<P>Il cubo di una marice quadrata</P>
+
+<BLOCKQUOTE><PRE>E^3</PRE></BLOCKQUOTE>
+
+<PRE></PRE>
+
+<P>Il cubo di ciascun elemento di E</P>
+
+<BLOCKQUOTE><PRE>E.^3</PRE></BLOCKQUOTE>
+
+<PRE></PRE>
+
+<P>Il determinante di E</P>
+
+<BLOCKQUOTE><PRE>d = det(E)</PRE></BLOCKQUOTE>
+
+<P>la sua inversa</P>
+
+<BLOCKQUOTE><PRE>X = inv(E)</PRE></BLOCKQUOTE>
+
+<PRE></PRE>
+
+<P>i suoi autovalori</P>
+
+<BLOCKQUOTE><PRE>eig(E)
+   </PRE></BLOCKQUOTE>
+
+<P>i suoi autovettori e autovalori</P>
+
+<BLOCKQUOTE><PRE>&#91;V,D&#93; = eig(E)  %solo per matrici diagonalizzabili!</PRE></BLOCKQUOTE>
+
+<P>il suo polinomio caratteristico</P>
+
+<BLOCKQUOTE><PRE>p = poly(E)</PRE></BLOCKQUOTE>
+
+<PRE></PRE>
+
+<P>le radici di p</P>
+
+<BLOCKQUOTE><PRE>roots(p)   %= ?</PRE></BLOCKQUOTE>
+
+<P><A NAME=mfile></A></P>
+
+<H2>M-file</H2>
+
+<P>File (testo) di comandi Matlab con estensione .m</P>
+
+<P>Esistono due tipi di M-file</P>
+
+<P>Script <FONT SIZE="-1">non accettano argomenti in ingresso e non
+restituiscono argomenti in uscita, operano sui dati del
+workspace</FONT></P>
+
+<P><A HREF="#funstruct">Funzioni</A><B> </B><FONT SIZE="-1">possono
+accettare argomenti in ingresso e restituire argomenti in uscita,
+operano su variabili locali (default)</FONT></P>
+
+<P><FONT SIZE="-2">&nbsp;</FONT></P>
+
+<P><FONT SIZE="+1"><A NAME=function></A></FONT></P>
+
+<H2>Funzioni</H2>
+
+<P>Matlab contiene tutte le funzioni matematiche standard come sin,
+cos, log, exp, sqrt e molte altre. Sono inoltre definite costanti di
+uso comune come pi e i o j per la radice quadrata di -1.</P>
+
+<BLOCKQUOTE><PRE>sin(pi/4)
+help sin
+help elfun
+help elmat</PRE></BLOCKQUOTE>
+
+<P>Alcune funzioni come sqrt e sin sono <I>built in, </I>altre<I>
+</I>sono implementate in M-file.</P>
+
+<P>E' possibile creare nuove funzioni con il comando
+<TT>function</TT>.</P>
+
+<BLOCKQUOTE><PRE>function &#91;output1,output2&#93; = filename(input1,input2,input3)</PRE></BLOCKQUOTE>
+
+<P>filename.m e' il file contenente la nuova funzione</P>
+
+<P>ESEMPIO1</P>
+
+<BLOCKQUOTE><PRE>function &#91;var3&#93; = add(var1,var2)
+%add is a function that adds two numbers
+var3 = var1+var2;</PRE></BLOCKQUOTE>
+
+<P>ESEMPIO2</P>
+
+<BLOCKQUOTE><PRE>function&#91;poly&#93;=polyadd(poly1,poly2)
+%Copyright 1996 Justin Shriver
+%polyadd(poly1,poly2) adds two polynominals possibly of uneven length
+if length(poly1)&lt;length(poly2)
+  short=poly1;
+  long=poly2;
+else
+  short=poly2;
+  long=poly1;
+end
+mz=length(long)-length(short);
+if mz&gt;0
+  poly=&#91;zeros(1,mz),short&#93;+long;
+else
+  poly=long+short;
+end
+   </PRE></BLOCKQUOTE>
+
+<PRE><FONT SIZE="-2"><A NAME=funstruct></A></FONT></PRE>
+
+<P>Struttura di una funzione</P>
+
+<PRE>function&#91;poly&#93;=polyadd(poly1,poly2)        %definizione della funzione
+% H1 Line -- <FONT SIZE="-1">descrizione sintetica della funzione (compare con "lookfor" e help su una</FONT> <FONT SIZE="-1">dir)
+</FONT>% Help Text -- descrizione estesa (compare con "help &lt;nomefunzione&gt;)
+
+% Il corpo della funzione di solito inizia dopo la prima riga bianca
+% Eventuali commenti per uso interno</PRE>
+
+<BLOCKQUOTE><PRE>if length(poly1)&lt;length(poly2)     % inizia il codice
+  short=poly1;                     % short, long, mz
+  long=poly2;                      % sono variabili locali
+else
+  short=poly2;
+  long=poly1;
+end
+mz=length(long)-length(short);
+if mz&gt;0
+  poly=&#91;zeros(1,mz),short&#93;+long;
+else
+  poly=long+short;
+end
+   </PRE></BLOCKQUOTE>
+
+<PRE></PRE>
+
+<P>Istruzionidi controllo</P>
+
+<PRE>	if
+	switch
+	while
+	for 
+	continue
+	break 
+	try...catch
+	return<FONT SIZE="-2">&nbsp;</FONT></PRE>
+
+<P><A NAME=plot></A></P>
+
+<H2>Grafica</H2>
+
+<P>Per graficare la funzione sin(t)</P>
+
+<BLOCKQUOTE><PRE>t=0:0.25:7;
+y = sin(t);
+plot(t,y)</PRE></BLOCKQUOTE>
+
+<P>oppure</P>
+
+<BLOCKQUOTE><PRE>fplot('sin',&#91;0 7&#93;)</PRE></BLOCKQUOTE>
+
+<PRE><A NAME=help></A></PRE>
+
+<H2>Help</H2>
+
+<BLOCKQUOTE><PRE>help <TT>commandname</TT></PRE></BLOCKQUOTE>
+
+<P></P>
+</BODY>
+</HTML>

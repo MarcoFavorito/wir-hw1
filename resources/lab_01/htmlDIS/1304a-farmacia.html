@@ -1,0 +1,144 @@
+<html>
+<head>
+<title>Secondo appello 2004 - Compito Farmacia</title>
+</head>
+
+<body>
+
+<h1>Secondo appello 2004</h1>
+
+<p>
+La prova dura un'ora e tre quarti.
+</p>
+
+<p>
+<b>Riempire il file <tt>studenteid.txt</tt> con i propri
+dati.</b>
+</p>
+
+<p>
+Vengono dati: due programmi di prova, un file di prova, e il
+testo del compito in formato html. Lo studente deve
+realizzare due classi che vengono usate dai due programmi di
+prova. <b>Le soluzioni devono trovarsi nella stessa cartella
+<tt>Esame</tt> dove si trovano i programmi di prova</tt>
+pena l'annullamento dell'esame.</b>
+</p>
+
+<hr>
+
+<h3>Prima parte</h3>
+
+<p>
+Un grossista di medicinali vuole realizzare un sistema
+informatico per gestire il magazzino. Realizzare quindi la
+classe <tt>Medicina</tt> che rappresenta una specifica
+fornitura di medicinali. Le componenti di questi oggetti
+devono essere:
+</p>
+
+<dl>
+
+<dt><tt>nome</tt>
+<dd>una stringa che indica il nome della componente
+
+<dt><tt>anno</tt>
+<dd>un intero che indica l'anno di scandenza
+
+<dt><tt>mese</tt>
+<dd>un intero che indica il mese di scandeza
+
+<dt><tt>prezzo</tt>
+<dd>un numero reale
+
+<dt><tt>prescrizione</tt>
+<dd>un booleano che indica se il medicinale richiede
+prescrizione oppure no
+
+</dl>
+
+<p>
+Definire la classe incapsulata <tt>Medicina</tt>  i cui
+oggetti siano rappresentazione di forniture di medicinali. I
+nomi delle componenti devono essere <tt>nome</tt>,
+<tt>anno</tt>, <tt>mese</tt> e
+<tt>prezzo</tt>. Devono essere realizzati i seguenti metodi:
+</p>
+
+<ul>
+
+<li>metodi <tt>get</tt> e <tt>set</tt> per tutte le
+componenti; i metodi <tt>set</tt> per le componenti anno e
+mese devono verificare che l'anno sia fra il 2000 e il 2010
+e che il mese sia fra 1 e 12; in caso di errore, stampare un
+messaggio di errore e terminare il programma;
+
+<li>metodo costruttore che ha come argomento un
+<tt>BufferedReader</tt>; il metodo deve leggere i valori da
+mettere nell'oggetto da file; questi valori sono 
+memorizzati uno per linea; nel caso in cui il file
+finisca prima che si riescano a leggere tutte le componenti,
+si stampi un messaggio di errore e si esca dal programma;
+la componente <tt>prescrizione</tt> &egrave; memorizzata
+come <tt>si</tt> oppure <tt>no</tt> a seconda se la
+prescrizione &egrave; richiesta oppure no;
+
+<li>un metodo toString che restituisce una stringa in cui ci
+sono tutte le componenti dell'oggetto.
+
+</ul>
+
+<hr>
+
+
+<h3>Seconda parte</h3>
+
+<p>
+Definire una seconda classe <tt>Farmacia</tt> i cui
+oggetti rappresentano tutte le forniture di medicinali per
+una certa farmacia. Ogni oggetto di questa classe &egrave;
+quindi la rappresentazione di un insieme di oggetti
+<tt>Medicina</tt>. Per rappresentare insiemi di oggetti,
+usare un array.
+</p>
+
+<p>
+Costruttore della classe: 
+</p>
+
+<dl>
+
+<dt>
+<tt>Farmacia(String nomefile)</tt>
+<dd>
+crea un oggetto <tt>Farmacia</tt> che rappresenta l'insieme
+di tutti gli oggetti <tt>Medicina</tt> che sono memorizzati
+nel file il cui nome &egrave; dato dalla stringa passata
+come argomento; la prima linea del file contiene il numero
+degli oggetti memorizzati su file.
+
+</dl>
+
+<p>
+Metodi della classe:
+</p>
+
+<dl>
+
+<dt><tt>void stampaTutti()</tt>
+<dd>stampa tutti gli elementi dell'array
+
+<dt><tt>double sommaPrezzo(String nome)</tt>
+<dd>calcola la somma del prezzo totale di tutte le medicine
+il cui nome &egrave; uguale a quello passato come
+parametro
+
+<dt><tt>void inScadenza()</tt>
+<dd>stampa tutti gli oggetti la cui data di scadenza
+&egrave; prima del mese di giugno 2004
+
+</dl>
+
+</body>
+</html>
+

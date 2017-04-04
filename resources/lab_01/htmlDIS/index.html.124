@@ -1,0 +1,334 @@
+<!doctype public "-//w3c//dtd html 4.01 transitional//en" 
+		"http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+   <title>Esercitazione 18 04 2005</title>
+   <link rel="stylesheet" href="../../fi2001.css" type="text/css">
+</head>
+<body>
+
+<body>
+<center>
+<p><b>Informatica</b> <br>
+<b>Ingegneria Idraulica Marittima e Trasporti, sede di Civitavecchia<br>
+
+Ingegneria della Sicurezza e Protezione, sede di Civitavecchia</b></p>
+</center>
+
+<p>
+<hr>
+<h2 align=center>Esercitazione 18 04 2005</h2>
+<h2 align=center>Definizione di classi e utilizzo tipi primitivi</h2>
+
+<hr>
+
+ <B>Esercizio&nbsp; 1 </B>Definire una classe <TT>Libro</TT> per gestire le informazioni
+associate ad un libro. Le informazioni di interesse per un libro sono il
+titolo, gli autori ed il prezzo. I metodi di interesse sono:
+
+ <UL>
+<LI>un costruttore che crea un oggetto libro, con titolo ed autori come
+  parametri
+</LI>
+<LI><TT>stampaLibro</TT> che stampa il titolo e gli autori di un libro su due
+  linee
+</LI>
+<LI><TT>stampaLibroPrezzo</TT> che stampa il titolo, gli autori ed il prezzo di
+  un libro
+</LI>
+<LI><TT>finestraLibro</TT> che stampa il titolo e gli autori di un libro su due
+  linee su una finestra di output
+</LI>
+<LI><TT>getTitolo</TT> che restituisce il titolo di un libro
+</LI>
+<LI><TT>getAutori</TT> che restituisce gli autori di un libro
+</LI>
+<LI><TT>getPrezzo</TT> che restituisce il prezzo di un libro
+</LI>
+<LI><TT>setPrezzo</TT> che modifica il prezzo di un libro, considerando il prezzo come una stringa passata come argomento
+</LI>
+</UL>
+
+<P>
+
+<P>
+
+<p><a href="soluzioni/eser1/libro.java">Soluzione</a></p>
+
+
+ <B>Esercizio&nbsp; 2 </B>Scrivere una classe Java che implementi un programma esempio per la
+classe <TT>Libro</TT> dell'esercizio 3.1. La classe esempio deve eseguire le
+seguenti operazioni:
+
+ <OL>
+<LI>legge il titolo di un primo libro e gli autori, e lo memorizza in un
+  oggetto corrispondente
+</LI>
+<LI>legge il titolo di un secondo libro e gli autori, e lo memorizza
+  in un oggetto corrispondente
+</LI>
+<LI>visualizza il primo libro
+</LI>
+<LI>visualizza il secondo libro
+</LI>
+<LI>legge il costo del primo libro ed aggiorna l'oggetto
+  corrispondente
+</LI>
+<LI>visualizza il primo libro con il prezzo
+</LI>
+</OL>
+
+<P>
+
+<P>
+
+
+<p><a href="soluzioni/eser1/provaLibro.java">Soluzione</a></p>
+
+<p>
+ <B>Esercizio&nbsp; 2b </B>
+aggiungere alla classe precedente un metodo statico che legge da input il titolo e gli autori di un libro e restituisce un oggetto di tipo libro con il prezzo a null
+</p>
+<p>&nbsp; &nbsp; &nbsp; <a href="soluzioni/eser1/libro2.java"> Soluzione classe Libro</a></p>
+<p>&nbsp; &nbsp; &nbsp; <a href="soluzioni/eser1/provaLibro2.java"> File di prova </a></p>
+
+<B>Esercizio 3</B> 
+<blockquote> Definire una classe <code>CD</code> per gestire le informazioni associate 
+  ad un CD, ovvero autore, titolo, casa discografica, e nome del proprietario. 
+  <p> Le operazioni di interesse sono: 
+  <ul>
+    <li><code>creaCD</code> che crea un oggetto CD, con autore, titolo e casa 
+      discografica; </li>
+    <li><code>stampaCD</code> che stampa autore, titolo e casa discografica di 
+      un CD su tre linee; </li>
+    <li><code>stampaProprietarioCD</code> che stampa i dati del proprietario di 
+      un CD; </li>
+    <li><code>getAutore</code> che restituisce l'autore di un CD; </li>
+    <li><code>getTitolo</code> che restituisce il titolo di un CD; </li>
+    <li><code>getCasa</code> che restituisce la casa discografica di un CD; </li>
+    <li><code>getProprietario </code> che restituisce il proprietario di un CD; 
+    </li>
+    <li><code>setProprietario </code> che imposta il proprietario di un CD alla 
+      stringa passata come parametro. </li>
+  </ul>
+<p>&nbsp; &nbsp; &nbsp; <a href="soluzioni/eser3/CD.java">Soluzione</a></p>
+
+
+</blockquote>
+
+<b>Esercizio 4</b> 
+<blockquote> Scrivere un programma java che implementi un esempio per la classe 
+  <code>CD</code> dell'esercizio 3 <br>
+  La classe esempio deve eseguire le seguenti operazioni: 
+  <ul>
+    <li> legge il titolo di un primo CD, l'autore e la casa discografica e li 
+      memorizza in un oggetto corrispondente; </li>
+    <li> legge il titolo di un secondo CD, l'autore e la casa discografica e li 
+      memorizza in un oggetto corrispondente; </li>
+    <li> visualizza il primo CD; </li>
+    <li> visualizza il secondo CD; </li>
+    <li> legge il proprietario del primo CD ed aggiorna l'oggetto corrispondente; 
+    </li>
+    <li> visualizza il primo CD con il proprietario. </li>
+  </ul>
+
+  &nbsp; &nbsp; &nbsp; <a href="soluzioni/eser3/ClienteCD.java">Soluzione</a>
+
+</blockquote>
+
+<p><b>Esercizio 5</b></p>
+<blockquote>Scrivere una classe <tt>Persona</tt> i cui oggetti mantengano
+le seguenti informazioni su una persona: 
+ <ol>
+ <li> Nome</li>
+ <li> Cognome</li>
+ <li> Titolo (es. "Sig.", o "Ing.")</li>
+ <li> Professione</li>
+ </ol>
+ La classe <tt>Persona</tt> deve fornire i seguenti metodi: 
+ <ol>
+ <li> Costruttore che riceva nome, cognome, titolo e professione e inizializzi
+ le informazioni dell'oggetto.</li>
+ <li> Costruttore che riceva solo nome e cognome e inizializzi le informazioni
+ dell'oggetto assumendo come titolo la stringa nulla "" e come professione
+ "disoccupato".</li>
+ <li> Metodo <tt>ottieniInfoPersona</tt> che restituisca una stringa con
+tutte le informazioni sulla persona (es.: "ing. Marco Bianchi, professione
+analista programmatore").</li>
+ <li> Metodo <tt>setTitolo</tt> che riceva una stringa titolo e cambi
+l'informazione relativa al titolo della persona memorizzata nell'oggetto.</li>
+ <li> Metodo <tt>set</tt><tt>Professione</tt> che riceva una stringa professione
+ e cambi l'informazione relativa alla professione della persona memorizzata
+ nell'oggetto.</li>
+ <li> Metodo statico <tt>LeggiPersona()</tt> che legge nome e cognome di una persona da input e metta a null gli altri campi </li>
+
+
+ </ol>
+ Scrivere un programma di prova <tt>ProvaPersona</tt> che: 
+ <ol>
+ <li> Costruisca un oggetto <tt>persona1</tt> della classe <tt>Persona</tt>
+ per Marco Bianchi, di professione disoccupato.</li>
+ <li> Costruisca un oggetto <tt>persona2</tt> della classe <tt>Persona</tt>
+ per il Sig. Renato Caputo, di professione barbiere.</li>
+ <li> Stampi su schermo la stringa ottenuta invocando il metodo <tt>ottieniInfoPersona</tt>
+ su <tt>persona1</tt>. Dovrebbe comparire la scritta: " Marco Bianchi,
+professione disoccupato".</li>
+ <li> Stampi su schermo la stringa ottenuta invocando il metodo <tt>ottieniInfoPersona</tt>
+ su <tt>persona2</tt>. Dovrebbe comparire la scritta: "Sig. Renato Caputo,
+ professione barbiere".</li>
+ <li> Modifichi il titolo di <tt>persona1</tt> a "Ing." e la professione
+ad "analista programmatore" invocando i metodi <tt>set</tt><tt>Titolo</tt>
+e <tt>set</tt><tt>Professione</tt>.</li>
+ <li> Stampi su schermo la stringa ottenuta invocando il metodo <tt>ottieniInfoPersona</tt>
+ su <tt>persona1</tt>. Dovrebbe comparire la scritta: "Ing. Marco Bianchi,
+ professione analista programmatore"</li>
+<li> Legga da input nome e cognome di una persona tramite il metodo statico della classe, e stampi le informazioni dell'oggetto creato da tale metodo</li>
+ </ol>
+</blockquote>
+
+
+
+<p><b>Esercizio 6</b> <br>
+</p>
+<p>Scrivere un programma che legga da tastiera due numeri    interi e stampi
+su schermo:   </p>
+<ul>
+  <li>la loro media aritmetica (la loro somma diviso 2)</li>
+  <li>la loro media geometrica (la radice quadrata del loro prodotto)</li>
+  <li>il massimo e il minimo dei due</li>
+</ul>
+ [Suggerimento: usare i metodi della classe <code>Math</code>. Ad esempio,
+per  calcolare la radice quadrata usare il metodo <code>Math.sqrt</code>]
+
+  &nbsp; &nbsp; &nbsp; <a href="soluzioni/provaMat.java">Soluzione</a>
+</blockquote>
+
+<p><b>Esercizio 7</b></p>
+    
+<p>Progettare e realizzare una classe Java <code>CassaCambioDollari</code>,
+ che rappresenta casse automatiche che consentono di cambiare dollari in
+euro.  Delle casse sono d'interesse le seguenti funzionalit&agrave;<code>:</code>
+ </p>
+ 
+<ul>
+    <li><em>cassaVuota</em>: crea una cassa contenete 0 euro come scorta
+e con       un tasso di cambio euro/dollaro pari a 0;</li>
+    <li><em>quantiEuro</em>: restituisce la quantit&agrave; di euro presenti
+       nella scorta della cassa;</li>
+    <li><em>mettiEuro</em>: aggiunge q euro nella cassa, dove q &egrave;
+un        reale;</li>
+    <li><em>fissaCambio</em>: fissa il tasso di cambio euro/dollaro della
+      cassa;</li>
+    <li><em>qualeCambio</em>: restituisce il tasso di cambio praticato dalla
+       cassa;</li>
+    <li><em>cambia</em>: prende come parametro una quantit&agrave; di dollari
+       (un reale) e restituisce la quantit&agrave; di euro (un reale)   
+   corrispondente secondo il proprio tasso e aggiornando opportunamente la
+       propria scorta. 
+       <!-- Se la quantit&agrave; di euro nella scorta &egrave;
+       insufficiente non effettua il cambio (restituisce 0) e stampa il 
+     messaggio <code>"Scorta insufficiente"</code>.</li>-->
+   
+</ul>
+    
+<p>Si ricorda che il tasso di cambio euro/dollaro si definisce come numero 
+di euro che possono essere acquistati con un dollaro.</p>
+
+<p> Scrivere anche un programma di prova per la Cassa di cambio che utilizzi i metodi implementati</p>
+
+<!--
+<p><a
+ href="soluzioni/eser7/CassaCambioDollari.java">Soluzione Cassa Cambio Dollari</a></p> 
+
+<p><a
+ href="soluzioni/eser7/provaCambioDollari.java">Soluzione cliente di Cassa Cambio Dollari</a></p> 
+-->
+
+<p><b>Esercizio 8</b></p>
+    
+<p>Realizzare un predicato Xor che prenda in ingresso due valori di tipo boolean e restituisca lo XOR dei due valori, ricordiamo che la tabella di verità per lo XOR &egrave la seguente:
+
+  <tr>
+    <td>
+      <table width="90%" border="1" cellspacing="0" cellpadding="2">
+        <tr bgcolor="#CCCCCC"> 
+          <td><code>A</code></td>
+          <td><code>B</code></td>
+          <td><code>A XOR B</code></td>
+        </tr>
+        <tr> 
+          <td><code>true</code></td>
+          <td><code>true</code></td>
+          <td><code>false</code></td>
+        </tr>
+        <tr> 
+          <td><code>false</code></td>
+          <td><code>true</code></td>
+          <td><code>true</code></td>
+        </tr>
+        <tr> 
+          <td><code>true</code></td>
+          <td><code>false</code></td>
+          <td><code>true</code></td>
+        </tr>
+        <tr> 
+          <td><code>false</code></td>
+          <td><code>false</code></td>
+          <td><code>false</code></td>
+        </tr>
+      </table>
+    </td>
+</p>
+
+ </p>
+ 
+<!--
+<p><a href="soluzioni/eser8/">Soluzione</a></p> 
+-->
+
+ [Suggerimento: lo XOR pu&ograve essere espresso utilizzando gli operatori AND ed OR 
+come A XOR B = (A OR B) AND((NOT A) OR (NOT B))]
+
+<p><b>Esercizio 9</b></p>
+    
+Scrivere una classe <code>Prodotto</code> per mantenere 
+informazioni su una partita di un prodotto stoccata in un magazzino merci. Ogni 
+oggetto <code>Prodotto</code> &egrave; caratterizzato da nome del prodotto e numero 
+di pezzi di quel prodotto stoccati in magazzino. Si implementino i metodi <code>caricaPezzi</code> 
+(per effettuare un'aggiunta di pezzi alla partita) e <code>scaricaPezzi</code> 
+(per effettuare una rimozione di pezzi alla partita) e il metodo <code>toString</code> 
+che restituisce una stringa con le informazioni su una partita di un prodotto 
+(Es. &quot;Paralume Okinawa, 25 pz&quot;). 
+<p>Esempio d'uso: 
+    <blockquote> 
+      <pre>public class ProvaProdotto {
+  public static void main (String[] args) {
+     Prodotto lampadina = new Prodotto(&quot;Lampadina 60 Watt&quot;);
+     System.out.println(&quot;Prima delle operazioni... &quot;+lampadina);
+     lampadina.caricaPezzi(1000);
+     lampadina.scaricaPezzi(100);
+     System.out.println(&quot;Dopo le operazioni... &quot;+lampadina);
+  }
+}</pre>
+</blockquote> 
+</p>
+
+<!--
+<p><a href="soluzioni/eser9/Prodotto.java">Soluzione</a></p> 
+
+<p><a href="soluzioni/eser9/ProvaProdotto.java">file di prova</a></p> 
+-->
+
+<p><b>Esercizio 10</b></p>
+    
+Aggiungere alla classe precedente un predicato <tt>prodottoInEsaurimento</tt> 
+che restituisci un valore booleano indicante se il prodotto &egrave in esaurimento. Un prodotto &egrave in esaurimento se il numero di pezzi &egrave minore di cento unit&grave. 
+Modificare il metodo <tt>scaricaPezzi</tt> in modo che scarichi la quantit&agrave di pezzi desiderata solo se i pezzi da scaricare sono presenti in magazzino. Inoltre se a seguito dello scaricamento di un certo quantitativo dei pezzi il prodotto risulta in esaurimento si deve stampare un messaggio a finestra.
+
+<!--
+<p><a href="soluzioni/eser9/Prodotto2.java">Soluzione</a></p> 
+
+
+<p><a href="soluzioni/eser9/ProvaProdotto2.java">file di prova</a></p> 
+-->
+

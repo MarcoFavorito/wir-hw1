@@ -1,0 +1,93 @@
+<html>
+<head>
+<title>Prova al calcolatore 15/4/2003 - Compito C</title>
+</head>
+<body>
+
+<h1>Prova al calcolatore</h1>
+
+<p>
+<b>Compito C<br>
+Durata: 1:45</b>
+</p>
+
+<hr>
+
+<h4>Prima parte</h4>
+
+<p>
+La catena di vivaii ``Alberi puntuti'' vuole informatizzare
+il suo archivio. In particolare, per ogni albero, vanno
+memorizzate le seguenti informazioni:
+</p>
+
+<dl>
+
+<dt><tt>tipo</tt>
+<dd>il tipo dell'albero (una stringa)
+
+<dt><tt>altezza</tt>
+<dd>l'altezza in centimetri (un intero)
+
+<dt><tt>eta</tt>
+<dd>il numero di anni dell'albero (un intero)
+
+<dt><tt>venduto</tt>
+<dd>una stringa che indica se l'albero &egrave;
+stato venduto oppure no: questa stringa vale
+<tt>"si"</tt> oppure <tt>"no"</tt>
+
+</dl>
+
+<p>
+Si realizzi la classe <tt>Albero</tt> con le componenti
+indicate qui sopra. Questa classe deve essere incapsulata
+(tutte le variabili di istanza devono essere private), e
+deve avere i metodi <tt>get</tt> e <tt>set</tt> per tutte
+le variabili di istanza. Devono essere inoltre presenti
+il costruttore a quattro argomenti e i metodi
+<tt>equals</tt> e <tt>toString</tt>
+</p>
+
+<hr>
+
+<p>
+Per ogni vivaio della catenza, vanno memorizzati i dati
+relativi agli alberi in essa presenti. Si realizzi quindi
+la classe <tt>Vivaio</tt>: ogni oggetto di questa classe
+rappresenta quindi un insieme di oggetti <tt>Albero</tt>.
+</p>
+
+<p>
+La classe deve contenere i seguenti metodi:
+</p>
+
+<dl>
+
+<dt><tt>Albero readAlbero(BufferedReader br) throws IOException</tt>
+<dd>ha come argomento un <tt>BufferedReader</tt>, da cui
+vanno letti i dati di un oggetto <tt>Albero</tt>; tale
+oggetto &egrave; il valore di ritorno del metodo; il metodo
+torna <tt>null</tt> se non &egrave; stato possibile leggere
+i dati dell'albero a causa della fine del file;
+
+<dt><tt>Vivaio(String nomefile) throws IOException</tt>
+<dd>il costruttore ha come argomento il nome di un file
+che contiene i dati degli alberi che vanno memorizzati
+nell'oggetto <tt>Vivaio</tt>
+
+<dt><tt>void aumentaEta()</tt>
+<dd>alla fine dell'anno, l'et&agrave; di tutti gli alberi
+presenti va aumentata di uno; questa operazione viene svolta
+da questo metodo
+
+<dt><tt>Albero piuAlto(String tipo)</tt>
+<dd>ritorna l'albero pi&ugrave; alto di un certo tipo (che
+viene passato come parametro); se non ci sono alberi di quel
+tipo, si ritorna <tt>null</tt>
+
+</dl>
+
+</body>
+</html>
+

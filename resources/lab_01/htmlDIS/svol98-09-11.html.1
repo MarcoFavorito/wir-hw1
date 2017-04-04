@@ -1,0 +1,399 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0//EN">
+<!-- Created by htmlize-0.46 in css mode. -->
+<html>
+  <head>
+    <title>svol98-09-11.c</title>
+    <style type="text/css">
+    <!--
+      BODY {
+        color: #000000;
+        background-color: #ffffff;
+      } /* default */
+      span.keyword {
+        color: #006400;
+      } /* font-lock-keyword-face */
+      span.function-name {
+        color: #0000cd;
+      } /* font-lock-function-name-face */
+      span.string {
+        color: #b22222;
+      } /* font-lock-string-face */
+      span.comment {
+        color: #4682b4;
+      } /* font-lock-comment-face */
+      span.variable-name {
+        color: #a52a2a;
+      } /* font-lock-variable-name-face */
+      span.type {
+        color: #ff00ff;
+      } /* font-lock-type-face */
+      span.builtin {
+        color: #da70d6;
+      } /* font-lock-builtin-face */
+    -->
+    </style>
+  </head>
+  <body>
+    <pre>
+#<span class="builtin">include</span> <span class="string">&lt;stdio.h&gt;</span>
+#<span class="builtin">include</span> <span class="string">&lt;string.h&gt;</span>
+#<span class="builtin">include</span> <span class="string">&lt;stdlib.h&gt;</span>
+
+#<span class="builtin">define</span> <span class="variable-name">N</span> 22
+
+<span class="type">struct</span> <span class="variable-name">elem</span> {
+	<span class="type">char</span> <span class="variable-name">farmaco</span>[13];
+	<span class="type">char</span> <span class="variable-name">data</span>[7];
+	<span class="type">struct</span> elem *<span class="variable-name">next</span>;
+};
+
+<span class="type">typedef</span> <span class="type">struct</span> elem <span class="variable-name">Elem</span>;
+
+<span class="type">struct</span> <span class="variable-name">componente</span> {
+	<span class="type">unsigned</span> <span class="type">long</span> <span class="variable-name">matricola</span>;
+	Elem *terapia;
+};
+
+<span class="type">typedef</span> <span class="type">struct</span> componente <span class="variable-name">Componente</span>;
+
+
+<span class="comment">/* prototipi */</span>
+<span class="type">FILE</span> *<span class="function-name">ApriFile</span>(<span class="type">char</span> *, <span class="type">char</span> *);
+<span class="type">void</span> <span class="function-name">CopianeDue</span>(<span class="type">char</span> *, <span class="type">char</span> *);
+<span class="type">void</span> <span class="function-name">Rovescia</span>(<span class="type">char</span> *, <span class="type">char</span> *);
+<span class="type">int</span> <span class="function-name">ConfrontaDate</span>(<span class="type">char</span> *, <span class="type">char</span> *);
+<span class="type">void</span> <span class="function-name">EliminaElemento</span>(Elem **, Elem *);
+<span class="type">void</span> <span class="function-name">ControllaArchivio</span>(Componente *, <span class="type">char</span> *, <span class="type">char</span> *);
+<span class="type">void</span> <span class="function-name">EliminaProibiti</span>(Componente *, <span class="type">char</span> *);
+<span class="type">Elem</span> *<span class="function-name">CreaElemento</span>(<span class="type">char</span> *, <span class="type">char</span> *);
+<span class="type">void</span> <span class="function-name">InserisciInCoda</span>(Elem **, Elem *, Elem *);
+<span class="type">Elem</span> *<span class="function-name">CreaListaAmmessi</span>(<span class="type">char</span> *);
+<span class="type">void</span> <span class="function-name">StampaLista</span>(Elem *);
+<span class="type">void</span> <span class="function-name">StampaArchivioAtleti</span>(Componente *);
+<span class="type">void</span> <span class="function-name">CostruisciArchivioAtletiDaFile</span>(Componente *, <span class="type">char</span> *);
+<span class="type">void</span> <span class="function-name">CostruisciArchivioAtletiDaTastiera</span>(Componente *);
+<span class="type">int</span> <span class="function-name">main</span>(<span class="type">void</span>);
+<span class="comment">/* fine prototipi */</span>
+
+
+
+<span class="type">FILE</span> *<span class="function-name">ApriFile</span>(<span class="type">char</span> *<span class="variable-name">nome</span>, <span class="type">char</span> *<span class="variable-name">modo</span>)
+{
+	<span class="type">FILE</span> *<span class="variable-name">f</span>;
+	f=fopen(nome,modo);
+	<span class="keyword">if</span>(f==NULL) {
+		fprintf(stderr,<span class="string">&quot;Errore apertura file %s in modalita` %s. Programma terminato.\n&quot;</span>,nome,modo);
+		exit(2);
+	}
+	<span class="keyword">return</span> f;
+}
+
+
+
+<span class="type">void</span> <span class="function-name">CopianeDue</span>(<span class="type">char</span> *<span class="variable-name">sorg</span>, <span class="type">char</span> *<span class="variable-name">dest</span>)
+{
+	dest[0]=sorg[0];
+	dest[1]=sorg[1];
+	<span class="keyword">return</span>;
+}
+
+
+
+<span class="type">void</span> <span class="function-name">Rovescia</span>(<span class="type">char</span> *<span class="variable-name">sorg</span>, <span class="type">char</span> *<span class="variable-name">dest</span>)
+{
+	<span class="type">int</span> <span class="variable-name">i</span>;
+	<span class="keyword">for</span>(i=0; i&lt;=4; i=i+2)
+		CopianeDue(sorg+4-i, dest+i);
+	dest[6]=<span class="string">'\0'</span>;
+	<span class="keyword">return</span>;
+}
+
+
+
+<span class="comment">/*
+equivalentemente si puo` far uso della seguente funzione Rovescia
+
+void Rovescia(char *sorg, char *dest)
+{
+	dest[0]=sorg[4];
+	dest[1]=sorg[5];
+	dest[2]=sorg[2];
+	dest[3]=sorg[3];
+	dest[4]=sorg[0];
+	dest[5]=sorg[1];
+	dest[6]='\0';
+	return;
+}
+*/</span>
+
+
+
+<span class="type">int</span> <span class="function-name">ConfrontaDate</span>(<span class="type">char</span> *<span class="variable-name">d1</span>, <span class="type">char</span> *<span class="variable-name">d2</span>)
+<span class="comment">/* restituisce:
+	 1 se d1 dopo d2
+	 0 se d1 e` eguale a d2
+	-1 se d1 prima di d2
+*/</span>
+{
+	<span class="type">char</span> <span class="variable-name">d1rovesciata</span>[7],  <span class="variable-name">d2rovesciata</span>[7];
+	
+	Rovescia(d1,d1rovesciata);
+	Rovescia(d2,d2rovesciata);
+	<span class="keyword">return</span> strcmp(d1rovesciata,d2rovesciata);
+}
+
+
+
+<span class="type">void</span> <span class="function-name">EliminaElemento</span>(Elem **testa, Elem *prec)
+{
+	Elem *morituro;
+	
+	<span class="keyword">if</span>(prec==NULL) {
+		morituro=*testa;
+		*testa=(*testa)-&gt;next;
+	} <span class="keyword">else</span> {
+		morituro=prec-&gt;next;
+		prec-&gt;next=morituro-&gt;next;
+	}
+	free(morituro);
+		
+	<span class="keyword">return</span>;
+}
+
+
+
+<span class="type">void</span> <span class="function-name">ControllaArchivio</span>(Componente *atleti, <span class="type">char</span> *<span class="variable-name">farmacovietato</span>, <span class="type">char</span> *<span class="variable-name">datadivieto</span>)
+{
+	<span class="type">int</span> <span class="variable-name">i</span>;
+	Elem *precedente, *corrente, *prossimo;
+	
+	<span class="keyword">for</span>(i=0; i&lt;N; i=i+1) {
+		precedente=NULL;
+		corrente=atleti[i].terapia;
+		<span class="keyword">while</span>(corrente!=NULL) {
+			prossimo=corrente-&gt;next;
+			<span class="keyword">if</span>((strcmp(corrente-&gt;farmaco,farmacovietato)==0) &amp;&amp;
+			   (ConfrontaDate(corrente-&gt;data,datadivieto) &gt; -1))
+				EliminaElemento(&amp;(atleti[i].terapia),precedente);
+			<span class="keyword">else</span>
+				precedente=corrente;
+			corrente=prossimo;
+		}
+	}
+	
+	<span class="keyword">return</span>;
+}
+
+
+
+<span class="type">void</span> <span class="function-name">EliminaProibiti</span>(Componente *atleti, <span class="type">char</span> *<span class="variable-name">nomefile</span>)
+{
+	<span class="type">FILE</span> *<span class="variable-name">f</span>;
+	<span class="type">char</span> <span class="variable-name">farmaco</span>[13], <span class="variable-name">data</span>[7], <span class="variable-name">newline</span>;
+	<span class="type">int</span> <span class="variable-name">ammesso</span>,<span class="variable-name">letti</span>;
+	
+	f=ApriFile(nomefile,<span class="string">&quot;r&quot;</span>);
+	<span class="keyword">while</span>((letti=fscanf(f,<span class="string">&quot;%s %d %s%c&quot;</span>,farmaco,&amp;ammesso,data,&amp;newline))==4)
+		<span class="keyword">if</span>(ammesso==0)
+			ControllaArchivio(atleti, farmaco, data);
+	<span class="keyword">if</span>((letti!=EOF)||(!feof(f))) {
+		fprintf(stderr,<span class="string">&quot;Formato errato nel file %s. Programma terminato.\n&quot;</span>,nomefile);
+		exit(1); <span class="comment">/* exit() chiude automaticamente i file aperti */</span>
+	}
+	fclose(f);
+	<span class="keyword">return</span>;
+}
+
+
+
+<span class="type">Elem</span> *<span class="function-name">CreaElemento</span>(<span class="type">char</span> *<span class="variable-name">farmaco</span>, <span class="type">char</span> *<span class="variable-name">data</span>)
+{
+	Elem *nuovo;
+	nuovo=malloc(<span class="keyword">sizeof</span>(Elem));
+	<span class="keyword">if</span>(nuovo==NULL) {
+		fprintf(stderr,<span class="string">&quot;Memoria esaurita. Programma terminato.\n&quot;</span>);
+		exit(3); 
+	}
+	strcpy(nuovo-&gt;farmaco,farmaco);
+	strcpy(nuovo-&gt;data, data);
+	nuovo-&gt;next=NULL;
+	<span class="keyword">return</span> nuovo;
+}
+
+
+
+<span class="type">void</span> <span class="function-name">InserisciInCoda</span>(Elem **testa, Elem *coda, Elem *nuovo)
+{
+	<span class="keyword">if</span>(coda==NULL)
+		*testa=nuovo;
+	<span class="keyword">else</span>
+		coda-&gt;next=nuovo;
+	<span class="keyword">return</span>;
+}
+
+
+
+<span class="type">Elem</span> *<span class="function-name">CreaListaAmmessi</span>(<span class="type">char</span> *<span class="variable-name">nomefile</span>)
+{
+	<span class="type">FILE</span> *<span class="variable-name">f</span>;
+	<span class="type">int</span> <span class="variable-name">ammesso</span>,<span class="variable-name">letti</span>;
+	Elem *lista, *coda, *nuovo;
+	<span class="type">char</span> <span class="variable-name">farmaco</span>[13], <span class="variable-name">data</span>[7], <span class="variable-name">newline</span>;
+	
+	f=ApriFile(nomefile,<span class="string">&quot;r&quot;</span>);
+	
+	lista=NULL;
+	coda=NULL;
+	
+	<span class="keyword">while</span>((letti=fscanf(f,<span class="string">&quot;%s %d %s%c&quot;</span>,farmaco,&amp;ammesso,data,&amp;newline))==4)
+		<span class="keyword">if</span>(ammesso==1) {
+			nuovo=CreaElemento(farmaco,data);
+			InserisciInCoda(&amp;lista,coda,nuovo);
+			coda=nuovo;
+		}
+	
+	<span class="keyword">if</span>((letti!=EOF)||(!feof(f))) {
+		fprintf(stderr,<span class="string">&quot;Formato errato nel file %s. Programma terminato.\n&quot;</span>,nomefile);
+		exit(1); <span class="comment">/* exit() chiude automaticamente i file aperti */</span>
+	}
+	fclose(f);
+	<span class="keyword">return</span> lista;
+}
+
+
+
+<span class="type">void</span> <span class="function-name">StampaLista</span>(Elem *lista)
+{
+	<span class="keyword">for</span>(; lista != NULL; lista=lista-&gt;next)
+		printf(<span class="string">&quot;Farmaco %s, data %s\n&quot;</span>,lista-&gt;farmaco, lista-&gt;data);
+	<span class="keyword">return</span>;
+}
+
+
+
+<span class="type">void</span> <span class="function-name">StampaArchivioAtleti</span>(Componente *atleti)
+{
+	<span class="type">int</span> <span class="variable-name">i</span>;
+	<span class="keyword">for</span>(i=0;i&lt;N;i=i+1) {
+		printf(<span class="string">&quot;Atleta mat. %lu - Prescrizioni:\n&quot;</span>,atleti[i].matricola);
+		StampaLista(atleti[i].terapia);
+		printf(<span class="string">&quot;--\n&quot;</span>);
+	}
+	<span class="keyword">return</span>;
+}
+
+
+
+<span class="type">void</span> <span class="function-name">CostruisciArchivioAtletiDaFile</span>(Componente *atleti, <span class="type">char</span> *<span class="variable-name">nomefile</span>)
+<span class="comment">/* 
+	Consente di leggere l'archivio atleti da file.
+	In contrapposizione, la funzione CostruisciArchivioAtletiDaTastiera 
+	(vedi) consente di leggere l'archivio da tastiera.
+	
+	Il file (di testo) ha il seguente formato: 
+	matricola1
+		farmaco11 data11
+		farmaco12 data12
+	matricola2
+		farmaco21 data21
+	matricola3
+	matricola4
+		
+	ove si suppone che il primo atleta abbia due prescrizioni,
+	il secondo una, il terzo e il quarto nessuna; ogni prescrizione occupa
+	una linea cosi` composta: tabulatore, farmaco, spazio bianco,
+	data, newline ('\n')
+*/</span>
+{
+	<span class="type">FILE</span> *<span class="variable-name">f</span>;
+	<span class="type">int</span> <span class="variable-name">i</span>;
+	<span class="type">char</span> <span class="variable-name">farmaco</span>[13], <span class="variable-name">data</span>[7], <span class="variable-name">linea</span>[22];
+	Elem *coda, *nuovo;
+
+	f=ApriFile(nomefile,<span class="string">&quot;r&quot;</span>);
+	fgets(linea,22,f);
+	<span class="keyword">for</span>(i=0; i&lt;N; i=i+1) {
+		<span class="comment">/* atol converte una stringa in un long */</span>
+		atleti[i].matricola=(<span class="type">unsigned</span> <span class="type">long</span>)atol(linea);
+		
+		atleti[i].terapia=NULL;
+		coda=NULL;
+		<span class="keyword">if</span>(fgets(linea,22,f)==NULL)
+			<span class="keyword">break</span>;
+		<span class="keyword">while</span>(linea[0] == <span class="string">'\t'</span>) {
+			<span class="comment">/* funzione di libreria per estrarre informazioni da una stringa */</span>
+			sscanf(linea,<span class="string">&quot;\t%s %s&quot;</span>,farmaco,data);
+			
+			nuovo=CreaElemento(farmaco,data);
+			InserisciInCoda(&amp;(atleti[i].terapia),coda,nuovo);
+			coda=nuovo;
+			<span class="keyword">if</span>(fgets(linea,22,f)==NULL)
+				<span class="keyword">break</span>;
+		}
+	}
+	<span class="keyword">return</span>;
+}
+
+
+
+<span class="type">void</span> <span class="function-name">CostruisciArchivioAtletiDaTastiera</span>(Componente *atleti)
+<span class="comment">/* 
+	consente di leggere l'archivio da tastiera
+	in contrapposizione, la funzione CostruisciArchivioAtletiDaFile 
+	(vedi) consente di leggere l'archivio da file
+*/</span>
+{
+	<span class="type">int</span> <span class="variable-name">i</span>, <span class="variable-name">contaprescrizioni</span>;
+	<span class="type">unsigned</span> <span class="type">long</span> <span class="variable-name">mat</span>;
+	<span class="type">char</span> <span class="variable-name">farmaco</span>[13], <span class="variable-name">data</span>[7];
+	Elem *coda, *nuovo;
+
+	
+	<span class="keyword">for</span>(i=0; i&lt;N; i=i+1) {
+		printf(<span class="string">&quot;Atleta n.ro %d:\n&quot;</span>, i+1);
+		printf(<span class="string">&quot;    matricola: &quot;</span>);
+		scanf(<span class="string">&quot;%lu&quot;</span>,&amp;(atleti[i].matricola));
+		getchar(); <span class="comment">/* per consumare il newline */</span>
+		atleti[i].terapia=NULL;
+		coda=NULL;
+		contaprescrizioni=0;
+		printf(<span class="string">&quot;    %d. inserisci farmaco prescritto (RETURN=fine): &quot;</span>,contaprescrizioni+1);
+		gets(farmaco);
+		<span class="keyword">while</span>(farmaco[0] != <span class="string">'\0'</span>) {
+			printf(<span class="string">&quot;    %d. inserisci data prescrizione (GGMMAA): &quot;</span>,contaprescrizioni+1);
+			gets(data);
+			nuovo=CreaElemento(farmaco,data);
+			InserisciInCoda(&amp;(atleti[i].terapia),coda,nuovo);
+			coda=nuovo;
+			contaprescrizioni=contaprescrizioni+1;
+			printf(<span class="string">&quot;    %d. inserisci farmaco prescritto (RETURN=fine): &quot;</span>,contaprescrizioni+1);
+			gets(farmaco);
+		}
+	}
+	<span class="keyword">return</span>;
+}
+
+
+
+<span class="function-name">main</span>()
+{
+	Componente atleti[N];
+	Elem *lista;
+	
+	<span class="comment">/* necessario per utilizzare le funzioni d'esame*/</span>
+	CostruisciArchivioAtletiDaFile(atleti,<span class="string">&quot;ARCHIVIO.TXT&quot;</span>); 
+	StampaArchivioAtleti(atleti);
+	
+	EliminaProibiti(atleti,<span class="string">&quot;NODOPING.TXT&quot;</span>);
+	
+	StampaArchivioAtleti(atleti);
+	
+	lista=CreaListaAmmessi(<span class="string">&quot;NODOPING.TXT&quot;</span>);
+	
+	StampaLista(lista);
+	
+	<span class="keyword">return</span> 0;
+}
+</pre>
+  </body>
+</html>

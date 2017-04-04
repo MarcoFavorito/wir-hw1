@@ -1,0 +1,43 @@
+
+<HTML>
+
+<HEAD>
+<META HTTP-EQUIV="Context-Type" CONTEXT="text/html;charset=PREDEFINITA (AUTOMATICA)">
+<meta name="GENERATOR" content="Microsoft Internet Assistant for PowerPoint 97">
+ <TITLE>Cursor that gets names of sailors who’ve reserved a red boat, in alphabetical order</TITLE> 
+</HEAD>
+
+<BODY     >
+
+ <H1>Cursor that gets names of sailors who’ve reserved a red boat, in alphabetical order</H1> 
+ <P><UL>
+<LI><H2>Note that it is illegal to replace S.sname by, say, S.sid in the ORDER BY clause!  (Why?)
+</H2>
+</UL><UL>
+<LI><H2>Can we add S.sid to the SELECT clause and replace S.sname by S.sid in the ORDER BY clause?</H2>
+</UL></P>
+<P><UL>
+EXEC SQL DECLARE sinfo CURSOR FOR
+<BR></UL><UL>
+	SELECT  S.sname
+</UL><UL>
+	FROM  Sailors S, Boats B, Reserves R
+</UL><UL>
+	WHERE  S.sid=R.sid AND R.bid=B.bid AND B.color=‘red’
+</UL><UL>
+	ORDER BY  S.sname</UL></P>
+<P></P> 
+<P>
+<TABLE>
+  <TD HEIGHT=100 WIDTH=100> <A HREF="tsld027.htm">Diapositiva precedente</A> </TD>
+  <TD HEIGHT=100 WIDTH=100> <A HREF="tsld029.htm">Diapositiva successiva</A> </TD>
+  <TD HEIGHT=100 WIDTH=150> <A HREF="tsld001.htm">Torna alla prima diaposiva</A> </TD>
+  <TD HEIGHT=100 WIDTH=150> <A HREF="sld028.htm">Visualizza versione grafica</A> </TD>
+</TABLE>
+<BR>
+</P>
+
+
+
+</Body>
+</HTML>

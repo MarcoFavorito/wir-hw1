@@ -1,0 +1,140 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=windows-1252">
+<META NAME="Generator" CONTENT="Microsoft Word 97">
+<TITLE>1</TITLE>
+<META NAME="Template" CONTENT="C:\PROGRAMMI\MICROSOFT OFFICE\OFFICE\html.dot">
+</HEAD>
+<BODY BACKGROUND="bgrnd.jpg">
+
+<B><FONT SIZE=5><P>6) Analisi top down</P>
+</B></FONT><P ALIGN="RIGHT">Riferimenti: "<I>Linguaggi formali e compilatori</I>" - 4.1, 4.2</P>
+<P ALIGN="CENTER"><HR></P>
+<B><U><FONT SIZE=4><P ALIGN="JUSTIFY">Aula</B></U></FONT> </P>
+<OL>
+
+<I><P ALIGN="JUSTIFY"><LI>Cosa &egrave; l'analisi top down</LI></P>
+</I><P ALIGN="JUSTIFY">Come accennato in precedenza, l'analizzatore top down, costruisce l'albero sintattico corrispondente alla frase in ingresso in modalit&agrave; discendente, dalla radice alle foglie, espandendo sempre il simbolo non terminale pi&ugrave; a sinistra, nella <I>forma di frase</I> corrente.</P>
+<P ALIGN="JUSTIFY">La <I>forma di frase</I> iniziale &egrave; l'assioma della grammatica. Vediamo quali sono, esattamente, i passi seguiti dall'analizzatore. Prendiamo in considerazione la grammatica non contestuale di esempio:</P>
+<P ALIGN="JUSTIFY">1) Testo_HTML <FONT FACE="Wingdings">&agrave;</FONT> Tag_Apertura Testo_HTML Tag_Chiusura</P>
+<P ALIGN="JUSTIFY">2) Testo_HTML <FONT FACE="Wingdings">&agrave;</FONT> Testo </P>
+<P ALIGN="JUSTIFY">3) Testo_HTML <FONT FACE="Wingdings">&agrave;</FONT> <FONT FACE="Symbol">e</FONT> </P>
+<P ALIGN="JUSTIFY">4) Tag_Apertura <FONT FACE="Wingdings">&agrave;</FONT> &lt;HTML&gt;</P>
+<P ALIGN="JUSTIFY">5) Tag_Apertura <FONT FACE="Wingdings">&agrave;</FONT> &lt;BODY&gt;</P>
+<P ALIGN="JUSTIFY">6) Tag_Apertura <FONT FACE="Wingdings">&agrave;</FONT> &lt;B&gt;</P>
+<P ALIGN="JUSTIFY">7) Tag_Apertura <FONT FACE="Wingdings">&agrave;</FONT> ………..</P>
+<P ALIGN="JUSTIFY">8) Tag_Chiusura <FONT FACE="Wingdings">&agrave;</FONT> &lt;/HTML&gt;</P>
+<P ALIGN="JUSTIFY">9) Tag_Chiusura <FONT FACE="Wingdings">&agrave;</FONT> &lt;/BODY&gt;</P>
+<P ALIGN="JUSTIFY">9) Tag_Chiusura <FONT FACE="Wingdings">&agrave;</FONT> &lt;/B&gt;</P>
+<P ALIGN="JUSTIFY">10) Tag_Chiusura <FONT FACE="Wingdings">&agrave;</FONT> ………..</P>
+<P ALIGN="JUSTIFY">Non essendoci un preciso criterio di scelta delle regole da applicare, immaginiamo che l'analizzatore applichi, ad ogni passo, la prima delle regole la cui parte sinistra coincide con il simbolo non terminale da espandere</P>
+<P ALIGN="JUSTIFY">Passo 1) - simbolo NT da espandere <I>Testo_HTML</P>
+</I><P ALIGN="CENTER"><IMG SRC="Image14.gif" WIDTH=202 HEIGHT=84></P>
+<P ALIGN="JUSTIFY">Passo 2) - simbolo NT da espandere <I>Tag_Apertura</P>
+</I><P ALIGN="CENTER"><IMG SRC="Image15.gif" WIDTH=224 HEIGHT=135></P>
+<P ALIGN="JUSTIFY">Al termine di ogni passo, viene verificato che la sequenza di simboli terminali, a sinistra della forma di frase corrente, rappresenti un prefisso della frase in ingresso. Nel nostro la frase in ingresso &egrave; </P>
+<I><P ALIGN="CENTER">&lt;HTML&gt;&lt;BODY&gt;&lt;B&gt;Testo di prova&lt;/B&gt;&lt;/BODY&gt;&lt;/HTML&gt;</P>
+</I><P ALIGN="JUSTIFY">e &lt;HTML&gt; ne rappresenta un prefisso.</P>
+<P ALIGN="JUSTIFY">Passo 3) - simbolo NT da espandere <I>Testo_HTML</P>
+</I><P ALIGN="CENTER"><IMG SRC="Image16.gif" WIDTH=289 HEIGHT=189></P>
+<P ALIGN="JUSTIFY">Passo 4) - simbolo NT da espandere <I>Tag_Apertura</P>
+</I><P ALIGN="CENTER"><IMG SRC="Image17.gif" WIDTH=289 HEIGHT=200></P>
+<P ALIGN="JUSTIFY">a questo punto, dopo aver utilizzato la prima delle regole disponibili per la derivazione di Tag_Apertura, l'analizzatore verifica che il prefisso &lt;HTML&gt;&lt;HTML&gt; ottenuto, non &egrave; pi&ugrave; compatibile con la frase in ingresso. In questo caso viene ritrattata l'ultima scelta effettuata ed applicata un'altra regola.</P>
+<P ALIGN="JUSTIFY">Passo 5) - applicazione di una regola alternativa</P>
+<P ALIGN="CENTER"><IMG SRC="Image18.gif" WIDTH=289 HEIGHT=199></P>
+<P ALIGN="JUSTIFY">con questa scelta il controllo sul prefisso ha successo e il processo prosegue. Nei passi successivi, l'analizzatore ritratter&agrave; altre scelte prima di arrivare ad una frase coincidente con la frase in ingresso</P>
+<P ALIGN="CENTER"><IMG SRC="Image13.gif" WIDTH=377 HEIGHT=294></P>
+<P ALIGN="JUSTIFY">E' addirittura possibile che non vi siano al passo precedente altre regole da applicare. In questo caso l'analizzatore risale ulteriormente l'albero, alla ricerca di alternative; se non le trova, la costruzione fallisce e la frase in ingresso viene dichiarata inammissibile. Consideriamo la seguente frase</P>
+<I><P ALIGN="CENTER">&lt;HTML&gt;&lt;&gt;Testo di prova&lt;/HTML&gt;</P>
+</I><P ALIGN="JUSTIFY">Passo 1) - simbolo NT da espandere <I>Testo_HTML</P>
+</I><P ALIGN="CENTER"><IMG SRC="Image14.gif" WIDTH=202 HEIGHT=84></P>
+<P ALIGN="JUSTIFY">Passo 2) - simbolo NT da espandere <I>Tag_Apertura</P>
+</I><P ALIGN="CENTER"><IMG SRC="Image15.gif" WIDTH=224 HEIGHT=135></P>
+<P ALIGN="JUSTIFY">la verifica sul prefisso ha esito positivo.</P>
+<P ALIGN="JUSTIFY">Passo 3) - simbolo NT da espandere <I>Testo_HTML</P>
+</I><P ALIGN="CENTER"><IMG SRC="Image16.gif" WIDTH=289 HEIGHT=189></P>
+<P ALIGN="JUSTIFY">Passo 4) - simbolo NT da espandere <I>Tag_Apertura</P>
+</I><P ALIGN="CENTER"><IMG SRC="Image19.gif" WIDTH=289 HEIGHT=200></P>
+<P ALIGN="JUSTIFY">a questo punto, dopo aver riconsiderato con tutte le alternative possibili (e senza successo), la derivazione del simbolo <I>Tag_Apertura</I>, l'analizzatore passa a riconsiderare anche la derivazione di <I>Testo_HTML</I>, valutando l'applicazione di una diversa regola</P>
+<P ALIGN="JUSTIFY">Passo 5) - regola alternativa, applicata a <I>Testo_HTML</P>
+</I><P ALIGN="CENTER"><IMG SRC="Image20.gif" WIDTH=232 HEIGHT=141></P>
+<P ALIGN="JUSTIFY">Supponendo che "&lt;&gt;" non venga riconosciuto come testo (il riconoscimento dell'errore lessicale-sintattico-semantico &egrave; a discrezione del progettista) l'analizzatore tenter&agrave; la sostituzione </P>
+<I><P ALIGN="CENTER">Testo_HTML <FONT FACE="Wingdings">&agrave;</FONT> <FONT FACE="Symbol">e</FONT> </P>
+</I><P ALIGN="JUSTIFY">Questa gli permetter&agrave; di proseguire. In seguito, non essendo possibile l'applicazione di una regola del tipo</P>
+<I><P ALIGN="CENTER">Tag_Chiusura <FONT FACE="Wingdings">&agrave;</FONT> "Testo di prova"</P>
+</I><P ALIGN="JUSTIFY">L'analizzatore si trover&agrave; a riconsiderare la regola iniziale applicata, prima di fallire definitivamente.</P>
+<I><P ALIGN="JUSTIFY"><LI>Trasformazioni delle grammatiche per l'analisi top down</LI></P></OL>
+<DIR>
+<DIR>
+<DIR>
+
+</I><P ALIGN="JUSTIFY">Il ricorso al backtracking, causato dal non determinismo sulla regola da applicare, porta inefficienza nell'analizzatore. E' possibile costruire degli analizzatori che scelgano la regola giusta ad ogni passo di derivazione. Perche' questo sia possibile, la grammatica deve rispettare determinate propriet&agrave;:</P></DIR>
+</DIR>
+</DIR>
+
+
+<UL>
+
+<UL>
+<P ALIGN="JUSTIFY"><LI>deve essere di tipo LL(K)</LI></P>
+<P ALIGN="JUSTIFY"><LI>non deve essere ricorsiva sinistra</LI></P>
+<P ALIGN="JUSTIFY"><LI>non deve avere regole associate allo stesso simbolo non terminale, con uguale prefisso sulla parte destra.</LI></P></UL>
+</UL>
+
+<OL>
+
+<I><P ALIGN="JUSTIFY"><LI>Grammatiche LL(1)</LI></P></OL>
+<DIR>
+<DIR>
+<DIR>
+
+</I><P ALIGN="JUSTIFY">Una grammatica &egrave; LL(1) se le sue regole sono del tipo</P>
+<I><P ALIGN="CENTER">X <FONT FACE="Wingdings">&agrave;</FONT> x Y (con x <FONT FACE="Symbol">&Icirc;</FONT> VT, Y <FONT FACE="Symbol">&Icirc;</FONT> V*)</P>
+</I><P ALIGN="JUSTIFY">ovvero se &egrave; possibile ad ogni passo scegliere la regola giusta da applicare, basandosi sul simbolo successivo al prefisso di frase riconosciuto. Il nome LL(1) rappresenta:</P></DIR>
+</DIR>
+</DIR>
+
+
+<UL>
+
+<UL>
+<P ALIGN="JUSTIFY"><LI>L - la stringa in ingresso &egrave; esaminata da sinistra verso destra (left to right). </LI></P>
+<P ALIGN="JUSTIFY"><LI>L - viene costruita la derivazione canonica sinistra (leftmost derivation)</LI></P>
+<P ALIGN="JUSTIFY"><LI>1 - la scelta della parte destra da applicare &egrave; "guidata" da 1 simbolo terminale, quello successivo al prefisso gi&agrave; riconosciuto. I simboli utilizzati per "guidare" l'analizzatore, vengono detti simboli di <I>lookahead</I>.</LI></P></UL>
+</UL>
+
+<OL>
+
+<I><P ALIGN="JUSTIFY"><LI>Ricorsione sinistra</LI></P>
+</I><P ALIGN="JUSTIFY">La presenza di regole ricorsive sinistre, pu&ograve; far entrare in <I>loop</I> il processo di costruzione dell'albero sintattico. Consideriamo per esempio la grammatica </P>
+<I><P ALIGN="CENTER">Espressione <FONT FACE="Wingdings">&agrave;</FONT> Espressione + Termine</P>
+<P ALIGN="CENTER">Espressione <FONT FACE="Wingdings">&agrave;</FONT> Termine</P>
+</I><P ALIGN="JUSTIFY">se ad un passo di derivazione, l'analizzatore ritiene opportuna l'applicazione della prima regola, al passo successivo si trover&agrave; nella stessa situazione e riapplicher&agrave; la stessa regola. Da questo passo in poi il processo non terminer&agrave;.</P>
+<P ALIGN="JUSTIFY">La ricorsione sinistra pu&ograve; essere eliminata e trasformata in ricorsione destra. Esempio:</P>
+<I><P ALIGN="CENTER">Y <FONT FACE="Wingdings">&agrave;</FONT> Y x</P>
+<P ALIGN="CENTER">Y <FONT FACE="Wingdings">&agrave;</FONT> v</P>
+</I><P ALIGN="JUSTIFY">&egrave; un esempio di ricorsione sinistra che pu&ograve; essere trasformato in </P>
+<I><P ALIGN="CENTER">Y <FONT FACE="Wingdings">&agrave;</FONT> v Y'</P>
+<P ALIGN="CENTER">Y' <FONT FACE="Wingdings">&agrave;</FONT> x Y'</P>
+<P ALIGN="CENTER">Y' <FONT FACE="Wingdings">&agrave;</FONT> <FONT FACE="Symbol">e</FONT> </P>
+</I><P ALIGN="JUSTIFY">che &egrave; ricorsiva destra. Volendo ulteriormente "ridurre" la grammatica, possiamo eliminare la <FONT FACE="Symbol">e</FONT> -regola.</P>
+<I><P ALIGN="CENTER">Y <FONT FACE="Wingdings">&agrave;</FONT> v Y'</P>
+<P ALIGN="CENTER">Y <FONT FACE="Wingdings">&agrave;</FONT> v</P>
+<P ALIGN="CENTER">Y' <FONT FACE="Wingdings">&agrave;</FONT> x Y'</P>
+<P ALIGN="CENTER">Y' <FONT FACE="Wingdings">&agrave;</FONT> x</P>
+<P ALIGN="JUSTIFY"><LI>Fattorizzazione sinistra</LI></P></OL>
+<DIR>
+<DIR>
+<DIR>
+
+</I><P ALIGN="JUSTIFY">Le regole la cui parte destra presenta lo stesso primo simbolo terminale, possono essere trasformate attraverso la fattorizzazione sinistra che prevede l'introduzione di un ulteriore simbolo non terminale intermedio. Esempio:</P>
+<I><P ALIGN="CENTER">A <FONT FACE="Wingdings">&agrave;</FONT> y V</P>
+<P ALIGN="CENTER">A <FONT FACE="Wingdings">&agrave;</FONT> y W</P>
+</I><P ALIGN="JUSTIFY">(con V,W <FONT FACE="Symbol">&Icirc;</FONT> V*) pu&ograve; essere trasformata in </P>
+<I><P ALIGN="CENTER">A <FONT FACE="Wingdings">&agrave;</FONT> y A'</P>
+<P ALIGN="CENTER">A' <FONT FACE="Wingdings">&agrave;</FONT> V</P>
+<P ALIGN="CENTER">A' <FONT FACE="Wingdings">&agrave;</FONT> W</P></DIR>
+</DIR>
+</DIR>
+</I></BODY>
+</HTML>

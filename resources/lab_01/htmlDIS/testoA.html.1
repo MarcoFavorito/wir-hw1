@@ -1,0 +1,103 @@
+<!-- saved from url=(0022)http://internet.e-mail -->
+<!DOCTYPE html PUBLIC "-//w3c//dtd html 4.0 transitional//en">
+<html>
+<head>
+   <title>Esame del 14/4/2004 - Compito A</title>
+</head>
+<body>
+
+<center>
+  <p>
+  <b>Tecniche di Programmazione</b> <br>
+<b>Corso di Laurea in Ingegneria Informatica</b> <br>
+<b>Corso di Laurea in Ingegneria Automatica</b> <br>
+  A.A. 2003/04</p>
+  <h2>Appello del 14/4/2004 - Compito A</h2>
+</center>
+
+<p>
+
+Si vogliono gestire le collezioni di libri di bibliteche. Ogni oggetto
+<em>Biblioteca</em> ha un nome (una stringa) ed una collezione di libri.
+Ciascun&nbsp; libro è caratterizzato da un:</p>
+<ul>
+  <li>
+<font color="#000000"><i> codice univoco</i> (una stringa);</font>
+  <li><font color="#000000"><i>autore</i> (una stringa);</font>
+  <li><font color="#000000"><i>titolo</i> (una stringa).</font> 
+</ul>
+
+Gli oggetti <em>Biblioteca</em> supportano le seguenti funzionalit&agrave;: 
+<ul>
+  <li><em>crea:</em> che, data una stringa <em>n</em>  che rappresenta il nome della
+    biblioteca, crea un oggetto <em>Biblioteca</em> con nome <em>n</em> 
+    che inizialmente non ha alcun libro;</li>
+  <li><em>nome:</em> che restituisce il nome della <em>Biblioteca</em>; 
+  </li>
+  <li><em>aggiungi:</em>&nbsp;<font color="#000000"> dati il codice, l'autore e il titolo di
+un libro,</font> <font color="#000000">lo aggiunge alla biblioteca;&nbsp;</font>
+    <font color="#000000">se è &nbsp;già
+    presente un libro con lo stesso codice genera</font> <font color="#000000">una
+    eccezione;</font></li>
+  <li><font color="#000000"><i>autore:</i> che, dato il codice di un libro, ne restituisce
+l'autore; se non esiste un libro con quel codice genera una eccezione;</font></li>
+  <li>
+<font color="#000000"><i> titolo:</i> che, dato il codice di un libro, ne restituisce il
+titolo; se non esiste un libro con quel codice genera una eccezione;</font></li>
+  <li>
+<font color="#000000"><i>elimina:</i> che, dato il codice di un libro, lo elimina
+dalla biblioteca; se il libro non è&nbsp;presente nella biblioteca genera una
+eccezione;</font></li>
+  <li><font color="#000000"><i>quantiLibriAutore:</i> che, dato un autore, restituisce il numero di
+    suoi libri presenti nella
+biblioteca;</font></li>
+  <li>
+<font color="#000000"><i>eliminaLibriAutore:</i> che, dato un autore, elimina dalla
+biblioteca tutti i suoi libri;</font></li>
+  <li>
+<font color="#000000"><i>tuttiLibriAutore:</i> che, dato un autore, restituisce un
+array di stringhe</font>
+<font color="#000000">contenente</font>
+<font color="#000000">i codici di tutti i libri dell'autore specificato; oppure <i>
+null</i> se non</font>
+<font color="#000000">esistono libri</font>
+<font color="#000000">per l'autore specificato.</font></li>
+</ul>
+
+<p><strong>Domanda 1.</strong> Scrivere una classe Java <code>Biblioteca</code> per rappresentare oggetti
+<em>Biblioteca</em>. <font color="#000000">Dei </font>metodi <font color="#000000"><i>autore
+</i>e<i> </i></font><font color="#000000"><i>titolo</i> </font><font color="#000000">è
+necessario<i> </i></font>scrivere i prototipi<font color="#000000">,<i> </i>ma </font>è
+sufficiente <font color="#000000">realizzarne <b> solo uno</b> a scelta. </font>Fornire il costo in tempo dei metodi
+che realizzano le funzionalit&agrave; <em>aggiungi</em>, <font color="#000000"><i>eliminaLibriAutore</i></font>
+e <font color="#000000"><i>tuttiLibriAutore</i></font>, motivando la risposta (indicando esplicitamente 
+  i parametri di input della funzione di costo ed il caso peggiore).<p><strong>Domanda 2.</strong>&nbsp;
+<font color="#000000">Realizzare un metodo statico </font><code>PrestitiDellaBiblioteca</code> 
+  cliente della classe <code>Biblioteca</code> che,<font color="#000000"> dati</font>&nbsp;
+<ul>
+  <li><font color="#000000">un riferimento <i>b</i>
+    ad una biblioteca, </font></li>
+  <li><font color="#000000">un array di stringhe <i> a</i>, che contiene autori di libri,</font>&nbsp;</li>
+  <li><font color="#000000">il nome <i>fout</i> di un file</font></li>
+</ul>
+<p><font color="#000000">scriva </font>su<font color="#000000"> ciascuna riga
+del file <i>fout</i>  autore e titolo (separati da punto e virgola),</font> <font color="#000000">per tutti i libri
+della biblioteca
+<i>b</i></font> <font color="#000000">relativi</font> <font color="#000000">a tutti gli autori contenuti nell'array <i>a</i>.
+</font> 
+Fornire il costo in tempo del metodo realizzato, motivando la risposta (indicando esplicitamente 
+  i parametri di input della funzione di costo ed il caso peggiore).</p>
+<p><strong>Domanda 3.</strong>   Spiegare la nozione di <i>livello</i> di un
+nodo di un albero binario. Dire quanti sono i nodi del livello <i>k</i> di un
+albero binario completo. Indicare, infine, (anche tramite un disegno) una possibile
+configurazione di un albero binario contenente <i>n</i> nodi in cui ogni livello
+contiene esattamente un nodo.<p> Realizzare
+un metodo statico pubblico<code> SommaNonFoglie</code>,<code> </code>che, dato il riferimento alla radice di un albero
+binario <em>alb</em>,&nbsp;i cui nodi contengono interi, restituisca la somma di
+tutti gli interi contenuti nei nodi di <i>alb </i>che non sono foglie. Fornire il costo in tempo
+e spazio di memoria del metodo realizzato, motivando la risposta (indicando
+esplicitamente i parametri&nbsp;di input della funzione di costo&nbsp;ed il caso
+peggiore).
+
+</body>
+</html>

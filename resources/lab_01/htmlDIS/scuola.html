@@ -1,0 +1,125 @@
+<html>
+<head>
+<title>Primo appello 2004 - Compito Scuola</title>
+</head>
+
+<body>
+
+<h1>Secondo appello 2004</h1>
+
+<p>
+La prova dura un'ora e tre quarti.
+</p>
+
+<p>
+<b>Riempire il file <tt>studenteid.txt</tt> con i propri
+dati.</b>
+</p>
+
+<p>
+Vengono dati: due programmi di prova, un file di prova, e il
+testo del compito in formato html. Lo studente deve
+realizzare due classi che vengono usate dai due programmi di
+prova. <b>Le soluzioni devono trovarsi nella stessa cartella
+<tt>t:\Esame</tt> dove si trovano i programmi di prova</tt>
+pena l'annullamento dell'esame.</b>
+</p>
+
+<hr>
+
+<h3>Prima parte</h3>
+
+<p>
+Un preside di un liceo vuole informatizzare gli archivi degli studenti della scuola.
+Per questo motivo, si vuole realizzare la classe
+<tt>Studente</tt> che contiene le informazioni relative a uno studente. Le componenti di questi oggetti devono
+essere:
+</p>
+
+<dl>
+
+<dt><tt>nome</tt>
+<dd>una stringa che indica il nome dello studente. 
+<dt><tt>anno</tt>
+<dd>un intero che indica l'anno frequentato dallo studente. Deve essere compreso tra 1 e 5. 
+<dt><tt>sezione</tt>
+<dd>una stringa che indica la sezione dello studente. 
+<dt><tt>eta</tt>
+<dd>un intero che indica. l'eta dello studente. non pu&ograve; essere minore di 12. 
+</dl>
+
+<p>
+Definire la classe incapsulata <tt>Studente</tt> i cui
+oggetti siano rappresentazione di studenti. I nomi delle
+componenti devono essere: <tt>nome</tt>, <tt>anno</tt>,
+<tt>sezione</tt>, e <tt>eta</tt>.
+Devono essere realizzati i seguenti metodi:
+</p>
+
+<ul>
+
+<li>metodi <tt>get</tt> e <tt>set</tt> per tutte le
+componenti; i metodi <tt>set</tt> per le componenti 
+<tt>anno</tt> e <tt>eta</tt> devono verificare che i
+valori siano aderenti alle specifiche indicate sopra; in caso di errore,
+stampare un messaggio di errore e terminare il programma;
+
+<li>metodo costruttore che ha come argomento un
+<tt>BufferedReader</tt>; il metodo deve leggere i valori da
+mettere nell'oggetto da file; questi valori sono 
+memorizzati uno per linea; nel caso in cui il file
+finisca prima che si riescano a leggere tutte le componenti,
+si stampi un messaggio di errore e si esca dal programma;
+
+<li>un metodo toString che restituisce una stringa in cui ci
+sono tutte le componenti dell'oggetto.
+
+</ul>
+
+<hr>
+
+
+<h3>Seconda parte</h3>
+
+<p>
+Definire una seconda classe <tt>Scuola</tt> i cui
+oggetti rappresentano tutti gli studenti iscritti alla scuola per l'anno corrente.
+Ogni oggetto di questa classe &egrave; quindi la
+rappresentazione di un insieme di oggetti <tt>Studente</tt>.
+Per rappresentare insiemi di oggetti, usare un array.
+</p>
+
+<p>
+Costruttore della classe: 
+</p>
+
+<dl>
+
+<dt>
+<tt>Scuola(String nomefile)</tt>
+<dd>
+crea un oggetto <tt>Scuola</tt> che rappresenta l'insieme
+di tutti gli oggetti <tt>Studente</tt> che sono memorizzati
+nel file il cui nome &egrave; dato dalla stringa passata
+come argomento; la prima linea del file contiene il numero
+degli oggetti memorizzati su file.
+
+</dl>
+
+<p>
+Metodi della classe:
+</p>
+
+<dl>
+
+  <dt><tt>void stampaTutti()</tt>
+  <dd>stampa i valori di tutte le componenti di tutti gli studenti. 
+  <dt><tt>String trovaSezione(String studente)</tt>
+<dd>restituisce la sezione  in cui &egrave; iscritto lo studente il cui nome &egrave; passato come argomento. Se lo studente non &egrave; iscritto alla scuola, restituire <tt>null</tt>. 
+<dt><tt>double etaMedia(int anno)</tt>
+<dd>ritorna l'et&agrave; media degli studenti iscritti all'anno passato come argomento. 
+</dl>
+
+</body>
+</html>
+

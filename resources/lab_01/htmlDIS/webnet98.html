@@ -1,0 +1,430 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 3.0//EN">
+<!--Converted with LaTeX2HTML 96.1 (Feb 5, 1996) by Nikos Drakos (nikos@cbl.leeds.ac.uk), CBLU, University of Leeds -->
+<HTML>
+<HEAD>
+<!--BASE HREF="http://www.dis.uniroma1.it/~iocchi/webnet98/main.html"-->
+<TITLE>Knowledge representation techniques for information extraction on the Web</TITLE>
+<META NAME="description" CONTENT="Knowledge representation techniques for information extraction on the Web">
+<META NAME="keywords" CONTENT="main">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+</HEAD>
+<BODY LANG="EN">
+<P>
+<H1 ALIGN=CENTER>Knowledge representation techniques for information extraction on
+the Web</H1>
+<P ALIGN=CENTER><STRONG>Mattia De Rosa, Luca Iocchi, Daniele Nardi<BR> 
+Dipartimento di Informatica e Sistemistica <BR> 
+Universit&#224; di Roma ``La Sapienza''<BR> 
+Via Salaria 113, 00198 Roma, Italy<BR> 
+{derosa,iocchi,nardi}@dis.uniroma1.it
+</STRONG></P><P>
+<P ALIGN=CENTER><STRONG></STRONG></P><P>
+<P>
+<H1><A NAME="SECTION00010000000000000000">Introduction</A></H1>
+<P>
+The main facilities for a user to search within the enormous amount of
+information available in the Web are the so called search engines. Their
+limitations have been addressed in the literature and many proposals for
+improving their precision have been made. Because of the difficulties arising
+in precisely identifying the information needed through the query
+facilities offered by search engines, several other 
+approaches have been investigated to make information in the Web more easily 
+accessible to users (see [<A HREF="main.html#IoNa97">1</A>] for a review). One approach
+to information access is to provide the user
+with a more semantically-oriented query language, such as data base query
+languages. The advantages of a more powerful query language come, however,
+with the cost of a much more difficult access and management of the
+information in the Web. From a data base perspective the problem can be viewed
+in a Data Warehouse setting, where the Web provides information sources
+than one can either access at query answering time or materialize in
+a view that is maintained locally [<A HREF="main.html#Chaw94">2</A>, <A HREF="main.html#Kirk95">3</A>].
+In both scenarios the user views the
+Web as a data base, and is relieved from a direct access to the
+information sources. The situation is depicted in Fig. <A HREF="main.html#syar">1</A>.
+<P>
+<P><A NAME="16">&#160;</A><A NAME="syar">&#160;</A> <IMG WIDTH=665 HEIGHT=210 ALIGN=BOTTOM ALT="figure12" SRC="webnet98-img1.gif"  > <BR>
+<STRONG>Figure 1:</STRONG> System Architecture<BR>
+<P>
+<P>
+We have developed a system (see [<A HREF="main.html#Cata97">4</A>, <A HREF="main.html#HICSS97">5</A>]), that automatically
+extracts from Web sites
+information on a specific domain and collects such information
+within a database. In order to fullfil the requirements of usability
+the system provides a visual interface in the style of [<A HREF="main.html#TSE">6</A>],
+where queries are formulated through an semantic data model
+diagram.
+<P>
+As already pointed out the critical aspect of such an approach is the
+extraxtion of information from the sources to make it available to
+a data base system. In the rest of the paper we concentrate on
+the Extraction System, investigating 
+the  possibility of integrate Knowledge Representation 
+and Data Base techniques.
+The idea is the use of knowledge representation 
+techniques for representing both the domain of interest and the information 
+sources in order to extract from them the relevant data,
+and a Data Base approach to provide a semantically-based declarative
+query facility.
+<P>
+The following sections address the problems involved 
+with representation of information, the information extraction process
+and briefly comment on some preliminary results.
+<P>
+<H1><A NAME="SECTION00020000000000000000">Representation</A></H1>
+<P>
+In order to access and classify information contained in Web sites
+concerning a specific domain of interest, one needs to represent the domain, 
+the structure of the generic site and of the pages, and the terminology
+about the domain (see IJCAI 97 for a discussion on the role played by
+content, format and structure).
+There are many formalisms one can choose: simple formalisms are easy
+to process automatically but difficult to interpret (eg. feature vectors), 
+whereas more complex ones are difficult to use but may allow for an 
+automatic interpretation (eg. kwowledge representation systems).
+<P>
+Traditional systems for information modeling present some limitation: 
+Entity-Relationship (ER) model are not suited to represent typical 
+hypertext structures, while Object-Oriented (OO) model are more feasible, but
+still lack the flexibility needed to handle the variety of structures
+that one can find in the Web.
+We adopt Description Logics (DL) as a representation
+formalism, and the C<font size=-1><small>LASSIC</small></font> system [<A HREF="main.html#BBMR89">7</A>] as a
+knowledge representation system based on DL.
+DL can be used as a modeling language, because of the close
+relationship with semantic data models, and also offer reasoning
+facilities to automatically classify concepts (i.e. entities).
+<P>
+<H2><A NAME="SECTION00021000000000000000">Domain of interest</A></H2>
+<P>
+In order to enable the user to interact with the system at a very abstract 
+level, we have chosen to represent the domain using a well-known semantic 
+data model, namely the Entity-Relationship (ER) enriched with additional 
+information about the generic site structure. 
+It is worth noticing also that the attribute types 
+that can be specified in the ER enriched scheme, range among those that the 
+system can recognize automatically in the information extraction process: dates, addresses, phone numbers, names, 
+etc. .
+<P>
+<H2><A NAME="SECTION00022000000000000000">The generic Web site</A></H2>
+<P>
+The notion of relationship in the ER model provide some intuition about the
+possible structure of web site. However, some additional hints are needed in
+order to map an ER diagram into a site structure. In particular, one can specify
+a preferred direction for a relationship in the schema.
+With this information the system is able to turn the ER schema into a 
+representation of the site structure expressed through the language of C<font size=-1><small>LASSIC</small></font>. In 
+this step the semantics of the domain is combined with the information 
+about how the domain is instanciated by Web structures.
+<P>
+The intuition behind this is that relationships are given a direction which 
+corresponds to the links in the Web structure. At present this information 
+is provided by the user, but we are investigating techniques to learn it
+automatically by analysing actual Web sites.
+<P>
+By weakening the representation we accomplish the additional task of turning the 
+domain representation into a simpler one which gives us the ability to 
+reason about hierachical strucures: intuitively, DL concepts correspond to 
+entities, roles correspond to relationships and attributes of entities are 
+mapped into DL attributes (roles with additional constraints).
+<P>
+For example, in a university domain, the concepts <TT>Teacher</TT> and <TT>
+Course</TT>, could be linked by the role <TT>teach</TT> or by the role <TT>given
+by</TT>, but typically in Web sites, information about courses can be found
+in the teacher's home-page, so the first role is preferred. Such a role 
+give additional hints to access data about related concept, for example 
+following links, analyzing lists and tables, etc. .
+<P>
+Summarizing, we can model at the conceptual level the typical structural
+organization of Web sites relevant for the domain and the domain itself 
+within the same representation. Moreover, by using DLs we can face in a more 
+general way the extraction problem by relying on the deductive services that 
+they offer.
+<P>
+<H2><A NAME="SECTION00023000000000000000">Vocabulary</A></H2>
+<P>
+The system can interpret the terms used in a domain's description,
+but in Web sites the domain's elements could be denoted with different
+names. Within the DL representation it is easy to specify synonyms
+and homonyms, as well as find more general and more specific terms
+using an approach similar to that of Wordnet [<A HREF="main.html#WN">8</A>].
+<P>
+<H2><A NAME="SECTION00024000000000000000">The Web pages</A></H2>
+<P>
+In this work we are concerned with HTML structures, at present not addressing
+active components. The syntactic structure of a Web page is automatically built 
+by a parsing process and represented in DL. Specifically a page is represented
+trough a kwoledge base individual with an associated set of attributes
+corresponding to the syntatict structures identified in the page. We consider a 
+set of syntactic structures such as lists, tables, headers, links, etc. and 
+represent them as concept descriptions. 
+Also with respect to the syntactic structure of the pages one can take 
+advantage of the capabilities of DL to organize in a taxonomy the most common
+constructions. For example, in  HTML there are six header types that
+differ in the way they are shown by the browsers and two link types, one that
+references an anchor and another one to identify the frames
+contained in a page. These relationships are represented through hierarchies.
+<P>
+<H1><A NAME="SECTION00030000000000000000">Site Analysis</A></H1>
+<P>
+The overall representation described in the previous section is used by the
+system to analyze a Web site. The goal of this process is to populate a 
+database that may thereafter be queried by the user.
+<P>
+The analysis starts with a page, represented as an individual of the
+C<font size=-1><small>LASSIC</small></font> knowledge base, and a concept expression,
+which is expected to be instanciated in the page. This concept will be referred
+to as the taget concept. 
+In the following subsections we shall briefly describe the vocabulary
+normalization used to interpret text associated with HTML elements (links, 
+headers, lists etc.), and the information extraction process.
+<P>
+<H2><A NAME="SECTION00031000000000000000">Vocabulary normalization process</A></H2>
+<P>
+Typically, the terms that the system deals with in the analysis are simple
+words or noun phrases occasionally in a foreign language. Therefore, we do
+not apply Natural Language Processing techniques, but simply use a vocabulary
+and a domain's description to relate terms, specializing or 
+generalizing them through the capabilities of the DL system.
+<P>
+The vocabulary normalization process is accomplished through the following steps. 
+We first check whether the current term is in the vocabulary. If the term is a
+noun phrase every word belonging to it is searched in the vocabulary.
+Among all matched terms corresponding to concepts, the most specific concept
+which subsumes all of them is chosen as the meaning of noun phrase.
+<P>
+<H2><A NAME="SECTION00032000000000000000">Information extraction</A></H2>
+<P>
+The extraction process aims at identifying the instances of the given
+concept in the given page and can be decomposed in an <I>extraction</I> and a
+<I>propagation</I> step. Before analyzing a page, the system performs a
+preprocessing step in which the concept corresponding to the current page is 
+analyzed in order to identify frame structures. The analysis of a page is spli
+into the analysis of the embodied frames, with respect to the same target concept
+of the entire page.
+<H3><A NAME="SECTION00032100000000000000">Extraction</A></H3>
+<P>
+The extraction phase can roughly be divided in two parts, one in which 
+textual or not structured data is analyzed and another one in which  
+the structure part is analyzed. In the former one can only rely on pattern-matching
+procedure or NLP techniques to understand the terms involved, whereas within 
+tables and lists one can take advantage of the structure regularities to 
+interpret data. We shortly describe below the two mentioned types of analysis.
+<H4><A NAME="SECTION00032110000000000000"><B>Attribute Analysis.</B></A></H4>
+<P>
+In the attribute analysis the system gets from domain model the
+description of the target concept which is expected to be instanciated in the 
+current page. The attributes associated with the target concepts are selected 
+and the system tries to match them with the data contained in the page. If 
+such a match exists new instances in the knowledge base are created for current 
+concept.
+<H4><A NAME="SECTION00032120000000000000"><B>Structure Analysis.</B></A></H4>
+<P>
+HTML structures like tables and lists are often used within pages to
+represent homogeneous data related with page content. They can hold
+attributes of entities instanciated in the page (e.g. in a personal
+home-page one can collect birthday, address, email in a list structure), or
+instances of entities related with it (e.g. in a teacher home-page it is
+possible to find the courses he teaches and their schedule in a table).
+The system analyzes such structures trying to relate their content with a
+specialization or generalization of the target concept or concepts directly 
+related with it in domain model, to create new individuals in the knowledge 
+base.
+<P>
+To give an intuition of the approach followed to take into proper 
+consideration the structure (syntax) of the pages iwhile trying to capture its
+content, we describe in more detail the table analysis.<BR>
+Data stored in tables are typically organized in rows or columns and this is the
+natural assumption to be made when analyzing them, although the table structure
+is sometimes used simply to organize the space of the page.
+<P>
+We call <I>heading</I> the set of terms that specify the data contained in the
+table (usually the content of the columns of the first row); we call 
+<I>header</I> the text that preceeds the table and is usually meant to explain 
+its content or highlight specific features.
+<P>
+The first issue to tackle when analysing a table is to find the heading, which
+is accomplished by looking at the data in the table trying to interpret them as
+elements of the domain. The vocabulary normalization process is again used
+here. Identifying a heading is a necessary condition for the subsequent
+analysis because the heading can be associated with a concept experssion for the
+target concept, while the header provides additional information that can be 
+used to specialize the concept which we are trying to instanciate.  Then, the 
+concept expression characterizing the table is matched against the concept to
+instanciate. This matching is done through subsumption checks with the current
+concept and the concepts linked to it.
+<P>
+Once the concept that describes the data in the table is determined, it is 
+possible to fully characterize the information stored in it. At this point, 
+the table is scanned and for each row (column) the corresponding individuals 
+are created and the relationships among them and other existing individuals 
+are specified.
+<P>
+It is worth noticing that the semantics of the domain is repeatedly used to
+extract information from table. Moreover, this is done in a way that depends on
+the syntactic structures rather then being coded in ad hoc ways for a specific
+domain.
+<P>
+<H3><A NAME="SECTION00032200000000000000">Analysis propagation</A></H3>
+<P>
+Once the current page has been searched for information to instanciate, the
+search is propagated by exploiting the information about relationships given in
+the semantics characterization of the domain.
+<P>
+The outgoing links of the page under examination are first normalized with 
+respect to the vocabulary. Then, the pages reached through those links that 
+match the ones modeled in the domain are further analyzed. The 
+input concept becomes the one which the current concept is linked to. In this one
+the semantics of the domain is used to guide the search within the overall site.
+Secondly, among the links that do not match those in the schema, the ones 
+whose associated text matches the name of an existing individual are 
+analyzed to gather information about such individual. This corresponds to 
+verifying, when it is not possible to match a link name with a role in the 
+semantic schema, whether the link name directly matches an already 
+instanciated individual of another concept. The motivation beyond such
+behaviour is that when the system creates new individuals it has to give them a
+unique name for their identification. The content of attribute indicated in
+the domain model as a key is chosen as a unique name for new idividual. So when 
+in the site ther is a link which associated text correspond to an instancied 
+individual we make the assumption that following such link we can gather
+further information for the individual.
+<P>
+The remaining roles of the individuals corresponding to page, relate current 
+concept with unknown ones. Such roles can be further analyzed looking for 
+specific that allow to find new starting points for the analysis. Many 
+different strategies can be applied and we are currently performing
+experimentals on this aspect.
+The overall process resembles the rule propagation mechanism used in C<font size=-1><small>LASSIC</small></font>, and 
+is terminated by checking that individual objects corresponding to pages are 
+not analyzed twice.
+<P>
+<H3><A NAME="SECTION00032300000000000000">Site analysis algorithm</A></H3>
+<P>
+We can summarize the overall extraction process in the following algorithm
+where domain model (DM) is supposed to be an implicit parameter and 
+where PAGE_IND is the individual correspondig to the current page, CL_CONCEPT 
+the target concept to be instanciated. Moreover, the procedure has a third
+parameter named CL_IND, which is used only when the propagation through links
+exploits the information about already instanciated individuals. The output of
+the procedure is constitued by the generation of instances of the concepts in the
+domain and are performed by the procedures AttributeAnalysis, TableAnalysis and
+ListAnalysis as side effect.
+<P>
+<PRE>SiteAnalysis(PAGE_IND, CL_CONCEPT, CL_IND)
+  BEGIN
+    AttributeAnalysis(PAGE_IND, CL_CONCEPT, CL_IND);
+    TableAnalysis(TablesContainedIn(PAGE_IND), CL_CONCEPT, CL_IND);
+    ListAnalysis(ListsContainedIn(PAGE_IND), CL_CONCEPT, CL_IND);
+    FOR each link L contained in the page corresponding to role of
+        CL_CONCEPT in DM
+         BEGIN
+          IF page linked trough L is not yet visited
+          THEN BEGIN
+           NPI=individual correponding to the page linked trough L;
+           NCC=concept related with CL_CONCEPT trough the role correspondig to L;
+           /* start new analysis with new parameters */
+           SiteAnalysis(NPI,NCC,CL_IND);
+          END     
+         END
+    FOR each link L1 contained in the page that corresponds to an instanciated 
+        individual in the knowledge base
+         BEGIN
+          IF page linked trough L1 is not yet visited
+          THEN BEGIN
+           NPI=individual correponding to the page linked trough L1;
+           NCI=individual whose name is equal with text associated with L1;
+           NCC=most specific concept NCI is an instance of;
+           /* start new analysis with new parameters
+           SiteAnalysis(NPI,NCC,NCI);
+          END     
+         END
+  END</PRE>
+<P>
+Fixing the mapping between enriched ER scheme and its DB implementation, it
+is possible to turn the knowledge base content into tuples to populate the
+DB. Such a process is done automatically by the extraction system.
+<P>
+<H1><A NAME="SECTION00040000000000000000">Conclusions</A></H1>
+<P>
+To verify the capabilities of the proposed approach we have tried to 
+retrieve the information automatically extracted by our system using search 
+engines (SEs). We used Lycos, Yahoo! and Metacrawler relying on their 
+particular features to focus the search in a limited Web domain (<TT>.it</TT> 
+in our case), to exploit taxonomy organization of the Web space and to 
+combine the results of several other SEs, respectively.
+<P>
+We submitted the same queries to SEs and manually analyzed the first 20 top 
+ranked retrieved documents seeking for information automatically found by 
+our system.
+<P>
+Despite the limited scope of the experiment, there are indications
+that the answers on queries concerning specific information (e.g. the phone number of
+a professor) are satisfactory, whereas SEs typically fail; moreover, in the 
+domain under consideration (Univesity Departments) the system can acquire 
+automatically a substantial amount of data.
+<P>
+<P><A NAME="SECTIONREF"><H2>References</H2></A><P>
+<DL COMPACT>
+<DT><A NAME="IoNa97"><STRONG>1</STRONG></A><DD>
+D.&nbsp;Nardi L.&nbsp;Iocchi.
+Information access in the web.
+In <EM>Proc. of WEBNET-97</EM>. AACE, 1997.
+<P>
+<DT><A NAME="Chaw94"><STRONG>2</STRONG></A><DD>
+S.&nbsp;Chawathe, H.&nbsp;Garcia-Molina, J.&nbsp;Hammer, K.&nbsp;Ireland, Y.&nbsp;Papakonstantinou,
+  J.&nbsp;Ullman, and J.&nbsp;Widom.
+The TSIMMIS Project: Integration of Heterogeneous
+  Information Sources.
+In <EM>Proc. of IPSJ Conference</EM>, pages 7-18, 1994.
+<P>
+<DT><A NAME="Kirk95"><STRONG>3</STRONG></A><DD>
+T.&nbsp;Kirk, A.&nbsp;Y. Levy, Y.&nbsp;Sagiv, and D.&nbsp;Srivastava.
+The Information Manifold.
+In <EM>Proc. of the AAAI Spring Symposium on Information Gathering
+  in Distributed Heterogeneous Environments</EM>, 1995.
+<P>
+<DT><A NAME="Cata97"><STRONG>4</STRONG></A><DD>
+T.&nbsp;Catarci, S.&nbsp;K. Chang, D.&nbsp;Nardi, and G.&nbsp;Santucci.
+Wag: Web-at-a-glance.
+Technical Report 03-97, Dipartimento di Informatica e Sistemistica,
+  Universit&#224; ``La Sapienza&quot; di Roma, 1997.
+<P>
+<DT><A NAME="HICSS97"><STRONG>5</STRONG></A><DD>
+T.&nbsp;Catarci, S.K. Chang, D.Nardi, G.&nbsp;Santucci, and M.&nbsp;Lenzerini.
+Wag: Web-at-a-glace.
+In <EM>Proc. of the Hawaii International Conference on System
+  Sciences (HICSS-31)</EM>, January 1998.
+<P>
+<DT><A NAME="TSE"><STRONG>6</STRONG></A><DD>
+T.Catarci M.Angelaccio and G.Santucci.
+Qbd*: A graphical query language with recursion.
+<EM>IEEE Transactions on Software Engineering</EM>, 16(10):1150-1163,
+  1990.
+<P>
+<DT><A NAME="BBMR89"><STRONG>7</STRONG></A><DD>
+Alexander Borgida, Ronald&nbsp;J. Brachman, Deborah&nbsp;L. McGuinness, and Lori Alperin
+  Resnick.
+CLASSIC: A structural data model for objects.
+In <EM>Proc. ACM-SIGMOD Conference on the Management of Data</EM>, pages
+  59-67, 1989.
+<P>
+<DT><A NAME="WN"><STRONG>8</STRONG></A><DD>
+WordNet: A Lexical Database for English.
+<EM><TT>http://www.cogsci.princeton.edu/&nbsp;wn/</TT></EM>.
+</DL>
+<P>
+<H1><A NAME="SECTION00060000000000000000">  About this document ... </A></H1>
+<P>
+ <STRONG>Knowledge representation techniques for information extraction on
+the Web</STRONG><P>
+This document was generated using the <A HREF="http://www-dsed.llnl.gov/files/programs/unix/latex2html/manual/"><STRONG>LaTeX</STRONG>2<tt>HTML</tt></A> translator Version 96.1 (Feb 5, 1996) Copyright &#169; 1993, 1994, 1995, 1996,  <A HREF="http://cbl.leeds.ac.uk/nikos/personal.html">Nikos Drakos</A>, Computer Based Learning Unit, University of Leeds. <P> The command line arguments were: <BR>
+<STRONG>latex2html</STRONG> <tt>-split 0 main</tt>. <P>The translation was initiated by Daniele Nardi on Fri Mar  6 18:08:35 MET 1998<BR> <HR>
+<P><ADDRESS>
+<I>Daniele Nardi <BR>
+Fri Mar  6 18:08:35 MET 1998</I>
+</ADDRESS>
+</BODY>
+</HTML>
+
+
+

@@ -1,0 +1,84 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html>
+<head>
+  <title>Prova al calcolatore (esempio 1)</title>
+  <meta content="text/html" http-equiv="Content-Type">
+  <link rel="stylesheet" href="../../../fi2001.css" type="text/css">
+</head>
+<body bgcolor="#ffffff">
+<center>
+<h3><b>Fondamenti di Informatica</b><br>
+<b>Corso di Laurea in Ingegneria Informatica</b></h3>
+</center>
+<center>
+<h2>Prova al calcolatore (esempio 1)</h2>
+<h4><b>Durata: 1h 30m</b><br>
+</h4>
+</center>
+<hr width="100%">
+<p>Si vuole realizzare un programma per la gestione dei verbali d'esame
+degli studenti. E' necessario rappresentare per ciascun verbale emesso
+le seguenti informazioni: nome dello studente, codice del corso, data
+dell'esame, e voto. I verbali per i quali non &egrave; stato ancora
+definito il voto avranno il voto pari a 0.&nbsp;Il voto 30 e lode viene
+rappresentato dal numero 31.</p>
+<h3><b>Parte 1.</b> </h3>
+<p>Scrivere una classe <b>Statino</b> per rappresentare le informazioni
+di un   verbale d'esame con la seguente interfaccia:<br>
+- <b>Statino</b>(String, int, String, int) : costruttore con quattro
+argomenti:   nome, codice corso, data, e voto;<br>
+- <b>Statino</b>(String, int, String) : costruttore con tre argomenti:
+nome,   corso e data, con voto (non specificato) da assegnare pari a 0;<br>
+- String <b>getNome</b>( ) : restituisce il nome dello studente
+esaminato;&nbsp;<br>
+- int <b>getCodice</b>( ) : restituisce il codice identificativo del
+corso;<br>
+- String <b>getData</b>( ) : restituisce la data di svolgimento
+dell'esame;<br>
+- int <b>getVoto</b>( ): restituisce il voto dell'esame;<br>
+- void <b>setVoto</b>( int ) : modifica il voto dello studente; <br>
+- boolean <b>equals</b>( Object ) : restituisce true se il verbale su
+cui il   metodo &egrave; invocato contiene le stesse infomazioni di
+quello passato come   parametro, e false altrimenti; </p>
+<p>Programma di esempio: ProvaStatino.java</p>
+<blockquote>
+  <pre>class ProvaStatino {<br>    public static void main (String[] args) {<br>    &nbsp;&nbsp; &nbsp;Statino a1 = new <b>Statino</b>("Mario Rossi", 121, "15/04/2002");<br>        System.out.println(a1.<b>getNome</b>());<br>        System.out.println(a1.<b>getCodice</b>());<br>        System.out.println(a1.<b>getData</b>());<br>        System.out.println(a1.<b>getVoto</b>());<br>        a1.<b>setVoto</b>(30);<br>        System.out.println(a1.<b>getVoto</b>());<br>        Statino a2 = new <b>Statino</b>("Mario Rossi", 121, "15/04/2002", 25);<br>        if (a1.equals(a2)) System.out.println("a1 e a2 sono uguali");<br>	    else System.out.println("a1 e a2 sono diversi");<br>    }<br>}</pre>
+</blockquote>
+<hr>
+<h3><br>
+<b>Parte 2.</b> </h3>
+<p> </p>
+<ul>
+  <li> Si chiede di sviluppare una classe <code>Registro1</code>, per
+gestire un registro, cio&egrave; una collezione di statini realizzata
+tramite un array, che mette a disposizione il seguente metodo statico:<br>
+double <b>votoMassimo</b>( int e, Statino[] v) che restituisce il
+massimo voto relativo all'esame e, nel registro v;<br>
+  </li>
+  <li> Si chiede di sviluppare una classe <code>Registro2</code>, per
+gestire un registro, che mette a disposizione il seguente metodo
+statico:<br>
+int <b>studentiConVotoMassimo</b> (int e, Statino[] v) che restituisce
+il numero di studenti che hanno conseguito la massima valutazione
+nell'esame  esame e, nel registro v;<br>
+  </li>
+</ul>
+Viene fornita una classe ausiliaria <a href="RegistroBase.java"><code>RegistroBase</code></a>
+che mette a disposizione un metodo <code>Statino[] leggiRegistro
+(String filaname)</code> che dato il nome di un <a href="registro.dat">file
+di dati</a> rappresentante una sequenza di statini, restituisce un
+vettore di oggetti opportunamente istanziati.<br>
+<p></p>
+<p>Programma di prova per la classe <code>Registro1</code>: </p>
+<blockquote>
+  <pre>class ProvaRegistro1 {		<br>    public static void main
+  (String[] args) throws Exception{<br>       Statino[] reg1;<br>       reg1 = RegistroBase.leggiRegistro("<a
+ href="registro.dat">registro.dat</a>");<br>       double massimo = <b>Registro1.votoMassimo</b>(120, reg1);<br>       System.out.println("Voto massimo = "+massimo);<br>    }<br>}<br></pre>
+</blockquote>
+<p>Programma di prova per la classe <code>Registro2</code>: </p>
+<blockquote>
+  <pre>class ProvaRegistro2 {		<br>    public static void main (String[] args) throws Exception{<br>       Statino[] reg1;<br>       reg1 = RegistroBase.leggiRegistro("<a
+ href="registro.dat">registro.dat</a>");<br>       double bravi = <b>Registro2.studentiConVotoMassimo</b>(120, reg1);<br>       System.out.println("Numero studenti con voto massimo = "+bravi);<br>    }<br>}<br></pre>
+</blockquote>
+</body>
+</html>

@@ -1,0 +1,238 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+
+<!--Converted with LaTeX2HTML 99.1 release (March 30, 1999)
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>20001014-html</TITLE>
+<META NAME="description" CONTENT="20001014-html">
+<META NAME="keywords" CONTENT="20001014-html">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1">
+<META NAME="Generator" CONTENT="LaTeX2HTML v99.1 release">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+</HEAD>
+
+<BODY >
+
+<P>
+ 
+<DIV ALIGN="CENTER">
+<B>Universit&#224; di Roma ``La Sapienza''<BR>
+Facolt&#224; di Ingegneria<BR>
+Corso di Fondamenti di Informatica - A.A.1999/2000<BR>
+Corsi di Laurea: Aerospaziale, Chimica, Elettrica, Materiali, Meccanica,
+Nucleare</B><BR>
+Appello del <B>14 ottobre 2000</B> -- 1a prova scritta<BR>
+<I>tempo a disposizione: 2 ore</I>
+</DIV>
+
+<P>
+
+<B>Problema 1 (18 punti)</B>
+
+<P>
+Una compagnia assicurativa registra i principali dati relativi alle polizze
+RC-auto e i dati relativi agli incidenti automobilistici segnalati
+all'assicurazione su due file (di testo o di record, a scelta del candidato).
+
+<P>
+Il file relativo agli incidenti contiene per ogni incidente le seguenti
+informazioni:
+
+<UL>
+  <LI>targa dell'autoveicolo a cui si riferisce la segnalazione (7
+      caratteri);</LI>
+  <LI>data dell'incidente (formato a scelta del candidato);</LI>
+  <LI>un carattere che pu&#242; essere ``<TT>S</TT>'' oppure ``<TT>N</TT>'', e
+      che denota se il veicolo &#232; stato responsabile (<TT>S</TT>) oppure no
+      (<TT>N</TT>) dell'incidente.</LI>
+</UL>
+
+<P>
+Il file relativo alle polizze contiene per ogni polizza le seguenti
+informazioni:
+
+<UL>
+<LI>targa dell'autoveicolo (7 caratteri);</LI>
+<LI>classe di merito (intero compreso tra 0 e 20);</LI>
+<LI>nome e cognome dell'intestatario della polizza (max 30 caratteri).</LI>
+</UL>
+
+<P>
+In base ai dati contenuti nei due file la compagnia deve aggiornare le
+classi di merito associate alle polizze secondo il seguente criterio: se
+l'autoveicolo non &#232; responsabile di alcun incidente, la classe di merito
+viene decrementata di uno (fino ad un minimo di 0), mentre per ogni incidente
+di cui l'autoveicolo &#232; responsabile, la classe di merito viene
+incrementata di 2 (fino ad un massimo di 20).
+
+<P>
+Si richiede di risolvere i seguenti punti:
+
+<OL>
+<LI>Scrivere le dichiarazioni dei tipi di dato Pascal da utilizzarsi per
+    risolvere i punti successivi.</LI>
+<LI>Scrivere una procedura o funzione Pascal che riceva come parametro
+    <B>il nome fisico di un file di incidenti</B> e, in base alle informazioni
+    contenute in tale file, costruisca e restituisca opportunamente una lista,
+    rappresentata mediante record e puntatori, in cui ogni elemento &#232; una
+    coppia <I>&lt;t,n&gt;</I>, dove <I>t</I> &#232; una targa di autoveicolo ed
+    <I>n</I> &#232; un intero positivo che denota il numero di incidenti di cui
+    l'autoveicolo &#232; stato responsabile.</LI>
+<LI>Scrivere una procedura o funzione Pascal che riceva come parametri
+    <B>il nome fisico di un file di polizze</B> ed <B>una lista</B> di coppie
+    <I>&lt;t,n&gt;</I> (come definita al punto&nbsp;2), ed aggiorni le classi
+    di merito nel file di polizze in base alle informazioni contenute nella
+    lista.</LI>
+</OL>
+(Nelle procedure o funzioni ai punti&nbsp;2 e&nbsp;3 si possono eventualmente
+includere le definizioni di altre unit&#224; di programma di appoggio.)
+
+<P>
+Ad esempio, per il file di incidenti in Fig.1, l'unit&#224; al punto&nbsp;2
+deve costruire la lista in Fig.2, e l'unit&#224; al punto&nbsp;3, ricevendo
+come parametro tale lista ed il nome del file di polizze in Fig.3, deve
+aggiornare tale file come in Fig.4.
+
+<P>
+ 
+<TABLE CELLPADDING=3 BORDER="1">
+<TR><TD ALIGN="LEFT"><FONT SIZE="-1"><TT>
+  EE333FF 01012000 S </TT></FONT></TD>
+<TD ALIGN="CENTER"><FONT SIZE="-1"><TT> <IMG
+ WIDTH="9" HEIGHT="24" ALIGN="MIDDLE" BORDER="0"
+ SRC="freccia.gif"
+ ALT="$\downarrow$"> </TT></FONT></TD>
+<TD ALIGN="LEFT"><FONT SIZE="-1"><TT> AA111BB&nbsp;14&nbsp;Anna&nbsp;Medi
+  </TT></FONT></TD>
+<TD ALIGN="LEFT"><FONT SIZE="-1"><TT> AA111BB&nbsp;13&nbsp;Anna&nbsp;Medi</TT></FONT></TD>
+</TR>
+<TR><TD ALIGN="LEFT"><FONT SIZE="-1"><TT> 
+  XX999YY 23052000 N </TT></FONT></TD>
+<TD ALIGN="CENTER"><FONT SIZE="-1"><TT> EE333FF, 2 </TT></FONT></TD>
+<TD ALIGN="LEFT"><FONT SIZE="-1"><TT> CC222DD&nbsp;&nbsp;1&nbsp;Ben&nbsp;Santi
+  </TT></FONT></TD>
+<TD ALIGN="LEFT"><FONT SIZE="-1"><TT> CC222DD&nbsp;&nbsp;0&nbsp;Ben&nbsp;Santi</TT></FONT></TD>
+</TR>
+<TR><TD ALIGN="LEFT"><FONT SIZE="-1"><TT> 
+  GG444HH 12082000 S </TT></FONT></TD>
+<TD ALIGN="CENTER"><FONT SIZE="-1"><TT> <IMG
+ WIDTH="9" HEIGHT="24" ALIGN="MIDDLE" BORDER="0"
+ SRC="freccia.gif"
+ ALT="$\downarrow$"> </TT></FONT></TD>
+<TD ALIGN="LEFT"><FONT SIZE="-1"><TT> EE333FF&nbsp;17&nbsp;Cat&nbsp;Distratti
+  </TT></FONT></TD>
+<TD ALIGN="LEFT"><FONT SIZE="-1"><TT> EE333FF&nbsp;20&nbsp;Cat&nbsp;Distratti</TT></FONT></TD>
+</TR>
+<TR><TD ALIGN="LEFT"><FONT SIZE="-1"><TT> 
+  EE333FF 02102000 N </TT></FONT></TD>
+<TD ALIGN="CENTER"><FONT SIZE="-1"><TT> GG444HH, 1 </TT></FONT></TD>
+<TD ALIGN="LEFT"><FONT SIZE="-1"><TT> GG444HH&nbsp;10&nbsp;Don&nbsp;Rossi
+  </TT></FONT></TD>
+<TD ALIGN="LEFT"><FONT SIZE="-1"><TT> GG444HH&nbsp;12&nbsp;Don&nbsp;Rossi</TT></FONT></TD>
+</TR>
+<TR><TD ALIGN="LEFT"><FONT SIZE="-1"><TT> 
+  EE333FF 20122000 S </TT></FONT></TD>
+<TD></TD>
+<TD></TD>
+<TD></TD>
+</TR>
+<TR><TD ALIGN="CENTER" COLSPAN=1></TT></FONT><FONT SIZE="-1">  Fig.1: file di incidenti</FONT></TD>
+<TD ALIGN="CENTER" COLSPAN=1></TT></FONT><FONT SIZE="-1">  Fig.2: lista</FONT></TD>
+<TD ALIGN="CENTER" COLSPAN=1></TT></FONT><FONT SIZE="-1">  Fig.3: file di polizze</FONT></TD>
+<TD ALIGN="CENTER" COLSPAN=1></TT></FONT><FONT SIZE="-1">  Fig.4: file di polizze aggiornato</FONT></TD>
+</TR>
+</TABLE>
+
+<P>
+<HR>
+<P>
+ 
+<DIV ALIGN="CENTER">
+<B>Universit&#224; di Roma ``La Sapienza''<BR>
+Facolt&#224; di Ingegneria<BR>
+Corso di Fondamenti di Informatica - A.A.1999/2000<BR>
+Corsi di Laurea: Aerospaziale, Chimica, Elettrica, Materiali, Meccanica,
+Nucleare</B><BR>
+Appello del <B>14 ottobre 2000</B> -- 2a prova scritta<BR>
+<I>tempo a disposizione: 1 ora</I>
+</DIV>
+
+<P><BR><P>
+ 
+<B>Problema 2 (4 punti)</B>
+
+<P>
+Descrivere un algoritmo di ordinamento (utilizzando pseudocodice o codice
+Pascal) e discuterne la complessit&#224; computazionale.  Fornire un esempio di
+vettore per cui l'algoritmo esibisce il comportamento del caso peggiore.
+
+<P><BR><P>
+ 
+<B>Problema 3 (4 punti)</B>
+
+<P>
+Si consideri il seguente frammento di programma Pascal:
+
+<P>
+ 
+<PRE>
+program Esame;
+const  II = 5;
+       CC = '9';
+var i, j, k : integer;
+    c, d : char;
+
+function m1 (x: integer; var y: integer): integer;
+begin ... end;
+
+procedure m2 (x: integer; e: char; var f: char);
+begin ... end;
+
+begin { Esame }
+  ...
+  i := m1(k, II);      { 1 }             m1(i, j);            { 5 }
+  j := m2(k, c, d);    { 2 }             m2(II, CC, c);       { 6 }
+  k := m1(i, j);       { 3 }             m2(CC, CC, d);       { 7 }
+  m2(c, d, d);         { 4 }             d := m1(II, j);      { 8 }
+  ...
+end. { Esame }
+</PRE>
+
+<P>
+Quali attivazioni di procedura o funzione sono corrette e quali no?  Motivare
+ciascuna risposta data.
+
+<P><BR><P>
+ 
+<B>Problema 4 (4 punti)</B>
+
+<P>
+Definiamo <I>istogramma</I> di un vettore di interi di dimensione <I>N</I>,
+una matrice di interi di dimensione <I>NxN</I> fatta nel seguente modo: per
+ogni riga <I>i</I>, sia <I>ki</I> il valore dell'<I>i</I>-esimo elemento
+del vettore:
+
+<UL>
+<LI>se <I>ki</I> &#232; negativo, tutti gli elementi della riga <I>i</I>
+  sono pari a 0;</LI>
+<LI>se <I>ki</I> &#232; maggiore di <I>N</I>, tutti gli elementi della riga
+  <I>i</I> sono pari ad 1;</LI>
+<LI>altrimenti, i primi <I>ki</I> elementi della riga <I>i</I> sono pari
+  ad 1 ed i rimanenti sono pari a 0.</LI>
+</UL>
+
+<P>
+Scrivere un sottoprogramma Fortran che, ricevendo come parametro un vettore di
+dimensione <I>N</I>, costruisca e restituisca al programma chiamante
+l'istogramma del vettore.  Scrivere un esempio di programma principale contente
+l'attivazione del sottoprogramma.
+
+</BODY>
+</HTML>

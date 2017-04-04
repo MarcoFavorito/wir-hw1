@@ -1,0 +1,251 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+<html>
+
+<head>
+
+<title>Esperimenti con batch</title>
+
+</head>
+
+<body>
+<h2>
+Esperimenti con batch (warning: non puro XHTML ...)
+</h2>
+
+<p>
+Ovviamente Apache deve essere stato attivato ...
+<p>
+file batch tipo:
+<pre>
+"nomefile.bat".
+</pre>
+
+
+<p><hr><p>
+<h2>
+ESEMPIO
+</h2>
+Qui invochiamo un programma batch che sta nel file "provabat.bat".
+<br>
+<a href="http://localhost/cgi-local-bin/bat/provabat.bat">http://localhost/cgi-local-bin/bat/provabat.bat</a></p>
+
+<p><hr><p>
+<h2> ecco il codice che viene eseguito
+</h2>
+
+<pre>
+@echo off
+echo Content-type:text/html
+echo.
+type inizio.txt
+type fine.txt
+</pre>
+
+dove  inizio.txt &egrave
+<pre>
+&lthtml&gt
+&lttitle&gtprimo programmino batch di prova&lt/title&gt
+&ltbody&gt
+&lthr&gt
+&lth3&gt&ltcenter&gtInizio primo programma batch di prova&lt/center&gt&lt/h3&gt
+Testo formattato relativo
+al primo programma batch cgi
+
+&ltp&gt
+Fine del testo introduttivo, molto informativo ...
+</pre>
+
+e fine.txt &egrave
+<pre>
+&lth3&gt&ltcenter&gtFine programma batch di prova&lt/center&gt&lt/h3&gt
+&lthr&gt
+&lt/body&gt
+&lt/html&gt
+</pre>
+
+
+<p><hr><p>
+<h2>
+ESEMPIO 2
+</h2>
+Qui invochiamo uno script quasi identico: che differenza c'&egrave?
+<br>
+<a href="http://localhost/cgi-local-bin/bat/provabat2.bat">http://localhost/cgi-local-bin/bat/provabat2.bat</a></p>
+
+<p><hr><p>
+<h2> ecco il codice che viene eseguito (br.txt, p.txt,
+iniziobrowser.txt e finebrowser.txt sono file testo di appoggio)
+</h2>
+
+<pre>
+@echo off
+echo Content-type:text/html
+echo.
+type iniziobrowser.txt
+type p.txt
+echo REQUEST_URI = %REQUEST_URI%
+type br.txt
+echo REMOTE_ADDR = %REMOTE_ADDR%
+type br.txt
+echo REMOTE_PORT = %REMOTE_PORT%
+type br.txt
+echo REQUEST_METHOD = %REQUEST_METHOD%
+type p.txt
+echo QUERY_STRING = %QUERY_STRING%
+type br.txt
+echo CONTENT_TYPE = %CONTENT_TYPE%
+type br.txt
+echo CONTENT_LENGTH = %CONTENT_LENGTH%
+type slashp.txt
+type p.txt
+echo HTTP_USER_AGENT = %HTTP_USER_AGENT%
+type br.txt
+echo HTTP_ACCEPT = %HTTP_ACCEPT%
+type br.txt
+echo HTTP_ACCEPT_ENCODING = %HTTP_ACCEPT_ENCODING%
+type br.txt
+echo HTTP_ACCEPT_LANGUAGE = %HTTP_ACCEPT_LANGUAGE%
+type br.txt
+echo HTTP_ACCEPT_CHARSET = %HTTP_ACCEPT_CHARSET%
+type br.txt
+echo HTTP_CONNECTION = %HTTP_CONNECTION%
+type br.txt
+echo HTTP_HOST = %HTTP_HOST%
+type slashp.txt
+type p.txt
+echo SERVER_ADMIN = %SERVER_ADMIN% --------- SERVER_URL = %SERVER_URL%
+type br.txt
+echo SERVER_NAME = %SERVER_NAME% -------- SERVER_PORT = %SERVER_PORT%
+type br.txt
+echo SERVER_PROTOCOL = %SERVER_PROTOCOL%
+type br.txt
+echo SERVER_SOFTWARE = %SERVER_SOFTWARE%
+type br.txt
+echo DOCUMENT_ROOT = %DOCUMENT_ROOT%
+type br.txt
+type slashp.txt
+type p.txt
+echo GATEWAY_INTERFACE = %GATEWAY_INTERFACE%
+type br.txt
+echo SCRIPT_FILENAME = %SCRIPT_FILENAME%
+type br.txt
+echo SCRIPT_NAME = %SCRIPT_NAME%
+type slashp.txt
+type finebrowser.txt
+</pre>
+
+<p><hr><p>
+<h2>
+ESEMPIO 2.1: GET
+</h2>
+Ecco una form che riceve i dati (nome e cognome)
+per l'iscrizione ad un corso:
+<FORM action=http://localhost/cgi-local-bin/bat/provabat2.bat method=get>
+<TABLE border=1 width="100%">
+<TR>
+    <TD width="24%"><DIV align=right><P>Nome:</P></DIV></TD>
+    <TD width="76%"><INPUT name=nome></TD></TR>
+<TR>
+    <TD width="24%"><DIV align=right><P>Cognome:</P></DIV></TD>
+    <TD width="76%"><INPUT name=cognome></TD></TR>
+<TR>
+    <TD width="24%"><DIV align=right>
+    <P><INPUT name=B2 type=reset value=Ricompila></P></DIV></TD>
+    <TD width="76%"><INPUT name=S1
+                           type=submit
+                           value="Invia Nome e Cognome (e riottienili ...)">
+</TD></TR></TABLE></FORM>
+
+<h3> La form invia i dati allo stesso programma di esempio2,
+che non li processa!
+<br>
+ecco il codice che viene eseguito
+</h3>
+
+<pre>
+lo stesso di prima (provabat2.bat)
+</pre>
+<h3>
+ed ecco il codice della form
+</h3>
+
+<pre>
+&lt;FORM action=http://localhost/cgi-local-bin/bat/provabat2.bat method=get&gt;
+&lt;TABLE border=1 width="100%"&gt;
+&lt;TR&gt;
+    &lt;TD width="24%"&gt;&lt;DIV align=right&gt;&lt;P&gt;Nome:&lt;/P&gt;&lt;/DIV&gt;&lt;/TD&gt;
+    &lt;TD width="76%"&gt;&lt;INPUT name=nome&gt;&lt;/TD&gt;&lt;/TR&gt;
+&lt;TR&gt;
+    &lt;TD width="24%"&gt;&lt;DIV align=right&gt;&lt;P&gt;Cognome:&lt;/P&gt;&lt;/DIV&gt;&lt;/TD&gt;
+    &lt;TD width="76%"&gt;&lt;INPUT name=cognome&gt;&lt;/TD&gt;&lt;/TR&gt;
+&lt;TR&gt;
+    &lt;TD width="24%"&gt;&lt;DIV align=right&gt;
+    &lt;P&gt;&lt;INPUT name=B2 type=reset value=Ricompila&gt;&lt;/P&gt;&lt;/DIV&gt;&lt;/TD&gt;
+    &lt;TD width="76%"&gt;&lt;INPUT name=S1
+                           type=submit
+                           value="Invia Nome e Cognome (e riottienili ...)"&gt;
+&lt;/TD&gt;&lt;/TR&gt;&lt;/TABLE&gt;&lt;/FORM&gt;
+</pre>
+
+<p><hr><p>
+<h2>
+ESEMPIO 2.2: come prima ma POST
+</h2>
+Ecco una form che riceve i dati (nome e cognome)
+per l'iscrizione ad un corso:
+<p>niente dati nella QUERY_STRING ...
+</p>
+
+<FORM action=http://localhost/cgi-local-bin/bat/provabat2.bat method=POST>
+<TABLE border=1 width="100%">
+<TR>
+    <TD width="24%"><DIV align=right><P>Nome:</P></DIV></TD>
+    <TD width="76%"><INPUT name=nome></TD></TR>
+<TR>
+    <TD width="24%"><DIV align=right><P>Cognome:</P></DIV></TD>
+    <TD width="76%"><INPUT name=cognome></TD></TR>
+<TR>
+    <TD width="24%"><DIV align=right>
+    <P><INPUT name=B2 type=reset value=Ricompila></P></DIV></TD>
+    <TD width="76%"><INPUT name=S1
+                           type=submit
+                           value="Invia Nome e Cognome (e riottienili ...)">
+</TD></TR></TABLE></FORM>
+
+<h3> La form invia i dati allo stesso programma di esempio2,
+che non li processa!
+<br>
+ecco il codice che viene eseguito
+</h3>
+
+<pre>
+che pretese!
+</pre>
+
+<h3>
+ed ecco il codice della form
+</h3>
+
+<pre>
+&lt;FORM action=http://localhost/cgi-local-bin/bat/provabat2.bat method=post&gt;
+&lt;TABLE border=1 width="100%"&gt;
+&lt;TR&gt;
+    &lt;TD width="24%"&gt;&lt;DIV align=right&gt;&lt;P&gt;Nome:&lt;/P&gt;&lt;/DIV&gt;&lt;/TD&gt;
+    &lt;TD width="76%"&gt;&lt;INPUT name=nome&gt;&lt;/TD&gt;&lt;/TR&gt;
+&lt;TR&gt;
+    &lt;TD width="24%"&gt;&lt;DIV align=right&gt;&lt;P&gt;Cognome:&lt;/P&gt;&lt;/DIV&gt;&lt;/TD&gt;
+    &lt;TD width="76%"&gt;&lt;INPUT name=cognome&gt;&lt;/TD&gt;&lt;/TR&gt;
+&lt;TR&gt;
+    &lt;TD width="24%"&gt;&lt;DIV align=right&gt;
+    &lt;P&gt;&lt;INPUT name=B2 type=reset value=Ricompila&gt;&lt;/P&gt;&lt;/DIV&gt;&lt;/TD&gt;
+    &lt;TD width="76%"&gt;&lt;INPUT name=S1
+                           type=submit
+                           value="Invia Nome e Cognome (e riottienili ...)"&gt;
+&lt;/TD&gt;&lt;/TR&gt;&lt;/TABLE&gt;&lt;/FORM&gt;
+</pre>
+
+
+<p><hr></p>
+</body>
+</html>
+

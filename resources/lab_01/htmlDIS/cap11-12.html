@@ -1,0 +1,710 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+
+<!--Converted with jLaTeX2HTML 2002 (1.62) JA patch-1.4
+patched version by:  Kenshi Muto, Debian Project.
+LaTeX2HTML 2002 (1.62),
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>Prima Esercitazione</TITLE>
+<META NAME="description" CONTENT="Prima Esercitazione">
+<META NAME="keywords" CONTENT="main">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1">
+<META NAME="Generator" CONTENT="jLaTeX2HTML v2002 JA patch-1.4">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="main.css">
+
+</HEAD>
+
+<BODY >
+
+<P>
+
+<H1><A NAME="SECTION001100000000000000000">
+Prima esercitazione di laboratorio</A>
+</H1>
+
+<P>
+&#200; opportuno portare all'esercitazione almeno un dischetto, sul quale salvare
+i programmi 90 scritti.
+
+<P>
+
+<P><P>
+<BR>
+
+<P><P>
+<BR>
+
+<P><P>
+<BR>
+Obiettivi di questa esercitazione:
+
+<P>
+
+<OL>
+<LI>Prendere familiarit&#224; con il sistema operativo Windows NT.
+</LI>
+<LI>Visitare la pagina Web del corso.
+</LI>
+<LI>Prendere familiarit&#224; con il compilatore ELF 90.
+</LI>
+<LI>Prendere familiarit&#224; con l'editor.
+</LI>
+</OL>
+
+<P>
+
+<H1><A NAME="SECTION001110000000000000000"></A>
+<A NAME="sec:NT"></A>
+<BR>
+Sistema operativo Windows NT
+</H1>
+
+<OL>
+<LI>Operazioni preliminari di accensione della macchina e accesso al sistema.
+  
+<OL>
+<LI>Accendere, se necessario, la macchina, ed attendere (senza premere
+      alcun tasto) che compaia una finestra di accesso.
+</LI>
+<LI>Quando richiesto, premere contemporaneamente i tasti
+    <code>&lt;CTRL ALT CANC&gt;</code>.
+</LI>
+<LI>Nella finestra che compare, digitare nella prima riga
+
+<P>
+<TT>user</TT>
+
+<P>
+lasciare la seconda riga vuota, e premere <code>&lt;INVIO&gt;</code>.
+
+<P>
+</LI>
+</OL>
+</LI>
+<LI>Creazione di un proprio direttorio di lavoro.
+  
+<OL>
+<LI>Lanciare il programma ``Gestione risorse'', facendo click su
+    <TT>AVVIO</TT> (in basso a sinistra) e poi scegliendo ``Programmi'' e
+    ``Gestione risorse''.
+</LI>
+<LI>Creare un proprio direttorio, eseguendo i passi:
+
+<P>
+1: ``File'',
+    2: ``Nuovo'',
+    3: ``Cartella'',
+
+<P>
+come sottodirettorio di <code>C:\Temp</code>, dandogli, ad esempio, il nome
+    <TT>Miodir</TT>.
+  
+</LI>
+</OL>
+
+<P>
+</LI>
+<LI>Alcune nozioni utili per lavorare meglio in Windows NT.
+  
+<UL>
+<LI>&#200; possibile rendere il programma ``Gestione risorse'' temporaneamente
+    inattivo, facendo click sul quadratino pi&#249; a sinistra fra quelli in alto a
+    destra.
+</LI>
+<LI>&#200; apparso nella parte inferiore dello schermo un rettangolo con
+    il nome ``Gestione risorse''. Facendo click su esso, &#232; possibile ``portare
+    in primo piano'' il programma, rendendolo attivo.
+</LI>
+<LI>Windows NT consente di usare contemporaneamente pi&#249; programmi (ad
+    es. ``Gestione risorse'' e ``Netscape'').
+</LI>
+<LI>&#200; possibile alternare fra i vari programmi usati durante una sessione
+    di lavoro con le due operazioni di cui sopra.
+  
+</LI>
+</UL>
+
+<P>
+</LI>
+</OL>
+
+<P>
+
+<H1><A NAME="SECTION001120000000000000000">
+Pagina Web del corso</A>
+</H1>
+
+<P>
+
+<OL>
+<LI>Attivazione del browser e accesso alla pagina Web del corso.
+  
+<OL>
+<LI>Attivare il browser Netscape, facendo doppio click sulla sua icona.
+</LI>
+<LI>Digitare l'indirizzo della pagina del corso nell'apposito spazio
+      accanto a ``location''; premere <code>&lt;INVIO&gt;</code>.
+
+<P>
+Indirizzi delle pagine Web di interesse per il nostro corso:
+      
+<UL>
+<LI>Home page del corso di Informatica (Ing. Aerospaziale):
+
+<P>
+<code>http://www.dis.uniroma1.it/~cadoli/didattica/informatica</code>
+
+<P>
+</LI>
+<LI>Home page del laboratorio di Via Tiburtina
+
+<P>
+<code>http://tibur.dis.uniroma1.it</code>
+      
+</LI>
+</UL>
+
+<P>
+NOTA: il carattere `<code>~</code>' (tilde) si ottiene digitando
+<code>&lt;ALT 126&gt;</code>
+(<code>126</code> va digitato sul tastierino numerico sulla destra, e la spia
+      <code>BLOC NUM</code> deve essere accesa).
+    
+</LI>
+</OL>
+
+<P>
+</LI>
+<LI>Ispezione del materiale del corso.
+    
+<OL>
+<LI>Facendo click con il mouse sul testo sottolineato, si possono
+      seguire i collegamenti di interesse.
+      Per tornare alla pagina precedente, fare click sull'icona ``Back''.
+</LI>
+<LI>Trovare il direttorio dell'esercitazione odierna.
+</LI>
+<LI>Copiare il programma 90 <code>CIAO.F90</code> nel proprio direttorio di
+      lavoro (<code>C:\Temp\Miodir</code>), utilizzando il menu ``File'' e l'opzione
+      ``Save As''.
+    
+</LI>
+</OL>
+</LI>
+</OL>
+
+<P>
+
+<H1><A NAME="SECTION001130000000000000000"></A>
+<A NAME="sec:elf90"></A>
+<BR>
+Compilatore ELF 90
+</H1>
+
+<OL>
+<LI>Operazioni preliminari di cambio direttorio.
+
+<P>
+
+<OL>
+<LI>Lanciare il programma ``Prompt dei comandi'', facendo click su
+    <TT>AVVIO</TT> (in basso a sinistra) e poi scegliendo ``Prompt dei
+    comandi''.
+
+<P>
+</LI>
+<LI>Cambiare direttorio di lavoro, digitando:
+
+<P>
+<code>cd Temp\Miodir</code>
+  
+</LI>
+</OL>
+
+<P>
+</LI>
+<LI>Compilazione, collegamento ed esecuzione.
+    
+<OL>
+<LI>Compilare il file sorgente <TT>CIAO.F90</TT>, digitando:
+
+<P>
+<code>elf90 ciao.f90</code>
+
+<P>
+Ci&#242; provoca la creazione del file oggetto <TT>CIAO.OBJ</TT>.
+
+<P>
+</LI>
+<LI>Collegare il file oggetto <TT>CIAO.OBJ</TT>, digitando:
+
+<P>
+<code>elf90 ciao.obj</code>
+
+<P>
+Ci&#242; provoca la creazione del file eseguibile <TT>CIAO.EXE</TT>.
+
+<P>
+</LI>
+<LI>Mandare in esecuzione il file eseguibile <TT>CIAO.EXE</TT>, digitando:
+
+<P>
+<code>ciao</code>
+    
+</LI>
+</OL>
+</LI>
+</OL>
+
+<P>
+
+<H1><A NAME="SECTION001140000000000000000">
+Editor</A>
+</H1>
+
+<OL>
+<LI>Operazioni preliminari di cambio direttorio e attivazione del programma.
+ 
+<OL>
+<LI>Lanciare il programma ``Prompt dei comandi'', facendo click su
+   <TT>AVVIO</TT> (in basso a sinistra) e poi scegliendo ``Programmi'' e
+   ``Prompt dei comandi''.
+
+<P>
+NON eliminare la finestra ``Prompt dei comandi'' usata per il compilatore.
+
+<P>
+</LI>
+<LI>Cambiare direttorio di lavoro, digitando:
+
+<P>
+<code>cd Temp\Miodir</code>
+
+<P>
+</LI>
+<LI>Lanciare il programma di editing, digitando
+
+<P>
+<code>edit</code>
+
+<P>
+</LI>
+<LI>Premendo contemporaneamente i tasti <code>ALT</code> e <code>Enter</code> si
+    ottiene una finestra a tutto schermo. Premendo <code>Esc</code> si ritorna alla
+    dimensione precedente.
+ 
+</LI>
+</OL>
+
+<P>
+</LI>
+<LI>Scrittura di un programma 90 e salvataggio del file sorgente.
+  
+<OL>
+<LI>Scrivere il programma 90 assegnato per l'esercitazione.
+
+<P>
+&#200; possibile muoversi nel testo usando il mouse e/o i tasti freccia.
+
+<P>
+</LI>
+<LI>Salvare il programma 90, premendo
+<code>&lt;ALT F&gt;</code>
+scegliendo `<TT>S</TT>'alva e digitando il nome scelto per il file sorgente,
+      che deve avere estensione `<TT>.F90</TT>'.
+
+<P>
+In alternativa, pu&#242; essere usato il mouse.
+  
+</LI>
+</OL>
+
+<P>
+</LI>
+<LI>Compilazione del file sorgente scritto.
+  
+<OL>
+<LI>Vedere il paragrafo&nbsp;<A HREF="main.html#sec:elf90">11.3</A> (sostituendo il nome
+    <TT>ciao.f90</TT>) con il nome del file prescelto).
+
+<P>
+</LI>
+<LI>Nel caso in cui siano presenti errori, &#232; opportuno che il
+    comando di compilazione sia
+
+<P>
+<code>elf90 &lt;nomefile&gt;.f90 | more</code>
+
+<P>
+In questa maniera &#232; possibile vedere il numero della linea dove occorre
+    ciascun errore.
+
+<P>
+Premendo la barra spaziatrice o <code>&lt;INVIO&gt;</code> &#232; possibile vedere tutti
+    gli errori (molto spesso, tuttavia, solo il primo errore evidenziato &#232;
+    significativo).
+
+<P>
+NOTA: il programma di editing visualizza, nell'angolo in basso a destra, la
+    riga e la colonna del cursore.
+
+<P>
+</LI>
+<LI>&#200; opportuno ricompilare il file sorgente dopo avere corretto il primo
+    errore e salvato il file sorgente.
+
+<P>
+</LI>
+<LI>Altri aspetti del compilatore sono presentati nel
+    capitolo&nbsp;<A HREF="main.html#cap:compilatore">12</A>.
+  
+</LI>
+</OL>
+</LI>
+<LI>Uscita dall'editor.
+
+<P>
+Dopo avere terminato la scrittura di tutti i programmi 90, si pu&#242; uscire
+  dall'editor premendo
+<code>&lt;ALT F&gt;</code>
+e scegliendo `<TT>E</TT>'sci.
+
+<P>
+In alternativa, pu&#242; essere usato il mouse.
+
+<P>
+</LI>
+</OL>
+
+<P>
+
+<H1><A NAME="SECTION001150000000000000000">
+Salvataggio dei propri programmi 90 su dischetto</A>
+</H1>
+
+<OL>
+<LI>&#200; importante salvare i propri programmi 90 su un dischetto,
+  perch&#233; i dischi rigidi del laboratorio vengono periodicamente cancellati.
+
+<P>
+</LI>
+<LI>Mediante il programma ``Gestione risorse'':
+  
+<OL>
+<LI>copiare tutti i programmi 90 dal proprio direttorio di lavoro,
+</LI>
+<LI>incollarli sul proprio dischetto.
+  
+</LI>
+</OL>
+
+<P>
+</LI>
+<LI>CONSIGLIO: strutturare il proprio dischetto in sottodirettori (cfr.   paragrafo&nbsp;<A HREF="main.html#sec:NT">11.1</A>), uno per argomento e/o per esercitazione.
+
+<P>
+</LI>
+</OL>
+
+<P>
+
+<P><P>
+<BR>
+
+<P><P>
+<BR>
+
+<P><P>
+<BR>
+
+<P><P>
+<BR>
+<DIV ALIGN="CENTER">
+</DIV>
+<DIV ALIGN="CENTER"><B>BUON LAVORO!!!
+  </B>
+</DIV>
+
+<P>
+
+<P>
+
+<H1><A NAME="SECTION001200000000000000000"></A>
+<A NAME="cap:compilatore"></A>
+<BR>
+Note sul compilatore usato
+</H1>
+Tutti i programmi presentati in questa dispensa sono stati compilati e
+verificati con il compilatore Essential Lahey Fortran 90 Compiler Release
+4.00b.
+
+<P>
+In questo capitolo vengono illustrate alcune differenze fra il compilatore e
+l'esposizione del 90 presentata nel libro di testo.
+Vengono inoltre chiariti alcuni aspetti pratici sulla compilazione di programmi
+strutturati in pi&#249; unit&#224; di programma.
+Infine, vengono riportate le istruzioni per l'installazione del compilatore
+sul proprio calcolatore personale.
+
+<P>
+
+<H1><A NAME="SECTION001210000000000000000">
+Differenze rispetto al libro di testo</A>
+</H1>
+Rispetto a quanto specificato nel libro di testo, le principali differenze
+riscontrate nel compilatore usato sono le seguenti:
+
+<UL>
+<LI>L'istruzione <TT>IMPLICIT NONE</TT> &#232; obbligatoria in tutte le unit&#224;
+  di programma.
+
+<P>
+</LI>
+<LI>L'istruzione <TT>STOP</TT> &#232; obbligatoria al termine di un programma.
+
+<P>
+</LI>
+<LI>Il nome del programma &#232; obbligatorio nella linea  <TT>END PROGRAM</TT>.
+
+<P>
+Lo stesso vale per <TT>END FUNCTION</TT>, <TT>END SUBROUTINE</TT> ed <TT>END
+ MODULE</TT>.
+
+<P>
+</LI>
+<LI>Il costrutto <TT>IF</TT> non pu&#242; avere nomi (cfr. libro di testo,
+  pag. 119).
+
+<P>
+</LI>
+<LI>Se una riga termina con `<TT>&amp;</TT>', la riga successiva deve
+  obbligatoriamente iniziare con `<TT>&amp;</TT>' (cfr. libro di testo, pag. 14).
+
+<P>
+</LI>
+<LI>Una dichiarazione del tipo
+  <PRE>
+CHARACTER :: iniziale
+</PRE>
+  (cfr. libro di testo, pag. 23) non viene compilata, e va sostituita con la
+  seguente
+  <PRE>
+CHARACTER(1) :: iniziale
+</PRE>
+
+<P>
+</LI>
+<LI>Subroutine e funzioni devono essere necessariamente definite all'interno
+  di <TT>MODULE</TT>, come indicato nel testo, al paragrafo 6.5.
+
+<P>
+</LI>
+<LI>Una dichiarazione del tipo
+  <PRE>
+INTEGER FUNCTION romano2intero (ch)
+</PRE>
+  (cfr. libro di testo, pag. 366) non viene compilata, e va sostituita con le
+  seguenti
+  <PRE>
+FUNCTION romano2intero (ch)
+INTEGER :: romano2intero
+</PRE>
+
+<P>
+</LI>
+<LI>Una funzione non deve essere ridichiarata nell'unit&#224; di programma che
+  la usa.
+
+<P>
+</LI>
+<LI>Un argomento di tipo array deve essere necessariamente di forma presunta
+  (cfr. paragrafo 6.5 del libro di testo). Non sono quindi ammesse
+  dichiarazioni come quelle di pagg. 326, 327.
+
+<P>
+</LI>
+<LI>La specifica <TT>INTENT INOUT</TT> non &#232; ammessa; occorre usare
+  <TT>INTENT IN OUT</TT> (cfr. pag. 325 del libro di testo).
+
+<P>
+</LI>
+<LI>L'attributo <TT>INTENT</TT> &#232; obbligatorio per tutti gli argomenti
+  passati ad un'unit&#224; di programma.
+
+<P>
+</LI>
+<LI>Gli argomenti fittizi di una <TT>FUNCTION</TT> devono necessariamente
+  avere l'attributo <TT>INTENT IN</TT>.
+
+<P>
+</LI>
+<LI>Il descrittore di formato `<TT>X</TT>' non &#232; ammesso.
+
+<P>
+</LI>
+</UL>
+
+<P>
+
+<H1><A NAME="SECTION001220000000000000000">
+Compilazione di programmi strutturati in pi&#249; unit&#224; di programma</A>
+</H1>
+Il compilatore permette di compilare programmi strutturati in pi&#249; unit&#224; di
+programma, in unico file o diversi file, come evidenziato nei
+capitoli&nbsp;<A HREF="#cap:sottoprogrammi"><IMG  ALIGN="BOTTOM" BORDER="1" ALT="[*]"
+ SRC="file:/usr/share/latex2html/icons/crossref.png"></A> <IMG
+ WIDTH="16" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img1.png"
+ ALT="$\div$"> <A HREF="#cap:soluzioni"><IMG  ALIGN="BOTTOM" BORDER="1" ALT="[*]"
+ SRC="file:/usr/share/latex2html/icons/crossref.png"></A>.
+
+<P>
+A tal fine, &#232; necessario lanciare il comando di compilazione per ognuno
+dei file in cui &#232; strutturato il programma.  Ad esempio, supponendo che il
+programma sia strutturato nel seguente modo
+(cfr. paragrafi&nbsp;<A HREF="#sec:function_r2i"><IMG  ALIGN="BOTTOM" BORDER="1" ALT="[*]"
+ SRC="file:/usr/share/latex2html/icons/crossref.png"></A> e <A HREF="#sec:rom2int"><IMG  ALIGN="BOTTOM" BORDER="1" ALT="[*]"
+ SRC="file:/usr/share/latex2html/icons/crossref.png"></A>):
+
+<UL>
+<LI>un file <TT>ROM2INT.F90</TT> che contiene un'unit&#224;
+  <TT>MODULE</TT>, e
+
+<P>
+</LI>
+<LI>un file <TT>CLIROM2I.F90</TT> che contiene l'unit&#224; principale
+  <TT>PROGRAM</TT>,
+</LI>
+</UL>
+occorre lanciare i comandi
+
+<P>
+<code>elf90 rom2int.f90</code>
+
+<P>
+e
+
+<P>
+<code>elf90 clirom2i.f90</code>
+
+<P>
+
+<P>
+<BR>
+Quando sono stati corretti tutti gli errori nei file sorgente, si pu&#242;
+procedere al collegamento. L'unico comando necessario &#232;
+
+<P>
+<code>elf90 clirom2i.obj</code>
+
+<P>
+
+<P>
+<BR>
+L'esecuzione del programma si ottiene lanciando il comando
+
+<P>
+<code>clirom2i</code>
+
+<P>
+
+<H1><A NAME="SECTION001230000000000000000">
+Procedura d'installazione di Elf90 su Windows95/98/NT/2000</A>
+</H1>
+Nel caso in cui si desideri installare il compilatore <I>freeware</I> Essential
+Lahey Fortran 90 Compiler Release 4.00b sul proprio calcolatore, si raccomanda
+di seguire le seguenti istruzioni:
+
+<P>
+
+<OL>
+<LI>Scaricare il file <TT>f.exe</TT> dalla pagina web del corso.
+
+<P>
+</LI>
+<LI>Eseguire il programma di installazione cliccando sull'icona del file,
+  oppure digitando <TT>elf90</TT> seguito da <B>Invio</B> dopo aver aperto
+  una finestra DOS dalla posizione in cui &#232; stato memorizzato il file sul disco
+  rigido.
+</LI>
+<LI>La collocazione sul disco rigido suggerita dal programma di installazione
+  &#232; <code>c:\elf90</code>. Per accettare tale scelta cliccare su <B>Unzip</B>.
+  Affinch&#233; l'installazione si possa considerare conclusa, deve apparire la
+  scritta <I>30 files unzipped successfully</I>. Cliccare su <B>OK</B> e
+  <B>Close</B> per uscire dalla finestra di autoestrazione di WinZip.
+</LI>
+<LI>&#200; ora necessario includere il direttorio <code>c:\elf90</code> nel proprio
+  <I>path</I>.
+ 
+<OL>
+<LI>Windows95/98
+   
+<UL>
+<LI>Aprire il file <TT>autoexec.bat</TT> utilizzando un qualsiasi editor
+     di testo (<I>EDIT, NotePad, WordPad, etc. </I>)
+</LI>
+<LI>Aggiungere il direttorio <code>c:\elf90</code> alla
+     fine della propria linea di dichiarazione del <I>path</I>:
+     <PRE>
+     SET PATH ...........;c:\elf90
+</PRE>
+     Ogni direttorio dichiarato nel <I>path</I> dovrebbe essere separato
+     da ``<TT>;</TT>'' (senza spazi!)
+   
+</LI>
+</UL>
+</LI>
+<LI>WindowsNT/2000
+   
+<UL>
+<LI>Cliccare con il tasto destro del mouse sull'icona <B>Risorse del
+    Computer </B>, selezionare <B>Propriet&#224; </B>e poi <B>Avanzate </B>.
+</LI>
+<LI>Cliccare su <B>Variabili d'ambiente... </B>, tra le <B>Variabili di
+    Sistema </B>selezionare <B>Path </B>e quindi <B>Modifica </B>. Alla fine
+    del path esistente, aggiungere <PRE> ;c:\elf90
+</PRE>
+    e salvare la modifica apportata selezionando <B>OK </B>nelle finestre
+    ancora aperte.
+   
+</LI>
+</UL>
+</LI>
+</OL>
+</LI>
+<LI>Riavviare il computer per eseguire il nuovo <I>path</I>.
+</LI>
+<LI>Testare l'installazione su  un programma test (<TT>test.f90</TT>)
+  digitando da un <I>prompt </I>di DOS:
+<DIV ALIGN="CENTER">
+<code>elf90 test.f90</code> 
+</DIV>
+Se la compilazione &#232; avvenuta senza la comunicazione di errori
+ eseguire il programma creato digitando:
+<DIV ALIGN="CENTER">
+<code>test</code> 
+</DIV>
+</LI>
+<LI>Si noti che il compilatore crea, in alcune circostanze, file con varie
+  estensioni (ad es., `<TT>.MAP</TT>', `<TT>.MOD</TT>', ...), che non devono
+  essere cancellati.
+</LI>
+</OL>
+
+<P>
+<BR><HR>
+<ADDRESS>
+Marco Cadoli
+2003-01-20
+</ADDRESS>
+</BODY>
+</HTML>

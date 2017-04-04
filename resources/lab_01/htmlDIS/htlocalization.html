@@ -1,0 +1,77 @@
+<html>
+<title>HT Localization</title>
+
+<body>
+
+<br><br>
+<center>
+<h1>Hough Transform Localization and Image Correlation</h1>
+</center>
+
+<UL>
+
+<br><br>
+
+<P>Under the planar movement assumption, <b>robot motion</b> is described by 
+3 variables:
+2 translations and 1 rotation on the ground plane.
+
+<p><img src="fig/planar-refsys.gif"></p>
+
+<br><br>
+<P>
+The localization task is performed in two steps:<br><br><br><br>
+<ol>
+  <li><b>Rough Localization</b>:
+  Hough Transform for determining 1 translation and 1 rotation variables + Odometry
+  for determining the other translation variable.<br><br><br>
+  <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  <img width=320 src="map3d/histo/triwall3.gif"></p><br><br><br>
+
+
+  <li><b>Fine data matching and motion estimation</b>: Image Correlation 
+  searching in the space of robot's locations.<br>
+
+  <br><br>
+
+  <p>Original images</p>
+  <p>
+  <img width=400 src="map3d/corr/B00-c1.gif">
+  <img width=400 src="map3d/corr/B01-c1.gif">
+  </P>
+
+  <br><br>
+
+  <p>Rectified images (from stereo depth information)</p>
+  <p>
+  <img src="map3d/corr/corr1.gif"><br><br><br>
+  <img src="map3d/corr/corr2.gif"><br>
+  </p>
+
+  <br><br>
+
+  <p>Image correlation (by minimizing image difference)</p>
+  <p>
+  <img src="map3d/corr/corr-avg1.gif"><br><br><br>
+  <img src="map3d/corr/corr-diff1.gif"><br><br><br>
+  <img src="map3d/corr/corr-avg2.gif"><br><br><br>
+  <img src="map3d/corr/corr-diff2.gif"><br><br><br>
+  <img src="map3d/corr/corr-avg3.gif"><br><br><br>
+  <img src="map3d/corr/corr-diff3.gif"><br><br><br>
+  </p>
+
+
+</ol>
+
+</UL>
+
+</body>
+
+</html>
+
+
+
+
+
+
+

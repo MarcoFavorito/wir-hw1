@@ -1,0 +1,102 @@
+<!doctype html public "-//w3c//dtd html 4.0 transitional//en">
+<html>
+<head>
+<link href="java.css" rel="stylesheet" type="text/css">
+<title>Somma di valori</title>
+</head>
+
+<body>
+
+<h2>Somma di valori</h2>
+
+<p>
+Il seguente programma <a href="Somma.java">Somma.java</a>
+assegna tre valori differenti a tre variabili, e poi le
+somma tra loro.
+
+<pre>
+/*
+  Somma di tre numeri.
+*/
+
+class Somma {
+  public static void main (String args[]) {
+    int a,b,c;
+    int d;
+
+    a=10;
+    b=4;
+    c=5-2;
+
+    d=a+b+c;
+
+    System.out.println("Il risultato della somma e': " + d );
+  }
+}
+
+</pre>
+
+<p>
+Alcune osservazioni su questo programma. La prima &egrave;
+che un programma pu&ograve; contenere anche pi&ugrave; di
+una variabile. In questo caso, le dichiarazioni si possono
+anche mettere su una sola riga: <tt>int a,b,c;</tt> indica
+che ci servono tre variabili per contenere dei valori
+interi (<tt>int</tt>), e che i nomi di queste tre variabili
+sono <tt>a</tt>, <tt>b</tt> e <tt>c</tt>. &Egrave; anche
+possibile dichiarare altre variabili su altre linee, come
+&egrave; fatto per esempio per la variabile <tt>d</tt>.<p>
+
+Le successive tre istruzioni assegnano dei valori alle
+variabili <tt>a</tt>, <tt>b</tt> e <tt>c</tt>. La assegnazione
+di <tt>c</tt> &egrave; interessante, perch&egrave; fa notare
+che a una variabile si pu&ograve; assegnare il valore che
+risulta da un calcolo. Infatti, la istruzione <tt>c=5-2;</tt>
+calcola il valore 5-2 (che vale 3), e poi assegna a <tt>c</tt>
+il valore risultato, che &egrave; 3. In generale, una istruzione
+di assegnamento ha la struttura
+
+<pre>
+nomevariabile = espressione;
+</pre>
+
+<p>
+Quello che avviene &egrave; che la espressione viene valutata,
+cio&egrave; si calcola il suo valore, e questo valore viene
+memorizzato nella variabile con quel nome.<p>
+
+La istruzione <tt>d=a+b+c;</tt> fa vedere come sia possibile
+utilizzare i valori delle variabili. Infatti, in questo caso
+la espressione <tt>a+b+c;</tt> contiene la variabili
+<tt>a</tt>, <tt>b</tt> e <tt>c</tt>. L'effetto di questa
+istruzione &egrave; quello di calcolare la somma dei valori
+memorizzati nelle variabili <tt>a</tt>, <tt>b</tt> e <tt>c</tt>,
+e di memorizzare il risultato nella variabile <tt>d</tt>.<p>
+
+&Egrave; da notare che questa istruzione <tt>d=a+b+c;</tt>
+non &egrave; differente dalle precedenti: ha sempre la
+struttura <tt>nomevariabile = espressione;</tt> l'unica
+differenza &egrave; che la espressione in questo caso contiene
+dei riferimenti ad altre variabili.<p>
+
+<h4>Riassunto</h4>
+
+<p>
+&Egrave; possibile utilizzare pi&ugrave; di una variabile in
+un programma. Ogni variabile deve venire dichiarata, ed &egrave;
+possibile dichiarare anche pi&ugrave; variabili nella stessa
+linea. Per assegnare (memorizzare) un valore a una variabile,
+si usa l'istruzione <tt>nomevariabile = espressione;</tt>, in
+cui la espressione pu&ograve; contenere sia costanti (come
+per esempio 10, 4 o 5) che riferimenti ad altre variabili
+(come &egrave; il caso per <tt>a+b+c</tt>).<p>
+
+&Egrave; possibile vedere la
+<a href="Somma/Somma-6.shtml">esecuzione di Somma.java</a>,
+passo per passo.<p>
+
+
+
+</body>
+</html>
+

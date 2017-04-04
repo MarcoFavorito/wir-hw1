@@ -1,0 +1,103 @@
+<!-- saved from url=(0022)http://internet.e-mail -->
+<!DOCTYPE html PUBLIC "-//w3c//dtd html 4.0 transitional//en">
+<html>
+<head>
+   <title>Esame del 23/3/2004 - Compito A</title>
+</head>
+<body>
+
+<center>
+  <b>Tecniche di Programmazione</b> <br>
+<b>Corso di Laurea in Ingegneria Informatica</b> <br>
+<b>Corso di Laurea in Ingegneria Automatica</b> <br>
+  A.A. 2003/04
+</center>
+
+<center>
+  <h2>Appello del 23/3/2004 - Compito A</h2>
+</center>
+
+Si vogliono gestire dei laboratori di riparazione. Di un oggetto <em>LaboratorioRiparazione</em> 
+sono di interesse il nome del laboratorio (una stringa) e la collezione delle 
+riparazioni che devono essere effettuate. Di ogni riparazione sono di interesse le seguenti 
+informazioni: 
+<ul>
+  <li>un <em>identificatore</em> dell'oggetto da riparare (una stringa); 
+  <li>il <em>tipo</em> di riparazione che deve essere effettuata sull'oggetto 
+    (una stringa). 
+</ul>
+
+Gli oggetti <em>LaboratorioRiparazione</em> supportano le seguenti funzionalit&agrave;: 
+<ul>
+  <li><em>crea:</em> che, data una stringa <em>n</em> che rappresenta il nome 
+    di laboratorio, crea un oggetto <em>LaboratorioRiparazione</em> con nome <em>n</em> 
+    che inizialmente non ha alcuna riparazione da effettuare;</li>
+  <li><em>nome:</em> che restituisce il nome del <em>LaboratorioRiparazione</em>; 
+  </li>
+  <li><em>presente:</em> che, dato l'identificatore di un oggetto da riparare, 
+    restituisce <em>true</em> se l'oggetto &egrave; nel laboratorio, <em>false</em> 
+    altrimenti; </li>
+  <li><em>tipo:</em> che, dato l'identificatore di un oggetto da riparare, restituisce 
+    il tipo di riparazione da effettuare sullo stesso, se l'oggetto &egrave; nel 
+    laboratorio, altrimenti lancia una eccezione; </li>
+  <li><em>aggiungi:</em> che, dato l'identificatore di un oggetto da riparare 
+    ed il tipo di riparazione da effettuare sullo stesso, aggiunge una nuova riparazione 
+    in coda alle riparazione da effettuare; tuttavia se &egrave; gi&agrave; presente 
+    un oggetto da riparare con lo stesso identificatore, lancia una eccezione.</li>
+  <li><em>serviPrimo:</em> che effettua la prima riparazione in coda, eliminandola 
+    dalla coda e restituendo una stringa ottenuta dalla concatenazione 
+    dell'identificatore dell'oggetto da riparare, del carattere <tt>';'</tt> 
+    e del tipo di riparazione da effettuare; 
+    se non c'e' alcuna riparazione da effettuare lancia una eccezione;</li>
+  <li><em>serviTipo:</em> che, dato un tipo di riparazione, effettua la prima 
+    riparazione in coda di quel tipo, eliminandola dalla coda e restituendo l'identificatore 
+    dell'oggetto da riparare; se non c'e' alcuna riparazione di quel tipo da effettuare 
+    restituisce <em>null</em>;</li>
+  <li><em>quantiTipo:</em> che, dato un tipo di riparazione, restituisce il numero 
+    di riparazioni da effettuare di quel tipo;</li>
+  <li><em>tuttiTipo:</em> che, dato un tipo di riparazione, restituisce un array 
+    di stringhe contenente gli identificatori degli oggetti su cui si deve effettuare 
+    la riparazione di quel tipo.</li>
+</ul>
+
+<p><strong>Domanda 1.</strong> Scrivere una classe Java <code>LaboratorioRiparazione</code> 
+  per rappresentare oggetti <em>LaboratorioRiparazione</em>. Fornire il costo in tempo dei metodi
+che realizzano le funzionalit&agrave; <em>tipo</em>, <em>serviTipo</em> e <em>tuttiTipo</em>, motivando la risposta (indicando esplicitamente 
+  i parametri di input e il caso peggiore).
+
+
+
+
+<p><strong>Domanda 2.</strong> Realizzare un metodo statico <code>oggettiInRiparazione</code> 
+  cliente della classe <code>LaboratorioRiparazione</code> che, dati 
+<ul>
+  <li>un array di stringhe <em>arr</em> contenente un insieme di tipi di riparazione 
+    (tutti diversi tra loro) , 
+  <li>il nome <em>fout</em> di un file, 
+  <li>ed un <code>LaboratorioRiparazione</code> <em>lr</em>
+</ul>
+scrive sul file <em>fout</em>, uno per riga, gli identificatori degli oggetti 
+in riparazione in <em>lr</em> il cui tipo sia presente in <em>arr</em>. 
+Fornire il costo in tempo del metodo realizzato, motivando la risposta e individuando 
+i parametri di input e il caso peggiore.
+
+
+<!--p><a href="soluzione/ClienteBiblioteca.java">Soluzione</a></p-->
+
+
+<p><strong>Domanda 3.</strong> Spiegare la rappresentazione collegata di alberi 
+  binari in cui l'informazione in ciascun nodo &egrave; un intero. Spiegare l'algoritmo 
+  di visita in postordine di alberi binari. Facendo uso della rappresentazione 
+  collegata, realizzare un metodo statico pubblico che, dato il riferimento alla 
+  radice di un albero binario <em>alb</em> i cui nodi contengono interi, restituisca 
+  il numero di foglie la cui informazione sia un numero positivo (maggiore di 
+  0).
+  Fornire il costo in tempo e spazio di memoria del metodo realizzato, motivando la risposta (indicando esplicitamente 
+  i parametri di input e il caso peggiore).
+
+
+
+<p>&nbsp;</p>
+
+</body>
+</html>

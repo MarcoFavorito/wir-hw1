@@ -1,0 +1,695 @@
+<!doctype html public "-//w3c//dtd html 4.0 transitional//en">
+<html>
+<head>
+   <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <meta name="GENERATOR" content="Mozilla/4.6 [en] (X11; I; SunOS 5.5.1 sun4u) [Netscape]">
+   <title>Linguaggi e traduttori (diploma in Ingegneria Informatica)</title>
+</head>
+<body text="#000000" bgcolor="#E0EDFF" link="#0000EE" vlink="#CC33CC" alink="#FF0000">
+
+<center>
+<h1>
+Corso di Linguaggi e Traduttori</h1></center>
+
+<center>
+<h1>
+per il <a href="/DIPLOMA/">Diploma Universitario in Ingegneria Informatica</a></h1></center>
+
+<center>
+<h3>
+a.a. 1999/2000</h3></center>
+
+<center>Docente: <a href="/~rosati">Riccardo Rosati</a>
+<p>indirizzo di questa pagina web: http://www.dis.uniroma1.it/~rosati/lingtrad
+<p>
+<hr WIDTH="100%"></center>
+
+<ul>
+<li>
+<font size=+1><a href="#Avvisi">Avvisi e novit&agrave;</a></font></li>
+
+<li>
+<font size=+1><a href="#Programma preliminare del corso">Programma preliminare
+del corso</a></font></li>
+
+<li>
+<font size=+1><a href="#Orario lezioni">Orario lezioni</a></font></li>
+
+<li>
+<font size=+1><a href="#Ricevimento studenti">Ricevimento studenti</a></font></li>
+
+<li>
+<font size=+1><a href="#Materiale didattico">Materiale didattico</a></font></li>
+
+<li>
+<font size=+1><a href="#Software">Software</a></font></li>
+
+<li>
+<font size=+1><a href="#Modalita' di esame">Modalit&agrave; di esame</a></font></li>
+
+<li>
+<font size=+1><a href="#Calendario esami">Calendario esami</a></font></li>
+
+<li>
+<font size=+1><a href="#Lezioni svolte">Lezioni svolte</a></font></li>
+
+<li>
+<font size=+1><a href="#Link utili">Link utili</a></font></li>
+</ul>
+
+<hr WIDTH="100%">
+<h2>
+<a NAME="Avvisi"></a><font size=+1>Avvisi e novit&agrave;</font></h2>
+
+<ul>
+<li>
+<font size=+1>(3/11/99) &Egrave; ora disponibile una lista di possibili domande
+d'esame (relative alla seconda prova). La lista &egrave; disponibile in <a href="domande.txt">formato
+ASCII</a> e in <a href="domande.ps">formato postscript</a></font></li>
+
+<li>
+<font size=+1>prossimo seminario a Roma (didattica a distanza): marted&igrave;
+9 novembre ore 18.30, in via Salaria 113, aula C3</font></li>
+
+<li>
+<font size=+1>prossima esercitazione in laboratorio (didattica faccia a
+faccia): luned&igrave; 8 novembre, ore 11, via Eudossiana</font></li>
+</ul>
+
+<hr WIDTH="100%">
+<h2>
+<a NAME="Programma preliminare del corso"></a><font size=+1>Programma preliminare
+del corso</font></h2>
+
+<ol>
+<li>
+<b>Progetto di un traduttore</b>
+
+<ul>
+<li>
+struttura di un traduttore</li>
+
+<li>
+distinzione tra analisi dell'input e sintesi dell'output</li>
+
+<li>
+distinzione tra sintassi e semantica</li>
+
+<li>
+analisi lessicale, analisi sintattica, traduzione</li>
+</ul></li>
+
+<li>
+<b>Analisi lessicale</b>
+
+<ul>
+<li>
+ruolo dell'analisi lessicale: distinzione lessico-sintassi</li>
+
+<li>
+linguaggi formali</li>
+
+<li>
+espressioni regolari</li>
+
+<li>
+automi a stati finiti</li>
+
+<li>
+corrispondenza tra espressioni regolari e automi a stati finiti</li>
+
+<li>
+caratteristiche di un analizzatore lessicale</li>
+
+<li>
+LEX/FLEX</li>
+
+<li>
+progetto di un analizzatore lessicale in LEX/FLEX</li>
+</ul></li>
+
+<li>
+<b>Analisi sintattica</b>
+
+<ul>
+<li>
+ruolo dell'analisi sintattica</li>
+
+<li>
+grammatiche context-free</li>
+
+<li>
+albero sintattico</li>
+
+<li>
+differenza tra espressioni regolari e grammatiche context-free</li>
+</ul></li>
+
+<li>
+<b>Analisi sintattica top-down</b>
+
+<ul>
+<li>
+analisi top-down: definizione</li>
+
+<li>
+trasformazioni delle grammatiche per l'analisi top-down</li>
+
+<li>
+grammatiche LL(1)</li>
+
+<li>
+analizzatori ricorsivi discendenti</li>
+
+<li>
+analizzatori discendenti non ricorsivi</li>
+
+<li>
+Progetto di un analizzatore ricorsivo discendente (in C)</li>
+</ul></li>
+
+<li>
+<b>Analisi sintattica bottom-up</b>
+
+<ul>
+<li>
+analisi bottom-up: definizione</li>
+
+<li>
+analizzatori LR</li>
+
+<li>
+conflitti shift-reduce e reduce-reduce</li>
+
+<li>
+grammatiche a precedenza di operatori</li>
+
+<li>
+grammatiche LR e LALR</li>
+
+<li>
+YACC/BISON</li>
+
+<li>
+progetto di un analizzatore sintattico bottom-up in YACC/BISON</li>
+</ul></li>
+
+<li>
+<b>Grammatiche ad attributi</b>
+
+<ul>
+<li>
+attributi sintetizzati ed ereditati</li>
+
+<li>
+attributi di tipo S e di tipo L</li>
+
+<li>
+valutazione di espressioni con grammatiche ad attributi</li>
+
+<li>
+metodi di valutazione degli attributi</li>
+
+<li>
+analisi top-down nelle grammatiche ad attributi</li>
+
+<li>
+analisi bottom-up nelle grammatiche ad attributi</li>
+
+<li>
+traduzione guidata dalla sintassi in BISON</li>
+</ul></li>
+
+<li>
+<b>Compilatori e linguaggi di programmazione</b>
+
+<ul>
+<li>
+struttura di un compilatore</li>
+
+<li>
+analisi semantica (cenni)</li>
+
+<li>
+generazione del codice (cenni)</li>
+
+<li>
+progetto di un compilatore in C/FLEX/BISON</li>
+</ul></li>
+</ol>
+
+<p><br>&Egrave; anche disponibile il<b> <a href="programma.html">programma provvisorio
+dettagliato del corso</a></b>
+<p>
+<hr WIDTH="100%">
+<h2>
+<a NAME="Orario lezioni"></a>Orario lezioni</h2>
+<b>Modalit&agrave; faccia a faccia:</b>
+<br>&nbsp;
+<dd>
+Luned&igrave; ore 11-14, Aula 9 (Via Eudossiana)</dd>
+
+<dd>
+Marted&igrave; ore 12-14, Aula 9 (Via Eudossiana)</dd>
+
+<dd>
+Mercoled&igrave; ore 11-13, Aula 9 (Via Eudossiana)</dd>
+
+<br>&nbsp;
+<p><b>Modalit&agrave; a distanza:</b>
+<br>&nbsp;
+<dd>
+<b><a href="http://www.axa.it/dipingfr/">Sede di Frosinone</a> (Tutor:
+<a href="/~fbenedet/">Fulvio
+Benedetti</a>)</b></dd>
+
+<dd>
+Luned&igrave; ore 19-21</dd>
+
+<dd>
+Venerd&igrave; ore 17-21</dd>
+
+<br>&nbsp;
+<hr WIDTH="100%">
+<h2>
+<a NAME="Ricevimento studenti"></a>Ricevimento studenti</h2>
+Marted&igrave; dalle 17.00 alle 18.30
+<p>Via Salaria 113, secondo piano, stanza 229
+<p>
+<hr WIDTH="100%">
+<h2>
+<a NAME="Materiale didattico"></a>Materiale didattico</h2>
+
+<h3>
+Testi Utilizzati:</h3>
+[1] G. Bruno. Linguaggi formali e compilatori. UTET.
+<p>[2] Materiale integrativo distribuito dal docente
+<h3>
+Materiale integrativo:</h3>
+
+<ul>
+<li>
+Lista di possibili domande relative alla seconda prova d'esame: la lista
+&egrave; disponibile in <a href="domande.txt">formato ASCII</a> e in <a href="domande.ps">formato
+postscript</a></li>
+</ul>
+
+<h3>
+Documentazione sul software disponibile on-line:</h3>
+
+<ul>
+<li>
+<a href="http://www.cl.cam.ac.uk/texinfodoc/dir.html">Manuali on-line del
+software GNU (tra cui GCC, FLEX e BISON)</a></li>
+
+<li>
+<a href="ftp://ftp.dis.uniroma1.it/pub/rosati/lingtrad/doc/flex.ps">Manuale
+FLEX</a></li>
+
+<li>
+<a href="ftp://ftp.dis.uniroma1.it/pub/rosati/lingtrad/doc/bison.ps">Manuale
+BISON</a></li>
+</ul>
+Per leggere e stampare il formato postscript &egrave; disponibile il programma
+<a href="gsview.html">GSView.</a>
+<p>
+<hr WIDTH="100%">
+<h2>
+<a NAME="Software"></a>Software</h2>
+Sono disponibili informazioni relative all'<a href="djgpp.html">installazione
+del compilatore GCC e di FLEX e BISON</a>.
+<h2>
+Progetti in Java</h2>
+Sono anche disponibili <a href="java.html">informazioni relative al software
+necessario per lo sviluppo di traduttori in Java</a>.
+
+
+<hr WIDTH="100%">
+<h2>
+<a NAME="Modalita' di esame"></a>Modalit&agrave; di esame</h2>
+L'esame consiste di una prova al calcolatore e di una prova scritta. Ci
+sono due modi per sostenere l'esame:
+<ol>
+<li>
+Modalit&agrave; consigliata per chi segue il corso:
+
+<ol>
+<li>
+esonero (al calcolatore), svolto durante il corso</li>
+
+<li>
+prova scritta: rispondere a 3 domande sugli argomenti in programma</li>
+</ol></li>
+
+<li>
+Per chi non fa il progetto durante il corso, oppure non segue il corso:
+
+<ol>
+<li>
+<b>Prova al calcolatore:</b> realizzazione al calcolatore di una parte
+di un traduttore (analizzatore lessicale e/o analizzatore sintattico e/o
+modulo di traduzione). Il programma va sviluppato in C/FLEX/BISON (verr&agrave;
+utilizzato in particolare il compilatore GCC);</li>
+
+<li>
+<b>Prova scritta:</b> 3 domande sugli argomenti in programma.</li>
+</ol></li>
+</ol>
+
+<p><br>
+<hr WIDTH="100%">
+<h2>
+<a NAME="Calendario esami"></a>Calendario esami</h2>
+
+
+<hr WIDTH="100%">
+
+<h2>
+<a NAME="Lezioni svolte"></a>Lezioni svolte</h2>
+I riferimenti sono relativi al testo di G. Bruno, <i>Linguaggi formali
+e compilatori </i>(UTET)
+<ol>
+<li>
+<b>Lezione del 4/10/99</b> [Cap. 1]
+
+<ul>
+<li>
+Presentazione del corso</li>
+
+<li>
+Progetto di un traduttore
+
+<ul>
+<li>
+struttura di un traduttore</li>
+
+<li>
+linguaggi formali</li>
+
+<li>
+distinzione tra analisi dell'input e sintesi dell'output</li>
+
+<li>
+distinzione tra sintassi e semantica di un linguaggio</li>
+</ul></li>
+</ul></li>
+
+<li>
+<b>Lezione del 5/10/99</b> [Sez. 2.1, 3.1]
+
+<ul>
+<li>
+Analisi lessicale 1: generalit&agrave;, espressioni regolari
+
+<ul>
+<li>
+ruolo dell'analisi lessicale</li>
+
+<li>
+distinzione lessico-sintassi</li>
+
+<li>
+linguaggi formali: operazioni su stringhe e su linguaggi</li>
+
+<li>
+espressioni regolari</li>
+</ul></li>
+</ul></li>
+
+<li>
+<b>Lezione del 6/10/99</b> [Sez. 3.2, 3.3, 3.5]
+
+<ul>
+<li>
+Analisi lessicale 2: automi a stati finiti
+
+<ul>
+<li>
+automi a stati finiti</li>
+
+<li>
+automi deterministici (DFA) e nondeterministici (NFA)</li>
+
+<li>
+equivalenza tra NFA e DFA</li>
+
+<li>
+costruzione del NFA corrispondente ad una espressione regolare</li>
+
+<li>
+equivalenza tra espressioni regolari e automi a stati finiti</li>
+</ul></li>
+</ul></li>
+
+<li>
+<b><a href="ese1/">Esercitazione del 11/10/99</a></b> [Sez. 4.12]
+
+<ul>
+<li>
+Uso di FLEX</li>
+</ul></li>
+
+<li>
+<b>Lezione del 12/10/99 </b>[Sez. 3.6, 2.2]
+
+<ul>
+<li>
+Analisi lessicale 3: caratteristiche di un analizzatore lessicale</li>
+
+<li>
+Analisi sintattica 1: generalit&agrave;, albero sintattico
+
+<ul>
+<li>
+ruolo dell'analisi sintattica</li>
+
+<li>
+grammatiche context-free
+
+<ul>
+<li>
+derivazione (indiretta)</li>
+
+<li>
+derivazioni canoniche (sinistra e destra)</li>
+
+<li>
+riduzione canonica destra</li>
+
+<li>
+ricorsione sinistra</li>
+</ul></li>
+
+<li>
+albero sintattico</li>
+</ul></li>
+</ul></li>
+
+<li>
+<b>Lezione del 13/10/99 </b>[Sez. 4.1, 4.2]
+
+<ul>
+<li>
+Analisi top-down 1: generalit&agrave;
+
+<ul>
+<li>
+analisi top-down: definizione</li>
+
+<li>
+trasformazioni delle grammatiche per l'analisi top-down
+
+<ul>
+<li>
+fattorizzazione sinistra</li>
+
+<li>
+eliminazione della ricorsione sinistra diretta</li>
+
+<li>
+eliminazione della ricorsione sinistra indiretta <i>(NON in programma)</i></li>
+</ul></li>
+
+<li>
+grammatiche LL(1) e LL(k): definizione</li>
+</ul></li>
+</ul></li>
+
+<li>
+<b>Lezione del 18/10/99</b> [Sez.&nbsp; 4.3, 4.4]
+
+<ul>
+<li>
+Analisi top-down 2: analisi non ricorsiva
+
+<ul>
+<li>
+analisi top-down guidata da tabella
+
+<ul>
+<li>
+tabella di parsing</li>
+
+<li>
+parser predittivo non ricorsivo che usa la tabella di parsing</li>
+</ul></li>
+
+<li>
+costruzione della tabella di parsing
+
+<ul>
+<li>
+insiemi FIRST</li>
+
+<li>
+insiemi FOLLOW</li>
+
+<li>
+costruzione insiemi FIRST e FOLLOW</li>
+
+<li>
+algoritmo per la costruzione della tabella di parsing</li>
+</ul></li>
+</ul></li>
+</ul></li>
+
+<li>
+<b>Lezione del 19/10/99</b> [Sez.&nbsp; 4.5]
+
+<ul>
+<li>
+Analisi top-down 3: analisi ricorsiva
+
+<ul>
+<li>
+programma ricorsivo per l'analisi discendente</li>
+
+<li>
+diagrammi di transizione per l'analisi discendente ricorsiva</li>
+</ul></li>
+</ul></li>
+
+<li>
+<b>Lezione del 20/10/99</b> [Sez. 4.6]
+
+<ul>
+<li>
+Analisi bottom-up 1
+
+<ul>
+<li>
+cos'&egrave; l'analisi bottom-up</li>
+
+<li>
+definizioni: forma di frase riducibile, prefisso LR riducibile, prefisso
+LR, prefisso LR candidato</li>
+
+<li>
+analizzatore LR: algoritmo</li>
+</ul></li>
+</ul></li>
+
+<li>
+<b><a href="ese2/">Esercitazione del 25/10/99</a></b>
+
+<ul>
+<li>
+<a href="ese2/">Esercitazione: realizzazione in C (e FLEX) di un parser
+predittivo ricorsivo</a></li>
+</ul></li>
+
+<li>
+<b>Lezione del 26/10/99</b> [Sez. 4.7]
+
+<ul>
+<li>
+Analisi bottom-up 2
+
+<ul>
+<li>
+costruzione dell'automa dei prefissi LR(0)</li>
+
+<li>
+costruzione della tabella SLR(1)</li>
+
+<li>
+tabelle LR(1) e LALR(1) (cenni)</li>
+
+<li>
+grammatiche LR(1): definizione</li>
+</ul></li>
+</ul></li>
+
+<li>
+<b>Lezione del 27/10/99</b> [Sez. 4.7, 4.13]
+
+<ul>
+<li>
+Analisi bottom-up 3
+
+<ul>
+<li>
+algoritmo dettagliato per il parsing shift-reduce</li>
+
+<li>
+esempio di esecuzione del parser shift-reduce</li>
+
+<li>
+grammatiche non SLR(1): esempio</li>
+</ul></li>
+</ul></li>
+
+<li>
+<b>Lezione del 3/11/99</b> [Sez. 4.3, 4.10, 2.4]
+
+<ul>
+<li>
+Analisi bottom-up 4
+
+<ul>
+<li>
+conflitti shift-reduce e reduce-reduce in BISON</li>
+
+<li>
+trattamento di grammatiche ambigue nel parsing shift-reduce</li>
+
+<li>
+grammatiche a precedenza di operatori</li>
+</ul></li>
+
+<li>
+Potere espressivo delle grammatiche
+
+<ul>
+<li>
+differenza tra grammatiche context-free e espressioni regolari</li>
+
+<li>
+linguaggi non caratterizzabili da grammatiche context-free</li>
+</ul></li>
+</ul></li>
+
+<li>
+<b><a href="ese3/">Esercitazione dell'8/11/99</a></b>
+
+<ul>
+<li>
+<a href="ese3/">Esercitazione: realizzazione in BISON di un parser bottom-up</a></li>
+</ul></li>
+</ol>
+
+<hr WIDTH="100%">
+<h2>
+<a NAME="Link utili"></a>Link utili</h2>
+
+<ul>
+<li>
+Per ulteriori questioni scrivere a: <a href="mailto:rosati@dis.uniroma1.it">rosati@dis.uniroma1.it</a></li>
+</ul>
+
+<hr WIDTH="100%">
+<br><font size=-1>ultima modifica: 3/11/99</font>
+</body>
+</html>
+
+

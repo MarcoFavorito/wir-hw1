@@ -1,0 +1,390 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1">
+<META NAME="Generator" CONTENT="Microsoft Word 98">
+<TITLE>esercitazione15/3</TITLE>
+</HEAD>
+<BODY>
+
+<OL START=4>
+
+<B><FONT FACE="New York" SIZE=4><LI>QUARTA esercitazione in laboratorio </LI>
+</B></FONT><FONT FACE="Times"><P ALIGN="JUSTIFY">Attivare il TurboPascal (TP), e posizionarsi sul proprio dischetto. Ci&ograve; pu&ograve; esser fatto usando il comando <B>Change Dir</B> del men&ugrave; <B>File</B>, oppure attivando il comando <B>DOS shell</B> (stesso men&ugrave;), spostandosi su A: e inserendo EXIT per tornare al TP. </P>
+<P ALIGN="JUSTIFY"></P>
+<P ALIGN="JUSTIFY">Le soluzioni agli esercizi, le versioni di programmi dati nel testo delle esercitazioni e quant'altro sono nelle directory pubbliche degli autori. </P>
+<P ALIGN="JUSTIFY">Se si accede dal laboratorio il percorso &egrave;, per questa esercitazione</P>
+</FONT><FONT FACE="Courier"><P ALIGN="JUSTIFY">E:\program\fond\temperin\AUTOGUID\QUARTA</P>
+</FONT><FONT FACE="Times"><P ALIGN="JUSTIFY">(per Elettronici </FONT><FONT FACE="Courier">E:\program\fond\daloisi\AUTOGUID\QUARTA).</P>
+<P ALIGN="JUSTIFY"></P>
+</FONT><FONT FACE="Times"><P ALIGN="JUSTIFY">Si pu&ograve; accedere via internet collegandosi alla pagina del corso di interesse, seguendo il percorso per le esercitazioni autoguidate.</P>
+<P ALIGN="JUSTIFY"></P>
+<B><P ALIGN="JUSTIFY">&nbsp;</P>
+<OL>
+
+</FONT><I><FONT FACE="Helvetica"><LI>UN PROGRAMMA PER SPERIMENTARE IL PASSAGGIO DI PARAMETRI</LI>
+</I></FONT><FONT FACE="Times"><P ALIGN="JUSTIFY">&nbsp;</P>
+</B><P ALIGN="JUSTIFY">Scrivere un programma che legge due numeri reali, A, B, li stampa, li scambia e li stampa ancora. Per effettuare lo scambio usare una procedura SCAMBIO1 che, ricevendo come parametri due variabili reali, X, Y, ne scambia il contenuto. Salvare, compilare e correggere gli eventuali errori di linguaggio.</P>
+<P ALIGN="JUSTIFY">&nbsp;</P>
+</FONT><B><I><FONT FACE="Helvetica"><LI>DIFFERENTI ESECUZIONI PASSO-PASSO</LI>
+</I></FONT><FONT FACE="Times"><P ALIGN="JUSTIFY">&nbsp;</P>
+</B><P ALIGN="JUSTIFY">Stabilite di ispezionare (<B>Watch</B>) le variabili <U>A </U>e<U> B</U> come spiegato nella terza esercitazione.</P>
+<P ALIGN="JUSTIFY"></P>
+<P ALIGN="JUSTIFY">Ridimensionate opportunamente le finestre in modo da poter vedere contemporaneamente le finestre<B> Watch, Output </B> e il programma.</P>
+<P ALIGN="JUSTIFY"></P>
+<P ALIGN="JUSTIFY">Eseguire il programma "passo-passo", usando il tasto <B>F8</B> ("step over"). </P>
+<P ALIGN="JUSTIFY">&#9;Con questa modalit&agrave; di esecuzione, una chiamata di procedura &egrave; eseguita in un solo passo, come fosse un'istruzione elementare. Verificate che le chiamate a </FONT><FONT FACE="Courier">SCAMBIA1</FONT><FONT FACE="Times"> vengano eseguite in un solo passo</FONT><FONT FACE="Courier">. </P>
+<P ALIGN="JUSTIFY">&#9;</FONT><FONT FACE="Times">Questa modalit&agrave; &egrave; utile quando, cercando gli errori in un programma, gi&agrave; sappiamo che una procedura &egrave; corretta. In tal caso &egrave; inutile cercare l'errore tra le istruzioni interne alla procedura.</P>
+<P ALIGN="JUSTIFY"></P>
+<P ALIGN="JUSTIFY">Ora invece eseguire il programma usando <B>F7</B> ("trace"). </P>
+<P ALIGN="JUSTIFY">&#9;In questo caso, quando viene eseguita la chiamata di una procedura, si vede l'esecuzione passo-passo anche delle istruzioni interne alla procedura, durante la sua attivazione. </P>
+<P ALIGN="JUSTIFY">&#9;<U>Prima di eseguire il programma</U>, aggiungere anche opportune <I>watches</I> per ispezionare le variabili e i parametri di SCAMBIO1. </P>
+<P ALIGN="JUSTIFY">&#9;Quando la procedura non &egrave; attivata, parametri formali e variabili locali risultano sconosciuti (</FONT><FONT FACE="Courier">Unknown Identifier</FONT><FONT FACE="Times">). Al momento dell'attivazione diventano noti e hanno valori (perch&eacute; &egrave; in quel momento che vengono allocati). </P>
+<P ALIGN="JUSTIFY">&#9;</P>
+<P ALIGN="JUSTIFY">Verificare la corrispondenza iniziale tra i parametri formali X, Y e i parametri attuali A, B. </P>
+<P ALIGN="JUSTIFY"></P>
+<P ALIGN="JUSTIFY">Verificare che, durante l'attivazione di SCAMBIO1, ogni cambiamento attuato sui parametri formali si rifletta immediatamente sui parametri attuali.</P>
+<P ALIGN="JUSTIFY"></P>
+<P ALIGN="JUSTIFY">&nbsp;</P>
+<P ALIGN="JUSTIFY">&nbsp;</P>
+</FONT><B><I><FONT FACE="Helvetica"><LI>SCAMBIO1 e SCAMBIO2</LI>
+</B></I></FONT><FONT FACE="Times"><P ALIGN="JUSTIFY">Estendere il programma precedentemente scritto aggiungendo la definizione e l'uso di una procedura SCAMBIO2, uguale a SCAMBIO1 ma con passaggio dei parametri per valore. </P>
+<P ALIGN="JUSTIFY"></P>
+<P ALIGN="JUSTIFY">Oltre a quel che faceva prima, ora il programma deve leggere due altri reali, stamparli, tentare di scambiarli chiamando SCAMBIO2 e stamparli di nuovo. </P>
+<P ALIGN="JUSTIFY"></P>
+<P ALIGN="JUSTIFY">Eseguire il programma complessivo e verificare che quando viene usata SCAMBIO2 i numeri non vengono effettivamente scambiati.</P>
+<P ALIGN="JUSTIFY"></P>
+<P ALIGN="JUSTIFY">Eseguire il programma con <B>F8</B> (stesse <I>watches </I>di prima) e verificate che durante l'attivazione di SCAMBIO2 i parametri formali subiscono effettivamente uno scambio, ma questo cambiamento NON si riflette sui parametri attuali.</P>
+<P ALIGN="JUSTIFY"></P>
+<P ALIGN="JUSTIFY">Il programma completo per gli esercizi 1 e 3 si trova in </FONT><FONT FACE="Courier">  &#133;QUARTA\PPV.PAS.</P>
+<P ALIGN="JUSTIFY">&nbsp;</P>
+</FONT><B><I><FONT FACE="Helvetica"><LI>ALTRI ESERCIZI SU PROCEDURE E FUNZIONI</LI></OL>
+</OL>
+
+</I></FONT><FONT FACE="Times"><P ALIGN="JUSTIFY">&nbsp;</P>
+
+<UL>
+</B><P ALIGN="JUSTIFY"><LI>Utilizzando la procedura di scambio, scrivere un programma che legga tre numeri interi <B>v1, v2, v3</B> e scambi i valori delle variabili in modo che <B>v1&lt;=v2&lt;=v3 </B>(in sostanza ordini i tre numeri). Soluzione in &#133;QUARTA\ORDINA3.PAS</LI></P></UL>
+
+<P ALIGN="JUSTIFY"></P>
+
+<UL>
+<P ALIGN="JUSTIFY"><LI>Facendo uso di una funzione per il calcolo del fattoriale, si scriva un programma che calcoli il numero di combinazioni di <B>N</B> oggetti presi a <B>R</B> a <B>R</B>.</LI></P></UL>
+
+<P ALIGN="JUSTIFY"></P><DIR>
+<DIR>
+<DIR>
+<DIR>
+<DIR>
+<DIR>
+<DIR>
+<DIR>
+<DIR>
+<DIR>
+<DIR>
+
+<P ALIGN="JUSTIFY">Si ricorda che il numero di combinazioni di <B>N</B> oggetti presi a <B>R</B> a <B>R</B> &egrave; dato dalla formula </P>
+<B><P ALIGN="CENTER">N! (R! (N-R)!).</P>
+</B><P ALIGN="JUSTIFY">Il fattoriale di un numero <B>n </B>&egrave; </P>
+<B><P ALIGN="CENTER">n!= n(n-1)(n-2)</B> &#133;.. 1 con <B>0!=1</P>
+</B><P ALIGN="JUSTIFY"></P></DIR>
+</DIR>
+</DIR>
+</DIR>
+</DIR>
+</DIR>
+</DIR>
+</DIR>
+</DIR>
+</DIR>
+
+<P ALIGN="JUSTIFY">Soluzione in QUARTA\COMBI.PAS</P>
+<P ALIGN="JUSTIFY"></P>
+<B><P ALIGN="JUSTIFY">&nbsp;</P>
+</B></FONT><FONT FACE="Courier"><P ALIGN="JUSTIFY">&nbsp;</P></DIR>
+
+<OL>
+<OL>
+
+</FONT><B><I><FONT FACE="Helvetica"><LI>ARRAY MONODIMENSIONALI 1</LI>
+</B></I></FONT><FONT FACE="Times"><P ALIGN="JUSTIFY">Quando una variabile array viene inscritta nella tabella delle variabili da ispezionare (<B>Watches</B>) ne risultano visibili tutte le componenti contemporaneamente.</P>
+<P ALIGN="JUSTIFY"></P>
+<P>Sfruttando quanto fatto a lezione, scrivere un programma che ripete, <U>finch&eacute; l'utente vuole</U>, le seguenti azioni: leggere da input due vettori di esattamente N componenti, stamparli ed effettuarne la somma (componente a componente)  in un terzo vettore, che viene poi stampato.</P>
+<P ALIGN="JUSTIFY"></P>
+<P ALIGN="JUSTIFY">Il programma deve usare procedure opportune per leggere, stampare e sommare i vettori. </P>
+<P ALIGN="JUSTIFY"></P>
+<P ALIGN="JUSTIFY">Tenere in vista le finestre output, programma e watches. Includere nella finestra Watches le variabili array definite come variabili globali del programma e come parametri formali delle varie procedure. Far eseguire questo programma passo passo. Verificare che i parametri attuali passati per valore (l'array nella stampa, o i parametri di input nella somma) non subiscono cambiamenti durante e dopo l'esecuzione delle procedure.</P>
+<P ALIGN="JUSTIFY"></P>
+<P ALIGN="JUSTIFY">Un programma con una soluzione di questo esercizio &egrave; nel file </FONT><FONT FACE="Courier">...TERZA\SOMVETT2.PAS.</P>
+<P ALIGN="JUSTIFY"></P>
+</FONT><FONT FACE="Times"><P ALIGN="JUSTIFY">&nbsp;</P>
+<P>&nbsp;</P>
+<B><P ALIGN="JUSTIFY">&nbsp;</P>
+<P ALIGN="JUSTIFY">&nbsp;</P>
+</FONT><I><FONT FACE="Helvetica"><LI>ARRAY MONODIMENSIONALI 2</LI>
+</I></FONT><FONT FACE="Times"><P ALIGN="JUSTIFY">&nbsp;</P>
+</B><P>Scrivere un programma che legge da input due vettori di <B>al pi&ugrave; di N</B> componenti intere &lt;<B>&gt; 0</B>, stampa i vettori e li somma in un terzo, che viene poi a sua volta stampato. </P>
+
+<P>Si assume che l'utente scriva i valori in input per ciascun vettore uno dopo l'altro, sulla stessa riga, terminando la sequenza con uno zero. Se l'utente fornisce pi&ugrave; di N valori, solo i primi N vengono immessi nel vettore.</P>
+
+<B><P>ATTENZIONE</B>! Usare la seguente strutturazione dei dati:</P>
+<P>i vettori sono variabili di tipo </P>
+</FONT><FONT FACE="Courier"><P>TIPOVETTSUPP = array[1..<B>N+1</B>] of integer;</P>
+</FONT><FONT FACE="Times">
+<P>In tali vettori una componente &egrave; "significativa" se &egrave; stata effettivamente immessa dall'utente nel corso della lettura. La prima componente del vettore contiene il numero di componenti significative del vettore.</P>
+
+<P>Pertanto (supponendo N=10), dopo l'operazione di lettura effettuata sul vettore V1, durante la quale sono stati immessi i numeri 9 6 12 5 0, il contenuto del vettore sar&agrave; {4, 9, 6, 12, 5, ., ., ., ., ., .}, dove 4 &egrave; il numero di componenti significative e dove '.' indica componenti non significative. La somma pu&ograve; avvenire anche tra vettori che non abbiano il medesimo numero di componenti significative. Le componenti non significative vengono considerate nulle. </P>
+<P>&#9;Quindi se V2 = {6, 12, 45, 1, 12, <B>7</B>, <B>3</B>, ., ., ., .}, allora V1+V2 = {6, 21, 51, 13, 17, <B>7</B>, <B>3</B>, ., ., ., .}</P>
+<P ALIGN="JUSTIFY"></P>
+<P ALIGN="JUSTIFY">Per costruire il programma si suggerisce di limitarsi in un primo momento alla definizione della procedura di lettura </FONT><FONT FACE="Courier">LEGGIVETTSUPP(var V:TIPOVETTSUPP)</FONT><FONT FACE="Times">. </P>
+<P ALIGN="JUSTIFY">&#9;Si pu&ograve; provare il programma in questa fase eseguendolo passo -passo con V nella finestra watches. </P>
+<P ALIGN="JUSTIFY">&#9;Poi si pu&ograve; aggiungere la procedura di stampa, provare il programma e completarlo quando si &egrave; sicuri che lettura e stampa funzionino bene. </P>
+<P ALIGN="JUSTIFY">&#9;Nella procedura di stampa fare in modo che la prima componente venga stampata in modo evidenziato (ad. es. distanziata dalle altre) e stampare un '-' al posto dei valori contenuti nelle componenti non significative.</P>
+<P ALIGN="JUSTIFY"></P>
+<P ALIGN="JUSTIFY">Un programma con una soluzione di questo esercizio &egrave; nel file </FONT><FONT FACE="Courier">...QUARTA\VETTSUPP.PAS.</P>
+</FONT><FONT FACE="Times"><P ALIGN="JUSTIFY"></P>
+<P ALIGN="JUSTIFY">Una volta completato il programma, durante l'esecuzione passo passo, <U>si pu&ograve; alternare l'uso di <B>F7</B> e <B>F8</B></U>. In particolare, arrivati ad una chiamata di procedura, si pu&ograve; decidere se seguire dettagliatamente, istruzione per istruzione, l'esecuzione della procedura (con <B>F7</B>) o far eseguire la procedura in un unico passo (con <B>F8</B>). Nel secondo caso si vedr&agrave; evidenziata direttamente l'istruzione successiva a quella di chiamata.</P>
+<P ALIGN="JUSTIFY"></P>
+<P ALIGN="JUSTIFY">Durante l'esecuzione del programma completo, usare F8 sulle chiamate delle procedure di lettura e stampa.</P>
+<B><P ALIGN="JUSTIFY">&nbsp;</P>
+</FONT><I><FONT FACE="Helvetica"><LI>ARRAY BIDIMENSIONALI 1</LI>
+</B></I></FONT><FONT FACE="Times"><P ALIGN="JUSTIFY">Scrivere un programma che legge da input una matrice NxN di reali, la stampa e calcola e stampa la somma dei valori inseriti nella diagonale principale. USARE una </FONT><FONT FACE="Courier">procedura SMDIAG(M:MATRICE, <B>var</B> somma:real</FONT><FONT FACE="Times">) che ponga nella variabile di output </FONT><FONT FACE="Courier">somma</FONT><FONT FACE="Times"> il risultato della somma lungo la diagonale principale di M. </P>
+<P ALIGN="JUSTIFY">Successivamente modificare il programma aggiungendo stampe opportune che dicano se la matrice &egrave; triangolare superiore (cio&egrave; tale che al di sotto della diagonale principale tutti gli elementi sono nulli). Per questo usare una procedura </FONT><FONT FACE="Courier">TESTTRIANG(M:MATRICE, <B>var</B> triang:boolean)</FONT><FONT FACE="Times"> che assegni alla variabile booleana di output TRUE se la matrice &egrave; triangolare superiore o FALSE altrimenti.&#9;&#9;</P>
+<B><P ALIGN="JUSTIFY"></P>
+</B><P ALIGN="JUSTIFY">Un programma con una soluzione di questo esercizio &egrave; nella directory </FONT><FONT FACE="Courier">...QUARTA\DIAGTRI.PAS.</P>
+</FONT><B><I><FONT FACE="Helvetica"><LI>ARRAY BIDIMENSIONALI 2</LI></OL>
+</OL>
+
+</B></I></FONT><FONT FACE="Times"><P>&nbsp;</P>
+<P>Scrivere un programma che ripete finch&eacute; l'utente vuole le seguenti azioni: leggere due matrici quadrate (NxN), stamparle riga per riga, costruire e stampare la matrice prodotto.</P>
+<P>&#9;Eseguire questo programma mantenendo nella finestra watches le variabili matrice globali per verificare come le procedure di lettura, stampa e prodotto agiscono su di loro. Notare che una matrice viene visualizzata nella finestra watches come la sequenza delle sue righe, dove ciascuna riga &egrave; racchiusa tra parentesi tonde.</P>
+<P ALIGN="JUSTIFY">Un programma con una soluzione di questo esercizio &egrave; nella directory </FONT><FONT FACE="Courier">...QUARTA\PRODMAT2.PAS.</P>
+<OL START=4>
+
+</FONT><B><FONT FACE="New York" SIZE=4><LI></LI>
+<LI>QUINTA esercitazione in laboratorio</LI>
+</FONT><FONT FACE="Times"><P>&nbsp;</P>
+</B><P>Attivare il TurboPascal (TP). Posizionarsi sul proprio dischetto (con il comando <B>Change Dir</B> del men&ugrave; <B>File</B>, oppure con <B>DOS shell</B> (stesso men&ugrave;) + spostamento su A: e inserimento di EXIT per tornare al TP).</P>
+
+<P ALIGN="JUSTIFY">Le soluzioni agli esercizi, le versioni di programmi dati nel testo delle esercitazioni e quant'altro sono nelle directory pubbliche degli autori. </P>
+<P ALIGN="JUSTIFY">Se si accede dal laboratorio il percorso &egrave;, per questa esercitazione</P>
+</FONT><FONT FACE="Courier"><P ALIGN="JUSTIFY">E:\program\fond\temperin\AUTOGUID\QUINTA</P>
+</FONT><FONT FACE="Times"><P ALIGN="JUSTIFY">(per Elettronici </FONT><FONT FACE="Courier">E:\program\fond\daloisi\AUTOGUID\QUINTA).</P>
+<P ALIGN="JUSTIFY"></P>
+</FONT><FONT FACE="Times"><P ALIGN="JUSTIFY">Si pu&ograve; accedere via internet collegandosi alla pagina del corso di interesse, seguendo il percorso per le esercitazioni autoguidate.</P>
+<B><P>&nbsp;</P>
+<OL>
+
+</FONT><I><FONT FACE="Helvetica"><LI>UN PROGRAMMA CHE LEGGE DA UN FILE TESTO</LI>
+</B></I></FONT><FONT FACE="Times"><P ALIGN="JUSTIFY">Il seguente programma legge da un file di testo (memorizzato sul dischetto come TESTO.DAT) una frase che termina con un punto, la stampa sul video cambiando tutte le lettere minuscole in maiuscole, e stampa quanti caratteri &egrave; lunga la frase (escluso il punto).</P>
+<P ALIGN="JUSTIFY">Si presume che il file contenga dati corretti (una sequenza di caratteri terminata da '.'.&#9;&#9;</P>
+<P ALIGN="JUSTIFY"></P>
+<P ALIGN="JUSTIFY">&#9;&#9;&#9;&#9;<B> (riempire le parti mancanti &#133;)</P>
+</FONT><FONT FACE="Courier">
+<P>&nbsp;</P>
+<P>program</B> ProvaFile (output, fileTesto);</P>
+<B><P> const </B>MaxLungFile = 1000;</P>
+<B>
+<P> type</B> TipoLunghezza = 0..MaxLungFile;</P>
+<B>
+<P> var</B>&#9;Lunghezza: TipoLunghezza;&#9;&#9;</P>
+<B><P>&#9;&#9;&#9;&#9;</B>ch: char;&#9;&#9;fileTesto: text;</P>
+<P> </P>
+<P> <B>procedure</B> ConvertiInMaiuscole (<B>&#133;</B>);</P>
+<P>  {riceve una variabile carattere; se si tratta di una lettera    </P>
+<P>  minuscola, converte il parametro in maiuscola}</P>
+<B><P>  &#9;begin</P>
+<P>&#9;&#9;</B>&#9;<B>&#133;&#9;</P>
+<P>&#9;</P>
+<P>&#9;&#9;end</B>;  { ConvertiInMaiuscole }</P>
+
+<B><P> begin </B>{ ProvaFile }</P>
+<B><P>   </B>assign( <B>&#133;</B>, <B>&#133;</B>);</P>
+<P>   <B>re&#133;</B> (fileTesto);</P>
+<P>   Lunghezza := 0;</P>
+<P>   read(fileTesto, ch);</P>
+<P>   while ch &lt;&gt; '.' do</P>
+<P>&#9;&#9;    begin</P>
+<P>&#9;     &#9;<B>&#133;</P>
+</B><P>&#9;&#9;    end;</P>
+<P>&#9;  writeln;</P>
+<P>&#9;  writeln('la frase e'' lunga', Lunghezza:3, ' caratteri')</P>
+<B><P> end.</P>
+
+</B></FONT><FONT FACE="Times"><P>&nbsp;</P>
+<P>&nbsp;</P>
+<P>&nbsp;</P>
+<P>Completare e scrivere in un file </FONT><FONT FACE="Courier">frase1.pas</FONT><FONT FACE="Times">. &#9;Salvare e compilare.</P>
+
+<P>Il file con la soluzione proposta &egrave; nella directory pubblica, </FONT><FONT FACE="Courier">E:\&#133;\AUTOGUID\QUINTA\provfile.pas</FONT><FONT FACE="Times">.</P>
+
+<B><P ALIGN="JUSTIFY">Attenzione: </B>Una volta in esecuzione, il programma dovr&agrave; leggere la frase da un file. Bisogna preparare il file con i dati per il programma (la frase). Il file in questione &egrave; un file testo che possiamo creare direttamente usando l'editor del TP. </P>
+<P ALIGN="JUSTIFY"></P>
+<P ALIGN="JUSTIFY">Aprire un nuovo file con il comando <B>New</B> (men&ugrave; <B>File)</B>, "editare" una frase seguita da un punto '.' e poi salvare dando a questo file il nome A:TESTO.DAT (notate che deve essere lo stesso nome che appare come argomento della procedura "</FONT><FONT FACE="Courier">assign</FONT><FONT FACE="Times">").</P>
+
+<P ALIGN="JUSTIFY">Eseguire (almeno una volta) e verificare che il programma sia corretto, controllando il risultato sulla finestra di <B>Output</B>. </P>
+<P ALIGN="JUSTIFY">Stabiliamo di ispezionare (<B>Watch</B>) le variabili </FONT><FONT FACE="Courier">Lunghezza</FONT><FONT FACE="Times"> e </FONT><FONT FACE="Courier">ch</FONT><FONT FACE="Times">. </P>
+<P ALIGN="JUSTIFY"></P>
+<P ALIGN="JUSTIFY">Le finestre <B>Watch, Output </B> e programma vanno ridimensionate e disposte opportunamente sullo schermo. </P>
+<P ALIGN="JUSTIFY"></P>
+<P ALIGN="JUSTIFY">Eseguire il programma passo passo, alternando l'uso di <B>F7 </B>e <B>F8</B>, a seconda di quali chiamate di procedure si vogliano seguire in dettaglio e quali no. Ad esempio si pu&ograve; eseguire il programma usando <B>F7 </B>per le prime due iterazioni del <B>while</B>, e poi usando <B>F8</B> per<B> </B>eseguire<B> </B>in un solo passo </FONT><FONT FACE="Courier">ConvertiInMaiuscole</FONT><FONT FACE="Times">  nelle iterazioni successive.</P>
+<P ALIGN="JUSTIFY">&nbsp;</P>
+</FONT><B><I><FONT FACE="Helvetica"><LI>CONTROLLI DI INTERVALLO (RANGE CHECK)</LI>
+</B></I></FONT><FONT FACE="Times"><P ALIGN="JUSTIFY">Quando una variabile o un parametro vengono dichiarati di tipo intervallo, un'assegnazione di un valore fuori dell'intervallo dovrebbe generare un errore semantico. </P>
+<P ALIGN="JUSTIFY">Poich&eacute; per&ograve; aggiungere le istruzioni che eseguono i controlli opportuni produce un programma eseguibile pi&ugrave; lento, il compilatore TurboPascal permette di abilitare o disabilitare questi controlli. </P>
+<P ALIGN="JUSTIFY"></P>
+<P ALIGN="JUSTIFY">Durante la fase di prova del programma, &egrave; bene abilitare il controllo per individuare prima eventuali errori.</P>
+<P ALIGN="JUSTIFY">&#9;Aprire il men&ugrave; <B>Options</B> e selezionare <B>Compiler... </B> Apparir&agrave; una finestra con le diverse opzioni della compilazione. Evidenziate (usando il tasto tabulatore "</FONT><FONT FACE="Symbol">&AElig;</FONT><FONT FACE="Times">|" e i tasti freccia, oppure il mouse) l'opzione <B>Range Check.</P>
+</B><P ALIGN="JUSTIFY">Quando l'opzione &egrave; attiva, nella casella <B>[ ] </B>accanto c'&egrave; una X, quando &egrave; disattiavata la casella &egrave; vuota. Per attivare/disattivare, premere la barra dello spazio bianco o cliccare nella casella.</P>
+<P ALIGN="JUSTIFY"></P>
+<P ALIGN="JUSTIFY">(Per sapere a cosa corrispondono le altre opzioni, evidenziatele e premete il tasto <B>F1 </B>(Help) per ottenere spiegazioni, poi <B>Esc</B> per chiudere le spiegazioni. Ad esempio: cosa controlla <B>Overflow Checking</B>?). </P>
+<P ALIGN="JUSTIFY"></P>
+<P ALIGN="JUSTIFY">Attivare il controllo di intervallo (se non &egrave; gi&agrave; attivo). Confermare la scelta premendo invio. </P>
+<P ALIGN="JUSTIFY"></P>
+<B><U><P ALIGN="JUSTIFY">Ricompilare il programma</B></U>. </P>
+<P ALIGN="JUSTIFY">Ora, per testare che il controllo viene eseguito, introdurre l'errore di mettere "-" al posto di "+" nell'incremento della variabile </FONT><FONT FACE="Courier">Lunghezza</FONT><FONT FACE="Times">. </P>
+<P ALIGN="JUSTIFY">L'esecuzione del programma dovrebbe bloccarsi al primo incremento con valore negativo. Se il controllo &egrave; disabilitato (e il programma ricompilato), invece, l'esecuzione procede anche se </FONT><FONT FACE="Courier">Lunghezza</FONT><FONT FACE="Times"> assume valori fuori del proprio intervallo di definizione.</P>
+</FONT><FONT FACE="Courier"><P ALIGN="JUSTIFY"></P>
+</FONT><B><FONT FACE="Times"><P>&nbsp;</P>
+</FONT><I><FONT FACE="Helvetica"><LI>PUNTI D'ARRESTO (BREAKPOINT)</LI>
+</B></I></FONT><FONT FACE="Times"><P ALIGN="JUSTIFY">Se il programma &egrave; lungo, seguirne tutta l'esecuzione passo-passo per trovare errori pu&ograve; essere dispersivo. </P>
+<P ALIGN="JUSTIFY"></P>
+<P ALIGN="JUSTIFY">Un "breakpoint" &egrave; un punto d'arresto temporaneo dell'esecuzione. </P>
+<P ALIGN="JUSTIFY">Quando c'&egrave; un breakpoint in un punto del programma, l'esecuzione si interrompe in quel punto (da dove potr&agrave; riprendere). </P>
+<P ALIGN="JUSTIFY">Immaginando di avere mantenuto l'errore nella istruzione di incremento discussa prima, si pu&ograve; simulare la sua ricerca inserendo un punto d'arresto nel ciclo in corrispondenza dell'istruzione  </P>
+<P ALIGN="JUSTIFY"></P>
+</FONT><FONT FACE="Courier"><P ALIGN="CENTER">read ( fileTesto, ch )</P>
+<P ALIGN="JUSTIFY"></P>
+</FONT><FONT FACE="Times"><P ALIGN="JUSTIFY">Posizionare il cursore su questa linea. Aprire il men&ugrave; <B>Debug</B> e selezionare <B>Add Breakpoint</B>. </P>
+<P ALIGN="JUSTIFY"></P>
+<P ALIGN="JUSTIFY">Compare una finestra dove &egrave; indicato il numero della linea su cui siamo posizionati. Premere invio. La linea viene adesso evidenziata con un colore diverso. </P>
+<P ALIGN="JUSTIFY"></P>
+<P ALIGN="JUSTIFY">In esecuzione, il programma verr&agrave; bloccato in corrispondenza di questa istruzione, ogni volta che essa star&agrave; per essere eseguita. </P>
+<P ALIGN="JUSTIFY">Se serve, in un programma si possono inserire pi&ugrave; punti di arresto.</P>
+<P ALIGN="JUSTIFY"></P>
+<P ALIGN="JUSTIFY">Eseguire il programma (comando <B>Run, </B>men&ugrave; <B>Run</B>). </P>
+<P ALIGN="JUSTIFY">Arrivato al breakpoint, il programma si ferma e si possono ispezionare i valori delle variabili attraverso <B>Watch</B>. Da qui, si pu&ograve; continuare passo-passo (<B>F7</B> o <B>F8</B>), o ripartire fino al prossimo punto d'arresto riselezionando <B>Run</B>.</P>
+<B><P ALIGN="JUSTIFY"></P>
+</B><P ALIGN="JUSTIFY">Per togliere un punto d'arresto, aprite il men&ugrave; <B>Debug </B>e selezionate<B> Breakpoints&#133;</B> </P>
+<P ALIGN="JUSTIFY"></P>
+<P ALIGN="JUSTIFY">Appare un elenco di tutti i punti d'arresto (in questo caso, solo uno), individuati dal numero di linea (<B>Line#</B>). </P>
+<P ALIGN="JUSTIFY"></P>
+<P ALIGN="JUSTIFY">Selezionate <B>Delete</B> per eliminare il punto d'arresto, e poi invio. La linea torna adesso del colore normale.</P>
+<B><P>&nbsp;</P>
+</FONT><I><FONT FACE="Helvetica"><LI>ALTRO PROGRAMMA CHE LEGGE DA UN FILE DI TESTO</LI>
+</B></I></FONT><FONT FACE="Times"><P ALIGN="JUSTIFY">Scrivere un programma  che legga una sequenza di <B>0 </B>e <B>1 </B> da un file e calcoli  la lunghezza della pi&ugrave;  lunga sottosequenza  di zeri presente. </P>
+<P ALIGN="JUSTIFY">Scrivere il risultato in un file.</P>
+<P ALIGN="JUSTIFY">Di seguito  &egrave; riportata una &quot;soluzione&quot;, ma attenzione non &egrave; detto  che sia corretta!! La soluzione &egrave; in </FONT><FONT FACE="Courier">E:&#133;\QUINTA\Sequenza.pas</P>
+</FONT><FONT FACE="Times">
+<B><P>program </B>sequenza(input, output, leggi, scrivi); <BR>
+<B>&nbsp;&nbsp;&nbsp;</B> var bit : integer;&nbsp;&nbsp; {contiene il numero in lettura} <BR>
+<B>&nbsp;&nbsp;&nbsp;</B> cont<B> </B>: integer; {contatore corrente} <BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; maxlung : integer; {max lunghezza} <BR>
+&nbsp;&nbsp;&nbsp; leggi : text; <BR>
+&nbsp;&nbsp;&nbsp;&nbsp; scrivi : text; </P>
+<B><P>begin</B> <BR>
+&nbsp;&nbsp;&nbsp; assign(leggi, 'A:SEQUENZA.DAT'); <BR>
+&nbsp;&nbsp;&nbsp; reset (leggi); <BR>
+&nbsp;&nbsp;&nbsp; cont := 0; <BR>
+&nbsp;&nbsp;&nbsp; maxlung:=0; <BR>
+&nbsp;&nbsp;&nbsp; <B>repeat</B> <BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; read(leggi, bit); <BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <B>if</B> bit = 0 <BR>
+<B>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; then</B> <BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <B>begin</B> <BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; cont := cont +1; {si aggiorna o no maxlung} <BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <B>if </B>cont maxlung&nbsp; <B>then </B>maxlung := cont <BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <B>end;</B> <BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<B> else</B> cont := 0&nbsp;&nbsp;&nbsp; {si azzera il contatore } <BR>
+&nbsp;&nbsp;<B>&nbsp; until </B>eof(leggi); <BR>
+&nbsp;&nbsp;&nbsp; close (leggi); <BR>
+&nbsp;&nbsp;&nbsp; assign(scrivi, 'A:RISUL.DAT'); <BR>
+&nbsp;&nbsp;&nbsp; rewrite(scrivi); <BR>
+&nbsp;&nbsp;&nbsp; writeln (scrivi, 'la max lunghezza di una stringa di zeri = '); <BR>
+&nbsp;&nbsp;&nbsp; write(scrivi, maxlung); writeln; <BR>
+&nbsp;&nbsp;&nbsp; close(scrivi) <BR>
+<B>end.</B> <BR>
+</P>
+
+<P>&nbsp;</P>
+</FONT><B><I><FONT FACE="Helvetica"><LI>ESERCIZI</LI>
+<OL>
+
+</I></FONT><FONT FACE="Times"><LI>&lt;ctrl&gt; Pause</LI>
+</B><P ALIGN="JUSTIFY">Che succede al programma precedente se il file non contiene il '.' terminatore?&#9; </P>
+<P ALIGN="JUSTIFY">(&lt;ctrl&gt; Pause). </P>
+<P ALIGN="JUSTIFY">Modificare il programma con un controllo sul raggiungimento di EOF. Supporre che almeno un carattere nel file ci sia. </P>
+<P ALIGN="JUSTIFY">Sol. proposta in E:\&#133; \QUINTA\FRASE.pas</P>
+<B><LI>somvet</LI>
+</B><P ALIGN="JUSTIFY">Scrivere un programma che legge due vettori di esattamente N interi da un file DATI.TXT (dove trova i vettori disposti uno per linea) e ne costruisce e stampa il vettore somma, stampandolo su video e scaricandolo su un file testo DATI.OUT. (Soluzione in </FONT><FONT FACE="Courier">E:\&#133; QUINTA \SOMVET</FONT><FONT FACE="Times">).</P>
+<B><LI>filereal</LI></OL>
+</OL>
+</OL>
+<DIR>
+<DIR>
+
+</B><P ALIGN="JUSTIFY">Programmare e testare il programma FILEGEN. </P>
+<P ALIGN="JUSTIFY">Il programma  </P></DIR>
+</DIR>
+
+
+<UL>
+<U><P ALIGN="JUSTIFY"><LI>legge un file di testo </U>REAL.DAT, contenente una sequenza di numeri reali;</LI></P>
+<U><P ALIGN="JUSTIFY"><LI>ne calcola la somma e la media stampando tali valori su un file di reali</U> (file of real, un file codificato) FILEREAL.OUT. </LI></P>
+<P ALIGN="JUSTIFY"><LI>Successivamente il programma <U>legge i reali di FILEREAL.OUT</U> e </LI></P>
+<U><P ALIGN="JUSTIFY"><LI>li stampa su video e in un file di testo REAL2.DAT</U>. </LI></P></UL>
+
+<P ALIGN="JUSTIFY"></P><DIR>
+<DIR>
+
+<P ALIGN="JUSTIFY">(Soluzione in </FONT><FONT FACE="Courier">E:... QUINTA \FILEREAL</FONT><FONT FACE="Times">).</P></DIR>
+</DIR>
+
+<OL>
+<OL>
+<OL>
+
+<B><LI>fileint</LI>
+</B><P ALIGN="JUSTIFY">Scrivere un programma che legge da input una sequenza di interi terminata da 0 e la memorizza (nell'ordine di inserimento) in un <U>file text</U> (di nome FILEINT.DAT). </P>
+<P ALIGN="JUSTIFY">Dopo l'esecuzione aprire il file per verificare che sia stato riempito con i dati corretti. </P>
+<P ALIGN="JUSTIFY">(soluzione proposta al paragrafo  6.5.6).</P>
+<B><LI>parole parole</LI>
+</B><P ALIGN="JUSTIFY">Scrivere un programma che legge da un file di testo una sequenza di parole separate da spazi bianchi. Le parole sono al pi&ugrave; di 20 caratteri. </P>
+<P ALIGN="JUSTIFY">Il programma scrive le parole lette su un file testo di output, dopo averle rese totalmete maiuscole. Sia il file di input che quello di output vengono poi stampati sul video. </P>
+<P ALIGN="JUSTIFY">(Soluzione in </FONT><FONT FACE="Courier">E: &#133; QUINTA \FILESTRG</FONT><FONT FACE="Times">).</P>
+<B><LI>libert&agrave;</LI></OL>
+</OL>
+</OL>
+<DIR>
+<DIR>
+
+</B><P ALIGN="JUSTIFY">Estendere  il programma del paragrafo 6.5.4, in modo che permetta all'utente di specificare in input il nome del file in cui memorizzare la sequenza di interi. </P>
+<P ALIGN="JUSTIFY">Inoltre il programma, prima di terminare dovrebbe permettere la stampa su video di un file il cui nome sia fornito in input dall'utente. </P>
+<P ALIGN="JUSTIFY"></P>
+<P ALIGN="JUSTIFY">Soluzione in </FONT><FONT FACE="Courier" SIZE=2>E:..</FONT><FONT FACE="Courier">QUINTA</FONT><FONT FACE="Courier" SIZE=2> \FILEINT1.PAS.</FONT><FONT FACE="Times">     </P>
+<P ALIGN="JUSTIFY"></P><DIR>
+<DIR>
+<DIR>
+<DIR>
+<DIR>
+<DIR>
+<DIR>
+
+<B><P ALIGN="JUSTIFY">Suggerimento</B>: bisogna definire una variabile stringa (di 12 caratteri: di pi&ugrave; non serve). Tale stringa va riempita con il nome del file letto da input. Poi essa va usata come secondo parametro di </FONT><FONT FACE="Courier" SIZE=2>ASSIGN</FONT><FONT FACE="Times">.  </P>
+<P ALIGN="JUSTIFY">Per leggere la stringa, definire nel programma una variante della procedura </FONT><FONT FACE="Courier" SIZE=2>LEGGISTRINGA</FONT><FONT FACE="Times"> vista a lezione</FONT><FONT FACE="Courier" SIZE=2>: LEGGINOMEFILE(var nomefile:STRINGA). </P>
+</FONT><FONT FACE="Times"><P ALIGN="JUSTIFY">(Una soluzione alternativa &egrave; in </P>
+</FONT><FONT FACE="Courier"><P ALIGN="CENTER">E:\...QUINTA \FILEINT2.PAS</FONT><FONT FACE="Courier" SIZE=2>.</P><DIR>
+
+</FONT><FONT FACE="Times"><P ALIGN="JUSTIFY">Invece di un packed array si usa il tipo </FONT><FONT FACE="Courier">string</FONT><FONT FACE="Times">, disponibile in TP. La dichiarazione </FONT><FONT FACE="Courier">string[12]</FONT><FONT FACE="Times"> &egrave; equivalente a </FONT><FONT FACE="Courier">packed array [1..12] of char</FONT><FONT FACE="Times">, ma su variabili di tipo string il TP permette di usare direttamente read/readln).</P>
+<P ALIGN="JUSTIFY"></P>
+<P ALIGN="JUSTIFY">&nbsp;</P></DIR>
+</DIR>
+</DIR>
+</DIR>
+</DIR>
+</DIR>
+</DIR>
+</DIR>
+</DIR>
+</DIR>
+</FONT></BODY>
+</HTML>

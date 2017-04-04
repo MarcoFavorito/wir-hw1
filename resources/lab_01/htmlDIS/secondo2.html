@@ -1,0 +1,132 @@
+<html>
+<head>
+<title>Prova scritta 21/3/2002</title>
+</head>
+
+<body>
+
+<h1>Prova scritta 21/3/2002</h1>
+
+<b>Compito 2/Prova II</b>
+
+<hr>
+
+<h4>Esercizio 1</h4>
+
+<p>
+Dire cosa restituisce il seguente metodo ricorsivo:
+</p>
+
+<pre>
+static int unMetodo(int x, int y) {
+  if(x==0)
+    return 0;
+
+  return unMetodo(x-1, y-1);
+}
+</pre>
+
+
+<h4>Soluzione</h4>
+
+<p>
+Se <tt>x</tt> ha valore negativo, il metodo
+invoca se stesso fino all'esarimento della
+memoria (infatti, il caso base non viene
+mai raggiunto, dato che <tt>x</tt> &egrave;
+sempre minore ad ogni invocazione). In questo
+caso, si pu&ograve; anche rispondere: ``il
+metodo va in ciclo infinito'', oppure ``il
+metodo si invoca all'infinito'': sono risposte
+accettabili.
+</p>
+
+<p>
+Se <tt>x</tt> ha valore maggiore o uguale a
+zero, il metodo ritorna <tt>0</tt>.
+</p>
+
+<hr>
+
+
+
+<h4>Esercizio 2</h4>
+
+<p>
+Descrivere la politica di accesso delle pile:
+se a un pila vuota vengono inseriti, in ordine,
+gli elementi <tt>1</tt>, <tt>5</tt>, <tt>1</tt>
+e <tt>7</tt>, quale elemento viene estratto
+per primo?
+</p>
+
+
+<h4>Risposta</h4>
+
+<p>
+La politica di accesso &egrave; LIFO (Last In,
+First Out), ossia: viene estratto sempre l'ultimo
+elemento che &egrave; stato inserito.
+</p>
+
+<p>
+Nel caso dell'esempio, il primo elemento che viene
+estratto &egrave; <tt>7</tt>.
+</p>
+
+<hr>
+
+
+
+<h4>Esercizio 3</h4>
+
+<p>
+Il seguente metodo ricorsivo dovrebbe trovare
+il pi&ugrave; piccolo elemento contenuto in
+un vettore. Ma non funziona. Perch&egrave;?
+</p>
+
+<pre>
+static int minimo(int vett[], int pos) {
+  int min;
+
+  if(pos==vett.length-1)
+    return vett[pos];
+
+  minimo(vett, pos+1);
+
+  if(vett[pos]&lt;min)
+    min=vett[pos];
+
+  return min;
+}
+</pre>
+
+<p>
+Motivare la risposta (dire perch&egrave; non funziona).
+</p>
+
+
+<h4>Soluzione</h4>
+
+<p>
+Il metodo non funziona perch&ograve; si cerca di usare
+la tecnica del valore minimo trovato finora, ma ogni
+record di attivazione contiene una sua variabile
+<tt>min</tt> diversa dalle altre.
+</p>
+
+<p>
+Il fatto che il valore di ritorno dell'invocazione
+ricorsiva vennisse scartato (ossia non venisse messo
+in una variabile o usato in una espressione) era un
+chiaro segno che l'invocazione ricorsiva non aveva
+alcun effetto.
+</p>
+
+
+
+</body>
+</html>
+
+

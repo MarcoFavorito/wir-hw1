@@ -1,0 +1,137 @@
+<!doctype html public "-//w3c//dtd html 4.0 transitional//en">
+<html>
+<head>
+<link href="java.css" rel="stylesheet" type="text/css">
+<title>Il problema della cancellazione</title>
+</head>
+
+<body>
+
+<h2>Il problema della cancellazione</h2>
+
+Si provi ad eseguire il programma
+<a href="PuntiMouse.java">PuntiMouse.java</a>, che
+disegna un rettangolo in ogni punto in cui viene
+premuto il pulsante del mouse, in questo modo:<p>
+
+<ul>
+<li>si lancia l'applet;
+<li>si disegnano dei punti sulla finestra premendo il
+pulsante del mouse;
+<li>si copre la finestra con un'altra finestra;
+<li>si riporta in alto la finestra con l'applet.
+</ul>
+
+Il risultato &egrave; che i punti che erano stati in
+precedenza disegnati sono spariti. Un risultato simile
+si ottiene con gli altri programmi visti fino ad ora.
+In particolare, si nota che tutti i disegni che vengono
+fatti da istruzioni che stanno dentro <tt>paint</tt>
+rimangono, mentre i disegni fatti da istruzioni che stanno
+dentro <tt>mouseDown</tt> sono spariti. Per esempio, nel
+programma
+<a href="CrociCerchiLinea.java">CrociCerchiLinea.java</a>
+la linea verticale viene disegnata da <tt>paint</tt>, e
+in effetti &egrave; l'unica cosa che rimane: tutte le
+croci e i cerchi, che sono disegnati dentro
+<tt>mouseDown</tt>, spariscono quando la finestra viene
+coperta e poi scoperta di nuovo.<p>
+
+A cosa &egrave; dovuto questo curioso fenomeno? Per dare
+una risposta a questa domanda, &egrave; necessario
+approfondire l'anatomia di un applet. Come abbiamo visto,
+gli applet hanno questa struttura:<p>
+
+<pre>
+import java.awt.*;
+
+public class nomefile extends java.applet.Applet {
+  public boolean mouseDown(Event e, int x, int y) {
+    bloccoA
+  }
+
+  public void paint(Graphics g) {
+    bloccoB
+  }
+}
+</pre>
+
+Come si &egrave; gi&agrave; detto, le istruzioni che
+si trovano all'interno delle parentesi graffe di
+<tt>mouseDown(..) { ... }</tt> sono quelle che vengono
+eseguite ogni volta che il pulsante del mouse viene
+premuto. Le istruzioni all'interno delle parentesi graffe
+di <tt>paint(..) { ... }</tt> vengono invece eseguite
+quando si lancia l'applet. Finora si &egrave; detto che
+l'unico momento in cui queste istruzioni vengono eseguite
+&egrave; l'inizio. Questo non &egrave; del tutto esatto.<p>
+
+Prima di analizzare questo punto, occorre essere pi&ugrave;
+precisi su quello che succede quando una finestra viene
+coperta.
+Quello che in effetti succede &egrave; <i>che il contenuto
+della finestra (quello che &egrave; stato disegnato al
+suo interno) viene cancellato quando la finestra diventa
+invisibile</i>. Se per esempio si copre la finestra con
+un'altra finestra, quello che era stato disegnato viene
+cancellato.<p>
+
+Questo sembra in contraddizione con il fatto che non c'&egrave;
+nessuna cancellazione di quello che &egrave; stato disegnato
+nel <tt>paint</tt>. Non c'&egrave; invece nessuna
+contraddizione. &Egrave; semplicemente stata detta una
+cosa imprecisa a proposito di <tt>paint</tt>. Non &egrave;
+vero che le sue istruzioni vengono eseguite una sola volta
+all'inizio. Al contrario,
+
+<blockquote>
+<b>
+la sequenza <tt>paint</tt> viene eseguita ogni volta
+che parte della finestra diventa visibile
+</b>
+</blockquote>
+
+Quando una finestra viene coperta e poi scoperta, i disegni
+effettuati all'interno di <tt>paint</tt> vengono cancellati
+come anche tutti quelli fatti all'interno di
+<tt>mouseDown</tt>. Quando la finestra diventa di nuovo
+visibile, le istruzioni dentro <tt>paint</tt> vengono
+eseguite di nuovo, per cui i disegni che sono stati fatti
+da istruzioni dentro <tt>paint</tt> vengono semplicemente
+disegnati di nuovo.<p>
+
+Possiamo dire che non &egrave; vero che le
+cose disegnate da <tt>paint</tt> rimangono quando la
+finestra viene coperta e poi scoperta. Quello che succede
+in realt&agrave; &egrave; che tutto viene cancellato, solo
+che i disegni fatti da <tt>paint</tt> vengono disegnati
+di nuovo quando la finestra riappare.<p>
+
+Quando l'applet viene lanciato, la finestra diventa
+visibile e quindi vengono eseguite le istruzioni che stanno
+fra parentesi graffe in <tt>paint(..) { ... }</tt>.
+Ogni volta che la finestra (o una sua parte) diventa
+invisibile, il contenuto viene cancellato. Quando la
+finestra torna a essere visibile, le istruzioni del
+blocco <tt>paint</tt> vengono eseguite di nuovo, per
+cui viene fatto di nuovo il disegno.<p>
+
+Riassumendo, possiamo dire che:
+
+<ul>
+<li>la sequenza di istruzioni all'interno di
+<tt>mouseDown(..) { ... }</tt> viene eseguito ogni volta
+che si preme il pulsante del mouse;
+<li>le istruzioni di <tt>paint(..) { ... }</tt> sono
+eseguite ogni volta che parte della finestra diventa
+visibile.
+</ul>
+
+Da questo si capisce perch&egrave; solo i disegni fatti
+da <tt>mouseDown</tt> non riappaiono: quando la finestra
+diventa di nuovo visibile, solo le istruzioni che stanno
+dentro <tt>paint</tt> vengono eseguite di nuovo.<p>
+
+</body>
+</html>
+

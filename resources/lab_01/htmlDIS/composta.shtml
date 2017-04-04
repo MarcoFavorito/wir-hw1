@@ -1,0 +1,90 @@
+<!doctype html public "-//w3c//dtd html 4.0 transitional//en">
+<html>
+<head>
+<link href="java.css" rel="stylesheet" type="text/css">
+<title>Una figura composta</title>
+</head>
+
+<body>
+
+<h2>Una figura composta</h2>
+
+Si vuole disegnare la figura seguente:<p>
+
+<center>
+<img src="composta.jpg">
+</center>
+<p>
+
+Come si pu&ograve; facilemente notare, questa figura &egrave;
+in effetti composta da due segmenti e da due archi di cerchio.
+I due segmenti non presentano nessuna difficolt&agrave;: il
+segmento orizzontale si trova tra le coordinate (200,100) e
+le coordinate (250,100), mentre il secondo si trova tra i
+due punti (300,150) e (300,200).<p>
+
+Per quello che riguarda gli archi, occorre per prima cosa
+individuare le coordinate dell'ovale di cui fanno parte. In
+questo caso, si tratta di archi di cerchio. Il cerchio
+piccolo &egrave; inscritto nel quadrato che ha l'angolo in
+alto in (200,100) e ha lato 100. Inoltre, l'arco parte da
+0 gradi e si estende per 90 gradi. Quindi, l'istruzione
+necessaria per disegnare questo arco &egrave;:<p>
+
+<pre>
+    g.drawArc(200,100,100,100,0,90);
+</pre>
+
+Per capire quali sono le coordinate dell'arco grande usiamo
+lo stesso metodo: il quadrato circosritto ha l'angolo in alto
+a sinitra nelle coordinate (100,100), e il lato &egrave;
+200. Inoltre, l'arco parte da 90 gradi e si estende fino
+ai 360, ossia ha ampiezza 360-90. L'istruzione per disegnare
+questo arco &egrave; quindi:<p>
+
+<pre>
+    g.drawArc(100,100,200,200,90,360-90);
+</pre>
+
+Il programma completo
+<a href="Composta.java">Composta.java</a>
+&egrave; riportato qui sotto.<p>
+
+<pre>
+/*
+  Disegna una figura fatta di segmenti e archi
+*/
+
+import java.awt.*;
+
+public class Composta extends java.applet.Applet {
+  public void paint(Graphics g) {
+
+	/* i due segmenti */
+    g.drawLine(200,100,250,100);
+    g.drawLine(300,150,300,200);
+
+	/* l'arco piccolo */
+    g.drawArc(200,100,100,100,0,90);
+
+	/* l'arco grande */
+    g.drawArc(100,100,200,200,90,360-90);
+  }
+}
+
+</pre>
+
+
+Il risultato dell'esecuzione di questo applet &egrave;
+esattamente il disegno che ci aspettavamo.<p>
+
+<center>
+<img src="Composta.gif">
+</center>
+<p>
+
+
+
+</body>
+</html>
+

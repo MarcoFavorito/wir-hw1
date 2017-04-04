@@ -1,0 +1,510 @@
+<!doctype html public "-//w3c//dtd html 4.0 transitional//en">
+<html>
+<head>
+<link href="java.css" rel="stylesheet" type="text/css">
+<title>Java</title>
+</head>
+
+<body>
+
+
+
+<h1>Istruzioni condizionali</h1>
+
+
+
+<h2>Istruzioni condizionali</h2>
+
+<p>
+Le istruzioni condizionali permettono di effettuare
+operazioni diverse a seconda dei valori delle variabili.
+Vengono quindi usate quando il procedimento da seguire
+cambia a seconda del valore di una qualche variabile. Prendiamo
+il caso semplice di una divisione. Quando si divide <tt>a</tt>
+per <tt>b</tt> occorre in teoria controllare sempre che il
+valore di <tt>b</tt> sia diverso da zero. Un programma che
+effettua questo controllo, deve prima di tutto guardare il
+valore di <tt>b</tt>, e se vale zero non deve fare la
+divisione ma stampare un messaggio di errore
+"Divisore nullo".<p>
+
+Per prima cosa, si definisce <b>condizione</b> una espressione
+che pu&ograve; essere vera o falsa. Tipi semplici di espressioni
+sono le seguenti:
+
+<pre>
+variabile>numero
+variabile&lt;numero
+variabile==numero
+variabile!=numero
+</pre>
+
+<p>
+In sostanza, una espressione &egrave; una properiet&agrave;
+delle variabili che pu&ograve; essere vera o falsa a seconda
+del loro valore. Per esempio <tt>a>0</tt> &egrave; una
+condizione, dal momento che pu&ograve; essere vera o falsa
+a seconda del valore di <tt>a</tt>. Se per esempio <tt>a</tt>
+vale -3, la condizione &egrave; falsa, mentre risulta vera
+per esempio nel caso in cui <tt>a</tt> vale 23. I due simboli
+<tt>==</tt> e <tt>!=</tt> rappresentano l'uguaglianza e la
+differenza, per cui per esempio <tt>a==3</tt> &egrave; vera
+solo se il valore di <tt>a</tt> &egrave; esattamente 3.<p>
+
+Usando la definizione di condizione possiamo passare alle
+istruzioni che si eseguono o no a seconda dei valori delle
+variabili. In effetti, le istruzioni condizionali permettono
+di eseguire o meno delle altre istruzioni a seconda del
+risultato di condizioni. Le istruzioni condizionali sono
+fatte cos&iacute;:
+
+<pre>
+if( condizione ) {
+  istruzione1
+  istruzione2
+  istruzione3
+  ...
+}
+</pre>
+
+<p>
+Quando si esegue questa sequenza, si valuta la condizione,
+cio&egrave; si verifica se il
+valore attuale delle variabili rende la condizione vera o
+falsa. Se la condizione &egrave; falsa si ignorano tutte le
+istruzioni fra parentesi graffe, e si prosegue con la istruzione
+che viene subito dopo <tt>}</tt>. Se la condizione &egrave;
+vera, vengono invece eseguite le istruzioni fra parentesi graffe,
+e poi si continua con la istruzione che segue la parentesi
+chiusa.<p>
+
+Si pu&ograve; anche dire che le istruzioni fra le due parentesi
+graffe vengono eseguite solo se la condizione &egrave; verificata
+dalla variabili. Una traduzione in italiano della istruzione
+condizionale di sopra potrebbe essere:
+
+<pre>
+se la condizione &egrave; vera
+allora esegui istruzione1, istruzione2, istruzione3
+</pre>
+
+<p>
+Dopo che le istruzioni sono state eventualmente eseguite, si passa
+comunque alla istruzione che segue la parentesi graffa chiusa.<p>
+
+
+<h4>Esempio</h4>
+
+<p>
+Dato un numero, vogliamo stampare un messaggio di avviso
+se il suo valore &egrave; minore di zero. Il programma
+<a href="Negativo.java">Negativo.java</a> contiene una sola
+istruzione condizionale.
+
+<pre>
+/*
+  Stampa un messaggio se una variabile e' negativa.
+*/
+
+class Negativo {
+  public static void main(String[] args) {
+    int a=-4;
+
+    if( a<0 ) {
+      System.out.println("Attenzione! Il valore di a e' negativo!");
+    }
+  }
+}
+
+</pre>
+
+<p>
+La prima istruzione del programma dichiara una variabile <tt>a</tt>
+e gli assegna un valore. La seconda &egrave; una istruzione
+condizionale. La condizione &egrave; <tt>a&lt;0</tt>, per cui
+&egrave; verificata solo se il valore della variabile &egrave;
+minore di zero. Fra le due successive parentesi graffe c'&egrave;
+una sola istruzione, che viene quindi eseguita (&egrave; la
+stampa del messaggio) solo se la variabile ha un valore negativo.<p>
+
+
+<h4>Esempio</h4>
+
+<p>
+Si vuole fare il calcolo dell'inverso di una variabile reale
+<tt>a</tt>. L'inverso <tt>1/a</tt> &egrave; definito solo se
+<tt>a</tt> &egrave; diverso da zero. Per questa ragione,
+si vuole che il programma stampi un messaggio di errore se
+<tt>a</tt> &egrave; pari a zero, e calcoli l'inverso se la
+variabile &egrave; diversa da zero. Il programma
+<a href="Inverso.java">Inverso.java</a> fa esattamente questo.
+
+<pre>
+/*
+  Calcola l'inverso di un numero, controllando che
+  il numero sia diverso da zero.
+*/
+
+class Inverso {
+  public static void main(String[] args) {
+    double a=2;
+
+    if( a==0 ) {
+      System.out.println("La variabile vale zero.");
+    }
+
+    if( a!=0 ) {
+      System.out.println("L'inverso vale "+1/a);
+    }
+  }
+}
+
+</pre>
+
+<p>
+Se la variabile vale 0, la condizione del primo if &egrave;
+vera, per cui si stampa il messaggio di errore; a questo punto
+si controlla la seconda condizione, e questa risulta falsa.
+Nel caso in cui la variabile ha un valore diverso da zero,
+la prima condizione &egrave; falsa (per cui il messaggio di
+errore non viene stampato), mentre &egrave; vera la seconda,
+per cui si calcola e si stampa l'inverso del numero.<p>
+
+
+<h4>Esempio</h4>
+
+<p>
+Date tre variabili <tt>a</tt>, <tt>b</tt> e <tt>c</tt>, stampare
+solo quelle che valgono pi&ugrave; di una terza variabile
+<tt>d</tt>. Per fare questo, si mette una istruzione condizionale
+per ogni variabile. Il codice del programma
+<a href="Maggiore.java">Maggiore.java</a> &egrave; riportato qui
+sotto.
+
+<pre>
+/*
+  Stampa i valori maggiori di una variabile
+*/
+
+class Maggiore {
+  public static void main(String[] args) {
+    int a=10, b=30, c=4;
+    int d=12;
+
+    if( a>d ) {
+      System.out.println("La variabile a vale "+a);
+    }
+
+    if( b>d ) {
+      System.out.println("La variabile b vale "+b);
+    }
+
+    if( c>d ) {
+      System.out.println("La variabile c vale "+c);
+    }
+
+  }
+}
+
+</pre>
+
+<p>
+In questo programma notiamo due cose. La prima &egrave; che le
+istruzioni che seguono il carattere <tt>}</tt> vengono eseguite
+indipendentemente dalla condizione. In altre parole, la seconda
+istruzione condizionale viene eseguita sia se <tt>a</tt> &egrave;
+maggiore di <tt>d</tt>, sia se &egrave; minore.<p>
+
+Una seconda osservazione &egrave; che le condizioni in questo
+caso sono del tipo <tt>variabile &lt; variabile</tt>, invece che il
+confronto fra una variabile e un numero. In generale, una
+condizione pu&ograve essere il confronto fra due
+espressioni generiche. Per esempio, <tt>a+b &lt; a*c-4</tt>
+&egrave; una espressione valida.<p>
+
+
+</body>
+
+
+
+
+
+<h2>Soluzione equazioni di secondo grado</h2>
+
+<p>
+Torniamo ora al problema della soluzione di una equazione
+di secondo grado che era stato posto in precedenza. Il calcolo
+del discriminante non presenta nessuna difficolt&agrave;. Quello
+che non si poteva fare senza le istruzioni condizionali era
+seguire un procedimento diverso a seconda del suo valore.
+Con le istruzioni condizionali questo &egrave; invece molto
+facile, come mostrato dal programma
+<a href="SecondoGrado.java">SecondoGrado.java</a>, il cui
+codice &egrave; riportato qui sotto.
+
+<pre>
+/*
+  Soluzione equazione di secondo grado.
+*/
+
+class SecondoGrado {
+  public static void main (String args[]) {
+    double a=2, b=5, c=3;
+    double d;
+    double s1, s2;
+
+    d=b*b-4*a*c;
+
+    if( d==0 ) {
+      s1=(-b - Math.sqrt( b*b -4*a*c ))/(2*a);
+      s2=s1;
+      System.out.println("Soluzioni coincidenti: " + s1);
+    }
+
+    if( d>0 ) {
+      s1=(-b - Math.sqrt( b*b -4*a*c ))/(2*a);
+      s2=(-b + Math.sqrt( b*b -4*a*c ))/(2*a);
+      System.out.println("Soluzioni reali: " + s1 + " " + s2);
+    }
+
+    if( d<0 ) {
+      System.out.println("Soluzioni complesse");
+    }
+  }
+}
+
+</pre>
+
+<p>
+Questo programma &egrave; molto semplice, anche se &egrave; il
+pi&ugrave; lungo visto fino ad ora: per prima cosa si calcola il
+discriminante, che viene memorizzato nella variabile <tt>d</tt>.
+Se il valore di <tt>d</tt> &egrave; zero, allora si stampa la
+unica soluzione della equazione. Se <tt>d</tt> &egrave; positivo,
+si stampano le due soluzioni distinte. L'ultima istruzione
+condizionale ha come condizione <tt>d &lt; 0</tt>, per cui la
+ultima istruzione <tt>System.out...</tt> viene eseguita solo
+se <tt>d</tt> &egrave; negativo.<p>
+
+
+</body>
+
+
+
+
+<h2>Istruzioni in alternativa</h2>
+
+<p>
+In questa pagina si introducono le istruzioni in alternativa
+(<tt>else</tt>), che sono una estensione delle istruzioni
+condizionali. Consideriamo un facile esempio: dato il valore
+di una variabile, stampare il messaggio
+<tt>La variabile e' positiva</tt> se la variabile &egrave;
+maggiore oppure uguale a zero, altrimenti stampare
+<tt>Valore negativo</tt>. Usando le istruzioni condizionali,
+questo risulta abbastanza facile. Il programma
+<a href="NoElse.java">NoElse.java</a> risolve questo
+problema.<p>
+
+<pre>
+/*
+  Esecuzioni diverse a seconda di una condizione
+*/
+
+class NoElse {
+  public static void main(String[] args) {
+    int a=-3;
+
+    if( a>=0 ) {
+      System.out.println("La variabile e' positiva");
+    }
+
+    if( a<0 ) {
+      System.out.println("Valore negativo");
+    }
+  }
+}
+
+</pre>
+
+<p>
+Il simbolo <tt>>=</tt> indica "maggiore o uguale", per cui
+la condizione <tt>a>=</tt> &egrave; verificata solo se la
+variabile ha valore maggiore o uguale a zero (per confronto:
+la condizione <tt>a>0</tt> &egrave; vera solo se <tt>a</tt>
+&egrave; maggiore di zero, ed &egrave; false se <tt>a</tt>
+vale zero).<p>
+
+In questo programma, si pu&ograve; notare come le due
+condizioni delle due istruzioni condizionali sono esattamente
+l'una l'opposto dell'altra, per cui una condizione &egrave;
+vera se e solo se l'altra &egrave; falsa. In questo caso,
+si esegue una sequenza di istruzioni se la condizione
+&egrave; vera, un'altra se &egrave; falsa. Situazioni di
+questo genere, in cui occorre eseguire una sequenza o
+un'altra a seconda se una condizione &egrave; vera o falsa,
+si presentano molto spesso nella programmazione. Per questa
+ragione, le istruzioni condizionali sono state estese, in
+questo modo:
+
+<pre>
+if( condizione ) {
+  istruzione1
+  istruzione2
+  ...
+}
+else {
+  istruzioneA
+  istruzioneB
+  ...
+}
+</pre>
+
+<p>
+La prima parte coincide con le istruzioni condizionali gi&agrave;
+viste in precedenza. Per prima cosa si valuta la condizione, e si
+vede se &egrave; vera o falsa. Nel primo caso si procede come al
+solito, ossia si eseguono le istruzioni
+<tt>istruzione1, istruzione2, ... </tt>. Se la condizione
+&egrave; falsa, si eseguono invece le istruzioni
+<tt>istruzioneA, istruzioneB, ... </tt>. In entrambi i casi, si
+prosegue poi con la istruzione che segue tutto il blocco, ossia
+la istruzione che viene dopo l'ultima parentesi graffa chiusa
+nello schema di sopra.
+
+<p>
+Tradotta in italiano, questa istruzione equivale a:
+
+<pre>
+se la condizione e' vera
+allora esegui istruzione1, istruzione2, ecc.
+altrimenti esegui istruzioneA, istruzioneB, ecc
+</pre>
+
+<p>
+Il programma <a href="Else.java">Else.java</a> fa la stessa cosa
+del programma visto sopra, ma usa una istruzione condizionale
+con <tt>else</tt> invece di due istruzioni condizionali separate.<p>
+
+<pre>
+/*
+  Esecuzioni diverse a seconda di una condizione
+*/
+
+class Else {
+  public static void main(String[] args) {
+    int a=-3;
+
+    if( a>=0 ) {
+      System.out.println("La variabile e' positiva");
+    }
+    else {
+      System.out.println("Valore negativo");
+    }
+  }
+}
+
+</pre>
+
+<p>
+Questo programma stampa "La variabile e' positiva" se il valore
+di <tt>a</tt> &egrave; maggiore o uguale a zero, altrimenti
+stampa "Valore negativo". Se ci fossero state altre istruzioni
+sotto il blocco condizionale, sarebbero state eseguite in ogni
+caso.<p>
+
+
+
+
+</body>
+
+
+
+<h2>Alternative multiple</h2>
+
+<p>
+Il programma
+<a href="SecondoGradoElse.java">SecondoGradoElse.java</a>
+risolve il problema delle soluzioni di una equazione di
+secondo grado usando istruzioni condizionali con
+alternativa (invece delle tre istruzioni condizionali
+semplici).
+
+<pre>
+/*
+  Soluzione equazione di secondo grado.
+*/
+
+class SecondoGradoElse {
+  public static void main (String args[]) {
+    double a=2, b=5, c=3;
+    double d;
+    double s1, s2;
+
+    d=b*b-4*a*c;
+
+    if( d==0 ) {
+      s1=(-b - Math.sqrt( b*b -4*a*c ))/(2*a);
+      s2=s1;
+      System.out.println("Soluzioni coincidenti: " + s1);
+    }
+    else if( d>0 ) {
+      s1=(-b - Math.sqrt( b*b -4*a*c ))/(2*a);
+      s2=(-b + Math.sqrt( b*b -4*a*c ))/(2*a);
+      System.out.println("Soluzioni reali: " + s1 + " " + s2);
+    }
+    else {
+      System.out.println("Soluzioni complesse");
+    }
+  }
+}
+
+</pre>
+
+<p>
+In questo programma si nota l'uso della sequenza
+<tt>else if</tt>. In generale &egrave; possibile
+costruire una sequenza di questo tipo.
+
+<pre>
+if( condizione1 ) {
+  A
+}
+else if( condizione 2 ) {
+  B
+}
+else {
+  C
+}
+</pre>
+
+<p>
+In esecuzione, si verifica prima se <tt>condizione1</tt>
+&egrave; vera. Se lo &egrave;, si esegue <tt>A</tt> e si
+passa poi al seguito del programma. Se questa condizione
+&egrave; falsa, si va a vedere se <tt>condizione2</tt>
+&egrave; vera o falsa. Nel primo caso, si esegue <tt>B</tt>,
+nel secondo caso si esegue <tt>C</tt>. La traduzione letterale
+dei termini inglesi aiuta a interpretare queste istruzioni:
+
+<pre>
+se condizione1 &egrave; vera
+allora esegui A,
+altrimenti:
+   se condizione2 &egrave; vera
+   allora esegui B,
+   altrimenti esegui C
+</pre>
+
+<p>
+Da notare che <tt>C</tt> viene eseguito solo se sia <tt>A</tt>
+che <tt>B</tt> sono falsi.<p>
+
+</body>
+
+
+
+
+</body>
+</body>
+</html>

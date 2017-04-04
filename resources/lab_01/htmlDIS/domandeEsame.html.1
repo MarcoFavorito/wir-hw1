@@ -1,0 +1,154 @@
+<html>
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<meta name="GENERATOR" content="Microsoft FrontPage 4.0">
+<meta name="ProgId" content="FrontPage.Editor.Document">
+<title>Tecniche di Programmazione Corso di Laurea in Ingegneria Informatica
+Corso di Laurea in Ingegneria Automatica A</title>
+</head>
+
+<body>
+
+<p>
+
+<center>
+<b>Tecniche di Programmazione<br>
+</b> <br>
+<b>Corsi di Laurea in Ingegneria Informatica ed </b><b>Automatica<br>
+</b> <br>
+A.A. 2003/04</center>
+
+<h2 align="center">Esempi per la terza domanda del compito d'esame&nbsp;</h2>
+
+<hr>
+
+<H4>Domanda 1</H4>Descrivere l'ordinamento a bolle (Bubblesort). Quale algoritmo 
+fra Selectionsort, e Bubblesort conviene usare per ordinare un array di elementi 
+che e' gia' "quasi ordinato"? <BR>Considerare ad esempio un array in cui solo i 
+primi due elementi sono nell'ordine sbagliato. Motivare la risposta. <BR>&nbsp; 
+<H4>Domanda 2</H4>Descrivere almeno due approcci per valutare l'efficienza di un 
+programma. Determinare inoltre la complessita' temporale T(n) del seguente 
+metodo Java <BR>che calcola il prodotto di due matrici quadrate intere di 
+dimensione n x n: <BR>&nbsp; 
+<BLOCKQUOTE><TT>public static int[][] prod(int[] A, int[] B) {</TT> 
+  <BR><TT>&nbsp;&nbsp;&nbsp; final int n = A.length;</TT> 
+  <BR><TT>&nbsp;&nbsp;&nbsp; int[][] C = new int[n][n];</TT> 
+  <BR><TT>&nbsp;&nbsp;&nbsp; for (int i=0; i&lt;n; i++)</TT> 
+  <BR><TT>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; for (int j=0; j&lt;n; j++) {</TT> 
+  <BR><TT>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; C[i][j] = 
+  0;</TT> <BR><TT>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+  for (int k=0; k&lt;n; k++)</TT> 
+  <BR><TT>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+  C[i][j] += A[i][k] + B[k][j];</TT> 
+  <BR><TT>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; }</TT> <BR><TT>&nbsp;&nbsp;&nbsp; 
+  return C;</TT> <BR><TT>}</TT></BLOCKQUOTE>
+<P><BR>Esprimere la complessita' temporale prima come polinomio in n e poi 
+utilizzando la notazione O. <BR>&nbsp; 
+<H4>Domanda 3</H4>Illustrare i metodi per la visita di un albero binario. 
+Inoltre, dato il seguente albero binario: 
+<P><TT>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; C</TT> <BR><TT>&nbsp;&nbsp;&nbsp;&nbsp; / 
+\</TT> <BR><TT>&nbsp;&nbsp;&nbsp; F&nbsp;&nbsp; G</TT> <BR><TT>&nbsp;&nbsp; / \ 
+/ \</TT> <BR><TT>&nbsp;&nbsp; B E M N</TT> 
+<P>scrivere le liste dei nodi ottenute esplorando l'albero secondo: 
+<P>(a) visita in preordine <BR>(b) visita simmetrica <BR>(c) visita in 
+postordine 
+<H4></H4>
+<H4>Domanda 4</H4>Illustrare il tipo di dato astratto pila e descrivere ad alto 
+livello almeno due possibili realizzazioni in Java. Inoltre, descrivere 
+l'operazione di push in una rappresentazione a scelta.<p><strong><br>
+Domanda 5</strong>&nbsp;<p>Spiegare brevemente (circa una pagina) la
+nozione di record di attivazione e la gestione della pila dei record di
+attivazione a fronte dell'attivazione di metodi.  Si illustri l'evoluzione
+della pila dei record di attivazione a fronte dell'esecuzione del seguente
+programma:
+
+<blockquote><pre>
+public class EsameA {
+  public static int f(int i) {
+    if (i == 0)
+      return 0;
+    else
+      return i + f(i-1);
+  }
+
+  public static void main(String[] args) {
+    int x;
+    x = f(3);
+    System.out.println(x);
+  }
+}
+</pre><pre>&nbsp;</pre></blockquote>
+
+<p><strong>Domanda 6</strong>&nbsp;<p>Spiegare brevemente (circa una pagina) la
+nozione di record di attivazione e la gestione della pila dei record di
+attivazione a fronte dell'attivazione di metodi.  Si illustri l'evoluzione
+della pila dei record di attivazione a fronte dell'esecuzione del seguente
+programma:
+
+<blockquote><pre>
+public class EsameD {
+  public static int g(int k) {
+    if (k == 0)
+      return 1;
+    else
+      return 2 * g(k-1);
+  }
+
+  public static void main(String[] args) {
+    int n;
+    n = g(3);
+    System.out.println(n);
+  }
+}
+</pre></blockquote>
+
+<p><STRONG>Domanda 7</STRONG>&nbsp;</p>
+<p>Spiegare la rappresentazione collegata di alberi
+binari in cui l'informazione in ciascun nodo è un intero. Spiegare l'algoritmo
+di visita (ricorsiva) in preordine di alberi binari. Facendo uso della
+rappresentazione collegata, realizzare un metodo statico pubblico che, dati un
+intero <EM>n</EM> 
+
+ ed il riferimento alla radice di un albero binario <EM>alb</EM>  i cui nodi
+contengono interi, restituisca il numero di occorrenze di <EM>n</EM>  in <EM>alb</EM>.</p>
+
+
+<p><strong>Domanda 8</strong>&nbsp;
+
+
+<p>Spiegare la rappresentazione collegata di alberi
+binari in cui l'informazione in ciascun nodo &egrave; una stringa.  Spiegare
+l'algoritmo di visita (ricorsiva) simmetrica di alberi binari.  Facendo uso
+della rappresentazione collegata, realizzare un metodo statico pubblico che,
+dati una stringa <em>s</em> ed il riferimento alla radice di un albero binario
+<em>alb</em> i cui nodi contengono stringhe, restituisca <em>true</em> se
+<em>s</em> compare in <em>alb</em>, <em>false</em> altrimenti.
+
+
+<p><strong>Domanda 9</strong>&nbsp;
+
+
+<p>Spiegare la rappresentazione collegata di alberi
+binari in cui l'informazione in ciascun nodo &egrave; una stringa.  Spiegare
+l'algoritmo di visita (ricorsiva) in preordine di alberi binari.  Facendo uso
+della rappresentazione collegata, realizzare un metodo statico pubblico che,
+dati una stringa <em>s</em> ed il riferimento alla radice di un albero binario
+<em>alb</em> i cui nodi contengono stringhe, restituisca il numero di
+occorrenze di <em>s</em> in <em>alb</em>.
+
+
+<p><strong>Domanda 10</strong>&nbsp;
+
+
+<p>Spiegare la rappresentazione collegata di alberi
+binari in cui l'informazione in ciascun nodo &egrave; un reale.  Spiegare
+l'algoritmo di visita (ricorsiva) in postordine di alberi binari.  Facendo uso
+della rappresentazione collegata, realizzare un metodo statico pubblico che,
+dato il riferimento alla radice di un albero binario <em>alb</em> i cui nodi
+contengono reali <b>negativi</b>, restituisca il minimo reale in <em>alb</em>
+(oppure 0 se l'albero &egrave; vuoto). 
+
+</body>
+
+</html>

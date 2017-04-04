@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+<title>struttura base del documentoi XHTML (eh?)</title>
+</head>
+<body>
+
+<pre>
+&lt;?xml version="1.0" encoding="UTF-8"?&gt;
+
+&lt;!DOCTYPE html
+PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"&gt;
+
+&lt;html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en"&gt;
+
+&lt;head&gt;
+&lt;title&gt;Virtual Library&lt;/title&gt;
+&lt;/head&gt;
+
+&lt;body&gt;
+
+&lt;p&gt;
+Tanto rumor per poco.
+&lt;br/&gt;
+poco rumor per poco.
+&lt;/p&gt;
+
+&lt;hr/&gt;
+
+&lt;p&gt;
+altro rumor per tanto.
+&lt;/p&gt;
+
+&lt;/body&gt;
+&lt;/html&gt;
+</pre>
+<p>
+<hr/>
+</p>
+
+<h3>
+Il documento deve essere "well formed".
+</h3>
+<pre>
+elementi e attributi in minuscolo
+SI   ---    &lt;em&gt;seconda&lt;/em&gt;
+NO   ---    &lt;EM&gt;seconda&lt;/EM&gt;
+
+
+elementi ben nidificati:
+SI   ---    &lt;p&gt;metti la &lt;em&gt;seconda&lt;/em&gt;&lt;/p&gt;
+NO   ---    &lt;p&gt;metti la &lt;em&gt;seconda&lt;/p&gt;&lt;/em&gt;
+
+
+elementi sempre terminati dal corretto end tag:
+SI   ---    &lt;p&gt;metti la &lt;em&gt;seconda&lt;/em&gt;&lt;/p&gt;
+NO   ---    &lt;p&gt;metti la &lt;em&gt;seconda&lt;/em&gt;
+
+
+elementi vuoti sempre terminati:
+SI   ---    &lt;hr/&gt;,   &lt;br/&gt;
+NO   ---    &lt;hr&gt;,   &lt;br&gt;
+
+raccomandazioni per salvaguardare la "compatibilita'":
+ usare &lt;hr /&gt; inceve di &lt;hr/&gt;
+ non usare &lt;hr&gt;&lt;/hr&gt; che pure sarebbe permesso ("element minimization")
+ non fare element minimization su elementi non vuoti, anche se occasionalmente lo sono
+ (cioe' non fare &lt;p /&gt; ma &lt;p&gt; &lt;/p&gt;
+
+
+attributi sempre tra virgolette
+SI   ---    &lt;table cellspacing="14"&gt;
+NO   ---    &lt;table cellspacing=14&gt;
+</pre>
+
+
+</body>
+</html>

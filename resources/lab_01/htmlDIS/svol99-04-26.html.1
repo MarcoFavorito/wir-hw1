@@ -1,0 +1,285 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0//EN">
+<!-- Created by htmlize-0.46 in css mode. -->
+<html>
+  <head>
+    <title>svol99-04-26.c</title>
+    <style type="text/css">
+    <!--
+      BODY {
+        color: #000000;
+        background-color: #ffffff;
+      } /* default */
+      span.keyword {
+        color: #006400;
+      } /* font-lock-keyword-face */
+      span.function-name {
+        color: #0000cd;
+      } /* font-lock-function-name-face */
+      span.comment {
+        color: #4682b4;
+      } /* font-lock-comment-face */
+      span.string {
+        color: #b22222;
+      } /* font-lock-string-face */
+      span.variable-name {
+        color: #a52a2a;
+      } /* font-lock-variable-name-face */
+      span.type {
+        color: #ff00ff;
+      } /* font-lock-type-face */
+      span.builtin {
+        color: #da70d6;
+      } /* font-lock-builtin-face */
+    -->
+    </style>
+  </head>
+  <body>
+    <pre>
+<span class="comment">/* Risoluzione compito d'esame del 26-4-99, Fondamenti di Informatica */</span>
+<span class="comment">/* CCL Ambiente e Territorio */</span>
+
+#<span class="builtin">include</span> <span class="string">&lt;stdio.h&gt;</span>
+#<span class="builtin">include</span> <span class="string">&lt;string.h&gt;</span>
+#<span class="builtin">include</span> <span class="string">&lt;stdlib.h&gt;</span>
+
+<span class="type">typedef</span> <span class="type">struct</span> {
+	<span class="type">char</span> <span class="variable-name">nome</span>[13],
+	     cognome[21],
+	     indirizzo[21],
+	     civico[10],
+	     cap[6],
+	     citta[21],
+	     provincia[3],
+	     telcasa[11],
+	     tellavoro[11],
+	     cellulare[12],
+	     fax[11],
+	     email[26];
+} <span class="variable-name">scheda</span>;
+
+<span class="type">struct</span> <span class="variable-name">el</span> {
+	scheda info;
+	<span class="type">struct</span> el *<span class="variable-name">next</span>;
+};
+
+<span class="type">typedef</span> <span class="type">struct</span> el <span class="variable-name">elista</span>;
+
+
+<span class="comment">/* prototipi */</span>
+<span class="type">void</span> <span class="function-name">LeggiNomeFile</span>(<span class="type">char</span> *);
+<span class="type">scheda</span> <span class="function-name">LeggiScheda</span>(<span class="type">void</span>);
+<span class="type">FILE</span> *<span class="function-name">ApriFile</span>(<span class="type">char</span> *, <span class="type">char</span> *);
+<span class="type">void</span> <span class="function-name">CostruisciRubrica</span>(<span class="type">char</span> *);
+<span class="type">void</span> <span class="function-name">ScriviScheda</span>(scheda);
+<span class="type">void</span> <span class="function-name">StampaRubrica</span>(<span class="type">char</span> *);
+<span class="type">void</span> <span class="function-name">AggiornaRubrica</span>(<span class="type">char</span> *, scheda);
+<span class="type">char</span> <span class="function-name">LeggiLettera</span>(<span class="type">void</span>);
+<span class="type">void</span> <span class="function-name">Accoda</span>(elista **, elista **, scheda);
+<span class="type">void</span> <span class="function-name">StampaLista</span>(elista *);
+<span class="type">elista</span> *<span class="function-name">CostruisciLista</span>(<span class="type">char</span> *, <span class="type">char</span>);
+<span class="type">int</span> <span class="function-name">main</span>(<span class="type">void</span>);
+
+<span class="type">void</span> <span class="function-name">LeggiNomeFile</span>(<span class="type">char</span> *<span class="variable-name">nome</span>)
+{
+	printf(<span class="string">&quot;Inserire nome del file: &quot;</span>);
+	gets(nome);
+	<span class="keyword">return</span>;
+}
+
+<span class="type">scheda</span> <span class="function-name">LeggiScheda</span>(<span class="type">void</span>)
+{
+	scheda s;
+	printf(<span class="string">&quot;Inserimento di una scheda\n&quot;</span>);
+	printf(<span class="string">&quot;Nome [invio per terminare]: &quot;</span>);
+	<span class="keyword">if</span>(*gets(s.nome)==0)
+		<span class="keyword">return</span> s;
+	printf(<span class="string">&quot;Cognome                   : &quot;</span>);
+	gets(s.cognome);
+	printf(<span class="string">&quot;Indirizzo                 : &quot;</span>);
+	gets(s.indirizzo);
+	printf(<span class="string">&quot;Num. civico               : &quot;</span>);
+	gets(s.civico);
+	printf(<span class="string">&quot;CAP                       : &quot;</span>);
+	gets(s.cap);
+	printf(<span class="string">&quot;Citta`                    : &quot;</span>);
+	gets(s.citta);
+	printf(<span class="string">&quot;Sigla prov. (2 lettere)   : &quot;</span>);
+	gets(s.provincia);
+	printf(<span class="string">&quot;Telefono (casa)           : &quot;</span>);
+	gets(s.telcasa);
+	printf(<span class="string">&quot;Telefono (lavoro)         : &quot;</span>);
+	gets(s.tellavoro);
+	printf(<span class="string">&quot;Cellulare                 : &quot;</span>);
+	gets(s.cellulare);
+	printf(<span class="string">&quot;FAX                       : &quot;</span>);
+	gets(s.fax);
+	printf(<span class="string">&quot;E-MAIL                    : &quot;</span>);
+	gets(s.email);
+	
+	<span class="keyword">return</span> s;
+}
+
+
+<span class="type">FILE</span> *<span class="function-name">ApriFile</span>(<span class="type">char</span> *<span class="variable-name">nome</span>, <span class="type">char</span> *<span class="variable-name">modo</span>)
+{
+	<span class="type">FILE</span> *<span class="variable-name">f</span>;
+	f=fopen(nome, modo);
+	<span class="keyword">if</span>(f==NULL) {
+		fprintf(stderr, <span class="string">&quot;Impossibile aprire file %s in modalita` %s. Programma terminato.\n&quot;</span>, nome, modo);
+		exit(1);
+	}
+	<span class="keyword">return</span> f;
+}
+
+
+<span class="type">void</span> <span class="function-name">CostruisciRubrica</span>(<span class="type">char</span> *<span class="variable-name">nomefile</span>)
+{
+	<span class="type">FILE</span> *<span class="variable-name">f</span>;
+	scheda s;
+	f=ApriFile(nomefile,<span class="string">&quot;wb&quot;</span>);
+	s=LeggiScheda();
+	<span class="comment">/* assume che quando l'utente vuole terminare l'immissione 
+	   di schede egli digita invio alla richiesta del nome */</span>
+	<span class="keyword">while</span>(s.nome[0]!=<span class="string">'\0'</span>) {
+		fwrite(&amp;s, <span class="keyword">sizeof</span>(scheda), 1, f);
+		s=LeggiScheda();
+	}
+	fclose(f);
+	<span class="keyword">return</span>;
+}
+
+
+<span class="type">void</span> <span class="function-name">ScriviScheda</span>(scheda s)
+{
+	printf(<span class="string">&quot;Nome             : %s\n&quot;</span>,s.nome);
+	printf(<span class="string">&quot;Cognome          : %s\n&quot;</span>,s.cognome);
+	printf(<span class="string">&quot;Indirizzo        : %s\n&quot;</span>,s.indirizzo);
+	printf(<span class="string">&quot;Num. civico      : %s\n&quot;</span>,s.civico);
+	printf(<span class="string">&quot;CAP              : %s\n&quot;</span>,s.cap);
+	printf(<span class="string">&quot;Citta`           : %s\n&quot;</span>,s.citta);
+	printf(<span class="string">&quot;Sigla prov.      : %s\n&quot;</span>,s.provincia);
+	printf(<span class="string">&quot;Telefono (casa)  : %s\n&quot;</span>,s.telcasa);
+	printf(<span class="string">&quot;Telefono (lavoro): %s\n&quot;</span>,s.tellavoro);
+	printf(<span class="string">&quot;Cellulare        : %s\n&quot;</span>,s.cellulare);
+	printf(<span class="string">&quot;FAX              : %s\n&quot;</span>,s.fax);
+	printf(<span class="string">&quot;E-MAIL           : %s\n&quot;</span>,s.email);
+	printf(<span class="string">&quot;--\n&quot;</span>);
+	<span class="keyword">return</span>;
+}
+
+
+<span class="type">void</span> <span class="function-name">StampaRubrica</span>(<span class="type">char</span> *<span class="variable-name">nomefile</span>)
+{
+	<span class="type">FILE</span> *<span class="variable-name">f</span>;
+	scheda s;
+	printf(<span class="string">&quot;\nSTAMPA RUBRICA\n&quot;</span>);
+	f=ApriFile(nomefile,<span class="string">&quot;rb&quot;</span>);
+	<span class="keyword">while</span>(fread(&amp;s,<span class="keyword">sizeof</span>(scheda),1,f)==1) 
+		ScriviScheda(s);
+	fclose(f);
+	printf(<span class="string">&quot;FINE RUBRICA\n&quot;</span>);
+	<span class="keyword">return</span>;
+}
+
+
+<span class="type">void</span> <span class="function-name">AggiornaRubrica</span>(<span class="type">char</span> *<span class="variable-name">filein</span>, <span class="variable-name">scheda</span> nuova)
+<span class="comment">/* funzione richiesta al punto 1.2 */</span>
+{
+	<span class="type">FILE</span> *<span class="variable-name">fin</span>, *<span class="variable-name">fout</span>;
+	<span class="type">char</span> <span class="variable-name">fileout</span>[24];
+	scheda vecchia;
+	<span class="type">int</span> <span class="variable-name">presente</span>=0;
+	
+	strcpy(fileout,<span class="string">&quot;new&quot;</span>);
+	strcat(fileout,filein);
+	fin=ApriFile(filein,<span class="string">&quot;rb&quot;</span>);
+	fout=ApriFile(fileout, <span class="string">&quot;wb&quot;</span>);
+	<span class="keyword">while</span>(fread(&amp;vecchia,<span class="keyword">sizeof</span>(scheda),1,fin)==1)
+		<span class="keyword">if</span>((strcmp(nuova.nome,vecchia.nome)==0)&amp;&amp;(strcmp(nuova.cognome,vecchia.cognome)==0)) {
+			presente=1;
+			fwrite(&amp;nuova, <span class="keyword">sizeof</span>(scheda), 1, fout);
+		} <span class="keyword">else</span>
+			fwrite(&amp;vecchia, <span class="keyword">sizeof</span>(scheda), 1, fout);
+	fclose(fin);
+	<span class="keyword">if</span>(!presente)
+			fwrite(&amp;nuova, <span class="keyword">sizeof</span>(scheda), 1, fout);		
+	fclose(fout);
+	remove(filein);
+	rename(fileout,filein);
+	<span class="keyword">return</span>;
+}
+
+
+<span class="type">char</span> <span class="function-name">LeggiLettera</span>(<span class="type">void</span>)
+{
+	<span class="type">char</span> <span class="variable-name">ch</span>;
+	printf(<span class="string">&quot;Inserire iniziale cognomi per costruzione lista: &quot;</span>);
+	ch=getchar();
+	getchar();
+	<span class="keyword">return</span> ch;
+}
+
+
+<span class="type">void</span> <span class="function-name">Accoda</span>(elista **ppinizio, elista **ppcoda, scheda s)
+{
+	elista *nuovo;
+	
+	nuovo=malloc(<span class="keyword">sizeof</span>(elista));
+	nuovo-&gt;info=s; <span class="comment">/* le struct possono essere assegnate */</span>
+	nuovo-&gt;next=NULL;
+	<span class="keyword">if</span>(*ppinizio==NULL)
+		*ppinizio=nuovo;
+	<span class="keyword">else</span>
+		(*ppcoda)-&gt;next=nuovo;
+	*ppcoda=nuovo;
+	<span class="keyword">return</span>;
+}
+
+
+<span class="type">void</span> <span class="function-name">StampaLista</span>(elista *pprimo)
+{
+	printf(<span class="string">&quot;\nSTAMPA LISTA\n&quot;</span>);
+	<span class="keyword">while</span>(pprimo!=NULL) {
+		ScriviScheda(pprimo-&gt;info);
+		pprimo=pprimo-&gt;next;
+	}
+	printf(<span class="string">&quot;FINE LISTA\n&quot;</span>);
+	<span class="keyword">return</span>;
+}
+
+<span class="type">elista</span> *<span class="function-name">CostruisciLista</span>(<span class="type">char</span> *<span class="variable-name">nomefile</span>, <span class="type">char</span> <span class="variable-name">iniziale</span>)
+<span class="comment">/* funzione richiesta al punto 1.3 */</span>
+{
+	elista *pinizio, *pcoda;
+	<span class="type">FILE</span> *<span class="variable-name">f</span>;
+	scheda s;
+	
+	f=ApriFile(nomefile, <span class="string">&quot;rb&quot;</span>);
+	pinizio=NULL;
+	<span class="keyword">while</span>(fread(&amp;s,<span class="keyword">sizeof</span>(scheda),1,f)==1)
+		<span class="keyword">if</span>(*s.cognome==iniziale)
+			Accoda(&amp;pinizio,&amp;pcoda,s);
+	fclose(f);
+	<span class="keyword">return</span> pinizio;
+}
+
+
+<span class="function-name">main</span>(<span class="type">void</span>)
+{
+	<span class="type">char</span> <span class="variable-name">nomefile</span>[21], <span class="variable-name">lettera</span>;
+	scheda nuova;
+	elista *ptesta;
+	
+	LeggiNomeFile(nomefile);
+	CostruisciRubrica(nomefile);
+	StampaRubrica(nomefile);
+	nuova=LeggiScheda();
+	AggiornaRubrica(nomefile,nuova);
+	StampaRubrica(nomefile);
+	lettera=LeggiLettera();
+	ptesta=CostruisciLista(nomefile,lettera);
+	StampaLista(ptesta);
+	<span class="keyword">return</span> 0;
+}</pre>
+  </body>
+</html>

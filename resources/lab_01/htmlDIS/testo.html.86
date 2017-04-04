@@ -1,0 +1,104 @@
+<!-- saved from url=(0022)http://internet.e-mail -->
+<!DOCTYPE html PUBLIC "-//w3c//dtd html 4.0 transitional//en">
+<html>
+<head>
+   <title>Esame del 14/4/2004 - Compito B</title>
+</head>
+<body>
+
+<center>
+  <b>Tecniche di Programmazione</b> <br>
+<b>Corso di Laurea in Ingegneria Informatica</b> <br>
+<b>Corso di Laurea in Ingegneria Automatica</b> <br>
+  A.A. 2003/04
+</center>
+
+<center>
+  <h2>Appello del 13/9/2004&nbsp;</h2>
+</center>
+
+Si vogliono gestire le informazioni relative alle liste di nozze. Di un oggetto <em>ListaNozze</em> 
+sono di interesse il nome del negozio presso cui viene attivata (una stringa), la collezione di
+articoli da regalo che include, ed il valore complessivo della lista (un reale),
+equivalente alla somma dei prezzi di ciascun articolo da regalo contenuto nella
+lista di nozze. Di ogni
+articolo da regalo sono di interesse le seguenti 
+informazioni: 
+<ul>
+  <li><font color="#000000"><i>codice</i> (una stringa);</font>
+  <li><font color="#000000"><i>prezzo</i> (un reale);</font>
+  <li><font color="#000000"><i>acquirente</i> (una stringa), che indica il nome
+    di chi ha acquistato l'articolo. E' pari a <i>null</i> se l'articolo non è
+    stato ancora acquistato.</font> 
+</ul>
+
+Gli oggetti <em>ListaNozze</em> supportano le seguenti funzionalit&agrave;: 
+<ul>
+  <li><em>crea:</em> che, data una stringa <em>n</em>  che rappresenta il nome di
+    un negozio, crea un oggetto <em>ListaNozze</em> con nome <em>n</em>, la cui
+    collezione di articoli da regalo è inizialmente vuota (di conseguenza il
+    valore complessivo della lista alla sua creazione è 0);</li>
+  <li><em>nomeNegozio:</em> che restituisce il nome del negozio in cui è
+    attivata la lista di nozze; 
+  </li>
+  <li><em>valoreComplessivo:</em> che restituisce il valore complessivo della
+    lista; 
+  </li>
+  <li><em>aggiungi:</em> che, <font color="#000000">dato il codice ed il prezzo
+    di un articolo da regalo</font>, <font color="#000000">lo aggiunge alla
+    lista di nozze</font>; <font color="#000000">l'articolo inserito
+    non è ancora stato acquistato;</font>
+ <font color="#000000">se è &nbsp;già
+    presente un articolo con lo stesso codice, genera</font> <font color="#000000">una
+    eccezione;</font> 
+  </li>
+  <li><font color="#000000"><i>elimina:</i> che, dato il codice di un articolo
+    da regalo, lo elimina dalla</font>  <font color="#000000">collezione nel
+    caso in cui non sia stato acquistato, altrimenti non effettua modifiche; se
+    l'articolo da eliminare non</font> è <font color="#000000">presente,</font> <font color="#000000">genera
+    una eccezione;</font></li>
+  <li><em>acquirente:</em>  <font color="#000000"> che, dato il codice di un
+    articolo da regalo ne restituisce l'acquirente</font>; <font color="#000000">se
+    l'articolo non è stato acquistato restituisce <i>null</i>; se l'articolo
+    cercato non esiste </font> <font color="#000000">genera
+    una eccezione;</font> 
+  </li>
+  <li><font color="#000000"><i>eliminaNonAcquistati</i><i>:</i> che elimina dalla
+    lista di nozze tutti gli articoli che non risultano acquistati</font><font color="#000000">;</font></li>
+  <li><font color="#000000"><i>articoliAcquistati</i><i>:</i> che restituisce un array di stringhe</font> <font color="#000000">contenente</font>
+    <font color="#000000">i codici di tutti gli articoli acquistati,
+    oppure <i>null</i> se non ci sono</font>
+    <font color="#000000">articoli acquistati.</font></li>
+</ul>
+
+<p><strong>Domanda 1.</strong> Scrivere una classe Java <code>ListaNozze</code> 
+  per rappresentare oggetti <em>ListaNozze</em>. Fornire il costo in tempo dei metodi
+che realizzano le funzionalit&agrave; <em>aggiungi</em>, <font color="#000000"><i>eliminaNonAcquistati</i></font>
+e <font color="#000000"><i>articoliAcquistati</i></font>, motivando la risposta (indicando esplicitamente 
+  i parametri di input della funzione di costo ed il caso peggiore).<p><strong>Domanda 2.</strong>&nbsp;
+<font color="#000000">Realizzare</font><font color="#000000"> un metodo statico </font><code>RegaliRicevuti</code> 
+  cliente della classe <code>ListaNozze</code>, che,<font color="#000000"> dati</font>&nbsp;
+<ul>
+  <li><font color="#000000">un riferimento </font><font color="#000000"><i>l</i></font><font color="#000000">
+    ad un oggetto di classe </font><code>ListaNozze</code><font color="#000000">,</font></li>
+  <li><font color="#000000">il nome <i>fout </i>di un file,</font></li>
+</ul>
+<p><font color="#000000">scriva </font>su<font color="#000000"> ciascuna riga
+del file <i>fout</i>  codice ed acquirente di tutti </font>gli articoli
+acquistati della lista di nozze<font color="#000000">. </font> 
+Fornire il costo in tempo del metodo realizzato, motivando la risposta (indicando esplicitamente 
+  i parametri di input della funzione di costo ed il caso peggiore).&nbsp;</p>
+<p><strong>Domanda 3.</strong>  Spiegare la rappresentazione collegata di alberi 
+  binari in cui l'informazione in ciascun nodo &egrave; un intero. Realizzare
+un metodo statico pubblico che, dato il riferimento alla radice di un albero
+binario <em>alb</em>,&nbsp;i cui nodi contengono interi, verifichi&nbsp;che in
+tutti i sottoalberi&nbsp;di&nbsp;<em>alb </em>l'intero&nbsp;memorizzato alla
+radice sia maggiore (o uguale) dell'intero memorizzato alla radice del suo
+sottoalbero sinistro (se questo esiste) e minore dell'intero memorizzato alla
+radice del suo sottoalbero destro (se questo esiste). Fornire il costo in tempo
+e spazio di memoria del metodo realizzato, motivando la risposta (indicando
+esplicitamente i parametri&nbsp;di input della funzione di costo&nbsp;ed il caso
+peggiore).
+
+</body>
+</html>

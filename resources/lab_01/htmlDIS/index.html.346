@@ -1,0 +1,124 @@
+<!DOCTYPE html PUBLIC "-//w3c//dtd html 4.0 transitional//en">
+<html>
+<head>
+  <title>Esercitazione 8</title>
+  <link rel="stylesheet" href="../../fi2001.css" type="text/css">
+</head>
+<body>
+&nbsp;
+<center>
+<p><b>Fondamenti di Informatica</b> <br>
+<b>Corsi di Laurea in Ingegneria <br>
+Informatica e Automatica</b><br>
+<br>
+A.A. 2003/04
+</p>
+</center>
+<p>
+</p>
+<hr>
+<p><b><font size="+1">Esercitazione 8</font></b>
+</p>
+<p><b><font size="+1">Input/Output tramite tastiera/video e tramite i
+file.</font></b> <br>
+<b>Esercizio 8A</b>
+</p>
+<p>Scrivere una classe Java che:</p>
+<p>1. legga dalla tastiera una linea contenente una domanda a risposta
+SI/NO
+senza simboli di punteggiatura</p>
+<p>2. stampi una risposta alla domanda in base alle seguenti regole</p>
+<ol>
+  <li>- se l'ultima lettera della frase &egrave;&nbsp; "a", " i", " u"
+la risposta &egrave; "SI"</li>
+  <li>- se l'ultima lettera della frase &egrave;&nbsp; "e", "o"&nbsp;
+la risposta &egrave; "NO"</li>
+  <li>- se l'ultima lettera della frase &egrave; un carattere diverso
+da "a", "e", " i", "o" , " u"&nbsp; la risposta &egrave; "NON SO"</li>
+  <li>- se la frase inizia e finisce con una vocale la risposta
+&egrave; "FORSE"</li>
+</ol>
+<p>NB quando si applicano due regole (1,4) la risposta si ottiene
+facendo la
+concatenazione delle risposte</p>
+<p><br>
+<b>Esercizio 8B</b>
+</p>
+<blockquote>Si scriva un programma Java che chieda all'utente di
+inserire
+il proprio nome e cognome, legga da tastiera due stringhe
+corrispondenti
+al nome e al cognome e le scriva sia su video che su un file chiamato
+'nomi.txt' su due linee successive. <br>
+  <a href="sugg8B.html">Suggerimento.</a> <a href="Eserc8B.java">Soluzione.</a></blockquote>
+<p><br>
+<b>Esercizio 8C</b>
+</p>
+<blockquote>Si scriva un programma Java che legga dal file 'nomi.txt'
+due
+stringhe rappresentanti un nome e un cognome e stampi su video le
+iniziali
+del nominativo. <br>
+  <a href="sugg8C.html">Suggerimento.</a> <a href="Eserc8C.java">Soluzione.</a></blockquote>
+<p><br>
+<b>Esercizio 8D</b>
+</p>
+<blockquote>Si scriva un programma Java che chieda all'utente di
+inserire il nome di un file da ridenominare e il nuovo nome, legga
+quindi dalla tastiera due stringhe <tt>nomefile1</tt> e <tt>nomefile2</tt>
+contenenti due nomi di file e ridenomini il file <tt>nomefile1</tt>
+con <tt>nomefile2</tt>. <br>
+  <a href="sugg8D.html">Suggerimento.</a> <a href="Eserc8D.java">Soluzione.</a></blockquote>
+<p><br>
+<b>Esercizio 8E</b>
+</p>
+<blockquote>Si scriva una classe <code>FunzionalitaMatrici</code> che
+implementa i seguenti
+metodi statici:
+  <ul>
+    <li> <code>double [][] leggiMatrice(String filename)</code>, che
+restituisce una matrice di double letta dal file <code>filename</code>.
+Il formato del file &amp;grave il seguente:<br>
+-le prime due righe del file contengono il numero di righe m e di
+colonne n della matrice.<br>
+-ciascuna delle successive m*n righe contiene un elemento della
+matrice, in modo che la riga (i*m+j)-2 si riferisca all'elemento i,j
+della matrice stessa.<br>
+Ad esempio la matrice 3x2<br>
+      <code> 1 2<br>
+3 4<br>
+5 6<br>
+      </code> viene memorizzata nel seguente <a href="matrice.txt">formato</a>
+:<br>
+      <code> 3 //righe<br>
+2 //colonne<br>
+1 //a11<br>
+2 //a12<br>
+3 //a21<br>
+4 //a22<br>
+5 //a31<br>
+6 //a32<br>
+      </code> </li>
+    <li> <code>double elementoMassimo(double [][] a)</code> che data
+una matrice, ritorna il valore dell'elemento massimo in essa presente. </li>
+    <li> <code>void scriviMatrice(double [][] m, String filename)</code>,
+che data la matrice di double <code>m</code> la stampi sul file <code>
+filename</code>, secondo il formato sopra descritto; </li>
+    <li> <code>double [] diagonaleSecondaria(double [][] a)</code>,
+che data una matrice, controlla che sia quadrata, e ritorna un vettore
+composto dagli elementi della diagonale secondaria, opportunamente
+dimensionato; </li>
+    <code>double [][] somma(double [][] a, double [][]b)</code>, che
+date due matrici, controlla se hanno le stesse dimensioni, ed in caso
+affermativo ne ritorna la somma, altrimenti visualizza un messaggio di
+errore; <li> <code>double [][] prodotto(double [][] a, double [][]b)</code>,
+che data una coppia di matrici, verifica se hanno dimensioni
+compatibili per il prodotto <code>a*b</code>, ed in caso affermativo
+restituisce una matrice prodotto. Se le matrici non sono compatibili si
+stampi un opportuno messaggio di errore. </li>
+    <a href="sugg8D.html">Suggerimento.</a> <a href="Eserc8D.java">Soluzione.</a>
+  </ul>
+</blockquote>
+<blockquote>&nbsp;</blockquote>
+</body>
+</html>

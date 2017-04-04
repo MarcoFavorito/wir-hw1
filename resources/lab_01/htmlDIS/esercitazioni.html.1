@@ -1,0 +1,1621 @@
+<!doctype html public "-//w3c//dtd html 4.0 transitional//en">
+<html>
+<head>
+   <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <meta name="Generator" content="Microsoft Word 97">
+   <meta name="Template" content="C:\Programmi\Microsoft Office\Office\html.dot">
+   <meta name="GENERATOR" content="Mozilla/4.61 [en] (WinNT; I) [Netscape]">
+   <title>esercitazioni</title>
+</head>
+<body>
+
+<center><b>FONDAMENTI DI INFORMATICA - I</b>
+<br><b>CORSO DI LAUREA IN INGEGNERIA INFORMATICA</b>
+<br><b>A/A 1999/2000</b>
+<br><i><font size=+3>Esercitazioni</font></i></center>
+
+<h2>
+<a NAME="Elenco_delle_esercitazioni"></a>Elenco delle esercitazioni in
+PASCAL svolte in laboratorio</h2>
+
+<ol>
+<li>
+<u><font color="#0000FF"><a href="#eser1">Creazione, compilazione ed esecuzione
+di un programma PASCAL</a></font></u></li>
+
+<li>
+<u><font color="#0000FF"><a href="#eser2">Minipascal</a></font></u></li>
+
+<li>
+<u><font color="#0000FF"><a href="#eser3">Scrittura di Programmi PASCAL</a></font></u></li>
+
+<li>
+<u><font color="#0000FF"><a href="#eser4">I tipi di dato char, real e boolean</a></font></u></li>
+
+<li>
+<u><font color="#0000FF"><a href="#eser5">Dichiarazioni di Tipi</a></font></u></li>
+
+<li>
+<u><font color="#0000FF"><a href="#eser6">Altre istruzioni del PASCAL</a></font></u></li>
+
+<li>
+<u><font color="#0000FF"><a href="#eser7">Procedure e verifica dell'esecuzione
+dei programmi</a></font></u></li>
+
+<li>
+<u><font color="#0000FF"><a href="#eser8">Procedure, Modello di esecuzione
+e traccia</a></font></u></li>
+
+<li>
+<u><font color="#0000FF"><a href="#eser9">Funzioni e ricorsione</a></font></u></li>
+
+<li>
+<u><font color="#0000FF"><a href="#eser10">ARRAY, stringhe e file testo</a></font></u></li>
+
+<li>
+<u><font color="#0000FF"><a href="http://tibur.dis.uniroma1.it/~fondi/FI2000/esercitazioni.html#eser11">Il
+tipo RECORD, le istruzioni WITH e GOTO</a></font></u></li>
+
+<li>
+<u><font color="#0000FF"><a href="http://tibur.dis.uniroma1.it/~fondi/FI2000/esercitazioni.html#eser12">Il
+tipo puntatore</a></font></u></li>
+
+<li>
+<u><font color="#0000FF"><a href="http://tibur.dis.uniroma1.it/~fondi/FI2000/esercitazioni.html#eser13">Inserimento
+e cancellazione in strutture lineari collegate</a></font></u></li>
+
+<li>
+<u><font color="#0000FF"><a href="http://tibur.dis.uniroma1.it/~fondi/FI2000/esercitazioni.html#eser14">Esercizi
+per l'interruzione delle lezioni</a></font></u></li>
+
+<li>
+<a href="http://tibur.dis.uniroma1.it/~fondi/FI2000/esercitazioni.html#eser15">Le
+UNIT del TurboPASCAL</a></li>
+
+<li>
+<a href="#eser16">Rappresentazione dei tipi astratti: insieme, lista, pila,
+coda</a></li>
+
+<li>
+<a href="#eser17">Alberi Binari</a></li>
+
+<li>
+<a href="#eser18">Alberi binari di ricerca</a></li>
+</ol>
+
+<hr>
+<h2>
+<a NAME="eser1"></a>1. Creazione, compilazione ed esecuzione di un programma
+PASCAL</h2>
+<b>1.1 ACCENSIONE DEL COMPUTER E ACCESSO ALL'AMBIENTE TURBOPASCAL</b>
+<p>I Personal Computer sui quali viene svolta questa esercitazione hanno
+due interruttori separati: uno sul lato destro del video ed uno nella parte
+anteriore dell'unit&agrave; base.
+<p>Una volta accesi i due interruttori, il computer inizia una serie di
+operazioni di autocontrollo della memoria installata, di caricamento del
+sistema operativo e di alcuni programmi necessari per il collegamento in
+rete. Durante questa fase vengono poste alcune domande: si pu&ograve; confermare
+la risposta di <i>default </i>per ciascuna domanda premendo semplicemente
+il tasto invio (contrassegnato con "&oslash;").
+<p>Terminata la fase di avvio si pu&ograve; attivare il <b>"TURBO PASCAL
+versione 7"</b>, con un doppio click del mouse sulla icona ad esso corrispondente.
+<p>Una introduzione al sistema MS/DOS si puo' trovare in <a href="http://tibur.dis.uniroma1.it/~fondi/FI2000/ms-dos.html">http://tibur.dis.uniroma1.it/~fondi/FI2000/ms-dos.html</a>
+<p><b>1.2 SCRITTURA DI UN PROGRAMMA</b>
+<p>Una volta entrati nell'ambiente TurboPascal, pu&ograve; iniziare la
+preparazione del programma.
+<p>Un esempio di programma &egrave; il seguente:
+<dl>
+<dd>
+PROGRAM potenza;</dd>
+
+<dd>
+VAR esp,base:integer; { dati in ingresso }</dd>
+
+<dir>
+<dd>
+ris: integer; { risultato }</dd>
+</dir>
+
+<dd>
+BEGIN</dd>
+
+<dl>
+<dd>
+write('base: ); readln(base);</dd>
+
+<dd>
+write('esponente: '); readln(esponente);</dd>
+
+<dd>
+ris:=1;</dd>
+
+<dd>
+WHILE esponente > 0 DO</dd>
+
+<dd>
+BEGIN ris:= ris*base; esponente:=esponente - 1 END;</dd>
+
+<dd>
+writeln('risultato =', ris)</dd>
+</dl>
+
+<dd>
+END.</dd>
+</dl>
+Scrivere il programma nella finestra di editor, sapendo che per correggere
+eventuali errori potete:
+<br>- posizionarvi con i quattro tasti freccia su eventuali errori
+<br>- cancellarli con il tasto Canc (cancella a destra del cursore)
+<br>- riscrivere il testo esatto.
+<p><b>1.3 SALVATAGGIO DEL PROGRAMMA, COMPILAZIONE ED ESECUZIONE</b>
+<p>E' sempre opportuno salvare il programma su disco periodicamente, in
+quanto le modifiche vengono registrate solo nella memoria RAM, che viene
+azzerata ogni volta che il calcolatore viene spento. La frequenza con cui
+eseguire i salvataggi va valutata considerando il rapporto tra il tempo
+necessario a compiere tale operazione e quello necessario a riscrivere
+il programma (o le ultime variazioni).
+<br>Per salvare il programma si procede come segue:
+<br>1.- premere il tasto <b>F10</b>: notare che una delle parole nella
+parte superiore del video cambia colore (si dice che viene <i>selezionata</i>
+);
+<br>2.- selezionare la parola <b>File</b> spostandosi con i tasti freccia;
+<br>3.- premere il tasto invio per "aprire" il men&ugrave; <b>File</b>;
+<br>4.- inserire il vostro dischetto nella feritoia; se usato per la prima
+volta bisogna "formattarlo":
+<br>4a) selezionare il comando <b>Dos Shell </b>usando i tasti freccia
+_, &Oslash;, e premere invio; appare il prompt ">" seguito dal cursore;
+<br>4b) immettere <b>FORMAT A: </b>e premere invio; immettere i dati che
+vi vengono richiesti (nome da dare al dischetto e se se ne vuole formattare
+un altro (no));
+<br>4c) infine per ritornare in TurboPascal immettere <b>EXIT </b>(e invio)
+; riappare l'ambiente TurboPascal.
+<br>4d) Aprite nuovamente il men&ugrave; <b>File </b>rieseguendo i precedenti
+passi 1., 2., 3.
+<br>5.- selezionare il comando <b>Save</b>, usando i tasti freccia e premere
+invio;
+<br>6.- impostare un nome da assegnare al programma su disco: ad esempio
+<b>A:ESP</b> e premere invio. Se non indicate un'estensione, viene automaticamente
+aggiunta l'estensione <b>.PAS</b> .
+<p>Il programma scritto, per poter essere eseguito dal calcolatore, deve
+essere prima compilato. Anche per questa operazione si utilizzano i men&ugrave;:
+<br>1.- premere il tasto <b>F10</b>;
+<br>2.- usare i tasti freccia per selezionare il men&ugrave;<b> Compile</b>;
+<br>3.- premere il tasto invio per "aprire" il men&ugrave;;
+<br>4.- il comando<b> Compile</b> &egrave; gi&agrave; selezionato: premere
+invio;
+<br>5.- se il programma &egrave; corretto appare il messaggio<b> "Compile
+successful"</b>, altrimenti pu&ograve; comparire un messaggio di errore,
+e il cursore si posiziona sull'istruzione che ha causato l'errore, o su
+una delle successive. Non sempre l'errore segnalato &egrave; quello effettivo.
+Per ottenere maggiori spiegazioni sull'errore, premere il tasto <b>F1</b>;
+per ritornare sul testo, premete il tasto <b>Esc</b>. Una volta individuato
+l'errore lo si pu&ograve; correggere come descritto sopra, e poi ripetere
+la compilazione.
+<p>Quando la compilazione ha avuto successo, si pu&ograve; finalmente eseguire
+il programma:
+<br>1.- premere il tasto<b> F10;</b>
+<br>2.- usare i tasti freccia per selezionare il men&ugrave;<b> Run</b>;
+<br>3.- premere il tasto invio per "aprire" il men&ugrave;;
+<br>4.- il comando <b>Run</b> &egrave; gi&agrave; selezionato: premere
+invio;
+<p>Il programma richieder&agrave; l'inserimento di due numeri da inserire
+tramite la tastiera confermando con invio, quindi visualizzer&agrave; i
+risultati. Se i risultati sono nascosti dal testo del programma, potete
+visualizzare la finestra di Output nel seguente modo:
+<br>1.- premere il tasto<b> F10;</b>
+<br>2.- usare i tasti freccia per selezionare il men&ugrave;<b> Windows</b>;
+<br>3.- premere il tasto invio per "aprire" il men&ugrave;;
+<br>4.- selezionare <b>Output</b>, e premere invio; apparir&agrave; la
+finestra di Input/Output del programma.
+<br>Per tornare sul testo del programma, premere il tasto <b>F6</b> (cambio
+finestra).
+<br>Provare il programma pi&ugrave; volte , con diverse combinazioni di
+dati in ingresso .
+<p><b>1.4 USCITA DAL TURBO PASCAL</b>
+<p>Terminato il lavoro utilizzare di nuovo il men&ugrave; <b>File</b> per
+uscire dall'ambiente TurboPascal: &egrave; sufficiente selezionare il comando
+<b>Exit</b>. Se il programma &egrave; stato modificato dopo l'ultima volta
+che l'avete salvato, vi verr&agrave; richiesto se volete salvare (premendo
+il tasto Y) o no (premendo il tasto N) le ultime modifiche.
+<p><b>1.5 RIENTRO E RIESECUZIONE DEL PROGRAMMA</b>
+<p>E' possibile a questo punto rientrare nel TurboPascal, selezionando
+di nuovo l'icona corrispondente, e caricare di nuovo lo stesso programma
+dal disco, per eseguirlo nuovamente o modificarlo: nel men&ugrave; <b>File</b>
+&egrave; presente il comando <b>Open</b> che serve a questo scopo. Ovviamente
+&egrave; necessario impostare il nome assegnato precedentemente al programma
+con il comando <b>Save</b>. Si ricordi di premettere "A:" al nome del file,
+in quanto esso si trover&agrave; sul vostro dischetto, e di aggiungere
+".PAS" alla fine.
+<br>&nbsp;
+<h2>
+
+<hr WIDTH="100%"><a NAME="eser2"></a>2. MINIPASCAL</h2>
+La struttura di un programma PASCAL consiste in:
+<ol>
+<li>
+Una intestazione o denominazione del programma in cui si assegna un nome
+al programma.</li>
+
+<li>
+Una parte dichiarazioni in cui si dichiarano tutte le variabili utilizzate
+nel programma.</li>
+
+<li>
+Una parte istruzioni in cui viene descritto l'algoritmo con le istruzioni
+del linguaggio.</li>
+</ol>
+<b>DENOMINAZIONE DEL PROGRAMMA</b>
+<p>La denominazione di un programma ha la seguente sintassi:
+<pre>&nbsp;PROGRAM nome_programma;</pre>
+Dove <i>nome_programma</i> &egrave; il nome del programma. Ad esempio:
+<pre>&nbsp;PROGRAM esempio;</pre>
+<b>DICHIARAZIONE DELLE VARIABILI</b>
+<p>Tutte le variabili utilizzate nel programma devono essere dichiarate.
+La parte dichiarazione &egrave; immediatamente successiva a quella di denominazione.
+La sintassi &egrave; la seguente:
+<pre>&nbsp;
+
+VAR lista_variabili : tipo_di_dato;&nbsp;
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ...&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+&nbsp;&nbsp;&nbsp; lista_variabili : tipo_di_dato;</pre>
+Dove <i>lista_variabili</i> &egrave; una lista di nomi di variabili ed
+&egrave; espressa nel modo seguente:
+<pre>&nbsp;nome_variabile, ..., nome_variabile</pre>
+Il <i>tipo_di_dato</i> &egrave; il tipo di dato che corrisponde alla variabile.
+Le variabili che utilizziamo in questo esercitazione sono di tipo INTEGER.
+Un esempio di dichiarazione &egrave; il seguente:
+<pre>&nbsp;VAR A,B,C: INTEGER;</pre>
+<b>PARTE ISTRUZIONI</b>
+<p><b>Corpo del programma</b>
+<p>Il <i>corpo del programma </i>e' la parte del programma in cui viene
+descritto l'algoritmo mediante le istruzioni del linguaggio. Il corpo del
+programma &egrave; definito nel modo seguente:
+<pre>BEGIN
+
+&nbsp;lista_istruzioni
+
+END.</pre>
+La <i>lista_istruzioni</i> &egrave; compresa tra le parole chiave BEGIN
+END seguito da un punto, questa lista definisce una lista di istruzioni
+separate tra loro da un punto e virgola.
+<p><b>Istruzioni di lettura e scrittura</b>
+<p>L'struzione:
+<pre>readln( nome_variabile )</pre>
+legge in input un dato del tipo corrispondente alla variabile il cui identificatore
+&egrave; <i>nome_variabile</i>.
+<p>L'istruzione di scrittura seguente:
+<pre>writeln( nome_variabile )</pre>
+stampa il valore corrispondente alla variabile <i>nome_variabile</i>.
+<p>L'istruzione di scrittura seguente:
+<pre>&nbsp;writeln('hello')</pre>
+dove <i>stringa</i> &egrave; una sequenza di caratteri, stampa in output
+la sequenza di caratteri <i>stringa</i>. Ad esempio
+<pre>&nbsp;writeln('hello')</pre>
+stampa in output la stringa: hello. L'istruzione:
+<pre>write( espressione_aritmetica )</pre>
+stampa in output il valore calcolato dell'espressione aritmetica. Ad esempio
+<pre>&nbsp;writeln( 9 + 1 )</pre>
+stampa in output: 10.
+<p><b>Istruzione di assegnazione</b>
+<p>Il formato dall'istruzione di assegnazione &egrave; il seguente:
+<pre>nome_variabie := espressione_aritmetica</pre>
+con questa istruzione viene calcolato il valore dell'espressione aritmetica,
+tale valore viene quindi assegnato alla variabile.
+<p><b>Sequenza di istruzioni</b>
+<p>La sequenza di istruzioni ha il formato:
+<pre>BEGIN
+
+&nbsp;lista_istruzioni
+
+END</pre>
+Dove <i>lista_istruzioni </i>&egrave; una sequenza di istruzioni separate
+da punto e virgola:
+<pre>istruzione;
+
+...
+
+istruzione;
+
+istruzione</pre>
+<b>Istruzione condizionale</b>
+<p>Il formato dell'istruzione &egrave; il seguente:
+<pre>IF espressione_booleana
+
+THEN istruzione
+
+ELSE istruzione</pre>
+Il significato &egrave; il seguente:
+<li>
+Viene valutata l'espressione booleana.</li>
+
+<li>
+Se l'espressione &egrave; vera allora viene eseguita l'istruzione seguita
+dalla parola chiave THEN e precedente la parola ELSE. Se invece l'espressione
+&egrave; falsa, allora viene eseguita l'istruzione che segue l'ELSE.</li>
+
+<br>&nbsp;
+<p>&nbsp;
+<br>&nbsp;
+<br>&nbsp;
+<br>&nbsp;
+<br>&nbsp;
+<br>&nbsp;
+<br>&nbsp;
+<p>Una variante &egrave; l'istruzione seguente:
+<pre>IF espressione_booleana
+
+THEN istruzione</pre>
+In questo caso, se l'espressione booleana &egrave; vera allora viene eseguita
+l'istruzione, altrimenti, se l'espressione &egrave; falsa, si passa ad
+eseguire l'istruzione che segue quella condizionale.
+<p><b>Istruzione di ciclo</b>
+<p>Il formato dell'istruzione di ciclo &egrave; il seguente:
+<pre>WHILE espressione_booleana
+
+DO istruzione</pre>
+Il significato &egrave; il seguente:
+<li>
+viene valutata l'espressione booleana.</li>
+
+<li>
+se l'espressione booleana &egrave; vera allora viene eseguita l'istruzione
+che segue il DO e si torna al passo precedente. Se invece l'espressione
+&egrave; falsa si ha la terminazione dell'esecuzione dell'istruzione.</li>
+
+<br>&nbsp;
+<p>&nbsp;
+<br>&nbsp;
+<br>&nbsp;
+<br>&nbsp;
+<br>&nbsp;
+<br>&nbsp;
+<br>&nbsp;
+<p>Ad esempio, con la sequenza di istruzioni:
+<pre>readln(num);
+
+while&nbsp; num > 0 do&nbsp;
+
+begin
+
+&nbsp;writeln('maggiore di zero');
+
+&nbsp;readln(num)
+
+end;</pre>
+viene letto in input un valore per la variabile <i>num</i> e, se il valore
+letto &egrave; maggiore di zero, viene stampata in output la stringa 'maggiore
+di zero' e letto in ingresso un nuovo valore per <i>num</i> finch&egrave;
+il valore di <i>num</i> continua ad essere maggiore di zero.
+<p><b>Esempio di programma</b>
+<p>Quello che segue &egrave; un esempio di programma che utilizza alcuni
+dei costrutti descritti:
+<pre>PROGRAM esempio;
+
+VAR somma,numero,conta:integer;
+
+begin
+
+&nbsp; somma := 0;
+
+&nbsp; conta := 1;
+
+&nbsp; while conta &lt;=100
+
+&nbsp; do begin
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; readln(numero);
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; somma := somma + numero;
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; conta := conta + 1
+
+&nbsp;&nbsp;&nbsp;&nbsp; end;
+
+&nbsp; writeln(somma)
+
+end.</pre>
+Il programma somma 100 numeri letti in ingresso e stampa il risultato in
+output.
+<h4>
+Esercizi proposti</h4>
+
+<ol>
+<li>
+Scrivere un programma che legge un valore intero positivo N e somma N numeri
+interi, anch'essi letti da input.</li>
+
+<li>
+Scrivere un programma che legge un valore intero positivo N e somma i numeri
+da 1 ad N.</li>
+
+<li>
+Scrivere un programma che legge un valore intero positivo N e restituisce
+il minimo degli N numeri letti da input.</li>
+
+<li>
+Scrivere un programmma che legge tre valori interi positivi, verifica che
+si possano interpretare come le lunghezze dei lati di un triangolo ed,
+in tal caso,&nbsp; restituisca il tipo del triangolo.</li>
+</ol>
+Le soluzioni a questi esercizi si trovano nella cartella <a href="http://tibur.dis.uniroma1.it/~fondi/FI2000/programmi/minipascal">http://tibur.dis.uniroma1.it/~fondi/FI2000/programmi/minipascal</a>
+<br>&nbsp;
+<h2>
+
+<hr WIDTH="100%"><a NAME="eser3"></a>3. Scrittura di un programma PASCAL</h2>
+
+<p><br>La verifica della scrittura di un programma PASCAL puo' essere effettuata
+per mezzo della grammatica del linguaggio. Di seguito vengono riportate
+le regole della grammatica del PASCAL (relative al MINIPASCAL).
+<br>&nbsp;
+<blockquote>programma = intestazioneprogramma blocco "."
+<br>intestazioneprogramma = "PROGRAM" identificatore ";"
+<br>blocco = partedichiarazioni parteistruzioni
+<br>partedichiarazioni = [dichiarazionevariabili]
+<br>dichiarazionevariabili = "VAR" sezionedichiarazionevariabili ";" {sezionedichiarazionevariabili
+";"}
+<br>sezionedichiarazionevariabili = listaidentificatori ":" tipo
+<br>listaidentificatori = identificatore {"," identificatore}
+<br>identificatore = lettera {lettera | cifra}
+<br>lettera = "a" | "b" ... | "A" | "B" ....
+<br>cifra = "0" | cifranonnulla
+<br>cifranonnulla = "1" | "2" | ...
+<br>numerointero = [ "+" | "-" ] interosenzasegno
+<br>interosenzasegno = "0" | cifranonnulla {cifra}
+<br>tipo = integer
+<br>parteistruzioni = "BEGIN" sequenzaistruzioni "END"
+<br>sequenzaistruzioni = istruzione {";" istruzione}
+<br>istruzione = istruzionesemplice | istruzionestrutturata
+<br>istruzionesemplice = [istruzioneassegnazione | istruzioniletturascrittura
+| ... ]
+<br>istruzioniletturascrittura = "writeln" ["(" listaoutput ")"] | "readln"
+["(" listavariabili ")"]
+<br>listavariabili = variabile {"," variabile}
+<br>listaoutput = elementooutput {"," elementooutput}
+<br>elementooutput = espressione | stringa
+<br>stringa = "'" caratterestringa {caratterestringa}"'"
+<br>caratterestringa = caratteriesclusoapice | "''"
+<br>caratteriesclusoapice = lettera | cifra | altricaratterinondicontrollo
+<br>altricaratterinondicontrollo = "#" | "%" | "?" | ...
+<br>istruzioneassegnazione = variabile ":=" espressione
+<br>variabile = identificatore
+<br>istruzionestrutturata = istruzionecondizionale | istruzioneciclo |
+istruzionesequenza
+<br>istruzionesequenza = "BEGIN" sequenzaistruzioni "END"
+<br>istruzionecondizionale = "IF" condizione "THEN" istruzione ["ELSE"
+istruzione] | istruzioneCASE
+<br>istruzioneciclo = istruzioneWHILE | istruzioneREPEAT | istruzioneFOR
+<br>istruzioneWHILE = "WHILE" condizione "DO" istruzione</blockquote>
+PS: non sono definite le categorie sintattiche condizione ed espressione
+per le quali si rimanda alle prossime esercitazioni.
+<br>&nbsp;
+<h4>
+Esercizi proposti</h4>
+
+<ol>
+<li>
+Verificare attraverso il sistema di "help" il significato degli operatori
+sugli interi: div, mod, abs, sqr, succ, pred, ord.</li>
+
+<li>
+Scrivere un programma che legge due valori interi e verifica il risultato
+degli operatori sugli interi</li>
+
+<li>
+Scrivere un programma che legge due valori interi positivi e restituisce
+il massimo comun divisore dei due numeri.</li>
+
+<li>
+Scrivere un programma che legge due valori interi positivi che rappresentano
+la base e l'esponente e stampa il risultato dell'elevamento a potenza.</li>
+</ol>
+Le soluzioni a questi esercizi si trovano nella cartella <a href="http://tibur.dis.uniroma1.it/~fondi/FI2000/programmi/minipascal">http://tibur.dis.uniroma1.it/~fondi/FI2000/programmi/minipascal</a>
+<br>&nbsp;
+<h2>
+
+<hr WIDTH="100%"><a NAME="eser4"></a>4. I tipi di dato char, real e boolean</h2>
+
+<h4>
+Il tipo di dato char</h4>
+In PASCAL il tipo <i>char</i> &egrave; definito come l'insieme dei caratteri
+disponibili nel sistema di elaborazione che esegue il programma.
+<br>In un programma PASCAL un carattere di tipo <i>char</i> &egrave; denotato
+racchiudendo il carattere tra apici, ad esempi:
+<pre>'C' '?' '3' '*' ''</pre>
+Per rappresentare l'apice stesso, questo si scrive due volte:
+<pre>' '' '</pre>
+Il PASCAL fa corrispondere al tipo <i>char</i> due operatori che associano
+all'insieme di caratteri un insieme di valori interi consecutivi non negativi
+detti <i>numeri ordinali</i> dei caratteri:
+<ol>
+<li>
+<i>ord(c)</i> &egrave; l'ordinale del carattere <i>c</i></li>
+
+<li>
+<i>chr(i)</i> &egrave; il carattere che ha ordinale <i>i</i></li>
+</ol>
+Le due funzioni sono l'una l'inversa dell'altra:
+<pre>&nbsp;chr(ord(c)) = c, ord(chr(i)) = i</pre>
+L'ordinamento definito da <i>ord(c)</i> sulle cifre rispetta quello delle
+cifre stesse:
+<pre>ord('0') = ord('1') - 1
+
+ord('1') = ord('3') - 2
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ...</pre>
+Analogamente per le lettere:
+<pre>ord('A') = ord('B') - 1&nbsp; ord('a') = ord('b') - 1
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ...&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ...
+
+ord('Y') = ord('Z') - 1&nbsp; ord('y') = ord('z') - 1</pre>
+anche se questo non &egrave; imposto dallo standard del PASCAL che richiede
+solo l'ordinamento:
+<pre>ord('A') &lt; ord('B') ord('a') &lt; ord('b')
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ...</pre>
+L'ordinamento sui caratteri definito da <i>char</i> consente alle funzioni
+<i>pred</i> e <i>succ</i> di accettare il tipo <i>char</i> come argometo.
+<pre>pred(c) = chr(ord(c) - 1)
+
+succ(c) = char(ord(c) + 1)</pre>
+Esempio di lettura di <i>n</i> caratteri da input:
+<pre>program letturaChar;
+
+var n: integer; c: char;
+
+begin
+
+&nbsp;writeln('numero di caratteri?');
+
+&nbsp;readln(n);
+
+&nbsp;writeln('scrivi ',n,'caratteri');&nbsp;
+
+&nbsp;while (n > 0) do
+
+&nbsp; begin
+
+&nbsp;&nbsp; read(c);
+
+&nbsp;&nbsp; write(c);
+
+&nbsp;&nbsp; n := n - 1
+
+&nbsp; end;
+
+&nbsp;readln;
+
+&nbsp;writeln;
+
+&nbsp;writeln('fine della lettura')
+
+end.</pre>
+Il programma legge in input <i>n</i> caratteri che vengono stampati non
+appena si invia. La sequenza di caratteri immessi senza inviare viene bufferizzata.
+Non appena si invia tutti i caratteri vengono letti dal buffer e stampati
+in output senza necessit&agrave; di ulteriore interazione.
+<br>Esempio di lettura di caratteri fino alla fine della linea:
+<pre>program letturaRiga;
+
+var c: char;
+
+begin
+
+&nbsp;writeln('scrivi caratteri, invio per terminare ');
+
+&nbsp;while not eoln do
+
+&nbsp; begin
+
+&nbsp;&nbsp; read(c);
+
+&nbsp;&nbsp; write(c)
+
+&nbsp; end;
+
+&nbsp;writeln;
+
+&nbsp;writeln('fine lettura')
+
+end.</pre>
+I'<i>eoln</i> &egrave; una funzione booleana standard che ritorna il valore
+<i>true</i> quando il prossimo carattere e' un carattere di fine linea,
+altrimenti ritorna false. Il programma quindi legge i caratteri in input
+fino a quando non viene riconosciuto il carattere di fine linea.
+<br>&nbsp; Esempi di programmi che utilizzano tipi char si trovano in <a href="http://tibur.dis.uniroma1.it/~fondi/FI2000/programmi/char">http://tibur.dis.uniroma1.it/~fondi/FI2000/programmi/char</a>
+<h4>
+Il tipo di dato real</h4>
+I valori di questo tipo rappresentano i numeri reali.
+<br>Un numero reale in Pascal ha la seguente definizione.
+<pre>numeroreale = sequenzadicifre "." sequenzadicifre [fattorescala] |
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; sequenzadicifre fattore scala.
+
+fattorescala = ("E"|"e") [segno] sequenzadicifre.</pre>
+Il PASCAL mette a disposizione i seguenti operatori aritmetici definiti
+sui reali.
+<pre>+&nbsp; addizione
+
+-&nbsp; sottrazione
+
+*&nbsp; moltiplicazione
+
+/&nbsp; divisione</pre>
+Inoltre sono definite le funzioni standard:
+<pre>abs(x)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; valore assoluto di x
+
+sqr(x)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; quadrato
+
+ln(x)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; logaritmo
+
+exp(x)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; esponente
+
+sqrt(x)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; radice quadrata
+
+sin(x)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; seno di x espressa in radianti
+
+cos(x)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; coseno di x espress in radianti
+
+arcdtan(x)&nbsp;&nbsp; angolo arcotangente di x espresso in radianti</pre>
+Il PASCAL dispone inoltre di due funzioni standard, dette funzioni di trasferimento
+chwe permettono di passare da intero a reale. Queste sono le funzioni di
+troncamento e di arrotondamento:
+<pre>tronc(x)&nbsp; restituisce la parte intera del reale x.
+
+round(x)&nbsp; restituisce il reale piu' vicino al reale x.</pre>
+Quindi:
+<pre>trunc(7,6) restituisce 7
+
+round(7,6) restituisce 8</pre>
+Esempi di programmi che utilizzano tipi real si trovano in <a href="http://tibur.dis.uniroma1.it/~fondi/FI2000/programmi/real">http://tibur.dis.uniroma1.it/~fondi/FI2000/programmi/real</a>
+<h4>
+Il tipo di dato boolean</h4>
+Un valore <i>booleano</i> e' un valore di verita' rappresentato dai due
+identificatori standard del PASCAL <i>true</i> e <i>false</i>. Gli operatori
+definiti per questo tipo di dato sono i seguenti.
+<pre>and&nbsp; <i>congiunzione&nbsp; logica
+
+</i>or&nbsp;&nbsp; <i>disgiunzione&nbsp; logica
+
+</i>not&nbsp; <i>negazione&nbsp;&nbsp;&nbsp;&nbsp; logica</i></pre>
+Valori booleani possono essere ottenuti dall'applicazione di <i>operatori
+relazionali</i> con argomenti di tipo differente. Gli operatori relazionali
+forniti dal PASCAL sono i seguenti.
+<pre>=&nbsp;&nbsp; uguale
+
+&lt;>&nbsp; diverso da
+
+&lt;&nbsp;&nbsp; minore di
+
+&lt;=&nbsp; minore o uguale
+
+>&nbsp;&nbsp; maggiore di
+
+>=&nbsp; maggiore o uguale</pre>
+Se la relazione e' soddisfatta il valore restituito e' <i>true</i> altrimenti
+il valore e' <i>false</i>.
+<br>Gli operatori relazionali sono definiti anche sul tipo <i>char</i>:
+<pre>'A' &lt; 'B'&nbsp; 'a'&lt;'b'</pre>
+Gli operatori relazionali si applicano anche al tipo booleano che e' un
+tipo ordinale:
+<pre>ord(false) = 0&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ord(true) = 1
+
+pred(true) = false&nbsp;&nbsp; pred(false) = true</pre>
+Gli operatori booleani possono quindi essere espressi in termini di operatori
+relazionali:
+<pre>&lt;=&nbsp;&nbsp; implicazione materiale
+
+=&nbsp;&nbsp;&nbsp; equivalenza
+
+&lt;>&nbsp;&nbsp; or esclusivo
+
+...</pre>
+Esempi di programmi che utilizzano tipi booleani si trovano in <a href="http://tibur.dis.uniroma1.it/~fondi/FI2000/programmi/minipascal">http://tibur.dis.uniroma1.it/~fondi/FI2000/programmi/minipascal</a>
+<h4>
+Esercizi proposti</h4>
+
+<ol>
+<li>
+Provare, con semplici programmi di esempio, il significato degli operatori
+definiti per i caratteri, verificandone le modalita' di uso attraverso
+il sistema di help..</li>
+
+<li>
+Scrivere un programma che legge una sequenza di caratteri alfabetici terminata
+da '.', il valore d che indica la distanza della codifica, e stampa la
+sequenza di caratteri ottenuta associando a ciascun carattere, il carattere
+alfabetico a distanza d, considerando 'A' come carattere successivo di
+'Z'.</li>
+
+<li>
+Scrivere un programma che legge in ingresso un numero espresso in codice
+binario e lo converte in codice decimale e viceversa.</li>
+
+<li>
+Scrivere un programma che legge in ingresso un numero espresso in numerazione
+romana e lo converte in decimale.</li>
+</ol>
+Le soluzioni a questi esercizi si trovano nella cartella <a href="http://tibur.dis.uniroma1.it/~fondi/FI2000/programmi/char">http://tibur.dis.uniroma1.it/~fondi/FI2000/programmi/char</a>
+<br>
+<hr WIDTH="100%">
+<h2>
+<a NAME="eser5"></a>5. Dichiarazioni di Tipi</h2>
+
+<h4>
+Grammatica per le espressioni e le condizioni</h4>
+espressione = espressionearitmentica | espressionebooleana | espressionechar
+<p>espressionearitmetica = termine {operatoreaddizione termine}
+<br>termine = fattore {operatoremoltiplicazione fattore}
+<br>fattore = intero | identificatore | "(" espressione ")"
+<br>operatoreaddizione = "+" | "-"
+<br>operatoremoltiplicazione = "*" | "DIV" | "/"
+<p>espressionechar = identificatore | costantechar
+<br>costantechar = "'A'" | "'B'" | ... | "' '" | ....
+<p>condizione = espressionebooleana
+<br>espressionebooleana = termineb {"OR" termineb}
+<br>termineb = fattoreb {"AND" fattoreb}
+<br>fattoreb = espessioneconfronto ! "TRUE" | "FALSE" | identificatore
+| "NOT" fattoreb | "("espressionebooleana")"
+<br>espressioneconfronto = espressione operatorerelazionale espressione
+<br>&nbsp;
+<h4>
+Grammatica per le dichiarazioni</h4>
+partedichiarazioni = [dichiarazioneetichette][dichiarazionecostanti][dichiarazionetipi][dichiarazionevariabili]
+<br>dichiarazionecostanti = "LABEL" etichetta {"," etichetta}";"
+<br>etichetta = interosenzasegno
+<br>dichiarazionecostanti = "CONST" sezionedichiarazionecostanti ";" {sezionedichiarazionecostanti
+";"}
+<br>sezionedichiarazionecostanti = identificatore "=" costante
+<br>costante = [segno] identificatore | numero | stringa
+<br>dichiarazionetipi = "TYPE" sezionedichiarazionetipi ";" {sezionedichiarazionetipi
+";"}
+<br>sezionedichiarazionetipi = identificatore "=" tipo
+<br>tipo = "integer" | "char" | "boolean" | "real" | tipoenumerato | tipointervallo
+<br>tipoenumerato = "(" lisaidentficatori")"
+<br>tipointervallo = costante ".." costante
+<br>dichiarazionevariabili = "VAR" sezionedichiarazionevariabili ";" {sezionedichiarazionevariabili
+";"}
+<br>sezionedichiarazionevariabili = listaidentificatori ":" tipo
+<br>listaidentificatori = identificatore {"," identificatore}
+<p>Ulteriori regole da osservare sono quella di dichiarazione prima dell'uso
+e di unicita' degli identificatori.
+<h4>
+Esercizi proposti</h4>
+
+<ol>
+<li>
+Scrivere un programma che legge una data e stampa la data del giorno successivo.</li>
+
+<li>
+Scrivere un programma che legge in ingresso un valore compreso tra 1900
+e 2000 e produce in uscita il calendario dell'anno corrente, con la suddivisione
+in mesi e l'indicazione dei giorni della settimana.</li>
+
+<li>
+Scrivere un programma che legge una sequenza dato operando in cui dato
+e' un numero reale ed operando e' +,-,*,/,=, che termina quando operando
+e' =, e calcola ad ogni passo il valore parziale ed alla fine stampa il
+valore finale ottenuto.</li>
+
+<br>&nbsp;</ol>
+Le soluzioni a questi esercizi si trovano nella cartella <a href="http://tibur.dis.uniroma1.it/~fondi/FI2000/programmi/char">http://tibur.dis.uniroma1.it/~fondi/FI2000/programmi/char</a>
+<p>
+<hr WIDTH="100%">
+<h2>
+<a NAME="eser6"></a>6. Altre istruzioni PASCAL</h2>
+
+<h4>
+Grammatica per le altre istruzioni PASCAL</h4>
+istruzioneCASE = "CASE" variabile "OF" corpocase {";" corpocase} [";" ELSE
+istruzione] [";"] "END"
+<br>corpocase = listaetichettecase ":" istruzione
+<br>listaetichettecase = costante {"," costante}
+<p>L'ulteriore regola da osservare per il case e' che ogni etichetta puo'
+comparire solo una volta nei corpocase.
+<p>L'azione dell'<i>istruzione-case</i> consiste nella valutazione dell'espressione
+selettore e poi nell'esecuzione dell'istruzione eichettata.
+<p>istruzioneREPEAT = "REPEAT" sequenzaistruzioni "UNTIL" condizione.
+<br>istruzioneFOR = "FOR" variabile ":=" espressione ( "TO" | "DOWNTO"
+) espressione "DO" istruzione.
+<p>L'azione provocata dall'<i>istruzione-repeat</i> e' la seguente.
+<br>Viene eseguita la sequenza di istruzioni compresa tra "REPEAT" e "UNTIL",
+quindi viene valutata l'espressione. Se il suo valore e' vero termina l'istruzione
+repeat, altrimenti viene ripetuta l'esecuzione della sequenza di istruzioni
+fino a quando l'espressione non diventa vera.
+<p>L'azione provocata dall'<i>istruzione-for</i> e' la seguente.
+<br>I valori delle due espressioni vengono valutati all'inizio dell'esecuzione
+dell'istruzione-for e determinano una successione di valori crescenti (nel
+caso del "TO") o decrescenti (nel caso del "DOWNTO"). Questi valori vengono
+assegnati, uno alla volta, alla variabile di controllo, dopo ogni assegnazione
+viene eseguita l'<i>istruzione</i> che segue il "DO". Se il valore iniziale
+e' piu' grande del finale nel caso del "TO" o piu' piccolo di quello finale
+nel caso del "DOWNTO", l'istruzione non viene affatto eseguita. Non e'
+possibile modificare la variabile del ciclo all'interno delciclo stesso
+e, al termine dell'esecuzione del ciclo, essa risulta indefinita.
+<h4>
+File testo e file esterni</h4>
+Quando l'esecuzione di un programma richiede l'input di (o produce in output)
+una quantit&agrave; di dati notevole, risulta conveniente memorizzare tali
+dati in un file, creato con l'editor se utilizzato per l'input, o creato
+dal programma e ispezionabile con l'editor, se usato per l'output. A questo
+scopo occorre procedere come segue.
+<dl><u>Si dichiara una variabile di tipo file nel programma.</u>
+<p>Es.
+<br>var F: text;
+<br><u>Si collega il file esterno alla variabile del programma.</u>
+<p>assign(F,'miofile');
+<p>Dopo questa istruzione tutte le operazioni su F saranno eseguite sul
+file in memoria di massa che si chiama miofile. Per le modalit&agrave;
+di denominazione dei file si rimanda alla guida del sistema MS/DOS.
+<p><u>Si Apre il file in lettura o scrittura.</u>
+<p>reset(F); apre un file esistente in lettura
+<br>rewrite(F); genera ed apre un file in scrittura
+<p><u>Si specifica il file in tutte le operazioni ad esso relative.</u>
+<p>Esempio:
+<br>writeln(F, 'prova');
+<br>readln(F,a);
+<br>Queste istruzioni hanno il significato usuale ma sono eseguite sul
+file identificato dalla variabile F
+<p><u>Si chiude il file:</u>
+<p>Close(F)
+<br>&nbsp;
+<h4>
+Esercizi</h4>
+
+<ol>
+<li>
+Scrivere un programma che legge una sequenza di 0 ed 1, terminata da un
+2, e restituisce il valore della piu' lunga sottosequenza di zeri letta
+in input.</li>
+
+<li>
+Scrivere un programma che legge due numeri interi e calcola il quoziente
+ed il resto usando l'operatore di sottrazione. Il programma deve verificare
+che il divisore sia diverso da 0.</li>
+
+<li>
+Scrivere un programma che legge due numeri interi e calcola il prodotto
+usando l'operatore di addizione.</li>
+
+<li>
+Scrivere un programma che legge un valore intero positivo N e calcola il
+valore della somma i elevato ad i, con i= 1..N</li>
+
+<li>
+Scrivere un programma che calcola la potenza usando solo l'operazione di
+addizione.</li>
+</ol>
+
+<p><br>Le soluzioni a questi esercizi si trovano nella cartella <a href="http://tibur.dis.uniroma1.it/~fondi/FI2000/programmi/char">http://tibur.dis.uniroma1.it/~fondi/FI2000/programmi/char</a>
+<br>e&nbsp; <a href="http://tibur.dis.uniroma1.it/~fondi/FI2000/programmi/minipascal">http://tibur.dis.uniroma1.it/~fondi/FI2000/programmi/minipascal</a>
+<br>&nbsp;
+<h2>
+
+<hr WIDTH="100%"><a NAME="eser7"></a>7. Procedure e verifica dell'esecuzione
+dei programmi</h2>
+
+<h4>
+Dichiarazione di procedure</h4>
+dichiarazione-procedure = {dichiarazione-procedura ";"}
+<br>dichiarazione-procedura = intestazione-procedura ";" blocco
+<br>intestazione-procedura = "PROCEDURE" identificatore [lista-parametri-formali]
+<br>lista-parametri-formali = "("sezione-parametri-formali {";" sezione-parametri-formali
+} ")"
+<br>sezione-parametri-formali = sezione-parametri-per-valore | sezione-parametri-per-variabile
+<br>sezione-parametri-per-valore = lista-identificatori ":" tipo
+<br>sezione-parametri-per-variabile = "VAR"&nbsp; lista-identificatori
+":" tipo
+<p>La dichiarazione delle procedure deve rispettare sia il principio della
+dichiarazione prima dell'uso, che quello
+<br>dell'unicita' degli identificatori. Si noti che il tipo dei parametri
+formali deve essere un identificatore di tipo.
+<h4>
+Chiamata di procedure</h4>
+istruzione = identificatore [lista-parametri-attuali]
+<br>lista-parametri-attuali = "("parametro-attuale {";" parametro-attuale
+} ")"
+<br>parametro-attuale = espressione | variabile
+<p>I parametri attuali devono essere compatibili con i corrispondenti parametri
+formali. Nel caso di parametri per valore il parametro attuale deve essere
+un'espressione che fornisce un valore compatibile per assegnazione con
+il tipo del parametro formale. Nel caso di parametri per variabile il parametro
+attuale deve essere una variabile dello stesso tipo del parametro formale.
+<h4>
+Ispezione delle variabili</h4>
+Per verificare il funzionamento dei programmi e' possibile eseguire il
+programma una istruzione alla volta. A questo scopo
+<br>occorre eseguire il comando Trace into del men&ugrave; Run. Il programma
+viene automaticamente compilato e, se non vi sono
+<br>errori, la barra di esecuzione viene posta sull'istruzione begin. Ogni
+volta che si preme F7 viene eseguita l'istruzione successiva. Per interrompere
+l'esecuzione del programma premere CTRL-pause.
+<br>&nbsp;&nbsp;&nbsp;&nbsp; Durante l'esecuzione istruzione per istruzione
+&egrave; possibile verificare il valore delle variabili del programma.
+A questo
+<br>scopo occorre specificare le variabili di cui si vuole controllare
+il valore. Si apre il men&ugrave; Debug (ALT&lt;d>) e si esegue il
+<br>comando watches. Cos&igrave; facendo si attiva un sottomen&ugrave;
+nel quale si deve scegliere add-watches; add-watches chiede le
+<br>watch-expression, cio&egrave; il nome delle variabili di cui si vuole
+controllare il flusso (si pu&ograve; attivare direttamente l'opzione
+<br>add-watches premendo CRTL-F7). Per vedere il valore delle variabili
+di interesse occorre attivare la finestra watch, tramite il men&ugrave;
+windows (&lt;alt>-w>) e si esegue il comando watch. In tale finestra compaiono
+i valori che assumono le variabili
+<br>specificate in precedenza. Se il programma ancora non &egrave; stato
+mandato in esecuzione nella finestra Watch accanto al nome
+<br>della generica variabile ci sar&agrave;: unknown variable. Non appena
+si manda in esecuzione il programma le variabili assumono i
+<br>valori determinati dall'esecuzione del programma. Si noti che quando
+una variabile compare con lo stesso nome in due blocchi diversi, viene
+mostrato il valore della variabile visibile nella parte di programma in
+esecuzione. Se si desidera vedere
+<br>contemporaneamente le due variabili, si pu&ograve; usare la notazione
+nomeblocco.variabile, per distinguerle.
+<p>In questa fase &egrave; utile posizionare le finestre in modo da avere
+sempre sotto gli occhi la finestra "watches", e quella del
+<br>programma da controllare. Per ridimensionare una finestra si usa il
+comando Size-move del men&ugrave; Windows. In tal modo
+<br>muovendo il mouse o usando le frecce la finestra attiva si sposta e
+si pu&ograve; organizzare lo schermo a proprio piacimento.
+<h4>
+Esercizi</h4>
+
+<ol>
+<li>
+Scrivere un programma che consente all'utente di selezionare un tipo di
+operazione, richiede gli operandi e visualizza il risultato dell'operazione
+(potenza, somma di potenze, primo, mcd etc.). Modificare i programmi svolti
+in precedenza, trasformandoli in procedure. Inserire nel programma principale
+le istruzioni di attivazione delle procedure in base alle indicazioni dell'utente.</li>
+
+<li>
+Scrivere un programma che legge una data la memorizza usando un tipo per
+enumerazione e calcola la data del giorno seguente. Utilizzare delle procedure
+per l'input e l'output dei valori dei tipi definiti per enumerazione.</li>
+</ol>
+Le soluzioni si trovano in<a href="http://tibur.dis.uniroma1.it/~fondi/FI2000/programmi/proc">
+http://tibur.dis.uniroma1.it/~fondi/FI2000/programmi/proc</a></dl>
+
+<h2>
+
+<hr WIDTH="100%"><a NAME="eser8"></a>8. Procedure, Modello di esecuzione
+e traccia</h2>
+Le procedure consentono di organizzare il programma e di evitare le duplicazione
+di parti del programma. Scopo dell'esercitazione e' di verificare le modalita'
+di definizione e di chiamata delle procedure, con particolare riferimento
+ai meccanismi di passaggio dei parametri per variabile e per valore. A
+questo proposito si noti che per visualizzare con il debugger il valore
+di una variabile interna ad una procedura o di un parametro e' sufficiente
+usare il nome della variabile o del parametro, ed il suo valore sara' <i>unknown</i>
+(sconosciuto) fino a quando la procedura non viene eseguita. Quando una
+variabile compare con lo stesso nome in due blocchi diversi, viene mostrato
+il valore della variabile visibile nella parte di programma in esecuzione.
+Se si desidera vedere contemporaneamente le due variabili, si pu&ograve;
+usare la notazione <i>nomeblocco.variabile</i>, per distinguerle. <i>Nomeblocco</i>
+indica il nome del programma o della procedura in cui la variabile e' dichiarata.
+<dd>
+La pila delle attivazioni (chiamate) di procedura pu&ograve; essere molto
+utile per esaminare l'esecuzione del programma. Per vedere la pila delle
+chiamate di procedura (traccia) si esegue il comando <i>call-stack</i>
+nel men&ugrave; Window. Esso apre una finestra in cui &egrave; mostrata
+la pila delle attivazioni durante l'esecuzione del programma. Molto spesso
+puo' essere utile eseguire un programma contenente chiamate di procedure
+una istruzione alla volta. Il comando <i>Step over</i> del men&ugrave;
+Run (F8), consente di eseguire in un unico passo l'istruzione corrente,
+durante l'esecuzione istruzione per istruzione. Con <i>Step over</i> quindi,
+si esegue la chiamata ad una procedura, o funzione, senza cio&egrave; seguirne
+il flusso completo.</dd>
+
+<dd>
+Il seguente programma contiene una procedura ricorsiva per il calcolo del
+fattoriale; verificare l'esecuzione del programma attraverso la finestra
+con le attivazioni delle procedure o funzioni.</dd>
+
+<dl>PROGRAM esempiostack;
+<br>VAR fatt,n:integer;
+<dl>PROCEDURE fattoriale(VAR totale:integer;numero:integer);
+<br>BEGIN
+<br>IF numero>1 THEN
+<dl>BEGIN
+<br>totale:=numero*totale;
+<br>fattoriale(totale,numero-1)
+<br>END</dl>
+END;</dl>
+BEGIN
+<dl>fatt:=1;
+<br>writeln('numero = ');
+<br>read(n);
+<br>fattoriale(fatt,n);
+<br>writeln('Il fattoriale e'' ',fatt)</dl>
+END.
+<br>&nbsp;
+<h4>
+Esercizi</h4>
+
+<ol>
+<li>
+Scrivere la procedura invertiN, che ha in ingresso un numero intero positivo
+e lo stampa con le cifre in ordine inverso, in modo tale che restituisca
+il numero come risultato, anziche' stamparlo.</li>
+
+<li>
+Scrivere una procedura ricorsiva che legge, carattere per carattere, una
+sequenza di caratteri alfabetici e la stampa con i caratteri in ordine
+inverso.</li>
+
+<li>
+Scrivere un programma che chiede all'utente di scegliere un'operazione
+da eseguire e, in base alla scelta fatta attiva una procedura (con caratteristiche
+analoghe a quelle dei programmi sugli interi sviluppati in precedenza),
+facendo particolare attenzione ai meccanismi di passaggio dei parametri.</li>
+
+<li>
+Modificare il programma operazioni, dell'esercizio precedente utilizzando
+per la realizzazione delle varie operazioni richieste delle procedure ricorsive.</li>
+
+<li>
+Verificare il funzionamento del programma per la soluzione del <a href="http://tibur.dis.uniroma1.it/~fondi/FI2000/programmi/proc">gioco
+delle torri di Hanoi</a>, analizzando la pila delle attivazioni della procedura
+tramite la finestra call-stack.</li>
+</ol>
+
+<p><br>Le soluzioni si trovano in<a href="http://tibur.dis.uniroma1.it/~fondi/FI2000/programmi/proc">
+http://tibur.dis.uniroma1.it/~fondi/FI2000/programmi/proc</a></dl>
+
+<hr WIDTH="100%">
+<h2>
+<a NAME="eser9"></a>9. Funzioni e ricorsione</h2>
+La dichiaraziuone di procedure e funzioni non prevede un ordine di precedenza
+tra procedure e funzioni, quindi riportiamo la definizione della dichiarazione
+procedure e funzioni.
+<h4>
+Dichiarazione di funzioni</h4>
+dichiarazione-procedure-funzioni = {(dichiarazione-procedura | dichiarazione-funzione)
+";"}
+<br>dichiarazione-funzione = intestazione-funzione ";" blocco
+<br>intestazione-funzione = "FUNCTION" identificatore [lista-parametri-formali]
+":" tiporisultato
+<p>La dichiarazione delle procedure e funzioni segue le regole di campo
+d'azione, deve rispettare&nbsp; il principio della dichiarazione prima
+dell'uso, e quello dell'unicita' degli identificatori. Si noti che il tiporisultato
+deve essere un tipo semplice.
+<br>&nbsp;
+<h4>
+Chiamata di funzioni</h4>
+espressione = designazione-funzione
+<br>designazione-funzione = identificatore [lista-parametri-attuali]
+<p>Il tipo del risultato deve essere compatibile con l'espressione nella
+quale si trova la designazione-funzione.
+<br>&nbsp;
+<h4>
+Esercizi</h4>
+
+<ol>
+<li>
+Modificare il programma per l'esecuzione delle operazioni aritmetiche in
+modo da utilizzare, ove opportuno, funzioni al posto di procedure.</li>
+
+<li>
+Scrivere una funzione ricorsiva che calcola il prodotto tra due numeri
+usando l'operazione di somma.</li>
+
+<li>
+Scrivere la funzione ricorsiva che dato un numero restituisce il valore
+vero se tale numero &egrave; primo, falso altrimenti.</li>
+
+<li>
+Scrivere un programma che legge una sequenza di N dati e stampa i valori
+superiori alla media dei valori letti. Risolvere l'esercizio sia usando
+il tipo array che attraverso una procedura ricorsiva.</li>
+</ol>
+
+<p><br>
+<hr WIDTH="100%">
+<h2>
+<a NAME="eser10"></a>10. ARRAY, stringhe e file testo</h2>
+
+<h4>
+Tipi strutturati: Il tipo ARRAY</h4>
+Il tipo ARRAY si usa per memorizzare un insieme di elementi omogenei (dello
+stesso tipo). Dichiarazione:
+<p>tipoarray = "ARRAY" "[" tipoindice "]" "OF" tipoelementi
+<p>in cui tipo indice deve essere un tipo ordinale e tipo elementi pu&ograve;
+essere un tipo qualsiasi. Le variabili di tipo ARRAY si possono usare con
+gli indici:
+<p>variabile = identificatore "[" espressione {"," espressione} "]"
+<p>in cui espressione deve restituire un valore ammissibile per il corrispondente
+tipoindice.
+<h4>
+Le Stringhe</h4>
+Il TurboPASCAL consente inoltre si definire delle variabili di tipo <i>string</i>,
+che corrispondono, con qualche differenza, alle variabili di tipo <i>PACKED
+ARRAY [tipoindice] OF char </i>del PASCAL standard. Le differenze principali
+sono: la lettura di variabili di tipo string (come nell'esercizio seguente),
+il confronto tra stringhe, che in TurboPASCAL si puo' effettuare anche
+quando le stringhe sono di lunghezza diversa.
+<h4>
+Ancora sui file testo</h4>
+Il PASCAL consente di usare due operatori predefiniti sui file di tipo
+text: <i>eoln</i> ed <i>eof. </i>Tali operatori, che indicano rispettivamente
+che il prossimo carattere in lettura e' il carattere di fine linea e di
+fine input, rispettivamente, possono essere applicati sia ad una variabile
+di tipo file (es. eoln(dati), dove dati e' una variabile dichiarata di
+tipo text) oppure all'input da tastiera, senza argomenti. Nel primo caso
+il carattere di fine file viene messo automaticamente dal sistema al momento
+della creazione del file, mentre nel caso di input da tastiera il carattere
+di fine file e' <i>control-Z, </i>cioe' si ottiene premendo il tasto<i>
+control </i>e, contemporaneamente, il tasto<i> z </i>e deve essere seguito
+dal tasto invio per abilitare la lettura della linea.
+<br>A titolo di esempio per l'uso di file testo si veda il seguente programma
+che fa la copia di un file testo.
+<p>program copia;
+<br>var Infile,Outfile:text;
+<br>&nbsp;&nbsp;&nbsp; nomefileI,nomefileO:string[10];
+<br>&nbsp;&nbsp;&nbsp; Ch:char;
+<br>begin
+<br>&nbsp; writeln('file da copiare');
+<br>&nbsp; readln(nomefileI);
+<br>&nbsp; writeln('file su cui copiare');
+<br>&nbsp; readln(nomefileO);
+<br>&nbsp; assign(Infile,nomefileI);
+<br>&nbsp; assign(Outfile,nomefileO);
+<br>&nbsp; reset(Infile);
+<br>&nbsp; rewrite(Outfile);
+<br>&nbsp; while not eof(Infile) do
+<br>&nbsp; begin {copia una linea}
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; while not eoln (Infile)
+do
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; begin
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; read(Infile,Ch);
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; write(Outfile,
+Ch)
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; end;
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; readln(Infile);
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; writeln(Outfile);
+<br>&nbsp; end;
+<br>&nbsp; close(Infile);
+<br>&nbsp; close(Outfile);
+<br>end.
+<br>&nbsp;
+<h4>
+Esercizi</h4>
+
+<ol>
+<li>
+Scrivere un programma che legge una sequenza di caratteri alfabetici e
+verifica se la sequenza e' palindroma (risulta identica, se letta nei due
+versi (fornire sia una soluzione iterativa che ricorsiva).</li>
+
+<li>
+Scrivere un programma che legge una matrice NxN da file testo, e stampa
+valore e posizione del massimo di ogni riga e del massimo di ogni colonna
+della matrice, ed infine stampa valore e posizione del massimo assoluto.</li>
+
+<li>
+Scrivere un programma che legge una matrice quadrata da file testo e ne
+calcola l'inversa.</li>
+</ol>
+
+<p><br>Le soluzioni si trovano in<a href="http://tibur.dis.uniroma1.it/~fondi/FI2000/programmi/array">
+http://tibur.dis.uniroma1.it/~fondi/FI2000/programmi/array</a>
+<br>&nbsp;
+<p>
+<hr WIDTH="100%">
+<h2>
+<a NAME="eser11"></a>11. Il tipo RECORD, le istruzioni WITH e GOTO</h2>
+
+<h4>
+Il tipo RECORD</h4>
+Dichiarazione:
+<p>tiporecord = "RECORD" listacampi "END"
+<br>listacampi = elementorecord {";" elementorecord}[";"]
+<br>elementorecord = listaidentificatori ":" tipo
+<p>Per fare riferimento al campo di un record:
+<p>designatorecampo = variabilerecord "." identificatorecampo
+<p>Anche per il tipo record vale l regola di equivalenza per nome.
+<h4>
+Istruzione WITH</h4>
+istruzioneWITH = "WITH" variabilerecord {"," variabilerecord} "DO" istruzione
+<p>L'istruzione WITH crea un campo d'azione locale per variabili di tipo
+record. Si noti che
+<p>WITH v1, ..., vn DO istruzione
+<p>e' equivalente a
+<p>WITH v1 DO
+<br>&nbsp;&nbsp;&nbsp; WITH v2 DO
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ...
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+WITH vn DO istruzione
+<br>&nbsp;
+<h4>
+Istruzione GOTO</h4>
+parte-dichiarazione-etichette = "LABEL" etichetta {"," etichetta}";"
+<br>etichetta = interosenzasegno
+<p>istruzione = [etichetta ":"] (istruzionesemplice | istruzionestrutturata)
+<br>istruzioneGOTO = "GOTO" etichetta
+<p>La dichiarazione delle etichette segue le usuali regole di campo d'azione.
+In particolare, l'etichetta usata in una istruzione GOTO e' quella dichiarata
+nel blocco piu' interno che rachiude l'istruzione.
+<p>L'istruzione GOTO puo' essere usata per uscire da un blocco, quindi
+anche da una chiamata di procedura, ma non puo' essere usata per entrare
+all'interno di un blocco.
+<br>&nbsp;
+<h4>
+Esercizi</h4>
+
+<ol>
+<li>
+Scrivere un programma che legge un file testo contenente i dati relativi
+all'esame di Fondamenti I, con i dati relativi a ciascuno studente su una
+riga con il seguente formato:</li>
+
+<br>nome cognome matricola. voto
+<br>dove voto e' un intero compreso tra 18 e 31. Il programma deve stampare
+su file il numero di studenti che hanno superato l'esame con ciascuno dei
+voti compresi tra 18 e 31.
+<li>
+Scrivere un programma PASCAL che legge un array di n interi e verifica
+se la sequenza di valori contenuta nell'array puo' essere scomposta in
+k (con k sottomultiplo proprio di n) sequenze consecutive uguali, e stampi
+k. Se ci sono diversi valori di k il programma deve stampare il massimo.</li>
+</ol>
+
+<hr WIDTH="100%">
+<h2>
+<a NAME="eser12"></a>12. Il tipo puntatore.</h2>
+Dichiarazione di tipo puntatore:
+<p>tipopuntatore = "^" tipo
+<p>L'unica costante di tipo puntatore e' NIL, che indica il fatto che il
+puntatore ha un valore nullo, ossia e' definito, ma non punta ad una variabile.
+NIL serve in particolare per indicare la fine di una struttura collegata.
+<p>Si noti che per dichiarare le strutture collegate con record e puntatori
+si infrange la regola di dichiarazione prima dell'uso. Ad esempio
+<p>TYPE punt = ^ elemento;
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; elemento
+= RECORD
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+info:tipoinformazione;
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+succ:punt
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+END
+<p>il tipo elemento viene definito dopo essere stato usato.
+<p>Riferimento alla variabile puntata:
+<p>variabilepuntata = variabilepuntatore "^"
+<p>Nel caso di strutture collegate con record e puntatori
+<p>p&nbsp;&nbsp; denota una variabile di tipo puntatore
+<br>p^ denota l'intero record puntato da p
+<br>p^.info denota il campo info del record puntato da p
+<br>&nbsp;
+<h4>
+Esercizi</h4>
+
+<ol>
+<li>
+Scrivere un programma che legge una sequenza di caratteri alfabetici e
+costruisce una struttura collegata lineare realizzara con record e puntatori,
+contenente un carattere letto per ogni elemento.</li>
+
+<li>
+Scrivere una procedura che stampa la struttura creata al punto precedente</li>
+
+<li>
+Scrivere una procedura o funzione che dato un parametro di tipo carattere,
+verifica se esso e' uguale ad uno degli elementi dellastruttura collegata.</li>
+
+<li>
+Modificare le procedura realizzat al punto precedente in modo da eliminare
+l'elemento trovato dalla struttura collegata lineare.</li>
+
+<li>
+Scrivere una procedura o funzione che. dati un parametro n di tipo integer,
+un parametro c di tipo carattere, ed un parametro l di tipo puntatore ad
+una struttura collegata lineare, aggiunge c ad l in posizione n, se possibile,
+altrimenti segnala un errore.</li>
+</ol>
+
+<hr WIDTH="100%">
+<h2>
+<a NAME="eser13"></a>13. Inserimento e cancellazione in strutture collegate
+lineari.</h2>
+
+<h4>
+Esercizi proposti</h4>
+
+<ol>
+<li>
+Scrivere un programma che legge da file una sequenza di interi, ne crea
+una lista,rappresentata mediate struttura lineare collegata, legge in input
+due numeri interi i1 ed i2 ed inserisce nella lista un nuovo elemento,
+contenente il valore del secondo intero letto i2, appena prima di un elemento
+contenente il valore i1. Il programma deve stampare su file la nuova lista
+ottenuta.</li>
+
+<li>
+Modificare il programma precedente introducendo una procedura che prendendo
+in ingresso una lista <i>l</i> ed un intero <i>n</i>, produce in output
+la lista ottenuta eliminando da <i>l</i> l'elemento nella posizione <i>n</i>.</li>
+
+<li>
+Introdurre nel programma precedente una procedura che prenda in ingresso
+due liste di interi e produca in output la lista ottenuta concatenando
+le liste in input. Testare il funzionamento della procedura fornendo ad
+essa in input le liste lette dal file in ingresso e stampando su di un
+file in output il contenuto della lista concatenata.</li>
+
+<li>
+Scrivere una procedura che prenda in ingresso una lista di interi (sempre
+rappresentata mediante struttura collegata lineare) e generi in output
+una lista che contiene una sola volta gli interi contenuti nella lista
+in input (tutti gli elementi 'doppioni' devono cioe' essere eliminati:
+ad es. la lista 1 2 1 2 2 3 deve essere trasformata nella 1 2 3).</li>
+</ol>
+
+<h2>
+
+<hr WIDTH="100%"><a NAME="eser14"></a><b>14. Esercizi per l'interruzione
+delle lezioni</b></h2>
+
+<h4>
+Esercizi su strutture linerari collegate</h4>
+
+<ul>
+<li>
+Scrivere un programma che legge da file testo due sequenze di caratteri
+(scritte su due linee differenti) crea le due liste di caratteri corrispondenti
+(rappresentate mediante struttura collegata lineare) e controlla, mediante
+una opportuna funzione, se le due liste contengono gli stessi caratteri
+nelle medesime posizioni. Il programma deve stampare in un file l'esito
+della verifica.</li>
+
+<li>
+Modificare il programma precedente introducendo una funzione che controlla
+se le due liste in input contengono gli stessi caratteri (indipendentemente
+dalla posizione). Il programma deve stampare su file l'esito del controllo.</li>
+
+<li>
+Modificare il programma precedente introducendo una funzione che controlla
+se ogni carattere di una delle liste in input e' contenuto nell'altra lista
+lo stesso numero di volte. Il programma deve stampare su file l'esito del
+controllo.</li>
+
+<li>
+Modificare il programma precedente introducendo una funzione che calcola,
+a partire da due liste in input, una nuova lista che contiene i caratteri
+appartenenti ad almeno una delle due liste in input (la lista calcolata
+deve quindi contenere l'unione dei caratteri appartenenti alle due liste).
+Il programma deve stampare la lista ottenuta su di un file di output.</li>
+
+<li>
+Modificare il programma precedente introducendo una funzione che calcola,
+a partire dalle due liste in input, la lista formata da quei caratteri
+che appartengono ad entrambe le liste (la lista calcolata deve quindi contenere
+l'intersezione dei caratteri appartenenti alle due liste). Il programma
+deve stampare la lista ottenuta su file di output.</li>
+
+<li>
+Modificare il programma precedente introducendo una funzione che calcola,
+a partire dalle due liste in input, la lista ottenuta eliminando dalla
+prima lista in input tutti i caratteri che appartengono alla seconda lista
+in input.</li>
+</ul>
+&nbsp;Le soluzioni si trovano in<a href="http://tibur.dis.uniroma1.it/~fondi/FI2000/programmi/linear">
+http://tibur.dis.uniroma1.it/~fondi/FI2000/programmi/linear</a>
+<h4>
+Esercizi su Array</h4>
+1) Scrivere un programma che legge da un file testo una matrice di 5 x
+6 valori che possono essere 0 o 1&nbsp; e verifica se la matrice contiene
+una diagonale con tutti 0, oppure una diagonale con tutti 1.
+<p>2) Scrivere un programma che legge due matrici A e B da un file testo,
+calcola A<sup><font size=-1>T&nbsp;&nbsp;&nbsp; </font></sup>calcola B<sup><font size=-1>T</font></sup>,
+quindi, calcola il prodotto (A<sup><font size=-1>T </font></sup>*&nbsp;
+B<sup><font size=-1>T </font></sup>)&nbsp; e stampa il risultato su un
+file testo.
+<br>&nbsp;&nbsp;&nbsp; Scrivere un programma che verifica&nbsp; (A<sup><font size=-1>T
+</font></sup>*&nbsp; B<sup><font size=-1>T </font></sup>)&nbsp; =&nbsp;
+(B * A) <sup><font size=-1>T </font></sup>.
+<br>&nbsp;
+<p>&nbsp;Le soluzioni si trovano in<a href="http://tibur.dis.uniroma1.it/~fondi/FI2000/programmi/verifica">
+http://tibur.dis.uniroma1.it/~fondi/FI2000/programmi/verifica</a>
+<h4>
+<b>Prove di esonero anno scorso (98/99)</b></h4>
+Elenco dei testi delle prove:
+<br>&nbsp;<a href="http://tibur.dis.uniroma1.it/~fondi/FI2000/esonero99/testi/CompA.html">CompitoA</a>
+<br>&nbsp;<a href="http://tibur.dis.uniroma1.it/~fondi/FI2000/esonero99/testi/CompB.html">CompitoB</a>
+<br>&nbsp;<a href="http://tibur.dis.uniroma1.it/~fondi/FI2000/esonero99/testi/CompC.html">CompitoC</a>
+<br>&nbsp;<a href="http://tibur.dis.uniroma1.it/~fondi/FI2000/esonero99/testi/CompD.html">CompitoD</a>
+<p>Soluzioni dei vari esercizi possono essere trovate in:&nbsp; <a href="http://tibur.dis.uniroma1.it/~fondi/FI2000/esonero99/soluzioni/">soluzioni</a>
+<p>
+<hr WIDTH="100%">
+<h2>
+<a NAME="eser15"></a>15. Le UNIT del TurboPASCAL</h2>
+Il TurboPASCAL fornisce alcune funzioni e procedure predefinite che l'utente
+pu&ograve; usare senza doverle dichiarare (ad es. sin,cos,ecc.). Esistono
+inoltre delle funzioni definite nelle UNIT<i> </i>alle quali si pu&ograve;
+accedere solo con istruzioni speciali. Le unit predefinite sono: <b><i>system,
+overlay, crt, dos , printer</i></b>
+<p><b>Uso delle unit standard</b>
+<p>L'uso delle UNIT &egrave; molto semplice basta inserire dopo l'intestazione
+del programma l'istruzione :
+<p><b><i><u>uses </u></i>nome unit;</b>
+<p>es. uses crt;
+<p>a questo punto &egrave; possibile usare tutte le funzioni e procedure
+contenute nella UNIT crt. Per una descrizione delle UNIT di sistema si
+rimanda al manuale del TurboPASCAL.
+<p><b>Come definire una UNIT</b>
+<p>In TurboPASCAL &egrave; possibile raccogliere procedure o funzioni in
+una <i>unit </i>ed utilizzarle in un programma senza doverle ridichiarare,
+ma semplicemente tramite la direttiva <i>uses</i> vista in precedenza.
+<p>Questo meccanismo consente sia di spezzare il programma in piu' parti
+compilabili separatamente, sia di nascondere la realizzazione di un tipo
+di dato secondo la metodologia dei tipi di dato astratti.
+<p>Una UNIT inizia con la parola <i>unit </i>seguita dal nome della unit.
+L'elemento successivo inizia con la parola <i>interface</i>, che indica
+l'inizio della sezione di interfaccia. L'interfaccia &egrave; una sezione
+di dominio pubblico contiene gli elementi che un programma pu&ograve; usare.
+<p>Nell'interfaccia si possono inserire gli elementi di una sezione-dichiarazioni
+(costanti,tipi,variabili,procedure, funzioni). Delle funzioni e procedure
+viene tuttavia specificata solo la linea di intestazione, mentre il blocco
+va messo nella sezione successiva, cio&egrave; la sezione <i>implementation</i>
+(la parte privata invisibile ai programmi).La sezione implementation contiene
+quindi l'usuale definizione delle procedure e funzioni dichiarate nell'interfaccia.Tutto
+ci&ograve; che &egrave; stato dichiarato precedentemente nella sezione
+di interfaccia &egrave; visibile nella sezione di implementazione, cio&egrave;
+si possono usare in essa le variabili e tipi definiti nell' interfaccia;
+si possono inoltre fare altre dichiarazioni locali alle quali i programmi
+esterni non possono accedere. Le dichiarazioni delle procedure e funzioni
+presenti nell'interfaccia devono comparire anche nella sezione implementazione
+dove la linea di intestazione puo' contenere soltanto il nome.
+<p>INTERFACE
+<p>...................................................
+<p>procedure esempio(var a:integer;b,c:char);
+<p>....................................................
+<p>IMPLEMENTATION
+<p>....................................................
+<p>procedure esempio
+<p>begin
+<p>....................................................
+<p>end;
+<p>Infine, una UNIT contiene un corpo che inizia con <b>begin</b> finisce
+con <b>end</b>, come il corpo di un programma, e serve ad inizializzare
+le variabili nell'interfaccia della UNIT.
+<p>Per poter usare una UNIT questa deve essere stata precedentemente compilata
+ed il risultato della compilazione deve essere memorizzato. Per far ci&ograve;
+si deve accedere al men&ugrave; <b><i>compile</i></b>, (alt+c) spostarsi
+su <i>Destination</i>, se accanto c'&egrave; scritto memory premere invio,
+in tal modo la finestra si chiude automaticamente e <i>Destination</i>
+si posiziona su disk. Si riapre men&ugrave; compile si seleziona compile,
+se non si sono verificati errori viene generato un file <i>nomeunit</i>.<b>tpu</b>.
+A questo punto si pu&ograve; usare la unit. Se il file .<b>tpu</b> non
+&egrave; nella stessa directory del programma che la usa bisogna aprire
+il men&ugrave; <b>option</b>-<i>directories</i>, ed a questo punto indicare
+nella riga unit directories la directory in cui &egrave; contenuta la unit.
+<p><b>Esercizio</b>
+<p>Definire una UNIT per la realizzazione del tipo di dato astratto lista,
+scegliendo un metodo di rappresentazione a piacere. Scrivere un programma
+che usa la UNIT definita che esegue delle operazioni sulle liste.
+<p><a href="programmi/liste">http://tibur.dis.uniroma1.it/~fondi/FI2000/programmi/liste</a>
+<p>
+<hr WIDTH="100%">
+<h2>
+<a NAME="eser16"></a>16 Rappresentazione dei tipi astratti: insieme, lista,
+pila, coda</h2>
+La rappresentazione funzionale delle liste consiste nell'utilizzare esclusivamente
+funzioni. In particolare per la rappresentazione delle funzioni cons e
+cdr e' la seguente:
+<br>&nbsp;
+<blockquote>FUNCTION cdr(l:list):list;
+<br>{ Ritorna la lista formata togliendo il primo il elemento }
+<br>BEGIN
+<br>&nbsp; cdr:=l^.psucc
+<br>END;
+<p>FUNCTION cons(x:integer;l:list):list;
+<br>{ Riceve una lista e un intero e produce una lista con un nuovo elemento
+in testa }
+<br>VAR aux:list;
+<br>BEGIN
+<br>&nbsp; new (aux);
+<br>&nbsp; aux^.info:=x;
+<br>&nbsp; aux^.psucc:=l;
+<br>&nbsp; cons:=aux
+<br>END;</blockquote>
+Per la rappresentazione completa si veda <a href="programmi/liste">http://tibur.dis.uniroma1.it/~fondi/FI2000/programmi/liste</a>
+<p><b>Esercizio</b>
+<p>Definire una UNIT per la realizzazione del tipo di dato astratto insieme,
+scegliendo un metodo di rappresentazione a piacere. Scrivere un programma
+che usa la UNIT definita che esegue delle operazioni sugli insiemi.
+<p>&nbsp;<a href="programmi/insieme">http://tibur.dis.uniroma1.it/~fondi/FI2000/programmi/insieme</a>
+<p><b>Esercizio</b>
+<p>Definire una UNIT per la realizzazione del tipo di dato astratto pila
+e del tipo di dato astratto coda, scegliendo un metodo di rappresentazione
+a piacere. Scrivere un programma che usa la UNIT definita che esegue delle
+operazioni sulle pile e sulle code.
+<p><a href="programmi/pilecode">http://tibur.dis.uniroma1.it/~fondi/FI2000/programmi/pilecode</a>
+<p>
+<hr WIDTH="100%">
+<h2>
+<a NAME="eser17"></a>17 Alberi Binari</h2>
+
+<p><br><b>Esercizi</b>
+<br>&nbsp;
+<ol>
+<li>
+Scrivere la procedura di lettura di un albero binario con dei carateri
+alfabetici nei nodi rappresentato in forma parentetica prefissa. Considerare
+la possibilita' che vi siano degli spazi nella stringa in ingresso. L'albero
+letto dovra' essere rappresentato con record e puntatori.</li>
+
+<li>
+Scrivere le procedure per la stampa dei caratteri dell'albero tramite visita
+prefissa, simmetrica, postfissa.</li>
+
+<li>
+Realizzare le procedure descritte nei punti precedenti per la rappresentazione
+sequenziale.</li>
+</ol>
+
+<p><br><a href="programmi/albin">http://tibur.dis.uniroma1.it/~fondi/FI2000/programmi/albin</a>
+<br>&nbsp;
+<p>
+<hr WIDTH="100%">
+<h2>
+<a NAME="eser18"></a>18 Alberi Binari di ricerca</h2>
+
+<p><br>Un <i>albero binario di ricerca</i> e' un albero, sui nodi del quale
+e' definita una relazione di ordinamento e che verifica la seguente proprieta':
+<ul>
+<li>
+per ogni nodo dell'albero il valore del nodo e' maggiore di tutti i valori
+dei nodi del sottolabero sinistro e minore dei valori di tutti i nodi del
+sottoalberto destro.</li>
+</ul>
+Si definisce<i> completo</i> un albero binario in cui:
+<ul>
+<li>
+i nodi hanno grado di uscita 0 oppure 2</li>
+
+<li>
+tutte le foglie sono allo stello livello</li>
+</ul>
+Si definisce <i>bilanciato</i> un albero binario in cui
+<ul>
+<li>
+per ogni coppia di nodi ni ed nj con grado di uscita &lt; 2 la differenza
+di livello tra ni ed nj risulta, in valore assoluto,&nbsp; minore od uguale
+a d 1.</li>
+</ul>
+<b>Esercizi</b>
+<br>&nbsp;
+<ol>
+<li>
+Scrivere un programma che legge una sequenza di interi (ordinata in senso
+crescente) da un file e la memorizza in un array</li>
+
+<li>
+Scrivere una procedura che dato come parametro un array di valori interi
+ordinati in senso crescente restituisce un albero binario di ricerca, rappresentato
+con record e puntatori e realizzato con la tecnica della ricerca binaria
+nell'array</li>
+
+<li>
+Scrivere una procedura che ricerca un valore nell'albero binario di ricerca</li>
+
+<li>
+Scrivere una procedura che stampa i valori dell'albero binario di ricerca</li>
+
+<li>
+Scrivere una procedura che verifica se una albero binario e' un albero
+binario di ricerca</li>
+
+<li>
+Scrivere una procedura che verifica se un albero binario e' completo</li>
+
+<li>
+Scrivere una procedura che verifica se un albero binario e' bilanciato</li>
+</ol>
+
+<p><br><a href="programmi/albinric">http://tibur.dis.uniroma1.it/~fondi/FI2000/programmi/albinric</a>
+</body>
+</html>

@@ -1,0 +1,1183 @@
+<html>
+<head>
+<title>I metodi statici</title>
+      <link rel="top" href="../lezioni.html">
+      <link rel="up" href="../lezioni.html">
+      <link rel="contents" href="../lezioni.html">
+      <link rel="previous" href="../null/null.html">
+      <link rel="next" href="../costruttori/costruttori.html">
+</head>
+
+<body>
+
+<h1>I metodi statici</h1>
+
+<p>
+Metodi visti finora:
+</p>
+
+<dl>
+
+<dt>della classe
+<dd>operazioni associate a un oggetto della classe,
+disponibili a tutti i programmi che usano la classe
+
+<dt>del programma
+<dd>operazioni che non sono associate a un oggetto,
+e che venivano usate solo dal programma
+
+</dl>
+
+<p>
+Il secondo tipo di metodo non era associato a
+un oggetto particolare: l'invocazione non
+richiede un oggetto di invocazione.
+</p>
+
+<p>
+Per questo, non si pu&ograve; usare <tt>this</tt>
+in un metodo statico (non esiste l'oggetto di
+invocazione)
+</p>
+
+<hr>
+
+
+<h4>Metodi statici della classe</h4>
+
+<p>
+Sono metodi che:
+</p>
+
+<ul>
+
+<li>non sono associati a un oggetto
+
+<li>voglio che siano disponibili a tutti i
+programmi che usano la classe
+
+</ul>
+
+<hr>
+
+
+<h4>Come si dichiarano</h4>
+
+<p>
+Sono come i metodi di programma, solo che li
+metto nella classe.
+</p>
+
+<p>
+Esempio: penso che il metodo
+di somma di due interi sia utile a tutti i
+programmi che usano la classe <tt>NewPoint</tt>
+</p>
+
+<pre>
+import java.awt.*;
+
+class NewPoint extends Point {
+  static int somma(int a, int b) {
+    return a+b;
+  }
+}
+</pre>
+
+<p>
+Non ha un oggetto di invocazione!
+</p>
+
+<hr>
+
+
+<h4>Come si invocano i metodi statici</h4>
+
+<p>
+&Egrave; come per i metodi del programma,
+ma si mette prima il nome della classe:
+</p>
+
+<pre>
+class ProvaNewPoint {
+  public static void main(String args[]) {
+    int x;
+
+    x=somma(12,43); 	// sbagliato!!
+    x=NewPoint.somma(12,43);	// ok
+
+    System.out.println(x);
+  }
+}
+</pre>
+
+<hr>
+
+
+<h4>Metodi e metodi statici</h4>
+
+<pre>
+import java.awt.*;
+
+class NewPoint extends Point {
+  int sommaCoordinate() {
+    return this.x+this.y;
+  }
+
+  static int somma(int a, int b) {
+    return a+b;
+  }
+}
+</pre>
+
+<p>
+Differenza:
+</p>
+
+<dl>
+
+<dt>metodo non statico:
+<dd>&egrave; una operazione che faccio con un
+oggetto (posso usare <tt>this</tt>)
+
+<dt>metodo statico:
+<dd>&egrave; un metodo che &egrave; associato
+alla classe (lo posso usare in tutti i programmi
+che usano la classe) per&ograve; non &egrave; una
+operazione che faccio su un oggetto
+
+</dl>
+
+<p>
+Quindi: i metodi normali li invoco su un oggetto,
+e quindi esiste <tt>this</tt>. I metodi statici
+non si invocano su un oggetto, e quindi <tt>this</tt>
+non esiste.
+</p>
+
+<hr>
+
+
+<h4>Esercizio</h4>
+
+<p>
+Definire la classe studente con le componenti:
+<tt>nome</tt>, <tt>eta</tt> e <tt>media</tt>
+di tipo <tt>String</tt>, <tt>int</tt> e
+<tt>double</tt>
+</p>
+
+<p>
+Unico metodo statico: <tt>media</tt>, che calcola
+la media di due interi, e restituisce un reale.
+</p>
+
+<p>
+Non ha relazioni con la componente <tt>media</tt>
+</p>
+
+<hr>
+
+
+<h4>Modo semplificato</h4>
+
+<p>
+Se i metodi del programma sono chiari:
+</p>
+
+<ul>
+
+<li>definire un metodo nel programma
+
+<li>spostare il metodo nella classe
+
+<li>aggiungere il nome della classe a tutte
+le invocazioni
+
+</ul>
+
+<hr>
+
+
+<h4>Modo semplificato</h4>
+
+<p>
+Nel programma, si scriverebbe cos&iacute;:
+</p>
+
+<pre>
+class Semplif {
+  static double media(int a, int b) {
+    int somma;
+
+    somma=a+b;
+
+    return ((double) somma)/2;
+  }
+
+  public static void main(String args[]) {
+    int x=12;
+    int y=3;
+
+    System.out.println(media(x, y));
+  }
+}
+</pre>
+
+<hr>
+
+
+<h4>Spostamento nella classe</h4>
+
+<p>
+Copio il metodo, identico, nella classe.
+</p>
+
+<pre>
+class Studente {
+  String nome;
+  int eta;
+  double media;
+
+  static double media(int a, int b) {
+    int somma;
+
+    somma=a+b;
+
+    return ((double) somma)/2;
+  }
+}
+</pre>
+
+<hr>
+
+
+<h4>Modifica del programma</h4>
+
+<p>
+Programma originario:
+</p>
+
+<pre>
+class Semplif {
+  static double media(int a, int b) {
+    int somma;
+
+    somma=a+b;
+
+    return ((double) somma)/2;
+  }
+
+  public static void main(String args[]) {
+    int x=12;
+    int y=3;
+
+    System.out.println(media(x, y));
+  }
+}
+</pre>
+
+<p>
+Tolgo la definizione del metodo.
+</p>
+
+<p>
+Aggiungo <tt>Studente.</tt> alle invocazioni:
+</p>
+
+<pre>
+class Semplif {
+  public static void main(String args[]) {
+    int x=12;
+    int y=3;
+
+    System.out.println(Studente.media(x, y));
+  }
+}
+</pre>
+
+<hr>
+
+
+<h4>Metodo diretto</h4>
+
+<p>
+In pratica, scrivo direttamente il metodo
+nella classe.
+</p>
+
+<p>
+Iniziamo a definire le componenti e la
+intestazione del metodo:
+</p>
+
+<pre>
+class Studente {
+  String nome;
+  int eta;
+  double media;
+
+  static double media(int a, int b) {
+    ...
+  }
+}
+</pre>
+
+<hr>
+
+
+<h4>Corpo del metodo</h4>
+
+<p>
+Devo calcolare la somma e poi fare la divisione per due.
+</p>
+
+<p>
+Attenzione! La componente <tt>media</tt> non c'entra
+niente.
+</p>
+
+<p>
+Il metodo statico non ha il <tt>this</tt>, quindi
+<i>non pu&ograve; accedere a <tt>this.media</tt>
+oppure alle altre componenti.</i>
+</p>
+
+<pre>
+class Studente {
+  String nome;
+  int eta;
+  double media;
+
+  static double media(int a, int b) {
+    int somma;
+
+    somma=a+b;
+
+    return ((double) somma)/2;
+  }
+}
+</pre>
+
+<hr>
+
+
+<h4>Programma di prova</h4>
+
+<p>
+I metodi statici si possono usare anche
+se non ci sono oggetti della classe.
+</p>
+
+<pre>
+class ProvaStudente {
+  public static void main(String args[]) {
+    double x;
+
+    x=Studente.media(9, 34);
+
+    System.out.println(x);
+  }
+}
+</pre>
+
+<p>
+Questo prova solo il metodo statico: per provare
+le altre parti della classe, faccio un programma
+che usa oggetti.
+</p>
+
+<hr>
+
+
+<h4>Osservazione</h4>
+
+<p>
+Il metodo <tt>Studente.media</tt> pu&ograve;
+venire invocato per fare una media di due interi.
+</p>
+
+<p>
+Si pu&ograve; invocare anche se i due interi
+non riguardano un oggetto <tt>Studente</tt>
+</p>
+
+<p>
+Per esempio, si pu&ograve; usare per calcolare il punto
+mediano, ecc:
+</p>
+
+<pre>
+  Point mediano;
+  mediano=new Point();
+
+  mediano.x=(int) Studente.media(p.x, q.x);
+  mediano.y=(int) Studente.media(p.y, q.y);
+</pre>
+
+<p>
+Si pu&ograve; fare, ma rende il programma
+meno chiaro.
+</p>
+
+<p>
+In questi casi, meglio un metodo nel programma,
+oppure un metodo a parte nella classe <tt>Point</tt>
+</p>
+
+<hr>
+
+
+<h4>Perch&egrave; devo scrivere il nome della
+classe?</h4>
+
+<p>
+Potrei avere pi&ugrave; metodi definiti in
+classi diverse (e fanno cose diverse).
+</p>
+
+<p>
+Esempio: in <tt>NewPoint</tt> mi serve la
+approssimazione della media a intero:
+</p>
+
+<pre>
+class NewPoint extends Point {
+  static int media(int x, int y) {
+    return (x+y)/2;
+  }
+}
+</pre>
+
+<p>
+In <tt>Studente</tt> mi serve la media come
+reale:
+</p>
+
+<pre>
+class Studente {
+  ...
+
+  static double media(int a, int b) {
+    return ((double) a+b)/2;
+  }
+}
+</pre>
+
+<p>
+Per distinguerli, so che uno si chiama
+<tt>NewPoint.media</tt> mentre l'altro
+si chiama <tt>Studente.media</tt>, e fanno
+due cose diverse.
+</p>
+
+<hr>
+
+
+<h4>Perch&egrave; non devo fare lo stesso con
+i metodi dinamici?</h4>
+
+<p>
+I metodi dinamici si invocano come:
+</p>
+
+<pre>
+  oggetto.nomeMetodo(argomenti);
+</pre>
+
+<p>
+In base all'oggetto, so il nome della classe.
+</p>
+
+<p>
+Il metodo &egrave; quello della classe dell'oggetto.
+</p>
+
+<pre>
+class Studente {
+  void dinamico() {...}
+}
+
+class NewPoint {
+  void dinamico() {...}
+}
+</pre>
+
+<p>
+Se il programma &egrave;:
+</p>
+
+<pre>
+  Studente s;
+  NewPoint p;
+  ...
+
+  s.dinamico();
+  p.dinamico();
+</pre>
+
+<p>
+La prima invocazione &egrave; al metodo di
+<tt>Studente</tt>, la seconda al metodo di
+<tt>NewPoint</tt>
+</p>
+
+<hr>
+
+
+<h4>Argomenti/oggetto di invocazione</h4>
+
+<p>
+I metodi statici non hanno oggetti di invocazione.
+</p>
+
+<p>
+Per&ograve; posso passare quello che voglio
+come argomento.
+</p>
+
+<p>
+Posso anche passare un oggetto della classe.
+</p>
+
+<pre>
+class NewPoint extends Point {
+  static void stampaStatico(NewPoint p) {
+    System.out.println(p.x);
+    System.out.println(p.y);
+  }
+
+  void stampaPunto() {
+    System.out.println(this.x);
+    System.out.println(this.y);
+  }
+}
+</pre>
+
+<hr>
+
+
+<h4>Oggetto di invocazione/oggetto passato</h4>
+
+<pre>
+  static void stampaStatico(NewPoint)
+  void stampaPunto()
+</pre>
+
+<p>
+Per le cose viste finora, l'unica differenza
+&egrave; che il primo si invoca come:
+</p>
+
+<pre>
+  NewPoint.stampaPuntoStatico(p);
+</pre>
+
+<p>
+Mentre per il secondo:
+</p>
+
+<pre>
+  p.stampaPunto();
+</pre>
+
+<p>
+Tutti e due hanno a disposizione un oggetto
+(<tt>p</tt> nel primo e in <tt>this</tt> nel
+secondo)
+</p>
+
+
+<hr>
+
+
+<h4>Differenze</h4>
+
+<p>
+La variabile <tt>this</tt> non &egrave;
+modificabile:
+</p>
+
+<pre>
+  this=null;	// errore
+  this.x=12;	// ok: this non viene
+   // modificato: e' this.x che cambia
+</pre>
+
+<p>
+Posso invece modificare il parametro formale <tt>p</tt>
+</p>
+
+<pre>
+  p=null;	// ok
+</pre>
+
+<p>
+Non ha comunque effetto nel programma che
+invoca il metodo<br>
+(il programma invia un numero al metodo, e questo
+numero viene inizialmente messo in <tt>p</tt>;
+quello che poi succede a <tt>p</tt> non ha effetti
+nel programma).
+</p>
+
+<p>
+Altre differenze riguardano l'ereditariet&agrave;
+</p>
+
+<hr>
+
+
+<h4>Esempio di metodo statico</h4>
+
+<p>
+Classe: <tt>Math</tt>
+</p>
+
+<p>
+Metodo: <tt>static double sqrt(double)</tt>
+</p>
+
+<p>
+Uso del metodo: <tt>d=Math.sqrt(12.2);</tt>
+</p>
+
+<p>
+La classe <tt>Math</tt> non ha componenti,
+ma solo metodi statici.
+</p>
+
+<p>
+&Egrave; un contenitore di metodi che possono
+servire in pi&ugrave; programmi.
+</p>
+
+<hr>
+
+
+<h4>Altri metodi statici della classe <tt>Math</tt></h4>
+
+
+<table BORDER="1" CELLPADDING="3" CELLSPACING="0"
+WIDTH="100%">
+<tr CLASS="TableHeadingColor">
+<td COLSPAN=2><font SIZE="+2">
+<b>Method Summary</b></font></td>
+</tr>
+<tr CLASS="TableRowColor">
+<td ALIGN="right" VALIGN="top" WIDTH="1%"><font SIZE="-1">
+
+<code>static&nbsp;double</code></font></td>
+<td><code><b><a
+HREF="../../java/lang/Math.html#abs(double)">abs</a></b>(double&nbsp;a)</code>
+
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Returns
+the absolute value of a <code>double</code> value.</td>
+</tr>
+<tr CLASS="TableRowColor">
+<td ALIGN="right" VALIGN="top" WIDTH="1%"><font SIZE="-1">
+
+<code>static&nbsp;float</code></font></td>
+<td><code><b><a
+HREF="../../java/lang/Math.html#abs(float)">abs</a></b>(float&nbsp;a)</code>
+
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Returns
+the absolute value of a <code>float</code> value.</td>
+</tr>
+<tr CLASS="TableRowColor">
+<td ALIGN="right" VALIGN="top" WIDTH="1%"><font SIZE="-1">
+
+<code>static&nbsp;int</code></font></td>
+<td><code><b><a
+HREF="../../java/lang/Math.html#abs(int)">abs</a></b>(int&nbsp;a)</code>
+
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Returns
+the absolute value of an <code>int</code> value.</td>
+</tr>
+<tr CLASS="TableRowColor">
+<td ALIGN="right" VALIGN="top" WIDTH="1%"><font SIZE="-1">
+
+<code>static&nbsp;long</code></font></td>
+<td><code><b><a
+HREF="../../java/lang/Math.html#abs(long)">abs</a></b>(long&nbsp;a)</code>
+
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Returns
+the absolute value of a <code>long</code> value.</td>
+</tr>
+<tr CLASS="TableRowColor">
+<td ALIGN="right" VALIGN="top" WIDTH="1%"><font SIZE="-1">
+
+<code>static&nbsp;double</code></font></td>
+<td><code><b><a
+HREF="../../java/lang/Math.html#acos(double)">acos</a></b>(double&nbsp;a)</code>
+
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Returns
+the arc cosine of an angle, in the range of 0.0 through
+ <i>pi</i>.</td>
+</tr>
+<tr CLASS="TableRowColor">
+<td ALIGN="right" VALIGN="top" WIDTH="1%"><font SIZE="-1">
+<code>static&nbsp;double</code></font></td>
+
+<td><code><b><a
+HREF="../../java/lang/Math.html#asin(double)">asin</a></b>(double&nbsp;a)</code>
+
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Returns
+the arc sine of an angle, in the range of -<i>pi</i>/2
+through
+ <i>pi</i>/2.</td>
+</tr>
+</table>
+
+<p>
+Sono solo alcuni esempi.
+</p>
+
+<p>
+Notare il sovraccarico di alcuni metodi.
+</p>
+
+<hr>
+
+
+<h4>Classi <tt>Point</tt> e <tt>Rectangle</tt></h4>
+
+<p>
+Non hanno metodi statici.
+</p>
+
+<hr>
+
+
+<h4>Esercizio</h4>
+
+<p>
+Inserire nella classe <tt>Studente</tt> un metodo
+statico che converte un reale seguendo la regola:
+</p>
+
+<pre>
+  nuovonumero=numero*110/30
+</pre>
+
+<p>
+Il numero dato &egrave; reale;
+quello generato deve essere intero.
+</p>
+
+<p>
+Definire un metodo non statico che usa questo metodo
+per calcolare la media di uno studente espressa
+in centodecimi.
+</p>
+
+<hr>
+
+
+<h4>Il metodo statico</h4>
+
+<p>
+Prende come parametro un reale, e restituisce
+un intero:
+</p>
+
+<pre>
+class Studente {
+  String nome;
+  int eta;
+  double media;
+
+  static int converti(double n) {
+    ...
+  }
+}
+</pre>
+
+<hr>
+
+
+<h4>Corpo del metodo</h4>
+
+<p>
+Devo convertire in centodecimi il valore
+passato, e restituirlo come intero.
+</p>
+
+<pre>
+class Studente {
+  String nome;
+  int eta;
+  double media;
+
+  static int converti(double n) {
+    return (int) n*110/30;
+  }
+}
+</pre>
+
+<hr>
+
+
+<h4>Metodo non statico</h4>
+
+<p>
+Deve restituire la media in centodecimi,
+dato l'oggetto di invocazione.
+</p>
+
+<pre>
+class Studente {
+  String nome;
+  int eta;
+  double media;
+
+  static int converti(double n) {
+    return (int) n*110/30;
+  }
+
+  int media110() {
+    return Studente.converti(this.media);
+  }
+}
+</pre>
+
+<hr>
+
+
+<h4>Il nome della classe</h4>
+
+<p>
+Regola generale: per invocare un metodo statico,
+prima metto il nome della classe.
+</p>
+
+<p>
+Eccezione: se il metodo viene invocato da un
+altro metodo della stessa classe, il nome della
+classe si pu&ograve; omettere.
+</p>
+
+<pre>
+  int media110() {
+    return converti(this.media);
+  }
+</pre>
+
+<p>
+Invocare <tt>converti</tt>:
+</p>
+
+<dl>
+
+<dt>dentro la classe <tt>Studente</tt>:
+<dd>basta fare <tt>converti(numero)</tt>
+
+<dt>da un'altra classe o programma
+<dd>devo mettere il nome della classe:
+<tt>Studente.converti(numero)</tt>
+
+</dl>
+
+<hr>
+
+
+<h4>Un programma di prova</h4>
+
+<pre>
+class ProvaMedia {
+  public static void main(String args[]) {
+    Studente s;
+    s=new Studente();
+
+    s.nome="Pippo";
+    s.eta=102;
+    s.media=21.2;
+
+    System.out.println(Studente.converti(29.2));
+    System.out.println(s.media110());
+  }
+}
+</pre>
+
+<p>
+Osservazioni:
+</p>
+
+<ul>
+
+<li>il metodo <tt>Studente.converti</tt> non riguarda
+un oggetto della classe (sta nella classe solo perch&egrave;
+penso che possa essere utile nei programmi che usano
+questa classe)
+
+<li>posso invocare il metodo statico anche su numeri che
+non hanno relazione con gli oggetti della classe (per
+esempio, <tt>29.2</tt> non &egrave; la media di un
+oggetto <tt>Studente</tt> del programma)
+
+<li>l'invocazione va fatta mettendo il nome della
+classe (dato che il metodo sta in un'altra classe)
+
+<li>il metodo <tt>media110()</tt> non &egrave; statico,
+quindi va invocato su un oggetto; pu&ograve; usare le
+componenti dell'oggetto di invocazione
+
+</ul>
+
+<hr>
+
+
+<h4>Chi pu&ograve; invocare chi</h4>
+
+<p>
+Ogni metodo della classe pu&ograve; invocare un
+altro metodo della classe.
+</p>
+
+<p>
+Per&ograve;:
+</p>
+
+<ul>
+
+<li>i metodi normali richiedono un oggetto di invocazione
+
+<li>i metodi statici no
+
+</ul>
+
+<p>
+Un metodo statico pu&ograve; invocare un metodo non
+statico come al solito, ossia specificando un oggetto
+di invocazione.
+</p>
+
+<pre>
+class Studente {
+  ...
+
+  static void esempio(double x) {
+    Studente s;
+    s=new Studente();
+    s.media=x;
+
+    System.out.println(s.media110());
+  }
+}
+</pre>
+
+<p>
+Notare che l'invocazione di un metodo non
+statico va fatta su un oggetto
+</p>
+
+<p>
+Il metodo statico non ha <tt>this</tt>, quindi
+non si pu&ograve; fare <tt>this.media110()</tt>
+</p>
+
+<hr>
+
+
+<h4>Regola facile</h4>
+
+<dl>
+
+<dt>metodi non statici
+<dd>invocazione <tt>oggetto.metodo(...)</tt><br>
+l'indirizzo dell'oggetto viene copiato in <tt>this</tt>
+
+<dt>metodi statici
+<dd>invocazione <tt>NomeClasse.metodo(...)</tt><br>
+non esiste il <tt>this</tt>, dato che non c'&egrave;
+l'oggetto di invocazione
+
+</dl>
+
+<p>
+Semplificazione: <tt>NomeClasse</tt> si pu&ograve;
+omettere se si invoca un metodo statico della stessa
+classe.
+</p>
+
+<hr>
+
+
+<h4>Esercizio</h4>
+
+<p>
+Estendere la classe <tt>Point</tt> a una
+nuova classe <tt>ExtPoint</tt> che contiene
+un metodo statico che crea un punto
+con dentro due valori casuali.
+</p>
+
+<p>
+Per i valori casuali: usare il metodo
+<tt>double random()</tt> della classe <tt>Math</tt>
+che ritorna un reale casuale fra <tt>0</tt> e
+<tt>1</tt> (uno escluso).
+</p>
+
+<p>
+Voglio interi casuali fra <tt>-100</tt> e
+<tt>100</tt>
+</p>
+
+<p>
+Conversione?
+</p>
+
+<hr>
+
+
+<h4>Conversione</h4>
+
+<p>
+Se <tt>a</tt> &egrave; un reale da <tt>0</tt>
+a <tt>1</tt>, per ottenere un intero <tt>x</tt>
+da <tt>-100</tt> a <tt>100</tt>:
+</p>
+
+<pre>
+  x=(int) (a*201)-100;
+</pre>
+
+<hr>
+
+
+<h4>Il metodo</h4>
+
+<p>
+Non ha parametri.
+</p>
+
+<p>
+Torna un <tt>ExtPoint</tt>
+</p>
+
+<pre>
+import java.awt.*;
+
+class ExtPoint extends Point {
+  static ExtPoint puntoRandom() {
+    ...
+  }
+}
+</pre>
+
+<hr>
+
+
+<h4>Cosa fa il metodo?</h4>
+
+<p>
+<b>Crea</b> un oggetto.
+</p>
+
+<p>
+Ci mette dentro i valori random.
+</p>
+
+<p>
+Il metodo &egrave; statico: non ha
+un oggetto di invocazione.
+</p>
+
+<p>
+Se creo un oggetto, poi ci posso mettere
+dentro i valori casuali.
+</p>
+
+<hr>
+
+
+<h4>Il corpo del metodo</h4>
+
+<pre>
+import java.awt.*;
+
+class ExtPoint extends Point {
+  static ExtPoint puntoRandom() {
+    ExtPoint p;
+    p=new ExtPoint();
+
+    p.x=(int) (Math.random()*201-100);
+    p.y=(int) (Math.random()*201-100);
+
+    return p;
+  }
+}
+</pre>
+
+<p>
+Cosa fa <tt>return p</tt>?
+</p>
+
+<p>
+Ritorna <i>l'indirizzo</i>
+dell'oggetto creato.
+</p>
+
+<p>
+Il passaggio di oggetti da programma a metodo
+e viceversa, &egrave; sempre un passaggio di
+valori (indirizzi)
+</p>
+
+<hr>
+
+
+<h4>Programma di prova</h4>
+
+<p>
+Scrivere uin programma di prova che genera
+cento punti casuali e li stampa con
+<tt>println</tt>
+</p>
+
+<hr>
+
+
+<h4>Il programma</h4>
+
+<p>
+Il metodo resituisce l'indirizzo di
+un <tt>ExtPoint</tt>
+</p>
+
+<p>
+Lo metto in una variabile, e lo uso
+</p>
+
+<pre>
+class ProvaExtPoint {
+  public static void main(String args[]) {
+    ExtPoint p;
+    int i;
+
+    for(i=0; i&lt;20; i++) {
+      p=ExtPoint.puntoRandom();
+
+      System.out.println(p);
+    }
+  }
+}
+</pre>
+
+<p>
+Notare <tt>p=</tt> per memorizzare il 
+punto generato.
+</p>
+
+</body>
+</html>
+
+
+

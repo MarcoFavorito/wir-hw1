@@ -1,0 +1,125 @@
+
+<HTML>
+
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html;charset=iso-8859-1">
+<meta name="GENERATOR" content="Microsoft Internet Assistant for Macintosh PowerPoint 98">
+ <TITLE>Alternative Plans 2With Indexes</TITLE> 
+</HEAD>
+
+<BODY     >
+
+ <H1>Alternative Plans 2With Indexes</H1> 
+ <P><UL></P>
+
+<P><LI><H2>With clustered index on bid of Reserves, we get 100,000/100 =  1000 tuples on 1000/100 = 10 pages.
+</H2></P>
+
+<P></UL><UL></P>
+
+<P><LI><H2>INL with pipelining (outer is not materialized).</H2></P>
+
+<P></UL></P>
+
+<P><UL></P>
+
+<P><LI>  Decision not to push rating>5 before the join is based on 
+</UL><UL></P>
+
+<P>     availability of sid index on Sailors.
+</UL><UL></P>
+
+<P><LI>  Cost:  Selection of Reserves tuples (10 I/Os); for each, 
+</UL><UL></P>
+
+<P>     must get matching Sailors tuple (1000*1.2); total 1210 I/Os.</UL></P>
+
+<P><UL></P>
+
+<P><LI>  Join column sid is a key for Sailors.
+<UL></P>
+
+<P><LI>At most one matching tuple, unclustered index on sid OK.</UL></UL></P>
+
+<P><UL></P>
+
+<P><LI>Projecting out unnecessary fields from outer doesn’t help.</UL></P>
+
+<P><UL></P>
+
+<P>Reserves</UL></P>
+
+<P><UL></P>
+
+<P>Sailors</UL></P>
+
+<P><UL></P>
+
+<P>sid=sid</UL></P>
+
+<P><UL></P>
+
+<P>bid=100 </UL></P>
+
+<P><UL></P>
+
+<P>sname</UL></P>
+
+<P><UL></P>
+
+<P>(On-the-fly)</UL></P>
+
+<P><UL></P>
+
+<P>rating > 5</UL></P>
+
+<P><UL></P>
+
+<P>(Use hash</UL></P>
+
+<P><UL></P>
+
+<P>index; do</UL></P>
+
+<P><UL></P>
+
+<P>not write</UL></P>
+
+<P><UL></P>
+
+<P>result to </UL></P>
+
+<P><UL></P>
+
+<P>temp)</UL></P>
+
+<P><UL></P>
+
+<P>(Index Nested Loops,</UL></P>
+
+<P><UL></P>
+
+<P>with pipelining )</UL></P>
+
+<P><UL></P>
+
+<P>(On-the-fly)</UL></P>
+
+<P></P> 
+<P>
+<TABLE>
+  <TD HEIGHT=100 WIDTH=100> <A HREF="tsld006.htm">Previous slide</A> </TD>
+  <TD HEIGHT=100 WIDTH=100> <A HREF="tsld008.htm">Next slide</A> </TD>
+  <TD HEIGHT=100 WIDTH=150> <A HREF="tsld001.htm">Back to first slide</A> </TD>
+  <TD HEIGHT=100 WIDTH=150> <A HREF="sld007.htm">View graphic version</A> </TD>
+</TABLE>
+<BR>
+</P>
+
+ <FONT size=4><STRONG> Notes: </FONT></STRONG>
+  <HR SIZE=3> <P> <UL>
+
+6</UL> </P> 
+
+</Body>
+</HTML>

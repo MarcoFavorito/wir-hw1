@@ -1,0 +1,46 @@
+
+<HTML>
+
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html;charset=iso-8859-1">
+<meta name="GENERATOR" content="Microsoft Internet Assistant for Macintosh PowerPoint 98">
+ <TITLE>Atomicity of Transactions</TITLE> 
+</HEAD>
+
+<BODY     >
+
+ <H1>Atomicity of Transactions</H1> 
+ <P><UL></P>
+
+<P><LI><H2>A transaction might commit after completing all its actions, or it could abort (or be aborted by the DBMS) after executing some actions.
+</H2></P>
+
+<P></UL><UL></P>
+
+<P><LI><H2>A very important property guaranteed by the DBMS for all transactions is that they are atomic.  That is, a user can think of a Xact as always executing all its actions in one step, or not executing any actions at all.
+</H2></P>
+
+<P><UL></P>
+
+<P><LI>DBMS logs all actions so that it can undo the actions of aborted transactions.
+</UL></UL><UL></P>
+
+<P><LI><H2>This ensures that if each Xact preserves consistency, every serializable schedule preserves consistency. </H2></P>
+
+<P></UL></P>
+
+<P></P> 
+<P>
+<TABLE>
+  <TD HEIGHT=100 WIDTH=100> <A HREF="tsld019.htm">Previous slide</A> </TD>
+  <TD HEIGHT=100 WIDTH=100> <A HREF="tsld021.htm">Next slide</A> </TD>
+  <TD HEIGHT=100 WIDTH=150> <A HREF="tsld001.htm">Back to first slide</A> </TD>
+  <TD HEIGHT=100 WIDTH=150> <A HREF="sld020.htm">View graphic version</A> </TD>
+</TABLE>
+<BR>
+</P>
+
+
+
+</Body>
+</HTML>

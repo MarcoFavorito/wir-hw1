@@ -1,0 +1,219 @@
+<!doctype html public "-//w3c//dtd html 4.0 transitional//en">
+<html>
+<head>
+   <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <meta name="Author" content="Fabrizio d'Amore">
+   <meta name="GENERATOR" content="Mozilla/4.61 (Macintosh; I; PPC) [Netscape]">
+   <title>Esercizio di analisi - 14 luglio 1999</title>
+</head>
+<body text="#000080" bgcolor="#FFC040" link="#0000FF" vlink="#008000" alink="#00FFFF">
+
+<center>
+<h3>
+Esercizio di analisi (Problema n&deg; 3)</h3></center>
+
+<hr WIDTH="100%">
+<br>Si riportano, per comodit&agrave;, frammenti del listato da analizzare:
+<br>&nbsp;
+<center><table BORDER >
+<tr>
+<td>
+<pre><tt>typedef struct {</tt></pre>
+
+<blockquote>
+<pre><tt>char c1;</tt></pre>
+
+<pre><tt>int c2;</tt></pre>
+</blockquote>
+
+<pre><tt>} TipoStrutt;</tt></pre>
+</td>
+
+<td>
+<pre><tt>/* prototipi */</tt></pre>
+
+<blockquote>
+<pre><tt>void Proc1 (char *, int);</tt></pre>
+
+<pre><tt>void Proc2 (TipoStrutt);</tt></pre>
+
+<pre><tt>void Proc3 (int, int *, int);</tt></pre>
+
+<pre><tt>void Proc4 (TipoVett);</tt></pre>
+<tt>int Fun1 (char, int);</tt></blockquote>
+</td>
+</tr>
+
+<tr>
+<td><tt>typedef int TipoVett[4];</tt></td>
+
+<td>
+<pre><tt>main() {&nbsp;</tt></pre>
+
+<blockquote>
+<pre><tt>char a;</tt></pre>
+
+<pre><tt>int i;</tt></pre>
+
+<pre><tt>TipoStrutt s;</tt></pre>
+
+<pre><tt>TipoVett v;</tt></pre>
+
+<pre><tt>/* ... */</tt></pre>
+</blockquote>
+</td>
+</tr>
+</table></center>
+
+<p>
+<hr WIDTH="100%">
+<br><b>Correttezza delle chiamate:</b>
+<center><table BORDER CELLPADDING=4 >
+<tr>
+<td>
+<div align=right>1</div>
+</td>
+
+<td><tt>Proc1(&amp;a, i);</tt></td>
+
+<td>OK</td>
+</tr>
+
+<tr>
+<td>
+<div align=right>2</div>
+</td>
+
+<td><tt>Proc1("a", i);</tt></td>
+
+<td>OK (una costante di tipo stringa ha per valore l'indirizzo di memorizzazione,
+che punta dunque a una cella contenente un carattere)</td>
+</tr>
+
+<tr>
+<td>
+<div align=right>3</div>
+</td>
+
+<td><tt>Proc2(s);</tt></td>
+
+<td>OK</td>
+</tr>
+
+<tr>
+<td>
+<div align=right>4</div>
+</td>
+
+<td><tt>Proc2(s.c1, s.c2);&nbsp;</tt></td>
+
+<td>Errata:
+<ol>
+<li>
+Il primo parametro attuale ha un tipo non compatibile con quello del parametro
+formale</li>
+
+<li>
+C'&egrave; un parametro attuale in pi&ugrave;</li>
+</ol>
+</td>
+</tr>
+
+<tr>
+<td>
+<div align=right>5</div>
+</td>
+
+<td><tt>Proc2(s.c2, s.c1);</tt></td>
+
+<td>Errata:
+<ol>
+<li>
+Il primo parametro attuale ha un tipo non compatibile con quello del parametro
+formale</li>
+
+<li>
+C'&egrave; un parametro attuale in pi&ugrave;</li>
+</ol>
+</td>
+</tr>
+
+<tr>
+<td>
+<div align=right>6</div>
+</td>
+
+<td><tt>Proc3(v[3], &amp;v[2], v[1]);</tt></td>
+
+<td>OK</td>
+</tr>
+
+<tr>
+<td>
+<div align=right>7</div>
+</td>
+
+<td><tt>Proc3(v[1], i, i);</tt></td>
+
+<td>Errata (ma di norma questo errore genera solo un "warning"):
+<ol>
+<li>
+Il secondo parametro attuale ha un tipo non compatibile con quello del
+corrispondente parametro formale</li>
+</ol>
+</td>
+</tr>
+
+<tr>
+<td>
+<div align=right>8</div>
+</td>
+
+<td><tt>Proc4(v);</tt></td>
+
+<td>OK</td>
+</tr>
+
+<tr>
+<td>
+<div align=right>9</div>
+</td>
+
+<td><tt>Proc4([i,v[2],i]);</tt></td>
+
+<td>Errore di sintassi</td>
+</tr>
+
+<tr>
+<td>
+<div align=right>10</div>
+</td>
+
+<td><tt>i = Fun1(a, i);&nbsp;</tt></td>
+
+<td>OK</td>
+</tr>
+
+<tr>
+<td>
+<div align=right>11</div>
+</td>
+
+<td><tt>Fun1(a, i);&nbsp;</tt></td>
+
+<td>OK (il valore restituito dalla funzione viene ignorato)</td>
+</tr>
+
+<tr>
+<td>
+<div align=right>12</div>
+</td>
+
+<td><tt>i = Fun1('1', i);&nbsp;</tt></td>
+
+<td>OK</td>
+</tr>
+</table></center>
+
+</body>
+</html>

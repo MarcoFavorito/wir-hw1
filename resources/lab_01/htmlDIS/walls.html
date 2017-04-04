@@ -1,0 +1,81 @@
+<html>
+<title>3D Map Building</title>
+
+<body>
+
+<br><br>
+<P><h1><center>Feature Extraction: Vertical Planes</center></h1></p>
+<BR><BR>
+
+<UL>
+
+<P>
+Extracting the walls amounts to:<br><br>
+<ol>
+<li>detecting the vertical planes of the walls<br><br>
+<li>extracting the texture of the walls
+</ol>
+</p>
+
+<br><br>
+
+<P>
+<b>1. Plane extraction</b>:
+<a href="java/hough3d.html">3D Hough Transform</a> is used
+for detecting planes form a set of 3D points.
+</p>
+
+<br><br>
+
+<P>
+<img width=480 src="map3d/histo/ima3.gif">
+<P>
+<img width=480 src="map3d/histo/tri3.gif">&nbsp;&nbsp;&nbsp
+<img width=480 src="map3d/histo/triwall3.gif">
+</P>
+
+<br><br>
+
+<P>
+<b>2. Texture mapping</b>:
+Given the position and orientation of a wall and
+the camera calibration parameters (perspective matrix),
+texture is extracted from the original color image.
+</P>
+
+<br><br>
+
+<p>
+<img width=480 src="map3d/texture/color1.gif">
+<img width=480 src="map3d/texture/filter1.gif">
+</p>
+
+<BR><BR>
+
+<P>
+The image is then rectified in order to have a frontal view
+of the scene.This texture will be then mapped in the 3D rectangles
+representing the walls.
+</P><BR>
+
+<p><img width=640 src="map3d/texture/text1.gif"></p>
+
+<BR><BR>
+
+<P>In the following image the composition of two images
+is shown and the texture corresponding to the openings
+has been removed (see section on 
+<a href="door.html">extracting doorways</a>).
+</P><BR>
+
+<p><img width=800 src="map3d/texture/text2.gif"></p>
+
+
+
+
+
+</UL>
+
+</body>
+
+</html>

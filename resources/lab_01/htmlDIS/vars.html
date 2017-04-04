@@ -1,0 +1,1756 @@
+<html>
+<head>
+<title>Variabili</title>
+</head>
+
+<body>
+
+<h1>Le variabili</h1>
+
+<p>
+I calcolatori elettronici consentono di
+memorizzare ed eleborare i dati.
+</p>
+
+<p>
+Le variabili si usano per memorizzare dati.
+</p>
+
+<hr>
+
+<h4>La metafora della lavagna</h4>
+
+<p>
+La memoria &egrave; come una lavagna, in
+cui &egrave; possibile memorizzare dati.
+</p>
+
+<p>
+Una variabile &egrave; un rettangolo in
+cui si pu&ograve; mettere un singolo dato.
+</p>
+
+<img width="50%" src="blackboard.jpg">
+
+<hr>
+
+
+<h4>Metafora del cassetto</h4>
+
+<p>
+Ogni variabile &egrave; un cassetto.
+</p>
+
+<img width="40%" src="drawer.jpg">
+
+<p>
+Invece di contenere calzini, maglioni, ecc.
+ogni cassetto contiene un dato.
+</p>
+
+<hr>
+
+
+<h4>Memoria di una calcolatrice/telefonino</h4>
+
+<img src="communicator.gif">
+
+<p>
+In una "posizione" della memoria di un cellulare
+si pu&ograve; memorizzare un numero di telefono.
+</p>
+
+<p>
+Quando serve, si possono vedere i numeri memorizzati,
+oppure usarli (per esempio, per chiamare).
+</p>
+
+<hr>
+
+<h4>Caratteristiche delle variabili</h4>
+
+<ol>
+
+<li>in una variabile si pu&ograve; memorizzare un dato;
+
+<li>si pu&ograve; leggere/usare il dato memorizzato in
+una variabile.
+
+</ol>
+
+<p>
+<b>Tipo di dato:</b>
+</p>
+
+<dl compact="compact">
+<dt>var. intere
+<dd>possono contenere solo numeri interi
+
+<dt>var. reali
+<dd>possono contenere numeri reali
+
+<dt>var. stringa
+<dd>possono contenere solo stringhe<br>
+(stringa = sequenza di caratteri)
+</dl>
+
+<hr>
+
+
+<h4>Dichiarazione delle variabili</h4>
+
+<p>
+Nei telefonini o calcolatrici le memorie
+sono predisposte (si possono usare da subito).
+</p>
+
+<p>
+In Java, le variabili vanno dichiarate.
+</p>
+
+<p>
+La dichiarazione di variabile contiene:
+</p>
+
+<dl>
+
+<dt>tipo
+<dd>intero, reale, stringa, ecc.
+
+<dt>nome
+<dd>quello che usiamo per memorizzare ed estrarre
+il valore memorizzato
+
+</dl>
+
+<p>
+Facile su un esempio.
+</p>
+
+<hr>
+
+
+<h4>Una variabile, in pratica</h4>
+
+<p>
+Un esempio di programma che contiene una
+variabile:
+</p>
+
+<pre>
+class UnaVar {
+  public static void main(String args[]) {
+    int x;
+
+    x=10;
+
+    System.out.println(x);
+  }
+}
+</pre>
+
+<p>
+La variabile si chiama <tt>x</tt>, &egrave; di tipo
+intero; il valore <tt>10</tt> viene memorizzato in
+essa; il suo valore viene stampato.
+
+<hr>
+
+
+<h4>Dichiarazione di variabile</h4>
+
+<pre>
+int x;
+</pre>
+
+<p>
+Dichiara una variabile di tipo intero,
+di nome <tt>x</tt>.
+</p>
+
+<dl>
+
+<dt><tt>int</tt>
+<dd>tipo intero; ossia: dice che voglio una variabile,
+ossia una memoria, in cui sia possibile mettere dei valori
+interi.
+
+<dt><tt>x</tt>
+<dd>nome della variabile; si poteva usare un nome
+qualsiasi, per esempio <tt>ewrx</tt>.
+
+</dl>
+
+<hr>
+
+
+<h4>Uso delle variabili</h4>
+
+<p>
+Memorizzare un valore in una variabile:
+</p>
+
+<pre>
+  x=10;
+</pre>
+
+<p>
+Significato: metti il valore <tt>10</tt> nella variabile.
+</p>
+
+
+<p>
+Estrarre il valore memorizzato:
+</p>
+
+<pre>
+  System.out.println(x);
+</pre>
+
+<p>
+Significato: prendi il valore memorizzato nella variabile
+<tt>x</tt> e stampalo.
+</p>
+
+<hr>
+
+<h4>Variabili: rappresentazione grafica</h4>
+
+<p>
+Ogni variabile si rappresenta con una casellina
+</p>
+
+<p>
+Accanto si scrive il <i>nome</i> della variabile.
+</p>
+
+<p>
+Dentro si scrive il valore memorizzato.
+</p>
+
+<img src="varx.jpg">
+
+<hr>
+
+<h4>Cambiare il valore in una memoria</h4>
+
+<p>
+L'istruzione <tt>x=...</tt> mette il valore
+in memoria, rimpiazzando quello precedente.
+</p>
+
+<pre>
+class Cambia {
+  public static void main(String args[]) {
+    int x;
+
+    x=10;
+
+    System.out.println(x);
+
+    x=20;
+
+    System.out.println(x);
+  }
+}
+</pre>
+
+<hr>
+
+
+<h4>Evoluzione temporale della memoria</h4>
+
+<p>
+Cosa succede quando si esegue il programma.
+</p>
+
+<p>
+Si esegue una istruzione per volta.
+</p>
+
+<p>
+Le istruzioni possono cambiare i valori in memoria.
+</p>
+
+<hr>
+
+<h4>Prima istruzione</h4>
+
+<p>
+Viene dichiarata una variabile
+di nome <tt>x</tt>
+</p>
+
+<table>
+
+<tr>
+<th>
+Stato della memoria
+</th>
+<th>
+Stato di esecuzione del programma
+</th>
+</tr>
+
+<tr>
+<td>
+<img src="cambia-1.jpg">
+</td>
+<td>
+<pre>
+  public static void main(String args[]) {
+--&gt; int x;
+
+    x=10;
+
+    System.out.println(x);
+
+    x=20;
+
+    System.out.println(x);
+  }
+</pre>
+</td>
+</tr>
+
+</table>
+
+<p>
+In questa variabile si pu&ograve; mettere un intero.
+</p>
+
+<hr>
+
+
+<h4>Seconda istruzione</h4>
+
+<p>
+Si mette il valore <tt>10</tt> nella variabile.
+</p>
+
+<table>
+
+<tr>
+<th>
+Stato della memoria
+</th>
+<th>
+Stato di esecuzione del programma
+</th>
+</tr>
+
+<tr>
+<td>
+<img src="cambia-2.jpg">
+</td>
+<td>
+<pre>
+  public static void main(String args[]) {
+    int x;
+
+--&gt; x=10;
+
+    System.out.println(x);
+
+    x=20;
+
+    System.out.println(x);
+  }
+</pre>
+</td>
+</tr>
+
+</table>
+
+<hr>
+
+<h4>Terza istruzione</h4>
+
+<p>
+Si stampa il valore che si trova nella variabile.
+</p>
+
+<table>
+
+<tr>
+<th>
+Stato della memoria
+</th>
+<th>
+Stato di esecuzione del programma
+</th>
+</tr>
+
+<tr>
+<td>
+<img src="cambia-2.jpg">
+</td>
+<td>
+<pre>
+  public static void main(String args[]) {
+    int x;
+
+    x=10;
+
+--&gt; System.out.println(x);
+
+    x=20;
+
+    System.out.println(x);
+  }
+</pre>
+</td>
+</tr>
+
+</table>
+
+<hr>
+
+
+<h4>Quarta istruzione</h4>
+
+<p>
+Si mette il valore <tt>20</tt> nella variabile.
+</p>
+
+<table>
+
+<tr>
+<th>
+Stato della memoria
+</th>
+<th>
+Stato di esecuzione del programma
+</th>
+</tr>
+
+<tr>
+<td>
+<img src="cambia-3.jpg">
+</td>
+<td>
+<pre>
+  public static void main(String args[]) {
+    int x;
+
+    x=10;
+
+    System.out.println(x);
+
+--&gt; x=20;
+
+    System.out.println(x);
+  }
+</pre>
+</td>
+</tr>
+
+</table>
+
+<p>
+<b>Nota:</b> il valore cha stava prima nella
+variabile &egrave; stato <i>sovrascritto</i>.
+</p>
+
+<p>
+Ogni volta che memorizzo un valore in una
+variabile, cancello il valore precedente.
+</p>
+
+<hr>
+
+
+<h4>Quinta istruzione</h4>
+
+<p>
+Si stampa il valore contenuto in <tt>x</tt>
+</p>
+
+<table>
+
+<tr>
+<th>
+Stato della memoria
+</th>
+<th>
+Stato di esecuzione del programma
+</th>
+</tr>
+
+<tr>
+<td>
+<img src="cambia-3.jpg">
+</td>
+<td>
+<pre>
+  public static void main(String args[]) {
+    int x;
+
+    x=10;
+
+    System.out.println(x);
+
+    x=20;
+
+--&gt; System.out.println(x);
+  }
+</pre>
+</td>
+</tr>
+
+</table>
+
+<p>
+Il valore in <tt>x</tt> ora &egrave; <tt>20</tt>,
+per cui si stampa <tt>20</tt>.
+</p>
+
+<hr>
+
+<h4>Domanda</h4>
+
+<p>
+Cosa stampa il seguente programma?
+</p>
+
+<pre>
+class CosaStampa {
+  public static void main(String args[]) {
+    int x;
+
+    x=-1;
+    x=2;
+  }
+}
+</pre>
+
+<hr>
+
+
+<h4>Soluzione</h4>
+
+<p>
+Vengono eseguite le seguenti istruzioni:
+</p>
+
+<ol>
+<li>viene creata la variabile (casellina) di nome <tt>x</tt>
+<li>viene messo il valore <tt>-1</tt> in essa
+<li>viene messo il valore <tt>2</tt> 
+</ol>
+
+<p>
+Non ci sono istruzioni di stampa.
+</p>
+
+<p>
+Quindi: non viene stampato niente.
+</p>
+
+<p>
+Le dichiarazioni di variabile, e il loro uso,
+riguardano la memoria, e non i dispositivi di
+output.
+</p>
+
+<p>
+L'unica istruzione (vista finora) che stampa
+qualcosa sullo schermo &egrave;
+<tt>System.out.println</tt>
+</p>
+
+<hr>
+
+
+<h4>Pi&ugrave; variabili nello stesso programma</h4>
+
+<p>
+Ogni variabile ha un nome.
+</p>
+
+<p>
+Esempio:
+</p>
+
+<pre>
+class Due {
+  public static void main(String args[]) {
+    int x;
+    int y;
+
+    x=10;
+    y=34;
+
+    System.out.println(y);
+  }
+}
+</pre>
+
+<hr>
+
+<h4>Cosa succede in memoria?</h4>
+
+<p>
+Per ogni variabile ho una casella
+</p>
+
+<table>
+
+<tr>
+<th>
+Stato della memoria
+</th>
+<th>
+Stato di esecuzione del programma
+</th>
+</tr>
+
+<tr>
+<td>
+<img src="due-1.jpg">
+</td>
+<td>
+<pre>
+class Due {
+  public static void main(String args[]) {
+    int x;
+--&gt; int y;
+
+    x=10;
+    y=34;
+
+    System.out.println(y);
+  }
+}
+</pre>
+</td>
+</tr>
+
+</table>
+
+<hr>
+
+<h4>Ogni variabile &egrave; una casella diversa</h4>
+
+<p>
+L'assegnamento <tt>x=10</tt> mette il valore
+<tt>10</tt> soltanto nella casella <tt>x</tt>
+</p>
+
+<table>
+
+<tr>
+<th>
+Stato della memoria
+</th>
+<th>
+Stato di esecuzione del programma
+</th>
+</tr>
+
+<tr>
+<td>
+<img src="due-2.jpg">
+</td>
+<td>
+<pre>
+class Due {
+  public static void main(String args[]) {
+    int x;
+    int y;
+
+--&gt; x=10;
+    y=34;
+
+    System.out.println(y);
+  }
+}
+</pre>
+</td>
+</tr>
+
+</table>
+
+<hr>
+
+
+<h4>Secondo assegnamento</h4>
+
+<p>
+L'istruzione <tt>y=34</tt> mette il valore <tt>34</tt>
+nella casella <tt>y</tt>
+</p>
+
+<p>
+Il valore che sta nella casella <tt>x</tt> resta invariato.
+</p>
+
+<table>
+
+<tr>
+<th>
+Stato della memoria
+</th>
+<th>
+Stato di esecuzione del programma
+</th>
+</tr>
+
+<tr>
+<td>
+<img src="due-3.jpg">
+</td>
+<td>
+<pre>
+class Due {
+  public static void main(String args[]) {
+    int x;
+    int y;
+
+    x=10;
+--&gt; y=34;
+
+    System.out.println(y);
+  }
+}
+</pre>
+</td>
+</tr>
+
+</table>
+
+<p>
+Si stampa il valore in <tt>y</tt>, ossia <tt>34</tt>
+</p>
+
+<hr>
+
+
+<h4>Stato della memoria</h4>
+
+<p>
+Quello che succede dipende solo dallo stato
+della memoria.
+</p>
+
+<p>
+L'effetto di una istruzione dipende solo dallo
+stato attuale della memoria.
+</p>
+
+<p>
+Il grafico della memoria &egrave; utile per
+capire come si comporta ogni istruzione.
+</p>
+
+<hr>
+
+
+<h4>Copia da una casella all'altra</h4>
+
+<p>
+Ogni variabile &egrave; una casella separata.
+</p>
+
+<p>
+I valori sono in genere diversi, per&ograve;
+si possono copiare da una casella all'altra.
+</p>
+
+<pre>
+class DueVar {
+  public static void main(String args[]) {
+    int x;
+    int y;
+
+    x=10;
+    y=x;
+
+    System.out.println(y);
+  }
+}
+</pre>
+
+<p>
+<tt>y=x</tt> significa: prendi il valore di <tt>x</tt>
+e <b>copialo</b> in <tt>y</tt>.
+</p>
+
+<hr>
+
+
+<h4>Copia di variabili: la memoria</h4>
+
+<p>
+Ogni volta che dichiaro una variabile, ho una
+nuova casella.
+</p>
+
+<table>
+
+<tr>
+<th>
+Stato della memoria
+</th>
+<th>
+Stato di esecuzione del programma
+</th>
+</tr>
+
+<tr>
+<td>
+<img src="duevar-1.jpg">
+</td>
+<td>
+<pre>
+class DueVar {
+  public static void main(String args[]) {
+    int x;
+--&gt; int y;
+
+    x=10;
+    y=x;
+
+    System.out.println(y);
+  }
+}
+</pre>
+</td>
+</tr>
+
+</table>
+
+<hr>
+
+<h4>Uso delle due variabili</h4>
+
+<p>
+Quando faccio un riferimento a una variabile,
+uso la casella corrispondente.
+</p>
+
+<p>
+Al secondo passo, metto <tt>10</tt> nella
+variabile <tt>x</tt>.
+</p>
+
+<table>
+
+<tr>
+<th>
+Stato della memoria
+</th>
+<th>
+Stato di esecuzione del programma
+</th>
+</tr>
+
+<tr>
+<td>
+<img src="duevar-2.jpg">
+</td>
+<td>
+<pre>
+class DueVar {
+  public static void main(String args[]) {
+    int x;
+    int y;
+
+--&gt; x=10;
+    y=x;
+
+    System.out.println(y);
+  }
+}
+</pre>
+</td>
+</tr>
+
+</table>
+
+<hr>
+
+
+<h4>Copia di variabili</h4>
+
+<p>
+<tt>y=x</tt> significa che il valore di <tt>x</tt>
+viene preso e copiato in <tt>y</tt>.
+</p>
+
+<table>
+
+<tr>
+<th>
+Stato della memoria
+</th>
+<th>
+Stato di esecuzione del programma
+</th>
+</tr>
+
+<tr>
+<td>
+<img src="duevar-3.jpg">
+</td>
+<td>
+<pre>
+class DueVar {
+  public static void main(String args[]) {
+    int x;
+    int y;
+
+    x=10;
+--&gt; y=x;
+
+    System.out.println(y);
+  }
+}
+</pre>
+</td>
+</tr>
+
+</table>
+
+<p>
+L'ultima istruzione stampa il valore di <tt>y</tt>,
+ossia <tt>10</tt> (sto usando il valore che si
+trova memorizzato in <tt>y</tt>)
+
+<hr>
+
+<h4>Domanda</h4>
+
+<p>
+Cosa stampa il programma che segue?
+</p>
+
+<pre>
+class Dopo {
+  public static void main(String args[]) {
+    int x; 
+    int y;
+
+    x=10;
+    y=x;
+    x=21;
+
+    System.out.println(y);
+
+    System.out.println(x);
+  }
+}
+</pre>
+
+<hr>
+
+
+<h4>Risposta</h4>
+
+<p>
+<tt>x=10</tt> mette <tt>10</tt> nella variabile <tt>x</tt>
+</p>
+
+<p>
+<tt>y=x</tt> mette il valore di <tt>x</tt> in <tt>y</tt>,
+quindi <tt>10</tt> va in <tt>y</tt>
+</p>
+
+<p>
+<tt>x=21</tt> mette <tt>21</tt> in <tt>x</tt>, senza
+modificare il resto della memoria, per cui in <tt>y</tt>
+ci resta il valore che ci stava prima, cio&egrave;
+<tt>10</tt>.
+</p>
+
+<p>
+Si stampa il valore di <tt>y</tt>, che non &egrave; stato
+cambiato, quindi <tt>10</tt>
+</p>
+
+<p>
+<b>Regola generale:</b> l'unica istruzione che cambia
+il valore di una variabile <tt>y</tt> &egrave;
+<tt>y=...;</tt>
+</p>
+
+<p>
+Conseguenza: <tt>x=21</tt> non cambia il valore di
+<tt>y</tt>
+</p>
+
+<hr>
+
+
+<h4>Come fare calcoli</h4>
+
+<p>
+Gli operatori algebrici sono i seguenti:
+</p>
+
+<tt>+ - * /</tt>
+
+<p>
+Non si pu&ograve; omettere la moltiplicazione:
+<tt>a*b</tt> non si pu&ograve; scrivere <tt>ab</tt>
+</p>
+
+<p>
+Esempio:
+</p>
+
+<pre>
+y=x*5+x;
+</pre>
+
+<p>
+Significato: prendi il valore memorizzato in <tt>x</tt>,
+moltiplicalo per <tt>5</tt>, e somma a questo il valore
+che sta in <tt>x</tt>. Il risultato va memorizzato in
+<tt>y</tt>.
+</p>
+
+<hr>
+
+
+<h4>Il significato di <tt>=</tt></h4>
+
+<p>
+Forma generale:
+</p>
+
+<pre>
+variabile=espressione;
+</pre>
+
+<p>
+Significato: calcola il valore dell'espressione,
+e metti il risultato nella variabile.
+</p>
+
+<p>
+Se nell'espressione ci sono delle variabili, al
+loro posto viene messo il valore attualmente
+memorizzato.
+</p>
+
+<hr>
+
+
+<h4>Costruzione di espressioni</h4>
+
+<p>
+Regole di precedenza fra gli operatori: prima
+<tt>*</tt> e <tt>/</tt> e poi <tt>+</tt> e <tt>-</tt>
+</p>
+
+<p>
+Gli spazi sono irrilevanti.
+</p>
+
+<p>
+In caso di dubbi, si possono usare le parentesi.
+</p>
+
+<pre>
+class Preced {
+  public static void main(String args[]) {
+    int x;
+    int y;
+
+    x=10;
+    y=x+10  *2;
+
+    System.out.println(y);
+  }
+}
+</pre>
+
+<p>
+Domanda: cosa viene stampato?
+</p>
+
+<hr>
+
+
+<h4>Risposta</h4>
+
+<p>
+Il <tt>*</tt> ha precedenza maggiore.
+</p>
+
+<p>
+<tt>x+10  *2</tt> viene interpretato
+come <tt>x + (10*2)</tt>
+</p>
+
+<p>
+Viene stampato <tt>30</tt>
+</p>
+
+<hr>
+
+<h4>Esercizio</h4>
+
+<p>
+Dati due numeri, stampare il doppio della loro somma.
+</p>
+
+<pre>
+class SommaDue {
+  public static void main(String args[]) {
+    int x;
+    int y;
+
+    x=10;
+    y=12;
+
+    ...
+  }
+}
+</pre>
+
+<p>
+Inserire la soluzione al posto dei puntini.
+</p>
+
+<hr>
+
+
+<h4>Soluzione</h4>
+
+<p>
+Si crea una nuova variabile <tt>z</tt>
+</p>
+
+<p>
+Si usa l'istruzione <tt>z=espressione</tt>
+per mettere in <tt>z</tt> il risultato cercato.
+</p>
+
+<pre>
+class SommaDue {
+  public static void main(String args[]) {
+    int x;
+    int y;
+
+    x=10;
+    y=12;
+
+    int z;
+
+    z=2*(x+y);
+
+    System.out.println(z);
+  }
+}
+</pre>
+
+<hr>
+
+
+<h4>Domanda</h4>
+
+<p>
+Cosa stampa il programma che segue?
+</p>
+
+<pre>
+class Attuale {
+  public static void main(String args[]) {
+    int x;
+    int y;
+
+    y=4;
+    x=10;
+    y=x+1;
+    x=y+4;
+
+    System.out.println(x);
+  }
+}
+</pre>
+
+<hr>
+
+
+<h4>Risposta</h4>
+
+<p>
+Ogni volta che si usa una variabile in una
+espressione (a destra di <tt>=</tt>), va
+messo il valore che &egrave; attualmente
+memorizzato.
+</p>
+
+<ul>
+
+<li>si mette <tt>4</tt> in <tt>y</tt>
+
+<li>si mette <tt>10</tt> in <tt>x</tt>
+
+<li>si calcola <tt>x+1</tt> che viene <tt>11</tt>,
+usando il valore corrente di <tt>x</tt>
+
+<li>si mette questo valore <tt>11</tt> in <tt>y</tt>
+
+<li>si calcola <tt>y+4</tt>, che viene <tt>15</tt>
+
+<li>si mette il risultato <tt>15</tt> in <tt>x</tt>
+al posto del valore corrente
+
+</ul>
+
+<p>
+<b>Importante!</b>
+Quando si esegue una espressione <tt>var=espr</tt>
+viene <i>prima</i> valutata l'espressione, e poi
+il valore che si trova viene messo nella variabile.
+</p>
+
+<hr>
+
+
+<h4>Variabili reali</h4>
+
+<p>
+Servono per memorizzare valori frazionari.
+</p>
+
+<p>
+Dichiarazione:
+</p>
+
+<pre>
+  double nomevariabile;
+</pre>
+
+<p>
+Esempio:
+</p>
+
+<pre>
+class Reale {
+  public static void main(String args[]) {
+    double x;
+
+    x=10.32/4;
+
+    System.out.println(x);
+  }
+}
+</pre>
+
+<p>
+Al posto della virgola si usa il punto.
+</p>
+
+<p>
+Viene stampato:
+</p>
+
+<pre>
+2.58
+</pre>
+
+<p>
+Si usano ancora <tt>+ - * /</tt> con le stesse
+regole di precedenza e parentesi.
+</p>
+
+<hr>
+
+
+<h4>Esercizio: fare la media</h4>
+
+<p>
+Dati tre numeri frazionari, calcolare
+la loro media.
+</p>
+
+<p>
+Completare il programma qui sotto:
+</p>
+
+<pre>
+class Media {
+  public static void main(String args[]) {
+    double a, b, c;
+
+    a=2.2;
+    b=3.3;
+    c=10;
+
+    ...
+  }
+}
+</pre>
+
+<p>
+Nota: i numeri reali includono anche tutti i
+numeri interi!
+</p>
+
+<p>
+Il valore <tt>10</tt> pu&ograve; venire messo
+anche in una variabile <tt>double</tt>
+</p>
+
+
+
+<hr>
+
+
+<h4>Soluzione</h4>
+
+<p>
+Si dichiara una nuova variabile <tt>d</tt>, in
+cui si mette il risultato della media.
+</p>
+
+<pre>
+class Media {
+  public static void main(String args[]) {
+    double a, b, c;
+
+    a=2.2;
+    b=3.3;
+    c=10;
+
+    double d;
+
+    d=(a+b+c)/3;
+
+    System.out.println(d);
+  }
+}
+</pre>
+
+<p>
+Viene stampato:
+</p>
+
+<pre>
+5.166666666666667
+</pre>
+
+<hr>
+
+<h4>Precisione</h4>
+
+<p>
+La soluzione &egrave; un numero periodico.
+</p>
+
+<p>
+Viene invece trovato <tt>5.166666666666667</tt>
+</p>
+
+<p>
+I numeri vengono rappresentati con un numero
+finito di cifre.
+</p>
+
+<hr>
+
+
+<h4>Mantissa ed esponente</h4>
+
+<p>
+I numeri grandi non si scrivono usando tutte
+le cifre.
+</p>
+
+<p>
+Si usano due numeri: mantissa ed esponente
+</p>
+
+<p>
+Esempio: <tt>b=12.1e+2</tt>
+</p>
+
+<p>
+Significato: 12.1 * 10<sup>2</sup>
+</p>
+
+<hr>
+
+
+<h4>Mantissa ed esponente in generale</h4>
+
+<p>
+Mantissa=numero frazionario, esponente=numero intero.
+</p>
+
+<p>
+Si scrive: mantissa<b>e</b>+esponente, e significa:
+mantissa*10<sup>esponente</sup>
+</p>
+
+<p>
+Esempio: <tt>1e+6</tt> significa 1*10<sup>6</sup>,
+ossia un milione.
+</p>
+
+<hr>
+
+
+<h4>Altri esempi di espressioni</h4>
+
+<pre>
+class Espressioni {
+  public static void main(String[] args) {
+    double a=12.23;
+    double b=0.1e+2;
+    double c;
+
+    c=(a+b)/12.1;
+    c=a*2+b;
+    c=1/(a-1)/(b-4);
+    c=Math.sqrt(a*a - b*b);
+  }
+}
+</pre>
+
+<p>
+Il <i>metodo</i> <tt>Math.sqrt</tt> calcola
+la radice quadrata.
+</p>
+
+<p>
+Vedremo altri metodi nel seguito.
+</p>
+
+<hr>
+
+
+<h4>Il significato di uguale</h4>
+
+<p>
+Cosa stampa il seguente programma?
+</p>
+
+<pre>
+class Incr {
+  public static void main(String args[]) {
+    int x;
+
+    x=4;
+
+    x=x+1;
+
+    System.out.println(x);
+  }
+}
+</pre>
+
+<p>
+<i>Suggerimento:</i>
+interpretazione letterale delle regole viste
+fino ad ora.
+</p>
+
+<hr>
+
+
+<h4><tt>x=x+1</tt></h4>
+
+<p>
+La istruzione <tt>variabile=espressione</tt>
+calcola il valore della espressione, e mette
+il risultato nella variabile.
+</p>
+
+<p>
+Quando viene eseguita <tt>x=x+1</tt> nella
+variabile <tt>x</tt> c'&egrave; il valore
+<tt>4</tt>. Quindi <tt>x+1</tt> ha valore <tt>5</tt>.
+</p>
+
+<p>
+Il risultato viene messo in <tt>x</tt>
+</p>
+
+<p>
+Quindi, <tt>x=x+1</tt> aumenta il valore che
+sta in <tt>x</tt> di uno.
+</p>
+
+<hr>
+
+
+<h4>La divisione intera</h4>
+
+<p>
+Regola: se i due operandi di una divisione
+sono interi, allora il risultato &egrave;
+un valore intero (troncato).
+</p>
+
+<p>
+Per esempio, <tt>14/5</tt> fa <tt>2</tt>.
+</p>
+
+<p>
+Modo di vedere questo risultato:
+</p>
+
+<img src="divisione.jpg">
+
+<dl>
+
+<dt><tt>/</tt>
+<dd>divisione intera
+
+<dt><tt>%</tt>
+<dd>resto
+
+</dl>
+
+<p>
+Interpretazione: <tt>/</tt> dice il risultato,
+mentre <tt>%</tt> dice il resto.
+</p>
+
+<hr>
+
+
+<h4>Esempio</h4>
+
+<p>
+Cosa stampa questo programma?
+</p>
+
+<pre>
+class DivInt {
+  public static void main(String args[]) {
+    int a;
+    int b;
+    int c;
+
+    a=11;
+    b=a/2;
+    c=b*2;
+
+    System.out.println(c);
+  }
+}
+</pre>
+
+<hr>
+
+
+<h4>Soluzione</h4>
+
+<ol>
+
+<li>nella variabile <tt>a</tt> viene messo <tt>11</tt>
+
+<li>la istruzione <tt>b=a/2</tt> comporta due passi:
+
+<ol>
+
+<li>viene valutato <tt>a/2</tt>; &egrave; una divisione
+intera, per cui viene <tt>5</tt> e non <tt>5.5</tt>
+
+<li>il risultato va in <tt>b</tt>
+
+</ol>
+
+<li>la istruzione <tt>c=b*2</tt> moltiplica il valore
+di <tt>b</tt> per due e mette il risultato in <tt>c</tt>
+
+</ol>
+
+<p>
+<b>Importante:</b> ogni istruzione agisce sullo stato
+corrente della memoria.
+</p>
+
+<p>
+L'istruzione <tt>c=b*2</tt> vede il valore di <tt>b</tt>,
+che &egrave; <tt>5</tt>. Non si pu&ograve; ricordare che
+questo valore viene dalla divisione di <tt>11</tt> per
+<tt>2</tt>.
+</p>
+
+<hr>
+
+
+<h4>Divisione non intera</h4>
+
+<p>
+Soluzione sbagliata: mettere il risultato in una
+variabile reale.
+</p>
+
+<pre>
+  int a;
+  double b;
+
+  ...
+
+  b=a/2;
+</pre>
+
+<p>
+L'istruzione <tt>b=a/2</tt> viene comunque
+eseguita in due passi.
+</p>
+
+<ol>
+
+<li>nel primo passo si
+fa la divisione <tt>a/2</tt>.
+
+<li>nel secondo si mette il risultato in <tt>b</tt>
+
+</ol>
+
+<p>
+La prima divisione non pu&ograve; "prevedere" che
+il risultato verr&agrave; messo in una variabile
+reale.
+</p>
+
+<p>
+Dato che i due operandi <tt>a</tt> e <tt>2</tt> sono
+interi, fa la divisione intera.
+</p>
+
+<hr>
+
+
+<h4>Divisione non intera</h4>
+
+<p>
+Dividendo due variabili, di cui una non &egrave;
+intera, viene usata la divisione esatta (reale).
+</p>
+
+<pre>
+  double a;
+  double b;
+
+  a=11;
+  b=a/2;
+</pre>
+
+<p>
+Oppure:
+</p>
+
+<pre>
+  int a;
+  double b;
+
+  a=11;
+  b=10/2.0;
+</pre>
+
+<p>
+Il valore <tt>2.0</tt> viene interpretato
+come un reale, anche se non ha parte
+frazionaria.
+</p>
+
+<hr>
+
+
+<h4>Contrazioni</h4>
+
+<p>
+Dichiarazione con assegnamento:
+</p>
+
+<pre>
+int x=10;
+</pre>
+
+<p>
+Equivale a:
+</p>
+
+<pre>
+int x;
+x=10;
+</pre>
+
+<hr>
+
+
+<h4>Contrazioni</h4>
+
+<p>
+Pi&ugrave; dichiarazioni insieme:
+</p>
+
+<pre>
+double x, y, z;
+int a, b;
+</pre>
+
+<p>
+Equivale a:
+</p>
+
+<pre>
+double x;
+double y;
+double z;
+int a;
+int b;
+</pre>
+
+<p>
+Si possono anche fare assegnamenti:
+</p>
+
+<pre>
+double a, b=10.2, c=32;
+</pre>
+
+<hr>
+
+<h4>Riepilogo</h4>
+
+<ol>
+
+<li>le variabili sono contenitori in cui si possono
+memorizzare dati
+
+<li>ogni variabile ha un tipo e un nome
+
+<li>l'istruzione <tt>var=espr</tt> mette un valore
+nella variabile
+
+<li>se una variabile appare in una espressione,
+al suo posto si mette il suo valore
+
+<li>si valuta <i>prima</i> l'espressione, e
+<i>poi</i> si mette il risultato nella variabile
+
+<li>ogni istruzione agisce solo sulla base dello
+stato attuale della memoria
+
+<li>attenzione alle precedenze (es. <tt>x+2 * 3</tt>)
+e ai tipi! (es. divisione intera)
+
+</ol>
+
+<!--
+
+Esempio (da qualche parte sopra): discriminante
+(da pagine InfoGraf)
+
+Mettere valori interi in variabili reali e viceversa.
+
+Stringhe (altra pagina)
+
+-->
+
+
+</body>
+</html>
+
+

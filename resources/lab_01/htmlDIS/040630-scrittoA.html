@@ -1,0 +1,99 @@
+<html>
+<head>
+<title>Scritto 30 Giugno 2004 - Compito A</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+</head>
+
+<body bgcolor="#FFFFFF" text="#000000">
+<p align="center"><font size="+1"><i>Facolt&agrave; di Ingegneria<br>
+  Corso di Laurea in Ingegneria Gestionale<br>
+  Tecniche di Programmazione<br>
+  A.A. 2003-2004</i></font></p>
+<p align="center"><font size="+1">Appello del 30 Giugno 2004 - Compito A</font></p>
+<p align="center"><font size="+1">Durata: 1 ora e 45 minuti</font></p>
+<hr>
+<p><b>Parte I</b></p>
+<ol>
+  <li> Scrivere un metodo statico <tt>verificaPariDispari</tt> (possibilmente 
+    ricorsivo) che, data una <tt>LinkedList</tt> (o un array) di <tt>Integer</tt>, 
+    restituisce la somma degli elementi con indice dispari meno la somma degli 
+    elementi con indice pari.</li>
+  <li>Scrivere un metodo statico <tt>contaNodi</tt> che, dato albero binario e 
+    un intero k, restituisce il numero di nodi che sono a profondit&agrave; k 
+    nell'albero<tt></tt>. Si ricorda che la radice ha profondit&agrave; zero, 
+    i figli della radice hanno profondit&agrave; 1, ecc. Si osservi che se un 
+    nodo &egrave; a profondit&agrave; k in un albero, sar&agrave; a profondit&agrave; 
+    k-1 nel sottoalbero (sinistro o destro) della radice in cui il nodo &egrave; 
+    contenuto.</li>
+</ol>
+<hr>
+<p><b>Parte II</b></p>
+<p><i>Domanda 1</i></p>
+<blockquote>
+  <p>Dire cosa succede quando viene eseguito il seguente programma:</p>
+  <pre>public class Mistero {
+    public static int mistero(int x){
+        if (x==0) return 1;
+        else return 2*mistero(x-2);
+    }
+    public static void main(String[] args){
+        System.out.println(mistero(8));
+        System.out.println(mistero(7));
+    }
+}</pre>
+  <p>Dire per quali valori di <tt>x</tt> il metodo <tt>mistero</tt> termina e 
+    possibilmente quale funzione matematica f(x) calcola su quei valori. Motivare 
+    le risposte (N.B. risposte non motivate saranno considerate nulle).</p>
+</blockquote>
+<p><i>Domanda 2</i></p>
+<blockquote>
+  <p>Illustrare l'algoritmo di ordinamento per selezione (Selectionsort) usando 
+    come esempio il seguente array di interi:</p>
+
+<table width="100" border="1" cellspacing="0" cellpadding="0">
+  <tr> 
+    <td> 
+        <div align="center">5</div>
+    </td>
+    <td> 
+        <div align="center">2</div>
+    </td>
+    <td> 
+        <div align="center">4</div>
+    </td>
+    <td> 
+        <div align="center">1</div>
+    </td>
+    <td> 
+        <div align="center">3</div>
+    </td>
+  </tr>
+</table>
+
+  <p> Valutare il tempo richiesto dall'algoritmo in funzione del numero di elementi 
+    n dell'array nel caso peggiore usando la notazione asintotica. Motivare la 
+    risposta (N.B. risposte non motivate saranno considerate nulle).</p>
+  </blockquote>
+<p><i>Domanda 3</i></p>
+<blockquote>
+  <p>Rispondere a <b>una sola</b> delle due domande seguenti, a scelta:</p>
+</blockquote>
+<ol>
+  <li>discutere le eccezioni in Java, usando degli esempi se necessario. In particolare, 
+    dire: 
+    <ul>
+      <li>a cosa servono</li>
+      <li>come si lanciano e come si catturano</li>
+      <li>che differenza c'&egrave; tra le eccezioni verificate (checked) e quelle 
+        non verificate (unchecked)</li>
+    </ul>
+  </li>
+  <li>scrivere un applet che disegna una scacchiera 8x8. Usare il metodo <tt>drawRect(x,y,larghezza,altezza)</tt> 
+    per disegnare le caselle chiare e il metodo <tt>fillRect(x,y,larghezza,altezza)</tt> 
+    per disegnare le caselle scure. Il lato in pixel di ciascuna casella deve 
+    essere pari a 40.</li>
+</ol>
+<p>&nbsp;</p>
+</body>
+</html>
+

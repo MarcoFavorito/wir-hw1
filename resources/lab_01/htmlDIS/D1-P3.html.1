@@ -1,0 +1,246 @@
+
+<HTML>
+<HEAD>
+<!--
+
+--> 
+<title> Progetto D2I - Prodotto D1-P3</title>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1">
+<style type="text/css">
+
+	A:link, A:visited { text-decoration: none }
+
+	A:hover { text-decoration: underline; color: red }
+
+</style>
+</HEAD>
+<BODY bgcolor="#CCCCCC" leftmargin="5" topmargin="10" marginwidth="5" marginheight="10">
+<CENTER>
+  <table border="0" cellspacing="0" cellpadding="0" width="98%" cols="2">
+    <tr> 
+      <td width="19%" align="right"> 
+        <table width="100%" border="1" height="65">
+          <tr bordercolor="#000099" bgcolor="#99CCFF"> 
+            <td height="94"> 
+              <div align="center"><b><font size="7"><em><font color="#000080">D2I</font></em></font></b></div>
+            </td>
+          </tr>
+        </table>
+      </td>
+      <td width="81%" align="left" >
+        <table width="100%" border="1" height="83">
+          <tr bordercolor="#000099" bgcolor="#99CCFF" align="left"> 
+            <td height="94"> 
+              <div align="center"><font size="6"><em><dfn><font size="5" color="#0000FF"><b><font size="+3"><font color="#000080">Integrazione, 
+                Warehousing e Mining di sorgenti eterogenee</font></font></b></font></dfn></em></font></div>
+            </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+  </table>
+  <TABLE BORDER="0" CELLSPACING="0" CELLPADDING="0" WIDTH="98%" Cols="2">
+    <TR> <!--fine prima colonna--> 
+      <TD align="center" valign="top" colspan="2"> 
+        <DIV STYLE="margin-top:20pt" align="justify"> 
+          <div style="margin-top:20pt" align="justify"> 
+            <table width="100%" height="45">
+              <tr align="left" bgcolor="#000099" bordercolor="#000099"> 
+                <td height="46"><font color="#000099"><font size="5" color="FFF907" face="Arial">Prototipo per gli algoritmi di query rewriting e query answering using views e per la riconciliazione dei dati: IBIS </font></font></td>
+              </tr>
+            </table>
+            <h3>Andrea Cal&igrave;, Giuseppe De Giacomo, Diego Calvanese, Domenico Lembo, Maurizio Lenzerini</h3>
+&nbsp;
+
+<center><table BORDER =1 WIDTH="80%" height="321">
+<tr>
+<td VALIGN=top height="19"><b>Tema</b></td>
+
+<td height="19"><a href="../../Temi/tema1.html"><u>Tema 1: Integrazione
+  di dati provenienti da sorgenti eterogenee</u></a></td>
+</tr>
+
+<tr>
+<td VALIGN=top height="19"><b>Codice</b></td>
+
+<td height="19">D1-P3</td>
+</tr>
+
+<tr>
+<td VALIGN=top height="19"><b>Data</b></td>
+
+<td height="19">8 ottobre 2002</td>
+</tr>
+
+<tr>
+<td VALIGN=top height="19"><b>Tipo di prodotto</b></td>
+
+<td height="19">Prodotto software</td>
+</tr>
+
+<tr>
+<td VALIGN=top height="19"><b>Unità responsabile</b></td>
+
+<td height="19">RM</td>
+</tr>
+
+<tr>
+<td VALIGN=top height="19"><b>Unità coinvolte</b></td>
+
+<td height="19">RM</td>
+</tr>
+
+<tr>
+<td VALIGN=top height="38"><b>Autori</b></td>
+
+<td height="38">Andrea Cal&igrave;, Giuseppe De Giacomo, Diego Calvanese, Domenico Lembo, Maurizio Lenzerini</td>
+</tr>
+
+<tr>
+<td VALIGN=top height="76"><b>Autore da contattare</b></td>
+
+<td height="76">Domenico Lembo<br>
+  Dipartimento di Informatica e Sistemistica
+<br>Università di Roma La Sapienza&nbsp;
+<br><A href="mailto:lembo@dis.uniroma1.it" >lembo@dis.uniroma1.it</A></td>
+</tr>
+
+<tr>
+<td VALIGN=top height="1"><b>Presentazione prototipo</b></td>
+<td height="1"><a href="../../Riunioni/Riunione_10_02/Lembo-D1-P3.ppt"><u>D1-P3</u></a>
+    </td>
+</tr>
+
+<tr>
+<td VALIGN=top><b>Documentazione in linea&nbsp;</b></td>
+
+<td><a href="./D1.P3.ps"><u>D1.P3.ps</u></a></td>
+</tr>
+</table></center>
+
+            &nbsp;
+
+
+<p>
+<hr height="15" color="#000099">
+<center>
+<h3>
+<b>Descrizione</b></h3></center>
+            <p>The Internet-Based Information System (IBIS) is a tool for the
+            semantic integration of heterogeneous data sources, developed at
+            the same time in the project D2I and in the context of a
+            collaboration between the "Dipartimento di Informatica e
+            Sistemistica" (DIS) of the University of Rome "La Sapienza" and CM
+            Sistemi. IBIS adopts innovative solutions to deal with all aspects
+            of a complex data integration environment, including source
+            wrapping, limitations on source access, and query answering under
+            integrity constraints. With regard to the last two aspects, it is
+            worth underlining that the attention of CM sistemi was originally
+            devoted to the problem of query answering in the presence of
+            limitations in accessing the sources, whereas, within the D2I
+            project, DIS mainly studied the problem of query answering in the
+            presence of integrity constraints on the global schema, as
+            described in the deliverables D1.R5: "Survey on methods for query
+            answering and query rewriting using views" and D1.R11:"Methodology
+            and Tools to Reconcile Data". The relevance of the first problem
+            in data integration applications led us to also investigate it in
+            the context of the D2I project, and to study techniques and
+            algorithms to properly process queries in such a setting. Such
+            algorithms are actually implemented in the IBIS system.
+            </p>
+            <p>IBIS uses a relational global schema to query the data at the
+            sources, and is able to cope with a variety of heterogeneous data
+            sources, including data sources on the Web, relational databases,
+            and legacy sources. Each non-relational source is wrapped to
+            provide a relational view on it. Also, each source is considered
+            sound. The system allows for the specification of integrity
+            constraints on the global schema; in addition, it considers the
+            presence of some forms of constraints on the source schema, in
+            order to perform runtime optimization during data extraction. In
+            particular, key and foreign key constraints can be specified on
+            the global schema, and functional dependencies and full-width
+            inclusion dependencies, i.e., inclusions between entire relations,
+            can be specified on the source schema. </p>
+
+		<p>The system has been
+            designed to allow for the specification of  either GAV or LAV
+            mappings, and for properly processing queries in both the
+            approaches. However, the current implementation of IBIS supports
+            only the definition of GAV mappings, and implements only query
+            processing techniques for this approach. Furthermore, the
+            framework adopted in IBIS enables for dealing with both incomplete
+            and inconsistent data sources. Actually, the techniques developed
+            in D2I to cope with inconsistent data have not yet been
+            implemented in the system.</p> 
+            <p>More in the details, query processing
+            in IBIS is separated in three phases: 
+		<ol>
+		<li>the query is expanded to
+            take into account the integrity constraints in the global schema;</li>
+            <li>the atoms in the expanded query are unfolded according to their
+            definition in the mapping, obtaining a query expressed over the
+            sources;</li> 
+		<li>the expanded and unfolded query is executed over the
+            retrieved source databases (see below), to produce the answer to
+            the original query.</li> 
+   		</ol>
+		
+		<p>Query unfolding and execution are the standard
+            steps of query processing in GAV data integration systems, while
+            for the expansion phase IBIS makes use of the algorithms presented
+            in the deliverable D1.R11. The expanded query has to be evaluated
+            over the retrieved global database in order to produce the certain
+            answers to the original query. As the construction of the
+            retrieved global database is computationally costly, the IBIS
+            Expander module does not construct it explicitly. Instead, it
+            unfolds the expanded query and evaluates the unfolded query over
+            the retrieved source database, whose data are extracted by the
+            Extractor module that retrieves from the sources all the tuples
+            that may be used to answer the original query. </p>
+
+		<p>It is worth
+            noticing that for LAV  mappings, phases 2 and 3 of the query
+            answering process in IBIS can be easily replaced by a query
+            rewriting procedure, as the one described in the deliverable
+            D1.R11.</p>
+
+<hr height="15" color="#000099">
+<center>
+<h3>
+<b>Ambiente di sviluppo e di esecuzione</b></h3></center>
+            Developed in Java and Visual C++ 6.0 within the Microsoft Com+
+            environment.
+<br>Runnable under Windows 2000 Advanced Server.
+<br>
+<hr height="15" color="#000099">
+ 
+            &nbsp;
+
+            <p><font color="#0000FF"><a href="../index.html"><u>Back</u></a></font> 
+            </p>
+
+           </div>
+         </div>
+        
+    <TR> 
+      <TD colspan="2" bgcolor="#CCCCCC">&nbsp;</TD>
+    </TR>
+    <TR> 
+      <TD bgcolor="#000099" colspan="2">&nbsp;</TD>
+    </TR>
+    <TR> 
+      <TD colspan="2" bgcolor="#CCCCCC">&nbsp;</TD>
+    </TR>
+    <TR> 
+      <TD height="38" colspan="2" bgcolor="#CCCCCC"> 
+        <div align="center"><font face="Arial" size="1" color="#4E4B4A"><b>Sito 
+          a cura di Domenico Lembo<br>
+          </b></font> <a href="mailto:lembo@dis.uniroma1.it"><font face="Arial" size="1" color="#000099">lembo@dis.uniroma1.it</font></a><BR>
+        </div>
+      </TD>
+    </TR>
+    <!--fine seconda colonna--> 
+  </TABLE>
+</CENTER>
+</BODY>
+</HTML>

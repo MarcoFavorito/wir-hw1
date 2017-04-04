@@ -1,0 +1,570 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0//EN">
+<!-- Created by htmlize-0.46 in css mode. -->
+<html>
+  <head>
+    <title>svol99-07-01.c</title>
+    <style type="text/css">
+    <!--
+      BODY {
+        color: #000000;
+        background-color: #ffffff;
+      } /* default */
+      span.constant {
+        color: #9400d3;
+      } /* font-lock-constant-face */
+      span.keyword {
+        color: #006400;
+      } /* font-lock-keyword-face */
+      span.function-name {
+        color: #0000cd;
+      } /* font-lock-function-name-face */
+      span.comment {
+        color: #4682b4;
+      } /* font-lock-comment-face */
+      span.string {
+        color: #b22222;
+      } /* font-lock-string-face */
+      span.variable-name {
+        color: #a52a2a;
+      } /* font-lock-variable-name-face */
+      span.type {
+        color: #ff00ff;
+      } /* font-lock-type-face */
+      span.builtin {
+        color: #da70d6;
+      } /* font-lock-builtin-face */
+    -->
+    </style>
+  </head>
+  <body>
+    <pre>
+<span class="comment">/* Svolgimento compito C del 1-7-99 (Ambiente e Territorio), a cura del docente */</span>
+
+#<span class="builtin">include</span> <span class="string">&lt;stdio.h&gt;</span>
+#<span class="builtin">include</span> <span class="string">&lt;stdlib.h&gt;</span>
+#<span class="builtin">include</span> <span class="string">&lt;string.h&gt;</span>
+
+#<span class="builtin">define</span> <span class="variable-name">EPS</span> 1E-6
+<span class="comment">/* se il modulo dalla differanza di due numeri e` inferiore a EPSilon i due numeri
+   sono considerati eguali */</span>
+
+#<span class="builtin">define</span> <span class="variable-name">MAXNOMEFILE</span> 21
+<span class="comment">/* 20 caratteri piu` terminatore */</span>
+
+<span class="type">typedef</span> <span class="type">char</span> <span class="variable-name">nomefile</span>[MAXNOMEFILE];
+
+#<span class="builtin">define</span> <span class="variable-name">NRIG</span> 20
+#<span class="builtin">define</span> <span class="variable-name">NCOL</span> 20
+<span class="comment">/* per sovradimensionare le matrici */</span>
+
+<span class="type">struct</span> <span class="variable-name">structmatrice</span> {
+	<span class="type">int</span> <span class="variable-name">nrig</span>, <span class="variable-name">ncol</span>;
+	<span class="type">float</span> <span class="variable-name">mat</span>[NRIG][NCOL];
+};
+
+<span class="type">typedef</span> <span class="type">struct</span> structmatrice <span class="variable-name">matrice</span>;
+
+<span class="type">struct</span> <span class="variable-name">elista</span> {
+	nomefile info;
+	<span class="type">struct</span> elista *<span class="variable-name">next</span>;
+};
+
+<span class="type">typedef</span> <span class="type">struct</span> elista <span class="variable-name">elem</span>;
+
+<span class="comment">/* UNICHE VAR GLOBALI -- EVENTO ECCEZIONALE */</span>
+<span class="type">elem</span> *<span class="variable-name">Lista</span>=NULL,  <span class="comment">/* PUNTA ALLA LISTA DEI NOMI DI FILE DI CUI AL PUNTO 3. */</span>
+     *Coda=NULL;
+
+<span class="comment">/* prototipi */</span>
+<span class="type">int</span> <span class="function-name">main</span>(<span class="type">void</span>);
+<span class="type">elem</span> *<span class="function-name">CercaInLista</span>(nomefile);
+<span class="type">void</span> <span class="function-name">DistruggiLista</span>();
+<span class="type">int</span> <span class="function-name">Lavora</span>();
+<span class="type">void</span> <span class="function-name">InserisciInCoda</span>(nomefile);
+<span class="type">void</span> <span class="function-name">PrintMenu</span>();
+<span class="type">int</span> <span class="function-name">CostruisciFile</span>();
+<span class="type">int</span> <span class="function-name">LeggiMatrice</span>(matrice*);
+<span class="type">void</span> <span class="function-name">StampaMatrice</span>(<span class="type">char</span> *, matrice);
+<span class="type">int</span> <span class="function-name">ScaricaMatrice</span>(matrice);
+<span class="type">void</span> <span class="function-name">StampaLista</span>();
+<span class="type">void</span> <span class="function-name">LeggiNomeFile</span>(<span class="type">char</span> *, nomefile);
+<span class="type">void</span> <span class="function-name">CostruisciLista</span>();
+<span class="type">void</span> <span class="function-name">EmendaLista</span>(nomefile);
+<span class="type">void</span> <span class="function-name">AnalizzaMinore</span>();
+<span class="type">int</span> <span class="function-name">Confronta</span>(nomefile, nomefile, <span class="type">int</span> *, <span class="type">int</span> *);
+<span class="type">int</span> <span class="function-name">CaricaMatrice</span>(nomefile, matrice*);
+<span class="type">void</span> <span class="function-name">CostruisciMinore</span>(matrice, matrice*, <span class="type">int</span>, <span class="type">int</span>);
+<span class="type">int</span> <span class="function-name">ConfrontaMatrici</span>(matrice, matrice);
+<span class="type">int</span> <span class="function-name">AnalizzaLista</span>();
+<span class="type">int</span> <span class="function-name">VerificaFile</span>(nomefile);
+<span class="type">void</span> <span class="function-name">DistruggiElemento</span>(elem *);
+
+<span class="type">int</span> <span class="function-name">main</span>(<span class="type">void</span>)
+{
+	printf (<span class="string">&quot;Benvenuti!\n\n&quot;</span>);
+	
+	<span class="keyword">while</span>(Lavora()==1);
+	
+	printf (<span class="string">&quot;\nArrivederci!\n&quot;</span>);
+
+	<span class="keyword">return</span> 0;
+}
+
+
+<span class="type">int</span> <span class="function-name">Lavora</span>()
+<span class="comment">/* restituisce 0 se utente ha chiesto terminazione, 1 altrimenti */</span>
+{
+	<span class="type">int</span> <span class="variable-name">scelta</span>;
+	PrintMenu();
+	scelta=getchar();
+	getchar();
+	<span class="keyword">switch</span>(scelta) {
+		<span class="keyword">case</span> <span class="string">'1'</span>:
+					CostruisciFile();
+					<span class="keyword">return</span> 1;
+		<span class="keyword">case</span> <span class="string">'2'</span>:
+					CostruisciLista();
+					<span class="keyword">return</span> 1;
+		<span class="keyword">case</span> <span class="string">'3'</span>:
+					AnalizzaMinore();
+					<span class="keyword">return</span> 1;
+		<span class="keyword">case</span> <span class="string">'4'</span>:
+					AnalizzaLista();
+					<span class="keyword">return</span> 1;
+		<span class="keyword">case</span> <span class="string">'5'</span>:
+					<span class="keyword">return</span> 0;
+		<span class="constant">default</span> :
+					printf(<span class="string">&quot;\n\nscelta non valida...\n&quot;</span>);
+					<span class="keyword">return</span> 1;
+	}
+}
+
+
+<span class="type">void</span> <span class="function-name">PrintMenu</span>()
+{
+	printf(<span class="string">&quot;MENU\n\n&quot;</span>);
+	printf(<span class="string">&quot;\t[1] Costruisci file con matrice.\n\n&quot;</span>);
+	printf(<span class="string">&quot;\t[2] Costruisci lista nomi file.\n\n&quot;</span>);
+	printf(<span class="string">&quot;\t[3] Determina se una matrice e` un minore di un'altra matrice (punto 2 richiesto).\n\n&quot;</span>);
+	printf(<span class="string">&quot;\t[4] Analizza lista nomi file (punto 3 richiesto).\n\n&quot;</span>);
+	printf(<span class="string">&quot;\t[5] Termina.\n\n&quot;</span>);
+	printf(<span class="string">&quot;\nInserisci scelta... &quot;</span>);
+	<span class="keyword">return</span>;
+}
+
+
+<span class="type">int</span> <span class="function-name">CostruisciFile</span>()
+<span class="comment">/* 
+   restituisce 0 se ha successo, un numero &gt; 0 se fallisce:
+   1 == fallimento lettura matrice
+   2 == fallimento costruzione file
+*/</span>
+{
+	matrice m;
+	
+	<span class="keyword">if</span>(LeggiMatrice(&amp;m)==1)
+		<span class="keyword">return</span> 1;	
+	
+	<span class="keyword">if</span>(ScaricaMatrice(m)==1)
+		<span class="keyword">return</span> 2;
+	
+	printf(<span class="string">&quot;Costruzione file terminata con successo.\n&quot;</span>);
+	<span class="keyword">return</span> 0;
+}
+
+<span class="type">int</span> <span class="function-name">LeggiMatrice</span>(matrice *z)
+<span class="comment">/* ritorna 0 se l'operazione ha successo, 1 altrimenti */</span>
+{
+	<span class="type">int</span> <span class="variable-name">i</span>,<span class="variable-name">j</span>;
+	
+	printf(<span class="string">&quot;\n\nInserimento matrice...&quot;</span>);
+	printf(<span class="string">&quot;Immettere numero righe e numero colonne: &quot;</span>);
+	scanf(<span class="string">&quot;%d%d&quot;</span>, &amp;z-&gt;nrig, &amp;z-&gt;ncol);
+	<span class="keyword">if</span>((z-&gt;nrig&gt;NRIG)||(z-&gt;ncol&gt;NCOL)) {
+		printf(<span class="string">&quot;\nMatrice troppo grande (max %dx%d). Operazione annullata.\n\n&quot;</span>,NRIG,NCOL);
+		<span class="keyword">return</span> 1;
+	}
+	
+	printf(<span class="string">&quot;Immissione matrice (scrivere valori separati da spazi e/o invii):\n&quot;</span>);
+	<span class="keyword">for</span>(i=0; i&lt;z-&gt;nrig; i++)
+		<span class="keyword">for</span>(j=0; j&lt;z-&gt;ncol; j++)
+			scanf(<span class="string">&quot;%f&quot;</span>,&amp;z-&gt;mat[i][j]);
+	getchar();
+	printf(<span class="string">&quot;Immissione matrice terminata.\n\n&quot;</span>);
+	
+	StampaMatrice(<span class="string">&quot;Matrice inserita:&quot;</span>,*z);
+	
+	<span class="keyword">return</span> 0;
+}
+
+
+<span class="type">void</span> <span class="function-name">StampaLista</span>()
+{
+	elem *cursore=Lista;
+
+	printf(<span class="string">&quot;Inizio lista:\n&quot;</span>);	
+	<span class="keyword">while</span>(cursore!=NULL) {
+		printf(<span class="string">&quot;%s\n&quot;</span>,cursore-&gt;info);
+		cursore=cursore-&gt;next;
+	}
+	printf(<span class="string">&quot;Fine lista.\n\n&quot;</span>);
+	<span class="keyword">return</span>;
+}
+
+<span class="type">void</span> <span class="function-name">StampaMatrice</span>(<span class="type">char</span> *<span class="variable-name">messaggio</span>, <span class="variable-name">matrice</span> m)
+{
+	<span class="type">int</span> <span class="variable-name">i</span>,<span class="variable-name">j</span>;
+	printf(<span class="string">&quot;%s\n&quot;</span>, messaggio);
+	<span class="keyword">for</span>(i=0; i&lt;m.nrig; i++) {
+		<span class="keyword">for</span>(j=0; j&lt;m.ncol; j++)
+			printf(<span class="string">&quot;%12.4f &quot;</span>,m.mat[i][j]);
+		printf(<span class="string">&quot;\n&quot;</span>);
+	}
+	<span class="keyword">return</span>;
+}
+
+
+<span class="type">int</span> <span class="function-name">ScaricaMatrice</span>(matrice m)
+<span class="comment">/* restituisce 0 se ha successo, 1 se fallisce */</span>
+{
+	nomefile nome;
+	<span class="type">FILE</span> *<span class="variable-name">f</span>;
+	
+	LeggiNomeFile(<span class="string">&quot;Inserisci nome file (.dat) scelto per memorizzare la matrice: &quot;</span>,nome);
+	f=fopen(nome,<span class="string">&quot;wb&quot;</span>);
+	<span class="keyword">if</span>(f==NULL) {
+		printf(<span class="string">&quot;Fallimento nell'apertura del file \&quot;%s\&quot; in modalita` \&quot;wb\&quot;. Operazione annullata.\n&quot;</span>,nome);
+		<span class="keyword">return</span> 1;
+	}
+	
+	<span class="comment">/* scarica prima le dimensioni */</span>
+	fwrite(&amp;m.nrig,<span class="keyword">sizeof</span>(m.nrig),1,f);
+	fwrite(&amp;m.ncol,<span class="keyword">sizeof</span>(m.ncol),1,f);
+	
+	<span class="comment">/* scarica tutta la matrice */</span>
+	fwrite(&amp;m.mat,<span class="keyword">sizeof</span>(m.mat),1,f);
+	
+	fclose(f);
+	<span class="keyword">return</span> 0;
+}
+
+
+<span class="type">void</span> <span class="function-name">LeggiNomeFile</span>(<span class="type">char</span> *<span class="variable-name">messaggio</span>, <span class="variable-name">nomefile</span> nome)
+{
+	printf(<span class="string">&quot;%s&quot;</span>, messaggio);
+	gets(nome);
+	<span class="keyword">return</span>;
+}
+
+
+<span class="type">void</span> <span class="function-name">CostruisciLista</span>()
+{
+	<span class="type">int</span> <span class="variable-name">scelta</span>, <span class="variable-name">inserisco</span>;
+	nomefile nome;
+	
+	<span class="keyword">if</span>(Lista != NULL) {
+		printf(<span class="string">&quot;Una lista esiste gia`.\n&quot;</span>);
+		StampaLista();
+		printf(<span class="string">&quot;Premi [7] per crearne una nuova (distruggendo la vecchia).\n\n&quot;</span>);
+		printf(<span class="string">&quot;Premi [8] per aggiungere in coda alla vecchia.\n\n&quot;</span>);
+		printf(<span class="string">&quot;Premi [9] per annullare l'operazione.\n\n\n&quot;</span>);
+		scelta=getchar();
+		getchar();
+		<span class="keyword">switch</span>(scelta) {
+			<span class="keyword">case</span> <span class="string">'7'</span>:	DistruggiLista();
+						<span class="keyword">break</span>;
+			<span class="keyword">case</span> <span class="string">'8'</span>:	<span class="keyword">break</span>;
+			<span class="keyword">case</span> <span class="string">'9'</span>:	<span class="keyword">return</span>;
+			<span class="constant">default</span> :	printf(<span class="string">&quot;\n\nscelta non valida. Operazione annullata.\n\n&quot;</span>);
+						<span class="keyword">return</span>;
+		}
+	}
+	
+	printf(<span class="string">&quot;Immetti i nomi dei file separati da invii -- premi invio a vuoto per terminare\n&quot;</span>);
+	LeggiNomeFile(<span class="string">&quot;nome file: &quot;</span>,nome);
+	<span class="keyword">while</span>(nome[0]!=0) { <span class="comment">/* una stringa vuota contiene solo il terminatore */</span>
+		<span class="keyword">if</span>(CercaInLista(nome)!=NULL)
+			printf(<span class="string">&quot;File \&quot;%s\&quot; gia` presente in lista - non verra` inserito.\n&quot;</span>,nome);
+		<span class="keyword">else</span> {
+			inserisco=VerificaFile(nome); <span class="comment">/* 0 se il file esiste ed e` apribile, 1 altrimenti */</span>
+			<span class="keyword">if</span>(inserisco==1) {
+				printf(<span class="string">&quot;Il file \&quot;%s\&quot; non puo` essere aperto in modalita` \&quot;rb\&quot;.\n&quot;</span>,nome);
+				printf(<span class="string">&quot;[8] Forza inserimento.\n\n&quot;</span>);
+				printf(<span class="string">&quot;[9] Annulla inserimento.\n\n\n&quot;</span>);
+				scelta=getchar();
+				getchar();
+				<span class="keyword">switch</span>(scelta) { <span class="comment">/* occhio a come e` scritta questa istruzione! */</span>
+					<span class="keyword">case</span> <span class="string">'8'</span>: inserisco=0;
+							  <span class="keyword">break</span>;
+					<span class="constant">default</span> : printf(<span class="string">&quot;\n\nscelta non valida. Operazione annullata.\n\n&quot;</span>);
+					<span class="keyword">case</span> <span class="string">'9'</span>: <span class="keyword">break</span>;
+				}
+			}
+			<span class="keyword">if</span>(inserisco==0)
+				InserisciInCoda(nome);
+		}
+		LeggiNomeFile(<span class="string">&quot;nome file: &quot;</span>,nome);
+	}
+	
+	<span class="keyword">return</span>;
+}
+
+
+<span class="type">elem</span> *<span class="function-name">CercaInLista</span>(nomefile nome)
+<span class="comment">/* restituisce l'indirizzo di nome se presente, NULL altrimenti */</span>
+{
+	elem *cursore;
+	
+	cursore=Lista;
+	<span class="keyword">while</span>(cursore!=NULL)
+		<span class="keyword">if</span>(strcmp(nome,cursore-&gt;info)==0)
+			<span class="keyword">return</span> cursore;
+		<span class="keyword">else</span>
+			cursore=cursore-&gt;next;
+	<span class="keyword">return</span> NULL;
+}
+	
+
+
+<span class="type">int</span> <span class="function-name">VerificaFile</span>(nomefile nome)
+<span class="comment">/* restituisce 0 se il file e` apribile &quot;rb&quot;, 1 altrimenti */</span>
+{
+	<span class="type">FILE</span> *<span class="variable-name">f</span>;
+	printf(<span class="string">&quot;Verifico file \&quot;%s\&quot;.\n&quot;</span>, nome);
+	f=fopen(nome,<span class="string">&quot;rb&quot;</span>);
+	<span class="keyword">if</span>(f!=NULL) {
+		fclose(f);
+		<span class="keyword">return</span> 0;
+	} <span class="keyword">else</span>
+		<span class="keyword">return</span> 1;
+}
+
+
+<span class="type">void</span> <span class="function-name">DistruggiLista</span>()
+{
+	elem *morituro;
+	
+	printf(<span class="string">&quot;Inizio distruzione lista... &quot;</span>);
+	<span class="keyword">while</span>(Lista != NULL) {
+		morituro=Lista;
+		Lista=Lista-&gt;next;
+		free(morituro);
+	}
+	printf(<span class="string">&quot;fatto.\n\n&quot;</span>);
+	<span class="keyword">return</span>;
+}
+
+
+<span class="type">void</span> <span class="function-name">InserisciInCoda</span>(nomefile nome)
+{
+	elem *nuovo;
+	
+	printf(<span class="string">&quot;Inserimento nome file \&quot;%s\&quot;... &quot;</span>, nome);
+	nuovo=malloc(<span class="keyword">sizeof</span>(elem));
+	<span class="keyword">if</span>(nuovo==NULL) {
+		printf(<span class="string">&quot;Memoria esaurita. Impossibile inserire.\n\n&quot;</span>);
+		<span class="keyword">return</span>;
+	}
+	
+	strcpy(nuovo-&gt;info,nome);
+	nuovo-&gt;next=NULL;
+	<span class="keyword">if</span>(Lista==NULL)
+		Lista=nuovo;
+	<span class="keyword">else</span>
+		Coda-&gt;next=nuovo;
+	Coda=nuovo;
+	printf(<span class="string">&quot;fatto.\n&quot;</span>);
+	<span class="keyword">return</span>;
+}
+
+<span class="type">void</span> <span class="function-name">AnalizzaMinore</span>()
+{
+	nomefile nome1, nome2;
+	<span class="type">int</span> <span class="variable-name">i</span>, <span class="variable-name">j</span>;
+	
+	printf(<span class="string">&quot;Analisi minori.\n&quot;</span>);
+	LeggiNomeFile(<span class="string">&quot;Nome PRIMO file: &quot;</span>, nome1);
+	LeggiNomeFile(<span class="string">&quot;Nome SECONDO file: &quot;</span>, nome2);
+	
+	<span class="keyword">if</span>(Confronta(nome1, nome2, &amp;i, &amp;j) == 1)
+		printf(<span class="string">&quot;Responso positivo. Indici: (%d,%d)\n\n&quot;</span>,i,j);
+	<span class="keyword">else</span>
+		printf(<span class="string">&quot;Responso negativo.\n\n&quot;</span>);
+	
+	printf(<span class="string">&quot;\nFine analisi minori.\n&quot;</span>);
+	<span class="keyword">return</span>;
+}
+
+
+<span class="type">int</span> <span class="function-name">Confronta</span>(nomefile nome1, nomefile nome2, <span class="type">int</span> *<span class="variable-name">riga</span>, <span class="type">int</span> *<span class="variable-name">colonna</span>)
+<span class="comment">/* 
+   Restituisce 1 se la mat. in nome2 e` un minore della matrice in nome1;
+   in tal caso restituisce in i e j gli indici che definiscono il minore.
+   Restituisce 0 altrimenti.
+   E` la funzione richiesta al punto 2 del testo.
+*/</span>
+{
+	matrice m1, m2, m3;
+	
+	
+	<span class="keyword">if</span>(CaricaMatrice(nome1, &amp;m1)==1) {
+		printf(<span class="string">&quot;Impossibile caricare matrice dal file \&quot;%s\&quot;.\n&quot;</span>, nome1);
+		<span class="keyword">return</span> 0;
+	}
+	<span class="keyword">if</span>(CaricaMatrice(nome2, &amp;m2)==1) {
+		printf(<span class="string">&quot;Impossibile caricare matrice dal file \&quot;%s\&quot;.\n&quot;</span>, nome2);
+		<span class="keyword">return</span> 0;
+	}
+
+	<span class="keyword">if</span>((m1.nrig != m2.nrig+1) || (m1.ncol != m2.ncol+1))
+		<span class="keyword">return</span> 0;
+	
+	printf(<span class="string">&quot;Confronto file \&quot;%s\&quot; e \&quot;%s\&quot;.\n&quot;</span>,nome1, nome2);
+	printf(<span class="string">&quot;Matrici:\n&quot;</span>);
+	StampaMatrice(<span class="string">&quot;PRIMA matrice:&quot;</span>,m1);
+	StampaMatrice(<span class="string">&quot;\nSECONDA matrice:&quot;</span>,m2);
+	
+	<span class="keyword">for</span>(*riga=1; *riga &lt;= m1.nrig; (*riga)++)
+		<span class="keyword">for</span>(*colonna=1; *colonna &lt;= m1.ncol; (*colonna)++) {
+			CostruisciMinore(m1, &amp;m3, *riga, *colonna);
+			<span class="keyword">if</span>(ConfrontaMatrici(m2, m3) == 0) <span class="comment">/* 0 = eguaglianza delle matrici */</span>
+				<span class="keyword">return</span> 1;
+		}
+	<span class="keyword">return</span> 0;
+}
+
+
+<span class="type">int</span> <span class="function-name">CaricaMatrice</span>(nomefile nome, matrice *m)
+<span class="comment">/* restituisce 0 se ha successo, 1 altrimenti */</span>
+{
+	<span class="type">FILE</span> *<span class="variable-name">f</span>;
+	f=fopen(nome,<span class="string">&quot;rb&quot;</span>);
+	<span class="keyword">if</span>(f==NULL) {
+		printf(<span class="string">&quot;Impossibile aprire file \&quot;%s\&quot; in modalita` \&quot;rb\&quot;.\n&quot;</span>,nome);
+		<span class="keyword">return</span> 1;
+	}
+	fread(&amp;m-&gt;nrig, <span class="keyword">sizeof</span>(m-&gt;nrig), 1, f); <span class="comment">/* legge prima n.ro righe */</span>
+	fread(&amp;m-&gt;ncol, <span class="keyword">sizeof</span>(m-&gt;ncol), 1, f); <span class="comment">/* n.ro colonne */</span>
+	<span class="keyword">if</span>((m-&gt;nrig&gt;NRIG)||(m-&gt;ncol&gt;NCOL)) {
+		printf(<span class="string">&quot;\nMatrice in file \&quot;%s\&quot; troppo grande (max %dx%d). Operazione annullata.\n\n&quot;</span>,nome,NRIG,NCOL);
+		<span class="keyword">return</span> 1;
+	}
+	fread(&amp;m-&gt;mat, <span class="keyword">sizeof</span>(m-&gt;mat), 1, f); <span class="comment">/* matrice effettiva */</span>
+	fclose(f);
+	<span class="keyword">return</span> 0;
+}
+
+
+<span class="type">void</span> <span class="function-name">CostruisciMinore</span>(matrice grande, matrice *piccola, <span class="type">int</span> <span class="variable-name">r</span>, <span class="type">int</span> <span class="variable-name">c</span>)
+<span class="comment">/* attenzione, i valori di r (riga) e c (colonna) sono quelli &quot;matematici&quot;.
+   In C gli indici iniziano da 0, per cui i valori di interesse in pratica sono 
+   r-1 e c-1
+*/</span>
+{
+	<span class="type">int</span> <span class="variable-name">i</span>, <span class="variable-name">j</span>, <span class="comment">/* indici per scandire la matrice grande */</span>
+	    ii, jj; <span class="comment">/* per scandire la matrice piccola */</span>
+	    
+	r--; c--; <span class="comment">/* corregge prima gli indici */</span>
+	piccola-&gt;nrig=grande.nrig-1;
+	piccola-&gt;ncol=grande.ncol-1;
+	<span class="keyword">for</span>(ii=0; ii &lt; piccola-&gt;nrig; ii++)
+		<span class="keyword">for</span>(jj=0; jj &lt; piccola-&gt;ncol; jj++) {
+			<span class="keyword">if</span>(ii&lt;r)   <span class="comment">/* siamo sopra alla riga da cancellare */</span>
+				i=ii;
+			<span class="keyword">else</span>       <span class="comment">/* siamo sotto alla riga da cancellare */</span>
+				i=ii+1;
+			<span class="keyword">if</span>(jj&lt;c)   <span class="comment">/* siamo sopra alla colonna da cancellare */</span>
+				j=jj;
+			<span class="keyword">else</span>       <span class="comment">/* siamo sotto alla colonna da cancellare */</span>
+				j=jj+1;
+			piccola-&gt;mat[ii][jj]=grande.mat[i][j];
+		}
+	<span class="keyword">return</span>;
+}
+
+
+<span class="type">int</span> <span class="function-name">ConfrontaMatrici</span>(matrice m1, matrice m2)
+<span class="comment">/* restituisce 0 se identiche, 1 altrimenti */</span>
+{
+	<span class="type">int</span> <span class="variable-name">i</span>, <span class="variable-name">j</span>;
+	
+	<span class="comment">/* in realta` il test seguente e` inutile poiche'
+	   la funzione viene sempre chiamata su matrice di eguali dimensioni */</span>
+	<span class="keyword">if</span>((m1.nrig!=m2.nrig)||(m1.ncol!=m2.ncol)) 
+		<span class="keyword">return</span> 1;
+
+	<span class="keyword">for</span>(i=0; i &lt; m1.nrig; i++)
+		<span class="keyword">for</span>(j=0; j&lt; m1.ncol; j++)
+			<span class="comment">/* per il confronto fra razionali e` bene usare una soglia EPSilon */</span>
+			<span class="keyword">if</span>((m1.mat[i][j]-m2.mat[i][j]&lt;=-EPS)||(m1.mat[i][j]-m2.mat[i][j]&gt;=EPS))
+				<span class="keyword">return</span> 1;
+
+	<span class="keyword">return</span> 0;
+}
+
+
+<span class="type">int</span> <span class="function-name">AnalizzaLista</span>()
+<span class="comment">/* restituisce 0 in caso di successo, un positivo altrimenti */</span>
+{
+	nomefile nome;
+	
+	<span class="keyword">if</span>(Lista==NULL) {
+		printf(<span class="string">&quot;La lista non esiste. Operazione annullata.\n&quot;</span>);
+		<span class="keyword">return</span> 1;
+	}
+	
+	LeggiNomeFile(<span class="string">&quot;Inserisci nome file riferimento per il confronto con la lista: &quot;</span>,nome);
+	<span class="keyword">if</span>(VerificaFile(nome)==1) {
+		printf(<span class="string">&quot;Il file \&quot;%s\&quot; non e` apribile in modalita` \&quot;rb\&quot;. Operazione annullata.\n&quot;</span>,nome);
+		<span class="keyword">return</span> 2;
+	}
+	EmendaLista(nome);
+	<span class="keyword">return</span> 0;
+}
+
+
+<span class="type">void</span> <span class="function-name">EmendaLista</span>(nomefile nome)
+<span class="comment">/* funzione richiesta al punto 3. */</span>
+{
+	elem *cursore, *prec;
+	<span class="type">int</span> <span class="variable-name">i</span>, <span class="variable-name">j</span>; <span class="comment">/* sono richiesti per la chiamata di Confronta */</span>
+	
+	printf(<span class="string">&quot;Inizio emendamento della seguente lista:\n&quot;</span>);
+	StampaLista();
+	prec=NULL;
+	cursore=Lista;
+	<span class="keyword">while</span>(cursore!=NULL) {
+		<span class="keyword">if</span>(Confronta(nome,cursore-&gt;info,&amp;i,&amp;j)==0) 
+			DistruggiElemento(prec);
+		<span class="keyword">else</span>
+			prec=cursore;
+		<span class="keyword">if</span>(prec==NULL)
+			cursore=Lista;
+		<span class="keyword">else</span>
+			cursore=prec-&gt;next;
+	}
+	printf(<span class="string">&quot;Fine emendamento. Lista risultante:\n&quot;</span>);
+	StampaLista();
+	<span class="keyword">return</span>;
+}
+
+
+<span class="type">void</span> <span class="function-name">DistruggiElemento</span>(elem *prec)
+{
+	elem *morituro;
+	
+	<span class="keyword">if</span>(prec==NULL) {
+		morituro=Lista;
+		Lista=Lista-&gt;next;
+	} <span class="keyword">else</span> {
+		morituro=prec-&gt;next;
+		prec-&gt;next=prec-&gt;next-&gt;next;
+	}
+	free(morituro);
+	<span class="keyword">return</span>;
+}
+
+	
+</pre>
+  </body>
+</html>

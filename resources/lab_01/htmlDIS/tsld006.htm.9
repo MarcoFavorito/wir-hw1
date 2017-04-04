@@ -1,0 +1,42 @@
+
+<HTML>
+
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html;charset=iso-8859-1">
+<meta name="GENERATOR" content="Microsoft Internet Assistant for Macintosh PowerPoint 98">
+ <TITLE>Concurrency in a DBMS</TITLE> 
+</HEAD>
+
+<BODY     >
+
+ <H1>Concurrency in a DBMS</H1> 
+ <P><UL></P>
+
+<P><LI><H2>Users submit transactions, and can think of each transaction as executing by itself.
+</H2></P>
+
+<P><UL></P>
+
+<P><LI>Concurrency is achieved by the DBMS, which interleaves actions (reads/writes of DB objects) of various transactions.
+<LI>Each transaction must leave the database in a consistent state if the DB is consistent when the transaction begins.
+<UL></P>
+
+<P><LI>DBMS will enforce some ICs, depending on the ICs declared in CREATE TABLE statements.
+<LI>Beyond this, the DBMS does not really understand the semantics of the data.  (e.g., it does not understand how the interest on a bank account is computed).
+<LI>Issues:  Effect of interleaving transactions, and crashes.</UL></UL></UL></P>
+
+<P></P> 
+<P>
+<TABLE>
+  <TD HEIGHT=100 WIDTH=100> <A HREF="tsld005.htm">Previous slide</A> </TD>
+  <TD HEIGHT=100 WIDTH=100> <A HREF="tsld007.htm">Next slide</A> </TD>
+  <TD HEIGHT=100 WIDTH=150> <A HREF="tsld001.htm">Back to first slide</A> </TD>
+  <TD HEIGHT=100 WIDTH=150> <A HREF="sld006.htm">View graphic version</A> </TD>
+</TABLE>
+<BR>
+</P>
+
+
+
+</Body>
+</HTML>

@@ -1,0 +1,88 @@
+<!doctype html public "-//w3c//dtd html 4.0 transitional//en">
+<html>
+<head>
+<link href="java.css" rel="stylesheet" type="text/css">
+<title>Rilevazione del click del mouse</title>
+</head>
+
+<body>
+
+<h2>Rilevazione del click del mouse</h2>
+
+Gli applet visti fino ad ora si limitano a stampare
+qualcosa sullo schermo, e basta. In questa pagina
+vediamo in che modo un applet pu&ograve; reagire al
+click del mouse.<p>
+
+Quello che vogliamo fare, in generale, &egrave; dire
+all'interprete che ogni volta che viene premuto il
+tasto del mouse deve eseguire una sequenza di istruzioni.
+Il programma di esempio che vediamo &egrave; quello
+che disegna un quadratino nella posizione in cui si
+trova il cursore.<p>
+
+Un applet sensibile al click del mouse ha questa
+struttura:<p>
+
+<pre>
+import java.awt.*;
+
+public class nomefile extends java.applet.Applet {
+  public boolean mouseDown(Event e, int x, int y) {
+    Graphics g=new Graphics();
+
+    istruzioni
+
+    return True;
+  }
+}
+</pre>
+
+Le istruzioni sono quelle che vanno eseguite in risposta
+al click del mouse. Queste istruzioni possono utilizzare
+il contenuto delle due variabili <tt>x</tt> e <tt>y</tt>,
+in cui &egrave; memorizzata la posizione del cursore nel
+momento in cui &egrave; stato premuto il pulsante.<p>
+
+Nel caso in cui si vuole disegnare un quadratino ogni volta
+che viene premuto il pulsante, l'operazione da eseguire
+&egrave; una <tt>fillRect</tt>. Il programma che disegna
+i quadratini &egrave; 
+<a href="PuntiMouse.java">PuntiMouse.java</a>:<p>
+
+<pre>
+/*
+  Disegna dei punti, sulla base del click del mouse
+*/
+
+import java.awt.*;
+
+public class PuntiMouse extends java.applet.Applet {
+  public boolean mouseDown(Event e, int x, int y) {
+    Graphics g=getGraphics();
+
+    g.fillRect(x-2,y-2,4,4);
+
+    return true;
+  }
+}
+
+</pre>
+
+La seguente immagine mostra come appare la finestra dopo
+che il pulsante &egrave; stato premuto su cinque punti
+diversi: in ogni punto &egrave; stato disegnato un
+quadratino.<p>
+
+<center>
+<img src="PuntiMouse.gif">
+</center>
+<p>
+
+<applet code="PuntiMouse.class" height="500" width="500">
+</applet>
+
+
+</body>
+</html>
+

@@ -1,0 +1,1069 @@
+<!-- saved from url=(0022)http://internet.e-mail -->
+<!doctype html public "-//w3c//dtd html 4.0 transitional//en">
+<html>
+<head>
+   <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <title>Tecniche di programmazione AA 2003/04 - Dispensa 1</title>
+   <link rel="stylesheet" href="../../fi2001.css" type="text/css">
+</head>
+<body>
+<center>
+  <h2>Tecniche di programmazione</h2>
+  <b>AA 2003/2004</b> <br>
+  <b>Proff. Giuseppe De Giacomo, Luca Iocchi, Domenico Lembo</b><br>
+  <br>
+  <h3>Dispensa 1<br>
+    <br>
+    Costo dei programmi</h3>
+</center>
+<br>
+<br>
+<P><b>Sommario</b></P>
+<ul>
+  <li>Modello di costo dei programmi/algoritmi</li>
+  <li>Costo dei programmi: la notazione <i>O</i> </li>
+  <li>Algoritmi di ricerca (ricerca sequenziale, ricerca binaria)</li>
+</ul>
+<hr WIDTH="100%">
+<p><b>Costo di un programma</b></p>
+<p><em>Problema:</em> dato un array <em>a</em> di interi ordinati in modo crescente, 
+  determinare se l'intero <em>k</em> &egrave; presente in <em>a</em>.</p>
+<p>Es. array <em>a</em>: [1,3,9,17,34,95,96], intero <em>k</em>: 50.</p>
+<p><em>Soluzione: </em>consideriamo il seguente funzione che realizza l'algoritmo 
+  di <strong>ricerca sequenziale</strong>:</p>
+<pre>
+public static boolean ricercaSequenziale(int[] a, int k) {
+   for (int i = 0; i &lt; a.length; i++)
+      if (a[i]==k) return true;
+   return false;
+}</pre>
+<p>La funzione <code>ricercaSequenziale</code> realizza un algoritmo corretto 
+  per risolvere il problema<em> (nota, esso in realt&agrave; non sfrutta l'ordinamento 
+  dell'array).</em></p>
+<p>Ma quanto <strong>costa</strong> la sua computazione? Esistono funzioni/algoritmi 
+  pi&ugrave; <strong>efficienti</strong>?</p>
+<hr width="100%">
+<b>Costo di un programma/algoritmo</b> 
+<p> Il <strong>costo computazionale</strong> di una funzione/programma &egrave; 
+  un costo definito in termini di risorse di calcolo. 
+<p>Le risorse di calcolo fondamentali sono due: 
+<ol>
+  <li><em>quantit&agrave; di tempo necessario alla computazione (<strong>tempo</strong>)</em></li>
+  <li><em> quantit&agrave; di memoria utilizzata (<strong>spazio</strong>) </em> 
+    <EM> </EM></li>
+</ol>
+<p>Esistono altre risorse di calcolo che possono essere rilevanti in casi particolari 
+  (non trattate in questo corso), ad esempio</p>
+<ul>
+  <li>la quantit&agrave; di traffico generata su una rete di calcolatori;</li>
+  <li>la quantit&agrave; di dati che devono essere trasferiti da e su disco.</li>
+</ul>
+<p>A che serve stabilire il costo computazionale di una funzione/programma/algoritmo?<br>
+  <em>A confrontare diverse funzioni/programmi/algoritmi che risolvono lo stesso 
+  problema, in modo da scegliere il pi&ugrave; <strong>efficiente</strong>.</em></p>
+<hr width="100%">
+<b>Come si misura il costo computazionale?</b> 
+<P>Concentriamoci sul tempo di calcolo. 
+<P>La prima risposta che viene in mente &egrave; facciamo una prova: scegliamo 
+  una particolare <strong>configurazione dei dati in ingresso</strong> ed eseguiamo 
+  il programma misurando il tempo. 
+<P>Es. Configurazione dei dati in ingresso (input): array <em>a</em>: [1,3,9,17,34,95,96], 
+  intero <em>k</em>: 50. Risultato calcolato(output): <code>false</code>. Tempo 
+  cronometrato: <em>10 &micro;sec</em>. 
+<P>Che cosa sappiamo dopo questo esperimento? <em>Quasi niente!!!</em> 
+<P>Conosciamo un numero corrispondente ad un dato input. Da cosa &egrave; influenzato 
+  questo numero? 
+<ul>
+  <li><em>macchina utilizzata </em>(hardware usato, sistema operativo, carico 
+    sul sistema, qualit&agrave; del compilatore, linguaggio di programmazione 
+    utilizzato, ecc.)</li>
+  <li><em>configurazione dei dati in ingresso</em> (es. se nel nostro esempio 
+    il valore cercato <em>k</em> &egrave; 1, il tempo &egrave; molto minore che 
+    se <em>k</em> &egrave; 50.</li>
+  <li><em>dimensione dell'input </em>(dimensione del vettore, maggiore &egrave; 
+    tale dimensione, maggiore &egrave; il tempo necessario alla ricerca).</li>
+</ul>
+<P>Questa misura non &egrave; soddisfacente per capire il costo computazionale 
+  insito dell'algoritmo che la nostra funzione realizza (approssimato). Noi vogliamo 
+  conoscere questo costo in modo (necessariamente) <strong> approssimato</strong>:
+<ul>
+  <li><strong>indipendentemente dalla particolare macchina utilizzata</strong></li>
+  <li><strong>indipendentemente dalla configurazione di ingresso</strong></li>
+  <li><strong>al variare della dimensione dell'input</strong></li>
+</ul>
+<hr WIDTH="100%">
+<b>Misura del costo computazionale soddisfacente</b> 
+<p>Una misura del costo computazionale soddisfacente deve:</p>
+<OL>
+  <LI>basarsi su un <strong>modello di calcolo astratto</strong>, indipendente 
+    dalla particolare macchina </LI>
+  <LI>svincolarsi dalla configurazione dei dati in ingresso, ad esempio basandosi 
+    sulle configurazioni pi&ugrave; sfavorevoli (<strong>caso peggiore</strong>), 
+    cos&igrave; da garantire che le prestazioni nei casi reali saranno al pi&ugrave; 
+    costose quanto il caso analizzato</LI>
+  <LI>essere una <strong>funzione</strong> (non un numero!!!) della <strong>dimensione 
+    dell'input </strong></LI>
+  (la configurazione l'abbiamo fattorizzata via considerando il caso peggiore) 
+  <LI><strong>essere asintotica</strong>, cio&egrave; fornire una idea dell'andamento 
+    del costo all'aumentare della dimensione dell'input (si noti che essere troppo 
+    precisi non avrebbe senso visto che non consideriamo la macchina effettiva 
+    che esegue il calcolo).</LI>
+</OL>
+<p>Cio&egrave; siamo interessati al <strong>costo (o complessit&agrave;) 
+asintotico nel caso peggiore</strong>.</p>
+<hr width="100%">
+<p><b>Esempio</b> </p>
+<p>Ad esempio diremo che <code>ricercaSequenziale</code> ha un costo <strong>lineare</strong>, 
+  cio&egrave; il costo &egrave; una funzione che varia come </p>
+<p align="center"><em>a n + b</em></p>
+<p align="left">dove <em>n</em> e' la dimensione dell'array (dim. dell'input) 
+  e <em>a</em> e <em>b</em> sono due fattori costanti indipendenti dalla dim. 
+  dell'input.</p>
+<p align="left">Vedremo che <code>ricercaBinaria</code> ha un costo <strong>logaritmico</strong>, 
+  cio&egrave; il costo e' una funzione che varia come </p>
+<p align="center"><em>a log(n) + b</em></p>
+<p align="left">dove <em>n</em> &egrave; la dimensione dell'array (dim. dell'input) 
+  e <em>a</em> e <em>b</em> sono due fattori costanti indipendenti dalla dim. 
+  dell'input.</p>
+<p align="left">&nbsp;</p>
+<p align="left">Ne segue che <code>ricercaBinaria</code> e' un algoritmo migliore 
+  (piu' efficiente) di <code>ricercaSequenziale</code>.</p>
+<hr WIDTH="100%">
+<b>Modello astratto di macchina</b> 
+<p>Ci concentriamo sul costo in tempo.</p>
+<p>Idea fondamentale del modello astratto di macchina proposto: <em><strong>ogni 
+  istruzione atomica ha costo unitario</strong>.</em></p>
+<ol>
+  <li><u>istruzione atomica </u><i>costo unitario</i>.&nbsp;<br>
+  </li>
+  <li><u>condizione atomica</u> <i>costo unitario</i>.<br>
+  </li>
+  <li> <u>istruzione condizionale</u>. 
+    <pre>if (<em>&lt;condizione&gt;</em>)
+   <em>&lt;parte if&gt;</em> 
+else
+   <em>&lt;parte else&gt;</em></pre>
+    <p>costo dell'istruzione <code>if-else</code> &egrave;:<i> </i><SPAN CLASS="MATH"><I>c</I><SUB>1</SUB> 
+      + <I>c<sub>if</sub></I></SPAN> se la condizione è vera e <SPAN CLASS="MATH"><I>c</I><SUB>1</SUB> 
+      + <I>c<sub>else</sub></I></SPAN> se la condizione &egrave; falsa,<br>
+      dove <SPAN CLASS="MATH"><I>c</I><SUB>1</SUB></SPAN>&nbsp; è il costo della 
+      condizione,<SPAN CLASS="MATH"><I> c<sub>if</sub></I></SPAN> <SPAN CLASS="MATH"> 
+      il costo della parte if e <I>c<sub>else</sub></I> il costo della parte 
+      else<br>
+      </SPAN></li>
+  <li> <u> istruzione di ciclo</u> (consideriamo l'istruzione <TT> while</TT>, 
+    le altre istruzioni di ciclo, come il <code>for</code>, si possono ridurre 
+    a questa): 
+    <pre>while (<em>&lt;condizione&gt;</em>)
+   <em>&lt;corpo del ciclo&gt;</em></pre>
+    <p align="left">costo dell'istruzione <TT> while</TT> &egrave;: <SPAN CLASS="MATH"><I> SUM<sub>i 
+      = 1..n_rip</sub>(c<sub>i</sub>+d<sub>i</sub>)</I></SPAN></p>
+    <p>dove:</p>
+    <ul>
+      <li><SPAN CLASS="MATH"><I>n_rip</I></SPAN> &egrave; il numero di volte che viene 
+        eseguito il ciclo</li>
+      <li><SPAN CLASS="MATH"><em>c<SUB>i</SUB></em></SPAN> è il costo della i-esima 
+        iterazione della condizione</li>
+      <li><SPAN CLASS="MATH"><em>d<SUB>i</SUB></em></SPAN> è il costo della i-esima 
+        iterazione della corpo del ciclo</li>      
+    </ul>
+  </li>
+  <li><u>blocco </u> 
+    <pre>{ <em>
+  &lt;ist_1&gt;</em>
+  ...
+  <em>&lt;ist_n&gt;
+}</em></pre>
+    <p align="left">costo dell'istruzione blocco<TT> </TT> e': <SPAN CLASS="MATH"><I>c<sub>1</sub>+ 
+      ... + c<sub>n</sub></I></SPAN></p>
+  </li>
+  <li><u> invocazione di una funzione (metodo)</u><br>
+    costo pari al costo dell'esecuzione del corpo della funzione. Nota: costo 
+    allocazione record di attivazione pari a 0 (ma attenzione che il costo in 
+    spazio e' pari alla dimensione del record di attivazione).</li>
+  <p></p>
+  <li><u>istruzione e condizione con chiamata di funzione</u><br>
+    costo pari alla somma dei costi delle funzioni invocate + 1</li>
+</ol>
+<P> Nota: stiamo assumendo che 
+<P align="center"><code>v[i]==10</code> 
+<P align="center">e 
+<P align="center"><code>v[i]==10*10*10*10/4*10*10*10/3*10*10/2*10*10/10*10</code> 
+<P>abbiano entrambe costo 1, nonostante la seconda sia sicuramente piu' costosa 
+  delle prima. <br>
+  Il punto e' che il suo costo non dipende dalla dimensione dell'input!!! 
+<hr WIDTH="100%">
+<p><b>Esempio</b>
+<p></p>
+<pre>
+public static boolean ricercaSequenziale(int[] a, int k) {
+   for (int i = 0; i &lt; a.length; i++)
+      if (a[i]==k) return true;
+   return false;
+}
+</pre>
+<p>Es1 input a: [1,3,9,17,34,95,96], k:9</p>
+<p>Costo:</p>
+<ul>
+  <li>1 (inizializzazione <code>int i = 0;</code>)</li>
+  <li>3 (confronti <code>i &lt; a.length</code>)</li>
+  <li>3 (confronti <code>a[i] == k</code>)</li>
+  <li>2 (istruzioni <code>i++;</code>)</li>
+  <li>1 (istruzione <code>return true;</code>)</li>
+  <li>totale 10</li>
+</ul>
+<p>Es2 input a:[1,3,9,17,13,95,96], k:50</p>
+<p>Costo:</p>
+<ul>
+  <li>1 (inizializzazione <code>int i = 0;</code>)</li>
+  <li>8 (confronti <code>i &lt; a.length</code>)</li>
+  <li>7 (confronti <code>a[i] == k</code>)</li>
+  <li>7 (istruzioni <code>i++;</code>)</li>
+  <li>1 (istruzione <code>return false;</code>)</li>
+  <li>totale 24</li>
+</ul>
+<hr>
+<p><b>Caso peggiore</b></p>
+<p>Il passo successivo e' liberarsi della particolare configurazione dei dati 
+  in ingresso. </p>
+Per fare questo, nel seguito concentreremo la nostra attenzione sul <strong>caso 
+peggiore</strong>.cio&egrave; la configurazione dell'input piu' <strong>sfavorevole</strong> 
+per il programma/algoritmo. Perch&eacute;?<br>
+Se il nostro programma algoritmo &egrave; sufficientemente efficiente nel caso 
+peggiore, lo sara' sicuramente anche nei casi reali. 
+<p>Quale e' il caso peggiore per <code>ricercaSequenziale</code>?</p>
+<p>L'elemento cercato <em>k</em> non occorre nell'array <em>a</em>.</p>
+<p>Costo per un array di dimensione <em>n</em> (dimensione dell'input):</p>
+<ul>
+  <li>1 (inizializzazione <code>int i = 0;</code>)</li>
+  <li><em>n</em>+1 (confronti <code>i &lt; a.length</code>)</li>
+  <li><em>n</em> (confronti <code>a[i] == k</code>)</li>
+  <li><em>n</em> (istruzioni <code>i++;)</code></li>
+  <li>1 (istruzione <code>return true;</code>)</li>
+  <li>totale 3 <em>n</em> + 3</li>
+</ul>
+<p>Nota 3 <em>n</em> + 3 &egrave; una funzione (non un semplice numero) ed <em>n</em>, 
+  cio&egrave; la dimensione dell'array, &egrave; la dimensione dell'input!<br>
+  La ricerca sequenziale ha un <em>costo lineare.</em></p>
+<hr WIDTH="100%">
+<B></B> 
+<p><strong>Alternative al caso peggiore</strong></p>
+<DL COMPACT>
+  <DT><B> Caso peggiore</B></DT>
+  <DD>Il caso peggiore corrisponde a considerare la configurazione dell'input 
+    piu' <strong>sfavorevole</strong> per il programma/algoritmo - molto significativo</DD>
+  <DT><B> Caso migliore</B></DT>
+  <DD>Il caso migliore corrisponde a considerare la configurazione dell'input 
+    piu' <strong>favorevole</strong> per il programma/algoritmo - poco significativo 
+    (nel caso di <code>ricercaSequenziale</code> dice che il costo e' costante!)</DD>
+  <DT><B> Caso medio</B> </DT>
+  <DD>Il caso medio corrisponde a considerare la &quot;<strong>media</strong>&quot; 
+    tra le configurazioni dell'input possibili - abbastanza significativo </DD>
+</DL>
+<hr>
+<p><b>Caso medio (cenni)</b></p>
+<p>Vogliamo considerare il costo nei casi reali o comuni. </p>
+<p>Idea: uso teoria delle probabilit&agrave;</p>
+<ul>
+  <li>fisso una distribuzione per le configurazioni dell'input</li>
+  <li>calcolo costo medio</li>
+</ul>
+<p><strong>Esempio</strong>: Consideriamo <code>ricercaSequenziale</code></p>
+<p>assumiamo che <em>k </em>appartenga effettivamente al vettore, e consideriamo 
+  una distribuzione uniforme, tutte le configurazioni dell'input equiprobabili.</p>
+<p>In altre parole, <em>k</em> si trova in posizione i-esima (<em>1 &lt;= i &lt;= 
+  n</em>) con probabilit&agrave; <em>1/n</em>, dove <em>n</em> e' la dimensione 
+  dell'array.</p>
+<p>Costo nel caso k si trovi in posizione i-esima:</p>
+<ul>
+  <li>1 (inizializzazione <code>int i = 0;</code>)</li>
+  <li><em>i</em> (confronti <code>i &lt; a.length</code>)</li>
+  <li><em>i</em> (confronti <code>a[i] == k</code>)</li>
+  <li><em>i-1</em> (istruzioni <code>i++;)</code></li>
+  <li>1 (istruzione <code>return true;</code>)</li>
+  <li>totale 3 <em>i</em>+ 1</li>
+</ul>
+<p>Ora calcoliamo la media:</p>
+<p><em>SUM <sub>i=1..n</sub> 1/n (3 i + 1) &nbsp;&nbsp;= &nbsp;&nbsp;1/n (3 (SUM<sub> 
+  i=1..n</sub> i) + n)</em>, si ricorda che <em>SUM <sub>i=1..n</sub> i = ((n+1) 
+  n) / 2</em>, quindi abbiamo <em>3/2(((n+1) n)/n) + n/n = (3n + 5)/2</em>, cio&egrave; 
+  ancora <em>costo lineare.</em></p>
+<p>Nota: quale &egrave; il problema di questo tipo di analisi?</p>
+<p><em>La scelta della distribuzione!!!</em> In generale &egrave; molto difficile 
+  scegliere la distribuzione in modo da rispecchiare i "casi reali"!</p>
+<hr WIDTH="100%">
+<p><b>Dimensione dell'input</b> </p>
+<p>Il costo di un programma/algoritmo e' una funzione dell'input.</p>
+<p><strong>Esempio</strong>: Il costo (nel caso peggiore) di <code>ricercaSequenziale</code> 
+  e' 3<em>n</em>+3, dove <em>n</em>, la dimensione dell'array (cio&egrave; il 
+  num. dei suoi elementi), &egrave; il parametro che caratterizza la dimensione 
+  dell'input.</p>
+<p>La scelta del parametro che caratterizza la dimensione dell'input e' spesso 
+  semplice:</p>
+<ul>
+  <li>Es ricercaSequenziale su in array: dimensione dell'input e' la dimensione 
+    dell'array</li>
+  <li>Es. ricerca su un albero binario: dimensione dell'input e' il numero di 
+    nodi dell'albero</li>
+  <li>Es ricerca su una collezione: dimensione dell'input e' il numero di elementi 
+    della collezione</li>
+</ul>
+<p>Tuttavia ci sono casi pi&ugrave; complessi:</p>
+<p><strong>Esempio</strong></p>
+<pre>
+public static int fattoriale(int n) {
+   int fatt = 1;
+   int i = 1;
+   while (i&lt;=n) {
+      fatt = fatt*i;
+      i++;
+   }
+   return fatt;
+}</pre>
+<p>Costo:</p>
+<ul>
+  <li>1 (inizializzazione <code>int fatt = 1;</code>)</li>
+  <li>1 (inizializzazione <code>int i = 1;</code>)</li>
+  <li><em>n</em>+1 (confronti <code>i &lt;= n</code>)</li>
+  <li><em>n </em> (istruzioni <code>fatt = fatt * i;)</code></li>
+  <li><em>n </em> (istruzioni <code>i++;)</code></li>
+  <li>1 (istruzione <code>return fatt;</code>)</li>
+  <li>totale 3 <em>n</em>+ 4</li>
+</ul>
+<p><em>Cio&egrave; il calcolo del fattoriale &egrave; lineare</em>?</p>
+<p>Attenzione quale &egrave; il parametro che caratterizza la dimensione dell'input?</p>
+<ol>
+  <li><strong>il valore <em>n</em></strong>: allora il costo rispetto alla dimensione 
+    dell'input <em>n</em> &egrave; <em>3n+4, </em>cio&egrave; <i>costo lineare</i>.</li>
+  <li><strong>il</strong><strong> numero di cifre <em>d</em> utilizzato per rappresentare 
+    <em>n</em></strong> : d &egrave; circa uguale log<sub>10</sub>(n), quindi <em>n = 10<sup>d</sup></em>, 
+    ed il costo rispetto alla dimensione <em>d</em> dell'input e' <em>3 10<sup>d</sup> 
+    + 4</em>, cio&egrave; <em> costo esponenziale!</em></li>
+</ol>
+<p>&nbsp;</p>
+<p><em>Nota: abbiamo assunto che </em><code>fatt = fatt*i;</code> costi 1, ma 
+  in realta' essa dipende dall'input! (il fattoriale cresce ad ogni iterazione 
+  e quindi cresce il costo dell' istruzione). Per tenere conto di questo potremo 
+  adottare una macchina astratta piu' sofisticata che associa alle istruzioni/condizioni 
+  atomiche costi logaritmici. Tuttavia, tranne in casi particolari (vedi corso 
+  di Algoritmi e Strutture Dati) questa analisi piu' sofisticata non e' necessaria.</p>
+<hr WIDTH="100%">
+<B>Esercizio 1</B> Supponiamo di volere stampare una matrice <SPAN CLASS="MATH"><I>n 
+</I>x <I>n</I></SPAN> in cui ciascun elemento <SPAN CLASS="MATH"><I>a</I><SUB>riga, 
+col</SUB></SPAN> della matrice è il resto della divisione <SPAN CLASS="MATH"><I>riga</I> 
+: <I>col</I></SPAN>. 
+<DIV ALIGN="CENTER" CLASS="mathdisplay"> 
+  <TABLE>
+    <TR VALIGN="MIDDLE">
+      <TD ALIGN="LEFT">0</TD>
+      <TD ALIGN="LEFT">1</TD>
+      <TD ALIGN="LEFT">1</TD>
+      <TD ALIGN="LEFT">1</TD>
+      <TD ALIGN="LEFT">1</TD>
+    </TR>
+    <TR VALIGN="MIDDLE">
+      <TD ALIGN="LEFT">0</TD>
+      <TD ALIGN="LEFT">0</TD>
+      <TD ALIGN="LEFT">2</TD>
+      <TD ALIGN="LEFT">2</TD>
+      <TD ALIGN="LEFT">2</TD>
+    </TR>
+    <TR VALIGN="MIDDLE">
+      <TD ALIGN="LEFT">0</TD>
+      <TD ALIGN="LEFT">1</TD>
+      <TD ALIGN="LEFT">0</TD>
+      <TD ALIGN="LEFT">3</TD>
+      <TD ALIGN="LEFT">3</TD>
+    </TR>
+    <TR VALIGN="MIDDLE">
+      <TD ALIGN="LEFT">0</TD>
+      <TD ALIGN="LEFT">0</TD>
+      <TD ALIGN="LEFT">1</TD>
+      <TD ALIGN="LEFT">0</TD>
+      <TD ALIGN="LEFT">4</TD>
+    </TR>
+    <TR VALIGN="MIDDLE">
+      <TD ALIGN="LEFT">0</TD>
+      <TD ALIGN="LEFT">1</TD>
+      <TD ALIGN="LEFT">2</TD>
+      <TD ALIGN="LEFT">1</TD>
+      <TD ALIGN="LEFT">0</TD>
+    </TR>
+  </TABLE>
+</DIV>
+<p>Per farlo possiamo usare il seguente programma:</p>
+<blockquote> 
+  <pre>
+   public static void main(String[] args) {
+      int n=5;
+      for (int riga =1; riga&lt;=n; riga++) {   
+          for (int col =1; col&lt;=n; col++) 
+              System.out.print(riga%col+&quot; &quot;);
+          System.out.println();
+      }
+   }
+</pre>
+</blockquote>
+<p>Determinarne il costo.</p>
+<hr WIDTH="100%">
+<P>&nbsp;<B>Esercizio 2</B> Si consideri la funzione: 
+<blockquote> 
+  <pre>
+   public static int somma(int m, int n) { // m, n &gt;= 0
+      while (n &gt; 0) {
+	     m = m+1;
+         n = n-1;
+      }
+      return m;
+   }
+</pre>
+</blockquote>
+<p>Determinarne il costo. (Suggerimento si chiarisca inizialmente quale parametro 
+  caratterizza la dimensione dell'input.)</p>
+<hr WIDTH="100%">
+<P> <b> Studio del comportamento asintotico</b> 
+<P>Idea: trascurare costanti moltiplicative e termini di ordine inferiore. 
+<ul>
+  <li>Fornisce una idea precisa del <strong>costo all'aumentare 
+    della dimensione dell'input</strong>.<br>
+  </li>
+  <li>Rende l'analisi del costo <strong>insensibile rispetto alle 
+    approssimazioni</strong> introdotte nel modello di costo adottato.<br>
+  </li>
+  <li>Consente di semplificare i calcoli.</li>
+</ul>
+<p><strong>Esempio</strong>:</p>
+<ul>
+  <li>a <em>n</em> + b ==&gt; <em>lineare</em></li>
+  <li>a <em>n</em><sup>2</sup> + b <em>n</em> + c==&gt; <em>quadratico</em></li>
+  <li>a log<sub>b</sub> <em>n</em> + c==&gt; <em>logaritmico</em></li>
+</ul>
+<p><em>Come fare formalmente? </em><br>
+  Come nel calcolo infinitesimale!</p>
+<hr WIDTH="100%">
+<P> <b> Notazione </b><strong><em>O </em>(<em>O</em>-grande)</strong> 
+<DIV><B>Definizione:</B> &nbsp; Una funzione <SPAN CLASS="MATH"><I>f</I> (<I>n</I>)</SPAN> 
+  &#232; <SPAN CLASS="MATH"><I>O</I>(<I>g</I>(<I>n</I>))</SPAN> (che si legge 
+  <SPAN CLASS="MATH"><I>O</I></SPAN>-grande di <SPAN CLASS="MATH"><I>g)</I></SPAN>, 
+  se e solo se esistono due costanti positive <SPAN CLASS="MATH"><I>c</I></SPAN> 
+  e <SPAN CLASS="MATH"><I>n</I><SUB>0</SUB></SPAN>, tali che <br>
+  <br>
+  <DIV ALIGN="CENTER" CLASS="mathdisplay"> | <I>f</I> (<I>n</I>)| <TT> &lt;= </TT> 
+    <I>c</I>&nbsp; <I>g</I>(<I>n</I>) </DIV>
+  <p>per tutti gli <SPAN CLASS="MATH"><I>n</I> </SPAN><tt>&gt;=</tt><SPAN CLASS="MATH"><I>n</I><SUB>0</SUB></SPAN>. 
+  </p>
+  <p>Intuitivamente questo significa:</p>
+</DIV>
+<ol>
+  <li> Da un certo punto <SPAN CLASS="MATH"><I>n</I><SUB>0</SUB></SPAN> in poi, 
+    la dimensione di <SPAN CLASS="MATH"><I>f</I> (<I>n</I>)</SPAN> non supera 
+    quella di <SPAN CLASS="MATH"><I>g</I>(<I>n</I>)</SPAN> dato un certo fattore 
+    di scala <SPAN CLASS="MATH"><I>c</I></SPAN>.&nbsp;<br>
+  </li>
+  <li>Se <SPAN CLASS="MATH"><I>f</I> (<I>n</I>)</SPAN> &#232; <SPAN CLASS="MATH"><I>O</I>(<I>g</I>(<I>n</I>)),&nbsp;</SPAN> 
+    <SPAN CLASS="MATH"><I>f</I> (<I>n</I>)</SPAN> è anche <SPAN CLASS="MATH"><I>O</I>(10&nbsp; 
+    <I>g</I>(<I>n</I>))</SPAN> e anche <SPAN CLASS="MATH"><I>O</I>(5 + <I>g</I>(<I>n</I>))</SPAN>.</li>
+</ol>
+<p>Considerando <SPAN CLASS="MATH"><I>O</I></SPAN>-grande<SPAN CLASS="MATH"> </SPAN>siamo 
+  interessati all'andamento asintotico della funzione di costo del programma.</p>
+<DIV> 
+  <p>&nbsp;</p>
+  <p><B>Esempio 1</B>: Consideriamo una funzione<i> </i><SPAN CLASS="MATH"><i>f</i>(<I>n</I>) 
+    = (<I>n</I> + 1)<SUP>2</SUP></SPAN>.&nbsp;</p>
+</DIV>
+<DIV> 
+  <p> allora <SPAN CLASS="MATH">abbiamo che<i> <SPAN CLASS="MATH">(<I>n</I> + 
+    1)<SUP>2</SUP> </SPAN><TT> &lt;= </TT><SPAN CLASS="MATH">2<I>n</I><SUP>2</SUP></SPAN>, 
+    </i>per ogni<i> <SPAN CLASS="MATH"><I>n</I></SPAN><tt> &gt;=</tt> 3</i>, quindi 
+    applicando la definizione di <em>O</em>-grande, ponendo <i>c</i> = 2</SPAN> 
+    e <SPAN CLASS="MATH"><I>n</I><SUB>0</SUB> = 3</SPAN> abbiamo che <SPAN CLASS="MATH"><i>f</i>(<I>n</I>)</SPAN> 
+    &#232; <SPAN CLASS="MATH"><I>O</I>(<I>n</I><SUP>2</SUP>)</SPAN>. <br>
+  <p>&nbsp;
+</DIV>
+<DIV><B>Esempio 2</B>: Consideriamo la funzione <SPAN CLASS="MATH"><I>f</I> (<I>n</I>) 
+  = 2<I>n</I><SUP>4</SUP> + 5<I>n</I><SUP>3</SUP> - 4<I>n</I><SUP>2</SUP> + 4</SPAN>.&nbsp; 
+  <p>Abbiamo che <SPAN CLASS="MATH"><I>f</I> (<I>n</I>) = 2<I>n</I><SUP>4</SUP> 
+    + 5<I>n</I><SUP>3</SUP> - 4<I>n</I><SUP>2</SUP> + 4 <span style="font-family: Symbol">&nbsp;&nbsp;&lt; 
+    </span>&nbsp;&nbsp;2<I>n</I><SUP>4</SUP> + 5<I>n</I><SUP>4</SUP> + 4<I>n</I><SUP>4&nbsp;</SUP> 
+    =&nbsp; 11<I>n</I><SUP>4</SUP></SPAN> &nbsp; quindi applicando la definizione 
+    di <em>O</em>-grande, ponendo c = 11, ed <SPAN CLASS="MATH"><I>n</I><SUB>0</SUB> 
+    = 1</SPAN>, abbiamo che <SPAN CLASS="MATH"><I>f</I> (<I>n</I>)</SPAN> &#232; 
+    <SPAN CLASS="MATH"><I>O</I>(<I>n</I><SUP>4</SUP>)</SPAN>. </DIV>
+<P> 
+<hr WIDTH="100%">
+<P><b>Osservazioni sulla notazione <em>O</em></b></P>
+<ul>
+  <li>Per determinare <i>O</i> di un polinomio basta considerare il coefficiente 
+    di grado maggiore 
+    <blockquote> 
+      <p>4 <em>n<sup>2</sup></em> + 16 <em>n</em> + 18 &nbsp;&nbsp;&nbsp;&egrave; 
+        &nbsp;&nbsp;&nbsp;<i>O</i>(<em>n<sup>2</sup></em>)<br>
+        5<em>n<sup>5</sup></em> + 4<em>n<sup>3</sup></em> + <em>n</em> + 10&nbsp;&nbsp;&nbsp;&egrave; 
+        &nbsp;&nbsp;&nbsp;<i>O</i>(<em>n<sup>5</sup></em>) </p>
+    </blockquote>
+  </li>
+  <li>3n &egrave; <em>O(n)</em> ma anche <i>O</i>(<em>n<sup>2</sup></em>)! <em>Attenzione 
+    per&ograve;: si sceglie sempre l'approssimazione migliore possibile!!! </em>Cio&egrave; 
+    <em>O(n)</em>!<br>
+  </li>
+  <li>La base dei logaritmi non conta: log<sub>10</sub>(<em>n</em>) &nbsp;&nbsp;=&nbsp;&nbsp; 
+    log<sub>10</sub>(2)&nbsp; log<sub>2</sub>(<em>n</em>)&nbsp; =&nbsp; k log<sub>2</sub>(<em>n</em>) 
+    tipicamente si scrive O(log(<em>n</em>)) tralasciando la base (intesa come 
+    base 2).<br>
+  </li>
+  <li><em>n</em> + log(<em>n</em>) &lt; <em>n</em> + <em>n</em> (da un certo <em>n<sub>0</sub></em> 
+    in poi) = <em>2n</em> ==&gt; <em>O(n)</em><br>
+  </li>
+  <li><em>n</em> log (<em>n</em>) &lt; <em>n<sup>2</sup></em> quindi è <em>O(n<sup>2</sup>)</em>, 
+    ma per essere più precisi è<em> O(n log(n)).</em><br>
+  </li>
+</ul>
+<hr width="100%">
+<P><b>Costo di un programma/algoritmo</b></P>
+<P><strong>Definizione: </strong>Un algoritmo A ha costo (o complessit&agrave;) 
+  O(g(n)) se la quantit&agrave; di tempo (spazio) sufficiente per eseguire A su 
+  un input di dimensione n nel caso peggiore &egrave; O(g(n)) .</P>
+<hr width="100%">
+<P><b>Funzioni di costo</b></P>
+<P><SPAN CLASS="MATH"><I>O</I>(1)</SPAN> funzione di costo costante (che non dipende 
+  dai dati in ingresso).&nbsp;</P>
+<p> <SPAN CLASS="MATH"><I>O</I>(<I>n</I>) </SPAN> funzione di costo <EM>lineare</EM> 
+</p>
+<p><SPAN CLASS="MATH"><I>O</I>(<I>log(n)</I>) </SPAN> funzione di costo <EM>logaritmica</EM> 
+</p>
+<p><SPAN CLASS="MATH"><I>O</I>(<I>n log(n)</I>) </SPAN> funzione di costo <EM>n 
+  log n (a volte detta &quot;quasi-lineare&quot;)</EM> </p>
+<p><SPAN CLASS="MATH"><I>O</I>(<I>n</I><SUP>k</SUP>)</SPAN> funzione di costo&nbsp; 
+  <EM>polinomiale</EM> cio&egrave; limitata da un polinomio di grado k (<SPAN CLASS="MATH">cio&egrave;, 
+  <I>a</I><SUB>k</SUB><I>n</I><SUP>k</SUP> + <I>a</I><SUB>k - 1</SUB><I>n</I><SUP>k 
+  - 1</SUP> +...+ <I>a</I><SUB>1</SUB><I>n</I> + <I>a</I><SUB>0</SUB></SPAN>, 
+  o pi&ugrave; semplicemente <SPAN CLASS="MATH"><I>a</I><SUB>k</SUB><I>n</I><SUP>k</SUP></SPAN> 
+  ) dove <SPAN CLASS="MATH"><I>k</I></SPAN> &#232; una costante.</p>
+<p><SPAN CLASS="MATH"><I>O</I>(<I>k</I><SUP>n</SUP>) f</SPAN>unzione di costo 
+  <i>esponenziale</i> cio&egrave; limitata da una funzione esponenziale <SPAN CLASS="MATH"><I>k</I><SUP>n</SUP></SPAN>, 
+  con <SPAN CLASS="MATH"><I>k</I></SPAN> una costante maggiore di <SPAN CLASS="MATH">1</SPAN></p>
+<p>...</p>
+<DIV> </DIV>
+<hr WIDTH="100%">
+<P><b>Funzioni di costo (valori)</b></P>
+<table border="2" cellpadding="2" width="89%" height="207">
+  <tr> 
+    <td width="10%" height="22">O-grande</td>
+    <td width="10%" height="22"> 
+      <div align="center">nome</div>
+    </td>
+    <td width="11%"> 
+      <div align="center">n = 10</div>
+    </td>
+    <td width="13%"> 
+      <div align="center">n = 100</div>
+    </td>
+    <td width="19%"> 
+      <div align="center">n = 1000</div>
+    </td>
+    <td width="37%"> 
+      <div align="center">ordine grandezza (n=1000)</div>
+    </td>
+  </tr>
+  <tr> 
+    <td width="10%" height="22">O(1)</td>
+    <td width="10%" height="22"> 
+      <div align="center">costante</div>
+    </td>
+    <td width="11%"> 
+      <div align="right">1</div>
+    </td>
+    <td width="13%"> 
+      <div align="right">1</div>
+    </td>
+    <td width="19%"> 
+      <div align="right">1</div>
+    </td>
+    <td rowspan="2"> 
+      <div align="center">1 microsec</div>
+    </td>
+  </tr>
+  <tr> 
+    <td width="10%" height="19">O(log n)</td>
+    <td width="10%" height="19"> 
+      <div align="center">logaritmica</div>
+    </td>
+    <td width="11%"> 
+      <div align="right">2.3</div>
+    </td>
+    <td width="13%"> 
+      <div align="right">4.6</div>
+    </td>
+    <td width="19%"> 
+      <div align="right">6.9</div>
+    </td>
+  </tr>
+  <tr> 
+    <td width="10%" height="22">O(n)</td>
+    <td width="10%" height="22"> 
+      <div align="center">lineare</div>
+    </td>
+    <td width="11%"> 
+      <div align="right">10</div>
+    </td>
+    <td width="13%"> 
+      <div align="right">100</div>
+    </td>
+    <td width="19%"> 
+      <div align="right">1000</div>
+    </td>
+    <td rowspan="2"> 
+      <div align="center">1 millisec</div>
+      </td>
+  </tr>
+  <tr> 
+    <td width="10%" height="22">O(n log n )</td>
+    <td width="10%" height="22"> 
+      <div align="center">n log n</div>
+    </td>
+    <td width="11%"> 
+      <div align="right">23</div>
+    </td>
+    <td width="13%"> 
+      <div align="right">460</div>
+    </td>
+    <td width="19%"> 
+      <div align="right">6907</div>
+    </td>
+  </tr>
+  <tr> 
+    <td width="10%" height="22">O(n<sup>2</sup>)</td>
+    <td width="10%" height="22"> 
+      <div align="center">quadratica</div>
+    </td>
+    <td width="11%"> 
+      <div align="right">100</div>
+    </td>
+    <td width="13%"> 
+      <div align="right">10000</div>
+    </td>
+    <td width="19%"> 
+      <div align="right">1000000</div>
+    </td>
+    <td width="37%"> 
+      <div align="center">1 sec</div>
+    </td>
+  </tr>
+  <tr> 
+    <td width="10%" height="22">O(n<sup>3</sup>)</td>
+    <td width="10%" height="22"> 
+      <div align="center">cubica</div>
+    </td>
+    <td width="11%"> 
+      <div align="right">1000</div>
+    </td>
+    <td width="13%"> 
+      <div align="right">1000000</div>
+    </td>
+    <td width="19%"> 
+      <div align="right">1000000000</div>
+    </td>
+    <td width="37%"> 
+      <div align="center">16 min</div>
+    </td>
+  </tr>
+  <tr> 
+    <td width="10%" height="22">O(2<sup>n</sup>)</td>
+    <td width="10%" height="22"> 
+      <div align="center">esponenziale</div>
+    </td>
+    <td width="11%"> 
+      <div align="right">1024</div>
+    </td>
+    <td width="13%"> 
+      <div align="right">1.26E30</div>
+    </td>
+    <td width="19%"> 
+      <p align="right">1,07E301</p>
+    </td>
+    <td width="37%"> 
+      <div align="center">???</div>
+    </td>
+  </tr>
+</table>
+<p>&nbsp;</p>
+<hr WIDTH="100%">
+<P><strong>Valutazione semplificata del costo: scomposizione dei costi</strong></P>
+<ul>
+  <li><strong> Costo programmi sequenziali<br>
+    </strong> Si consideri il programma <i>A;B;</i> in cui il costo di <i>A;</i> 
+    &egrave; <i>O(f<sub>A</sub>(n))</i> e il costo di <i>B;</i> &egrave; <i>O(f<sub>B</sub>(n))</i>. 
+    Il costo di <i>A;B;</i> &egrave; <i>O(max(f<sub>A</sub>(n), f<sub>B</sub>(n))</i>. 
+    <br>
+  <li><strong> Passo pi&ugrave; costoso<br>
+    </strong> Si consideri il programma <i>A;B;</i> in cui il costo di <i>A;</i> 
+    &egrave; <i>O(f<sub>A</sub>(n))</i> e il costo di <i>B;</i> &egrave; <i>O(f<sub>B</sub>(n))</i>, 
+    con <i>f<sub>A</sub>(n) = O(f<sub>B</sub>(n))</i>. Il costo di <i>A;B;</i> 
+    &egrave; <i>O(f<sub>B</sub>(n))</i>.<br>
+  <li> <strong>Costo programmi con sottoprogrammi ripetuti<br>
+    </strong> Sia <i>A</i> un programma che richiede l'esecuzione ripetuta di 
+    un insieme di istruzioni. Sia <i>f<sub>i</sub>(n)</i> il costo della <i>i</i>-esima 
+    ripetizione e <i>g(n)</i> il numero di ripetizioni. Il costo di <i>A</i> &egrave; 
+    <i>O(SUM<sub>(i=1..g(n))</sub> f<sub>i</sub>(n)).<br>
+    <br>
+    Caso particolare: </i>costo di tutte le ripetizioni uguale, allora il costo 
+    di <i>A</i> &egrave; <i>O(f(n) g(n)).</i>
+</ul>
+<hr WIDTH="100%">
+<p><strong>Valutazione semplificata del costo: operazioni dominanti </strong> 
+<ul>
+  <li>Sia <i>A</i> un programma con costo <i>O(f<sub>A</sub>(n))</i>, una <b>operazione</b> 
+    si dice <b>dominante</b> se, nel caso peggiore, viene ripetuta un numero di 
+    volte <i>g(n) = O(f<sub>A</sub>(n))</i>. 
+    <p> 
+  <li>Se una programma <i>A</i> ha una operazione dominante che viene eseguita 
+    un numero di volte <i>O(g(n))</i>, allora il costo del programma &egrave; 
+    <i>O(g(n))</i>.
+    <p> 
+  <li><em>Tipicamente per individuare le operazioni dominanti basta esaminare 
+    le istruzioni e i confronti eseguiti nei cicli pi&ugrave; interni dei programmi, 
+    oppure eseguiti nell'ambito delle attivazioni ricorsive. </em> 
+</ul>
+
+<B>Esercizio 3</B> Valutare il costo di <code>ricercaSequenziale</code> tramite l'individuazione dell'operazione dominante. 
+
+
+<hr WIDTH="100%">
+<P><b>Ricerca binaria</b></P>
+<p>&nbsp;Sia <SPAN CLASS="MATH"><I>a</I></SPAN> un vettore di <SPAN CLASS="MATH"><I>n</I></SPAN> 
+  elementi stringa <SPAN CLASS="MATH"><I>a</I><SUB>0</SUB>,..., <I>a</I><SUB>n 
+  - 1</SUB></SPAN> ordinati in modo crescente ed <SPAN CLASS="MATH"><I>k</I></SPAN> 
+  l'intero cercato in <SPAN CLASS="MATH"><i>a</i></SPAN>.</p>
+<p><EM>left</EM> l'indice del primo elemento di <SPAN CLASS="MATH"><I>a&nbsp;</I></SPAN><EM><br>
+  right</EM> l'indice dell'ultimo elemento di <SPAN CLASS="MATH"><I>a</I><br>
+  <i>med</i> </SPAN> l'indice dell'elemento centrale <SPAN CLASS="MATH">pari ad 
+  (<I>left</I> + <I>right</I>)/2</SPAN>.</p>
+Se&nbsp; <EM> left</EM> supera <EM> right</EM>, allora la ricerca di <SPAN CLASS="MATH"><I>k</I></SPAN> 
+non ha avuto successo: ritorna <code>false</code>.<br>
+Altrimenti 
+<OL>
+  <LI>Se <SPAN CLASS="MATH"><I>a</I>(<I>med</I>) = <em>k</em></SPAN> allora abbiamo 
+    trovato l'elemento e ritorna <code>true</code></LI>
+  <LI>Se <SPAN CLASS="MATH"><I>a</I>(<I>med</I>) &lt; <I>k</I></SPAN> allora cerchiamo 
+    <SPAN CLASS="MATH"><I>k</I></SPAN> nella met&agrave; destra del vettore, ponendo 
+    <SPAN CLASS="MATH"><I>left</I> = <I>med</I></SPAN></LI>
+  <LI>se <SPAN CLASS="MATH"><I>a</I>(<I>med</I>) &gt; <I>k</I></SPAN> allora cerchiamo 
+    <SPAN CLASS="MATH"><I>k</I></SPAN> nella met&agrave; sinistra del vettore 
+    ponendo <SPAN CLASS="MATH"><I>right</I> = <I>med&nbsp;</I></SPAN></LI>
+</OL>
+<P>&nbsp; 
+<hr WIDTH="100%">
+<P><b>Ricerca binaria: implementazione</b></P>
+<blockquote> 
+  <pre><font color=green>/* verifica se il valore k e' contenuto all'interno del 
+array a ordinato */</font>
+
+public static boolean ricercaBinaria(int[] a, int k) {
+   int left = 0, right = a.length-1;
+   while (left&lt;=right) {
+      int med = (left+right)/2;
+      if (a[med]==k)
+         return true;
+      else if (a[med]&lt;k)
+         left = med+1;
+      else // a[med]&gt;k
+         right = med-1;
+   }
+   return false;
+}
+</pre>
+</blockquote>
+<hr WIDTH="100%">
+<P><b>Ricerca binaria: costo</b>&nbsp;</P>
+<P><em>Esiste una operazione dominante?</em> <em>Quale?</em><br>
+  Tutte le operazioni all'interno del ciclo <code>while</code>: es. condizione 
+  <code>(left &lt;= right)</code> oppure istruzione <code>med = (left+right)/2, 
+  ecc.</code> </P>
+<P><em>Quante volte viene eseguito il ciclo <code>while</code> nel caso peggiore?</em><br>
+  Ad ogni iterazione vengono scartati met&agrave; degli elementi dell'array.</P>
+<P> <em>Quindi quanti elementi devono essere ancora analizzati ad ogni iterazione?</em><br>
+  Vediamo: iter 0, <em>n</em> elem; iter 1, <em>n/2</em> elem; iter 2, <em>n/4</em> 
+  elem; iter 3, <em>n/8</em>;... iter i, <em>n/<SPAN CLASS="MATH">2<sup>i</sup></SPAN></em>...</P>
+<P>Quante volte posso iterare?<br>
+  Fino a quando <em>n/<SPAN CLASS="MATH">2<sup>i</sup></SPAN> &gt;= 1. </em>Cio&egrave; 
+  <SPAN CLASS="MATH"></SPAN><em><SPAN CLASS="MATH">2<sup>i</sup></SPAN> &lt;=n; 
+  </em>cio&egrave; <em>i &lt;= <SPAN CLASS="MATH"><I>log</I><SUB>2</SUB></SPAN>(n). 
+  </em>Il numero di iterazioni &egrave; al massimo pari a &nbsp;<em>log(n).</em></P>
+<P>Quindi considerando che il costo di ciascuna iterazione &egrave; costante, 
+  facendo riferimento al costo dei sottoprogrammi ripetuti,abbiamo che il costo 
+  di <code>ricercaBinaria</code> &egrave; <em>O(log(n)).</em></P>
+<P>&nbsp;</P>
+<P><b>Esempio</b>: Sia l'array <em>a</em> = [3, 5, 7 ,11, 17 ,19, 23, 31] e l'elemento 
+  <em>k</em> cercato 6.<br>
+  Il costo della ricerca è <SPAN CLASS="MATH"><I>log</I><SUB>2</SUB></SPAN>(8) 
+  = 3.&nbsp;</P>
+
+<hr WIDTH="100%">
+<p>
+<B>Esercizio 4</B> Si consideri la funzione</p>
+
+<blockquote> 
+  <pre>public static void stampaRigheMatrice(short[][] A) {
+  for (int i=0; i&lt;A.length; i++) {    // scandisce righe
+    for (int j=0; j&lt;A[0].length; j++) // scandisce elementi riga i
+      System.out.print(A[i][j]+&quot; &quot;);  // stampa elemento riga
+    System.out.println();             // fine riga
+   }
+}
+</pre>
+</blockquote>
+
+La funzione prende come parametro una matrice <code>A</code> di dimensione <SPAN CLASS="MATH"><I>n 
+</I>x <I>m</I></SPAN> e la stampa su <code>System.out</code> per righe.
+
+Determinare il costo di <code>stampaRigheMatrice</code> utilizzando la notazione
+<i>O</i>.<br>
+
+<hr WIDTH="100%">
+<p>
+<B>Esercizio 5</B> Si consideri il seguente metodo che prende come parametri due matrici
+<code>A</code> e <code>B</code> entrambe di dimensione <SPAN CLASS="MATH"><I>n 
+</I>x <I>n</I></SPAN> e restituisce una nuova matrice ottenuta
+sommando gli elementi corrispondenti di <code>A</code> e <code>B</code>.
+<blockquote>
+<pre>public static double[][] sommaMatrici(double[][] A, double[][] B) {
+  double[][] C = new double [A.length][A[0].length];
+  for (int i=0; i&lt;A.length; i++)
+    for (int j=0; j&lt;A[0].length; j++)
+      C[i][j] = A[i][j] + B[i][j];
+  return C;
+}</pre>
+</blockquote>
+
+Determinare il costo di <code>sommaMatrici</code> utilizzando la notazione <i>O</i>.
+
+<hr WIDTH="100%">
+<p>
+<B>Esercizio 6</B> Si consideri il seguente metodo che prende come parametri due matrici
+<code>A</code> e <code>B</code> entrambe di dimensione <SPAN CLASS="MATH"><I>n 
+</I>x <I>n</I></SPAN> e restituisce una nuova matrice ottenuta come
+prodotto di <code>A</code> e <code>B</code>.  
+
+<blockquote>
+<pre>public static double[][] prodottoMatrici(double[][] A, double[][] B) {
+  double[][] C = new double [A.length][A[0].length];
+  for (int i=0; i&lt;A.length; i++)
+    for (int j=0; j&lt;A[0].length; j++) {
+      C[i][j]=0;
+      for (int k=0; k&lt;A[0].length; k++)
+        C[i][j] += A[i][k] * B[k][j];
+    }
+  return C;
+}</pre>
+</blockquote>
+
+Determinare il costo di <code>prodottoMatrici</code> utilizzando la notazione <i>O</i>.
+
+<hr WIDTH="100%">
+
+<p>
+
+<B>Esercizio 7 </B> Si determini il costo di tutti i metodi della classe
+<code>TestoCriptato</code>
+
+<blockquote>
+
+<pre>public class TestoCriptato {
+  // rappresentazione degli oggetti della classe
+  private int chiave;
+  private String testo;
+
+  // costruttori
+  public TestoCriptato(String testoNonCriptato) {
+    chiave = 0;
+    testo = testoNonCriptato;
+  }
+  public TestoCriptato(String testoNonCriptato, int chiave) {
+    this.chiave = chiave;
+    testo = codifica(testoNonCriptato,chiave);
+  }
+
+  // altri metodi pubblici
+  public String getTestoCriptato() {
+    return testo;
+  }
+  
+  public String getTestoDecriptato(int chiave) {
+    if (chiave == this.chiave)
+      return decodifica(testo, chiave);
+    else return null;
+  }
+  
+  public boolean estChiave(int chiaveCandidata) {
+    return chiaveCandidata == chiave;
+  }
+  
+  public void setChiave(int chiave, int nuovaChiave) {
+    if (chiave == this.chiave) {
+      this.chiave = nuovaChiave;
+      testo = codifica(decodifica(testo,chiave),nuovaChiave);
+    }
+  }
+
+  // metodi ausiliari
+  private static String codifica(String testo, int chiave) {
+    String testoRis;
+    char c;
+    int ci;
+    testoRis = &quot;&quot;;
+    for (int i = 0; i &lt; testo.length(); i++) {
+      c = testo.charAt(i);
+      ci = (int)c;
+      ci = ci + chiave;
+          c = (char)ci;
+      testoRis = testoRis + String.valueOf(c);
+    }
+    return testoRis;
+  }
+  
+  private static String decodifica(String testo, int chiave) {
+    String testoRis;
+    char c;
+    int ci;
+    testoRis = &quot;&quot;;
+    for (int i = 0; i &lt; testo.length(); i++) {
+      c = testo.charAt(i);
+      ci = (int)c;
+      ci = ci - chiave;
+      c = (char)ci;
+      testoRis = testoRis + String.valueOf(c);
+    }
+    return testoRis;
+  }
+}</pre>
+</blockquote>
+
+<hr WIDTH="100%">
+
+<p>
+
+<B>Esercizio 8 </B>Scrivere un metodo <code> static int numeroDuplicati(int[]   A)</code> 
+che restituisce il numero di duplicati nell'array <code>A</code>,
+  ovvero il numero di valori distinti che compaiono pi&ugrave; volte come elementi
+  dell'array.&nbsp;</p>
+<p>
+  
+  Determinare il costo del metodo.</p>
+
+
+<hr WIDTH="100%">
+<p><b>Costo rispetto allo spazio</b></p>
+<p>Fino ad adesso abbiamo focalizzato l'attenzione principalmente sul costo 
+  rispetto al tempo. <em>Cosa cambia quando consideriamo invece lo spazio?</em></p>
+<p>La definizione di <em>O</em>-grande e di delimitazione superiore di 
+costo
+  di un programma/algoritmo date precedentemente naturalmente sono ancora valide 
+  se invece di considerare quantit&agrave; di tempo consideriamo quantit&agrave; 
+  di spazio.</p>
+<p><strong>Modello di costo per lo spazio:</strong> mentre la quantit&agrave; 
+  di tempo &egrave; calcolata considerando istruzioni/condizioni atomiche con 
+  costo unitario, quando passiamo allo spazio consideriamo unitario la quantit&agrave; 
+  di memoria necessaria per memorizzare una variabile di qualsiasi tipo, incluse 
+  naturalmente quelle allocate nei record di attivazione delle funzioni.</p>
+<p>Due considerazioni importanti:</p>
+<ol>
+  <li>Il costo rispetto allo spazio dovrebbe essere sempre minore o
+    uguale al costo rispetto al tempo 
+    <ul>
+      <li>utilizzare spazio in memoria implica utilizzare tempo per scrivere su 
+        questo spazio</li>
+      <li>lo spazio pu&ograve; essere <strong>riutilizzato</strong>, mentre il 
+        tempo no</li>
+    </ul>
+  </li>
+  <li>Non consideriamo lo spazio necessario per rappresentare l'input, ma solo 
+    lo spazio di lavoro aggiuntivo (incluso l'output). <em>Si d&agrave; per scontato 
+    che l'input vada rappresentato!</em></li>
+</ol>
+<hr WIDTH="100%">
+<p><b>Costo rispetto allo spazio</b></p>
+<p><strong>Esempio:</strong></p>
+<blockquote>
+  <pre>
+public static boolean ricercaSequenziale(int[] a, int k) {
+   for (int i = 0; i &lt; a.length; i++)
+      if (a[i]==k) return true;
+   return false;
+}
+</pre>
+</blockquote>
+<p>Costo in tempo <em>O(n)</em>. <br>
+  <em>Costo in spazio? </em><br>
+  <em>O(1)</em>! Spazio costante! <em>perch&egrave;?</em></p>
+<p><strong>Esempio (implementazione ricorsiva di ricerca sequenziale):</strong></p>
+<blockquote>
+  <pre>
+public static boolean ricercaSequenzialeR(int[] a, int k, int i) {  // i denota la pos iniziale del vettore
+
+   if (i &gt;= a.length) return false;
+   else if (a[i]==k) return true;
+   else return ricercaSequenzialeR(a,k,i+1);
+}
+</pre>
+</blockquote>
+<ul>
+  <li><em>Costo in tempo?</em><br>
+    <br>
+    <em>O(n)</em>.<br>
+    <br>
+  </li>
+  <li><em>Costo in spazio? </em><br>
+    <br>
+    <em>O(n)</em>! <em>perch&egrave;? </em>Dipende dal numero di record di attivazione 
+    che devono essere contemporanemente presenti in memoria.</li>
+</ul>
+<p>In realt&agrave;, alcuni compilatori sono in grado di riconoscere che questo 
+  &egrave; un tipo di ricorsione molto semplice (la funzione che invoca se stessa 
+  ricorsivamente non usa i risultati i tale invocazione), detta <em>&quot;tail 
+  recursion&quot;, </em>e in presenza di tale tipo di ricorsione non allocano 
+  un nuovo record di attivazione, ma riusano il record di attivazione del chiamante.</p>
+<p></p>
+<hr WIDTH="100%">
+<p><b>Costo rispetto allo spazio</b></p>
+<p><strong>Esempio:</strong></p>
+<blockquote> 
+  <pre>public static boolean ricercaBinaria(int[] a, int k) {
+   int left = 0, right = a.length-1;
+   while (left&lt;=right) {
+      int med = (left+right)/2;
+      if (a[med]==k)
+         return true;
+      else if (a[med]&lt;k)
+         left = med+1;
+      else // a[med]&gt;k
+         right = med-1;
+   }
+   return false;
+}</pre>
+  </blockquote>
+<p>Costo in tempo <em>O(log(n)</em>). <br>
+  <em>Costo in spazio? </em><br>
+  <em>O(1)</em>! Spazio costante! <em>perch&egrave;?</em></p>
+<p><b>Esempio (implementazione ricorsiva di ricerca binaria): </b></p>
+<blockquote>
+  <pre>
+public static boolean ricercaBinariaR(int[] a, int k, int left, int right) {
+   if (left &gt; right) return false;
+   else { 
+      int med = (left+right)/2;
+      if (a[med]==k)
+         return true;
+      else if (a[med]&lt;k)
+         return ricercaBinariaR(a,k,med+1,right);
+      else  // a[med]&gt;k
+         return ricercaBinariaR(a,k,left,med-1);
+   }
+}</pre>
+</blockquote>
+<p>Costo in tempo <em>O(log(n)</em>). <br>
+  <em>Costo in spazio? </em><br>
+  <em>O(log(n))</em>! <em>perch&egrave;?</em></p>
+<hr WIDTH="100%">
+<p>&nbsp; </p>
+</body>
+</html>

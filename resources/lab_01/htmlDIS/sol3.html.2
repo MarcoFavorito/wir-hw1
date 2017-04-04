@@ -1,0 +1,93 @@
+<!doctype html public "-//w3c//dtd html 4.0 transitional//en">
+<html>
+<head>
+   <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <meta name="Author" content="ber">
+   <meta name="GENERATOR" content="Mozilla/4.72 [en] (X11; U; AIX 4.3) [Netscape]">
+   <title>sol3</title>
+</head>
+<body>
+<b>Descrizione del comportamento</b>:
+<p>Il programma principale (ESER3) pone 3 in m ed attiva Foo con parametro
+attuale pari ad m.
+<br>Visto che il passaggio e' per valore, il parametro n di Foo assume
+il valore 3.
+<p>La procedura Foo contiene la funzione writeit che restituisce il valore
+di m (essendo m visibile dalla funzione) e ne decrementa il valore di una
+unita'.
+<p>Se n>0 la procedura:
+<br>1. crea una variabile dinamica riferita dal punatore p
+<br>2. pone il valore del parametro n nella variabile dimanica
+<br>3. chiama se stessa con parametro n-1
+<br>4. al ritorno da tale chiamata Foo:&nbsp;(a) scrive la seguente tripla
+di valori su una linea di output
+<br>&nbsp;&nbsp; a.1. il contenuto della varibile riferita da p,
+<br>&nbsp;&nbsp; a.2. il valore del parametro n (che maschera l'omonima
+variabile globale n)
+<br>&nbsp;&nbsp; a.3. il valore resitituito dalla funzione writeit
+<br>&nbsp;&nbsp; (b)&nbsp;cancella l'area di memoria allocata per la variabile
+dinamica
+<p>La procedura e' ricorsiva. Foo chiama se stessa per n>0.Se n=0 non si
+hanno ulteriori attivazioni di Foo. (n=0 e' "il caso base" della ricorsione)
+<br>Ad ogni attivazione di Foo(n) con n>0 il valore n viene memorizzato
+nella variabile riferita da p, quindi il valore contenuto in p^ coincide
+quindi con quello del parametro n.
+<br>La stampa dei valori avviene nella fase dei "ritorni" ossia, prima
+da parte di Foo(1), poi&nbsp; Foo(2) quindi Foo(3).
+<br>Il valore restituito da writeit la prima volta che viene attivata 3
+(inizializzato nel main), poi 2 poi 1.
+<br>Pertanto i <u>valori in uscita</u> sono:
+<p><b>p^&nbsp;&nbsp;&nbsp;&nbsp; n&nbsp;&nbsp;&nbsp; writeit</b>
+<p>1&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 1&nbsp;&nbsp;&nbsp; 3
+<br>2&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 2&nbsp;&nbsp;&nbsp; 2
+<br>3&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 3&nbsp;&nbsp;&nbsp; 1
+<p><b>Evoluzione stack (alcune configurazioni significative)</b>:
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+Foo(0)&nbsp;&nbsp;&nbsp;&nbsp; writeit
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+Foo(1)&nbsp; Foo(1)&nbsp;&nbsp;&nbsp;&nbsp; Foo(1)&nbsp;&nbsp;&nbsp;&nbsp;
+writeit
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+Foo(2)&nbsp;&nbsp; Foo(2)&nbsp; Foo(2)&nbsp;&nbsp;&nbsp;&nbsp; Foo(2)&nbsp;&nbsp;&nbsp;&nbsp;
+Foo(2)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; writeit
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+Foo(3)&nbsp; Foo(3)&nbsp; Foo(3)&nbsp;&nbsp; Foo(3)&nbsp;&nbsp;&nbsp;&nbsp;
+Foo(3)&nbsp;&nbsp;&nbsp; Foo(3)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Foo(3)
+<br>Eser3&nbsp;&nbsp;&nbsp; Eser3&nbsp;&nbsp;&nbsp; Eser3&nbsp;&nbsp;&nbsp;&nbsp;
+Eser3&nbsp;&nbsp;&nbsp; Eser3&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Eser3&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+Eser3&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Eser3&nbsp;&nbsp;&nbsp;&nbsp;
+Eser3
+<br>-----------------> TEMPO ------------------------------------------------->
+<p>La <a href="stack.jpg">figura</a> mostra un esempio di configurazione
+dello stack. Per chiarezza non sono riportati i riferimenti al codice (ogni
+RDA riferisce l'inizio del codice della relativa unita') ed i punti di
+ritorno (discussi dopo)
+<p><b>Evoluzione heap</b>
+<br>Ogni istruzione new(p) provoca l'allocazione di un'area di memoria
+che verra' rilasciata dalla istruzione dispose().
+<br>Il simbolo ?? denota un'area libera, altrimenti viene visualizzato
+il valore memorizzato
+<p>??&nbsp;&nbsp;&nbsp;&nbsp; 3&nbsp;&nbsp;&nbsp;&nbsp; 3&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+3&nbsp;&nbsp;&nbsp;&nbsp; 3&nbsp;&nbsp;&nbsp;&nbsp; 3&nbsp;&nbsp;&nbsp;&nbsp;
+??
+<br>??&nbsp;&nbsp;&nbsp; ??&nbsp;&nbsp;&nbsp;&nbsp; 2&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+2&nbsp;&nbsp;&nbsp;&nbsp; 2&nbsp;&nbsp;&nbsp;&nbsp; ??&nbsp;&nbsp;&nbsp;
+??
+<br>??&nbsp;&nbsp;&nbsp; ??&nbsp;&nbsp;&nbsp; ??&nbsp;&nbsp;&nbsp;&nbsp;
+1&nbsp;&nbsp;&nbsp;&nbsp; ??&nbsp;&nbsp;&nbsp; ??&nbsp;&nbsp;&nbsp; ??
+<p><b>Informazioni nel RDA</b>
+<br>Ogni RDA contiene:
+<br>1. variabii locali (p per Foo, n ed m per Eser3)
+<br>2. parametri formali (n per Foo, writeit per la funzione)
+<br>3. punto di ritorno (riferimento all'istruzione, nell'unita' chiamante,
+da eseguire dopo l'attivazione dell'unita')
+<br>&nbsp;&nbsp;&nbsp; ritorno da Foo(3): end del main
+<br>&nbsp;&nbsp;&nbsp; ritorno da Foo(2):&nbsp; writeln in Foo
+<br>&nbsp;&nbsp;&nbsp; ritorno da Foo(1):&nbsp; writelnet in Foo
+<br>&nbsp;&nbsp;&nbsp; ritorno da&nbsp; Foo(0):&nbsp; writeln in Foo
+<br>&nbsp;&nbsp;&nbsp; ritorno da writeit: continuazione istruzione writeln
+in Foo
+<p>4. riferimento di catena statica (Foo -> Eser , e writeit -> Foo)
+<br>5. riferimento al codice da eseguire
+</body>
+</html>

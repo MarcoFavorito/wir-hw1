@@ -1,0 +1,94 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=windows-1252">
+<TITLE>Reti di Calcolatori</TITLE>
+</HEAD>
+<BODY background="bgrnd.jpg">
+
+<B><FONT SIZE=5><P>7) I/O in Java - Introduzione agli <I>stream</P>
+<hr>
+</I></FONT>
+</B>1.&nbsp; Cosa &egrave; uno <I>stream
+<OL>
+
+</I><P ALIGN="JUSTIFY">E' un'astrazione che rappresenta una connessione verso un canale di comunicazione, quale pu&ograve; essere una connessione di rete o un buffer di memoria. Uno stream &egrave; monodirezionale; distinguiamo gli stream di input dagli stream di output.  Vanno usati in coppia; se da un lato della connessione utilizziamo uno stream di output per scrivere dati, all'altro capo utilizziamo uno stream di input per riceverli. </P>
+</OL>
+
+
+2.&nbsp; Standard input e standard output
+<OL>
+
+<P ALIGN="JUSTIFY">In java l'output standard corrisponde al video e lo standard input &egrave; rappresentato dalla tastiera.  Sono anch'essi degli stream (ovvero un canale di comunicazione associato ad un dispositivo di I/O); i riferimenti utilizzati in questi casi sono</P>
+<I><P ALIGN="CENTER">System.out</P>
+<P ALIGN="CENTER">Sistem.in</P>
+</I><P ALIGN="JUSTIFY">Esiste anche uno <I>standard error</I> associato allo stesso dispositivo previsto per lo <I>standard output</P>
+<P ALIGN="CENTER">Sistem.err</P>
+</I></OL>
+
+
+3.&nbsp; Caratteristiche principali dell'I/O in Java
+
+
+<UL>
+
+<UL>
+<LI>Tutti gli stream utilizzano I/O a byte e non a caratteri. I caratteri in Java sono Unicode a 16 bit, mentre normalmente nei sistemi operativi l'I/O &egrave; gestito a byte.</LI><LI>L'attesa di dati non presenti sullo stream di input, porta un thread nello stato di attesa. </LI></UL>
+</UL>
+
+4.&nbsp; La classe <I>OutputStream
+
+<OL>
+
+</I><P ALIGN="JUSTIFY">E' la superclasse per tutte le implementazioni di stream per l'output.  Prevede metodi per la scrittura di un byte</P>
+<I><P ALIGN="CENTER">abstract void write(int b) throws IOException</P>
+</I><P ALIGN="JUSTIFY">di un array di byte</P>
+<I><P ALIGN="CENTER">void write(byte b[]) throws IOException</P>
+</I><P ALIGN="JUSTIFY">o di una porzione di un array di byte</P>
+<I><P ALIGN="CENTER">void write(byte b[], int offset, int length) throws IOException</P>
+</I><P ALIGN="JUSTIFY">Poich&eacute; l'I/O &egrave; bufferizzato, &egrave; previsto un metodo che forza lo svuotamento del buffer nel canale di output </P>
+<I><P ALIGN="CENTER">void flush() throws IOException</P>
+</I><P ALIGN="JUSTIFY">e un metodo che, oltre a forzare lo svuotamento del buffer nel canale di output, chiude la connessione di rete liberando le risorse impegnate</P>
+<I><P ALIGN="CENTER">void close() throws IOException</P>
+</I></OL>
+5.&nbsp; La classe <I>InputStream
+</I>
+
+<OL>
+
+<P ALIGN="JUSTIFY">E' la superclasse per tutte le implementazioni di stream per l'input.  Prevede metodi per la lettura di un byte</P>
+<I><P ALIGN="CENTER">abstract void read(int b) throws IOException</P>
+</I><P ALIGN="JUSTIFY">di un array di byte</P>
+<I><P ALIGN="CENTER">void read(byte b[]) throws IOException</P>
+</I><P ALIGN="JUSTIFY">o di una porzione di un array di byte</P>
+<I><P ALIGN="CENTER">void read(byte b[], int offset, int length) throws IOException</P>
+</I><P ALIGN="JUSTIFY">Poich&eacute; l'I/O &egrave; bufferizzato, &egrave; previsto un metodo che ritorna il numero di byte disponibili sul buffer di input, leggibili senza che il tentativo di lettura blocchi il thread </P>
+<I><P ALIGN="CENTER">int available() throws IOException</P>
+</I><P ALIGN="JUSTIFY">e un metodo che, oltre a distruggere eventuali dati accumulati (e non ancora letti) nel buffer di input, chiude la connessione di rete liberando le risorse impegnate</P>
+<I><P ALIGN="CENTER">void close() throws IOException</P>
+</I><P ALIGN="JUSTIFY">Per una pi&ugrave; efficiente utilizzo degli stream di input, questa classe mette a disposizione anche metodi per saltare un certo numero di caratteri in input (perch&eacute; magari sono noti e vanno ignorati)</P>
+<I><P ALIGN="CENTER">long skip(long n) throws IOException</P>
+</I><P ALIGN="JUSTIFY">e metodi per marcare un carattere letto</P>
+<I><P ALIGN="CENTER">void mark(int readlimit)</P>
+</I><P ALIGN="JUSTIFY">e per far ripartire successivamente la lettura dall'ultimo carattere marcato</P>
+<I><P ALIGN="CENTER">void reset() throws IOException</P>
+</I><P ALIGN="JUSTIFY">Il parametro <I>readlimit</I> rappresenta il numero di caratteri letti successivamente a quello marcato, oltre i quali non &egrave; possibile chiedere la <I>reset</I>().  Inoltre, va specificato che non tutte le sottoclassi di InputStream supportano la marcatura del carattere in input.  Il metodo</P>
+<I><P ALIGN="CENTER">boolean markSupported()</P>
+</I><P ALIGN="JUSTIFY">restituisce true se lo stream utilizzato supporta la marcatura.</P>
+</OL>
+6.&nbsp; Gerarchia del package java.io
+
+<OL>
+
+<I><P ALIGN="JUSTIFY">InputStream</I> e <I>OutputStream</I> sono classi astratte. Gli stream possono essere utilizzati concretamente attraverso le classi derivate, a seconda dell'uso specifico.</P>
+<P ALIGN="CENTER"><IMG SRC="Image1.gif" WIDTH=267 HEIGHT=384></P>
+<I><P ALIGN="JUSTIFY">ByteArrayInputStream</I> e <I>ByteArrayOutputStream</I> implementano lettura e scrittura verso un buffer in memoria, rappresentato da un array di byte in memoria.  <I>PipedInputStream</I> e <I>PipedOutputStream</I> vanno usati in coppia e permettono lo scambio dati tra thread.  <I>FileInputStream</I> e <I>FileOutputStream</I> (i cosiddetti "filtri") permettono di interagire con i file, visti in questo caso come uno <I>stream</I> di byte.  <I>StreamTokenizer</I> implementa un parser che permette di riconoscere in uno stream di byte degli elementi sintattici.  <I>FilterInputStream</I> e <I>FilterOutputStream</I>, sono a loro volta superclassi di una famiglia di stream, che consentono una pi&ugrave; semplice gestione delle operazioni di lettura e scrittura.  Per fare un esempio, <I>DataInputStream</I> e <I>DataOutputStream</I> consentono di fare I/O di dati gestiti normalmente in Java, come interi, booleani o float.  Analoga funzione &egrave; svolta dalla classe <I>PrintStream</I>.  La <I>BufferedOutputStream</I> e la <I>BufferedInputStream</I> sono classi che consentono l'implementazione di I/O bufferizzato.  In particolare, il <I>BufferedOutputStream</I> &egrave; un oggetto associato ad un'area di memoria, nella quale vengono depositati i dati provenienti dall'applicazione, in attesa di essere spediti sullo <I>stream</I> connesso.  Nelle applicazioni di rete, la bufferizzazione consente un migliore utilizzo delle risorse di rete; una <I>write()</I> dell'intero buffer (di dimensioni n) gestita dalla classe <I>BufferedOutputStream,</I> ha un costo molto minore di n <I>write()</I> effettuate su un semplice <I>OutputStream</I>.  Su un'architettura di rete come il TCP/IP, ogni write() su uno stream che rappresenta una connessione, equivale ad una richiesta da effettuare allo strato di trasporto.  Considerando il peso che l'header ha su ogni pacchetto inoltrato, appare chiaro che l'I/O bufferizzato rende pi&ugrave; efficiente l'invio di un messaggio.  Dall'altra parte, la classe <I>BufferedInputStream</I> consente il non coinvolgimento del sistema operativo nell'opera di lettura dei dati da uno stream di input.  I dati vengono estratti totalmente (o fino al riempimento del buffer) &egrave; letti ad ogni <I>read()</I> dall'area di memoria associata.  </P>
+</OL>
+7.&nbsp; Qualcosa in pi&ugrave; su <I>System.in</I> e <I>System.out</I> - un esempio: la classe <B>stdio.java
+<DIR>
+<DIR>
+
+</B><P ALIGN="JUSTIFY">Abbiamo detto che sono stream associati allo standard input e allo standard output. Effettivamente <I>System.in</I> deriva direttamente da <I>InputStream</I>, mentre <I>System.out</I> deriva da <I>PrintStream</I> (che deriva da <I>FilterOutputStream</I>, che a sua volta deriva da <I>OutputStream</I>). </P>
+</DIR>
+</DIR>
+</BODY>
+</HTML>

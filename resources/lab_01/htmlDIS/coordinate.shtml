@@ -1,0 +1,71 @@
+<!doctype html public "-//w3c//dtd html 4.0 transitional//en">
+<html>
+<head>
+<link href="java.css" rel="stylesheet" type="text/css">
+<title>Coordinate dei punti</title>
+</head>
+
+<body>
+
+<h2>Coordinate dei punti</h2>
+
+Si risolva il seguente problema: ogni volta che si preme
+il pulsante del mouse in una posizione, si stampi
+in alto a sinistra nella finestra le coordinate in cui
+il pulsante &egrave; stato premuto.<p>
+
+Dal momento che vogliamo fare qualcosa in risposta al
+click, occorre mettere le istruzioni di stampa dentro
+la procedura <tt>mouseDown</tt>. Quello che occorre
+fare &egrave; semplicemente stampare le coordinate, che
+sono date da <tt>x</tt> e <tt>y</tt>. Una prima versione
+del programma potrebbe essere la seguente:
+
+<pre>
+import java.awt.*;
+
+public class Coordinate extends java.applet.Applet {
+  public boolean mouseDown(Event e, int x, int y) {
+    Graphics g=getGraphics();
+
+    g.drawString("Coordinate: "+x+" "+y,0,20);
+
+    return true;
+  }
+}
+</pre>
+
+Il problema &egrave; che le coordinate del punto successivo
+vengono scritte sopra a quelle precedenti, senza prima
+cancellarle. &Egrave; quindi necessario cancellare
+la scritta fatta in precedenza prima di scriverne una
+nuova. Il programma definitivo
+<a href="Coordinate.java">Coordinate.java</a>
+&egrave; quindi fatto cos&iacute:<p>
+
+<pre>
+/*
+  Stampa le coordinate dei punti dove viene fatto click.
+*/
+
+import java.awt.*;
+
+public class Coordinate extends java.applet.Applet {
+  public boolean mouseDown(Event e, int x, int y) {
+    Graphics g=getGraphics();
+
+    g.clearRect(0,0,200,20);
+    g.drawString("Coordinate: "+x+" "+y,0,20);
+
+    return true;
+  }
+}
+
+</pre>
+
+<p>
+<applet code="Coordinate.class" height="200" width="400">
+</applet>
+
+</body>
+</html>

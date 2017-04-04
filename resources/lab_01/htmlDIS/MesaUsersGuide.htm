@@ -1,0 +1,439 @@
+<HTML>
+
+<HEAD>
+<TITLE>Mesa User's Guide</TITLE>
+</HEAD>
+
+<BODY>
+
+<H1><P ALIGN=CENTER><A HREF="Mesa.html">Mesa</A> User's Guide</H1>
+
+
+<H2>Introduction</H2>
+
+This document discusses a number of Mesa subjects which are often asked about.
+Also see the FAQ for miscellaneous subjects.
+Suggestions for new topics are welcome.<P>
+
+Subjects:
+<OL>
+<LI>X visuals and colormaps
+<LI>Mesa's X driver
+<LI>Optimizing Mesa's performance
+<LI>Installing Mesa
+<LI>Remote display of OpenGL apps
+</UL>
+
+
+
+
+<H2>Subject 1:  X visuals and colormaps</H2>
+
+Before explaining the details of the X driver for Mesa (subject 2) it's
+important to understand some basic information about X visuals.  Volume 1
+of the O'Reilly series on the X window system is a good source for this
+information.<P>
+
+<H4>Visuals</H4>
+
+An X "visual" describes how data in a frame buffer are displayed as
+colored pixels on your screen.  Visuals are characterized by their depth
+and class.  The depth is the number of bits per pixel.  The class determines
+what kind of colormap, if any, is used.<P>
+
+X supports 6 different visual types or classes (N=depth):<P>
+
+<UL>
+<LI><B>StaticGray</B> - each N-bit pixel values is an index into an immutable
+grayscale colormap with 2^N entries
+<LI><B>GrayScale</B> - each N-bit pixel value is an index into a mutable
+grayscale colormap with 2^N entries
+<LI><B>StaticColor</B> - each N-bit pixel value is an index into an immutable
+colormap with 2^N entries
+<LI><B>PseudoColor</B> - each N-bit pixel value is an index into a mutable
+colormap with 2^N entries
+<LI><B>TrueColor</B> - each N-bit pixel values is partitioned into 3
+components (R + G + B = N) which directly map to 2^R red, 2^G green,
+and 2^B blue intensities
+<LI><B>DirectColor</B> - each N-bit pixel value is partitioned into 3
+components (R + G + B = N) each of which is an index into a mutable red,
+green, and blue colormap
+</UL>
+
+Note: mutable = dynamic or changable, immutable = fixed, can't be changed.<P>
+
+The most common visual type on low-end displays is 8-bit PseudoColor.  In
+this case each byte in the frame buffer is an index into a 256-entry colormap
+which can be loaded with colors you choose.<P>
+
+A common visual type on high-end displays is 24-bit TrueColor.  In this
+case each triplet of bytes in the frame buffer directly maps to an RGB
+color on the screen.  256 shades of red, 256 shades of green and 256 shades
+of blue allow 16,777,216 differeent colors.  Some people say you can
+display "16 million colors at once" but that's false because nobody has
+a display with that many pixels!<P>
+
+Here are some other common visuals:
+
+<UL>
+<LI>1-bit StaticGray - monochrome screen
+<LI>8-bit GrayScale - grayscale screen
+<LI>8-bit TrueColor - 2-bits red, 3-bits green, 3-bits blue
+<LI>12-bit PseudoColor - 12 bits per pixel, 4096-entry colormap
+<LI>16-bit TrueColor - 5-bits red, 6-bits green, 5-bits blue
+</UL>
+
+
+<H4>Which visual(s) does my display support?</H4>
+
+You can find out with the standard <B>xdpyinfo</B> command.  It prints all
+sorts of interesting information about your display including a list of
+visuals supported by each screen.  Note that an X <EM>display</EM> is a
+collection of one or more X <EM>screens</EM>, each of which can support
+a different set of <EM>visuals</EM>.  Most people have one screen per
+display.  Low-end systems usually list 1 or 2 visuals, high-end
+systems may list upwards of 70 visuals.<P>
+
+<H4>Which visual is the default?</H4>
+
+One of the visuals in the list from xdpyinfo is the default visual.  The
+default visual is the visual used by the root (background) window.  Look
+for <EM>default visual id</EM> in the xdpyinfo output.<P>
+
+Another way to determine the default (root) visual is to use <B>xwininfo</B>.
+When you run xwininfo your pointer will turn into a cross-hair.  Point over
+the root window and press a mouse button.  Among the information printed
+will be the visual class and depth.  Note that you can apply this program
+to any X window.<P>
+
+<H4>Can I control which visuals are available?</H4>
+
+That depends on your graphics hardware and X server software.
+On Linux systems with XFree86 you can do <CODE>startx -- -bpp16</CODE> or
+<CODE>startx -- -bpp32</CODE> to start the X server with deeper visuals.
+Ask your sysadmin or consult your system's X documentation to learn more.<P>
+
+If your display supports more than one visual you should also be able to
+configure the default (root) visual to be which ever you want.  Again,
+read your documentation.<P>
+
+<H4>Information for Xlib programmers</H4>
+
+If you're programming with Xlib (or a higher level toolkit) you need to
+be aware of visual issues when creating windows.  Naive programmers who
+use XCreateSimpleWindow may find all kinds of problems when later running
+their client on a different display.  The problem is XCreateSimpleWindow
+inherits its parent's visual.  If creating a top-level window, it'll
+inherit the root win window's visual which will vary from display to
+display.<P>
+
+When creating top-level windows it's much better to use <B>XGetVisualInfo</B>
+or <B>XMatchVisualInfo</B> to explicitly choose the visual and
+<B>XCreateWindow</B> to create the window.  Alternatively, if you want to
+use the default visual, your code should verify that the default visual is
+suitable for your application's needs and deal with it appropriately.<P>
+
+Finally, If you create a window with a visual you've explicitly chosen you
+must also be sure to provide a colormap which matches the visual.  Otherwise
+you'll get a BAD MATCH X protocol error.<P>
+
+<H4>Colormaps</H4>
+
+Color management in X is complicated.  What follows is a quick overview
+of X's colormap system.  See the O'Reilly Xlib Programming Manual for more
+detailed info.<P>
+
+An X colormap is really an abstraction over the hardware.  While your X
+screen may only have one real colormap, X gives programmers the illusion
+of having an unlimited number of colormaps.  If the hardware colormap(s)
+become over commited you'll probably see the "technicolor" effect or
+colormap "flashing" when you move the input focus from one window to
+another.  That's caused by the window manager installing the virtual X
+colormap into the hardware colormap for the current window.  Careful
+programming can reduce or eliminate this problem as we'll see.<P>
+
+X colormaps come into two varieties:  private and shared.  When you
+call <B>XCreateColormap</B> you indicate <B>AllocAll</B> for private or
+<B>AllocNone</B> for shared.<P>
+
+When you create a private colormap you get a whole colormap to yourself
+in which you can setup any mapping of pixels to colors you want using
+<B>XStoreColor(s)</B>.  You should avoid using private colormaps when
+possible because they inhibit color sharing.  Remember, it's not sharing
+colors with other clients which leads to the dreaded colormap flashing.<P>
+
+When you create a shared colormap you must allocate colors from it using
+<B>XAllocColor</B>.  You specify a color by red, green, and blue values
+and XAllocColor returns a pixel value for you to use when drawing things.
+If X can't allocate the color you need, XAllocColor will fail.  Your
+best recourse is to then search the colormap for the closest match and use
+that color.  X will try to combine shared colormaps into one hardware
+colormap to reduce flashing.<P>
+
+Programming tips:
+<UL>
+<LI>Use shared colormaps whenever possible.
+<LI>If you need to create a number of windows with the same visual you should
+try to share the same colormap among them.
+<LI>If you create a number of windows with different visuals you <EM>must</EM>
+be sure to allocate a different colormap for each visual.
+<LI>If possible, try to use the visual and colormap of the root window to
+reduce colormap flashing.
+</UL>
+
+How Mesa works with colormaps is the subject of the next section.<P>
+
+
+
+<H2>Subject 2:  Mesa's X driver- visuals and colormaps</H2>
+
+According to the OpenGL GLX spec, when using OpenGL in RGB mode you must
+use a TrueColor or DirectColor visual.  When using OpenGL in color-index
+mode you must use a PseudoColor or StaticColor visual.  Indeed these are
+the only possibilities returned by <B>glXChooseVisual</B>.<P>
+
+Mesa's X driver is more flexible, allowing you to use any X visual type in RGB
+mode and either GrayScale, StaticGray, PseudoColor or StaticColor in color-
+index mode.  Unfortunately, this flexibility sometimes causes problems.<P>
+
+It's very important to understand that most of the visual and colormap
+problems people have with Mesa are not caused by the core Mesa library
+but rather the higher level toolkits such as aux, tk and GLUT.  However,
+the toolkits cannot be blamed too much because they were designed to
+work with OpenGL but not Mesa's unique features.<P>
+
+
+<H4>Mesa's glXChooseVisual</H4>
+
+Mesa's implementation of <B>glXChooseVisual</B> is written to be as
+compatible with the OpenGL semantics as possible.  However, The fact that
+Mesa's glXChooseVisual may return, for example, a PseudoColor visual in RGB
+mode is enough to make some OpenGL applications fail.  If the OpenGL
+application requires a TrueColor or DirectColor visual and your display
+doesn't support such a visual you may be out of luck.  This is no one's
+fault.  However, if you write an OpenGL application, you'd be doing a
+service to Mesa users if you wrote code which would accept any visual
+type in RGB mode.<P>
+
+Remember that if Mesa's glXChooseVisual were modified to behave exactly
+like OpenGL's we would actually be losing functionality which a lot of
+people (everyone without a TrueColor display) depend on.<P>
+
+
+<H4>How can I stop colormap flashing?</H4>
+
+If the colors on your screen flash when you move the pointer in and out of
+a Mesa window it's because the working set of Mesa and other X clients have
+allocated more colors than will fit in the hardware colormap(s).
+To remedy this, you can either close some of your other X clients or try
+setting the MESA_RGB_VISUAL environment variable to match the root window's
+visual, thereby encouraging colormap sharing.<P>
+
+<H4>I don't see flashing but the Mesa window's colors are wrong!</H4>
+
+Your Mesa window is probably using the same visual type as the root window
+and is sharing the root's colormap.  Unfortunately, either the window
+manager and/or other X clients have allocated so many entries from the
+colormap that Mesa can't get the ones it needs for its palette.  The
+solution is to try the Mesa application again after you've terminated other
+color-demanding clients.  Or set the MESA_PRIVATE_CMAP variable which
+forces the aux, tk and GLUT toolkits to allocate a private colormap.
+Unfortunately, now you'll probably see colormap flashing.<P>
+
+Note that the MESA_PRIVATE_CMAP variable is recognized by the aux and tk
+toolkits and <B>not</B> the Mesa core library.  Colormap management is an
+issue at a level above the core of Mesa.<P>
+
+
+<H4>Caveat</H4>
+
+The above discussion assumed you're using Mesa in RGB mode.  If you're
+using color-index mode most of the above is still applicable.  However,
+many (most?) color-index mode application need a private colormap so
+they can manipulate (read/write) the colormap.  If, for example, your
+display does not have a PseudoColor visual the Mesa/OpenGL application
+many generate X protocol errors when it tries to execute an XStoreColor
+command.<P>
+
+
+
+
+<H2>Subject 3: Optimizing Mesa's performance</H2>
+
+The following is a list of things you can do to maximize the performance
+of Mesa.  In no particular order...<P>
+
+
+Experiment with the <B>MESA_BACK_BUFFER</B> environment variable if using
+double buffered mode.  Possible values are "P" for pixmap and "X" for
+XImage.  When displaying on the local host and using an XImage for the
+back buffer, the X shared memory extension is used to accelerate the
+glXSwapBuffers() function.  Using an X image is usually faster except
+when rendering scenes which don't use any raster operations (such as
+depth-test, stenciling, dithering, etc) since the Xlib point, line and
+polygon functions can be used.<P>
+
+Experiment with different <B>visuals</B> with the MESA_RGB_VISUAL
+environment variable.  Some are visuals faster than others.<P>
+
+Try to <B>maximize the number of vertices between glBegin/glEnd</B>.<P>
+
+<B>Group state changes</B> such as glEn/Disable, glShadeModel, etc
+together before glBegin/glEnd to minimize the number internal state change
+computations.<P>
+
+<B>Disable smooth shading</B> when not needed.  Smooth shading is
+usually only needed for drawing lit polygons.<P>
+
+<B>Disable dithering</B> when not needed.<P>
+
+<B>Disable depth testing</B> and any other raster operations you don't
+need.<P>
+
+<B>glDrawPixels</B> works quickest with GL_UNSIGNED_BYTE, GL_RGB - format
+image data.<P>
+
+<B>Use GLfloat-valued functions</B> such as glVertex<n>f[v], glNormal3f[v],
+glColor<n>f[v] glLoadMatrixf, glMultMatrixf, etc. because conversion to the
+internal GLfloat type will not be needed.<P>
+
+<B>Use backface culling</B> to reduce the rasterization bottleneck.<P>
+
+<B>Using a smaller window</B> will speed up polygon rasterization, glClear,
+and glXSwapBuffers.<P>
+
+Avoid using <B>glColorMaterial</B>.<P>
+
+Use <B>directional lights</B> rather than positional lights. i.e. W component of position = 0.0.<P>
+
+Avoid using <B>GL_LIGHT_MODEL_LOCAL_VIEWER</B>.<P>
+
+Avoid using <B>spot lights</B>.<P>
+
+Use <B>low-numbered, consecutive lights</B> such as GL_LIGHT0, GL_LIGHT1,
+GL_LIGHT2 rather than GL_LIGHT2, GL_LIGHT5, GL_LIGHT7 for example.<P>
+
+Avoid using <B>GL_NORMALIZE</B>.<P>
+
+Use <B>viewports</B> which are completely inside the window boundaries.<P>
+
+
+
+<H2>Subject 4: Installing Mesa (on Unix systems)</H2>
+
+After you've compiled the Mesa library files, as seen in
+<CODE>Mesa/lib</CODE>, you should probably move them and the include
+files to a more appropriate location.  I suggest copying the
+<CODE>Mesa/lib</CODE> files to <CODE>/usr/local/lib</CODE> and copying
+the <CODE>Mesa/include/GL</CODE> directory to
+<CODE>/usr/local/include</CODE>.<P>
+
+When you compile your Mesa/OpenGL application just add
+<CODE>-I/usr/local/include</CODE> to your C compiler flags and add
+<CODE>-L/usr/local/lib</CODE> to your linker flags.<P>
+
+
+If your system doesn't have real OpenGL libraries it
+may also be a good idea to make a few symbolic links so that "off the shelf"
+OpenGL applications compile painlessly:<P>
+
+<PRE>
+ln -s /usr/local/include/GL /usr/include/GL
+ln -s /usr/local/lib/libMesaGL.a /usr/lib/libGL.a
+ln -s /usr/local/lib/libMesaGLU.a /usr/lib/libGLU.a
+</PRE>
+
+NOTE: if you've made shared Mesa libraries the symbolic links will probably
+have different names: <CODE>.so</CODE> suffix instead of <CODE>.a</CODE>
+suffix, for example.  If you do this you may also have to run a special
+program such as <CODE>ldconfig -v</CODE> on Linux to make things work.<P>
+
+Then you can specify <CODE>-lGL</CODE> and <CODE>-lGLU</CODE> when linking
+your Mesa application and be confident that it will also compile successfully
+on other systems which may have real OpenGL libraries.<P>
+
+
+<H2>Subject 5: Remote display of OpenGL apps</H2>
+
+Normally, X11-based OpenGL applications can only be displayed on X servers
+which have the GLX extension.  The GLX extension decodes the GLX protocol
+(which is sent within the X protocol stream) and executes the appropriate
+OpenGL rendering operations.  You can check if your display server has
+this extension by examining the output of running xdpyinfo.
+<P>
+
+If you have an OpenGL application and want to display it on a server which
+lacks the GLX extension, Mesa can help you.  You have two alternatives:
+
+<OL>
+<LI>If you have the application source, recompile it (or just relink it)
+    using the Mesa libraries instead of the OpenGL libraries.  Basically,
+    just substitute <CODE>-lGL</CODE> with <CODE>-lMesaGL</CODE> in the
+    Makefile.  The application should now be displayable on almost any X
+    server.<P>
+<LI>If you don't have the application source <EM>but</EM> it was linked
+    with a <EM>shared</EM> OpenGL library you can replace the OpenGL
+    shared library with the Mesa shared library at runtime.  Naturally,
+    this requires that your operating system uses shared libraries (i.e.
+    IRIX, Linux 1.2.x, SunOS, AIX, HPUX and others).<P>
+
+    If you're not familiar with shared libraries you should read your
+    system's documentation.  Man pages on ld, rld, ld.so or <CODE>man -k
+    library</CODE> should turn up something.<P>
+
+    Here are the steps to using a Mesa shared library in place of OpenGL:<P>
+
+    <OL>
+    <LI>You have to compile Mesa as a shared library.  The Mesa Makefile
+        already supports this for a number of systems.  Just type make
+        in the Mesa directory to see a list of configurations and look
+        for yours.<P>
+    <LI>Make a symbolic link with the same name as your system's OpenGL
+        library which points to the Mesa library.   For example, on IRIX
+        systems the OpenGL lib is named libGL.so so you'd create the
+        symbolic link with:  <CODE>ln -s libMesaGL.so libGL.so</CODE>
+        in the Mesa/lib directory.  Note that you could just rename the
+        Mesa library instead of making a symbolic link, if you prefer.<P>
+    <LI>Tell the runtime linker to look in Mesa/lib (or where ever you've
+        installed the Mesa shared library) for libraries before the
+        default library directories.  On IRIX 5.x systems this is done
+        by setting the <CODE>_RLD_LIST</CODE> environment variable:
+        <CODE>setenv _RLD_LIST "mesalibdir/libGL.so:DEFAULT"</CODE> where
+        mesalibdir is the full path to the location of the symbolic link
+        you made previously.
+    </OL>
+    <P>
+
+    Now when you execute the OpenGL application the runtime linker should
+    select the Mesa shared library instead of the OpenGL shared library.
+</OL>
+
+
+Using either of these methods, The application should now be displayable
+on almost any X server since the OpenGL API calls will effectively be
+translated into ordinary X protocol by Mesa.<P>
+
+Why did I say "almost any X server"?  Because it might be the case that
+the OpenGL application won't accept any of the visual types offered by
+your display.  For example, if the OpenGL app asks for an RGBA visual
+and Mesa returns a PseudoColor visual the application may not accept it
+because a TrueColor or DirectColor visual was expected.  You may have to
+experiment with the MESA_RGB_VISUAL environment variable if you have this
+problem.<P>
+
+
+
+
+
+<HR>
+
+Back to the <A HREF="Mesa.html">Mesa home page</A><P>
+
+<HR>
+
+Last updated on January 19, 1996 by <EM>brianp@ssec.wisc.edu</EM>.
+
+</BODY>
+
+</HTML>
+

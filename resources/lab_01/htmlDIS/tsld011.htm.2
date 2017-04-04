@@ -1,0 +1,48 @@
+
+<HTML>
+
+<HEAD>
+<META HTTP-EQUIV="Context-Type" CONTEXT="text/html;charset=PREDEFINITA (AUTOMATICA)">
+<meta name="GENERATOR" content="Microsoft Internet Assistant for PowerPoint 97">
+ <TITLE>Nested Queries</TITLE> 
+</HEAD>
+
+<BODY     >
+
+ <H1>Nested Queries</H1> 
+ <P><UL>
+<LI><H2>A very powerful feature of SQL:  a WHERE clause can itself contain an SQL query!  (Actually, so can FROM and HAVING clauses.)
+</H2>
+</UL><UL>
+<LI><H2>To find sailors who’ve not reserved #103, use NOT IN.
+</H2>
+</UL><UL>
+<LI><H2>To understand semantics of nested queries, think of a nested loops evaluation:  For each Sailors tuple, check the qualification by computing the subquery.</H2>
+</UL></P>
+<P><UL>
+SELECT  S.sname
+<BR></UL><UL>
+FROM  Sailors S
+</UL><UL>
+WHERE  S.sid IN  (SELECT  R.sid
+</UL><UL>
+                               FROM  Reserves R
+</UL><UL>
+                               WHERE  R.bid=103)</UL></P>
+<P><UL>
+Find names of sailors who’ve reserved boat #103:<BR></UL></P>
+<P></P> 
+<P>
+<TABLE>
+  <TD HEIGHT=100 WIDTH=100> <A HREF="tsld010.htm">Diapositiva precedente</A> </TD>
+  <TD HEIGHT=100 WIDTH=100> <A HREF="tsld012.htm">Diapositiva successiva</A> </TD>
+  <TD HEIGHT=100 WIDTH=150> <A HREF="tsld001.htm">Torna alla prima diaposiva</A> </TD>
+  <TD HEIGHT=100 WIDTH=150> <A HREF="sld011.htm">Visualizza versione grafica</A> </TD>
+</TABLE>
+<BR>
+</P>
+
+
+
+</Body>
+</HTML>

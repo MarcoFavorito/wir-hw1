@@ -1,0 +1,75 @@
+
+<HTML>
+
+<HEAD>
+<META HTTP-EQUIV="Context-Type" CONTEXT="text/html;charset=PREDEFINITA (AUTOMATICA)">
+<meta name="GENERATOR" content="Microsoft Internet Assistant for PowerPoint 97">
+ <TITLE>Solution (cont.nd)</TITLE> 
+</HEAD>
+
+<BODY     >
+
+ <H1>Solution (cont.nd)</H1> 
+ <P><UL>
+<H2>5. SELECT DISTINCT C.sid
+</H2>
+<BR></UL><UL>
+<H2>	FROM  Catalog C
+</H2>
+</UL><UL>
+<H2>	WHERE C.cost &#062 (SELECT AVG (C1.cost)
+</H2>
+</UL><UL>
+<H2>				FROM Catalog C1
+</H2>
+</UL><UL>
+<H2>				WHERE C1.pid = C.pid)
+</H2>
+</UL><UL>
+<H2>6. SELECT P.pid, S.sname
+</H2>
+</UL><UL>
+<H2>	FROM  Suppliers S, catalog C
+</H2>
+</UL><UL>
+<H2>	WHERE  C.sid = S.sid 
+</H2>
+</UL><UL>
+<H2>		AND C.cost = (SELECT MAX (C1.cost)
+</H2>
+</UL><UL>
+<H2>				    FROM Catalog C1
+</H2>
+</UL><UL>
+<H2>				     WHERE C1.pid = C.pid))
+</H2>
+</UL><UL>
+<H2>7. SELECT DISTINCT C.sid
+</H2>
+</UL><UL>
+<H2>	FROM Catalog C
+</H2>
+</UL><UL>
+<H2>	WHERE NOT EXISTS (SELECT * FROM Parts P, Catalog C1 
+</H2>
+</UL><UL>
+<H2>				WHERE P.pid = C.pid AND P.color &#060&#062 ‘red’
+</H2>
+</UL><UL>
+<H2>				AND C.sid = C1.sid)</H2>
+</UL></P>
+<P></P> 
+<P>
+<TABLE>
+  <TD HEIGHT=100 WIDTH=100> <A HREF="tsld034.htm">Diapositiva precedente</A> </TD>
+  <TD HEIGHT=100 WIDTH=100> <A HREF="tsld036.htm">Diapositiva successiva</A> </TD>
+  <TD HEIGHT=100 WIDTH=150> <A HREF="tsld001.htm">Torna alla prima diaposiva</A> </TD>
+  <TD HEIGHT=100 WIDTH=150> <A HREF="sld035.htm">Visualizza versione grafica</A> </TD>
+</TABLE>
+<BR>
+</P>
+
+
+
+</Body>
+</HTML>

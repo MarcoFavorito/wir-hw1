@@ -1,0 +1,580 @@
+<html xmlns:v="urn:schemas-microsoft-com:vml" xmlns:o="urn:schemas-microsoft-com:office:office" xmlns:w="urn:schemas-microsoft-com:office:word" xmlns:x="urn:schemas-microsoft-com:office:excel" xmlns="http://www.w3.org/TR/REC-html40"><head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<meta name="ProgId" content="Word.Document">
+<meta name="Generator" content="Microsoft Word 11">
+<meta name="Originator" content="Microsoft Word 11">
+<title>Architetture di Elaborazione appello del 21 luglio 2004</title><!--[if gte mso 9]><xml>
+ <o:DocumentProperties>
+  <o:Author>Silvio Salza</o:Author>
+  <o:LastAuthor>Silvio Salza</o:LastAuthor>
+  <o:Revision>3</o:Revision>
+  <o:TotalTime>13</o:TotalTime>
+  <o:Created>2005-04-15T14:13:00Z</o:Created>
+  <o:LastSaved>2005-04-15T14:26:00Z</o:LastSaved>
+  <o:Pages>1</o:Pages>
+  <o:Words>326</o:Words>
+  <o:Characters>1862</o:Characters>
+  <o:Company>z</o:Company>
+  <o:Lines>15</o:Lines>
+  <o:Paragraphs>4</o:Paragraphs>
+  <o:CharactersWithSpaces>2184</o:CharactersWithSpaces>
+  <o:Version>11.6408</o:Version>
+ </o:DocumentProperties>
+</xml><![endif]--><!--[if gte mso 9]><xml>
+ <w:WordDocument>
+  <w:SpellingState>Clean</w:SpellingState>
+  <w:GrammarState>Clean</w:GrammarState>
+  <w:HyphenationZone>14</w:HyphenationZone>
+  <w:ValidateAgainstSchemas/>
+  <w:SaveIfXMLInvalid>false</w:SaveIfXMLInvalid>
+  <w:IgnoreMixedContent>false</w:IgnoreMixedContent>
+  <w:AlwaysShowPlaceholderText>false</w:AlwaysShowPlaceholderText>
+  <w:BrowserLevel>MicrosoftInternetExplorer4</w:BrowserLevel>
+ </w:WordDocument>
+</xml><![endif]--><!--[if gte mso 9]><xml>
+ <w:LatentStyles DefLockedState="false" LatentStyleCount="156">
+ </w:LatentStyles>
+</xml><![endif]-->
+
+
+<style>
+<!--
+ /* Style Definitions */
+ p.MsoNormal, li.MsoNormal, div.MsoNormal
+	{mso-style-parent:"";
+	margin:0cm;
+	margin-bottom:.0001pt;
+	mso-pagination:widow-orphan;
+	font-size:12.0pt;
+	font-family:"Times New Roman";
+	mso-fareast-font-family:"Times New Roman";
+	color:navy;}
+a:link, span.MsoHyperlink
+	{color:navy;
+	text-decoration:underline;
+	text-underline:single;}
+a:visited, span.MsoHyperlinkFollowed
+	{color:navy;
+	text-decoration:underline;
+	text-underline:single;}
+p
+	{mso-margin-top-alt:auto;
+	margin-right:0cm;
+	mso-margin-bottom-alt:auto;
+	margin-left:0cm;
+	mso-pagination:widow-orphan;
+	font-size:12.0pt;
+	font-family:"Times New Roman";
+	mso-fareast-font-family:"Times New Roman";
+	color:navy;}
+span.SpellE
+	{mso-style-name:"";
+	mso-spl-e:yes;}
+span.GramE
+	{mso-style-name:"";
+	mso-gram-e:yes;}
+@page Section1
+	{size:595.3pt 841.9pt;
+	margin:70.85pt 2.0cm 2.0cm 2.0cm;
+	mso-header-margin:35.4pt;
+	mso-footer-margin:35.4pt;
+	mso-paper-source:0;}
+div.Section1
+	{page:Section1;}
+-->
+</style><!--[if gte mso 10]>
+<style>
+ /* Style Definitions */
+ table.MsoNormalTable
+	{mso-style-name:"Tabella normale";
+	mso-tstyle-rowband-size:0;
+	mso-tstyle-colband-size:0;
+	mso-style-noshow:yes;
+	mso-style-parent:"";
+	mso-padding-alt:0cm 5.4pt 0cm 5.4pt;
+	mso-para-margin:0cm;
+	mso-para-margin-bottom:.0001pt;
+	mso-pagination:widow-orphan;
+	font-size:10.0pt;
+	font-family:"Times New Roman";
+	mso-ansi-language:#0400;
+	mso-fareast-language:#0400;
+	mso-bidi-language:#0400;}
+</style>
+<![endif]--><!-- saved from url=(0062)http://www.dis.uniroma1.it/~salza/Architetture/AE-04-07-21.htm --><!-- saved from url=(0062)http://www.dis.uniroma1.it/~salza/Architetture/AE-04-04-05.htm --><!-- saved from url=(0062)http://www.dis.uniroma1.it/~salza/Architetture/AE-04-03-22.htm --><!-- saved from url=(0052)http://www.dis.uniroma1.it/~salza/SO/SO-05-12-03.htm --><!-- saved from url=(0052)http://www.dis.uniroma1.it/~salza/SO/SO-03-09-18.htm --><!-- saved from url=(0052)http://www.dis.uniroma1.it/~salza/SO/SO-03-04-07.htm --><!-- saved from url=(0052)http://www.dis.uniroma1.it/~salza/BD/BD-03-03-24.htm --><!-- saved from url=(0051)http://www.dis.uniroma1.it/~salza/SO/SO-6-12-02.htm --><!-- saved from url=(0061)http://www.dis.uniroma1.it/~salza/Architetture/AE-19-9-02.htm --><!-- saved from url=(0061)http://www.dis.uniroma1.it/~salza/Architetture/AE-19-9-02.htm --><!-- saved from url=(0061)http://www.dis.uniroma1.it/~salza/Architetture/AE-12-7-02.htm --><!-- saved from url=(0061)http://www.dis.uniroma1.it/~salza/Architetture/AE-28-6-02.htm --><!-- saved from url=(0068)http://www.dis.uniroma1.it/~salza/Calcolatori-TLC/Finale-esonero.htm --><!-- saved from url=(0049)http://www.dis.uniroma1.it/~salza/calcolatori.htm --><!-- saved from url=(0049)http://www.dis.uniroma1.it/~salza/calcolatori.htm --><!-- saved from url=(0049)http://www.dis.uniroma1.it/~salza/calcolatori.htm --><!--[if gte mso 9]><xml>
+ <o:shapelayout v:ext="edit">
+  <o:idmap v:ext="edit" data="1"/>
+ </o:shapelayout></xml><![endif]--></head>
+
+<body style="" alink="#ff0000" bgcolor="silver" lang="IT" link="navy" vlink="navy">
+
+<div class="Section1">
+
+<p class="MsoNormal" style="text-align: center;" align="center"><span style="font-size: 24pt;">Architetture <span class="GramE">di </span>Elaborazione</span>
+<br>
+<i><span style="font-size: 13.5pt;">Ingegneria delle Telecomunicazioni&nbsp;</span></i>
+</p>
+
+<p style="text-align: center;" align="center"><span class="SpellE"><span style="font-size: 18pt;">Prof.</span></span><span style="font-size: 18pt;">
+Silvio Salza&nbsp;</span></p>
+
+<p style="text-align: center;" align="center"><br>
+<br>
+<span style="font-size: 18pt;">Appello del 11 aprile 2005</span> </p>
+
+<p><i><span style="font-size: 13.5pt;">Coloro che non hanno dato il consenso alla
+pubblicazione dei risultati su <span class="GramE">web</span>, per conoscere il
+voto dovranno presentarsi <u>personalmente</u> al docente durante l'orario di
+ricevimento.</span></i> </p>
+
+<p><i><span style="font-size: 13.5pt;">La <span class="SpellE">verbalizzazione</span>
+<span class="GramE">avrà luogo</span> il giorno 26 aprile 2005 presso la sede via
+Salaria 113, II piano: ore 14.30 lettere <span style="">&nbsp;</span>A-L, ore 15.00 lettere M-Z. Sarà <span class="GramE">comunque</span> possibile effettuare la <span class="SpellE">verbalizzazione</span>
+anche nelle settimane successive durante l'orario di ricevimento.</span></i><o:p></o:p></p>
+
+<p>&nbsp;</p>
+<table x:str border="0" cellpadding="0" cellspacing="0" width="526" style="border-collapse:
+ collapse;width:395pt" id="table1">
+	<colgroup>
+		<col width="70" style="width: 53pt">
+		<col width="151" style="width: 113pt">
+		<col width="124" style="width: 93pt">
+		<col width="93" style="width: 70pt"><col width="88" style="width: 66pt">
+	</colgroup>
+	<tr height="43" style="height: 32.25pt">
+		<td height="43" width="70" style="height: 32.25pt; width: 53pt; font-size: 12.0pt; font-weight: 700; font-family: Arial, sans-serif; vertical-align: middle; color: windowtext; font-style: normal; text-decoration: none; text-align: general; white-space: nowrap; border: medium none; padding-left: 1px; padding-right: 1px; padding-top: 1px">&nbsp;</td>
+		<td width="151" style="width: 113pt; font-size: 12.0pt; font-weight: 700; font-family: Arial, sans-serif; vertical-align: middle; color: windowtext; font-style: normal; text-decoration: none; text-align: general; white-space: nowrap; border: medium none; padding-left: 1px; padding-right: 1px; padding-top: 1px">
+		<font color="#000080">Cognome</font></td>
+		<td width="124" style="width: 93pt; font-size: 12.0pt; font-weight: 700; font-family: Arial, sans-serif; vertical-align: middle; color: windowtext; font-style: normal; text-decoration: none; text-align: general; white-space: nowrap; border: medium none; padding-left: 1px; padding-right: 1px; padding-top: 1px">
+		<font color="#000080">Nome</font></td>
+		<td width="93" style="width: 70pt; font-size: 12.0pt; font-weight: 700; font-family: Arial, sans-serif; text-align: center; vertical-align: middle; color: windowtext; font-style: normal; text-decoration: none; white-space: nowrap; border: medium none; padding-left: 1px; padding-right: 1px; padding-top: 1px">
+		<font color="#000080">Matricola</font></td>
+		<td width="88" style="width: 66pt; font-size: 12.0pt; font-weight: 700; font-family: Arial, sans-serif; text-align: center; vertical-align: middle; color: windowtext; font-style: normal; text-decoration: none; white-space: nowrap; border: medium none; padding-left: 1px; padding-right: 1px; padding-top: 1px">
+		<font color="#000080">Voto</font></td>
+	</tr>
+	<tr height="26" style="height: 20.1pt">
+		<td height="26" style="height: 20.1pt; vertical-align: middle; color: windowtext; font-size: 10.0pt; font-weight: 400; font-style: normal; text-decoration: none; font-family: Arial; text-align: general; white-space: nowrap; border: medium none; padding-left: 1px; padding-right: 1px; padding-top: 1px">&nbsp;</td>
+		<td width="151" style="width: 113pt; font-size: 12.0pt; font-family: Arial, sans-serif; text-align: justify; vertical-align: middle; white-space: normal; color: windowtext; font-weight: 400; font-style: normal; text-decoration: none; border: medium none; padding-left: 1px; padding-right: 1px; padding-top: 1px">
+		<b><font color="#000080">ALEGI</font></b></td>
+		<td width="124" style="width: 93pt; font-size: 12.0pt; font-family: Arial, sans-serif; text-align: justify; vertical-align: middle; white-space: normal; color: windowtext; font-weight: 400; font-style: normal; text-decoration: none; border: medium none; padding-left: 1px; padding-right: 1px; padding-top: 1px">
+		<b><font color="#000080">FEDERICO</font></b></td>
+		<td width="93" style="width: 70pt; font-size: 12.0pt; font-family: Arial, sans-serif; text-align: center; vertical-align: middle; white-space: normal; color: windowtext; font-weight: 400; font-style: normal; text-decoration: none; border: medium none; padding-left: 1px; padding-right: 1px; padding-top: 1px">
+		<b><font color="#000080">&nbsp;1053701</font></b></td>
+		<td style="font-size: 12.0pt; font-weight: 700; font-family: Arial, sans-serif; text-align: center; vertical-align: middle; color: windowtext; font-style: normal; text-decoration: none; white-space: nowrap; border: medium none; padding-left: 1px; padding-right: 1px; padding-top: 1px">
+		<font color="#000080">insuff.</font></td>
+	</tr>
+	<tr height="26" style="height: 20.1pt">
+		<td height="26" style="height: 20.1pt; vertical-align: middle; color: windowtext; font-size: 10.0pt; font-weight: 400; font-style: normal; text-decoration: none; font-family: Arial; text-align: general; white-space: nowrap; border: medium none; padding-left: 1px; padding-right: 1px; padding-top: 1px">&nbsp;</td>
+		<td width="151" style="width: 113pt; font-size: 12.0pt; font-family: Arial, sans-serif; text-align: justify; vertical-align: middle; white-space: normal; color: windowtext; font-weight: 400; font-style: normal; text-decoration: none; border: medium none; padding-left: 1px; padding-right: 1px; padding-top: 1px">
+		<b><font color="#000080">AMBROSELLI</font></b></td>
+		<td width="124" style="width: 93pt; font-size: 12.0pt; font-family: Arial, sans-serif; text-align: justify; vertical-align: middle; white-space: normal; color: windowtext; font-weight: 400; font-style: normal; text-decoration: none; border: medium none; padding-left: 1px; padding-right: 1px; padding-top: 1px">
+		<b><font color="#000080">DARIO</font></b></td>
+		<td width="93" style="width: 70pt; font-size: 12.0pt; font-family: Arial, sans-serif; text-align: center; vertical-align: middle; white-space: normal; color: windowtext; font-weight: 400; font-style: normal; text-decoration: none; border: medium none; padding-left: 1px; padding-right: 1px; padding-top: 1px">
+		<b><font color="#000080">&nbsp;1058825</font></b></td>
+		<td style="font-size: 12.0pt; font-weight: 700; font-family: Arial, sans-serif; text-align: center; vertical-align: middle; color: windowtext; font-style: normal; text-decoration: none; white-space: nowrap; border: medium none; padding-left: 1px; padding-right: 1px; padding-top: 1px">
+		<font color="#000080">insuff.</font></td>
+	</tr>
+	<tr height="26" style="height: 20.1pt">
+		<td height="26" style="height: 20.1pt; vertical-align: middle; color: windowtext; font-size: 10.0pt; font-weight: 400; font-style: normal; text-decoration: none; font-family: Arial; text-align: general; white-space: nowrap; border: medium none; padding-left: 1px; padding-right: 1px; padding-top: 1px">&nbsp;</td>
+		<td width="151" style="width: 113pt; font-size: 12.0pt; font-family: Arial, sans-serif; text-align: justify; vertical-align: middle; white-space: normal; color: windowtext; font-weight: 400; font-style: normal; text-decoration: none; border: medium none; padding-left: 1px; padding-right: 1px; padding-top: 1px">
+		<b><font color="#000080">ANDREOCCI</font></b></td>
+		<td width="124" style="width: 93pt; font-size: 12.0pt; font-family: Arial, sans-serif; text-align: justify; vertical-align: middle; white-space: normal; color: windowtext; font-weight: 400; font-style: normal; text-decoration: none; border: medium none; padding-left: 1px; padding-right: 1px; padding-top: 1px">
+		<b><font color="#000080">FEDERICO</font></b></td>
+		<td width="93" style="width: 70pt; font-size: 12.0pt; font-family: Arial, sans-serif; text-align: center; vertical-align: middle; white-space: normal; color: windowtext; font-weight: 400; font-style: normal; text-decoration: none; border: medium none; padding-left: 1px; padding-right: 1px; padding-top: 1px">
+		<b><font color="#000080">&nbsp;801538</font></b></td>
+		<td x:num style="font-size: 12.0pt; font-weight: 700; font-family: Arial, sans-serif; text-align: center; vertical-align: middle; color: windowtext; font-style: normal; text-decoration: none; white-space: nowrap; border: medium none; padding-left: 1px; padding-right: 1px; padding-top: 1px">
+		<font color="#000080">22</font></td>
+	</tr>
+	<tr height="26" style="height: 20.1pt">
+		<td height="26" style="height: 20.1pt; vertical-align: middle; color: windowtext; font-size: 10.0pt; font-weight: 400; font-style: normal; text-decoration: none; font-family: Arial; text-align: general; white-space: nowrap; border: medium none; padding-left: 1px; padding-right: 1px; padding-top: 1px">&nbsp;</td>
+		<td width="151" style="width: 113pt; font-size: 12.0pt; font-family: Arial, sans-serif; text-align: justify; vertical-align: middle; white-space: normal; color: windowtext; font-weight: 400; font-style: normal; text-decoration: none; border: medium none; padding-left: 1px; padding-right: 1px; padding-top: 1px">
+		<b><font color="#000080">ANGELONI</font></b></td>
+		<td width="124" style="width: 93pt; font-size: 12.0pt; font-family: Arial, sans-serif; text-align: justify; vertical-align: middle; white-space: normal; color: windowtext; font-weight: 400; font-style: normal; text-decoration: none; border: medium none; padding-left: 1px; padding-right: 1px; padding-top: 1px">
+		<b><font color="#000080">LORENZO</font></b></td>
+		<td width="93" style="width: 70pt; font-size: 12.0pt; font-family: Arial, sans-serif; text-align: center; vertical-align: middle; white-space: normal; color: windowtext; font-weight: 400; font-style: normal; text-decoration: none; border: medium none; padding-left: 1px; padding-right: 1px; padding-top: 1px">
+		<b><font color="#000080">&nbsp;801141</font></b></td>
+		<td x:num style="font-size: 12.0pt; font-weight: 700; font-family: Arial, sans-serif; text-align: center; vertical-align: middle; color: windowtext; font-style: normal; text-decoration: none; white-space: nowrap; border: medium none; padding-left: 1px; padding-right: 1px; padding-top: 1px">
+		<font color="#000080">24</font></td>
+	</tr>
+	<tr height="26" style="height: 20.1pt">
+		<td style="height: 20px; vertical-align: middle; color: windowtext; font-size: 10.0pt; font-weight: 400; font-style: normal; text-decoration: none; font-family: Arial; text-align: general; white-space: nowrap; border: medium none; padding-left: 1px; padding-right: 1px; padding-top: 1px">&nbsp;</td>
+		<td width="151" style="width: 113pt; font-size: 12.0pt; font-family: Arial, sans-serif; text-align: justify; vertical-align: middle; white-space: normal; color: windowtext; font-weight: 400; font-style: normal; text-decoration: none; border: medium none; padding-left: 1px; padding-right: 1px; padding-top: 1px" height="20">
+		<b><font color="#000080">BENMOHAMED</font></b></td>
+		<td width="124" style="width: 93pt; font-size: 12.0pt; font-family: Arial, sans-serif; text-align: justify; vertical-align: middle; white-space: normal; color: windowtext; font-weight: 400; font-style: normal; text-decoration: none; border: medium none; padding-left: 1px; padding-right: 1px; padding-top: 1px" height="20">
+		<b><font color="#000080">YASSINE</font></b></td>
+		<td width="93" style="width: 70pt; font-size: 12.0pt; font-family: Arial, sans-serif; text-align: center; vertical-align: middle; white-space: normal; color: windowtext; font-weight: 400; font-style: normal; text-decoration: none; border: medium none; padding-left: 1px; padding-right: 1px; padding-top: 1px" height="20">
+		<b><font color="#000080">&nbsp;795642</font></b></td>
+		<td style="font-size: 12.0pt; font-weight: 700; font-family: Arial, sans-serif; text-align: center; vertical-align: middle; color: windowtext; font-style: normal; text-decoration: none; white-space: nowrap; border: medium none; padding-left: 1px; padding-right: 1px; padding-top: 1px" height="20">
+		<font color="#000080">insuff.</font></td>
+	</tr>
+	<tr height="26" style="height: 20.1pt">
+		<td style="height: 34px; vertical-align: middle; color: windowtext; font-size: 10.0pt; font-weight: 400; font-style: normal; text-decoration: none; font-family: Arial; text-align: general; white-space: nowrap; border: medium none; padding-left: 1px; padding-right: 1px; padding-top: 1px">&nbsp;</td>
+		<td width="151" style="width: 113pt; font-size: 12.0pt; font-family: Arial, sans-serif; text-align: justify; vertical-align: middle; white-space: normal; color: windowtext; font-weight: 400; font-style: normal; text-decoration: none; border: medium none; padding-left: 1px; padding-right: 1px; padding-top: 1px" height="34">
+		<b><font color="#000080">BOLDINI</font></b></td>
+		<td width="124" style="width: 93pt; font-size: 12.0pt; font-family: Arial, sans-serif; text-align: justify; vertical-align: middle; white-space: normal; color: windowtext; font-weight: 400; font-style: normal; text-decoration: none; border: medium none; padding-left: 1px; padding-right: 1px; padding-top: 1px" height="34">
+		<b><font color="#000080">FLAVIOR.</font></b></td>
+		<td width="93" style="width: 70pt; font-size: 12.0pt; font-family: Arial, sans-serif; text-align: center; vertical-align: middle; white-space: normal; color: windowtext; font-weight: 400; font-style: normal; text-decoration: none; border: medium none; padding-left: 1px; padding-right: 1px; padding-top: 1px" height="34">
+		<b><font color="#000080">&nbsp;1058236</font></b></td>
+		<td x:num style="font-size: 12.0pt; font-weight: 700; font-family: Arial, sans-serif; text-align: center; vertical-align: middle; color: windowtext; font-style: normal; text-decoration: none; white-space: nowrap; border: medium none; padding-left: 1px; padding-right: 1px; padding-top: 1px" height="34">
+		<font color="#000080">18</font></td>
+	</tr>
+	<tr height="26" style="height: 20.1pt">
+		<td height="26" style="height: 20.1pt; vertical-align: middle; color: windowtext; font-size: 10.0pt; font-weight: 400; font-style: normal; text-decoration: none; font-family: Arial; text-align: general; white-space: nowrap; border: medium none; padding-left: 1px; padding-right: 1px; padding-top: 1px">&nbsp;</td>
+		<td width="151" style="width: 113pt; font-size: 12.0pt; font-family: Arial, sans-serif; text-align: justify; vertical-align: middle; white-space: normal; color: windowtext; font-weight: 400; font-style: normal; text-decoration: none; border: medium none; padding-left: 1px; padding-right: 1px; padding-top: 1px">
+		<b><font color="#000080">CARBONE</font></b></td>
+		<td width="124" style="width: 93pt; font-size: 12.0pt; font-family: Arial, sans-serif; text-align: justify; vertical-align: middle; white-space: normal; color: windowtext; font-weight: 400; font-style: normal; text-decoration: none; border: medium none; padding-left: 1px; padding-right: 1px; padding-top: 1px">
+		<b><font color="#000080">VALENTINA</font></b></td>
+		<td width="93" style="width: 70pt; font-size: 12.0pt; font-family: Arial, sans-serif; text-align: center; vertical-align: middle; white-space: normal; color: windowtext; font-weight: 400; font-style: normal; text-decoration: none; border: medium none; padding-left: 1px; padding-right: 1px; padding-top: 1px">
+		<b><font color="#000080">&nbsp;1064184</font></b></td>
+		<td x:num style="font-size: 12.0pt; font-weight: 700; font-family: Arial, sans-serif; text-align: center; vertical-align: middle; color: windowtext; font-style: normal; text-decoration: none; white-space: nowrap; border: medium none; padding-left: 1px; padding-right: 1px; padding-top: 1px">
+		<font color="#000080">23</font></td>
+	</tr>
+	<tr height="26" style="height: 20.1pt">
+		<td height="26" style="height: 20.1pt; vertical-align: middle; color: windowtext; font-size: 10.0pt; font-weight: 400; font-style: normal; text-decoration: none; font-family: Arial; text-align: general; white-space: nowrap; border: medium none; padding-left: 1px; padding-right: 1px; padding-top: 1px">&nbsp;</td>
+		<td width="151" style="width: 113pt; font-size: 12.0pt; font-family: Arial, sans-serif; text-align: justify; vertical-align: middle; white-space: normal; color: windowtext; font-weight: 400; font-style: normal; text-decoration: none; border: medium none; padding-left: 1px; padding-right: 1px; padding-top: 1px">
+		<b><font color="#000080">CESARI</font></b></td>
+		<td width="124" style="width: 93pt; font-size: 12.0pt; font-family: Arial, sans-serif; text-align: justify; vertical-align: middle; white-space: normal; color: windowtext; font-weight: 400; font-style: normal; text-decoration: none; border: medium none; padding-left: 1px; padding-right: 1px; padding-top: 1px">
+		<b><font color="#000080">GIORGIO</font></b></td>
+		<td width="93" style="width: 70pt; font-size: 12.0pt; font-family: Arial, sans-serif; text-align: center; vertical-align: middle; white-space: normal; color: windowtext; font-weight: 400; font-style: normal; text-decoration: none; border: medium none; padding-left: 1px; padding-right: 1px; padding-top: 1px">
+		<b><font color="#000080">&nbsp;1048749</font></b></td>
+		<td x:num style="font-size: 12.0pt; font-weight: 700; font-family: Arial, sans-serif; text-align: center; vertical-align: middle; color: windowtext; font-style: normal; text-decoration: none; white-space: nowrap; border: medium none; padding-left: 1px; padding-right: 1px; padding-top: 1px">
+		<font color="#000080">23</font></td>
+	</tr>
+	<tr height="26" style="height: 20.1pt">
+		<td height="26" style="height: 20.1pt; vertical-align: middle; color: windowtext; font-size: 10.0pt; font-weight: 400; font-style: normal; text-decoration: none; font-family: Arial; text-align: general; white-space: nowrap; border: medium none; padding-left: 1px; padding-right: 1px; padding-top: 1px">&nbsp;</td>
+		<td width="151" style="width: 113pt; font-size: 12.0pt; font-family: Arial, sans-serif; text-align: justify; vertical-align: middle; white-space: normal; color: windowtext; font-weight: 400; font-style: normal; text-decoration: none; border: medium none; padding-left: 1px; padding-right: 1px; padding-top: 1px">
+		<b><font color="#000080">CESARINI</font></b></td>
+		<td width="124" style="width: 93pt; font-size: 12.0pt; font-family: Arial, sans-serif; text-align: justify; vertical-align: middle; white-space: normal; color: windowtext; font-weight: 400; font-style: normal; text-decoration: none; border: medium none; padding-left: 1px; padding-right: 1px; padding-top: 1px">
+		<b><font color="#000080">FABIOLA</font></b></td>
+		<td width="93" style="width: 70pt; font-size: 12.0pt; font-family: Arial, sans-serif; text-align: center; vertical-align: middle; white-space: normal; color: windowtext; font-weight: 400; font-style: normal; text-decoration: none; border: medium none; padding-left: 1px; padding-right: 1px; padding-top: 1px">
+		<b><font color="#000080">&nbsp;1039187</font></b></td>
+		<td x:num style="font-size: 12.0pt; font-weight: 700; font-family: Arial, sans-serif; text-align: center; vertical-align: middle; color: windowtext; font-style: normal; text-decoration: none; white-space: nowrap; border: medium none; padding-left: 1px; padding-right: 1px; padding-top: 1px">
+		<font color="#000080">24</font></td>
+	</tr>
+	<tr height="26" style="height: 20.1pt">
+		<td height="26" style="height: 20.1pt; vertical-align: middle; color: windowtext; font-size: 10.0pt; font-weight: 400; font-style: normal; text-decoration: none; font-family: Arial; text-align: general; white-space: nowrap; border: medium none; padding-left: 1px; padding-right: 1px; padding-top: 1px">&nbsp;</td>
+		<td width="151" style="width: 113pt; font-size: 12.0pt; font-family: Arial, sans-serif; text-align: justify; vertical-align: middle; white-space: normal; color: windowtext; font-weight: 400; font-style: normal; text-decoration: none; border: medium none; padding-left: 1px; padding-right: 1px; padding-top: 1px">
+		<b><font color="#000080">COFANO</font></b></td>
+		<td width="124" style="width: 93pt; font-size: 12.0pt; font-family: Arial, sans-serif; text-align: justify; vertical-align: middle; white-space: normal; color: windowtext; font-weight: 400; font-style: normal; text-decoration: none; border: medium none; padding-left: 1px; padding-right: 1px; padding-top: 1px">
+		<b><font color="#000080">ANGELICA</font></b></td>
+		<td width="93" style="width: 70pt; font-size: 12.0pt; font-family: Arial, sans-serif; text-align: center; vertical-align: middle; white-space: normal; color: windowtext; font-weight: 400; font-style: normal; text-decoration: none; border: medium none; padding-left: 1px; padding-right: 1px; padding-top: 1px">
+		<b><font color="#000080">&nbsp;1039136</font></b></td>
+		<td x:num style="font-size: 12.0pt; font-weight: 700; font-family: Arial, sans-serif; text-align: center; vertical-align: middle; color: windowtext; font-style: normal; text-decoration: none; white-space: nowrap; border: medium none; padding-left: 1px; padding-right: 1px; padding-top: 1px">
+		<font color="#000080">27</font></td>
+	</tr>
+	<tr height="26" style="height: 20.1pt">
+		<td height="26" style="height: 20.1pt; vertical-align: middle; color: windowtext; font-size: 10.0pt; font-weight: 400; font-style: normal; text-decoration: none; font-family: Arial; text-align: general; white-space: nowrap; border: medium none; padding-left: 1px; padding-right: 1px; padding-top: 1px">&nbsp;</td>
+		<td width="151" style="width: 113pt; font-size: 12.0pt; font-family: Arial, sans-serif; text-align: justify; vertical-align: middle; white-space: normal; color: windowtext; font-weight: 400; font-style: normal; text-decoration: none; border: medium none; padding-left: 1px; padding-right: 1px; padding-top: 1px">
+		<b><font color="#000080">COLAZZO</font></b></td>
+		<td width="124" style="width: 93pt; font-size: 12.0pt; font-family: Arial, sans-serif; text-align: justify; vertical-align: middle; white-space: normal; color: windowtext; font-weight: 400; font-style: normal; text-decoration: none; border: medium none; padding-left: 1px; padding-right: 1px; padding-top: 1px">
+		<b><font color="#000080">ALESSIA</font></b></td>
+		<td width="93" style="width: 70pt; font-size: 12.0pt; font-family: Arial, sans-serif; text-align: center; vertical-align: middle; white-space: normal; color: windowtext; font-weight: 400; font-style: normal; text-decoration: none; border: medium none; padding-left: 1px; padding-right: 1px; padding-top: 1px">
+		<b><font color="#000080">&nbsp;801715</font></b></td>
+		<td x:num style="font-size: 12.0pt; font-weight: 700; font-family: Arial, sans-serif; text-align: center; vertical-align: middle; color: windowtext; font-style: normal; text-decoration: none; white-space: nowrap; border: medium none; padding-left: 1px; padding-right: 1px; padding-top: 1px">
+		<font color="#000080">20</font></td>
+	</tr>
+	<tr height="26" style="height: 20.1pt">
+		<td height="26" style="height: 20.1pt; vertical-align: middle; color: windowtext; font-size: 10.0pt; font-weight: 400; font-style: normal; text-decoration: none; font-family: Arial; text-align: general; white-space: nowrap; border: medium none; padding-left: 1px; padding-right: 1px; padding-top: 1px">&nbsp;</td>
+		<td width="151" style="width: 113pt; font-size: 12.0pt; font-family: Arial, sans-serif; text-align: justify; vertical-align: middle; white-space: normal; color: windowtext; font-weight: 400; font-style: normal; text-decoration: none; border: medium none; padding-left: 1px; padding-right: 1px; padding-top: 1px">
+		<b><font color="#000080">CONVERSANO</font></b></td>
+		<td width="124" style="width: 93pt; font-size: 12.0pt; font-family: Arial, sans-serif; text-align: justify; vertical-align: middle; white-space: normal; color: windowtext; font-weight: 400; font-style: normal; text-decoration: none; border: medium none; padding-left: 1px; padding-right: 1px; padding-top: 1px">
+		<b><font color="#000080">FABRIZIO</font></b></td>
+		<td width="93" style="width: 70pt; font-size: 12.0pt; font-family: Arial, sans-serif; text-align: center; vertical-align: middle; white-space: normal; color: windowtext; font-weight: 400; font-style: normal; text-decoration: none; border: medium none; padding-left: 1px; padding-right: 1px; padding-top: 1px">
+		<b><font color="#000080">&nbsp;1063201</font></b></td>
+		<td style="font-size: 12.0pt; font-weight: 700; font-family: Arial, sans-serif; text-align: center; vertical-align: middle; color: windowtext; font-style: normal; text-decoration: none; white-space: nowrap; border: medium none; padding-left: 1px; padding-right: 1px; padding-top: 1px">
+		<font color="#000080">insuff.</font></td>
+	</tr>
+	<tr height="26" style="height: 20.1pt">
+		<td height="26" style="height: 20.1pt; vertical-align: middle; color: windowtext; font-size: 10.0pt; font-weight: 400; font-style: normal; text-decoration: none; font-family: Arial; text-align: general; white-space: nowrap; border: medium none; padding-left: 1px; padding-right: 1px; padding-top: 1px">&nbsp;</td>
+		<td width="151" style="width: 113pt; font-size: 12.0pt; font-family: Arial, sans-serif; text-align: justify; vertical-align: middle; white-space: normal; color: windowtext; font-weight: 400; font-style: normal; text-decoration: none; border: medium none; padding-left: 1px; padding-right: 1px; padding-top: 1px">
+		<b><font color="#000080">DI BATTISTA</font></b></td>
+		<td width="124" style="width: 93pt; font-size: 12.0pt; font-family: Arial, sans-serif; text-align: justify; vertical-align: middle; white-space: normal; color: windowtext; font-weight: 400; font-style: normal; text-decoration: none; border: medium none; padding-left: 1px; padding-right: 1px; padding-top: 1px">
+		<b><font color="#000080">MARCO</font></b></td>
+		<td width="93" style="width: 70pt; font-size: 12.0pt; font-family: Arial, sans-serif; text-align: center; vertical-align: middle; white-space: normal; color: windowtext; font-weight: 400; font-style: normal; text-decoration: none; border: medium none; padding-left: 1px; padding-right: 1px; padding-top: 1px" x:num>
+		<b><font color="#000080">1037977</font></b></td>
+		<td style="font-size: 12.0pt; font-weight: 700; font-family: Arial, sans-serif; text-align: center; vertical-align: middle; color: windowtext; font-style: normal; text-decoration: none; white-space: nowrap; border: medium none; padding-left: 1px; padding-right: 1px; padding-top: 1px">
+		<font color="#000080">30&nbsp; e lode</font></td>
+	</tr>
+	<tr height="26" style="height: 20.1pt">
+		<td height="26" style="height: 20.1pt; vertical-align: middle; color: windowtext; font-size: 10.0pt; font-weight: 400; font-style: normal; text-decoration: none; font-family: Arial; text-align: general; white-space: nowrap; border: medium none; padding-left: 1px; padding-right: 1px; padding-top: 1px">&nbsp;</td>
+		<td width="151" style="width: 113pt; font-size: 12.0pt; font-family: Arial, sans-serif; text-align: justify; vertical-align: middle; white-space: normal; color: windowtext; font-weight: 400; font-style: normal; text-decoration: none; border: medium none; padding-left: 1px; padding-right: 1px; padding-top: 1px">
+		<b><font color="#000080">FORTUNA</font></b></td>
+		<td width="124" style="width: 93pt; font-size: 12.0pt; font-family: Arial, sans-serif; text-align: justify; vertical-align: middle; white-space: normal; color: windowtext; font-weight: 400; font-style: normal; text-decoration: none; border: medium none; padding-left: 1px; padding-right: 1px; padding-top: 1px">
+		<b><font color="#000080">PAOLO</font></b></td>
+		<td width="93" style="width: 70pt; font-size: 12.0pt; font-family: Arial, sans-serif; text-align: center; vertical-align: middle; white-space: normal; color: windowtext; font-weight: 400; font-style: normal; text-decoration: none; border: medium none; padding-left: 1px; padding-right: 1px; padding-top: 1px">
+		<b><font color="#000080">&nbsp;847850</font></b></td>
+		<td style="font-size: 12.0pt; font-weight: 700; font-family: Arial, sans-serif; text-align: center; vertical-align: middle; color: windowtext; font-style: normal; text-decoration: none; white-space: nowrap; border: medium none; padding-left: 1px; padding-right: 1px; padding-top: 1px">
+		<font color="#000080">insuff.</font></td>
+	</tr>
+	<tr height="26" style="height: 20.1pt">
+		<td height="26" style="height: 20.1pt; vertical-align: middle; color: windowtext; font-size: 10.0pt; font-weight: 400; font-style: normal; text-decoration: none; font-family: Arial; text-align: general; white-space: nowrap; border: medium none; padding-left: 1px; padding-right: 1px; padding-top: 1px">&nbsp;</td>
+		<td width="151" style="width: 113pt; font-size: 12.0pt; font-family: Arial, sans-serif; text-align: justify; vertical-align: middle; white-space: normal; color: windowtext; font-weight: 400; font-style: normal; text-decoration: none; border: medium none; padding-left: 1px; padding-right: 1px; padding-top: 1px">
+		<b><font color="#000080">FUNARI</font></b></td>
+		<td width="124" style="width: 93pt; font-size: 12.0pt; font-family: Arial, sans-serif; text-align: justify; vertical-align: middle; white-space: normal; color: windowtext; font-weight: 400; font-style: normal; text-decoration: none; border: medium none; padding-left: 1px; padding-right: 1px; padding-top: 1px">
+		<b><font color="#000080">CARLO</font></b></td>
+		<td width="93" style="width: 70pt; font-size: 12.0pt; font-family: Arial, sans-serif; text-align: center; vertical-align: middle; white-space: normal; color: windowtext; font-weight: 400; font-style: normal; text-decoration: none; border: medium none; padding-left: 1px; padding-right: 1px; padding-top: 1px" x:num>
+		<b><font color="#000080">1029386</font></b></td>
+		<td style="font-size: 12.0pt; font-weight: 700; font-family: Arial, sans-serif; text-align: center; vertical-align: middle; color: windowtext; font-style: normal; text-decoration: none; white-space: nowrap; border: medium none; padding-left: 1px; padding-right: 1px; padding-top: 1px">
+		<font color="#000080">30&nbsp; e lode</font></td>
+	</tr>
+	<tr height="26" style="height: 20.1pt">
+		<td height="26" style="height: 20.1pt; vertical-align: middle; color: windowtext; font-size: 10.0pt; font-weight: 400; font-style: normal; text-decoration: none; font-family: Arial; text-align: general; white-space: nowrap; border: medium none; padding-left: 1px; padding-right: 1px; padding-top: 1px">&nbsp;</td>
+		<td width="151" style="width: 113pt; font-size: 12.0pt; font-family: Arial, sans-serif; text-align: justify; vertical-align: middle; white-space: normal; color: windowtext; font-weight: 400; font-style: normal; text-decoration: none; border: medium none; padding-left: 1px; padding-right: 1px; padding-top: 1px">
+		<b><font color="#000080">FUOCO</font></b></td>
+		<td width="124" style="width: 93pt; font-size: 12.0pt; font-family: Arial, sans-serif; text-align: justify; vertical-align: middle; white-space: normal; color: windowtext; font-weight: 400; font-style: normal; text-decoration: none; border: medium none; padding-left: 1px; padding-right: 1px; padding-top: 1px">
+		<b><font color="#000080">ROBERTO</font></b></td>
+		<td width="93" style="width: 70pt; font-size: 12.0pt; font-family: Arial, sans-serif; text-align: center; vertical-align: middle; white-space: normal; color: windowtext; font-weight: 400; font-style: normal; text-decoration: none; border: medium none; padding-left: 1px; padding-right: 1px; padding-top: 1px">
+		<b><font color="#000080">&nbsp;797449</font></b></td>
+		<td style="font-size: 12.0pt; font-weight: 700; font-family: Arial, sans-serif; text-align: center; vertical-align: middle; color: windowtext; font-style: normal; text-decoration: none; white-space: nowrap; border: medium none; padding-left: 1px; padding-right: 1px; padding-top: 1px">
+		<font color="#000080">insuff.</font></td>
+	</tr>
+	<tr height="26" style="height: 20.1pt">
+		<td height="26" style="height: 20.1pt; vertical-align: middle; color: windowtext; font-size: 10.0pt; font-weight: 400; font-style: normal; text-decoration: none; font-family: Arial; text-align: general; white-space: nowrap; border: medium none; padding-left: 1px; padding-right: 1px; padding-top: 1px">&nbsp;</td>
+		<td width="151" style="width: 113pt; font-size: 12.0pt; font-family: Arial, sans-serif; text-align: justify; vertical-align: middle; white-space: normal; color: windowtext; font-weight: 400; font-style: normal; text-decoration: none; border: medium none; padding-left: 1px; padding-right: 1px; padding-top: 1px">
+		<b><font color="#000080">FUSCO</font></b></td>
+		<td width="124" style="width: 93pt; font-size: 12.0pt; font-family: Arial, sans-serif; text-align: justify; vertical-align: middle; white-space: normal; color: windowtext; font-weight: 400; font-style: normal; text-decoration: none; border: medium none; padding-left: 1px; padding-right: 1px; padding-top: 1px">
+		<b><font color="#000080">MARIOLUIGI</font></b></td>
+		<td width="93" style="width: 70pt; font-size: 12.0pt; font-family: Arial, sans-serif; text-align: center; vertical-align: middle; white-space: normal; color: windowtext; font-weight: 400; font-style: normal; text-decoration: none; border: medium none; padding-left: 1px; padding-right: 1px; padding-top: 1px">
+		<b><font color="#000080">&nbsp;1050266</font></b></td>
+		<td style="font-size: 12.0pt; font-weight: 700; font-family: Arial, sans-serif; text-align: center; vertical-align: middle; color: windowtext; font-style: normal; text-decoration: none; white-space: nowrap; border: medium none; padding-left: 1px; padding-right: 1px; padding-top: 1px">
+		<font color="#000080">insuff.</font></td>
+	</tr>
+	<tr height="26" style="height: 20.1pt">
+		<td height="26" style="height: 20.1pt; vertical-align: middle; color: windowtext; font-size: 10.0pt; font-weight: 400; font-style: normal; text-decoration: none; font-family: Arial; text-align: general; white-space: nowrap; border: medium none; padding-left: 1px; padding-right: 1px; padding-top: 1px">&nbsp;</td>
+		<td width="151" style="width: 113pt; font-size: 12.0pt; font-family: Arial, sans-serif; text-align: justify; vertical-align: middle; white-space: normal; color: windowtext; font-weight: 400; font-style: normal; text-decoration: none; border: medium none; padding-left: 1px; padding-right: 1px; padding-top: 1px">
+		<b><font color="#000080">IAPALUCCI</font></b></td>
+		<td width="124" style="width: 93pt; font-size: 12.0pt; font-family: Arial, sans-serif; text-align: justify; vertical-align: middle; white-space: normal; color: windowtext; font-weight: 400; font-style: normal; text-decoration: none; border: medium none; padding-left: 1px; padding-right: 1px; padding-top: 1px">
+		<b><font color="#000080">PASQUALE</font></b></td>
+		<td width="93" style="width: 70pt; font-size: 12.0pt; font-family: Arial, sans-serif; text-align: center; vertical-align: middle; white-space: normal; color: windowtext; font-weight: 400; font-style: normal; text-decoration: none; border: medium none; padding-left: 1px; padding-right: 1px; padding-top: 1px" x:num>
+		<b><font color="#000080">798979</font></b></td>
+		<td style="font-size: 12.0pt; font-weight: 700; font-family: Arial, sans-serif; text-align: center; vertical-align: middle; color: windowtext; font-style: normal; text-decoration: none; white-space: nowrap; border: medium none; padding-left: 1px; padding-right: 1px; padding-top: 1px">
+		<font color="#000080">insuff.</font></td>
+	</tr>
+	<tr height="26" style="height: 20.1pt">
+		<td height="26" style="height: 20.1pt; vertical-align: middle; color: windowtext; font-size: 10.0pt; font-weight: 400; font-style: normal; text-decoration: none; font-family: Arial; text-align: general; white-space: nowrap; border: medium none; padding-left: 1px; padding-right: 1px; padding-top: 1px">&nbsp;</td>
+		<td width="151" style="width: 113pt; font-size: 12.0pt; font-family: Arial, sans-serif; text-align: justify; vertical-align: middle; white-space: normal; color: windowtext; font-weight: 400; font-style: normal; text-decoration: none; border: medium none; padding-left: 1px; padding-right: 1px; padding-top: 1px">
+		<b><font color="#000080">LAPOLLA</font></b></td>
+		<td width="124" style="width: 93pt; font-size: 12.0pt; font-family: Arial, sans-serif; text-align: justify; vertical-align: middle; white-space: normal; color: windowtext; font-weight: 400; font-style: normal; text-decoration: none; border: medium none; padding-left: 1px; padding-right: 1px; padding-top: 1px">
+		<b><font color="#000080">DAVIDE</font></b></td>
+		<td width="93" style="width: 70pt; font-size: 12.0pt; font-family: Arial, sans-serif; text-align: center; vertical-align: middle; white-space: normal; color: windowtext; font-weight: 400; font-style: normal; text-decoration: none; border: medium none; padding-left: 1px; padding-right: 1px; padding-top: 1px">
+		<b><font color="#000080">&nbsp;1056845</font></b></td>
+		<td style="font-size: 12.0pt; font-weight: 700; font-family: Arial, sans-serif; text-align: center; vertical-align: middle; color: windowtext; font-style: normal; text-decoration: none; white-space: nowrap; border: medium none; padding-left: 1px; padding-right: 1px; padding-top: 1px">
+		<font color="#000080">insuff.</font></td>
+	</tr>
+	<tr height="26" style="height: 20.1pt">
+		<td height="26" style="height: 20.1pt; vertical-align: middle; color: windowtext; font-size: 10.0pt; font-weight: 400; font-style: normal; text-decoration: none; font-family: Arial; text-align: general; white-space: nowrap; border: medium none; padding-left: 1px; padding-right: 1px; padding-top: 1px">&nbsp;</td>
+		<td width="151" style="width: 113pt; font-size: 12.0pt; font-family: Arial, sans-serif; text-align: justify; vertical-align: middle; white-space: normal; color: windowtext; font-weight: 400; font-style: normal; text-decoration: none; border: medium none; padding-left: 1px; padding-right: 1px; padding-top: 1px">
+		<b><font color="#000080">LIKA</font></b></td>
+		<td width="124" style="width: 93pt; font-size: 12.0pt; font-family: Arial, sans-serif; text-align: justify; vertical-align: middle; white-space: normal; color: windowtext; font-weight: 400; font-style: normal; text-decoration: none; border: medium none; padding-left: 1px; padding-right: 1px; padding-top: 1px">
+		<b><font color="#000080">ERISELDA</font></b></td>
+		<td width="93" style="width: 70pt; font-size: 12.0pt; font-family: Arial, sans-serif; text-align: center; vertical-align: middle; white-space: normal; color: windowtext; font-weight: 400; font-style: normal; text-decoration: none; border: medium none; padding-left: 1px; padding-right: 1px; padding-top: 1px">
+		<b><font color="#000080">&nbsp;801389</font></b></td>
+		<td style="font-size: 12.0pt; font-weight: 700; font-family: Arial, sans-serif; text-align: center; vertical-align: middle; color: windowtext; font-style: normal; text-decoration: none; white-space: nowrap; border: medium none; padding-left: 1px; padding-right: 1px; padding-top: 1px">
+		<font color="#000080">insuff.</font></td>
+	</tr>
+	<tr height="26" style="height: 20.1pt">
+		<td height="26" style="height: 20.1pt; vertical-align: middle; color: windowtext; font-size: 10.0pt; font-weight: 400; font-style: normal; text-decoration: none; font-family: Arial; text-align: general; white-space: nowrap; border: medium none; padding-left: 1px; padding-right: 1px; padding-top: 1px">&nbsp;</td>
+		<td width="151" style="width: 113pt; font-size: 12.0pt; font-family: Arial, sans-serif; text-align: justify; vertical-align: middle; white-space: normal; color: windowtext; font-weight: 400; font-style: normal; text-decoration: none; border: medium none; padding-left: 1px; padding-right: 1px; padding-top: 1px">
+		<b><font color="#000080">LOPARCO</font></b></td>
+		<td width="124" style="width: 93pt; font-size: 12.0pt; font-family: Arial, sans-serif; text-align: justify; vertical-align: middle; white-space: normal; color: windowtext; font-weight: 400; font-style: normal; text-decoration: none; border: medium none; padding-left: 1px; padding-right: 1px; padding-top: 1px">
+		<b><font color="#000080">ANTONIO</font></b></td>
+		<td width="93" style="width: 70pt; font-size: 12.0pt; font-family: Arial, sans-serif; text-align: center; vertical-align: middle; white-space: normal; color: windowtext; font-weight: 400; font-style: normal; text-decoration: none; border: medium none; padding-left: 1px; padding-right: 1px; padding-top: 1px">
+		<b><font color="#000080">&nbsp;1053239</font></b></td>
+		<td x:num style="font-size: 12.0pt; font-weight: 700; font-family: Arial, sans-serif; text-align: center; vertical-align: middle; color: windowtext; font-style: normal; text-decoration: none; white-space: nowrap; border: medium none; padding-left: 1px; padding-right: 1px; padding-top: 1px">
+		<font color="#000080">20</font></td>
+	</tr>
+	<tr height="26" style="height: 20.1pt">
+		<td height="26" style="height: 20.1pt; vertical-align: middle; color: windowtext; font-size: 10.0pt; font-weight: 400; font-style: normal; text-decoration: none; font-family: Arial; text-align: general; white-space: nowrap; border: medium none; padding-left: 1px; padding-right: 1px; padding-top: 1px">&nbsp;</td>
+		<td width="151" style="width: 113pt; font-size: 12.0pt; font-family: Arial, sans-serif; text-align: justify; vertical-align: middle; white-space: normal; color: windowtext; font-weight: 400; font-style: normal; text-decoration: none; border: medium none; padding-left: 1px; padding-right: 1px; padding-top: 1px">
+		<b><font color="#000080">MELCARNE</font></b></td>
+		<td width="124" style="width: 93pt; font-size: 12.0pt; font-family: Arial, sans-serif; text-align: justify; vertical-align: middle; white-space: normal; color: windowtext; font-weight: 400; font-style: normal; text-decoration: none; border: medium none; padding-left: 1px; padding-right: 1px; padding-top: 1px">
+		<b><font color="#000080">OLIVER</font></b></td>
+		<td width="93" style="width: 70pt; font-size: 12.0pt; font-family: Arial, sans-serif; text-align: center; vertical-align: middle; white-space: normal; color: windowtext; font-weight: 400; font-style: normal; text-decoration: none; border: medium none; padding-left: 1px; padding-right: 1px; padding-top: 1px">
+		<b><font color="#000080">&nbsp;1042261</font></b></td>
+		<td x:num style="font-size: 12.0pt; font-weight: 700; font-family: Arial, sans-serif; text-align: center; vertical-align: middle; color: windowtext; font-style: normal; text-decoration: none; white-space: nowrap; border: medium none; padding-left: 1px; padding-right: 1px; padding-top: 1px">
+		<font color="#000080">22</font></td>
+	</tr>
+	<tr height="26" style="height: 20.1pt">
+		<td height="26" style="height: 20.1pt; vertical-align: middle; color: windowtext; font-size: 10.0pt; font-weight: 400; font-style: normal; text-decoration: none; font-family: Arial; text-align: general; white-space: nowrap; border: medium none; padding-left: 1px; padding-right: 1px; padding-top: 1px">&nbsp;</td>
+		<td width="151" style="width: 113pt; font-size: 12.0pt; font-family: Arial, sans-serif; text-align: justify; vertical-align: middle; white-space: normal; color: windowtext; font-weight: 400; font-style: normal; text-decoration: none; border: medium none; padding-left: 1px; padding-right: 1px; padding-top: 1px">
+		<b><font color="#000080">MENTIL</font></b></td>
+		<td width="124" style="width: 93pt; font-size: 12.0pt; font-family: Arial, sans-serif; text-align: justify; vertical-align: middle; white-space: normal; color: windowtext; font-weight: 400; font-style: normal; text-decoration: none; border: medium none; padding-left: 1px; padding-right: 1px; padding-top: 1px">
+		<b><font color="#000080">FRANCESCO</font></b></td>
+		<td width="93" style="width: 70pt; font-size: 12.0pt; font-family: Arial, sans-serif; text-align: center; vertical-align: middle; white-space: normal; color: windowtext; font-weight: 400; font-style: normal; text-decoration: none; border: medium none; padding-left: 1px; padding-right: 1px; padding-top: 1px">
+		<b><font color="#000080">&nbsp;1062181</font></b></td>
+		<td x:num style="font-size: 12.0pt; font-weight: 700; font-family: Arial, sans-serif; text-align: center; vertical-align: middle; color: windowtext; font-style: normal; text-decoration: none; white-space: nowrap; border: medium none; padding-left: 1px; padding-right: 1px; padding-top: 1px">
+		<font color="#000080">30</font></td>
+	</tr>
+	<tr height="26" style="height: 20.1pt">
+		<td height="26" style="height: 20.1pt; vertical-align: middle; color: windowtext; font-size: 10.0pt; font-weight: 400; font-style: normal; text-decoration: none; font-family: Arial; text-align: general; white-space: nowrap; border: medium none; padding-left: 1px; padding-right: 1px; padding-top: 1px">&nbsp;</td>
+		<td width="151" style="width: 113pt; font-size: 12.0pt; font-family: Arial, sans-serif; text-align: justify; vertical-align: middle; white-space: normal; color: windowtext; font-weight: 400; font-style: normal; text-decoration: none; border: medium none; padding-left: 1px; padding-right: 1px; padding-top: 1px">
+		<b><font color="#000080">MILITANO</font></b></td>
+		<td width="124" style="width: 93pt; font-size: 12.0pt; font-family: Arial, sans-serif; text-align: justify; vertical-align: middle; white-space: normal; color: windowtext; font-weight: 400; font-style: normal; text-decoration: none; border: medium none; padding-left: 1px; padding-right: 1px; padding-top: 1px">
+		<b><font color="#000080">VINCENZO</font></b></td>
+		<td width="93" style="width: 70pt; font-size: 12.0pt; font-family: Arial, sans-serif; text-align: center; vertical-align: middle; white-space: normal; color: windowtext; font-weight: 400; font-style: normal; text-decoration: none; border: medium none; padding-left: 1px; padding-right: 1px; padding-top: 1px">
+		<b><font color="#000080">&nbsp;1045113</font></b></td>
+		<td style="font-size: 12.0pt; font-weight: 700; font-family: Arial, sans-serif; text-align: center; vertical-align: middle; color: windowtext; font-style: normal; text-decoration: none; white-space: nowrap; border: medium none; padding-left: 1px; padding-right: 1px; padding-top: 1px">
+		<font color="#000080">insuff.</font></td>
+	</tr>
+	<tr height="26" style="height: 20.1pt">
+		<td height="26" style="height: 20.1pt; vertical-align: middle; color: windowtext; font-size: 10.0pt; font-weight: 400; font-style: normal; text-decoration: none; font-family: Arial; text-align: general; white-space: nowrap; border: medium none; padding-left: 1px; padding-right: 1px; padding-top: 1px">&nbsp;</td>
+		<td width="151" style="width: 113pt; font-size: 12.0pt; font-family: Arial, sans-serif; text-align: justify; vertical-align: middle; white-space: normal; color: windowtext; font-weight: 400; font-style: normal; text-decoration: none; border: medium none; padding-left: 1px; padding-right: 1px; padding-top: 1px">
+		<b><font color="#000080">NOHMAN</font></b></td>
+		<td width="124" style="width: 93pt; font-size: 12.0pt; font-family: Arial, sans-serif; text-align: justify; vertical-align: middle; white-space: normal; color: windowtext; font-weight: 400; font-style: normal; text-decoration: none; border: medium none; padding-left: 1px; padding-right: 1px; padding-top: 1px">
+		<b><font color="#000080">FABIO</font></b></td>
+		<td width="93" style="width: 70pt; font-size: 12.0pt; font-family: Arial, sans-serif; text-align: center; vertical-align: middle; white-space: normal; color: windowtext; font-weight: 400; font-style: normal; text-decoration: none; border: medium none; padding-left: 1px; padding-right: 1px; padding-top: 1px">
+		<b><font color="#000080">&nbsp;791641</font></b></td>
+		<td style="font-size: 12.0pt; font-weight: 700; font-family: Arial, sans-serif; text-align: center; vertical-align: middle; color: windowtext; font-style: normal; text-decoration: none; white-space: nowrap; border: medium none; padding-left: 1px; padding-right: 1px; padding-top: 1px">
+		<font color="#000080">insuff.</font></td>
+	</tr>
+	<tr height="26" style="height: 20.1pt">
+		<td height="26" style="height: 20.1pt; vertical-align: middle; color: windowtext; font-size: 10.0pt; font-weight: 400; font-style: normal; text-decoration: none; font-family: Arial; text-align: general; white-space: nowrap; border: medium none; padding-left: 1px; padding-right: 1px; padding-top: 1px">&nbsp;</td>
+		<td width="151" style="width: 113pt; font-size: 12.0pt; font-family: Arial, sans-serif; text-align: justify; vertical-align: middle; white-space: normal; color: windowtext; font-weight: 400; font-style: normal; text-decoration: none; border: medium none; padding-left: 1px; padding-right: 1px; padding-top: 1px">
+		<b><font color="#000080">OLIMPIO</font></b></td>
+		<td width="124" style="width: 93pt; font-size: 12.0pt; font-family: Arial, sans-serif; text-align: justify; vertical-align: middle; white-space: normal; color: windowtext; font-weight: 400; font-style: normal; text-decoration: none; border: medium none; padding-left: 1px; padding-right: 1px; padding-top: 1px">
+		<b><font color="#000080">ALDO</font></b></td>
+		<td width="93" style="width: 70pt; font-size: 12.0pt; font-family: Arial, sans-serif; text-align: center; vertical-align: middle; white-space: normal; color: windowtext; font-weight: 400; font-style: normal; text-decoration: none; border: medium none; padding-left: 1px; padding-right: 1px; padding-top: 1px">
+		<b><font color="#000080">&nbsp;799666</font></b></td>
+		<td style="font-size: 12.0pt; font-weight: 700; font-family: Arial, sans-serif; text-align: center; vertical-align: middle; color: windowtext; font-style: normal; text-decoration: none; white-space: nowrap; border: medium none; padding-left: 1px; padding-right: 1px; padding-top: 1px">
+		<font color="#000080">insuff.</font></td>
+	</tr>
+	<tr height="26" style="height: 20.1pt">
+		<td height="26" style="height: 20.1pt; vertical-align: middle; color: windowtext; font-size: 10.0pt; font-weight: 400; font-style: normal; text-decoration: none; font-family: Arial; text-align: general; white-space: nowrap; border: medium none; padding-left: 1px; padding-right: 1px; padding-top: 1px">&nbsp;</td>
+		<td width="151" style="width: 113pt; font-size: 12.0pt; font-family: Arial, sans-serif; text-align: justify; vertical-align: middle; white-space: normal; color: windowtext; font-weight: 400; font-style: normal; text-decoration: none; border: medium none; padding-left: 1px; padding-right: 1px; padding-top: 1px">
+		<b><font color="#000080">PALMIERI</font></b></td>
+		<td width="124" style="width: 93pt; font-size: 12.0pt; font-family: Arial, sans-serif; text-align: justify; vertical-align: middle; white-space: normal; color: windowtext; font-weight: 400; font-style: normal; text-decoration: none; border: medium none; padding-left: 1px; padding-right: 1px; padding-top: 1px">
+		<b><font color="#000080">GUSTAVO</font></b></td>
+		<td width="93" style="width: 70pt; font-size: 12.0pt; font-family: Arial, sans-serif; text-align: center; vertical-align: middle; white-space: normal; color: windowtext; font-weight: 400; font-style: normal; text-decoration: none; border: medium none; padding-left: 1px; padding-right: 1px; padding-top: 1px">
+		<b><font color="#000080">&nbsp;1051413</font></b></td>
+		<td style="font-size: 12.0pt; font-weight: 700; font-family: Arial, sans-serif; text-align: center; vertical-align: middle; color: windowtext; font-style: normal; text-decoration: none; white-space: nowrap; border: medium none; padding-left: 1px; padding-right: 1px; padding-top: 1px">
+		<font color="#000080">insuff.</font></td>
+	</tr>
+	<tr height="26" style="height: 20.1pt">
+		<td height="26" style="height: 20.1pt; vertical-align: middle; color: windowtext; font-size: 10.0pt; font-weight: 400; font-style: normal; text-decoration: none; font-family: Arial; text-align: general; white-space: nowrap; border: medium none; padding-left: 1px; padding-right: 1px; padding-top: 1px">&nbsp;</td>
+		<td width="151" style="width: 113pt; font-size: 12.0pt; font-family: Arial, sans-serif; text-align: justify; vertical-align: middle; white-space: normal; color: windowtext; font-weight: 400; font-style: normal; text-decoration: none; border: medium none; padding-left: 1px; padding-right: 1px; padding-top: 1px">
+		<b><font color="#000080">PIACENTE</font></b></td>
+		<td width="124" style="width: 93pt; font-size: 12.0pt; font-family: Arial, sans-serif; text-align: justify; vertical-align: middle; white-space: normal; color: windowtext; font-weight: 400; font-style: normal; text-decoration: none; border: medium none; padding-left: 1px; padding-right: 1px; padding-top: 1px">
+		<b><font color="#000080">FULVIO</font></b></td>
+		<td width="93" style="width: 70pt; font-size: 12.0pt; font-family: Arial, sans-serif; text-align: center; vertical-align: middle; white-space: normal; color: windowtext; font-weight: 400; font-style: normal; text-decoration: none; border: medium none; padding-left: 1px; padding-right: 1px; padding-top: 1px">
+		<b><font color="#000080">&nbsp;1048212</font></b></td>
+		<td style="font-size: 12.0pt; font-weight: 700; font-family: Arial, sans-serif; text-align: center; vertical-align: middle; color: windowtext; font-style: normal; text-decoration: none; white-space: nowrap; border: medium none; padding-left: 1px; padding-right: 1px; padding-top: 1px">
+		<font color="#000080">insuff.</font></td>
+	</tr>
+	<tr height="26" style="height: 20.1pt">
+		<td height="26" style="height: 20.1pt; vertical-align: middle; color: windowtext; font-size: 10.0pt; font-weight: 400; font-style: normal; text-decoration: none; font-family: Arial; text-align: general; white-space: nowrap; border: medium none; padding-left: 1px; padding-right: 1px; padding-top: 1px">&nbsp;</td>
+		<td width="151" style="width: 113pt; font-size: 12.0pt; font-family: Arial, sans-serif; text-align: justify; vertical-align: middle; white-space: normal; color: windowtext; font-weight: 400; font-style: normal; text-decoration: none; border: medium none; padding-left: 1px; padding-right: 1px; padding-top: 1px">
+		<b><font color="#000080">PISTILLO</font></b></td>
+		<td width="124" style="width: 93pt; font-size: 12.0pt; font-family: Arial, sans-serif; text-align: justify; vertical-align: middle; white-space: normal; color: windowtext; font-weight: 400; font-style: normal; text-decoration: none; border: medium none; padding-left: 1px; padding-right: 1px; padding-top: 1px">
+		<b><font color="#000080">ANTONIO</font></b></td>
+		<td width="93" style="width: 70pt; font-size: 12.0pt; font-family: Arial, sans-serif; text-align: center; vertical-align: middle; white-space: normal; color: windowtext; font-weight: 400; font-style: normal; text-decoration: none; border: medium none; padding-left: 1px; padding-right: 1px; padding-top: 1px">
+		<b><font color="#000080">&nbsp;1014770</font></b></td>
+		<td x:num style="font-size: 12.0pt; font-weight: 700; font-family: Arial, sans-serif; text-align: center; vertical-align: middle; color: windowtext; font-style: normal; text-decoration: none; white-space: nowrap; border: medium none; padding-left: 1px; padding-right: 1px; padding-top: 1px">
+		<font color="#000080">22</font></td>
+	</tr>
+	<tr height="26" style="height: 20.1pt">
+		<td height="26" style="height: 20.1pt; vertical-align: middle; color: windowtext; font-size: 10.0pt; font-weight: 400; font-style: normal; text-decoration: none; font-family: Arial; text-align: general; white-space: nowrap; border: medium none; padding-left: 1px; padding-right: 1px; padding-top: 1px">&nbsp;</td>
+		<td width="151" style="width: 113pt; font-size: 12.0pt; font-family: Arial, sans-serif; text-align: justify; vertical-align: middle; white-space: normal; color: windowtext; font-weight: 400; font-style: normal; text-decoration: none; border: medium none; padding-left: 1px; padding-right: 1px; padding-top: 1px">
+		<b><font color="#000080">POLVERINI</font></b></td>
+		<td width="124" style="width: 93pt; font-size: 12.0pt; font-family: Arial, sans-serif; text-align: justify; vertical-align: middle; white-space: normal; color: windowtext; font-weight: 400; font-style: normal; text-decoration: none; border: medium none; padding-left: 1px; padding-right: 1px; padding-top: 1px">
+		<b><font color="#000080">MARCO</font></b></td>
+		<td width="93" style="width: 70pt; font-size: 12.0pt; font-family: Arial, sans-serif; text-align: center; vertical-align: middle; white-space: normal; color: windowtext; font-weight: 400; font-style: normal; text-decoration: none; border: medium none; padding-left: 1px; padding-right: 1px; padding-top: 1px">
+		<b><font color="#000080">&nbsp;1042279</font></b></td>
+		<td x:num style="font-size: 12.0pt; font-weight: 700; font-family: Arial, sans-serif; text-align: center; vertical-align: middle; color: windowtext; font-style: normal; text-decoration: none; white-space: nowrap; border: medium none; padding-left: 1px; padding-right: 1px; padding-top: 1px">
+		<font color="#000080">27</font></td>
+	</tr>
+	<tr height="26" style="height: 20.1pt">
+		<td height="26" style="height: 20.1pt; vertical-align: middle; color: windowtext; font-size: 10.0pt; font-weight: 400; font-style: normal; text-decoration: none; font-family: Arial; text-align: general; white-space: nowrap; border: medium none; padding-left: 1px; padding-right: 1px; padding-top: 1px">&nbsp;</td>
+		<td width="151" style="width: 113pt; font-size: 12.0pt; font-family: Arial, sans-serif; text-align: justify; vertical-align: middle; white-space: normal; color: windowtext; font-weight: 400; font-style: normal; text-decoration: none; border: medium none; padding-left: 1px; padding-right: 1px; padding-top: 1px">
+		<b><font color="#000080">RUGGERI</font></b></td>
+		<td width="124" style="width: 93pt; font-size: 12.0pt; font-family: Arial, sans-serif; text-align: justify; vertical-align: middle; white-space: normal; color: windowtext; font-weight: 400; font-style: normal; text-decoration: none; border: medium none; padding-left: 1px; padding-right: 1px; padding-top: 1px">
+		<b><font color="#000080">CLAUDIA</font></b></td>
+		<td width="93" style="width: 70pt; font-size: 12.0pt; font-family: Arial, sans-serif; text-align: center; vertical-align: middle; white-space: normal; color: windowtext; font-weight: 400; font-style: normal; text-decoration: none; border: medium none; padding-left: 1px; padding-right: 1px; padding-top: 1px">
+		<b><font color="#000080">&nbsp;09117344</font></b></td>
+		<td x:num style="font-size: 12.0pt; font-weight: 700; font-family: Arial, sans-serif; text-align: center; vertical-align: middle; color: windowtext; font-style: normal; text-decoration: none; white-space: nowrap; border: medium none; padding-left: 1px; padding-right: 1px; padding-top: 1px">
+		<font color="#000080">18</font></td>
+	</tr>
+	<tr height="26" style="height: 20.1pt">
+		<td height="26" style="height: 20.1pt; vertical-align: middle; color: windowtext; font-size: 10.0pt; font-weight: 400; font-style: normal; text-decoration: none; font-family: Arial; text-align: general; white-space: nowrap; border: medium none; padding-left: 1px; padding-right: 1px; padding-top: 1px">&nbsp;</td>
+		<td width="151" style="width: 113pt; font-size: 12.0pt; font-family: Arial, sans-serif; text-align: justify; vertical-align: middle; white-space: normal; color: windowtext; font-weight: 400; font-style: normal; text-decoration: none; border: medium none; padding-left: 1px; padding-right: 1px; padding-top: 1px">
+		<b><font color="#000080">SEMENZATO</font></b></td>
+		<td width="124" style="width: 93pt; font-size: 12.0pt; font-family: Arial, sans-serif; text-align: justify; vertical-align: middle; white-space: normal; color: windowtext; font-weight: 400; font-style: normal; text-decoration: none; border: medium none; padding-left: 1px; padding-right: 1px; padding-top: 1px">
+		<b><font color="#000080">GIORGIO</font></b></td>
+		<td width="93" style="width: 70pt; font-size: 12.0pt; font-family: Arial, sans-serif; text-align: center; vertical-align: middle; white-space: normal; color: windowtext; font-weight: 400; font-style: normal; text-decoration: none; border: medium none; padding-left: 1px; padding-right: 1px; padding-top: 1px">
+		<b><font color="#000080">&nbsp;1046805</font></b></td>
+		<td style="font-size: 12.0pt; font-weight: 700; font-family: Arial, sans-serif; text-align: center; vertical-align: middle; color: windowtext; font-style: normal; text-decoration: none; white-space: nowrap; border: medium none; padding-left: 1px; padding-right: 1px; padding-top: 1px">
+		<font color="#000080">30&nbsp; e lode</font></td>
+	</tr>
+	<tr height="26" style="height: 20.1pt">
+		<td height="26" style="height: 20.1pt; vertical-align: middle; color: windowtext; font-size: 10.0pt; font-weight: 400; font-style: normal; text-decoration: none; font-family: Arial; text-align: general; white-space: nowrap; border: medium none; padding-left: 1px; padding-right: 1px; padding-top: 1px">&nbsp;</td>
+		<td width="151" style="width: 113pt; font-size: 12.0pt; font-family: Arial, sans-serif; text-align: justify; vertical-align: middle; white-space: normal; color: windowtext; font-weight: 400; font-style: normal; text-decoration: none; border: medium none; padding-left: 1px; padding-right: 1px; padding-top: 1px">
+		<b><font color="#000080">SEVERA</font></b></td>
+		<td width="124" style="width: 93pt; font-size: 12.0pt; font-family: Arial, sans-serif; text-align: justify; vertical-align: middle; white-space: normal; color: windowtext; font-weight: 400; font-style: normal; text-decoration: none; border: medium none; padding-left: 1px; padding-right: 1px; padding-top: 1px">
+		<b><font color="#000080">GIOVANNI</font></b></td>
+		<td width="93" style="width: 70pt; font-size: 12.0pt; font-family: Arial, sans-serif; text-align: center; vertical-align: middle; white-space: normal; color: windowtext; font-weight: 400; font-style: normal; text-decoration: none; border: medium none; padding-left: 1px; padding-right: 1px; padding-top: 1px">
+		<b><font color="#000080">&nbsp;1061343</font></b></td>
+		<td style="font-size: 12.0pt; font-weight: 700; font-family: Arial, sans-serif; text-align: center; vertical-align: middle; color: windowtext; font-style: normal; text-decoration: none; white-space: nowrap; border: medium none; padding-left: 1px; padding-right: 1px; padding-top: 1px">
+		<font color="#000080">insuff.</font></td>
+	</tr>
+	<tr height="26" style="height: 20.1pt">
+		<td height="26" style="height: 20.1pt; vertical-align: middle; color: windowtext; font-size: 10.0pt; font-weight: 400; font-style: normal; text-decoration: none; font-family: Arial; text-align: general; white-space: nowrap; border: medium none; padding-left: 1px; padding-right: 1px; padding-top: 1px">&nbsp;</td>
+		<td width="151" style="width: 113pt; font-size: 12.0pt; font-family: Arial, sans-serif; text-align: justify; vertical-align: middle; white-space: normal; color: windowtext; font-weight: 400; font-style: normal; text-decoration: none; border: medium none; padding-left: 1px; padding-right: 1px; padding-top: 1px">
+		<b><font color="#000080">SPAGNOLO</font></b></td>
+		<td width="124" style="width: 93pt; font-size: 12.0pt; font-family: Arial, sans-serif; text-align: justify; vertical-align: middle; white-space: normal; color: windowtext; font-weight: 400; font-style: normal; text-decoration: none; border: medium none; padding-left: 1px; padding-right: 1px; padding-top: 1px">
+		<b><font color="#000080">PIETRO</font></b></td>
+		<td width="93" style="width: 70pt; font-size: 12.0pt; font-family: Arial, sans-serif; text-align: center; vertical-align: middle; white-space: normal; color: windowtext; font-weight: 400; font-style: normal; text-decoration: none; border: medium none; padding-left: 1px; padding-right: 1px; padding-top: 1px">
+		<b><font color="#000080">&nbsp;09114946</font></b></td>
+		<td style="font-size: 12.0pt; font-weight: 700; font-family: Arial, sans-serif; text-align: center; vertical-align: middle; color: windowtext; font-style: normal; text-decoration: none; white-space: nowrap; border: medium none; padding-left: 1px; padding-right: 1px; padding-top: 1px">
+		<font color="#000080">insuff.</font></td>
+	</tr>
+	<tr height="26" style="height: 20.1pt">
+		<td height="26" style="height: 20.1pt; vertical-align: middle; color: windowtext; font-size: 10.0pt; font-weight: 400; font-style: normal; text-decoration: none; font-family: Arial; text-align: general; white-space: nowrap; border: medium none; padding-left: 1px; padding-right: 1px; padding-top: 1px">&nbsp;</td>
+		<td width="151" style="width: 113pt; font-size: 12.0pt; font-family: Arial, sans-serif; text-align: justify; vertical-align: middle; white-space: normal; color: windowtext; font-weight: 400; font-style: normal; text-decoration: none; border: medium none; padding-left: 1px; padding-right: 1px; padding-top: 1px">
+		<b><font color="#000080">STERPELLONE</font></b></td>
+		<td width="124" style="width: 93pt; font-size: 12.0pt; font-family: Arial, sans-serif; text-align: justify; vertical-align: middle; white-space: normal; color: windowtext; font-weight: 400; font-style: normal; text-decoration: none; border: medium none; padding-left: 1px; padding-right: 1px; padding-top: 1px">
+		<b><font color="#000080">MARCO</font></b></td>
+		<td width="93" style="width: 70pt; font-size: 12.0pt; font-family: Arial, sans-serif; text-align: center; vertical-align: middle; white-space: normal; color: windowtext; font-weight: 400; font-style: normal; text-decoration: none; border: medium none; padding-left: 1px; padding-right: 1px; padding-top: 1px">
+		<b><font color="#000080">&nbsp;801240</font></b></td>
+		<td style="font-size: 12.0pt; font-weight: 700; font-family: Arial, sans-serif; text-align: center; vertical-align: middle; color: windowtext; font-style: normal; text-decoration: none; white-space: nowrap; border: medium none; padding-left: 1px; padding-right: 1px; padding-top: 1px">
+		<font color="#000080">insuff.</font></td>
+	</tr>
+	<tr height="26" style="height: 20.1pt">
+		<td height="26" style="height: 20.1pt; vertical-align: middle; color: windowtext; font-size: 10.0pt; font-weight: 400; font-style: normal; text-decoration: none; font-family: Arial; text-align: general; white-space: nowrap; border: medium none; padding-left: 1px; padding-right: 1px; padding-top: 1px">&nbsp;</td>
+		<td width="151" style="width: 113pt; font-size: 12.0pt; font-family: Arial, sans-serif; text-align: justify; vertical-align: middle; white-space: normal; color: windowtext; font-weight: 400; font-style: normal; text-decoration: none; border: medium none; padding-left: 1px; padding-right: 1px; padding-top: 1px">
+		<b><font color="#000080">STOCCHI</font></b></td>
+		<td width="124" style="width: 93pt; font-size: 12.0pt; font-family: Arial, sans-serif; text-align: justify; vertical-align: middle; white-space: normal; color: windowtext; font-weight: 400; font-style: normal; text-decoration: none; border: medium none; padding-left: 1px; padding-right: 1px; padding-top: 1px">
+		<b><font color="#000080">CLAUDIO</font></b></td>
+		<td width="93" style="width: 70pt; font-size: 12.0pt; font-family: Arial, sans-serif; text-align: center; vertical-align: middle; white-space: normal; color: windowtext; font-weight: 400; font-style: normal; text-decoration: none; border: medium none; padding-left: 1px; padding-right: 1px; padding-top: 1px">
+		<b><font color="#000080">&nbsp;1055183</font></b></td>
+		<td x:num style="font-size: 12.0pt; font-weight: 700; font-family: Arial, sans-serif; text-align: center; vertical-align: middle; color: windowtext; font-style: normal; text-decoration: none; white-space: nowrap; border: medium none; padding-left: 1px; padding-right: 1px; padding-top: 1px">
+		<font color="#000080">25</font></td>
+	</tr>
+	<tr height="26" style="height: 20.1pt">
+		<td height="26" style="height: 20.1pt; vertical-align: middle; color: windowtext; font-size: 10.0pt; font-weight: 400; font-style: normal; text-decoration: none; font-family: Arial; text-align: general; white-space: nowrap; border: medium none; padding-left: 1px; padding-right: 1px; padding-top: 1px">&nbsp;</td>
+		<td width="151" style="width: 113pt; font-size: 12.0pt; font-family: Arial, sans-serif; text-align: justify; vertical-align: middle; white-space: normal; color: windowtext; font-weight: 400; font-style: normal; text-decoration: none; border: medium none; padding-left: 1px; padding-right: 1px; padding-top: 1px">
+		<b><font color="#000080">TAGLIALATELA</font></b></td>
+		<td width="124" style="width: 93pt; font-size: 12.0pt; font-family: Arial, sans-serif; text-align: justify; vertical-align: middle; white-space: normal; color: windowtext; font-weight: 400; font-style: normal; text-decoration: none; border: medium none; padding-left: 1px; padding-right: 1px; padding-top: 1px">
+		<b><font color="#000080">FABIO</font></b></td>
+		<td width="93" style="width: 70pt; font-size: 12.0pt; font-family: Arial, sans-serif; text-align: center; vertical-align: middle; white-space: normal; color: windowtext; font-weight: 400; font-style: normal; text-decoration: none; border: medium none; padding-left: 1px; padding-right: 1px; padding-top: 1px">
+		<b><font color="#000080">&nbsp;1033959</font></b></td>
+		<td x:num style="font-size: 12.0pt; font-weight: 700; font-family: Arial, sans-serif; text-align: center; vertical-align: middle; color: windowtext; font-style: normal; text-decoration: none; white-space: nowrap; border: medium none; padding-left: 1px; padding-right: 1px; padding-top: 1px">
+		<font color="#000080">20</font></td>
+	</tr>
+	<tr height="26" style="height: 20.1pt">
+		<td height="26" style="height: 20.1pt; vertical-align: middle; color: windowtext; font-size: 10.0pt; font-weight: 400; font-style: normal; text-decoration: none; font-family: Arial; text-align: general; white-space: nowrap; border: medium none; padding-left: 1px; padding-right: 1px; padding-top: 1px">&nbsp;</td>
+		<td width="151" style="width: 113pt; font-size: 12.0pt; font-family: Arial, sans-serif; text-align: justify; vertical-align: middle; white-space: normal; color: windowtext; font-weight: 400; font-style: normal; text-decoration: none; border: medium none; padding-left: 1px; padding-right: 1px; padding-top: 1px">
+		<b><font color="#000080">VALENZANO</font></b></td>
+		<td width="124" style="width: 93pt; font-size: 12.0pt; font-family: Arial, sans-serif; text-align: justify; vertical-align: middle; white-space: normal; color: windowtext; font-weight: 400; font-style: normal; text-decoration: none; border: medium none; padding-left: 1px; padding-right: 1px; padding-top: 1px">
+		<b><font color="#000080">DANILO</font></b></td>
+		<td width="93" style="width: 70pt; font-size: 12.0pt; font-family: Arial, sans-serif; text-align: center; vertical-align: middle; white-space: normal; color: windowtext; font-weight: 400; font-style: normal; text-decoration: none; border: medium none; padding-left: 1px; padding-right: 1px; padding-top: 1px">
+		<b><font color="#000080">&nbsp;1056491</font></b></td>
+		<td x:num style="font-size: 12.0pt; font-weight: 700; font-family: Arial, sans-serif; text-align: center; vertical-align: middle; color: windowtext; font-style: normal; text-decoration: none; white-space: nowrap; border: medium none; padding-left: 1px; padding-right: 1px; padding-top: 1px">
+		<font color="#000080">18</font></td>
+	</tr>
+</table>
+<p>&nbsp;</p>
+
+<p><o:p>&nbsp;</o:p></p>
+
+</div>
+
+</body></html>

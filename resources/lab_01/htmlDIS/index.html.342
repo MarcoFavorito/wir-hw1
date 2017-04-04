@@ -1,0 +1,157 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html>
+<head>
+<!-- saved from url=(0084)http://www.dis.uniroma1.it/~calvanes/didattica/02-03-fond-inf/esercitazioni/eser-05/ -->
+  <title>Esercitazione 4</title>
+  <meta http-equiv="Content-Type"
+ content="text/html; charset=windows-1252">
+  <link rel="stylesheet" href="fi2001.css" type="text/css">
+  <meta content="MSHTML 6.00.2800.1170" name="GENERATOR">
+</head>
+<body>
+<center>
+<p><b>Fondamenti di Informatica</b><br>
+<b>Corso di Laurea in </b><b>Ingegneria Informatica</b> <br>
+</p>
+</center>
+<p></p>
+<hr>
+<h2 align="center">Esercitazione 5</h2>
+<h2 align="center">Classi che usano istruzioni condizionali </h2>
+<hr>
+<p>&nbsp;</p>
+<b>Esercizio 5A</b> Scrivere un programma che legge un reale e stampa
+unmessaggio secondo la seguente tabella:
+<p></p>
+<center>
+<table border="2" cellpadding="3">
+  <tbody>
+    <tr align="center">
+      <th>gradi alcolici g</th>
+      <th>messaggio</th>
+    </tr>
+    <tr align="center">
+      <td>40 &lt; g</td>
+      <td>superalcolico</td>
+    </tr>
+    <tr align="center">
+      <td>20 &lt; g &lt;= 40</td>
+      <td>alcolico</td>
+    </tr>
+    <tr align="center">
+      <td>15 &lt; g &lt;= 20</td>
+      <td>liquore</td>
+    </tr>
+    <tr align="center">
+      <td>12 &lt; g &lt;= 15</td>
+      <td>vino forte</td>
+    </tr>
+    <tr align="center">
+      <td>10.5 &lt; g &lt;= 12</td>
+      <td>vino normale</td>
+    </tr>
+    <tr align="center">
+      <td>g &lt;= 10.5</td>
+      <td>vino leggero</td>
+    </tr>
+  </tbody>
+</table>
+<br>
+</center>
+<p> <b><a href="soluzioni/Eser5A.java">Soluzione</a></b></p>
+<p><b>Esercizio 5B</b> Scrivere un programma che legge da input le
+lunghezze dei tre lati di un triangolo e ne determina il tipo
+utilizzando il seguente algoritmo: </p>
+<blockquote>
+  <pre><i>confrontare i lati a coppie contando quante coppie sono uguali</i>if (<i>le coppie uguali sono 0</i>)  <i>è scaleno</i>if (<i>le coppie uguali sono 1</i>)  <i>è isoscele</i>if (<i>le coppie uguali sono 3</i>)  <i>è equilatero</i></pre>
+</blockquote>
+<p> <b><a href="soluzioni/Eser5B.java">Soluzione</a><br>
+</b></p>
+<p><b>Esercizio 5C</b> Scrivere un programma che legge da input le
+lunghezze dei tre lati di un triangolo e ne determina il tipo usando
+istruzioni <code>if-else</code> con condizioni complesse. </p>
+<p> <b><a href="soluzioni/Eser5C.java">Soluzione</a><br>
+<br>
+</b><b>Esercizio 5D</b> Scrivere un programma che legge da input i
+coefficienti <i>a</i>, <i>b</i>, <i>c</i> e calcolare gli zeri
+dell'equazione quadratica </p>
+<center><i>a * x^2 + b*x + c = 0</i></center>
+A seconda del segno del discriminante <i>b^2 - 4*a*c</i> il programma
+devestampare le due soluzioni reali distinte, la soluzione reale
+doppia, o le duesoluzioni complesse coniugate. &lt;&gt;<a
+ name="Termometro"><b><br>
+</b></a><a name="Termometro"><b></b></a><b><a
+ href="soluzioni/Eser5D.java">Soluzione</a><br>
+<br>
+</b>&lt;&gt;<a name="Termometro"><b>Esercizio 5E</b></a>
+<p><strong>Parte 1:</strong> Progettare e realizzare una classe Java <code>Termometro</code>,
+che rappresenta termometri. Dei termometri sono d'interesse le seguenti
+funzionalità<code>:</code> </p>
+<ul>
+  <li><em>costruttore</em>: crea un nuovo termometro avente come
+temperatura misurata 0°C (per rappresentare le temperature si usino
+interi). </li>
+  <li><em>misura</em>: aggiorna la misura del termometro con la
+temperatura passata come parametro (misurata in gradi Celsius). </li>
+  <li><em>celsius</em>: restituisce la temperatura misurata in gradi
+Celsius. </li>
+  <li><em>fahrenheit</em>: restituisce la temperatura misurata in gradi
+Fahrenheit. </li>
+  <li><em>tipo</em>: restituisce il tipo di temperatura, secondo la
+seguente tabella:
+    <p> </p>
+    <center>
+    <table border="2" cellpadding="3">
+      <tbody>
+        <tr align="center">
+          <th>temperatura t</th>
+          <th>messaggio</th>
+        </tr>
+        <tr align="center">
+          <td>45 &lt; t</td>
+          <td><code>"molto caldo"</code></td>
+        </tr>
+        <tr align="center">
+          <td>35 &lt; t &lt;= 45</td>
+          <td><code>"caldo"</code></td>
+        </tr>
+        <tr align="center">
+          <td>18 &lt; t &lt;= 35</td>
+          <td><code>"gradevole"</code></td>
+        </tr>
+        <tr align="center">
+          <td>0 &lt; t &lt;= 18</td>
+          <td><code>"freddo"</code></td>
+        </tr>
+        <tr align="center">
+          <td>t &lt;= 0</td>
+          <td><code>"molto freddo"</code></td>
+        </tr>
+      </tbody>
+    </table>
+    </center>
+  </li>
+</ul>
+<p>Per convertire gradi Celsius in gradi Fahrenheit, si usi la la
+formula di conversione: <em>f = c * 9/5 + 32</em>.<br>
+</p>
+<p><b><a href="soluzioni/Termometro.java">Soluzione</a></b></p>
+<p><strong>Parte 2:</strong> Scrivere un cliente che faccia uso della
+classe <code>Termometro</code> come segue: </p>
+<ol>
+  <li>crei un termometro; </li>
+  <li>per due volte legga una temperatura (in Celsius) da tastiera, la
+fornisca al termometro come misura, e stampi la scheda del termometro
+(formata da temperatura in Celsius, temperatura in Fahrenheit, tipo
+della temperature, cioè <code>"molto caldo"</code>, <code>"caldo"</code>,
+ecc). Per stampare la scheda si faccia uso di un metodo statico
+ausiliario; </li>
+  <li>inoltre, se tra le due letture non c'è stata una variazione del
+tipo della temperatura stampi <code>"La temperatura si e' mantenuta."</code>,
+altrimenti stampi <code>"Attenzione, la temperatura e' cambiata."</code>.
+  </li>
+</ol>
+<p></p>
+<p>&nbsp;<b><a href="soluzioni/Eser5E.java">Soluzione</a></b></p>
+</body>
+</html>

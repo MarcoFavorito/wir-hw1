@@ -1,0 +1,223 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1">
+<META NAME="Generator" CONTENT="Microsoft Word 98">
+<TITLE>Esame 15/2/1999</TITLE>
+<META NAME="Template" CONTENT="damore-4gb:Applications:Microsoft Office 98:Templates:Web Pages:Blank Web Page">
+</HEAD>
+<BODY LINK="#0000ff" VLINK="#800080">
+
+<B><FONT SIZE=2><P ALIGN="CENTER">Universit&agrave; di Roma "La Sapienza"</P>
+<P ALIGN="CENTER">Facolt&agrave; di Ingegneria </P>
+<P ALIGN="CENTER">Corso di Fondamenti di Informatica </P>
+<P ALIGN="CENTER">Corso di Laurea: Ambiente e Territorio</P>
+<P ALIGN="CENTER">Appello del 15-2-1999</P>
+<P ALIGN="JUSTIFY">Esercizio 1 (18 punti)</P>
+</B><P ALIGN="JUSTIFY">La direzione di un albergo gestisce le prenotazioni con un file di strutture, PRENOT.DAT, in cui ogni struttura contiene le seguenti informazioni:</P>
+
+<UL>
+<P ALIGN="JUSTIFY"><LI>codice della prenotazione (numero intero a 8 cifre),</LI></P>
+<P ALIGN="JUSTIFY"><LI>cognome del cliente (20 lettere),</LI></P>
+<P ALIGN="JUSTIFY"><LI>nome del cliente (20 lettere),</LI></P>
+<P ALIGN="JUSTIFY"><LI>tipo di camera (S o D),</LI></P>
+<P ALIGN="JUSTIFY"><LI>tipo di trattamento (P, M, o C),</LI></P>
+<P ALIGN="JUSTIFY"><LI>tariffa giornaliera,</LI></P>
+<P ALIGN="JUSTIFY"><LI>data di arrivo,</LI></P>
+<P ALIGN="JUSTIFY"><LI>data di partenza.</LI></P></UL>
+
+<P ALIGN="JUSTIFY">Quando un cliente prende possesso della camera prenotata, tutte le informazioni relative alla sua prenotazione (nel file PRENOT.DAT) vengono riportate in una nuova struttura <I>s</I> che viene aggiunta ad una lista PRESENZE (pre-esistente), realizzata con strutture e puntatori. Al momento della partenza tutte le informazioni nella struttura <I>s</I> vengono aggiunte in coda a un file di strutture ARCHIVIO.DAT (pre-esistente, avente lo stesso formato del file PRENOT.DAT); <I>s</I> viene quindi eliminata dalla lista PRESENZE.</P>
+<OL>
+
+<P ALIGN="JUSTIFY"><LI>Scrivere in C le dichiarazioni dei tipi e delle eventuali variabili globali da utilizzarsi per risolvere i due punti successivi (le dichiarazioni locali potranno essere direttamente specificate nello svolgimento dei punti successivi).</LI></P>
+<P ALIGN="JUSTIFY"><LI>Scrivere una funzione C che, ricevendo come parametri il file ARCHIVIO.DAT e la lista PRESENZE, crei una nuova lista VIP, contenente i nominativi dei clienti al momento presenti in albergo (e cio&egrave; contenuti nella lista PRESENZE) che hanno soggiornato in albergo per tre o pi&ugrave; volte (inclusa quella in corso).</LI></P>
+<P ALIGN="JUSTIFY">N.B.: (a) ogni cliente deve comparire soltanto una volta nella lista VIP; (b) ogni struttura della lista VIP contiene le seguenti informazioni: nome e cognome del cliente, numero di volte che ha soggiornato nell'albergo (inclusa quella in corso); (c) assumere che non si verificano omonimie fra clienti.</P>
+<P ALIGN="JUSTIFY"><LI>Scrivere una funzione C che, ricevendo come parametri la data corrente, il file PRENOT.DAT e la lista PRESENZE, scriva sullo schermo le informazioni relative ai clienti previsti e non ancora arrivati (quelli cio&egrave; la cui prenotazione &egrave; presente nel file PRENOT.DAT con data di arrivo eguale alla data odierna e che non sono ancora nella lista PRESENZE).</LI></P></OL>
+
+<P ALIGN="JUSTIFY">Per comodit&agrave; si riporta una descrizione delle funzioni di libreria standard </FONT><FONT FACE="Courier" SIZE=2>strcmp</FONT><FONT SIZE=2> e </FONT><FONT FACE="Courier" SIZE=2>strcpy</FONT><FONT SIZE=2> (</FONT><FONT FACE="Courier" SIZE=2>#include &lt;string.h&gt;</FONT><FONT SIZE=2>).</P>
+
+<UL>
+</FONT><FONT FACE="Courier" SIZE=2><P ALIGN="JUSTIFY"><LI>int strcmp(char *s1, char *s2)</FONT><FONT SIZE=2>:</LI></P></UL>
+<DIR>
+
+<P ALIGN="JUSTIFY">confronta le stringhe </FONT><FONT FACE="Courier" SIZE=2>s1</FONT><FONT SIZE=2> e </FONT><FONT FACE="Courier" SIZE=2>s2</FONT><FONT SIZE=2> restituendo zero se </FONT><FONT FACE="Courier" SIZE=2>s1</FONT><FONT SIZE=2> e </FONT><FONT FACE="Courier" SIZE=2>s2</FONT><FONT SIZE=2> sono eguali, un valore negativo se </FONT><FONT FACE="Courier" SIZE=2>s1</FONT><FONT SIZE=2> precede lessicograficamente </FONT><FONT FACE="Courier" SIZE=2>s2</FONT><FONT SIZE=2> e un valore positivo se </FONT><FONT FACE="Courier" SIZE=2>s1</FONT><FONT SIZE=2> segue lessicograficamente </FONT><FONT FACE="Courier" SIZE=2>s2</FONT><FONT SIZE=2>;</P></DIR>
+
+
+<UL>
+</FONT><FONT FACE="Courier" SIZE=2><P ALIGN="JUSTIFY"><LI>char *strcpy(char *dest, char *sorg)</FONT><FONT SIZE=2>:</LI></P></UL>
+<DIR>
+
+<P ALIGN="JUSTIFY">ricopia la stringa </FONT><FONT FACE="Courier" SIZE=2>sorg</FONT><FONT SIZE=2> nella stringa </FONT><FONT FACE="Courier" SIZE=2>dest</FONT><FONT SIZE=2> e restituisce </FONT><FONT FACE="Courier" SIZE=2>dest</FONT><FONT SIZE=2>.</P>
+<P ALIGN="CENTER">&nbsp;</P></DIR>
+
+<B><P ALIGN="CENTER">Universit&agrave; di Roma "La Sapienza"</P>
+<P ALIGN="CENTER">Facolt&agrave; di Ingegneria</P>
+<P ALIGN="CENTER">Corso di Fondamenti di Informatica</P>
+<P ALIGN="CENTER">Corso di Laurea: Ambiente e Territorio</P>
+<P ALIGN="CENTER">Appello del 15-2-1999</P>
+<P ALIGN="JUSTIFY">Esercizio 2 (4 punti) </P>
+</B><P ALIGN="JUSTIFY">Illustrare, anche tramite esempi, una metodologia di progetto di algoritmi e programmi.</P>
+<B><P ALIGN="JUSTIFY">Esercizio 3 (4 punti) </P>
+</B><P ALIGN="JUSTIFY">Si consideri il seguente programma. Si indichi esattamente cosa si ottiene in stampa quando vengono forniti in ingresso le ultime sei cifre del numero di matricola.</P>
+</FONT><FONT FACE="Courier" SIZE=1><P ALIGN="JUSTIFY">#include &lt;stdio.h&gt;</P>
+<P ALIGN="JUSTIFY">typedef int vettore[3];</P>
+<P ALIGN="JUSTIFY">typedef vettore matrice[2];</P>
+<P ALIGN="JUSTIFY">matrice m;</P>
+<P ALIGN="JUSTIFY">/* prototipi */</P>
+<P ALIGN="JUSTIFY">void LeggiMat(matrice);</P>
+<P ALIGN="JUSTIFY">void StampaMat(matrice);</P>
+<P ALIGN="JUSTIFY">void CambiaRiga(vettore);</P>
+<P ALIGN="JUSTIFY">void AzzeraRiga(vettore);</P>
+<P ALIGN="JUSTIFY">int main(void);</P>
+<P ALIGN="JUSTIFY">void LeggiMat(matrice m)</P>
+<P ALIGN="JUSTIFY">{</P>
+<P ALIGN="JUSTIFY">&#9;int i, j;</P>
+<P ALIGN="JUSTIFY">&#9;for(i=0; i&lt;2; i=i+1)</P>
+<P ALIGN="JUSTIFY">&#9;&#9;for(j=0; j&lt;3; j=j+1)</P>
+<P ALIGN="JUSTIFY">&#9;&#9;&#9;scanf("%d", &amp;m[i][j]);</P>
+<P ALIGN="JUSTIFY">&#9;return;</P>
+<P ALIGN="JUSTIFY">}</P>
+<P ALIGN="JUSTIFY">void AzzeraRiga(vettore riga)</P>
+<P ALIGN="JUSTIFY">{</P>
+<P ALIGN="JUSTIFY">&#9;int i;</P>
+<P ALIGN="JUSTIFY">&#9;for(i=0; i&lt;3; i=i+1)</P>
+<P ALIGN="JUSTIFY">&#9;&#9;riga[i]=0;</P>
+<P ALIGN="JUSTIFY">&#9;return;</P>
+<P ALIGN="JUSTIFY">}</P>
+<P ALIGN="JUSTIFY">void StampaMat(matrice m)</P>
+<P ALIGN="JUSTIFY">{</P>
+<P ALIGN="JUSTIFY">&#9;int i, j;</P>
+<P ALIGN="JUSTIFY">&#9;for(i=0; i&lt;2; i=i+1) {</P>
+<P ALIGN="JUSTIFY">&#9;&#9;for(j=0; j&lt;3; j=j+1)</P>
+<P ALIGN="JUSTIFY">&#9;&#9;&#9;printf("%d ", m[i][j]);</P>
+<P ALIGN="JUSTIFY">&#9;&#9;printf("\n");</P>
+<P ALIGN="JUSTIFY">&#9;}</P>
+<P ALIGN="JUSTIFY">&#9;return;</P>
+<P ALIGN="JUSTIFY">}</P>
+<P ALIGN="JUSTIFY">void CambiaRiga(vettore riga)</P>
+<P ALIGN="JUSTIFY">{</P>
+<P ALIGN="JUSTIFY">&#9;int i,s;</P>
+<P ALIGN="JUSTIFY">&#9;s=0;</P>
+<P ALIGN="JUSTIFY">&#9;for(i=0; i&lt;3; i=i+1)</P>
+<P ALIGN="JUSTIFY">&#9;&#9;s=s+riga[i];</P>
+<P ALIGN="JUSTIFY">&#9;riga[2]=riga[2]+(s%2);</P>
+<P ALIGN="JUSTIFY">&#9;return;</P>
+<P ALIGN="JUSTIFY">}</P>
+<P ALIGN="JUSTIFY">int main()</P>
+<P ALIGN="JUSTIFY">{</P>
+<P ALIGN="JUSTIFY">&#9;matrice p;</P>
+<P ALIGN="JUSTIFY">&#9;LeggiMat(p);</P>
+<P ALIGN="JUSTIFY">&#9;AzzeraRiga(m[1]);</P>
+<P ALIGN="JUSTIFY">&#9;CambiaRiga(p[0]);</P>
+<P ALIGN="JUSTIFY">&#9;CambiaRiga(p[1]);</P>
+<P ALIGN="JUSTIFY">&#9;StampaMat(p);</P>
+<P ALIGN="JUSTIFY">&#9;return 0;</P>
+<P ALIGN="JUSTIFY">}</P>
+</FONT><B><FONT SIZE=2><P ALIGN="JUSTIFY">Esercizio 4 (4 punti)</P>
+</B><P ALIGN="JUSTIFY">Con riferimento alle relazioni prima e seconda illustrate in figura,</P>
+<OL>
+
+<P ALIGN="JUSTIFY"><LI>Indicare le chiavi delle relazioni.</LI></P>
+<P ALIGN="JUSTIFY"><LI>Calcolare: </FONT><FONT FACE="Symbol" SIZE=2>P</FONT><FONT SIZE=2> <SUB>AB</SUB> (</FONT><FONT FACE="Symbol" SIZE=2>s</FONT><FONT SIZE=2> <SUB>A&lt;B </SUB>prima).</LI></P>
+<P ALIGN="JUSTIFY"><LI>Calcolare: prima </FONT><FONT FACE="Wingdings 3" SIZE=2>w</FONT><FONT SIZE=2> </FONT><FONT FACE="Wingdings 3" SIZE=2>v</FONT><FONT SIZE=2> <SUB>prima.A_</SUB> <SUB>seconda.B</SUB> seconda.</LI></P>
+<P ALIGN="JUSTIFY"><LI>Calcolare: prima </FONT><FONT FACE="Wingdings 3" SIZE=2>w</FONT><FONT SIZE=2> </FONT><FONT FACE="Wingdings 3" SIZE=2>v</FONT><FONT SIZE=2> seconda.</LI></P></OL>
+</FONT>
+<P ALIGN="CENTER"><CENTER><TABLE BORDER CELLSPACING=1 WIDTH=90>
+<TR><TD VALIGN="TOP" COLSPAN=4>
+<P ALIGN="CENTER"><FONT SIZE=2>prima</FONT></TD>
+</TR>
+<TR><TD WIDTH="25%" VALIGN="TOP">
+<FONT SIZE=2><P ALIGN="CENTER">A</FONT></TD>
+<TD WIDTH="25%" VALIGN="TOP">
+<FONT SIZE=2><P ALIGN="CENTER">B</FONT></TD>
+<TD WIDTH="25%" VALIGN="TOP">
+<FONT SIZE=2><P ALIGN="CENTER">C</FONT></TD>
+<TD WIDTH="25%" VALIGN="TOP">
+<FONT SIZE=2><P ALIGN="CENTER">D</FONT></TD>
+</TR>
+<TR><TD WIDTH="25%" VALIGN="TOP">
+<FONT SIZE=2><P ALIGN="CENTER">1</FONT></TD>
+<TD WIDTH="25%" VALIGN="TOP">
+<FONT SIZE=2><P ALIGN="CENTER">2</FONT></TD>
+<TD WIDTH="25%" VALIGN="TOP">
+<FONT SIZE=2><P ALIGN="CENTER">a</FONT></TD>
+<TD WIDTH="25%" VALIGN="TOP">
+<FONT SIZE=2><P ALIGN="CENTER">2</FONT></TD>
+</TR>
+<TR><TD WIDTH="25%" VALIGN="TOP">
+<FONT SIZE=2><P ALIGN="CENTER">1</FONT></TD>
+<TD WIDTH="25%" VALIGN="TOP">
+<FONT SIZE=2><P ALIGN="CENTER">2</FONT></TD>
+<TD WIDTH="25%" VALIGN="TOP">
+<FONT SIZE=2><P ALIGN="CENTER">a</FONT></TD>
+<TD WIDTH="25%" VALIGN="TOP">
+<FONT SIZE=2><P ALIGN="CENTER">3</FONT></TD>
+</TR>
+<TR><TD WIDTH="25%" VALIGN="TOP">
+<FONT SIZE=2><P ALIGN="CENTER">2</FONT></TD>
+<TD WIDTH="25%" VALIGN="TOP">
+<FONT SIZE=2><P ALIGN="CENTER">1</FONT></TD>
+<TD WIDTH="25%" VALIGN="TOP">
+<FONT SIZE=2><P ALIGN="CENTER">b</FONT></TD>
+<TD WIDTH="25%" VALIGN="TOP">
+<FONT SIZE=2><P ALIGN="CENTER">2</FONT></TD>
+</TR>
+<TR><TD WIDTH="25%" VALIGN="TOP">
+<FONT SIZE=2><P ALIGN="CENTER">2</FONT></TD>
+<TD WIDTH="25%" VALIGN="TOP">
+<FONT SIZE=2><P ALIGN="CENTER">2</FONT></TD>
+<TD WIDTH="25%" VALIGN="TOP">
+<FONT SIZE=2><P ALIGN="CENTER">b</FONT></TD>
+<TD WIDTH="25%" VALIGN="TOP">
+<FONT SIZE=2><P ALIGN="CENTER">2</FONT></TD>
+</TR>
+<TR><TD WIDTH="25%" VALIGN="TOP">
+<FONT SIZE=2><P ALIGN="CENTER">1</FONT></TD>
+<TD WIDTH="25%" VALIGN="TOP">
+<FONT SIZE=2><P ALIGN="CENTER">2</FONT></TD>
+<TD WIDTH="25%" VALIGN="TOP">
+<FONT SIZE=2><P ALIGN="CENTER">c</FONT></TD>
+<TD WIDTH="25%" VALIGN="TOP">
+<FONT SIZE=2><P ALIGN="CENTER">3</FONT></TD>
+</TR>
+</TABLE>
+</CENTER></P>
+
+<FONT SIZE=2><P ALIGN="JUSTIFY">&nbsp;</P>
+<P ALIGN="JUSTIFY">&nbsp;</P></FONT>
+<P ALIGN="CENTER"><CENTER><TABLE BORDER CELLSPACING=1 WIDTH=68>
+<TR><TD VALIGN="TOP" COLSPAN=3>
+<P ALIGN="CENTER"><FONT SIZE=2>seconda</FONT></TD>
+</TR>
+<TR><TD WIDTH="33%" VALIGN="TOP">
+<FONT SIZE=2><P ALIGN="CENTER">B</FONT></TD>
+<TD WIDTH="33%" VALIGN="TOP">
+<FONT SIZE=2><P ALIGN="CENTER">E</FONT></TD>
+<TD WIDTH="33%" VALIGN="TOP">
+<FONT SIZE=2><P ALIGN="CENTER">C</FONT></TD>
+</TR>
+<TR><TD WIDTH="33%" VALIGN="TOP">
+<FONT SIZE=2><P ALIGN="CENTER">1</FONT></TD>
+<TD WIDTH="33%" VALIGN="TOP">
+<FONT SIZE=2><P ALIGN="CENTER">2</FONT></TD>
+<TD WIDTH="33%" VALIGN="TOP">
+<FONT SIZE=2><P ALIGN="CENTER">a</FONT></TD>
+</TR>
+<TR><TD WIDTH="33%" VALIGN="TOP">
+<FONT SIZE=2><P ALIGN="CENTER">1</FONT></TD>
+<TD WIDTH="33%" VALIGN="TOP">
+<FONT SIZE=2><P ALIGN="CENTER">2</FONT></TD>
+<TD WIDTH="33%" VALIGN="TOP">
+<FONT SIZE=2><P ALIGN="CENTER">b</FONT></TD>
+</TR>
+<TR><TD WIDTH="33%" VALIGN="TOP">
+<FONT SIZE=2><P ALIGN="CENTER">2</FONT></TD>
+<TD WIDTH="33%" VALIGN="TOP">
+<FONT SIZE=2><P ALIGN="CENTER">2</FONT></TD>
+<TD WIDTH="33%" VALIGN="TOP">
+<FONT SIZE=2><P ALIGN="CENTER">b</FONT></TD>
+</TR>
+</TABLE>
+</CENTER></P>
+
+<P ALIGN="JUSTIFY"></P></BODY>
+</HTML>

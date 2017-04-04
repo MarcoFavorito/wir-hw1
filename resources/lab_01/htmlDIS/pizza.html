@@ -1,0 +1,137 @@
+<html>
+<head>
+<title>Primo appello 2004 - Compito Pizza</title>
+</head>
+
+<body>
+
+<h1>Primo appello 2004</h1>
+
+<p>
+La prova dura un'ora e tre quarti.
+</p>
+
+<p>
+<b>Riempire il file <tt>studenteid.txt</tt> con i propri
+dati.</b>
+</p>
+
+<p>
+Vengono dati: due programmi di prova, un file di prova, e il
+testo del compito in formato html. Lo studente deve
+realizzare due classi che vengono usate dai due programmi di
+prova. <b>Le soluzioni devono trovarsi nella stessa cartella
+<tt>Esame</tt> dove si trovano i programmi di prova</tt>
+pena l'annullamento dell'esame.</b>
+</p>
+
+<hr>
+
+<h3>Prima parte</h3>
+
+<p>
+Una pizzeria che fa consegne a domicilio vuole
+informatizzare la gestione delle consegne. Per questo scopo,
+vanno realizzate due classi. Le prima classe si chiama
+<tt>Pizza</tt>, e ogni suo oggetto rappresenta un specifica
+pizza che &egrave; stata ordinata. Le componenti di questo
+oggetto sono:
+</p>
+
+<dl>
+
+<dt><tt>tipo</tt>
+<dd>una stringa che indica il tipo di pizza
+
+<dt><tt>indirizzo</tt>
+<dd>l'indirizzo a cui va consegnata la pizza
+
+<dt><tt>prezzo</tt>
+<dd>il prezzo della pizza in centesimi (un intero)
+
+<dt><tt>consegnato</tt>
+<dd>questa componente boolean vale <tt>true</tt> oppure
+<tt>false</tt> a seconda se la pizza &egrave; stata
+gi&agrave; consegnata oppure no
+
+</dl>
+
+<p>
+Definire la classe incapsulata <tt>Pizza</tt>  i cui
+oggetti siano rappresentazione di pizze. I nomi delle
+componenti devono essere: <tt>tipo</tt>, <tt>indirizzo</tt>,
+<tt>prezzo</tt>, <tt>consegnato</tt>. Devono essere
+realizzati i seguenti metodi:
+</p>
+
+<ul>
+
+<li>metodi <tt>get</tt> e <tt>set</tt> per tutte le
+componenti; i metodi <tt>set</tt> per la componente
+<tt>prezzo</tt> deve verificare che il prezzo sia maggiore
+di zero; il metodo <tt>set</tt> per l'indirizzo deve
+verificare che non sia <tt>null</tt>; in caso di errore, stampare
+un messaggio di errore e terminare il programma;
+
+<li>metodo costruttore che ha come argomento un
+<tt>BufferedReader</tt>; il metodo deve leggere i valori da
+mettere nell'oggetto da file; questi valori sono 
+memorizzati uno per linea; i valori booleani sono memorizzati attraverso
+le stringhe "si" e "no"; nel caso in cui il file
+finisca prima che si riescano a leggere tutte le componenti,
+si stampi un messaggio di errore e si esca dal programma;
+
+<li>un metodo toString che restituisce una stringa in cui ci
+sono tutte le componenti dell'oggetto.
+
+</ul>
+
+<hr>
+
+
+<h3>Seconda parte</h3>
+
+<p>
+Definire una seconda classe <tt>Pizzeria</tt> i cui oggetti
+rappresentano tutte le pizze fatte dalla pizzeria in una
+giornata. Ogni oggetto di questa classe &egrave; quindi la
+rappresentazione di un insieme di oggetti <tt>Pizza</tt>
+Per rappresentare insiemi di oggetti, usare un array.
+</p>
+
+<p>
+Costruttore della classe: 
+</p>
+
+<dl>
+
+<dt>
+<tt>Pizzeria(String nomefile)</tt>
+<dd>
+crea un oggetto <tt>Pizzeria</tt> che rappresenta l'insieme
+di tutti gli oggetti <tt>Pizza</tt> che sono memorizzati
+nel file il cui nome &egrave; dato dalla stringa passata
+come argomento; la prima linea del file contiene il numero
+degli oggetti memorizzati su file.
+
+</dl>
+
+<p>
+Metodi della classe:
+</p>
+
+<dl>
+
+<dt><tt>int incassato()</tt>
+<dd>ritorna il totale incassato fino a questo momento, ossia
+la somma del prezzo delle pizze che sono state consegnate
+
+<dt><tt>boolean daConsegnare(String indirizzo)</tt>
+<dd>verifica se tutte le pizze da consegnare a un certo
+indirizzo sono state effettivamente consegnate
+
+</dl>
+
+</body>
+</html>
+

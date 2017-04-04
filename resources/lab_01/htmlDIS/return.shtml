@@ -1,0 +1,217 @@
+<!doctype html public "-//w3c//dtd html 4.0 transitional//en">
+<html>
+<head>
+<link href="java.css" rel="stylesheet" type="text/css">
+<title>Funzioni che ritornano un valore</title>
+</head>
+
+<body>
+
+<h2>Funzioni che ritornano un valore</h2>
+
+Fino ad ora abbiamo visto due tipi di procedure: quelle che
+eseguono una sequenza di istruzioni senza ricevere dati dal
+programma, e quelle che ricevono dati dal programma e li
+usano per fare qualcosa. Manca ora l'ultima parte, ossia:
+fare in modo che la procedura possa mandare dei dati al
+programma principale.<p>
+
+Questo &egrave; utile per esempio se il programma contiene
+molte volte la stessa espressione. Consideriamo il programma
+che trova un intervallo in cui la funzione contiene uno
+zero <a href="Nullo.java">Nullo.java</a>. In questo programma,
+si ripete per cinque volte una istruzione in cui si valuta
+il valore della funzione per valori diversi dell'argomento.
+Farebbe comodo poter scrivere la funzione una volta sola.
+Con le cose che sono state viste fino ad ora, il calcolo
+non &egrave; difficile da inserire in una procedura:<p>
+
+<pre>
+  static void f( double x ) {
+    double risultato;
+
+    risultato=x*x-5*x-2;
+  }
+</pre>
+
+Questa procedura crea una variabile reale <tt>x</tt>, in cui
+viene messo il dato che la procedura principale manda; viene
+poi creata un'altra variabile reale <tt>risultato</tt>. Si
+valuta la espressione (usando il valore della variabile
+<tt>x</tt>, che &egrave; quello passato dalla variabile
+principale) e la si mette in <tt>risultato</tt>. Da un certo
+punto di vista, siamo effettivamente riusciti a scrivere
+l'espressione una volta sola, soltanto che ancora ci manca
+il modo in cui la procedura rimanda il valore del risultato
+al programma.<p>
+
+
+<h4>Come si scrive una procedura che manda risultati al programma</h4>
+
+Si fa in due passi. Per prima cosa, occorre
+dire quale &egrave; il <i>tipo</i> del risultato, ossia se la
+procedura vuole inviare al programma un intero oppure un
+reale, ecc. Per fare questo si modifica la prima linea della
+procedura, come segue:<p>
+
+<pre>
+  static double f( double x ) {
+    ...
+  }
+</pre>
+
+La parole <tt>void</tt> &egrave; stata rimpiazzata dalla
+parola <tt>double</tt>. Questo specifica il tipo di dato che
+la procedura rimanda al programma principale. Si spiega ora
+il piccolo mistero dalla parola <tt>void</tt> usata nelle
+procedure che non tornano valori al programma:
+dichiara che il tipo di dati che la procedura rimanda al
+programma &egrave; vuoto, ossia la procedura non rimanda niente.<p>
+
+Il secondo passo &egrave; quello di specificare esattamente
+che cosa la procedura restituisce al programma. Per fare questo
+si usa la istruzione:<p>
+
+<center>
+<tt><i>return espressione</i></tt>
+</center>
+<p>
+
+Questa istruzione ha due effetti: la prima &egrave; che
+l'esecuzione della procedura termina; la seconda &egrave; che
+la espressione viene valutata, e il suo valore viene mandato
+indietro al programma.<p>
+
+La procedura di calcolo della funzione va quindi modificata
+in maniera tale che il contenuto della variabile
+<tt>risultato</tt> venga rimandato al programma principale.
+Per fare questo &egrave; sufficiente aggiungere come ultima
+istruzione della procedura il <tt>return</tt>:<p>
+
+<pre>
+  static double f( double x ) {
+    double risultato;
+
+    risultato=x*x-5*x-2;
+
+    return risultato;
+  }
+</pre>
+
+Si noti che quello che segue la parola <tt>return</tt> pu&ograve;
+essere sia una variabile che una espressione complessa. Quindi,
+la procedura si pu&ograve; semplificare mettendo l'espressione
+da calcolare direttamente dopo la parola <tt>return</tt>, rendendo
+inutile la variabile <tt>risultato</tt>:<p>
+
+<pre>
+  static double f( double x ) {
+    return x*x-5*x-2;
+  }
+</pre>
+<p>
+
+
+<h4>Come fa il programma a usare il valore che la procedura ritorna</h4>
+
+Questo &egrave; l'ultimo passo: abbiamo visto come si fa a
+specificare che una procedura calcola valori da rimandare al
+programma; ora dobbiamo dire come si fa a usare questi valori
+nel programma.<p>
+
+Nel caso in cui una procedura <tt>nomeproc</tt> non mandava
+dati al programma, per far eseguire le sue istruzioni si
+usava una singola istruzione <tt>nomeproc(....)</tt> in cui
+si mettevano fra parentesi i dati che il programma mandava.
+Nel caso in cui la procedura ritorna un valore, si usa
+invece:<p>
+
+<pre>
+     variabile = nomeproc(...);
+</pre>
+
+Questa istruzione significa: esegui la procedura mandando i
+dati fra parentesi; il risultato che la procedura manda mettilo
+nella variabile.<p>
+
+Pi&ugrave; in generale, se una procedura <tt>f(...)</tt>
+ritorna un dato di un certo tipo, allora si pu&ograve;
+scrivere <tt>f(...)</tt> in qualsiasi punto in cui &egrave;
+possibile usare una variabile di quel tipo. Per esempio,
+se vogliamo assegnare a <tt>x</tt> la media fra il
+risultato di <tt>f</tt> e 5, possiamo anche scrivere:
+<tt>x=(f(...)+5)/2;</tt>. In altre parole, se
+una espressione contiene una o pi&ugrave;
+procedure, queste vengono eseguite, e al loro posto ci si
+mette il valore che la procedura ha rimandato al programma.<p>
+
+<b>Nota:</b> le procedure che ritornano un valore vengono
+chiamate <b>funzioni</b>.<p>
+
+Il programma
+<a href="NulloFunzione.java">NulloFunzione.java</a>
+trova un intervallo piccolo in cui la funzione ha uno zero,
+e questo viene fatto usando una funzione (procedura che ritorna
+un valore).<p>
+
+<pre>
+/*
+  Trova un punto in cui una funzione f(x) ha un
+  valore sufficientemente vicino allo zero.
+  Siano a e b due valori tali che f(a) ha segno
+  opposto a f(b). Si assume che la funzione sia
+  continua.
+  Variante con chiamata a funzione.
+*/
+
+class NulloFunzione {
+
+    /* la funzione di cui si vuole trovare lo zero */
+
+  static double f( double x ) {
+    return x*x-5*x-2;
+  }
+
+
+    /* la procedura principale */
+
+  public static void main(String[] args) {
+    double a=0,b=10;
+    double e=0.01;
+    double x=a;
+
+    if( f(a)*f(b) >0 ) {
+      System.out.println("La funzione non ha segno diverso negli estremi");
+      System.out.println(f(a)+" "+f(b));
+      return;
+    }
+
+    while( Math.abs(f(x))>e ) {
+      x=(a+b)/2;
+      System.out.println(a+" "+x+" "+b);
+
+      if( f(x)*f(a) > 0 ) {
+        a=x;
+      }
+      else {
+        b=x; 
+      }
+    }
+
+    System.out.println("Trovato valore "+f(x)+" per x pari a "+x);
+  }
+}
+
+</pre>
+
+Nel caso ci fosse un qualche dubbio sull'uso che si pu&ograve;
+fare delle funzioni, si tenga presente che &egrave; sempre
+possibile usare una istruzione del tipo
+<tt>variabile=nomefunzione(...)</tt>, che mette il risultato
+della funzione nella variabile, e poi utilizzare il valore
+della variabile nel punto in cui serve il risultato calcolato
+della funzione.<p>
+
+</body>
+</html>
+

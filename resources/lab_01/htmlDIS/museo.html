@@ -1,0 +1,123 @@
+<html>
+<head>
+<title>Secondo appello 2004 - Compito Museo</title>
+</head>
+
+<body>
+
+<h1>Secondo appello 2004</h1>
+
+<p>
+La prova dura un'ora e tre quarti.
+</p>
+
+<p>
+<b>Riempire il file <tt>studenteid.txt</tt> con i propri
+dati.</b>
+</p>
+
+<p>
+Vengono dati:  due programmi di prova, un file di prova, e il
+testo del compito in formato html. Lo studente deve
+completare le due classi che vengono usate dai due programmi di
+prova. <b>Le soluzioni devono trovarsi nella stessa cartella
+<tt>t:\Esame</tt> dove si trovano le classi di prova</tt>
+pena l'annullamento dell'esame.</b>
+</p>
+
+<hr>
+
+<h3>Prima parte</h3>
+
+<p>
+Un museo vuole realizzare un archivio informatico delle opere che mantiene.
+Per questo motivo, si vuole realizzare la classe
+<tt>Opera</tt> che contiene le informazioni relative a opera. Le componenti di questi oggetti devono
+essere:
+</p>
+
+<dl>
+<dt><tt>nome</tt>
+<dd>una stringa che indica il nome dell'opera
+</dl>
+
+<dl>
+  <dt><tt>anno</tt>
+  <dd>un intero che indica l'anno di produzione dell'opera. Il valore non pu&ograve; essere minore del 1800 e maggiore del 1980. 
+</dl>
+<tt>autore</tt> 
+<dl><dd>una stringa che indica il nome dell'autore dell'opera
+  <dt><tt>valore</tt>
+  <dd>il valore stimato dell'opera in euro. Il valore non pu&ograve; essere minore di 0. 
+</dl>
+<p>
+Realizzare la classe incapsulata <tt>Opera</tt> i cui
+oggetti sono rappresentazione di opere. I nomi delle
+componenti devono essere: <tt>nome</tt>, <tt>anno</tt>,
+<tt>autore</tt>, e <tt>valore</tt>.
+Devono essere realizzati i seguenti metodi:
+</p>
+
+<ul>
+
+<li>metodi <tt>get</tt> e <tt>set</tt> per tutte le
+componenti; i metodi <tt>set</tt> per le componenti 
+<tt>anno</tt> e <tt>valore</tt> devono verificare che i
+valori siano validi, secondo le specifiche date sopra; in caso di errore,
+stampare un messaggio di errore e terminare il programma;
+
+<li>metodo costruttore che ha come argomento un
+<tt>BufferedReader</tt>; il metodo deve leggere i valori da
+mettere nell'oggetto da file; questi valori sono 
+memorizzati uno per linea; nel caso in cui il file
+finisca prima che si riescano a leggere tutte le componenti,
+si stampi un messaggio di errore e si esca dal programma;
+
+<li>un metodo toString che restituisce una stringa in cui ci
+sono tutte le componenti dell'oggetto.
+
+</ul>
+
+<hr>
+
+
+<h3>Seconda parte</h3>
+
+<p>
+Realizzare una seconda classe <tt>Museo</tt> i cui
+oggetti rappresentano tutte le opere di propriet&agrave; del museo.
+Ogni oggetto di questa classe &egrave; quindi la
+rappresentazione di un insieme di oggetti <tt>Opera</tt>.
+Per rappresentare insiemi di oggetti, viene utilizzato un array. La classe deve contenere i seguenti metodi: </p>
+<p>Costruttore della classe:</p>
+<dl>
+
+<dt>
+<tt>Museo(String nomefile)</tt>
+<dd>
+crea un oggetto <tt>Museo</tt> che rappresenta l'insieme
+di tutti gli oggetti <tt>Opera</tt> che sono memorizzati
+nel file il cui nome &egrave; dato dalla stringa passata
+come argomento; la prima linea del file contiene il numero
+degli oggetti memorizzati su file.
+
+</dl>
+
+<p>
+Metodi della classe:
+</p>
+
+<dl>
+
+  <dt><tt>void stampaTutti()</tt>
+  <dd>stampa i valori di tutte le componenti di tutte le opere. 
+  <dt><tt></tt>
+  <dt><tt>double valoreMedio(int anno)</tt>
+  <dd>ritorna il valore medio delle opere prodotte dopo l'anno passato come argomento. 
+  <dt><tt>void piuAntica()</tt>
+  <dd>stampa titolo e autore dell'opera pi&ugrave; antica.
+</dl>
+
+</body>
+</html>
+

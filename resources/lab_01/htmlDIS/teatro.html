@@ -1,0 +1,129 @@
+<html>
+<head>
+<title>Primo appello 2004 - Compito Teatro</title>
+</head>
+
+<body>
+
+<h1>Primo appello 2004</h1>
+
+<p>
+La prova dura un'ora e tre quarti.
+</p>
+
+<p>
+<b>Riempire il file <tt>studenteid.txt</tt> con i propri
+dati.</b>
+</p>
+
+<p>
+Vengono dati: due programmi di prova, un file di prova, e il
+testo del compito in formato html. Lo studente deve
+realizzare due classi che vengono usate dai due programmi di
+prova. <b>Le soluzioni devono trovarsi nella stessa cartella
+<tt>Esame</tt> dove si trovano i programmi di prova</tt>
+pena l'annullamento dell'esame.</b>
+</p>
+
+<hr>
+
+<h3>Prima parte</h3>
+
+<p>
+Un teatro vuole informatizzare il suo sistema di prenotazione dei posti.
+</p>
+
+<p>
+Realizzare la classe <tt>Posto</tt> i cui oggetti rappresentano dei posti nella sala del teatro.
+Le componenti di questi oggetti devono essere:
+</p>
+
+<dl>
+
+<dt><tt>numero</tt>
+<dd>Numero del posto (variabile intera). 
+
+<dt><tt>posizione</tt>
+<dd>Indica la posizione del posto (platea, galleria, balconata...) 
+<dt><tt>disponibile</tt>
+<dd>Indica se il posto è stato prenotato
+
+<dt><tt>visibilita</tt>
+<dd>Variabile intera che indica la bontà della visibilità del posto. Può assumere un valore da 1 a 5 (1=visibilit&agrave; peggiore).
+
+
+
+</dl>
+
+<p>
+La classe deve essere incapsulata. Devono essere inoltre realizzati i seguenti metodi:
+</p>
+
+<ul>
+
+<li>metodi <tt>get</tt> e <tt>set</tt> per tutte le
+componenti; il metodo<tt> set</tt> per la componente <tt>visibilita</tt> deve prevedere un controllo che eviti che il parametro venga impostato a valori non validi; in caso di errore, stampare
+un messaggio di errore e terminare il programma;
+
+<li>metodo costruttore che ha come argomento un
+<tt>BufferedReader</tt>; il metodo deve leggere i valori da
+mettere nell'oggetto da file; questi valori sono 
+memorizzati uno per linea; il tipo booleano &egrave; memorizzato su file con le due stringhe &quot;prenotato&quot; e &quot;libero&quot;; nel caso in cui il file
+finisca prima che si riescano a leggere tutte le componenti,
+si stampi un messaggio di errore e si esca dal programma;
+
+<li>un metodo toString che restituisce una stringa in cui ci
+sono tutte le componenti dell'oggetto.
+
+</ul>
+
+<hr>
+
+
+<h3>Seconda parte</h3>
+
+<p>
+Definire una  classe <tt>Teatro</tt> i cui oggetti rappresentano
+tutti i posti di un teatro.
+Ogni oggetto di questa classe &egrave; quindi la
+rappresentazione di un insieme di oggetti <tt>Posto</tt>. Per rappresentare insiemi di oggetti, usare un array.
+</p>
+
+<p>
+Costruttore della classe: 
+</p>
+
+<dl>
+
+<dt>
+<tt>Teatro(String nomefile)</tt>
+<dd>
+crea un oggetto <tt>Teatro</tt> che rappresenta l'insieme
+di tutti gli oggetti <tt>Posto</tt> che sono memorizzati
+nel file il cui nome &egrave; dato dalla stringa passata
+come argomento; la prima linea del file contiene il numero
+degli oggetti memorizzati su file.
+
+</dl>
+
+<p>
+Metodi della classe:
+</p>
+
+<dl>
+
+<dt><tt>public void stampaTutti()</tt>
+<dd>stampa tutti i posti
+
+<dt><tt>public boolean liberoVisibile()</tt>
+<dd>ritorna true o false a seconda se c'&egrave; un posto
+dalla visibilit&agrave; pi&ugrave; alta (5) che sia
+attualmente disponibile
+
+<dt><tt>public int contaDisponibili(String dove) </tt>
+<dd>Ritorna il numero di posti disponibili per la posizione indicata dal parametro <tt>dove</tt> 
+</dl>
+
+</body>
+</html>
+

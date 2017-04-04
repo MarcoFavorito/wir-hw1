@@ -1,0 +1,1140 @@
+<html>
+<head>
+<title>I parametri e il sovraccarico</title>
+      <link rel="top" href="../lezioni.html">
+      <link rel="up" href="../lezioni.html">
+      <link rel="contents" href="../lezioni.html">
+      <link rel="previous" href="../programma/programma.html">
+      <link rel="next" href="../null/null.html">
+</head>
+
+<body>
+
+<h1>I parametri e il sovraccarico</h1>
+
+<p>
+Vediamo dei dettagli sul passaggio dei
+parametri.
+</p>
+
+<p>
+Intuitivamente, sono dati ``trasmessi"
+dal programma al metodo.
+</p>
+
+<ul>
+
+<li>si possono modificare i parametri?
+
+<li>cosa succede se modifico i parametri?
+
+<li>si possono definire metodi con lo stesso nome?
+
+</ul>
+
+<p>
+Prime due: gi&agrave; viste con le variabili
+scalari.
+</p>
+
+<p>
+Oggi: con gli oggetti.
+</p>
+
+<hr>
+
+
+<h4>Memoria degli oggetti</h4>
+
+<p>
+Ogni metodo ha una sua zona di memoria
+in cui ci sono le variabili.
+</p>
+
+<p>
+Queste zone <i>non comprendono gli oggetti</i>,
+che stanno da un'altra parte.
+</p>
+
+<pre>
+class Esempio {
+  static void prova() {
+    int x;
+    Point q;
+    q=new Point();
+  }
+
+  public static void main(String args[]) {
+    int a;
+    Point p;
+    p=new Point();
+  }
+}
+</pre>
+
+<img src="oggetti.jpg">
+
+<p>
+Una zona per ogni metodo, pi&ugrave; una zona
+comune a tutti per gli oggetti.
+</p>
+
+<hr>
+
+
+<h4>Passare un oggetto a un metodo</h4>
+
+<ul>
+
+<li>passare un parametro=assegnare
+al parametro formale quello attuale
+
+<li>assegnare=assegnare l'indirizzo
+
+<li>gli oggetti stanno in una zona accessibile
+a tutti i metodi
+
+</ul>
+
+<p>
+Mettendo insieme: nel parametro formale
+ci va a finire l'indirizzo dell'oggetto
+passato.
+</p>
+
+<p>
+Quindi: una modifica all'oggetto risulta
+nel programma.
+</p>
+
+<hr>
+
+
+<h4>Passare un oggetto: esempio</h4>
+
+<p>
+Cosa stampa questo programma?
+</p>
+
+<pre>
+import java.awt.*;
+
+class Modifica {
+  static void azzera(int x, Point p) {
+    x=0;
+
+    p.x=0;
+    p.move(0,0);
+  }
+
+  public static void main(String args[]) {
+    int x=12;
+    Point p;
+    p=new Point();
+    p.move(10,20);
+
+    azzera(x, p);
+
+    System.out.println(x);
+    System.out.println(p);
+  }
+}
+</pre>
+
+<hr>
+
+
+<h4>Risposta sbagliata</h4>
+
+<p>
+Il programma stampa...
+</p>
+
+<p>
+<b>Prima</b> fare il diagramma.
+</p>
+
+<p>
+<b>Poi</b> dare la risposta.
+</p>
+
+<hr>
+
+
+<h4>Memoria, prima del metodo</h4>
+
+<img src="prima.jpg">
+
+<p>
+Esiste solo la zona delle variabili di
+<tt>main</tt>
+</p>
+
+<p>
+La zona per <tt>azzera</tt> viene creata solo
+quando si invoca <tt>azzera</tt>
+</p>
+
+<hr>
+
+
+<h4>Memoria, quando si invoca il metodo</h4>
+
+<p>
+Viene creata la nuova zona in cui ci
+sono i parametri formali <tt>x</tt> e <tt>p</tt>
+e le variabili locali (in questo caso, nessuna)
+</p>
+
+<p>
+Nei parametri formali vengono messi i valori
+passati.
+</p>
+
+<img src="mentre.jpg">
+
+<p>
+Valori passati: valore di <tt>x</tt>, e valore
+di <tt>p</tt>
+</p>
+
+<p>
+Il valore di <tt>p</tt> &egrave; l'indirizzo in
+cui si trova l'oggetto.
+</p>
+
+<hr>
+
+
+<h4>L'esecuzione del metodo</h4>
+
+<p>
+<tt>x=0</tt> mette <tt>0</tt> nella variabile
+locale.
+</p>
+
+<p>
+<tt>p.x=0;</tt> e <tt>p.move(0,0);</tt> modificano
+l'oggetto <i>il cui indirizzo sta in</i> <tt>p</tt>
+</p>
+
+<img src="dopo.jpg">
+
+<hr>
+
+
+<h4>Cosa viene stampato?</h4>
+
+<p>
+Quando il metodo termina, viene eliminata la sua
+zona di memoria.
+</p>
+
+<img src="fine.jpg">
+
+<hr>
+
+
+<h4>L'effetto globale</h4>
+
+<p>
+Quando passo una variabile, questa non viene
+modificata: <tt>x</tt> mantiene il valore <tt>12</tt>
+</p>
+
+<p>
+Quando passo un oggetto, questo pu&ograve; venire
+modificato <tt>p.x</tt> diventa <tt>0</tt>
+</p>
+
+<p>
+Non &egrave; questa la regola!
+</p>
+
+<p>
+&Egrave; una conseguenza della regola dei puntatori.
+</p>
+
+<hr>
+
+
+<h4>Il sovraccarico</h4>
+
+<p>
+Definire pi&ugrave; metodi con lo stesso nome.
+</p>
+
+<p>
+Serve quando la stessa operazione si pu&ograve;
+fare con diversi tipi di dato.
+</p>
+
+<hr>
+
+
+<h4>Tipo dei parametri</h4>
+
+<p>
+Metodo: fare qualcosa sulla base di parametri.
+</p>
+
+<p>
+Cosa succede se uso i parametri sbagliati?
+</p>
+
+<pre>
+import java.awt.*;
+
+class Errore {
+  static void sbaglio(int x) {
+    System.out.println(x);
+  }
+
+  public static void main(String args[]) {
+    Point p;
+    p=new Point();
+    p.move(12,-4);
+
+    sbaglio(p);
+  }
+}
+</pre>
+
+<p>
+Risposta: viene stampato questo errore:
+</p>
+
+<pre>
+Errore.java:13: sbaglio(int) in Errore -
+  cannot be applied to (java.awt.Point)
+    sbaglio(p);
+    ^
+1 error
+</pre>
+
+<hr>
+
+
+<h4>Significato del messaggio</h4>
+
+<pre>
+Errore.java:13: sbaglio(int) in Errore -
+  cannot be applied to (java.awt.Point)
+    sbaglio(p);
+    ^
+1 error
+</pre>
+
+<dl>
+
+<dt><tt>sbaglio(int) in ...</tt>
+<dd>il metodo <tt>sbaglio</tt> esiste...
+
+<dt><tt>cannot be applied to (Point)</tt>
+<dd>me &egrave; un metodo che non si aspetta
+di ricevere un <tt>Point</tt>
+
+</dl>
+
+<p>
+L'errore &egrave; dovuto al fatto che il
+programma ha inviato un <tt>Point</tt>,
+ma il metodo si aspetta un <tt>int</tt>
+</p>
+
+<p>
+Non ha importanza che poi un <tt>Point</tt>
+si possa anche stampare!
+</p>
+
+<hr>
+
+
+<h4>Regola sui parametri</h4>
+
+<p>
+Nella invocazione, i parametri devono essere
+del tipo usato nella dichiarazione.
+</p>
+
+<pre>
+  static void sbaglio(int x) ...
+
+
+  sbaglio(...)
+</pre>
+
+<p>
+Fra le parentesi ci devo mettere un <tt>int</tt>
+</p>
+
+<p>
+Perch&egrave;?
+</p>
+
+<p>
+Il valore passato lo devo mettere nella variabile
+<tt>x</tt> che &egrave; intera.
+</p>
+
+<hr>
+
+
+<h4>Regola generale</h4>
+
+<p>
+Il parametro attuale va messo nel parametro formale.
+</p>
+
+<p>
+I tipi devono poter permettere questo assegnamento.
+</p>
+
+<p>
+Esempio: se il paramtro formale &egrave; <tt>double</tt>,
+posso passare un intero.
+</p>
+
+<p>
+Se il parametro formale &egrave; intero, non posso passare
+un <tt>double</tt>, perch&egrave; l'assegnamento non si
+pu&ograve; fare.
+</p>
+
+<hr>
+
+
+<h4>Metodi sovraccarichi</h4>
+
+<p>
+<tt>System.out.println()</tt> &egrave; un metodo
+</p>
+
+<p>
+Per&ograve; funziona su tutti i tipi!
+</p>
+
+<p>
+Intuitivamente: potrei dover fare le stesse
+cose su tipi diversi.
+</p>
+
+<p>
+Come definire un metodo che lavora su pi&ugrave;
+tipi diversi:
+</p>
+
+<blockquote>
+<i>
+definire un metodo per ognuno dei tipi
+</i>
+</blockquote>
+
+<hr>
+
+
+<h4>Esempio: un metodo per disegnare un punto</h4>
+
+<p>
+Per disegnare un punto, servono le sue coordinate.
+</p>
+
+<p>
+Disegno un rettangolo di larghezza e altezza zero.
+</p>
+
+<pre>
+public class UnPunto extends Applet {
+  static void disegnaPunto(Graphics g, Point p) {
+    g.drawRect(p.x,p.y,0,0);
+  }
+    
+  public void paint(Graphics g) {
+    ...
+  }
+}
+</pre>
+
+<hr>
+
+
+<h4>Se ho due interi?</h4>
+
+<p>
+Se voglio disegnare un punto, devo per
+forza creare un punto.
+</p>
+
+<pre>
+  public void paint(Graphics g) {
+    Point p;
+    p=new Point();
+    p.move(12,43);
+
+    disegnaPunto(g, p);
+  }
+</pre>
+
+<hr>
+
+
+<h4>Oppure: faccio un nuovo metodo</h4>
+
+<p>
+Alternativa: creo un metodo diverso:
+</p>
+
+<pre>
+  static void disegnaPuntoDueInteri
+          (Graphics g, int x, int y) {
+    g.drawRect(x,y,0,0);
+  }
+
+  public void paint(Graphics g) {
+    disegnaPuntoDueInteri(g, 12, 32);
+  }
+</pre>
+
+<hr>
+
+
+<h4>Il sovraccarico</h4>
+
+<blockquote>
+<i>
+due metodi possono anche avere lo stesso nome,
+basta che il numero degli argomenti o il tipo di
+un argomento sia diverso
+</i>
+</blockquote>
+
+<p>
+Dato che i due metodi per disegnare un punto
+hanno argomenti diversi, posso usare lo stesso
+nome.
+</p>
+
+<p>
+Posso usare il nome <tt>disegnaPunto</tt> per
+tutti e due.
+</p>
+
+<pre>
+import java.awt.*;
+import java.applet.*;
+
+public class MetPunto extends Applet {
+  static void disegnaPunto(Graphics g, Point p) {
+    g.drawRect(p.x,p.y,0,0);
+  }
+
+  static void disegnaPunto(Graphics g, int x, int y) {
+    g.drawRect(x,y,0,0);
+  }
+
+  static void paint(Graphics g) {
+    Point p;
+    p=new Point();
+    p.move(12,43);
+
+    disegnaPunto(g, p);
+
+    disegnaPunto(g, 12, 32);
+  }
+}
+</pre>
+
+<p>
+Si pu&ograve; fare se il numero di argomenti &egrave;
+diverso.
+
+<p>
+Oppure se il tipo di
+almeno un argomento &egrave; diverso.
+</p>
+
+<p>
+Qualche argomento pu&ograve; anche avere lo
+stesso tipo.
+</p>
+
+<hr>
+
+
+<h4>L'invocazione di un metodo</h4>
+
+<p>
+Il compilatore va a vedere il numero
+e il tipo dei parametri <i>attuali</i> 
+(i valori che
+il programma manda al metodo)
+</p>
+
+<p>
+Fra tutti i metodi con quel nome,
+sceglie quello che ha parametri di
+pari numero e tipo.
+</p>
+
+<hr>
+
+
+<h4>Cosa non si pu&ograve; fare</h4>
+
+<p>
+Non si possono definire due metodi che
+differiscono solo per il valore di ritorno.
+</p>
+
+<pre>
+  // errore!
+
+  int metodo() { ... }
+  double metodo() { ... }
+</pre>
+
+<hr>
+
+
+<h4>Esercizio</h4>
+
+<p>
+Definire dei metodi per calcolare l'area
+di un rettangolo, dati:
+</p>
+
+<ul>
+<li>un oggetto <tt>Rectangle</tt>
+<li>oppure: due <tt>Point</tt> che sono
+quelli di coordinate minori e maggiori
+</ul>
+
+<hr>
+
+
+<h4>Metodo per il rettangolo</h4>
+
+<p>
+Se ho un rettangolo:
+</p>
+
+<pre>
+  static int areaRect(Rectangle r) {
+    return (r.width*r.height);
+  }
+</pre>
+
+<hr>
+
+
+<h4>Metodo per due punti</h4>
+
+<p>
+Se ho due punti:
+</p>
+
+<pre>
+  static int areaRect(Point min, Point max) {
+    int w, h;
+
+    w=max.x-min.x;
+    h=max.y-min.y;
+
+    return w*h;
+  }
+</pre>
+
+<hr>
+
+
+<h4>Si possono mettere insieme?</h4>
+
+<p>
+Attenzione! Bisogna sempre controllare che
+i due metodi si possano mettere insieme nello
+stesso programma.
+</p>
+
+<p>
+Basta guardare le firme:
+</p>
+
+<pre>
+  static int areaRect(Rectangle)
+  static int areaRect(Point,  Point)
+</pre>
+
+<p>
+Sia il numero che il tipo degli argomenti
+&egrave; diverso
+</p>
+
+<p>
+Si possono usare i due metodi nello stesso programa,<br>
+anche se hanno lo stesso nome.
+</p>
+
+<hr>
+
+
+<h4>Un programma di prova</h4>
+
+<pre>
+  public static void main(String args[]) {
+    Rectangle r;
+    r=new Rectangle();
+    r.setBounds(10,10,20,20);
+
+    System.out.println(areaRect(r));
+
+    Point p, q;
+    p=new Point();
+    p.move(10,10);
+    q=new Point();
+    q.move(30,30);
+
+    System.out.println(areaRect(p, q));
+  }
+}
+</pre>
+
+<p>
+Le due invocazioni sembrano uguali,
+ma in effetti si parla di due metodi
+diversi!
+</p>
+
+<hr>
+
+
+<h4>I valori di ritorno</h4>
+
+<p>
+I valori di ritorno dei metodi possono anche
+essere diversi.
+</p>
+
+<pre>
+class Prova {
+  static int metodo(int x) {
+    return 0;
+  }
+
+  static double metodo(double x) {
+    return 0;
+  }
+
+  ...
+}
+</pre>
+
+<hr>
+
+
+<h4>Non fatevi ingannare dal nome</h4>
+
+<p>
+In generale: metodi sovraccarichi sono metodi
+diversi con lo stesso nome.
+</p>
+
+<p>
+Dato che hanno lo stesso nome, per capire quale
+sto invocando, guardo il tipo/numero degli
+argomenti.
+</p>
+
+<p>
+&Egrave; per questo che esiste la regola
+che due metodi con lo stesso nome devono
+avere numero e/o tipo diverso di argomenti.
+</p>
+
+<hr>
+
+
+<h4>Esercizio</h4>
+
+<p>
+Definire un metodo che calcola la somma
+di due numeri.
+</p>
+
+<p>
+I due numeri possono essere reali o interi
+(il valore di ritorno &egrave; di conseguenza)
+</p>
+
+<hr>
+
+
+<h4>Soluzione</h4>
+
+<p>
+Mi servono due metodi, uno per sommare interi
+e uno per sommare reali.
+</p>
+
+<p>
+Le firme:
+</p>
+
+<pre>
+  static int somma(int, int)
+  static double somma(double, double)
+</pre>
+
+<p>
+I tipi dei valori di ritorno non hanno
+importanza.
+</p>
+
+<p>
+I tipi degli argomenti si.
+</p>
+
+<p>
+Sono diversi: si possono usare i due metodi.
+</p>
+
+<hr>
+
+
+<h4>Soluzione</h4>
+
+<p>
+Scrivo il corpo dei due metodi.
+</p>
+
+<pre>
+class DueSomme {
+  static int somma(int x, int y) {
+    return x+y;
+  }
+
+  static double somma(double x, double y) {
+    return x+y;
+  }
+
+  public static void main(String args[]) {
+    System.out.println(somma(12,23));
+    System.out.println(somma(12.3,23.1));
+    System.out.println(somma(12,23.1));
+  }
+}
+</pre>
+
+<p>
+Nota: posso anche usare gli stessi nomi per
+i parametri formali (<tt>x</tt> e <tt>y</tt>)
+nei due metodi (ogni metodo vede solo le sue
+variabili).
+</p>
+
+<hr>
+
+
+<h4>Chi viene invocato da <tt>somma(12,23.1)</tt>?</h4>
+
+<p>
+Ho un intero e un reale.
+</p>
+
+<p>
+Viene invocato quello dei reali.
+</p>
+
+<p>
+Regola generale: viene invocato quello che ha
+esattamente gli stessi tipi, se c'&egrave;,
+altrimenti quello che li pu&ograve; assegnare
+tutti ai parametri formali.
+</p>
+
+<p>
+In questo caso: non sono due interi, per cui
+non posso usare il metodo con i due interi.
+</p>
+
+<p>
+Posso assegnare <tt>12</tt> e <tt>23.1</tt>
+a due reali, per cui uso il metodo con due
+reali.
+</p>
+
+<hr>
+
+
+<h4>Posso fare pi&ugrave; di due metodi con lo stesso
+nome?</h4>
+
+<p>
+Si
+</p>
+
+<hr>
+
+
+<h4>Posso fare due metodi con lo stesso nome che fanno
+cose completamente diverse?</h4>
+
+<p>
+Si: sono a tutti gli effetti due metodi diversi:
+</p>
+
+<pre>
+class Diversi {
+  static void aaa(int x) {
+    System.out.println("Questa e' una stringa");
+  }
+
+  static void aaa(double x) {
+    System.out.println(x+2);
+  }
+
+  public static void main(String args[]) {
+    aaa(1);
+    aaa((double) 1);
+  }
+}
+</pre>
+
+<p>
+Non &egrave; per&ograve; consigliabile farlo.
+<br>
+(il programma non si capisce pi&ugrave;)
+</p>
+
+<hr>
+
+
+<h4>Numero degli argomenti</h4>
+
+<p>
+Si possono fare due metodi diversi se
+hanno numero di argomenti diverso.
+</p>
+
+<p>
+Esempio: metodo che stampa la somma di
+interi, al quale posso passare da zero
+a tre interi.
+</p>
+
+<hr>
+
+
+<h4>Soluzione</h4>
+
+<p>
+Devo fare quattro metodi diversi.
+</p>
+
+<pre>
+class SommaInt {
+  static int somma() {
+    return 0;
+  }
+
+  static int somma(int x) {
+    return x;
+  }
+
+  static int somma(int x, int y) {
+    return x+y;
+  }
+
+  static int somma(int x, int y, int z) {
+    return x+y+z;
+  }
+
+  public static void main(String args[]) {
+    System.out.println(somma(2,3));
+    System.out.println(somma(2,3,4));
+    System.out.println(somma());
+    System.out.println(somma(2));
+  }
+}
+</pre>
+
+<hr>
+
+
+<h4>Perch&egrave; usare il sovraccarico?</h4>
+
+<p>
+Se i metodi fanno la stessa cosa conviene.
+</p>
+
+<p>
+Quando si scrive il metodo, non devo usare
+un nome di metodo diverso a seconda degli argomenti.
+</p>
+
+<p>
+Se i metodi non fanno la stessa cosa, &egrave;
+meglio dare nomi diversi.
+</p>
+
+<hr>
+
+
+<h4>Esercizio</h4>
+
+<p>
+Estendere la classe <tt>Point</tt> con un metodo
+<tt>vicino</tt> che vede se un punto &egrave; a
+distanza minore o uguale di uno dall'oggetto di
+invocazione.
+</p>
+
+<p>
+Il metodo riceve come parametri un punto <i>oppure</i>
+due interi che rappresentano le sue coordinate.
+</p>
+
+<p>
+Non &egrave; un metodo statico, ma un metodo della
+classe.
+</p>
+
+<p>
+Il sovraccarico si pu&ograve; fare anche per
+questi metodi.
+</p>
+
+<hr>
+
+
+<h4>Firme dei metodi</h4>
+
+<p>
+Devo fare un metodo che riceve un punto e un metodo
+che riceve due interi.
+</p>
+
+<p>
+Devono per&ograve; avere lo stesso nome e restituire
+tutti e due un booleano:
+</p>
+
+<pre>
+  boolean vicino(Point)
+  boolean vicino(int, int)
+</pre>
+
+<p>
+Dato che hanno parametri diversi, si pu&ograve;
+fare.
+</p>
+
+<hr>
+
+
+<h4>Implementazione</h4>
+
+<p>
+Il calcolo &egrave; fatto come al solito.
+</p>
+
+<pre>
+import java.awt.*;
+
+class NewPoint extends Point {
+  boolean vicino(Point q) {
+    return (
+      Math.sqrt((this.x-q.x)*(this.x-q.x)+
+                (this.y-q.y)*(this.y-q.y))
+      &lt;=1);
+  }
+
+  boolean vicino(int x, int y) {
+    return (
+      Math.sqrt((this.x-x)*(this.x-x)+
+                (this.y-y)*(this.y-y))
+      &lt;=1);
+  }
+}
+</pre>
+
+<hr>
+
+
+<h4>Invocare metodi</h4>
+
+<p>
+Ogni volta che ho un oggetto, posso invocare
+un metodo della sua classe.
+</p>
+
+<p>
+Questo vale anche dentro i metodi:
+</p>
+
+<pre>
+  boolean vicino(Point q) {
+    return (this.distance(q)&lt;=1);
+  }
+</pre>
+
+<p>
+<tt>NewPoint</tt> eredita il metodo <tt>distance</tt>
+da <tt>Point</tt>
+</p>
+
+<p>
+Dato che <tt>this</tt> &egrave; un <tt>NewPoint</tt>,
+posso invocare il metodo.
+</p>
+
+<hr>
+
+
+<h4>Posso invocare questo metodo dall'altro?</h4>
+
+<p>
+Si pu&ograve; fare.
+</p>
+
+<p>
+Se ho un oggetto, posso invocare tutti i metodi
+della classe (poi vedremo i modificatori di accesso).
+</p>
+
+<pre>
+import java.awt.*;
+
+class NewPoint extends Point {
+  boolean vicino(Point q) {
+    return (this.distance(q)&lt;=1);
+  }
+
+  boolean vicino(int x, int y) {
+    Point p;
+    p=new Point();
+    p.move(x,y);
+
+    return this.vicino(p);
+  }
+}
+</pre>
+
+<p>
+Nel metodo <tt>vicino(Point)</tt> ho invocato il metodo
+<tt>distance</tt> (altro metodo di <tt>NewPoint</tt>)
+</p>
+
+<p>
+Stessa cosa per <tt>vicino(int, int)</tt>: ho
+invocato il metodo <tt>vicino(Point)</tt>.
+</p>
+
+<p>
+Pensate sempre che si tratti di un altro metodo,
+che per&ograve; ha lo stesso nome.
+</p>
+
+</body>
+</html>
+
+

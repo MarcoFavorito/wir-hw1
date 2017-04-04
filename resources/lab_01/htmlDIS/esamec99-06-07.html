@@ -1,0 +1,116 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1">
+<META NAME="Generator" CONTENT="Microsoft Word 81.2">
+<TITLE>Esame 7/6/1999</TITLE>
+<META NAME="Template" CONTENT="damore-4gb:Applications:Microsoft Office 98:Templates:Web Pages:Blank Web Page">
+</HEAD>
+<BODY LINK="#0000ff" VLINK="#800080">
+
+<B><P ALIGN="CENTER">Universit&agrave; di Roma "La Sapienza"</P>
+<P ALIGN="CENTER">Facolt&agrave; di Ingegneria </P>
+<P ALIGN="CENTER">Corso di <I>Fondamenti di Informatica</I> </P>
+<P ALIGN="CENTER">Corso di Laurea: Ambiente e Territorio</P>
+</B><I><P ALIGN="CENTER">Appello del 7-6-1999. Prima prova (tempo: due ore).</P>
+</I><P ALIGN="JUSTIFY">&nbsp;</P>
+<B><P ALIGN="JUSTIFY">Esercizio 1 (18 punti)</P>
+</B><P ALIGN="JUSTIFY">Gli organizzatori di una manifestazione enologica hanno memorizzato in un file di strutture le seguenti informazioni riguardanti le aziende che intendono partecipare alla manifestazione ed i prodotti che saranno messi in mostra:</P>
+
+<UL>
+<P ALIGN="JUSTIFY"><LI>codice dell'azienda (intero di 4 cifre);</LI></P>
+<P ALIGN="JUSTIFY"><LI>denominazione del vino pi&ugrave; rappresentativo prodotto dall'azienda (20 caratteri);</LI></P>
+<P ALIGN="JUSTIFY"><LI>quantit&agrave; di bottiglie prodotte nell'ultima vendemmia (intero);</LI></P>
+<P ALIGN="JUSTIFY"><LI>estensione dei vigneti, in ettari (reale).</LI></P></UL>
+
+<OL>
+
+<P ALIGN="JUSTIFY"><LI>Scrivere un insieme di dichiarazioni globali in C da utilizzarsi per risolvere i due punti successivi (le dichiarazioni locali potranno essere direttamente specificate nello svolgimento dei punti successivi).</LI></P>
+<P ALIGN="JUSTIFY"><LI>Scrivere una funzione C che, ricevuto come parametro il nome del file di strutture di cui sopra, costruisca, restituendola, una lista (rappresentata mediante strutture e puntatori) in cui sono memorizzati i codici di tutte le aziende per le quali il rapporto tra quantit&agrave; di bottiglie prodotte ed estensione dei vigneti risulti inferiore a 1000.</LI></P>
+<P ALIGN="JUSTIFY"><LI>Scrivere una funzione C che, ricevuti come parametri il nome del file di strutture di cui sopra, la denominazione di un vino e il nome di un file da creare, costruisca tale file inserendovi, per ogni azienda produttrice di quel vino, il codice dell'azienda e la quantit&agrave; di bottiglie prodotte.</LI></P></OL>
+
+<P ALIGN="JUSTIFY">&nbsp;</P>
+<P ALIGN="CENTER">&nbsp;</P>
+<B><P ALIGN="CENTER">Universit&agrave; di Roma "La Sapienza"</P>
+<P ALIGN="CENTER">Facolt&agrave; di Ingegneria </P>
+<P ALIGN="CENTER">Corso di Fondamenti di Informatica </P>
+<P ALIGN="CENTER">Corso di Laurea: Ambiente e Territorio</P>
+</B><I><P ALIGN="CENTER">Appello del 7-6-1999. Seconda prova (tempo: un'ora).</P>
+</I><B><P ALIGN="JUSTIFY">Esercizio 2 (4 punti)</P>
+</B><P ALIGN="JUSTIFY">Illustrare le caratteristiche dei tipi di dato <I>pila</I> e <I>coda</I>.</P>
+<B><P ALIGN="JUSTIFY">Esercizio 3 (4 punti)</P>
+</B><P ALIGN="JUSTIFY">Si consideri il seguente frammento C.</P>
+<FONT FACE="Courier New" SIZE=2><P ALIGN="JUSTIFY">struct elem {</P>
+<P ALIGN="JUSTIFY">&#9;int info;</P>
+<P ALIGN="JUSTIFY">&#9;struct elem *next;</P>
+<P ALIGN="JUSTIFY">};</P>
+<P ALIGN="JUSTIFY">void InCoda(struct elem **pptesta, struct elem *pnuovo, struct elem **ppcoda)</P>
+<P ALIGN="JUSTIFY">{</P>
+<P ALIGN="JUSTIFY">&#9;if(*pptesta==NULL)</P>
+<P ALIGN="JUSTIFY">&#9;&#9;*pptesta=pnuovo;</P>
+<P ALIGN="JUSTIFY">&#9;else</P>
+<P ALIGN="JUSTIFY">&#9;&#9;(*ppcoda)-&gt;next=pnuovo;</P>
+<P ALIGN="JUSTIFY">&#9;pnuovo-&gt;next=*pptesta;</P>
+<P ALIGN="JUSTIFY">&#9;*ppcoda=pnuovo;</P>
+<P ALIGN="JUSTIFY">&#9;return;</P>
+<P ALIGN="JUSTIFY">}</P>
+</FONT><P ALIGN="JUSTIFY">Discutere il comportamento della funzione <FONT FACE="Courier New" SIZE=2>InCoda</FONT> e la sua possibile utilit&agrave;.</P>
+<B><P ALIGN="JUSTIFY">Esercizio 4 (4 punti)</P>
+</B><P ALIGN="JUSTIFY">Data la relazione</P>
+<P ALIGN="CENTER">EDIFICIO(NumeroPiani, NumeroAppartamenti, NumeroAbitanti),</P>
+<P ALIGN="JUSTIFY">scrivere una interrogazione SQL per ottenere l'altezza (numero di piani) degli edifici pi&ugrave; popolati.</P>
+<U><P ALIGN="JUSTIFY">Esempio</U>: se un'istanza della relazione &egrave;:</P>
+<P ALIGN="CENTER"><CENTER><TABLE BORDER CELLSPACING=1 WIDTH=300>
+<TR><TD WIDTH="27%" VALIGN="TOP">
+<P ALIGN="CENTER">NumeroPiani</TD>
+<TD WIDTH="41%" VALIGN="TOP">
+<P ALIGN="CENTER">NumeroAppartamenti</TD>
+<TD WIDTH="32%" VALIGN="TOP">
+<P ALIGN="CENTER">NumeroAbitanti</TD>
+</TR>
+<TR><TD WIDTH="27%" VALIGN="TOP">
+<P ALIGN="CENTER">6</TD>
+<TD WIDTH="41%" VALIGN="TOP">
+<P ALIGN="CENTER">24</TD>
+<TD WIDTH="32%" VALIGN="TOP">
+<P ALIGN="CENTER">98</TD>
+</TR>
+<TR><TD WIDTH="27%" VALIGN="TOP">
+<P ALIGN="CENTER">5</TD>
+<TD WIDTH="41%" VALIGN="TOP">
+<P ALIGN="CENTER">20</TD>
+<TD WIDTH="32%" VALIGN="TOP">
+<P ALIGN="CENTER">96</TD>
+</TR>
+<TR><TD WIDTH="27%" VALIGN="TOP">
+<P ALIGN="CENTER">8</TD>
+<TD WIDTH="41%" VALIGN="TOP">
+<P ALIGN="CENTER">16</TD>
+<TD WIDTH="32%" VALIGN="TOP">
+<P ALIGN="CENTER">61</TD>
+</TR>
+<TR><TD WIDTH="27%" VALIGN="TOP">
+<P ALIGN="CENTER">4</TD>
+<TD WIDTH="41%" VALIGN="TOP">
+<P ALIGN="CENTER">22</TD>
+<TD WIDTH="32%" VALIGN="TOP">
+<P ALIGN="CENTER">98</TD>
+</TR>
+</TABLE>
+</CENTER></P>
+
+<P ALIGN="JUSTIFY">l'interrogazione deve restituire:</P>
+<P ALIGN="CENTER"><CENTER><TABLE BORDER CELLSPACING=1 WIDTH=82>
+<TR><TD VALIGN="TOP">
+<P ALIGN="CENTER">NumeroPiani</TD>
+</TR>
+<TR><TD VALIGN="TOP">
+<P ALIGN="CENTER">6</TD>
+</TR>
+<TR><TD VALIGN="TOP">
+<P ALIGN="CENTER">4</TD>
+</TR>
+</TABLE>
+</CENTER></P>
+
+<P ALIGN="JUSTIFY"></P></BODY>
+</HTML>

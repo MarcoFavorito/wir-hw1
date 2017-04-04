@@ -1,0 +1,103 @@
+<html>
+<head>
+<title>Tecniche di programmazione - Esame Settembre 2004</title>
+</head>
+
+<body>
+
+<h2>Tecniche di programmazione - Esame Settembre 2004</h2>
+
+<h3>Parte I</h3>
+
+<b>Esercizio A</b>
+
+<p>
+Scrivere un metodo (possibilmente ricorsivo) che ha come
+argomento una lista che contiene solo oggetti
+<tt>Integer</tt> e restituisce <tt>true</tt> se ogni
+elemento &egrave; uguale al successivo oppure al precedente.
+</p>
+
+
+<b>Esercizio B</b>
+
+<p>
+Scrivere un metodo che ha come argomento un albero binario e
+restituisce il numero dei nodi che hanno come figlio almeno
+una foglia.
+</p>
+
+
+<h3>Parte II</h3>
+
+<h4>Esercizio A</h4>
+
+<p>
+Dire cosa succede quando si esegue il seguente programma.
+Motivare la risposta (risposte mancanti di spiegazione
+sono considerate nulle).
+</p>
+
+<font size=-1>
+<pre>
+class Mistero {
+  static int prova(int x) {
+    if(x==0) {
+      System.out.println("Abcd");
+      return 0;
+    }
+
+    System.out.println(prova(x-2));
+
+    return x;
+  }
+
+
+  public static void main(String args[]) {
+    System.out.println(prova(4));
+    System.out.println(prova(3));
+  }
+}
+</pre>
+</font>
+
+
+<h4>Esercizio B</h4>
+
+<p>
+Spiegare l'algoritmo di ricerca binaria in generale ed in
+particolare quando va cercato l'elemento <tt>10</tt> nel
+seguente array di interi:
+</p>
+
+<table border=1>
+<tr>
+<td>-3</td>
+<td>2</td>
+<td>4</td>
+<td>8</td>
+<td>11</td>
+<td>12</td>
+<td>49</td>
+</tr>
+</table>
+
+
+<h4>Esercizio C</h4>
+
+<p>
+Rispondere a <b>una sola</b> delle seguenti domande:
+</p>
+
+<ul>
+<li>dire cosa sono i thread e come si realizzano in Java;
+<li>dire cosa sono le eccezioni, come si generano e come si
+catturano;
+<li>dire  quali sono i componenti grafici nel pacchetto
+java.awt e le relazioni tra loro.
+</ul>
+
+</body>
+</html>
+
+

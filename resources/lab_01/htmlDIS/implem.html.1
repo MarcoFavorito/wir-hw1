@@ -1,0 +1,78 @@
+<HTML>
+<HEAD>
+   <TITLE>Implementation of Vision Systems for Mobile Robots</TITLE>
+</HEAD>
+
+<BODY>
+
+<P>
+<CENTER><H1>Implementation of Vision Systems<BR> for Mobile Robots
+</H1></CENTER>
+
+<HR>
+
+<CENTER>
+<FONT SIZE=+2 COLOR=#A00000>
+<P>WORK IN PROGRESS</P>
+</FONT>
+</CENTER>
+
+
+<HR>
+
+<P>&nbsp;</P>
+
+<P>
+Vision systems for mobile robots involve image processing
+and interpretation, in order to reconstruct the world seen from
+the camera or for object recognition.<BR>
+
+Image processing require a representation of the image in RAM
+memory, so it requires digitizing the analog NTSC or PAL signal
+coming from the camera and transfering the image to the RAM.
+
+<P>
+To this end a set of hardware and software components are required:
+<OL>
+<LI>Video Camera
+<LI>Frame grabber (digitization device)
+<LI>Device Drivers (OS driver for FG management)
+<LI>Image acquisition library (high-level functions for image acquisition)
+<LI>Image processing tools
+</OL>
+
+<P>&nbsp</P>
+
+<P>
+I had some experience with both Matrox Meteor and BT848-based frame grabbers.
+I found both of them suitable for image processing applications.
+Moreover, some BT848-based FG is very cheap.
+
+<P>
+As for the OS, I am very happy working with my Linux system.
+It is not difficult, and very interesting, to write a device driver
+for Linux.
+
+<P>
+There at least two different BT848 drivers for Linux, but I consider
+<A HREF="http://www.dis.uniroma1.it/~iocchi/bt848/">bt848 driver</A>
+to be more appropriate for image processing.
+
+<P>
+Image acquisition libraries are usually included in the driver package.
+
+<P>
+Many image processing tools are available (see for example 
+<A HREF="http://www.khoral.com/">Khoros</A>).
+
+
+
+<P>&nbsp</P>
+
+<HR>
+
+<I>Luca Iocchi</I>. July 24, 1998.
+
+</BODY>
+</HTML>
+

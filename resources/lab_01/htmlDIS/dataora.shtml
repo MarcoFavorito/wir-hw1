@@ -1,0 +1,79 @@
+<!doctype html public "-//w3c//dtd html 4.0 transitional//en">
+<html>
+<head>
+<link href="java.css" rel="stylesheet" type="text/css">
+<title>Stampa data e ora</title>
+</head>
+
+<body>
+
+<h2>Stampa data e ora</h2>
+
+<hr>
+
+<a href="DataOra.java">DataOra.java</a>
+
+<pre>
+/*
+  Stampa la data corrente
+*/
+
+import java.awt.*;
+import java.util.*;
+import java.text.*;
+
+public class DataOra extends java.applet.Applet implements Runnable {
+  Thread runner;
+
+  public void start() {
+    if( runner==null ) {
+      runner=new Thread(this);
+      runner.start();
+    }
+  }
+
+  public void stop() {
+    if( runner!=null ) {
+      runner.stop();
+      runner=null;
+    }
+  }
+
+  public void run() {
+    while(true) {
+      repaint();
+      try {
+        Thread.sleep(200);
+      }
+      catch( InterruptedException e ) { }
+    }
+  }
+
+  public void update(Graphics g) {
+    Date now=new Date();
+    SimpleDateFormat dateformat =
+         new SimpleDateFormat ("dd MMMM yyyy - HH:mm.ss");
+    Font f = new Font("TimesRoman", Font.PLAIN, 14);
+
+    g.setFont(f);
+
+    g.clearRect(10,0,500,40);
+    g.drawString(dateformat.format(now),10,20);
+
+  }
+
+  public void paint(Graphics g) {
+    update(g);
+  }
+}
+
+</pre>
+
+<p>
+
+<applet code="DataOra.class" height="50" width="400">
+</applet>
+
+</body>
+</html>
+

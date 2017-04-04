@@ -1,0 +1,168 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+<HEAD>
+<TITLE></TITLE>
+</HEAD>
+
+<BODY TEXT="#4D1201" BGCOLOR="#BADBFF">
+
+<hr>
+
+<h1 align="center"><font color="red", size=+4> <b>Obbiettivo O 2.1</b>
+</font></h1>
+
+<p align="center"><font color="blue"> Progetto Strategico MIUR "Societ&agrave
+dell'Informazione" <br> <a href="../index.html">Azione A2</a>, Anno
+I</font></p>
+
+
+<hr>
+
+<h3><b>Unit&agrave coinvolte</b></h3>
+
+<ul> 
+<li> UNIROMA1
+</ul>
+
+<h3><b>Unit&agrave responsabile: UNIROMA1</b></h3>
+
+<hr>
+
+<h3><b>Descrizione</b></h3> Algoritmi per la riscrittura di query su vista
+globale in query delle sorgenti
+
+<hr>
+
+<h3><b>Risultati ottenuti</b></h3> Dal momento che, in un sistema di
+integrazione di dati, una vista globale dell'insieme dei dati sottostanti viene
+offerta all'utente, questi formula le sue interrogazioni (query) in termini di
+tale vista.  Una volta definito il sistema, pertanto, si pone il problema di
+riformulare una generica query posta dall'utente in termini delle sorgenti.
+Nell'ambito del progetto si è concentrata l'attenzione sulla necessità di una
+flessibilità della corrispondenza (detta \emph{mapping}) fra la vista globale e
+le sorgenti.  In particolare, l'approccio local-as-view (LAV) consente una
+maggiore flessibilità rispetto ai cambiamenti dell'insieme delle sorgenti (ad
+esempio l'aggiunta di una sorgente), e una specifica naturale della semantica
+delle sorgenti rispetto alla vista globale.  Rispetto all'approccio
+global-as-view (GAV), che fornisce una sorta di specifica procedurale su come
+accedere alle sorgenti per recuperare informazioni relative ai concetti della
+vista globale, l'approccio LAV ha un carattere prettamente dichiarativo, che
+rende in linea di principio più complicata la riformulazione di query utente in
+termini di query sulle sorgenti.  Essendo le sorgenti eterogenee e in generale
+fuori dal controllo del sistema di integrazione, i dati presenti nelle sorgenti
+possono non soddisfare i vincoli [1,2,12].  In questo caso, a seconda del tipo
+di vincoli, ci troviamo di fronte ad un problema di risposta alle query in
+presenza di informazione incompleta o inconsistente.  Pertanto, una volta
+fissati i dati alle sorgenti, in generale si ha, per la vista globale, una
+teoria logica e un insieme (che può anche essere infinito) di modelli [1].
+Rispondere alle query diventa un'operazione complessa in questo contesto.
+Nell'ambito del progetto sono state sviluppare tecniche di riscrittura
+(rewriting) che consentono di ``cablare'' nella query riscritta tutta la
+conoscenza riguardante i vincoli, cosicché la query riscritta può essere
+processata esattamente come si farebbe in assenza di vincoli, fornendo le
+risposte corrette dal punto di vista logico [9,10].  Si noti che questo
+processamento puramente intensionale presenta notevoli vantaggi in termini di
+facilità di processamento, e ha avuto una ricaduta sull'architettura del
+prototipo [5,11].  Diverse tecniche di riscrittura sono state sviluppate per
+diverse classi di vincoli di integrità.  Infine, è stata studiata la
+decidibilità del problema di rispondere alle query al variare della classe di
+vincoli [8]: sono state sviluppate tecniche di riscrittura per tutti i casi
+decidibili.  Nell'ambito dei dati semistrutturati, è stato affrontato il
+problema del contenimento di query basato su viste (view-based query
+containment) e della sua relazione con la risposta a query nel caso di regular
+path queries (RPQs) e 2-way regular path queries(2RPQs) [4,6,7].  Il view-based
+query containment è un problema importante e strettamente correlato con
+l'integrazione dei dati.  In questo contesto è stata fornita un'analisi
+approfondita del problema e una caratterizzazione della complessità
+computazionale.
+
+<h3><b>Rapporti di ricerca</b></h3> 
+
+  <ul>
+ 
+  <li>  Rapporto Anno 1  <a href="O2.1.ps">in  PS</a> e  <a href="O2.1.tgz">con
+  tutti i sorgenti</a>
+
+<!-- Qui inserire i rapporti di ricerca prodotti. Possono essere piu' di uno,
+per gli obbiettivi che coprono sia il primo anno che il secondo.  -->
+
+  </ul>
+
+
+<hr>
+
+<h3><b>Pubblicazioni</b></h3> 
+
+<ol>
+
+<li> <a href="../pub/cali-etal-IEEE-DEB-02.ps.gz">``On the role of integrity
+  constraints in data integration ``</a> Andrea Calì, Diego Calvanese, Giuseppe
+  De Giacomo, and Maurizio Lenzerini.  Bull. of the IEEE Computer Society
+  Technical Committee on Data Engineering, 25(3):39-45, 2002
+
+<li> <a href="../pub/cali-etal-IS-03.ps.gz">``Data integration under integrity
+  constraints''</a> Andrea Calì, Diego Calvanese, Giuseppe De Giacomo, and
+  Maurizio Lenzerini.  Information Systems, 2003, di prossima pubblicazione
+
+<li> <a href="../pub/cali-etal-ER-02.ps.gz">``On the expressive power of data
+  integration systems''</a> Andrea Calì, Diego Calvanese, Giuseppe De Giacomo,
+  and Maurizio Lenzerini.  In Proc. of the 21st Int. Conf. on Conceptual
+  Modeling (ER 2002), volume 2503 of Lecture Notes in Computer Science, pages
+  338-350. Springer, 2002
+
+<li> <a href="../pub/calvanese-etal-PODS-03.pdf">``View-based query
+  containment'</a>' Diego Calvanese, Giuseppe De Giacomo, Maurizio Lenzerini,
+  and Moshe Y. Vardi.  In Proc. of the 22nd ACM SIGACT SIGMOD SIGART Sym. on
+  Principles of Database Systems (PODS 2003), pages 56-67, 2003
+
+<li> <a href="../pub/cali-etal-CAiSE-03.ps.gz">``IBIS: Semantic data
+  integration at work''</a> Andrea Calì, Diego Calvanese, Giuseppe De Giacomo,
+  Maurizio Lenzerini, Paolo Naggar, and Fabio Vernacotola.  In Proc. of the
+  15th Int. Conf. on Advanced Information Systems Engineering (CAiSE 2003),
+  volume 2681 of Lecture Notes in Computer Science, pages 79-94.  Springer,
+  2003.
+
+<li> <a href="../pub/calvanese-etal-ICDT-03.pdf">``Decidable containment of
+  recursive queries''</a> Diego Calvanese, Giuseppe De Giacomo, and Moshe
+  Y. Vardi.  In Proc. of the 9th Int. Conf. on Database Theory (ICDT 2003),
+  volume 2572 of Lecture Notes in Computer Science, pages 330-345. Springer,
+  2003.
+
+<li> <a href="../pub/calvanese-etal-PODS-03.pdf">``View-based query
+  containment''</a> Diego Calvanese, Giuseppe De Giacomo, Maurizio Lenzerini,
+  and Moshe Y. Vardi.  In Proc. of the 22nd ACM SIGACT SIGMOD SIGART Sym. on
+  Principles of Database Systems (PODS 2003), pages 56-67, 2003.
+
+<li> <a href="../pub/cali-etal-PODS-03.ps">``On the decidability and complexity
+  of query answering over inconsistent and incomplete databases'</a>' Andrea
+  Calì, Domenico Lembo, Riccardo Rosati.  In Proc. of the 22nd ACM SIGACT
+  SIGMOD SIGART Sym. on Principles of Database Systems (PODS 2003), pages
+  56-67, 2003
+
+<li> <a href="../pub/cali-etal-IJCAI-03.ps">``Query rewriting and answering
+  under constraints in data integration systems''</a> Andrea Calì, Domenico
+  Lembo, Riccardo Rosati.  In Proc. of the 18th International Joint Conference
+  on Artificial Intelligence (IJCAI 2003), 2003.  DI prossima pubblicazione
+
+<li> <a href="../pub/cali-etal-SEBD-03.ps">``Intensional query processing in
+  data integration systems under integrity constraints''</a> Andrea Calì,
+  Domenico Lembo, Riccardo Rosati.  In Proc. of the 11th Italian Symposium on
+  Advanced Database Systems (SEBD 2003), pages 475-482, 2003
+
+<li> <a href="../pub/cali-etal-SEBD-03-sistema.ps">``DIS@DIS: un sistema per
+  l'integrazione semantica dei dati in presenza di vincoli di integrità ''</a>
+  Andrea Calì, Saverio De Nigris, Domenico Lembo, Gabriele Messineo, Riccardo
+  Rosati, Marco Ruzzi.  In Proc. of the 11th Italian Symposium on Advanced
+  Database Systems (SEBD 2003), pages 537-544, 2003
+
+<li> <a href="../pub/cali-etal-rafanelli.ps">``Source Integration for Data
+  Warehousing''</a> Andrea Calì, Domenico Lembo, Maurizio Lenzerini, Riccardo
+  Rosati.  In M. Rafanelli, editor, Multidimensional Databases, Idea Group
+  Publishing. 2003
+
+</ol>
+
+<hr>
+
+</BODY>
+</HTML>

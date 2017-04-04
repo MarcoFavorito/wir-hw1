@@ -1,0 +1,85 @@
+<!doctype html public "-//w3c//dtd html 4.0 transitional//en">
+
+<html>
+<head>
+   <title>Tecniche di Programmazione - Esercitazione 4</title>
+   <link rel="stylesheet" href="../../tp.css" type="text/css">
+</head>
+
+<body>
+
+&nbsp;
+
+<center><B>Tecniche di Programmazione</B> <BR>
+    <B>Corsi di Laurea in Ingegneria Informatica e Automatica</B>
+  <p><b>A.A. 2004/05</b></p>
+</center>
+
+  <h2 align=center> PhotoGallery </h2>
+  
+
+<p>Si vuole realizzare una classe Java <code>PhotoGallery</code> che
+rappresenta una galleria di fotografie online. Ogni <em>PhotoGallery</em> ha
+una url (rappresentata da una stringa) dove essa è situata e contiene
+foto, ciascuna rappresentata semplicemente come una stringa che denota il link
+alla foto vera e propria. Le funzionalità degli oggetti della classe
+sono:
+</p><ul>
+  <li><em>crea</em>: che preso come parametro una stringa <em>url</em>, crea
+      un oggetto <em>PhotoGallery</em> avente come indirizzo <em>url</em> e
+      con zero foto memorizzate;</li>
+  <li><em>numFoto</em>: che restituisce il numero di foto presenti nella
+      <em>PhotoGallery</em>;</li>
+  <li><em>aggiungi</em>: che presa una foto (cioè una stringa) come
+      parametro, l'aggiunge alla <em>PhotoGallery</em> se non è
+      già presente; altrimenti non fa nulla;</li>
+  <li><em>elimina</em>: che presa una foto (cioè una stringa) come
+      parametro, la elimina dalla <em>PhotoGallery</em>, se presente;
+      altrimenti non fa nulla;</li>
+  <li><em>presente</em>: che presa una foto (cioè una stringa) come
+      parametro, restituisce <code>true</code> se la foto è presente
+      nella <em>PhotoGallery</em>; <code>false</code> altrimenti;</li>
+  <li><em>retituisciTutteLeFoto</em>: che restituisce un array contenente tutte
+      le foto (rappresentate come stringhe) presenti nella
+      <em>PhotoGallery</em>;</li>
+  <li><em>svuota</em>: che elimina tutte le foto dalla
+      <em>PhotoGallery</em>.</li>
+</ul>
+
+<hr>
+
+<p><strong>Domanda 1.</strong> Si realizzi la classe
+<code>PhotoGallery.</code></p>
+
+<p><strong>Domanda 2.</strong> Si realizzi una classe cliente della classe
+<code>PhotoGallery</code> contenente un metodo statico <code>leggiDaFile</code>
+che, dati una stringa <i>f</i> che rappresenta un nome di un file contenente
+foto (cioè stringhe) ed una <i>PhotoGallery</i> <i>g</i>, aggiunga tutte
+le foto presenti nel file <i>f</i> in <i>g</i>.</p>
+
+
+<p><strong>Domanda 2/b.</strong> Si realizzi una classe cliente della classe
+<code>PhotoGallery</code> contenente un metodo statico <code>caricaDaLista</code>
+che, data una lista <i>l</i> (oggetto della classe <tt>Lista</tt>, realizzata in maniera
+funzionale con l'interfaccia riportata di seguito)
+ed una <i>PhotoGallery</i> <i>g</i>, aggiunga tutte
+le foto presenti nella lista  <i>l</i> in <i>g</i>.
+<br><b>Il metodo non deve avere effetto collaterale sulla lista in ingresso.</b></p>
+<p>La classe <tt>Lista</tt> ha la seguente interfaccia:
+<blockquote>
+<pre>
+class Lista {
+   public Lista() 
+   public boolean empty() 
+   public String car()
+   public Lista cons(String x)
+   public Lista cdr()
+}
+</pre>
+</blockquote>
+
+<hr>
+
+<p><a href="soluzione/">Soluzione</a></p>
+
+</body></html>

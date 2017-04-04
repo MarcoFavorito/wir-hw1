@@ -1,0 +1,166 @@
+<!doctype html public "-//w3c//dtd html 4.0 transitional//en">
+<html>
+<head>
+<link href="java.css" rel="stylesheet" type="text/css">
+<title>Cicli con decremento</title>
+</head>
+
+<body>
+
+<h2>Cicli con decremento</h2>
+
+<p>
+Tutti i cicli visti fino ad ora consistevano nella ripetizione
+di istruzioni, con una variabile che assumeva valori crescenti.
+In particolare, ad ogni esecuzione delle istruzioni, questa
+variabile viene aumentata di 1. In alcuni casi, &egrave;
+invece necessario ripetere delle istruzioni decrementando una
+variabile ad ogni passo, per esempio se si vuole eseguire delle
+istruzioni mettendo prima <tt>x=100</tt> poi <tt>x=99</tt>,
+ecc. Un altro caso che non si pu&ograve; fare con i cicli visti
+fino ad ora &egrave; quello in cui la variabile deve aumentare
+o diminuire di 10 ad ogni passo. Per questo genere di casi,
+occorre introdurre la struttura generica del ciclo for. Il
+generico ciclo for contiene come argomenti una istruzione,
+una condizione e un'altra istruzione:
+
+<p>
+<pre>
+for(istruzione1, condizione, istruzione2) {
+  A
+}
+</pre>
+
+<p>
+In questo schema, <tt>A</tt> &egrave; un blocco di istruzioni.
+La esecuzione di questo ciclo equivale alla seguente sequenza
+di istruzioni:<p>
+
+<pre>
+instruzione1;
+if( condizione ) {
+  A;
+  istruzione2;
+  if( condizione ) {
+    A;
+    istruzione2;
+    ....
+</pre>
+
+<p>
+In altre parole, si esegue <tt>istruzione1</tt> e si controlla
+la condizione. Se la condizione &egrave; verificata, si eseguono
+prima <tt>A</tt> e poi <tt>istruzione2</tt>, si verifica di
+nuovo la condizione e si ripete da capo. In altre parole, una
+volta eseguita <tt>istruzione1</tt>, si ripete la esecuzione di
+<tt>A</tt> e <tt>istruzione2</tt>, e questo viene ripetuto ancora
+e ancora se <tt>condizione</tt> &egrave; verificata. In italiano:
+
+<p>
+<pre>
+esegui instruzione1
+se la condizione e' verificata
+allora: -esegui A
+        -esegui istruzione2
+        -se la condizione e' verificata
+         allora: .esegui A
+                 .esegui istruzione2
+                 .se la condizione e' verificata
+                  ....
+</pre>
+
+<p>
+Si noti che non &egrave; sempre possibile scrivere esplicitamente
+il blocco di istruzioni condizionali che corrisponde a un ciclo
+for. Questa traduzione &egrave; utile nel caso in cui si abbia
+qualche dubbio sul comportamento di un certo ciclo for: in questo
+caso si pu&ograve; pensare di sviluppare la espansione in
+istruzioni condizionali (fino a un certo punto) per verificare
+se il comportamento del ciclo &egrave; quello previsto.<p>
+
+Con questa definizione, &egrave; facile realizzare dei cicli nei
+quali una variabile, invece di assumere valori crescenti, prende
+valori decrescenti. Per esempio, se si vogliono stampare i numeri
+interi da 100 a 0 in ordine decrescente (si parte da 100 e si
+arriva a 0), si pu&ograve; usare un ciclo for in cui la
+<tt>istruzione2</tt> decrementa a ogni passo il valore di una
+variabile, come viene fatto nel programma
+<a href="ContaIndietro.java">ContaIndietro.java</a>:
+
+<pre>
+/*
+  Stampa gli interi da 100 a 0 in ordine decrescente.
+*/
+
+class ContaIndietro {
+  public static void main(String[] args) {
+    int x;
+
+    for(x=100; x>=0; x=x-1) {
+      System.out.println(x);
+    }
+  }
+}
+
+</pre>
+
+<p>
+Il ciclo questa volta contiene <tt>x=x-1</tt> come seconda
+istruzione. Questo vuol dire che, ad ogni passo, il valore di
+<tt>i</tt> scende di uno. Si noti l'inversione della
+condizione: dal momento che occorre terminare il ciclo quando
+<tt>x</tt> raggiunge il valore 0, e <tt>x</tt> vale pi&ugrave;
+di zero prima, la condizione che fa continuare ad eseguire il
+ciclo delve essere <tt>x>=0</tt>. Nel caso di cicli con
+incremento la condizione sarebbe stata, sempre nel caso in
+cui l'ultimo valore con cui eseguire il ciclo &egrave; 10,
+<tt>x<=10</tt>.
+
+
+
+<h4>Esempio</h4>
+
+<p>
+Stampare i valori della funzione f(x)=x<sup>3</sup>-45 per
+<tt>x</tt> che vale 100, 90, 80, ..., -100, ossia valori che
+decrescono di 10 per volta, partendo da 100 e arrivando a -100.
+Si tratta chiaramente di un problema risolubile con
+un ciclo for in cui la variabile <tt>x</tt> parte da 100,
+viene decrementata di dieci ad ogni passo, e si
+continua ad eseguire un ciclo se <tt>x</tt> &egrave; maggiore o
+uguale a -100. Il ciclo for &egrave; simile al precedente, in
+cui la istruzione che viene eseguita per prima assegna 100 alla
+variabile <tt>x</tt>, la istruzione che viene eseguita ogni volta
+&egrave; il decremento di <tt>x</tt>, e la condizione &egrave;
+<tt>x>=-100</tt>. Il programma
+<a href="ValoriDecrescenti.java">ValoriDecrescenti.java</a>
+risolve questo problema.<p>
+
+<pre>
+/*
+  Stampa i valori di una funzione con valori
+  decrescenti dall'argomento.
+*/
+
+class ValoriDecrescenti {
+  public static void main(String[] args) {
+    int x,f;
+
+    for(x=100; x>=-100; x=x-10) {
+      f=x*x-10*x+50;
+      System.out.println("Per x="+x+" la funzione vale "+f);
+    }
+  }
+}
+
+</pre>
+
+<p>
+La istruzione che viene eseguita ad ogni passo &egrave; la
+istruzione <tt>x=x-10;</tt> che decremea il contenuto di
+<tt>x</tt> di 10.
+
+
+</body>
+</html>
+

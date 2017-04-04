@@ -1,0 +1,410 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1">
+<META NAME="Generator" CONTENT="Microsoft Word 98">
+<TITLE>Esame del 1 luglio 1999</TITLE>
+<META NAME="Template" CONTENT="damore-4gb:Applications:Microsoft Office 98:Templates:Web Pages:Blank Web Page">
+</HEAD>
+<BODY LINK="#0000ff" VLINK="#800080">
+
+<B><P ALIGN="CENTER">Universit&agrave; di Roma "La Sapienza" &#151; Facolt&agrave; di Ingegneria</P>
+</B><P ALIGN="CENTER">Corso di Fondamenti di Informatica</P>
+<P ALIGN="CENTER">Corso di laurea: Ambiente e Territorio</P>
+<I><FONT SIZE=2><P ALIGN="CENTER">1 luglio 1999 (1&#170; prova)</P>
+</I></FONT><FONT SIZE=1><P ALIGN="CENTER">tempo a disposizione: 120 minuti</P>
+</FONT><FONT SIZE=2><P>&nbsp;</P>
+<B><P>Problema 1 (18 punti)</P>
+</B><P>Un progettista adotta il seguente formato per memorizzare matrici in file binari:</P>
+
+<UL>
+<LI>numero <I>R</I> di righe (intero); </LI>
+<LI>numero <I>C</I> di colonne (intero); </LI>
+<I><LI>R</I>&#183;<I>C</I> valori (razionali in virgola mobile).</LI></UL>
+
+<P>I nomi dei file sono composti da non pi&ugrave; di 20 caratteri.</P>
+<OL>
+
+<LI>Scrivere un insieme di dichiarazioni globali in C da utilizzarsi per risolvere i due punti successivi (le dichiarazioni locali potranno essere direttamente specificate nello svolgimento dei punti successivi).</LI>
+<LI>Scrivere una funzione C (o pi&ugrave;) che, ricevendo come parametri i nomi di due file contenenti matrici nel formato descritto, determini se la matrice rappresentata nel secondo file &egrave; un minore della matrice rappresentata nel primo file. In caso affermativo la funzione deve restituire la coppia di indici che individua il minore.</LI>
+<LI>Scrivere una funzione C (o pi&ugrave;) che, ricevendo come parametri il nome di un file <I>S</I> e una lista collegata di nomi di file, cancelli dalla lista gli elementi che si riferiscono a matrici che non sono minori della matrice rappresentata nel file <I>S</I>. Nello svolgimento potranno essere sfruttate funzioni costruite per risolvere il punto precedente.</LI></OL>
+
+<B><P>Esempio</P>
+</B><P>La funzione richiesta al punto 2, chiamata ad operare sui file "f1.dat" e "f2.dat", fornisce un responso positivo (la seconda matrice &egrave; minore della prima), restituendo gli indici (2,4); quando &egrave; invece chiamata ad operare sui file "f1.dat" e "f4.dat", o sui file "f5.dat" e "f2.dat", fornisce un responso negativo.</P>
+<P>La funzione richiesta al punto 3, chiamata ad operare sul file "f1.dat" e sulla lista di nomi "f2.dat", "f4.dat", "f5.dat", "f3.dat", restituisce la lista "f2.dat", "f3.dat".</P></FONT>
+<P ALIGN="CENTER"><CENTER><TABLE BORDER CELLSPACING=1 WIDTH=131>
+<TR><TD WIDTH="35%" VALIGN="TOP">
+<P ALIGN="CENTER"><FONT FACE="Arial Narrow" SIZE=1>3</FONT></TD>
+<TD WIDTH="20%" VALIGN="TOP">
+<FONT FACE="Arial Narrow" SIZE=1><P ALIGN="CENTER">4</FONT></TD>
+<TD WIDTH="46%" VALIGN="TOP" COLSPAN=2>
+<P>&nbsp;</TD>
+</TR>
+<TR><TD WIDTH="35%" VALIGN="TOP">
+<FONT FACE="Arial Narrow" SIZE=1><P ALIGN="CENTER">1.5</FONT></TD>
+<TD WIDTH="20%" VALIGN="TOP">
+<FONT FACE="Arial Narrow" SIZE=1><P ALIGN="CENTER">2.5</FONT></TD>
+<TD WIDTH="23%" VALIGN="TOP">
+<FONT FACE="Arial Narrow" SIZE=1><P ALIGN="CENTER">1.0</FONT></TD>
+<TD WIDTH="23%" VALIGN="TOP">
+<FONT FACE="Arial Narrow" SIZE=1><P ALIGN="CENTER">-2.25</FONT></TD>
+</TR>
+<TR><TD WIDTH="35%" VALIGN="TOP">
+<FONT FACE="Arial Narrow" SIZE=1><P ALIGN="CENTER">-0.625</FONT></TD>
+<TD WIDTH="20%" VALIGN="TOP">
+<FONT FACE="Arial Narrow" SIZE=1><P ALIGN="CENTER">0</FONT></TD>
+<TD WIDTH="23%" VALIGN="TOP">
+<FONT FACE="Arial Narrow" SIZE=1><P ALIGN="CENTER">0</FONT></TD>
+<TD WIDTH="23%" VALIGN="TOP">
+<FONT FACE="Arial Narrow" SIZE=1><P ALIGN="CENTER">1.2</FONT></TD>
+</TR>
+<TR><TD WIDTH="35%" VALIGN="TOP">
+<FONT FACE="Arial Narrow" SIZE=1><P ALIGN="CENTER">4.5</FONT></TD>
+<TD WIDTH="20%" VALIGN="TOP">
+<FONT FACE="Arial Narrow" SIZE=1><P ALIGN="CENTER">11.1</FONT></TD>
+<TD WIDTH="23%" VALIGN="TOP">
+<FONT FACE="Arial Narrow" SIZE=1><P ALIGN="CENTER">-9.04</FONT></TD>
+<TD WIDTH="23%" VALIGN="TOP">
+<FONT FACE="Arial Narrow" SIZE=1><P ALIGN="CENTER">-0.4</FONT></TD>
+</TR>
+<TR><TD VALIGN="TOP" COLSPAN=4>
+<FONT FACE="Arial Narrow" SIZE=1><P ALIGN="CENTER">file f1.dat</FONT></TD>
+</TR>
+</TABLE>
+</CENTER></P>
+
+<P ALIGN="CENTER"></P>
+<P ALIGN="CENTER"><CENTER><TABLE BORDER CELLSPACING=1 WIDTH=117>
+<TR><TD WIDTH="38%" VALIGN="TOP">
+<P ALIGN="CENTER"><FONT FACE="Arial Narrow" SIZE=1>2</FONT></TD>
+<TD WIDTH="29%" VALIGN="TOP">
+<FONT FACE="Arial Narrow" SIZE=1><P ALIGN="CENTER">3</FONT></TD>
+<TD WIDTH="33%" VALIGN="TOP">
+<P>&nbsp;</TD>
+</TR>
+<TR><TD WIDTH="38%" VALIGN="TOP">
+<FONT FACE="Arial Narrow" SIZE=1><P ALIGN="CENTER">1.5</FONT></TD>
+<TD WIDTH="29%" VALIGN="TOP">
+<FONT FACE="Arial Narrow" SIZE=1><P ALIGN="CENTER">2.5</FONT></TD>
+<TD WIDTH="33%" VALIGN="TOP">
+<FONT FACE="Arial Narrow" SIZE=1><P ALIGN="CENTER">1.0</FONT></TD>
+</TR>
+<TR><TD WIDTH="38%" VALIGN="TOP">
+<FONT FACE="Arial Narrow" SIZE=1><P ALIGN="CENTER">4.5</FONT></TD>
+<TD WIDTH="29%" VALIGN="TOP">
+<FONT FACE="Arial Narrow" SIZE=1><P ALIGN="CENTER">11.1</FONT></TD>
+<TD WIDTH="33%" VALIGN="TOP">
+<FONT FACE="Arial Narrow" SIZE=1><P ALIGN="CENTER">-9.04</FONT></TD>
+</TR>
+<TR><TD VALIGN="TOP" COLSPAN=3>
+<FONT FACE="Arial Narrow" SIZE=1><P ALIGN="CENTER">file f2.dat</FONT></TD>
+</TR>
+</TABLE>
+</CENTER></P>
+
+<P ALIGN="CENTER"></P>
+<P ALIGN="CENTER"><CENTER><TABLE BORDER CELLSPACING=1 WIDTH=117>
+<TR><TD WIDTH="38%" VALIGN="TOP">
+<P ALIGN="CENTER"><FONT FACE="Arial Narrow" SIZE=1>2</FONT></TD>
+<TD WIDTH="29%" VALIGN="TOP">
+<FONT FACE="Arial Narrow" SIZE=1><P ALIGN="CENTER">3</FONT></TD>
+<TD WIDTH="33%" VALIGN="TOP">
+<P>&nbsp;</TD>
+</TR>
+<TR><TD WIDTH="38%" VALIGN="TOP">
+<FONT FACE="Arial Narrow" SIZE=1><P ALIGN="CENTER">-0.625</FONT></TD>
+<TD WIDTH="29%" VALIGN="TOP">
+<FONT FACE="Arial Narrow" SIZE=1><P ALIGN="CENTER">0</FONT></TD>
+<TD WIDTH="33%" VALIGN="TOP">
+<FONT FACE="Arial Narrow" SIZE=1><P ALIGN="CENTER">0</FONT></TD>
+</TR>
+<TR><TD WIDTH="38%" VALIGN="TOP">
+<FONT FACE="Arial Narrow" SIZE=1><P ALIGN="CENTER">4.5</FONT></TD>
+<TD WIDTH="29%" VALIGN="TOP">
+<FONT FACE="Arial Narrow" SIZE=1><P ALIGN="CENTER">11.1</FONT></TD>
+<TD WIDTH="33%" VALIGN="TOP">
+<FONT FACE="Arial Narrow" SIZE=1><P ALIGN="CENTER">-9.04</FONT></TD>
+</TR>
+<TR><TD VALIGN="TOP" COLSPAN=3>
+<FONT FACE="Arial Narrow" SIZE=1><P ALIGN="CENTER">file f3.dat</FONT></TD>
+</TR>
+</TABLE>
+</CENTER></P>
+
+<FONT FACE="Arial Narrow" SIZE=1><P ALIGN="CENTER"></P></FONT>
+<P ALIGN="CENTER"><CENTER><TABLE BORDER CELLSPACING=1 WIDTH=203>
+<TR><TD WIDTH="22%" VALIGN="TOP">
+<P ALIGN="CENTER"><FONT FACE="Arial Narrow" SIZE=1>4</FONT></TD>
+<TD WIDTH="22%" VALIGN="TOP">
+<FONT FACE="Arial Narrow" SIZE=1><P ALIGN="CENTER">5</FONT></TD>
+<TD WIDTH="57%" VALIGN="TOP" COLSPAN=3>
+<P>&nbsp;</TD>
+</TR>
+<TR><TD WIDTH="22%" VALIGN="TOP">
+<FONT FACE="Arial Narrow" SIZE=1><P ALIGN="CENTER">7.8</FONT></TD>
+<TD WIDTH="22%" VALIGN="TOP">
+<FONT FACE="Arial Narrow" SIZE=1><P ALIGN="CENTER">1.5</FONT></TD>
+<TD WIDTH="17%" VALIGN="TOP">
+<FONT FACE="Arial Narrow" SIZE=1><P ALIGN="CENTER">2.5</FONT></TD>
+<TD WIDTH="20%" VALIGN="TOP">
+<FONT FACE="Arial Narrow" SIZE=1><P ALIGN="CENTER">1.0</FONT></TD>
+<TD WIDTH="20%" VALIGN="TOP">
+<FONT FACE="Arial Narrow" SIZE=1><P ALIGN="CENTER">-2.25</FONT></TD>
+</TR>
+<TR><TD WIDTH="22%" VALIGN="TOP">
+<FONT FACE="Arial Narrow" SIZE=1><P ALIGN="CENTER">1.2</FONT></TD>
+<TD WIDTH="22%" VALIGN="TOP">
+<FONT FACE="Arial Narrow" SIZE=1><P ALIGN="CENTER">-0.625</FONT></TD>
+<TD WIDTH="17%" VALIGN="TOP">
+<FONT FACE="Arial Narrow" SIZE=1><P ALIGN="CENTER">0</FONT></TD>
+<TD WIDTH="20%" VALIGN="TOP">
+<FONT FACE="Arial Narrow" SIZE=1><P ALIGN="CENTER">0</FONT></TD>
+<TD WIDTH="20%" VALIGN="TOP">
+<FONT FACE="Arial Narrow" SIZE=1><P ALIGN="CENTER">1.2</FONT></TD>
+</TR>
+<TR><TD WIDTH="22%" VALIGN="TOP">
+<FONT FACE="Arial Narrow" SIZE=1><P ALIGN="CENTER">8.1</FONT></TD>
+<TD WIDTH="22%" VALIGN="TOP">
+<FONT FACE="Arial Narrow" SIZE=1><P ALIGN="CENTER">4.5</FONT></TD>
+<TD WIDTH="17%" VALIGN="TOP">
+<FONT FACE="Arial Narrow" SIZE=1><P ALIGN="CENTER">11.1</FONT></TD>
+<TD WIDTH="20%" VALIGN="TOP">
+<FONT FACE="Arial Narrow" SIZE=1><P ALIGN="CENTER">-9.04</FONT></TD>
+<TD WIDTH="20%" VALIGN="TOP">
+<FONT FACE="Arial Narrow" SIZE=1><P ALIGN="CENTER">-0.4</FONT></TD>
+</TR>
+<TR><TD WIDTH="22%" VALIGN="TOP">
+<FONT FACE="Arial Narrow" SIZE=1><P ALIGN="CENTER">0.6</FONT></TD>
+<TD WIDTH="22%" VALIGN="TOP">
+<FONT FACE="Arial Narrow" SIZE=1><P ALIGN="CENTER">8.7</FONT></TD>
+<TD WIDTH="17%" VALIGN="TOP">
+<FONT FACE="Arial Narrow" SIZE=1><P ALIGN="CENTER">3.2</FONT></TD>
+<TD WIDTH="20%" VALIGN="TOP">
+<FONT FACE="Arial Narrow" SIZE=1><P ALIGN="CENTER">8.1</FONT></TD>
+<TD WIDTH="20%" VALIGN="TOP">
+<FONT FACE="Arial Narrow" SIZE=1><P ALIGN="CENTER">-2.1</FONT></TD>
+</TR>
+<TR><TD VALIGN="TOP" COLSPAN=5>
+<FONT FACE="Arial Narrow" SIZE=1><P ALIGN="CENTER">file f4.dat</FONT></TD>
+</TR>
+</TABLE>
+</CENTER></P>
+
+<P ALIGN="CENTER"></P>
+<P ALIGN="CENTER"><CENTER><TABLE BORDER CELLSPACING=1 WIDTH=156>
+<TR><TD WIDTH="28%" VALIGN="TOP">
+<P ALIGN="CENTER"><FONT FACE="Arial Narrow" SIZE=1>3</FONT></TD>
+<TD WIDTH="22%" VALIGN="TOP">
+<FONT FACE="Arial Narrow" SIZE=1><P ALIGN="CENTER">4</FONT></TD>
+<TD WIDTH="50%" VALIGN="TOP" COLSPAN=2>
+<P>&nbsp;</TD>
+</TR>
+<TR><TD WIDTH="28%" VALIGN="TOP">
+<FONT FACE="Arial Narrow" SIZE=1><P ALIGN="CENTER">3.1</FONT></TD>
+<TD WIDTH="22%" VALIGN="TOP">
+<FONT FACE="Arial Narrow" SIZE=1><P ALIGN="CENTER">2.1</FONT></TD>
+<TD WIDTH="25%" VALIGN="TOP">
+<FONT FACE="Arial Narrow" SIZE=1><P ALIGN="CENTER">2.09</FONT></TD>
+<TD WIDTH="25%" VALIGN="TOP">
+<FONT FACE="Arial Narrow" SIZE=1><P ALIGN="CENTER">-1.3</FONT></TD>
+</TR>
+<TR><TD WIDTH="28%" VALIGN="TOP">
+<FONT FACE="Arial Narrow" SIZE=1><P ALIGN="CENTER">2.2</FONT></TD>
+<TD WIDTH="22%" VALIGN="TOP">
+<FONT FACE="Arial Narrow" SIZE=1><P ALIGN="CENTER">-2.2</FONT></TD>
+<TD WIDTH="25%" VALIGN="TOP">
+<FONT FACE="Arial Narrow" SIZE=1><P ALIGN="CENTER">1.1</FONT></TD>
+<TD WIDTH="25%" VALIGN="TOP">
+<FONT FACE="Arial Narrow" SIZE=1><P ALIGN="CENTER">3.6</FONT></TD>
+</TR>
+<TR><TD WIDTH="28%" VALIGN="TOP">
+<FONT FACE="Arial Narrow" SIZE=1><P ALIGN="CENTER">2.4</FONT></TD>
+<TD WIDTH="22%" VALIGN="TOP">
+<FONT FACE="Arial Narrow" SIZE=1><P ALIGN="CENTER">-0.01</FONT></TD>
+<TD WIDTH="25%" VALIGN="TOP">
+<FONT FACE="Arial Narrow" SIZE=1><P ALIGN="CENTER">3.0</FONT></TD>
+<TD WIDTH="25%" VALIGN="TOP">
+<FONT FACE="Arial Narrow" SIZE=1><P ALIGN="CENTER">-1.1</FONT></TD>
+</TR>
+<TR><TD VALIGN="TOP" COLSPAN=4>
+<FONT FACE="Arial Narrow" SIZE=1><P ALIGN="CENTER">file f5.dat</FONT></TD>
+</TR>
+</TABLE>
+</CENTER></P>
+
+<P><HR SIZE=0></P>
+<B><P ALIGN="CENTER">Universit&agrave; di Roma "La Sapienza" &#151; Facolt&agrave; di Ingegneria</P>
+</B><P ALIGN="CENTER">Corso di Fondamenti di Informatica</P>
+<P ALIGN="CENTER">Corso di laurea: Ambiente e Territorio</P>
+<I><FONT SIZE=2><P ALIGN="CENTER">1 luglio 1999 (2&#170; prova)</P>
+</I></FONT><FONT SIZE=1><P ALIGN="CENTER">tempo a disposizione: 60 minuti</P>
+</FONT><FONT SIZE=2><P>&nbsp;</P>
+<P>&nbsp;</P>
+<B><P>Problema 2 (4 punti)</P>
+</B><P>In cosa consiste la metodologia di progettazione denominata "top-down"? Illustrare un esempio.</P>
+<P>&nbsp;</P>
+<B><P>Problema 3 (4 punti)</P>
+</B><P>Dato il seguente frammento di codice C:</P><DIR>
+<DIR>
+
+</FONT><PRE>#include &lt;stdio.h&gt;
+
+typedef struct e {
+&#9;int info;
+&#9;struct e *next;
+} elem;
+&nbsp;
+elem *Boh(elem *ptesta, int zz)
+{
+&#9;if(ptesta==NULL)
+&#9;&#9;return NULL;
+&#9;else if(ptesta-&gt;info==zz)
+&#9;&#9;return ptesta;
+&#9;else
+&#9;&#9;return Boh(ptesta-&gt;next, zz);
+}</PRE></DIR>
+</DIR>
+
+<FONT SIZE=2><P>discutere cosa fa (e non come lo fa) la funzione </FONT><FONT FACE="Courier" SIZE=1>Boh</FONT><FONT SIZE=2>. Cosa restituisce la chiamata </FONT><FONT FACE="Courier" SIZE=1>Boh(Boh(Boh(pelem,x),x),x)</FONT><FONT SIZE=2>, dove </FONT><FONT FACE="Courier" SIZE=1>pelem</FONT><FONT SIZE=2> ed </FONT><FONT FACE="Courier" SIZE=1>x</FONT><FONT SIZE=2> sono variabili (gi&agrave; inizializzate) rispettivamente di tipo </FONT><FONT FACE="Courier" SIZE=1>elem*</FONT><FONT SIZE=2> ed </FONT><FONT FACE="Courier" SIZE=1>int</FONT><FONT SIZE=2>?</P>
+<P>&nbsp;</P>
+<B><P>Problema 4 (4 punti)</P>
+</B><P>Date le relazioni Categorie, Negozi ed Articoli (v. tabelle esemplificative), scrivere una interrogazione SQL che costruisca gli indirizzi dei ferramenta che vendono scale ma non antenne.</P></FONT>
+<P ALIGN="CENTER"><CENTER><TABLE BORDER CELLSPACING=1 WIDTH=135>
+<TR><TD VALIGN="TOP" COLSPAN=2>
+<P ALIGN="CENTER"><B><FONT SIZE=2>Categorie</B></FONT></TD>
+</TR>
+<TR><TD WIDTH="48%" VALIGN="TOP">
+<B><FONT SIZE=2><P ALIGN="CENTER">Codice</B></FONT></TD>
+<TD WIDTH="52%" VALIGN="TOP">
+<B><FONT SIZE=2><P ALIGN="CENTER">Descrizione</B></FONT></TD>
+</TR>
+<TR><TD WIDTH="48%" VALIGN="TOP">
+<FONT SIZE=2><P ALIGN="CENTER">FE</FONT></TD>
+<TD WIDTH="52%" VALIGN="TOP">
+<FONT SIZE=2><P ALIGN="CENTER">Ferramenta</FONT></TD>
+</TR>
+<TR><TD WIDTH="48%" VALIGN="TOP">
+<FONT SIZE=2><P ALIGN="CENTER">FA</FONT></TD>
+<TD WIDTH="52%" VALIGN="TOP">
+<FONT SIZE=2><P ALIGN="CENTER">Farmacia</FONT></TD>
+</TR>
+<TR><TD WIDTH="48%" VALIGN="TOP">
+<FONT SIZE=2><P ALIGN="CENTER">DR</FONT></TD>
+<TD WIDTH="52%" VALIGN="TOP">
+<FONT SIZE=2><P ALIGN="CENTER">Drogheria</FONT></TD>
+</TR>
+<TR><TD WIDTH="48%" VALIGN="TOP">
+<FONT SIZE=2><P ALIGN="CENTER">B</FONT></TD>
+<TD WIDTH="52%" VALIGN="TOP">
+<FONT SIZE=2><P ALIGN="CENTER">Bar</FONT></TD>
+</TR>
+<TR><TD WIDTH="48%" VALIGN="TOP">
+<FONT SIZE=2><P ALIGN="CENTER">O</FONT></TD>
+<TD WIDTH="52%" VALIGN="TOP">
+<FONT SIZE=2><P ALIGN="CENTER">Ortofrutta</FONT></TD>
+</TR>
+<TR><TD WIDTH="48%" VALIGN="TOP">
+<FONT SIZE=2><P ALIGN="CENTER">...</FONT></TD>
+<TD WIDTH="52%" VALIGN="TOP">
+<FONT SIZE=2><P ALIGN="CENTER">...</FONT></TD>
+</TR>
+</TABLE>
+</CENTER></P>
+
+<P ALIGN="CENTER"></P>
+<P ALIGN="CENTER"><CENTER><TABLE BORDER CELLSPACING=1 WIDTH=217>
+<TR><TD VALIGN="TOP" COLSPAN=3>
+<P ALIGN="CENTER"><B><FONT SIZE=2>Negozi</B></FONT></TD>
+</TR>
+<TR><TD WIDTH="27%" VALIGN="TOP">
+<B><FONT SIZE=2><P ALIGN="CENTER">Categoria</B></FONT></TD>
+<TD WIDTH="21%" VALIGN="TOP">
+<B><FONT SIZE=2><P ALIGN="CENTER">Nome</B></FONT></TD>
+<TD WIDTH="52%" VALIGN="TOP">
+<B><FONT SIZE=2><P ALIGN="CENTER">Indirizzo</B></FONT></TD>
+</TR>
+<TR><TD WIDTH="27%" VALIGN="MIDDLE">
+<FONT SIZE=2><P ALIGN="CENTER">FE</FONT></TD>
+<TD WIDTH="21%" VALIGN="MIDDLE">
+<FONT SIZE=2><P ALIGN="CENTER">Rossi</FONT></TD>
+<TD WIDTH="52%" VALIGN="MIDDLE">
+<FONT SIZE=2><P>Viale Tizio 1, 00100 Roma</FONT></TD>
+</TR>
+<TR><TD WIDTH="27%" VALIGN="MIDDLE">
+<FONT SIZE=2><P ALIGN="CENTER">FA</FONT></TD>
+<TD WIDTH="21%" VALIGN="MIDDLE">
+<FONT SIZE=2><P ALIGN="CENTER">Bianchi</FONT></TD>
+<TD WIDTH="52%" VALIGN="MIDDLE">
+<FONT SIZE=2><P>Viale Caio 1, 00100 Roma</FONT></TD>
+</TR>
+<TR><TD WIDTH="27%" VALIGN="MIDDLE">
+<FONT SIZE=2><P ALIGN="CENTER">FE</FONT></TD>
+<TD WIDTH="21%" VALIGN="MIDDLE">
+<FONT SIZE=2><P ALIGN="CENTER">Verdi</FONT></TD>
+<TD WIDTH="52%" VALIGN="MIDDLE">
+<FONT SIZE=2><P>Viale Sempronio 1, 00100 Roma</FONT></TD>
+</TR>
+<TR><TD WIDTH="27%" VALIGN="MIDDLE">
+<FONT SIZE=2><P ALIGN="CENTER">...</FONT></TD>
+<TD WIDTH="21%" VALIGN="MIDDLE">
+<FONT SIZE=2><P ALIGN="CENTER">...</FONT></TD>
+<TD WIDTH="52%" VALIGN="MIDDLE">
+<FONT SIZE=2><P ALIGN="CENTER">...</FONT></TD>
+</TR>
+</TABLE>
+</CENTER></P>
+
+<FONT SIZE=2><P ALIGN="CENTER">&nbsp;</P></FONT>
+<P ALIGN="CENTER"><CENTER><TABLE BORDER CELLSPACING=1 WIDTH=132>
+<TR><TD VALIGN="TOP" COLSPAN=2>
+<P ALIGN="CENTER"><B><FONT SIZE=2>Articoli</B></FONT></TD>
+</TR>
+<TR><TD WIDTH="43%" VALIGN="TOP">
+<B><FONT SIZE=2><P ALIGN="CENTER">Negozio</B></FONT></TD>
+<TD WIDTH="57%" VALIGN="TOP">
+<B><FONT SIZE=2><P ALIGN="CENTER">Descrizione</B></FONT></TD>
+</TR>
+<TR><TD WIDTH="43%" VALIGN="TOP">
+<FONT SIZE=2><P ALIGN="CENTER">Rossi</FONT></TD>
+<TD WIDTH="57%" VALIGN="TOP">
+<FONT SIZE=2><P ALIGN="CENTER">chiodo</FONT></TD>
+</TR>
+<TR><TD WIDTH="43%" VALIGN="TOP">
+<FONT SIZE=2><P ALIGN="CENTER">Rossi</FONT></TD>
+<TD WIDTH="57%" VALIGN="TOP">
+<FONT SIZE=2><P ALIGN="CENTER">vite</FONT></TD>
+</TR>
+<TR><TD WIDTH="43%" VALIGN="TOP">
+<FONT SIZE=2><P ALIGN="CENTER">Verdi</FONT></TD>
+<TD WIDTH="57%" VALIGN="TOP">
+<FONT SIZE=2><P ALIGN="CENTER">chiodo</FONT></TD>
+</TR>
+<TR><TD WIDTH="43%" VALIGN="TOP">
+<FONT SIZE=2><P ALIGN="CENTER">Rossi</FONT></TD>
+<TD WIDTH="57%" VALIGN="TOP">
+<FONT SIZE=2><P ALIGN="CENTER">antenna</FONT></TD>
+</TR>
+<TR><TD WIDTH="43%" VALIGN="TOP">
+<FONT SIZE=2><P ALIGN="CENTER">Rossini</FONT></TD>
+<TD WIDTH="57%" VALIGN="TOP">
+<FONT SIZE=2><P ALIGN="CENTER">pane</FONT></TD>
+</TR>
+<TR><TD WIDTH="43%" VALIGN="TOP">
+<FONT SIZE=2><P ALIGN="CENTER">Bianchini</FONT></TD>
+<TD WIDTH="57%" VALIGN="TOP">
+<FONT SIZE=2><P ALIGN="CENTER">mela</FONT></TD>
+</TR>
+<TR><TD WIDTH="43%" VALIGN="TOP">
+<FONT SIZE=2><P ALIGN="CENTER">Verdini</FONT></TD>
+<TD WIDTH="57%" VALIGN="TOP">
+<FONT SIZE=2><P ALIGN="CENTER">tramezzino</FONT></TD>
+</TR>
+<TR><TD WIDTH="43%" VALIGN="TOP">
+<FONT SIZE=2><P ALIGN="CENTER">...</FONT></TD>
+<TD WIDTH="57%" VALIGN="TOP">
+<FONT SIZE=2><P ALIGN="CENTER">...</FONT></TD>
+</TR>
+</TABLE>
+</CENTER></P>
+
+<P ALIGN="CENTER"></P></BODY>
+</HTML>

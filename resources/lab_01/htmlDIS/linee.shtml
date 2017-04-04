@@ -1,0 +1,87 @@
+<!doctype html public "-//w3c//dtd html 4.0 transitional//en">
+<html>
+<head>
+<link href="java.css" rel="stylesheet" type="text/css">
+<title>Un applet che disegna delle linee</title>
+</head>
+
+<body>
+
+<h2>Un applet che disegna delle linee</h2>
+
+Vediamo ora un semplice uso degli applet, ossia quello
+di fare dei disegni geometrici. Il punto fondamentale
+&egrave; che ogni finestra &egrave; composta da un numero
+finito di punti, detti <i>pixel</i>. Per poter fare
+riferimento a un punto (per esempio per poter disegnare
+una linea che parte da un pixel e arriva a un altro)
+esiste un sistema di coordinate in Java. Una
+finestra viene vista come un piano cartesiano, in cui
+l'origine si trova in alto a destra, e le coordinate
+Y procedono scendendo invece di salire.<p>
+
+<center>
+<img src="cartesiano.jpg"><p>
+</center>
+
+Nell'esempio, &egrave; stato evidenziato il pixel che
+ha coordinate (6,5). Il pixel di coordinate (0,0) &egrave;
+quello pi&ugrave; in alto e pi&ugrave; a sinistra della
+finestra. La coordinata X aumenta muovendosi verso destra,
+mentre la coordinata Y aumenta andando verso il basso.
+Questo secondo punto va ricordato, dal momento che
+nel normale piano cartesiano la coordinata Y aumenta
+nell'altra direzione.<p>
+
+Il sistema di coordinate permette di specificare delle
+posizioni nella finestra, e quindi permette di fare
+dei disegni. Per disegnare una linea fra due punti di
+coordinate (a,b) e (c,d), in Java si usa la funzione
+<tt>drawLine(a,b,c,d)</tt>. Per poter chiamare questa
+funzione, occorre prependere l'argomento della funzione
+<tt>paint</tt>, ossia quello che sta fra parentesi
+dopo il <tt>Graphics</tt>, in questo caso <tt>g</tt>
+(ma si pu&ograve; usare un qualsiasi altro nome). Se
+usiamo lo schema visto sopra, per disegnare una linea
+si fa <tt>g.drawLine(a,b,c,d)</tt>.<p>
+
+L'applet <a href="DueLinee.java">DueLinee.java</a>
+disegna due linee.<p>
+
+<pre>
+/*
+  Un semplice applet: due linee in diagonale.
+*/
+
+import java.awt.*;
+
+public class DueLinee extends java.applet.Applet {
+  public void paint(Graphics g) {
+    g.drawLine(0, 0, 100, 100);
+    g.drawLine(0, 100, 100, 0);
+  }
+}
+
+</pre>
+
+La prima istruzione &egrave;
+<tt>g.drawLine(0, 0, 100, 100)</tt>. Questa istruzione
+disegna una linea fra i due punti di coordinate
+<tt>(0, 0)</tt> e <tt>(100, 100)</tt>.<p>
+
+La seconda istruzione &egrave;
+<tt>g.drawLine(0, 100, 100, 0)</tt>, che disegna una
+nuova linea. I due estremi hanno coordinate
+<tt>(0, 100)</tt> e <tt>(100, 0)</tt>.<p>
+
+Le due linee sono quindi in diagonale. L'esecuzione
+di questo applet produce una finestra che contiene
+il seguente disegno.<p>
+
+<center>
+<img src="DueLinee.gif">
+</center>
+
+</body>
+</html>
+

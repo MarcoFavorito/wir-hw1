@@ -1,0 +1,189 @@
+<!doctype html public "-//w3c//dtd html 4.0 transitional//en">
+<html>
+<head>
+<link href="java.css" rel="stylesheet" type="text/css">
+<title>Massimo e secondo elemento di un vettore</title>
+</head>
+
+<body>
+
+<h2>Massimo e secondo elemento di un vettore</h2>
+
+Lo scopo di questo esercizio &egrave; di trovare il massimo
+elemento in un vettore. In pi&ugrave;, si vuole anche
+l'elemento che lo segue, ossia quello che &egrave; secondo
+in ordine di grandezza dopo il massimo. Sia <tt>x</tt> questo
+vettore, per esempio:
+
+<p>
+<pre>
+int x[]={5, 38, 71, 4, 37, 70, 3, 36, 69, 2, 35, 68, 1, 34, 67, 0, 33, 66, 99, 32, 65};
+</pre> 
+
+<p>
+Trovare l'elemento massimo &egrave; stato gi&agrave; fatto.
+Il problema &egrave; solo quello di trovare l'elemento che
+lo segue. &Egrave; chiaro che dobbiamo analizzare uno per
+volta tutti gli elementi del vettore, ed &egrave; quindi
+necessario usare un ciclo. Per trovare effettivamente il
+massimo e il secondo elemento, usiamo la tecnica solita:
+
+<ol>
+
+<li>
+facciamo una prima ipotesi su quali sono il massimo e il
+secondo;
+
+<li>
+a ogni passo del ciclo, verifichiamo se la ipotesi
+&egrave; effettivamente valida, altrimenti correggiamo
+i valori di ipotesi;
+
+<li>
+alla fine del ciclo i valori di massimo e secondo risultano
+per forza corretti
+
+</ol>
+
+<p>
+Il primo passo &egrave; quello di considerare solo i primi
+due elementi del vettore, e di trovare il massimo e il
+secondo su di essi. Chiaramente, quello maggiore dei due
+&egrave; il massimo, mentre l'altro &egrave; il secondo.
+Memorizziamo quindi nelle variabili <tt>max</tt> e
+<tt>sec</tt> il massimo corrente e il secondo corrente.
+Questo primo passo viene eseguito dal seguente codice:
+
+<p>
+<pre>
+    if ( x[0]>x[1] ) {
+      max=x[0];
+      sec=x[1];
+    }
+    else {
+      max=x[1];
+      sec=x[0];
+    }
+</pre>
+
+<p>
+Ora si tratta di controllare se l'ipotesi &egrave; ancora
+valida ad ogni passo del ciclo. Quando si analizza un
+elemento <tt>x[i]</tt> del vettore, possono presentarsi
+tre situazioni:
+
+<ol>
+
+<li>
+<tt>x[i]</tt> &egrave; minore sia di <tt>max</tt> che
+di <tt>sec</tt>: in questo caso, l'ipotesi che <tt>max</tt>
+e <tt>sec</tt> siano i due massimi elementi del vettore
+non &egrave; stata smentita;
+
+<li>
+<tt>x[i]</tt> &egrave; maggiore del secondo ma minore del
+massimo: l'ipotesi che <tt>max</tt> sia il massimo elemento
+del vettore continua a valore, ma non vale pi&ugrave;
+l'ipotesi che <tt>sec</tt> sia il secondo; infatti, il
+massimo &egrave; <tt>max</tt>, ma il secondo trovato
+finora &egrave; <tt>x[i]</tt>; quindi, si copia il valore
+di <tt>x[i]</tt> al posto di <tt>sec</tt>;
+
+<li>
+<tt>x[i]</tt> &egrave; maggiore sia di <tt>max</tt> che
+di <tt>sec</tt>; in questa situazione, i massimi elementi
+del vettore trovati finora sono, in ordine:
+<tt>x[i]</tt>, <tt>max</tt> e <tt>sec</tt>; quindi, i due
+elementi maggiori sono <tt>x[i]</tt> e <tt>max</tt>. In
+altre parole, il nuovo massimo &egrave; <tt>x[i]</tt>
+mentre il nuovo secondo &egrave; <tt>max</tt>; quindi,
+nella variabile <tt>max</tt> ci va messo il valore di
+<tt>x[i]</tt>, mentre in <tt>sec</tt> ci va il vecchio
+valore di <tt>max</tt>.
+
+</ol>
+
+<p>
+Il codice che realizza un ciclo fatto in questo modo &egrave;
+il seguente:
+
+<pre>
+    for(i=2; i<=x.length-1; i=i+1) {
+
+                /* x[i] e' maggiore del massimo corrente */
+      if( x[i]>max ) { 
+        sec=max;
+        max=x[i];
+      }
+
+		/* x[i] e' compreso fra il massimo corrente e il secondo */
+      if( x[i]<=max && x[i]>sec ) {
+        sec=x[i];
+      }
+    }
+</pre>
+
+<p>
+Alla fine della esecuzione del ciclo, le variabili <tt>max</tt>
+e <tt>sec</tt> contengono i due massimi elementi del vettore, in
+ordine. Questo &egrave; garantito dal fatto che, ad ogni passo,
+o l'ipotesi precedente &egrave; stata confermata, oppure una
+eccezione ha permesso di modificare l'ipotesi per tenere conto
+di un nuovo elemento del vettore.
+
+<p>
+Il codice completo del programma
+<a href="MassimoSecondo.java">MassimoSecondo.java</a>
+&egrave; qui sotto.
+
+<p>
+<pre>
+/*
+  Trova l'elemento massimo di un vettore, e poi quello
+  subito inferiore
+*/
+
+class MassimoSecondo {
+  public static void main(String[] args) {
+    int x[]={5, 38, 71, 4, 37, 70, 3, 36, 69, 2, 35, 68, 1, 34, 67, 0, 33, 66, 99, 32, 65};
+    int max, sec;
+    int i;
+
+		/* assumiamo che i due elementi massimi siano i primi due */
+    if ( x[0]>x[1] ) {
+      max=x[0];
+      sec=x[1];
+    }
+    else {
+      max=x[1];
+      sec=x[0];
+    }
+
+		/* scansione del vettore */
+    for(i=2; i<=x.length-1; i=i+1) {
+
+		/* se un elemento del vettore e' maggiore del massimo,
+		   allora e' il nuovo massimo, e il vecchio massimo
+		   diventa il secondo */
+      if( x[i]>max ) { 
+        sec=max;
+        max=x[i];
+      }
+
+		/* se un elemento non e' il massimo, ma e' maggiore del
+		   secondo, allora e' il nuovo secondo */
+      if( x[i]<=max && x[i]>sec ) {
+        sec=x[i];
+      }
+    }
+
+    System.out.println("Massimo= "+max);
+    System.out.println("Secondo= "+sec);
+  }
+}
+
+</pre>
+
+</body>
+</html>
+

@@ -1,0 +1,435 @@
+<html>
+<head>
+   <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <meta name="GENERATOR" content="Mozilla/4.7 [en] (X11; I; SunOS 5.7 sun4u) [Netscape]">
+   <title>Corso di Linguaggi e Traduttori</title>
+</head>
+<body text="#000000" bgcolor="#FFFFFF" link="#0000EE" vlink="#CC33CC" alink="#FF0000">
+
+<center>
+<h1>Corso di Linguaggi e Traduttori</h1></center>
+
+<center>
+<h2>a.a. 2001/2002</h2></center>
+
+<hr WIDTH="100%">
+
+<h2>Lezioni svolte</h2>
+
+I riferimenti sono relativi al testo di G. Bruno, <i>Linguaggi formali
+e compilatori </i>(UTET)
+
+<ol>
+<li>
+<b>Lezione del 1/10/2001</b> [Cap. 1]
+
+<ul>
+<li>
+Presentazione del corso</li>
+
+<li>
+Progetto di un traduttore:
+
+<ul>
+<li>
+struttura di un traduttore</li>
+
+<li>
+linguaggi formali</li>
+
+<li>
+distinzione tra analisi dell'input e sintesi dell'output</li>
+
+<li>
+distinzione tra sintassi e semantica di un linguaggio</li>
+</ul></li>
+</ul>
+</li>
+
+<li>
+<b>Lezione del 2/10/2001</b> [Sez. 2.1, 3.1]
+
+<ul>
+<li>
+Analisi lessicale 1:
+
+<ul>
+<li>
+ruolo dell'analisi lessicale</li>
+
+<li>
+distinzione lessico-sintassi</li>
+
+<li>
+linguaggi formali: operazioni su stringhe e su linguaggi</li>
+
+</ul></li>
+</ul>
+</li>
+
+<li>
+<b>Lezione del 8/10/2001</b> [Sez. 3.1, 3.2, 3.3, 3.5]
+
+<ul>
+<li>
+Analisi lessicale 2: espressioni regolari e automi a stati finiti
+
+<ul>
+
+<li>
+espressioni regolari</li>
+
+<li>
+automi a stati finiti</li>
+
+<li>
+automi deterministici (DFA) e nondeterministici (NFA)</li>
+
+<li>
+equivalenza tra NFA e DFA</li>
+
+</ul></li>
+</ul>
+</li>
+
+<li>
+<b>Lezione del 9/10/2001</b> [Sez. 3.3, 3.5, 2.2]
+
+<ul>
+<li>
+Analisi lessicale 3: caratteristiche di un analizzatore lessicale
+
+<ul>
+
+<li>costruzione del NFA corrispondente ad una espressione regolare</li>
+
+<li>equivalenza tra espressioni regolari e automi a stati finiti</li>
+
+<li>esempi di linguaggi non regolari</li>
+
+<li>caratteristiche di un analizzatore lessicale</li>
+
+</ul></li>
+
+</ul>
+</li>
+
+<li>
+<b>Lezione del 12/10/2001</b> [Sez. 4.12]
+
+<ul>
+<li>FLEX:
+<ul>
+<li>generalit&agrave; </li>
+<li>modalit&agrave; di utilizzo </li>
+<li>struttura e sintassi di una specifica FLEX </li>
+<li>caratteristiche dell'analizzatore lessicale generato da FLEX </li>
+</ul></li>
+</ul>
+</li>
+
+<li>
+<b><a href="ese1/">Esercitazione del 12/10/2001</a></b> [Sez. 4.12]
+<ul>
+<li>
+Uso di FLEX per l'analisi lessicale</li>
+</ul>
+</li>
+
+<li>
+<b>Lezione del 15/10/2001 </b>[Sez. 3.6]
+
+<ul>
+
+<li>Analisi lessicale 4:
+<ul>
+<li>uso degli stati in FLEX</li>
+</ul>
+</li>
+
+<li>
+Analisi sintattica 1: generalit&agrave;, albero sintattico
+
+<ul>
+<li>
+ruolo dell'analisi sintattica</li>
+
+<li>
+grammatiche context-free:
+
+<ul>
+<li>
+derivazione (indiretta)</li>
+
+<li>
+derivazioni canoniche (sinistra e destra)</li>
+
+<li>riduzione (destra e sinistra) </li>
+
+<li>
+albero sintattico</li>
+
+<li>
+grammatiche ambigue</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+
+<li>
+<b>Lezione del 16/10/2001 </b>[Sez. 4.1, 4.2]
+
+<ul>
+
+<li>
+Analisi top-down 1: generalit&agrave;
+
+<ul>
+<li>
+analisi top-down: definizione</li>
+
+<li>
+trasformazioni delle grammatiche per l'analisi top-down:
+
+<ul>
+<li>
+fattorizzazione sinistra</li>
+
+<li>
+eliminazione della ricorsione sinistra diretta</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+
+<li>
+<b>Lezione del 19/10/2001</b> [Sez.&nbsp; 4.5]
+
+<ul>
+<li>
+Analisi top-down 2:
+<ul>
+<li>analisi top-down guidata da tabella</li>
+
+<li>tabella per il parsing top-down</li>
+
+<li>costruzione della tabella di parsing (NON IN PROGRAMMA PER GLI STUDENTI
+DEL DIPLOMA):
+<ul>
+  <li>algoritmo per la costruzione degli insiemi FIRST e FOLLOW</li>
+  <li>algoritmo per costruire la tabella di parsing</li>
+</ul>
+</li>
+
+<li>grammatiche LL(1)</li>
+
+<li>analisi top-down ricorsiva: costruzione di un parser predittivo
+ricorsivo</li>
+</ul>
+</li>
+</ul>
+</li>
+
+<li>
+<b><a href="ese2/">Esercitazione del 19/10/2001</a></b>
+<ul>
+<li>
+<a href="ese2/">Realizzazione in C/FLEX di un parser
+predittivo ricorsivo</a></li>
+</ul>
+</li>
+
+<li>
+<b>Lezione del 22/10/2001</b> [Sez. 4.3]
+
+<ul>
+<li>
+Analisi top-down 2: analisi non ricorsiva
+<ul>
+<li>
+algoritmo per l'analisi top-down non ricorsiva</li>
+</ul>
+</li>
+</ul>
+</li>
+
+<li>
+<b>Lezione del 23/10/2001 </b>[Sez. 4.6]
+
+<ul>
+<li>Analisi bottom-up 1
+
+<ul>
+<li>analisi bottom-up: generalit&agrave;</li>
+
+<li>definizioni: forma di frase riducibile, prefisso LR riducibile,
+prefisso LR, prefisso LR candidato</li>
+
+<li>analizzatore LR: algoritmo</li>
+</ul>
+</li>
+</ul>
+</li>
+
+<li>
+<b>Lezione del 29/10/2001 </b>[Sez. 4.7]
+
+<ul>
+<li>Analisi bottom-up 2
+
+<ul>
+<li>costruzione delle tabelle SLR(1):
+
+<ul>
+
+<li>regole puntate</li>
+
+<li>algoritmo per la costruzione dell'automa dei prefissi LR(0) </li>
+
+<li>algoritmo per la costruzione della tabella SLR(1) </li>
+
+<li>esempio di generazione di tabella SLR(1) ed esecuzione dell'analizzatore
+LR</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+
+<li>
+<b>Lezione del 30/10/2001 </b>[Sez. 4.8, 4.9]
+
+<ul>
+<li>Analisi bottom-up 3
+
+<ul>
+<li>costruzione della tabella LR(1):
+<ul>
+<li>prefissi LR(1)</li>
+<li>regole puntate LR(1)</li>
+<li>costruzione dell'automa dei prefissi LR(1)</li>
+<li>costruzione della tabella LR(1)</li>
+</ul></li>
+<li>costruzione della tabella LALR(1) (cenni) </li>
+</ul>
+</li>
+</ul></li>
+
+<li>
+<b>Lezione del 2/11/2001 </b>[Sez. 4.13]
+
+<ul>
+<li>Analisi bottom-up 4
+<ul>
+<li>potere espressivo delle grammatiche</li>
+<li>linguaggi non caratterizzabili da grammatiche context-free</li>
+</ul></li>
+<li>BISON:
+<ul>
+<li>generalit&agrave; </li>
+<li>modalit&agrave; di utilizzo </li>
+<li>struttura e sintassi di una specifica BISON </li>
+<li>caratteristiche dell'analizzatore sintattico generato da BISON </li>
+<li>gestione dei conflitti SHIFT-REDUCE e REDUCE-REDUCE in BISON </li>
+</ul></li>
+</ul></li>
+
+<li>
+<b><a href="ese3/">Esercitazione del 2/11/2001</a></b>
+
+<ul>
+<li>
+<a href="ese3/">Esercitazione: realizzazione in BISON di un parser bottom-up</a></li>
+</ul></li>
+
+<li><b>Lezione del 5/11/2001 </b>[Sez. 5.1]
+
+<ul>
+<li>Traduzione guidata dalla sintassi 1
+
+<ul>
+<li>albero della sintassi astratta</li>
+<li>traduzione con o senza albero sintattico</li>
+
+<li>grammatiche ad attributi:
+<ul>
+<li>attributi, azioni semantiche, regole semantiche</li>
+<li>attributi sintetizzati: esempio</li>
+<li>attributi ereditati: esempio</li>
+<li>valutazione degli attributi: problematiche</li>
+<li>esempio di grammatica ad attributi non adatta all'analisi top-down
+o bottom-up</li>
+</ul></li>
+</ul></li>
+</ul></li>
+
+<li><b>Lezione del 6/11/2001 </b>[Sez. 5.2]
+<ul>
+<li>Traduzione guidata dalla sintassi 2
+<ul>
+<li>grammatiche ad S-attributi: definizione</li>
+<li>grammatiche ad S-attributi: esempio</li>
+<li>grammatiche ad L-attributi: definizione</li>
+<li>grammatiche ad L-attributi: esempio</li>
+<li>analisi top-down per grammatiche ad L-attributi ed S-attributi</li>
+<li>esempio di parser predittivo ricorsivo con L-attributi e S-attributi</li>
+</ul></li>
+</ul></li>
+
+<li><b>Lezione del 9/11/2001 </b>[Sez. 5.3]
+<ul>
+<li>Traduzione guidata dalla sintassi 3
+<ul>
+<li>analisi bottom-up per grammatiche ad S-attributi:
+<ul>
+<li>parser shift-reduce con stack semantico per S-attributi</li>
+<li>esempio di funzionamento del parser shift-reduce</li>
+</ul></li>
+</ul></li>
+</ul></li>
+
+<li>
+<b><a href="ese4/">Esercitazione del 9/11/2001</a></b>
+<ul>
+<li><a href="ese4/">esercitazione 4: uso degli attributi in BISON</a></li>
+</ul></li>
+
+<li><b>Lezione del 12/11/2001 </b>[Sez. 1.1]
+<ul>
+<li>Progetto di compilatori 1
+<ul>
+<li>architettura dei compilatori</li>
+<li>bootstrapping</li>
+<li>uso di Java e C++</li>
+</ul></li>
+</ul></li>
+
+<li><b>Lezione del 13/11/2001 </b>[Sez. 7.1, 8.1]
+<ul>
+<li>Progetto di compilatori 2
+<ul>
+<li>analisi semantica: generalit&agrave;</li>
+<li>tabella dei simboli</li>
+<li>verifiche di correttezza semantica</li>
+<li>semantica statica e semantica dinamica</li>
+<li>generazione del codice intermedio</li>
+</ul></li>
+</ul></li>
+
+<li>
+<b><a href="ese5/">Esercitazione del 16/11/2001</a></b>
+<ul>
+<li><a href="ese5/">Esercitazione 5: parser per mini-HTML</a></li>
+</ul></li>
+
+</ol>
+
+<hr WIDTH="100%">
+
+</body>
+</html>

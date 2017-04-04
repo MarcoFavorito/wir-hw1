@@ -1,0 +1,226 @@
+<!doctype html public "-//w3c//dtd html 4.0 transitional//en">
+<html>
+<head>
+<link href="java.css" rel="stylesheet" type="text/css">
+<title>Java</title>
+</head>
+
+<body>
+
+
+<h1>Matrici</h1>
+
+
+
+<h2>Matrici: introduzione</h2>
+
+Le <i>matrici</i> sono insiemi di variabili, in cui ogni
+variabile &egrave; identificata all'interno della matrice
+da indici interi. Si tratta di una estensione dei vettori:
+mentre un vettore <tt>v</tt> &egrave; un gruppo di
+variabili <tt>v[0], v[1], v[2],...</tt>, una matrice &egrave;
+sempre composta da pi&ugrave; variabili, ma questa volta
+le variabili sono
+<tt>v[0][0], v[0][1], v[0][2], ... v[1][0], v[1][1]...</tt>.
+In altre parole, mentre nei vettori un solo valore intero
+identifica una variabile, nelle matrici le variabili sono identificate
+da <i>due</i> valori interi. Quindi, data una matrice <tt>m</tt>
+e due numeri interi <tt>i</tt> e <tt>j</tt>, questi identificano
+la variabile <tt>m[i][j]</tt> nella matrice.<p>
+
+Il modo pi&ugrave; comodo di visualizzare una matrice <tt>m</tt>
+&egrave; quello di disporre le variabili che la compongono
+in una griglia, come segue:
+
+<p>
+<center>
+<table cellpadding=10>
+<tr>
+<td><tt>m[0][0]</tt></td>
+<td><tt>m[0][1]</tt></td>
+<td><tt>m[0][2]</tt></td>
+<td><tt>...</tt></td>
+</tr>
+<tr>
+<td><tt>m[1][0]</tt></td>
+<td><tt>m[1][1]</tt></td>
+<td><tt>m[1][2]</tt></td>
+<td><tt>...</tt></td>
+</tr>
+<tr>
+<td><tt>m[2][0]</tt></td>
+<td><tt>m[2][1]</tt></td>
+<td><tt>m[2][2]</tt></td>
+<td><tt>...</tt></td>
+</tr>
+<tr>
+<td><tt>...</tt></td>
+</tr>
+</table>
+</center>
+
+<p>
+Tutte le variabili in cui il primo intero vale 0 si trovano
+nella prima riga, mentre tutte quelle in cui vale 1 si trovano
+nella seconda riga, ecc. Per questa ragione, il primo valore
+viene detto <i>indice di riga</i>. Dato che tutti gli elementi
+delle colonne hanno lo stesso valore del secondo intero, questo
+viene detto <i>indice di colonna</i>. Quindi, l'elemento della
+ matrice <tt>m</tt> che ha indice di riga 8 e indice di colonna
+4 &egrave; la variabile <tt>m[8][4]</tt>.
+
+<p>
+Per poter utilizzare una matrice &egrave; necessario dire
+di quanti elementi &egrave; fatta. In particolare, si deve
+dire di quante righe e quante colonne &egrave; composta.
+Inoltre, va specificato il tipo delle variabili che la
+compongono (come per i vettori, tutte le variabili devono
+essere dello stesso tipo). Nel caso delle matrici intere,
+la dichiarazione &egrave; quella che segue:<p>
+
+<tt>
+&nbsp;&nbsp;int <i>nomematrice</i>[][]
+= new int[<i>numero_righe</i>][<i>numero_colonne</i>];
+</tt><p>
+
+Per esempio, per dichiarare una matrice <tt>a</tt> che
+ha 5 righe e 8 colonne, la dichiarazione diventa:
+
+<pre>
+  int a[][]=new int[5][8];
+</pre>
+
+Si ricordi che gli indici dei vettori e delle matrici partono
+dal valore 0. Quindi, un vettore <tt>v</tt> di 5 elementi
+contiene le variabili da <tt>v[0]</tt> a <tt>v[4]</tt>. La
+stessa regola vale per le matrici, per cui nella dichiarazione
+di sopra il primo elemento della matrice <tt>a</tt> &egrave;
+<tt>a[0][0]</tt>, mentre l'elemento che ha indici di riga
+e colonna pi&ugrave; grandi &egrave; <tt>a[4][7]</tt>. In
+altre parole, una matrice con 5 righe e 8 colonne contiene
+delle variabili organizzate in righe, e ogni riga &egrave;
+identificata da un numero da 0 a 4, mentre le colonne vanno
+da 0 a 7. Detto in altri termini ancora, il massimo valore
+dell'indice di riga &egrave; il numero di righe meno uno, e
+lo stesso vale per le colonne.<p>
+
+Il seguente programma
+<a href="Matrici.java">Matrici.java</a>
+effettua queste funzioni: prima dichiara una matrice di
+dimensioni 10 e 10, poi mette 0 in tutte le sue variabili,
+e poi assegna -3 all'elemento che ha indice di riga 3 e
+indice di colonna 5, e infine mette 12 nell'elemento che
+ha indice di riga 9 e indice di colonna 9. Dopo queste
+operazioni, la matrice viene stampata. Per stampare la
+matrice, si stampa una riga per volta. Usiamo quindi una
+variabile intera <tt>i</tt> che deve andare da 0 a 9: per
+ogni valore si stampa la riga <tt>i</tt>-esima della
+matrice. Per fare questo, usiamo un altro ciclo interno
+che, per ogni valore dell'indice di riga <tt>i</tt>, fa
+una scansione di tutti gli elementi della riga. Per
+evitare di andare a capo dopo ogni valore stampato usiamo
+la funzione <tt>System.out.print</tt>, che stampa senza
+andare a capo. Alla fine della stampa di ogni riga &egrave;
+per&ograve; necessario andare a capo, per cui usiamo la
+istruzione <tt>System.out.println</tt>.<p>
+
+<pre>
+/*
+  Un programma che usa una matrice.
+*/
+
+class Matrici {
+  public static void main(String[] args) {
+    int a[][]=new int[10][10];
+    int i, j;
+
+    for(i=0; i<=9; i=i+1) {
+      for(j=0; j<=9; j=j+1) {
+        a[i][j]=0;
+      }
+    }
+
+    a[3][5]=-3;
+    a[9][9]=12;
+
+    for(i=0; i<=9; i=i+1) {
+      for(j=0; j<=9; j=j+1) {
+        System.out.print(a[i][j]+" ");
+      }
+      System.out.println("");
+    }
+  }
+}
+
+
+</pre>
+
+
+</body>
+
+
+
+
+<h2>Grafico di una funzione usando una matrice</h2>
+
+<hr>
+
+<a href="MatriceFunzione.java">MatriceFunzione.java</a>
+
+<p>
+
+<pre>
+/*
+  Grafico di una funzione, usando una matrice.
+*/
+
+class MatriceFunzione {
+  public static void main(String[] args) {
+    int f,x;
+    int mat[][]=new int[100][40];
+    int i,j;
+
+	/* inizialmente, tutti gli elementi stanno a 0 */
+    for(i=0; i<=99; i=i+1) {
+      for(j=0; j<=39; j=j+1) {
+         mat[i][j]=0;
+      }
+    }
+
+	/* valori della funzione */
+    for(x=0; x<=39; x=x+1) {
+      f=(x*x+3*x+2)/10;
+
+      if( (f>=0) && (f<=99) ) {
+        mat[99-f][x]=1;
+      }
+    }
+
+	/* stampa la matrice */
+    for(i=0; i<=99; i=i+1) {
+      for(j=0; j<=39; j=j+1) {
+         if( mat[i][j]==0 ) {
+           System.out.print(" ");
+         }
+         else {
+           System.out.print("*");
+         }
+      }
+      System.out.println("");
+    }
+  }
+}
+
+</pre>
+
+</body>
+
+
+prodotto fra matrici
+dominio di definizione di una funzione
+determinante di una matrice
+
+</body>
+
+</body>
+</html>

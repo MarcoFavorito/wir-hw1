@@ -1,0 +1,59 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1">
+<META NAME="Generator" CONTENT="Microsoft Word 98">
+<TITLE>Testi esame Fondamenti di Informatica - II parte</TITLE>
+<META NAME="Template" CONTENT="damore-4gb:Applications:Microsoft Office 98:Templates:Web Pages:Blank Web Page">
+</HEAD>
+<BODY LINK="#0000ff" VLINK="#800080">
+
+<P ALIGN="CENTER"><DIV ALIGN="CENTER"><B><FONT FACE="Times">Universit&agrave; di Roma "La Sapienza"<BR>
+Facolt&agrave; di Ingegneria <BR>
+Corso di Fondamenti di Informatica <BR>
+Corso di Laurea: Ambiente e Territorio</B> <BR>
+Appello del <B>15 febbraio 2000</B> &#150; 2&#170; prova scritta <BR>
+<EM>tempo a disposizione: 1 ora</DIV>
+</FONT></EM><FONT FACE="Times" COLOR="#ff0000"><P ALIGN="CENTER"><HR ALIGN="RIGHT" SIZE=0>
+</FONT><B><FONT FACE="Times"><P>Problema 2 (4 punti)</B> Illustrare le qualit&agrave; del software "correttezza" ed "efficienza".</P>
+<B><P>Problema 3 (4 punti)</B> Con riferimento al seguente tipo C:</P>
+</FONT><FONT SIZE=1><CODE><PRE>&nbsp;&nbsp;struct elem {
+&nbsp;&nbsp;&nbsp;&nbsp;unsigned long int info;
+&nbsp;&nbsp;&nbsp;&nbsp;struct elem *next;
+&nbsp;&nbsp;};</PRE>
+</FONT></CODE><FONT FACE="Times"><P>&nbsp;<BR>
+scrivere un programma C <I>completo</I> che costruisca una lista di quattro elementi, in cui il campo </FONT><CODE>info</CODE><FONT FACE="Times"> dell'elemento di posto <I>i</I> (<I>i</I>=1, 2, 3, 4) contiene il valore <I>i</I>! (<I>i</I> fattoriale).</P>
+<B><P>Problema 4 (4 punti)</B> Una societ&agrave; gestisce i propri ordini tramite un DBMS relazionale in cui sono presenti le seguenti tabelle:</P>
+
+<UL>
+<LI>Ordini(progressivo, data_emissione, codice_articolo, descrizione_articolo, codice_fornitore, prezzo_unitario, quantit&agrave;, data_consegna), in cui</LI>
+
+<UL>
+<LI>progressivo &egrave; il numero progressivo dell'ordine emesso;</LI>
+<LI>data_emissione &egrave; la data di invio dell'ordine al fornitore;</LI>
+<LI>codice_articolo &egrave; un codice che identifica l'articolo ordinato;</LI>
+<LI>descrizione_articolo &egrave; un breve testo che descrive l'articolo ordinato;</LI>
+<LI>codice_fornitore &egrave; un codice che identifica il fornitore;</LI>
+<LI>prezzo_unitario &egrave; il prezzo unitario dell'articolo ordinato;</LI>
+<LI>quantit&agrave; indica il numero di articoli (fra loro identici) ordinati;</LI>
+<LI>data_consegna &egrave; la data in cui la consegna &egrave; stata effettuata o, in alternativa, la data di presunta consegna.</LI></UL>
+
+<LI>Fornitori(codice_fornitore, nome_legale, indirizzo), in cui</LI>
+
+<UL>
+<LI>codice_fornitore (v. sopra);</LI>
+<LI>nome_legale &egrave; il nome legale del fornitore;</LI>
+<LI>indirizzo &egrave; l'indirizzo completo del fornitore;</LI></UL>
+
+<LI>Magazzino(codice_articolo, descrizione_articolo, quantit&agrave;_presente, quantit&agrave;_minima), in cui</LI>
+
+<UL>
+<LI>codice_articolo (v. sopra);</LI>
+<LI>descrizione_articolo (v. sopra);</LI>
+<LI>quantit&agrave;_presente &egrave; il numero di articoli di tipo codice_articolo (fra loro identici) effettivamente presenti in magazzino;</LI>
+<LI>quantit&agrave;_minima &egrave; il <I>minimo</I> numero di articoli di tipo codice_articolo (fra loro identici) di cui &egrave; necessaria la presenza in magazzino.</LI></UL>
+</UL>
+
+<P>Scrivere una interrogazione SQL che costruisca una tabella contenente la descrizione degli articoli "sotto scorta" (di cui cio&egrave; vi &egrave; in magazzino una quantit&agrave; inferiore al minimo necessario), il nome legale dei fornitori (gi&agrave; presenti nella base di dati; assumere che nella tabella Ordini la coppia (codice_articolo, codice_fornitore) sia chiave) presso cui &egrave; possibile rifornirsi di tali articoli e il prezzo unitario.</P>
+<P ALIGN="CENTER"><HR ALIGN="RIGHT" SIZE=0></P>
+</FONT><FONT SIZE=1><ADDRESS ALIGN="CENTER">Orali e verbalizzazioni: mercoled&igrave; 16/2/00, h 11, Via Salaria 113, II piano</ADDRESS></FONT></BODY>
+</HTML>

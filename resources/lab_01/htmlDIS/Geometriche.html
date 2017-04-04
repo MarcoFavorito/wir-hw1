@@ -1,0 +1,908 @@
+<!doctype html public "-//w3c//dtd html 4.0 transitional//en">
+<html>
+<head>
+<link href="java.css" rel="stylesheet" type="text/css">
+<title>Java</title>
+</head>
+
+<body>
+
+
+<h1>Figure geometriche</h1>
+
+
+
+<h2>Un applet che disegna delle linee</h2>
+
+Vediamo ora un semplice uso degli applet, ossia quello
+di fare dei disegni geometrici. Il punto fondamentale
+&egrave; che ogni finestra &egrave; composta da un numero
+finito di punti, detti <i>pixel</i>. Per poter fare
+riferimento a un punto (per esempio per poter disegnare
+una linea che parte da un pixel e arriva a un altro)
+esiste un sistema di coordinate in Java. Una
+finestra viene vista come un piano cartesiano, in cui
+l'origine si trova in alto a destra, e le coordinate
+Y procedono scendendo invece di salire.<p>
+
+<center>
+<img src="cartesiano.jpg"><p>
+</center>
+
+Nell'esempio, &egrave; stato evidenziato il pixel che
+ha coordinate (6,5). Il pixel di coordinate (0,0) &egrave;
+quello pi&ugrave; in alto e pi&ugrave; a sinistra della
+finestra. La coordinata X aumenta muovendosi verso destra,
+mentre la coordinata Y aumenta andando verso il basso.
+Questo secondo punto va ricordato, dal momento che
+nel normale piano cartesiano la coordinata Y aumenta
+nell'altra direzione.<p>
+
+Il sistema di coordinate permette di specificare delle
+posizioni nella finestra, e quindi permette di fare
+dei disegni. Per disegnare una linea fra due punti di
+coordinate (a,b) e (c,d), in Java si usa la funzione
+<tt>drawLine(a,b,c,d)</tt>. Per poter chiamare questa
+funzione, occorre prependere l'argomento della funzione
+<tt>paint</tt>, ossia quello che sta fra parentesi
+dopo il <tt>Graphics</tt>, in questo caso <tt>g</tt>
+(ma si pu&ograve; usare un qualsiasi altro nome). Se
+usiamo lo schema visto sopra, per disegnare una linea
+si fa <tt>g.drawLine(a,b,c,d)</tt>.<p>
+
+L'applet <a href="DueLinee.java">DueLinee.java</a>
+disegna due linee.<p>
+
+<pre>
+/*
+  Un semplice applet: due linee in diagonale.
+*/
+
+import java.awt.*;
+
+public class DueLinee extends java.applet.Applet {
+  public void paint(Graphics g) {
+    g.drawLine(0, 0, 100, 100);
+    g.drawLine(0, 100, 100, 0);
+  }
+}
+
+</pre>
+
+La prima istruzione &egrave;
+<tt>g.drawLine(0, 0, 100, 100)</tt>. Questa istruzione
+disegna una linea fra i due punti di coordinate
+<tt>(0, 0)</tt> e <tt>(100, 100)</tt>.<p>
+
+La seconda istruzione &egrave;
+<tt>g.drawLine(0, 100, 100, 0)</tt>, che disegna una
+nuova linea. I due estremi hanno coordinate
+<tt>(0, 100)</tt> e <tt>(100, 0)</tt>.<p>
+
+Le due linee sono quindi in diagonale. L'esecuzione
+di questo applet produce una finestra che contiene
+il seguente disegno.<p>
+
+<center>
+<img src="DueLinee.gif">
+</center>
+
+</body>
+
+
+
+
+<h2>Disegna una griglia</h2>
+
+Si vuole disegnare una griglia, ossia un quadrato suddiviso
+in altri quadrati pi&ugrave; piccoli, tutti della stessa
+dimensione.<p>
+
+La istruzione di stampa della linea in questo caso &egrave;
+sufficente. Si tratta infatti di disegnare una serie di 
+linee verticali e una serie di linee orizzontali.
+Prendiamo per esempio le linee verticali. Supponiamo che la
+dimensione (larghezza e altezza) totale della griglia sia
+200, e che i quadratini devono avere lato 10. Allora, le
+linee verticali sono fatte come nel disegno, in cui sono
+riportate anche le coordinate dei punti estremi di ogni
+linea.<p>
+
+<center>
+<img src="grigliaverticali.jpg">
+</center>
+
+A parole: la prima linea va da (0,0) a (0,200). La seconda
+linea va da (10,0) a (10,200), la terza da (20,0) a (20,200).
+A questo punto &egrave; chiaro che occorre disegnare tutte
+le linee da (x,0) a (x,200), in cui x parte da 0 e arriva
+a 200, con un incremento di 10 a ogni passo.<p>
+
+Il programma completo
+<a href="Griglia.java">Griglia.java</a>
+viene realizzato usando un ciclo per disegnare le linee
+verticali, e un altro ciclo per disegnare le linee
+orizzontali.<p>
+
+<pre>
+/*
+  Disegna una griglia.
+*/
+
+import java.awt.*;
+
+public class Griglia extends java.applet.Applet {
+  public void paint(Graphics g) {
+    int x,y;
+
+    /* disegna le linee verticali */
+    for(x=0; x<=200; x=x+10) {
+      g.drawLine(x, 0, x, 200);
+    }
+
+    /* disegna le linee orizzontali */
+    for(y=0; y<=200; y=y+10) {
+      g.drawLine(0, y, 200, y);
+    }
+  }
+}
+
+</pre>
+
+Quando si esegue il programma, si ottiene il seguente
+grafico.<p>
+
+<center>
+<img src="Griglia.gif">
+</center>
+
+</body>
+
+
+
+
+<h2>Rettangoli</h2>
+
+Si supponga di voler disegnare un rettangolo, i cui lati
+orizzontali abbiano coordinate 50 e 200, e i cui lati
+verticali abbiano coordinate 20 e 80. Questo &egrave;
+gi&agrave; possibile utilizzando la funzione di disegno
+della linea, usando quattro istruzioni separate. I
+vertici del rettangolo hanno coordinate
+(20, 50), (20, 200), (80, 200), (80, 50), quindi &egrave;
+necessario disegnare quattro linee fra questi punti,
+come viene fatto nel programma
+<a href="Rettangolo.java">Rettangolo.java</a>.<p>
+
+<pre>
+/*
+  Disegna un rettangolo usando quattro linee.
+*/
+
+import java.awt.*;
+
+public class Rettangolo extends java.applet.Applet {
+  public void paint(Graphics g) {
+    g.drawLine(20, 50, 20, 200);
+    g.drawLine(20, 200, 80, 200);
+    g.drawLine(80, 200, 80, 50);
+    g.drawLine(80, 50, 20, 50);
+  }
+}
+
+</pre>
+
+&Egrave; possibile disegnare un rettangolo usando una
+sola istruzione. L'istruzione <tt>drawRect(x, y, w, h)</tt>
+disegna un rettangolo in cui <tt>x</tt> e
+<tt>y</tt> sono le coordinate del vertice in alto a
+sinistra del rettangolo, mentre i valori di <tt>w</tt> e
+<tt>h</tt> sono la larghezza e l'altezza del rettangolo.
+&Egrave; chiaro che questi valori sono sufficienti a determinare
+completamente la forma e la posizione del rettangolo.
+Per esempio, per disegnare un rettangolo i cui estremi
+opposti abbiano coordinate (x1, y1) e (x2, y2), la
+istruzione che occorre eseguire &egrave;
+<tt>drawRect(x1, y1, x2-x1, y2-y1)</tt>, dal momento
+che <tt>x2-x1</tt> &egrave; la larghezza del rettangolo
+mentre <tt>y2-y1</tt> &egrave; la sua altezza. Il
+programma <a href="RettUno.java">RettUno.java</a>
+disegna lo stesso rettangolo del programma di sopra,
+questa volta usando la istruzione <tt>drawRect</tt>.<p>
+
+
+<pre>
+/*
+  Disegna un rettangolo usando quattro linee.
+*/
+
+import java.awt.*;
+
+public class RettUno extends java.applet.Applet {
+  public void paint(Graphics g) {
+    g.drawRect(20, 50, 60, 150);
+  }
+}
+
+</pre>
+
+Si ricorda che le istruzioni grafiche come la
+<tt>drawLine</tt> e <tt>drawRect</tt> vanno usate
+mettendo sempre prima l'argomento di <tt>paint</tt>,
+ossia la stringa fra parentesi dopo il
+<tt>Graphics</tt> (in questo caso, <tt>g</tt>).<p>
+
+L'esecuzione produce il seguente disegno:<p>
+
+<center>
+<img src="Rettangolo.gif">
+</center>
+
+
+</body>
+
+
+
+
+
+<h2>Grafico elementi di un vettore</h2>
+
+Si supponga dato un vettore di interi <tt>vett</tt>. Si vuole
+stampare la sua rappresentazione grafica con rettangoli. In
+altre parole, si vogliono tanti rettangoli l'uno accanto
+all'altro quanti sono gli elementi del vettore, e ogni
+rettangolo deve essere di altezza proporzionale al contenuto
+dell'elemento del vettore (si veda pi&ugrave; sotto per
+degli esempi).<p>
+
+Dal momento che occorre un rettangolo per ogni elemento
+del vettore, &egrave; necessario un ciclo in cui una
+variabile <tt>i</tt> assume tutti i valori da 0 fino al
+numero di elementi del vettore meno 1. Ad ogni passo,
+&egrave; necessario disegnare un rettangolo. Occorre decidere
+come deve esseere fatto questo rettangolo. Sappiamo che
+la sua altezza deve essere proporzionale a <tt>vett[i]</tt>.
+Per quello che riguarda la specifica dell'altezza siamo
+quindi a posto. Per la larghezza, possiamo assumere che tutti
+i rettangoli siano larghi 10.<p>
+
+Ci mancano quindi solo la coordinate dell'angolo in alto
+a sinistra del rettangolo. Per quello che riguarda la
+coordinata <tt>y</tt>, &egrave; facile: da momento che
+tutti i rettangoli devono partire dallo stesso piano,
+possiamo mettere per esempio <tt>y=100</tt> per tutti i
+rettangoli.<p>
+
+La coordinata <tt>x</tt> si determina sapendo che i
+rettangoli vanno messi l'uno dietro l'altro. Il rettangolo
+che corrisponde a <tt>vett[0]</tt>, per esempio, pu&ograve;
+essere compreso fra le coordinate 0 e 10, mentre quello
+di <tt>vett[1]</tt> sta fra 10 e 20, ecc. Non &egrave;
+difficile capire che il rettangolo che corrisponde a
+<tt>vett[i]</tt> si trova tra le coordinate <tt>x</tt>
+di valore <tt>i*10</tt> e <tt>(i+1)*10</tt>. La
+coordinata <tt>x</tt> dell'angolo in alto a sinistra 
+&egrave; quindi data da <tt>i*10</tt>.<p>
+
+Il programma
+<a href="GraficoRect.java">GraficoRect.java</a>
+realizza il grafico usando esattamente questo tipo di
+coordinate.<p>
+
+<pre>
+/*
+  Grafico dei valori di un vettore usando rettangoli.
+*/
+
+import java.awt.*;
+
+public class GraficoRect extends java.applet.Applet {
+  public void paint(Graphics g) {
+    int vett[]={3, 4, -5, -6, 2, 4, 4, -2, 0, 2, -9, 2, 9, 4, 5};
+    int i;
+
+    for(i=0; i<=vett.length-1; i=i+1) {
+      g.drawRect(10*i, 100, 10, vett[i]*10);
+    }
+  }
+}
+
+</pre>
+
+L'output prodotto dal programma &egrave; il seguente:<p>
+
+<center>
+<img src="GraficoRect.gif">
+</center>
+<p>
+
+Naturalmente, non &egrave; esattamente quello che si voleva
+ottenere. Per prima cosa, i valori negativi non sono stati
+disegnati. Secondo, i valori positivi corrispondono a
+rettangoli che ``scendono'' anzich&egrave; salire. Il primo
+problema si risolve con una istruzione condizionale che
+controlla se il contenuto di un elemento del vettore &egrave;
+positivo oppure negativo. Per quello che riguard il secondo
+problema, occorre cambiare gli argomenti della istruzione
+di stampa del rettangolo. Non si entra qui nel dettaglio di
+come questa cosa vada fatta. Il programma completo &egrave; 
+<a href="GraficoRectDue.java">GraficoRectDue.java</a>:
+
+<p>
+<pre>
+/*
+  Grafico dei valori di un vettore usando rettangoli:
+  versione corretta che ammette valori negativi.
+*/
+
+import java.awt.*;
+
+public class GraficoRectDue extends java.applet.Applet {
+  public void paint(Graphics g) {
+    int vett[]={3, 4, -5, -6, 2, 4, 4, -2, 0, 2, -9, 2, 9, 4, 5};
+    int i;
+
+    for(i=0; i<=vett.length-1; i=i+1) {
+      if( vett[i]<0 ) {
+        g.drawRect(10*i, 100, 10, -vett[i]*10);
+      }
+      else {
+        g.drawRect(10*i, 100-vett[i]*10, 10, vett[i]*10);
+      }
+    }
+  }
+}
+
+</pre>
+
+Il grafico che viene prodotto &egrave;:<p>
+
+<center>
+<img src="GraficoRectDue.gif">
+</center>
+<p>
+
+
+</body>
+
+
+
+
+<h2>Poligoni</h2>
+
+Un <i>poligono</i> &egrave; una sequenza di punti, collgati
+fra loro con dei segmenti. Ogni punto &egrave; collegato
+al seguente, e l'ultimo &egrave; collegato con il primo.<p>
+
+Per disegnare un poligono in Java, si pu&ograve; chiaramente
+usare la funzione <tt>drawLine</tt>, ma esiste anche un
+meccanismo che rende le cose pi&ugrave; facili.
+Il procedimento consiste in tre passi:<p>
+
+<ol>
+<li>dichiarazione di una variabile di tipo poligono
+<li>assegnazione di valori a questa variabile
+<li>disegno del poligono
+</ol>
+
+Esistono due modi per effettuare i primi due passi.
+
+<h4>Definizione di poligoni con vettori</h4>
+
+Si definiscono due vettori di interi, che contengono le
+coordinate x e y dei punti del poligono. Poi si dichiara
+una variabile di tipo poligono:
+
+<pre>
+    int x={....};
+    int y={....};
+    Polygon pol=new Polygon(x, y, x.lenght);
+</pre>
+
+Le prime due istruzioni creano due vettori, che devono avere
+la stessa dimensione. L'idea &egrave; che il primo punto
+avr&agrave; coordinate <tt>x[0],y[0]</tt>, il secondo punto
+avr&agrave; coordinate <tt>x[1],y[1]</tt>, e cos&igrave; via.
+La terza istruzione dichiara il poligono: in questo modo, viene
+creata una nuova variabile <tt>pol</tt>, ossia viene creata
+una zona di memoria in cui viene memorizzato un poligono. In
+particolare, il poligono &egrave; formato da <tt>x.lenght</tt>
+punti (numero di elementi del vettore <tt>x</tt>), e le
+coordinate dei suoi punti sono determinate dai valori memorizzati
+nei vettori <tt>x</tt> e <tt>y</tt>.<p>
+
+<h4>Aggiunta di punti a un poligono</h4>
+
+Il secondo modo per creare un poligono &egrave; quello di
+partire da un poligono vuoto, e usare una funzione per aggiungere
+ogni volta un nuovo punto. Per creare un poligono vuoto,
+si usa la dichiarazione seguente.<p>
+
+<pre>
+    Polygon nomepoligono=new Polygon();
+</pre>
+
+Questa dichiarazione crea un poligono che non contiene punti.
+Per poter definire il poligono che serve a noi, occorre
+aggiungere dei punti al poligono. La istruzione che aggiunge
+un punto a un poligono &egrave;:<p>
+
+<pre>
+    nomepoligono.addPoint(x,y);
+</pre>
+
+Questa istruzione aggiunge il punto di coordinate <tt>x,y</tt>
+al poligono che &egrave; stato definito con nome
+<tt>nomepoligono</tt>. Partendo da un poligono vuoto e
+aggiungendo uno per volta i punti necessari, si pu&ograve;
+creare qualsiasi poligono.<p>
+
+
+<h4>Disegno del poligono</h4>
+
+La creazione di un poligono (sia nel primo che nel secondo modo)
+non produce nessun risultato visibile nella finestra. In altre
+parole, dichiarare una variabile di tipo poligono, o aggiungere
+ad essa dei punti, non fa s&iacute; che il poligono venga
+disegnato. Per disegnare un poligono occorre mettere una
+istruzione <tt>drawPolygon</tt>. Il programma
+<a href="Poligoni.java">Poligoni.java</a>
+disegna due poligoni <tt>pol</tt> e <tt>p</tt>, il primo dei
+quali viene definito usando i vettori di interi, mentre il secondo
+&egrave; creato vuoto e gli vengono poi aggiunti dei punti.
+
+<pre>
+/*
+  Disegna due poligoni.
+*/
+
+import java.awt.*;
+
+public class Poligoni extends java.applet.Applet {
+  public void paint(Graphics g) {
+    /* metodo 1: definizione con due vettori */
+    int x[]={10, 20, 30, 40};
+    int y[]={5, 30, 5, 21};
+    Polygon pol=new Polygon(x, y, x.length);
+
+
+    /* metodo 2: si parte dal poligono vuoto e si aggiungono
+       ogni volta dei punti */
+    Polygon p=new Polygon();
+
+    p.addPoint(100,100);
+    p.addPoint(100,180);
+    p.addPoint(180,140);
+    p.addPoint(160,110);
+
+
+    /* disegna i poligoni */
+    g.drawPolygon(pol);
+    g.drawPolygon(p);
+  }
+}
+
+</pre>
+
+Le due istruzioni finali del programma sono quelle che disegnano
+effettivamente i due poligoni. L'esecuzione del programma produce
+il seguente risultato.<p>
+
+<center>
+<img src="Poligoni.gif">
+</center>
+<p>
+
+
+</body>
+
+
+
+
+<h2>Poligoni regolari</h2>
+
+Il seguente esercizio pu&ograve; essere risolto facilmente usando
+i poligoni e le operazioni trigonometriche. In particolare, ci
+occorre il valore di Pi greco, che &egrave; rappresentato dalla
+variabile <tt>Math.PI</tt>, e le funzioni seno e coseno, che
+sono realizzate in Java come <tt>Math.sin</tt> e <tt>Math.cos</tt>.<p>
+
+Quello che si vuole fare &egrave; disegnare un poligono regolare
+con <tt>n</tt> lati.<p>
+
+L'esercizio si risolve tenendo presente che ogni poligono regolare
+si pu&ograve; sempre inscrivere in un cerchio. Il problema si
+sposta quindi dal disegno del poligono alla individuazione di
+<tt>n</tt> punti sulla circonferenza. Il medodo che usiamo &egrave; questo:
+l'angolo giro vale <tt>2*Math.PI</tt>, e questo va diviso esattamente
+in <tt>n</tt> parti. Quindi, possiamo fare un ciclo, in cui una
+variabile <tt>i</tt> va da 0 a <tt>n</tt>. L'angolo che consideriamo
+ogni volta vale <tt>2*Math.PI*i/n</tt>.<p>
+
+Una volta noto l'angolo corrispondente ai punti della circonferenza
+che ci servono, occorre calcolare le loro coordinate. Se per
+esempio assumiamo che il centro del cerchio sia posizionato
+in <tt>(xcentro,ycentro)</tt>, e che il suo raggio sia memorizzato
+nella variabile <tt>raggio</tt>, allora le coordinate di un
+punto si ottengono usando le note formule trigonometriche:
+
+<pre>
+      x=xcentro+raggio*Math.cos(2*Math.PI*i/n);
+      y=ycentro+raggio*Math.sin(2*Math.PI*i/n);
+</pre>
+
+Una volta note le coordinate di un punto, &egrave; sufficiente
+aggiungere il punto al poligono che &egrave; stato inizialmente
+dichiarato vuoto. Il programma completo
+<a href="Regolari.java">Regolari.java</a>
+viene riportato qui sotto.<p>
+
+<pre>
+/*
+  Disegna un poligono regolare con n lati
+*/
+
+import java.awt.*;
+
+public class Regolari extends java.applet.Applet {
+  public void paint(Graphics g) {
+    int n=8;
+    Polygon reg=new Polygon();
+    int i;
+    double x,y;
+    double xcentro=100, ycentro=100, raggio=100;
+
+    for(i=0; i<=n-1; i=i+1) {
+      x=xcentro+raggio*Math.cos(2*Math.PI*i/n);
+      y=ycentro+raggio*Math.sin(2*Math.PI*i/n);
+
+      reg.addPoint( Math.round((float) x), Math.round((float) y) );
+    }
+
+    g.drawPolygon(reg);
+  }
+}
+
+</pre>
+
+L'esecuzione di questo programma, in cui il centro &egrave; stato
+posto in (100,100), il raggio &egrave; 100, ed <tt>n</tt> vale 8,
+produce il disegno seguente:<p>
+
+<center>
+<img src="Regolari.gif">
+</center>
+
+</body>
+
+
+
+
+
+
+
+<h2>Cerchi e ovali</h2>
+
+In Java, non esiste una istruzione specifica per disegnare
+un cerchio. Esiste per&ograve; una istruzione per disegnare
+un ovale, e questa pu&ograve; venire usata anche per
+disegnare cerchi.<p>
+
+La istruzione per gli ovali si chiama
+<tt>drawOval(x,y,w,h)</tt>, e
+ha quattro argomenti, che rappresentano posizione e dimensione
+del rettangolo circoscritto all'ovale. Il modo pi&ugrave; facile
+per capire come funziona il disegno di ovali &egrave; di
+pensare che <tt>x,y,w,h</tt> rappresentano un rettangolo, e
+che l'ovale che viene disegnato &egrave; quello circoscritto
+nel rettangolo.<p>
+
+Per esempio, dal punto di vista concettuale, possiamo pensare
+prima al rettangolo che <i>verrebbe</i> disegnato usando
+gli stessi quattro numeri:<p>
+
+<center>
+<img src="ovale1.jpg">
+</center>
+<p>
+
+L'ovale che viene realmente disegnato &egrave; quello
+inscritto in questo rettangolo (in altre parole, il
+rettangolo non viene disegnato):<p>
+
+<center>
+<img src="ovale2.jpg">
+</center>
+<p>
+
+Il programma
+<a href="Ovali.java">Ovali.java</a>
+disegna due ovali e un cerchio. In particolare, il secondo
+ovale viene disegnato con la istruzione
+<tt>g.drawOval(100,50,50,120)</tt>, e per confronto si fa
+vedere cosa succede se si disegna un rettangolo usando gli
+stessi parametri, ossia si fa anche
+<tt>g.drawRect(100,50,50,120)</tt>.<p>
+
+<pre>
+/*
+  Disegna due ovali e un cerchio
+*/
+
+import java.awt.Graphics;
+
+public class Ovali extends java.applet.Applet {
+  public void paint(Graphics g) {
+    /* disegna un ovale */
+    g.drawOval(0,0,100,50);
+
+    /* un altro ovale, e il rettangolo con le stesse dimensioni */
+    g.drawOval(100,50,50,120);
+    g.drawRect(100,50,50,120);
+
+    /* un cerchio: e' un ovale con larghezza=altezza */
+    g.drawOval(0,100,50,50);
+  }
+}
+
+</pre>
+
+Il programma produce il seguente disegno:<p>
+
+<center>
+<img src="Ovali.gif">
+</center>
+<p>
+
+La coppia ovale-rettangolo fa capire in che modo viene disegnato
+l'ovale: quando si esegue la istruzione
+<tt>g.drawOval(x,y,w,h)</tt>, &egrave; come se venisse localizzato
+il rettangolo prodotto da <tt>g.drawRect(x,y,w,h)</tt>, ma quello
+che si disegna in effetti &egrave; l'ovale inscritto. Nel nostro
+caso, abbiamo poi disegnato anche il rettangolo.<p>
+
+L'ultima istruzione dell'applet disegna un cerchio: questo si
+ottiene semplicemente usando lo stesso numero come altezza e
+larghezza del rettangolo circoscritto: in questo modo il rettangolo
+diventa un quadrato, e quindi l'ovale all'interno &egrave;
+un cerchio.<p>
+
+</body>
+
+
+
+
+<h2>Simbolo delle olimpiadi</h2>
+
+Lo scopo di questo esercizio &egrave; quello di scrivere
+un applet che disegna il simbolo delle olimpiadi.<p>
+
+Usando la istruzione <tt>drawOval</tt> la cosa risulta
+particolarmente facile: i tre cerchi in alto sono messi
+l'uno accanto all'altro, per cui sono circoscritti da
+tre quadrati messi l'uno a fianco dell'altro.<p>
+
+I due cerchi di sotto si trovano spostati sia a destra che
+in basso di esattamente il raggio dei cerchi. Il raggio
+&egrave; la met&agrave; dal lato del quadrato circoscritto.
+Questo permette di disegnare gli altri due cerchi.<p>
+
+Il programma completo &egrave;
+<a href="Olimpiadi.java">Olimpiadi.java</a>,
+di cui si riporta qui sotto il codice:<p>
+
+<pre>
+/*
+  Disegna il simbolo delle olimpiadi.
+*/
+
+import java.awt.*;
+
+public class Olimpiadi extends java.applet.Applet {
+  public void paint(Graphics g) {
+    /* i tre cerchi di sopra */
+    g.drawOval(0, 0, 20, 20);
+    g.drawOval(20, 0, 20, 20);
+    g.drawOval(40, 0, 20, 20);
+
+    /* i tre cerchi di sotto */
+    g.drawOval(10, 10, 20, 20);
+    g.drawOval(30, 10, 20, 20);
+  }
+}
+
+
+</pre>
+
+Questo programma produce il seguente risultato:<p>
+
+<center>
+<img src="Olimpiadi.gif">
+</center>
+<p>
+
+
+
+</body>
+
+
+
+
+<h2>Archi</h2>
+
+Java mette a disposizione una istruzione per disegnare archi
+di cerchio e di ovale. L'istruzione si chiama <tt>drawArc</tt>,
+e ha i seguenti argomenti:<p>
+
+<center>
+<tt>
+drawArc(x,y,w,h,s,n);
+</tt>
+</center>
+<p>
+
+Un arco &egrave; semplicemente una parte di un cerchio o di
+una ellisse. Il modo pi&ugrave; semplice di dire come deve
+essere fatto un arco &egrave; quello di specificare come
+&egrave; fatta l'ellisse completa, e poi di dare
+l'indicazione del punto in cui l'arco comincia e quello
+in cui finisce. In Java, l'ellisse si specifica esattamente
+in questo modo: i primi tre numeri <tt>x,y,w,h</tt> sono
+esattamente la specifica della ellisse ``completa'', di cui
+l'arco fa parte; il numero <tt>s</tt> &egrave; il numero di
+gradi del punto in cui l'arco inizia; <tt>n</tt> &egrave;
+invece la ``lunghezza'' dell'arco in gradi.<p>
+
+Consideriamo di nuovo il disegno dell'ovale:<p>
+
+<center>
+<img src="ovale2.jpg">
+</center>
+<p>
+
+Quello che dobbiamo fare &egrave; segnare l'angolo che
+corrisponde a <tt>s</tt>, e da qui partiamo con un angolo
+ampio <tt>n</tt>.<p>
+
+<center>
+<img src="arco1.jpg">
+</center>
+<p>
+
+La parte di ovale che viene realmente disegnata &egrave; solo
+quella compresa nell'angolo ampio <tt>n</tt>.<p>
+
+<center>
+<img src="arco2.jpg">
+</center>
+<p>
+
+Non &egrave; difficile rendersi conto che questi sei numeri
+che vanno messi nella istruzione <tt>drawArc</tt>
+sono in grado di caratterizzare completamente l'arco: infatti,
+una volta specificato come &egrave; fatta l'ellisse completa,
+e i punti in cui inizia e finisce l'arco, questo &egrave;
+completamente specificato.<p>
+
+Il programma
+<a href="Archi.java">Archi.java</a>
+disegna alcuni archi nella finestra.<p>
+
+<pre>
+/*
+  Disegna degli archi.
+*/
+
+import java.awt.*;
+
+public class Archi extends java.applet.Applet {
+  public void paint(Graphics g) {
+    g.drawArc(0,0,100,100,45,360-90);
+
+    g.drawArc(100,0,100,100,-45,90);
+  }
+}
+
+</pre>
+
+Il risultato dell'esecuzione di questo programma &egrave;
+riportato sotto.<p>
+
+<center>
+<img src="Archi.gif">
+</center>
+<p>
+
+
+
+</body>
+
+
+
+
+<h2>Una figura composta</h2>
+
+Si vuole disegnare la figura seguente:<p>
+
+<center>
+<img src="composta.jpg">
+</center>
+<p>
+
+Come si pu&ograve; facilemente notare, questa figura &egrave;
+in effetti composta da due segmenti e da due archi di cerchio.
+I due segmenti non presentano nessuna difficolt&agrave;: il
+segmento orizzontale si trova tra le coordinate (200,100) e
+le coordinate (250,100), mentre il secondo si trova tra i
+due punti (300,150) e (300,200).<p>
+
+Per quello che riguarda gli archi, occorre per prima cosa
+individuare le coordinate dell'ovale di cui fanno parte. In
+questo caso, si tratta di archi di cerchio. Il cerchio
+piccolo &egrave; inscritto nel quadrato che ha l'angolo in
+alto in (200,100) e ha lato 100. Inoltre, l'arco parte da
+0 gradi e si estende per 90 gradi. Quindi, l'istruzione
+necessaria per disegnare questo arco &egrave;:<p>
+
+<pre>
+    g.drawArc(200,100,100,100,0,90);
+</pre>
+
+Per capire quali sono le coordinate dell'arco grande usiamo
+lo stesso metodo: il quadrato circosritto ha l'angolo in alto
+a sinitra nelle coordinate (100,100), e il lato &egrave;
+200. Inoltre, l'arco parte da 90 gradi e si estende fino
+ai 360, ossia ha ampiezza 360-90. L'istruzione per disegnare
+questo arco &egrave; quindi:<p>
+
+<pre>
+    g.drawArc(100,100,200,200,90,360-90);
+</pre>
+
+Il programma completo
+<a href="Composta.java">Composta.java</a>
+&egrave; riportato qui sotto.<p>
+
+<pre>
+/*
+  Disegna una figura fatta di segmenti e archi
+*/
+
+import java.awt.*;
+
+public class Composta extends java.applet.Applet {
+  public void paint(Graphics g) {
+
+	/* i due segmenti */
+    g.drawLine(200,100,250,100);
+    g.drawLine(300,150,300,200);
+
+	/* l'arco piccolo */
+    g.drawArc(200,100,100,100,0,90);
+
+	/* l'arco grande */
+    g.drawArc(100,100,200,200,90,360-90);
+  }
+}
+
+</pre>
+
+
+Il risultato dell'esecuzione di questo applet &egrave;
+esattamente il disegno che ci aspettavamo.<p>
+
+<center>
+<img src="Composta.gif">
+</center>
+<p>
+
+
+
+</body>
+
+
+
+</body>
+
+</body>
+</html>

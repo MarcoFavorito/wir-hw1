@@ -1,0 +1,86 @@
+<!doctype html public "-//w3c//dtd html 4.0 transitional//en">
+<html>
+<head>
+<link href="java.css" rel="stylesheet" type="text/css">
+<title>Croci e cerchi</title>
+</head>
+
+<body>
+
+<h2>Croci e cerchi</h2>
+
+Vediamo ora un altro esempio: vogliamo sempre disegnare
+delle figure geometriche nel punto dove viene premuto
+il pulsante del mouse, soltanto che questa volta la figura
+deve essere una croce oppure un cerchio. In particolare,
+se il pulsante del mouse viene premuto in una posizione
+in cui <tt>x</tt> &egrave; minore o uguale a 200, si deve
+disegnare una croce, mentre invece si disegna un cerchio
+se <tt>x</tt> &egrave; maggiore di 200.<p>
+
+Concettualmente, questo esercizio non presenta nessuna
+difficolt&agrave;: si tratta sempre di fare dei disegni
+ogni volta ogni volta che il pulsante del mouse viene
+premuto. Quindi, occorre semplicemente mettere delle
+istruzioni nel blocco <tt>mouseDown</tt> in modo che
+venga fatto il disegno appropriato. Questa volta la
+cosa da disegnare dipende dal valore della coordinata
+<tt>x</tt>, per cui la procedura <tt>mouseDown</tt>
+contiene una istruzione condizionale, in cui la condizione
+&egrave; <tt>x<=200</tt>. Se questa condizione &egrave;
+verificata si disegna la croce, altrimenti si disegna
+il cerchio.<p>
+
+Il programma completo 
+<a href="CrociCerchi.java">CrociCerchi.java</a>
+&egrave; riportato qui sotto.<p>
+
+<pre>
+/*
+  Disegna croci e cerchi
+*/
+
+import java.awt.*;
+
+public class CrociCerchi extends java.applet.Applet {
+  public boolean mouseDown(Event e, int x, int y) {
+    Graphics g=getGraphics();
+
+    if( x<=200 ) {
+      g.drawLine(x,y-5,x,y+5);
+      g.drawLine(x-5,y,x+5,y);
+    }
+    else {
+      g.drawOval(x-5,y-5,10,10);
+    }
+
+    return true;
+  }
+}
+
+</pre>
+
+<p>
+
+In questo programma si pu&ograve; osservare come le
+variabili <tt>x</tt> e <tt>y</tt> sono variabili come tutte
+le altre. L'unica cosa che le differenzia dalle variabili
+definite localmente &egrave; che il loro valore iniziale
+rappresenta le coordinate del punto in cui si &egrave;
+premuto il pulsante. Per il resto, si possono usare come
+qualsiasi altra variabile intera, per cui per esempio ci
+si pu&ograve; fare un test come <tt>x<=200</tt>.<p>
+
+<center>
+<img src="CrociCerchi.gif">
+</center>
+<p>
+
+<applet code="CrociCerchi.class" width="500" height="500">
+</applet>
+
+<p>
+
+</body>
+</html>
+

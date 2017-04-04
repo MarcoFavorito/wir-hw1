@@ -1,0 +1,79 @@
+<!DOCTYPE doctype PUBLIC "-//w3c//dtd html 4.0 transitional//en"><html><head>
+   <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   
+   <title>Esame: 8/1/04 compito 1 A - Laboratorio di Programmazione - aa 2003/04</title><link rel="stylesheet" href="index_files/lp2003.html" type="text/css"></head>
+
+<body>
+<br>
+<center>
+  <p><b>Laboratorio di Programmazione - A.A. 2003/04</b></p>
+  <h2>Esame dell'8/1/2004</h2>
+  <h2>Espressioni Booleane (A)</h2>
+</center>
+
+<P><b>Parte 1</b></P>
+
+<P> Si rappresentino attraverso opportune classi Java, definite all'interno di 
+  un package <code><strong>esprbool</strong>,</code> espressioni booleane formate 
+  da: <em>(i)</em> <strong>variabili</strong> booleane caratterizzate da un indice 
+  che &egrave; un intero non negativo; <em>(ii) </em><strong>not</strong> di una 
+  espressione;<em>(iii) </em><strong>and</strong> di due espressioni; <em>(iv) 
+  </em><strong>or</strong> di due espressioni. Si richiede che le espressioni 
+  booleane supportino l'uguaglianza (sintattica) profonda attraverso l'overriding 
+  di <code><strong>equals</strong></code>. 
+<P><b>Parte 2</b></P>
+
+<P>Si definisca una classe <code><strong>ServiziSintattici</strong></code>, all'interno 
+  di un package <code><strong>servizisintattici</strong></code> contenente i seguenti 
+  metodi statici:</P>
+<ul>
+  <li><code> <strong>public static Espressione copia(Espressione e)</strong></code>: 
+    che restituisce una copia profonda dell'espressione booleana <code>e</code>. 
+    <em>Calcolare inoltre la <strong>complessita'</strong> di questo metodo.</em></li>
+  <li><code><strong>public static List indiciVariabile(Espressione e)</strong></code>: 
+    che restituisce un oggetto, che implementa l'interfaccia <code>List</code>, 
+    che rappresenta la lista (senza ripetizioni) di tutti gli indici di variabili 
+    presenti nell'espressione. </li>
+  <li><code><strong>public static Espressione formaNormale(Espressione e)</strong></code>: 
+    che restituisce una nuova <code>Espressione</code> identica alla prima ma 
+    con gli indici delle variabili modificati in modo da essere tutti consecutivi 
+    con indice piu' piccolo pari a 0.</li>
+</ul>
+<P><b>Parte 3</b></P>
+
+<P>Sono state gia' definite e sono disponibili le classi <code><strong>Assegnazione</strong></code> 
+  e <code><strong>EnumeratoreAssegnazioni</strong></code> del package <code><strong>assegnazioni</strong></code>. 
+  La prima definisce oggetti Assegnazione che rappresentano assegnazioni booleane 
+  delle variabili i cui indici sono compresi tra 0 ed un numero <code>numvar-1.</code> 
+  La seconda definisce oggetti che enumerano con un meccanismo del tutto simile 
+  ad un iteratore, tutte le assegnazioni possibile delle variabili i cui indici 
+  sono compresi tra 0 e un numero <code>numvar</code>-1. Per maggiori dettagli 
+  si guardino i commenti che precedono la definizione dei metodi nelle due classi. 
+<P>Facendo uso delle classi gia' definite <code>Assegnazione</code> e <code>EnumeratoreAssegnazioni</code>, 
+  si definisca una classe <code>ServiziSemantici</code>, all'interno di un package 
+  <code>servizisemantici</code> contenente i seguenti metodi statici:
+<ul>
+  <li><code><strong>public static boolean valuta(Espressione e, Assegnazione a)</strong></code>: 
+    che data una espressione <code>e</code> ed una assegnazione <code>a,</code>che 
+    includa tutte le variabili presenti nell'espressione <code>e</code><strong>, 
+    valuta</strong> il valore booleano di <code>e</code> rispetto ad <code>a</code>.</li>
+  <li><code><strong>public static boolean valida(Espressione e, int numvar)</strong></code>: 
+    che utilizzando un enumeratore di assegnazioni che enumeri tutte le assegnazioni 
+    di variabili con indici da 0 a <code>numvar-1</code> (si assuma che tutti 
+    gli indici delle variabili nella espressione siano all'interno di questo intervallo), 
+    verifichi se l'espressione <code>e</code> e' <strong>valida</strong>, cioe' 
+    <code>true</code> per tutte le assegnazioni delle sue variabili.</li>
+  <li><code><strong>public static boolean implica(Espressione e1, Espressione 
+    e2, int numvar)</strong></code>: che utilizzando un enumeratore di assegnazioni 
+    che enumeri tutte le assegnazioni di variabili con indici da 0 a <code>numvar-1</code> 
+    (si assuma che tutti gli indici delle variabili nelle espressioni <code>e1</code> 
+    ed <code>e2</code> siano all'interno di questo intervallo), verifichi se l'espressione 
+    <code>e1</code> <strong> implica logicamente </strong>l'espressione <code>e2</code>, 
+    cioe' per ogni assegnazione delle variabili, non avvenga mai che <code>e1</code> 
+    sia valutata <code>true</code> mentre <code>e2</code> sia valutata <code>false</code>.</li>
+</ul>
+<P>&nbsp; 
+<P><em>Definire una classe <strong><code>Main</code></strong> per provare il comportamento 
+  dei vari metodi definiti.</em>
+</body>
+</html>

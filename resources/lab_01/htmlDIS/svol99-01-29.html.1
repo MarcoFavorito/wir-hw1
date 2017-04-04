@@ -1,0 +1,222 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0//EN">
+<!-- Created by htmlize-0.46 in css mode. -->
+<html>
+  <head>
+    <title>svol99-01-29.c</title>
+    <style type="text/css">
+    <!--
+      BODY {
+        color: #000000;
+        background-color: #ffffff;
+      } /* default */
+      span.keyword {
+        color: #006400;
+      } /* font-lock-keyword-face */
+      span.function-name {
+        color: #0000cd;
+      } /* font-lock-function-name-face */
+      span.comment {
+        color: #4682b4;
+      } /* font-lock-comment-face */
+      span.string {
+        color: #b22222;
+      } /* font-lock-string-face */
+      span.variable-name {
+        color: #a52a2a;
+      } /* font-lock-variable-name-face */
+      span.type {
+        color: #ff00ff;
+      } /* font-lock-type-face */
+      span.builtin {
+        color: #da70d6;
+      } /* font-lock-builtin-face */
+    -->
+    </style>
+  </head>
+  <body>
+    <pre>
+<span class="comment">/* soluzione compito Fondamenti di Informatica (Amb. &amp; Territorio) 29-1-99 */</span>
+
+#<span class="builtin">include</span> <span class="string">&lt;stdio.h&gt;</span>
+#<span class="builtin">include</span> <span class="string">&lt;stdlib.h&gt;</span>
+
+#<span class="builtin">define</span> <span class="variable-name">FILE_ESTRAZ</span> <span class="string">&quot;ESTRAZ.TXT&quot;</span>
+#<span class="builtin">define</span> <span class="variable-name">FILE_AMBI</span> <span class="string">&quot;AMBI.TXT&quot;</span>
+#<span class="builtin">define</span> <span class="variable-name">LIMITE</span> 10.30
+
+<span class="type">struct</span> <span class="variable-name">el</span> {
+	<span class="type">int</span> <span class="variable-name">cod_ric</span>;
+	<span class="type">float</span> <span class="variable-name">giocate</span>;
+	<span class="type">struct</span> el *<span class="variable-name">next</span>;
+};
+
+<span class="type">typedef</span> <span class="type">struct</span> el <span class="variable-name">elem</span>;
+
+<span class="comment">/* prototipi */</span>
+<span class="type">FILE</span> *<span class="function-name">ApriFile</span>(<span class="type">char</span> *, <span class="type">char</span> *);
+<span class="type">void</span> <span class="function-name">InserisciGiocata</span>(<span class="type">int</span>, <span class="type">float</span>, elem **);
+<span class="type">int</span> <span class="function-name">Mono</span>(<span class="type">int</span>, <span class="type">int</span>[5 ]);
+<span class="type">int</span> <span class="function-name">Ambo</span>(<span class="type">int</span>, <span class="type">int</span>, <span class="type">int</span>[5 ]);
+<span class="type">elem</span> *<span class="function-name">CostruisciListaVincite</span>(<span class="type">int</span>);
+<span class="type">void</span> <span class="function-name">EliminaElemento</span>(elem *, elem **);
+<span class="type">void</span> <span class="function-name">SfoltisciListaVincite</span>(elem **);
+<span class="type">void</span> <span class="function-name">StampaLista</span>(elem *);
+<span class="type">int</span> <span class="function-name">main</span>(<span class="type">void</span>);
+
+<span class="type">FILE</span> *<span class="function-name">ApriFile</span>(<span class="type">char</span> *<span class="variable-name">nomefile</span>, <span class="type">char</span> *<span class="variable-name">modo</span>)
+{
+	<span class="type">FILE</span> *<span class="variable-name">f</span>;
+	f=fopen(nomefile,modo);
+	<span class="keyword">if</span>(f==NULL) {
+		printf(<span class="string">&quot;Errore apertura file %s in modalita` %s. Programma terminato.\n&quot;</span>,nomefile,modo);
+		exit(1);
+	}
+	<span class="keyword">return</span> f;
+}
+
+<span class="type">void</span> <span class="function-name">InserisciGiocata</span>(<span class="type">int</span> <span class="variable-name">ric</span>, <span class="type">float</span> <span class="variable-name">importo</span>, <span class="variable-name">elem</span> **testa)
+{
+	elem *cursore, *prec, *nuovo;
+	
+	<span class="comment">/* cerca prima se la ricevitoria e` gia` in lista */</span>
+	cursore=*testa;
+	<span class="keyword">while</span>((cursore!=NULL)&amp;&amp;(cursore-&gt;cod_ric!=ric)) {
+		prec=cursore;
+		cursore=cursore-&gt;next;
+	}
+	<span class="keyword">if</span>(cursore!=NULL) <span class="comment">/* ricevitoria in lista */</span>
+		cursore-&gt;giocate=cursore-&gt;giocate+importo;
+	<span class="keyword">else</span> { <span class="comment">/* ricevitoria non in lista, la inserisco */</span>
+		nuovo=malloc(<span class="keyword">sizeof</span>(elem));
+		nuovo-&gt;cod_ric=ric;
+		nuovo-&gt;giocate=importo;
+		nuovo-&gt;next=NULL;
+		<span class="keyword">if</span>(*testa==NULL)
+			*testa=nuovo;
+		<span class="keyword">else</span>
+			prec-&gt;next=nuovo;
+	}
+	<span class="keyword">return</span>;
+}
+
+
+<span class="type">int</span> <span class="function-name">Mono</span>(<span class="type">int</span> <span class="variable-name">numero</span>, <span class="type">int</span> <span class="variable-name">ruota</span>[5])
+<span class="comment">/* restituisce 1 se e solo se numero e` presente nella ruota */</span>
+{
+	<span class="type">int</span> <span class="variable-name">j</span>;
+	<span class="keyword">for</span>(j=0; j&lt;5; j=j+1)
+		<span class="keyword">if</span>(ruota[j]==numero)
+			<span class="keyword">return</span> 1;
+	<span class="keyword">return</span> 0;
+}
+
+<span class="type">int</span> <span class="function-name">Ambo</span>(<span class="type">int</span> <span class="variable-name">a</span>, <span class="type">int</span> <span class="variable-name">b</span>, <span class="type">int</span> <span class="variable-name">ruota</span>[5])
+<span class="comment">/* restituisce 1 se e solo se (a,b) e` un ambo sulla ruota  */</span>
+{
+	<span class="keyword">return</span> Mono(a,ruota)&amp;&amp;Mono(b,ruota);
+}
+
+<span class="type">elem</span> *<span class="function-name">CostruisciListaVincite</span>(<span class="type">int</span> <span class="variable-name">cod_estr</span>)
+<span class="comment">/* richiesta al punto 1.2 */</span>
+{
+	<span class="type">FILE</span> *<span class="variable-name">estr</span>, *<span class="variable-name">ambi</span>;
+	<span class="type">int</span> <span class="variable-name">E</span>[10][5], <span class="variable-name">a</span>, <span class="variable-name">b</span>, <span class="variable-name">cod</span>, <span class="variable-name">ric</span>, <span class="variable-name">i</span>, <span class="variable-name">j</span>, <span class="variable-name">ruota</span>, <span class="variable-name">letti</span>;
+	<span class="type">float</span> <span class="variable-name">importo</span>;
+	elem *vincite;
+	
+	estr=ApriFile(FILE_ESTRAZ,<span class="string">&quot;r&quot;</span>);
+	ambi=ApriFile(FILE_AMBI, <span class="string">&quot;r&quot;</span>);
+	
+	<span class="comment">/* cerca prima in FILE_ESTRAZ l'estrazione cod_estr (parametro) */</span>
+	<span class="keyword">do</span>
+		<span class="keyword">if</span>(fscanf(estr,<span class="string">&quot;%d&quot;</span>,&amp;cod)==EOF) {
+			printf(<span class="string">&quot;Il file %s non contiene l'estrazione di codice %d.\n&quot;</span>,FILE_ESTRAZ,cod_estr);
+			fclose(estr);
+			fclose(ambi);
+			<span class="keyword">return</span> NULL;
+		}
+	<span class="keyword">while</span>(cod!=cod_estr);
+	
+	<span class="comment">/* legge nella matrice E l'intera estrazione*/</span>
+	<span class="keyword">for</span>(i=0; i&lt;10; i=i+1)
+		<span class="keyword">for</span>(j=0; j&lt;5; j=j+1)
+			fscanf(estr,<span class="string">&quot;%d&quot;</span>,&amp;E[i][j]);
+			
+	vincite=NULL;
+	
+	<span class="keyword">while</span> (1) { <span class="comment">/* si uscira` dal ciclo tramite break */</span>
+		letti=fscanf(ambi,<span class="string">&quot;%d%d%d%d%d%f&quot;</span>,&amp;ric,&amp;cod,&amp;ruota,&amp;a,&amp;b,&amp;importo);
+		<span class="keyword">if</span>(letti==EOF)
+			<span class="keyword">break</span>;
+		<span class="keyword">if</span>(letti!=6) {
+			printf(<span class="string">&quot;Errore formato file %s. Programma terminato.\n&quot;</span>,FILE_AMBI);
+			exit(2);
+		}
+		<span class="keyword">if</span>(cod==cod_estr) {
+			<span class="keyword">if</span>(Ambo(a,b,E[ruota-1]))
+				InserisciGiocata(ric,importo,&amp;vincite);
+		}
+	}
+	fclose(estr);
+	fclose(ambi);
+	<span class="keyword">return</span> vincite;
+}
+
+
+<span class="type">void</span> <span class="function-name">EliminaElemento</span>(elem *prec, elem **testa)
+{
+	elem *morituro;
+	<span class="keyword">if</span>(prec==NULL) {
+		morituro=*testa;
+		*testa=(*testa)-&gt;next;
+	} <span class="keyword">else</span> {
+		morituro=prec-&gt;next;
+		prec-&gt;next=morituro-&gt;next;
+	}
+	free(morituro);
+	<span class="keyword">return</span>;
+}
+		
+
+
+<span class="type">void</span> <span class="function-name">SfoltisciListaVincite</span>(elem **testa)
+<span class="comment">/* richiesta al punto 1.3 */</span>
+{
+	elem *cursore, *prec;
+	prec=NULL;
+	cursore=*testa;
+	<span class="keyword">while</span>(cursore!=NULL)
+		<span class="keyword">if</span>(cursore-&gt;giocate&lt;LIMITE) {
+			cursore=cursore-&gt;next;
+			EliminaElemento(prec,testa);
+		} <span class="keyword">else</span> {
+			prec=cursore;
+			cursore=cursore-&gt;next;
+		}
+	<span class="keyword">return</span>;
+}
+
+<span class="type">void</span> <span class="function-name">StampaLista</span>(elem *primo)
+{
+	<span class="keyword">while</span>(primo!=NULL) {
+		printf(<span class="string">&quot;Ricevitoria %4d, somma importi: %6.2f\n&quot;</span>,primo-&gt;cod_ric,primo-&gt;giocate);
+		primo=primo-&gt;next;
+	}
+	printf(<span class="string">&quot;\n&quot;</span>);
+	<span class="keyword">return</span>;
+}
+
+<span class="function-name">main</span>(<span class="type">void</span>)
+{
+	elem *listavincite;
+	<span class="type">int</span> <span class="variable-name">cod</span>;
+	printf(<span class="string">&quot;Inserire cod. estrazione: &quot;</span>);
+	scanf(<span class="string">&quot;%d&quot;</span>,&amp;cod);
+	listavincite=CostruisciListaVincite(cod);
+	StampaLista(listavincite);
+	SfoltisciListaVincite(&amp;listavincite);
+	StampaLista(listavincite);
+	<span class="keyword">return</span> 0;
+}</pre>
+  </body>
+</html>

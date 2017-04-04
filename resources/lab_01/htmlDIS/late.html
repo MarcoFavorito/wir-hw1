@@ -1,0 +1,981 @@
+<html>
+<head>
+<title>Il late binding</title>
+</head>
+
+<body>
+
+<h1>Il late binding</h1>
+
+<p>
+Quando si estende una classe, si possono aggiungere
+componenti e metodi.
+</p>
+
+<p>
+Possono avere gli stessi nomi di componenti e metodi
+gi&agrave; esistenti
+</p>
+
+<dl>
+
+<dt>componenti:
+<dd>si aggiungono a quelle che esistono
+
+<p />
+
+<dt>metodi:
+<dd>sovrascrivono (overriding) quelli di prima
+
+</dl>
+
+<hr>
+
+
+<h4>Componenti con lo stesso nome</h4>
+
+<pre>
+class Studente {
+  String nome;
+  int anno;
+}
+</pre>
+
+<p>
+Esempio: nella classe <tt>Borsista</tt> metto il numero di
+anni da cui va avanti la borsa di studio.
+</p>
+
+<pre>
+class Borsista extends Studente {
+  int stipendio;
+  double anno;
+}
+</pre>
+
+<p>
+Si pu&ograve; fare
+</p>
+
+<hr>
+
+
+<h4>Rappresentazione grafica</h4>
+
+<p>
+Gli oggetti <tt>Borsista</tt> hanno due componenti con lo
+stesso nome
+</p>
+
+<p>
+Una componente sta nella "parte <tt>Studente</tt>", l'altra
+sta nella parte nuova
+</p>
+
+<img src="newvar.gif">
+
+<hr>
+
+
+<h4>Accesso alle componenti</h4>
+
+<pre>
+  public static void main(String args[]) {
+    Borsista b=new Borsista();
+
+    b.anno=12.2;
+  }
+</pre>
+
+<p>
+Il valore <tt>12</tt> viene messo nella componente nuova
+</p>
+
+<img src="nuova.gif">
+
+<hr>
+
+
+<h4>La componente vecchia a che serve?</h4>
+
+<p>
+In una variabile <tt>Studente</tt> mi aspetto che ci sia un
+oggetto che abbia almeno tutte le caratteristiche di uno
+<tt>Studente</tt>
+</p>
+
+<ul>
+
+<li>ogni oggetto <tt>Studente</tt> ha una componente intera
+<tt>anno</tt>
+
+<p />
+
+<li>se <tt>s</tt> &egrave; di tipo <tt>Studente</tt>, mi
+aspetto che <tt>s.anno</tt> sia un intero
+
+</ul>
+
+<p>
+Questo deve valere anche se in <tt>s</tt> c'&egrave;
+un riferimento a un <tt>Borsista</tt>
+</p>
+
+<hr>
+
+
+<h4>Variabili e oggetti: ripasso</h4>
+
+<p>
+In una variabile di una classe, ci pu&ograve; essere:
+</p>
+
+<ul>
+
+<li><tt>null</tt>
+
+<li>un riferimento a un oggetto della classe
+
+<li>un riferimento a un oggetto di una qualsiasi sottoclasse
+
+<li>nient'altro
+
+</ul>
+
+<hr>
+
+
+<h4>Applicazione al caso di componenti aggiunte</h4>
+
+<pre>
+  public static void main(String args[]) {
+    Studente s=new Borsista();
+
+    s.anno=12;
+  }
+</pre>
+
+<ul>
+
+<li><tt>s</tt> &egrave; di tipo <tt>Studente</tt>
+
+<li>mi aspetto che ci sia uno <tt>Studente</tt>
+
+<li>mi aspetto che <tt>s</tt> abbia una componente
+<b>intera</b> che si chiama <tt>anno</tt>
+
+</ul>
+
+<img src="vecchia.gif">
+
+<hr>
+
+
+<h4>Regola generale</h4>
+
+<ol>
+
+<li>una sottoclasse pu&ograve; avere componenti in pi&ugrave;
+rispetto alla sovraclasse
+
+<li>gli oggetti della sottoclasse sono comunque
+(concettualmente) oggetti della sovraclasse
+
+<li>gli oggetti della sottoclasse devono contenere tutte le
+componenti della sovraclasse, anche se sono ridefinite
+
+</ol>
+
+<hr>
+
+
+<h4>Nel caso specifico...?</h4>
+
+<p>
+In questi esempi, si capisce quale oggetto c'&egrave; in una
+variabile.
+</p>
+
+<p>
+In generale, non si pu&ograve; sapere:
+</p>
+
+<pre>
+  public static void main(String args[]) {
+    Borsista b=new Borsista();
+    Studente s=new Studente();
+
+    if(metodo())
+      s=b;
+
+    s.anno=12.0;
+  }
+</pre>
+
+<p>
+Non c'&egrave; modo di stabilire a priori se in <tt>s</tt>
+ci sar&agrave; uno <tt>Studente</tt> oppure un
+<tt>Borsista</tt>
+</p>
+
+<p>
+So soltanto che c'&egrave; un oggetto <tt>Studente</tt>
+oppure un oggetto di una sottoclasse
+</p>
+
+<hr>
+
+
+<h4>Nota</h4>
+
+<p>
+Concettualmente, ogni <tt>Borsista</tt> &egrave; uno
+<tt>Studente</tt>
+</p>
+
+<p>
+In Java, sono comunque due classi diverse, e quindi due
+tipi diversi
+</p>
+
+<p>
+Le regole sulle variabili, ecc. servono a "simulare"
+l'idea che ogni <tt>Borsista</tt> &egrave; uno
+<tt>Studente</tt> in un linguaggio in cui sono classi
+diverse
+</p>
+
+<hr>
+
+
+<h4>Come si accedono alle componenti?</h4>
+
+<p>
+<b>Regola:</b> la scelta della componente dipende dalla
+variabile
+</p>
+
+<pre>
+  public static void main(String args[]) {
+    Borsista b=new Borsista();
+    Studente s=b;	// stesso oggetto
+
+    s.anno=10;		// componente vecchia
+    b.anno=10.2;	// componente nuova;
+  }
+</pre>
+
+<p>
+Come accedere alla componente intera di <tt>Borsista</tt>:
+mettere l'oggetto in una variabile <tt>Studente</tt>
+</p>
+
+<hr>
+
+
+<h4>Nota</h4>
+
+<pre>
+  public static void main(String args[]) {
+    Borsista b=new Borsista();
+    Studente s=b;
+
+    s.stipendio=12;	// errore
+  }
+</pre>
+
+<p>
+L'oggetto che sta in <tt>s</tt> ha una componente
+<tt>stipendio</tt>
+</p>
+
+<p>
+Gli oggetto <tt>Studente</tt> no
+</p>
+
+<p>
+Il controllo &egrave; statico: le variabili
+<tt>Studente</tt> possono non avere <tt>stipendio</tt>
+</p>
+
+<hr>
+
+
+<h4>Ridefinizione di metodi</h4>
+
+<p>
+I metodi si possono ridefinire
+</p>
+
+<p>
+Esempio di classe:
+</p>
+
+<pre>
+class Studente {
+  String nome;
+  int anno;
+
+  void stampa() {
+    System.out.println(nome+" "+anno);
+  }
+}
+</pre>
+
+<p>
+Tutte le sottoclassi hanno un metodo <tt>stampa</tt>
+ereditato.
+</p>
+
+<hr>
+
+
+<h4>Ridefinizione di metodi</h4>
+
+<p>
+<tt>Borsista</tt> eredita il metodo <tt>stampa</tt> di
+<tt>Studente</tt>
+</p>
+
+<p>
+Per&ograve; pu&ograve; anche ridefinirlo:
+</p>
+
+<pre>
+class Borsista extends Studente {
+  int stipendio;
+  double anno;
+
+  void stampa() {
+    System.out.println(nome+" "+super.anno+" "+stipendio+" "+this.anno);
+  }
+}
+</pre>
+
+<p>
+Non &egrave; un errore!
+</p>
+
+<p>
+In fondo, &egrave; quello che uno si aspetta: nella classe
+nuova ci sar&agrave; una nuova versione del metodo di stampa
+</p>
+
+<p>
+<tt>super.anno</tt> &egrave; la componente <tt>anno</tt>
+della sovraclasse, <tt>this.anno</tt> quella nuova (si
+pu&ograve; omettere il <tt>this</tt>)
+</p>
+
+<p>
+In questo caso, <tt>super.nome</tt>, <tt>this.nome</tt> e
+<tt>nome</tt> sono la stessa cosa
+</p>
+
+<hr>
+
+
+<h4>Metodi e componenti aggiuntive</h4>
+
+<p>
+Regola generale: se ho una variabile di una classe, posso
+solo accedere a metodi e componenti definiti nella classe
+</p>
+
+<p>
+L'unico caso particolare &egrave;:
+</p>
+
+<ol>
+
+<li>ho una componente o metodo <i>sia nella sottoclasse che
+nella sovraclasse</i>
+<br>
+ed inoltre
+
+<li>ho una variabile della sovraclasse e un oggetto della
+sottoclasse
+
+</ol>
+
+<p>
+Cosa succede:
+</p>
+
+<dl>
+
+<dt>componenti:
+<dd>decide il tipo della variabile
+
+<dt>metodi:
+<dd>decide il tipo dell'oggetto (late binding)
+
+</dl>
+
+<p>
+Imparare a memoria
+</p>
+
+<hr>
+
+
+<h4>Metodi di <tt>Object</tt></h4>
+
+<p>
+La classe <tt>Object</tt> ha questi metodi:
+</p>
+
+<dl>
+
+<dt><tt>string toString()</tt>
+<dd>ritorna una stringa che rappresenta l'oggetto, in
+particolare "nomeClasse@indirizzo"
+
+<dt><tt>boolean equals(Object o)</tt>
+<dd>vede se l'oggetto passato &egrave; uguale a quello
+di invocazione (hanno lo stesso indirizzo); &egrave;
+equivalente a <tt>==</tt>
+
+<dt><tt>int hashCode()</tt>
+<dd>ritorna un intero diverso per ogni oggetto (ci
+torneremo)
+
+</dl>
+
+<hr>
+
+
+<h4>Ridefinizione dei metodi di <tt>Object</tt></h4>
+
+<p>
+Tutte le classi hanno gli stessi metodi di <tt>Object</tt>
+</p>
+
+<p>
+Di solito, questi metodi vengono ridefiniti.
+</p>
+
+<p>
+Esempio: per la classe <tt>Point</tt>:
+</p>
+
+<dl>
+
+<dt><tt>string toString()</tt>
+<dd>ritorna una stringa con le coordinate del punto
+<tt>java.awt.Point[x=2,y=3]</tt>
+
+<dt><tt>boolean equals(Object o)</tt>
+<dd>vede se l'oggetto di invocazione e il punto passato come
+argomento hanno le stesse coordinate
+
+</dl>
+
+<hr>
+
+
+<h4>Uso (implicito) del late binding</h4>
+
+<p>
+Perch&egrave; <tt>System.out.println</tt> stampa un oggetto
+qualsiasi?
+</p>
+
+<p>
+<tt>System.out</tt> &egrave; un oggetto della classe
+<tt>PrintStream</tt> che ha un metodo <tt>println</tt>
+</p>
+
+<pre>
+class PrintStream {
+  ...
+
+  void println(Object o) {
+    ...
+  }
+}
+</pre>
+
+<p>
+Cosa fa: stampa <tt>o.toString()</tt>
+</p>
+
+<hr>
+
+
+<h4>La <tt>println</tt> di un <tt>Point</tt></h4>
+
+<pre>
+import java.awt.*;
+
+class Punto {
+  public static void main(String args[]) {
+    Point p=new Point(2, 3);
+
+    System.out.println(p);
+  }
+}
+</pre>
+
+<p>
+Cosa succede?
+</p>
+
+<ol>
+
+<li><tt>println</tt> ha un <tt>Object</tt> come argomento:
+si pu&ograve; passare un <tt>Point</tt> in quanto
+sottoclasse
+
+<li>l'esecuzione del metodo inizia con la copiatura del
+parametro attuale in quello formale (&egrave; come fare
+<tt>o=p</tt>)
+
+<li>il metodo <tt>println(Object o)</tt> invoca
+<tt>o.toString()</tt>; grazie al late binding, la stringa
+risultante &egrave; quella specifica dei <tt>Point</tt>:
+<tt>"java.awt.Point[x=2,y=3]"</tt>
+
+<li>questa stringa viene stampata
+
+</ol>
+
+<hr>
+
+
+<h4>La <tt>println</tt> di uno <tt>Studente</tt></h4>
+
+<p>
+Dato che la <tt>println</tt> ha un argomento
+<tt>Object</tt>, si pu&ograve; passare uno
+<tt>Studente</tt>:
+</p>
+
+<pre>
+  public static void main(String args[]) {
+    Studente s=new Studente();
+
+    System.out.println(s);
+  }
+</pre>
+
+<p>
+Cosa succede:
+</p>
+
+<ol>
+
+<li>viene invocato <tt>println(Object o)</tt>
+
+<li>copiatura dei parametri (equivalente a <tt>o=s</tt>)
+
+<li>viene invocato <tt>o.toString()</tt>
+
+<li>dato che <tt>Studente</tt> non ridefinisce
+<tt>toString</tt>, viene invocato il <tt>toString</tt> di
+<tt>Object</tt>
+
+<li>questo metodo ritorna il nome della classe e l'indirizzo
+dell'oggetto, es. <tt>"Studente@e2fa2a"</tt>
+
+<li>questo stringa viene stampata
+
+</ol>
+
+<hr>
+
+
+<h4>Ridefinire <tt>toString</tt></h4>
+
+<p>
+Basta inserire un metodo con questo nome nella classe
+</p>
+
+<p>
+Cosa ci si aspetta: che ritorni una stringa che rappresenta
+l'oggetto
+</p>
+
+<pre>
+class Studente {
+  String nome;
+  int anno;
+
+  public String toString() {
+    return "["+nome+","+anno+"]";
+  }
+}
+</pre>
+
+<p>
+Sul <tt>public</tt> ci ritorneremo
+</p>
+
+<hr>
+
+
+<h4>Attenzione!</h4>
+
+<p>
+Se <tt>Studente</tt> ha un metodo <tt>stampa()</tt> si
+pu&ograve; pensare di fare:
+</p>
+
+<pre>
+  public static void main(String args[]) {
+    Object o=new Studente();
+
+    System.out.println(o.stampa());
+  }
+</pre>
+
+<p>
+La classe <tt>Object</tt> non ha il metodo <tt>stampa()</tt>
+</p>
+
+<p>
+Il discorso "il metodo &egrave; quello della sottoclasse"
+vale solo se il metodo sta <i>sia</i> nella sottoclasse che
+nella sovraclasse
+</p>
+
+<hr>
+
+
+<h4>Ridefinizione di <tt>equals</tt></h4>
+
+<p>
+Le classi "serie" hanno sia <tt>toString</tt> che
+<tt>equals</tt> ridefiniti
+</p>
+
+<dt>
+
+<dt><tt>Object</tt>:
+<dd><tt>equals</tt> &egrave; uguale a <tt>==</tt>
+
+<dt><tt>Point</tt>:
+<dd><tt>equals</tt> vede se i due punti hanno le stesse
+coordinate
+
+<dt><tt>Studente</tt>:
+<dd>se non ridefinisco <tt>equals</tt>, &egrave; lo stesso
+della classe <tt>Object</tt>
+
+</dl>
+
+<hr>
+
+
+<h4>Ridefinire <tt>equals</tt></h4>
+
+<p>
+Vediamo un passo per volta
+</p>
+
+<ol>
+
+<li>confronto componente per componente
+
+<li>confronto delle componenti oggetto
+
+<li>caso di oggetto e componenti <tt>null</tt>
+
+<li>confronto di classi
+
+</ol>
+
+<hr>
+
+
+<h4>Ridefinire il metodo</h4>
+
+<p>
+Intanto, l'intestazione:
+</p>
+
+<pre>
+class Studente {
+  String nome;
+  int anno;
+
+  ...
+
+  public boolean equals(Object o) {
+    ...
+  }
+}
+</pre>
+
+<p>
+Nella classe <tt>Object</tt> ha come parametro un
+<tt>Object</tt>
+</p>
+
+<p>
+Quando si eredita, il tipo degli argomenti non pu&ograve;
+cambiare
+</p>
+
+<p>
+Se voglio ridefinire il metodo, devo usare gli stessi
+parametri che ci sono nella sovraclasse
+</p>
+
+<hr>
+
+
+<h4>Attenzione al tipo!</h4>
+
+<pre>
+  public boolean equals(Object o) {
+    return (this.nome==o.nome)&amp;&amp;(this.anno==o.anno);
+  }
+</pre>
+
+<p>
+La variabile <tt>o</tt> &egrave; un <tt>Object</tt>
+</p>
+
+<p>
+Non ha le componenti <tt>nome</tt> e <tt>anno</tt>
+</p>
+
+<p>
+Prima va fatto il cast:
+</p>
+
+<pre>
+  public boolean equals(Object o) {
+    Studente s;
+
+    s=(Studente) o;
+
+    return (this.nome==s.nome)&amp;&amp;(this.anno==s.anno);
+  }
+</pre>
+
+<hr>
+
+
+<h4>Componenti oggetto</h4>
+
+<p>
+Dato che la componente <tt>nome</tt> &egrave; una stringa,
+va confrontata usando <tt>equals</tt>
+</p>
+
+<pre>
+  public boolean equals(Object o) {
+    Studente s;
+
+    s=(Studente) o;
+
+    return (this.nome.equals(s.nome))&amp;&amp;
+           (this.anno==s.anno);
+  }
+</pre>
+
+<hr>
+
+
+<h4>Valori <tt>null</tt></h4>
+
+<p>
+<tt>this</tt> non pu&ograve; valere <tt>null</tt>
+(&egrave; l'oggetto di invocazione)
+</p>
+
+<p>
+<tt>o</tt> pu&ograve; valere <tt>null</tt>
+</p>
+
+<pre>
+  if(s.equals(null))
+    ...
+</pre>
+
+<p>
+Va aggiunto il controllo:
+</p>
+
+<pre>
+  public boolean equals(Object o) {
+    Studente s;
+
+    if(o==null)
+      return false;
+
+    s=(Studente) o;
+
+    return (this.nome.equals(s.nome))&amp;&amp;
+           (this.anno==s.anno);
+  }
+</pre>
+
+<p>
+Dato che <tt>this</tt> non pu&ograve; valere <tt>null</tt>,
+se <tt>o</tt> vale <tt>null</tt> i due oggetti non sono
+uguali
+</p>
+
+<hr>
+
+
+<h4>Componenti nulle</h4>
+
+<p>
+Anche le componenti <tt>nome</tt> possono valere
+<tt>null</tt>
+</p>
+
+<p>
+Se <tt>this.nome</tt> vale <tt>null</tt>, allora
+l'invocazione <tt>this.nome.equals(...)</tt> genera un
+errore
+</p>
+
+<p>
+Non dovrebbe: se <tt>s.nome</tt> vale <tt>null</tt> allora i
+due oggetti potrebbero essere uguali, altrimenti non lo sono
+(ma non si tratta di una condizione di errore)
+</p>
+
+<pre>
+  public boolean equals(Object o) {
+    Studente s;
+
+    if(o==null)
+      return false;
+
+    s=(Studente) o;
+
+    if(this.nome==null) {
+      if(s.nome!=null)
+        return false;
+    }
+    else
+      if(!this.nome.equals(s.nome))
+        return false;
+
+    if(this.anno!=s.anno)
+      return false;
+
+    return true;
+  }
+</pre>
+
+<hr>
+
+
+<h4>Verifica componenti nulle</h4>
+
+<p>
+L'idea: per verificare se un gruppo di condizioni sono tutte
+vere, le verifico una per volta.
+</p>
+
+<p>
+Se una condizione &egrave; falsa mi fermo e ritorno
+<tt>false</tt>
+</p>
+
+<p>
+Altrimenti, vado avanti: se arrivo alla fine, tutte le
+condizioni sono vere e quindi ritorno <tt>true</tt>
+</p>
+
+<p>
+Per le componenti scalari: se sono diverse ritorno
+<tt>false</tt>
+</p>
+
+<p>
+Per gli oggetti: se <tt>this.nome</tt> vale <tt>null</tt>,
+allora se <tt>s.nome</tt> &egrave; diverso da <tt>null</tt>
+ritorno <tt>false</tt>
+</p>
+
+<p>
+Se <tt>this.nome</tt> &egrave; diverso da <tt>null</tt>, uso
+<tt>equals</tt> come al solito
+</p>
+
+<hr>
+
+
+<h4>Verifica classi</h4>
+
+<p>
+Dato che <tt>equals</tt> ha un <tt>Object</tt> come
+argomento, si pu&ograve; anche invocare con un parametro
+attuale che non &egrave; uno <tt>Studente</tt>
+</p>
+
+<p>
+Se <tt>o</tt> non contiene uno <tt>Studente</tt> (o un
+oggetto di una sottoclasse) allora il cast d&agrave; un
+errore a runtime
+</p>
+
+<p>
+Se due oggetti sono di classi diverse, allora non sono
+uguali
+</p>
+
+<p>
+Confronto fra classi:
+</p>
+
+<pre>
+    if(o.getClass()!=o.getClass())
+      return false;
+</pre>
+
+<hr>
+
+
+<h4>Versione finale di <tt>equals</tt></h4>
+
+<pre>
+class Studente {
+  String nome;
+  int anno;
+
+  public String toString() {
+    return "["+nome+","+anno+"]";
+  }
+
+  public boolean equals(Object o) {
+    Studente s;
+
+    if(o==null)
+      return false;
+
+    if(o.getClass()!=o.getClass())
+      return false;
+
+    s=(Studente) o;
+
+    if(this.nome==null) {
+      if(s.nome!=null)
+        return false;
+    }
+    else
+      if(!this.nome.equals(s.nome))
+        return false;
+
+    if(this.anno!=s.anno)
+      return false;
+
+    return true;
+  }
+}
+</pre>
+
+</body>
+</html>
+
+
+
+

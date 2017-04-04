@@ -1,0 +1,121 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+<HEAD>
+   <TITLE></TITLE>
+   <META NAME="Author" CONTENT="">
+   <META NAME="GENERATOR" CONTENT="Mozilla/3.01Gold (Win95; I) [Netscape]">
+</HEAD>
+<BODY BGCOLOR="#dfdfdf">
+
+<CENTER><DT><B><FONT SIZE=+2>Fondamenti di Informatica </FONT></B></DT></CENTER>
+
+<CENTER><DT><FONT SIZE=+1>Aeronautica, Meccanica, Elettrica, Materiali,
+</FONT></DT></CENTER>
+
+<CENTER><DT><FONT SIZE=+1>Nucleare, Chimica, Ambiente e Territorio</FONT></DT></CENTER>
+
+<CENTER><DT><B><FONT SIZE=+1>Appello del 15-7-1997</FONT></B></DT></CENTER>
+
+<CENTER><DT><FONT SIZE=+1>PRIMA PARTE</FONT></DT></CENTER>
+
+<DT><B>Esercizio 1 (18 punti)</B></DT>
+
+<DT>Una matrice <B>T(n x m)</B> rappresenta la pianta dei posti di un teatro.
+Gli elementi della matrice possono assumere i valori: <B>0</B> (posto libero),
+<B>1 </B>(posto occupato), <B>2</B> (posto non disponibile perche' riservato
+al personale). Inoltre, un vettore <B>C</B>, ad <B>n </B>componenti, specifica,
+per ogni componente i, il costo del biglietto corrispondente ad un qualunque
+posto in i-esima riga. </DT>
+
+<DT>1. Scrivere le dichiarazioni di tipo necessarie per i sottoprogrammi
+2 e 3 seguenti. </DT>
+
+<DT>2. Scrivere una procedura o funzione Pascal che, ricevendo in ingresso
+la matrice <B>T</B>, il vettore <B>C</B>, un intero <B>k</B>, che rappresenta
+il numero dei biglietti richiesti dal cliente, ed un intero <B>q</B>, che
+rappresenta il prezzo massimo che il cliente e' disposto a pagare per ogni
+biglietto, restituisca in uscita il valore vero se e' possibile soddisfare
+la richiesta del cliente (cioe' se in <B>T</B> esistono <B>k</B> posti
+liberi, <B>adiacenti sulla stessa riga</B>, con costo unitario &sup2; <B>q</B>),
+falso altrimenti. </DT>
+
+<DT>3. Scrivere una procedura o funzione Pascal che, ricevendo in ingresso
+il vettore <B>C</B>, una coppia di interi <B>i</B> e <B>j</B>, che rappresentano
+le coordinate di riga e colonna del primo biglietto venduto, ed un intero
+<B>k</B>, che rappresenta il numero di biglietti adiacenti venduti, restituisca
+in uscita la lista dei biglietti venduti, cioe' una lista con tanti elementi
+quanti sono i biglietti venduti nella fila <B>i</B>, ed in cui ogni elemento
+contiene le coordinate di riga e colonna del posto ed il prezzo di un biglietto.
+</DT>
+
+<DT><B>Esempio </B></DT>
+
+<CENTER><DT><IMG SRC="970715PP.gif" HEIGHT=237 WIDTH=491></DT></CENTER>
+
+<DT>
+<HR SIZE=6 WIDTH="100%"></DT>
+
+<CENTER><DT><B><FONT SIZE=+2>Fondamenti di Informatica </FONT></B></DT></CENTER>
+
+<CENTER><DT><FONT SIZE=+1>Aeronautica, Meccanica, Elettrica, Materiali,
+</FONT></DT></CENTER>
+
+<CENTER><DT><FONT SIZE=+1>Nucleare, Chimica, Ambiente e Territorio </FONT></DT></CENTER>
+
+<CENTER><DT><B><FONT SIZE=+1>Appello del 15-7-1997</FONT></B></DT></CENTER>
+
+<CENTER><DT><FONT SIZE=+1>SECONDA PARTE</FONT></DT></CENTER>
+
+<DT><B>Esercizio 2 (4 punti)</B> </DT>
+
+<DT>Descrivere la struttura della CPU ed illustrarne le principali funzionalita'.</DT>
+
+<DT><B>Esercizio 3 (4 punti)</B> </DT>
+
+<DT>Scrivere un sottoprogramma Fortran che, ricevendo in ingresso un vettore
+di interi di ordine N, con N pari, restituisca in uscita il valore vero
+se il vettore e' simmetrico, cioe' ogni elemento e' uguale al corrispondente
+elemento speculare rispetto alla meta' del vettore, falso altrimenti. </DT>
+
+<DT><B>Esempio </B></DT>
+
+<CENTER><DT><IMG SRC="970715SP.gif" HEIGHT=153 WIDTH=319></DT></CENTER>
+
+<DT><B>Esercizio 4 (4 punti)</B> </DT>
+
+<DT>Data la seguente procedura Pascal (che fa parte di un programma completo,
+contenente le ovvie dichiarazioni di tipo, ecc.):</DT>
+
+<UL>
+<DT><TT><FONT SIZE=+1><B>Procedure</B> CheFa (p:punt; n:integer); </FONT></TT></DT>
+
+<DT><B><TT><FONT SIZE=+1>begin </FONT></TT></B></DT>
+
+<DT><B><TT><FONT SIZE=+1><FONT COLOR="#C0C0C0">.....</FONT>if</FONT></TT></B><TT><FONT SIZE=+1>
+p&lt;&gt;nil <B>then begin</B> </FONT></TT></DT>
+
+<DT><TT><FONT SIZE=+1><B><FONT COLOR="#C0C0C0">.........</FONT></B>CheFa(p^.next,
+n+1); </FONT></TT></DT>
+
+<DT><TT><FONT SIZE=+1><B><FONT COLOR="#C0C0C0">.........</FONT></B>p^.info:=p^.info+n;
+</FONT></TT></DT>
+
+<DT><TT><FONT SIZE=+1><B><FONT COLOR="#C0C0C0">.........</FONT></B>writeln(p^.info,
+n) </FONT></TT></DT>
+
+<DT><B><TT><FONT SIZE=+1><FONT COLOR="#C0C0C0">.....</FONT>end</FONT></TT></B><TT><FONT SIZE=+1>
+</FONT></TT></DT>
+
+<DT><TT><FONT SIZE=+1><B>end</B>;</FONT></TT></DT>
+</UL>
+
+<DT>cosa stampa, ricevendo in input la lista p:</DT>
+
+<CENTER><DT><IMG SRC="970715SP2.gif" HEIGHT=43 WIDTH=403></DT></CENTER>
+
+<DT>e l'intero n=2? <B>Motivare la risposta</B>. </DT>
+
+<DT><A HREF="970715.doc"><IMG SRC="/images/floppy.gif" HEIGHT=33 WIDTH=32 ALIGN=ABSCENTER>Download testo in formato Word.</A> </DT>
+
+</BODY>
+</HTML>

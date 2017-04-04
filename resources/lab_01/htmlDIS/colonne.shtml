@@ -1,0 +1,96 @@
+<!doctype html public "-//w3c//dtd html 4.0 transitional//en">
+<html>
+<head>
+<link href="java.css" rel="stylesheet" type="text/css">
+<title>Stampa per righe</title>
+</head>
+
+<body>
+
+<h2>Esempio di uso delle stringhe: stampa per righe</h2>
+
+<p>
+Vediamo un possibile uso delle operazioni fra stringhe.
+Si voglino stampare i numeri della serie di Fibonacci in
+modo che ogni riga ne contenga cinque invece che uno.
+Inoltre, ci si vuole fermare alla settima riga.<p>
+
+Il programma <a href="Colonne.java">Colonne.java</a>
+ha questa struttura: usiamo un variabile <tt>riga</tt>
+che va da 1 a 7. Usiamo poi una seconda variabile
+<tt>colonna</tt> che, per ogni riga, va da 1 a 5 (infatti,
+si vogliono cinque numeri per ogni riga, cio&egrave;
+cinque colonne di numeri). Poi abbiamo ancora le
+variabili <tt>penultimo</tt>, <tt>ultimo</tt>,
+e <tt>prossimo</tt> per la serie.<p>
+
+<pre>
+/*
+  Serie di Fibonacci, in colonne
+*/
+
+class Colonne {
+  public static void main(String[] args) {
+    int riga, colonna;
+    int penultimo, ultimo, prossimo;
+    String rigacorrente;
+
+    penultimo=1;
+    ultimo=1;
+
+    for(riga=1; riga<=7; riga=riga+1) {
+      rigacorrente=" ";
+
+      for(colonna=1; colonna<=5; colonna=colonna+1) {
+        rigacorrente=rigacorrente+" "+penultimo;
+
+        prossimo=penultimo+ultimo;
+        penultimo=ultimo;
+        ultimo=prossimo;
+      }
+
+      System.out.println(rigacorrente);
+    }
+  }
+}
+
+</pre>
+
+<p>
+Cose da notare in questo programma:
+
+<ol>
+
+<li>c'&egrave; un ciclo <tt>for</tt> dentro l'altro: questo significa
+che a ogni passata del ciclo esterno, viene eseguito il ciclo
+interno; quindi, ogni volta che <tt>riga</tt> assume un nuovo
+valore, il ciclo interno viene eseguito per tutti i valori di
+<tt>colonna</tt>;
+
+<li>ogni volta che si calcola un nuovo valore della serie, va
+aggiunto alla variabile di tipo stringa che rappresenta la riga
+che si sta costruendo; dal momento che
+<tt>rigacorrente+" "+penultimo</tt> &egrave; la espressione che
+rappresenta il contenuto della variabile <tt>rigacorrente</tt>
+a cui &egrave; stato concatenato <tt>penultimo</tt>, la istruzione 
+<tt>rigacorrente=rigacorrente+" "+penultimo;</tt> ha come effetto
+quello di concatenare <tt>penultimo</tt> a <tt>rigacorrente</tt>
+e mettere poi il risultato in <tt>rigacorrente</tt>;
+
+<li>all'inizio della creazione di una nuova riga, occorre
+cancellare la riga precedente e ricominciare con i nuovi
+valori; per questo, all'inizio di ogni riga, si esegue la
+istruzione <tt>rigacorrente=" ";</tt>. Come per tutte le
+variabili, l'assegnazione mette quello che sta a destra nella
+variabile a sinistra. Questo significa che il contenuto di
+<tt>rigacorrente</tt> viene sostituito da <tt>" "</tt>.
+
+</ol>
+
+
+
+
+
+</body>
+</html>
+

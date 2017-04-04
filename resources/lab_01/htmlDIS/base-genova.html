@@ -1,0 +1,173 @@
+<html>
+<head>
+<link href="moses.css" rel="stylesheet" type="text/css">
+<title>Programma di lavoro dell'unit&agrave; di Roma</title>
+</head>
+
+<body>
+
+<h1>Unit&agrave; di Genova: base di partenza scientifica</h1>
+
+<p> Il Model Checking [1] e' una potente tecnica di ragionamento automatico per
+la verifica di proprieta' temporali dei sistemi dinamici. Il Model Checking e'
+ora ampiamente utilizzato in ambito industriale per la verifica ed il debugging
+di sistemi hardware e software. In Model Checking un sistema e' modellato come
+una macchina a stati, e la specifica e' espressa in una logica temporale. Per
+sistemi realistici il numero degli stati e' solitamente cosi' grande che
+l'esplorazione esplicita dello spazio degli stati non e' praticabile. Tuttavia
+mediante una codifica booleana della macchina a stati tramite Ordered Binary
+Decision Diagrams (OBDD), e' possibile trattare sistemi con un numero di stati
+dell'ordine di 10E20 [2]. Tuttavia, per sistemi con un numero di stati maggiore
+la dimensione dell'OBDD generato dalla procedura di model checking diventa
+troppo grande per i calcolatori attualmente disponibili. Inoltre e' ben noto
+che la dimensione degli OBDD dipende in modo critico dall'ordine scelto per le
+variabili booleane. E anche ben noto che trovare un ordine che garantisca la
+minimalita' delle dimensioni dell'OBDD e' un problema NP e che in molti casi di
+interesse le euristiche implementate per contenere la dimensione dell'OBDD
+falliscono. Infine, esistono sistemi per cui, indipendentemente dall'ordine
+delle variabili prescelto, la dimensione dell'OBDD risultante e` comunque
+esponenziale nel numero di variabili che modellano il sistema.</p>
+
+<p>
+Il problema del ragionamento su azioni [3] puo` essere definito mediante:</p>
+
+<ul>
+
+<li>una macchina a stati i cui stati corrispondono alle configurazioni del
+dominio di applicazione e le cui transizioni corrispondono alle azioni
+disponibili;
+
+<li>una formula che esprime una proprieta' temporale della macchina a stati (ad esempio l'esistenza di una sequenza di stati che porta da uno stato iniziale ad uno stato finale).
+
+</ul>
+
+<p>
+Il ragionamento su azioni (e quindi anche le sue istanze, quali ad esempio, il problema della pianificazione) puo' dunque essere ridotto al problema del Model Checking in un'opportuna logica temporale [4]. Normalmente la macchina a stati e' specificata in termini di un insieme di operatori STRIPS. In STRIPS ogni azione ha un effetto deterministico, ovvero l'esecuzione di un'azione in uno stato porta deterministicamente in un altro stato. Piu` recentemente, e' stato definito un linguaggo molto espressivo, chiamato C [5], che permette, ad esempio, la specifica di azioni con ramificazioni e qualificazioni, l'esecuzione concorrente di azioni, azioni con effetto non deterministico, o con effetti condizionali (dipendenti cioe` dallo stato in cui sono eseguite). C sussume STRIPS e il linguaggio AR descritto in [6].</p>
+
+<p>
+Per SAT si intende il problema del soddisfacimento di un insieme di formule proposizionali. Un risolutore SAT e' una procedura di decisione per SAT. I risolutori SAT non soffrono del problema dell'esplosione in spazio degli OBDD. Inoltre, grazie alla messa a punto di strutture dati ed euristiche particolarmente efficaci, si e` avuto in questi ultimi anni un notevole miglioramento delle prestazioni di tali procedure. Alcuni esempi di risolutori SAT allo stato dell'arte sono PROVER [7] (basato sul metodo di Stalmark [8]), SATO [9] e REL_SAT [10] (basati sulla procedura di Davis & Putnam [11]). La nuova generazione di risolutori SAT e` stata applicata con successo in vari domini, quali la verifica e il debugging di circuiti hardware [12], la costruzione di decisori per logiche modali [13,14], la verifica formale di sistemi di controllo [7], nonche' la costruzione di sistemi di pianificazione in grado di competere con sistemi allo stato dell'arte [15,16].</p>
+
+<p>
+L'Unita' di Ricerca di Genova sviluppera` tecniche e sistemi di SAT Model Checking, ovvero basati sulla riduzione del Model Checking a SAT, secondo quanto fatto ad esempio in [12]. L'unita' di Genova applichera` inoltre i sistemi sviluppati nel campo del ragionamento su azioni e pianificazione, secondo quanto fatto ad esempio in [4,17].</p>
+
+<p> Il SAT Model Checking consiste di due fasi distinte. Dato un sistema
+dinamico a stati finiti ed una formula temporale che esprime l'esistenza di una
+computazione soddisfacente una proprieta' G, il SAT Model Checking consiste due
+fasi: 1. generazione di una sequenza di formule proposizionali P_1, P_2, ...,
+dove la soddisfacibilita' di P_k corrisponde all'esistenza di una computazione
+soddisfacente G e attraversante al piu' k stati distinti. 2. verifica della
+soddisfacibilita' proposizionale delle formule P_k generate nella prima fase.
+La disponibilita' di risolutori SAT molto efficienti permette dunque di
+costruire una nuova generazione di Model Checkers che chiameremo SAT Model
+Checkers (SAT-MCs). I vantaggi dei SAT-MCs rispetto agli OBDD-based Model
+Checkers sono molteplici. Innanzitutto i SAT-MCs trovano controesempi in modo
+molto veloce. Questo perche` i SAT-MCs esplorano lo spazio degli stati in modo
+depth-first, mentre gli OBDD-based Model Checkers seguono una strategia
+breadth-first. La capacita' di trovare controesempi e' forse la funzionalita'
+piu' importante per un Model Checker, sia quando esso e' utilizzato per fare
+debugging di sistemi reattivi sia per il suo utilizzo in pianificazione.
+Inoltre i SAT-MCs possono essere costruiti in modo tale da trovare controesempi
+di lunghezza minima. Anche in questo caso cio' e' importante nell'attivita' di
+debugging, in quanto aiuta l'utente a comprendere piu' facilmente i
+controesempi, nonche' nell'attivita' di pianificazione in quanto consente di
+costruire piani di lunghezza minima. Infine, mentre negli approcci basati su
+OBDD l'ordinamento delle variabili (corrispondente al modo in cui lo spazio di
+ricerca e` esplorato) e' fissato all'inizio, questo non e` vero per i
+SAT-MCs.</p>
+
+<p> [12] illustra una tecnica di riduzione del Model Checking di formule della
+logica temporale LTL alla soddifacibilita' proposizionale, chiamata bounded
+model checking, e ne discute l'applicazione a problemi di verifica di circuiti
+hardware. I risultati sperimentali confermano i vantaggi dei SAT-MCs rispetto
+agli OBDD-based Model Checkers: su numerosi problemi non gestibili dagli
+OBDD-based Model Chekers, un SAT-MCs e' in grado di trovare i controesempi in
+modo instantaneo. [15] propone una riduzione della pianificazione in domini
+STRIPS (i.e. formalizzati con STRIPS) ad un problema SAT e dimostra
+sperimentalmente che l'approccio consente di costruire pianificatori basati su
+risolutori SAT in grado di competere (e in molti casi superare) le prestazioni
+dei pianificatori allo stato dell'arte. Per questi domini, [16] propone
+un'euristica per risolutori SAT che consente di migliorare ulteriormente le
+prestazioni dei pianificatori basati su risolutori SAT. [6] definisce un
+linguaggio (chiamato AR) per la specifica di domini in cui le azioni possono
+avere effetti non deterministici, e/o ramificazioni, e/o dipendenti dallo stato
+in cui sono eseguite. [4] riduce il problema della pianificazione per domini
+specificati con AR a un problema di model checking. Viene in particolare
+definita una procedura che e' garantita terminare ritornando una soluzione
+ottima oppure riportando fallimento se non esiste soluzione. Viene inoltre
+descritta l'implementazione di un pianificatore (MBP) basato su tale approccio.
+[17] dimostra la viabilita' dell'approccio anche nel caso di domini STRIPS,
+comparando le prestazioni del &#34;planning via model checking&#34; con altri
+sistemi di pianificazione allo stato dell'arte. [5] definisce un nuovo
+linguaggio per la specifica di domini che permette, tra le altre cose, la
+specifica di azioni eseguibili concorrentemente. Alcuni problemi relativi alla
+riduzione alla soddifacibilita' proposizionale di alcuni frammenti decidibili
+del calcolo dei predicati del primo ordine sono discussi in [18,19,20]. Negli
+stessi lavori viene proposta e discussa una architettura flessibile per la
+costruzione e combinazione di tali decisori.  </p>
+
+<hr>
+
+<h1>Scientific Background (Unit of Genoa)</h1>
+
+<p>
+Model Checking [1] is a powerful automated-reasoning technique used to verify temporal properties of dynamic systems. Model Checking techniques are commonly used in industrial applications to verify and debug hardware and programs. In Model Checking a system is modelled as a finite state machine and the specification is described using some kind of temporal logic. For actual systems, the number of states is usually so large that generating and exploring the finite state machine is not feasible in practice. Using a binary encoding of the finite state machine, it is possible to deal with systems having up to 10E20 states [2]. Such encodings are obtained using Ordered Binary Decision Diagrams (OBDDs). Unfortunately, for problems exceeding the 10E20 bound the size of the OBDD generated by the Model Checking procedure becomes too large to be handled by the current computer technology. Moreover, variable ordering is critical w.r.t the resulting OBDD size. Computing the optimal variable ordering, i.e., the ordering that minimizes the OBDD size, is a NP-complete problem. In many cases, the implemented heuristics fail to keep the OBDD size small. For some systems, regardless of the variable ordering, the OBDD size is exponential in the number of variables modeling the system.</p>
+
+<p>
+The problem of reasoning about actions [3] may be defined as follows:</p>
+
+<ul>
+
+<li>a finite state machine whose states match the configurations in the application domain and whose transitions match the available actions;
+
+<li>a formula describing a temporal property of the finite state machine, e.g., the existence of a sequence of states that goes from an initial state to a final one.
+
+</ul>
+
+<p>
+Reasoning about actions (and its instances, e.g., planning) can be reduced to Model Checking using a suitable temporal logic [4]. Usually, the finite state machine is described with a set of STRIPS operators. In the STRIPS formalism every action has a deterministic effect, i.e., the execution of an action in a state deterministically leads to another state. Recently, a very expressive language named C [5] has been defined. C deals with ramification and qualification constraints, it allows for concurrent actions, non deterministic effects and conditional effects of actions. C subsumes STRIPS and the AR language described in [6].</p>
+
+<p>
+By SAT we mean the satisfiability problem for propositional logic. A SAT solver is a decision procedure for SAT. State of the art SAT solvers do not suffer the space explosion problem that affects OBDDs. In recent years, SAT solver performances have been greatly improved with the implementation of efficient data structures and effective heuristics. Some examples of state of the art SAT solvers are PROVER [7], based on Stalmarck's method [8], SATO [9] and REL_SAT [10], based on the Davis-Putnam procedure [11]. The new generation of SAT solvers has been successfully applied in many domains, such as hardware verification [12], decision procedures for modal logics [13,14], formal verification for control systems [7], and planning [15,16]. Remarkably, SAT-planners are able to compete with special-purpose planners.</p>
+
+<p>
+The unit of Genova is mainly concerned with the development of techniques and systems for SAT Model Checking, i.e. based on the reduction of Model Checking to SAT, see, e.g., [12]. The unit of Genova will also apply the systems developed in reasoning about actions and plannig, as done, e.g, in [4,17].</p>
+
+<p>
+The SAT Model Checking approach consists of two different steps. Given a finite state dynamic system and a temporal formula describing a computation that satisfies a property G, SAT Model Checking breaks the problem into the following steps:</p>
+
+(1) generation of a sequence of propositional formulae P_1, P_2, ..., where the satisfiability of P_k is equivalent to the existence of a computation satisfying G and traversing at most k different states. <br>
+
+(2) test of the propositional satisfiability of the formulae P_k generated in the previous step. The availability of highly efficient SAT solvers allows for the implementation of a new generation of Model Checkers that we call SAT Model Checkers (SAT-MCs). There are several advantages of SAT-MCs over the OBDD-based Model Checkers. First of all, SAT-MCs find counterexamples quickly. This happens because they explore the state space with a depth-first strategy while OBDD-based Model Checkers use a breadth-first strategy. Finding counterexamples is the most important feature for a Model Checker when using it for debugging of reactive systems as well as for planning. Moreover, SAT-MCs can be implemented to find counterexamples of minimum length. This feature is also important for the task of debugging, since it helps the user to understand the counterexamples, and for the task of planning, since it allows for plans of minimum length to be found. Finally, while in OBDD-based approaches the ordering of the variables (corresponding to the way the search space is explored) is fixed in advance, this is not the case for SAT-MCs. <br>
+
+<p>
+[12] describes a technique for the reduction of Model Checking in LTL temporal logic to propositional satisfiability. Such a technique is called bounded model checking, and its application to hardware verification is discussed in [12]. The experimental results confirm the advantages of SAT-MCs over OBDD-based Model Checkers: for several problems that cannot be handled by OBDD-based Model Checkers, a SAT-MC can find counterexamples instantaneously. [15] suggests a reduction for STRIPS planning (i.e., domains formalized in the STRIPS language) to a SAT problem. The experiments in [15] show that such an approach allows for the implementation of SAT planners that perform as well as or better than special purpose planners. For STRIPS domains, [16] suggests the application of a heuristic to SAT solvers that further enhances the performances of SAT planners. [6] describes a language (called AR) to specify domains where the actions may have non deterministic effects, and/or ramifications, and/or conditional effects. [4] reduces the problem of planning for AR specified domains to a Model Checking problem. Specifically, a procedure guaranteed to terminate with an optimal solution or a failure is defined. [17] shows the applicability of the approach in the case of STRIPS domains, comparing the performances of &#34;planning via Model Checking&#34; with other state of the art planners. [5] defines a new language for domain specifications that allows for concurrency. Some problems proper to the reduction of fragments of first order predicate calculus to propositional satisfiability are discussed in [18,19,20]. In these papers, a flexible architecture for the implementation of such decision procedures is described.</p>
+
+<hr>
+
+<h2>Riferimenti bibliografici</h2>
+[1] E.M. Clarke and E.A. Emerson. Synthesis of synchronization skeletons for branching time temporal logic. In Logic of Programs: Workshop, Yorktown Heights, NY, May 1981 Lecture Notes in Computer Science, vol. 131, Springer-Verlag. 1981. <br>
+[2] J.R. Burch, E.M. Clarke, K.L. McMillan, D.L. Dill, and J. Hwang. Symbolic model checking: 10E20 states and beyond. In LICS, 1990. <br>
+[3] V. Lifschitz, &#34;Two components of an action language,&#34; Annals of Mathematics and Artificial Intelligence, Vol. 21, pp. 305-320, 1997. <br>
+[4] A. Cimatti and F. Giunchiglia and E. Giunchiglia and P. Traverso Planning via model checking: a decision procedure for AR Proceedings of the 4th European Conference on Planning (ECP-97): Recent Advances in AI Planning, LNAI, Vol. 1348, pp. 130-142, Springer, September 24- 26 1997. <br>
+[5] E. Giunchiglia and V. Lifschitz, &#34;An action language based on causal explanation: preliminary report,&#34; in Proc. AAAI-98, pp. 623-630, 1998. <br>
+[6] E. Giunchiglia, G. N. Kartha, V. Lifschitz. Representing Action: Indeterminacy and Ramifications. In Artificial Intelligence vol. 95, no. 2, pp. 409-438. <br>
+[7] A. Boralv. The Industrial Success of Verification Tools Based on Stalmarck's Method. In Proc. of the Ninth International Conference on Computer Aided Verification, 1997. LNCS 1254, pag. 7-10. <br>
+[8] G. Stalmarck, M. Saflund. Modeling and Verifying Systems and Software in Propositional Logic. In (SAFECOMP'90): Safety Security and Reliability Related Computers for the 1990s, 1990. <br>
+[9] H. Zhang SATO: An Efficient Propositional Prover Proceedings of the 14th International Conference on Automated deduction, LNAI, Vol. 1249, pp. 272-275, Springer, July 13-17 1997. <br>
+[10] R. J. Bayardo Jr. and R. C. Schrag. Using CSP look-back techniques to solve real world SAT instances. In Proc. of the 14th National Conf. on Artificial Intelligence, 203-208, 1997. <br>
+[11] Davis M., Putnam, H. A Computing Procedure for Quantification Theory. J. Association for Computing Machinery&#34;, 1960, pag. 201-215, vol. 7. <br>
+[12] A. Biere, A. Cimatti, E. Clarke, Y. Zhu. Symbolic Model Checking without BDDs. To be presented at the Fifth International Conference on Tools and Algorithms for the Construction and Analysis of Systems (TACAS '99). 22-26 March, 1999. Amsterdam, the Netherlands. <br>
+[13] F. Giunchiglia, R. Sebastiani. Building decision procedures for modal logics from propositional decision procedures - the case study of modal K. In Proc. 13th International Conference on Automated Deduction (CADE'96). Lecture Notes on Artificial Intelligence series, Springer Verlag ed. New Brunswick, New Jersey, USA, 1996. <br>
+[14] E. Giunchiglia, F. Giunchiglia, R. Sebastiani, A. Tacchella. More evaluation of decision procedures for modal logics. In Sixth International Conference on Principles of Knowledge Representation and Reasoning (KR'98), Trento, Italy, Giugno 2-5 1998. Morgan Kauffmann Publishers. <br>
+[15] H. Kautz, B. Selman. Pushing the envelope: planning, propositional logic and stochastic search. In Proc. of the 14th National Conference on Artificial Intelligence (AAAI'96), Pagg. 1194--1201. <br>
+[16] E. Giunchiglia, A. Massarotto, R. Sebastiani. Act, and the Rest Will Follow: Exploiting Determinism in Planning as Satisfiability. In Proc. of the 15th National Conference on Artificial Intelligence (AAAI'98), Luglio 26-30, 1998, Madison, Wisconsin (USA). <br>
+[17] M. Di Manzo, E. Giunchiglia, S. Ruffino. Planning via Model Checking in Determistic Domains: Preliminary Report. In Proc. 8th International Conference on Artificial Intelligence - Methodology, Systems, Applications (AIMSA'98), Sozopol, Bulgaria, Settembre 21-23, 1998. <br>
+[18] A. Armando and E. Giunchiglia Embedding complex decision procedures inside an interactive theorem prover Annals of Artificial Intelligence and Mathematics, 8(3), 1993. <br>
+[19] M. Di Manzo and E. Giunchiglia and A. Armando and P. Pecchiari Proving formulas through reduction to decidable classes Advances in Artificial Intelligence: Proceedings of the 3rd Congress of the Italian Association for Artificial Intelligence (AI*IA '93), LNAI, Vol. 728, pp. 1-10, Springer, October 1993. <br>
+[20] E. Giunchiglia, A. Armando, P. Pecchiari. Structured Proof Procedures. In the Annals of Artificial Intelligence and Mathematics, vol. 15, n. 1, 1995. <br>
+[21] H. Kautz and B. Selman. The Role of Domain-Specific Knowledge in the Planning as Satisfiability Framework. Proc. AIPS-98, Pittsburgh, PA, 1998.
+
+
+</body>
+</html>
+

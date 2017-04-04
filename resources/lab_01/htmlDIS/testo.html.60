@@ -1,0 +1,86 @@
+<html>
+<head>
+<title>
+Diploma Universitario di Ingegneria Informatica,
+Esame di Fondamenti di Informatica II - secondo modulo,
+A.A. 1999/2000 - Appello del 19 luglio 2000
+</title>
+</head>
+
+<body>
+
+<h3 align="center">
+Diploma Universitario di Ingegneria Informatica<br>
+Esame di Fondamenti di Informatica II - secondo modulo <br>
+A.A. 1999/2000 - Appello del 19 luglio 2000</h3>
+
+<b>Problema 1</b>&nbsp;&nbsp; Sia data la seguente specifica di modulo per tipo astratto:
+
+<dl>
+  <dt><b><u>TipoAstratto</u></b> <i>Castello</i><p>
+  <dt><b><u>Sorte</u></b> <i>Cas</i> (sorta per il dominio di interesse)<p>
+  <dt><b><u>Funzioni</u></b><p>
+
+       <ul>
+         <li><i>Crea : (Intero) --&gt; Cas</i> <br>
+              precondizioni e postcondizioni per <i>crea</i>(n) = <i>c</i> <br>
+              <u>pre</u>: nessuna <br>
+              <u>post</u>: <i>c</i> &egrave;  un castello con <i>n</i>
+              stanze e nessuna porta che le congiunge;
+              le stanze sono rappresentate dai numeri <i>0...n-1</i>; la stanza <i>0</i>
+              &egrave l'ingresso <p>
+
+
+         <li><i>NumeroStanze : (Cas) --&gt; Intero</i><br>
+              precondizione e postocondizioni per <i>NumeroStanze(c) = n</i><br>
+              <u>pre</u>: nessuna<br>
+              <u>post</u>: <i>n</i> &egrave; il numero delle stanze di <i>c</i> <p>
+
+         <li><i>AggiungiPorta : (Cas,Intero,Intero) --&gt; (Cas)</i><br>
+              precondizione e postocondizioni per <i>AggiungiPorta(c,i,j) = (Cas)</i><br>
+              <U>pre</u>:  <i>0 &lt;= i &lt;= NumeroStanze(c)-1</i>,
+                  <i>0 &lt;= j &lt;= NumeroStanze(c)-1</i>, <i>i =/= j</i> <br>
+              <U>post</u>: <i>d</i> &egrave; il castello ottenuto da <i>c</i>
+              aggiungendo una porta tra <i>i</i> e <i>j</i>;
+              se <i>c</i> gi&agrave; contiene una porta tra  <i>i</i> e
+              <i>j</i> allora <i>d=c</i> <p>
+
+         <li><i>QualiPorte : (Cas,Intero) --&gt; (Enumerazione(Intero))</i><br>
+              precondizioni e postcondizioni per<I> QualiPorte(c,i) = e</i> <br>
+              <u>pre</u>: <i>0 &lt;= i &lt;= NumeroStanze(c)-1</i> <br>
+              <u>post</u>: <i>e</i> &egrave; una (qualsiasi) enumerazione delle
+              stanze direttamente connesse alla stanza <i>i</i> nel castello <i>c</i> <p>
+
+         <li><i>EsistePorta : (Cas,Intero,Intero) --&gt; Boolean</i><br>
+              precondizione e postocondizioni per <i>EsistePorta(c,i,j) = b</i><br>
+              <u>pre</u>: <i>0 &lt;= i &lt;= NumeroStanze(c)-1</i>,
+                  <i>0 &lt;= j &lt;= NumeroStanze(c)-1</i>, <i>i =/= j</i> <br>
+              <u>post</u>: <i>b=true</i> se esiste una porta tra
+              tra <i>i</i> e <i>j</i>; <i>b=false</i> altrimenti <p>
+
+       </ul>
+
+       <dt><b><u>FineTipoAstratto</u></b></dt>
+</dl>
+
+<p>Scrivere una classe C++ <code>Castello</code> (file <code>.h</code>
+e file <code>.cpp</code>) che realizzi il tipo astratto
+<i>Castello</i>, in modo che tutte le operazioni del tipo astratto,
+escluso <i>Crea</i>, siano realizzate in tempo costante (<i>O(1)</i>)
+nel caso atteso. Inoltre l'enemerazione restituita da
+<i>QualiPorte</i> deve permettere di passare da un elemento al
+successivo in tempo costante <i>(O(1))</i>.  Qualora si faccia uso di
+strutture dati ausiliarie, quali <code>Heap</code>,
+<code>AlberoRicerca</code>, <code>TavolaHash</code>,
+<code>Grafo</code>, <code>Iteratore</code>, ecc., si riporti solo la
+definizione della classe (file <code>.h</code>) riportando una breve
+descrizione testuale delle funzioni pi&ugrave; significative e del
+loro costo computazionale. </p>
+
+<p><b>Problema 2</b>&nbsp;&nbsp; Realizzare una funzione esterna della classe
+<code>Castello</code> che dato un castello <i>c</i> restituisca la stanza
+pi&ugrave; remota, cio&egrave; pi&ugrave; lontana dalla stanza <i>0</i>;
+qualora ne esista pi&ugrave; di una se ne restituisca una qualsiasi. </p>
+
+</body>
+</html>

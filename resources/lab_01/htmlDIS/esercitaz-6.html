@@ -1,0 +1,62 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1">
+<META NAME="Generator" CONTENT="Microsoft Word 98">
+<TITLE>6&#170; Esercitazione in laboratorio (a.a. 1997/98)</TITLE>
+</HEAD>
+<BODY>
+
+<B><FONT FACE="Times"><P ALIGN="CENTER">Fondamenti di Informatica - Ingegneria per l'Ambiente e il Territorio - A.A. 97/98</P>
+<P ALIGN="CENTER"> - Sesta esercitazione in laboratorio - </P>
+</B>
+<P>Gli esercizi che seguono possono essere risolti usando funzioni di libreria standard ANSI dedicate all&#146;accesso ai file. Per convenienza viene qui di seguito riportato un breve elenco di quelle di uso pi&ugrave; frequente:</P>
+
+<UL>
+<LI>FILE *fopen(char *nomefile, char *modo);<BR>
+apre il file di nome <I>nomefile</I> e gli associa un flusso; il secondo argomento identifica la modalit&agrave; di accesso ("r", "w", e "a" per, rispettivamente, l'accesso in sola lettura, sola scrittura e sola scrittura in coda al file, considerato come file di testo; "rb", "wb", e "ab" per le operazioni analoghe quando il file &egrave; considerato come file binario);<BR>
+restituisce un puntatore che identifica il file.</LI>
+<LI>int fprintf(FILE *flusso, char *formato, &#133;)<BR>
+simile a printf, con la differenza che i valori vengono scritti sul file identificato da <I>flusso</I>;<BR>
+restituisce il numero di argomenti effettivamente scritti, o un numero negativo in caso di errore.</LI>
+<LI>int fscanf(FILE *flusso, char *formato, &#133;) <BR>
+simile a scanf, con la differenza che i valori vengono letti dal file identificato da <I>flusso</I>;<BR>
+restituisce il numero di argomenti effettivamente letti, o EOF nel caso sia intervenuto un errore prima della prima lettura.</LI>
+<LI>int fputc(int c, FILE *flusso)<BR>
+scrive un singolo carattere nel flusso specificato e fa avanzare l'indicatore di posizione associato (l'argomento, bench&eacute; passato come int, viene convertito in unsigned char dalla funzione prima di essere stampato)<BR>
+restituisce <I>c</I>, o, in caso di errore, EOF.</LI>
+<LI>int fgetc(FILE *flusso) <BR>
+legge un singolo carattere dal flusso specificato e fa avanzare l'indicatore di posizione associato;<BR>
+restituisce il carattere, dopo averlo convertito in int, o, in caso di errore, EOF.</LI></UL>
+
+
+<P>&nbsp;</P>
+<P>&nbsp;</P>
+<P>1. Scrivere un programma C che</P>
+
+<UL>
+<LI>chiede all&#146;utente il nome di un file di testo</LI>
+<LI>crea tale file e vi scrive tutto ci&ograve; che l&#146;utente digiter&agrave; sulla tastiera, fino al carattere &#145;.&#146; (incluso). </LI></UL>
+
+
+<P>Dopo il carattere finale il file viene chiuso e il programma termina. Si consiglia di verificare, dopo l&#146;esecuzione del programma, che il file sia stato correttamente costruito, aprendolo, ad esempio, con l&#146;editor del TurboC.</P>
+
+<P>2. Scrivere un programma C che</P>
+
+<UL>
+<LI>chiede all&#146;utente il nome di un file di testo preesistente (sorgente)</LI>
+<LI>chiede all&#146;utente il nome di un file di testo da creare (destinazione)</LI>
+<LI>copia il contenuto del file sorgente nel file destinazione. </LI></UL>
+
+
+<P>Dopo la copia i file vengono chiusi e il programma termina. Si consiglia di verificare, dopo l&#146;esecuzione del programma, che il file destinazione sia stato correttamente costruito, aprendolo, ad esempio, con l&#146;editor del TurboC.</P>
+
+<P>3. Scrivere un programma C che</P>
+
+<UL>
+<LI>chiede all&#146;utente il nome di un file binario preesistente (sorgente)</LI>
+<LI>chiede all&#146;utente il nome di un file binario da creare (destinazione)</LI>
+<LI>copia il contenuto del file sorgente nel file destinazione. </LI></UL>
+
+
+<P>Dopo la copia i file vengono chiusi e il programma termina. Perch&eacute; non &egrave; possibile in tutti i casi verificare la correttezza della copia tramite un editor?</P></FONT></BODY>
+</HTML>

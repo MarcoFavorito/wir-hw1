@@ -1,0 +1,75 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1">
+<META NAME="Generator" CONTENT="Microsoft Word 98">
+<TITLE>2&#176; esonero di Fondamenti di Informatica</TITLE>
+<META NAME="Template" CONTENT="damore-4gb:Applications:Microsoft Office 98:Templates:Web Pages:Blank Web Page">
+</HEAD>
+<BODY LINK="#0000ff" VLINK="#800080">
+
+<B><FONT FACE="Arial Narrow"><P ALIGN="CENTER">2&#176; esonero di <I>Fondamenti di Informatica</I> (Ambiente e Territorio)</P>
+<P ALIGN="CENTER">a.a. 98/99</P>
+</B><I><P ALIGN="CENTER">21 maggio 1999 &#151; 1&#176; turno</P>
+</I><B><P>Leggi attentamente: il non seguire alla lettera queste indicazioni pu&ograve; causare l'invalidit&agrave; della prova.</P>
+<OL>
+
+</B><LI>La prova si svolge completamente al personal computer (PC). <B>L'unico elaborato valido ai fini della prova &egrave; costituito da un insieme di file depositati in C:\TEMP\ESAME.</LI>
+</B><LI>Memorizza i tuoi programmi in file cos&igrave; denominati: usa le prime lettere (al pi&ugrave; sei) del tuo cognome (tralascia spazi/apostrofo), aggiungi quindi l'iniziale del tuo nome e completa infine la stringa con un numero progressivo (una sola cifra, iniziando da 1). L'estensione &egrave; sempre .C.</LI>
+<LI>Se le domande poste ti chiedono di creare file dati, usa lo schema di costruzione dei nomi dei file descritto al punto precedente (la numerazione progressiva da usare &egrave; unica), modificando per&ograve; l'estensione: .TXT per i file di testo e .DAT per quelli binari.</LI>
+<LI>Ogni file .C creato deve iniziare con un commento, secondo il seguente schema:<BR>
+</FONT><FONT FACE="Courier New" SIZE=2>/* nome, cognome, matricola, turno, domanda a cui si sta rispondendo */</LI>
+</FONT><FONT FACE="Arial Narrow"><LI>L'utilizzo di materiale personale (libri, appunti, dispense, fotocopie, dischetti, calcolatrici, pocket computer, telefoni cellulari ecc.) non &egrave; ammesso. Non &egrave; consentito uscire dall'aula prima di aver terminato la prova n&eacute; colloquiare con chicchessia. <B>Violazioni di tali regole comportano l'annullamento automatico della prova.</B> &Egrave; invece consentita la consultazione delle pagine di help dell'ambiente di programmazione.</LI>
+<LI>Ricorda che una condizione necessaria per il superamento della prova &egrave; la correttezza sintattica del codice C. </LI>
+<LI>Al termine della prova esci dall'ambiente di programmazione, ma <B>non spegnere il PC</B>. Segnala il completamento della prova a un docente e lascia quindi l'aula.</LI>
+<LI>Rammenta di verificare il corretto funzionamento dell'ambiente di programmazione: per assicurarti che le compilazioni vengano eseguite dal compilatore C (e non dal C++) verifica nella finestra accessibile tramite il comando <I>Options</FONT><FONT FACE="Symbol">&AElig;</FONT><FONT FACE="Arial Narrow"> Compiler</FONT><FONT FACE="Symbol">&AElig;</FONT><FONT FACE="Arial Narrow"> C++ Options</I> che la scelta corrispondente a <I>use C++ Compiler</I> sia <I>CPP extension</I> e <B>non</B> <I>C++ always</I>.</LI>
+<LI>Rammenta infine che l'uso di <B>commenti</B> e di una corretta <B>indentazione</B> facilita la stesura del programma, nonch&eacute; la sua successiva correzione: dichiarare intenzioni e propriet&agrave; pu&ograve; essere utile a riparare, almeno parzialmente, eventuali errori presenti nel programma.</LI></OL>
+
+<B><P>Domanda n&#176; 1</P>
+</B><P>Scrivi un <B>programma C</B> che costruisca un file binario che rappresenta la matrice <I>M</I> (12 </FONT><FONT FACE="Symbol">&#165;</FONT><FONT FACE="Arial Narrow"> 12) i cui elementi <I>m<SUB>i</I>,<I>j</I></SUB> sono tali che <I>m<SUB>i</I>,<I>j</I> </SUB>= <I>m<SUB>i</I>+1,<I>j</I></SUB> + <I>m<SUB>i</I>+1,(<I>j</I> mod 12)+1 </SUB>e <I>m</I><SUB>12,<I>j</I> </SUB>= <I>j</I> - 1 + <I>z</I>, per <I>i</I> = 1,...,11 e <I>j</I> = 1,...,12, dove <I>z</I> &egrave; un intero letto da tastiera all'inizio dell'esecuzione del programma. Usa il programma due volte, la prima con <I>z</I> = <I>giorno di nascita</I> (intero fra 1 e 31), la seconda con <I>z</I>&nbsp;=&nbsp;<I>mese di nascita</I> (intero fra 1 e 12), costruendo dunque due file (ricorda di specificare la data del tuo compleanno in un apposito commento).</P>
+<B><P>Domanda n&#176; 2</P>
+</B><P>Scrivi un <B>programma C</B> che, lette le due matrici <I>A</I> e <I>B</I> contenute nei file costruiti al punto precedente (assumi che siano note le dimensioni delle matrici), costruisca un file di testo che rappresenta la matrice <I>C</I> = <I>A</I> + <I>B</I><SUP>T</SUP>, dove <I>B</I><SUP>T</SUP> &egrave; la trasposta di <I>B</I>. Ciascuna riga del file di testo costruito dovr&agrave; contenere esattamente una riga della matrice <I>C</I> (gli elementi di una stessa riga di <I>C</I> dovranno essere opportunamente distanziati).</P>
+<B><P>Domanda n&#176; 3</P>
+</B><P>Una <I>serata</I> &egrave; una lista (collegata) in cui ciascun elemento contiene:</P>
+
+<UL>
+<LI>un numero <I>z</I> uscito alla roulette durante una serata al casin&ograve;; </LI>
+<LI>il numero <I>n</I>(<I>z</I>) di volte in cui <I>z</I> &egrave; uscito durante la serata.</LI></UL>
+
+<P>Ciascun numero uscito &egrave; rappresentato una sola volta nella lista e non esiste un particolare ordinamento predefinito sugli elementi della stessa.</P>
+<P>Scrivi una <B>funzione C</B> che, ricevendo come parametro un array di 7 <I>serate</I> (cio&egrave; 7 liste, ciascuna relativa a una diversa serata, per tutti i giorni di una settimana) costruisca, restituendola in uscita, la lista <I>settimana</I>, ciascun elemento della quale contiene:</P>
+
+<UL>
+<LI>un numero <I>z</I> uscito durante almeno una delle serate; </LI>
+<LI>il numero totale <I>t</I>(<I>z</I>) di volte in cui <I>z</I> &egrave; uscito durante tutte le serate.</LI></UL>
+
+<P>Ciascun numero uscito durante la settimana &egrave; rappresentato una sola volta nella lista.</P>
+<B><P>Opzionale</B>: scrivi anche le funzioni per l'input, la costruzione e l'output dei polinomi, nonch&eacute; un main, costruendo dunque un programma completo.</P>
+</FONT><P ALIGN="CENTER"><HR SIZE=0></P>
+<FONT FACE="Arial Narrow"><P>&nbsp;</P>
+<B><P ALIGN="CENTER">2&#176; esonero di <I>Fondamenti di Informatica</I> (Ambiente e Territorio)</P>
+<P ALIGN="CENTER">a.a. 98/99</P>
+</B><I><P ALIGN="CENTER">21 maggio 1999 &#151; 2&#176; turno</P>
+</I><B><P>Leggi attentamente: il non seguire alla lettera queste indicazioni pu&ograve; causare l'invalidit&agrave; della prova.</P>
+<OL>
+
+</B><LI>La prova si svolge completamente al personal computer (PC). <B>L'unico elaborato valido ai fini della prova &egrave; costituito da un insieme di file depositati in C:\TEMP\ESAME.</LI>
+</B><LI>Memorizza i tuoi programmi in file cos&igrave; denominati: usa le prime lettere (al pi&ugrave; sei) del tuo cognome (tralascia spazi/apostrofo), aggiungi quindi l'iniziale del tuo nome e completa infine la stringa con un numero progressivo (una sola cifra, iniziando da 1). L'estensione &egrave; sempre .C.</LI>
+<LI>Se le domande poste ti chiedono di creare file dati, usa lo schema di costruzione dei nomi dei file descritto al punto precedente (la numerazione progressiva da usare &egrave; unica), modificando per&ograve; l'estensione: .TXT per i file di testo e .DAT per quelli binari.</LI>
+<LI>Ogni file .C creato deve iniziare con un commento, secondo il seguente schema:<BR>
+</FONT><FONT FACE="Courier New" SIZE=2>/* nome, cognome, matricola, turno, domanda a cui si sta rispondendo */</LI>
+</FONT><FONT FACE="Arial Narrow"><LI>L'utilizzo di materiale personale (libri, appunti, dispense, fotocopie, dischetti, calcolatrici, pocket computer, telefoni cellulari ecc.) non &egrave; ammesso. Non &egrave; consentito uscire dall'aula prima di aver terminato la prova n&eacute; colloquiare con chicchessia. <B>Violazioni di tali regole comportano l'annullamento automatico della prova.</B> &Egrave; invece consentita la consultazione delle pagine di help dell'ambiente di programmazione.</LI>
+<LI>Ricorda che una condizione necessaria per il superamento della prova &egrave; la correttezza sintattica del codice C. </LI>
+<LI>Al termine della prova esci dall'ambiente di programmazione, ma <B>non spegnere il PC</B>. Segnala il completamento della prova a un docente e lascia quindi l'aula.</LI>
+<LI>Rammenta di verificare il corretto funzionamento dell'ambiente di programmazione: per assicurarti che le compilazioni vengano eseguite dal compilatore C (e non dal C++) verifica nella finestra accessibile tramite il comando <I>Options</FONT><FONT FACE="Symbol">&AElig;</FONT><FONT FACE="Arial Narrow"> Compiler</FONT><FONT FACE="Symbol">&AElig;</FONT><FONT FACE="Arial Narrow"> C++ Options</I> che la scelta corrispondente a <I>use C++ Compiler</I> sia <I>CPP extension</I> e <B>non</B> <I>C++ always</I>.</LI>
+<LI>Rammenta infine che l'uso di <B>commenti</B> e di una corretta <B>indentazione</B> facilita la stesura del programma, nonch&eacute; la sua successiva correzione: dichiarare intenzioni e propriet&agrave; pu&ograve; essere utile a riparare, almeno parzialmente, eventuali errori presenti nel programma.</LI></OL>
+
+<P>&nbsp;</P>
+<B><P>Domanda n&#176; 1</P>
+</B><P>Scrivi un <B>programma C</B> che costruisca un file binario che rappresenta la matrice <I>M</I> (12 </FONT><FONT FACE="Symbol">&#165;</FONT><FONT FACE="Arial Narrow"> 31) i cui elementi <I>m<SUB>i</I>,<I>j</I></SUB> sono tali che <I>m<SUB>i</I>+1,<I>j</I> </SUB>= <I>m<SUB>i</I>,<I>j</I> </SUB>+ <I>i</I> + <I>j</I> e <I>m</I><SUB>1,<I>j</I> </SUB>= <I>j</I>, per <I>i</I> = 1,...,11 e <I>j</I> = 1,...,31.</P>
+<B><P>Domanda n&#176; 2</P>
+</B><P>Scrivi un <B>programma C</B> che, letta la matrice contenuta nel file costruito al punto precedente (assumi che siano note le dimensioni della matrice, ma non il suo contenuto), costruisca un file di testo che rappresenta il minore <I>M'</I> di <I>M</I> ottenuto cancellando da <I>M</I> la riga <I>m</I> e la colonna <I>g</I>, dove <I>m</I> e <I>g</I> sono rispettivamente il mese (intero fra 1 e 12) e il giorno (intero fra 1 e 31) del tuo compleanno (ricorda di specificare la data del tuo compleanno anche in un apposito commento). Ciascuna riga del file di testo costruito dovr&agrave; contenere esattamente una riga della matrice <I>M'</I> (gli elementi di una stessa riga di <I>M'</I> dovranno essere opportunamente distanziati).</P>
+<B><P>Domanda n&#176; 3</P>
+</B><P>Un polinomio <I>p</I>(<I>x</I>) (coefficienti razionali) &egrave; rappresentato tramite una lista (collegata) i cui elementi contengono una rappresentazione dei monomi che definiscono <I>p</I>(<I>x</I>). Non esiste un particolare ordinamento predefinito sugli elementi della lista.</P>
+<P>Scrivi una <B>funzione C</B> che, ricevendo come parametro un array di <I>n</I> polinomi <I>p<SUB>i</I></SUB>(<I>x</I>), <I>i</I> = 1,...,<I>n</I>, costruisca, restituendolo in uscita, il polinomio <I>q</I>(<I>x</I>) somma degli <I>n</I> polinomi <I>p<SUB>i</I></SUB>(<I>x</I>).</P>
+<B><P>Opzionale</B>: scrivi anche le funzioni per l'input, la costruzione e l'output dei polinomi, nonch&eacute; un main, costruendo dunque un programma completo.</P></FONT></BODY>
+</HTML>

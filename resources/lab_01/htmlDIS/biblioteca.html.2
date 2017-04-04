@@ -1,0 +1,98 @@
+<!DOCTYPE html PUBLIC "-//w3c//dtd html 4.0 transitional//en">
+<html>
+<head>
+   <title>Tecniche di Programmazione -- Esercitazione 8 (Esame del 8/4/2003 - Compito A)</title>
+</head>
+<body>
+
+<center>
+  <p><B>Tecniche di Programmazione</B> <BR>
+    <B>Corsi di Laurea in Ingegneria Informatica e Automatica</B></p>
+  <p><b>A.A. 2003/04</b></p>
+  <p><b>Esercitazione 8</b></p>
+  <p><b>Biblioteca -- Appello del 8/4/2003</b> </p>
+  </center>
+
+Si vuole gestire il prestito di libri in una biblioteca.  Di un oggetto
+<em>Biblioteca</em> sono di interesse il nome della biblioteca stessa (una
+stringa) e l'insieme dei suoi libri.  Di ogni libro sono di interesse le
+seguenti informazioni:
+<ul>
+  <li>il titolo (una stringa);
+  <li>se &egrave; in prestito oppure no, e nel caso lo sia, il nominativo della
+      persona che lo ha preso in prestito.
+</ul>
+
+Gli oggetti <em>Biblioteca</em> supportano le seguenti funzionalit&agrave;:
+
+<ul>
+  <li><em>crea:</em> che, data una stringa <em>b</em> che rappresenta il nome
+      di una biblioteca, crea un oggetto <em>Biblioteca</em> con nome
+      <em>b</em> che inizialmente non ha alcun libro;
+  </li>
+  <li><em>nome:</em> che restituisce il nome della biblioteca;
+  </li>
+  <li><em>dellaBiblioteca:</em> che, dato il titolo <em>t</em> di un libro,
+      restituisce <em>true</em> se il libro <em>t</em> &egrave; uno dei libri
+      della biblioteca, <em>false</em> altrimenti;
+  </li>
+  <li><em>inPrestito:</em> che, dato il titolo <em>t</em> di un libro,
+      restituisce il nominativo della persona che ha preso in prestito il libro
+      <em>t</em>, se il libro &egrave; in prestito; restituisce
+      <code>null</code> se il libro non &egrave; in prestito; infine, lancia
+      un'eccezione se il libro non &egrave; della biblioteca;
+  </li>
+  <li><em>aggiungi:</em> che, dato il titolo <em>t</em> di un libro,
+      aggiunge il libro <em>t</em> a quelli della biblioteca, se questo non
+      &egrave; gi&agrave; della biblioteca; altrimenti lancia un'eccezione; si
+      noti che un libro appena aggiunto non &egrave; in prestito;
+  </li>
+  <li><em>elimina:</em> che, dato il titolo <em>t</em> di un libro, elimina il
+      libro <em>t</em> da quelli della biblioteca; se il libro <em>t</em> non
+      &egrave; della biblioteca non fa nulla; se il libro <em>t</em> &egrave;
+      della biblioteca ma &egrave; in prestito lancia un'eccezione;
+  </li>
+  <li><em>presta:</em> che, dati il titolo <em>t</em> di un libro e il
+      nominativo <em>p</em> di una persona, presta il libro <em>t</em> alla
+      persona <em>p</em>; se il libro non &egrave; della biblioteca oppure
+      &egrave; gi&agrave; in prestito lancia un'eccezione;
+  </li>
+  <li><em>numLibriPrestati:</em> che, dato il nominativo <em>p</em> di una
+      persona, restituisce il numero di libri che la persona <em>p</em> ha in
+      prestito;
+  </li>
+  <li><em>libriPrestati:</em> che, dato il nominativo <em>p</em> di una
+      persona, restituisce un array di stringhe contenente i titoli dei libri
+      che la persona <em>p</em> ha in prestito.
+  </li>
+</ul>
+
+<p><strong>Domanda 1.</strong> Scrivere una classe Java <code>Biblioteca</code>
+per rappresentare oggetti <em>Biblioteca</em>.
+
+<p>Soluzione:
+<a href="soluzione/Biblioteca_rappresentazione_oggetti.java">rappresentazione
+degli oggetti</code></a>,
+<a href="soluzione/Biblioteca_scheletro.java">scheletro della classe</a>,
+<a href="soluzione/Biblioteca.java">classe <code>Biblioteca</code></a>,
+<a href="soluzione/EccezioneBiblioteca.java">classe
+<code>EccezioneBiblioteca</code></a></p>
+
+<p><strong>Domanda 2.</strong> Realizzare un metodo statico
+<code>libriPrestati</code> cliente della classe <code>Biblioteca</code> che,
+dati
+<ul>
+  <li>un oggetto <em>bib</em> della classe <code>Biblioteca</code>,
+  <li>il nome <em>fin</em> di un file contenente nominativi di persone, uno per
+      riga, ed
+  <li>il nome <em>fout</em> di un file,
+</ul>
+scrive sul file <em>fout</em>, uno per riga, i titoli di tutti i libri di
+<em>bib</em> in prestito a ciascuna persone il cui nominativo &egrave; presente
+nel file <em>fin</em>.
+
+<p><a href="soluzione/ClienteBiblioteca.java">Soluzione</a></p>
+
+
+</body>
+</html>

@@ -1,0 +1,272 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=windows-1252">
+<META NAME="Generator" CONTENT="Microsoft Word 97">
+<TITLE>1</TITLE>
+<META NAME="Template" CONTENT="C:\PROGRAMMI\MICROSOFT OFFICE\OFFICE\html.dot">
+</HEAD>
+<BODY BACKGROUND="bgrnd.jpg">
+
+<B><FONT SIZE=5><P>3) Analisi Lessicale - un esempio</P>
+</B></FONT><P ALIGN="RIGHT">Riferimenti: "<I>Linguaggi formali e compilatori</I>" - 3.5, 3.6</P>
+<P ALIGN="CENTER"><HR></P>
+<B><U><FONT SIZE=4><P ALIGN="JUSTIFY">Aula</B></U></FONT> </P>
+<OL>
+
+<I><P ALIGN="JUSTIFY"><LI>Un semplice riconoscitore di tag HTML</LI></P>
+</I><P ALIGN="JUSTIFY">Vediamo come pu&ograve; essere rappresentato un riconoscitore del tag &lt;HTML&gt;, da una sequenza di caratteri in ingresso:</P>
+<P ALIGN="CENTER"><IMG SRC="Image10.gif" WIDTH=503 HEIGHT=184></P>
+<P ALIGN="JUSTIFY">in generale, un automa riconosce una stringa x se e solo se esiste un percorso dal nodo iniziale ad un nodo finale, che individua la stringa x. Il "linguaggio" riconosciuto dall'automa &egrave; l'insieme delle stringhe che lo stesso &egrave; in grado di riconoscere. </P>
+<P ALIGN="JUSTIFY">In un automa pu&ograve; essere incluso anche il riconoscimento degli errori, rappresentato da un nuovo stato finale. Nell'automa che segue, vengono riconosciute le categorie lessicali "tag di apertura", "tag di chiusura" e "testo", oltre a diversi possibili errori lessicali.</P>
+<P ALIGN="CENTER"><IMG SRC="Image11.gif" WIDTH=347 HEIGHT=316></P>
+<I><P ALIGN="JUSTIFY"><LI>Corrispondenza tra automi ed espressioni regolari</LI></P></OL>
+<DIR>
+<DIR>
+<DIR>
+
+</I><P ALIGN="JUSTIFY">Attraverso le espressioni regolari &egrave; possibile definire in maniera sintetica un linguaggio, ovvero le stringhe che lo compongono. La corrispondenza con gli automi a stati finiti &egrave; evidente in quanto abbiamo detto che &egrave; possibile definire un automa in modo tale che riconosca tutte le stringhe del linguaggio. In altre parole, l'automa &egrave; la formulazione operazionale di un'espressione regolare.</P>
+<P ALIGN="JUSTIFY">Data la corrispondenza, &egrave; possibile passare da automa a espressione regolare e viceversa. In particolare da un automa, applicando il seguente metodo:</P></DIR>
+</DIR>
+</DIR>
+
+
+<UL><DIR>
+<DIR>
+
+
+<UL>
+<P ALIGN="JUSTIFY"><LI>Il nodo iniziale corrisponde al simbolo iniziale</LI></P>
+<P ALIGN="JUSTIFY"><LI>Per ogni arco dal nodo X al nodo Y con funzione t, si introduce la regola </LI></P></UL>
+</DIR>
+</DIR>
+</UL>
+<DIR>
+<DIR>
+<DIR>
+<DIR>
+<DIR>
+
+<I><P ALIGN="CENTER">X <FONT FACE="Wingdings">&agrave;</FONT> t Y</P></DIR>
+</DIR>
+</DIR>
+</DIR>
+</DIR>
+
+
+<UL><DIR>
+<DIR>
+
+
+<UL>
+</I><P ALIGN="JUSTIFY"><LI>Per ogni nodo finale Z, si introduce la regola</LI></P></UL>
+</DIR>
+</DIR>
+</UL>
+<DIR>
+<DIR>
+<DIR>
+<DIR>
+<DIR>
+
+<I><P ALIGN="CENTER">Z <FONT FACE="Wingdings">&agrave;</FONT> <FONT FACE="Symbol">e</FONT> </P></DIR>
+</DIR>
+
+</I><P ALIGN="JUSTIFY">&egrave; possibile ottenere l'espressione regolare corrispondente. Consideriamo ora il riconoscitore di tag esposto prima, dove per rendere pi&ugrave; chiaro l'esempio sono stati numerati i nodi e eliminato il riconoscimento degli errori; il nodo iniziale &egrave; il nodo "inizio"</P>
+<P ALIGN="CENTER"><IMG SRC="Image12.gif" WIDTH=390 HEIGHT=225></P>
+<P ALIGN="JUSTIFY">&nbsp;le regole ricavabili dagli archi sono:</P></DIR>
+</DIR>
+</DIR>
+
+<P ALIGN="CENTER"><CENTER><TABLE BORDER CELLSPACING=1 CELLPADDING=4 WIDTH=500>
+<TR><TD WIDTH="11%" VALIGN="TOP" BGCOLOR="#ffffff">
+<P ALIGN="CENTER"><B>N.arco</B></TD>
+<TD WIDTH="45%" VALIGN="TOP" BGCOLOR="#ffffff">
+<B><P ALIGN="CENTER">Arco</B></TD>
+<TD WIDTH="43%" VALIGN="TOP" BGCOLOR="#ffffff">
+<B><P ALIGN="CENTER">Regola corrispondente</B></TD>
+</TR>
+<TR><TD WIDTH="11%" VALIGN="TOP">
+<P ALIGN="CENTER">1</TD>
+<TD WIDTH="45%" VALIGN="TOP">
+<P ALIGN="CENTER">Inizio, "&lt;" <FONT FACE="Wingdings">&agrave;</FONT> Tag</TD>
+<TD WIDTH="43%" VALIGN="TOP"><DIR>
+
+<P>Inizio <FONT FACE="Wingdings">&agrave;</FONT> "&lt;" Tag</DIR>
+</TD>
+</TR>
+<TR><TD WIDTH="11%" VALIGN="TOP">
+<P ALIGN="CENTER">2</TD>
+<TD WIDTH="45%" VALIGN="TOP">
+<P ALIGN="CENTER">Inizio, "1".."9", "A".."Z" <FONT FACE="Wingdings">&agrave;</FONT> Testo</TD>
+<TD WIDTH="43%" VALIGN="TOP"><DIR>
+
+<P>Inizio <FONT FACE="Wingdings">&agrave;</FONT> "A"|..|"9" Testo</DIR>
+</TD>
+</TR>
+<TR><TD WIDTH="11%" VALIGN="TOP">
+<P ALIGN="CENTER">3</TD>
+<TD WIDTH="45%" VALIGN="TOP">
+<P ALIGN="CENTER">Tag, "A".."Z" <FONT FACE="Wingdings">&agrave;</FONT> TA</TD>
+<TD WIDTH="43%" VALIGN="TOP"><DIR>
+
+<P>Tag <FONT FACE="Wingdings">&agrave;</FONT> "A"|..|"Z" TA</DIR>
+</TD>
+</TR>
+<TR><TD WIDTH="11%" VALIGN="TOP">
+<P ALIGN="CENTER">4</TD>
+<TD WIDTH="45%" VALIGN="TOP">
+<P ALIGN="CENTER">Tag, "/" <FONT FACE="Wingdings">&agrave;</FONT> TC1</TD>
+<TD WIDTH="43%" VALIGN="TOP"><DIR>
+
+<P>Tag <FONT FACE="Wingdings">&agrave;</FONT> "/" TC1</DIR>
+</TD>
+</TR>
+<TR><TD WIDTH="11%" VALIGN="TOP">
+<P ALIGN="CENTER">5</TD>
+<TD WIDTH="45%" VALIGN="TOP">
+<P ALIGN="CENTER">Testo, "1".."9", "A".."Z" <FONT FACE="Wingdings">&agrave;</FONT> Testo</TD>
+<TD WIDTH="43%" VALIGN="TOP"><DIR>
+
+<P>Testo <FONT FACE="Wingdings">&agrave;</FONT> "A"|..|"9" Testo</DIR>
+</TD>
+</TR>
+<TR><TD WIDTH="11%" VALIGN="TOP">
+<P ALIGN="CENTER">6</TD>
+<TD WIDTH="45%" VALIGN="TOP">
+<P ALIGN="CENTER">TA, "A".."Z" <FONT FACE="Wingdings">&agrave;</FONT> TA</TD>
+<TD WIDTH="43%" VALIGN="TOP"><DIR>
+
+<P>TA <FONT FACE="Wingdings">&agrave;</FONT> "A"|..|"Z" TA</DIR>
+</TD>
+</TR>
+<TR><TD WIDTH="11%" VALIGN="TOP">
+<P ALIGN="CENTER">7</TD>
+<TD WIDTH="45%" VALIGN="TOP">
+<P ALIGN="CENTER">TA, "&gt;" <FONT FACE="Wingdings">&agrave;</FONT> Tag apertura</TD>
+<TD WIDTH="43%" VALIGN="TOP"><DIR>
+
+<P>TA <FONT FACE="Wingdings">&agrave;</FONT> "&gt;" Tag apertura</DIR>
+</TD>
+</TR>
+<TR><TD WIDTH="11%" VALIGN="TOP">
+<P ALIGN="CENTER">8</TD>
+<TD WIDTH="45%" VALIGN="TOP">
+<P ALIGN="CENTER">TC1, "A".."Z" <FONT FACE="Wingdings">&agrave;</FONT> TC2</TD>
+<TD WIDTH="43%" VALIGN="TOP"><DIR>
+
+<P>TC1 <FONT FACE="Wingdings">&agrave;</FONT> "A"|..|"Z" TC2</DIR>
+</TD>
+</TR>
+<TR><TD WIDTH="11%" VALIGN="TOP">
+<P ALIGN="CENTER">9</TD>
+<TD WIDTH="45%" VALIGN="TOP">
+<P ALIGN="CENTER">TC2, "A".."Z" <FONT FACE="Wingdings">&agrave;</FONT> TC2</TD>
+<TD WIDTH="43%" VALIGN="TOP"><DIR>
+
+<P>TC2 <FONT FACE="Wingdings">&agrave;</FONT> "A"|..|"Z" TC2</DIR>
+</TD>
+</TR>
+<TR><TD WIDTH="11%" VALIGN="TOP">
+<P ALIGN="CENTER">10</TD>
+<TD WIDTH="45%" VALIGN="TOP">
+<P ALIGN="CENTER">TC2, "&gt;" <FONT FACE="Wingdings">&agrave;</FONT> Tag chiusura</TD>
+<TD WIDTH="43%" VALIGN="TOP"><DIR>
+
+<P>TC2 <FONT FACE="Wingdings">&agrave;</FONT> "&gt;" Tag chiusura</DIR>
+</TD>
+</TR>
+</TABLE>
+</CENTER></P>
+<DIR>
+<DIR>
+<DIR>
+
+<P ALIGN="JUSTIFY">Le regole ricavabili dai nodi finali sono:</P>
+<I><P ALIGN="CENTER">Tag apertura <FONT FACE="Wingdings">&agrave;</FONT> <FONT FACE="Symbol">e</FONT> </P>
+<P ALIGN="CENTER">Tag chiusura <FONT FACE="Wingdings">&agrave;</FONT> <FONT FACE="Symbol">e</FONT> </P>
+<P ALIGN="CENTER">Testo <FONT FACE="Wingdings">&agrave;</FONT> <FONT FACE="Symbol">e</FONT> </P>
+</I><P ALIGN="JUSTIFY">Facendo ordine ed eliminando le <FONT FACE="Symbol">e</FONT> -regole, otteniamo una "grammatica regolare" (che verr&agrave; approfondita in seguito):</P><DIR>
+<DIR>
+<DIR>
+
+<I><P ALIGN="JUSTIFY">Inizio <FONT FACE="Wingdings">&agrave;</FONT> "&lt;" Tag</P>
+<P ALIGN="JUSTIFY">Inizio <FONT FACE="Wingdings">&agrave;</FONT> "A"|..|"9" Testo</P>
+<P ALIGN="JUSTIFY">Inizio <FONT FACE="Wingdings">&agrave;</FONT> "A"|..|"9"</P>
+<P ALIGN="JUSTIFY">Tag <FONT FACE="Wingdings">&agrave;</FONT> "A"|..|"Z" TA</P>
+<P ALIGN="JUSTIFY">Tag <FONT FACE="Wingdings">&agrave;</FONT> "/" TC1</P>
+<P ALIGN="JUSTIFY">Testo <FONT FACE="Wingdings">&agrave;</FONT> "A"|..|"9" Testo</P>
+<P ALIGN="JUSTIFY">Testo <FONT FACE="Wingdings">&agrave;</FONT> "A"|..|"9"</P>
+<P ALIGN="JUSTIFY">TA <FONT FACE="Wingdings">&agrave;</FONT> "A"|..|"Z" TA</P>
+<P ALIGN="JUSTIFY">TA <FONT FACE="Wingdings">&agrave;</FONT> "&gt;"</P>
+<P ALIGN="JUSTIFY">TC1 <FONT FACE="Wingdings">&agrave;</FONT> "A"|..|"Z" TC2</P>
+<P ALIGN="JUSTIFY">TC2 <FONT FACE="Wingdings">&agrave;</FONT> "A"|..|"Z" TC2</P>
+<P ALIGN="JUSTIFY">TC2 <FONT FACE="Wingdings">&agrave;</FONT> "&gt;"</P></DIR>
+</DIR>
+</DIR>
+
+</I><P ALIGN="JUSTIFY">Il passaggio da una grammatica regolare ad una espressione regolare equivalente si compie sostituendo i simboli non terminali della grammatica con le parti destre corrispondenti finch&eacute; non si ottiene una formula priva di simboli non terminali.</P>
+<B><P ALIGN="JUSTIFY">Primo passo</B> (sostituzione delle ricorsioni):</P><DIR>
+<DIR>
+<DIR>
+
+<I><P>Inizio <FONT FACE="Wingdings">&agrave;</FONT> "&lt;" Tag</P>
+<P>Inizio <FONT FACE="Wingdings">&agrave;</FONT> "A"|..|"9" Testo</P>
+<P>Inizio <FONT FACE="Wingdings">&agrave;</FONT> "A"|..|"9"</P>
+<P>Tag <FONT FACE="Wingdings">&agrave;</FONT> "A"|..|"Z" TA</P>
+<P>Tag <FONT FACE="Wingdings">&agrave;</FONT> "/" TC1</P>
+<B><P>Testo <FONT FACE="Wingdings">&agrave;</FONT> ("A"|..|"9")* ("A"|..|"9")</P>
+<P>TA <FONT FACE="Wingdings">&agrave;</FONT> ("A"|..|"Z")* "&gt;"</P>
+</B><P>TC1 <FONT FACE="Wingdings">&agrave;</FONT> "A"|..|"Z" TC2</P>
+<B><P>TC2 <FONT FACE="Wingdings">&agrave;</FONT> ("A"|..|"Z")* "&gt;"</P></DIR>
+</DIR>
+</DIR>
+
+</I><P ALIGN="JUSTIFY">Secondo passo</B>:</P><DIR>
+<DIR>
+<DIR>
+
+<B><I><P ALIGN="JUSTIFY">Inizio <FONT FACE="Wingdings">&agrave;</FONT> "&lt;" (("A"|..|"Z" TA)|( "/" TC1)</P>
+</B><P ALIGN="JUSTIFY">Inizio <FONT FACE="Wingdings">&agrave;</FONT> "A"|..|"9" Testo</P>
+<P ALIGN="JUSTIFY">Inizio <FONT FACE="Wingdings">&agrave;</FONT> "A"|..|"9"</P>
+<P ALIGN="JUSTIFY">Testo <FONT FACE="Wingdings">&agrave;</FONT> ("A"|..|"9")* ("A"|..|"9")</P>
+<P ALIGN="JUSTIFY">TA <FONT FACE="Wingdings">&agrave;</FONT> ("A"|..|"Z")* "&gt;"</P>
+<P ALIGN="JUSTIFY">TC1 <FONT FACE="Wingdings">&agrave;</FONT> "A"|..|"Z" TC2</P>
+<P ALIGN="JUSTIFY">TC2 <FONT FACE="Wingdings">&agrave;</FONT> ("A"|..|"Z")* "&gt;"</P></DIR>
+</DIR>
+</DIR>
+
+</I><B><P ALIGN="JUSTIFY">Terzo passo</B>:</P><DIR>
+<DIR>
+<DIR>
+
+<I><P ALIGN="JUSTIFY">Inizio <FONT FACE="Wingdings">&agrave;</FONT> "&lt;" (("A"|..|"Z" TA)|( "/" TC1)</P>
+<B><P ALIGN="JUSTIFY">Inizio <FONT FACE="Wingdings">&agrave;</FONT> "A"|..|"9" (("A"|..|"9")* ("A"|..|"9"))</P>
+</B><P ALIGN="JUSTIFY">Inizio <FONT FACE="Wingdings">&agrave;</FONT> "A"|..|"9"</P>
+<P ALIGN="JUSTIFY">TA <FONT FACE="Wingdings">&agrave;</FONT> ("A"|..|"Z")* "&gt;"</P>
+<P ALIGN="JUSTIFY">TC1 <FONT FACE="Wingdings">&agrave;</FONT> "A"|..|"Z" TC2</P>
+<P ALIGN="JUSTIFY">TC2 <FONT FACE="Wingdings">&agrave;</FONT> ("A"|..|"Z")* "&gt;"</P></DIR>
+</DIR>
+</DIR>
+
+</I><B><P ALIGN="JUSTIFY">Quarto passo</B>:</P><DIR>
+<DIR>
+<DIR>
+
+<B><I><P ALIGN="JUSTIFY">Inizio <FONT FACE="Wingdings">&agrave;</FONT> "&lt;" (("A"|..|"Z" (("A"|..|"Z")* "&gt;"))|( "/" ("A"|..|"Z" TC2))</P>
+</B><P ALIGN="JUSTIFY">Inizio <FONT FACE="Wingdings">&agrave;</FONT> "A"|..|"9" (("A"|..|"9")* ("A"|..|"9"))</P>
+<P ALIGN="JUSTIFY">Inizio <FONT FACE="Wingdings">&agrave;</FONT> "A"|..|"9"</P>
+<P ALIGN="JUSTIFY">TC2 <FONT FACE="Wingdings">&agrave;</FONT> ("A"|..|"Z")* "&gt;"</P></DIR>
+</DIR>
+</DIR>
+
+</I><B><P ALIGN="JUSTIFY">Quinto passo:</P>
+<I><P>Inizio <FONT FACE="Wingdings">&agrave;</FONT> "&lt;"(("A"|..|"Z"(("A"|..|"Z")*"&gt;"))|("/"("A"|..|"Z"(("A"|..|"Z")*"&gt;")))</P>
+</B><P ALIGN="JUSTIFY">Inizio <FONT FACE="Wingdings">&agrave;</FONT> "A"|..|"9" (("A"|..|"9")* ("A"|..|"9"))</P>
+<P ALIGN="JUSTIFY">Inizio <FONT FACE="Wingdings">&agrave;</FONT> "A"|..|"9"</P>
+</I><B><P ALIGN="JUSTIFY">Sesto passo:</P>
+<I><P ALIGN="JUSTIFY">Inizio <FONT FACE="Wingdings">&agrave;</FONT> ("&lt;"(("A"|..|"Z"(("A"|..|"Z")*"&gt;"))|("/"("A"|..|"Z"(("A"|..|"Z")*"&gt;")))) | ("A"|..|"9"(("A"|..|"9")*("A"|..|"9"))) |</P>
+<P ALIGN="JUSTIFY">("A"|..|"9")</P></DIR>
+</DIR>
+</DIR>
+</B></I></BODY>
+</HTML>

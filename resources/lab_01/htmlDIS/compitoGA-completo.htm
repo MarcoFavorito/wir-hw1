@@ -1,0 +1,209 @@
+<HTML>
+<HEAD>
+<TITLE>Compito A gestionale</TITLE>
+</HEAD>
+<BODY>
+
+<B><P ALIGN="CENTER">Fondamenti di Informatica I</B><BR>
+<B>Corso di Laurea in Ingegneria Informatica</P>
+</B><H2 ALIGN="CENTER">Prova al calcolatore 23/2/02 - Compito A</H2>
+<P ALIGN="CENTER"><small><B>Durata: 105 minuti</small></P>
+</B>
+
+<P><HR></P>
+
+<P><b>Istruzioni per la prova al calcolatore</b></P>
+
+<ol>
+
+<li><I>Accesso al PC</I>:&nbsp; il PC sar&agrave; gi&agrave; connesso;
+se non lo fosse chiedete assistenza ai professori o ai tutori.
+<B>Non dovete eseguire quindi nessuna operazione di connessione/disconnessione</B>.
+
+<li><I>Cartella in cui svolgere l'esame</I>:
+all'interno delle Risorse del computer c'&egrave; un unico disco T:
+all'interno del quale c'&egrave; una sola cartella Esame.
+La cartella Esame contiene tutti i file di cui avete bisogno per svolgere
+il compito e dovr&agrave; contenere i file scritti da voi per la soluzione
+dell'esercizio. Assicuratevi in Jcreator\SitePad di creare i nuovi file Java
+utilizzando il path T:\Esame. <B>Non create altre cartelle e non scrivete
+al di fuori della cartella Esame</B>.
+
+<li><I>Ambiente di sviluppo</I>: sul PC trovate il programma JCreator
+oppure SitePad, e inoltre sono presenti NotePad e il prompt dei comandi
+per compilare ed eseguire le classi Java.
+
+<li><I>Accesso al sito del corso</I>:
+il sito del corso pu&ograve; essere consultato tramite Internet Explorer
+
+<li><I>Consegna del compito</I>:
+al termine del compito si devono lasciare i programmi nella cartella Esame 
+e si deve consegnare il foglio con il testo del compito. <B>Non spegnere il 
+PC e non chiudere la connessione.</b>
+
+</ol>
+
+<P>Durante il compito non &egrave; consentito uscire dall'aula, parlare con
+altri studenti, utilizzare telefoni cellulari, utlizzare dischetti floppy,
+trasmettere in qualunque modo informazioni da una macchina all'altra. Il
+mancato rispetto delle indicazioni sopra riportate comporta l'annullamento
+della prova.</P>
+
+<h2>Testo del compito </h2>
+
+<P>Si vuole realizzare un programma di gestione di un noleggio
+di videocassette. Per ogni videocassetta, si vogliono memorizzare
+i seguenti dati: titolo del film, nome della persona che ha in
+questo momento affittato la cassatta, numero di giorni che la
+persona ha la cassetta in affitto, valore della cassetta. </P>
+
+<h4>Parte 1.</h4>
+
+<p>
+Scrivere una classe <tt>Cassetta</tt> in modo che ogni istanza
+rappresenti un  singolo oggetto, e che abbia i seguenti metodi: </P>
+
+<UL>
+<LI>costruttore <tt>Cassetta(String, String, int, int)</tt>
+<LI><tt>String getTitolo()</tt>, che ritorna il titolo di un film
+<li><tt>String getNome()</tt>, che ritorna il nome della persona che ha il film;
+se nessuna persona ha il film in questo momento, ritorna <tt>null</tt>
+<li><tt>int getGiorni()</tt>, che ritorna il numero di giorni da cui la cassetta
+&egrave; in noleggio (0 se la cassetta non &egrave; in noleggio)
+<li><tt>int getValore()</tt>, che restituisce il valore della cassetta
+<li><tt>void stampa()</tt>, che stampa i dati di una cassetta
+<li><tt>void restituzione()</tt> che modifica l'oggetto quando la
+cassetta viene restituita
+<LI><tt>Cassetta read(BufferedReader)</tt> che legge una videocassetta da
+un canale di input gi&agrave; aperto; i dati degli oggetti
+sono nel seguente formato:</P>
+
+<pre>
+titolo primo film
+persona che ha il primo film
+numero di giorni
+valore
+titolo secondo film
+...
+</pre>
+
+<p>
+Se il film &egrave; disponibile, come nome di persona appare
+"nessuno"; se il canale di input termina, il metodo deve
+restituire <tt>null</tt>
+</p>
+</ul>
+
+<b>Nota</b> il nome della persona &egrave; memorizzato come
+una unica stringa
+
+
+<h4>Programma di esempio</h4>
+
+<pre>
+import java.io.*;
+
+class ProvaCassetta {
+  public static void main(String arg[]) throws Exception {
+    File f=new File("lista.txt");
+    FileInputStream fs=new FileInputStream(f);
+    InputStreamReader isr=new InputStreamReader(fs);
+    BufferedReader br=new BufferedReader(isr);
+
+    Cassetta p, s;
+
+		// legge le prime due cassette dal file
+
+    p=Cassetta.read(br);
+    s=Cassetta.read(br);
+
+
+		// stampa le due cassette
+
+    p.stampa();
+    s.stampa();
+
+
+		// stampa il valore della prima
+
+    System.out.println("La prima cassetta vale "+p.getValore());
+
+
+		// restituisce la prima
+
+    p.restituzione();
+
+
+		// stampa di nuovo la prima
+
+    p.stampa();
+  }
+}
+</pre>
+
+
+<h4>File di prova</h4>
+
+<pre>
+Terminator
+Paolo Liberatore
+2
+20
+Via col vento
+nessuno
+0
+10
+La corazzata Potiomkin
+Ugo Fantozzi
+2
+30
+Guerre stellari episodio I
+nessuno
+0
+20
+Fracchia la belva umana
+Ugo Fantozzi
+2
+30
+</pre>
+
+<h4>Parte 2.</h4>
+
+<p>Scrivere una classe <B>Noleggio</B> che gestisce l'insieme di
+tutte le cassette del negozio. I dati si trovano memorizzati
+in un file. La classe deve implementare i seguenti metodi:</p>
+
+<ul>
+
+<li>costruttore <tt>Noleggio(String)</tt>: prende come argomento
+il nome del file che contiene i dati
+
+<li><tt>void stampaNoleggiate(String nome)</tt> stampa i titoli delle
+cassette che un cliente ha in questo momento in affitto
+
+<li><tt>int daPagare(String nome)</tt> dice il prezzo che un cliente deve
+pagare quando restituisce tutte le cassette; il prezzo viene
+valutato come 2 euro per il primo giorno di noleggio, 1 euro
+per i sucessivi; quando il valore conteggiato in questo modo
+supera il valore della cassetta, si valuta quest'ultimo
+
+</ul>
+
+<h4>Programma di esempio: ProvaNoleggio.java</h4>
+
+<pre>
+import java.io.*;
+
+class ProvaNoleggio {
+  public static void main(String arg[]) throws Exception {
+    Noleggio n=new Noleggio("lista.txt");
+
+    n.stampaNoleggiate("Ugo Fantozzi");
+
+    System.out.println("deve pagare: "+n.daPagare("Ugo Fantozzi"));
+  }
+}
+</pre>
+
+</BODY>
+</HTML>

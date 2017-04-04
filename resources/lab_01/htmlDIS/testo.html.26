@@ -1,0 +1,70 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=windows-1252">
+<META NAME="Generator" CONTENT="Microsoft Word 97">
+<TITLE>Fondamenti di Informatica II - Secondo Modulo </TITLE>
+<META NAME="Template" CONTENT="C:\Programmi\Microsoft Office\Office\html.dot">
+</HEAD>
+<BODY>
+
+<P ALIGN="CENTER"><DIV ALIGN="CENTER"><B><FONT SIZE=4>Fondamenti di Informatica II - Secondo Modulo <BR>
+A.A. 1999/00 - Esercizio d'esame - prima parte </DIV></P>
+</FONT><P>Problema 1</B>&nbsp;&nbsp; Si consideri la seguente specifica del tipo astratto <I>Deposito</I>: </P>
+<B><U><DL>
+<DT>TipoAstratto</U> <I>Deposito</B></I> </DT>
+<B><U><DT>Sorte</B></U> </DT>
+<I><DD>Dep</I> (sorta per il dominio di interesse) </DD>
+<B><U><DT>Funzioni</B></U> </DT>
+
+<UL>
+<B><I><DT><LI>Crea</B></I> : <I>() --&gt; Dep</I> </LI></DT>
+<br>precondizioni e postcondizioni per <I>Crea</I>() = <I>d</I> <BR>
+<U>pre</U>: nessuna <BR>
+<U>post</U>: <I>d</I> &egrave; un deposito con 0 auto;
+
+
+<B><I><DT><LI>EntraAuto</B></I> : <I>(Dep,Auto,Targa) --&gt; Dep</I> </LI></DT>
+<br>precondizioni e postcondizioni per <!-- MATH: $NuovaAuto(d,a) = e$
+--><I>EntraAuto</I>(<I>d</I>,<I>a</I>,<i>t</i>) = <I>e</I> <BR> <U>pre</U>:
+l'auto <i>a</i> alla quale &egrave; associata la targa <I>t</I> non &egrave;
+nel deposito <I>d<!-- MATH: $1 \leq i \leq QuanteAuto(d)$ --></I><BR>
+<U>post</U>: <I>e</I> &egrave; il deposito ottenuto da <I>d</I> aggiungendo
+l'auto <I>a</I> con associata la targa <i>t</i>;
+
+
+<B><I><DT><LI>EstInDeposito</B></I> : <I>(Dep, Targa) --&gt; Boolean</I> </LI></DT>
+<br>precondizioni e postcondizioni per <I>EstInDeposito</I>(<I>d</I>,<I>t</I>) = <I>b</I> <BR>
+<U>pre</U>: nessuna<!-- MATH: $1 \leq i \leq QuanteAuto(d)$ --><BR>
+<U>post</U>: <I>b=true </I>se l'auto alla quale &egrave; associata la targa t &egrave; nel deposito<I>, b=false </I>altrimenti;
+
+
+<B><I><DT><LI>DammiAuto</B></I> : <I>(Dep, Targa) --&gt; Auto</I></LI></DT>
+<br>precondizioni e postcondizioni per <I>DammiAuto</I>(<I>d</I>,<I>t</I>) = <I>a</I> <BR>
+<U>pre</U>: l'auto alla quale &egrave; associata la targa <I>t</I> &egrave; nel deposito <I>d<!-- MATH: $1 \leq i \leq QuanteAuto(d)$ --></I><BR>
+<U>post</U>: <I>a</I> &egrave; l'auto alla quale &egrave; associata la targa <I>t</I>;
+
+<B><I><DT><LI>EsceAuto</B></I> : <I>(Dep,Targa) --&gt; Dep</I> </LI></DT>
+<br>precondizioni e postcondizioni per <!-- MATH: $NuovaAuto(d,a) = e$ --><I>EsceAuto</I>(<I>d</I>,<I>t</I>) = <I>e</I> <BR>
+<U>pre</U>: l'auto alla quale &egrave; associata la targa <I>t</I> &egrave; nel deposito <I>d</I><BR>
+<U>post</U>: <I>e</I> &egrave; il deposito ottenuto da <I>d</I> eliminando l'auto alla quale &egrave; associata la targa <I>t</I>;
+</UL>
+<B><U><DT>FineTipoAstratto</B></U> </DT>
+</DL>
+
+<B><P>Domanda 1</B>&nbsp;&nbsp; Realizzare il tipo astratto <I>Deposito</I>
+mediante una classe C++ <CODE>Deposito</CODE> in modo da rendere le operazioni
+del tipo astratto il pi&ugrave; efficienti possibile. Per riferirsi al tipo
+astratto <I>Auto</I> &egrave; necessario utilizzare la classe gi&agrave;
+definita <CODE>Auto</CODE>, della quale &egrave; nota solo la funzione
+<CODE>Targa()</CODE>: la chiamata <CODE>a.Targa()</CODE> restituisce la targa
+associata all'auto <CODE>a</CODE>. Per rappresentare il tipo astratto
+<i>Targa</i> si utilizzi una stringa (cio&egrave; un array <CODE>char*</CODE>
+che termina con il carattere <CODE>'\0'</CODE>). Per verificare l'uguaglianza
+tra stringhe si utilizzi la funzione predefinita <code>int strcmp(char* st1,
+char* st2)</code> che restituisce <code>0</code>, se <code>st1</code> &egrave;
+uguale a <code>st2</code>, e un intero diverso da <code>0</code>, altrimenti.
+</P>
+
+<B><P>Domanda 2</B>&nbsp;&nbsp;Si discuta brevemente la complessit&agrave; di ciascuna delle funzioni pubbliche della classe <CODE>Deposito</CODE>. </P>
+<P> </P></BODY>
+</HTML>

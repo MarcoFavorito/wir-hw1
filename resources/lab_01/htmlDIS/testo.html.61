@@ -1,0 +1,63 @@
+<!DOCTYPE doctype PUBLIC "-//w3c//dtd html 4.0 transitional//en"><html><head>
+   <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   
+   <title>Esercitazione 7 - Laboratorio di Programmazione - aa 2004/05</title><link rel="stylesheet" href="index_files/lp2003.html" type="text/css"></head>
+
+<body>
+<br>
+<center>
+  <p><b>Laboratorio di Programmazione - A.A. 2004/05</b></p>
+  <h2>Esercitazione 7</h2>
+</center>
+
+<p><strong>Parte 1.</strong></p>
+
+<P> Realizzare una classe pubblica <code>Libro</code>, in un package <code>libro</code>, 
+  che reppresenti le seguenti informazioni di su un libro: 
+<ul>
+  <li><em>Titolo:</em> una stringa;</li>
+  <li><em>Autore:</em> un riferimento ad un oggetto di una classe gi&agrave; definita<code> 
+    Autore </code>nel package (i dettagli della classe <code>Autore</code> a noi 
+    non sono noti eccetto che per la presenza di un costruttore con un argomento 
+    stringa);</li>
+  <li><em>Casa editrice:</em> una stringa;</li>
+  <li><em>Anno di pubblicazione:</em> un intero;</li>
+</ul>
+<P>Si equipaggi la classe con uno o pi&ugrave; costuttori opportuni e con metodi 
+  per recuperare le informazioni in essa memorizzate. Si ridefiniscano <code>equals()</code> 
+  e <code>clone()</code> ereditate da <code>Object</code> in modo che facciano 
+  il test di uguaglianza profonda e la copia profonda rispettivamente. Si ridefinisca 
+  inoltre <code>hashCode()</code> in modo che sia coerente con il test di uguaglianza.
+<P><strong>Parte 2.<br>
+  </strong><br>
+  Realizzare una classe pubblica <code>CatalogoLibri</code> che gestisca un catalogo 
+  di libri. Un oggetto <code>CatalogoLibri</code> &egrave; caratterizzato da un 
+  nome (una stringa) e l'insieme dei libri in esso contenuto, e supporta le seguenti 
+  funzionalit&agrave;:
+<ul>
+  <li> <em>crea</em>, che, dato un stringa <em>s</em>, crea un oggetto <code>CatalogoLibri</code> 
+    avente <em>s</em> per nome e che inizialmente non ha alcun libro; </li>
+  <li><em>nome</em>, che restituisce il nome del catalogo;</li>
+  <li><em>presenteLibro</em>, che dato un libro <em>l</em>, verifica se esso &egrave; 
+    presente nel catalogo;</li>
+  <li><em> aggiungiLibro</em>, che, dato un libro <em>l</em>, aggiunge <em>l </em>all' 
+    insieme dei libri del catalogo;</li>
+  <li><em> rimuoviLibro</em>, che, dato un libro <em>l</em>, rimuove <em>l</em> 
+    dall'insieme dei libri del catalogo;</li>
+  <li><em>Libri</em>, che, restituisce un oggetto che implementa l'interfaccia 
+    <code>Iterator</code> per scandire l'insieme dei libri nel catalogo.</li>
+</ul>
+<p>Suggerimento: si utilizzi una classe che implementa l'interfaccia <code>Set</code> 
+  per memorizzare l'insieme dei libri. Si testi la classe realizzata con un opprotuno 
+  cliente.</p>
+<p><strong>Parte 3.</strong></p>
+<p>Realizzare una pubblica classe che implementi l'interfaccia <code>Set</code> 
+  usando una <em>tavola hash</em>.Si realizzino le &quot;bulk operation&quot; 
+  lanciando l'eccezione <code>UnsupportedOperationException</code>. Realizzare 
+  inoltre il relativo iteratore che implementi l'interfaccia <code>Iterator.</code> 
+  In quest'ultimo si realizzi il metodo opzionale <code>remove</code> lanciando 
+  l'eccezione <code>UnsupportedOperationException</code>. Riscrivere la classe 
+  realizzata nella Parte 1 utilizzando come <code>Set</code> l'implementazione 
+  appena realizzata.</p>
+</body>
+</html>

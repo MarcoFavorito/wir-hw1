@@ -1,0 +1,102 @@
+<html>
+<head>
+<title>Scritto 30 Giugno 2004 - Compito B</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+</head>
+
+<body bgcolor="#FFFFFF" text="#000000">
+<p align="center"><font size="+1"><i>Facolt&agrave; di Ingegneria<br>
+  Corso di Laurea in Ingegneria Gestionale<br>
+  Tecniche di Programmazione<br>
+  A.A. 2003-2004</i></font></p>
+<p align="center"><font size="+1">Appello del 30 Giugno 2004 - Compito B</font></p>
+<p align="center"><font size="+1">Durata: 1 ora e 45 minuti</font></p>
+<hr>
+<p><b>Parte I</b></p>
+<ol>
+  <li> Scrivere un metodo statico <tt>confrontaListe</tt> (possibilmente ricorsivo) 
+    che, date due <tt>LinkedList</tt> (o due array di <tt>Object</tt>), restituisce 
+    <tt>true</tt> se le due liste sono l'una il rovescio dell'altra, e <tt>false</tt> 
+    altrimenti.</li>
+  <li>Scrivere un metodo statico <tt>contaNodiConUnFiglio</tt> che, dato albero 
+    binario, restituisce il numero di nodi che hanno un solo figlio<tt></tt>.</li>
+</ol>
+<hr>
+<p><b>Parte II</b></p>
+<p><i>Domanda 1</i></p>
+<blockquote>
+  <p>Dire cosa succede quando viene eseguito il seguente programma:</p>
+  <pre>public class Mistero {
+    public static int mistero(int x){
+        if (x==1) return 0;
+        else return 1+mistero(x/2);
+    }
+    public static void main(String[] args){
+        System.out.println(mistero(-5));
+        System.out.println(mistero(5));
+        System.out.println(mistero(8));
+    }
+}</pre>
+  <p>La funzione calcolata dal metodo <tt>mistero</tt> ricorda una nota funzione 
+    matematica: quale? Motivare le risposte (N.B. risposte non motivate saranno 
+    considerate nulle).</p>
+</blockquote>
+<p><i>Domanda 2</i></p>
+<blockquote>
+  <p>Illustrare il procedimento di ricerca binaria (o dicotomica) usando come 
+    esempio il seguente array di interi e assumendo di voler verificare se il 
+    valore 21 &egrave; presente nell'array:</p>
+  <table width="160" border="1" cellspacing="0" cellpadding="0">
+    <tr> 
+      <td>
+        <div align="center">10</div>
+      </td>
+      <td> 
+        <div align="center">13</div>
+      </td>
+      <td> 
+        <div align="center">14</div>
+      </td>
+      <td> 
+        <div align="center">17</div>
+      </td>
+      <td> 
+        <div align="center">18</div>
+      </td>
+      <td> 
+        <div align="center">21</div>
+      </td>
+      <td> 
+        <div align="center">23</div>
+      </td>
+      <td> 
+        <div align="center">27</div>
+      </td>
+    </tr>
+  </table>
+
+  <p> Valutare il tempo richiesto dall'algoritmo in funzione del numero di elementi 
+    n dell'array nel caso peggiore usando la notazione asintotica. Motivare la 
+    risposta (N.B. risposte non motivate saranno considerate nulle).</p>
+  </blockquote>
+<p><i>Domanda 3</i></p>
+<blockquote> 
+  <p>Rispondere a <b>una sola</b> delle due domande seguenti, a scelta:</p>
+</blockquote>
+<ol>
+  <li>discutere l'ereditariet&agrave; in Java, usando degli esempi se necessario. 
+    In particolare, dire: 
+    <ul>
+      <li>a cosa serve</li>
+      <li>come si realizza</li>
+      <li>cosa &egrave; l'overriding (o sovrapposizione) e a cosa serve</li>
+    </ul>
+  </li>
+  <li>scrivere un applet con un solo pulsante <tt>Gioca</tt>, che esegue l'istruzione 
+    <tt>System.out.println("Hai vinto!")</tt> ogni volta che il pulsante viene 
+    premuto.</li>
+</ol>
+<p>&nbsp;</p>
+</body>
+</html>
+

@@ -1,0 +1,51 @@
+
+<HTML>
+
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html;charset=iso-8859-1">
+<meta name="GENERATOR" content="Microsoft Internet Assistant for Macintosh PowerPoint 98">
+ <TITLE>Enforcing (Conflict) Serializability</TITLE> 
+</HEAD>
+
+<BODY     >
+
+ <H1>Enforcing (Conflict) Serializability</H1> 
+ <P><UL></P>
+
+<P><LI><H2>Two-phase Locking (2PL) Protocol:
+</H2></P>
+
+<P><UL></P>
+
+<P><LI>Each Xact must obtain a S (shared) lock on object before reading, and an X (exclusive) lock on object before writing.
+<LI>Once an Xact releases any lock, it cannot obtain new locks.
+<LI> If an Xact holds an X lock on an object, no other Xact can get a lock (S or X) on that object.
+</UL></UL><UL></P>
+
+<P><LI><H2>2PL allows only conflict-serializable schedules.
+</H2></P>
+
+<P></UL><UL></P>
+
+<P><LI><H2>Potential problem of deadlocks: we could have a cycle of Xacts, T1, T2, ... , Tn, with each Ti waiting for its predecessor to release some lock that it needs.
+</H2></P>
+
+<P><UL></P>
+
+<P><LI>Dealt with by killing one of them and releasing its locks.</UL></UL></P>
+
+<P></P> 
+<P>
+<TABLE>
+  <TD HEIGHT=100 WIDTH=100> <A HREF="tsld014.htm">Previous slide</A> </TD>
+  <TD HEIGHT=100 WIDTH=100> <A HREF="tsld016.htm">Next slide</A> </TD>
+  <TD HEIGHT=100 WIDTH=150> <A HREF="tsld001.htm">Back to first slide</A> </TD>
+  <TD HEIGHT=100 WIDTH=150> <A HREF="sld015.htm">View graphic version</A> </TD>
+</TABLE>
+<BR>
+</P>
+
+
+
+</Body>
+</HTML>

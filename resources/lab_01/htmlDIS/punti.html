@@ -1,0 +1,1378 @@
+<html>
+<head>
+<title>Gli Oggetti</title>
+      <link rel="top" href="../lezioni.html">
+      <link rel="up" href="../lezioni.html">
+      <link rel="contents" href="../lezioni.html">
+      <link rel="previous" href="../vars/vars.html">
+      <link rel="next" href="../metodi/metodi.html">
+</head>
+
+<body>
+
+<h1>Gli Oggetti</h1>
+
+<p>
+Tipi visti fino a questo momento: interi e reali.
+</p>
+
+<p>
+Gli oggetti sono tipi di dato <i>composto</i>
+</p>
+
+<p>
+Ogni oggetto &egrave; rappresentato da pi&ugrave;
+dati semplici.
+</p>
+
+<hr>
+
+
+<h4>Rappresentazione di dati reali</h4>
+
+<p>
+Esempio: nella base di dati dell'Univesit&agrave; ci
+sono i dati degli studenti.
+</p>
+
+<p>
+Per ogni studente, vengono memorizzati il nome,
+il numero di matricola, ecc.
+</p>
+
+<img src="universita.jpg">
+
+<hr>
+
+
+<h4>Osservazioni sulla rappresentazione</h4>
+
+<ul>
+
+<li>non rappresento tutti i dati, ma solo
+quelli che servono per il programma. Per
+esempio, non si rappresenta l'altezza dello
+studente
+
+<li>per ogni studente ho pi&ugrave; dati
+(nome, media, ecc)
+
+<li>alcuni di questi dati sono a
+loro volta composti (data di nascita).
+
+<li>ogni singolo dato si pu&ograve; memorizzare
+in una variabile
+
+</ul>
+
+<p>
+Oggetti=dati composti.
+</p>
+
+<p>
+Quindi, posso rappresentare uno studente con
+una singola variabile.
+</p>
+
+<hr>
+
+
+<h4>Gli oggetti <tt>Point</tt></h4>
+
+<p>
+Un punto dello schermo &egrave; rappresentato
+da due coordinate.
+</p>
+
+<p>
+I punti sono un tipo di dato <i>composto</i>.
+</p>
+
+<p>
+In Java, sono rappresentati come <i>oggetti</i>
+</p>
+
+<hr>
+
+
+<h4>Il piano cartesiano e lo schermo del computer</h4>
+
+<p>
+I punti sul piano cartesiano: due variabili reali.
+</p>
+
+<p>
+Lo schermo di un computer: una matrice di pixel.
+</p>
+
+<p>
+Ogni pixel &egrave; dato da due coordinate intere
+positive.
+</p>
+
+<hr>
+
+
+<h4>Esempio</h4>
+
+<img width=50% src="donald-duck.jpg">
+
+<p>
+Questa immagine, vista molto da vicino, appare:
+</p>
+
+<img src="particolare.jpg">
+
+<p>
+Sono in effetti dei piccoli rettangoli
+colorati
+</p>
+
+<p>
+Ogni rettangolo si chiama pixel
+</p>
+
+<hr>
+
+<h4>Rappresentazione di un punto</h4>
+
+<p>
+I pixel hanno coordinate e colore
+</p>
+
+<p>
+Il tipo punto indica solo la posizione
+(le coordinate)
+</p>
+
+<p>
+Le coordinate sono numeri interi
+</p>
+
+<p>
+Per disegnare sullo schermo, bastano
+coordinate intere
+</p>
+
+<hr>
+
+
+<h4>La rappresentazione a griglia</h4>
+
+<p>
+Lo schermo (oppure: una finestra) si pu&ograve;
+pensare come a un reticolo.
+</p>
+
+<img src="griglia.jpg">
+
+<p>
+Ogni rettangolo &egrave; un pixel.
+</p>
+
+<p>
+Due coordinate intere indicano una posizione
+</p>
+
+<img src="posizione.jpg">
+
+<p>
+Il punto nero ha posizione (1,2).
+</p>
+
+<p>
+Vediamo un tipo di dati che rappresenta una posizione
+</p>
+
+<hr>
+
+
+<h4>Il tipo punto</h4>
+
+<p>
+Una variabile di tipo punto rappresenta una
+posizione nello schermo.
+</p>
+
+<p>
+Si pu&ograve; creare una variabile di tipo
+punto, nel modo seguente:
+</p>
+
+<pre>
+  Point p;
+</pre>
+
+<p>
+Al contrario delle variabili intere e reali,
+i punti vanno creati, prima di poterli usare.
+</p>
+
+<pre>
+  p=new Point();
+</pre>
+
+<p>
+Vedremo pi&ugrave; avanti il perch&egrave;.
+</p>
+
+<hr>
+
+
+<h4>Contenuto di un punto</h4>
+
+<p>
+Ogni punto contiene due variabili intere, in
+cui si possono memorizzare le sue coordinate.
+</p>
+
+<p>
+Se <tt>p</tt> &egrave; un punto, allora
+<tt>p.x</tt> e <tt>p.y</tt> sono due variabili,
+e si possono usare come se fossero variabili intere:
+</p>
+
+<pre>
+    p.x=12;
+    p.y=3;
+
+    a=p.x+p.y;
+
+    System.out.println(p.x);
+</pre>
+
+<p>
+Notare che si stampa il valore numerico
+della coordinata (non viene disegnato il
+punto).
+</p>
+
+<hr>
+
+
+<h4>Un programma completo</h4>
+
+<p>
+La variabile va dichiarata, e poi serve il <tt>new</tt>
+</p>
+
+<p>
+Se <tt>p</tt> &egrave; dichiarata di tipo <tt>Point</tt>,
+allora <tt>p.x</tt> e <tt>p.y</tt> sono due variabili
+intere.
+</p>
+
+<pre>
+import java.awt.*;
+
+class UnPunto {
+  public static void main(String args[]) {
+    Point p;
+    p=new Point();
+
+    int a;
+
+    p.x=12;
+    p.y=3;
+
+    a=p.x+p.y;
+
+    System.out.println(p.x);
+  }
+}
+</pre>
+
+<p>
+La istruzione <tt>import java.awt.*</tt> serve
+per usare il tipo punto, e altre cose che
+riguardano la grafica.
+</p>
+
+
+<hr>
+
+
+<h4>Rappresentazione grafica della memoria</h4>
+
+<p>
+&Egrave; diversa da quella delle variabili.
+</p>
+
+<pre>
+  int a;
+  Point p;
+  p=new Point();
+</pre>
+
+<img width=60% src="intpunto.jpg">
+
+<ul>
+
+<li><tt>Point p;</tt> crea la casella accanto a <tt>p</tt>,
+
+<li><tt>new Point()</tt> crea il rettangolo che
+contiene <tt>p.x</tt> e <tt>p.y</tt>
+
+</ul>
+
+<hr>
+
+
+<h4>Il riferimento</h4>
+
+<p>
+La casellina di una variabile intera contiene il suo
+valore.
+</p>
+
+<p>
+La casellina di una variabile punto contiene un riferimento
+alla zona di memoria in cui si trovano <tt>p.x</tt> e
+<tt>p.y</tt>
+</p>
+
+<p>
+In altre parole: <tt>p</tt> dice dove stanno memorizzati
+<tt>p.x</tt> e <tt>p.y</tt>
+</p>
+
+<p>
+&Egrave; come una caccia al tesoro nella memoria: la
+casella <tt>p</tt> non contiene l'oggetto, ma un
+``biglietto'' che dice dove l'oggetto si trova.
+</p>
+
+<p>
+Questo fatto per ora non ci interessa: basta aver
+capito che <tt>p.x</tt> e <tt>p.y</tt> sono due
+variabili intere.
+</p>
+
+<hr>
+
+
+<h4>Punti o coppie di interi</h4>
+
+<p>
+Quando si fa:
+</p>
+
+<pre>
+  Point p;
+  p=new Point();
+</pre>
+
+<p>
+&Egrave; quasi come se fosse:
+</p>
+
+<pre>
+  // codice sintatticamente errato in Java
+  int p.x;
+  int p.y;
+</pre>
+
+<p>
+Vantaggio: uso una variabile sola per un solo punto.
+</p>
+
+<p>
+In generale: una variabile rappresenta tutti i dati
+di qualcosa.
+</p>
+
+<p>
+Esempio: si possono definire variabili per i dati degli studenti
+(una variabile per ogni studente), ecc.
+</p>
+
+<hr>
+
+
+<h4>Pi&ugrave; punti in uno stesso programma</h4>
+
+<p>
+Basta dichiarare pi&ugrave; variabili con nomi
+diversi.
+</p>
+
+<pre>
+import java.awt.*;
+
+class DuePunti {
+  public static void main(String args[]) {
+    Point a;
+    a=new Point();
+    Point b;
+    b=new Point();
+
+    a.x=12;
+    a.y=3;
+
+    b.x=a.y+4;
+    b.y=a.x+b.x;
+
+    System.out.println(b.x);
+  }
+}
+</pre>
+
+<p>
+Per ogni variabile, va fatto anche il <tt>new</tt>
+</p>
+
+<hr>
+
+
+<h4>Rappresentazione grafica</h4>
+
+<p>
+Per ogni punto, ho una variabile e un oggetto.
+</p>
+
+<img src="duepunti.jpg">
+
+<p>
+Se <tt>a</tt>, <tt>b</tt>, ecc sono variabili punto, allora
+<tt>a.x</tt>, <tt>a.y</tt>, <tt>b.x</tt>, <tt>b.y</tt> ecc.
+sono variabili intere.
+</p>
+
+<hr>
+
+
+<h4>Oggetti <--> valori</h4>
+
+<p>
+I punti sono casi particolari di oggetti.
+</p>
+
+<p>
+Differenza fra oggetti e valori:
+</p>
+
+<dl>
+
+<dt>variabile intera:
+<dd>contiene un singolo valore
+
+<dt>oggetto:
+<dd>pu&ograve; contenere uno o pi&ugrave; valori
+
+</dl>
+
+<p>
+Il punto &egrave; un tipo particolare di oggetti,
+ma ne esistono altri.
+</p>
+
+<hr>
+
+
+<h4>Esercizio</h4>
+
+<p>
+Dato un punto, trovare la distanza dall'origine
+</p>
+
+<pre>
+import java.awt.*;
+
+class Distanza {
+  public static void main(String args[]) {
+    Point p;
+    p=new Point();
+
+    p.x=10;
+    p.y=20;
+
+    ...
+  }
+}
+</pre>
+
+<p>
+Completare il programma, in modo che stampi
+la distanza.
+</p>
+
+<hr>
+
+
+<h4>Soluzione</h4>
+
+<p>
+Serve una variabile reale
+</p>
+
+<p>
+Le coordinate sono <tt>p.x</tt> e <tt>p.y</tt>
+</p>
+
+<p>
+La distanza si calcola come al solito.
+</p>
+
+<pre>
+import java.awt.*;
+
+class Distanza {
+  public static void main(String args[]) {
+    Point p;
+    p=new Point();
+
+    p.x=10;
+    p.y=20;
+
+    double dis;
+
+    dis=Math.sqrt(p.x*p.x+p.y*p.y);
+
+    System.out.println(dis);
+  }
+}
+</pre>
+
+<hr>
+
+
+<h4>Differenza fra interi e oggetti</h4>
+
+<p>
+Vista prima: un dato <--> pi&ugrave; dati.
+</p>
+
+<p>
+Altra differenza: i metodi.
+</p>
+
+<hr>
+
+
+<h4>Metodo=operazione su un oggetto</h4>
+
+<p>
+Esempio: spostare un punto.
+</p>
+
+<pre>
+  p.translate(10,-20);
+</pre>
+
+<p>
+Il punto <tt>p</tt> viene spostato di <tt>10</tt>
+sulla coordinata <tt>x</tt> e di <tt>-20</tt> sulla
+coordinata <tt>y</tt>.
+</p>
+
+<hr>
+
+
+<h4>Metodo <tt>move</tt></h4>
+
+<p>
+Muove il punto alle coordinate specificate.
+</p>
+
+<pre>
+  p.move(5, 14);
+</pre>
+
+<p>
+Equivale alle due istruzioni:
+</p>
+
+<pre>
+p.x=5;
+p.y=14;
+</pre>
+
+<p>
+Notare:
+</p>
+
+<ul>
+
+<li>un metodo fa la stessa cosa di due istruzioni
+
+<li>ci sono due modi per fare la stessa cosa
+
+</ul>
+
+<p>
+In generale: ci sono molti modi per fare una cosa,
+e ci sono metodi che equivalgono a molte istruzioni.
+</p>
+
+<hr>
+
+
+<h4>Esempio di programma che usa un metodo</h4>
+
+<p>
+Programma della distanza, con il metodo
+<tt>move</tt> per definire il punto.
+</p>
+
+<pre>
+import java.awt.*;
+
+class Distanza {
+  public static void main(String args[]) {
+    Point p;
+    p=new Point();
+
+    p.move(10,20);
+
+    double dis;
+
+    dis=Math.sqrt(p.x*p.x+p.y*p.y);
+
+    System.out.println(dis);
+  }
+}
+</pre>
+
+<p>
+Vantaggi di usare il metodo invece dei due assegnamenti.
+</p>
+
+<ul>
+
+<li>pi&ugrave; breve (una sola istruzione invece di due)
+
+<li>pi&ugrave; facile da capire (quindi, permette una
+correzione di eventuali errori pi&ugrave; facile)
+
+</ul>
+
+<p>
+La seconda cosa &egrave; importante in programmi lunghi
+</p>
+
+<hr>
+
+
+<h4>Esercizio: spostare e calcolare la distanza</h4>
+
+<p>
+Spostare un punto di <tt>10</tt> unit&agrave;
+a destra, e calcolare la distanza dall'origine.
+</p>
+
+<pre>
+import java.awt.*;
+
+class Sposta {
+  public static void main(String args[]) {
+    Point p;
+    p=new Point();
+
+    p.move(23,42);
+
+    ...
+  }
+}
+</pre>
+
+<p>
+Mettere delle istruzioni al posto di <tt>...</tt>
+in modo che venga spostato il punto e calcolata
+la nuova distanza.
+</p>
+
+<hr>
+
+
+<h4>Soluzione</h4>
+
+<p>
+Primo: si sposta il punto usando il metodo
+<tt>translate</tt>
+</p>
+
+<p>
+Secondo: si calcola la distanza come visto prima.
+</p>
+
+<pre>
+import java.awt.*;
+
+class Sposta {
+  public static void main(String args[]) {
+    Point p;
+    p=new Point();
+
+    p.move(23,42);
+
+    p.translate(10,0);
+
+    double dis;
+
+    dis=Math.sqrt(p.x*p.x+p.y*p.y);
+
+    System.out.println(dis);
+  }
+}
+</pre>
+
+
+<hr>
+
+
+<h4>Esercizio: distanza fra due punti</h4>
+
+<p>
+Completare questo programma:<br>
+deve stampare la distanza fra i due punti.
+</p>
+
+<pre>
+import java.awt.*;
+
+class DistDue {
+  public static void main(String args[]) {
+    Point a;
+    a=new Point();
+    Point b;
+    b=new Point();
+
+    a.move(12,32);
+    b.move(3,90);
+
+    ...
+  }
+}
+</pre>
+
+<p>
+<i>Suggerimento:</i> una espressione pu&ograve;
+anche contenere pi&ugrave; parentesi tonde, per
+esempio:
+</p>
+
+<pre>
+var=(10+(20-1)*2)*8
+</pre>
+
+<p>
+Non si possono invece usare parentesi quadre <tt>[]</tt>
+oppure graffe <tt>{}</tt> all'interno delle espressioni
+(perch&egrave; hanno un significato diverso).
+</p>
+
+<hr>
+
+
+<h4>Soluzione</h4>
+ 
+<p>
+Basta usare la formula della distanza.
+</p>
+
+<p>
+Le coordinate sono date da <tt>a.x</tt> ecc
+</p>
+
+<pre>
+import java.awt.*;
+
+class DistDue {
+  public static void main(String args[]) {
+    Point a;
+    a=new Point();
+    Point b;
+    b=new Point();
+
+    a.move(12,32);
+    b.move(3,90);
+
+    double dis;
+
+    dis=Math.sqrt((a.x-b.x)*(a.x-b.x)+(a.y-b.y)*(a.y-b.y));
+
+    System.out.println(dis);
+  }
+}
+</pre>
+ 
+
+
+<hr>
+
+
+<h4>Copiare un oggetto</h4>
+
+<p>
+Se <tt>a</tt> e <tt>b</tt> sono interi, allora
+<tt>a=b</tt> copia il valore di <tt>b</tt> in
+<tt>a</tt>.
+
+<p>
+Se <tt>a</tt> e <tt>b</tt> sono punti (oppure altri
+oggetti), allora &egrave; "sbagliato":
+</p>
+
+<pre>
+a=b;
+</pre>
+
+<p>
+Vedremo perch&egrave; non va usato questo
+sistema, e quando si pu&ograve; invece usare.
+</p>
+
+<p>
+Per il momento, diciamo che non va usato.
+</p>
+
+<hr>
+
+<h4>Copiare un oggetto</h4>
+
+<p>
+Si fa la copia componente per componente:
+</p>
+
+<pre>
+Point a, b;
+...
+
+a.x=b.x;
+a.y=b.y;
+</pre>
+
+<hr>
+
+
+<h4>Perimetro di un triangolo</h4>
+
+<p>
+Dati i tre punti di un triangolo, calcolare
+il suo perimetro.
+</p>
+
+<pre>
+import java.awt.*;
+
+class Perim {
+  public static void main(String args[]) {
+    Point a;
+    a=new Point();
+    Point b;
+    b=new Point();
+    Point c;
+    c=new Point();
+
+    a.move(10,10);
+    b.move(15,10);
+    c.move(30,20);
+
+    ...
+  }
+}
+</pre>
+
+<hr>
+
+
+<h4>Perimetro: soluzione</h4>
+
+<p>
+Per ogni coppia di punti, calcolo la distanza
+(la lunghezza del lato).
+</p>
+
+<p>
+Le sommo, e ottengo il perimetro.
+</p>
+
+<pre>
+import java.awt.*;
+
+class Perim {
+  public static void main(String args[]) {
+    Point a;
+    a=new Point();
+    Point b;
+    b=new Point();
+    Point c;
+    c=new Point();
+
+    a.move(10,10);
+    b.move(15,10);
+    c.move(30,20);
+
+    double lato1, lato2, lato3;
+
+    lato1=Math.sqrt((a.x-b.x)*(a.x-b.x)+(a.y-b.y)*(a.y-b.y));
+
+    lato2=Math.sqrt((b.x-c.x)*(b.x-c.x)+(b.y-c.y)*(b.y-c.y));
+
+    lato3=Math.sqrt((c.x-a.x)*(c.x-a.x)+(c.y-a.y)*(c.y-a.y));
+
+    double perimetro;
+
+    perimetro=lato1+lato2+lato3;
+
+    System.out.println(perimetro);
+  }
+}
+</pre>
+
+<hr>
+
+
+<h4>Perimetro: osservazioni</h4>
+
+<p>
+Faccio pi&ugrave; volte la stessa cosa (calcolo
+la distanza fra due punti)
+</p>
+
+<p>
+Esiste un modo per non scrivere il codice
+pi&ugrave; volte (settimana prossima).
+</p>
+
+<hr>
+
+
+<h4>Area di un triangolo</h4>
+
+<p>
+Dati i tre punti, trovare l'area del
+triangolo.
+</p>
+
+<pre>
+import java.awt.*;
+
+class Area {
+  public static void main(String args[]) {
+    Point a;
+    a=new Point();
+    Point b;
+    b=new Point();
+    Point c;
+    c=new Point();
+
+    a.move(10,10);
+    b.move(15,10);
+    c.move(30,20);
+
+    ...
+  }
+}
+</pre>
+
+<hr>
+
+
+<h4>Area di un triangolo: soluzione</h4>
+
+<p>
+Sono possibili varie soluzioni.
+</p>
+
+<p>
+Quella pi&ugrave; facile: usare la formula di Erone
+</p>
+
+<img src="erone.jpg">
+
+<p>
+Dove <i>a</i>, <i>b</i> e <i>c</i> sono i latui.
+</p>
+
+<p>
+&Egrave; facile perch&egrave; sappiamo come calcolare
+i lati <tt>a</tt>, <tt>b</tt> e <tt>c</tt>, e anche
+come calcolare <tt>s</tt>, che &egrave; la met&agrave;
+del perimetro.
+</p>
+
+<p>
+Il modo migliore di risolvere un problema &egrave;
+quello di adattare/combinare soluzioni gi&agrave;
+note.
+</p>
+
+<pre>
+import java.awt.*;
+
+class Area {
+  public static void main(String args[]) {
+    Point a;
+    a=new Point();
+    Point b;
+    b=new Point();
+    Point c;
+    c=new Point();
+
+    a.move(10,10);
+    b.move(15,10);
+    c.move(30,20);
+
+    double lato1, lato2, lato3;
+
+    lato1=Math.sqrt((a.x-b.x)*(a.x-b.x)+(a.y-b.y)*(a.y-b.y));
+
+    lato2=Math.sqrt((b.x-c.x)*(b.x-c.x)+(b.y-c.y)*(b.y-c.y));
+
+    lato3=Math.sqrt((c.x-a.x)*(c.x-a.x)+(c.y-a.y)*(c.y-a.y));
+
+    double semiperimetro;
+
+    semiperimetro=(lato1+lato2+lato3)/2;
+
+    double area;
+
+    area=Math.sqrt(semiperimetro*(semiperimetro-lato1)*
+      (semiperimetro-lato2)*(semiperimetro-lato3));
+
+    System.out.println(area);
+  }
+}
+</pre>
+
+<hr>
+
+
+<h4>Oggetto Rectangle</h4>
+
+<p>
+Un rettangolo &egrave; dato dai seguenti dati:
+</p>
+
+<dl>
+
+<dt><tt>x</tt>
+<dd>la coordinata <tt>x</tt> di uno dei suoi punti
+
+<dt><tt>y</tt>
+<dd>l'altra coordinata dello stesso punto
+
+<dt><tt>width</tt>
+<dd>la sua larghezza
+
+<dt><tt>height</tt>
+<dd>la sua altezza
+
+</dl>
+
+<p>
+Queste sono le variabili di cui &egrave; fatto
+un rettangolo.
+</p>
+
+<img src="rettangolo.jpg">
+
+<p>
+In questo caso, <tt>x=7</tt>, <tt>y=5</tt>,
+<tt>width=8</tt> e <tt>height=4</tt>
+</p>
+
+<hr>
+
+
+<h4>Rettangolo: esempio</h4>
+
+<p>
+Questo programma definisce un rettangolo.
+</p>
+
+<pre>
+import java.awt.*;
+
+class Rettan {
+  public static void main(String args[]) {
+    Rectangle r;
+    r=new Rectangle();
+
+    r.x=12;
+    r.y=10;
+    r.width=5;
+    r.height=4;
+  }
+}
+</pre>
+
+<p>
+<tt>r.x</tt> ecc sono variabili intere
+</p>
+
+<hr>
+
+
+<h4>Esercizio: area del rettangolo</h4>
+
+<p>
+Completare il programma qui sotto in modo
+che stampi l'area del rettangolo.
+</p>
+
+<pre>
+import java.awt.*;
+
+class Rettan {
+  public static void main(String args[]) {
+    Rectangle r;
+    r=new Rectangle();
+
+    r.x=12;
+    r.y=10;
+    r.width=5;
+    r.height=4;
+
+    ...
+  }
+}
+</pre>
+
+<hr>
+
+
+<h4>Soluzione</h4>
+
+<p>
+Dal momento che i due lati sono <tt>r.width</tt>
+ed <tt>r.height</tt>...
+</p>
+
+<pre>
+import java.awt.*;
+
+class Rettan {
+  public static void main(String args[]) {
+    Rectangle r;
+    r=new Rectangle();
+
+    r.x=12;
+    r.y=10;
+    r.width=5;
+    r.height=4;
+
+    int area;
+
+    area=r.width*r.height;
+
+    System.out.println(area);
+  }
+}
+</pre>
+
+<hr>
+
+
+<h4>Variabili di oggetti di tipo diverso</h4>
+
+<p>
+Ogni rettangolo ha la parte <tt>x</tt>, <tt>y</tt>,
+<tt>height</tt> e <tt>width</tt>
+</p>
+
+<p>
+I punti hanno soltanto <tt>x</tt> e <tt>y</tt>
+</p>
+
+<p>
+Ci sono altri tipi di oggetti che hanno parti
+diverse da queste.
+</p>
+
+<hr>
+
+
+<h4>Metodi di oggetti di tipo diverso</h4>
+
+<p>
+Per i rettangoli esiste il metodo <tt>setSize</tt>
+(che modifica altezza a larghezza)
+</p>
+
+<p>
+Per i punti questo metodo non esiste
+</p>
+
+<p>
+Ogni tipo di oggetto (<tt>Point</tt>, <tt>Rectangle</tt>,
+ecc) ha i suoi metodi.
+</p>
+
+<hr>
+
+
+<h4>Metodi degli oggetti rettangolo</h4>
+
+<p>
+Qualche metodo:
+</p>
+
+<dl>
+
+<dt><tt>setBounds</tt>
+<dd>modifica le quattro componenti del rettangolo
+
+<dt><tt>translate</tt>
+<dd>fa la stessa cosa che fa sui punti
+
+<dt><tt>intersection</tt>
+<dd>trova l'intersezione del rettangolo con un altro
+
+<dt><tt>union</tt>
+<dd>trova il pi&ugrave; piccolo rettangolo che contiene
+questo e un altro
+
+<dt><tt>grow</tt>
+<dd>espande il rettangolo mantenendo lo stesso centro
+
+</dl>
+
+<hr>
+
+
+<h4>Esercizio: calcolo della diagonale</h4>
+
+<p>
+Trovare la diagonale di un rettangolo.
+</p>
+
+<pre>
+import java.awt.*;
+
+class Diago {
+  public static void main(String args[]) {
+    Rectangle r;
+    r=new Rectangle();
+ 
+    r.setBounds(10,20,4,6);
+
+    ...
+  }
+}
+</pre>
+
+<p>
+Il metodo <tt>setBounds</tt> cambia i valori
+delle componenti del rettangolo.
+</p>
+
+<hr>
+
+
+<h4>Diagonale: soluzione</h4>
+
+<p>
+Sono noti i due lati...
+</p>
+
+<pre>
+import java.awt.*;
+
+class Diago {
+  public static void main(String args[]) {
+    Rectangle r;
+    r=new Rectangle();
+ 
+    r.setBounds(10,20,4,6);
+
+    double d;
+
+    d=Math.sqrt(r.width*r.width+r.height*r.height);
+
+    System.out.println(d);
+  }
+}
+</pre>
+
+<hr>
+
+
+<h4>Esercizio sulle dimensioni</h4>
+
+<p>
+Aumentare le dimensioni di un rettangolo in modo
+che includano un certo punto.
+</p>
+
+<p>
+Usare il metodo <tt>grow(n,m)</tt> che aumenta
+la dimensione di un rettangolo di <tt>n</tt> in
+tutte e quattro le dimensioni, mantenendo il
+centro (ossia, aumenta di <tt>2n</tt> e <tt>2m</tt>
+la base e l'altezza).
+</p>
+
+<p>
+Il metodo <tt>Math.abs</tt> calcola il valore
+assoluto di un numero.
+</p>
+
+<hr>
+
+
+<h4>Aumentare le dimensioni: soluzione</h4>
+
+<p>
+La larghezza va aumentata in modo tale che la
+larghezza del rettangolo sia il doppio della
+distanza fra il centro e il punto da includere.
+</p>
+
+<pre>
+import java.awt.*;
+
+class Aumenta {
+  public static void main(String args[]) {
+    Rectangle r;
+    r=new Rectangle();
+
+    r.setBounds(5,5,8,10);
+
+    Point p;
+    p=new Point();
+
+    p.move(20,20);
+
+    Point centro;
+    centro=new Point();
+
+    centro.move(r.x+r.width/2, r.y+r.height/2);
+
+    r.grow(Math.abs(p.x-centro.x-r.width), Math.abs(p.y-centro.y-r.height));
+
+    System.out.println(r.toString());
+  }
+}
+</pre>
+
+<p>
+Nota: se <tt>grow(n,m)</tt> aumenta la distanza
+fra il centro e i vertici di <tt>n</tt> ed <tt>m</tt>
+nelle due direzioni.
+</p>
+
+<p>
+Il metodo <tt>toString</tt> converte un oggetto
+in stringa.
+</p>
+
+<p>
+<b>Nota:</b> vengono stampati i <tt>valori</tt>
+dell'oggetto (nel nostro caso, <tt>x</tt>, <tt>y</tt>,
+<tt>width</tt> e <tt>height</tt>) e non viene
+disegnato il rettangolo.
+</p>
+
+<p>
+Osservazione:
+si possono anche definire degli oggetti per
+memorizzare dati temporanei (in questo caso,
+il centro del rettangolo)
+</p>
+
+</body>
+</html>
+
+

@@ -1,0 +1,215 @@
+<html>
+<head>
+<link href="moses.css" rel="stylesheet" type="text/css">
+<title>Base di partenza scientifica</title>
+</head>
+
+<body>
+
+<h1>Base di partenza scientifica</h1>
+
+Negli ultimi anni l'utilizzo di formalismi logico matematici come metodi di
+specifica formale e strumenti di ragionamento automatico per la verifica di
+tali specifiche ha ottenuto numerosi successi in campi applicativi, come la
+pianificazione, la verifica dell'hardware, la rappresentazione della conoscenza
+o la sicurezza informatica. Alcuni metodi, tra cui il model-checking e gli
+approcci basati su satisfiability si sono rivelati particolarmente
+promettenti.<p>
+
+Il Model Checking [1,2] &egrave; una potente tecnica di ragionamento automatico
+per la verifica di propriet&agrave; temporali in sistemi dinamici, ampiamente
+utilizzato in ambito industriale per la verifica ed il debugging di sistemi
+hardware e software. In Model Checking un sistema &egrave; modellato come una
+macchina a stati finiti e la propriet&agrave; da verificare (la
+&#34;specifica&#34;) &egrave; espressa utilizzando una logica opportuna [3]. In
+funzione della logica utilizzata per la specifica, si attiva una procedura di
+ricerca in grado di determinare automaticamente se la specifica &egrave;
+soddisfatta o meno dalla macchina a stati finiti. Utilizzando una codifica
+booleana della macchina a stati tramite Ordered Binary Decision Diagrams
+(OBDD), &egrave; possibile trattare sistemi con un numero di stati dell'ordine
+di 10^20 [4]. Tuttavia, vi sono numerosi casi di interesse pratico in cui la
+dimensione dell'OBDD risultante &egrave; esponenziale nel numero di variabili
+che modellano il sistema.<p>
+
+I risolutori SAT per il soddisfacimento di formule proposizionali allo stato
+dell'arte non soffrono del problema dell'esplosione in spazio propria degli
+OBDD. Alcuni esempi di risolutori SAT allo stato dell'arte sono basati sul
+metodo di Stalmark come PROVER [5,6], o sulla procedura di Davis-Puttnam come
+SATO [7] e REL_SAT [8].  La nuova generazione di risolutori SAT &egrave; stata
+applicata con successo in vari domini, quali la verifica e il debugging di
+circuiti hardware [9,10], la costruzione di decisori per logiche modali
+[11,12], la verifica formale di sistemi di controllo [5], nonch&egrave; la
+costruzione di sistemi di pianificazione [13,14] in grado di competere con
+pianificatori allo stato dell'arte. In particolar modo due diverse tecniche
+sono state utilizzate: da un lato quella che trasforma integralmente il
+problema nella logica proposizionale ed usa direttamente SAT provers [5,6,9],
+dall'altro quella che utilizza le procedure SAT come subroutines ma effettua la
+ricerca della prova nella logica in cui il problema &egrave; stato formulato
+[11]. <p>
+
+Stabilire quale dei due approcci sia superiore all'altro, e se essi siano
+effettivamente superiori ad altri approcci proposti in letteratura [16]
+&egrave; tuttora un problema aperto. Da questo punto di vista avere a
+disposizione dei benchmark per la comparazione degli algoritmi &egrave;
+essenziale, soprattutto nel corrente quadro internazionale che vede nelle
+competizioni tra prover, oltre ai tradizionali studi fatti dagli autori stessi
+dei vari stsiemi, uno dei metodi principali per verificarne la validit&agrave;
+[17,18,19].<p>
+
+Il diffondersi delle tecniche di analisi sperimentali degli algoritmi e
+procedure di decisione nella logica (proposizionale e non proposizionale) ha
+per&ograve; messo anche i rilievo le numerose carenze del settore. Per esempio,
+&egrave; stato dimostrato [20,21] che molti dei problemi che venivano usati
+negli anni passati come benchmark di valutazione di algoritmi erano in
+realt&agrave; problemi di facile risoluzione.<p>
+
+Sulla base di questi studi si &egrave; affermata una tecnica di costruzione dei
+benchmark basata sulla generazione casuale dei problemi. Il benchmark
+pi&ugrave; utilizzato nel caso proposizionale &egrave; noto come il Random
+3-CNF [20] che &egrave; ormai uno dei benchmak standard. Tuttavia la
+generazione casuale di problemi non &egrave; cos&iacute; semplice, e
+soprattutto nel caso delle logiche non proposizionali pu&ograve; dare adito a
+numerosi errori [16,22].<p>
+
+Dal momento che i problemi generati casualmente possono non riflettere la
+struttura dei problemi reali, sono state proposte da numerosi ricercatori delle
+librerie di problemi derivati da problemi reali, come per esempio la
+pianificazione [23], la dimostrazione automatica di teoremi matematici [18],
+problemi di propagazione dei vincoli [24] e verifica di propriet&agrave;
+dell'hardware [25].<p>
+
+In estrema sintesi, si pu&ograve; affermare che mentre esistono molte librerie
+di problemi per il calcolo proposizionale e la logica del primo ordine, ne
+esistono relativamente molte meno, e vi &egrave; un corrispondente minor numero
+di analisi sperimentali per problemi la cui complessit&agrave; sia a un livello
+intermedio. Come esempio di tali analisi sperimentali si considerino i lavori
+svolti sulla logica booleana quantificata (che &egrave; equivalente
+computazionalemente alla logica temporale) [26], il calcolo dei modelli minimi
+[27], le logiche modali [19,28].<p>
+
+Da questo quadro scaturisce la proposta di ricerca delle unit&agrave; di
+Genova, Roma e Trento: combinare le proprie competenze nell'ambito del theorem
+proving e dell'analisi sperimentale delle logiche non classiche puntando allo
+sviluppo di nuove procedure di decisione che utilizzino il model checking e la
+satisfiability ed alla messa a punto di metodologie ed insiemi di problemi per
+la validazione ed il benchmarking di tali procedure sia mediante problemi
+generati in modo casuale con propriet&agrave; specificate, sia mediante
+problemi caratteristici di particolari domini applicativi.<p>
+
+<hr>
+
+<h1>Scientific Background</h1>
+
+In the recent years the use of logical formalisms as formal specification tools
+and automated reasoning tools for proving their properties have gained ground
+and successes in fields such as planning, hardware verification, knowledge
+represention and computer security. Some methods, such as model checking and
+satisfiability decision procedures have been particularly promising.<p>
+
+Model checking [1,2] is a powerful automated reasoning technique for the
+verification of temporal properties of dynamic systems. It is widely used in
+industry and academia for the verification and debugging of hardware and
+software systems. With model checking, a system is modeled as a finite state
+automaton and the property to be verified (the &#34;specification&#34;) is
+expressed in a suitable logic [3]. According to the chosen logic, a search
+procedure is run which automatically check whether the specification is
+satisfied by the automaton. Using an encoding of the finite state machine with
+Ordered Binary Decision Diagrams (OBDD), is possible to deal with as many
+states as 10^20 [4]. However, there are many interesting practical cases where
+the size of the OBBD is exponential in the number of variables modelling the
+system.<p>
+
+State-of-the-art SAT solvers for the checking the satisfiability of
+propositional logic formulae does not suffer from the space explosion problem
+characteristic of OBDD. Some exaples of such SAT solvers which have been
+successfully applied to real-world cases are based on Stalmark patented
+algorithm such as PROVER [5,6], or on Davis-Putnam algorithm such as SATO [7]
+and REL_SAT [8]. The new generation of SAT solvers has been applied with
+success in different applicative domains such as hardware verification [9,10],
+decision procedures for modal and description logics [11,12], formal
+verification of control systems [5], and the construction of planning systems
+[13,14] able to compete with ad-hoc planners. In particular two techniques have
+been applied: at one side of the spectrum we have the techniques that encode
+completely the problem into propositional logic and uses propositional SAT
+provers [5,6,9], on the other side the algorithm perfoms the search in the
+logic in which the problem has been formulated but uses the SAT solvers as
+subroutines [11]. <p>
+
+Deciding which is the most effective approach, and whether they are superior to
+other techniques proposed in the literature [16] is a still an open problem.
+From this perspective, the availability of benchmarks for the comparison of the
+algorithms is essential, especially in the present international scenario,
+which sees the competion among provers as the principal way to assess the
+relative strenght of the systems [17,18,19], beside the traditional in-house
+studies made by the authors of each systems.<p>
+
+The diffusion of techniques for the experimental analysis of algorithms and
+decision procedures for propositional and non-propositional logics has also
+pointed the attention on many pitfalls in the field. For example, it has been
+shown [20,21] that many problems used in the past years as benchmarks for
+propositional logics were easy to solve.<p>
+
+On the basis of these studies a new techniques for the constructions of
+benchmarks based on the random generation of formulae has taken ground. The
+most common benchmark in propositional logic is known as Random 3-CNF [20] and
+it is nowadays considered a reference point. However the random generation of
+problems is not so easy and, especially in the non-propositional case may lead
+to a number of errors [16,22].<p>
+
+Since random problems may not reflect the structure of real problems, a number
+of researches has proposed libraries of problems derived from real instances,
+such as planning [23], automated proof of mathematical theorems [18],
+constraint propagation [24], and hardware verifcation [25]. So while there are
+assessed benchmarks for propositional and first-order logic, there is much
+smaller number of benchmarks (and relative experimental analysis) for problems
+whose complexity is at an intermediate level between the two logics. However,
+some preliminary studies are starting to open the field. For instance there has
+been novel work on quantified boolean formulae (computationally equivalent to
+temporal logics) [26], minimal models [27], modal logics [19,28,29]. <p>
+
+From the analysis of this scenario the proposal of Genova, Roma e Trento has
+sprung: combine our competences within theorem proving and experimental
+analysis of non classical logics, develop novel decision procedures for model
+checking and satisfiabiliy, methodologies and problem libraries for
+benchmarking those procedures combining the validation of our approach with
+both randomly genrated and application-driven problem sets. <p>
+
+<hr>
+
+<h1>Pubblicazioni - References</h1>
+
+<P>
+<DIV ALIGN=JUSTIFY>
+<I>[1] E. Clarke and O. Grumberg and D. Long. Model Checking. In Proceedings of the International Summer School on Deductive Program Design. Marktoberdorf, Germany. 1994<br>
+[2] G.J. Holzmann. The model checker SPIN. IEEE Trans. on Software Engineering, 23(5):279-295, May 1997.<br>
+[3] E.A. Emerson. Temporal and Modal Logic. Handbook of Theoretical Computer Science. J. van Leeuwen editor. Elsevier Science Publisher. Vol. B. Pages 995-1072. 1990.<br>
+[4] J.R. Burch, E.M. Clarke, K.L. McMillan, D.L. Dill, and J. Hwang. Symbolic model checking: 10E20 states and beyond. In LICS, 1990.<br>
+[5] A. Boralv. The Industrial Success of Verification Tools Based on Stalmarck's Method. In Proc. of the Ninth International Conference on Computer Aided Verification, 1997. LNCS 1254, pag. 7-10.<br>
+[6] G. Stalmarck, M. Saflund. Modeling and Verifying Systems and Software in Propositional Logic. In SAFECOMP'90: Safety Security and Reliability Related Computers for the 1990s, 1990.<br>
+[7] H. Zhang SATO: An Efficient Propositional Prover Proceedings of the 14th International Conference on Automated deduction, LNAI, Vol. 1249, pp. 272-275, Springer, July 13-17 1997.<br>
+[8] R. J. Bayardo Jr. and R. C. Schrag. Using CSP look-back techniques to solve real world SAT instances. In Proc. of the 14th National Conf. on Artificial Intelligence, 203-208, 1997.<br>
+[9] A. Biere, A. Cimatti, E. Clarke, Y. Zhu. Symbolic Model Checking without BDDs. To be presented at the Fifth International Conference on Tools and Algorithms for the Construction and Analysis of Systems (TACAS '99). 22-26 March, 1999. Amsterdam, the Netherlands.<br>
+[10] A. Cimatti, F. Giunchiglia, G. Mongardi, D. Romano, F. Torielli, P. Traverso. Formal Verification of a Railway Interlocking System using Model Checking. Journal on Formal Aspects in Computing. To appear.<br>
+[11] E. Giunchiglia, F. Giunchiglia, R. Sebastiani, A. Tacchella. More evaluation of decision procedures for modal logics. In Sixth International Conference on Principles of Knowledge Representation and Reasoning (KR'98), Trento, Italy, Giugno 2-5 1998. Morgan Kauffmann Publishers.<br>
+[12] P.F. Patel-Schneider. DLP system description. In E. Franconi, G. De Giacomo, R. M. MacGregor, W. Nutt, C. A. Welty, and F. Sebastiani, editors. Collected Papers from the International Description Logics Workshop (DL'98), pages 87--89. CEUR, May 1998.<br>
+[13] H. Kautz, B. Selman. Pushing the envelope: planning, propositional logic and stochastic search. In Proc. of the 14th National Conference on Artificial Intelligence (AAAI'96), Pagg. 1194--1201.<br>
+[14] E. Giunchiglia, A. Massarotto, R. Sebastiani. Act, and the Rest Will Follow: Exploiting Determinism in Planning as Satisfiability. In Proc. of the 15th National Conference on Artificial Intelligence (AAAI'98), Luglio 26-30, 1998, Madison, Wisconsin (USA).<br>
+[15] M. Daniele, F. Giunchiglia, M. Y. Vardi. Improved Automata Generation for Linear Time Temporal Logic. In Proc. Computer Aided Verification (CAV'99).<br>
+[16] U. Hustadt and R. Schmidt, On evaluating decision procedures for modal logic. In Proc. of IJCAI-97, Morgan Kaufman.. <br>
+[17] Johnson and M. Trick, 96 eds. Cliques, Coloring, satisfiability: the second DIMACS implementation challenge. AMS Series in Discrete mathematics and Theortical Computer Science 26, 1996<br>
+[18] Suttner C.B., G. Sutcliffe. The CADE-14 ATP System Competition, Journal of Automated Reasoning 21(1), pp.99-134. 1998. The CADE-14 ATP System Competition. Journal of Automated Reasoning 18(2), pp.271-286. 1997<br>
+[19] F. Massacci. Design and Results of the Tableaux-99 Non-Classical (Modal) Systems Comparison. To appear in TABLEAUX-99, LNCS, Springer Verlag, 1999.<br>
+[20] B. Selman, D. Mitchell, and H. Levesque. Generating hard satisfiability problems. Artificial Intelligence, 81(1-2):17-29, 1996.<br>
+[21] D. Mitchell and H. Levesque. Some pitfalls for experimenters with random SAT. Artificial Intelligence, 81(1-2):111-125, 1996.<br>
+[22] P. Fleming and J. Wallace. How not to lie with statistics: the correct way to summarize benchmark results. Communications of the ACM 29(3):218-221, 1986. <br>
+[23] H. Hoos and T. St&#34;utzle. SATLIB - the satisfiability library, 1998. Disponibile sul web<br>
+[24] I. Gent, T. Walsh, and B. Selman. CSPLib: a problem library for constraints, 1999. Disponibile sul web [25] L. van Claesen. Formal VLSI Correctness Verification: VLSI Design Methods. Vol. II. Elsevier Science Publisher, 1990.<br>
+[26] M. Cadoli, A. Giovanardi, and M. Schaerf. An algorithm to evaluate quantified boolean formulae. In Proceedings of the Fifteenth National Conference on Artificial Intelligence (AAAI-98), pages 263-267, 1998.<br>
+[27] P. Liberatore. Algorithms and experiments on finding minimal models. Technical report, Dipartimento di Informatica e Sistemistica, Universita di Roma &#34;La Sapienza&#34;, 1999. Submitted to Journal of Automated Reasoning.<br>
+[28] F. Baader, E. Franconi, B. Hollunder, B. Nebel, and H.J. Profitlich. An Empirical Analysis of Optimization Techniques for Terminological Representation Systems or: Making KRIS get a move on. Applied Artificial Intelligence. Special Issue on Knowledge Base Management, 4:109--132, 1994. </I>
+
+
+
+</body>
+</html>
+

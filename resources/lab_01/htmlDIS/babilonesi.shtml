@@ -1,0 +1,64 @@
+<!doctype html public "-//w3c//dtd html 4.0 transitional//en">
+<html>
+<head>
+<link href="java.css" rel="stylesheet" type="text/css">
+<title>Moltiplicazione senza moltiplicazione</title>
+</head>
+
+<body>
+
+<h2>Moltiplicazione senza moltiplicazione</h2>
+
+Secondo alcune fonti, i babilonesi utilizzavano una tecnica
+di moltiplicazione che sfruttava una tabella dei quadrati.
+Esistevano delle tabelle in cui si poteva
+trovare, per ogni numero <tt>n</tt> fino a un certo valore,
+il numero <tt>n</tt><sup>2</sup>. Il vantaggio del metodo
+era quello di non richiedere moltiplicazioni. In particolare,
+si usava la formula:<p>
+
+<center>
+xy = ( (x+y)<sup>2</sup> - x<sup>2</sup> -y<sup>2</sup> )/2
+</center>
+<p>
+
+Vogliamo realizzare un programma che utilizza la stessa
+tecnica: prima compiliamo una tabella di quadrati, e poi
+effettuiamo delle moltiplicazioni usando questo metodo.<p>
+
+Per memorizzare la tabella dei quadrati, usiamo un vettore
+di cento elementi. Questo vettore &egrave; sufficiente a
+moltiplicare due numeri la cui somma non supera 100. Una
+volta scritti i valori nel vettore, possiamo utilizzarli
+per calcolare tutte le moltiplicazioni necessare. Il
+programma completo
+<a href="MoltiplicazioneBabilonese.java">MoltiplicazioneBabilonese.java</a>
+&egrave; riportato qui sotto.<p>
+
+<pre>
+/*
+  Moltiplicazione fra interi la cui somma e' minore
+  di 100 usando il metodo babilonese.
+*/
+
+class MoltiplicazioneBabilonese {
+  public static void main(String[] args) {
+    int quadrati[]=new int[101];
+    int i;
+    int a=10, b=20, c=2, d=4, e=32, f=31;
+
+    for(i=0; i<=100; i=i+1) {
+      quadrati[i]=i*i;
+    }
+
+    System.out.println( (quadrati[a+b]-quadrati[a]-quadrati[b])/2 );
+    System.out.println( (quadrati[c+d]-quadrati[c]-quadrati[d])/2 );
+    System.out.println( (quadrati[e+f]-quadrati[e]-quadrati[f])/2 );
+  }
+}
+
+</pre>
+
+</body>
+</html>
+

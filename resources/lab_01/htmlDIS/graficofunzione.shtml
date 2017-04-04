@@ -1,0 +1,97 @@
+<!doctype html public "-//w3c//dtd html 4.0 transitional//en">
+<html>
+<head>
+<link href="java.css" rel="stylesheet" type="text/css">
+<title>Grafico di una funzione</title>
+</head>
+
+<body>
+
+<h2>Grafico di una funzione</h2>
+
+Vediamo qui un esempio di procedura: la stampa del grafico
+di una funzione usando solo caratteri di testo. Sia quindi
+data una funzione <i>f=|x|/20.0+20sin(x/10)+30</i> da
+visualizzare. Vogliamo visualizzare graficamente i valori
+di questa funzione con <i>x</i> che va da -100 a +100.<p>
+
+Per effettuare questo grafico usando esclusivamente la
+finestra di testo, usiamo il trucco di visualizzare il
+grafico ``in verticale'': per ogni valore di <i>x</i>
+stampiamo una linea, in cui mettiamo un asterisco "*"
+in posizione tanto pi&ugrave; a destra in funzione del
+valore <i>f(x)</i>.<p>
+
+Per stampare l'asterisco a destra, usiamo la funzione
+<tt>System.out.print</tt>, che &egrave; simile alla
+<tt>println</tt>, ma non va a capo una volta stampato.
+Per stampare l'asterisco a destra, facciamo prima una
+stampa di tanti spazi quanto vale la funzione, e poi
+stampiamo ``*" con andata a capo.<p>
+
+Il programma
+<a href="GraficoFunzione.java">GraficoFunzione.java</a>
+realizza questa funzione.<p>
+
+<pre>
+/*
+  Grafico di una funzione usando solo testo
+  (con funzione)
+*/
+
+class GraficoFunzione {
+  static void linea(int n) {
+    int i;
+
+    for(i=1; i<=n; i=i+1) {
+      System.out.print(" ");
+    }
+    System.out.println("*");
+  }
+
+  public static void main(String[] args) {
+    double f;
+    int x;
+
+    for(x=-100; x<=100; x=x+1) {
+      f=Math.abs(x)/20.0+20*Math.sin(x/10.0)+30;
+      linea(Math.round((float) f));
+    }
+  }
+}
+
+</pre>
+
+La funzione <tt>linea</tt> ha un argomento di tipo intero,
+ossia si aspetta di ricevere un valore di tipo intero. Questo
+valore viene memorizzato nella variabile <tt>n</tt>. Usando
+il valore di questa variabile, &egrave; facile stampare la
+linea voluta: si fa un ciclo for in cui si stampano <tt>n</tt>
+spazi bianchi (senza andare a capo), e poi si stampa un singolo
+asterisco ``*'', andando a capo. La funzione <tt>linee</tt>
+stampa quindi una singola linea del grafico.<p>
+
+Per stampare tutto il grafico, occorre chiamare la funzione
+per ogni valore di <tt>x</tt> da -100 a +100. Il programma
+fa esattamente questo: c'&egrave; un ciclo for che assegna
+alla variabile <tt>x</tt> valori progressivi da -100 a +100.
+Per ogni valore di <tt>x</tt> si valuta la funzione, e si
+assegna il valore risultato alla variabile <tt>f</tt>. A
+questo punto, si chiama la funzione usando il valore memorizzato
+in <tt>f</tt>.<p>
+
+Un punto da notare nel programma &egrave; la presenza della
+funzione di arrotondamento <tt>Math.round</tt>. &Egrave;
+necessario usare questa funzione perch&egrave; il risultato
+della funzione &egrave; un numero reale. Quindi, non si pu&ograve;
+passare alla procedura <tt>linea</tt>, che si aspetta un
+numero intero. La espressione <tt>Math.round((float) f)</tt>
+rappresenta un numero intero che &egrave; la pi&ugrave;
+vicina approssimazione del numero reale contenuto nella
+variabile <tt>f</tt>.<p>
+
+
+</body>
+</html>
+
+

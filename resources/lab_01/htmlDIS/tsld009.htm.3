@@ -1,0 +1,60 @@
+
+<HTML>
+
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html;charset=iso-8859-1">
+<meta name="GENERATOR" content="Microsoft Internet Assistant for Macintosh PowerPoint 98">
+ <TITLE>Examples of Block Nested Loops</TITLE> 
+</HEAD>
+
+<BODY     >
+
+ <H1>Examples of Block Nested Loops</H1> 
+ <P><UL></P>
+
+<P><LI><H2>Cost:  Scan of outer +  #outer blocks * scan of inner
+</H2></P>
+
+<P><UL></P>
+
+<P><LI>#outer blocks =
+</UL></UL><UL></P>
+
+<P><LI><H2>With Reserves (R) as outer, and 100 pages of R:
+</H2></P>
+
+<P><UL></P>
+
+<P><LI>Cost of scanning R is 1000 I/Os;  a total of 10 blocks.
+<LI>Per block of R, we scan Sailors (S);  10*500 I/Os.
+<LI>If space for just 90 pages of R, we would scan S 12 times.
+</UL></UL><UL></P>
+
+<P><LI><H2>With 100-page block of Sailors as outer:
+</H2></P>
+
+<P><UL></P>
+
+<P><LI>Cost of scanning S is 500 I/Os; a total of 5 blocks.
+<LI>Per block of S, we scan Reserves;   5*1000 I/Os.
+</UL></UL><UL></P>
+
+<P><LI><H2>With sequential reads considered, analysis changes:  may be best to divide buffers evenly between R and S.</H2></P>
+
+<P></UL></P>
+
+<P></P> 
+<P>
+<TABLE>
+  <TD HEIGHT=100 WIDTH=100> <A HREF="tsld008.htm">Previous slide</A> </TD>
+  <TD HEIGHT=100 WIDTH=100> <A HREF="tsld010.htm">Next slide</A> </TD>
+  <TD HEIGHT=100 WIDTH=150> <A HREF="tsld001.htm">Back to first slide</A> </TD>
+  <TD HEIGHT=100 WIDTH=150> <A HREF="sld009.htm">View graphic version</A> </TD>
+</TABLE>
+<BR>
+</P>
+
+
+
+</Body>
+</HTML>

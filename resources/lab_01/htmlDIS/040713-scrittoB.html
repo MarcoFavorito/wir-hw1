@@ -1,0 +1,105 @@
+<html>
+<head>
+<title>Scritto 13 Luglio 2004 - Compito B</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+</head>
+
+<body bgcolor="#FFFFFF" text="#000000">
+<p align="center"><font size="+1"><i>Facolt&agrave; di Ingegneria<br>
+  Corso di Laurea in Ingegneria Gestionale<br>
+  Tecniche di Programmazione<br>
+  A.A. 2003-2004</i></font></p>
+<p align="center"><font size="+1">Appello del 13 Luglio 2004 - Compito B</font></p>
+<p align="center"><font size="+1">Durata: 1 ora e 45 minuti</font></p>
+<hr>
+<p><b>Parte I</b></p>
+<ol>
+  <li> Scrivere un metodo statico <tt>maxPositiviConsecutivi</tt> (possibilmente 
+    ricorsivo) che, data una <tt>LinkedList</tt> (o un array) di <tt>Integer</tt>, 
+    restituisce la lunghezza della pi&ugrave; lunga sottosequenza contenente solo 
+    valori positivi. Ad esempio, data la sequenza [3, 4, -2, 4, 7, 3, 6, -7, 2, 
+    -1, -5, 3, 4], <tt>maxPositiviConsecutivi</tt> dovrebbe restituire 4. </li>
+  <li>Il cammino destro di un albero &egrave; la sequenza di nodi che si incontrano 
+    partendo dalla radice e andando sempre sul figlio destro. Scrivere un metodo 
+    statico <tt>sommaCamminoDestro</tt> che, dato albero binario i cui nodi contengono 
+    ciscuno un <tt>Integer</tt>, restituisce la somma dei valori nei nodi sul 
+    cammino destro.</li>
+</ol>
+<hr>
+<p><b>Parte II</b></p>
+<p><i>Domanda 1</i></p>
+<blockquote>
+  <p>Dire cosa stampa il seguente programma:</p>
+  <pre>public class Mistero {
+    public static int mistero(int x){
+        if (x==0) return 0;
+        else if (x&gt;0) return -1+mistero(x-1);
+        else return 1+mistero(x+1);
+    }
+    public static void main(String[] args){
+        System.out.println(mistero(5));
+        System.out.println(mistero(-5));
+    }
+}</pre>
+  <p>Quale funzione matematica f(x) &egrave; calcolata dal metodo <tt>mistero</tt>? 
+    Motivare le risposte (N.B. risposte non motivate saranno considerate nulle).</p>
+</blockquote>
+<p><i>Domanda 2</i></p>
+<blockquote>
+  <p>Illustrare l'algoritmo di ordinamento per fusione (Mergesort) usando come 
+    esempio il seguente array di interi:</p>
+
+  <table width="200" border="1" cellspacing="0" cellpadding="0">
+    <tr> 
+    <td> 
+        <div align="center">5</div>
+    </td>
+    <td> 
+        <div align="center">8</div>
+    </td>
+    <td> 
+        <div align="center">4</div>
+    </td>
+    <td> 
+        <div align="center">1</div>
+    </td>
+    <td> 
+        <div align="center">3</div>
+    </td>
+    <td> 
+        <div align="center">7</div>
+    </td>
+    <td> 
+        <div align="center">2</div>
+    </td>
+    <td> 
+        <div align="center">6</div>
+    </td>
+  </tr>
+</table>
+
+  <p> Valutare il tempo richiesto dall'algoritmo in funzione del numero di elementi 
+    n dell'array nel caso peggiore e nel caso migliore usando la notazione asintotica. 
+    Motivare la risposta (N.B. risposte non motivate saranno considerate nulle).</p>
+  </blockquote>
+<p><i>Domanda 3</i></p>
+<blockquote>
+  <p>Rispondere a <b>una sola</b> delle due domande seguenti, a scelta:</p>
+</blockquote>
+<ol>
+  <li>discutere i metodi statici in Java. In particolare, dire: 
+    <ul>
+      <li>come si dichiarano</li>
+      <li>come si invocano</li>
+      <li>che differenza c'&egrave; tra metodi statici e metodi non statici</li>
+      <li>se si pu&ograve; usare il riferimento <tt>this</tt> o meno all'interno 
+        di un metodo statico (in caso affermativo, <tt>this</tt> a quale oggetto 
+        si riferisce?)</li>
+    </ul>
+  </li>
+  <li>???</li>
+</ol>
+<p>&nbsp;</p>
+</body>
+</html>
+

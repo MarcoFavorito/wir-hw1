@@ -1,0 +1,60 @@
+<html>
+<head>
+<title>Massimo elemento di un vettore</title>
+</head>
+
+<body>
+<h2>Massimo elemento di un vettore</h2>
+
+Un vettore di interi e' memorizzato in un file, in cui ogni riga
+ha la sintassi:<p>
+
+%[indice]=espressione;
+
+<p>
+
+L'indice e' un numero intero, mentre l'espressione e' una somma di
+numeri interi e di espressioni di tipo %[indice]. Ognuna di queste
+righe va interpretata come "metti il valore dell'espressione in un
+vettore, nella posizione corrispondente all'indice".
+
+<p>
+
+Si scriva un programma bison-flex che legge un file di questo tipo,
+memorizza i valori nelle posizioni corrette dell'array (l'array va
+inizializzato a 0), stampi i valori dell'array diversi da 0, e trovi
+il valore massimo nel vettore.
+
+
+<h2>Esempio</h2>
+
+<h4>File di input:</h4>
+
+<pre>
+%[1]=10;
+
+%[12]=5+9+%[1]+4;
+
+%[1]=%[1]+1
+
+%[9]=12+4;
+
+%[3]=4;
+</pre>
+
+<h4>File di output:</h4>
+
+<pre>
+Valori diversi da 0: %[1]=11 %[3]=4 %[9]=16 %[12]=28
+
+Valore massimo nel vettore: 28
+</pre>
+
+
+<ul>
+<li> <a href="massimo.lex">Analizzatore lessicale</a>
+<li> <a href="massimo.y">Analizzatore sintattico</a> (questo analizzatore
+sintattico prevede anche situazioni non previste dal testo dell'esercizio).
+</ul>
+</body>
+</html>

@@ -1,0 +1,823 @@
+<html>
+<head>
+<title>Il tipo boolean</title>
+</head>
+
+<body>
+
+<h1>Il tipo <tt>boolean</tt></h1>
+
+<p>
+&Egrave; un tipo di dati i cui unici
+valori possibili sono vero e falso.
+</p>
+
+<p>
+Servono per memorizzare i valori
+di condizioni.
+</p>
+
+<hr>
+
+
+<h4>A cosa serve?</h4>
+
+<p>
+Vediamo l'esempio del verificare
+la presenza di valori negativi.
+</p>
+
+<pre>
+class Presenza {
+  public static void main(String args[]) {
+    int f=0, x;
+
+    String presenza;
+    presenza="no";
+
+    for(x=0; x&lt;=10; x++) {
+      f=x*x-10*x+2;
+
+      if(f&lt;0)
+        presenza="si";
+    }
+
+    System.out.println(presenza);
+  }
+}
+</pre>
+
+<p>
+La stringa <tt>presenza</tt> poteva assumere
+solo due valori possibili.
+</p>
+
+<p>
+Questi due valori indicano se una cosa &egrave;
+vera oppure falsa (la presenza di valori negativi)
+</p>
+
+<p>
+In base alla condizione, potevo poi fare:
+</p>
+
+<pre>
+  if(presenza=="si")
+    ...
+</pre>
+
+<hr>
+
+
+<h4>Variabili booleane</h4>
+
+<p>
+La variabile stringa del programma di sopra
+assumeva solo due valori
+</p>
+
+<p>
+Questi due valori dicevano se qualcosa
+&egrave; vero o falso.
+</p>
+
+<p>
+Esiste un tipo di dato fatto apposta per
+questo tipo di valori: <tt>boolean</tt>
+</p>
+
+<p>
+Una variabile <tt>boolean</tt> pu&ograve;
+assumere soltanto due valori: vero o falso
+</p>
+
+<pre>
+class PrimoBool {
+  public static void main(String args[]) {
+    boolean b;
+
+    b=true;
+    System.out.println(b);
+
+    b=false;
+    System.out.println(b);
+  }
+}
+</pre>
+
+<hr>
+
+
+<h4>Presenza, con boolean</h4>
+
+<p>
+La presenza o meno pu&ograve; essere vera
+o no, quindi posso usare un boolean.
+</p>
+
+<p>
+Il boolean dice al risposta alla domanda
+"&egrave; stato trovato un valore negativo
+finora?"
+</p>
+
+<p>
+La risposta pu&ograve; essere solo "true"
+(vero) oppure "false" (falso)
+</p>
+
+<pre>
+class Presenza {
+  public static void main(String args[]) {
+    int f=0, x;
+
+    boolean presenza;
+    presenza=false;
+
+    for(x=0; x&lt;=10; x++) {
+      f=x*x-10*x+2;
+
+      if(f&lt;0)
+        presenza=true;
+    }
+
+    if(presenza)
+      System.out.println("si");
+    else
+      System.out.println("no");
+  }
+}
+</pre>
+
+<hr>
+
+
+<h4>Non dovrebbe essere...?</h4>
+
+<p>
+Perch&egrave; <tt>if(presenza)</tt>?
+</p>
+
+<p>
+Non dovrebbe essere <tt>if(presenza==true)</tt>?
+</p>
+
+<p>
+Le condizioni sono espressioni, ma il valore
+calcolato &egrave; <tt>true</tt> oppure
+<tt>false</tt>
+</p>
+
+<hr>
+
+
+<h4>Valori booleani</h4>
+
+
+<p>
+Espressioni:
+</p>
+
+<dl>
+
+<dt>espressioni intere
+<dd>calcolano un valore intero (es. <tt>a+2</tt>)
+
+<dt>espressioni reali
+<dd>calcolano un valore reale (es. <tt>a+2.0</tt>)
+
+<dt>espressioni booleane
+<dd>calcolano un valore booleano, ossia un valore
+che pu&ograve; essere solo vero o falso
+(es. <tt>a==2</tt>)
+
+</dl>
+
+<p>
+In altre parole, <tt>a==0</tt> &egrave; una
+espressione come tutte le altre
+</p>
+
+<p>
+La cosa particolare &egrave; che il valore
+di ritorno &egrave; un boolean
+</p>
+
+<hr>
+
+
+<h4>Condizioni</h4>
+
+<pre>
+if(condizione) ...
+for(...; condizione; ...)
+while(condizione)
+</pre>
+
+<p>
+Quando scrivo <tt>condizione</tt> intendo
+una espressione che ritorna un valore
+booleano.
+</p>
+
+<hr>
+
+
+<h4>Espressioni booleane</h4>
+
+<p>
+Tutti i confronti (es. <tt>a==2</tt>,
+<tt>a+2.0&gt;3.9</tt> ecc.) sono espressioni
+booleane (semplici)
+</p>
+
+<p>
+Se ho una espressione booleana <tt>e</tt>,
+allora <tt>!e</tt> &egrave; una espressione
+booleana<br>
+(il valore &egrave; <tt>true</tt>
+se e solo se <tt>e</tt> &egrave; <tt>false</tt>,
+e viceversa)
+</p>
+
+<p>
+Se ho due espressioni booleane <tt>e1</tt>
+ed <tt>e2</tt>, allora <tt>e1||e2</tt>
+ed <tt>e1&amp;&amp;e2</tt> sono espressioni
+booleane.
+</p>
+
+<p>
+Anche <tt>true</tt>, <tt>false</tt>, e le
+variabili booleane si possono usare come
+espressioni booleane semplici.
+</p>
+
+<hr>
+
+
+<h4>Esempi di espressioni booleane</h4>
+
+<p>
+Questo programma contiene qualche esempio.
+</p>
+
+<pre>
+class Esempi {
+  public static void main(String args[]) {
+    boolean a, b;
+    int x=1;
+
+    a=true;
+    b=(x==1);
+
+    a=(a||b);
+
+    b=!((a&amp;&amp;b)||(x==2));
+
+    System.out.println(a);
+  }
+}
+</pre>
+
+<hr>
+
+
+<h4>Operatori booleani</h4>
+
+<pre>
+||  &amp;&amp; !
+</pre>
+
+<p>
+Sono operatori booleani: dato un valore (<tt>!</tt>)
+o due valori (<tt>||</tt> ed <tt>&amp;&amp;</tt>)
+trovano un nuovo valore
+</p>
+
+<hr>
+
+
+<h4>Paragone con gli operatori interi</h4>
+
+<pre>
++ - * /
+</pre>
+
+<p>
+Se ho due espressioni intere <tt>e1</tt> ed <tt>e2</tt>,
+allora posso scrivere <tt>e1 + e2</tt>.
+</p>
+
+<p>
+Viene valutata <tt>e1</tt>, poi <tt>e2</tt>, e
+cos&iacute; si trovano due numeri.
+</p>
+
+<p>
+Dato che ho l'operatore <tt>+</tt>, li sommo.
+</p>
+
+<pre>
+|| &amp; &amp;
+</pre>
+
+<p>
+Se ho due espressioni booleane <tt>e1</tt> ed <tt>e2</tt>,
+allora posso scrivere <tt>e1 || e2</tt>.
+
+<p>
+Viene valutata <tt>e1</tt>, poi <tt>e2</tt>, e
+cos&iacute; si trovano due valori booleani (ossia
+due valori tre <tt>true</tt> e <tt>false</tt>
+</p>
+
+<p>
+Dato che ho l'operatore <tt>||</tt>, il valore
+calcolato &egrave; l'or (vero se almeno uno dei
+due valori &egrave; vero.
+</p>
+
+<hr>
+
+
+<h4>Cosa fa il not <tt>!</tt></h4>
+
+<p>
+Scrivere <tt>!e</tt> &egrave; il contrario
+di <tt>e</tt>
+</p>
+
+<table border="1">
+<tr>
+<th>valore di <tt>e</tt></th>
+<th>valore di <tt>!e</tt></th>
+</tr>
+<tr>
+<td><tt>false</tt></td>
+<td><tt>true</tt></td>
+</tr>
+<tr>
+<td><tt>true</tt></td>
+<td><tt>false</tt></td>
+</tr>
+</table>
+
+<hr>
+
+
+<h4>Cosa fa l'or <tt>||</tt></h4>
+
+<p>
+La condizione composta &egrave; vera
+se lo &egrave; almeno una delle due
+</p>
+
+<table border="1">
+<tr>
+<th>valore di <tt>e1</tt></th>
+<th>valore di <tt>e2</tt></th>
+<th>valore di <tt>e1 || e2</tt></th>
+</tr>
+<tr>
+<td><tt>false</tt></td>
+<td><tt>false</tt></td>
+<td><tt>false</tt></td>
+</tr>
+</tr>
+<tr>
+<td><tt>false</tt></td>
+<td><tt>true</tt></td>
+<td><tt>true</tt></td>
+</tr>
+</tr>
+<tr>
+<td><tt>true</tt></td>
+<td><tt>false</tt></td>
+<td><tt>true</tt></td>
+</tr>
+</tr>
+<tr>
+<td><tt>true</tt></td>
+<td><tt>true</tt></td>
+<td><tt>true</tt></td>
+</tr>
+</table>
+
+<hr>
+
+
+<h4>Cosa fa l'and <tt>&amp;&amp;</tt></h4>
+
+<p>
+La condizione composta &egrave; vera
+se lo sono tutte e due le condizioni
+che la compongono.
+</p>
+
+<table border="1">
+<tr>
+<th>valore di <tt>e1</tt></th>
+<th>valore di <tt>e2</tt></th>
+<th>valore di <tt>e1 &amp;&amp; e2</tt></th>
+</tr>
+<tr>
+<td><tt>false</tt></td>
+<td><tt>false</tt></td>
+<td><tt>false</tt></td>
+</tr>
+</tr>
+<tr>
+<td><tt>false</tt></td>
+<td><tt>true</tt></td>
+<td><tt>false</tt></td>
+</tr>
+</tr>
+<tr>
+<td><tt>true</tt></td>
+<td><tt>false</tt></td>
+<td><tt>false</tt></td>
+</tr>
+</tr>
+<tr>
+<td><tt>true</tt></td>
+<td><tt>true</tt></td>
+<td><tt>true</tt></td>
+</tr>
+</table>
+
+<hr>
+
+
+<h4>Perch&egrave; si usa?</h4>
+
+<p>
+Possiamo realizzare delle condizioni anche
+molto complicate:
+</p>
+
+<dl>
+
+<dt><tt>(a &gt;= 2) &amp;&amp; (a &lt;= 5)</tt>
+<dd>&egrave; una condizione che &egrave; vera se
+la variabile <tt>a</tt> &egrave; compresa fra
+<tt>2</tt> e <tt>5</tt>
+
+<dt><tt>(a==0) || (a==10)</tt>
+<dd>&egrave; vera se <tt>a</tt> vale <tt>0</tt>
+oppure vale <tt>10</tt>
+
+<dt><tt>(a!=0) || ((b==1) &amp;&amp; (b==-1))</tt>
+<dd>&egrave; vera se <tt>a</tt> &egrave; diverso
+da zero, oppure se <tt>a</tt> vale zero e poi
+il valore assoluto di <tt>b</tt> &egrave; <tt>1</tt>
+
+</dl>
+
+<hr>
+
+
+<h4>E le variabili booleane?</h4>
+
+<p>
+Permettono di memorizzare il risultato
+di una condizione, e poi di usarlo anche
+molto dopo.
+</p>
+
+<pre>
+  calcolo se ci sono valori negativi
+  (il risultato va in presenza)
+
+  altri calcoli
+
+  stampo tutto alla fine
+</pre>
+
+<p>
+Gli altri calcoli potrebbero aver bisogno
+di sapere se ci sono valori negativi o no:
+gli basta usare <tt>presenza</tt>
+</p>
+
+<hr>
+
+
+<h4>Booleani come valori di ritorno</h4>
+
+<p>
+Un metodo pu&ograve; ritornare un valore
+booleano.
+</p>
+
+<p>
+Esempio: il metodo <tt>contains</tt>
+della classe <tt>Rectangle</tt> vede se un
+punto si trova all'interno del rettangolo.
+</p>
+
+<pre>
+import java.awt.*;
+
+class Dentro {
+  public static void main(String args[]) {
+    Rectangle r;
+    r=new Rectangle();
+
+    r.setBounds(10,10,20,20);
+
+    Point p;
+    p=new Point();
+
+    p.move(20,15);
+
+    System.out.println(r.contains(p));
+  }
+}
+</pre>
+
+<hr>
+
+
+<h4>Uso di un valore booleano</h4>
+
+<p>
+Si pu&ograve; stampare
+</p>
+
+<p>
+Si pu&ograve; usare come condizione
+</p>
+
+<p>
+Si pu&ograve; usare all'interno di una
+condizione pi&ugrave; complessa.
+</p>
+
+<p>
+Si pu&ograve; memorizzare in una variabile
+booleana
+</p>
+
+<pre>
+import java.awt.*;
+
+class Usi {
+  public static void main(String args[]) {
+    Rectangle r;
+    r=new Rectangle();
+    r.setBounds(10,10,20,20);
+    Point p;
+    p=new Point();
+    p.move(20,15);
+
+    boolean b;
+    b=r.contains(p);
+
+    if( (p.x&gt;0) &amp;&amp; (r.contains(p)) ) 
+      System.out.println("OK");
+    else 
+      while(b &amp;&amp; !r.contains(p))
+         p.x=p.x+1;
+  }
+}
+</pre>
+
+<hr>
+
+
+<h4>Nuovo metodo che torna un valore booleano</h4>
+
+<p>
+Creare una classe che ha le stesse componenti
+di <tt>Rectangle</tt> ma in pi&ugrave; un
+metodo che prende due punti e vede se
+il segmento compreso fra i due punti si trova
+tutto dentro il rettangolo.
+</p>
+
+<p>
+Suggerimento?
+</p>
+
+<hr>
+
+
+<h4>Suggerimento</h4>
+
+<p>
+Il segmento si trova tutto dentro il rettangolo
+se e solo se entrambi i punti si trovano all'interno
+del rettangolo.
+</p>
+
+<hr>
+
+
+<h4>Implementazione del metodo</h4>
+
+<p>
+Il metodo prende due punti e torna un valore
+booleano:
+</p>
+
+<pre>
+class RectSegm {
+  ...
+
+  boolean tuttoInterno(Point p, Point q) {
+    return ...;
+  }
+}
+</pre>
+
+<hr>
+
+
+<h4>Calcolo del valore di ritorno</h4>
+
+<pre>
+  se tutti e due i punti sono nel rettangolo
+    ritorna true
+  altrimenti
+    ritorna false
+</pre>
+
+<p>
+Si traduce immediatamente in codice:
+</p>
+
+<pre>
+class RectSegm {
+  ...
+
+  boolean tuttoInterno(Point p, Point q) {
+    if(this.contains(p) &amp;&amp; this.contains(q))
+      return true;
+    else
+      return false;
+  }
+}
+</pre>
+
+<hr>
+
+
+<h4>Soluzione alternativa</h4>
+
+<p>
+Devo ritornare un valore booleano
+</p>
+
+<p>
+Questo valore deve essere vero se e solo se
+la espressione <tt>this.contains(p) &amp;&amp;
+this.contains(q)</tt> &egrave; vera.
+</p>
+
+<p>
+Ritorno il valore di questa espressione
+</p>
+
+<pre>
+class RectSegm {
+  ...
+
+  boolean tuttoInterno(Point p, Point q) {
+    return (this.contains(p) &amp;&amp; this.contains(q));
+  }
+}
+</pre>
+
+<hr>
+
+
+<h4>Espressioni e valori booleani</h4>
+
+<ul>
+
+<li>valori booleani: <tt>true</tt> e <tt>false</tt>
+
+<li>le condizioni sono espressioni il cui valore &egrave;
+un valore booleano
+
+<li>la variabili booleane possono contenere valori
+booleani
+
+<li>come condizione di un <tt>if</tt>, di un <tt>for</tt>
+o di un <tt>while</tt> posso mettere una qualsiasi
+espressione che d&agrave; un valore booleano (una
+condizione semplice, una invocazione di metodo che
+torna un booleano, una variabile booleana, una
+condizione composta da queste)
+
+</ul>
+
+<p>
+Esempio di invocazione del metodo:
+</p>
+
+<pre>
+import java.awt.*;
+
+class ProvaRectSegm {
+  public static void main(String args[]) {
+    int x;
+
+    RectSegm r;
+    r=new RectSegm();
+    r.setBounds(10,10,20,20);
+
+    Point a, b;
+    a=new Point();
+    a.move(11,11);
+    b=new Point();
+    b.move(15,12);
+
+    if( (a.x==0) &amp;&amp; r.tuttoInterno(a,b) )
+      System.out.println("No");
+    else
+      for(x=a.x; x&lt;b.x; x=x+1)
+        System.out.println(x);
+  }
+}
+</pre>
+
+<hr>
+
+
+<h4>Metodo del risultato parziale</h4>
+
+<p>
+Il programma per la presenza di valori
+negativi usa il metodo del risultato
+parziale:
+</p>
+
+<pre>
+    presenza=false;
+
+    for(x=0; x&lt;=10; x++) {
+      f=x*x-10*x+2;
+
+      if(f&lt;0)
+        presenza=true;
+    }
+
+</pre>
+
+<p>
+All'inizio, <tt>presenza</tt> dice se ci sono
+elementi negativi in un insieme di <tt>0</tt>
+interi.
+</p>
+
+<p>
+Ad ogni passo, si considera un nuovo elemento.
+</p>
+
+<hr>
+
+
+<h4>Operatore associativo</h4>
+
+<p>
+Con questo metodo, posso vedere se ci
+sono negativi in un insieme di <i>n</i> interi.
+</p>
+
+<p>
+Come condizione booleana:
+</p>
+
+<pre>
+(a<sub>1</sub>&lt;0) || (a<sub>2</sub>&lt;0) || ... (a<sub>n</sub>&lt;0)
+</pre>
+
+<p>
+Uso il fatto che <tt>||</tt> &egrave; associativo:
+</p>
+
+<pre>
+(a<sub>1</sub>&lt;0) || ... || (a<sub>i</sub>&lt;0) = 
+((a<sub>1</sub>&lt;0) || ... || (a<sub>i-1</sub>&lt;0) ) || (a<sub>i</sub>&lt;0)
+</pre>
+
+<p>
+L'elemento neutro &egrave; <tt>false</tt>
+</p>
+
+<p>
+Viene esattamente lo stesso ciclo di sopra.
+</p>
+
+<p>
+Quindi: in effetti sto usando il metodo del
+risultato parziale per calcolare il risultato
+di un operatore associativo.
+</p>
+
+</body>
+</html>
+
+

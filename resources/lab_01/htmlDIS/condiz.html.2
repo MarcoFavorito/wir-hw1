@@ -1,0 +1,1154 @@
+<html>
+<head>
+<title>Condizionali</title>
+</head>
+
+<body>
+
+<h1>Istruzioni condizionali</h1>
+
+<p>
+Flusso di esecuzione=successione di
+esecuzione delle istruzioni.
+</p>
+
+<p>
+Finora:
+</p>
+
+<ol>
+
+<li>sequenza di istruzioni
+
+<li>metodi (salto e ritorno)
+
+</ol>
+
+<p>
+Ora vediamo i condizionali: fare qualcosa
+in base a una condizione.
+</p>
+
+<hr>
+
+
+<h4>Un programma con un condizionale</h4>
+
+<p>
+Questo programma stampa <tt>a</tt> oppure
+un messaggio.
+</p>
+
+<pre>
+class PrimoCond {
+  public static void main(String args[]) {
+    int a;
+
+    a=-3;
+
+    if(a &lt; 0) {
+      System.out.println("Il numero e' negativo");
+    } 
+    else {
+      System.out.println(a);
+    }
+  }
+}
+</pre>
+
+<hr>
+
+
+<h4>Istruzione condizionale: parti</h4>
+
+<p>
+A parole: se una condizione &egrave; vera fai
+una cosa, altrimenti fanne un'altra.
+</p>
+
+<p>
+Parti di questa frase:
+</p>
+
+<ol>
+
+<li>la condizione
+
+<li>la cosa da fare se la condizione &egrave; vera
+
+<li>la cosa da fare se la &egrave; falsa.
+
+</ol>
+
+<p>
+La seconda e la terza parte sono sequenze di istruzioni.
+</p>
+
+<hr>
+
+
+<h4>Forma generale</h4>
+
+<pre>
+if (condizione) {
+  istruzioni
+}
+else {
+  istruzioni
+}
+</pre>
+
+<p>
+Esempi di condizioni:
+</p>
+
+<pre>
+a &lt; b
+a+b/2-4 &gt;= 9
+a == 3+2
+</pre>
+
+<hr>
+
+
+<h4>Condizioni e valori booleani</h4>
+
+<p>
+Una condizione &egrave; una espressione
+che pu&ograve; essere vera o falsa.
+</p>
+
+<p>
+Condizioni elementari:
+</p>
+
+<pre>
+espressione1 confronto espressione2
+</pre>
+
+<p>
+<tt>espressione1</tt> ed <tt>espressione2</tt>
+sono espressioni
+</p>
+
+<p>
+Confronti possibili:
+</p>
+
+<pre>
+&gt;
+&gt;=
+==
+!=
+&lt;
+&lt;=
+</pre>
+
+<p>
+Note: <tt>&gt;=</tt> si scrive con i due
+caratteri <tt>&gt;</tt> ed <tt>=</tt>
+senza mettere spazi fra i due
+</p>
+
+<p>
+<tt>==</tt> significa uguale, <tt>!=</tt>
+significa diverso.
+</p>
+
+<hr>
+
+<h4>Condizioni vere e false</h4>
+
+<p>
+Una condizione pu&ograve; essere vera
+o falsa, e pu&ograve; dipendere dai valori
+delle variabili.
+</p>
+
+<dl compact="compact">
+
+<dt><tt>1 &gt; 0</tt>
+<dd>condizione sempre vera
+
+<dt><tt>0 &gt; 1</tt>
+<dd>condizione sempre falsa
+
+<dt><tt>a &gt; 0</tt>
+<dd>dipende dal valore di <tt>a</tt>
+
+</dl>
+
+<p>
+<i>Attenzione!</i> la condizione <tt>0&gt;1</tt>
+&egrave; falsa, non &egrave; un errore!
+</p>
+
+<hr>
+
+
+<h4>Assegnazione <tt>!=</tt> uguaglianza</h4>
+
+<pre>
+  a=0;
+
+  if(a==0) ...
+</pre>
+
+<p>
+Differenza:
+</p>
+
+<dl compact="compact">
+
+<dt><tt>a=0</tt>
+<dd>metti <tt>0</tt> nella variabile <tt>a</tt>
+
+<dt><tt>a==0</tt>
+<dd>il contenuto della variabile &egrave; zero?
+
+</dl>
+
+<p>
+La prima &egrave; una istruzione (un comando),
+la seconda &egrave; una domanda.
+</p>
+
+<hr>
+
+
+<h4>Esercizio: fare la divisione</h4>
+
+<p>
+Leggere due interi, e fare la divisione
+se possibile, altrimenti stampare messaggio
+di errore.
+</p>
+
+<p>
+Forma della istruzione condizionale:
+</p>
+
+<pre>
+  if(condizione) {
+    istruzioni;
+  }
+  else {
+    istruzioni;
+  }
+</pre>
+
+<hr>
+
+
+<h4>Divisione: soluzione</h4>
+
+<p>
+Primo: si leggono due interi.
+</p>
+
+<pre>
+import javax.swing.*;
+
+class Dividi {
+  public static void main(String args[]) {
+    int x, y;
+    String s;
+
+    s=JOptionPane.showInputDialog("Dividendo");
+    x=Integer.parseInt(s);
+
+    s=JOptionPane.showInputDialog("Divisore");
+    y=Integer.parseInt(s);
+
+    // qui va fatta la divisione
+  }
+}
+</pre>
+
+<hr>
+
+
+<h4>Seconda parte: il condizionale</h4>
+
+<p>
+Se <tt>y</tt> vale <tt>0</tt> si deve solo stampare
+il messaggio di errore.
+</p>
+
+<pre>
+
+    if(y==0) {
+      System.out.println("Il divisore deve essere diverso da zero");
+    }
+    else {
+      System.out.println(x/y);
+    }
+
+</pre>
+
+<hr>
+
+
+<h4>Programma completo</h4>
+
+<pre>
+import javax.swing.*;
+
+class Dividi {
+  public static void main(String args[]) {
+    int x, y;
+    String s;
+
+    s=JOptionPane.showInputDialog("Dividendo");
+    x=Integer.parseInt(s);
+
+    s=JOptionPane.showInputDialog("Divisore");
+    y=Integer.parseInt(s);
+
+    if(y==0) {
+      System.out.println("Il divisore deve essere diverso da zero");
+    }
+    else {
+      System.out.println(x/y);
+    }
+
+    System.exit(0);
+  }
+}
+</pre>
+
+<hr>
+
+
+<h4>Condizioni negate</h4>
+
+<p>
+Si poteva anche fare:
+</p>
+
+<pre>
+  if(y!=0) {
+    System.out.println(x/y);
+  }
+  else {
+    System.out.println("Il divisore deve essere diverso da zero");
+  }
+</pre>
+
+<p>
+Condizioni opposte:
+</p>
+
+<table border="1">
+<tr>
+<th>Condizione</th>
+<th>Opposto</th>
+</tr>
+<tr>
+<td><tt>==</tt></td>
+<td><tt>!=</tt></td>
+</tr>
+<tr>
+<td><tt>&gt;=</tt></td>
+<td><tt>&lt;</tt></td>
+</tr>
+
+<tr>
+<td><tt>&lt;=</tt></td>
+<td><tt>&gt;</tt></td>
+</tr>
+</table>
+
+<p>
+<tt>&gt;</tt> non &egrave; il contrario di <tt>&lt;</tt>
+</p>
+
+<hr>
+
+
+<h4>Diagramma di flusso</h4>
+
+<p>
+Indica il percorso delle istruzioni da eseguire.
+</p>
+
+<img src="flusso-if-else.jpg">
+
+<p>
+Il blocco <tt>if (...) {...} else {...}</tt> si comporta come
+una unica istruzione.
+</p>
+
+<p>
+Quindi, una volta finito, is passa comunque alla
+istruzione successiva.
+</p>
+
+<hr>
+
+
+<h4>Condizioni senza ramo <tt>else</tt></h4>
+
+<p>
+La parte <tt>else {...}</tt> si pu&ograve;
+omettere.
+</p>
+
+<p>
+Equivale a scrivere <tt>else { }</tt>,
+ossia parte <tt>else</tt> senza istruzioni.
+</p>
+
+<p>
+Esempio:
+</p>
+
+<pre>
+  if(x&lt;0) {
+    System.out.println("Numero negativo");
+  }
+
+  System.out.println("Programma terminato");
+</pre>
+
+<p>
+Cosa viene stampato?
+</p>
+
+<hr>
+
+
+<h4>Soluzione</h4>
+
+<p>
+Se <tt>a</tt> &egrave; negativo: vengono stampate
+tutte e due le stringhe.
+</p>
+
+<p>
+<p>
+Altrimenti, viene stampata la seconda.
+</p>
+
+<hr>
+
+
+<h4>Diagramma di flusso</h4>
+
+<p>
+Se la parte <tt>else</tt> non c'&egrave;,
+&egrave; come se fosse vuota.
+</p>
+
+<p>
+Di solito, viene pi&ugrave; comodo
+disegnato cos&iacute;:
+</p>
+
+<img src="flusso-if.jpg">
+
+<p>
+Se <tt>x<0</tt> si esegue la prima
+<tt>println</tt>
+</p>
+
+<p>
+Altrimenti no
+</p>
+
+<p>
+<b>In ogni caso</b> si passa ad eseguire
+l'istruzione dopo tutto l'<tt>if</tt>
+</p>
+
+<hr>
+
+
+<h4>Esercizio</h4>
+
+<p>
+Scrivere un programma che prende due
+numeri, e stampa solo quelli positivi,
+e poi stampa la somma dei due comunque.
+</p>
+
+<hr>
+
+
+<h4>Soluzione</h4>
+
+<p>
+Per ogni intero letto, lo devo stampare
+solo se &egrave; positivo; poi stampo
+la somma (anche se sono negativi).
+</p>
+
+<p>
+Se &egrave; negativo non lo stampo, 
+ma passo comunque al successivo.
+</p>
+
+<p>
+Posso usare due <tt>if</tt> senza
+<tt>else</tt>
+</p>
+
+<hr>
+
+
+<h4>Soluzione: sequenza</h4>
+
+<p>
+Devo fare tre cose:
+</p>
+
+<pre>
+  stampa il primo se positivo
+  stampa il secondo se positivo
+  stampa la somma
+</pre>
+
+<p>
+Vanno fatte in sequenza, e vanno
+fatte tutte e tre!
+</p>
+
+<p>
+La terza di traduce direttamente
+</p>
+
+<p>
+La prima is realizza con un <tt>if</tt>
+</p>
+
+<pre>
+    if(x&gt;=0) {
+      System.out.println(x);
+    }
+</pre>
+
+<p>
+Lo stesso per la seconda
+</p>
+
+<hr>
+
+
+<h4>Programma completo</h4>
+
+<p>
+Faccio la sequenza dei tre passi
+</p>
+
+<pre>
+import javax.swing.*;
+
+class DuePos {
+  public static void main(String args[]) {
+    String s;
+    int x, y;
+
+    s=JOptionPane.showInputDialog("Dammi un numero");
+    x=Integer.parseInt(s);
+
+    s=JOptionPane.showInputDialog("Dammi un numero");
+    y=Integer.parseInt(s);
+
+    if(x&gt;=0) {
+      System.out.println(x);
+    }
+
+    if(y&gt;=0) {
+      System.out.println(x);
+    }
+
+    System.out.println(x+y);
+
+    System.exit(0);
+  }
+}
+</pre>
+
+<hr>
+
+
+<h4>Raffinamenti successivi</h4>
+
+<p>
+Siamo partiti dalla sequenza:
+</p>
+
+<pre>
+  stampa il primo se positivo
+  stampa il secondo se positivo
+  stampa la somma
+</pre>
+
+<p>
+Poi abbiamo sviluppato ognuno
+dei tre punti.
+</p>
+
+<p>
+Per realizzare il punto 1, non ci serve
+sapere che ci sono anche gli altri due
+</p>
+
+<p>
+Potevamo fare finta che gli altri due
+punti non ci fossero.
+</p>
+
+<p>
+<i>Vantaggio:</i> ci possiamo concentrare
+su un sottoproblema per volta.
+</p>
+
+<hr>
+
+
+<h4>Condizionali nidificati</h4>
+
+<p>
+Costrutto, in generale:
+</p>
+
+<pre>
+if(condizione)
+  istruzione1;
+else
+  istruzione2;
+</pre>
+
+<p>
+Altra regola generale:
+</p>
+
+<blockquote>
+<i>
+dove si pu&ograve; mettere una istruzione,
+si pu&ograve; mettere una sequenza fra
+graffe
+</i>
+</blockquote>
+
+<p>
+Ultima regola:
+</p>
+
+<blockquote>
+<i>
+dove si pu&ograve; mettere una istruzione,
+si pu&ograve; mettere un condizionale
+</i>
+</blockquote>
+
+<p>
+Quindi, all'interno di un condizionale
+si pu&ograve; mettere un altro condizionale
+</p>
+
+<p>
+In questo caso, &egrave; meglio usare le
+graffe (vedremo poi il perch&egrave;)
+</p>
+
+<hr>
+
+
+<h4>Condizionali nidificati: esercizio</h4>
+
+<p>
+Creare una classe <tt>QuadPoint</tt> che ha le
+stesse componenti di <tt>Point</tt>, ma in pi&ugrave;
+un metodo che ritorna <tt>1</tt> se il punto
+sta nel primo quadrante, altrimenti <tt>0</tt>.
+</p>
+
+<hr>
+
+
+<h4>Soluzione: punto 1</h4>
+
+<p>
+Il problema non &egrave; facile?
+</p>
+
+<p>
+Una parte per volta!
+</p>
+
+<p>
+Se <tt>x</tt> &egrave; positivo, cosa
+si ritorna?
+</p>
+
+<p>
+Si ritorna <tt>1</tt> se anche <tt>y</tt>
+&egrave; positivo, altrimenti <tt>0</tt>
+</p>
+
+<p>
+Se <tt>x</tt> &egrave; negativo, si ritorna
+<tt>0</tt>
+</p>
+
+<hr>
+
+
+<h4>Soluzione, con due <tt>if/else</tt></h4>
+
+<pre>
+class PointQuad {
+  int x;
+  int y;
+
+  int quadrante() {
+    if(this.x&gt;=0) {
+      if(this.y&gt;=0) {
+        return 1;
+      }
+      else {
+        return 0;
+      }
+    }
+    else {
+      return 0;
+    }
+  }
+}
+</pre>
+
+<p>
+Interpretazione: ad alto livello, si tratta
+di un <tt>if</tt>
+</p>
+
+<pre>
+    if(this.x&gt;=0) {
+      ...
+    else {
+      return 0;
+    }
+</pre>
+
+<p>
+In cui la sequenza da eseguire in caso la
+condizione sia vera &egrave; un altro <tt>if</tt>:
+</p>
+
+<pre>
+      if(this.y&gt;=0) {
+        return 1;
+      }
+      else {
+        return 0;
+      }
+</pre>
+
+<p>
+In questo programma <b>non</b> abbiamo usato
+istruzioni nuove.
+</p>
+
+<p>
+Abbiamo solo composto le istruzioni gi&agrave;
+viste.
+</p>
+
+<hr>
+
+
+<h4>Soluzione, con due <tt>if</tt></h4>
+
+<p>
+Soluzione alternativa pi&ugrave; semplice:
+</p>
+
+<pre>
+class PointQuad {
+  int x;
+  int y;
+
+  int quadrante() {
+    if(this.x&gt;=0) 
+      if(this.y&gt;=0) 
+        return 1;
+
+    return 0;
+  }
+}
+</pre>
+
+<p>
+Funziona perch&egrave;:
+</p>
+
+<ol>
+
+<li><tt>return</tt>, oltre a dire
+il valore calcolato, termina l'esecuzione del
+metodo
+
+<li>dopo un <tt>if</tt>, si esegue l'istruzione
+dopo
+
+</ol>
+
+<hr>
+
+
+<h4>Operatori booleani</h4>
+
+<p>
+In questo esempio: se <tt>this.x</tt> &egrave; positivo
+e <tt>this.y</tt> &egrave; positivo, allora fai una
+certa cosa.
+</p>
+
+<p>
+La cosa da fare dipende da due condizioni
+<tt>this.x&gt;=0</tt> e <tt>this.y&gt;=0</tt>
+</p>
+
+<p>
+Se sia <tt>this.x&gt;=0</tt> che <tt>this.y&gt;=0</tt>
+sono vere si deve ritornare <tt>1</tt>,
+altrimenti <tt>0</tt>
+</p>
+
+<p>
+Quando voglio fare una cosa se due condizioni
+sono tutte e due vere, le combino con
+<tt>&amp;&amp;</tt> (and)
+</p>
+
+<pre>
+class PointQuad {
+  int x;
+  int y;
+
+  int quadrante() {
+    if( (this.x&gt;=0) &amp;&amp; (this.y&gt;=0) )
+        return 1;
+    else
+      return 0;
+  }
+}
+</pre>
+
+<hr>
+
+
+<h4>Secondo operatore booleano: or</h4>
+
+<p>
+Se ho due condizioni <tt>c1</tt> e <tt>c2</tt>,
+allora <tt>c1 || c2</tt> &egrave; vera se lo
+&egrave; almeno una delle due.
+</p>
+
+<hr>
+
+
+<h4>Esercizio</h4>
+
+<p>
+Leggere due interi, stampare la somma se
+almeno uno dei due &egrave; positivo.
+</p>
+
+<hr>
+
+<h4>Soluzione, con <tt>||</tt></h4>
+
+<p>
+La stampa va fatta se la condizione
+<tt>x&gt;=0</tt>, ma anche se
+<tt>y&gt;=0</tt> &egrave; vera.
+</p>
+
+<p>
+La condizione composta
+<tt>(x&gt;=0) || (y&gt;=0)</tt> &egrave;
+vera se lo &egrave; almeno una delle
+due condizioni che la compongono.
+</p>
+
+<pre>
+import javax.swing.*;
+
+class UnPos {
+  public static void main(String args[]) {
+    String s;
+    int x, y;
+
+    s=JOptionPane.showInputDialog("Dammi un numero");
+    x=Integer.parseInt(s);
+
+    s=JOptionPane.showInputDialog("Dammi un numero");
+    y=Integer.parseInt(s);
+
+    if( (x&gt;=0) || (y&gt;=0) ) {
+      System.out.println(x+y);
+    }
+
+    System.exit(0);
+  }
+}
+</pre>
+
+<hr>
+
+
+<h4>Soluzione senza or</h4>
+
+<p>
+Si poteva fare anche senza:
+</p>
+
+<pre>
+    if(x&gt;=0) {
+      System.out.println(x+y);
+    }
+    if(y&gt;=0) {
+      System.out.println(x+y);
+    }
+</pre>
+
+<p>
+La soluzione che usa <tt>||</tt> &egrave;
+pi&ugrave; semplice e pi&ugrave; facile
+da leggere.
+</p>
+
+<hr>
+
+
+<h4>Condizionali annidati</h4>
+
+<pre>
+  if(cond)
+    istr1;
+  else
+    istr2;
+</pre>
+
+<p>
+La seconda istruzione pu&ograve; essere un altro
+<tt>if</tt>
+</p>
+
+<p>
+Cascata di istruzioni condizionali:
+</p>
+
+<pre>
+  if(cond)
+    istr;
+  else if(cond)
+    istr;
+  else if(cond)
+    istr;
+  else
+    istr;
+</pre>
+
+<hr>
+
+
+<h4>Esercizio</h4>
+
+<p>
+Dato un numero intero maggiore o uguale a
+zero, stampare il suo valore in
+lettere, se &egrave; minore di cinque.
+</p>
+
+<p>
+Se il numero &egrave; superiore a cinque,
+stampare un messaggio di errore.
+</p>
+
+<hr>
+
+
+<h4>Soluzione</h4>
+
+<p>
+Confronto il valore con 0, poi 1,
+ecc.
+</p>
+
+<pre>
+class Lettere {
+  public static void main(String args[]) {
+    int n=3;
+
+    if(n==0)
+      System.out.println("zero");
+    else if(n==1)
+      System.out.println("uno");
+    else if(n==2)
+      System.out.println("due");
+    else if(n==3)
+      System.out.println("tre");
+    else if(n==4)
+      System.out.println("quattro");
+    else if(n==5)
+      System.out.println("cinque");
+    else
+      System.out.println("non lo stampo, questo numero");
+  }
+}
+</pre>
+
+<hr>
+
+
+<h4>Ambiguit&agrave; sintattica dell'<tt>if</tt></h4>
+
+<p>
+Cosa significa questo programma?
+</p>
+
+<pre>
+if(cond1)
+if(cond2)
+istr1;
+else
+istr2;
+</pre>
+
+<p>
+Mettere le graffe e l'indentazione.
+</p>
+
+<p>
+Due soluzioni possibili.
+</p>
+
+<hr>
+
+
+<h4>Le due soluzioni</h4>
+
+<p>
+Prima soluzione:
+</p>
+
+<pre> 
+if(cond1) {
+  if(cond2)
+    istr1;
+}
+else
+  istr2;
+</pre>
+
+<p>
+Seconda soluzione:
+</p>
+
+<pre>
+if(cond1) {
+  if(cond2)
+    istr1;
+  else
+    istr2;
+}
+</pre>
+
+<p>
+Regola di Java: l'<tt>else</tt> si considera il
+ramo ``condizione falsa'' dell'ultimo <tt>if</tt>.
+</p>
+
+<p>
+Quindi, <tt>istr2</tt> viene eseguito solo se
+<tt>cond1</tt> &egrave; vera ma <tt>cond2</tt>
+&egrave; falsa.
+</p>
+
+<hr>
+
+
+<h4>Esercizio</h4>
+
+<p>
+Cosa stampa questo programma?
+</p>
+
+<pre>
+  if(x&gt;=0)
+    if(x&lt;=10)
+      System.out.println("Il numero sta fra 0 e 10");
+  else
+    System.out.println("Il numero e' negativo");
+</pre>
+
+<hr>
+
+
+<h4>Soluzione</h4>
+
+<p>
+L'indentazione pu&ograve; trarre in inganno.
+</p>
+
+<p>
+L'<tt>else</tt> fa parte dell'ultimo <tt>if</tt>:
+</p>
+
+<pre>
+  if(x&gt;=0) {
+    if(x&lt;=10)
+      System.out.println("Il numero sta fra 0 e 10");
+    else
+      System.out.println("Il numero e' negativo");
+  }
+</pre>
+
+<p>
+Il programma &egrave; quindi sbagliato.
+</p>
+
+<hr>
+
+
+<h4>Errore tipico</h4>
+
+<p>
+Questo errore viene prima o poi commesso.
+</p>
+
+<p>
+Per trovare un errore, occorre ``mettersi nei
+panni del computer'', ossia eseguire le istruzioni
+nello stesso modo in cui lo fa lui.
+</p>
+
+<p>
+Dato che lui attacca l'<tt>else</tt> all'ultimo
+<tt>if</tt>, il programma stampa che il numero
+&egrave; negativo quando invece &egrave; positivo
+ma maggiore di dieci.
+</p>
+
+<p>
+Per una persona &egrave; chiaro cosa andava fatto
+sulla base delle stringhe stampate.
+</p>
+
+<p>
+Per il calcolatore le stringhe sono solo sequenze
+di caratteri. L'interpretazione delle istruzioni
+&egrave; meccanica.
+</p>
+
+</body>
+</html>
+
+
+
+

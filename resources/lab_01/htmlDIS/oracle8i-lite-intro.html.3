@@ -1,0 +1,469 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=windows-1252">
+<TITLE>Introduzione ad Oracle8i Lite</TITLE>
+</HEAD>
+<BODY>
+
+<H1>Introduzione ad Oracle8i Lite</H1>
+<P><HR></P>
+
+<UL>
+<LI><A HREF="#introduzione"><U><FONT COLOR="#0000ff">Introduzione</U></FONT></A> 
+</LI>
+<LI><A HREF="#accesso-DBMS"><U><FONT COLOR="#0000ff">Accesso al DBMS via SQL*Plus</U></FONT></A> </LI>
+<LI><A HREF="#creare-eliminare-utenti"><U><FONT COLOR="#0000ff">Creare ed eliminare utenti</U></FONT></A> </LI>
+<LI><A HREF="#privilegi-ruoli"><U><FONT COLOR="#0000ff">Privilegi e ruoli di un utente</U></FONT></A> </LI>
+<LI><A HREF="#uscire-da-sqlplus"><U><FONT COLOR="#0000ff">Uscire da SQL*Plus</U></FONT></A> </LI>
+<LI><A HREF="#creare-tavole"><U><FONT COLOR="#0000ff">Creare tavole</U></FONT></A> </LI>
+<LI><A HREF="#inserire-tuple"><U><FONT COLOR="#0000ff">Inserire tuple</U></FONT></A> </LI>
+<LI><A HREF="#interrogare-tavole"><U><FONT COLOR="#0000ff">Interrogare tavole</U></FONT></A> </LI>
+<LI><A HREF="#eliminare-tavole"><U><FONT COLOR="#0000ff">Eliminare tavole</U></FONT></A> </LI>
+<LI><A HREF="#commit-rollback"><U><FONT COLOR="#0000ff">Commit e rollback</U></FONT></A> </LI>
+<LI><A HREF="#catalogo"><U><FONT COLOR="#0000ff">Utilizzo del catalogo</U></FONT></A> </LI>
+<LI><A HREF="#eseguire-comandi-file"><U><FONT COLOR="#0000ff">Eseguire comandi memorizzati
+su file</U></FONT></A> </LI>
+<LI><A HREF="#buffer-di-editing"><U><FONT COLOR="#0000ff">Buffer di editing</U></FONT></A> </LI>
+<LI><A HREF="#registrare-sessione"><U><FONT COLOR="#0000ff">Registrare una sessione di lavoro</U></FONT></A> </LI>
+<LI><A HREF="#caratteri-speciali"><U><FONT COLOR="#0000ff">Caratteri speciali</U></FONT></A> </LI>
+</UL>
+
+<P><HR></P> <H3><A NAME="introduzione"></A>Introduzione</H3> 
+<P> 
+Per la parte realizzativa delle tesine si fa uso di DBMS commerciale,
+in particolare si fa uso di Oracle8i Lite una versione semplificata di
+Oracle8i che gira sotto WindowsNT, Windows98 e Windows95. Per maggiori
+informazioni su questo sistema si faccia riferimento ai seguenti
+documenti:</P>
+
+<UL>
+<LI><I>Oracle8i Lite User's Guide</I>. Questa guida contiene tutte le generali
+informazioni relative all'uso del sistema.</LI>
+
+<LI><I>Oracle8i Lite Java Developer's Guide</I>. Questa guida contiene
+tutte le informazioni relative allo sviluppo di applicazioni
+Java. Inoltre spiega come sviluppare stored procedures
+e trigger (le quali, in Oracle8i Lite, devono essere necessariamente
+scritte in Java).</LI>
+
+<LI><I>Oracle8i Lite SQL Reference</I>. Oracle8i Lite come tutti i DBMS
+commerciali implementa un sottoinsieme dello standard SQL-92. Per
+dettagli sul SQL implementato da Oracle8i Lite si consulti questa
+guida. </LI>
+
+</UL>
+
+
+
+<P><HR></P> <H3><A NAME="accesso-DBMS"></A>Accesso al DBMS via
+SQL*Plus</H3> <P>Lo strumento base per accedere al DBMS di Oracle8i Lite e' un
+interprete di comandi SQL: SQL*Plus. Ci sono due modi per utilizzare
+questo programma.</P>
+
+<UL>
+<LI>Dal menu' avvio. In tale caso viene aperta una finestra specifica
+SQL*Plus.</LI>
+
+<LI>Dal prompt di comandi MS-DOS attraverso il comando
+<CODE>sqlplus</CODE>. Questo comando esegue SQL*Plus direttamente su
+una finestra MS-DOS, il che e' particolarmente utile se, ad esempio
+utilizzando Java, si mandano stringhe sulle stream di uscita o di
+errore, le quali possono essere lette su una finestra MS-DOS, mentre
+non vengono visualizzate su finestre grafiche quali quella di SQL*Plus
+eseguito da menu avvio.</LI>
+</UL>
+
+<P>Per connettersi alla  base di dati si devono fornire a SQL*Plus i
+seguenti parametri:</P>
+
+<UL>
+<LI>&lt;user's name&gt;: il nome dell'utente che accede alla base di
+dati. Ad esempio 
+<CODE>system</CODE>, un utente predefinito con tutti i
+privilegi sulla base di dati.</LI>
+
+<LI>&lt;password&gt;: la password dell'utente. Ad esempio
+<CODE>manager</CODE> nel caso dell'utente <CODE>system</CODE> (in
+realta', inizialmente, <CODE>system</CODE> accetta qualsiasi password).
+</LI>
+
+<LI>&lt;host string&gt;: la stringa di connessione, cioe'
+<CODE>odbc:polite</CODE> per connettersi alla base di dati di default,
+oppure <CODE>odbc:polite:&lt;nomedb&gt</CODE> per connettersi ad una
+base di dati di nome <CODE>&lt;nomedb&gt</CODE> creata da utente (per
+creare una base di dati si puo' usare Oracle8 Navigator - si veda
+<I>Oracle8i Lite User Guide</I>).
+</LI>
+</UL>
+
+Se si esegue SQL*Plus da linea di comando si devono fornire questi
+parametri in linea:
+
+<PRE>&nbsp;&nbsp;&nbsp;&nbsp;sqlplus&lt;user'sname&gt/&lt;password&gt@&lt;host string&gt</PRE> 
+
+Ad esempio:
+
+<PRE>&nbsp;&nbsp;&nbsp;&nbsp; sqlplus system/manager@odbc:polite</PRE> 
+
+<P>Una volta connessi alla base di dati, dopo una serie di massaggi, appare
+il prompt di SQL*Plus: 
+
+<PRE>&nbsp;&nbsp;&nbsp;&nbsp; SQL &gt</PRE> 
+
+A questo punto si possono digitare comandi SQL.
+
+<P><HR></P>
+<H3><A NAME="creare-eliminare-utenti"></A>Creare ed eliminare utenti</H3>
+In risposta al prompt <CODE>SQL&gt</CODE> possiamo scrivere qualsiasi comando SQL. Iniziamo creando un nuovo utente, il comando SQL ha la seguente forma:
+
+<PRE>&nbsp;&nbsp;&nbsp;&nbsp; create user &lt;nome-utente&gt identified by &lt;password&gt ;</PRE> 
+
+<P>dove <CODE>&lt;nome-utente&gt</CODE> e' il nome del nuovo utente e
+<code>&lt;password&gt</code> e' la password assegnatagli (l'utente una
+volta connessosi alla base di dati potra' cambiare la password attraverso il
+comando <code>alter user &lt;nome-utente&gt identified by
+&lt;nuova-password&gt ;</code>).  Si noti che in SQL*Plus tutti i
+comandi SQL devono terminare con il punto e virgola.
+
+<P>Si tenga presente che SQL e' "case-insensitive". Quindi in
+SQL*Plus, si possono usare indifferentemente maiuscole o minuscole
+(questo vale anche per la password). Si noti pero' che i dati di tipo
+stringa fanno distinzione tra maiuscole e minuscole.</P>
+
+Per eliminare un utente si usa il comando:
+<PRE>&nbsp;&nbsp;&nbsp;&nbsp; drop user &lt;nome-utente&gt ;</PRE>
+che elimina l'utente e tutti gli oggetti della base di dati ad esso
+associati.
+
+<P><HR></P>
+<H3><A NAME="privilegi-ruoli"></A>Privilegi e ruoli di un utente</H3>
+<p>
+Una volta creato l'utente si devono associare ad esso gli opportuni
+permessi attraverso il comando SQL <code>grant</code>.  Si ricorda che
+il comando <code>grant</code> permette di dare diritti di inserimento,
+cancellazione, aggiornamento, e interrogazione di una tavola a
+determinati utenti. Inoltre <code>grant</code> puo' essere usato per
+associare <i>ruoli</i> prestabiliti, in particolare in Oracle8i Lite
+permette di associare due ruoli:
+<ul>
+<li><code>admin</code>, con tutti i privilegi per la gestione di utenti;</li>
+<li> <code>ddl</code>, con in aggiunta tutti i privilegi per la gestione delle tavole.</li>
+</ul>
+ Ad esempio:
+<PRE>&nbsp;&nbsp;&nbsp;&nbsp; grant ddl to &lt;nome-utente&gt ;</PRE> 
+da' tutti i diritti all'utente <code>&lt;nome-utente&gt</code>.
+</p>
+
+<P>
+Per rievocare privilegi ad un utente si usa il comando SQL <code>revoke</code>. Questo si utilizza pure per revocare ruoli. Ad esempio:
+<PRE>&nbsp;&nbsp;&nbsp;&nbsp; revoke ddl from &lt;nome-utente&gt ;</PRE>
+revoca il ruolo <code>ddl</code> a <code>&lt;nome-utente&gt</code>. 
+</P>
+
+<P><HR></P>
+<H3><A NAME="uscire-da-sqlplus"></A>Uscire da SQL*Plus</H3>
+<P>Per uscire da SQL*Plus, si deve digitare: </P>
+<PRE>&nbsp;&nbsp;&nbsp;&nbsp; quit</PRE>
+oppure 
+<PRE>&nbsp;&nbsp;&nbsp;&nbsp; exit</PRE>
+in risposta al prompt. </P>
+
+
+<P><HR></P> <H3><A NAME="creare-tavole"></A>Creare tavole</H3> <P>In
+SQL*Plus possiamo eseguire qualsiasi comando SQL. Per creare una tavola
+si usa il comando SQL standard <code>create table</code> avente la
+forma seguente:</P> 
+
+<PRE>
+&nbsp;&nbsp;&nbsp;&nbsp; create table &lt;nome-tavola&gt ( 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &lt;lista di attributi e tipi ad essi associati&gt
+&nbsp;&nbsp;&nbsp;&nbsp; );
+</PRE> 
+
+<P>Nello scrivere un comando si puo' andare a capo. Se il comando
+occupa piu' linee, ad ogni return viene dato un prompt speciale con il
+numero di linea corrente fino a che non si digita il punto e virgola
+o un return lasciando una riga vuota. Nel primo caso viene eseguito il
+comando; nel secondo caso il comando viene memorizzato su un buffer (si
+veda <A HREF="#buffer-di-editing"><U><FONT COLOR="#0000ff">Buffer di
+editing</U></FONT></A>).
+
+<P>
+Un esempio di creazione e' il seguente: 
+</P>
+<PRE>&nbsp;&nbsp;&nbsp;&nbsp; create table Test (
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; i int,
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; s char(10)
+&nbsp;&nbsp;&nbsp;&nbsp; );</PRE> 
+
+<P>Questo comando crea una tavola chiamata <code>TEST</code> con due
+attributi: il primo, chiamato <code>i</code>, e' un intero; il secondo,
+chiamato <code>s</code>, e' una stringa lunga al piu' 10 caratteri. </P>
+
+<P><HR></P> 
+<H3><A NAME="inserire-tuple"></A>Inserire tuple</H3> 
+<P>
+Dopo aver creato una tavola possiamo inserirvi tuple
+utilizzando il comando  <code>insert</code>. La maniera piu' semplice
+e' inserire direttamente i valori:</P> 
+
+<PRE>&nbsp;&nbsp;&nbsp;&nbsp; insert into &lt;nome-tavola&gt
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; values( &lt;lista ordinata dei valori da inserrire negli attributi);</PRE> 
+
+<P>Per esempio, possiamo inserire la tupla <code>(10, 'foobar')</code>
+ nella tavola <code>Test</code> come segue:</P>
+
+<PRE>&nbsp;&nbsp;&nbsp;&nbsp; insert into Test values(10,'foobar');</PRE> 
+
+Analogamente, per cancellare ed aggiornare tuple si utilizzano i
+comandi <code>delete</code> e <code>update</code>.
+
+
+<P><HR></P> 
+
+<H3><A NAME="interrogare-tavole"></A>Interrogare tavole</H3> 
+
+<P>Possiamo vedere quali sono i valori memorizzati in una tavola
+attraverso una semplice query: </P>
+
+<PRE>&nbsp;&nbsp;&nbsp;&nbsp; select * 
+&nbsp;&nbsp;&nbsp;&nbsp; from &lt;nome-tavola&gt ;</PRE> 
+
+<P>Per esempio, dopo aver creato la tavola <code>test</code> ed aver inserito la tupla <code>(10,'foobar')</code> il comando:
+</P> 
+<PRE>&nbsp;&nbsp;&nbsp;&nbsp;select * from Test;</PRE> 
+<P>restituisce il seguente risultato </P>
+<PRE>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;I S 
+&nbsp;&nbsp;&nbsp; ---------- ----------
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;10 foobar
+</PRE> 
+
+<P><HR></P> <H3><A NAME="eliminare-tavole"></A>Eliminare tavole</H3>
+<P>Per eliminare una tavola dalla base di dati, si esegue: </P>
+<PRE>&nbsp;&nbsp;&nbsp;&nbsp; drop table &lt;nome-tavola&gt ;</PRE>
+<P>In generale dopo aver creato tavole di prova si suggerisce di
+eliminarle con <code>drop table</code> per mantere pulita la base di
+dati. Ad esempio eseguire:</P>
+
+<PRE>&nbsp;&nbsp;&nbsp;&nbsp; drop table Test;</PRE> 
+
+<P>alla fine della sessione di prova.</P> 
+
+
+
+
+<P><HR></P> 
+<H3><A NAME="commit-rollback"></A>Commit e rollback</H3> 
+
+<P>Le modifiche che si effettuano sulla base di dati non sono permanenti fino a che non si da' il comando:
+<PRE>&nbsp;&nbsp;&nbsp; commit;</PRE>
+a fronte di  tale comando la base di dati viene permanentemente modificata. </P>
+
+Prima che sia dato il <code>commit</code> e' possibile eliminare tutte le modifiche fino al <code>commit</code> precedente con il comando:
+<PRE>&nbsp;&nbsp;&nbsp; rollback;</PRE>
+
+<P>Si noti che i comandi di aggiornamento tra due <code>commit</code> formano una <i>transazione</i>, cioe' un'azione sulla base di dati da considerarsi come una unita'.</P>
+
+<P>E' possibile far generare i comandi di <code>commit</code> in modo automatico da SQL*Plus dopo ogni istruzione DDL di SQL, digitando:
+
+<PRE>&nbsp;&nbsp;&nbsp; set autocommit on</PRE>
+
+L'<code>autocommit</code> si disattiva digitando:
+<PRE>&nbsp;&nbsp;&nbsp; set autocommit off</PRE>
+
+Infine digitando:
+
+<PRE>&nbsp;&nbsp;&nbsp; show autocommit</PRE>
+
+si verifica lo stato attuale dell'<code>autocommit</code>.
+
+
+<P><HR></P> 
+<H3><A NAME="catalogo"></A>Utilizzare il catalogo</H3>
+
+<P>Il DBMS mantiene tutte le informazioni sulla base di dati
+(<i>metadati</i>) in delle tavole di sistema che formano il cosiddetto
+<i>catalogo</i>.  Le tavole del catalogo sono interrogabili attraverso
+SQL esattamente come le tavole create dagli utenti. L'elenco completo
+delle tavole lo si trova in <i>Oracle8i Lite User's Guide</i>. Qui ci
+occupiamo solo della tavola <code>ALL_TABLES</code> che contiene le
+infomazioni su tutte le tavole della base di dati. In particolare se non ci
+si ricorda quali sono le tavole dell'utente
+<code>&lt;nome-utente&gt</code> si puo' utilizzare la seguente query:
+</P>
+
+<PRE>
+&nbsp;&nbsp;&nbsp;&nbsp; select TABLE_NAME
+&nbsp;&nbsp;&nbsp;&nbsp; from ALL_TABLES
+&nbsp;&nbsp;&nbsp;&nbsp; where OWNER = '&lt;nome-utente&gt'</PRE>
+
+<P>Dato il nome della tavola e' possibile ottenere i suoi attributi (nome e tipo) con il comando:
+<PRE>&nbsp;&nbsp;&nbsp;&nbsp; describe &lt;nome-tavola&gt</PRE>
+<P>Per esempio, per sapere gli attributi memorizzati dal sistema in <code>ALL_TABLES</code> si puo' usare:
+<PRE>&nbsp;&nbsp;&nbsp;&nbsp; describe ALL_TABLES</PRE>
+
+
+
+<P><HR></P>
+
+<H3><A NAME="eseguire-comandi-file"></A>Eseguire comandi memorizzati
+su file</H3> 
+
+<P>Anziche' eseguire comandi SQL digitandoli su terminale e' spesso
+piu' conveniente scriverli in un file di testo e poi richiamarli da
+SQL*Plus.</P> <P>Supponiamo di aver scritto alcuni comandi SQL in un
+file <code>foo.sql</code> nella directory corrente.  Possiamo eseguire
+il file da SQL*Plus con il comando:</P>
+
+<PRE>&nbsp;&nbsp;&nbsp;&nbsp; @foo.sql</PRE> oppure:
+<PRE>&nbsp;&nbsp;&nbsp;&nbsp; start foo.sql</PRE> 
+
+<P>Se non viene specificata nessuna estensione per il file, cioe'
+se scriviamo <code>@foo</code>, allora SQL*Plus assume che l'estensione
+sia <code>sql</code>.
+
+E' ovviamente possibile anche specificare il path completo del file,
+mettendolo tra singoli apici. Ad esempio possiamo scrivere
+<code>@'d:\degiacomo\foo.sql'</code>.
+</P>
+
+<b>Nota:</b> per realizzare una base di dati e' utile preparare i seguenti file:
+<ul>
+<li> Un file per creare tavole e viste.</li>
+
+<li> Un file per rimuovere tutte le tavole e le viste.</li>
+
+<li> Un file per popolare le tavole, cioe' per inserire tuple nelle tavole.</li>
+</ul>
+
+<!--
+<P><B>NOTE:</B> If you are getting an error of the form "Input truncated to 2 characters" when you try to run your file, try putting an empty line at the bottom of your .sql file. This seems to make the error go away. </P>
+-->
+
+<P><HR></P>
+<H3><A NAME="buffer-di-editing"></A>Buffer di editing</H3>
+
+<P>Se si termina un comando con una riga vuota, invece del punto e
+virgola, il comando viene memorizzato in un buffer. Questo comando
+puo' essere eseguito dal buffer digitando:</P> 
+<PRE>&nbsp;&nbsp;&nbsp;&nbsp;run</PRE>
+<P>oppure digitando un singolo slash (/).</P> 
+
+<P>Il comando nel buffer puo' essere editato prima di eseguirlo. Per fare cio' si puo' utilizzare un editor di linea interno a SQL*Plus, oppure un editor esterno. I comandi principali dell'editor di linea sono i seguenti:</P>
+<TABLE BORDER CELLSPACING=1 BORDERCOLOR="#000000" WIDTH=780>
+<TR><TD VALIGN="MIDDLE">
+<P><code>L</code></TD>
+<TD VALIGN="MIDDLE">
+<P>mostra il contenuto del buffer e pone l'ultima linea del buffer come "linea corrente"</TD>
+</TR>
+<TR><TD VALIGN="MIDDLE">
+<code><P>L</code> <I>n</I></TD>
+<TD VALIGN="MIDDLE">
+<P>mostra la linea <I>n</I>-esima del buffer, and la rende la linea corrente</TD>
+</TR>
+<TR><TD VALIGN="MIDDLE">
+<code><P>L</code> <I>m n</I></TD>
+<TD VALIGN="MIDDLE">
+<P>mostra le linee da <I>m</I> a <I>n</I> e rende la linea <I>n</I> la linea corrente</TD>
+</TR>
+<TR><TD VALIGN="MIDDLE">
+<code><P>I</code></TD>
+<TD VALIGN="MIDDLE">
+<P>permette di inserire nuove linee dopo la linea corrente;<br> per terminare l'inserimento bisogna digitare return due volte</TD>
+</TR>
+<TR><TD VALIGN="MIDDLE">
+<code><P>C /vecchio/nuovo</code></TD>
+<TD VALIGN="MIDDLE">
+<P>sostituisce il testo "<code>vecchio</code>" con "<code>nuovo</code>" nella linea corrente</TD>
+</TR>
+<TR><TD VALIGN="MIDDLE">
+<code><P>A testo</code></TD>
+<TD VALIGN="MIDDLE">
+<P>aggiunge  "<code>testo</code>" alla fine della linea corrente</TD>
+</TR>
+<TR><TD VALIGN="MIDDLE">
+<code><P>DEL</code></TD>
+<TD VALIGN="MIDDLE">
+<P>cancella la linea corrente</TD>
+</TR>
+</TABLE>
+
+<P>In alternativa si puo' chiamare da SQL*Plus un editor esterno attraverso il comando <code>edit</code>.
+Se digitiamo:
+<PRE>&nbsp;&nbsp;&nbsp;&nbsp;edit &lt;nome-file.sql&gt</PRE> 
+
+<P>il buffer viene memorizzato come file di testo
+<code>nome-file.sql</code> nella directory corrente e poi viene passato a editor di testo di Windows (tipicamente "Blocco Note"). E' possibile
+ridefinire l'editor chiamato attraverso il comando
+<code>define_editor</code>. Ad esempio:</P> 
+
+<PRE>&nbsp;&nbsp;&nbsp;&nbsp;define_editor = "emacs"
+</PRE> 
+<P>definisce l'editor emacs come editor da chiamare con
+<code>edit</code>.</P>
+
+<!--
+ In fact, if you would like to make <code>emacs</code> your
+default editor, there is a login file that you may create in the
+directory from which you call <code>sqlplus</code>. Put in the file called
+<code>login.sql</code> the above editor-defining command, or any other
+commands you would like executed every time you call
+<code>sqlplus</code>.</P> 
+-->
+
+E' anche possibile salvare il buffer (senza editarlo) attraverso il comando 
+<PRE>&nbsp;&nbsp;&nbsp;&nbsp;save &lt;nome-file.sql&gt</PRE> 
+
+<P><HR></P> 
+<H3><A NAME="registrare-sessione"></A>Registrare una sessione di lavoro</H3> 
+
+<P>Per avere una copia su file di una sessione di lavoro su puo' usare
+il comando <code>spool</code> di SQL*Plus. In particolare digitando:
+<PRE>&nbsp;&nbsp;&nbsp; spool &lt;nome-file&gt</PRE> <P>viene creato
+un file con estensione di default <code>.lst</code> nella directory
+corrente e in esso viene copiato tutto cio' che appare su terminale
+fino a che non si esce da SQL*Plus o non si digita
+<PRE>&nbsp;&nbsp;&nbsp; spool off</PRE>
+
+
+
+<P><HR></P> 
+<H3><A NAME="caratteri-speciali"></A>Caratteri speciali</H3> 
+
+<P>I caratteri speciali non possono essere utilizzati se non in
+stringhe. In queste, per ottenere l'apostrofo (poiche' una stringa e'
+delimitata da singoli apici) si usano due apostrofi. Ad esempio:</P>
+
+<PRE>&nbsp;&nbsp;&nbsp; 'citta'' del sole'</PRE> 
+<P>Per altri caratteri, ad esempio & si usano sequenze di escape.
+Per definire il carattere di escape si usa il comando:
+<PRE> &nbsp;&nbsp;&nbsp; set escape &lt;char&gt</PRE>
+Ad esempio, con il comando:
+<PRE> &nbsp;&nbsp;&nbsp; set escape ^</PRE>
+possiamo scrivere <code>'Johnson ^& son'</code>.
+Per farsi mostrare il carattere di escape attuale si usa il comando:
+<PRE> &nbsp;&nbsp;&nbsp; show escape</PRE>
+Per eliminare il carattere di escape definito si usa il comando:
+<PRE> &nbsp;&nbsp;&nbsp; set escape off</PRE>
+
+
+<P><HR></P> 
+
+<FONT SIZE=1>
+Questo documento e' stato scritto da Giuseppe De Giacomo per il Corso
+di Basi di Dati, Ingegneria Informatica, Universita' di Roma "La
+Sapienza", anno accademico 1999/2000. Nello scrivere lo stesso si e'
+fatto riferimento a documenti analoghi scritti da Shuguang Hong,
+Georgia State University, USA, Tim Finin, University of Maryland, USA,
+e Jeff Ullman, Stanford University, USA.  </FONT>
+
+</BODY>
+</HTML>
+
+
+
+
+
+
+
+

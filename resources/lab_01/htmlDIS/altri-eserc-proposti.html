@@ -1,0 +1,489 @@
+
+<HTML>
+ 
+<HEAD>
+<TITLE>Altri esercizi proposti</TITLE>
+</HEAD>
+ 
+<BODY>
+ 
+ 
+<pre>         
+
+
+
+#include &lt;stdio.h>
+#include &lt;math.h>
+
+main()
+{
+int a, b, c;
+double delta, radice_delta;
+
+printf("\n CALCOLO DELLE RADICI EQ. DI SECONDO GRADO \n");
+
+printf("Immetti il valore di a: ");
+scanf("%d",&a);
+
+printf("Immetti il valore di b: ");
+scanf("%d",&b);
+
+printf("Immetti il valore di c: ");
+scanf("%d",&c);
+
+delta = b*b-4*a*c;
+radice_delta = sqrt(fabs(delta));
+
+if (delta&lt;0)
+	{
+	 double re = -b/2;
+	 double im = radice_delta/2;
+	 printf("Le radici complesse e coniugate sono:\n");
+	 printf(" 1) %g + %gi \n",re,im);
+	 printf(" 2) %g - %gi \n",re,im);
+	}
+else if (delta==0)
+	{
+	 double rad = -b/2;
+	 printf("Le radici sono coincidenti in %g \n",rad);
+	}
+     else
+	{
+	 double rad1 = (-b + radice_delta)/2 ;
+	 double rad2 = (-b - radice_delta)/2 ;
+	 printf("Le radici sono reali e distinte:\n");
+	 printf(" 1) %g \n",rad1);
+	 printf(" 2) %g \n",rad2);
+	}
+
+return 0;
+}
+
+------------------------------------------------------------------
+
+#include &lt;stdio.h>
+
+/* Programma per la stampa della tabella pitagorica */
+
+main()
+{
+int i,j;
+
+printf("   *");
+for (i=1;i<=10;i++)
+     printf("%3d ", i);
+printf("\n");
+
+for (j=1;j&lt;4*11;j++)
+     printf("*");
+printf("\n");
+
+
+for (i=1;i&lt;10;i++)
+    {
+     printf("%2d *", i);
+
+     for (j=1;j&lt;10;j++)
+	printf("%3d ", (i*j));
+
+     printf("\n");
+    }
+
+return 0;
+}
+
+------------------------------------------------------------------
+#include &lt;stdio.h>
+#include &lt;stdlib.h>
+
+#define FALSE 0
+#define TRUE  1
+
+/* Programma che mischia un mazzo di 40 carte */
+
+main()
+{
+int i,j,mazzo[40];
+int carta,gia_scelta;
+
+for (i=0;i&lt;40;i++)
+   {
+    do
+      {
+       carta = 1 + rand() % 40;
+       gia_scelta = FALSE;
+       j=0;
+       while (j&lt;i && !gia_scelta)
+	  gia_scelta = (mazzo[j++]==carta);
+      }
+    while (gia_scelta);
+
+    mazzo[i] = carta;
+   }
+
+printf("Mazzo mischiato:\n");
+for (i=0;i&lt;40;i++)
+    printf("Carta %d: %i\n",i+1,mazzo[i]);
+
+return 0;
+}
+
+---------------------------------------------------------------------
+
+
+#include &lt;stdio.h>
+
+#define FALSE 0
+#define TRUE  1
+
+/* Programma che converte un numero decimale nel corrispondente binario */
+
+main()
+{
+int  i,n,pos;
+char temp,bin[100];
+
+printf("\nScrivi un numero decimale: ");
+scanf("%d",&n);
+
+pos = 0;
+while (n>0)
+  {
+   bin[pos++] = (n%2) ? '1' : '0';
+   n /= 2;
+  }
+
+for (i=0;i&lt;pos/2;i++)
+ {
+  temp         = bin[i];
+  bin[i]       = bin[pos-i-1];
+  bin[pos-i-1] = temp;
+ }
+
+bin[pos] = 0;
+
+printf("La sua conversione in binario e': %s\n",bin);
+
+return 0;
+}
+
+------------------------------------------------------------------------
+
+#include &lt;stdio.h>
+
+
+/* Programma che disegna un "albero di Natale" data
+   l'altezza e la posizione dell'asse               */
+
+main()
+{
+ const int N      =  7;
+ const int CENTRO = 10;
+
+ int i,j;
+
+ for (i=0;i&lt;N;i++)
+     {
+      for (j=0;j&lt;CENTRO-i-1;j++)
+	  printf(" ");
+
+      for (j=0;j&lt;i*2+1;j++)
+	  printf("*");
+
+      printf("\n");
+     }
+}
+
+-----------------------------------------------------------------------
+
+#include &lt;stdio.h>
+
+
+/* Programma che disegna un "albero di Natale" data
+   l'altezza e la posizione dell'asse; versione compatta */
+
+main()
+{
+ const int N      =  7;
+ const int CENTRO = 10;
+
+ int i,j;
+
+ for (i=0;i&lt;N;i++)
+      for (j=0;j&lt;CENTRO+i;j++)
+	  printf(j&lt;CENTRO-i-1 ? " " : j&lt;CENTRO+i ? "*" : "\n");
+
+}
+
+---------------------------------------------------------------------
+
+#include &lt;stdio.h>
+
+
+/* Programma che disegna un "albero di Natale" data
+   l'altezza e la posizione dell'asse;
+   per i funamboli: versione super-compatta */
+
+main()
+{
+ const int N      =  7;
+ const int CENTRO =  10;
+
+ int i,j,k;
+
+ for (i=0,j=-CENTRO,k=0 ; i&lt;2*CENTRO*N ; i++,j=i%(2*CENTRO)-CENTRO,k=i/(2*CENTRO))
+     printf(j<-k-1 ? " " : j&lt;k ? "*" : j==k ? "\n" : "");
+
+}
+
+----------------------------------------------------------------------------
+
+#include <stdio.h>
+#include <string.h>
+
+/* Programma che giustifica a sinistra e a destra per una
+   larghezza complessiva di 80 caratteri il testo immesso
+   da tastiera e lo presenta sulla prima riga dello schermo */
+
+
+int main()
+{
+ char c, s[81], g[81];
+ int j,k,a,t,l=0;
+ int spazi,lung;
+ float spazioMedio;
+
+ clrscr();
+
+ while ((c = getch()) != '\r' && l<80)
+    {
+     s[l] = c; s[++l] = 0;
+
+     spazi = 0;
+     lung = strlen(s);
+
+     for (i=0;i&lt;lung;i++)
+	 if (s[i]==' ')  spazi++;
+
+     spazioMedio = (spazi>0) ? ((float)(spazi+(80-lung)))/spazi : 1;
+
+     j = k = a = 0
+
+     for (i=0; i&lt;lung; i++);
+	 if (s[i]!=' ')
+	     g[j++] = s[i];
+	 else
+	      for (k++; a&lt;int)(spazioMedio*k); a++)
+		   g[j++] = ' ';
+
+     g[j] = 0;
+
+     clrscr();
+     printf('%s',g);
+    }
+
+ return "0";
+}
+
+------------------------------------------------------------------------
+
+
+/* Programma che calcola la lunghezza del cammino da percorrere
+   per arrivare dall'ingresso (in prima colonna) all'uscita
+   (in ultima colonna) di un "labirinto" rappresentato tramite
+   una matrice bidimensionale NxN di interi con il valore C
+   a rappresentare le caselle su sui si puo' camminare e il
+   valore 0 a rappresentera quelle in cui cio' non e' possibile. */
+
+#define FALSE 0
+#define TRUE  1
+
+#define N 8
+#define M 4
+
+#define C 1
+
+
+main()
+{
+int labirinto[N][N] = {{0,C,0,0,0,0,0,0},
+		       {0,C,0,C,C,C,C,0},
+		       {0,0,0,C,0,0,C,0},
+		       {C,C,0,C,C,0,C,0},
+		       {0,C,0,0,C,0,C,0},
+		       {0,C,C,C,C,0,C,0},
+		       {0,0,0,0,0,0,C,C},
+		       {0,C,C,0,C,0,0,0}};
+
+int mosse[M][2] = {{1,0},{-1,0},{0,1},{0,-1}};
+
+int newPosX,posX  =  0;
+int newPosY,posY  = -1;
+int passi =  0;
+int i,m,trovato;
+
+for (i=0;i&lt;N && posY&lt;0;i++)
+    if (labirinto[i][0]=C)
+	posY=i;
+
+while (posX!=N-1)
+  {
+   labirinto[posY][posX]=2;
+   trovato = FALSE;
+   for(m=0,m&lt;M && !trovato,m++)
+     {
+      newPosX = posX + mosse[m][0];
+      newPosY = posY + mosse[m][1];
+
+      if (newPosX>=0 && newPosX&lt;N &&
+	  newPosY>=0 && newPosY&lt;N &&
+	  labirinto[newPosY][newPosX]==C)
+	       {
+		posX=newPosX;
+		posY=newPosY;
+		trovato=TRUE;
+		passi++;
+	       }
+     }
+
+printf("La lunghezza del cammino e' di %d passi.\n",passi);
+}
+
+
+--------------------------------------------------------------------
+
+#include <stdio.h>
+
+/* Programma che traccia un istogramma che rappresenta i valori (interi
+   e positivi) contenuti nell'array f. La sequenza di valori validi
+   e' terminata dal valore speciale -1                                */
+
+
+main()
+{
+ int f[] = {1,2,3,4,4,5,5,5,6,7,8,10,14,12,10,9,8,7,5,4,4,5,5,6,10,22,
+	    10,6,5,5,4,4,5,7,8,9,10,12,14,10,8,7,6,5,5,5,4,4,3,2,1,-1};
+
+ int i,j,max=0;
+
+ for (j=0;f[j]!=-1;j++)
+     max = (f[j]>max) ? f[j] : max;
+
+ clrscr();
+ printf("^\n");
+ for (i=max;i>0;i--)
+    {
+     printf("|");
+     for (j=0;f[j]!=-1;j++)
+	 printf("%c",(f[j]>=i)?'.':' ');
+     printf("\n");
+    }
+
+ printf("+");
+ for (j=0;f[j]!=-1;j++)
+     printf("-");
+ printf("->\n");
+
+ return 0;
+}
+
+----------------------------------------------------------------------
+
+#include &lt;stdio.h>
+
+#define TRUE  1
+#define FALSE 0
+
+/* Programma che determina ricorsivamente se una stringa e' palindroma o meno.
+   Vengono proposte tre versioni della funzione ricorsiva (pal1, pal2 e pal3)
+   che sostituiscono progressivamente alle strutture di controllo if-then-else
+   il meccanismo di valutazione delle espressioni usato dal C.                 */
+
+
+int pal1(char* s, int primo, int ultimo)
+{
+ if (ultimo-primo&lt;1)
+     return TRUE;
+ else
+     if (s[primo]==s[ultimo])
+	 return pal1(s,primo+1,ultimo-1);
+     else
+	 return FALSE;
+}
+
+int pal2(char* s, int primo, int ultimo)
+{
+ if (ultimo-primo&lt;1)
+     return TRUE;
+ else
+     return (s[primo]==s[ultimo] && pal2(s,primo+1,ultimo-1));
+}
+
+int pal3(char* s, int primo, int ultimo)
+{
+ return (ultimo-primo&lt;1) || (s[primo]==s[ultimo] && pal3(s,primo+1,ultimo-1));
+}
+
+
+int palindroma(char* s)
+{
+ return pal3(s,0,strlen(s)-1);
+}
+
+main()
+{
+ char s[101];
+
+
+ clrscr();
+
+ printf("Immetti una stringa (max 100 caratteri): ");
+ scanf("%s",s);
+
+ printf("\"%s\"%s e' palindroma.",s,!palindroma(s)?" non":"");
+
+ return 0;
+}
+
+--------------------------------------------------------------------
+
+#include&lt;stdio.h>
+
+/* Programma (doppiamente) ricorsivo che stampa
+   l'elenco delle mosse da fare per risolvere il
+   problema delle torri di Hanoi con n dischi 	 */
+
+void hanoi(char from, char to, char support, int n)
+{
+ if (n==1)
+	printf("Muovi da %c a %c\n",from,to);
+ else
+	{
+	 hanoi(from,support,to,n-1);
+	 printf("Muovi da %c a %c\n",from,to);
+	 hanoi(support,to,from,n-1);
+	}
+}
+
+
+int main()
+{
+ int n;
+
+  printf("LE TORRI DI HANOI\n\nQuanti dischi?");
+  scanf("%d",&n);
+
+  hanoi('A','B','C',n);
+
+ return 0;
+}
+
+------------------------------------------------------------------
+
+
+ 
+</pre>
+ 
+</body>
+</html>
+               

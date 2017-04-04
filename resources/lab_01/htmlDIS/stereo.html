@@ -1,0 +1,401 @@
+<HTML>
+<HEAD>
+   <TITLE>Multiresolution Stereo Vision System for Mobile Robots</TITLE>
+<meta name="keywords" value="stereo vision mobile robot">
+</HEAD>
+
+<BODY>
+
+<P>
+<CENTER><H1>Multiresolution Stereo Vision System<BR> for Mobile Robots</H1>
+<H3><A HREF="http://www.dis.uniroma1.it/~iocchi">Luca Iocchi</A></H3>
+Dipartimento di Informatica e Sistemistica<BR>
+Universit&agrave di Roma "La Sapienza", Italy.
+<BR><BR>
+AI Center - SRI International
+<BR>
+</CENTER>
+</P>
+
+<!--HR>
+
+
+<BLINK>
+<CENTER>
+<FONT SIZE=+2 COLOR=#A00000>
+<P>WORK IN PROGRESS</P>
+</FONT>
+</CENTER>
+</BLINK>
+
+<HR-->
+
+<P>&nbsp;</P>
+<H2>1. Introduction</H2>
+
+Stereoscopy is a technique for infering the 3D position of objects from
+two or more simultaneously view of the scene.<BR>
+
+<P>
+Why using stereo vision for mobile robots?
+<UL>
+<LI>It is a reliable and effective way to extract range information from the
+environment (real-time implementation on low-cost hardware).
+<LI>It is a passive sensor (no interferences with other sensoring devices).
+<LI>It can be easily integrated with other vision routines (object recognition, tracking).
+</UL>
+
+<P>
+We are describing a multiresolution stereoscopic vision system for a 
+<A HREF="http://www.activmedia.com/robots/">Pioneer mobile robot</A>, 
+by using low-cost <A HREF="http://www.ai.sri.com/~konolige/svs/head.html">
+STH-V1 Integrated Stereo Head</A> and the
+<A HREF="http://www.ai.sri.com/~konolige/svs/">SRI's stereo algorithm</A> 
+running on a conventional PC architecture.
+
+<P>
+The objective of this work is to implement a stereo vision system 
+and to integrate the range information in the Local Perceptual Space
+of the robot (in Saphira).
+
+
+<P>&nbsp</P>
+
+<P><IMG SRC="images/robcam1.gif"></P>
+<P><IMG SRC="images/pano1VS.gif"></P>
+<P><IMG SRC="images/pano1SA.gif"></P>
+
+<P>&nbsp</P>
+
+<P>
+Reconstruction of the world seen through stereo cameras can be divided in
+two steps:
+<OL>
+<LI><EM>Correspondence problem</EM>. For every point in one image find out
+the correspondent point on the other and compute the disparity of these
+points.
+<LI><A HREF="triang.html"><EM>Triangulation</EM></A>. 
+Given the disparity map, the focal distance of the
+two cameras and the geometry of the stereo setting 
+(relative position and orientation of the cameras)
+compute the (X,Y,Z) coordinates of all points in the images.
+</OL>
+
+
+<P>
+The design and the implementation of a stereo vision system must take into account
+two factors:
+<UL>
+<LI>Both the correspondence problem and triangulation make the assumption 
+to deal with an ideal model of the camera (<I>pinhole model</I>), that
+can be very different from actual (low-cost) imaging devices.
+<LI>The relative position and orientation of the two cameras must be known
+in order to retrieve range information.
+</UL>
+
+Therefore <I>Camera Calibration</I> is a central issue for a stereo vision system.
+In fact calibration of a stereo camera is the task of
+relating the ideal pinhole model of the camera with an actual device 
+(internal calibration)
+and retrieving the relative position and orientation of the cameras
+(external calibration).
+
+
+<H3>1.1 Example</H3>
+
+In this example we put the camera to see an object in front of a wall.
+We simply apply the stereo algorithm for computing the disparity map 
+(actually a part of the external calibration [Yoff] was done before).
+
+<P>
+<IMG SRC="images/multi2-im.gif">
+</P>
+
+<P>
+The following tables displayed the results of disparity and range computation
+in the normal case and when lens distortion has been removed and a
+multiresolution stereo technique has been applied.
+
+
+<P>
+<TABLE BORDER=1>
+<TD>
+<TD ALIGN=CENTER><B><BR>Calibration OFF<BR>&nbsp</B></TD>
+<TD ALIGN=CENTER><B>Calibration ON</B></TD>
+<TR>
+<TD ALIGN=CENTER><B>Multiresolution<BR>OFF</B></TD>
+<TD><IMG SRC="images/multi2dmap00.gif"><BR><IMG SRC="images/multi2dlin00.gif">
+<TD><IMG SRC="images/multi2dmap01.gif"><BR><IMG SRC="images/multi2dlin01.gif">
+<TR>
+<TD ALIGN=CENTER><B>Multiresolution<BR>ON</B></TD>
+<TD><IMG SRC="images/multi2dmap10.gif"><BR><IMG SRC="images/multi2dlin10.gif">
+<TD><IMG SRC="images/multi2dmap11.gif"><BR><IMG SRC="images/multi2dlin11.gif">
+</TABLE>
+</P>
+
+
+<P>
+<TABLE BORDER=1>
+<TD>
+<TD ALIGN=CENTER><B><BR>Calibration OFF<BR>&nbsp</B></TD>
+<TD ALIGN=CENTER><B>Calibration ON</B></TD>
+<TR>
+<TD ALIGN=CENTER><B>Multiresolution<BR>OFF</B></TD>
+<TD><IMG SRC="images/multi2SA00.gif">
+<TD><IMG SRC="images/multi2SA01.gif">
+<TR>
+<TD ALIGN=CENTER><B>Multiresolution<BR>ON</B></TD>
+<TD><IMG SRC="images/multi2SA10.gif">
+<TD><IMG SRC="images/multi2SA11.gif">
+</TABLE>
+</P>
+
+
+<P>
+In fact, calibration is needed in order to remove the distortion caused by the lenses
+that produces a curvature in the disparity line in the background
+(that should be straight as all the points in the wall 
+are at the same distance from the cameras).
+While a multiresolution technique is applied for increasing
+the depth field of view of the camera.
+
+
+<P>&nbsp;</P>
+<H2>2. Multiresolution Stereo</H2>
+
+Multiresolution stereo is applied in order to improve range results for close objects.
+
+<P>
+Multiresolution is often used for improving performance of the matching
+algorithm by first looking in the low resolution
+pair of image for correspondences and then refine by a local search in a high
+resolution pair.<BR>
+But this method requires a special matching algorithm.
+
+<P>
+Here we propose a slightly different multiresolution technique that
+applies the same matching algorithm to three different pair of images
+with resolution 320x60, 160x60 and 80x60, and then combines the disparity
+results.<BR>
+Disparities from high resolution images are used for farther objects,
+while disparities from low resolution ones are used for closer objects.
+
+<P>
+In the following picture the disparity maps from high, medium and low
+resolution are displayed in the left column, while the correspondent
+(red, green, and blue) disparity lines are in the right one.
+The black plot represents the combined line.
+
+<P>
+Observe the errors in the high resolution disparity map when looking
+at a close object, that can be recovered with the lower resolution images. 
+
+<P><img src="images/multi.gif">
+
+
+
+
+
+
+<P>&nbsp;</P>
+<H2>3. Stereo Head Calibration</H2>
+
+Camera calibration is the process of relating the ideal model of the camera 
+to the actual imaging device and of determining the position and
+orientation of the camera with respect to a world reference system.<BR>
+This is a fundamental step for 3D reconstruction and in particular for stereo 
+vision analysis.
+
+<H3>3.1 Disparities from distorted images</B></P>
+
+<P>
+Let us show first a motivating example.
+The following pictures show a stereo camera, that has been put in front of a straight wall, 
+and the disparities computed by the matching algorithm (i.e. before triangulation).
+The last picture is the plot of the disparities along one of the rows 
+of the diparity map.
+
+<P>
+<TABLE>
+<TD><IMG SRC="images/dist00L.gif" ALIGN=left width=160></TD>
+<TD><IMG SRC="images/dist00R.gif" align=left width=160></TD>
+<TR>
+<TD><IMG SRC="images/distdisp00.gif"></TD>
+<TD><IMG SRC="images/distline00.gif"></TD>
+</TABLE>
+</P>
+
+<P>
+Observe that the radial distortion (that is pretty high for these lenses)
+affects both the correct determination of point correspondences and
+the computation of disparities between points.<BR>
+In fact, the disparity line, that should be straight since we are looking at a straight
+wall, presents a curvature because of the radial distortion of the lenses.
+Furthermore this error increases when range values are extracted from disparities.
+
+<P>
+A calibration method is needed in order to find the internal parameters
+of the camera and then undistort the images before applying the stereo algorithm.
+
+<H3>3.2 Disparities from undistorted images</H3>
+
+Using the undistorted images the disparities computed by the matching algorithm
+are much more precise (as shown below).
+
+<P>
+<TABLE>
+<TD><IMG SRC="images/undist00L.gif" ALIGN=left width=160></TD>
+<TD><IMG SRC="images/undist00R.gif" align=left width=160></TD>
+<TR>
+<TD><IMG SRC="images/undistdisp00.gif"></TD>
+<TD><IMG SRC="images/undistline00.gif"></TD>
+</TABLE>
+</P>
+
+
+<P>
+An easy semi-automatic calibration procedure for stereo cameras is presented
+<A HREF="calib.html">here</A>.
+
+
+
+<P>&nbsp;</P>
+<H2>4. Implementation</H2>
+
+<P>
+The following picture shows the architectural schema of the implemented 
+system.
+
+<P><IMG SRC="fig/stereo-implem.gif"></P>
+
+<P>
+The images coming from the camera are first warped to remove lens distortion, 
+then they are splitted in three pairs with different resolution 
+and only a horizontal portion of the images is considered,
+as we are mapping range data in a 2D environment.
+The three pair of images are processed by the stereo algorithm that returns
+three disparity maps. These are sampled and integrated in order to obtain a single
+1D disparity line. Finally triangulation is applied for retrieving range information.
+
+<P>&nbsp;</P>
+<H2>5. Performance Evaluation</H2>
+
+<P>
+The following table illustrates time performance evaluation obtained with
+a Pentium II 233 MHz processor. The overall rate of the system is above 10 Hz,
+even with no heavy code optimization.
+</P>
+
+<P>
+<TABLE BORDER=1>
+<TD WIDTH=140 ALIGN=CENTER><B>Function</B>
+<TD WIDTH=120 ALIGN=CENTER><B>Time</B>
+<TR>
+<TD ALIGN=CENTER>Acquisition and warping
+<TD ALIGN=CENTER>19 ms
+<TR>
+<TD ALIGN=CENTER>Multiresolution stereo
+<TD ALIGN=CENTER>53 ms
+<TR>
+<TD ALIGN=CENTER>Triangulation and Display
+<TD ALIGN=CENTER>8 ms
+<TR>
+<TD ALIGN=CENTER><B>Overall time</B>
+<TD ALIGN=CENTER><B>80 ms</B>
+<TR>
+</TABLE> 
+</P>
+
+
+
+
+<P>&nbsp;</P>
+<H2>6. Applications</H2>
+
+<UL>
+<LI>Panorama scanning and finding artifacts. It is possible for example to determine
+the width and the orientation of a corridor without moving the robot.
+<P><img src="images/pano1.gif"> &nbsp &nbsp <img src="images/pano1corr.gif"></P>
+
+<LI>Map building (with Scan Studio by 
+<A HREF="http://www.informatik.uni-freiburg.de/~gutmann/">Steffen Gutmann</A>).
+<P><img src="images/map.gif"></P>
+
+</UL>
+
+
+<P>&nbsp;</P>
+<H2>7. Previous Work</H2>
+
+<TABLE BORDER=1>
+<TD WIDTH=120 ALIGN=CENTER><B>Project</TD>
+<TD WIDTH=120 ALIGN=CENTER><B>Organization</TD>
+<TD WIDTH=120 ALIGN=CENTER><B>Robot model</TD>
+<TD WIDTH=120 ALIGN=CENTER><B>Vision hardware</TD>
+<TD WIDTH=120 ALIGN=CENTER><B>Performances</TD>
+<TD WIDTH=120 ALIGN=CENTER><B>Calibration</TD>
+<TR>
+
+<TD ALIGN=CENTER><A HREF="http://www.cs.ubc.ca/nest/lci/robots/spinoza.html">Spinoza (1997)</A></TD>
+<TD ALIGN=CENTER>Univ. of British Columbia</TD>
+<TD ALIGN=CENTER>RWI B12</TD>
+<TD ALIGN=CENTER>3 b/w cameras<BR> 2 DSPs<BR> 2 transputers</TD>
+<TD ALIGN=CENTER>2 Hz <BR>(128x120x20)</TD>
+<TD ALIGN=CENTER>Extension of Tsai method</TD>
+
+<TR>
+<TD ALIGN=CENTER><A HREF="http://www.inria.fr/robotvis/robotvis-eng.html">RobotVis (1993)</A></TD>
+<TD ALIGN=CENTER>INRIA</TD>
+<TD ALIGN=CENTER></TD>
+<TD ALIGN=CENTER>3 cameras <BR> 3 DSPs</TD>
+<TD ALIGN=CENTER>1 - 5 Hz </TD>
+<TD ALIGN=CENTER><A HREF="http://www.inria.fr/robotvis/personnel/zzhang/CalibEnv/CalibEnv.html">
+No radial distortion correction (1997)</A>.
+
+
+
+</TABLE>
+
+<P>&nbsp;</P>
+<H2>8. What's missing</H2>
+
+<UL>
+<LI>Complete semi-automatic calibration procedure.
+<LI>Comparison with other calibration techniques.
+<LI>Sensor data fusion in Saphira.
+<LI>Code optimization.
+</UL>
+
+
+<P>&nbsp;</P>
+<H2>Acknowledgements</H2>
+
+<P>
+Thanks to <A HREF="http://www.ai.sri.com/">SRI Int. AI Center</A>
+for welcoming me, and in particular to
+<A HREF="http://www.ai.sri.com/~konolige/">Kurt Konolige</A>
+for his valuable support.<BR>
+I would have never learned so much about stereo vision and camera calibration
+without attending a course in Stanford given by 
+<A HREF="http://robotics.stanford.edu/users/tomasi/bio.html">
+Carlo Tomasi</A>.
+</P>
+
+<P>&nbsp</P>
+
+<HR>
+
+<I>Luca Iocchi</I>. April 6 1998.
+
+<P>
+Go to:<BR>
+<A HREF="triang.html">Stereo triangulation</A><BR>
+<A HREF="calib.html">Stereo Camera Calibration</A><BR>
+<A HREF="houghcalib.html">Hough Internal Calibration</A><BR>
+&nbsp;<BR>
+<A HREF="implem.html">Implementation</A><BR>
+
+
+</BODY>
+</HTML>
+

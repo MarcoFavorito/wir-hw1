@@ -1,0 +1,113 @@
+
+<!doctype html public "-//w3c//dtd html 4.0 transitional//en">
+
+<html>
+
+<head>
+
+   <title>Tecniche di Programmazione - Esercitazione 3</title>
+
+   <link rel="stylesheet" href="../../tp.css" type="text/css">
+
+</head>
+
+<body>
+
+<center>
+
+  <p><B>Tecniche di Programmazione</B> <BR>
+    <B>Corsi di Laurea in Ingegneria Informatica e Automatica</B></p>
+  <p><b>A.A. 2003/04</b></p>
+  <p><b>Esercitazione 3</b></p>
+
+  <p><b>Array Dinamici e Liste Collegate&nbsp;-- Rubrica Telefonica</b></p>
+  
+
+<hr>
+
+
+</center>
+
+
+
+<p>Scrivere una classe <code>Rubrica</code> per rappresentare rubriche
+telefoniche. Ciascuna rubrica mantiene un certo numero (variabile e non fissato
+a priori) di contatti. Ogni contatto è costituito da un nome di persona e dal
+relativo numero di telefono.&nbsp;</p>
+
+<p>La classe <code>Rubrica</code>  deve avere la seguente interfaccia di classe</p>
+
+<blockquote>
+
+<pre>
+
+public class Rubrica {
+
+  public Rubrica() {
+  // costruisce una rubrica che puo' contenere un numero illimitato di contatti
+  }
+
+
+  public int numContatti(){
+  // restituisce il numero di contatti che sono presenti nella rubrica.
+  }
+
+  public String dammiNumero(String persona) {
+    // cerca la persona all'interno della rubrica;
+    // se la trova restituisce il numero telefonico 
+    // (se ne ha diversi restituisce uno a caso),
+    // altrimenti restituisce null.
+  }
+
+  public void modificaNumero(String persona, String numeroVecchio, String numeroNuovo) {
+  // modifica il contatto formato da persona e numeroVecchio sostituendo numeroNuovo a numeroVecchio,
+  // se tale contatto esiste, altrimenti non esegue modifiche.
+  // si assume che un contatto (identificato dalla coppia persona-numero) sia unico nella rubrica
+  }
+
+  public String toString() {
+    // restituisce una rappresentazione sotto forma di stringa della rubrica.
+
+  }
+  public void inserisci(String persona, String numero) {
+    // inserisce il contatto formato da persona e numero nella rubrica;
+  }
+      
+  public void elimina(String persona, String numero) {
+    // elimina il contatto formato da persona e numero, se esiste
+    // altrimenti non fa nulla;
+    // si assume che il contatto (coppia persona numero) sia unico nella rubrica
+  }
+
+  public void eliminaTutti(String persona) {
+    // elimina tutti i contatti corrispondenti alla persona
+    // (se non ce ne sono non esegue modifiche)
+  }
+
+  public void LeggiContatti(BufferedReader br) {
+    // Inserisce nella rubrica i contatti letti da un file.
+    // Si assuma che il file memorizzi su una riga il nome della persona, 
+    // e sulla riga successiva il numero di telefono relativo
+	
+  }
+
+
+}
+
+</pre>
+
+</blockquote>
+
+<p>Scrivere una soluzione che faccia uso di array dinamici, ed una che faccia uso di liste collegate.</p>
+
+<p>Utilizzare questo <a href="Cliente.java">cliente di prova</a> e questo <a href="input.txt">file
+di input </a>per testare le classi realizzate</p>
+
+<hr>
+
+
+
+</body>
+
+</html>
+

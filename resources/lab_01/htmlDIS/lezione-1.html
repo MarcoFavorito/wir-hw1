@@ -1,0 +1,949 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html>
+<head>
+  <title>Introduzione ad XML</title>
+  <meta name="description" content="Linguaggi e Traduttori">
+  <meta name="resource-type" content="document">
+  <meta name="distribution" content="global">
+  <meta content="text/html; charset=iso-8859-1"
+ http-equiv="Content-Type">
+  <link rel="index" href="index-xml.html">
+  <link rel="stylesheet" href="lezione.css">
+  <link rel="next" href="lezione-2.html">
+  <meta content="D. Nardi, R. Rosati, L. Dragone" name="author">
+</head>
+<body>
+<b>Lezione 1: Introduzione ad XML</b>
+<p>Parte 1: Linguaggi di marcatura ed XML </p>
+<ul>
+  <li>Il problema della rappresentazione delle informazioni sul web<br>
+  </li>
+  <li>Linguaggi di marcatura </li>
+  <li>SGML, HTML ed XML </li>
+</ul>
+<p>Parte 2: Documenti XML ben formati </p>
+<ul>
+  <li>Forma di un documento XML </li>
+  <li>Rappresentazione di caratteri </li>
+  <li>Elementi, Attributi, Entit&agrave; </li>
+  <li>Sezioni CDATA </li>
+  <li>Commenti, Istruzioni di processamento </li>
+</ul>
+<hr> <b>Il Web in origine</b>
+<ul>
+  <li>Composto da una collezione (molto grande) di pagine Web </li>
+  <li>Ogni pagina &egrave; un <i>documento</i> strutturato codificato
+in HTML</li>
+</ul>
+<p><i>Hypertext Markup Language</i> </p>
+<dl>
+  <dt><strong>Hypertext:</strong> </dt>
+  <dd>testo con collegamenti ipertestuali ad altri documenti </dd>
+  <dt><strong>Markup Language:</strong> </dt>
+  <dd>marche descrivono la struttura del testo </dd>
+</dl>
+<hr> <b>Le informazioni nel Web di oggi</b>
+<p>HTML descrive la struttura logica dell'informazione allo scopo di <i>presentarla
+come pagina Web</i> </p>
+<ul>
+  <li>molte pagine ancora generate manualmente </li>
+  <li>sempre pi&ugrave; pagine generate da applicazioni </li>
+  <li>le pagine HTML sono destinate agli umani
+    <ul>
+      <li>marcatura descrive la presentazione </li>
+      <li>non c'&egrave; un legame diretto tra marcatura e informazione
+      </li>
+    </ul>
+  </li>
+</ul>
+<hr> <b>Estrazione di informazioni</b>
+<ul>
+  <li>Motori di ricerca </li>
+  <li>Navigazione </li>
+  <li>Interrogazione (in domini circoscritti) </li>
+</ul>
+<hr> <b>Il Web oggi - Stessa informazione ha struttura diversa in
+pagine diverse<br>
+</b><br>
+<font face="Courier New">&lt;h1&gt;Bibliografia ragionata&lt;/h1&gt;<br>
+&lt;ul&gt;<br>
+&nbsp; &lt;li&gt;&lt;i&gt;Principles of Database
+Systems&lt;/i&gt;.&lt;br&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &lt;b&gt;Jeffrey D.
+Ullman&lt;/b&gt;.&lt;br&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Computer Science Press, 1982.&lt;br&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Testo storico sulle basi di dati.&nbsp;
+Un po' datato in quanto non ...<br>
+&nbsp; &lt;/li&gt;<br>
+&nbsp; ...<br>
+&lt;/ul&gt;<br>
+<br>
+&lt;a name="..."&gt;&lt;b&gt;Riferimenti
+bibliografici&lt;/b&gt;&lt;/a&gt;<br>
+&lt;ol&gt;<br>
+&nbsp; &lt;li&gt;&lt;a href="..."&gt;Building Web Sites with
+XML&lt;/a&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Michael Floyd.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &lt;i&gt;Prentice Hall&lt;/i&gt;, 2000.<br>
+&nbsp; &lt;/li&gt;<br>
+&nbsp; ...<br>
+&lt;/ol&gt;</font><font face="Courier"><br>
+</font>
+<hr> <b>Il Web oggi - Informazioni diverse hanno la stessa struttura</b><br>
+<br>
+<font face="Courier New">&lt;h1&gt;Bibliografia ragionata&lt;/h1&gt;<br>
+&lt;ul&gt;<br>
+&nbsp; &lt;li&gt;&lt;i&gt;Principles of Database
+Systems&lt;/i&gt;.&lt;br&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &lt;b&gt;Jeffrey D.
+Ullman&lt;/b&gt;.&lt;br&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &lt;i&gt;Computer Science
+Press&lt;i&gt;, 1982.&lt;br&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Testo storico sulle basi di dati.&nbsp;
+Un po' datato in quanto non ...<br>
+&nbsp; &lt;/li&gt;<br>
+<br>
+&nbsp; &lt;li&gt;&lt;i&gt;Type Inference for Queries over
+Semistructured Data&lt;/i&gt;&lt;br&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &lt;b&gt;Tova Milo&lt;/b&gt; and
+&lt;b&gt;Dan Suciu&lt;/b&gt;.&lt;br&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &lt;i&gt;Proc. of PODS'99&lt;/i&gt;,
+1999.&lt;br&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Fornisce tecniche per l'inferenza di
+tipo basate sull'utilizzo di ...<br>
+&nbsp; &lt;/li&gt;<br>
+&nbsp;&nbsp; ...<br>
+&lt;/ul&gt;</font><br>
+<hr> <b>Il Web oggi - La struttura pu&ograve; cambiare inaspettatamente</b>
+<p><font face="Courier New">&lt;h1&gt;Bibliografia&lt;/h1&gt;<br>
+&lt;ul&gt;<br>
+&nbsp; &lt;li&gt;&lt;i&gt;Principles of Database
+Systems&lt;/i&gt;.&lt;br&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &lt;b&gt;Jeffrey D.
+Ullman&lt;/b&gt;.&lt;br&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Computer Science Press 1982.<br>
+&nbsp; &lt;/li&gt;<br>
+&nbsp; ...<br>
+&lt;/ul&gt;<br>
+</font><br>
+<font face="Courier New">&lt;h1&gt;&lt;a
+name="..."&gt;Bibliografia&lt;/a&gt;&lt;/h1&gt;<br>
+&lt;ol&gt;<br>
+&nbsp; &lt;li&gt;&lt;a href="..."&gt;Principles of Database
+Systems&lt;/a&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &lt;b&gt;Jeffrey D. Ullman&lt;/b&gt;.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &lt;i&gt;Computer Science
+Press&lt;/i&gt;, 1982.<br>
+&nbsp; &lt;/li&gt;<br>
+&nbsp; ...<br>
+&lt;/ol&gt;<br>
+</font></p>
+<hr> <b>L'evoluzione del Web</b>
+<p>Documenti strutturati e <i>dati</i> vengono generati ed <i>utilizzati</i>
+da applicazioni e da umani </p>
+<ul>
+  <li>documenti visualizzati in pagine Web </li>
+  <li>pagine Web generate a partire da dati strutturati (basi di dati) </li>
+  <li>dati estratti da documenti sul Web </li>
+  <li>dati scambiati via Web tra organizzazioni diverse</li>
+  <li>dispositivi con differenti capacit&agrave; di visualizzazione
+(PDA, smartphone, ecc.)<br>
+  </li>
+</ul>
+<p><i>HTML non &egrave; adatto</i> </p>
+<hr> <b>Limitazioni di HTML</b>
+<ul>
+  <li>Insieme di etichette prefissato
+    <ul>
+      <li>cosa uso / cosa &egrave; stato usato per rappresentare le
+informazioni di interesse </li>
+    </ul>
+  </li>
+  <li>Marcatura non denota il significato
+    <ul>
+      <li>che insieme di informazioni rappresenta una pagina / una
+collezione di pagine? </li>
+      <li>come faccio a sapere quali sono le informazioni che mi
+interessano? </li>
+      <li>come faccio ad estrarre le informazioni che mi interessano (e
+solo quelle)? </li>
+    </ul>
+  </li>
+  <li>Marcatura usata per la presentazione del documento - <br>
+HTML &egrave; adatto, anche se presenta delle limitazioni </li>
+</ul>
+<hr> <b>Requisiti per la rappresentazione delle informazioni sul Web</b>
+<p>Serve un formalismo <i>pi&ugrave; flessibile</i>: </p>
+<ul>
+  <li>separazione tra:
+    <ul>
+      <li><i>contenuto</i> </li>
+      <li><i>presentazione</i> </li>
+      <li><i>navigazione</i> </li>
+    </ul>
+  </li>
+  <li>definizione di <i>domini</i> o contesti </li>
+  <li>indipendenza dalla piattaforma (<i>media</i>) e supporto
+multilingue </li>
+</ul>
+<p><i>XML</i> = e<i>X</i>tensible <i>M</i>arkup <i>L</i>anguage </p>
+<hr> <b>Il Web domani - Esempio</b>
+<p><br>
+<font face="Courier New">&lt;bibliografia&gt;<br>
+&nbsp; &lt;pubblicazione id="Ullm82" tipo="libro"&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp; &lt;titolo&gt;Principles of Database
+Systems&lt;/titolo&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp; &lt;autore&gt;Jeffrey D. Ullman&lt;/autore&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp; &lt;editore&gt;Computer Science
+Press&lt;/editore&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp; &lt;anno&gt;1982&lt;/anno&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp; &lt;commento&gt;Testo storico sulle basi di
+dati. ... &lt;/commento&gt;<br>
+&nbsp; &lt;/pubblicazione&gt;<br>
+<br>
+&nbsp; &lt;pubblicazione id="MiSu99" tipo="in-atto-conferenza"&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp; &lt;titolo&gt;Type Inference for Queries
+...&lt;/titolo&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp; &lt;autore&gt;Tova Milo&lt;/autore&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp; &lt;autore&gt;Dan Suciu&lt;/autore&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp; &lt;apparsoin&gt;Proc. of
+PODS'99&lt;/apparsoin&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp; &lt;anno&gt;1999&lt;/anno&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp; &lt;cita pubblicazioni="Ullm89 AbHV95 ..."&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp; &lt;commento&gt;Fornisce tecniche per
+l'inferenza di tipo ... &lt;/commento&gt;<br>
+&nbsp; &lt;/pubblicazione&gt;<br>
+&lt;/bibliografia&gt;</font> </p>
+<hr> <b>Marcatura di documenti</b>
+<p>Che cosa &egrave; una <i>marcatura</i>? </p>
+<ul>
+  <li>storicamente: annotazioni in un testo che descrivono al tipografo
+come stampare o comporre una parte del testo </li>
+  <li>oggi: qualsiasi tipo di codice inserito in un testo in forma
+elettronica </li>
+</ul>
+<p><i>Marcatura</i> (o etichettatura) &egrave; un qualcosa che permette
+di rendere esplicita un'interpretazione di un testo. </p>
+<hr> <b>Linguaggi di marcatura</b>
+<p>Un linguaggio di marcatura &egrave; un insieme di <i>convenzioni
+per la marcatura</i> di testi. </p>
+<p>Deve specificare: </p>
+<ul>
+  <li>quali marcature sono permesse </li>
+  <li>quali marcature sono obbligatorie </li>
+  <li>come vanno composte le marcature </li>
+  <li>come distinguere tra marcatura e testo </li>
+</ul>
+<p>Pu&ograve; inoltre specificare il significato della marcatura. </p>
+<hr> <b>Tipi di marcatura</b>
+<p>Si distinguono due tipi di marcatura: </p>
+<ul>
+  <li>marcatura procedurale
+    <ul>
+      <li>descrive come processare il documento </li>
+      <li>Esempi: PostScript, PDF, RTF, formato MS Word </li>
+    </ul>
+  </li>
+  <li>marcatura <i>descrittiva</i>
+    <ul>
+      <li>descrive la struttura logica del documento </li>
+      <li>Esempi: HTML, SGML, XML </li>
+    </ul>
+  </li>
+</ul>
+<hr> <b>Il linguaggio XML</b>
+<p>XML = e<i>X</i>tensible <i>M</i>arkup <i>L</i>anguage </p>
+<ul>
+  <li>linguaggio di marcatura descrittiva </li>
+  <li>ha suscitando enorme interesse sia a livello industriale sia
+nella comunit&agrave; scientifica </li>
+  <li>naturale successore di HTML come linguaggio per il Web
+    <ul>
+      <li>pi&ugrave; espressivo e flessibile (e<i>X</i>tensible) </li>
+      <li>pi&ugrave; complicato </li>
+      <li>a lungo andare semplificher&agrave; la vita agli sviluppatori
+Web</li>
+    </ul>
+  </li>
+  <li> XML si &egrave; imposto come standard de facto per lo scambio di
+    <i>informazioni semi-strutturate</i> </li>
+</ul>
+<hr> <b>Tipologie di informazioni</b>
+<ul>
+  <li>fortemente strutturare: classi Java, schema base dati relazionale</li>
+  <li>destrutturate: testo libero o testo formattato</li>
+  <li>semi-strutturare: struttura dati flessibile con porzioni
+destrutturate</li>
+</ul>
+XML si presta ad essere utilizzato anche per informazioni fortemente
+strutturate, con alcune limitazioni.<br>
+<hr> <b>Le origini di XML</b>
+<dl>
+  <dt><strong>1969</strong> </dt>
+  <dd>Charles Goldfarb (IBM) dirige lo sviluppo di <i>GML</i> </dd>
+  <dt><strong>1974</strong> </dt>
+  <dd>Charles Goldfarb inventa <i>SGML</i>, il padre dei linguaggi di
+marcatura </dd>
+  <dt><strong>1986</strong> </dt>
+  <dd><i>SGML</i> diventa uno <i>standard ISO</i> <br>
+    <font size="-1">(ISO&nbsp;8879 ``Information Processing - Text and
+Office Systems - Standard Generalized Markup Language'')</font> </dd>
+  <dt><strong>1989</strong> </dt>
+  <dd>Tim-Berners Lee (CERN di Ginevra) inventa <i>HTML</i> </dd>
+  <dt><strong>1995</strong> </dt>
+  <dd>Fondazione del World Wide Web Consortium (<i>W3C</i>) </dd>
+  <dt><strong>1996</strong> </dt>
+  <dd>Inizio dello sviluppo di <i>XML</i> presso il W3C </dd>
+  <dt><strong>1998</strong> </dt>
+  <dd><i>XML&nbsp;1.0</i> diventa una <i>raccomandazione W3C</i> <br>
+(uno standard di fatto) </dd>
+  <dt><strong>1996-oggi</strong> </dt>
+  <dd>Sviluppo di <i>standard associati</i> ad XML <br>
+(coordinato da W3C)<br>
+  </dd>
+  <dt><strong>2000</strong></dt>
+  <dd>Promulgazione della seconda versione di <i>XML&nbsp;1.0</i></dd>
+  <dt><strong>2002</strong> </dt>
+  <dd><i>XML&nbsp;1.1</i> diventa una <i>raccomandazione candidata W3C</i>
+  </dd>
+</dl>
+<hr> <b>SGML - Standard Generalized Markup Language</b>
+<ul>
+  <li>&Egrave; il padre degli attuali linguaggi di marcatura </li>
+  <li>&Egrave; un linguaggio che permette di definire linguaggi di
+marcatura (&egrave; un <i>metalinguaggio</i>):
+    <ul>
+      <li>estremamente espressivo e configurabile (troppo) </li>
+      <li>alta espressivit&agrave; rende il processamento complicato </li>
+      <li>utilizzato in grossi progetti di documentazione </li>
+      <li>non studiato espressamente per il Web </li>
+    </ul>
+  </li>
+  <li>Manca di alcune caratteristiche fondamentali per il Web:
+    <ul>
+      <li>gestione dei link </li>
+      <li>gestione del conflitto sui nomi delle etichette </li>
+      <li>tutti i documenti devono essere ``validi'' <br>
+(oltre a essere ``ben formati'') </li>
+    </ul>
+  </li>
+</ul>
+<hr> <b>HTML - HyperText Markup Language</b>
+<ul>
+  <li>&egrave; un linguaggio di marcatura </li>
+  <li>definito in termini di SGML </li>
+  <li>insieme di etichette prefissato &nbsp;(RIGIDO) </li>
+  <li>marcatura non denota il significato </li>
+  <li>studiato espressamente per il Web
+    <ul>
+      <li>collegamenti ipertestuali </li>
+      <li>immagini </li>
+    </ul>
+  </li>
+</ul>
+<hr> <b>XML = (SGML--) + HTML</b>
+<p>Obiettivi di sviluppo di XML: </p>
+<ol>
+  <li>XML deve essere usabile direttamente sul Web </li>
+  <li>XML deve essere compatibile con SGML </li>
+  <li>deve essere semplice progettare programmi che processano
+documenti XML </li>
+  <li>documenti XML devono essere leggibili da umani e sufficientemente
+chiari </li>
+  <li>documenti XML devono essere facili da creare </li>
+  <li>la specifica di XML deve essere formale e concisa </li>
+  <li>la compattezza nella marcatura &egrave; di poca importanza </li>
+</ol>
+<hr> <b>Caratteristiche dei documenti XML</b>
+<ul>
+  <li>marcatura <i>descrittiva</i> e non procedurale (descrive la
+struttura logica) </li>
+  <li>marcatura &egrave; dettata dalla struttura logica del documento </li>
+  <li>insieme di etichette pu&ograve; cambiare in base l'applicazione </li>
+  <li>viene usato il concetto di <i>tipo di documento</i>
+    <ul>
+      <li>specificato attraverso una <i>Document Type Declaration</i>
+o <i>DTD</i>
+(&egrave; parte dello standard XML) </li>
+      <li>permette di imporre al documento una certa struttura (ovvero
+come si compongono le sue parti) </li>
+      <li>le parti sono delimitate dalla marcatura </li>
+    </ul>
+  </li>
+</ul>
+<p>DTD: specifica la struttura della marcatura ammessa </p>
+<hr> <b>Specifiche aggiuntive</b>
+<p>Si rendono necessarie per rendere XML funzionale sul Web </p>
+<ul>
+  <li>presentazione del documento (fogli di stile): XSL (XSLT), CSS, FOP</li>
+  <li>significato della marcatura
+    <ul>
+      <li>collegamenti ipertestuali : XPath, XLink, XPointer </li>
+      <li>semantica : RDF, OIL, DAML<br>
+      </li>
+    </ul>
+  </li>
+  <li>meccanismi pi&ugrave; flessibili per la specifica della
+struttura: XML Schema, XML-Data, DDML<br>
+  </li>
+  <li>linguaggi di interrogazione per XML : XPath, XQuery, XML-QL, XSL</li>
+  <li>supporto diverse tipologie di dispositivo: XHTML, WML, VoiceML,
+XForms<br>
+  </li>
+  <li>sistemi di cooperazione applicativa (web service): SOAP, WSDL,
+UDDI<br>
+  </li>
+</ul>
+<hr> <b>Linguaggi di marcatura a confronto</b> <font size="-1"> </font>
+<dl>
+  <dt><strong><i>SGML</i></strong> </dt>
+  <dd>&egrave; un linguaggio molto espressivo per la definizione di
+linguaggi di marcatura (&egrave; un metalinguaggio) </dd>
+  <dt><strong><i>HTML</i></strong> </dt>
+  <dd>&egrave; un linguaggio di marcatura definito in termini di SGML,
+ovvero &egrave; specificato da una DTD SGML </dd>
+  <dt><strong><i>XML</i></strong> </dt>
+  <dd>&egrave; sia un linguaggio di marcatura, sia un linguaggio per la
+definizione di linguaggi di marcatura </dd>
+</dl>
+<p>Con XML si considera tutto l'insieme di standard associati </p>
+<hr> <b>Motivazioni per l'uso di XML (Web)</b>
+<ul>
+  <li>XML &egrave; il naturale successore di HTML come linguaggio per
+il Web </li>
+  <li>XML permette di superare le limitazioni di HTML </li>
+  <li>estensioni non-standard dei browser non pi&ugrave; necessarie </li>
+  <li>XML permette di definire nuovi linguaggi di marcatura
+    <ul>
+      <li>etichette specifiche per il tipo di applicazione (es. ChML,
+MathML, CDF, ...) </li>
+      <li>modalit&agrave; di visualizzazione possono essere definite
+(non direttamente in XML, ma tramite gli standard associati) </li>
+    </ul>
+  </li>
+</ul>
+<hr> <b>Motivazioni per l'uso di XML (B2B, e-gov)</b>
+<p>(EDI - Electronic Data Interchange) fino ad oggi: </p>
+<ul>
+  <li>formati proprietari ed incompatibili </li>
+  <li>infrastrutture di comunicazione dedicate </li>
+</ul>
+<p>XML come EDI (c.d., web service)<br>
+</p>
+<ul>
+  <li>fornisce un meccanismo generico per rappresentare dati </li>
+  <li>fornisce un meccanismo generico per il trasporto di dati
+    <ul>
+      <li>serializzazione dei dati in uno stream XML </li>
+      <li>trasporto via Web usando HTTP (o altro protocollo) </li>
+    </ul>
+  </li>
+</ul>
+<!-- MATH
+ $\Longrightarrow$
+ --> Vantaggi: eliminazione di formati
+proprietari e riduzione dei costi di sviluppo<br>
+<hr> <b>Il ruolo del W3C - <i><tt>http://www.w3.org/</tt></i> </b>
+<ul>
+  <li>costituito da esperti accademici e delle maggiori industrie </li>
+  <li>promuove e coordina lo sviluppo dei nuovi standard Web </li>
+  <li>mantiene un archivio di documenti e lo rende accessibile </li>
+  <li>diverse categorie di documenti mantenuti dal W3C
+    <ul>
+      <li><i>working draft</i> (prefisso <tt>WD</tt> nel nome):
+proposta
+su cui una sottocomissione sta lavorando </li>
+      <li><i>proposed</i> (<tt>PR</tt>) e <i>candidate recommendation</i>
+(<tt>CR</tt>): proposta sostanzialmente completa e in attesa di
+approvazione </li>
+      <li><i>recommendation</i> (<tt>REC</tt>): proposta approvata -
+uno
+standard di fatto </li>
+    </ul>
+  </li>
+</ul>
+<hr> <b>Parte 2: Documenti XML ben formati</b>
+<ul>
+  <li>Forma di un documento XML </li>
+  <li>Rappresentazione di caratteri </li>
+  <li>Elementi, Attributi, Entit&agrave; </li>
+  <li>Sezioni CDATA </li>
+  <li>Commenti, Istruzioni di processamento </li>
+</ul>
+<hr> <b>Forma di un documento XML</b>
+<p>Un documento XML &egrave; costituito da: </p>
+<ul>
+  <li>un <i>prologo</i> (opzionale), costituito da
+    <ul>
+      <li>una dichiarazione XML </li>
+      <li>una DTD </li>
+    </ul>
+  </li>
+  <li>un'<i>istanza di documento</i>, contenente
+    <ul>
+      <li>testo libero </li>
+      <li>elementi delimitati da etichette </li>
+      <li>attributi associati ad elementi </li>
+      <li>entit&agrave; </li>
+      <li>sezioni CDATA </li>
+      <li>istruzioni di processamento </li>
+      <li>commenti </li>
+    </ul>
+  </li>
+</ul>
+<hr> <b>Codifica dei caratteri</b>
+<p>XML usa la codifica dei caratteri <i>Unicode</i> (UTF-16) </p>
+<ul>
+  <li>&egrave; un codice a 16 bit (65536 simboli) </li>
+  <li>&egrave; sufficiente a rappresentare i caratteri di tutte le
+lingue </li>
+  <li>ogni carattere &egrave; rappresentato da al pi&ugrave; quattro
+cifre esadecimali <br>
+Es. &amp;#xA01F; </li>
+  <li>i primi 256 caratteri sono il codice ASCII (UTF-8) <br>
+Es. &amp;#xA; (linefeed), &amp;#x20; (blank), &amp;#x4E; (N), ... </li>
+</ul>
+<p>Un processore XML: </p>
+<ul>
+  <li>deve riconoscere almeno i codici Unicode ed ASCII </li>
+  <li>pu&ograve; riconoscere altri codici </li>
+</ul>
+<hr> <b>Documenti XML ben formati</b>
+<p>Un documento che rispetta la specifica di XML &egrave; detto <br>
+<i>ben formato</i>: </p>
+<ul>
+  <li>costituito da un <i>insieme di elementi</i> annidati </li>
+  <li>un <i>elemento</i> &egrave; costituito da una coppia di
+etichette
+di apertura e di chiusura e da tutto quello che racchiudono
+    <table cellpadding="3">
+      <tbody>
+        <tr>
+          <td align="left"><font face="Courier New">&lt;autore&gt;Jeffrey
+D. Ullman&lt;/autore&gt;</font></td>
+        </tr>
+        <tr>
+          <td align="left"><font face="Courier New">&lt;autore&gt;&lt;nome&gt;Jeffrey
+D.&lt;/nome&gt; ... &lt;/autore&gt;</font></td>
+        </tr>
+      </tbody>
+    </table>
+    <ul>
+      <li><i>nome</i> dell'elemento: <tt>autore</tt> </li>
+      <li><i>etichetta di apertura</i> dell'elemento: <tt>&lt;autore&gt;</tt>
+      </li>
+      <li><i>etichetta di chiusura</i> dell'elemento: <tt>&lt;/autore&gt;</tt>
+      </li>
+      <li><i>contenuto</i> dell'elemento:
+        <table cellpadding="3">
+          <tbody>
+            <tr>
+              <td align="left"><font face="Courier New">Jeffrey D.
+Ullman</font></td>
+            </tr>
+            <tr>
+              <td align="left"><font face="Courier New">&lt;nome&gt;Jeffrey
+D.&lt;/nome&gt;</font></td>
+            </tr>
+          </tbody>
+        </table>
+      </li>
+    </ul>
+  </li>
+</ul>
+<hr> <b>Documenti XML ben formati (2)</b>
+<p>Il <i>contenuto</i> di un elemento &egrave; costituito da: </p>
+<ul>
+  <li>altri elementi (detti <i>figli</i>), delimitati da coppie di
+etichette </li>
+  <li>testo libero (non contenente marcatura), detto <tt>#PCDATA</tt> </li>
+  <li>riferimenti ad entit&agrave; </li>
+</ul>
+<p><font face="Courier New">&lt;esempio&gt;<br>
+&nbsp; Qui inizia il contenuto di un elemento<br>
+&nbsp; &lt;figlio&gt; questo e` un elemento figlio &lt;/figlio&gt;<br>
+&nbsp; testo libero con riferimento all'entita` &amp;amp;<br>
+&nbsp; &lt;figlio&gt; un altro elemento figlio &lt;/figlio&gt;<br>
+&lt;/esempio&gt;<br>
+</font></p>
+<hr> <b>Documenti XML ben formati (3)</b>
+<ul>
+  <li>le etichette devono essere <i>annidate correttamente</i> <br>
+Esempio di documento non ben formato:<br>
+    <font face="Courier New"><br>
+&nbsp;&nbsp;&nbsp;&nbsp; &lt;testo&gt; <br>
+&nbsp;&nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&lt;bold&gt;&lt;italic&gt;XML&lt;/bold&gt;&lt;/italic&gt; <br>
+&nbsp;&nbsp;&nbsp;&nbsp; &lt;/testo&gt;&nbsp;&nbsp;&nbsp; </font> </li>
+  <li>ci deve essere <i>un solo elemento radice</i> <br>
+Esempio di documento con pi&ugrave; radici:<br>
+    <font face="Courier New"><br>
+&nbsp; &lt;bibliografia&gt; <br>
+&nbsp; &nbsp;&nbsp;&lt;pubbl&gt;&lt;autore&gt;Ullman&lt;/autore&gt;
+...&lt;/pubbl&gt; <br>
+&nbsp; &nbsp;&nbsp;&lt;pubbl&gt;&lt;autore&gt;Floyd&lt;/autore&gt;
+... &lt;/pubbl&gt; <br>
+&nbsp; &nbsp;&nbsp;Adesso `e ben formato <br>
+&nbsp; &lt;/bibliografia&gt;</font> </li>
+</ul>
+<hr> <b>Elementi vuoti</b>
+<p>Il contenuto di un elemento pu&ograve; essere vuoto. </p>
+<p>Due modi di denotare un <i>elemento vuoto</i>: </p>
+<ul>
+  <li>coppia di etichette di apertura e chiusura: <font
+ face="Courier New">&lt;vuoto&gt;&lt;/vuoto&gt;</font> </li>
+  <li>etichetta di elemento vuoto: <font face="Courier New">&lt;vuoto/&gt;</font>
+  </li>
+</ul>
+<p><font face="Courier New">&lt;p&gt;&lt;/p&gt;<br>
+&lt;h1&gt;Bibliografia&lt;/h1&gt;<br>
+&nbsp;&nbsp;&lt;ul&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;li&gt;&lt;b&gt;Ullman&lt;/b&gt; ...
+&lt;/li&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;li&gt;&lt;b&gt;Floyd&lt;/b&gt; ...
+&lt;/li&gt;<br>
+&nbsp;&nbsp;&lt;/ul&gt;<br>
+&lt;hr/&gt;</font> </p>
+<hr> <b>Uso di elementi vuoti</b>
+<p>Non sono inutili in quanto aggiungono informazione al documento: </p>
+<ul>
+  <li>attraverso attributi associati all'elemento </li>
+</ul>
+<p><font face="Courier New">&nbsp;&nbsp;&nbsp;&nbsp; &lt;IMG
+src="colosseo.gif"<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; align="left"<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; height="50"<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; width="30"/&gt;</font> </p>
+<ul>
+  <li>attraverso la presenza stessa dell'elemento
+    <p><font face="Courier New">&nbsp; &lt;BR/&gt; </font></p>
+  </li>
+</ul>
+<hr> <b>Nomi di elemento</b>
+<p>XML &egrave; <i>case-sensitive</i> - esempio non ben formato:<br>
+<font face="Courier New"><br>
+&nbsp;&nbsp;&nbsp;&nbsp; &lt;elenco-clienti&gt; <br>
+&nbsp;&nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&lt;cliente&gt;&lt;codice&gt;CC128&lt;/codice&gt; ... &lt;/<font
+ color="#ff0000">CLIENTE</font>&gt; <br>
+&nbsp;&nbsp;&nbsp;&nbsp; &lt;/Elenco-Clienti&gt;&nbsp;&nbsp;&nbsp;</font>
+</p>
+<p>Errore comune: dimenticare "<tt>/</tt>" nell'etichetta di chiusura -
+es: </p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <font
+ face="Courier New">&lt;elenco-clienti&gt; <br>
+&nbsp;&nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&lt;cliente&gt;&lt;codice&gt;CC128&lt;/codice&gt; ... &lt;<font
+ color="#ff0000">cliente</font>&gt; <br>
+&nbsp;&nbsp;&nbsp;&nbsp; &lt;/elenco-clienti&gt;&nbsp;&nbsp;&nbsp;<br>
+</font></p>
+<hr> <b>Nomi di elemento (2)</b>
+<p>Possono contenere solo: lettere, cifre, <tt>-</tt>, <tt>_</tt>, <tt>.</tt>,<tt>:</tt>.</p>
+<p>Carattere "<tt>:</tt>" usato solo per separare <i>namespace</i>. </p>
+<p>Nomi che iniziano con <font face="Courier New"><tt>XML</tt>,<tt>xml</tt>,<tt>xML</tt>,</font>...sono
+riservati. </p>
+<p><font face="Courier New">&lt;nomiPermessi&gt;<br>
+&nbsp; &lt;xsl:template/&gt;<br>
+&nbsp; &lt;Nome_elemento_lungo/&gt;<br>
+&nbsp; &lt;Altro-nome-lungo/&gt;<br>
+&nbsp; &lt;nome.con.punti/&gt;<br>
+&nbsp; &lt;a1233-231-231/&gt;<br>
+&nbsp; &lt;_12/&gt;<br>
+&lt;/nomiPermessi&gt;</font> </p>
+<p><font face="Courier New">&lt;nomi+Vietati&gt;<br>
+&nbsp; &lt;questiNO@#$%^()+?*;$=/&gt;<br>
+&nbsp; &lt;Un;nome*2/&gt;<br>
+&nbsp; &lt;XmL-riservato/&gt;<br>
+&nbsp; &lt;8-inizia-con-cifra/&gt;<br>
+&nbsp; &lt;niente spazi/&gt;<br>
+&nbsp; &lt;riservati&lt;&amp;&gt;&gt;<br>
+&lt;/nomi+Vietati&gt;</font><font size="-1"> <br>
+</font> </p>
+<hr> <b>Caratteri riservati</b>
+<p>Il testo non pu&ograve; contenere i caratteri riservati per la
+marcatura </p>
+<ul>
+  <li>carattere "<tt>&lt;</tt>" (denota l'inizio di un'etichetta) </li>
+  <li>carattere "<tt>&amp;</tt>" (per le entit&agrave; - pi&ugrave;
+avanti) </li>
+</ul>
+<p><i>Si usano&nbsp;</i>
+<table cellpadding="3">
+  <tbody>
+    <tr>
+      <td align="left">&nbsp;</td>
+      <td align="right">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+      <td align="left">"<tt>&amp;lt;</tt>"</td>
+      <td align="left">per</td>
+      <td align="left">"<tt>&lt;</tt>"</td>
+    </tr>
+    <tr>
+      <td align="left">&nbsp;</td>
+      <td align="right">&nbsp;</td>
+      <td align="left">"<tt>&amp;amp;</tt>"</td>
+      <td align="left">per</td>
+      <td align="left">"<tt>&amp;</tt>"</td>
+    </tr>
+  </tbody>
+</table>
+</p>
+<p><tt><font face="Courier New">&lt;editore&gt;Wiley &amp;amp;
+sons&lt;/editore&gt; <br>
+&lt;disequazione&gt;x*y &amp;lt; z&lt;/disequazione&gt;</font></tt> </p>
+<p>I caratteri &nbsp;"<tt>&gt;</tt>", &nbsp;"<tt>"</tt>", e &nbsp;"<tt>'</tt>"
+possono essere sostituiti da <br>
+"<tt>&amp;gt;</tt>", &nbsp;"<tt>&amp;quot;</tt>" e &nbsp;"<tt>&amp;apos;</tt>".</p>
+<hr> <b>Attributi</b>
+<p>Un elemento pu&ograve; avere nessuno, uno o pi&ugrave; <i>attributi</i>.</p>
+<ul>
+  <li>un attributo ha un <i>nome</i> ed associa una <i>propriet&agrave;</i>
+ad un elemento </li>
+  <li>i caratteri ammessi nei nomi sono gli stessi che per gli elementi</li>
+  <li>gli attributi vengono specificati nell'etichetta iniziale
+attraverso coppie <i>attributo<tt>="</tt>valore<tt>"</tt></i> </li>
+  <li>il valore deve essere delimitato da una coppia di apici singoli o
+doppi</li>
+  <li>un elemento non pu&ograve; avere due attributi con lo stesso nome<br>
+  </li>
+</ul>
+<hr> <b>Attributi&nbsp;</b><font face="Courier New"><br>
+<br>
+&lt;attributi-ben-formati&gt;<br>
+&nbsp; &lt;elemento _ok="yes"/&gt;<br>
+&nbsp; &lt;un attr="il suo valore"/&gt;<br>
+&nbsp; &lt;molti primo="1" secondo='2' terzo="333"/&gt;<br>
+&nbsp; &lt;apici-doppi-o-singoli<br>
+&nbsp;&nbsp;&nbsp;&nbsp; doppi="John's"<br>
+&nbsp;&nbsp;&nbsp;&nbsp; singoli='Stampa: "Ciao Mondo!" '/&gt;<br>
+&lt;/attributi-ben-formati&gt;<br>
+</font>
+<p>N.B. In HTML gli apici intorno al valore possono mancare&nbsp;<br>
+in XML gli <i>apici sono obbligatori</i>. </p>
+<hr> <b>Attributi - Esempi mal formati</b><br>
+<br>
+<font face="Courier New">&lt;attributi-mal-formati&gt;<br>
+&nbsp; &lt;carattere-non-ammesso a*b="23432"/&gt;<br>
+&nbsp; &lt;separatori-diversi&nbsp;&nbsp;&nbsp; valore="12'/&gt;<br>
+&nbsp; &lt;cambia-separatore&nbsp;&nbsp;&nbsp;&nbsp; valore="aa"aa"/&gt;<br>
+&nbsp; &lt;cambia-separatore&nbsp;&nbsp;&nbsp;&nbsp; valore='bb'bb'/&gt;<br>
+&nbsp; &lt;parola-riservata&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+XML-ID="xml234"/&gt;<br>
+&lt;/attributi-mal-formati&gt;<br>
+</font>
+<hr> <b>Uso di attributi ed elementi</b>
+<p>Per memorizzare dati possiamo usare sia elementi che attributi.<font
+ face="Courier New"><br>
+<br>
+&lt;impiegato&gt;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br>
+&nbsp; &lt;nome&gt;A.
+Rossi&lt;/nome&gt;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br>
+&nbsp;
+&lt;ddn&gt;1/1/1950&lt;/ddn&gt;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br>
+&lt;/impiegato&gt; </font> </p>
+<p><font face="Courier New">&lt;impiegato ddn="1/1/1950"&gt;<br>
+&nbsp; &lt;nome&gt;A. Rossi&lt;/nome&gt;<br>
+&lt;/impiegato&gt; </font> </p>
+<p><font face="Courier New"><br>
+</font>La scelta dipende dall'applicazione: </p>
+<ul>
+  <li>non si pu&ograve; forzare <tt>#PCDATA</tt> a non essere vuoto </li>
+  <li>gli attributi non si possono strutturare</li>
+  <li>si possono enumerare i valori ammessi per gli attributi<br>
+  </li>
+</ul>
+<hr> <b>Entit&agrave;</b>
+<ul>
+  <li>un'<i>entit&agrave;</i> &egrave; una parte di documento a cui si
+&egrave; dato un <i>nome</i> (una specie di macro) </li>
+  <li>pu&ograve; essere
+    <ul>
+      <li>interna: definita all'interno del documento (o del DTD) </li>
+      <li>esterna: memorizzata su un altro file </li>
+    </ul>
+  </li>
+  <li>il testo pu&ograve; contenere riferimenti ad entit&agrave;: <tt>&amp;nome-entita;</tt>
+  </li>
+  <li>quando viene processato il documento, i riferimenti alle
+entit&agrave; devono essere espansi </li>
+  <li>entit&agrave; predefinite: <tt>&amp;lt;</tt>, &nbsp;<tt>&amp;amp;</tt>,
+&nbsp;<tt>&amp;gt;</tt>, &nbsp;<tt>&amp;quot;</tt>, &nbsp;<tt>&amp;apos;</tt>
+  </li>
+</ul>
+<p>Vedremo pi&ugrave; avanti come definire nuove entit&agrave;. </p>
+<hr> <b>Sezioni </b><font face="Courier New">CDATA</font>
+<ul>
+  <li>servono ad includere testo contenente caratteri riservati </li>
+  <li>possono comparire ovunque pu&ograve; comparire testo libero </li>
+  <li>tutti i caratteri riservati perdono il loro significato speciale
+    <ul>
+      <li>"<tt>&lt;</tt>" e "<tt>&amp;</tt>" <i>non</i> vanno
+sostituiti con "<tt>&amp;lt;</tt>" e "<tt>&amp;amp;</tt>" </li>
+      <li>le sequenze <tt>&lt;elem&gt;</tt>, <tt>&lt;/elem&gt;</tt> e
+        <tt>&lt;elem/&gt;</tt> <i>non</i>
+vengono interpretate come marche </li>
+    </ul>
+  </li>
+  <li>le sezioni CDATA non possono essere annidate </li>
+  <li>racchiuse tra "<tt><i>&lt;![CDATA[</i></tt>" e "<tt><i>]]&gt;</i></tt>"</li>
+  <li>una sezione CDATA non pu&ograve; contenere la stringa "<tt><i>]]&gt;</i></tt>"</li>
+</ul>
+<hr> <b>Sezioni </b><font face="Courier New">CDATA </font><b>- Esempi</b>
+<p>Questo lucido in formato XML<font face="Courier New"><br>
+<br>
+&lt;lucido&gt;<br>
+&nbsp; &lt;titolo&gt;Sezioni CDATA - Esempi&lt;/titolo&gt;<br>
+&nbsp; Questo lucido in formato XML<br>
+&nbsp; &lt;esempio&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp; &lt;![CDATA[<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &lt;lucido&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+&lt;titolo&gt;Sezioni CDATA - Esempi&lt;/titolo&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+Questo lucido in formato XML<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+... caratteri riservati OK: &amp;, &lt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &lt;/lucido&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp; ]]&gt;<br>
+&nbsp; &lt;/esempio&gt;<br>
+&lt;/lucido&gt; </font></p>
+<hr> <b>Sezioni </b><font face="Courier New">CDATA </font><b>-
+Esempi
+(2)</b>
+<p>La stringa "<tt><i>]]&gt;</i></tt>" non &egrave; ammessa </p>
+<p><font face="Courier New"><br>
+&lt;esempio&gt;<br>
+&nbsp;&nbsp; &lt;![CDATA[Un programma C<br>
+&nbsp;&nbsp;&nbsp;&nbsp; if (x[2] + y[i] &lt; 3*z) {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; if (vet[x[i]]&gt; 18)
+{&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+/* 1 */<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; if (a &lt; b)
+printf("Ciao");&nbsp;&nbsp;&nbsp;&nbsp; /* 2 */<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; }<br>
+&nbsp;&nbsp;&nbsp;&nbsp; }<br>
+&nbsp;&nbsp; ]]&gt;<br>
+&nbsp;&nbsp; sezione CDATA termina su riga 1 e non qui<br>
+&nbsp;&nbsp; "a &amp;lt; b" da` errore perche` sono fuori CDATA<br>
+&lt;/esempio&gt;<br>
+</font></p>
+<p>Al posto di <i><tt>]]&gt;</tt></i> bisogna includere <tt>]]&amp;gt;</tt>
+</p>
+<hr> <b>Commenti</b>
+<ul>
+  <li>servono a escludere una parte di documento dal processamento </li>
+  <li>possono comparire ovunque all'esterno della marcatura </li>
+  <li>un processore XML pu&ograve; o meno rendere disponibili le parti
+di documento racchiuse tra commenti </li>
+  <li>sono delimitati da <tt>&lt;!--</tt> e <tt>--&gt;</tt> </li>
+  <li>possono contenere qualsiasi carattere (inclusi "<tt>&lt;</tt>" e "<tt>&amp;</tt>"),
+tranne "<tt><i>-</i></tt>" </li>
+  <li>non possono essere annidati </li>
+</ul>
+<hr> <b>Commenti - Esempi</b><font face="Courier New"><br>
+<br>
+&lt;bibliografia&gt;<br>
+&nbsp; &lt;!-- voce commentata &lt;pub&gt; ... &lt;/pub&gt;&nbsp; --&gt;<br>
+&nbsp; &lt;pub&gt; ... &lt;/pub&gt;<br>
+&nbsp; &lt;!-- commento su piu` righe<br>
+&nbsp;&nbsp;&nbsp; &lt;pub&gt; ... &lt;/pub&gt;&nbsp;&nbsp; &lt;- usa
+"&lt;"<br>
+&nbsp;&nbsp;&nbsp; &lt;pub&gt; ... &lt;/pub&gt;&nbsp;&nbsp; anche
+"&amp;" e` ammesso<br>
+&nbsp; --&gt;<br>
+<br>
+&nbsp; &lt;!-- commento non -- valido --&gt;<br>
+&nbsp; &lt;pub &lt;!-- qui no commento --&gt; id="Ullm82"&gt; ...
+&lt;/pub&gt;<br>
+&nbsp; &lt;!-- un commento<br>
+&nbsp;&nbsp;&nbsp; &lt;!-- non puo` contenere commenti annidati --&gt;<br>
+&nbsp; --&gt;<br>
+&lt;/bibliografia&gt;<br>
+</font>
+<hr> <b>Commenti in sezioni </b><font face="Courier New">CDATA</font>
+<p>In una sezione <font face="Courier New">CDATA</font> i commenti non
+vengono riconosciuti come tali<br>
+<font face="Courier New"><br>
+&lt;esempio&gt;<br>
+&nbsp;&nbsp; Questo e` un &lt;!-- commento --&gt;<br>
+&nbsp;&nbsp; &lt;![CDATA[ Sezione CDATA con "commento"<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &lt;!-- fa parte del testo --&gt; altro
+testo<br>
+&nbsp;&nbsp; ]]&gt;<br>
+&nbsp;&nbsp; Questo e` di nuovo un &lt;!-- commento --&gt;<br>
+&lt;/esempio&gt;<br>
+</font> </p>
+<hr> <b>Istruzioni di processamento (PI)</b>
+<ul>
+  <li>permettono di includere nel documento istruzioni da passare alle
+applicazioni </li>
+  <li>fanno parte del prologo (non dei caratteri che compongono il
+documento) </li>
+  <li>devono essere passate alle applicazioni </li>
+  <li>hanno la forma &nbsp;&nbsp;<font face="Courier New">&lt;?PITarget
+... ?&gt;</font>, &nbsp;&nbsp;dove
+    <ul>
+      <li><font face="Courier New">PITarget</font> denota
+l'applicazione
+a cui &egrave; diretta la PI </li>
+      <li><font face="Courier New">...</font> denota ulteriori dati da
+passare all'applicazione </li>
+    </ul>
+  </li>
+</ul>
+<p>Esempio: processamento di uno stylesheet da parte di XSLT </p>
+<p><tt>&lt;?xml-stylesheet href="mystyle.xsl" type="text/xsl"&nbsp;?&gt;</tt>
+</p>
+<hr> <b>Dichiarazione XML iniziale</b>
+<p>Documenti XML possono (e in realt&agrave; dovrebbero) iniziare con
+una <i>dichiarazione XML</i> che specifica la versione di XML
+utilizzata<br>
+<font face="Courier New"><br>
+&lt;?xml version="1.0"?&gt;<br>
+&lt;testo&gt;Questo documento e` conforme alla specifica<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; di XML 1.0.&lt;/testo&gt;<br>
+<br>
+</font>La dichiarazione XML pu&ograve; anche specificare la <i>codifica
+dei caratteri</i> usati: </p>
+<p><font face="Courier New">&lt;?xml version="1.0"
+encoding="ISO-8859-2"?&gt;<br>
+</font></p>
+<p>La codifica dei caratteri specifica il mapping tra i byte che
+costituiscono la rappresentazione fisica del documento (ad es., file,
+socket, ...) ed i caratteri.<font face="Courier New"><br>
+</font></p>
+<hr> <b>HTML e XHTML</b>
+<p><i>XHTML</i> &egrave; una versione recente di HTML compatibile con
+XML: </p>
+<ul>
+  <li>i documenti HTML non sono necessariamente ben formati </li>
+  <li>i documenti XHTML lo sono </li>
+</ul>
+<p>Principali <i>differenze</i> tra XHTML e XML </p>
+<ul>
+  <li>etichette devono essere annidate correttamente </li>
+  <li>tutte le etichette devono essere chiuse </li>
+  <li>nomi di elementi ed attributi sono minuscoli </li>
+  <li>valori di attributi racchiusi tra apici </li>
+  <li>altre differenze dovute alle differenze nei DTD di XML ed SGML</li>
+</ul>
+&Egrave; possibile trasformare un documento HTML in un documento XHTML
+equivalente, se il documento HTML non &egrave; ambiguo.<br>
+<hr>
+<p><b>Riferimenti</b><br>
+</p>
+<p><cite><a href="http://www.w3.org/TR/REC-xml">Extensible Markup
+Language (XML) 1.0 (Second Edition)</a></cite> <strong>W3C
+Recommendation</strong>
+6 October 2000, Tim Bray, Jean Paoli, C. M. Sperberg-McQueen, Eve Maler.</p>
+<p><a href="http://www.w3.org/TR/xhtml1/"><cite> XHTML&#8482; 1.0 The
+Extensible HyperText Markup Language (Second Edition)</cite></a> <strong>W3C
+Recommendation</strong> 26 January 2000, revised 1 August 2002 </p>
+<p><cite><a
+ href="http://www.dis.uniroma1.it/%7Enardi/Didattica/lt/dispense/xml.ps.gz">XML
+Dispensa per il corso di Linguaggi e Traduttori</a></cite> A.A.
+2002/2003, Diego Calvanese, Luigi Dragone, Daniele Nardi, Viviana
+Olivieri</p>
+<ul>
+</ul>
+</body>
+</html>

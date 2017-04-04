@@ -1,0 +1,66 @@
+<!doctype html public "-//w3c//dtd html 4.0 transitional//en">
+<html>
+<head>
+<link href="java.css" rel="stylesheet" type="text/css">
+<title>Stampa dei valori positivi di una funzione</title>
+</head>
+
+<body>
+
+<h2>Stampa dei valori positivi di una funzione</h2>
+
+<p>
+Sia data una funzione da interi a interi, per esempio
+<tt>x*x-10*x+2</tt>. Si scriva un programma Java che
+stampi i soli valori positivi che la funzione assume
+in un certo intervallo, per esempio da -100 a +100.<p>
+
+Il problema si pu&ograve; riformulare cos&iacute;: per
+ogni valore di <tt>x</tt> da -100 a +100, se la funzione
+assume valore positivo, si stampi il valore. In
+termini di programmazione, &egrave; quindi necessario
+un ciclo in cui <tt>x</tt> va da -100 a +100; in ogni
+passo, si controlla se il valore della funzione &egrave;
+positivo oppure no, stampando eventualmente il valore.
+Il programma
+<a href="SoloPositivi.java">SoloPositivi.java</a> risolve
+il problema in questo modo.<p>
+
+<pre>
+/*
+  Stampa i valori positivi che una funzione assume
+  in un certo intervallo.
+*/
+
+class SoloPositivi {
+  public static void main(String[] args) {
+    int x,f;
+
+    for(x=-100; x<=100; x=x+1) {
+      f=x*x-10*x+2;
+      if( f>=0 ) {
+        System.out.println("Per x="+x+" la funzione vale "+f);
+      }
+    }
+  }
+}
+
+</pre>
+
+<p>
+L'unica cosa nuova di questo programma rispetto a quelli
+precedenti &egrave; che all'interno del ciclo, oltre a
+istruzioni semplici, compare anche una istruzione
+condizionale. In effetti, all'interno di un ciclo
+possono apparire istruzioni qualsiasi, incluse istruzioni
+condizionali, e anche altri cicli (questo risulta utile
+sulle matrici, che si vedranno pi&ugrave; avanti). Lo
+stesso vale anche per le istruzioni condizionali:
+all'interno si possono mettere altre istruzioni condizionali,
+e anche dei cicli.<p>
+
+
+
+</body>
+</html>
+

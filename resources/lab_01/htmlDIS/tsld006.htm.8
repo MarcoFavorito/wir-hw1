@@ -1,0 +1,56 @@
+
+<HTML>
+
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html;charset=iso-8859-1">
+<meta name="GENERATOR" content="Microsoft Internet Assistant for Macintosh PowerPoint 98">
+ <TITLE>Index Nested Loops Join</TITLE> 
+</HEAD>
+
+<BODY     >
+
+ <H1>Index Nested Loops Join</H1> 
+ <P><UL></P>
+
+<P><LI><H2>If there is an index on the join column of one relation (say S), can make it the inner and exploit the index.
+</H2></P>
+
+<P><UL></P>
+
+<P><LI>Cost:  M + ( (M*pR) * cost of finding matching S tuples) 
+</UL></UL><UL></P>
+
+<P><LI><H2>For each R tuple, cost of probing S index is about 1.2 for hash index, 2-4 for B+ tree.  Cost of then finding S tuples (assuming Alt. (2) or (3) for data entries) depends on clustering.
+</H2></P>
+
+<P></UL><UL></P>
+
+<P><LI><H2>Clustered index:  1 I/O (typical), unclustered: upto 1 I/O per matching S tuple.</H2></P>
+
+<P></UL></P>
+
+<P><UL></P>
+
+<P>foreach tuple r in R do
+</UL><UL></P>
+
+<P>	foreach tuple s in S where ri == sj  do
+</UL><UL></P>
+
+<P>		add <r, s> to result</UL></P>
+
+<P></P> 
+<P>
+<TABLE>
+  <TD HEIGHT=100 WIDTH=100> <A HREF="tsld005.htm">Previous slide</A> </TD>
+  <TD HEIGHT=100 WIDTH=100> <A HREF="tsld007.htm">Next slide</A> </TD>
+  <TD HEIGHT=100 WIDTH=150> <A HREF="tsld001.htm">Back to first slide</A> </TD>
+  <TD HEIGHT=100 WIDTH=150> <A HREF="sld006.htm">View graphic version</A> </TD>
+</TABLE>
+<BR>
+</P>
+
+
+
+</Body>
+</HTML>

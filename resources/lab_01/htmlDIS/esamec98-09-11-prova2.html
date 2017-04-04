@@ -1,0 +1,65 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1">
+<META NAME="Generator" CONTENT="Microsoft Word 98">
+<TITLE>Esame 11/9/1998 -- II parte</TITLE>
+</HEAD>
+<BODY>
+
+<B><FONT FACE="Times"><P ALIGN="CENTER">Fondamenti di Informatica</P>
+</FONT><FONT FACE="Times" SIZE=3><P ALIGN="CENTER">Ambiente e Territorio</P>
+</B><I><P ALIGN="CENTER">Appello dell&#146;11-9-1998</P>
+</I><P ALIGN="JUSTIFY"></P>
+<P ALIGN="JUSTIFY">&nbsp;</P>
+<P ALIGN="JUSTIFY">&nbsp;</P>
+<B><P ALIGN="JUSTIFY">Esercizio 2 (4 punti)</P>
+</B><P ALIGN="JUSTIFY"></P>
+<P ALIGN="JUSTIFY">Descrivere le regole di conversione di tipo (implicita ed esplicita) che sono utilizzate nel linguaggio C.</P>
+<P ALIGN="JUSTIFY"></P>
+<P ALIGN="JUSTIFY">&nbsp;</P>
+<P ALIGN="JUSTIFY">&nbsp;</P>
+<B><P ALIGN="JUSTIFY">Esercizio 3 (4 punti)</P>
+</B><P ALIGN="JUSTIFY"></P>
+<P ALIGN="JUSTIFY">Con riferimento al seguente programma C, dire quale output fornisce quando riceve in ingresso l&#146;ultima cifra del vostro numero di matricola.</P>
+<P ALIGN="JUSTIFY"></P>
+<P ALIGN="JUSTIFY">&nbsp;</P>
+</FONT><FONT FACE="Courier" SIZE=2><P ALIGN="JUSTIFY">#include &lt;stdio.h&gt;</P>
+<P ALIGN="JUSTIFY"></P>
+<P ALIGN="JUSTIFY">int A[5];</P>
+<P ALIGN="JUSTIFY"></P>
+<P ALIGN="JUSTIFY">int F1(int *A)</P>
+<P ALIGN="JUSTIFY">{</P>
+<P ALIGN="JUSTIFY">&#9;*A=0;</P>
+<P ALIGN="JUSTIFY">&#9;return 1;</P>
+<P ALIGN="JUSTIFY">}</P>
+<P ALIGN="JUSTIFY"></P>
+<P ALIGN="JUSTIFY">int F2(int *z)</P>
+<P ALIGN="JUSTIFY">{</P>
+<P ALIGN="JUSTIFY">&#9;scanf("%d",z+2);</P>
+<P ALIGN="JUSTIFY">&#9;*(z+3)=z[2];</P>
+<P ALIGN="JUSTIFY">&#9;z[0]=z[0]+1;</P>
+<P ALIGN="JUSTIFY">&#9;return z[0]-1;</P>
+<P ALIGN="JUSTIFY">}</P>
+<P ALIGN="JUSTIFY">int main(void)</P>
+<P ALIGN="JUSTIFY">{</P>
+<P ALIGN="JUSTIFY">&#9;int z;</P>
+<P ALIGN="JUSTIFY">&#9;</P>
+<P ALIGN="JUSTIFY">&#9;for(z=0;z&lt;5;z=z+1)</P>
+<P ALIGN="JUSTIFY">&#9;&#9;A[z]=z;</P>
+<P ALIGN="JUSTIFY">&#9;F2(&amp;A[1]);</P>
+<P ALIGN="JUSTIFY">&#9;F1(&amp;z);</P>
+<P ALIGN="JUSTIFY">&#9;while(z&lt;5) {</P>
+<P ALIGN="JUSTIFY">&#9;&#9;printf("A[%d]=%d\n",z,A[z]);</P>
+<P ALIGN="JUSTIFY">&#9;&#9;z=z+1;</P>
+<P ALIGN="JUSTIFY">&#9;}</P>
+<P ALIGN="JUSTIFY">&#9;return 0;</P>
+<P ALIGN="JUSTIFY">}</P>
+</FONT><FONT FACE="Times" SIZE=3><P ALIGN="JUSTIFY"></P>
+<P ALIGN="JUSTIFY">&nbsp;</P>
+<P ALIGN="JUSTIFY">&nbsp;</P>
+<P ALIGN="JUSTIFY">&nbsp;</P>
+<B><P ALIGN="JUSTIFY">Esercizio 4 (4 punti)</P>
+</B><P ALIGN="JUSTIFY"></P>
+<P ALIGN="JUSTIFY">Descrivere gli operatori di join dell&#146;algebra relazionale, fornendo almeno un esempio.</P>
+<P ALIGN="JUSTIFY"></P></FONT></BODY>
+</HTML>

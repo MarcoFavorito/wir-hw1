@@ -1,0 +1,353 @@
+<!doctype html public "-//w3c//dtd html 4.0 transitional//en">
+<html>
+<head>
+<link href="java.css" rel="stylesheet" type="text/css">
+<title>Java</title>
+</head>
+
+
+<body>
+
+<h1>Stringhe</h1>
+
+
+
+<h2>Stringhe</h2>
+
+<p>
+Le <b>stringhe</b> sono sequenze di caratteri. Nei precedenti
+programmi le stringhe sono state gi&agrave; usate, anche se
+non erano state introdotte formalmente. La istruzione di stampa
+<tt>System.out.println</tt> &egrave; infatti una istruzione
+che stampa una stringa. Per dire all'interprete come
+&egrave; fatta una stringa si pu&ograve; mettere la sequenza
+di caratteri che la compone fra virgolette doppie. Per esempio,
+la sequenza di caratteri 'abcd efgs' viene rappresentata
+come <tt>"abcd efgs"</tt>. Si noti che una stringa pu&ograve;
+anche contenre degli spazi, per cui <tt>"abcd efgs"</tt>
+&egrave; una unica stringa. Dal momento che la istruzione
+<tt>System.out.println</tt> stampa una stringa, se si
+esegue <tt>System.out.println("abcd efgs")</tt> viene stampata
+la stringa 'abcd efgs'.<p>
+
+Le stringhe sono il primo tipo di dati non numerico che
+vediamo. Mentre <tt>int</tt> e <tt>double</tt> erano
+rappresentazione di numeri (interi e reali) le stringhe
+sono sequenze di caratteri. Per il resto, sono tipi di dati come
+gli altri, per cui si possono definire e usare variabili
+di tipo stringa. La dichiarazione tipica &egrave; la
+seguente:<p>
+
+<pre>
+String a;
+</pre>
+
+<p>
+Per esempio, il programma
+<a href="PrimaStringa.java">PrimaStringa.java</a> definisce
+una variabile di tipo stringa, gli assegna una valore (che
+in questo caso non pu&ograve; essere un numero, ma deve
+essere una stringa), e la stampa.<p>
+
+<pre>
+/*
+  Definisce e usa una variabile di tipo stringa.
+*/
+
+class PrimaStringa {
+  public static void main(String[] args) {
+    String a;
+
+    a="Questa e' una stringa.";
+
+    System.out.println(a);
+  }
+}
+
+</pre>
+
+<p>
+Le espressioni che &egrave; possible scrivere con le stringhe
+sono diverse da quelle sui numeri. Per esempio, l'operatore
+<tt>+</tt> nel caso dei numeri rappresenta la normale somma
+numerica, mentre nel caso delle stringhe &egrave; la concatenazione,
+cio&egrave; mette le due stringhe l'una dietro l'altra. Per
+esempio, la espressione <tt>"abcd efg"+"12c"</tt> rappresenta
+la stringa <tt>"abcd efg12c"</tt>, che &egrave; la stringa
+ottenuta mettendo il secondo operando dopo il primo.<p>
+
+Un caso particolare da tenere a mente &egrave; che quando si
+un numero a una stringa, il numero viene prima convertito in
+stringa, e poi viene fatta la normale concatenazione.
+Per esempio, la espressione
+<tt>"questo numero vale"+12</tt> d&agrave; come risultato la
+stringa <tt>"questo numero vale12"</tt>. Si faccia attenzione
+che il numero <tt>12</tt> &egrave; molto differente dalla
+stringa <tt>"12"</tt>. Per esempio, <tt>12+4</tt> d&agrave;
+<tt>16</tt> come risultato, mentre <tt>"12"+4</tt> d&agrave;
+<tt>"124"</tt>. La seconda espressione &egrave; infatti la
+somma di una stringa e di un numero, per cui il numero <tt>4</tt>
+viene convertito nella stringa <tt>"4"</tt>; a questo punto si
+fa la somma fra le due stringhe <tt>"12"</tt> e <tt>"4"</tt>.
+Usando la regola della concatenzione, si mette il carattere
+<tt>4</tt> subito dopo i caratteri <tt>12</tt>, per cui si
+ottiene la stringa <tt>124</tt>.<p>
+
+Il programma <a href="Concatenazione.java">Concatenazione.java</a>
+contiene alcuni esempi di operazioni su stringhe.<p>
+
+<pre>
+/*
+  Alcuni esempi di concatenazioni fra stringhe.
+*/
+
+class Concatenazione {
+  public static void main(String[] args) {
+    int a=10, b=20, c;
+    String z="abcd";
+    String x="123";
+    String y;
+
+    c=a+b;	// questa e' una somma fra interi: risultato 30
+
+    System.out.println(c);
+
+    y=x+z;	// concatenazione fra stringhe: risultato "123abcd"
+
+    System.out.println(y);
+
+    y=12+"3";	// concatena una stringa a un intero: ris. "123"
+
+    System.out.println(y);
+
+    y=c+x;	// concatena stringa e intero: risultato "30123"
+
+    System.out.println(y);
+  }
+}
+
+</pre>
+
+<p>
+La regola generale &egrave; molto semplice: se si somma un
+intero con una stringa, si ottiene una stringa. Una cosa simile
+succede sommando un intero a un reale: si ottiene un reale.<p>
+
+
+</body>
+
+
+
+
+<h2>Grafico di una funzione in solo testo</h2>
+
+<p>
+Si vuole stampare il grafico della funzione
+<i>f(x)=|x|/20+20*sin(x/10)+30</i>, usando solo le
+istruzioni viste fino ad ora. Un metodo semplice per fare
+questo &egrave; usare una riga di testo per ogni valore
+di <i>x</i>: su ogni riga viene stampata una sequenza
+di caratteri <tt>*</tt> lunga quando il valore della
+funzione <i>f(x)</i>.<p>
+
+Supponendo di volere il grafico per <i>x</i> che va da
+-100 a +100, occorre un ciclo for in cui la <i>x</i>
+assume valori progressivi da -100 a +100. Ad ogni passo,
+si calcola il valore di <i>f(x)</i>. A questo punto,
+occorre stampare una stringa composta da tanti asterischi
+quanto &egrave; il valore della funzione.<p>
+
+Il problema &egrave; ora come realizzare questa stringa.
+Il programma
+<a href="GraficoTesto.java">GraficoTesto.java</a>
+risolve questo problema con un ciclo for, in cui si parte
+da 1 e si arriva al valore della funzione. Ad ogni
+iterazione si aggiunge un asterisco alla variabile
+<tt>riga</tt>. Dal momento che le iterazioni sono tante
+quanto &egrave; il valore della funzione, la stringa
+alla fine &egrave; fatta da tanti <tt>*</tt> quanto 
+&egrave; il valore della funzione.<p>
+
+<pre>
+/*
+  Grafico solo testo di una funzione.
+*/
+
+class GraficoTesto {
+  public static void main(String[] args) {
+    double x,f;
+    int i;
+    String riga;
+
+    for(x=-100; x<=100; x=x+1) {
+      f=Math.abs(x)/20+20*Math.sin(x/10)+30;
+
+      riga="";
+      for(i=1; i<=f; i=i+1) {
+        riga=riga+"*";
+      }
+
+      System.out.println(riga);
+    }
+  }
+}
+
+</pre>
+
+<p>
+Alcune precisazioni: le funzioni <tt>Math.abs</tt> e
+<tt>Math.sin</tt> calcolano il valore assoluto e il seno
+di un numero reale. La istruzione <tt>riga="";</tt>
+assegna alla variabile <tt>riga</tt> la stringa vuota:
+questa &egrave; la sequenza di caratteri che non contiene
+nessun carattere, ossia la stringa di lunghezza 0. Questa
+&egrave; una stringa valida come tutte le altre. Si
+pu&ograve; quindi usare come una qualsiasi altra stringa.
+Quando la stringa vuota viene concatenata a un'altra
+stringa, si ottiene questa seconda stringa. In termini
+algebrici, la stringa vuota &egrave; l'elemento neutro
+della operazione di concatenazione fra stringhe.<p>
+
+Il programma
+<a href="GraficoTestoLimitato.java">GraficoTestoLimitato.java</a>
+&egrave; una variante del precedente in cui si &egrave;
+tenuto conto del fatto che la funzione pu&ograve; superare
+in valore la larghezza dello schermo. In questo caso, si
+&egrave; scelto di limitare la stringa <tt>riga</tt> a
+60 caratteri. Se la funzione supera questo valore, si
+aggiunge a riga il carattere "+", e si esce dal ciclo.
+
+<pre>
+/*
+  Grafico solo testo di una funzione.
+*/
+
+class GraficoTestoLimitato {
+  public static void main(String[] args) {
+    double x,f;
+    int i;
+    String riga;
+
+    for(x=-100; x<=100; x=x+1) {
+      f=Math.abs(x)/5+20*Math.sin(x/10)+30;
+
+      riga="";
+      for(i=1; i<=f; i=i+1) {
+        riga=riga+"*";
+        if( i>60 ) {
+          riga=riga+"+";
+          break;
+        }
+      }
+
+      System.out.println(riga);
+    }
+  }
+}
+
+</pre>
+
+<p>
+L'unica differenza rispetto al programma precedente &egrave;
+la presenza della istruzione condizionale in cui si controlla
+se <tt>i</tt> ha raggiunto il valore 60. In questo caso,
+si aggiunge il + alla stringa, e si esce dal ciclo,
+per cui la stringa risulta fatta di 60 asterischi pi&ugrave;
+il segno di addizione.<p>
+
+</body>
+
+
+
+
+<h2>Esempio di uso delle stringhe: stampa per righe</h2>
+
+<p>
+Vediamo un possibile uso delle operazioni fra stringhe.
+Si voglino stampare i numeri della serie di Fibonacci in
+modo che ogni riga ne contenga cinque invece che uno.
+Inoltre, ci si vuole fermare alla settima riga.<p>
+
+Il programma <a href="Colonne.java">Colonne.java</a>
+ha questa struttura: usiamo un variabile <tt>riga</tt>
+che va da 1 a 7. Usiamo poi una seconda variabile
+<tt>colonna</tt> che, per ogni riga, va da 1 a 5 (infatti,
+si vogliono cinque numeri per ogni riga, cio&egrave;
+cinque colonne di numeri). Poi abbiamo ancora le
+variabili <tt>penultimo</tt>, <tt>ultimo</tt>,
+e <tt>prossimo</tt> per la serie.<p>
+
+<pre>
+/*
+  Serie di Fibonacci, in colonne
+*/
+
+class Colonne {
+  public static void main(String[] args) {
+    int riga, colonna;
+    int penultimo, ultimo, prossimo;
+    String rigacorrente;
+
+    penultimo=1;
+    ultimo=1;
+
+    for(riga=1; riga<=7; riga=riga+1) {
+      rigacorrente=" ";
+
+      for(colonna=1; colonna<=5; colonna=colonna+1) {
+        rigacorrente=rigacorrente+" "+penultimo;
+
+        prossimo=penultimo+ultimo;
+        penultimo=ultimo;
+        ultimo=prossimo;
+      }
+
+      System.out.println(rigacorrente);
+    }
+  }
+}
+
+</pre>
+
+<p>
+Cose da notare in questo programma:
+
+<ol>
+
+<li>c'&egrave; un ciclo <tt>for</tt> dentro l'altro: questo significa
+che a ogni passata del ciclo esterno, viene eseguito il ciclo
+interno; quindi, ogni volta che <tt>riga</tt> assume un nuovo
+valore, il ciclo interno viene eseguito per tutti i valori di
+<tt>colonna</tt>;
+
+<li>ogni volta che si calcola un nuovo valore della serie, va
+aggiunto alla variabile di tipo stringa che rappresenta la riga
+che si sta costruendo; dal momento che
+<tt>rigacorrente+" "+penultimo</tt> &egrave; la espressione che
+rappresenta il contenuto della variabile <tt>rigacorrente</tt>
+a cui &egrave; stato concatenato <tt>penultimo</tt>, la istruzione 
+<tt>rigacorrente=rigacorrente+" "+penultimo;</tt> ha come effetto
+quello di concatenare <tt>penultimo</tt> a <tt>rigacorrente</tt>
+e mettere poi il risultato in <tt>rigacorrente</tt>;
+
+<li>all'inizio della creazione di una nuova riga, occorre
+cancellare la riga precedente e ricominciare con i nuovi
+valori; per questo, all'inizio di ogni riga, si esegue la
+istruzione <tt>rigacorrente=" ";</tt>. Come per tutte le
+variabili, l'assegnazione mette quello che sta a destra nella
+variabile a sinistra. Questo significa che il contenuto di
+<tt>rigacorrente</tt> viene sostituito da <tt>" "</tt>.
+
+</ol>
+
+
+
+
+
+</body>
+
+
+
+</body>
+</body>
+</html>

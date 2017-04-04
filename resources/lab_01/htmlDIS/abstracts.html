@@ -1,0 +1,280 @@
+<HTML>
+
+<HEAD>
+<TITLE>
+Advances in the Design of Symbolic Computation Systems
+</TITLE>
+</HEAD>
+
+<BODY BGCOLOR="#0000A0" TEXT="#FFFFFF" LINK="#FF8204" VLINK="#FF007F" ALINK="#000000" >
+
+<H2>Advances in the Design of Symbolic Computation Systems</H2>
+<H4>Abstracts of the papers.</H4>
+<hr size = 4>
+<tt>
+<font size=4>
+
+<p>
+<H3>Part I: The Framework - State of the Art and Motivations</H3>
+
+<p>
+<H4>B. Buchberger:<p>Mathematica: doing mathematics by computer?</H4>
+<p>
+The paper analyses what is meant to do mathematics and introduce what we 
+call the ``creativity  spiral in mathematics": ``Doing mathematics" is iterating 
+the cycle ``observation - proof -  programming - application". The main point 
+is that the current symbolic computation systems,  such as Mathematica, 
+support well three passes of the spiral, namely ``observation -  programming - 
+application" and this help a little in some simple forms of proof. However, 
+none  of the current systems does yet seem to be the right setting for proving 
+in the broad sense of the  word as understood by the mathematics community. 
+Argument for this and developments of  some ideas how a future system for 
+doing mathematics might look like are given.
+
+<p>
+<H4>A. Miola:<p>An overview of the Tasso project</H4>
+<p>
+The paper presents the development and a general overview of the {\sc Tasso} 
+research project.  {\sc Tasso} is based on a new methodological approach to the 
+design and implementation of a  symbolic computation system for 
+mathematical problem solving. The proposed symbolic  computation system  
+allows one to compute by formal algebraic and analytical methods and to  
+prove properties of the computation by means of automated deduction 
+mechanisms. Both the  design and the implementation are based on the object-
+oriented programming paradigm. 
+<p><hr><p>
+<H3>Part II: Mathematical Objects</H3>
+
+
+<H4>C. Limongelli, M. Temperini:<p>The uniform representation of 
+mathematical  objects by truncated power series</H4>
+<p>
+Topics about the integration of the numeric and symbolic computation 
+paradigms are discussed.  Mainly an approach through a uniform 
+representation of numbers and symbols is presented,  that allows for the 
+application of algebraic algorithms to numeric problems. The $p$-adic  
+construction is the basis of the unifying representation environment. A 
+framework for the  definition and implementation of mathematical data 
+structures is presented, which is based on a  powerful classification 
+mechanism allowing for methods abstraction. As a case study of the use  of 
+such methods abstraction, an integrated version of the Hensel algorithm is 
+presented, which  is able to perform symbolic and numeric computations over 
+instances of ground (concrete) and  parametric structures, and symbolic 
+computations over instancesof abstract structures. Examples are provided to 
+show how the outlined approach and the proposed implementation  can treat 
+both cases of symbolic and numeric computations.
+
+
+<p>   
+<p>
+<H4>A. Colagrossi, C. Limongelli, A. Miola:<p>P-adic arithmetic: a tool for 
+error-free computations</H4>
+<p>
+In this paper how error-free computation and in particular truncated p-adic 
+arithmetic, can be  applied to solve wide classes of computational problems is 
+shown. In the frame of {\sc Tasso}  project truncated p-adic arithmetic is 
+considered as the basic tool for working in numeric  domains. The numbers 
+are represented via truncated power series and the order of truncation r  as 
+well as the power p are chosen in  accordance with an a priori estimation of 
+the magnitude of  the solution of the  problem. We will show how it is 
+possible to give such an estimate and we  will present two complete examples 
+of p-adic computation: the solution of systems of linear  equations by Gauss-
+Jordan method and  the  polynomial equations root finding via Sturm  
+method. The open problems will be discussed together with proposed 
+solutions.
+
+
+<p>   
+<p>
+<H4>C. Limongelli:<p>Exact solution of computational problems via parallel
+truncated p-adic  arithmetic</H4>
+<p>
+In this paper it is shown how error-free computation and in
+particular parallel truncated $p$-adic arithmetic, can be applied to
+solve wide classes of computational problems.
+In the frame of {\sc Tasso} project truncated $p$-adic arithmetic is
+considered as the basic tool for working in numeric domains. 
+Numbers are represented via truncated power series and the order of
+truncation $r$ as well as the power $p$ are chosen in accordance with
+an a priori estimation of the magnitude of the solution of the
+problem.
+The parallelization of this arithmetic gives a considerable
+improvement to performances of the computations examined.
+The complexity of parallel algorithms is shown, from both a
+theoretical and practical point of view.
+
+
+<p>   
+<p>
+<H4>P. Paule, I. Nemes:<p>A canonical form guide to symbolic summation</H4>
+<p>
+Along the guiding principles of simplification and canonical simplification a
+framework for a  unified discussion of the symbolic summation problem is
+introduced. Special emphasis is put  on illustrating examples ranging from
+standard applications to a conjecture of Knuth.
+
+
+<p>  
+<p> 
+<H4>O. Caprotti:<p>Indexes in sums and series: from formal definition to 
+object-oriented implementation</H4>
+<p>
+Due to an inaccurate design, some computer algebra systems show a 
+problematic behavior in  dealing with indexes.  We adopt a recently proposed 
+methodology for the implementation of  symbolic 
+computation for mathematics and develop a package for the manipulation 
+of  indexes in sums 
+and series.  
+Correctness is ensured through the integration of the three design  
+phases of formal definition, specification and implementation of abstract data 
+types modeling  the axiomatization.  An object-oriented environment 
+supports, in a natural way, the advocated  integration.
+<p><hr><p>
+<H3>Part III: Programming Methodologies</H3>
+
+<p>   
+<p>
+<H4>S. Antoy, P.Forcheri, J. Gannon, M. T. Molfino:<p>
+Equational specifications: design,  implementation and reasoning</H4>
+<p>
+Sets of equations can be used to specify, implement, and reason about software. 
+We discuss  how to automate these tasks for constructor-based, convergent rewrite
+systems. Using incremental design strategies, we obtain completely defined,
+consistent, and sufficiently  complete specifications. Direct implementations of
+specifications as term rewriting systems  serve as software prototypes of systems.
+We use prototypes to determine that specifications are  consistent with our
+intuitive expectations during design and with more efficient implementations 
+during testing. We describe an automated tool for reasoning about both the
+properties a  specification and the correctness of its implementation. Our
+approach is applicable to a relatively  small class of specifications, but within
+this class it appears to be effective for designing high  quality specifications
+and for effectively using these specifications for a variety of other tasks 
+arising during the software lifecycle.
+
+
+<p>   
+<p>
+<H4>F. Parisi Presicce, A. Pierantonio:<p>On the algebraic specification of 
+classes and inheritance in object-oriented programming</H4>
+<p>
+An algebraic formalization of class, which encompasses most
+object--oriented languages, is investigated to analyze in details the
+different concepts related to the term {\em inheritance}. Using the
+five main parts of a class specification, it is possible to
+distinguish among reuse inheritance, specialization inheritance,
+clientship and genericity. Viewed as relations, it is shown that reuse
+inheritance can be simulated by specialization inheritance and its
+inverse (generalization) with respect to a virtual class. The notions
+of clientship and genericity give rise to the notion of {\em clean}
+interconnection mechanisms between two classes: combination and
+actualization.  The new classes obtained using such mechanisms inherit
+by reuse and by specialization, respectively, from the old classes.
+The correctness of the classes so obtained is induced by the
+correctness of those involved in the interconnection mechanism.
+
+
+<p>   
+<p>
+<H4>P. Di Blasio, M. Temperini:<p>On subtyping in languages for symbolic  
+computation systems
+</H4><p>
+Object-oriented programming techniques can be fruitfully applied to design 
+languages for  symbolic computation systems. Unfortunately, basic 
+correctness problems still exist in strongly  typed object-oriented languages, 
+due to the interaction between polymorphism and method  redefinition. Here a 
+subtyping relation is presented, in order to propose a solution for these  
+problems.The subtyping model is based on a covariant (monotonic) 
+subtyping rule which  allows us to model a specialization relation among 
+types.
+
+
+<p>   
+<p>
+<h4>P. Di Blasio, M. Temperini, P. Terlizzi:<p>Enhanced strict inheritance in Tasso-L</H4>
+<p>
+{\sc Tasso}-L is the language for implementation of symbolic computation 
+systems provided by the  {\sc Tasso} environment. It is an object-oriented 
+language, embedding the management of the  peculiar subtyping inheritance 
+called {\em Enhanced Strict Inheritance}. {\sc Tasso}-L has been  developed by 
+implementing its features on the top of Common Lisp Object System through 
+the  use of its {\sc Meta Object Protocol}. Class construct, inheritance 
+mechanism and method  lookup have been changed. Typing has been 
+incremented, in order to allow to use typed  variables and manage static type 
+checking. Here we show the definition of ESI and how its use  allows for 
+modeling method and class specialization in a natural way. Some 
+programming  examples are also provided, in order to show significant 
+applications of language features. 
+
+<p>
+<hr><p>
+<H3>Part IV: Reasoning Capabilities</H3>
+
+<p>   
+<p>
+<H4>G. Cioni, A. Colagrossi, A. Miola:<p>Deduction and abduction using a 
+sequent  calculus</H4>
+<p>
+This paper presents a sequent calculus intended as a single uniform tool to 
+perform different  types of logical inferences in first order theories. 
+In this framework, verificative, 
+generative and  abductive inferences are considered. 
+The definition of the proof system takes a suitable  constructive approach to 
+support the full automation of the proposed sequent calculus in order  to 
+embed it in a symbolic computation system. 
+
+
+<p>   
+<p>
+<H4>P. Bertoli, G. Cioni, A. Colagrossi, P. Terlizzi:<p>A sequent 
+calculus machine  for symbolic computation systems</H4>
+<p>
+This paper presents an implementation of a sequent calculus to be used as a
+flexible tool for   automated deduction. The proposed implementation is based on
+an object-oriented design,   totally uniform with the rest of the computational
+system, and it appears as a desk top machine   driven by the user especially in
+the resolution of generative and abductive problems. 
+
+
+<p>   
+<p>
+<H4>G. Cioni, G. Patrizi, M. Temperini:<p>Automated deduction by 
+connection method  in an object-oriented environment</H4>
+<p>
+This paper presents the implementation of an automated deduction tool to be 
+used as a primitive  in an object-oriented programming language for symbolic 
+computation.  The tool is based on   Connection Method and uses the 
+algorithmic characteristics of this method in order to allow for  a complete 
+integration of deductive  and computational steps. Then, the main 
+characteristics and  methodological aspects of the implementation are 
+described, together with some examples of  possible uses. 
+
+
+<p>   
+<p>
+<H4>A. Colagrossi, A. Micarelli:<p>A general reasoning apparatus for
+intelligent tutoring systems 
+in  mathematics</H4>
+<p>
+This paper describes a framework for the realization of Intelligent Tutoring 
+Systems (ITSs) in  mathematics. According to the recent trend of including 
+both computing and reasoning  capabilities in symbolic computation systems, 
+a general reasoning module for supporting  various functionalities of ITSs is 
+proposed. The deductive apparatus chosen is a sequent  calculus, well suited 
+to treat in a uniform way the three pedagogically prominent kinds of  
+problems involving the manipulation of mathematical objects, namely the 
+verificative, the  generative and the abductive problems. The paper shows, 
+through examples, the advantages of  this approach to the construction of 
+ITSs. 
+
+
+<p>
+<HR>
+<p>
+<ADDRESS>
+<A HREF="mailto:marte@dis.uniroma1.it">
+marte@dis.uniroma1.it </A>
+</ADDRESS>
+</BODY>
+</HTML>
+
+                

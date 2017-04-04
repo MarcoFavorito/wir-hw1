@@ -1,0 +1,187 @@
+<HTML>
+<HEAD>
+<TITLE>Hough Internal Camera Calibration</TITLE>
+</HEAD>
+
+<BODY>
+
+<P><CENTER>
+<H1>Hough Internal Camera Calibration</H1>
+<H3><A HREF="http://www.dis.uniroma1.it/~iocchi">Luca Iocchi</A></H3>
+Dipartimento di Informatica e Sistemistica<BR>
+Universit&agrave di Roma "La Sapienza", Italy.
+</CENTER></P>
+
+&nbsp<BR>&nbsp<BR>
+
+<H2>1.Introduction</H2>
+
+We are presenting a technique for calibrating the internal parameters
+of a camera, that does not require any calibration grid or knowledge
+about 3D world points.
+
+The relation between distorted and undistorted frame coordinates is
+<P>i = ( id - Ox ) * ax * ( 1 + k1 * rd^2 ) + Ox</P>
+<P>j = ( jd - Oy ) * ( 1 + k1 * rd^2 ) + Oy</P>
+
+By knowing k1, Ox, Oy, ax, (Px and Py) it is possible to undistort the image
+so that it can be considered as coming from a pinhole camera.
+
+<P>&nbsp;</P>
+
+<H2>2. Generating a binary image</H2>
+
+<P>
+<TABLE>
+<TD><IMG SRC="images/dist01L.gif">&nbsp;&nbsp;&nbsp;&nbsp;
+<TD><IMG SRC="images/dist01Lbin.gif">
+</TABLE>
+</P>
+
+
+<H2>3. Computing Hough Transform of the binary image</H2>
+
+<P>
+The Hough Transform is a robust and effective method for
+finding lines fitting a set of points. It  also provides
+an easy way to compute the curvature of a set of point that are
+supposed to be on a line.
+
+<P>
+The transformation from (x,y) plane to (r,t) plane is achieved by
+associating every point P(x,y) with the following curve in the (r,t) plane
+<P>r = x * cos(t) + y * sin(t)</P>
+
+At the same time a point in (r,t) correspond to a line in (x,y).
+
+<P>
+This representation is unique and complete
+as long as 0 <= t < PI.
+
+<P>
+A graphical representation of the Hough transform (HT) 
+can be produced by generating a discrete grid of (r,t) plane,
+and by defining HT(r,t) as the number of points in (x,y) plane
+whose curve pass through (r,t).<BR>
+The best fitting lines correspond to local maxima of HT(r,t).<BR>
+
+<P>
+The following picture shows the Hough transform of the above binary
+image, with the following orientation for the axes.
+<PRE>
+  -------------------> r
+  |
+  |
+  |
+  V
+ t
+</PRE>
+
+<P>
+The ten groups of brighter pixels correspond to the ten
+lines in the image. Parallel lines in the (x,y) plane are 
+horizontally aligned in HT, since they have (almost) the same t.<BR>
+Note also that, as the lines in the image are not straight, 
+the local maxima in HT are blurred.
+
+<P>
+<IMG SRC="images/dist01Lhough.gif">
+</P>
+
+<P>&nbsp;</P>
+
+<H2>4. Measuring distortion</H2>
+
+<P>
+In order to find values for undistorting the image we need a measure
+of distortion, that is a measure of the curvature of the lines. 
+
+
+<P>
+A possible measure for the curvature of a set of points is given by
+<P>eR = SUM(dist(Pi,R))</P>
+where R is the best line fitting the points.<BR>
+
+Moreover if there are many possible lines the overall curvature
+can be defined as the sum of the curvature for each line
+<P>E = SUM(SUM(dist(Pij,Rj)))</P>
+In this case we need to know for every line which are the points
+belonging to that line.
+
+
+<P>
+Now given a point P (xP,yP) and a line R in the (x,y) plane
+(let (rR,tR) be the coordinates of R in the Hough domain),
+the distance between P and R is
+<P>dist(P,R) = | rR - ( xP * cos(tR) + yP * sin(tR) ) |</P>
+
+<P>
+The curvature of R is given by
+<P>eR = SUM_(r in Dr) ((rR-r)^2 * HT(r,tR))</P>
+and the overall distortion is
+<P>E = SUM_R (eR)
+
+The method does not require to know the list of points belonging
+to each line (by not considering points that are farther away from the
+best fitting line than a given factor Dr).
+Moreover local maxima in HT can be easily detected with a limited
+local search.
+
+
+
+<P>&nbsp;</P>
+
+<H2>5. Minimizing distortion</H2>
+
+<P>
+The objective is to find values of the calibration parameters (k1, Ox, Oy, ax)
+that minimize the distortion of an image.<BR>
+
+However the search in this four dimensional space is not trivial,
+and a good strategy is required to get good results.
+
+<P>
+The following figures show the undistorted image and the Hough Transform
+of its binary image.
+
+<P>
+<TABLE>
+<TD><IMG SRC="images/undist01L.gif">&nbsp;&nbsp;&nbsp;&nbsp;
+<TD><IMG SRC="images/undist01Lhough.gif">
+</TABLE>
+</P>
+
+Notice the difference in the Hough Transform of the distorted
+and the undistorted image. In the second the local maxima are
+much better defined.
+
+<P>
+<TABLE>
+<TD><IMG SRC="images/dist01Lhoughzoom.gif">
+<TD><IMG SRC="images/undist01Lhoughzoom.gif">
+</TABLE>
+</P>
+
+<P>&nbsp</P>
+<H2>References</H2>
+
+<P>
+R. Duda and P. Hart.
+Use of the Hough Transformation to Detect Lines and Curves in Pictures
+<I>Communications of the ACM</I>. Vol. 15, N. 1. 1972.
+
+<P>&nbsp</P>
+
+<HR>
+
+<I>Luca Iocchi</I>. April 6 1998.
+
+<P>
+Go to:<BR>
+<A HREF="stereo.html">Multiresolution Stereo Vision System</A><BR>
+<A HREF="triang.html">Stereo triangulation</A><BR>
+<A HREF="calib.html">Stereo Camera Calibration</A><BR>
+
+
+</BODY>
+</HTML>

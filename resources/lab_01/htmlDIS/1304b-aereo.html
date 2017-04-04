@@ -1,0 +1,128 @@
+<html>
+<head>
+<title>Primo appello 2004 - Compito Aereo</title>
+</head>
+
+<body>
+
+<h1>Secondo appello 2004</h1>
+
+<p>
+La prova dura un'ora e tre quarti.
+</p>
+
+<p>
+<b>Riempire il file <tt>studenteid.txt</tt> con i propri
+dati.</b>
+</p>
+
+<p>
+Vengono dati: due programmi di prova, un file di prova, e il
+testo del compito in formato html. Lo studente deve
+realizzare due classi che vengono usate dai due programmi di
+prova. <b>Le soluzioni devono trovarsi nella stessa cartella
+<tt>t:\Esame</tt> dove si trovano i programmi di prova</tt>
+pena l'annullamento dell'esame.</b>
+</p>
+
+<hr>
+
+<h3>Prima parte</h3>
+
+<p>
+Una compagnia aerea vuole realizzare un programma per la gestione
+della biglietteria.
+Realizzare la classe <tt>Posto</tt> i cui oggetti
+rappresentano la posizione di una poltrona di un aereo con le relative
+informazioni di prenotazione.
+Le componenti di questi oggetti devono essere:
+</p>
+
+<dl>
+
+<dt><tt>fila</tt>
+<dd>una stringa che indica la fila in cui il posto si trova. 
+<dt><tt>colonna</tt>
+<dd>un intero che indica il numero del posto
+nella fila. Pu&ograve; valere da 1 a 9 (compresi) 
+<dt><tt>prenotato</tt>
+<dd>indica se un posto &egrave; prenotato (un boolean)
+
+<dt><tt>passeggero</tt>
+<dd>il nome del passeggero a cui &egrave; stato prenotato
+il posto.
+</dl>
+
+<p>
+Definire la classe incapsulata <tt>Posto</tt>  i cui
+oggetti siano rappresentazione di posti. I nomi delle
+componenti devono essere: <tt>fila</tt>, <tt>colonna</tt>,
+<tt>prenotato</tt>, e <tt>passeggero</tt>.
+Devono essere realizzati i seguenti metodi:
+</p>
+
+<ul>
+
+<li>metodi <tt>get</tt> e <tt>set</tt> per tutte le
+componenti; il metodo <tt>set</tt> per la componente colonna devono verificare il valore sia aderente alle specifiche indicate sopra; in caso di errore, stampare
+un messaggio di errore e terminare il programma;
+
+<li>metodo costruttore che ha come argomento un
+<tt>BufferedReader</tt>; il metodo deve leggere i valori da
+mettere nell'oggetto da file; questi valori sono 
+memorizzati uno per linea; i valori booleani sono memorizzati attraverso le stringhe
+"prenotato" e "libero"; nel caso in cui il file
+finisca prima che si riescano a leggere tutte le componenti,
+si stampi un messaggio di errore e si esca dal programma;
+
+<li>un metodo toString che restituisce una stringa in cui ci
+sono tutte le componenti dell'oggetto.
+
+</ul>
+
+<hr>
+
+
+<h3>Seconda parte</h3>
+
+<p>
+Definire una seconda classe <tt>Aereo</tt> i cui oggetti
+rappresentano tutti i posti dell'aereo.
+Ogni oggetto di questa classe &egrave; quindi la
+rappresentazione di un insieme di oggetti <tt>Posto</tt>. Per rappresentare insiemi di oggetti, usare un array.
+</p>
+
+<p>
+Costruttore della classe: 
+</p>
+
+<dl>
+
+<dt>
+<tt>Aereo(String nomefile)</tt>
+<dd>
+crea un oggetto <tt>Aereo</tt> che rappresenta l'insieme
+di tutti gli oggetti <tt>Posto</tt> che sono memorizzati
+nel file il cui nome &egrave; dato dalla stringa passata
+come argomento; la prima linea del file contiene il numero
+degli oggetti memorizzati su file.
+
+</dl>
+
+<p>
+Metodi della classe:
+</p>
+
+<dl>
+
+  <dt><tt>void stampaTutti()</tt>
+  <dd>stampa i valori di tutte le componenti di tutti i posti. 
+  <dt><tt>int contaPrenotati(String fila)</tt>
+<dd>Restituisce  il numero di posti prenotati nella fila passata come argomento. 
+<dt><tt>boolean finestrino()</tt>
+<dd>verifica che ci siano posti liberi vicino al finestrino. I posti al finestrino sono quelli delle colonne 1 e 9. Ritorna <tt>true</tt> se c'&egrave; almeno un posto libero vicino al finestrino, <tt>false</tt> altrimenti. 
+</dl>
+
+</body>
+</html>
+

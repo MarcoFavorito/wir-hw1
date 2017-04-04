@@ -1,0 +1,359 @@
+<html>
+<head>
+<link href="moses.css" rel="stylesheet" type="text/css">
+<title>Programma di lavoro dell'unit&agrave; di Roma</title>
+</head>
+
+<body>
+
+<h1>Descrizione del programma e dei compiti dell'Unit&agrave; di Genova</h1>
+
+<a href="base-genova.html">Base di partenza scientifica</a>
+
+<p> Con riferimento alle fasi come numerate e complessivamente descritte nel
+modulo A, l'Unit&agrave; di Ricerca di Genova sar&agrave; task leader delle fasi
+1,2,5,9.  Svolger&agrave; inoltre attivit&agrave; di collaborazione nelle fasi
+3,4,8. Per una visione ed un inquadramento delle singole fasi all'interno del
+progetto si rimanda al modulo A. Inoltre, l'Unit&agrave; di Genova &egrave;
+responsabile dell'organizzazione di un workshop interno nel corso del
+docicesimo mese per una efficace cross-fertilizzazione sui risultati raggiunti
+nei primi 12 mesi della ricerca.</p>
+
+<p> Si ricorda che l'obiettivo principale dell'Unit&agrave; di Ricerca di
+Genova &egrave; lo sviluppo di tecniche e sistemi di SAT Model Checking, ovvero
+basati sulla riduzione del Model Checking a SAT. L'unit&agrave; di Genova
+applicher&agrave; inoltre i sistemi sviluppati nel campo del ragionamento su
+azioni e pianificazione. </p>
+
+<p> Segue una descrizione dettagliata delle fasi di cui l'Unit&agrave; di
+Genova &egrave; task leader. La durata di ogni fase &egrave; specificata
+indicando il suo mese di inizio e di fine. Per ogni fase, vengono anche
+indicati i mesi in cui vengono rilasciati dei risultati intermedi e/o
+finali.</p>
+
+<h4>Fase 1 - Valutazione dello stato dell'arte per i risolutori SAT</h4>
+
+Durata mesi: 0-2 <br>
+Risultati a mesi: 2 <br>
+Unita' di Ricerca Coinvolte: Genova (task leader), Roma, Trento. <br>
+
+<p> Analisi dei risolutori SAT esistenti e disponibili pubblicamente e/o sul
+mercato al fine di valutare la loro riusabilit&agrave; ed efficenza. Le
+implementazioni considerate verranno classificate sulla base delle seguenti
+caratteristiche:</p>
+
+
+<ol>
+
+<li>funzionalit&agrave; offerte: ad esempio, &egrave; importante in molte
+applicazioni che la procedura ritorni anche un'assegnamento soddifacente la
+formula qualora la formula in ingresso sia soddisfacibile,
+
+<li>grado di programmabilit&agrave; delle euristiche: in funzione del
+particolare dominio di applicazione, alcune euristiche possono risultare
+pi&egrave; efficaci di altre (si veda ad es. [16]).
+
+<li>rientranza del codice: al fine di costruire decisori SAT-based per logiche
+modali (fase 3), il codice del decisore SAT usato deve essere rientrante, o
+comunque reso tale [5].
+
+<li>prestazioni: chiaramente, un parametro fondamentale nella scelta del
+decisore sar&agrave; la sua efficenza. <br>
+
+</ol>
+
+<p>Lo scopo di questa attivit&agrave; &egrave; quello di determinare i
+risolutori SAT che meglio si prestano ad essere usati nello sviluppo di
+procedure SAT-based per logiche temporali (fase 3, responsabile unit&agrave; di
+Trento), e come SAT solver per lo sviluppo di SAT model checkers (fase 2,
+responsabile unit&agrave; di Genova). Dato il diverso ruolo che i risolutori
+SAT giocano nei sistemi sviluppati, &egrave; plausibile che diversi risolutori
+SAT verranno impiegati nei due sistemi. In particolare, per lo sviluppo di
+TLSAT (fase 3, responsabile unit&agrave; di Trento) &egrave; necessario che si
+abbia a disposizione il codice sorgente del solver. Questo requisito non
+&egrave; necessario per MC2SAT, in cui il risolutore SAT &egrave; usato a
+black-box, rendendo quindi possibile anche l'utilizzo di strumenti commerciali
+(quali PROVER) il cui codice sorgente non &egrave; normalmente disponibile.
+L'unit&agrave; di Roma definir&agrave; i test-set su cui valutare l'efficienza
+dei risolutori SAT.</p>
+
+<p>Risultati al mese 2:</p>
+
+<ul>
+<li> Rapporto tecnico di Assessment dei risolutori SAT analizzati. <br>
+<li> Individuazione dei SAT solvers da usare per la costruzione di TLSAT e MC2SAT.
+</ul>
+
+<h4>Fase 2 -- MC2SAT: procedure per SAT Model Checking</h4>
+
+Durata mesi: 2-21 <br>
+Risultati a mesi: 8,12,21 <br>
+Unita' di Ricerca Coinvolte: Genova (task leader), Trento. <br>
+
+Definizione ed implementazione di procedure di SAT Model Checking. Questa fase si articolera' in tre attivita': <br>
+
+<dl>
+
+<dt>Mesi 2-8:
+
+<dd> Definizione di algoritmi per la riduzione di Model Checking a SAT con
+dimostrazioni di correttezza e completezza. Il punto di partenza sara' la
+tecnica del bounded model checking per formule di LTL descritta in [1]. Si
+prevede di approfondire ed estendere l'approccio secondo le seguenti linee di
+ricerca: 
+
+- identificazione di diverse strategie di generazione delle formule
+  proposizionali. In [1] viene generata una sequenza di formule P_1, P_2, P_3,
+P_4,... in cui i modelli di P_k rappresentano computazioni che attraversano
+esattamente k stati distinti. Un'alternativa che si pensa di esplorare (in
+analogia con quanto fatto in [6]), e' di generare sequenze Q_1, Q_2, Q_4,
+Q_8,... in cui i modelli di Q_k rappresentano computazioni che attraversano al
+piu` k stati distinti. <br>
+
+- impiego di conoscenza nel dominio di applicazione. Sono previsti due
+  approcci. Un &#34;approccio dichiarativo&#34; che consiste nell'aggiungere
+alla codifica in SAT clausole che codificano proprieta' generali del dominio di
+applicazione, derivabili dalla specifica dello stesso dominio. [21] riporta
+come l'aggiunta di tali clausole possa produrre dei significativi miglioramenti
+delle prestazioni del SAT solver. Un &#34;approccio procedurale&#34; che
+consiste nel mettere a punto euristiche di splitting diverse a seconda del
+dominio di applicazione, secondo quanto fatto ad esempio in [16]. <br>
+
+Si studieranno inoltre le possibili estensioni a logiche piu` espressive di LTL. <br>
+
+<dt>Mesi 8-12:
+
+<dd> Implementazione prototipale degli algoritmi. Al fine di massimizzare
+l'efficenza e nel contempo la portabilita` dei prototipi, si usera` il
+linguaggio di programmazione C, standard POSIX. Inoltre, al fine di rendere
+l'implementazione facilmente manutenibile si fara` un alto uso di librerie
+pubblicamente disponibili. <br>
+
+<dt>Mesi 12-21:
+
+<dd> Implementazione finale degli algoritmi. In questa fase, i prototipi
+precedentemente sviluppati verranno preliminarmente testati usando generatori
+di test casuali forniti dall'Unita` di Roma. Scopo di questo testing
+preliminare e` vedere se e quali degli algoritmi definiti risultano sempre meno
+efficenti di altri. Ovviamente, si procedera` all'implementazione definitiva
+dei soli algoritmi che non sono dominati da altri. <br>
+
+Gli algoritmi dovranno accettare in ingresso problemi di LTL Model Checking espressi nel formato messo a punto nella Fase 4. L'unita' di Trento collaborera' allo svolgimento delle prime due attivita' data l'esperienza maturata in questo ambito. <br>
+
+</dl>
+
+<p>
+Risultati: </p>
+
+<ul>
+<li>mese 8: Rapporto tecnico con algoritmi di riduzione di Model Checking a SAT con dimostrazioni di Correttezza e Completezza degli algoritmi.
+
+<li>mese 12: Implementazione prototipale degli algoritmi
+
+<li>mese 21: Implementazione finale degli algoritmi
+
+<li>mese 21: Rapporto tecnico con descrizione finale degli algoritmi
+</ul>
+
+<h4>Fase 5 -- C2MC: procedure per il model checking di domini C</h4>
+
+Durata mesi: 13-17 <br>
+Risultati a mesi: 17 <br>
+Unita' di Ricerca Coinvolte: Genova (task leader). <br>
+
+<p>
+Definizione ed implementazione di una procedure di traduzione di un problema di ragionamento su azioni (espresso mediante una specifica del dominio scritta nel linguaggio C e una specifica di una proprieta' temporale) in un problema di LTL model checking. Ovviamente, questa riduzione e` possibile quando la proprieta` temporale da verificare e' esprimibile in LTL.</p>
+
+<p>
+Il problema in generale consiste quindi nel definire ed implementare una procedura che generi, a partire da una specifica in C e dalla specifica di una proprieta' temporale, un problema di LTL Model Checking espresso nel formato messo a punto nella Fase 4. Si osservi che, in funzione delle proprieta` da verificare, sono possibili diverse traduzioni alternative. Ad esempio, qualora si volesse ragionare sull'effetto dell'esecuzione di singole azioni (escludendo cioe` l'esecuzione concorrente di azioni), sara` ad esempio possibile usare le tecniche di operator-splitting introdotte in [6], al fine di minimizzare il numero di variabili (e quindi verosimilmente lo spazio di ricerca) che specificano il sottostante automa da verificare. Sempre a titolo di esempio, qualora la specifica del dominio in C corrispondesse a una specifica in STRIPS, si definiranno inoltre riduzioni state-based (in cui cioe` non vi sono variabili corrispondenti ad azioni in C) secondo quanto fatto ad esempio in [15].</p>
+
+<p>
+Le codifiche verranno testate su alcuni casi di studio presi dalla letteratura (si veda ad esempio [22,23]), cosi` come su alcuni esempi usati nella competizione fra sistemi per la pianificazione. I casi di studio considerati saranno poi usati come guida nella fase 8, avente come leader l'Unita` di Roma.</p>
+
+<p>
+Risultati al mese 17:</p>
+
+<ul>
+<li> Rapporto tecnico sulle procedure di riduzione di C a Model checking, con dimostrazioni di correttezza e completezza.
+
+<li>Implementazione delle procedure di codifica.
+
+<li>Identificazione di alcuni casi di studio per la pianificazione e il ragionamento su azioni.
+</ul>
+
+<h4>Fase 9 -- Testing e Ottimizzazione di MC2SAT e C2MC</h4>
+
+Durata mesi: 21-24 <br>
+Risultati a mesi: 24 <br>
+Unita' di Ricerca Coinvolte: Genova (task leader), Roma. <br>
+
+<p>
+Le procedure MC2SAT e C2MC vengono testate estensivamente utilizzando i test-set messi a punto nelle Fasi 4,8.</p>
+
+<p> Gli obiettivi di questa attivita sono molteplici. Si vuole ottenere un
+debugging estensivo della procedura, identificare potenziali sorgenti di
+inefficienza, nonche' mettere a punto ottimizzazioni. Inoltre, siccome in [1]
+vengono usati come test-set solo problemi tratti esclusivamente dal dominio
+della verifica dei circuiti hardware e tra questi vengono scelti problemi
+notoriamente difficili per gli OBDD-based Model Checkers, si vuole compiere una
+valutazione sperimentale completa dell'approccio SAT-based al Model
+Checking.</p>
+
+<p> L'unita' di Roma fornira' supporto all'utilizzo delle librerie di testing
+messe a punto nelle Fasi 4 e 8. I risultati sperimentali protranno portare a un
+riallineamento delle librerie di testing qualora il testing rivelasse
+caratteristiche inattese delle stesse.</p>
+
+<p>
+Risultati al mese 24:</p>
+
+<ul>
+<li>Rapporto tecnico sui risultati del testing 
+<li>Versione ottimizzata degli algoritmi 
+<li>Versione aggiornata delle librerie di testing 
+</ul>
+
+
+<hr>
+
+<h1>The Program of the Unit of Genoa</h1>
+
+<p>
+With reference to the phases as numbered in the A form, the research unit of Genova will be task leader in phases 1, 2, 5, 9. Cooperation in phases 3, 4, 8 will also be provided. (See the A form for a detailed description of the phases and their role in the project framework.) The unit of Genova is responsible for the organization of an internal workshop to be held at the 12th month. The workshop purpose is to ensure an effective cross-fertilization on the results achieved during the first 12 months of research.</p>
+
+<p>
+We recall that the main goal of the unit of Genova is the development of techniques and systems for SAT Model Checking, i.e. based on the reduction of Model Checking to SAT. The unit of Genova will also apply the systems developed in reasoning about actions and planning.</p>
+
+<p>
+Here it follows a description of the phases whom the unit of Genova is task leader of. The duration of each phase, as well as the beginning month and the ending month are specified. For each phase, months corresponding to the release of intermediate and/or final results are also detailed.</p>
+
+<h4>Phase 1 -- Assessment of the state of the art for SAT solvers</h4>
+
+Duration (months): 0-2<br>
+Results after (months): 2<br>
+Research units involved: Genova (task leader), Roma, Trento.<br>
+
+<p>
+Analysis of existing SAT solvers, either publicly and/or commercially available, will be carried out. The analysis aims at a thorough evaluation of the reusability and efficiency of the SAT solvers considered. The implementations will be classified according to the following features:</p>
+
+<ol>
+
+<li>available functionalities: e.g., in many applications the SAT solver is required to return the assignment satisfying the input formula whenever such formula is satisfiable,
+
+<li>programmability of the heuristics: depending on the specific application domain, some heuristics may be more effective than other ones (see for example [16]).
+
+<li>reentrance of the implementation code: in order to build SAT-based decision procedures for modal logics (phase 3) the SAT solver code must be reentrant, or it must be modified to meet this requirement [5].
+
+<li>performance: clearly, a fundamental parameter for the choice of the solver will be its efficiency.
+
+</ol>
+
+<p>
+The aim of this task is to understand which SAT solvers are better suited to be used in the implementation of SAT-based decision procedures for temporal modal logics (phase 3, unit of Trento), and which SAT solvers are better suited for the implementation of SAT model checkers (phase 2, unit of Genova). Given the different role played by the SAT solvers in the systems, it is possible that different SAT solvers will be used. Specifically, to develop TLSAT (phase 3, unit of Trento) the solver source code must be available. There is no such a requirement for MC2SAT, since the SAT solver is used as a black-box. As a consequence, MC2SAT allows for the use of commercial tools whose source code is usually not available. The unit of Roma will define the test-set with respect to whom the efficiency of the SAT solvers can be evaluated.</p>
+
+<p>
+Results (2nd month):</p>
+
+<ul>
+<li>Technical report assessing the results of the analysis about the SAT solvers
+
+<li>Determination of the SAT solvers to be used for the implementation of TLSAT and MC2SAT.
+
+</ul>
+
+
+<h4>Phase 2 -- MC2SAT: SAT Model Checking procedures</h4>
+
+Duration (month): 2-21<br>
+Results after (months): 8,12,21<br>
+Research units involved: Genova (task leader), Trento.<br>
+
+<p>
+Definition and implementation of SAT Model Checking procedures. This phase consists of three steps:</p>
+
+<dl>
+
+<dt>
+Months 2-8:
+
+<dd>
+Definition of the algorithms for the reduction of Model Checking to SAT. Soundness and completeness proofs of the proposed algorithms will be given. The starting point will be the bounded model checking technique for LTL formulae described in [1]. The approach will be extended along the following guide lines:<br>
+
+- identification of different strategies to generate the propositional formulae. In [1] a sequence P_1, P_2, P_3, P_4, ... is generated, where the models of P_k stand for computations traversing k different states. Alternative approaches will be considered. For instance, the generation of sequences of formulae Q_1, Q_2, Q_4, Q_8, ..., where the models of Q_k stand for computations traversing at most k different states.<br>
+
+- use of knowledge about the application domain to speed up the search process. Here we envisage two approaches. A &#34;declarative approach&#34; which amounts to the encoding as a set of clauses of some general properties of the application domain. Such clauses are then added to the SAT encoding of the original problem. [21] shows that such an approach can significantly improve the performance of the SAT solver. A &#34;procedural approach&#34; will instead consists of development of splitting heuristics adapted to the specific application domain, as in [16]. <br>
+
+The possible extensions to logics more expressive than LTL will be also investigated.<br>
+
+<dt>Months 8-12:
+
+<dd>
+Prototypes of the algorithms are implemented. In order to maximize both the efficiency and the portability of the prototypes, the C language, standard POSIX, will be used as implementation language. Moreover, in order to achieve an &#34;easy-to-maintain&#34; implementation, publicly available libraries will be extensively used.<br>
+
+<dt>
+Months 12-21:
+
+<dd>
+Final implementation of the algorithms. During this phase, previously developed prototypes will be tested using random tests generators provided by the unit of Roma. Purpose of this preliminary testing activity is to verify which of the proposed algorithms are uniformly less efficient than other ones. Of course such algorithms, if any, will not be considered for further development.<br>
+
+The algorithms should accept as input LTL Model Checking problems. Such problems will be specified using the format developed in phase 4. Given the experience of the unit of Trento in this field, strict cooperation in the development of the first two activities is envisaged.<br>
+
+</dl>
+
+Results:<br>
+
+<ul>
+
+<li>month 8: Technical report describing the reduction algorithms from Model Checking to SAT together with the soundness and completeness proofs of the algorithms.
+
+<li>month 12: Prototypes of the algorithms are implemented.
+
+<li>month 21: Final implementation of the algorithms.
+
+<li>month 21: Technical report describing the final version of the algorithms
+
+</ul>
+
+
+<h4>Phase 5 - C2MC: model checking procedures for C domains</h4>
+
+Duration (months) 13-17<br>
+Results after (months): 17<br>
+Research units involved: Genova (task leader).<br>
+
+<p>
+Definition and implementation of a translation procedure from a problem of reasoning about actions to an LTL model checking problem. The original problem is stated using the C language for the domain specification together with a temporal property to be verified. Obviously, such a reduction is possible only if the temporal property is expressible in LTL.</p>
+
+<p>
+The problem is to define and implement a procedure that generates an LTL model checking problem starting from a C specification and a temporal property specification. The model checking problem is described with the format defined during the phase 4. Notice that depending on the property to be verified, different alternative translations are possible. For example, if concurrent execution of actions is excluded, then the operator-splitting techniques introduced in [6] can be used. Such techniques minimize the number of variables (and, consequently, the search space) used to specify the underlying automaton to be verified. Again as an example, if the domain specification in C corresponds to a STRIPS specification, state-based reductions (no action variables) can be defined, as done in [15]. </p>
+
+<p>
+The proposed encodings will be tested on case studies from the literature (see, for example, [22,23]), and also on some examples used in the competitions for planning systems. All the case studies considered will be used as a guideline during the phase 8, whose task leader is the unit of Roma.</p>
+
+<h4>Phase 9 -- Testing and Optimization of MC2SAT and C2MC</h4>
+
+Duration (months): 21-24<br>
+Results after (months): 24<br>
+Research units involved: Genova (task leader), Roma.<br>
+
+<p>
+The procedures MC2SAT and C2MC are extensively tested using the test-sets defined in the phases 4,8.</p>
+
+<p>
+Objectives of this task are manifold. An extensive debugging of the procedures is to be attained, possible sources of inefficiency are to be identified, optimizations are to be defined. It is worth pointing out that [1] tests the proposed procedure on problems drawn from the hardware verification domain only. Furthermore only those problems notoriously difficult for OBDD-based Model Checkers are taken into account. A thorough experimental evaluation of the SAT-based approach to model checking is therefore missing in the literature.</p>
+
+<p>
+The unit of Roma will provide the testing libraries defined during the phases 4 and 8. It is worth pointing out that the experimental results may suggest changes in the test libraries (e.g. if the testing process reveals unexpected behaviors).</p>
+
+<p>
+Results (month 24):</p>
+
+<ul>
+<li>Technical report on the testing results
+<li>Optimized versions of the algorithms
+<li>Updated version of the testing libraries
+</ul>
+
+</body>
+</html>
+

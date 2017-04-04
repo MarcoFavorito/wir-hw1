@@ -1,0 +1,89 @@
+<!doctype html public "-//w3c//dtd html 4.0 transitional//en">
+<html>
+<head>
+<link href="java.css" rel="stylesheet" type="text/css">
+<title>Note sulla nidificazione e sull'allineamento</title>
+</head>
+
+<body>
+
+<h2>Note sulla nidificazione e sull'allineamento</h2>
+
+<p>
+In alcuni programmi visti, alcune istruzioni composte come
+per esempio i cicli contenevano al loro interno altre
+istruzioni composte come per esempio le istruzioni 
+condizionali. Questo &egrave; vero in generale: una
+istruzione composta pu&ograve; contenere al suo interno
+altre istruzioni, siano esse semplici o composte a loro
+volta. Per esempio, all'interno di un ciclo for si
+pu&ograve; mettere un altro ciclo for che pu&ograve;
+contenere una istruzione condizionale, ecc. In questi
+casi, occorre prestare attenzione alla chiusura delle
+parentesi. Se per esempio abbiamo due istruzioni di
+ciclo messe l'una dentro l'altra, nel modo seguente:
+
+<pre>
+for(....) {
+  ...
+  ...
+  for(....) {
+    ...
+    ...
+  }
+  ...
+  ...
+}
+</pre>
+
+<p>
+allora ognuna delle due istruzioni ha la struttura
+<tt>for(....) {<i>istruzioni</i>}</tt>. Se una delle
+istruzioni &egrave; ancora un ciclo, questa contiene
+ancora <tt>for(....) {<i>istruzioni</i>}</tt>. Per
+questa ragione, alla fine del blocco occorrono due
+parentesi graffe chiuse: la prima &egrave; l'ultimo
+carattere del ciclo pi&ugrave; interno, mentre la
+seconda &egrave; l'ultimo carattere del ciclo
+esterno.<p>
+
+In programmi complicati la struttura dei programmi con
+molte istruzioni composte l'una dentro l'altra pu&ograve;
+non risultare molto chiara. Questo pu&ograve; portare a
+degli errori di programmazione.<p>
+
+L'<b>allineamento</b> serve a rendere pi&ugrave; chiaro
+un programma, e permette quindi di individuare errori
+legati alla struttura del programma. Il metodo generale
+&egrave; molto semplice: ogni volta che si ha una
+istruzione composta, le sue istruzioni componenti vengono
+scritte uno o due caratteri pi&ugrave; avanti di tutte
+le altre. Se all'interno di una istruzione composta appare
+un'altra istruzione composta, le istruzioni che compongono
+quest'ultima vengono scritte altri due caratteri pi&ugrave;
+avanti, per cui si lasciano quattro spazi prima
+dell'istruzione.<p>
+
+Dal punto di vista del compilatore, l'allineamento non
+&egrave; necessario, dal momento che tutti gli spazi
+vengono ignorati. D'altra parte, l'uso di questa tecnica
+permette di:
+
+<ol>
+<li>capire di quale istruzione composta una istruzione semplice
+fa parte;
+
+<li>capire se mancano parentesi chiuse, e dove;
+
+<li>capire se le parentesi sono state chiuse nel punto
+sbagliato.
+</ol>
+
+<p>
+Nella scrittura di programmi lunghi questi vantaggi risultano
+immediatamente chiari.<p>
+
+
+</body>
+</html>
+

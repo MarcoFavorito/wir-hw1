@@ -1,0 +1,635 @@
+<!doctype html public "-//w3c//dtd html 4.0 transitional//en">
+<html>
+<head>
+<link href="java.css" rel="stylesheet" type="text/css">
+<title>Java</title>
+</head>
+
+<body>
+
+
+<h1>Array</h1>
+
+
+
+<h2>Array: introduzione</h2>
+
+Un array &egrave; un gruppo di variabili dello
+stesso tipo. Per esempio, un array di interi &egrave; un
+gruppo di variabili, tutte di tipo intero. Il vantaggio
+dell'array
+&egrave; che basta una sola dichiarazione, ed &egrave;
+facile realizzare dei cicli che effettuano le stesse
+operazioni su tutte le variabili di un vettore. Si
+consideri per esempio la situazione in cui si hanno 100
+valori interi, e a un certo punto &egrave; necessario
+incrementare ognuno di essi di 1 e stamparli. Senza usare
+i vettori, sarebbe necessario un codice complicato come
+quello del programma <a href="NoArray.java">NoArray.java</a>:
+
+<pre>
+class NoArray {
+  public static void main(String[] args) {
+    int variabile1=41;
+    int variabile2=74;
+    int variabile3=7;
+    ....
+
+    variabile1=variabile1+1;
+    System.out.println(variabile1);
+    variabile2=variabile2+1;
+    System.out.println(variabile2);
+    variabile3=variabile3+1;
+    ...
+  }
+}
+</pre>
+
+Questo genere di operazioni si semplificano raggruppando tutte
+le variabili di un certo tipo in un unico vettore. La dichiarazione
+di un vettore che contiene 100 elementi di tipo intero &egrave;:
+
+<pre>
+  int x[]=new int[100];
+</pre>
+
+Si pu&ograve; pensare a questa operazione come equivalente a
+dichiarare le seguenti variabili, tutte di tipo intero:
+<tt>x[0], x[1], x[2],...., x[99]</tt>. Si noti che il primo elemento
+&egrave; 0, mentre l'ultimo &egrave; 99. Questo pu&ograve;
+creare confusione, dal momento che nella dichiarazione appare
+il numero 100.<p>
+
+Il punto fondamentale &egrave; che queste variabili <tt>x[0],...</tt>
+si possono usare come variabili normali, ma in pi&ugrave; &egrave;
+possibile anche fare riferimenti per esempio a <tt>x[i]</tt> dove
+<tt>i</tt> &egrave; un'altra variabile. Per esempio, la sequenza
+di istruzioni
+
+<pre>
+i=10;
+System.out.println(x[i]);
+</pre>
+
+stampa il contenuto della variabile <tt>x[10]</tt>. In generale,
+la notazione <tt>x[espressione]</tt> &egrave; la componente del
+vettore determinata dalla valutazione della espressione. Se
+per esempio <tt>i=10</tt> allora <tt>x[i+4]</tt> &egrave;
+esattamente lo stesso di <tt>x[14]</tt>. Questo rende i vettori
+molto comodi quando ci sono operazioni che vanno ripetute
+su un insieme di variabili. Per esempio, l'incremento e stampa dei
+cento valori si pu&ograve; fare definendo e assegnando valori a
+un vettore di interi <tt>x</tt>, e poi effettuando un ciclo:
+
+<pre>
+  int i;
+
+  for(i=0; i<=99; i=i+1) {
+    x[i]=x[i]+1;
+    System.out.println(x[i]);
+  }
+</pre>
+
+La assegnazione agli elementi di un vettore si pu&ograve;
+semplificare. Invece di fare <tt>x[0]=41; x[1]=74; ...</tt>,
+si possono dare tutti i valori nella fase di dichiarazione.
+Il programma completo <a href="ConArray.java">ConArray.java</a>
+&egrave; il seguente.
+
+<pre>
+class ConArray {
+  public static void main(String[] args) {
+    int x[]={41, 74, 7, 40, 73, 6, 39, 72, 5, 38, 71, 4, 37, 70, 3, 36, 69, 2, 35, 68, 1, 34, 67, 0, 33, 66, 99, 32, 65, 98, 31, 64, 97, 30, 63, 96, 29, 62, 95, 28, 61, 94, 27, 60, 93, 26, 59, 92, 25, 58, 91, 24, 57, 90, 23, 56, 89, 22, 55, 88, 21, 54, 87, 20, 53, 86, 19, 52, 85, 18, 51, 84, 17, 50, 83, 16, 49, 82, 15, 48, 81, 14, 47, 80, 13, 46, 79, 12, 45, 78, 11, 44, 77, 10, 43, 76, 9, 42, 75, 8, 41 };
+    int i;
+
+    for(i=0; i<=99; i=i+1) {
+      x[i]=x[i]+1;
+      System.out.println(x[i]);
+    }
+  }
+}
+
+</pre>
+
+
+<h4>Dimensione di un vettore</h4>
+
+Concludiamo la sezione con il metodo che permette di valutare
+la lunghezza di un vettore. Nel caso in cui il vettore venga
+dichiarato con una istruzione del tipo
+<tt>int x[]=new int[100]</tt>, questo vettore contiene
+esattamente 100 elementi (da 0 a 99) ossia il numero di
+elementi &egrave; dato dal numero fra parentesi quadre. Nel
+caso in cui la dichiarazione contiene gi&agrave; la
+inizializzazione, ossia del tipo
+<tt>int x[]={12, 24, ...}</tt>, il numero di elementi che
+compongono un vettore &egrave; dato dal numero di elementi
+fra parentesi graffe. Esiste un modo per determinare la
+lunghezza di un vettore senza contare gli elementi nella
+dichiarazione: se <tt>x</tt> &egrave; un vettore, allora
+<tt>x.length</tt> &egrave; la sua lunghezza. Quindi, una
+istruzione del tipo <tt>System.out.println(x.length)</tt>
+stampa il numero di elementi del vettore <tt>x</tt>.<p>
+
+
+<h4>Indici di un vettore</h4>
+
+Come si &egrave; gi&agrave; specificato, gli elementi di
+un vettore <tt>x</tt> sono <tt>x[0]</tt>, ecc, fino a
+un certo <tt>x[c]</tt>, in cui <tt>c</tt> dipende dalla
+dichiarazione del vettore. Cosa succede se si prova a
+usare <tt>x[d]</tt> in cui <tt>d>c</tt>? Durante la
+esecuzione del programma si genera un errore. Lo stesso
+succede usando un <tt>d</tt> negativo. In generale, se
+un vettore ha elementi <tt>x[0],...,x[c]</tt>, ogni tentativo
+di usare elementi <tt>x[d]</tt> in cui <tt>d</tt> non
+&egrave; compreso fra <tt>0</tt> e <tt>c</tt> genera un
+errore.<p>
+
+Per concludere, va notato come l'indice di un vettore
+(quello che sta fra parentesi quadre) pu&ograve; essere
+una espressione qualsiasi purch&egrave; <i>dia un
+risultato di tipo intero</i>, oltre che compreso fra
+0 e il massimo elemento del vettore. Esemi di riferimenti
+che non funzionano sono:<p>
+
+<ol>
+<li><tt>x[10.5]</tt> (perch&egrave; 10.5 &egrave; un numero reale)
+<li><tt>x[i]</tt> (dove <tt>i</tt> &egrave; una variabile reale)
+</ol>
+
+
+</body>
+
+
+
+
+<h2>Massimo elemento di un vettore</h2>
+
+Questo esercizio consiste nel trovare, in un vettore di
+interi, quello che ha valore massimo. Si inizia con la
+definizione del vettore e dei sui valori:<p>
+
+<pre>
+class Massimo {
+  public static void main(String[] args) {
+    int x[]={12, 45, 78, 11, 44, 77, 10, 43, 76, 9, 42, 75, 8, 41, 74, 7, 40, 73 , 6, 39, 72, 5, 38, 71, 4, 37, 70, 3, 36, 69, 2};
+</pre>
+
+La prima cosa da fare &egrave; determinare il numero di
+elementi di cui il vettore &egrave; composto. Contare tutti
+gli elementi a mano richiede tempo. Inoltre, ogni volta che
+si deve aggiungere un nuovo valore al vettore, occorre modificare
+il codice per tenere conto dell'aumento o diminizione del numero
+di elementi. Per questa ragione, definiamo una variabile nella
+quale mettiamo il numero di elementi:<p>
+
+<pre>
+    numeroelementi=x.length;
+</pre>
+
+Per calcolare il massimo, seguiamo l'algoritmo per cui assumiamo
+inizialmente che il massimo elemento &egrave; il primo, e poi
+facciamo una scansione degli elementi del vettore. Se troviamo
+un elemento che &egrave; maggiore del massimo, quello &egrave;
+il nuovo massimo. In altre parole:
+
+<ol>
+<li>il massimo elemento &egrave; il primo;
+<li>per ogni valore di <tt>i</tt>:
+<ul>
+<li>se <tt>x[i]</tt> &egrave; maggiore del massimo trovato finora,
+<li>allora <tt>x[i]</tt> &egrave; il nuovo massimo.
+</ul>
+</ol>
+
+In termini di codice, il primo passo si traduce in:<p>
+
+<pre>
+    massimo=x[0];
+</pre>
+
+Mentre il ciclo diventa:<p>
+
+<pre>
+    for(i=0; i<=numeroelementi-1; i=i+1) {
+      if( x[i]>massimo ) {
+        massimo=x[i];
+      }
+    }
+</pre>
+
+Si noti che gli elementi del vettore partono da <tt>x[0]</tt>.
+Il vettore ha <tt>numeroelementi</tt> componenti, per cui l'ultimo
+elemento &egrave; <tt>x[numeroelementi-1]</tt>. Questo &egrave;
+il motivo per cui il ciclo deve partire dal valore 0 e arrivare
+al valore <tt>numeroelementi-1</tt>.<p>
+
+Alla fine della iterazione la variabile <tt>massimo</tt> contiene
+il valore del massimo elemento del vettore. Il programma completo
+&egrave; <a href="Massimo.java">Massimo.java</a>, in cui al
+posto della variabile <tt>numeroelementi</tt> si usa direttamente
+<tt>x.length</tt> come valore finale del ciclo for.<p>
+
+<pre>
+/*
+  Trova il massimo elemento di un vettore.
+*/
+
+class Massimo {
+  public static void main(String[] args) {
+    int x[]={12, 45, 78, 11, 44, 77, 10, 43, 76, 9, 42, 75, 8, 41, 74, 7, 40, 73, 6, 39, 72, 5, 38, 71, 4, 37, 70, 3, 36, 69, 2};
+    int i;
+    int massimo;
+
+    massimo=x[0];
+
+    for(i=0; i<=x.length-1; i=i+1) {
+      if( x[i]>massimo ) {
+        massimo=x[i];
+      }
+    }
+
+    System.out.println("Il massimo e' "+massimo);
+  }
+}
+
+</pre>
+
+   
+
+
+</body>
+
+
+
+
+<h2>Somma elementi di un vettore</h2>
+
+Sia dato un vettore; si vuole la somma di tutti i suoi
+elementi. Questo esercizio non differisce molto da quello
+del calcolo della <a href="serie.shtml">somma degli elementi
+di una serie</a>: si tratta infatti di sommare un certo
+numero di elementi fra di loro. Nel caso della somma della
+serie questi elementi erano determinati dalla funzione,
+mentre ora ogni elemento &egrave; una componente
+<tt>x[i]</tt> del vettore.<p>
+
+Lo svolgimento &egrave; lo stesso: usiamo una variabile
+<tt>somma</tt> per memorizzare la somma degli elementi
+analizzati fino ad ora. Inizialmente la somma vale 0. Si
+fa poi un ciclo in cui, ad ogni passo, si prende un elemento
+del vettore e lo si aggiunge al contenuto della variabile
+<tt>somma</tt>. Il programma completo &egrave
+<a href="SommaVettore.java">SommaVettore.java</a>, di cui
+si riporta il codice qui sotto.<p>
+
+<pre>
+/*
+  Somma gli elementi di un vettore.
+*/
+
+class SommaVettore {
+  public static void main(String[] args) {
+    int x[]={32, 65, 98, 31, 64, 97, 30, 63, 96, 29, 62, 95, 28, 61, 94, 27, 60, 93, 26, 59, 92, 25, 58, 91, 24, 57, 90, 23, 56, 89, 22, 55, 88, 21, 54, 87, 20, 53, 86, 19, 52, 85, 18, 51, 84, 17, 50, 83, 16, 49, 82};
+    int i;
+    int somma;
+
+    somma=0;
+
+    for(i=0; i<=x.length-1; i=i+1) {
+      somma=somma+x[i];
+    }
+
+    System.out.println("La somma vale: "+somma);
+  }
+}
+
+</pre>
+
+</body>
+
+
+
+
+<h2>Media elementi di un vettore</h2>
+
+Dato un vettore di interi, si vuole calcolare il loro valore
+medio. Come &egrave; noto, il valore medio si ottiene sommando
+fra loro tutti gli elementi e poi dividendo per il numero degli
+elementi. Il programma risolutivo
+<a href="Media.java">Media.java</a> non differisce molto da
+quello cha <a href="sommavettore.shtml">calcola la somma di un
+vettore</a>. Infatti, occorre prima calcolare la somma
+degli elementi di un vettore, e poi semplicemente dividere
+per il numero di elementi del vettore.<p>
+
+<pre>
+/*
+  Calcola la media degli elementi di un vettore.
+*/
+
+class Media {
+  public static void main(String[] args) {
+    int vettore[]={4, 9, 1, 3, 5};
+    int i;
+    double somma, media;
+
+    somma=0;
+
+    for(i=0; i<=vettore.length-1; i=i+1) {
+      somma=somma+vettore[i];
+    }
+
+    media=somma/vettore.length;
+
+    System.out.println("Media = " + media );
+  }
+}
+
+
+</pre>
+
+Si noti che la variabile <tt>somma</tt> &egrave; stata dichiarata
+come reale, anche se il suo contenuto, essendo una somma di
+numeri interi, sar&agrave; sempre un numero intero. La ragione
+di questa scelta &egrave; legata al modo in cui vengono gestite
+le operazioni aritmetiche in Java. Come si &egrave; visto nella
+<a href="reali.shtml">introduzione delle variabili reali</a>,
+la divisione fra due numeri interi produce sempre un numero intero
+che &egrave; la parte intera della divisione. Per ottenere il
+risultato corretto, usiamo quindi una variabile reale per
+memorizzare la somma. Infatti, la divisione fra questa variabile
+reale e la lunghezza del vettore (che &egrave; intera) produce
+un risultato reale.<p>
+
+
+</body>
+
+
+
+
+<h2>Moltiplicazione fra vettori</h2>
+
+La moltiplicazione fra due vettori <tt>a</tt> e <tt>b</tt> si
+pu&ograve; effettuare solo se hanno lo stesso numero di
+elementi. Se questo numero &egrave; <tt>n</tt>, allora la
+somma &egrave; definita come:<p>
+
+<center>
+<img src="molt.jpeg">
+</center>
+
+Ancora una volta, si tratta di sommare fra loro un certo numero
+di elementi. Come al solito, usiamo una variabile per memorizzare
+le somme parziali, e a questa variabile assegnamo inizialmente
+il valore 0. Dal momento che la somma &egrave; composta da un
+addendo per ogni valore di <tt>i</tt> compreso fra 0 e
+<tt>n-1</tt>, facciamo un ciclo usando questi due estremi.
+Precisamente, dato che <tt>n</tt> &egrave; il numero di elementi
+dei due vettori, facciamo un ciclo in cui <tt>i</tt> parte da 0
+e arriva a <tt>x.length-1</tt>. Ad ogni passo, calcoliamo il
+prodotto <tt>a[i]*b[i]</tt>, e lo aggiungiamo alla somma
+parziale.<p>
+
+Il programma
+<a href="Moltiplicazione.java">Moltiplicazione.java</a>
+risolve questo problema.<p>
+
+<pre>
+class Moltiplicazione {
+  public static void main(String[] args) {
+    int x[]={15, 48, 81, 14, 47, 80, 13, 46, 79, 12, 45, 78, 11, 44, 77, 10, 43, 76, 9, 42, 75, 8, 41, 74, 7, 40, 73, 6, 39, 72, 5, 38, 71, 4, 37, 70, 3, 36, 69, 2, 35, 68, 1, 34, 67, 0, 33, 66, 99, 32, 65};
+    int y[]={27, 60, 93, 26, 59, 92, 25, 58, 91, 24, 57, 90, 23, 56, 89, 22, 55, 88, 21, 54, 87, 20, 53, 86, 19, 52, 85, 18, 51, 84, 17, 50, 83, 16, 49, 82, 15, 48, 81, 14, 47, 80, 13, 46, 79, 12, 45, 78, 11, 44, 77};
+    int i;
+    int r;
+
+    if( x.length != y.length ) {
+      System.out.println("I due vettori hanno dimensioni diverse");
+    }
+    else {
+
+      r=0;
+
+      for(i=0; i<=x.length-1; i=i+1) {
+        r=r+x[i]*y[i];
+      }
+
+      System.out.println("Il prodotto fra i due vettori vale "+r);
+    }
+  }
+}
+
+</pre>
+
+All'inizio del programma viene controllato che i due vettori
+abbiano effettivamente lo stesso numero di componenti. Se i
+due vettori hanno dimensioni diverse, si stampa
+un messaggio di errore e basta. In caso contrario (ossia i
+due vettori hanno la stessa dimensione), si effettua la
+moltiplicazione con il metodo che si &egrave; visto.<p>
+
+
+</body>
+
+
+
+
+<h2>Salva valori di una funzione</h2>
+
+Un possibile uso dei vettori &egrave; quello di memorizzare
+i valori che una funzione assume in un certo intervallo. Si
+supponga per esempio di voler stampare alcuni valori di una
+funzione in un certo intervallo, e poi di volere il valore medio,
+minimo e massimo. Il modo pi&ugrave; semplice &egrave; quello
+di scrivere prima le istruzioni di stampa di una funzione,
+poi scrivere delle istruzioni che calcolano la media, poi 
+quelle che calcolano il massimo, ecc.<p>
+
+Questo tipo di approccio ha lo svantaggio che i valori della
+funzione vengono calcolati una prima volta per la stampa,
+una seconda volta per fare la somma, ecc. Questo non &egrave;
+un problema per le funzioni viste fino ad ora, che sono
+facili da valutare per il calcolatore. D'altra parte,
+esistono funzioni la cui valutazione pu&ograve; richiedere
+molto tempo.<p>
+
+Per evitare di ripetere pi&ugrave; volte le stessa operazioni
+di calcolo della funzione, &egrave; possibile memorizzare
+alcuni valori calcolati in un vettore, per poi poterli usare
+in seguito quando servono senza dover ogni volta valutare di
+nuovo la funzione.<p>
+
+Per fare questo, il primo passo &egrave; decidere quali sono
+i valori che potrebbero essere utili in seguito. Per esempio,
+assumiamo che i valori di <i>f(x)</i> con <i>x</i> intero che
+va da 0 a 100 saranno molto usati. Possiamo quindi calcolare
+questi valori una volta sola all'inizio e memorizzarli in un
+vettore. Dal momento che da 0 a 100 ci sono 101 numeri interi,
+il vettore deve avere dimensione 101. Se la funzione d&agrave;
+risultati reali, il tipo del vettore deve essere
+<tt>double</tt>:<p>
+
+<pre>
+class SalvaFunzione {
+  public static void main(String[] args) {
+    double[] fvett=new double[101];
+</pre>
+
+La successiva operazione &egrave; quella di calcolare il valore
+di <i>f(x)</i> con <i>x</i> che va da 0 a 101, e memorizzare
+questi valori nel vettore. Per fare questo &egrave; necessaria
+una variabile intera <tt>x</tt> e un ciclo for.<p>
+
+<pre>
+    int x;
+
+    /* inizializza il vettore */
+    for(x=0; x<=100; x=x+1) {
+      fvett[x]=x*x/2+Math.sqrt(Math.abs(x))-12;
+    }
+</pre>
+
+A questo punto, ogni volta che ci serve il valore di <i>f(x)</i>,
+e <i>x</i> ha una valore intero compreso fra 0 e 100, possiamo
+utilizzare i valori memorizzati nel vettore. Per esempio, se
+vogliamo la media dei valori della funzione fra 10 e 110,
+calcoliamo la somma e dividiamo per il numero di punti:<p>
+
+<pre>
+    /* valore medio della funzione da 10 a 110 */
+    somma=0;
+    for(x=10; x<=110; x=x+1) {
+      if( (x>=0) && (x<=100) ) {
+        somma=somma+fvett[x];
+      }
+      else
+        somma=somma+x*x/2+Math.sqrt(Math.abs(x))-12;
+      }
+    }
+    System.out.println("La media fra 10 e 110 vale "+somma/101);
+</pre>
+
+Queste istruzioni non differiscono da quelle di calcolo
+di una media. L'unica differenza &egrave; che ogni volta
+che si vuole il valore <i>f(x)</i>, prima di tutto si controlla
+se <i>x</i> sta fra 0 e 100. Se ci sta, si usa il valore
+memorizzato nel vettore. Se non c'&egrave;, si calcola la
+funzione usando la sua definizione.<p>
+
+Il programma completo
+<a href="SalvaFunzione.java">SalvaFunzione.java</a>
+contiene anche la stampa dei valori della funzione fra -200
+e +200, sempre cercando di usare i valori memorizzati.<p>
+
+<pre>
+/*
+  Salva alcuni valori di una funzione in un vettore,
+  per poterli usare di nuovo quando servono.
+*/
+
+class SalvaFunzione {
+  public static void main(String[] args) {
+    double[] fvett=new double[101];
+    int x;
+    double somma;
+
+    /* inizializza il vettore */
+    for(x=0; x<=100; x=x+1) {
+      fvett[x]=x*x/2+Math.sqrt(Math.abs(x))-12;
+    }
+
+    /* valore medio della funzione da 10 a 110 */
+    somma=0;
+    for(x=10; x<=110; x=x+1) {
+      if( (x>=0) && (x<=100) ) {
+        somma=somma+fvett[x];
+      }
+      else {
+        somma=somma+x*x/2+Math.sqrt(Math.abs(x))-12;
+      }
+    }
+    System.out.println("La media fra 10 e 110 vale "+somma/101);
+
+    /* stampa i valori della funzione da -200 a +200 */
+    for(x=-200; x<=200; x=x+1) {
+      if( (x>=0) && (x<=100) ) {
+        System.out.println(fvett[x]);
+      }
+      else {
+        System.out.println(x*x/2+Math.sqrt(Math.abs(x))-12);
+      }
+    }
+  }
+}
+
+</pre>
+
+</body>
+
+
+
+
+
+
+
+<h2>Moltiplicazione senza moltiplicazione</h2>
+
+Secondo alcune fonti, i babilonesi utilizzavano una tecnica
+di moltiplicazione che sfruttava una tabella dei quadrati.
+Esistevano delle tabelle in cui si poteva
+trovare, per ogni numero <tt>n</tt> fino a un certo valore,
+il numero <tt>n</tt><sup>2</sup>. Il vantaggio del metodo
+era quello di non richiedere moltiplicazioni. In particolare,
+si usava la formula:<p>
+
+<center>
+xy = ( (x+y)<sup>2</sup> - x<sup>2</sup> -y<sup>2</sup> )/2
+</center>
+<p>
+
+Vogliamo realizzare un programma che utilizza la stessa
+tecnica: prima compiliamo una tabella di quadrati, e poi
+effettuiamo delle moltiplicazioni usando questo metodo.<p>
+
+Per memorizzare la tabella dei quadrati, usiamo un vettore
+di cento elementi. Questo vettore &egrave; sufficiente a
+moltiplicare due numeri la cui somma non supera 100. Una
+volta scritti i valori nel vettore, possiamo utilizzarli
+per calcolare tutte le moltiplicazioni necessare. Il
+programma completo
+<a href="MoltiplicazioneBabilonese.java">MoltiplicazioneBabilonese.java</a>
+&egrave; riportato qui sotto.<p>
+
+<pre>
+/*
+  Moltiplicazione fra interi la cui somma e' minore
+  di 100 usando il metodo babilonese.
+*/
+
+class MoltiplicazioneBabilonese {
+  public static void main(String[] args) {
+    int quadrati[]=new int[101];
+    int i;
+    int a=10, b=20, c=2, d=4, e=32, f=31;
+
+    for(i=0; i<=100; i=i+1) {
+      quadrati[i]=i*i;
+    }
+
+    System.out.println( (quadrati[a+b]-quadrati[a]-quadrati[b])/2 );
+    System.out.println( (quadrati[c+d]-quadrati[c]-quadrati[d])/2 );
+    System.out.println( (quadrati[e+f]-quadrati[e]-quadrati[f])/2 );
+  }
+}
+
+</pre>
+
+</body>
+
+
+
+</body>
+
+</body>
+</html>

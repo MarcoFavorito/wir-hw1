@@ -1,0 +1,148 @@
+<!-- saved from url=(0022)http://internet.e-mail -->
+<!doctype html public "-//w3c//dtd html 4.0 transitional//en">
+<html>
+<head>
+   <title>Tecniche di Programmazione - Esercitazione 1</title>
+   <link rel="stylesheet" href="../../tp.css" type="text/css">
+</head>
+<body>
+<center>
+  <h3>  Tecniche di Programmazione <BR>
+      Corsi di Laurea in Ingegneria Informatica e Automatica
+  </h3>
+  <h3>A.A. 2004/05</h3>
+  <h3>Esercitazione 1</h3>
+</center>
+<hr>
+
+<center>
+<h3> File</h3>
+</center>
+
+<blockquote>
+<p><strong>Scrittura di file di testo</strong><br><br>
+<!-- Per scrivere stringhe di testo su un file occorre:</p>
+<ol>
+  <li>creare un oggetto della classe <code>FileWriter </code>associato al nome del file e un oggetto della classe <code>PrintWriter</code> associato all'oggetto <code>FileWriter</code> creato<br>
+  precedentemente</li>
+  <li>scrivere testo sul file mediante i metodi <code>print</code> e <code>println</code> dell'oggetto <code>PrintWriter</code></li>
+  <li> chiudere il file</li>
+</ol>
+ -->
+ Istruzioni Java per scrivere stringhe di testo su un file:
+<blockquote>    <code>// 1. apertura del file in scrittura / creazione del file<br>
+    FileWriter f = new FileWriter(&quot;prova.txt&quot;);<br>
+    PrintWriter out = new PrintWriter(f);<br><br>
+    // 2. scrittura di testo<br>
+    out.println(&quot;scrivo su file&quot;);<br><br>
+    // 3. chiusura del canale di scrittura<br>
+    out.close();</code>
+</blockquote>
+<p>Schema di ciclo di scrittura su file: <blockquote>
+  <code>PrintWriter out = ...<br>
+  while (condizione ) {<br>
+  out.println(dato );<br>
+  ...<br>
+  }<br>
+  out.close();
+</code>
+<br>
+</blockquote>
+<!-- <p> Esempio: scrittura su file di un array di stringhe
+<blockquote>
+  <p><code>import java.io.*;<br>
+  public static void saveArray(String[] v, String nomefile)<br>
+  throws IOException {<br>
+  FileWriter f = new FileWriter(nomefile);<br>
+  PrintWriter out = new PrintWriter(f);<br>
+  for (int i=0; i&lt;v.length; i++)<br>
+  out.println(v[i]);<br>
+  out.close();
+f.close();<br>
+  }
+</code></blockquote>
+ -->
+<p><strong>Lettura di file di testo</strong><br><br>
+  Istruzioni Java per leggere stringhe di testo da file:
+<blockquote>
+    <code>// 1. apertura del file in lettura<br>
+    FileReader f = new FileReader(&quot;prova.txt&quot;);<br>
+    BufferedReader in = new BufferedReader(f);<br><br>
+    // 2. lettura di una riga del file<br>
+    String line = in.readLine();<br><br>
+    // 3. chiusura del file<br>
+    f.close();
+</code>
+</blockquote>
+<p>Schema di ciclo di lettura da file: 
+<blockquote>
+  <code>BufferedReader in = ...<br>
+  String linea = in.readLine();<br>
+  while (linea!=null) {<br>
+  ...<br>
+  linea = in.readLine();<br>
+}</code></blockquote>
+<!-- <p> Esempio: scrittura su le di un array di stringhe
+<blockquote>
+  <p><code>import java.io.*;<br>
+  public static void saveArray(String[] v, String nomefile)<br>
+  throws IOException {<br>
+  FileWriter f = new FileWriter(nomefile);<br>
+  PrintWriter out = new PrintWriter(f);<br>
+  for (int i=0; i&lt;v.length; i++)<br>
+  out.println(v[i]);<br>
+  out.close();
+f.close();<br>
+  }
+</code></blockquote>
+ -->
+<p>&nbsp;</p>
+<p><strong>Attenzione:</strong> <br>
+  I metodi per l'apertura di un file in lettura possono generare una eccezione (cio&egrave; una situazione inattesa) 
+  di tipo <code>IOException</code>. Tutti i metodi che invocano tali metodi devono quindi dichiarare 
+  esplicitamente che possono incorrere in una eccezione di quel tipo, come segue: <br>
+  <code>public static void main(String[] args) throws IOException<br>
+</code>
+</blockquote>
+<hr>
+<p align="center"><b>Gestione di dati sperimentali</b><br>
+<blockquote> 
+  <p>Scrivere una classe <code>Esperimento</code> che mantenga informazioni 
+riguardo ai dati sperimentali misurati durante un esperimento. 
+I dati vengono forniti sotto forma di valori interi
+positivi memorizzati su file (uno per ciascuna linea).</P>
+
+
+<P>
+La classe <code>Esperimento</code> deve avere le seguenti 
+funzionalit&agrave;:</p>
+  <ul>
+    <li>    calcolo e restituzione del numero dei valori        
+    <li>calcolo e restituzione della somma dei valori
+    <li>    
+      <!-- <li>ordinamento dei valori sperimentali</li> -->
+    calcolo e restituzione del massimo  dei valori
+    <li>    calcolo e restituzione del minimo dei valori
+    <li>verifica se un dato valore &egrave; presente nel file </li>
+    <li>scrittura su nuovo file (il cui nome &egrave; passato come argomento) dei valori</li>
+  </ul>
+
+
+<p>
+<i>Note</i>: 
+<ol>
+
+<li>si realizzino le funzionalit&agrave; richeste implementando metodi statici. In particolare, ciascuna funzionalit&agrave; deve essere realizzata da due metodi: <em>(i)</em> un metodo <code>public</code> che prende in input la stringa del nome del file, lo apre e chiama il metodo ricorsivo; <em>(ii)</em> un metodo ricorsivo (ovviamente privato) che accede al file (mediante un riferimento <code>BufferedReader</code>) e implementa la funzionalit&agrave; richiesta;</li>
+<li>si usi il file <a href="dati.txt">dati.txt</a> come file di dati
+      di prova per la classe e il seguente programma <a href="Main.java">Main.java</a> per verificare il funzionamento della
+    classe.  </li>
+</ol>
+</blockquote>
+
+
+<p><a href="Soluzione">Soluzione</a></p>
+
+
+</body>
+</html>
+

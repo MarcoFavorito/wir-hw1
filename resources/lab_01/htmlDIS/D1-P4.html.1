@@ -1,0 +1,56 @@
+<!-- saved from url=(0022)http://internet.e-mail -->
+<!-- saved from url=(0022)http://internet.e-mail -->
+<HTML><HEAD><!----> <title> Progetto D2I - Prodotto D1-P4</title><META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1"><style type="text/css">	A:link, A:visited { text-decoration: none }	A:hover { text-decoration: underline; color: red }</style></HEAD><BODY bgcolor="#CCCCCC" leftmargin="5" topmargin="10" marginwidth="5" marginheight="10"><CENTER>  <table border="0" cellspacing="0" cellpadding="0" width="98%" cols="2">    <tr>       <td width="19%" align="right">         <table width="100%" border="1" height="65">          <tr bordercolor="#000099" bgcolor="#99CCFF">             <td height="94">               <div align="center"><b><font size="7"><em><font color="#000080">D2I</font></em></font></b></div>            </td>          </tr>        </table>      </td>      <td width="81%" align="left" >        <table width="100%" border="1" height="83">          <tr bordercolor="#000099" bgcolor="#99CCFF" align="left">             <td height="94">               <div align="center"><font size="6"><em><dfn><font size="5" color="#0000FF"><b><font size="+3"><font color="#000080">Integrazione,                 Warehousing e Mining di sorgenti eterogenee</font></font></b></font></dfn></em></font></div>            </td>          </tr>        </table>      </td>    </tr>  </table>  <TABLE BORDER="0" CELLSPACING="0" CELLPADDING="0" WIDTH="98%" Cols="2">    <TR> <!--fine prima colonna-->       <TD align="center" valign="top" colspan="2">         <DIV STYLE="margin-top:20pt" align="justify">           <div style="margin-top:20pt" align="justify">             <table width="100%" height="45">              <tr align="left" bgcolor="#000099" bordercolor="#000099">                 <td height="46"><font color="#000099"><font size="5" color="FFF907" face="Arial">Prototipo
+                di strumento per la manipolazione di versioni di
+                schema in ambito eterogeneo - SVMgr</font></font></td>              </tr>            </table><h3><b>Fabio Grandi</b></h3>&nbsp;<center><table BORDER =1 WIDTH="80%"><tr><td VALIGN=top><b>Tema</b></td><td><a href="../../Temi/tema1.html"><u>Tema 1:&nbsp;Integrazione di dati provenienti da sorgenti eterogenee</u></a></td></tr><tr><td VALIGN=top><b>Codice</b></td><td>D1-P4</td></tr><tr><td VALIGN=top><b>Data</b></td><td>1 ottobre 2002</td></tr><tr><td VALIGN=top><b>Tipo di prodotto</b></td><td>Prodotto software</td></tr><tr><td VALIGN=top><b>Unità responsabile</b></td><td>BO</td></tr><tr><td VALIGN=top><b>Unità coinvolte</b></td><td>BO</td></tr><tr><td VALIGN=top><b>Autori</b></td><td>Fabio Grandi</td></tr><tr><td VALIGN=top><b>Autore da contattare</b></td><td>Fabio Grandi<br>Alma Mater Studiorum - Università di Bologna<br><A href="mailto:fgrandi@deis.unibo.it" >	fgrandi@deis.unibo.it</A></td></tr>
+            <tr>
+              <td VALIGN=top><b>Presentazione prototipo</b></td><td><a href="../../Riunioni/Riunione_10_02/Grandi-D1-P4.ppt"><u>D1-P4</u></a></td>
+            </tr>
+            <tr><td VALIGN=top><b>Documentazione in linea&nbsp;</b></td><td><A href="http://www-db.deis.unibo.it/~fgrandi/SVMgr.html" ><u>	http://www-db.deis.unibo.it/~fgrandi/SVMgr.html</u></A></td></tr></table></center>&nbsp;<p><hr height="15" color="#000099"><center><h3><b>Descrizione</b></h3></center><P>       
+
+<p align="justify">
+<b>SVMgr (Schema Versioning Manager)</b> &egrave; uno strumento per la gestione 
+di versioni di schema in ambito eterogeneo o, più esattamente, per la gestione in un ambiente di integrazione (quale quello globalmente ipotizzato nel progetto D2I) di una sorgente dati che al suo interno consente l’utilizzo e la gestione di versioni multiple dello schema e dei dati (<i>schema versioning</i> basato su una soluzione <i>multi-pool</i> per la gestione dei dati estensionali). Tale sorgente dati, di tipo relazionale, è stata realizzata su un sistema MS Access implementando un modello, frutto della ricerca, denominato <b>Logical Storage Model</b>. Tale modello consente di realizzare una sorgente relazionale che supporta lo schema versioning utilizzando un DB server standard (realizzazione "<i>on top</i>"). Tale modello, unitamente alla definizione di una estensione di SQL che consente di effettuare interrogazioni multi-schema sfruttando così a pieno le potenzialità applicative dell’approccio multi-pool denominata MSQL, è stato presentato al convegno SEBD 2002 (F. Grandi, "A Relational Multi-Schema Data Model and Query Language for Full Support of Schema Versioning").
+Nel contesto di integrazione,
+la soluzione adottata consente di vedere ciascuna versione di schema con il proprio data pool associato come se fosse una sorgente dati del tutto indipendente dalle altre, conformemente alla semantica della soluzione multi-pool, realizzando un vero e proprio "incapsulamento" dello schema versioning del tutto trasparente all’amministratore/utente del sistema di integrazione. Ciascuna di queste sorgenti può essere quindi individualmente e "in isolamento" trattata con i metodi "classici" sviluppati nell’ambito del progetto D2I, in particolare per la gestione delle relazioni interschema derivabili dall’analisi strutturale dello schema della sorgente (intensionali ed estensionali) e dall’analisi lessicale dei termini usati nella sua definizione, nonché di quelle fornite direttamente dall’utente. L’incapsulamento dello schema versioning, come analizzato in D1.R6, introduce tuttavia un ulteriore grado di complessità da gestire, dovuto alle operazioni di ridenominzaione (<i>rename</i>), che producono sinonimie tipicamente non catturabili usando i metodi tradizionali di analisi lessicale basata su Thesaurus comune. Il trattamento automatico
+di tali problemi rientra tuttavia fra i compiti specifici del prototipo realizzato.
+
+<p align="justify">
+Il prototipo <b>SVMgr</b>, tramite tre interfacce grafiche dedicate, supporta tre gruppi di funzionalità base: 
+</p>
+<ol type="a">
+<li><b>Gestione del contenuto dei data pool.</b>
+Tale gruppo di funzioni consente di visualizzare il contenuto dei <i>data pool</i>
+asosociati alle versioni di schema eseguendo query di selezione sulle relazioni
+appartenenti dal data pool stesso, di modificarne il contenuto
+con l'inserimento, cancellazione e modifica di tuple nella relazione visualizzata,
+nonch&eacute; di effettuare verifiche di integrit&agrave; dei dati verificando 
+l'unicit&agrave; della chiave.
+</li>   
+<li><b>Gestione delle versioni di schema</b>
+Tale gruppo di funzionalit&agrave; consente il pieno supporto dello <i>schema versioning</i>. Esso consente infatti di creare una nuova versione di schema, a partire
+da una versione preesistente selezionata da cui eredita inzialmente il contenuto del data pool associato, e di eseguire poi le operazioni di cambiamento di schema (aggiunta, eliminazione
+e ridenominazione di relazioni, aggiunta, eliminazione
+e ridenominazione di attributi delle relazioni, cambiamento della chiave primaria) 
+richieste sulla nuova versione di schema. Parallelamente all'esecuzione dei cambiamenti di schema, il tool provvede alla generazione automatica e al mantenimento delle corrispondenti <b>SVDR (Schema Versioning Derived Relationships)</b>,
+secondo la metodologia descritta nel rapporto D1.R6. 
+</li>
+<li><b>Utilizzo di strumenti per il supporto all’integrazione</b>
+Tale gruppo di <i>utility</i> comprende l'esportazione di <i>wrapper</i> (sotto forma di viste SQL) per l’accesso alle versioni di schema e corrispondenti data pool "incapsulati" come
+sorgenti dati indipendenti, nonch&eacute; l'esportazione  in formato XML
+dello schema e delle SVDR generate automaticamente dal sistema. Per il formato XML di tali informazioni si è fatto riferimento alla DTD sviluppata dall’unità di Modena, in modo da consentire un utilizzo del prototipo D1.P4 facilmente integrabile con quello del prototipo principale D1.P1.
+Funzionalit&agrave; aggiuntive consentono l'eliminazione di SVDR esistenti o l'aggiunta
+di nuove SVDR fornite dall'utente.
+</li>
+</ol>
+
+<p align="justify">Il prototipo D1.P4 è stato scritto in linguaggio Java (compatibile con le versioni a partire dalla 1.2), utilizzando JDBC/ODBC e SQL per l’accesso al database Access sottostante. Nella sua release corrente, il prototipo non supporta altri DBMS per la realizzazione della sorgente dati (a causa di lievi idiosincrasie rispetto allo standard del dialetto SQL supportato da Access), ma può essere molto semplicemente esteso a supportare altri DBMS (es. Oracle e DB2) in una successiva release con modifiche di lieve entità nella sintassi delle query inviate al database server sottostante.</p>
+
+<p> &nbsp;</p>
+
+<hr height="15" color="#000099">
+<center><h3><b>Ambiente di sviluppo e di esecuzione</b></h3></center>
+Sviluppato in Java 1.2 e MS Access. <br>
+Eseguibile in ambienti Windows 9x/NT con ODBC.<br>
+<hr height="15" color="#000099"> &nbsp;            
+<p><font color="#0000FF"><a href="../index.html"><u>Back</u></a></font>             </p>           </div>         </div>            <TR>       <TD colspan="2" bgcolor="#CCCCCC">&nbsp;</TD>    </TR>    <TR>       <TD bgcolor="#000099" colspan="2">&nbsp;</TD>    </TR>    <TR>       <TD colspan="2" bgcolor="#CCCCCC">&nbsp;</TD>    </TR>    <TR>       <TD height="38" colspan="2" bgcolor="#CCCCCC">         <div align="center"><font face="Arial" size="1" color="#4E4B4A"><b>Sito           a cura di Domenico Lembo<br>          </b></font> <a href="mailto:lembo@dis.uniroma1.it"><font face="Arial" size="1" color="#000099">lembo@dis.uniroma1.it</font></a><BR>        </div>      </TD>    </TR>    <!--fine seconda colonna-->   </TABLE></CENTER></BODY></HTML>

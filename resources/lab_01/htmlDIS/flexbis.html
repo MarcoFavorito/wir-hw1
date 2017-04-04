@@ -1,0 +1,74 @@
+<HTML>
+<HEAD>
+   <META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1">
+   <META NAME="Author" CONTENT="admin">
+   <META NAME="GENERATOR" CONTENT="Mozilla/4.03 [en] (X11; I; SunOS 5.5.1 sun4u) [Netscape]">
+   <TITLE>flexbison</TITLE>
+</HEAD>
+<BODY TEXT="#000000" BGCOLOR="#FFFFFF" LINK="#0000EE" VLINK="#551A8B" ALINK="#FF0000">
+
+<H1>
+Istruzioni per l'uso di FLEX e BISON in ambiente DJGPP</H1>
+
+<HR WIDTH="100%">
+
+<P>&nbsp;<B>Nota bene: </B>queste istruzioni valgono solo per l'uso di
+FLEX e BISON con DJGPP. Sotto altri sistemi operativi (es. UNIX, LINUX)
+cambiano i nomi dei file generati da FLEX&nbsp;e BISON (es. lexyy.c diventa
+lex.yy.c)
+
+<P>
+<HR WIDTH="100%">
+<OL>
+<LI>
+Creare il file file1 di specifica FLEX dell'analizzatore lessicale.</LI>
+
+<LI>
+Creare il file file2 di specifica BISON dell'analizzatore sintattico. Si
+consiglia di usare l'estensione standard ".y" per i file contententi specifiche
+BISON.</LI>
+
+<LI>
+Generare l'analizzatore lessicale in C mediante il comando:</LI>
+
+
+<P>flex file1
+
+<P>(viene generato il file lexyy.c);
+<LI>
+Generare l'analizzatore sintattico in C mediante il comando:</LI>
+
+
+<P>bison -d file2
+
+<P>(vengono generati i file file2_tab.c e file2_tab.h);
+
+<P>NOTA: L'opzione -d di BISON serve a generare l'header file. Tale file
+deve essere incluso dal sorgente lexyy.c generato da flex. Perci&ograve;
+questa dichiarazione di inclusione va messa nella parte dichiarazioni del
+file file1 di specifica FLEX.
+<LI>
+Compilare questi moduli C mediante il comando:</LI>
+
+
+<P>gcc lexyy.c file2_tab.c -lfl -o pascom.exe
+
+<P>(viene generato l'eseguibile pascom.exe)
+
+<P>NOTA: L'opzione -lfl serve a collegare i moduli generati dal compilatore
+con la libreria di FLEX.
+<LI>
+Richiamare l'analizzatore sintattico mediante il comando:</LI>
+
+
+<P>pascom &lt; filesorgente
+
+<P>(viene generato in standard output l'albero sintattico risultante dall'analisi).
+
+<P>NOTA: L'albero sintattico pu&ograve; venire scritto su file ridirigendo
+l'output nel seguente modo:
+
+<P>pascom &lt; filesorgente > filedestinazione</OL>
+
+</BODY>
+</HTML>

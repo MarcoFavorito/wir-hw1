@@ -1,0 +1,167 @@
+<!doctype html public "-//w3c//dtd html 4.0 transitional//en">
+<html>
+<head>
+<link href="java.css" rel="stylesheet" type="text/css">
+<title>Visibilita' delle variabili globali</title>
+</head>
+
+<body>
+
+<h2>Visibilit&agrave; delle variabili globali</h2>
+
+Nella pagine precedente si &egrave; detto che le variabili
+globali si possono usare in tutte le procedure e nel
+programma principale. In effetti esiste una eccezione 
+molto importante. Non tenerne conto pu&ograve; portare
+a programmi che compilano senza errori ma non funzionano
+nel modo dovuto. La regola &egrave;:<p>
+
+<blockquote>
+<i>
+una variabile globale non &egrave; utilizzabile
+in una procedura se nella procedura viene definita
+un'altra variabile con lo stesso nome.
+</i>
+</blockquote>
+
+Per esempio, se definiamo una variabile globale che si
+chiama <tt>x</tt>, e poi in una procedura c'&egrave; una
+variabile locale <tt>x</tt>, allora la procedura ``vede''
+solo la sua variabile locale. Consideriamo questo
+programma:<p>
+
+<pre>
+class Prova {
+  static int x;
+
+  static void test() {
+    int x;
+
+    x=10;
+  }
+
+  public static void main(String[] args) {
+    x=5;
+    test();
+    System.out.println(x);
+  }
+}
+</pre>
+
+La situazione che si viene a creare nella memoria &egrave;
+la seguente:<p>
+
+<table>
+
+<tr>
+<td><tt></tt></td>
+<td>
+<table>
+<tr><td>
+<table>
+<tr>
+<td><tt>x</tt></td>
+<td><table border=1><tr><td><tt>&nbsp;&nbsp;&nbsp;&nbsp;</tt></td></tr></table></td>
+</tr>
+<tr><td>&nbsp;</td><td>&nbsp;</td><td><tt>&nbsp;&nbsp;&nbsp;&nbsp;</tt></td></tr>
+<tr><td>&nbsp;</td></tr>
+</table>
+</tr></td>
+</table>
+</td>
+</tr>
+
+<tr>
+<td><tt>test</tt></td>
+<td>
+<table border=1>
+<tr><td>
+<table>
+<tr>
+<td><tt>x</tt></td>
+<td><table border=1><tr><td><tt>&nbsp;&nbsp;&nbsp;&nbsp;</tt></td></tr></table></td>
+</tr>
+<tr><td>&nbsp;</td><td>&nbsp;</td><td><tt>&nbsp;&nbsp;&nbsp;&nbsp;</tt></td></tr>
+<tr><td>&nbsp;</td></tr>
+</table>
+</tr></td>
+</table>
+</td>
+</tr>
+
+<tr><td>&nbsp;</td></tr>
+<tr>
+<td><tt>main</tt></td>
+<td>
+<table border=1><tr><td>
+<table>
+<tr>
+<td><tt></tt></td>
+<td><table border=0><tr><td><tt>&nbsp;&nbsp;&nbsp;&nbsp;</tt></td></tr></table></td>
+</tr>
+<tr><td>&nbsp;</td><td>&nbsp;</td><td><tt>&nbsp;&nbsp;&nbsp;&nbsp;</tt></td></tr>
+<tr><td>&nbsp;</td></tr>
+</table>
+</tr></td></table>
+</td>
+</tr>
+</table>
+
+<p>
+
+
+La assegnazione <tt>x=10</tt> mette il valore 10 nella
+variabile <tt>x</tt> locale della procedura, e non in quella
+globale. Come risultato, la operazione di stampa che si
+trova nel programma principale stampa 5 e non 10. Infatti,
+la prima istruzione del programma mette 5 nella variabile
+globale; viene chiamata la procedura, che mette 10 nella 
+sua variabile <tt>x</tt> locale; si ritorna dalla procedura
+e si stampa il valore della variabile globale, che contiene
+ancora 5.<p>
+
+La stessa cosa succede se la variabile locale che ha lo stesso
+nome &egrave; uno dei parametri:<p>
+
+<pre>
+class Prova {
+  static int x;
+
+  static void test(int x) {
+    x=10;
+  }
+
+  public static void main(String[] args) {
+    x=5;
+    test(24);
+    System.out.println(x);
+  }
+}
+</pre>
+
+In questo caso, la variabile <tt>x</tt> della procedura
+<tt>test</tt> &egrave; un parametro, ma &egrave; sempre una
+variabile della procedura (l'unica differenza fra i parametri
+e le variabili dichiarate dentro la procedura &egrave; che
+il suo valore iniziale &egrave; quello inviato dal programma).
+Quindi, la assegnazione <tt>x=10</tt> mette il valore 10 nella
+variabile <tt>x</tt> locale di <tt>test</tt> e non nella
+variabile globale <tt>x</tt>. Anche se hanno lo stesso nome,
+queste due variabili sono distinte.<p>
+
+Il risultato della esecuzione di questo programma &egrave;
+identico a quello del precedente: la prima istruzione <tt>x=5</tt>
+mette 5 nella variabile globale, si chiama la procedura che
+mette 10 nella sua variabile locale, si ritorna e si stampa
+il contenuto della variabile globale, che contiene ancora il
+valore 5.<p>
+
+Il motivo per cui il programma principale vede la variabile
+globale, mentre la procedura vede quella locale, &egrave; che
+nel programma principale non ci sono variabili locali con
+lo stesso nome <tt>x</tt>, mentre nella procedura c'&egrave;
+una variabile locale con lo stesso nome, per cui la procedure
+vede la sua variabile e non quella globale.<p>
+
+</body>
+</html>

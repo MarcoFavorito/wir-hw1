@@ -1,0 +1,158 @@
+<!doctype html public "-//w3c//dtd html 4.0 transitional//en">
+<html>
+<head>
+<link href="java.css" rel="stylesheet" type="text/css">
+<title>Punti in pi&ugrave; rettangoli</title>
+</head>
+
+<body>
+
+<h2>Punti in pi&ugrave; rettangoli</h2>
+
+Questo esercizio &egrave; simile al precedente: in
+particolare, si tratta di disegnare dei rettangoli affiancati,
+e poi di contare quante volte il pulsante &egrave; stato
+premuto in ognuno di essi. Questo numero viene poi scritto
+al di sopra del rettangolo stesso.<p>
+
+Supponiamo quindi di avere dieci rettangoli affiancati,
+ognuno dei quali &egrave; largo 20 e alto 100. Lasciamo
+uno spazio di 20 punti al di sopra del rettangolo per poter
+scrivere il numero di volte che il pulsante viene premuto
+all'interno di ciascuno di questi rettangoli.<p>
+
+Il problema &egrave; il seguente: dobbiamo memorizzare
+il numero di click all'interno di ognuno dei rettangoli.
+Dal momento che si tratta di dieci rettangoli, non &egrave;
+il caso di usare dieci variabili normali. Conviene invece
+usare un vettore. Dopo la intestazione del programma,
+dichiariamo quindi un vettore di interi con dieci componenti:
+
+<pre>
+import java.awt.*;
+
+public class ContaPunti extends java.applet.Applet {
+  int quantevolte[]={0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
+</pre>
+
+Ogni elemento di questo vettore rappresenta il numero di
+volte che il pulsante &egrave; stato premuto all'interno
+di ognuno dei rettangoli. Inizialmente tutti gli elementi
+di questo vettore valgono zero, dal momento che il mouse
+non &egrave; mai stato premuto quando si inizia l'esecuzione
+dell'applet. Lasciamo per un momento da 
+parte la funzione <tt>mouseDown</tt>, e vediamo invece la
+funzione <tt>paint</tt>. Per prima cosa, dobbiamo disegnare
+i rettangoli. Questi sono costituiti da due linee orizzontali
+e da undici linee verticali. Non &egrave; difficile
+verificare che il modo giusto per disegnare queste linee 
+&egrave; il seguente:<p>
+
+<pre>
+  public void paint(Graphics g) {
+    int i;
+
+    g.drawLine(0,20,20*quantevolte.length,20);
+    g.drawLine(0,120,20*quantevolte.length,120);
+
+    for(i=0; i<=quantevolte.length; i=i+1) {
+      g.drawLine(i*20, 20, i*20, 120);
+    }
+
+    for(i=0; i<=quantevolte.length-1; i=i+1) {
+      g.drawString(""+quantevolte[i],i*20+5, 18);
+    }
+  }
+</pre>
+
+Le prime due istruzioni <tt>drawLine</tt> disegnano le due
+linee orizzontali, mentre il ciclo disegna le linee verticali.
+Il secondo ciclo visualizza il contenuto del vettore
+<tt>quantevolte</tt>. Questo &egrave; richiesto dal problema,
+dal momento che sopra ogni rettangolo bisogna visualizzare
+il numero dei click, che &egrave; rappresentato appunto dalle
+variabili di questo vettore.<p>
+
+Passiamo ora alla funzione <tt>mouseDown</tt>. Questa
+funzione riceve la posizione del cursore in cui il pulsante
+&egrave; stato premuto: deve controllare se questo punto
+si trova all'interno di uno dei rettangoli, ed eventualmente
+aumentare di uno la variabile che conta il numero di
+click di quel rettangolo.<p>
+
+La cosa si pu&ograve; fare in questo modo: per prima cosa,
+se <tt>y</tt> &egrave; minore di 20 o maggiore di 120, siamo
+sicuramente fuori da tutti i rettangoli. Una volta appurato
+che <tt>20 &lt;= y &lt;= 120</tt>, dobbiamo ancora capire in
+quale rettangolo ci troviamo; inoltre, la <tt>x</tt> potrebbe
+essere troppo grande (cio&egrave; siamo a destra dell'ultimo
+rettangolo). Il primo rettangolo comprende i punti con
+coordinate <tt>x</tt> comprese fra 0 e 19, mentre il secondo
+comprende i punti in cui <tt>x</tt> va da 20 a 39, ecc. Quindi,
+se <tt>x</tt> ha un valore qualsiasi, si pu&ograve; capire
+in quale rettangolo ci si trova facendo la divisione intero
+<tt>x/20</tt>. Infatti, se <tt>x</tt> &egrave; compreso fra 0
+e 19 questa espressione vale 0, se <tt>x</tt> sta fra 20 e 39
+l'espressione vale 1, ecc. Quindi, se il pulsante &egrave;
+stato premuto nel punto <tt>x</tt>, la variabile da aumentare
+di 1 &egrave; <tt>quantevolte[x/20]</tt>. Da questo si capisce
+anche che, se <tt>x/20</tt> super <tt>quantevolte.lenght</tt>,
+allora siamo fuori dalla fila di rettangoli.<p>
+
+Il programma completo
+<a href="ContaPunti.java">ContaPunti.java</a>, che include
+la funzione <tt>mouseDown</tt> spiegata sopra, &egrave; il
+seguente:<p>
+
+<pre>
+/*
+  Conta il numero di volte che il pulsante del mouse
+  viene premuto all'interno di ognuno dei rettangoli
+  disegnati.
+*/
+
+import java.awt.*;
+
+public class ContaPunti extends java.applet.Applet {
+  int quantevolte[]={0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
+
+  public boolean mouseDown(Event e, int x, int y) {
+    if( (y>=20) && (y<=120) && (x<20*quantevolte.length) ) { 
+      quantevolte[x/20]=quantevolte[x/20]+1;
+    }
+    repaint();
+    return true;
+  }
+
+  public void paint(Graphics g) {
+    int i;
+
+    g.drawLine(0,20,20*quantevolte.length,20);
+    g.drawLine(0,120,20*quantevolte.length,120);
+
+    for(i=0; i<=quantevolte.length; i=i+1) {
+      g.drawLine(i*20, 20, i*20, 120);
+    }
+
+    for(i=0; i<=quantevolte.length-1; i=i+1) {
+      g.drawString(""+quantevolte[i],i*20+5, 18);
+    }
+  }
+}
+
+</pre>
+<p>
+
+<center>
+<img src="ContaPunti.gif">
+</center>
+<p>
+
+<applet code="ContaPunti.class">
+</applet>
+
+
+
+</body>
+</html>
+

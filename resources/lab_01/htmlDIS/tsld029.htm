@@ -1,0 +1,76 @@
+
+<HTML>
+
+<HEAD>
+<META HTTP-EQUIV="Context-Type" CONTEXT="text/html;charset=PREDEFINITA (AUTOMATICA)">
+<meta name="GENERATOR" content="Microsoft Internet Assistant for PowerPoint 97">
+ <TITLE>Embedding SQL in C: An Example</TITLE> 
+</HEAD>
+
+<BODY     >
+
+ <H1>Embedding SQL in C: An Example</H1> 
+ <P><UL>
+<H2>char SQLSTATE[6];
+</H2>
+<BR></UL><UL>
+<H2>EXEC SQL BEGIN DECLARE SECTION
+</H2>
+</UL><UL>
+<H2>char c_sname[20]; short c_minrating; float c_age;
+</H2>
+</UL><UL>
+<H2>EXEC SQL END DECLARE SECTION
+</H2>
+</UL><UL>
+<H2>c_minrating = random();
+</H2>
+</UL><UL>
+<H2>EXEC SQL DECLARE sinfo CURSOR FOR
+</H2>
+</UL><UL>
+<H2>	SELECT S.sname, S.age	FROM Sailors S
+</H2>
+</UL><UL>
+<H2>	WHERE S.rating &#062 :c_minrating
+</H2>
+</UL><UL>
+<H2>	ORDER BY S.sname;
+</H2>
+</UL><UL>
+<H2>do {
+</H2>
+</UL><UL>
+<H2>	EXEC SQL FETCH sinfo INTO :c_sname, :c_age;
+</H2>
+</UL><UL>
+<H2>	printf(“%s is %d years old\n”, c_sname, c_age);
+</H2>
+</UL><UL>
+<H2>} while (SQLSTATE != ‘02000’);
+</H2>
+</UL><UL>
+<H2>EXEC SQL CLOSE sinfo;
+</H2>
+</UL><UL>
+<H2>
+</H2>
+</UL><UL>
+<H2>
+</H2>
+</UL></P>
+<P></P> 
+<P>
+<TABLE>
+  <TD HEIGHT=100 WIDTH=100> <A HREF="tsld028.htm">Diapositiva precedente</A> </TD>
+  <TD HEIGHT=100 WIDTH=100> <A HREF="tsld030.htm">Diapositiva successiva</A> </TD>
+  <TD HEIGHT=100 WIDTH=150> <A HREF="tsld001.htm">Torna alla prima diaposiva</A> </TD>
+  <TD HEIGHT=100 WIDTH=150> <A HREF="sld029.htm">Visualizza versione grafica</A> </TD>
+</TABLE>
+<BR>
+</P>
+
+
+
+</Body>
+</HTML>

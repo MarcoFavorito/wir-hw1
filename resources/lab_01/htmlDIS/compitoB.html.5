@@ -1,0 +1,86 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+
+<!-- saved from url=(0098)http://www.dis.uniroma1.it/~degiacom/didattica/fond1info/appelli/2003-04-08/compito-A/testo-A.html -->
+
+<HTML><HEAD><TITLE>Esame del 22/7/2003 - Compito A</TITLE>
+
+<META http-equiv=Content-Type content="text/html; charset=windows-1252">
+
+<META content="Microsoft FrontPage 4.0" name=GENERATOR>
+</HEAD>
+
+<BODY>
+
+<CENTER>
+  <B>Tecniche di Programmazione </B><BR>
+  <B>Corso di Laurea in Ingegneria 
+
+Informatica</B> <BR><B>Corso di Laurea in Ingegneria Automatica</B> <BR>
+A.A. 
+
+2004/05
+</CENTER>
+
+<CENTER>
+
+  <H2>Appello del 01/04/2005 - Compito B </H2>
+
+</CENTER>
+
+<p>Si vogliono gestire informazioni relative alla restituzione delle videocassette mediante una macchina automatica di una videoteca. 
+  
+
+   Di un oggetto <em>RestituzioneVideocassette</em> sono di interesse il nome della videoteca (una stringa) e la collezione di videocassette restituite. 
+  
+
+ Di ogni videocassetta sono di interesse le seguenti 
+  
+
+ informazioni:</p>
+<ul>
+  <li>il suo codice (un intero)
+  <li>il genere del film che vi &egrave; memorizzato (una stringa): es., &quot;avventura&quot;, &quot;commedia&quot;</li>
+  <li>il titolo del film che vi &egrave; memorizzato (una stringa)</li>
+</ul>
+<p>Gli oggetti <em>RestituzioneVideocassette</em> supportano le seguenti funzionalità: </p>
+<UL>
+
+  <LI><EM>crea:</EM> che, data una una stringa <em>s</em>  che rappresenta il nome di una videoteca, crea un oggetto <em>RestituzioneVideocassette</em> associato alla videoteca <em>s</em>, che inizialmente non ha nessuna videocassetta restituita; 
+
+  <LI><em> nessunaRestituzione: </em>che restituisce <em>true</em> se nessuna videocassetta &egrave; stata restituita, <em>false </em>altrimenti; 
+  <LI><EM>videoteca:</EM> che restituisce il nome della videoteca; 
+  
+<LI><EM>riconsegna:</EM> che, dato il codice <em>c</em> di una videocassetta e due stringhe che ne rappresentano titolo e genere, 
+
+
+ pone la videocassetta sulla cima delle videocassette nella macchina di restituzione; se tale codice &egrave; gi&agrave; utilizzato lancia un'eccezione;   
+<LI>  <EM>preleva:</EM> che preleva la videocassetta affiorante dalla cima delle videocassette nella macchina di restituzione; se nessuna videocassetta &egrave; stata restituita, lancia un'eccezione;
+<LI><EM>prelevaConCodice:</EM> che, dato il codice <em>c</em> di una videocassetta,  preleva la videocassetta avente codice <em>c</em>; se tale codice non &egrave; presente  lancia un'eccezione;  
+<LI><em>riconsegnata: </em>che, dato il codice <em>c</em> di una videocassetta, restituisce <em>true</em> se la videocassetta &egrave; stata riconsegnata, <em>false</em> altrimenti; 
+  <LI><em> genere:</em> che, dato il codice <em>c</em> di una videocassetta, ne restituisce <em></em>il genere; se tale codice non &egrave; presente lancia un'eccezione; 
+  <LI><em>titolo</em>: che, dato il codice <em>c</em> di una videocassetta, ne restituisce <em></em>il titolo; se tale codice non &egrave; presente lancia un'eccezione;    
+  <LI><EM>quantiGenere:</EM> che dato un genere <em>g</em> di film, restituisce il numero di film presenti nella macchina di restituzione aventi genere <em>g</em>;
+  <LI><EM>tuttiGenere:</EM> che dato un genere <em>g</em> di un film, restituisce un array di interi contenente i codici di tutte le videocassette riconsegnate aventi genere <em>g</em>, nell'ordine in cui si trovano nella macchina di restituzione automatica (il primo elemento dell'array deve essere la videocassetta in cima alla macchina di restituzione).</LI>
+
+</UL>
+
+<P><STRONG>Domanda 1.</STRONG> Scrivere una classe Java <code>RestituzioneVideocassette</code> per rappresentare 
+
+  oggetti <em>RestituzioneVideocassette</em>. Specificare il costo in tempo e in spazio di ciascun metodo, indicando esplicitamente la dimensione dell'input, l'istruzione dominante e descrivendo il caso peggiore quando necessario. 
+<P><STRONG>Domanda 2.</STRONG> Si realizzi una classe cliente della classe <CODE>RestituzioneVideocassette </CODE>contenente un metodo statico <code>codaCassetteGenere</code> che, dato un oggetto <em>r</em> di tipo <CODE>RestituzioneVideocassette</CODE> e una stringa <em>g </em>che rappresenta un genere, restituisca la coda dei titoli delle videocassette restituite del genere <em>g</em> presenti in <em>r</em>. Si noti che il primo elemento della coda deve essere la prima videocassetta di genere <em>g</em> a partire dalla cima della macchina di restituzione. Specificare il costo in tempo e in spazio del metodo, indicando esplicitamente la dimensione dell'input, l'istruzione dominante e descrivendo il caso peggiore quando necessario. Le operazioni sulla Coda hanno tutte costo O(1). 
+
+<p>La classe <tt>Coda</tt> ha la seguente interfaccia:
+<blockquote>
+  <pre>
+class Coda {
+   public Coda() 
+   public boolean empty() 
+   public void inCoda(int codice) 
+   public void outCoda()
+   public int primo()
+}</pre>
+</blockquote>
+<P><strong>Domanda 3.</strong> Data una rappresentazione collegata di alberi binari in cui l'informazione in ciascun nodo &egrave; un intero, realizzare un metodo statico pubblico che, dato il riferimento alla radice di un albero binario <em>alb</em>, restituisca la somma dei valori positivi presenti nelle foglie dell'albero. Specificare il costo in tempo e in spazio del metodo, indicando esplicitamente la dimensione dell'input, l'istruzione dominante e descrivendo il caso peggiore quando necessario.
+</BODY>
+</HTML>
+

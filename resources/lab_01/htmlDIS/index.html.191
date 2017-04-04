@@ -1,0 +1,446 @@
+<HTML>
+<!--Converted with LaTeX2HTML 96.1 (Feb 5, 1996) by Nikos Drakos (nikos@cbl.leeds.ac.uk), CBLU, University of Leeds -->
+<HEAD>
+  <META NAME="GENERATOR" CONTENT="Adobe PageMill 3.0 Win">
+  <TITLE>ART - Azzurra Robot Team (English Version)</TITLE>
+  <META NAME="description" CONTENT="ARTD98">
+  <META NAME="keywords" CONTENT="ART">
+  <META NAME="resource-type" CONTENT="document">
+  <META NAME="distribution" CONTENT="global">
+</HEAD>
+<BODY LANG="EN" BGCOLOR="#ffffff">
+
+<P><TABLE WIDTH="98%" HEIGHT="80%" BORDER="0" CELLSPACING="2"
+CELLPADDING="0">
+  <TR>
+    <TD VALIGN="TOP" HEIGHT="400">
+    <P><DIV STYLE="text-align:justify;"></P>
+
+    <H1><FONT SIZE="-1" FACE="Verdana, Arial, Helvetica, sans-serif">The
+    ART team</FONT></H1>
+
+    <P><FONT SIZE="-1" FACE="Verdana, Arial, Helvetica, sans-serif">Azzurra
+    Robot Team is the result of a joint effort of seven Italian research
+    groups from Univ. of Brescia, Univ. of Genoa, Politecnico of
+    Milano, Univ. of Padua, Univ. of Palermo, Univ. of Parma, Univ.
+    of Roma &quot;La Sapienza&quot;, and the Consorzio Padova Ricerche
+    which has provided resources and a set up of the soccer field
+    in its Center in Padua. Our goal at RoboCup 1998 has been to
+    provide a flexible and low-cost experimental team to make experience
+    before undertaking a larger project. Our long term goal is to
+    foster the development of research and education projects on
+    autonomous mobile robots by exploiting the RoboCup challenge.</FONT></P>
+
+    <P><FONT SIZE="-1" FACE="Verdana, Arial, Helvetica, sans-serif">In
+    order to exploit everyone's experience we need to accomodate
+    different kinds of players in terms of both hardware and software
+    architecture. We thus have a first set of players that have been
+    designed with a common basis and constitute the main skeleton
+    of the team, but we also have another type of player, named Mo2Ro,
+    which has been designed by the group at Politecnico di Milano.
+    The ART team in action is shown in Figure <A HREF="ART.html#players">1</A>,
+    where one can see the player Mo2Ro close to the ball, three other
+    middle field players in the center, and the goal-keeper defending
+    the goal. It is obvious that such a diversity raises several
+    problems from both the organizational and development viewpoint,
+    but we have considered to be an interesting challenge of the
+    overall project the ability to design players with different
+    features, yet capable to interact with the team mates. In the
+    following section, we first focus the presentation on the first
+    group of players and then briefly address the second type. In
+    the last section we describe our research perspectives within
+    the RoboCup framework.</FONT></P>
+
+    <P>&nbsp;</P>
+
+    <P><FONT SIZE="-1" FACE="Verdana, Arial, Helvetica, sans-serif"></FONT><A
+    NAME="16"></A><FONT SIZE="-1" FACE="Verdana, Arial, Helvetica, sans-serif">&nbsp;</FONT><A
+    NAME="players"></A>&nbsp;<IMG SRC="images/img2.gif" WIDTH="470"
+    HEIGHT="390" ALIGN="BOTTOM" ALT="figure13" NATURALSIZEFLAG="0">
+<BR>
+    <STRONG>Figure 1:</STRONG> The ART team in action<BR>
+    </P>
+
+    <P>&nbsp;</P>
+
+    <H1><FONT SIZE="-1" FACE="Verdana, Arial, Helvetica, sans-serif"></FONT><A
+    NAME="SECTION00020000000000000000"></A><FONT SIZE="-1" FACE="Verdana, Arial, Helvetica, sans-serif">The
+    ART Players</FONT></H1>
+
+    <P><FONT SIZE="-1" FACE="Verdana, Arial, Helvetica, sans-serif">The
+    design of the basic ART player has been mainly guided by the
+    goal of achieving an open architecture where new hardware and
+    software components could be easily added. In addition, we aimed
+    at realizing a good development environment to carry on experiments
+    in the field, thus allowing many different technical solutions
+    to be tested.</FONT></P>
+
+    <P><FONT SIZE="-1" FACE="Verdana, Arial, Helvetica, sans-serif">The
+    hardware architecture is illustrated in Figure <A HREF="ART.html#archhw">2</A>.
+    The first building block is constituted by the Pioneer mobile
+    basis and the second is constituted by a conventional PC for
+    onboard computing. We have reached a compromise between weight
+    and power consumption, where the player has enough autonomy to
+    play games.</FONT></P>
+
+    <P><FONT SIZE="-1" FACE="Verdana, Arial, Helvetica, sans-serif">The
+    third building block is constituted by a wireless high bandwidth
+    connection that we consider necessary to have a development environment
+    that allows the programmer operating on a standard platform (connected
+    to the robot) to obtain accurate information about the situation
+    onboard. The wireless connection supports also the exchange of
+    information among the players, but it is not used to transfer
+    raw data among the players.</FONT></P>
+
+    <P><FONT SIZE="-1" FACE="Verdana, Arial, Helvetica, sans-serif">The
+    fourth component is the vision system which is constituted by
+    a low-cost frame grabber based on the BT848. At RoboCup 98 we
+    have used a very cheap color CCD camera with a resolution 380
+    TV lines. On the middle field player the camera is mounted in
+    front part of the robot, while on the goal-keeper the camera
+    points at a convex mirror provinding a 360 <IMG SRC="img3.gif"
+    WIDTH="6" HEIGHT="7" ALIGN="BOTTOM" ALT="tex2html_wrap_inline173"
+    NATURALSIZEFLAG="0"> view of the field.</FONT></P>
+
+    <P>&nbsp;</P>
+
+    <P><FONT SIZE="-1" FACE="Verdana, Arial, Helvetica, sans-serif"></FONT><A
+    NAME="25"></A><FONT SIZE="-1" FACE="Verdana, Arial, Helvetica, sans-serif">&nbsp;</FONT><A
+    NAME="archhw"></A>&nbsp;<IMG SRC="images/img4.gif" WIDTH="471"
+    HEIGHT="307" ALIGN="BOTTOM" ALT="figure22" NATURALSIZEFLAG="0">
+<BR>
+    <STRONG>Figure 2:</STRONG> The basic hardware components<BR>
+    </P>
+
+    <P>&nbsp;</P>
+
+    <P><FONT SIZE="-1" FACE="Verdana, Arial, Helvetica, sans-serif">The
+    remaining components are devices that we are able to connect
+    (as indicated in Figure <A HREF="ART.html#archhw">2</A>) through
+    the Pioneer input/output ports or through an ad hoc made board
+    on the ISA bus. Aa for additional devices, we have used a compass,
+    infrared sensors, a bumper for the goal keeper and a kicker for
+    the middle field player. The kicker, operating with air pressure,
+    allows the player to choose the direction to give to the ball.
+    In fact, it is constituted by two independent devices that allow
+    for a kick left, a kick right and a kick straight action, when
+    they are used simoultaneously. We consider the capability of
+    performing kicking actions essential not just to pursue the football
+    challenge, but to provide a setting where the knowledge about
+    the environment and the game strategy play a significant role
+    in the robot performance.</FONT></P>
+
+    <P><FONT SIZE="-1" FACE="Verdana, Arial, Helvetica, sans-serif">The
+    software architecture is centered around two main components:
+    LINUX and SAPHIRA. SAPHIRA is an environment that has been designed
+    to develop fuzzy controllers and is provided with the Pioneer
+    mobile base. The features of SAPHIRA that we have considered
+    critical for software design and engineering are Client Server
+    Architecture and the development environment suited for rapid
+    prototyping. SAPHIRA provides a language for specifying concurrent
+    activities, where the primitive activities can be either programmed
+    or implemented as fuzzy behaviours and composed as described
+    in [<A HREF="ART.html#KoSa96">6</A>]. We have experimented different
+    strategies for designing the control systems, either by straight
+    activity programming and by designing fuzzy behaviours.</FONT></P>
+
+    <P>&nbsp;</P>
+
+    <P><FONT SIZE="-1" FACE="Verdana, Arial, Helvetica, sans-serif"></FONT><A
+    NAME="34"></A><FONT SIZE="-1" FACE="Verdana, Arial, Helvetica, sans-serif">&nbsp;</FONT><A
+    NAME="archsw"></A>&nbsp;<IMG SRC="images/img5.gif" WIDTH="471"
+    HEIGHT="272" ALIGN="BOTTOM" ALT="figure31" NATURALSIZEFLAG="0">
+<BR>
+    <STRONG>Figure 3:</STRONG> The basic software components<BR>
+    </P>
+
+    <P>&nbsp;</P>
+
+    <P><FONT SIZE="-1" FACE="Verdana, Arial, Helvetica, sans-serif">Figure
+    <A HREF="ART.html#archsw">3</A> shows the main components of
+    the software architecture. The Local Perceptual Space (LPS) is
+    the structure where all the information about the status of the
+    system is stored. Specifically, the LPS includes a description
+    of static objects: goals, walls, lines and field, as well as
+    information about dynamic objects: ball and other players. The
+    information stored in the LPS is used by the controller to drive
+    the actions of the agent. The other modules shown in the figure
+    provide some details on the process of acquiring information
+    and putting it in the LPS. The sources for new information can
+    be either sensing devices or other agents.</FONT></P>
+
+    <P><FONT SIZE="-1" FACE="Verdana, Arial, Helvetica, sans-serif">The
+    module labelled Sensor Data Processing is dedicated to the processing
+    of data gathered from the sensors and gives as output information
+    about the objects in the LPS, such as position, speed etc. In
+    acquiring information from sensors a central role is played by
+    the vision system. We have tried various approaches to extract
+    from the images information about the objects that are in the
+    field and are represented in the LPS. In particular, we have
+    developed a system based on HSV color filtering to identify the
+    ball and evaluate its distance and angle relative to the robot's
+    position at a rate of 10 frames per second.</FONT></P>
+
+    <P><FONT SIZE="-1" FACE="Verdana, Arial, Helvetica, sans-serif">The
+    module labelled Interpretation has the goal of turning the object
+    descriptions obtained by the sources into the proper representation
+    in the LPS. This process is accomplished by taking into account
+    the reliability of the various input devices, the frequency of
+    acquisition and specific features of the objects. Information
+    about static objects may lead to adjustments of the position
+    of the robot, while information about dynamic objects changes
+    their position relatively to the player's position.</FONT></P>
+
+    <P><FONT SIZE="-1" FACE="Verdana, Arial, Helvetica, sans-serif">Information
+    about the status of the system can also be acquired from other
+    agents, which broadcast the information gathered locally to other
+    agents. To this end, we have designed a communication protocol
+    suitable and efficient for the selected domain, and a high-level
+    inter-robot interface dealing with the exchange of information.
+    However, communication failures do not block the functioning
+    of the robot, that is able of acting on the basis of the information
+    locally available.</FONT></P>
+
+    <P>&nbsp;</P>
+
+    <H2><FONT SIZE="-1" FACE="Verdana, Arial, Helvetica, sans-serif"></FONT><A
+    NAME="SECTION00021000000000000000"></A><FONT SIZE="-1" FACE="Verdana, Arial, Helvetica, sans-serif">Mo2Ro,
+    a modular, mobile robot</FONT></H2>
+
+    <P><FONT SIZE="-1" FACE="Verdana, Arial, Helvetica, sans-serif">The
+    second type of player, called, Mo2Ro, is a mobile robot consisting
+    of two main modules: the electromechanical base, including the
+    electronic devices providing power supply and low-level sensor
+    management, and the PC. It has two wheels (diam. 12.5 cm) each
+    moved by an independent engine, and a free wheel. Its maximum
+    speed is 100 cm/sec, and it can turn on place. The payload is
+    about 60Kg. It has bumpers, encoders and battery level sensors.
+    It is possible to add to the base any kind of modules, including
+    sensorial modules (sonars, cameras) and actuator modules (a kicker
+    and a robotic arm). The add-on modules can also extend the size
+    of the base, relying on an additional wheel and hinging on the
+    base. A basic fuzzy control system ensures the accomplishment
+    of movement commands given as position and/or speed setpoints.
+    The software architecture runs on the on-board PC (a PENTIUM
+    233MMX) under Linux operating system. It is based on behaviors
+    programmed in C. The kicker is based on an idea drawn from Leonardo
+    da Vinci's projects of pile machines. An engine mounts a cog-wheel
+    some of which teeth have been cut off. The cog-wheel runs on
+    a rack charging a spring-piston until a sensor detects that the
+    teeth are present. Then the engine stops, and can be turn on
+    again by a single bit command from the PC, thus leaving the spring
+    piston to kick the ball.</FONT></P>
+
+    <P>&nbsp;</P>
+
+    <H1><FONT SIZE="-1" FACE="Verdana, Arial, Helvetica, sans-serif"></FONT><A
+    NAME="SECTION00030000000000000000"></A><FONT SIZE="-1" FACE="Verdana, Arial, Helvetica, sans-serif">Research
+    goals</FONT></H1>
+
+    <P><FONT SIZE="-1" FACE="Verdana, Arial, Helvetica, sans-serif">The
+    research issues that arise in the scenario of the football game
+    proposed for the &quot;Middle-size&quot; league of the RoboCup
+    are discussed in [<A HREF="ART.html#Asada1998">1</A>]. Based
+    on the kind of capabilities of the players we are addressing
+    the following two issues: Sensing, Action and Control; Agent
+    Coordination.</FONT></P>
+
+    <P><FONT SIZE="-1" FACE="Verdana, Arial, Helvetica, sans-serif">From
+    the viewpoint of Sensing Action and Control we have tried to
+    keep the player architecture as open as possible to make it easy
+    to adapt different kinds of sensing devices and actuators. The
+    underlying idea is to introduce many sources of information as
+    well as different action capabilities. The approach proposed
+    in [<A HREF="ART.html#KoSa96">6</A>] has been evolving in response
+    to the need of controlling a much more complex robot, with different
+    sensing devices, action capabilities and in a multi-agent environment.
+    Many such aspects are not quite settled and we are currently
+    proposing a possible extension through the software architecture
+    outlined above. In particular, we emphasize the separation between
+    the processing for acquiring new data and their interpretation
+    according to the internal state of the robot and the knowledge
+    about different sources of information.</FONT></P>
+
+    <P><FONT SIZE="-1" FACE="Verdana, Arial, Helvetica, sans-serif">However,
+    we believe that in order to handle properly a variety of sensing
+    and action devices, possibly trying to apply specific game strategies,
+    a deliberative layer on top of a fuzzy control system is required.
+    In previous work we have proposed such an approach, by relying
+    on a declarative language for representing and reasoning about
+    actions[<A HREF="ART.html#DINR96">3</A>]. In the proposed setting
+    both static and dynamic knowledge about the system is used to
+    generate a plan, possibly including sensing actions [<A HREF="ART.html#DINR97">4</A>],
+    to achieve a given goal. The main issue we are investigating
+    is to establish a proper and effective connection between the
+    deliberative and the control level. Specifically, there is the
+    need both to find a framework where there is a precise relationship
+    between logical specification of actions and the underlying control
+    system and methodologies for deciding which aspects of the control
+    are better handled at the deliberative level. In addition, we
+    are developing tools to support the development and debugging
+    of the control system.</FONT></P>
+
+    <P><FONT SIZE="-1" FACE="Verdana, Arial, Helvetica, sans-serif">The
+    second issue we have addressed is coordination. We have developed
+    algorithms allowing the fusion of the multi-robot sensor data
+    (in particular of the perception of the robots' and ball position)
+    to reduce the overall error. These components have been integrated
+    in SAPHIRA.</FONT></P>
+
+    <P><FONT SIZE="-1" FACE="Verdana, Arial, Helvetica, sans-serif">In
+    a future perspective, we aim at the design and development of
+    a novel distributed software architecture, not only to meet the
+    RoboCup challenges, but also for more general tasks. This activity
+    will build on the previous experiences in the field of distributed
+    software architectures [<A HREF="ART.html#PiaggioZaccaria98">8</A>]
+    and of robot cognitive modelling. Moreover, part of the research
+    activity will also focus on the solution of navigation and planning
+    problems throughout forms of analogical representation and reasoning
+    [<A HREF="ART.html#Frixione98">5</A>].</FONT></P>
+
+    <P><FONT SIZE="-1" FACE="Verdana, Arial, Helvetica, sans-serif">Finally,
+    we are transferring the experience gained in participating to
+    the Simulation League into the middle size-league on the particular
+    aspect of getting an emergent collective behavior [<A HREF="ART.html#Pagello98">7</A>].
+    The limitations in the ability of performing behaviors in the
+    case of middle-size robots, makes the overall performance of
+    the real multirobot system weaker than the one obtained by simulated
+    agents. However, some basic cooperative patterns have been identified
+    and complex support actions have been experimented.</FONT></P>
+
+    <P>&nbsp;</P>
+
+    <H3><FONT SIZE="-1" FACE="Verdana, Arial, Helvetica, sans-serif"></FONT><A
+    NAME="SECTION00030100000000000000"></A><FONT SIZE="-1" FACE="Verdana, Arial, Helvetica, sans-serif">Acknowledgments</FONT></H3>
+
+    <P><FONT SIZE="-1" FACE="Verdana, Arial, Helvetica, sans-serif">The
+    project has been supported by Facolt&agrave; di Ingegneria, Universit&agrave;
+    di Roma &quot;La Sapienza&quot;, by Politecnico di Milano and
+    by Consorzio Padova Ricerche, for the equipment. All the other
+    institutions of the team members have provided various forms
+    of support to the individual members of the project. Daniele
+    Nardi is the team coordinator. Giovanni Adorni, Andrea Bonarini,
+    Riccardo Cassinis, Giorgio Clemente, Enrico Pagello, Maurizio
+    Piaggio, and Pietro Storniolo have coordinated the activity at
+    their sites. The list of people that we want to acknowledge is
+    very long and it includes colleagues and students who have provided
+    most of the motivation and enthusiasm that was required for setting
+    up the team. We thank Luigia Carlucci Aiello for providing stimuli
+    and various forms of support to the initiative; Kurt Konolige
+    for the technical support; Adriano Maurizio and Gianni Zampieri
+    for their work, especially in setting up the environment for
+    experimentation.</FONT></P>
+
+    <P>&nbsp;</P>
+
+    <P><FONT SIZE="-1" FACE="Verdana, Arial, Helvetica, sans-serif"></FONT><A
+    NAME="SECTIONREF"></A><A NAME="SECTIONREF"></A><A NAME="SECTIONREF"></A><A
+    NAME="SECTIONREF"></A><A NAME="SECTIONREF"></A></P>
+
+    <H2><FONT SIZE="-1" FACE="Verdana, Arial, Helvetica, sans-serif">References</FONT></H2>
+
+    <P>&nbsp;</P>
+
+    <DL>
+      <DT><FONT SIZE="-1" FACE="Verdana, Arial, Helvetica, sans-serif"></FONT><A
+      NAME="Asada1998"></A><STRONG><FONT SIZE="-1" FACE="Verdana, Arial, Helvetica, sans-serif">1</FONT></STRONG>
+      <DD><FONT SIZE="-1" FACE="Verdana, Arial, Helvetica, sans-serif">Asada.
+      M., et alii. The RoboCup Physical Agent Challenge: Goals and
+      Protocols for Phase-I. In <EM>RoboCup-97: Robot Soccer World
+      Cup I</EM>, Nagoya H. Kitano Ed., L.N. on A.I., Springer Verlag
+      1998, pp. 42-61.</FONT>
+      <DT><FONT SIZE="-1" FACE="Verdana, Arial, Helvetica, sans-serif"></FONT><A
+      NAME="Chella97"></A><STRONG><FONT SIZE="-1" FACE="Verdana, Arial, Helvetica, sans-serif">2</FONT></STRONG>
+      <DD><FONT SIZE="-1" FACE="Verdana, Arial, Helvetica, sans-serif">A.Chella,
+      M. Frixione, S.Gaglio: A Cognitive Architecture for Artificial
+      Vision, <EM>Artificial Intelligence</EM>, 89, No. 1-2, pp.73-111,
+      1997.</FONT>
+      <DT><FONT SIZE="-1" FACE="Verdana, Arial, Helvetica, sans-serif"></FONT><A
+      NAME="DINR96"></A><STRONG><FONT SIZE="-1" FACE="Verdana, Arial, Helvetica, sans-serif">3</FONT></STRONG>
+      <DD><FONT SIZE="-1" FACE="Verdana, Arial, Helvetica, sans-serif">G.
+      De&nbsp;Giacomo, L. Iocchi, D. Nardi, and R. Rosati. Moving a
+      robot: the KR&amp;R approach at work. In <EM>Proceedings of the
+      Fifth International Conference on the Principles of Knowledge
+      Representation and Reasoning (KR-96)</EM>, 1996.</FONT>
+      <DT><FONT SIZE="-1" FACE="Verdana, Arial, Helvetica, sans-serif"></FONT><A
+      NAME="DINR97"></A><STRONG><FONT SIZE="-1" FACE="Verdana, Arial, Helvetica, sans-serif">4</FONT></STRONG>
+      <DD><FONT SIZE="-1" FACE="Verdana, Arial, Helvetica, sans-serif">G.
+      De&nbsp;Giacomo, L. Iocchi, D. Nardi, and R. Rosati. Planning
+      with sensing for a mobile robot. In <EM>Proceedings of the European
+      Conf. on Planning (ECP-97)</EM>, 1997.</FONT>
+      <DT><FONT SIZE="-1" FACE="Verdana, Arial, Helvetica, sans-serif"></FONT><A
+      NAME="Frixione98"></A><STRONG><FONT SIZE="-1" FACE="Verdana, Arial, Helvetica, sans-serif">5</FONT></STRONG>
+      <DD><FONT SIZE="-1" FACE="Verdana, Arial, Helvetica, sans-serif">M.
+      Frixione, G. Vercelli, R. Zaccaria, Dynamic Diagrammatic Representations
+      for Reasoning and Motion Control- <EM>Proc. ISIC/CIRA/ISAS '98</EM>,
+      U.S.A., 1998.</FONT>
+      <DT><FONT SIZE="-1" FACE="Verdana, Arial, Helvetica, sans-serif"></FONT><A
+      NAME="KoSa96"></A><STRONG><FONT SIZE="-1" FACE="Verdana, Arial, Helvetica, sans-serif">6</FONT></STRONG>
+      <DD><FONT SIZE="-1" FACE="Verdana, Arial, Helvetica, sans-serif">K.&nbsp;Konolige,
+      K.L. Myers, E.H. Ruspini, and A.&nbsp;Saffiotti. The Saphira
+      architecture: A design for autonomy. <EM>Journal of Experimental
+      and Theoretical Artificial</EM></FONT>
+      <DD><EM><FONT SIZE="-1" FACE="Verdana, Arial, Helvetica, sans-serif">Intelligence</FONT></EM><FONT
+       SIZE="-1" FACE="Verdana, Arial, Helvetica, sans-serif">, 1997.</FONT>
+      <DT><FONT SIZE="-1" FACE="Verdana, Arial, Helvetica, sans-serif"></FONT><A
+      NAME="Pagello98"></A><STRONG><FONT SIZE="-1" FACE="Verdana, Arial, Helvetica, sans-serif">7</FONT></STRONG>
+      <DD><FONT SIZE="-1" FACE="Verdana, Arial, Helvetica, sans-serif">E.
+      Pagello, F. Montesello, A. D'Angelo, and C. Ferrari. Emergent
+      Cooperative Behavior for Multirobot Systems. <EM>Proc. of 5th
+      Int. Conf. on Intelligent Autonomous Systems (IAS-5)</EM>, Sapporo,
+      Japan, June 1-4, 1998</FONT>
+      <DT><FONT SIZE="-1" FACE="Verdana, Arial, Helvetica, sans-serif"></FONT><A
+      NAME="PiaggioZaccaria98"></A><STRONG><FONT SIZE="-1" FACE="Verdana, Arial, Helvetica, sans-serif">8</FONT></STRONG>
+      <DD><FONT SIZE="-1" FACE="Verdana, Arial, Helvetica, sans-serif">M.
+      Piaggio and R. Zaccaria, Distributing a Robotic System on a Network:
+      the ETHNOS Approach - <EM>Advanced Robotics Journal</EM>, Vol.
+      12, N.8, VSP, 1998.</FONT>
+    </DL>
+
+    <H1><FONT SIZE="-1" FACE="Verdana, Arial, Helvetica, sans-serif"></FONT><A
+    NAME="SECTION00050000000000000000"></A><FONT SIZE="-1" FACE="Verdana, Arial, Helvetica, sans-serif">About
+    this document ...</FONT></H1>
+
+    <P><FONT SIZE="-1" FACE="Verdana, Arial, Helvetica, sans-serif">This
+    document was generated using the<CITE> <A HREF="http://www-dsed.llnl.gov/files/programs/unix/latex2html/manual/">LaTeX2HTML</A>
+    </CITE>translator Version 96.1 (Feb 5, 1996) Copyright &COPY;
+    1993, 1994, 1995, 1996, <A HREF="http://cbl.leeds.ac.uk/nikos/personal.html">Nikos
+    Drakos</A>, Computer Based Learning Unit, University of Leeds.</FONT></P>
+
+    <P><FONT SIZE="-1" FACE="Verdana, Arial, Helvetica, sans-serif">The
+    command line arguments were: <BR>
+    <STRONG>latex2html</STRONG> <TT>-t ARTD98 -split 0 ART.tex</TT>.</FONT></P>
+
+    <P><FONT SIZE="-1" FACE="Verdana, Arial, Helvetica, sans-serif">The
+    translation was initiated by Daniele Nardi on Tue Dec 15 13:53:52
+    MET 1998<BR>
+    </FONT></div><HR ALIGN=LEFT></P>
+
+    <ADDRESS><FONT SIZE="-1" FACE="Verdana, Arial, Helvetica, sans-serif">Daniele
+    Nardi et al.</FONT></ADDRESS>
+
+    <ADDRESS><FONT SIZE="-1" FACE="Verdana, Arial, Helvetica, sans-serif">Progetto
+    RoboCup-Italia<BR>
+    Consorzio Padova Ricerche, Corso Spagna 12, I-35127 Padova, Italy<BR>
+    mail: <A HREF="mailto:nardi@dis.uniroma1.it">nardi@dis.uniroma1.it</A><BR>
+    web page:<A HREF="http://www.dis.uniroma1.it/%7Enardi/"> http://www.dis.uniroma1.it/~nardi/</A></FONT></ADDRESS>
+
+    <P><CENTER>&nbsp;</CENTER></P>
+
+    <P><CENTER>&nbsp;</CENTER></P>
+
+    <P><CENTER><A HREF="javascript:history.back();"><I><FONT SIZE="-2"
+     FACE="Georgia, Times New Roman, Times, serif"><IMG SRC="../images/back.gif"
+    WIDTH="20" HEIGHT="20" ALIGN="ABSMIDDLE" BORDER="0" NATURALSIZEFLAG="0"></FONT></I></A><I><FONT
+     SIZE="-2" FACE="Georgia, Times New Roman, Times, serif">Torna
+    indierto</FONT></I></CENTER></TD>
+  </TR>
+  <TR>
+    <TD VALIGN="BOTTOM" HEIGHT="2">
+    <P><CENTER><FONT SIZE="-2">1999 ART - Azzurra
+    Robot Team</FONT></CENTER></TD>
+  </TR>
+</TABLE>
+
+</BODY>
+</HTML>

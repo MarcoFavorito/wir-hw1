@@ -1,0 +1,1885 @@
+<html>
+<head>
+<title>Alberi</title>
+</head>
+
+<body>
+
+<h1>Alberi</h1>
+
+<p>
+Sono strutture dati organizzate in modo gerarchico
+</p>
+
+<p>
+Esempio di struttura gerarchica: l'organizzazione dei
+file: ogni cartella contiene dei file pi&ugrave; altre
+cartelle
+</p>
+
+<p>
+A sua volta, ogni cartella pu&ograve; contenere altre
+cartelle, ecc.
+</p>
+
+<p>
+Gli alberi che vediamo noi sono pi&ugrave; semplici, ma
+il principio &egrave; lo stesso
+</p>
+
+<hr>
+
+
+<h4>Liste-alberi</h4>
+
+<p>
+In una lista, ho una sequenza di elementi:
+</p>
+
+<img src="lineare.jpg">
+
+<p>
+Per ogni elemento, ho un solo elemento successivo<br>
+(oppure zero: l'ultimo elemento non ha un successore)
+</p>
+
+<p>
+Nel caso degli alberi, per ogni elementi ci possono
+essere due elementi successivi:
+</p>
+
+<img src="nonlineare.jpg">
+
+<p>
+A sua volta, ognuno dei due elementi successivi pu&ograve;
+avere fino a due elementi successivi, ecc.
+</p>
+
+<hr>
+
+
+<h4>Esercizio</h4>
+
+<p>
+Scrivere la definizione della classe degli
+oggetti qui sotto
+</p>
+
+<p>
+Basta la definizione delle componenti (senza
+metodi)
+</p>
+
+<img src="nonlineare.jpg">
+
+
+<hr>
+
+<h4>Struttura non lineare: definizione di tipo</h4>
+
+<p>
+Si parte dalle variabili di istanza.
+</p>
+
+<p>
+Ogni oggetto contiene: un intero, e due riferimenti
+a oggetti dello stesso tipo.
+</p>
+
+<p>
+Come nome della classe scelgo <tt>Albero</tt>.
+</p>
+
+<p>
+Le variabili di istanza sono: un intero e due alberi.
+</p>
+
+<pre>
+class Albero {
+  int info;
+  Albero sinistro, destro;
+}
+</pre>
+
+<p>
+&Egrave; analogo alla lista:
+</p>
+
+<pre>
+class Nodo {
+  int info;
+  Nodo next;
+}
+</pre>
+
+<p>
+Solo che ho due riferimenti a oggetti dello stesso
+tipo invece di uno.
+</p>
+
+
+<hr>
+
+<h4>Incapsulamento di <tt>Albero</tt></h4>
+
+<p>
+Metto i metodi soliti: costruttore, trova gli elementi
+</p>
+
+<pre>
+class Albero {
+  private int dato;
+  private Albero sinistro, destro;
+
+  public Albero(int dato, Albero sinistro, Albero destro) {
+    this.dato=dato;
+    this.sinistro=sinistro;
+    this.destro=destro;
+  }
+
+  public int getDato() {
+    return this.dato;
+  }
+
+  public Albero getSinistro() {
+    return this.sinistro;
+  }
+
+  public Albero getDestro() {
+    return this.destro;
+  }
+}
+</pre>
+
+
+<hr>
+
+<h4>Rappresentazione grafica semplificata</h4>
+
+<p>
+Metto il primo nodo in alto, e quelli collegati sotto.
+</p>
+
+<img src="semplifica.jpg">
+
+<p>
+Per questo le variabili si chiamano
+"sinistro" e "destro"
+</p>
+
+<p>
+Questa non &egrave; solo una rappresentazione grafica
+comoda: &egrave; una rappresentazione del concetto
+(ho un dato, e due dati collegati ad esso, i quali possono
+avere altri due dati collegati, ecc)
+</p>
+
+<hr>
+
+<h4>Alberi: nome e tipo</h4>
+
+<p>
+Questi oggetti si si chiamano alberi binari
+</p>
+
+<p>
+Binari=ogni oggetto &egrave; collegato ad altri
+due (al massimo).
+</p>
+
+<p>
+Vediamo solo alberi binari
+</p>
+
+<hr>
+
+
+<h4>Esercizio</h4>
+
+<p>
+Scrivere il programma che crea l'albero della figura
+</p>
+
+<p>
+Si tratta di creare gli oggetti in memoria
+</p>
+
+<img src="nonlineare.jpg">
+
+
+<hr>
+
+<h4>Creazione di un albero: soluzione</h4>
+
+<p>
+Devo creare il primo oggetto, e dentro ci devo
+mettere <tt>4</tt> e i riferimenti agli altri
+due oggetti.
+</p>
+
+<p>
+Per avere i riferimenti a questi due oggetti,
+li devo prima creare
+</p>
+
+<p>
+Quindi, devo prima creare gli altri due oggetti
+(quelli con <tt>12</tt> e <tt>3</tt> dentro):
+</p>
+
+<pre>
+class CreaSemplice {
+  public static void main(String arg[]) {
+    Albero a=new Albero(12, null, null);
+    Albero b=new Albero(3, null, null);
+
+    ...
+  }
+}
+</pre>
+
+<p>
+Ora i riferimenti ai due oggetti creati
+si trovano in <tt>a</tt> e <tt>b</tt>, e
+vanno messi in un nuovo oggetto che
+contiene il valore <tt>4</tt>.
+</p>
+
+<pre>
+class CreaSemplice {
+  public static void main(String arg[]) {
+    Albero a=new Albero(12, null, null);
+    Albero b=new Albero(3, null, null);
+
+    Albero c=new Albero(4, a, b);
+  }
+}
+</pre>
+
+
+<hr>
+
+<h4>Stampa di tutti i nodi dell'albero</h4>
+
+<p>
+Esercizio:
+scrivere un metodo che stampa l'intero contenuto
+nell'oggetto e nei due oggetti collegati
+</p>
+
+<p>
+Non serve (per ora) andare a vedere cosa c'&egrave;
+oltre i due oggetti collegati
+</p>
+
+<hr>
+
+
+<h4>Soluzione</h4>
+
+<p>
+Stampo quello che c'&egrave; nel primo oggetto,
+poi nei due collegati:
+</p>
+
+<pre>
+System.out.println(a.getDato());
+System.out.println(a.getSinistro().getDato());
+System.out.println(a.getDestro().getDato());
+</pre>
+
+<hr>
+
+
+<h4>Soluzione alternativa</h4>
+
+<p>
+Uso una variabile temporanea per memorizzare
+il riferimento all'oggetto:
+</p>
+
+<pre>
+System.out.println(a.getDato());
+Albero s=a.getSinistro();
+System.out.println(s.getDato());
+Albero d=a.getDestro();
+System.out.println(d.getDato());
+</pre>
+
+<hr>
+
+
+<h4>Esercizio</h4>
+
+<p>
+Scrivere un metodo che stampa <i>tutti</i>
+gli elementi collegati
+</p>
+
+<p>
+Quindi, se i due oggetti collegati hanno
+altri elementi collegati a loro, vanno
+stampati anche quelli, ecc.
+</p>
+
+<hr>
+
+
+<h4>Stampa di tutti gli elementi</h4>
+
+<p>
+Il metodo &egrave; fatto in questo modo:
+</p>
+
+<pre>
+static void stampaTutti(Albero a) {
+  ...
+}
+</pre>
+
+<p>
+Cosa deve fare?
+</p>
+
+<p>
+Deve stampare l'intero nell'oggetto <tt>a</tt>,
+e poi in tutti gli oggetti associati
+</p>
+
+<hr>
+
+
+<h4>Primo passo</h4>
+
+<p>
+Se l'oggetto &egrave; <tt>null</tt>, non stampo
+niente
+</p>
+
+<p>
+Altrimenti, stampo quello l'intero che c'&egrave; dentro
+</p>
+
+<pre>
+  static void stampaTutti(Albero a) {
+    if(a==null)
+      return;
+
+    System.out.println(a.getDato());
+
+    ...
+  }
+</pre>
+
+<p>
+Cosa manca da fare?
+</p>
+
+<hr>
+
+
+<h4>Passi mancanti</h4>
+
+<p>
+Devo stampare l'intero che sta in <tt>a.getSinistro()</tt>,
+e tutti quelli collegati
+</p>
+
+<p>
+Devo stampare l'intero che sta in <tt>a.getDestro()</tt>,
+e tutti quelli collegati
+</p>
+
+<p>
+Sia <tt>a.getSinistro()</tt> che <tt>a.getDestro()</tt>
+danno come risultato dei puntatori a oggetti <tt>Albero</tt>
+</p>
+
+<p>
+Quindi?
+</p>
+
+<hr>
+
+
+<h4>Assunzione ricorsiva</h4>
+
+<p>
+Il metodo <tt>stampaTutti(Albero a)</tt> stampa
+tutti gli interi, a partire dal riferimento al
+primo
+</p>
+
+<p>
+Assunzione ricorsiva: il metodo funziona
+</p>
+
+<p>
+<b>Dentro</b> il corpo del metodo, posso invocare
+ancora <tt>stampaTutti</tt>, e funziona!
+</p>
+
+<hr>
+
+
+<h4>Semplificazione del problema</h4>
+
+<p>
+Non posso fare:
+</p>
+
+<pre>
+static void stampaTutti(Albero a) {
+  ...
+  stampaTutti(a);
+  ...
+}
+</pre>
+
+<p>
+Non posso perch&egrave; il problema non &egrave; stato
+semplificato
+</p>
+
+<p>
+Posso fare <tt>stampaTutti(a.getSinistro())</tt>:
+sono meno interi da stampare
+</p>
+
+<hr>
+
+
+<h4>Algoritmo risolutivo</h4>
+
+<p>
+Versione ricorsiva del problema: stampare tutti
+gli interi significa:
+</p>
+
+<ul>
+<li>stampare l'intero nel primo oggetto
+<li>stampare tutti gli interi di <tt>a.getSinistro()</tt>
+<li>stampare tutti gli interi di <tt>a.getDestro()</tt>
+</ul>
+
+<hr>
+
+
+<h4>Stampa dei nodi: programma</h4>
+
+<p>
+&Egrave; un metodo ricorsivo: stampo il
+dato, e poi ripeto sui due riferimenti
+</p>
+
+<pre>
+  static void stampaTutti(Albero a) {
+    if(a==null)
+      return;
+
+    System.out.println(a.getDato());
+    stampaTutti(a.getSinistro());
+    stampaTutti(a.getDestro());
+  }
+</pre>
+
+<p>
+Non mi interessa cosa succede quando si invoca
+<tt>stampaTutti(a.getSinistro())</tt> oppure
+<tt>stampaTutti(a.getDestro())</tt>
+</p>
+
+<p>
+L'assunzione ricorsiva mi dice che sono corretti<br>
+(stampano l'intero nell'oggetto e in tutti quelli
+collegati)
+</p>
+
+<hr>
+
+
+<h4>Caso base della stampa</h4>
+
+<p>
+Quando <tt>a</tt> vale <tt>null</tt>, non c'&egrave;
+niente da stampare
+</p>
+
+<p>
+Questo &egrave; anche il caso base della ricorsione:<br>
+dato che invoco il metodo su alberi sempre pi&ugrave;
+piccoli, alla fine arrivo a quello vuoto
+</p>
+
+<pre>
+  static void stampaTutti(Albero a) {
+    if(a==null)
+      return;
+
+    System.out.println(a.getDato());
+    stampaTutti(a.getSinistro());
+    stampaTutti(a.getDestro());
+  }
+</pre>
+
+<hr>
+
+
+<h4>Terminologia</h4>
+
+<dl>
+
+<dt>nodi dell'albero
+<dd>gli oggetti che sono collegati
+
+<dt>radice
+<dd>il primo oggetto
+
+<dt>figli di un nodo
+<dd>i due oggetti che sono collegati al nodo
+
+<dt>foglie
+<dd>nodi senza figli (due <tt>null</tt>)
+
+<dt>sottoalbero di un albero
+<dd>l'albero formato da tutti i nodi collegati
+a uno dei due figli
+
+</dl>
+
+<hr>
+
+
+<h4>I sottoalberi</h4>
+
+<p>
+Albero=insieme dei nodi collegati a un oggetto
+</p>
+
+<img src="nomi.jpg">
+
+<p>
+Il riferimento all'oggetto numero uno identifica
+l'albero fatto da tutti e tre i nodi
+</p>
+
+<p>
+Il riferimento all'oggetto numero due identifica
+l'albero fatto da questo nodo e basta, dato che non
+ce ne sono altri collegati
+</p>
+
+<object data="void.html" type="text/html">
+
+<p>
+Termini esatti:
+</p>
+
+<table border="1">
+
+<tr>
+<th>Nome</th>
+<th>Dato astratto</th>
+<th>Rappresentazione in Java</th>
+</tr>
+
+<tr>
+<td>Nodo</td>
+<td>Un elemento</td>
+<td>La componente di un oggetto</td>
+</tr>
+
+<tr>
+<td>Albero</td>
+<td>Un insieme di nodi collegati</td>
+<td>Il riferimento al primo nodo</td>
+</tr>
+
+</table>
+</object>
+
+<hr>
+
+
+<h4>Verificare se un albero contiene un valore</h4>
+
+<p>
+Esercizio:
+scrivere un metodo (di programma) che ritorna
+<tt>true</tt> se un intero sta in un albero.
+</p>
+
+<p>
+Si tratta sempre di esaminare tutti i nodi dell'albero.
+</p>
+
+<pre>
+static boolean contiene(Albero a, int val) {
+  ...
+}
+</pre>
+
+<hr>
+
+
+<h4>Presenza: algoritmo</h4>
+
+<p>
+Si guarda il primo oggetto, se non contiene
+il valore si guardano i sottoalberi.
+</p>
+
+<p>
+Caso base: l'albero &egrave; vuoto.
+</p>
+
+<ul>
+<li>se l'albero &egrave; vuoto, ritorna <tt>false</tt>
+<li>se il valore coincide con quello scritto nel primo
+oggetto, ritorna <tt>true</tt>
+<li>altrimenti, guarda i due sottoalberi
+</ul>
+
+<p>
+Differenza tra figlio e sottoalbero: 
+</p>
+
+<dl>
+
+<dt>figlio
+<dd>il nodo che &egrave; collegato
+
+<dt>sottoalbero
+<dd>il nodo collegato (=il figlio) pi&ugrave; tutti quelli
+che sono collegati ad esso
+
+</dl>
+
+
+<hr>
+
+<h4>Presenza: programma</h4>
+
+<p>
+Implementa l'algoritmo
+</p>
+
+<pre>
+  static boolean contiene(Albero a, int val) {
+    if(a==null)
+      return false;
+
+    if(a.getDato()==val)
+      return true;
+
+    return contiene(a.getDestro(), val) ||
+           contiene(a.getSinistro(), val);
+  }
+</pre>
+
+<p>
+L'ultima istruzione fa le due chiamate ricorsive,
+e ritorna <tt>true</tt> se almeno una delle due
+ritorna <tt>true</tt>.
+</p>
+
+<hr>
+
+<h4>Esercizio: costruzione di un albero</h4>
+
+<p>
+Costruire un albero che ha profondit&agrave; <tt>n</tt>,
+e tutti i valori coincidono con <tt>10</tt>,
+</p>
+
+<p>
+Livello x=tutti i nodi a distanza x dalla radice
+</p>
+
+<p>
+Profondit&agrave;=massimo livello
+</p>
+
+<p>
+Definizione alternativa: la profondit&agrave;
+&egrave; il massimo numero di nodi che si
+possono attraversare a partire dalla radice e
+andando sempre avanti.
+</p>
+
+<pre>
+  static Albero creaUguali(int livelli) {
+    ...
+  }
+</pre>
+
+
+<hr>
+
+<h4>Creazione: algoritmo</h4>
+
+<p>
+Creo il primo nodo e ci metto <tt>10</tt>.
+</p>
+
+<p>
+Devo per&ograve; prima dire quali sono i
+suoi figli.
+</p>
+
+<p>
+Quindi, i figli vanno creati per primi.
+</p>
+
+
+<hr>
+
+<h4>Creazione dei sottoalberi</h4>
+
+<p>
+Se faccio la chiamata ricorsiva
+come <tt>creaUguali(livelli)</tt>,
+non ho semplificato il problema.
+</p>
+
+<p>
+I sottoalberi sono pi&ugrave; semplici
+dell'albero da generare, perch&egrave;
+hanno un livello di meno.
+</p>
+
+<p>
+Quindi, i sottoalberi si generano
+con <tt>creaUguali(livello-1)</tt>,
+poi si crea la radice.
+</p>
+
+
+<hr>
+
+<h4>Creazione: implementazione</h4>
+
+<p>
+Mancava il passo base: l'albero di profondit&agrave;
+zero &egrave; l'albero vuoto.
+</p>
+
+<pre>
+  static Albero creaUguali(int livelli) {
+    if(livelli==0)
+      return null;
+
+    Albero s=creaUguali(livelli-1);
+    Albero d=creaUguali(livelli-1);
+
+    return new Albero(10, s, d);
+  }
+</pre>
+
+
+<hr>
+
+<h4>Generazione di un albero casuale</h4>
+
+<p>
+Pu&ograve; essere utile per fare i test.
+</p>
+
+<p>
+Generazione casuale: <tt>Math.random()</tt>
+genera un reale fra <tt>0</tt> e <tt>1</tt>
+</p>
+
+<ul>
+
+<li>Stabilisco un numero massimo di livelli
+
+<li>per evitare di avere sempre l'albero completo
+(tutti i livelli pieni), prima di creare l'albero
+faccio un test casuale
+
+<li>i valori che metto nei nodi sono casuali
+
+</ul>
+
+<pre>
+static Albero alberoCasuale(int livelli) {
+  if(livelli==0)
+    return null;
+
+  if(Math.random()&lt;0.3)
+    return null;
+
+  int r=(int) (Math.random()*21-10);
+  Albero s=alberoCasuale(livelli-1);
+  Albero d=alberoCasuale(livelli-1);
+
+  return new Albero(r, s, d);
+}
+</pre>
+
+<hr>
+
+
+<h4>Come fare il test dei metodi sugli alberi</h4>
+
+<p>
+Un modo possibile:
+</p>
+
+<ul>
+
+<li>generare un albero casuale
+
+<li>disegnare l'albero
+
+<li>eseguire il metodo e stampare il risultato
+
+</ul>
+
+<hr>
+
+
+<h4>Disegno di un albero</h4>
+
+<p>
+Servono queste due classi:
+<a href="DrawTree.class">DrawTree</a>
+e
+<a href="DrawCanvas.class">DrawCanvas</a>
+</p>
+
+<p>
+Metterle nella directory dove stanno anche
+il programma scritto da voi
+</p>
+
+<p>
+Quando si vuole disegnare un albero,
+basta fare:
+</p>
+
+<pre>
+    DrawTree.draw(a);
+</pre>
+
+<p>
+Viene visualizzata una finestra di questo tipo:
+</p>
+
+<img src="DrawTree.gif">
+
+<hr>
+
+
+<h4>Disegno: note</h4>
+
+<p>
+La classe <tt>Albero</tt> deve avere le tre
+componenti pubbliche, altrimenti <tt>DrawTree.tree(...)</tt>
+non funziona:
+</p>
+
+<pre>
+class Albero {
+  public int dato;
+  public Albero sinistro, destro;
+
+  // costruttore
+  // metodi get
+}
+</pre>
+
+<hr>
+
+
+<h4>Esempio di programma completo</h4>
+
+<p>
+Vogliamo provare il metodo di presenza di un
+nodo in un albero
+</p>
+
+<p>
+Nel programma, ci metto anche il metodo
+<tt>alberoCausale</tt> che abbiamo visto prima:
+</p>
+
+<pre>
+class Presente {
+  static Albero alberoCasuale(int livelli) {
+    // copiare il metodo visto prima
+  }
+
+  static boolean contiene(Albero a, int val) {
+    if(a==null)
+      return false;
+
+    if(a.getDato()==val)
+      return true;
+
+    return contiene(a.getDestro(), val) ||
+           contiene(a.getSinistro(), val);
+  }
+
+  public static void main(String arg[]) {
+    // qui?
+  }
+}
+</pre>
+
+<hr>
+
+
+<h4>Cosa fa il programma?</h4>
+
+<p>
+Genera un albero, lo visualizza, e poi invoca
+il metodo da provare
+</p>
+
+<pre>
+  public static void main(String arg[]) {
+    Albero a=alberoCasuale(4);
+
+    DrawTree.draw(a);
+
+    System.out.print("Contiene il valore 3? ");
+    System.out.println(contiene(a, 3));
+  }
+</pre>
+
+<p>
+Attenzione! Il metodo  <tt>alberoCasuale</tt> pu&ograve;
+anche generare un albero vuoto
+</p>
+
+<hr>
+
+
+<h4>Somma dei nodi di un albero</h4>
+
+<p>
+Esercizio: scrivere un metodo che ritorna
+la somma dei valore interi che stanno scritti
+nei nodi di un albero.
+</p>
+
+<hr>
+
+
+<h4>Somma dei nodi: soluzione</h4>
+
+<p>
+Se l'albero &egrave; vuoto, la somma vale zero.
+</p>
+
+<p>
+Altrimenti, calcolo la somma del sottoalbero
+sinistro, quella del destro, ci sommo la radice.
+</p>
+
+<hr>
+
+
+<h4>Somma dei nodi: implementazione</h4>
+
+<p>
+Il caso base &egrave; quello dell'albero vuoto
+</p>
+
+<pre>
+  static int sommaAlbero(Albero a) {
+    if(a==null)
+      return 0;
+
+    int i=sommaAlbero(a.getSinistro());
+    int j=sommaAlbero(a.getDestro());
+
+    return i+j+a.getDato();
+  }
+</pre>
+
+<hr>
+
+
+<h4>Programma di prova</h4>
+
+<p>
+Metto dentro anche il metodo di generazione di un
+albero casuale
+</p>
+
+<pre>
+class SommaAlbero {
+  static Albero alberoCasuale(int livelli) {
+    // solito metodo
+  }
+
+  static int sommaAlbero(Albero a) {
+    // metodo di somma (visto prima)
+  }
+
+  public static void main(String arg[]) {
+    Albero a=alberoCasuale(3);
+
+    DrawTree.draw(a);
+
+    System.out.println(
+      "La somma dei nodi e' "
+      +sommaAlbero(a));
+  }
+}
+</pre>
+
+<p>
+Il programma genera un albero casuale, lo visualizza,
+e poi calcola la somma
+</p>
+
+<hr>
+
+
+<h4>Ricorsione su alberi: principio generale</h4>
+
+<p>
+Se ho un albero <tt>a</tt> come parametro, allora
+le chiamate ricorsive fatte su <tt>a.getSinistro()</tt>
+e <tt>a.getDestro()</tt> sono corrette.
+</p>
+
+<p>
+Attenzione: se il metodo ritorna un valore, questo
+va usato in qualche modo:
+</p>
+
+<pre>
+     // errore, codice inutile
+
+  sommaAlbero(a.getSinistro());
+  sommaAlbero(a.getDestro());
+</pre>
+
+<p>
+In Java, &egrave; anche possibile invocare un metodo
+che ha un valore di ritorno senza usare il valore
+di ritorno:
+</p>
+
+<pre>
+  int x=12;
+  Math.sqrt(x);
+</pre>
+
+<p>
+Un programma con queste istruzioni non d&agrave;
+nessun errore
+</p>
+
+<p>
+Significa: invoca il metodo, e butta via
+il valore di ritorno.
+</p>
+
+<hr>
+
+
+<h4>Ricorsione su alberi: cosa succede</h4>
+
+<p>
+Per capire cosa succede, occorre simulare il
+programma usando i record di attivazione.
+</p>
+
+<p>
+Usiamo questo albero:
+</p>
+
+<img src="ricors1.jpg">
+
+<hr>
+
+<h4>Prima chiamata</h4>
+
+<p>
+Viene creato il primo record di attivazione.
+</p>
+
+<p>
+Qui <tt>a</tt> &egrave; il riferimento al
+primo oggetto dell'albero.
+</p>
+
+<img src="ricors2.jpg">
+
+
+<hr>
+
+
+<h4>Chiamata ricorsiva</h4>
+
+<p>
+Nella seconda chiamata ricorsiva, il parametro
+&egrave; <tt>null</tt>:
+</p>
+
+<img src="ricors3.jpg">
+
+<hr>
+
+<h4>Chiamata sull'altro sottoalbero</h4>
+
+<p>
+Ora <tt>a</tt> &egrave; il riferimento all'altro
+sottoalbero:
+</p>
+
+<img src="ricors4.jpg">
+
+
+<hr>
+
+<h4>Chiamate ricorsive sui sottoalberi</h4>
+
+<p>
+La prima chiamata viene fatta sul nodo che
+contiene <tt>7</tt>.
+</p>
+
+<img src="ricors5.jpg">
+
+<hr>
+
+
+<h4>Chiamate con <tt>null</tt></h4>
+
+<p>
+Le due chiamate vengono fatte con <tt>null</tt>,
+per cui ritornano <tt>0</tt>.
+</p>
+
+<img src="ricors6.jpg">
+
+<hr>
+
+<h4>Valore di ritorno</h4>
+
+<p>
+Il valore di ritorno andava messo in <tt>i</tt>,
+che quindi contiene <tt>7+0+0</tt>
+</p>
+
+<img src="ricors7.jpg">
+
+<hr>
+
+
+<h4>Nuova chiamata ricorsiva</h4>
+
+<p>
+Viene fatta la chiamata ricorsiva passando il
+riferimento all'altra foglia (quella che
+contiene il valore <tt>4</tt>).
+</p>
+
+<img src="ricors8.jpg">
+
+<hr>
+
+<h4>Due chiamate ricorsive con <tt>null</tt></h4>
+
+<p>
+Le due chiamate ricorsive ritornano <tt>0</tt>
+</p>
+
+<img src="ricors9.jpg">
+
+<hr>
+
+
+<h4>Valore di ritorno</h4>
+
+<p>
+Si ritorna <tt>4+0+0</tt>, che viene messo
+in <tt>j</tt>.
+</p>
+
+<img src="ricors10.jpg">
+
+<hr>
+
+<h4>Valore di ritorno</h4>
+
+<p>
+Si ritorna <tt>4+7+2</tt>, ossia <tt>13</tt>
+</p>
+
+<img src="ricors11.jpg">
+
+<p>
+Il valore di ritorno dell'ultima chiamata
+&egrave; <tt>13+0+1</tt>, quindi <tt>14</tt>.
+</p>
+
+<hr>
+
+<h4>Ricorsione su alberi: riassunto</h4>
+
+<ul>
+
+<li>quando si scrive il metodo, si assume che
+le invocazioni ricorsive sui sottoalberi funzionino.
+
+<li>se una invocazione ritorna un valore, questo
+va usato nel modo appropriato (quindi
+<tt>sommaAlbero(a.getDestro());</tt> &egrave;
+sbagliato;
+
+<li>quando il metodo viene eseguito, si costruiscono
+i record di attivazione
+
+</ul>
+
+<p>
+Quando si scrive il metodo, non si deve
+pensare ai record di attivazione.
+</p>
+
+<hr>
+
+
+<h4>Rappresentazione parentetica di un albero</h4>
+
+<p>
+Se stampo i nodi di un albero in ordine, e ottengo
+</p>
+
+<pre>
+1 2 3
+</pre>
+
+<p>
+non so come &egrave; fatto l'albero.
+</p>
+
+<img src="ambiguo1.jpg">
+
+<img src="ambiguo2.jpg">
+
+<img src="ambiguo3.jpg">
+
+<p>
+Stampare i nodi di uno di questi tre genera comunque
+<tt>1 2 3</tt>
+</p>
+
+<p>
+Serve un modo per stampare l'albero in modo che
+si capisca come &egrave; fatto.
+</p>
+
+
+<hr>
+
+<h4>Rappresentazione parentetica</h4>
+
+<p>
+Si pu&ograve; usare per stampare un albero:
+</p>
+
+<ul>
+
+<li>
+se l'albero &egrave; vuoto, stampo <tt>()</tt>
+
+<li>
+altrimenti, stampo <tt>(</tt>, poi il valore
+della radice, i sottoalberi, e poi <tt>)</tt>
+
+</ul>
+
+<p>
+L'ordine di stampa &egrave; lo stesso (prima
+stampo la radice, poi i figli).
+</p>
+
+<p>
+Per&ograve; ci sono le parentesi, che
+fanno capire la struttura
+</p>
+
+
+<hr>
+
+<h4>Stampa parentetica: esempio</h4>
+
+<p>
+Per oguno dei tre alberi di sopra, dire come
+viene stampato in forma parentetica.
+</p>
+
+<img src="ambiguo1.jpg">
+
+<img src="ambiguo2.jpg">
+
+<img src="ambiguo3.jpg">
+
+
+<hr>
+
+<h4>Stampa parentetica: terzo albero</h4>
+
+<img src="ambiguo3.jpg">
+
+<p>
+&Egrave; il pi&ugrave; semplice: prima la radice,
+poi il sottoalbero sinistro e poi il destro.
+</p>
+
+<pre>
+(1 sott_sinistro sott_destro)
+</pre>
+
+<p>
+Il sottoalbero sinistro ha <tt>2</tt> nella radice:
+</p>
+
+<pre>
+(1 (2 sott_sx sott_dx) sott_destro)
+</pre>
+
+<p>
+Il <tt>2</tt> non ha figli, quindi ha due
+sottoalberi vuoti:
+</p>
+
+<pre>
+(1 (2 () ()) sott_destro)
+</pre>
+
+<p>
+Il sottoalbero destro ha <tt>3</tt> nella radice,
+e non ha figli, quindi ho:
+</p>
+
+<pre>
+(1 (2 () ()) (3 () ()))
+</pre>
+
+
+<hr>
+
+<h4>Rappresentazione parentetica: note</h4>
+
+<ul>
+
+<li>l'albero vuoto &egrave; <tt>()</tt>
+
+<li>quando un nodo non ha figli, si
+scrive <tt>(nodo () ())</tt>
+
+<li>quando un nodo ha un solo figlio, al
+posto dell'altro si scrive comunque
+<tt>()</tt>
+
+</ul>
+
+
+<hr>
+
+<h4>Rappresentazione parentetica del primo albero</h4>
+
+<img src="ambiguo1.jpg">
+
+<p>
+Non &egrave; vuoto, stampo <tt>(</tt> e la radice,
+poi i sottoalberi, poi <tt>)</tt>.
+</p>
+
+<pre>
+(1 sott_sinistro sott_destro )
+</pre>
+
+<p>
+Il sottoalbero sinistro &egrave; composto da una
+radice che contiene <tt>2</tt>, da un sottoalbero
+sinistro che contiene <tt>3</tt>, e un sottoalbero
+destro vuoto:
+</p>
+
+<pre>
+(1 (2 (3 () ()) ()) sott_destro)
+</pre>
+
+<p>
+Il sottoalbero destro &egrave; vuoto:
+</p>
+
+<pre>
+(1 (2 (3 () ()) ()) ())
+</pre>
+
+
+<hr>
+
+<h4>Stampa parentetica: implementazione</h4>
+
+<p>
+Se l'albero &egrave; vuoto, stampo <tt>()</tt>
+</p>
+
+<p>
+Altrimenti, stampo <tt>(</tt>, la radice,
+i sottoalberi, e poi <tt>)</tt>
+</p>
+
+<pre>
+  public static void stampa(Albero a) {
+    if(a==null) {
+      System.out.print("()");
+      return;
+    }
+
+    System.out.print(" ( "+a.dato);
+    stampa(a.sinistro);
+    stampa(a.destro);
+    System.out.print(") ");
+  }
+</pre>
+
+<p>
+Si pu&ograve; anche mettere come metodo statico
+nella classe <tt>Albero</tt>
+</p>
+
+<p>
+Non si pu&ograve; mettere come metodo dinamico:
+perch&egrave;?
+</p>
+
+<hr>
+
+
+<h4>Metodi statici e dinamici</h4>
+
+<p>
+Un metodo dinamico &egrave; quasi come un metodo statico
+in cui l'oggetto viene passato come argomento
+</p>
+
+<p>
+Ci sono per&ograve; delle differenze (es.
+sull'ereditariet&agrave;)
+</p>
+
+<p>
+Una differenza &egrave;:
+</p>
+
+<ul>
+<li>al metodo statico posso passare <tt>null</tt> come
+argomento
+<li>non posso invocare un metodo dinamico su <tt>null</tt>
+</ul>
+
+<p>
+Nel caso degli alberi, <tt>null</tt> indica l'albero vuoto
+</p>
+
+<p>
+A me serve anche poter stampare l'albero vuoto
+</p>
+
+<p>
+Quindi, non posso fare un metodo dinamico
+</p>
+
+<hr>
+
+
+<h4>Stampa e rappresentazione</h4>
+
+<p>
+Si pu&ograve; stampare un albero in rappresentazione
+parentetica
+</p>
+
+<p>
+Si pu&ograve; anche produrre una stringa che rappresenta
+l'albero senza stamparla
+</p>
+
+<pre>
+static String parentetica(Albero a) {
+  if(a==null)
+    return "()";
+
+  return "("+a.getDato()+
+    parentetica(a.getSinistro())+
+    parentetica(a.getDestro())+")";
+}
+</pre>
+
+<hr>
+
+
+<h4>Esercizio: dalla rappresentazione all'albero</h4>
+
+<p>
+Come &egrave; fatto l'albero che ha questa
+rappresentazione parentetica?
+</p>
+
+<pre>
+(1 () (2 (7 ()()) (4 ()()) ) ) 
+</pre>
+
+
+<hr>
+
+<h4>Soluzione</h4>
+
+<p>
+Intanto, la radice &egrave; <tt>1</tt>, e poi ho i
+due sottoalberi rappresentati da <tt>()</tt>
+e da <tt>( 2 (7()())  (4()()) )</tt>:
+</p>
+
+<img src="parent1.jpg">
+
+
+<hr>
+
+<h4>Sottoalbero sinistro</h4>
+
+<p>
+&Egrave; l'albero vuoto, per cui ci va <tt>null</tt>
+</p>
+
+<img src="parent2.jpg">
+
+
+<hr>
+
+<h4>Sottoalbero destro</h4>
+
+<p>
+Ha radice 2, e i sottoalberi sono <tt>(7 ()())</tt>
+e <tt>(4 ()())</tt>
+</p>
+
+<img src="parent3.jpg">
+
+
+<hr>
+
+<h4>Ultimi sottoalberi</h4>
+
+<p>
+Il sottoalbero <tt>(7 ()())</tt> ha radice <tt>7</tt>
+e nessun figlio.
+</p>
+
+<p>
+Il sottoalbero <tt>(4 ()())</tt> ha radice <tt>4</tt>
+e nessun figlio.
+</p>
+
+<img src="parent4.jpg">
+
+
+<hr>
+
+<h4>Rappresentazione parentetica: uso</h4>
+
+<p>
+Se ho un albero in memoria, lo posso stampare
+in rappresentazione parentetica.
+</p>
+
+<p>
+Se ho la rappresentazione parentetica, so come
+&egrave; fatto l'albero.
+</p>
+
+<p>
+Quindi, posso usare la rappresentazione parentetica
+per salvare un albero su file.
+</p>
+
+<hr>
+
+
+<h4>Esercizio</h4>
+
+<p>
+Scrivere un metodo che verifica se ogni nodo di un
+albero di interi &egrave; maggiore dei due figli
+</p>
+
+<hr>
+
+
+<h4>Soluzione</h4>
+
+<p>
+Per ogni nodo, devo fare il controllo
+</p>
+
+<p>
+Controllo su un nodo:
+</p>
+
+<pre>
+if(a.getSinistro().getDato()&gt;=a.getDato())
+  return false;
+
+if(a.getDestro().getDato()&gt;=a.getDato())
+  return false;
+
+return true;
+</pre>
+
+<p>
+Non va bene!
+</p>
+
+<hr>
+
+
+<h4>Controllo sui figli</h4>
+
+<p>
+Anche se <tt>a</tt> &egrave; diverso da <tt>null</tt>,
+i due sottoalberi <tt>a.getSinistro()</tt> e
+<tt>a.getDestro()</tt> potrebbero valere <tt>null</tt>
+</p>
+
+<p>
+In questo caso, <tt>a.getSinistro().getDato()</tt> &egrave;
+un errore!
+</p>
+
+<p>
+Controllo aggiuntivo: quando vado a vedere i figli,
+devo sempre verificare che ci siano
+</p>
+
+<pre>
+if(a.getSinistro()!=null)
+  if(a.getSinistro().getDato()&gt;=a.getDato())
+    return false;
+
+if(a.getDestro()!=null)
+  if(a.getDestro().getDato()&gt;=a.getDato())
+    return false;
+
+return true;
+</pre>
+
+<p>
+Questo fa la verifica solo sulla radice
+</p>
+
+<hr>
+
+
+<h4>Metodo completo</h4>
+
+<p>
+Se l'albero &egrave; vuoto, allora la condizione
+&egrave; vera
+</p>
+
+<p>
+Altrimenti, si fa la verifica se la radice &egrave;
+maggiore dei figli che esistono
+</p>
+
+<p>
+Se la radice &egrave; maggiore, devo verificare
+la stessa cosa per gli altri nodi: faccio la
+invocazione ricorsiva
+</p>
+
+<hr>
+
+
+<h4>Codice completo del metodo</h4>
+
+<pre>
+  static boolean verificaMaggiore(Albero a) {
+    if(a==null)
+      return true;
+
+    if(a.getSinistro()!=null)
+      if(a.getSinistro().getDato()&gt;=a.getDato())
+        return false;
+
+    if(a.getDestro()!=null)
+      if(a.getDestro().getDato()&gt;=a.getDato())
+        return false;
+
+    return
+      verificaMaggiore(a.getSinistro()) &amp;&amp;
+      verificaMaggiore(a.getDestro());
+  }
+</pre>
+
+<p>
+Nota: la condizione &egrave; vera se lo &egrave; in
+tutti e due i sottoalberi
+</p>
+
+<p>
+Quindi: verifico nel primo e nel secondo, e torno
+<tt>true</tt> solo se tutti e due i valori di ritorno
+valgono <tt>true</tt>
+</p>
+
+<hr>
+
+
+<h4>Rappresentazione con vettori</h4>
+
+<p>
+Gli alberi si possono anche rappresentare usando i
+vettori (un vettore rappresenta un albero).
+</p>
+
+<ul>
+
+<li>la radice va in posizione <tt>0</tt>
+
+<li>se un nodo sta in posizione <tt>i</tt>, i
+suoi figli sono in posizione <tt>2*i+1</tt>
+e <tt>2*i+2</tt>
+
+<li>il vettore si sovradimensiona; si usa
+un booleano per indicare che il nodo non c'&egrave;
+
+</ul>
+
+<hr>
+
+
+<h4>Esempio</h4>
+
+<p>
+Come si rappresenta con un vettore questo albero?
+</p>
+
+<pre>
+(1 () (2 (7 ()()) (4 ()()) ) )
+</pre>
+
+<p>
+La radice contiene <tt>1</tt>, quindi in posizione <tt>0</tt>
+si mette l'oggetto con <tt>1</tt> e <tt>true</tt>.
+</p>
+
+<p>
+Il figlio sinistro non c'&egrave;, quindi in posizione
+<tt>0*2+1=1</tt> mette il nodo con <tt>false</tt>.
+</p>
+
+<p>
+Il figlio destro c'&egrave;, quindi in posizione
+<tt>0*2+2</tt> va messo un nodo, che contiene <tt>2</tt>
+e <tt>true</tt>.
+</p>
+
+<p>
+Dato che in posizione <tt>2</tt> ho un elemento, i figli
+vanno messi in posizione <tt>2*2+1</tt> e <tt>2*2+2</tt>.
+</p>
+
+<hr>
+
+
+<h4>Rappresentazione con alberi: nodo</h4>
+
+<p>
+Ogni nodo contiene due informazioni: il valore
+(intero) e il booleano.
+</p>
+
+<pre>
+class Nodo {
+  int dato;
+  boolean esiste;
+
+  public Nodo(int d, boolean e) {
+    dato=d;
+    esiste=e;
+  }
+
+  public int getDato() {
+    return dato;
+  }
+
+  public boolean getEsiste() {
+    return esiste;
+  }
+}
+</pre>
+
+<hr>
+
+
+<h4>Rappresentazione con alberi: il vettore</h4>
+
+<p>
+Faccio un vettore di nodi.
+</p>
+
+<pre>
+  public static void main(String arg[]) {
+    Nodo x[]=new Nodo[100];
+</pre>
+
+<p>
+Poi devo riempire il vettore.
+</p>
+
+
+<hr>
+
+<h4>Esempio: stampa di un albero</h4>
+
+<p>
+Nella invocazione ricorsiva, passo anche la
+posizione da cui devo iniziare la stampa.
+</p>
+
+<pre>
+  static void stampa(Nodo a[], int pos) {
+    if(a[pos].getEsiste() == false)
+      return;
+
+     System.out.print("( "+a[pos].getDato());
+     stampa(a, pos*2+1);
+     stampa(a, pos*2+2);
+     System.out.print(" )");
+  }
+</pre>
+
+
+<hr>
+
+<h4>Esercizio</h4>
+
+<p>
+Fare la somma dei nodi su un albero
+rappresentato con un vettore.
+</p>
+
+
+
+
+</body>
+</html>
+
+
+
+

@@ -1,0 +1,2330 @@
+<html>
+<head>
+<title>Metodi per le nuove classi</title>
+</head>
+
+<body>
+
+<h1>Metodi per le nuove classi</h1>
+
+<p>
+Per ogni classe (tipo di oggetti)
+sono definite
+</p>
+
+<ol>
+
+<li>le componenti degli oggetti
+
+<li>i metodi che si possono invocare
+
+</ol>
+
+<p>
+Abbiamo visto come definire classi con
+componenti.
+</p>
+
+<p>
+Adesso vediamo come si definiscono classi
+con nuovi metodi.
+</p>
+
+<hr>
+
+
+<h4>Cosa &egrave; un metodo?</h4>
+
+<p>
+&Egrave; una operazione che e' possible
+fare con/sugli oggetti
+</p>
+
+<p>
+Esempio: stampare una componente, cambiare
+una componente, ecc.
+</p>
+
+<p>
+In generale metodi possono:
+
+<ul>
+
+<li>avere argomenti (dati "di input")
+
+<li>dare un risultato (dato "di output")
+
+<li>modificare le componenti dell'oggetto
+
+</ul>
+
+<img src="metodo.jpg">
+
+<p>
+Un metodo pu&ograve; anche non avere qualcuna
+di queste parti.
+</p>
+
+<p>
+L'elaborazione dati pu&ograve; riguardare
+calcoli (es. calcolo della distanza) oppure
+modifiche all'oggetto (es. cambiare le
+coordinate)
+</p>
+
+<hr>
+
+
+<h4>Come si definisce un metodo</h4>
+
+<p>
+Bisogna specificare le sue parti:
+</p>
+
+<ul>
+
+<li>quali sono i suoi argomenti (input)
+
+<li>quale &egrave; il suo risultato (output)
+
+<li>che cosa fa
+
+</ul>
+
+<p>
+<b>Attenzione!</b> quando dico "input"
+e "output" intendo:<br />
+quello che entra ed esce dal metodo
+</p>
+
+<p>
+Uso la metafora in cui il metodo &egrave;
+un dispositivo
+</p>
+
+<p>
+Non viene stampato niente
+a meno che non si faccia <tt>println</tt>
+</p>
+
+<hr>
+
+
+<h4>Metodo senza argomenti e risultato</h4>
+
+<p>
+Stampare tutte le componenti dell'oggetto
+</p>
+
+<p>
+Esempio: aggiungiamo un metodo alla classe
+<tt>Studente</tt>
+</p>
+
+<p>
+Classe di partenza:
+</p>
+
+<pre>
+class Studente {
+  String nome;
+  int media;
+}
+</pre>
+
+<p>
+Classe con nuovo metodo:
+</p>
+
+<pre>
+class Studente {
+  String nome;
+  int media;
+
+  void stampaDati() {
+    System.out.println(this.nome);
+    System.out.println(this.media);
+  }
+}
+</pre>
+
+<p>
+Spiegazione --&gt;
+</p>
+
+<hr>
+
+
+<h4>Nuovi metodi: principio</h4>
+
+<p>
+Un metodo &egrave; una operazione
+</p>
+
+<p>
+Posso effettuare l'operazione attraverso
+una sequenza di istruzioni
+</p>
+
+<p>
+La specifica del metodo dice quali
+istruzioni effettuare
+</p>
+
+<hr>
+
+
+<h4>Metodo: anatomia</h4>
+
+<p>
+Parti del metodo di sopra:
+</p>
+
+<img src="anatom.jpg">
+
+<p>
+Le altre parti servono per argomenti
+e risultato (pi&ugrave; avanti)
+</p>
+
+<hr>
+
+
+<h4>Nuovo metodo: esempio di programma</h4>
+
+<p>
+Questo programma stampa il nome di uno
+studente:
+</p>
+
+<pre>
+class StudStampa {
+  public static void main(String args[]) {
+    Studente s;
+    s=new Studente();
+
+    s.nome="Ciccio";
+    s.media=29;
+
+    s.stampaDati();
+
+    s.media=s.media+1;
+  }
+}
+</pre>
+
+<p>
+Una volta definito un metodo, si pu&ograve;
+invocare come fosse un metodo predefinito.
+</p>
+
+<p>
+L'oggetto di invocazione &egrave; <tt>s</tt>,
+quindi vengono stampati di dati di <tt>s</tt>
+</p>
+
+<hr>
+
+
+<h4>Cosa succede quando si invoca il metodo?</h4>
+
+<p>
+Vengono eseguite le istruzioni
+</p>
+
+<img src="sequenza.jpg">
+
+<p>
+A parole: si interrompe l'esecuzione, e si
+``salta'' alla prima istruzione del metodo.
+</p>
+
+<p>
+Attenzione! Quando &egrave; finito, si
+riprende dal punto in cui si era
+lasciato.
+</p>
+
+<hr>
+
+
+<h4>Definire operazioni</h4>
+
+<p>
+Un metodo definisce una operazione complessa.
+</p>
+
+<p>
+Quando si invoca il metodo, viene eseguita
+l'operazione.
+</p>
+
+<p>
+Poi si contiuna con il programma principale.
+</p>
+
+<hr>
+
+
+<h4>Metodo=operazione complessa</h4>
+
+<p>
+Una volta definto il metodo, &egrave; come
+se fosse diventata una operazione elementare.
+</p>
+
+<p>
+Paragone: per spiegare come si arriva alla
+citta' universitaria, definisco il "metodo":
+</p>
+
+<pre>
+come andare alla citta' universitaria:
+  uscire dall'edificio
+  girare a destra
+  andare fino al semaforo
+  attraversare la strada
+  girare di nuovo a sinistra
+</pre>
+
+<p>
+Una volta che so come si fa questa
+operazione, posso costruire un programma
+piu' complesso:
+</p>
+
+<pre>
+1. andare alla citta' universitaria
+2. andare in segreteria
+3. fare la fila
+4. chiedere il certificato
+</pre>
+
+<p>
+Una volta detto come si fa una operazione 
+complessa, quando scrivo il programma posso
+semplicemente dire "fai questa operazione
+complessa"
+</p>
+
+<hr>
+
+
+<h4>Libro di cucina</h4>
+
+<p>
+Le ricette di cucina sono sequenze di
+operazioni.
+</p>
+
+<p>
+Per&ograve; non viene specificato tutto
+ogni volta.
+</p>
+
+<img src="cake.jpg">
+
+<p>
+Per esempio, in una ricetta pu&ograve;
+esserci la istruzione "preparare un pan
+di Spagna"
+</p>
+
+<p>
+Questa non &egrave; una istruzione
+elementare: viene invece specificata
+in un'altra ricetta.
+</p>
+
+<p>
+Ricetta del pan di Spagna=metodo
+</p>
+
+<p>
+Ricetta della torta=programma che usa
+il metodo
+</p>
+
+<p>
+Nella ricetta non viene ripetuto il procedimento
+per fare il pan di Spagna. Viene solo detto di
+farlo, e le istruzioni stanno in una altra
+ricetta.
+</p>
+
+<hr>
+
+
+<h4>Punto di ritorno</h4>
+
+<p>
+In ogni caso, dopo aver fatto il pan di Spagna,
+si continua con la ricetta originaria.
+</p>
+
+<p>
+Se la ricetta originaria &egrave;:
+</p>
+
+<pre>
+  fare la crema al cioccolato
+  fare il pan di Spagna
+  tagliare il pan di Spagna
+  farcire il pan di Spagna
+  disegnare un ippopotamo
+</pre>
+
+<p>
+Quando si arriva alla seconda istruzione,
+si passa ad eseguire la sequenza per fare
+il pan di Spagna.
+</p>
+
+<p>
+Finito di fare il pan di Spagna, si passa
+alla istruzione successiva (tagliare il
+pan di Spagna).
+</p>
+
+<hr>
+
+
+<h4>Metodi e programmi</h4>
+
+<p>
+Il programma &egrave; una sequenza di
+istruzioni.
+</p>
+
+<p>
+Il metodo &egrave; una sequenza di istruzioni
+che realizza una operazione precisa.
+</p>
+
+<p>
+Quando si invoca il metodo, vengono eseguite
+le istruzioni corrispondenti, e poi si passa
+alla istruzione successiva del programma.
+</p>
+
+<hr>
+
+
+<h4>Altre parti del metodo</h4>
+
+<pre>
+class Studente {
+  String nome;
+  int media;
+
+  void stampaDati() {
+    System.out.println(this.nome);
+    System.out.println(this.media);
+  }
+}
+</pre>
+
+<p>
+Il metodo <tt>stampaDati</tt>
+non ha argomenti, non produce un risultato
+e non modifica l'oggetto
+</p>
+
+<p>
+Di solito i metodi hanno argomenti (<tt>move</tt>)
+oppure danno un risultato (<tt>getX</tt>,
+<tt>distance</tt>), oppure modificano l'oggetto
+(<tt>move</tt>)
+</p>
+
+<p>
+Argomenti e risultato vengono specificati
+nella prima linea del metodo:
+</p>
+
+<pre>
+void = non ritorna niente
+stampaStudente = nome del metodo
+() = non ha argomenti
+</pre>
+
+<hr>
+
+
+<h4><tt>this</tt></h4>
+
+<p>
+Quando si eseguono le istruzioni del
+metodo, <tt>this</tt> indica l'oggetto
+di invocazione.
+</p>
+
+<p>
+Se nel programma faccio <tt>s.stampaDati()</tt><br>
+quando eseguo il metodo, <tt>this</tt> &egrave; l'oggetto
+puntato da <tt>s</tt>
+</p>
+
+<p>
+Se nel programma faccio <tt>p.stampaDati()</tt><br>
+questa volta <tt>this</tt> &egrave; l'oggetto <tt>p</tt>
+</p>
+
+<hr>
+
+
+<h4>Perch&egrave; <tt>this</tt> e non <tt>s</tt>?</h4>
+
+<ul>
+
+<li>nel programma, posso usare pi&egrave; volte
+il metodo su oggetti diversi
+
+<li>posso usare la stessa classe in pi&ugrave;
+programmi diversi
+
+</ul>
+
+<p>
+Vediamo un esempio per volta
+</p>
+
+<hr>
+
+
+<h4>Pi&ugrave; invocazioni nello stesso programma</h4>
+
+<pre>
+class Studente {
+  ...
+  void stampaDati() {
+    System.out.println(this.nome);
+    System.out.println(this.media);
+  }
+}
+</pre>
+
+<p>
+Programma:
+</p>
+
+<pre>
+  Studente s, q;
+  ...
+  q.stampaDati();
+  s.stampaDati();
+</pre>
+
+<p>
+Se nel metodo scrivessi <tt>s</tt>, non
+potrei stampare <tt>q</tt>, e viceversa.
+</p>
+
+<hr>
+
+
+<h4>Pi&ugrave; programmi che usano la classe</h4>
+
+<p>
+Programma 1:
+</p>
+
+<pre>
+  Studente s;
+  int q;
+</pre>
+
+<p>
+Programma 2:
+</p>
+
+<pre>
+  int s;
+  Studente q;
+</pre>
+
+<p>
+Tutti e due i programmi possono usare la
+classe <tt>Studente</tt>!
+</p>
+
+<p>
+Nella classe, non posso scrivere <tt>s</tt>
+oppure <tt>q</tt>, perch&egrave; il loro
+tipo dipende dal programma.
+</p>
+
+<p>
+In generale: nel metodo della classe non
+posso usare una variabile che &egrave;
+dichiarata nel programma.
+</p>
+
+<hr>
+
+
+<h4><tt>this</tt></h4>
+
+<p>
+<tt>this</tt> dice: questo &egrave;
+l'oggetto su cui &egrave; stata fatta
+l'invocazione
+</p>
+
+<p>
+Quando faccio <tt>s.stampaDato()</tt>, viene
+eseguito il metodo con <tt>this</tt> uguale
+a <tt>s</tt>.
+</p>
+
+<p>
+Se faccio <tt>q.stampaDato()</tt> viene
+eseguito il metodo con <tt>this</tt> uguale
+a <tt>q</tt>
+</p>
+
+<hr>
+
+
+<h4>Esercizio</h4>
+
+<p>
+Scrivere una classe <tt>SPoint</tt> i cui oggetti
+rappresentano punti in uno spazio tridimensionale
+(tre variabili di instanza <tt>x</tt> ed <tt>y</tt>
+intere).
+</p>
+
+<p>
+La classe ha in pi&ugrave; un metodo che stampa
+la distanza del punto dall'origine.
+</p>
+
+<hr>
+
+
+<h4>Punto+distanza</h4>
+
+<p>
+Prima cosa, le variabili di istanza:
+</p>
+
+<pre>
+class SPoint {
+  int x;
+  int y;
+  int z;
+
+  ...
+}
+</pre>
+
+<hr>
+
+
+<h4>Soluzione</h4>
+
+<p>
+Si tratta solo di prendere le istruzioni
+per stampare la distanza, e metterle dentro
+il metodo.
+</p>
+
+<p>
+L'unica differenza (finora) &egrave; che
+le coordinate ora sono <tt>this.x</tt>,
+<tt>this.y</tt> e <tt>this.z</tt>.
+</p>
+
+<pre>
+class SPoint {
+  int x;
+  int y;
+  int z;
+
+  void stampaDistanza() {
+    double d;
+
+    d=Math.sqrt(this.x*this.x+this.y+this.y+this.z*this.z);
+
+    System.out.println(d);
+  }
+}
+</pre>
+
+<p>
+All'interno di un metodo, si possono
+anche dichiarare delle variabili.
+</p>
+
+<hr>
+
+
+<h4>Due dichiarazioni diverse!</h4>
+
+<p>
+Nella classe ci sono due righe simili:
+</p>
+
+<pre>
+  int x;
+
+  ...
+  void stampaDistanza() {
+    double d;
+    ...
+  }
+</pre>
+
+<p>
+Le due righe <tt>int x</tt> e <tt>double d</tt> sembrano
+entrambe dichiarazioni di variabili (una intera e l'altra
+reale).
+</p>
+
+<p>
+Sono per&ograve; due cose molto diverse:
+</p>
+
+<dl>
+
+<dt><tt>int x</tt>
+<dd>significa che ogni oggetto ha una variabile
+intera di nome <tt>x</tt>. Se non creo
+nessun oggetto, non esiste nessuna variabile;
+se creo cento oggetti, ognuno ha una variabile
+<tt>x</tt>
+
+<dt><tt>double d</tt>
+<dd>&egrave; una variabile dichiarata all'interno
+di un metodo; viene creata solo quando si invoca
+il metodo, e scompare quando il metodo &egrave;
+finito.
+
+</dl>
+
+<hr>
+
+
+<h4>Annullare un esame</h4>
+
+<pre>
+class Studente {
+  String nome;
+  int media;
+
+  void stampaDati() {
+    System.out.println(this.nome);
+    System.out.println(this.media);
+  }
+}
+</pre>
+
+<p>
+Aggiungere un metodo che diminusce la
+media di uno.
+</p>
+
+<hr>
+
+
+<h4>Soluzione</h4>
+
+<p>
+Questo metodo non ha argomenti e valore
+di ritorno.
+</p>
+
+<p>
+Dice come &egrave; fatta l'<i>intestazione</i>
+del metodo:
+</p>
+
+<pre>
+class Studente {
+  String nome;
+  int media;
+
+  void diminusci() {
+    ...
+  }
+}
+</pre>
+
+<hr>
+
+
+<h4>Corpo del metodo</h4>
+
+<p>
+Modifica l'oggetto di invocazione
+</p>
+
+<p>
+Se <tt>s</tt> &egrave; uno studente, allora
+nel programma farei <tt>s.media=s.media-1</tt>
+</p>
+
+<p>
+Nel metodo, l'oggetto di invocazione viene
+chiamato <tt>this</tt>
+</p>
+
+<pre>
+class Studente {
+  String nome;
+  int media;
+
+  void diminusci() {
+    this.media=this.media-1;
+  }
+}
+</pre>
+
+<hr>
+
+
+<h4>Cosa succede in questo caso?</h4>
+
+<pre>
+class ProvaDim {
+  public static void main(String args[]){
+    Studente p,t;
+    p=new Studente();
+    t=new Studente();
+
+    p.nome="Ciccio";
+    p.media=18;
+
+    t.nome="Alfonso";
+    t.media=21;
+
+    t.diminuisci();
+
+    System.out.println(p.media);
+    System.out.println(t.media);
+  }
+}
+</pre>
+
+<p>
+Cosa viene stampato?
+</p>
+
+<hr>
+
+
+<h4>Cosa stampa</h4>
+
+<p>
+Il metodo <tt>diminusci</tt> viene
+applicato solo all'oggetto <tt>t</tt>
+</p>
+
+<p>
+Quindi, <tt>p</tt> resta invariato
+</p>
+
+<pre>
+18
+20
+</pre>
+
+<hr>
+
+
+<h4>La memoria, quando si invoca il metodo</h4>
+
+<p>
+Mentre si esegue <tt>t.diminuisci()</tt>,
+la situazione &egrave; questa:
+</p>
+
+<img src="memoria.jpg">
+
+<p>
+<tt>this</tt> indica dove si trova in memoria
+l'oggetto di invocazione
+</p>
+
+<p>
+Per ora, basta sapere che lo stato della
+memoria &egrave; questo.
+</p>
+
+<hr>
+
+
+<h4>Esercizio</h4>
+
+<p>
+Scrivere un metodo <tt>setToOrigin</tt>
+da mettere nella classe <tt>SPoint</tt>,
+che pone il punto di invocazione
+nell'origine (tutte e tre le coordinate
+diventano <tt>0</tt>)
+</p>
+
+<pre>
+class SPoint {
+  int x;
+  int y;
+  int z;
+
+  ...
+}
+</pre>
+
+<hr>
+
+
+<h4>Primo passo: l'intestazione</h4>
+
+<p>
+Il metodo non restituisce niente: <tt>void</tt>
+</p>
+
+<p>
+Il nome &egrave; <tt>setToOrigin</tt>
+</p>
+
+<p>
+Non ha argomenti: <tt>()</tt>
+</p>
+
+<pre>
+class SPoint {
+  int x;
+  int y;
+
+  void setToOrigin() {
+    ...
+  }
+}
+</pre>
+
+<p>
+L'intestazione si ottiene da queste tre cose:
+valore di ritorno, nome, argomenti.
+</p>
+
+<hr>
+
+
+<h4>Secondo passo: il corpo del metodo</h4>
+
+<p>
+Devo mettere a <tt>0</tt> le due variabili
+dell'oggetto di invocazione.
+</p>
+
+<p>
+L'oggetto di invocazione &egrave; <tt>this</tt>
+</p>
+
+<pre>
+class SPoint {
+  int x;
+  int y;
+  int z;
+
+  void setToOrigin() {
+    this.x=0;
+    this.y=0;
+    this.z=0;
+  }
+}
+</pre>
+
+<hr>
+
+
+<h4>Terzo passo: il programma di prova</h4>
+
+<p>
+Creo due punti, e su uno invoco il metodo.
+</p>
+
+<pre>
+class ProvaOrigin {
+  public static void main(String args[]){
+    SPoint p, r;
+    p=new SPoint();
+    r=new SPoint();
+
+    p.x=3
+    p.y=4;
+    p.z=-3;
+
+    r.x=-1
+    r.y=-1;
+    r.z=-1;
+
+    p.setToOrigin();
+
+    System.out.println(p.x);
+    System.out.println(r.x);
+  }
+}
+</pre>
+
+<hr>
+
+
+<h4>Cosa succede in memoria</h4>
+
+<p>
+Vengono creati due punti <tt>p</tt> ed <tt>r</tt>
+</p>
+
+<img src="mem-spoint-prog.jpg">
+
+<p>
+Notare che non esiste nessuna variabile <tt>this</tt>
+finora!
+</p>
+
+<hr>
+
+
+<h4>Quando si esegue il metodo</h4>
+
+<p>
+Quando il programma arriva ad <tt>p.setToOrigin();</tt>,
+si eseguono le istruzioni di <tt>setToOrigin()</tt>.
+</p>
+
+<p>
+Solo ora viene creata la variabile <tt>this</tt>.
+</p>
+
+<p>
+La variabile <tt>this</tt> viene creata automaticamente (non
+bisogna dichiararla) quando si esegue il metodo. Questa
+variabile indica l'oggetto di invocazione.
+</p>
+
+<img src="mem-spoint.jpg">
+
+<hr>
+
+
+<h4>Se si invoca nuovamente il metodo?</h4>
+
+<pre>
+class ProvaOrigin {
+  public static void main(String args[]){
+    SPoint p, r;
+    p=new SPoint();
+    r=new SPoint();
+
+    p.x=3
+    p.y=4;
+    p.z=-3;
+
+    r.x=-1
+    r.y=-1;
+    r.z=-1;
+
+    p.setToOrigin();
+
+    r.setToOrigin();
+
+    System.out.println(p.x);
+    System.out.println(r.x);
+  }
+}
+</pre>
+
+<p>
+La prima volta che si invoca il metodo, &egrave;
+come prima.
+</p>
+
+<p>
+Quando si invoca il metodo la seconda volta, &egrave;
+<tt>r.setToOrigin();</tt>. Quando si esegue il corpo
+del metodo, <tt>this</tt> &egrave; l'oggetto indicato
+da <tt>r</tt>.
+</p>
+
+<img src="mem-spoint-due.jpg">
+
+<p>
+Vengono messe a <tt>0</tt> anche le
+parti di <tt>r</tt>
+</p>
+
+<hr>
+
+
+<h4>Esercizio</h4>
+
+<p>
+Definire una classe <tt>RectPoint</tt> che ha le
+stesse variabili di istanza di <tt>Rectangle</tt>
+pi&ugrave; una variabile <tt>centro</tt> di tipo
+<tt>Point</tt>. Definire un metodo <tt>setCentro</tt>
+che memorizza in questo punto il centro del rettangolo.
+</p>
+
+<hr>
+
+
+<h4>Variabili di istanza</h4>
+
+<p>
+Sono le stesse del <tt>Rectangle</tt> pi&ugrave; il punto.
+</p>
+
+<pre>
+import java.awt.*;
+
+class RectPoint {
+  int x;
+  int y;
+  int height;
+  int width;
+  Point centro;
+}
+</pre>
+
+<hr>
+
+
+<h4>Intestazione del metodo</h4>
+
+<p>
+Non ha valore di ritorno e nemmeno argomenti:
+</p>
+
+<pre>
+import java.awt.*;
+
+class RectPoint {
+  int x;
+  int y;
+  int height;
+  int width;
+  Point centro;
+
+  void setCentro() {
+    ...
+  }
+}
+</pre>
+
+<hr>
+
+
+<h4>Soluzione: corpo del metodo</h4>
+
+<p>
+I valori del rettangolo sono
+<tt>this.x this.y this.width this.height
+this.centro</tt>
+</p>
+
+<p>
+Usando i primo quattro si calcola il centro.
+</p>
+
+<p>
+Le coordinate del centro vanno messe nel
+punto <tt>this.centro</tt>
+</p>
+
+<pre>
+import java.awt.*;
+
+class RectPoint {
+  int x;
+  int y;
+  int height;
+  int width;
+  Point centro;
+
+  void setCentro() {
+    this.centro.x=this.x+this.width/2;
+    this.centro.y=this.y+this.height/2;
+  }
+}
+</pre>
+
+<hr>
+
+
+<h4>Soluzione: programma di prova</h4>
+
+<p>
+Prima metto i valori del rettangolo,
+poi creo il punto e poi invoco il metodo
+</p>
+
+<pre>
+import java.awt.*;
+
+class ProvaRectPoint {
+  public static void main(String args[]) {
+    RectPoint r;
+    r=new RectPoint();
+
+    r.x=23;
+    r.y=12;
+    r.height=4;
+    r.width=5;
+    // modifica solo le componenti
+    // originarie x y width height
+
+    r.centro=new Point();
+    r.setCentro();
+
+    System.out.println(r.centro);
+  }
+}
+</pre>
+
+<p>
+Viene stampato il centro
+</p>
+
+<p>
+<b>Nota:</b> l'oggetto punto va creato.
+Se non lo crea il metodo, lo deve creare
+il programma.
+</p>
+
+<hr>
+
+
+<h4>Metodi con argomenti</h4>
+
+<p>
+Vediamo come si <i>usano</i> quelli
+predefiniti.
+</p>
+
+<p>
+Esempio: metodo <tt>move</tt>
+</p>
+
+<p>
+Per usarlo, faccio <tt>p.move(10,20)</tt>
+</p>
+
+<p>
+Metto prima l'oggetto di cui sto parlando,
+e fra parentesi i dati che servono per fare
+l'operazione.
+</p>
+
+<hr>
+
+
+<h4>Definizione di metodi con argomenti</h4>
+
+<p>
+Definiamo il metodo <tt>setToValue</tt> per
+<tt>SPoint</tt>, che modifica le coordinate.
+</p>
+
+<p>
+&Egrave; simile a <tt>setToOrigin</tt>, solo
+che i valori da mettere sono gli argomenti,
+e non <tt>0</tt>
+</p>
+
+<pre>
+  void setToOrigin() {
+    this.x=0;
+    this.y=0;
+    this.z=0;
+  }
+</pre>
+
+<p>
+Cosa devo cambiare:
+</p>
+
+<ul>
+
+<li><tt>()</tt> dice che il metodo non ha argomenti,
+mentre <tt>setToValue</tt> li ha;
+
+<li>il nuovo metodo deve avere un nuovo nome;
+
+<li>i valori da mettere non sono pi&ugrave; <tt>0</tt>
+
+</ul>
+
+<hr>
+
+
+<h4>Notazione per gli argomenti</h4>
+
+<pre>
+  void setToValue( ??? ) {
+    this.x=??;
+    this.y=??;
+    this.z=??;
+  }
+</pre>
+
+<p>
+Vorrei poter dire che il primo argomento &egrave;
+poi quello che va messo in <tt>this.x</tt>
+</p>
+
+<p>
+Si usa un meccanismo simile alla dichiarazione
+di variabile:
+</p>
+
+<pre>
+  void setToValue(int a, int b, int c) {
+    this.x=a;
+    this.y=b;
+    this.z=c;
+  }
+</pre>
+
+<hr>
+
+
+<h4>Cosa significa?</h4>
+
+<p>
+La intestazione ha due funzioni:
+</p>
+
+<ul>
+
+<li>dice quali sono i tipi degli argomenti del metodo<br>
+(in questo caso, tre interi)
+
+<li>d&agrave; dei nomi a questi argomenti, in modo che
+si possano poi usare nel metodo<br>
+(in nomi sono <tt>a</tt>, <tt>b</tt> e <tt>c</tt> in questo
+caso)
+
+</ul>
+
+<hr>
+
+
+<h4>Invocazione di metodo, in memoria</h4>
+
+<ol>
+
+<li>nuova variabile <tt>this</tt>, che punta
+all'oggetto di invocazione
+
+<li>nuove variabili <tt>a</tt> <tt>b</tt> <tt>c</tt>
+che contengono i valori degli argomenti
+
+<li>si esegue il corpo
+
+</ol>
+
+<p>
+Vediamo un programma di prova.
+</p>
+
+<hr>
+
+
+<h4>Programma di prova</h4>
+
+<pre>
+class ProvaMove {
+  public static void main(String args[]){
+    SPoint p, r;
+    p=new SPoint();
+    r=new SPoint();
+
+    p.setToValue(3,4,5);
+    r.setToValue(-1,-1,-1);
+
+    System.out.println(p.x);
+    System.out.println(r.x);
+  }
+}
+</pre>
+
+<p>
+Lo stato della memoria nella
+prima e seconda invocazione &egrave;
+differente.
+</p>
+
+<hr>
+
+
+<h4>Prima invocazione</h4>
+
+<pre>
+    p.setToValue(3,4,5);
+</pre>
+
+<p>
+Viene creato <tt>this</tt>, che diventa
+un riferimento all'oggetto puntato da
+<tt>p</tt>
+</p>
+
+<p>
+Vengono create le tre variabili <tt>a</tt>
+<tt>b</tt> <tt>c</tt>
+</p>
+
+<p>
+I valori dei tre argomenti vengono messi
+l&iacute; dentro.
+</p>
+
+<img src="move-1.jpg">
+
+<p>
+Viene poi eseguito il corpo del metodo.
+</p>
+
+<hr>
+
+
+<h4>Seconda invocazione</h4>
+
+<pre>
+    r.setToValue(-1,-1,2);
+</pre>
+
+<p>
+Questa volta, <tt>this</tt> indica il secondo
+oggetto.
+</p>
+
+<p>
+Le variabili <tt>a b c</tt> vengono riempite
+con valori diversi.
+</p>
+
+<img src="move-2.jpg">
+
+<hr>
+
+
+<h4>Perch&egrave; non si scrivono i valori nel metodo?</h4>
+
+<p>
+Dall'esempio si capisce: il metodo non sa quali
+sono i valori degli argomenti.
+</p>
+
+<p>
+Inoltre, ci possono essere due invocazioni con
+argomenti diversi.
+</p>
+
+<hr>
+
+
+<h4>Struttura generale di un metodo</h4>
+
+<p>
+Uso del metodo: scrivo<br>
+<tt>oggetto.nomemetodo(argomenti)</tt><br>
+quando voglio usare un metodo.
+</p>
+
+<p>
+Se ritorna un valore, viene scritto al posto
+della invocazione
+<tt>oggetto.nomemetodo(argomenti)</tt><br>
+(&egrave; come se ci fosse il valore ottenuto
+al posto di questi caratteri).
+</p>
+
+<p>
+Definizione di metodo (ricorda il modo in
+cui si usa!)
+</p>
+
+<pre>
+  tiporitorno nomemetodo(argomenti) {
+
+    istruzioni
+
+    return valore
+  }
+</pre>
+
+<p>
+La parte <tt>return</tt> va omessa nel caso
+<tt>void</tt> (non si ritorna niente)
+</p>
+
+<hr>
+
+
+<h4>Parametri attuali e formali</h4>
+
+<p>
+Definizione metodo: <tt>void prova(int x)</tt>
+</p>
+
+<p>
+Invocazione metodo: <tt>oggetto.prova(10)</tt>
+</p>
+
+<dl>
+
+<dt><i>parametri attuali</i>
+<dd>i valori che vengono passati al
+metodo in una invocazione
+
+<dt><i>parametri formali</i>
+<dd>le variabili in cui vengono messi i valori
+che sono stati passati al metodo
+
+</dl>
+
+<p>
+Nota: i primi sono <i>valori</i>,
+i secondi sono <i>variabili</i>!
+</p>
+
+<p>
+Altra differenza:<br>
+i parametri formali di un metodo sono sempre gli stessi;<br>
+quelli attuali sono i valori che vengono passati,
+quindi cambiano ad ogni invocazione.
+</p>
+
+<p>
+(non finisce qui)
+</p>
+
+<hr>
+
+
+<h4>Parametri formali/variabili locali</h4>
+
+<p>
+Variabile locale=variabile definita dentro un metodo.
+</p>
+
+<pre>
+  void esempio(int x) {
+    int y;
+
+    ...
+  }
+</pre>
+
+<p>
+Sia <tt>x</tt> che <tt>y</tt> sono variabili
+intere.
+</p>
+
+<p>
+L'unica cosa che cambia &egrave; che in <tt>x</tt>
+viene inizialmente messo il valore con cui &egrave;
+stata fatta l'invocazione.
+</p>
+
+<p>
+In entrambi i casi, la variabile non esiste
+pi&ugrave; quando il metodo termina.
+</p>
+
+<hr>
+
+
+<h4>Perch&egrave; i parametri formali sono variabili?</h4>
+
+<p>
+Quando scrivo la classe non so i valori dei parametri.<br>
+Che possono essere anche diversi in due invocazioni.
+</p>
+
+<p>
+Uso dei contenitori per dire "questo &egrave;
+il valore passato".
+</p>
+
+<p>
+Le variabili sono contenitori.
+</p>
+
+<hr>
+
+
+<h4>Esercizio</h4>
+
+<p>
+Creare un metodo della classe <tt>SPoint</tt>
+che stampa la distanza da un altro punto.
+</p>
+
+<p>
+Deve quindi essere possibile fare:
+</p>
+
+<pre>
+  SPoint p,t; 
+
+  ...
+
+  p.stampaDistanza(t);
+</pre>
+
+<p>
+Osservazione: questo metodo pu&ograve; solo
+stampare.
+</p>
+
+<p>
+&Egrave; pi&ugrave; comodo avere metodi che
+calcolano qualcosa:<br>
+in questo modo posso usare il valore per
+fare altri calcoli
+</p>
+
+<p>
+Esempio: con il metodo sopra non posso
+calcolare il perimetro di un triangolo.
+</p>
+
+<hr>
+
+
+<h4>Metodi con risultato</h4>
+
+<p>
+Il metodo <tt>getX()</tt> della classe <tt>Point</tt>
+&egrave; un metodo predefinito che ha un risultato (di tipo
+<tt>double</tt>)
+</p>
+
+<p>
+Come si usa?
+</p>
+
+<p>
+Quando scrivo <tt>p.getX()</tt> in una
+espressione, al suo posto viene messo il
+valore di <tt>p.x</tt>
+</p>
+
+<p>
+Stessa cosa per <tt>distance</tt>
+</p>
+
+<p>
+Quello che fanno &egrave; calcolare
+un valore.
+</p>
+
+<p>
+Vediamo come scrivere nuovi metodi che
+fanno il calcolo di un valore.
+</p>
+
+<hr>
+
+<h4>Un metodo con risultato</h4>
+
+<pre>
+class Studente {
+  ...
+
+  int getAnno() {
+    return 2003;
+  }
+}
+</pre>
+
+<p>
+Significato:
+</p>
+
+<dl compact="compact">
+
+<dt><tt>int</tt>
+<dd>il metodo calcola un valore intero
+
+<dt><tt>return</tt>
+<dd>il valore che viene effettivamente dato
+indietro al programma che ha invocato il
+metodo
+
+</dl>
+
+<hr>
+
+
+<h4>Cosa succede?</h4>
+
+<p>
+Quando si invoca un metodo:
+</p>
+
+<ol>
+
+<li>si crea <tt>this</tt> e si fa puntare
+all'oggetto di invocazione
+
+<p />
+
+<li>si creano i parametri formali (che sono
+variabili) e ci si mettono i valori dei
+parametri attuali
+
+<p />
+
+<li>si esegue il corpo del metodo (le
+istruzioni)
+
+<p />
+
+<li>quando si arriva a <tt>return valore</tt>,
+il valore viene rimandato indietro al programma
+
+</ol>
+
+<p>
+Nel caso dell'esempio, il valore che viene
+ritornato &egrave; <tt>2003</tt>
+</p>
+
+<p>
+Mettere <tt>s.getAnno()</tt> all'interno di una
+espressione equivale a metterci <tt>2003</tt>
+</p>
+
+<p>
+Quindi <tt>x=(1+s.getAnno()+2)/3</tt>
+equivale a <tt>x=(1+2003+2)/3</tt>
+</p>
+
+<hr>
+
+
+<h4>Perch&egrave; <tt>return</tt>?</h4>
+
+<p>
+Perch&agrave; non posso direttamente
+scrivere <tt>2003</tt> nel programma,
+visto che tanto &egrave; la stessa
+cosa?
+</p>
+
+<p>
+Il metodo calcola qualcosa in base ai
+valori degli argomenti e dell'oggetto
+</p>
+
+<p>
+Quindi, non sempre so in anticipo
+il valore del risultato.
+</p>
+
+<hr>
+
+
+<h4>Esempio pi&ugrave; significativo</h4>
+
+<p>
+Questo metodo restituisce il valore
+del campo <tt>nome</tt> dell'oggetto
+di invocazione
+</p>
+
+<pre>
+class Studente {
+  ...
+
+  String getNome() {
+    return this.nome;
+  }
+}
+</pre>
+
+<p>
+Ora vediamo il significato delle parti
+</p>
+
+<hr>
+
+
+<h4>Significato delle parti</h4>
+
+<pre>
+  String getNome() {
+    return this.nome;
+  }
+</pre>
+
+<dl>
+
+<dt><tt>String</tt>
+<dd>tipo di dato che viene ritornato
+
+<dt><tt>this.nome</tt>
+<dd>componente dell'oggetto di invocazione
+
+<dt><tt>return this.nome</tt>
+<dd>ritorna al programma questo valore
+
+</dl>
+
+<p>
+Il valore di ritorno &egrave; quello che
+il metodo comunica come risultato al
+programma.
+</p>
+
+<p>
+Quando scrivo <tt>s.getNome()</tt>, dopo
+l'esecuzione delle istruzioni del metodo
+il valore ritornato viene messo al posto
+di <tt>s.getNome()</tt>
+</p>
+
+<hr>
+
+
+<h4>Come si invoca il metodo</h4>
+
+<p>
+Come per tutti i metodi:
+</p>
+
+<pre>
+  Student tizio;
+  tizio=new Studente();
+
+  tizio.nome="Albert";
+  ...
+
+  String s;
+  s=tizio.getNome();
+</pre>
+
+<hr>
+
+
+<h4>Cosa succede quando si invoca il metodo</h4>
+
+<p>
+<tt>tizio</tt> e' l'oggetto di invocazione
+</p>
+
+<p>
+Si esegue il corpo del metodo
+</p>
+
+<p>
+<tt>return this.nome</tt> significa: il
+risultato &egrave; la stringa <tt>tizio.nome</tt>
+</p>
+
+<p>
+In questo caso, &egrave; come scrivere "Albert"
+al posto di <tt>tizio.getNome()</tt>
+</p>
+
+<hr>
+
+
+<h4>Esercizio</h4>
+
+<p>
+Scrivere un metodo che calcola la differenza
+fra un numero intero e la media di uno
+studente.
+</p>
+
+<hr>
+
+
+<h4>Come si progettano i metodi</h4>
+
+<p>
+Primo: cosa deve fare il metodo?
+</p>
+
+<p>
+Secondo: in base a questo, specifico il
+metodo.
+</p>
+
+<hr>
+
+
+<h4>Esempio: metodo che fa la differenza con la media</h4>
+
+<p>
+<i>Cosa fa:</i>
+dato un intero, calcola la differenza con la media.
+</p>
+
+<p>
+Il tipo di argomento permette di scrivere l'intestazione
+</p>
+
+<pre>
+  int diffMedia(int x) {
+    ...
+  }
+</pre>
+
+<hr>
+
+
+<h4>Seconda parte: scrivere il corpo</h4>
+
+<p>
+Calcolo la differenza fra <tt>x</tt> e il
+campo <tt>media</tt> dell'oggetto
+</p>
+
+<p>
+Quando arrivo ad eseguire il corpo del
+metodo, so che <tt>x</tt> contiene il
+numero e <tt>this</tt> punta all'oggetto
+di invocazione.
+</p>
+
+<pre>
+  int diffMedia(int x) {
+    int d;
+
+    d=x-this.media;
+
+    ...
+  }
+</pre>
+
+<hr>
+
+
+<h4>Terzo: il valore di ritorno</h4>
+
+<p>
+Il valore calcolato sta in <tt>d</tt>,
+quindi...
+</p>
+
+<pre>
+  int diffMedia(int x) {
+    int d;
+
+    d=x-this.media;
+  
+    return d;
+  }
+</pre>
+
+<hr>
+
+
+<h4>Nota sul tipo</h4>
+
+<p>
+Il valore dopo <tt>return</tt> deve essere
+dello stesso tipo di quello specificato
+all'inizio.
+</p>
+
+<p>
+Questo metodo non va bene:
+</p>
+
+<img src="mismatch.jpg">
+
+<hr>
+
+
+<h4>Altro esercizio</h4>
+
+<p>
+Scrivere un metodo della classe
+<tt>RectPoint</tt> che trova l'area del
+rettangolo.
+</p>
+
+
+<hr>
+
+<h4>Primo: intestazione</h4>
+
+<p>
+Non ha argomenti (usa solo l'oggetto)
+e trova un intero.
+</p>
+
+<pre>
+import java.awt.*;
+
+class RectPoint {
+  ...
+
+  int getArea() {
+    ...
+  }
+}
+</pre>
+
+<p>
+Attenzione! Non ho detto che deve
+<i>stampare</i> l'area, ma che la
+<i>deve restituire!</i>
+</p>
+
+<hr>
+
+
+<h4>Secondo: calcolo il valore</h4>
+
+<p>
+La base e l'altezza stanno nella parte
+<tt>width</tt> ed <tt>height</tt>
+dell'oggetto.
+</p>
+
+<pre>
+import java.awt.*;
+
+class RectPoint {
+  ...
+
+  int getArea() {
+    int a;
+
+    a=this.width*this.height;
+
+    ...
+  }
+}
+</pre>
+
+<p>
+Questo &egrave; il valore calcolato:
+</p>
+
+<pre>
+import java.awt.*;
+
+class RectPoint {
+  ...
+
+  int getArea() {
+    int a;
+
+    a=this.width*this.height;
+
+    return a;
+  }
+}
+</pre>
+
+<p>
+Si poteva anche fare:
+</p>
+
+<pre>
+   return this.width*this.height;
+</pre>
+
+<hr>
+
+
+<h4>Programma di esempio</h4>
+
+<p>
+Per esempio: calcolare l'area di un
+triangolo che ha la stessa base e
+altezza:
+</p>
+
+<pre>
+import java.awt.*;
+
+class ProvaRectPoint {
+  public static void main(String args[]) {
+    RectPoint r;
+    r=new RectPoint();
+
+    r.x=23;
+    r.y=12;
+    r.height=4;
+    r.width=5;
+
+    int a;
+
+    a=r.getArea()/2;
+
+    System.out.println(a);
+  }
+}
+</pre>
+
+<p>
+Se il metodo avesse fatto la stampa dell'area,
+non sarebbe poi stato possibile fare la divisione
+per due (bisognava di nuovo calcolare l'area)
+</p>
+
+<hr>
+
+
+<h4>Progettazione dei metodi</h4>
+
+<p>
+Simulare lo stato della memoria quando
+si arriva ad eseguire le istruzioni del
+metodo.
+</p>
+
+<p>
+Quando si definisce il metodo bisgna pensare:
+</p>
+
+<blockquote>
+<i>
+quando lui arriva a questo punto, lo stato
+della memoria e' questo
+</i>
+</blockquote>
+
+<p>
+A questo punto, devo trovare le
+istruzioni che permettono
+di calcolare il valore che va restituito
+</p>
+
+<hr>
+
+
+<h4>Esercizio</h4>
+
+<p>
+Scrivere un metodo <tt>nomeEData</tt>
+che restituisce la concatenazione di
+nome e data di nascita di uno studente,
+lasciando uno spazio in mezzo.
+</p>
+
+<pre>
+class Studente {
+  String nome;
+  String data;
+  int media;
+
+  ...
+}
+</pre>
+
+<p>
+Suggerimento: se <tt>s</tt> e <tt>q</tt>
+sono due stringhe,<br>
+allora <tt>s.concat(q)</tt>
+&egrave; la stringa ottenuta per concatenazione.
+</p>
+
+<hr>
+
+
+<h4>Primo: intestazione</h4>
+
+<p>
+Ha un risultato, ma nessun argomento.
+</p>
+
+<pre>
+class Studente {
+  String nome; 
+  String data;
+  int media;
+
+  String nomeEData() {
+    ...
+  }
+}
+</pre>
+
+<hr>
+
+
+<h4>Secondo: calcolo il risultato</h4>
+
+<p>
+Devo fare la concatenazione di tre
+stringhe
+</p>
+
+<pre>
+class Studente {
+  String nome; 
+  String data;
+  int media;
+
+  String nomeEData() {
+    String r;
+
+    r=this.nome.concat(" ");
+
+    String q;
+
+    q=r.concat(this.data);
+
+    ...
+  }
+}
+</pre>
+
+<p>
+Non serve la <tt>new</tt><br>
+(eccezione sugli oggetti stringa)
+</p>
+
+<hr>
+
+
+<h4>Terzo: valore di ritorno</h4>
+
+<p>
+La stringa che volevo sta in <tt>q</tt>
+</p>
+
+<pre>
+class Studente {
+  String nome;
+  String data;
+  int media;
+
+  String nomeEData() {
+    String r;
+
+    r=this.nome.concat(" ");
+
+    String q;
+
+    q=r.concat(this.data);
+
+    return q;
+  }
+}
+</pre>
+
+<hr>
+
+
+<h4>Esercizio: un metodo con argomento</h4>
+
+<p>
+Inserire nella classe <tt>RectPoint</tt> un
+metodo che trova la distanza
+tra il punto in alto a destra e un altro
+punto (dato come argomento).
+</p>
+
+<hr>
+
+
+<h4>Soluzione</h4>
+
+<p>
+Faccio vedere direttamente la soluzione
+</p>
+
+<pre>
+import java.awt.*;
+
+class RectPoint {
+  ...
+
+  double distanza(Point p) {
+    double d;
+    int xp, yp;
+
+    xp=this.x+this.width;
+    yp=this.y+this.height;
+
+    d=Math.sqrt((xp-p.x)*(xp-p.x) + (yp-p.y)*(yp-p.y));
+
+    return d;
+  }
+}
+</pre>
+
+<hr>
+
+
+<h4>Modifica: usare <tt>distance</tt></h4>
+
+<p>
+Esiste un metodo per calcolare la distanza.
+</p>
+
+<p>
+Usare questo metodo
+</p>
+
+<hr>
+
+
+<h4>Soluzione con <tt>distance</tt></h4>
+
+<p>
+Per&ograve; servono due punti, non un punto
+e due coordindate.
+</p>
+
+<p>
+A partire da <tt>this.x</tt> e <tt>this.y</tt>,
+creo un punto.
+</p>
+
+<pre>
+import java.awt.*;
+
+class RectPoint {
+  ...
+
+  double distanza(Point p) {
+    Point q;
+    q=new Point();
+
+    q.move(this.x+this.width, this.y+this.height);
+
+    return p.distance(q);
+  }
+}
+</pre>
+
+<hr>
+
+
+<h4>In laboratorio</h4>
+
+<p>
+Esercitazione sulle classi:
+</p>
+
+<ol>
+
+<li>serve un file per ogni classe,
+pi&ugrave; uno per il programma
+
+<li>prima si compila la classe, e 
+poi il programma
+
+<li>si esegue solo il programma
+
+</ol>
+
+
+</body>
+</html>
+

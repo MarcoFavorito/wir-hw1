@@ -1,0 +1,530 @@
+<html>
+<head>
+<title>Gli applet</title>
+      <link rel="top" href="../lezioni.html">
+      <link rel="up" href="../lezioni.html">
+      <link rel="contents" href="../lezioni.html">
+      <link rel="previous" href="../memoria/memoria.html">
+      <link rel="next" href="../puntvirg/puntvirg.html">
+</head>
+
+<body>
+
+<h1>Gli applet</h1>
+
+<p>
+Con gli applet possiamo disegnare in una finestra.
+</p>
+
+<p>
+Non andiamo nel dettaglio.
+</p>
+
+<hr>
+
+
+<h4>Parti che servono per eseguire un applet</h4>
+
+<ol>
+
+<li>una pagine html
+
+<li>un programma Java
+
+</ol>
+
+<hr>
+
+
+<h4>La pagina html</h4>
+
+<p>
+Pu&ograve; essere fatta cos&iacute;:
+</p>
+
+<pre>
+&lt;html&gt;
+&lt;head&gt;&lt;/head&gt;
+&lt;body&gt;
+
+&lt;applet code="PrimoApplet.class" height=500
+width=500&gt;&lt;/applet&gt;
+
+&lt;/body&gt;
+&lt;/html&gt;
+</pre>
+
+<p>
+Cosa fare:
+</p>
+
+<pre>
+notepad PrimoApplet.html
+</pre>
+
+<p>
+Scrivere la pagina html con il codice sopra.
+</p>
+
+<p>
+Dopo <tt>code</tt> va scritto il nome del programma
+Java tradotto, ossia quello che ha <tt>.class</tt>
+al posto di <tt>.java</tt>
+</p>
+
+<hr>
+
+
+<h4>Il programma Java</h4>
+
+<p>
+&Egrave; un p&ograve; diverso dai programmi
+visti fino a questo momento:
+</p>
+
+<pre>
+import java.applet.*;
+import java.awt.*;
+
+public class PrimoApplet extends Applet {
+  public void paint(Graphics g) {
+    g.drawLine(0,0,200,200);
+  }
+}
+</pre>
+
+<p>
+Vediamo le differenze una per una.
+</p>
+
+<hr>
+
+
+<h4>Import</h4>
+
+<p>
+&Egrave; necessario importare
+<tt>java.applet</tt>, perch&egrave;
+contiene delle classi che ci servono.
+</p>
+
+<hr>
+
+
+<h4>La definizione della classe</h4>
+
+<pre>
+public class PrimoApplet extends Applet
+</pre>
+
+<p>
+Ricordate la parte <tt>extends Applet</tt>
+</p>
+
+<p>
+Serve perch&ograve; esiste un applet standard,
+(che non disegna niente).
+</p>
+
+<p>
+Lo estendiamo dicendo cosa va disegnato.
+</p>
+
+<hr>
+
+
+<h4>Non c'&egrave; il <tt>main</tt></h4>
+
+<p>
+Al posto di <tt>public .. main..</tt>
+abbiamo:
+</p>
+
+<pre>
+  public void paint(Graphics g) {
+    // istruzioni
+  }
+</pre>
+
+<p>
+Sia <tt>main</tt> che <tt>paint</tt> sono
+due metodi.
+</p>
+
+<dl>
+
+<dt><tt>main</tt>
+<dd>metodo che viene invocato quando si
+esegue un programma da linea di comando
+
+<dt><tt>paint</tt>
+<dd>metodo che viene invocato per disegnare
+la finestra quando il programma viene eseguito
+da dentro una pagina html
+
+</dl>
+
+<p>
+Se si fa <tt>java NomeProgramma</tt>, vengono
+eseguite le istruzioni del metodo <tt>main</tt>
+</p>
+
+<p>
+Se si fa <tt>appletviewer pagina.html</tt> e
+la pagina contiene un applet, vengono eseguite
+le istruzioni di <tt>paint</tt>
+</p>
+
+<hr>
+
+
+<h4>Le istruzioni di <tt>paint</tt></h4>
+
+<p>
+Ci possiamo mettere tutte le istruzioni solite.
+</p>
+
+<p>
+<tt>System.out.println</tt> si pu&ograve;
+usare, ma non ha effetto (non stampa niente)
+</p>
+
+<p>
+Possiamo usare delle nuove istruzioni di disegno.
+</p>
+
+<hr>
+
+
+<h4>Cosa succede?</h4>
+
+<p>
+Voi:
+</p>
+
+<ul>
+
+<li>scrivete la pagina <tt>PrimoApplet.html</tt>
+<li>scrivete il programma <tt>PrimoApplet.java</tt>
+con dentro un metodo <tt>paint</tt>
+<li>compilate il programma, ottenendo
+<tt>PrimoApplet.class</tt>
+<li>lanciate l'applet con
+<tt>appletviewer PrimoApplet.html</tt>
+
+</ul>
+
+<p>
+A questo punto, lui:
+</p>
+
+<ul>
+
+<li>apre una nuova finestra
+
+<li>vede che nel file html c'&egrave; scritto che
+voglio l'applet <tt>PrimoApplet.class</tt>
+
+<li>viene eseguito il metodo <tt>paint</tt>
+per disegnare nella finestra
+
+</ul>
+
+<hr>
+
+
+<h4>Cosa succede?</h4>
+
+<p>
+Viene aperta questa finestra:
+</p>
+
+<img src="primo.gif">
+
+<hr>
+
+
+<h4>Origine</h4>
+
+<p>
+L'origine degli assi &egrave; il punto in
+alto a sinistra.
+</p>
+
+<p>
+Per valori di <tt>y</tt> crescenti, il
+punto si sposta verso il basso.
+</p>
+
+<hr>
+
+
+<h4><tt>Graphics g</tt></h4>
+
+<p>
+L'oggetto <tt>g</tt> modella la finestra,
+in cui posso disegnare.
+</p>
+
+<p>
+&Egrave; come quando ho un file <tt>f</tt>:
+un oggetto che rappresenta un file. Qui
+ho un oggetto che rappresenta la finestra.
+</p>
+
+<hr>
+
+
+<h4>Esercizio: disegnare una serie di linee</h4>
+
+<p>
+Disegnare una serie di linee orizzontali
+a distanza <tt>20</tt>
+</p>
+
+<img src="linee.gif">
+
+<p>
+La dimensione della finestra &egrave; quella
+scritta nella pagina html
+</p>
+
+<hr>
+
+
+<h4>Soluzione: una linea</h4>
+
+<p>
+La singola linea orizzontale ad altezza
+<tt>y</tt> si disegna con:
+
+<pre>
+  g.drawLine(0,y,500,y);
+</pre>
+
+<hr>
+
+
+<h4>Soluzione completa</h4>
+
+<p>
+L'istruzione di disegno di una singola
+linea va ripetuta per <tt>y</tt> che
+va da <tt>0</tt> a <tt>500</tt>
+</p>
+
+<pre>
+import java.applet.*;
+import java.awt.*;
+
+public class Linee extends Applet {
+  public void paint(Graphics g) {
+    int y;
+
+    for(y=0; y&lt;=500; y=y+20)
+      g.drawLine(0,y,500,y);
+  }
+}
+</pre>
+
+<p>
+Non dimenticate di scrivere il
+file <tt>Linee.html</tt>!
+</p>
+
+<hr>
+
+
+<h4>Disegnare oggetti</h4>
+
+<p>
+Abbiamo visto punti e rettangoli.
+</p>
+
+<p>
+Abbiamo altri oggetti, che per&ograve;
+hanno coordinate reali.
+</p>
+
+<p>
+Li vedremo un'altra volta.
+</p>
+
+<hr>
+
+
+<h4>Esercizio: disegnare dei quadrati</h4>
+
+<p>
+Realizzare il seguente disegno: i quadrati
+hanno lato 10 e distanza 10 l'uno dall'altro.
+</p>
+
+<pre>
+  g.drawRect(x, y, larghezza, altezza);
+</pre>
+
+<img src="rettangoli.gif">
+
+<hr>
+
+
+<h4>Soluzione: un rettangolo</h4>
+
+<p>
+Tutti i rettangoli hanno gli stessi lati:
+</p>
+
+<pre>
+        g.drawRect(x,y,10,10);
+</pre>
+
+<p>
+Disegna un rettangolo con lati 10 e
+punto in alto a destra in posizione
+<tt>x,y</tt>
+</p>
+
+<hr>
+
+
+<h4>Soluzione: una fila di rettangoli</h4>
+
+<p>
+Voglio ripetere il disegno del rettangolo
+per <tt>x=0,20,40,...500</tt>
+</p>
+
+<pre>
+    for(x=0; x&lt;500; x=x+20) 
+      g.drawRect(x,y,10,10);
+</pre>
+
+<p>
+Disegna la fila di rettangoli all'altezza
+data da <tt>y</tt>
+</p>
+
+<hr>
+
+
+<h4>Soluzione: programma completo</h4>
+
+<p>
+Devo ripetere il disegno per
+<tt>y=0,20,40,...,500</tt>
+</p>
+
+<pre>
+import java.applet.*;
+import java.awt.*;
+
+public class Rettangoli extends Applet {
+  public void paint(Graphics g) {
+    int x, y;
+
+    for(y=0; y&lt;500; y=y+20)
+      for(x=0; x&lt;500; x=x+20) 
+        g.drawRect(x,y,10,10);
+  }
+}
+</pre>
+
+<hr>
+
+
+<h4>Ellissi</h4>
+
+<pre>
+  g.drawOval(x,y,w,h)
+</pre>
+
+<p>
+Disegna l'ellisse inscritta nel rettangolo.
+</p>
+
+<hr>
+
+
+<h4>Esercizio</h4>
+
+<p>
+Disegnare il cerchio con centro in coordinate
+<tt>(100,100)</tt> e raggio <tt>40</tt>.
+</p>
+
+<img src="cerchio.gif">
+
+<hr>
+
+
+<h4>Soluzione sbagliata</h4>
+
+<p>
+Non posso usare le coordinate del centro come
+primi due argomenti di <tt>drawOval</tt>
+</p>
+
+<pre>
+  // sbagliato!
+
+  g.drawRect(100,100,40,40);
+</pre>
+
+<hr>
+
+
+<h4>Soluzione</h4>
+
+<p>
+Il rettangolo in cui il centro &egrave;
+inscritto ha coordinate
+(x_centro - raggio, y_centro -raggio)
+</p>
+
+<p>
+I lati del rettangolo sono 2*raggio.
+</p>
+
+<pre>
+
+</pre>
+
+
+
+
+<h4>Olimpiadi</h4>
+
+<p>
+Fare questo disegno:
+</p>
+
+<img src="olimpiadi.gif">
+
+<hr>
+
+
+<h4>Soluzione</h4>
+
+<pre>
+import java.awt.*;
+
+public class Olimpiadi extends java.applet.Applet {
+  public void paint(Graphics g) {
+    /* i tre cerchi di sopra */
+    g.drawOval(0, 0, 20, 20);
+    g.drawOval(20, 0, 20, 20);
+    g.drawOval(40, 0, 20, 20);
+
+    /* i tre cerchi di sotto */
+    g.drawOval(10, 10, 20, 20);
+    g.drawOval(30, 10, 20, 20);
+  }
+}
+</pre>
+
+</body>
+</html>
+
+
+

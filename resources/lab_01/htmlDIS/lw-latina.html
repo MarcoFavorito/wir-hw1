@@ -1,0 +1,485 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+<title>Linguaggi per il web - Ingegneria Informatica - Latina
+</title>
+<link rel="stylesheet" href="stilenettuno.css" type="text/css"/>
+<link rel="shortcut icon" href="./g.png"/>
+</head>
+
+<body>
+
+<h4>
+Insegnamento di <em>Linguaggi per il web</em>,
+Prof. <a href="http://www.dis.uniroma1.it/~marte/homepage/teachingmt.shtml">Marco
+Temperini</a>&nbsp;
+<br/>
+corso di laurea in Ingegneria Informatica
+</h4>
+
+<table  id="INDEX" class="tabellaIniziale" cellspacing="4" cellpadding="3"
+ summary="informazioni di base: orari e luoghi">
+<caption>Orario</caption>
+<tr>
+   <th>lezioni <br />(aula 108, sede Via Le Corbousier)</th>
+   <td>marted&igrave;, 13:30-16:00
+   </td>
+</tr>
+<tr>
+   <th>esercitazioni <br />(Laboratorio Via Le Corbousier)</th>
+   <td>gioved&igrave;, 13:30-16:00</td>
+</tr>
+
+<!--
+<tr>
+<td colspan="2" style="color: blue; background-color: silver; text-align: justify;
+font-style: oblique; font-size: 80%; font-weight: bold;
+margin: 2%; border: solid thick; border-color: fuchsia;
+border-style: ridge">
+le lezioni, per l'a.a. 2003-04, sono terminate a giugno 2004
+ </td>
+</tr>
+-->
+</table>
+
+
+
+<!--
+<p style="color: blue; background-color: silver; text-align: justify;
+font-style: oblique; font-size: 80%; font-weight: bold;
+margin: 2%; border: solid thick; border-color: fuchsia;
+border-style: ridge">
+le lezioni, per l'a.a. 2003-04, sono terminate a giugno 2004
+<br />
+link verranno aggiunti, per il materiale didattico (a corredo delle lezioni
+ed esercitazioni), per la gestione degli esami e per le informazioni aggiuntive.
+</p>
+-->
+
+
+
+<table class="menu" cellspacing="4" cellpadding="3" border="1" summary="menu">
+<tr>
+<td class="interazione">Ricevimento studenti a Latina (sede universita' Pontina)
+<ul style="text-align: left">
+<li>durante il periodo di lezione - marted&igrave;, 16:15-17:15 (se siete tanti rimango di piu')</li>
+<li>dopo la fine del corso - vedi area esami</li>
+<li>ma per favore controllate sempre i <a href="../messaggi.html">messaggi</a> ...</li>
+</ul>
+</td>
+   <td class="informazioni evidente" rowspan="3"><a href="../messaggi.html">MESSAGGI</a></td>
+</tr>
+<tr>
+   <td class="strumentiDiLavoro"><a href="#supporto">Supporto al corso</a></td>
+</tr>
+<tr>
+   <td class="esami"><a href="#programma">Programma, ... esami</a></td>
+</tr>
+<tr >
+   <td colspan="2" class="interazione">Tutore<br/>
+   Prof. <a href="mailto:pa5019@panservice.it">Ugo Vitti</a>
+   </td>
+</tr>
+</table>
+
+<hr />
+<h2 id="supporto">
+Supporto al corso
+</h2>
+
+<table border="1" cellspacing="3" cellpadding="4" style="background: rgb(204, 204, 153);">
+ <tr>
+   <td class="strumentiDiLavoro" colspan="2" style="text-align: left">
+     <h3>testi consigliati</h3>
+      <ul>
+        <li><strong>documentazione su specifica XHTML, CSS, XML della W3C</strong>: le cose principali sono anche disponibili qui; e' pero' consigliabile andare sul sito
+        www.w3c.org: li' c'e' la documentazione originale (e tanta) e ci sono anche pagine dalle quali si puo' sottrarre qualche soluzione per fare le proprie pagine e i propri stili (riusare non e' reato!)
+        </li>
+        <li>S.Stobart, M.Vassileiou - PHP e MySQL Guida completa - apogeo;
+        (su PHP con MySQLl)</li>
+        <li>Carey, Blatnik - Guida a XML - McGraw Hill;
+        (su XML con XHTML e CSS)</li>
+        <li>un testo generico, alternativo ai due indicati sopra potrebbe essere
+        Deitel - Internet and WWW How to program - pearson;
+        (pero' non risulta ancora uscito in italiano)</li>
+        <li>libri consigliabili ma forse troppo particolareggiati e molto meno "didattici" sono quelli della WROX (i libroni rossi ...),
+        editi tramite la WILEY: "Beginning XML" potrebbe essere un'alternativa al Carey listato sopra.
+        C'e' un libro analogo su PHP5 (inutile prendere quello su PHP4).</li>
+      </ul>
+   </td>
+ </tr>
+
+ <tr>
+  <td class="strumentiDiLavoro" style="width: 65%; text-align: left; vertical-align: top">
+  <h3>esercitazioni</h3>
+  La directory <a href="lw-latina/">lw-latina</a>
+  contiene le varie sottodirectory di interesse:
+  <ul>
+   <li>XHTML.CSS contiene materiale relativo alle lezioni su XHTML e CSS</li>
+   <li>CGI e' la directory che funge da cgi-local-bin in laboratorio
+   (e, come suggerimento, anche sul vostro pc);
+   contiene materiale relativo alle slide su cgi programming</li>
+   <li>PHP contiene materiale relativo alle lezioni su PHP (eh si')</li>
+   <li>il contenuto della directory XML e' da indovinare (senza guardare prima)</li>
+  </ul>
+  </td>
+<td class="informazioni" style="text-align: left; vertical-align: top">
+   <h5>in laboratorio:</h5>
+<!--
+<dl style="font-family: Time New Roman, serif">
+     <dt>directory <tt>C:\homeapache\studente</tt></dt>
+     <dd>viene usata dallo studente per esercitarsi;
+     (ad ogni esercitazione, ci viene scaricato (magari dallo studente stesso) il
+     materiale di esempio usato a lezione.
+         </dd>
+     <dt>directory <tt>D:\corso marte</tt></dt>
+     <dd>contiene software come nella directory pubblica softlatina.
+     </dd>
+    </dl>
+-->
+</td>
+ </tr>
+
+ <tr>
+  <td class="informazioni" style="text-align: left; vertical-align: top">
+  <h3>lezioni</h3>
+  <ol>
+   <li>introduzione: linguaggi di markup
+       <ul>
+       <li>cenni sul protocollo http: <a href="lw-latina/lw-lezioni/">lweb1.pdf</a></li>
+       <li>XHTML: HyperText Markup Language in XML:
+           <a href="lw-latina/lw-lezioni/">lweb2.pdf</a></li>
+       <li>presentazione di documenti web con le Cascading Style Sheet:
+           <a href="lw-latina/lw-lezioni/">lweb.3.pdf</a></li>
+       </ul>
+   </li>
+   <li>programmazione di applicazioni per il web
+       <ul>
+        <li>introduzione alla programmazione cgi:
+           <a href="lw-latina/lw-lezioni/">lweb.4.pdf</a></li>
+        <li>introduzione alla programmazione in php:
+           <a href="lw-latina/lw-lezioni/">lweb.5.pdf</a></li>
+        <li>Soluzioni al problema della mancanza di stato in http;
+           programmazione in php con uso di MySQL:
+           <a href="lw-latina/lw-lezioni/">lweb.6.pdf</a></li>
+       </ul>
+   </li>
+   <li>Introduzione all'eXtensible Markup Language
+       <ul>
+        <li>Sintassi base di XML, presentazione di documenti XML (con CSS),
+            struttura di documenti XML (DTD):
+           <a href="lw-latina/lw-lezioni/">lweb.7.pdf</a></li>
+        <li>XML Schema, programmazione di applicazioni XML con DOM e SAX:
+           <a href="lw-latina/lw-lezioni/">lweb.8.pdf</a></li>
+       </ul>
+   </li>
+  </ol>
+  </td>
+
+  <td class="strumentiDiLavoro" style="text-align: left; vertical-align: top">
+  <h3>softlatina</h3>
+  <p>
+  directory con del software di interesse per il corso (principalmente
+  pero' tutto e' scaricabile
+  direttamente dai vari siti distributori (vedi note
+  su "risorse" nelle lezioni):
+  <a href="../../softlatina/">softlatina</a>
+  </p>
+  </td>
+ </tr>
+</table>
+
+
+
+<hr/>
+<table class="ritorno">
+ <tr>
+   <th><a href="#INDEX">Torna all'indice</a></th>
+ </tr>
+</table>
+<hr/>
+
+
+
+<h2 id="ricevimento">
+Date ricevimento studenti
+</h2>
+
+<table border="1" cellspacing="3" cellpadding="4" style="background: rgb(204, 204, 153);">
+<tr>
+   <td style="text-align: left">
+    Ricevimento studenti svolto dal docente o dal tutore,
+    in laboratorio o in ufficio, al di fuori del periodo di lezione.
+<br />
+<div style="color: blue; font-weight: bold">
+chi vuole venire, pero', dovrebbe gentilmente avvertire, via
+posta elettronica entro il giorno prima, il docente previsto per il ricevimento:
+se nessuno dice che viene, l'incontro potrebbe essere annullato.
+</div>
+
+<ul>
+ <li> 1 luglio 2004 (16:00 Temperini)
+ <li> 5 luglio 2004 (11:00-14:00 + 14:30-18:00 Vitti)
+ <li> 8 luglio 2004 (11:00 -14:00 Vitti)
+ <li> 15 luglio 2004 (16:30 Temperini)
+ <li> 22 luglio 2004 (14:30 Temperini)
+ <li> 2 agosto 2004 (10:00 Temperini)
+ <li> 31 agosto 2004 (10:00 Temperini)
+ <li> 7 settembre 2004 (10:00 Temperini)
+ <li> 14 settembre 2004 (10:00 Temperini)
+ <li> 28 settembre 2004 (15:30 Temperini)</li>
+ <li> 5 ottobre 2004 (15:00 Temperini)</li>
+ <li> 13 ottobre 2004 (15:00 Temperini)</li>
+ <li> 19 ottobre 2004 (16:00 Temperini)</li>
+ <li> 25 ottobre 2004 (15:00 Temperini)</li>
+ <li> 3 novembre 2004 (16:30 Temperini)</li>
+ <li> 10 novembre 2004 (15:30 Temperini)</li>
+ <li> 15 dicembre 2004 (15:30 Temperini)</li>
+ <li> 22 dicembre 2004 (15:30 Temperini)</li>
+ <li> 12 gennaio 2005 (15:00 Vitti)</li>
+ <li> 17 gennaio 2005 (15:00 Temperini)</li>
+ <li> 20 gennaio 2005 (16:30 Temperini)</li>
+ <li> 25 gennaio 2005 (16:00 Temperini)</li>
+ <li> 1 febbraio 2005 (15:00 - Temperini)</li>
+ <li> 8 febbraio 2005 (15:30 - Temperini)</li>
+ <li> 25 febbraio 2005 (15:30 - Temperini)</li>
+ <li> 4 marzo 2005 (15:30 - Temperini)</li>
+ <li> 14 marzo 2005 (16:30 - Temperini)</li>
+ <li style="color: maroon"> 18 marzo 2005 (16:30 - Temperini)</li>
+ <li style="color: purple"> 23 marzo 2005 (15:00 - Temperini)</li>
+ <li> 05 aprile 2005 (15:30 - Temperini)</li>
+ <li> 11 aprile 2005 (10:30 - Temperini)</li>
+ <li> 19 aprile 2005 (16:30 - Temperini)</li>
+</ul>
+</DIV>
+
+   </td>
+ </tr>
+
+</table>
+
+
+<hr/>
+<table class="ritorno">
+ <tr>
+   <th><a href="#INDEX">Torna all'indice</a></th>
+ </tr>
+</table>
+<hr/>
+
+<h2 id="programma">
+Programma, ... esami
+</h2>
+
+<table border="1" cellspacing="3" cellpadding="4" style="background: rgb(204, 204, 153);">
+ <tr>
+  <td class="informazioni" style="text-align: left">
+    <h3>Programma: vedi lezioni</h3>
+  </td>
+ </tr>
+
+ <tr>
+  <td class="esami" style="text-align: left">
+    <h3>Tesina</h3>
+Per partecipare ad un esame bisogna aver fatto e consegnato in tempo una tesina.
+
+<p>
+La tesina consiste nella definizione e implementazione di un progetto software,
+in cui vengano usati in modo consistente aspetti rilevanti degli argomenti
+affrontati a lezione e approfonditi sui testi.
+</p>
+<p>
+Ogni tesina viene assegnata ad un gruppo di studenti (2 o 3 persone), che poi dovranno
+consegnare il progetto entro una certa data, dipendente dalla data dell'esame.
+</p>
+
+<p>
+Altre info durante lo svolgimento del corso</p>
+
+<!--
+<p>
+Il progetto puo' essere consegnato di persona al docente, oppure inviato via email (a docente e tutore).
+</p>
+<p>
+Tutto sommato l'esperienza insegna che una consegna di persona al docente permette al groppo di presentare il proprio lavoro, e ai docenti di comprenderlo, in modo piu' completo.
+</p>
+
+Cosa si deve consegnare?
+<ol>
+ <li>Una directory contenente i file sviluppati per il progetto,</li>
+ <li>un file di istruzioni sulla istallazione e sull'uso del software prodotto,</li>
+ <li>Un documento che discuta il lavoro svolto, spiegando la definizione del progetto (a cosa e a chi serve), la lista delle funzionalita' messe a disposizione (con commenti ed esempi) e le strutture dati gestite mediante XML.</li>
+ <li>il listato dei file prodotti, in un unico file stampabile.</li>
+</ol>
+
+<p>NB<br />
+e' bene includere anche uno script php che crei la base di dati necessaria e le tabelle relative, con dati di esempio (un utente admin, uno non admin ...).
+</p>
+<p>il nome della base di dati dovrebbe essere il piu' possibile univoco, ad esempio composto dai cognomi dei partecipanti al gruppo (o a partire da essi).
+</p>
+<p>l'utente da usare per gli accessi alla base di dati sara' quello usato durante il corso (archer, con password archer).
+</p>
+<p>
+Anche se e' ovvio e accettabile che ogni partecipante al gruppo abbia lavorato in particolare ad alcuni aspetti del progetto, ciascun componente
+del gruppo deve conoscere tutto il progetto, in modo da poterne discutere
+la filosofia di progettazione e i dettagli implementativi.
+</p>
+</td>
+-->
+</tr>
+
+ <tr>
+<!--
+<td class="informazioni" style="text-align: left">
+    <h3>Prodotti individuali</h3>
+  Durante lo svolgimento del corso, ogni studente puo' decidere di inviare al docente
+  alcuni "prodotti individuali".
+
+  SI tratta in sostanza degli esercizi piu' avanzati
+  tra quelli eseguiti dallo studente durante il corso.
+  <br />
+  <strong>Non sono obbligatori</strong>,
+  ma uno studente puo' essere interessato ad inviare
+  uno di tali esercizi al docente (via email) a testimonianza del proprio impegno e con
+  l'intesa che i dettagli della soluzione proposta potrebbero essere discussi, ad esempio
+  durante la parte orale dell'esame o a ricevimento studenti.
+  <br />
+    Ciascun prodotto individuale fa riferimento esplicito ad una delle
+    tre parti del corso (XHTML-CSS, PHP-MYSQL, XML): quindi si possono
+    (eventualmente) inviare al docente da
+    0 a 3 prodotti.
+  <br />
+    Ciascun prodotto viene inviato come <strong>file .zip</strong>, contenente i file
+   con il codice, con eventuali dati di prova e un file <strong>readme.txt</strong>
+    che contenga
+    una discussione e spiegazione di quel che si e' fatto.
+    <br />
+    Ciascun prodotto inviato deve essere provato per funzionare nella configurazione
+    di directory del laboratorio. Il docente si aspetta di unzippare il file
+    inviato, seguire chiare e brevi istruzioni sul posizionamento di eventuali script e
+    far girare il prodotto, senza colpo ferire.
+    Si usi <strong>cgi-local-bin</strong> come repository cgi.
+  </td>
+-->
+</tr>
+
+
+
+ <tr>
+  <td class="esami" style="text-align: left">
+  <h3> Esami, a.a. 2003-2004</h3>
+L'idea e' di svolgere uno scritto di circa un'ora, durante il quale si risponde
+individualmente a domande riguardanti la tesina.
+Durante questa prova si ha a disposizione solo il listato della tesina, che e' stato
+precedentemente consegnato.
+
+<br />
+L'idea e' anche di svolgere la discussione orale della prova scritta nel giorno stesso; se cio' non fosse, la convocazione per la prova orale apparirebbe nel riquadro dedicato all'esame.
+
+<table cellspacing="10" cellpadding="6">
+<tr>
+<td style="border: solid thick green;">
+    <div style="text-align: left;">
+    14 luglio 2004, ore 10:00
+    <br />
+    Sede: Aula 108, sede Via Le Corbousier
+    </div>
+    <p>
+    Scadenza per <strong>consegnare la tesina</strong>
+    e <strong>iscriversi</strong>: <br />07/07/04
+    </p>
+</div>
+</td>
+<td style="border: solid thick green;">
+    <div style="text-align: left;">
+    23 luglio 2004, ore 10:00
+    <br />
+    Sede: Aula 108, sede Via Le Corbousier
+    </div>
+    <p>
+    Scadenza per <strong>consegnare la tesina</strong>
+    e <strong>iscriversi</strong>: <br />19/07/04
+    </p>
+<!--	<a href="varie/iscrLWEBlug.2.04.html">PRENOTAZIONI ESAME</a>
+    <br />
+	<a href="varie/oraliLWEBlug.2.04.html">CONVOCAZIONE ORALI</a>
+-->
+</td>
+</tr>
+
+<tr>
+<td style="border: solid thick green;">
+    <div style="text-align: left;">
+    22 settembre 2004, ore 10:00
+    <br />
+    Sede: Aula 108, sede Via Le Corbousier
+    </div>
+    <p>
+    Scadenza per <strong>consegnare la tesina</strong>
+    e <strong>iscriversi</strong>: <br />15/09/04
+    </p>
+<!--
+<a href="varie/iscrLWEB.set.04.html">PRENOTAZIONI ESAME</a>
+    <br />
+
+<a href="varie/oraliLWEB.set.04.html">CONVOCAZIONE ORALI</a>
+-->
+</td>
+<td style="border: solid thick green;">
+    <div style="text-align: left;">
+    20 gennaio 2005, ore 10:00
+    <br />
+    Sede: Aula 108, sede Via Le Corbousier
+    </div>
+    <p>
+    Scadenza per <strong>consegnare la tesina</strong>:
+    <br />14/01/05
+    <br />(chi consegna la tesina e' automaticamente iscritto/a)
+    </p>
+<!--
+<a href="varie/iscrLWEB.set.04.html">PRENOTAZIONI ESAME</a>
+    <br />
+
+<a href="varie/oraliLWEB.set.04.html">CONVOCAZIONE ORALI</a>
+-->
+</td>
+</tr>
+</table>
+
+
+  </td>
+ </tr>
+
+ <tr>
+  <td style="font-size: 85%">
+  </td>
+ </tr>
+
+ <tr>
+  <td style="font-size: 85%">
+   <a href="fond-chim/varie/amusement.html">distrazioni</a> (non verranno
+   chieste all'esame)
+  </td>
+ </tr>
+</table>
+
+
+<hr/>
+<table class="ritorno">
+ <tr>
+   <th><a href="#INDEX">Torna all'indice</a></th>
+ </tr>
+</table>
+<hr/>
+
+<address style="font-size: 60%">
+<a href="mailto:marte@dis.uniroma1.it">marte@dis.uniroma1.it</a>
+<br />
+>= 25/04/2005
+</address>
+
+</body>
+</html>

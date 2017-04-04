@@ -1,0 +1,275 @@
+<!doctype html public "-//w3c//dtd html 4.0 transitional//en">
+<html>
+<head>
+   <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <meta name="Generator" content="Microsoft Word 98">
+   <meta name="GENERATOR" content="Mozilla/4.7 [en] (X11; I; SunOS 5.6 sun4u) [Netscape]">
+   <title>esercitazione15/3</title>
+</head>
+<body text="#000000" bgcolor="#FFFFFF" link="#0000EE" vlink="#551A8B" alink="#FF0000">
+
+<center>
+<h1>
+<b><u><font face="New York"><font color="#FF0000"><font size=+4>Settima
+esercitazione autoguidata</font></font></font></u></b></h1></center>
+<b><font face="New York"><font size=+1></font></font></b>
+<p><br><b><font face="New York"><font size=+1></font></font></b>
+<p>Prima di iniziare conviene decidere in quale directory di lavoro si
+intende far risiedere i propr&icirc; file.
+<br>Ci&ograve; &egrave; essenziale perch&eacute; il TP cercher&agrave;
+i file da usare sempre nella medesima directory (quella su
+<br>cui &egrave; posizionato). Ad esempio si potrebbe creare la directory
+A:\LISTE (con mkdir A:\LISTE) e
+<br>posizionare il TP su questa directory (con Change dir, oppure con Dos
+shell/cd .../exit).
+<p>Tutti i file menzionati in questo esecizio sono disponibili nelle directory
+pubbliche degli autori.
+<p>Se si accede dal laboratorio il percorso &egrave;, per questa esercitazione,
+<ul>
+<li>
+<font face="Courier">E:\program\fond\temperin\AUTOGUID\SETTIMA </font><font face="Times">per
+i chimici, elettrici, materialisti e nucleari</font></li>
+
+<li>
+<font face="Courier">E:\program\fond\daloisi\AUTOGUID\SETTIMA </font>per
+gli elettronici</li>
+</ul>
+Si pu&ograve; accedere via internet collegandosi alla pagina del corso
+di interesse, seguendo il percorso per
+<br>le esercitazioni autoguidate.
+<p>In queste directory ci sono numerosi file di "definizioni" (TIPOLIST.DEF,
+contenente le definizioni
+<br>dei tipi occorrenti, CREALIST.DEF, contenente varie procedure di costruzione
+di lista, STAMPALI.DEF ...).
+<p>I programmi soluzione dei problemi proposti sono scritti in file con
+suffisso .PAS. Ove occorre,
+<br>all'interno di questi file vengono inclusi file di definizioni.
+<p>Prima di eseguire l'esercitazione conviene copiare i file sopra menzionati
+sul proprio dischetto
+<br>&nbsp;
+<p><b><i><font face="Helvetica"><font color="#3366FF"><font size=+3>PUNTATORI</font></font></font></i></b>
+<p>A titolo di ricapitolazione sui puntatori sono gi&agrave; pronti due
+programmi, nei file PUNT1.PAS e PUNT2.PAS.
+<p>Qui si usano puntatori a locazioni intere.
+<p>Eseguire i programmi secondo le modalit&agrave; (finestre visibili e
+watches) in essi indicate.
+<br>&nbsp;
+<br>&nbsp;<font face="Helvetica"></font>
+<p><b><i><font face="Helvetica"><font color="#3366FF"><font size=+3>LISTE
+RAPPRESENTATE MEDIANTE RECORD E PUNTATORI</font></font></font></i></b><font face="Times"></font>
+<p>Ecco una serie di utili esercizi ....
+<ul>
+<li>
+Scrivere un programma che legge una lista di n interi (n e gli interi sono
+forniti in input da tastiera) per poi stamparla. Ripetere l'esercizio usando
+le diverse tecniche di costruzione della lista (con inserimento "in testa",
+con inserimento "in coda" senza record generatore, con record generatore).</li>
+
+<ul>
+<li>
+Soluzione in LISTA1.PAS.</li>
+
+<ol>&nbsp;</ol>
+</ul>
+
+<li>
+Modificare il programma precedente in modo da verificare l'occupazione
+di memoria al termine del programma. Stampare la quantit&agrave; di memoria
+allocata durante il programma al momento della sua terminazione (uso di
+memavail).</li>
+
+<ul>
+<li>
+Soluzione in LISTA2.PAS.</li>
+
+<ol>&nbsp;
+<br>&nbsp;</ol>
+</ul>
+
+<li>
+Modificare il programma precedente in modo che la lista creata venga deallocata
+prima della terminazione del programma.</li>
+
+<ul>
+<li>
+Soluzione in LISTA3.PAS.</li>
+</ul>
+</ul>
+
+<ul>
+<li>
+Scrivere un programma che permetta di gestire una lista ordinata di interi
+(inizialmente vuota), mediante operazioni di</li>
+
+<br>(I) inserimento ordinato di un nuovo elemento;
+<br>(E) eliminazione di un elemento e
+<br>(R) stampa della lista a partire da un dato elemento.
+<br>Si immagini che l'opzione 'F' faccia terminare il programma e che la
+lista venga stampata su video dopo ogni operazione di inserimento o eliminazione.
+<br>Per risolvere il problema e scrivere il file corrispondente, provare
+a sfruttare i file di definizioni STAMPALI.DEF, DEALLOCA.DEF, RICERCA.DEF
+e INSELIM.DEF
+contenuti nella directory dell'esercitazione. Il contenuto
+di questi file pu&ograve; essere utilizzato includendo tali file in quello
+che contiene il programma principale. Secondo le possibilit&agrave; illustrate
+nell'esercitazione del capitolo 7.
+<dir>&nbsp;
+<li>
+Soluzione in LISTA4.PAS (che include per l'appunto STAMPALI.DEF, DEALLOCA.DEF,
+RICERCA.DEF e INSELIM.DEF).</li>
+
+<br>&nbsp;
+<p>&nbsp;</dir>
+
+<li>
+Scrivere una procedura CREALISTADAFILE che, ricevendo per parametri un
+puntatore inizio e un file testo finput, costruisca una lista di interi
+avente inizio come puntatore iniziale e contenente i dati letti dal file.</li>
+
+<br>La lista prodotta deve essere ordinata.
+<p>Si assuma che il file contenga una sequenza non necessariamente ordinata
+di numeri interi terminata da -9999 (quest'ultimo da non includere nella
+lista).
+<p>Per questo esercizio non c'&egrave; una soluzione esplicita nella directory
+pubblica. Una procedura analoga &egrave; per&ograve; la CreaListaOrdinata
+contenuta in CREALIST.DEF. In prima istanza, si potrebbe definire CREALISTADAFILE
+come una semplice procedura che prende i parametri e fa una chiamata a
+CreaListaOrdinata. (Infatti la definizione completa di una tale procedura
+&egrave; richiesta nel prossimo esercizio).
+<ol>
+<ol>&nbsp;</ol>
+</ol>
+La procedura pu&ograve; essere provata inserendola in un programma gi&agrave;
+fatto (ad esempio, il programma del punto precedente potrebbe essere cambiato
+in modo da mettere a disposizione anche una opzione (C) che fa costruire
+una lista a partire da un file di dati. Il file di dati potrebbe essere
+di nome prefissato nel programma: non &egrave; elegante ma &egrave; pi&ugrave;
+facile da fare ....)
+<br>&nbsp;</ul>
+
+<ul>
+<li>
+Scrivere da soli la procedura CreaListaOrdinata menzionata al punto precedente.
+Chiamarla CreaListaOrdinata2.</li>
+
+<br>Questa procedura riceve per parametri un puntatore
+inizio e un file
+testo finput e costruisce una lista ORDINATA avente inizio come puntatore
+iniziale e contenente i dati letti dal file.
+<p>Si assuma che il file contenga una sequenza di numeri interi (non necessariamente
+ordinata) terminata da -9999 (quest'ultimo da non includere nella lista).
+<dir>&nbsp;</dir>
+<b>Suggerimento</b>: costruire la lista inserendovi un elemento alla volta
+mediante una procedura di inserimento ordinato.
+<dir>&nbsp;
+<li>
+Soluzione in CREALIST.DEF.</li>
+</dir>
+</ul>
+<b><i></i></b><b><i></i></b>
+<p><b><i><font color="#3366FF"><font size=+3>FUSIONE DI LISTE\</font></font></i></b>
+<br>La fusione di due liste in una terza lista, &egrave; un'operazione
+molto simile alla fusione di due vettori. Stavolta, dato che lavoriamo
+con strutture dati ad allocazione dinamica, non dobbiamo preoccuparci della
+dimensione delle due sequenze da fondere e di quella della terza sequenza.
+<br>&nbsp;
+<p>Scrivere un programma in cui
+<ul>
+<li>
+vengono costruite e stampate due liste ordinate di interi (puntae dai puntatori
+iniziali LISTA1 e LISTA2;</li>
+
+<li>
+le due liste vengono fuse costruendo una nuova lista puntata da LISTA3</li>
+
+<li>
+la terza lista viene stampata</li>
+
+<li>
+le liste costruite vengono deallocate.</li>
+</ul>
+Soluzione in FUSIONE1.PAS.
+<br>&nbsp;
+<br>&nbsp;
+<p>N.B.
+<p>la terza lista va costruita mediante una procedura
+<p>FusioneListe (r, s: TIPOLISTA; var t: TIPOLISTA);
+<p>che costruisce una lista puntata da t, fondendo le liste puntate da
+r ed s.
+<p>Si assuma di costruire le due liste ordinate usando i dati contenuti
+in due file "LISTA1.DAT" e "LISTA2.DAT" (che lo studente &egrave; invitato
+a produrre).
+<br>I dati nei file NON sono disposti ordinatamente.
+<br>In ogni file di dati il numero -9999 termina la sequenza di interi
+(e non va incluso nella lista prodotta).
+<p><b>Esempio:</b>
+<p><img SRC="Image1.gif" height=154 width=482>
+<br>&nbsp;
+<p>Come suggerimento, ecco uno schema dell'algoritmo di fusione.
+<dir><b><font face="Courier New,Courier">procedure </font></b><font face="Courier New,Courier">FusioneListe
+(r, s: TIPOLISTA; var t: TIPOLISTA);</font><font face="Courier New,Courier"></font>
+<p><font face="Courier New,Courier"><b>var </b>pgen, ultimo: PUNT;</font><font face="Courier New,Courier"></font>
+<p><b><font face="Courier New,Courier">begin</font></b><font face="Courier New,Courier"></font>
+<p><font face="Courier New,Courier">new(pgen); {creazione record generatore
+per t}</font><font face="Courier New,Courier"></font>
+<p><font face="Courier New,Courier">ultimo := pgen;</font><font face="Courier New,Courier"></font>
+<p><font face="Courier New,Courier"><b>while (</b>r &lt;> nil) and (s &lt;>
+nil)<b> do</b></font><font face="Courier New,Courier"></font>
+<p><b><font face="Courier New,Courier">begin</font></b>
+<br><font face="Courier New,Courier"></font>&nbsp;
+<dir>
+<dir>
+<dir>
+<dir>
+<dir><font face="Courier New,Courier"><b>{</b>se il nodo in cima alla prima
+lista (r^.info) &egrave; pi&ugrave;</font>
+<br><font face="Courier New,Courier">piccolo di quello in cima alla seconda
+lista (s^.info), aggiungiamo r^.info in coda alla lista t;</font>
+<br><font face="Courier New,Courier">poi spostiamo avanti il puntatore
+r (r:=r^.next)}</font>
+<br><font face="Courier New,Courier">{se invece &egrave; s^.dato il pi&ugrave;
+piccolo, allora aggiungiamo lui e poi s:=s^.next}</font></dir>
+</dir>
+</dir>
+</dir>
+</dir>
+<b><font face="Courier New,Courier">end;</font></b>
+<dir>
+<dir>
+<dir>
+<dir>
+<dir><font face="Courier New,Courier">{a questo punto una delle due liste
+e' finita, quindi dobbiamo solo</font>
+<br><font face="Courier New,Courier">-aggiungere alla lista t i dati contenuti
+nel resto della lista non finita;</font>
+<br><font face="Courier New,Courier">- chiudere la lista t;</font>
+<br><font face="Courier New,Courier">- assegnare t al primo nodo della
+lista ed eliminare il record generatore}</font></dir>
+</dir>
+</dir>
+</dir>
+</dir>
+</dir>
+
+<dir><b><font face="Courier New,Courier">end;</font></b>
+<br><b><i><font face="Helvetica"></font></i></b>&nbsp;</dir>
+<b><i><font face="Helvetica"><font color="#3366FF"><font size=+2>FUSIONE
+DISTRUTTIVA LISTE</font></font></font></i></b><b><i><font face="Helvetica"><font color="#3366FF"><font size=+2></font></font></font></i></b>
+<p><font face="Courier"><font size=-1>(</font></font>Soluzione in FUSIONE2.PAS.)
+<p>Scrivere una nuova versione del programma precedente, in cui la procedura
+di fusione costruisca la terza lista usando direttamente i record gi&agrave;
+allocati per la prima e la seconda. In questo modo 1) non vengono allocati
+nuovi record, oltre a quelli gi&agrave; allocati per le due liste di partenza;
+2) le liste di partenza vengono distrutte (perdono i propr&icirc; elementi)
+e i loro puntatori iniziali diventano
+nil.
+<dir>
+<dir>
+<dir>
+<dir><font face="Courier"></font>&nbsp;</dir>
+</dir>
+</dir>
+</dir>
+
+</body>
+</html>

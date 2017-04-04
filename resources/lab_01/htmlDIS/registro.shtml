@@ -1,0 +1,1831 @@
+<HTML>
+<HEAD>
+   <TITLE>Fondamenti di Informatica II: Registro  lezioni
+A.A. 2000-01</TITLE>
+</HEAD>
+<BODY BGCOLOR = "#FFFFFF">
+
+<CENTER>
+<B>Universit&agrave; di Roma "La Sapienza" -- Facolt&agrave; di Ingegneria</B>
+<H2>
+Registro del corso di<BR>
+
+     <A HREF="index.shtml">
+Fondamenti di Informatica II </A><BR>
+Prof. Marco Cadoli<BR>
+Corso di Laurea in Ingegneria Informatica<BR>
+Anno Accademico 2000-01
+</H2>
+
+</CENTER>
+
+<HR>
+
+<CENTER><U><B>Materiale didattico: testi di riferimento</B></U></CENTER>
+<P>
+<B>[T1]</B>  M. Cadoli, M. Lenzerini, P. Naggar, A. Schaerf,
+     <A HREF="http://www.dis.uniroma1.it/pub/clns">
+<I>Fondamenti della progettazione dei programmi: principi, tecniche e loro applicazione in C++</I></A>, Citt&agrave;StudiEdizioni, UTET Libreria, 1997. <BR>
+
+<B>[T2]</B>  M. Cadoli, M. Lenzerini, E. Panizzi, A. Schaerf,
+     <A HREF="http://www.dis.uniroma1.it/pub/clps">
+<I>Esercizi di progettazione dei programmi in C++</I></A>, 
+UTET Libreria, 1998. <BR>
+
+<B>[T3]</B>   C. Batini, L. Carlucci Aiello, M.
+Lenzerini, A. Miola, A. Marchetti  Spaccamela, <I>Fondamenti di
+Programmazione dei Calcolatori  Elettronici, </I>Franco Angeli,
+10a edizione, 1999.<BR>
+
+<B>[T4]</B>   D. M. Capper, <I>Introduzione a C++ per le scienze e 
+l'ingegneria</I>, McGraw-Hill, 1997. <BR>
+
+<B>[D]</B> M. Cadoli, G. De Giacomo, M. Schaerf,
+<I> Programmazione orientata agli oggetti e Java</I>, in
+M. Cadoli, M. Lenzerini, <EM> Dispensa del corso A.A. 2000/01.</EM>
+ In distribuzione presso la libreria <EM>L'UNIVERSITARIA</EM>,
+V.le Ippocrate 99, Roma.
+     <P>
+<HR>
+
+<CENTER>
+<H3><A NAME="INDICE">Indice delle lezioni</H3>
+</CENTER>
+<UL>
+<LI><A HREF="#PRIMA_PARTE"> PRIMA PARTE</A>
+<LI><A HREF="#SECONDA_PARTE"> SECONDA PARTE</A>
+<LI><A HREF="#TERZA_PARTE"> TERZA PARTE</A>
+     </BLOCKQUOTE>
+</UL>
+<P>
+
+<HR>
+<A NAME="PRIMA_PARTE"> 
+<HR>
+<CENTER>
+<H3>PRIMA PARTE</H3>                
+</CENTER>
+<HR>
+
+<B>Lezioni 1,2 -- 28/2/2001</B>
+<UL>
+  <LI> <B> Argomenti trattati</B>
+       [T1, Par. 3.1, 3.2, 3.3] [T4, Cap. 2 e Cap. 4]
+       <UL>
+         <LI> Presentazione del corso
+         <LI> Introduzione al C++
+         <LI> Struttura di un programma C++
+         <LI> Istruzioni, cicli, dichiarazioni, istruzioni di I/O
+       </UL>
+  <LI> <B> Programmi svolti</B>
+       <UL>
+         <LI> Stampa di un messaggio sullo schermo (file <A
+              HREF="programmi_c++/ciao.cpp"> ciao.cpp</A>)
+         <LI> Stampa della somma dei primi 10 numeri naturali (file <A
+              HREF="programmi_c++/somma.cpp"> somma.cpp</A>)
+         <LI> Stampa della somma di 10 numeri interi letti da tastiera
+              (file <A   HREF="programmi_c++/leggi.cpp"> leggi.cpp</A>)
+       </UL>
+
+  <LI><B>Cosa lo studente dovrebbe sapere dopo la lezione</B>:
+       <UL>
+         <LI> Struttura del corso e sue relazioni con altri corsi
+         <LI> Materiale didattico che si utilizza nel corso
+              (si veda anche il
+              <A HREF="programma.shtml"> programma
+              d'esame</A>)
+         <LI> Differenza tra programmazione e progettazione del
+              software
+         <LI> Scrivere e provare semplici programmi C++
+       </UL>
+  <LI> <B> Esercizi proposti</B>
+       <UL>
+         <LI> Riscrivere il programma della stampa della somma di 10
+              numeri interi letti da tastiera usando il costrutto
+              <B>while</B> al posto del <B>for</B>
+              (file <A   HREF="programmi_c++/leggi2.cpp"> leggi2.cpp</A>)
+         <LI> Scrivere un programma C++ per la stampa di una piramide
+              di asterischi (soluzione: file
+              <A   HREF="programmi_c++/piramide.cpp"> piramide.cpp</A>)
+       </UL>
+</UL>
+<HR>
+
+<B>Lezioni 3,4 -- 1/3/2001 </B>
+<UL>
+  <LI> <B> Argomenti trattati</B>
+       [T1, Par. 3.1, 3.2, 3.3] [T4, Cap. 2 e Cap. 4]
+       <UL>
+         <LI> Istruzioni di ciclo
+         <LI> Istruzioni condizionali
+         <LI> Funzioni in C++ (iterative e ricorsive)
+         <LI> Overloading di funzioni; argomenti di default
+         <LI> Modalit&agrave; del passaggio di parametri ad una
+              funzione
+         <LI> Esecuzione di funzioni ricorsive (si veda una
+              <A HREF="http://www.dis.uniroma1.it/~lenzerin/didattica/diplomafondii/ricorsione/main.html"> simulazione del calcolo
+              del fattoriale </A>)
+       </UL>
+  <LI> <B> Programmi svolti</B>
+       <UL>
+         <LI> Differenza fra <B>while</B> e <B>do ... while</B>
+              (file <A   HREF="programmi_c++/do-while.cpp">
+              do-while.cpp</A>)
+         <LI> Stampa del massimo fra due
+              numeri interi letti da tastiera
+              (file <A   HREF="programmi_c++/max.cpp"> max.cpp</A>)
+         <LI> Fattoriale iterativo (calcolato nel <B>main()</B>)
+              (file <A   HREF="programmi_c++/fatt.cpp"> fatt.cpp</A>)
+         <LI> Fattoriale iterativo (calcolato
+              mediante funzione apposita)
+              (file <A   HREF="http://www.dis.uniroma1.it/pub/clns/Cap03/fattoriale.cpp">
+              fattoriale.cpp</A>)
+         <LI> Fattoriale ricorsivo (calcolato
+              mediante funzione apposita)
+              (file <A   HREF="programmi_c++/fattric.cpp">
+              fattric.cpp</A>)
+         <LI> Passaggio di un parametro per valore e per riferimento
+              (file <A   HREF="programmi_c++/ordina.cpp">
+              ordina.cpp</A>)
+         <LI> Funzioni sovraccariche e con argomenti di default
+              (file <A   HREF="programmi_c++/overloading-funzioni.cpp">
+              overloading-funzioni.cpp</A>)
+       </UL>
+  <LI><B>Cosa lo studente dovrebbe sapere dopo la lezione</B>
+       <UL>
+         <LI> Scrivere qualsiasi programma C++ che non richieda
+              l'utilizzo di strutture di dati
+         <LI> Come strutturare un  programma C++ in pi&ugrave; funzioni
+       </UL>
+  <LI> <B> Esercizi proposti</B>
+       <UL>
+         <LI> Scrivere un programma C++ per lettura di n numeri
+              interi positivi da tastiera e calcolo del massimo
+              (soluzione: file <A   HREF="programmi_c++/printmax.cpp"> printmax.cpp</A>)
+         <LI> Scrivere un programma C++ per la stampa di una piramide
+              di numeri
+              (soluzione: file <A   HREF="programmi_c++/piramide2.cpp"> piramide2.cpp</A>)
+         <LI> Scrivere un programma per il calcolo della data del
+              giorno successivo
+              (soluzione: file <A   HREF="programmi_c++/data.cpp"> data.cpp</A>)
+         <LI> Scrivere un programma che legga da tastiera una
+              sequenza di 0 e 1, terminata da 2 e calcoli la
+              lunghezza della pi&ugrave; lunga sottosequenza di 0,
+              e la stampa.
+              <B>  ESEMPIO: 0 0 1 0 1 0 0 0 2: STAMPA 3 </B>
+       </UL>
+</UL>
+<HR>
+
+<B>Lezioni 5,6  -- 2/3/2001</B>
+<UL>
+  <LI> <B> Argomenti trattati</B> [T1, Par. 3.5] [T4, Cap. 5]
+       <UL>
+         <LI> Tipi di dato primitivi: interi, reali, caratteri
+         <LI> Booleani
+         <LI> Tipi enumerati
+         <LI> Conversione di tipo: automatica (coercion) ed esplicita (cast)
+         <LI> Differenza fra espressioni ed istruzioni
+         <LI> Tipo alias
+         <LI> Passaggio e restituzione di un valore per riferimento
+              (file <A   HREF="programmi_c++/alias.cpp">
+              alias.cpp</A>)
+         <LI> Puntatori
+       </UL>
+  <LI><B>Cosa lo studente dovrebbe sapere dopo la lezione</B>:
+       <UL>
+         <LI> Differenza tra alias e puntatore
+         <LI> Quando (e come) usare alias
+         <LI> Meccanismo di passaggio di parametro per
+              riferimento e ritorno per riferimento
+       </UL>
+  <LI> <B> Esercizi proposti</B>
+       <UL>
+         <LI> Scrivere funzione che modifica una data (giorno, mese ed anno)
+              in input, assegnandole quella di  n giorni dopo
+         <LI> Ripassare le principali strutture di dati
+              studiate nel corso di Fondamenti di Informatica I e loro
+              rappresentazioni: vettori, matrici, liste, pile, code, insiemi,
+              alberi binari [T3, Cap. 3]
+       </UL>
+</UL>
+<HR>
+
+<B> Lezioni 7,8   -- 5/3/2001 </B>
+<UL>
+  <LI> <B> Argomenti trattati</B> [T1, Par. 3.5] [T4, Cap. 5]
+       <UL>
+         <LI> Array statici  (mono e multidimensionali)
+         <LI> Array dinamici (mono e multidimensionali)
+         <LI> Passaggio di parametri vettore
+              (file <A
+              HREF="http://www.dis.uniroma1.it/pub/clns/Cap03/funzioni-vettore.cpp">
+              funzioni-vettore.cpp </A>)
+         <LI> Funzioni e procedure che manipolano array statici e
+              dinamici, a una o pi&ugrave; dimensioni (file <A   HREF="http://www.dis.uniroma1.it/pub/clns/Cap03/matrici.cpp">
+              matrici.cpp</A>)
+         <LI> Stringhe
+       </UL>
+  <LI><B>Cosa lo studente dovrebbe sapere dopo la lezione</B>:
+       <UL>
+         <LI> Quando (e come) usare un array statico o un array
+              dinamico  in C++
+       </UL>
+  <LI> <B> Esercizi proposti</B>
+       <UL>
+         <LI> Scrivere un programma che legga una frase, conclusa da
+              un punto, e determini se &egrave; una frase palindroma
+              oppure no. Vanno scritte due versioni del programma:
+              <UL>
+                <LI> la frase &egrave; lunga al massimo 100 lettere
+                     (soluzione: file <A   HREF="http://tibur.dis.uniroma1.it/program/fondii/laurea/esercitazioni/aa-97-98/2/palindromo.cpp"> palindromo.cpp</A>)
+                <LI> la frase &egrave; lunga al massimo n lettere, dove n
+                     &egrave; un numero letto da tastiera prima della frase
+                     (soluzione: file <A   HREF="http://tibur.dis.uniroma1.it/program/fondii/laurea/esercitazioni/aa-97-98/2/palindromo.cpp"> palindromo.cpp</A>)
+              </UL>
+         <LI> Tutti quelli di
+              <A HREF="http://www.dis.uniroma1.it/pub/clps/Cap01">
+              [T2, Cap. 1]</A>.
+       </UL>
+</UL>
+<HR>
+
+<B>Lezioni 9,10  -- 6/3/2001</B>
+<UL>
+  <LI> <B> Argomenti trattati</B> [T1, Par. 3.4, 3.6]
+       [T3, Cap. 6]
+       <UL>
+         <LI> Tipi di dato composti, <B>struct</B>
+         <LI> Record e puntatori
+         <LI> Creazione e stampa ricorsive di una lista
+              (file <A   HREF="http://www.dis.uniroma1.it/pub/clns/Cap03/liste.cpp">
+              liste.cpp</A>)
+       </UL>
+  <LI><B>Cosa lo studente dovrebbe sapere dopo la lezione</B>:
+       <UL>
+         <LI> Quando (e come) usare un array statico, un array
+              dinamico, o una lista in C++
+       </UL>
+  <LI> <B> Esercizi proposti</B>
+       <UL>
+         <LI> Scrivere procedure (funzioni che restituiscono void)
+              ricorsive per:
+              <UL>
+                <LI> creare una lista con inserimento in testa (gestione a
+                     pila)
+                <LI> stampare il contenuto di una lista
+                <LI> effettuare l'inversione di una lista
+              </UL>
+              Scrivere un opportuno programma per verificare le procedure.
+         <LI> Scrivere un'ulteriore versione del programma che legge una frase,
+              conclusa da
+              un punto, e determina se &egrave; una frase palindroma
+              oppure no:
+              <UL>
+                <LI> non si conosce a priori la lunghezza della frase
+              </UL>
+         <LI> Tutti quelli di
+              <A HREF="http://www.dis.uniroma1.it/pub/clps/Cap02">
+              [T2, Cap. 2]</A>.
+       </UL>
+</UL>
+<HR>
+
+<B>Lezioni 11,12 --  7/3/2001</B>
+<UL>
+  <LI> <B> Argomenti trattati</B> [T1, Par. 3.4, 3.6]
+       <UL>
+         <LI> Alberi binari in C++
+         <LI> Varie funzioni su alberi binari in C++ (visita, contare
+              numero di foglie, calcolare la profondit&agrave;,
+              costruzione data la
+              rappresentazione in forma parentetica letta da tastiera, etc.)
+              (file <A   HREF="programmi_c++/albbin.cpp">
+              albbin.cpp</A>)
+         <LI> Rappresentazione di alberi in C++
+       </UL>
+  <LI><B>Cosa lo studente dovrebbe sapere dopo la lezione</B>:
+       <UL>
+         <LI> Come si rappresentano alberi binari in C++
+         <LI> Progettare semplici funzioni ricorsive per la
+              manipolazione di alberi binari
+       </UL>
+  <LI> <B> Esercizi proposti</B>
+       <UL>
+         <LI> Scrivere una funzione che accetta come parametri i
+              puntatori alla radice di due alberi binari, e restituisce
+              true se e solo se i due alberi sono uguali in  maniera profonda,
+              ritorna false, altrimenti
+              (soluzione: funzione Uguali() del file <A   HREF="programmi_c++/albbin.cpp">
+              albbin.cpp</A>)
+         <LI> Tutti quelli di
+              <A HREF="http://www.dis.uniroma1.it/pub/clps/Cap03">
+              [T2, Cap. 3]</A> e
+              <A HREF="http://www.dis.uniroma1.it/pub/clps/Cap04">
+              [T2, Cap. 4]</A>.
+       </UL>
+</UL>
+<HR>
+
+<B>Lezioni 13,14  -- 8/3/2001</B>
+<UL>
+  <LI> <B> Argomenti trattati</B> [T1, Par. 3.4]
+       [T4, Cap. 6]
+       <UL>
+         <LI> Regole di visibilit&agrave; in C++ (singolo file)
+              (file <A   HREF="programmi_c++/scope.cpp"> scope.cpp</A>)
+         <LI> Riassunto visibilit&agrave; a livello di file
+              (file <A   HREF="programmi_c++/scope2.cpp"> scope2.cpp</A>)
+         <LI> Visibilit&agrave; per programmi divisi in pi&ugrave file:
+              include, extern, static, compilazione separata
+              (file <A   HREF="programmi_c++/extern.cpp"> extern.cpp</A> e
+              <A   HREF="programmi_c++/extern2.cpp"> extern2.cpp</A>)
+         <LI> Applicazione: gestione di un contatore:
+              modulo che eroga il servizio
+              (file <A   HREF="programmi_c++/cont.cpp"> cont.cpp</A>) e
+              modulo che usa il servizio
+              (file <A   HREF="programmi_c++/usacont.cpp"> usacont.cpp</A>)
+       </UL>
+  <LI><B>Cosa lo studente dovrebbe sapere dopo la lezione</B>:
+       <UL>
+         <LI> Regole per determinare la visibilt&agrave; in un solo
+              file ed in pi&ugrave; file
+              
+       </UL>
+  <LI> <B> Esercizi proposti</B>
+       <UL>
+         <LI> Tutti quelli di
+              <A HREF="http://www.dis.uniroma1.it/pub/clps"> [T2, Cap. da 1 a 7]</A>.
+       </UL>
+</UL>
+<HR>
+
+<B>Lezioni 15,16 --  9/3/2001</B> ---
+<B><A HREF="http://tibur.dis.uniroma1.it/program/fondii/laurea/esercitazioni/aa-00-01/1/">
+Esercitazione di laboratorio</A></B>
+<UL>
+  <LI> <B> Argomenti trattati (dettagli nel file
+       <A
+       HREF="http://tibur.dis.uniroma1.it/program/fondii/laurea/esercitazioni/aa-00-01/1/cosasifa.txt"> cosasifa.txt</A>)</B>
+       <UL>
+         <LI> Programmi elementari in Turbo C++
+              <UL>
+                <LI> lettura di n numeri interi positivi da tastiera e
+                     calcolo del massimo
+                     (file <A   HREF="http://tibur.dis.uniroma1.it/program/fondii/laurea/esercitazioni/aa-00-01/1/printmax.cpp"> printmax.cpp</A>)
+                <LI> stampa di una piramide di numeri
+                     (file <A   HREF="http://tibur.dis.uniroma1.it/program/fondii/laurea/esercitazioni/aa-00-01/1/piramide.cpp"> piramide.cpp</A>)
+                <LI> calcolo del fattoriale
+                     (file <A   HREF="http://tibur.dis.uniroma1.it/program/fondii/laurea/esercitazioni/aa-00-01/1/fatt.cpp"> fatt.cpp</A>)
+              </UL>
+       </UL>
+  <LI><B>Cosa lo studente dovrebbe sapere dopo la lezione</B>:
+       <UL>
+         <LI> Scrivere e provare semplici programmi C++
+       </UL>
+  <LI> <B> Esercizi proposti</B>
+       <UL>
+         <LI> Compilare e fare eseguire
+              <B>tutti i programmi</B> visti fin'ora durante le lezioni,
+              in particolare quelli che utilizzano <B>strutture dinamiche</B> e
+              quelli <B>divisi in pi&ugrave;</B> file
+       </UL>
+</UL>
+<HR>
+<HR>
+
+<A NAME="SECONDA_PARTE">
+<CENTER>
+<H3>SECONDA PARTE</H3>                
+<IMG ALIGN=center SRC="http://www.dis.uniroma1.it/PUB/AI/icone/back.gif"
+ALT="Back to"> 
+<A HREF="#INDICE"> Torna all'indice delle lezioni</A>
+</CENTER>
+<HR>
+
+<B>Lezioni 17,18 -- 12/3/2001 </B> [Prof. Maurizio Lenzerini]
+       <UL>
+         <LI> <B> Argomenti trattati</B> [T1, Cap. 4, par. 4.1 - 4.5]
+              [T4, Cap. 8]
+              <UL>
+                <LI> Introduzione alle classi in C++
+                <LI> File .h e file .cpp
+                <LI> La dichiarazione di una classe
+                <LI> Parte pubblica e parte privata
+                <LI> Campi dato e campi funzione
+                <LI> La nozione di oggetto di invocazione
+                <LI> Costruttori
+              </UL>
+         <LI><B>Cosa lo studente dovrebbe sapere dopo la lezione</B>:
+              <UL>
+                <LI> Le prime nozioni sulle classi in C++
+              </UL>
+       </UL>
+<HR>
+
+<B>Lezioni 19,20 -- 13/3/2001 </B> [Prof. Maurizio Lenzerini]
+       <UL>
+         <LI> <B> Argomenti trattati</B> [T1, Cap. 4, par. 4.1 - 4.5]
+              [T4, Cap. 8,9,10]
+              <UL>
+                <LI> Ancora su costruttori:
+                     <UL>
+                       <LI> concetto di costruttore di copia
+                       <LI> costruttore unario (convertitore di tipo)
+                       <LI> costruttori e new
+                     </UL>
+                <LI> Assegnazione e inizializzazione; differenze rispetto
+                     al costruttore; concetto di distruttore
+                <LI> Oggetti anonimi
+              </UL>
+         <LI><B>Cosa lo studente dovrebbe sapere dopo la lezione</B>:
+              <UL>
+                <LI> Definire classi con costruttori
+              </UL>
+         <LI> <B> Esercizi proposti</B>
+              <UL>
+                <LI> Compilare la classe <B>tempo</B> finora vista
+                <LI> Classe per la rappresentazione di vettori nello spazio
+              </UL>
+       </UL>
+<HR>
+        
+<B>Lezioni 21,22 -- 15/3/2001 </B>
+  <UL>
+    <LI> <B> Argomenti trattati</B> [T1, Cap. 4, par. 4.7, 4.8, 4.9.2]
+       <UL>
+         <LI> Overloading di operatori; operatori forniti dal C++
+         <LI> Overloading di operatori con funzioni esterne
+       </UL>
+  <LI><B>Cosa lo studente dovrebbe sapere dopo la lezione</B>:
+       <UL>
+         <LI> Definire classi con costruttori e operatori
+         <LI> Quando e come usare operatori ridefiniti
+              tramite funzioni esterne
+       </UL>
+  <LI> <B> Esercizi proposti</B>
+       <UL>
+         <LI> Compilare la classe <B>tempo</B>  finora vista
+       </UL>
+</UL>
+<HR>
+
+<B>Lezioni 23,24 -- 16/3/2001 </B>
+<UL>
+  <LI> <B> Argomenti trattati</B> [T1, Cap. 4, par. 4.10 -- 4.12, 4.14
+       ]
+       <UL>
+         <LI> Campi static di tipo dato e funzione.
+              Applicazione: una classe che rappresenta un intero e
+              gestisce il numero di oggetti attivi (nel loro tempo di
+              vita) istante per istante:
+              <UL>
+                <LI> <A HREF="programmi_c++/Intero.h"> file Intero.h</A>
+                <LI> <A HREF="programmi_c++/Intero.cpp"> file Intero.cpp</A>
+                <LI> <A HREF="programmi_c++/UsoIntero.cpp"> file UsoIntero.cpp</A>
+              </UL>
+       </UL>
+  <LI><B>Cosa lo studente dovrebbe sapere dopo la lezione</B>:
+       <UL>
+         <LI> Quando e come usare campi static
+       </UL>
+  <LI> <B> Esercizi proposti</B>
+       <UL>
+         <LI> Modificare la classe <B>tempo</B> in maniera che gestisca
+              istante per istante le informazioni relative al numero
+              di oggetti che sono nel loro tempo di vita
+       </UL>
+</UL>
+<HR>
+        
+<B>Lezioni 25,26 -- 19/3/2001</B> [Prof. Maurizio Lenzerini]
+<UL>
+  <LI> <B> Argomenti trattati</B> [T1, Cap. 4, par. 4.15 -- 4.17,
+       4.19]
+       <UL>
+         <LI> Modularizzazione mediante classi: la classe <B>telefonata</B>
+              e la classe <B>bolletta</B>.
+       </UL>
+  <LI><B>Cosa lo studente dovrebbe sapere dopo la lezione</B>:
+       <UL>
+         <LI> Come usare le direttive di isolamento
+         <LI> Quando e come usare campi puntatore
+       </UL>
+  <LI> <B> Esercizi proposti</B>
+       <UL>
+         <LI> Modificare la parte privata della classe <B>tempo</B>
+              rappresentando i dati con tre campi interi, per ore,
+              minuti e secondi. Verificare che la classe
+              <B>telefonata</B> non deve essere modificata.
+       </UL>
+</UL>
+<HR>
+
+<B>Lezioni   27,28 -- 20/3/2001</B> [Prof. Giuseppe De Giacomo]
+<UL>
+  <LI> <B> Argomenti trattati</B> [T1, Cap. 5, parr. 5.1--5.3]
+       <UL>
+         <LI> Introduzione all'ereditariet&agrave;
+         <LI> Ridefinizione di funzioni e dati
+       </UL>
+  <LI> <B> Programmi ausiliari</B>
+       <UL>
+         <LI> Programma che mostra la compatibilit&agrave; fra classe
+              base e classe derivata
+              (file <A   HREF="programmi_c++/parametricompatibili.cpp">
+              parametricompatibili.cpp</A>)
+       </UL>
+  <LI><B>Cosa lo studente dovrebbe sapere dopo la lezione</B>:
+       <UL>
+         <LI> Dichiarazione di classi derivate
+         <LI> Parte protetta di una classe
+         <LI> Tipi di derivazione
+       </UL>
+  <LI> <B> Esercizi proposti</B>
+       <UL>
+         <LI>
+              Si consideri il seguente programma C++.
+              <PRE>
+class B                       class A: *ALFA* B
+{ private:                    { private:
+    void f();                     void fa() {f();}
+  protected:                    public:
+    void g();                     void ha() {g();}
+  public:                     };
+    void h();
+};
+
+void main()
+{ A x; B y;
+  x.g();  x.h();  x.ha();  x.fa();
+  y.ha();  y.g();  y.h();
+}
+</PRE>
+                   Si analizzino i tre casi di:
+                   *ALFA* &egrave; uguale a public
+                   *ALFA* &egrave; uguale a protected
+                   *ALFA* &egrave; uguale a private
+                   e si indichino gli errori che il compilatore segnala in ognuno dei tre casi.
+                   <A HREF="http://tibur.dis.uniroma1.it/program/fondii/laurea/appelli/aa-95-96/96-07-19/sol3.txt"> (Soluzione)</A>
+            </UL>
+     </UL>
+<HR>
+
+<B> Lezioni 29,30 -- 21/3/2001 ---
+       <A HREF="http://tibur.dis.uniroma1.it/program/fondii/laurea/esercitazioni/aa-00-01/2/">
+Esercitazione di laboratorio</A></B>
+<UL>
+  <LI> <B> Argomenti trattati (dettagli nel file
+       <A
+       HREF="http://tibur.dis.uniroma1.it/program/fondii/laurea/esercitazioni/aa-00-01/2/cosasifa.txt"> cosasifa.txt</A>)</B> <BR>
+       Progettazione di classi elementari
+       <UL>
+         <LI> Classe per la rappresentazione di vettori nello spazio
+              (file
+              <A
+              HREF="http://tibur.dis.uniroma1.it/program/fondii/laurea/esercitazioni/aa-00-01/2/vettori.h">
+              vettori.h</A>,
+              <A
+              HREF="http://tibur.dis.uniroma1.it/program/fondii/laurea/esercitazioni/aa-00-01/2/vettori.cpp">
+              vettori.cpp</A>)
+         <LI> Un file per il test della classe
+              (file
+              <A
+              HREF="http://tibur.dis.uniroma1.it/program/fondii/laurea/esercitazioni/aa-00-01/2/test.cpp">
+              test.cpp</A>)
+         <LI> Un programma (modulo cliente) per la gestione di due vettori
+              (file
+              <A
+              HREF="http://tibur.dis.uniroma1.it/program/fondii/laurea/esercitazioni/aa-00-01/2/usovett.cpp">
+              usovett.cpp</A>)
+       </UL>
+  <LI><B>Cosa lo studente dovrebbe sapere dopo la lezione</B>:
+       <UL>
+         <LI> Progettare e testare semplici classi in C++
+       </UL>
+  <LI> <B> Esercizi proposti</B>
+       <UL>
+         <LI> Tutti quelli che non si riesce a finire in laboratorio
+       </UL>
+</UL>
+<HR>
+
+<B>Lezioni 31,32 -- 22/3/2001</B>
+<UL>
+  <LI> <B> Argomenti trattati</B> [T1, Cap. 4, par. 4.15 -- 4.17,
+       4.19, 4.22]
+       <UL>
+         <LI> Il problema dell'interferenza
+         <LI> Overloading dell'assegnazione, del costruttore di
+              copia
+       </UL>
+  <LI><B>Cosa lo studente dovrebbe sapere dopo la lezione</B>:
+       <UL>
+         <LI> Perch&eacute; l'interferenza &egrave; un problema; cosa
+              la causa; come si risolve
+       </UL>
+  <LI> <B> Esercizi proposti</B>
+       <UL>
+         <LI> Compilare la classe <B>bolletta</B> finora vista
+       </UL>
+</UL>
+<HR>
+
+<B>Lezioni  33,34 -- 23/3/2001</B>
+<UL>
+  <LI> <B> Argomenti trattati</B> [T1, Cap. 4, par. 4.15 -- 4.17,
+       4.19, 4.22]
+       <UL>
+         <LI> Overloading del distruttore
+         <LI> Template; classi generiche; la classe <B>collezione</B>
+       </UL>
+  <LI><B>Cosa lo studente dovrebbe sapere dopo la lezione</B>:
+       <UL>
+         <LI> Perch&eacute; va recuperata la memoria tramite il distruttore
+         <LI> Come si dichiarano classi generiche
+       </UL>
+  <LI> <B> Programmi ausiliari</B>
+       <UL>
+         <LI> Classe <B>intero</B> per la rappresentazione di
+              interi positivi di qualsiasi dimensione, con il sovraccarico
+              dell'operatore '+':
+              <UL>
+                <LI> <A HREF="programmi_c++/INTERO/intero.h"> file intero.h</A>
+                <LI> <A HREF="programmi_c++/INTERO/intero.cpp">
+                     file intero.cpp</A>
+                <LI> <A HREF="programmi_c++/INTERO/testint.cpp">
+                     file testint.cpp</A> (programma di prova della classe)
+                <LI> <A HREF="programmi_c++/INTERO/usoint.cpp">
+                     file usoint.cpp</A> (programma con menu a scelta multipla)
+                <LI> <A HREF="programmi_c++/INTERO/somma.cpp">
+                     file somma.cpp</A> (programma che somma tutti gli interi
+                     contenuti in un file)
+              </UL>
+         <LI> <B> NOTA </B>: un programma che
+              illustra l'uso delle stringhe "di basso livello" (quelle del  C)
+              del C++ (file <A   HREF="programmi_c++/stringhe.cpp">
+              stringhe.cpp</A>)
+              
+       </UL>
+  <LI> <B> Esercizi proposti</B>
+       <UL>
+         <LI> Migliorare la classe <B>intero</B>, aggiungendo
+              gli operatori unari '++' (soluzione: file
+              <A HREF="programmi_c++/INTERO/operator++.cpp">  operator++.cpp</A>)
+              e '--' e gli operatori binari
+              '-', '*', '/', '%'.
+         <LI> Migliorare ulteriormente la classe <B>intero</B>, prevedendo la
+              possibilit&agrave; di rappresentare anche interi negativi.
+       </UL>
+</UL>
+<HR>
+
+<B> Lezioni 35,36 -- 26/3/2001  ---
+<A HREF="http://tibur.dis.uniroma1.it/program/fondii/laurea/esercitazioni/aa-00-01/3/">
+Esercitazione di laboratorio</A></B>
+<UL>
+  <LI> <B> Argomenti trattati (dettagli nel file
+       <A
+       HREF="http://tibur.dis.uniroma1.it/program/fondii/laurea/esercitazioni/aa-00-01/3/cosasifa.txt"> cosasifa.txt</A>)</B>
+       <UL>
+         <LI> Progettazione di classi con campi puntatore
+              (file
+              <A
+              HREF="http://tibur.dis.uniroma1.it/program/fondii/laurea/esercitazioni/aa-00-01/3/poli.h">
+              poli.h</A>,
+              <A
+              HREF="http://tibur.dis.uniroma1.it/program/fondii/laurea/esercitazioni/aa-00-01/3/poli.cpp">
+              poli.cpp</A>)
+         <LI> Un file per il test della classe
+              (file
+              <A
+              HREF="http://tibur.dis.uniroma1.it/program/fondii/laurea/esercitazioni/aa-00-01/3/testpoli.cpp">
+              testpoli.cpp</A>)
+       </UL>
+  <LI><B>Cosa lo studente dovrebbe sapere dopo la lezione</B>:
+       <UL>
+         <LI> Ridefinire costruttore di copia, distruttore,
+              assegnazione
+       </UL>
+  <LI> <B> Esercizi proposti</B>
+       <UL>
+         <LI> Tutti quelli che non si riesce a finire in laboratorio.
+       </UL>
+</UL>
+<HR>
+
+<B>Lezioni 37,38 -- 27/3/2001</B> [Prof. Giuseppe De Giacomo]
+<UL>
+  <LI> <B> Argomenti trattati</B>  [T1, Cap. 5, parr. 5.4, 5.7]
+       <UL>
+         <LI> Funzioni virtuali
+         <LI> Classi base astratte
+       </UL>
+  <LI> <B> Programmi ulteriori</B>
+       <UL>
+         <LI> Realizzazione di una gerarchia di classi in C++ e progettazione
+              di una funzione cliente (file <A HREF="programmi_c++/figure.cpp">
+                     figure.cpp</A>)
+         <LI> Esercizio: realizzazione di una gerarchia di classi in C++:
+              <UL>
+                <LI> <A HREF="programmi_c++/FELINI/schema.txt">
+                     schema concettuale</A>
+                <LI> <A HREF="programmi_c++/FELINI">Soluzione</A>
+              </UL>
+         <LI> esercizio d'esame del 1/07/1998: problema 4
+              (<A HREF="http://tibur.dis.uniroma1.it/program/fondii/laurea/appelli/aa-97-98/98-07-01/testo.txt">testo</A> e <A HREF="http://tibur.dis.uniroma1.it/program/fondii/laurea/appelli/aa-97-98/98-07-01/sol234.txt">soluzione</A>)
+       </UL>
+  <LI><B>Cosa lo studente dovrebbe sapere dopo la lezione</B>:
+       <UL>
+         <LI> Quando e come ridefinire una funzione in una classe derivata
+         <LI> Quando e come usare le funzioni virtuali
+       </UL>
+  <LI> <B> Esercizi proposti</B>
+       <UL>
+         <LI> Tutti quelli di [T1, Cap. 5]
+         <LI> Problema 3 dell' appello d'esame del 5/7/1997
+              (<A HREF="http://tibur.dis.uniroma1.it/program/fondii/laurea/appelli/aa-96-97/97-06-05/">testo e soluzione</A>).
+       </UL>
+</UL>
+<HR>
+
+<B>Lezioni 39,40 -- 29/3/2001</B>
+<UL>
+  <LI> <B> Argomenti trattati</B> [T1, Capp. 1, 2, Parr. 9.1--9.2]
+       <UL>
+         <LI> Considerazioni generali sullo sviluppo dei programmi
+         <LI> Ciclo di vita del software
+         <LI> Qualit&agrave; del software
+         <LI> La modularizzazione: caratterizzazione, qualit&agrave.
+       </UL>
+  <LI><B>Cosa lo studente dovrebbe sapere dopo la lezione</B>:
+       <UL>
+         <LI> Differenza fra committente, progettista, utente e
+              manutentore di un prodotto software
+         <LI> Ciclo di sviluppo "a cascata"
+         <LI> Qualit&agrave; interne ed esterne del software
+         <LI> Caratteristiche generali di un modulo.
+         <LI> Saper riconoscere moduli di buona qualit&agrave;.
+       </UL>
+  <LI> <B> Esercizi proposti</B>
+       <UL>
+         <LI> (Cfr. esercizio 9.2 di [T1])
+              In questo <A HREF="programmi_c++/MODULARIZZAZIONE/CATTIVA">
+              direttorio</A> si illustra una modularizzazione di scarsa
+              qualit&agrave;. Riprogettare i vari moduli per aumentarla
+              (<A HREF="programmi_c++/MODULARIZZAZIONE/BUONA"> soluzione</A>).
+       </UL>
+
+</UL>
+<HR>
+
+<B>Lezioni 41,42 -- 30/3/2001</B>
+<UL>
+  <LI> <B> Argomenti trattati</B>
+       [T1, Cap. 9, Parr. 9.2--9.3]
+       <UL>
+         <LI> La fase di progettazione: concettualizzazione e realizzazione
+         <LI> La modularizzazione: tipi
+         <LI> La modularizzazione in fase di concettualizzazione
+         <LI> Specifica e realizzazione di un modulo funzionale
+         <LI> Specifica e realizzazione di un modulo per singolo oggetto
+       </UL>
+  <LI><B>Cosa lo studente dovrebbe sapere dopo la lezione</B>:
+       <UL>
+         <LI> Differenza fra moduli funzionali, per singolo oggetto,
+              e per tipo astratto.
+         <LI> Come si specifica un modulo funzionale e per singolo oggetto
+         <LI> Come si realizza in C++ un modulo funzionale e per singolo
+              oggetto
+       </UL>
+  <LI> <B> Esercizi proposti</B>
+       <UL>
+         <LI> Progettare un modulo concettuale
+              PER SINGOLO OGGETTO
+              per rappresentare e gestire un'area rettangolare 18 X 78
+              (di fatto si desidera modellare lo schermo di un terminale a
+              caratteri 25 X 80, a cui vengono sottratte alcune
+              righe e colonne per la visualizzazione di informazioni).<BR>
+              Le operazioni che si intendono eseguire sono le seguenti:
+              <UL>
+                <LI> metti un rettangolo, specificando le coordinate di due
+                     suoi vertici
+                     (basso sinistra ed alto destra);
+                <LI> togli un rettangolo, specificando le coordinate di due
+                     suoi vertici
+                     (basso sinistra ed alto destra);
+                <LI> stampa l'area, evidenziando le zone coperte da rettangoli;
+                <LI> cancella tutti i rettangoli presenti nell'intera area;
+                <LI> dato un punto dell'area, dire da quanti rettangoli
+                     &egrave; ricoperto.
+        </UL>
+        <LI> Realizzare il modulo in C++
+             (<A HREF="programmi_c++/SCHERMO"> soluzione</A>)
+       </UL>
+</UL>
+<HR>
+
+<B>Lezioni  43,44 -- 2/4/2001</B>
+<UL>
+  <LI> <B> Argomenti trattati</B> [T1, Cap. 9, Parr. 9.4--9.6
+       + Cap. 10, Parr. 10.1--10.3]
+       <UL>
+         <LI> Schema concettuale di progetto
+         <LI> Relazioni tra moduli
+         <LI> Metodologia basata sulla modularizzazione.
+         <LI> Introduzione alla specifica dei tipi astratti
+         <LI> La specifica del tipo astratto Pila
+         <LI> Funzioni in pseudo-C++: Svuota(Pila(Interi)) ===> Pila(Interi);
+       </UL>
+  <LI> <B> Cosa lo studente dovrebbe sapere dopo la lezione</B>:
+       <UL>
+         <LI> Produrre uno schema concettuale per una semplice
+              applicazione.
+         <LI> Fornire la specifica di un tipo astrazione di valori
+         <LI> Definizione di tipo astratto, sorta, e segnatura
+       </UL>
+  <LI> <B> Esercizi proposti</B>
+       <UL>
+         <LI> Scrivere in  pseudo-C++ la funzione:<BR>
+              Concatena(Pila,Pila) ===> Pila.<BR>
+              <B> Esempio:</B> Concatena(<1,2,3>,<4,5,6>) = <1,2,3,4,5,6><BR>
+              <A HREF="programmi_c++/concatena-pile.txt"> Soluzione</A>
+         <LI> La specifica del tipo astratto Coda
+       </UL>
+</UL>
+<HR>
+
+<B>Lezioni  45,46 -- 3/4/2001</B>
+<UL>
+  <LI> <B> Argomenti trattati</B> [T1, Cap. 10, Parr. 10.1--10.3]
+       <UL>
+         <LI> La specifica del tipo astratto Lista
+         <LI> Funzione in pseudo-C++:
+              Concatena(Lista,Lista) ===> Lista.<BR>
+              <B> Esempio:</B> Concatena( (1 (2) 3),(4 (5 6)) ) = ( (1 (2) 3 4 (5 6)) )<BR>
+              <A HREF="programmi_c++/concatena-liste.txt"> Soluzione</A>
+         <LI> Tipi come astrazione di entit&agrave;: CassaCambio
+       </UL>
+  <LI> <B> Cosa lo studente dovrebbe sapere dopo la lezione</B>:
+       <UL>
+         <LI> Differenza fra un tipo astrazione di valori e un tipo astrazione
+              di entit&agrave;
+       </UL>
+  <LI> <B> Esercizi proposti</B>
+       <UL>
+         <LI> Studiare la specifica degli altri tipi astratti di
+              [T1, Par. 10.2] (Coda,  Array,   Albero Binario, Albero,
+              ListaSemplice, ...)
+         <LI> Scrivere in  pseudo-C++ le seguenti funzioni:<BR>
+              <UL>
+                <LI>Inverti(Lista) ===> Lista.<BR>
+                     <B> Esempio:</B> Inverti( (1 (2) 3 4 (5 6)) ) = ((5 6) 4 3 (2) 1)
+                <LI>InvertiTutte(Lista) ===> Lista.<BR>
+                     <B> Esempio:</B> InvertiTutte( (1 (2) 3 4 (5 6)) )= ( ((6 5) 4 3 (2) 1) )
+                <LI>Speculare(Albero) ===> Albero.<BR>
+                     <B> Esempio:</B> Speculare =( (1(2(5()())(3()()))(4()())) ) =
+                     (1(4()())(2(3()())(5()())))
+              </UL>
+       </UL>
+</UL>
+<HR>
+
+<B>Lezioni  47,48 -- 4/4/2001</B></B>
+<UL>
+  <LI> <B> Argomenti trattati</B> [T1, Cap. 12, Parr. 12.1-12.5]
+       <UL>
+         <LI> Generalit&agrave; sulla realizzazione di tipi astratti
+              mediante classi in C++
+         <LI> Rappresentazione dei valori del tipo
+         <LI> Generalit&agrave; sulla scelta dello schema realizzativo
+         <LI> Dalla segnatura all'interfaccia della classe
+         <LI> Realizzazione del tipo astratto Insieme(Elem) secondo lo
+              schema funzionale con condivisione (file
+              <A HREF="http://www.dis.uniroma1.it/pub/clns/Cap12/Insieme-FC.h"> Insieme-FC.h </A> e
+              <A HREF="http://www.dis.uniroma1.it/pub/clns/Cap12/Insieme-FC.cpp"> Insieme-FC.cpp </A>)
+       </UL>
+  <LI><B>Programmi ausiliari</B>:
+       <UL> Realizzazione di classi con template nell'ambiente Turbo C++:
+         <UL>
+           <LI> <B>Esempio:</B> realizzazione del tipo
+                Insieme(Elem)
+                secondo lo schema funzionale con condivisione (file
+                <A
+                HREF="http://tibur.dis.uniroma1.it/program/fondii/laurea/esercitazioni/aa-00-01/template-per-turbo/insieme.h"> insieme.h
+                </A>)
+           <LI> <B>Esempio:</B> uso del file insieme.h nell'ambito di
+                un progetto (
+                <A
+                HREF="http://tibur.dis.uniroma1.it/program/fondii/laurea/esercitazioni/aa-00-01/template-per-turbo/LEGGIMI.TXT"> specifica di un progetto
+                </A>)
+         </UL>
+  </UL>
+  <LI><B>Cosa lo studente dovrebbe sapere dopo la lezione</B>:
+       <UL>
+         <LI> Come si usano: incapsulamento, information hiding,
+              parametrizzazione e overloading di operatori per la
+              realizzazione di tipi astratti
+       </UL>
+</UL>
+
+<HR>
+
+<B> <A
+HREF="http://tibur.dis.uniroma1.it/program/fondii/laurea/esercitazioni/aa-00-01/4/">
+Lezioni  49,50 -- 6/4/2001 -- al laboratorio</A>
+</B>
+<UL>
+  <LI> <B> Argomenti trattati (dettagli nel file
+       <A
+       HREF="http://tibur.dis.uniroma1.it/program/fondii/laurea/esercitazioni/aa-00-01/4/cosasifa.txt"> cosasifa.txt</A>)</B>
+       <UL>
+         <LI> Realizzazione di un'applicazione con un modulo funzionale
+              ed un modulo per tipo astratto (AlbBinario(Intero)),
+              quest'ultimo secondo lo schema funzionale con condivisione
+       </UL>
+  <LI><B>Cosa lo studente dovrebbe sapere dopo la lezione</B>:
+       <UL>
+         <LI> Effettuare la realizzazione di un tipo astratto secondo lo
+              schema funzionale con condivisione
+       </UL>
+  <LI> <B> Esercizi proposti</B>
+       <UL>
+         <LI> Tutti quelli che non si riesce a finire in laboratorio.
+       </UL>
+</UL>
+<HR>
+
+<B>Lezioni  51,52 -- 9/4/2001</B>
+<UL>
+  <LI> <B> Argomenti trattati</B> [T1, Cap. 12, Parr. 12.5, 12.6.1]
+       <UL>
+         <LI> Approfondimenti sulla realizzazione del tipo astratto
+              Insieme(Elem) secondo lo
+              schema funzionale con condivisione
+         <LI> Cenni all'efficienza della rappresentazione (spazio e tempo)
+         <LI> Realizzazione di moduli clienti: la funzione
+              <A HREF="http://www.dis.uniroma1.it/pub/clns/Cap12/Somma-FC.cpp">
+              Somma(Insieme(Elem)) ==> Elem</A>
+       </UL>
+  <LI><B>Cosa lo studente dovrebbe sapere dopo la lezione</B>:
+       <UL>
+         <LI> Saper dichiarare una funzione C++ a partire dalla segnatura
+              della corrispondente funzione del tipo astratto
+         <LI> Comprendere i meccanismi per evitare side-effect
+            nell'ambito delle realizzazioni con condivisione di memoria
+         <LI> Vantaggi e svantaggi principali dello schema realizzativo
+              funzionale con condivisione
+       </UL>
+</UL>
+<HR>
+
+<B>Lezioni  53,54 -- 10/4/2001</B>
+<UL>
+  <LI> <B> Argomenti trattati</B> [T1, Cap. 12, Parr. 12.6.2, 12.6.3, 12.6.4]
+       <UL>
+         <LI> Realizzazione del tipo astratto Insieme(Elem)
+              secondo lo schema funzionale senza condivisione.
+              Vantaggi e svantaggi
+         <LI> Realizzazione del tipo astratto Insieme(Elem)
+              secondo lo schema con side-effect senza condivisione
+              <UL>
+                <LI> dichiarazione  e definizione del costruttore di copia e
+                     di "=" come funzioni pubbliche
+                <LI> dichiarazione del costruttore di copia e
+                     di "=" nella parte privata (senza definizione)
+              </UL>
+         <LI> Realizzazione di moduli clienti: la funzione
+              <A HREF="http://www.dis.uniroma1.it/pub/clns/Cap12/Somma-SS.cpp">
+              Somma(Insieme(Elem)) ==> Elem</A>
+         <LI> Realizzazione del tipo astratto Insieme(Elem)
+              secondo lo schema con side-effect e condivisione
+       </UL>
+  <LI><B>Cosa lo studente dovrebbe sapere dopo la lezione</B>:
+       <UL>
+         <LI> Comprendere i meccanismi per evitare interferenza
+              nell'ambito delle realizzazioni viste
+       </UL>
+  <LI> <B> Esercizi proposti</B>
+       <UL>
+         <LI> Realizzazione in C++ delle funzioni
+              <UL>
+                <LI> Unione(Insieme(Elem),Insieme(Elem)) ===> Insieme(Elem)
+                <LI> Intersezione(Insieme(Elem),Insieme(Elem)) ===> Insieme(Elem)
+                <LI> Differenza(Insieme(Elem),Insieme(Elem)) ===> Insieme(Elem)
+              </UL>
+              usando le realizzazioni del tipo astratto
+              Insieme(Elem) secondo i quattro diversi schemi visti
+         <LI> Progettare <B>l'interfaccia pubblica </B> delle classi
+              che realizzano i tipi astratti: Pila, Lista, Albero,
+              AlberoBinario, secondo gli schemi realizzativi
+              funzionale/condivisione e side-effect/senza condivisione
+         <LI> Scrivere in C++ le funzioni (precedentemente
+              specificate)<BR>
+              <UL>
+                <LI>Concatena(Pila,Pila) ===> Pila.
+                <LI>Concatena(Lista,Lista) ===> Lista.
+                <LI>  Inverti(Lista) ===> Lista.
+                <LI>  InvertiTutte(Lista) ===> Lista.
+                <LI>  Speculare(Albero) ===> Albero.
+              </UL>
+              usando l'opportuna interfaccia pubblica dell'esercizio
+              precedente. Scrivere le funzioni per
+              <B>entrambi</B> gli schemi realizzativi.
+       </UL>
+</UL>
+<HR>
+
+<B>Lezioni  55,56 -- 11/4/2001</B>
+<UL>
+  <LI> <B> Argomenti trattati</B> [T1, Cap. 12, Parr. 12.6.4, 12.7]
+       <UL>
+         <LI> Riassunto della metodologia di
+              realizzazione di tipi astrazione
+              di valori e di scelta dello schema realizzativo.
+         <LI> Realizzazione dei tipi astrazione di entit&agrave;
+              <UL>
+                <LI> Tipo astratto CassaCambio
+                     (file
+                     <A HREF="http://www.dis.uniroma1.it/pub/clns/Cap14/CassaCambio.h"> CassaCambio.h </A> e
+                     <A HREF="http://www.dis.uniroma1.it/pub/clns/Cap14/CassaCambio.cpp"> CassaCambio.cpp </A>)
+                <LI> Tipo astratto
+                     <A HREF="http://tibur.dis.uniroma1.it/program/fondii/laurea/appelli/aa-98-99/99-07-05/testo.html"> Deposito</A>
+                     (file
+                     <A HREF="http://tibur.dis.uniroma1.it/program/fondii/laurea/appelli/aa-98-99/99-07-05/deposito.h"> deposito.h </A> e
+                     <A HREF="http://tibur.dis.uniroma1.it/program/fondii/laurea/appelli/aa-98-99/99-07-05/deposito.cpp"> deposito.cpp </A>)
+              </UL>
+       </UL>
+  <LI><B>Cosa lo studente dovrebbe sapere dopo la lezione</B>:
+       <UL>
+         <LI> Comprendere i meccanismi per evitare interferenza
+              nell'ambito delle realizzazioni con side-effect senza
+              condivisione di memoria
+         <LI> Tecniche fondamentali per la realizzazione di tipi
+              astrazione di entit&agrave;
+       </UL>
+  <LI> <B> Esercizi proposti</B>
+       <UL>
+         <LI> Capitoli 8 e 9 di [T2]
+       </UL>
+</UL>
+<HR>
+
+<PRE>
+************** INTERRUZIONE DIDATTICA PER VACANZE PASQUALI *************
+</PRE>
+<HR>
+
+<B>Lezioni  57,58 -- 18/4/2001</B>
+<UL>
+  <LI> <B> Argomenti trattati</B> [T1, Cap. 12, Parr. 12.7, 12.8]
+       <UL>
+         <LI> Realizzazione delle relazioni <I>has-a</I> e
+              <I>has-many</I>.
+         <LI> Sharing
+       </UL>
+  <LI><B>Cosa lo studente dovrebbe sapere dopo la lezione</B>:
+       <UL>
+         <LI> Differenze fra sharing e condivisione di memoria.
+              Differenze fra aggiornamento e  interferenza.
+         <LI> Vantaggi dello sharing.
+              Quando &egrave; obbligatorio usare lo sharing.
+       </UL>
+  <LI> <B> Esercizi proposti</B>
+       <UL>
+         <LI>Realizzazione del tipo astratto Persona (esempio 12.8.1
+              di [T1])
+       </UL>
+</UL>
+<HR>
+
+<B>Lezioni   59,60 -- 19/4/2001</B>
+<UL>
+  <LI> <B> Argomenti trattati</B>
+       [T1, Cap. 5, par. 5.8, Cap. 13, parr. 13.1, 13.2]
+       <UL>
+         <LI> Uso dell'ereditariet&agrave; nella realizzazione di
+              tipi astratti:
+              <UL>
+                <LI> generalit&agrave;
+                <LI> realizzazione della relazione <I>is-a</I>
+              </UL>
+       </UL>
+  <LI><B>Programmi ausiliari</B>:
+       Realizzazione di una gerarchia di classi in C++ (docenti
+       universitari):
+       <UL>
+         <LI> <A HREF="programmi_c++/DOCENTI/specifica.txt">
+              specifica</A>
+         <LI> <A HREF="programmi_c++/DOCENTI">
+              realizzazione</A>
+       </UL>
+  <LI> <B>Esercizi proposti:</B>
+       <UL>
+         <LI> Specifica del tipo astratto Studente e dei suoi sottotipi.
+              <A
+              HREF="http://tibur.dis.uniroma1.it/program/fondii/laurea/esercitazioni/aa-98-99/cadoli/7/cosasifa.txt">
+              (Specifica dei tipi)</A></B>
+       </UL>
+  <LI><B>Cosa lo studente dovrebbe sapere dopo la lezione</B>:
+       <UL>
+         <LI> Come si realizza la relazione <I>is-a</I> in C++
+       </UL>
+</UL>    
+<HR>
+
+<B> <A
+HREF="http://tibur.dis.uniroma1.it/program/fondii/laurea/esercitazioni/aa-00-01/5/">
+Lezioni  61,62 -- 20/4/2001 -- al laboratorio</A></B>
+<UL>
+  <LI> <B> Argomenti trattati (dettagli nel file
+       <A
+       HREF="http://tibur.dis.uniroma1.it/program/fondii/laurea/esercitazioni/aa-00-01/5/cosasifa.txt"> cosasifa.txt</A>)</B>
+       <UL>
+         <LI> Realizzazione di un tipo astrazione di entit&agrave; (Disco)
+         <LI> Realizzazione della relazione <i>has-many</i> fra il tipo astratto
+              Disco e il tipo astratto File
+         <LI> Uso della classe <b>Disco</b>
+              realizzata da parte di un modulo cliente
+       </UL>
+  <LI><B>Cosa lo studente dovrebbe sapere dopo la lezione</B>:
+       <UL>
+         <LI> Realizzare un tipo astrazione di entit&agrave;
+              tramite un modulo C++
+         <LI> Realizzare una relazione <i>has-many</i> fra tipi astratti
+         <LI> Usare il modulo progettato mediante una funzione cliente
+       </UL>
+  <LI> <B> Esercizi proposti</B>
+       <UL>
+         <LI> Tutti quelli che non si riesce a finire in laboratorio.
+       </UL>
+</UL>
+<HR>
+
+<B>Lezioni 63,64 -- 23/4/2001</B>
+<UL>
+  <LI> <B> Argomenti trattati </B> [T1, Cap. 13, parr. 13.3]
+       <UL>
+         <LI> Uso dell'ereditariet&agrave; nella realizzazione di tipi astratti.
+              <UL>
+                <LI> Raffinamento della rappresentazione.
+                <LI> Tipo astratto Grafo e sua realizzazione con
+                     una classe base atratta e una sottoclasse
+                     (<A HREF="programmi_c++/GRAFO/">
+                     file sorgente</A>)
+              </UL>
+       </UL>
+  <LI><B>Cosa lo studente dovrebbe sapere dopo la lezione</B>:
+       <UL>
+         <LI> Realizzare moduli clienti per la classe <B>Grafo</B> che siano
+              <B>indipendenti</B> dalla rappresentazione scelta
+       </UL>
+  <LI> <B> Esercizi proposti</B>
+       <UL>
+         <LI> Scrivere una funzione C++ che costruisca la lista dei nodi pozzo
+              di un grafo
+              (<A HREF="http://www.dis.uniroma1.it/pub/clns/Cap13/ListaPozzi.cpp"> soluzione </A>)
+         <LI> Scrivere una funzione C++ che costruisca l'insieme dei nodi pozzo
+              (dei nodi sorgente) di un grafo
+         <LI> Scrivere una funzione C++ che calcoli il numero massimo di
+              archi uscenti  in un nodo
+              (<A HREF="programmi_c++/GRAFO/MaxUscenti.cpp">
+              soluzione</A>)
+       </UL>
+</UL>
+<HR>
+
+<B>Lezioni 65,66 -- 24/4/2001</B>
+<UL>
+  <LI> <B> Argomenti trattati </B> [T1, Cap. 13, 13.4, 13.5]
+       <UL>
+         <LI> Uso dell'ereditariet&agrave; nella realizzazione di tipi astratti
+              <UL>
+                <LI> classe base come supporto per la
+                     rappresentazione (delegation)
+                <LI> classe base <B>Vettore</B> e classe derivata <B>Pila</B>
+              (<A HREF="http://www.dis.uniroma1.it/pub/clns/Cap13"> file sorgente </A>)
+
+                <LI> altri usi dell'ereditariet&agrave;
+              </UL>
+       </UL>
+  <LI><B>Cosa lo studente dovrebbe sapere dopo la lezione</B>:
+       <UL>
+         <LI> tutti i metodi principali di uso dell'ereditariet&agrave;
+              per la realizzazione di tipi astratti
+         <LI> quando usare derivazione pubblica, protetta o privata
+         <LI> strutturare i campi di una classe base nelle parti  pubblica,
+              protetta e privata
+       </UL>
+  <LI> <B> Esercizi proposti</B>
+       <UL>
+         <LI> Tutti quelli di [T1, Cap. 13]
+         <LI> [T1, Cap. 14]
+         <LI> [T2, Cap. 13-17]
+         <LI> <A HREF="http://tibur.dis.uniroma1.it/program/fondii/laurea/appelli"> Tutti quelli dati agli esami, nella prima prova scritta (parte su orientazione agli oggetti)</A><BR>
+
+       </UL>
+</UL>
+<HR>
+
+<B>Lezioni   67,68 -- 26/4/2001</B>
+<UL>
+  <LI> <B> Argomenti trattati </B> [D, Cap. 2]
+       <UL>
+         <LI> Introduzione a Java
+         <LI> Il primo programma in Java:
+              <A HREF="programmi_java/Ciao.java">Ciao.java</A>
+         <LI> Aspetti fondamentali del linguaggio:
+              <UL>
+                <LI> tipi di dato di base, costruttori di tipo,
+                <LI> allocazione della memoria,
+                <LI> meccanismi di comunicazione fra unit&agrave;
+                     di programma
+              </UL>
+       </UL>
+  <LI><B>Cosa lo studente dovrebbe sapere dopo la lezione</B>:
+       <UL>
+         <LI> Stuttura di un programma Java
+         <LI> Compilazione ed esecuzione di un programma Java
+         <LI> Differenze fondamentali fra Java e C++ nell'allocazione
+              della memoria e nella comunicazione fra unit&agrave; di programma
+       </UL>
+</UL>
+
+<HR>
+<B>Lezioni   69,70 -- 27/4/2001</B>
+<UL>
+  <LI> <B> Argomenti trattati </B> [D, Cap. 2]
+       <UL>
+         <LI> assenza dei template in Java; simulazione della
+              genericit&agrave; mediante derivazione da <B>Object</B>;
+              limitazioni di questa tecnica
+         <LI> allocazione statica e dinamica in Java; garbage collection
+              automatica; assenza del distruttore
+         <LI> classi in Java:
+              <UL>
+                <LI> campi di una classe
+                <LI> livello di accesso di un campo
+                <LI> qualificatori di un campo (static, final, abstract)
+                <LI> <B>class</B>, <B>abstract class</B> e <B>interface</B>
+              </UL>
+         <LI> simulazione dell'ereditariet&agrave; multipla in Java
+              <UL>
+                <LI> <A HREF="programmi_java/ANIMALI/schema.txt">
+                     schema concettuale</A>
+                <LI> <A HREF="programmi_java/ANIMALI/realizzazione-in-java.txt">
+                     diagramma moduli software in Java</A>
+                <LI> <A HREF="programmi_java/ANIMALI/">
+                     file sorgenti realizzazione in Java</A>
+                <LI> <A HREF="programmi_c++/ANIMALI/">
+                     file sorgenti realizzazione in C++</A>
+              </UL>
+       </UL>
+  <LI><B>Cosa lo studente dovrebbe sapere dopo la lezione</B>:
+       <UL>
+         <LI> come si simula la genericit&agrave in Java
+         <LI> differenza fra <B>class</B>, <B>abstract class</B> e
+              <B>interface</B>
+         <LI> come si simula l'ereditariet&agrave; multipla in Java
+       </UL>
+</UL>
+
+<HR>
+<B>Lezioni   71,72 -- 30/4/2001</B>
+<UL>
+  <LI> <B> Argomenti trattati </B> [D, Cap. 2]
+       <UL>
+         <LI> Costruttori in Java
+         <LI> La classe <B>Object</B> e le sue funzioni speciali: clone(),
+              equals() e toString()
+         <LI> La classe <B>Class</B> ed il suo uso per la simulazione
+              della genericit&agrave; in Java
+       </UL>
+  <LI><B>Cosa lo studente dovrebbe sapere dopo la lezione</B>:
+       <UL>
+         <LI> Come si simula la genericit&agrave; in Java
+         <LI> Quali sono le funzioni speciali di una classe Java e come si
+              realizzano
+       </UL>
+</UL>
+
+<HR>
+<B>Lezioni   73,74 -- 2/5/2001</B>
+<UL>
+  <LI> <B> Argomenti trattati </B> [D, Cap. 2, Cap. 3]
+       <UL>
+         <LI> Principali regole per la visibilit&agrave;
+         <LI> Package e classpath
+         <LI> Realizzazione modulo funzionale gestione vettori
+              di interi <A HREF="programmi_java/Vettori.java">Vettori.java</A>
+              <UL>
+                <LI> creazione
+                <LI> lettura da tastiera
+                <LI> calcolo media valori
+              </UL>
+         <LI> Realizzazione modulo funzionale gestione liste
+              di interi
+              <A HREF="programmi_java/Liste.java">Liste.java</A>
+              <UL>
+                <LI> creazione/lettura da tastiera
+                <LI> stampa
+                <LI> inversione
+              </UL>
+       </UL>
+  <LI><B>Cosa lo studente dovrebbe sapere dopo la lezione</B>:
+       <UL>
+         <LI> Metodologia per lo scambio di informazioni fra moduli Java
+       </UL>
+</UL>
+
+<HR>
+<B>Lezioni   75,76 -- 3/5/2001</B>
+<UL>
+  <LI> <B> Argomenti trattati </B> [D, Cap. 2]
+       <UL>
+         <LI> Realizzazione di classi in Java: classe Tempo
+              <A HREF="programmi_java/Tempo.java">Tempo.java</A>
+         <LI> Classe cliente:
+              <A HREF="programmi_java/ProvaTempo.java">ProvaTempo.java</A>
+         <LI> Derivazione fra classi in Java: classe DataTempo
+              <A HREF="programmi_java/DataTempo.java">DataTempo.java</A>
+         <LI> Classe cliente:
+              <A HREF="programmi_java/ProvaDataTempo.java">ProvaDataTempo.java</A>
+         <LI> Gestione di eccezioni in Java
+         <LI> Input da tastiera in Java: calcolo del fattoriale:
+              <UL>
+                <LI> <A HREF="programmi_java/Fattoriale.java">senza input</A>
+                <LI> <A HREF="programmi_java/Fattoriale2.java">input da linea di comando</A>
+                <LI> <A HREF="programmi_java/Fattoriale3.java">input da tastiera, senza gestione eccezioni</A>
+                <LI> <A HREF="programmi_java/Fattoriale4.java">input da tastiera, con gestione eccezioni</A>
+                <LI> Modulo gestione input da tastiera
+                     <A HREF="programmi_java/InOut.java">InOut.java</A>
+              </UL>
+       </UL>
+  <LI><B>Cosa lo studente dovrebbe sapere dopo la lezione</B>:
+       <UL>
+         <LI> Gestione delle eccezioni tramite blocco try-catch
+         <LI> Come si realizzano  le funzioni speciali di una classe Java
+       </UL>
+  <LI> <B> Esercizi proposti</B>
+       <UL>
+         <LI>
+              <A HREF="http://tibur.dis.uniroma1.it/program/fondii/laurea/appelli/aa-99-00">Tutti quelli</A>   su Java assegnati durante le prove d'esame
+              dell'ultimo anno accademico (di molti &egrave; riportata la soluzione)
+       </UL>
+</UL>
+<HR>
+
+<B> <A
+HREF="http://tibur.dis.uniroma1.it/program/fondii/laurea/esercitazioni/aa-00-01/6/">
+Lezioni  77,78 -- 4/5/2001 -- al laboratorio</A></B>
+<UL>
+  <LI> <B> Argomenti trattati (dettagli nel file
+       <A
+       HREF="http://tibur.dis.uniroma1.it/program/fondii/laurea/esercitazioni/aa-00-01/6/cosasifa.txt"> cosasifa.txt</A>)</B>
+       <UL>
+         <LI> Applicazioni distribuite in Java
+              <UL>
+                <LI> Appunti della lezione (formato PDF, file
+<A
+       HREF="http://tibur.dis.uniroma1.it/program/fondii/laurea/esercitazioni/aa-00-01/6/slides.pdf"> slides.pdf</A>)
+                <LI>
+<A
+       HREF="http://tibur.dis.uniroma1.it/program/fondii/laurea/esercitazioni/aa-00-01/6"> Codice sorgente</A>
+                      dei file Java usati
+                     (lato client e lato server)
+              </UL>
+       </UL>
+  <LI><B>Cosa lo studente dovrebbe sapere dopo la lezione</B>:
+       <UL>
+         <LI> Nozioni fondamentali sulle applicazioni distribuite e
+              su Remote Method Invocation (RMI)
+         <LI> Trasformare una classe Java in una classe adatta a fungere da
+              server
+       </UL>
+  <LI> <B> Esercizi proposti</B>
+       <UL>
+         <LI> Tutti quelli che non si riesce a finire in laboratorio.
+       </UL>
+</UL>
+<HR>
+
+<B>Lezioni   79,80 -- 7/5/2001</B>
+<UL>
+  <LI> <B> Argomenti trattati </B> [D, Cap. 3]
+       <UL>
+         <LI> Metodologia realizzazione tipi astratti in Java:
+              <UL>
+                <LI> realizzazione di moduli funzionali
+                <LI> realizzazione di moduli per tipo astratto
+                     (astrazione di valori ed astrazione di
+                     entit&agrave;)
+                <LI> realizzazione di relazioni
+                     <em> has-a, has-many, is-a</em>
+              </UL>
+         <LI> Esercizio: realizzazione tipo astratto <EM>Insieme</EM>
+              <UL>
+                <LI> Schema realizzativo funzionale con condivisione:
+                     <A HREF="programmi_java/InsiemeFC.java">InsiemeFC.java</A>
+                <LI> Modulo cliente:
+                     <A HREF="programmi_java/ProvaInsiemeFC.java">ProvaInsiemeFC.java</A>
+                <LI> Schema realizzativo side-effect
+                     senza condivisione:
+                     <A HREF="programmi_java/InsiemeSS.java">InsiemeSS.java</A>
+                <LI> Modulo cliente:
+                     <A HREF="programmi_java/ProvaInsiemeSS.java">ProvaInsiemeSS.java</A>
+              </UL>
+         <LI> Esercizio: realizzazione del tipo astratto <EM>Persona</EM>:
+              <UL>
+                <LI> <A HREF="programmi_java/Persona.adt">
+                     specifica</A>
+                <LI> <A HREF="programmi_java/Persona.java">Soluzione</A>
+                <LI> <A HREF="programmi_java/ProvaPersona.java">Modulo
+                     cliente di prova</A>
+              </UL>
+         <LI> Esercizio: realizzazione di una gerarchia di classi in
+              Java:
+              <UL>
+                <LI> <A HREF="programmi_java/FELINI/schema.txt">
+                     schema concettuale</A>
+                <LI> <A HREF="programmi_java/FELINI">Soluzione</A>
+              </UL>
+
+       </UL>
+  <LI><B>Cosa lo studente dovrebbe sapere dopo la lezione</B>:
+       <UL>
+         <LI> Come si realizza un tipo astratto in Java
+       </UL>
+  <LI> <B> Esercizi proposti</B>
+       <UL>
+         <LI> Realizzare in Java almeno un tipo astratto fra quelli
+              visti a lezione
+       </UL>
+</UL>
+<HR>
+<HR>
+
+
+       <A NAME="TERZA_PARTE">
+<CENTER>
+<H3>TERZA PARTE</H3>                
+<IMG ALIGN=center SRC="http://www.dis.uniroma1.it/PUB/AI/icone/back.gif"
+ALT="Back to"> 
+<A HREF="#INDICE"> Torna all'indice delle lezioni</A>
+</CENTER>
+
+<HR>
+<B>Lezioni   81,82 -- 8/5/2001 </B>
+<UL>
+  <LI> <B> Argomenti trattati</B> [T1, parr. 15.1-15.2]
+       <UL>
+         <LI> Introduzione alle tecniche algoritmiche
+         <LI> Specifica di un problema
+       </UL>
+  <LI><B>Cosa lo studente dovrebbe sapere dopo la lezione</B>:
+       <UL>
+         <LI> Classificazione dei problemi (ricerca, decisione, ottimizzazione)
+       </UL>
+  <LI> <B> Esercizi proposti</B>
+       <UL>
+         <LI> Dare la specifica dei seguenti problemi: partizionamento, ordinamento di un vettore, minimizzazione degli incroci in un grafo bipartito.
+       </UL>
+</UL>
+
+<HR>
+
+<B>Lezioni   83,84 -- 9/5/2001 </B>
+<UL>
+  <LI> <B> Argomenti trattati</B> [T1, par. 15.3]
+       <UL>
+         <LI> Introduzione allo spazio di ricerca
+         <LI> Vari spazi di ricerca per il problema delle N regine
+         <LI> Spazio di ricerca per il problema della bisaccia
+       </UL>
+  <LI><B>Cosa lo studente dovrebbe sapere dopo la lezione</B>:
+       <UL>
+         <LI> Differenza fra spazio delle soluzioni e spazio di ricerca
+         <LI> Scegliere uno spazio di ricerca a partire dalla specifica di un problema
+       </UL>
+  <LI> <B> Esercizi proposti</B>
+       <UL>
+         <LI> Determinare spazi di ricerca per i seguenti problemi: partizionamento, ordinamento di un vettore, minimizzazione degli incroci in un grafo bipartito.
+         <LI> Tutti quelli di [T1, cap. 15]
+       </UL>
+</UL>
+
+<HR>
+<B>Lezioni  85,86 -- 10/5/2001</B>
+<UL>
+  <LI> <B> Argomenti trattati </B> [T1, parr. 16.1,16.2,16.4]
+       <UL>
+         <LI>  Enumerazione per problemi di ricerca: schema
+              realizzativo
+         <LI>  Enumerazione per problemi di ottimizzazione: schema
+              realizzativo
+       </UL>
+  <LI><B>Cosa lo studente dovrebbe sapere dopo la lezione</B>:
+       <UL>
+         <LI> Usare l'architettura generale per la soluzione di un
+              problema con la tecnica enumerativa
+         <LI> Scrivere una procedura che genera tutte le permutazioni
+              di ordine n
+       </UL>
+</UL>
+
+<HR>
+<B>Lezioni 87,88 -- 11/5/2001 </B>
+<UL>
+  <LI> <B> Argomenti trattati</B> [T1, parr. 16.3,16.5]
+       <UL>
+         <LI> Enumerazione per problemi di ricerca: soluzione del problema
+              delle N regine
+         <LI> Discussione su spazio di ricerca
+       </UL>
+  <LI><B>Cosa lo studente dovrebbe sapere dopo la lezione</B>:
+       <UL>
+         <LI> Sapere risolvere ogni problema di ricerca
+              con la tecnica dell'enumerazione
+       </UL>
+  <LI> <B> Esercizi proposti:</B>
+       Risolvere con la tecnica dell'enumerazione tutti i seguenti problemi:
+       <UL>
+         <LI> Problema della soddisfacibilit&agrave; [T1, esercizio 16.9]
+         <LI> Problema della colorabilit&agrave; di un grafo:
+              testo in [T2, Cap. 18]
+              <A HREF="http://www.dis.uniroma1.it/pub/clps/Cap18">
+              (soluzione) </A>
+       </UL>
+</UL>
+
+<HR>
+
+<B>Lezioni 89,90 -- 15/5/2001 </B>
+<UL>
+  <LI> <B> Argomenti trattati</B> [T1, parr. 16.3,16.5]
+       <UL>
+         <LI> Enumerazione per problemi di ottimizzazione:
+              soluzione del problema della bisaccia
+         <LI> Discussione su spazio di ricerca
+       </UL>
+  <LI><B>Cosa lo studente dovrebbe sapere dopo la lezione</B>:
+       <UL>
+         <LI> Sapere risolvere ogni problema (di ricerca o di ottimizzazione)
+              con la tecnica dell'enumerazione
+       </UL>
+  <LI> <B> Esercizi proposti:</B>
+       Risolvere con la tecnica dell'enumerazione tutti i seguenti problemi:
+       <UL>
+         <LI> Tutti quelli di [T1, Cap. 16]
+         <LI> Tutti quelli di [T1, Parte V]
+         <LI> Tutti quelli di [T2, Parte IV]
+       </UL>
+</UL>
+
+<HR>
+<B>Lezioni 91,92 -- 16/5/2001</B>
+<UL>
+  <LI> <B> Argomenti trattati</B> [T1, parr. 17.1-17.3]
+       <UL>
+         <LI>  Backtracking per problemi di ricerca: schema
+              realizzativo
+         <LI> Backtracking per problemi di ricerca: soluzione del problema
+              delle N regine
+       </UL>
+  <LI><B>Cosa lo studente dovrebbe sapere dopo la lezione</B>:
+       <UL>
+         <LI> Sapere risolvere ogni problema di ricerca con la tecnica del
+              backtracking
+       </UL>
+  <LI> <B> Esercizi proposti:</B>
+       Risolvere con la tecnica del backtracking tutti i problemi di r
+       icerca fra i seguenti:
+       <UL>
+         <LI> Tutti quelli di [T1, Cap. 16]
+         <LI> Tutti quelli di [T1, Parte V]
+         <LI> Tutti quelli di [T2, Parte IV]
+       </UL>
+</UL>
+<HR>
+
+<B>Lezioni 93,94 -- 17/5/2001</B>
+<UL>
+  <LI> <B> Argomenti trattati</B> [T1, parr. 17.1-17.3]
+       <UL>
+         <LI>  Backtracking per problemi  di ottimizzazione: schema
+              realizzativo
+         <LI> Backtracking per problemi di ottimizzazione:
+              il problema della bisaccia
+       </UL>
+  <LI><B>Cosa lo studente dovrebbe sapere dopo la lezione</B>:
+       <UL>
+         <LI> Sapere risolvere ogni problema di ottimizzazione con la
+              tecnica del backtracking
+       </UL>
+  <LI> <B> Esercizi proposti:</B>
+       Risolvere con la tecnica del backtracking tutti i problemi di ottimizzazione fra i seguenti:
+       <UL>
+         <LI> Tutti quelli di [T1, Cap. 16]
+         <LI> Tutti quelli di [T1, Parte V]
+         <LI> Tutti quelli di [T2, Parte IV]
+       </UL>
+</UL>
+
+<HR>
+<B>Lezioni 95,96 -- 18/5/2001</B>
+<UL>
+  <LI> <B> Argomenti trattati</B>  <BR>
+       <UL>
+         <LI> Esercitazione su alcuni compiti di esame
+              <UL>
+                <LI> Problema 1, domanda 2 del compito del <A
+              HREF="http://tibur.dis.uniroma1.it/program/fondii/laurea/appelli/aa-97-98/98-07-01"> 98-07-01 </A>
+                <LI> Problema 1, domanda 2 del compito del <A
+              HREF="http://tibur.dis.uniroma1.it/program/fondii/laurea/appelli/aa-98-99/99-07-05"> 99-07-05 </A>
+                <LI> Problema 1, domanda 2 del compito del <A
+              HREF="http://tibur.dis.uniroma1.it/program/fondii/laurea/appelli/aa-97-98/99-02-16"> 99-02-16 </A>
+              </UL>
+         <LI> <B> NOTA</B> i testi dei compiti d'esame degli appelli degli
+              ultimi anni accademici (molti dei quali con soluzione)
+              si trovano <A
+              HREF="http://tibur.dis.uniroma1.it/program/fondii/laurea/appelli/"> qu&igrave;. </A>
+       </UL>
+</UL>
+
+<HR>
+<B>Lezioni  97, 98 -- 21/5/2001</B>
+<UL>
+  <LI> <B> Argomenti trattati</B> [T1, parr. 8.1-8.6]
+       <UL>
+         <LI> Complessit&agrave;
+       </UL>
+  <LI><B>Cosa lo studente dovrebbe sapere dopo la lezione</B>:
+       <UL>
+         <LI> Modello di riferimento per il calcolo della
+              complessit&agrave; di un algoritmo
+         <LI> Regole fondamentali per il calcolo della
+              complessit&agrave; di un algoritmo
+       </UL>
+</UL>
+<HR>
+
+<B>Lezioni   99,100 -- 22/5/2001</B>
+<UL>
+  <LI> <B> Argomenti trattati</B> [T1, parr. 8.7-8.8]
+       <UL>
+         <LI> Regole fondamentali per il calcolo della
+              complessit&agrave; di un algoritmo
+         <LI> Complessit&agrave; di un problema
+       </UL>
+  <LI><B>Cosa lo studente dovrebbe sapere dopo la lezione</B>:
+       <UL>
+         <LI> Valutare la complessit&agrave; di un algoritmo
+       </UL>
+  <LI> <B> Esercizi proposti</B>
+       <UL>
+         <LI> <A
+              HREF="http://tibur.dis.uniroma1.it/program/fondii/laurea/appelli/aa-96-97/97-07-17/testo.txt"> Problema 3 del compito d'esame del 17/7/97 </A>
+              (<A
+              HREF="http://tibur.dis.uniroma1.it/program/fondii/laurea/appelli/aa-96-97/97-07-17/sol3.txt"> Soluzione </A>)
+         <LI> <B> NOTA:</B> Molti esercizi d'esame negli appelli passati hanno riguardato la complessit&agrave;.  <A
+              HREF="http://tibur.dis.uniroma1.it/program/fondii/laurea/appelli/"> Alcune soluzioni possono essere trovate qui. </A>
+         <LI> <B> NOTA:</B> Molti esercizi di [T2] contengono approfondite analisi della complessit&agrave; dei programmi proposti
+         <LI> Tutti quelli di [T1, cap. 8]
+       </UL>
+</UL>
+
+<HR>
+<B>Lezioni 101,102 -- 23/5/2001</B>
+<UL>
+  <LI> <B> Argomenti trattati</B>  <BR>
+       <UL>
+         <LI> Complessit&agrave; delle funzioni di una classe
+         <LI> Complessit&agrave; rispetto allo spazio
+         <LI> Esercitazione su alcuni compiti di esame
+              <UL>
+                <LI> <A
+                     HREF="http://tibur.dis.uniroma1.it/program/fondii/laurea/appelli/aa-96-97/97-09-24/testo.txt"> Problema 3 del compito d'esame del 24/9/97 </A>
+                     (<A
+                     HREF="http://tibur.dis.uniroma1.it/program/fondii/laurea/appelli/aa-96-97/97-09-24/sol3.txt"> Soluzione </A>)
+                <LI> <A
+                     HREF="http://tibur.dis.uniroma1.it/program/fondii/laurea/appelli/aa-97-98/98-06-19/testo.txt"> Problema 3 del compito d'esame del 19/6/98 </A>
+                     (<A
+                     HREF="http://tibur.dis.uniroma1.it/program/fondii/laurea/appelli/aa-97-98/98-06-19/sol234.txt"> Soluzione </A>)
+
+                <LI> <A
+                     HREF="http://tibur.dis.uniroma1.it/program/fondii/laurea/appelli/aa-97-98/98-07-01/testo.txt"> Problema 3 del compito d'esame del 1/7/98 </A>
+                     (<A
+                     HREF="http://tibur.dis.uniroma1.it/program/fondii/laurea/appelli/aa-97-98/98-07-01/sol234.txt"> Soluzione </A>)
+                <LI> <A
+                     HREF="http://tibur.dis.uniroma1.it/program/fondii/laurea/appelli/aa-99-00/01-01-30"> Problema 3 del compito d'esame del 30/1/01 </A>
+                     (<A
+                     HREF="http://tibur.dis.uniroma1.it/program/fondii/laurea/appelli/aa-99-00/01-01-30/divis.cpp"> Soluzione </A>)
+              </UL>
+       </UL>
+</UL>
+<HR>
+
+<B>Lezioni 103,104 -- 24/5/2001</B>
+<UL>
+  <LI> <B> Argomenti trattati</B> [T1, Cap. 18, def. 15.4.2]
+       <UL>
+         <LI> La tecnica golosa
+       </UL>
+  <LI><B>Cosa lo studente dovrebbe sapere dopo la lezione</B>:
+       <UL>
+         <LI> Quando e come affrontare un problema con la tecnica golosa
+       </UL>
+  <LI> <B> Esercizi proposti: </B>
+       <UL>
+         <LI> Tutti quelli di [T1, Cap. 18]
+         <LI> Scrivere programmi C++ che usano la tecnica golosa per i seguenti problemi:
+              <UL>
+                <LI> codifica di costo minimo (specifica [T2, cap. 22],
+                     <A HREF="http://www.dis.uniroma1.it/pub/clps/Cap22"> soluzione)</A>
+                <LI> alberi annotati (specifica [T2, cap. 23],
+                     <A HREF="http://www.dis.uniroma1.it/pub/clps/Cap23"> soluzione)</A>
+              </UL>
+       </UL>
+</UL>
+
+<HR>
+<CENTER>
+<BF>
+<H3>
+FINE DEL CORSO
+</H3>
+</BF>
+</CENTER>
+<HR>
+
+</UL>
+
+<I>Ultimo aggiornamento di questo file:
+<!-- hhmts start -->
+Last modified: Wed May 23 14:23:40 2001
+<!-- hhmts end -->
+<HR>
+
+<P>
+<IMG ALIGN=left SRC="http://www.dis.uniroma1.it/PUB/AI/icone/back.gif"
+ALT="Back to"> 
+<A HREF="#INDICE"> Torna all'indice delle lezioni del corso</A>
+<P>
+<IMG ALIGN=left SRC="http://www.dis.uniroma1.it/PUB/AI/icone/back.gif"
+ALT="Back to">  
+Home page del <A HREF="index.shtml">
+               Corso di Fondamenti di Informatica II </A>
+del Corso di Laurea in Ingegneria Informatica dell'Universit&agrave; di Roma 
+"La Sapienza"
+
+
+<!--
+**********************************
+COSE NON FATTE:
+         <LI> Complessit&agrave; di spazio e di tempo della classe
+              Insieme<Elem> (schema realizzativo side-effect/senza
+              condivisione)
+         <LI> Realizzazione in C++ della funzione
+              Unione(Insieme,Insieme) ===> Insieme
+         <LI> Complessit&agrave; della funzione C++ Unione()
+         <LI> Riprogettazione della classe Insieme<Elem> per
+              garantire maggiore efficienza di Unione()
+  <LI><B>Cosa lo studente dovrebbe sapere dopo la lezione</B>:
+       <UL>
+         <LI> Quali parametri vanno presi in considerazione per
+              valutare la complessit&agrave; di una classe che
+              realizza un tipo astrazione di valori
+         <LI> Linee guida per la reingegnerizzazione delle classi
+              per garantire maggiore efficienza di particolari
+              funzioni.
+       </UL>
+
+
+  <LI> <B> Argomenti trattati</B>  [T1, Cap. 5, parr. 5.5, 5.6]
+       <UL>
+         <LI> Costruttori e distruttori nell'ereditariet&agrave;
+         <LI> Ereditariet&agrave; multipla
+       </UL>
+  <LI> <B> Programmi ulteriori</B>
+       <UL>
+         <LI> <A HREF="programmi_c++/const-inher.cpp">
+              costruttore di copia ed ereditariet&agrave; </A>
+         <LI> <A HREF="programmi_c++/virtual-distr.cpp">
+              distruttore virtuale</A>
+       </UL>
+  <LI><B>Cosa lo studente dovrebbe sapere dopo la lezione</B>:
+       <UL>
+         <LI> Come progettare le funzioni speciali di una classe derivata.
+         <LI> Come fare uso dell'ereditariet&agrave; multipla
+       </UL>
+  <LI> <B> Esercizi proposti</B>
+       <UL>
+         <LI>  Problema 4 dell'appello di esame del 13/01/1999
+              (<A HREF="http://tibur.dis.uniroma1.it/program/fondii/laurea/appelli/aa-97-98/99-01-13/testo.txt">testo</A>).
+       </UL>
+</UL>
+<HR>
+
+<HR>
+-->
+</BODY>
+</HTML>

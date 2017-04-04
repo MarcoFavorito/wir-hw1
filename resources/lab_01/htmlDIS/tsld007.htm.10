@@ -1,0 +1,55 @@
+
+<HTML>
+
+<HEAD>
+<META HTTP-EQUIV="Context-Type" CONTEXT="text/html;charset=PREDEFINITA (AUTOMATICA)">
+<meta name="GENERATOR" content="Microsoft Internet Assistant for PowerPoint 97">
+ <TITLE>Primary and Candidate Keys (Review)</TITLE> 
+</HEAD>
+
+<BODY     >
+
+ <H1>Primary and Candidate Keys (Review)</H1> 
+ <P><UL>
+<LI><H2>Key for a relation: Minimal set of fields such that in any legal instance, two distinct tuples do not agree upon the key field values.
+</H2>
+<UL>
+<LI>Possibly many candidate keys  (specified using UNIQUE), one of which is chosen as the primary key.
+<LI>Primary key fields cannot contain null values.</UL></UL></P>
+<P><UL>
+CREATE TABLE  Reserves 
+<BR></UL><UL>
+   ( sname  CHAR(10)
+</UL><UL>
+     bid  INTEGER,
+</UL><UL>
+     day  DATE,
+</UL><UL>
+     PRIMARY KEY  (sname, bid, day) )</UL></P>
+<P><UL>
+CREATE TABLE  Reserves 
+<BR></UL><UL>
+   ( sname  CHAR(10) NOT NULL,
+</UL><UL>
+     bid  INTEGER,
+</UL><UL>
+     day  DATE,
+</UL><UL>
+     PRIMARY KEY  (bid, day) 
+</UL><UL>
+     UNIQUE  (sname) )</UL></P>
+<P></P> 
+<P>
+<TABLE>
+  <TD HEIGHT=100 WIDTH=100> <A HREF="tsld006.htm">Diapositiva precedente</A> </TD>
+  <TD HEIGHT=100 WIDTH=100> <A HREF="tsld008.htm">Diapositiva successiva</A> </TD>
+  <TD HEIGHT=100 WIDTH=150> <A HREF="tsld001.htm">Torna alla prima diaposiva</A> </TD>
+  <TD HEIGHT=100 WIDTH=150> <A HREF="sld007.htm">Visualizza versione grafica</A> </TD>
+</TABLE>
+<BR>
+</P>
+
+
+
+</Body>
+</HTML>

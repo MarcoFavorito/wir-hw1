@@ -1,0 +1,464 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+<html>
+
+<head>
+
+<title>Esperimenti con Java cgi</title>
+
+</head>
+
+<body>
+<h2>
+Esperimenti con java cgi (warning: codice non puro XHTML)
+</h2>
+
+<p>
+Ovviamente Apache deve essere stato attivato ...
+<p>
+<pre>
+</pre>
+
+
+<p><hr><p>
+<h2>
+ESEMPIO 0
+</h2>
+Qui invochiamo un programma il programma <STRONG>Probe.class</STRONG>
+ottenuto da Probe.java. (Per farlo girare attiviamo
+il file batch Probe.bat in cgi-bin/java).
+<br>
+<a href="http://localhost/cgi-local-bin/java/Probe.bat">http://localhost/cgi-bin/java/Probe.bat</a></p>
+
+<p><hr><p>
+<h3> ecco il programma java <STRONG>Probe.java</STRONG>
+</h3>
+
+<pre>
+class Probe {
+
+  public static void main(String args[]) {
+
+  System.out.println("Content-type:text/html\n\n");
+  System.out.println("&ltHTML>\n&ltHEAD>\n");
+  System.out.println("&ltTITLE> Programmino java cgi&lt/TITLE>\n");
+  System.out.println("&lt/HEAD>\n\n&ltBODY>\n");
+  System.out.println("&ltH2>Risultati del programmino Java&lt/H2>\n");
+  System.out.println("&ltHR>\n");
+  System.out.println("Tutto qua ... ma in java\n");
+  System.out.println("&ltHR>\n");
+  System.out.println("&lt/BODY>\n\n&lt/HTML>");
+  }
+}
+</pre>
+
+<h3> ed ecco <STRONG>Probe.bat</STRONG>
+</h3>
+
+<pre>
+@echo off
+java Probe
+</pre>
+
+<p><hr><p>
+<h2>
+ESEMPIO 1.0
+</h2>
+Qui invochiamo uno script Cat.bat, che esegue il programma Cat.java,
+che prende tutto quello che
+c'e' in input e lo replica sul video.
+<br>
+<a href="http://localhost/cgi-local-bin/java/Cat.bat">
+http://localhost/cgi-bin/java/Cat.bat</a></p>
+
+<p><hr><p>
+<h3> ecco il codice in <STRONG>Cat.java</STRONG>
+</h3>
+
+<pre>
+import java.io.*;
+
+public class Cat {
+    public static void main(String args[]) {
+      int ch;
+
+  System.out.println("Content-type:text/html\n\n");
+  System.out.println("&ltHTML&gt\n&ltHEAD&gt\n");
+  System.out.println("&ltTITLE&gt Programmino Cat java cgi&lt/TITLE&gt\n");
+  System.out.println("&lt/HEAD&gt\n\n&ltBODY&gt\n");
+  System.out.println("&ltH2&gtProgrammino Cat java in azione&lt/H2&gt\n");
+  System.out.println("&ltHR&gt\n");
+
+      try {
+            while ((ch = System.in.read()) > 0) {
+                System.out.print((char)ch);
+            }
+        } catch (IOException e) {
+            System.out.println("IOException Caught");
+        }
+
+  System.out.println("fine\n");
+  System.out.println("&ltHR&gt\n");
+  System.out.println("&lt/BODY&gt\n\n&lt/HTML&gt");
+  }
+}
+</pre>
+
+<h3> ecco <STRONG>Cat.bat</STRONG>
+</h3>
+<pre>
+@echo off
+java -D Cat
+</pre>
+
+
+
+
+
+
+
+
+
+
+<p><hr><p>
+<h2>
+ESEMPIO 1.1: post
+</h2>
+Ecco una form che riceve i dati (nome e cognome)
+per l'iscrizione ad un corso:
+<FORM action=http://localhost/cgi-local-bin/java/Cat.bat method=post>
+<TABLE border=1 width="100%">
+<TR>
+    <TD width="24%"><DIV align=right><P>Nome:</P></DIV></TD>
+    <TD width="76%"><INPUT name=nome></TD></TR>
+<TR>
+    <TD width="24%"><DIV align=right><P>Cognome:</P></DIV></TD>
+    <TD width="76%"><INPUT name=cognome></TD></TR>
+<TR>
+    <TD width="24%"><DIV align=right>
+    <P><INPUT name=B2 type=reset value=Ricompila></P></DIV></TD>
+    <TD width="76%"><INPUT name=S1
+                           type=submit
+                           value="Invia Nome e Cognome (e riottienili ...)">
+</TD></TR></TABLE></FORM>
+
+<h3> La form invia i dati al programma Cat,
+... che li legge e restituisce cosi' come sono arrivati (non li analizza!).
+<br>
+</h3>
+
+Per&ograve ci fornisce la possibilit&agrave
+di vedere cosa raggiunge il web server: essendo il programma attivato
+da una richiesta POST, il file di input standard viene riempito con
+la sequenza di dati provenienti dalla fom (opportunamente url-encoded).
+
+<h3>
+ed ecco il codice della form
+</h3>
+
+<pre>
+&lt;FORM action=http://localhost/cgi-local-bin/java/Cat.bat method=post&gt;
+&lt;TABLE border=1 width="100%"&gt;
+&lt;TR&gt;
+    &lt;TD width="24%"&gt;&lt;DIV align=right&gt;&lt;P&gt;Nome:&lt;/P&gt;&lt;/DIV&gt;&lt;/TD&gt;
+    &lt;TD width="76%"&gt;&lt;INPUT name=nome&gt;&lt;/TD&gt;&lt;/TR&gt;
+&lt;TR&gt;
+    &lt;TD width="24%"&gt;&lt;DIV align=right&gt;&lt;P&gt;Cognome:&lt;/P&gt;&lt;/DIV&gt;&lt;/TD&gt;
+    &lt;TD width="76%"&gt;&lt;INPUT name=cognome&gt;&lt;/TD&gt;&lt;/TR&gt;
+&lt;TR&gt;
+    &lt;TD width="24%"&gt;&lt;DIV align=right&gt;
+    &lt;P&gt;&lt;INPUT name=B2 type=reset value=Ricompila&gt;&lt;/P&gt;&lt;/DIV&gt;&lt;/TD&gt;
+    &lt;TD width="76%"&gt;&lt;INPUT name=S1
+                           type=submit
+                           value="Invia Nome e Cognome (e riottienili ...)"&gt;
+&lt;/TD&gt;&lt;/TR&gt;&lt;/TABLE&gt;&lt;/FORM&gt;
+</pre>
+
+
+
+
+
+
+
+
+
+
+
+
+<p><hr><p>
+<h2>
+ESEMPIO 1.2: come prima ma get
+</h2>
+Ecco una form che riceve i dati (nome e cognome)
+per l'iscrizione ad un corso:
+<FORM action=http://localhost/cgi-local-bin/java/Cat.bat method=get>
+<TABLE border=1 width="100%">
+<TR>
+    <TD width="24%"><DIV align=right><P>Nome:</P></DIV></TD>
+    <TD width="76%"><INPUT name=nome></TD></TR>
+<TR>
+    <TD width="24%"><DIV align=right><P>Cognome:</P></DIV></TD>
+    <TD width="76%"><INPUT name=cognome></TD></TR>
+<TR>
+    <TD width="24%"><DIV align=right>
+    <P><INPUT name=B2 type=reset value=Ricompila></P></DIV></TD>
+    <TD width="76%"><INPUT name=S1
+                           type=submit
+                           value="Invia Nome e Cognome (e riottienili ...)">
+</TD></TR></TABLE></FORM>
+
+<h3> La form invia i dati al programma Cat,
+...
+</h3>
+
+Per&ograve ci fornisce la possibilit&agrave
+di vedere cosa raggiunge il web server: essendo il programma attivato
+da una richiesta GET, il file di input standard &egrave vuoto.
+<br>
+viceversa tutte le informazioni stanno nella QUERY_STRING
+
+<h3>
+ed ecco il codice della form
+</h3>
+
+<pre>
+&lt;FORM action=http://localhost/cgi-local-bin/java/Cat.bat method=get&gt;
+&lt;TABLE border=1 width="100%"&gt;
+&lt;TR&gt;
+    &lt;TD width="24%"&gt;&lt;DIV align=right&gt;&lt;P&gt;Nome:&lt;/P&gt;&lt;/DIV&gt;&lt;/TD&gt;
+    &lt;TD width="76%"&gt;&lt;INPUT name=nome&gt;&lt;/TD&gt;&lt;/TR&gt;
+&lt;TR&gt;
+    &lt;TD width="24%"&gt;&lt;DIV align=right&gt;&lt;P&gt;Cognome:&lt;/P&gt;&lt;/DIV&gt;&lt;/TD&gt;
+    &lt;TD width="76%"&gt;&lt;INPUT name=cognome&gt;&lt;/TD&gt;&lt;/TR&gt;
+&lt;TR&gt;
+    &lt;TD width="24%"&gt;&lt;DIV align=right&gt;
+    &lt;P&gt;&lt;INPUT name=B2 type=reset value=Ricompila&gt;&lt;/P&gt;&lt;/DIV&gt;&lt;/TD&gt;
+    &lt;TD width="76%"&gt;&lt;INPUT name=S1
+                           type=submit
+                           value="Invia Nome e Cognome (e riottienili ...)"&gt;
+&lt;/TD&gt;&lt;/TR&gt;&lt;/TABLE&gt;&lt;/FORM&gt;
+</pre>
+
+
+
+
+
+<p><hr><p>
+<h2>
+ESEMPIO 2.0: </h2>
+stessa form di prima ma spedita a Probe2.bat.
+<h2>
+Probe2.bat
+</h2>
+<pre>
+@echo off
+java -DQS=%QUERY_STRING% -DSN=%SERVER_NAME% Probe2
+</pre>
+<STRONG>Probe2.bat</STRONG> lancia <STRONG>Probe2.class</STRONG>,
+fornendogli le associazioni
+tra alcuni identificatori e alcune variabili d'ambiente.
+<br>
+Solo le variabili d'ambiente "associate" saranno utilizzabili
+dal programma java.
+
+Il
+programma java <STRONG>Probe2.java</STRONG>, compilato in Probe2.class
+(tutto in cgi-bin/java)
+stampa le variabili d'ambiente note (per quelle non note viene stampato null)
+e poi stampa il contenuto del file di input standard.
+
+La form che riceve dati (nome e cognome) &egrave la solita ...
+<FORM action=http://localhost/cgi-local-bin/java/Probe2.bat method=post>
+<TABLE border=1 width="100%">
+<TR>
+    <TD width="24%"><DIV align=right><P>Nome:</P></DIV></TD>
+    <TD width="76%"><INPUT name=nome></TD></TR>
+<TR>
+    <TD width="24%"><DIV align=right><P>Cognome:</P></DIV></TD>
+    <TD width="76%"><INPUT name=cognome></TD></TR>
+<TR>
+    <TD width="24%"><DIV align=right>
+    <P><INPUT name=B2 type=reset value=Ricompila></P></DIV></TD>
+    <TD width="76%"><INPUT name=S1
+                           type=submit
+                           value="Invia Nome e Cognome (e riottienili ...)">
+</TD></TR></TABLE></FORM>
+
+
+
+
+
+
+
+
+
+
+<p><hr><p>
+<h2>
+ESEMPIO 2.1: </h2>
+Tutto come in esempio 2.0, ma con method=get.
+<h2>
+Probe2.bat
+</h2>
+<pre>
+@echo off
+java -DQS="%QUERY_STRING%" -DSN="%SERVER_NAME%" Probe2
+</pre>
+
+<FORM action=http://localhost/cgi-local-bin/java/Probe2.bat method="get">
+<TABLE border=1 width="100%">
+<TR>
+    <TD width="24%"><DIV align=right><P>Nome:</P></DIV></TD>
+    <TD width="76%"><INPUT name=nome></TD></TR>
+<TR>
+    <TD width="24%"><DIV align=right><P>Cognome:</P></DIV></TD>
+    <TD width="76%"><INPUT name=cognome></TD></TR>
+<TR>
+    <TD width="24%"><DIV align=right>
+    <P><INPUT name=B2 type=reset value=Ricompila></P></DIV></TD>
+    <TD width="76%"><INPUT name=S1
+                           type=submit
+                           value="Invia Nome e Cognome (e riottienili ...)">
+</TD></TR></TABLE></FORM>
+
+<h3>
+ed ecco il codice della form
+</h3>
+
+<pre>
+&lt;FORM action=http://localhost/cgi-local-bin/java/Cat.bat method=get&gt;
+&lt;TABLE border=1 width="100%"&gt;
+&lt;TR&gt;
+    &lt;TD width="24%"&gt;&lt;DIV align=right&gt;&lt;P&gt;Nome:&lt;/P&gt;&lt;/DIV&gt;&lt;/TD&gt;
+    &lt;TD width="76%"&gt;&lt;INPUT name=nome&gt;&lt;/TD&gt;&lt;/TR&gt;
+&lt;TR&gt;
+    &lt;TD width="24%"&gt;&lt;DIV align=right&gt;&lt;P&gt;Cognome:&lt;/P&gt;&lt;/DIV&gt;&lt;/TD&gt;
+    &lt;TD width="76%"&gt;&lt;INPUT name=cognome&gt;&lt;/TD&gt;&lt;/TR&gt;
+&lt;TR&gt;
+    &lt;TD width="24%"&gt;&lt;DIV align=right&gt;
+    &lt;P&gt;&lt;INPUT name=B2 type=reset value=Ricompila&gt;&lt;/P&gt;&lt;/DIV&gt;&lt;/TD&gt;
+    &lt;TD width="76%"&gt;&lt;INPUT name=S1
+                           type=submit
+                           value="Invia Nome e Cognome (e riottienili ...)"&gt;
+&lt;/TD&gt;&lt;/TR&gt;&lt;/TABLE&gt;&lt;/FORM&gt;
+</pre>
+
+<p><hr><p>
+<h2>
+ESEMPIO 3: uso dei dati inviati dalla form</h2>
+La form &grave la solita.
+<p>
+Stavolta gestiamo i dati ricevuti dalla form (nome e cognome). La gestione
+consiste nella semplice stampa.
+<p>
+La action della form attiva, con metodo get il batch
+<STRONG>Probe3.bat</STRONG>, che attiva
+<STRONG>Probe3.class</STRONG>.
+
+<FORM action=http://localhost/cgi-local-bin/java/Probe3.bat method="get">
+<TABLE border=1 width="100%">
+<TR>
+    <TD width="24%"><DIV align=right><P>Nome:</P></DIV></TD>
+    <TD width="76%"><INPUT name=nome></TD></TR>
+<TR>
+    <TD width="24%"><DIV align=right><P>Cognome:</P></DIV></TD>
+    <TD width="76%"><INPUT name=cognome></TD></TR>
+<TR>
+    <TD width="24%"><DIV align=right>
+    <P><INPUT name=B2 type=reset value=Ricompila></P></DIV></TD>
+    <TD width="76%"><INPUT name=S1
+                           type=submit
+                           value="Invia Nome e Cognome (e riottienili ...)">
+</TD></TR></TABLE></FORM>
+
+<h2>
+Probe3.bat
+</h2>
+<pre>
+@echo off
+java -DQS="%QUERY_STRING%" -DSN="%SERVER_NAME%" Probe3
+</pre>
+<h2>
+Probe3.java
+</h2>
+<pre>
+import java.io.*;
+import java.util.StringTokenizer;
+
+class Probe3 {
+
+    public static void main(String args[]) {
+      int ch;
+
+  System.out.println("Content-type:text/html\n\n");
+  System.out.println("&ltHTML>\n&ltHEAD>\n");
+  System.out.println("&ltTITLE> Pprogrammino java cgi&lt/TITLE>\n");
+  System.out.println("&lt/HEAD>\n\n&ltBODY>\n");
+  System.out.println("&ltH2>Risultati del programmino Java Probe3&lt/H2>\n");
+
+
+  String qs = System.getProperty("QS");
+  String sn = System.getProperty("SN");
+
+  System.out.println("&lth2> Benvenuti sul server "+ sn +"!&lt/h2>\n");
+  System.out.println("Adesso processiamo la query string seguente:\n");
+  System.out.println("&ltbr>" + qs +"\n");
+
+
+  StringTokenizer tokenizer = new StringTokenizer(qs, "=&");
+
+/* approvigionamento semplice */
+String	nomeCampo1 = tokenizer.nextToken();
+String	valCampo1  = tokenizer.nextToken();
+String	nomeCampo2 = tokenizer.nextToken();
+String	valCampo2  = tokenizer.nextToken();
+
+  System.out.println("&ltHR&gt\n");
+  System.out.println("Abbiamo ricevuto i seguenti dati:\n");
+
+  System.out.println("&ltul&gt\n");
+
+  System.out.println("&ltLI&gt &ltSTRONG&gt" + nomeCampo1);
+  System.out.println("&lt/STRONG&gt = " + valCampo1 + "\n");
+
+  System.out.println("&ltLI&gt &ltSTRONG&gt" + nomeCampo2);
+  System.out.println("&lt/STRONG&gt = " + valCampo2 + "\n");
+
+  System.out.println("&lt/ul&gt\n");
+  System.out.println("&ltHR&gt\n");
+  System.out.println("Non molto ... ma in java\n");
+  System.out.println("&ltHR&gt\n");
+  System.out.println("&lt/BODY&gt\n\n&lt/HTML&gt");
+  }
+
+}
+</pre>
+
+
+<h3>
+ed ecco il codice della form
+</h3>
+
+<pre>
+&lt;FORM action=http://localhost/cgi-local-bin/java/Probe3.bat method=get&gt;
+&lt;TABLE border=1 width="100%"&gt;
+&lt;TR&gt;
+    &lt;TD width="24%"&gt;&lt;DIV align=right&gt;&lt;P&gt;Nome:&lt;/P&gt;&lt;/DIV&gt;&lt;/TD&gt;
+    &lt;TD width="76%"&gt;&lt;INPUT name=nome&gt;&lt;/TD&gt;&lt;/TR&gt;
+&lt;TR&gt;
+    &lt;TD width="24%"&gt;&lt;DIV align=right&gt;&lt;P&gt;Cognome:&lt;/P&gt;&lt;/DIV&gt;&lt;/TD&gt;
+    &lt;TD width="76%"&gt;&lt;INPUT name=cognome&gt;&lt;/TD&gt;&lt;/TR&gt;
+&lt;TR&gt;
+    &lt;TD width="24%"&gt;&lt;DIV align=right&gt;
+    &lt;P&gt;&lt;INPUT name=B2 type=reset value=Ricompila&gt;&lt;/P&gt;&lt;/DIV&gt;&lt;/TD&gt;
+    &lt;TD width="76%"&gt;&lt;INPUT name=S1
+                           type=submit
+                           value="Invia Nome e Cognome (e riottienili ...)"&gt;
+&lt;/TD&gt;&lt;/TR&gt;&lt;/TABLE&gt;&lt;/FORM&gt;
+</pre>
+
+
+
+<hr>
+</body>
+</html>
+

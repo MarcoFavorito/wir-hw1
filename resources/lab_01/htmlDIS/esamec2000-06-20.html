@@ -1,0 +1,197 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN"
+           "http://www.w3.org/TR/REC-html40/loose.dtd">
+<HTML>  
+<HEAD>
+  <META NAME="GENERATOR" CONTENT="Adobe PageMill 3.0 Mac">
+  <META NAME="GENERATOR" CONTENT="TtH 2.25">
+  <TITLE>Fondamenti di Informatica (Amb. e Territorio) - Esame del 20/6/2000</TITLE>
+</HEAD>
+<BODY>
+
+<P><CENTER><B>Universit&agrave; di Roma &quot;La Sapienza&quot;<BR>
+Facolt&agrave; di Ingegneria<BR>
+Corso di Fondamenti di Informatica - A.A. 1999/2000<BR>
+Corso di Laurea: </B>Ambiente e Territorio<BR>
+Appello del <B>20 giugno 2000</B> - 1&ordf; prova scritta<BR>
+<EM>tempo a disposizione: 2 ore</EM></CENTER></P>
+
+<P>&nbsp;</P>
+
+<P><B>Problema 1 (18 punti)</B> Un tifoso di calcio scrive su
+un file di testo i risultati delle partite a cui &egrave; interessato.
+Per ogni partita sono rappresentate nel file le seguenti informazioni:</P>
+
+<UL>
+  <LI>nome squadra che gioca in casa (max 20 caratteri);
+  <LI>nome squadra che gioca in trasferta (max 20 caratteri);
+  <LI>goal squadra che gioca in casa (intero non negativo);
+  <LI>goal squadra che gioca in trasferta (intero non negativo).
+</UL>
+
+<P>Ad esempio, in un certo istante il file potrebbe contenere
+le seguenti informazioni:</P>
+
+<PRE>
+GENZANO PRATO 0 3
+CROTONE PERUGIA 0 0
+TERNI SPOLETO 2 2
+PRATO NARNI 4 3
+PERUGIA COLLEFERRO 0 0
+SPOLETO ANGUILLARA 2 2
+GELA COMO 1 0
+GELA BARI 0 2
+BARI TERNI 2 2</PRE>
+
+<P>Si richiede di risolvere i seguenti punti:</P>
+
+<OL>
+  <LI>Scrivere le dichiarazioni dei tipi di dato C da utilizzarsi
+  per risolvere i punti successivi. <EM>Qualora si utilizzino variabili
+  globali motivare adeguatamente la scelta.</EM>
+  <LI>Scrivere una funzione C (o pi&ugrave;) che riceve come parametri
+  di ingresso il nome fisico f del file che contiene i dati e i
+  nomi di due squadre p ed s, e restituisce, attraverso parametri
+  di output e/o valori restituiti dalla funzione, un array A contenente,
+  nell'ordine, i dati relativi a tutte e sole le partite in cui
+  p ha vinto, seguiti dai dati relativi a tutte e sole le partite
+  in cui s ha vinto.
+  <P>Ad esempio, facendo riferimento al file sopra riportato e
+  alle squadre <TT>PRATO</TT> e <TT>GELA</TT>, la funzione deve
+  restituire l'array A con le seguenti informazioni:
+  <P><TABLE BORDER="0" CELLSPACING="2" CELLPADDING="0">
+    <TR>
+      <TD><TT>GENZANO</TT></TD> 
+      <TD><TT>PRATO</TT></TD> 
+      <TD><TT>0</TT></TD> 
+      <TD><TT>3</TT></TD> 
+      <TD ALIGN="CENTER"><I><FONT SIZE="-2">(cella 0)</FONT></I></TD> 
+    </TR>
+    <TR>
+      <TD><TT>PRATO</TT></TD> 
+      <TD><TT>NARNI</TT></TD> 
+      <TD><TT>4</TT></TD> 
+      <TD><TT>3</TT></TD> 
+      <TD ALIGN="CENTER"><I><FONT SIZE="-2">(cella 1)</FONT></I></TD> 
+    </TR>
+    <TR>
+      <TD><TT>GELA</TT></TD> 
+      <TD><TT>COMO</TT></TD> 
+      <TD><TT>1</TT></TD> 
+      <TD><TT>0</TT></TD> 
+      <TD ALIGN="CENTER"><I><FONT SIZE="-2">(cella 2)</FONT></I></TD> 
+    </TR>
+  </TABLE>
+  <LI>Scrivere una funzione C (o pi&ugrave;) che, ricevendo come
+  parametri di ingresso il nome fisico f del file che contiene
+  i dati e il nome fisico g di un file, crea un file di testo g
+  contenente i nomi di tutte le squadre che hanno effettuato pi&ugrave;
+  pareggi. Scrivere i nome delle squadre su righe differenti.
+  <P>Ad esempio, facendo riferimento al file sopra riportato, il
+  massimo numero di pareggi (due) &egrave; stato raggiunto dalle
+  squadre <TT>PERUGIA</TT> e <TT>SPOLETO</TT>, per cui la funzione
+  deve produrre un file con le seguenti informazioni:
+  <P><TABLE BORDER="0" CELLSPACING="2" CELLPADDING="0">
+    <TR>
+      <TD><TT>PERUGIA</TT></TD> 
+      <TD ALIGN="CENTER"><I><FONT SIZE="-2">&nbsp;(riga 1)</FONT></I></TD> 
+    </TR>
+    <TR>
+      <TD><TT>SPOLETO</TT></TD> 
+      <TD ALIGN="CENTER"><I><FONT SIZE="-2">&nbsp;(riga 2)</FONT></I></TD> 
+    </TR>
+  </TABLE>
+</OL>
+
+<P><HR ALIGN=LEFT></P>
+
+<P><CENTER><B>Universit&agrave; di Roma &quot;La Sapienza&quot;<BR>
+Facolt&agrave; di Ingegneria<BR>
+Corso di Fondamenti di Informatica - A.A. 1999/2000<BR>
+Corso di Laurea: </B>Ambiente e Territorio<BR>
+Appello del <B>20 giugno 2000</B> - 2&ordf; prova scritta<BR>
+<EM>tempo a disposizione: 1 ora</EM></CENTER></P>
+
+<P>&nbsp;</P>
+
+<P><B>Problema 2 (4 punti)</B> In relazione alla costruzione di
+programmi scritti in un linguaggio di programmazione ad alto livello,
+illustrare i concetti di</P>
+
+<UL>
+  <LI>correttezza,
+  <LI>efficienza,
+  <LI>leggibilit&agrave; e
+  <LI>parametricit&agrave;.
+</UL>
+
+<P>&nbsp;</P>
+
+<P><B>Problema 3 (4 punti)</B> Si consideri il seguente programma
+C</P>
+
+<PRE></PRE>
+
+<BLOCKQUOTE>
+  <PRE>#include &lt;stdio.h&gt;
+int Boh(int i) {
+    if ((i%2) == 0)
+        return 1 + Boh(i/2);
+    else
+        return 0;
+}
+int main(void) {
+    printf(&quot;%d\n&quot;, Boh(24));
+    return 0;
+}</PRE>
+</BLOCKQUOTE>
+
+<P>&nbsp;</P>
+
+<UL>
+  <LI>Descrivere cosa fa la funzione <TT>Boh</TT>. Che valore viene
+  stampato dal programma? Mostrare l'evoluzione dei valori delle
+  variabili nella varie attivazioni della funzione <TT>Boh</TT>.
+  <LI>Esiste un valore del parametro attuale per il quale l'attivazione
+  della funzione <TT>Boh</TT> non termina?
+</UL>
+
+<P>&nbsp;</P>
+
+<P><B>Problema 4 (4 punti)</B> Date le relazioni <TT>Automobili(Produttore,
+Modello, Potenza, VelocitaMax)</TT> e <TT>Tragitti(Partenza, Destinazione,
+Distanza)</TT>, scrivere una interrogazione SQL che costruisca
+la lista dei produttori delle automobili che, almeno in teoria,
+sarebbero in grado di completare il tragitto Roma&nbsp;-&nbsp;Milano
+in meno di 3 ore.</P>
+
+<P><FONT SIZE="-1">Descrizione degli attributi:</FONT></P>
+
+<UL>
+  <LI><TT><FONT SIZE="-1">Automobili.Produttore</FONT></TT><FONT
+   SIZE="-1">. Nome del (ad es., <TT>'Fiat'</TT>, <TT>'Alfa Romeo'</TT>
+  ecc.).</FONT>
+  <LI><TT><FONT SIZE="-1">Automobili.Modello</FONT></TT><FONT SIZE="-1">.
+  Nome del modello (ad es., <TT>'Bravo'</TT>, <TT>'GTV'</TT> ecc.).</FONT>
+  <LI><TT><FONT SIZE="-1">Automobili.Potenza</FONT></TT><FONT SIZE="-1">.
+  Potenza erogata dal motore, in KW.</FONT>
+  <LI><TT><FONT SIZE="-1">Automobili.VelocitaMax</FONT></TT><FONT
+   SIZE="-1">. Velocit&agrave; massima dell'auto, in Km/h.</FONT>
+  <LI><TT><FONT SIZE="-1">Tragitti.Partenza</FONT></TT><FONT SIZE="-1">.
+  Nome della citt&agrave; di partenza (ad es., <TT>'Roma'</TT>,
+  <TT>'Milano'</TT>, <TT>'Bologna'</TT> ecc.).</FONT>
+  <LI><TT><FONT SIZE="-1">Tragitti.Destinazione</FONT></TT><FONT
+   SIZE="-1">. Nome della citt&agrave; di destinazione (ad es.,
+  <TT>'Firenze'</TT>, <TT>'Cosenza'</TT>, <TT>'Napoli'</TT> ecc.).</FONT>
+  <LI><TT><FONT SIZE="-1">Tragitti.Distanza</FONT></TT><FONT SIZE="-1">.
+  Distanza fra partenza e destinazione, in Km.</FONT>
+</UL>
+
+<P>&nbsp;</P>
+
+<P><HR ALIGN=LEFT><FONT SIZE="-1">File translated from T<sub>E</sub>X
+by <A HREF="http://hutchinson.belmont.ma.us/tth/">T<sub>T</sub>H</A>,
+version 2.25.<BR>
+On 26 Jun 2000, 16:33.</FONT>
+
+</BODY>
+</HTML>

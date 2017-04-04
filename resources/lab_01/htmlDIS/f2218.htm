@@ -1,0 +1,73 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=windows-1252">
+<TITLE>1</TITLE>
+</HEAD>
+<BODY background="bgrnd.jpg">
+
+<B><FONT SIZE=5><P>18)</FONT><FONT SIZE=5> </FONT><FONT SIZE=5>Programmazione dinamica </P>
+</B></FONT><P ALIGN="RIGHT">Riferimenti: <B>[2]</B> capitolo 26</P>
+<hr>
+<OL>
+
+<I><LI>Descrizione della tecnica</LI>
+</I><P ALIGN="JUSTIFY">Utilizzo delle soluzioni di tutti i sottoproblemi di ordine inferiore per la risoluzione del problema originario (bottom up).  </P>
+<I><LI>Differenze con la tecnica "Divide et Impera"</LI>
+</I><P ALIGN="JUSTIFY">La tecnica "Divide et Impera" individua e risolve (ricorsivamente) i sottoproblemi rilevanti e non tiene conto di soluzioni eventualmente gi&agrave; determinate.  La "Programmazione dinamica" individua e risolve (iterativamente) tutti i sottoproblemi, sfruttando le soluzioni determinate nei passi precedenti.  Se il numero di sottoproblemi, rilevanti per la soluzione, &egrave; minimo allora &egrave; conveniente un algoritmo "Divide et Impera"; il peso dovuto all'individuazione dei sottoproblemi &egrave; ripagato dal minor numero di sottoproblemi da risolvere.  Se vanno risolti, tutti o quasi, i sottoproblemi e se durante il procedimento alcune soluzioni vanno riutilizzate pi&ugrave; volte allora &egrave; conveniente un algoritmo di "Programmazione dinamica". </P>
+<I><LI>Esempio - Calcolo del numero di Fibonacci </LI>
+<P ALIGN="CENTER">Fibonacci(0) <FONT FACE="Wingdings">&#224;</FONT>
+ 0;</P>
+<P ALIGN="CENTER">Fibonacci(1) <FONT FACE="Wingdings">&#224;</FONT>
+ 1;</P>
+<P ALIGN="CENTER">Fibonacci(2) <FONT FACE="Wingdings">&#224;</FONT>
+ 1;</P>
+<P ALIGN="CENTER">Fibonacci(3) <FONT FACE="Wingdings">&#224;</FONT>
+ 2;</P>
+<P ALIGN="CENTER">Fibonacci(4) <FONT FACE="Wingdings">&#224;</FONT>
+ 3;</P>
+<P ALIGN="CENTER">Fibonacci(5) <FONT FACE="Wingdings">&#224;</FONT>
+ 5;</P>
+<P ALIGN="CENTER">Fibonacci(6) <FONT FACE="Wingdings">&#224;</FONT>
+ 8;</P>
+<P ALIGN="CENTER">Fibonacci(7) <FONT FACE="Wingdings">&#224;</FONT>
+ 13;</P>
+<P ALIGN="CENTER">Fibonacci(8) <FONT FACE="Wingdings">&#224;</FONT>
+ 21;</P>
+<P ALIGN="CENTER">Fibonacci(9) <FONT FACE="Wingdings">&#224;</FONT>
+ 34;</P>
+</I>
+<P ALIGN="JUSTIFY">Algoritmo ricorsivo (complessit&agrave; esponenziale):</P>
+<P ALIGN="JUSTIFY">Fibonacci(n) {</P>
+<P ALIGN="JUSTIFY">if (n&lt;=1) return n;</P>
+<P ALIGN="JUSTIFY">else return Fibonacci(n-1)+Fibonacci(n-2); }</P>
+<P ALIGN="JUSTIFY">Algoritmo iterativo (complessit&agrave; lineare):</P>
+<P ALIGN="JUSTIFY">Fibonacci(n) {</P>
+<P ALIGN="JUSTIFY">if (n&lt;=1) return n;</P>
+<P ALIGN="JUSTIFY">else </P>
+<P ALIGN="JUSTIFY">fib0=0; fib1=1;</P>
+<P ALIGN="JUSTIFY">for (int i=1; i&lt;=n; i++) {</P>
+<P ALIGN="JUSTIFY">fib = fib0 + fib1</P>
+<P ALIGN="JUSTIFY">fib0=fib1; fib1=fib;</P>
+<P ALIGN="JUSTIFY">}</P>
+<P ALIGN="JUSTIFY">return fib; }</P>
+<I><LI>Esempio - Distanze minime tra tutte i nodi di un grafo </LI></OL>
+<DIR>
+<DIR>
+
+</I><P ALIGN="JUSTIFY">Pu&ograve; essere risolto con N chiamate all'algoritmo di Dijkstra, con complessit&agrave; totale O(n<SUP>3</SUP>) o applicando un algoritmo di "Programmazione dinamica" noto come Floyd-Warshall.</P>
+<P ALIGN="JUSTIFY">D(i,j) <FONT FACE="Wingdings">&#224;</FONT>
+ peso dell'arco da i e j</P>
+<P ALIGN="JUSTIFY">D<SUP>k</SUP>(i,j) con k compreso tra 0 e N <FONT FACE="Wingdings">&#224;</FONT>
+ distanza minima dei cammini da i a j in cui i nodi intermedi sono i nodi S, con k <FONT FACE="Symbol">&#179;</FONT>
+ S.</P></DIR>
+</DIR>
+
+<OL>
+
+<OL>
+
+<LI>Vengono posti inizialmente D<SUP>0</SUP>(i, j) = D(i, j) per tutti gli i e j compresi tra 1 e N (con i<FONT FACE="Symbol">&#185;</FONT>
+j)</LI><LI>Vengono posti inizialmente D<SUP>0</SUP>(i, i) = 0 per i compreso tra 1 e N</LI><LI>Per k crescente, vengono calcolate le distanze D<SUP>k</SUP>(i, j) = min(D<SUP>k-1</SUP>(i, j), D<SUP>k-1</SUP>(i, k) + D<SUP>k-1</SUP>(k, j)) per tutti gli i e j compresi tra 1 e N.                                                                 </LI></OL>
+</OL>
+</BODY>
+</HTML>

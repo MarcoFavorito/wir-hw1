@@ -1,0 +1,93 @@
+<!doctype html public "-//w3c//dtd html 4.0 transitional//en">
+<html>
+<head>
+<link href="java.css" rel="stylesheet" type="text/css">
+<title>Alternative multiple</title>
+</head>
+
+<body>
+
+<h2>Alternative multiple</h2>
+
+<p>
+Il programma
+<a href="SecondoGradoElse.java">SecondoGradoElse.java</a>
+risolve il problema delle soluzioni di una equazione di
+secondo grado usando istruzioni condizionali con
+alternativa (invece delle tre istruzioni condizionali
+semplici).
+
+<pre>
+/*
+  Soluzione equazione di secondo grado.
+*/
+
+class SecondoGradoElse {
+  public static void main (String args[]) {
+    double a=2, b=5, c=3;
+    double d;
+    double s1, s2;
+
+    d=b*b-4*a*c;
+
+    if( d==0 ) {
+      s1=(-b - Math.sqrt( b*b -4*a*c ))/(2*a);
+      s2=s1;
+      System.out.println("Soluzioni coincidenti: " + s1);
+    }
+    else if( d>0 ) {
+      s1=(-b - Math.sqrt( b*b -4*a*c ))/(2*a);
+      s2=(-b + Math.sqrt( b*b -4*a*c ))/(2*a);
+      System.out.println("Soluzioni reali: " + s1 + " " + s2);
+    }
+    else {
+      System.out.println("Soluzioni complesse");
+    }
+  }
+}
+
+</pre>
+
+<p>
+In questo programma si nota l'uso della sequenza
+<tt>else if</tt>. In generale &egrave; possibile
+costruire una sequenza di questo tipo.
+
+<pre>
+if( condizione1 ) {
+  A
+}
+else if( condizione 2 ) {
+  B
+}
+else {
+  C
+}
+</pre>
+
+<p>
+In esecuzione, si verifica prima se <tt>condizione1</tt>
+&egrave; vera. Se lo &egrave;, si esegue <tt>A</tt> e si
+passa poi al seguito del programma. Se questa condizione
+&egrave; falsa, si va a vedere se <tt>condizione2</tt>
+&egrave; vera o falsa. Nel primo caso, si esegue <tt>B</tt>,
+nel secondo caso si esegue <tt>C</tt>. La traduzione letterale
+dei termini inglesi aiuta a interpretare queste istruzioni:
+
+<pre>
+se condizione1 &egrave; vera
+allora esegui A,
+altrimenti:
+   se condizione2 &egrave; vera
+   allora esegui B,
+   altrimenti esegui C
+</pre>
+
+<p>
+Da notare che <tt>C</tt> viene eseguito solo se sia <tt>A</tt>
+che <tt>B</tt> sono falsi.<p>
+
+</body>
+</html>
+
+

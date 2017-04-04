@@ -1,0 +1,428 @@
+<!doctype html public "-//w3c//dtd html 4.0 transitional//en">
+<html>
+<head>
+   <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <meta name="GENERATOR" content="Mozilla/4.6 [en] (X11; I; SunOS 5.7 sun4u) [Netscape]">
+   <title>Testo esame del 14/10/1999</title>
+</head>
+<body>
+
+<center><b>Universit&agrave; di Roma ``La Sapienza''</b>
+<br><b>Facolt&agrave; di Ingegneria</b>
+<br><b>Corso di Fondamenti di Informatica</b>
+<br><b>Corso di Laurea: </b>Ambiente e Territorio
+<br>Appello del <b>14/10/1999</b> - 1<sup>a</sup> prova scritta
+<br><i>tempo a disposizione: 2 ore</i></center>
+
+<p><b>Problema 1 (18 punti)</b> Un sistema grafico &egrave; in grado di
+gestire uno schermo quadrato di 10&times;10 punti, ognuno dei quali pu&ograve;
+essere acceso o spento. Il sistema riceve un'immagine da visualizzare sotto
+forma di un file composto da una sequenza di linee, dove ogni linea ha
+il formato:
+<p>n<sub>1</sub> n<sub>2</sub> n<sub>3</sub>
+<p>in cui n<sub>1</sub>, n<sub>2</sub> e n<sub>3</sub> sono interi compresi
+fra 0 e 9. Il significato di tale linea &egrave; che nella riga n<sub>1</sub>
+dello schermo si accendono, a partire dalla posizione n<sub>2</sub> compresa,
+n<sub>3</sub> punti. Ad esempio, se il contenuto del file &egrave; il seguente:
+<table>
+<tr>
+<td ALIGN=CENTER>4&nbsp;</td>
+
+<td ALIGN=CENTER>7&nbsp;</td>
+
+<td ALIGN=CENTER>1</td>
+</tr>
+
+<tr>
+<td ALIGN=CENTER>1&nbsp;</td>
+
+<td ALIGN=CENTER>2&nbsp;</td>
+
+<td ALIGN=CENTER>1</td>
+</tr>
+
+<tr>
+<td ALIGN=CENTER>1&nbsp;</td>
+
+<td ALIGN=CENTER>3&nbsp;</td>
+
+<td ALIGN=CENTER>6</td>
+</tr>
+
+<tr>
+<td ALIGN=CENTER>7&nbsp;</td>
+
+<td ALIGN=CENTER>0&nbsp;</td>
+
+<td ALIGN=CENTER>10</td>
+</tr>
+
+<tr>
+<td ALIGN=CENTER>9&nbsp;</td>
+
+<td ALIGN=CENTER>0&nbsp;</td>
+
+<td ALIGN=CENTER>1</td>
+</tr>
+
+<tr>
+<td ALIGN=CENTER>2&nbsp;</td>
+
+<td ALIGN=CENTER>9&nbsp;</td>
+
+<td ALIGN=CENTER>1</td>
+</tr>
+</table>
+
+<p>allora lo schermo corrispondente &egrave; il seguente (distinguendo
+con il carattere '<tt>*</tt>' il punto acceso e specificando i numeri da
+0 a 9 per evidenziare le coordinate dei punti) :
+<br>&nbsp;
+<table BORDER NOSAVE >
+<tr>
+<td ALIGN=CENTER></td>
+
+<td ALIGN=CENTER>0&nbsp;</td>
+
+<td ALIGN=CENTER>1&nbsp;</td>
+
+<td ALIGN=CENTER>2&nbsp;</td>
+
+<td ALIGN=CENTER>3&nbsp;</td>
+
+<td ALIGN=CENTER>4&nbsp;</td>
+
+<td ALIGN=CENTER>5&nbsp;</td>
+
+<td ALIGN=CENTER>6&nbsp;</td>
+
+<td ALIGN=CENTER>7&nbsp;</td>
+
+<td ALIGN=CENTER>8&nbsp;</td>
+
+<td ALIGN=CENTER>9</td>
+</tr>
+
+<tr>
+<td ALIGN=CENTER>0&nbsp;</td>
+
+<td ALIGN=CENTER></td>
+
+<td ALIGN=CENTER></td>
+
+<td ALIGN=CENTER></td>
+
+<td ALIGN=CENTER></td>
+
+<td ALIGN=CENTER></td>
+
+<td ALIGN=CENTER></td>
+
+<td ALIGN=CENTER></td>
+
+<td ALIGN=CENTER></td>
+
+<td ALIGN=CENTER></td>
+
+<td ALIGN=CENTER></td>
+</tr>
+
+<tr NOSAVE>
+<td ALIGN=CENTER>1&nbsp;</td>
+
+<td ALIGN=CENTER></td>
+
+<td ALIGN=CENTER></td>
+
+<td ALIGN=CENTER>*</td>
+
+<td ALIGN=CENTER>*</td>
+
+<td ALIGN=CENTER>*</td>
+
+<td ALIGN=CENTER NOSAVE>*</td>
+
+<td ALIGN=CENTER>*</td>
+
+<td ALIGN=CENTER>*</td>
+
+<td ALIGN=CENTER>*</td>
+
+<td ALIGN=CENTER></td>
+</tr>
+
+<tr NOSAVE>
+<td ALIGN=CENTER>2&nbsp;</td>
+
+<td ALIGN=CENTER></td>
+
+<td ALIGN=CENTER NOSAVE></td>
+
+<td ALIGN=CENTER></td>
+
+<td ALIGN=CENTER></td>
+
+<td ALIGN=CENTER></td>
+
+<td ALIGN=CENTER></td>
+
+<td ALIGN=CENTER></td>
+
+<td ALIGN=CENTER></td>
+
+<td ALIGN=CENTER></td>
+
+<td ALIGN=CENTER>*</td>
+</tr>
+
+<tr>
+<td ALIGN=CENTER>3&nbsp;</td>
+
+<td ALIGN=CENTER></td>
+
+<td ALIGN=CENTER></td>
+
+<td ALIGN=CENTER></td>
+
+<td ALIGN=CENTER></td>
+
+<td ALIGN=CENTER></td>
+
+<td ALIGN=CENTER></td>
+
+<td ALIGN=CENTER></td>
+
+<td ALIGN=CENTER></td>
+
+<td ALIGN=CENTER></td>
+
+<td ALIGN=CENTER></td>
+</tr>
+
+<tr>
+<td ALIGN=CENTER>4&nbsp;</td>
+
+<td ALIGN=CENTER></td>
+
+<td ALIGN=CENTER></td>
+
+<td ALIGN=CENTER></td>
+
+<td ALIGN=CENTER></td>
+
+<td ALIGN=CENTER></td>
+
+<td ALIGN=CENTER></td>
+
+<td ALIGN=CENTER></td>
+
+<td ALIGN=CENTER>*</td>
+
+<td ALIGN=CENTER></td>
+
+<td ALIGN=CENTER></td>
+</tr>
+
+<tr>
+<td ALIGN=CENTER>5&nbsp;</td>
+
+<td ALIGN=CENTER></td>
+
+<td ALIGN=CENTER></td>
+
+<td ALIGN=CENTER></td>
+
+<td ALIGN=CENTER></td>
+
+<td ALIGN=CENTER></td>
+
+<td ALIGN=CENTER></td>
+
+<td ALIGN=CENTER></td>
+
+<td ALIGN=CENTER></td>
+
+<td ALIGN=CENTER></td>
+
+<td ALIGN=CENTER></td>
+</tr>
+
+<tr>
+<td ALIGN=CENTER>6&nbsp;</td>
+
+<td ALIGN=CENTER></td>
+
+<td ALIGN=CENTER></td>
+
+<td ALIGN=CENTER></td>
+
+<td ALIGN=CENTER></td>
+
+<td ALIGN=CENTER></td>
+
+<td ALIGN=CENTER></td>
+
+<td ALIGN=CENTER></td>
+
+<td ALIGN=CENTER></td>
+
+<td ALIGN=CENTER></td>
+
+<td ALIGN=CENTER></td>
+</tr>
+
+<tr>
+<td ALIGN=CENTER>7&nbsp;</td>
+
+<td ALIGN=CENTER>*</td>
+
+<td ALIGN=CENTER>*&nbsp;</td>
+
+<td ALIGN=CENTER>*&nbsp;</td>
+
+<td ALIGN=CENTER>*&nbsp;</td>
+
+<td ALIGN=CENTER>*&nbsp;</td>
+
+<td ALIGN=CENTER>*&nbsp;</td>
+
+<td ALIGN=CENTER>*&nbsp;</td>
+
+<td ALIGN=CENTER>*&nbsp;</td>
+
+<td ALIGN=CENTER>*&nbsp;</td>
+
+<td ALIGN=CENTER>*</td>
+</tr>
+
+<tr>
+<td ALIGN=CENTER>8&nbsp;</td>
+
+<td ALIGN=CENTER></td>
+
+<td ALIGN=CENTER></td>
+
+<td ALIGN=CENTER></td>
+
+<td ALIGN=CENTER></td>
+
+<td ALIGN=CENTER></td>
+
+<td ALIGN=CENTER></td>
+
+<td ALIGN=CENTER></td>
+
+<td ALIGN=CENTER></td>
+
+<td ALIGN=CENTER></td>
+
+<td ALIGN=CENTER></td>
+</tr>
+
+<tr NOSAVE>
+<td ALIGN=CENTER>9&nbsp;</td>
+
+<td ALIGN=CENTER>*&nbsp;</td>
+
+<td ALIGN=CENTER></td>
+
+<td ALIGN=CENTER></td>
+
+<td ALIGN=CENTER></td>
+
+<td ALIGN=CENTER></td>
+
+<td ALIGN=CENTER></td>
+
+<td ALIGN=CENTER></td>
+
+<td ALIGN=CENTER></td>
+
+<td ALIGN=CENTER NOSAVE></td>
+
+<td ALIGN=CENTER></td>
+</tr>
+</table>
+
+<p>Chiamiamo <i>punto isolato </i>qualsiasi punto che non sia in contatto
+(in nessuna delle posizioni adiacenti) con altri punti. Ad esempio, nello
+schermo di cui sopra, vi sono due punti isolati, rispettivamente di coordinate
+( 9,0) e ( 4,7). Si noti che il punto di coordinate ( 2,9) non &egrave;
+isolato.
+<p>Un aspetto che deve essere preso in considerazione &egrave; che una
+o pi&ugrave; linee del file di input potrebbero dare specifiche scorrette.
+Ad esempio, la linea
+<p>5 7 4
+<p>sarebbe scorretta, poich&eacute; il numero di punti per riga dello schermo
+(cio&egrave; 10) &egrave; insufficiente a contenere i 4 punti richiesti.
+<p>Si richiede di risolvere i seguenti punti:
+<ol type="1">
+<li>
+Scrivere le dichiarazioni dei tipi di dato C da utilizzarsi per risolvere
+i punti successivi.</li>
+
+<li>
+Scrivere una funzione C (o pi&ugrave;) che, dato un file contenente una
+specifica, lo visualizzi su schermo (utilizzando solamente il carattere
+'<tt>*</tt>' e il carattere spazio; in particolare non devono essere visualizzati
+i numeri di riga o di colonna). Nel caso in cui la specifica sia scorretta,
+occorre stampare un messaggio di errore.</li>
+
+<br>[<b>Suggerimento:</b> progettare la funzione in maniera sufficientemente
+generale, al fine di renderla utile anche per il punto successivo].
+<li>
+Scrivere una funzione C (o pi&ugrave;) che, dato un file contenente una
+specifica, verifichi se &egrave; corretta, e in tal caso costruisca <b>una
+lista</b> contenente le coordinate di tutti i punti isolati. La lista deve
+essere composta da strutture contenenti <b>due interi</b>. Il verso della
+lista &egrave; a scelta dello studente.</li>
+</ol>
+
+<hr WIDTH="100%">
+<center><b>Universit&agrave; di Roma ``La Sapienza''</b>
+<br><b>Facolt&agrave; di Ingegneria</b>
+<br><b>Corso di Fondamenti di Informatica</b>
+<br><b>Corso di Laurea: </b>Ambiente e Territorio
+<br>Appello del <b>14/10/1999</b> - 2<sup>a</sup> prova scritta
+<br><i>tempo a disposizione: 1 ora</i></center>
+
+<p><br>
+<br>
+<br>
+<p><b>Problema 2 (4 punti)</b>
+<p>Descrivere in dettaglio la modalit&agrave; con cui &egrave; possibile
+rappresentare numeri usando il sistema binario. Quali insiemi di numeri
+possono essere rappresentati in maniera esatta e quali solo in maniera
+approssimata? Perch&eacute;?
+<br>&nbsp;
+<br>&nbsp;
+<br>&nbsp;
+<p><b>Problema 3 (4 punti)</b>
+<p>Scrivere C <b>un programma completo</b> (compilabile) che, prendendo
+in input (da tastiera) un intero n <font face="symbol">?</font> 0, calcoli
+e stampi sullo schermo il numero di Fibonacci F<sub>n</sub> (si rammenta
+che la successione di Fibonacci &egrave; definita come segue: F<sub>i+2</sub>
+= F<sub>i+1</sub>+F<sub>i</sub> per i <font face="symbol">?</font> 0, con
+F<sub>0</sub> = 0 e F<sub>1</sub> = 1).
+<br>&nbsp;
+<br>&nbsp;
+<br>&nbsp;
+<p><b>Problema 4 (4 punti)</b>
+<p>Data la relazione <tt>militari</tt> avente come attributi:
+<p>&nbsp;&nbsp;&nbsp; - <tt>matricola</tt> (numero di matricola del militare)
+<p>&nbsp;&nbsp;&nbsp; - <tt>cognome</tt> (cognome)
+<p>&nbsp;&nbsp;&nbsp; - <tt>nome</tt> (nome)
+<p>&nbsp;&nbsp;&nbsp; - <tt>grado</tt> (grado)
+<p>&nbsp;&nbsp;&nbsp; - <tt>superiore</tt> (numero di matricola del superiore
+diretto)
+<p>scrivere una interrogazione <tt>SQL</tt> che visualizzi nome, cognome
+e grado del diretto superiore di Mario Rossi (assumere che non ci siano
+omonimie).
+<p><i><font size=-1>Verbalizzazione/discussione: marted&igrave; 19 ottobre,
+ore 9, V. Salaria 113, 2<sup>o</sup> piano, aula C1</font></i>
+<p>
+<hr><font size=-1>File translated from T<sub>E</sub>X by <a href="http://hutchinson.belmont.ma.us/tth/">T<sub>T</sub>H</a>,
+version 2.25.</font>
+<br><font size=-1>On 4 Nov 1999, 14:57.</font>
+</body>
+</html>

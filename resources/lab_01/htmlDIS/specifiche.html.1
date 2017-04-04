@@ -1,0 +1,270 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML><HEAD><TITLE>Specifiche per il progetto</TITLE>
+<META content="Specifiche per il progetto" name=description>
+<META content=tesine name=keywords>
+<META content=document name=resource-type>
+<META content=global name=distribution>
+<META http-equiv=Content-Type content="text/html; charset=iso-8859-1">
+<META content="Microsoft FrontPage 4.0" name=GENERATOR>
+<META http-equiv=Content-Style-Type content=text/css><LINK 
+href="specifiche_file/tesine.css" rel=STYLESHEET><LINK href="node2.html" 
+rel=next><LINK href="tesine.html" rel=previous><LINK href="tesine.html" 
+rel=up><LINK href="node2.html" rel=next></HEAD>
+<BODY><!--Navigation Panel--><!--End of Navigation Panel-->
+<H1><A name=SECTION00010000000000000000>Specifiche per il progetto</A> </H1>
+<P>L'elaborato da consegnare per sostenere l'esame di Progetto di Basi di Dati è 
+il progetto di un piccolo sistema informativo. In particolare, il sistema deve 
+essere composto da: 
+<OL>
+  <LI>una base di dati relazionale, realizzata con un DBMS interrogabile con 
+  SQL; 
+  <LI>una applicazione scritta in Java, che accede alla base di dati attraverso 
+  un driver JDBC. </LI></OL> 
+<P>Alla consegna, dovranno essere forniti 
+<OL>
+  <LI><B>tutto</B> il codice <B>in formato elettronico</B> 
+  <LI>la documentazione <B>in formato elettronico e cartaceo </B>(realizzata
+    seguendo le specifiche indicate di seguito), comprendente
+    <ul>
+      <li><b>tutto il codice SQL </b>(che va quindi consegnato anche in formato
+        cartaceo)</li>
+      <li><b>il codice di tutti i trigger</b> (che va quindi&nbsp; consegnato
+        anche in formato cartaceo)</li>
+      <li><B>facoltativamente</B>, il codice di qualche modulo che si ritiene 
+  significativo in formato cartaceo.&nbsp;</li>
+    </ul>
+    <p> <font color="#FF0000"><b>In generale, non 
+  bisogna consegnare il codice stampato su carta.</b></font></OL>Il materiale in 
+formato elettronico potrà essere consegnato su floppy o su CD. <font color="#FF0000"><b>Si
+richiede che il materiale elettronico sia organizzato come fatto negli</b> <a href="exdbproject.zip">Appunti
+sullo sviluppo dei progetti per basi di dati</a></font>. In particolare, la
+struttura complessiva del materiale elettronico consegnato deve ricalcare il seguente schema
+<pre>mio_progetto/
+	|-------db/
+	|-------app/
+	|-------doc/</pre>
+<p>dove, <tt>mio_progetto</tt> è un nome sintetico che identifica il vostro progetto, <tt>db </tt>è
+la cartella contenente la base dati realizzata, gli script sql, il codice delle
+procedure e le librerie relative alla implementazione della base dati,&nbsp; <tt>app
+</tt>è la cartella contenente l'eseguibile (<tt>.jar</tt>), il codice sorgente, il byte code, e
+le librerie&nbsp;relative all'applicazione, e&nbsp; <tt>doc </tt>è la cartella contenente la documentazione
+<b>
+(in formato <tt>word</tt>, <tt>pdf</tt> o <tt>html</tt>)</b>. Per ulteriori dettagli
+si faccia riferimento agli &quot;Appunti sullo sviluppo dei progetti per basi di
+dati&quot;.</p>
+<P>Le dimensioni del progetto sono in linea di massima da calcolarsi nel modo 
+seguente: 
+<ul>
+  <li>lo schema concettuale dovrà avere <b>da 12 a 20 entità</b>, almeno<b> 10
+    relazioni</b>, e almeno due relazioni ISA o una generalizzazione con almeno
+    due figlie;
+  <li>le <b>funzioni</b> specificate dovranno essere <b>non meno di 15 </b>(di
+    cui, almeno la metà composta da funzioni significative e non elementari
+    inserimenti-cancellazioni-update).</li>
+</ul>
+<P>Verificate che almeno tre-quattro funzioni indicate non siano tutte&nbsp;
+risolvibili solo con una singola query (o un singolo statement SQL), ma
+prevedano anche una parte da realizzare nella logica dell'applicazione (questo
+è il caso ad esempio di operazioni che richiedono una interazione con
+l'utente).<br>
+Se non vi sembra ragionevole introdurre queste funzionalità, la classi java che
+implementano la logica
+dell'applicazione (classi controller e classi di dominio) dovranno comunque risultare non
+banali,&nbsp; gestendo, ad
+esempio, accessi concorrenti alla base dati, implementando vincoli complessi (ad es.
+temporali o di transizione di stato sulle tabelle), impostando alcune transazioni per l'update dei dati (particolarmente complicate nel caso di cicli
+di vincoli di inclusione o FK, e di identificazioni esterne), e per le cancellazioni in cascata. Si richiede, inoltre, che si faccia uso di trigger e
+stored procedure, e che le transazioni sui dati siano definite a livello DAO o a
+livello dei controller, secondo i due approcci visti durante il corso.
+<P>
+Il progetto deve essere articolato nelle seguenti fasi
+<OL>
+  <LI><B>Raccolta dei requisiti.</B> In questa fase si dovranno raccogliere le 
+  specifiche del sistema informativo. Dovrà essere prodotta la seguente 
+  documentazione: 
+  <UL>
+    <LI>Specifica dei requisiti utente e dei requisiti funzionali. Tale
+      specifica dovrà essere articolata in
+      <ul>
+        <li>una descrizione sintetica della realtà di interesse (nell'ordine delle decine di
+          righe);</li>
+        <li>una specifica completa e dettagliata in linguaggio naturale, che
+          metta in evidenza quali sono i dati che il sistema deve gestire, e
+          quali sono le principali funzionalità, includendo per ciascuna
+          funzione individuata una breve descrizione.</li>
+      </ul>
+    </UL>
+  <LI><B>Analisi dei dati: Progettazione Concettuale.</B> In questa fase bisogna 
+  modellare la realtà di interesse per mezzo di uno schema ER 
+  (Entity-Relationship). Dovrà essere prodotta la seguente documentazione: 
+  <UL>
+    <LI>Schema ER, con discussione delle scelte critiche effettuate nella 
+    progettazione. 
+    <LI>Glossario delle entità e delle relazioni. Per ogni entità/relazione 
+    bisogna specificare: il significato, gli attributi con relativo dominio, gli 
+    identificatori (solo per le entità). Per le relazioni, occorre inoltre 
+    motivare la cardinalità della partecipazione delle entità coinvolte. 
+    <LI>Elenco di <I>tutti</I> i vincoli non esprimibili mediante lo schema ER, 
+    con attenzione a specificare con precisione ed in dettaglio le &quot;regole 
+    aziendali'' più complesse. </LI></UL>
+  <LI><B>Analisi delle funzioni: Specifica Funzionale.</B> In questa fase 
+  occorre analizzare gli aspetti funzionali del sistema a partire dalle
+    descrizioni delle principali funzioni fornite in fase di raccolta dei
+    requisiti. La documentazione prevista consiste in: 
+  <UL>
+    <LI> descrizione degli attori principali del sistema;
+    <LI> diagramma UML dei casi d'uso del sistema 
+    (<I>use-case diagram</I>),
+    <LI>per ciascun caso d'uso individuato, indicare:
+      <ul>
+        <li>la porzione dello schema ER interessata;</li>
+        <li>i dati in ingresso e in uscita;</li>
+        <li>l'algoritmo (in pseudocodice);</li>
+        <li>una stima della frequenza con cui l'operazione deve essere eseguita nel 
+    sistema informativo.</li>
+      </ul>
+    </UL>
+  <LI><b>Scelta dell'architettura Hardware e della piattaforma Software.</b> In
+    questa fase bisogna indicare le scelte da effettuare per l'architettura
+    Hardware (Hw) di riferimento, e le tecnologie software utilizzate, indicando
+    anche il tipo di architettura software di riferimento (Client-Server,&nbsp;
+    three-tier, N-tier, cioè facente uso di web server). La documentazione
+    prevista consiste in: 
+  <UL>
+    <LI>specifica dell'architettura Hw, con descrizione dei calcolatori
+      impiegati, dell'architettura Sw adottata, e delle tecnologie utilizzate
+      (Java, Swing, JDBC, Oracle 10g, JSP, Servlet, etc.)</UL>
+  <LI><B>Progettazione logica della base dati.</B> In questa fase occorre produrre lo schema 
+  logico dei dati dell'applicazione, dopo aver ristrutturato lo schema 
+  concettuale. La documentazione da produrre è la seguente: 
+  <UL>
+    <LI>Schema ER ristrutturato, con descrizione delle ragioni che hanno portato 
+    alle scelte effettuate. 
+    <LI>Schema logico (relazionale) dei dati. 
+    <LI>Elenco di <I>tutti</I> i vincoli sullo schema logico (inclusi i vincoli 
+    di <I>foreign key</I> e di chiave), <b> classificati per tipologia</b>. La notazione è a scelta dello studente, 
+    purché sia sintetica e comprensibile (per i vincoli di foreign key,
+      inclusione ed esclusione fate riferimento ai <a href="http://www.dis.uniroma1.it/~lenzerin/didattica/basididati/">lucidi
+      del corso di basi di dati</a>). </LI> 
+    <LI>Definizione della politica da seguire nelle cancellazioni di dati nel
+      caso di vincoli di inclusione o foreign key </LI> 
+    <LI>Elenco delle utenze che devono essere definite sulla base dati, con
+      relative autorizzazioni&nbsp; </LI> 
+    <LI>Elenco delle eventuali viste da definire, sulla base dell'analisi funzionale
+      sviluppata al punto 3 </LI></UL>
+  <LI><B>Progettazione fisica della base dati.</B> In questa fase occorre
+    tradurre in SQL lo schema logico realizzato in precedenza, producendo gli
+    script di creazione della base dati (che comprendano la creazione degli
+    schemi, degli utenti, delle tabelle, delle viste, etc.) e di popolamento (nonché
+    di cancellazione della 
+  base di dati). Occorre inoltre definire eventuali trigger per implementare la
+    politica di cancellazione dati indicata al punto precedente (se questa è
+    particolarmente complicata si demanda all'applicazione). Infine, considerando il supporto fornito dalla tecnologia,
+    <font color="#FF0000"> occorre decidere come 
+  implementare i vincoli espressi sullo schema logico</font> nella fase precedente. La 
+  documentazione prevista in questa fase consiste nel
+    <ul>
+      <li>Codice SQL per la creazione ed il popolamento della base dati&nbsp;</li>
+    </ul>
+    <ul>
+      <li>Per ogni vincolo, la specifica della
+        <ul>
+          <li> scelta di implementazione (SQL, trigger o applicazione), 
+    giustificando le ragioni della scelta ed una eventuale ridondanza nella
+            implementazione (in genere per vincoli implementati sia da
+            applicazione che a livello del DBMS).</li>
+          <li>nel caso dell'implementazione mediante trigger, una specifica 
+    <B>procedurale</B> dell'implementazione, cioè cosa fa il trigger e quando (e 
+    in quali condizioni) viene innescato (questo vale anche per i trigger che
+            regolano le cancellazioni dei dati).</li>
+          <li>nel caso di implementazione mediante applicazione, e se è richiesto 
+    l'utilizzo di una transazione che esegua più di uno statement, la scelta, 
+    opportunamente motivata, del livello di isolamento imposto per la 
+    transazione (che deve essere supportato dal DBMS).</li>
+        </ul>
+      </li>
+    </ul>
+  <LI><B>Progettazione dell'architettura della applicazione.</B> In questa fase 
+  occorre progettare l'architettura dell'applicazione secondo le metodologie 
+  presentate durante il corso; in particolare, l'accesso ai dati deve essere 
+  incapsulato da opportune classi che offrano accesso in lettura e scrittura ai 
+  dati sottostanti all'applicazione, così che le classi di dominio, di 
+  controllo, di interfaccia e di sistema non debbano accedere direttamente al DB 
+  attraverso il diver JDBC. In particolare, oltre a scegliere le classi dell'applicazione, occorre progettare l'implementazione delle funzioni specificate 
+  nella fase&nbsp;3. 
+  Ogni funzione deve essere decomposta in operazioni più elementari, 
+  eventualmente a loro volta decomposte. Va inoltre deciso quali classi hanno la 
+  <B>responsabilità</B> di quali funzioni; questa scelta porta alla scelta dei 
+  metodi delle classi del sistema. La documentazione prodotta in questa fase 
+  consiste in: 
+  <UL>
+    <LI>Il diagramma delle classi dell'applicazione, completo di metodi e 
+    cardinalità delle associazioni/aggregazioni. Delle associazioni, a seconda 
+    delle operazioni che devono essere eseguite, occorre scegliere la 
+    navigabilità. Nel diagramma, bisogna evidenziare l'architettura del sistema, 
+    evidenziando le classi di accesso ai dati, le classi di dominio, le classi 
+    di controllo, le classi di sistema e le classi di interfaccia (realizzare
+      cioè anche un package diagram). 
+    <LI><b>Facoltativamente</b>, per i metodi più complessi, una descrizione accompagnata da un 
+    <I>sequence diagram</I> UML, evidenziando eventuali transazioni delle quali 
+    si deve indicare il livello di isolamento. </LI></UL>
+  <LI><B>Realizzazione della applicazione.</B> L'applicazione deve essere 
+  realizzata in Java. L'interfaccia utente può essere realizzata usando il 
+  package Swing di Java (presentato a lezione); in alternativa, si può 
+  realizzare una applicazione Web usando Java Servlet o JSP. L'applicazione deve 
+  tenere conto di operazioni concorrenti eseguite sui dati. In particolare, due 
+  scelte sono possibili: <I>(i)</I> prevedere più client nella medesima 
+  applicazione (scelta più complessa): in tal caso il gestore della connessione 
+  deve provvedere a fornire connessioni diverse ai varî client; <I>(ii)</I> 
+  prevedere più esecuzioni concorrenti della medesima applicazione (scelta più 
+  semplice); in tal caso, il gestore della connessione può fornire (all'interno 
+  della medesima esecuzione dell'applicazione) sempre un'unica connessione. Il
+    prodotto di questa fase è il:
+    <ul>
+      <li>codice Java dell'applicazione (da non includere nella documentazione
+        cartacea)</li>
+    </ul>
+  <LI><b>Definizione del </b><b>manuale di utlizzo del software. </b>Deve
+    fornire le informazioni di base per impostare l'ambiente per l'esecuzione
+    dell'applicazione (indicando anche il software di base necessario), ed
+    indicare, a grandi linee, le modalità di funzionamento. </LI> 
+  <LI><b>Descrizione di un piano di test sull'applicazione <font color="#FF0000">(</font></b><font color="#FF0000"><b>Facoltativo).
+    </b></font>Il piano di test deve validare l'applicazione verificando che
+    questa rispetti le specifiche funzionali e tecniche del progetto con un
+    opportuno grado di copertura. In particolare per ogni funzione devono venir
+    identificati un insieme di casi che permettano di verificare il corretto
+    comportamento del sistema in diverse condizioni operative, e nello specifico
+    che la base dati mantenga la consistenza delle informazioni rispetto ai
+    vincoli dichiarati. Un caso di test di una funzione è caratterizzato da:
+    <ol>
+      <li>la specifica dello stato di partenza del sistema (ad es., dati di
+        prova all'interno della base dati)</li>
+      <li>la specifica delle operazioni da eseguire per la verifica corredate
+        dai valori da inserire</li>
+      <li>l'indicazione dell'esito atteso nel caso di corretto funzionamento del
+        sistema e le modalità per determinare tale esito (ad es., controllare
+        il<br>
+        contenuto di una tabella)</li>
+    </ol>
+ </LI> 
+  <LI><B>Collaudo.</B> L'applicazione, in sede di esame, e a discrezione del 
+  docente, viene collaudata in laboratorio. In particolare, l'applicazione deve 
+  funzionare correttamente in presenza di operazioni concorrenti sui dati, o in 
+  risposta ad operazioni che tentino di violare i vincoli di integrità. A tale 
+  scopo, oltre a verificare il corretto funzionamento del sistema informativo 
+  (prevedendo l'esecuzione in laboratorio), gli studenti dovranno preparare 
+  opportuni script SQL (eventualmente eseguiti dall'applicazione) per creare, 
+  popolare e alla fine cancellare la base di dati del sistema. È possibile 
+  eseguire il collaudo su un calcolatore portato dagli studenti (ad esempio un 
+  computer portatile). Si consiglia, allo scopo di rendere più agevole il 
+  collaudo, di preparare opportuni <I>script</I> di creazione della base di dati 
+  (tabelle), delle stored procedure e dei trigger, nonché di cancellazione della 
+  base di dati; in alternativa, </LI></OL>
+<p><b>Si richiede inoltre, per ogni fase del lavoro, e relativa documentazione
+presentata, di indicare il membro del gruppo responsabile, e, nel caso di
+suddivisioni del lavoro fra i membri del gruppo, di indicare il contributo di
+ciascun membro, avendo cura che il contributo sia paritario fra i diversi
+componenti. </b></p>
+<p>&nbsp;</p>
+<HR>
+</BODY></HTML>

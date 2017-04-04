@@ -1,0 +1,63 @@
+
+<HTML>
+
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html;charset=iso-8859-1">
+<meta name="GENERATOR" content="Microsoft Internet Assistant for Macintosh PowerPoint 98">
+ <TITLE>Example1</TITLE> 
+</HEAD>
+
+<BODY     >
+
+ <H1>Example1</H1> 
+ <P><UL></P>
+
+<P><LI><H2>Hash index on D.dname supports ‘Toy’ selection.
+</H2></P>
+
+<P><UL></P>
+
+<P><LI>Given this, index on D.dno is not needed.
+</UL></UL><UL></P>
+
+<P><LI><H2>Hash index on E.dno allows us to get matching (inner) Emp tuples for each selected (outer) Dept tuple.
+</H2></P>
+
+<P></UL><UL></P>
+
+<P><LI><H2>What if WHERE included:   `` ... AND  E.age=25’’  ?
+</H2></P>
+
+<P><UL></P>
+
+<P><LI>Could retrieve Emp tuples using index on E.age, then join with Dept tuples satisfying dname selection.  Comparable to strategy that used E.dno index.   
+<LI>So, if E.age index is already created, this query provides much less motivation for adding an E.dno index.</UL></UL></P>
+
+<P><UL></P>
+
+<P>SELECT  E.ename, D.mgr
+</UL><UL></P>
+
+<P>FROM  Emp E, Dept D
+</UL><UL></P>
+
+<P>WHERE  D.dname=‘Toy’ AND E.dno=D.dno</UL></P>
+
+<P></P> 
+<P>
+<TABLE>
+  <TD HEIGHT=100 WIDTH=100> <A HREF="tsld007.htm">Previous slide</A> </TD>
+  <TD HEIGHT=100 WIDTH=100> <A HREF="tsld009.htm">Next slide</A> </TD>
+  <TD HEIGHT=100 WIDTH=150> <A HREF="tsld001.htm">Back to first slide</A> </TD>
+  <TD HEIGHT=100 WIDTH=150> <A HREF="sld008.htm">View graphic version</A> </TD>
+</TABLE>
+<BR>
+</P>
+
+ <FONT size=4><STRONG> Notes: </FONT></STRONG>
+  <HR SIZE=3> <P> <UL>
+
+16</UL> </P> 
+
+</Body>
+</HTML>

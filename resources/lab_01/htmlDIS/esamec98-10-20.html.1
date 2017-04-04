@@ -1,0 +1,669 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1">
+<META NAME="Generator" CONTENT="Microsoft Word 98">
+<TITLE>Esame 20/10/1998</TITLE>
+</HEAD>
+<BODY>
+
+<B><FONT SIZE=3><P ALIGN="CENTER">Universit&agrave; di Roma <I>La Sapienza</P>
+</I><P ALIGN="CENTER">Facolt&agrave; di Ingegneria </P>
+<P ALIGN="CENTER">Corso di Fondamenti di Informatica </P>
+<P ALIGN="CENTER">Corso di Laurea: <I>Ambiente e Territorio</P>
+</B></I><P ALIGN="CENTER"></P>
+<P ALIGN="CENTER">Appello del 20-10-1998 (riservato agli iscritti al 5&#176; anno nel 97-98)</P>
+
+<P>&nbsp;</P>
+<B><P>Esercizio 1 (18 punti)</P>
+</B><P>Un cruciverba consiste in una tabella con M righe ed N colonne in cui ciascun elemento contiene un carattere alfabetico maiuscolo dell&#146;alfabeto italiano o, in alternativa, il carattere speciale '*' (asterisco). Un cruciverba contiene dunque un insieme di parole orizzontali e un insieme di parole verticali, dove ciascuna parola &egrave; composta da almeno due caratteri alfabetici; il carattere '*' ha la funzione di separare parole (orizzontalmente o verticalmente) adiacenti.</P>
+<P>Un cruciverba pu&ograve; essere rappresentato da un file di testo con M linee, ciascuna delle quali contiene N+1 caratteri: la i-esima linea del file corrisponde alla i-esima riga del cruciverba, e contiene ordinatamente gli N caratteri che descrivono la riga, pi&ugrave; il carattere speciale che indica la fine della linea. </P>
+<P>Sia dato un file di testo "CRUCI.TXT" rappresentante un cruciverba.</P>
+<OL>
+
+<LI>Definire i tipi di dato C adeguati a risolvere i problemi di cui ai successivi punti (2) e (3).</LI>
+<LI>Scrivere una funzione (o pi&ugrave;) C che dato il file "CRUCI.TXT" costruisca la lista collegata contenente le parole orizzontali di due caratteri.</LI>
+<LI>Scrivere una funzione (o pi&ugrave;) C che, data la lista collegata costruita al punto (2), elimini dalla lista stessa le parole che contengono vocali.</LI></OL>
+
+
+<B><P>Esempio</P>
+</B><P>La Fig. 1 contiene un esempio di cruciverba, che &egrave; rappresentato in un file di testo come illustrato in Fig.&nbsp;2. La Fig. 3 mostra la lista delle parole orizzontali di due lettere presenti nel cruciverba, la cui costruzione &egrave; richiesta al punto (2). La Fig. 4, infine, illustra la maniera in cui la lista di Fig. 3 viene modificata, come richiesto al punto (3).</P>
+
+<P>&nbsp;</P>
+<P>&nbsp;</P></FONT>
+<P ALIGN="CENTER"><CENTER><TABLE BORDER CELLSPACING=1 CELLPADDING=3 WIDTH=168>
+<TR><TD WIDTH="8%" VALIGN="TOP" HEIGHT=12>
+<FONT FACE="Courier"><P ALIGN="CENTER">P</FONT></TD>
+<TD WIDTH="8%" VALIGN="TOP" HEIGHT=12>
+<FONT FACE="Courier"><P ALIGN="CENTER">T</FONT></TD>
+<TD WIDTH="8%" VALIGN="TOP" HEIGHT=12>
+<FONT FACE="Courier"><P ALIGN="CENTER">*</FONT></TD>
+<TD WIDTH="8%" VALIGN="TOP" HEIGHT=12>
+<FONT FACE="Courier"><P ALIGN="CENTER">*</FONT></TD>
+<TD WIDTH="8%" VALIGN="TOP" HEIGHT=12>
+<FONT FACE="Courier"><P ALIGN="CENTER">C</FONT></TD>
+<TD WIDTH="8%" VALIGN="TOP" HEIGHT=12>
+<FONT FACE="Courier"><P ALIGN="CENTER">A</FONT></TD>
+<TD WIDTH="8%" VALIGN="TOP" HEIGHT=12>
+<FONT FACE="Courier"><P ALIGN="CENTER">V</FONT></TD>
+<TD WIDTH="8%" VALIGN="TOP" HEIGHT=12>
+<FONT FACE="Courier"><P ALIGN="CENTER">A</FONT></TD>
+<TD WIDTH="8%" VALIGN="TOP" HEIGHT=12>
+<FONT FACE="Courier"><P ALIGN="CENTER">*</FONT></TD>
+<TD WIDTH="8%" VALIGN="TOP" HEIGHT=12>
+<FONT FACE="Courier"><P ALIGN="CENTER">I</FONT></TD>
+<TD WIDTH="8%" VALIGN="TOP" HEIGHT=12>
+<FONT FACE="Courier"><P ALIGN="CENTER">M</FONT></TD>
+<TD WIDTH="8%" VALIGN="TOP" HEIGHT=12>
+<FONT FACE="Courier"><P ALIGN="CENTER">A</FONT></TD>
+</TR>
+<TR><TD WIDTH="8%" VALIGN="TOP" HEIGHT=12>
+<FONT FACE="Courier"><P ALIGN="CENTER">A</FONT></TD>
+<TD WIDTH="8%" VALIGN="TOP" HEIGHT=12>
+<FONT FACE="Courier"><P ALIGN="CENTER">R</FONT></TD>
+<TD WIDTH="8%" VALIGN="TOP" HEIGHT=12>
+<FONT FACE="Courier"><P ALIGN="CENTER">E</FONT></TD>
+<TD WIDTH="8%" VALIGN="TOP" HEIGHT=12>
+<FONT FACE="Courier"><P ALIGN="CENTER">N</FONT></TD>
+<TD WIDTH="8%" VALIGN="TOP" HEIGHT=12>
+<FONT FACE="Courier"><P ALIGN="CENTER">A</FONT></TD>
+<TD WIDTH="8%" VALIGN="TOP" HEIGHT=12>
+<FONT FACE="Courier"><P ALIGN="CENTER">*</FONT></TD>
+<TD WIDTH="8%" VALIGN="TOP" HEIGHT=12>
+<FONT FACE="Courier"><P ALIGN="CENTER">A</FONT></TD>
+<TD WIDTH="8%" VALIGN="TOP" HEIGHT=12>
+<FONT FACE="Courier"><P ALIGN="CENTER">*</FONT></TD>
+<TD WIDTH="8%" VALIGN="TOP" HEIGHT=12>
+<FONT FACE="Courier"><P ALIGN="CENTER">C</FONT></TD>
+<TD WIDTH="8%" VALIGN="TOP" HEIGHT=12>
+<FONT FACE="Courier"><P ALIGN="CENTER">I</FONT></TD>
+<TD WIDTH="8%" VALIGN="TOP" HEIGHT=12>
+<FONT FACE="Courier"><P ALIGN="CENTER">A</FONT></TD>
+<TD WIDTH="8%" VALIGN="TOP" HEIGHT=12>
+<FONT FACE="Courier"><P ALIGN="CENTER">C</FONT></TD>
+</TR>
+<TR><TD WIDTH="8%" VALIGN="TOP" HEIGHT=12>
+<FONT FACE="Courier"><P ALIGN="CENTER">G</FONT></TD>
+<TD WIDTH="8%" VALIGN="TOP" HEIGHT=12>
+<FONT FACE="Courier"><P ALIGN="CENTER">I</FONT></TD>
+<TD WIDTH="8%" VALIGN="TOP" HEIGHT=12>
+<FONT FACE="Courier"><P ALIGN="CENTER">R</FONT></TD>
+<TD WIDTH="8%" VALIGN="TOP" HEIGHT=12>
+<FONT FACE="Courier"><P ALIGN="CENTER">A</FONT></TD>
+<TD WIDTH="8%" VALIGN="TOP" HEIGHT=12>
+<FONT FACE="Courier"><P ALIGN="CENTER">M</FONT></TD>
+<TD WIDTH="8%" VALIGN="TOP" HEIGHT=12>
+<FONT FACE="Courier"><P ALIGN="CENTER">O</FONT></TD>
+<TD WIDTH="8%" VALIGN="TOP" HEIGHT=12>
+<FONT FACE="Courier"><P ALIGN="CENTER">N</FONT></TD>
+<TD WIDTH="8%" VALIGN="TOP" HEIGHT=12>
+<FONT FACE="Courier"><P ALIGN="CENTER">D</FONT></TD>
+<TD WIDTH="8%" VALIGN="TOP" HEIGHT=12>
+<FONT FACE="Courier"><P ALIGN="CENTER">O</FONT></TD>
+<TD WIDTH="8%" VALIGN="TOP" HEIGHT=12>
+<FONT FACE="Courier"><P ALIGN="CENTER">*</FONT></TD>
+<TD WIDTH="8%" VALIGN="TOP" HEIGHT=12>
+<FONT FACE="Courier"><P ALIGN="CENTER">T</FONT></TD>
+<TD WIDTH="8%" VALIGN="TOP" HEIGHT=12>
+<FONT FACE="Courier"><P ALIGN="CENTER">I</FONT></TD>
+</TR>
+<TR><TD WIDTH="8%" VALIGN="TOP" HEIGHT=12>
+<FONT FACE="Courier"><P ALIGN="CENTER">O</FONT></TD>
+<TD WIDTH="8%" VALIGN="TOP" HEIGHT=12>
+<FONT FACE="Courier"><P ALIGN="CENTER">N</FONT></TD>
+<TD WIDTH="8%" VALIGN="TOP" HEIGHT=12>
+<FONT FACE="Courier"><P ALIGN="CENTER">E</FONT></TD>
+<TD WIDTH="8%" VALIGN="TOP" HEIGHT=12>
+<FONT FACE="Courier"><P ALIGN="CENTER">R</FONT></TD>
+<TD WIDTH="8%" VALIGN="TOP" HEIGHT=12>
+<FONT FACE="Courier"><P ALIGN="CENTER">I</FONT></TD>
+<TD WIDTH="8%" VALIGN="TOP" HEIGHT=12>
+<FONT FACE="Courier"><P ALIGN="CENTER">*</FONT></TD>
+<TD WIDTH="8%" VALIGN="TOP" HEIGHT=12>
+<FONT FACE="Courier"><P ALIGN="CENTER">A</FONT></TD>
+<TD WIDTH="8%" VALIGN="TOP" HEIGHT=12>
+<FONT FACE="Courier"><P ALIGN="CENTER">I</FONT></TD>
+<TD WIDTH="8%" VALIGN="TOP" HEIGHT=12>
+<FONT FACE="Courier"><P ALIGN="CENTER">N</FONT></TD>
+<TD WIDTH="8%" VALIGN="TOP" HEIGHT=12>
+<FONT FACE="Courier"><P ALIGN="CENTER">*</FONT></TD>
+<TD WIDTH="8%" VALIGN="TOP" HEIGHT=12>
+<FONT FACE="Courier"><P ALIGN="CENTER">R</FONT></TD>
+<TD WIDTH="8%" VALIGN="TOP" HEIGHT=12>
+<FONT FACE="Courier"><P ALIGN="CENTER">D</FONT></TD>
+</TR>
+<TR><TD WIDTH="8%" VALIGN="TOP" HEIGHT=12>
+<FONT FACE="Courier"><P ALIGN="CENTER">D</FONT></TD>
+<TD WIDTH="8%" VALIGN="TOP" HEIGHT=12>
+<FONT FACE="Courier"><P ALIGN="CENTER">A</FONT></TD>
+<TD WIDTH="8%" VALIGN="TOP" HEIGHT=12>
+<FONT FACE="Courier"><P ALIGN="CENTER">*</FONT></TD>
+<TD WIDTH="8%" VALIGN="TOP" HEIGHT=12>
+<FONT FACE="Courier"><P ALIGN="CENTER">I</FONT></TD>
+<TD WIDTH="8%" VALIGN="TOP" HEIGHT=12>
+<FONT FACE="Courier"><P ALIGN="CENTER">L</FONT></TD>
+<TD WIDTH="8%" VALIGN="TOP" HEIGHT=12>
+<FONT FACE="Courier"><P ALIGN="CENTER">*</FONT></TD>
+<TD WIDTH="8%" VALIGN="TOP" HEIGHT=12>
+<FONT FACE="Courier"><P ALIGN="CENTER">M</FONT></TD>
+<TD WIDTH="8%" VALIGN="TOP" HEIGHT=12>
+<FONT FACE="Courier"><P ALIGN="CENTER">E</FONT></TD>
+<TD WIDTH="8%" VALIGN="TOP" HEIGHT=12>
+<FONT FACE="Courier"><P ALIGN="CENTER">G</FONT></TD>
+<TD WIDTH="8%" VALIGN="TOP" HEIGHT=12>
+<FONT FACE="Courier"><P ALIGN="CENTER">L</FONT></TD>
+<TD WIDTH="8%" VALIGN="TOP" HEIGHT=12>
+<FONT FACE="Courier"><P ALIGN="CENTER">I</FONT></TD>
+<TD WIDTH="8%" VALIGN="TOP" HEIGHT=12>
+<FONT FACE="Courier"><P ALIGN="CENTER">O</FONT></TD>
+</TR>
+<TR><TD WIDTH="8%" VALIGN="TOP" HEIGHT=12>
+<FONT FACE="Courier"><P ALIGN="CENTER">A</FONT></TD>
+<TD WIDTH="8%" VALIGN="TOP" HEIGHT=12>
+<FONT FACE="Courier"><P ALIGN="CENTER">C</FONT></TD>
+<TD WIDTH="8%" VALIGN="TOP" HEIGHT=12>
+<FONT FACE="Courier"><P ALIGN="CENTER">E</FONT></TD>
+<TD WIDTH="8%" VALIGN="TOP" HEIGHT=12>
+<FONT FACE="Courier"><P ALIGN="CENTER">*</FONT></TD>
+<TD WIDTH="8%" VALIGN="TOP" HEIGHT=12>
+<FONT FACE="Courier"><P ALIGN="CENTER">L</FONT></TD>
+<TD WIDTH="8%" VALIGN="TOP" HEIGHT=12>
+<FONT FACE="Courier"><P ALIGN="CENTER">I</FONT></TD>
+<TD WIDTH="8%" VALIGN="TOP" HEIGHT=12>
+<FONT FACE="Courier"><P ALIGN="CENTER">E</FONT></TD>
+<TD WIDTH="8%" VALIGN="TOP" HEIGHT=12>
+<FONT FACE="Courier"><P ALIGN="CENTER">T</FONT></TD>
+<TD WIDTH="8%" VALIGN="TOP" HEIGHT=12>
+<FONT FACE="Courier"><P ALIGN="CENTER">O</FONT></TD>
+<TD WIDTH="8%" VALIGN="TOP" HEIGHT=12>
+<FONT FACE="Courier"><P ALIGN="CENTER">*</FONT></TD>
+<TD WIDTH="8%" VALIGN="TOP" HEIGHT=12>
+<FONT FACE="Courier"><P ALIGN="CENTER">C</FONT></TD>
+<TD WIDTH="8%" VALIGN="TOP" HEIGHT=12>
+<FONT FACE="Courier"><P ALIGN="CENTER">*</FONT></TD>
+</TR>
+<TR><TD WIDTH="8%" VALIGN="TOP" HEIGHT=12>
+<FONT FACE="Courier"><P ALIGN="CENTER">*</FONT></TD>
+<TD WIDTH="8%" VALIGN="TOP" HEIGHT=12>
+<FONT FACE="Courier"><P ALIGN="CENTER">R</FONT></TD>
+<TD WIDTH="8%" VALIGN="TOP" HEIGHT=12>
+<FONT FACE="Courier"><P ALIGN="CENTER">I</FONT></TD>
+<TD WIDTH="8%" VALIGN="TOP" HEIGHT=12>
+<FONT FACE="Courier"><P ALIGN="CENTER">T</FONT></TD>
+<TD WIDTH="8%" VALIGN="TOP" HEIGHT=12>
+<FONT FACE="Courier"><P ALIGN="CENTER">O</FONT></TD>
+<TD WIDTH="8%" VALIGN="TOP" HEIGHT=12>
+<FONT FACE="Courier"><P ALIGN="CENTER">R</FONT></TD>
+<TD WIDTH="8%" VALIGN="TOP" HEIGHT=12>
+<FONT FACE="Courier"><P ALIGN="CENTER">N</FONT></TD>
+<TD WIDTH="8%" VALIGN="TOP" HEIGHT=12>
+<FONT FACE="Courier"><P ALIGN="CENTER">A</FONT></TD>
+<TD WIDTH="8%" VALIGN="TOP" HEIGHT=12>
+<FONT FACE="Courier"><P ALIGN="CENTER">*</FONT></TD>
+<TD WIDTH="8%" VALIGN="TOP" HEIGHT=12>
+<FONT FACE="Courier"><P ALIGN="CENTER">E</FONT></TD>
+<TD WIDTH="8%" VALIGN="TOP" HEIGHT=12>
+<FONT FACE="Courier"><P ALIGN="CENTER">I</FONT></TD>
+<TD WIDTH="8%" VALIGN="TOP" HEIGHT=12>
+<FONT FACE="Courier"><P ALIGN="CENTER">N</FONT></TD>
+</TR>
+<TR><TD WIDTH="8%" VALIGN="TOP" HEIGHT=12>
+<FONT FACE="Courier"><P ALIGN="CENTER">G</FONT></TD>
+<TD WIDTH="8%" VALIGN="TOP" HEIGHT=12>
+<FONT FACE="Courier"><P ALIGN="CENTER">I</FONT></TD>
+<TD WIDTH="8%" VALIGN="TOP" HEIGHT=12>
+<FONT FACE="Courier"><P ALIGN="CENTER">A</FONT></TD>
+<TD WIDTH="8%" VALIGN="TOP" HEIGHT=12>
+<FONT FACE="Courier"><P ALIGN="CENTER">R</FONT></TD>
+<TD WIDTH="8%" VALIGN="TOP" HEIGHT=12>
+<FONT FACE="Courier"><P ALIGN="CENTER">*</FONT></TD>
+<TD WIDTH="8%" VALIGN="TOP" HEIGHT=12>
+<FONT FACE="Courier"><P ALIGN="CENTER">T</FONT></TD>
+<TD WIDTH="8%" VALIGN="TOP" HEIGHT=12>
+<FONT FACE="Courier"><P ALIGN="CENTER">T</FONT></TD>
+<TD WIDTH="8%" VALIGN="TOP" HEIGHT=12>
+<FONT FACE="Courier"><P ALIGN="CENTER">*</FONT></TD>
+<TD WIDTH="8%" VALIGN="TOP" HEIGHT=12>
+<FONT FACE="Courier"><P ALIGN="CENTER">O</FONT></TD>
+<TD WIDTH="8%" VALIGN="TOP" HEIGHT=12>
+<FONT FACE="Courier"><P ALIGN="CENTER">N</FONT></TD>
+<TD WIDTH="8%" VALIGN="TOP" HEIGHT=12>
+<FONT FACE="Courier"><P ALIGN="CENTER">D</FONT></TD>
+<TD WIDTH="8%" VALIGN="TOP" HEIGHT=12>
+<FONT FACE="Courier"><P ALIGN="CENTER">E</FONT></TD>
+</TR>
+<TR><TD WIDTH="8%" VALIGN="TOP" HEIGHT=12>
+<FONT FACE="Courier"><P ALIGN="CENTER">P</FONT></TD>
+<TD WIDTH="8%" VALIGN="TOP" HEIGHT=12>
+<FONT FACE="Courier"><P ALIGN="CENTER">A</FONT></TD>
+<TD WIDTH="8%" VALIGN="TOP" HEIGHT=12>
+<FONT FACE="Courier"><P ALIGN="CENTER">R</FONT></TD>
+<TD WIDTH="8%" VALIGN="TOP" HEIGHT=12>
+<FONT FACE="Courier"><P ALIGN="CENTER">A</FONT></TD>
+<TD WIDTH="8%" VALIGN="TOP" HEIGHT=12>
+<FONT FACE="Courier"><P ALIGN="CENTER">T</FONT></TD>
+<TD WIDTH="8%" VALIGN="TOP" HEIGHT=12>
+<FONT FACE="Courier"><P ALIGN="CENTER">I</FONT></TD>
+<TD WIDTH="8%" VALIGN="TOP" HEIGHT=12>
+<FONT FACE="Courier"><P ALIGN="CENTER">E</FONT></TD>
+<TD WIDTH="8%" VALIGN="TOP" HEIGHT=12>
+<FONT FACE="Courier"><P ALIGN="CENTER">*</FONT></TD>
+<TD WIDTH="8%" VALIGN="TOP" HEIGHT=12>
+<FONT FACE="Courier"><P ALIGN="CENTER">C</FONT></TD>
+<TD WIDTH="8%" VALIGN="TOP" HEIGHT=12>
+<FONT FACE="Courier"><P ALIGN="CENTER">I</FONT></TD>
+<TD WIDTH="8%" VALIGN="TOP" HEIGHT=12>
+<FONT FACE="Courier"><P ALIGN="CENTER">A</FONT></TD>
+<TD WIDTH="8%" VALIGN="TOP" HEIGHT=12>
+<FONT FACE="Courier"><P ALIGN="CENTER">O</FONT></TD>
+</TR>
+<TR><TD VALIGN="TOP" COLSPAN=12 HEIGHT=12>
+<FONT SIZE=2><P ALIGN="CENTER">Fig. 1: esempio di cruciverba</P>
+<P ALIGN="CENTER"></FONT></TD>
+</TR>
+</TABLE>
+</CENTER></P>
+
+<FONT SIZE=3><P>&nbsp;</P>
+<P>&nbsp;</P>
+<P>&nbsp;</P></FONT>
+<P ALIGN="CENTER"><CENTER><TABLE BORDER CELLSPACING=1 CELLPADDING=3 WIDTH=252>
+<TR><TD WIDTH="18%" VALIGN="TOP">
+<FONT SIZE=3><P ALIGN="CENTER">&nbsp;</P>
+</FONT><P ALIGN="CENTER">&nbsp;</P>
+<FONT SIZE=2><P ALIGN="CENTER">linea 1</FONT></TD>
+<TD WIDTH="6%" VALIGN="TOP">
+<FONT FACE="Courier"><P ALIGN="CENTER">P</FONT></TD>
+<TD WIDTH="6%" VALIGN="TOP">
+<FONT FACE="Courier"><P ALIGN="CENTER">T</FONT></TD>
+<TD WIDTH="6%" VALIGN="TOP">
+<FONT FACE="Courier"><P ALIGN="CENTER">*</FONT></TD>
+<TD WIDTH="6%" VALIGN="TOP">
+<FONT FACE="Courier"><P ALIGN="CENTER">*</FONT></TD>
+<TD WIDTH="6%" VALIGN="TOP">
+<FONT FACE="Courier"><P ALIGN="CENTER">C</FONT></TD>
+<TD WIDTH="6%" VALIGN="TOP">
+<FONT FACE="Courier"><P ALIGN="CENTER">A</FONT></TD>
+<TD WIDTH="6%" VALIGN="TOP">
+<FONT FACE="Courier"><P ALIGN="CENTER">V</FONT></TD>
+<TD WIDTH="6%" VALIGN="TOP">
+<FONT FACE="Courier"><P ALIGN="CENTER">A</FONT></TD>
+<TD WIDTH="6%" VALIGN="TOP">
+<FONT FACE="Courier"><P ALIGN="CENTER">*</FONT></TD>
+<TD WIDTH="6%" VALIGN="TOP">
+<FONT FACE="Courier"><P ALIGN="CENTER">I</FONT></TD>
+<TD WIDTH="6%" VALIGN="TOP">
+<FONT FACE="Courier"><P ALIGN="CENTER">M</FONT></TD>
+<TD WIDTH="6%" VALIGN="TOP">
+<FONT FACE="Courier"><P ALIGN="CENTER">A</FONT></TD>
+<TD WIDTH="15%" VALIGN="TOP">
+<FONT FACE="Courier"><P ALIGN="CENTER">'\n'</FONT></TD>
+</TR>
+<TR><TD WIDTH="18%" VALIGN="TOP">
+<FONT SIZE=2><P ALIGN="CENTER">linea 2</FONT></TD>
+<TD WIDTH="6%" VALIGN="TOP">
+<FONT FACE="Courier"><P ALIGN="CENTER">A</FONT></TD>
+<TD WIDTH="6%" VALIGN="TOP">
+<FONT FACE="Courier"><P ALIGN="CENTER">R</FONT></TD>
+<TD WIDTH="6%" VALIGN="TOP">
+<FONT FACE="Courier"><P ALIGN="CENTER">E</FONT></TD>
+<TD WIDTH="6%" VALIGN="TOP">
+<FONT FACE="Courier"><P ALIGN="CENTER">N</FONT></TD>
+<TD WIDTH="6%" VALIGN="TOP">
+<FONT FACE="Courier"><P ALIGN="CENTER">A</FONT></TD>
+<TD WIDTH="6%" VALIGN="TOP">
+<FONT FACE="Courier"><P ALIGN="CENTER">*</FONT></TD>
+<TD WIDTH="6%" VALIGN="TOP">
+<FONT FACE="Courier"><P ALIGN="CENTER">A</FONT></TD>
+<TD WIDTH="6%" VALIGN="TOP">
+<FONT FACE="Courier"><P ALIGN="CENTER">*</FONT></TD>
+<TD WIDTH="6%" VALIGN="TOP">
+<FONT FACE="Courier"><P ALIGN="CENTER">C</FONT></TD>
+<TD WIDTH="6%" VALIGN="TOP">
+<FONT FACE="Courier"><P ALIGN="CENTER">I</FONT></TD>
+<TD WIDTH="6%" VALIGN="TOP">
+<FONT FACE="Courier"><P ALIGN="CENTER">A</FONT></TD>
+<TD WIDTH="6%" VALIGN="TOP">
+<FONT FACE="Courier"><P ALIGN="CENTER">C</FONT></TD>
+<TD WIDTH="15%" VALIGN="TOP">
+<FONT FACE="Courier"><P ALIGN="CENTER">'\n'</FONT></TD>
+</TR>
+<TR><TD WIDTH="18%" VALIGN="TOP">
+<FONT SIZE=2><P ALIGN="CENTER">linea 3</FONT></TD>
+<TD WIDTH="6%" VALIGN="TOP">
+<FONT FACE="Courier"><P ALIGN="CENTER">G</FONT></TD>
+<TD WIDTH="6%" VALIGN="TOP">
+<FONT FACE="Courier"><P ALIGN="CENTER">I</FONT></TD>
+<TD WIDTH="6%" VALIGN="TOP">
+<FONT FACE="Courier"><P ALIGN="CENTER">R</FONT></TD>
+<TD WIDTH="6%" VALIGN="TOP">
+<FONT FACE="Courier"><P ALIGN="CENTER">A</FONT></TD>
+<TD WIDTH="6%" VALIGN="TOP">
+<FONT FACE="Courier"><P ALIGN="CENTER">M</FONT></TD>
+<TD WIDTH="6%" VALIGN="TOP">
+<FONT FACE="Courier"><P ALIGN="CENTER">O</FONT></TD>
+<TD WIDTH="6%" VALIGN="TOP">
+<FONT FACE="Courier"><P ALIGN="CENTER">N</FONT></TD>
+<TD WIDTH="6%" VALIGN="TOP">
+<FONT FACE="Courier"><P ALIGN="CENTER">D</FONT></TD>
+<TD WIDTH="6%" VALIGN="TOP">
+<FONT FACE="Courier"><P ALIGN="CENTER">O</FONT></TD>
+<TD WIDTH="6%" VALIGN="TOP">
+<FONT FACE="Courier"><P ALIGN="CENTER">*</FONT></TD>
+<TD WIDTH="6%" VALIGN="TOP">
+<FONT FACE="Courier"><P ALIGN="CENTER">T</FONT></TD>
+<TD WIDTH="6%" VALIGN="TOP">
+<FONT FACE="Courier"><P ALIGN="CENTER">I</FONT></TD>
+<TD WIDTH="15%" VALIGN="TOP">
+<FONT FACE="Courier"><P ALIGN="CENTER">'\n'</FONT></TD>
+</TR>
+<TR><TD WIDTH="18%" VALIGN="TOP">
+<FONT SIZE=2><P ALIGN="CENTER">linea 4</FONT></TD>
+<TD WIDTH="6%" VALIGN="TOP">
+<FONT FACE="Courier"><P ALIGN="CENTER">O</FONT></TD>
+<TD WIDTH="6%" VALIGN="TOP">
+<FONT FACE="Courier"><P ALIGN="CENTER">N</FONT></TD>
+<TD WIDTH="6%" VALIGN="TOP">
+<FONT FACE="Courier"><P ALIGN="CENTER">E</FONT></TD>
+<TD WIDTH="6%" VALIGN="TOP">
+<FONT FACE="Courier"><P ALIGN="CENTER">R</FONT></TD>
+<TD WIDTH="6%" VALIGN="TOP">
+<FONT FACE="Courier"><P ALIGN="CENTER">I</FONT></TD>
+<TD WIDTH="6%" VALIGN="TOP">
+<FONT FACE="Courier"><P ALIGN="CENTER">*</FONT></TD>
+<TD WIDTH="6%" VALIGN="TOP">
+<FONT FACE="Courier"><P ALIGN="CENTER">A</FONT></TD>
+<TD WIDTH="6%" VALIGN="TOP">
+<FONT FACE="Courier"><P ALIGN="CENTER">I</FONT></TD>
+<TD WIDTH="6%" VALIGN="TOP">
+<FONT FACE="Courier"><P ALIGN="CENTER">N</FONT></TD>
+<TD WIDTH="6%" VALIGN="TOP">
+<FONT FACE="Courier"><P ALIGN="CENTER">*</FONT></TD>
+<TD WIDTH="6%" VALIGN="TOP">
+<FONT FACE="Courier"><P ALIGN="CENTER">R</FONT></TD>
+<TD WIDTH="6%" VALIGN="TOP">
+<FONT FACE="Courier"><P ALIGN="CENTER">D</FONT></TD>
+<TD WIDTH="15%" VALIGN="TOP">
+<FONT FACE="Courier"><P ALIGN="CENTER">'\n'</FONT></TD>
+</TR>
+<TR><TD WIDTH="18%" VALIGN="TOP">
+<FONT SIZE=2><P ALIGN="CENTER">linea 5</FONT></TD>
+<TD WIDTH="6%" VALIGN="TOP">
+<FONT FACE="Courier"><P ALIGN="CENTER">D</FONT></TD>
+<TD WIDTH="6%" VALIGN="TOP">
+<FONT FACE="Courier"><P ALIGN="CENTER">A</FONT></TD>
+<TD WIDTH="6%" VALIGN="TOP">
+<FONT FACE="Courier"><P ALIGN="CENTER">*</FONT></TD>
+<TD WIDTH="6%" VALIGN="TOP">
+<FONT FACE="Courier"><P ALIGN="CENTER">I</FONT></TD>
+<TD WIDTH="6%" VALIGN="TOP">
+<FONT FACE="Courier"><P ALIGN="CENTER">L</FONT></TD>
+<TD WIDTH="6%" VALIGN="TOP">
+<FONT FACE="Courier"><P ALIGN="CENTER">*</FONT></TD>
+<TD WIDTH="6%" VALIGN="TOP">
+<FONT FACE="Courier"><P ALIGN="CENTER">M</FONT></TD>
+<TD WIDTH="6%" VALIGN="TOP">
+<FONT FACE="Courier"><P ALIGN="CENTER">E</FONT></TD>
+<TD WIDTH="6%" VALIGN="TOP">
+<FONT FACE="Courier"><P ALIGN="CENTER">G</FONT></TD>
+<TD WIDTH="6%" VALIGN="TOP">
+<FONT FACE="Courier"><P ALIGN="CENTER">L</FONT></TD>
+<TD WIDTH="6%" VALIGN="TOP">
+<FONT FACE="Courier"><P ALIGN="CENTER">I</FONT></TD>
+<TD WIDTH="6%" VALIGN="TOP">
+<FONT FACE="Courier"><P ALIGN="CENTER">O</FONT></TD>
+<TD WIDTH="15%" VALIGN="TOP">
+<FONT FACE="Courier"><P ALIGN="CENTER">'\n'</FONT></TD>
+</TR>
+<TR><TD WIDTH="18%" VALIGN="TOP">
+<FONT SIZE=2><P ALIGN="CENTER">linea 6</FONT></TD>
+<TD WIDTH="6%" VALIGN="TOP">
+<FONT FACE="Courier"><P ALIGN="CENTER">A</FONT></TD>
+<TD WIDTH="6%" VALIGN="TOP">
+<FONT FACE="Courier"><P ALIGN="CENTER">C</FONT></TD>
+<TD WIDTH="6%" VALIGN="TOP">
+<FONT FACE="Courier"><P ALIGN="CENTER">E</FONT></TD>
+<TD WIDTH="6%" VALIGN="TOP">
+<FONT FACE="Courier"><P ALIGN="CENTER">*</FONT></TD>
+<TD WIDTH="6%" VALIGN="TOP">
+<FONT FACE="Courier"><P ALIGN="CENTER">L</FONT></TD>
+<TD WIDTH="6%" VALIGN="TOP">
+<FONT FACE="Courier"><P ALIGN="CENTER">I</FONT></TD>
+<TD WIDTH="6%" VALIGN="TOP">
+<FONT FACE="Courier"><P ALIGN="CENTER">E</FONT></TD>
+<TD WIDTH="6%" VALIGN="TOP">
+<FONT FACE="Courier"><P ALIGN="CENTER">T</FONT></TD>
+<TD WIDTH="6%" VALIGN="TOP">
+<FONT FACE="Courier"><P ALIGN="CENTER">O</FONT></TD>
+<TD WIDTH="6%" VALIGN="TOP">
+<FONT FACE="Courier"><P ALIGN="CENTER">*</FONT></TD>
+<TD WIDTH="6%" VALIGN="TOP">
+<FONT FACE="Courier"><P ALIGN="CENTER">C</FONT></TD>
+<TD WIDTH="6%" VALIGN="TOP">
+<FONT FACE="Courier"><P ALIGN="CENTER">*</FONT></TD>
+<TD WIDTH="15%" VALIGN="TOP">
+<FONT FACE="Courier"><P ALIGN="CENTER">'\n'</FONT></TD>
+</TR>
+<TR><TD WIDTH="18%" VALIGN="TOP">
+<FONT SIZE=2><P ALIGN="CENTER">linea 7</FONT></TD>
+<TD WIDTH="6%" VALIGN="TOP">
+<FONT FACE="Courier"><P ALIGN="CENTER">*</FONT></TD>
+<TD WIDTH="6%" VALIGN="TOP">
+<FONT FACE="Courier"><P ALIGN="CENTER">R</FONT></TD>
+<TD WIDTH="6%" VALIGN="TOP">
+<FONT FACE="Courier"><P ALIGN="CENTER">I</FONT></TD>
+<TD WIDTH="6%" VALIGN="TOP">
+<FONT FACE="Courier"><P ALIGN="CENTER">T</FONT></TD>
+<TD WIDTH="6%" VALIGN="TOP">
+<FONT FACE="Courier"><P ALIGN="CENTER">O</FONT></TD>
+<TD WIDTH="6%" VALIGN="TOP">
+<FONT FACE="Courier"><P ALIGN="CENTER">R</FONT></TD>
+<TD WIDTH="6%" VALIGN="TOP">
+<FONT FACE="Courier"><P ALIGN="CENTER">N</FONT></TD>
+<TD WIDTH="6%" VALIGN="TOP">
+<FONT FACE="Courier"><P ALIGN="CENTER">A</FONT></TD>
+<TD WIDTH="6%" VALIGN="TOP">
+<FONT FACE="Courier"><P ALIGN="CENTER">*</FONT></TD>
+<TD WIDTH="6%" VALIGN="TOP">
+<FONT FACE="Courier"><P ALIGN="CENTER">E</FONT></TD>
+<TD WIDTH="6%" VALIGN="TOP">
+<FONT FACE="Courier"><P ALIGN="CENTER">I</FONT></TD>
+<TD WIDTH="6%" VALIGN="TOP">
+<FONT FACE="Courier"><P ALIGN="CENTER">N</FONT></TD>
+<TD WIDTH="15%" VALIGN="TOP">
+<FONT FACE="Courier"><P ALIGN="CENTER">'\n'</FONT></TD>
+</TR>
+<TR><TD WIDTH="18%" VALIGN="TOP">
+<FONT SIZE=2><P ALIGN="CENTER">linea 8</FONT></TD>
+<TD WIDTH="6%" VALIGN="TOP">
+<FONT FACE="Courier"><P ALIGN="CENTER">G</FONT></TD>
+<TD WIDTH="6%" VALIGN="TOP">
+<FONT FACE="Courier"><P ALIGN="CENTER">I</FONT></TD>
+<TD WIDTH="6%" VALIGN="TOP">
+<FONT FACE="Courier"><P ALIGN="CENTER">A</FONT></TD>
+<TD WIDTH="6%" VALIGN="TOP">
+<FONT FACE="Courier"><P ALIGN="CENTER">R</FONT></TD>
+<TD WIDTH="6%" VALIGN="TOP">
+<FONT FACE="Courier"><P ALIGN="CENTER">*</FONT></TD>
+<TD WIDTH="6%" VALIGN="TOP">
+<FONT FACE="Courier"><P ALIGN="CENTER">T</FONT></TD>
+<TD WIDTH="6%" VALIGN="TOP">
+<FONT FACE="Courier"><P ALIGN="CENTER">T</FONT></TD>
+<TD WIDTH="6%" VALIGN="TOP">
+<FONT FACE="Courier"><P ALIGN="CENTER">*</FONT></TD>
+<TD WIDTH="6%" VALIGN="TOP">
+<FONT FACE="Courier"><P ALIGN="CENTER">O</FONT></TD>
+<TD WIDTH="6%" VALIGN="TOP">
+<FONT FACE="Courier"><P ALIGN="CENTER">N</FONT></TD>
+<TD WIDTH="6%" VALIGN="TOP">
+<FONT FACE="Courier"><P ALIGN="CENTER">D</FONT></TD>
+<TD WIDTH="6%" VALIGN="TOP">
+<FONT FACE="Courier"><P ALIGN="CENTER">E</FONT></TD>
+<TD WIDTH="15%" VALIGN="TOP">
+<FONT FACE="Courier"><P ALIGN="CENTER">'\n'</FONT></TD>
+</TR>
+<TR><TD WIDTH="18%" VALIGN="TOP">
+<FONT SIZE=2><P ALIGN="CENTER">linea 9</FONT></TD>
+<TD WIDTH="6%" VALIGN="TOP">
+<FONT FACE="Courier"><P ALIGN="CENTER">P</FONT></TD>
+<TD WIDTH="6%" VALIGN="TOP">
+<FONT FACE="Courier"><P ALIGN="CENTER">A</FONT></TD>
+<TD WIDTH="6%" VALIGN="TOP">
+<FONT FACE="Courier"><P ALIGN="CENTER">R</FONT></TD>
+<TD WIDTH="6%" VALIGN="TOP">
+<FONT FACE="Courier"><P ALIGN="CENTER">A</FONT></TD>
+<TD WIDTH="6%" VALIGN="TOP">
+<FONT FACE="Courier"><P ALIGN="CENTER">T</FONT></TD>
+<TD WIDTH="6%" VALIGN="TOP">
+<FONT FACE="Courier"><P ALIGN="CENTER">I</FONT></TD>
+<TD WIDTH="6%" VALIGN="TOP">
+<FONT FACE="Courier"><P ALIGN="CENTER">E</FONT></TD>
+<TD WIDTH="6%" VALIGN="TOP">
+<FONT FACE="Courier"><P ALIGN="CENTER">*</FONT></TD>
+<TD WIDTH="6%" VALIGN="TOP">
+<FONT FACE="Courier"><P ALIGN="CENTER">C</FONT></TD>
+<TD WIDTH="6%" VALIGN="TOP">
+<FONT FACE="Courier"><P ALIGN="CENTER">I</FONT></TD>
+<TD WIDTH="6%" VALIGN="TOP">
+<FONT FACE="Courier"><P ALIGN="CENTER">A</FONT></TD>
+<TD WIDTH="6%" VALIGN="TOP">
+<FONT FACE="Courier"><P ALIGN="CENTER">O</FONT></TD>
+<TD WIDTH="15%" VALIGN="TOP">
+<FONT FACE="Courier"><P ALIGN="CENTER">'\n'</FONT></TD>
+</TR>
+<TR><TD WIDTH="18%" VALIGN="TOP">&nbsp;</TD>
+<TD WIDTH="82%" VALIGN="TOP" COLSPAN=13>
+<FONT FACE="Courier"><P ALIGN="CENTER">EOF</FONT></TD>
+</TR>
+<TR><TD WIDTH="18%" VALIGN="TOP">&nbsp;</TD>
+<TD WIDTH="82%" VALIGN="TOP" COLSPAN=13>
+<FONT SIZE=2><P ALIGN="CENTER">Fig. 2: file corrispondente al cruciverba di Fig. 1</FONT></TD>
+</TR>
+</TABLE>
+</CENTER></P>
+
+
+<FONT FACE="Courier" SIZE=3><P ALIGN="CENTER">&nbsp;</P>
+<P ALIGN="CENTER">&nbsp;</P></FONT>
+<P ALIGN="CENTER"><CENTER><TABLE BORDER CELLSPACING=1 CELLPADDING=3 WIDTH=376>
+<TR><TD WIDTH="7%" VALIGN="TOP">
+<FONT FACE="Times" SIZE=2><P ALIGN="CENTER"><HR ALIGN="RIGHT" WIDTH="6%" SIZE=0><HR ALIGN="RIGHT" WIDTH="6%" SIZE=0><HR WIDTH="6%" SIZE=0><HR WIDTH="6%" SIZE=0><HR ALIGN="LEFT" WIDTH="6%" SIZE=0></FONT><FONT FACE="Courier" SIZE=3>PT</FONT></TD>
+<TD WIDTH="5%" VALIGN="TOP">&nbsp;</TD>
+<TD WIDTH="7%" VALIGN="TOP">&nbsp;</TD>
+<TD WIDTH="7%" VALIGN="TOP">
+<FONT FACE="Courier" SIZE=3><P ALIGN="CENTER">TI</FONT></TD>
+<TD WIDTH="5%" VALIGN="TOP">&nbsp;</TD>
+<TD WIDTH="7%" VALIGN="TOP">&nbsp;</TD>
+<TD WIDTH="7%" VALIGN="TOP">
+<FONT FACE="Courier" SIZE=3><P ALIGN="CENTER">RD</FONT></TD>
+<TD WIDTH="5%" VALIGN="TOP">&nbsp;</TD>
+<TD WIDTH="7%" VALIGN="TOP">&nbsp;</TD>
+<TD WIDTH="7%" VALIGN="TOP">
+<FONT FACE="Courier" SIZE=3><P ALIGN="CENTER">DA</FONT></TD>
+<TD WIDTH="5%" VALIGN="TOP">&nbsp;</TD>
+<TD WIDTH="7%" VALIGN="TOP">&nbsp;</TD>
+<TD WIDTH="7%" VALIGN="TOP">
+<FONT FACE="Courier" SIZE=3><P ALIGN="CENTER">IL</FONT></TD>
+<TD WIDTH="5%" VALIGN="TOP">&nbsp;</TD>
+<TD WIDTH="7%" VALIGN="TOP">&nbsp;</TD>
+<TD WIDTH="7%" VALIGN="TOP">
+<FONT FACE="Courier" SIZE=3><P ALIGN="CENTER">TT</FONT></TD>
+<TD WIDTH="5%" VALIGN="TOP" BGCOLOR="#ffffff">&nbsp;</TD>
+</TR>
+<TR><TD VALIGN="TOP" COLSPAN=17>
+<FONT SIZE=2><P ALIGN="CENTER">Fig. 3: lista delle parole orizzontali di due caratteri nel cruciverba di Fig. 1</FONT></TD>
+</TR>
+</TABLE>
+</CENTER></P>
+
+
+<P>&nbsp;</P>
+<P ALIGN="CENTER"><CENTER><TABLE BORDER CELLSPACING=1 CELLPADDING=3 WIDTH=175>
+<TR><TD WIDTH="14%" VALIGN="TOP">
+<FONT FACE="Times" SIZE=2><P ALIGN="CENTER"><HR WIDTH="6%" SIZE=0><HR WIDTH="6%" SIZE=0></FONT><FONT FACE="Courier" SIZE=3>PT</FONT></TD>
+<TD WIDTH="10%" VALIGN="TOP">&nbsp;</TD>
+<TD WIDTH="14%" VALIGN="TOP">&nbsp;</TD>
+<TD WIDTH="14%" VALIGN="TOP">
+<FONT FACE="Courier" SIZE=3><P>RD</FONT></TD>
+<TD WIDTH="10%" VALIGN="TOP">&nbsp;</TD>
+<TD WIDTH="14%" VALIGN="TOP">&nbsp;</TD>
+<TD WIDTH="14%" VALIGN="TOP">
+<FONT FACE="Courier" SIZE=3><P>TT</FONT></TD>
+<TD WIDTH="10%" VALIGN="TOP" BGCOLOR="#ffffff">&nbsp;</TD>
+</TR>
+<TR><TD VALIGN="TOP" COLSPAN=8>
+<FONT SIZE=2><P ALIGN="CENTER">Fig.4: la lista di Fig. 3 dopo l&#146;eliminazione delle parole contenenti vocali</FONT></TD>
+</TR>
+</TABLE>
+</CENTER></P>
+
+<P ALIGN="CENTER"></P>
+<B><FONT SIZE=3><P ALIGN="CENTER">Universit&agrave; di Roma <I>La Sapienza</P>
+</I><P ALIGN="CENTER">Facolt&agrave; di Ingegneria </P>
+<P ALIGN="CENTER">Corso di Fondamenti di Informatica </P>
+<P ALIGN="CENTER">Corso di Laurea: <I>Ambiente e Territorio</P>
+</B></I><P ALIGN="CENTER"></P>
+<P ALIGN="CENTER">Appello del 20-10-1998 (riservato agli iscritti al 5&#176; anno nel 97-98)</P>
+
+<P>&nbsp;</P>
+<P>&nbsp;</P>
+<B><P>Esercizio 2 (4 punti)</P>
+</B><P>Illustrare, servendosi anche di esempi, i tipi di dato strutturati disponibili in C, evidenziando i fondamentali costruttori di tipi. </P>
+
+<B><P>&nbsp;</P>
+<P>Esercizio 3 (4 punti)</P>
+</B><P>Con riferimento al seguente programma C, dire quale output fornisce quando riceve in ingresso l&#146;ultima cifra del vostro numero di matricola.</P>
+
+</FONT><FONT FACE="Courier" SIZE=1><P>#include &lt;stdio.h&gt;</P>
+
+<P>int A[5], B[5];</P>
+
+<P>int Inizio(int *, int );</P>
+<P>int Cambia(int *, int, int);</P>
+
+<P>&nbsp;</P>
+<P>int Inizio(int *A, int u)</P>
+<P>{</P>
+<P>&#9;int i;</P>
+<P>&#9;for(i=0; i&lt;u; i=i+1)</P>
+<P>&#9;&#9;A[i] = i;</P>
+<P>&#9;return A[u-1];</P>
+<P>}</P>
+
+<P>int Cambia(int *B, int u, int a)</P>
+<P>{</P>
+<P>&#9;int i, P;</P>
+<P>&#9;P=0;</P>
+<P>&#9;for(i=0; i&lt;a; i=i+1) {</P>
+<P>&#9;&#9;if(P==0)</P>
+<P>&#9;&#9;&#9;B[i]=A[a-i]+u;</P>
+<P>&#9;&#9;P=1-P;</P>
+<P>&#9;}</P>
+<P>&#9;return *B;</P>
+<P>}</P>
+
+<P>int main(void)</P>
+<P>{</P>
+<P>&#9;int B[4], ultimaciframatricola, i;</P>
+<P>&#9;</P>
+<P>&#9;Inizio(A, 5);</P>
+<P>&#9;Inizio(B, 4);</P>
+<P>&#9;scanf("%d", &amp;ultimaciframatricola);</P>
+<P>&#9;Cambia(B, ultimaciframatricola, 4);</P>
+<P>&#9;</P>
+<P>&#9;for(i=0; i&lt;4; i=i+1)</P>
+<P>&#9;&#9;printf("B[%d] = %d\n", i, B[i]);</P>
+<P>&#9;</P>
+<P>&#9;return 0;</P>
+<P>}</P>
+</FONT><FONT SIZE=3>
+<B><P>&nbsp;</P>
+<P>Esercizio 4 (4 punti)</P>
+</B><P>Con riferimento alle seguenti relazioni:</P>
+
+<UL>
+<LI>MedicoUSL (CognomeMedico, NomeMedico, CodiceMedico)</LI>
+<LI>AnagrafeUSL (Nome, Cognome, LuogoNascita, DataNascita, CodiceFiscale, CodiceRegionale)</LI>
+<LI>SceltaMedico (CodicePaziente, CodiceMedico, DataScelta, DataCessazione)</LI></UL>
+
+<P>il candidato scriva una interrogazione SQL che restituisca la lista, completa di date, di tutti i medici scelti da Mario Rossi.</P></FONT></BODY>
+</HTML>

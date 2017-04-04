@@ -1,0 +1,480 @@
+<HTML>
+
+<HEAD>
+<TITLE>Research Report 1994</TITLE>
+</HEAD>
+
+<BODY BACKGROUND="../pics/paper.gif">
+
+<TABLE WIDTH="100%">
+<TR ALIGN="CENTER">
+<TD></TD>
+<TD WIDTH="100%"><H1><BR>
+<TT>Algorithm Engineering Research Group</TT>
+</H1></TD>
+</TR>
+</TABLE>
+<HR>
+<H2 ALIGN=CENTER>Research Report 1994</H2>
+
+Algorithmic Engineering is mainly concerned with the study of the intrinsic
+complexity of problems, the design of algorithmic techniques for their
+efficient solution and the test of such techniques in real-world situations.
+<P>
+In this area the research work at DIS in 1994 was carried on in the following
+directions:
+
+<UL>
+<LI><A HREF="#APPROXIMATION">approximate solution of NP-hard combinatorial problems</A>,
+<LI><A HREF="#GRAPHS">graph and combinatorial algorithms</A>,
+<LI><A HREF="#GEOMETRY">computational geometry and spatial data management</A>,
+<LI><A HREF="#ON-LINE">on-line algorithms</A>,
+<LI><A HREF="#DISTRIBUTED">distributed and network algorithms</A>,
+<LI><A HREF="#PROBABILISTIC">probabilistic analysis of algorithms</A>,
+<LI><A HREF="#LEARNING">computational learning theory</A>.
+</UL>
+
+<H3>1.<HT><A NAME="APPROXIMATION">Approximate solution of NP-hard optimization problems</A></H3>
+
+Due to their intrinsic complexity, for NP-hard optimization problems we cannot
+hope to find efficient general solution algorithms and we need to restrict
+ourselves to approximate solutions. Hence, the study of approximate algorithms
+for NP-hard optimization problems has a considerable importance both from the
+theoretical point of view and with respect to the practical aim of designing
+efficient approximation algorithms which are guaranteed to provide a solution
+whithin a maximum relative error.
+<P>
+In this area two research directions have been taken. Along the first
+direction the class of problems that can be efficiently approximated by means of
+local search algorithms has been defined and its properties analyzed [<A HREF="#I2-8">I2-8</A>], and
+more powerful local search approximation tecniques have been introduced [<A HREF="#I2-1">I2-1</A>,
+<A HREF="#I2-R-1">I2-R-1</A>]. Besides, along the second line, a survey of the main research results in
+the characterization of approximate problems has been prepared [<A HREF="#I2-5">I2-5</A>].
+
+<H3>2.<HT><A NAME="GRAPHS">Graph and combinatorial algorithms</A></H3>
+
+In this area the research has been focusing on dynamic graph algorithms, on graph
+drawing and on the design of data structures and of algorithmic techniques for
+several combinatorial problems.
+<P>
+<U>Dynamic graph algorithms</U><T>
+Dynamic graph algorithms are algorithms that maintain
+some properties of a changing graph, more efficiently than a simple recomputation
+from scratch after each change. In this area, many dynamic problems (such as
+minimum spanning trees, edge and vertex connectivity, planarity testing, shortest
+paths) have been efficiently solved, by designing novel data structures
+and algorithmic techniques, on general graphs [<A HREF="#I2-19">I2-19</A>,<A HREF="#I2-31">I2-31</A>,<A HREF="#I2-36">I2-36</A>,<A HREF="#I2-R-6">I2-R-6</A>] and
+planar graphs [<A HREF="#I2-22">I2-22</A>,<A HREF="#I2-31">I2-31</A>,<A HREF="#I2-34">I2-34</A>,<A HREF="#I2-R-7">I2-R-7</A>,<A HREF="#I2-R-10">I2-R-10</A>,<A HREF="#I2-R-11">I2-R-11</A>]. A characterization of
+DFS-trees and its maintainance in a directed acyclic graph is studied in [<A HREF="#I2-28">I2-28</A>].
+ Average case analysis of dynamic algorithms for directed graphs has been
+considered in [<A HREF="#I2-R-2">I2-R-2</A>].
+<P>
+<U>Graph Drawing</U><T>
+The problem of automatically drawing a graph is a classical
+research theme. The recent results in this field concern the study of
+series-parallel digraphs, st-digraphs, triconnected digraphs, and orthogonal
+representations. A comprehensive survey on graph drawing is presented in
+[<A HREF="#I2-16">I2-16</A>]. With regard to series-parallel digraphs, orthogonal representations and
+cost functions of orthogonal representations are studied in [<A HREF="#I2-R-4">I2-R-4</A>], and
+drawings with polynomial area requirement can be produced with the algorithms
+presented in [<A HREF="#I2-9">I2-9</A>]. Upward planarity testing of triconnected graphs is studied
+in [<A HREF="#I2-10">I2-10</A>]. Dynamic graph drawing problems are studied in [<A HREF="#I2-14">I2-14</A>,<A HREF="#I2-19">I2-19</A>] for
+planar graphs, trees and convex planar graphs. Combinatorial properties of
+triangular planar graphs are indagated in [<A HREF="#I2-R-5">I2-R-5</A>]. Experimental studies
+comparing general-purpose graph drawing algorithms is carried out in [<A HREF="#I2-17">I2-17</A>].
+<P>
+<U>Data structures</U><T>
+In the area of data structures, new data structures for the set
+union problem with backtracking and for the tree reachability testing and path
+searching problem have been designed and analyzed [<A HREF="#I2-4">I2-4</A>]. Algorithms and data
+structures for the efficient updating of approximate solutions for bin-packing
+are proposed in [<A HREF="#I2-32">I2-32</A>]. Finally, the dynamization of the constraint
+satisfaction problem and of the satisfiability of a Horn formula with
+uncertainty are addressed respectively in [<A HREF="#I2-30">I2-30</A>] and [<A HREF="#I2-33">I2-33</A>]. In [<A HREF="#I2-39">I2-39</A>] an
+optimal data structure for representing the transitive closure of a lattice is
+proposed.
+
+<H3>3. <T><A NAME="GEOMETRY">Computational geometry and spatial data management</A></H3>
+
+ The problem of characterizing the shape of geometric objects has been tackled in
+many variants. [<A HREF="#I2-18">I2-18</A>] presents a survey of the argument. A complete
+characterization of trees by means of proximity graphs is given in [<A HREF="#I2-12">I2-12</A>].
+Classes of graphs admiting rectangle of influence drawing are characterized in
+[<A HREF="#I2-21">I2-21</A>] while [<A HREF="#I2-13">I2-13</A>] investigates beta-drawings of graphs.
+<P>
+Classical problems in computational geometry are considered in [<A HREF="#I2-27">I2-27</A>], that
+presents an optimal online algorithm for computing a series of approximations of
+the convex hull of a planar set, and in [<A HREF="#I2-29">I2-29</A>] that applies theory of partial
+orders to half-plane search.
+<P>
+A parallel data structure for network flow problems in planar graphs that
+finds applcations to spatial data management is proposed in [<A HREF="#I2-3">I2-3</A>].
+
+<H3>4.<T><A NAME="ON-LINE">On-line algorithms</A></H3>
+On-line problems require to satisfy each request in a sequence without knowledge
+of future requests. The goal is to serve efficiently the entire sequence of
+requests. Problems of memory paging for structured information (as for example
+graphs or sets) have been tackled. The case in which the underlying data
+structure is a graph and queries are about the connectivity or the existing paths
+between pairs of nodes has been solved in [<A HREF="#I2-R-8">I2-R-8</A>]. Moreover, the case in which
+a set of items are requested to be contemporarily in the cache memory is studied
+in [<A HREF="#I2-23">I2-23</A>].
+<P>
+A methodology for on-line scheduling problems based on linear programming has
+been proposed in [<A HREF="#I2-37">I2-37</A>]. The methodology finds many applications, for instance
+to the scheduling and routing of communications in computer networks.
+<P>
+In [<A HREF="#I2-6">I2-6</A>, <A HREF="#I2-R-3">I2-R-3</A>] it has been considered the problem of scheduling a server
+in a metric space as to cover a set of requests given in on-line fashion.
+Competitive algorithms that update efficiently the route of a server when new
+requests are presented have been proposed for various metric spaces.
+<P>
+The list update problem consists of implementing a dictionary in a
+sequential list. In [<A HREF="#I2-15">I2-15</A>] the heuristic move-to-front, that moves the accessed
+information to the beginning of the list, is studied when set of items rather
+than single items must be retrieved.
+
+<H3>5.<T><A NAME="DISTRIBUTED">Distributed and network algorithms</A></H3>
+
+In [<A HREF="#I2-R-9">I2-R-9</A>] the Boolean Routing model is considered and it is shown that it
+provides optimal representations of all shortest routes on many specific network
+topologies. The problem of devising interval routing schemes for chordal ring
+networks is considered in [<A HREF="#I2-25">I2-25</A>], and in [<A HREF="#I2-26">I2-26</A>] it is shown that Interval
+Routing schemes in general cannot significantly reduce space requirements.
+<P>
+The problem of finding the extrema in a distributed multiset is considered in
+[<A HREF="#I2-2">I2-2</A>]. It corresponds to determining the minimum and the maximum value of a
+multiset whose elements are drawn from a totally ordered universe and stored at
+the entity of a ring network.
+Finally, in [<A HREF="#I2-11">I2-11</A>] a new scheme for deadlock resolution is proposed.
+
+<H3>6.<T><A NAME="PROBABILISTIC">Probabilistic analysis of algorithms</A></H3>
+
+In [<A HREF="#I2-38">I2-38</A>] an on-line version of the knapsack problem has been considered from a
+probabilistic point of view; in the paper it is shown how an adaptive strategy
+finds a solution that is very close to the optimal solution.
+
+<H3> 7.<T><A NAME="LEARNING">Computational Learning Theory</A></H3>
+
+The problem of learning boolean formulae from examples has been considered. In
+[<A HREF="#I2-35">I2-35</A>] polynomial algorithms for learning disjunctive formulae under classes of
+probability distributions are presented. In [<A HREF="#I2-24">I2-24</A>] is faced the problem of
+learning boolean formulae in the PAC model under the assumption that the examples
+are drawn according to a product distribution.
+
+<H3>National and International Research Projects</H3>
+
+Research in the area of Theory of Algorithms has been supported under various
+contracts during 1994. In particular:
+
+<UL>
+<LI>MURST 40% National Project on "Algorithms, Computation Models and
+Information Structures" (under the direction of a member of DIS);
+<LI>ESPRIT Basic Research Action on "Algorithms and Complexity (ALCOM II)".
+<LI>HCM Project "MAP:Efficient use of parallel computers".
+<LI>Progetto Finalizzato "Trasporti 2" of the National Research Council.
+</UL>
+
+In the area of data structures and algorithms for the efficient management of
+spatial objects with applications to geographic information systems the following
+project has been active:
+
+<UL>
+<LI>CNR Project "Multidata"
+</UL>
+
+Due both to the well established quality of the research in this area and to
+the participation to international projects the scientific cooperation in this
+area has been very active both at national level (University of L'Aquila,
+University of Rome "Tor Vergata," University of Salerno, IASI-CNR, etc.) and at
+international level. Perticularly relevant have been the scientific relationships
+with INRIA (Paris), Charles University (Prague), University of Utrecht, Columbia
+University, Brown University, University of Maryland, IBM T.J. Watson Research
+Center, International Computer Science Institute (Berkeley), ETH (Z&uuml;rich),
+Tel-Aviv University, INRIA (Sophia Antipolis), Mc Gill University (Canada),
+Paderborn University (Germany), Carleton University (Canada).
+
+<H3>Publications</H3>
+
+<H4>International Journals and Conferences</H4>
+
+<B>[<A NAME="I2-1">I2-1</A>]</B>  P. Alimonti, "New local search approximation techniques for
+maximum
+generalized satisfiability problems", Proc. of the 2nd Italian Conference on
+Algorithms and Complexity (CIAC '94), Lecture Notes in Computer Science 778,
+Springer-Verlag, 1994.
+<P>
+<B>[<A NAME="I2-2">I2-2</A>]</B> P. Alimonti, P. Flocchini, N. Santoro: "Finding the Extrema in
+a
+Distributed Multiset", Proc. of the 8th International Workshop on Distributed
+Algotithms, LNCS, Springer-Verlag,1994.
+<P>
+<B>[<A NAME="I2-3">I2-3</A>]</B> E. Apolloni, F. Arcieri, E. Nardelli, M. Talamo, "Parallel
+systems for
+land information management", MPCS94, Lecture Notes in Computer Science,
+Springer-Verlag.
+<P>
+<B>[<A NAME="I2-4">I2-4</A>]</B>  A. Apostolico, G. F. Italiano, G. Gambosi, M. Talamo,"The set
+union
+problem with unlimited backtracking", SIAM Journal on Computing, vol. 23, no. 1
+(1994), 50--70.
+<P>
+<B>[<A NAME="I2-5">I2-5</A>]</B>  G. Ausiello. P. Crescenzi, M. Protasi, "Approximate Solution
+of NP
+Optimization Problems", to appear in Journal of Theoretical Computer Science,
+158.
+<P>
+<B>[<A NAME="I2-6">I2-6</A>]</B>  G. Ausiello, E. Feuerstein, S. Leonardi, L.Stougie, M.
+Talamo,
+"Serving requests with on-line routing", Proceedings of the 4th Scandinavian
+Workshop on Algorithm Theory (SWAT '94), Lecture Notes in Computer Science 824,
+Springer-Verlag, 1994.
+<P>
+<B>[<A NAME="I2-7">I2-7</A>]</B>  Giorgio Ausiello and Giuseppe F. Italiano, Guest Co-Editors,
+Theoretical Computer Science, 130 (1), 1994, Special issue on Dynamic and On-line
+Algorithms.
+<P>
+<B>[<A NAME="I2-8">I2-8</A>]</B>  G. Ausiello, M. Protasi, "Local Search, Reducibility and
+Approximability of NP Optimization Problems", to appear in Information Processing
+Letters .
+<P>
+<B>[<A NAME="I2-9">I2-9</A>]</B>  P.Bertolazzi, R.F.Cohen, G.Di Battista, R.Tamassia,
+I.G.Tollis, "How
+to Draw a Series-Parallel Digraph", International Journal of Computational
+Geometry and Applications, 1994.
+<P>
+<B>[<A NAME="I2-10">I2-10</A>]</B>  P.Bertolazzi, G.Di Battista, G.Liotta, C.Mannino, "Upward
+Drawings of
+Triconnected Digraphs", Algorithmica , 1994.
+<P>
+<B>[<A NAME="I2-11">I2-11</A>]</B>  J. Blazewicz, J. Brzezinski, D.P. Bovet, G. Gambosi, M.
+Talamo,
+"Optimal centralised algorithms for store-and-forward deadlock prevention", to
+appear in IEEE Transaction on Computers.
+<P>
+<B>[<A NAME="I2-12">I2-12</A>]</B> P. Bose, W. Lenhart, G. Liotta, "Characterizing Proximity
+Trees,'' to
+appear in Algorithmica, Special Issue on Graph Drawing.
+<P>
+<B>[<A NAME="I2-13">I2-13</A>]</B> P. Bose, G. Di Battista, W.Lenhart, G. Liotta, "Proximity
+Constraints
+and Representable Trees", Proceedings of Graph Drawing'94, Lecture Notes in
+Computer Science 894, 1994.
+<P>
+<B>[<A NAME="I2-14">I2-14</A>]</B>  R.F.Cohen, G.Di Battista, R.Tamassia, I.G.Tollis, "Dynamic
+Graph
+Drawing: Trees, Series-Parallel Graphs, and Planar st-Digraphs", SIAM Journal on
+Computing, 1994.
+<B>[<A NAME="I2-15">I2-15</A>]</B> F. d'Amore, V. Liberatore, "The list update problem and the
+retrieval
+of sets", Theoretical Computer Science,. 130 (1), 1994.
+<P>
+<B>[<A NAME="I2-16">I2-16</A>]</B>  G.Di Battista, P.Eades, R.Tamassia, I.G.Tollis, "Algorithms
+for
+Drawing Graphs: an Annotated Bibliography", Computational Geometry: Theory and
+Applications, vol.4, pp.235-282, 1994.
+<P>
+<B>[<A NAME="I2-17">I2-17</A>]</B> G. Di Battista, A. Garg, G. Liotta, R. Tamassia, E.
+Tassinari, and F.
+Vargiu, "An Experimental Comparison of Three Graph Drawing Algorithms", to appear
+in Proceedings of the 11th ACM Symposium on Computational Geometry.
+<P>
+<B>[<A NAME="I2-18">I2-18</A>]</B> G. Di Battista, W. Lenhart, and G. Liotta, "Proximity
+Drawings: a
+Survey", Proceedings of Graph Drawing'94, Lecture Notes in Computer Science 894,
+1994
+<P>
+<B>[<A NAME="I2-19">I2-19</A>]</B> G. Di Battista, R.Tamassia, "On-line Maintenance of
+Triconnected
+Components with SPQR Trees", Algorithmica, 1994.
+<P>
+<B>[<A NAME="I2-20">I2-20</A>]</B> G. Di Battista, R. Tamassia, L. Vismara, "On-Line Convex
+Planarity
+Testing", to appear in Proceedings of the 20th International Workshop on
+Graph-Theoretic Concepts in Computer Science (WG 94),Lecture Notes in Computer
+Science, Springer-Verlag.
+<P>
+<B>[<A NAME="I2-21">I2-21</A>]</B> H. ElGindy, G. Liotta, A. Lubiw, H. Meijer, and S.H.
+Whitesides,
+"Recognizing Rectangle of Influence Drawable Graphs", Proceedings of Graph
+Drawing'94, Lecture Notes in Computer Science 894, 1994.
+<P>
+<B>[<A NAME="I2-22">I2-22</A>]</B> D. Eppstein, Z. Galil, G. F. Italiano, T. H. Spencer,
+"Separator based
+sparsification I: planarity testing and minimum spanning trees", to appear in
+Journal of Computer and System Science (invited for the special issue of STOC
+93).
+<P>
+<B>[<A NAME="I2-23">I2-23</A>]</B> E. Feuerstein, "Paging more than one page", to appear in
+Proceedings
+of the 2nd Latin American Symposium on Theoretical Informatics (LATIN'95),
+Lecture Notes in Computer Science, Springer-Verlag.
+<P>
+<B>[<A NAME="I2-24">I2-24</A>]</B>  M.Flammini: "k-mu-DNF Formulae are Learnable under Product
+Distribution", Information Processing Letters, 52, 1994, pagg.167-173.
+<P>
+<B>[<A NAME="I2-25">I2-25</A>]</B> M.Flammini, G.Gambosi, S.Salomone, "Interval Routing Schemes
+for
+Chordal Rings", to appear in Proceedings of the Colloquium on Structural
+Information and Communication Complexity (SICC), Ottawa, Canada, 1994.
+<P>
+<B>[<A NAME="I2-26">I2-26</A>]</B> M.Flammini, A.Marchetti Spaccamela, J.van Leeuwen, "Lower
+Bounds on
+Interval Routing", to appear in Proceedings of the 20th International Symposium
+on Mathematical Foundations of Computer Science (MFCS'95), Lecture Notes in
+Computer Science, Springer-Verlag.
+<P>
+<B>[<A NAME="I2-27">I2-27</A>]</B> P. G. Franciosa, C. Gaibisso, G. Gambosi and M. Talamo, "A
+convex-hull
+algorithm for points with approximatively known positions", Int. Journal of
+Computational Geometry & Applications 4, 2 (1994), 153-163.
+<P>
+<B>[<A NAME="I2-28">I2-28</A>]</B> P. G. Franciosa, G. Gambosi and U. Nanni, "An incremental
+agorithm for
+depth first search on DAGs", Proceedings of the 2nd European Symposium on
+Algorithms (Esa'94), Lecture Notes in Computer Science, Springer-Verlag.
+<P>
+<B>[<A NAME="I2-29">I2-29</A>]</B> P. G. Franciosa and M.Talamo, "Orders, k-sets and fast
+halfplane
+search on paged memory", Proceeding of the Workshop on Orders, Algorithms and
+Applications (ORDAL 94), Lecture Notes in Computer Science 831, Springer-Verlag,
+1994.
+<P>
+<B>[<A NAME="I2-30">I2-30</A>]</B> D. Frigioni, A. Marchetti Spaccamela and U. Nanni,
+"Dynamization of
+the backtrack-free search for the constraint satisfaction problem," Proceeding
+of the 2nd Italian Conference on Algorithm and Complexity (CIAC '94), Lecture
+Notes in Computer Science 778, Springer-Verlag.
+<P>
+ <B>[<A NAME="I2-31">I2-31</A>]</B> D. Frigioni, A. Marchetti-Spaccamela, U. Nanni, "Incremental
+Algorithms for the Single Source Shortest Path Problem", Proceedings of the 14th
+Conference on Foundations of Software Technology and Theoretical Computer Science
+(FST&TCS '94),Lecture Notes in Computer Science 880, 113-124.
+<P>
+<B>[<A NAME="I2-32">I2-32</A>]</B> G. Gambosi, A. Postiglione, M. Talamo, "New algorithms for
+on-line
+bin-packing", to appear in BIT.
+<P>
+<B>[<A NAME="I2-33">I2-33</A>]</B> R. Giaccio, "On-line algorithms for satisfiability problems
+with
+uncertainty", to appear in Proceedings of the 20th Workshop on Graph-Theoretic
+Concepts in Computer Science (WG '94), Lecture Notes in Computer Science,
+Springer-Verlag.
+<P>
+<B>[<A NAME="I2-34">I2-34</A>]</B> D. Giammarresi, G. F. Italiano, "Dynamic 2- and
+3-connectivity on
+planar graphs", to appear in Algorithmica.
+<P>
+<B>[<A NAME="I2-35">I2-35</A>]</B> L.Kucera, A.Marchetti-Spaccamela, M.Protasi, "On Learning
+monotone DNF
+formulae under uniform distributions", Information and Computation, 110, n.1,
+84-95, April 1994.
+<P>
+<B>[<A NAME="I2-36">I2-36</A>]</B> G. F. Italiano, R. Ramaswami,"Maintaining spanning trees of
+small
+diameter'', to appear in Algorithmica.
+<P>
+<B>[<A NAME="I2-37">I2-37</A>]</B> S. Leonardi, A. Marchetti-Spaccamela, "On-line resource
+management with applications to routing and scheduling", to appear in
+Proceedings of the 22nd International Colloquium on Automata, Languages and
+Programming (ICALP'95), Lecture Notes in Computer Science, Springer-Verlag.
+<P>
+<B>[<A NAME="I2-38">I2-38</A>]</B> A.Marchetti-Spaccamela, C. Vercellis, "Stochastic on-line
+knapsack
+problems",to appear in Mathematical Programming.
+<P>
+<B>[<A NAME="I2-39">I2-39</A>]</B>  M. Talamo, P. Vocca, "Fast Lattice Browsing on Sparse
+Representation", Proceeding of the Workshop on Orders, Algorithms and
+Applications (ORDAL 94), Lecture Notes in Computer Science 831, Springer-Verlag,
+1994.
+<P>
+<H4>Technical Reports and Submitted Papers</H4>
+<B>[<A NAME="I2-R-1">I2-R-1</A>]</B> P. Alimonti, "Non-oblivious local search for graph and
+hypergraph
+coloring problems", submitted.
+<P>
+<B>[<A NAME="I2-R-2">I2-R-2</A>]</B> P. Alimonti, S. Leonardi, A. Marchetti Spaccamela , "Average
+case
+analysis of fully dynamic reachability for directed graphs", submitted.
+<P>
+<B>[<A NAME="I2-R-3">I2-R-3</A>]</B> G. Ausiello, E. Feuerstein, S. Leonardi, L. Stougie and M.
+Talamo,
+"Competitive algorithms for the on-line traveling salesaman", submitted.
+<P>
+<B>[<A NAME="I2-R-4">I2-R-4</A>]</B> G. Di Battista, G. Liotta, F. Vargiu, "Spirality and Optimal
+Orthogonal Drawings", Dipartimento di Informatica e Sistemistica dell'Universita'
+di Roma "La Sapienza",Technical Report 07.94, submitted.
+<P>
+<B>[<A NAME="I2-R-5">I2-R-5</A>]</B> G. Di Battista, L. Vismara, "Angles of Planar Triangular
+Graphs",
+Dipartimento di Informatica e Sistemistica dell'Universita' di Roma "La
+Sapienza",Technical Report 08.94.
+<P>
+<B>[<A NAME="I2-R-6">I2-R-6</A>]</B> D. Eppstein, Z. Galil, G. F. Italiano, A. Nissenzweig,
+"Sparsification - A technique for speeding up dynamic graph algorithms",
+submitted.
+<P>
+<B>[<A NAME="I2-R-7">I2-R-7</A>]</B> D. Eppstein, Z. Galil, G. F. Italiano, T. H. Spencer,
+"Separator
+-based sparsification II: edge and vertex connectivity", submitted.
+<B>[<A NAME="I2-R-8">I2-R-8</A>]</B> E. Feuerstein and A. Marchetti Spaccamela, "Memory paging
+for
+connectivity and path problems in graphs," submitted.
+<P>
+<B>[<A NAME="I2-R-9">I2-R-9</A>]</B> M. Flammini, G. Gambosi, S. Salomone, "On Devising Boolean
+Routing
+Schemes", Dipartimento di Matematica Pura ed Applicata dell' Universita' degli
+Studi di L'Aquila, Technical Report n.53, 1994.
+<P>
+<B>[<A NAME="I2-R-10">I2-R-10</A>]</B> Z. Galil, G. F. Italiano, N. Sarnak, "Fully dynamic
+planarity
+testing with applications", submitted.
+<P>
+<B>[<A NAME="I2-R-11">I2-R-11</A>]</B> G. F. Italiano, J. A. La Poutre', M. H. Rauch, "Fully
+dynamic
+planarity testing in planar embedded graphs", invited for the special issue of
+ESA '93 to the journal Algorithmica.
+<P>
+<HR>
+<TABLE>
+<TR>
+<TD>
+<A HREF="../main/index.html"><IMG 
+SRC="../pics/home.gif" ALT="AE" BORDER="0" WIDTH="40" HEIGHT="40"></A>
+</TD>
+<TD>
+Go back to the Home Page of
+<A HREF="../main/index.html"> Algorithm Engineering</A>.
+</TD>
+<TD WIDTH=10%"></TD>
+<TD>
+<A HREF="http://www.dis.uniroma1.it/index.html"><IMG 
+SRC="../pics/bighome.gif" ALT="DIS" BORDER="0" WIDTH="40" HEIGHT="40"></A>
+</TD>
+<TD>
+Go back to the Home Page of
+<A HREF="http://www.dis.uniroma1.it/index.html"> Dipartimento di Informatica e Sistemistica</A>.
+</TD>
+</TR>
+<TR>
+<TD>
+<A HREF="mailto:ae@dis.uniroma1.it"><IMG ALIGN=middle 
+SRC="../pics/mail.gif" ALT="DIS" BORDER="0" WIDTH="40" HEIGHT="40"></A>
+</TD>
+<TD>
+For problems or comments about this page, please send email to
+<A HREF="mailto:ae@dis.uniroma1.it">ae@dis.uniroma1.it</A>.</TD>
+<TD></TD>
+<TD>
+<A HREF="../main/search.html"><IMG 
+SRC="../pics/search.gif" ALT="DIS" BORDER="0" WIDTH="40" HEIGHT="40"></A>
+</TD>
+<TD>
+<A HREF="../main/search.html">Search</A> pages of
+Algorithm Engineering.
+</TD>
+</TR>
+</TABLE>
+
+</BODY>
+</HTML>

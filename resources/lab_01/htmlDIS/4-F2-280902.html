@@ -1,0 +1,105 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1">
+<META NAME="Generator" CONTENT="Microsoft Word 98">
+<TITLE>FONDAMENTI DI INFORMATICA</TITLE>
+</HEAD>
+<BODY>
+
+<B><FONT FACE="Times" SIZE=4><P ALIGN="CENTER">FONDAMENTI DI INFORMATICA II</P>
+<P ALIGN="CENTER">Corso di Laurea in Ingegneria Elettronica</P>
+<P ALIGN="CENTER">Universit&agrave; <I>La Sapienza</I> - Consorzio Nettuno</P>
+<P ALIGN="CENTER">Appello del 28-09-2002</P>
+</FONT><FONT FACE="Times"><P ALIGN="CENTER">Parte Pratica (20 punti)</P>
+</B><P ALIGN="JUSTIFY"></P>
+<P ALIGN="JUSTIFY">La clinica <I>Bimbi Felici (forse)</I> gestisce un programma di cura dei neonati che prevede la registrazione delle informazioni in una tabella. Per ogni neonato vengono gestiti i seguenti dati:</P>
+
+<UL>
+<P ALIGN="JUSTIFY"><LI>data di nascita (giorno, mese e anno: tre interi)</LI></P>
+<P ALIGN="JUSTIFY"><LI>nome del bimbo, nome e cognome della mamma (stringhe di al pi&ugrave; 16 caratteri)</LI></P>
+<P ALIGN="JUSTIFY"><LI>elenco dei <I>pesi progressivi</I> del bimbo (contenente una sequenza di misure, rilevate periodicamente a partire dalla data di nascita: ogni elemento dell&#146;elenco contiene una data e il peso a quella data)</LI></P>
+<P ALIGN="JUSTIFY"><LI>elenco delle <I>lunghezze progressive</I> del bimbo (come sopra, ma per le altezze dei bimbi).</LI></P></UL>
+
+<P ALIGN="JUSTIFY"></P>
+<P ALIGN="JUSTIFY">Si pu&ograve; pensare che i dati della tabella vengano salvati periodicamente in un file di testo (di nome non fissato a priori), per esser ricaricati quando il programma viene riattivato.</P>
+<P ALIGN="JUSTIFY"></P>
+<P ALIGN="JUSTIFY">Il programma che gestisce la tabella mette a disposizione un certo insieme di funzionalit&agrave; </P>
+
+<UL>
+<P ALIGN="JUSTIFY"><LI>visualizzare i dati relativi ad un neonato, fornendone il nome e il nome e cognome della mamma</LI></P>
+<P ALIGN="JUSTIFY"><LI>caricare da file / scaricare su file i dati della tabella;</LI></P>
+<P ALIGN="JUSTIFY"><LI>nascita / uscita_dal_programma_di_cure di un neonato;</LI></P>
+<P ALIGN="JUSTIFY"><LI>aggiunta di una misura (peso o altezza) completa di data, relativa ad un certo neonato;</LI></P></UL>
+
+<P ALIGN="JUSTIFY"></P>
+<P ALIGN="JUSTIFY">Inoltre &egrave; richiesto che il programma metta a disposizione le seguenti funzionalit&agrave;:</P>
+
+<UL>
+<P ALIGN="JUSTIFY"><LI>dato un bimbo, calcolare e stampare sul video la media dell'incremento di peso;</LI></P>
+<P ALIGN="JUSTIFY"><LI>dato un bimbo, calcolare e stampare sul video la media dell'incremento di altezza;</LI></P>
+<P ALIGN="JUSTIFY"><LI>dato un bimbo e il nome di un file, stampare nel file il nome del bimbo, la sua data di nascita, il nome e cognome della mamma, le date della prima e ultima misurazione di peso e di altezza e le medie di incremento di cui ai punti precedenti;</LI></P>
+<P ALIGN="JUSTIFY"><LI>dato un bimbo e due date </FONT><FONT FACE="Courier New">dInizio</FONT><FONT FACE="Times"> e </FONT><FONT FACE="Courier New">dFine</FONT><FONT FACE="Times">, restituire l&#146;elenco di tutte le misurazioni di peso <B>e </B>l&#146;elenco di tutte le misurazioni di altezza avvenute tra le due date, estremi compresi.</LI></P></UL>
+
+<P ALIGN="JUSTIFY"></P>
+<OL>
+
+<P ALIGN="JUSTIFY"><LI>progettare le strutture dati necessarie a gestire la tabella;</LI></P>
+<P ALIGN="JUSTIFY"><LI>dichiarare le funzioni che si ritengono necessarie per il funzionamento del programma;</LI></P>
+<P ALIGN="JUSTIFY"><LI>scrivere un programma C che permetta di gestire la tabella interagendo con l'operatore umano (mediante, ad esempio, un men&ugrave; che permetta di specificare comandi da tastiera per richiamare le diverse funzionalit&agrave;)</LI></P>
+<P ALIGN="JUSTIFY"><LI>definire le funzioni usate nel programma, cercando di dare la precedenza a quelle che si ritengono pi&ugrave; significative e pi&ugrave; adatte a mostrare la propria capacit&agrave; di programmazione.</LI></P></OL>
+
+<P ALIGN="JUSTIFY"></P>
+<B><P ALIGN="JUSTIFY">Note e suggerimenti</P>
+
+<UL>
+</B><P ALIGN="JUSTIFY"><LI>Non usare variabili <I>top level</I>.</LI></P>
+<P ALIGN="JUSTIFY"><LI>La tabella di bimbi e gli  elenchi di pesi e altezze sono rappresentabili come meglio il candidato crede (basta che la rappresentazione sia ragionevole e funzionale)</LI></P></UL>
+
+<P ALIGN="CENTER"></P>
+</FONT><B><FONT FACE="Times" SIZE=4><P ALIGN="CENTER">FONDAMENTI DI INFORMATICA II</P>
+<P ALIGN="CENTER">Corso di Laurea in Ingegneria Elettronica</P>
+<P ALIGN="CENTER">Universit&agrave; <I>La Sapienza</I> - Consorzio Nettuno</P>
+<P ALIGN="CENTER">Appello del 28-09-2002</P>
+</FONT><FONT FACE="Times"><P ALIGN="CENTER"></P>
+<P ALIGN="CENTER">Parte Teorica (10 punti)</P>
+</B><P ALIGN="JUSTIFY"></P>
+<B><P ALIGN="JUSTIFY">&nbsp;</P>
+<OL TYPE="I">
+
+</B></FONT><P ALIGN="JUSTIFY"><LI>(50%)</LI></P></OL>
+
+<FONT FACE="Times"><P ALIGN="JUSTIFY">Osservare il seguente programma:</P>
+
+<UL>
+<P ALIGN="JUSTIFY"><LI>la </FONT><FONT FACE="Courier New">main()</FONT><FONT FACE="Times"> contiene due errori, facilmente evidenziabili. Quali sono?</LI></P>
+<P ALIGN="JUSTIFY"><LI>cosa fa la funzione </FONT><FONT FACE="Courier New">cosaFa()</FONT><FONT FACE="Times"> e, quindi, cosa fa il programma, una volta corretto? Giustificare la risposta.</LI></P></UL>
+
+<P ALIGN="JUSTIFY"></P>
+</FONT><FONT FACE="Courier New"><P ALIGN="JUSTIFY">#include &lt;stdio.h&gt;</P>
+<P ALIGN="JUSTIFY">#define MAX 8</P>
+<P ALIGN="JUSTIFY"></P>
+<P ALIGN="JUSTIFY">  int cosaFa(int a[], int k, int dim) {</P>
+<P ALIGN="JUSTIFY">    if (k &lt; dim)</P>
+<P ALIGN="JUSTIFY">      return (a[k] + cosaFa(a, k+1, dim));</P>
+<P ALIGN="JUSTIFY">    else</P>
+<P ALIGN="JUSTIFY">      return 0;</P>
+<P ALIGN="JUSTIFY">  }</P>
+<P ALIGN="JUSTIFY"></P>
+<P ALIGN="JUSTIFY">main(){</P>
+<P ALIGN="JUSTIFY">  int io[MAX], j;</P>
+</FONT><FONT FACE="Courier New" SIZE=1><P ALIGN="JUSTIFY">   printf("\nInserire le %d cifre del numero di matricola (uno spazio tra l'una e l'altra): ", MAX);</P>
+</FONT><FONT FACE="Courier New"><P ALIGN="JUSTIFY">  for(j=0; j&lt;=MAX; j++)</P>
+<P ALIGN="JUSTIFY">    scanf("%d",io+j);</P>
+<P ALIGN="JUSTIFY">  printf("ecco qua: %d\n", cosaFa(io,2,MAX);</P>
+<P ALIGN="JUSTIFY"></P>
+<P ALIGN="JUSTIFY">printf("\nFINE\n");</P>
+<P ALIGN="JUSTIFY">return 0;</P>
+<P ALIGN="JUSTIFY">}</P>
+</FONT><P ALIGN="JUSTIFY"></P>
+<OL TYPE="I">
+
+<P ALIGN="JUSTIFY"><LI>(50%)</LI></P></OL>
+
+<P ALIGN="JUSTIFY">Descrivere, al livello di approfondimento ritenuto congruo, la metodologia di programmazione orientata gli oggetti. Fornire un, sia pur limitato, esempio basato sul programma di gestione dei bimbi svolto nella parte pratica.</P>
+<FONT FACE="Times"><P ALIGN="JUSTIFY"></P></FONT></BODY>
+</HTML>

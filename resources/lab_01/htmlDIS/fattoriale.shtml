@@ -1,0 +1,130 @@
+<!doctype html public "-//w3c//dtd html 4.0 transitional//en">
+<html>
+<head>
+<link href="java.css" rel="stylesheet" type="text/css">
+<title>Calcolo del fattoriale</title>
+</head>
+
+<body>
+
+<h2>Calcolo del fattoriale</h2>
+
+<p>
+Scrivere una funzione che calcola il fattoriale di un
+numero. Effettuare poi il calcolo del fattoriale per
+i seguenti numeri: 5, 4 e 2. Si ricorda che il
+fattoriale di un numero <i>x</i> &egrave; dato
+da:
+
+<p align=center>
+<img src="fattoriale.jpeg">
+</p>
+
+Il testo di questo esercizio specifica che si vuole
+una funzione, ossia una procedura che ritorna un valore.
+Dal momento che il fattoriale si calcola sui numeri
+interi, questa funzione ha un unico argomento di tipo
+intero. Il fattoriale di un numero &egrave; ancora
+un intero, per cui la funzione ritorna un intero. Quindi
+l'intestazione della funzione &egrave;:
+
+<p>
+<pre>
+  static int fatt(int x)
+</pre>
+
+<p>
+Come nome dell'argomento si &egrave; scelto <tt>x</tt>.
+Questo &egrave; il nome della variabile che verr&agrave;
+creata all'attivazione della funzione, e in cui verr&agrave;
+messo il valore che il programma invia alla procedura.
+Naturalmente, si poteva scegliere un nome qualsiasi. Per
+il nome della procedura si &egrave; scelto <tt>fatt</tt>,
+per ricordare che si tratta della funzione che calcola il
+fattoriale. Anche questo &egrave; un nome arbitrario: si
+poteva anche scegliere <tt>abcd</tt> come nome di funzione,
+soltanto che poi il codice sarebbe risultato meno chiaro.
+
+<p>
+Resta ora da vedere come &egrave; fatta dentro la funzione,
+ossia quali istruzioni ci vanno messe.
+Si tratta di moltiplicare tutti i numeri interi da 1 fino
+al valore di <tt>x</tt>. Chiaramente, ci serve un ciclo.
+Iniziamo quindi dicendo che il fattoriale vale 1, e poi a
+ogni passo di questo ciclo moltiplichiamo il valore
+corrente del fattoriale per un numero crescente da 1 fino
+al valore di <tt>x</tt>. In altre parole, facciamo
+prima <tt>f=1</tt>, poi <tt>f=f*2</tt> poi
+<tt>f=f*3</tt>, ecc. La funzione ritorna poi il valore di
+<tt>f</tt> a cui si arriva alla fine del ciclo. Questo
+metodo &egrave; simile a quello usato per calcolare la
+somma di elementi. Mentre nella somma si parte da 0 e
+si somma ad ogni passo un elemento, qui si parte da 1
+e, ad ogni passo, si moltiplica il valore corrente per uno
+degli elementi. In pi&ugrave;, sappiamo che gli elementi
+non sono dati, ma sono tutti gli interi da 1 a <tt>x</tt>.
+
+<p>
+Il programma completo
+<a href="Fattoriale.java">Fattoriale.java</a>
+&egrave; riportato qui sotto.
+
+<p>
+<pre>
+/*
+  Calcola il fattoriale di un numero
+*/
+
+class Fattoriale {
+  static int fatt(int x) {
+    int i;
+    int f=1;
+
+    for(i=1; i<=x; i=i+1) {
+      f=f*i;
+    }
+
+    return f;
+  }
+
+  public static void main(String[] args) {
+    int a;
+    int r;
+
+    a=5;
+    r=fatt(a);
+    System.out.println("Il fattoriale di "+a+" vale "+fatt(a));
+
+    a=4;
+    System.out.println("Il fattoriale di "+a+" vale "+fatt(a));
+
+    System.out.println("Il fattoriale di 2 vale "+fatt(2));
+  }
+}
+
+</pre>
+
+<p>
+Si noti che la funzione pu&ograve; venire chiamata in
+diversi modi: si pu&ograve; passare un valore mettendolo
+prima nella variabile <tt>a</tt> e poi facendo <tt>fatt(a)</tt>,
+oppure si pu&ograve; passare direttamente il valore,
+per esempio facendo <tt>fatt(2)</tt>.
+
+<p>
+Ci sono due modi possibili con cui il programma pu&ograve;
+usare il valore di ritorno (quello che la procedura gli manda
+indietro con <tt>return</tt>): il primo &egrave;
+mettere il risultato in una variabile usando una istruzione
+del tipo <tt>r=fatt(a)</tt>; il secondo &egrave; quello di
+scrivere la funzione nel punto esatto in cui il suo valore
+serve, come si &egrave; fatto per la istruzione
+<tt>System.out.println("Il fattoriale di 2 vale "+fatt(2));</tt>.
+In questo caso, serve una istruzione di stampa del
+valore del fattoriale. Quindi, si pu&ograve; mettere
+la chiamata della procedura direttamente nel punto in cui
+va messo il valore del fattoriale.
+
+</body>
+</html>
+

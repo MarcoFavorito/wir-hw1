@@ -1,0 +1,624 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+  <meta http-equiv="Content-Type"
+ content="text/html; charset=windows-1252">
+  <meta name="Generator" content="Microsoft Word 97">
+  <title>Submit a Review for Regular or Short Papers</title>
+  <meta name="Template"
+ content="C:\PROGRAM FILES\MICROSOFT OFFICE\OFFICE\html.dot">
+</head>
+<body link="#0000ff" vlink="#800080"
+ style="background-color: rgb(208, 212, 215);">
+<script language="JavaScript">
+
+function checkFormat() {
+ var name=document.myForm.reviewerName.value;
+ nameError="Reviewer's Name\n";
+ var paperNo=document.myForm.paperNo.value; 
+paperNoError="Paper No.\n"; 
+var title=document.myForm.title.value; 
+titleError="Paper Title\n";
+ var author=document.myForm.author.value; 
+authorError="Author Name\n";
+ var email=document.myForm.reviewerEmail.value;
+ emailError="Email address\n";
+ var error=0; //no error code
+
+
+ /*	Added by Bob Weiner, 6/16/00
+  *	to remove Peter Allen as a default email target
+  */
+  var editor=document.myForm.associateEditorsEmail.selectedIndex;
+  editorError="To Associate Editor\n";
+
+
+ var AlertContent="Following part is either empty or incorrect format:\n"; 
+ if(name=="") { error=-1; AlertContent=AlertContent+nameError; }
+ if(email=="" || email.indexOf("@")==-1) {
+ error=-1; AlertContent=AlertContent+emailError; }
+ if(paperNo=="") { error=-1; AlertContent=AlertContent+paperNoError; }
+ if(title=="") { error=-1; AlertContent=AlertContent+titleError; }
+ if(author=="") { error=-1; AlertContent=AlertContent+authorError; }
+
+ //	Bob Weiner 6/16/00
+ if(editor == 0) { 
+ 	error=-1;
+	AlertContent = AlertContent + editorError; 
+ }
+
+ if(error==-1) //error found, show alert and refuse submit
+	 { alert(AlertContent); return false; }
+  return true;
+ }
+
+function setAwardToNo(inp){
+   if(document.myForm.recommendations[4].checked==true ||
+       document.myForm.recommendations[5].checked==true ||
+        document.myForm.recommendations[6].checked==true||
+ 	        document.myForm.recommendations[7].checked==true)
+	{
+	if(inp =="alert"){
+		alert("The status of this paper can't be considered for best paper award");
+	      }
+	document.myForm.bestPaper[1].checked=true;
+	return true;
+	}
+}
+
+
+
+</script>
+<form
+ action="cgi-bin/RevForm.pl"
+ name="myForm" onsubmit="return checkFormat()" method="post">
+  <h2 align="center"><img src="ieee.gif" width="49" height="48"></h2>
+  <h2 align="center"><font color="rgb(120, 31, 125)">IEEE TRANSACTIONS ON ROBOTICS<br>
+  </font></h2>
+  <h4 align="center">A PUBLICATION OF THE IEEE ROBOTICS AND AUTOMATION
+SOCIETY</h4>
+  <font face="Courier New">
+  <p align="center">Review form for REGULAR or SHORT papers
+(Confidential when completed)</p>
+  <h4 align="center"><a href="TROInstructionsReviewers.html" target="_blank">Instructions
+for Reviewers</a></h4>
+  <br>
+  <p><b>If you close your Web-Browser before submitting, your data will
+be lost and nothing will be sent. </b></p>
+  <p>Please fill in your information. &nbsp;A copy of the completed
+document will be sent to this address as well as to us. &nbsp;Keep this
+e-mail message until we have confirmed receipt of your copy. Please type
+the review directly and do not "copy and paste" from another editor.</p>
+  <table cellspacing="0" border="0" width="90%">
+    <tbody>
+      <tr>
+        <td width="50%" valign="middle">
+        <p><b><font face="Courier New">Reviewer's Name </font></b></p>
+        </td>
+        <td width="50%" valign="middle">
+        <p> <input type="text" maxlength="80" size="30"
+ name="reviewerName"> </p>
+        </td>
+      </tr>
+      <tr>
+        <td width="50%" valign="middle">
+        <p><b><font face="Courier New">E-mail</font></b></p>
+        </td>
+        <td width="50%" valign="middle">
+        <p> <input type="text" maxlength="40" size="30"
+ name="reviewerEmail"> </p>
+        </td>
+      </tr>
+      <tr>
+        <td width="50%" valign="middle">
+        <p><b><font face="Courier New">Affiliation</font></b></p>
+        </td>
+        <td width="50%" valign="middle">
+        <p> <input type="text" size="30" name="reviewerAff"> </p>
+        </td>
+      </tr>
+      <tr>
+        <td width="50%" valign="middle">
+        <p><b><font face="Courier New">Phone</font></b></p>
+        </td>
+        <td width="50%" valign="middle">
+        <p> <input type="text" size="30" maxlength="15"
+ name="reviewerPhone"> </p>
+        </td>
+      </tr>
+      <tr>
+        <td width="50%" valign="middle">
+        <p><b><font face="Courier New">Fax</font></b></p>
+        </td>
+        <td width="50%" valign="middle">
+        <p> <input type="text" size="30" maxlength="15"
+ name="reviewerFax"> </p>
+        </td>
+      </tr>
+      <tr>
+        <td width="50%" valign="top">
+        <p><b><font face="Courier New">Address</font></b></p>
+        </td>
+        <td width="50%" valign="middle">
+        <p> <textarea cols="30" rows="3" wrap="virtual" name="address"></textarea> </p>
+        </td>
+      </tr>
+      <tr>
+        <td width="50%" valign="middle">
+        <p><b><font face="Courier New">Originally Assigned Reviewer's
+Name</font></b></p>
+        </td>
+        <td width="50%" valign="middle">
+        <p> <input type="text" size="30" maxlength="50"
+ name="assignedReviewerName"> </p>
+        </td>
+      </tr>
+      <tr>
+        <td width="60%" valign="middle">
+        <p><b><font face="Courier New">Originally Assigned Reviewer's
+e-mail</font></b></p>
+        </td>
+        <td width="50%" valign="middle">
+        <p> <input type="text" size="30" maxlength="50"
+ name="assignedReviewerEmail"> </p>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <p><font face="Courier New"><input type="checkbox" name="isSendCopy">
+Check this "cc box" if you want this review to be copied to the
+originally assigned reviewer</font></p>
+  <hr>
+  <table cellspacing="0" border="0" width="90%">
+    <tbody>
+      <tr>
+        <td width="50%" valign="middle">
+        <p><b><font face="Courier New">Paper No.</font></b></p>
+        </td>
+        <td width="50%" valign="middle">
+        <p> <font face="Courier New"><input type="text" maxlength="15"
+ name="paperNo"> </font></p>
+        </td>
+      </tr>
+      <tr>
+        <td width="50%" valign="middle">
+        <p><b><font face="Courier New">Paper Type</font></b></p>
+        </td>
+        <td width="50%" valign="middle">
+        <p>
+        <select name="paperType">
+        <option value="Regular">Regular Paper </option>
+        <option value="Short">Short Paper </option>
+        </select>
+        </p>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <table cellspacing="0" border="0" width="90%">
+    <tbody>
+      <tr>
+        <td width="50%" valign="middle">
+        <p><b><font face="Courier New">Title</font></b></p>
+        </td>
+        <td width="50%" valign="middle">
+        <p> <font face="Courier New"><textarea rows="2" cols="30"
+ wrap="virtual" name="title"></textarea> </font></p>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <table cellspacing="0" border="0" width="90%">
+    <tbody>
+      <tr>
+        <td width="50%" valign="middle">
+        <p><b><font face="Courier New">Authors</font></b></p>
+        </td>
+        <td width="50%" valign="middle">
+        <p> <font face="Courier New"><input type="text" maxlength="80"
+ name="author"> </font></p>
+        </td>
+      </tr>
+      <tr>
+        <td width="50%" valign="middle">
+        <p><b><font face="Courier New">Referee Code</font></b></p>
+        </td>
+        <td width="50%" valign="middle">
+        <p> <font face="Courier New"><input type="text" maxlength="3"
+ name="refereeCode"> </font></p>
+        </td>
+      </tr>
+      <tr>
+        <td width="50%" valign="middle">
+        <p><b><font face="Courier New">Requested Return Date</font></b></p>
+        </td>
+        <td width="50%" valign="middle">
+        <p> </p>
+        <p>
+        <select name="asgRevMon" size="1">
+        <option selected="selected">Jan</option>
+        <option>Feb</option>
+        <option>Mar</option>
+        <option>Apr</option>
+        <option>May</option>
+        <option>Jun</option>
+        <option>Jul</option>
+        <option>Aug</option>
+        <option>Sep</option>
+        <option>Oct</option>
+        <option>Nov</option>
+        <option>Dec</option>
+        </select>
+        <select name="asgRevDay" size="1">
+        <option selected="selected">1</option>
+        <option>2</option>
+        <option>3</option>
+        <option>4</option>
+        <option>5</option>
+        <option>6</option>
+        <option>7</option>
+        <option>8</option>
+        <option>9</option>
+        <option>10</option>
+        <option>11</option>
+        <option>12</option>
+        <option>13</option>
+        <option>14</option>
+        <option>15</option>
+        <option>16</option>
+        <option>17</option>
+        <option>18</option>
+        <option>19</option>
+        <option>20</option>
+        <option>21</option>
+        <option>22</option>
+        <option>23</option>
+        <option>24</option>
+        <option>25</option>
+        <option>26</option>
+        <option>27</option>
+        <option>28</option>
+        <option>29</option>
+        <option>30</option>
+        <option>31</option>
+        </select>
+        <select name="asgRevYear" size="1">
+        <option selected="selected">2004</option>
+        <option>2005</option>
+        <option>2006</option>
+        <option>2007</option>
+        <option>2008</option>
+        </select>
+        </p>
+        </td>
+      </tr>
+      <tr>
+        <td width="48%" valign="middle">
+        <p><b><font face="Courier New">To</font></b></p>
+        </td>
+        <td width="48%" valign="middle">
+        <p>
+        <select name="associateEditorsEmail">
+        <option value="" selected="selected">Associate Editor<!-- Start of Editors List --> </option>
+        <option value="angeles@cim.mcgill.ca">Jorge Angeles </option>
+        <option value="h.arai@aist.go.jp">Hirohiko Arai </option>
+	<option value="burgard@informatik.uni-freiburg.de">Wolfram Burgard </option>
+        <option value="chaumett@irisa.fr">Francois Chaumette </option>
+	<option value="hrchoi@me.skku.ac.kr">Hyouk Ryeol Choi</option>	
+        <option value="wkchung@postech.ac.kr">Wan Kyun Chung </option>
+        <option value="deluca@dis.uniroma1.it">Alessandro De Luca </option>
+        <option value="pierre@bu.edu">Pierre Dupont </option>
+        <option value="fox@cs.washington.edu">Dieter Fox</option>
+        <option value="qhuang@bit.edu.cn">Qiang Huang</option>
+        <option value="seth@uiuc.edu">Seth Hutchinson </option>
+        <option value="ieeetro@dis.uniroma1.it">"ieeetro@dis.uniroma1.it"</option>
+        <option value="kosecka@cs.gmu.edu">Jana Kosecka </option>
+        <option value="eezxli@ee.ust.hk">Zexiang Li </option>
+        <option value="kmlynch@northwestern.edu">Kevin Lynch </option>
+        <option value="shugen@dse.ibaraki.ac.jp">Shugen Ma</option>
+        <option value="Jean-Pierre.Merlet@sophia.inria.fr">Jean-Pierre Merlet </option>
+        <option value="brad.nelson@iris.mavt.ethz.ch">Bradley Nelson</option>
+        <option value="oriolo@dis.uniroma1.it">Giuseppe Oriolo </option>
+	<option value="egpapado@central.ntua.gr">Evangelos Papadopoulos</option>
+        <option value="fcp@plaza.snu.ac.kr">Frank Park</option>
+        <option value="parker@cs.utk.edu">Lynne Parker </option>
+        <option value="rajni@eng.uwo.ca">Rajni Patel </option>
+        <option value="prattichizzo@ing.unisi.it">Domenico Prattichizzo</option>
+	<option value="Patrick.Rives@sophia.inria.fr">Patrick Rives</option>
+        <option value="rroberts@eng.fsu.edu">Rodney Roberts</option>
+	<option value="rocco@elet.polimi.it">Paolo Rocco</option>
+	 <option value="jasv@isr.ist.utl.pt">Jose' Santos-Victor</option>
+        <option value="nilanjan.sarkar@vanderbilt.edu">Nilanjan Sarkar </option>
+        <option value="j.schimmels@marquette.edu">Joseph Schimmels </option>
+        <option value="gaurav@usc.edu"> Gaurav Sukhatme</option>
+        <option value="medsun@cityu.edu.hk"> Dong Sun</option>
+	<option value="tardos@unizar.es"> Juan Tardos</option>
+        <option value="fthomas@iri.upc.es"> Federico Thomas</option>
+        <option value="Jocelyne.Troccaz@imag.fr"> Jocelyne Troccaz</option>
+        <option value="ianw@ces.clemson.edu">Ian Walker </option>
+        <option value="feiyue@sie.arizona.edu">Feiyue Wang </option>
+	<option value="wenj@rpi.edu"> John Wen</option>
+        <option value="llw@jhu.edu">Louis Whitcomb </option>
+	<option value="bj@hanyang.ac.kr">Byung-Ju Yi </option>
+        <option value="yoshida@astro.mech.tohoku.ac.jp">Kazuya Yoshida </option>
+        <option value="zhuang@fau.edu">Hanqi Zhuang<!-- End of Editors List --> </option>
+        </select>
+        </p>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <p> </p>
+  <p> </p>
+  <hr> <font face="Courier New">
+  <h3>Assessment</h3>
+  <p>Please rate the paper according to the following criteria, on a
+scale of 1-5, with 5 being the highest rating.</p>
+  </font>
+  <table cellspacing="0" border="0" width="90%">
+    <tbody>
+      <tr>
+        <td width="25%" valign="middle">
+        <p><font face="Courier New">Technical Quality</font></p>
+        </td>
+        <td width="25%" valign="middle">
+        <p>
+        <select name="techQuality">
+        <option value="1">1 </option>
+        <option value="2">2 </option>
+        <option value="3">3 </option>
+        <option value="4">4 </option>
+        <option value="5">5 </option>
+        </select>
+        </p>
+        </td>
+        <td width="25%" valign="middle">
+        <p><font face="Courier New">Relevance</font></p>
+        </td>
+        <td width="25%" valign="middle">
+        <p>
+        <select name="relevance">
+        <option value="1">1 </option>
+        <option value="2">2 </option>
+        <option value="3">3 </option>
+        <option value="4">4 </option>
+        <option value="5">5 </option>
+        </select>
+        </p>
+        </td>
+      </tr>
+      <tr>
+        <td width="25%" valign="middle">
+        <p><font face="Courier New">Significance</font></p>
+        </td>
+        <td width="25%" valign="middle">
+        <p>
+        <select name="significance">
+        <option value="1">1 </option>
+        <option value="2">2 </option>
+        <option value="3">3 </option>
+        <option value="4">4 </option>
+        <option value="5">5 </option>
+        </select>
+        </p>
+        </td>
+        <td width="25%" valign="middle">
+        <p><font face="Courier New">Originality</font></p>
+        </td>
+        <td width="25%" valign="middle">
+        <p>
+        <select name="originality">
+        <option value="1">1 </option>
+        <option value="2">2 </option>
+        <option value="3">3 </option>
+        <option value="4">4 </option>
+        <option value="5">5 </option>
+        </select>
+        </p>
+        </td>
+      </tr>
+      <tr>
+        <td width="25%" valign="middle">
+        <p><font face="Courier New">Presentation</font></p>
+        </td>
+        <td width="25%" valign="middle">
+        <p>
+        <select name="presentation">
+        <option value="1">1 </option>
+        <option value="2">2 </option>
+        <option value="3">3 </option>
+        <option value="4">4 </option>
+        <option value="5">5 </option>
+        </select>
+        </p>
+        </td>
+        <td width="25%" valign="middle">
+        <p><font face="Courier New">Adequacy of Citations</font></p>
+        </td>
+        <td width="25%" valign="middle">
+        <p>
+        <select name="adequacyOfCitations">
+        <option value="1">1 </option>
+        <option value="2">2 </option>
+        <option value="3">3 </option>
+        <option value="4">4 </option>
+        <option value="5">5 </option>
+        </select>
+        </p>
+        </td>
+      </tr>
+      <tr>
+        <td width="25%" valign="middle">
+        <p><font face="Courier New">Overall</font></p>
+        </td>
+        <td width="25%" valign="middle">
+        <p>
+        <select name="overall">
+        <option value="1">1 </option>
+        <option value="2">2 </option>
+        <option value="3">3 </option>
+        <option value="4">4 </option>
+        <option value="5">5 </option>
+        </select>
+        </p>
+        </td>
+        <td valign="middle">
+        <p>&nbsp;</p>
+        </td>
+        <td valign="middle">
+        <p>&nbsp;</p>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <table cellspacing="0" border="0" width="90%">
+    <tbody>
+      <tr>
+        <td width="25%" valign="middle">
+        <p><font face="Courier New">Other factors (identify)</font></p>
+        </td>
+        <td width="25%" valign="middle">
+        <p>
+        <select name="otherFactors">
+        <option value="1">1 </option>
+        <option value="2">2 </option>
+        <option value="3">3 </option>
+        <option value="4">4 </option>
+        <option value="5">5 </option>
+        </select>
+        </p>
+        </td>
+        <td width="50%" valign="middle">
+        <p> <input name="newFactor" size="60"> </p>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <hr>
+  <h3><font face="Courier New">Recommendations </font></h3>
+  <p> <font face="Courier New"><input type="radio" checked="checked"
+ name="recommendations" value="acceptRegular"> <b>ACCEPT</b> as a <b>REGULAR</b>
+or </font></p>
+  <p> <font face="Courier New"><b><input type="radio"
+ name="recommendations" value="acceptShort"> ACCEPT</b> as a <b>SHORT</b>
+paper provided that all typographic errors and minor recommendations are
+corrected in the final draft. (One of the editors should be able to
+verify that these changes have been made.)</font></p>
+  <dir>
+  <p><font face="Courier New">Should this paper be considered for the <b>BEST
+PAPER AWARD</b>? </font></p>
+  <table cellspacing="0" border="0" width="150">
+    <tbody>
+      <tr>
+        <td width="50%" valign="middle">
+        <p> <font face="Courier New"><input type="radio"
+ name="bestPaper" value="Yes" onclick="setAwardToNo('alert')"> Yes </font></p>
+        </td>
+        <td width="50%" valign="middle">
+        <p><font face="Courier New"> <input type="radio"
+ checked="checked" name="bestPaper" value="No"> No </font></p>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  </dir>
+  <p> <font face="Courier New"><input type="radio"
+ name="recommendations" value="condAcceptRegular"> <b>CONDITIONALLY
+ACCEPT</b> as a <b>REGULAR</b> or </font></p>
+  <p> <font face="Courier New"><input type="radio"
+ name="recommendations" value="condAcceptShort"> <b>CONDITIONALLY ACCEPT</b>
+as a <b>SHORT</b> paper, provided that minor revisions are made as
+indicated in the "Comments to Authors" below. (The editors may decide to
+request reviewers' assistance in verifying the changes. If you believe
+reviewer verification to be especially important, please indicate it in
+the "Confidential Comments" below.)</font></p>
+  <p> <font face="Courier New"><b><input type="radio"
+ name="recommendations" value="revResubmitRegular"
+ onclick="setAwardToNo('noalert')"> REVISE AND RESUBMIT</b> as <b>REGULAR</b>
+or </font></p>
+  <p> <font face="Courier New"><input type="radio"
+ name="recommendations" value="revResubmitShort"
+ onclick="setAwardToNo('noalert')"> <b>REVISE AND RESUBMIT</b> as <b>SHORT</b>
+paper as indicated in the "Comments to Authors" below.</font></p>
+  <p> <font face="Courier New"><b><input type="radio"
+ name="recommendations" value="reject" onclick="setAwardToNo('noalert')">
+REJECT THE PAPER</b> (Future submissions of this work to the Transactions
+will be treated as substantially new papers. Depending on circumstances,
+the editors may choose to include previous reviews of the rejected paper
+in any subsequent review of revised versions.)</font></p>
+  <p> <font face="Courier New"><input type="radio"
+ name="recommendations" value="submitJournal"
+ onclick="setAwardToNo('noalert')"> <b>Submit to another journal</b> <input
+ maxlength="50" name="submitJournalName" size="50"> </font></p>
+  <hr> <font face="Courier New">
+  <h3>Confidential Comments (for Associate Editors and Editors only) </h3>
+  <p> <textarea rows="10" cols="80" wrap="virtual" name="confidential"></textarea> </p>
+  </font>
+  <p>&nbsp;</p>
+  <hr>
+  <h3><font face="Courier New">Comments to Authors</font></h3>
+  <p>Reviewers wishing to include additional material (equations, graphs, tables,
+etc.) can send separately an email to the Associate Editor who assigned
+the paper in review, attaching the additional material as a single pdf file.
+Please specify in your comments below that you are going to do so.
+Since this material will be then forwarded to the author, please do not identify yourself.</p>
+
+  <p> <font face="Courier New"><b><font face="Courier New">
+  <p>Major Contribution of the Paper</p>
+  </font></b></font></p>
+  <p> <font face="Courier New"><font face="Courier New"><textarea
+ rows="10" cols="80" wrap="virtual" name="commentsMajor"></textarea> </font></font></p>
+  <p><font face="Courier New">&nbsp;</font></p>
+  <font face="Courier New"><b><font face="Courier New">
+  <p>Organization and Style</p>
+  </font></b></font>
+  <p> <font face="Courier New"><font face="Courier New"><textarea
+ rows="10" cols="80" wrap="virtual" name="commentsOrganization"></textarea> </font></font></p>
+  <p><font face="Courier New">&nbsp;</font></p>
+  <font face="Courier New"><b><font face="Courier New">
+  <p>Technical Accuracy</p>
+  </font></b></font>
+  <p> <font face="Courier New"><font face="Courier New"><textarea
+ rows="10" cols="80" wrap="virtual" name="commentsTechnical"></textarea> </font></font></p>
+  <p><font face="Courier New">&nbsp;</font></p>
+  <font face="Courier New"><b><font face="Courier New">
+  <p>Presentation</p>
+  </font></b></font>
+  <p> <font face="Courier New"><font face="Courier New"><textarea
+ rows="10" cols="80" wrap="virtual" name="commentsPresentation"></textarea> </font></font></p>
+  <p><font face="Courier New">&nbsp;</font></p>
+  <font face="Courier New"><b><font face="Courier New">
+  <p>Adequacy of Citations (List possible additions if needed)</p>
+  </font></b></font>
+  <p> <font face="Courier New"><font face="Courier New"><textarea
+ rows="10" cols="80" wrap="virtual" name="commentsAdequacy"></textarea> </font></font></p>
+  <p><font face="Courier New"><font face="Courier New">&nbsp; </font></font></p>
+  <table cellspacing="0" border="0" width="400">
+    <tbody>
+      <tr>
+        <td valign="middle">
+        <p><font face="Courier New"> <input type="submit" value="Submit"> </font></p>
+        </td>
+        <td valign="middle">
+        <p> <font face="Courier New"><input type="Reset"
+ onclick="return  confirm('Do you want to clear the form?')"> </font></p>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <p> <font face="Courier New"><font face="Courier New">
+  <p>When you have completed your review, please click the "Submit"
+button.</p>
+  </font></font></p>
+  <b>
+  <p><b>If you close your Web-Browser before submitting, your data will
+be lost and nothing will be sent.</b></p>
+  </b>
+  </font>
+  <address><font face="Courier New">If an error happened during
+submission, please contact <a href="mailto:deluca@dis.uniroma1.it">Alessandro
+De Luca</a>.<br>
+  </font></address>
+</form>
+</body>
+</html>

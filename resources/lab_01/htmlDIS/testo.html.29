@@ -1,0 +1,231 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<!--Converted with LaTeX2HTML 98.2 beta6 (August 14th, 1998)
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>990714</TITLE>
+<META NAME="description" CONTENT="990714">
+<META NAME="keywords" CONTENT="990714">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1">
+</HEAD>
+<BODY >
+
+<P>
+<DIV ALIGN="CENTER">
+  <B>   Universit&#224; di Roma ``La Sapienza''
+<BR>
+Facolt&#224; di Ingegneria
+<BR>
+Corso di Fondamenti di Informatica
+<BR>
+Corsi di Laurea: Aerospaziale, Chimica, Elettrica, Materiali,
+   Nucleare, Ambiente e Territorio (v.p.)</B>
+<BR>
+Appello del <B>14/7/1999</B> -- 1<SUP><I>a</I></SUP> prova scritta
+<BR>
+  <I>tempo a disposizione: 2 ore</I>
+
+</DIV>
+
+<P>
+<B>Problema 1 (18 punti)</B>
+
+<P>
+Un grande aeroporto &#232; suddiviso in diversi terminali, ognuno dei quali &#232;
+identificato da una lettera dell'alfabeto progressiva, a partire dalla lettera
+'A'.  Per ogni terminale l'accesso ai voli in partenza avviene da diversi gate.
+Tutti i terminali dell'aeroporto hanno <B>lo stesso numero di gate</B>, ed
+ogni gate &#232; identificato da un intero compreso tra 1 ed il numero di gate.
+Il numero di terminali ed il numero di gate per terminale sono costanti e
+fissati a priori.
+
+<P>
+Le informazioni relative al numero giornaliero di passeggeri in partenza
+dall'aeroporto sono memorizzate su un file (di testo o di record, a scelta del
+candidato).  Pi&#249; precisamente, per ogni coppia terminale-gate che compare nel
+file sono specificate:
+
+<UL>
+<LI>la lettera identificativa del terminale,
+<LI>il numero identificativo del gate e
+<LI>il numero giornaliero di passeggeri in partenza da quel gate di quel
+  terminale.
+</UL>
+Ogni coppia terminale-gate compare al pi&#249; una volta nel file.  Se una coppia
+terminale-gate non compare alcuna volta nel file, allora il corrispondente
+numero giornaliero di passeggeri in partenza &#232; nullo.
+
+<P>
+Si richiede di risolvere i seguenti punti:
+
+<P>
+<DL COMPACT>
+<DT>1.
+<DD>Progettare una struttura di dati adatta a memorizzare in memoria centrale
+le informazioni relative al numero giornaliero di passeggeri in partenza
+  dall'aeroporto, e fornire le corrispondenti dichiarazioni di tipo Pascal.
+  Fornire inoltre le ulteriori dichiarazioni di tipo Pascal da utilizzarsi per
+  risolvere i due punti successivi.
+<DT>2.
+<DD>Scrivere una (o pi&#249;) unit&#224; Pascal che, ricevendo come parametro il
+  nome di un file contenente le informazioni relative al numero giornaliero di
+  passeggeri in partenza dall'aeroporto, restituisca in un opportuno parametro
+  la struttura progettata al punto&nbsp;1 (contenente le stesse informazioni che
+  sono memorizzate sul file).
+<DT>3.
+<DD>Scrivere una (o pi&#249;) unit&#224; Pascal che, ricevendo in ingresso
+  attraverso opportuni parametri
+
+<UL>
+<LI>la struttura di dati progettata al punto&nbsp;1, contenente le informazioni
+    relative al numero giornaliero di passeggeri in partenza dall'aeroporto e
+
+<LI>un numero intero non negativo,
+  
+</UL>
+  costruisca e restituisca in un opportuno parametro una lista con un elemento
+  per ogni coppia terminale-gate con numero di passeggeri in partenza minore o
+  uguale al numero dato.  Ogni elemento della lista &#232; costituito dagli
+  identificativi di terminale e di gate e dal rispettivo numero di passeggeri
+  in partenza.  La lista restituita <B>deve essere ordinata</B> rispetto alla
+  lettera identificativa del terminale crescente (i gate associati a ciascun
+  terminale possono invece comparire in ordine arbitrario).
+</DL>
+
+<P>
+Esempio:
+
+<P>
+Per un aeroporto con tre terminali (identificati quindi da 'A', 'B' e 'C') e
+tre gate per ogni terminale, &#232; mostrato il possibile contenuto di un file di
+testo con le informazioni relative al numero giornaliero di passeggeri in
+partenza.  Se l'unit&#224; progettata al punto&nbsp;3 prende in ingresso la struttura
+corrispondente a tale file di testo (come costruita al punto&nbsp;2), ed il valore
+100, viene restituita la lista mostrata in figura.
+
+<P>
+<TABLE  WIDTH="181">
+<TR><TD>
+<PRE>
+B 2 358
+A 1 25
+A 3 872
+C 2 92
+B 3 542
+B 1 281
+C 1 1132
+C 3 88
+</PRE></TD></TR>
+</TABLE>
+
+<TABLE  WIDTH="635">
+<TR><TD><IMG
+ WIDTH="473" HEIGHT="46" ALIGN="BOTTOM" BORDER="0"
+ SRC="figura.gif"
+ ALT="\begin{center}\vbox{\input{990714.eepic}
+}\end{center}">
+</TD></TR>
+</TABLE>
+
+<P>
+
+<P>
+<DIV ALIGN="CENTER">
+  <B>   Universit&#224; di Roma ``La Sapienza''
+<BR>
+Facolt&#224; di Ingegneria
+<BR>
+Corso di Fondamenti di Informatica
+<BR>
+Corsi di Laurea: Aerospaziale, Chimica, Elettrica, Materiali,
+   Nucleare, Ambiente e Territorio (v.p.)</B>
+<BR>
+Appello del <B>14/7/1999</B> -- 2<SUP><I>a</I></SUP> prova scritta
+<BR>
+  <I>tempo a disposizione: 1 ora</I>
+
+</DIV>
+
+<P>
+<B>Problema 2 (4 punti)</B>
+
+<P>
+Descrivere l'architettura di Von Neumann di un calcolatore e, pi&#249; in
+dettaglio, la struttura ed il funzionamento della CPU.
+
+<P>
+<B>Problema 3 (4 punti)</B>
+
+<P>
+Per il seguente frammento di programma Pascal, indicare quali attivazioni di
+procedura o funzione sono corrette e quali sono errate, motivando le risposte
+date.
+
+<P>
+<PRE>
+program Main;
+type TipoRec  = record
+                  c1 : char;
+                  c2 : integer
+                end;
+     TipoVett = array [1..3] of integer;
+var a : char;
+    i : integer;
+    r : TipoRec;
+    v : TipoVett;
+
+procedure Proc1 (var p1: char; p2: integer);
+begin ... end;
+
+procedure Proc2 (p: TipoRec);
+begin ... end;
+
+procedure Proc3 (p1: integer; var p2, p3: integer);
+begin ... end;
+
+procedure Proc4 (p: TipoVett);
+begin ... end;
+
+function Fun1 (p1: char; p2: integer): integer;
+begin ... end;
+
+begin { Main }
+  ...
+  {  1 }   Proc1('a', i);
+  {  2 }   Proc1(a, i);
+  {  3 }   Proc2(a, i);
+  {  4 }   Proc2(r.c1, r.c2);
+  {  5 }   Proc2(r.c2, r.c1);
+  {  6 }   Proc3(v[3], v[2], v[1]);
+  {  7 }   Proc3(v[1], i, i);
+  {  8 }   Proc4(v);
+  {  9 }   Proc4([i,v[2],i]);
+  { 10 }   i := Fun1(a, i);
+  { 11 }   Fun1(a, i);
+  { 12 }   i := Fun1('1', i);
+  ...
+end. { Main }
+</PRE>
+
+<P>
+<B>Problema 4 (4 punti)</B>
+
+<P>
+Scrivere un sottoprogramma Fortran che, ricevendo come parametro una matrice
+quadrata di dimensione <I>n</I> x  <I>n</I>, verifichi se le somme degli elementi di
+tutte le righe sono uguali tra loro ed uguali alla somma degli elementi della
+diagonale principale.
+
+<P>
+<BR><HR>
+<ADDRESS>
+<I></I>
+<BR><I>1999-07-14</I>
+</ADDRESS>
+</BODY>
+</HTML>

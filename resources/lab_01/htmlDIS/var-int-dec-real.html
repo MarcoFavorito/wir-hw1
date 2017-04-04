@@ -1,0 +1,48 @@
+<html>
+<head>
+<title>Automa che riconosce identificatori, numeri interi, decimali e reali</title>
+</head>
+
+<body>
+
+<h2>Automa che riconosce identificatori, numeri interi, decimali e reali</h2>
+
+<p>
+Un identificatore &egrave; costituito da una lettera seguita da altre
+lettere o cifre. Un numero intero &egrave; una sequenza di cifre. Un
+numero decimale &egrave; costituito da una sequenza di cifre seguite
+da un punto, seguito da un'altra sequenza di cifre. Un numero reale
+&egrave; un intero o un decimale seguito dalla lettera E e da un numero
+intero. I numeri possono avere un segno.
+</p>
+
+<p>
+Si utilizza un intero LETT_E per denotare la lettera E, metre LETTERA
+ora denota tutte le lettere ad eccezione della E.
+</p>
+
+<img src="var-int-dec-real.jpg">
+
+<p>
+Nota: sono numeri sia il punto seguito da una sequenza di cifre (es .123),
+sia la sequenza di cifre seguita da un punto (es 164.), mentre non lo &egrave;
+la stringa costituita solo da un punto.
+</p>
+
+<p>
+Stati finali:
+<table>
+<tr><td> X </td><td> identificatore </td></tr>
+<tr><td> N </td><td> numero intero </td></tr>
+<tr><td> D </td><td> numero decimale </td></tr>
+<tr><td> R </td><td> numero reale </td></tr>
+</table>
+</p>
+
+<p>
+<a href="var-int-dec-real.c">Implementazione in C dell'automa.</a>
+</p>
+
+</body>
+</html>
+

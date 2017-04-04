@@ -1,0 +1,103 @@
+<html>
+<head>
+<title>Scritto 31 Marzo 2003 - Compito C</title>
+</head>
+
+<body bgcolor="#FFFFFF" text="#000000">
+<p align="center"><font size="+1"><i>Facolt&agrave; di Ingegneria<br>
+  Corso di Laurea in Ingegneria Gestionale<br>
+  Fondamenti di Informatica<br>
+  A.A. 2002-2003</i></font></p>
+<p align="center"><font size="+1">Appello del 31 Marzo 2003 - Compito C</font></p>
+<p align="center"><font size="+1">Durata: 1 ora e 45 minuti</font></p>
+<hr>
+<h4>Parte I</h4>
+
+<ol>
+  <li>scrivere un metodo statico <tt>pariMenoDispari</tt> che, data una <tt>LinkedList</tt> 
+    (o una <tt>Lista</tt>, o un <tt>HashSet</tt>) i cui elementi sono <tt>Integer</tt>, 
+    restituisce il numero di oggetti di valore numerico pari meno il numero di 
+    oggetti di valore numerico dispari.
+  <li>scrivere un metodo statico <tt>contaNodiConDueFigli</tt> che prende come 
+    parametro un albero binario e restituisce il numero di nodi dell'albero che 
+    hanno esattamente due figli.
+</ol>
+
+<hr>
+
+
+<h4>Parte II</h4>
+
+<dl> 
+  <dt><i>Domanda 1</i> 
+  <dd><br>
+    Dire cosa succede quando viene eseguito il seguente programma: 
+    <pre>
+public class Mistero {
+  public static int mistero(int x) {
+    if(x==0) return 0;
+    else return mistero(x-3)+3;
+  }
+
+  public static void main(String[] args) {
+      System.out.println(mistero(9));
+      System.out.println(mistero(8));
+  }
+}
+</pre>
+    Dire per quali valori di <tt>x</tt> il metodo <tt>mistero</tt> termina e cosa 
+    calcola. Motivare le risposte (N.B. risposte non motivate saranno considerate 
+    nulle). 
+</dl>
+<dl> 
+  <dt><i>Domanda 2</i> 
+  <dd><br>
+    Illustrare l'algoritmo di ricerca binaria usando come esempio il seguente 
+    array di interi e supponendo di dover cercare il valore 9: <br>
+    <br>
+    <table width="180" border="1" cellspacing="0" cellpadding="0">
+      <tr> 
+        <td> 
+          <div align="center">2</div>
+        </td>
+        <td> 
+          <div align="center">4</div>
+        </td>
+        <td> 
+          <div align="center">7</div>
+        </td>
+        <td> 
+          <div align="center">9</div>
+        </td>
+        <td> 
+          <div align="center">10</div>
+        </td>
+        <td> 
+          <div align="center">12</div>
+        </td>
+        <td> 
+          <div align="center">15</div>
+        </td>
+        <td> 
+          <div align="center">23</div>
+        </td>
+      </tr>
+    </table>
+    <p> Dare il costo dell'algoritmo in funzione del numero di elementi n dell'array 
+      nel caso peggiore usando la notazione asintotica. Motivare informalmente 
+      le risposte (N.B. risposte non motivate saranno considerate nulle).</p>
+  <dt>&nbsp;</dt>
+  <dt><i>Domanda 3</i> 
+  <dd><br>
+    Discutere il passaggio dei parametri ai metodi in Java. In particolare dire: 
+    <ol>
+      <li>a cosa serve</li>
+      <li>quando avviene</li>
+      <li>la differenza tra parametri formali e parametri attuali</li>
+    </ol>
+  
+</dl>
+</body>
+</html>
+
+

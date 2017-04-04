@@ -1,0 +1,729 @@
+ 
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<meta name="GENERATOR" content="Mozilla/4.76 [en] (X11; U; Linux 2.2.18 i686) [Netscape]">
+<title>IRL Prototype</title>
+<style type="text/css">
+
+<!--
+p {font-family: Verdana, Arial, Helvetica, sans-serif; font-size: 10pt}
+li {font-family: Verdana, Arial, Helvetica, sans-serif; font-size: 10pt}
+.code  {font-family: Monospace; font-size: 10pt}
+h1     {font-family: Arial; font-size: 18pt}
+h2     {font-family: Arial; font-size: 14pt}
+h3     {font-family: Arial; font-size: 11pt}
+a      {color: #0000CC; text-decoration: none}
+-->
+
+</style>
+</head>
+<body bgcolor="#FFFFFF">
+<a name="TOP"></a>
+<table BORDER=0 WIDTH="100%">
+  <tr BGCOLOR="#CC3333"> 
+    <td WIDTH="22%" HEIGHT="73" BGCOLOR="#FFFFFF"> 
+      <center>
+        <img SRC="../Immagini/headtitle.gif" NOSAVE height=100 width=300>
+</center>
+    </td>
+    <td WIDTH="78%" HEIGHT="73"> 
+      <center>
+        <p><font color="#FFFFFF" size="6">IRL Prototype</font> </p>
+      </center>
+    </td>
+  </tr>
+</table>
+<table BORDER=0 CELLSPACING=5 WIDTH="100%" >
+  <tr> 
+    <td ALIGN=CENTER VALIGN=TOP WIDTH="120" BGCOLOR="#93B6FF"> 
+      <center>
+        <!-- #BeginLibraryItem "/Library/navbar.lbi" -->
+<hr>
+<table cols=1 border=1 align="center" width="100">
+  <tbody> 
+  <tr bordercolor=#000099 bgcolor=#CC3333> 
+    <td align=top width=132> 
+      <div style="MARGIN-LEFT: 3pt" align="center"><a 
+                  href="../index.htm"><font 
+                  face=Arial color=#FFFFFF size=3><u>Home</u></font></a></div>
+    </td>
+  </tr>
+  <tr bordercolor=#000099 bgcolor=#CC3333> 
+    <td align=top width=132> 
+      <div align="center"><a 
+                  href="../features.htm"><font 
+                  face=Arial color=#FFFFFF size=3><u>Features</u></font></a></div>
+    </td>
+  </tr>
+  <tr bordercolor=#000099 bgcolor=#CC3333> 
+    <td align=top width=132> 
+      <div align="center"><a 
+                  href="../details.htm"><font 
+                  face=Arial color=#FFFFFF size=3><u>Architecture</u></font></a></div>
+    </td>
+  </tr>
+  <tr bordercolor=#000099 bgcolor=#CC3333> 
+    <td align=top width=132> 
+      <div align="center"><a 
+                  href="../people.htm"><font 
+                  face=Arial color=#FFFFFF size=3><u>People</u></font></a></div>
+    </td>
+  </tr>
+  <tr bordercolor=#000099 bgcolor=#CC3333> 
+    <td align=top width=132> 
+      <div align="center"><a 
+                  href="../tools.htm"><font 
+                  face=Arial color=#FFFFFF size=3><u>Download</u></font></a></div>
+    </td>
+  </tr>
+  <tr bordercolor=#000099 bgcolor=#CC3333> 
+    <td align=top width=132> 
+      <div align="center"><a 
+                  href="../pi.htm"><font 
+                  face=Arial color=#FFFFFF size=3><u>Interceptors</u></font></a></div>
+    </td>
+  </tr>
+  <tr bordercolor=#000099 bgcolor=#CC3333> 
+    <td align=top width=132> 
+      <div align="center"><a 
+                  href="../publications.htm"><font 
+                  face=Arial color=#FFFFFF size=3><u>Papers</u></font></a></div>
+    </td>
+  </tr>
+  <tr bordercolor=#000099 bgcolor=#CC3333> 
+    <td align=top width=132> 
+      <div align="center"><a 
+                  href="../links.htm"><font 
+                  face=Arial color=#FFFFFF size=3><u>Links</u></font></a></div>
+    </td>
+  </tr>
+  <tr bordercolor=#000099 bgcolor=#CC3333>
+    <td align=top width=130 height="30"><a href="http://www.dis.uniroma1.it/%7Emidlab"><img src="../Library/top_midlab.gif" width="100%" height="100%" border="0" align="absmiddle"></a></td>
+  </tr>
+  </tbody> 
+</table>
+<hr>
+<!-- #EndLibraryItem --> 
+      </center>
+    </td>
+    <td WIDTH="844" BGCOLOR="#CCCCCC"> 
+      <center>
+        <center>
+          <center>
+            <center>
+              <h1><font color="#330099" face="Trebuchet MS, Arial, Helvetica" size="+3">IRL 
+                version 0.1 </font></h1>
+            </center>
+            <center>
+              <h2><font color="#330099" face="Trebuchet MS, Arial, Helvetica"> 
+                Release Notes and Installation Instructions </font></h2>
+            </center>
+            <center>
+              <h2><font color="#330099" face="Trebuchet MS, Arial, Helvetica" size="+0"> 
+                Copyright &copy; 2001, D.I.S. &quot;La Sapienza&quot;</font></h2>
+            </center>
+            <center>
+              <font size="+0" face="Trebuchet MS, Arial, Helvetica">Dipartimento 
+              di Informatica e Sistemistica</font> <font face="Trebuchet MS, Arial, Helvetica"><br>
+              All rights reserved. </font> 
+            </center>
+            <p align="center"> <font face="Trebuchet MS, Arial, Helvetica"><img src="../Immagini/separator2.gif" width="600" height="10"> 
+              </font> 
+            <h2 align="left"> <font color="#330099" face="Trebuchet MS, Arial, Helvetica"> 
+              <font color="#000066">Table of Contents</font> </font></h2>
+            <div align="left"> 
+              <table border="0" cellpadding="0" cellspacing="0" width="571">
+                <tr valign="middle"> 
+                  <td width="38"> 
+                    <p><img src="../Immagini/bullet.gif" width="12" height="12" hspace="13"></p>
+                  </td>
+                  <td colspan="3"> 
+                    <p><a href="#inst_conf">Installation &amp; Configuration</a> 
+                    </p>
+                  </td>
+                </tr>
+                <tr valign="middle"> 
+                  <td width="38"> 
+                    <p>&nbsp;</p>
+                  </td>
+                  <td width="38"> 
+                    <p><img src="../Immagini/bullet.gif" width="12" height="12" hspace="13"></p>
+                  </td>
+                  <td colspan="2"> 
+                    <p><a href="#requirements">System Requirements</a> </p>
+                  </td>
+                </tr>
+                <tr valign="middle"> 
+                  <td width="38"> 
+                    <p>&nbsp;</p>
+                  </td>
+                  <td width="38"> 
+                    <p><img src="../Immagini/bullet.gif" width="12" height="12" hspace="13"></p>
+                  </td>
+                  <td colspan="2"> 
+                    <p><a href="#setup_irl">Setting IRL environment</a></p>
+                  </td>
+                </tr>
+                <tr valign="middle"> 
+                  <td width="38">&nbsp;</td>
+                  <td width="38">&nbsp;</td>
+                  <td><img src="../Immagini/bullet.gif" width="12" height="12" hspace="13"></td>
+                  <td> 
+                    <p><a href="#orbacus">Configure ORBacus</a></p>
+                  </td>
+                </tr>
+                <tr valign="middle"> 
+                  <td width="38"> 
+                    <p>&nbsp;</p>
+                  </td>
+                  <td width="38"> 
+                    <p><img src="../Immagini/bullet.gif" width="12" height="12" hspace="13"></p>
+                  </td>
+                  <td colspan="2"> 
+                    <p><a href="#conf_irl">Configure IRL</a></p>
+                  </td>
+                </tr>
+                <tr valign="middle"> 
+                  <td width="38"> 
+                    <p><img src="../Immagini/bullet.gif" width="12" height="12" hspace="13"></p>
+                  </td>
+                  <td colspan="3"> 
+                    <p> <a href="#develop_irl">Develop IRL Applications</a></p>
+                  </td>
+                </tr>
+                <tr valign="middle"> 
+                  <td width="38">&nbsp;</td>
+                  <td width="38"><img src="../Immagini/bullet.gif" width="12" height="12" hspace="13"></td>
+                  <td colspan="2"> 
+                    <p><a href="#running_irl">Running IRL Components</a></p>
+                  </td>
+                </tr>
+                <tr valign="middle"> 
+                  <td width="38">&nbsp;</td>
+                  <td width="38"><img src="../Immagini/bullet.gif" width="12" height="12" hspace="13"></td>
+                  <td colspan="2"> 
+                    <p><a href="#running_demos">Running IRL Demos</a></p>
+                  </td>
+                </tr>
+                <tr valign="middle"> 
+                  <td width="38">&nbsp;</td>
+                  <td width="38">&nbsp;</td>
+                  <td width="38"><img src="../Immagini/bullet.gif" width="12" height="12" hspace="13"></td>
+                  <td width="457"> 
+                    <p><a href="#helloserver">HelloServer demo</a></p>
+                  </td>
+                </tr>
+                <tr valign="middle"> 
+                  <td width="38">&nbsp;</td>
+                  <td width="38">&nbsp;</td>
+                  <td width="38"><img src="../Immagini/bullet.gif" width="12" height="12" hspace="13"></td>
+                  <td width="457"> 
+                    <p><a href="#stack">Stack demo</a></p>
+                  </td>
+                </tr>
+                <tr valign="middle"> 
+                  <td width="38">&nbsp;</td>
+                  <td width="38">&nbsp;</td>
+                  <td width="38"><img src="../Immagini/bullet.gif" width="12" height="12" hspace="13"></td>
+                  <td width="457"> 
+                    <p><a href="#howtoconfdemos">How-To configure demos</a></p>
+                  </td>
+                </tr>
+                <tr valign="middle"> 
+                  <td width="38"> 
+                    <p><img src="../Immagini/bullet.gif" width="12" height="12" hspace="13"></p>
+                  </td>
+                  <td colspan="3"> 
+                    <p> <a href="#limitations">Limitations</a> </p>
+                  </td>
+                </tr>
+              </table>
+              <br>
+            </div>
+            <div align="center"><img src="../Immagini/separator2.gif" width="600" height="10"></div>
+            <table border="0" align="right">
+              <tr> 
+                <td> 
+                  <div align="left"><font face="Trebuchet MS, Arial, Helvetica"><a href="index.html#TOP"><font size="-2">back 
+                    to main</font></a></font></div>
+                </td>
+                <td width="10">&nbsp;</td>
+                <td> 
+                  <div align="right"><font face="Trebuchet MS, Arial, Helvetica"><a href="#TOP"><font size="-2">back 
+                    to top</font></a></font></div>
+                </td>
+              </tr>
+            </table>
+            <p>&nbsp;</p>
+            <h1 align="left"><font color="#000066"><a name="inst_conf"></a>Installation 
+              &amp; Configuration</font><br>
+            </h1>
+            <h2 align="left"><a name="requirements"></a><font color="#000066">System 
+              Requirements</font></h2>
+            <div align="left"> 
+              <ol>
+                <li>ORBacus 4.1 for Java (website: <a href="http://www.orbacus.com/ob">http://www.orbacus.com/ob</a>)</li>
+                <li>Java 2 SDK v.1.3.0_01 (website: <a href="http://java.sun.com/products/archive/j2se/1.3.0_01/">http://java.sun.com/products/archive/j2se/1.3.0_01/</a>)</li>
+                <li> Local Area Network</li>
+              </ol>
+            </div>
+            <h2 align="left"><font color="#000066"><a name="setup_irl"></a>Setting 
+              IRL environment</font></h2>
+            <p align="left">Please install IRL following the step-by-step instructions 
+              below:</p>
+            <div align="left"> 
+              <ol>
+                <li> unzip the file <span class="code">irl.zip</span> into IRL_HOME 
+                  directory (e.g. C:\IRL)</li>
+                <li> make sure your have installed <a href="http://www.orbacus.com/ob">ORBacus 
+                  4.1</a> for Java and <a href="http://java.sun.com/products/archive/j2se/1.3.0_01/">Java 
+                  2 SDK v.1.3.0_01</a></li>
+                <li> put IRL_HOME/bin directory in your PATH environment variable;</li>
+                <li> put the following jar files:<br>
+                  <ul>
+                    <li><span class="code">IRL_HOME/lib/irl.jar</span> , the main 
+                      libraries<br>
+                    <li><span class="code">IRL_HOME/lib/ft-corba.jar</span> , 
+                      pre-compiled FT-CORBA interfaces<br>
+                    <li><span class="code">IRL_HOME/lib/test.jar</span> , pre-compiled 
+                      test application objects<br>
+                    <li><span class="code">IRL_HOME/lib/iogrm.jar</span> , pre-compiled 
+                      <a href="http://www.dis.uniroma1.it/%7Eirl/tools/Documentation.htm">IOGR 
+                      Manager library</a><br>
+                    <li><span class="code">IRL_HOME/lib/demo.jar</span> , pre-compiled 
+                      demo application<br>
+                  </ul>
+                  in your CLASSPATH environment variable.</li>
+              </ol>
+            </div>
+            <h2 align="left"><font color="#000066"><a name="orbacus"></a>Configure 
+              ORBacus</font></h2>
+            <p align="left">In the IRL_HOME/bin directory there is a script file 
+              named <span class="code">orbj.bat</span> that set ORBacus as orb 
+              to be used with IRL. The script is the follow:</p>
+            <p align="left" class="code">java -Dorg.omg.CORBA.ORBClass=com.ooc.CORBA.ORB 
+              \<br>
+              -Dorg.omg.CORBA.ORBSingletonClass=com.ooc.CORBA.ORBSingleton \<br>
+              -Dooc.config=&quot;%USERPROFILE%\orbacus.properties&quot; %*</p>
+            <p align="left">As described in the ORBacus manual (cfr. 4.3.4 Using 
+              configuration file), the <span class="code">ooc.config</span> java 
+              properties define a file of ORBacus properties. You must place this 
+              file, named <span class="code">orbacus.properties</span>, in your 
+              USER_HOME directory (USERPROFILE if you use Win2000). If you want, 
+              you can change <span class="code">orbj.bat</span> in order to use 
+              your personal ORBacus settings. </p>
+            <h2 align="left"><font color="#000066"><a name="conf_irl"></a>Configure 
+              IRL</font></h2>
+            <p align="left">To configure IRL you must rename the file irl.properties.template 
+              to irl.properties, edit and place it to your USER_HOME directory. 
+              The irl.properties.template file is initialy placed into config/ 
+              directory.</p>
+            <p align="left">Here is an example of irl.properties file:<br>
+              <span class="code">##<br>
+              ## Specifies the properties for IRL<br>
+              ##</span></p>
+            <p class="code" align="left">########################<br>
+              # FT Domain properties #<br>
+              ########################</p>
+            <p class="code" align="left"># Specifies the FT Domain Name<br>
+              #<br>
+              # IRL binds to NameService object using this rule:<br>
+              # &lt;domain name&gt;/&lt;host&gt;/&lt;name&gt; for all singleton 
+              objects<br>
+              # &lt;domain name&gt;/&lt;object group name&gt; for replicated object<br>
+              #<br>
+              FTD_name = domain\\.com</p>
+            <p class="code" align="left"># Specifies the FT Domain Composition<br>
+              #<br>
+              # the host name will be name\\.subdomain\\.domain<br>
+              host0 = HOST_A<br>
+              host1 = HOST_B<br>
+              host2 = HOST_C</p>
+            <p class="code" align="left">#########################<br>
+              # IRLFactory properties #<br>
+              #########################</p>
+            <p class="code" align="left"># Specifies the start command for the 
+              IRL Components<br>
+              #<br>
+              # RMStartCommand : specifies the start command for the Replication 
+              Manager<br>
+              # FNStartCommand : specifies the start command for the Fault Notifier<br>
+              # OGHStartCommand: specifies the start command for the Object Group 
+              Handler<br>
+              # LFDStartCommand: specifies the start command for the Local Failure 
+              Detector<br>
+              # IRLFactoryStartCommand: specifies the start command for the IRL 
+              Factory<br>
+              # <br>
+              RMStartCommand = c:/IRL/bin/RMServer.bat<br>
+              FNStartCommand = c:/IRL/bin/FNServer.bat<br>
+              OGHStartCommand = c:/IRL/bin/OGHServer.bat<br>
+              LFDStartCommand = c:/IRL/bin/LFDServer.bat<br>
+              IRLFactoryStartCommand = c:/IRL/bin/IRLFServer.bat</p>
+            <p class="code" align="left"># Specifies the host where the singleton 
+              RM and <br>
+              # the singleton FN are deployed<br>
+              #<br>
+              RM_factory_location = HOST_A<br>
+              FN_factory_location = HOST_C</p>
+            <p class="code" align="left"># Specifies the port the the IRL Factory 
+              monitoring<br>
+              #<br>
+              IRLFPort = 3000</p>
+            <p class="code" align="left"># Specifies the server port for the LFD 
+              heartbeating<br>
+              #<br>
+              FN_port = 8000</p>
+            <p class="code" align="left"># Specifies the protocol for the LFD 
+              heartbeating<br>
+              #<br>
+              # Possible Values = TCP, UDP<br>
+              #<br>
+              LFDHBProtocol = UDP</p>
+            <p align="left"><span class="code"># Specifies the LFD log file<br>
+              #<br>
+              LFD_path_log = c:/IRL/lfd.log</span><br>
+            </p>
+            <div align="center"><img src="../Immagini/separator2.gif" width="600" height="10"></div>
+            <table border="0" align="right">
+              <tr> 
+                <td> 
+                  <div align="left"><font face="Trebuchet MS, Arial, Helvetica"><a href="index.html#TOP"><font size="-2">back 
+                    to main</font></a></font></div>
+                </td>
+                <td width="10">&nbsp;</td>
+                <td> 
+                  <div align="right"><font face="Trebuchet MS, Arial, Helvetica"><a href="#TOP"><font size="-2">back 
+                    to top</font></a></font></div>
+                </td>
+              </tr>
+            </table>
+            <h2>&nbsp;</h2>
+            <h1 align="left"><font color="#000066"><a name="develop_irl"></a>Develop 
+              IRL Applications</font></h1>
+            <h2 align="left"><font color="#000066"><a name="running_irl"></a>Running 
+              IRL Components</font></h2>
+            <p align="left">The IRL components must be up before your application/launcher 
+              create/delete/invoke an object group. On each host, you must launch 
+              the IRL Factory Server: this component will create the other IRL 
+              component; after this, you can launch the Fault Notifier and Replication 
+              Manager launcher, that is responsible to create a singleton FN and 
+              RM on the host specified into <span class="code">irl.properties</span> 
+              file (FN_factory_location and RM_factory_location); then, you can 
+              launch the Local Failure Detector launcher, that create an LFD on 
+              each host composing the FT-Domain.</p>
+            <p align="left">The step-by-step instructions are listed below:</p>
+            <div align="left"> 
+              <ol>
+                <li>launch the ORBacus Name Service;</li>
+                <li>launch <span class="code">IRLFServer</span> bat file placed 
+                  into bin directory of IRL home directory;</li>
+                <li> launch <span class="code">FNLauncher</span> bat file placed 
+                  into bin directory of IRL home directory;</li>
+                <li> launch <span class="code">RMLauncher</span> bat file placed 
+                  into bin directory of IRL home directory;</li>
+                <li> launch <span class="code">LFDLauncher</span> bat file placed 
+                  into bin directory of IRL home directory.</li>
+              </ol>
+            </div>
+            <p align="left">Now you can start to develop or launch fault tolerant 
+              objects.<br>
+            </p>
+            <h2 align="left"><font color="#000066"><a name="running_demos"></a>Running 
+              IRL Demos</font></h2>
+            <p align="left">The demos are two:</p>
+            <div align="left"> 
+              <ol>
+                <li> an HelloServer demo: show how IRL can replicate stateless 
+                  objects;</li>
+                <li> a Stack demo: show how IRL can replicate stateful objects.<br>
+                </li>
+              </ol>
+            </div>
+            <h3 align="left"><font color="#000066"><a name="helloserver"></a>HelloServer 
+              demo</font></h3>
+            <p align="left">The HelloServer demo creates an object group of stateless 
+              object, publish the reference into a file, and a client invoke the 
+              echo operation on the object group.</p>
+            <p align="left">Please run this demo following the step-by-step instructions 
+              below:</p>
+            <div align="left"> 
+              <ol>
+                <li> make sure that IRL components runs;</li>
+                <li> edit the <span class="code">hello.properties</span> file 
+                  placed into config/ directory of IRL home directory; (see <a href="#howtoconfdemos">How-To 
+                  configure demos</a> section for detail)</li>
+                <li> 
+                  <div align="left"> run the HelloFactory Server<br>
+                    <div align="center"><span class="code"> java &lt;ORB config&gt; 
+                      test.hs.HelloFactoryServer hello_lf</span></div>
+                  </div>
+                </li>
+                <li>run the launcher in order to create an HelloServer object 
+                  group <br>
+                  <div align="center"><span class="code">java &lt;ORB config&gt; 
+                    demo.Launcher IRL_HOME/config/hello.properties</span></div>
+                </li>
+                <li> run the simple client<br>
+                  <div align="center" class="code">java &lt;ORB config&gt; demo.HelloClient 
+                    IRL_HOME/config/hello.properties<br>
+                  </div>
+                </li>
+              </ol>
+            </div>
+            <h3 align="left"><font color="#000066"><a name="stack"></a>Stack demo</font></h3>
+            <p align="left">The Stack demo creates a stateful object group, publish 
+              the reference into a file, and a client invoke the sequence of operations: 
+              push, pop, pop (the last pop raises an exception).</p>
+            <p align="left">Please run this demo following the step-by-step instructions 
+              below:</p>
+            <div align="left"> 
+              <ol>
+                <li>make sure that IRL components runs;</li>
+                <li> register the <span class="code">stack.idl</span> file into 
+                  Interface Repository;</li>
+                <li> edit the <span class="code">stack.properties</span> file 
+                  placed into config/ directory of IRL home directory; (see <a href="#howtoconfdemos">How-To 
+                  configure demos</a> section for detail)</li>
+                <li> run the StackFactory Server 
+                  <div align="center" class="code">java &lt;ORB config&gt; test.stk.StackFactoryServer 
+                    stack_lf</div>
+                </li>
+                <li> 
+                  <div align="left"> run the launcher in order to create a Stack 
+                    object group <br>
+                  </div>
+                  <div align="center" class="code">java &lt;ORB config&gt; demo.Launcher 
+                    IRL_HOME/config/stack.properties</div>
+                </li>
+                <li> 
+                  <div align="left"> run the simple client<br>
+                  </div>
+                  <div align="center" class="code">java &lt;ORB config&gt; demo.StackClient 
+                    IRL_HOME/config/stack.properties</div>
+                  <div align="left"><br>
+                  </div>
+                </li>
+              </ol>
+            </div>
+            <h3 align="left"><font color="#000066"><a name="howtoconfdemos"></a>How-To 
+              configure demos</font></h3>
+            <p align="left">The launcher used to create object group reads a properties 
+              file to get information about the object that must be created. </p>
+            <p align="left">Here is a template properties file.<br>
+              <span class="code"> ##<br>
+              ## Specifies the properties for an object group of Hello type<br>
+              ##</span></p>
+            <p class="code" align="left"># Specifies the org::omg::CORBA::FT:TypeId 
+              of Hello objects<br>
+              #<br>
+              TypeId = &lt;an IDL type&gt;</p>
+            <p class="code" align="left">###################<br>
+              # Type Properties #<br>
+              ###################</p>
+            <p class="code" align="left"># Specifies the org.omg.ft.ReplicationStyle 
+              property value<br>
+              # if not set, the TypeId FT-CORBA properties is the default<br>
+              #<br>
+              # Possible values = ACTIVE, STATELESS<br>
+              # Default Value = ACTIVE<br>
+              #<br>
+              #ReplicationStyle =</p>
+            <p class="code" align="left"># Specifies the org.omg.ft.MembershipStyle 
+              property value<br>
+              # if not set, the TypeId FT-CORBA properties is the default<br>
+              #<br>
+              # Possible values = MEMB_INF_CTRL, MEMB_APP_CTRL<br>
+              # Default Value = MEMB_INF_CTRL<br>
+              #<br>
+              #MembershipStyle = </p>
+            <p class="code" align="left"># Specifies the org.omg.ft.ConsistencyStyle 
+              property value<br>
+              # if not set, the TypeId FT-CORBA properties is the default<br>
+              #<br>
+              # Possible values = CONS_INF_CTRL, CONS_APP_CTRL<br>
+              # Default Value = CONS_INF_CTRL<br>
+              #<br>
+              #ConsistencyStyle = </p>
+            <p class="code" align="left"># Specifies the org.omg.ft.FaultMonitoringStyle 
+              property value<br>
+              # if not set, the TypeId FT-CORBA properties is the default<br>
+              #<br>
+              # Possible values = PULL, NOT_MONITORED<br>
+              # Default Value = PULL<br>
+              #<br>
+              #FaultMonitoringStyle = </p>
+            <p class="code" align="left"># Specifies the org.omg.ft.FaultMonitoringStyle 
+              property value<br>
+              # if not set, the TypeId FT-CORBA properties is the default<br>
+              #<br>
+              # Possible values = MEMB<br>
+              # Default Value = MEMB<br>
+              #<br>
+              #FaultMonitoringGranularity = </p>
+            <p class="code" align="left"># Specifies the org.omg.ft.InitialNumberReplicas 
+              property value<br>
+              # if not set, the TypeId FT-CORBA properties is the default<br>
+              #<br>
+              # Possible values = (0..number of hosts)<br>
+              # Default Value = 2<br>
+              #<br>
+              #InitialNumberReplicas = </p>
+            <p class="code" align="left"># Specifies the org.omg.ft.MinimumNumberReplica 
+              property value<br>
+              # if not set, the TypeId FT-CORBA properties is the default<br>
+              #<br>
+              # Possible values = (InitialNumberReplicas)..(number of hosts)<br>
+              # Default Value = 2<br>
+              #<br>
+              #MinimumNumberReplica =</p>
+            <p class="code" align="left"># Specifies the org.omg.ft.FaultMonitoringIntervalAndTimeout 
+              property value<br>
+              # if not set, the TypeId FT-CORBA properties is the default<br>
+              #<br>
+              # Possible values = <br>
+              # Default Value = 1000/5000<br>
+              #<br>
+              #FaultMonitoringIntervalAndTimeout = /</p>
+            <p class="code" align="left"># Specifies the org.omg.ft.Checkpoint 
+              property value<br>
+              # if not set, the TypeId FT-CORBA properties is the default<br>
+              #<br>
+              # Possible values = <br>
+              # Default Value = 10000<br>
+              #<br>
+              #CheckpointInterval = </p>
+            <p class="code" align="left"># Specifies the org.omg.ft.Factories 
+              property value<br>
+              #<br>
+              # FactoryNum: specifies the number of local factory used<br>
+              # Reference : specifies the object name registered to the NameService<br>
+              # Location : specifies the host where the local factory is located<br>
+              # NumFactoryCriteria: specifies the number of properties for the 
+              local factory<br>
+              # CriteriaName: specifies the name of the property<br>
+              # CriteriaType: specifies the type of the property (actually, string 
+              or location)<br>
+              # CriteriaValue: specifies the value of the property<br>
+              FactoryNum = 2<br>
+              Reference0 = &lt;name&gt;<br>
+              Location0 = &lt;host&gt;<br>
+              NumFactoryCriteria0 = 1<br>
+              CriteriaName00 = &lt;name&gt;<br>
+              CriteriaType00 = &lt;type&gt;<br>
+              CriteriaValue00 = &lt;value&gt;</p>
+            <p class="code" align="left">Reference1 = &lt;name&gt;<br>
+              Location1 = &lt;host&gt;<br>
+              NumFactoryCriteria1 = 1<br>
+              CriteriaName10 = &lt;name&gt;<br>
+              CriteriaType10 = &lt;type&gt;<br>
+              CriteriaValue10 = &lt;value&gt;</p>
+            <p class="code" align="left">######################<br>
+              # Objects Properties #<br>
+              ######################</p>
+            <p class="code" align="left"># Specifies the file where a reference 
+              of an object group is published<br>
+              #<br>
+              IOGRPath = &lt;file&gt;</p>
+            <p class="code" align="left"># Specifies other properties for the 
+              local factory<br>
+              #<br>
+              # NumFactoryCriteria: specifies the number of properties for the 
+              local factory<br>
+              # CriteriaName: specifies the name of the property<br>
+              # CriteriaType: specifies the type of the property (actually, string 
+              or location)<br>
+              # CriteriaValue: specifies the value of the property<br>
+              NumClientCriteria = 1<br>
+              CriteriaName0 = &lt;name&gt;<br>
+              CriteriaType0 = &lt;type&gt;<br>
+              CriteriaValue0 = &lt;value&gt;</p>
+            <p align="left">If you edit this file, you can:</p>
+            <div align="left"> 
+              <ul>
+                <li>specifies the FT-CORBA properties relative to the specified 
+                  TypeId;</li>
+                <li>set the Local Factories for this TypeId;</li>
+                <li>set the file path where the IOGR (object group reference) 
+                  were published;</li>
+                <li>specifies properties for the specific object or local factory.</li>
+              </ul>
+            </div>
+            <p align="left">For example in the <span class="code">hello.properties</span> 
+              file we have specified the ReplicationStyle (STATELESS), the ConsistencyStyle 
+              (CONS_APP_CTRL) and where the launcher can get the reference of 
+              the LocalFatories (actually we use the NameService to do this).<br>
+            </p>
+            <div align="center"><img src="../Immagini/separator2.gif" width="600" height="10"></div>
+            <table border="0" align="right">
+              <tr> 
+                <td> 
+                  <div align="left"><font face="Trebuchet MS, Arial, Helvetica"><a href="index.html#TOP"><font size="-2">back 
+                    to main</font></a></font></div>
+                </td>
+                <td width="10">&nbsp;</td>
+                <td> 
+                  <div align="right"><font face="Trebuchet MS, Arial, Helvetica"><a href="#TOP"><font size="-2">back 
+                    to top</font></a></font></div>
+                </td>
+              </tr>
+            </table>
+            <h3>&nbsp;</h3>
+            <h1 align="left"><font color="#000066"><a name="limitations"></a>Limitations</font></h1>
+            <p align="left">We currently have this limitations:</p>
+            <div align="left"> 
+              <ol>
+                <li> The <b>Replication Manager</b> and the <b>Fault Notifier</b> 
+                  are singleton objects; we are currently implementing a replicated 
+                  Replication Manager (see <a href="../details.htm#faulttolerance">details 
+                  page</a>), and we are currently working on an actively replicated 
+                  IRL Fault Notifier;</li>
+                <li> The <b>Replication Manager</b> provided is not subscribed 
+                  as consumer to the Fault Notifier: as a consequence of this, 
+                  the Replication Manager doesn't carry out all the functions 
+                  defined in FT-CORBA specification; e.g. it doesn't spawn new 
+                  members if the number of replicas is less than the MinimumNumberReplicas 
+                  property value;</li>
+                <li> The <b>Name Service</b> must be considered fault tolerant: 
+                  the clients currently get the reference of the Replication Manager 
+                  through the Name Service; we are currently working in order 
+                  to remove this assumption;</li>
+                <li>The <b>Interface Repository</b> must be considered fault tolerant: 
+                  the infrastructure may spawn a new stateful replica in any moment 
+                  ;</li>
+                <li>As described <a href="../details.htm#csandogh">here</a>, the 
+                  OGH is a gateway to stateful actively replicated object; now 
+                  the Replication Manager don't manage the Membership of the OGH 
+                  component.<br>
+                </li>
+              </ol>
+            </div>
+            <ol>
+            </ol>
+            <div align="center"><img src="../Immagini/separator2.gif" width="600" height="10"></div>
+            <table border="0" align="right">
+              <tr> 
+                <td> 
+                  <div align="left"><font face="Trebuchet MS, Arial, Helvetica"><a href="index.html#TOP"><font size="-2">back 
+                    to main</font></a></font></div>
+                </td>
+                <td width="10">&nbsp;</td>
+                <td> 
+                  <div align="right"><font face="Trebuchet MS, Arial, Helvetica"><a href="#TOP"><font size="-2">back 
+                    to top</font></a></font></div>
+                </td>
+              </tr>
+            </table>
+            <h1>&nbsp;</h1>
+          </center>
+          </center>
+        </center>
+      </td>
+  </tr>
+</table>
+<br>
+</body>
+</html>
+
+

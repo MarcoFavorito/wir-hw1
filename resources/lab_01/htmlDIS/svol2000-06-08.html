@@ -1,0 +1,161 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0//EN">
+<!-- Created by htmlize-0.49 in css mode. -->
+<html>
+  <head>
+    <title>svolc2000-06-08.c</title>
+    <style type="text/css">
+    <!--
+      BODY {
+        color: #000000;
+        background-color: #ffffff;
+      } /* default */
+      span.keyword {
+        color: #006400;
+      } /* font-lock-keyword-face */
+      span.function-name {
+        color: #0000cd;
+      } /* font-lock-function-name-face */
+      span.string {
+        color: #b22222;
+      } /* font-lock-string-face */
+      span.comment {
+        color: #4682b4;
+      } /* font-lock-comment-face */
+      span.variable-name {
+        color: #a52a2a;
+      } /* font-lock-variable-name-face */
+      span.type {
+        color: #ff00ff;
+      } /* font-lock-type-face */
+      span.builtin {
+        color: #da70d6;
+      } /* font-lock-builtin-face */
+    -->
+    </style>
+  </head>
+  <body>
+    <pre>
+#<span class="builtin">include</span> <span class="string">&lt;stdio.h&gt;</span>
+#<span class="builtin">include</span> <span class="string">&lt;string.h&gt;</span>
+
+#<span class="builtin">define</span> <span class="variable-name">N</span> 100
+
+<span class="keyword">typedef</span> <span class="type">unsigned</span> <span class="type">char</span> <span class="variable-name">uchar</span>;
+<span class="keyword">typedef</span> <span class="type">unsigned</span> <span class="type">short</span> <span class="type">int</span> <span class="variable-name">ushort</span>;
+<span class="keyword">typedef</span> <span class="type">char</span> <span class="variable-name">tipostringa</span>[21];
+
+<span class="keyword">typedef</span> <span class="keyword">struct</span> {
+    tipostringa nomeprop, cognomeprop;
+    uchar scala;
+    ushort interno;
+    <span class="type">double</span> <span class="variable-name">pagamenti</span>;
+} <span class="type">appartamento</span>;
+
+<span class="keyword">typedef</span> appartamento <span class="variable-name">condominio</span>[N];
+
+<span class="comment">/* prototipi */</span>
+    <span class="type">void</span> <span class="function-name">AggiornaArray</span>(condominio A, <span class="type">double</span> <span class="variable-name">a</span>, <span class="variable-name">uchar</span> s, <span class="variable-name">ushort</span> i, <span class="variable-name">ushort</span> *n);
+    <span class="type">void</span> <span class="function-name">CostruisciFile</span>(condominio A, ushort n, <span class="type">char</span> <span class="variable-name">nome</span>[]);
+    <span class="type">int</span> <span class="function-name">main</span>(<span class="type">void</span>);
+
+
+<span class="type">void</span> <span class="function-name">AggiornaArray</span>(condominio A, <span class="type">double</span> <span class="variable-name">a</span>, <span class="variable-name">uchar</span> s, <span class="variable-name">ushort</span> i, <span class="variable-name">ushort</span> *n)
+{
+    ushort h;
+    
+    <span class="keyword">for</span>(h=0; h&lt;*n; h++)
+        <span class="keyword">if</span>((A[h].scala==s)&amp;&amp;(A[h].interno==i)) {
+            A[h].pagamenti += a;
+            printf(<span class="string">&quot;Aggiornamento effettuato.\n&quot;</span>);
+            <span class="keyword">return</span>;
+        }
+    
+    <span class="comment">/* se arriva qui, l'app. non è nell'array: occorre inserirlo, se c'è spazio */</span>
+    <span class="keyword">if</span>(*n==N) {
+        printf(<span class="string">&quot;Non c'è più spazio nell'array. Inserimento non effettuato.\n&quot;</span>);
+        <span class="keyword">return</span>;
+    }
+    
+    printf(<span class="string">&quot;L'appartamento sito nella scala %c, interno %hu non è &quot;</span>
+           <span class="string">&quot;presente nell'array. Inserire nominativo proprietario.\n&quot;</span>, s, i);
+    printf(<span class="string">&quot;Nome: &quot;</span>);
+    gets(A[*n].nomeprop);
+    printf(<span class="string">&quot;Cognome: &quot;</span>);
+    gets(A[*n].cognomeprop);
+    A[*n].scala=s;
+    A[*n].interno=i;
+    A[*n].pagamenti=a;
+    (*n)++;
+    printf(<span class="string">&quot;Inserimento effettuato.\n&quot;</span>);
+    <span class="keyword">return</span>;
+}
+
+
+<span class="type">void</span> <span class="function-name">CostruisciFile</span>(condominio A, ushort n, <span class="type">char</span> <span class="variable-name">nome</span>[])
+{
+    condominio AA;
+    ushort h, k;
+    <span class="type">FILE</span> *<span class="variable-name">f</span>;
+    
+    <span class="keyword">if</span>((f=fopen(nome, <span class="string">&quot;w&quot;</span>))==NULL) {
+        printf(<span class="string">&quot;Impossibile aprire \&quot;%s\&quot; in modalità \&quot;w\&quot;.\n&quot;</span>, nome);
+        <span class="keyword">return</span>;
+    }
+    
+    <span class="comment">/* duplica l'array in una var. locale */</span>
+    <span class="keyword">for</span>(h=0; h&lt;n; h++)
+        AA[h]=A[h];
+        
+    <span class="keyword">for</span>(h=0; h&lt;n; h++)
+        <span class="keyword">if</span>(AA[h].nomeprop[0]!=<span class="string">'\0'</span>) { <span class="comment">/* confronto con zero perché metto a
+                                         zero i nomi &quot;usati&quot; in anticipo */</span>
+            <span class="keyword">for</span>(k=h+1; k&lt;n; k++)
+                <span class="keyword">if</span>((strcmp(AA[h].nomeprop, AA[k].nomeprop)==0)&amp;&amp;
+                   (strcmp(AA[h].cognomeprop, AA[k].cognomeprop)==0)) {
+                    AA[h].pagamenti += AA[k].pagamenti;
+                    AA[k].nomeprop[0]=<span class="string">'\0'</span>; <span class="comment">/* metto a zero il nome &quot;usato&quot; in anticipo */</span>
+                }
+            fprintf(f,<span class="string">&quot;%s %s %f\n&quot;</span>, AA[h].nomeprop, AA[h].cognomeprop, AA[h].pagamenti);
+        }
+    fclose(f);
+    printf(<span class="string">&quot;File \&quot;%s\&quot; costruito con successo.\n&quot;</span>, nome);
+    <span class="keyword">return</span>;
+}
+
+    
+    
+<span class="type">int</span> <span class="function-name">main</span>(<span class="type">void</span>)
+{
+    condominio A;
+    uchar scala;
+    ushort numapp,
+           interno;
+    <span class="type">double</span> <span class="variable-name">pag</span>;
+    tipostringa nomefile;
+    
+    numapp=0;
+    <span class="keyword">do</span> {
+        printf(<span class="string">&quot;Immetti pagamento (numero &lt;0 per terminare): &quot;</span>);
+        scanf(<span class="string">&quot;%lf&quot;</span>, &amp;pag);
+        getchar();
+        <span class="keyword">if</span>(pag&lt;0)
+            <span class="keyword">break</span>;
+        printf(<span class="string">&quot;Immetti scala: &quot;</span>);
+        scala=getchar();
+        getchar();
+        printf(<span class="string">&quot;Immetti interno: &quot;</span>);
+        scanf(<span class="string">&quot;%hu&quot;</span>, &amp;interno);
+        getchar();
+        AggiornaArray(A, pag, scala, interno, &amp;numapp);
+    } <span class="keyword">while</span>(1);
+    
+    printf(<span class="string">&quot;Immetti nome del file in cui scaricare le info sui proprietari: &quot;</span>);
+    gets(nomefile);
+
+    CostruisciFile(A, numapp, nomefile);
+    
+    <span class="keyword">return</span> 0;
+}
+</pre>
+  </body>
+</html>

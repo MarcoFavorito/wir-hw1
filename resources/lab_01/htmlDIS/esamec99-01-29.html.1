@@ -1,0 +1,496 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1">
+<META NAME="Generator" CONTENT="Microsoft Word 98">
+<TITLE>Esame 29/1/1999</TITLE>
+</HEAD>
+<BODY>
+
+<B><FONT SIZE=2><P ALIGN="CENTER">Universit&agrave; di Roma "La Sapienza"</P>
+<P ALIGN="CENTER">Facolt&agrave; di Ingegneria </P>
+<P ALIGN="CENTER">Corso di Fondamenti di Informatica </P>
+<P ALIGN="CENTER">Corso di Laurea: Ambiente e Territorio</P>
+<P ALIGN="CENTER"></P>
+<P ALIGN="CENTER">Appello del 29-1-1999</P>
+</B><P ALIGN="JUSTIFY"></P>
+<B><P ALIGN="JUSTIFY">Esercizio 1 (18 punti)</P>
+</B><P ALIGN="JUSTIFY">Nel file di testo (ESTRAZ.TXT) sono memorizzate le estrazioni del gioco del lotto. Ogni estrazione &egrave; rappresentata da un <I>codice dell&#146;estrazione</I> (un numero intero &gt; 1000, memorizzato in una riga del file) e da una matrice di 10 righe e 5 colonne: i valori delle componenti della <I>i</I>-esima riga sono i numeri estratti nella <I>i</I>-esima ruota (1 corrisponde a Bari, 2 a Cagliari, e cos&igrave; via; ogni riga della matrice occupa una riga del file di testo e valori appartenenti alla stessa riga sono separati da uno spazio bianco). </P>
+<P ALIGN="JUSTIFY">In un altro file di testo (AMBI.TXT) sono memorizzati gli ambi giocati presso le ricevitorie autorizzate sul territorio nazionale. Ogni giocata &egrave; rappresentata da una riga contenente le seguenti informazioni (separate da spazi):    </P>
+
+<UL>
+<I><P ALIGN="JUSTIFY"><LI>codice della ricevitoria</I> (un intero di 4 cifre al massimo);</LI></P>
+<I><P ALIGN="JUSTIFY"><LI>codice dell&#146;estrazione</I> (un numero intero &gt; 1000); </LI></P>
+<I><P ALIGN="JUSTIFY"><LI>codice della ruota</I> (1 per Bari, 2 per Cagliari, &#133;, 10 per Venezia);</LI></P>
+<I><P ALIGN="JUSTIFY"><LI>l&#146;ambo giocato</I>, rappresentato da una coppia di interi in {1,...,90};</LI></P>
+<I><P ALIGN="JUSTIFY"><LI>l&#146;importo della giocata</I>, in Euro (&#164;).</LI></P></UL>
+
+<P ALIGN="JUSTIFY"></P>
+<OL>
+
+<P ALIGN="JUSTIFY"><LI>[2 punti] Scrivere in C le dichiarazioni dei tipi e delle eventuali variabili globali da utilizzarsi per risolvere i due punti successivi (le dichiarazioni locali potranno essere direttamente specificate nello svolgimento dei punti successivi).</LI></P>
+<P ALIGN="JUSTIFY"><LI>[9 punti] Scrivere una funzione C che, dati i due file ESTRAZ.TXT e AMBI.TXT e, come parametro, un <I>codice di estrazione</I>, costruisca, restituendola in uscita, una <I>lista delle vincite </I>(VINCITE), in ciascun elemento della quale sono memorizzate le seguenti coppie di dati:</LI></P></OL>
+
+
+<UL>
+<P ALIGN="JUSTIFY"><LI>il <I>codice di una ricevitoria</I> in cui sono state effettuate giocate di ambi risultate vincenti nell&#146;estrazione corrispondente al <I>codice di estrazione</I> dato come parametro;</LI></P>
+<P ALIGN="JUSTIFY"><LI>la somma degli <I>importi delle giocate</I> vincenti effettuate nella ricevitoria.</LI></P></UL>
+<DIR>
+
+<P ALIGN="JUSTIFY">Ogni ricevitoria in cui sia stata effettuata una giocata vincente &egrave; presente, perci&ograve;, una sola volta nella lista VINCITE. Si assuma che non vi siano giocate del tipo "su tutte le ruote". La lista VINCITE sia rappresentata mediante strutture e puntatori.</P></DIR>
+
+<OL>
+
+<P ALIGN="JUSTIFY"><LI>[7 punti] Scrivere una funzione C che, ricevendo come parametro la lista VINCITE prodotta dalla funzione di cui al punto precedente, elimini dalla lista VINCITE le ricevitorie in cui la somma delle giocate &egrave; inferiore a 10.30 &#164;.</LI></P></OL>
+
+<P ALIGN="JUSTIFY"></P>
+<P ALIGN="JUSTIFY">In fig. (a) &egrave; illustrata una delle estrazioni rappresentate nel file ESTRAZ.TXT. In fig. (b) il file AMBI.TXT. In fig. (c) la lista fornita dalla procedura di cui al punto 2 con parametro di valore 1308. In fig. (d) la lista fornita dalla procedura di cui al punto 3.</P>
+<P ALIGN="JUSTIFY"></P>
+<P ALIGN="JUSTIFY">&nbsp;</P>
+<P ALIGN="JUSTIFY">&nbsp;</P></FONT>
+<TABLE BORDER CELLSPACING=1 CELLPADDING=3 WIDTH=163>
+<TR><TD WIDTH="13%" VALIGN="TOP">&nbsp;</TD>
+<TD WIDTH="17%" VALIGN="TOP">
+<I><FONT SIZE=1><P ALIGN="CENTER">(Cod.</I></FONT></TD>
+<TD WIDTH="17%" VALIGN="TOP">
+<I><FONT SIZE=1><P ALIGN="CENTER">Estr.)</I></FONT></TD>
+<TD WIDTH="17%" VALIGN="TOP">
+<FONT SIZE=1><P ALIGN="CENTER">1308</FONT></TD>
+<TD WIDTH="17%" VALIGN="TOP">&nbsp;</TD>
+<TD WIDTH="17%" VALIGN="TOP">&nbsp;</TD>
+</TR>
+<TR><TD WIDTH="13%" VALIGN="TOP">
+<I><FONT SIZE=2 COLOR="#ffffff"><P ALIGN="CENTER">1</I></FONT></TD>
+<TD WIDTH="17%" VALIGN="TOP">
+<FONT SIZE=2><P ALIGN="CENTER">20</FONT></TD>
+<TD WIDTH="17%" VALIGN="TOP">
+<FONT SIZE=2><P ALIGN="CENTER">15</FONT></TD>
+<TD WIDTH="17%" VALIGN="TOP">
+<FONT SIZE=2><P ALIGN="CENTER">31</FONT></TD>
+<TD WIDTH="17%" VALIGN="TOP">
+<FONT SIZE=2><P ALIGN="CENTER">5</FONT></TD>
+<TD WIDTH="17%" VALIGN="TOP">
+<FONT SIZE=2><P ALIGN="CENTER">1</FONT></TD>
+</TR>
+<TR><TD WIDTH="13%" VALIGN="TOP">
+<I><FONT SIZE=2 COLOR="#ffffff"><P ALIGN="CENTER">2</I></FONT></TD>
+<TD WIDTH="17%" VALIGN="TOP">
+<FONT SIZE=2><P ALIGN="CENTER">45</FONT></TD>
+<TD WIDTH="17%" VALIGN="TOP">
+<FONT SIZE=2><P ALIGN="CENTER">12</FONT></TD>
+<TD WIDTH="17%" VALIGN="TOP">
+<FONT SIZE=2><P ALIGN="CENTER">90</FONT></TD>
+<TD WIDTH="17%" VALIGN="TOP">
+<FONT SIZE=2><P ALIGN="CENTER">31</FONT></TD>
+<TD WIDTH="17%" VALIGN="TOP">
+<FONT SIZE=2><P ALIGN="CENTER">46</FONT></TD>
+</TR>
+<TR><TD WIDTH="13%" VALIGN="TOP">
+<I><FONT SIZE=2 COLOR="#ffffff"><P ALIGN="CENTER">3</I></FONT></TD>
+<TD WIDTH="17%" VALIGN="TOP">
+<FONT SIZE=2><P ALIGN="CENTER">67</FONT></TD>
+<TD WIDTH="17%" VALIGN="TOP">
+<FONT SIZE=2><P ALIGN="CENTER">89</FONT></TD>
+<TD WIDTH="17%" VALIGN="TOP">
+<FONT SIZE=2><P ALIGN="CENTER">2</FONT></TD>
+<TD WIDTH="17%" VALIGN="TOP">
+<FONT SIZE=2><P ALIGN="CENTER">3</FONT></TD>
+<TD WIDTH="17%" VALIGN="TOP">
+<FONT SIZE=2><P ALIGN="CENTER">75</FONT></TD>
+</TR>
+<TR><TD WIDTH="13%" VALIGN="TOP">
+<I><FONT SIZE=2 COLOR="#ffffff"><P ALIGN="CENTER">4</I></FONT></TD>
+<TD WIDTH="17%" VALIGN="TOP">
+<FONT SIZE=2><P ALIGN="CENTER">28</FONT></TD>
+<TD WIDTH="17%" VALIGN="TOP">
+<FONT SIZE=2><P ALIGN="CENTER">27</FONT></TD>
+<TD WIDTH="17%" VALIGN="TOP">
+<FONT SIZE=2><P ALIGN="CENTER">10</FONT></TD>
+<TD WIDTH="17%" VALIGN="TOP">
+<FONT SIZE=2><P ALIGN="CENTER">87</FONT></TD>
+<TD WIDTH="17%" VALIGN="TOP">
+<FONT SIZE=2><P ALIGN="CENTER">48</FONT></TD>
+</TR>
+<TR><TD WIDTH="13%" VALIGN="TOP">
+<I><FONT SIZE=2 COLOR="#ffffff"><P ALIGN="CENTER">5</I></FONT></TD>
+<TD WIDTH="17%" VALIGN="TOP">
+<FONT SIZE=2><P ALIGN="CENTER">6</FONT></TD>
+<TD WIDTH="17%" VALIGN="TOP">
+<FONT SIZE=2><P ALIGN="CENTER">26</FONT></TD>
+<TD WIDTH="17%" VALIGN="TOP">
+<FONT SIZE=2><P ALIGN="CENTER">75</FONT></TD>
+<TD WIDTH="17%" VALIGN="TOP">
+<FONT SIZE=2><P ALIGN="CENTER">31</FONT></TD>
+<TD WIDTH="17%" VALIGN="TOP">
+<FONT SIZE=2><P ALIGN="CENTER">90</FONT></TD>
+</TR>
+<TR><TD WIDTH="13%" VALIGN="TOP">
+<I><FONT SIZE=2 COLOR="#ffffff"><P ALIGN="CENTER">6</I></FONT></TD>
+<TD WIDTH="17%" VALIGN="TOP">
+<FONT SIZE=2><P ALIGN="CENTER">56</FONT></TD>
+<TD WIDTH="17%" VALIGN="TOP">
+<FONT SIZE=2><P ALIGN="CENTER">8</FONT></TD>
+<TD WIDTH="17%" VALIGN="TOP">
+<FONT SIZE=2><P ALIGN="CENTER">28</FONT></TD>
+<TD WIDTH="17%" VALIGN="TOP">
+<FONT SIZE=2><P ALIGN="CENTER">48</FONT></TD>
+<TD WIDTH="17%" VALIGN="TOP">
+<FONT SIZE=2><P ALIGN="CENTER">18</FONT></TD>
+</TR>
+<TR><TD WIDTH="13%" VALIGN="TOP">
+<I><FONT SIZE=2 COLOR="#ffffff"><P ALIGN="CENTER">7</I></FONT></TD>
+<TD WIDTH="17%" VALIGN="TOP">
+<FONT SIZE=2><P ALIGN="CENTER">1</FONT></TD>
+<TD WIDTH="17%" VALIGN="TOP">
+<FONT SIZE=2><P ALIGN="CENTER">2</FONT></TD>
+<TD WIDTH="17%" VALIGN="TOP">
+<FONT SIZE=2><P ALIGN="CENTER">3</FONT></TD>
+<TD WIDTH="17%" VALIGN="TOP">
+<FONT SIZE=2><P ALIGN="CENTER">65</FONT></TD>
+<TD WIDTH="17%" VALIGN="TOP">
+<FONT SIZE=2><P ALIGN="CENTER">33</FONT></TD>
+</TR>
+<TR><TD WIDTH="13%" VALIGN="TOP">
+<I><FONT SIZE=2 COLOR="#ffffff"><P ALIGN="CENTER">8</I></FONT></TD>
+<TD WIDTH="17%" VALIGN="TOP">
+<FONT SIZE=2><P ALIGN="CENTER">7</FONT></TD>
+<TD WIDTH="17%" VALIGN="TOP">
+<FONT SIZE=2><P ALIGN="CENTER">18</FONT></TD>
+<TD WIDTH="17%" VALIGN="TOP">
+<FONT SIZE=2><P ALIGN="CENTER">28</FONT></TD>
+<TD WIDTH="17%" VALIGN="TOP">
+<FONT SIZE=2><P ALIGN="CENTER">48</FONT></TD>
+<TD WIDTH="17%" VALIGN="TOP">
+<FONT SIZE=2><P ALIGN="CENTER">38</FONT></TD>
+</TR>
+<TR><TD WIDTH="13%" VALIGN="TOP">
+<I><FONT SIZE=2 COLOR="#ffffff"><P ALIGN="CENTER">9</I></FONT></TD>
+<TD WIDTH="17%" VALIGN="TOP">
+<FONT SIZE=2><P ALIGN="CENTER">3</FONT></TD>
+<TD WIDTH="17%" VALIGN="TOP">
+<FONT SIZE=2><P ALIGN="CENTER">68</FONT></TD>
+<TD WIDTH="17%" VALIGN="TOP">
+<FONT SIZE=2><P ALIGN="CENTER">21</FONT></TD>
+<TD WIDTH="17%" VALIGN="TOP">
+<FONT SIZE=2><P ALIGN="CENTER">55</FONT></TD>
+<TD WIDTH="17%" VALIGN="TOP">
+<FONT SIZE=2><P ALIGN="CENTER">54</FONT></TD>
+</TR>
+<TR><TD WIDTH="13%" VALIGN="TOP">
+<I><FONT SIZE=2 COLOR="#ffffff"><P ALIGN="CENTER">10</I></FONT></TD>
+<TD WIDTH="17%" VALIGN="TOP">
+<FONT SIZE=2><P ALIGN="CENTER">89</FONT></TD>
+<TD WIDTH="17%" VALIGN="TOP">
+<FONT SIZE=2><P ALIGN="CENTER">90</FONT></TD>
+<TD WIDTH="17%" VALIGN="TOP">
+<FONT SIZE=2><P ALIGN="CENTER">22</FONT></TD>
+<TD WIDTH="17%" VALIGN="TOP">
+<FONT SIZE=2><P ALIGN="CENTER">12</FONT></TD>
+<TD WIDTH="17%" VALIGN="TOP">
+<FONT SIZE=2><P ALIGN="CENTER">8</FONT></TD>
+</TR>
+<TR><TD WIDTH="13%" VALIGN="TOP">&nbsp;</TD>
+<TD WIDTH="87%" VALIGN="TOP" COLSPAN=5>
+<FONT SIZE=2><P ALIGN="CENTER">Fig. (a)</FONT></TD>
+</TR>
+</TABLE>
+
+<FONT SIZE=2><P ALIGN="JUSTIFY"></P>
+<P ALIGN="JUSTIFY">&nbsp;</P>
+<P ALIGN="JUSTIFY">&nbsp;</P></FONT>
+<TABLE BORDER CELLSPACING=1 CELLPADDING=5 WIDTH=206>
+<TR><TD WIDTH="17%" VALIGN="TOP">
+<FONT SIZE=2><P ALIGN="CENTER">867</FONT></TD>
+<TD WIDTH="19%" VALIGN="TOP">
+<FONT SIZE=2><P ALIGN="CENTER">1308</FONT></TD>
+<TD WIDTH="14%" VALIGN="TOP">
+<FONT SIZE=2><P ALIGN="CENTER">2</FONT></TD>
+<TD WIDTH="14%" VALIGN="TOP">
+<FONT SIZE=2><P ALIGN="CENTER">45</FONT></TD>
+<TD WIDTH="14%" VALIGN="TOP">
+<FONT SIZE=2><P ALIGN="CENTER">12</FONT></TD>
+<TD WIDTH="21%" VALIGN="TOP">
+<FONT SIZE=2><P ALIGN="CENTER">25.40</FONT></TD>
+</TR>
+<TR><TD WIDTH="17%" VALIGN="TOP">
+<FONT SIZE=2><P ALIGN="CENTER">500</FONT></TD>
+<TD WIDTH="19%" VALIGN="TOP">
+<FONT SIZE=2><P ALIGN="CENTER">1308</FONT></TD>
+<TD WIDTH="14%" VALIGN="TOP">
+<FONT SIZE=2><P ALIGN="CENTER">5</FONT></TD>
+<TD WIDTH="14%" VALIGN="TOP">
+<FONT SIZE=2><P ALIGN="CENTER">31</FONT></TD>
+<TD WIDTH="14%" VALIGN="TOP">
+<FONT SIZE=2><P ALIGN="CENTER">26</FONT></TD>
+<TD WIDTH="21%" VALIGN="TOP">
+<FONT SIZE=2><P ALIGN="CENTER">5.60</FONT></TD>
+</TR>
+<TR><TD WIDTH="17%" VALIGN="TOP">
+<FONT SIZE=2><P ALIGN="CENTER">601</FONT></TD>
+<TD WIDTH="19%" VALIGN="TOP">
+<FONT SIZE=2><P ALIGN="CENTER">1307</FONT></TD>
+<TD WIDTH="14%" VALIGN="TOP">
+<FONT SIZE=2><P ALIGN="CENTER">10</FONT></TD>
+<TD WIDTH="14%" VALIGN="TOP">
+<FONT SIZE=2><P ALIGN="CENTER">22</FONT></TD>
+<TD WIDTH="14%" VALIGN="TOP">
+<FONT SIZE=2><P ALIGN="CENTER">90</FONT></TD>
+<TD WIDTH="21%" VALIGN="TOP">
+<FONT SIZE=2><P ALIGN="CENTER">10.50</FONT></TD>
+</TR>
+<TR><TD WIDTH="17%" VALIGN="TOP">
+<FONT SIZE=2><P ALIGN="CENTER">500</FONT></TD>
+<TD WIDTH="19%" VALIGN="TOP">
+<FONT SIZE=2><P ALIGN="CENTER">1308</FONT></TD>
+<TD WIDTH="14%" VALIGN="TOP">
+<FONT SIZE=2><P ALIGN="CENTER">6</FONT></TD>
+<TD WIDTH="14%" VALIGN="TOP">
+<FONT SIZE=2><P ALIGN="CENTER">56</FONT></TD>
+<TD WIDTH="14%" VALIGN="TOP">
+<FONT SIZE=2><P ALIGN="CENTER">28</FONT></TD>
+<TD WIDTH="21%" VALIGN="TOP">
+<FONT SIZE=2><P ALIGN="CENTER">12.65</FONT></TD>
+</TR>
+<TR><TD WIDTH="17%" VALIGN="TOP">
+<FONT SIZE=2><P ALIGN="CENTER">601</FONT></TD>
+<TD WIDTH="19%" VALIGN="TOP">
+<FONT SIZE=2><P ALIGN="CENTER">1308</FONT></TD>
+<TD WIDTH="14%" VALIGN="TOP">
+<FONT SIZE=2><P ALIGN="CENTER">8</FONT></TD>
+<TD WIDTH="14%" VALIGN="TOP">
+<FONT SIZE=2><P ALIGN="CENTER">48</FONT></TD>
+<TD WIDTH="14%" VALIGN="TOP">
+<FONT SIZE=2><P ALIGN="CENTER">18</FONT></TD>
+<TD WIDTH="21%" VALIGN="TOP">
+<FONT SIZE=2><P ALIGN="CENTER">4.50</FONT></TD>
+</TR>
+<TR><TD WIDTH="17%" VALIGN="TOP">
+<FONT SIZE=2><P ALIGN="CENTER">867</FONT></TD>
+<TD WIDTH="19%" VALIGN="TOP">
+<FONT SIZE=2><P ALIGN="CENTER">1307</FONT></TD>
+<TD WIDTH="14%" VALIGN="TOP">
+<FONT SIZE=2><P ALIGN="CENTER">6</FONT></TD>
+<TD WIDTH="14%" VALIGN="TOP">
+<FONT SIZE=2><P ALIGN="CENTER">56</FONT></TD>
+<TD WIDTH="14%" VALIGN="TOP">
+<FONT SIZE=2><P ALIGN="CENTER">28</FONT></TD>
+<TD WIDTH="21%" VALIGN="TOP">
+<FONT SIZE=2><P ALIGN="CENTER">32.30</FONT></TD>
+</TR>
+<TR><TD WIDTH="17%" VALIGN="TOP">
+<FONT SIZE=2><P ALIGN="CENTER">867</FONT></TD>
+<TD WIDTH="19%" VALIGN="TOP">
+<FONT SIZE=2><P ALIGN="CENTER">1308</FONT></TD>
+<TD WIDTH="14%" VALIGN="TOP">
+<FONT SIZE=2><P ALIGN="CENTER">2</FONT></TD>
+<TD WIDTH="14%" VALIGN="TOP">
+<FONT SIZE=2><P ALIGN="CENTER">7</FONT></TD>
+<TD WIDTH="14%" VALIGN="TOP">
+<FONT SIZE=2><P ALIGN="CENTER">90</FONT></TD>
+<TD WIDTH="21%" VALIGN="TOP">
+<FONT SIZE=2><P ALIGN="CENTER">20.00</FONT></TD>
+</TR>
+<TR><TD WIDTH="17%" VALIGN="TOP">
+<FONT SIZE=2><P ALIGN="CENTER">867</FONT></TD>
+<TD WIDTH="19%" VALIGN="TOP">
+<FONT SIZE=2><P ALIGN="CENTER">1307</FONT></TD>
+<TD WIDTH="14%" VALIGN="TOP">
+<FONT SIZE=2><P ALIGN="CENTER">2</FONT></TD>
+<TD WIDTH="14%" VALIGN="TOP">
+<FONT SIZE=2><P ALIGN="CENTER">45</FONT></TD>
+<TD WIDTH="14%" VALIGN="TOP">
+<FONT SIZE=2><P ALIGN="CENTER">12</FONT></TD>
+<TD WIDTH="21%" VALIGN="TOP">
+<FONT SIZE=2><P ALIGN="CENTER">10.15</FONT></TD>
+</TR>
+<TR><TD WIDTH="17%" VALIGN="TOP">
+<FONT SIZE=2><P ALIGN="CENTER">867</FONT></TD>
+<TD WIDTH="19%" VALIGN="TOP">
+<FONT SIZE=2><P ALIGN="CENTER">1308</FONT></TD>
+<TD WIDTH="14%" VALIGN="TOP">
+<FONT SIZE=2><P ALIGN="CENTER">8</FONT></TD>
+<TD WIDTH="14%" VALIGN="TOP">
+<FONT SIZE=2><P ALIGN="CENTER">48</FONT></TD>
+<TD WIDTH="14%" VALIGN="TOP">
+<FONT SIZE=2><P ALIGN="CENTER">7</FONT></TD>
+<TD WIDTH="21%" VALIGN="TOP">
+<FONT SIZE=2><P ALIGN="CENTER">2.75</FONT></TD>
+</TR>
+<TR><TD VALIGN="TOP" COLSPAN=6>
+<FONT SIZE=2><P ALIGN="CENTER">Fig. (b)</FONT></TD>
+</TR>
+</TABLE>
+
+<FONT SIZE=2><P ALIGN="JUSTIFY"></P>
+</FONT><P ALIGN="CENTER">&nbsp;</P>
+<B><FONT SIZE=2><P ALIGN="CENTER">Universit&agrave; di Roma "La Sapienza"</P>
+<P ALIGN="CENTER">Facolt&agrave; di Ingegneria </P>
+<P ALIGN="CENTER">Corso di Fondamenti di Informatica </P>
+<P ALIGN="CENTER">Corso di Laurea: Ambiente e Territorio</P>
+<P ALIGN="CENTER"></P>
+<P ALIGN="CENTER">Appello del 29-1-1999</P>
+</B><P ALIGN="CENTER"></P>
+<P ALIGN="JUSTIFY">&nbsp;</P>
+<B><P ALIGN="JUSTIFY">Esercizio 2 (4 punti)</P>
+</B><P ALIGN="JUSTIFY">Si calcolino le tabelle di verit&agrave; delle seguenti espressioni booleane, dove AND &egrave; indicato con la semplice concatenazione delle variabili (o con il puntino &#145;&#183;&#146;), OR con il simbolo &#145;+&#146; e NOT con una barra orizzontale sopra il suo operando:</P>
+<OL>
+
+<P ALIGN="JUSTIFY"><LI><IMG SRC="Image8.gif" WIDTH=59 HEIGHT=11></LI></P>
+<P ALIGN="JUSTIFY"><LI><IMG SRC="Image9.gif" WIDTH=50 HEIGHT=14></LI></P>
+<P ALIGN="JUSTIFY"><LI><IMG SRC="Image10.gif" WIDTH=60 HEIGHT=12></OL>
+</LI></P>
+<P ALIGN="JUSTIFY"></P>
+<B><P ALIGN="JUSTIFY">Esercizio 3 (4 punti)</P>
+</B><P ALIGN="JUSTIFY">Si consideri il seguente programma. Si descriva sommariamente quali elaborazioni esegue. Si indichi esattamente cosa si ottiene in stampa quando vengono forniti in ingresso le prime tre lettere del cognome del candidato.</P>
+<P ALIGN="JUSTIFY"></P>
+</FONT><FONT FACE="Courier" SIZE=1><P>#include &lt;stdio.h&gt;</P>
+<P>#include &lt;stdlib.h&gt;</P>
+
+<P>struct ELEM {</P>
+<P>&#9;char INFO;</P>
+<P>&#9;struct ELEM *NEXT;</P>
+<P>};</P>
+<P>         </P>
+<P>typedef struct ELEM *LISTA;</P>
+<P>          </P>
+<P>LISTA LIS;</P>
+<P>      </P>
+<P>void BUILD (LISTA *, LISTA, int);</P>
+
+<P>void BUILD (LISTA *L, LISTA PRIMO, int N)</P>
+<P>{</P>
+<P>&#9;if(N&lt;3) {</P>
+<P>&#9;&#9;*L=malloc(sizeof(LISTA));</P>
+<P>&#9;&#9;scanf("%c",&amp;((*L)-&gt;INFO));</P>
+<P>&#9;&#9;BUILD (&amp;((*L)-&gt;NEXT),PRIMO,N+1);</P>
+<P>&#9;} else</P>
+<P>&#9;&#9;*L=PRIMO;</P>
+<P>}</P>
+
+<P>int main()</P>
+<P>{</P>
+<P>&#9;int I;</P>
+<P>&#9;LIS=malloc(sizeof(LISTA));</P>
+<P>&#9;scanf("%c",&amp;(LIS-&gt;INFO));</P>
+<P>&#9;BUILD(&amp;(LIS-&gt;NEXT),LIS,1);</P>
+<P>&#9;for(I=1; I&lt;=6; I=I+1) {</P>
+<P>&#9;&#9;printf("%c",LIS-&gt;INFO);</P>
+<P>&#9;&#9;LIS=LIS-&gt;NEXT;</P>
+<P>&#9;}</P>
+<P>&#9;return 0;</P>
+<P>}</P>
+</FONT><FONT SIZE=2><P ALIGN="JUSTIFY"></P>
+<B><P ALIGN="JUSTIFY">Esercizio 4 (4 punti)</P>
+</B><P ALIGN="JUSTIFY">Con riferimento alle relazioni prima e seconda illustrate in figura,</P>
+<OL>
+
+<P ALIGN="JUSTIFY"><LI>Indicare le chiavi delle relazioni.</LI></P>
+<P ALIGN="JUSTIFY"><LI>Calcolare: <FONT FACE="Symbol">&#80;</FONT>
+<SUB>AB</SUB> (<FONT FACE="Symbol">&#115;</FONT>
+<SUB>A&lt;B </SUB>prima).</LI></P>
+<P ALIGN="JUSTIFY"><LI>Calcolare: prima <FONT FACE="Wingdings 3">&#119;</FONT>
+<FONT FACE="Wingdings 3">&#118;</FONT>
+<SUB>D¾E</SUB> seconda.</LI></P>
+<P ALIGN="JUSTIFY"><LI>Calcolare: prima <FONT FACE="Wingdings 3">&#119;</FONT>
+<FONT FACE="Wingdings 3">&#118;</FONT>
+ seconda.</LI></P></OL>
+
+<P ALIGN="CENTER"></P></FONT>
+<P ALIGN="CENTER"><CENTER><TABLE BORDER CELLSPACING=1 CELLPADDING=5 WIDTH=90>
+<TR><TD VALIGN="TOP" COLSPAN=4>
+<FONT SIZE=2><P ALIGN="CENTER">prima</FONT></TD>
+</TR>
+<TR><TD WIDTH="25%" VALIGN="TOP">
+<FONT SIZE=2><P ALIGN="CENTER">A</FONT></TD>
+<TD WIDTH="25%" VALIGN="TOP">
+<FONT SIZE=2><P ALIGN="CENTER">B</FONT></TD>
+<TD WIDTH="25%" VALIGN="TOP">
+<FONT SIZE=2><P ALIGN="CENTER">C</FONT></TD>
+<TD WIDTH="25%" VALIGN="TOP">
+<FONT SIZE=2><P ALIGN="CENTER">D</FONT></TD>
+</TR>
+<TR><TD WIDTH="25%" VALIGN="TOP">
+<FONT SIZE=2><P ALIGN="CENTER">1</FONT></TD>
+<TD WIDTH="25%" VALIGN="TOP">
+<FONT SIZE=2><P ALIGN="CENTER">2</FONT></TD>
+<TD WIDTH="25%" VALIGN="TOP">
+<FONT SIZE=2><P ALIGN="CENTER">a</FONT></TD>
+<TD WIDTH="25%" VALIGN="TOP">
+<FONT SIZE=2><P ALIGN="CENTER">1</FONT></TD>
+</TR>
+<TR><TD WIDTH="25%" VALIGN="TOP">
+<FONT SIZE=2><P ALIGN="CENTER">1</FONT></TD>
+<TD WIDTH="25%" VALIGN="TOP">
+<FONT SIZE=2><P ALIGN="CENTER">2</FONT></TD>
+<TD WIDTH="25%" VALIGN="TOP">
+<FONT SIZE=2><P ALIGN="CENTER">a</FONT></TD>
+<TD WIDTH="25%" VALIGN="TOP">
+<FONT SIZE=2><P ALIGN="CENTER">2</FONT></TD>
+</TR>
+<TR><TD WIDTH="25%" VALIGN="TOP">
+<FONT SIZE=2><P ALIGN="CENTER">2</FONT></TD>
+<TD WIDTH="25%" VALIGN="TOP">
+<FONT SIZE=2><P ALIGN="CENTER">1</FONT></TD>
+<TD WIDTH="25%" VALIGN="TOP">
+<FONT SIZE=2><P ALIGN="CENTER">b</FONT></TD>
+<TD WIDTH="25%" VALIGN="TOP">
+<FONT SIZE=2><P ALIGN="CENTER">1</FONT></TD>
+</TR>
+<TR><TD WIDTH="25%" VALIGN="TOP">
+<FONT SIZE=2><P ALIGN="CENTER">2</FONT></TD>
+<TD WIDTH="25%" VALIGN="TOP">
+<FONT SIZE=2><P ALIGN="CENTER">2</FONT></TD>
+<TD WIDTH="25%" VALIGN="TOP">
+<FONT SIZE=2><P ALIGN="CENTER">b</FONT></TD>
+<TD WIDTH="25%" VALIGN="TOP">
+<FONT SIZE=2><P ALIGN="CENTER">2</FONT></TD>
+</TR>
+<TR><TD WIDTH="25%" VALIGN="TOP">
+<FONT SIZE=2><P ALIGN="CENTER">1</FONT></TD>
+<TD WIDTH="25%" VALIGN="TOP">
+<FONT SIZE=2><P ALIGN="CENTER">2</FONT></TD>
+<TD WIDTH="25%" VALIGN="TOP">
+<FONT SIZE=2><P ALIGN="CENTER">c</FONT></TD>
+<TD WIDTH="25%" VALIGN="TOP">
+<FONT SIZE=2><P ALIGN="CENTER">2</FONT></TD>
+</TR>
+</TABLE>
+</CENTER></P>
+
+<FONT SIZE=2><P ALIGN="JUSTIFY"></P></FONT>
+<P ALIGN="CENTER"><CENTER><TABLE BORDER CELLSPACING=1 CELLPADDING=5 WIDTH=68>
+<TR><TD VALIGN="TOP" COLSPAN=3>
+<FONT SIZE=2><P ALIGN="CENTER">seconda</FONT></TD>
+</TR>
+<TR><TD WIDTH="33%" VALIGN="TOP">
+<FONT SIZE=2><P ALIGN="CENTER">B</FONT></TD>
+<TD WIDTH="33%" VALIGN="TOP">
+<FONT SIZE=2><P ALIGN="CENTER">E</FONT></TD>
+<TD WIDTH="33%" VALIGN="TOP">
+<FONT SIZE=2><P ALIGN="CENTER">C</FONT></TD>
+</TR>
+<TR><TD WIDTH="33%" VALIGN="TOP">
+<FONT SIZE=2><P ALIGN="CENTER">1</FONT></TD>
+<TD WIDTH="33%" VALIGN="TOP">
+<FONT SIZE=2><P ALIGN="CENTER">2</FONT></TD>
+<TD WIDTH="33%" VALIGN="TOP">
+<FONT SIZE=2><P ALIGN="CENTER">a</FONT></TD>
+</TR>
+<TR><TD WIDTH="33%" VALIGN="TOP">
+<FONT SIZE=2><P ALIGN="CENTER">1</FONT></TD>
+<TD WIDTH="33%" VALIGN="TOP">
+<FONT SIZE=2><P ALIGN="CENTER">2</FONT></TD>
+<TD WIDTH="33%" VALIGN="TOP">
+<FONT SIZE=2><P ALIGN="CENTER">a</FONT></TD>
+</TR>
+<TR><TD WIDTH="33%" VALIGN="TOP">
+<FONT SIZE=2><P ALIGN="CENTER">2</FONT></TD>
+<TD WIDTH="33%" VALIGN="TOP">
+<FONT SIZE=2><P ALIGN="CENTER">0</FONT></TD>
+<TD WIDTH="33%" VALIGN="TOP">
+<FONT SIZE=2><P ALIGN="CENTER">b</FONT></TD>
+</TR>
+</TABLE>
+</CENTER></P>
+
+<FONT SIZE=2><P ALIGN="JUSTIFY"></P></FONT></BODY>
+</HTML>

@@ -1,0 +1,129 @@
+<html>
+<head>
+<title></title>
+<style type="text/css">
+<!--
+.style1 {font-weight: bold}
+-->
+</style>
+</head>
+
+<body>
+
+<h1>Prova al calcolatore</h1>
+
+<hr>
+
+<h4>&nbsp;</h4>
+
+<p>
+Si vuole realizzare il sistema di gestione dei
+calcolatori di una grande azienda. La prima classe
+da realizzare ha oggetti che modellano i singoli
+calcolatori. In particolare, per ogni calcolatore
+vanno memorizzati i seguenti dati:
+</p>
+
+<ul>
+
+<li>numero:
+un numero identificativo (il ``nome'' proprio
+del calcolatore)
+
+<li>ufficio:
+il nome dell'ufficio in cui il calcolatore si trova
+<li>funziona:
+ indica se il calcolatore funziona
+o no
+
+<li>et&agrave;:
+quanti giorni fa il calcolatore &egrave; stato comprato
+
+</ul>
+
+<p class="style1">
+Parte I</p>
+<p>Realizzare la classe <tt>Calcolatore</tt>, i cui oggetti modellano i singoli calcolatori. La classe <tt>Calcolatore</tt> deve avere i seguenti metodi: </p>
+<table border="1">
+
+<tr>
+<th>Metodo</th>
+<th>Specifica</th>
+</tr>
+
+<tr>
+<td>costruttore senza argomenti</td>
+<td>crea un oggetto <tt>Calcolatore</tt> senza dare un
+valore specifico alle componenti</td>
+</tr>
+
+<tr>
+<td>metodi <tt>get</tt></td>
+<td>uno per ogni componente dell'oggetto:
+<tt>getNumero</tt>, <tt>getUfficio</tt>, ecc., tutti
+senza argomenti e con valore di ritorno appropriato</td>
+</tr>
+
+<tr>
+<td>metodi <tt>set</tt></td>
+<td>uno per ogni componente dell'oggetto: 
+<tt>setNumero</tt>, <tt>setUfficio</tt>, ecc., tutti
+senza valore di ritorno e con argomento appropriato. Inserire controlli di validit&agrave; sui valori degli argomenti. Stampare un messaggio di errore e uscire dal programma in caso di valore non valido.</td>
+</tr>
+
+<tr>
+<td>costruttore con argomento <tt>BufferedReader</tt></td>
+<td>i dati dell'oggetto da creare vengono letti dal
+<tt>BufferedReader</tt></td>
+</tr>
+
+</table>
+
+<p>
+Su file,  i dati di ogni calcolatore vengono memorizzati uno per riga, nella sequenza indicata in alto. Valori booleani vengono memorizzati come
+<tt>0</tt> per <tt>true</tt> and <tt>1</tt> per
+<tt>false</tt>. In caso di lettura incompleta di un elemento, stampare un messaggio di errore e uscire dal programma.</p>
+
+
+<hr>
+
+<h4>Esercizio II</h4>
+
+<p>
+Creare la classe <tt>Gestione</tt> che serve alla
+gestione dell'insieme dei calcolatori dell'azienda.
+Ogni oggetto ha come (unica) variabile di istanza un array
+che contiene tutti gli oggetti calcolatore.
+</p>
+
+<p>
+La classe deve avere i seguenti metodi:
+</p>
+
+<dl>
+
+<dt>costruttore
+<dd>prende come parametro il nome del file, e crea l'oggetto
+<tt>Gestione</tt> che contiene i dati di tutti i calcolatori
+(memorizzati nell'array).
+Supporre che il numero di calcolatori sia indicato nella prima riga del file. Se il file contiene meno elementi di quelli previsti, o se non contiene la prima riga, stampare un messaggio di errore e uscire dal programma. 
+<dt><tt>int etaMedia()</tt>
+<dd>calcola l'et&agrave; media dei calcolatori di tutta
+l'azienda
+
+<dt><tt>String maxFunzionante(String uff)</tt>
+<dd>restituisce il numero del calcolatore dell'ufficio
+<tt>uff</tt> pi&ugrave; vecchio che sia ancora
+funzionante.
+Ritornare null se non ne viene trovato nessuno. 
+</dl>
+
+</body>
+</html>
+
+
+
+
+
+
+

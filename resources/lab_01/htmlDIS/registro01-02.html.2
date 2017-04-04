@@ -1,0 +1,980 @@
+<TITLE>Registro lezioni AA 01-02 del Corso di
+Basi di Dati,
+Universit&agrave; di Roma "La Sapienza"</H2>
+</TITLE>
+
+
+
+<CENTER>
+<H2>Diploma Universitario in Ingegneria Informatica e<br>
+    Laurea in Ingegneria Informatica</H2>
+<H1>Basi di Dati</H1>
+<H2> Lezioni A.A. 2001-02</H2>
+<H3>docente: <A HREF="http://www.dis.uniroma1.it/~lenzerini"> 
+              Maurizio Lenzerini</A></H3>
+</CENTER>
+
+<HR>
+
+<B>Materiale didattico: testo adottato</B>
+<P>
+<B>[T1]</B> P. Atzeni et al.
+<EM> Basi di dati. </EM></A> Seconda Edizione. MacGraw Hill, 1999.
+<BR>
+<P>
+
+
+<!--
+
+SPECIFICA:
+
+14 ore ripasso C++
+16 ore classi C++
+10 ore progettazione - concettualizzazione
+12 ore progettazione - realizzazione
+8  ore ereditarieta'
+------------------------------------------
+60 ore totale
+
+
+-->
+
+
+
+
+
+<HR>
+
+
+<CENTER>
+<H2>Lezioni - tabella riassuntiva</H2>
+</CENTER>
+
+
+
+<CENTER>
+<TABLE BORDER WIDTH="95%" >
+<TR>
+<TD VALIGN=CENTER WIDTH="10%"><I><FONT COLOR="#008000">Settimana</FONT></I></TD>
+
+<TD VALIGN=CENTER WIDTH="10%"><I><FONT COLOR="#008000">Argomento</FONT></I></TD>
+
+<TD VALIGN=CENTER WIDTH="21%"><I><FONT COLOR="#008000">Lunedi (ore 9:30-11:30)</FONT></I></TD>
+
+<TD VALIGN=CENTER WIDTH="4%"><I><FONT COLOR="#008000">Martedi</FONT></I></TD>
+<TD VALIGN=CENTER WIDTH="25%"><I><FONT COLOR="#008000">Mercoledi (ore 11:30-13:15)</FONT></I></TD>
+
+<TD VALIGN=CENTER WIDTH="21%"><I><FONT COLOR="#008000">Giovedi (ore 9:45-11:30)</FONT></I></TD>
+</TR>
+
+<TR>
+<TD VALIGN=CENTER WIDTH="15%"><I><FONT COLOR="#008000">1 (1 ott)</FONT></I>
+</TD>
+<TD VALIGN=center WIDTH="23%">
+<FONT COLOR=blue>Introduzione alle basi di dati</FONT>
+</TD>
+<TD VALIGN=CENTER WIDTH="23%"> Introduzione ai DBMS
+<FONT COLOR=red>(<A HREF="#L1"><FONT COLOR=red>Lez 1,2,3</FONT></A>)</FONT>
+</TD>
+<TD VALIGN=CENTER WIDTH="23%"><center>-------------------</center>
+</TD>
+<TD VALIGN=CENTER WIDTH="25%">Modello relazionale
+  <FONT COLOR=red>(<A HREF="#M1"><FONT COLOR=red>Lez 4,5</FONT></A>)</FONT>
+</TD>
+<TD VALIGN=CENTER WIDTH="23%"><center>-------------------</center>
+</TD>
+</TR>
+<TR>
+<TD VALIGN=CENTER WIDTH="15%"><I><FONT COLOR="#008000">2 (8 ott)</FONT></I></TD>
+<TD VALIGN=center WIDTH="23%"><FONT COLOR=blue>Il linguaggio SQL</FONT>
+</TD>
+<TD VALIGN=CENTER WIDTH="25%">Algebra relazionale
+  <FONT COLOR=red>(<A HREF="#L1"><FONT COLOR=red>Lez 6,7,8</FONT></A>)</FONT>
+</TD>
+<TD VALIGN=CENTER WIDTH="23%">Introduzione a Java
+     (Lez 9,10,11,12)
+</TD>
+<TD VALIGN=CENTER WIDTH="23%">Definizione di dati in SQL
+ <FONT COLOR=red>(<A HREF="#M2"><FONT COLOR=red>Lez 13,14</FONT></A>)</FONT>
+</TD>
+<TD VALIGN=CENTER WIDTH="23%">Interrogazioni in SQL
+ <FONT COLOR=red>(<A HREF="#G2"><FONT COLOR=red>Lez 15,16</FONT></A>)</FONT>
+</TD>
+</TR>
+<TR>
+<TD VALIGN=CENTER WIDTH="20%"><I><FONT COLOR="#008000">3 (15 ott)</FONT></I></TD>
+<TD VALIGN=center WIDTH="23%"><FONT COLOR=blue>Modelli concettuali</FONT>
+</TD>
+<TD VALIGN=CENTER WIDTH="23%">Interrogazioni complesse in SQL
+ <FONT COLOR=red>(<A HREF="#L3"><FONT COLOR=red>Lez 17,18,19</FONT></A>)</FONT>
+</TD>
+<TD VALIGN=CENTER WIDTH="23%">Introduzione a Java
+     (Lez 20,21,22,23)
+</TD>
+<TD VALIGN=CENTER WIDTH="23%">Interrogazioni complesse in SQL
+ <FONT COLOR=red>(<A HREF="#M3"><FONT COLOR=red>Lez 24,25</FONT></A>)</FONT>
+</TD>
+<TD VALIGN=CENTER WIDTH="23%">Vincoli e viste in SQL
+ <FONT COLOR=red>(<A HREF="#G3"><FONT COLOR=red>Lez 26,27</FONT></A>)</FONT>
+</TD>
+</TR>
+<TR>
+<TD VALIGN=CENTER WIDTH="20%"><I><FONT COLOR="#008000">4 (22 ott)</FONT></I></TD>
+<TD VALIGN=center WIDTH="23%"><FONT COLOR=blue>Progettazione concettuale</FONT>
+</TD>
+<TD VALIGN=CENTER WIDTH="23%">Il modello ER
+ <FONT COLOR=red>(<A HREF="#L4"><FONT COLOR=red>Lez 28,29,30</FONT></A>)</FONT>
+</TD>
+<TD VALIGN=CENTER WIDTH="23%"><center>-------------------</center>
+</TD>
+<TD VALIGN=CENTER WIDTH="23%">La generalizzazione
+ <FONT COLOR=red>(<A HREF="#M4"><FONT COLOR=red>Lez 31,32</FONT></A>)</FONT>
+</TD>
+<TD VALIGN=CENTER WIDTH="23%"><center>-------------------</center>
+</TD>
+</TR>
+<TR>
+<TD VALIGN=CENTER WIDTH="20%"><I><FONT COLOR="#008000">5 (29 ott)</FONT></I></TD>
+<TD VALIGN=center WIDTH="23%"><FONT COLOR=blue>Progettazione concettuale</FONT>
+</TD>
+<TD VALIGN=CENTER WIDTH="23%">Laboratorio SQL
+ <FONT COLOR=red>(<A HREF="#L5"><FONT COLOR=red>Lez 33,34,35</FONT></A>)</FONT>
+</TD>
+<TD VALIGN=CENTER WIDTH="23%"><center>-------------------</center>
+</TD>
+<TD VALIGN=CENTER WIDTH="23%">Vincoli nel modello ER
+<FONT COLOR=red>(<A HREF="#M5"><FONT COLOR=red>Lez 36,37</FONT></A>)</FONT>
+</TD>
+<TD VALIGN=CENTER WIDTH="23%"><center>-------------------</center>
+</TD>
+</TR>
+<TR>
+<TD VALIGN=CENTER WIDTH="20%"><I><FONT COLOR="#008000">6 (5 nov)</FONT></I></TD>
+<TD VALIGN=center WIDTH="23%"><FONT COLOR=blue>Progettazione concettuale/logica</FONT>
+</TD>
+<TD VALIGN=CENTER WIDTH="23%">Basi di dati, linguaggi di programmazione, JDBC
+ <FONT COLOR=red>(<A HREF="#L6"><FONT COLOR=red>Lez 38,39.40</FONT></A>)</FONT>
+</TD>
+<TD VALIGN=CENTER WIDTH="23%"><center>-------------------</center>
+</TD>
+<TD VALIGN=CENTER WIDTH="23%">Esercizi di progettazione concettuale
+<FONT COLOR=red>(<A HREF="#M6"><FONT COLOR=red>Lez 41,42</FONT></A>)</FONT>
+</TD>
+<TD VALIGN=CENTER WIDTH="23%">Introduzione alla progettazione logica
+<FONT COLOR=red>(<A HREF="#G6"><FONT COLOR=red>Lez 43,44</FONT></A>)</FONT>
+</TD>
+</TR>
+<TR>
+<TD VALIGN=CENTER WIDTH="20%"><I><FONT COLOR="#008000">7 (12 nov)</FONT></I></TD>
+<TD VALIGN=center WIDTH="23%"><FONT COLOR=blue>Progettazione logica</FONT>
+</TD>
+<TD VALIGN=CENTER WIDTH="23%">Ristrutturazione schema ER
+ <FONT COLOR=red>(<A HREF="#L7"><FONT COLOR=red>Lez 45,46,47</FONT></A>)</FONT>
+</TD>
+<TD VALIGN=CENTER WIDTH="23%"><center>-------------------</center>
+</TD>
+<TD VALIGN=CENTER WIDTH="23%">Traduzione in relazionale
+ <FONT COLOR=red>(<A HREF="#M7"><FONT COLOR=red>Lez 48,49</FONT></A>)</FONT>
+</TD>
+<TD VALIGN=CENTER WIDTH="23%">I vincoli nella traduzione in relazionale
+ <FONT COLOR=red>(<A HREF="#G7"><FONT COLOR=red>Lez 50,51</FONT></A>)</FONT>
+</TD>
+</TR>
+<TR>
+<TD VALIGN=CENTER WIDTH="20%"><I><FONT COLOR="#008000">8 (19 nov)
+</FONT></I></TD>
+<TD VALIGN=center WIDTH="23%"><FONT COLOR=blue>Progettazione fisica</FONT>
+</TD>
+<TD VALIGN=CENTER WIDTH="23%">I trigger nei DBMS
+ <FONT COLOR=red>(<A HREF="#L8"><FONT COLOR=red>Lez 52,53,54</FONT></A>)</FONT>
+</TD>
+<TD VALIGN=center WIDTH="23%"><center>-------------------</center>
+</TD>
+<TD VALIGN=CENTER WIDTH="23%">Esercizio di progettazione
+ <FONT COLOR=red>(<A HREF="#M8"><FONT COLOR=red>Lez 55,56,57</FONT></A>)</FONT>
+</TD>
+<TD VALIGN=CENTER WIDTH="23%">La normalizzazione
+ <FONT COLOR=red>(<A HREF="#G8"><FONT COLOR=red>Lez 58,59,60</FONT></A>)</FONT>
+</TD>
+</TR>
+<TR>
+</FONT></I></TD>
+<TD VALIGN=CENTER WIDTH="20%"><I><FONT COLOR=red>La parte che segue e'
+destinata ai soli studenti del corso di laurea
+</FONT></I></TD>
+<TD VALIGN=center WIDTH="23%"><center>&nbsp</center>
+</TD>
+<TD VALIGN=center WIDTH="23%"><center>&nbsp</center>
+</TD>
+<TD VALIGN=center WIDTH="23%"><center>&nbsp</center>
+</TD>
+<TD VALIGN=center WIDTH="23%"><center>&nbsp</center>
+</TD>
+<TD VALIGN=center WIDTH="23%"><center>&nbsp</center>
+</TD>
+</TR>
+<TR>
+<TD VALIGN=CENTER WIDTH="20%"><I><FONT COLOR="#008000">9 (26 nov)
+</FONT></I></TD>
+<TD VALIGN=center WIDTH="23%"><FONT COLOR=blue>Sistemi di gestione</FONT>
+</TD>
+<TD VALIGN=CENTER WIDTH="23%">Introduzione alle transazioni
+ <FONT COLOR=red>(<A HREF="#L9"><FONT COLOR=red>Lez 61,62,63</FONT></A>)</FONT>
+</TD>
+<TD VALIGN=center WIDTH="23%"><center>-------------------</center>
+</TD>
+<TD VALIGN=CENTER WIDTH="23%">La gestione della concorrenza
+ <FONT COLOR=red>(<A HREF="#M9"><FONT COLOR=red>Lez 64,65</FONT></A>)</FONT>
+</TD>
+<TD VALIGN=CENTER WIDTH="23%">La gestione delle transazioni
+ <FONT COLOR=red>(<A HREF="#G9"><FONT COLOR=red>Lez 66,67</FONT></A>)</FONT>
+</TD>
+</TR>
+<TR>
+<TD VALIGN=CENTER WIDTH="20%"><I><FONT COLOR="#008000">10 (3 dic)
+</FONT></I></TD>
+<TD VALIGN=center WIDTH="23%"><FONT COLOR=blue>Sistemi di gestione</FONT>
+</TD>
+<TD VALIGN=CENTER WIDTH="23%">Controllo di affidabilita'
+ <FONT COLOR=red>(<A HREF="#L10"><FONT COLOR=red>Lez 68,69,70</FONT></A>)</FONT>
+</TD>
+<TD VALIGN=center WIDTH="23%"><center>-------------------</center>
+</TD>
+<TD VALIGN=CENTER WIDTH="23%">Strutture in memoria secondaria
+ <FONT COLOR=red>(<A HREF="#M10"><FONT COLOR=red>Lez 71,72</FONT></A>)</FONT>
+</TD>
+<TD VALIGN=CENTER WIDTH="23%"><center>-------------------</center>
+</TD>
+</TR>
+<TR>
+<TD VALIGN=CENTER WIDTH="20%"><I><FONT COLOR="#008000">11 (10 dic)
+</FONT></I></TD>
+<TD VALIGN=center WIDTH="23%"><FONT COLOR=blue>Sistemi di gestione</FONT>
+</TD>
+<TD VALIGN=CENTER WIDTH="23%">Gli indici
+ <FONT COLOR=red>(<A HREF="#L11"><FONT COLOR=red>Lez 73,74,75</FONT></A>)</FONT>
+</TD>
+<TD VALIGN=center WIDTH="23%"><center>-------------------</center>
+</TD>
+<TD VALIGN=CENTER WIDTH="23%">Indici basati su hashing
+ <FONT COLOR=red>(<A HREF="#M11"><FONT COLOR=red>Lez 76,77,78</FONT></A>)</FONT>
+</TD>
+<TD VALIGN=CENTER WIDTH="23%">Valutazione di operatori relazionali
+ <FONT COLOR=red>(<A HREF="#G11"><FONT COLOR=red>Lez 79,80,81</FONT></A>)</FONT>
+</TD>
+</TR>
+<TR>
+<TD VALIGN=CENTER WIDTH="20%"><I><FONT COLOR="#008000">12 (17 dic)
+</FONT></I></TD>
+<TD VALIGN=center WIDTH="23%"><FONT COLOR=blue>Sistemi di gestione</FONT>
+</TD>
+<TD VALIGN=CENTER WIDTH="23%">Valutazione di Join
+ <FONT COLOR=red>(<A HREF="#L12"><FONT COLOR=red>Lez 82,83,84</FONT></A>)</FONT>
+</TD>
+<TD VALIGN=center WIDTH="23%"><center>-------------------</center>
+</TD>
+<TD VALIGN=CENTER WIDTH="23%">Ottimizzazione di query
+ <FONT COLOR=red>(<A HREF="#M12"><FONT COLOR=red>Lez 85,86</FONT></A>)</FONT>
+</TD>
+<TD VALIGN=CENTER WIDTH="23%">Progetto di applicazioni
+ <FONT COLOR=red>(<A HREF="#G12"><FONT COLOR=red>Lez 87,88</FONT></A>)</FONT>
+</TD>
+</TR>
+
+<!--
+
+  <TR>
+  <TD VALIGN=CENTER WIDTH="20%"><I><FONT COLOR="#008000"></FONT></I></TD>
+  <TD VALIGN=TOP WIDTH="23%">&nbsp;</TD>
+  <TD VALIGN=CENTER WIDTH="23%">&nbsp;</TD>
+  <TD VALIGN=CENTER WIDTH="23%"><B><FONT COLOR="#FF0000">ESAME</FONT></B>
+  <P><FONT COLOR="#0000FF">XX dicembre</FONT></TD>
+  <TD VALIGN=CENTER WIDTH="23%">&nbsp;</TD>
+  </TR>
+
+-->
+
+
+
+
+</TABLE>
+</CENTER>
+
+<P>
+<HR>
+<CENTER>
+<H2>Lezioni - dettaglio</H2>
+</CENTER>
+
+
+
+
+<HR>
+<A NAME="L1">
+<UL>
+  <LI> <B>Lezione 1,2,3 - 1/10/01</B>
+        <UL>
+           <LI> <B> Argomenti trattati</B> [T1, Capp. 1,2]
+                <UL>
+                  <LI> Presentazione del corso
+                  <LI> Basi di dati
+                  <LI> Sistemi di gestione di basi di dati
+                  <LI> Introduzione Modello relazionale
+                </UL>
+           <LI><B>Cosa lo studente dovrebbe sapere dopo la lezione</B>
+               <UL> 
+                  <LI> Cosa e' una base di dati
+                  <LI> Struttura di un sistema di gestione di basi di dati
+                  <LI> Cosa e' una relazione
+                </UL>
+       </UL>
+</UL>
+
+<HR>
+<A NAME="M1">
+<UL>
+  <LI> <B>Lezioni 4,5 - 3/10/01</B>
+        <UL>
+           <LI> <B> Argomenti trattati</B> [T1, Cap. 2]
+                <UL>
+                   <LI> Modello relazionale
+                   <LI> Schemi relazionali
+                   <li> Vincoli di integrita'
+                </UL>
+           <LI><B>Cosa lo studente dovrebbe sapere dopo la lezione</B>:
+               <UL>
+                  <LI> Da cosa e' costituito uno schema relazionale
+                  <li> Cosa sono i vincoli di integrita'
+                  <li> Vincoli intra- e inter-relazionali
+               </UL>
+       </UL>
+</UL>    
+
+<HR>
+<A NAME="L2">
+<UL>
+  <LI> <B>Lezioni 6,7,8 - 8/10/01</B>
+        <UL>
+           <LI> <B> Argomenti trattati</B> [T1, Cap. 3, Par. 3.1]
+                <UL>
+                   <LI> Algebra relazionale
+                   <li> Interrogazioni in algebra relazionale
+                </UL>
+           <LI><B>Cosa lo studente dovrebbe sapere dopo la lezione</B>:
+               <UL>
+                  <LI> Gli operatori dell'algebra relazionale
+                  <li> Esprimere semplici interrogazioni in algebra
+               </UL>
+       </UL>
+</UL>    
+
+
+<HR>
+
+<UL>
+<A NAME="M2">
+   <LI> <B>Lezioni 13,14 - 10/10/01</B>
+        <UL>
+           <LI> <B> Argomenti trattati</B> [T1, Cap. 4, Par. 4.1]
+                <UL> 
+                   <LI> Introduzione la linguaggio SQL
+                   <LI> La definizione di dati in SQL
+                </UL>
+           <LI><B>Cosa lo studente dovrebbe sapere dopo la lezione</B>:
+               <UL> 
+                  <LI> Come si definiscono le tabelle in SQL
+               </UL>
+       </UL>
+</UL>    
+
+
+<HR>
+<A NAME="G2">
+<UL>
+   <LI> <B>Lezioni 15,16 - 22/01/01 </B>
+        <UL>
+           <LI> <B> Argomenti trattati</B> [T1, Cap. 4, Par. 4,2]
+                <UL>
+                   <LI> Interrogazioni semplici in SQL
+                </UL>
+           <LI><B>Cosa lo studente dovrebbe sapere dopo la lezione</B>:
+               <UL> 
+                  <LI> Come si esprimono le interrogazioni semplici in SQL
+               </UL>
+       </UL>
+</UL>    
+
+<HR>
+<UL>
+<A NAME="L3">
+   <LI> <B>Lezioni 17,18,19 - 15/10/01</B>
+        <UL>
+           <LI> <B> Argomenti trattati</B> [T1, Cap. 4, Par. 4.2]
+                <UL> 
+                   <LI> Il Join in SQL
+                 </UL>
+           <LI><B>Cosa lo studente dovrebbe sapere dopo la lezione</B>:
+               <UL> 
+                  <LI> Esprimere interrogazioni con join in SQL
+               </UL>
+       </UL>
+</UL>    
+
+<HR>
+<A NAME="M3">
+<UL>
+   <LI> <B>Lezioni 24,25 - 17/10/01</B>
+        <UL>
+           <LI> <B> Argomenti trattati</B> [T1, Cap. 4, Par. 4.3]
+                <UL>
+                   <LI> Interrogazioni annidate in SQL
+                   <LI> Interrogazioni con group-by in SQL
+                   <LI> Interrogazioni complesse in SQL
+                 </UL>
+           <LI><B>Cosa lo studente dovrebbe sapere dopo la lezione</B>:
+               <UL>
+                  <LI> Come si esprimono le interrogazioni complesse in SQL
+               </UL>
+       </UL>
+</UL>    
+
+
+<HR>
+<A NAME="G3">
+<UL>
+   <LI> <B>Lezioni 26,27 - 18/10/01</B>
+        <UL>
+           <LI> <B> Argomenti trattati</B> [T1, Cap. 4, Par. 4.3]
+                <UL>
+                   <LI> Operazioni di manipolazione in SQL
+                   <LI> Vincoli complessi in SQL
+                   <LI> Le viste in SQL
+                 </UL>
+           <LI><B>Cosa lo studente dovrebbe sapere dopo la lezione</B>:
+               <UL>
+                  <LI> Come si esprimono le interrogazioni complesse in SQL
+                  <LI> Come si inseriscono, modificano, cancellano tuple in SQL
+               </UL>
+       </UL>
+</UL>    
+
+
+
+<HR>
+<A NAME="L4">
+<UL>
+ <LI> <B>Lezioni 28,29,30 - 22/10/01 </B>
+        <UL>
+           <LI> <B> Argomenti trattati</B>[T1, Cap. 5]
+                <UL> 
+                  <li> Ciclo di vita di applicazioni di basi di dati
+                  <li> Introduzione alla progettazione concettuale
+                  <LI> Modelli concettuali
+                  <LI> Il modello Entita'-Relazionale (ER)
+                </UL>
+           <LI><B>Cosa lo studente dovrebbe sapere dopo la lezione</B>:
+               <UL> 
+                  <LI> Cosa e' la progettazione concettuale
+                  <li> Le nozioni di entita', attributo, relazione, ruolo
+                  <li> Comprendere semplici schemi ER
+               </UL>
+       </UL>
+</UL>    
+
+
+<HR>
+<UL>
+<A NAME="M4">
+   <LI> <B>Lezioni 31,32 - 24/10/01</B>
+        <UL>
+           <LI> <B> Argomenti trattati</B> [T1, Cap. 5]
+                <UL>
+                   <LI> Relazione ISA tra entita'
+                   <LI> L'ereditarieta' nel modello ER
+                   <LI> La generalizzazione nel modello ER
+                </UL>
+           <LI><B>Cosa lo studente dovrebbe sapere dopo la lezione</B>:
+               <UL> 
+                  <LI> Usare relazione ISA e generalizzazione nel modello ER
+                </UL>
+           <LI><B>Esercizi proposti</B>:
+               <UL> 
+                  <LI> Date le
+                  <A HREF="esercitazioni/eserciziprogconcettuale/esercizio1">
+                       specifiche dell'esercizio 1</A>, produrre il
+                   corrispondente schema  concettuale
+                </UL>                
+       </UL>
+</UL>    
+
+
+<HR>
+<A NAME="L5">
+<UL>
+   <LI> <B>Lezioni 33,34,35 - 29/10/01</B>
+        <UL>
+           <LI> <B> Argomenti trattati</B> [T1, Cap. 4]
+                <UL>
+                   <LI> <A HREF="esercitazioni">
+                    Introduzione a Oracle</A>
+                   <LI> <A HREF="esercitazioni/primaSQL">
+                    Esercitazione SQL</A>
+                </UL>
+           <LI><B>Cosa lo studente dovrebbe sapere dopo la lezione</B>:
+               <UL> 
+                  <LI> Saper utilizzare SQL per definire ed interrogare tabelle
+               </UL>
+       </UL>
+</UL>    
+
+
+<HR>
+<A NAME="M5">
+<UL>
+   <LI> <B>Lezioni 36,37 - 31/10/01</B>
+        <UL>
+           <LI> <B> Argomenti trattati</B> [T1, Cap. 5]
+                <UL> 
+                   <LI> Vincoli di integrita' nel modello ER
+                   <LI> Vincoli di cardinalita'
+                   <LI> Vincoli di identificazione
+                </UL>
+           <LI><B>Cosa lo studente dovrebbe sapere dopo la lezione</B>:
+               <UL> 
+                  <LI> Saper definire vincoli nel modello ER
+               </UL>
+           <LI><B>Esercizi proposti</B>:
+               <UL> 
+                  <LI> Date le
+                   <A HREF="esercitazioni/eserciziprogconcettuale/esercizio2">
+                       specifiche dell'esercizio 2</A>,
+                       produrre il corrispondente schema concettuale
+                  <LI> Date le
+                   <A HREF="esercitazioni/eserciziprogconcettuale/esercizio3">
+                       specifiche dell'esercizio 3</A>,
+                       produrre il corrispondente schema concettuale
+                </UL>                               
+       </UL>
+</UL>    
+
+
+<HR>
+<UL>
+<A NAME="L6">
+   <LI> <B>Lezioni 38,39,40 - 5/11/01</B>
+        <UL>
+           <LI> <B> Argomenti trattati</B> [T1, Cap. 4, Par. 4.6]
+                                           [Slides del docente]
+                <UL> 
+                   <LI> Integrazione tra SQL e linguaggi di programmazione
+                   <li> JDBC (vedi
+                        <A HREF="aggiuntaLezioni/slidesJDBC.ps">
+                        slides di Andrea Cali'</A>)
+                </UL>
+           <LI><B>Cosa lo studente dovrebbe sapere dopo la lezione</B>:
+               <UL> 
+                  <LI> I meccanismi per integrare SQL e linguaggi di
+                       programmazione
+                  <li> Utilizzare le strutture ed i meccanismi offerti da JDBC
+                </UL>
+       </UL>
+</UL>    
+
+
+
+
+<HR>
+<A NAME="M6">
+<UL>
+   <LI> <B>Lezioni 41,42 - 7/11/01</B>
+        <UL>
+           <LI> <B> Argomenti trattati</B> [T1, Cap. 6]
+                <UL> 
+                  <LI> Principi e strategie di progettazione concettuale
+                  <LI> Date le
+                   <A HREF="esercitazioni/eserciziprogconcettuale/esercizio5">
+                       specifiche dell'esercizio 5</A>,
+                       produrre il corrispondente schema concettuale
+                </UL>
+           <LI><B>Cosa lo studente dovrebbe sapere dopo la lezione</B>:
+               <UL> 
+                  <LI> Saper derivare schemi ER a partire da requisiti
+               </UL>
+          <LI> <B>Esercizi proposti</B>
+               <UL>
+                 <LI> Date le
+                   <A HREF="esercitazioni/eserciziprogconcettuale/esercizio4">
+                       specifiche dell'esercizio 4</A>,
+                       produrre il corrispondente schema concettuale
+                 <LI> Date le
+                   <A HREF="esercitazioni/eserciziprogconcettuale/esercizio6">
+                       specifiche dell'esercizio 6</A>,
+                       produrre il corrispondente schema concettuale
+                 <LI> Per altri esercizi di progettazione concettuale,
+                      consultare
+                   <A HREF="http://www.dis.uniroma1.it/~catarci/Esame.html">
+                      l'archivio testi d'esame della laurea</A>, e
+                   <A HREF="../diplomabasididati/testiesami">
+                      l'archivio testi d'esame del diploma</A>
+               </UL>
+       </UL>
+</UL>    
+
+
+<HR>
+<UL>
+<A NAME="G6">
+   <LI> <B>Lezioni 43,44 - 8/11/01</B>
+        <UL>
+           <LI> <B> Argomenti trattati</B> [T1, Cap. 7, Par. 7.1]
+
+                <UL> 
+                   <LI> Basi della progettazione logica
+                   <LI> Il modello di costo per la progettazione logica
+                   <LI> Introduzione alla fase di ristrutturazione dello
+                        schema concettuale
+                </UL>
+           <LI><B>Cosa lo studente dovrebbe sapere dopo la lezione</B>:
+               <UL>
+                  <LI> Conoscere le fasi della progettazione logica
+                  <LI> Saper eseguire la fase di ristrutturazione
+                </UL>
+       </UL>
+</UL>    
+
+
+
+<HR>
+<A NAME="L7">
+<UL>
+   <LI> <B>Lezioni 45,46,47 - 12/11/01</B>
+        <UL>
+           <LI> <B> Argomenti trattati</B> [T1, Cap. 7, Par. 7.2]
+                <UL> 
+                   <LI> La fase di ristrutturazione
+                </UL>
+           <LI><B>Cosa lo studente dovrebbe sapere dopo la lezione</B>:
+               <UL> 
+                 <LI> Come condurre la fase di ristrutturazione
+                 <LI> Come eliminare le gerarchie isa
+               </UL>
+       </UL>
+</UL>    
+
+
+<HR>
+<A NAME="M7">
+<UL>
+   <LI> <B>Lezioni 48,49 - 14/11/01</B>
+        <UL>
+           <LI> <B> Argomenti trattati</B> [T1, Cap. 7, Par. 7.3]
+                <UL> 
+                   <LI> La fase di traduzione nel relazionale
+                 </UL>
+           <LI><B>Cosa lo studente dovrebbe sapere dopo la lezione</B>:
+               <UL> 
+                  <LI> Come tradurre lo schema concettuale ristrutturato in
+                       relazionale
+               </UL>
+       </UL>
+</UL>    
+
+
+
+<HR>
+<A NAME="G7">
+<UL>
+   <LI> <B>Lezioni 50,51 - 15/11/01</B>
+        <UL>
+           <LI> <B> Argomenti trattati</B>
+                <UL> 
+                   <LI> I vincoli nella fase di traduzione nel relazionale
+                   <LI> <A HREF="esercitazioni/eserciziproglogica/esercizio1">
+                        Esercizio di progettazione</A>
+               </UL>
+           <LI><B>Cosa lo studente dovrebbe sapere dopo la lezione</B>:
+               <UL>
+                  <LI> Quali vincoli introdurre nello schema relazionale
+                  <LI> La metodologia di progettazione concettuale/logica
+                       di basi di dati
+               </UL>
+       </UL>
+</UL>    
+
+<HR>
+<A NAME="L8">
+<UL>
+   <LI> <B>Lezioni 52,53,54 - 19/11/01</B>
+        <UL>
+           <LI> <B> Argomenti trattati</B>
+                <UL> 
+                   <LI> I trigger e le stored procedure
+                        <A HREF="aggiuntaLezioni/slidestrigger.ps">
+                        slides di Andrea Cali'</A>
+               </UL>
+           <LI><B>Cosa lo studente dovrebbe sapere dopo la lezione</B>:
+               <UL>
+                  <LI> Cosa sono i trigger
+                  <LI> Cosa sono le stored procedure
+               </UL>
+       </UL>
+</UL>    
+
+<HR>
+<A NAME="M8">
+<UL>
+   <LI> <B>Lezioni 55,56,57 - 21/11/01</B>
+        <UL>
+           <LI> <B> Argomenti trattati</B>
+                <UL> 
+ <LI> <A HREF="esercitazioni/eserciziprogconcettuale/EsercitazioneDiego.ppt">
+                        Esercizio di progettazione</A>
+               </UL>
+       </UL>
+</UL>    
+
+
+
+<HR>
+<A NAME="G8">
+<UL>
+   <LI> <B>Lezioni 58,59,60 - 22/11/01</B>
+        <UL>
+           <LI> <B> Argomenti trattati</B> [T1, Cap. 8]
+                <UL> 
+                   <LI> La normalizzazione
+                </UL>
+           <LI><B>Cosa lo studente dovrebbe sapere dopo la lezione</B>:
+               <UL> 
+                  <LI> Come utilizzare la normalizzazione nella progettazione
+                       logica
+               </UL>
+       </UL>
+</UL>    
+
+
+<HR>
+<A NAME="L9">
+<UL>
+   <LI> <B>Lezioni 61,62,63 - 26/11/01</B>
+        <UL>
+           <LI> <B> Argomenti trattati</B> [T1, Cap. 9, Par. 9.1 - 9.2.2]
+                <UL> 
+                   <LI> Il concetto di transazione
+                   <LI> Proprieta' ACID delle transazioni
+                   <LI> Anomalie nelle transazioni concorrenti
+                </UL>
+           <LI><B>Cosa lo studente dovrebbe sapere dopo la lezione</B>:
+               <UL> 
+                  <LI> Le proprieta' delle transazioni
+                  <LI> Problemi nella esecuzione concorrente delle transazioni
+               </UL>
+       </UL>
+</UL>    
+
+<HR>
+<A NAME="M9">
+<UL>
+   <LI> <B>Lezioni 64,65 - 28/11/01</B>
+        <UL>
+           <LI> <B> Argomenti trattati</B> [T1, Cap. 9, Par. 9.2.3]
+                <UL> 
+                   <LI> Teoria del controllo della concorrenza
+                   <LI> La view-equivalenza e la view-serializzabilita'
+                   <LI> La conflict-equivalenza e la conflict-serializzabilita'
+                   <LI> Il locking a due fasi
+                </UL>
+           <LI><B>Cosa lo studente dovrebbe sapere dopo la lezione</B>:
+               <UL> 
+                  <LI> I metodi di gestione della concorrenza di transazioni
+                  <LI> Confronto tra i metodi
+               </UL>
+       </UL>
+</UL>    
+
+<HR>
+<A NAME="G9">
+<UL>
+   <LI> <B>Lezioni 66,67 - 29/11/01</B>
+        <UL>
+           <LI> <B> Argomenti trattati</B> [T1, Cap. 9, Par. 9.2.4 - 9.3]
+                <UL> 
+                   <LI> Meccasnismi di gestione dei lock
+                   <LI> Il blocco critico (deadlock)
+                   <LI> Il buffer manager
+                </UL>
+           <LI><B>Cosa lo studente dovrebbe sapere dopo la lezione</B>:
+               <UL> 
+                  <LI> Cosa e' il lock gerarchico
+                  <LI> I metodi di gestione del blocco critico
+                  <li> Cosa e' il buffer di memoria in un DBMS e come si
+                       gestisce
+               </UL>
+       </UL>
+</UL>    
+
+<HR>
+<A NAME="L10">
+<UL>
+   <LI> <B>Lezioni 68,69,70 - 3/12/01</B>
+        <UL>
+           <LI> <B> Argomenti trattati</B> [T1, Cap. 9, Par. 9.4]
+                <UL> 
+                   <LI> Il controllo di affidabilita'
+                   <LI> Organizzazione dei log
+                   <LI> Gestione dei guasti
+                   <LI> Struttura a moduli di un DBMS
+                   <LI> Il Disk Space Manager
+                </UL>
+           <LI><B>Cosa lo studente dovrebbe sapere dopo la lezione</B>:
+               <UL> 
+                  <LI> Le caratteristiche principali del controllo di
+                       affidabilita' in un DBMS
+                  <LI> I principali moduli che compongono un DBMS
+                  <LI> Funzioni principali del Disk Space Manager
+                  <LI> Rapporto tra DBMS e sistema operativo
+               </UL>
+       </UL>
+</UL>    
+
+<HR>
+<A NAME="M10">
+<UL>
+   <LI> <B>Lezioni 71,72 - 5/12/01</B>
+        <UL>
+           <LI> <B> Argomenti trattati</B> [T1, Cap. 9, Par. 9.5]
+                <UL> 
+                   <LI> Introduzione al livello fisico di un DBMS
+                   <LI> Astrazioni in un DBMS relazionale: tabelle, file,
+                        pagine, record
+                   <LI> Il modulo "Files and Access Methods" del DBMS
+                   <LI> Struttura delle pagine
+                   <LI> Organizzazioni semplici di file
+                 </UL>
+           <LI><B>Cosa lo studente dovrebbe sapere dopo la lezione</B>:
+               <UL> 
+                  <LI> Come e' organizzato il livello fisico di un DBMS
+                  <LI> Struttura delle pagine
+                  <LI> Confronto tra organizzazioni semplici di file
+                </UL>
+       </UL>
+</UL>    
+
+<HR>
+<A NAME="L11">
+<UL>
+   <LI> <B>Lezioni 73,74,75 - 10/12/01</B>
+        <UL>
+           <LI> <B> Argomenti trattati</B> [T1, Cap. 9, Par. 9.5]
+                <UL> 
+                   <LI> Introduzione agli indici
+                   <LI> Proprieta' degli indici
+                   <LI> Indici ISAM
+                 </UL>
+           <LI><B>Cosa lo studente dovrebbe sapere dopo la lezione</B>:
+               <UL> 
+                  <LI> Le proprieta' fondamentali degli indici
+                  <LI> Caratteristiche degli indici ISAM
+                </UL>
+       </UL>
+</UL>    
+
+
+<HR>
+<A NAME="M11">
+<UL>
+   <LI> <B>Lezioni 76,77,78 - 12/12/01</B>
+        <UL>
+           <LI> <B> Argomenti trattati</B> [T1, Cap. 9, Par. 9.5]
+                <UL> 
+                   <LI> Indici basati su B+ tree
+                   <LI> Indici basati su hashing
+                 </UL>
+           <LI><B>Cosa lo studente dovrebbe sapere dopo la lezione</B>:
+               <UL> 
+                  <LI> Confronto tra ISAM e B+ tree
+                  <LI> Indici basati su hashing
+                  <LI> Differenze tra extendible hashing e linear hashing
+                </UL>
+       </UL>
+</UL>    
+
+<HR>
+<A NAME="G11">
+<UL>
+   <LI> <B>Lezioni 79,80,81 - 13/12/01</B>
+        <UL>
+           <LI> <B> Argomenti trattati</B> [T1, Cap. 9, Par. 9.6]
+                <UL> 
+                   <LI> Valutazione degli operatori relazionali
+                 </UL>
+           <LI><B>Cosa lo studente dovrebbe sapere dopo la lezione</B>:
+               <UL> 
+                  <LI> Come si valutano gli operatori relazionali
+                </UL>
+       </UL>
+</UL>    
+
+<HR>
+<A NAME="L12">
+<UL>
+   <LI> <B>Lezioni 82,83,84 - 17/12/01</B>
+        <UL>
+           <LI> <B> Argomenti trattati</B> [T1, Cap. 9, Par. 9.6]
+                <UL> 
+                   <LI> Valutazione degli operatori relazionali
+                 </UL>
+           <LI><B>Cosa lo studente dovrebbe sapere dopo la lezione</B>:
+               <UL> 
+                  <LI> Come si valutano gli operatori relazionali
+                </UL>
+       </UL>
+</UL>    
+
+<HR>
+<A NAME="M12">
+<UL>
+   <LI> <B>Lezioni 85,86 - 19/12/01</B>
+        <UL>
+           <LI> <B> Argomenti trattati</B> [T1, Cap. 9, Par. 9.6]
+                <UL> 
+                   <LI> Ottimizzazione di query
+                 </UL>
+           <LI><B>Cosa lo studente dovrebbe sapere dopo la lezione</B>:
+               <UL> 
+                  <LI> Come opera l'ottimizzatore
+                </UL>
+       </UL>
+</UL>    
+
+<HR>
+<A NAME="G12">
+<UL>
+   <LI> <B>Lezioni 87,88 - 20/12/01 </B>
+        <UL>
+           <LI> <B> Argomenti trattati</B> [T1, Cap. 9, Par. 9.6]
+                <UL> 
+                   <LI> Il progetto di applicazioni di basi di dati
+                   <LI> Come si esprimono i vincoli: in SQL, mediante trigger,
+                        nel software applicativo
+                   <LI> <A HREF="aggiuntaLezioni/slidesvincoli.ps">
+                        slides di Andrea Cali'</A>
+                 </UL>
+           <LI><B>Cosa lo studente dovrebbe sapere dopo la lezione</B>:
+               <UL> 
+                  <LI> Come si progettano applicazioni di basi di dati
+                </UL>
+       </UL>
+</UL>    
+
+
+<!--
+
+
+-->
+
+<HR> <IMG ALIGN=left SRC="/PUB/AI/icone/back.gif" ALT="Back to"> Home page
+del <A HREF="index.html"> Corso di Basi di Dati</A><BR>
+<BR CLEAR=left>
+
+

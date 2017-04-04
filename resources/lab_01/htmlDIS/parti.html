@@ -1,0 +1,126 @@
+<html>
+<head>
+<title>Parti</title>
+</head>
+
+<body>
+
+<h1>Parti</h1>
+
+<p>
+Alcune cose che non abbiamo visto finora
+</p>
+
+<hr>
+
+
+<h4>Classi astratte</h4>
+
+<p>
+Sono a met&agrave; strada fra le interfacce e le classi:
+</p>
+
+<dl>
+
+<dt>interfacce
+<dd>solo definizioni di metodi
+
+<dt>classi
+<dd>tutti i metodi devono essere implementati
+
+<dt>classi astratte
+<dd>si possono mettere sia metodo implementati che
+definizioni senza implementazione
+
+</dl>
+
+<p>
+Una definizione di metodo senza implementazione si chiama
+metodo astratto
+</p>
+
+<pre>
+abstract class Astratta {
+  int x;
+
+  int esempio(int x) {
+    return x*2;
+  }
+
+  abstract int altro(int x);
+}
+</pre>
+
+<p>
+Servono per definire interfacce in cui alcuni metodi si
+possono gi&agrave; implementare
+</p>
+
+<hr>
+
+
+<h4>Implementare una classe astratta</h4>
+
+<p>
+Quasi tutto come per le sottoclassi
+</p>
+
+<p>
+Per&ograve; tutti i metodi astratti devono essere
+implementati
+</p>
+
+<pre>
+class Prova extends Astratta {
+  int altro(int x) {
+    return x;
+  }
+}
+</pre>
+
+<p>
+Una classe pu&ograve; essere sottoclasse di una sola classe
+(astratta oppure no)
+</p>
+
+<p>
+Una classe astratta pu&ograve; essere anche sottoclasse di
+una altra classe (astratta o no) e implementare diverse
+interfacce)
+</p>
+
+<hr>
+
+
+<h4>Metodi <tt>final</tt></h4>
+
+<p>
+Sono metodi per i quali non si pu&ograve; fare overriding
+</p>
+
+<pre>
+class Sopra {
+  final int metodo() {
+    return 0;
+  }
+}
+</pre>
+
+<p>
+Una sottoclasse di <tt>Sopra</tt> non pu&ograve; ridefinire
+<tt>metodo()</tt>
+</p>
+
+<pre>
+class Sotto extends Sopra {
+  // viene dato errore
+  int metodo() {
+    return 0;
+  }
+}
+</pre>
+
+</body>
+</html>
+
+

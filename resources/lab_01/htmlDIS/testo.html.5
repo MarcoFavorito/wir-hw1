@@ -1,0 +1,200 @@
+<HTML>
+<HEAD>
+<TITLE>Fondamenti di Informatica: Appello del 20 giugno 2000</TITLE>
+</HEAD>
+<BODY >
+<DIV ALIGN="CENTER">
+<B>
+   Universit&#224; di Roma ``La Sapienza''
+<BR>
+Facolt&#224; di Ingegneria
+<BR>
+Corso di Fondamenti di Informatica - A.A.1999-2000
+<BR>
+Corsi di Laurea: Aerospaziale, Chimica, Elettrica, Materiali,
+    Meccanica, Nucleare</B>
+<BR>
+Appello del <B>20 giugno 2000</B> -- 1<SUP><I>a</I></SUP> prova scritta
+<BR>
+  <EM>tempo a disposizione: 2 ore</EM>
+</DIV>
+
+<P>
+<B>Problema 1 (18 punti)</B>
+Un tifoso di calcio scrive su un file di testo i
+risultati delle partite a cui &#232; interessato.
+Per ogni partita sono rappresentate nel file le seguenti informazioni:
+<UL>
+<LI>nome squadra che gioca in casa (10 caratteri, compresi spazi finali);
+<LI>nome squadra che gioca in trasferta (10 caratteri, compresi spazi
+   finali);
+<LI>goal squadra che gioca in casa (intero non negativo);
+<LI>goal squadra che gioca in trasferta (intero  non negativo).
+</UL>
+Ad esempio, in un certo istante il file potrebbe contenere le seguenti
+informazioni:<PRE>
+PRATO     NARNI     4 3
+CROTONE   PERUGIA   0 0
+TERNI     SPOLETO   2 2
+GENZANO   PRATO     0 3
+PERUGIA   LADISPOLI 0 0
+SPOLETO   CROTONE   2 2
+GELA      COMO      1 0
+GELA      BARI      0 2
+BARI      TERNI     2 2
+</PRE>
+
+<P>
+Si richiede di risolvere i seguenti punti:
+<DL COMPACT>
+<DT>1.
+<DD>Scrivere le dichiarazioni dei tipi di dato Pascal da utilizzarsi
+per risolvere i punti successivi.
+<DT>2.
+<DD>Scrivere una (o pi&#249;) unit&#224; di programma Pascal che riceve come
+  argomenti il nome fisico <I>f</I> del file che contiene i dati e i nomi di due
+  squadre <I>p</I> ed <I>s</I>, e restituisce una lista <I>l</I> contenente, nell'ordine, i
+  dati relativi a tutte e sole le partite in cui <I>p</I> ha vinto, seguiti dai dati
+  relativi a tutte e sole le partite in cui <I>s</I> ha vinto.
+  
+  Ad esempio, facendo riferimento al file sopra riportato e alle squadre <TT>
+   PRATO</TT> e <TT>GELA</TT>, l'unit&#224; deve restituire la lista con le seguenti
+  informazioni:
+
+<P><PRE>
+   __    ____________________    __________________    _____________ __
+  |  |  |       |     | | |  |  |     |     | | |  |  |    |    | | |\ |
+l | -+-&gt;|GENZANO|PRATO|0|3| -+-&gt;|PRATO|NARNI|4|3| -+-&gt;|GELA|COMO|1|0| \|
+  |__|  |_______|_____|_|_|__|  |_____|_____|_|_|__|  |____|____|_|_|__|
+</PRE>
+
+<P>
+<DT>3.
+<DD>Scrivere una (o pi&#249;) unit&#224; di programma Pascal che riceve come
+  argomenti il nome fisico <I>f</I> del file che contiene i dati e il nome fisico
+  <I>g</I> di un file di testo, e scrive su <I>g</I> il nome della squadra o delle
+  squadre che hanno effettuato il massimo numero di pareggi.
+  
+  Ad esempio, facendo riferimento al file sopra riportato, il massimo numero di
+  pareggi effettuato da una stessa squadra &#232; 2, e quindi l'unit&#224; di
+  programma deve produrre il file con le seguenti informazioni:<PRE>
+SPOLETO   
+TERNI     
+PERUGIA
+CROTONE
+</PRE></DL>
+
+<P>
+
+<P>
+<DIV ALIGN="CENTER">
+<B>
+   Universit&#224; di Roma ``La Sapienza''
+<BR>
+Facolt&#224; di Ingegneria
+<BR>
+Corso di Fondamenti di Informatica - A.A.1999-2000
+<BR>
+Corsi di Laurea: Aerospaziale, Chimica, Elettrica, Materiali,
+   Meccanica,    Nucleare</B>
+<BR>
+Appello del <B>20 giugno 2000</B> -- 2<SUP><I>a</I></SUP> prova scritta
+<BR>
+  <EM>tempo a disposizione: 1 ora</EM>
+</DIV>
+
+<P>
+<B>Problema 2 (4 punti)</B>
+Illustrare almeno due fra le principali qualit&#224; del software, e per ognuna di
+esse illustrare almeno un metodo per aumentarla.
+
+<P>
+
+<P>
+<B>Problema 3 (4 punti)</B>
+
+<P>
+Si consideri il seguente programma Pascal:
+
+<P>
+<PRE>
+program What;
+  function Boh(i: integer):integer;
+  begin
+    if i mod 2 = 0
+      then Boh:= 1 + Boh(i div 2)
+      else Boh:= 0
+  end; { Boh }
+begin
+  writeln(Boh(24))
+end. { What }
+</PRE>
+
+<P>
+<UL>
+<LI>Descrivere cosa fa (non come lo fa) la funzione <TT>Boh</TT>.
+<LI>Che valore viene stampato dal programma?  Mostrare l'evoluzione della
+  pila dei record di attivazione.
+</UL>
+
+<P>
+
+<P>
+<B>Problema 4 (4 punti)</B> Data una matrice di interi <I>M</I> di dimensione
+2 X C (C >= 2),
+si definisce ``l'allungamento'' di <I>M</I> la matrice
+di dimensione  C X C
+la cui riga di indice i (1 <= i <= C)&#232;:
+<UL>
+<LI>uguale alla riga 1 di <I>M</I>, se <I>i</I> &#232; dispari,
+<LI>uguale alla riga 2 di <I>M</I>, se <I>i</I> &#232; pari.
+</UL>
+
+<P>
+Ad esempio, poniamo <I>C</I>=5 e sia <I>M</I> la seguente matrice:
+<BR><P></P>
+<PRE>
+2 3 4 5 6
+9 8 7 6 5
+</PRE>
+
+
+</DIV>
+<BR CLEAR="ALL">
+<P></P>
+L'allungamento di <I>M</I> &#232; la seguente matrice:
+<BR><P></P>
+<PRE>
+2 3 4 5 6
+9 8 7 6 5
+2 3 4 5 6
+9 8 7 6 5
+2 3 4 5 6
+</PRE>
+
+
+</DIV>
+<BR CLEAR="ALL">
+<P></P>
+
+<P>
+<DL COMPACT>
+<DT>1.
+<DD>Scrivere un sottoprogramma Fortran che, ricevendo come parametro una
+     matrice <I>M</I> di dimensione 2 X C (C >= 2),
+     con indici da 1 ad 2 per le righe e da 1 a <I>C</I> per le colonne, calcoli
+     e restituisca in modo opportuno al   programma chiamante la matrice
+     allungata di <I>M</I>.
+
+<P>
+<DT>2.
+<DD>Scrivere un programma principale Fortran che:
+  <DL COMPACT>
+<DT>(a)
+<DD>crei la matrice <I>M</I> di esempio, sopra riportata,
+<DT>(b)
+<DD>invochi l'unit&#224; di programma progettata, su tale matrice.
+  </DL></DL>
+
+</BODY>
+</HTML>

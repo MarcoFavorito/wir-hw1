@@ -1,0 +1,157 @@
+<HEAD>
+<TITLE>Fondamenti di Informatica - A.A. 1999-2000
+Appello dell'8 giugno 2000</TITLE>
+<BODY >
+<DIV ALIGN="CENTER">
+<B>
+   Universit&#224; di Roma ``La Sapienza''
+<BR>
+Facolt&#224; di Ingegneria
+<BR>
+Corso di Fondamenti di Informatica - A.A. 1999-2000
+<BR>
+Corsi di Laurea: Aerospaziale, Chimica, Elettrica, Materiali,
+    Meccanica, Nucleare</B>
+<BR>
+Appello del <B>8 giugno 2000</B> -- 1<SUP><I>a</I></SUP> prova scritta
+<BR>
+  <EM>tempo a disposizione: 2 ore</EM>
+</DIV>
+
+<P>
+<B>Problema 1 (18 punti)</B> Un amministratore di condominio registra i
+pagamenti effettuati dai proprietari degli appartamenti su una lista <I>l</I>.  Se
+per un appartamento del condominio &#232; stato effettuato almeno un pagamento,
+allora sono rappresentate in <I>l</I> le seguenti informazioni:
+<UL>
+<LI>nome del proprietario (max 20 caratteri);
+<LI>cognome del proprietario (max 20 caratteri);
+<LI>scala dell'appartamento (lettera maiuscola);
+<LI>interno dell'appartamento (intero positivo);
+<LI>totale pagato fino a quel momento, in euro  (reale).
+</UL>
+
+<P>
+Ad esempio, in un certo istante la lista <I>l</I> potrebbe contenere le seguenti
+informazioni.<PRE>
+   __    ________________________    ______________________    _____________________ __
+  |  |  |     |     | | |     |  |  |    |    | | |     |  |  |     |     | | |     |\ |
+l | -+-&gt;|Mario|Rossi|A|3|800.0| -+-&gt;|Luca|Neri|C|6|980.0| -+-&gt;|Mario|Rossi|A|4|120.0| \|
+  |__|  |_____|_____|_|_|_____|__|  |____|____|_|_|_____|__|  |_____|_____|_|_|_____|__|
+</PRE>
+
+<P>
+Si richiede di risolvere i seguenti punti:
+<DL COMPACT>
+<DT>1.
+<DD>Scrivere le dichiarazioni dei tipi di dato Pascal da utilizzarsi
+per risolvere i punti successivi.
+<DT>2.
+<DD>Scrivere una (o pi&#249;) unit&#224; di programma Pascal che consenta
+  all'amministratore di aggiornare la lista a fronte di un pagamento relativo
+  ad un certo appartamento.  In particolare l'unit&#224; di programma riceve come
+  argomenti la lista <I>l</I>, l'ammontare <I>a</I> del pagamento, la scala <I>s</I> e
+  l'interno <I>i</I> dell'appartamento.  Se in <I>l</I> l'appartamento identificato da
+  <I>s</I> ed <I>i</I> &#232; gi&#224; stato registrato, allora l'unit&#224; di programma deve
+  aumentare della quantit&#224; <I>a</I> il totale pagato fino a quel momento per
+  l'appartamento.  Altrimenti, l'unit&#224; di programma deve:
+  <DL COMPACT>
+<DT>(a)
+<DD>acquisire dall'utente nome e cognome del proprietario dell'appartamento
+in questione;
+  <DT>(b)
+<DD>registrare in <I>l</I> tutti i dati del pagamento, inserendo un nuovo record
+    in una posizione qualsiasi della lista.
+  </DL>
+<DT>3.
+<DD>Scrivere una (o pi&#249;) unit&#224; di programma Pascal che consenta
+  all'amministratore di stampare su un file l'ammontare pagato da ciascun
+  proprietario fino a quel momento, tenendo conto che potrebebro esistere
+  persone che sono proprietarie di pi&#249; appartamenti.  In particolare
+  l'unit&#224; di programma riceve come argomenti la lista <I>l</I> e il nome fisico
+  <I>f</I> di un file, e deve scrivere in <I>f</I> una riga per ogni proprietario <I>p</I>
+  registrato in <I>l</I> che contiene: nome e cognome di <I>p</I>, totale pagato da <I>p</I>
+  per tutti i suoi appartamenti.  Ad esempio, facendo riferimento alla lista
+  sopra riportata, l'unit&#224; deve produrre il file con le seguenti
+  informazioni:<PRE>
+Mario Rossi 920.0
+Luca Neri 980.0
+</PRE>
+L'unit&#224; di programma non deve alterare la lista <I>l</I>.
+</DL>
+
+<P>
+<DIV ALIGN="CENTER">
+<B>
+   Universit&#224; di Roma ``La Sapienza''
+<BR>
+Facolt&#224; di Ingegneria
+<BR>
+Corso di Fondamenti di Informatica - A.A. 1999-2000
+<BR>
+Corsi di Laurea: Aerospaziale, Chimica, Elettrica, Materiali,
+   Meccanica,    Nucleare</B>
+<BR>
+Appello del <B>8 giugno 2000</B> -- 2<SUP><I>a</I></SUP> prova scritta
+<BR>
+  <EM>tempo a disposizione: 1 ora</EM>
+</DIV>
+
+<P>
+<B>Problema 2 (4 punti)</B>
+
+<P>
+Illustrare le principali tecniche di verifica dei programmi.
+
+<P>
+<B>Problema 3 (4 punti)</B>
+
+<P>
+Si consideri il seguente programma Pascal:
+
+<P>
+<PRE>
+program Mistero;
+  function Mistery(i,j: integer):integer;
+  begin
+    if j = 0 
+      then Mistery:= i
+      else Mistery:= Mistery(i,j-1) - 1
+  end;
+begin
+  writeln(Mistery(-7,4))
+end.
+</PRE>
+
+<P>
+<UL>
+<LI>Descrivere cosa fa (non come lo fa) la funzione <TT>Mistery</TT>.
+<LI>Che valore viene stampato dal programma?  Mostrare l'evoluzione della
+  pila dei record di attivazione.
+<LI>Fornire almeno un valore dei parametri attuali per i quali l'attivazione
+  della funzione <TT>Mistery</TT> non termina.
+</UL>
+
+<P>
+
+<P>
+<B>Problema 4 (4 punti)</B>
+Scrivere un sottoprogramma Fortran che, ricevendo come parametro una matrice di
+interi di dimensione 
+con indici da 1 ad <I>R</I> per le righe e da 1 a
+<I>C</I> per le colonne, calcoli e restituisca in modo opportuno al
+programma chiamante il numero di elementi della matrice tali che il loro
+valore &#232; uguale alla somma dei loro indici di riga e di colonna.
+
+<P>
+Ad esempio, per la matrice
+<BR><P></P>
+<PRE>
+  2 3 4
+  2 3 5
+</PRE>
+<BR CLEAR="ALL">
+<P></P>
+il numero di tali elementi &#232; pari a quattro.
+</BODY>
+</HTML>

@@ -1,0 +1,101 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=windows-1252">
+<TITLE>1</TITLE>
+</HEAD>
+<BODY background="bgrnd.jpg">
+
+<B><FONT SIZE=5><P>8)</FONT><FONT SIZE=5> </FONT><FONT SIZE=5>Introduzione all'analisi di algoritmi</P>
+</B></FONT><P ALIGN="RIGHT">Riferimenti: <B>[1a]</B> capitolo 8</P>
+<hr>
+<OL>
+
+<I><LI>Complessit&agrave;, efficienza e costo di esecuzione</LI>
+</I><P ALIGN="JUSTIFY">Sono concetti strettamente legati l'uno all'altro; per complessit&agrave; intendiamo una valutazione quantitativa dell'efficienza, ovvero la quantit&agrave; (tempo di elaborazione, memoria utilizzata) di risorse impiegate (costo della soluzione in termini di unit&agrave; di risorsa) per risolvere un dato problema.  Data la relazione esistente, ci si riferisce indistintamente alla complessit&agrave;, all'efficienza o al costo di esecuzione; un algoritmo &egrave; tanto pi&ugrave; complesso e tanto meno efficiente quanto pi&ugrave; elevato &egrave; il suo costo di esecuzione.</P>
+<P ALIGN="JUSTIFY">Ci si pu&ograve; riferire alla complessit&agrave; di un programma, di un problema o di un algoritmo.  Focalizzeremo l'attenzione sulla complessit&agrave; degli algoritmi; la complessit&agrave; (e l'efficienza) di un programma ci interessano meno, in quanto diretta conseguenza della complessit&agrave; dell'algoritmo implementato.  Fondamentale &egrave; la valutazione che deve essere fatta, riguardo la complessit&agrave; intrinseca del problema.  L'efficienza richiesta per la soluzione di un dato problema, pu&ograve; porre dei vincoli anche insormontabili all'efficienza dell'algoritmo (es: trovare una soluzione in tempi accettabili ad un problema molto complesso).  Esiste una soglia di efficienza al di sopra della quale non &egrave; possibile andare; tale soglia &egrave; determinata dalla complessit&agrave; del problema. </P>
+<I><LI>Tempo di esecuzione</LI>
+</I><P ALIGN="JUSTIFY">Non &egrave; possibile valutare correttamente la differenza tra due algoritmi basandosi semplicemente sul tempo necessario all'esecuzione.  Questo &egrave; dipendente da fattori come l'hardware, il sistema operativo, il carico applicativo presente, la configurazione e la dimensione dei dati di input.  Una valutazione corretta deve astrarre da questi fattori; non deve essere <I>dipendente</I> dalla dimensione dell'input, deve piuttosto essere <I>funzione</I> dell'input.</P>
+<I><LI>Modello di calcolo e unit&agrave; di misura</LI>
+</I><P ALIGN="JUSTIFY">Sono fattori che vanno precisati affinch&egrave; siano confrontabili valutazioni effettuate su algoritmi diversi.  Innanzi tutto il modello di calcolo e l'unit&agrave; di misura utilizzata per la valutazione.  Esistono modelli di calcolo teorici come la macchina di Turing (costo di esecuzione determinato dal numero di passi che la macchina compie) o come la macchina a registri.  Questa in particolare &egrave; molto vicina come modello, agli elaboratori reali; il costo di esecuzione &egrave; dato in questo caso dal numero di istruzioni eseguite.  Nel modello adottato ogni istruzione ha costo unitario; il modello ("a costi uniformi") pu&ograve; essere anche ulteriormente semplificato, prendendo in considerazione il numero di operazioni fondamentali compiute dall'algoritmo (operazioni dominanti).</P>
+<P ALIGN="JUSTIFY">In programmi scritti in linguaggi di alto livello, occorre una certa attenzione nell'applicare un modello di analisi a costi uniformi; alcune istruzioni, pur essendo primitive del linguaggio potrebbero non essere considerate di costo unitario.  Inoltre, per linguaggi che permettono la ricorsione va tenuto in considerazione l'utilizzo della memoria (anche perch&eacute; implica operazioni di gestione della memoria che a loro volta hanno un costo).  In molti casi comunque considerare a costo unitario tutte le istruzioni pu&ograve; essere accettabile.</P>
+<I><LI>Tipo di analisi ed espressione della complessit&agrave;</LI>
+</I><P ALIGN="JUSTIFY">In secondo luogo va precisato il tipo di analisi effettuata e il parametro in riferimento al quale esprimiamo la complessit&agrave;; questo &egrave; tipicamente la dimensione dell'input.  Non siamo interessati ad una espressione matematica esatta (difficile anche da interpretare) ma ad una semplice funzione che delimiti superiormente il valore esatto e che esprima in modo chiaro come varia il costo di esecuzione al crescere della dimensione dell'input.  Si parla in questi casi di analisi asintotica (tendenza all'infinito del costo, al tendere all'infinito della dimensione dell'input) del caso peggiore (o del caso medio se le informazioni raccolte sono sufficienti).  </P>
+<P ALIGN="JUSTIFY">E' possibile che in alcuni casi, la scelta del parametro che caratterizza la dimensione dell'input non sia cos&igrave; immediata, &egrave; infatti possibile che sia ragionevole tenere in considerazione la <I>lunghezza dell'input</I> (modello a costi logaritmici), data dal numero di bit necessari a rappresentare l'input.  Consideriamo una funzione C++ che calcola il fattoriale di un numero</P>
+<P ALIGN="JUSTIFY">int Fattoriale(int n)</P>
+<P ALIGN="JUSTIFY">{ int i = 1;                       // costo 1</P>
+<P ALIGN="JUSTIFY">   int fatt = 1;                  // costo 1</P>
+<P ALIGN="JUSTIFY">   while (i &lt;= n)              // costo n+1</P>
+<P ALIGN="JUSTIFY">   { fatt = fatt * i;            // costo n</P>
+<P ALIGN="JUSTIFY">       i++;                         // costo n</P>
+<P ALIGN="JUSTIFY">   }</P>
+<P ALIGN="JUSTIFY">   return fatt;                  // costo 1</P>
+<P ALIGN="JUSTIFY">}                                    // costo complessivo 3n+4</P>
+<P ALIGN="JUSTIFY">Il costo complessivo in funzione di n &egrave; 3n+4.  Se il tipo <I>int</I> non avesse un limite massimo per la rappresentazione di un numero intero, probabilmente sarebbe pi&ugrave; corretta una valutazione in funzione del numero di cifre necessarie a rappresentare il numero n.  In questo caso avremmo un costo 3*10<SUP>d</SUP>+4, quindi esponenziale anzich&eacute; lineare.  </P>
+<I><LI>Notazioni O, <FONT FACE="Symbol">&#87;</FONT>
+ e <FONT FACE="Symbol">&#81;</FONT>
+</LI>
+</I><P ALIGN="CENTER">Def: <B>Una funzione f(n) &egrave; O(g(n)) se esistono una costante c e un valore n' tali che, per ogni n&gt;n', c*g(n) <FONT FACE="Symbol">&#179;</FONT>
+ f(n)</P>
+</B><P ALIGN="CENTER">Def: <B>Una funzione f(n) &egrave; <FONT FACE="Symbol">&#87;</FONT>
+(g(n)) se esistono una costante c e un valore n' tali che, per ogni n&gt;n', f(n) <FONT FACE="Symbol">&#179;</FONT>
+ c*g(n)</P>
+</B><P ALIGN="CENTER">Def: <B>Una funzione f(n) &egrave; <FONT FACE="Symbol">&#81;</FONT>
+(g(n)) se esistono due costanti c<SUB>1</SUB>, c<SUB>2</SUB>, e un valore n' tali che, per ogni n&gt;n', c<SUB>1</SUB>*g(n) <FONT FACE="Symbol">&#179;</FONT>
+ f(n) <FONT FACE="Symbol">&#179;</FONT>
+ c<SUB>2</SUB>*g(n)
+</B></P>
+<I><LI>Analisi asintotica</LI>
+</I><P ALIGN="CENTER">Def: <B>Un algoritmo A ha costo di esecuzione (o complessit&agrave;) O(g(n)) se f(n)=O(g(n)), con f(n) determinata nel caso pi&ugrave; sfavorevole</P>
+</B><P ALIGN="CENTER">Def: <B>Un algoritmo A ha costo di esecuzione (o complessit&agrave;) <FONT FACE="Symbol">&#87;</FONT>
+(g(n)) se f(n)= <FONT FACE="Symbol">&#87;</FONT>
+(g(n)), con f(n) determinata nel caso pi&ugrave; sfavorevole</P>
+</B><P ALIGN="JUSTIFY">Nell'analisi asintotica, si ignorano le costanti moltiplicative e i termini additivi di ordine inferiore, che invece vengono presi in considerazione, nel caso in cui sia necessario confrontare accuratamente la complessit&agrave; di due algoritmi, o nel caso si voglia valutare il costo di esecuzione in presenza di una particolare configurazione dell'input.  </P>
+<I><P ALIGN="CENTER">50n<SUP>2</SUP>+12n <FONT FACE="Wingdings">&#224;</FONT>
+ O(n<SUP>2</SUP>), <FONT FACE="Symbol">&#87;</FONT>
+</I>(<I>n<SUP>2</I></SUP>)</P>
+<I><P ALIGN="CENTER">10 log n <FONT FACE="Wingdings">&#224;</FONT>
+ O(log n), <FONT FACE="Symbol">&#87;</FONT>
+</I>(<I>log n</I>)</P>
+<I><P ALIGN="CENTER">1000 log n <FONT FACE="Wingdings">&#224;</FONT>
+ O(log n), <FONT FACE="Symbol">&#87;</FONT>
+</I>(<I>log n</I>)</P>
+<I><LI>Delimitazioni alla complessit&agrave; di un problema</LI>
+</I><P ALIGN="JUSTIFY">Per caratterizzare la complessit&agrave; di un problema abbiamo bisogno di due riferimenti.  Un limite superiore (upper bound), ovvero il costo di esecuzione nel caso peggiore e un limite inferiore (lower bound) indicante il costo minimo di esecuzione, al di sotto del quale non &egrave; possibile scendere.</P>
+<P ALIGN="CENTER">Def: <B>Un problema ha un limite superiore di complessit&agrave; O(g(n)) se esiste un algoritmo A per la sua risoluzione che ha un costo di esecuzione O(g(n)), cio&egrave; esistono c ed n' tali che c*g(n ) <FONT FACE="Symbol">&#179;</FONT>
+ t<SUB>A</SUB>(n), per n <FONT FACE="Symbol">&#179;</FONT>
+ n'</P>
+</B><P ALIGN="JUSTIFY">L'upper bound da solo non dice molto, per un dato problema possono esistere algoritmi che hanno complessit&agrave; O(n<SUP>2</SUP>), risolvibili anche con algoritmi che hanno complessit&agrave; lineare (vedi algoritmi di ordinamento).  In altre parole, il limite superiore va confrontato con il limite inferiore.</P>
+<P ALIGN="CENTER">Def: <B>Un algoritmo A ha un limite inferiore di complessit&agrave; <FONT FACE="Symbol">&#87;</FONT>
+(g'(n)) se esistono c ed n' tali che t<SUB>A</SUB>(n) <FONT FACE="Symbol">&#179;</FONT>
+ c*g'(n), per n <FONT FACE="Symbol">&#179;</FONT>
+ n'</P>
+</B><P ALIGN="CENTER">Def: <B>Un problema ha un limite inferiore di complessit&agrave; <FONT FACE="Symbol">&#87;</FONT>
+(g'(n)) se, dato un qualunque algoritmo per la sua risoluzione, esso ha una complessit&agrave; <FONT FACE="Symbol">&#87;</FONT>
+(g'(n))</P>
+</B><P ALIGN="JUSTIFY">ovvero, se nessun algoritmo esistente per risolvere il problema pu&ograve; fare a meno di "spendere" una quantit&agrave; di risorsa pari a
+g'(n).</P>
+<P ALIGN="CENTER">Def: <B>Dato un algoritmo A, se il suo costo &egrave; O(g(n)) e il suo lower bound &egrave; <FONT FACE="Symbol">&#87;</FONT>
+(g(n)) diciamo che la sua complessit&agrave; &egrave; <FONT FACE="Symbol">&#81;</FONT>
+(g(n))</P>
+</B><P ALIGN="JUSTIFY">cio&egrave;, per opportune c<SUB>1</SUB>, c<SUB>2</SUB> e n', per n <FONT FACE="Symbol">&#179;</FONT>
+ n' abbiamo c<SUB>1</SUB>*g(n) <FONT FACE="Symbol">&#179;</FONT>
+ t<SUB>A</SUB>(n) <FONT FACE="Symbol">&#179;</FONT>
+ c<SUB>2</SUB>*g(n)</P>
+<P ALIGN="CENTER">Def: <B>Dato un problema, se il suo upper bound &egrave; O(g(n)) e il suo lower bound &egrave; <FONT FACE="Symbol">&#87;</FONT>
+(g(n)) diciamo che la sua complessit&agrave; &egrave; <FONT FACE="Symbol">&#81;</FONT>
+(g(n))
+</B></P>
+<P ALIGN="JUSTIFY">Se per un problema upper bound e lower bound coincidono, l'algoritmo che ci ha permesso di determinare l'upper bound &egrave; gi&agrave; un algoritmo ottimale.</P>
+<P ALIGN="CENTER">Def: <B>Sia dato un problema P con lower bound di complessit&agrave; <FONT FACE="Symbol">&#87;</FONT>
+(g(n)); se un algoritmo A per P ha un costo di esecuzione O(g(n)) allora diciamo che A &egrave; un algoritmo ottimale per P</P>
+</B><P ALIGN="JUSTIFY">Altri algoritmi possono eventuali essere migliori solo perch&eacute; migliori sono i termini di ordine inferiore (e/o le costanti moltiplicative) della sua funzione di complessit&agrave;. </P>
+<I><LI>Istruzione dominante</LI>
+</I><P ALIGN="JUSTIFY">Pu&ograve; essere sufficiente analizzare la complessit&agrave; di un programma, da un punto di vista asintotico, semplicemente valutando il costo dell'istruzione dominante.</P>
+<P ALIGN="CENTER">Def:<B>  Dato un programma il cui costo di esecuzione &egrave; O(t(n)) definiamo un'istruzione "istruzione dominante" quando, per ogni intero n, il suo contributo al costo di esecuzione, nel caso peggiore di input di dimensione n, &egrave; d(n) e soddisfa la relazione c*d(n ) <FONT FACE="Symbol">&#179;</FONT>
+ t(n) per un'opportuna costante c, cio&egrave; t(n) &egrave; O(d(n)).</P>
+</B><P ALIGN="JUSTIFY">In altre parole, un'istruzione dominante viene eseguita un numero di volte proporzionale al costo di esecuzione di tutto l'algoritmo.</P>
+</OL>
+
+
+</BODY>
+</HTML>

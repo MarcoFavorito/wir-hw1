@@ -1,0 +1,187 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+
+<!--Converted with LaTeX2HTML 99.1 release (March 30, 1999)
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>2002-06-25-A</TITLE>
+<META NAME="description" CONTENT="2002-06-25-A">
+<META NAME="keywords" CONTENT="2002-06-25-A">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1">
+<META NAME="Generator" CONTENT="LaTeX2HTML v99.1 release">
+
+</HEAD>
+
+<BODY >
+
+<P>
+
+<P>
+ 
+<DIV ALIGN="CENTER"><FONT SIZE="+1"><B>
+Corso di Fondamenti di Informatica - A.A. 2001/2002<BR>
+Corsi di Laurea in Ingegneria Elettronica N.O. e V.O. e<BR>
+Telecomunicazioni V.O.<BR><BR>
+Appello del 25/06/2002  - 1a prova scritta</B></FONT>
+<BR><BR>
+<I>tempo a disposizione: 2 ore</I>
+</DIV>
+
+<P>
+
+<H2><A NAME="SECTION00001000000000000000">
+Problema 1 (18 punti)</A>
+</H2>
+
+<P>
+Una compagnia di traghetti offre 12 viaggi giornalieri per un'isola (ad es.,
+uno ogni ora dalle 8 alle 19), ciascuno identificato da un codice intero
+compreso tra 0 e 11.  Ogni traghetto della compagnia pu&#242; trasportare
+autoveicoli per una lunghezza complessiva massima fissata.
+Il numero di autoveicoli gi&#224; assegnati e la disponibilit&#224; residua in metri
+per ciascuno dei 12 viaggi sono memorizzati in una opportuna struttura di dati
+in memoria centrale.
+
+<P>
+Si richiede di risolvere i seguenti punti:
+
+<P>
+
+<OL>
+<LI>Progettare le strutture di dati da utilizzarsi per risolvere i punti&nbsp;2
+  e&nbsp;3.
+
+<P>
+ </LI>
+<LI>Progettare una funzione C (o funzione/procedura Pascal) che, presi in
+  ingresso attraverso opportuni parametri
+
+<UL>
+<LI>la struttura di dati che memorizza, per ciascuno dei 12 viaggi, il
+    numero di autoveicoli gi&#224; assegnati e la disponibilit&#224; residua in
+    metri,</LI>
+<LI>la lunghezza in metri di un autoveicolo (reale), e</LI>
+<LI>il codice di un viaggio per cui &#232; richiesto l'imbarco (intero
+    compreso tra 0 e 11),
+  </LI>
+</UL>
+  restituisca alla funzione chiamante il codice del primo viaggio, da quello
+  richiesto in poi, su cui l'autoveicolo pu&#242; effettivamente essere imbarcato,
+  considerando le disponibilit&#224; residue e la lunghezza dell'autoveicolo.  La
+  funzione deve inoltre aggiornare in modo opportuno la struttura di dati
+  passata come parametro.
+  
+Se non vi &#232; pi&#249; disponibilit&#224; residua sufficiente su alcuno dei viaggi
+  da quello richiesto in poi, la funzione deve restituire -1 e lasciare
+  inalterata la struttura di dati.
+
+<P>
+Ad esempio, se al viaggio 5 sono gi&#224; assegnati 30 autoveicoli con
+  disponibilit&#224; residua di 4.20 metri, al viaggio 6 sono gi&#224; assegnati 28
+  autoveicoli con disponibilit&#224; residua di 3.40 metri, e al viaggio 7 sono
+  gi&#224; assegnati 32 autoveicoli con disponibilit&#224; residua di 6.80 metri,
+  allora, ad un autoveicolo di 4.50 metri che richiede l'imbarco sul viaggio 5,
+  pu&#242; essere assegnato il viaggio 7, e per tale viaggio 7 il numero di
+  autoveicoli assegnati diventa 33 con disponibilit&#224; residua di 2.30 metri.
+
+<P>
+ </LI>
+<LI>Le richieste di imbarco sono memorizzate in ordine di arrivo su un file
+  (per la prova Pascal: di testo o di record, a scelta), una per riga.  Per
+  ogni richiesta sono specificati (separati da spazi bianchi):
+
+<UL>
+<LI>la targa dell'autoveicolo (stringa di 7 caratteri, non contenente spazi
+    bianchi),</LI>
+<LI>la lunghezza in metri dell'autoveicolo (reale),</LI>
+<LI>il codice del viaggio per cui &#232; richiesto l'imbarco.
+  </LI>
+</UL>
+  
+<P>
+Progettare una funzione C (o funzione/procedura Pascal) che, presi in
+  ingresso attraverso opportuni parametri il nome di un file di richieste di
+  imbarco e la struttura di dati che memorizza, per ciascuno dei 12 viaggi, la
+  disponibilit&#224; residua in metri e il numero di autoveicoli gi&#224; assegnati,
+  costruisca e restituisca alla funzione chiamante una lista, rappresentata
+  attraverso strutture (Pascal: record) e puntatori, in cui ciascun elemento
+  contiene la targa di un autoveicolo ed il codice del viaggio che gli viene
+  assegnato.  Gli autoveicoli devono comparire nella lista nello stesso ordine
+  che avevano nel file.  Gli autoveicoli a cui non pu&#242; essere assegnato alcun
+  viaggio non devono comparire nella lista.  La funzione deve inoltre
+  aggiornare la struttura di dati passata come parametro in base alle
+  assegnazioni effettuate.
+
+<P>
+Ovviamente, per determinare il codice del viaggio a cui un autoveicolo pu&#242;
+  essere assegnato, la funzione dovr&#224; attivare in modo opportuno la funzione
+  sviluppata al punto&nbsp;2.</LI>
+</OL>
+
+<P>
+ 
+<BR CLEAR="ALL">
+<HR>
+
+<P>
+
+<DIV ALIGN="CENTER"><FONT SIZE="+1"><B>
+Corso di Fondamenti di Informatica - A.A. 2001/2002<BR>
+Corsi di Laurea in Ingegneria Elettronica N.O. e V.O. e<BR>
+Telecomunicazioni V.O.<BR><BR>
+Appello del 25/06/2002  - 2a prova scritta</B></FONT>
+<BR><BR>
+<I> tempo a disposizione: 1 ora</I>
+</DIV>
+
+<P>
+
+<H2><A NAME="SECTION00002000000000000000">
+Problema 2 (4 punti)</A>
+</H2>
+
+<P>
+Considerare il numero <I>m</I> ottenuto anteponendo&nbsp;3 all'ultima cifra del
+proprio numero di matricola (in decimale), ed il numero <I>n</I> ottenuto
+anteponendo&nbsp;2 alla penultima cifra del proprio numero di matricola.  Fornire le
+rappresentazioni binarie di <I>m</I> ed <I>n</I>, illustrando il procedimento
+seguito per il calcolo.
+
+<P>
+Calcolare <I>m+n</I>, <I>m-n</I> e <I>n-m</I>, effettuando le operazioni in
+complemento a&nbsp;2 ed utilizzando in tutti e tre i casi un numero di cifre
+sufficienti per rappresentare gli operandi ed effettuare l'operazione senza
+avere trabocco.
+
+<P>
+
+<H2><A NAME="SECTION00003000000000000000">
+Problema 3 (4 punti)</A>
+</H2>
+
+<P>
+Descrivere l'algoritmo di ricerca binaria in un vettore, utilizzando codice
+C/Pascal, oppure pseudocodice ad un livello di dettaglio sufficiente per essere
+direttamente implementato.  Discuterne la complessit&#224; computazionale.  Sotto
+quali condizioni pu&#242; essere utilizzata la ricerca binaria?
+
+<P>
+
+<H2><A NAME="SECTION00004000000000000000">
+Problema 4 (4 punti)</A>
+</H2>
+
+<P>
+Fornire la specifica del tipo di dato astratto Pila.  Illustrare una delle
+possibili rappresentazioni in C/Pascal e fornire le dichiarazioni di tipo
+opportune.  Fornire l'implementazione in C/Pascal della funzione di inserimento
+di un elemento in pila nella rappresentazione scelta.
+
+</BODY>
+</HTML>

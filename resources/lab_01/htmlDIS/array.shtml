@@ -1,0 +1,159 @@
+<!doctype html public "-//w3c//dtd html 4.0 transitional//en">
+<html>
+<head>
+<link href="java.css" rel="stylesheet" type="text/css">
+<title>Array: introduzione</title>
+</head>
+
+<body>
+
+<h2>Array: introduzione</h2>
+
+Un array &egrave; un gruppo di variabili dello
+stesso tipo. Per esempio, un array di interi &egrave; un
+gruppo di variabili, tutte di tipo intero. Il vantaggio
+dell'array
+&egrave; che basta una sola dichiarazione, ed &egrave;
+facile realizzare dei cicli che effettuano le stesse
+operazioni su tutte le variabili di un vettore. Si
+consideri per esempio la situazione in cui si hanno 100
+valori interi, e a un certo punto &egrave; necessario
+incrementare ognuno di essi di 1 e stamparli. Senza usare
+i vettori, sarebbe necessario un codice complicato come
+quello del programma <a href="NoArray.java">NoArray.java</a>:
+
+<pre>
+class NoArray {
+  public static void main(String[] args) {
+    int variabile1=41;
+    int variabile2=74;
+    int variabile3=7;
+    ....
+
+    variabile1=variabile1+1;
+    System.out.println(variabile1);
+    variabile2=variabile2+1;
+    System.out.println(variabile2);
+    variabile3=variabile3+1;
+    ...
+  }
+}
+</pre>
+
+Questo genere di operazioni si semplificano raggruppando tutte
+le variabili di un certo tipo in un unico vettore. La dichiarazione
+di un vettore che contiene 100 elementi di tipo intero &egrave;:
+
+<pre>
+  int x[]=new int[100];
+</pre>
+
+Si pu&ograve; pensare a questa operazione come equivalente a
+dichiarare le seguenti variabili, tutte di tipo intero:
+<tt>x[0], x[1], x[2],...., x[99]</tt>. Si noti che il primo elemento
+&egrave; 0, mentre l'ultimo &egrave; 99. Questo pu&ograve;
+creare confusione, dal momento che nella dichiarazione appare
+il numero 100.<p>
+
+Il punto fondamentale &egrave; che queste variabili <tt>x[0],...</tt>
+si possono usare come variabili normali, ma in pi&ugrave; &egrave;
+possibile anche fare riferimenti per esempio a <tt>x[i]</tt> dove
+<tt>i</tt> &egrave; un'altra variabile. Per esempio, la sequenza
+di istruzioni
+
+<pre>
+i=10;
+System.out.println(x[i]);
+</pre>
+
+stampa il contenuto della variabile <tt>x[10]</tt>. In generale,
+la notazione <tt>x[espressione]</tt> &egrave; la componente del
+vettore determinata dalla valutazione della espressione. Se
+per esempio <tt>i=10</tt> allora <tt>x[i+4]</tt> &egrave;
+esattamente lo stesso di <tt>x[14]</tt>. Questo rende i vettori
+molto comodi quando ci sono operazioni che vanno ripetute
+su un insieme di variabili. Per esempio, l'incremento e stampa dei
+cento valori si pu&ograve; fare definendo e assegnando valori a
+un vettore di interi <tt>x</tt>, e poi effettuando un ciclo:
+
+<pre>
+  int i;
+
+  for(i=0; i<=99; i=i+1) {
+    x[i]=x[i]+1;
+    System.out.println(x[i]);
+  }
+</pre>
+
+La assegnazione agli elementi di un vettore si pu&ograve;
+semplificare. Invece di fare <tt>x[0]=41; x[1]=74; ...</tt>,
+si possono dare tutti i valori nella fase di dichiarazione.
+Il programma completo <a href="ConArray.java">ConArray.java</a>
+&egrave; il seguente.
+
+<pre>
+class ConArray {
+  public static void main(String[] args) {
+    int x[]={41, 74, 7, 40, 73, 6, 39, 72, 5, 38, 71, 4, 37, 70, 3, 36, 69, 2, 35, 68, 1, 34, 67, 0, 33, 66, 99, 32, 65, 98, 31, 64, 97, 30, 63, 96, 29, 62, 95, 28, 61, 94, 27, 60, 93, 26, 59, 92, 25, 58, 91, 24, 57, 90, 23, 56, 89, 22, 55, 88, 21, 54, 87, 20, 53, 86, 19, 52, 85, 18, 51, 84, 17, 50, 83, 16, 49, 82, 15, 48, 81, 14, 47, 80, 13, 46, 79, 12, 45, 78, 11, 44, 77, 10, 43, 76, 9, 42, 75, 8, 41 };
+    int i;
+
+    for(i=0; i<=99; i=i+1) {
+      x[i]=x[i]+1;
+      System.out.println(x[i]);
+    }
+  }
+}
+
+</pre>
+
+
+<h4>Dimensione di un vettore</h4>
+
+Concludiamo la sezione con il metodo che permette di valutare
+la lunghezza di un vettore. Nel caso in cui il vettore venga
+dichiarato con una istruzione del tipo
+<tt>int x[]=new int[100]</tt>, questo vettore contiene
+esattamente 100 elementi (da 0 a 99) ossia il numero di
+elementi &egrave; dato dal numero fra parentesi quadre. Nel
+caso in cui la dichiarazione contiene gi&agrave; la
+inizializzazione, ossia del tipo
+<tt>int x[]={12, 24, ...}</tt>, il numero di elementi che
+compongono un vettore &egrave; dato dal numero di elementi
+fra parentesi graffe. Esiste un modo per determinare la
+lunghezza di un vettore senza contare gli elementi nella
+dichiarazione: se <tt>x</tt> &egrave; un vettore, allora
+<tt>x.length</tt> &egrave; la sua lunghezza. Quindi, una
+istruzione del tipo <tt>System.out.println(x.length)</tt>
+stampa il numero di elementi del vettore <tt>x</tt>.<p>
+
+
+<h4>Indici di un vettore</h4>
+
+Come si &egrave; gi&agrave; specificato, gli elementi di
+un vettore <tt>x</tt> sono <tt>x[0]</tt>, ecc, fino a
+un certo <tt>x[c]</tt>, in cui <tt>c</tt> dipende dalla
+dichiarazione del vettore. Cosa succede se si prova a
+usare <tt>x[d]</tt> in cui <tt>d>c</tt>? Durante la
+esecuzione del programma si genera un errore. Lo stesso
+succede usando un <tt>d</tt> negativo. In generale, se
+un vettore ha elementi <tt>x[0],...,x[c]</tt>, ogni tentativo
+di usare elementi <tt>x[d]</tt> in cui <tt>d</tt> non
+&egrave; compreso fra <tt>0</tt> e <tt>c</tt> genera un
+errore.<p>
+
+Per concludere, va notato come l'indice di un vettore
+(quello che sta fra parentesi quadre) pu&ograve; essere
+una espressione qualsiasi purch&egrave; <i>dia un
+risultato di tipo intero</i>, oltre che compreso fra
+0 e il massimo elemento del vettore. Esemi di riferimenti
+che non funzionano sono:<p>
+
+<ol>
+<li><tt>x[10.5]</tt> (perch&egrave; 10.5 &egrave; un numero reale)
+<li><tt>x[i]</tt> (dove <tt>i</tt> &egrave; una variabile reale)
+</ol>
+
+
+</body>
+</html>
+

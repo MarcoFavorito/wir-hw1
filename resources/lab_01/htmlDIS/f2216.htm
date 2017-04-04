@@ -1,0 +1,53 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=windows-1252">
+<TITLE>1</TITLE>
+</HEAD>
+<BODY background="bgrnd.jpg">
+
+<B><FONT SIZE=5><P>16)</FONT><FONT SIZE=5> </FONT><FONT SIZE=5>Grafi </P>
+</B></FONT><P ALIGN="RIGHT">Riferimenti: <B>[2]</B> capitolo 23</P>
+<hr>
+
+<I>1. Rappresentazione di grafi
+
+
+<UL>
+
+<UL>
+</I><LI>Liste di adiacenza <FONT FACE="Wingdings">&#224;</FONT>
+ vettore di N liste; vantaggiosa nella rappresentazione (compatta) di grafi sparsi, per i quali A&lt;&lt;N<SUP>2</LI>
+</SUP><LI>Matrice delle adiacenze <FONT FACE="Wingdings">&#224;</FONT>
+ matrice N*N; vantaggiosa nella rappresentazione di grafi densi (necessario 1 bit per ogni adiacenza), per i quali A &egrave; molto vicino a N<SUP>2</LI></UL>
+</UL>
+<DIR>
+<DIR>
+
+</SUP><P ALIGN="CENTER">Analisi di <a href="Grafo.h">Grafo.h</a>, <a href="GrafoMA.h">GrafoMA.h</a>,
+<a href="GrafoMA.cpp">GrafoMA.cpp</a>, <a href="GrafoLS.h">GrafoLS.h</a>, <a href="GrafoLS.cpp"> GrafoLS.cpp</a></P></DIR>
+</DIR>
+
+<I>2. Visita in ampiezza
+</I>
+
+<OL>
+
+<P ALIGN="JUSTIFY">Rappresenta la base per molti algoritmi sui grafi (es: Dijkstra). A partire da un nodo iniziale S vengono visitati tutti i nodi adiacenti (raggiungibili con un solo arco) e l'operazione viene ripetuta per ognuno di essi fino a completamento della visita.  Durante la visita viene generato un albero (BFS) con radice in S; il numero di archi che separa S da uno dei suoi discendenti D rappresenta anche il cammino minimo da S a D in quanto l'algoritmo visita tutti i nodi con distanza k prima di passare ai nodi con distanza k+1 (si aiuta per questo con una colorazione bianco/grigio/nero dei nodi).</P>
+<P ALIGN="CENTER">Analisi di <a href="VisitaAmpiezza.cpp"> VisitaAmpiezza.cpp</a> (complessit&agrave;)</P>
+<I></OL>
+3. Visita in profondit&agrave;
+</I>
+
+<OL>
+
+<P ALIGN="JUSTIFY">Per ogni nodo visitato, vengono analizzati i successori in preordine.  Durante la visita viene generata una foresta (DFS) con diverse radici; anche in questo caso ci si aiuta con la colorazione; ogni nodo &egrave; inizialmente bianco e viene colorato di nero solo quando &egrave; finita la visita, cio&egrave; quando la sua lista di adiacenza &egrave; stata completamente esaminata.</P>
+<P ALIGN="CENTER">Analisi di <a href="VisitaProfondita.cpp"> VisitaProfondita.cpp</a> (complessit&agrave;)</P>
+<I></OL>
+4. Ordinamento topologico di un DAG
+<DIR>
+<DIR>
+
+</I><P ALIGN="JUSTIFY">La visita in profondit&agrave; marca i nodi visitati con informazioni temporali (inizio e fine visita) utili per implementare un ordinamento topologico, su un grafo orientato aciclico che rappresenta, ad esempio, una sequenza ordinata di eventi.  La visita in profondita, seguita da un ordinamento dei nodi per tempo di fine visita fornisce la sequenza richiesta. </P></DIR>
+</DIR>
+</BODY>
+</HTML>

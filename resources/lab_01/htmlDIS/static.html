@@ -1,0 +1,154 @@
+<html>
+<head>
+<title>Campi dati statici e finali</title>
+</head>
+
+<body>
+
+<h1>Campi dati statici e finali</h1>
+
+<dl>
+
+<dt>campo dati (non statico)
+<dd>ogni oggetto contiene una variabile
+
+<p />
+
+<dt>campo dati statico:
+<dd>esiste una sola variabile per tutta la classe
+
+</dl>
+
+<p>
+Sono variabili associate a una classe, non a un singolo
+oggetto.
+</p>
+
+<hr>
+
+
+<h4>Esempio di variabile statica</h4>
+
+<pre>
+class Esempio {
+  int x;
+  static int y;
+}
+</pre>
+
+<p>
+Accesso alle variabili statiche:
+</p>
+
+<pre>
+public static void main(String args[]) {
+  Esempio e=new Esempio();
+
+  e.x=10;		// campo non statico
+
+  Esempio.y=40;		// campo statico
+}
+</pre>
+
+<p>
+<b>Nota:</b> <tt>static</tt> si pu&ograve; anche usare per
+le funzioni, ma ha un significato diverso.
+</p>
+
+<hr>
+
+
+<h4>Rappresentazione in memoria</h4>
+
+<p>
+Se ho due oggetti <tt>e</tt>,<tt>t</tt>
+della classe <tt>Esempio</tt>:
+</p>
+
+<img src="confronto.gif">
+
+<p>
+Una variabile <tt>.x</tt> per ogni oggetto
+</p>
+
+<p>
+Una sola variabile <tt>Esempio.y</tt>
+</p>
+
+<hr>
+
+
+<h4>Campi statici: a che servono?</h4>
+
+<p>
+Spesso servono per memorizzare dei valori costanti che sono
+usati da molti programmi che usano la classe.
+</p>
+
+<p>
+Esempio: <tt>Math.PI</tt> &egrave; il valore di pi greco
+(approssimato).
+</p>
+
+<hr>
+
+
+<h4>Uso dei campi statici nella stessa classe</h4>
+
+<p>
+I campi (statici e non) sono visibili in tutti i metodi
+della classe.
+</p>
+
+<p>
+Per accedere a <tt>Esempio.y</tt> in un metodo della stessa
+classe <tt>Esempio</tt>, si pu&ograve; omettere
+<tt>Esempio.</tt> e usare direttamente <tt>y</tt>.
+</p>
+
+</dl>
+
+<p>
+Visibilit&agrave;: tutti i metodi della classe vedono tutte
+le variabili statiche.
+</p>
+
+<p>
+Oscuramento: se un metodo ha una variabile locale o un
+parametro formale con lo stesso nome, la variabile statica
+non si vede pi&ugrave;.
+</p>
+
+<hr>
+
+
+
+<h4>Campi dato <tt>final</tt></h4>
+
+<p>
+Sono campi dati con valore costante.
+</p>
+
+<p>
+Devono essere inizializzati e il loro valore non
+pu&ograve; venire cambiato.
+</p>
+
+<pre>
+class Esempio {
+  final int x=10;
+}
+</pre>
+
+<p>
+Possono essere statici oppure no.
+</p>
+
+<p>
+Anche i metodi si possono definire <tt>final</tt>, ma il
+significato &egrave; abbastanza diverso.
+</p>
+
+</body>
+</html>
+

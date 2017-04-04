@@ -1,0 +1,136 @@
+<html>
+<head>
+<link href="moses.css" rel="stylesheet" type="text/css">
+<title>Programma di lavoro dell'unit&agrave; di Roma</title>
+</head>
+
+<body>
+
+<h1>Programma di lavoro dell'unit&agrave; di Roma</h1>
+
+<a href="base-roma.html">Base di partenza</a><p>
+
+L'obiettivo dell'unita' di Roma e' lo sviluppo di benchmark e di metodologie per la verifica sperimentale e la comparazione sperimentale e computazionale di logiche non classiche come LTL (od eventuali varianti sintattiche piu' espressive come QBF) sia mediante generazione casuale di benchmark con proprieta' computazionali prefissate sia mediante generalizzazione di benchmark tratti da domini applicativi.<p>
+Ad alto livello, possiamo descrivere tale obiettivo come diviso in quattro obiettivi intermedi, logicamente consequenziali che, producendo risulti intermedi, possono essere piu' facilmente verificabili.<p>
+Il primo sotto-obiettivo e' lo sviluppo di metodologie, algoritmi e librerie software per la generazione di problemi computazionalmente difficili (sia in teoria che in pratica che sia possibile generare in modo casuale ma di cui di cui sia possibile determinare a priori alcune caratteristiche strutturali e computazionali (ad esempio proprieta' temporali soddisfacibili od insoddisfacibili, modelli minimi, esistenza di modelli esponenziali od infiniti).<p>
+Una volta raggiunto tale obiettivo ed utilizzate tali librerie i puo' effettuare un preliminare testing esaustivo dei prototipi sviluppati dagli altri gruppi per una prima raccolta di dati sperimentali.<p>
+Risulta a questo punto essenziale determinare come e quali dati sperimentali utilizzare per poter confrontare scientificamente algoritmi simili (ad esempio che usano euristiche diverse) o algoritmi completamente differenti (che utilizzano lo stesso hardware) o algoritmi diversi che girano su macchine diverse. Laddove esistono standard di fatto per la comparazione di procedure proposizionali, il campo nelle logiche non classiche e' molto piu' incerto. Il secondo obiettivo intermedio e' quindi lo sviluppo di metodologie e librerie di confronto che garantiscano la riproducibilita' scientifica e la significativita' di una analisi basata sul benchmarking e che sia allo stesso tempo &#34;fair&#34; nei confronti di differenti sistemi ed implementazioni. I prototipi customizzabili forniti dalle unita' di Trento e Genova saranno in questo caso essenziali per un processo di raffinamento iterativo di queste metodologie. Le metodologie sviluppate a questo proposito saranno poi &#34;le regole&#34; della competizione internazionale che con cui si concludera' il progetto.<p>
+Il terzo obiettivo intermedio si pone il problema di generare dei benchmark significativi in ambito applicativo, quali la pianificazione, la verifica dell'hardware e la rappresentazione della conoscenza. L'unita' di Roma partecipera' a questo studio mediante studio di benchmark basati su problemi esprimibili mediante QBF (equivalente a logiche temporali e modali e contenete varie logiche non-monotone) come primo linguaggio quali quelli che si possono incontrare nella rappresentazione della conoscenza e nella sicurezza informatica. Il limite dei benchmark applicativi e' il loro avere una struttura fissa che quindi rende possibile tecniche benchmark oriented ma rende difficile stabilire la rappresentativita' di tali problemi rispetto a problemi &#34;simili&#34; nello stesso ambito applicativo. Quindi, il quarto obiettivo intermedio punta alla &#34;randomizzazione&#34; di tali benchmark, ossia a catturarne la struttura essenziale (e quindi rappresentativa di quella classe di problemi significativi in ambito applicativo) ma a cambiarne in modo casuale le soluzioni od i dettagli inessenziali.<p>
+L'ultimo sotto-obiettivo e' la validazione scientifica dei benchmark e delle metodologie. Le librerie ed il testing &#34;in-house&#34; non sono mai sufficienti per validare in ambito internazionale delle procedure. Gli ultimi anni hanno visto un progressivo affermarsi delle competizioni e comparazioni internazionali tra risolutori di problemi come metodo per vedere effettivamente quali sono le soluzioni migliori e quali sono i benchmark realmente in grado di separare approcci concorrenti (le &#34;tappe in montagna&#34;). <p>
+In questo quadro l'unita di Roma sara' responsabile primaria delle fasi <p>
+4 - Metodologie per per il benchmarking basate su random generation e tecniche generali per il benchmarking <p>
+7 - Benchmark guidati dalle applicazioni, su logiche non classiche e logiche per la sicurezza <p>
+8 - integrazione e randomizzazione dei benchmark basati su ambiti applicativi <p>
+11 - organizzazione competizione internazionale<p>
+e partecipera' alle fasi 1, 3 e 10 (dimostratore in LTL) grazie alle competenze sviluppate nel settore del teorem proving per logiche non classiche. Ovviamente partecipera' alla fase di tuning del sistema (fase 3 e 4 e fasi 9 e 10) mediante le librerie e le metodologie di testing sviluppate nell'ambito delle fasi 4 e 8, eventualmente mediante un riallinamento delle librerie (qualora il testing di alcuni problemi rivelasse caratteristiche inaspettate).<p>
+<P><p>
+Piu' in dettaglio durante la fase (4) l'unita' di Roma, iniziando il lavoro dopo la conclusione della fase (1), al mese 2/24, si occupera' di<p>
+4.1) metodologie ed algoritmi per la generazione casuale dei problemi che abbiano alcune qualit'a strutturali e computazionali garantite (e.g. istanze soddisfacibili, insieme delle istanze copre tutti i problemi di una classe di complessita', contiene un sottoproblema la cui soluzione permette di risolvere l'intero problema, istanza con 50% di probabilita' di essere soddisfacibile etc, istanze con modelli di tipo esponenziale od infinito che possono essere identificati mediante opportune analisi di ciclicita' etc). A tal proposito si studiera' anche la scelta nell'uso di generatori (pseudo) random (ad esempio polinomialmente indistinguibili da generatori autenticamente random) ed il loro effetto sulla costruzione dei benchmark.<p>
+Inizio Lavori: mese 2/24<p>
+Risultato previsto (mese 10/24): rapporto di ricerca<p>
+<P><p>
+4.2) costruzione di una libreria software portabile sulle principali architetture che permetta la generazione dei benchmark studiati nella fase 4.1.<p>
+Inizio lavori: mese 10/24<p>
+Risultato previsto (mese 12/24): librerie s/w per generare problemi casuali a caratteristiche garantita<p>
+<P><p>
+4.3) prima analisi sperimentale dei prototipi sviluppati dalle unita' di Genova e Trento ed estrazione di dati significativi per il successivo sviluppo di metodologie.<p>
+Inizio lavori: mese 12/14<p>
+Risultato previsto (mese 13/24): analisi comparativa (disponibile su sito Web)<p>
+<P><p>
+4.4) metodologie per la comparazione, identificazione di dati significativi per comparare procedure di decisione basate sullo stesso calcolo (verifica di euristiche), dati per comparare procedure basate su calcoli diversi ma testati sullo stesso hardware, dati per comparare procedure basate su calcoli, hardware e software completamente differenti (L'ultimo punto mira a rendere i dati raccolti sul benchmark qualitativamente restitenti al passare del tempo).<p>
+Inizio lavori: mese 13/24<p>
+Risultato previsto (mese 17/24): rapporto di ricerca<p>
+Risultato previsto (mese 17/24): Prototipo software e script per la raccolta dei dati<p>
+<P><p>
+Superata la fase di generazione completamente random, lo studio dei benchmark focalizzera' su benchmark guidati dalle applicazione nelle fasi (7) ed (8). Nella prima fase l'attenzione sara' su <p>
+7.1) analisi di problemi applicativi di interesse industriale esprimibili mediante LTL od analogamente in QBF tra cui in particolare problemi realtivi alla raprpesentazione della conoscenza (diagnosi e modelli minimi, description logic per rappresentazione di linguaggi visuali etc.) ed logiche modali per la sicurezza (verifica dell'access control, verifica e criptanalisi di algoritmi criptografici come il DES).<p>
+<P><p>
+7.2) codifica nel linguaggio logico e le ottimizzazioni della codifica, identificazione della struttura caratteristica di tali problemi in modo sufficientemente dettagliato da poterne estrarre dei benchmark <p>
+Inizio lavori: ese 13/24<p>
+Risultato previsto (mese 17/24): rapporto di ricerca<p>
+<P><p>
+Una volta terminata l'analisi da parte dell'unita' di Roma, e da parte delle altre unita' si procedera' alla fase successiva:<p>
+8.1) Sintesi delle proposte di benchmark basati sulle applicazioni in un unico quadro complessivo, con l'obiettivo di applicare le metodologie della fase (4.1) per la generazione di problemi pseudo-casuali con caratteristiche strutturali identiche ai problemi reali definiti, ma tipicamente soluzioni lievemente diverse<p>
+Inizio lavori: mese 17/24<p>
+Risultato previsto (mese 21/24): rapporto di ricerca<p>
+Risultao previsto (mese 21/24): libreria software per generare problemi pseudo-random basati sulle applicazioni <p>
+<P><p>
+Come gia' menzionato il litmus test della validita' scientifica del progetto di ricerca sara' la fase (11) in cui si l'Univ di Roma si fara' co-promotrice di na competizione internazionale, possibilmente congiuntamente ad una delle principali conferenza di settore (quali CAV, CADE, IJCAI, TABLEAUX). La partecipazione di altri sistemi a stato dell'arte alla competizione (oltre a quelli delle unita' proponenti) e la capacita' dei metodi di valutazione proposti nella sotto-fase (4.4) di passare lo scrutinio internazionale come metodo fair per valutare i sistemi sara' uno dei metodi migliori per valutare la bonta' della ricerca. In questo quadro l'unita' si occupera' di<p>
+9.1) Preparazione finale ed ottimizzazione della libreria dei benchmark disponibili, selezioni problemi aggiuntivi ed otttimizzazione della robustezza delle procedure di generazione.<p>
+<P><p>
+9.2) Estensione metodologie e criteri per la competizione, organizzare quadro implementativo per la sottomissione dei teorem provers internazionali, test automatico e sistemi di ranking dei prover (ad esempio sussunzione).<p>
+Inizio lavori: mese 21/24<p>
+Risultato previsto (mesi 23/24): software e librerie per la gestione automatica della competizione<p>
+Risultato previsto (mesi 24/24): rapporto di ricerca sulla competizione<p>
+Risultato previsto (mesi 24/24): analisi e confronto dei sistemi (web)
+
+
+<hr>
+
+<h1>The Program of the Unit of Rome</h1>
+
+The goal of the Rome unit is the development of benchmarks and methodologies for the experimental verification and the experimental and computational comparison of non-classical logics as LTL (or possible syntactical more expressive variants, such as QBF) both by random generation of benchmarks with pre-fixed computational properties and generalization of benchmarks taken from application domains.<p>
+At a high level, this goal can be described as divided in four intermediate goals, logically consequential that, producing intermediate results, can be more easily verified.<p>
+The first sub-goal is the development of methodologies, algorithms and software libraries for the generation of computationally difficult problems (both in theory and in practice), which can be randomly generated, but for which it is possible to a priori determine some structural and computational characteristics (for example satisfiable or unsatisfiable temporal properties, minimal models, etc.)<p>
+After reaching this goal and using these libraries, a preliminary exhaustive test can be performed of the prototypes developed by the other groups, for a first collection of experimental data.<p>
+At this point, it is essential to determine how and which experimental data can be used to scientifically compare similar algorithms (i.e. algorithms which use different heuristics) or completely different algorithms which use the same hardware or which run on different machines.<p>
+Even though there are standards to compare propositional procedures, this is not true for non-classical logics. The second intermediate goal is then the development of methodologies and libraries of comparison which guarantee the scientific reproduction and the significance of an analysis based on the benchmarking, which is at the meantime &#34;fair&#34; with respect to different systems and implementations.<p>
+The customizable prototypes supplied by the units of Trento and Genoa will be essential in this case for an iterative process of refinement of these methodologies. The methodologies developed to this purpose will be then the &#34;rules&#34; of the international competition which the project ends with.<p>
+The third intermediate goal is the generation of significant benchmarks in application fields such as planning, hardware verification and knowledge representation. <p>
+The unit of Rome will participate in this study with a the study of a benchmark based on problems expressed in QBF (equivalent to temporal and modal logic, and containing various non-monotonic logics), as source language that can easily express problems in knowledge representation and in security. This will then be translated into the benchmark format.<p>
+The limit of the application benchmarks is in their fixed structure that allows for benchmark oriented techniques, but which makes it difficult to establish the representativeness of these problems with respect to similar problems in the same application field. The fourth intermediate goal is then to &#34;randomize&#34; these benchmarks, to capture their essential structure (hence they are representative of a class of problems that are significant in the application field) but also to change in a random way their solutions or their unessential details.<p>
+The last sub-goal is the scientific validation of the benchmarks and the methodologies. Libraries and in-house testing are never sufficient to internationally validate procedures. During the recent years, competitions and international comparisons between problem solvers are becoming very popular, as a method to effectively reach the best solutions and to see which benchmark is able to really distinguish between competing approaches. The last goal of the unit of Rome originates from this observation. <p>
+In this context, the unit of Rome has the responsibililty of the phases: <p>
+4 - Methodologies for benchmarking based on random generation and general techniques for benchmarking.<p>
+7 - Benchmarks generated from applications, on non-classical logics and logics for security.<p>
+8 - Integration and randomization of benchmarks based on applications.<p>
+11 - Organization of an international competition. <p>
+The unit of Rome will also participate in the phases 3 and 10 (demonstrator in LTL) thank to the expertise developed in the theorem proving field for non-classical logic. Obviously it will participate in the tuning phase of the system (phases 3 - 4 and phases 9 - 10) with the libraries and the testing methodologies developed during the phases 4 and 8, possibly with an adjustment of the libraries (if the testing of some problems reveals some unexpected aspects).<p>
+In more details, during phase 4, the unit of Rome, starting the investigation after the end of phase 1, month 2/24, will deal with <p>
+<P><p>
+4.1) Methodologies and algorithms for the random generation of problems which have structural and computational qualities guaranteed, (e.g. satisfiable instances, set of instances covering all the problems of a complexity class, it contains a sub-problem whose solution allows us to solve the whole problem, instance with 50% of probabilities to be satisfiable, etc, instances with exponential or infinite models which can be identified by suitable cycle's analysis etc.).To this end, also the choice of using (pseudo) random generators will be investigated (for example, generators that are polinomially indistinguishable form authentically random generators) and their effect on the benchmark construction.<p>
+Start : month 2/24<p>
+Foreseen result: month 10/24: research report<p>
+<P><p>
+4.2) Construction of a software library portable on the main architectures, which allows the generation of the benchmarks studied in phase 4.1 <p>
+Start: month 10/24<p>
+Foreseen result: month 12/24: software libraries to generate random<p>
+problems with guaranteed characteristics.<p>
+<P><p>
+4.3 First experimental analysis of the prototypes developed by the units of Genoa and Trento and extraction of meaningful data for the following development of methodologies.<p>
+Start: month 12/14<p>
+Foreseen result: month 13/24: comparison analysis (available on a Web site)<p>
+<P><p>
+4.4) Methodologies for the comparison, identification of meaningful data to compare decision procedures based on the same calculus ( heuristics verification), data to compare procedures based on different calculi, but tested on the same hardware, data to compare procedures based on different calculi, hardware and software. The last ostep aims at making the data collected on the benchmark qualitatively persistent through time.<p>
+Start: month 13/24<p>
+Foreseen result month 17/24: research report<p>
+Foreseen result month 17/24: Software Prototype and script for the data collection.<p>
+<P><p>
+Once the completely random generation phase is over, the study will focus on benchmarks guided by the applications, in the phases 7 and 8. In the<p>
+first phase the attention is on:<p>
+7.1) Analysis of application problems of industrial interest which can be expressed by LTL or similarly in QBF; among them, in particular, problems referring to knowledge representation (diagnosis and minimal models, description logic for the representation of visual languages, etc.) and modal logics for security (verification of the access control, verification and criptanalysis of criptographic algorithms such as DES)<p>
+<P><p>
+7.2 Coding of the logic language and its optimization, identification of the characteristic structure of these problems in a sufficient and detailed way, in order to extrapolate the benchmark.<p>
+Start: month 13/24<p>
+Foreseen result: month 17/24 research report<p>
+<P><p>
+At the end of the analysis performed by the unit of Rome and by the other<p>
+units, the next phase starts:<p>
+8.1) Synthesis of the proposals of benchmarks based on the applications in a unifying frame, with the goal to apply the methodologies of phase 4 to generate pseudo-random problems with the same structural characteristics of the real problems, but typically different solutions.<p>
+Start: month 17/24<p>
+Foreseen result: month 21/24 research report<p>
+Foreseen result month 21/24 software library to generate pseudo-random problems based on the applications.<p>
+<P><p>
+As just mentioned, the litmus test of the scientific validity of the research project will be phase 11, where the unit of Rome will be co-promoter of an international competition, possibly with one of the main conference of the field ( such as CAV, CADE, IJCAI or TABLEAUX). The participation of other systems at state of art to the competition and the capability of the evaluation methods proposed in the sub-phase 4.4 to pass the international scrutiny (as a &#34;fair&#34; method to evaluate systems) will be one of the best methods to evaluate the results of the research.<p>
+In this context, the unit will deal with:<p>
+9.1 Final preparation and optimization of the library of the available problems, selection of the additional problems, and optimization of the robustness of the decision procedures. <p>
+<P><p>
+9.2 Extension of the methodologies and criteria for the competition, organization of the software for the submission of the international theorem provers, automatic test, ranking system for the provers (e.i. subsumption) Start: month 21/24<p>
+Foreseen result (month 23/24) software and libraries for the automatic management of the competition.<p>
+Foreseen result (month 24/24) research report about the competition<p>
+Foreseen result (month 24/24) analysis and comparison of the systems (web)
+
+</body>
+</html>
+
+

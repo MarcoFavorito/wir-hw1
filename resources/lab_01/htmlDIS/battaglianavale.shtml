@@ -1,0 +1,120 @@
+<!doctype html public "-//w3c//dtd html 4.0 transitional//en">
+<html>
+<head>
+<link href="java.css" rel="stylesheet" type="text/css">
+<title>Battaglia Navale</title>
+</head>
+
+<body>
+
+<h2>Battaglia Navale</h2>
+
+<hr>
+
+Si usi la funzione <tt>Math.random()</tt> che ritorna
+un numero reale a caso compreso fra 0 e 1.<p>
+
+Questo programma usa la funzione <tt>start</tt>, in
+cui si decidono le posizioni dei sottomarini (questo
+va fatto in <tt>start</tt> e non in paint, altrimenti
+si ricomincia da capo ogni volta che si scopre la
+finestra.<p>
+
+<hr>
+
+<a href="BattagliaNavale.java">BattagliaNavale.java</a>
+
+<p>
+
+<pre>
+/*
+  Battaglia navale (solo sottomarini).
+*/
+
+import java.awt.*;
+
+public class BattagliaNavale extends java.applet.Applet {
+
+	/* posizioni dei sottomarini */
+  int xsott[]=new int[10];
+  int ysott[]=new int[10];
+
+	/* i colpi sparati */
+  int xcolpi[]=new int[500];
+  int ycolpi[]=new int[500];
+  int ncolpi=0;
+
+	/* inizio: si mettono i sottomarini in posizioni casuali */
+  public void start() {
+    int i;
+
+    for(i=0; i<=xsott.length-1; i=i+1) {
+      xsott[i]=Math.round((float) Math.random()*10);
+      ysott[i]=Math.round((float) Math.random()*10);
+
+      System.out.println(xsott[i]+" "+ysott[i]);
+    }
+  }
+
+	/* mouseDown: si memorizza un nuovo colpo */
+  public boolean mouseDown(Event e, int x, int y) {
+    if( (x<=400) && (y<=400) ) {
+      ncolpi=ncolpi+1;
+      xcolpi[ncolpi-1]=x/40;
+      ycolpi[ncolpi-1]=y/40;
+
+      repaint();
+    }
+
+    return true;
+  }
+
+	/* paint: si stampa la griglia, e poi per ogni colpo
+	   si mette x oppure o a seconda se c'e' un sottomarino */
+  public void paint(Graphics g) {
+    int x,y;
+    int c,s;
+    int colpito;
+
+	/* la griglia */
+    for(x=0; x<=400; x=x+40) {
+      g.drawLine(x,0,x,400);
+    }
+
+    for(y=0; y<=400; y=y+40) {
+      g.drawLine(0,y,400,y);
+    }
+
+
+	/* disegna i colpi */
+    for(c=0; c<=ncolpi-1; c=c+1) {
+      colpito=0;
+
+      for(s=0; s<=xsott.length-1; s=s+1) {
+        if( (xcolpi[c]==xsott[s]) && (ycolpi[c]==ysott[s]) ) {
+          colpito=1;
+        }
+      }
+      
+      if( colpito==1 ) {
+          g.drawLine(xcolpi[c]*40+5,ycolpi[c]*40+5,
+                     xcolpi[c]*40+35,ycolpi[c]*40+35);
+          g.drawLine(xcolpi[c]*40+5,ycolpi[c]*40+35,
+                     xcolpi[c]*40+35,ycolpi[c]*40+5);
+      }
+      else {
+          g.drawOval(xcolpi[c]*40+5,ycolpi[c]*40+5,30,30);
+      }
+    }
+  }
+}
+
+</pre>
+
+<p>
+<applet code="BattagliaNavale.class" height="401" width="401">
+</applet>
+
+</body>
+</html>
+

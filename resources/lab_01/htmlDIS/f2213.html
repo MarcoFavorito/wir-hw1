@@ -1,0 +1,125 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=windows-1252">
+<title></title>
+</HEAD>
+<BODY background="bgrnd.jpg">
+
+<B><FONT SIZE=5><P>13) Hashing </P>
+</B></FONT><P ALIGN="RIGHT">Riferimenti: <B>[2]</B> capitolo 7</P>
+<hr>
+
+<I>1.&nbsp; Caratterizzazione delle strutture dati per la gestione di insiemi
+</I>
+<div align="center">
+  <center>
+<TABLE BORDER="1" CELLSPACING=1 CELLPADDING=4 WIDTH=458>
+<TR><TD WIDTH="34%" VALIGN="TOP">
+<P ALIGN="CENTER">Memoria\Insiemi</TD>
+<TD WIDTH="33%" VALIGN="TOP">
+<P ALIGN="CENTER">Statici</TD>
+<TD WIDTH="33%" VALIGN="TOP">
+<P ALIGN="CENTER">Dinamici</TD>
+</TR>
+<TR><TD WIDTH="34%" VALIGN="TOP">
+<FONT SIZE=2><P ALIGN="CENTER">Principale</FONT></TD>
+<TD WIDTH="33%" VALIGN="TOP">
+
+<UL>
+<FONT SIZE=2><LI>Tabella ordinata - O(logn) la ricerca</FONT></TD>
+<TD WIDTH="33%" VALIGN="TOP">
+<FONT SIZE=2><LI>Alberi AVL </LI>
+<LI>Alberi rosso-neri</UL>
+</FONT></TD>
+</TR>
+<TR><TD WIDTH="34%" VALIGN="TOP">
+<P>&nbsp;</TD>
+<TD WIDTH="33%" VALIGN="TOP">
+
+<UL>
+<FONT SIZE=2><LI>Tavole hash</UL>
+</FONT></TD>
+<TD WIDTH="33%" VALIGN="TOP">
+<P>&nbsp;</TD>
+</TR>
+<TR><TD WIDTH="34%" VALIGN="TOP">
+<FONT SIZE=2><P ALIGN="CENTER">Secondaria</FONT></TD>
+<TD WIDTH="33%" VALIGN="TOP">
+<P>&nbsp;</TD>
+<TD WIDTH="33%" VALIGN="TOP">
+
+<UL>
+<FONT SIZE=2><LI>B-Alberi - O(log<SUB>m</SUB> n) accessi </LI>
+<LI>Hashing dinamico</UL>
+</FONT></TD>
+</TR>
+</TABLE>
+
+  </center>
+</div>
+
+<I>2.&nbsp; Indirizzamento diretto e tabelle hash
+</I>
+
+<OL>
+
+<P ALIGN="JUSTIFY">Vantaggi nella dimensione della struttura; in U <FONT FACE="Wingdings">&agrave;</FONT> {1…n} nel primo caso, in un insieme proporzionale al numero di chiavi utilizzate {1…m} nel secondo. Quando il numero di chiavi &egrave; piccolo rispetto al numero totale di possibili chiavi, la tabella hash &egrave; una valida alternativa (potrebbe non essere neanche rappresentabile in memoria un universo delle chiavi eccessivamente grande).</P>
+<I></OL>
+
+
+3.&nbsp; Disposizione degli elementi - funzione hash
+</I>
+
+<OL>
+
+<P ALIGN="JUSTIFY">Definisce una corrispondenza tra l'universo U delle chiavi e le posizioni di una tabella hash. H(k) viene detto "valore hash" della chiave k. La funzione deve essere deterministica, nel senso che ad un dato input k corrisponde sempre lo stesso output h(k). Dato n il numero di elementi dell'universo delle chiavi e m con n&gt;&gt;m, &egrave; per&ograve; possibile che per diversi k, h(k) produca lo stesso risultato.</P>
+<I></OL>
+
+
+4.&nbsp; Gestione delle collisioni tramite concatenazione
+</I>
+
+<OL>
+
+<P ALIGN="JUSTIFY">La concatenazione &egrave; una semplice tecnica per la gestione delle collisioni. Per ogni k, T[h(k)] &egrave; un puntatore ad una lista concatenata di elementi. Il fattore di carico <FONT FACE="Symbol">a</FONT> =n/m (con n=numero di elementi memorizzati) rappresenta il numero medio di elementi di ogni lista. </P>
+<I></OL>
+
+
+5.&nbsp; Costo delle operazioni fondamentali
+</I>
+
+<OL>
+
+<P ALIGN="JUSTIFY">Nell'indirizzamento diretto come nella tabella hash <FONT FACE="Symbol">Q</FONT> (n) nel caso peggiore, tuttavia con strutture hash si ha un costo nel caso medio pari a <FONT FACE="Symbol">Q</FONT> (1). Assumendo un costo O(1) per il calcolo del valore hash di k, la ricerca di un elemento in una hash con concatenazione richiede mediamente tempo <FONT FACE="Symbol">Q</FONT> (1+<FONT FACE="Symbol">a</FONT> ), nell'ipotesi di uniformit&agrave; semplice della tabella hash (ogni elemento dell'universo delle chiavi corrisponde in maniera equamente probabile ad una delle m posizioni).</P>
+<I></OL>
+
+
+6.&nbsp; Gestione delle collisioni tramite indirizzamento aperto
+</I>
+
+<OL>
+
+<P ALIGN="JUSTIFY">Nell'indirizzamento aperto non vi sono elementi fuori dalla tabella stessa e questa ha limiti nel numero di elementi inseribili. Non utilizza puntatori ma esegue la scansione (lineare, quadratica o con hashing doppio) di un certo numero di elementi per le operazioni di inserimento (fino alla prima posizione libera), cancellazione (con eventuale marcatura dell'elemento) e ricerca (fino a quando l'elemento non &egrave; nil oppure l'elemento cercato). La cancellazione &egrave; critica perch&eacute; crea problemi durante la scansione. A parit&agrave; di occupazione della memoria, la memoria extra non impegnata dai puntatori permette la gestione di un numero maggiore di elementi, consentendo potenzialmente poche collisioni e un recupero pi&ugrave; veloce.</P>
+<I></OL>
+
+
+7.&nbsp; Metodi di scansione
+</I>
+
+
+<UL>
+
+<UL>
+<LI>lineare - h(k,i) = (h'(k)+i)mod m - scansione circolare da T[h'(k)] a T[h'(k)-1]</LI><LI>quadratica - k(k,i) = (h'(k)+c<SUB>1</SUB> i + c<SUB>2</SUB> i<SUP>2</SUP>) mod m - le posizioni esaminate sono distanziate da una quantit&agrave; che dipende in modo quadratico dal numero di accessi i.</LI><LI>hashing doppio - h(k, i) = (h<SUB>1</SUB>(k) + i h<SUB>2</SUB>(k)) mod m - la posizione iniziale che la distanza tra le posizioni esaminate dipendono da k.</LI></UL>
+</UL>
+
+<I>8.&nbsp; Funzioni hash
+<DIR>
+<DIR>
+
+</I><P ALIGN="JUSTIFY">Metodo di divisione - h(k) = k mod m</P>
+<P ALIGN="JUSTIFY">Metodo di moltiplicazione - h(k) = | m( kA mod 1 ) | , dove 0&lt;A&lt;1 e kA mod 1 rappresenta la parte frazionaria di kA</P>
+<P ALIGN="JUSTIFY">Metodo di hashing universale - h(k) = una funzione hash scelta casualmente, in modo tale che la stessa sia indipendente dalle chiavi. Nessun particolare input provoca il caso peggiore.</P></DIR>
+</DIR>
+</BODY>
+</HTML>

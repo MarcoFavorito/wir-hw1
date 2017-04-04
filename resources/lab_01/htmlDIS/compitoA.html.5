@@ -1,0 +1,91 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+
+<!-- saved from url=(0098)http://www.dis.uniroma1.it/~degiacom/didattica/fond1info/appelli/2003-04-08/compito-A/testo-A.html -->
+
+<HTML><HEAD><TITLE>Esame del 12/04/2005 - Compito A</TITLE>
+
+<META http-equiv=Content-Type content="text/html; charset=windows-1252">
+
+<META content="Microsoft FrontPage 4.0" name=GENERATOR>
+<style type="text/css">
+<!--
+.style3 {font-size: smaller}
+-->
+</style>
+</HEAD>
+
+<BODY>
+
+<CENTER>
+  <B>Tecniche di Programmazione </B><BR>
+  <B>Corsi di Laurea in Ingegneria 
+
+Informatica ed Automatica</B> <BR>
+A.A. 
+
+2004/05
+</CENTER>
+
+<CENTER>
+
+  <H2>Appello del 12/04/2005 - Compito A</H2>
+
+</CENTER>
+
+<p>Si vuole progettare un robot per costruire colonne costituite da blocchi cilindrici. 
+  
+
+   Di un oggetto <em>Colonna</em> sono di interesse il suo diametro di base e la collezione di blocchi. Si noti che il diametro di base della colonna coincide con il diametro di base dei blocchi che la compongono. 
+  
+
+   Di ogni blocco cilindrico sono di interesse le seguenti 
+
+
+ informazioni:</p>
+<ul>
+  <li>il codice che lo identifica univocamente (una stringa)
+  <li>la sua altezza (un intero positivo) </li>
+  <li>il suo materiale (una stringa)</li>
+</ul>
+<p>Gli oggetti <em>Colonna</em> supportano le seguenti funzionalità: </p>
+<UL>
+
+  <LI><EM>crea:</EM> che, dato un intero <em>n</em> positivo che rappresenta il diametro di base della colonna (che si vuole costruire), crea un oggetto <em>Colonna</em> che &egrave; costituita da nessun blocco; 
+
+  <LI><em> nessunBlocco: </em>che restituisce <em>true</em> se la colonna non contiene blocchi, <em>false </em>altrimenti; 
+  <LI><EM>qualeDiametro:</EM> che restituisce il diametro della colonna; 
+  
+  <LI><EM>poni:</EM> che, date due stringhe <em>c</em> ed <em>m</em>, ed un intero <em>n</em>,  
+  
+
+    pone il blocco con codice <em>c</em>, altezza <em>n</em> e di materiale <em>m</em>, sulla cima della colonna; se tale codice &egrave; gi&agrave; utilizzato, oppure <em>n</em> &egrave; negativo, lancia un'eccezione;   
+  <LI><em>preleva</em>: che preleva il blocco affiorante dalla cima della colonna; se la colonna non contiene blocchi lancia un'eccezione;
+  <LI><em>prelevaPrimoConAltezza: </em>che, dato un intero <em>n</em>, preleva il primo blocco avente altezza <em>n</em>; se nessun blocco ha altezza <em>n</em>, o <em>n</em> &egrave; negativo, lancia un'eccezione; 
+  <li><em>altezzaPrimoBlocco:</em> che restituisce l'altezza del primo blocco; se la colonna non contiene blocchi lancia un'eccezione;
+  <li><em>materialePrimoBlocco:</em> che restituisce il materiale del primo blocco; se la colonna non contiene blocchi lancia un'eccezione;
+  <li><em>materiale:</em> che dato un codice <em>c</em>, restituisce il materiale del blocco avente codice <em>c</em>; se tale codice non &egrave; presente lancia un'eccezione;
+  <li><em>altezzaTotale: </em>che restituisce l'altezza totale della colonna;     
+  <li><EM>quantiAltezza:</EM> che, dato un intero <em>n</em>, restituisce il numero di blocchi avente altezza pari ad <em>n</em>;  </li>
+  <LI><EM>tuttiAltezza:</EM> che, dato un intero <em>n</em>, restituisce un array di stringhe contenente i codici di tutti i blocchi aventi altezza <em>n</em>.</LI>
+
+</UL>
+
+<P><STRONG>Domanda 1.</STRONG> Scrivere una classe Java <CODE>Colonna</CODE> per rappresentare 
+
+  oggetti <em>Colonna</em>. Specificare il costo asintotico in tempo e in spazio di ciascun metodo, indicando esplicitamente la dimensione dell'input, l'istruzione dominante e descrivendo il caso peggiore quando necessario. 
+<P><STRONG>Domanda 2.</STRONG> Si realizzi una classe cliente della classe <CODE>Colonna</CODE> contenente un metodo statico <code>stessaAltezza</code> che dato un oggetto <em>c</em> di tipo <em>Colonna</em>, e un intero <em>n</em> restituisce una lista <em>l </em> (oggetto della classe <code>Lista</code>, realizzata con l'interfaccia riportata di seguito) costituita dai materiali dei blocchi aventi altezza <em>n</em>.
+Specificare il costo asintotico in tempo e in spazio del metodo, indicando esplicitamente la dimensione dell'input, l'istruzione dominante e descrivendo il caso peggiore quando necessario. Le operazioni sulla <code>Lista</code> hanno tutte costo O(1). 
+<p>La classe <tt>Lista</tt> ha la seguente interfaccia:
+<pre>
+class Lista {
+   public Lista() 
+   public boolean empty() 
+   public String car() <span class="style3">//restituisce il primo elemento della lista</span>
+   public Lista cons(String x) <span class="style3">//restituisce una lista ottenuta inserendo x come primo elemento</span>
+   public Lista cdr()  <span class="style3">//restituisce una lista ottenuta eliminando il primo elemento</span>
+}
+</pre>
+<P><strong>Domanda 3.</strong> Data una rappresentazione collegata di alberi binari in cui l'informazione in ciascun nodo &egrave; una stringa, realizzare un metodo statico pubblico che, dato il riferimento alla radice di un albero binario <em>alb</em> e data una stringa <em>x</em>, restituisca il padre del nodo la cui informazione &egrave; <em>x</em>; se nessun nodo ha informazione <em>x</em>, il metodo deve restituire <em>null</em>. Specificare il costo asintotico in tempo e in spazio del metodo, indicando esplicitamente la dimensione dell'input, l'istruzione dominante e descrivendo il caso peggiore quando necessario.
+</BODY>
+</HTML>
+

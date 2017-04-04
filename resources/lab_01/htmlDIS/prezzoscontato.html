@@ -1,0 +1,54 @@
+<html>
+
+<head>
+
+<title>Sconto</title>
+
+<script language="Javascript">
+function calcolaPrezzoConSconto(numero, unitario)
+{
+		var prezzo;
+		prezzo = numero * unitario;
+
+		if (prezzo > 300) {
+			/* applica sconto 5%  */
+			prezzo = prezzo*0.95;
+			window.alert("Congratulazioni, hai ottenuto lo sconto!");
+		}
+		else {
+			var messaggio = "Non hai superato i 300 euro.\n";
+			messaggio = messaggio + "Superandoli avresti ottenuto";
+			messaggio = messaggio + "uno sconto del 5%!"
+			window.alert(messaggio);
+		}
+		return prezzo;
+}
+</script>
+</head>
+
+<body bgcolor="blue" text="white">
+
+<hr>
+<form>
+<table cellpadding="10">
+<tr>
+	<td align="right">Prezzo unitario:
+	<td><input type="text" name="prezzoUnitario" size="20" style="text-align: right">
+<tr>
+	<td align="right">Quantit&agrave;:
+	<td><input type="text" name="quantita" size="20" style="text-align: right">
+<tr>
+	<td>
+	  <input type="button" name="calcoloTotale" value="Calcola Totale"
+	  onClick="totale.value=calcolaPrezzoConSconto(prezzoUnitario.value, quantita.value);">
+	<td>
+	  <input type="reset" value="Azzera">
+</table>
+<hr>
+<strong>Totale:</strong><td><input type="text" name="totale" size="20" style="text-align: right">
+</form>
+</h2>
+
+</body>
+
+</html>

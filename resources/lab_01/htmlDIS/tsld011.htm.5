@@ -1,0 +1,62 @@
+
+<HTML>
+
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html;charset=iso-8859-1">
+<meta name="GENERATOR" content="Microsoft Internet Assistant for Macintosh PowerPoint 98">
+ <TITLE>Size Estimation and Reduction Factors</TITLE> 
+</HEAD>
+
+<BODY     >
+
+ <H1>Size Estimation and Reduction Factors</H1> 
+ <P><UL></P>
+
+<P><LI><H2>Consider a query block:
+</H2></P>
+
+<P></UL><UL></P>
+
+<P><LI><H2>Maximum # tuples in result is the product of the cardinalities of relations in the FROM clause.
+</H2></P>
+
+<P></UL><UL></P>
+
+<P><LI><H2>Reduction factor (RF) associated with each term reflects the impact of the term in reducing result size.  Result cardinality = Max # tuples  *  product of all RF’s.
+</H2></P>
+
+<P><UL></P>
+
+<P><LI>Implicit assumption that terms are independent!
+<LI>Term col=value has RF 1/NKeys(I), given index I on col
+<LI>Term col1=col2 has RF 1/MAX(NKeys(I1), NKeys(I2))
+<LI>Term col>value has RF (High(I)-value)/(High(I)-Low(I))</UL></UL></P>
+
+<P><UL></P>
+
+<P>SELECT  attribute list
+</UL><UL></P>
+
+<P>FROM  relation list
+</UL><UL></P>
+
+<P>WHERE  term1 AND ... AND termk</UL></P>
+
+<P></P> 
+<P>
+<TABLE>
+  <TD HEIGHT=100 WIDTH=100> <A HREF="tsld010.htm">Previous slide</A> </TD>
+  <TD HEIGHT=100 WIDTH=100> <A HREF="tsld012.htm">Next slide</A> </TD>
+  <TD HEIGHT=100 WIDTH=150> <A HREF="tsld001.htm">Back to first slide</A> </TD>
+  <TD HEIGHT=100 WIDTH=150> <A HREF="sld011.htm">View graphic version</A> </TD>
+</TABLE>
+<BR>
+</P>
+
+ <FONT size=4><STRONG> Notes: </FONT></STRONG>
+  <HR SIZE=3> <P> <UL>
+
+9</UL> </P> 
+
+</Body>
+</HTML>

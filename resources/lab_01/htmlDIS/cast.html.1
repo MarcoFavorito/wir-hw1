@@ -1,0 +1,169 @@
+<html>
+<head>
+<title>Il cast</title>
+      <link rel="top" href="../lezioni.html">
+      <link rel="up" href="../lezioni.html">
+      <link rel="contents" href="../lezioni.html">
+      <link rel="previous" href="../puntvirg/puntvirg.html">
+      <link rel="next" href="../programma/programma.html">
+</head>
+
+<body>
+
+<h1>Il cast</h1>
+
+<p>
+Serve a convertire i dati da un tipo all'altro
+</p>
+
+<hr>
+
+
+<h4>Tipi visto finora</h4>
+
+<p>
+Scalari:
+</p>
+
+<ul>
+
+<li><tt>char</tt>
+
+<li><tt>int</tt>
+
+<li><tt>double</tt>
+
+</ul>
+
+<p>
+Pi&ugrave; vari tipi di oggetti (classi)
+</p>
+
+<p>
+Vediamo (per ora) solo il cast fra scalari.
+</p>
+
+<hr>
+
+
+<h4>Cast</h4>
+
+<p>
+Sintassi del cast:
+</p>
+
+<pre>
+  (tipo) espressione
+</pre>
+
+<p>
+Produce una espressione del nuovo tipo.
+</p>
+
+<p>
+Esempi: prox pag
+</p>
+
+<hr>
+
+
+<h4>Esempi di cast</h4>
+
+<pre>
+  int x;
+  double d;
+
+  d=(double) x;
+</pre>
+
+<p>
+Converte da intero a double.
+</p>
+
+<p>
+Pu&ograve; servire per fare la divisione:
+</p>
+
+<pre>
+  int x;
+  double d;
+
+  d=((double) x)/2;
+</pre>
+
+<p>
+Invece, <tt>d=x/2</tt> non funzionava, dato
+che sia <tt>x</tt> che <tt>2</tt> sono interi.
+</p>
+
+<hr>
+
+
+<h4>Esempio</h4>
+
+<pre>
+  int x;
+  double d;
+
+  x=(int) d;
+</pre>
+
+<p>
+A cosa serve?
+</p>
+
+<p>
+Tutti i casi in cui voglio un intero ma ho un
+reale.
+</p>
+
+<pre>
+  double y=...;
+
+  g.drawRect(x, (int) y, 0, 0);
+</pre>
+
+<hr>
+
+
+<h4>Arrotondamento</h4>
+
+<p>
+Il cast da reale a intero d&agrave; la parte
+intera.
+</p>
+
+<p>
+Per arrotondare, usare il metodo
+<tt>Math.round</tt>
+</p>
+
+<p>
+Attenzione: produce un risultato di tipo
+<tt>long</tt>, che quindi va convertito:
+</p>
+
+<pre>
+long Math.round(double);
+</pre>
+
+<p>
+Il tipo <tt>long</tt> non lo vediamo
+</p>
+
+<pre>
+  double d=0.6;
+  int x;
+
+  x=(int) Math.round(d);
+</pre>
+
+<p>
+Stampa <tt>1</tt>
+</p>
+
+</body>
+</html>
+
+
+

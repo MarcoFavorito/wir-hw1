@@ -1,0 +1,323 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<!--Converted with LaTeX2HTML 98.1 release (February 19th, 1998)
+originally by Nikos Drakos (nikos@cbl.leeds.ac.uk), CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>Fondamenti di Informatica: Appello del 14/10/1999</TITLE>
+</HEAD>
+<BODY >
+
+<P>
+<DIV ALIGN="CENTER">
+<B>
+   Universit&#224; di Roma ``La Sapienza''
+<BR>
+Facolt&#224; di Ingegneria
+<BR>
+Corso di Fondamenti di Informatica
+<BR>
+Corsi di Laurea: Aerospaziale, Chimica, Elettrica, Materiali,
+   Nucleare, Ambiente e Territorio (v.p.)</B>
+<BR>
+Appello del <B>14/10/1999</B> -- 1<SUP><I>a</I></SUP> prova scritta
+<BR>
+  <EM>tempo a disposizione: 2 ore</EM>
+</DIV>
+
+<P>
+<B>Problema 1 (18 punti)</B>
+Un sistema grafico &#232; in grado di gestire uno
+schermo quadrato di 10X10 punti, ognuno dei quali pu&#242; essere acceso o spento.
+Il sistema riceve l'immagine da visualizzare
+sotto forma di un file composto da una sequenza di linee, dove ogni linea ha il
+formato:
+
+<P>
+
+<!-- MATH: $n_1 n_2 n_3$ -->
+<I>n</I><SUB>1</SUB> <I>n</I><SUB>2</SUB> <I>n</I><SUB>3</SUB>
+
+<P>
+dove <I>n</I><SUB>1</SUB>, <I>n</I><SUB>2</SUB> e <I>n</I><SUB>3</SUB> sono interi compresi fra 1 e 10.
+Il significato di tale linea &#232; che nella riga <I>n</I><SUB>1</SUB> dello schermo si
+accendono, a partire dalla posizione <I>n</I><SUB>2</SUB> compresa, <I>n</I><SUB>3</SUB> punti.
+Ad esempio, se il contenuto del file  &#232; il seguente:
+
+<P>
+<TABLE CELLPADDING=3>
+<TR><TD ALIGN="CENTER">5</TD>
+<TD ALIGN="CENTER">8</TD>
+<TD ALIGN="CENTER">1</TD>
+</TR>
+<TR><TD ALIGN="CENTER">2</TD>
+<TD ALIGN="CENTER">3</TD>
+<TD ALIGN="CENTER">1</TD>
+</TR>
+<TR><TD ALIGN="CENTER">2</TD>
+<TD ALIGN="CENTER">4</TD>
+<TD ALIGN="CENTER">6</TD>
+</TR>
+<TR><TD ALIGN="CENTER">8</TD>
+<TD ALIGN="CENTER">1</TD>
+<TD ALIGN="CENTER">10</TD>
+</TR>
+<TR><TD ALIGN="CENTER">10</TD>
+<TD ALIGN="CENTER">1</TD>
+<TD ALIGN="CENTER">1</TD>
+</TR>
+<TR><TD ALIGN="CENTER">3</TD>
+<TD ALIGN="CENTER">10</TD>
+<TD ALIGN="CENTER">1</TD>
+</TR>
+</TABLE>
+
+<P>
+allora lo schermo corrispondente &#232; il seguente (distinguendo con il carattere
+'<TT>*</TT>' il punto acceso)
+
+<P><TABLE CELLPADDING=3 BORDER="1">
+<TR><TD ALIGN="CENTER">&nbsp;</TD>
+<TD ALIGN="CENTER">1</TD>
+<TD ALIGN="CENTER">2</TD>
+<TD ALIGN="CENTER">3</TD>
+<TD ALIGN="CENTER">4</TD>
+<TD ALIGN="CENTER">5</TD>
+<TD ALIGN="CENTER">6</TD>
+<TD ALIGN="CENTER">7</TD>
+<TD ALIGN="CENTER">8</TD>
+<TD ALIGN="CENTER">9</TD>
+<TD ALIGN="CENTER">10</TD>
+</TR>
+<TR><TD ALIGN="CENTER">1</TD>
+<TD ALIGN="CENTER">&nbsp;</TD>
+<TD ALIGN="CENTER">&nbsp;</TD>
+<TD ALIGN="CENTER">&nbsp;</TD>
+<TD ALIGN="CENTER">&nbsp;</TD>
+<TD ALIGN="CENTER">&nbsp;</TD>
+<TD ALIGN="CENTER">&nbsp;</TD>
+<TD ALIGN="CENTER">&nbsp;</TD>
+<TD ALIGN="CENTER">&nbsp;</TD>
+<TD ALIGN="CENTER">&nbsp;</TD>
+<TD ALIGN="CENTER">&nbsp;</TD>
+</TR>
+<TR><TD ALIGN="CENTER">2</TD>
+<TD ALIGN="CENTER">&nbsp;</TD>
+<TD ALIGN="CENTER">&nbsp;</TD>
+<TD ALIGN="CENTER">*</TD>
+<TD ALIGN="CENTER">*</TD>
+<TD ALIGN="CENTER">*</TD>
+<TD ALIGN="CENTER">*</TD>
+<TD ALIGN="CENTER">*</TD>
+<TD ALIGN="CENTER">*</TD>
+<TD ALIGN="CENTER">*</TD>
+<TD ALIGN="CENTER">&nbsp;</TD>
+</TR>
+<TR><TD ALIGN="CENTER">3</TD>
+<TD ALIGN="CENTER">&nbsp;</TD>
+<TD ALIGN="CENTER">&nbsp;</TD>
+<TD ALIGN="CENTER">&nbsp;</TD>
+<TD ALIGN="CENTER">&nbsp;</TD>
+<TD ALIGN="CENTER">&nbsp;</TD>
+<TD ALIGN="CENTER">&nbsp;</TD>
+<TD ALIGN="CENTER">&nbsp;</TD>
+<TD ALIGN="CENTER">&nbsp;</TD>
+<TD ALIGN="CENTER">&nbsp;</TD>
+<TD ALIGN="CENTER">*</TD>
+</TR>
+<TR><TD ALIGN="CENTER">4</TD>
+<TD ALIGN="CENTER">&nbsp;</TD>
+<TD ALIGN="CENTER">&nbsp;</TD>
+<TD ALIGN="CENTER">&nbsp;</TD>
+<TD ALIGN="CENTER">&nbsp;</TD>
+<TD ALIGN="CENTER">&nbsp;</TD>
+<TD ALIGN="CENTER">&nbsp;</TD>
+<TD ALIGN="CENTER">&nbsp;</TD>
+<TD ALIGN="CENTER">&nbsp;</TD>
+<TD ALIGN="CENTER">&nbsp;</TD>
+<TD ALIGN="CENTER">&nbsp;</TD>
+</TR>
+<TR><TD ALIGN="CENTER">5</TD>
+<TD ALIGN="CENTER">&nbsp;</TD>
+<TD ALIGN="CENTER">&nbsp;</TD>
+<TD ALIGN="CENTER">&nbsp;</TD>
+<TD ALIGN="CENTER">&nbsp;</TD>
+<TD ALIGN="CENTER">&nbsp;</TD>
+<TD ALIGN="CENTER">&nbsp;</TD>
+<TD ALIGN="CENTER">&nbsp;</TD>
+<TD ALIGN="CENTER">*</TD>
+<TD ALIGN="CENTER">&nbsp;</TD>
+<TD ALIGN="CENTER">&nbsp;</TD>
+</TR>
+<TR><TD ALIGN="CENTER">6</TD>
+<TD ALIGN="CENTER">&nbsp;</TD>
+<TD ALIGN="CENTER">&nbsp;</TD>
+<TD ALIGN="CENTER">&nbsp;</TD>
+<TD ALIGN="CENTER">&nbsp;</TD>
+<TD ALIGN="CENTER">&nbsp;</TD>
+<TD ALIGN="CENTER">&nbsp;</TD>
+<TD ALIGN="CENTER">&nbsp;</TD>
+<TD ALIGN="CENTER">&nbsp;</TD>
+<TD ALIGN="CENTER">&nbsp;</TD>
+<TD ALIGN="CENTER">&nbsp;</TD>
+</TR>
+<TR><TD ALIGN="CENTER">7</TD>
+<TD ALIGN="CENTER">&nbsp;</TD>
+<TD ALIGN="CENTER">&nbsp;</TD>
+<TD ALIGN="CENTER">&nbsp;</TD>
+<TD ALIGN="CENTER">&nbsp;</TD>
+<TD ALIGN="CENTER">&nbsp;</TD>
+<TD ALIGN="CENTER">&nbsp;</TD>
+<TD ALIGN="CENTER">&nbsp;</TD>
+<TD ALIGN="CENTER">&nbsp;</TD>
+<TD ALIGN="CENTER">&nbsp;</TD>
+<TD ALIGN="CENTER">&nbsp;</TD>
+</TR>
+<TR><TD ALIGN="CENTER">8</TD>
+<TD ALIGN="CENTER">*</TD>
+<TD ALIGN="CENTER">*</TD>
+<TD ALIGN="CENTER">*</TD>
+<TD ALIGN="CENTER">*</TD>
+<TD ALIGN="CENTER">*</TD>
+<TD ALIGN="CENTER">*</TD>
+<TD ALIGN="CENTER">*</TD>
+<TD ALIGN="CENTER">*</TD>
+<TD ALIGN="CENTER">*</TD>
+<TD ALIGN="CENTER">*</TD>
+</TR>
+<TR><TD ALIGN="CENTER">9</TD>
+<TD ALIGN="CENTER">&nbsp;</TD>
+<TD ALIGN="CENTER">&nbsp;</TD>
+<TD ALIGN="CENTER">&nbsp;</TD>
+<TD ALIGN="CENTER">&nbsp;</TD>
+<TD ALIGN="CENTER">&nbsp;</TD>
+<TD ALIGN="CENTER">&nbsp;</TD>
+<TD ALIGN="CENTER">&nbsp;</TD>
+<TD ALIGN="CENTER">&nbsp;</TD>
+<TD ALIGN="CENTER">&nbsp;</TD>
+<TD ALIGN="CENTER">&nbsp;</TD>
+</TR>
+<TR><TD ALIGN="CENTER">10</TD>
+<TD ALIGN="CENTER">*</TD>
+<TD ALIGN="CENTER">&nbsp;</TD>
+<TD ALIGN="CENTER">&nbsp;</TD>
+<TD ALIGN="CENTER">&nbsp;</TD>
+<TD ALIGN="CENTER">&nbsp;</TD>
+<TD ALIGN="CENTER">&nbsp;</TD>
+<TD ALIGN="CENTER">&nbsp;</TD>
+<TD ALIGN="CENTER">&nbsp;</TD>
+<TD ALIGN="CENTER">&nbsp;</TD>
+<TD ALIGN="CENTER">&nbsp;</TD>
+</TR>
+</TABLE>
+
+<P>
+Chiamiamo <EM>punto isolato</EM> qualsiasi punto che non sia in contatto (in
+nessuna delle posizioni adiacenti) con
+altri punti. Ad esempio, nello schermo di cui sopra, vi sono due punti isolati,
+rispettivamente di coordinate 
+(10,1)
+e 
+(5,8).
+Si noti che il punto di coordinate 
+(3,10)
+non &#232; isolato.
+
+<P>
+Un aspetto che deve essere preso in considerazione &#232; che una o pi&#249;
+linee del file di input potrebbero dare specifiche scorrette.
+Ad esempio, la linea
+
+<P>
+6 8 4
+
+<P>
+&#232; scorretta, poich&#233; il numero di punti per riga dello schermo (cio&#232; 10)
+&#232; insufficiente a contenere i 4 punti richiesti.
+
+<P>
+Si richiede di risolvere i seguenti punti:
+<DL COMPACT>
+<DT>1.
+<DD>Scrivere le dichiarazioni dei tipi di dato Pascal da utilizzarsi
+per risolvere i punti successivi.
+<DT>2.
+<DD>Scrivere una (o pi&#249;) unit&#224; di programma Pascal che, dato un file
+  contenente una specifica, lo visualizzi su schermo (utilizzando solamente il
+  carattere '<TT>*</TT>' e il carattere spazio; in particolare non devono essere
+  visualizzati i numeri di riga o di colonna).
+  Nel caso in cui la specifica sia scorretta, occorre stampare un messaggio di
+  errore.
+  (<B>Suggerimento:</B> progettare l'unit&#224; in maniera sufficientemente
+  generale, al fine di renderla utile anche per il punto successivo).
+<DT>3.
+<DD>Scrivere una (o pi&#249;) unit&#224; di programma Pascal che, dato un file
+  contenente una specifica, verifichi se &#232; corretta, e in tal caso costruisca
+  <B>una lista</B> contenente le coordinate di tutti i punti isolati.  La lista
+  deve essere composta da record contenenti <B>due interi</B>.  Il verso della
+  lista &#232; a scelta dello studente.
+</DL>
+
+<P>
+
+<P>
+<DIV ALIGN="CENTER">
+<B>
+   Universit&#224; di Roma ``La Sapienza''
+<BR>
+Facolt&#224; di Ingegneria
+<BR>
+Corso di Fondamenti di Informatica
+<BR>
+Corsi di Laurea: Aerospaziale, Chimica, Elettrica, Materiali,
+   Nucleare, Ambiente e Territorio (v.p.)</B>
+<BR>
+Appello del <B>14/10/1999</B> -- 2<SUP><I>a</I></SUP> prova scritta
+<BR>
+  <EM>tempo a disposizione: 1 ora</EM>
+</DIV>
+
+<P>
+<B>Problema 2 (4 punti)</B>
+
+<P>
+Descrivere in generale le funzioni principali di un sistema operativo.
+
+<P>
+Descrivere inoltre in dettaglio la gestione dei processi.
+
+<P>
+<P>
+<B>Problema 3 (4 punti)</B>
+
+<P>
+Scrivere un'unit&#224; di programma Pascal che effettui la copia di una lista.
+
+<P>
+Dire quale sia la complessit&#224; dell'unit&#224; scritta.
+
+<P>
+<P>
+<B>Problema 4 (4 punti)</B>
+
+<P>
+Data una matrice di booleani, si dice ``sequenza omogenea'' una sequenza di
+valori:
+<UL>
+<LI>tutti uguali,
+<LI>presenti tutti sulla stessa riga <EM>oppure</EM> tutti sulla stessa
+  colonna,
+<LI>se presenti tutti sulla stessa riga, allora presenti in colonne adiacenti,
+<LI>se presenti tutti sulla stessa colonna, allora presenti in righe
+  adiacenti.
+</UL>
+
+<P>
+Scrivere un sottoprogramma Fortran che, ricevendo come parametro una matrice
+rettangolare di booleani di dimensione n X m,
+calcoli e restituisca in modo opportuno al programma chiamante la lunghezza
+della pi&#249; lunga sequenza omogenea di valori <TT>.TRUE.</TT>.
+</BODY>
+</HTML>

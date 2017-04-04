@@ -1,0 +1,114 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+
+<!--Converted with jLaTeX2HTML 2002 (1.62) JA patch-1.4
+patched version by:  Kenshi Muto, Debian Project.
+LaTeX2HTML 2002 (1.62),
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>2003-12-16-B</TITLE>
+<META NAME="description" CONTENT="2003-12-16-B">
+<META NAME="keywords" CONTENT="2003-12-16-B">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1">
+<META NAME="Generator" CONTENT="jLaTeX2HTML v2002 JA patch-1.4">
+
+</HEAD>
+
+<BODY >
+
+<P>
+
+<P>
+<DIV ALIGN="CENTER">
+<FONT SIZE="+1"><B>  Esame di Basi di Dati
+<BR>
+Laurea in Ingegneria Informatica - N.O.
+<BR>
+Laurea in Ingegneria Informatica - V.O. (1a parte)
+<BR>
+A.A.&nbsp;2003/2004 - Appello del 16/12/2003
+<BR>
+Compito B
+<BR>  <I>tempo a disposizione: 2 ore</I>
+
+</B></FONT></DIV>
+
+<P>
+
+<H2><A NAME="SECTION00001000000000000000">
+Problema 1</A>
+</H2>
+
+<P>
+Si richiede di progettare lo schema concettuale Entit&#224;-Relazione di
+un'applicazione per la gestione degli ordini di un'azienda.
+Di ogni ordine interessa la data, l'ora, il numero di telefono di riferimento,
+il cliente (uno ed uno solo) che lo ha effettuato, e i prodotti ordinati,
+ciascuno in una data quantit&#224;.  Si noti che ciascun cliente pu&#242; effettuare
+al pi&#249; un ordine in una certa ora di una certa data.
+Gli ordini si suddividono in processati e non processati.  Di ogni ordine non
+processato interessa l'indirizzo di consegna.  Di ogni ordine processato
+interessa la consegna (una ed una sola) attraverso cui &#232; stato processato.
+Di ogni prodotto interessa il codice (identificativo), il prezzo, e la
+percentuale I.V.A.
+Ogni cliente &#232; identificato dal suo nome e dalla sua data di nascita.  Di
+ogni cliente interessa inoltre il numero di anni da cui &#232; cliente e il
+reddito annuo, se noto.  Si noti che ciascun cliente effettua almeno un ordine.
+Di ogni consegna, che &#232; relativa ad un insieme di clienti (almeno uno),
+interessa la data, l'ora, la durata, ed il servizio di corriere usato (uno ed
+uno solo).  Di ogni servizio di corriere interessa il nome (identificativo) e
+il numero di telefono.  Si noti che uno stesso servizio di corriere non pu&#242;
+essere usato per pi&#249; di una consegna in una certa ora di una certa data.
+
+<P>
+
+<H2><A NAME="SECTION00002000000000000000">
+Problema 2</A>
+</H2>
+
+<P>
+Si richiede di effettuare la progettazione logica dell'applicazione, producendo
+(in una qualunque notazione) lo schema relazionale completo di vincoli, e
+seguendo l'indicazione di ottimizzare lo schema relazionale rispetto
+all'interrogazione&nbsp;2 nel problema&nbsp;3.
+
+<P>
+
+<H2><A NAME="SECTION00003000000000000000">
+Problema 3</A>
+</H2>
+
+<P>
+Sulla base dello schema relazionale definito per il problema&nbsp;2, esprimere in
+SQL le seguenti interrogazioni:
+
+<OL>
+<LI>Calcolare nome e data di nascita dei clienti che hanno effettuato almeno
+  un ordine processato nella stessa data in cui &#232; stato effettuato l'ordine.
+</LI>
+<LI>Per ciascuno degli ordini non processati, calcolare nome del cliente che
+  lo ha effettuato, data in cui lo ha effettuato, e indirizzo di consegna.
+</LI>
+<LI>Per ciascuna consegna, calcolare il prezzo complessivo dei prodotti
+  consegnati.  I prodotti consegnati in una consegna sono tutti quelli relativi
+  agli ordini processati con quella consegna.  Il prezzo complessivo deve
+  essere calcolato mediante la somma, tenendo anche conto della quantit&#224; per
+  ciascun prodotto richiesta negli ordini.
+</LI>
+<LI>Calcolare data, ora, e nome del corriere per ogni consegna relativa ad
+  almeno un cliente i cui ordini sono stati tutti processati con quella
+  consegna.
+</LI>
+</OL>
+
+<P>
+<BR><HR>
+
+</BODY>
+</HTML>

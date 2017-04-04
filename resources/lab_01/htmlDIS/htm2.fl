@@ -1,0 +1,132 @@
+/*
+ * Analizzatore lessicale per miniHTML VERSIONE 2 (con attributi dei tag)
+ *
+ * da usare autonomamente
+ *
+ * (versione che restituisce in uscita solo le assegnazioni degli attributi
+ *  all'interno dei tag)
+ *
+ * Sequenza di comandi per generare lo scanner:
+ *
+ *     flex htm2.fl
+ *     PER DOS/WINDOWS: gcc lexyy.c -lfl -o htm2
+ *     PER LINUX/UNIX: gcc lex.yy.c -lfl -o htm2
+ *
+ * Richiamare lo scanner tramite il comando:
+ *
+ *     htm2 < nomefileinput
+ *
+ * oppure ridirigendo l'output su un file:
+ *
+ *     htm2 < nomefileinput > nomefileoutput
+ */
+
+%{
+ #include <string.h>
+ #include <stdlib.h>
+ char *yylval=0;
+%}
+
+delim ([ \t\n])+
+integer ("+"|"-")?[0-9]+
+
+%x PARAM
+%x VALUE
+
+%%
+
+<INITIAL>"<html>"
+<INITIAL>"</html>"
+<INITIAL>"<head>"
+<INITIAL>"</head>"
+<INITIAL>"</body>"
+<INITIAL>"<title>"
+<INITIAL>"</title>"
+<INITIAL>"<ol>"
+<INITIAL>"</ol>"
+<INITIAL>"<ul>"
+<INITIAL>"</ul>"
+<INITIAL>"<li>"
+<INITIAL>"</li>"
+<INITIAL>"<h1>"
+<INITIAL>"</h1>"
+<INITIAL>"<h2>"
+<INITIAL>"</h2>"
+<INITIAL>"<h3>"
+<INITIAL>"</h3>"
+<INITIAL>"<h4>"
+<INITIAL>"</h4>"
+<INITIAL>"<h5>"
+<INITIAL>"</h5>"
+<INITIAL>"<h6>"
+<INITIAL>"</h6>"
+<INITIAL>"<em>"
+<INITIAL>"</em>"
+<INITIAL>"<center>"
+<INITIAL>"</center>"
+<INITIAL>"<code>"
+<INITIAL>"</code>"
+<INITIAL>"<b>"
+<INITIAL>"</b>"
+<INITIAL>"<i>"
+<INITIAL>"</i>"
+<INITIAL>"<dd>"
+<INITIAL>"</dd>"
+<INITIAL>"<br>"
+<INITIAL>"<p>"
+<INITIAL>"</p>"
+<INITIAL>"</font>"
+<INITIAL>"</a>"
+
+<INITIAL>"<meta" {BEGIN(PARAM);}
+<INITIAL>"<body" {BEGIN(PARAM);}
+<INITIAL>"<font" {BEGIN(PARAM);}
+<INITIAL>"<a"	 {BEGIN(PARAM);}
+<INITIAL>"<hr"	 {BEGIN(PARAM);}
+
+<INITIAL>{delim}
+<INITIAL>[^\<\>]+
+<INITIAL>"<!"[^\>]*">"		
+<INITIAL><<EOF>>	{return(0);}
+
+
+<PARAM>{delim}
+<PARAM>"content"	{strcpy(yylval,yytext); printf("%s",yylval);}
+<PARAM>("name"|"NAME")	{strcpy(yylval,yytext); printf("%s",yylval);}
+<PARAM>"text"		{strcpy(yylval,yytext); printf("%s",yylval);}
+<PARAM>"link"		{strcpy(yylval,yytext); printf("%s",yylval);}
+<PARAM>"alink"		{strcpy(yylval,yytext); printf("%s",yylval);}
+<PARAM>"vlink"		{strcpy(yylval,yytext); printf("%s",yylval);}
+<PARAM>"bgcolor"       	{strcpy(yylval,yytext); printf("%s",yylval);}
+<PARAM>"href"		{strcpy(yylval,yytext); printf("%s",yylval);}
+<PARAM>"size"		{strcpy(yylval,yytext); printf("%s",yylval);}
+<PARAM>"face"		{strcpy(yylval,yytext); printf("%s",yylval);}
+<PARAM>"http-equiv"	{strcpy(yylval,yytext); printf("%s",yylval);}
+<PARAM>("width"|"WIDTH")  {strcpy(yylval,yytext); printf("%s",yylval);}
+<PARAM>"="	{strcpy(yylval,yytext); printf(" %s ",yylval); BEGIN(VALUE);}
+<PARAM>">"	{BEGIN(INITIAL);}
+
+<VALUE>{delim}
+<VALUE>\"([^\"])*\" {strcpy(yylval,yytext); printf("%s\n",yylval);BEGIN(PARAM);}
+<VALUE>{integer}    {strcpy(yylval,yytext); printf("%s\n",yylval);BEGIN(PARAM);}
+
+%%
+main ()
+{
+  
+  /* Il programma funziona ridirigendo l'input                       */
+
+  /* stampa nel seguente formato sullo standard output:              */ 
+  /* Numero di riga   Tipo di token riconosciuto    [lessema associato] */
+
+  /* la stringa deve essere inizializzata perche' funzioni la strcpy */
+  yylval=(char*)malloc(160*sizeof(char));
+
+  /* alla terminazione del file facciamo tornare 0 per uscire dal while ..*/
+  while (yylex()); 
+  
+  /* .. e deallocare la memoria */
+  free(yylval);
+
+}
+

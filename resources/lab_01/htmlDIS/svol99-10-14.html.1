@@ -1,0 +1,271 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0//EN">
+<!-- Created by htmlize-0.49 in css mode. -->
+<html>
+  <head>
+    <title>svol99-10-14.c</title>
+    <style type="text/css">
+    <!--
+      BODY {
+        color: #000000;
+        background-color: #ffffff;
+      } /* default */
+      span.keyword {
+        color: #006400;
+      } /* font-lock-keyword-face */
+      span.function-name {
+        color: #0000cd;
+      } /* font-lock-function-name-face */
+      span.comment {
+        color: #4682b4;
+      } /* font-lock-comment-face */
+      span.string {
+        color: #b22222;
+      } /* font-lock-string-face */
+      span.variable-name {
+        color: #a52a2a;
+      } /* font-lock-variable-name-face */
+      span.type {
+        color: #ff00ff;
+      } /* font-lock-type-face */
+      span.builtin {
+        color: #da70d6;
+      } /* font-lock-builtin-face */
+    -->
+    </style>
+  </head>
+  <body>
+    <pre>
+<span class="comment">/* Prova scritta del 14/10/99 -- Ambiente e Territorio */</span>
+
+
+#<span class="builtin">include</span> <span class="string">&lt;stdio.h&gt;</span>
+#<span class="builtin">include</span> <span class="string">&lt;stdlib.h&gt;</span>
+
+#<span class="builtin">define</span> <span class="variable-name">LEN</span> 25
+#<span class="builtin">define</span> <span class="variable-name">R</span> 10
+#<span class="builtin">define</span> <span class="variable-name">C</span> 10
+
+<span class="keyword">struct</span> <span class="type">elem</span> {
+	<span class="type">int</span> <span class="variable-name">x</span>,<span class="variable-name">y</span>;
+	<span class="keyword">struct</span> <span class="type">elem</span> *<span class="variable-name">next</span>;
+};
+
+<span class="keyword">typedef</span> <span class="keyword">struct</span> <span class="type">elem</span> <span class="variable-name">punto</span>;
+
+<span class="keyword">typedef</span> <span class="keyword">enum</span> {spento,acceso} <span class="type">stato</span>;
+<span class="keyword">typedef</span> stato <span class="variable-name">schermo</span>[R][C]; <span class="comment">/* R=righe, C=colonne */</span>
+
+
+<span class="comment">/* prototipi */</span>
+	<span class="type">void</span> <span class="function-name">LeggiNomeFile</span>(<span class="type">char</span> *, <span class="type">char</span> *);
+	<span class="type">FILE</span> *<span class="function-name">ApriFile</span>(<span class="type">char</span> *, <span class="type">char</span> *);
+	<span class="type">void</span> <span class="function-name">Spegni</span>(schermo);
+	<span class="type">void</span> <span class="function-name">linea</span>(<span class="type">void</span>);
+	<span class="type">void</span> <span class="function-name">seqnumeri</span>(<span class="type">void</span>);
+	<span class="type">void</span> <span class="function-name">VisualizzaSchermo</span>(schermo);
+	<span class="type">int</span> <span class="function-name">LeggiEVisualizza</span>(<span class="type">char</span> *, schermo);
+	punto *CreaElemento(<span class="type">void</span>);
+	<span class="type">void</span> <span class="function-name">Aggiungi</span>(punto **, punto **, <span class="type">int</span>, <span class="type">int</span>);
+	<span class="type">int</span> <span class="function-name">ContaVicini</span>(schermo, <span class="type">int</span>, <span class="type">int</span>);
+	punto *CostruisciListaIsolati(<span class="type">char</span> *);
+	<span class="type">void</span> <span class="function-name">StampaLista</span>(punto *);
+	<span class="type">int</span> <span class="function-name">main</span>(<span class="type">void</span>);
+
+
+
+<span class="type">void</span> <span class="function-name">LeggiNomeFile</span>(<span class="type">char</span> *<span class="variable-name">messaggio</span>, <span class="type">char</span> *<span class="variable-name">nome</span>)
+{
+	printf(<span class="string">&quot;%s&quot;</span>,messaggio);
+	gets(nome);
+	<span class="keyword">return</span>;
+}
+
+
+<span class="type">FILE</span> *<span class="function-name">ApriFile</span>(<span class="type">char</span> *<span class="variable-name">nome</span>, <span class="type">char</span> *<span class="variable-name">modo</span>)
+{
+	<span class="type">FILE</span> *<span class="variable-name">f</span>;
+	f=fopen(nome,modo);
+	<span class="keyword">if</span>(f==NULL) {
+		fprintf(stderr,<span class="string">&quot;Errore apertura file %s in modo %s. Esecuzione terminata.\n&quot;</span>,nome,modo);
+		exit(1);
+	}
+	<span class="keyword">return</span> f;
+}
+
+
+<span class="type">void</span> <span class="function-name">Spegni</span>(schermo z)
+{
+	<span class="type">int</span> <span class="variable-name">i</span>,<span class="variable-name">j</span>;
+	<span class="keyword">for</span>(i=0;i&lt;R;i++)
+		<span class="keyword">for</span>(j=0;j&lt;C;j++)
+			z[i][j]=spento;
+	<span class="keyword">return</span>;
+}
+
+
+<span class="type">void</span> <span class="function-name">linea</span>(<span class="type">void</span>)
+{
+	<span class="type">int</span> <span class="variable-name">j</span>;
+	printf(<span class="string">&quot;  +&quot;</span>); <span class="comment">/* n.ro spazi bianchi == n.ro cifre intere */</span>
+	<span class="keyword">for</span>(j=0;j&lt;C-1;j++)
+		printf(<span class="string">&quot;--&quot;</span>);
+	printf(<span class="string">&quot;-+\n&quot;</span>);
+	<span class="keyword">return</span>;
+}
+
+
+<span class="type">void</span> <span class="function-name">seqnumeri</span>(<span class="type">void</span>)
+{
+	<span class="type">int</span> <span class="variable-name">j</span>;
+	printf(<span class="string">&quot;   &quot;</span>); <span class="comment">/* n.ro spazi bianchi == n.ro cifre intere + 1 */</span>
+	<span class="keyword">for</span>(j=0;j&lt;C;j++)
+		printf(<span class="string">&quot;%1d &quot;</span>,j%10);
+	printf(<span class="string">&quot;\n&quot;</span>);
+	<span class="keyword">return</span>;
+}
+
+
+<span class="type">void</span> <span class="function-name">VisualizzaSchermo</span>(schermo z)
+{
+	<span class="comment">/* molto piu` complicata del necessario per mettere una cornice */</span>
+	
+	<span class="type">int</span> <span class="variable-name">i</span>,<span class="variable-name">j</span>;
+	seqnumeri();
+	linea();
+	<span class="keyword">for</span>(i=0;i&lt;R;i++) {
+		printf(<span class="string">&quot;%2d|&quot;</span>,i);
+		<span class="keyword">for</span>(j=0;j&lt;C;j++)
+			<span class="keyword">if</span>(z[i][j]==acceso)
+				printf(<span class="string">&quot;*|&quot;</span>);
+			<span class="keyword">else</span>
+				printf(<span class="string">&quot; |&quot;</span>);
+		printf(<span class="string">&quot;%-2d\n&quot;</span>,i);
+		linea();
+	}
+	seqnumeri();
+	<span class="keyword">return</span>;
+}
+
+
+<span class="type">int</span> <span class="function-name">LeggiEVisualizza</span>(<span class="type">char</span> *<span class="variable-name">nome</span>, <span class="variable-name">schermo</span> griglia)
+{
+	<span class="type">FILE</span> *<span class="variable-name">f</span>;
+	<span class="type">int</span> <span class="variable-name">i</span>,<span class="variable-name">j</span>,<span class="variable-name">k</span>,<span class="variable-name">n</span>;
+	
+	Spegni(griglia);
+	f=ApriFile(nome,<span class="string">&quot;r&quot;</span>);
+	<span class="keyword">for</span>(;fscanf(f,<span class="string">&quot;%d %d %d&quot;</span>,&amp;i,&amp;k,&amp;n)==3;) {
+		<span class="comment">/* accendere n celle a partire da [i][k] */</span>
+		
+		<span class="comment">/* se impossibile scrive messaggio errore e ritorna */</span>
+		<span class="keyword">if</span>(n+k&gt;C) {
+			printf(<span class="string">&quot;Specifiche in \&quot;%s\&quot; scorrette. Elaborazione interrotta.\n&quot;</span>,nome);
+			fclose(f);
+			<span class="keyword">return</span> 1; <span class="comment">/* errore */</span>
+		}
+		
+		<span class="comment">/* possibile! */</span>
+		<span class="keyword">for</span>(j=k;j&lt;n+k;j++)
+			griglia[i][j]=acceso;
+	}
+	fclose(f);
+	VisualizzaSchermo(griglia);
+	<span class="keyword">return</span> 0; <span class="comment">/* ok */</span>
+}
+
+
+<span class="type">punto</span> *<span class="function-name">CreaElemento</span>(<span class="type">void</span>)
+{
+	punto *nuovo;
+	nuovo=malloc(<span class="keyword">sizeof</span>(punto));
+	<span class="keyword">if</span>(nuovo==NULL) {
+		fprintf(stderr,<span class="string">&quot;Allocazione memoria fallita. Esecuzione terminata.\n&quot;</span>);
+		exit(2);
+	}
+	<span class="keyword">return</span> nuovo;
+}
+
+
+<span class="type">void</span> <span class="function-name">Aggiungi</span>(punto **testa, punto **coda, <span class="type">int</span> <span class="variable-name">i</span>, <span class="type">int</span> <span class="variable-name">j</span>)
+{
+	punto *nuovo;
+	nuovo=CreaElemento();
+	nuovo-&gt;x=j;
+	nuovo-&gt;y=i;
+	nuovo-&gt;next=NULL;
+	<span class="keyword">if</span>(*testa==NULL)
+		*testa=nuovo;
+	<span class="keyword">else</span>
+		(*coda)-&gt;next=nuovo;
+	*coda=nuovo;
+	<span class="keyword">return</span>;
+}
+
+
+<span class="type">int</span> <span class="function-name">ContaVicini</span>(schermo z, <span class="type">int</span> <span class="variable-name">i</span>, <span class="type">int</span> <span class="variable-name">j</span>)
+{
+	<span class="type">int</span> <span class="variable-name">vicini</span>=0;
+	
+	<span class="keyword">if</span>(i&gt;0) {
+		<span class="keyword">if</span>((j&gt;0)&amp;&amp;(z[i-1][j-1]==acceso))
+			vicini++;
+		<span class="keyword">if</span>(z[i-1][j]==acceso)
+			vicini++;
+		<span class="keyword">if</span>((j&lt;C-1)&amp;&amp;(z[i-1][j+1]==acceso))
+			vicini++;
+	}
+	<span class="keyword">if</span>(i&lt;R-1) {
+		<span class="keyword">if</span>((j&lt;C-1)&amp;&amp;(z[i+1][j+1]==acceso))
+			vicini++;
+		<span class="keyword">if</span>(z[i+1][j]==acceso)
+			vicini++;
+		<span class="keyword">if</span>((j&gt;0)&amp;&amp;(z[i+1][j-1]==acceso))
+			vicini++;
+	}
+	<span class="keyword">if</span>((j&lt;C-1)&amp;&amp;(z[i][j+1]==acceso))
+		vicini++;
+	<span class="keyword">if</span>((j&gt;0)&amp;&amp;(z[i][j-1]==acceso))
+		vicini++;
+	<span class="keyword">return</span> vicini;
+}
+
+
+<span class="type">punto</span> *<span class="function-name">CostruisciListaIsolati</span>(<span class="type">char</span> *<span class="variable-name">nome</span>)
+{
+	punto *testa, *coda;
+	schermo griglia;
+	<span class="type">int</span> <span class="variable-name">i</span>,<span class="variable-name">j</span>;
+	
+	<span class="keyword">if</span>(LeggiEVisualizza(nome,griglia)==1)
+		<span class="keyword">return</span> NULL;
+		
+	testa=NULL;
+	<span class="keyword">for</span>(i=0;i&lt;R;i++)
+		<span class="keyword">for</span>(j=0;j&lt;C;j++)
+			<span class="keyword">if</span>((griglia[i][j]==acceso)&amp;&amp;(ContaVicini(griglia,i,j)==0))
+				Aggiungi(&amp;testa,&amp;coda,i,j);
+
+	<span class="keyword">return</span> testa;
+}
+
+
+<span class="type">void</span> <span class="function-name">StampaLista</span>(punto *p)
+{
+	<span class="keyword">for</span>(;p!=NULL;p=p-&gt;next)
+		printf(<span class="string">&quot;(%d,%d) &quot;</span>,p-&gt;y,p-&gt;x);
+	<span class="keyword">return</span>;
+}
+
+
+<span class="function-name">main</span>(<span class="type">void</span>)
+{
+	punto *primo;
+	<span class="type">char</span> <span class="variable-name">nomefile</span>[LEN];
+	
+	LeggiNomeFile(<span class="string">&quot;Inserisci nome file specifica: &quot;</span>,nomefile);
+	primo=CostruisciListaIsolati(nomefile);
+	StampaLista(primo);
+	<span class="keyword">return</span> 0;
+}</pre>
+  </body>
+</html>

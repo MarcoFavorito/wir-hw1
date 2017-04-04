@@ -1,0 +1,52 @@
+<html>
+<head>
+<title>Definizioni di stringhe.</title>
+</head>
+
+<body>
+<h2>Definizioni di stringhe.</h2>
+
+Un file di testo contiene delle definizioni di stringhe, il cui
+formato e'
+
+<p>
+
+%[numero]="stringa"
+
+<p>
+
+Il resto del file contiene del testo normale, e in alcuni punti
+le stringhe precedentemente definite vengono usate, ossia nel
+testo puo' comparire %[numero], che va sostituito con le stringa
+opportuna.
+
+
+<h3>Esempio.</h3>
+
+
+<h4>File di input</h4>
+
+<pre>
+%[0]="15 maggio 1998" %[1]="14:30"
+
+Oggi, %[0], alle ore %[1], ho scritto questo
+file %[0]="file-stringhe" il cui nome e' %[0].
+</pre>
+
+
+<h4>File di output</h4>
+ 
+<pre>
+Oggi, 15 maggio 1998, alle ore 14:30, ho scritto questo
+file  il cui nome e' file-stringhe.
+</pre>
+
+<ul>
+<li> <a href="stringhe.lex">Analizzatore lessicale</a>
+<li> <a href="stringhe.y">Analizzatore sintattico</a>
+</ul>
+
+</body>
+</html>
+
+

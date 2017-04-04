@@ -1,0 +1,87 @@
+<!DOCTYPE doctype PUBLIC "-//w3c//dtd html 4.0 transitional//en"><html>
+<head>
+<base href='http://www.dis.uniroma1.it/~degiacom/didattica/labprog/materiale/unita4/Espressioni/'>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<title>Polinomi</title>
+<link rel="stylesheet" href="index_files/lp2003.html" type="text/css">
+<style type="text/css">
+<!--
+.compitoA {  background-color: #FFFF00}
+.compitoB {  background-color: #FF6600}
+-->
+</style>
+</head>
+
+<body>
+<br>
+<center>
+  <p><b>Laboratorio di Programmazione - A.A. 2003/04</b></p>
+  <h2>Esame del 12/12/2003</h2>
+  <h2>Espressioni di Polinomi (A)</h2>
+</center>
+
+<P><b>Parte 1</b></P>
+
+<P>Un polinomio &egrave; caratterizzato da una variabile e dai cofficienti dei 
+  suoi termini, ad esempio: <code>1 - x^2 + 3 x^3</code> &egrave; un polinomio 
+  nella variabile x con i coefficienti 1,0,-1,3 per i termini di grado 0,1,2,3. 
+  Si tratti il caso di polinomi di interi, in cui quindi i coefficienti e i valori 
+  che pu&ograve; assumere la variabile sono dei valori interi.
+<P>Si scriva una classe Java all'interno di un package <code>polinomi</code> per 
+  rappresentare tali polinomi, dotata delle seguenti funzionalit&agrave;:<br>
+  - <i>crea(String v, int n)</i>: crea un polinomio di grado <i>n</i> nella variabile 
+  <i>v</i> con i coefficienti tutti pari a 0;<br>
+  - <i>crea(String v, int[] c)</i>: crea un polinomio nella variabile <i>v</i> 
+  con i coefficienti pari alle componenti dell'array <i>c</i> (l'indice dell'array 
+  corrisponde al grado del termine a cui &egrave; riferito il coefficiente);<br>
+  - <i>assegna(int k, int c)</i>: assegna il valore <i>c</i> al coefficiente del 
+  termine di grado <i>k</i> del polinomio; lancia un'eccezione se <i>k</i> &egrave; 
+  maggiore del grado del polinomio;<br>
+  - <i>variabile()</i>: restituisce il nome della variabile del polinomio;<br>
+  - <i>grado()</i>: restituisce il grado del polinomio;<br>
+  - <i>coefficiente(int k)</i>: restituisce il coefficiente del termine di grado 
+  <i>k</i>; lancia un'eccezione se <i>k</i> &egrave; maggiore del grado del polinomio;<br>
+  - <i>valuta(int x)</i>: restituisce il valore del polinomio assumendo il valore 
+  x per la variabile del polinomio.<br>
+  - <i>toString()</i>: restituisce una stringa rappresentante il polinomio nella 
+  seguente forma <code>cn x^n + cn-1 x^n-1 + ... c1 x + c0</code>, evitando di 
+  scrivere i termini con coefficiente nullo (es. <code>2 x^3 + 3 x</code>, invece 
+  di <code>2 x^3 + 0 x^2 + 3 x + 0</code>).
+<P>Ridefinire il metodo <code>equals</code> della classe <code>Object</code> per 
+  verificare l'uguaglianza profonda tra due oggetti polinomio.
+<p><b>Parte 2</b> 
+<P>Si definiscano, all'interno del package <code>polinomi</code>, le classi Java 
+  per rappresentare espressioni di polinomi formate da: <em>(i)</em> polinomi; 
+  <em>(ii) </em>somme di due espressioni e <em>(iii) </em>prodotti di due espressioni. 
+  Si equipaggino tutte le classi di metodi <code>toString</code> per la rappresentazione 
+  sotto forma di stringa delle espressioni di polinomi. 
+<P><b>Parte 3</b></P>
+
+<P>Si definisca una classe <code>UtilitaEspressioniPolinomi</code>, in un package 
+  <code>servizipolinomi</code>, contenente un metodo statico che implementi una 
+  procedura di conversione da stringa ad espressione di polinomi secondo la seguente 
+  grammatica.</P>
+<blockquote> 
+  <p> <code>E &nbsp;-&gt; EE | EE + EE | EE * EE<br>
+    EE -&gt; ( E ) | P<br>
+    P &nbsp;-&gt; &quot;[v|c0,c1,...,cn]&quot;<span class="compitoA"><br>
+    </span></code><code></code></p>
+  </blockquote>
+<P>Il termine associato ad un polinomio <code>&quot;[v|c0,c1,...,cn]&quot;</code> 
+  &egrave; dato senza spazi bianchi o caratteri speciali ed &egrave; costituito 
+  dal nome della variabile (indicato con <code>v</code>) e da una sequenza di 
+  coefficienti per i termini di grado crescenti da 0 a n separati da virgole. 
+  Ad esempio <code>&quot;[y|0,1,-2,0,3]&quot;</code> rappresenta il polinomio 
+  <code>y - 2 y^2 + 3 y^4.</code></P>
+<P><b>Parte 4</b></P>
+
+<p>Si usi la seguente classe <a href="Assegnazione.java">Assegnazione.java</a> 
+  (da inserire nel package <code>servizipolinomi</code>) per rappresentare assegnazioni
+  di valori a variabili.<br>
+  Definire nel package <code>servizipolinomi</code> una classe <code>Valutazione</code> 
+  contenente un metodo statico che data una espressione di polinomi ed una assegnazione 
+  dele sue variabili, valuta tale espressione. </p>
+<P>&nbsp;</P>
+  
+</body>
+</html>

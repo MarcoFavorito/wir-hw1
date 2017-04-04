@@ -1,0 +1,41 @@
+
+<HTML>
+
+<HEAD>
+<META HTTP-EQUIV="Context-Type" CONTEXT="text/html;charset=PREDEFINITA (AUTOMATICA)">
+<meta name="GENERATOR" content="Microsoft Internet Assistant for PowerPoint 97">
+ <TITLE>Translating ISA Hierarchies to Relations</TITLE> 
+</HEAD>
+
+<BODY     >
+
+ <H1>Translating ISA Hierarchies to Relations</H1> 
+ <P><UL>
+<LI><H2>General approach:
+</H2>
+<UL>
+<LI>3 relations: Employees, Hourly_Emps and Contract_Emps.
+<UL>
+<LI>Hourly_Emps:  Every employee is recorded in Employees.  For hourly emps, extra info recorded in Hourly_Emps (hourly_wages, hours_worked, ssn); must delete Hourly_Emps tuple if referenced Employees tuple is deleted).
+<LI>Queries involving all employees easy, those involving just Hourly_Emps require a join to get some attributes.
+</UL></UL></UL><UL>
+<LI><H2>Alternative:  Just Hourly_Emps and Contract_Emps.
+</H2>
+<UL>
+<LI>Hourly_Emps:  ssn, name, lot, hourly_wages, hours_worked.
+<LI>Each employee must be in one of these two subclasses.    </UL></UL></P>
+<P></P> 
+<P>
+<TABLE>
+  <TD HEIGHT=100 WIDTH=100> <A HREF="tsld013.htm">Diapositiva precedente</A> </TD>
+  <TD HEIGHT=100 WIDTH=100> <A HREF="tsld015.htm">Diapositiva successiva</A> </TD>
+  <TD HEIGHT=100 WIDTH=150> <A HREF="tsld001.htm">Torna alla prima diaposiva</A> </TD>
+  <TD HEIGHT=100 WIDTH=150> <A HREF="sld014.htm">Visualizza versione grafica</A> </TD>
+</TABLE>
+<BR>
+</P>
+
+
+
+</Body>
+</HTML>

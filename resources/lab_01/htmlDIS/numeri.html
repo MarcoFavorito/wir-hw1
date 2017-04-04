@@ -1,0 +1,77 @@
+<html>
+<head>
+<title>Istruzioni su numeri interi</title>
+</head>
+
+<body>
+
+<h2>Istruzioni su numeri interi</h2>
+
+Un file contiene delle istruzioni di assegnamento, di stampa e istruzioni
+condizionali (if). La sintassi delle tre istruzioni &egrave; la seguente:
+
+<pre>
+
+variabile=numero
+print variabile
+if variabile then istruzione
+
+</pre>
+
+Le variabili sono $0 ... $9, ossia ci sono dieci variabili, ognuna identificata
+da un simbolo $ seguito da una cifra (nota: una sola cifra). Nelle istruzioni
+if, la istruzione interna pu&ograve; essere una qualsiasi istruzione
+(cio&egrave; pu&ograve; essere un'altra istruzione condizionale).
+
+<p>
+
+Scrivere una analizzatore lessicale-sintattico per questo linguaggio. L'analizzatore
+deve stampare i valori delle variabili nelle istruzioni di stampa. Inoltre, alla fine
+del parsing, occorre stampare tutti i valori delle variabili.
+
+<p>
+
+<b>Nota:</b> questo esercizio richiede l'uso delle mid-rule actions, che non sono
+nel programma del corso (e non verranno richieste all'esame o all'esonero).
+
+
+<h3>Esempio</h3>
+
+<h4>File di input</h4>
+
+<pre>
+$1=10;
+
+$2=20;
+
+
+$3=0;
+
+if $3 then if $2 then $2=0;
+print $2;
+
+if $2 then if $3 then $1=100;
+print $1;
+
+if $2 then $2=0;
+
+print $2;
+
+if $2 then print $1;
+</pre>
+
+
+<h4>File di output</h4>
+
+<pre>
+$2=20
+$1=10
+$2=0
+
+$0=0 $1=10 $2=0 $3=0 $4=0 $5=0 $6=0 $7=0 $8=0 $9=0 
+</pre>
+
+<ul>
+<li> <a href="numeri.lex">Analizzatore lessicale</a>
+<li> <a href="numeri.y">Analizzatore sintattico</a>
+</ul>

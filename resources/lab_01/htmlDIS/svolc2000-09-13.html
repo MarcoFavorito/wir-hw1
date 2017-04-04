@@ -1,0 +1,234 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0//EN">
+<!-- Created by htmlize-0.49 in css mode. -->
+<html>
+  <head>
+    <title>svolc2000-09-13.c</title>
+    <style type="text/css">
+    <!--
+      BODY {
+        color: #000000;
+        background-color: #ffffff;
+      } /* default */
+      span.keyword {
+        color: #006400;
+      } /* font-lock-keyword-face */
+      span.function-name {
+        color: #0000cd;
+      } /* font-lock-function-name-face */
+      span.string {
+        color: #b22222;
+      } /* font-lock-string-face */
+      span.comment {
+        color: #4682b4;
+      } /* font-lock-comment-face */
+      span.variable-name {
+        color: #a52a2a;
+      } /* font-lock-variable-name-face */
+      span.type {
+        color: #ff00ff;
+      } /* font-lock-type-face */
+      span.builtin {
+        color: #da70d6;
+      } /* font-lock-builtin-face */
+    -->
+    </style>
+  </head>
+  <body>
+    <pre>
+#<span class="builtin">include</span> <span class="string">&lt;stdio.h&gt;</span>
+#<span class="builtin">include</span> <span class="string">&lt;string.h&gt;</span>
+#<span class="builtin">include</span> <span class="string">&lt;stdlib.h&gt;</span>
+
+#<span class="builtin">include</span> <span class="string">&lt;assert.h&gt;</span>
+<span class="comment">/*
+ * L'inclusione del file assert.h consente di utilizzare una caratteristica relativamente
+ * nuova dell'ANSI C, vale a dire le &quot;asserzioni&quot;. Per assicurare che in dato punto
+ * di un programma sia verificata una proprietà (ad esempio, un puntatore p diverso
+ * da NULL) basta inserire in quel punto la  chiamata (macro ANSI)
+ * assert(&lt;proprietà&gt;) (ad esempio, assert(p != NULL)). Se la proprietà è soddisfatta
+ * allora l'elaborazione continua normalmente; se invece essa viene violata il 
+ * programma si interrompe e viene genarato un opportuno messaggio di errore che
+ * segnala la situazione anomala.
+ */</span>
+
+#<span class="builtin">define</span> <span class="variable-name">L</span> 14      <span class="comment">/* lunghezza titoli: 13 caratteri + terminatore '\0' */</span>
+#<span class="builtin">define</span> <span class="variable-name">MAX</span> 30    <span class="comment">/* max lunghezza nome file */</span>
+#<span class="builtin">define</span> <span class="variable-name">MAXIST</span> 20 <span class="comment">/* max lunghezza nome istituto */</span>
+
+<span class="keyword">typedef</span> <span class="type">char</span> <span class="variable-name">tipotitolo</span>[L];
+<span class="keyword">typedef</span> <span class="type">char</span> <span class="variable-name">tiponomefile</span>[MAX];
+<span class="keyword">typedef</span> <span class="type">char</span> *<span class="variable-name">tiponomeistituto</span>;
+
+<span class="keyword">typedef</span> <span class="type">int</span> <span class="variable-name">tipodenaro</span>;
+
+<span class="keyword">struct</span> <span class="type">compenso</span> {
+    tiponomeistituto nomeistituto;
+    tipodenaro importodovuto;
+};
+
+<span class="keyword">typedef</span> <span class="keyword">struct</span> <span class="type">compenso</span> <span class="variable-name">tipocompenso</span>;
+
+<span class="keyword">struct</span> <span class="type">arraycompensi</span> {
+    tipocompenso *compensi;
+    <span class="type">int</span> <span class="variable-name">dimarray</span>;
+};
+
+<span class="keyword">typedef</span> <span class="keyword">struct</span> <span class="type">arraycompensi</span> <span class="variable-name">tipoarraycompensi</span>;
+
+<span class="type">void</span> <span class="function-name">LeggiRiga</span>(<span class="type">FILE</span> *<span class="variable-name">f</span>, <span class="variable-name">tipotitolo</span> tit);
+<span class="type">tipodenaro</span> <span class="function-name">CalcolaImporto</span>(tiponomefile prev, tiponomefile class);
+<span class="type">unsigned</span> <span class="type">long</span> <span class="type">int</span> <span class="function-name">ContaRighe</span>(<span class="type">FILE</span> *<span class="variable-name">f</span>);
+<span class="type">tipoarraycompensi</span> <span class="function-name">CalcolaCompensi</span>(tiponomefile ricev, tiponomefile class);
+<span class="type">void</span> <span class="function-name">Dealloca</span>(tipoarraycompensi *arraycompensi);
+<span class="type">int</span> <span class="function-name">main</span>(<span class="type">void</span>);
+
+
+
+<span class="type">void</span> <span class="function-name">LeggiRiga</span>(<span class="type">FILE</span> *<span class="variable-name">f</span>, <span class="variable-name">tipotitolo</span> tit)
+{
+    tipodenaro somma;
+    assert(fscanf(f, <span class="string">&quot;%13s%d &quot;</span>, tit, &amp;somma) == 2);
+    <span class="keyword">return</span>;
+}
+
+<span class="type">tipodenaro</span> <span class="function-name">CalcolaImporto</span>(tiponomefile prev, tiponomefile class)
+{
+    <span class="type">FILE</span> *<span class="variable-name">fprev</span>, *<span class="variable-name">fclass</span>;
+    tipotitolo titoloprevisione, titoloclassifica;
+    tipodenaro importo = 0;
+    <span class="type">int</span> <span class="variable-name">i</span>;
+    
+    fprev = fopen (prev, <span class="string">&quot;r&quot;</span>);
+    assert(fprev != NULL);
+    
+    fclass = fopen (class, <span class="string">&quot;r&quot;</span>);
+    assert(fclass != NULL);
+    
+    <span class="keyword">for</span>(i=0; i &lt; 10; i++) {
+        LeggiRiga(fprev,titoloprevisione);
+        LeggiRiga(fclass,titoloclassifica);
+        <span class="keyword">if</span>(strcmp(titoloprevisione, titoloclassifica) == 0)
+            importo += 1000;
+    }
+    
+    fclose(fprev);
+    fclose(fclass);
+    
+    <span class="keyword">return</span> importo;
+}
+
+
+<span class="type">unsigned</span> <span class="type">long</span> <span class="type">int</span> <span class="function-name">ContaRighe</span>(<span class="type">FILE</span> *<span class="variable-name">f</span>)
+{
+    <span class="type">unsigned</span> <span class="type">long</span> <span class="type">int</span> <span class="variable-name">nrighe</span> = 0;
+    <span class="type">int</span>  <span class="variable-name">c</span>, <span class="comment">/* ultimo carattere letto */</span> 
+        cc; <span class="comment">/* penultimo carattere letto */</span>
+    
+    rewind(f); <span class="comment">/* inutile! */</span>
+    cc = EOF;
+    c = fgetc(f);
+    <span class="keyword">while</span>(!feof(f)) {
+        <span class="keyword">if</span>(c == <span class="string">'\n'</span>)
+            nrighe++;
+        cc = c;
+        c = fgetc(f);
+    }
+    
+    <span class="keyword">if</span>(cc != <span class="string">'\n'</span>) <span class="comment">/* se il file non termina con '\n' l'ultima riga è incompleta
+                      ma la contiamo lo stesso */</span>
+        nrighe++;
+    
+    rewind(f);
+    <span class="keyword">return</span> nrighe;
+}
+
+
+<span class="type">tipoarraycompensi</span> <span class="function-name">CalcolaCompensi</span>(tiponomefile ricev, tiponomefile class)
+<span class="comment">/* si assume che nel file ricev ogni istituto compaia al più una volta */</span>
+{
+    tipoarraycompensi ac;
+    <span class="type">FILE</span> *<span class="variable-name">fricev</span>;
+    tiponomefile prev;
+    <span class="type">int</span> <span class="variable-name">i</span>, <span class="variable-name">n</span>;
+    
+    <span class="type">char</span> <span class="variable-name">nomeistitutotemp</span>[MAXIST];
+    
+    fricev = fopen (ricev, <span class="string">&quot;r&quot;</span>);
+    assert(fricev != NULL);
+    
+    n = ContaRighe(fricev); <span class="comment">/* la funzione riposiziona correttamente la posizione
+                               di lettura all'inizio del file */</span>
+    
+    ac.dimarray = n;
+    ac.compensi = malloc(n * <span class="keyword">sizeof</span>(tipocompenso));
+    assert(ac.compensi != NULL);
+    
+    <span class="keyword">for</span>(i=0; i&lt;n; i++) {
+        fscanf(fricev, <span class="string">&quot;%s %s &quot;</span>, prev, nomeistitutotemp);
+        (ac.compensi)[i].importodovuto=CalcolaImporto(prev, class);
+        (ac.compensi)[i].nomeistituto = malloc(strlen(nomeistitutotemp) + 1);
+        assert((ac.compensi)[i].nomeistituto != NULL);
+        strcpy((ac.compensi)[i].nomeistituto, nomeistitutotemp);
+    }
+    
+    fclose(fricev);
+    <span class="keyword">return</span> ac;
+}
+
+<span class="type">void</span> <span class="function-name">Dealloca</span>(tipoarraycompensi *arraycompensi)
+{
+    <span class="type">int</span> <span class="variable-name">i</span>;
+    <span class="keyword">for</span>(i=0; i&lt;arraycompensi-&gt;dimarray; i++)
+        free((arraycompensi-&gt;compensi)[i].nomeistituto);
+    free(arraycompensi-&gt;compensi);
+    
+    arraycompensi-&gt;dimarray = 0;
+    arraycompensi-&gt;compensi = NULL;
+    <span class="keyword">return</span>;
+}
+
+
+<span class="type">int</span> <span class="function-name">main</span>(<span class="type">void</span>)
+{
+    tiponomefile prev, class, ricev;
+    tipodenaro importo;
+    tipoarraycompensi arraycompensi;
+    <span class="type">int</span> <span class="variable-name">i</span>;
+    
+    
+    puts(<span class="string">&quot;Inserisci nome file con previsioni: &quot;</span>);
+    gets(prev);
+    
+    puts(<span class="string">&quot;Inserisci nome file con classifica: &quot;</span>);
+    gets(class);
+    
+    importo = CalcolaImporto(prev, class);
+    
+    printf(<span class="string">&quot;L'importo dovuto è pari a $%d.\n&quot;</span>, importo);
+    
+    puts(<span class="string">&quot;Inserisci nome file con elenco di nomi file: &quot;</span>);
+    gets(ricev);
+    
+    arraycompensi = CalcolaCompensi(ricev, class);
+    
+    printf(<span class="string">&quot;Elenco compensi dovuti:\n&quot;</span>);
+    <span class="keyword">for</span>(i=0; i&lt;arraycompensi.dimarray; i++)
+    <span class="comment">/*
+     * %-18s visualizza una stringa usando almeno 18 caratteri (riempiendo
+     * lo spazio eventualmente in eccedenza con spazi bianchi).
+     * Il simbolo '-' serve ad allineare la stringa a sinistra.
+     */</span>
+        printf(<span class="string">&quot;%-18s%6d\n&quot;</span>, (arraycompensi.compensi)[i].nomeistituto, 
+                            (arraycompensi.compensi)[i].importodovuto); 
+    printf(<span class="string">&quot;Termine elenco.\n&quot;</span>);
+    
+    printf(<span class="string">&quot;Inizio deallocamento... &quot;</span>);
+    Dealloca(&amp;arraycompensi);
+    printf(<span class="string">&quot;fatto. Premi INVIO.\n&quot;</span>);
+    getchar();
+    
+    <span class="keyword">return</span> 0;
+}
+</pre>
+  </body>
+</html>

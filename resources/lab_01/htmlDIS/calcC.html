@@ -1,0 +1,90 @@
+<head>
+<title>Prova al calcolatore - compito C</title>
+</head>
+
+<body>
+
+<h2>Prova al calcolatore</h2>
+<b>Compito C<br>
+Durata: 1:45</b>
+
+<hr>
+
+<h4>Prima parte</h4>
+
+<p>
+La clinica `C. Vostri'
+vuole informatizzare l'archivio dei propri clienti. A tale
+scopo, si realizzi la classe <tt>Paziente</tt>; i dati da
+memorizzare per ogni paziente sono i seguenti:
+</p>
+
+<dl>
+
+<dt><tt>nome</tt>
+<dd>una stringa
+
+<dt><tt>patologia</tt>
+<dd>un intero, che rappresenta il codice della patologia
+
+<dt><tt>degenza</tt>
+<dd>un altro intero, che indica il numero di giorni che il
+paziente ha gi&agrave; trascorso all'interno della clinica
+
+<dt><tt>prognosi</tt>
+<dd>un altro intero, che indica i giorni previsti di
+prognosi (durata totale della degenza)
+
+</dl>
+
+<p> Si realizzi la classe <tt>Paziente</tt>, con le
+componenti (=variabili di istanza) <tt>nome, patologia,
+degenza, prognosi</tt>. La classe deve avere un costruttore
+a 4 argomenti e metodi <tt>get</tt> e <tt>set</tt> per ogni
+componente. Si realizzino anche i metodi <tt>toString</tt>
+ed <tt>equals</tt>.</p>
+
+<hr>
+
+<h4>Seconda parte</h4>
+
+<p> Per ogni reparto della clinica, vogliamo un oggetto che
+rappresenta l'insieme dei dati dei pazienti ricoverati in
+quel reparto. Per rappresentare un insieme, si usi un array,
+oppure una <tt>LinkedList</tt>, oppure una <tt>Lista</tt>,
+oppure un <tt>HashSet</tt> </p>
+
+<p>
+Si realizzi la classe <tt>Reparto</tt> con i seguenti metodi:
+</p>
+
+<dl> 
+
+<dt><tt>static Paziente readPaziente(BufferedReader br)</tt> 
+<dd>metodo statico che legge i dati di un paziente da un
+<tt>BufferedReader</tt>, e restituisce un oggetto
+<tt>Paziente</tt> con questi dati; se il file &egrave;
+finito, va restituito <tt>null</tt> 
+
+<dt><tt>Reparto(String nomefile)</tt> 
+<dd>il costruttore ha come parametro il nome di un file: i
+dati dei pazienti contenuti nel file vengono letti e
+memorizzati nella struttura dati usata per la loro
+memorizzazione
+
+<dt><tt>void aggiorna()</tt> 
+<dd>per ciascun paziente, se il numero di giorni di
+degenza supera quelli di prognosi, si aggiornano i giorni di
+prognosi rendendoli uguali a quelli di degenza
+
+<dt><tt>Paziente erPeggio(int p)</tt> 
+<dd>ritorna il paziente con la patologia rappresentata dal
+codice <tt>p</tt> che ha il maggiore numero di giorni di
+degenza in tutto il reparto 
+
+</dl>
+
+</body>
+</html>
+
+

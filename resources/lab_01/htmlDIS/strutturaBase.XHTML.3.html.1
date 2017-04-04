@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+<title>struttura base del documentoi XHTML (eh?)</title>
+</head>
+<body>
+
+<pre>
+&lt;?xml version="1.0" encoding="UTF-8"?&gt;
+
+&lt;!DOCTYPE html
+PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"&gt;
+
+&lt;html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en"&gt;
+
+&lt;head&gt;
+&lt;title&gt;Virtual Library&lt;/title&gt;
+&lt;/head&gt;
+
+&lt;body&gt;
+
+&lt;p&gt;
+Tanto rumor per poco.
+&lt;br/&gt;
+poco rumor per poco.
+&lt;/p&gt;
+
+&lt;hr/&gt;
+
+&lt;p&gt;
+altro rumor per tanto.
+&lt;/p&gt;
+
+&lt;/body&gt;
+&lt;/html&gt;
+
+<p>
+<hr/>
+</p>
+
+<h3>
+L'elemento radice (root element) del doc XHTML deve contenere
+una dichiarazione di "namespace".
+</h3>
+<pre>
+Il namespace per XHTML e'        http://www.w3.org/1999/xhtml.
+</pre>
+
+<p>
+L'elemento radice e' sempre il caro vecchio "html" (minuscolo e senza virgolette!), con qualche
+aggiunta (namespace e linguaggio usato nel documento).
+<br />
+Dal linguaggio dipende il set di caratteru usato nella visualizzazione.
+</p>
+<pre>
+&lt;html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en"&gt;
+</pre>
+
+<h3>
+Prima dell'elemento radice deve esserci una dichiarazione di "tipo di documento" (DOCTYPE).
+</h3>
+<p>
+L'ident. PUBLIC dovra' corrispondere ad una delle tre possibili DTD ("document type description").
+</p>
+
+<pre>
+&lt;!DOCTYPE html
+PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"&gt;
+
+&lt;!DOCTYPE html
+PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"&gt;
+
+&lt;!DOCTYPE html
+PUBLIC "-//W3C//DTD XHTML 1.0 Frameset//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-frameset.dtd"&gt;
+</p>
+
+<p>L'ident. SYSTEM puo' cambiare per riflettere convenzioni locali.</p>
+
+<h3>
+La dichiarazione XML prima di tutto non e' sempre strettamente necessaria.
+</h3>
+<p>
+E' richiesta quando il "character encoding" e' diverso da quelli di default (UTF-8, UTF-16)
+senza che sia stato gia' implicito per effetto di un protocollo a piu' alto livello.
+e non ci sono altre codifiche inferite.
+</p>
+<p>Il suo uso e' comunque incoraggiato sempre.</p>
+
+</body>
+</html>

@@ -1,0 +1,215 @@
+<!doctype html public "-//w3c//dtd html 4.0 transitional//en">
+<html>
+<head>
+<link href="java.css" rel="stylesheet" type="text/css">
+<title>Java</title>
+</head>
+
+<body>
+
+
+<h1>Animazioni</h1>
+
+
+<h2>Stampa data e ora</h2>
+
+<hr>
+
+<a href="DataOra.java">DataOra.java</a>
+
+<pre>
+/*
+  Stampa la data corrente
+*/
+
+import java.awt.*;
+import java.util.*;
+import java.text.*;
+
+public class DataOra extends java.applet.Applet implements Runnable {
+  Thread runner;
+
+  public void start() {
+    if( runner==null ) {
+      runner=new Thread(this);
+      runner.start();
+    }
+  }
+
+  public void stop() {
+    if( runner!=null ) {
+      runner.stop();
+      runner=null;
+    }
+  }
+
+  public void run() {
+    while(true) {
+      repaint();
+      try {
+        Thread.sleep(200);
+      }
+      catch( InterruptedException e ) { }
+    }
+  }
+
+  public void update(Graphics g) {
+    Date now=new Date();
+    SimpleDateFormat dateformat =
+         new SimpleDateFormat ("dd MMMM yyyy - HH:mm.ss");
+    Font f = new Font("TimesRoman", Font.PLAIN, 14);
+
+    g.setFont(f);
+
+    g.clearRect(10,0,500,40);
+    g.drawString(dateformat.format(now),10,20);
+
+  }
+
+  public void paint(Graphics g) {
+    update(g);
+  }
+}
+
+</pre>
+
+<p>
+
+
+</body>
+
+
+
+
+<h2>Scrittura carattere per carattere</h2>
+
+<hr>
+
+<a href="SlowWrite.java">SlowWrite.java</a>
+
+<p>
+
+<pre>
+/*
+  Scrive una stringa carattere per carattere
+*/
+
+import java.awt.*;
+
+public class SlowWrite extends java.applet.Applet implements Runnable {
+  Thread runner;
+  Font f;
+  String towrite="Questa stringa viene scritta lentamente";
+  int writeto=0;
+
+  public void start() {
+    if( runner==null ) {
+      runner=new Thread(this);
+      runner.start();
+    }
+  }
+
+  public void stop() {
+    if( runner!=null ) {
+      runner.stop();
+      runner=null;
+    }
+  }
+
+  public void run() {
+    int i;
+
+    for(writeto=0;; writeto=writeto+1) {
+      writeto=writeto%towrite.length();
+      repaint();
+      if( towrite.charAt(writeto)!=' ' ) {
+        try {
+          Thread.sleep(200);
+        }
+        catch( InterruptedException e ) { }
+      }
+    }
+  }
+
+  public void paint(Graphics g) {
+    f=new Font("Courier", Font.PLAIN, 18);
+    int i;
+
+    g.setFont(f);
+
+    for(i=0; i<=writeto; i++)
+      g.drawString(towrite.substring(i,i+1) , i*10, 20 );
+  }
+
+}
+
+
+</pre>
+
+<p>
+
+
+
+</body>
+
+
+
+
+<h2>Figure geometriche in movimento</h2>
+
+<hr>
+
+<a href="Ball.java">Ball.java</a>
+
+<p>
+
+<pre>
+import java.awt.*;
+
+public class Ball extends java.applet.Applet implements Runnable {
+  Thread runner;
+  int x,y;
+
+  public void start() {
+    if( runner==null ) {
+      runner=new Thread(this);
+      runner.start();
+    }
+  }
+
+  public void stop() {
+    if( runner!=null ) {
+      runner.stop();
+      runner=null;
+    }
+  }
+
+  public void run() {
+    int i=0;
+
+    for(x=0; x<=255; x++) {
+      y=x;
+
+      repaint();
+      try { Thread.sleep(100); }
+      catch( InterruptedException e ) { }
+    }
+  }
+
+  public void paint(Graphics g) {
+    g.fillOval(x,y,20,20);
+  }
+}
+
+</pre>
+
+<p>
+
+</body>
+
+
+
+</body>
+
+</body>
+</html>

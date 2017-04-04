@@ -1,0 +1,106 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<!-- saved from url=(0052)http://www.dis.uniroma1.it/~labrob/research/SRT.html -->
+<HTML><HEAD><TITLE>The SRT method</TITLE>
+<META http-equiv=Content-Type content="text/html; charset=windows-1252"><!--This file created 25-03-2004 12:19 by Claris Home Page version 3.0 30 Day Trial-->
+<META content="MSHTML 6.00.2900.2523" name=GENERATOR><X-CLARIS-WINDOW 
+RIGHT="1001" LEFT="8" BOTTOM="835" TOP="46"><X-CLARIS-REMOTESAVE 
+dir=/home/WWW/WWW_home/research/ FILE="" USER="www" 
+SERVER="labrob.ing.uniroma1.it"><X-CLARIS-TAGVIEW MODE="minimal">
+<style type="text/css">
+<!--
+.style1 {font-family: Verdana}
+.style3 {font-size: large}
+.style4 {font-size: x-small}
+.style5 {font-family: Verdana; font-size: x-small; }
+.style7 {
+	font-family: Verdana;
+	font-size: small;
+	font-weight: bold;
+}
+.style8 {font-size: small}
+.style9 {font-family: Verdana; font-size: small; }
+-->
+</style>
+</HEAD>
+<BODY bgColor=#ffffff>
+<H3 class="style1">
+<CENTER>Robotic Exploration of Unknown Environments</CENTER></H3>
+<H2 class="style1">
+<CENTER class="style3">The Sensor-based Random Tree (SRT) Method</CENTER></H2>
+<CENTER class="style1">&nbsp;<IMG height=307 src="../images/srt.jpg" width=760 
+align=bottom X-CLARIS-USEIMAGEHEIGHT X-CLARIS-USEIMAGEWIDTH>
+</CENTER>
+<P align="justify" class="style5">The <B>SRT</B> method is a randomized technique that we have developed for 
+exploring unknown environments using mobile robots equipped with simple sensors 
+(ultrasonic and/or infrared rangefinders). The basic tool is the randomized 
+generation of the <B>next</B> robot configuration "close to the border" of the 
+safe region as perceived at the <B>current</B> configuration. To this end, we 
+have adopted (and adapted) LaValle's Rapidly-exploring Random Tree (RRT) 
+concept.</P>
+<P align="justify" class="style5">Depending on the perception mode (conservative or confident) we obtain two 
+instances of the basic method, respectively called <B>SRT-Ball</B> and 
+<B>SRT-Star</B>. The first estimates the local safe region as a disk, while the 
+second uses a (proper) star-shaped set accounting for the directionality of the 
+sensors.</P>
+<P class="style1">
+<HR>
+<span class="style7">Documents</span>
+<P class="style5">The SRT method has been designed and developed by: <A 
+href="http://www.dis.uniroma1.it/~labrob/people/oriolo/oriolo.html">G. 
+Oriolo</A>, <A 
+href="http://www.dis.uniroma1.it/~labrob/people/vendittelli/venditt.html">M. 
+Vendittelli</A>, <a href="http://www.dis.uniroma1.it/~labrob/people/freda/index.html">L. Freda</a>, G. Troso.</P>
+<P align="justify" class="style5">For a quick introduction to the SRT Method, see these <A 
+href="http://www.dis.uniroma1.it/~labrob/pub/slides/CIRA04.pps">slides</A> 
+(PowerPoint show; movies not included to reduce size) presented at the 2003 
+Annual Meeting of the CIRA (Italian Council of Researchers in Control Science). 
+More details are given in this <A 
+href="http://www.dis.uniroma1.it/~labrob/pub/papers/ICRA04_SRT.pdf">paper</A> to 
+be presented at IEEE ICRA'04.</P>
+<P class="style9">
+<HR>
+<span class="style9"><B>Simulations</B>
+</span>
+<P align="justify" class="style5">Realized within the <A href="http://www.laas.fr/~nic/Move3D/">Move3D</A> (a 
+powerful motion planning software environment realized at LAAS-CNRS) under the 
+assumption of perfect sensing and localization, these simulation clips highlight 
+the essential exploratory qualities of SRT-Ball and SRT-Star.</P>
+<P align="justify" class="style5">Simulation 1: SRT-Ball (<A 
+href="http://www.dis.uniroma1.it/~labrob/movies/Sim1_SRTBall.rm">RM clip</A>, <A 
+href="http://www.dis.uniroma1.it/~labrob/movies/Sim1_SRTBall.avi">AVI clip</A>) 
+vs. SRT-Star (<A 
+href="http://www.dis.uniroma1.it/~labrob/movies/Sim1_SRTStar.rm">RM clip</A>, <A 
+href="http://www.dis.uniroma1.it/~labrob/movies/Sim1_SRTStar.avi">AVI clip</A>). 
+Note how SRT-Star has a more pronounced depth-first attitude with respect to 
+SRT-Ball, whose tree is more expanded in width.</P>
+<P align="justify" class="style5">Simulation 2: SRT-Ball (<A 
+href="http://www.dis.uniroma1.it/~labrob/movies/Sim2_SRTBall.rm">RM clip</A>, <A 
+href="http://www.dis.uniroma1.it/~labrob/movies/Sim2_SRTBall.avi">AVI clip</A>) 
+vs. SRT-Star (<A 
+href="http://www.dis.uniroma1.it/~labrob/movies/Sim2_SRTStar.rm">RM clip</A>, <A 
+href="http://www.dis.uniroma1.it/~labrob/movies/Sim2_SRTStar.avi">AVI clip</A>). 
+The superiority of SRT-Star in negotiating narrow passages is clear.</P>
+<P class="style9">
+<HR>
+<span class="style9"><B>Experiments</B>
+</span>
+<P class="style5">We have implemented SRT-Ball and SRT-Star on the MagellanPro mobile robot 
+available in our laboratory.</P>
+<P align="justify" class="style5">Have a look at two videos of typical exploration experiments, both using 
+SRT-Star: <A 
+href="http://www.dis.uniroma1.it/~labrob/movies/Exp1_SRTStar.rm">Experiment 
+1</A> and <A 
+href="http://www.dis.uniroma1.it/~labrob/movies/Exp2_SRTStar.rm">Experiment 
+2</A> (in RM format; to reduce the file size, only portions of the exploration 
+are shown).</P>
+<DL class="style1">
+  <DT class="style8">
+  <HR>
+  <span class="style4">  More details and material soon... </span>  
+  <HR>
+   <A 
+  href="http://www.dis.uniroma1.it/~labrob/index.html"><STRONG>Back to the 
+  LabRob Home Page</STRONG></A> </DT>
+</DL>
+</BODY>
+</HTML>

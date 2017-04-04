@@ -1,0 +1,567 @@
+<html>
+<head>
+<title>I costruttori</title>
+</head>
+
+<body>
+
+<h1>I costruttori</h1>
+
+<p>
+Servono a inizializzare i valori dei campi
+degli oggetti.
+</p>
+
+<p>
+Vengono invocati automaticamente dopo che
+l'oggetto &egrave; stato creato.
+</p>
+
+<hr>
+
+
+<h4>Il costruttore standard</h4>
+
+<p>
+Questo tipo di costruzione mette dei
+valori iniziali nelle componenti:
+</p>
+
+<dl>
+
+<dt>scalari:
+<dd>il valore zero
+
+<dt>oggetti:
+<dd>il valore <tt>null</tt>
+
+</dl>
+
+<hr>
+
+
+<h4>Esempio di valori di default</h4>
+
+<p>
+Classe:
+</p>
+
+<pre>
+import java.awt.*;
+
+class NomeClasse {
+  Point p;
+  int x;
+}
+</pre>
+
+<p>
+Programma:
+</p>
+
+<pre>
+class ProvaCostr {
+  public static void main(String args[]) {
+    NomeClasse a;
+    a=new NomeClasse();
+
+    System.out.println(a.p);
+    System.out.println(a.x);
+  }
+}
+</pre>
+
+<p>
+Stampa:
+</p>
+
+<pre>
+null
+0
+</pre>
+
+<hr>
+
+
+<h4>Alterare il costruttore standard</h4>
+
+<p>
+&Egrave; possibile ridefinire il comportamento
+del costruttore.
+</p>
+
+<pre>
+import java.awt.*;
+
+class NomeClasse {
+  Point p;
+  int x;
+
+  NomeClasse() {
+    this.p=new Point();
+    this.p.move(10,20);
+
+    this.x=100;
+  }
+}
+</pre>
+
+<hr>
+
+
+<h4>Il programma</h4>
+
+<p>
+Uso lo stesso programma di prima:
+</p>
+
+<pre>
+class ProvaCostr {
+  public static void main(String args[]) {
+    NomeClasse a;
+    a=new NomeClasse();
+
+    System.out.println(a.p);
+    System.out.println(a.x);
+  }
+}
+</pre>
+
+<p>
+Solo che ora stampa:
+</p>
+
+<pre>
+java.awt.Point[x=10,y=20]
+100
+</pre>
+
+<hr>
+
+
+<h4>Sintassi del costruttore</h4>
+
+<pre>
+class NomeClasse {
+  ...
+
+  NomeClasse() {
+    istruzioni;
+  }
+}
+</pre>
+
+<ul>
+
+<li>&egrave; un metodo
+
+<li>ha lo stesso nome della classe
+
+<li>non ha valore di ritorno (&egrave; implicito)
+
+</ul>
+
+<hr>
+
+
+<h4>&Egrave; un metodo statico?</h4>
+
+<p>
+Si e no.
+</p>
+
+<dl compact="compact">
+
+<dt><i>si:</i>
+<dd>non richiede oggetto di invocazione (lo crea!)
+
+<dt><i>no:</i>
+<dd>al suo interno, <tt>this</tt> &egrave; definito
+
+</dl>
+
+<hr>
+
+
+<h4>Cosa succede quando si crea un oggetto</h4>
+
+<pre>
+  a=new NomeClasse();
+</pre>
+
+<p>
+Vengono fatte due cose:
+</p>
+
+<ul>
+
+<li>viene creata la zona di memoria per l'oggetto
+
+<li>vengono eseguite le istruzioni del metodo
+<tt>NomeClasse()</tt> della classe, se c'&egrave;
+
+</ul>
+
+<p>
+Viene poi ritornato l'indirizzo della zona di
+memoria creata.
+</p>
+
+<hr>
+
+
+<h4>I costruttori di <tt>Point</tt></h4>
+
+<p>
+Questi costruttori sono gi&agrave; definiti:
+</p>
+
+<pre>
+  p=new Point();
+</pre>
+
+<p>
+Crea un oggetto punto di coordinate <tt>(0,0)</tt>
+</p>
+
+<pre>
+  p=new Point(12,32);
+</pre>
+
+<p>
+Crea un oggetto punto di coordinate <tt>(12,32)</tt>
+</p>
+
+<p>
+Come tutti i metodi, i costruttori possono essere
+sovraccarichi (pi&ugrave; costruttori con argomenti
+diversi).
+
+<hr>
+
+
+<h4>Differenza metodo-costruttore</h4>
+
+<p>
+Quando si invoca un metodo, viene fatta
+la copiatura dei parametri e poi si eseguono
+le istruzioni del metodo.
+</p>
+
+<p>
+Nel caso dei costruttori, viene <i>prima</i>
+creato l'oggetto, e <i>poi</i> si esegue
+il costruttore come fosse un metodo.
+</p>
+
+<p>
+C'&egrave; un passo in mezzo, in cui
+l'oggetto viene creato.
+</p>
+
+<hr>
+
+
+<h4>Di solito...</h4>
+
+<p>
+Il costruttore si usa per inizializzare le
+componenti degli oggetti.
+</p>
+
+<p>
+Per&ograve; pu&ograve; fare qualsiasi cosa
+fa un metodo.
+</p>
+
+<p>
+Per esempio, pu&ograve; stampare una stringa:
+</p>
+
+<pre>
+class Abcd {
+  int x;
+  Point p;
+
+  Abcd() {
+    System.out.println("Questa e' una stringa");
+  }
+}
+</pre>
+
+<p>
+&Egrave; sbagliato <i>metodologicamente</i>,
+ma si pu&ograve; fare.
+</p>
+
+<hr>
+
+
+<h4>Il costruttore vuoto</h4>
+
+<p>
+Se una classe non ha costruttori, allora per essa viene
+automaticamente definito il costruttore vuoto.
+</p>
+
+<p>
+Se in una classe ci metto un costruttore, allora quello
+vuoto non viene aggiunto automaticamente.
+</p>
+
+<p>
+Se mi serve il costruttore vuoto, lo devo definire
+esplicitamente, in questo caso.
+</p>
+
+<pre>
+class Esempio1 {
+  int x;
+}
+</pre>
+
+<p>
+Si pu&ograve; fare <tt>new Esempio1();</tt>
+</p>
+
+<pre>
+class Esempio2 {
+  int x;
+
+  Esempio2(int a) {
+    this.x=a;
+  }
+</pre>
+
+<p>
+Si pu&ograve; fare <tt>new Esempio2(valore)</tt>,
+ma <i>non</i> si pu&ograve; fare
+<tt>new Esempio2()</tt>
+</p>
+
+<pre>
+class Esempio3 {
+  int x;
+
+  Esempio3() {
+  }
+
+  Esempio3(int a) {
+    this.x=a;
+  }
+</pre>
+
+<p>
+Si possono fare tutte e due le cose.
+</p>
+
+<hr>
+
+
+<h4>Regoletta</h4>
+
+<p>
+Fare cos&iacute;:
+</p>
+
+<ul>
+
+<li>non definire costruttori (equivale a definire
+solo il costruttore vuoto)
+
+<li>definire tutti i costruttori che servono, incluso
+quello vuoto
+
+</ul>
+
+<hr>
+
+
+<h4>Argomenti dei costruttori</h4>
+
+<p>
+Di solito: gli argomenti sono i valori che vengono
+messi nelle componenti dell'oggetto creato (es.
+il costruttore di <tt>Studente</tt> qui sopra)
+</p>
+
+<p>
+Qualche volta: sono dati che permettono di calcolare i
+valori iniziali dei campi dato
+</p>
+
+<p>
+In generale: il costruttore &egrave; come tutti
+gli altri metodi (pu&ograve; fare quello che vuole
+con gli argomenti)
+</p>
+
+<hr>
+
+
+<h4>Ereditare i costruttori</h4>
+
+<p>
+I costruttori non si ereditano.
+</p>
+
+<p>
+Si possono <i>riusare</i>
+</p>
+
+<p>
+Invocare un costruttore della sovraclasse: <tt>super</tt>
+</p>
+
+<hr>
+
+
+<h4>Riuso di costruttori</h4>
+
+<pre>
+class Studente {
+  Studente(String nome) {
+    this.nome=nome;
+}
+
+class Borsista extends Studente {
+  Borsista(String nome, int stipendio) {
+    super(nome);
+    this.stipendio=stipendio;
+  }
+}
+</pre>
+
+<p>
+L'invocazione <tt>super(argomenti)</tt> equivale a invocare
+il costruttore della sovraclasse che ha questi argomenti
+</p>
+
+<p>
+<tt>super(argomenti)</tt> deve essere la prima istruzione del
+costruttore di <tt>Borsista</tt>
+</p>
+
+<p>
+Se la prima istruzione di un costruttore non &egrave;
+<tt>super(argomenti)</tt>, si assume automaticamente che sia
+<tt>super()</tt>
+</p>
+
+<hr>
+
+
+<h4>Esempi</h4>
+
+<pre>
+class Studente {
+  String nome;
+  int anno;
+
+  Studente() {
+    this.nome="nessuno";
+  }
+}
+
+
+class Borsista extends Studente {
+}
+</pre>
+
+<p>
+Cosa stampa questo programma?
+</p>
+
+<pre>
+  public static void main(String args[]) {
+    Borsista s=new Borsista();
+
+    System.out.println(s.nome);
+  }
+</pre>
+
+<hr>
+
+
+<h4>Risposta</h4>
+
+<p>
+La class <tt>Borsista</tt> non ha costruttori espliciti
+</p>
+
+<p>
+Quindi ha il costruttore implicito:
+</p>
+
+<pre>
+  Borsista() {
+  }
+</pre>
+
+<p>
+Implicitamente, la prima istruzione di un costruttore
+&egrave; <tt>super()</tt>:
+</p>
+
+<pre>
+  Borsista() {
+    super();
+  }
+</pre>
+
+<hr>
+
+
+<h4>Assenza del costruttore standard</h4>
+
+<pre>
+class Studente {
+  String nome;
+  int anno;
+
+  Studente(String nome) {
+    this.nome=nome;
+  }
+}
+
+
+class Borsista extends Studente {
+}
+</pre>
+
+<p>
+Viene dato errore:
+</p>
+
+<ul>
+
+<li>la classe <tt>Studente</tt> ha un costruttore definito
+esplicitamente;
+
+<li>ma non ha la definizione esplicita del costruttore
+standard;
+
+<li>quindi, non ha il costruttore standard;
+
+<li><tt>Borsista</tt> non ha costruttori espliciti, quindi
+ha il costruttore
+
+<pre>
+  Borsista() {
+    super();
+  }
+</pre>
+
+<li>ma qui <tt>super</tt> sarebbe il costruttore standard di
+<tt>Studente</tt>, che non esiste
+
+</ul>
+
+<p>
+Viene quindi dato errore.
+</p>
+
+</body>
+</html>
+
+

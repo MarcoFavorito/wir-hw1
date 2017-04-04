@@ -1,0 +1,866 @@
+<html> <head>
+<title>Registro Progettazione del Software AA 2001/2002</title>
+</head>
+<body>
+
+
+<center> <h2> Laurea in Ingegneria Informatica -- nuovo ordinamento</h2></center>
+
+<center> <h1> <a href="index.html">Progettazione del Software 1 (canale M-Z)</a></h1></center>
+
+<center> <h2> <font color=red>Lezioni A.A. 2001/2002</font></h2></center>
+
+<center> <h3> docente: <a href="http://www.dis.uniroma1.it/~lenzerini">Maurizio Lenzerini</a></h3></center>
+
+
+<!--
+<hr><b>Materiale didattico: testi adottati</b>
+<p>
+
+<b>[T1]</b> M. Cadoli, M. Lenzerini, P. Naggar, A. Schaerf, <i><a href="http://www.dis.uniroma1.it/pub/clns">Fondamenti
+della progettazione dei programmi: principi, tecniche e loro applicazione
+in C++</a></i>, Citt&aacute;<i>Studi</i>Edizioni, UTET Libreria, 1997.
+<br>
+
+<b>[T2]</b> M. Cadoli, E. Panizzi, A. Schaerf., M. Lenzerini. <i><a
+href="http://www.dis.uniroma1.it/pub/clps">Esercizi di progettazione dei
+programmi in C++.</a></i> Citt&aacute;<i>Studi</i>Edizioni, UTET Libreria,
+1998.  <br>
+
+<b>[T3]</b>  T.H. Cormen, C.E. Leiserson, R.L. Rivest,
+<i>Introduzione agli Algoritmi, </i>Jackson Libri, 1999.
+<p>
+
+-->
+
+<!--
+
+SPECIFICA:
+
+10 ore ereditarieta' C++
+6  ore complessita'
+20 ore strutture dati avanzate
+14 ore tecniche algoritmiche
+------------------------------------------
+50 ore totale
+
+-->
+
+
+<hr>
+<center>
+<h2>
+Tabella riassuntiva</h2></center>
+
+<center><table BORDER WIDTH="90%" >
+<caption><!--
+  <TR>
+  <TD VALIGN=CENTER WIDTH="20%"><I><FONT COLOR="#008000"></FONT></I></TD>
+  <TD VALIGN=TOP WIDTH="23%">&nbsp;</TD>
+  <TD VALIGN=CENTER WIDTH="23%">&nbsp;</TD>
+  <TD VALIGN=CENTER WIDTH="23%"><B><FONT COLOR="#FF0000">ESAME</FONT></B>
+  <P><FONT COLOR="#0000FF">XX dicembre</FONT></TD>
+  <TD VALIGN=CENTER WIDTH="23%">&nbsp;</TD>
+  </TR>
+--></caption>
+
+<tr>
+<td VALIGN=CENTER WIDTH="20%"><i><font color="#008000">Settimana</font></i></td>
+
+<td VALIGN=TOP WIDTH="10%"><i><font color="#008000">Argomento</font></i></td>
+
+<td VALIGN=CENTER WIDTH="25%"><i><font color="#008000">Lunedi (ore 11:30-13)</font></i></td>
+
+<td VALIGN=CENTER WIDTH="25%"><i><font color="#008000">Giovedi (ore 11:30-13)</font></i></td>
+
+<td VALIGN=CENTER WIDTH="25%"><i><font color="#008000">Venerdi (ore 14:50-16:20)</font></i></td>
+</tr>
+
+<tr> <td VALIGN=CENTER WIDTH="15%"><i><font color="#008000">
+<b>1: </b>14-18gen</font></i></td>
+
+<td VALIGN=TOP WIDTH="23%"><font
+color="#0000FF">Introduzione</font></td>
+
+<td VALIGN=CENTER WIDTH="23%">Introduzione alla progettazione<br> <font
+color="#FF0000">(<a href="#Lun1">Lez 1,2</a>)</font></td>
+
+<td VALIGN=CENTER WIDTH="23%">Modularizzazione<br> <font
+color="#FF0000">(<a href="#Gio1">Lez 3,4</a>)</font></td>
+
+<td VALIGN=CENTER WIDTH="23%">L'orientazione agli oggetti<br>
+<font color="#FF0000">(<a href="#Ven1">Lez 5,6</a>)</font></td>
+
+
+<tr> <td VALIGN=CENTER WIDTH="15%"><i><font
+color="#008000"><b>2: </b>21-25gen</font></i></td>
+
+<td VALIGN=TOP WIDTH="23%"><font color="#0000FF">La fase di
+                                                   analisi</font></td>
+
+<td VALIGN=CENTER WIDTH="23%">Diagramma delle classi in UML<br> <font
+color="#FF0000">(<a href="#Lun2">Lez 7,8</a>)</font></td>
+
+<td VALIGN=CENTER WIDTH="23%">Esercitazione su diagramma delle classi<br>
+<font color="#FF0000">(<a href="#Gio2">Lez 9,10</a>)</font></td>
+
+<td VALIGN=CENTER WIDTH="23%">Relazioni tra classi<br> <font
+color="#FF0000">(<a href="#Ven2">Lez 11,12</a>)</font></td>
+
+</tr>
+
+
+
+<tr>
+<td VALIGN=CENTER WIDTH="20%"><i><font color="#008000"><b>3: </b>28gen-1feb</font></i></td>
+
+<td VALIGN=TOP WIDTH="23%"><font color="#0000FF">La fase di
+                                                   analisi</font></td>
+
+<td VALIGN=CENTER WIDTH="23%"><center>------------</center></td>
+
+
+<td VALIGN=CENTER WIDTH="23%">La generalizzazione<br>
+<font color="#FF0000">(<a href="#Gio3">Lez 13,14</a>)</font></td>
+
+<td VALIGN=CENTER WIDTH="23%">Esercitazione di analisi<br>
+<font color="#FF0000">(<a href="#Ven3">Lez 15,16</a>)</font></td>
+</tr>
+
+
+<tr> <td VALIGN=CENTER WIDTH="15%"><i><font
+color="#008000"><b>4: </b>4-8feb</font></i></td>
+
+<td VALIGN=TOP WIDTH="23%"><font color="#0000FF">Java come linguaggio OO</font></td>
+
+<td VALIGN=CENTER WIDTH="23%">Altri diagrammi UML<br>
+<font color="#FF0000">(<a href="#Lun4">Lez 17,18</a>)</font></td>
+
+
+<td VALIGN=CENTER WIDTH="23%">Esercitazione di analisi<br>
+<font color="#FF0000">(<a href="#Gio4">Lez 19,20</a>)</font></td>
+
+<td VALIGN=CENTER WIDTH="23%">Classi in Java<br>
+<font color="#FF0000">(<a href="#Ven4">Lez 21,22</a>)</font></td>
+
+
+<tr> <td VALIGN=CENTER WIDTH="15%"><i><font
+color="#008000"><b>5: </b>11-15feb</font></i></td>
+
+<td VALIGN=TOP WIDTH="23%"><font color="#0000FF">Java come linguaggio
+OO</font></td>
+
+
+<td VALIGN=CENTER WIDTH="23%"><center>------------</center></td>
+
+<td VALIGN=CENTER WIDTH="23%">Moduli in Java<br>
+<font color="#FF0000">(<a href="#Gio5">Lez 23,24</a>)</font></td>
+
+<td VALIGN=CENTER WIDTH="23%">Ereditarieta' in Java<br>
+<font color="#FF0000">(<a href="#Ven5">Lez 25,26</a>)</font></td>
+
+
+
+
+<tr>
+<td VALIGN=CENTER WIDTH="20%"><i><font color="#008000"><b>6: </b>18-22feb</font></i></td>
+
+<td VALIGN=TOP WIDTH="23%"><font color="#0000FF">Java come linguaggio
+OO</font></td>
+
+
+<td VALIGN=CENTER WIDTH="23%">Ereditarieta' in Java<br>
+<font color="#FF0000">(<a href="#Lun6">Lez 27,28</a>)</font></td>
+
+<td VALIGN=CENTER WIDTH="23%">Ereditarieta' in Java<br>
+<font color="#FF0000">(<a href="#Gio6">Lez 29,30</a>)</font></td>
+
+<td VALIGN=CENTER WIDTH="23%">Ereditarieta' in Java<br>
+<font color="#FF0000">(<a href="#Ven6">Lez 31,32</a>)</font></td>
+
+</td>
+
+
+<tr>
+<td VALIGN=CENTER WIDTH="20%"><i><font color="#008000"><b>7: </b>25feb-1mar</font></i></td>
+
+<td VALIGN=TOP WIDTH="23%"><font color="#0000FF">Altri aspetti di Java</font></td>
+
+<td VALIGN=CENTER WIDTH="23%">Classi astratte
+<font color="#FF0000">(<a href="#Lun7">Lez 33,34</a>)</font></td>
+
+<td VALIGN=CENTER WIDTH="23%">Interfacce
+<font color="#FF0000">(<a href="#Gio7">Lez 35,36</a>)</font>
+
+<td VALIGN=CENTER WIDTH="23%"><center>------------</center></td>
+
+
+<tr>
+<td VALIGN=CENTER WIDTH="20%"><i><font color="#008000"><b>8: </b>4-8mar</font></i></td>
+
+<td VALIGN=TOP WIDTH="23%"><font color="#0000FF">La fase di
+progettazione</font></td>
+
+
+<td VALIGN=CENTER WIDTH="23%">Esercitazione su classi astratte e intefacce
+<font color="#FF0000">(<a href="#Lun8">Lez 37,38</a>)</font></td>
+
+<td VALIGN=CENTER WIDTH="23%">Progettazione di classi<br>
+<font color="#FF0000">(<a href="#Gio8">Lez 39,40</a>)</font>
+</td>
+
+<td VALIGN=CENTER WIDTH="23%">Progettazione di associazioni<br>
+<font color="#FF0000">(<a href="#Ven8">Lez 41,42</a>)</font></td>
+
+</td>
+</tr>
+
+<tr>
+<td VALIGN=CENTER WIDTH="20%"><i><font color="#008000"><b>9: </b>11-15mar</font></i></td>
+
+<td VALIGN=TOP WIDTH="23%"><font color="#0000FF">La fase di
+progettazione</font></td>
+
+
+<td VALIGN=CENTER WIDTH="23%">Progettazione di associazioni<br>
+<font color="#FF0000">(<a href="#Lun9">Lez 43,44</a>)</font>
+</td>
+
+<td VALIGN=CENTER WIDTH="23%"><center>------------</center></td>
+
+<td VALIGN=CENTER WIDTH="23%">Esercitazione di progettazione<br>
+<font color="#FF0000">(<a href="#Ven9">Lez 45,46</a>)</font>
+</td>
+
+</tr>
+
+<tr>
+<td VALIGN=CENTER WIDTH="20%"><i><font color="#008000"><b>10: </b>18-22mar</font></i></td>
+
+<td VALIGN=TOP WIDTH="23%"><font color="#0000FF">Esercizi di progettazione</font></td>
+
+<td VALIGN=CENTER WIDTH="23%">Progettazione di associazioni<br>
+<font color="#FF0000">(<a href="#Lun10">Lez 47,48</a>)</font>
+</td>
+
+<td VALIGN=CENTER WIDTH="23%">Uso dell'ereditariet&agrave;<br>
+<font color="#FF0000">(<a href="#Gio10">Lez 49,50</a>)</font>
+</td>
+
+<td VALIGN=CENTER WIDTH="23%">Esercitazione<br>
+<font color="#FF0000">(<a href="#Ven10">Lez 51,52</a>)</font>
+</td>
+
+</tr>
+
+
+</table></center>
+
+<p>
+<hr>
+<center>
+<h2>
+Dettaglio</h2></center>
+
+
+<hr>
+<a NAME="Lun1"></a>
+<ul>
+  <li> <b>Lezione 1,2 - 14/01/02</b>
+     <ul>
+        <li><b>Materiale didattico</b>
+              <ul>
+                  <li> <a href="materiale/PrimaParte">Slides</a>
+              </ul>
+        <li><b>Argomenti trattati</b>
+              <ul>
+                  <li>Presentazione del corso
+                  <li>Introduzione alla progettazione del software
+              </ul>
+        <li><b>Cosa lo studente dovrebbe sapere dopo la lezione</b>:
+            <ul>
+              <li> Ciclo di vita e qualita' del software
+              <li> Concettualizzazione e realizzazione
+              <li> Modularizzazione
+            </ul>
+     </ul>
+</ul>
+
+
+<hr>
+<a NAME="Gio1"></a>
+<ul>
+  <li> <b>Lezione 3,4 - 17/01/02</b>
+     <ul>
+        <li><b>Materiale didattico</b>
+              <ul>
+                  <li> <a href="materiale/PrimaParte">Slides</a>
+              </ul>
+        <li><b>Argomenti trattati</b>
+              <ul>
+                  <li>Modularizzazione
+                  <li>Principi della progettazione orientata agli oggetti
+              </ul>
+        <li><b>Cosa lo studente dovrebbe sapere dopo la lezione</b>:
+            <ul>
+              <li> Cosa e' un modulo
+              <li> Le leggi della modularizzazione
+              <li> Le basi del paradigma a oggetti
+            </ul>
+     </ul>
+</ul>
+
+
+<hr>
+<a NAME="Ven1"></a>
+<ul>
+  <li> <b>Lezione 5,6 - 18/01/02</b>
+     <ul>
+        <li><b>Materiale didattico</b>
+              <ul>
+                  <li> <a href="materiale/PrimaParte">Slides</a>
+              </ul>
+        <li><b>Argomenti trattati</b>
+              <ul>
+                  <li>Oggetti e classi
+                  <li>Attributi, associazioni, metodi
+              </ul>
+        <li><b>Cosa lo studente dovrebbe sapere dopo la lezione</b>:
+            <ul>
+              <li> I principi di base della progettazione orientata agli
+                   oggetti
+              <li> Cosa e' un oggetto e cosa e' una classe
+              <li> Cosa e' un attributo e cosa e' una associazione
+              <li> Cosa e' un metodo
+            </ul>
+     </ul>
+</ul>
+
+
+<hr>
+<a NAME="Lun2"></a>
+<ul>
+  <li> <b>Lezione 7,8 - 21/01/02</b>
+     <ul>
+        <li><b>Materiale didattico</b>
+              <ul>
+                  <li> <a href="materiale/SecondaParte/SecondaParte-1.pdf">Slides</a>
+              </ul>
+        <li><b>Argomenti trattati</b>
+              <ul>
+                  <li>Introduzione all'analisi del software
+                  <li>Introduzione al linguaggio UML
+                  <li>Oggetti, classi, attributi, e associazioni in UML
+              </ul>
+        <li><b>Cosa lo studente dovrebbe sapere dopo la lezione</b>:
+            <ul>
+              <li>Le caratteristiche fondamentali della fase di analisi
+              <li>Come si modellano oggetti, classi, attributi, e
+                  associazioni in fase di analisi usando la notazione UML
+
+            </ul>
+     </ul>
+</ul>
+
+<hr>
+<a NAME="Gio2"></a>
+<ul>
+  <li> <b>Lezione 9,10 - 24/01/02 (Dott. Domenico Ventriglia)</b>
+     <ul>
+        <li><b>Materiale didattico</b>
+              <ul>
+             <li> <a href="materiale/Esercitazioni/Esercitazione1">Slides</a>
+              </ul>
+        <li><b>Argomenti trattati</b>
+              <ul>
+                  <li>Esercitazione sul diagramma delle classi
+                  <li>Oggetti, classi, attributi, e associazioni in UML
+              </ul>
+        <li><b>Cosa lo studente dovrebbe sapere dopo la lezione</b>:
+            <ul>
+              <li>Saper tracciare il diagramma delle classi
+                  per semplici applicazioni
+            </ul>
+     </ul>
+</ul>
+
+
+<hr>
+<a NAME="Ven2"></a>
+<ul>
+  <li> <b>Lezione 11,12 - 25/01/02</b>
+     <ul>
+        <li><b>Materiale didattico</b>
+              <ul>
+                  <li> <a href="materiale/SecondaParte">Slides</a>
+              </ul>
+        <li><b>Argomenti trattati</b>
+              <ul>
+                  <li>Ruoli in UML
+                  <li>Associazioni n-arie
+                  <li>Molteplicita' di associazioni
+              </ul>
+        <li><b>Cosa lo studente dovrebbe sapere dopo la lezione</b>:
+            <ul>
+              <li>Come si modellano ruoli, associazioni n-arie e
+                  molteplicita' con UML
+            </ul>
+     </ul>
+</ul>
+
+
+<hr>
+<a NAME="Gio3"></a>
+<ul>
+  <li> <b>Lezione 13,14 - 31/01/02</b>
+     <ul>
+        <li><b>Materiale didattico</b>
+              <ul>
+                  <li> <a href="materiale/SecondaParte">Slides</a>
+              </ul>
+        <li><b>Argomenti trattati</b>
+              <ul>
+                  <li>La generalizzazione
+              </ul>
+        <li><b>Cosa lo studente dovrebbe sapere dopo la lezione</b>:
+            <ul>
+              <li>Come si modella la generalizzazione in UML
+            </ul>
+     </ul>
+</ul>
+
+
+<hr>
+<a NAME="Ven3"></a>
+<ul>
+  <li> <b>Lezione 15,16 - 01/02/02 (Dott. Domenico Ventriglia)</b>
+     <ul>
+        <li><b>Materiale didattico</b>
+              <ul>
+             <li> <a href="materiale/Esercitazioni/Esercitazione2">Slides</a>
+              </ul>
+        <li><b>Argomenti trattati</b>
+              <ul>
+                  <li>Esercitazione sul diagramma delle classi
+                  <li>Classi, attributi, associazioni e generalizzazione
+                       in UML
+              </ul>
+        <li><b>Cosa lo studente dovrebbe sapere dopo la lezione</b>:
+            <ul>
+              <li>Saper tracciare il diagramma delle classi
+                  per applicazioni che richiedono la generalizzazione
+            </ul>
+     </ul>
+</ul>
+
+
+<hr>
+<a NAME="Lun4"></a>
+<ul>
+  <li> <b>Lezione 17,18 - 04/02/02</b>
+     <ul>
+        <li><b>Materiale didattico</b>
+              <ul>
+                  <li> <a href="materiale/SecondaParte">Slides</a>
+              </ul>
+        <li><b>Argomenti trattati</b>
+              <ul>
+                  <li>Le operazioni di classe
+                  <li>Metodologia di costruzione del diagramma delle classi
+                  <li>Il diagramma degli use case
+                  <li>Il diagramma degli stati e delle transizioni
+              </ul>
+        <li><b>Cosa lo studente dovrebbe sapere dopo la lezione</b>:
+            <ul>
+              <li>Come si modellano le operazioni in UML
+              <li>Metodologia di costruzione  del diagramma delle classi e
+                  controllo di qualita'
+              <li> Cosa e' e come si costruisce il diagramma degli use case
+              <li> Cosa e' e come si costruisce il
+                   diagramma degli stati e delle transizioni
+            </ul>
+     </ul>
+</ul>
+
+
+<hr>
+<a NAME="Gio4"></a>
+<ul>
+  <li> <b>Lezione 19,20 - 07/02/02 (Dott. Domenico Ventriglia)</b>
+     <ul>
+        <li><b>Materiale didattico</b>
+              <ul>
+                 <li> <a href="materiale/SecondaParte">Slides</a>
+             <li> <a href="materiale/Esercitazioni/Esercitazione3">Slides</a>
+           </ul>
+        <li><b>Argomenti trattati</b>
+              <ul>
+                  <li>Specifica di classi e use case
+                  <li>Esercitazione di analisi
+              </ul>
+        <li><b>Cosa lo studente dovrebbe sapere dopo la lezione</b>:
+            <ul>
+              <li>Saper tracciare il diagramma delle classi e il
+                   diagramma degli use case
+              <li>Saper fornire la specifica di classi e sue case
+            </ul>
+     </ul>
+</ul>
+
+
+<hr>
+<a NAME="Ven4"></a>
+<ul>
+  <li> <b>Lezione 21,22 - 08/02/02</b>
+     <ul>
+        <li><b>Materiale didattico</b>
+              <ul>
+             <li> <a href="materiale/TerzaParte">Slides</a>
+              </ul>
+        <li><b>Argomenti trattati</b>
+              <ul>
+                  <li>La classi in Java
+              </ul>
+        <li><b>Cosa lo studente dovrebbe sapere dopo la lezione</b>:
+            <ul>
+              <li>Tutti gli esercizi tipici del corso di Fondamenti di
+                  Informatica in Java
+            </ul>
+     </ul>
+</ul>
+
+
+<hr>
+<a NAME="Gio5"></a>
+<ul>
+  <li> <b>Lezione 23,24 - 14/02/02</b>
+     <ul>
+        <li><b>Materiale didattico</b>
+              <ul>
+             <li> <a href="materiale/TerzaParte">Slides</a>
+              </ul>
+        <li><b>Argomenti trattati</b>
+              <ul>
+                  <li>Uguaglianza e copia profonda in Java
+                  <li>Passaggi di parametri in Java
+              </ul>
+        <li><b>Cosa lo studente dovrebbe sapere dopo la lezione</b>:
+            <ul>
+              <li>Tutti gli esercizi tipici del corso di Fondamenti di
+                  Informatica in Java
+            </ul>
+     </ul>
+</ul>
+
+
+<hr>
+<a NAME="Ven5"></a>
+<ul>
+  <li> <b>Lezione 25,26 - 15/02/02</b>
+     <ul>
+        <li><b>Materiale didattico</b>
+              <ul>
+             <li> <a href="materiale/TerzaParte">Slides</a>
+              </ul>
+        <li><b>Argomenti trattati</b>
+              <ul>
+                  <li> Struttura dei programmmi Java
+                  <li> Package
+              </ul>
+        <li><b>Cosa lo studente dovrebbe sapere dopo la lezione</b>:
+            <ul>
+              <li>Tutti gli esercizi tipici del corso di Fondamenti di
+                  Informatica in Java
+            </ul>
+     </ul>
+</ul>
+
+
+<hr>
+<a NAME="Lun6"></a>
+<ul>
+  <li> <b>Lezione 27,28 - 18/02/02</b>
+     <ul>
+        <li><b>Materiale didattico</b>
+              <ul>
+             <li> <a href="materiale/TerzaParte">Slides</a>
+              </ul>
+        <li><b>Argomenti trattati</b>
+              <ul>
+                  <li> L'ereditarieta' in Java
+              </ul>
+        <li><b>Cosa lo studente dovrebbe sapere dopo la lezione</b>:
+            <ul>
+              <li>Come si definiscono classi derivate in Java
+            </ul>
+     </ul>
+</ul>
+
+
+<hr>
+<a NAME="Gio6"></a>
+<ul>
+  <li> <b>Lezione 29,30 - 21/02/02</b>
+     <ul>
+        <li><b>Materiale didattico</b>
+              <ul>
+             <li> <a href="materiale/TerzaParte">Slides</a>
+              </ul>
+        <li><b>Argomenti trattati</b>
+              <ul>
+                  <li> L'ereditarieta' in Java
+              </ul>
+        <li><b>Cosa lo studente dovrebbe sapere dopo la lezione</b>:
+            <ul>
+              <li>Come si definiscono classi derivate in Java
+            </ul>
+     </ul>
+</ul>
+
+
+<hr>
+<a NAME="Ven6"></a>
+<ul>
+  <li> <b>Lezione 31,32 - 22/02/02</b>
+     <ul>
+        <li><b>Materiale didattico</b>
+              <ul>
+             <li> <a href="materiale/TerzaParte">Slides</a>
+              </ul>
+        <li><b>Argomenti trattati</b>
+              <ul>
+                  <li> L'ereditarieta' in Java
+              </ul>
+        <li><b>Cosa lo studente dovrebbe sapere dopo la lezione</b>:
+            <ul>
+              <li>Come si definiscono classi derivate in Java
+            </ul>
+     </ul>
+</ul>
+
+
+<hr>
+<a NAME="Lun7"></a>
+<ul>
+  <li> <b>Lezione 33,34 - 25/02/02</b>
+     <ul>
+        <li><b>Materiale didattico</b>
+              <ul>
+             <li> <a href="materiale/TerzaParte">Slides</a>
+              </ul>
+        <li><b>Argomenti trattati</b>
+              <ul>
+                  <li> Classi astratte
+              </ul>
+        <li><b>Cosa lo studente dovrebbe sapere dopo la lezione</b>:
+            <ul>
+              <li>Come si definiscono le classi astratte in Java
+              <li>Come si usano le classi astratte
+            </ul>
+     </ul>
+</ul>
+
+<hr>
+<a NAME="Gio7"></a>
+<ul>
+  <li> <b>Lezione 35,36 - 27/02/02</b>
+     <ul>
+        <li><b>Materiale didattico</b>
+              <ul>
+             <li> <a href="materiale/TerzaParte">Slides</a>
+              </ul>
+        <li><b>Argomenti trattati</b>
+              <ul>
+                  <li> Interfacce
+              </ul>
+        <li><b>Cosa lo studente dovrebbe sapere dopo la lezione</b>:
+            <ul>
+              <li>Come si definiscono e si usano le interfacce in Java
+              <li>Differenze tra classi astratte e interfacce
+            </ul>
+     </ul>
+</ul>
+
+<hr>
+<a NAME="Lun8"></a>
+<ul>
+  <li> <b>Lezione 37,38 - 04/03/02 (Dott. Domenico Ventriglia)</b>
+     <ul>
+        <li><b>Materiale didattico</b>
+              <ul>
+             <li><a href="materiale/Esercitazioni/Esercitazione4">Slides</a>
+              </ul>
+        <li><b>Argomenti trattati</b>
+              <ul>
+                  <li> Classi astratte e Interfacce
+              </ul>
+            </ul>
+     </ul>
+</ul>
+
+<hr>
+<a NAME="Gio8"></a>
+<ul>
+  <li> <b>Lezione 39,40 - 07/03/02</b>
+     <ul>
+        <li><b>Materiale didattico</b>
+              <ul>
+             <li> <a href="materiale/QuartaParte">Slides</a>
+              </ul>
+        <li><b>Argomenti trattati</b>
+              <ul>
+                  <li> La fase di progettazione
+                  <li> Da diagramma delle classi in UML a Java
+              </ul>
+        <li><b>Cosa lo studente dovrebbe sapere dopo la lezione</b>:
+            <ul>
+              <li>Come si realizzano in Java semplici diagrammi delle classi
+            </ul>
+     </ul>
+</ul>
+
+<hr>
+<a NAME="Ven8"></a>
+<ul>
+  <li> <b>Lezione 41,42 - 08/03/02</b>
+     <ul>
+        <li><b>Materiale didattico</b>
+              <ul>
+             <li> <a href="materiale/QuartaParte">Slides</a>
+              </ul>
+        <li><b>Argomenti trattati</b>
+              <ul>
+                  <li> La fase di progettazione
+                  <li> Da diagramma delle classi in UML a Java
+              </ul>
+        <li><b>Cosa lo studente dovrebbe sapere dopo la lezione</b>:
+            <ul>
+              <li>Come si realizzano in Java diagrammi delle classi con
+                   associazioni 1 a n
+            </ul>
+     </ul>
+</ul>
+
+<hr>
+<a NAME="Lun9"></a>
+<ul>
+  <li> <b>Lezione 43,44 - 11/03/02</b>
+     <ul>
+        <li><b>Materiale didattico</b>
+              <ul>
+             <li> <a href="materiale/QuartaParte">Slides</a>
+              </ul>
+        <li><b>Argomenti trattati</b>
+              <ul>
+                  <li> La fase di progettazione
+                  <li> Da diagramma delle classi in UML a Java
+              </ul>
+        <li><b>Cosa lo studente dovrebbe sapere dopo la lezione</b>:
+            <ul>
+              <li>Come si realizzano in Java diagrammi delle classi con
+                   associazioni a responsabilita' multipla
+            </ul>
+     </ul>
+</ul>
+
+<hr>
+<a NAME="Ven9"></a>
+<ul>
+  <li> <b>Lezione 45,46 - 15/03/02 (Dott. Domenico Ventriglia)</b>
+     <ul>
+        <li><b>Materiale didattico</b>
+              <ul>
+             <li><a href="materiale/Esercitazioni/Esercitazione5">Slides</a>
+              </ul>
+        <li><b>Argomenti trattati</b>
+              <ul>
+                  <li> La fase di progettazione
+                  <li> Da diagramma delle classi in UML a Java
+              </ul>
+            </ul>
+     </ul>
+</ul>
+
+<hr>
+<a NAME="Lun10"></a>
+<ul>
+  <li> <b>Lezione 47,48 - 18/03/02</b>
+     <ul>
+        <li><b>Materiale didattico</b>
+              <ul>
+             <li> <a href="materiale/QuartaParte">Slides</a>
+              </ul>
+        <li><b>Argomenti trattati</b>
+              <ul>
+                  <li> La fase di progettazione
+                  <li> Da diagramma delle classi in UML a Java
+              </ul>
+        <li><b>Cosa lo studente dovrebbe sapere dopo la lezione</b>:
+            <ul>
+              <li>Come si realizzano in Java diagrammi delle classi con
+                   associazioni a responsabilita' multipla
+            </ul>
+     </ul>
+</ul>
+
+<hr>
+<a NAME="Gio10"></a>
+<ul>
+  <li> <b>Lezione 49,50 - 21/03/02</b>
+     <ul>
+        <li><b>Materiale didattico</b>
+              <ul>
+             <li> <a href="materiale/QuartaParte">Slides</a>
+              </ul>
+        <li><b>Argomenti trattati</b>
+              <ul>
+                  <li> La fase di progettazione
+                  <li> Da diagramma delle classi in UML a Java
+              </ul>
+        <li><b>Cosa lo studente dovrebbe sapere dopo la lezione</b>:
+            <ul>
+              <li>Come si realizzano in Java diagrammi delle classi con
+                   generalizzazione
+            </ul>
+     </ul>
+</ul>
+
+<hr>
+<a NAME="Ven10"></a>
+<ul>
+  <li> <b>Lezione 51,52 - 22/03/02</b>
+     <ul>
+        <li><b>Materiale didattico</b>
+              <ul>
+             <li><a href="materiale/Esercitazioni/Esercitazione6">Slides</a>
+              </ul>
+        <li><b>Argomenti trattati</b>
+              <ul>
+                  <li> La fase di progettazione
+                  <li> Da diagramma delle classi in UML a Java
+              </ul>
+            </ul>
+     </ul>
+</ul>
+
+
+
+<!--
+-->
+
+
+<br>
+<p>
+
+<hr><font size=-1>Home page del <a href="index.html">Corso
+di Progettazione del Software 1 (canale M-Z)</a></font>
+<br><font size=-1>della Laurea in Ingegneria Informatica dell'Universit&agrave;
+di Roma "La Sapienza"</font>
+
+
+<hr>
+<address></address>
+<!-- hhmts start -->
+Last modified: Mon Feb  3 15:29:54 2003
+<!-- hhmts end -->
+</body> </html>

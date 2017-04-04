@@ -1,0 +1,760 @@
+<html xmlns:o="urn:schemas-microsoft-com:office:office"
+xmlns:w="urn:schemas-microsoft-com:office:word"
+xmlns="http://www.w3.org/TR/REC-html40">
+
+<head>
+<meta http-equiv=Content-Type content="text/html; charset=windows-1252">
+<meta name=ProgId content=Word.Document>
+<meta name=Generator content="Microsoft Word 11">
+<meta name=Originator content="Microsoft Word 11">
+<title>CORSO DI RETI WIRELESS</title>
+<!--[if gte mso 9]><xml>
+ <o:DocumentProperties>
+  <o:Author>a</o:Author>
+  <o:Template>Normal</o:Template>
+  <o:LastAuthor>a</o:LastAuthor>
+  <o:Revision>2</o:Revision>
+  <o:TotalTime>165</o:TotalTime>
+  <o:LastPrinted>2005-02-07T12:39:00Z</o:LastPrinted>
+  <o:Created>2005-02-07T12:46:00Z</o:Created>
+  <o:LastSaved>2005-02-07T12:46:00Z</o:LastSaved>
+  <o:Pages>1</o:Pages>
+  <o:Words>212</o:Words>
+  <o:Characters>1210</o:Characters>
+  <o:Lines>10</o:Lines>
+  <o:Paragraphs>2</o:Paragraphs>
+  <o:CharactersWithSpaces>1420</o:CharactersWithSpaces>
+  <o:Version>11.5606</o:Version>
+ </o:DocumentProperties>
+</xml><![endif]--><!--[if gte mso 9]><xml>
+ <w:WordDocument>
+  <w:SpellingState>Clean</w:SpellingState>
+  <w:GrammarState>Clean</w:GrammarState>
+  <w:HyphenationZone>14</w:HyphenationZone>
+  <w:ValidateAgainstSchemas/>
+  <w:SaveIfXMLInvalid>false</w:SaveIfXMLInvalid>
+  <w:IgnoreMixedContent>false</w:IgnoreMixedContent>
+  <w:AlwaysShowPlaceholderText>false</w:AlwaysShowPlaceholderText>
+  <w:Compatibility>
+   <w:BreakWrappedTables/>
+   <w:SnapToGridInCell/>
+   <w:ApplyBreakingRules/>
+   <w:WrapTextWithPunct/>
+   <w:UseAsianBreakRules/>
+   <w:UseWord2002TableStyleRules/>
+  </w:Compatibility>
+  <w:BrowserLevel>MicrosoftInternetExplorer4</w:BrowserLevel>
+ </w:WordDocument>
+</xml><![endif]--><!--[if gte mso 9]><xml>
+ <w:LatentStyles DefLockedState="false" LatentStyleCount="156">
+ </w:LatentStyles>
+</xml><![endif]-->
+<style>
+<!--
+ /* Font Definitions */
+ @font-face
+	{font-family:Wingdings;
+	panose-1:5 0 0 0 0 0 0 0 0 0;
+	mso-font-charset:2;
+	mso-generic-font-family:auto;
+	mso-font-pitch:variable;
+	mso-font-signature:0 268435456 0 0 -2147483648 0;}
+ /* Style Definitions */
+ p.MsoNormal, li.MsoNormal, div.MsoNormal
+	{mso-style-parent:"";
+	margin:0cm;
+	margin-bottom:.0001pt;
+	mso-pagination:widow-orphan;
+	font-size:12.0pt;
+	font-family:"Times New Roman";
+	mso-fareast-font-family:"Times New Roman";}
+h1
+	{mso-style-next:Normale;
+	margin-top:12.0pt;
+	margin-right:0cm;
+	margin-bottom:3.0pt;
+	margin-left:21.6pt;
+	text-indent:-21.6pt;
+	mso-pagination:widow-orphan;
+	page-break-after:avoid;
+	mso-outline-level:1;
+	mso-list:l8 level1 lfo2;
+	tab-stops:list 21.6pt;
+	font-size:16.0pt;
+	font-family:Arial;
+	mso-font-kerning:16.0pt;}
+h2
+	{mso-style-next:Normale;
+	margin-top:12.0pt;
+	margin-right:0cm;
+	margin-bottom:3.0pt;
+	margin-left:28.8pt;
+	text-indent:-28.8pt;
+	mso-pagination:widow-orphan;
+	page-break-after:avoid;
+	mso-outline-level:2;
+	mso-list:l8 level2 lfo2;
+	tab-stops:list 28.8pt;
+	font-size:14.0pt;
+	font-family:Arial;
+	font-style:italic;}
+h3
+	{mso-style-next:Normale;
+	margin-top:12.0pt;
+	margin-right:0cm;
+	margin-bottom:3.0pt;
+	margin-left:36.0pt;
+	text-indent:-36.0pt;
+	mso-pagination:widow-orphan;
+	page-break-after:avoid;
+	mso-outline-level:3;
+	mso-list:l8 level3 lfo2;
+	tab-stops:list 36.0pt;
+	font-size:13.0pt;
+	font-family:Arial;}
+h4
+	{mso-style-next:Normale;
+	margin-top:12.0pt;
+	margin-right:0cm;
+	margin-bottom:3.0pt;
+	margin-left:43.2pt;
+	text-indent:-43.2pt;
+	mso-pagination:widow-orphan;
+	page-break-after:avoid;
+	mso-outline-level:4;
+	mso-list:l8 level4 lfo2;
+	tab-stops:list 43.2pt;
+	font-size:14.0pt;
+	font-family:"Times New Roman";}
+h5
+	{mso-style-next:Normale;
+	margin-top:12.0pt;
+	margin-right:0cm;
+	margin-bottom:3.0pt;
+	margin-left:50.4pt;
+	text-indent:-50.4pt;
+	mso-pagination:widow-orphan;
+	mso-outline-level:5;
+	mso-list:l8 level5 lfo2;
+	tab-stops:list 50.4pt;
+	font-size:13.0pt;
+	font-family:"Times New Roman";
+	font-style:italic;}
+h6
+	{mso-style-next:Normale;
+	margin-top:12.0pt;
+	margin-right:0cm;
+	margin-bottom:3.0pt;
+	margin-left:57.6pt;
+	text-indent:-57.6pt;
+	mso-pagination:widow-orphan;
+	mso-outline-level:6;
+	mso-list:l8 level6 lfo2;
+	tab-stops:list 57.6pt;
+	font-size:11.0pt;
+	font-family:"Times New Roman";}
+p.MsoHeading7, li.MsoHeading7, div.MsoHeading7
+	{mso-style-next:Normale;
+	margin-top:12.0pt;
+	margin-right:0cm;
+	margin-bottom:3.0pt;
+	margin-left:64.8pt;
+	text-indent:-64.8pt;
+	mso-pagination:widow-orphan;
+	mso-outline-level:7;
+	mso-list:l8 level7 lfo2;
+	tab-stops:list 64.8pt;
+	font-size:12.0pt;
+	font-family:"Times New Roman";
+	mso-fareast-font-family:"Times New Roman";}
+p.MsoHeading8, li.MsoHeading8, div.MsoHeading8
+	{mso-style-next:Normale;
+	margin-top:12.0pt;
+	margin-right:0cm;
+	margin-bottom:3.0pt;
+	margin-left:72.0pt;
+	text-indent:-72.0pt;
+	mso-pagination:widow-orphan;
+	mso-outline-level:8;
+	mso-list:l8 level8 lfo2;
+	tab-stops:list 72.0pt;
+	font-size:12.0pt;
+	font-family:"Times New Roman";
+	mso-fareast-font-family:"Times New Roman";
+	font-style:italic;}
+p.MsoHeading9, li.MsoHeading9, div.MsoHeading9
+	{mso-style-next:Normale;
+	margin-top:12.0pt;
+	margin-right:0cm;
+	margin-bottom:3.0pt;
+	margin-left:79.2pt;
+	text-indent:-79.2pt;
+	mso-pagination:widow-orphan;
+	mso-outline-level:9;
+	mso-list:l8 level9 lfo2;
+	tab-stops:list 79.2pt;
+	font-size:11.0pt;
+	font-family:Arial;
+	mso-fareast-font-family:"Times New Roman";}
+span.SpellE
+	{mso-style-name:"";
+	mso-spl-e:yes;}
+span.GramE
+	{mso-style-name:"";
+	mso-gram-e:yes;}
+@page Section1
+	{size:595.3pt 841.9pt;
+	margin:70.85pt 2.0cm 2.0cm 2.0cm;
+	mso-header-margin:35.4pt;
+	mso-footer-margin:35.4pt;
+	mso-paper-source:0;}
+div.Section1
+	{page:Section1;}
+ /* List Definitions */
+ @list l0
+	{mso-list-id:267006312;
+	mso-list-type:hybrid;
+	mso-list-template-ids:916460582 68157441 68157443 68157445 68157441 68157443 68157445 68157441 68157443 68157445;}
+@list l0:level1
+	{mso-level-number-format:bullet;
+	mso-level-text:\F0B7;
+	mso-level-tab-stop:36.0pt;
+	mso-level-number-position:left;
+	text-indent:-18.0pt;
+	font-family:Symbol;}
+@list l1
+	{mso-list-id:820853238;
+	mso-list-type:hybrid;
+	mso-list-template-ids:-1240703976 68157441 68157443 68157445 68157441 68157443 68157445 68157441 68157443 68157445;}
+@list l1:level1
+	{mso-level-number-format:bullet;
+	mso-level-text:\F0B7;
+	mso-level-tab-stop:36.0pt;
+	mso-level-number-position:left;
+	text-indent:-18.0pt;
+	font-family:Symbol;}
+@list l2
+	{mso-list-id:831916830;
+	mso-list-type:hybrid;
+	mso-list-template-ids:-2143022622 68157441 68157443 68157445 68157441 68157443 68157445 68157441 68157443 68157445;}
+@list l2:level1
+	{mso-level-number-format:bullet;
+	mso-level-text:\F0B7;
+	mso-level-tab-stop:54.0pt;
+	mso-level-number-position:left;
+	margin-left:54.0pt;
+	text-indent:-18.0pt;
+	font-family:Symbol;}
+@list l3
+	{mso-list-id:1148477600;
+	mso-list-type:hybrid;
+	mso-list-template-ids:658430510 68157441 68157443 68157445 68157441 68157443 68157445 68157441 68157443 68157445;}
+@list l3:level1
+	{mso-level-number-format:bullet;
+	mso-level-text:\F0B7;
+	mso-level-tab-stop:36.0pt;
+	mso-level-number-position:left;
+	text-indent:-18.0pt;
+	font-family:Symbol;}
+@list l4
+	{mso-list-id:1233389713;
+	mso-list-type:hybrid;
+	mso-list-template-ids:-72032274 68157457 68157465 68157467 68157455 68157465 68157467 68157455 68157465 68157467;}
+@list l4:level1
+	{mso-level-text:"%1\)";
+	mso-level-tab-stop:36.0pt;
+	mso-level-number-position:left;
+	text-indent:-18.0pt;}
+@list l5
+	{mso-list-id:1329481806;
+	mso-list-type:hybrid;
+	mso-list-template-ids:1081115782 68157441 68157443 68157445 68157441 68157443 68157445 68157441 68157443 68157445;}
+@list l5:level1
+	{mso-level-number-format:bullet;
+	mso-level-text:\F0B7;
+	mso-level-tab-stop:36.0pt;
+	mso-level-number-position:left;
+	text-indent:-18.0pt;
+	font-family:Symbol;}
+@list l6
+	{mso-list-id:1494026214;
+	mso-list-type:hybrid;
+	mso-list-template-ids:1132754668 68157441 68157443 68157445 68157441 68157443 68157445 68157441 68157443 68157445;}
+@list l6:level1
+	{mso-level-number-format:bullet;
+	mso-level-text:\F0B7;
+	mso-level-tab-stop:36.0pt;
+	mso-level-number-position:left;
+	text-indent:-18.0pt;
+	font-family:Symbol;}
+@list l7
+	{mso-list-id:1674333972;
+	mso-list-type:hybrid;
+	mso-list-template-ids:-180339526 68157441 68157443 68157445 68157441 68157443 68157445 68157441 68157443 68157445;}
+@list l7:level1
+	{mso-level-number-format:bullet;
+	mso-level-text:\F0B7;
+	mso-level-tab-stop:36.0pt;
+	mso-level-number-position:left;
+	text-indent:-18.0pt;
+	font-family:Symbol;}
+@list l8
+	{mso-list-id:1910574876;
+	mso-list-template-ids:1639222180;}
+@list l8:level1
+	{mso-level-style-link:"Titolo 1";
+	mso-level-text:%1;
+	mso-level-tab-stop:21.6pt;
+	mso-level-number-position:left;
+	margin-left:21.6pt;
+	text-indent:-21.6pt;}
+@list l8:level2
+	{mso-level-style-link:"Titolo 2";
+	mso-level-text:"%1\.%2";
+	mso-level-tab-stop:28.8pt;
+	mso-level-number-position:left;
+	margin-left:28.8pt;
+	text-indent:-28.8pt;}
+@list l8:level3
+	{mso-level-style-link:"Titolo 3";
+	mso-level-text:"%1\.%2\.%3";
+	mso-level-tab-stop:36.0pt;
+	mso-level-number-position:left;
+	margin-left:36.0pt;
+	text-indent:-36.0pt;}
+@list l8:level4
+	{mso-level-style-link:"Titolo 4";
+	mso-level-text:"%1\.%2\.%3\.%4";
+	mso-level-tab-stop:43.2pt;
+	mso-level-number-position:left;
+	margin-left:43.2pt;
+	text-indent:-43.2pt;}
+@list l8:level5
+	{mso-level-style-link:"Titolo 5";
+	mso-level-text:"%1\.%2\.%3\.%4\.%5";
+	mso-level-tab-stop:50.4pt;
+	mso-level-number-position:left;
+	margin-left:50.4pt;
+	text-indent:-50.4pt;}
+@list l8:level6
+	{mso-level-style-link:"Titolo 6";
+	mso-level-text:"%1\.%2\.%3\.%4\.%5\.%6";
+	mso-level-tab-stop:57.6pt;
+	mso-level-number-position:left;
+	margin-left:57.6pt;
+	text-indent:-57.6pt;}
+@list l8:level7
+	{mso-level-style-link:"Titolo 7";
+	mso-level-text:"%1\.%2\.%3\.%4\.%5\.%6\.%7";
+	mso-level-tab-stop:64.8pt;
+	mso-level-number-position:left;
+	margin-left:64.8pt;
+	text-indent:-64.8pt;}
+@list l8:level8
+	{mso-level-style-link:"Titolo 8";
+	mso-level-text:"%1\.%2\.%3\.%4\.%5\.%6\.%7\.%8";
+	mso-level-tab-stop:72.0pt;
+	mso-level-number-position:left;
+	margin-left:72.0pt;
+	text-indent:-72.0pt;}
+@list l8:level9
+	{mso-level-style-link:"Titolo 9";
+	mso-level-text:"%1\.%2\.%3\.%4\.%5\.%6\.%7\.%8\.%9";
+	mso-level-tab-stop:79.2pt;
+	mso-level-number-position:left;
+	margin-left:79.2pt;
+	text-indent:-79.2pt;}
+ol
+	{margin-bottom:0cm;}
+ul
+	{margin-bottom:0cm;}
+-->
+</style>
+<!--[if gte mso 10]>
+<style>
+ /* Style Definitions */
+ table.MsoNormalTable
+	{mso-style-name:"Tabella normale";
+	mso-tstyle-rowband-size:0;
+	mso-tstyle-colband-size:0;
+	mso-style-noshow:yes;
+	mso-style-parent:"";
+	mso-padding-alt:0cm 5.4pt 0cm 5.4pt;
+	mso-para-margin:0cm;
+	mso-para-margin-bottom:.0001pt;
+	mso-pagination:widow-orphan;
+	font-size:10.0pt;
+	font-family:"Times New Roman";
+	mso-ansi-language:#0400;
+	mso-fareast-language:#0400;
+	mso-bidi-language:#0400;}
+</style>
+<![endif]-->
+</head>
+
+<body lang=IT style='tab-interval:35.4pt'>
+
+<div class=Section1>
+
+<p class=MsoNormal align=center style='text-align:center'><b><span
+style='font-size:16.0pt;font-family:Arial'>CORSO DI RETI WIRELESS<o:p></o:p></span></b></p>
+
+<p class=MsoNormal align=center style='text-align:center'><b><i>Andrea
+Vitaletti<o:p></o:p></i></b></p>
+
+<p class=MsoNormal><o:p>&nbsp;</o:p></p>
+
+<h1>AVVISO:</h1>
+<p><b>Il prossimo seminario è fissato per martedi' 10 maggio alle ore 10:30 in aula C3 in via 
+Salaria 113.</b></p>
+<p class=MsoNormal><b><span style='font-size:16.0pt;font-family:Arial'>Obiettivi
+del corso<o:p></o:p></span></b></p>
+
+<ul style='margin-top:0cm' type=disc>
+ <li class=MsoNormal style='mso-list:l5 level1 lfo9;tab-stops:list 36.0pt'>Comprensione
+     dei servizi offerti dalle principali tecnologie <span class=SpellE>wireless</span>.
+     </li>
+ <li class=MsoNormal style='mso-list:l5 level1 lfo9;tab-stops:list 36.0pt'>Capacità
+     di progettare un’architettura di rete <span class=SpellE>wireless</span>
+     che risponda ad esigenze specifiche.</li>
+ <li class=MsoNormal style='mso-list:l5 level1 lfo9;tab-stops:list 36.0pt'><span
+     class=GramE>Capacità di progettare e sviluppare applicazioni e servizi <span
+     class=SpellE>wireless</span> utilizzando le tecnologie più appropriate </span></li>
+</ul>
+
+<p class=MsoNormal><o:p>&nbsp;</o:p></p>
+
+<p class=MsoNormal><b><span style='font-size:16.0pt;font-family:Arial'>Struttura
+del Corso<o:p></o:p></span></b></p>
+
+<p class=MsoNormal>Il corso <span class=GramE>è strutturato in 3 moduli
+principali, tra parentesi è</span> riportato il peso indicativo del modulo:</p>
+<p class=MsoNormal>&nbsp;</p>
+<table border="1" width="100%" id="table1">
+	<tr>
+		<td colspan="2" bgcolor="#C0C0C0">
+		<h1 align="left">1. <span dir=LTR>Richiami alle tecnologie di
+comunicazioni <span class=SpellE>wireless</span> (20%<span class=GramE>)</span></span></h1>
+		</td>
+	</tr>
+	<tr>
+		<td><span dir=LTR>Principi di trasmissione dei dati</span></td>
+		<td>
+		<ul>
+			<li><a href="materiale/Chap2.zip">slides capitolo 2 </a></li>
+			<li>
+			<a href="http://www.cs.ucl.ac.uk/staff/S.Bhatti/D51-notes/notes.html">
+			Lecture notes for M.Sc. Data Communication Networks and Distributed 
+			Systems D51</a> (UCL)</li>
+			<li>
+			<a href="http://www.biomedica.laboratorium.dist.unige.it/MaterialeDidattico/ComunicazioniElettriche/parte1.pdf">
+			segnali e spettri</a> (università di Genova)</li>
+			<li>
+			<a href="http://www.biomedica.laboratorium.dist.unige.it/MaterialeDidattico/ComunicazioniElettriche/parte5.pdf">
+			campionamento</a> (università di Genova)</li>
+			<li>
+			<a href="http://www.elet.polimi.it/upload/bellini/fond_segnali_trasm/FST_4_trasformata_Fourier.pdf">
+			trasformata di fourier</a> (politecnico di Milano)</li>
+			<li><a href="materiale/Chap5.zip">slides capitolo 5</a></li>
+			<li><a href="http://www.ilmondodelletelecomunicazioni.it/">
+			http://www.ilmondodelletelecomunicazioni.it/</a></li>
+		</ul>
+		</td>
+	</tr>
+	<tr>
+		<td height="28"><![if !supportLists]>
+		<span style='font-style:normal; font-variant:normal; font-weight:normal; font-size:7.0pt; font-family:Times New Roman; mso-list:Ignore; mso-fareast-font-family:Symbol; mso-bidi-font-family:Symbol'>&nbsp;</span><![endif]><span dir=LTR>Principi di tecniche di codifica
+del <span class=GramE>segnale</span></span></td>
+		<td height="28">
+		<ul>
+			<li><a href="materiale/Chap6.zip">slides capitolo 6</a></li>
+		</ul>
+		</td>
+	</tr>
+	<tr>
+		<td>Spread Spectrum (cenni)</td>
+		<td>
+		<ul>
+			<li><a href="materiale/Chap7.zip">slides capitolo 7</a></li>
+		</ul>
+		</td>
+	</tr>
+	<tr>
+		<td>Principi di codici di controllo degli errori </td>
+		<td>
+		<ul>
+			<li><a href="materiale/Chap8.zip">slides capitolo 8</a></li>
+		</ul>
+		</td>
+	</tr>
+	<tr>
+		<td colspan="2" bgcolor="#C0C0C0">
+		<h1 align="left"><span dir=LTR><span class=SpellE>2. Wireless</span>
+<span class=SpellE>Networking</span> (30%)</span></h1>
+		</td>
+	</tr>
+	<tr>
+		<td>Comunicazioni&nbsp; satellitari. Architettura di un sistema 
+		satellitare. Problematiche del TCP/IP satellitare.RFC 2488. RFC 2760.</td>
+		<td>
+		<ul>
+			<li><a href="materiale/Chap9.zip">slides capitolo 9</a></li>
+			<li><a href="http://www.ietf.org/rfc/rfc2488.txt">RFC 2488</a></li>
+			<li><a href="http://www.ietf.org/rfc/rfc2760.txt">RFC 2760</a></li>
+		</ul>
+		</td>
+	</tr>
+	<tr>
+		<td>Reti Cellulari. <span dir=LTR> <span class=GramE>Tecnologie
+e servizi offerti: GSM, GPRS e UMTS. Sicurezza, servizi di localizzazione, problematiche di <span
+class=SpellE>content</span> <span class=SpellE>adaptation</span></span>. J2ME e <span class=SpellE>Symbian</span></span></td>
+		<td>
+		<ul>
+			<li><a href="materiale/Chap10.zip">slides capitolo 10</a></li>
+			<li><a href="http://www.cti.dtu.dk/teaching/fulltext/thesis22.pdf">
+			content adaptation on mobile phones</a></li>
+			<li>
+			<a href="http://lotos.csi.uottawa.ca/ftp/pub/Lotos/Papers/GPRS_Tutorial.pdf">
+			understanding GPRS</a></li>
+			<li>
+			<a href="http://www.cambridge.intel-research.net/%20~jscott/pubfiles/locationaware-ieeecomputer2004.pdf">
+			location aware computing comes to age</a></li>
+			<li><a href="http://www.dipol.com.ua/NOKIA_AT-help.pdf">AT command 
+			set</a></li>
+			<li>
+			<a href="http://www.medialab.sonera.fi/%20workspace/WebContentAdaptationWP.pdf">
+			Web content adaptation white paper</a></li>
+			<li>
+			<a href="eeweb.poly.edu/docs/presentation/Poly-HarshaNagesh.ppt">
+			locability in mobile networks </a></li>
+			<li>
+			<a href="http://www.dia.unisa.it/~ads/corso-security/www/CORSO-9900/a5/testo.htm">
+			sicurezza nel GSM</a></li>
+			<li><a href="http://www.fcc.gov/realaudio/e911mot.ppt">E911 phase 2 
+			location solution landscape</a></li>
+		</ul>
+		</td>
+	</tr>
+	<tr>
+		<td>Mobile IP</td>
+		<td>
+		<ul>
+			<li><a href="materiale/Chap12.zip">slides capitolo 12</a></li>
+			<li><a href="http://people.nokia.net/charliep/">C.E.Perkins home 
+			page</a></li>
+			<li>
+			<a href="http://people.nokia.net/charliep/txt/mobicom96/paper.ps">
+			IPv6 mobility</a></li>
+			<li>
+			<a href="http://www.item.ntnu.no/fag/tm8100/%20Pensumstoff2004/mipv6-bra.ppt">
+			Introduction to IPv6 mobility</a></li>
+			<li>
+			<a href="http://www.ietf.org/html.charters/mobileip-charter.html">
+			link su IPMobility (RFC, Internet draft)</a></li>
+		</ul>
+		</td>
+	</tr>
+	<tr>
+		<td colspan="2" bgcolor="#C0C0C0">
+		<h1>3. Wireless LAN (50%)</h1>
+		</td>
+	</tr>
+	<tr>
+		<td><span dir=LTR>Tecnologie per le <span
+class=SpellE>Wireless</span> LAN: interfacce, servizi e qualità del <span
+class=GramE>servizio, 802.16</span></span></td>
+		<td>
+		<ul>
+			<li><a href="materiale/Chap11e13.zip">slides capitolo 11 e 13</a></li>
+		</ul>
+		</td>
+	</tr>
+	<tr>
+		<td>WiFi <span dir=LTR>e
+lo standard 802.11. Problematiche di <span class=SpellE>handover</span><span
+class=GramE> .</span> Problematiche <span class=GramE>relative all’</span>autenticazione
+e allo scambio sicuro di dati.</span></td>
+		<td>
+		<ul>
+			<li>SLIDES DAL LIBRO [2]</li>
+			<li><a href="materiale/WIFI%20CISCO.ppt">Lo standard 802.11</a></li>
+			<li><a href="materiale/PHY.ppt">Accenni allo strato fisico</a></li>
+			<li><a href="materiale/Mobility.ppt">Mobility in 802.11</a></li>
+			<li><a href="materiale/QoS.ppt">QoS in 802.11</a></li>
+			<li><a href="materiale/security.ppt">Security in 802.11</a></li>
+			<li><a href="materiale/Deployng%20WLAN.ppt">Considerazioni sulla 
+			progettazione di una rete Wi-Fi</a></li>
+		</ul>
+		</td>
+	</tr>
+	<tr>
+		<td>Bluetooth <span dir=LTR>&nbsp;e lo IEEE 802.15</span></td>
+		<td>
+		<ul>
+			<li><a href="materiale/Chap%2015.zip">slides capitolo 15</a></li>
+		</ul>
+		</td>
+	</tr>
+	<tr>
+		<td>Problematiche <span dir=LTR> <span class=GramE>di
+</span>integrazione di <span class=SpellE>Wireless</span> LAN con tecnologie 
+		satellitari e/o cellulari.</span></td>
+		<td>&nbsp;</td>
+	</tr>
+</table>
+
+<p class=MsoNormal>&nbsp;</p>
+<p class="MsoNormal"><span style="font-size: 16pt"><b>
+<span style="font-family: Arial">Esame</span></b></span></p>
+<ul>
+	<li>
+	<p class="MsoNormal">L'esame consiste in una prova orale e/o scritta per 
+	verificare la comprensione&nbsp; degli argomenti trattati durante il corso.
+	</li>
+	<li>
+	<p class="MsoNormal">Gli studenti, organizzati in gruppi di minimo due 
+	massimo quattro persone, devono esporre in un seminario della durata di 
+	circa 30 minuti, un argomento di approfondimento. L'argomento del seminario 
+	può essere di propria scelta oppure può essere uno degli argomenti proposti 
+	dal docente (vedi sezione seguente). Sono apprezzati argomenti che prevedano 
+	la realizzazione di simulazioni o prototipi.</li>
+	<li>
+	<p class="MsoNormal">Valutazione: la prova orale/scritta incide per circa il 
+	70% della votazione finale. Il rimanente 30% viene assegnato sulla base del 
+	seminario.</li>
+</ul>
+<p class="MsoNormal">&nbsp;</p>
+<p class=MsoNormal><span style="font-size: 16pt"><b>
+<span style="font-family: Arial">Argomenti proposti per i seminari</span></b></span></p>
+<table border="1" width="100%" id="table2">
+	<tr>
+		<td width="513">Reti di sensori</td>
+		<td>
+		<ul>
+			<li><a href="materiale/TutorialSN.zip">Tutorial</a></li>
+			<li><a href="materiale/SurveySN.pdf">Survey</a></li>
+		</ul>
+		</td>
+	</tr>
+	<tr>
+		<td width="513">Wep Security</td>
+		<td>
+		<ul>
+			<li><a href="http://www.isaac.cs.berkeley.edu/isaac/wep-faq.html">
+			Security of the WEP algorithm</a></li>
+			<li><a href="http://www.isaac.cs.berkeley.edu/isaac/mobicom.pdf">
+			Intercepting Mobile Communications:<br>
+			The Insecurity of 802.11</a></li>
+			<li><a href="http://wepcrack.sourceforge.net/">Wepcrack</a></li>
+		</ul>
+		</td>
+	</tr>
+	<tr>
+		<td width="513">Algoritmo di codifica/decodifica GSM </td>
+		<td>
+		<ul>
+			<li><a href="http://kbs.cs.tu-berlin.de/~jutta/toast.html">GSM lossy 
+			compression library</a></li>
+		</ul>
+		</td>
+	</tr>
+	<tr>
+		<td width="513">Ad-hoc routing</td>
+		<td>
+		<ul>
+			<li><a href="http://www.crhc.uiuc.edu/wireless/tutorials.html">
+			tutorials</a></li>
+			<li><a href="http://www.ansinet.org/fulltext/itj/itj32168-175.pdf">
+			survey1</a></li>
+			<li>
+			<a href="dcg.ethz.ch/theses/ws0304/%20analysisRoutingAlgos_report.pdf">
+			survey2</a></li>
+			<li><a href="kunz-pc.sce.carleton.ca/Thesis/RoutingSurvey.pdf">
+			survey3</a></li>
+		</ul>
+		</td>
+	</tr>
+	<tr>
+		<td width="513">Definizione di scenari e architetture wireless</td>
+		<td>
+		&nbsp;</td>
+	</tr>
+	<tr>
+		<td width="513">RFID. Architettura per l'emissione e il controllo di 
+		biglietti elettronici via RFID</td>
+		<td>
+		<ul>
+			<li><a href="http://www.rfidjournal.com/article/gettingstarted/">
+			http://www.rfidjournal.com/article/gettingstarted/</a></li>
+		</ul>
+		</td>
+	</tr>
+	<tr>
+		<td width="513">Realizzare un SMS gateway simile a nowsms</td>
+		<td>
+		<ul>
+			<li><a href="http://www.nowsms.com/">http://www.nowsms.com/</a></li>
+		</ul>
+		</td>
+	</tr>
+	<tr>
+		<td width="513">Antenne punto punto</td>
+		<td>
+		<ul>
+			<li><a href="http://www.napoliwireless.net/">Napoli wireless</a></li>
+		</ul>
+		</td>
+	</tr>
+</table>
+<p class=MsoNormal>&nbsp;</p>
+<p class=MsoNormal><span class="SpellE">
+<span style="font-size: 16pt" lang="en-gb"><b><span style="font-family: Arial">
+Argomenti di approfondimento</span></b></span></span></p>
+<p class=MsoNormal>&nbsp;</p>
+<ul>
+	<li>
+	<p class="MsoNormal"><span lang="en-gb">
+	<a href="materiale/Java2Me_Symbian.pdf">Sviluppo di applicazioni su 
+	dispositivi mobili con limitate capacità di elaborazione</a>. A cura di 
+	Emiliano Trevisani.</span></li>
+</ul>
+<p class=MsoNormal>&nbsp;</p>
+<p class=MsoNormal>&nbsp;</p>
+<p class=MsoNormal><span class=SpellE><b>
+<span lang=EN-GB style='font-size:
+16.0pt;font-family:Arial;mso-ansi-language:EN-GB'>Testo</span></b></span><b><span
+lang=EN-GB style='font-size:16.0pt;font-family:Arial;mso-ansi-language:EN-GB'> <span
+class=SpellE>di</span> <span class=SpellE>riferimento</span> <o:p>(è disponibile 
+una copia in biblioteca)</o:p></span></b></p>
+
+<p class=MsoNormal>&nbsp;</p>
+<p class=MsoNormal>
+<span lang=EN-GB style='mso-ansi-language:EN-GB; font-weight:700'>
+[1] <a href="http://www.williamstallings.com/Wireless/Wireless2e.html">Wireless
+Communications &amp; Networks (second edition)</a></span></p>
+
+<p class=MsoNormal><span lang=EN-GB style='mso-ansi-language:EN-GB'>William Stallings<o:p></o:p></span></p>
+
+<p class=MsoNormal><span lang=EN-GB style='mso-ansi-language:EN-GB'>Prentice
+Hall<o:p></o:p></span></p>
+
+<p class=MsoNormal><span lang=EN-GB style='mso-ansi-language:EN-GB'>ISBN:
+0-13-191835-4</span></p>
+<p class=MsoNormal>&nbsp;</p>
+<p class=MsoNormal><span style="font-size: 16pt" lang="en-gb"><b>
+<span style="font-family: Arial">Altri testi</span></b></span></p>
+<p class=MsoNormal>&nbsp;</p>
+<p class=MsoNormal><span style="mso-ansi-language: EN-GB; font-weight: 700">[2] 
+802.11 Wireless LAN Fundamentals</span></p>
+<p class=MsoNormal><span style="mso-ansi-language: EN-GB">Pejman&nbsp;Roshan, 
+Jonathan&nbsp;Leary&nbsp;</span></p>
+<p class=MsoNormal><span style="mso-ansi-language: EN-GB">Cisco Press </span></p>
+<p class=MsoNormal><span style="mso-ansi-language: EN-GB">ISBN: 1-58705-077-3</span></p>
+
+<p class=MsoNormal><span lang=EN-GB style='mso-ansi-language:EN-GB'><o:p>&nbsp;</o:p></span></p>
+
+</div>
+
+</body>
+
+</html>

@@ -1,0 +1,89 @@
+<!doctype html public "-//w3c//dtd html 4.0 transitional//en">
+<html>
+<head>
+<link href="java.css" rel="stylesheet" type="text/css">
+<title>Poligoni regolari</title>
+</head>
+
+<body>
+
+<h2>Poligoni regolari</h2>
+
+Il seguente esercizio pu&ograve; essere risolto facilmente usando
+i poligoni e le operazioni trigonometriche. In particolare, ci
+occorre il valore di Pi greco, che &egrave; rappresentato dalla
+variabile <tt>Math.PI</tt>, e le funzioni seno e coseno, che
+sono realizzate in Java come <tt>Math.sin</tt> e <tt>Math.cos</tt>.<p>
+
+Quello che si vuole fare &egrave; disegnare un poligono regolare
+con <tt>n</tt> lati.<p>
+
+L'esercizio si risolve tenendo presente che ogni poligono regolare
+si pu&ograve; sempre inscrivere in un cerchio. Il problema si
+sposta quindi dal disegno del poligono alla individuazione di
+<tt>n</tt> punti sulla circonferenza. Il medodo che usiamo &egrave; questo:
+l'angolo giro vale <tt>2*Math.PI</tt>, e questo va diviso esattamente
+in <tt>n</tt> parti. Quindi, possiamo fare un ciclo, in cui una
+variabile <tt>i</tt> va da 0 a <tt>n</tt>. L'angolo che consideriamo
+ogni volta vale <tt>2*Math.PI*i/n</tt>.<p>
+
+Una volta noto l'angolo corrispondente ai punti della circonferenza
+che ci servono, occorre calcolare le loro coordinate. Se per
+esempio assumiamo che il centro del cerchio sia posizionato
+in <tt>(xcentro,ycentro)</tt>, e che il suo raggio sia memorizzato
+nella variabile <tt>raggio</tt>, allora le coordinate di un
+punto si ottengono usando le note formule trigonometriche:
+
+<pre>
+      x=xcentro+raggio*Math.cos(2*Math.PI*i/n);
+      y=ycentro+raggio*Math.sin(2*Math.PI*i/n);
+</pre>
+
+Una volta note le coordinate di un punto, &egrave; sufficiente
+aggiungere il punto al poligono che &egrave; stato inizialmente
+dichiarato vuoto. Il programma completo
+<a href="Regolari.java">Regolari.java</a>
+viene riportato qui sotto.<p>
+
+<pre>
+/*
+  Disegna un poligono regolare con n lati
+*/
+
+import java.awt.*;
+
+public class Regolari extends java.applet.Applet {
+  public void paint(Graphics g) {
+    int n=8;
+    Polygon reg=new Polygon();
+    int i;
+    double x,y;
+    double xcentro=100, ycentro=100, raggio=100;
+
+    for(i=0; i<=n-1; i=i+1) {
+      x=xcentro+raggio*Math.cos(2*Math.PI*i/n);
+      y=ycentro+raggio*Math.sin(2*Math.PI*i/n);
+
+      reg.addPoint( Math.round((float) x), Math.round((float) y) );
+    }
+
+    g.drawPolygon(reg);
+  }
+}
+
+</pre>
+
+L'esecuzione di questo programma, in cui il centro &egrave; stato
+posto in (100,100), il raggio &egrave; 100, ed <tt>n</tt> vale 8,
+produce il disegno seguente:<p>
+
+<center>
+<img src="Regolari.gif">
+</center>
+
+</body>
+</html>
+
+
+
+

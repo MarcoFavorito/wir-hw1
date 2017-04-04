@@ -1,0 +1,70 @@
+<!doctype html public "-//w3c//dtd html 4.0 transitional//en">
+<html>
+<head>
+<link href="java.css" rel="stylesheet" type="text/css">
+<title>Soluzione equazioni di secondo grado</title>
+</head>
+
+<body>
+
+<h2>Soluzione equazioni di secondo grado</h2>
+
+<p>
+Torniamo ora al problema della soluzione di una equazione
+di secondo grado che era stato posto in precedenza. Il calcolo
+del discriminante non presenta nessuna difficolt&agrave;. Quello
+che non si poteva fare senza le istruzioni condizionali era
+seguire un procedimento diverso a seconda del suo valore.
+Con le istruzioni condizionali questo &egrave; invece molto
+facile, come mostrato dal programma
+<a href="SecondoGrado.java">SecondoGrado.java</a>, il cui
+codice &egrave; riportato qui sotto.
+
+<pre>
+/*
+  Soluzione equazione di secondo grado.
+*/
+
+class SecondoGrado {
+  public static void main (String args[]) {
+    double a=2, b=5, c=3;
+    double d;
+    double s1, s2;
+
+    d=b*b-4*a*c;
+
+    if( d==0 ) {
+      s1=(-b - Math.sqrt( b*b -4*a*c ))/(2*a);
+      s2=s1;
+      System.out.println("Soluzioni coincidenti: " + s1);
+    }
+
+    if( d>0 ) {
+      s1=(-b - Math.sqrt( b*b -4*a*c ))/(2*a);
+      s2=(-b + Math.sqrt( b*b -4*a*c ))/(2*a);
+      System.out.println("Soluzioni reali: " + s1 + " " + s2);
+    }
+
+    if( d<0 ) {
+      System.out.println("Soluzioni complesse");
+    }
+  }
+}
+
+</pre>
+
+<p>
+Questo programma &egrave; molto semplice, anche se &egrave; il
+pi&ugrave; lungo visto fino ad ora: per prima cosa si calcola il
+discriminante, che viene memorizzato nella variabile <tt>d</tt>.
+Se il valore di <tt>d</tt> &egrave; zero, allora si stampa la
+unica soluzione della equazione. Se <tt>d</tt> &egrave; positivo,
+si stampano le due soluzioni distinte. L'ultima istruzione
+condizionale ha come condizione <tt>d &lt; 0</tt>, per cui la
+ultima istruzione <tt>System.out...</tt> viene eseguita solo
+se <tt>d</tt> &egrave; negativo.<p>
+
+
+</body>
+</html>
+

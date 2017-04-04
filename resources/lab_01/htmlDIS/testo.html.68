@@ -1,0 +1,108 @@
+<html>
+<head>
+<title>
+Diploma Universitario di Ingegneria Informatica,
+Esame di Fondamenti di Informatica II - primo modulo,
+A.A. 2000/01 - Appello del 19 luglio 2001
+</title>
+</head>
+
+<body>
+
+<h3 align="center">
+Diploma Universitario di Ingegneria Informatica<br>
+Esame di Fondamenti di Informatica II - primo modulo <br>
+A.A. 2000/01 - Appello del 19 luglio 2001</h3>
+
+<p><b>Problema 1</b>&nbsp;&nbsp; Si consideri la seguente specifica del
+tipo astratto <i>CDRec</i>:
+
+<dl>
+  <dt><b><u>TipoAstratto</u></b><i>CDRec</i><p>
+  <dt><b><u>Sorte</u></b> <i>CDR</i> (sorta per il dominio di interesse)<p>
+  <dt><b><u>Funzioni</u></b><p>
+
+       <ul>
+         <li><i>Crea : (Reale) --&gt; CDR</i> <br>
+              precondizioni e postcondizioni per <i>Crea(m) = c</i> <br>
+              <u>pre</u>: nessuna <br>
+              <u>post</u>: <i>c</i> &egrave;
+              un cd masterizzabile avente
+              <i>m</i> minuti di capacit&agrave; iniziale
+              <p>
+
+         <li><i>CapacitaResidua : (CDR) --&gt; Reale</i><br>
+              precondizioni e postcondizioni per
+              <i>CapacitaResidua(c) = m</i><br>
+              <u>pre</u>: nessuna<br>
+              <u>post</u>: <i>m</i> &egrave; la capacit&agrave;
+              residua del cd <i>c</i>
+              <p>
+
+         <li><i>NumBrani : (CDR) --&gt; Int</i><br>
+              precondizioni e postcondizioni per <i>NumBrani(c) = n</i><br>
+              <u>pre</u>: nessuna<br>
+              <u>post</u>: <i>n</i> &egrave; il numero di brani musicali
+              presenti nel cd
+              <i>c</i>
+              <p>
+
+         <li><i>Inserisci : (CDR, Brano) --&gt; CDR</i><br>
+              precondizioni e postcondizioni per
+              <i>Inserisci(c,b) = d</i><br>
+              <U>pre</u>:  la lunghezza del brano <i>b</i> &egrave; minore
+              di <i>CapacitaResidua(c)</i><br>
+              <U>post</u>: <i>d</i> &egrave; il cd ottenuto da
+              <i>c</i> aggiungendo il brano <i>b</i>
+              in posizione <i>NumBrani(c)+1</i>
+              <p>
+
+         <li><i>Restituisci : (CDR, Int) --&gt; Brano</i><br>
+              precondizione e postcondizioni per
+              <i>Restituisci(c,i) = b</i><br>
+              <u>pre</u>:  <i>1 &lt;= i &lt;= NumBrani(c)</i> <br>
+              <u>post</u>: <i>b</i> &egrave; il brano musicale in
+              posizione <i>i</i>
+              <p>
+
+       </dl>
+       <dt><b><u>FineTipoAstratto</u></b></dt>
+<p>
+
+Si vuole scrivere una classe C++ <code>CDRec</code> che realizzi il tipo
+astratto <i>CDRec</i>, considerando che per riferirsi al tipo astratto
+<i>Brano</i> &egrave; necessario utilizzare la classe <code>Brano</code> che si
+suppone gi&agrave; realizzata, della quale per&ograve; non &egrave; nota la
+definizione, eccetto che per la funzione <code>durata</code>, che dato un
+oggetto <i>b</i> di tipo <code>Brano</code> va invocata con la sintassi
+<code>b.durata()</code> e restituisce un <code>double</code> che rappresenta la
+durata del brano in minuti. Inoltre &egrave; noto che la classe
+<code>Brano</code> dispone di assegnazione, construttore di copia ed
+uguaglianza.
+
+<p><b>Domanda 1</b>&nbsp;&nbsp; Si illustrino le scelte di progetto relative
+alla realizzazione del tipo astratto <i>CDRec</i> mediante la classe C++
+<code>CDRec</code>. </p>
+
+<p><b>Domanda 2</b>&nbsp;&nbsp; Si scriva la classe <code>CDRec</code> (file
+.h e file .cpp) secondo le scelte di progetto illustrate per la Domanda
+1. Scrivere il codice di tutte le funzioni pubbliche e private della
+classe. </p>
+
+
+
+<p><b>Problema 2</b>&nbsp;&nbsp; Realizzare una funzione esterna (non friend)
+della classe <code>CDRrec</code> che, dato un oggetto <i>c</i> di tipo
+<code>CDRec</code> ed un valore <i>m</i> di tipo <code>double</code>,
+restituisca un nuovo oggetto CDRec contenete i primi <i>k</i> brani di
+<i>c</i>, tali che la durata complessiva di detti brani sia minore di <i>m</i>,
+ma aggiungendo ad essi il brano (<i>k+1</i>)-esimo di <i>c</i> la durata
+complessiva superi <i>m</i>.</p>
+
+
+
+<p><b>Problema 3</b>&nbsp;&nbsp; Discutere brevemente la nozione di
+<i>interferenza</i> e di <i>sharing</i>.</p>
+
+</body>
+</html>

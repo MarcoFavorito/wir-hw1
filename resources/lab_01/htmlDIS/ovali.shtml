@@ -1,0 +1,98 @@
+<!doctype html public "-//w3c//dtd html 4.0 transitional//en">
+<html>
+<head>
+<link href="java.css" rel="stylesheet" type="text/css">
+<title>Cerchi e ovali</title>
+</head>
+
+<body>
+
+<h2>Cerchi e ovali</h2>
+
+In Java, non esiste una istruzione specifica per disegnare
+un cerchio. Esiste per&ograve; una istruzione per disegnare
+un ovale, e questa pu&ograve; venire usata anche per
+disegnare cerchi.<p>
+
+La istruzione per gli ovali si chiama
+<tt>drawOval(x,y,w,h)</tt>, e
+ha quattro argomenti, che rappresentano posizione e dimensione
+del rettangolo circoscritto all'ovale. Il modo pi&ugrave; facile
+per capire come funziona il disegno di ovali &egrave; di
+pensare che <tt>x,y,w,h</tt> rappresentano un rettangolo, e
+che l'ovale che viene disegnato &egrave; quello circoscritto
+nel rettangolo.<p>
+
+Per esempio, dal punto di vista concettuale, possiamo pensare
+prima al rettangolo che <i>verrebbe</i> disegnato usando
+gli stessi quattro numeri:<p>
+
+<center>
+<img src="ovale1.jpg">
+</center>
+<p>
+
+L'ovale che viene realmente disegnato &egrave; quello
+inscritto in questo rettangolo (in altre parole, il
+rettangolo non viene disegnato):<p>
+
+<center>
+<img src="ovale2.jpg">
+</center>
+<p>
+
+Il programma
+<a href="Ovali.java">Ovali.java</a>
+disegna due ovali e un cerchio. In particolare, il secondo
+ovale viene disegnato con la istruzione
+<tt>g.drawOval(100,50,50,120)</tt>, e per confronto si fa
+vedere cosa succede se si disegna un rettangolo usando gli
+stessi parametri, ossia si fa anche
+<tt>g.drawRect(100,50,50,120)</tt>.<p>
+
+<pre>
+/*
+  Disegna due ovali e un cerchio
+*/
+
+import java.awt.Graphics;
+
+public class Ovali extends java.applet.Applet {
+  public void paint(Graphics g) {
+    /* disegna un ovale */
+    g.drawOval(0,0,100,50);
+
+    /* un altro ovale, e il rettangolo con le stesse dimensioni */
+    g.drawOval(100,50,50,120);
+    g.drawRect(100,50,50,120);
+
+    /* un cerchio: e' un ovale con larghezza=altezza */
+    g.drawOval(0,100,50,50);
+  }
+}
+
+</pre>
+
+Il programma produce il seguente disegno:<p>
+
+<center>
+<img src="Ovali.gif">
+</center>
+<p>
+
+La coppia ovale-rettangolo fa capire in che modo viene disegnato
+l'ovale: quando si esegue la istruzione
+<tt>g.drawOval(x,y,w,h)</tt>, &egrave; come se venisse localizzato
+il rettangolo prodotto da <tt>g.drawRect(x,y,w,h)</tt>, ma quello
+che si disegna in effetti &egrave; l'ovale inscritto. Nel nostro
+caso, abbiamo poi disegnato anche il rettangolo.<p>
+
+L'ultima istruzione dell'applet disegna un cerchio: questo si
+ottiene semplicemente usando lo stesso numero come altezza e
+larghezza del rettangolo circoscritto: in questo modo il rettangolo
+diventa un quadrato, e quindi l'ovale all'interno &egrave;
+un cerchio.<p>
+
+</body>
+</html>
+

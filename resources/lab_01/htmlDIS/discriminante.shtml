@@ -1,0 +1,50 @@
+<!doctype html public "-//w3c//dtd html 4.0 transitional//en">
+<html>
+<head>
+<link href="java.css" rel="stylesheet" type="text/css">
+<title>Discriminante</title>
+</head>
+
+<body>
+
+<h2>Discriminante di una equazione di secondo grado</h2>
+
+<p>
+In questo esempio vediamo come calcolare il discriminante
+di una equazione di secondo grado. Il file sorgente del
+programma si chiama
+<a href="Discriminante.java">Discriminante.java</a>, e il
+codice &egrave; quello che segue.
+
+<pre>
+/*
+  Calcola il discriminante di una equazione di secondo grado
+*/
+
+class Discriminante {
+  public static void main(String[] args) {
+    int a=10, b=3, c=4;
+    int d;
+
+    d=b*b-4*a*c;
+
+    System.out.println("Il discriminante vale " + d);
+  }
+}
+
+</pre>
+
+<p>
+Questo esempio non ha nulla di particolare rispetto a quelli
+visti in precedenza. D'altra parte, lo scopo del calcolo del
+discriminante &egrave; di permettere la soluzione delle
+equazioni di secondo grado. Questo procedimento cambia
+a seconda del valore del
+discriminante (e in particolare, a seconda se &egrave; positivo
+o negativo), e questo richiede un programma che possa agire
+diversamente a seconda dei valori delle variabili. Questa
+&egrave; la funzione delle istruzioni condizionali, che
+si vedranno in seguito.<p>
+
+</body>
+</html>

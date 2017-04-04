@@ -1,0 +1,101 @@
+<!doctype html public "-//w3c//dtd html 4.0 transitional//en">
+<html>
+<head>
+<link href="java.css" rel="stylesheet" type="text/css">
+<title>Uso di variabili</title>
+</head>
+
+<body>
+
+<h2>Uso di variabili in Java</h2>
+
+<p>
+Le variabili dei linguaggi di programmazione sono dei
+"contenitori" in cui &egrave; possibile memorizzare
+dei valori che serviranno in seguito. Si pu&ograve;
+pensare a una variabile come a una "memoria" di una
+calcolatrice tascabile, in cui si possono mettere dei
+risultati parziali che &egrave; possible riutilizzare
+in seguito. Una altro paragone &egrave; quello delle
+memorie di un telefonino o di una agendina elettronica,
+in cui si pu&ograve; mettere un numero di telefono che
+verr&agrave; utilizzato in seguito.<p>
+
+Il programma <a href="Variabili.java">Variabili.java</a>
+contiene una variabile. In questa variabile viene memorizzato
+un valore, che viene poi alterato.<p>
+
+<pre>
+/*
+  Un programma Java che usa una variabile.
+*/
+
+class Variabili {
+  public static void main (String args[]) {
+
+    int a;
+
+    a=10;
+    System.out.println("La variabile vale " + a);
+   
+    a=-345;
+    System.out.println("La variabile vale " + a);
+
+  }
+}
+
+</pre>
+
+<p>
+Quando viene compilato ed eseguito, questo programma stampa
+le due linee:
+
+<pre>
+La variabile vale 10
+La variabile vale -345
+</pre>
+
+<p>
+Il programma &egrave; costituito dalla seguenti parti. Prima
+un commento, poi le due solite linee di intestazione
+(<tt>class...</tt> e <tt>public...</tt>). La prima istruzione
+del programma &egrave; <tt>int a;</tt> Questa istruzione serve
+a <b>dichiarare</b> che vogliamo utilizzare una variabile, il
+cui nome &egrave; <tt>a</tt>, e che serve a contenere un valore
+di tipo intero. In generale, la dichiarazione di una variabile
+&egrave; costituita da due parti: prima il tipo della variabile
+(cio&egrave; il tipo di valori che la variabile deve contenere,
+per esempio se interi o reali), e poi il nome della variabile.<p>
+
+Una volta dichiarata una variabile di nome <tt>a</tt>, &egrave;
+possibile farci due cose: memorizzare un numero intero nella
+variabile, e stampare il valore memorizzato.<p>
+
+La istruzione <tt>a=10;</tt> memorizza il valore 10 nella variabile
+<tt>a</tt>, mentre <tt>a=-345;</tt> cambia questo valore a
+-345. L'operazione di memorizzare un valore in una variabile
+viene detto <b>assegnamento di valore</b> alla variabile, per
+cui <tt>a=10;</tt> &egrave; l'assegnamento del valore 10 alla
+variabile <tt>a</tt>.<p>
+
+Il programma contiene anche due istruzioni di stampa del valore
+della variabile <tt>a</tt>. La stampa viene fatta usando ancora
+il comando <tt>System.out.println</tt>. In questo caso,
+usiamo la istruzione <tt>System.out.println("La variabile vale " + a);</tt>,
+che significa: stampa la sequenza di caratteri
+<tt>La variabile vale </tt> seguita dal valore della
+variabile <tt>a</tt>. La prima volta viene stampato il valore
+che ha la variabile in quel momento, cio&egrave; 10; la seconda
+volta la variabile contiene il valore -345, per cui questo &egrave;
+il numero che viene stampato.<p> 
+
+&Egrave; possibile visualizzare graficamente l'esecuzione del
+programma istruzione per istruzione, utilizzando dei riquadri
+per indicare il contenuto delle variabili. Vedi
+la <a href="Variabili/Variabili-6.shtml">esecuzione del programma
+Variabili.java</a>.<p>
+
+</body>
+</html>
+
+

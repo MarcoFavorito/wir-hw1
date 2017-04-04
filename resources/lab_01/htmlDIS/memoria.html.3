@@ -1,0 +1,302 @@
+<html>
+<head>
+<title>La memoria</title>
+</head>
+
+<body>
+
+<h1>La memoria e gli oggetti</h1>
+
+<p>
+Cosa succede quando si fa <tt>p=q</tt>
+oppure <tt>p==q</tt>?
+</p>
+
+<p>
+Come si copiano/confrontano gli oggetti?
+</p>
+
+<p>
+Come vengono passati gli oggetti ai
+metodi?
+</p>
+
+<hr>
+
+
+<h4>Variabili</h4>
+
+<pre>
+  int x;
+  Point p;
+</pre>
+
+<p>
+Per ogni variabile esiste una casellina
+(spazio di memoria)
+</p>
+
+<img src="duevar.gif">
+
+<p>
+Non c'&egrave; nessuna differenza! (finora)
+</p>
+
+<hr>
+
+<h4>Creazione di oggetti</h4>
+
+<p>
+La espressione <tt>new Point()</tt> crea un
+oggetto e restituisce l'indirizzo di memoria
+dell'oggetto.
+</p>
+
+<p>
+Effetto di <tt>new Point()</tt>:
+</p>
+
+<img src="doponew.gif">
+
+<p>
+<tt>new Point()</tt> &egrave; un metodo;<br>
+il valore restituito &egrave; la posizione dell'oggetto
+creato in memoria.
+</p>
+
+<hr>
+
+<h4>Oggetti e variabili</h4>
+
+<pre>
+  p=new Point();
+</pre>
+
+
+<p>
+Significa: l'indirizzo di memoria in cui si trova
+l'oggetto creato va in <tt>p</tt>
+</p>
+
+<img src="indinvar.gif">
+
+<hr>
+
+
+<h4>Assegnare oggetti</h4>
+
+<p>
+Quando faccio <tt>p=</tt>, l'indirizzo
+dell'oggetto va in <tt>p</tt>
+</p>
+
+<img src="indinvar.gif">
+
+<hr>
+
+
+<h4>Copiare un oggetto</h4>
+
+<p>
+Se <tt>p</tt> e <tt>q</tt> sono variabili <tt>Point</tt>,
+facendo <tt>q=p</tt> ottengo:
+</p>
+
+<img src="copia.gif">
+
+<p>
+Non ho fatto nessuna copia.
+</p>
+
+<p>
+Ho due variabili che indicano lo stesso oggetto.
+</p>
+
+<hr>
+
+
+<h4>Come copiare gli oggetti</h4>
+
+<ol>
+
+<li>creare un nuovo oggetto e copiare una per una le
+componenti:
+
+<pre>
+q=new Point();
+q.x=p.x;
+q.y=p.y;
+</pre>
+
+<p />
+
+<li>usare il metodo <tt>clone</tt>:
+
+<pre>
+q=(Point) p.clone();
+</pre>
+
+</ol>
+
+<p>
+Il risultato &egrave; lo stesso:
+</p>
+
+<img src="confronto.gif">
+
+<hr>
+
+
+<h4>Confronto fra variabili</h4>
+
+<p>
+<tt>if(a==b) ... </tt> confronta i valori delle variabili
+<tt>a</tt> e <tt>b</tt>:
+</p>
+
+<dl>
+
+<dt><tt>a</tt> e <tt>b</tt> sono scalari (es. interi)
+<dd>viene confrontato il loro valore
+
+<dt><tt>a</tt> e <tt>b</tt> sono variabili oggetto (es.
+<tt>Point</tt>)
+<dd>viene confrontato il loro valore
+
+</dl>
+
+<p>
+Nel secondo caso, i valori delle variabili sono gli
+indirizzi dei due oggetti.
+</p>
+
+<p>
+<tt>a==b</tt> &egrave; vero solo se <tt>a</tt> e <tt>b</tt>
+contengono l'indirizzo dello stesso oggetto.
+</p>
+
+<hr>
+
+
+<h4>Confronto fra variabili</h4>
+
+<pre>
+  int x, y;
+  Point p, q;
+
+  x=10;
+  y=10;
+
+  p=new Point(10, 10);
+  q=new Point(10, 10);
+
+  if(p==q)
+    System.out.println("Sono uguali");
+  else
+    System.out.println("Non sono uguali");
+
+  if(x==y)
+    ...
+</pre>
+
+<dl compact="compact">
+
+<dt><tt>x==y</tt>
+<dd>&egrave; vera se le due
+variabili contengono lo stesso valore
+
+<dt><tt>p==q</tt>
+<dd>&egrave; vera se le due
+variabili contengono lo stesso valore
+
+</dl>
+
+<hr>
+
+
+<h4>In memoria</h4>
+
+<p>
+Dopo aver creato i due oggetti:
+</p>
+
+<img src="confronto.gif">
+
+<p>
+Ogni volta che faccio <tt>new</tt>, ho
+un nuovo oggetto, in una nuova posizione.
+</p>
+
+<p>
+Sono due oggetti diversi, per cui le loro
+posizioni in memoria sono diverse!
+</p>
+
+<p>
+Sono diversi.
+</p>
+
+<hr>
+
+
+<h4>Confrontare oggetti</h4>
+
+<p>
+Confronto fra <tt>p</tt> e <tt>q</tt>:
+</p>
+
+<dl compact="compact">
+
+<dt>voglio sapere se sono lo stesso oggetto:
+<dd>uso <tt>==</tt>
+
+<p />
+
+<dt>voglio sapere se contengono gli stessi valori:
+<dd>
+
+<ol>
+
+<li>confronto una per una le componententi:
+
+<pre>
+if((p.x==q.x)&&(p.y==q.y))
+  ...
+</pre>
+
+<li>uso il metodo <tt>equals</tt>:
+
+<pre>
+if(p.equals(q))
+  ...
+</pre>
+
+</ol>
+
+</dl>
+
+<hr>
+
+
+<h4><tt>clone</tt> e <tt>equals</tt></h4>
+
+<p>
+Sono metodi definiti per tutti gli oggetti.
+</p>
+
+<p>
+Per le classi predefinite di Java (come <tt>Point</tt>) si
+possono usare tranquillamente.
+</p>
+
+<p>
+Per le classi definite da noi: vanno ridefiniti (vedremo poi
+come farlo).
+</p>
+
+</body>
+</html>
+
+
+
+

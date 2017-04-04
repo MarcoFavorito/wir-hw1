@@ -1,0 +1,262 @@
+<html>
+<head>
+<title>L'input</title>
+      <link rel="top" href="../lezioni.html">
+      <link rel="up" href="../lezioni.html">
+      <link rel="contents" href="../lezioni.html">
+      <link rel="previous" href="../defmetodi/defmetodi.html">
+      <link rel="next" href="../condiz/condiz.html">
+</head>
+
+<body>
+
+<h1>L'input</h1>
+
+<p>
+Finora: i dati stavano dentro il
+programma.
+</p>
+
+<p>
+Difetto: ogni volta che calcolo qualcosa,
+devo modificare il programma e compilarlo
+di nuovo.
+</p>
+
+<p>
+Si pu&ograve; fare in modo che il programma
+sia sempre lo stesso:
+</p>
+
+<ul>
+
+<li>i dati stanno su un file
+
+<li>i dati vengono immessi da tastiera
+
+</ul>
+
+<hr>
+
+
+<h4>JOptionPane.showInputDialog</h4>
+
+<p>
+Questo metodo:
+</p>
+
+<ul>
+
+<li>apre una finestra in cui si pu&ograve; immettere una
+stringa
+
+<li>restituisce la stringa letta
+
+</ul>
+
+<hr>
+
+
+<h4>JOptionPane: esempio</h4>
+
+<p>
+Questo programma legge una stringa, e la
+stampa.
+</p>
+
+<pre>
+import javax.swing.*;
+
+class Prova {
+    public static void main(String args[]) {
+    String s;
+
+    s=JOptionPane.showInputDialog("Dammi una stringa");
+
+    System.out.println(s);
+
+    System.exit(0);
+  }
+}
+</pre>
+
+<hr>
+
+
+<h4>Cosa succede?</h4>
+
+<p>
+La esecuzione del programma si ferma alla
+invocazione del metodo.
+</p>
+
+<p>
+Si apre una finestra di input.
+</p>
+
+<img src="prova.jpg">
+
+<p>
+Quello che scrivete, va a finire nella
+stringa <tt>s</tt>
+</p>
+
+<p>
+In generale, &egrave; il valore di ritorno
+del metodo.
+</p>
+
+<hr>
+
+
+<h4>Lettura da finestra: note</h4>
+
+<p>
+<tt>import import javax.swing.*;</tt> va fatto
+se serve una finestra di input.
+</p>
+
+<p>
+Fra virgolette viene messo il messaggio da
+scrivere nella finestra.
+</p>
+
+<p>
+La stringa letta viene restituita come
+valore di ritorno del metodo.
+</p>
+
+<p>
+Alla fine va fatto <tt>System.exit(0)</tt>
+</p>
+
+<p>
+Si pu&ograve; soltanto leggere una stringa.
+</p>
+
+<hr>
+
+
+<h4>Perch&egrave; gli devo passare una stringa?</h4>
+
+<p>
+Il metodo <tt>showInputDialog</tt> equivale a
+fare una domanda, e quello che ritorna &egrave;
+la risposta.
+</p>
+
+<p>
+Se non ci mettete la stringa fra parentesi,
+appare:
+</p>
+
+<img src="senza.jpg">
+
+<p>
+L'utente sa che pu&ograve; inserire qualcosa,
+ma non sa di che si tratta.
+</p>
+
+<p>
+La stringa fra parentesi deve dire all'utente
+cosa deve inserire.
+</p>
+
+<hr>
+
+
+<h4>Lettura di un intero</h4>
+
+<p>
+Si legge una stringa, e si converte in intero.
+</p>
+
+<p>
+La conversione si fa con il metodo
+<tt>Integer.parseInt</tt>
+</p>
+
+<pre>
+import javax.swing.*;
+
+class InputInt {
+    public static void main(String args[]) {
+    String s;
+
+    s=JOptionPane.showInputDialog("Dammi un numero");
+
+    int x;
+    x=Integer.parseInt(s);
+
+    System.out.println(x+20);
+
+    System.exit(0);
+  }
+}
+</pre>
+
+<hr>
+
+
+<h4>Esercizio: leggere due interi e fare la somma</h4>
+
+<p>
+Si tratta di leggere due numeri interi,
+e di fare la somma.
+</p>
+
+<hr>
+
+
+<h4>Soluzione</h4>
+
+<p>
+Serve una stringa in cui mettere il risultato
+di <tt>OptionPane.showInputDialog</tt>
+</p>
+
+<p>
+Converto il risultato in intero
+</p>
+
+<hr>
+
+
+<h4>Somma: programma completo</h4>
+
+<p>
+Posso anche usare la stessa stringa due
+volte.
+</p>
+
+<p>
+Dopo aver fatto <tt>x=Integer.parseInt(s)</tt>,
+nella variabile <tt>x</tt> c'&egrave; un numero,
+e quello che succede dopo ad <tt>s</tt> non
+cambia questo numero.
+</p>
+
+<pre>
+import javax.swing.*;
+
+class Somma {
+  public static void main(String args[]) {
+    int x, y;
+    String s;
+
+    s=JOptionPane.showInputDialog("Dammi il primo numero");
+    x=Integer.parseInt(s);
+
+    s=JOptionPane.showInputDialog("Dammi il secondo numero");
+    y=Integer.parseInt(s);
+
+    System.out.println("Ecco il risultato");
+    System.out.println(x+y);
+
+    System.exit(0);
+  }
+}
+</pre>
+
+
+

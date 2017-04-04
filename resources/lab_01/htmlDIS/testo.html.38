@@ -1,0 +1,124 @@
+<HTML>
+<HEAD>
+<TITLE>No Title</TITLE>
+</HEAD>
+<BODY >
+<P>
+<DIV ALIGN="CENTER">
+<B>
+   Universit&#224; di Roma ``La Sapienza''
+<BR>
+Facolt&#224; di Ingegneria
+<BR>
+Corso di Fondamenti di Informatica
+<BR>
+Corsi di Laurea: Aerospaziale, Chimica, Elettrica, Materiali,
+   Nucleare, Ambiente e Territorio (v.p.)</B>
+<BR>
+Appello del <B>15 febbraio 2000</B> -- 1<SUP><I>a</I></SUP> prova scritta
+<BR>
+  <EM>tempo a disposizione: 2 ore</EM>
+</DIV>
+
+<P>
+<B>Problema 1 (18 punti)</B> Una societ&#224; sportiva registra in un file tutti
+i dati relativi alle gare di nuoto effettuate dai suoi atleti. In particolare,
+per ogni gara a cui ha partecipato almeno un suo atleta sono registrate nel
+file le seguenti informazioni:
+<UL>
+<LI>il nome dell'atleta (max 20 caratteri);
+<LI>lo stile relativo alla gara (un carattere fra <TT>'l'</TT>, <TT>'d'</TT>, <TT>
+   'r'</TT>, <TT>'f'</TT>, <TT>'m'</TT>, che rappresenta rispettivamente uno fra gli
+  stili: libero, dorso, rana, delfino, misto);
+<LI>la lunghezza della gara espressa in metri;
+<LI>il tempo riportato, rappresentato mediante tre interi, rispettivamente
+  per minuti, secondi e centesimi di secondo;
+<LI>il piazzamento riportato (un intero compreso fra 1 e 8).
+</UL>
+Si richiede di risolvere i seguenti punti:
+<DL COMPACT>
+<DT>1.
+<DD>Scrivere le dichiarazioni dei tipi di dato Pascal da utilizzarsi
+per risolvere i punti successivi.
+<DT>2.
+<DD>Scrivere una (o pi&#249;) unit&#224; di programma Pascal che, dato il nome
+  fisico del file che contiene i dati della societ&#224;, un carattere <TT>c</TT> che
+  rappresenta uno stile ed un intero <TT>i</TT> che rappresenta la lunghezza della
+  gara, restituisce il tempo medio riportato dai nuotatori che si sono piazzati
+  al primo posto in gare di lunghezza <TT>i</TT> effettuate nello stile
+  rappresentato da <TT>c</TT>.  Se non ci sono stati nuotatori che si sono
+  piazzati al primo posto nelle gare predette, ci&#242; deve essere opportunamente
+  segnalato.
+<DT>3.
+<DD>Scrivere una (o pi&#249;) unit&#224; di programma Pascal che, dato il nome
+  fisico del file che contiene i dati della societ&#224;, costruisce una lista che
+  contiene tutti e soli i nomi degli atleti che sono risultati primi in almeno
+  due gare differenti.   L'eventuale orientamento della lista &#232; a scelta dello studente.
+</DL>
+
+<P>
+
+<P>
+<DIV ALIGN="CENTER">
+<B>
+   Universit&#224; di Roma ``La Sapienza''
+<BR>
+Facolt&#224; di Ingegneria
+<BR>
+Corso di Fondamenti di Informatica
+<BR>
+Corsi di Laurea: Aerospaziale, Chimica, Elettrica, Materiali,
+   Nucleare, Ambiente e Territorio (v.p.)</B>
+<BR>
+Appello del <B>15 febbraio 2000</B> -- 2<SUP><I>a</I></SUP> prova scritta
+<BR>
+  <EM>tempo a disposizione: 1 ora</EM>
+</DIV>
+
+<P>
+<B>Problema 2 (4 punti)</B>
+Illustrare le principali qualit&#224; del software.
+
+<P>
+
+<B>Problema 3 (4 punti)</B>
+Siano date le seguenti dichiarazioni in Pascal per la gestione di una pila di
+interi.<PRE>
+type
+  TipoPila = (* NON INTERESSA *);
+
+procedure InitPila (var p: TipoPila);
+(* IL CODICE NON INTERESSA *)
+
+function TestPilaVuota (p: TipoPila): boolean;
+(* IL CODICE NON INTERESSA *)
+
+procedure TopPila (p: TipoPila; var v: integer);
+(* IL CODICE NON INTERESSA *)
+
+procedure Push (var p: TipoPila; v: integer);
+(* IL CODICE NON INTERESSA *)
+
+procedure Pop (var p: TipoPila; var v: integer);
+(* IL CODICE NON INTERESSA *)
+</PRE>
+Scrivere un'unit&#224; di programma Pascal che, data una pila di interi,
+restituisca il valore massimo contenuto in essa.
+
+<P>
+
+<B>Problema 4 (4 punti)</B> Scrivere un sottoprogramma
+Fortran che, ricevendo come parametro una matrice rettangolare di booleani di
+dimensione ,
+calcoli e restituisca in modo opportuno al programma
+chiamante un vettore di <I>n</I> interi tale che nella sua componente generica di
+indice <I>r</I> riporti il valore <I>i</I> definito secondo le seguenti regole:
+<UL>
+<LI>se non esiste alcun elemento (<I>r</I>,<I>k</I>) della matrice che vale <TT>.TRUE.</TT>,
+  allora <I>i</I>=0;
+<LI>altrimenti, <I>i</I> &#232; l'indice tale che l'elemento (<I>r</I>,<I>i</I>) della matrice
+  vale <TT>.TRUE.</TT> e nessun elemento (<I>r</I>,<I>j</I>) con <I>j</I>&gt;<I>i</I> vale <TT>.TRUE.</TT>.
+</UL>
+<BR><HR>
+</BODY>
+</HTML>

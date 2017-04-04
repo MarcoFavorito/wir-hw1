@@ -1,0 +1,81 @@
+<HTML>
+<HEAD>
+   <META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1">
+   <META NAME="GENERATOR" CONTENT="Mozilla/4.03 [en] (X11; I; SunOS 5.5.1 sun4u) [Netscape]">
+</HEAD>
+<BODY TEXT="#000000" BGCOLOR="#FFFFFF" LINK="#0000EE" VLINK="#551A8B" ALINK="#FF0000">
+
+<CENTER>
+<H1>
+Progetto di traduttori in Java</H1></CENTER>
+Questa pagina riguarda chi intende sviluppare il progetto di un traduttore
+usando il linguaggio Java.
+
+<P>
+<HR WIDTH="100%">
+<H2>
+Ambiente di programmazione</H2>
+Sul sito:
+<UL>
+<PRE><A HREF="http://www.javasoft.com">http://www.javasoft.com</A></PRE>
+</UL>
+e' disponibile l'ambiente di sviluppo per il linguaggio Java (JDK, Java
+Development Kit) (per qualunque sistema operativo).
+
+<P>Un ottimo corso su web per imparare Java (tutorial) e' accessibile all'indirizzo
+<UL>
+<PRE><A HREF="http://java.sun.com/docs/books/tutorial/">http://java.sun.com/docs/books/tutorial/</A></PRE>
+</UL>
+&nbsp;
+<BR>
+<HR WIDTH="100%">
+<H2>
+Generatori di analizzatori lessicali</H2>
+
+
+<P>All'indirizzo:
+<UL>
+<PRE><A HREF="http://www.cs.princeton.edu/~appel/modern/java/JLex/">http://www.cs.princeton.edu/~appel/modern/java/JLex/</A></PRE>
+</UL>
+trovate la home page di <B>JLex</B>, l'equivalente di FLEX per Java, ovvero
+un generatore di analizzatori lessicali scritti in Java. Da questa pagina
+e' possibile scaricare sia il software che la documentazione di JLex.
+
+<P>In alternativa a JLex, e' possibile usare <B>JFlex</B>, una versione
+(sembra) migliorata di JLex: la home page di JFlex (contenente sia il codice
+che la documentazione di JFlex) si trova all'indirizzo
+<UL>
+<PRE><A HREF="http://www.informatik.tu-muenchen.de/~kleing/jflex/">http://www.informatik.tu-muenchen.de/~kleing/jflex/</A></PRE>
+</UL>
+
+<HR WIDTH="100%">
+<H2>
+Generatori di analizzatori sintattici</H2>
+
+
+<P>All'indirizzo:
+<UL>
+<PRE><A HREF="http://www.cs.princeton.edu/~appel/modern/java/CUP/">http://www.cs.princeton.edu/~appel/modern/java/CUP/</A></PRE>
+</UL>
+trovate la home page di <B>Cup</B>, l'equivalente di BISON per Java, ovvero
+un generatore di analizzatori sintattici <B>bottom-up</B> scritti in Java.
+
+<P>Esiste anche <B>JavaCC</B>, un generatore di analizzatori sintattici
+<B>top-down </B>per Java che comprende anche la generazione di analizzatori
+lessicali. La home page di JavaCC si trova all'indirizzo
+<UL>
+<PRE><A HREF="http://www.suntest.com/JavaCC">http://www.suntest.com/JavaCC</A></PRE>
+</UL>
+&nbsp;<B>Nota bene</B>: JavaCC e' un software di natura diversa dai precedenti
+(che corrispondono alle versioni Java di FLEX e BISON), in particolare
+richiede un file di specifica che comprende sia la definizione del lessico
+e della sintassi del linguaggio da riconoscere. Inoltre, a differenza di
+BISON e Cup, genera un analizzatore top-down anziche' bottom-up, e' quindi
+in grado di trattare una classe di grammatiche diversa da quella accettata
+da BISON e Cup (ovvero le grammatiche LALR).
+
+<P>
+<HR WIDTH="100%">
+<BR><FONT SIZE=-1>Ultima modifica: 14/10/98</FONT>
+</BODY>
+</HTML>

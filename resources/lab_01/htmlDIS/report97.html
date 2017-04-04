@@ -1,0 +1,1546 @@
+
+
+
+
+      <P><h2>Introduction</h2>
+
+
+      <P>The Artificial Intelligence research group is mainly working in Knowledge
+      Representation, Planning, Search and Natural Language Processing.
+      Knowledge Representation deals with languages, formalisms, and the
+      associated reasoning apparatus, including complexity of reasoning. Within
+      Knowledge Representation we are mainly concerned with the following topics:
+      <OL>
+      <LI>  The development of suitable formalisms to support various aspects of
+            reasoning and to combine different logics, which in the following pages
+            are collected under the title "Commonsense reasoning";
+
+      <LI>  The specification of formal languages for knowledge representation,
+            which integrate different logics and formalisms, though maintaining nice
+            computational properties. These topics are illustrated in the section on
+            "Description logics";
+
+      <LI>  The investigation of languages for programs, actions, intentions and, in
+            general, languages to represent changes. Research done on these
+            languages is described in the Sections titled "Modal and dynamic logics"
+            and "Reasoning about actions";
+
+<LI>  The study of computational properties of formalisms and languages, and other
+      usually adopted reasoning tools. These topics are illustrated in the Section
+      "Complexity of Reasoning". </OL>
+      <P>Research on description logics, actions, commonsense reasoning and
+      complexity led to the realization of tools and techniques that support the
+      specification and implementation of software for controlling the mobile robot
+      Tino.
+      <P>The international recognition of the achievements in the field of knowledge
+      representation is highlighted by the choice of Prof. Luigia Carlucci Aiello as
+      conference chair of next IJCAI - International Joint Conference on Artificial
+      Intelligence, the main worldwide conference on AI - to be held in Stockholm,
+      1999, and Maurizio Lenzerini as chairman of the Fifth Conference of the Italian
+      Association for Artificial Intelligence AI*IA'97 <A HREF="/~ai/citations/lenz-97.html">[Len97]</A>. Maurizio
+      Lenzerini will also be invited speaker at the next Conference on the Principles
+      of Knowledge Representation and Reasoning (KR'98) to be held in Trento.
+      <P>Research in other areas of AI, like Planning, Scheduling and Natural
+      Language Processing has been quite active in developing tools for applications
+      to real cases and prototypes.
+      <P>The planning research group has devised algorithms, heuristics and suitable
+      formalisms to realize flexible architectures for planning and scheduling. This
+      work is described in the section on "Knowledge-based architectures for
+      planning and scheduling".
+
+
+
+
+
+<P>The work on "Constraint Reasoning and Scheduling" is divided in two
+parts: the design of new search procedure based on the local search paradigm
+and the definition and development of a new imperative programming
+language that supports both declarative programming and constraints.
+<P>Finally, the group working on"Natural Language" has been developing a
+prototype combining natural language and hypertextual descriptions.
+
+
+
+<P><h3>Acknowledgments</h3>
+
+<P>These research activities have been supported by various institutions and
+in the framework of different programs, whose financial support is gratefully
+acknowledged, namely by AIPA, ASI, CNR, ENEA, ESPRIT 22469-DWQ
+MURST 40%, MURST 60%, TELECOM, TMR.
+
+<h2>Commonsense Reasoning</h2>
+
+
+<P>As a general issue commonsense reasoning investigates the reasoning
+mechanisms of an agent interacting with the real world in which she often has
+to take the troublesome decision of completing or withdrawing information in
+order to be coherent with her observations and undertake suitable actions.
+Classical formalisms such as first-order logics are, in general, inadequate to
+deal with the complex reasoning task required by a human-level intelligent
+agent behaving, with commonsense, in the real world. Therefore different
+forms of reasoning, such as nonmonotonic reasoning, belief revision, abduction,
+contextual reasoning etc., have been devised in the knowledge representation
+research community to challenge limitations of classical formalisms with new
+forms of reasoning mechanisms. The above research areas are investigated by
+the research group working on commonsense reasoning and new results are
+described in the following subsections.
+
+<h3>Nonmonotonic Reasoning</h3>
+
+<P>The central problem of nonmonotonic reasoning is now that of providing an
+adequate notion of nonmonotonic provability together with a methodology for
+nonmonotonic inference and studying its computational properties. This
+approach to nonmonotonic reasoning provides both proof-theoretical and
+mechanical strategies to treat agent reasoning and the logical basis to admit
+for a unified view of the different formalisms proposed.
+<P>It turns out that logics able to embed nonmonotonic inference are modal
+logics that allow for context dependent form of reasoning requiring, in its turn,
+context dependent proofs. In fact, the natural way to express the meta logical
+concepts involved in nonmonotonic inference like "it is provable" or "it is
+consistent to assume" is to turn to modal operators.
+<P>Most of the works from our "nonmonotonic reasoning group" deal with the
+family of modal logics in which nonmonotonic formalisms are embeddable,
+namely <A HREF="/~ai/citations/amat-aiel-pirr-97a.html">[ACP97a]</A><A HREF="/~ai/citations/amat-aiel-pirr-97b.html">[ACP97b]</A>
+
+
+
+
+
+<A HREF="/~ai/citations/DoNR97.html">[DNR97]</A><A HREF="/~ai/citations/gabb-pirr-97a.html">[GP97a]</A><A HREF="/~ai/citations/gabb-pirr-97b.html">[GP97b]</A>
+<A HREF="/~ai/citations/Rosa97.html">[Ros97c]</A><A HREF="/~ai/citations/Rosa97b.html">[Ros97a]</A><A HREF="/~ai/citations/Rosa97c.html">[Ros97b]</A>
+<A HREF="/~ai/citations/Rosa97d.html">[Ros97]</A>, together with a study on the expressiveness of some of
+such modal logics and in general on the methodologies for nonmonotonic
+inference.
+<h4>Ground Logics</h4>
+
+<P>The study of ground nonmonotonic modal logics, a variant of
+nonmonotonic modal logics due to McDermott and Doyle, has been carried
+out in <A HREF="/~ai/citations/DoNR97.html">[DNR97]</A>. First, a possible-world semantics for ground
+logics is presented, which both generalizes the notion of minimal knowledge
+and provides a semantic characterization for this class of modal formalisms.
+Then, the computational properties of ground logics are analyzed. A major
+result is that reasoning in the ground logic for the modal system S5 can be
+placed at the third level of the polynomial hierarchy. It is also proved that this
+is a lower bound for reasoning in all ground logics, and an upper bound for
+most of such formalisms. Finally, several representational features of ground
+logics are discussed, in particular defaults and forward rules, and a thorough
+comparison with McDermott and Doyle's logics is provided.
+<P>The relationship between minimal knowledge and McDermott and Doyle's
+nonmonotonic modal logics is further analyzed in <A HREF="/~ai/citations/Rosa97d.html">[Ros97]</A>, which
+studies the problem of embedding Halpern and Moses's modal logic of minimal
+knowledge states into two families of modal formalisms for nonmonotonic
+reasoning, McDermott and Doyle's nonmonotonic modal logics and ground
+nonmonotonic modal logics. First, it is shown that Halpern and Moses's logic
+can be embedded into all ground logics; moreover, the translation employed
+allows for establishing a lower bound for the problem of skeptical reasoning in
+all ground logics. Then, a translation of Halpern and Moses's logic into a
+significant subset of McDermott and Doyle's formalisms is presented. Such a
+translation both indicates the ability of Halpern and Moses's logic of
+expressing minimal knowledge states in a more compact way than McDermott
+and Doyle's logics, and allows for a comparison of the epistemological
+properties of such nonmonotonic modal formalisms.
+<P>A computational characterization of the propositional fragment of MBNF,
+the bimodal logic of minimal belief and negation as failure introduced by
+Lifschitz, is presented in <A HREF="/~ai/citations/Rosa97.html">[Ros97c]</A>. In particular, it is shown that
+the problem of reasoning in the propositional fragment of MBNF lies at the
+third level of the polynomial hierarchy, whereas reasoning with MBNF theories
+without nested occurrences of the modalities lies at the second level of the
+polynomial hierarchy. This last result implies that, under the stable model
+semantics, increasing the syntax of the logic program, by allowing
+propositional formulas as goals in the rules, does not affect the worst-case
+complexity of deduction for disjunctive programs with negation as failure.
+<P>The epistemological properties of Lifschitz's logic MKNF (a variant of
+
+
+
+
+
+MBNF) are investigated in <A HREF="/~ai/citations/Rosa97c.html">[Ros97b]</A>. In particular, it is shown
+that the expressive power of MKNF is equivalent to Moore's autoepistemic
+logic (AEL), by defining an embedding of MKNF into AEL and vice versa. It
+is also proved that the negation as failure modality not of MKNF exactly
+corresponds to the negative introspection operator in AEL. The two previous
+results imply that MKNF's minimal knowledge modality K can be represented
+by means of negation as failure not, which in turn implies that negation as
+failure is "more expressive" than minimal knowledge.
+<P>A study of the computational properties of Levesque's logic of only
+knowing is provided in <A HREF="/~ai/citations/Rosa97b.html">[Ros97a]</A>. In particular, it is shown that
+reasoning about only knowing in the propositional case lies at the second level
+of the polynomial hierarchy. Thus, it is as hard as reasoning in the majority of
+propositional formalisms for nonmonotonic reasoning, like default logic,
+circumscription and autoepistemic logic, and it is easier than reasoning in
+propositional formalisms based on the minimal knowledge paradigm, which is
+strictly related to the notion of only knowing.
+<h4>Provability Logics</h4>
+
+<P>One of the central issue in nonmonotonic logic is to establish a notion of
+nonmonotonic provability, which is usually characterized via some modal logic
+together with a suitable construction. The central result presented in the
+paper <A HREF="/~ai/citations/amat-aiel-pirr-97a.html">[ACP97a]</A> is the identification of a modal logic,
+KD4Z as the logic of nonmonotonic provability. In fact in
+<A HREF="/~ai/citations/amat-aiel-pirr-97a.html">[ACP97a]</A> a fixed point construction is presented, which
+allows for the interpretation of the necessity modal operator as a nonmonotonic
+provability operator analogously to that used in the modal logic of provability
+for Peano Arithmetic. The logic proposed is a fixed point logic that can be
+extended to first order modal logic, under some limitations. By means of the
+fixed point results many nonmonotonic formalisms can be expressed at the
+language level, that is, without any further meta-logical construction, besides
+the modal operators. Furthermore the way nonmonotonic assertions can be
+translated into such a logic allows for many forms of contextual reasoning.
+Therefore also contextual definitions of concepts, topic in particular discussed
+in <A HREF="/~ai/citations/amat-pirr-97FS.html">[AP97]</A><A HREF="/~ai/citations/amat-pirr-97.html">[AP97]</A>, can be resolved with
+the proposed translation. Fixed point equations provide, in fact, a
+generalization, which correctly captures the relativized context, of explicit
+definitions of natural kinds, that is, concepts like lemon or chair, which,
+without referring to a suitable context, would not be explicitly definable.
+<h4>Automated Deduction in NMR</h4>
+
+<P>Minimization is at the core of nonmonotonic or diagnostic reasoning.
+Prime implicants, as the simplest compiled form of a theory, enjoy nice
+properties when minimization is taken into account. They have both a
+syntactic and semantic interest as, in fact, syntactically they represent the
+
+
+
+
+
+simplest formula implying a given theory and semantically they coincide with
+the diagram of a minimal three-valued models of a theory, when propositional
+or decidable fragments of first-order logic are concerned.
+<P>A new approach for selective enumeration of prime implicants is presented
+in <A HREF="/~ai/citations/palo-pirr-pizz-97.html">[PPP97]</A>.The method uses a 0-1 programming schema,
+having feasible solutions corresponding to formula implicants. Prime
+implicants are generated one at a time, so that as many of them can be
+computed as needed by the specific application considered. Selective
+generation is also supported, whereby preferences on the structure of
+generated prime implicants can be specified. Based on this approach, two
+algorithms for selective enumeration of prime implicants are presented and
+their properties discussed. Experimental results are presented which confirm
+the effectiveness of the approach as applied to "hard" problem instances.
+
+<h3>Belief Revision</h3>
+
+<P>Belief Revision is an area of commonsense reasoning involving the problem
+of changing a knowledge base as a result of a contradictory observation.
+<P>The paper <A HREF="/~ai/citations/libe-97.html">[Lib97b]</A> contains an analysis of the complexity of
+revising a knowledge base when an iteration of this process is necessary. The
+analysis concerns both the classical problems of belief revision (inference,
+model checking, computation of the new base) and new issues, related to the
+problem of "committing" the changes.
+<P>Belief update is a different form of belief change. Revision and update
+serve different purposes. In the last few years, more attention has been paid to
+belief update, and many formalizations have been introduced.
+<A HREF="/~ai/citations/libe-97-c.html">[Lib97a]</A> reports the results of the analysis of the complexity of
+the proposals presented in the literature. Some of those proposals have also
+been related to previous work on closed world reasoning.
+<P>Arbitration is a third form of belief revision. It is defined as a "symmetric"
+merging of two or more knowledge bases. In many scenarios, there are two or
+more knowledge bases that represent the same domain. The problem of
+arbitration is to consistently merge all the information coming from different
+sources. The paper <A HREF="/~ai/citations/libe-scha-97.html">[LS97a]</A> contains the definition of general
+principles of arbitration, as well as a semantical representation of the
+arbitration operators.
+<P>Relating formalisms is useful both from a semantical and computational
+point of view. The paper <A HREF="/~ai/citations/libe-scha-97-b.html">[LS97b]</A> contains a complete set of
+reduction from various belief revision operators to the well-studied
+non-monotonic operator of circumscription.
+
+<h3>Contextual reasoning</h3>
+
+<P>Among the various formalisms developed to deal with contextual reasoning,
+McCarthy has proposed the logic of context with the ist (c; p) modality as
+foundational formalism.
+
+
+
+
+
+<P>A novel account of contexts, formalized as fixed point equations in the
+modal logic QKD4Z is presented in
+<A HREF="/~ai/citations/amat-pirr-97FS.html">[AP97]</A><A HREF="/~ai/citations/amat-pirr-97.html">[AP97]</A>. This offers the ability to
+represent consistency and provability at the object level, with which one can
+then represent various relationships that must hold between different contexts,
+such as inheritance, disjointness, compatibility, etc. The logic also offers the
+ability to name contexts and to obtain explicit sentential representations for
+these by solving suitable fixed point equations. We illustrate our approach by
+examples concerning default inheritance of contexts, contradictory contexts,
+integration of multiple contexts.
+<P>The need of an explicit modeling for the usage of reasoning resources by an
+intelligent agent is tackled in <A HREF="/~ai/citations/weyh-cado-talc-98.html">[WCT98]</A>. In particular,
+notions such as problems, solutions, and problem solving activities -which are
+usually left implicit in the discussions of autonomous agents- are explicitly
+described and a framework to reason about them is provided. This work
+describes the architecture of a reasoner, who solves puzzles (built from a finite
+number of components) and reasons about knowledge, by explicitly using the
+notion of resource.
+<P>Finally, in <A HREF="/~ai/citations/sang-97.html">[San97]</A>, knowledge contextualization is used to
+make local reasoning and solve planning and negotiation problems in an
+uniform fashion. Each context is a set of constraints to the agent action used
+to describe both plans and agreement offers. A special meta-backtracking
+mechanism among contexts is used to achieve a globally consistent solution to
+the context constraints.
+
+<h2>Combining Logics</h2>
+
+
+<P>The need to combine logics arises in computer science and in logic itself as
+a discipline supporting other research areas. As logic is used more and more as
+a formal tool in other disciplines the need for ever more expressive formal
+languages is becoming crucial. An increasing number of features from the
+applied area of computer science need to be formalized, for example artificial
+intelligence, software verification, operating systems, specification of
+programming languages, multimedia systems and multimodal computing,
+database and information retrieval and database transactions, diagnosis,
+hardware design and hardware verification. Two issues of the journal Studia
+Logica have been dedicated to combination of logics
+<A HREF="/~ai/citations/gabb-pirr-97a.html">[GP97a]</A><A HREF="/~ai/citations/gabb-pirr-97b.html">[GP97b]</A> in which eleven articles
+have been selected among many submissions from different areas.
+<P>The papers on combination of logics offer a wide and rich perspective on
+why combining logic is interesting and what is gained. They offer a large
+panorama on combining modalities. Authors have investigated how to
+combine modalities such as beliefs and time, actions and beliefs, for specifying
+communication among agents; combining probabilities and modalities for
+
+
+
+
+
+modeling systems that have to reason about utility, choices and have to take
+decisions on this basis; combining probabilities and first order logic to model
+uncertainty, information processing and decision strategies; combining first
+order logic with itself, to model self reference and contextual reasoning.
+
+<h2>Description Logics</h2>
+
+
+<P>The goal of this research is to study the foundations of a logical approach
+to structured knowledge representation languages, with regard to both the
+expressive power and the computational properties of the associated reasoning
+techniques. The definition of knowledge bases by means of structured
+knowledge representation languages is done by specifying a terminological
+knowledge base (TBox), where concepts are defined, along with an assertional
+knowledge base (ABox), where facts about individuals are stated in terms of
+these concepts.
+<P>A complete picture of the complexity of subsumption between concept
+expressions (without any TBox) appeared in <A HREF="/~ai/citations/DLNN97.html">[DLNN97]</A>.
+<P>The addition of epistemic modal operators to Description Logics has been
+continued in
+<A HREF="/~ai/citations/DoNR97b.html">[DNR97]</A><A HREF="/~ai/citations/doni-lenz-nard-scha-nutt-98.html">[DLNetal98]</A>, where
+limited forms of epistemic statements are included in the statements of the
+TBox. The decidability of the main reasoning problems for this extended
+Description Logic is proved.
+<P>Description logics have also been used to formalize Data-Flow Diagrams in
+<A HREF="/~ai/citations/Comp-Doni-Rumo-97b.html">[CDR97]</A>. A semantics of processes through
+particular individuals is proposed, while data is modeled by concepts as usual.
+It is proved that the corresponding Description Logics is a very simple one,
+and complexity results about solving satisfiability of a knowledge base carry
+over to coherence of a Data-Flow Diagram. More generally, Description Logics
+are applied to reasoning in Conceptual Modelling and Analysis in
+<A HREF="/~ai/citations/Comp-97a.html">[Com97]</A><A HREF="/~ai/citations/Comp-Rumo-97a.html">[CR97b]</A>
+<A HREF="/~ai/citations/Comp-Rumo-97b.html">[CR97a]</A><A HREF="/~ai/citations/Comp-Rumo-97d.html">[CR97]</A>
+<A HREF="/~ai/citations/Comp-Doni-Rumo-97b.html">[CDR97]</A><A HREF="/~ai/citations/Comp-Rumo-98a.html">[CR98]</A>.
+<P>In the description of the properties of concepts in a TBox, sometimes the
+properties are necessary and sufficient (in this case they define the concept)
+and sometimes they are only necessary. In
+<A HREF="/~ai/citations/buch-doni-nutt-scha-98.html">[BDNS98]</A> a splitting of the TBox is proposed,
+into a schema, with concept having only necessary condition, and a view, with
+completely defined concepts. The division recalls the similar division into a
+hierarchy of classes, and a hierarchy of queries in Object-Oriented Databases.
+<P>In <A HREF="/~ai/citations/calv-degi-lenz-nard-98.html">[CDGLN98]</A> techniques for reasoning in very
+expressive description logics are studied. In such logics the finite model
+property fails and finiteness of the interpretation domain has to be taken into
+account explicitly. Reasoning is analyzed separately for the unrestricted case,
+
+
+
+
+
+i.e. when considering arbitrary, possibly infinite models, and for the finite case,
+i.e. when only finite models are taken into account, and different techniques
+are presented. Finally, a detailed discussion on the borderline between
+decidability and undecidability is presented.
+<P>In <A HREF="/~ai/citations/calv-lenz-nard-98.html">[CLN98]</A> a logical approach to class-based data
+modeling is established. It is shown that description logics are particularly
+well suited for specifying data classes and relationships among classes, and
+that several popular data modeling formalisms, including the
+Entity-Relationship Model, and the most common variants of object-oriented
+data models, can be expressed in terms of specific logics of the family. For this
+purpose a unifying description logic is used, which incorporates all the features
+needed for the logical reformulation of the data models used in the various
+contexts. The problem of devising reasoning procedures for the unifying
+formalism is also discussed, and it is shown that they provide valuable
+supports for several important data modeling activities.
+<P>In <A HREF="/~ai/citations/calv-lenz-97.html">[CL97]</A> a new data model is defined, which extends the
+basic core of current object-oriented data models with several expressive
+constructs, such as the inverse of attributes, the union, the intersection and
+the complement of classes, the possibility of using nonbinary relations, and the
+possibility of expressing cardinality constraints on attributes and relations. A
+technique is presented both for checking the consistency of class definitions,
+and for computing the logical consequences of the knowledge represented in
+the schema. Finally, it is shown how the reasoning techniques support the
+process of data reengignering.
+<P>Recent research points out that query containment is a central problem in
+several database and knowledge base applications, including data warehousing,
+data integration, query optimization, and (materialized) view maintenance. In
+<A HREF="/~ai/citations/calv-degi-lenz-97-b.html">[CDGL97a]</A> a decision procedure is presented for
+containment of conjunctive queries defined over a database schema specified in
+a very expressive description logic, comprising n-ary relations and general
+inclusion axioms on both concepts and relations. In
+<A HREF="/~ai/citations/calv-degi-lenz-98.html">[CDGL98a]</A> these results are extended to the case where
+the queries are nonrecursive Datalog programs whose atoms are complex
+expressions that may contain the transitive closure operator.
+<P>In <A HREF="/~ai/citations/degi-lenz-JAIR-97.html">[DGL97]</A> a special description logic is developed
+that allows for the coexistence, in the same TBox, of recursive/cyclic
+assertions (or definitions) interpreted according to the different semantics
+proposed in literature. The different semantics have a complementary role.
+For example inductive definitions of concepts are captured by the
+Least-Fixpoint Semantics, while coinductive definitions are captured by the
+Greatest-Fixpoint Semantics, finally the Descriptive Semantics is the only one
+able to assign meaning to general inclusion assertions. The proposed
+description logic, an extension of ALC   called Mu-ALCQ, captures the various
+intended meanings by allowing in the language explicit fixpoint-constructs.
+
+
+
+
+
+Besides the fixpoint constructs, Mu-ALCQ is equipped with "qualified number
+restrictions" to express very general cardinality constraint on links. In the
+paper the EXPTIME-decidability of the logic is proved by exposing a tight
+correspondence with a logic of programs (extension of propositional dynamic
+logic), called modal mu-calculus, used to reason about temporal properties of
+concurrent processes.
+<P>As shown in <A HREF="/~ai/citations/calv-degi-lenz-97.html">[CDGL97b]</A>
+<A HREF="/~ai/citations/calv-degi-lenz-98b.html">[CDGL98]</A><A HREF="/~ai/citations/calv-lenz-98.html">[CL98]</A>, very expressive
+description logics allow one to represent both semi-structured data and
+Document Type Definitions (DTDs) expressed in the Standard Generalized
+Markup Language. To this end the possibility to express transitive closure and
+to impose finite nesting on structures is fundamental. The proposed
+formalization provides a method for verifying various forms of equivalence of
+semi-structured data schemas and DTDs, which works in worst case
+deterministic exponential time, in contrast to the known algorithms for this
+problem which are double exponential. The reasoning services studied in this
+paper can be seen as the fundamental building blocks for devising more
+complex inference systems supporting the task of querying the World Wide
+Web.
+<P>In <A HREF="/~ai/citations/Io-Na-97.html">[IN97]</A> the approaches to knowledge-based system to
+access information on the World Wide Web are analysed, with particular
+emphasis on the use on Description Logics as a modeling language. The work
+on intelligent access to the World Wide Web is described in greater detail
+under the section World Wide Web Access in the chapter on Data Bases.
+<P>As shown in the survey <A HREF="/~ai/citations/calv-degi-lenz-nard-rosa-97.html">[CDGLetal97a]</A>, in
+recent years there has been a growing interest in accessing, relating, and
+combining data from multiple sources. Indeed, Information Integration is one
+of the core problems in distributed databases, cooperative information
+systems, and data warehousing, which are key areas in the software
+development industry.
+<P>Two critical factors for the design and maintenance of applications
+requiring Information Integration are conceptual modeling of the domain, and
+reasoning support over the conceptual representation. In
+<A HREF="/~ai/citations/calv-degi-lenz-nard-rosa-97-b.html">[CDGLetal97b]</A>
+<A HREF="/~ai/citations/calv-degi-lenz-nard-rosa-98.html">[CDGLetal98b]</A> it is demonstrated that
+Knowledge Representation and Reasoning techniques can play an important
+role for both these factors, by proposing a Description Logic based framework
+for Information Integration. It is shown that the development of successful
+Information Integration solutions requires not only to resort to very expressive
+Description Logics, but also to significantly extend them. A novel approach to
+conceptual modeling for Information Integration is presented, which allows for
+suitably modeling the global concepts of the application, the individual
+information sources, and the constraints among different sources. Moreover,
+inference procedures for the fundamental reasoning services are devised,
+
+
+
+
+
+namely relation and concept subsumption, and query containment. A
+methodological framework for Information Integration is presented, which can
+be applied in several contexts, and highlights the role of reasoning services
+within the design process. Finally, a framework for expressing queries using
+Datalog and Description Logics has been studied in
+<A HREF="/~ai/citations/doni-lenz-nard-scha-98.html">[DLNS98]</A>.
+
+<h2>Modal and Dynamic Logics</h2>
+
+
+<P>This research activity has focussed on the development of effective
+deductions methods for dynamic and modal logics which have a number of
+important applications in Artificial Intelligence and Computer Security. In
+particular there has been a twofold focus on
+   o the development of efficient deduction methods in the general case,
+
+   o the application of tableaux methods to problems of computer security
+     modeled with modal and dynamic logics.
+
+On the first issue, the work <A HREF="/~ai/citations/mass-98-c.html">[Mas98]</A> tackles the developemtn of
+tableaux methods for a wide range of modal logic and compares the
+computational characteristics of this method with other methods presented in
+the literature. It also solves (positively) the problem of decidability for the
+modal logic of positive introspection S4 and establish a number of bounds for
+the space and time complexity of this and other deduction methods for modal
+logic.
+An advance since the work of Pratt in 1982 has been the development of
+tableaux method and algorithms directly for CPDL. A prefixed tableaux
+calculus for CPDL is devised in <A HREF="/~ai/citations/degi-mass-97.html">[DGM97]</A>, based on a
+combination of different techniques such as prefixed tableaux for modal logics
+and model checkers for mu-calculus. The calculus, which is naively worst-case
+NEXPTIME, is transformed into an EXPTIME algorithm (recall that CPDL
+is EXPTIME-complete) but using careful techniques which make full use also
+of failed computations.
+A further improvement has been achieved in
+<A HREF="/~ai/citations/mass-97-d.html">[Mas97]</A><A HREF="/~ai/citations/mass-97-e.html">[Mas97]</A><A HREF="/~ai/citations/mass-98-b.html">[Mas98]</A> with the
+introduction of the operation of simplification which plays for tableaux the
+same role as subsumption for resolution and unit for Davis-Putnam. Beside its
+computational effectiveness, the simplicity and generality of simplification
+allows for its extension to a wide range of modal logics in a uniform way. This
+work also combines theoretical and experimental results for random SAT and
+IFIP benchmarks.
+
+
+
+<h3>Access Control & Computer Security</h3>
+
+<P>The development of tableaux methods for access control and computer
+security has been tackled in <A HREF="/~ai/citations/mass-97.html">[Mas97c]</A><A HREF="/~ai/citations/mass-98.html">[Mas98]</A>. These
+
+
+
+
+
+works present a prefixed tableaux method for the calculus developed at the
+Digital System Resource Centre by Abadi, Lampson et. al. for the formal
+verification of authentication and access controls systems. Beside the
+applicative interest, the calculus poses interesting technical challenges, since it
+has not the tree-model property, introduces relations between modalities which
+cannot be compiled into axiom schemata, and has some features of the
+universal modality.
+<P>This approach has been extended to the new security formalism based on
+Role-Based access control in <A HREF="/~ai/citations/mass-97-b.html">[Mas97b]</A>.
+
+<h2>Reasoning about Actions</h2>
+
+
+<P>The Situation Calculus is the most used formalism for reasoning about
+actions in Artificial Intelligence. Its expressiveness allows the integration of
+various aspects of dynamic systems in a unique formalism. Because of this
+flexibility it has been chosen by several research projects on reasoning about
+actions. In <A HREF="/~ai/citations/degi-lesp-leve-IJCAI-97.html">[DGLL97]</A> techniques originally
+developed to assign a "structural operational semantics" to concurrent
+processes in Process Algebra are used to formalize concurrent (complex)
+actions in the Situation Calculus. Concurrent actions are specified as
+programs of a special "logical" programming language called Congolog,
+which is able to express concurrency, interrupts, shared memory massage
+passing between processes, etc. Congolog's programs are designed to be
+executed on partially specified environments where exogenous (external)
+events may occur at any time. The frame problem is dealt with by suitably
+composing Reiter's solution for atomic actions.
+<P>The work in <A HREF="/~ai/citations/degi-reit-tern-AAAIWS-97.html">[DGTR97]</A> develops a logical
+formalization of non-terminating Golog programs that are intended to be
+used for controlling robots under the incomplete information on the initial
+situation and on the behavior of the environment (exogenous actions are
+allowed). As is the case for more conventional programs, some reliability
+assurances for robot controllers are desirable. The paper describes a general
+framework based on classical (second order) logic, to express and prove
+properties of Golog programs, including non-terminating ones, in such a
+setting.
+<P>The work in
+<A HREF="/~ai/citations/degi-reit-sout-KR-98.html">[GSR98a]</A><A HREF="/~ai/citations/degi-reit-sout-CS-98.html">[GSR98b]</A> studies,
+within the setting of the Situation Calculus, the problem of monitoring the
+execution of robot programs. The kind of execution monitors these papers
+focus on make use of the robot sensors to detect discrepancies between the
+actual world and the robot's internal representation of it, and attempt to
+restore discrepancies by executing general recovery procedures. The approach
+is demonstrated by proposing a simple implementation of an executor monitor
+whose recovery procedure is based on planning a sequence of actions to restore
+
+
+
+
+
+discrepancies so that the execution of the original robot's program can
+continue.
+<P>Like classical planning, the execution of high-level agent programs requires
+a reasoner to look all the way to a final goal state before even a single action
+can be taken in the world. This deferral is a serious problem in practice for
+large programs. Furthermore, the problem is compounded in the presence of
+sensing actions which provide necessary information, but only after they are
+executed in the world. To deal with this, in <A HREF="/~ai/citations/degi-leve-98.html">[DGL98]</A>
+proposes a new incremental way of interpreting such high-level programs and a
+new high-level language construct, which together, and without loss of
+generality, allow much more control to be exercised over when actions can be
+executed. Such a scheme is argued to be the only practical way to deal with
+large agent programs containing both nondeterminism and sensing.
+<P>The work in<A HREF="/~ai/citations/pirr-reit-97.html">[PR97]</A> is focused on a rich axiomatization for
+actions in the situation calculus that includes, among other features, a solution
+to the frame problem for deterministic actions. The work is foundational in
+nature, directed at simplifying the entailment problem for these axioms.
+Specifically, four contributions to the metatheory of axiomatizations of
+dynamical systems in the Situation Calculus are given: 1) It is proved that the
+above-mentioned axiomatization for actions has a relative satisfiability
+property; the full axiomatization is satisfiable iff a small subset of it is. 2) The
+concept of regression relative to these axioms is defined, and a soundness and
+completeness theorem is proved for a regression-based solution to the
+entailment problem for a wide class of queries. 3) The formalization of the
+situation calculus requires certain foundational axioms specifying the domain
+of situations. These include an induction axiom, whose presence complicates
+human and automated reasoning in the situation calculus. Various classes of
+sentences are presented, whose proofs do not require induction, and in some
+cases, some of the other foundational axioms. 4) It is proved that the logic
+programming language Golog never requires any of the foundational axioms
+for the evaluation of programs.
+<P>The language of the situation calculus is extended in <A HREF="/~ai/citations/erri-97b.html">[Err97]</A>
+in order to deal with the cognitive state of agents acting in a dynamic
+environment. (Part of this work has also appeared in <A HREF="/~ai/citations/erri-97.html">[Err97]</A> and a
+revised version will appear in <A HREF="/~ai/citations/erri-98.html">[Err98]</A>.) Furthermore, a suitable
+language extension and theory have also been worked out with the aim to
+express communication among agents, in terms of speech acts. Finally, the
+language is proposed as a tool for the problem of User Modeling in intelligent
+interactive systems. To this aim User Modeling is recasted as the problem of
+modeling agents in a dynamic environment.
+<P>An alternative way of reasoning about actions is studied in
+<A HREF="/~ai/citations/chen-degi-AIJ-97.html">[CDG98]</A>, where a "model checking" approach is
+followed, in contrast to the usual "validity checking" one. A dynamic system is
+modeled, by means of a suitable description formalism (a process algebra), as
+
+
+
+
+
+a transition graph which represents all the possible system evolutions in terms
+of state changes caused by actions. As reasoning formalism, a suitable
+extension of modal mu-calculus is adopted. A property of the dynamic system
+is verified by checking the truth-value of a formula, in the corresponding
+transition graph (model checking). This setting inherits from the vast
+literature on process algebras tools for dealing with complex systems, treating
+suitably important aspects like parallelism, communications, interruptions,
+coordinations among agents. Moreover reasoning by model checking (which
+presuppose complete information on the behavior of the system) is typically
+much easier than more general logical services such as validity checking.
+<P>In <A HREF="/~ai/citations/degi-etal-AAAIWS-97.html">[DGINR97a]</A><A HREF="/~ai/citations/degi-etal-98.html">[DGINR98]</A> the
+studies on a mobile robot equipped with autonomous reasoning capabilities is
+presented. The robot, making use of such capabilities, is able to reason on the
+surrounding environment and on the actions available in order to derive a plan
+for reaching specified goals (as moving around in an office environment). The
+reasoning services are based on a formalization of reasoning about actions and
+planning in propositional dynamic logics, and exploit the correspondence
+between PDLs and DLs to take advantage of efficient forms of weakened
+reasoning. In
+<A HREF="/~ai/citations/degi-etal-ECP-97.html">[DGINR97b]</A><A HREF="/~ai/citations/degi-etal-DL-97.html">[DGINR97c]</A> the
+generation of conditional plans, whose conditions have to be sensed form the
+environment, is addressed, and a suitable reasoning method id defined in which
+a plan is extracted from a constructive proof of a query expressing a given goal.
+<P>The use of dynamic logic for modeling planning problems of industrial
+relevance has been developed further in <A HREF="/~ai/citations/mass-97.html">[Mas97c]</A>. This work
+proposes to represent the verification of security properties by modeling
+security attacks as plans. Rather then achieving "positive" goals a planner
+must exploit the structure of a security protocol and coordinate the
+communications steps of the agents and the network (or a potential enemy) to
+reach a security violation. The planning problem is formalized with a variant
+of dynamic logic where actions are explicit computation (such as
+cryptanalyzing a message) and communications steps between agents.
+<P>Also the complexity of A-action description language, a formalism to
+express reasoning about actions scenarios (scenarios in which the world of
+interest is modified by actions), has been studied in <A HREF="/~ai/citations/libe-97-b.html">[Lib97]</A>.
+This is the first study about the complexity of action languages.
+
+<h2>Complexity of reasoning</h2>
+
+
+<P>Efficiency of AI systems is important for their success, as it is important in
+all engineering projects. If we are to use logic as the major tool for Knowledge
+Representation and Reasoning we have to deal with computational aspects.
+<P>Logical inference is an extraordinarily powerful computational device, and
+problems in logic are known among computer scientists for their high
+
+
+
+
+
+      computational complexity. As an example, the prototypical recursively
+      enumerable, non-recursive problem is to check whether a formula of first-order
+      logic is valid. In other words a reasoner that represents its knowledge by
+      means of a first-order formula and uses a sound and complete procedure for
+      checking the validity of its knowledge has as much computational power as a
+      Turing machine. The reasoner might give up full expressiveness and represent
+      its knowledge in formulae of propositional logic, still using a sound and
+      complete consistency checking procedure. In this case, it is important to recall
+      that checking whether a formula of propositional logic is consistent is the
+      paradigmatic NP-complete problem, which means that the reasoner faces a
+      problem which probably requires exponential time.
+      <P>In 1997, the AI group has continued the investigation on fundamental
+      properties of complexity of reasoning, with the overall goal of designing
+      computationally efficient and adequately expressive systems for Knowledge
+      Representation and Reasoning. In particular, research has focused on the
+      following topics: <OL>
+      <LI> computational complexity of specific logical formalisms;
+
+      <LI> complexity and expressiveness of query languages for relational
+           databases, which are based on knowledge representation ideas;
+
+      <LI> logical compilation of knowledge;
+
+      <LI> experimental analysis of computationally hard problems;
+
+<LI>  approximation of logical inference to gain efficiency. </OL>
+      <P>As for point 1, the papers <A HREF="/~ai/citations/libe-97-c.html">[Lib97a]</A><A HREF="/~ai/citations/libe-97.html">[Lib97b]</A>
+      contain the analysis of complexity of various problems of belief revision. The
+      computational complexity of various deduction formalisms for modal logic is
+      analyzed in <A HREF="/~ai/citations/mass-98-c.html">[Mas98]</A>, where new bounds for establishing
+      decidability for modal logic K4 are also established.
+      <P>As for point 2, the language DQL (Default Query Language) is proposed in
+      <A HREF="/~ai/citations/cado-eite-gott-97.html">[CEG97]</A>, and both its expressive power and complexity
+      are analyzed. DQL is based on the well-known non-monotonic formalism of
+      "default logic". A language based on the non-monotonic formalism of
+      "circumscription", which extends the well-known query language Datalog, is
+      defined and analyzed in <A HREF="/~ai/citations/cado-palo-98.html">[CP98]</A>. The effects on the expressive
+      power of a rule-based query language when integrated with a description logic
+      knowledge base are investigated in <A HREF="/~ai/citations/cado-palo-lenz-97.html">[CPL98]</A>.
+      <P>As for point 3, a first contribution to this technique, which splits theorem
+      proving into a preprocessing phase (off-line reasoning), and a query answering
+      phase (on-line reasoning), is a survey on the most recent advances of the field
+      <A HREF="/~ai/citations/cado-doni-98.html">[CD98]</A>. An extensive analysis of the benefits that
+      preprocessing a non-monotonic (in particular, circumscriptive) knowledge base
+      may have on the complexity of reasoning is performed in
+      <A HREF="/~ai/citations/cado-etal-97-c.html">[CDSS97]</A>, carrying out a specific investigation on the
+      effects on the size of data structures that the logical compilation produces.
+
+
+
+
+
+The paper <A HREF="/~ai/citations/libe-98.html">[Lib98]</A> contains the results of an investigation on how
+preprocessing may be useful for many problems from different fields, such as
+diagnosis, and reasoning about actions. Specific formal tools, such as
+complexity classes and reductions, for capturing the intuitive idea of a
+"compilable" and "non-compilable" problem are proposed in
+<A HREF="/~ai/citations/cado-etal-97-d.html">[CDLS97]</A>.
+<P>As for point 4, the results of an extensive experimental analysis are shown
+in <A HREF="/~ai/citations/cado-giov-scha-97.html">[CGS97]</A>. The analysis concerns the so called
+"quantified boolean formulae", which provide prototypical problems for many
+complexity classes extremely relevant to Knowledge Representation. For the
+evaluation of such formulae an algorithm has been designed and implemented
+in C++. The algorithm is described in <A HREF="/~ai/citations/cado-giov-scha-98.html">[CGS98]</A>.
+<P>Further extensive experimental studies on the traditional benchmark on
+random CNF of fixed size and the industrial benchmarks of IFIP for hardware
+verification are shown in
+<A HREF="/~ai/citations/mass-97-d.html">[Mas97]</A><A HREF="/~ai/citations/mass-97-e.html">[Mas97]</A><A HREF="/~ai/citations/mass-98-b.html">[Mas98]</A>. The
+analysis concerns the effect of embedding constraint propagation techniques
+into traditional tableaux systems and their comparative advantage over
+analytic cut.
+<P>As for point 5, the paper <A HREF="/~ai/citations/mass-97-f.html">[Mas97a]</A> advocates the
+introduction of approximate proofs within automated deduction for
+propositional logic to overcome the computational barriers that make
+deduction unfeasible in practice. The notion of approximate proofs is the
+proof-theoretic dual of the notions of approximate semantics for tractable
+reasoning developed by Dalal and Schaerf & Cadoli.
+<P>The so-called Horn-approximations, previously defined by other authors,
+are analyzed from the semantical and computational point of view in
+<A HREF="/~ai/citations/cado-scarc-97.html">[CS97]</A>. In particular, relations with non-monotonic
+reasoning are highlighted, and the cost of obtaining approximations is
+evaluated.
+
+
+
+<P><h2>Knowledge-Based Architectures for Planning and Scheduling</h2>
+
+
+<P>The work concerns the realization of flexible architectures for solving
+planning and scheduling problems, where an user can actively partecipate to
+the solving process. The research has been focussed on three main aspects
+involved in the design of such architectures: first, the realization of specialized
+constraint management modules, which are the "basic layer" of the constraint
+satisfaction approach used as automatic solving method; second, the definition
+of a set of scheduling heuristic algorithms for solving different classes of
+problems; third, the design of a user interaction modules to support a
+collaborative problem solving modality between the users and the automated
+system.
+
+
+
+
+
+<P><h5>Specialized reasoning on time and resource constraints.</h5>
+<P>In this research the problem of efficient dynamic support to problem
+solving activities has been developed through the design and realization of
+specialized reasoners for classes of constraints dealing with temporal and
+resource representation.
+<P>Research on quantitative temporal networks without disjunctive constraints
+(the so-called Simple Temporal Problem) has concerned the syntesis of
+dynamic management algorithms to be coupled with incremental constraint
+posting approaches to problem solving. In <A HREF="/~ai/citations/cest-oddi-97.html">[CO97]</A> a basic
+algorithm for incremental propagation of a new time constraint is improved
+giving a sufficient condition for inconsistency based on cycle detection in the
+shortest paths graph. Moreover, properties for dynamic constraint retraction
+from a consistent situation are considered and exploited in a constraint
+management primitive.
+<P>The problem of resource reasoning in planning has been addressed and seen
+as integrated with temporal reasoning by defining a Time and Resource
+Problem (T RP) in which the two kinds of constraints are considered. In
+<A HREF="/~ai/citations/cest-stel-97.html">[CS97]</A> two filtering techniques for partial propagation of
+resource constraints have been proposed that synthesize necessary additional
+temporal constraints. During problem solving the current resource utilization
+is computed and the "profile propagation" technique synthesizes quantitative
+temporal constraints, while the "order propagation" technique synthesizes
+qualitative ordering constraints between activities.
+<P><h5>Scheduling Algorithms.</h5> A set of solution methods are proposed for
+solving scheduling problems with different hypothesis on the type of temporal
+constraints involved, the tightness of the problem and the resources capacity.
+<P>In <A HREF="/~ai/citations/oddi-smit-97.html">[OS97]</A> the use of stochastic variable and value
+ordering heuristics for solving job shop scheduling problems with non-relaxable
+deadlines and complex metric constraints is investigated. Previous research in
+constraint satisfaction scheduling has developed highly effective, deterministic
+heuristics for this class of problems based on simple measures of temporal
+sequencing flexibility. However, they are not infallible, and the possibility of
+search failure raises the issue of how to most productively enlarge the search.
+This work designs an iterative sampling procedure, based on the intuition that
+it is more productive to deviate from heuristic advice in cases where the
+heuristic is less informed, and likewise better to follow the heuristic in cases
+where it is more knowledgeable. Stochastic counterparts to previously
+developed search heuristics are specified, which are parameterized to calibrate
+degree of randomness to level of discriminatory power.
+<P>The work <A HREF="/~ai/citations/oddi-97.html">[Odd97]</A> proposes an alternative method to solve the
+same class of scheduling problems addressed in <A HREF="/~ai/citations/oddi-smit-97.html">[OS97]</A>. An
+incomplete backtracking strategy is evaluated in the so called phase transition
+region. In this region, a problem changes form being solvable to being not
+solvable and it is reasonable to conjecture that problems in that region are the
+
+
+
+
+
+hardest ones. The design of the incomplete backtracking procedure is based on
+the intuition that it is more productive to deviate from the sistematic
+chronological backtracking search in cases where the heuristic is more
+knowledgeable, and likewise better to follow the sistematic search when
+heuristic is less informed. Experimental results on job shop scheduling
+problems of increasing size demonstrate comparative advantage over complete
+chronological backtracking.
+<P>A different work <A HREF="/~ai/citations/oddi-cest-97.html">[OC97]</A> has concerned the Relaxable
+Metric Scheduling Problem (RM SP ) in which the classical job-shop scheduling
+problem is extended with the use of complex temporal metric constraints and
+with the possibility of distinguishing between relaxable and not-relaxable
+constraints. The paper proposes and experimentally evaluates a tabu search
+procedure to improve a previously created heuristic solution to the RM SP .
+The tabu procedure uses the idea of relaxing some temporal constraints to
+"navigate" the search space and to find a solution. In particular, it tries to
+produce either a solution where there are no relaxations or a solution where
+only the constraints classified as relaxable are violated. Experimental results
+on scheduling problems of increasing size demonstrate the usefulness of the
+proposed approach.
+<P>All the previously CSP scheduling models have assumed a rather general
+representations of temporal constraints (the Simple Temporal Problem), but
+has restricted attention to problems that require allocation of unit-capacity
+resources. Further research,
+<A HREF="/~ai/citations/cest-oddi-smit-98.html">[COS98a]</A><A HREF="/~ai/citations/cest-oddi-smit-98b.html">[COS98b]</A>, has
+concerned an extended class of scheduling problems where resources have
+capacity to simultaneously support more than one activity, and resource
+availability at any point in time is consequently a function of whether
+sufficient unallocated capacity remains.
+<P>The paper <A HREF="/~ai/citations/cest-oddi-smit-98.html">[COS98a]</A> presents a progression of
+algorithms for solving such multiple-capacitated scheduling problems, and
+evaluates the performance of each with respect to problem solving ability and
+quality of the generated solutions. A previously reported algorithm, named
+Conflict Free Solution Algorithm (CFSA), is first evaluated against a set of
+problems of increasing dimension and shown to be of limited effectiveness.
+Two variations of this algorithm are then introduced which incorporate
+measures of temporal flexibility as an alternative heuristic basis for directing
+the search, and the variant making broadest use of these search heuristics is
+shown to yield significant performance improvement. Observations about the
+tendency of the CFSA solution approach to produce unnecessarily
+overconstrained solutions then lead to development of a second heuristic
+algorithm, named Early Start Time Algorithm (ESTA). ESTA is shown to be
+the most effective of the set, both in terms of its ability to efficiently solve
+problems of increasing scale and its ability to produce schedules that minimize
+overall completion time while retaining solution robustness.
+
+
+
+
+
+ <P>The work <A HREF="/~ai/citations/cest-oddi-smit-98b.html">[COS98b]</A> compares two different solution
+ approaches for the multiple capacitated metric scheduling problem: (1) a
+ "profile-based procedure" which relies on local analysis of potential resource
+ conflicts to heuristically direct the problem solving process, and (2) a
+ "clique-based procedure" which exploits a global analysis of resource conflicts
+ at greater computational cost. In each case, improvements are made to
+ previously proposed techniques. Performance results are given on a series of
+ problems of increasing scale and constrainedness, indicating the relative
+ strengths of each procedure.
+ <P><h5>Complete architectures that interact with the user.</h5> The research
+ issues introduced above contribute to improve the performance of two
+ complete architectures devoted to develop interactive systems for planning and
+ scheduling applications.
+ <P>In O-OSCAR (Object-Oriented Scheduling Architecture)
+ <A HREF="/~ai/citations/bazz-caso-cest-97.html">[BCC97]</A><A HREF="/~ai/citations/cest-bazz-caso-97.html">[CBC97]</A> a careful
+ object-oriented design has allowed to create a problem solving framework that
+ (a) allows the insertion of specialized modules in which the efficiency of the
+ implementation is particularly accurate; (b) can be re-configured for different
+ specific applications by adding domain heuristics and user-oriented interfaces.
+ An application to a quite relevant space problem, the scheduling of a
+ data-relay satellite system, has been developed by specializing O-OSCAR to
+ interact with two classes of specialized users in a work environment.
+ <P>The I-S  (Interactive Scheduler) prototype is instead devoted to the
+ experimentation of different interaction modalities with an expert user. This
+ architecture is a first step in the development of a "mixed-initiative" problem
+ solving framework in which the user and the system contribute in the solution
+ of a scheduling problem. In particular the solution strategies described in
+ <A HREF="/~ai/citations/oddi-cest-97.html">[OC97]</A> are connected with a rich interaction module that
+ allows the user to interact with the current solution at different levels of
+ responsibility.
+
+ <h2>Constraint Reasoning and Scheduling</h2>
+
+
+ <P>Constraint programming and constraint solving are prominent fields in
+ Artificial Intelligence. We specifically investigated to what extent constraint
+ programming techniques can be useful for solving various real-case scheduling
+ problems, like timetabling. In particular, we worked in four different
+ directions.
+ <P><OL>
+<LI> We developed implementations for solution of real cases of scheduling
+     problems using conventional programming languages. The research
+     regards the solution of large scale timetabling problems using local search
+     techniques and, in particular, tabu search. Such research involves the
+     definition of a standard formulation of the problem <A HREF="/~ai/citations/Scha97.html">[Sch97]</A>,
+
+
+
+
+
+     the representation of both the search space and the neighborhood relation,
+     and the implementation of the search procedures <A HREF="/~ai/citations/Scha97b.html">[Sch97a]</A>.
+     In addition, in <A HREF="/~ai/citations/Scha97c.html">[Sch97]</A> we propose a solution technique for
+     scheduling and constraint satisfaction problems that combines
+     backtracking-free constructive methods and local search techniques. Our
+     technique incrementally constructs the solution, performing a local search
+     on partial solutions each time the construction reaches a dead-end.
+
+<LI> We developed tools and implementations for the solution of real cases of
+     scheduling problems using existing constraint languages. We worked on
+     the use of the Constraint Logic Programming language ECLiP Se for the
+     solution of the above mentioned problems <A HREF="/~ai/citations/Scha97d.html">[Sch97b]</A>.
+
+<LI> We are working on the extension of the theoretical framework of the
+     constraint programming paradigm so as to embed some features that can
+     be useful for modeling scheduling problems <A HREF="/~ai/citations/ApSc97.html">[AS97]</A>. This
+     research led to the development of the language Alma-0 that extends the
+     imperative language Modula-2 with logic programming features
+     <A HREF="/~ai/citations/ABPS97.html">[ABPS97]</A>.
+
+<LI> In <A HREF="/~ai/citations/cado-lenz-scha-97.html">[CLS97]</A> we propose the use of an object-oriented
+     framework in C++ as a general purpose tool for the solution of
+     combinatorial search problems. In particular, we define a hierarchy of
+     abstract classes for the various solution methods (e.g. backtracking, tabu
+     search). The concrete classes defined by the user for the solution of the
+     specific problems inherit the methods that implement the general solution
+     algorithm, so that they must provide only the specific features of the
+     problem under consideration.
+     This architecture provides an adequate modularization for the solution of
+     search problems, and it gives the user a clean conceptual schema of
+     her/his application, thus facilitating the design and debugging phases.
+ <P></OL>
+
+
+
+ <P><h2>Natural language processing</h2>
+
+
+ <P>During 1997 a collaboration with the IRST (Istituto per la Ricerca
+ Scientifica e Tecnologica) and with Finsiel SpA on themes related to natural
+ language processing has been continued. This collaboration was centered on
+ theoretical and technological issues related to the automatic generation of
+ hypertextual descriptions from conceptual models. This work was motivated
+ by the consideration that while conceptual model validation is crucial in the
+ information system development process, it may be difficult to accomplish if
+ the domain expert is not acquainted with the formal language used by the
+ analyst. Textual natural-language descriptions of the model are often suitable
+ for this purpose, and valuable analyst time could be saved if these texts could
+ be produced automatically: the combination of natural language and
+
+
+
+
+
+hypertext significantly lowers the communicative barrier between the analyst
+and the domain expert, thus increasing validation effectiveness. In this frame,
+an experimental prototype called SAX <A HREF="/~ai/citations/Cancedda-et-al-97.html">[CKPP97a]</A>
+<A HREF="/~ai/citations/Cancedda-et-al-97b.html">[CKPP97b]</A><A HREF="/~ai/citations/Cancedda-et-al-98.html">[CKPP98]</A> has been
+realized and will serve as a basis for the development of a fully-fledged system.
+The prototype is based on a hybrid approach, with a text planner based on
+recursive expansion of communicative schemata for the general organization of
+the text and a superficial module supporting flexible templates for
+sentence-level generation. This solution achieves the desired trade-off between
+robustness and portability across domains on one side and text fluency on the
+other.
+
+<h2>Books</h2>
+
+
+<A HREF="/~ai/citations/gabb-pirr-97a.html">[GP97a]</A>       Dov Gabbay and Fiora Pirri, editors.
+    <I>Combining Logic I</I>.  Kluwer Academic Publishers, 1997.  Special
+    Issue of Studia Logica, Volume 59, Number 1.<P>
+
+<A HREF="/~ai/citations/gabb-pirr-97b.html">[GP97b]</A>       Dov Gabbay and Fiora Pirri, editors.
+    <I>Combining Logic II</I>.  Kluwer Academic Publishers, 1997.  Special
+    Issue of Studia Logica, Volume 59, Number 2.<P>
+
+<A HREF="/~ai/citations/lenz-97.html">[Len97]</A>     Maurizio Lenzerini, editor.  <I>AI*IA 97: Advances in
+    Artificial Intelligence. Proceedings of the 5th Congress of the Italian
+    Association for Artificial Intelligence</I>.  Number 1321 in Lecture Notes
+    In Artificial Intelligence. Springer-Verlag, 1997.<P>
+
+
+
+<h2>Journals</h2>
+
+
+<A HREF="/~ai/citations/amat-aiel-pirr-97a.html">[ACP97a]</A>       Gianni Amati, Luigia Carlucci Aiello, and
+    Fiora Pirri.  Definability and commonsense reasoning.  <I>Artificial
+    Intelligence Journal</I>, 93:1 - 30, 1997.  Abstract in in Definability and
+    commonsense reasoning Third Symposium on Logical Formalization of
+    Commonsense Reasoning, Stanford, USA, 96.
+    <A HREF=http://hermes.dis.uniroma1.it/pub/AI/pirri/>          Paper available
+    on-line </A>.<P>
+
+<A HREF="/~ai/citations/amat-aiel-pirr-97b.html">[ACP97b]</A>       Gianni Amati, Luigia Carlucci Aiello, and
+    Fiora Pirri.  Intuitionistic autoepistemic logic.  <I>Studia Logica</I>,
+    59(1):103 - 120, 1997.
+    <A HREF=http://hermes.dis.uniroma1.it/pub/AI/pirri/>          Paper available
+    on-line </A>.<P>
+
+<A HREF="/~ai/citations/buch-doni-nutt-scha-98.html">[BDNS98]</A>         Martin Buchheit, Francesco M. Donini,
+    Werner Nutt, and Andrea Schaerf.  Refining the structure of terminological
+    systems: Terminology = schema + views.  <I>Artificial Intelligence</I>,
+    1998.<P>
+
+
+
+
+
+<A HREF="/~ai/citations/cado-doni-98.html">[CD98]</A>       Marco Cadoli and Francesco M. Donini.  A survey
+    on knowledge compilation.  <I>AI Communications-The European Journal
+    for Artificial Intelligence</I>, 1998.  To appear.
+    <A HREF=http://hermes.dis.uniroma1.it/PUB/AI/papers/cado-doni-97.ps.gz>
+    Paper available on-line </A>.<P>
+
+<A HREF="/~ai/citations/calv-degi-lenz-nard-98.html">[CDGLN98]</A>         Diego Calvanese, Giuseppe
+    De Giacomo, Maurizio Lenzerini, and Daniele Nardi.  Reasoning in
+    expressive description logics.  In Alan Robinson and Andrei Voronkov,
+    editors, <I>Handbook of Automated Reasoning</I>. Elsevier Science
+    Publishers (North-Holland), Amsterdam, 1998.  To appear.<P>
+
+<A HREF="/~ai/citations/cado-etal-97-c.html">[CDSS97]</A>       Marco Cadoli, Francesco M. Donini, Marco
+    Schaerf, and Riccardo Silvestri.  On compact representations of
+    propositional circumscription.  <I>Theoretical Computer Science</I>,
+    182:183-202, 1997.
+    <A HREF=http://www.dis.uniroma1.it/PUB/AI/papers/cado-etal-95-b.ps.gz>
+    Paper available on-line </A>.<P>
+
+<A HREF="/~ai/citations/cado-eite-gott-97.html">[CEG97]</A>       Marco Cadoli, Thomas Eiter, and Georg
+    Gottlob.  Default logic as a query language.  <I>IEEE Transactions on
+    Knowledge and Data Engineering</I>, 9(3):448-463, May/June 1997.<P>
+
+<A HREF="/~ai/citations/Cancedda-et-al-98.html">[CKPP98]</A>         Nicola Cancedda, Gjertrud Kamstrup,
+    Emanuele Pianta, and Ettore Pietrosanti.  SAX: Generating hypertext
+    from SADT models.  <I>To appear in Data & Knowledge Engineering</I>,
+    1998.  Special issue. (Revised version of the paper presented at
+    NLDB'97.<P>
+
+<A HREF="/~ai/citations/calv-lenz-nard-98.html">[CLN98]</A>       Diego Calvanese, Maurizio Lenzerini, and
+    Daniele Nardi.  Description logics for conceptual data modeling.  In Jan
+    Chomicki and G&uuml;nter Saake, editors, <I>Logics for Databases and
+    Information Systems</I>, pages 229-264. Kluwer Academic Publisher,
+    1998.  To appear.
+    <A HREF=http://www.dis.uniroma1.it/pub/calvanese/calv-lenz-nard-DBIS-97.ps.gz>
+    Paper available on-line </A>.<P>
+
+<A HREF="/~ai/citations/cest-oddi-97.html">[CO97]</A>      Amedeo Cesta and Angelo Oddi.  Gestione dinamica
+    di vincoli temporali quantitativi per problemi di pianificazione e
+    sequenziamento (in Italian).  <I>AI*IA Notizie</I>, 10(1):18-23, 1997.<P>
+
+<A HREF="/~ai/citations/cado-palo-98.html">[CP98]</A>      Marco Cadoli and Luigi Palopoli.  Circumscribing
+    datalog: expressive power and complexity.  <I>Theoretical Computer
+    Science</I>, 193:215-244, 1998.<P>
+
+<A HREF="/~ai/citations/Comp-Rumo-97b.html">[CR97a]</A>           Ernesto Compatangelo and Gianni Rumolo.
+    Automated Reasoning about Enterprise Concepts.  <I>SIG Group
+    Bulletin</I>, 1997.<P>
+
+
+
+
+
+<A HREF="/~ai/citations/Comp-Rumo-97a.html">[CR97b]</A>           Ernesto Compatangelo and Gianni Rumolo.
+    EDDL   DP  + T DDL  DP  = a double-level approach to Domain Knowledge
+    Modelling.  In <I>Information Modelling and Knowledge Bases VIII</I>,
+    pages 279-295. 1997.<P>
+
+<A HREF="/~ai/citations/Comp-Rumo-98a.html">[CR98]</A>          Ernesto Compatangelo and Gianni Rumolo.  An
+    engineering framework for domain knowledge modelling.  In <I>Information
+    Modelling and Knowledge Bases IX</I>. 1998.<P>
+
+<A HREF="/~ai/citations/degi-lenz-JAIR-97.html">[DGL97]</A>        Giuseppe De Giacomo and Maurizio
+    Lenzerini.  A uniform framework for concept definitions in description
+    logics.  <I>Journal of Artificial Intelligence Research</I>, 6:87-110,
+    1997.<P>
+
+<A HREF="/~ai/citations/doni-lenz-nard-scha-nutt-98.html">[DLNetal98]</A>        Francesco M. Donini, Maurizio
+    Lenzerini, Daniele Nardi, Andrea Schaerf, and Werner Nutt.  An epistemic
+    operator for description logics.  <I>Artificial Intelligence</I>, 1998.  To
+    appear.<P>
+
+<A HREF="/~ai/citations/DLNN97.html">[DLNN97]</A>          Francesco M. Donini, Maurizio Lenzerini, Daniele
+    Nardi, and Werner Nutt.  The complexity of concept languages.
+    <I>Information and Computation</I>, 134:1-58, 1997.<P>
+
+<A HREF="/~ai/citations/doni-lenz-nard-scha-98.html">[DLNS98]</A>        Francesco M. Donini, Maurizio
+    Lenzerini, Daniele Nardi, and Andrea Schaerf.  AL-log: integrating datalog
+    and description logics.  <I>Journal of Intelligent Information Systems</I>,
+    1998.  To appear.<P>
+
+<A HREF="/~ai/citations/DoNR97.html">[DNR97]</A>         Francesco M. Donini, Daniele Nardi, and Riccardo
+    Rosati.  Ground nonmonotonic modal logics.  <I>Journal of Logic and
+    Computation</I>, 7(4):523-548, August 1997.
+    <A HREF=http://www.dis.uniroma1.it/PUB/AI/papers/DoNR96.ps.gz>
+    Paper available on-line </A>.<P>
+
+<A HREF="/~ai/citations/erri-98.html">[Err98]</A>    Bruno Errico.  Agents' dynamic mental attitudes.  In P. Y.
+    Schobbens, editor, <I>Modelage'97</I>, volume 9, pages 129-148.
+    Springer-Verlag, 1998.  To Appear.<P>
+
+<A HREF="/~ai/citations/libe-97-b.html">[Lib97]</A>    Paolo Liberatore.  The complexity of the language A.
+    <I>Electronic Transactions on Artificial Intelligence</I>, 1(1-3):13-38,
+    1997.  Available at http://www.ep.liu.se/ej/etai/1997/002/.
+    <A HREF=http://www.ep.liu.se/ej/etai/1997/002/>          Paper available
+    on-line </A>.<P>
+
+<A HREF="/~ai/citations/libe-scha-97.html">[LS97a]</A>     Paolo Liberatore and Marco Schaerf.  Arbitration (or
+    how to merge knowledge bases).  <I>IEEE Transactions on Knowledge and
+    Data Engineering</I>, 1997.  To appear.<P>
+
+<A HREF="/~ai/citations/libe-scha-97-b.html">[LS97b]</A>     Paolo Liberatore and Marco Schaerf.  Reducing
+    belief revision to circumscription (and viceversa).  <I>Artificial
+    Intelligence</I>, 93(1-2):261-296, 1997.<P>
+
+
+
+
+
+<A HREF="/~ai/citations/mass-98.html">[Mas98]</A>      Fabio Massacci.  Tableaux methods for formal
+    verification in multi-agent distributed systems.  <I>Journal of Logic and
+    Computation</I>, 8(3):1-28, 1998.  To appear in the special issue on
+    "Multi-agent Systems".
+    <A HREF=http://www.dis.uniroma1.it/PUB/AI/papers/mass-98.ps.gz>
+    Paper available on-line </A>.<P>
+
+<A HREF="/~ai/citations/Scha97.html">[Sch97]</A>      Andrea Schaerf.  A survey of automated timetabling.
+    <I>Artificial Intelligence Review</I>, To appear, 1997.<P>
+
+<A HREF="/~ai/citations/weyh-cado-talc-98.html">[WCT98]</A>         Richard W. Weyhrauch, Marco Cadoli, and
+    Carolyn L. Talcott.  Using abstract resources to control reasoning.
+    <I>Journal of Logic, Language and Information</I>, 7(1):77-101, 1998.<P>
+
+
+
+<h2>Conferences</h2>
+
+
+<A HREF="/~ai/citations/amat-pirr-97FS.html">[AP97]</A>       Gianni Amati and Fiora Pirri.  Contexts as
+    relativized definitions: a formalization via fixed points.  In <I>Proceedings
+    of the AAAI-97 Fall Symposium on Context in Knowledge Representation
+    and Natural Language</I>, November 1997.  Also accepted for
+    Commonsense Reasoning 98.<P>
+
+<A HREF="/~ai/citations/ApSc97.html">[AS97]</A>       Krzysztof Apt and Andrea Schaerf.  Search and
+    imperative programming.  In <I>Proceedings of the Twentyfourth ACM
+    SIGACT-SIGPLAN Symposium on Principles of Programming Languages
+    (POPL-97)</I>, 1997.<P>
+
+<A HREF="/~ai/citations/bazz-caso-cest-97.html">[BCC97]</A>       Paolo Bazzica, Gianni Casonato, and Amedeo
+    Cesta.  An Object-Oriented Architecture for the DRS Scheduling Problem.
+    In <I>AI*IA: Advances in Artificial Intelligence</I>, pages 451-454.
+    Springer (LNAI 1321), 1997.<P>
+
+<A HREF="/~ai/citations/cest-bazz-caso-97.html">[CBC97]</A>       Amedeo Cesta, Paolo Bazzica, and Gianni
+    Casonato.  An Object-Oriented Scheduling Architecture for Managing the
+    Data Relay Satellite Requests.  In <I>Proceedings of the International
+    Workshop on Planning and Scheduling for Space Exploration and
+    Science</I>, 1997.<P>
+
+<A HREF="/~ai/citations/calv-degi-lenz-97-b.html">[CDGL97a]</A>        Diego Calvanese, Giuseppe De Giacomo,
+    and Maurizio Lenzerini.  Conjunctive query containment in Description
+    Logics with n-ary relations.  In <I>Proceedings of the 1997 Description
+    Logic Workshop (DL-97)</I>, pages 5-9, 1997.
+    <A HREF=http://www.dis.uniroma1.it/pub/calvanese/calv-degi-lenz-DL-97.ps.gz>
+    Paper available on-line </A>.<P>
+
+<A HREF="/~ai/citations/calv-degi-lenz-97.html">[CDGL97b]</A>        Diego Calvanese, Giuseppe De Giacomo,
+    and Maurizio Lenzerini.  Representing and reasoning on SGML documents.
+
+
+
+
+
+    In <I>Proceedings of the Tenth International Symposium on Methodologies
+    for Intelligent Systems (ISMIS-97)</I>, 1997.
+    <A HREF=http://www.dis.uniroma1.it/pub/calvanese/calv-degi-lenz-ISMIS-97.ps.gz>
+    Paper available on-line </A>.<P>
+
+<A HREF="/~ai/citations/calv-degi-lenz-98.html">[CDGL98a]</A>        Diego Calvanese, Giuseppe De Giacomo,
+    and Maurizio Lenzerini.  On the decidability of query containment under
+    constraints.  In <I>Proceedings of the Seventeenth ACM SIGACT SIGMOD
+    SIGART Symposium on Principles of Database Systems (PODS-98)</I>,
+    1998.  To appear.
+    <A HREF=http://www.dis.uniroma1.it/pub/calvanese/calv-degi-lenz-PODS-98.ps.gz>
+    Paper available on-line </A>.<P>
+
+<A HREF="/~ai/citations/calv-degi-lenz-nard-rosa-98.html">[CDGLetal98b]</A>         Diego Calvanese, Giuseppe
+    De Giacomo, Maurizio Lenzerini, Daniele Nardi, and Riccardo Rosati.
+    Description logic framework for information integration.  In <I>Proceedings
+    of the Sixth International Conference on Principles of Knowledge
+    Representation and Reasoning (KR-98)</I>, 1998.  To appear.
+    <A HREF=http://www.dis.uniroma1.it/pub/calvanese/calv-degi-lenz-nard-rosa-KR-98.ps.gz>
+    Paper available on-line </A>.<P>
+
+<A HREF="/~ai/citations/Comp-Doni-Rumo-97b.html">[CDR97]</A>            Ernesto Compatangelo, Francesco M.
+    Donini, and Gianni Rumolo.  Reasoning with behavioural knowledge in
+    application domain models.  In <I>Proceedings of the Fifth Conference of
+    the Italian Association for Artificial Intelligence (AI*IA-97)</I>, volume
+    1321 of <I>Lecture Notes In Artificial Intelligence</I>, pages 369-380.
+    Springer-Verlag, 1997.<P>
+
+<A HREF="/~ai/citations/cado-giov-scha-97.html">[CGS97]</A>       Marco Cadoli, Andrea Giovanardi, and Marco
+    Schaerf.  Experimental analysis of the computational cost of evaluating
+    quantified boolean formulae.  In <I>Proceedings of the Fifth Conference of
+    the Italian Association for Artificial Intelligence (AI*IA-97)</I>, number
+    1321 in Lecture Notes In Artificial Intelligence, pages 207-218.
+    Springer-Verlag, 1997.<P>
+
+<A HREF="/~ai/citations/Cancedda-et-al-97.html">[CKPP97a]</A>         Nicola Cancedda, Gjertrud Kamstrup,
+    Emanuele Pianta, and Ettore Pietrosanti.  SAX: Generating hypertext
+    from SADT models.  In <I>Proceedings of the 3rd Workshop on
+    Applications of Natural Language to Information Systems (NLDB'97)</I>,
+    Vancouver, Canada, June 1997.<P>
+
+<A HREF="/~ai/citations/Cancedda-et-al-97b.html">[CKPP97b]</A>          Nicola Cancedda, Gjertrud Kamstrup,
+    Emanuele Pianta, and Ettore Pietrosanti.  A hybrid approach to hypertext
+    generation.  In <I>Proceedings of the 5th Congress of the Italian Association
+    for Artificial Intelligence (AI*IA'97)</I>, Rome, Italy, September 1997.<P>
+
+<A HREF="/~ai/citations/Comp-97a.html">[Com97]</A>        Ernesto Compatangelo.  Towards an Open
+    Framework for Conceptual Knowledge in ECBS Domain and Information
+
+
+
+
+
+    Modelling.  In <I>Proc. of the IEEE Symposium and Workshop on the
+    Engineering of Computer-Based Systems</I>, pages 211-218, 1997.<P>
+
+<A HREF="/~ai/citations/cado-palo-lenz-97.html">[CPL98]</A>       Marco Cadoli, Luigi Palopoli, and Maurizio
+    Lenzerini.  Datalog and description logics: Expressive power.  In
+    <I>Proceedings of the Sixth International Workshop on Database
+    Programming Languages (DBPL-97)</I>, Lecture Notes in Computer
+    Science. Springer-Verlag, 1998.  To appear.
+    <A HREF=http://www.dis.uniroma1.it/pub/AI/papers/cado-palo-lenz-97.ps.gz>
+    Paper available on-line </A>.<P>
+
+<A HREF="/~ai/citations/Comp-Rumo-97d.html">[CR97]</A>          Ernesto Compatangelo and Gianni Rumolo.  An
+    engineering framework for domain knowledge modelling.  In <I>Prepr. of
+    the 7th Euro-Japanese Seminar on Information Modelling and Knowledge
+    Bases</I>. Universit&eacute; de Toulouse, 1997.<P>
+
+<A HREF="/~ai/citations/cest-stel-97.html">[CS97]</A>    Amedeo Cesta and Cristiano Stella.  A Time and
+    Resource Problem for Planning Architectures.  In <I>Preprints of the
+    Fourth European Conference on Planning (ECP 97)</I>, pages 119-131,
+    1997.<P>
+
+<A HREF="/~ai/citations/degi-etal-AAAIWS-97.html">[DGINR97a]</A>           Giuseppe De Giacomo, Luca Iocchi,
+    Daniele Nardi, and Riccardo Rosati.  Robot-TINO advancements (position
+    paper).  In <I>Proceedings of the AAAI'97 Workshop on Robots, Softbots,
+    Immobots: Theories of Action, Planning and Control</I>, 1997.<P>
+
+<A HREF="/~ai/citations/degi-etal-ECP-97.html">[DGINR97b]</A>         Giuseppe De Giacomo, Luca Iocchi,
+    Daniele Nardi, and Riccardo Rosati.  Planning with sensing for a mobile
+    robot.  In <I>Proceedings of the European Conference on Planning
+    (ECP'97)</I>, pages 158-170. Springer-Verlag, 1997.<P>
+
+<A HREF="/~ai/citations/degi-etal-DL-97.html">[DGINR97c]</A>        Giuseppe De Giacomo, Luca Iocchi, Daniele
+    Nardi, and Riccardo Rosati.  Description logic-based framework for
+    planning with sensing actions.  In <I>Proceedings of the 1997 Description
+    Logic Workshop (DL-97)</I>, pages 39-43, 1997.<P>
+
+<A HREF="/~ai/citations/degi-lesp-leve-IJCAI-97.html">[DGLL97]</A>        Giuseppe De Giacomo, Yves
+    Lesperance, and Hector J. Levesque.  Reasoning about concurrent
+    execution, prioritized interrupts, and exogenous actions in the situation
+    calculus.  In <I>Proceedings of the Fifteenth International Joint Conference
+    on Artificial Intelligence (IJCAI-97)</I>, pages 1221-1226, 1997.<P>
+
+<A HREF="/~ai/citations/degi-reit-tern-AAAIWS-97.html">[DGTR97]</A>           Giuseppe De Giacomo, Eugenia
+    Ternovskaia, and Ray Reiter.  Non-terminating processes in the situation
+    calculus.  In <I>Proceedings of the AAAI'97 Workshop on Robots, Softbots,
+    Immobots: Theories of Action, Planning and Control</I>, 1997.<P>
+
+<A HREF="/~ai/citations/DoNR97b.html">[DNR97]</A>          Francesco M. Donini, Daniele Nardi, and Riccardo
+    Rosati.  Autoepistemic description logics.  In <I>Proceedings of the
+
+
+
+
+
+    Fifteenth International Joint Conference on Artificial Intelligence
+    (IJCAI-97)</I>, pages 136-141, 1997.<P>
+
+<A HREF="/~ai/citations/erri-97.html">[Err97]</A>    Bruno Errico.  Agents' dynamic mental attitudes.  In
+    <I>Proceedings of the 4th ModelAge Workshop on Formal Models of
+    Agents</I>, pages 143-158, 1997.<P>
+
+<A HREF="/~ai/citations/degi-reit-sout-KR-98.html">[GSR98a]</A>        Giuseppe De Giacomo, Mikhail
+    Soutchanski, and Ray Reiter.  Execution monitoring of high-level robot
+    programs.  In <I>Proceedings of the Sixth International Conference on
+    Principles of Knowledge Representation and Reasoning (KR-98)</I>,
+    1998.<P>
+
+<A HREF="/~ai/citations/degi-reit-sout-CS-98.html">[GSR98b]</A>       Giuseppe De Giacomo, Mikhail
+    Soutchanski, and Ray Reiter.  Execution monitoring of high-level robot
+    programs (extended abstract).  In <I>Proceedings of the 4th Symposium on
+    Logical Formalizations of Commonsense (CommonSense'98)</I>, 1998.<P>
+
+<A HREF="/~ai/citations/Io-Na-97.html">[IN97]</A>     Luca Iocchi and Daniele Nardi.  Information access in the
+    Web.  In <I>Proceedings of WEBNET-97</I>, 1997.<P>
+
+<A HREF="/~ai/citations/libe-97-c.html">[Lib97a]</A>    Paolo Liberatore.  The complexity of belief update.  In
+    <I>Proceedings of the Fifteenth International Joint Conference on Artificial
+    Intelligence (IJCAI-97)</I>, pages 68-73, 1997.<P>
+
+<A HREF="/~ai/citations/libe-97.html">[Lib97b]</A>     Paolo Liberatore.  The complexity of iterated belief
+    revision.  In <I>Proceedings of the Sixth International Conference on
+    Database Theory (ICDT-97)</I>, pages 276-290, 1997.
+    <A HREF=http://www.dis.uniroma1.it/PUB/AI/papers/libe-97.ps.gz>
+    Paper available on-line </A>.<P>
+
+<A HREF="/~ai/citations/libe-98.html">[Lib98]</A>    Paolo Liberatore.  On the compilability of diagnosis,
+    planning, reasoning about actions, belief revision, etc.  In <I>Proceedings of
+    the Sixth International Conference on Principles of Knowledge
+    Representation and Reasoning (KR-98)</I>, 1998.  To Appear.<P>
+
+<A HREF="/~ai/citations/mass-97-f.html">[Mas97a]</A>      Fabio Massacci.  A proof theory for tractable
+    approximations of propositional reasoning.  In Maurizio Lenzerini, editor,
+    <I>Proceedings of the Fifth Conference of the Italian Association for
+    Artificial Intelligence (AI*IA-97)</I>, volume 1321 of <I>Lecture Notes In
+    Artificial Intelligence</I>, pages 219-230. Springer-Verlag, 1997.
+    <A HREF=http://www.dis.uniroma1.it/PUB/AI/papers/mass-97-f.ps.gz>
+    Paper available on-line </A>.<P>
+
+<A HREF="/~ai/citations/mass-97-b.html">[Mas97b]</A>       Fabio Massacci.  Reasoning about security: a logic
+    and a decision methods for role-based access control.  In Dov Gabbay,
+    Rudolph Kruse, Andreas Nonnegart, and Hans J&uuml;rgen Ohlbach,
+    editors, <I>Proceeding of the International Joint Conference on Qualitative
+    and Quantitative Practical Reasoning (ECSQARU/FAPR-97)</I>, volume
+
+
+
+
+
+    1244 of <I>Lecture Notes In Artificial Intelligence</I>, pages 421-435.
+    Springer-Verlag, 1997.
+    <A HREF=http://www.dis.uniroma1.it/PUB/AI/papers/mass-97-b.ps.gz>
+    Paper available on-line </A>.<P>
+
+<A HREF="/~ai/citations/mass-97.html">[Mas97c]</A>      Fabio Massacci.  Tableaux methods for access control in
+    distributed systems.  In Didier Galmiche, editor, <I>Proceedings of the
+    International Conference on Analytic Tableaux and Related Methods
+    (TABLEAUX-97)</I>, volume 1227 of <I>Lecture Notes In Artificial
+    Intelligence</I>, pages 246-260. Springer-Verlag, 1997.
+    <A HREF=http://www.dis.uniroma1.it/PUB/AI/papers/mass-97.ps.gz>
+    Paper available on-line </A>.<P>
+
+<A HREF="/~ai/citations/mass-98-b.html">[Mas98]</A>       Fabio Massacci.  Simplification: A general constraint
+    propagation technique for propositional and modal tableaux.  In Harrie
+    de Swart, editor, <I>Proceedings of the Second International Conference on
+    Analytic Tableaux and Related Methods (TABLEAUX-98)</I>, Lecture
+    Notes In Artificial Intelligence. Springer-Verlag, 1998.
+    <A HREF=http://www.dis.uniroma1.it/PUB/AI/papers/mass-98-b.ps.gz>
+    Paper available on-line </A>.<P>
+
+<A HREF="/~ai/citations/oddi-cest-97.html">[OC97]</A>      Angelo Oddi and Amedeo Cesta.  A Tabu Search
+    Strategy to Solve Scheduling Problems with Deadlines and Complex
+    Metric Constraints.  In <I>Preprints of the Fourth European Conference on
+    Planning (ECP 97)</I>, pages 353-365, 1997.<P>
+
+<A HREF="/~ai/citations/oddi-97.html">[Odd97]</A>      Angelo Oddi.  A Weakly Backjumping Strategy to Solve
+    Hard Scheduling Problems.  In <I>AI*IA: Advances in Artificial
+    Intelligence</I>, pages 302-310. Springer (LNAI 1321), 1997.<P>
+
+<A HREF="/~ai/citations/oddi-smit-97.html">[OS97]</A>      Angelo Oddi and Stephen F. Smith.  Stochastic
+    Procedures for Generating Feasible Schedules.  In <I>Proceedings 14th
+    National Conference on AI (AAAI-97)</I>, pages 308-314, 1997.<P>
+
+<A HREF="/~ai/citations/Rosa97b.html">[Ros97a]</A>       Riccardo Rosati.  Complexity of only knowing: the
+    propositional case.  In <I>Proceedings of the Fourth International
+    Conference on Logic Programming and Nonmonotonic Reasoning
+    (LPNMR-97)</I>, number 1265 in Lecture Notes In Artificial Intelligence,
+    pages 76-91. Springer-Verlag, 1997.<P>
+
+<A HREF="/~ai/citations/Rosa97c.html">[Ros97b]</A>       Riccardo Rosati.  Embedding minimal knowledge into
+    autoepistemic logic.  In <I>Proceedings of the Fifth Conference of the
+    Italian Association for Artificial Intelligence (AI*IA-97)</I>, number 1321
+    in Lecture Notes In Artificial Intelligence, pages 231-241. Springer-Verlag,
+    1997.<P>
+
+<A HREF="/~ai/citations/Rosa97.html">[Ros97c]</A>      Riccardo Rosati.  Reasoning with minimal belief and
+    negation as failure: algorithms and complexity.  In <I>Proceedings of the
+    Fourteenth National Conference on Artificial Intelligence (AAAI-97)</I>,
+    pages 430-435. AAAI Press/MIT Press, 1997.<P>
+
+
+
+
+
+<A HREF="/~ai/citations/sang-97.html">[San97]</A>     Enver Sangineto.  Multi-agent negotiation and planning
+    through knowledge contextualization.  In Maurizio Lenzerini, editor,
+    <I>Proceedings of the Fifth Conference of the Italian Association for
+    Artificial Intelligence (AI*IA-97)</I>, volume 1321 of <I>Lecture Notes In
+    Artificial Intelligence</I>, pages 266-277. Springer-Verlag, 1997.<P>
+
+<A HREF="/~ai/citations/Scha97c.html">[Sch97]</A>      Andrea Schaerf.  Combining local search and look-ahead
+    for scheduling and constraint satisfaction problems.  In <I>Proceedings of
+    the Fifteenth International Joint Conference on Artificial Intelligence
+    (IJCAI-97)</I>, pages 1254-1259, Nagoya, Japan, 1997.
+    Morgan-Kaufmann.<P>
+
+
+
+<h2>Technical Reports</h2>
+
+
+<A HREF="/~ai/citations/ABPS97.html">[ABPS97]</A>         Krzysztof Apt, Jacob Brunekreef, Vincent Partington,
+    and Andrea Schaerf.  Alma-0: An imperative language supporting
+    declarative programming.  Submitted for publication, 1997.<P>
+
+<A HREF="/~ai/citations/chen-degi-AIJ-97.html">[CDG98]</A>        Xiao Jun Chen and Giuseppe De Giacomo.
+    Reasoning about nondeterministic and concurrent actions: A process
+    algebra approach.  Submitted to an international journal, 1998.<P>
+
+<A HREF="/~ai/citations/calv-degi-lenz-nard-rosa-97.html">[CDGLetal97a]</A>        Diego Calvanese, Giuseppe
+    De Giacomo, Maurizio Lenzerini, Daniele Nardi, and Riccardo Rosati.
+    Database integration for data warehousing (a survey).  Technical Report
+    DWQ-UNIROMA-001, DWQ Consortium, March 1997.<P>
+
+<A HREF="/~ai/citations/calv-degi-lenz-nard-rosa-97-b.html">[CDGLetal97b]</A>         Diego Calvanese, Giuseppe
+    De Giacomo, Maurizio Lenzerini, Daniele Nardi, and Riccardo Rosati.
+    Source integration in data warehousing.  Technical Report
+    DWQ-UNIROMA-002, DWQ Consortium, October 1997.
+    <A HREF=http://www.dis.uniroma1.it/pub/calvanese/calv-degi-lenz-nard-rosa-97-DWQ-del-3-1.ps.gz>
+    Paper available on-line </A>.<P>
+
+<A HREF="/~ai/citations/calv-degi-lenz-98b.html">[CDGL98]</A>        Diego Calvanese, Giuseppe De Giacomo,
+    and Maurizio Lenzerini.  Semi-structured data with constraints and
+    incomplete information.  Submitted for publication, 1998.<P>
+
+<A HREF="/~ai/citations/cado-etal-97-d.html">[CDLS97]</A>       Marco Cadoli, Francesco M. Donini, Paolo
+    Liberatore, and Marco Schaerf.  Preprocessing of intractable problems.
+    Technical Report DIS 24-97, Dipartimento di Informatica e Sistemistica,
+    Universit&agrave; di Roma "La Sapienza", November 1997.<P>
+
+<A HREF="/~ai/citations/cado-giov-scha-98.html">[CGS98]</A>       Marco Cadoli, Andrea Giovanardi, and Marco
+    Schaerf.  An algorithm to evaluate quantified boolean formulae.  Submitted
+    to an International Conference, 1998.<P>
+
+
+
+
+
+<A HREF="/~ai/citations/calv-lenz-97.html">[CL97]</A>     Diego Calvanese and Maurizio Lenzerini.  Reasoning
+    on object-oriented schemas for data reeingeneering.  Technical Report
+    PROGRESS-002, PROGRESS Consortium, July 1997.<P>
+
+<A HREF="/~ai/citations/calv-lenz-98.html">[CL98]</A>     Diego Calvanese and Maurizio Lenzerini.  What can
+    knowledge representation do for semi-structured data?  Submitted for
+    publication, 1998.<P>
+
+<A HREF="/~ai/citations/cado-lenz-scha-97.html">[CLS97]</A>       Marco Cadoli, Maurizio Lenzerini, and Andrea
+    Schaerf.  A C++ framework for combinatorial search algorithms.
+    Submitted to an International Conference, 1997.<P>
+
+<A HREF="/~ai/citations/cest-oddi-smit-98.html">[COS98a]</A>       Amedeo Cesta, Angelo Oddi, and Stephen F.
+    Smith.  Profile Based Algorithms to Solve Multiple Capacitated Metric
+    Scheduling Problems.  To appear in Proceedings of AIPS-98, 1998.<P>
+
+<A HREF="/~ai/citations/cest-oddi-smit-98b.html">[COS98b]</A>        Amedeo Cesta, Angelo Oddi, and
+    Stephen F. Smith.  Scheduling with Multi-Capacitated Resources: A
+    Comparison of Profile-Based and Clique-Based Approaches.  Submitted to
+    an international conference, 1998.<P>
+
+<A HREF="/~ai/citations/cado-scarc-97.html">[CS97]</A>      Marco Cadoli and Francesco Scarcello.  Semantical
+    and computational aspects of Horn approximations.  Submitted to an
+    International Journal, 1997.<P>
+
+<A HREF="/~ai/citations/degi-etal-98.html">[DGINR98]</A>       Giuseppe De Giacomo, Luca Iocchi, Daniele
+    Nardi, and Riccardo Rosati.  A theory and implementation of cognitive
+    mobile robots.  Submitted, 1998.<P>
+
+<A HREF="/~ai/citations/degi-leve-98.html">[DGL98]</A>      Giuseppe De Giacomo and Hector J. Levesque.  An
+    incremental interpreter for high-level programs with sensing.  Submitted,
+    1998.<P>
+
+<A HREF="/~ai/citations/degi-mass-97.html">[DGM97]</A>        Giuseppe De Giacomo and Fabio Massacci.
+    Combining deduction and model checking into tableaux and algorithms for
+    Converse-PDL. Accepted for publication in Information and Computation
+    the special issue on the"Federated Logic Conferences"., 1997.
+    <A HREF=http://www.dis.uniroma1.it/PUB/AI/papers/degi-mass-97.ps.gz>
+    Paper available on-line </A>.<P>
+
+<A HREF="/~ai/citations/erri-97b.html">[Err97]</A>    Bruno Errico.  <I>Intelligent Agents and User
+    Modelling</I>.  PhD thesis, Dipartimento di Informatica e Sistemistica,
+    Universit&agrave; di Roma "La Sapienza", 1997.<P>
+
+<A HREF="/~ai/citations/mass-97-e.html">[Mas97]</A>      Fabio Massacci.  Simplification with renaming: A
+    general proof technique for tableau and sequent-based provers.  Technical
+    Report 424, Computer Laboratory, University of Cambridge (UK), 1997.
+    <A HREF=http://www.dis.uniroma1.it/PUB/AI/papers/mass-97-e.ps.gz>
+    Paper available on-line </A>.<P>
+
+<A HREF="/~ai/citations/mass-98-c.html">[Mas98]</A>      Fabio Massacci.  Single step tableaux for modal logics:
+    methodology, computations, algorithms.  Technical Repor TR-04,
+
+
+
+
+
+    Dipartimento di Informatica e Sistemistica, Universit&agrave; di Roma
+    "La Sapienza", 1998.  Submitted to an international journal.
+    <A HREF=http://www.dis.uniroma1.it/PUB/AI/papers/mass-98-c.ps.gz>
+    Paper available on-line </A>.<P>
+
+<A HREF="/~ai/citations/palo-pirr-pizz-97.html">[PPP97]</A>      Luigi Palopoli, Fiora Pirri, and Clara Pizzuti.
+    Algorithms for selective enumeration of prime implicants.  Submitted for
+    publication to International Journal, 1997.<P>
+
+<A HREF="/~ai/citations/pirr-reit-97.html">[PR97]</A>     Fiora Pirri and Ray Reiter.  Contributions to the
+    metatheory of the Situation Calculus.  Submitted for publication to
+    JACM, 1997.<P>
+
+<A HREF="/~ai/citations/Rosa97d.html">[Ros97]</A>      Riccardo Rosati.  Reasoning about minimal knowledge
+    in nonmonotonic modal logics.  Technical Report 37.97, Dipartimento di
+    Informatica e Sistemistica, Universit&agrave; di Roma "La Sapienza",
+    December 1997.<P>
+
+<A HREF="/~ai/citations/Scha97b.html">[Sch97a]</A>      Andrea Schaerf.  Local search techniques for large
+    high-school timetabling problems.  submitted for publication, 1997.<P>
+
+<A HREF="/~ai/citations/Scha97d.html">[Sch97b]</A>      Andrea Schaerf.  Scheduling sport tournaments with
+    constraint logic.  Sumbitted for publication, 1997.<P>
+
+
+
+<h2>Other</h2>
+
+
+<A HREF="/~ai/citations/amat-pirr-97.html">[AP97]</A>      Gianni Amati and Fiora Pirri.  Contexts as fixed
+    points, 1997.  Accepted as Poster at the International Joint Conference of
+    Artificial Intelligence (IJCAI-97).<P>
+
+<A HREF="/~ai/citations/mass-97-d.html">[Mas97]</A>       Fabio Massacci.  Simplification: Tableaux response to
+    DP and KSAT methods, 1997.  Accepted as Poster at the International
+    Joint Conference of Artificial Intelligence (IJCAI-97).<P>

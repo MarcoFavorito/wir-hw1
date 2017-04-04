@@ -1,0 +1,505 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1">
+<META NAME="Generator" CONTENT="Microsoft Word 98">
+<TITLE>Fondamenti di informatica - CEMN - sesto complemento didattico</TITLE>
+</HEAD>
+<BODY>
+
+<B><U><FONT FACE="Times" SIZE=4><P>Fond. di Informatica (C.E.M.N.)</U>&#9;&#9;&#9;&#9;&#9;   <U>sesto complemento didattico</P>
+</B></U></FONT><FONT FACE="Times">
+<P>PASSAGGIO DI PARAMETRI IN PROCEDURE/FUNZIONI:     <B> </FONT><U><FONT FACE="Times" SIZE=4>PASSAGGIO PER VALORE</P>
+</B></U></FONT><FONT FACE="Times"><DIR>
+
+</FONT><B><FONT FACE="Courier" SIZE=4><P>program</B> STAMPALINEE;</P>
+<P>  var k:integer;</P><DIR>
+<DIR>
+
+<P>&#9;<B>procedure</B> Stampa1Linea (Lunghezza: integer);</P>
+<P>&#9;  var i:integer;</P>
+<P>      <B>begin</B> &#9;&#9;&#9;                   {Stampa1Linea}</P>
+<P>&#9;     for i:=1 to Lunghezza do write('-');</P>
+<P>&#9;     writeln;</P>
+<P>      <B>end</B>;         &#9;&#9;              {fine Stampa1Linea}</P></DIR>
+</DIR>
+
+<P>  <B>begin</B> {main program}</P>
+<P>&#9;  writeln('   inizio programma');</P>
+<P>&#9;  Stampa1Linea(80);</P>
+<P>&#9;  writeln('quanto lunga la linea? (0 per finire)');        <B>^</P>
+</B><P>&#9;  readln(k);</P>
+<P>&#9;  <B>while</B> k&lt;&gt;0 <B>do</B> <B>begin</B> </P>
+<P>&#9;&#9;&#9;&#9; Stampa1Linea(k);&#9;</P>
+<P>&#9;  &#9;&#9;writeln('quanto lunga la linea? (0 per finire)'); <B>^^</P>
+</B><P>&#9;  &#9;&#9;&#9; readln(k);</P>
+<B><P>&#9;&#9;&#9;&#9;end</B>;</P>
+<P>  <B>end</B>.</P>
+</FONT><FONT FACE="Times"></DIR>
+
+<P>In generale, il parametro attuale pu&ograve; essere una ESPRESSIONE</P>
+</FONT><B><FONT FACE="Courier" SIZE=4><P>Stampa1Linea(80)&#9;</B></FONT><FONT FACE="Courier">CHIAMATA con passaggio di un&#9;</FONT><B><FONT FACE="Courier" SIZE=4>parametro attuale</B> 80</P>
+<B><P>Stampa1Linea(k)&#9;</B></FONT><FONT FACE="Courier">CHIAMATA con passaggio di un&#9;</FONT><B><FONT FACE="Courier" SIZE=4>parametro attuale</B> k</P>
+<B><P>Stampa1Linea(k+2)</FONT><FONT FACE="Courier">&#9;</B>CHIAMATA con passaggio di un&#9;</FONT><B><FONT FACE="Courier" SIZE=4>parametro attuale</B> k+2</P>
+</FONT><FONT FACE="Courier">
+</FONT><FONT FACE="Times" SIZE=4><P>durante l'<B>attivazione</B> della chiamata, tra l'altro</P><DIR>
+<DIR>
+
+<P>- <B>una locazione</B> di memoria, capace di contenere un intero, <B>viene allocata, </B>nel record di attivazione, </P>
+<P>   e <B>associata al parametro formale</B> (simbolo locale)<B> Lunghezza</B>;</P>
+
+<P>- il <B>VALORE</B> passato come parametro attuale </P>
+<P>  (80, il valore contenuto in k, il valore calcolato valutando k+2)</P>
+<P>&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;viene <B>copiato in Lunghezza</P>
+</B><P>- il codice di Stampa1Linea viene eseguito</P>
+</FONT><FONT FACE="Times">
+<P>&nbsp;</P></DIR>
+</DIR>
+
+<B><P>Esecuzione di STAMPALINEE: &#9;&#9;&#9;INPUT = 4 (Invio) 72 (Invio) 0 (Invio)</B> </P>
+<P ALIGN="CENTER"></P>
+<P ALIGN="CENTER">&nbsp;</P>
+<P ALIGN="CENTER"><IMG SRC="Image1.gif" WIDTH=496 HEIGHT=161>&nbsp;   <B>1</P>
+</B><P ALIGN="CENTER"></P>
+<P ALIGN="CENTER"><IMG SRC="Image2.gif" WIDTH=503 HEIGHT=172>&nbsp;<B>2</P>
+</B><P ALIGN="CENTER">__________________________________________________________________________________</P>
+<P ALIGN="CENTER"></P>
+<P ALIGN="CENTER"><IMG SRC="Image3.gif" WIDTH=472 HEIGHT=90>&nbsp;           <B>3</P>
+</B><P ALIGN="CENTER">__________________________________________________________________________________</P>
+<P ALIGN="CENTER"></P>
+<P ALIGN="CENTER"><IMG SRC="Image4.gif" WIDTH=503 HEIGHT=131>&nbsp; <B>4</P>
+</B><P ALIGN="CENTER">__________________________________________________________________________________</P>
+<P ALIGN="CENTER"></P>
+<P ALIGN="CENTER"><IMG SRC="Image5.gif" WIDTH=472 HEIGHT=90>&nbsp;         <B>5</P>
+</B><P ALIGN="CENTER">__________________________________________________________________________________</P>
+<P ALIGN="CENTER"></P>
+</FONT><B><FONT FACE="Times" SIZE=4><P ALIGN="CENTER">Schema ATTIVAZIONE (con passaggio dei parametri per valore)</P>
+</B><P ALIGN="CENTER"></P><DIR>
+<DIR>
+
+<P>- allocazione  rda</P>
+<P>- (predisposizione punto di ritorno e altro ...)</P>
+<P>- &#9;&#9;&#9;&#9;&#9;&#9;allocazione entit&agrave; locali</P>
+<P>- &#9;&#9;&#9;&#9;&#9;&#9;allocazione   locazioni  per  parametri formali</P>
+<P>- &#9;&#9;&#9;&#9;&#9;&#9;COPIA parametri attuali-formali</P>
+<P>- esecuzione</P>
+</FONT><FONT FACE="Times"></DIR>
+</DIR>
+
+<B><P>PROCEDURE CON PI&Ugrave; PARAMETRI</P>
+</B>
+</FONT><FONT FACE="Times" SIZE=4><P>Nella definizione di una procedura, tra le parentesi che ne seguono il nome, ci pu&ograve; essere una LISTA DI PARAMETRI FORMALI separati da '<B>;</P>
+<P>Es.</P><DIR>
+<DIR>
+
+</FONT><FONT FACE="Courier" SIZE=4><P>procedure</B> StampaLinea2 (Lunghezza: integer; cr : char);</P>
+<P>{stampa una linea di &lt;lunghezza&gt; caratteri &lt;cr&gt;}</P>
+<P>&#9;  var i:integer;</P>
+<P>      <B>begin</B>&#9;&#9;&#9;&#9;&#9;&#9;{StampaLinea2}</P>
+<P>&#9;     for i:=1 to Lunghezza do write(<B>cr</B>);</P>
+<P>&#9;     writeln;</P>
+<P>      <B>end</B>;&#9;&#9;&#9;&#9;&#9;&#9;{StampaLinea2}</P>
+</FONT><FONT FACE="Times" SIZE=4></DIR>
+</DIR>
+
+<P>Nel caso di procedura con pi&ugrave; parametri del medesimo tipo, basta un'unica dichiarazione di tipo, con i parametri formali separati da '<B>,</B>' &#9;&#9;</P>
+<B>
+<P>Es </B>. </FONT><FONT FACE="Courier" SIZE=4>procedure PROC (x,y:integer; v:array[1..N]of char; a,b:real);</P>
+</FONT><FONT FACE="Times" SIZE=4>
+<B><P>CHIAMATA</B> parametri attuali, separati da ',' nell'ordine con cui associrli ai parametri formali. </P>
+
+<B><P>ORDINE</B> e <B>TIPI</B> dei parametri attuali/formali <B>DEVONO CORRISPONDERE</P>
+</B>
+</FONT><FONT FACE="Courier" SIZE=4><P>StampaLinea2 (79, '$')</P>
+
+<P>StampaLinea2(k, c)&#9;&#9;(k:integer e c:char simboli visibili)</P>
+
+<P>StampaLinea2 ( K*3/2, '@');</P>
+</FONT><B><FONT FACE="Times" SIZE=4>
+<P>MA &#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;</B>(siano k:integer, c:char, j:integer)</P>
+</FONT><FONT FACE="Courier" SIZE=4>
+<P>StampaLinea2 (12)&#9;&#9;&#9;NO (manca un parametro attuale)</P>
+
+<P>StampaLinea2 (22.3, '$')&#9;NO (primo par. att. di TIPO SBAGLIATO)</P>
+
+<P>StampaLinea2 (k, k)&#9;&#9;NO (secondo par. att. di TIPO SBAGLIATO)</P>
+
+<P>StampaLinea2 (c, j)&#9;&#9;NO (ordine sbagliato <FONT FACE="Wingdings">&#224;</FONT>
+ tipi sbagliati)<BR>
+</P>
+</FONT><B><FONT FACE="Times" SIZE=4><P>Quella vista fin qui &egrave; la TECNICA DI PASSAGGIO DEI PARAMETRI PER VALORE</P>
+</B></FONT><FONT FACE="Times">
+<P>--------------------------------------------------------------------------------------------------------------------------------------</P>
+
+</FONT><B><U><FONT FACE="Times" SIZE=4><P ALIGN="CENTER">PASSAGGIO PER VARIABILE</P>
+</B></U></FONT><FONT FACE="Times">
+</FONT><FONT FACE="Times" SIZE=4><P>DUE FONDAMENTALI DIFFERENZE rispetto alla tecnica di passaggio "per valore":</P>
+
+<P>1) il <B>parametro attuale</B> deve essere <B>una variabile</P>
+</B><P>&#9;&#9;(e quindi avere gi&agrave; una locazione di memoria associata)</P>
+
+<P>2) il <B>parametro formale</B> viene <B>associato direttamente</B> <B>al</B>la locazione del <B>parametro attuale</B> </P><DIR>
+<DIR>
+<DIR>
+<DIR>
+<DIR>
+
+<P>(e quindi <U>nessuna locazione</U> di memoria viene <U>allocata per il parametro formale</U> durante l'attivazione)</P>
+<P>(e quindi durante l'esecuzione, <U>il codice della procedura "usa direttamente</U>"  la locazione del <U>parametro ATTUALE</U>)</P>
+</FONT><FONT FACE="Times"></DIR>
+</DIR>
+</DIR>
+</DIR>
+</DIR>
+
+</FONT><B><FONT FACE="Times" SIZE=4><P>Es.</B> Il seguente programma, se riceve 78 29 &#9;stampa 78 29 &#9;e &#9;poi stampa 29 78</P>
+</FONT><B><FONT FACE="Courier" SIZE=4><DIR>
+
+<P>program</B> PPV;</P>
+<P>  var a,b:integer;</P>
+<DIR>
+<DIR>
+
+<P>&#9;<B>procedure</B> Scambio (<B><I><U>var</I></U> </B>x,y: integer);</P>
+<P>&#9;  var aux:integer;</P>
+<P>      <B>begin</B>&#9;&#9;aux:=y;   </P><DIR>
+<DIR>
+<DIR>
+<DIR>
+<DIR>
+<DIR>
+
+<P>y:=x;   </P><DIR>
+
+<P>x:=aux;       </P></DIR>
+</DIR>
+</DIR>
+</DIR>
+</DIR>
+</DIR>
+
+<P>    <B>end</B>;</P>
+</DIR>
+</DIR>
+</DIR>
+</DIR>
+
+<P>  <B>begin</B> {main program}</P><DIR>
+
+<P>&#9;  &#9;readln(a,b);</P>
+<P>&#9;&#9;writeln(a,b);</P>
+<P>&#9;&#9;scambio(a,b);       </P>
+<P>&#9;&#9;writeln(a,b); <B>^</P>
+</B><P>  <B>end</B>.</P>
+</DIR>
+
+</FONT><B><FONT FACE="Times" SIZE=4><P>Esecuzione di PPV: &#9;&#9;&#9;&#9;INPUT = 78 29 (Invio)</B> </P>
+</FONT><FONT FACE="Times">
+<P ALIGN="CENTER"><IMG SRC="Image6.gif" WIDTH=500 HEIGHT=57>&nbsp; <B>1</P>
+</B><P ALIGN="CENTER">_________________________________________________________________________________</P>
+<P ALIGN="CENTER"></P>
+<P ALIGN="CENTER"><IMG SRC="Image7.gif" WIDTH=500 HEIGHT=149>&nbsp; <B>2</P>
+</B><P ALIGN="CENTER">_________________________________________________________________________________</P>
+
+<P><IMG SRC="Image8.gif" WIDTH=506 HEIGHT=60><B>3</P>
+</B><P ALIGN="CENTER">________________________________________________________________________________</P>
+<P ALIGN="CENTER"></P>
+</FONT><B><FONT FACE="Times" SIZE=4><P ALIGN="CENTER">DIFFERENZE TRA PASSAGGIO PER VALORE E PER VARIABILE</P>
+</B><P ALIGN="CENTER"></P></FONT>
+<TABLE BORDER CELLSPACING=1 CELLPADDING=3 WIDTH=528>
+<TR><TD WIDTH="25%" VALIGN="TOP" HEIGHT=20><P></P></TD>
+<TD WIDTH="42%" VALIGN="TOP" HEIGHT=20>
+<B><FONT FACE="Courier" SIZE=4><P ALIGN="CENTER">Valore</B></FONT></TD>
+<TD WIDTH="34%" VALIGN="TOP" HEIGHT=20>
+<B><FONT FACE="Courier" SIZE=4><P ALIGN="CENTER">Variabile</B></FONT></TD>
+</TR>
+<TR><TD WIDTH="25%" VALIGN="TOP" HEIGHT=12>
+<B><FONT FACE="Courier" SIZE=4><P ALIGN="CENTER">Dichiarazione</B></FONT></TD>
+<TD WIDTH="42%" VALIGN="TOP" HEIGHT=12>
+<FONT FACE="Courier" SIZE=4><P ALIGN="CENTER">(&#133; x : integer; &#133;)</FONT></TD>
+<TD WIDTH="34%" VALIGN="TOP" HEIGHT=12>
+<FONT FACE="Courier" SIZE=4><P>(&#133; var x : integer;&#133;)</FONT></TD>
+</TR>
+<TR><TD WIDTH="25%" VALIGN="TOP" HEIGHT=12>
+<B><FONT FACE="Courier" SIZE=4><P ALIGN="CENTER">Parametro attuale</B></FONT></TD>
+<TD WIDTH="42%" VALIGN="TOP" HEIGHT=12>
+<FONT FACE="Courier" SIZE=4><P ALIGN="CENTER">espressione</FONT></TD>
+<TD WIDTH="34%" VALIGN="TOP" HEIGHT=12>
+<FONT FACE="Courier" SIZE=4><P ALIGN="CENTER">variabile</FONT></TD>
+</TR>
+<TR><TD WIDTH="25%" VALIGN="TOP" HEIGHT=12>
+<B><FONT FACE="Courier" SIZE=4><P ALIGN="CENTER">Parametro formale</B></FONT></TD>
+<TD WIDTH="42%" VALIGN="TOP" HEIGHT=12>
+<FONT FACE="Courier" SIZE=4><P ALIGN="CENTER">Locazione temporanea <B>allocata</B> nel rda</P>
+<P ALIGN="CENTER">e <B>inizializzata</B> con il valore ottenuto dalla <B>valutazione del par. att.</B></FONT></TD>
+<TD WIDTH="34%" VALIGN="TOP" HEIGHT=12>
+<B><FONT FACE="Courier" SIZE=4><P ALIGN="CENTER">Collegamento diretto</B> alla locazione del <B>parametro attuale</B></FONT></TD>
+</TR>
+<TR><TD WIDTH="25%" VALIGN="TOP" HEIGHT=12>
+<B><FONT FACE="Courier" SIZE=4><P ALIGN="CENTER">RICADUTA:</P>
+</B><P>modifiche fatte dalla procedura sul parametro formale</FONT></TD>
+<TD WIDTH="42%" VALIGN="TOP" HEIGHT=12>
+<FONT FACE="Courier" SIZE=4><P ALIGN="CENTER"></P>
+<B><P ALIGN="CENTER">NON hanno effetto</B> sulla locazione del parametro attuale (ma solo su quella allocata nel rda)</FONT></TD>
+<TD WIDTH="34%" VALIGN="TOP" HEIGHT=12>
+<FONT FACE="Courier" SIZE=4><P ALIGN="CENTER"></P>
+<B><P ALIGN="CENTER">Hanno un effetto</B> diretto sul parametro attuale</FONT></TD>
+</TR>
+</TABLE>
+
+<FONT FACE="Times" SIZE=4><P ALIGN="CENTER"></P>
+<P>&nbsp;</P>
+<B><P>Esempio</B>: program  PPV2, come PPV ma con </FONT><FONT FACE="Courier" SIZE=4>procedura Scambio2 (x,y:integer);</FONT><FONT FACE="Times" SIZE=4>  </P>
+<P>(codice di Scambio e Scambio2 identico)</P>
+</FONT><FONT FACE="Times">
+<B><P>Esecuzione di PPV2: &#9;&#9;&#9;&#9;INPUT = 78 29 (Invio)</B> </P>
+<P ALIGN="CENTER"><IMG SRC="Image6.gif" WIDTH=500 HEIGHT=57>&nbsp;<B>1</P>
+</B><P ALIGN="CENTER">_________________________________________________________________________________</P>
+<P ALIGN="CENTER"></P>
+<P ALIGN="CENTER"><IMG SRC="Image9.gif" WIDTH=499 HEIGHT=159>&nbsp;<B>2</B>        __________________________________________________________________________________</P>
+
+<P ALIGN="CENTER"><IMG SRC="Image10.gif" WIDTH=500 HEIGHT=58>&nbsp; <B>3</P>
+</B><P ALIGN="CENTER">__________________________________________________________________________________</P>
+<P ALIGN="CENTER"></P>
+</FONT><B><FONT FACE="Times" SIZE=4><P>Esempio</B>: passaggio per valore</P><DIR>
+
+</FONT><B><FONT FACE="Courier" SIZE=4><P>program</B> PassValore;</P>
+<P> &#9;&#9;&#9;&#9;&#9; var n:integer;&#9;</P><DIR>
+<DIR>
+
+<B><P>procedure</B> PVAL (x: integer);</P><DIR>
+
+<P> &#9;&#9;     <B>begin</B>&#9;x:=x+1;&#9;writeln(x);&#9;<B>end</B>;</P></DIR>
+</DIR>
+</DIR>
+</DIR>
+
+<B><P>begin</B> {main program}</P><DIR>
+
+<P>&#9;n:=3;</P>
+<P>&#9;PVAL(n);</P>
+<P>&#9;writeln(n);</P></DIR>
+
+<B><P>end</B>.</P>
+</FONT><FONT FACE="Times">
+<P ALIGN="CENTER"><IMG SRC="Image11.gif" WIDTH=499 HEIGHT=133><B>1</P>
+</B><P ALIGN="CENTER">____________________________________________________________________________________</P>
+
+<P><IMG SRC="Image12.gif" WIDTH=486 HEIGHT=45>&nbsp;     <B>2</P>
+</B><P ALIGN="CENTER">____________________________________________________________________________________</P>
+<B>
+</FONT><FONT FACE="Times" SIZE=4><P>Esempio</B>: passaggio per variabile</P><DIR>
+
+</FONT><B><FONT FACE="Courier" SIZE=4><P>program</B> PassVariabile;</P>
+<P>  var n:integer;</P><DIR>
+<DIR>
+
+<P>&#9;<B>procedure</B> PVAR (var x: integer);</P><DIR>
+
+<P> &#9;&#9;     <B>begin</B>&#9;x:=x+1;&#9;writeln(x);&#9;<B>end</B>;</P></DIR>
+</DIR>
+</DIR>
+</DIR>
+
+<P>  </P>
+<B><P>begin</B> {main program}</P><DIR>
+
+<P>&#9;  &#9;n:=3;</P>
+<P>&#9;&#9;PVAR(n);</P>
+<P>&#9;&#9;writeln(n);</P>
+<B><P>end</B>.</P>
+</FONT><FONT FACE="Times"></DIR>
+
+<P ALIGN="CENTER"><IMG SRC="Image13.gif" WIDTH=509 HEIGHT=127><B>1</P>
+</B><P ALIGN="CENTER">____________________________________________________________________________________</P>
+
+<P><IMG SRC="Image14.gif" WIDTH=500 HEIGHT=57>&nbsp;     <B>2</P>
+</B><P ALIGN="CENTER">____________________________________________________________________________________</P>
+
+<P ALIGN="CENTER">&nbsp;</P>
+</FONT><B><FONT FACE="Times" SIZE=4><P ALIGN="CENTER">CRITERIO DI SCELTA </B>TRA PASSAGGIO PER VALORE E PASS. PER VARIABILE</P>
+
+<P>Si passano per valore i parametri che non si vuole risultino modificati dopo l'esecuzione della procedura.</P>
+<P>&#9;Ad esempio i cosiddetti PARAMETRI DI INPUT (valori che si vuole vengano solo usati come dati di lavoro dalla procedura).</P>
+
+<P>Si passano per variabile i parametri che si vuole eventualmente conservino traccia dell'esecuzione della procedura (risultandone modificati).</P>
+<P>&#9;Ad esempio i cosiddetti PARAMETRI DI OUTPUT ("risultati" della procedura).</P>
+</FONT><FONT FACE="Times">
+<P>Esempio:</P><DIR>
+<DIR>
+
+</FONT><B><FONT FACE="Courier"><P>Program</B> Eqgrado2;</P>
+<P>&#9; <B>var</B> a,b,c,x1,x2:real;</P>
+<P>&#9;     radicicompl: boolean;</P>
+<P>  <B>procedure</B> Risolvi (...)</P>
+<P>     ...</P>
+<B><P>begin</B> {main}</P>
+<P>  readln(a, b, c);</P>
+<P>  Risolvi(a,b,c,x1,x2,radicicompl);&#9;</P>
+<P>&#9;&#9;&#9;{dopo l'esecuzione, radicicompl dice se ci sono radici &#9;&#9;&#9;complesse coniugate; x1, x2 eventualmente contengono le</P>
+<P>&#9;&#9;&#9;radici reali trovate (altrimenti nulla)}</P>
+
+<B><P>  if</B> NOT(radicicompl) </P>
+<P>&#9;&#9;<B>then</B> writeln('soluzioni: x1 = ',x1:5:2, '   x2 = ',x2:5:2)</P>
+<P>&#9;&#9;<B>else</B> writeln(' tsk tsk, radici complesse');</P>
+<B><P>end.</P></DIR>
+</DIR>
+
+</B></FONT><FONT FACE="Times"><P>in Risolvi,&#9;- a,b,c sono parametri di input (li usiamo per calcolare i risultati prodotti da Risolvi)</P>
+<P>&#9;&#9;- cc, rad1, rad2 sono parametri di output (contengono (eventualmente) risultati del calcolo</P>
+
+</FONT><B><FONT FACE="Courier"><P>&nbsp;</P>
+<P>procedure</B> Risolvi( a, b, c :real; <B>var</B> rad1,rad2 :real;<B>var</B> cc : boolean);</P>
+<P>&#9;var d:real;&#9;{delta}</P>
+<B><P> begin</B>&#9;{Risolvi}</P>
+<P>   d:=b*b - 4*a*c;</P>
+<P>   <B>if</B> d&lt;0 </P>
+<P>&#9;<B>then</B> cc := TRUE</P>
+<P>&#9;<B>else begin</P>
+</B><P>&#9;&#9;   cc := FALSE;</P>
+<P>&#9;&#9;   d:=sqrt(d);</P>
+<P>&#9;&#9;   rad1:= -(b-d)/(2*a);</P>
+<P>&#9;&#9;   rad1:= -(b+d)/(2*a);</P>
+<P>&#9;&#9; <B>end</B>;</P>
+<P> <B>end</B>;    {Risolvi}</P>
+
+</FONT><FONT FACE="Times"><P>&nbsp;</P>
+<P ALIGN="CENTER"><IMG SRC="Image15.gif" WIDTH=445 HEIGHT=159>&nbsp;         <B>1</P>
+</B><P ALIGN="CENTER"></P>
+<P>&nbsp;</P>
+<P><IMG SRC="Image16.gif" WIDTH=445 HEIGHT=149>&nbsp;       <B>2</P>
+</B><P ALIGN="CENTER">____________________________________________________________________________________</P>
+
+<P>&nbsp;</P>
+<P><IMG SRC="Image17.gif" WIDTH=444 HEIGHT=75>&nbsp;       <B>3</P>
+</B><P ALIGN="CENTER">____________________________________________________________________________________</P>
+
+<P ALIGN="CENTER">---------------------- ----------------------</P>
+
+</FONT><B><FONT FACE="Times" SIZE=4><P>NB</P>
+</B></FONT><FONT FACE="Times"><P>In PASCAL, gli unici due modi per passare i parametri ad un sottoprogramma sono quelli visti finora: </P><DIR>
+<DIR>
+<DIR>
+
+</FONT><P>-&#9;<FONT FACE="Times">per valore</P>
+</FONT><P>-&#9;<FONT FACE="Times">per variabile (per riferimento)</P>
+
+<P>&nbsp;</P></DIR>
+</DIR>
+</DIR>
+
+<B><P ALIGN="CENTER">TERZO TIPO DI PASSAGGIO DEI PARAMETRI: VALORE-RISULTATO</P>
+</B><P ALIGN="RIGHT">(NON ESISTE IN TP !!)</P>
+<P>Schema di attivazione:</P><DIR>
+<DIR>
+<DIR>
+
+</FONT><P>-&#9;<FONT FACE="Times">allocazione parametro formale (esattamente come accade per i parametri passati per valore)</P>
+</FONT><P>-&#9;<FONT FACE="Times">calcoli eseguiti usando la locazione del parametro formale</P>
+</FONT><P>-&#9;<FONT FACE="Times">subito prima della terminazione:    P.ATTUALE := P.FORMALE</P>
+</FONT><P>-&#9;<FONT FACE="Times">terminazione</P>
+</DIR>
+</DIR>
+
+</FONT><B><FONT FACE="Courier"><P>program</B> LEGAPARAMETRI;</P>
+<P>  var n:integer;</P><DIR>
+<DIR>
+
+<P>&#9;<B>procedure</B> P ( ? x: integer);</P><DIR>
+
+<P> &#9;&#9;     <B>begin</B>&#9;x:=x+1;&#9;</P><DIR>
+<DIR>
+<DIR>
+<DIR>
+<DIR>
+<DIR>
+<DIR>
+<DIR>
+
+<P>writeln(n); &#9;</P>
+<P>writeln(x);&#9;<B>end</B>;</P></DIR>
+</DIR>
+</DIR>
+</DIR>
+</DIR>
+</DIR>
+</DIR>
+</DIR>
+</DIR>
+</DIR>
+</DIR>
+</DIR>
+
+<P>  <B>begin</B> {main program}</P><DIR>
+
+<P>&#9;  &#9;n:=3;</P>
+<P>&#9;&#9;P(n);</P>
+<P>&#9;&#9;writeln(n);</P>
+<P>  <B>end</B>.</P><DIR>
+<DIR>
+<DIR>
+<DIR>
+<DIR>
+<DIR>
+<DIR>
+<DIR>
+<DIR>
+<DIR>
+<DIR>
+<DIR>
+<DIR>
+
+</FONT><B><FONT FACE="Times"><P>OUTPUT</P></DIR>
+</DIR>
+</DIR>
+</DIR>
+</DIR>
+</DIR>
+</DIR>
+</DIR>
+</DIR>
+</DIR>
+</DIR>
+</DIR>
+</DIR>
+</DIR>
+</B></FONT>
+<TABLE BORDER CELLSPACING=1 CELLPADDING=3 WIDTH=527>
+<TR><TD WIDTH="25%" VALIGN="TOP">&nbsp;</TD>
+<TD WIDTH="25%" VALIGN="TOP">
+<FONT FACE="Times"><P ALIGN="CENTER">VALORE</FONT></TD>
+<TD WIDTH="25%" VALIGN="TOP">
+<FONT FACE="Times"><P ALIGN="CENTER">VARIABILI</FONT></TD>
+<TD WIDTH="25%" VALIGN="TOP">
+<FONT FACE="Times"><P ALIGN="CENTER">VALORE-RISULTATO</FONT></TD>
+</TR>
+<TR><TD WIDTH="25%" VALIGN="TOP">
+<FONT FACE="Times"><P>Writeln(n) [in P]</FONT></TD>
+<TD WIDTH="25%" VALIGN="TOP">
+<FONT FACE="Times"><P ALIGN="CENTER">3</FONT></TD>
+<TD WIDTH="25%" VALIGN="TOP">
+<FONT FACE="Times"><P ALIGN="CENTER">4</FONT></TD>
+<TD WIDTH="25%" VALIGN="TOP">
+<FONT FACE="Times"><P ALIGN="CENTER">3</FONT></TD>
+</TR>
+<TR><TD WIDTH="25%" VALIGN="TOP">
+<FONT FACE="Times"><P>Writeln(x)</FONT></TD>
+<TD WIDTH="25%" VALIGN="TOP">
+<FONT FACE="Times"><P ALIGN="CENTER">4</FONT></TD>
+<TD WIDTH="25%" VALIGN="TOP">
+<FONT FACE="Times"><P ALIGN="CENTER">4</FONT></TD>
+<TD WIDTH="25%" VALIGN="TOP">
+<FONT FACE="Times"><P ALIGN="CENTER">4</FONT></TD>
+</TR>
+<TR><TD WIDTH="25%" VALIGN="TOP">
+<FONT FACE="Times"><P>Writeln(n) [in main]</FONT></TD>
+<TD WIDTH="25%" VALIGN="TOP">
+<FONT FACE="Times"><P ALIGN="CENTER">3</FONT></TD>
+<TD WIDTH="25%" VALIGN="TOP">
+<FONT FACE="Times"><P ALIGN="CENTER">4</FONT></TD>
+<TD WIDTH="25%" VALIGN="TOP">
+<FONT FACE="Times"><P ALIGN="CENTER">4</FONT></TD>
+</TR>
+</TABLE>
+
+<FONT FACE="Times"></FONT></BODY>
+</HTML>

@@ -1,0 +1,111 @@
+<html>
+<head>
+<title>Tecniche di programmazione - Esame Settembre 2004</title>
+</head>
+
+<body>
+
+<h2>Tecniche di programmazione - Esame Settembre 2004</h2>
+
+<h3>Parte I</h3>
+
+<b>Esercizio A</b>
+
+<p>
+Scrivere un metodo (possibilmente ricorsivo) che ha come
+argomento una lista che contiene solo oggetti
+<tt>Integer</tt> e restituisce <tt>true</tt> se esistono
+almeno tre elementi in sequenza crescente.
+</p>
+
+
+<b>Esercizio B</b>
+
+<p>
+Scrivere un metodo che ha come argomento un albero binario e
+restituisce il numero dei nodi che hanno come figlio almeno
+un nodo interno.
+</p>
+
+
+<h3>Parte II</h3>
+
+<b>Esercizio A</b>
+
+<p>
+Dire cosa succede quando si esegue il seguente programma.
+Motivare la risposta (risposte mancanti di spiegazione
+sono considerate nulle).
+</p>
+
+<font size=-1>
+<pre>
+class Chilosa {
+  static int prova(int y) {
+    if(y==0)
+      System.out.println(y);
+
+    System.out.println(prova(y-3));
+
+    return y;
+  }
+
+  public static void main(String args[]) {
+    System.out.println(prova(6));
+    System.out.println(prova(5));
+  }
+}
+</pre>
+</font>
+
+<b>Esercizio B</b>
+
+<p>
+Spiegare l'algoritmo di ricerca esaustiva (o sequenziale),
+in generale, e in particolare come procede l'algoritmo
+quando va cercato l'intero 10 nel seguente array ordinato
+di interi:
+
+<table border=1>
+<tr>
+<td>-3</td>
+<td>2</td>
+<td>4</td>
+<td>8</td>
+<td>11</td>
+<td>12</td>
+<td>49</td>
+</tr>
+</table>
+
+Se l'array e' ordinato (come in questo caso), in che modo
+trarreste vantaggio dall'ordinamento per ridurre il numero
+di passi effettuati dall'algoritmo?
+</p>
+
+
+<b>Esercizio C</b>
+
+<p>
+Rispondere a <b>una sola</b> delle seguenti domande:
+
+<ul>
+<li>spiegare come si realizza una interfaccia grafica in
+Java;
+
+<li>spiegare come si accede ad una base di dati in Java
+usando JDBC.
+
+<li>discutere le strutture collegate in Java: a cosa
+servono? Come sono fatte? Come si inserisce o si cancella un
+elemento da una struttura collegata?
+
+<li>spiegare le interfacce e le classi astratte, le loro
+similitudini e le loro differenze.
+
+</ul>
+
+</body>
+</html>
+
+

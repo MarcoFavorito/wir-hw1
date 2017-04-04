@@ -1,0 +1,69 @@
+<!DOCTYPE doctype PUBLIC "-//w3c//dtd html 4.0 transitional//en"><html><head>
+   <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   
+   <title>Es. esame:filesystemitem - Laboratorio di Programmazione - aa 2003/04</title><link rel="stylesheet" href="index_files/lp2003.html" type="text/css"></head>
+
+<body>
+<br>
+<center>
+  <p><b>Laboratorio di Programmazione - A.A. 2003/04</b></p>
+  <h2>Esame del 12/12/2003</h2>
+  <h2>Documenti multimediali (A)</h2>
+</center>
+
+
+
+<P>Un <em>DocumentoMultimediale</em> &egrave; costituito da un insieme
+di <em>tracce</em>, ciascuna delle quali pu&ograve; essere un
+<em>FileVideo</em> o un <em>FileAudio</em>, oppure a sua volta un
+<em>DocumentoMultimediale</em>. La durata temporale delle tracce
+di tali documenti &egrave; rappresentata in "frames" (ogni "frame"
+corrisponde ad una determinata quantit&agrave; di tempo).
+Ciascuna traccia &egrave;
+caratterizzata da un inizio di esecuzione (un valore intero
+positivo rappresentante il frame iniziale) e dalla sua durata
+(espressa come numero di frame).
+Inoltre i <em>FileVideo</em> e i <em>FileAudio</em> sono caratterizzati da
+una stringa rappresentante il nome del file in cui sono memorizzate
+le corrispondenti informazioni.
+
+<P><b>Parte 1</b></P>
+
+<p>Scrivere le classi Java per rappresentare gli oggetti <em>DocumentoMultimediale</em> 
+  in un package <code>documenti</code>. Si implementi un iteratore che consente 
+  la scansione senza possibilit&agrave; di modifica dell'insieme delle tracce 
+  di un <em>DocumentoMultimediale</em>. 
+<P><b>Parte 2</b></P>
+
+<P>Si definisca una classe <code>UtilitaDocumentiMultimediali</code> nel package
+<code>servizi</code>  contenente i seguenti metodi statici: </P>
+<ul>
+  <li><em>copia(DocumentoMultimediale m)</em>: restituisce un <em>DocumentoMultimediale</em> 
+    che &egrave; una copia di <em>m</em>;</li>
+  <li><em>DM2String(DocumentoMultimediale m)</em>: restituisce una stringa con 
+    i nomi dei file video e audio contenuti nel documento <em>m</em> indicando 
+    con le parentesi '{' e '}' il documento multimediale a cui appartengono. Ad 
+    esempio <code>{ v1 v2 { a1 a2 v3 }{ a3 }}</code> &egrave; la rappresentazione 
+    del documento multimediale costituito da 4 tracce, in cui la prima &egrave; 
+    un file audio o video <code>v1</code>, la seconda &egrave; un file audio o 
+    video <code>v2</code>, la terza &egrave; un documento multimediale con 3 tracce 
+    <code>{ a1 a2 v3 }</code>, la quarta un documento multimediale con 1 traccia 
+    <code>{ a3 }</code> (si noti che l'ordine con cui vengono stampate le tracce 
+    non conta essendo un documento constituito da un <em>insieme</em> di tracce);</li>
+  <li><em>insiemeFileVideo(DocumentoMultimediale m)</em>: restituisce l'insieme 
+    (oggetto che implementa l'interfaccia <code>Set</code>) di tutti i file video 
+    contenuti nel documento <em>m</em>;</li>
+  <li><em>contaFileFrame(DocumentoMultimediale m, int f)</em>: calcola il numero 
+    di file <em>av</em> (audio e video) del documento <em>m</em> che sono attivi 
+    al frame <em>f</em>, ovvero per cui <em>f</em> &egrave; compreso tra il frame 
+    iniziale e il frame finale di <em>av</em>.</li>
+</ul>
+
+
+
+
+<br><br>
+
+
+</body>
+</html>

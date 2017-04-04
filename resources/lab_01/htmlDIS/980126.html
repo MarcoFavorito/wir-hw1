@@ -1,0 +1,113 @@
+<HTML>
+<HEAD>
+   <META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1">
+   <META NAME="Generator" CONTENT="Microsoft Word 97">
+   <META NAME="GENERATOR" CONTENT="Mozilla/4.03 [en] (Win95; I) [Netscape]">
+   <TITLE>Fondamenti di Informatica</TITLE>
+</HEAD>
+<BODY>
+
+<DIR>
+<DIR>
+<CENTER><B><FONT SIZE=+2>Fondamenti di Informatica</FONT></B></CENTER>
+
+<CENTER><B><FONT SIZE=+1>Aeronautica, Meccanica, Elettrica, Materiali,
+Nucleare,</FONT></B></CENTER>
+
+<CENTER><B><FONT SIZE=+1>Chimica, Ambiente e Territorio</FONT></B></CENTER>
+
+<CENTER><B><FONT SIZE=+1>Appello del 26 gennaio 1998</FONT></B></CENTER>
+</DIR>
+</DIR>
+<B>Esercizio 1 (18 punti)</B>
+
+<P>Nel file 'SEGMENTI.DAT' sono memorizzate alcune coppie di punti di un
+piano cartesiano. In particolare, ogni punto &egrave; descritto da una
+coppia di numeri interi positivi ed ogni record del file contiene due coppie
+corrispondenti ad altrettanti punti. Pertanto ogni record del file rappresenta
+un segmento sul piano cartesiano. Si vogliono estrarre dal file, e memorizzare
+in una lista, rappresentata mediante record e puntatori, tutti e soli i
+segmenti che non sono paralleli n&eacute; all'asse delle ascisse n&eacute;
+all'asse delle ordinate.
+<DIR>1. Fornire le opportune dichiarazioni dei tipi di dati per rappresentare
+il file e la lista.
+
+<P>2. Scrivere una procedura o finzione che legga il file e restituisca
+la lista costituita da tutti i segmenti che non sono paralleli n&eacute;
+all'asse delle ascisse n&eacute; all'asse delle ordinate.
+
+<P>3. Scrivere una procedura o funzione che, ricevendo come parametro di
+input la lista dei segmenti costruita come al punto precedente, fornisca
+la misura e le coordinate dei punti estremi del segmento pi&ugrave; lungo.</DIR>
+Si ricorda che se gli estremi del segmento sono i punti di coordinate
+<CENTER><IMG SRC="Image36.gif" HEIGHT=33 WIDTH=172></CENTER>
+la lunghezza del segmento &egrave; pari a
+<CENTER><IMG SRC="Image37.gif" HEIGHT=76 WIDTH=317></CENTER>
+Ad esempio, se il file 'SEGMENTI.DAT' &egrave; costituito dai seguenti
+record che rappresentano quattro segmenti:
+
+<P><IMG SRC="Image38.gif" HEIGHT=60 WIDTH=604>
+
+<P>poich&eacute; il primo ed il secondo record rappresentano segmenti paralleli,
+rispettivamente, all'asse delle ascisse ed a quello delle ordinate, nella
+lista di cui al punto 2) saranno inseriti soltanto i seguenti record:
+<BR><IMG SRC="Image39.gif" HEIGHT=83 WIDTH=398>
+<BR>Il segmento pi&ugrave; lungo tra quelli presenti nella lista ha coordinate
+(2,1), (6,4) e lunghezza 5.
+<BR>&nbsp;
+<BR>&nbsp;
+<BR>&nbsp;
+<BR>&nbsp;
+<CENTER><B><FONT SIZE=+2>Fondamenti di Informatica</FONT></B></CENTER>
+
+<CENTER><B><FONT SIZE=+1>Aeronautica, Meccanica, Elettrica, Materiali,
+Nucleare,</FONT></B></CENTER>
+
+<CENTER><B><FONT SIZE=+1>Chimica, Ambiente e Territorio</FONT></B></CENTER>
+
+<CENTER><B><FONT SIZE=+1>Appello del 26 gennaio 1998</FONT></B></CENTER>
+<B>Esercizio 2 (4 punti)</B>
+<BR>Descrivere le caratteristiche dei sistemi operativi ed illustrare le
+modalit&agrave; di gestione dei processi.<B></B>
+
+<P><B>Esercizio 3 (4 punti)</B>
+<BR>Scrivere un sottoprogramma Fortran che, ricevendo in ingresso due matrici
+quadrate di ordine N di interi, verifichi che l'una sia la trasposta dell'altra.
+<BR>Fomire le dichiarazioni da inserire nel programma principale.<B></B>
+
+<P><B>Esercizio 4 (4 punti)</B>
+<BR>Siano date le seguenti dichiarazioni di dato e di procedura:<B></B>
+
+<P><B><TT><FONT SIZE=+2>type vett=array[1..3] of char;</FONT></TT></B><B><TT><FONT SIZE=+2></FONT></TT></B>
+
+<P><B><TT><FONT SIZE=+2>procedure P(V:vett; I:integer);</FONT></TT></B>
+<BR><B><TT><FONT SIZE=+2>begin</FONT></TT></B>
+<BR><B><TT><FONT SIZE=+2>&nbsp;&nbsp;&nbsp; if I&lt;>3 then P(V, I+1);</FONT></TT></B>
+<BR><B><TT><FONT SIZE=+2>&nbsp;&nbsp;&nbsp; write(V[I])</FONT></TT></B>
+<BR><B><TT><FONT SIZE=+2>end;</FONT></TT></B><B></B>
+
+<P>Sia V il seguente array:&nbsp;&nbsp;&nbsp;&nbsp; [R&nbsp; L&nbsp; M]
+
+<P>Il candidato indichi e motivi l'effetto di ciascuno dei seguenti frammenti
+di programma:
+
+<P>1)
+<BR><B><TT><FONT SIZE=+2>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; I:=1;</FONT></TT></B>
+<BR><B><TT><FONT SIZE=+2>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; P(V,I);</FONT></TT></B><B></B>
+
+<P>2)
+<BR><B><TT><FONT SIZE=+2>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; I:=3;</FONT></TT></B>
+<BR><B><TT><FONT SIZE=+2>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; P(V,I);</FONT></TT></B>
+<BR>3)
+<BR><B><TT><FONT SIZE=+2>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; I:=1;</FONT></TT></B>
+<BR><B><TT><FONT SIZE=+2>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; while
+I&lt;>3 do begin</FONT></TT></B>
+<BR><B><TT><FONT SIZE=+2>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+P(V,I);</FONT></TT></B>
+<BR><B><TT><FONT SIZE=+2>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+I:=I+1</FONT></TT></B>
+<BR><B><TT><FONT SIZE=+2>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+end;</FONT></TT></B>
+<BR>&nbsp;
+</BODY>
+</HTML>

@@ -1,0 +1,183 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+
+<!--Converted with LaTeX2HTML 99.1 release (March 30, 1999)
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>20000414</TITLE>
+<META NAME="description" CONTENT="20000414">
+<META NAME="keywords" CONTENT="20000414">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1">
+<META NAME="Generator" CONTENT="LaTeX2HTML v99.1 release">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+</HEAD>
+
+<BODY >
+
+<P>
+ 
+<DIV ALIGN="CENTER">
+<B>Universit&#224; di Roma ``La Sapienza''<BR>
+Facolt&#224; di Ingegneria<BR>
+Corso di Fondamenti di Informatica<BR>
+Corsi di Laurea: Aerospaziale, Chimica, Elettrica, Materiali, Meccanica
+Nucleare, Ambiente e Territorio (v.p.)
+</B>
+<BR>Appello del <B>14/4/2000</B> -- 1a prova scritta<BR>
+<I>tempo a disposizione: 2 ore</I>
+</DIV>
+
+<P>
+ 
+<B>Problema 1 (18 punti)</B>
+
+<P> Un appassionato di calcio gestisce le informazioni relative ad un
+campionato di calcio (18 squadre) in un file di record, in cui ciascun elemento
+&#232; associato ad una squadra e contiene le seguenti informazioni:
+
+<UL>
+<LI>nome della squadra (max 20 caratteri);</LI>
+<LI>numero di incontri vinti;</LI>
+<LI>numero di incontri pareggiati;</LI>
+<LI>numero di incontri persi;</LI>
+<LI>numero di reti segnate;</LI>
+<LI>numero di reti subite.</LI>
+</UL>
+
+<P> Denominiamo, per comodit&#224; un file di tale tipologia <I>file di
+squadre</I>.
+
+<P> Come &#232; noto, in base ai regolamenti attuali, vengono attributi alle
+squadre, ai fini della classifica, 3 punti per la vittoria, 1 punto per il
+pareggio e 0 punti per la sconfitta.
+
+<P> Con riferimento al linguaggio Pascal, si richiede di risolvere i seguenti
+punti:
+
+<P>
+
+<OL>
+  <LI>Definire i tipi di dato e dichirare le eventuali variabili globali
+      necessarie per risolvere i successivi punti&nbsp;2 e&nbsp;3.  Qualora
+      vengano usate variabili globali &#232; necessario motivare adeguatamente
+      la scelta.</LI>
+  <LI>Scrivere una o pi&#249; unit&#224; di programma che, ricevendo come
+      parametro il nome con cui &#232; stato memorizzato un file di squadre,
+      calcoli e restituisca il nome della squadra che guida la classifica
+      corrente.  A parit&#224; di punteggio, si scelga la squadra con migliore
+      differenza reti.  A parit&#224; di punteggio e differenza reti, si scelga
+      arbitrariamente una delle squadre.</LI>
+  <LI>Scrivere una o pi&#249; unit&#224; di programma che, ricevendo come
+      parametro il nome con cui &#232; stato memorizzato un file di squadre,
+      costruisca, restituendola, una lista collegata (rappresentata tramite
+      record e puntatori) in cui ciascun elemento, costituito da tre campi,
+      &#232; associato ad una squadra avente differenza reti (reti segnate meno
+      reti subite) migliore o pari a quella della squadra che guida attualmente
+      la classifica.  I campi sono utilizzati per memorizzare il nome della
+      squadra, la sua differenza reti ed il puntatore all'elemento successivo
+      nella lista. </LI> 
+</OL>
+
+<P>
+ 
+<B>N.B.</B> Nel risolvere i punti di cui sopra tenere presente che:
+
+<UL>
+<LI>i 18 record che costituiscono il file di squadre <I>non hanno uno
+  specifico ordinamento</I>;</LI>
+<LI>l'unit&#224; di programma richiesta al punto&nbsp;2 pu&#242; essere
+    progettata in   maniera pi&#249; generale, allo scopo di semplificare e
+    rendere pi&#249; efficiente l'unit&#224; richiesta al punto&nbsp;3 (a tal
+    scopo &#232; opportuno costruire l'unit&#224; del punto&nbsp;2 tenendo
+    anche conto di quanto richiesto al punto&nbsp;3);</LI> 
+<LI>la lista di cui al punto&nbsp;3 pu&#242; essere costruita inserendo i
+    relativi elementi in un ordine qualunque.</LI>
+</UL>
+
+<P>
+
+<P>
+<HR>
+<P>
+
+<DIV ALIGN="CENTER">
+<B>Universit&#224; di Roma ``La Sapienza''<BR>
+Facolt&#224; di Ingegneria<BR>
+Corso di Fondamenti di Informatica<BR>
+Corsi di Laurea: Aerospaziale, Chimica, Elettrica, Materiali, Meccanica,
+Nucleare, Ambiente e Territorio (v.p.)
+</B>
+<BR>Appello del <B>14/4/2000</B> -- 2a prova scritta<BR>
+<I>tempo a disposizione: 1 ora</I>
+</DIV>
+
+<P>
+ 
+<B>Problema 2 (4 punti)</B>
+
+<P>
+Discutere la differenza fra tipo di dato semplice e tipo di dato strutturato.
+Con riferimento al linguaggio Pascal, discutere sinteticamente le operazioni
+generalmente disponibili nell'ambito delle due categorie di tipi.
+
+<P>
+ 
+<B>Problema 3 (4 punti)</B>
+
+<P>
+Con riferimento al seguente programma Pascal, descrivere con precisione quali
+caratteri vengono stampati sullo schermo quando il programma riceve in input il
+tuo nome di battesimo, terminato dal carattere `<TT>.</TT>'.  Mostrare inoltre
+l'evoluzione della pila dei record di attivazione.
+
+<P>
+ 
+<PRE>
+program Esame;
+const
+  MaxLung =  40;
+type
+  TipoNome = array [1..MaxLung] of char;
+var
+  nome : TipoNome;
+  ch   : char;
+  i    : integer;
+
+  procedure Mistero (s: TipoNome; n: integer);
+  begin
+    write(s[n]);
+    if n &gt; 1 then
+      Mistero(s, n-1)
+  end; { Mistero }
+
+begin { Esame }
+  i := 0;
+  readln;
+  repeat
+    i := i+1;
+    read(nome[i])
+  until nome[i] = '.';
+  Mistero(nome, i-1)
+end. { Esame }
+</PRE>
+
+<P>
+ 
+<B>Problema 4 (4 punti)</B>
+
+<P>
+Scrivere un sottoprogramma Fortran che, ricevendo come parametro una matrice di
+interi di dimensione NxN, verifichi se la somma degli elementi della
+diagonale principale &#232; uguale alla somma degli elementi della diagonale
+secondaria, e restituisca in modo opportuno il risultato di tale verifica al
+programma chiamante.
+
+</BODY>
+</HTML>

@@ -1,0 +1,137 @@
+<html>
+<head>
+<title>Primo appello 2004 - Compito Calcio</title>
+</head>
+
+<body>
+
+<h1>Primo appello 2004</h1>
+
+<p>
+La prova dura un'ora e tre quarti.
+</p>
+
+<p>
+<b>Riempire il file <tt>studenteid.txt</tt> con i propri
+dati.</b>
+</p>
+
+<p>
+Vengono dati: due programmi di prova, un file di prova, e il
+testo del compito in formato html. Lo studente deve
+realizzare due classi che vengono usate dai due programmi di
+prova. <b>Le soluzioni devono trovarsi nella stessa cartella
+<tt>Esame</tt> dove si trovano i programmi di prova</tt>
+pena l'annullamento dell'esame.</b>
+</p>
+
+<hr>
+
+<h3>Prima parte</h3>
+
+<p>
+Un giornale sportivo vuole informatizzare i suoi archivi.
+Per questo motivo, si vuole realizzare la classe
+<tt>Squadra</tt> che contiene le informazioni relative a una
+squadra di calcio. Le componenti di questi oggetti devono
+essere:
+</p>
+
+<dl>
+
+<dt><tt>nome</tt>
+<dd>una stringa che indica il nome della squadra
+
+<dt><tt>punti</tt>
+<dd>un intero che indica il numero di punti che ha la
+squadra nel campionato corrente
+
+<dt><tt>allenatore</tt>
+<dd>una stringa che indica il nome dell'allenatore
+
+<dt><tt>goal</tt>
+<dd>il numero totale di goal realizzati dalla squadra
+nel campionato corrente
+
+</dl>
+
+<p>
+Definire la classe incapsulata <tt>Squadra</tt> i cui
+oggetti siano rappresentazione di squarde. I nomi delle
+componenti devono essere: <tt>nome</tt>, <tt>punti</tt>,
+<tt>allenatore</tt>, e <tt>goal</tt>.
+Devono essere realizzati i seguenti metodi:
+</p>
+
+<ul>
+
+<li>metodi <tt>get</tt> e <tt>set</tt> per tutte le
+componenti; i metodi <tt>set</tt> per le componenti 
+<tt>punti</tt> e <tt>goal</tt> devono verificare che i
+valori siano maggiori o uguali a zero; in caso di errore,
+stampare un messaggio di errore e terminare il programma;
+
+<li>metodo costruttore che ha come argomento un
+<tt>BufferedReader</tt>; il metodo deve leggere i valori da
+mettere nell'oggetto da file; questi valori sono 
+memorizzati uno per linea; nel caso in cui il file
+finisca prima che si riescano a leggere tutte le componenti,
+si stampi un messaggio di errore e si esca dal programma;
+
+<li>un metodo toString che restituisce una stringa in cui ci
+sono tutte le componenti dell'oggetto.
+
+</ul>
+
+<hr>
+
+
+<h3>Seconda parte</h3>
+
+<p>
+Definire una seconda classe <tt>Campionato</tt> i cui
+oggetti rappresentano tutte le squadre che partecipano
+al campionato di serie A per l'anno corrente.
+Ogni oggetto di questa classe &egrave; quindi la
+rappresentazione di un insieme di oggetti <tt>Squadra</tt>.
+Per rappresentare insiemi di oggetti, usare un array.
+</p>
+
+<p>
+Costruttore della classe: 
+</p>
+
+<dl>
+
+<dt>
+<tt>Campionato(String nomefile)</tt>
+<dd>
+crea un oggetto <tt>Campionato</tt> che rappresenta l'insieme
+di tutti gli oggetti <tt>Squadra</tt> che sono memorizzati
+nel file il cui nome &egrave; dato dalla stringa passata
+come argomento; la prima linea del file contiene il numero
+degli oggetti memorizzati su file.
+
+</dl>
+
+<p>
+Metodi della classe:
+</p>
+
+<dl>
+
+<dt><tt>public void stampaTutti()</tt>
+<dd>stampa tutti gli oggetti dell'array
+
+<dt><tt>int quanteAPunti(int punti)</tt>
+<dd>ritorna il numero di squadre che hanno un numero di
+punti maggiore o uguale al numero passato come argomento
+
+<dt><tt>double goalMedi()</tt>
+<dd>ritorna il numero medio di goal fatti
+
+</dl>
+
+</body>
+</html>
+

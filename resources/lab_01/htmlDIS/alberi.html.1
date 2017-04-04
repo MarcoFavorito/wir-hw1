@@ -1,0 +1,85 @@
+<html>
+<head>
+<title>Riconoscimento di alberi</title>
+</head>
+
+<body>
+<h2>Riconoscimento di alberi</h2>
+
+Un file contiene la rappresentazione parentetica di un insieme di
+alberi. I nodi dell'albero sono numeri interi (es. 123, 1, ecc),
+oppure sono caratteri fra apici (es. 'a', '1', ecc).
+
+Gli alberi sono separati fra loro dal punto e virgola. Gli spazi
+e i ritorni a capo sono irrilevanti.
+
+Scrivere un analizzatore lessicale e sintattico per riconosccere
+gli alberi sintatticamente corretti.
+
+<h2>Esempio</h2>
+
+<h4>File di input:</h4>
+
+<pre>
+( 'a' () () );
+
+(
+)
+;
+
+( 121  ( 'b' () () ) () )
+;
+
+('b' ('b' () () )
+   ('a' () () )
+);
+
+( 'b' ( () () );
+
+( b () () );
+
+())
+
+;
+
+();
+</pre>
+
+<h4>File di output:</h4>
+
+<pre>
+( 'a' () () );
+
+(
+)
+;
+
+( 121  ( 'b' () () ) () )
+;
+
+('b' ('b' () () )
+   ('a' () () )
+);
+
+( 'b' ( (Error: parse error) () )Error: parse error;Error: parse error
+
+( b () () )Error: parse error;Error: parse error
+
+())Error: parse error
+
+;Error: parse error
+
+();Error: parse error
+</pre>
+
+<b>Nota:</b> Non &egrave; necessario che gli errori compaiano esattamente
+nello stesso modo del file di output di esempio. La cosa importante &egrave;
+che tutte le linee errate vengano segnalate.
+
+
+<ul>
+<li> <a href="alberi.lex">Analizzatore lessicale</a>
+<li> <a href="alberi.y">Analizzatore sintattico</a>
+</ul>
+</body>
+</html>

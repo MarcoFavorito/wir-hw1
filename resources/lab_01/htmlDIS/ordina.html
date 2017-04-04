@@ -1,0 +1,2317 @@
+<html>
+<head>
+<title>Ricerca e ordinamento</title>
+</head>
+
+<body>
+
+<h1>Algoritmi di ricerca e ordinamento</h1>
+
+<p>
+Vediamo degli algoritmi non banali:
+</p>
+
+<ul>
+
+<li>trovare un elemento in un array ordinato
+
+<li>ordinare un array
+
+</ul>
+
+<p>
+Sono esempi di algoritmi
+</p>
+
+<hr>
+
+<h4>Problema della ricerca</h4>
+
+<p>
+Problema: decidere se un intero si trova
+in un vettore
+</p>
+
+<p>
+Soluzione: controllare ogni elemento.
+</p>
+
+<pre>
+  public static boolean Cerca(int v[], int x) {
+    boolean trovato;
+    int i;
+
+    trovato=false;
+
+    for(i=0; i&lt;v.length; i++)
+      if(v[i]==x)
+        trovato=true;
+
+    return trovato;
+  }
+</pre>
+
+<hr>
+
+<h4>Parte inutile della ricerca</h4>
+
+<p>
+Quando ho trovato un elemento, il metodo continua
+ugualmente a verificare gli altri.
+</p>
+
+<p>
+&Egrave; un problema se:
+</p>
+
+<ul>
+<li>ho vettori molto grandi
+<li>devo fare spesso questa ricerca
+</ul>
+
+<p>
+Soluzione alternativa: quando trovo l'elemento,
+mi fermo.
+</p>
+
+<pre>
+  public static boolean cerca(int v[], int x) {
+    int i;
+
+    for(i=0; i&lt;v.length; i++)
+      if(v[i]==x)
+        return true;
+
+    return false;
+  }
+</pre>
+
+<p>
+Se l'elemento non c'&egrave;, finisco con il 
+fare tutta la scansione del vettore.
+</p>
+
+<p>
+In generale, questo &egrave; inevitabile.
+</p>
+
+<hr>
+
+<h4>Vettore ordinato</h4>
+
+<p>
+Il vettore &egrave; ordinato se il primo
+elemento &egrave; minore del secondo, che
+&egrave; minore del terzo, ecc.
+</p>
+
+<p>
+Vettori ordinati:
+</p>
+
+<pre>
+-1 0 3 10 60 120 900
+-100 4 20
+0 1 2 3 4 50
+</pre>
+
+<p>
+Vettori non ordinati:
+</p>
+
+<pre>
+-1 0 3 10 9 120 900
+-100 4 20 0
+1 0 1 2 3 4 50
+</pre>
+
+<hr>
+
+<h4>Ricerca in vettore ordinato</h4>
+
+<p>
+Come si fa?
+</p>
+
+<p>
+Posso usare gli stessi metodi dei vettori
+non ordinati.
+</p>
+
+<p>
+Posso sfruttare l'ordinamento.
+</p>
+
+<p>
+Domanda: che vantaggio ho?
+</p>
+
+<hr>
+
+<h4>Vantaggio dell'ordinamento</h4>
+
+<p>
+Se cerco <tt>4</tt>, e trovo un elemento
+maggiore, so che &egrave; inutile
+andare avanti:
+</p>
+
+<pre>
+-2 -1 3 5 ...
+</pre>
+
+<p>
+Quando arrivo al <tt>5</tt>, so che
+il <tt>4</tt> non lo trovo dopo, perch&egrave;
+altrimenti il vettore non sarebbe ordinato.
+</p>
+
+<p>
+Esercizio: modificare il programma di
+ricerca per tenere conto di questo caso.
+</p>
+
+<hr>
+
+<h4>Ricerca in un vettore ordinato: algoritmo</h4>
+
+<p>
+Dato un vettore <tt>v</tt> e un intero <tt>x</tt>,
+per ogni elemento del vettore:
+</p>
+
+<ol>
+<li>se coincide con <tt>x</tt>, ritorna <tt>true</tt>
+<li>se &egrave; maggiore di <tt>x</tt>, ritorna <tt>false</tt>
+<li>se &egrave; minore, continua la scansione
+</ol>
+
+<p>
+Se si arriva alla fine, vuol dire che tutti gli
+elementi del vettore sono minori di <tt>x</tt>,
+e quindi si ritorna <tt>false</tt>
+</p>
+
+<hr>
+
+<h4>Ricerca in un vettore ordinato: programma</h4>
+
+<p>
+Si tratta solo di implementare l'algoritmo:
+</p>
+
+<pre>
+  public static boolean cercaOrdinato(int v[], int x) {
+    int i;
+
+    for(i=0; i&lt;v.length; i++) {
+      if(v[i]==x)
+        return true;
+      if(v[i]&gt;x)
+        return false;
+    }
+
+    return false;
+  }
+</pre>
+
+<hr>
+
+<h4>Esercizio</h4>
+
+<p>
+Trovare un vettore non ordinato su cui
+il metodo non funziona.
+</p>
+
+<hr>
+
+<h4>Soluzione</h4>
+
+<p>
+Se cerco <tt>4</tt> e trovo <tt>5</tt>
+mi fermo.
+</p>
+
+<p>
+Se il vettore non &egrave; ordinato, il
+<tt>4</tt> pu&ograve; trovarsi dopo.
+</p>
+
+<pre>
+1 5 4
+</pre>
+
+<hr>
+
+<h4>La ricerca binaria</h4>
+
+<p>
+Si tratta ancora di trovare un elemento in un
+vettore ordinato.
+</p>
+
+<p>
+Idea: invece di procedere sequenzialmente,
+parto da met&agrave;.
+</p>
+
+<p>
+Tipo di ricerca ``elenco telefonico''
+</p>
+
+<hr>
+
+<h4>Ricerca binaria: algoritmo</h4>
+
+<p>
+Parto da met&agrave; vettore
+</p>
+
+<p>
+Se l'elemento &egrave; quello da cercare, ritorno <tt>true</tt>
+</p>
+
+<img src="trovato.jpg">
+
+<p>
+Se l'elemento da cercare &egrave; minore di quello a
+met&agrave; del vettore, cerco nella prima met&agrave;
+</p>
+
+<img src="prima.jpg">
+
+<p>
+Se &egrave; maggiore, cerco nella seconda met&agrave;
+</p>
+
+<img src="dopo.jpg">
+
+<hr>
+
+
+<h4>Ricorsione sui vettori</h4>
+
+<p>
+Avrei solo due argomenti (il vettore e l'intero
+da cercare).
+</p>
+
+<p>
+Metto altri due argomenti (indice di inizio e
+fine ricerca).
+</p>
+
+<p>
+Algoritmo:
+</p>
+
+<ul>
+<li>trova l'elemento a met&agrave; fra l'inizio
+e la fine
+<li>se &egrave; uguale a quello da cercare,
+torna <tt>true</tt>
+<li>se &egrave; maggiore, cerca solo nella prima
+met&agrave;
+<li>altrimenti, cerca solo nella seconda met&agrave;
+</ul>
+
+<p>
+&Egrave; un tipico algoritmo ricorsivo.
+</p>
+
+<hr>
+
+<h4>Ricerca binaria: traduzione in programma</h4>
+
+<p>
+Trovare elemento in mezzo=divisione intera
+</p>
+
+<p>
+Cercare nella prima met&agrave;=chiamata
+ricorsiva passando lo stesso indice di inizio
+e quello di mezzo meno uno.
+</p>
+
+<p>
+Cercare nella seconda met&agrave;=...
+</p>
+
+<hr>
+
+<h4>Ricerca binaria: programma senza caso base</h4>
+
+<p>
+Metodo ricorsivo senza i casi base:
+</p>
+
+<pre>
+  public static boolean cercaBinario(int v[], int x, int inizio, int fine) {
+
+    ...
+
+    int mezzo=(inizio+fine)/2;
+
+    if(v[mezzo]==x)
+      return true;
+    else if(v[mezzo]&gt;x)
+      return cercaBinario(v, x, inizio, mezzo-1);
+    else
+      return cercaBinario(v, x, mezzo+1, fine);
+  }
+</pre>
+
+<hr>
+
+<h4>Caso/casi base</h4>
+
+<p>
+Dove arrivo facendo le invocazioni ricorsive?
+</p>
+
+<ul>
+<li>vettore di tre elementi: se non &egrave; quello di
+mezzo, continuo la ricerca su due vettori grandi uno
+<li>vettore di due elementi <tt>fine=inizio+1</tt>:
+ho i valori <tt>mezzo=inizio=fine-1</tt>; si continua
+fra <tt>inizio, inizio-1</tt> oppure fra <tt>fine, fine</tt>
+<li>vettore di un elemento: se non &egrave; quello
+da cercare, continuo fra <tt>inizio, inizio-1</tt>
+oppure fra <tt>fine+1, fine</tt>
+</ul>
+
+<p>
+Prima o poi si arriva al caso: <tt>fine=inizio-1</tt>
+</p>
+
+<p>
+Corrisponde alla ricerca in un vettore di zero elementi.
+</p>
+
+<p>
+Si deve ritornare <tt>false</tt>
+</p>
+
+<hr>
+
+<h4>Ricerca binaria: metodo completo</h4>
+
+<p>
+Traduco in codice anche il passo base.
+</p>
+
+<pre>
+  public static boolean cercaBinario(int v[], int x, int inizio, int fine) {
+    if(inizio&gt;fine)
+      return false;
+
+    int mezzo=(inizio+fine)/2;
+
+    if(v[mezzo]==x)
+      return true;
+    else if(v[mezzo]&gt;x)
+      return cercaBinario(v, x, inizio, mezzo-1);
+    else
+      return cercaBinario(v, x, mezzo+1, fine);
+  }
+</pre>
+
+<hr>
+
+<h4>Efficienza degli algoritmi</h4>
+
+<p>
+Spazio di memoria/tempo che richiedono.
+</p>
+
+<p>
+Devo tenere conto che:
+</p>
+
+<ul>
+
+<li>ho pi&ugrave; algoritmi per lo stesso problema
+
+<li>l'efficienza dipende dai dati
+
+</ul>
+
+<p>
+Per la ricerca in vettore ordinato
+ho la ricerca sequenziale e la ricerca
+binaria.
+</p>
+
+<p>
+L'efficienza dipende dal vettore e dall'elemento
+da cercare.
+</p>
+
+<p>
+Caso in cui la ricerca sequenziale &egrave; pi&ugrave;
+veloce:
+</p>
+
+<pre>
+v[]={1, 2, 3, 4, 5, 6, 7, 8, 9};
+x=1;
+</pre>
+
+<p>
+Caso in cui la ricerca binaria &egrave; pi&ugrave; veloce:
+</p>
+
+<pre>
+v[]={0, 3, 4, 10, 12, 143, 159, 200};
+x=10;
+</pre>
+
+<hr>
+
+<h4>Valutazioni</h4>
+
+<ol>
+<li>devo valutare quale algoritmo &egrave; migliore
+<li>ma, questo dipende dai dati su cui lavorano
+</ol>
+
+<p>
+Si danno valutazioni complessive:
+</p>
+
+<ol>
+<li>caso migliore
+<li>caso peggiore
+<li>caso medio
+</ol>
+
+<p>
+In questo modo, posso dire quale algoritmo &egrave;
+il migliore complessivamente (senza specificare i
+dati di input).
+</p>
+
+<hr>
+
+<h4>Valutazioni</h4>
+
+<dl>
+
+<dt>caso migliore
+<dd>il minimo tempo che ci mette il programma
+(dati su cui ci mette di meno)
+
+<dt>caso peggiore
+<dd>il tempo che ci mette sui dati peggiori
+
+<dt>caso medio
+<dd>devo specificare una distribuzione di
+probabilit&agrave; sui dati
+
+</dl>
+
+<hr>
+
+<h4>Dimensione dei dati</h4>
+
+<p>
+Se il vettore ha quattro elementi, tutti gli
+algoritmi vanno bene.
+</p>
+
+<p>
+L'efficienza &egrave; importante quando ci sono
+grandi quantit&agrave; di dati (vettori grandi).
+</p>
+
+<table border=1>
+<tr>
+<td>pochi dati</td>
+<td>poco tempo</td>
+</tr>
+<tr>
+<td>tanti dati</td>
+<td>tanto tempo</td>
+</tr>
+</table>
+
+<p>
+Questa &egrave; una cosa naturale!
+</p>
+
+<hr>
+
+<h4>Modello di costo</h4>
+
+<p>
+Assumo che ogni istruzione richiede tempo 1
+</p>
+
+<p>
+Tempo di esecuzione=numero di istruzioni eseguite
+</p>
+
+<p>
+Valutazione in base al numero dei dati
+</p>
+
+<dl compact="compact">
+
+<dt><tt>n</tt>
+<dd>dimensione dei dati (grandezza del vettore)
+
+<dt><tt>T(n)</tt>
+<dd>tempo impiegato dal metodo su un vettore
+di grandezza <tt>n</tt>
+
+</dl>
+
+<hr>
+
+
+<h4>Costo degli algoritmi di ricerca</h4>
+
+<p>
+Ricerca sequenziale fino alla fine:
+tempo <tt>T(n)=n</tt> in ogni caso.
+</p>
+
+<p>
+Ricerca sequenziale in cui mi fermo quando
+trovo: <tt>T(n)=n</tt> nel caso peggiore,
+<tt>T(n)=1</tt> nel caso migliore.
+</p>
+
+<p>
+Ricerca binaria: <tt>T(n)=log(n)</tt> nel
+caso peggiore, <tt>T(n)=1</tt> nel caso migliore.
+</p>
+
+<p>
+Perch&egrave;?
+
+<hr>
+
+
+<h4>Costo della ricerca binaria</h4>
+
+<p>
+Il costo &egrave; <tt>log(n)</tt>, se <tt>n</tt>
+&egrave; la dimensione del vettore
+</p>
+
+<p>
+Dimostrazione ``al contrario'': se ci vogliono
+<tt>x</tt> operazioni, quanto &egrave; grande il
+vettore?
+</p>
+
+<ol>
+
+<li>una operazione: vettore grande 1
+<li>due operazioni: vettore grande 2
+<li>tre operazioni: vettore grande 4
+
+</ol>
+
+<p>
+La ricerca richiede una operazione in pi&ugrave;
+se il vettore &egrave; grande il doppio
+</p>
+
+<p>
+Se la dimensione del vettore &egrave; esponenziale
+nel numero di operazioni, allora il numero di operazioni
+&egrave; logaritmico nella dimensione
+</p>
+
+<p>
+Esempio: se ho <tt>8</tt> elementi
+alla prima invocazione riduco a <tt>4</tt>, poi
+a <tt>2</tt> poi a <tt>1</tt>, quindi servono
+3 invocazioni. Se ho <tt>16</tt> elementi faccio
+<tt>8, 4, 2, 1</tt>, ecc.
+</p>
+
+<hr>
+
+<h4>Notazione O</h4>
+
+<p>
+Assunzioni:
+</p>
+
+<ol>
+
+<li>ignoro le costanti moltiplicative, per
+cui <tt>2n</tt> lo vedo come <tt>n</tt>
+
+<li>ignoro i termini di ordine inferiore,
+per cui <tt>n<sup>2</sup>+3n+2</tt> lo
+vedo come <tt>n<sup>2</sup></tt>
+
+</ol>
+
+<p>
+Per me, <tt>n<sup>2</sup>+3n+2</tt> &egrave; come
+<tt>n<sup>2</sup></tt>.
+</p>
+
+<p>
+Non uso <tt>=</tt> perch&egrave; questo indica che
+due grandezze sono uguali
+</p>
+
+<p>
+Uso una notazione diversa per dire ``&egrave; pi&ugrave;
+o meno come'':
+</p>
+
+<pre>
+<tt>n<sup>2</sup>+3n+2=O(n<sup>2</sup>)</tt>
+</pre>
+
+<p>
+Si dice che la complessit&agrave; &egrave; <tt>O(n<sup>2</sup>)</tt>
+</p>
+
+<hr>
+
+<h4>Ordinamento</h4>
+
+<p>
+Caso che analizziamo noi: preso un vettore
+di interi metterli in ordine crescente.
+</p>
+
+<p>
+Esempio: se ho il vettore che contiene:
+</p>
+
+<pre>
+9 4 3 8 1 5
+</pre>
+
+<p>
+Voglio il vettore che contiene gli stessi interi,
+ma in ordine:
+</p>
+
+<pre>
+1 3 4 5 8 9
+</pre>
+
+<p>
+Quindi, alla fine, <tt>v[0]</tt> deve essere minore di
+<tt>v[1]</tt> che deve minore di <tt>v[2]</tt>, ecc
+</p>
+
+<hr>
+
+<h4>Ordinamento, in generale</h4>
+
+<p>
+Noi vediamo solo come si ordina un vettore di interi,
+ma le stesse cose si possono fare con:
+</p>
+
+<ul>
+
+<li>ordinamento decrescente
+
+<li>una lista invece che un vettore
+
+<li>un vettore, ma di oggetti invece che di interi
+
+</ul>
+
+<p>
+Nell'ultimo caso, deve essere possibile confrontare
+due oggetti (primo oggetto deve essere "minore"
+del secondo).
+</p>
+
+<p>
+L'ordinamento <tt>&lt;</tt> fra oggetti non c'&egrave;
+</p>
+
+<p>
+Esempio di ordinamento: oggetti che contengono un
+intero, confronto in base agli interi (il primo
+oggetto deve contenere un intero minore di quello
+del secondo, ecc)
+</p>
+
+<hr>
+
+<h4>Utilit&agrave; dell'ordinamento</h4>
+
+<ul>
+
+<li>facile trovare il primo, il secondo, ecc.
+
+<li>la ricerca risulta pi&ugrave; facile
+(si pu&ograve; usare la ricerca binaria che
+&egrave; pi&ugrave; efficiente)
+
+<li>...
+
+</ul>
+
+<hr>
+
+<h4>Algoritmo pi&ugrave; semplice</h4>
+
+<p>
+Trovo il primo e lo metto in prima posizione,
+trovo il secondo e lo metto in seconda posizione,
+ecc.
+</p>
+
+<p>
+Vediamo prima come si mette il minimo in prima
+posizione.
+</p>
+
+<hr>
+
+<h4>Il minimo in prima posizione</h4>
+
+<p>
+Se il primo lo metto in prima posizione, cancello
+quello che c'era prima: <tt>v[0]=minimo</tt>
+cancella l'intero che prima stava in <tt>v[0]</tt>.
+</p>
+
+<p>
+Si perde il valore che prima stava in <tt>v[0]</tt>
+</p>
+
+<p>
+Invece, io voglio che alla fine il vettore abbia
+tutti i valori che aveva all'inizio, ma in una
+sequenza diversa.
+</p>
+
+<p>
+Soluzione: in <tt>v[0]</tt> ci metto il minimo,
+e il valore che stava prima in <tt>v[0]</tt> lo
+metto dove stava prima il minimo.
+</p>
+
+<hr>
+
+<h4>Minimo in prima posizione: algoritmo</h4>
+
+<p>
+Si tratta di trovare il minimo in un vettore.
+</p>
+
+<p>
+Dato che poi lo devo scambiare di posizione, devo
+anche sapere dove si trova.
+</p>
+
+<p>
+Ricerca della posizione del minimo:
+</p>
+
+<ol>
+<li>la posizione del minimo &egrave; <tt>0</tt>
+
+<li>per ogni indice del vettore
+(da <tt>0</tt> a <tt>v.length-1</tt>)
+
+<ul>
+<li>se l'elemento &egrave; minore di quello nella
+posizione minima, la nuova posizione minima &egrave;
+questa
+</ul>
+
+</ol>
+
+<hr>
+
+<h4>Minimo in prima posizione</h4>
+
+<p>
+Se l'elemento pi&ugrave; piccolo &egrave;
+<tt>v[minpos]</tt>, allora lo devo mettere
+in <tt>v[0]</tt>.
+</p>
+
+<p>
+Se faccio <tt>v[0]=v[minpos]</tt>, cancello
+il valore di <tt>v[0]</tt>.
+</p>
+
+<ol>
+<li>salvo il valore di <tt>v[0]</tt> in una
+variabile
+
+<li>faccio <tt>v[0]=v[minpos]</tt>
+
+<li>in <tt>v[minpos]</tt> vi metto quello
+che stava prima in <tt>v[0]</tt>, e che ora
+sta nella variabile temporanea
+</ol>
+
+<hr>
+
+<h4>Il minimo in prima posizione</h4>
+
+<p>
+Trovo il valore di <tt>minpos</tt> tale che
+<tt>v[minpos]</tt> &egrave; l'elemento pi&ugrave;
+piccolo del vettore.
+</p>
+
+<p>
+L'intero che sta in <tt>v[minpos]</tt> lo metto
+in <tt>v[0]</tt> e viceversa.
+</p>
+
+<pre>
+  public static void inPrima(int v[]) {
+    int i, minpos;
+
+    minpos=0;
+
+    for(i=0; i&lt;v.length; i++)
+      if(v[i]&lt;v[minpos])
+        minpos=i;
+
+    int temp=v[0];
+    v[0]=v[minpos];
+    v[minpos]=temp;
+  }
+</pre>
+
+<p>
+<b>Nota</b>:
+quando si passa un vettore a un metodo, questo
+equivale a copiare il suo indirizzo nella variabile
+locale (dato che &egrave; un oggetto).
+</p>
+
+<p>
+Quando modifico il <tt>v</tt> locale, questo &egrave;
+lo stesso oggetto del vettore del programma principale.
+</p>
+
+<p>
+La variabile del programma e la variabile del metodo
+sono due variabili diverse, ma contengono lo stesso
+indirizzo (le due freccie vanno verso lo stesso
+oggetto).
+</p>
+
+<hr>
+
+<h4>Ordinamento, ripetendo</h4>
+
+<p>
+So come mettere il minimo in prima posizione.
+</p>
+
+<p>
+Cosa resta da fare? Ordinare il resto del vettore.
+</p>
+
+<p>
+Tipico esempio di metodo ricorsivo:
+</p>
+
+<p>
+ordina il vettore=metti il minimo all'inizio+ordina il resto del vettore
+</p>
+
+<hr>
+
+<h4>Ordinamento, con ricorsione sui vettori</h4>
+
+<p>
+Ricorsione sui vettori: serve un vettore senza il primo
+</p>
+
+<p>
+Invece di creare un nuovo vettore, aggiungo dei parametri
+al metodo
+</p>
+
+<p>
+Alla prima invocazione, devo ordinare tutto il vettore,
+alla seconda tutto tranne il primo, poi tutto tranne il
+secondo, ecc.
+</p>
+
+<p>
+Aggiungo un parametro <tt>inizio</tt>:
+</p>
+
+<pre>
+public static void ordina(int v[], int inizio) { ... }
+</pre>
+
+<p>
+Ordina il vettore a partire dall'indice <tt>inizio</tt>
+fino alla fine.
+</p>
+
+<p>
+Ossia: ordina la parte di vettore
+<tt>v[inizio], v[inizio+1], ... , v[v.length-1]</tt>
+</p>
+
+<hr>
+
+<h4>Ordinamento, ricorsivo</h4>
+
+<p>
+Metto il minimo in prima posizione, poi ordino
+quello che resta del vettore.
+</p>
+
+<p>
+Non va fatto su tutto il vettore, ma solo da
+<tt>inizio</tt> alla fine!
+</p>
+
+<ul>
+
+<li>
+Cerco il minimo fra
+<tt>v[inizio], v[inizio+1], ... , v[v.length-1]</tt>
+
+<li>
+Lo metto in <tt>v[inizio]</tt> (faccio lo scambio)
+
+</ul>
+
+<p>
+Faccio la chiamata ricorsiva passando <tt>inizio+1</tt>
+</p>
+
+<hr>
+
+<h4>Il programma ricorsivo di ordinamento</h4>
+
+<p>
+Implementazione dell'algoritmo:
+</p>
+
+<pre>
+  public static void ordina(int v[], int inizio) {
+    int i, minpos;
+
+    minpos=inizio;
+
+    for(i=inizio; i&lt;v.length; i++)
+      if(v[i]&lt;v[minpos])
+        minpos=i;
+
+    int temp=v[inizio];
+    v[inizio]=v[minpos];
+    v[minpos]=temp;
+
+    ordina(v, inizio+1);
+  }
+</pre>
+
+<p>
+Faccio tutto sul vettore da <tt>inizio</tt>
+in poi, invece che su tutto il vettore
+(da <tt>0</tt> in poi)
+</p>
+
+<p>
+Quindi, metto <tt>inizio</tt> dove prima c'era <tt>0</tt>
+</p>
+
+<p>
+Cosa manca?
+</p>
+
+<hr>
+
+<h4>Ordinamento: caso base</h4>
+
+<p>
+Manca il caso base.
+</p>
+
+<p>
+Ogni volta che invoco il metodo, la parte di
+vettore da guardare ha un elemento in meno.
+</p>
+
+<p>
+Alla fine, arrivo al vettore di un elemento
+</p>
+
+<p>
+Questo succede quando <tt>inizio</tt>
+&egrave; l'ultimo elemento del vettore.
+</p>
+
+<p>
+Il vettore di un elemento &egrave; gi&agrave;
+ordinato.
+</p>
+
+<p>
+In altre parole: <tt>inizio</tt> aumenta di uno
+a ogni invocazione ricorsiva. Quando arriva alla
+fine, devo ordinare la parte di vettore con un
+elemento solo (un vettore di uno o zero elementi
+&egrave; sempre in ordine)
+</p>
+
+<pre>
+  public static void ordina(int v[], int inizio) {
+    int i, minpos;
+
+    if(inizio&gt;=v.length-1)
+      return;
+
+    minpos=inizio;
+
+    for(i=inizio; i&lt;v.length; i++)
+      if(v[i]&lt;v[minpos])
+        minpos=i;
+
+    int temp=v[inizio];
+    v[inizio]=v[minpos];
+    v[minpos]=temp;
+
+    ordina(v, inizio+1);
+  }
+</pre>
+
+<p>
+Questo algoritmo di ordinamento si chiama
+<i>selectionsort</i>
+</p>
+
+<hr>
+
+<h4>Selectionsort: versione iterativa</h4>
+
+<p>
+Ricorsione ---&gt; iterazione
+</p>
+
+<p>
+Se la chiamata ricorsiva sta alla fine, &egrave;
+facile.
+</p>
+
+<p>
+In questo caso, ripeto tutta la parte:
+</p>
+
+<pre>
+    minpos=inizio;
+
+    for(i=inizio; i&lt;v.length; i++)
+      if(v[i]&lt;v[minpos])
+        minpos=i;
+
+    int temp=v[inizio];
+    v[inizio]=v[minpos];
+    v[minpos]=temp;
+</pre>
+
+<p>
+Questa parte viene eseguita prima con
+<tt>inizio=0</tt>, poi con <tt>inizio=1</tt>,
+poi con <tt>inizio=2</tt>.
+</p>
+
+<p>
+L'ultima volta che si esegue questa parte,
+<tt>inizio</tt> vale <tt>v.length-2</tt>:
+infatti, quando si fa la invocazione
+passando <tt>v.length-1</tt>, il metodo termina
+subito, prima di eseguire la ricerca del minimo.
+</p>
+
+
+<hr>
+
+<h4>Selectionsort con un ciclo</h4>
+
+<p>
+Faccio un ciclo in cui <tt>inizio</tt> va da
+<tt>0</tt> a <tt>v.length-2</tt>.
+</p>
+
+<pre>
+  public static void ordina(int v[]) {
+    int i, minpos, inizio;
+
+    for(inizio=0; inizio&lt;=v.length-2; inizio++) {
+  
+      minpos=inizio;
+  
+      for(i=inizio; i&lt;v.length; i++)
+        if(v[i]&lt;v[minpos])
+          minpos=i;
+  
+      int temp=v[inizio];
+      v[inizio]=v[minpos];
+      v[minpos]=temp;
+  
+    }
+  }
+</pre>
+
+<hr>
+
+<h4>Complessit&agrave; del SelectionSort</h4>
+
+<p>
+Quante operazioni vengono eseguite?
+</p>
+
+<p>
+Considero un vettore di <tt>n</tt> elementi, senza
+specificare quali valori contiene.
+</p>
+
+<p>
+Alla prima chiamata ricorsiva, faccio <tt>n</tt>
+iterazioni.
+</p>
+
+<p>
+Alla seconda, faccio <tt>n-1</tt> iterazioni, ecc.
+</p>
+
+<p>
+Totale: <tt>n+(n-1)+(n-2)+...+2+1 = n(n+1)/2</tt>
+</p>
+
+<p>
+Ignoro le costanti e i termini inferiori: viene
+<tt>n<sup>2</sup></tt>, quindi dico che la
+complessit&agrave; &egrave; <tt>O(n<sup>2</sup>)</tt>
+</p>
+
+<hr>
+
+<h4>Complessit&agrave;, sulla versione iterativa</h4>
+
+<p>
+La complessit&agrave; si valuta facilmente sulla
+versione iterativa:
+</p>
+
+<p>
+Il ciclo esterno ha <tt>n</tt> iterazioni.
+</p>
+
+<p>
+Il ciclo interno ha un numero di iterazioni da
+<tt>n</tt> a <tt>1</tt>, di media <tt>n/2</tt>
+</p>
+
+<p>
+L'istruzione dentro il ciclo interno viene eseguita
+<tt>n.n/2</tt> volte
+</p>
+
+<p>
+Metodo dell'istruzione dominante: vado a vedere
+quante volte si esegue l'istruzione dentro i cicli
+maggiormente nidificati.
+</p>
+
+<hr>
+
+<h4>SelectionSort: caso migliore o peggiore</h4>
+
+<p>
+Vengono eseguite <tt>O(n<sup>2</sup>)</tt> operazioni
+indipendentemente dai valori scritti nel vettore.
+</p>
+
+<p>
+La complessit&agrave; del caso migliore e peggiore
+coincidono: sono tutte e due <tt>O(n<sup>2</sup>)</tt>
+</p>
+
+<hr>
+
+<h4>Altro algoritmo di ordinamento</h4>
+
+<p>
+Vantaggio: pi&ugrave; efficiente nel caso migliore.
+</p>
+
+<ol>
+
+<li>confronto il primo con il secondo; se non stanno
+nell'ordine giusto, il scambio
+
+<li>confronto il secondo con il terzo; se non stanno
+nell'ordine giusto, il scambio
+
+<li>confronto il terzo con il quarto; ...
+
+<li>...
+
+</ol>
+
+<p>
+Alla fine, l'elemento maggiore sta per forza nell'ultima
+posizione.
+</p>
+
+<p>
+Infatti: quando arrivo all'elemento massimo, lo scambio
+con il successivo. A questo punto, confronto il successivo
+(che &egrave; ancora il massimo) con quello dopo, ecc:
+</p>
+
+<pre>
+1 10 3 2 4 5
+</pre>
+
+<p>
+Quando confronto <tt>10</tt> con <tt>3</tt>, li scambio:
+
+<pre>
+1 3 10 2 4 5
+</pre>
+
+<p>
+Ora il confronto &egrave; fra <tt>10</tt> e <tt>2</tt>:
+</p>
+
+<pre>
+1 3 2 10 4 5
+</pre>
+
+<p>
+Il primo elemento del confronto &egrave; ancora il massimo
+</p>
+
+<p>
+Il massimo elemento, essendo maggiore di tutti gli altri,
+non pu&ograve; venire ``fermato'' nel suo percorso verso
+la fine del vettore
+</p>
+
+<hr>
+
+
+<h4>Mettere il massimo alla fine: programma</h4>
+
+<p>
+Ripeto il confronto, con eventuale scambio, fra
+<tt>0,1</tt> fino a <tt>v.length-2, v.length-1</tt>
+</p>
+
+<p>
+Nota: quando ci sono cicli con vettori, controllare
+gli indici dei vettori nella prima e nell'ultima
+iterazione:
+</p>
+
+<ul>
+<li>verificare che tutte le operazioni da eseguire
+vengono esguite
+<li>controllare che non si fa mai <tt>v[-1]</tt>
+oppure <tt>v[i]</tt> con <tt>i</tt> maggiore o uguale
+a <tt>v.length</tt>.
+</ul>
+
+<p>
+Nel primo caso, certe operazioni da fare non vengono
+fatte; nel secondo caso, si genera un errore in
+esecuzione <tt>ArrayOutOfBound</tt>
+</p>
+
+<hr>
+
+<h4>Metodo che mette il massimo in fondo</h4>
+
+<p>
+Faccio un ciclo da <tt>0</tt> a <tt>v.length-2</tt>,
+ogni volta confronto ed eventualmente scambio un
+elemento con il successivo.
+</p>
+
+<pre>
+  public static void maxDopo(int v[]) {
+    int i, temp;
+
+    for(i=0; i&lt;=v.length-2; i++)
+      if(v[i]&gt;v[i+1]) {
+        temp=v[i];
+        v[i]=v[i+1];
+        v[i+1]=temp;
+    }
+  }
+</pre>
+
+<p>
+Se <tt>v[i]&lt;=v[i+1]</tt> allora li lascio in pace,
+altrimenti li scambio.
+</p>
+
+<p>
+Quindi, se <tt>v[i]&gt;v[i+1]</tt> li scambio,
+altrimenti non faccio niente.
+</p>
+
+<p>
+Per lo scambio, serve sempre la variabile temporanea.
+</p>
+
+<hr>
+
+<h4>Ordinamento a bolle</h4>
+
+<p>
+Quando eseguo il ciclo, il massimo "risale" fino
+alla cima del vettore.
+</p>
+
+<p>
+Dopo aver fatto questo, resta da ordinare il resto
+del vettore (tutto tranne l'ultimo elemento).
+</p>
+
+<p>
+Versione ricorsiva: invece di copiare il vettore,
+specifico dove il vettore termina (dove finisce
+la parte di vettore da ordinare)
+</p>
+
+<pre>
+public static void ordina(int v[], int fine) { ... }
+</pre>
+
+<p>
+Questo metodo ordina la parte di vettore da <tt>0</tt>
+a <tt>fine</tt>
+</p>
+
+<hr>
+
+<h4>BubbleSort ricorsivo</h4>
+
+<p>
+Faccio il ciclo di confronti, che mette il massimo
+alla fine.
+</p>
+
+<p>
+Faccio la invocazione ricorsiva su tutto il vettore
+tranne il primo elemento.
+</p>
+
+<pre>
+  public static void ordina(int v[], int fine) {
+    int i, temp;
+
+    for(i=0; i&lt;=fine-1; i++)
+      if(v[i]&gt;v[i+1]) {
+        temp=v[i];
+        v[i]=v[i+1];
+        v[i+1]=temp;
+    }
+
+    ordina(v, fine-1);
+  }
+</pre>
+
+<p>
+Cosa manca?
+</p>
+
+<hr>
+
+<h4>BubbleSort: caso base</h4>
+
+<p>
+La parte di vettore da ordinare diventa sempre
+pi&ugrave; piccola a ogni invocazione ricorsiva.
+</p>
+
+<p>
+In altre parole: alla prima invocazione
+<tt>fine</tt> vale <tt>v.length-1</tt> poi diminusce
+di uno, poi di uno, ecc.
+</p>
+
+<p>
+Quando <tt>fine==0</tt> la parte di vettore da
+ordinare &egrave; il solo primo elemento.
+</p>
+
+<p>
+Un vettore (o una parte di vettore) fatta di
+un solo elemento &egrave; gi&agrave; ordinata.
+</p>
+
+<pre>
+  public static void ordina(int v[], int fine) {
+    int i, temp;
+
+    if(fine==0)
+      return;
+
+    for(i=0; i&lt;=fine-1; i++)
+      if(v[i]&gt;v[i+1]) {
+        temp=v[i];
+        v[i]=v[i+1];
+        v[i+1]=temp;
+    }
+
+    ordina(v, fine-1);
+  }
+</pre>
+
+
+<hr>
+
+<h4>BubbleSort, versione iterativa</h4>
+
+<p>
+Questa parte viene ripetuta:
+</p>
+
+<pre>
+    for(i=0; i&lt;=fine-1; i++)
+      if(v[i]&gt;v[i+1]) {
+        temp=v[i];
+        v[i]=v[i+1];
+        v[i+1]=temp;
+    }
+</pre>
+
+<p>
+La prima volta con <tt>fine</tt> pari a
+<tt>v.length-1</tt>, poi con <tt>v.length-2</tt>,
+ecc, fino a 1 (quando <tt>fine</tt> vale <tt>0</tt>
+questa parte non viene eseguita, perch&egrave;
+viene fatto subito <tt>return</tt>)
+</p>
+
+<p>
+Faccio un ciclo con <tt>fine</tt> che va da
+<tt>v.length-1</tt> a <tt>1</tt>.
+</p>
+
+<pre>
+  public static void ordina(int v[]) {
+    int i, temp, fine;
+
+    for(fine=v.length-1; fine&gt;=1; fine--) {
+      for(i=0; i&lt;=fine-1; i++)
+        if(v[i]&gt;v[i+1]) {
+          temp=v[i];
+          v[i]=v[i+1];
+          v[i+1]=temp;
+      }
+    }
+  }
+</pre>
+
+<hr>
+
+<h4>Complessit&agrave; del BubbleSort</h4>
+
+<p>
+Vettore grande <tt>n</tt>, di cui non specifico
+i valori.
+</p>
+
+<p>
+Il ciclo esterno ha <tt>n</tt> iterazioni.
+</p>
+
+<p>
+Il ciclo interno ha <tt>n</tt> iterazioni la
+prima volta, poi <tt>n-1</tt>, ecc: di media,
+ho <tt>n/2</tt> iterazioni.
+</p>
+
+<p>
+Totale: <tt>O(n<sup>2</sup>)</tt>
+</p>
+
+<p>
+Questo vale sia nel caso migliore che nel caso peggiore.
+</p>
+
+<hr>
+
+<h4>Vantaggio del BubbleSort</h4>
+
+<p>
+Se faccio tutto il ciclo interno senza mai fare
+scambi, vuol dire che il vettore &egrave;
+ordinato.
+</p>
+
+<p>
+Infatti, ho:
+</p>
+
+<pre>
+     for(i=0; i&lt;=fine-1; i++)
+        if(v[i]&gt;v[i+1]) 
+           scambia
+</pre>
+
+<p>
+Se non scambio, vuol dire che <tt>v[i]&lt;v[i+1]</tt>
+su tutto il vettore.
+</p>
+
+<p>
+In questo caso, non serve fare le iterazioni successive
+(il vettore &egrave; gi&agrave; ordinato)
+</p>
+
+<hr>
+
+<h4>BubbleSort con verifica di ordinamento</h4>
+
+<p>
+Prima di iniziare ogni catena di scambi, assumo
+che il vettore sia ordinato.
+</p>
+
+<p>
+Se scambio degli elementi, allora non lo era.
+</p>
+
+<p>
+Se alla fine non ho fatto scambi, termino senza
+andare avanti.
+</p>
+
+<pre>
+     boolean ordinato=true;
+
+     for(i=0; i&lt;=fine-1; i++)
+        if(v[i]&gt;v[i+1]) {
+           ordinato=false;
+
+           scambia
+        }
+
+    if(ordinato)
+      return;
+</pre>
+
+<p>
+Come al solito, <tt>if(ordinato)</tt>
+&egrave; lo stesso di <tt>if(ordinato==true)</tt>.
+</p>
+
+<p>
+Nota: <tt>ordinato</tt> indica se il vettore
+era gi&agrave; ordinato prima di fare i confronti.
+</p>
+
+<hr>
+
+<h4>BubbleSort con verifica di ordinamento</h4>
+
+<p>
+Uguale a prima, ma ci metto anche la verifica.
+</p>
+
+<pre>
+  public static void ordina(int v[]) {
+    int i, temp, fine;
+
+    for(fine=v.length-1; fine&gt;=1; fine--) {
+      boolean ordinato=true;
+
+      for(i=0; i&lt;=fine-1; i++)
+        if(v[i]&gt;v[i+1]) {
+          ordinato=false;
+
+          temp=v[i];
+          v[i]=v[i+1];
+          v[i+1]=temp;
+      }
+
+      if(ordinato)
+        return;
+    }
+  }
+</pre>
+
+<hr>
+
+<h4>Complessit&agrave; del BubbleSort</h4>
+
+<p>
+Caso peggiore: devo fare tutto come prima, quindi
+ho <tt>O(n<sup>2</sup>)</tt>
+</p>
+
+<p>
+Caso migliore: il vettore &egrave; gi&agrave; ordinato
+</p>
+
+<p>
+In questo caso, faccio una intera catena di confronti
+(eseguo una volta tutto il ciclo pi&ugrave; interno),
+mi accorgo che <tt>trovato</tt> vale <tt>true</tt>,
+e termino.
+</p>
+
+<p>
+Costo di caso migliore: <tt>O(n)</tt>
+</p>
+
+<p>
+Il nuovo metodo ha la stessa complessit&agrave;
+nel caso peggiore, ma minore nel caso migliore.
+</p>
+
+<hr>
+
+<h4>Complessit&agrave; ottima</h4>
+
+<p>
+Nessun metodo di ordinamento pu&ograve; avere
+complessit&agrave; minore di <tt>O(n)</tt>
+</p>
+
+<p>
+Infatti, devo almeno verificare se il vettore
+&egrave; gi&agrave; ordinato.
+</p>
+
+<p>
+Quindi, il BubbleSort &egrave; ha complessit&agrave;
+ottima nel caso migliore.
+</p>
+
+<p>
+Esistono algoritmi di ordinamento che impiegano
+<tt>O(n log n)</tt> nel caso peggiore.
+</p>
+
+<p>
+Quindi: il BubbleSort &egrave; ottimo nel caso
+migliore, ma non nel caso medio.
+</p>
+
+<hr>
+
+
+<h4>Il mergesort</h4>
+
+<p>
+Basato sul fatto che si possono fondere (merge)
+due array ordinati in un unico array ordinato
+in tempo lineare
+</p>
+
+<p>
+Algoritmo:
+</p>
+
+<ul>
+
+<li>parto dal primo elemento di ogni vettore
+
+<li>prendo il pi&ugrave; piccolo dei due e lo
+metto nel vettore nuovo
+
+</ul>
+
+<hr>
+
+
+<h4>Prima implementazione</h4>
+
+<p>
+Tengo un indice sul primo e sul secondo vettore
+</p>
+
+<p>
+A ogni passo, scelgo il pi&ugrave; piccolo, e lo
+metto nel vettore nuovo
+</p>
+
+<pre>
+  public static int[] merge(int v[], int w[]) {
+    int nuovo[]=new int[v.length+w.length];
+    int i, j, z;
+
+    i=0;
+    j=0;
+    for(z=0; z&lt;v.length+w.length; z++) {
+      if(v[i]&lt;w[j]) {
+        nuovo[z]=v[i];
+        i++;
+      }
+      else {
+        nuovo[z]=w[j];
+        j++;
+      }
+    }
+
+    return nuovo;
+  }
+</pre>
+
+<p>
+Come funziona?
+</p>
+
+<hr>
+
+
+<h4>Esempio di esecuzione</h4>
+
+<p>
+Situazione iniziale:
+</p>
+
+<img src="merge-1.jpg">
+
+<p>
+Uso due freccie per indicare i valori
+di <tt>i</tt> e <tt>j</tt>
+</p>
+
+<p>
+Dato che <tt>v[i]&lt;v[j]</tt>, metto
+<tt>v[i]</tt> nel vettore nuovo, e incremento
+<tt>i</tt>
+</p>
+
+<hr>
+
+
+<h4>Dopo il primo passo</h4>
+
+<p>
+Lascio bianca la prima posizione del primo 
+vettore per chiarezza<br>
+(dentro c'&egrave; ovviamente
+ancora il valore <tt>5</tt>)
+</p>
+
+<img src="merge-2.jpg">
+
+<p>
+Il pi&ugrave; piccolo fra i due elementi puntati
+dalle freccie &egrave; quello di <tt>v</tt>: lo
+copio nel vettore nuovo
+</p>
+
+<hr>
+
+
+<h4>Terzo passo</h4>
+
+<p>
+Situazione attuale:
+</p>
+
+<img src="merge-3.jpg">
+
+<p>
+Questa volta &egrave; <tt>w[j]</tt> quello pi&ugrave;
+piccolo: lo copio nel vettore nuovo
+</p>
+
+<hr>
+
+
+<h4>Quarto passo</h4>
+
+<img src="merge-4.jpg">
+
+<p>
+Questa volta &egrave; di nuovo l'elemento di <tt>v</tt>
+quello pi&ugrave; piccolo
+</p>
+
+<hr>
+
+
+<h4>Ecc.</h4>
+
+<img src="merge-5.jpg">
+
+<p>
+Vado avanti fino alla fine
+</p>
+
+<hr>
+
+
+<h4>Perch&egrave; funziona?</h4>
+
+<p>
+Ad ogni passo, il vettore nuovo contiene
+un elemento in pi&ugrave;
+</p>
+
+<p>
+Ad ogni passo, l'elemento che viene messo
+nel vettore nuovo &egrave;:
+</p>
+
+<ul>
+
+<li>pi&ugrave; piccolo di tutti quelli che
+seguono nello stesso vettore (perch&egrave;
+i vettori sono ordinati)
+
+<li>pi&ugrave; piccolo dell'elemento dell'altro
+vettore (perch&egrave; l'algorimo sceglie il
+pi&ugrave; piccolo)
+
+</ul>
+
+<p>
+Quindi, ad ogni passo viene sempre messo nel
+vettore nuovo l'elemento pi&ugrave; piccolo
+fra quelli che mancano
+</p>
+
+<hr>
+
+
+<h4>Terminazione</h4>
+
+<p>
+Il programma di sopra funziona solo finch&egrave;
+i vettori non sono finiti
+</p>
+
+<p>
+Andando avanti, si arriva a questo punto:
+</p>
+
+<img src="merge-6.jpg">
+
+<p>
+L'elemento di <tt>v</tt> &egrave; pi&ugrave; piccolo
+per cui viene copiato
+</p>
+
+<hr>
+
+
+<h4>Dopo la copia dell'ultimo</h4>
+
+<p>
+Ora l'indice su <tt>v</tt> viene ancora incrementato,
+per cui va fuori:
+</p>
+
+<img src="merge-7.jpg">
+
+<p>
+Quando si va a fare il confronto fra <tt>v[i]</tt>
+e <tt>v[j]</tt>, si genera un errore
+</p>
+
+<p>
+Il problema &egrave; che <tt>i</tt> &egrave; troppo
+grande (non &egrave; un indice valido per l'array)
+</p>
+
+<hr>
+
+
+<h4>Soluzione</h4>
+
+<p>
+Modifico il codice: quando uno degli indici &egrave;
+fuori dal vettore, copio l'elemento dell'altro
+</p>
+
+<p>
+Algoritmo: prendo sempre l'elemento pi&ugrave;
+piccolo fra i due vettori e passo all'elemento
+successivo di quel vettore; quando non ci sono
+pi&ugrave; elementi di uno dei due vettori,
+copio sempre l'altro
+</p>
+
+<pre>
+public static int[] merge(int v[], int w[]) {
+  int nuovo[]=new int[v.length+w.length];
+  int i, j, z;
+
+  i=0;
+  j=0;
+  for(z=0; z&lt;v.length+w.length; z++) {
+    if(j&gt;=w.length) {
+      nuovo[z]=v[i];
+      i++;
+    }
+    else if(i&gt;=v.length) {
+      nuovo[z]=w[j];
+      j++;
+    }
+    else if(v[i]&lt;w[j]) {
+      nuovo[z]=v[i];
+      i++;
+    }
+    else {
+      nuovo[z]=w[j];
+      j++;
+    }
+  }
+
+  return nuovo;
+}
+</pre>
+
+<hr>
+
+
+<h4>Costo di esecuzione</h4>
+
+<p>
+Quante operazioni servono per eseguire
+il metodo di merge?
+</p>
+
+<p>
+La parte principale del metodo &egrave;
+dentro un ciclo:
+</p>
+
+<pre>
+for(z=0; z&lt;v.length+w.length; z++) {
+  ...
+}
+</pre>
+
+<p>
+All'interno del ciclo ho solo un numero costante
+di operazioni (al pi&ugrave;, 6 operazioni
+</p>
+
+<p>
+Il numero di operazioni &egrave; quindi
+proporzionale a <tt>v.length+w.length</tt>
+</p>
+
+<p>
+Costo di esecuzione: <tt>O(n)</tt> dove <tt>n</tt>
+&egrave; la dimensione complessiva dei due vettori
+</p>
+
+<hr>
+
+
+<h4>Ordinamento per fusione</h4>
+
+<p>
+&Egrave; un algoritmo ricorsivo
+</p>
+
+<pre>
+int [] mergeSort(int v[]) {
+  ...
+}
+</pre>
+
+<p>
+Per semplicit&agrave;, realizziamo un metodo
+che ritorno un altro vettore (ordinato), invece
+di ordinare quello passato come parametro
+</p>
+
+<hr>
+
+
+<h4>Idea di base</h4>
+
+
+<p>
+Supponiamo che sia la prima met&agrave;
+che la seconda met&agrave; del vettore
+siano gi&agrave; ordinate:
+</p>
+
+<img src="meta.jpg">
+
+<p>
+Per ottenere un unico vettore ordinato,
+potrei usare il metodo di fusione
+</p>
+
+<hr>
+
+
+<h4>Metodo di fusione</h4>
+
+<p>
+Creo due vettori in cui copio le due
+parti, e poi faccio la fusione di vettori
+ordinati:
+</p>
+
+<img src="fondi.jpg">
+
+<hr>
+
+
+<h4>Condizione necessaria</h4>
+
+<p>
+Questo metodo funziona soltanto se le due
+met&agrave; del vettore sono gi&agrave; ordinate
+</p>
+
+<p>
+Se non lo sono?
+</p>
+
+<p>
+Le devo ordinare
+</p>
+
+<p>
+Il metodo <tt>mergeSort(v)</tt> fa esattamente
+questo: ordina un vettore.
+</p>
+
+<p>
+I due vettori pi&ugrave; piccoli li posso ordinare
+con due invocazioni ricorsive
+</p>
+
+<hr>
+
+
+<h4>Caso base della ricorsione</h4>
+
+<p>
+Se il vettore &egrave; grande <tt>0</tt> oppure <tt>1</tt>
+elemento, restituisco un vettore uguale
+</p>
+
+<hr>
+
+
+<h4>Algoritmo complessivo</h4>
+
+<ul>
+
+<li>se il vettore ha zero elementi, ritorna un vettore vuoto
+
+<li>se il vettore ha un elemento, copialo in un nuovo
+vettore grande uno
+
+<li>spezza il vettore in due parti
+
+<li>ordina le due parti con due invocazioni ricorsive
+
+<li>restituisci il vettore ottenuto per fusione
+
+</ul>
+
+<hr>
+
+
+<h4>Codice del mergesort</h4>
+
+<p>
+Non dovete ricordare a memoria il metodo
+</p>
+
+<p>
+L'algoritmo invece s&iacute;
+</p>
+
+<pre>
+  public static int[] mergeSort(int v[]) {
+    int ordinato[]=new int[v.length];
+
+    if(v.length==0)
+      return ordinato;
+
+    if(v.length==1) {
+      ordinato[0]=v[0];
+      return ordinato;
+    }
+
+    int primo[]=new int[v.length/2];
+    int secondo[]=new int[(v.length+1)/2];
+
+    System.arraycopy(v, 0, primo, 0, v.length/2);
+    System.arraycopy(v, v.length/2, secondo, 0, (v.length+1)/2);
+
+    int primo_ord[]=mergeSort(primo);
+    int secondo_ord[]=mergeSort(secondo);
+
+    return merge(primo_ord, secondo_ord);
+  }
+</pre>
+
+<hr>
+
+
+<h4>Nota</h4>
+
+<p>
+Perch&egrave; ho <tt>v.length/2</tt> da una parte
+e <tt>(v.length+1)/2</tt> dall'altra?
+</p>
+
+<p>
+Se il vettore ha un numero dispari di elementi,
+allora facendo due parti grandi <tt>v.length/2</tt>
+mi perdo l'ultimo elemento
+</p>
+
+<hr>
+
+
+<h4>Costo del mergesort</h4>
+
+<p>
+A ogni passo, ho un costo lineare (escludendo
+il costo delle invocazioni ricorsive)
+</p>
+
+<p>
+Per&egrave; il costo &egrave; lineare nella dimensione
+del vettore passato, non in quella del vettore originario
+</p>
+
+<p>
+In altre parole: anche se il vettore di partenza &egrave;
+grande <tt>100</tt>, a un certo punto far&ograve;
+le invocazioni ricorsive con vettori grandi <tt>10</tt>
+</p>
+
+<hr>
+
+
+<h4>Invocazioni ricorsive</h4>
+
+<p>
+Il problema si risolve osservando la sequenza delle
+invocazioni ricorsive
+</p>
+
+<p>
+Le prime due invocazioni sono fatte su vettori
+grandi la met&agrave;:
+</p>
+
+<img src="ricorsivo-1.jpg">
+
+<hr>
+
+
+<h4>Secondo passo</h4>
+
+<p>
+Ognuna delle due invocazioni ne fa altre due, su
+vettori grandi ancora la met&agrave;:
+</p>
+
+<img src="ricorsivo-2.jpg">
+
+<hr>
+
+
+<h4>Altre chiamate</h4>
+
+<p>
+In ogni chiamata ricorsiva, il vettore viene ancora
+spezzato e vengono fatte due invocazioni:
+</p>
+
+<img src="ricorsivo-3.jpg">
+
+<p>
+ecc.
+</p>
+
+<hr>
+
+
+<h4>Osservazione</h4>
+
+<p>
+Contare le caselline di ogni riga
+</p>
+
+<img src="ricorsivo-3.jpg">
+
+<p>
+In ogni riga, ho sempre un numero di caselle
+uguale alla dimensione del vettore di partenza
+</p>
+
+<p>
+Quindi?
+</p>
+
+<hr>
+
+
+<h4>Costo totale</h4>
+
+<p>
+Ogni sottovettore corrisponde a una invocazione
+ricorsiva
+</p>
+
+<p>
+Ogni invocazione ricorsiva ha costo pari alla
+dimensione del vettore passato
+</p>
+
+<p>
+Quindi, il totale di tutte le invocazioni ricorsive
+che corrispondono a una certa riga ha costo <tt>n</tt>
+(dimensione del vettore originario)
+</p>
+
+<hr>
+
+
+<h4>Costo totale</h4>
+
+<p>
+Ogni riga ha costo <tt>n</tt>
+</p>
+
+<p>
+Ci sono <tt>log(n)</tt> righe.
+</p>
+
+<p>
+Costo totale del mergesort: <tt>O(n log(n))</tt>
+</p>
+
+<p>
+Si pu&ograve; dimostrare che non esistono algoritmi
+pi&ugrave; efficienti
+</p>
+
+<!-- istruzione dominante -->
+<!-- esempio di programma difficile, ma piu' efficente -->
+
+</body>
+</html>
+
+

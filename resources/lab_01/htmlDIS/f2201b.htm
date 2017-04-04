@@ -1,0 +1,160 @@
+<!doctype html public "-//w3c//dtd html 4.0 transitional//en">
+<html>
+<head>
+   <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <meta name="Generator" content="Microsoft Word 97">
+   <meta name="Template" content="C:\PROGRAMMI\MICROSOFT OFFICE\OFFICE\html.dot">
+   <meta name="GENERATOR" content="Microsoft FrontPage 4.0">
+   <title>1</title>
+</head>
+<body background="bgrnd.jpg">
+<b><font size=+2>1.b) Richiami sulla terminologia OO</font></b>
+<div align=right>Riferimenti: <b>[1a]</b> capitolo 5 e 13</div>
+
+<center>
+<hr></center>
+
+<p>1.
+<i>Software tradizionale e Software Object Oriented</i></p>
+
+<ol>
+<p>Ai metodi di progettazione e sviluppo tradizionali, basati sulla progettazione
+e realizzazione distinta di dati e funzioni (logica del sistema), si contrappongono
+metodologie di progetto e sviluppo <i>object oriented</i>; queste prevedono
+software organizzato in "moduli" comprendenti sia dati che funzioni.
+<center>
+</p>
+<p><img SRC="Image1.gif" height=269 width=422></center>
+
+<p>In OOP i dati prendono il nome di <i>attributi</i>, le procedure diventano
+i <i>metodi</i>; attributi e metodi vengono organizzati in "moduli" denominati
+<i>classi</i>.
+<center>
+<p><img SRC="Image2.gif" height=214 width=360></center>
+
+<p>I concetti fondamentali su cui basa lo sviluppo OO sono: <i>incapsulamento</i>,
+<i>polimorfismo</i>
+e <i>ereditariet&agrave;</i>.
+</ol>
+
+<p>2. <i>Classi e oggetti</i></p>
+
+<dir>
+<dir>Le classi descrivono gruppi di oggetti con:</dir>
+</dir>
+
+<ul>
+<ul>
+<li>
+Simili propriet&agrave; (attributi)</li>
+
+<li>
+Stesso comportamento (metodi)</li>
+
+<li>
+Stesse relazioni con gli altri oggetti</li>
+</ul>
+</ul>
+
+<dir>
+<dir>Una classe &egrave; la descrizione generica di un insieme di oggetti.
+Un oggetto &egrave; una rappresentazione concreta di una classe (istanza).</dir>
+</dir>
+
+<i>3. Aggregazione</i>
+
+<ol>
+L'aggregazione &egrave; una relazione tra una classe "tutto" e una
+classe "componente" (indicata con <i>part-of</i> o <i>has-a</i>)
+<center>
+<p><img SRC="Image3.gif" height=165 width=418></center>
+</ol>
+
+<p><i>4. Incapsulamento</i></p>
+
+<ol>
+<p>Consiste nella separazione degli aspetti resi visibili all'esterno,
+dai dettagli di implementazione interna.
+<br></p>
+</ol>
+
+<p>5. <i>Polimorfismo</i></p>
+
+<ol>
+Classi diverse descrivono oggetti di tipo diverso. Nella definizione
+di classi diverse possiamo trovare lo stesso metodo (stesso nome e parametri)
+con implementazioni diverse. Il fatto che due classi di oggetti abbiano
+in comune un metodo non garantisce uguale comportamento. Oggetti di tipo
+diverso rispondono in maniera diversa allo stesso messaggio.
+<center>
+<p><img SRC="Image4.gif" height=213 width=370></center>
+
+</ol>
+
+<p>
+<i>6. Ereditariet&agrave;</i></p>
+
+<ol>
+E' una relazione tra due classi (indicata con <i>kind-of</i> o <i>is-a</i>),
+una superclasse e una sottoclasse derivata dalla prima. Una sottoclasse
+"eredita" tutti i metodi e gli attributi della sua superclasse e mantiene
+anche l'identit&agrave; della superclasse; se la classe B &egrave; derivata
+dalla classe A, ogni oggetto di B &egrave; anche un oggetto di A, mentre
+non &egrave; vero il contrario.
+<center>
+<p><img SRC="Image5.gif" height=195 width=456></center>
+
+<p>E' una relazione fondamentale, alla base del riutilizzo del codice OO;
+consente di definire una nuova classe esprimendo unicamente le differenze
+che essa ha rispetto a una o pi&ugrave; classi gi&agrave; definite. Con
+l'ereditariet&agrave; &egrave; possibile organizzare il software in una
+gerarchia di classi sempre pi&ugrave; specifiche.
+<br>&nbsp;
+</ol>
+
+<p>
+<i>7. Esempi di ereditariet&agrave; in C++</i></p>
+
+<ul>
+<ul>
+<li>
+Le definizioni di <a href="puntoXY.h">puntoXY.h</a> e <a href="puntoXYZ.h">puntoXYZ.h</a></li>
+
+<li>
+Le definizioni di <a href="AlbBinario.h">AlbBinario.h</a> e <a href="AlbRic.h">AlbRic.h</a></li>
+</ul>
+</ul>
+
+<i>8. Ereditariet&agrave; multipla in C++</i>
+
+<ol>
+Completamento del diagramma con la definizione della classe "motociclo"
+<center>
+<p><i>class motociclo : public motocicletta, public bicicletta</i></center>
+
+</ol>
+
+<i>9. Progettazione di tipi astratti</i>
+
+<dir>
+<dir>Le scelte pi&ugrave; importanti vengono effettuate in sede di progettazione,
+dove viene valutato:</dir>
+</dir>
+
+<ul>
+<ul>
+<li>
+se la classe pu&ograve; essere derivata da altre, quindi, se il tipo da
+realizzare rappresenta una specializzazione di un tipo gi&agrave; esistente</li>
+
+<li>
+se a sua volta la classe dovr&agrave; mantenere un grado di genericit&agrave;
+tale da rappresentare la base per la definizione di tipi pi&ugrave; specifici</li>
+
+<li>
+quali propriet&agrave; devono essere rese pubbliche e quali private</li>
+</ul>
+</ul>
+
+</body>
+</html>

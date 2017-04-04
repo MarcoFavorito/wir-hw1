@@ -1,0 +1,125 @@
+<!doctype html public "-//w3c//dtd html 4.0 transitional//en">
+<html>
+<head>
+<link href="java.css" rel="stylesheet" type="text/css">
+<title>Cambiare dimensioni e forma dei caratteri</title>
+</head>
+
+<body>
+
+<h2>Cambiare dimensioni e forma dei caratteri</h2>
+
+I caratteri che si usano per rappresentare le lettere
+sono caratterizzati da tre componenti: il tipo di
+carattere (per esempio questo &egrave; il tipo
+<tt>Courier</tt>), il modo in cui viene disegnato
+(per esempio, questo &egrave;
+<b style="color: black;">grassetto</b>
+mentre questo &egrave;
+<i style="color: black;">corsivo</i>), e infine la
+dimensione del carattere stesso (questi
+caratteri sono <font size="-2">pi&ugrave; piccoli</font>,
+mentre questi sono <font size="+2">pi&ugrave;
+grandi</font>).<p>
+
+Per modificare i caratteri con i quali il testo viene
+stampato &egrave; necessario:
+
+<ul>
+<li>memorizzare le caratteristiche con cui si vuole
+stampare in una variabile di tipo <tt>Font</tt>;
+<li>dare il comando che dice che da ora in avanti tutti
+i caratteri vanno stampati in quel modo.
+</ul>
+
+Quindi, prima di tutto si dichiara una variabile di tipo
+<tt>Font</tt>. Il modo con cui si dicono le caratteristiche
+del font (cio&egrave; il modo di stampare) &egrave; usando
+il comando <tt>new Font</tt>, come segue:
+
+<pre>
+  f = new Font(tipo_di_carattere, modo, dimensione);
+</pre>
+
+dove <tt>f</tt> &egrave; una variabile di tipo <tt>Font</tt>.
+Questa funzione ha tre argomenti: la forma dei caratteri
+(per esempio, "TimesRoman", "Courier", ecc.), il modo di stampare
+(normale, grassetto, corsivo, ecc), e la dimensione dei
+caratteri.<p>
+
+Esempi di tipo di carattere sono:<p>
+
+<pre>
+"TimesRoman"
+"Courier"
+"Helvetica"
+</pre>
+
+Il modo in cui possono venire stampati i caratteri sono:
+normale, grassetto e corsivo.<p>
+
+<pre>
+Font.PLAIN
+Font.BOLD
+Font.ITALIC
+</pre>
+
+Una volta memorizzato un font in una variabile <tt>f</tt>,
+occorre impostare questo come font di default. Si esegue
+quindi la istruzione <tt>setFont(f);</tt>, e questo fa
+s&iacute; che tutti i successivi caratteri che vengono
+stampati appaiono con le caratteristiche specificate.<p>
+
+Il programma
+<a href="CambiaFont.java">CambiaFont.java</a>
+mostra un esempio dei modi in cui si possono stampare
+delle stringhe.<p>
+
+<pre>
+/*
+  Cambiamento di font
+*/
+
+import java.awt.*;
+
+public class CambiaFont extends java.applet.Applet {
+  public void paint(Graphics g) {
+    Font f;
+
+	/* scrive con il font di default */
+    g.drawString("Questa e' una stringa",10,10);
+
+	/* cambia font: times con dimensione 14 */
+    f = new Font("TimesRoman", Font.PLAIN, 14);
+    g.setFont(f);
+
+	/* scrive un'altra stringa */
+    g.drawString("Nuova stringa in un nuovo carattere",10,50);
+
+	/* ancora cambiamento di font: Helvetica bold, dim 16 */
+    f = new Font("Helvetica", Font.BOLD, 16);
+    g.setFont(f);
+    g.drawString("In grassetto",10,100);
+
+	/* grassetto+corsivo */
+    f = new Font("Symbol", Font.BOLD+Font.ITALIC, 12);
+    g.setFont(f);
+    g.drawString("safdsaf",10,150);
+  }
+}
+
+</pre>
+
+Il risultato &egrave; il seguente.<p>
+
+<center>
+<img src="CambiaFont.gif">
+</center>
+
+<p>
+
+
+</body>
+</html>
+
+

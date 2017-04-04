@@ -1,0 +1,34 @@
+<!doctype html public "-//w3c//dtd html 4.0 transitional//en">
+<html>
+<head>
+   <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <meta name="GENERATOR" content="Microsoft FrontPage 4.0">
+   <title></title>
+</head>
+<body bgcolor="#99CCFF">
+
+<h2><b><i><font size="+2">Elementi caratterizzanti del progetto: Architetture Client/Server, socket, serversocket, multithreading e GUI.</font></i></b></h2>
+
+per maggiori dettagli e per il materiale didattico vedi la <a href="../impianti/index.htm">pagina del corso di impianti di elaborazione (2000)</a>
+
+
+<h2><b><i><font size="+2">L'esame consiste nella realizzazione di un progetto da scegliersi tra i seguenti:</font></i></b></h2>
+
+
+<h2><b><i><font size="+2">Progetto numero 1.&nbsp; Implementazione di un server&nbsp; FTP.</font></i></b></h2> <p>L'obiettivo di tale progetto e' l'implementazione di un&nbsp; client FTP e di un server&nbsp; FTP multithreaded in grado di implementare le seguenti funzionalita': <ul>   <li><b>get</b>: comando che permette di trasferire un file remoto nella     directory locale al Client (comando RETR del protocollo);</li>   <li><b>put</b>: comando che permette di trasferire un file locale nella     directory locale al server (comando STOR del protocollo);</li>   <li><b>dir</b>: comando che permette di ottenere la lista dei files nella     directory remota (comando LIST del protocollo);</li>   <li><b>quit</b>:&nbsp; per chiudere la connessione (comando QUIT del     protocollo).<br>     &nbsp;</li> </ul> <p>Si vogliono inoltre implementare i seguenti comandi del protocollo:</p> <ul>   <li><b>USER</b>: per acquisire il nome dell'utente;</li>   <li><b>PORT</b>: per comunicare la porta su cui trasferire i dati;</li>   <li><b>CWD</b>:&nbsp; per cambiare la directory;</li>   <li><b>PWD</b>:&nbsp; per conoscere la directory di lavoro;</li>   <li><b>DELE</b>: per cancellare un file remoto.</li> </ul> <p>Nel definire l'interazione tra il Client FTP ed il&nbsp; Server scritto dall'utente, si vogliono osservare le raccomandazioni <a href="http://www.faqs.org/rfcs/rfc959.html">rfc 959</a>che definiscono il protocollo FTP.<br> &nbsp;</p> 
+
+<h2><b><i>Progetto numero 2.&nbsp; Realizzazione di un Sistema&nbsp; SMTP.</i></b></h2> <p><br> &nbsp;Si vuole sviluppare un&nbsp; sistema&nbsp; Cleint/Server SMTP (Simple Mail Transfer Protocol) per l'invio della posta elettronica secondo lo standard&nbsp; <a href="http://lucy.ils.unc.edu/~bert/rfc821.shtml">RFC0821</a>. Il server SMTP dovra' essere in comunicazione con un utente locale attraverso un'applicazione per la posta elettronica.</p> <p>&nbsp;Il server SMTP dovra' svolgere le seguente funzionalita':</p> <blockquote>   <ol>     <li>Ricevere ed inviare i messaggi da un' applicazione&nbsp; per la posta       elettronica di un utente locale.</li>     <li>Salvare i messaggi provenienti da altri utenti diretti ad un utente       locale in un file secondo il formato richiesto da un'applicazione per la       posta elettronica (ex : POP3 <a href="http://www.faqs.org/rfcs/rfc1939.html">RFC1939</a>).</li>   </ol> </blockquote> <p>Il Client SMTP dovra' svolgere le seguenti funzionalita': <blockquote>   <ol>     <li>Risolvere gli indirizzi degli utenti di destinazione attraverso       l'accesso al DNS locale.</li>     <li>Recapitare i messaggi al SMTP server dell'utente di destinazione.</li>   </ol> </blockquote> <p>&nbsp;</p>
+
+<h2><b><i>Progetto numero 3.&nbsp; Gestione di un Sistema&nbsp; di Talk multiutente.</i></b></h2> <p>L'obiettivo di tale progetto e' lo sviluppo di un'applicazione Clent/Server che permetta la realizzazione di un talk multiutente<br> Si vogliono implementare le seguenti funzionalita':<br> &nbsp; <blockquote>   <ol>     <li>Registrazione/Deregistrazione del Client presso il Server centrale.</li>     <li>Richiesta al Server da parte del Client degli utenti disponibili per lo       stabilimento di un talk e della lista dei talk in corso.</li>     <li>Richiesta attraverso il server centrale di stabilire un nuovo talk con       un Client o di entrare in un talk gia' in corso.</li>     <li>Richiesta dei talk in corso presso altri client e lista dei client       partecipanti in ogni talk.</li>     <li>Replica del Client attraverso il Server centrale alle richieste di       stabilimento di un talk.&nbsp; La replica sara' di 4 tipi diversi.</li>   </ol>   <ul>     <li>Rifiuto allo stabilimento del Talk.</li>     <li>Inclusione dell'utente&nbsp; nel talk indicato dal client;</li>     <li>Avvio di un nuovo Talk;</li>     <li>Disposizione dell'utente in coda di attesa fino al termine di uno dei       talk in corso per una richiesta di stabilimento di un nuovo talk.</li>   </ul>   <ol start="6">     <li>Ognuno dei&nbsp; talk attivi presso un Client dovra' svolgersi in una       finestra separata.&nbsp; All'interno di ogni finestra di Talk, ad&nbsp;       ognuno dei Client e' dedicato uno spazio apposito per la scrittura.<br>       &nbsp;</li>   </ol> </blockquote> <p><br> &nbsp;</p>
+
+<h2><b><i>Progetto numero 4.&nbsp; Proxy HTTP con gestion di cache e file di log.</i></b></h2> <p>L'obiettivo di tale progetto e' lo sviluppo di un Proxy HTTP. Tale Proxy intercetta le chiamate del browser ad una pagina P. Verifica la disponibilità nella propria cache della pagina P. Se P è in cache la pagina viene ritornata dal Proxy, altrimenti il Proxy si connette al server Web contenente P, scarica la pagina in locale, inserisce P in cache e infine ritorna P al browser richiedente. La cache viene gestita secondo la politica LRU. Ogni oggetto richiesto viene archiviato in un file di log.
+
+
+<h2><b><i>
+Implementazione di un client/server Gnutella e Napster (N.B. devono essere implementati entrambi.)
+<a href="http://www.gnutellanews.com/information/comparison.shtml">Vedi doc HTML </a> </i></b></h2>
+
+L'obiettivo di tale progetto e' lo sviluppo di un architettura C/S simil-Gnutella e simil-Napster. Per simulare la presenza di più client su una stessa macchina, ciascun client sarà caratterizzato da un porta diversa. 
+
+</body>
+</html>

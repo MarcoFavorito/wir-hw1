@@ -1,0 +1,103 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=windows-1252">
+<TITLE>Reti di Calcolatori</TITLE>
+</HEAD>
+<BODY background="bgrnd.jpg">
+
+<B><FONT SIZE=5><P>13) Il livello applicativo in  Internet - http &amp; smtp </P>
+<hr>
+</FONT>
+</B>1.&nbsp; Generalit&agrave; sull'HTTP
+<DIR>
+<DIR>
+
+<P ALIGN="JUSTIFY">E' il protocollo che regola lo scambio (ottimizzato) di informazioni ipertestuali in sistemi come Internet, dove le informazioni disponibili sono distribuite su tutta la rete.  Nel protocollo sono inclusi metodi per la ricerca e per il reperimento delle risorse; definisce un metodo universale per la loro individuazione (URI - Universal Resource Identifier) attraverso nomi (URN - Universal Resource Name) e indirizzi (URL - Uniform Resouce Locator).  E' un protocollo che non prevede il mantenimento di uno stato tra 2 transazioni eseguite in sequenza.  Ogni transazione prevede:</P></DIR>
+</DIR>
+
+
+<UL>
+
+<UL>
+<LI>Connessione tra Client e Server - la porta riservata al server http &egrave; la 80, ma possono essere usate anche porte non riservate</LI><LI>Emissione di un messaggio di richiesta del Client al Server</LI><LI>Emissione di un messaggio di risposta del Server al Client</LI><LI>Chiusura della connessione da parte di entrambi</LI></UL>
+</UL>
+
+2.&nbsp; Formato della richiesta
+
+<OL>
+
+<P ALIGN="JUSTIFY">Request            <FONT FACE="Wingdings">&#224;</FONT>
+ SimpleRequest | FullRequest</P>
+<P ALIGN="JUSTIFY">SimpleRequest <FONT FACE="Wingdings">&#224;</FONT>
+ GET &lt;URI&gt; CrLf</P>
+<P ALIGN="JUSTIFY">FullRequest      <FONT FACE="Wingdings">&#224;</FONT>
+ Method &lt;URL&gt; PVersion CrLf [HTRQHeader]* [CrLf Data]</P>
+<P ALIGN="JUSTIFY">Methods           <FONT FACE="Wingdings">&#224;</FONT>
+ GET | HEAD | CHECKOUT | SHOWMETHOD | PUT | DELETE |</P>
+<P ALIGN="JUSTIFY">                              POST | LINK | UNLINK | CHECKIN | TEXTSEARCH | </P>
+<P ALIGN="JUSTIFY">                              SPACEJUMP | SEARCH…</P>
+<P ALIGN="JUSTIFY">PVersion          <FONT FACE="Wingdings">&#224;</FONT>
+ HTTP/1.0</P>
+<P ALIGN="JUSTIFY">HTRQHeader  <FONT FACE="Wingdings">&#224;</FONT>
+ &lt;NomeCampo&gt; : &lt;Valore&gt; &lt;CrLf&gt;</P>
+<P ALIGN="JUSTIFY">Data                <FONT FACE="Wingdings">&#224;</FONT>
+ Contenuto in formato MIME (Multipurpose Internet Mail Exstensions)</P>
+<P ALIGN="JUSTIFY">&nbsp;  </P>
+<P ALIGN="JUSTIFY">dove Method indica il metodo da eseguire sull'oggetto indicato dall'URL.  </P>
+<P ALIGN="JUSTIFY">La sezione "HTTP Request Header" permette di arricchire la richiesta con dei parametri, come quelli riguardanti le autorizzazioni del richiedente</P>
+<I><P ALIGN="CENTER">Authorization: user nome:password</P>
+</I><P ALIGN="JUSTIFY">o l'indicazione ad eventuali proxy server intermedi, di non fornire pagine residenti nella cache</P>
+<I><P ALIGN="CENTER">Pragma: no-cache</P>
+</I></OL>
+
+
+3.&nbsp; Formato della risposta
+
+<OL>
+
+<P ALIGN="JUSTIFY">Response    <FONT FACE="Wingdings">&#224;</FONT>
+ PVersion StatusCode Data CrLf</P>
+<P ALIGN="JUSTIFY">PVersion    <FONT FACE="Wingdings">&#224;</FONT>
+ HTTP/1.0</P>
+<P ALIGN="JUSTIFY">StatusCode <FONT FACE="Wingdings">&#224;</FONT>
+ 2xx | 4xx | 5xx</P>
+<P ALIGN="JUSTIFY">Data           <FONT FACE="Wingdings">&#224;</FONT>
+ Sequenza di caratteri</P>
+<P ALIGN="JUSTIFY"></P>
+<P ALIGN="JUSTIFY">Lo StatusCode indica il successo della richiesta (2xx) o un errore nella sua elaborazione (4xx o 5xx).  Il corpo del messaggio &egrave; in formato MIME; il contenuto dipende dal tipo di oggetto.  In una semplice richiesta di un documento HTML </P>
+<I><P ALIGN="CENTER">GET /test_cgi/test3post.html HTTP/1.0</P>
+</I><P ALIGN="JUSTIFY">otteniamo una risposta di questo tipo</P>
+<I><P ALIGN="CENTER">HTTP/1.0 200 Document Follows</P>
+<P ALIGN="CENTER">Content-Length: 469</P>
+<P ALIGN="CENTER">Content-Type: text/html</P>
+<P ALIGN="CENTER">Date: Tue, 06 Jun 2000 21:30:01 GMT</P>
+<P ALIGN="CENTER">Last-Modified: Sun, 28 May 2000 22:12:02 GMT</P>
+<P ALIGN="CENTER">Server: OmniHTTPd</P>
+<P ALIGN="CENTER">&lt;html&gt;</P>
+<P ALIGN="CENTER">&lt;head&gt;</P>
+<P ALIGN="CENTER">&lt;title&gt; ……testo……&lt;/title&gt;</P>
+<P ALIGN="CENTER">&lt;/head&gt;</P>
+<P ALIGN="CENTER">&lt;body&gt;………testo……… &lt;/body&gt;</P>
+<P ALIGN="CENTER">&lt;/html&gt;</P>
+</I><P ALIGN="JUSTIFY">dopodich&egrave; viene chiusa la connessione. </P>
+</OL>
+
+
+4.&nbsp; Test da eseguire a casa
+
+
+<UL>
+
+<UL>
+<LI>Procurarsi OmniHTTPD su "Tucows" o JavaWebServer sul sito della SUN</LI><LI>Compilare e provare <B>Main.java</B> (Web Watcher)</LI><LI>Scambiare messaggi con il server utilizzando "telnet" per la connessione</LI></UL>
+</UL>
+
+5.&nbsp; SMTP in un esempio
+<DIR>
+<DIR>
+
+<P ALIGN="JUSTIFY">Analisi di <B>SpedisciMail.java
+</B></P></DIR>
+</DIR>
+</BODY>
+</HTML>

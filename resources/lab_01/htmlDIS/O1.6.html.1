@@ -1,0 +1,159 @@
+<!doctype HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<html>
+
+<head>
+<meta http-equiv="Content-Language" content="it">
+<meta name="GENERATOR" content="Microsoft FrontPage 5.0">
+<meta name="ProgId" content="FrontPage.Editor.Document">
+<title></title>
+</head>
+
+<body TEXT="#4D1201" BGCOLOR="#BADBFF">
+
+<hr>
+<h1 align="center"><font color="red" , size="+4"><b>Obiettivo O1.</b>6 </font>
+</h1> <p align="center"><font color="blue">Progetto Strategico MIUR
+&quot;Società dell'Informazione&quot; <br> <a href="../index.html">Azione
+A2</a>, Anno I</font></p> <hr> <h3><b>Unità coinvolte</b></h3> <ul>
+<li>ICAR-CNR, Rende (CS) </li> </ul> <hr> <h3><b>Descrizione</b></h3> <p
+align="justify">L'obiettivo consiste nella definizione di metodi per la
+rappresentazione dei meta-dati relativi alla definizione di un sistema di
+accesso integrato a sorgenti informative. I<span style="font-family: Times New
+Roman"> meta-dati (relativi, ad esempio, ai contenuti delle sorgenti, alle loro
+relazioni, ai vincoli ad esse associati ed ai meccanismi di accesso per esse
+definiti) costituiscono una componente di primaria importanza sia in fase di
+progettazione della specifica istanza di sistema di accesso integrato da
+realizzare, sia nella fase di utilizzazione dello stesso. Nell'ambito di tale
+obiettivo sono state considerate due tipologie principali di meta-dati, </span>
+<span style="font-size: 12.0pt; font-family: Times">particolarmente rilevanti
+</span><span style="font-family: Times New Roman">per la definizione e
+l'utilizzo di un sistema di accesso integrato: (i) meta-dati intensionali,
+attinenti le descrizioni dei concetti rappresentati nelle varie sorgenti e
+delle relazioni fra tali concetti, e (ii) meta-dati estensionali, che
+descrivono il contenuto estensionale di una o più sorgenti
+informative. </span>La prima categoria di meta-dati, indispensabile per la
+definizione dei processi di integrazione semantica, è fondamentale sia in fase
+di specifica del sistema di accesso integrato sia in fase di utilizzo del
+sistema stesso, ad esempio per la produzione delle risposte alle query.  <span
+style="font-size: 12.0pt; font-family: Times">Una tipologia particolarmente
+rilevante di meta-dati estensionali è costituita da sinossi che rappresentano
+in forma aggregata ed approssimata la distribuzione dei dati appartenenti ad
+una singola sorgente informativa (sinossi intra-sorgente) o a più sorgenti
+(sinossi inter-sorgente). </span>Le sinossi sulla distribuzione interna dei
+dati in una singola sorgente forniscono un efficace strumento sia per la stima
+veloce del costo di esecuzione delle query sia per fornire risposte veloci ed
+approssimate alle interrogazioni stesse, senza accedere ai dati. Una o più
+rappresentazioni compatte che integrino in modo riassuntivo i dati di più
+sorgenti della rete permettono, invece, di correlare i contenuti informativi
+delle diverse sorgenti. Inoltre, più sinossi differenziate, distribuite su
+diversi nodi della rete, possono fornire differenti prospettive di correlazione
+(ad esempio, nodi diversi possono comprimere a diversi livelli di dettaglio le
+informazioni integrate, fornendo descrizioni più dettagliate di alcune sorgenti
+e di alcuni dati piuttosto che di altri).</p> <hr> <h3><b>Risultati
+ottenuti</b></h3> <p align="justify"><span style="font-family: Times New
+Roman">L'architettura concettuale del repository contenente meta-dati sulle
+varie componenti del sistema di integrazione è descritta in [1]. Il cuore del
+repository, denominato
+<i>Base di Informazioni Intensionale</i>, consiste di un <i>Metaschema </i>e di
+un insieme di <i>Meta-Operatori</i>. &nbsp;Il Metaschema memorizza informazioni
+sulle varie componenti del sistema di integrazione, quali, ad esempio, i
+concetti rappresentati nella vista globale e nelle varie sorgenti, e le
+proprietà semantiche che li caratterizzano. Tali proprietà, che descrivono
+relazioni semantiche (e.g., sinonimie e omonimie) fra oggetti intensionali,
+sono memorizzate in appositi dizionari del repository. </span>Le principali
+tipologie di proprietà inter-sorgente sono illustrate [5], dove è anche
+introdotto un un insieme di tecniche, basate su grafi, che permettono di
+derivarle in modo uniforme sfruttando un nucleo comune: il calcolo di matching
+di peso massimo su grafi bipartiti derivati usando un’opportuna metrica per
+misurare la similarità semantica di oggetti di schema.<span style="font-family:
+Times New Roman"> All’interno del Metaschema è presente, inoltre, un
+<i>Insieme di Mapping</i>, che descrive in che modo un concetto della vista
+globale è stato ottenuto da uno o più concetti appartenenti agli schemi delle
+sorgenti, tenendo traccia delle trasformazioni operate durante il processo di
+definizione della vista globale.  L’accesso ai metadati è supportato da un
+insieme di Meta-Operatori, cioè delle procedure predefinite che consentono di
+interrogare o modificare il contenuto del Metaschema.</span></p> <p
+class="MsoNormal" align="justify">Per quanto riguarda in modo più specifico la
+definizione di meta-dati estensionali, i principali risultati ottenuti
+consistono nella definizione di diverse soluzioni per la rappresentazione
+compressa di dati multidimensionali e di dati integrati da più sorgenti.
+Infatti, il contenuto informativo di una sorgente, in molti contesti
+applicativi, può essere naturalmente modellato in modo multidimensionale,
+ovverosia costituito da una o più dimensioni logiche su cui si distribuiscono i
+valori di uno o più attributi di misura. Sono state proposte soluzioni ad-hoc
+per la compressione di dati monodimensionali [2] e bidimensionali [3], con
+l’obiettivo principale di minimizzare l’errore di approssimazione nella
+stima, data una quantità limitata di memoria a disposizione per la
+rappresentazione compressa. Le tecniche proposte si basano su una partizione
+gerarchica in blocchi dello spazio multidimensionale, e sulla memorizzazione di
+informazioni aggregate per ciascun blocco. L’accuratezza di stima ottenuta è
+stata migliorata tramite l’uso di strutture compatte (<i>indici </i>di 32
+bit nel caso monodimensionale e di 64 bit nel caso bidimensionale) che
+memorizzano informazione addizionale, a bassa risoluzione numerica, sulla
+distribuzione dei dati all’interno dei singoli blocchi.&nbsp;Risultati
+sperimentali hanno dimostrato l’efficacia delle tecniche proposte e il
+vantaggio dell’introduzione&nbsp; degli
+<i>indici</i>, in un’analisi comparativa con alcune delle più importanti
+tecniche di compressione note in letteratura. </p> <p class="MsoNormal"
+align="justify"> <span style="font-size: 12.0pt; font-family: Times">In
+[P1.6.4] è presentato una tecnica per rappresentare in modo compresso dati
+provenienti da più sorgenti informative, modellate come sensori;
+</span>&nbsp;ogni sensore produce un flusso continuo di rilevazioni, ciascuna
+delle quali è caratterizzata da un timestamp di generazione. In tale
+modellazione, l’ordine con cui le rilevazioni vengono prodotte dalle varie
+sorgenti riflette l’ordine di importanza dei dati. In particolare le
+informazioni più datate sono ritenute meno rilevanti e sono dunque le prime ad
+essere compresse. Nell’approccio adottato i flussi di dati provenienti dalle
+diverse sorgenti vengono innanzi tutto convogliati in un unico flusso (<i>data
+stream</i>); quindi viene costruita una rappresentazione compressa
+dell’intero data stream che viene aggiornata in modo continuo, all’arrivo
+di nuovi dati. Quando il limitato spazio di memorizzazione disponibile non è
+più sufficiente a rappresentare nuovi dati, della memoria viene rilasciata
+comprimendo progressivamente le informazioni più datate memorizzate nella
+struttura. La tecnica di compressione proposta si basa sulla suddivisione del
+data stream in finestre temporali di ampiezza fissata, e sull’applicazione
+progressiva delle tecniche di compressione definite in [3] alle finestre
+temporali più datate. </p> <hr>
+
+<h3><b>Rapporti di ricerca</b></h3> 
+
+  <ul>
+ 
+  <li> Rapporto Anno 1 <a href="O1.6.pdf">in PDF</a>
+
+  </ul>
+
+<hr>
+
+
+<h3><b>Pubblicazioni</b></h3>
+<ol>
+  <li>Luigi Pontieri, Domenico Ursino, Ester Zumpano: <a href="dke-2002.pdf">An 
+  approach for the extensional integration of data sources heterogeneous <br>
+  representation formats</a>, Technical report ICAR-CNR, in <i>Data and 
+  Knowledge Engineering</i>, Elsevier Science. 2003 (to appear). </li>
+  <li>Francesco Buccafurri, Filippo Furfaro, Gianluca Lax, Domenico Saccà:
+  <a href="buccafurri-DEXA.pdf">Binary-Tree Histograms with Tree Indices</a>, in
+  <i>Proceedings of the 13th International Conference on Database and Expert 
+  Systems Applications (DEXA 2002),</i> Aix-en-Provence, France, September 2-6<i>,
+  </i>2002, pages 861-870.</li>
+  <li>Francesco Buccafurri, Filippo Furfaro, Domenico Saccà, Cristina Sirangelo:
+  <a href="buccafurri_SSDBM.pdf">A Quad-Tree Based Multiresolution Approach for 
+  Two-dimensional Summary Data</a>, in <i>Proceedings of the International 
+  Conference on Scientific and Statistical Database Management (SSDBM 2003), </i>
+  July 9-11 2003, Cambridge, MA (USA)<i>.</i></li>
+  <li>Alfredo Cuzzocrea, Filippo Furfaro, Elio Masciari, Domenico Saccà, 
+  Cristina Sirangelo: <a href="GSN-2003.pdf">Approximate Query Answering on 
+  Sensor Network Data Streams</a>, in <i>Proceedings of the Workshop on 
+  GeoSensor Networks</i> (GSN 2003), October 9-11, 2003, Portland, ME, USA (to 
+  appear).</li>
+  <li>L. Palopoli, D. Saccà, G. Terracina, D. Ursino: <a href="TKDE-2003.pdf">
+  Uniform Techniques for Deriving Similarities of Objects and Subschemes in 
+  Heterogeneous Databases</a>, in IEEE Transactions On Knowledge And Data 
+  Engineering, Vol. 15, No. 2, pages 271-294, 2003.</li>
+</ol>
+<hr>
+
+</body>
+
+</html>

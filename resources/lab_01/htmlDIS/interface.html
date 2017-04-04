@@ -1,0 +1,976 @@
+<html>
+<head>
+<title>Interfacce</title>
+</head>
+
+<body>
+
+<h1>Interfacce</h1>
+
+<p>
+Sono simili alle classi, ma contengono solo dichiarazioni di
+metodo
+</p>
+
+<p>
+Dichiarare un metodo=garantire che sar&agrave; presente in
+tutte le sottoclassi
+</p>
+
+<hr>
+
+
+<h4>Metodi e sottoclassi</h4>
+
+<p>
+Se una classe contiene un metodo <tt>stampa</tt>...
+</p>
+
+<p>
+...allora tutte le sottoclassi contengono un metodo
+<tt>stampa</tt>:
+</p>
+
+<ul>
+
+<li>o &egrave; quello ereditato;
+
+<li>oppure &egrave; stato ridefinito.
+
+</ul>
+
+<p>
+Comunque sia, un metodo <tt>stampa</tt> &egrave; definito in
+tutte le sottoclassi
+</p>
+
+<hr>
+
+
+<h4>Interfaccia=dicharazione di metodi</h4>
+
+<p>
+Una interfaccia &egrave; simile a una classe, ma contiene
+solo <i>dichiarazioni</i> di metodo
+</p>
+
+<p>
+Viene specificata solo la firma del metodo, non la sua
+implementazione
+</p>
+
+<pre>
+interface Stampabile {
+  public void stampa();
+}
+</pre>
+
+<hr>
+
+
+<h4>A cosa servono le interfacce?</h4>
+
+<p>
+Si possono definire classi che <i>implementano</i> i metodi
+delle interfacce:
+</p>
+
+<pre>
+class Studente implements Stampabile {
+  String nome;
+  int anno;
+
+  public void stampa() {
+    System.out.println(nome+" "+anno);
+  }
+}
+</pre>
+
+<p>
+Si dice che <tt>Studente</tt> implementa l'interfaccia, e
+che <tt>Studente</tt> &egrave; una implementazione
+dell'interfaccia
+</p>
+
+<hr>
+
+
+<h4>Interfacce e sovraclassi</h4>
+
+<p>
+Simili:
+</p>
+
+<ul>
+
+<li>in una variabile <tt>Stampabile</tt> posso mettere un
+oggetto <tt>Borsista</tt>
+
+<li>ogni implementazione ("sottoclasse") di
+<tt>Stampabile</tt> contiene il metodo <tt>stampa</tt>
+
+</ul>
+
+<p>
+Differenze:
+</p>
+
+<ul>
+
+<li>non si pu&ograve; creare un oggetto <tt>Stampabile</tt>
+
+<li>le implementazioni <i>devono</i> (ri)definire tutti i metodi
+dell'interfaccia (le sottoclassi no)
+
+</ul>
+
+<hr>
+
+
+<h4>Variabili interfaccia</h4>
+
+<p>
+Si pu&ograve; creare una variabile di una interfaccia:
+</p>
+
+<pre>
+  public static void main(String args[]) {
+    Stampabile s;
+</pre>
+
+<p>
+Si pu&ograve; mettere in essa il riferimento a un qualsiasi
+oggetto di una sua "sottoclasse":
+</p>
+
+<pre>
+    s=new Studente();
+</pre>
+
+<p>
+Si possono invocare i metodi dell'interfaccia:
+</p>
+
+<pre>
+    s.stampa();
+  }
+</pre>
+
+<hr>
+
+
+<h4>Cosa succede quando si invoca un metodo?</h4>
+
+<p>
+La variabile <tt>s</tt> &egrave; di tipo
+<tt>Stampabile</tt>, che &egrave; una interfaccia
+</p>
+
+<p>
+Non esistono oggetti di tipo <tt>Stampabile</tt>
+<br>
+(la invocazione <tt>s=new Stampabile();</tt> genera un errore)
+</p>
+
+<p>
+In <tt>s</tt> si possono mettere <i>solo</i> oggetti di una
+classe che implementa l'interfaccia
+</p>
+
+<p>
+Tutte le classi che implementano <tt>Stampabile</tt> devono
+contenere un metodo <tt>stampa</tt>
+</p>
+
+<p>
+L'istruzione <tt>s.stampa()</tt> &egrave; corretta: viene
+invocato il metodo <tt>stampa</tt> dell'oggetto che sta in
+<tt>s</tt>
+</p>
+
+<hr>
+
+
+<h4>Vantaggio delle interfacce</h4>
+
+<p>
+La stessa interfaccia pu&ograve; essere implementata da
+classi di tipo completamente diverso:
+</p>
+
+<pre>
+class Barattolo implements Stampabile {
+  int codice;
+
+  public void stampa() {
+    System.out.println(codice);
+  }
+}
+</pre>
+
+<p>
+Vale lo stesso discorso di <tt>Studente</tt>:
+un oggetto <tt>Barattolo</tt> si pu&ograve; mettere in
+una variabile <tt>Stampabile</tt>
+</p>
+
+<pre>
+  public static void main(String args[]) {
+    Stampabile s;
+
+    if(metodo())
+      s=new Studente();
+    else
+      s=new Barattolo();
+
+    s.stampa();
+  }
+</pre>
+
+<p>
+Quale metodo viene invocato?
+</p>
+
+<hr>
+
+
+<h4>La scelta del metodo</h4>
+
+<ul>
+
+<li>variabile <tt>Stampabile</tt>
+<li>oggetto <tt>Barattolo</tt>
+
+</ul>
+
+<p>
+Si invoca il metodo implementato in <tt>Barattolo</tt>
+</p>
+
+<p>
+&Egrave; sempre la stessa regola
+</p>
+
+<p>
+In questo caso non ci sono dubbi (nella interfaccia
+<tt>Stampabile</tt> il metodo <tt>stampa</tt> &egrave; solo
+dichiarato, non implementato)
+</p>
+
+<hr>
+
+
+<h4>Polimorfismo</h4>
+
+<p>
+Quando si fa <tt>s.stampa()</tt>:
+</p>
+
+<dl>
+
+<dt>oggetto <tt>Studente</tt>
+<dd>viene invocato il metodo <tt>stampa</tt> di
+<tt>Studente</tt>
+
+<p />
+
+<dt>oggetto <tt>Barattolo</tt>
+<dd>viene invocato il metodo <tt>stampa</tt> di
+<tt>Barattolo</tt>
+
+</dl>
+
+<p>
+I due metodi possono anche avere implementazione molto
+diversa
+</p>
+
+<p>
+Il metodo che viene invocato dipende dal tipo dell'oggetto
+(polimorfismo)
+</p>
+
+<p>
+Succede anche con le sottoclassi
+</p>
+
+<hr>
+
+
+<h4>A cosa servono le interfacce?</h4>
+
+<p>
+Se una classe implementa un interfaccia, <i>dichiara</i> di
+possedere tutti i metodi dell'interfaccia
+</p>
+
+<p>
+In una variabile del tipo dell'interfaccia posso mettere un
+qualsiasi oggetto di una classe che implementa l'interfaccia
+</p>
+
+<p>
+Posso invocare il metodo <tt>stampa</tt> su una variabile
+dell'interfaccia senza sapere quale &egrave; il tipo
+effettivo dell'oggetto
+</p>
+
+<hr>
+
+
+<h4><tt>implements</tt>=garantisco che ho dei metodi</h4>
+
+<p>
+Ogni classe definita con <tt>implements Stampabile</tt>
+contiene il metodo <tt>stampa</tt>
+</p>
+
+<p>
+Una variabile <tt>Stampabile</tt> pu&ograve; solo contenere
+oggetti per i quali esiste <tt>stampa</tt>
+</p>
+
+<hr>
+
+
+<h4>Metodi</h4>
+
+<p>
+Invocare un metodo=copiare i parametri + altre operazioni
+</p>
+
+<p>
+Se si pu&ograve; mettere uno <tt>Studente</tt> in una
+variabile <tt>Stampabile</tt>...
+</p>
+
+<p>
+...allora si pu&ograve; passare uno <tt>Studente</tt> a un
+metodo che ha come parametro una variabile
+<tt>Stampabile</tt>
+</p>
+
+<pre>
+class DueVolte {
+  static void stampaDueVolte(Stampabile s) {
+    s.stampa();
+    s.stampa();
+  }
+
+  public static void main(String args[]) {
+    Studente a=new Studente();
+    Barattolo b=new Barattolo();
+
+    stampaDueVolte(a);
+    stampaDueVolte(b);
+  }
+}
+</pre>
+
+<hr>
+
+
+<h4>Vantaggio del metodo</h4>
+
+<p>
+Il metodo che stampa due volte funziona su oggetti che
+possono essere completamente diversi: <tt>Studente</tt> e
+<tt>Barattolo</tt>
+</p>
+
+<p>
+Vincoli:
+</p>
+
+<ul>
+
+<li>gli oggetti che passo devono essere di una classe che
+implementa <tt>Stampabile</tt>
+<br>
+e quindi...
+
+<li>devono avere un metodo <tt>stampa</tt>
+
+</ul>
+
+<hr>
+
+
+<h4>Codice generico</h4>
+
+<p>
+Si possono scrivere frammenti di codice senza specificare
+esattamente il tipo degli oggetti su cui lavorano<br>
+(specifica solo parziale)
+</p>
+
+<p>
+Si pu&ograve; usare lo stesso codice per lavorare su oggetti
+diversi
+</p>
+
+<p>
+Non devo definire due o pi&ugrave; metodi diversi:
+</p>
+
+<pre>
+  static void stampaDueVolte(Studente s) {
+    s.stampa();
+    s.stampa();
+  }
+
+  static void stampaDueVolte(Barattolo s) {
+    s.stampa();
+    s.stampa();
+  }
+</pre>
+
+<hr>
+
+
+<h4>Ordinare un array</h4>
+
+<p>
+Si pu&ograve; ordinare un array di <tt>Object</tt>?
+</p>
+
+<p>
+No, perch&ograve; non esiste un ordinamento per tutti gli
+oggetti
+</p>
+
+<p>
+Per ordinare un insieme di oggetti, deve esistere una
+funzione di confronto di questi oggetti
+</p>
+
+<p>
+Interfaccia predefinita <tt>Comparable</tt>: rappresenta
+tutti gli oggetti sui quali &egrave; definito un ordinamento
+totale
+</p>
+
+<hr>
+
+
+<h4>Definizione di <tt>Comparable</tt></h4>
+
+<pre>
+interface Comparable {
+  public int compareTo(Object o);
+}
+</pre>
+
+<p>
+A parole: se una classe implementa <tt>Comparable</tt>,
+allora ha un metodo <tt>compareTo(Object o)</tt>
+</p>
+
+<p>
+Quando si definisce una classe, il metodo <tt>compareTo</tt>
+viene implementato in modo tale che:
+</p>
+
+<pre>
+  a.compareTo(b)
+</pre>
+
+<p>
+Ritorna:
+</p>
+
+<dl>
+
+<dt>un valore minore di zero
+<dd>se <tt>a</tt> &egrave; minore di <tt>b</tt>
+
+<dt>zero
+<dd>se <tt>a</tt> &egrave; uguale a <tt>b</tt>
+
+<dt>valore maggiore di zero
+<dd>se <tt>a</tt> &egrave; maggiore di <tt>b</tt>
+
+</dl>
+
+<hr>
+
+
+<h4>Cosa ci si aspetta != cosa di pu&ograve; fare</h4>
+
+<p>
+La definizione del metodo <tt>compareTo</tt> &egrave;
+semplicemente che si tratta di un metodo che ha un
+<tt>Object</tt> come argomento e ritorna un <tt>int</tt>
+</p>
+
+<p>
+Il fatto che <tt>a.compareTo(b)</tt> dice se <tt>a</tt>
+&egrave; minore, uguale o maggiore di <tt>b</tt> &egrave;
+una convenzione
+</p>
+
+<p>
+Non c'&egrave; nessun vincolo sintattico che ci
+obbliga a implementare <tt>compareTo</tt> come il confronto:
+</p>
+
+<pre>
+class Strana implements Comparable {
+  public int compareTo(Object o) {
+    return (int) Math.random()*2-1;
+  }
+}
+</pre>
+
+<p>
+&Egrave; un errore semantico/concettuale
+</p>
+
+<p>
+Effetto di un errore del genere: i metodi che lavorano su
+oggetti <tt>Comparable</tt> si comportano in modo anomalo
+</p>
+
+<hr>
+
+
+<h4>Classe che implementa <tt>Comparable</tt></h4>
+
+<p>
+La classe <tt>Integer</tt> implementa comparable
+</p>
+
+<p>
+Il metodo <tt>compareTo</tt> di <tt>Integer</tt> si comporta
+esattamente come ci si aspetta
+</p>
+
+<hr>
+
+
+<h4>Esempio di uso dell'interfaccia</h4>
+
+<p>
+Metodo che ordina un array di due elementi:
+</p>
+
+<pre>
+  static void ordina(Comparable c[]) {
+    Comparable t;
+
+    if(c[0].compareTo(c[1])&lt;=0)
+      return;
+
+    t=c[0];
+    c[0]=c[1];
+    c[1]=t;
+  }
+</pre>
+
+<p>
+Esempio di programma:
+</p>
+
+<pre>
+  public static void main(String args[]) {
+    Integer a[]=new Integer[2];
+
+    a[0]=new Integer(4);
+    a[1]=new Integer(2);
+
+    ordina(a);
+
+    System.out.println(a[0]+" "+a[1]);
+  }
+</pre>
+
+<hr>
+
+
+<h4>Riuso del metodo</h4>
+
+<p>
+Lo stesso metodo funziona per qualsiasi classe che
+implementa l'interfaccia <tt>Comparable</tt>
+</p>
+
+<p>
+<tt>String</tt> implementa <tt>Comparable</tt>
+</p>
+
+<p>
+L'ordinamento fra stringhe &egrave; quello lessicografico
+(detto anche alfabetico...)
+</p>
+
+<pre>
+    String b[]=new String[2];
+
+    b[0]="Ciccio";
+    b[1]="Bruno";
+
+    ordina(b);
+
+    System.out.println(b[0]+" "+b[1]);
+</pre>
+
+<p>
+Uso lo stesso metodo per le stringhe
+</p>
+
+<hr>
+
+
+<h4>Nota su <tt>compareTo</tt> di <tt>String</tt></h4>
+
+<p>
+Un classe che implementa <tt>Comparable</tt> deve contenere
+un metodo <tt>int compareTo(Object o)</tt>
+</p>
+
+<p>
+La classe <tt>String</tt> contiene due metodi
+<tt>compareTo</tt>:
+</p>
+
+<ul>
+<li>int compareTo(Object o)
+<li>int compareTo(String s)
+</ul>
+
+<p>
+&Egrave; un metodo sovraccarico
+</p>
+
+<p>
+Il primo metodo converte <tt>o</tt> in stringa, se
+possibile, e poi invoca il secondo
+</p>
+
+<hr>
+
+
+<h4>Esempio di <tt>compareTo</tt> su <tt>String</tt></h4>
+
+<p>
+Cosa succede qui sotto?
+</p>
+
+<pre>
+  public static void main(String args[]) {
+    String s="abcd";
+    Comparable c=s;
+
+    System.out.println(s.compareTo("abce"));
+    System.out.println(c.compareTo("abce"));
+  }
+</pre>
+
+<dl>
+
+<dt><tt>s.compareTo("abce")</tt>
+<dd>stringa come oggetto di invocazione e stringa come argomento:
+<br>
+viene invocato il metodo <tt>int compareTo(String s)</tt>
+
+<p />
+
+<dt><tt>c.compareTo("abce")</tt>
+<dd>
+
+<ul>
+
+<li><tt>c</tt> &egrave; di tipo <tt>Comparable</tt>
+
+<li>il metodo <tt>compareTo</tt> di <tt>Comparable</tt> ha
+come argomento un <tt>Object</tt>
+
+<li>viene invocato il metodo <tt>int compareTo(Object o)</tt>
+di <tt>String</tt>
+
+</ul>
+
+<p>
+Nonostante l'argomento sia una stringa, viene invocato
+l'altro metodo.
+</p>
+
+</dl>
+
+<hr>
+
+
+<h4>Perch&egrave; tutto questo macello?</h4>
+
+<dl>
+
+<dt><tt>int compareTo(Object o)</tt>
+<dd>serve, altrimenti <tt>String</tt> non implementa
+<tt>Comparable</tt>
+
+<p />
+
+<dt><tt>int compareTo(String s)</tt>
+<dd>non &egrave; necessario, ma permette un controllo di
+tipo quando la variabile &egrave; di tipo stringa:
+
+<pre>
+  String s;
+
+  System.out.println(s.compareTo(t));
+</pre>
+
+<p>
+d&agrave; errore in compilazione se <tt>t</tt> non &egrave;
+di tipo stringa
+</p>
+
+<p>
+&Egrave; meglio che gli errori vengano rilevati in
+compilazione piuttosto che in esecuzione
+</p>
+
+</dl>
+
+<hr>
+
+
+<h4>Altro esempio di interfaccia predefinita</h4>
+
+<pre>
+interface Runnable {
+  void run();
+}
+</pre>
+
+<p>
+Ogni implementazione contiene un metodo <tt>run</tt>
+<br>
+(usato per il multithreading)
+</p>
+
+<hr>
+
+
+<h4>Non si poteva fare tutto con le sottoclassi?</h4>
+
+<p>
+Se una classe &egrave; sottoclasse di un'altra, &egrave;
+comunque garantito che ne ha tutti i metodi
+</p>
+
+<p>
+Nel caso di due classi soltanto si poteva anche fare:
+</p>
+
+<pre>
+class Stampabile {
+  void stampa() {
+  }
+
+class Studente extends Stampabile {
+  ...
+
+  void stampa() {
+    ...
+  }
+}
+</pre>
+
+<p>
+Per&ograve;:
+</p>
+
+<ol>
+
+<li>anche se <tt>Studente</tt> non ridefinisce
+<tt>stampa</tt>, non viene segnalato un errore
+
+<li>una classe pu&ograve; essere sottoclasse solo di
+un'altra, mentre pu&ograve; implementare pi&ugrave;
+interfacce
+
+</ol>
+
+<hr>
+
+
+<h4>Ereditariet&egrave; multipla</h4>
+
+<p>
+Non si pu&ograve; fare:
+</p>
+
+<pre>
+class BorsistaLavoratore extends Borsista, Lavoratore {
+  ...
+}
+</pre>
+
+<p>
+Motivo: la componente <tt>stipendio</tt> ha un significato
+in <tt>Borsista</tt> e una altro in
+<tt>StudenteLavoratore</tt>
+</p>
+
+<p>
+Concettualmente, dovrei avere entrambe in
+<tt>BorsistaLavoratore</tt>
+</p>
+
+<p>
+Operativamente, non posso avere due componenti con lo stesso
+nome
+</p>
+
+<p>
+Per questo, in Java non si pu&ograve; fare
+l'ereditariet&agrave; multipla
+</p>
+
+<p>
+Si pu&ograve; fare con le interfacce
+</p>
+
+<hr>
+
+
+<h4>Implementare pi&ograve; interfacce</h4>
+
+<p>
+Una interfaccia dice solo che una classe deve avere certi
+metodi
+</p>
+
+<p>
+Implementare pi&ugrave; interfacce=obbligare a implementare
+tutti i metodi di tutte le interfacce
+</p>
+
+<pre>
+interface Aggiornabile {
+  void cambiaAnno(int anno);
+}
+</pre>
+
+<p>
+Rappresenta gli oggetti per i quali &egrave; possibile
+modificare la componente anno
+</p>
+
+<pre>
+class Studente implements Stampabile, Aggiornabile {
+  String nome;
+  int anno;
+
+  public void stampa() {
+    System.out.println(nome+" "+anno);
+  }
+
+  public void cambiaAnno(int anno) {
+    this.anno=anno;
+  }
+}
+</pre>
+
+<p>
+Se implemento sia <tt>Stampabile</tt> che
+<tt>Aggiornabile</tt>, poi devo definire tutti i metodi di
+queste due interfacce
+</p>
+
+<hr>
+
+
+<h4>Implementare != definire un metodo</h4>
+
+<p>
+Se non metto <tt>implements Comparable</tt>, non ho
+implementato l'interfaccia
+</p>
+
+<p>
+Questo vale <i>anche</i> se poi la classe contiene un metodo
+<tt>public int compareTo(Object o)</tt>
+</p>
+
+<p>
+Anche in questo caso, non si pu&ograve; mettere un oggetto
+della classe in una variabile <tt>Comparable</tt>
+</p>
+
+<p>
+Quindi, non si possono usare i metodi che hanno come
+parametro un oggetto <tt>Comparable</tt>, ecc.
+</p>
+
+<p>
+Implementare una interfaccia: bisogna sia dichiarare che si
+sta implementando (<tt>implements</tt>) sia definire tutti i
+metodi dell'interfaccia
+</p>
+
+<hr>
+
+
+<h4>Componenti</h4>
+
+<p>
+In una interfaccia si possono definire componenti
+</p>
+
+<pre>
+interface Pippo {
+  int x=12;
+}
+</pre>
+
+<hr>
+
+
+<h4>Problema dell'ambiguit&agrave;</h4>
+
+<pre>
+interface Pluto {
+  double x=1.2;
+}
+</pre>
+
+<p>
+Posso definire una classe che implementa tutte e due le
+interfacce:
+</p>
+
+<pre>
+class Mult implements Pippo, Pluto {
+}
+</pre>
+
+<p>
+Ora per&ograve; l'accesso alle componenti &egrave;
+determinato dal <i>tipo della variabile</i>
+</p>
+
+<pre>
+  public static void main(String args[]) {
+    Mult m=new Mult();
+    Pippo a=m;
+    Pluto b=m;
+
+    System.out.println(a.x);	// x di Pippo
+    System.out.println(b.x);	// x di Pluto
+    System.out.println(m.x);	// errore
+  }
+</pre>
+
+<p>
+L'errore &egrave; dovuto al fatto che non si capisce di
+quale compomente <tt>x</tt> si sta parlando
+</p>
+
+</body>
+</html>
+
+
+
+

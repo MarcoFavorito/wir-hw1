@@ -1,0 +1,125 @@
+<!DOCTYPE doctype PUBLIC "-//w3c//dtd html 4.0 transitional//en">
+<html>
+<head>
+  <title>Esercitazione 1</title>
+  <link rel="stylesheet" href="../../fi2001.css" type="text/css">
+</head>
+<body>
+<center>
+<p><b>Fondamenti di Informatica</b> <br>
+<b>Corso di Laurea in<br>
+Ingegneria Informatica e Automatica</b><br>
+</p>
+</center>
+<hr>
+<h2 align="center">Esercitazione 4</h2>
+<h2 align="center">Tipi primitivi</h2>
+<hr>
+<p><b>Esercizio 4A</b></p>
+<p>Modificare la classe <code>Veicolo</code> dell'Esercizio 3A (della
+Esercitazione 3) aggiungendo le seguenti propriet&agrave;
+booleane: <code>ariaCondizionata</code>, <code>verniceMetallizata</code>,
+<code>autoradio</code>, <code>antifurto</code> e scrivere i relativi
+metodi
+per la lettura di queste propriet&agrave;.</p>
+<p>Scrivere inoltre i seguenti otto metodi <code>aggiungiAriaCondizionata</code>,
+<code>rimuoviAriaCondizionata</code>, <code>aggiungiVerniceMetallizata</code>,
+<code>rimuoviVerniceMetallizata</code>, <code>aggiungiAutoradio</code>,
+<code>rimuoviAutoradio</code>, <code>aggiungiAntifurto</code>, e <code>rimuoviAntifurto</code>,
+che devono eseguire la seguente operazione: impostare la corrispondente
+propriet&agrave; a <code>true</code> (nel caso dei metodi <code>aggiungi...</code>)
+o a <code>false</code> (nel caso dei metodi <code>rimuovi...</code>)
+e aumentare o diminuire il valore
+del veicolo del 10% del prezzo base per ogni accessorio aggiunto.
+<!--Si implementino
+tali metodi in modo da verificare il comportamento corretto delle operazioni:
+ad esempio, se si invoca due volte il metodo <code>aggiungiAutoradio</code>, 
+il prezzo non deve essere incrementato due volte.--></p>
+<p>Scrivere infine due metodi <code>accessoriata</code> e <code>superAccessoriata</code>
+che restituiscono un valore booleano corrispondente nel primo caso alla
+presenza nel veicolo di almeno un accessorio e nel secondo caso di
+tutti gli accessori. </p>
+<p><a href="soluzioni/Veicolo.java">Soluzione</a></p>
+<hr>
+<p><b>Esercizio 4B</b></p>
+<p>Progettare e realizzare una classe Java <code>CassaCambioDollari</code>,
+che rappresenta casse automatiche che consentono di cambiare dollari in
+euro. Delle casse sono d'interesse le seguenti funzionalit&agrave;<code>:</code>
+</p>
+<ul>
+  <li><em>cassaVuota</em>: crea una cassa contenete 0 euro come scorta
+e con un tasso di cambio euro/dollaro pari a 0;</li>
+  <li><em>quantiEuro</em>: restituisce la quantit&agrave; di euro
+presenti nella scorta della cassa;</li>
+  <li><em>mettiEuro</em>: aggiunge q euro nella cassa, dove q &egrave;
+un reale;</li>
+  <li><em>fissaCambio</em>: fissa il tasso di cambio euro/dollaro della
+cassa;</li>
+  <li><em>qualeCambio</em>: restituisce il tasso di cambio praticato
+dalla cassa;</li>
+  <li><em>cambia</em>: prende come parametro una quantit&agrave; di
+dollari (un reale) e restituisce la quantit&agrave; di euro (un reale)
+corrispondente secondo il proprio tasso e aggiornando opportunamente la
+propria scorta.<!-- Se la quantit&agrave; di euro nella scorta &egrave;
+       insufficiente non effettua il cambio (restituisce 0) e stampa il 
+     messaggio <code>"Scorta insufficiente"</code>.</li>-->
+  </li>
+</ul>
+<p>Si ricorda che il tasso di cambio euro/dollaro si definisce come
+numero di euro che possono essere acquistati con un dollaro.</p>
+<p><a href="soluzioni/CassaCambioDollari.java">Soluzione</a> </p>
+<hr size="2" width="100%">
+<p><b>Esercizio 4C</b> <br>
+</p>
+<ul>
+  <li>
+    <p>Scrivere una funzione: <code>public static double
+convertiLireEuro(int x)</code> che, dato un importo in Lire <code>x</code>,
+restituisce il
+corrispondente importo in Euro.</p>
+  </li>
+  <li>
+    <p>Scrivere un predicato:<code> public static boolean
+traboccoSomma(byte x, byte y)</code> che restituisce <code>true</code>
+se <code>x+y</code>
+provoca overflow, e <code>false</code> altrimenti.<br>
+[Suggerimento: assegnare dapprima <code>x</code> e <code>y</code> a
+due variabili <code>short</code>. Poi, effettuando la somma con quelle
+variabili, restituire una espressione <code>boolean</code> che
+verifica se il risultato pu&ograve; entrare in un byte, cio&egrave;
+pi&ugrave; grande di -129 e pi&ugrave;
+piccolo di 128]</p>
+  </li>
+  <li>
+    <p>Scrivere un predicato: <code>public static boolean pari(long x)</code>
+che restituisce <code>true</code> se il numero <code>x</code>
+&egrave; pari, e <code>false</code> altrimenti.<br>
+[Suggerimento: usare l'operatore modulo <code>%</code> e l'operatore
+di
+uguaglianza <code>==</code> per costruire una espressione <code>boolean</code>
+da restituire con <code>return</code>]</p>
+  </li>
+</ul>
+<a href="soluzioni/Eser4C.java">Soluzione</a>
+<ul>
+</ul>
+<hr size="2" width="100%">
+<p><b>Esercizio 4D</b> <br>
+</p>
+<p>Scrivere un programma che legga da tastiera due numeri interi e
+stampi
+su schermo: </p>
+<ul>
+  <li>la loro media aritmetica (la loro somma diviso 2)</li>
+  <li>la loro media geometrica (la radice quadrata del loro prodotto)</li>
+  <li>il massimo e il minimo dei due</li>
+</ul>
+[Suggerimento: usare i metodi della classe <code>Math</code>. Ad
+esempio,
+per calcolare la radice quadrata usare il metodo <code>Math.sqrt</code>]
+<p><a href="soluzioni/Eser4D.java">Soluzione</a> </p>
+<br>
+<br>
+<br>
+</body>
+</html>

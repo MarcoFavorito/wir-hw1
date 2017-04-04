@@ -1,0 +1,116 @@
+<!DOCTYPE html PUBLIC "-//w3c//dtd html 4.0 transitional//en">
+<html>
+<head>
+  <title>Esercitazione 1</title>
+  <link rel="stylesheet" href="../../fi2001.css" type="text/css">
+</head>
+<body>
+<center>
+<p><b>Fondamenti di Informatica</b> <br>
+<b>Corso di Laurea in Ingegneria Informatica</b> <br>
+</p>
+</center>
+<p>
+</p>
+<hr>
+<h2 align="center">Esercitazione 3</h2>
+<h2 align="center">Ereditariet&agrave; e tipi primitivi</h2>
+<hr>
+<p><b>Esercizio 3A</b></p>
+<p>Progettare ed implementare una classe <code>Veicolo</code>, dotata
+delle seguenti propriet&agrave;:
+</p>
+<ul>
+  <li><code>targa</code>, che &egrave; una stringa che rappresenta la
+targa dell'auto;</li>
+  <li><code>kmPercorsi</code>, che &egrave; un intero che rappresenta i
+chilometri percorsi dall'auto;</li>
+  <li><code>annoImmatricolazione</code>, che &egrave; un intero che
+rappresenta l'anno in cui l'auto e' stata acquistata per la prima volta;</li>
+  <li><code>prezzoBase</code>, che &egrave; un reale che rappresenta il
+prezzo di acquisto del modello base dell'auto nell'anno di
+immatricolazione;</li>
+  <li><code>proprietario</code>, che &egrave; una stringa che
+rappresenta il proprietario corrente.</li>
+</ul>
+<p>La classe <code>Veicolo</code> deve essere dotata di:</p>
+<ul>
+  <li>un metodo per creare oggetti della classe <code>Veicolo</code>
+che prende come parametri targa, anno di immatricolazione e prezzo
+base, e pone a 0 i km percorsi e a <code>null</code> il proprietario; </li>
+  <li>metodi per accedere a tutti gli attributi, che ne ritornano il
+valore del campo relativo;</li>
+  <li>un metodo<code> aggiungiKmPercorsi</code>, che incrementa il
+campo <code>kmPercorsi</code> dell'intero passato come parametro;</li>
+  <li>un metodo <code>setProprietario</code>, che imposta il campo <code>proprietario</code>
+alla stringa passata come parametro.</li>
+</ul>
+<p><b>FACOLTATIVO</b> Progettare una classe cliente dotata di un metodo
+statico
+<code>getPrezzoCorrente</code>, che data un'auto e l'anno corrente,
+restituisce
+il valore attuale dell'auto calcolato mediante la seguente formula:<br>
+</p>
+<div align="center"><i>valoreCorrente=prezzoBase*0.8^(annoCorrente-annoImmatricolazione)</i><br>
+</div>
+dove "<i>a^b</i>" rappresenta "<i>a elevato alla b</i>". Per
+l'elevamento a
+potenza si utilizzi il metoto <code>pow</code> nella classe
+predefinita
+<code>Math</code>.
+<p><a href="soluzioni/eser3A/">Soluzione</a></p>
+<p><b>Esercizio 3B</b></p>
+<p>Estendere la classe <code>Veicolo</code>, progettando le seguenti
+classi:
+</p>
+<ul>
+  <li><code>MotoVeicolo</code>, che ha un attributo per rappresentare
+la cilindrata;</li>
+  <li><code>AutoVeicolo</code>, che ha un attributo per rappsesentare
+il numero massimo di passeggeri trasportabili;</li>
+  <li><code>AutoArticolato</code>, che ha un attributo per
+rappresentare la quantit&agrave; massima di merce trasportabile (in
+quintali).</li>
+</ul>
+Le classi progettate devono avere le seguenti caratteristiche:
+<ul>
+  <li>Ciascuna variabile di aggiunta, rispetto a quelle della classe
+base deve essere dotata di metodi <code>set</code> e <code>get</code>.</li>
+  <li>Ciascuna classe deve essere dotata di un metodo <code>toString()</code>
+che ritorna una stringa
+contenente le informazioni relative all'oggetto di invocazione.</li>
+</ul>
+<p><a href="soluzioni/eser3B/">Soluzione</a></p>
+<p>Definire poi una classe cliente, che implementa un metodo <code>main</code>,
+in grado di invocare
+<i>tutti</i> i metodi delle classi progettate.
+</p>
+<p><b>Esercizio 3C</b></p>
+<p>Realizzare una classe <code>Animale</code> di cui interessa
+memorizzare il
+nome. <br>
+Le operazioni di interesse sono: </p>
+<ul>
+  <li><code>Animale</code> che crea un oggetto Animale, il cui nome
+&egrave; passato come parametro; </li>
+  <li><code>emettiVerso</code> che stampa il verso dell'animale
+generico (ad esempio la stringa "@#%&amp;").</li>
+</ul>
+<p>Particolari tipi di animali sono il cane, il gatto e il pappagallo.
+Per
+ciascuno di essi, realizzare un'opportuna classe Java avente un
+costruttore
+(che crea un oggetto opportuno con il nome associato ) e il metodo
+<code>emettiVerso</code> che stampa il verso opportuno. La classe
+associata al
+pappagallo ha in pi&ugrave; un metodo <code> ripeti</code> che stampa
+la
+stringa passata come parametro, ripetuta due volte.</p>
+<p>Infine, si realizzino due classi associate alle razze di cane
+Chiwawa e
+Rottweiler, aventi un costruttore e il metodo <code>emettiVerso</code>
+che
+stampa, rispettivamente, "bau!" e "BAU".</p>
+<p><a href="soluzioni/eser3C/">Soluzione</a></p>
+</body>
+</html>

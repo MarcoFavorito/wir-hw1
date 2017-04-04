@@ -1,0 +1,319 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<!-- saved from url=(0038)http://www.dis.uniroma1.it/~irl/pi.htm --><HTML><HEAD><TITLE>IRL : Architectural Overview</TITLE>
+<META content="text/html; charset=windows-1252" http-equiv=Content-Type>
+<STYLE type=text/css>P {
+	FONT-FAMILY: Verdana, Arial, Helvetica, sans-serif; FONT-SIZE: 10pt
+}
+</STYLE>
+
+<META content="MSHTML 5.00.2920.0" name=GENERATOR></HEAD>
+<BODY bgColor=#ffffff>
+<TABLE border=0 width="100%">
+  <TBODY>
+  <TR bgColor=#cc3333>
+    <TD bgColor=#ffffff height=73 width="22%">
+      <DIV align=center>
+      <P><IMG height=100 src="Immagini/headtitle.gif" width=300></P></DIV></TD>
+    <TD height=73 width="78%">
+      <P align=center><FONT color=#ffffff size=7>Portable 
+    Interceptors</FONT></P></TD></TR></TBODY></TABLE>
+<TABLE border=0 cellSpacing=5 width="100%">
+  <TBODY>
+  <TR>
+    <TD align=middle bgColor=#93b6ff vAlign=top width=120>
+      <DIV align=center><!-- #BeginLibraryItem "/Library/navbar.lbi" -->
+<hr>
+<table cols=1 border=1 align="center" width="100">
+  <tbody> 
+  <tr bordercolor=#000099 bgcolor=#CC3333> 
+    <td align=top width=132> 
+      <div style="MARGIN-LEFT: 3pt" align="center"><a 
+                  href="index.htm"><font 
+                  face=Arial color=#4e4bf3 size=2><font 
+                  color=#000080><u><font color="#FFFFFF" size="3">Home</font></u></font></font></a></div>
+    </td>
+  </tr>
+  <tr bordercolor=#000099 bgcolor=#CC3333> 
+    <td align=top width=132> 
+      <div align="center"><a 
+                  href="features.htm"><font 
+                  face=Arial color=#4e4bf3 size=2><font 
+                  color=#000080><u><font size="3" color="#FFFFFF">Features</font></u></font></font></a></div>
+    </td>
+  </tr>
+  <tr bordercolor=#000099 bgcolor=#CC3333> 
+    <td align=top width=132> 
+      <div align="center"><a 
+                  href="details.htm"><font 
+                  face=Arial color=#4e4bf3 size=2><font 
+                  color=#000080><u><font size="3" color="#FFFFFF">Architecture</font></u></font></font></a></div>
+    </td>
+  </tr>
+  <tr bordercolor=#000099 bgcolor=#CC3333> 
+    <td align=top width=132> 
+      <div align="center"><a 
+                  href="people.htm"><font 
+                  face=Arial color=#4e4bf3 size=2><font 
+                  color=#000080><u><font color="#FFFFFF" size="3">People</font></u></font></font></a></div>
+    </td>
+  </tr>
+  <tr bordercolor=#000099 bgcolor=#CC3333> 
+    <td align=top width=132> 
+      <div align="center"><a 
+                  href="tools.htm"><font 
+                  face=Arial color=#4e4bf3 size=2><font 
+                  color=#000080><u><font size="3" color="#FFFFFF">Download</font></u></font></font></a></div>
+    </td>
+  </tr>
+  <tr bordercolor=#000099 bgcolor=#CC3333> 
+    <td align=top width=132> 
+      <div align="center"><a 
+                  href="pi.htm"><font 
+                  face=Arial color=#4e4bf3 size=2><font 
+                  color=#000080><u><font color="#FFFFFF" size="3">Interceptors</font></u></font></font></a></div>
+    </td>
+  </tr>
+  <tr bordercolor=#000099 bgcolor=#CC3333> 
+    <td align=top width=132> 
+      <div align="center"><a 
+                  href="publications.htm"><font 
+                  face=Arial color=#4e4bf3 size=2><font 
+                  color=#000080><u><font color="#FFFFFF" size="3">Papers</font></u></font></font></a></div>
+    </td>
+  </tr>
+  <tr bordercolor=#000099 bgcolor=#CC3333> 
+    <td align=top width=132> 
+      <div align="center"><a 
+                  href="links.htm"><font 
+                  face=Arial color=#4e4bf3 size=2><font 
+                  color=#000080><u><font color="#FFFFFF" size="3">Links</font></u></font></font></a></div>
+    </td>
+  </tr>
+  <tr bordercolor=#000099 bgcolor=#CC3333>
+    <td align=top width=130 height="30"><a href="http://www.dis.uniroma1.it/%7Emidlab"><img src="Library/top_midlab.gif" width="100%" height="100%" border="0" align="absmiddle"></a></td>
+  </tr>
+  </tbody> 
+</table>
+<hr>
+<!-- #EndLibraryItem --></DIV></TD>
+    <TD bgColor=#cccccc vAlign=top width=844>
+      <P>&nbsp;</P>
+      <TABLE bgColor=#cc3333 border=0 cellPadding=15 cellSpacing=0 
+        width="100%"><TBODY>
+        <TR>
+          <TD width="100%">
+            <H1 align=center><FONT color=#ffffff 
+            face="Arial, Helvetica, sans-serif" 
+          size=7>Introduction</FONT></H1></TD></TR></TBODY></TABLE>
+      <P>&nbsp;</P>
+      <P>In the context of the IRL Project, a fundamental role is accomplished 
+      by <A href="http://www.omg.org/cgi-bin/doc?formal/01-02-57">CORBA Portable 
+      Interceptors</A>. </P>
+      <P>CORBA Request Portable Interceptors allow to intercept messages flowing 
+      between clients and servers and to modify messages as well as the 
+      invocation path, even on the basis of the information contained in the 
+      messages (with some limitation). In particular, Portable Interceptors are 
+      a useful tool in the contex of the IRL Project to let a CORBA client 
+      holding an <A 
+      href="tools/Documentation.htm">Interoperable 
+      Object Group Reference</A> invoke an object group and obtain replication 
+      and failure transparency. In IRL, this task is accomplished in a 
+      transparent way by the Outgoing Request GateWay (<A 
+      href="tools.htm">ORGW</A>, see also the <A 
+      href="details.htm">Architecture</A> 
+      page).</P>
+      <P>To evaluate Portable Interceptor's performances on Java ORBs, we run a 
+      wide set of experiments on three distinct Java ORBs, namely <A 
+      href="http://www.jacorb.org/">JacORB</A>, <A 
+      href="http://www.ooc.com/ob/">ORBacus for Java</A>, and <A 
+      href="http://www.iona.com/products/orbix2000_home.htm">Orbix 2000</A>. The 
+      code is available to <A 
+      href="pi.htm#DOWNLOAD">download</A>. </P>
+      <P>contact: Carlo Marchetti, Luigi Verde - 
+      carlo.marchetti@dis.uniroma1.it, verdefl@tin.it </P>
+      <P>&nbsp;</P>
+      <TABLE bgColor=#cc3333 border=0 cellPadding=15 cellSpacing=0 
+        width="100%"><TBODY>
+        <TR>
+          <TD width="100%">
+            <H1 align=center><FONT color=#ffffff 
+            face="Arial, Helvetica, sans-serif" size=7>How to run the 
+            experiments</FONT></H1></TD></TR></TBODY></TABLE>
+      <P>&nbsp;</P>
+      <P style="LINE-HEIGHT: 150%; MARGIN-BOTTOM: 0px; MARGIN-TOP: 0px"><FONT 
+      size=2>The experiments,grouped for packages, are the following:</FONT></P>
+      <OL>
+        <LI><FONT size=3>Base</FONT> 
+        <LI><FONT size=3>PIno_op</FONT> 
+        <LI><FONT size=3>PIPermanent</FONT> 
+        <LI><FONT size=3>PINonPermanent</FONT> 
+        <LI><FONT size=3>Piggybacking</FONT> 
+        <LI><FONT size=3>NonPerm1ORBCollocDyn</FONT> 
+        <LI><FONT size=3>Perm1ORBCollocDyn</FONT> 
+        <LI><FONT size=3>NonPerm1ORBCollocStatic</FONT> 
+        <LI><FONT size=3>Perm1ORBCollocStatic</FONT> 
+        <LI><FONT size=3>NonPerm2ORBCollocDyn</FONT> 
+        <LI><FONT size=3>Perm2ORBCollocDyn</FONT> 
+        <LI><FONT size=3>NonPerm2ORBCollocStatic</FONT> 
+        <LI><FONT size=3>Perm2ORBCollocStatic</FONT> 
+        <LI><FONT size=3>NonPermNonCollocDyn</FONT> 
+        <LI><FONT size=3>PermNonCollocDyn</FONT> 
+        <LI><FONT size=3>NonPermNonCollocStatic</FONT> 
+        <LI><FONT size=3>PermNonCollocStatic</FONT> </LI></OL>
+      <P></P>
+      <P align=left>We can group them in four classes: <A 
+      href="pi.htm#LANDMARK">Landmarks</A>, <A 
+      href="pi.htm#FUNCTION">PortableInterceptors</A>, <A 
+      href="pi.htm#COLLOC">CollocatedProxy</A> and <A 
+      href="pi.htm#NONCOLLOC">NonCollocatedProxy</A>. For each example, a client 
+        performs a burst of requests to the server in order to evaluate two parameters: 
+        the latency (averange, min and max) and the throughput. </P>
+      <P align=left><FONT size=+2></FONT><FONT size=6><A 
+      name=LANDMARK></A></FONT><FONT color=#ffffff 
+      face="Arial, Helvetica, sans-serif" size=7></FONT><FONT 
+      size=+2>Landmarks</FONT></P>
+      <P>This section comprises:</P>
+      <UL type=disc>
+        <LI>Base 
+        <LI>PIno_op </LI></UL>
+      <P>The <I>Base</I> example is the static (stub-skeleton) case used as landmark. 
+        The <I>PIno_op</I> calculates the cost added by a no-op.</P>
+      <P>To run an experiment (i.e. <I>Base</I>):</P>
+      <P><CODE>java [ORB-Properties] Base.MBServer</CODE></P>
+      <P><CODE>java [ORB-Properties] Base.Client</CODE></P>
+      <P>&nbsp;</P>
+      <P><FONT size=6><A name=FUNCTION></A></FONT><FONT 
+      size=+2>PortableInterceptors</FONT></P>
+      <P>This section includes:</P>
+      <UL type=disc>
+        <LI>PINonPermanent 
+        <LI>PIPermanent 
+        <LI>Piggybacking </LI></UL>
+      <P>An interceptor can redirect a client request throwing a <FONT 
+      face="Courier New, Courier, mono">LOCATION_FORWARD</FONT> exception (<I>PINonPermanent</I> 
+        case) or all the client requests throwing a <FONT 
+      face="Courier New, Courier, mono">LOCATION_FORWARD_PERMANENT</FONT> exception 
+        (<I>PIPermanent </I>case). It is also possible to piggyback information 
+        (i.e. a password) from the client orb to the server orb adding service 
+        contexts to the message (<I>Piggybacking</I> case).</P>
+      <P>To run an experiment (i.e. <I>PIPermanent</I>):</P>
+      <P><CODE>java [ORB-Properties] PIPermanent.MBServer</CODE></P>
+      <P><CODE>java [ORB-Properties] PIPermanent.Client</CODE></P>
+      <BLOCKQUOTE>
+        <P>&nbsp;</P></BLOCKQUOTE>
+      <P><FONT size=6><A name=COLLOC></A></FONT><FONT color=#ffffff 
+      face="Arial, Helvetica, sans-serif" size=7></FONT><FONT 
+      size=+2>CollocatedProxy</FONT></P>
+      <P>This section can be divided into two subclasses: <A 
+      href="pi.htm#1ORB">1ORBCollocated</A> and 
+      <A 
+      href="pi.htm#2ORB">2ORBCollocated</A>.</P>
+      <P>&nbsp;</P>
+      <P><FONT size=6><A name=1ORB></A></FONT><FONT 
+      size=+1>1ORBCollocated</FONT></P>
+      <UL type=disc>
+        <LI>NonPerm1ORBCollocDyn 
+        <LI>Perm1ORBCollocDyn 
+        <LI>NonPerm1ORBCollocStatic 
+        <LI>Perm1ORBCollocStatic </LI></UL>
+      <P>&nbsp;</P>
+      <P align=center><INPUT border=0 cache height=173 name=imageField2 
+      src="Immagini/1ORBColloc.jpg" type=image width=445> </P>
+      <P>&nbsp;</P>
+      <P>The Proxy is a middle-tier between the Client and the Server and it is 
+      a CORBA object collocated in the same Client addressable space. The client 
+      requests are redirected by the PortableInterceptor to the Proxy that then 
+      invokes the Server. The Proxy can be static (receives the client request 
+      through the skeleton and then invokes the Server by stub) or dynamic (the 
+      same operation with DSI and DII).</P>
+      <P>To run an experiment (i.e. <I>NonPerm1ORBCollocDyn</I>):</P>
+      <P><CODE>java [ORB-Properties] NonPerm1ORBCollocDyn.MBServer</CODE></P>
+      <P><CODE>java [ORB-Properties] NonPerm1ORBCollocDyn.Client</CODE></P>
+      <P>&nbsp;</P>
+      <P><FONT size=6><A name=2ORB></A></FONT><FONT 
+      size=+1>2ORBCollocated</FONT></P>
+      <UL type=disc>
+        <LI>NonPerm2ORBCollocDyn 
+        <LI>Perm2ORBCollocDyn 
+        <LI>NonPerm2ORBCollocStatic 
+        <LI>Perm2ORBCollocStatic </LI></UL>
+      <P>&nbsp;</P>
+      <P align=center><INPUT border=0 cache height=173 name=imageField 
+      src="Immagini/2ORBColloc.jpg" type=image width=445> </P>
+      <P>&nbsp;</P>
+      <P>How the picture shows, the only difference from the previous case is 
+      that the Proxy and the Client are running in the same process, but on 
+      distinct ORBs.</P>
+      <P>To run an experiment (i.e. <I>NonPerm2ORBCollocDyn</I>):</P>
+      <P><CODE>java [ORB-Properties] NonPerm2ORBCollocDyn.MBServer</CODE></P>
+      <P><CODE>java [ORB-Properties] NonPerm2ORBCollocDyn.Client</CODE></P>
+      <BLOCKQUOTE>
+        <P>&nbsp;</P></BLOCKQUOTE>
+      <P><FONT size=6><A name=NONCOLLOC></A></FONT><FONT color=#ffffff 
+      face="Arial, Helvetica, sans-serif" size=7></FONT><FONT 
+      size=+2>NonCollocatedProxy</FONT></P>
+      <P>This section includes:</P>
+      <UL type=disc>
+        <LI>NonPermNonCollocDyn 
+        <LI>PermNonCollocDyn 
+        <LI>NonPermNonCollocStatic 
+        <LI>PermNonCollocStatic </LI></UL>
+      <P>&nbsp;</P>
+      <P align=center><INPUT border=0 cache height=173 name=imageField3 
+      src="Immagini/NonColloc.jpg" type=image width=445> </P>
+      <P>&nbsp;</P>
+      <P>In this case, the Proxy runs in the same client host, but in a 
+      different process. </P>
+      <P>To run a static experiment (i.e. <I>NonPermNonCollocDyn</I>):</P>
+      <P><CODE>java [ORB-Properties] NonPermNonCollocDyn.MBServer</CODE></P>
+      <P><CODE>java [ORB-Properties] NonPermNonCollocDyn.Server</CODE></P>
+      <P><CODE>java [ORB-Properties] NonPermNonCollocDyn.Client</CODE></P>
+      <P>&nbsp;</P>
+      <P>To run a dynamic experiment (i.e. <I>NonPermNonCollocStatic</I>):</P>
+      <P><CODE>java [ORB-Properties] NonPermNonCollocStatic.MBServer</CODE></P>
+      <P><CODE>java [ORB-Properties] 
+      NonPermNonCollocStatic.proxy.Server</CODE></P>
+      <P><CODE>java [ORB-Properties] NonPermNonCollocStatic.Client</CODE></P>
+      <P>&nbsp;</P>
+      <TABLE bgColor=#cc3333 border=0 cellPadding=15 cellSpacing=0 
+        width="100%"><TBODY>
+        <TR>
+          <TD width="100%">
+            <H1 align=center><FONT size=6><A name=DOWNLOAD></A></FONT><FONT 
+            color=#ffffff face="Arial, Helvetica, sans-serif" 
+            size=7>Download</FONT></H1></TD></TR></TBODY></TABLE>
+      <P>&nbsp;</P>
+      <P>We have tested our experiments on WinNT and Windows2000 platforms with 
+      JDK1.3.</P>      
+      <P>&nbsp;</P>
+      <DIV align=center>
+      <TABLE border=1 width="74%">
+        <TBODY>
+        <TR>
+          <TD width="29%"><I>Platform</I></TD>
+          <TD width="38%"><I>Version</I></TD>
+          <TD width="33%"><I>Size</I></TD></TR>
+        <TR>
+          <TD height=36 width="29%">
+            <DIV align=left><A 
+            href="PIcode/jacorb.zip">JacORB 
+            </A></DIV></TD>
+          <TD height=36 width="38%">1.3.30</TD>
+          <TD height=36 width="33%">422k</TD></TR>
+        <TR>
+          <TD height=36 width="29%"><A 
+            href="PIcode/orbacus.zip">ORBacus 
+            </A></TD>
+          <TD height=36 width="38%">4 for Java code</TD>
+          <TD height=36 width="33%">412k</TD></TR>
+        <TR>
+          <TD height=39 width="29%"><A 
+            href="PIcode/orbix.zip">Orbix 
+            2000</A></TD>
+          <TD height=39 width="38%">1.2 for Java code</TD>
+          <TD height=39 width="33%">444k</TD></TR></TBODY></TABLE></DIV>
+      <P>&nbsp;</P></TD></TR>
+  <TR>
+    <TD align=middle bgColor=#93b6ff vAlign=top width=120>&nbsp;</TD>
+    <TD bgColor=#cccccc vAlign=top width=844>&nbsp;</TD></TR></TBODY></TABLE>
+<P>&nbsp;</P></BODY></HTML>

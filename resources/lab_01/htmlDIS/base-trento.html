@@ -1,0 +1,146 @@
+<html>
+<head>
+<link href="moses.css" rel="stylesheet" type="text/css">
+<title>Programma di lavoro dell'unit&agrave; di Roma</title>
+</head>
+
+<body>
+
+<h1>Base di partenza scientifica dell'unit&agrave; di Trento</h1>
+
+<p>
+Il Model Checking (si veda ad esempio [1]) e` una potente tecnica di ragionamento automatico per la verifica di proprieta' temporali in sistemi dinamici. In Model Checking un sistema e` modellato come una macchina a stati finiti e la proprieta' da verificare (la &#34;specifica&#34;) e` espressa utilizzando una logica temporale. Tra le logiche temporali piu' usate per esprimere le specifiche vi sono LTL (Linear Temporal Logic) e CTL (Computational Tree Logic). Le due logiche hanno una capacita` espressiva diversa: esistono cioe` proprieta' specificabili in LTL ma non in CTL e viceversa. Si veda ad es. [2] per una presentazione dettagliata dell'argomento. In funzione della logica utilizzata per la specifica, si attiva una procedura di ricerca in grado di determinare automaticamente se la specifica e` soddisfatta o meno dalla macchina a stati finiti. Il Model Checking e` ampiamente utilizzato in ambito industriale per la verifica ed il debugging di sistemi hardware e software.</p>
+
+<p>
+Indipendentemente dalla logica temporale usata per la specifica, il problema principale del model checking, che ne limita in molti casi l'applicabilita', e` quello dell'esplosione dello spazio degli stati. Per sistemi realistici, il numero degli stati e` solitamente cosi' grande che la generazione e l'esplorazione della macchina a stati non sono possibili. Utilizzando una codifica booleana della macchina a stati tramite Ordered Binary Decision Diagrams (OBDD), e` possibile trattare sistemi con un numero di stati dell'ordine di 10^20 [3]. Tuttavia, per sistemi con un numero di stati maggiore, la dimensione dell'OBDD generato dalla procedura di model checking diventa troppo grande per i calcolatori attualmente disponibili. Inoltre, e` ben noto che le dimensioni degli OBDD dipendono in modo critico dall'ordine scelto per le variabili booleane. Determinare l'ordinamento ottimale (che genera cioe` un OBDD dalle dimensioni minime) e` un problema NP-completo e molte volte le euristiche per contenere la dimensione dell'OBDD falliscono. Vi sono inoltre sistemi per cui, indipendentemente dall'ordine delle variabili prescelto, la dimensione dell'OBDD risultante e` esponenziale nel numero di variabili che modellano il sistema.</p>
+
+<p>
+I risolutori SAT sono algoritmi per il soddisfacimento di formule proposizionali. I risolutori SAT allo stato dell'arte non soffrono del problema dell'esplosione in spazio proprio degli OBDD. Inoltre, grazie alla messa a punto di strutture dati ed euristiche particolarmente efficaci, in questi ultimi anni si e` avuto un enorme miglioramento nelle prestazioni di tali procedure. Alcuni esempi di risolutori SAT allo stato dell'arte sono PROVER [4], basato sul metodo di Stalmarck [5], SATO [6] e REL_SAT [7], basati sulla procedura di Davis & Putnam [8]. La nuova generazione di risolutori SAT e` stata applicata con successo in vari domini, quali la verifica e il debugging di circuiti hardware [9], la costruzione di decisori per logiche modali [10,11], la verifica formale di sistemi di controllo [4], nonche' la costruzione di sistemi di pianificazione [12,13] in grado di competere con pianificatori allo stato dell'arte.</p>
+
+<p>
+Un decisore per una logica modale L e` un algoritmo per determinare la soddisfacibilita' di una formula modale in L. In particolare, un decisore SAT-based e' caratterizzato da due passi:</p>
+
+<ul>
+
+<li>generazione di un assegnamento che soddisfa proposizionalmente la formula data (per assegnamento intendiamo una funzione parziale che mappa in {True, False} le sottoformule della formula in input il cui connettivo principale non e` proposizionale)
+
+<li>test se l'assegnamento generato al passo precedente e` o meno consistente nella logica modale L. Questo comporta la verifica di consistenza in L di altre formule, che puo', a sua volta, essere effettuata applicando ricorsivamente la procedura SAT-based. 
+
+</ul>
+
+<p>
+La metodologia SAT-based puo' essere realizzata utilizzando due procedure mutuamente ricorsive:</p>
+
+<ul>
+<li>sat(A), per la generazione di assegnamenti che soddisfano proposizionalmente la formula A e
+<li>L-consist(mu), per la verifica di consistenza in L di ogni assegnamento mu generato.
+</ul>
+
+<p>
+Si noti che il processo di generazione di un assegnamento e' indipendente dalla logica modale L considerata e, pertanto, puo' essere basato su un qualunque decisore SAT esistente.</p>
+
+<p>
+[10] descrive un decisore SAT-based per la logica modale K, proponendo anche alcune ottimizzazioni tese a migliorarne l'efficienza. [11] descrive le problematiche sottostanti la realizzazione di un decisore SAT-based a partire da un pre-esistente decisore SAT. [14] mostra la flessibilita' dell'approccio SAT-based definendo 8 procedure SAT-based per altrettante logiche modali classiche. Si noti che per alcune delle logiche considerate non si conoscono procedure decisionali alternative. In [10,11,14] si verifica sperimentalmente come le risultanti procedure di decisione SAT-based siano molto piu' efficienti di altre procedure allo stato dell'arte. Si puo' affermare che e` ormai prassi costruire procedure decisionali per logiche modali (anche piu' espressive di quelle descritte in [10,11,14]) a partire da un decisore proposizionale (si veda ad esempio [15]). Le ragioni di questo successo sono molteplici, ma principalmente ascrivibili a due fattori: </p>
+
+<ul>
+
+<li>
+grazie alla tecnica del &#34;semantic branching&#34; (tipica dei decisori SAT), un assegnamento che soddisfa proposizionalmente la formula in input e` generato al piu' una volta. Cio' non e` vero per i sistemi tradizionalmente sviluppati (quali Tableau [16] e Kris [17]), basati sul sistema a tableau di Smullyan [18]. Si veda [3] per un trattamento piu' completo.
+
+<li>
+costruire decisori SAT efficenti e` uno dei problemi di ricerca maggiormente affrontati e sviluppati in letteratura. Esistono euristiche consolidate (l'euristica di splitting &#34;Maximum number of Occurrences in disjunctions of Minimum Size (MOMS)&#34;, backjumping, learning [7]), tese a minimizzare l'esplorazione dello spazio di ricerca. Il problema della messa a punto di strutture dati efficienti e` stato altrettanto studiato. Si veda ad esempio [19] per una trattazione approfondita sulla costruzione di decisori SAT efficenti. Nell'approccio SAT-Based, la tecnologia sviluppata nel contesto SAT e` automaticamente disponibile e riutilizzabile nel contesto modale considerato. Inoltre, il codice sorgente di molti decisori SAT allo stato dell'arte e` disponibile pubblicamente e puo' essere usato come base per la costruzione di decisori SAT-based per logiche modali secondo quanto fatto in [10,11,14].
+
+</ul>
+
+<p>
+In questo progetto, l'unita' di Trento si occupera' principalmente dello sviluppo di decisori SAT-based per logiche temporali, focalizzandosi inizialmente e principalmente su LTL. Per inciso, si ricorda che il problema di determinare se una formula e` soddisfacibile in LTL e` PSPACE-completo come nel caso di K (lo stesso problema e` invece EXPTIME-completo per CTL). L'unita' di Trento sperimentera' inoltre le potenzialita' del decisore sviluppato nel campo della verifica formale, secondo quanto fatto ad esempio in [20]. Il problema della costruzione di un decisore SAT-based per LTL non e` ancora stato affrontato. Dal punto di vista dell'applicabilita' di un decisore SAT-based per LTL nel contesto del model checking, e` ben noto che il problema del model cheking in LTL e` riducibile in tempo polinomiale al problema della consistenza di una formula in LTL (si veda ad esempio [2]).</p>
+
+<hr>
+
+<h1>Scientific Background</h1>
+
+<p>
+Model Checking (see, for example, [1]) is a powerful automated-reasoning technique used to verify temporal properties of dynamic systems. In Model Checking a system is modelled as a finite state machine and the property to be verified (the &#34;specification&#34;) is described using some kind of temporal logic. LTL (linear Temporal Logic) and CTL (Computational Tree Logic) are among the temporal logics used for specifications. The two logics differ in terms of expressive power: there are properties that can be stated in LTL but not in CTL, and viceversa. See, e.g., [2] for more details about the two logics. Depending on the logic used to state the specifications, a search procedure automatically determines whether they are satisfied or not by the finite state machine. Model Checking techniques are commonly used in industrial applications to verify and debug hardware and programs.</p>
+
+<p>
+The main problem with Model Checking is the explosion of the state space. The problem is independent from the temporal logic used to specify the requirements and limits the applicability of Model Checking to relatively small systems. For actual systems, the number of states is usually so large that generating and exploring the finite state machine is not feasible in practice. Using a binary encoding of the finite state machine, it is possible to deal with systems having up to 10^20 states [3]. Such encodings are obtained using Ordered Binary Decision Diagrams (OBDDs). Unfortunately, for problems exceeding the 10^20 bound, the size of the OBDD generated by the Model Checking procedure becomes too large to be handled by the current computer technology. Moreover, variable ordering is critical w.r.t the resulting OBDD size. Computing the optimal variable ordering, i.e., the ordering that minimizes the OBDD size, is a NP-complete problem. In many cases, the implemented heuristics fail to keep the OBDD size small. For some systems, regardless of the variable ordering, the OBDD size is exponential in the number of variables modelling the system.</p>
+
+<p>
+SAT solvers are algorithms that evaluate the satisfiability of propositional formulae. State of the art SAT solvers do not suffer the space explosion problem that affects OBDDs. In recent years, SAT solver performances have been greatly improved with the implementation of efficient data structures and effective heuristics. Some examples of state of the art SAT solvers are PROVER [4], based on Stalmark's method [5], SATO [6] and REL_SAT [7], based on the Davis-Putnam procedure [8]. The new generation of SAT solvers has been successfully applied in many domains, such as hardware verification [9], decision procedures for modal logics [10,11], formal verification for control systems [4], and planning [12,13]. Remarkably, SAT-planners are able to compete with special-purpose planners.</p>
+
+<p>
+A decision procedure for a modal logic L is an algorithm that determines the satisfiability of a modal formula in L. Specifically, a SAT-based decision procedure is characterized by two steps: </p>
+
+<ul>
+
+<li>generate an assignment that propositionally satisfies the given formula (by assignment we mean a partial function that maps in {True, False} the subformulae whose main connective is not propositional), and
+
+<li>test if the assignment generated in the previous step is consistent in the logic L considered. This requires to verify the consistency of other formulae in L and this test can be done by recursively applying the SAT-based procedure. <br>
+
+</ul>
+
+<p>
+The SAT-based methodology can be implemented using two mutually recursive procedures:</p>
+
+<ul>
+
+<li>sat(A), to generate assignments that propositionally satisfy the formula A, and
+<li>L-consist(mu), to test wheteher every generated assignment mu is consistent in the logic L.
+
+</ul>
+
+<p>
+Notice that the process of generating an assignment is independent from the modal logic L and, as a consequence, it can be based on any existing SAT solver.</p>
+
+<p>
+[10] describes a SAT-based decision procedure for the modal logic K and it suggests some optimizations to improve on efficiency. [11] describes some of the problems underlying the implementation of a SAT-based decision procedure starting from an existing SAT solver. [14] shows the flexibility of the SAT-based approach by defining 8 decision procedures for 8 classical modal logics. Notice that, for some of theses logics, decision procedures other than those presented in [14] are not known. The experimental analysis in [10,11,14] shows that SAT-based decision procedures are far more efficient than other state of the art decision procedures. It can be stated that nowadays it is common practice to build decision procedure for modal logics on top of a propositional solver. Using this approach, decision procedures for modal logics more expressive than those described in [10,11,14] have been built (see, e.g., [15]). This success can be ascribed to many reasons, but two are the main ones:</p>
+
+<ul>
+
+<li>&#34;semantic branching&#34; (typical of SAT solvers) causes every assignment that satisfies the given formula to be generated only once. This is not the case for some traditionally implemented systems (such as Tableau [16] and Kris [17]) based on top of Smullyan's tableau systems [18]. See also [3] for more details.
+
+<li>building efficient SAT solvers is one of the most investigated research problems. There are well-known heuristics that try to minimize the exploration of the search space, e.g., the splitting heuristic &#34;Maximum Occurrences in disjunctions of Minimum Size (MOMS)&#34;, backjumping, learning [7]. Also, the problem of building efficient data structures has been studied extensively. See for example [19] for more details about the implementation of efficient SAT solvers. In the SAT-based approach, the technology developed in the SAT context is readily available in the modal context considered. Moreover, the source code of many state of the art SAT deciders is publicly available and can be used as the basis for the implementation of SAT-based decision procedures for modal logics as in [10,11,14].
+
+</ul>
+
+<p>
+In this project, the unit of Trento is mainly concerned with the development of SAT-based decision procedures for temporal logics. Initially, we will focus on LTL. As a side remark, notice that deciding if a formula is satisfiable in LTL is a PSPACE-complete problem as in the case of K (the same problem is EXPTIME-complete in CTL). Also, the unit of Trento will test the implemented decision procedure in the field of formal verification similarly to what has been done in [20]. The problem of implementing a SAT-based decision procedure for LTL has never been dealt with. For the applicability of a SAT-based decision procedure for LTL in the context of model checking, it is well known that the model checking problem for LTL is polynomial-time reducible to the satisfiability problem in LTL (see, for example, [2]).
+</p>
+
+<hr>
+
+<h4>Riferimenti bibliografici</h4>
+
+[1] E. Clarke and O. Grumberg and D. Long. Model Checking. In Proceedings of the International Summer School on Deductive Program Design. Marktoberdorf, Germany. 1994 <br>
+[2] E.A. Emerson. Temporal and Modal Logic. Handbook of Theoretical Computer Science. J. van Leeuwen editor. Elsevier Science Publisher. Vol. B. Pages 995-1072. 1990. <br>
+[3] J.R. Burch, E.M. Clarke, K.L. McMillan, D.L. Dill, and J. Hwang. Symbolic model checking: 10E20 states and beyond. In LICS, 1990. <br>
+[4] A. Boralv. The Industrial Success of Verification Tools Based on Stalmarck's Method. In Proc. of the Ninth International Conference on Computer Aided Verification, 1997. LNCS 1254, pag. 7-10. <br>
+[5] G. Stalmarck, M. Saflund. Modeling and Verifying Systems and Software in Propositional Logic. In SAFECOMP'90: Safety Security and Reliability Related Computers for the 1990s, 1990. <br>
+[6] H. Zhang SATO: An Efficient Propositional Prover Proceedings of the 14th International Conference on Automated deduction, LNAI, Vol. 1249, pp. 272-275, Springer, July 13-17 1997. <br>
+[7] R. J. Bayardo Jr. and R. C. Schrag. Using CSP look-back techniques to solve real world SAT instances. In Proc. of the 14th National Conf. on Artificial Intelligence, 203-208, 1997. <br>
+[8] Davis M., Putnam, H. A Computing Procedure for Quantification Theory. J. Association for Computing Machinery&#34;, 1960, pag. 201-215, vol. 7. <br>
+[9] A. Biere, A. Cimatti, E. Clarke, Y. Zhu. Symbolic Model Checking without BDDs. To be presented at the Fifth International Conference on Tools and Algorithms for the Construction and Analysis of Systems (TACAS '99). 22-26 March, 1999. Amsterdam, the Netherlands. <br>
+[10] F. Giunchiglia, R. Sebastiani. Building decision procedures for modal logics from propositional decision procedures - the case study of modal K. In Proc. 13th International Conference on Automated Deduction (CADE'96). Lecture Notes on Artificial Intelligence series, Springer Verlag ed. New Brunswick, New Jersey, USA, 1996. <br>
+[11] E. Giunchiglia, F. Giunchiglia, R. Sebastiani, A. Tacchella. More evaluation of decision procedures for modal logics. In Sixth International Conference on Principles of Knowledge Representation and Reasoning (KR'98), Trento, Italy, Giugno 2-5 1998. Morgan Kauffmann Publishers. <br>
+[12] H. Kautz, B. Selman. Pushing the envelope: planning, propositional logic and stochastic search. In Proc. of the 14th National Conference on Artificial Intelligence (AAAI'96), Pagg. 1194--1201. <br>
+[13] E. Giunchiglia, A. Massarotto, R. Sebastiani. Act, and the Rest Will Follow: Exploiting Determinism in Planning as Satisfiability. In Proc. of the 15th National Conference on Artificial Intelligence (AAAI'98), Luglio 26-30, 1998, Madison, Wisconsin (USA). <br>
+[14] E. Giunchiglia, F. Giunchiglia, A. Tacchella. SAT-Based decision procedures for classical modal logics. Submitted to Journal of Automated Reasoning. <br>
+[15] P.F. Patel-Schneider. DLP system description. In E. Franconi, G. De Giacomo, R. M. MacGregor, W. Nutt, C. A. Welty, and F. Sebastiani, editors. Collected Papers from the International Description Logics Workshop (DL'98), pages 87--89. CEUR, May 1998. <br>
+[16] P. Bresciani, E. Franconi, S. Tessaris. Implementing and testing expressive Description Logics: a preliminary report. Proc. International Workshop on Description Logics. Rome, Italy. 1995. <br>
+[17] F. Baader, E. Franconi, B. Hollunder, B. Nebel, and H.J. Profitlich. An Empirical Analysis of Optimization Techniques for Terminological Representation Systems or: Making KRIS get a move on. Applied Artificial Intelligence. Special Issue on Knowledge Base Management, 4:109--132, 1994. <br>
+[18] R.M. Smullyan. First-Order Logic. Springer-Verlag, NY, 1968. <br>
+[19] Jon W. Freeman. Improvements to propositional satisfiability search algorithms. PhD thesis, University of Pennsylvania, 1995. <br>
+[20] A. Cimatti, F. Giunchiglia, G. Mongardi, D. Romano, F. Torielli, P. Traverso. Formal Verification of a Railway Interlocking System using Model Checking. Journal on Formal Aspects in Computing. To appear. <br>
+[21] R. Gerth, D. Peled, M. Vardi, P Wolper. Simple on-the-fly automatic verification of linear temporal logic. In Protocol Specification Testing and Verification, pages 3-18, Warsaw, Poland, 1995. CHapman&Hall. <br>
+[22] M. Daniele, F. Giunchiglia, M. Y. Vardi. Improved Automata Generation for Linear Time Temporal Logic. In Proc. Computer Aided Verification (CAV'99). <br>
+[23] G.J. Holzmann. The model checker SPIN. IEEE Trans. on Software Engineering, 23(5):279-295, May 1997. <br>
+[24] Y. Kesten and Z. Manna and H. McGuire and A. Pnueli. A decision Algorithm for Full Propositional Temporal Logic. Pages 97-109. Proceedings of Computer-Aided Verification (CAV'93). Lecture Notes in Computer Science. 1993.<br>
+[25] S. Schwendimann. A New One-Pass Tableau Calculus for PLTL Lecture Notes in Computer Science, Vol. 1397, 1998.<br>
+[26] Costas Courcoubetis, Moshe Vardi, Pierre Wolper, Mihalis Yannakakis. Memory Efficient Algorithms for the Verification of Temporal Properties Proceedings of Computer-Aided Verification (CAV'90). Lecture Notes in Computer Science, Vol. 531, 1991.<br>
+[27] I. Horrocks, P. F. Patel-Schneider. Comparing Subsumption Optimizations. Pages 90-94. Collected Papers from the International Description Logics Workshop (DL'98). 1998. <br>
+[28] K.L. McMillan. Symbolic Model Checking. Kluwer Academic Publ. 1993.<br>
+[29] A. Cimatti, E. Clarke, F. Giunchiglia, M. Roveri. NuSMV: a new Symbolic Model Verifier. In Proceedings of the International Conference on Computer-Aided Verification (CAV'99). Trento, Italy. July 1999.
+
+</body>
+</html>
+

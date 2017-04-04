@@ -1,0 +1,119 @@
+<!doctype html public "-//w3c//dtd html 4.0 transitional//en">
+<html>
+<head>
+<link href="java.css" rel="stylesheet" type="text/css">
+<title>Creazione di nuovi colori</title>
+</head>
+
+<body>
+
+<h2>Creazione di nuovi colori</h2>
+
+Come si &egrave; detto, in Java sono disponibili
+alcuni colori ``standard'':
+
+<pre>
+           Color.black 
+           Color.blue 
+           Color.cyan 
+           Color.darkGray 
+           Color.gray 
+           Color.green 
+           Color.lightGray 
+           Color.magenta 
+           Color.orange 
+           Color.pink 
+           Color.red 
+           Color.white 
+           Color.yellow 
+</pre>
+
+In alcuni casi semplici, questi colori possono
+essere sufficienti. D'altra parte, ci sono dei
+casi in cui occorrono altri colori oltre a questi.
+In Java, &egrave; possibile definire un colore
+attraverso le sue tre coordinate RGB.<p>
+
+Come &egrave; noto, ogni colore si pu&ograve;
+ottenre ``mischiando'' quantit&agrave; opportune
+dei tre colori fondamentali rosso, verde e
+blu. Ogni colore &egrave; quindi determinato
+dalle quantit&agrave; dei tre colori fondamentali
+che lo compongono. In Java, si assume che le
+componenti di colore variano da 0 a 255, per cui
+(0,0,0) &egrave; il nero, mentre (255,255,255)
+&egrave; il bianco. Per esempio, il colore rosso
+&egrave; composto da una componente rossa di massima
+intensit&agrave;, e da nessun altro colore
+fondamentale, per cui il rosso &egrave; identificato
+dalla terna di coordinate (255,0,0).<p>
+
+Per creare un nuovo colore occorre una variabile di
+tipo <tt>Color</tt>, che &egrave; una zona di memoria
+in cui si memorizza un colore. Per decidere il colore
+da memorizzare in questa locazione si usa il comando:
+
+<pre>
+  c = new Color(a,b,c);
+</pre>
+
+dove <tt>a</tt>, <tt>b</tt>, <tt>c</tt> sono le coordinate di colore del
+nuovo colore da creare.<p>
+
+Vediamo ora un esempio di uso della allocazione di
+nuovi colori. Vogliamo disegnare dei quadrati colorati,
+ognuno di lato 20, disposti a griglia. Vogliamo che
+il quadrato in posizione (0,0) sia riempito del colore
+di coordinate (0,0,0), mentre quello di coordinate
+(20,0) abbia colore (20,0,0) e quello in posizione
+(0,10) sia colorato con (0,20,0), e cos&igrave; via:
+il quadrato in posizione (i,j) deve essere colorato
+con il colore (i,j,0).<p>
+
+Il programma
+<a href="NuoviColori.java">NuoviColori.java</a>
+disegna la griglia facendo un ciclo in cui la variabile
+<tt>i</tt> va da 0 a 250 aumentando ogni volta di 20.
+Per ogni valore di <tt>i</tt> occorre considerare tutti
+i valori di <tt>j</tt> da 0 a 250, per cui all'interno del
+ciclo for si mette un secondo ciclo for. Quello che si
+trova all'interno del secondo ciclo viene quindi eseguito
+per ogni valore di <tt>i</tt> e per ogni valore di
+<tt>j</tt>. Quello che si deve fare &egrave; creare un nuovo
+colore, dire che si vuole usare questo nuovo colore da ora
+in avanti, e disegnare il quadrato.<p>
+
+<pre>
+/*
+  Allocazione di nuovi colori.
+*/
+
+import java.awt.*;
+
+public class NuoviColori extends java.applet.Applet {
+  public void paint(Graphics g) {
+    int i,j;
+    Color c;
+
+    for(i=0; i<=250; i=i+20) {
+      for(j=0; j<=250; j=j+20) {
+        c=new Color(i,j,0);
+
+        g.setColor(c);
+
+        g.fillRect(i,j,20,20);
+      }
+    }
+  }
+}
+
+</pre>
+
+<center>
+<img src="NuoviColori.gif">
+</center>
+
+
+</body>
+</html>
+

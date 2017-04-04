@@ -1,0 +1,54 @@
+
+<HTML>
+
+<HEAD>
+<META HTTP-EQUIV="Context-Type" CONTEXT="text/html;charset=PREDEFINITA (AUTOMATICA)">
+<meta name="GENERATOR" content="Microsoft Internet Assistant for PowerPoint 97">
+ <TITLE>A Note on Range Variables</TITLE> 
+</HEAD>
+
+<BODY     >
+
+ <H1>A Note on Range Variables</H1> 
+ <P><UL>
+<LI><H2>Really needed only if the same relation appears twice in the FROM clause.  The previous query can also be written as:</H2>
+</UL></P>
+<P><UL>
+SELECT  S.sname
+<BR></UL><UL>
+FROM     Sailors S, Reserves R
+</UL><UL>
+WHERE  S.sid=R.sid AND bid=103</UL></P>
+<P><UL>
+SELECT  sname
+<BR></UL><UL>
+FROM     Sailors, Reserves 
+</UL><UL>
+WHERE  Sailors.sid=Reserves.sid
+</UL><UL>
+               AND bid=103</UL></P>
+<P><UL>
+It is good style,
+<BR></UL><UL>
+however, to use
+</UL><UL>
+range variables
+</UL><UL>
+always!</UL></P>
+<P><UL>
+OR<BR></UL></P>
+<P></P> 
+<P>
+<TABLE>
+  <TD HEIGHT=100 WIDTH=100> <A HREF="tsld005.htm">Diapositiva precedente</A> </TD>
+  <TD HEIGHT=100 WIDTH=100> <A HREF="tsld007.htm">Diapositiva successiva</A> </TD>
+  <TD HEIGHT=100 WIDTH=150> <A HREF="tsld001.htm">Torna alla prima diaposiva</A> </TD>
+  <TD HEIGHT=100 WIDTH=150> <A HREF="sld006.htm">Visualizza versione grafica</A> </TD>
+</TABLE>
+<BR>
+</P>
+
+
+
+</Body>
+</HTML>

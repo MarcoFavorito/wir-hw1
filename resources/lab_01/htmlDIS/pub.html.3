@@ -1,0 +1,327 @@
+<!doctype html public "-//w3c//dtd html 4.0 transitional//en">
+<html>
+<head>
+   <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <meta name="GENERATOR" content="Microsoft FrontPage 5.0">
+   <title>Publications</title>
+<!-- Changed by: Marilena Vendittelli, 10-Dec-1999 -->
+</head>
+<body text="#000000" bgcolor="#FFFFFF" link="#0000FF" vlink="#800080" background="../../images/sfondo.jpg">
+
+<center><b><font color="#0000AF"><font size=+2>Publications</font></font></b></center>
+
+<p><b><font color="#0000AF"><font size=+1>International Journals</font></font></b>
+<ul>
+<li>
+G. Oriolo, M. Vendittelli, "A stabilization framework for
+general nonholonomic systems with an application to the plate-ball
+mechanism," to appear in the IEEE Transactions on Robotics, vol. 21, no. 2, 2005 (<a href="../../pub/papers/TRO04.pdf">pdf</a>).</li>
+
+<br><br>We present a framework for the stabilization of nonholonomic systems
+that do not possess special properties such as flatness or exact
+nilpotentizability. Our approach makes use of two tools: an
+iterative control scheme and a nilpotent approximation of the system
+dynamics. The latter is used to compute an
+approximate steering control which, repeatedly applied to the system,
+guarantees asymptotic stability with exponential
+convergence to any desired set-point, under appropriate conditions. For
+illustration, we apply the proposed strategy to design a
+stabilizing controller for the plate-ball manipulation system, a
+canonical example of non-flat nonholonomic mechanism. The theoretical
+performance and robustness of the algorithm are confirmed by
+simulations, both in the nominal case and in the presence of a
+perturbation on the ball radius. 
+<br>
+<hr>
+<li>
+M. Vendittelli, G. Oriolo, F. Jean, J.-P. Laumond, "Nonhomogeneous nilpotent
+approximations for nonholonomic systems with singularities," IEEE Transactions on Automatic Control<font face="Times New Roman">, 
+vol. 49 ,&nbsp;no. 6 ,&nbsp;pp. 261 - 266, 2004 (<a href="http://www.dis.uniroma1.it/~labrob/pub/papers/TAC04.pdf">pdf</a>).</font></li>
+
+<br><br>Nilpotent approximations are a useful tool for analyzing and controlling
+systems whose tangent linearization does not preserve controllability,
+such as nonholonomic mechanisms. However conventional homogeneous approximations
+exhibit a drawback: in the neighborhood o singular points (where the system
+growth vector is not constant) the vector fields of the approximate dynamics
+do not vary continuously with the approximation point. The geometric counterpart
+of this situation is that the sub-Riemannian distance estimate provided
+by the classical Ball-Box Theoremis not uniform at singular points. With
+reference to a specific family of driftless systems, we show how to build
+a nonhomogeneous nilpotent approximation whose vector fields vary continuously
+around singular points. It is also proven that the privileged coordinates
+associated to such an approximation provide a uniform estimate of the distance.
+<br>
+<hr>
+<li>
+A. De Luca, M. Vendittelli, ... , G. Ulivi, "Construction, training and clinical validation of an interpretation system for genotypic HIV-1 drug resistance based on fuzzy rules revised by virological outcomes,"  Antiviral Therapy, vol. 9, no. 4, 2004.</li>
+<br>
+<hr>
+<li>
+G. Oriolo, A. De Luca, M. Vendittelli, "WMR control via dynamic feedback
+linearization: Design, implementation and experimental validation," IEEE
+Transactions on Control Systems Technology, vol. 10, no. 6, pp. 835-852,
+2002 (<a href="http://www.dis.uniroma1.it/~labrob/pub/papers/CST02.pdf">pdf</a>).</li>
+
+<br><br>The subject of this paper is the motion control problem of wheeled
+mobile robots (WMRs) in environments without obstacles. With reference
+to the popular unicycle kinematics, it is shown that dynamic feedback linearization
+is an efficient design tool leading to a solution simultaneously valid
+for both trajectory tracking and set-point regulation problems. The implementation
+of this approach on the laboratory prototype SuperMARIO, a two-wheel differentially-driven
+mobile robot, is described in detail. To assess the quality of the proposed
+controller, we compare its performance with that of several existing control
+techniques in a number of experiments. The obtained results provide useful
+guidelines for WMR control designers.
+<br>
+<hr>
+<li>
+M. Vendittelli, J.P. Laumond, C. Nissoux, "Obstacle distance for car-like
+robots," IEEE Transactions on Robotics and Automation, vol. 15, no. 4,
+pp. 678-691, 1999 (<a href="http://www.dis.uniroma1.it/~labrob/pub/papers/TRA99.ps.gz">compressed
+Postscript version</a>).</li>
+
+<br><br>This paper shows how to compute the nonholonomic distance between
+a point-wise car-like robot and polygonal obstacles. Geometric constructions
+to compute the shortest paths from a configuration (given orientation and
+position in the plane of the robot) to a position (i.e., a configuration
+with unspecified final orientation) are first presented. The geometric
+structure of the reachable set (set of points in the plane reachable by
+paths of given length l) is then used to compute the shortest paths to
+straight-line segments. Obstacle distance is defined as the length of such
+shortest paths. The algorithms are developed for robots that can move both
+forward and backward (Reeds and Shepp car) or only forward (Dubins car).
+They are based on the convexity analysis of the reachable set.&nbsp;
+<hr>
+<li>
+G.Oriolo, G.Ulivi, M.Vendittelli, "Real-time map building and navigation
+for autonomous robots in unknown environments," IEEE Transactions on Systems,
+Man, and Cybernetics. Part B: Cybernetics, vol. 28, no. 3, pp. 316-333,
+1998 (<a href="http://www.dis.uniroma1.it/~labrob/pub/papers/SMC97.ps.gz">compressed
+Postscript version</a>).</li>
+
+<br><br>An algorithmic method is presented for the problem of autonomous
+robot motion in completely unknown environments. Our approach is based
+on the alternate execution of two fundamental processes: map building and
+navigation. In the former, range measures are collected through the robot
+exteroceptive sensors and processed in order to build a local representation
+of the surrounding area. This representation is then integrated in the
+global map so far reconstructed by filtering out insufficient or conflicting
+information. In the navigation phase, an A*-based planner generates a local
+path from the current robot position to the goal, that is safe inside the
+visited area and proposes directions for further exploration. The robot
+follows the path up to the boundary of the visited area, terminating its
+motion if unexpected obstacles are encountered. The most peculiar aspects
+of our method are (i) the use of fuzzy logic to build an environment map
+that is very efficiently computed and modified, and (ii) the iterative
+application of A*, that is a complete planning algorithm taking full advantage
+local information. Experimental results of the implementation on a NOMAD
+200 mobile robot show that the proposed method provides real-time performance
+both in static and moderately dynamic environments.&nbsp;
+<hr>
+<li>
+G. Oriolo, G. Ulivi, M. Vendittelli, "Fuzzy maps: A new tool for mobile
+robot perception and planning," Journal of Robotic Systems, vol. 14, no.
+3, pp. 179-197, 1997 (<a href="http://www.dis.uniroma1.it/~labrob/pub/papers/JRS96.ps.gz">compressed
+Postscript version</a>).</li>
+
+<br><br>An essential component of an autonomous mobile robot is the exteroceptive
+sensory system. Sensing capabilities should be integrated with a method
+for extracting a representation of the environment from uncertain sensor
+data and with an appropriate planning algorithm. In this paper, fuzzy logic
+concepts are used to introduce a tool useful for robot perception as well
+as for planning collision-free motions. In particular, a map of the environment
+is defined as the fuzzy set of unsafe points, whose membership function
+quantifies the possibility for each point to belong to an obstacle. The
+computation of this set is based on a specific sensor model and makes use
+of intermediate sets generated from range measures and aggregated by means
+of fuzzy set operators. This general approach is applied to a robot with
+ultrasonic rangefinders. The resulting map building algorithm performs
+well, as confirmed by a comparison with stochastic methods. The planning
+problem on fuzzy maps can be solved by defining various path cost functions,
+corresponding to different strategies, and by searching the map for optimal
+paths. To this end, proper instances of the A* algorithm are devised. Experimental
+results for a Nomad 200 robot moving in a real-world environment are presented.&nbsp;
+<hr>
+<li>
+G. Oriolo, G. Ulivi, M. Vendittelli "Path planning for mobile robots via
+skeletons on fuzzy maps," Intelligent Automation and Soft Computing, vol.
+2, no. 4, pp. 355-374, 1996.</li>
+
+<br><br>We present algorithms for robot path planning via navigation functions
+on fuzzy maps. In this kind of bitmaps, a number is associated to each
+cell, characterizing the possibility that it belongs to an obstacle. Such
+a representation is useful when unknown environments are reconstructed
+from sensor measures. Two methods are devised: both are based on a proper
+modification of the wavefront expansion algorithm. The first is relatively
+simple, but produces paths that may graze the obstacles. Instead, the second
+method makes use of a properly defined skeleton of the map, that lies as
+far as possible from such areas. The performance of the two methods is
+illustrated by application to both simulated and experimental maps. The
+proposed method is also extended to the case of nonholonomic wheeled mobile
+robots.&nbsp;
+<hr>
+<li>
+M. Poloni, G. Ulivi, M. Vendittelli, "Fuzzy logic and autonomous vehicles:
+Experiments in ultrasonic vision," Fuzzy Sets and Systems, no. 69, pp.
+15-27, 1995.</li>
+
+<br><br>The opportunities offered by fuzzy logic to build maps for robot
+navigation are investigated. Characteristics of points of the space (occupied,
+free, uncertain, etc.) are easily expressed trough set theoretical operations.
+Real world experiments validate the approach. The experimental set-up is
+based on modified Polaroid ultrasonic sensors, however the approach can
+be easily extended to incorporate other kinds of sensors.</ul>
+<b><font color="#0000AF"><font size=+1>Book Chapters</font></font></b>
+<blockquote>
+<li>
+A. De Luca, G. Oriolo, M. Vendittelli, S. Iannitti "Planning motions for
+robotic systems subject to differential constraints," to appear in MISTRAL
+- Methodologies and Integration of Subsystems and Technologies for Anthropic
+Robots and Locomotion, B. Siciliano, G. Casalino, A. De Luca and C. Melchiorri,
+Eds., Springer, 2003.</li>
+
+<br>
+<hr>
+<li>
+A. De Luca, G. Oriolo, M. Vendittelli, "Control of wheeled mobile robots:
+An experimental overview," in RAMSETE - Articulated and Mobile Robotics
+for Services and Technologies, S. Nicosia, B. Siciliano, A. Bicchi, P.
+Valigi Eds., Springer-Verlag, 2001 (<a href="http://www.dis.uniroma1.it/~labrob/pub/papers/Ramsete01.pdf">pdf</a>).&nbsp;
+<hr></li>
+
+<li>
+G. Oriolo, G. Ulivi, M. Vendittelli, "Chapter 9: Fuzzy maps: Managing uncertainty
+in sensor-based motion planning," Applications of Fuzzy Logic: Toward High
+Machine Intelligence Quotient Systems, M. Jamshidi Ed., pp. 175-199, Prentice-Hall,
+1997.</li>
+
+<br>&nbsp;</blockquote>
+<b><font color="#0000AF"><font size=+1>International Conferences</font></font></b>
+<ul>
+<li>
+L. Freda, G. Oriolo, M. Vendittelli, "Probabilistic strategies for sensor-based exploration," 9th International Symposium on Robotics with Applications, Sevilla, SP, 2004. 
+
+<br>
+<hr>
+<li>
+G. Oriolo, M. Vendittelli, L. Freda, G. Troso, "The SRT method: Randomized strategies for exploration," 2004 IEEE International Conference on Robotics and Automation, New Orleans, LA, pp. 4688-4694, 2004 (<a href="../../pub/papers/ICRA04_SRT.pdf">pdf</a>).</li>
+
+<br>
+<hr>
+<li>
+M. Cefalo, L. Lanari, G. Oriolo, M. Vendittelli, "The REAL Lab: Remote experiments for active learning," XLI AICA Annual Congress, Trento, IT, 2003. </li>
+
+<br>
+<hr>
+<li>
+G. Oriolo, M. Vendittelli, A. Marigo, A. Bicchi, "From nominal to robust
+planning: The plate-ball manipulation system," 2003 IEEE International
+Conference on Robotics and Automation, Taipei, Taiwan, 2003 (<a href="http://www.dis.uniroma1.it/~labrob/pub/papers/ICRA03_PB.pdf">pdf</a>).</li>
+
+<br>
+<hr>
+<li>
+G. Oriolo, M. Ottavi, M. Vendittelli, "Probabilistic motion planning for
+redundant robots along given end-effector paths," 2002 IEEE/RSJ International
+Conference on Intelligent Robots and Systems, Lausanne, Switzerland, pp.
+1657-1662, 2002 (<a href="http://www.dis.uniroma1.it/~labrob/pub/papers/IROS02.pdf">pdf</a>).</li>
+
+<br>
+<hr>
+<li>
+A. De Luca, G. Oriolo, L. Paone, P. Robuffo Giordano, M. Vendittelli, "Visual-based
+planning and control for nonholonomic mobile robots," 10th IEEE Mediterranean
+Conference on Control and Automation, Lisbon, PT, 2002.</li>
+
+<br>
+<hr>
+<li>
+T. Sartini, M. Vendittelli, G. Oriolo, "A resolution-adaptive strategy
+for probabilistic motion planning," 9th International Symposium on Robotics
+with Applications, Orlando, FL, 2002.&nbsp;
+<hr></li>
+
+<li>
+G. Oriolo, M. Vendittelli, "Robust stabilization of the plate-ball manipulation
+system," 2001 IEEE International Conference on Robotics and Automation,
+Seoul, KR, pp. 91-96, 2001 (<a href="http://www.dis.uniroma1.it/~labrob/pub/papers/ICRA01_PB.pdf">pdf</a>).</li>
+<hr>
+<li>
+A. De Luca, G. Oriolo, M. Vendittelli, "Stabilization of the unicycle via
+dynamic feedback linearization," 6th IFAC Symposium on Robot Control, Vienna,
+A, pp.397-402, 2000.</li>
+<hr>
+<li>
+M. Vendittelli, G. Oriolo, "Stabilization of the general two-trailer system,"
+2000 IEEE International Conference on Robotics and Automation, San Francisco,
+USA, pp. 1817-1823, 2000 (<a href="http://www.dis.uniroma1.it/~labrob/pub/papers/ICRA00a.ps.gz">compressed
+Postscript</a>).</li>
+<hr>
+<li>
+M. Vendittelli, J.P. Laumond, P. Sou&egrave;res, "Shortest paths to obstacles
+for a polygonal car-like robot," 38th IEEE Conference on Decision and Control,
+Phoenix, Arizona, 1999 (<a href="http://www.dis.uniroma1.it/~labrob/pub/papers/CDC99.ps.gz">compressed
+Postscript version</a>).</li>
+<hr>
+<li>
+M. Vendittelli, G. Oriolo, J.P. Laumond, "Steering nonholonomic systems
+via nilpotent approximations: The general two-trailer system," 1999 IEEE
+Int. Conf. on Robotics and Automation, Detroit, MI, pp. 823-829, 1999 (<a href="http://www.dis.uniroma1.it/~labrob/pub/papers/ICRA99.ps.gz">compressed
+Postscript version</a>).</li>
+<hr>
+<li>
+M. Vendittelli, J.P. Laumond, G. Oriolo, "Nilpotent approximation of nonholonomic
+systems with singularities: A case study," 4th IFAC Symposium on Nonlinear
+Control System Design (NOLCOS'98), Enschede, The Netherlands, pp. 777-782,
+1998 (<a href="http://www.dis.uniroma1.it/~labrob/pub/papers/NOLCOS98.ps.gz">compressed
+Postscript version</a>).</li>
+<hr>
+<li>
+J.-P. Laumond, C. Nissoux, M. Vendittelli, "Obstacle distances and visibility
+for car-like robots moving forward," accepted for presentation at the 1998
+IEEE International Conference on Robotics and Automation, Leuven, Belgium,
+1998 (<a href="http://www.dis.uniroma1.it/~labrob/pub/papers/ICRA98.ps.gz">compressed
+Postscript version</a>).</li>
+<hr>
+<li>
+F. Gambino, G. Ulivi, M. Vendittelli, "The transferable belief model in
+ultrasonic map building," 6th IEEE International Conference on Fuzzy Systems,
+Barcelons, July 1-5, 1997.</li>
+<hr>
+<li>
+M. Vendittelli, J.P. Laumond "Visible positions for a car-like robot amidst
+obstacles," Algorithms for Robotic Motion and Manipulation, J.P. Laumond
+and M. Overmars Eds, A. k. Peters, 1997.</li>
+<hr>
+<li>
+G. Fortarezza, G. Oriolo, G. Ulivi, M. Vendittelli, "A mobile robot localization
+method for incremental map building and navigation," 3rd International
+Symposium on Intelligent Robotic Systems (SIRS'95), Pisa, I, pp. 57-65,
+1995.</li>
+<hr>
+<li>
+G. Oriolo, G. Ulivi, M. Vendittelli, "Path planning via skeletons on grey-level
+maps," 3rd Mediterranean Symposium on New Directions in Control and Automation,
+Limassol, CY, vol. 2, pp. 307-314, 1995.</li>
+<hr>
+<li>
+G. Oriolo, G. Ulivi, M. Vendittelli, "On-line map building and navigation
+for autonomous mobile robots," 1995 IEEE International Conference on Robotics
+and Automation, Nagoya, J, pp. 2900-2906, 1995.</li>
+<hr>
+<li>
+G. Oriolo, G. Ulivi, M. Vendittelli, "Motion planning with uncertainty:
+Navigation on fuzzy maps," 4th IFAC Symposium on Robot Control (SYROCO'94),
+Capri, I, pp. 71-78, 1994.</li>
+<hr>
+<li>
+G. Oriolo, G. Ulivi, M. Vendittelli, "Potential-based motion planning on
+fuzzy maps," 2nd European Congress on Intelligent Techniques and Soft Computing
+(EUFIT'94), Aachen, D, pp. 731-735, 1994.</li>
+<hr>
+<p><img SRC="../../images/back.gif" ALT="Back to Vendittelli Home" height=20 width=20 align=BOTTOM> <b><a href="venditt.html">Back
+to my Home Page</a></b>
+<p><img SRC="../../images/back.gif" ALT="Back to Home" BORDER=0 height=20 width=20 align=BOTTOM> <b><a href="../../index.html">Back
+to the LabRob Home Page</a></b>
+</body>
+</html>

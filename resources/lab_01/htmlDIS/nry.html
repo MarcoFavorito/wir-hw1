@@ -1,0 +1,248 @@
+<html>
+<head>
+<title>Alberi N-ari</title>
+</head>
+
+<body>
+
+<h1>Alberi N-ari</h1>
+
+<dl>
+
+<dt>alberi binari
+<dd>ogni nodo ha 0/1/2 figli
+
+<dt>alberi n-ari
+<dd>ogni nodo ha un numero qualsiasi di figli
+
+</dl>
+
+<hr>
+
+
+<h4>Destro e sinistro?</h4>
+
+<p>
+Negli alberi binari ha senso parlare di "figlio destro" e di
+"figlio sinistro"
+</p>
+
+<p>
+Per gli alberi n-ari no
+</p>
+
+<p>
+I sottoalberi di un albero sono un insieme non ordinato
+</p>
+
+<hr>
+
+
+<h4>Implementazione di un albero n-ario</h4>
+
+<p>
+Ogni albero &egrave; composto da un valore pi&ugrave; un
+insieme non ordinato di alberi
+</p>
+
+<pre>
+import java.util.*;
+
+class NAlbero {
+  Object info;
+  HashSet figli;
+}
+</pre>
+
+<hr>
+
+
+<h4>Albero senza figli</h4>
+
+<p>
+Si pu&ograve; procedere in due modi:
+</p>
+
+<ol>
+
+<li>il campo <tt>HashSet</tt> vale <tt>null</tt>
+
+<li>il campo <tt>HashSet</tt> indica un oggetto che
+rappresenta l'albero vuoto
+
+</ol>
+
+<p>
+Con il secondo sistema, le operazioni sugli alberi risultano
+semplificate
+</p>
+
+<p>
+Quando si crea l'albero, va creato anche l'<tt>HashSet</tt>
+</p>
+
+<pre>
+import java.util.*;
+
+class NAlbero {
+  Object info;
+  HashSet figli;
+
+  public NAlbero(Object n) {
+    this.info=n;
+    this.figli=new HashSet();
+  }
+}
+</pre>
+
+<hr>
+
+
+<h4>Rappresentazione grafica di un albero</h4>
+
+<p>
+Rappresentazione di un albero con la radice e tre foglie:
+</p>
+
+<img src="grafico.gif">
+
+<p>
+Notare che non esiste l'albero vuoto:
+<br>
+se un albero non ha figli, ha un insieme di figli
+vuoto
+</p>
+
+<hr>
+
+
+<h4>Scansione di un albero</h4>
+
+<p>
+Simile a quella degli alberi binari, soltanto che ora
+c'&egrave; un insieme di sottoalberi
+</p>
+
+<pre>
+  static void stampaTutti(NAlbero a) {
+    if(a==null)
+      return;
+
+    System.out.print(a.info+" ");
+
+    Iterator i=a.figli.iterator();
+    while(i.hasNext())
+      stampaTutti((NAlbero) i.next());
+  }
+</pre>
+
+<p>
+Usando <tt>null</tt> al posto dell'insieme vuoto:
+</p>
+
+<ol>
+
+<li>era un errore concettuale (un insieme vuoto di figli
+non era rappresentato dall'insieme vuoto)
+
+<li>prima di fare <tt>a.figli.iterator()</tt> bisognava fare
+il controllo
+
+</ol>
+
+<hr>
+
+
+<h4>Altro esempio: presenza in un albero</h4>
+
+<p>
+Verificare se un albero contiene un intero con un certo
+valore
+</p>
+
+<pre>
+  static boolean presente(NAlbero a, int x) {
+    if(((Integer) a.info).intValue()==x)
+      return true;
+
+    Iterator i=a.figli.iterator();
+    while(i.hasNext()) 
+      if(presente((NAlbero) i.next(), x))
+        return true;
+
+    return false;
+  }
+</pre>
+
+<hr>
+
+
+<h4>Generazione e stampa</h4>
+
+<p>
+Metodi per la generazione di un albero casuale e stampa
+</p>
+
+<pre>
+  static NAlbero nalberoRandom(int livelli) {
+
+    int n=(int) (Math.random()*41-20);
+    NAlbero a=new NAlbero(new Integer(n));
+
+    if(Math.random()&lt;0.2)
+      return a;
+
+    if(livelli&lt;1)
+      return a;
+
+    int f=(int) (Math.random()*5);
+    for(int i=0; i&lt;f; i++)
+      a.figli.add(nalberoRandom(livelli-1));
+
+    return a;
+  }
+</pre>
+
+<pre>
+  static void nalberoStampa(NAlbero a, String before, String after) {
+    System.out.print(before.substring(0, before.length()-1));
+    System.out.println("+-["+a.info+"]");
+
+    Iterator i=a.figli.iterator();
+    while(i.hasNext()) {
+      NAlbero f=(NAlbero) i.next();
+      if(i.hasNext())
+        nalberoStampa(f, before+"  |", before+"  |");
+      else
+        nalberoStampa(f,  after+"   ",  after+"   ");
+    }
+  }
+
+  static void nalberoStampa(NAlbero a) {
+    nalberoStampa(a, " ", " ");
+  }
+</pre>
+
+<p>
+Programma per provare un metodo:
+</p>
+
+<ol>
+
+<li>genera un albero casuale
+
+<li>stampalo
+
+<li>invoca il metodo e stampa il risultato
+
+</ol>
+
+<p>
+Vedendo l'albero e il risultato del metodo si pu&ograve;
+capire se il metodo &egrave; corretto oppure no
+</p>
+
+
+
+
+

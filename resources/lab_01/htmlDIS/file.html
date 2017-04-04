@@ -1,0 +1,2090 @@
+<html>
+<head>
+<title>I file</title>
+      <link rel="top" href="../lezioni.html">
+      <link rel="up" href="../lezioni.html">
+      <link rel="contents" href="../lezioni.html">
+      <link rel="previous" href="../boolean/boolean.html">
+      <link rel="next" href="../memoria/memoria.html">
+</head>
+
+<body>
+
+<h1>I file</h1>
+
+<p>
+I tipi di memoria
+</p>
+
+<p>
+Come usare i file in Java
+</p>
+
+<hr>
+
+
+<h4>Il calcolatore</h4>
+
+<p>
+Schema visto fino a questo momento:
+</p>
+
+<img src="computer.jpg">
+
+<p>
+Schema molto approssimativo.
+</p>
+
+<p>
+Bastava per le cose viste finora:
+</p>
+
+<dl>
+
+<dt>CPU
+<dd>parte che elabora
+
+<dt>memoria
+<dd>contiene variabili, oggetti, ecc.
+
+<dt>In/Out
+<dd>usiamo i metodi <tt>println</tt> e
+<tt>showInputDialog</tt>
+
+</dl>
+
+<hr>
+
+
+<h4>Due tipi di memoria</h4>
+
+<p>
+Ogni computer ha due tipi di dispositivi
+di memorizzazione:
+</p>
+
+<dl>
+
+<dt>RAM
+<dd>veloce, piccola, volatile
+
+<dt>dischi
+<dd>lenti, grandi, non volatili
+
+</dl>
+
+<p>
+Piccolo/grande: quanti dati posso memorizzare
+</p>
+
+<p>
+Non volatile/volatile: i dati restano/non restano
+quando si spegne.
+</p>
+
+<hr>
+
+
+<h4>Memoria di lavoro/memoria di massa</h4>
+
+<p>
+Anticamente:
+</p>
+
+<p>
+Memoria di lavoro=RAM <br>
+memoria di massa=dischi
+</p>
+
+<p>
+La distinzione non &egrave; pi&ugrave;
+cos&iacute; netta.
+</p>
+
+<p>
+Usiamo ancora questo modello, anche se
+impreciso, perch&egrave; ci fa comodo.
+</p>
+
+<hr>
+
+
+<h4>Gestione memoria di lavoro</h4>
+
+<p>
+Nella memoria di lavoro vengono memorizzate
+variabili e oggetti.
+</p>
+
+<p>
+La lavagna con i rettangolini e rettangoloni
+era la memoria di lavoro.
+</p>
+
+<p>
+Come usare la memoria di lavoro:
+</p>
+
+<ul>
+
+<li>dichiarare una variabile (creare spazio)
+<li>assegnare un valore a una variabile (memorizzare)
+<li>usare una variabile in una espressione
+(prendere dati dalla memoria)
+<li>creare un oggetto
+<li>...
+
+</ul>
+
+<hr>
+
+
+<h4>Gestione della memoria di massa</h4>
+
+<p>
+Per usare la memoria di massa, dobbiamo sapere
+come &egrave; organizzata.
+</p>
+
+<p>
+I dati sono memorizzati in <i>file</i>
+</p>
+
+<p>
+Esempi di file: i sorgenti Java, i file
+.class (il risultato della compilazione),
+il file <tt>autoexec.bat</tt>, ecc.
+</p>
+
+<hr>
+
+
+<h4>Organizzazione gerarchica</h4>
+
+<p>
+Nei primi sistemi: sul disco c'era un insieme di file.
+</p>
+
+<p>
+Attualmente: un disco pu&ograve; contenere 10000 file
+</p>
+
+<p>
+Difficile trovare il file (a meno che non si sappia
+esattamente il nome)
+</p>
+
+<p>
+Suddivisione in cartelle
+</p>
+
+<p>
+Ogni cartella &egrave; un contenitore con dentro
+dei file, oppure altre cartelle.
+</p>
+
+<hr>
+
+
+<h4>Cartelle: i comandi del prompt</h4>
+
+<pre>
+md nomecartella
+</pre>
+
+<p>
+Crea una nuova cartella
+</p>
+
+<pre>
+cd nomecartella
+</pre>
+
+<p>
+Entra nella cartella
+</p>
+
+<pre>
+dir
+</pre>
+
+<p>
+Visualizza l'elenco dei file
+nella cartella in cui ci si trova
+</p>
+
+<pre>
+type nomefile
+</pre>
+
+<p>
+Visualizza il contenuto del file
+</p>
+
+<hr>
+
+
+<h4>Gestione dei file in Java</h4>
+
+
+<p>
+Classi che riguardano la lettura da file:
+</p>
+
+<ul>
+
+<li><tt>File</tt>
+
+<li><tt>FileReader</tt>
+
+<li><tt>BufferedReader</tt>
+
+</ul>
+
+<p>
+Tutte riguardano i file che vogliamo leggere
+</p>
+
+<p>
+Ognuna permette delle operazioni diverse
+</p>
+
+<hr>
+
+
+<h4>La classe <tt>File</tt></h4>
+
+<p>
+Un oggetto indica nome e caratteristiche
+del file, pi&ugrave; che il suo contenuto.
+</p>
+
+<p>
+Alcuni metodi della classe:
+</p>
+
+<dl>
+
+<dt><tt>boolean exists()</tt>
+<dd>vede se il file esiste
+
+<dt><tt>boolean delete()</tt>
+<dd>cancella il file
+
+<dt><tt>boolean renameTo(File)</tt>
+<dd>cambia il nome
+
+</dl>
+
+<p>
+<tt>delete</tt> e <tt>renameTo</tt> ritornano
+un booleano che dice se l'operazione &egrave;
+riuscita oppure no
+</p>
+
+<p>
+Possiamo fare finta che il valore ritornato
+sia <tt>void</tt>
+</p>
+
+<hr>
+
+
+<h4>Esempio di programma</h4>
+
+<p>
+Questo programma vede se il file <tt>abcd.txt</tt>
+esiste oppure no
+</p>
+
+<pre>
+import java.io.*;
+
+class EsisteFile {
+  public static void main(String args[])
+  throws IOException {
+    File f;
+    f=new File("abcd.txt");
+
+    if(f.exists())
+      System.out.println("Il file abcd.txt esiste");
+    else
+      System.out.println("Il file abcd.txt non esiste");
+  }
+}
+</pre>
+
+<hr>
+
+
+<h4>Osservazioni sul programma</h4>
+
+<pre>
+import java.io.*;
+</pre>
+
+<p>
+Dice che voglio usare classi che riguardano
+l'I/O
+</p>
+
+<pre>
+  throws IOException
+</pre>
+
+<p>
+Serve perch&egrave; i metodi di gestione
+dell'I/O possono generare errori (eccezioni)
+</p>
+
+<pre>
+      f=new File("abcd.txt");
+</pre>
+
+<p>
+Costruttore con argomento: oltre a creare
+l'oggetto, dice un valore da memorizzare
+</p>
+
+<hr>
+
+
+<h4>Il file e l'oggetto <tt>File</tt></h4>
+
+<p>
+Il file sta su disco, ha un nome e un contenuto
+</p>
+
+<p>
+L'oggetto <tt>File</tt> &egrave; un oggetto
+che sta in memoria, e ha solo il nome del
+file.
+</p>
+
+<img src="mem-file.jpg">
+
+<p>
+L'oggetto <i>rappresenta</i> il file
+</p>
+
+<p>
+Non tutto: solo alcune informazioni (nome)
+</p>
+
+<hr>
+
+
+<h4>Ma <tt>new File</tt> crea il file?</h4>
+
+<p>
+La <tt>new</tt> non crea il file, ma solo
+l'oggetto in memoria.
+</p>
+
+<p>
+&Egrave; come per tutti gli altri oggetti:
+<tt>new Persona</tt> non crea una nuova
+persona, ma solo una nuova rappresentazione
+di una persona.
+</p>
+
+<hr>
+
+
+<h4>Ma esiste il file?</h4>
+
+<p>
+Il file e l'oggetto File sono due cose
+indipendenti
+</p>
+
+<p>
+Pu&ograve; esistere il file ma non l'oggetto,
+e pu&ograve; esistere l'oggetto ma non il file.
+</p>
+
+<p>
+Dopo aver fatto la <tt>new</tt>, esiste
+un oggetto in memoria.
+</p>
+
+<p>
+Non &egrave; detto che il file esista realmente
+</p>
+
+<p>
+Invocare il metodo <tt>exists</tt> =
+chiedere se esiste un file con il nome
+usato per la creazione dell'oggetto.
+</p>
+
+<p>
+Se non esiste, <tt>f.exists()</tt> ritorna
+<tt>false</tt>, ma non &egrave; un errore.
+</p>
+
+<hr>
+
+
+<h4>I metodi di <tt>File</tt></h4>
+
+<p>
+I metodi mettono in relazione l'oggetto in
+memoria con quello su disco.
+</p>
+
+<p>
+Per esempio, <tt>exists</tt> verifica se sul
+disco c'&egrave; un file che corrisponde a
+quello in memoria.
+</p>
+
+<p>
+<tt>delete</tt> cancella il file che corrisponde
+a quello in memoria, se c'&egrave;
+</p>
+
+<p>
+Attenzione! <tt>delete</tt> cancella il file,
+ma non l'oggetto <tt>File</tt>! (che continua
+ad esistere).
+</p>
+
+<hr>
+
+
+<h4>Esercizio</h4>
+
+<p>
+Verificare se il file <tt>prova.txt</tt> esiste.
+</p>
+
+<p>
+Se esiste, cambiare nome in <tt>altro.txt</tt>,
+e poi cancellare <tt>prova2.txt</tt>
+</p>
+
+<p>
+Usare i metodi <tt>delete</tt> e <tt>renameTo</tt>
+come se non avessero valore di ritorno<br>
+(come se fossero metodi <tt>void</tt>)
+</p>
+
+<hr>
+
+
+<h4>Soluzione</h4>
+
+<pre>
+import java.io.*;
+
+class EsFile {
+  public static void main(String args[])
+  throws IOException {
+    File f;
+    f=new File("prova.txt");
+
+    if(f.exists()) {
+      File g;
+      g=new File("altro.txt");
+
+      f.renameTo(g);
+
+      File h;
+      h=new File("prova2.txt");
+
+      h.delete();
+    }
+  }
+}
+</pre>
+
+<p>
+Nota: quando faccio <tt>File g</tt>, non sto
+creando il file (su disco) ma solo l'oggetto
+(in memoria).
+</p>
+
+<p>
+Il file esiste solo dopo che ho fatto
+<tt>f.renameTo(g)</tt>, che cambia il nome
+del file
+</p>
+
+<p>
+Dopo il cambio di nome, <i>il file <tt>f</tt> non
+esiste pi&ugrave;</i>!
+</p>
+
+<p>
+Per&ograve; esiste ancora l'oggetto <tt>f</tt>!
+</p>
+
+<p>
+Dato che l'oggetto esiste, si possono invocare ancora
+i suoi metodi, per esempio <tt>f.exists()</tt>
+</p>
+
+<p>
+Per&ograve; il file non c'&egrave; pi&ugrave;,
+per cui <tt>f.exists()</tt> restituisce <tt>false</tt>
+(non esiste pi&ugrave; il file con il nome
+<tt>prova.txt</tt>)
+</p>
+
+<p>
+L'oggetto non rappresenta il file, ma solo
+alcuni dei suoi attributi (nome, ecc).
+</p>
+
+<p>
+<tt>renameTo</tt> cambia il nome al file,
+non all'oggetto
+</p>
+
+<hr>
+
+
+<h4>Lettura dei file</h4>
+
+<p>
+Si usano due classi:
+</p>
+
+<ul>
+
+<li><tt>FileReader</tt>
+
+<li><tt>BufferedReader</tt>
+
+</ul>
+
+<p>
+La prima classe serve per la lettura dei
+singoli caratteri, la seconda per la
+lettura di stringhe.
+</p>
+
+<hr>
+
+
+<h4>I singoli caratteri</h4>
+
+<p>
+Per le stringhe ho la classe <tt>String</tt>
+</p>
+
+<p>
+Per i singoli caratteri ho un tipo scalare <tt>char</tt>
+</p>
+
+<pre>
+  char uncar;
+
+  uncar='a';
+</pre>
+
+<ul>
+
+<li>ci posso mettere un solo carattere
+
+<li>i caratteri si denotano con la singola virgoletta
+
+<li>&egrave; un tipo scalare, non una classe
+
+</ul>
+
+<p>
+Quindi, il carattere <tt>'a'</tt> viene memorizzato
+dentro la variabile<br>
+(per le stringhe, nella variabile c'&egrave; il
+riferimento)
+</p>
+
+<hr>
+
+
+<h4>Numeri correlati ai caratteri</h4>
+
+<p>
+A ogni carattere corrisponde un numero.
+</p>
+
+<p>
+Per esempio, il carattere <tt>'a'</tt>
+ha numero 97, il carattere <tt>'b'</tt>
+ha numero 98, il carattere <tt>]</tt>
+ha numero 93, ecc.
+</p>
+
+<p>
+Conversione da numeri a caratteri:
+</p>
+
+<pre>
+  int x=97;
+  char c;
+
+  c=(char) x;
+</pre>
+
+<hr>
+
+
+<h4>La classe <tt>FileReader</tt></h4>
+
+<p>
+Gli oggetti della classe rappresentano
+file che possiamo leggere.
+</p>
+
+<p>
+Metodo <tt>read</tt> che legge un
+singolo carattere; ritorna un intero che
+lo rappresenta.
+</p>
+
+<pre>
+    FileReader fr;
+    fr=new FileReader("prova.txt");
+
+    int x;
+    char c;
+
+    x=fr.read();
+    c=(char) x;
+</pre>
+
+<p>
+Il metodo <tt>read</tt> ritorna un intero,
+che poi viene convertito in carattere.
+</p>
+
+<p>
+Ogni volta che si invoca il metodo, viene
+letto un nuovo carattere.
+</p>
+
+<hr>
+
+
+<h4>Esercizio</h4>
+
+<p>
+Leggere e stampare i primi dieci caratteri
+del file <tt>prova.txt</tt>
+</p>
+
+<hr>
+
+
+<h4>Soluzione semplificata</h4>
+
+<p>
+Se non riusciamo a capire come si risolve, proviamo
+una cosa pi&ugrave; semplice.
+</p>
+
+<p>
+Leggere i primi due caratteri
+</p>
+
+<pre>
+import java.io.*;
+
+class LeggiChar {
+  public static void main(String args[])
+  throws IOException {
+    FileReader fr;
+    fr=new FileReader("prova.txt");
+
+    int x;
+    char c;
+
+    x=fr.read();
+    c=(char) x;
+    System.out.println(c);
+
+    x=fr.read();
+    c=(char) x;
+    System.out.println(c);
+  }
+}
+</pre>
+
+<p>
+Prima creo l'oggetto <tt>FileReader</tt>,
+poi leggo i due caratteri.
+</p>
+
+<hr>
+
+
+<h4>Soluzione complessiva</h4>
+
+<p>
+La lettura va ripetuta dieci volte.
+</p>
+
+<p>
+Uso un ciclo
+</p>
+
+<pre>
+import java.io.*;
+
+class LeggiDieci {
+  public static void main(String args[])
+  throws IOException {
+    FileReader fr;
+    fr=new FileReader("prova.txt");
+
+    int x;
+    char c;
+    int i;
+
+    for(i=0; i&lt;10; i++) {
+      x=fr.read();
+      c=(char) x;
+      System.out.println(c);
+    }
+  }
+}
+</pre>
+
+<hr>
+
+
+<h4>Leggere fino alla fine del file</h4>
+
+<p>
+I valori interi possono venire convertiti
+in caratteri.
+</p>
+
+<p>
+Se il valore letto &egrave; <tt>-1</tt>, allora
+il file &egrave; finito.
+</p>
+
+<p>
+Scrivere un programma che legge tutti i caratteri
+di un file.
+</p>
+
+<hr>
+
+
+<h4>Creazione oggetto <tt>FileReader</tt></h4>
+
+<pre>
+import java.io.*;
+
+class Fine {
+  public static void main(String args[])
+  throws IOException {
+    FileReader fr;
+    fr=new FileReader("prova.txt");
+
+    int x;
+    char c;
+
+    // ciclo di lettura
+  }
+}
+</pre>
+
+<p>
+Creo l'oggetto
+</p>
+
+<p>
+Poi devo leggere i caratteri.
+</p>
+
+<p>
+Uso un ciclo
+</p>
+
+<hr>
+
+
+<h4>Ciclo definito o indefinito?</h4>
+
+<p>
+So che il file &egrave; finito
+solo quando <tt>read</tt> ritorna <tt>-1</tt>
+</p>
+
+<p>
+Non so quanti caratteri devo leggere per
+arrivare alla fine.
+</p>
+
+<p>
+&Egrave; un ciclo indefinito.
+</p>
+
+<p>
+Uso <tt>while</tt>
+</p>
+
+<hr>
+
+
+<h4>Prima versione</h4>
+
+<pre>
+import java.io.*;
+
+class Fine {
+  public static void main(String args[])
+  throws IOException {
+    FileReader fr;
+    fr=new FileReader("prova.txt");
+
+    int x;
+    char c;
+
+    while(x!=-1) {
+      x=fr.read();
+      if(x!=-1) {
+        c=(char) x;
+        System.out.println(c);
+      }
+    }
+  }
+}
+</pre>
+
+<p>
+Esco dal ciclo quando <tt>x</tt>
+diventa uguale a <tt>-1</tt>
+</p>
+
+<p>
+Errore: variabile <tt>x</tt> non
+inizializzata.
+</p>
+
+<hr>
+
+
+<h4>Versione corretta</h4>
+
+<pre>
+import java.io.*;
+
+class Fine {
+  public static void main(String args[])
+  throws IOException {
+    FileReader fr;
+    fr=new FileReader("prova.txt");
+
+    int x=0;
+    char c;
+
+    while(x!=-1) {
+      x=fr.read();
+      if(x!=-1) {
+        c=(char) x;
+        System.out.println(c);
+      }
+    }
+  }
+}
+</pre>
+
+<p>
+Devo mettere un valore che faccia
+eseguire almeno una volta il ciclo.
+</p>
+
+<hr>
+
+
+<h4>Soluzione alternativa con <tt>break</tt></h4>
+
+<p>
+Faccio un ciclo infinito.
+</p>
+
+<p>
+Se leggo <tt>-1</tt>, esco
+</p>
+
+<pre>
+    int x;
+    char c;
+
+    while(true) {
+      x=fr.read();
+      if(x==-1)
+        break;
+      c=(char) x;
+      System.out.println(c);
+    }
+</pre>
+
+<hr>
+
+
+<h4>Soluzione con lettura primo elemento</h4>
+
+<p>
+Leggo il primo elemento prima di entrare nel ciclo.
+</p>
+
+<pre>
+    int x;
+    char c;
+
+    x=fr.read();
+
+    while(x!=-1) {
+      c=(char) x;
+      System.out.println(c);
+      x=fr.read();
+    }
+</pre>
+
+<hr>
+
+
+<h4>Cicli do-while</h4>
+
+<p>
+Sono come i cicli <tt>while</tt>, soltanto
+che il corpo del ciclo viene eseguito almeno
+una volta.
+</p>
+
+<pre>
+do
+  istruzione;
+while (condizione);
+</pre>
+
+<p>
+Al posto della istruzione posso mettere un
+blocco
+</p>
+
+<p>
+Equivale a:
+</p>
+
+<pre>
+istruzione;
+if(!condizione) esci
+istruzione
+if(!condizione) esci
+istruzione
+if(!condizione) esci
+...
+</pre>
+
+<p>
+L'unica differenza con il <tt>while</tt> &egrave;
+che l'istruzione viene eseguita sempre almeno una
+volta.
+</p>
+
+<p>
+Esercizio: fare il programma di sopra con
+<tt>do-while</tt>
+</p>
+
+<hr>
+
+
+<h4>Soluzione</h4>
+
+<p>
+Il ciclo <tt>while</tt> di partenza non funzionava:
+</p>
+
+<pre>
+    int x;
+    char c;
+
+    while(x!=-1) {
+      x=fr.read();
+      if(x!=-1) {
+        c=(char) x;
+        System.out.println(c);
+      }
+    }
+</pre>
+
+<p>
+Non funzionava perch&egrave; il corpo del
+ciclo andava eseguito almeno una volta.
+</p>
+
+<pre>
+    int x;
+    char c;
+
+    do {
+      x=fr.read();
+      if(x!=-1) {
+        c=(char) x;
+        System.out.println(c);
+      }
+    } while(x!=-1);
+</pre>
+
+<p>
+Il corpo &egrave; rimasto lo stesso.
+</p>
+
+<hr>
+
+
+<h4>Trasformazione <tt>while</tt> -> <tt>do-while</tt></h4>
+
+<pre>
+do
+  istruzione;
+while(condizione);
+</pre>
+
+<p>
+Equivale a:
+</p>
+
+<pre>
+istruzione;
+while(condizione)
+  istruzione;
+</pre>
+
+<p>
+<i>Non</i> si poteva fare:
+</p>
+
+<pre>
+  // codice errato
+
+    int x;
+    char c;
+
+    do {
+      x=fr.read();
+      c=(char) x;
+      System.out.println(c);
+    } while(x!=-1);
+</pre>
+
+<p>
+Il file poteva non contenere nemmeno un carattere
+(file vuoto).
+</p>
+
+<p>
+In questo caso, veniva stampato un carattere,
+anche se il file non ne contiene nessuno.
+</p>
+
+<hr>
+
+
+<h4>La classe <tt>BufferedReader</tt></h4>
+
+<p>
+Con <tt>FileReader</tt> posso leggere un
+solo carattere per volta.
+</p>
+
+<p>
+La classe <tt>BufferedReader</tt> ha un metodo
+per leggere una linea per volta.
+</p>
+
+<p>
+Ogni linea del file viene letta come stringa
+</p>
+
+<p>
+Le stringhe possono poi venire convertite
+in interi, ecc.
+</p>
+
+<hr>
+
+
+<h4>Creazione di un <tt>BufferedReader</tt> e lettura</h4>
+
+<p>
+Non si crea dando il nome del file, ma
+dando un oggetto <tt>FileReader</tt>
+</p>
+
+<pre>
+    FileReader f;
+    f=new FileReader("prova.txt");
+
+    BufferedReader b;
+    b=new BufferedReader(f);
+</pre>
+
+<p>
+La classe <tt>BufferedReader</tt> ha
+il metodo <tt>readLine()</tt>, che
+ritorna la prossima linea letta da file.
+</p>
+
+<hr>
+
+
+<h4>Esercizio</h4>
+
+<p>
+Leggere e stampare le prime due linee del file.
+</p>
+
+<pre>
+import java.io.*;
+
+class PrimeDue {
+  public static void main(String args[])
+  throws IOException {
+    FileReader f;
+    f=new FileReader("prova.txt");
+
+    BufferedReader b;
+    b=new BufferedReader(f);
+
+    String s;
+
+    s=b.readLine();
+    System.out.println(s);
+
+    s=b.readLine();
+    System.out.println(s);
+  }
+}
+</pre>
+
+<p>
+Ogni volta che invoco il metodo, viene
+letta una nuova riga dal file.
+</p>
+
+<hr>
+
+
+<h4>Esercizio: leggere tutto il file</h4>
+
+<p>
+Leggere e stampare tutte le linee del file
+</p>
+
+<p>
+Quando il file &egrave; finito, <tt>readLine()</tt>
+ritorna il valore <tt>null</tt>
+</p>
+
+<p>
+&Egrave; come la lettura per caratteri, con
+<tt>null</tt> al posto di <tt>-1</tt>
+</p>
+
+<p>
+Si pu&ograve; fare <tt>s==null</tt>
+oppure <tt>s!=null</tt>,<br>
+anche se <tt>s</tt> &egrave; un oggetto.
+</p>
+
+<hr>
+
+
+<h4>Soluzione</h4>
+
+<p>
+&Egrave; un ciclo indefinito.
+</p>
+
+<p>
+Si esce quando <tt>s</tt> &egrave; <tt>null</tt>
+</p>
+
+<pre>
+import java.io.*;
+
+class Tutte {
+  public static void main(String args[])
+  throws IOException {
+    FileReader f;
+    f=new FileReader("prova.txt");
+
+    BufferedReader b;
+    b=new BufferedReader(f);
+
+    String s;
+
+    while(true) {
+      s=b.readLine();
+      if(s==null)
+        break;
+      System.out.println(s);
+    }
+  }
+}
+</pre>
+
+<p>
+Si pu&ograve; fare anche con <tt>do-while</tt> ecc.
+</p>
+
+<hr>
+
+
+<h4>Note sulla soluzione</h4>
+
+<p>
+Prima va creato il <tt>FileReader</tt> e
+poi con questo si crea il <tt>BufferedReader</tt>
+</p>
+
+<p>
+<tt>null</tt> &egrave; un valore speciale,
+(l'oggetto non esiste)
+</p>
+
+<p>
+Lo approfondiamo in seguito.
+</p>
+
+<p>
+Nota: non ci sono le virgolette su <tt>null</tt>
+</p>
+
+<p>
+Si pu&ograve; fare <tt>s==null</tt>
+(mentre <tt>s==q</tt> non va usato)
+</p>
+
+<hr>
+
+
+<h4>Conversione in intero</h4>
+
+<p>
+Le stringhe si possono convertire in numeri:
+</p>
+
+<pre>
+  x=Integer.parseInt(s);
+  d=Double.parseDouble(s);
+</pre>
+
+<p>
+La stringa letta con <tt>readLine()</tt>
+&egrave; una linea di un file.
+</p>
+
+<p>
+Se il file contiene un intero per linea,
+si pu&ograve; direttamente convertire la
+stringa.
+</p>
+
+<p>
+Se una linea contiene due interi, oppure
+una stringa che non &egrave; un intero,
+la conversione d&agrave; un errore.
+</p>
+
+<hr>
+
+
+<h4>Esercizio</h4>
+
+<p>
+Dato un file che contiene un intero per
+linea, stampare tutti gli interi aumentati
+di due.
+</p>
+
+<hr>
+
+
+<h4>Soluzione</h4>
+
+<p>
+Si pu&ograve; scrivere in questo modo:
+</p>
+
+<pre>
+  per ogni intero su file
+    stampa l'intero piu' due
+</pre>
+
+<p>
+La stampa di un intero aumentato di due &egrave; facile
+</p>
+
+<p>
+Dato che va fatto per tutti gli interi del
+file, devo fare la lettura di tutti gli interi.
+</p>
+
+<hr>
+
+
+<h4>Soluzione</h4>
+
+<p>
+Uso il solito ciclo di lettura di tutte le
+righe del file
+</p>
+
+<p>
+Ogni volta che ho trovato una linea, la
+converto in intero, lo aumento di due e
+la stampo.
+</p>
+
+<pre>
+import java.io.*;
+
+class SommaDue {
+  public static void main(String args[])
+  throws IOException {
+    FileReader f;
+    f=new FileReader("numeri.txt");
+
+    BufferedReader b;
+    b=new BufferedReader(f);
+
+    String s;
+    int x;
+
+    while(true) {
+      s=b.readLine();
+      if(s==null)
+        break;
+
+      x=Integer.parseInt(s);
+      System.out.println(x+2);
+    }
+  }
+}
+</pre>
+
+<p>
+&Egrave; il solito ciclo di scansione.
+</p>
+
+<p>
+L'unica differenza &egrave; che non stampo
+<tt>s</tt>, ma lo converto prima in intero
+e lo aumento di due.
+</p>
+
+<hr>
+
+
+<h4>Conversione stringa -> intero</h4>
+
+<p>
+Perch&egrave; devo convertire in intero?
+</p>
+
+<p>
+Perch&egrave; la somma non &egrave; definita
+sulle stringhe<br>
+(il simbolo <tt>+</tt> ha un altro significato
+sulle stringhe)
+</p>
+
+<hr>
+
+
+<h4>Esercizio</h4>
+
+<p>
+Dato un file che contiene un intero per linea,
+stampare solo la somma.
+</p>
+
+<p>
+Suggerimento?
+</p>
+
+<hr>
+
+
+<h4>Suggerimento</h4>
+
+<p>
+Abbiamo visto come si leggono tutti i valori
+su un file.
+</p>
+
+<p>
+Abbiamo visto come si sommano dei numeri interi
+che sono valori di una funzione.
+</p>
+
+<p>
+Qui devo leggere e sommare i valori letti da file.
+</p>
+
+<hr>
+
+
+<h4>Soluzione</h4>
+
+<p>
+Uso il metodo dell'accumulatore (risultato parziale):
+</p>
+
+<p>
+Una variabile memorizza la somma degli elementi
+letti fino a questo momento.
+</p>
+
+<p>
+Inizialmente &egrave; zero.
+</p>
+
+<p>
+Ogni volta che leggo un nuovo intero, lo sommo
+al contenuto della variabile.
+</p>
+
+<hr>
+
+
+<h4>Soluzione: codice</h4>
+
+<p>
+La soluzione combina la somma dei valori
+di una funzione (metodo dell'accumulatore)
+e la lettura di interi da file.
+</p>
+
+<pre>
+import java.io.*;
+
+class SommaTutti {
+  public static void main(String args[])
+  throws IOException {
+    FileReader f;
+    f=new FileReader("numeri.txt");
+
+    BufferedReader b;
+    b=new BufferedReader(f);
+
+    String s;
+    int x;
+    int somma=0;
+
+    while(true) {
+      s=b.readLine();
+      if(s==null)
+        break;
+
+      x=Integer.parseInt(s);
+      somma=somma+x;
+    }
+
+    System.out.println(somma);
+  }
+}
+</pre>
+
+<hr>
+
+
+<h4>Esercizio</h4>
+
+<p>
+Trovare il minimo elemento di un file
+di interi.
+</p>
+
+<hr>
+
+
+<h4>Soluzione</h4>
+
+<p>
+Uso il metodo del risultato parziale (simile
+a quello dell'accumulatore).
+</p>
+
+<p>
+Invece di una variabile con la somma degli elementi
+trovati fino a questo momento, ho l'elemento minimo
+fra quelli visti finora.
+</p>
+
+<p>
+Ogni volta che leggo un elemento, se &egrave; minore
+del minimo, allora cambio la variabile:
+</p>
+
+<pre>
+  per ogni intero x del file
+    se e' minore del minimo
+      minimo=x
+</pre>
+
+<p>
+In questo modo, <tt>minimo</tt> contiene sempre
+l'elemento pi&ugrave; piccolo visto fino a questo
+momento.
+</p>
+
+<hr>
+
+
+<h4>Soluzione provvisoria</h4>
+
+<p>
+Trasformo il discorso di sopra in codice:
+</p>
+
+<pre>
+import java.io.*;
+
+class MinimoProv {
+  public static void main(String args[])
+  throws IOException {
+    FileReader f;
+    f=new FileReader("numeri.txt");
+
+    BufferedReader b;
+    b=new BufferedReader(f);
+
+    String s;
+    int x;
+
+    int minimo;
+
+    while(true) {
+      s=b.readLine();
+      if(s==null)
+        break;
+
+      x=Integer.parseInt(s);
+      if(x&lt;minimo)
+        minimo=x;
+    }
+
+    System.out.println(minimo);
+  }
+}
+</pre>
+
+<hr>
+
+
+<h4>Non compila!</h4>
+
+<p>
+La variabile <tt>minimo</tt> potrebbe non
+essere stata inizializzata.
+</p>
+
+<pre>
+    int minimo;
+
+    while(true) {
+      ...
+      if(x&lt;minimo) {
+        minimo=x;
+      }
+    }
+
+    System.out.println(minimo);
+</pre>
+
+
+<p>
+Se il file &egrave; vuoto, si esce subito dal ciclo
+e si stampa <tt>minimo</tt>, che non &egrave;
+inizializzato.
+</p>
+
+<p>
+Se il file non &egrave; vuoto, si verifica la
+condizione <tt>x&lt;minimo</tt> quando <tt>minimo</tt>
+non  &egrave; stato inizializzato.
+</p>
+
+<p>
+Quindi, ha ragione il compilatore a dire che la
+variabile non &egrave; stata inizializzata.
+</p>
+
+<hr>
+
+
+<h4>Quale deve essere il valore iniziale?</h4>
+
+<p>
+Non &egrave; il massimo intero possibile.
+</p>
+
+<p>
+Il risultato parziale iniziale va trovato in base
+alle specifiche:
+</p>
+
+<blockquote>
+<i>il minimo elemento di un insieme &egrave;
+l'elemento dell'insieme per cui non ne esiste
+uno minore</i>
+</blockquote>
+
+<p>
+Il risultato parziale iniziale &egrave; il minimo
+dell'insieme vuoto.
+</p>
+
+<p>
+Ma l'insieme vuoto non ha un elemento minimo,
+dato che il minimo &egrave; un elemento dell'insieme.
+</p>
+
+<p>
+Quindi, il minimo dell'insieme vuoto non &egrave;
+definito.
+</p>
+
+<hr>
+
+
+<h4>E allora come faccio?</h4>
+
+<p>
+Caso base: insieme di un solo elemento.
+</p>
+
+<p>
+Se l'insieme ha un solo elemento, questo
+&egrave; il minimo.
+</p>
+
+<p>
+Inizializzazione: il minimo &egrave; il
+primo elemento dell'insieme.
+</p>
+
+<p>
+Questo risultato parziale &egrave; corretto:<br>
+visto che ho considerato solo il primo elemento,
+il risultato parziale &egrave; effettivamente
+il minimo fra gli elementi visti finora.
+</p>
+
+<hr>
+
+
+<h4>Programma modificato</h4>
+
+<p>
+Leggo il primo intero, e lo metto in <tt>minimo</tt>
+</p>
+
+<p>
+Se il file &egrave; vuoto, il minimo non &egrave;
+definito.
+</p>
+
+<p>
+Se il file contiene almeno un elemento, allora
+il minimo iniziale (dopo aver considerato il primo)
+&egrave; corretto.
+</p>
+
+<pre>
+import java.io.*;
+
+class Minimo {
+  public static void main(String args[])
+  throws IOException {
+    FileReader f;
+    f=new FileReader("numeri.txt");
+
+    BufferedReader b;
+    b=new BufferedReader(f);
+
+    String s;
+    int x;
+
+    s=b.readLine();
+    if(s==null)
+      return;
+    x=Integer.parseInt(s);
+    
+    int minimo=x;
+
+    while(true) {
+      s=b.readLine();
+      if(s==null)
+        break;
+
+      x=Integer.parseInt(s);
+      if(x&lt;minimo)
+        minimo=x;
+    }
+
+    System.out.println(minimo);
+  }
+}
+</pre>
+
+<p>
+L'istruzione <tt>return</tt> termina
+l'esecuzione di <tt>main</tt>
+</p>
+
+<hr>
+
+
+<h4>Differenza fra la classi</h4>
+
+<p>
+Le tre classi rappresentano sempre i file,
+per&ograve; in modo diverso:
+</p>
+
+<dl>
+
+<dt><tt>File</tt>
+<dd>rappresenta le propriet&agrave; "globali"
+dei file, come il nome, la dimensione, ecc.
+I metodi sono operazioni su tutto il file
+(cancellare, cambiare nome ecc.)
+
+<dt><tt>FileReader</tt> e <tt>BufferedRreader</tt>
+<dd>rappresentano il "contenuto" dei file, ossia
+i dati memorizzato. La differenza fra oggetti dei 
+due tipi &egrave; nel modo in cui accedono al
+contenuto (per singolo carattere o per linea)
+
+</dl>
+
+<hr>
+
+
+<h4>Se il file non esiste?</h4>
+
+<dl>
+
+<dt><tt>File</tt>
+<dd>non &egrave; un errore: un oggetto di questo
+tipo rappresenta un file che pu&ograve; oppure
+pu&ograve; non esistere
+
+<dt><tt>FileReader</tt> e <tt>BufferedRreader</tt>
+<dd>questi oggetti rappresentano file che voglio
+leggere; quindi, devono esistere: se non ci sono,
+viene generato un errore in fase di creazione
+(quando viene fatta la <tt>new</tt>)
+
+</dl>
+
+<hr>
+
+
+<h4>Scrivere su file</h4>
+
+<p>
+Le classi da usare sono:
+</p>
+
+<dl>
+
+<dt><tt>FileWriter</tt>
+<dd>scrive singoli caratteri
+
+<dt><tt>BufferedWriter</tt>
+<dd>scrive intere stringhe
+
+</dl>
+
+<hr>
+
+
+<h4>La classe <tt>FileWriter</tt></h4>
+
+<p>
+Quando si crea un oggetto, va detto il nome
+del file:
+</p>
+
+<pre>
+    FileWriter w;
+    w=new FileWriter("prova.txt");
+</pre>
+
+<p>
+Il metodo <tt>write</tt> della classe permette
+di scrivere un singolo carattere.
+</p>
+
+<p>
+Alla fine, va invocato il metodo <tt>flush</tt>
+</p>
+
+<hr>
+
+
+<h4>Esempio</h4>
+
+<p>
+Questo programma scrive su file questi due caratteri
+</p>
+
+<pre>
+import java.io.*;
+
+class ScriviDue {
+  public static void main(String args[])
+  throws IOException {
+    FileWriter w;
+    w=new FileWriter("prova.txt");
+
+    w.write('a');
+    w.write('b');
+
+    w.flush();
+  }
+}
+</pre>
+
+<p>
+Perch&egrave; <tt>flush</tt>?
+</p>
+
+<hr>
+
+
+<h4>Come convertire stringhe in caratteri</h4>
+
+<p>
+Il metodo <tt>charAt()</tt> della classe
+<tt>String</tt> restituisce il carattere
+in una certa posizione.
+</p>
+
+<p>
+Esempio:
+</p>
+
+<pre>
+  String s="abcdefh";
+  char c;
+
+  c=s.charAt(3);
+</pre>
+
+<p>
+Restituisce il carattere in posizione <tt>3</tt>
+(ossia il quarto).
+</p>
+
+<hr>
+
+
+<h4>Esercizio: scrivere una stringa su file</h4>
+
+<p>
+Scrivere la stringa <tt>"abcdefghi"</tt>
+sul file <tt>prova.txt</tt>
+</p>
+
+<p>
+I dati necessari li avete:
+</p>
+
+<ul>
+
+<li><tt>length</tt> &egrave; un metodo di <tt>String</tt>
+che restituisce la lunghezza
+
+<li><tt>charAt</tt> &egrave; un metodo di <tt>String</tt>
+che d&agrave; il carattere in una posizione (la posizione
+parte da zero!)
+
+<li><tt>write</tt> scrive un solo carattere per volta.
+
+</ul>
+
+<hr>
+
+
+<h4>Soluzione</h4>
+
+<p>
+Per ogni carattere della stringa, lo scrivo su file
+</p>
+
+<p>
+Il ciclo deve andare da <tt>0</tt> a <tt>s.length()-1</tt>
+</p>
+
+<pre>
+import java.io.*;
+
+class ScriviStringa {
+  public static void main(String args[])
+  throws IOException {
+    FileWriter w;
+    w=new FileWriter("prova.txt");
+
+    String s="abcdefghi";
+
+    int i;
+    char c;
+
+    for(i=0; i&lt;s.length(); i++) {
+      c=s.charAt(i);
+      w.write(c);
+    }
+
+    w.flush();
+  }
+}
+</pre>
+
+<hr>
+
+
+<h4>La classe <tt>BufferedWriter</tt></h4>
+
+<p>
+Permette di scrivere stringhe su file
+</p>
+
+<p>
+Il metodo <tt>write</tt> prende come argomento
+una stringa.
+</p>
+
+<p>
+Usare il carattere <tt>\n</tt> per andare a capo
+</p>
+
+<pre>
+import java.io.*;
+
+class ScriviUna {
+  public static void main(String args[])
+  throws IOException {
+    FileWriter w;
+    w=new FileWriter("prova.txt");
+
+    BufferedWriter b;
+    b=new BufferedWriter (w);
+
+    b.write("abcd\nefghi");
+
+    b.write("123");
+
+    b.flush();
+  }
+}
+</pre>
+
+<p>
+Contenuto del file:
+</p>
+
+<table border="1">
+<tr>
+<td>
+abcd<br>
+efghi123
+</td>
+</tr>
+</table>
+
+<p>
+Il ritorno a capo appare <i>solo</i>
+dove c'&egrave; <tt>\n</tt>
+</p>
+
+<p>
+Non c'&egrave; dove finisce la prima
+stringa stampata.
+</p>
+
+<hr>
+
+
+<h4>Esercizio</h4>
+
+<p>
+Stampare su file i valori della
+funzione <i>f(x)=x<sup>2</sup>-10x+4</i>
+per <i>x</i> intero da <tt>-10</tt> a
+<tt>10</tt>
+</p>
+
+<p>
+Usare il metodo <tt>String Integer.toString(int)</tt> per
+convertire un intero in stringa (parametro intero e
+valore di ritorno stringa)
+</p>
+
+<hr>
+
+
+<h4>Soluzione</h4>
+
+<p>
+Faccio un ciclo
+</p>
+
+<p>
+Calcolo i valori di <tt>f</tt>, li converto in stringa
+e li stampo su file.
+</p>
+
+<p>
+Dopo ogni valore, scrivo il ritorno a capo
+(stringa <tt>"\n"</tt>, ossia la stringa che
+contiene un solo carattere <tt>'\n'</tt>)
+</p>
+
+<pre>
+import java.io.*;
+
+class ScriviFunzione {
+  public static void main(String args[])
+  throws IOException {
+    FileWriter w;
+    w=new FileWriter("prova.txt");
+
+    BufferedWriter b;
+    b=new BufferedWriter (w);
+
+    int x, f;
+    String s;
+
+    for(x=-10; x&lt;=10; x++) {
+      f=x*x-10*x+4;
+
+      s=Integer.toString(f);
+
+      b.write(s);
+
+      b.write("\n");
+    }
+
+    b.flush();
+  }
+}
+</pre>
+
+</body>
+</html>
+

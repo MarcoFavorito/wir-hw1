@@ -1,0 +1,114 @@
+<html>
+<head>
+<title>
+Diploma Universitario di Ingegneria Informatica,
+Esame di Fondamenti di Informatica II - primo modulo,
+A.A. 2001/02 - Appello del 11 dicembre 2002
+</title>
+</head>
+
+<body>
+
+<h3 align="center">
+Diploma Universitario di Ingegneria Informatica<br>
+Esame di Fondamenti di Informatica II - primo modulo <br>
+A.A. 2001/02 - Appello del 11 dicembre 2002</h3>
+
+<p><b>Problema 1</b>&nbsp;&nbsp; Si consideri la seguente specifica del tipo astratto 
+  <i>VideoTape</i>: 
+<dl>
+  <dt><b><u>TipoAstratto</u></b><i> VideoTape</i> 
+    <p>
+  <dt><b><u>Sorte</u></b> <i>VT</i>(sorta per il dominio di interesse) 
+    <p>
+  <dt><b><u>Funzioni</u></b><p>
+
+       <ul>
+         <li><i>Crea : (Reale) --&gt; VT</i> <br>
+              precondizioni e postcondizioni per <i>Crea(m) = v</i> <br>
+              <u>pre</u>: nessuna <br>
+              <u>post</u>: <i>v</i> &egrave;
+              un videotape avente
+              <i>m</i> minuti di capacit&agrave; di nastro liberi
+              <p>
+
+         <li><i>CapacitaComplessiva : (VT) --&gt; Reale</i><br>
+              precondizioni e postcondizioni per
+              <i>CapacitaComplessiva(v) = m</i><br>
+              <u>pre</u>: nessuna<br>
+              <u>post</u>: <i>m</i> &egrave; la capacit&agrave;
+              complessiva del videotape <i>v</i>
+              <p>
+
+         <li><i>CapacitaResidua : (VT) --&gt; Reale</i><br>
+              precondizioni e postcondizioni per
+              <i>CapacitaResidua(v) = m</i><br>
+              <u>pre</u>: nessuna<br>
+              <u>post</u>: <i>m</i> &egrave; la capacit&agrave;
+              residua del videotape <i>v</i>
+              <p>
+
+         <li><i>NumSequenze : (VT) --&gt; Int</i><br>
+              precondizioni e postcondizioni per <i>NumSequenze(v) = n</i><br>
+              <u>pre</u>: nessuna<br>
+              <u>post</u>: <i>n</i> &egrave; il numero di sequenze video 
+              presenti nel videotape
+              <i>v</i>
+              <p>
+
+         <li><i>Inserisci : (VT, SequenzaVideo) --&gt; VT</i><br>
+              precondizioni e postcondizioni per
+              <i>Inserisci(v,s) = w</i><br>
+              <U>pre</u>:  la lunghezza della sequenza video <i>v</i> &egrave; minore
+              di <i>CapacitaResidua(v)</i><br>
+              <U>post</u>: <i>w</i> &egrave; il videotape ottenuto da
+              <i>v</i> aggiungendo la sequenza video <i>s</i>
+              in posizione <i>NumSequenze(v)+1</i>
+              <p>
+
+         <li><i>Restituisci : (VT, Int) --&gt; SequenzaVideo</i><br>
+              precondizione e postcondizioni per
+              <i>Restituisci(v,i) = s</i><br>
+              <u>pre</u>:  <i>1 &lt;= i &lt;= NumSequenze(v)</i> <br>
+              <u>post</u>: <i>s</i> &egrave; la sequenza video in
+              posizione <i>i</i>
+              <p>
+
+       </dl>
+       <dt><b><u>FineTipoAstratto</u></b></dt>
+<p>
+
+Si vuole scrivere una classe C++ <code>VideoTape</code> che realizzi il tipo
+astratto <i>VideoTape</i>, considerando che per riferirsi al tipo astratto
+<i>SequenzaVideo</i> &egrave; necessario utilizzare la classe <code>SequenzaVideo</code> che si
+suppone gi&agrave; realizzata, della quale per&ograve; non &egrave; nota la
+definizione, eccetto che per la funzione <code>durata</code>, che dato un
+oggetto <i>s</i> di tipo <code>SequenzaVideo</code> va invocata con la sintassi
+<code>s.durata()</code> e restituisce un <code>double</code> che rappresenta la
+durata del brano in minuti.
+
+<p><b>Domanda 1</b>&nbsp;&nbsp; Si illustrino le scelte di progetto relative
+alla realizzazione del tipo astratto <i>VideoTape</i> mediante la classe C++
+<code>VideoTape</code>. </p>
+
+<p><b>Domanda 2</b>&nbsp;&nbsp; Si scriva la classe <code>VideoTape</code> (file
+.h e file .cpp) secondo le scelte di progetto illustrate per la Domanda
+1. Scrivere il codice di tutte le funzioni pubbliche e private della
+classe. </p>
+
+
+
+<p><b>Problema 2</b>&nbsp;&nbsp; Realizzare una funzione esterna (non friend)
+della classe <code>VideoTape</code> che, dato un oggetto <i>v</i> di tipo
+<code>VideoTape</code>,
+restituisca un nuovo oggetto <code>VideoTape</code> contenete le stesse  sequenze video di
+<i>v</i> ma in ordine inverso.</p>
+
+
+<p><b>Problema 3</b>&nbsp;&nbsp; 
+Spiegare brevemente il significato delle nozioni di <i>coesione</i>,
+<i>information hiding</i>, <i>accoppiamento</i>, e <i>interfacciamento
+esplicito</i>, e descrivere i criteri fondamentali che legano tali
+nozioni con la qualit&agrave; della modularizzazione.
+</body>
+</html>

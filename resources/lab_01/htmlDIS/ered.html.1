@@ -1,0 +1,1718 @@
+<html>
+<head>
+<title>Ereditariet&agrave;</title>
+</head>
+
+<body>
+
+<h1>Ereditariet&agrave;</h1>
+
+<p>
+Sappiamo come definire nuove classi.
+</p>
+
+<p>
+In alcuni casi, abbiamo gi&agrave; una classe
+che va quasi bene, ma manca qualcosa.
+</p>
+
+<p>
+Esempio: <tt>Point</tt> &egrave; un punto
+sul piano, manca la coordinata <tt>z</tt>
+</p>
+
+<pre>
+  Point p;
+  p=new Point();
+
+  p.z=12;
+  // non funziona: i punti non hanno
+  // la componente z
+</pre>
+
+<p>
+Vediamo come si fa ad aggiungere componenti
+a tipi gi&agrave; definiti.
+</p>
+
+<hr>
+
+
+<h4>Progettazione: cosa manca?</h4>
+
+<p>
+Si parte da una classe gi&agrave; definita
+</p>
+
+<p>
+Si elencano le componenti che mancano.
+</p>
+
+<p>
+Nel nostro caso, manca una componente <tt>int</tt>
+di nome <tt>.z</tt>
+</p>
+
+<hr>
+
+
+<h4>Progettazione: nuovo nome</h4>
+
+<p>
+Quando si estende una classe, in realt&agrave;
+di crea una classe nuova.
+</p>
+
+<p>
+Non si pu&ograve; usare il nome di un tipo
+gi&agrave; esistente.
+</p>
+
+<p>
+Nel nostro caso, non si pu&ograve; usare
+<tt>Point</tt>
+</p>
+
+<p>
+Scegliamo per esempio il nome <tt>SPoint</tt>
+</p>
+
+<hr>
+
+
+<h4>Progettazione: programma di prova</h4>
+
+<p>
+Il nome del nuovo tipo &egrave; <tt>SPoint</tt>
+</p>
+
+<p>
+Sappiamo quali sono le componenti.
+</p>
+
+<p>
+Questo &egrave; un programma che usa la classe.
+</p>
+
+<pre>
+import java.awt.*;
+
+class TriDist {
+  public static void main(String args[]){
+    SPoint p, g;
+    p=new SPoint();
+    g=new SPoint();
+
+    p.x=10;
+    p.y=12;
+    p.z=5;
+  }
+}
+</pre>
+
+<p>
+Vogliamo definire la classe in modo che questo
+programma sia corretto.
+</p>
+
+<hr>
+
+
+<h4>Progettazione: descrizione a parole</h4>
+
+<p>
+Voglio dire una cosa del genere:
+</p>
+
+<pre>
+Crea nuova classe <tt>SPoint</tt>, che ha
+le stesse cose di <tt>Point</tt> piu':
+| componente intera di nome <tt>.z</tt>
+</pre>
+
+<hr>
+
+
+<h4>Progettazione: traduzione nel linguaggio</h4>
+
+<pre>
+Crea nuova classe <tt>SPoint</tt>, che ha
+le stesse cose di <tt>Point</tt> piu':
+| componente intera di nome <tt>.z</tt>
+</pre>
+
+<p>
+Nel linguaggio di programmazione, questo
+si traduce cos&iacute;:
+</p>
+
+<pre>
+class SPoint extends Point {
+  int z;
+}
+</pre>
+
+<p>
+Il tipo <tt>Point</tt> viene usato<br>
+quindi occorre fare <tt>import java.awt.*;</tt>
+</p>
+
+<p>
+Definizione completa:
+</p>
+
+<pre>
+import java.awt.*;
+
+class SPoint extends Point {
+  int z;
+}
+</pre>
+
+<p>
+Va messa in un file <tt>SPoint.java</tt>
+</p>
+
+<hr>
+
+
+<h4>Ereditariet&agrave;</h4>
+
+<p>
+Informalmente, abbiamo detto:
+</p>
+
+<ol>
+
+<li>``estendere'' una classe
+<li>creare una nuova classe che ne estende un'altra
+
+</ol>
+
+<p>
+Formalmente, questo meccanismo
+si chiama <b>ereditariet&agrave;</b>
+</p>
+
+<hr>
+
+
+<h4>E la classe di partenza?</h4>
+
+<p>
+Si crea una nuova classe;
+quella di partenza resta inalterata.
+</p>
+
+<p>
+Si pu&ograve; ancora usare la classe di
+partenza, che non &egrave; stata modificata.
+</p>
+
+<pre>
+import java.awt.*;
+
+class DuePunti {
+  public static void main(String args[]){
+    SPoint p;
+    p=new SPoint();
+
+    p.x=12;
+    p.y=3;
+    p.z=-43;
+
+    Point f;
+    f=new Point();
+
+    f.x=12;
+    f.y=3;
+
+    // f.z=-43; e' un errore: gli oggetti
+    // Point non hanno questa componente
+  }
+}
+</pre>
+
+<p>
+Il tipo <tt>Point</tt> si comporta come
+al solito.
+</p>
+
+<hr>
+
+
+<h4>Traduzione inversa</h4>
+
+<p>
+Data la definizione, passare al tipo
+</p>
+
+<pre>
+class SPoint extends Point {
+  int z;
+}
+</pre>
+
+<p>
+Traduzione meccanica:
+</p>
+
+<pre>
+Crea nuova classe <tt>SPoint</tt>, che ha
+le stesse cose di <tt>Point</tt> piu':
+| componente intera di nome <tt>z</tt>
+</pre>
+
+<p>
+Dal momento che <tt>Point</tt> ha le due
+componenti <tt>x</tt> e <tt>y</tt>
+</p>
+
+<pre>
+Crea nuova classe <tt>SPoint</tt> con
+| componente intera di nome <tt>x</tt>
+| componente intera di nome <tt>y</tt>
+| componente intera di nome <tt>z</tt>
+</pre>
+
+<hr>
+
+
+<h4>Traduzione inversa: esercizio</h4>
+
+<p>
+Siano date le due classi seguenti:
+</p>
+
+<table>
+<tr>
+<td>
+Abcd.java
+</td>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+<td>
+Efgh.java
+</td>
+</tr>
+<tr valign="top">
+<td>
+<table border="1">
+<tr>
+<td>
+<pre>
+class Abcd {
+  int x;
+  int y;
+}
+</pre>
+</td>
+</tr>
+</table>
+</td>
+<td></td>
+<td>
+<table border="1">
+<tr>
+<td>
+<pre>
+class Efgh extends Abcd {
+  double d;
+  int g;
+}
+</pre>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+  
+<p>
+Dire come sono fatti i dati di tipo
+<tt>Abcd</tt> e <tt>Efgh</tt>
+</p>
+
+<p>
+Scrivere un programma che usa queste
+due classi.
+</p>
+
+<hr>
+
+
+<h4>Soluzione: Abcd</h4>
+
+<p>
+Gli oggetti di tipo <tt>Abcd</tt> hanno
+due componenti<br>
+<tt>x</tt> ed <tt>y</tt>, di tipo intero.
+</p>
+
+<p>
+Quando si crea una classe che estende un'altra,<br>
+quella precedente resta inalterata
+</p>
+
+<p>
+Se <tt>a</tt> &egrave; di tipo <tt>Abcd</tt>,<br>
+allora <tt>a.d</tt> e <tt>a.g</tt> non esistono.
+</p>
+
+<p>
+Efgh.java crea una nuova classe,<br>
+non modifica la classe Abcd
+</p>
+
+<hr>
+
+
+<h4>Soluzione: Efgh</h4>
+
+<p>
+Gli oggetti della nuova classe hanno le stesse
+componenti di Abcd, pi&ugrave; <tt>d</tt> reale
+e <tt>g</tt> intero.
+</p>
+
+<p>
+Efgh.java equivale a dire:
+</p>
+
+<pre>
+Crea un nuovo tipo Efgh con
+| componente intera di nome x
+| componente intera di nome y
+| componente reale di nome d
+| componente intera di nome g
+</pre>
+
+<p>
+Le prime due componenti sono definite in Abcd.java
+</p>
+
+<p>
+Le ultime due componenti sono definite in Efgh.java
+</p>
+
+<hr>
+
+
+<h4>Soluzione: esempio di programma</h4>
+
+<p>
+Sia <tt>Abcd</tt> che <tt>Efgh</tt> sono tipi
+validi.
+</p>
+
+<p>
+Posso definire variabili e creare oggetti di
+questi due tipi.
+</p>
+
+<pre>
+class Prova {
+  public static void main(String args[]){
+    Abcd a;
+    a=new Abcd();
+
+    Efgh b;
+    b=new Efgh();
+
+	// a ha le componenti x e y
+    a.x=12;
+    a.y=3;
+	// a.d=10.2; e' un errore!
+	
+
+	// b ha anche d g
+    b.x=4;
+    b.y=-1;
+    b.d=10.2;
+    b.g=3;
+
+    System.out.println(a.x);
+  }
+}
+</pre>
+
+<p>
+Notare che <tt>a.d=10.2</tt> &egrave; un errore:<br>
+gli oggetti di tipo <tt>Abcd</tt> non hanno la
+componente <tt>d</tt>
+</p>
+
+<p>
+Questa componente c'&egrave; solo per la classe
+<tt>Efgh</tt><br>
+(che estende <tt>Abcd</tt>)
+</p>
+
+<hr>
+
+
+<h4>Esercizio</h4>
+
+<p>
+Estendere la classe <tt>Studente</tt> in modo
+che includa il nome del corso di laurea (es.
+Ingegneria Gestionale, ecc.) e il numero di
+esami sostenuti.
+</p>
+
+<hr>
+
+
+<h4>Passo 1: definire la classe a parole</h4>
+
+<p>
+Nuova classe = nuovo nome
+</p>
+
+<p>
+Scelgo <tt>NuovoStud</tt>
+</p>
+
+<p>
+Componenti: gli stessi di <tt>Studente</tt>
+pi&ugrave; <tt>corso</tt> ed <tt>esami</tt>
+</p>
+
+<pre>
+crea una nuova classe NuovoStud
+con tutte le parti di Studente e
+| componente String di nome corso
+| componente int di nome esami
+</pre>
+
+<hr>
+
+
+<h4>Passo 2: programma di prova</h4>
+
+<p>
+Basta un qualsiasi programma che usa la
+classe.
+</p>
+
+<pre>
+class DBUniv {
+  public static void main(String args[]){
+    NuovoStud x;
+    x=new NuovoStud();
+
+    x.nome="Ciccio";
+    x.media=18;
+    x.corso="Ing. gestionale";
+    x.esami=2;
+
+    System.out.println(x.nome);
+    System.out.println(x.media);
+  }
+}
+</pre>
+
+<p>
+La nuova classe ha due componenti in
+pi&ugrave; rispetto a <tt>Studente</tt>
+</p>
+
+<hr>
+
+
+<h4>Passo 3: definizione della classe</h4>
+
+<p>
+Si ottiene dicendo quali campi in pi&ugrave;
+ci sono rispetto alla classe che viene estesa.
+</p>
+
+<pre>
+class NuovoStud extends Studente {
+  String corso;
+  int esami;
+}
+</pre>
+
+<hr>
+
+
+<h4>I metodi della nuova classe</h4>
+
+<p>
+I metodi vengono ereditati
+</p>
+
+<p>
+Fanno letteralmente le stesse cose!
+</p>
+
+<p>
+I metodi non vengono estesi
+</p>
+
+<dl>
+
+<dt>classe <tt>Point</tt>
+<dd><tt>move</tt> cambia i valori di
+<tt>x</tt> ed <tt>y</tt> 
+
+<dt>classe <tt>SPoint</tt>
+<dd><tt>move</tt> esiste, e cambia solo
+i valori di <tt>x</tt> ed <tt>y</tt>
+
+</dl>
+
+<hr>
+
+
+<h4>Perch&egrave; i metodi non si estendono
+automaticamente?</h4>
+
+<p>
+Per il programmatore pu&ograve; essere
+ovvio che va cambiata anche la <tt>z</tt>
+</p>
+
+<p>
+Per il calcolatore non ci sono cose ovvie
+</p>
+
+<p>
+<b>Perch&egrave;?</b>
+</p>
+
+<p>
+Il calcolatore non sa quale &egrave; il
+significato delle componenti<br>
+(per lui sono solo zone di memoria)
+</p>
+
+<p>
+La componente <tt>z</tt> potrebbe indicare il colore,<br>
+per quello che ne sa lui<br>
+(e quindi <tt>move</tt> non la deve modificare)
+</p>
+
+<p>
+Vedremo poi come modificare i metodi
+</p>
+
+<hr>
+
+
+<h4>Esercizio</h4>
+
+<p>
+Estendere la classe <tt>Rectangle</tt> in modo
+che ogni rettangolo contenga anche il punto
+centrale (usare <tt>Point</tt>)
+</p>
+
+<hr>
+
+
+<h4>Soluzione parte 1: definizione a parole</h4>
+
+<p>
+Voglio una classe che ha tutte le
+componenti di <tt>Rectangle</tt> pi&ugrave;
+un punto.
+</p>
+
+<pre>
+Crea nuova classe RectPoint con
+tutte le componenti di Rectangle e:
+| componente Point di nome centro
+</pre>
+
+<hr>
+
+
+<h4>Soluzione parte 2: traduzione in Java</h4>
+
+<p>
+Dato che la classe &egrave; cos&iacute;
+semplice, la traduciamo subito:
+</p>
+
+<pre>
+import java.awt.*;
+
+class RectPoint extends Rectangle {
+  Point centro;
+}
+</pre>
+
+<hr>
+
+
+<h4>Soluzione parte 3: programma di prova</h4>
+
+<p>
+Gli oggetti di tipo <tt>RectPoint</tt> sono
+simili ai rettangoli, ma hanno una componente
+in pi&ugrave;, di tipo <tt>Point</tt>
+</p>
+
+<pre>
+import java.awt.*;
+
+class ProvaRectPoint {
+  public static void main(String args[]){
+    RectPoint r;
+    r=new RectPoint();
+
+    r.setBounds(23,12,4,5);
+    // modifica solo le componenti
+    // originarie x y width height
+
+    r.centro=new Point();
+    r.centro.move(1,2);
+
+    System.out.println(r.x);
+    System.out.println(r.centro.x);
+  }
+}
+</pre>
+
+<p>
+Prima di poter usare <tt>r.centro.x</tt>
+oppure <tt>r.centro.move()</tt>, devo
+fare <tt>new Point()</tt>
+</p>
+
+<p>
+Ma <tt>(1,2)</tt> non &egrave; il centro!
+</p>
+
+<hr>
+
+
+<h4>Ma quel punto non &egrave; il centro!</h4>
+
+<p>
+Chi definisce la classe pensave di usare
+il punto per memorizzare il centro.
+</p>
+
+<p>
+Il programma pu&ograve; mettere un punto
+qualsiasi in <tt>r.centro</tt>
+</p>
+
+<p>
+Per mettere il centro, si pu&ograve; fare
+cos&iacute;:
+</p>
+
+<pre>
+import java.awt.*;
+
+class ProvaCentro {
+  public static void main(String args[]) {
+    RectPoint r;
+    r=new RectPoint();
+
+    r.setBounds(23,12,4,5);
+    // modifica solo le componenti
+    // originarie x y width height
+
+    r.centro=new Point();
+    r.centro.move(r.x+r.width/2,r.y+r.height/2);
+
+    System.out.println(r.x);
+    System.out.println(r.centro);
+  }
+}
+</pre>
+
+<p>
+Non c'&egrave; niente che impedisca a chi
+scrive il programma di sbagliare.
+</p>
+
+<p>
+Con l'incapsulamento&egrave; possibile evitare che
+questo avvenga.
+</p>
+
+<hr>
+
+
+<h4>Ereditariet&agrave;: ridefinizioni</h4>
+
+<p>
+Con il meccanismo di estensione, &egrave;
+anche possibile <i>ridefinire</i> le componenti.
+</p>
+
+<p>
+Esempio: classe originaria <tt>Studente</tt>
+</p>
+
+<pre>
+class Studente {
+  String nome;
+  int media;
+}
+</pre>
+
+<p>
+Non mi piace perch&egrave; la media &egrave;
+intera ma dovrebbe essere reale.
+</p>
+
+<pre>
+class MStud extends Studente {
+  double media;
+}
+</pre>
+
+<p>
+Nella classe <tt>MStud</tt>, la componente
+<tt>media</tt> &egrave; reale.
+</p>
+
+<p>
+Le altre componenti sono come nella classe
+di partenza.
+</p>
+
+<pre>
+class ProvaMStud {
+  public static void main(String args[]){
+    MStud s;
+    s=new MStud();
+
+    s.nome="Pippo";  // stringa come al solito
+    s.media=18.01;   // valore reale
+  }
+}
+</pre>
+
+<hr>
+
+
+<h4>Ridefinizione: esercizio</h4>
+
+<p>
+Definire una classe che estende <tt>Rectangle</tt>
+in questo modo:
+</p>
+
+<ol>
+
+<li>le componenti <tt>x</tt> e <tt>y</tt> diventano
+reali
+
+<li>viene aggiunta una componente intera <tt>colore</tt>
+
+</ol>
+
+<hr>
+
+
+<h4>Soluzione</h4>
+
+<p>
+Diamo direttamente la soluzione:
+</p>
+
+<pre>
+import java.awt.*;
+
+class RectCol extends Rectangle {
+  double x;
+  double y;
+  int colore;
+}
+</pre>
+
+<p>
+Le componenti <tt>x</tt> ed <tt>y</tt>
+vengono ridefinite come reali
+</p>
+
+<p>
+<tt>colore</tt> viene definito come intero
+</p>
+
+<hr>
+
+
+<h4>Uso delle classi con ridefinizione</h4>
+
+<p>
+Per le componenti, non ci sono problemi.
+</p>
+
+<p>
+I metodi possono avere un comportamento inatteso.
+</p>
+
+<pre>
+import java.awt.*;
+
+class ProvaRectCol {
+  public static void main(String args[]){
+    RectCol r, q;
+    r=new RectCol();
+
+    r.x=12.2;
+    r.y=4.2;
+    r.width=12;
+    r.height=32;
+
+    // r.setBounds(12.2, 4.2, 12, 32);
+    // errore: gli argomenti
+    // devono essere interi
+    r.setBounds(1, -2, 12, 32);
+
+    System.out.println(r.x);
+    System.out.println(r.getX());
+  }
+}
+</pre>
+
+<p>
+Sembra ovvio che i primi due argomenti
+di <tt>setBounds</tt> possano essere reali.
+</p>
+
+<p>
+Invece, <tt>setBounds</tt> vuole comunque
+due interi.
+</p>
+
+<hr>
+
+
+<h4>Cosa si stampa?</h4>
+
+<p>
+Viene stampato:
+</p>
+
+<pre>
+12.2
+1.0
+</pre>
+
+<p>
+In altre parole, <tt>r.x</tt> ed <tt>r.getX()</tt>
+non sono pi&ugrave; la stessa cosa.
+</p>
+
+<p>
+(nota: il metodo <tt>getX</tt> restituisce un
+reale, per questo viene stampato <tt>1.0</tt>
+e non <tt>1</tt>)
+</p>
+
+<hr>
+
+
+<h4>Ridefinizioni: cosa succede realmente</h4>
+
+<p>
+Le componenti di un oggetto non possono venire
+cancellate o ridefinite facendo una estensione.
+</p>
+
+<p>
+Quello che succede &egrave; che vengono soltanto
+aggiunte nuove componenti con lo stesso nome.
+</p>
+
+<pre>
+nuova classe RectCol 
+| componente intera x
+| componente intera y
+| componente intera width
+| componente intera height
+|
+| componente double x
+| componente double y
+| componente intera color
+</pre>
+
+<p>
+Ci sono due componenti di nome <tt>x</tt>
+</p>
+
+<p>
+Una &egrave; ereditata da <tt>Rectangle</tt>
+(ossia esiste solo perch&egrave; c'&egrave;
+in <tt>Rectangle</tt>)
+</p>
+
+<p>
+L'altra &egrave; definita nella estensione,
+ossia solo in <tt>RectCol</tt>
+</p>
+
+<hr>
+
+
+<h4>Ridefinizione: la memoria</h4>
+
+<p>
+All'interno dell'oggetto, si sa quali
+parti sono del tipo originario e quali
+sono definite nell'estensione.
+</p>
+
+<img src="ridef-1.jpg">
+
+<p>
+Ci sono due <tt>r.x</tt>. Quale viene usata?
+</p>
+
+<p>
+Regole di accesso in caso di conflitti:
+</p>
+
+<ul>
+
+<li><tt>r.x</tt> &egrave; la componente
+che &egrave; stata aggiunta dall'estensione
+
+<li>i metodi che sono definiti per
+<tt>Rectangle</tt> usano le componenti
+definite in <tt>Rectangle</tt>
+
+</ul>
+
+<p>
+Quindi: <tt>r.x</tt> &egrave; la variabile
+di tipo <tt>double</tt>, perch&egrave; &egrave;
+introdotta dalla estensione.
+</p>
+
+<p>
+Invece, i metodi di <tt>Rectangle</tt>, come
+<tt>setBounds()</tt> e <tt>getX()</tt>, usano
+la componente <tt>x</tt> intera, perch&egrave;
+questa sta nella "parte <tt>Rectanngle</tt>"
+dell'oggetto.
+</p>
+
+<p>
+Per evitare confusione: se si ridefiniscono le componenti,
+vanno ridefiniti anche i metodi che le usano.
+</p>
+
+<hr>
+
+
+<h4>Esercizio</h4>
+
+<p>
+Definire una classe <tt>PointCol</tt> che estende
+<tt>Point</tt> con l'aggiunta di una componente intera
+<tt>colore</tt> e con un metodo che calcola la distanza del
+punto dall'origine.
+</p>
+
+<hr>
+
+
+<h4>Soluzione</h4>
+
+<p>
+Si aggiunge il metodo alla classe.
+</p>
+
+<pre>
+import java.awt.*;
+
+class PointCol extends Point {
+  int colore;
+
+  void stampaDistanza() {
+    double d;
+
+    d=Math.sqrt(this.x*this.x+this.y+this.y);
+
+    System.out.println(d);
+  }
+}
+</pre>
+
+<hr>
+
+
+<h4><tt>Extends</tt></h4>
+
+<p>
+Per ora diciamo solo che fare <tt>class NomeClasse
+extends AltraClasse</tt> inserisce all'interno della classe
+<tt>NomeClasse</tt> tutte le componenti e i metodi di 
+<tt>AltraClasse</tt>
+</p>
+
+<p>
+In realt&agrave;, &egrave; pi&ugrave; complicato.
+</p>
+
+<hr>
+
+
+<h4>Esercizio</h4>
+
+<p>
+Realizzare la classe <tt>SPoint</tt> che estende
+<tt>Point</tt> con una componente intera <tt>z</tt>, e che
+la in pi&ugrave; il metodo <tt>setToOrigin</tt> che pone il
+punto di invocazione nell'origine (tutte e tre le componenti
+vanno a zero).
+</p>
+
+<hr>
+
+
+<h4>Soluzione</h4>
+
+<p>
+Nuova componente+nuovo metodo.
+</p>
+
+<pre>
+import java.awt.*;
+
+class SPoint extends Point {
+  int z;
+
+  void setToOrigin() {
+    this.x=0;
+    this.y=0;
+    this.z=0;
+  }
+}
+</pre>
+
+<hr>
+
+
+<h4>Soluzione alternativa</h4>
+
+<p>
+Tutti i metodi della classe <tt>Point</tt> sono anche metodi
+di <tt>SPoint</tt>.
+</p>
+
+<p>
+Quindi su un oggetto <tt>SPoint</tt> posso invocare il
+metodo <tt>move</tt>
+</p>
+
+<p>
+Fa la per&ograve; esattamente la stessa cosa che fa su un
+<tt>Point</tt>: cambia le componenti <tt>x</tt> e
+<tt>y</tt>.
+</p>
+
+<pre>
+import java.awt.*;
+
+class SPoint extends Point {
+  int z;
+
+  void setToOrigin() {
+    this.move(0,0);
+    this.z=0;
+  }
+}
+</pre>
+
+<p>
+Si pu&ograve; fare perch&egrave; <tt>this</tt> &egrave; un
+oggetto della classe <tt>SPoint</tt>, e la classe
+<tt>SPoint</tt> ha il metodo <tt>move</tt>
+</p>
+
+<hr>
+
+
+<h4>Un esempio di programma</h4>
+
+<p>
+Creo due punti, e su uno invoco il metodo.
+</p>
+
+<pre>
+class ProvaOrigin {
+  public static void main(String args[]){
+    SPoint p, r;
+    p=new SPoint();
+    r=new SPoint();
+
+    p.move(3,4);
+    p.z=-3;
+
+    r.move(-1,-1);
+    r.z=-1;
+
+    p.setToOrigin();
+
+    System.out.println(p.x);
+    System.out.println(r.x);
+  }
+}
+</pre>
+
+<hr>
+
+
+<h4>Esercizio</h4>
+
+<p>
+Realizzare la classe <tt>RectPoint</tt> che estende
+<tt>Rectangle</tt> con una componente <tt>centro</tt> di
+tipo <tt>Point</tt>, e ha in pi&ugrave; un metodo
+<tt>setCentro</tt> che mette nel centro l'effettivo centro
+del rettangolo.
+</p>
+
+<p>
+Si assuma che il punto sia gi&agrave; stato creato.
+</p>
+
+<hr>
+
+
+<h4>Soluzione</h4>
+
+<p>
+I valori del rettangolo sono
+<tt>this.x this.y this.width this.heigh
+this.centro</tt>
+</p>
+
+<p>
+I valori calcolati vanno messi nel
+punto <tt>this.centro</tt>
+</p>
+
+<pre>
+import java.awt.*;
+
+class RectPoint extends Rectangle {
+  Point centro;
+
+  void setCentro() {
+    this.centro.x=this.x+this.width/2;
+    this.centro.y=this.y+this.height/2;
+  }
+}
+</pre>
+
+<hr>
+
+
+<h4>Soluzione: programma di prova</h4>
+
+<p>
+Prima metto i valori del rettangolo,
+poi creo il punto e poi invoco il metodo
+</p>
+
+<pre>
+import java.awt.*;
+
+class ProvaRectPoint {
+  public static void main(String args[]) {
+    RectPoint r;
+    r=new RectPoint();
+
+    r.setBounds(23,12,4,5);
+    // modifica solo le componenti
+    // originarie x y width height
+
+    r.centro=new Point();
+    r.setCentro();
+
+    System.out.println(r.centro);
+  }
+}
+</pre>
+
+<p>
+Viene stampato il centro
+</p>
+
+<p>
+<b>Nota:</b> l'oggetto punto va creato.
+Se non lo crea il metodo, lo deve creare
+il programma.
+</p>
+
+<hr>
+
+
+<h4>Definizione di metodi con argomenti</h4>
+
+<p>
+Definire il metodo <tt>move</tt> per
+<tt>SPoint</tt>, che modifica tutte e tre
+le coordinate.
+</p>
+
+<hr>
+
+
+<h4>Soluzione</h4>
+
+<p>
+<tt>move</tt> &egrave; simile a <tt>setToOrigin</tt>, solo
+che i valori da mettere nelle componenti sono gli argomenti,
+e non <tt>0</tt>
+</p>
+
+<pre>
+import java.awt.*;
+
+class SPoint extends Point {
+  int z;
+
+  void move(int a, int b, int c) {
+    this.x=a;
+    this.y=b;
+    this.z=c;
+  }
+}
+</pre>
+
+<hr>
+
+
+<h4>Programma di prova</h4>
+
+<pre>
+class ProvaMove {
+  public static void main(String args[]){
+    Point p;
+    p=new Point();
+
+    SPoint r;
+    r=new SPoint();
+
+    p.move(3,4);
+    r.move(-1,-1,2);
+
+    System.out.println(p.x);
+    System.out.println(r.x);
+  }
+}
+</pre>
+
+<p>
+Notare:
+</p>
+
+<ul>
+
+<li>il metodo <tt>move</tt> di <tt>Point</tt> ha due
+argomenti
+
+<li>il metodo <tt>move</tt> di <tt>SPoint</tt> ha tre
+argomenti
+
+</ul>
+
+<p>
+Se in <tt>SPoint</tt> non definisco <tt>move</tt> allora ho
+quello ereditato da <tt>Point</tt>
+</p>
+
+<p>
+Il metodo <tt>move</tt> &egrave; stato ridefinito.
+</p>
+
+<hr>
+
+
+<h4>Costruttori</h4>
+
+<p>
+I costruttori non si ereditano.
+</p>
+
+<p>
+Esempio: <tt>Point</tt> ha un costruttore a due argomenti:
+</p>
+
+<pre>
+Point p=new Point(2,3);
+</pre>
+
+<p>
+La classe <tt>SPoint</tt> ha solo il costruttore standard
+(quello a due argomenti)
+</p>
+
+<p>
+Se voglio un costruttore, lo devo definire
+</p>
+
+<pre>
+import java.awt.*;
+
+class SPoint extends Point {
+  int z;
+
+  SPoint(int x, int y, int z) {
+    this.x=x;
+    this.y=y;
+    this.z=z;
+  }
+}
+</pre>
+
+<hr>
+
+
+<h4>Esercizio</h4>
+
+<p>
+Estendere la classe <tt>Point</tt> in modo
+che abbia un nuovo costruttore, che prende come
+argomento un rettangolo, e mette nel punto il
+suo centro.
+</p>
+
+<p>
+Nota: la nuova classe si chiama <tt>NewPoint</tt>
+</p>
+
+<hr>
+
+
+<h4>Soluzione</h4>
+
+<p>
+Per estendere serve un nuovo nome:
+</p>
+
+<pre>
+class NewPoint extends Point {
+  ...
+}
+</pre>
+
+<p>
+Si comincia con l'intestazione del metodo come
+al solito.
+</p>
+
+<pre>
+import java.awt.*;
+
+class NewPoint extends Point {
+  NewPoint(Rectangle r) {
+    ...
+  }
+}
+</pre>
+
+<hr>
+
+
+
+<h4>Definizione del costruttore</h4>
+
+<p>
+Si tratta quasi di un metodo come gli altri.
+</p>
+
+<pre>
+import java.awt.*;
+
+class NewPoint extends Point {
+  NewPoint(Rectangle r) {
+    this.x=r.x+r.width/2;
+    this.y=r.y+r.height/2;
+  }
+}
+</pre>
+
+<p>
+Calcolo, sulla base degli argomenti, i valori
+da mettere nelle componenti dell'oggetto appena
+creato.
+</p>
+
+<hr>
+
+
+<h4>Programma di prova</h4>
+
+<pre>
+import java.awt.*;
+
+class ProvaNewPoint {
+  public static void main(String args[]) {
+    Rectangle r;
+    r=new Rectangle(10,10,20,30);
+
+    NewPoint q;
+    q=new NewPoint(r);
+
+    System.out.println(q);
+  }
+}
+</pre>
+
+<hr>
+
+
+<h4>I costruttori si ereditano?</h4>
+
+<p>
+I costruttori non si ereditano.
+</p>
+
+<pre>
+import java.awt.*;
+
+class ProvaNewPoint {
+  public static void main(String args[]) {
+    NewPoint p;
+    p=new NewPoint(2,4);
+
+    NewPoint q;
+    q=new NewPoint();
+
+    System.out.println(p);
+  }
+}
+</pre>
+
+<p>
+Le due <tt>new NewPoint(...)</tt> danno errore.
+</p>
+
+<hr>
+
+
+<h4>Ridefinizione dei costruttori</h4>
+
+<p>
+Se voglio un costruttore, lo devo definire.
+</p>
+
+<pre>
+import java.awt.*;
+
+class NewPoint extends Point {
+  NewPoint() {
+  }
+
+  NewPoint(int x, int y) {
+    this.x=x;
+    this.y=y;
+  }
+
+  NewPoint(Rectangle r) {
+    this.x=r.x+r.width/2;
+    this.y=r.y+r.height/2;
+  }
+}
+</pre>
+
+<hr>
+
+
+<h4>Ereditare i costruttori</h4>
+
+<p>
+Se voglio solo ``ereditare'' il costruttore:
+definisco il costruttore con <tt>super(args)</tt>
+come corpo:
+</p>
+
+<pre>
+import java.awt.*;
+
+class NewPoint extends Point {
+  NewPoint() {
+    super();
+  }
+
+  NewPoint(int x, int y) {
+    super(x, y);
+  }
+
+  NewPoint(Rectangle r) {
+    this.x=r.x+r.width/2;
+    this.y=r.y+r.height/2;
+  }
+}
+</pre>
+
+<p>
+Di solito, conviene ridefinire il costruttore.
+</p>
+
+<hr>
+
+
+<h4>Il costruttore della sovraclasse</h4>
+
+<p>
+<tt>super(argomenti)</tt> invoca un costruttore
+della classe che &egrave; stata estesa
+</p>
+
+<p>
+Quando si invoca il costruttore della superclasse,
+questa deve essere la prima istruzione del metodo.
+</p>
+
+<pre>
+import java.awt.*;
+
+class TriPoint extends Point {
+  int z;
+
+  TriPoint() {
+  }
+
+  TriPoint(int x, int y, int z) {
+    super(x, y);
+    this.z=z;
+  }
+}
+</pre>
+
+<p>
+Quando un metodo non inizia con <tt>super(argomenti)</tt>,
+si assume automaticamente <tt>super()</tt>, ossia il
+costruttore senza argomenti.
+</p>
+
+<hr>
+
+
+<h4>Nota</h4>
+
+<p>
+Tutti i costruttori, se non iniziano con
+<tt>super(argomenti)</tt>, si considerano
+come se iniziassero con <tt>super()</tt>.
+</p>
+
+<p>
+Quindi, se si definisce una classe senza
+il costruttore senza argomenti, allora nelle
+sottoclassi bisogna chiamare esplicitamente
+<tt>super(argomenti)</tt> come prima istruzione.
+</p>
+
+<p>
+Altrimenti, lui assume <tt>super()</tt>, che
+non esiste.
+</p>
+
+<hr>
+
+
+<h4>Accesso ed ereditariet&agrave;</h4>
+
+<p>
+Cosa succede se cambio i diritti di
+accesso in una sottoclasse?
+</p>
+
+<dl>
+
+<dt>variabili
+<dd>quando definisco una variabile con
+lo stesso nome, sto creando un'altra
+variabile: si pu&ograve; fare
+
+<dt>metodi
+<dd>quando definisco un metodo con lo
+stesso nome, sto ridefinendo un metodo;
+si pu&ograve; dare un diritto di accesso
+pi&ugrave; liberale ma non pi&ugrave;
+restrittivo
+
+</dl>
+
+<hr>
+
+
+<h4>Estendere i diritti</h4>
+
+<p>
+Si pu&ograve; sempre fare:
+</p>
+
+<pre>
+class Sopra {
+  private int y;
+
+  private int getY() {
+    return this.y;
+  }
+}
+</pre>
+
+<pre>
+class Sotto extends Sopra {
+  public int y;
+
+  public int getY() {
+    return this.y;
+  }
+}
+</pre>
+
+<p>
+Funziona tutto.
+</p>
+
+<hr>
+
+
+<h4>Restringere i diritti</h4>
+
+<p>
+Si pu&ograve; fare con le variabili, perch&egrave;
+tanto sono variabili nuove (e le vecchie esistono
+ancora)
+</p>
+
+<p>
+Non si pu&ograve; fare con i metodi:
+</p>
+
+<pre>
+class Sopra {
+  public int x;
+
+  public int getX() {
+    return this.x;
+  }
+}
+</pre>
+
+<pre>
+class Sotto extends Sopra {
+  private int x;        // ok
+
+  private int getX() {  // errore!
+    return this.x;
+  }
+}
+</pre>
+
+<p>
+La definizione del metodo <tt>getX</tt> in
+<tt>Sotto</tt> d&agrave; errore.
+</p>
+
+</body>
+</html>
+

@@ -1,0 +1,436 @@
+
+<HTML>
+ 
+<HEAD>
+<TITLE>Soluzioni capitolo 4</TITLE>
+</HEAD>
+ 
+<BODY>         
+
+<pre>
+
+
+
+/*ESERCIZIO 1 DEL CAPITOLO 4 DEL BELLINI_GUIDI*/
+/********************************************/
+/********************************************/
+#include &lt;stdio.h>
+#define MAX 6
+ 
+main()
+{
+/* esercizio 1 del capitolo 4*/
+ 
+int a[MAX],b[MAX],c[MAX] ;
+int i;
+printf("Dammi %d interi da memorizzare nel vettore a\n\n",MAX);
+for (i=0;i&lt;MAX;i++) scanf("%d",&a[i]);
+printf("Dammi %d interi da memorizzare nel vettore b\n\n",MAX);
+for (i=0; i&lt;MAX;i++) scanf("%d",&b[i]);
+ 
+printf("eccoti a, b e c\n\n",MAX);
+for (i=0; i
+&lt;MAX;i++) {
+          c[i] = a[i]+ b[MAX-1-i];
+         printf("i= %2d  a[i]= %5d b[i]=%5d c[i]=%5d\n", i, a[i], b[i], c[i]);
+           }
+}
+                                                      
+/*ESERCIZIO 2 DEL CAPITOLO 4 DEL BELLINI_GUIDI*/
+/********************************************/
+/********************************************/
+ 
+#include &lt;stdio.h>
+#define MAX 6
+ 
+main()
+{
+/* esercizio 2 del capitolo 4*/
+ 
+int a[MAX],b[MAX],c[MAX] ;
+int i;
+printf("Dammi %d interi da memorizzare nel vettore a\n\n",MAX);
+for (i=0;i<MAX;i++) scanf("%d",&a[i]);
+printf("Dammi %d interi da memorizzare nel vettore b\n\n",MAX);
+for (i=0; i<MAX;i++) scanf("%d",&b[i]);
+ 
+printf("eccoti a, b e c\n\n",MAX);
+for (i=0; i&lt;MAX;i++) {
+          c[i] = a[i]+ b[MAX-1-i];
+         printf("i= %2d  a[i]= %5d b[i]=%5d c[i]=%5d\n", i, a[i], b[i], c[i]);
+           }
+}                                                        
+
+/*ESERCIZIO 3 DEL CAPITOLO 4 DEL BELLINI_GUIDI*/
+/********************************************/
+/********************************************/
+#include &lt;stdio.h>
+#define MAX 10
+ 
+main()
+{
+/* esercizio 3 del capitolo 4*/
+ 
+int mat[MAX];
+int i;
+ 
+for (i=0;i&lt;MAX;i++) mat[i]=0;
+ 
+for (i=0; i&lt;MAX;i++) mat[2*i+1]=1;
+ 
+ 
+for (i=0; i&lt;MAX;i++)
+         printf(" %2d", mat[i]);
+ 
+ printf("\n Dammi un numero per terminare\n");
+scanf("%d", &i);
+}                                                                                  
+
+/*ESERCIZIO 4 DEL CAPITOLO 4 DEL BELLINI_GUIDI*/
+/********************************************/
+/********************************************/
+ 
+#include &lt;stdio.h>
+#define MAX 6
+main()
+{
+/* esercizio 4 del capitolo 4*/
+ 
+int mat[MAX];
+int i,k,diffmin, imin;
+printf("dammi il k, un intero positivo:\n");
+scanf("%d",&k);
+getchar();
+printf("dammi mat, un intero positivo:\n");
+scanf("%d",&mat[0]);
+getchar();
+diffmin=abs(mat[0]-k);
+imin=0;
+for (i=1; i&lt;MAX; i++)
+          {printf("dammi mat, un intero positivo:\n");
+          scanf("%d",&mat[i]);
+          getchar();
+          if (abs(mat[i]-k)<diffmin) {diffmin=abs(mat[i]-k);imin=i;}
+          printf("i= %d, mat[i] = %d\n",i, mat[i]);
+          }
+ 
+ printf("\n eccoti il risultato diffmin= %d trovato all'indice i=%d\n",diffmin,
+imin);
+ 
+}                                                           
+
+/*ESERCIZIO 5 DEL CAPITOLO 4 DEL BELLINI_GUIDI*/
+/********************************************/
+/********************************************/
+#include &lt;stdio.h>
+#define MAX 5
+#define DUEMAX 10
+main()
+{
+/* esercizio 5 del capitolo 4*/
+ 
+char mat1[MAX],mat2[MAX],mat3[DUEMAX];
+int i;
+printf("\n dammi gli elementi di mat1 e mat2 , dieci  caratteri:\n");
+ 
+for (i=0; i&lt;MAX; i++)
+      scanf("%c%c ",&mat1[i],&mat2[i]);
+ 
+printf("\nho letto\n");
+for (i=0; i<MAX; i++)
+          printf("i=%d,mat1[i]=%c,mat2[i]=%c\n ",i,mat1[i],mat2[i]);
+ 
+for (i=0; i&lt;DUEMAX; i=i+1)
+         if (i%2) mat3[i] =mat2[i/2];
+              else  mat3[i] =mat1[i/2];
+ 
+printf("\n\n eccoti il risultato\n");
+for (i=0; i&lt;DUEMAX; i=i+1)
+            printf("\n i=%d,  mat3[i]=%c\n ",i,mat3[i]);
+printf("\n");
+ 
+ }                                                                         /*ESERCIZIO 6 DEL CAPITOLO 4 DEL BELLINI_GUIDI*/
+/********************************************/
+/********************************************/
+#include &lt;stdio.h>
+#define MAX 5
+main()
+{
+/* esercizio 6 del capitolo 4*/
+ 
+int v1[MAX],v2[MAX],w[MAX];
+int i;
+printf("\n dammi  10 numeri :\n");
+ 
+for (i=0; i&lt;MAX; i++)
+      {scanf("%d%d ",&v1[i],&v2[i]);}
+ 
+printf("\nho letto\n");
+for (i=0; i&lt;MAX; i++)
+          printf("i=%d,v1[i]=%d,v2[i]=%d\n ",i,v1[i],v2[i]);
+ 
+for (i=0; i&lt;MAX; i++)
+         if (v1[i]==v2[i]) w[i] = 0;
+              else  if (v1[i]>v2[i]) w[i] = 1;
+                        else w[i] = -1;
+ 
+printf("\n\n eccoti il risultato\n");
+for (i=0; i&lt;MAX; i++)
+            printf("\n i=%d,  w[i]=%d\n ",i,w[i]);
+printf("\n");
+ 
+ }                                                                                 
+
+/*ESERCIZIO 7 DEL CAPITOLO 4 DEL BELLINI_GUIDI*/
+/********************************************/
+/********************************************/
+#include &lt;stdio.h>
+#define MAX 10
+main()
+{
+/* esercizio 7 del capitolo 4*/
+ 
+char mat[MAX];
+int i, contavocali,contaconsonanti,contaaltro;
+printf("\n dammi UNA SEQUENZA DI CARATTERI \n");
+ 
+for (i=0; i&lt;MAX; i++)
+      scanf("%c ",&mat[i]);
+ 
+printf("\nho letto\n");
+for (i=0; i&lt;MAX; i++)
+          printf("i=%d,mat[i]=%c\n ",i,mat[i]);
+ contavocali = 0;
+ contaconsonanti=0;
+ contaaltro = 0;
+ for (i=0; i&lt;MAX; i=i+1)
+ switch(mat[i]){
+ case 'A':
+ case 'a':
+ case 'E':
+ case 'e':
+ case 'I':
+ case 'i':
+ case 'O':
+ case 'o':
+ case 'U':
+ case 'u':
+         contavocali= contavocali+1;
+         break;
+ case 'B':
+ case 'b':
+ case 'C':                                                                  
+ case 'c':
+ case 'D':
+ case 'd':
+ case 'F':
+ case 'f':
+ case 'G':
+ case 'g':
+    contaconsonanti= contaconsonanti+1;
+        break;
+default:
+    contaaltro= contaaltro+1;
+        break;
+ 
+ }
+printf("\n\n eccoti il risultato\n");
+ 
+ printf("\n Le vocali sono=%d\n Le consonanti sono=%d \n Il resto e'= %d\n",
+ contavocali, contaconsonanti,contaaltro);
+ 
+ }                                                           
+
+/*ESERCIZIO 8 DEL CAPITOLO 4 DEL BELLINI_GUIDI*/
+/********************************************/
+/********************************************/
+#include &lt;stdio.h>
+#define MAX 10
+ 
+main()
+{
+/* esercizio 8 del capitolo 4*/
+ 
+char mat[MAX];
+int i,j,occorre;
+char ch;
+ 
+printf("\n dammi UNA SEQUENZA DI CARATTERI tutti diversi, A CAPO DOPO OGNI
+CARATTERE\n");
+scanf("%c", &mat[0]);
+printf("ho letto: %c\n", mat[0]);
+getchar();
+i=1;
+while (i&lt;MAX)
+      {scanf("%c",&ch);
+      printf("ho letto: %c\n", ch);
+      getchar();
+      occorre = 0;
+      j=0;
+      while ((j&lt;i) && !occorre)
+             {if (ch==mat[j]) occorre=1;
+             j++;}
+      if (!occorre)  {mat[i] = ch; i++;}
+       else printf("\n%d esimo carattere letto già, lo ignoro\n",i);
+       }
+printf("\nho letto\n");
+for (i=0; i&lt;MAX; i++)
+          printf("i=%d,mat[i]=%c\n ",i,mat[i]);
+ 
+ }                                                                               
+
+ /*ESERCIZIO 9 DEL CAPITOLO 4 DEL BELLINI_GUIDI*/
+/********************************************/
+/********************************************/
+#include &lt;stdio.h>
+#define MAX1 5
+#define MAX2 6
+main()
+{
+/* esercizio 9 del capitolo 4*/
+ 
+int mat[MAX1][MAX2];
+int i,j;
+ 
+for (i=0; i&lt;MAX1; i++)
+         {for (j=0; j&lt;MAX2; j++)
+               {mat[i][j]=i+j;
+                printf("i=%d,j= %d, mat[i,j]=%d,\n",i,j,mat[i][j]);
+                }
+          printf("\n");
+          }
+ 
+ }                                                                          
+
+/*ESERCIZIO 10 DEL CAPITOLO 4 DEL BELLINI_GUIDI*/
+/********************************************/
+/********************************************/
+#include &lt;stdio.h>
+#define MAX 3
+main()
+{
+/* esercizio 10 del capitolo 4*/
+ 
+int mat[MAX][MAX];
+int i,j,sim,temp1,temp2;
+printf("dammi i numeri della matrice, per righe:");
+ 
+for (i=0; i&lt;MAX; i++)
+         {for (j=0; j&lt;MAX; j++)
+               {scanf("%d",&mat[i][j]);
+                printf("i=%d,j= %d, mat[i,j]=%d,\n",i,j,mat[i][j]);
+                }
+          printf("\n");
+          }
+sim=1;
+i=0;
+ 
+while ((i&lt;MAX) && sim)   {
+    j=0;
+    while ((j&lt;MAX) && sim){temp1=mat[i][j];temp2=mat[j][i];
+           if (temp1 != temp2) sim=0;
+           j++;
+           }
+    i++;}
+ 
+if (sim) printf("La matrice è simmetrica\n");
+    else  printf("La matrice è non simmetrica\n");
+ 
+ 
+ }                                                                    
+
+ /*ESERCIZIO 11 DEL CAPITOLO 4 DEL BELLINI_GUIDI*/
+/********************************************/
+/********************************************/
+ #include &lt;stdio.h>
+#define MAX1 2
+#define MAX2 3
+main()
+{
+/* esercizio 11 del capitolo 4*/
+ 
+int mat[MAX1][MAX2],tras[MAX2][MAX1];
+int i,j,temp;
+printf("dammi i numeri della matrice, per righe:");
+ 
+for (i=0; i&lt;MAX1; i++)
+         {for (j=0; j&lt;MAX2; j++)
+               {scanf("%d",&mat[i][j]);
+                printf("i=%d,j= %d, mat[i,j]=%d,\n",i,j,mat[i][j]);
+                }
+          printf("\n");
+          }
+ for (i=0; i&lt;MAX1; i++)
+         {for (j=0; j&lt;MAX2; j++)
+              printf(" %d",mat[i][j]);
+          printf("\n\n");
+         }
+for (j=0; j&lt;MAX2; j++)
+         {for (i=0; i&lt;MAX1; i++)
+              tras[j][i] = mat[i][j];
+          printf("\n");
+          }
+for (j=0; j&lt;MAX2; j++)
+         {for (i=0; i&lt;MAX1; i++)
+              printf(" %d", tras[j][i]);
+          printf("\n");
+          }
+ 
+  }
+                                                                 
+
+/*ESERCIZIO 13 DEL CAPITOLO 4 DEL BELLINI_GUIDI*/
+/********************************************/
+/********************************************/
+#include &lt;stdio.h>
+#define MAX1 2
+#define MAX2 3
+main()
+{
+/* esercizio 13 del capitolo 4*/
+ 
+int mat[MAX1][MAX2];
+int i,j,somma,sommamax,colmax;
+printf("dammi i numeri della matrice, per righe:\n");
+ 
+for (i=0; i&lt;MAX1; i++)
+         {for (j=0; j&lt;MAX2; j++)
+               {scanf("%d",&mat[i][j]);
+                printf("i=%d,j= %d, mat[i,j]=%d,\n",i,j,mat[i][j]);
+                }
+          printf("\n");
+          }
+printf("      eccotela\n\n");
+ for (i=0; i&lt;MAX1; i++)
+         {for (j=0; j&lt;MAX2; j++)
+              printf(" %d",mat[i][j]);
+          printf("\n\n");
+         }
+ 
+ sommamax=0;
+ colmax=0;
+ 
+ 
+for (j=0; j&lt;MAX2; j++)
+         { somma=0;
+         for (i=0; i&lt;MAX1; i++)
+              somma = somma+ mat[i][j];
+          if (somma>sommamax)
+              {sommamax=somma;
+               colmax=j;
+               }
+          }                                                
+ 
+printf("La somma massima e' %d e si ha alla colonna  %d\n",sommamax,colmax);
+ 
+  scanf("%d");
+ 
+ 
+  }
+                      
+
+
+
+</pre>
+</body>
+</html>  

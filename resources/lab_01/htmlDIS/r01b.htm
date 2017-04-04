@@ -1,0 +1,59 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=windows-1252">
+<TITLE>Reti di Calcolatori</TITLE>
+</HEAD>
+<BODY background="bgrnd.jpg">
+
+<B><FONT SIZE=5><P>1.b) Introduzione alle reti e ai sistemi distribuiti</P>
+<hr>
+</FONT>
+</B>1.&nbsp; Richiami sulla classificazione delle architetture (sulla base del flusso di dati e di istruzioni):
+
+
+<UL>
+
+<UL>
+<LI>SISD - macchina di Von Neumann</LI><LI>SIMD - array processor con una sola unit&agrave; di controllo e pi&ugrave; unita di calcolo che eseguono la stessa operazione su dati diversi </LI><LI>MISD - diverse unit&agrave; di controllo e calcolo in cascata</LI><LI>MIMD - diverse unit&agrave; di controllo e di calcolo che operano in parallelo.</LI></UL>
+</UL>
+
+<p>2.&nbsp; Classificazione delle architetture MIMD (in funzione del trasferimento dati):</p>
+
+
+<UL>
+
+<UL>
+<LI>ad accopiamento stretto - sistemi non distribuiti fisicamente - multiprocessore a memoria comune (passaggio informazioni mediante puntatori)</LI><LI>ad accoppiamento medio - con collegamento attraverso bus di I/O e canali DMA </LI><LI>ad accoppiamento lasco – <B>reti di calcolatori</LI></UL>
+</UL>
+
+</B>3.&nbsp; Definizione di &quot;Rete di calcolatori&quot; e di &quot;Sistema Distribuito&quot; – distinzione dei due concetti
+
+<OL>
+
+<I><P ALIGN="CENTER">Una rete di calcolatori &egrave; un insieme interconnesso di computer autonomi (in grado quindi di scambiarsi informazioni).</P>
+<P ALIGN="CENTER">Un sistema distribuito &egrave; costituito da un insieme interconnesso di computer autonomi supportati da un software che permette il coordinamento delle attivit&agrave; e la condivisione delle risorse (Hardware, software e dati) tra i sistemi.</P>
+</I><P ALIGN="JUSTIFY">La differenza tra i due concetti e nel software di supporto, che rende trasparente all’utente l’utilizzo di una rete.  Gli utilizzatori di un sistema distribuito ben progettato devono avere la percezione di un sistema di calcolo unico ed integrato.</P>
+</OL>
+
+
+4.&nbsp; Comunicazione tra processi
+
+
+<UL>
+
+<UL>
+<LI>accesso a file condivisi (memoria condivisa)</LI>
+<LI>scambio di messaggi</LI></UL>
+</UL>
+
+5.&nbsp; Java – caratteristiche del linguaggio
+
+
+<UL>
+
+<UL>
+<LI>E' un linguaggio ad oggetti puro (<I>full object oriented</I>).  Una tecnologia basata su una macchina virtuale che interpreta istruzioni Java.</LI><LI>Il <I>ByteCode</I> generato &egrave; portabile senza necessit&agrave; di ricompilazione, su qualunque piattaforma per la quale esiste una <I>Java Virtual Machine</I>.</LI><LI>Rispetto al C++ (linguaggio pi&ugrave; vicino quantomeno nella sintassi) non prevede la gestione dei puntatori e la deallocazione della memoria.  La JVM mette a disposizione il <I>Garbage Collector</I>.</LI><LI>Fornisce costrutti che consentono il <I>multithreading</I>, ovvero la possibilit&agrave; di attivare, nell'ambito della stessa applicazione, pi&ugrave; task (pi&ugrave; propriamente <I>thread</I>) paralleli.</LI><LI>I costrutti e i package forniti lo rendono particolarmente indicato per la programmazione di rete.  Tutti i browser integrano ormai una JVM (che purtroppo non sempre rispetta fedelmente le specifiche SUN) in grado di interpretare oggetti Java (detti <I>Applet</I>) inseriti nelle pagine html.  La sicurezza di tali oggetti &egrave; garantita dalle restrizioni imposte dal <I>Security Manager</I> della
+  JVM.</LI></UL>
+</UL>
+</BODY>
+</HTML>

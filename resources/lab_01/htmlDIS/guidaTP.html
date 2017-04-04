@@ -1,0 +1,1052 @@
+<html><head><!-- This document was created from RTF source by rtftohtml version
+2.5 --><title>intro tp</title></head><body><b><p>
+<center>
+UNIVERSITA' DEGLI STUDI DI ROMA <p>
+"LA SAPIENZA"</b><p>
+<b><p>
+FACOLTA'  DI  INGEGNERIA</b><p>
+<p>
+
+<b><p>
+<p>
+<p>
+<p>
+<p>
+<p>
+Guida all'uso del<p>
+TurboPascal<p>
+versione 6.0<p>
+<p>
+<p>
+<p>
+<p>
+<p>
+<p>
+<p>
+<p>
+<p>
+ANNO ACCADEMICO 1995/96</b><p>
+</center><p>
+<b><p>
+<p>
+Indice</b>
+<h1>
+I.	
+<a name="B_Toc356209881"><a name="B_Toc353166480">Ambiente
+TurboP</a>ascal</a></h1>
+<b></b><p>
+Il TurboPascal<b> </b>&egrave; un ambiente integrato per la messa a punto di
+programmi in Pascal. In questo ambiente &egrave; possibile creare, correggere,
+compilare, mandare in esecuzione e memorizzare su disco programmi Pascal.<b><p>
+</b>
+<h2>
+A.	
+<a name="B_Toc356209882"><a name="B_Toc353166481">Dall'ambiente
+Dos all'ambiente Turbo</a>Pascal</a> </h2>
+<b></b><p>
+Nel laboratorio di via Tiburtina sono istallati diversi linguaggi di
+programmazione, tra questi il TurboPascal. Per accedervi bisogna collegarsi
+alla rete e, una volta comparso il men&ugrave; principale occorre selezionare
+LINGUAGGI DI PROGRAMMAZIONE e premere <i>ENTER. </i>Comparir&agrave; quindi
+l'elenco dei linguaggi disponibili; a questo punto si seleziona TurboPascal e
+si entra cos&igrave; in questo ambiente (per maggiori informazioni vedi la
+guida al laboratorio). Se non &egrave; possibile collegarsi in rete si entra in
+<i>locale </i>digitando la lettera l e poi si eseguono i seguenti comandi:<p>
+<i><p>
+C&gt;</i> cd Pascal             (per spostarsi nel direttorio del
+TurboPascal)<i><p>
+C:\pascal&gt; </i>turbo       (per eseguire il TurboPascal)<p>
+<b><p>
+</b>
+<h2>
+A.	
+<a name="B_Toc356209883"><a name="B_Toc353166482">L'Ambiente
+di sviluppo programmi</a></a></h2>
+<p>
+La schermata che compare &egrave; la seguente:<p>
+<b>
+<IMG SRC="guidaTP2.gif"><p>
+</b><p>
+<p>
+<p>
+La linea al fondo dello schermo indica alcuni comandi principali eseguibili con
+i tasti F (F1.. F10). Tra questi il comando F1 per richiedere aiuto (help),
+cio&egrave; spiegazioni sulle operazioni eseguibili nel contesto in cui si
+lavora ed il comando F10 per spostare il cursore sulla barra dei men&ugrave;
+(linea superiore dello schermo). Tramite i men&ugrave;  &egrave; possibile
+selezionare i comandi posizionandosi con le frecce sul comando desiderato e
+premendo quindi il tasto invio. Ad un comando pu&ograve; inoltre essere
+associato un tasto F oppure la combinazione <i>&lt;alt&gt;-TASTO F </i>, oppure
+una sequenza costituita da <i>&lt;alt&gt;-tasto</i> seguito da<i> </i>una
+lettera.<p>
+<p>
+Se si vuole tornare definitivamente al DOS basta eseguire il comando
+<i>exit</i> del men&ugrave; file (&lt;<i>alt&gt;-f </i>e poi<i> x</i>).<i>
+</i>Se invece si vuole abbandonare temporaneamente l'ambiente TurboPascal si
+usa il comando <i>dos shell </i>del-men&ugrave; file. Per rientrare in
+TurboPascal si usa il comando DOS <i>exit</i>.<p>
+<p>
+Lo schermo iniziale &egrave; diviso in due parti, corrispondenti a due
+<i>finestre</i>  denominate: &lt;output&gt;  e &lt;noname00.pas&gt;. La
+finestra di output &egrave; quella in cui vengono mostrati i risultati
+dell'esecuzione dei programmi. La finestra noname00.pas &egrave; quella in cui
+viene scritto il testo del programma, e si chiama <i>finestra di edit</i>.  E'
+possibile ingrandire e spostare queste finestre, se ne possono inserire di
+nuove e chiudere quelle gi&agrave; aperte. Per aprire finestre vedi:
+men&ugrave; file comando<i> open </i>o<i> new, </i>per spostarle, ingrandirle,
+chiuderle: men&ugrave; window comando<i> zoom, size move, close. </i>Tutte le
+finestre che l'utente apre vengono messe<i> </i>una sotto l'altra, e resta
+visibile di esse solo il nome (noname00.pas o output) ed il numero di
+controllo. Il numero di controllo &egrave; quel numero  che sta a destra del
+nome della finestra (ad es. nomame00.pas ha il numero di controllo 1 mentre
+output ha il numero di controllo 2) . Solo l'ultima finestra aperta &egrave;
+completamente visibile e tutti i comandi o le funzionalit&agrave; che si
+attivano si riferiscono ad essa. Si dice che tale finestra &egrave;<i> attiva.
+</i>Per rendere attiva una finestra si usa <i>&lt;alt&gt;-n, </i>con<i> n</i>
+numero di controllo della finestra che si vuole attivare.<p>
+
+<h1>
+I.	
+<a name="B_Toc356209884"><a name="B_Toc353166483">REALIZZAZIONE
+DI UN PROGRAMMA</a></a></h1>
+<p>
+Mostriamo le operazioni principali da effettuare per redigere, compilare,
+eseguire e memorizzare su disco un programma Pascal.<b><p>
+</b><u><p>
+Apertura della finestra di editor.</u><p>
+<p>
+Si esegue il comando <i>open</i> del men&ugrave; File (F3), si inserisce nella
+casella <i>name</i> il nome di un file. In questo modo si crea un file con il
+nome specificato in cui verr&agrave; memorizzato il testo del programma (vedi
+comando <i>save</i> pi&ugrave; avanti). Se il file gi&agrave; esiste in memoria
+di massa e deve essere modificato, occorre specificarne il nome, per intero se
+esso si trova in un direttorio diverso da quello corrente. Viene quindi aperta
+una finestra col nome specificato, in cui compare il testo del programma
+contenuto nel file. <b><i></i><p>
+</b><u><p>
+Scrittura del programma.</u><p>
+<p>
+Per i comandi dell'editor si rimanda al men&ugrave; edit per le operazioni di
+inserimento e cancellazione del testo ed al men&ugrave; search per la ricerca e
+sostituzione di parti del testo. Si ricorda che le frecce consentono di
+posizionare il cursore nel punto sul quale si intende lavorare. Quando si
+ritiene completato il testo del programma questo viene salvato nel file
+associato alla finestra tramite il  comando <i>save</i> del men&ugrave; File
+(F2). Se si vuole salvare su un nuovo file il comando &egrave; <i>save as</i>,
+che ne richiede il nome; in questo caso il file di partenza rimane inalterato.
+<b><p>
+</b><u><p>
+Compilazione del programma.</u><p>
+<p>
+Tramite il comando compile del men&ugrave; compile (<i>&lt;alt&gt;-c</i> e poi
+<i>c</i>)<b>. </b>Se ci sono errori in fase di compilazione il cursore si
+posiziona automaticamente sulla parte di programma in cui &egrave; stato
+commesso l'errore, facilitando cos&igrave; la correzione. Una volta corretto
+l'errore si deve compilare di nuovo il programma fino a che il compilatore non
+risponde<i> compile successful</i>. A questo punto conviene salvare nuovamente
+il programma su file.<b><p>
+</b><u><p>
+Esecuzione del programma</u><b><p>
+</b><p>
+Il comando <i>Run</i> del men&ugrave; Run (<i>&lt;alt&gt;-r</i> seguito da<i>
+r</i>) compila il programma e, se non vengono individuati errori, lo esegue.
+L'input e l'output dei dati avvengono nella finestra di output. Per vedere il
+risultato dell'esecuzione del programma occorre quindi rendere tale finestra
+attiva. Per interrompere il programma (ad esempio nei casi di non terminazione)
+si usano i tasti <i>&lt;ctrl&gt;-pausa </i>che devono essere premuti per due
+volte.<b><i></i><p>
+</b><u><p>
+Creazione di una versione eseguibile del programma</u><b><p>
+</b><p>
+Se il programma viene considerato corretto si pu&ograve; costruire una versione
+eseguibile del programma una versione cio&egrave;, che si possa utilizzare
+senza entrare in TurboPascal mandandola in esecuzione direttamente dal DOS.
+Men&ugrave; compile (&lt;<i>alt-c&gt;</i>) si digita d, la finestra si chiude
+automaticamente, ma destination si &egrave; spostato su disk. Ci&ograve;
+significa che la prossima volta che si compiler&agrave; il programma il
+compilatore memorizzer&agrave; sul disco rigido la versione eseguibile del
+programma (cio&egrave; in linguaggio macchina che &egrave; direttamente
+comprensibile dal calcolatore). A questo punto basta aprire il men&ugrave;<i>
+</i>compile e premere c perch&egrave; il compilatore produca la versione
+eseguibile del programma. Si pu&ograve; verificare che nel direttorio corrente
+&egrave; stato incluso un file col nome con cui si &egrave; caratterizzato
+all'inizio il programma, ed estensione <i>exe</i>.<b><i><p>
+</i></b>
+<h1>
+I.	
+<a name="B_Toc353166484"><a name="B_Toc356209888">INDIVIDUAZIONE
+DEGLI ERRORI</a></a></h1>
+<p>
+Uno degli aspetti pi&ugrave; importanti dell'ambiente di programmazione
+riguarda gli strumenti per l'individuazione degli errori logici contenuti nei
+programmi. A questo proposito risulta indispensabile utilizzare gli strumenti
+offerti dall'ambiente di programmazione.
+<h2>
+A.	
+<a name="B_Toc356209889"><a name="B_Toc353166485">La
+pila delle attivazioni</a></a></h2>
+<p>
+La pila delle attivazioni (chiamate) di procedura e funzione pu&ograve; essere
+molto utile per esaminare l'esecuzione del programma. Per vedere la pila delle
+chiamate di procedura e funzione si esegue il comando <i>call-stack</i>  nel
+men&ugrave; Window. Esso apre una finestra in cui &egrave; mostrata la pila
+delle attivazioni durante l'esecuzione del programma. Si consideri il seguente
+programma che contiene una procedura ricorsiva per il calcolo del fattoriale.<p>
+<p>
+<LISTING>Program esempiostack;<p>
+var fatt,n:integer;<i><p>
+  </i>procedure fattoriale(var totale:integer;numero:integer);<p>
+  begin<p>
+        if numero&gt;1<p>
+        then begin<p>
+                  totale:=numero*totale;<p>
+                  fattoriale(totale,numero-1)<p>
+             end<p>
+  end;<i></i><p>
+begin<p>
+      fatt:=1;<p>
+      writeln('numero = ');<p>
+      read(n);<p>
+      fattoriale(fatt,n);<p>
+      writeln('Il fattoriale e'' ',fatt)<p>
+end.<p></LISTING>
+<p>
+Supponendo che al programma venga fornito il valore 4, si ottiene:<p>
+<p>
+FATTORIALE(24,1)<p>
+FATTORIALE(24,2)<p>
+FATTORIALE(24,3)<p>
+FATTORIALE(24,4)                                               <p>
+ESEMPIOSTACK<p>
+<p>
+tutte le procedure hanno il totale=24 perch&egrave; il parametro &egrave;
+passato per variabile e tutte le chiamate fanno riferimento alla stessa
+locazione di memoria.<p>
+
+<h2>
+A.	
+<a name="B_Toc356209890"><a name="B_Toc353166486">Esecuzione
+del programma istruzione per istruzione</a></a> </h2>
+<p>
+Per ottenere una esecuzione istruzione per istruzione del programma occorre
+eseguire il comando <i>Trace into</i> del men&ugrave; Run. Il programma viene
+compilato e viene posta la barra di esecuzione sull'istruzione begin. Ogni
+volta che si preme F7 viene eseguita l'istruzione successiva.<p>
+<p>
+Consideriamo il programma seguente che chiede all'utente di inserire una
+matrice quindi calcola la norma della matrice, cio&egrave; la somma dei
+quadrati dei singoli elementi e poi stampa la matrice e la norma.<i></i><p>
+<p>
+<LISTING>program sommaN;<p>
+var 	i,m,n: integer; <p>
+begin<p>
+     somma:=0;<p>
+     <u>readln(n);</u><p>
+     for i:=1 to n do<p>
+         begin<p>
+              writeln('prossimo dato =');<p>
+              readln(m);<p>
+              somma :=somma + m<p>
+         end;<p>
+    writeln(somma)<p>
+end.<p></LISTING>
+<p>
+Premendo pi&ugrave; volte F7 si arriva all'istruzione sottolineata. A questo
+punto vengono chiesti dati di input e, per proseguire, occorre inserirli.
+Analogamente si pu&ograve; verificare l'effetto delle istruzioni di output.<p>
+<p>
+Il comando <i>Step over</i> del men&ugrave; Run (F8), consente di eseguire in
+un unico passo l'istruzione corrente, durante l'esecuzione istruzione per
+istruzione. Con <i>Step over</i> quindi, si esegue la chiamata ad una
+procedura, o funzione, senza cio&egrave; seguirne il flusso completo. Ad es.<p>
+ <p>
+<LISTING>program esempio;<p>
+var fatt,numero,i : integer;<p>
+     <u>function fattoriale (x : integer) : integer;</u><p>
+      var somma : integer;<p>
+       begin<p>
+                somma:=1;<p>
+                for i:=x downto 1<p>
+                do somma:=somma*i;<p>
+                fattoriale:=somma;<p>
+        end; <p>
+ begin<p>
+           writeln('numero = ');   <p>
+           readln(numero);<p>
+           <u>fatt:=fattoriale(numero);             </u><p>
+           writeln('il fattoriale di ',numero,' &egrave;: ',fatt);<p>
+end.<p></LISTING>
+ <p>
+Eseguendo il programma in modo STEP OVER, arrivato all'istruzione sottolineata
+il sistema restituisce il valore del fattoriale senza eseguire la funzione
+istruzione per istruzione come invece avrebbe fatto con TRACE INTO.<p>
+
+<h2>
+A.	
+<a name="B_Toc356209891"><a name="B_Toc353166487">Ispezione
+delle variabili</a></a></h2>
+<p>
+Durante l'esecuzione istruzione per istruzione &egrave; indispensabile
+verificare il valore delle variabili del programma. A questo scopo occorre
+specificare le variabili di cui si vuole controllare il valore.<i> </i>Si apre
+il men&ugrave; Debug (ALT&lt;d&gt;) e si esegue il comando <i>watches</i>.
+Cos&igrave; facendo si attiva un sottomen&ugrave; nel quale si deve scegliere
+<i>add-watches</i>; <i>add-watches</i> chiede le <i>watch-expression</i>,
+cio&egrave; il nome delle variabili di cui si vuole controllare il flusso (si
+pu&ograve; attivare direttamente l'opzione <i>add-watches</i> premendo
+CRTL-F7); facendo riferimento al programma precedente pu&ograve; essere utile
+controllare il valore che assumeranno istruzione dopo istruzione le variabili
+"somma" ed "n", queste sono le watch-expression che vanno inserite. Per vedere
+il valore di tali variabili occorre attivare la<b> </b>finestra watch, tramite
+il men&ugrave; windows (<i>&lt;alt&gt;-w&gt;</i>) e si esegue il comando
+<i>watch.</i> In tale finestra compaiono i valori che assumono le variabili
+specificate in precedenza. Se il programma ancora non &egrave; stato mandato in
+esecuzione nella finestra Watch accanto al nome della generica variabile ci
+sar&agrave;: <i>unknown variable</i>. Non appena si manda in esecuzione il
+programma le variabili assumono i valori determinati dall'esecuzione del
+programma. Si noti che quando una variabile compare con lo stesso nome in due
+blocchi diversi, viene mostrato il valore della variabile visibile nella parte
+di programma in esecuzione. Se si desidera vedere contemporaneamente le due
+variabili, si pu&ograve; usare la notazione <i>nomeblocco.variabile</i>,  per
+distinguerle.<p>
+<p>
+In questa fase &egrave; utile posizionare le finestre in modo da avere sempre
+sotto gli occhi la finestra "watches", e quella del programma da controllare.
+Per ridimensionare una finestra si usa  il comando <i>Size-move</i> del
+men&ugrave; Windows. In tal modo muovendo il mouse o usando le frecce la
+finestra attiva si sposta e si pu&ograve; organizzare lo schermo a proprio
+piacimento.<u><p>
+</u>
+<h2>
+A.	
+<a name="B_Toc356209892"><a name="B_Toc353166488">Punti
+di arresto</a></a></h2>
+<u></u><p>
+L'esecuzione istruzione per istruzione risulta impraticabile non appena le
+dimensioni dei programmi e dei dati diventano significative. Si pu&ograve; per
+questo eseguire il comando <i>go to cursor</i> del men&ugrave; trace, che
+provoca l'esecuzione di tutte le istruzioni da quella corrente fino al punto in
+cui &egrave; posizionato il cursore. Nella finestra watches compaiono i valori
+delle variabili aggiornate fino all'ultima istruzione eseguita.<p>
+<p>
+Si pu&ograve; infine richiedere l'arresto dell'esecuzione del programma solo in
+determinati punti usando i comandi <i>Toggle breakpoint</i> o <i>Breakpoint</i>
+del men&ugrave; Debug.<p>
+<p>
+TOGGLE BREAKPOINT attiva e disattiva punti di arresto incondizionato, mentre
+BREAKPOINT permette di definire e controllare i punti di arresto.
+All'esecuzione di tale comando si apre una finestra in cui c'&egrave; l'elenco
+dei punti di arresto, la condizione ed il passaggio a cui tale punto di arresto
+si attiva. Se sono presenti dei punti di arresto incondizionati, cio&egrave;
+inseriti col comando<i> toggle breakpoint</i> non c'&egrave; n&eacute; la
+condizione che li determina n&egrave; il passaggio in cui vengono attivati. Se
+si vuole inserire un punto di arresto, si deve scegliere l'opzione <b>E</b>dit
+con &lt;<i>alt&gt;-e </i>: si apre cos&igrave; una finestra di dialogo in cui
+si pu&ograve; inserire:<p>
+<p>
+CONDITION 	condizione,<p>
+PASS COUNT	numero di passaggio prima dell'attivazione<p>
+FILE NAME	nome del file<p>
+LINE NUMBER	numero della riga del punto d'arresto.<p>
+<p>
+
+<h1>
+I.	
+<a name="B_Toc356209893"><a name="B_Toc353166489">USO
+DI FILE DI DATI ESTERNI</a></a></h1>
+<p>
+Quando l'esecuzione di un programma richiede l'input di (o produce in output)
+una quantit&agrave; di dati notevole, risulta conveniente memorizzare tali dati
+in un file, creato con l'editor se utilizzato per l'input, o creato dal
+programma e ispezionabile con l'editor, se usato per l'output. A questo scopo
+occorre procedere come segue.<p>
+<u><p>
+Si dichiara una variabile di tipo file nel programma.</u><p>
+<p>
+Es.<p>
+        var F: text;<p>
+ <u><p>
+Si collega il file esterno alla variabile del programma.</u><p>
+<p>
+      assign(F,'miofile');<p>
+<p>
+Dopo questa istruzione tutte le operazioni su F saranno eseguite sul file in
+memoria di massa che si chiama miofile. Per le modalit&agrave; di denominazione
+dei file si rimanda alla guida del sistema MS/DOS.<p>
+Si noti che il secondo argomento di assign pu&ograve; essere una variabile di
+tipo stringa, cui pu&ograve; essere assegnato un valore tramite un'istruzione
+di lettura (vedi esempio pi&ugrave; avanti).<p>
+<u><p>
+<p>
+Si Apre il file in lettura o scrittura.</u><p>
+<p>
+   reset(F);               apre un file esistente in lettura<p>
+   rewrite(F);           genera ed apre un file in scrittura<p>
+<u><p>
+Si specifica il file in tutte le operazioni ad esso relative.</u><p>
+<p>
+Es.<p>
+       writeln(F,'prova');<p>
+       readln(F,a);<p>
+       write(F,'prova');<p>
+       read(F,a);<p>
+<p>
+tutte queste istruzioni hanno il significato usuale ma sono eseguite sul file
+collegato alla variabile F.<p>
+<u><p>
+Si Chiude il file.</u><p>
+<p>
+   Close(F);<p>
+<p>
+Esempio di programma che memorizza una matrice su file esterno:<p>
+<p>
+<LISTING>program memorizzamatricesufile;<p>
+var somma,i,j,numero,n,riga,colonna:integer;<p>
+      nomefile: string[8];<p>
+      F: text;<p>
+begin<p>
+      writeln('scrivi il nome del file su cui vuoi memorizzare');<p>
+      readln(nomefile);<p>
+     <b> assign(F,nomefile);</b><p>
+      <b>rewrite(F);</b><p>
+      writeln('ordine della matrice');<p>
+      writeln('righe: '); readln(riga);<p>
+      writeln('colonne: '); readln(colonna);<p>
+      <b>writeln(F,riga);</b><b><p>
+     writeln(F,colonna);</b><p>
+      for i:=1 to riga do<p>
+      begin<p>
+          for j:=1 to colonna do<p>
+          begin<p>
+               writeln('scrivi il termine',i,',',j);<p>
+               read(numero);<p>
+               write(F,numero:4);<p>
+          end;<b><p>
+        writeln(F)</b><p>
+      end;<p>
+     <b> close(F);</b><p>
+      readln<p>
+end.<p></LISTING>
+
+<h1>
+I.	
+<a name="B_Toc356209894"><a name="B_Toc353166490">I
+COMANDI DEI MEN</a>U'</a></h1>
+<b><i></i></b>
+<h2>
+A.	
+<a name="B_Toc356209895"><a name="B_Toc353166491">Men&ugrave;
+FILE</a></a></h2>
+<p>
+OPEN<p>
+Questo comando introduce ad una "<i>finestra di dialogo</i>". In essa troviamo
+una casella, NAME, in cui va inserito il nome del file da caricare. Premendo il
+tasto freccia in gi&ugrave; compare una finestra in cui ci sono tutti i file
+che sono stati aperti dall'inizio della sessione di lavoro, e che quindi
+possono essere facilmente richiamati. Sotto la casella NAME c'&egrave; la
+finestra FILES. Essa contiene il nome dei file nel direttorio corrente e che
+quindi &egrave; possibile caricare. Per entrare nella finestra si deve premere
+<i>&lt;alt&gt;-f</i>, e poi spostarsi sul file che interessa attraverso le
+frecce. Premendo invio si apre il file selezionato. Le operazioni possibili in
+questa "<i>finestra di dialogo"</i> sono: OPEN apre una nuova finestra di edit
+e mette il file selezionato in questa finestra. REPLACE invece di aprire una
+nuova finestra sostituisce il file nella finestra attiva con il file
+selezionato.<p>
+<p>
+NEW<p>
+Apre una nuova finestra di edit con il nome fittizio nomamexx.pas (xx &egrave;
+un numero da 00 a 99) ed automaticamente rende la finestra attiva.<p>
+<p>
+SAVE<p>
+Salva il file che &egrave; nella finestra attiva su disco. Se il file ha il
+nome fittizio nonamexx.pas allora viene automaticamente aperta la finestra
+(SAVE AS FILE).<p>
+<p>
+SAVE AS FILE<p>
+Non appena viene aperto questo sottomen&ugrave;, il cursore si trova nella
+input-box ovvero la casella in cui si deve inserire il nome con il quale si
+vuole registrare il programma. Al di sotto di questa casella ho una finestra in
+cui c'&egrave; la lista dei file presenti nel direttorio corrente. Ancora al di
+sotto ho un' ultima finestra (blu) nella quale vengono date informazioni sui
+file gi&agrave; esistenti nel direttorio corrente (ad es. nome, data di
+esecuzione, memoria occupata).<p>
+ <p>
+GET INFO<p>
+Mostra informazioni sul file nella finestra attiva. In essa non  &egrave;
+possibile effettuare modifiche.<p>
+ <p>
+SAVE ALL<p>
+Salva tutti i file nelle finestre aperte.<p>
+ <p>
+CHANGE DIR<p>
+Il comando "change dir" conduce ad un sottomen&ugrave; nel quale &egrave;
+possibile cambiare il direttorio  corrente.<p>
+<p>
+PRINT<p>
+Stampa il contenuto della finestra attiva. <p>
+ <p>
+DOS SHELL <p>
+Questo programma permette di abbandonare temporaneamente il TurboPascal ed
+eseguire comandi MS-DOS e programmi. Digitando EXIT si rientra nell'ambiente
+TurboPascal. <p>
+<p>
+
+<h2>
+A.	
+<a name="B_Toc356209896"><a name="B_Toc353166492">Men&ugrave;
+Edit</a></a></h2>
+<p>
+RESTORE LINE            <p>
+Serve una volta modificata una linea a tornare allo stato precedente.<p>
+<p>
+ES.              <p>
+	var a,b,c:integer; 	linea iniziale<p>
+	var a,b,c,d:integer;y:char;	ho modificato la linea<p>
+		introducendo nuove variabili<p>
+	<p>
+usando RESTORE LINE torno ad avere la linea iniziale.<p>
+ <p>
+SHOW CLIPBOARD               <p>
+Apre la finestra clipboard, contiene ogni testo che si porta in essa attraverso
+i comandi cut e copy. I testi vengono inseriti uno di seguito al' altro. Il
+testo che compare evidenziato  &egrave; quello che viene usato dal TurboPascal
+attraverso il comando paste.<p>
+<p>
+CUT      <p>
+Si pu&ograve; usare solo dopo avere selezionato un testo. Il testo si seleziona
+in questo modo: si posiziona il cursore all'inizio del testo da selezionare, si
+preme Ctrl-k poi b, si posiziona il cursore alla fine del testo e si preme
+Crtl-k poi k. Un modo molto pi&ugrave; comodo &egrave; selezionare il testo
+premendo la freccia verso l'alto (<i>Shift)  </i>e contemporaneamente
+spostare<i> </i>il cursore con le frecce sul testo da selezionare. Il comando
+cut (taglia) cancella il testo selezionato nella finestra attiva e lo colloca
+nella clipboard.<p>
+<p>
+COPY     <p>
+E' simile al CUT: come la cut fa una copia del testo selezionato sulla
+clipboard tuttavia a differenza del cut tale comando lascia intatto il testo
+selezionato. E' possibile copiare testi dalle finestre help: si seleziona il
+testo nei modi precedentemente descritti  e poi  premendo
+<i>&lt;ctrl&gt;-Ins</i> si copia il testo nella clipboard.<p>
+<p>
+PASTE       <p>
+Trasferisce il testo selezionato nella clipboard sulla finestra di edit attiva
+nella posizione indicata dal cursore. Si pu&ograve; ripetere questa operazione
+tutte le volte che si desidera.<p>
+<p>
+COPY EXAMPLE             <p>
+I quadri di help contengono degli esempi di particolari procedure o funzioni
+che &egrave; possibile copiare nella clipboard e quindi trasferire nelle
+finestre di edit attraverso il comando paste.<p>
+<p>
+CLEAR        <p>
+Cancella il testo selezionato; &egrave; una funzione irreversibile.     <u><p>
+<p>
+</u>
+<h2>
+A.	
+<a name="B_Toc356209897"><a name="B_Toc353166493">Men&ugrave;
+SEARCH</a></a></h2>
+ <p>
+TEXT TO FIND<p>
+Nella riga text to find va inserita la stringa da ricercare. Per iniziare la
+ricerca va scelto OK altrimenti va scelto cancel per tornare alla finestra
+attiva. Se si vuole inserire una stringa che si &egrave; gi&agrave; ricercato
+si preme la freccia verso il basso e viene mostrata l'history list, cio&egrave;
+la lista di tutte le ricerche fatte da inizio sessione di lavoro. Attraverso le
+frecce &egrave; possibile selezionare la stringa desiderata, premendo invio si
+avvia la ricerca. Se non si vuole ricercare una stringa gi&agrave; cercata
+basta digitarla e premere invio. Va notato che inizialmente nella riga del text
+to find compare la parola su cui si trova il cursore nella finestra di edit
+attiva.<p>
+<p>
+In Text to find ho varie opzioni:<p>
+OPTIONS<b><p>
+	C</b>ase sensitive	selezionandola il t.p. fa differenza 							tra maiuscole e
+minuscole  <b><p>
+	W</b>hole word only	cerca solo le parole intere (e  non<p>
+							sotto-stringhe)<b><p>
+	R</b>egular expression	riconosce i caratteri  []\*.$^<p>
+ <p>
+SCOPE<b><p>
+	G</b>lobal			ci si riferisce al  testo globale<b><p>
+	S</b>elected text 	ci si riferisce al testo selezionato<p>
+ <p>
+DIRECTION<p>
+	Forwar<b>d		</b>la direzione della ricerca va <p>
+							dall'origine alla fine.<b><p>
+	B</b>ackward	la direzione della ricerca &egrave; <p>
+							opposta.<p>
+ <p>
+ORIGIN<b><p>
+	F</b>rom cursor	La ricerca inizia da dove &egrave; il <p>
+							cursore fino alla fine.<p>
+	<b>E</b>ntire scope	La ricerca copre l'intero testo.<p>
+ <i><p>
+per attivare queste funzioni alt&lt;carattere in neretto&gt;.</i><p>
+ <p>
+SEARCH AGAIN<p>
+Ripete l'ultimo comando find o replace eseguito.<p>
+<p>
+REPLACE<p>
+Mostra una finestra di dialogo che consente di introdurre un testo da ricercare
+ed il testo da sostituirgli. Ha tutte le opzioni del comando text to find ,in
+pi&ugrave; c'&egrave; un'opzione <i>prompt on replace</i> la quale se attivata
+fa s&igrave; che T.P. prima di operare la sostituzione chieda un'ulteriore
+conferma. Si pu&ograve; inoltre sfruttare la funzionalit&agrave; <i>change
+all</i> che consente di cambiare tutte le corrispondenze trovate (e non solo la
+prima).<p>
+<p>
+GO TO LINE NUMBER<p>
+Sposta il cursore sulla linea di cui si &egrave; indicato il numero.<p>
+<p>
+FIND PROCEDURE<p>
+Attivo soltanto durante una fase di debugging, apre una finestra di dialogo in
+cui si pu&ograve; inserire il nome della funzione o della procedura da
+ricercare.<u></u>
+<h2>
+A.	
+<a name="B_Toc356209899"><a name="B_Toc353166494">Men&ugrave;
+RUN</a></a> </h2>
+<p>
+TRACE INTO<p>
+Esegue il programma una riga per volta.<p>
+<p>
+GO TO CURSOR<p>
+L'opzione go to cursor serve per far eseguire al t.p. tutte le istruzioni dal
+begin fino al punto in cui &egrave; posizionato il cursore.<u><p>
+</u><p>
+STEP OVER<p>
+Consente di eseguire in un unico passo la chiamata ad una procedura, o
+funzione, senza cio&egrave; seguire il flusso completo della procedura.<p>
+<p>
+PROGRAM RESET             <p>
+Ferma l'attuale sessione di debug, rilascia la memoria allocata, chiude ogni
+file aperto che il programma stava usando.<p>
+<p>
+PARAMETERS           <p>
+Permette di passare argomenti al programma da eseguire come se fossero scritti
+nella riga di comando DOS.<p>
+<p>
+RUN      <p>
+Esegue il programma fino al successivo punto d'arresto, o fino alla fine se non
+ce ne sono. <p>
+<p>
+
+<h2>
+A.	
+<a name="B_Toc356209900"><a name="B_Toc353166495">Men&ugrave;
+DEBUG</a></a></h2>
+<p>
+EVALUATE MODIFY<p>
+Calcola il valore di una variabile, o di un'espressione, lo visualizza e
+permette all' utente di cambiarlo. <p>
+<p>
+<p>
+WATCHES<p>
+Apre un men&ugrave; per la gestione dei punti di osservazione, cio&egrave;
+delle variabili di cui si vuole controllare l'evoluzione<p>
+<p>
+	Add watches <p>
+Inserisce un punto di osservazione; attivando questo comando compare una
+finestra di dialogo in cui bisogna inserire l' identificatore del punto di
+osservazione e premere invio. Inizialmente nella finestra compare la parola su
+cui &egrave; posizionato il cursore; &egrave; anche disponibile un elenco delle
+watches inserite dall'inizio della sessione di lavoro (si attiva premendo la
+freccia verso il basso).<p>
+ <p>
+ 	Delete watch    <p>
+Cancella un punto di osservazione<p>
+ 	Edit watch      <p>
+Serve per modificare l'espressione attiva nella finestra Watch. Selezionando
+questo comando compare una finestra di dialogo in cui c'&egrave; l'espressione
+che si vuole modificare<p>
+	Remove all watches  <p>
+Cancella tutte le espressioni di controllo<p>
+<p>
+TOGGLE BREAKPOINT<p>
+Attiva e disattiva punti di arresto incondizionato. <p>
+<p>
+BREAKPOINT<p>
+Permette di gestire i punti di arresto,<p>
+ 
+<h2>
+A.	
+<a name="B_Toc356209901"><a name="B_Toc353166496">Men&ugrave;
+window.</a></a></h2>
+<p>
+SIZE/MOVE   [crtl-F5]<p>
+Usando le frecce si pu&ograve; cambiare la posizione della finestra  attiva (la
+cui cornice diventa azzurra). Scelta la posizione si preme [invio].<p>
+<p>
+ZOOM       [F5]<p>
+Consente di ingrandire al massimo la finestra attiva. Se essa &egrave;
+gi&agrave; stata zoomata tale comando la riporta allo stato  precedente.<p>
+<p>
+TILE<p>
+Serve a vedere contemporaneamente tutte le finestre di editing aperte. Tutte le
+finestre sono grandi uguali e messe una accanto all'altra senza
+sovrapposizioni.<p>
+<p>
+CASCADE<p>
+E' il modulo attivo quando si entra in t.p.: le finestre sono accatastate ed
+&egrave; visibile solo la finestra attiva, delle altre si vede solo il nome e
+il numero.<p>
+<p>
+ NEXT<p>
+ Rende attiva la finestra successiva.<p>
+<p>
+ PREVIOUS<p>
+ Rende attiva la finestra precedente.<p>
+<p>
+ CLOSE<p>
+ Chiude la finestra attiva.<p>
+<p>
+WATCH<p>
+Apre la finestra watch e la rende attiva.<p>
+<p>
+REGISTER<p>
+Apre la finestra Register che mostra i registri della CPU.<p>
+<p>
+OUTPUT<p>
+Apre la finestra Output e la rende attiva.<p>
+<p>
+USER SCREEN<p>
+Consente di vedere l'output di un programma a schermo pieno.<p>
+<p>
+LIST<p>
+Serve per ottenere un elenco di tutte le finestre aperte.<p>
+<p>
+CALL STACK<p>
+Apre una finestra che mostra la pila di chiamate a procedure e funzioni con i
+relativi parametri dalla pi&ugrave; recente alla pi&ugrave; vecchia. In fondo
+c'&egrave; quindi program <i>nomeprogramma.</i> Ovviamente la finestra &egrave;
+visibile solo se si sono predisposti punti di arresto, o si sta eseguendo il
+programma in Trace-into.
+<h1>
+I.	
+<a name="B_Toc353169457"><a name="B_Toc353175285"><a name="B_Toc356209902"><a name="B_Toc353175361">LIBRERIE
+DI SOTTOPROGRAMMI</a></a></a> (UNIT)</a></h1>
+<p>
+Il TurboPascal possiede nella sua libreria alcune funzioni e procedure che
+l'utente pu&ograve; usare senza doverle riscrivere (ad es. sin,cos,ecc.).
+Esistono inoltre delle funzioni pi&ugrave; specifiche contenute in librerie
+chiamate <b><i>UNIT</i></b><i> </i>alle quali si pu&ograve; accedere solo
+eseguendo particolari istruzioni. Le unit predefinite sono: <b><i>system,
+overlay, crt, dos , printer<p>
+</i></b><u><p>
+</u>
+<h2>
+A.	
+<a name="B_Toc353167930"><a name="B_Toc353168435"><a name="B_Toc353169458"><a name="B_Toc353175286"><a name="B_Toc356209903"><a name="B_Toc353175362">Uso
+delle unit standard</a></a></a></a></a></a></h2>
+<i></i><p>
+L'uso &egrave; molto semplice basta dichiarare dopo l'intestazione del
+programma l'istruzione :<b><cite><p>
+<p>
+uses </cite></b><i>nome programma;</i><p>
+es.<p>
+uses overlay;<p>
+<p>
+a questo punto &egrave; possibile usare tutte le funzioni e procedure di
+overlay.<p>
+<p>
+Segue una breve descrizione delle unit predefinite<b><i><p>
+<p>
+system</i></b><p>
+System contiene tutte le procedure e le funzioni standard del TurboPascal.
+Es.<b><i></i></b><p>
+<p>
+<LISTING>program pr2;<i><p>
+{ogni programma o unit usa system, per cui non c'&egrave; bisogno di dichiarare
+uses system}</i><p>
+begin<p>
+	MkDir(ParamStr(1));	{crea un sottodirettorio,che ha per nome}<p>
+					{il parametro che si &egrave; inserito in }<p>
+					{RUN-parameters}<p>
+  if IOResult &lt;&gt; 0 then 	{IOResult restituisce il risultato <p>
+					{dell'ultima operazione di }<p>
+{					input-output: restituisce un intero=0}<p>
+					{se l'operazione ha avuto successo}<p>
+		WriteLn('Cannot create directory')<p>
+	else<p>
+		WriteLn('New directory created');<p>
+end.<p></LISTING>
+Se si &egrave; inserita tra i parametri (RUN-parameters) una stringa, il
+programma crea un direttorio che ha per nome la stringa inserita come
+parametro.<b><i><p>
+<p>
+<p>
+dos</i></b><p>
+Dos definisce numerose procedure e funzioni Pascal analoghe alle pi&ugrave;
+frequenti chiamate DOS, come <i>exec, get time, set time, disk size, ecc.</i>
+<b><i>es.</i></b><p>
+<p>
+<LISTING>program prova;<p>
+uses Dos;<p>
+const<p>
+	days : array [0..6] of String[9] = ('Sunday','Monday','Tuesday',<p>
+		'Wednesday','Thursday','Friday', 'Saturday');<p>
+var<p>
+	y, m, d, dow : Word;<p>
+begin<p>
+	GetDate(y,m,d,dow); <p>
+	{questa funzione restituisce la data corrente}<p>
+	{(anno,mese,giorno,giornodella settimana)}<p>
+	WriteLn('Today is ', days[dow],', ', m:0, '/', d:0, '/', y:0);<p>
+end.<b><i><p>
+<p></LISTING>
+<p>
+overlay</i></b><p>
+Overlay fornisce il supporto al potente sistema di overlay di TurboPascal.
+Quando un programma &egrave; troppo lungo e quindi non pu&ograve; stare
+completamente in memoria centrale il TurboPascal lo divide in moduli e carica
+man mano il modulo che serve in quella fase del programma. Overlay consente di
+fare ci&ograve; in maniera pi&ugrave; elastica.<b><i><p>
+<p>
+<p>
+crt</i></b><p>
+Crt fornisce un insieme di dichiarazioni per l'input output. Utilizzando queste
+definizioni &egrave; possibile manipolare i testi sullo schermo(finestre ,
+indirizzamento diretto del cursore,gestione del colore nei testi).
+<b><i>es.</i></b><p>
+<p>
+<LISTING>program ex;<p>
+uses Crt;<p>
+begin<p>
+	TextBackground(LightGray); 	{lo sfondo diventa grigio chiaro}<p>
+	TextColor(black);	{il colore del testo diventa nero}<p>
+	clrscr; 	{pulisce lo schermo}<p>
+	writeln('prova');<p>
+end.<b><i><p></LISTING>
+</i></b><p>
+<p>
+<LISTING>program pr2;<p>
+uses Crt;<p>
+begin<p>
+	repeat<p>
+		Write('Xx');  	{riempie lo schermo di Xx}<p>
+						{finch&egrave; non si preme un tasto}<p>
+	until KeyPressed;<p>
+end.<b><i><p>
+<p></LISTING>
+<p>
+printer</i></b><p>
+Printer dichiara la variabile LST per i file di testo e la connette con un
+driver di dispositivo che consente di effettuare l'output con il Pascal
+standard tramite write e writeln.<p>
+<b><i><p>
+<p>
+graph</i></b><p>
+La unit graph mette a disposizione un insieme di routine grafiche veloci e
+potenti che permette di sfruttare appieno le possibilit&agrave; grafiche del
+proprio PC.<p>
+<p>
+
+<h2>
+A.	
+<a name="B_Toc353167931"><a name="B_Toc353168436"><a name="B_Toc353169459"><a name="B_Toc353175287"><a name="B_Toc356209905"><a name="B_Toc353175363">Costruire
+una unit</a></a></a></a></a></a></h2>
+<p>
+In Pascal &egrave; possibile raccogliere procedure o funzioni in una propria
+<i>unit </i>ed utilizzarle in un programma ogni volta che si vuole senza
+doverle ridichiarare e riimplementare.<p>
+Possiamo quindi definire una<i> unit</i> come una<u> struttura che esporta
+all'esterno una serie di funzionalit&agrave; attraverso le procedure e funzioni
+in essa contenute</u>, nascondendo all'utente il modo in cui queste
+funzionalit&agrave; vengono realizzate.<p>
+<p>
+L'intestazione inizia con la parola <b><i>unit</i></b><i> </i>seguita dal nome
+con cui si vuole chiamare la unit. L'elemento successivo &egrave; la parola
+<b><i>interface</i>,</b> che indica l'inizio della sezione di interfaccia.
+L'interfaccia &egrave; una sezione di dominio pubblico cio&egrave; &egrave;
+accessibile da qualsiasi altra unit o programma che la usi: essa contiene gli
+elementi che ciascun programma pu&ograve; usare. <p>
+Nell'interfaccia si possono dichiarare variabili, procedure, funzioni e tipi di
+dati (la sequenza in cui vanno dichiarati &egrave; la stessa della
+dichiarazione nei programmi).<p>
+Le funzioni e procedure accessibili da un programma vengono dichiarate qui:
+<b><cite>solo dichiarate</cite></b> e il corpo principale va inserito nella
+sezione successiva all'interface, cio&egrave; la sezione
+<b><i>implementation</i></b> (la parte privata invisibile ai programmi). <p>
+La sezione implementation contiene quindi l'usuale implementazione delle
+procedure e funzioni dichiarate nell'interfaccia. Tutto ci&ograve; che &egrave;
+stato dichiarato precedentemente nella sezione di interfaccia &egrave;
+accessibile alla sezione di implementazione, cio&egrave; si possono usare in
+essa le variabili e tipi definiti nell' interfaccia. Si possono inserire altre
+dichiarazioni esclusive alle quali i programmi esterni non possono accedere. Le
+dichiarazioni delle procedure e funzioni presenti nell'interfaccia devono
+comparire anche nella sezione implementazione ovviamente la dichiarazione deve
+essere la stessa oppure in forma abbreviata, omettendo parametri e tipo della
+funzione. Es:<p>
+<b><p>
+INTERFACE</b><p>
+...................................................<p>
+...................................................<p>
+...................................................<p>
+procedure esempio(var a:integer;b,c:char);<p>
+....................................................<p>
+....................................................<b><p>
+IMPLEMENTATION</b><p>
+....................................................<p>
+....................................................<p>
+procedure esempio<p>
+begin<p>
+....................................................<p>
+....................................................<p>
+end;<p>
+<p>
+Infine pu&ograve; esserci una parte dedicata all'inizializzazione.<p>
+Essa inizia con begin e termina con end. come la parte esecutiva di un
+programma. Questa parte pu&ograve; servire ad inizializzare le  strutture dati
+utilizzate dalla unit o dal programma che la utilizza. <u><p>
+<p>
+ ESEMPIO . </u><p>
+<b><p>
+<LISTING>UNIT </b>un_mat;<p>
+<b><p>
+INTERFACE</b><p>
+<p>
+	uses crt;<p>
+	const M=3;    {DIMENSIONE DELLE MATRICI}<p>
+	type matrice=array [1..M,1..M] of integer;<p>
+	var mat,mat3:matrice;<p>
+		i,j:integer;<p>
+		t,t1:text;<p>
+<p>
+<p>
+	procedure scrivimatsufile(mat3:matrice;var t1:text);<p>
+	procedure leggimatricedafile(var t:text;var mat:matrice);<p>
+	procedure leggimat(var mat:matrice);   { Inizializza la matrice }<p>
+	procedure visualizzamat(mat:matrice); { Visualizza la matrice }<p>
+<p>
+<b><p>
+IMPLEMENTATION</b><p>
+<p>
+	procedure leggimat(var mat:matrice);  {Inizializza la matrice}<p>
+		var rig,col:integer;<p>
+	begin<p>
+	for rig:=1 to M do <p>
+		begin<p>
+			writeln;<p>
+			for col:=1 to M do  <p>
+				begin<p>
+					writeln ('Inserisci valore di riga ',rig,' e colonna',col);<p>
+					readln (mat[rig,col])<p>
+				end<p>
+		end<p>
+	end;<p>
+<p>
+<p>
+	procedure visualizzamat(mat:matrice);  { Visualizza la matrice}<p>
+	var rig,col:integer;<p>
+	begin<p>
+		for rig:=1 to M do <p>
+			begin<p>
+				writeln;<p>
+				for col:=1 to M  do  <p>
+					write (mat[rig,col]:7);<p>
+			end<p>
+	end;<p>
+  <p>
+procedure scrivimatsufile(mat3:matrice;var t1:text);<p>
+	var i,j:integer;uscita:string[8];<p>
+	begin<p>
+		writeln('dammi il nome del file su cui vuoi memorizzare la 	matrice');<p>
+		readln(uscita);<p>
+		assign(t1,uscita);<p>
+		rewrite(t1);<p>
+		for i:=1 to M do <p>
+			begin<p>
+				for j:=1 to M do write(t1,mat3[i,j]:7);<p>
+					writeln(t1)<p>
+			end;<p>
+		close(t1);<p>
+	end;<p>
+<p>
+procedure leggimatricedafile(var t:text;var mat:matrice);<p>
+	var i,j:integer;dati:string[8];<p>
+	begin<p>
+		writeln('dammi il nome del file su cui sono contenuti i dati');<p>
+		readln(dati);<p>
+		assign(t,dati);<p>
+		reset(t);<p>
+		for i:=1 to M do<p>
+			for j:=1 to M do<p>
+				read(t,mat[i,j]);<p>
+		close(t);<p>
+	end;<p>
+<p>
+begin<p>
+	textmode(co40);<p>
+	window(1,1,100,160);<p>
+	textbackground(blue);<p>
+	textcolor(white);<p>
+	clrscr;<p>
+end.<p></LISTING>
+<p>
+In questo esempio nella sezione di inizializzazione compaiono le chiamate a
+funzioni di libreria che servono per pulire lo schermo, rendere blu lo sfondo,
+il testo bianco ed i caratteri pi&ugrave; grandi.  
+<h2>
+A.	
+<a name="B_Toc356209907">Compilazione
+di una unit</a></h2>
+<p>
+Per poter usare la unit questa deve essere stata precedentemente compilata e
+memorizzata in linguaggio macchina e non nel sorgente Pascal. Cio&egrave; non
+basta scrivere il testo di una unit o richiamarla da disco per poi poterla
+usare.<u><p>
+La unit deve essere memorizzata in linguaggio macchina. </u><p>
+Per far ci&ograve; &eacute; necassario accedere al men&ugrave;
+<b><i>compile</i></b>,(alt+c) spostarsi su <i>Destination</i>. Se accanto
+c'&egrave; la scritta <i>memory</i> premere invio. In tal modo la finestra si
+chiude automaticamente e <i>Destination</i> si posiziona su disk. Si riapre il
+men&ugrave; compile, si seleziona compile e se non non vengono rilevati errori
+e la compilazione va buon fine si genera un file <i>nomeunit.<b>tpu</b></i> . A
+questo punto la unit pu&ograve; essere utilizzata.
+<h2>
+A.	
+<a name="B_Toc353168437"><a name="B_Toc353167932"><a name="B_Toc353169460"><a name="B_Toc353175288"><a name="B_Toc356209908"><a name="B_Toc353175364">Funzionalita'
+Della Unit.</a></a></a></a></a></a></h2>
+<b></b><p>
+La unit dell'esempio precedente consente ad un programma esterno di usare il
+tipo matrice le variabili t, t1 di tipo testo, mat, mat3 di tipo matrice.<p>
+Si possono usare le procedure:<i><p>
+leggimat(a)</i> 	chiede all'utente di inserire da tastiera una <p>
+					matrice che memorizza nella variabile a<i><p>
+visualizzamat(a)	</i>visualizza la matrice contenuta nella <p>
+					variabile a.<i><p>
+scrivimatsufile(a) </i> 	analoga a visualizzamat, ma memorizza<p>
+					la matrice a la su un file.<p>
+<i><p>
+leggimatdafile(a)</i>   	analoga leggimat, ma legge la matrice <p>
+					da file.<b><p>
+</b>
+<h2>
+A.	
+<a name="B_Toc353167933"><a name="B_Toc353168438"><a name="B_Toc353169461"><a name="B_Toc353175289"><a name="B_Toc356209909"><a name="B_Toc353175365">Uso
+della </a></a></a></a></a>unit</a></h2>
+L'uso di una unit &egrave; molto semplice, basta dichiarare <i>uses
+&lt;nomeunit&gt;</i>  dopo l'intestazione del programma.<p>
+Es.<p>
+<p>
+<LISTING>program prova;<p>
+uses<b> un_mat;</b><p>
+begin<p>
+	writeln('dammi matrice da salvare');<p>
+	leggimat(m1);<p>
+	scrivimatsufile(m1,t5);<p>
+	leggimatricedafile(t3,m2);<p>
+	visualizzamat(m1);<p>
+	writeln;<p>
+	visualizzamat(m2);<p>
+end.<p></LISTING>
+<p>
+Se la unit in linguaggio macchina (un file <i>nomeunit.<b>tpu</b></i> )
+&egrave; nel direttorio corrente (nello stesso direttorio del programma che la
+usa) non ci sono problemi, altrimenti bisogna aprire il men&ugrave;
+<b>option</b>-<i>directories</i>, ed indicare nella riga <i>unit
+directories</i> il direttorio in cui &egrave; contenuta la unit che si desidera
+utilizzare.<p>
+</body></html>

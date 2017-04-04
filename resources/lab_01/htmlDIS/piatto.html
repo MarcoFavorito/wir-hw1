@@ -1,0 +1,128 @@
+<html>
+<head>
+<title>Primo appello 2004 - Compito Ristorante</title>
+</head>
+
+<body>
+
+<h1>Primo appello 2004</h1>
+
+<p>
+La prova dura un'ora e tre quarti.
+</p>
+
+<p>
+<b>Riempire il file <tt>studenteid.txt</tt> con i propri
+dati.</b>
+</p>
+
+<p>
+Vengono dati: due programmi di prova, un file di prova, e il
+testo del compito in formato html. Lo studente deve
+realizzare due classi che vengono usate dai due programmi di
+prova. <b>Le soluzioni devono trovarsi nella stessa cartella
+<tt>Esame</tt> dove si trovano i programmi di prova</tt>
+pena l'annullamento dell'esame.</b>
+</p>
+
+<hr>
+
+<h3>Prima parte</h3>
+
+<p>
+Un ristorante vuole realizzare un programma di gestione del suo men&ugrave;.
+</p>
+
+<p>
+Realizzare la classe <tt>Piatto</tt> i cui oggetti rappresentano delle portate che vengono servite nel ristorante.
+Le componenti di questi oggetti devono essere le seguenti:
+</p>
+
+<dl>
+
+<dt><tt>nome</tt>
+<dd>Nome del piatto. 
+<dt><tt>tipo</tt>
+<dd>Tipo del piatto (antipasto, primo, secondo...)
+<dt><tt>prezzo</tt>
+<dd>Prezzo del piatto in Euro (includere i centesimi).
+<dt><tt>delGiorno</tt>
+<dd>Indica se il piatto &egrave; incluso nel menu del giorno. 
+<dt>&nbsp; </dt>
+</dl>
+
+<p>
+La classe deve essere incapsulata. Devono inoltre essere realizzati i seguenti metodi:
+</p>
+
+<ul>
+
+<li>metodi <tt>get</tt> e <tt>set</tt> per tutte le
+componenti; il metodo<tt> set</tt> per la componente <tt>prezzo</tt> deve prevedere un controllo per evitare che vengano impostati valori negativi; in caso di errore, stampare
+un messaggio di errore e terminare il programma;
+
+<li>metodo costruttore che ha come argomento un
+<tt>BufferedReader</tt>; il metodo deve leggere i valori da
+mettere nell'oggetto da file; questi valori sono 
+memorizzati uno per linea; il tipo booleano &egrave; memorizzato su file con le due stringhe &quot;si&quot; e &quot;no&quot;; nel caso in cui il file
+finisca prima che si riescano a leggere tutte le componenti,
+si stampi un messaggio di errore e si esca dal programma;
+
+<li>un metodo toString che restituisce una stringa in cui ci
+sono tutte le componenti dell'oggetto.
+
+</ul>
+
+<hr>
+
+
+<h3>Seconda parte</h3>
+
+<p>
+Definire una  classe <tt>Menu</tt> i cui oggetti rappresentano
+tutti i piatti del ristorante.
+Ogni oggetto di questa classe &egrave; quindi la
+rappresentazione di un insieme di oggetti di tipo <tt>Piatto</tt>. Per rappresentare insiemi di oggetti, usare un array. La classe deve possedere i seguenti metodi:
+</p>
+
+<p>
+Costruttore della classe: 
+</p>
+
+<dl>
+
+<dt>
+<tt>Menu(String nomefile)</tt>
+<dd>
+crea un oggetto <tt>Menu</tt> che rappresenta l'insieme
+di tutti gli oggetti <tt>Piatto</tt> che sono memorizzati
+nel file il cui nome &egrave; dato dalla stringa passata
+come argomento; la prima linea del file contiene il numero
+degli oggetti memorizzati su file.
+
+</dl>
+
+<p>
+Metodi della classe:
+</p>
+
+<dl>
+
+<dt><tt>public void stampaTutti()</tt>
+<dd>stampa tutti i piatti del menu
+
+<dt><tt>public void stampaEconomici(String tipoPiatto, double limite) </tt>
+<dd>Stampa nome e prezzo dei piatti di tipo
+<tt>tipoPiatto</tt> che costano meno del valore del
+parametro <tt>limite.</tt></dd>
+
+<dt><tt>public double prezzoMenu()</tt>
+<dd>Ritorna il prezzo del menù del giorno,
+ovvero il prezzo complessivo di tutti i piatti
+che sono piatti del giorno</dd>
+</dl>
+
+</dl>
+</body>
+</html>
+

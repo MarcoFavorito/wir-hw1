@@ -1,0 +1,2418 @@
+<!--This file created 28-07-1999 23:10 by Claris Home Page version 1.0-->
+<HTML>
+<HEAD>
+   <TITLE>Appendix A.3 - Standard predicates for graphs and forests
+   visualization</TITLE>
+   <META NAME=GENERATOR CONTENT="Claris Home Page 1.0">
+   <X-SAS-WINDOW TOP=42 BOTTOM=760 LEFT=4 RIGHT=1012>
+   <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN"> <META NAME="Author" CONTENT="Camil Demetrescu">
+</HEAD>
+<BODY BGCOLOR="#D9D9D9" ALINK="#0000FF" VLINK="#551A8B">
+
+<P><DIV ALIGN=right></P>
+
+<P><I><FONT SIZE=7 COLOR="#00007F">Appendix A.3</FONT></I></P>
+
+<P></DIV><DIV ALIGN=right></P>
+
+<P><I><FONT SIZE=6 COLOR="#00007F">Standard predicates for graphs and
+forests visualization</FONT></I><FONT COLOR="#00007F"> </FONT><HR>
+</P>
+
+<P></DIV></P>
+
+<P>&nbsp;</P>
+
+<P>&nbsp;</P>
+
+<P><A NAME="Graph"></A></P>
+
+<P><TABLE BORDER=1 CELLSPACING=0 CELLPADDING=6 WIDTH="100%">
+   <TR>
+      <TD COLSPAN=3>
+         <P><FONT SIZE=5>Graph(Out G)</FONT>
+      </TD><TD VALIGN=top COLSPAN=3>
+         <P><DIV ALIGN=right></P>
+         
+         <P><FONT SIZE=4>Declare graphs by enumeration</FONT></P>
+         
+         <P></DIV>
+      </TD></TR>
+   <TR>
+      <TD VALIGN=top>
+         <P><DIV ALIGN=right></P>
+         
+         <P><FONT COLOR="#AF0000">Description:</FONT></P>
+         
+         <P></DIV>
+      </TD><TD COLSPAN=5>
+         <P>the visualization system repeatedly calls this predicate
+         to build one or more graphs.The view that will contain each
+         graph is automatically created by the visualization system,
+         without any declaration of the user.</P>
+         
+         <P>Note: the title of the view containing the graph consists
+         of the name of the running program followed by the string ":
+         Graph" and then by the ID of the graph itself.
+      </TD></TR>
+   <TR>
+      <TD>
+         <P><DIV ALIGN=right></P>
+         
+         <P><FONT COLOR="#AF0000">Predicate type:</FONT></P>
+         
+         <P></DIV>
+      </TD><TD COLSPAN=5>
+         <P>standard enumerative
+      </TD></TR>
+   <TR>
+      <TD>
+         <P><DIV ALIGN=right></P>
+         
+         <P><FONT COLOR="#AF0000">Parameters:</FONT></P>
+         
+         <P></DIV>
+      </TD><TD>
+         <P>G
+      </TD><TD COLSPAN=4>
+         <P>ID of the graph(s) to be declared
+      </TD></TR>
+   <TR>
+      <TD VALIGN=top>
+         <P><DIV ALIGN=right></P>
+         
+         <P><FONT COLOR="#AF0000">Related predicates:</FONT></P>
+         
+         <P></DIV>
+      </TD><TD COLSPAN=5>
+         <P><TT><A HREF="#Node">Node</A>,<A HREF="#Arc">Arc</A>,<A HREF="#Directed">Directed</A></TT>:
+         in order to define completely the graph, its nodes and arcs
+         (directed or not) have to be declared.
+      </TD></TR>
+   <TR>
+      <TD VALIGN=top>
+         <P><DIV ALIGN=right></P>
+         
+         <P><FONT COLOR="#AF0000">Example:</FONT></P>
+         
+         <P></DIV>
+      </TD><TD COLSPAN=5>
+         <P><TT>/** Graph(Out 1); **/</TT></P>
+         
+         <P><FONT SIZE=2>"Declare a graph named 1."</FONT></P>
+         
+         <P><FONT SIZE=2>If no node is declared to be in the graph,
+         the result will be an empty window onto the screen.</FONT>
+      </TD></TR>
+</TABLE></P>
+
+<P>&nbsp;</P>
+
+<P><A NAME="Tree"></A></P>
+
+<P><TABLE BORDER=1 CELLSPACING=0 CELLPADDING=6 WIDTH="100%">
+   <TR>
+      <TD VALIGN=top COLSPAN=3>
+         <P><FONT SIZE=5>Tree(Out T)</FONT>
+      </TD><TD COLSPAN=3>
+         <P><DIV ALIGN=right></P>
+         
+         <P><FONT SIZE=4>Declare forests by enumeration</FONT></P>
+         
+         <P></DIV>
+      </TD></TR>
+   <TR>
+      <TD VALIGN=top>
+         <P><DIV ALIGN=right></P>
+         
+         <P><FONT COLOR="#AF0000">Description:</FONT></P>
+         
+         <P></DIV>
+      </TD><TD COLSPAN=5>
+         <P>the visualization system repeatedly calls this predicate
+         to build one or more forests.The view that will contain each
+         forest is automatically created by the visualization system,
+         without any declaration of the user.</P>
+         
+         <P>Note: the title of the view containing the forest
+         consists of the name of the running program followed by the
+         string ": Tree" and then by the ID of the forest itself.
+      </TD></TR>
+   <TR>
+      <TD>
+         <P><DIV ALIGN=right></P>
+         
+         <P><FONT COLOR="#AF0000">Predicate type:</FONT></P>
+         
+         <P></DIV>
+      </TD><TD COLSPAN=5>
+         <P>standard enumerative
+      </TD></TR>
+   <TR>
+      <TD VALIGN=top>
+         <P><DIV ALIGN=right></P>
+         
+         <P><FONT COLOR="#AF0000">Parameters:</FONT></P>
+         
+         <P></DIV>
+      </TD><TD>
+         <P>T
+      </TD><TD COLSPAN=4>
+         <P>ID of the forest(s) to be declared
+      </TD></TR>
+   <TR>
+      <TD VALIGN=top>
+         <P><DIV ALIGN=right></P>
+         
+         <P><FONT COLOR="#AF0000">Related predicates:</FONT></P>
+         
+         <P></DIV>
+      </TD><TD COLSPAN=5>
+         <P><TT><A HREF="#Node">Node</A>,<A HREF="#Arc">Arc</A>,<A HREF="#Directed">Directed</A></TT>:
+         in order to define completely the forest, its nodes and arcs
+         (directed or not) have to be declared. Moreover, it is
+         possible defining its roots through the predicate
+         <TT><A HREF="#Root">Root</A></TT>.
+      </TD></TR>
+   <TR>
+      <TD VALIGN=top>
+         <P><DIV ALIGN=right></P>
+         
+         <P><FONT COLOR="#AF0000">Example:</FONT></P>
+         
+         <P></DIV>
+      </TD><TD COLSPAN=5>
+         <P><TT>/** Tree(Out 1); **/</TT></P>
+         
+         <P><FONT SIZE=2>"Declare a forest named 1."</FONT></P>
+         
+         <P><FONT SIZE=2>If no node is declared to be in the forest,
+         the result will be an empty window onto the screen.</FONT>
+      </TD></TR>
+</TABLE></P>
+
+<P>&nbsp;</P>
+
+<P><A NAME="Root"></A></P>
+
+<P><TABLE BORDER=1 CELLSPACING=0 CELLPADDING=6 WIDTH="100%">
+   <TR>
+      <TD COLSPAN=2>
+         <P><FONT SIZE=5>Root(Out R,F)</FONT>
+      </TD><TD COLSPAN=2>
+         <P><DIV ALIGN=right></P>
+         
+         <P><FONT SIZE=4>Declare the roots of the forest F by
+         enumeration</FONT></P>
+         
+         <P></DIV>
+      </TD></TR>
+   <TR>
+      <TD VALIGN=top>
+         <P><DIV ALIGN=right></P>
+         
+         <P><FONT COLOR="#AF0000">Description:</FONT></P>
+         
+         <P></DIV>
+      </TD><TD COLSPAN=3>
+         <P>the visualization system repeatedly calls this predicate
+         for each forest F to gather its roots.</P>
+         
+         <P>Note: if the roots of some trees in the forest are not
+         specified, they are automatically found by the visualization
+         system (if the tree is not directed, a node is randomly
+         chosen as root). It is also possible specifying no root at
+         all.</P>
+         
+         <P>Note: the roots explicitily specified are drawn from left
+         to right according to the order in which they have been
+         enumerated by the predicate <TT>Root</TT> . On the contrary,
+         nothing can be said about the order of roots found by the
+         visualization system.</P>
+         
+         <P>Note: roots must have no incoming arc. If this happens,
+         the wrong declaration is not considered for not directed
+         trees, while an error message is produced in directed trees.
+      
+      </TD></TR>
+   <TR>
+      <TD>
+         <P><DIV ALIGN=right></P>
+         
+         <P><FONT COLOR="#AF0000">Predicate type:</FONT></P>
+         
+         <P></DIV>
+      </TD><TD COLSPAN=3>
+         <P>standard enumerative
+      </TD></TR>
+   <TR>
+      <TD VALIGN=top ROWSPAN=2>
+         <P><DIV ALIGN=right></P>
+         
+         <P><FONT COLOR="#AF0000">Parameters:</FONT></P>
+         
+         <P></DIV>
+      </TD><TD>
+         <P>R
+      </TD><TD VALIGN=top COLSPAN=2>
+         <P>ID of the node(s) of the forest F to be considered as
+         roots
+      </TD></TR>
+   <TR><TD VALIGN=top>
+         <P>F
+      </TD><TD COLSPAN=2>
+         <P>ID of the forest that the roots belong to
+      </TD></TR>
+   <TR>
+      <TD VALIGN=top ROWSPAN=3>
+         <P><DIV ALIGN=right></P>
+         
+         <P><FONT COLOR="#AF0000">Example:</FONT></P>
+         
+         <P></DIV>
+      </TD><TD COLSPAN=3>
+         <P><TT>/**</TT></P>
+         
+         <BLOCKQUOTE><P><TT><A HREF="#Tree">Tree</A>(Out 1);</TT>
+         </P>
+         
+         <P><TT><A HREF="#Node">Node</A>(Out N,1) For N:
+         <A HREF="AppendixA5.html#InRange">InRange</A>(N,1,7);</TT>
+         </P>
+         
+         <P><TT><A HREF="#Arc">Arc</A>(X,Y,1) If Y==3*X || Y==3*X+1
+         || Y==3*X+2;</TT></P>
+         
+         <P><TT>Root(Out 5,1);</TT></P></BLOCKQUOTE>
+         
+         <P><TT>**/</TT></P>
+         
+         <P><FONT SIZE=2>"Declare a forest with ID equal to 1.
+         Declare 7 nodes in forest 1, numbered from 1 to 7. Then
+         declare arcs: all the arcs starting from a node X go to the
+         nodes with ID 3*X or 3*X+1 or 3*X+2. At last, declare that
+         the node with ID 5 is a root in the forest. Note that this
+         is not the only root, but the other ones are automatically
+         found by the visualization system."</FONT>
+      </TD></TR>
+   <TR><TD COLSPAN=2>
+         <P><FONT SIZE=2>This example yields the following
+         result:</FONT>
+      </TD><TD>
+         <P ALIGN=CENTER><IMG SRC="Images/TreeRoot.GIF" WIDTH=222
+         HEIGHT=163 X-SAS-UseImageWidth X-SAS-UseImageHeight
+         ALIGN=bottom>
+      </TD></TR>
+   <TR><TD COLSPAN=2>
+         <P><FONT SIZE=2>Without specifying that 5 must be considered
+         a root, we obtain the following result:</FONT>
+      </TD><TD>
+         <P ALIGN=CENTER><IMG SRC="Images/TreeNoRoot.GIF" WIDTH=286
+         HEIGHT=128 X-SAS-UseImageWidth X-SAS-UseImageHeight
+         ALIGN=bottom>
+      </TD></TR>
+   <TR>
+      <TD>
+         <P><DIV ALIGN=right></P>
+         
+         <P><FONT COLOR="#AF0000">Tip:</FONT></P>
+         
+         <P></DIV>
+      </TD><TD COLSPAN=3>
+         <P>usually it is not necessary specifying the roots of
+         directed trees: indeed, they can be chosen only in one way
+         and the visualization system is able to do it for you. On
+         the other hand, it is a good choice enumerating roots for
+         directed forests when you want them to be drawn in a
+         particular order.
+      </TD></TR>
+</TABLE></P>
+
+<P>&nbsp;</P>
+
+<P><A NAME="Directed"></A></P>
+
+<P><TABLE BORDER=1 CELLSPACING=0 CELLPADDING=6 WIDTH="100%">
+   <TR>
+      <TD VALIGN=top COLSPAN=3>
+         <P><FONT SIZE=5>Directed(G)</FONT>
+      </TD><TD>
+         <P><DIV ALIGN=right></P>
+         
+         <P><FONT SIZE=4>Declare arcs of graph G to be
+         directed</FONT></P>
+         
+         <P></DIV>
+      </TD></TR>
+   <TR>
+      <TD VALIGN=top>
+         <P><DIV ALIGN=right></P>
+         
+         <P><FONT COLOR="#AF0000">Description:</FONT></P>
+         
+         <P></DIV>
+      </TD><TD COLSPAN=3>
+         <P>the visualization system repeatedly calls this predicate
+         for each graph/forest G to know if its arcs are directed or
+         not.
+      </TD></TR>
+   <TR>
+      <TD>
+         <P><DIV ALIGN=right></P>
+         
+         <P><FONT COLOR="#AF0000">Default:</FONT></P>
+         
+         <P></DIV>
+      </TD><TD COLSPAN=3>
+         <P>by default arcs are not directed
+      </TD></TR>
+   <TR>
+      <TD>
+         <P><DIV ALIGN=right></P>
+         
+         <P><FONT COLOR="#AF0000">Predicate type:</FONT></P>
+         
+         <P></DIV>
+      </TD><TD COLSPAN=3>
+         <P>standard boolean
+      </TD></TR>
+   <TR>
+      <TD VALIGN=top>
+         <P><DIV ALIGN=right></P>
+         
+         <P><FONT COLOR="#AF0000">Parameters:</FONT></P>
+         
+         <P></DIV>
+      </TD><TD>
+         <P>G
+      </TD><TD COLSPAN=2>
+         <P>ID of the graph/forest whose arcs' orientation is being
+         declared
+      </TD></TR>
+   <TR>
+      <TD VALIGN=top ROWSPAN=2>
+         <P><DIV ALIGN=right></P>
+         
+         <P><FONT COLOR="#AF0000">Example:</FONT></P>
+         
+         <P></DIV>
+      </TD><TD COLSPAN=3>
+         <P><TT>/** Directed(1); **/</TT></P>
+         
+         <P><FONT SIZE=2>"Declare the graph/forest with ID 1 to have
+         directed arcs."</FONT>
+      </TD></TR>
+   <TR><TD COLSPAN=2>
+         <P><FONT SIZE=2>If the code of this example is added to that
+         of the
+         </FONT><TT><FONT SIZE=2><A HREF="#Graph">Graph</A></FONT></TT><FONT SIZE=2>,
+         </FONT><TT><FONT SIZE=2><A HREF="#Node">Node</A></FONT></TT><FONT SIZE=2>
+         and
+         </FONT><TT><FONT SIZE=2><A HREF="#Arc">Arc</A></FONT></TT><FONT SIZE=2>
+         standard predicates, the following result would be
+         obtained:</FONT>
+      </TD><TD>
+         <P ALIGN=CENTER><IMG SRC="Images/GraphDirected.GIF"
+         WIDTH=212 HEIGHT=159 X-SAS-UseImageWidth
+         X-SAS-UseImageHeight ALIGN=bottom>
+      </TD></TR>
+</TABLE></P>
+
+<P>&nbsp;</P>
+
+<P><A NAME="Node"></A></P>
+
+<P><TABLE BORDER=1 CELLSPACING=0 CELLPADDING=6 WIDTH="100%">
+   <TR>
+      <TD COLSPAN=2>
+         <P><FONT SIZE=5>Node(Out N,G)</FONT>
+      </TD><TD COLSPAN=2>
+         <P><DIV ALIGN=right></P>
+         
+         <P><FONT SIZE=4>Declare the nodes of the graph/forest G by
+         enumeration</FONT></P>
+         
+         <P></DIV>
+      </TD></TR>
+   <TR>
+      <TD VALIGN=top>
+         <P><DIV ALIGN=right></P>
+         
+         <P><FONT COLOR="#AF0000">Description:</FONT></P>
+         
+         <P></DIV>
+      </TD><TD COLSPAN=3>
+         <P>the visualization system repeatedly calls this predicate
+         for each graph and forest to build their nodes.</P>
+         
+         <P>Note: the ID of the node is automatically shown on it,
+         unless the user explicitily specifies its name through the
+         <TT><A HREF="#NodeName">NodeName</A></TT> predicate.
+      </TD></TR>
+   <TR>
+      <TD>
+         <P><DIV ALIGN=right></P>
+         
+         <P><FONT COLOR="#AF0000">Predicate type:</FONT></P>
+         
+         <P></DIV>
+      </TD><TD COLSPAN=3>
+         <P>standard enumerative
+      </TD></TR>
+   <TR>
+      <TD VALIGN=top ROWSPAN=2>
+         <P><DIV ALIGN=right></P>
+         
+         <P><FONT COLOR="#AF0000">Parameters:</FONT></P>
+         
+         <P></DIV>
+      </TD><TD>
+         <P>N
+      </TD><TD VALIGN=top COLSPAN=2>
+         <P>ID of the node(s) to be declared
+      </TD></TR>
+   <TR><TD VALIGN=top>
+         <P>G
+      </TD><TD COLSPAN=2>
+         <P>ID of the graph/forest that will contain the node(s).
+         </P>
+         
+         <P>Note: if nodes' positions are not explicitely given
+         through the predicate
+         <TT><A HREF="#NodePos">NodePos</A></TT>, Leonardo's
+         visualization system uses its standard drawing techniques.
+         </P>
+         
+         <P>In particular, if G has been declared through the
+         predicate <TT><A HREF="#Graph">Graph</A></TT>:</P>
+         
+         <P>- if the visualization system is able to find a currently
+         open graph window or a graph file containing a graph
+         "similar" to G, then its drawing is used;</P>
+         
+         <P>- otherwise, nodes are trivially put on a circle.</P>
+         
+         <P>If G as been declared through the predicate
+         <TT><A HREF="#Tree">Tree</A></TT>, an automatic forest
+         drawing algorithm is used. If the roots have not been
+         specified by the user through the predicate
+         <TT><A HREF="#Root">Root</A></TT>, they are automatically
+         detected by the visualization system (they are randomly
+         chosen if G is not directed.)
+      </TD></TR>
+   <TR>
+      <TD>
+         <P><DIV ALIGN=right></P>
+         
+         <P><FONT COLOR="#AF0000">Attributes:</FONT></P>
+         
+         <P></DIV>
+      </TD><TD COLSPAN=3>
+         <P><TT><A HREF="#NodeColor">NodeColor</A></TT>,
+         <TT><A HREF="#NodeFrame">NodeFrame</A></TT>,
+         <TT><A HREF="#NodeLabel">NodeLabel</A></TT>,
+         <TT><A HREF="#NodeLabelColor">NodeLabelColor</A></TT>,
+         <TT><A HREF="#NodeName">NodeName</A></TT>,
+         <TT><A HREF="#NodePos">NodePos</A></TT> ,
+         <TT><A HREF="#NodeShape">NodeShape</A></TT>
+      </TD></TR>
+   <TR>
+      <TD VALIGN=top>
+         <P><DIV ALIGN=right></P>
+         
+         <P><FONT COLOR="#AF0000">Example:</FONT></P>
+         
+         <P></DIV>
+      </TD><TD COLSPAN=3>
+         <P><TT>/** Node(Out N,1) For N:
+         <A HREF="AppendixA5.html#InRangeStep">InRangeStep</A>(N,3,9,2);
+         **/</TT></P>
+         
+         <P><FONT SIZE=2>"Declare four nodes belonging to the
+         graph/forest named 1 and called 3, 5, 7 and 9."</FONT>
+      </TD></TR>
+   <TR>
+      <TD>
+         <P>
+      </TD><TD COLSPAN=2>
+         <P><FONT SIZE=2>If the code of this example is added to that
+         of the
+         </FONT><TT><FONT SIZE=2><A HREF="#Rectangle">Graph</A></FONT></TT><FONT SIZE=2>
+         standard predicate, the following result would be
+         obtained:</FONT>
+      </TD><TD>
+         <P ALIGN=CENTER><IMG SRC="Images/GraphNode.GIF" WIDTH=221
+         HEIGHT=166 X-SAS-UseImageWidth X-SAS-UseImageHeight
+         ALIGN=bottom>
+      </TD></TR>
+   <TR>
+      <TD>
+         <P>
+      </TD><TD COLSPAN=2>
+         <P><FONT SIZE=2>If the code of this example is added to that
+         of the
+         </FONT><TT><FONT SIZE=2><A HREF="#Rectangle">Tree</A></FONT></TT><FONT SIZE=2>
+         standard predicate, the following result would be
+         obtained:</FONT>
+      </TD><TD>
+         <P ALIGN=CENTER><IMG SRC="Images/TreeNode.GIF" WIDTH=250
+         HEIGHT=128 X-SAS-UseImageWidth X-SAS-UseImageHeight
+         ALIGN=bottom>
+      </TD></TR>
+</TABLE></P>
+
+<P>&nbsp;</P>
+
+<P><A NAME="NodeColor"></A></P>
+
+<P><TABLE BORDER=1 CELLSPACING=0 CELLPADDING=6 WIDTH="100%">
+   <TR>
+      <TD VALIGN=top COLSPAN=3>
+         <P><FONT SIZE=5>NodeColor(N,Out C,G)</FONT>
+      </TD><TD>
+         <P><DIV ALIGN=right></P>
+         
+         <P><FONT SIZE=4>Declare the filling color C of the node with
+         ID equal to N in the graph/forest G</FONT></P>
+         
+         <P></DIV>
+      </TD></TR>
+   <TR>
+      <TD VALIGN=top>
+         <P><DIV ALIGN=right></P>
+         
+         <P><FONT COLOR="#AF0000">Description:</FONT></P>
+         
+         <P></DIV>
+      </TD><TD COLSPAN=3>
+         <P>the visualization system repeatedly calls this predicate
+         for each graph/forest G and for each node N in it to gather
+         the filling color of the node.
+      </TD></TR>
+   <TR>
+      <TD VALIGN=top>
+         <P><DIV ALIGN=right></P>
+         
+         <P><FONT COLOR="#AF0000">Default:</FONT></P>
+         
+         <P></DIV>
+      </TD><TD COLSPAN=3>
+         <P>if <TT>NodeColor</TT> is not declared or is false for a
+         given node, the default color is
+         <TT><A HREF="AppendixB.html#Color">No_Color</A>.</TT> In
+         this case the node has its standard appearance, as shown in
+         the following example for the node with ID 9.
+      </TD></TR>
+   <TR>
+      <TD>
+         <P><DIV ALIGN=right></P>
+         
+         <P><FONT COLOR="#AF0000">Predicate type:</FONT></P>
+         
+         <P></DIV>
+      </TD><TD COLSPAN=3>
+         <P>standard single value
+      </TD></TR>
+   <TR>
+      <TD VALIGN=top ROWSPAN=3>
+         <P><DIV ALIGN=right></P>
+         
+         <P><FONT COLOR="#AF0000">Parameters:</FONT></P>
+         
+         <P></DIV>
+      </TD><TD>
+         <P>N
+      </TD><TD COLSPAN=2>
+         <P>ID of the node we are explicitly giving a fillling color
+      </TD></TR>
+   <TR><TD>
+         <P>C
+      </TD><TD VALIGN=top COLSPAN=2>
+         <P>filling <A HREF="AppendixB.html#Color">color</A> of the
+         node with ID equal to N in the graph/forest G
+      </TD></TR>
+   <TR><TD>
+         <P>G
+      </TD><TD COLSPAN=2>
+         <P>ID of the graph/forest that the node with ID equal to N
+         belongs to
+      </TD></TR>
+   <TR>
+      <TD VALIGN=top ROWSPAN=2>
+         <P><DIV ALIGN=right></P>
+         
+         <P><FONT COLOR="#AF0000">Example:</FONT></P>
+         
+         <P></DIV>
+      </TD><TD COLSPAN=3>
+         <P><TT>/** NodeColor(N,Out C,1) If N!=9 Assign C=N; **/</TT>
+         </P>
+         
+         <P><FONT SIZE=2>"Declare the filling color of nodes having
+         IDs other than 9 in the graph/forest 1 to be its ID
+         value."</FONT></P>
+         
+         <P><FONT SIZE=2>See the table of
+         </FONT><FONT SIZE=2><A HREF="AppendixB.html#Color">colors</A></FONT><FONT SIZE=2>
+         for further details about the colors' numeric
+         constants.</FONT>
+      </TD></TR>
+   <TR><TD COLSPAN=2>
+         <P><FONT SIZE=2>If the code of this example is added to that
+         of the
+         </FONT><TT><FONT SIZE=2><A HREF="#Rectangle">Graph</A></FONT><FONT SIZE=2>
+         </FONT></TT><FONT SIZE=2>and</FONT><TT><FONT SIZE=2>
+         </FONT><FONT SIZE=2><A HREF="#Node">Node</A></FONT></TT><FONT SIZE=2>
+         standard predicates, the following result would be obtained
+         (note node with ID 9 has its standard appearance, since its
+         color has not been declared:)</FONT>
+      </TD><TD>
+         <P ALIGN=CENTER><IMG SRC="Images/NodeColor.GIF" WIDTH=217
+         HEIGHT=164 X-SAS-UseImageWidth X-SAS-UseImageHeight
+         ALIGN=bottom>
+      </TD></TR>
+</TABLE></P>
+
+<P>&nbsp;</P>
+
+<P><A NAME="NodeFrame"></A></P>
+
+<P><TABLE BORDER=1 CELLSPACING=0 CELLPADDING=6 WIDTH="100%">
+   <TR>
+      <TD VALIGN=top COLSPAN=3>
+         <P><FONT SIZE=5>NodeFrame(N,Out C,Out T,G)</FONT>
+      </TD><TD>
+         <P><DIV ALIGN=right></P>
+         
+         <P><FONT SIZE=4>Declare a frame around the node with ID
+         equal to N in the graph/forest G</FONT></P>
+         
+         <P></DIV>
+      </TD></TR>
+   <TR>
+      <TD VALIGN=top>
+         <P><DIV ALIGN=right></P>
+         
+         <P><FONT COLOR="#AF0000">Description:</FONT></P>
+         
+         <P></DIV>
+      </TD><TD COLSPAN=3>
+         <P>the visualization system repeatedly calls this predicate
+         for each graph/forest G and for each node N in it to gather
+         color and thickness of the frame around the node .
+      </TD></TR>
+   <TR>
+      <TD VALIGN=top>
+         <P><DIV ALIGN=right></P>
+         
+         <P><FONT COLOR="#AF0000">Default:</FONT></P>
+         
+         <P></DIV>
+      </TD><TD COLSPAN=3>
+         <P>if <TT>NodeFrame</TT> is not declared, by default nodes
+         have no frame;</P>
+         
+         <P>if <TT>NodeFrame</TT> is false for a given node N, that
+         node has no frame.
+      </TD></TR>
+   <TR>
+      <TD>
+         <P><DIV ALIGN=right></P>
+         
+         <P><FONT COLOR="#AF0000">Predicate type:</FONT></P>
+         
+         <P></DIV>
+      </TD><TD COLSPAN=3>
+         <P>standard single value
+      </TD></TR>
+   <TR>
+      <TD VALIGN=top ROWSPAN=4>
+         <P><DIV ALIGN=right></P>
+         
+         <P><FONT COLOR="#AF0000">Parameters:</FONT></P>
+         
+         <P></DIV>
+      </TD><TD>
+         <P>N
+      </TD><TD COLSPAN=2>
+         <P>ID of the node we are surrounding with a frame
+      </TD></TR>
+   <TR><TD>
+         <P>C
+      </TD><TD VALIGN=top COLSPAN=2>
+         <P><A HREF="AppendixB.html#Color">color</A> of the frame
+         that surrounds the node with ID equal to N in the
+         graph/forest G
+      </TD></TR>
+   <TR><TD>
+         <P>T
+      </TD><TD COLSPAN=2>
+         <P><A HREF="AppendixB.html#Thickness">thickness</A> (in
+         pixels) of the frame that surrounds the node with ID equal
+         to N in the graph/forest G
+      </TD></TR>
+   <TR><TD>
+         <P>G
+      </TD><TD COLSPAN=2>
+         <P>ID of the graph/forest that the node with ID equal to N
+         belongs to
+      </TD></TR>
+   <TR>
+      <TD VALIGN=top ROWSPAN=2>
+         <P><DIV ALIGN=right></P>
+         
+         <P><FONT COLOR="#AF0000">Example:</FONT></P>
+         
+         <P></DIV>
+      </TD><TD COLSPAN=3>
+         <P><TT>/**</TT></P>
+         
+         <BLOCKQUOTE><P><TT>NodeFrame(N,Out C,Out T,1)</TT></P>
+         
+         <BLOCKQUOTE><P><TT>Assign C,T In {</TT></P>
+         
+         <BLOCKQUOTE><P><TT>switch(N){</TT></P>
+         
+         <BLOCKQUOTE><P><TT>case 3: C=DarkMagenta; T=2; break;</TT>
+         </P>
+         
+         <P><TT>case 5: C=LightGreen; T=5; break;</TT></P>
+         
+         <P><TT>case 7: C=Orange; T=4; break;</TT></P>
+         
+         <P><TT>case 9: C=Cyan; T=3; break;</TT></P></BLOCKQUOTE>
+         
+         <P><TT>}</TT></P></BLOCKQUOTE>
+         
+         <P><TT>};</TT></P></BLOCKQUOTE></BLOCKQUOTE>
+         
+         <P><TT>**/</TT></P>
+         
+         <P><FONT SIZE=2>"Declare the frames around nodes of the
+         graph/forest 1; for example the node with ID 3 has a
+         DarkMagenta coloured 2 pixels thick frame."</FONT></P>
+         
+         <P><FONT SIZE=2>See the table of colors and thickness for
+         further details.</FONT>
+      </TD></TR>
+   <TR><TD COLSPAN=2>
+         <P><FONT SIZE=2>If the code of this example is added to that
+         of the
+         </FONT><TT><FONT SIZE=2><A HREF="#Rectangle">Graph</A></FONT></TT><FONT SIZE=2>
+         and</FONT><TT><FONT SIZE=2>
+         </FONT><FONT SIZE=2><A HREF="#Node">Node</A></FONT></TT><FONT SIZE=2>
+         standard predicates, the following result would be obtained
+         :</FONT>
+      </TD><TD>
+         <P ALIGN=CENTER><IMG SRC="Images/NodeFrame.GIF" WIDTH=221
+         HEIGHT=163 X-SAS-UseImageWidth X-SAS-UseImageHeight
+         ALIGN=bottom>
+      </TD></TR>
+</TABLE></P>
+
+<P>&nbsp;</P>
+
+<P><A NAME="NodeLabel"></A></P>
+
+<P><TABLE BORDER=1 CELLSPACING=0 CELLPADDING=6 WIDTH="100%">
+   <TR>
+      <TD VALIGN=top COLSPAN=3>
+         <P><FONT SIZE=5>NodeLabel(N,Out T,Out L,G)</FONT>
+      </TD><TD>
+         <P><DIV ALIGN=right></P>
+         
+         <P><FONT SIZE=4>Declare the label of the node with ID equal
+         to N in the graph/forest G</FONT></P>
+         
+         <P></DIV>
+      </TD></TR>
+   <TR>
+      <TD VALIGN=top>
+         <P><DIV ALIGN=right></P>
+         
+         <P><FONT COLOR="#AF0000">Description:</FONT></P>
+         
+         <P></DIV>
+      </TD><TD COLSPAN=3>
+         <P>the visualization system repeatedly calls this predicate
+         for each graph/forest G and for each node N in it to gather
+         the type T and the text L of the label of that node.</P>
+         
+         <P>Note: the visualization system shows the label of nodes
+         under them.
+      </TD></TR>
+   <TR>
+      <TD VALIGN=top>
+         <P><DIV ALIGN=right></P>
+         
+         <P><FONT COLOR="#AF0000">Default:</FONT></P>
+         
+         <P></DIV>
+      </TD><TD COLSPAN=3>
+         <P>if <TT>NodeLabel</TT> is not declared or is false for a
+         given node N, the visualization system considers its type to
+         be <TT><A HREF="AppendixB.html#Type">Void</A></TT>: in this
+         way no label will be shown.
+      </TD></TR>
+   <TR>
+      <TD>
+         <P><DIV ALIGN=right></P>
+         
+         <P><FONT COLOR="#AF0000">Predicate type:</FONT></P>
+         
+         <P></DIV>
+      </TD><TD COLSPAN=3>
+         <P>standard single value
+      </TD></TR>
+   <TR>
+      <TD VALIGN=top ROWSPAN=8>
+         <P><DIV ALIGN=right></P>
+         
+         <P><FONT COLOR="#AF0000">Parameters:</FONT></P>
+         
+         <P></DIV>
+      </TD><TD>
+         <P>N
+      </TD><TD COLSPAN=2>
+         <P>ID of the node we are explicitily giving a label
+      </TD></TR>
+   <TR><TD>
+         <P>T
+      </TD><TD VALIGN=top COLSPAN=2>
+         <P>type of the label
+         (<TT><A HREF="AppendixB.html#Type">Void</A></TT>,
+         <TT><A HREF="AppendixB.html#Type">Int</A></TT>,
+         <TT><A HREF="AppendixB.html#Type">Char</A></TT> or
+         <TT><A HREF="AppendixB.html#Type">String</A></TT>)
+      </TD></TR>
+   <TR><TD ROWSPAN=5>
+         <P>L
+      </TD><TD COLSPAN=2>
+         <P>text to be shown under the node N, according to the value
+         of T:
+      </TD></TR>
+   <TR><TD>
+         <P>T=<TT><A HREF="AppendixB.html#Type">Void</A></TT>
+      </TD><TD>
+         <P>L is ignored: the label of node N is empty
+      </TD></TR>
+   <TR><TD>
+         <P>T=<TT><A HREF="AppendixB.html#Type">Int</A></TT>
+      </TD><TD>
+         <P>the label of node N is L as integer value
+      </TD></TR>
+   <TR><TD>
+         <P>T=<TT><A HREF="AppendixB.html#Type">Char</A></TT>
+      </TD><TD>
+         <P>the label of node N is the character value obtained from
+         the least significant byte of L
+      </TD></TR>
+   <TR><TD>
+         <P>T=<TT><A HREF="AppendixB.html#Type">String</A></TT>
+      </TD><TD>
+         <P>the label of node N is the C string pointed to by L. If
+         L=0 then the "<TT>Nil</TT>" string is shown.
+      </TD></TR>
+   <TR><TD>
+         <P>G
+      </TD><TD COLSPAN=2>
+         <P>ID of the graph/forest that the node with ID equal to N
+         belongs to
+      </TD></TR>
+   <TR>
+      <TD>
+         <P><DIV ALIGN=right></P>
+         
+         <P><FONT COLOR="#AF0000">Attributes:</FONT></P>
+         
+         <P></DIV>
+      </TD><TD COLSPAN=3>
+         <P><TT><A HREF="#NodeLabelColor">NodeLabelColor</A></TT>
+      </TD></TR>
+   <TR>
+      <TD VALIGN=top ROWSPAN=2>
+         <P><DIV ALIGN=right></P>
+         
+         <P><FONT COLOR="#AF0000">Example:</FONT></P>
+         
+         <P></DIV>
+      </TD><TD COLSPAN=3>
+         <P><TT>/**</TT></P>
+         
+         <BLOCKQUOTE><P><TT><A HREF="#NodeName">NodeName</A>(N,Out
+         Void,Out 0,1);</TT></P>
+         
+         <P><TT>NodeLabel(N,Out String,Out S,1)</TT></P>
+         
+         <BLOCKQUOTE><P><TT>If N&lt;=3 || N&gt;=7 Assign S="Hydrogen"
+         Moreover</TT></P>
+         
+         <P><TT>If N==4 || N==6 Assign S="Carbon" Moreover</TT></P>
+         
+         <P><TT>If N==5 Assign S="Oxygen";</TT></P></BLOCKQUOTE>
+         
+         <P><TT><A HREF="#NodeColor">NodeColor</A>(N,Out Black,1) If
+         N==4 || N==6;</TT></P>
+         
+         <P><TT><A HREF="#NodeColor">NodeColor</A>(N,Out Red,1) If
+         N==5;</TT></P></BLOCKQUOTE>
+         
+         <P><TT>**/</TT></P>
+         
+         <P><FONT SIZE=2>" Declare that no node have a name. Then
+         declare that nodes have a label of type String and text
+         containing the name of an element (hydrogen, carbon or
+         oxygen.) At last declare that nodes showing different
+         elements are assigned with different colors."</FONT>
+      </TD></TR>
+   <TR><TD COLSPAN=2>
+         <P><FONT SIZE=2>If this code is added to the code written in
+         the
+         </FONT><TT><FONT SIZE=2><A HREF="#NodePos">NodePos</A></FONT></TT><FONT SIZE=2>
+         standard predicate example, the following result would be
+         obtained (a molecule of dimethylic ether:)</FONT>
+      </TD><TD>
+         <P ALIGN=CENTER><IMG SRC="Images/NodeLabel.GIF" WIDTH=287
+         HEIGHT=165 X-SAS-UseImageWidth X-SAS-UseImageHeight
+         ALIGN=bottom>
+      </TD></TR>
+</TABLE></P>
+
+<P>&nbsp;</P>
+
+<P><A NAME="NodeLabelColor"></A></P>
+
+<P><TABLE BORDER=1 CELLSPACING=0 CELLPADDING=6 WIDTH="100%">
+   <TR>
+      <TD VALIGN=top COLSPAN=3>
+         <P><FONT SIZE=5>NodeLabelColor(N,Out C,G)</FONT>
+      </TD><TD>
+         <P><DIV ALIGN=right></P>
+         
+         <P><FONT SIZE=4>Declare the color of the label of the node
+         with ID equal to N in the graph/forest G</FONT></P>
+         
+         <P></DIV>
+      </TD></TR>
+   <TR>
+      <TD VALIGN=top>
+         <P><DIV ALIGN=right></P>
+         
+         <P><FONT COLOR="#AF0000">Description:</FONT></P>
+         
+         <P></DIV>
+      </TD><TD COLSPAN=3>
+         <P>the visualization system repeatedly calls this predicate
+         for each graph/forest G and for each node N in it to gather
+         the color of its label (if any.)
+      </TD></TR>
+   <TR>
+      <TD VALIGN=top>
+         <P><DIV ALIGN=right></P>
+         
+         <P><FONT COLOR="#AF0000">Default:</FONT></P>
+         
+         <P></DIV>
+      </TD><TD COLSPAN=3>
+         <P>if <TT>NodeLabelColor</TT> is not declared or is false
+         for a given node N, the visualization system considers its
+         color to be <A HREF="AppendixB.html#Color">Grey</A>.
+      </TD></TR>
+   <TR>
+      <TD>
+         <P><DIV ALIGN=right></P>
+         
+         <P><FONT COLOR="#AF0000">Predicate type:</FONT></P>
+         
+         <P></DIV>
+      </TD><TD COLSPAN=3>
+         <P>standard single value
+      </TD></TR>
+   <TR>
+      <TD VALIGN=top ROWSPAN=3>
+         <P><DIV ALIGN=right></P>
+         
+         <P><FONT COLOR="#AF0000">Parameters:</FONT></P>
+         
+         <P></DIV>
+      </TD><TD>
+         <P>N
+      </TD><TD COLSPAN=2>
+         <P>ID of the node we are explicitily giving a label
+      </TD></TR>
+   <TR><TD>
+         <P>C
+      </TD><TD COLSPAN=2>
+         <P><A HREF="AppendixB.html#Color">color</A> of the label (if
+         any) of node with ID equal to N in G
+      </TD></TR>
+   <TR><TD>
+         <P>G
+      </TD><TD COLSPAN=2>
+         <P>ID of the graph/forest that the node with ID equal to N
+         belongs to
+      </TD></TR>
+   <TR>
+      <TD VALIGN=top ROWSPAN=2>
+         <P><DIV ALIGN=right></P>
+         
+         <P><FONT COLOR="#AF0000">Example:</FONT></P>
+         
+         <P></DIV>
+      </TD><TD COLSPAN=3>
+         <P><TT>/** NodeLabelColor(N,Out C,1) For C:
+         <A HREF="#NodeColor">NodeColor</A>(N,C,1); **/</TT></P>
+         
+         <P><FONT SIZE=2>" Declare that the label of a node has the
+         same color of the node itself."</FONT>
+      </TD></TR>
+   <TR><TD COLSPAN=2>
+         <P><FONT SIZE=2>If this code is added to the code written in
+         the
+         </FONT><TT><FONT SIZE=2><A HREF="#NodePos">NodePos</A></FONT></TT><FONT SIZE=2>
+         and
+         </FONT><TT><FONT SIZE=2><A HREF="#NodeLabel">NodeLabel</A></FONT></TT><FONT SIZE=2>
+         standard predicates examples, the following result would be
+         obtained:</FONT>
+      </TD><TD>
+         <P ALIGN=CENTER><IMG SRC="Images/NodeLabelColor.GIF"
+         WIDTH=285 HEIGHT=168 X-SAS-UseImageWidth
+         X-SAS-UseImageHeight ALIGN=bottom>
+      </TD></TR>
+</TABLE></P>
+
+<P>&nbsp;</P>
+
+<P><A NAME="NodeName"></A></P>
+
+<P><TABLE BORDER=1 CELLSPACING=0 CELLPADDING=6 WIDTH="100%">
+   <TR>
+      <TD VALIGN=top COLSPAN=3>
+         <P><FONT SIZE=5>NodeName(N,Out T,Out S,G)</FONT>
+      </TD><TD>
+         <P><DIV ALIGN=right></P>
+         
+         <P><FONT SIZE=4>Declare the name of the node with ID equal
+         to N in the graph/forest G</FONT></P>
+         
+         <P></DIV>
+      </TD></TR>
+   <TR>
+      <TD VALIGN=top>
+         <P><DIV ALIGN=right></P>
+         
+         <P><FONT COLOR="#AF0000">Description:</FONT></P>
+         
+         <P></DIV>
+      </TD><TD COLSPAN=3>
+         <P>the visualization system repeatedly calls this predicate
+         for each graph/forest G and for each node N in it to gather
+         the type T and the text S of the name of that node.</P>
+         
+         <P>Note: the visualization system shows the name of nodes on
+         them.
+      </TD></TR>
+   <TR>
+      <TD VALIGN=top>
+         <P><DIV ALIGN=right></P>
+         
+         <P><FONT COLOR="#AF0000">Default:</FONT></P>
+         
+         <P></DIV>
+      </TD><TD COLSPAN=3>
+         <P>if <TT>NodeName</TT> is not declared or is false for a
+         given node N, the visualization system considers the ID of a
+         node to be its name.
+      </TD></TR>
+   <TR>
+      <TD>
+         <P><DIV ALIGN=right></P>
+         
+         <P><FONT COLOR="#AF0000">Predicate type:</FONT></P>
+         
+         <P></DIV>
+      </TD><TD COLSPAN=3>
+         <P>standard single value
+      </TD></TR>
+   <TR>
+      <TD VALIGN=top ROWSPAN=8>
+         <P><DIV ALIGN=right></P>
+         
+         <P><FONT COLOR="#AF0000">Parameters:</FONT></P>
+         
+         <P></DIV>
+      </TD><TD>
+         <P>N
+      </TD><TD COLSPAN=2>
+         <P>ID of the node we are explicitily giving a name
+      </TD></TR>
+   <TR><TD>
+         <P>T
+      </TD><TD VALIGN=top COLSPAN=2>
+         <P>type of the text S
+         (<TT><A HREF="AppendixB.html#Type">Void</A></TT>,
+         <TT><A HREF="AppendixB.html#Type">Int</A></TT>,
+         <TT><A HREF="AppendixB.html#Type">Char</A></TT> or
+         <TT><A HREF="AppendixB.html#Type">String</A></TT>)
+      </TD></TR>
+   <TR><TD ROWSPAN=5>
+         <P>S
+      </TD><TD COLSPAN=2>
+         <P>text to be shown on the node N, according to the value of
+         T:
+      </TD></TR>
+   <TR><TD>
+         <P>T=<TT><A HREF="AppendixB.html#Type">Void</A></TT>
+      </TD><TD>
+         <P>S is ignored: the name of node N is empty
+      </TD></TR>
+   <TR><TD>
+         <P>T=<TT><A HREF="AppendixB.html#Type">Int</A></TT>
+      </TD><TD>
+         <P>the name of node N is S as integer value
+      </TD></TR>
+   <TR><TD>
+         <P>T=<TT><A HREF="AppendixB.html#Type">Char</A></TT>
+      </TD><TD>
+         <P>the name of node N is the character value obtained from
+         the least significant byte of S
+      </TD></TR>
+   <TR><TD>
+         <P>T=<TT><A HREF="AppendixB.html#Type">String</A></TT>
+      </TD><TD>
+         <P>the name of node N is the C string pointed to by S. If
+         S=0 then the "<TT>Nil</TT>" string is shown.
+      </TD></TR>
+   <TR><TD>
+         <P>G
+      </TD><TD COLSPAN=2>
+         <P>ID of the graph/forest that the node with ID equal to N
+         belongs to
+      </TD></TR>
+   <TR>
+      <TD VALIGN=top ROWSPAN=2>
+         <P><DIV ALIGN=right></P>
+         
+         <P><FONT COLOR="#AF0000">Example:</FONT></P>
+         
+         <P></DIV>
+      </TD><TD COLSPAN=3>
+         <P><TT>/**</TT></P>
+         
+         <BLOCKQUOTE><P><TT><A HREF="#Graph">Graph</A>(Out 1);</TT>
+         </P>
+         
+         <P><TT><A HREF="#Node">Node</A>(Out N,1) For N:
+         <A HREF="AppendixA5.html#InRange">InRange</A>(N,0,6);</TT>
+         </P>
+         
+         <P><TT><A HREF="#NodeShape">NodeShape</A>(N,Out
+         Square,1);</TT></P>
+         
+         <P><TT>NodeName(N,Out T,Out S,1)</TT></P>
+         
+         <BLOCKQUOTE><P><TT>If N%4==1 Assign T=Void Moreover</TT>
+         </P>
+         
+         <P><TT>If N%4==2 Assign T=Char S='&#176;' Moreover</TT></P>
+         
+         <P><TT>If N%4==3 Assign T=String S="Hi" ;</TT></P>
+         </BLOCKQUOTE>
+         
+         <P><TT><A HREF="#Arc">Arc</A>(X,Y,1) If X%4==Y%4;</TT></P>
+         </BLOCKQUOTE>
+         
+         <P><TT>**/</TT></P>
+         
+         <P><FONT SIZE=2>"Declare a graph with ID 1. This graph has 7
+         nodes whose IDs are the numbers from 0 to 6. Declare all
+         nodes in the graph 1 to be squared. Then declare their
+         names: nodes such that ID-1 is multiple of 4 have no name;
+         nodes such that ID-2 is multiple of 4 have the name "&#176;"
+         of type Char; nodes whose ID-3 is multiple of 4 have the
+         name "Hi" of type String; at last, all the other ones (their
+         IDs are multiple of 4) have the ID itself as name. Note the
+         last case doesn't need to be explicitily written: it depends
+         on the default value for NodeName. At last, declare arcs
+         between nodes with labels of the same type."</FONT>
+      </TD></TR>
+   <TR><TD COLSPAN=2>
+         <P><FONT SIZE=2>This example yields the following
+         result:</FONT>
+      </TD><TD>
+         <P ALIGN=CENTER><IMG SRC="Images/NodeName.GIF" WIDTH=232
+         HEIGHT=218 X-SAS-UseImageWidth X-SAS-UseImageHeight
+         ALIGN=bottom>
+      </TD></TR>
+</TABLE></P>
+
+<P>&nbsp;</P>
+
+<P><A NAME="NodePos"></A></P>
+
+<P><TABLE BORDER=1 CELLSPACING=0 CELLPADDING=6 WIDTH="100%">
+   <TR>
+      <TD VALIGN=top COLSPAN=3>
+         <P><FONT SIZE=5>NodePos(N,Out X,Out Y,G)</FONT>
+      </TD><TD>
+         <P><DIV ALIGN=right></P>
+         
+         <P><FONT SIZE=4>Declare the position of the node with ID
+         equal to N in the graph/forest G</FONT></P>
+         
+         <P></DIV>
+      </TD></TR>
+   <TR>
+      <TD VALIGN=top>
+         <P><DIV ALIGN=right></P>
+         
+         <P><FONT COLOR="#AF0000">Description:</FONT></P>
+         
+         <P></DIV>
+      </TD><TD COLSPAN=3>
+         <P>the visualization system repeatedly calls this predicate
+         for each graph/forest G and for each node N in it to gather
+         its position (X and Y coordinates.)</P>
+         
+         <P>Note: we recall that X grows from left to right and Y
+         from top to bottom and that they are relative to the
+         left-top corner of the view automatically assigned to G (see
+         <TT><A HREF="#Graph">Graph</A></TT> or
+         <A HREF="#Tree">Tree</A>).
+      </TD></TR>
+   <TR>
+      <TD VALIGN=top>
+         <P><DIV ALIGN=right></P>
+         
+         <P><FONT COLOR="#AF0000">Default:</FONT></P>
+         
+         <P></DIV>
+      </TD><TD COLSPAN=3>
+         <P>if <TT>NodePos</TT> is not declared, the visualization
+         system uses its standard drawing techniques as described in
+         the <TT><A HREF="#Node">Node</A></TT> standard predicate. If
+         <TT>NodePos</TT> is declared but is false for a given node
+         N, it will be automatically drawn in the position (0,0).
+      </TD></TR>
+   <TR>
+      <TD>
+         <P><DIV ALIGN=right></P>
+         
+         <P><FONT COLOR="#AF0000">Predicate type:</FONT></P>
+         
+         <P></DIV>
+      </TD><TD COLSPAN=3>
+         <P>standard single value
+      </TD></TR>
+   <TR>
+      <TD VALIGN=top ROWSPAN=4>
+         <P><DIV ALIGN=right></P>
+         
+         <P><FONT COLOR="#AF0000">Parameters:</FONT></P>
+         
+         <P></DIV>
+      </TD><TD>
+         <P>N
+      </TD><TD COLSPAN=2>
+         <P>ID of the node we are explicitily giving a position
+      </TD></TR>
+   <TR><TD>
+         <P>X
+      </TD><TD VALIGN=top COLSPAN=2>
+         <P>X coordinate of node with ID equal to N in the
+         graph/forest G
+      </TD></TR>
+   <TR><TD>
+         <P>Y
+      </TD><TD COLSPAN=2>
+         <P>Y coordinate of node with ID equal to N in the
+         graph/forest G
+      </TD></TR>
+   <TR><TD>
+         <P>G
+      </TD><TD COLSPAN=2>
+         <P>ID of the graph/forest that the node with ID equal to N
+         belongs to
+      </TD></TR>
+   <TR>
+      <TD VALIGN=top ROWSPAN=2>
+         <P><DIV ALIGN=right></P>
+         
+         <P><FONT COLOR="#AF0000">Example:</FONT></P>
+         
+         <P></DIV>
+      </TD><TD COLSPAN=3>
+         <P><TT>/**</TT></P>
+         
+         <BLOCKQUOTE><P><TT><A HREF="#Graph">Graph</A>(Out 1);</TT>
+         </P>
+         
+         <P><TT><A HREF="#Node">Node</A>(Out N,1) For N:
+         <A HREF="AppendixA5.html#InRange">InRange</A>(N,1,9);</TT>
+         </P>
+         
+         <P><TT><A HREF="#Arc">Arc</A>(X,Y,1) If (X==5 &amp;&amp;
+         (Y==4 || Y==6)) || (X==4 &amp;&amp; Y&lt;=3) || (X==6
+         &amp;&amp; Y&gt;=7);</TT></P>
+         
+         <P><TT>NodePos(N,Out X,Out Y,1)</TT></P>
+         
+         <BLOCKQUOTE><P><TT>If N&gt;=3 &amp;&amp; N&lt;=7 Assign Y=55
+         X=30+42*(N-3) Moreover</TT></P>
+         
+         <P><TT>If N&lt;=2 Assign X=72 Y=(N==1) ? 15 : 95
+         Moreover</TT></P>
+         
+         <P><TT>If N&gt;=8 Assign X=156 Y=(N==8) ? 15 : 95;</TT></P>
+         </BLOCKQUOTE></BLOCKQUOTE>
+         
+         <P><TT>**/</TT></P>
+         
+         <P><FONT SIZE=2>"Declare a graph with ID 1. It has 9 nodes
+         whose IDs are the numbers from 1 to 9. Then declare the
+         following arcs: (5,4), (5,6), (4,1), (4,2), (4,3), (6,7),
+         (6,8) and (6,9). At last, declare explicitily the positions
+         of all nodes according to their ID values."</FONT>
+      </TD></TR>
+   <TR><TD COLSPAN=2>
+         <P><FONT SIZE=2>This example yields the following
+         result:</FONT>
+      </TD><TD>
+         <P ALIGN=CENTER><IMG SRC="Images/NodePos.GIF" WIDTH=259
+         HEIGHT=164 X-SAS-UseImageWidth X-SAS-UseImageHeight
+         ALIGN=bottom>
+      </TD></TR>
+</TABLE></P>
+
+<P>&nbsp;</P>
+
+<P><A NAME="NodeShape"></A></P>
+
+<P><TABLE BORDER=1 CELLSPACING=0 CELLPADDING=6 WIDTH="100%">
+   <TR>
+      <TD VALIGN=top COLSPAN=3>
+         <P><FONT SIZE=5>NodeShape(N,Out S,G)</FONT>
+      </TD><TD>
+         <P><DIV ALIGN=right></P>
+         
+         <P><FONT SIZE=4>Declare the shape S of the node with ID
+         equal to N in the graph/forest G</FONT></P>
+         
+         <P></DIV>
+      </TD></TR>
+   <TR>
+      <TD VALIGN=top>
+         <P><DIV ALIGN=right></P>
+         
+         <P><FONT COLOR="#AF0000">Description:</FONT></P>
+         
+         <P></DIV>
+      </TD><TD COLSPAN=3>
+         <P>the visualization system repeatedly calls this predicate
+         for each graph/forest G and for each node N in it to gather
+         the shape of the node.
+      </TD></TR>
+   <TR>
+      <TD VALIGN=top>
+         <P><DIV ALIGN=right></P>
+         
+         <P><FONT COLOR="#AF0000">Default:</FONT></P>
+         
+         <P></DIV>
+      </TD><TD COLSPAN=3>
+         <P>if <TT>NodeShape</TT> is not declared or is false for a
+         given node, the default shape is <TT>Round </TT>(see nodes
+         with IDs 5 and 9 in the following example.)
+      </TD></TR>
+   <TR>
+      <TD>
+         <P><DIV ALIGN=right></P>
+         
+         <P><FONT COLOR="#AF0000">Predicate type:</FONT></P>
+         
+         <P></DIV>
+      </TD><TD COLSPAN=3>
+         <P>standard single value
+      </TD></TR>
+   <TR>
+      <TD VALIGN=top ROWSPAN=3>
+         <P><DIV ALIGN=right></P>
+         
+         <P><FONT COLOR="#AF0000">Parameters:</FONT></P>
+         
+         <P></DIV>
+      </TD><TD>
+         <P>N
+      </TD><TD COLSPAN=2>
+         <P>ID of the node we are explicitly giving a shape
+      </TD></TR>
+   <TR><TD>
+         <P>S
+      </TD><TD VALIGN=top COLSPAN=2>
+         <P><A HREF="AppendixB.html#Shape">shape</A> of the node with
+         ID equal to N in the graph/forest G
+      </TD></TR>
+   <TR><TD>
+         <P>G
+      </TD><TD COLSPAN=2>
+         <P>ID of the graph/forest that the node with ID equal to N
+         belongs to
+      </TD></TR>
+   <TR>
+      <TD VALIGN=top ROWSPAN=2>
+         <P><DIV ALIGN=right></P>
+         
+         <P><FONT COLOR="#AF0000">Example:</FONT></P>
+         
+         <P></DIV>
+      </TD><TD COLSPAN=3>
+         <P><TT>/** NodeShape(N,Out Square,1) If N%4!=1; **/</TT>
+         </P>
+         
+         <P><FONT SIZE=2>"Declare the shape of nodes with ID N such
+         that N%4!=1 in the graph/forest 1 to be squared."</FONT>
+         </P>
+         
+         <P><FONT SIZE=2>See the table of shapes for further details
+         about the shapes' numeric constants.</FONT>
+      </TD></TR>
+   <TR><TD COLSPAN=2>
+         <P><FONT SIZE=2>If the code of this example is added to that
+         of the
+         </FONT><TT><FONT SIZE=2><A HREF="#Rectangle">Graph</A></FONT><FONT SIZE=2>
+         </FONT></TT><FONT SIZE=2>and</FONT><TT><FONT SIZE=2>
+         </FONT><FONT SIZE=2><A HREF="#Node">Node</A></FONT></TT><FONT SIZE=2>
+         standard predicates, the following result would be obtained
+         :</FONT>
+      </TD><TD>
+         <P ALIGN=CENTER><IMG SRC="Images/NodeShape.GIF" WIDTH=217
+         HEIGHT=167 X-SAS-UseImageWidth X-SAS-UseImageHeight
+         ALIGN=bottom>
+      </TD></TR>
+</TABLE></P>
+
+<P>&nbsp;</P>
+
+<P><A NAME="Arc"></A></P>
+
+<P><TABLE BORDER=1 CELLSPACING=0 CELLPADDING=6 WIDTH="100%">
+   <TR>
+      <TD VALIGN=top COLSPAN=3>
+         <P><FONT SIZE=5>Arc(X,Y,G)</FONT>
+      </TD><TD>
+         <P><DIV ALIGN=right></P>
+         
+         <P><FONT SIZE=4>Does the arc (X,Y) exist in the graph/forest
+         G ?</FONT></P>
+         
+         <P></DIV>
+      </TD></TR>
+   <TR>
+      <TD VALIGN=top>
+         <P><DIV ALIGN=right></P>
+         
+         <P><FONT COLOR="#AF0000">Description:</FONT></P>
+         
+         <P></DIV>
+      </TD><TD COLSPAN=3>
+         <P>the visualization system repeatedly calls this predicate
+         for each graph/forest G and for each couple of nodes (X,Y)
+         in it to decide if they are connected by an arc.</P>
+         
+         <P>Note: if G has been declared through the predicate
+         <TT><A HREF="#Tree">Tree</A></TT> but its arcs don't agree
+         with the definition of forest (e.g. there is a cycle), the
+         visualization will result G as a graph and an error message.
+         </P>
+         
+         <P>Note: if G is not directed,<FONT SIZE=4> </FONT>declaring
+         arc (X,Y) is the same as declaring arc (Y,X) and it's not
+         possible to suppose if the visualization system will ask
+         first about the presence of (X,Y) or (Y,X). Hence it may
+         happen that the user declares an arc but the reverse one
+         will be visualized. This produces the same effect if G is a
+         graph, but may imply a different visualization (from that
+         the user expects) if G is a tree. This is what happens for
+         arc (5,3) in the example below: when G is a tree, the
+         visualization system draws the arc (3,5). On the contrary,
+         when G is a directed tree, the visualization system draws
+         the arc (5,3) (see the difference between the second and the
+         third figure.)
+      </TD></TR>
+   <TR>
+      <TD>
+         <P><DIV ALIGN=right></P>
+         
+         <P><FONT COLOR="#AF0000">Predicate type:</FONT></P>
+         
+         <P></DIV>
+      </TD><TD COLSPAN=3>
+         <P>standard boolean
+      </TD></TR>
+   <TR>
+      <TD VALIGN=top ROWSPAN=3>
+         <P><DIV ALIGN=right></P>
+         
+         <P><FONT COLOR="#AF0000">Parameters:</FONT></P>
+         
+         <P></DIV>
+      </TD><TD>
+         <P>X
+      </TD><TD COLSPAN=2>
+         <P>ID of an extreme of the arc (start node if G is directed)
+      
+      </TD></TR>
+   <TR><TD>
+         <P>Y
+      </TD><TD VALIGN=top COLSPAN=2>
+         <P>ID of an extreme of the arc (end node if G is directed)
+      </TD></TR>
+   <TR><TD>
+         <P>G
+      </TD><TD COLSPAN=2>
+         <P>ID of the graph/forest that will contain the arc
+      </TD></TR>
+   <TR>
+      <TD>
+         <P><DIV ALIGN=right></P>
+         
+         <P><FONT COLOR="#AF0000">Attributes:</FONT></P>
+         
+         <P></DIV>
+      </TD><TD COLSPAN=3>
+         <P><TT><A HREF="#ArcColor">ArcColor</A></TT>,
+         <TT><A HREF="#ArcLabel">ArcLabel</A></TT>,
+         <TT><A HREF="#ArcLabelColor">ArcLabelColor</A></TT>,
+         <TT><A HREF="#ArcOffset">ArcOffset</A></TT>,
+         <TT><A HREF="#ArcStyle">ArcStyle</A> </TT>,
+         <TT><A HREF="#ArcThickness">ArcThickness</A></TT>
+      </TD></TR>
+   <TR>
+      <TD VALIGN=top ROWSPAN=4>
+         <P><DIV ALIGN=right></P>
+         
+         <P><FONT COLOR="#AF0000">Example:</FONT></P>
+         
+         <P></DIV>
+      </TD><TD COLSPAN=3>
+         <P><TT>/** Arc(X,Y,1) If (X==5 &amp;&amp; (Y==3 || Y==7)) ||
+         (X==3 &amp;&amp; Y==9); **/</TT></P>
+         
+         <P><FONT SIZE=2>"Declare the arcs (5,3), (5,7) and (3,9) in
+         the graph/forest 1."</FONT>
+      </TD></TR>
+   <TR><TD COLSPAN=2>
+         <P><FONT SIZE=2>If the code of this example is added to that
+         of the
+         </FONT><TT><FONT SIZE=2><A HREF="#Rectangle">Graph</A></FONT><FONT SIZE=2>
+         </FONT></TT><FONT SIZE=2>and</FONT><TT><FONT SIZE=2>
+         </FONT><FONT SIZE=2><A HREF="#Node">Node</A></FONT></TT><FONT SIZE=2>
+         standard predicates, the following result would be
+         obtained:</FONT>
+      </TD><TD>
+         <P ALIGN=CENTER><IMG SRC="Images/GraphArc.GIF" WIDTH=220
+         HEIGHT=165 X-SAS-UseImageWidth X-SAS-UseImageHeight
+         ALIGN=bottom>
+      </TD></TR>
+   <TR><TD COLSPAN=2>
+         <P><FONT SIZE=2>If the code of this example is added to that
+         of the
+         </FONT><TT><FONT SIZE=2><A HREF="#Rectangle">Tree</A></FONT></TT><FONT SIZE=2>
+         and</FONT><TT><FONT SIZE=2>
+         </FONT><FONT SIZE=2><A HREF="#Node">Node</A></FONT></TT><FONT SIZE=2>
+         standard predicates, the following result would be obtained
+         (note the root has been randomly chosen since the tree is
+         not directed:)</FONT>
+      </TD><TD>
+         <P ALIGN=CENTER><IMG SRC="Images/TreeArc.GIF" WIDTH=212
+         HEIGHT=168 X-SAS-UseImageWidth X-SAS-UseImageHeight
+         ALIGN=bottom>
+      </TD></TR>
+   <TR><TD COLSPAN=2>
+         <P><FONT SIZE=2>If the code of this example is added to that
+         of the
+         </FONT><TT><FONT SIZE=2><A HREF="#Rectangle">Tree</A></FONT></TT><FONT SIZE=2>,
+         </FONT><TT><FONT SIZE=2><A HREF="#Directed">Directed</A></FONT></TT><FONT SIZE=2>
+         and</FONT><TT><FONT SIZE=2>
+         </FONT><FONT SIZE=2><A HREF="#Node">Node</A></FONT></TT><FONT SIZE=2>
+         standard predicates, the following result would be obtained
+         (note the root has been chosen according to arcs'
+         declarations since the tree is directed:)</FONT>
+      </TD><TD>
+         <P ALIGN=CENTER><IMG SRC="Images/TreeDirected.GIF" WIDTH=212
+         HEIGHT=164 X-SAS-UseImageWidth X-SAS-UseImageHeight
+         ALIGN=bottom>
+      </TD></TR>
+</TABLE></P>
+
+<P>&nbsp;</P>
+
+<P><A NAME="ArcColor"></A></P>
+
+<P><TABLE BORDER=1 CELLSPACING=0 CELLPADDING=6 WIDTH="100%">
+   <TR>
+      <TD VALIGN=top COLSPAN=3>
+         <P><FONT SIZE=5>ArcColor(X,Y,Out C,G)</FONT>
+      </TD><TD>
+         <P><DIV ALIGN=right></P>
+         
+         <P><FONT SIZE=4>Declare the color C of arc (X,Y) in the
+         graph/forest G</FONT></P>
+         
+         <P></DIV>
+      </TD></TR>
+   <TR>
+      <TD VALIGN=top>
+         <P><DIV ALIGN=right></P>
+         
+         <P><FONT COLOR="#AF0000">Description:</FONT></P>
+         
+         <P></DIV>
+      </TD><TD COLSPAN=3>
+         <P>the visualization system repeatedly calls this predicate
+         for each graph/forest G and for each arc (X,Y) in it to
+         gather the color of that arc.
+      </TD></TR>
+   <TR>
+      <TD VALIGN=top>
+         <P><DIV ALIGN=right></P>
+         
+         <P><FONT COLOR="#AF0000">Default:</FONT></P>
+         
+         <P></DIV>
+      </TD><TD COLSPAN=3>
+         <P>if <TT>ArcColor</TT> is not declared or is false for a
+         given arc (X,Y), the default color is
+         <TT><A HREF="AppendixB.html#Color">Red</A>.</TT>
+      </TD></TR>
+   <TR>
+      <TD>
+         <P><DIV ALIGN=right></P>
+         
+         <P><FONT COLOR="#AF0000">Predicate type:</FONT></P>
+         
+         <P></DIV>
+      </TD><TD COLSPAN=3>
+         <P>standard single value
+      </TD></TR>
+   <TR>
+      <TD VALIGN=top ROWSPAN=4>
+         <P><DIV ALIGN=right></P>
+         
+         <P><FONT COLOR="#AF0000">Parameters:</FONT></P>
+         
+         <P></DIV>
+      </TD><TD>
+         <P>X
+      </TD><TD COLSPAN=2>
+         <P>ID of the start node of the arc we are coloring
+      </TD></TR>
+   <TR><TD>
+         <P>Y
+      </TD><TD COLSPAN=2>
+         <P>ID of the end node of the arc we are coloring
+      </TD></TR>
+   <TR><TD>
+         <P>C
+      </TD><TD VALIGN=top COLSPAN=2>
+         <P><A HREF="AppendixB.html#Color">color</A> of the arc (X,Y)
+         in the graph/forest G
+      </TD></TR>
+   <TR><TD>
+         <P>G
+      </TD><TD COLSPAN=2>
+         <P>ID of the graph/forest that the arc (X,Y) belongs to
+      </TD></TR>
+   <TR>
+      <TD VALIGN=top ROWSPAN=2>
+         <P><DIV ALIGN=right></P>
+         
+         <P><FONT COLOR="#AF0000">Example:</FONT></P>
+         
+         <P></DIV>
+      </TD><TD COLSPAN=3>
+         <P><TT>/**</TT></P>
+         
+         <BLOCKQUOTE><P><TT><A HREF="#Graph">Graph</A>(Out 20);</TT>
+         </P>
+         
+         <P><TT><A HREF="#Node">Node</A>(Out N,20) For N:
+         <A HREF="AppendixA5.html#InRange">InRange</A>(N,1,5);</TT>
+         </P>
+         
+         <P><TT><A HREF="#Arc">Arc</A>(X,Y,20) If Y&gt;X;</TT></P>
+         
+         <P><TT>ArcColor(X,Y,Out C,20)</TT></P>
+         
+         <BLOCKQUOTE><P><TT>If X%2==0 &amp;&amp; Y%2==0 Assign
+         C=LightGreen Moreover</TT></P>
+         
+         <P><TT>If X%2==1 &amp;&amp; Y%2==1 Assign C=Magenta
+         Moreover</TT></P>
+         
+         <P><TT>If X%2!=Y%2 Assign C=Cyan;</TT></P></BLOCKQUOTE>
+         </BLOCKQUOTE>
+         
+         <P><TT>**/</TT></P>
+         
+         <P><FONT SIZE=2>"Declare a graph with ID equal to 20.
+         Declare 5 nodes in graph 20, numbered from 1 to 5. Then
+         declare arcs between each pair of nodes. At last, declare
+         the color of arcs in the following way: if start and end of
+         an arc are both even, the arc is LightGreen; if they are
+         both odd, the arc is Magenta; if they have a different
+         parity, the arc is Cyan."</FONT>
+      </TD></TR>
+   <TR><TD COLSPAN=2>
+         <P><FONT SIZE=2>This example yields the following
+         result:</FONT>
+      </TD><TD>
+         <P ALIGN=CENTER><IMG SRC="Images/ArcColor.GIF" WIDTH=212
+         HEIGHT=175 X-SAS-UseImageWidth X-SAS-UseImageHeight
+         ALIGN=bottom>
+      </TD></TR>
+</TABLE></P>
+
+<P>&nbsp;</P>
+
+<P><A NAME="ArcLabel"></A></P>
+
+<P><TABLE BORDER=1 CELLSPACING=0 CELLPADDING=6 WIDTH="100%">
+   <TR>
+      <TD VALIGN=top COLSPAN=3>
+         <P><FONT SIZE=5>ArcLabel(X,Y,Out T,Out L,G)</FONT>
+      </TD><TD>
+         <P><DIV ALIGN=right></P>
+         
+         <P><FONT SIZE=4>Declare the label of arc (X,Y) in the
+         graph/forest G</FONT></P>
+         
+         <P></DIV>
+      </TD></TR>
+   <TR>
+      <TD VALIGN=top>
+         <P><DIV ALIGN=right></P>
+         
+         <P><FONT COLOR="#AF0000">Description:</FONT></P>
+         
+         <P></DIV>
+      </TD><TD COLSPAN=3>
+         <P>the visualization system repeatedly calls this predicate
+         for each graph/forest G and for each arc (X,Y) in it to
+         gather the type T and the text L of the label of that arc.
+         </P>
+         
+         <P>Note: the visualization system shows arc labels next to
+         the arcs.
+      </TD></TR>
+   <TR>
+      <TD VALIGN=top>
+         <P><DIV ALIGN=right></P>
+         
+         <P><FONT COLOR="#AF0000">Default:</FONT></P>
+         
+         <P></DIV>
+      </TD><TD COLSPAN=3>
+         <P>if <TT>ArcLabel</TT> is not declared or is false for a
+         given arc (X,Y), the visualization system considers its type
+         to be <TT><A HREF="AppendixB.html#Type">Void</A></TT>: in
+         this way no label will be shown.
+      </TD></TR>
+   <TR>
+      <TD>
+         <P><DIV ALIGN=right></P>
+         
+         <P><FONT COLOR="#AF0000">Predicate type:</FONT></P>
+         
+         <P></DIV>
+      </TD><TD COLSPAN=3>
+         <P>standard single value
+      </TD></TR>
+   <TR>
+      <TD VALIGN=top ROWSPAN=9>
+         <P><DIV ALIGN=right></P>
+         
+         <P><FONT COLOR="#AF0000">Parameters:</FONT></P>
+         
+         <P></DIV>
+      </TD><TD>
+         <P>X
+      </TD><TD COLSPAN=2>
+         <P>ID of the start node of the arc we are giving a label
+      </TD></TR>
+   <TR><TD>
+         <P>Y
+      </TD><TD COLSPAN=2>
+         <P>ID of the end node of the arc we are giving a label
+      </TD></TR>
+   <TR><TD>
+         <P>T
+      </TD><TD VALIGN=top COLSPAN=2>
+         <P>type of the label
+         (<TT><A HREF="AppendixB.html#Type">Void</A></TT>,
+         <TT><A HREF="AppendixB.html#Type">Int</A></TT>,
+         <TT><A HREF="AppendixB.html#Type">Char</A></TT> or
+         <TT><A HREF="AppendixB.html#Type">String</A></TT>)
+      </TD></TR>
+   <TR><TD ROWSPAN=5>
+         <P>L
+      </TD><TD COLSPAN=2>
+         <P>text to be shown near the arc (X,Y), according to the
+         value of T:
+      </TD></TR>
+   <TR><TD>
+         <P>T=<TT><A HREF="AppendixB.html#Type">Void</A></TT>
+      </TD><TD>
+         <P>L is ignored: the label of arc (X,Y) is empty
+      </TD></TR>
+   <TR><TD>
+         <P>T=<TT><A HREF="AppendixB.html#Type">Int</A></TT>
+      </TD><TD>
+         <P>the label of arc (X,Y) is L as integer value
+      </TD></TR>
+   <TR><TD>
+         <P>T=<TT><A HREF="AppendixB.html#Type">Char</A></TT>
+      </TD><TD>
+         <P>the label of arc (X,Y) is the character value obtained
+         from the least significant byte of L
+      </TD></TR>
+   <TR><TD>
+         <P>T=<TT><A HREF="AppendixB.html#Type">String</A></TT>
+      </TD><TD>
+         <P>the label of arc (X,Y) is the C string pointed to by L.
+         If L=0 then the "<TT>Nil</TT>" string is shown.
+      </TD></TR>
+   <TR><TD>
+         <P>G
+      </TD><TD COLSPAN=2>
+         <P>ID of the graph/forest that the arc (X,Y) belongs to
+      </TD></TR>
+   <TR>
+      <TD>
+         <P><DIV ALIGN=right></P>
+         
+         <P><FONT COLOR="#AF0000">Attributes:</FONT></P>
+         
+         <P></DIV>
+      </TD><TD COLSPAN=3>
+         <P><TT><A HREF="#ArcLabelColor">ArcLabelColor</A></TT>
+      </TD></TR>
+   <TR>
+      <TD VALIGN=top ROWSPAN=2>
+         <P><DIV ALIGN=right></P>
+         
+         <P><FONT COLOR="#AF0000">Example:</FONT></P>
+         
+         <P></DIV>
+      </TD><TD COLSPAN=3>
+         <P><TT>/**</TT></P>
+         
+         <BLOCKQUOTE><P><TT><A HREF="#Graph">Graph</A>(Out 30);</TT>
+         </P>
+         
+         <P><TT><A HREF="#Node">Node</A>(Out N,30) For N:
+         <A HREF="AppendixA5.html#InRange">InRange</A>(N,1,5);</TT>
+         </P>
+         
+         <P><TT><A HREF="#Arc">Arc</A>(X,Y,30) If Y&gt;X;</TT></P>
+         
+         <P><TT>ArcLabel(X,Y,Out Int,Out L,30) Assign L=Y+X;</TT>
+         </P></BLOCKQUOTE>
+         
+         <P><TT>**/</TT></P>
+         
+         <P><FONT SIZE=2>"Declare a graph with ID equal to 30.
+         Declare 5 nodes in graph 30, numbered from 1 to 5. Then
+         declare arcs between nodes with smaller ID to nodes with
+         greater ID. At last, declare the label of an arc (X,Y) as
+         the integer value equal to the sum X+Y."</FONT>
+      </TD></TR>
+   <TR><TD COLSPAN=2>
+         <P><FONT SIZE=2>This example yields the following
+         result:</FONT>
+      </TD><TD>
+         <P ALIGN=CENTER><IMG SRC="Images/ArcLabel.GIF" WIDTH=212
+         HEIGHT=173 X-SAS-UseImageWidth X-SAS-UseImageHeight
+         ALIGN=bottom>
+      </TD></TR>
+</TABLE></P>
+
+<P>&nbsp;</P>
+
+<P><A NAME="ArcLabelColor"></A></P>
+
+<P><TABLE BORDER=1 CELLSPACING=0 CELLPADDING=6 WIDTH="100%">
+   <TR>
+      <TD VALIGN=top COLSPAN=3>
+         <P><FONT SIZE=5>ArcLabelColor(X,Y,Out C,G)</FONT>
+      </TD><TD>
+         <P><DIV ALIGN=right></P>
+         
+         <P><FONT SIZE=4>Declare the color C of the label of arc
+         (X,Y) in the graph/forest G</FONT></P>
+         
+         <P></DIV>
+      </TD></TR>
+   <TR>
+      <TD VALIGN=top>
+         <P><DIV ALIGN=right></P>
+         
+         <P><FONT COLOR="#AF0000">Description:</FONT></P>
+         
+         <P></DIV>
+      </TD><TD COLSPAN=3>
+         <P>the visualization system repeatedly calls this predicate
+         for each graph/forest G and for each arc (X,Y) in it to
+         gather the color of its label (if any.)
+      </TD></TR>
+   <TR>
+      <TD VALIGN=top>
+         <P><DIV ALIGN=right></P>
+         
+         <P><FONT COLOR="#AF0000">Default:</FONT></P>
+         
+         <P></DIV>
+      </TD><TD COLSPAN=3>
+         <P>if <TT>ArcLabelColor</TT> is not declared or is false for
+         a given arc (X,Y), the visualization system considers its
+         color to be <A HREF="AppendixB.html#Color">Green</A>.
+      </TD></TR>
+   <TR>
+      <TD>
+         <P><DIV ALIGN=right></P>
+         
+         <P><FONT COLOR="#AF0000">Predicate type:</FONT></P>
+         
+         <P></DIV>
+      </TD><TD COLSPAN=3>
+         <P>standard single value
+      </TD></TR>
+   <TR>
+      <TD VALIGN=top ROWSPAN=4>
+         <P><DIV ALIGN=right></P>
+         
+         <P><FONT COLOR="#AF0000">Parameters:</FONT></P>
+         
+         <P></DIV>
+      </TD><TD>
+         <P>X
+      </TD><TD COLSPAN=2>
+         <P>ID of the start node of the arc whose label we are
+         coloring
+      </TD></TR>
+   <TR><TD>
+         <P>Y
+      </TD><TD COLSPAN=2>
+         <P>ID of the end node of the arc whose label we are coloring
+      
+      </TD></TR>
+   <TR><TD>
+         <P>C
+      </TD><TD COLSPAN=2>
+         <P><A HREF="AppendixB.html#Color">color</A> of the label (if
+         any) of arc (X,Y) in G
+      </TD></TR>
+   <TR><TD>
+         <P>G
+      </TD><TD COLSPAN=2>
+         <P>ID of the graph/forest that the arc (X,Y) belongs to
+      </TD></TR>
+   <TR>
+      <TD VALIGN=top ROWSPAN=2>
+         <P><DIV ALIGN=right></P>
+         
+         <P><FONT COLOR="#AF0000">Example:</FONT></P>
+         
+         <P></DIV>
+      </TD><TD COLSPAN=3>
+         <P><TT>/**</TT></P>
+         
+         <BLOCKQUOTE><P><TT><A HREF="#ArcColor">ArcColor</A>(X,Y,Out
+         Grey,30);</TT></P>
+         
+         <P><TT>ArcLabelColor(X,Y,Out Red,30) If X+Y&gt;5;</TT></P>
+         </BLOCKQUOTE>
+         
+         <P><TT>**/</TT></P>
+         
+         <P><FONT SIZE=2>"Declare that arcs are Grey and that the
+         label of a generic arc (X,Y) is Red if the value of X+Y is
+         bigger than the constant 5."</FONT>
+      </TD></TR>
+   <TR><TD COLSPAN=2>
+         <P><FONT SIZE=2>If this code is added to the code written in
+         the
+         </FONT><TT><FONT SIZE=2><A HREF="#ArcLabel">ArcLabel</A></FONT></TT><FONT SIZE=2>
+         standard predicate example, the following result would be
+         obtained:</FONT>
+      </TD><TD>
+         <P ALIGN=CENTER><IMG SRC="Images/ArcLabelColor.GIF"
+         WIDTH=212 HEIGHT=172 X-SAS-UseImageWidth
+         X-SAS-UseImageHeight ALIGN=bottom>
+      </TD></TR>
+</TABLE></P>
+
+<P>&nbsp;</P>
+
+<P><A NAME="ArcOffset"></A></P>
+
+<P><TABLE BORDER=1 CELLSPACING=0 CELLPADDING=6 WIDTH="100%">
+   <TR>
+      <TD VALIGN=top COLSPAN=3>
+         <P><FONT SIZE=5>ArcOffset(X,Y,Out K,G)</FONT>
+      </TD><TD>
+         <P><DIV ALIGN=right></P>
+         
+         <P><FONT SIZE=4>Declare the offset K of arc (X,Y) in the
+         graph/forest G</FONT></P>
+         
+         <P></DIV>
+      </TD></TR>
+   <TR>
+      <TD VALIGN=top>
+         <P><DIV ALIGN=right></P>
+         
+         <P><FONT COLOR="#AF0000">Description:</FONT></P>
+         
+         <P></DIV>
+      </TD><TD COLSPAN=3>
+         <P>the visualization system repeatedly calls this predicate
+         for each graph/forest G and for each arc (X,Y) in it to
+         gather the offset K of that arc.</P>
+         
+         <P>Note: the offset of an arc may be a either 0 or a
+         positive or a negative integer value. In the first case the
+         arc will be drawn as a straight line. Otherwise, it will be
+         drawn as an arc of a circle whose distance (in the most
+         distant point) from the chord subtending it is |K|;
+         according to the fact K is positive or negative, the arc
+         will be positioned on the left or on the right of the
+         imaginary line going from X to Y.
+      </TD></TR>
+   <TR>
+      <TD VALIGN=top>
+         <P><DIV ALIGN=right></P>
+         
+         <P><FONT COLOR="#AF0000">Default:</FONT></P>
+         
+         <P></DIV>
+      </TD><TD COLSPAN=3>
+         <P>if <TT>ArcOffset</TT> is not declared or is false for a
+         given arc (X,Y), the default value is 0.
+      </TD></TR>
+   <TR>
+      <TD>
+         <P><DIV ALIGN=right></P>
+         
+         <P><FONT COLOR="#AF0000">Predicate type:</FONT></P>
+         
+         <P></DIV>
+      </TD><TD COLSPAN=3>
+         <P>standard single value
+      </TD></TR>
+   <TR>
+      <TD VALIGN=top ROWSPAN=4>
+         <P><DIV ALIGN=right></P>
+         
+         <P><FONT COLOR="#AF0000">Parameters:</FONT></P>
+         
+         <P></DIV>
+      </TD><TD>
+         <P>X
+      </TD><TD COLSPAN=2>
+         <P>ID of the start node of the arc we are giving an offset
+      </TD></TR>
+   <TR><TD>
+         <P>Y
+      </TD><TD COLSPAN=2>
+         <P>ID of the end node of the arc we are giving an offset
+      </TD></TR>
+   <TR><TD>
+         <P>K
+      </TD><TD VALIGN=top COLSPAN=2>
+         <P>offset of arc (X,Y) in G
+      </TD></TR>
+   <TR><TD>
+         <P>G
+      </TD><TD COLSPAN=2>
+         <P>ID of the graph/forest that the arc (X,Y) belongs to
+      </TD></TR>
+   <TR>
+      <TD VALIGN=top ROWSPAN=2>
+         <P><DIV ALIGN=right></P>
+         
+         <P><FONT COLOR="#AF0000">Example:</FONT></P>
+         
+         <P></DIV>
+      </TD><TD COLSPAN=3>
+         <P><TT>/**</TT></P>
+         
+         <BLOCKQUOTE><P><TT><A HREF="#Graph">Graph</A>(Out 10);</TT>
+         </P>
+         
+         <P><TT><A HREF="#Node">Node</A>(Out N,10) For N:
+         <A HREF="AppendixA5.html#InRange">InRange</A>(N,1,5);</TT>
+         </P>
+         
+         <P><TT><A HREF="#NodePos">NodePos</A>(N,Out X,Out Y,10)
+         Assign Y=50 X=N*25;</TT></P>
+         
+         <P><TT><A HREF="#Arc">Arc</A>(X,Y,10);</TT></P>
+         
+         <P><TT>ArcOffset(X,Y,Out K,10) Assign K= ((X-Y)%2==0) ?
+         (-10)*(X-Y) : 10*(X-Y);</TT></P></BLOCKQUOTE>
+         
+         <P><TT>**/</TT></P>
+         
+         <P><FONT SIZE=2>"Declare a graph with ID equal to 10 and
+         with 5 nodes (numbered from 1 to 5). Declare that nodes are
+         placed on an horizontal line and all of them are connected
+         by an arc. At last, declare that the offset of an arc (X,Y)
+         is proportional to the distance between nodes X and Y;
+         moreover, arcs between nodes with an even /odd distance are
+         placed on opposite sides (note the scale factor is negative
+         and positive, respectively.)"</FONT>
+      </TD></TR>
+   <TR><TD COLSPAN=2>
+         <P><FONT SIZE=2>This example yields the following
+         result:</FONT>
+      </TD><TD>
+         <P ALIGN=CENTER><IMG SRC="Images/ArcOffset.GIF" WIDTH=212
+         HEIGHT=140 X-SAS-UseImageWidth X-SAS-UseImageHeight
+         ALIGN=bottom>
+      </TD></TR>
+</TABLE></P>
+
+<P>&nbsp;</P>
+
+<P><A NAME="ArcStyle"></A></P>
+
+<P><TABLE BORDER=1 CELLSPACING=0 CELLPADDING=6 WIDTH="100%">
+   <TR>
+      <TD VALIGN=top COLSPAN=3>
+         <P><FONT SIZE=5>ArcStyle(X,Y,Out S,G)</FONT>
+      </TD><TD>
+         <P><DIV ALIGN=right></P>
+         
+         <P><FONT SIZE=4>Declare the style S of arc (X,Y) in the
+         graph/forest G</FONT></P>
+         
+         <P></DIV>
+      </TD></TR>
+   <TR>
+      <TD VALIGN=top>
+         <P><DIV ALIGN=right></P>
+         
+         <P><FONT COLOR="#AF0000">Description:</FONT></P>
+         
+         <P></DIV>
+      </TD><TD COLSPAN=3>
+         <P>the visualization system repeatedly calls this predicate
+         for each graph/forest G and for each arc (X,Y) in it to
+         gather its style.
+      </TD></TR>
+   <TR>
+      <TD VALIGN=top>
+         <P><DIV ALIGN=right></P>
+         
+         <P><FONT COLOR="#AF0000">Default:</FONT></P>
+         
+         <P></DIV>
+      </TD><TD COLSPAN=3>
+         <P>if <TT>ArcStyle</TT> is not declared or is false for a
+         given node N, the default style is
+         <TT><A HREF="AppendixB.html#Style">Solid</A></TT>.
+      </TD></TR>
+   <TR>
+      <TD>
+         <P><DIV ALIGN=right></P>
+         
+         <P><FONT COLOR="#AF0000">Predicate type:</FONT></P>
+         
+         <P></DIV>
+      </TD><TD COLSPAN=3>
+         <P>standard single value
+      </TD></TR>
+   <TR>
+      <TD VALIGN=top ROWSPAN=4>
+         <P><DIV ALIGN=right></P>
+         
+         <P><FONT COLOR="#AF0000">Parameters:</FONT></P>
+         
+         <P></DIV>
+      </TD><TD>
+         <P>X
+      </TD><TD COLSPAN=2>
+         <P>ID of the start node of the arc we are giving a style
+      </TD></TR>
+   <TR><TD>
+         <P>Y
+      </TD><TD VALIGN=top COLSPAN=2>
+         <P>ID of the end node of the arc we are giving a style
+      </TD></TR>
+   <TR><TD>
+         <P>S
+      </TD><TD COLSPAN=2>
+         <P><A HREF="AppendixB.html#Style">style</A> of the arc (X,Y)
+         in the graph/forest G
+      </TD></TR>
+   <TR><TD>
+         <P>G
+      </TD><TD COLSPAN=2>
+         <P>ID of the graph/forest that the arc (X,Y) belongs to
+      </TD></TR>
+   <TR>
+      <TD VALIGN=top ROWSPAN=2>
+         <P><DIV ALIGN=right></P>
+         
+         <P><FONT COLOR="#AF0000">Example:</FONT></P>
+         
+         <P></DIV>
+      </TD><TD COLSPAN=3>
+         <P><TT>/**</TT></P>
+         
+         <BLOCKQUOTE><P><TT><A HREF="#ArcThickness">ArcThickness</A>(X,Y,Out
+         Thick,20) If X%2!=Y%2;</TT></P>
+         
+         <P><TT>ArcStyle(X,Y,Out Dashed,20) If X==1 || Y==1;</TT>
+         </P></BLOCKQUOTE>
+         
+         <P><TT>**/</TT></P>
+         
+         <P><FONT SIZE=2>"Declare that an arc (X,Y) is Thick if its
+         start and end nodes have a different parity. Then declare
+         that all arcs starting from/ ending in node 1 are
+         Dashed."</FONT>
+      </TD></TR>
+   <TR><TD COLSPAN=2>
+         <P><FONT SIZE=2>If this code is added to the code written in
+         the
+         </FONT><TT><FONT SIZE=2><A HREF="#ArcColor">ArcColor</A></FONT></TT><FONT SIZE=2>
+         standard predicate example, the following result would be
+         obtained:</FONT>
+      </TD><TD>
+         <P ALIGN=CENTER><IMG SRC="Images/ArcStyle.GIF" WIDTH=212
+         HEIGHT=170 X-SAS-UseImageWidth X-SAS-UseImageHeight
+         ALIGN=bottom>
+      </TD></TR>
+</TABLE></P>
+
+<P>&nbsp;</P>
+
+<P><A NAME="ArcThickness"></A></P>
+
+<P><TABLE BORDER=1 CELLSPACING=0 CELLPADDING=6 WIDTH="100%">
+   <TR>
+      <TD VALIGN=top COLSPAN=3>
+         <P><FONT SIZE=5>ArcThickness(X,Y,Out T,G)</FONT>
+      </TD><TD>
+         <P><DIV ALIGN=right></P>
+         
+         <P><FONT SIZE=4>Declare the thickness T of arc (X,Y) in the
+         graph/forest G</FONT></P>
+         
+         <P></DIV>
+      </TD></TR>
+   <TR>
+      <TD VALIGN=top>
+         <P><DIV ALIGN=right></P>
+         
+         <P><FONT COLOR="#AF0000">Description:</FONT></P>
+         
+         <P></DIV>
+      </TD><TD COLSPAN=3>
+         <P>the visualization system repeatedly calls this predicate
+         for each graph/forest G and for each arc (X,Y) in it to
+         gather its thickness.
+      </TD></TR>
+   <TR>
+      <TD VALIGN=top>
+         <P><DIV ALIGN=right></P>
+         
+         <P><FONT COLOR="#AF0000">Default:</FONT></P>
+         
+         <P></DIV>
+      </TD><TD COLSPAN=3>
+         <P>if <TT>ArcThickness</TT> is not declared or is false for
+         a given arc (X,Y), the default thickness value is
+         <TT><A HREF="AppendixB.html#Thickness">Thin</A></TT>.
+      </TD></TR>
+   <TR>
+      <TD>
+         <P><DIV ALIGN=right></P>
+         
+         <P><FONT COLOR="#AF0000">Predicate type:</FONT></P>
+         
+         <P></DIV>
+      </TD><TD COLSPAN=3>
+         <P>standard single value
+      </TD></TR>
+   <TR>
+      <TD VALIGN=top ROWSPAN=4>
+         <P><DIV ALIGN=right></P>
+         
+         <P><FONT COLOR="#AF0000">Parameters:</FONT></P>
+         
+         <P></DIV>
+      </TD><TD>
+         <P>X
+      </TD><TD COLSPAN=2>
+         <P>ID of the start node of the arc we are giving a thickness
+      
+      </TD></TR>
+   <TR><TD>
+         <P>Y
+      </TD><TD VALIGN=top COLSPAN=2>
+         <P>ID of the end node of the arc we are giving a thickness
+      </TD></TR>
+   <TR><TD>
+         <P>T
+      </TD><TD COLSPAN=2>
+         <P><A HREF="AppendixB.html#Thickness">thickness</A> (in
+         pixel) of the arc (X,Y) in the graph/forest G
+      </TD></TR>
+   <TR><TD>
+         <P>G
+      </TD><TD COLSPAN=2>
+         <P>ID of the graph/forest that the arc (X,Y) belongs to
+      </TD></TR>
+   <TR>
+      <TD VALIGN=top ROWSPAN=2>
+         <P><DIV ALIGN=right></P>
+         
+         <P><FONT COLOR="#AF0000">Example:</FONT></P>
+         
+         <P></DIV>
+      </TD><TD COLSPAN=3>
+         <P><TT>/**</TT></P>
+         
+         <BLOCKQUOTE><P><TT>ArcThickness(X,Y,Out Thick,20) If X%2==1
+         &amp;&amp; Y%2==1;</TT></P>
+         
+         <P><TT>ArcThickness(X,Y,Out VeryThick,20) If X%2==0
+         &amp;&amp; Y%2==0;</TT></P></BLOCKQUOTE>
+         
+         <P><TT>**/</TT></P>
+         
+         <P><FONT SIZE=2>"Declare that an arc (X,Y) is Thick if X and
+         Y are both odd and VeryThick if X and Y are both
+         even."</FONT>
+      </TD></TR>
+   <TR><TD COLSPAN=2>
+         <P><FONT SIZE=2>If this code is added to the code written in
+         the
+         </FONT><TT><FONT SIZE=2><A HREF="#ArcColor">ArcColor</A></FONT></TT><FONT SIZE=2>
+         standard predicate example, the following result would be
+         obtained:</FONT>
+      </TD><TD>
+         <P ALIGN=CENTER><IMG SRC="Images/ArcThickness.GIF" WIDTH=212
+         HEIGHT=168 X-SAS-UseImageWidth X-SAS-UseImageHeight
+         ALIGN=bottom>
+      </TD></TR>
+</TABLE></P>
+
+<UL>
+   &nbsp;
+</UL>
+</BODY>
+</HTML>

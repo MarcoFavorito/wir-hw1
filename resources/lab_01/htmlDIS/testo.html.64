@@ -1,0 +1,140 @@
+<!doctype html public "-//w3c//dtd html 4.0 transitional//en">
+<html>
+<head>
+   <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <title>Esercitazione 4 autoguidata, laboratorio di Programmazione AA2004/05</title>
+   <link rel="stylesheet" href="../lp2003.css" type="text/css">
+</head>
+<body>
+<br>
+<center>
+  <p><b>Laboratorio di Programmazione - A.A. 2004/05</b></p>
+  <h2>Esercitazione 4</h2>
+  <p><em><font color="#FF0000"><strong>(autoguidata)</strong></font></em></p>
+  <p align="left">Modificare la classe <code>Guardaroba</code> realizzata nell'Esercitazione 
+    2 aggiungendo ad essa l'overriding di <code><font color="#FF0000">equals()</font></code> 
+    e <code><font color="#FF0000">clone</font></code><font color="#FF0000">()</font> 
+    di <code><font color="#FF0000">Object</font></code>, in modo tale che questi 
+    facciano rispettivamente test di <font color="#FF0000">uguaglianza profonda<font color="#000000"> 
+    e</font> copia profonda<font color="#000000">.</font></font></p>
+  <p>&nbsp;</p>
+  <strong>Esercitazione 2</strong> 
+</center>
+
+<p><strong>Parte 1.</strong></p>
+
+<p>Si vogliono gestire gli abiti consegnati in un guardaroba di un teatro.
+
+Il <em>Guardaroba</em> ha un nome e una collezione di abiti depositati.
+Ogni abito consegnato &egrave; contrassegnato da un codice (una stringa)
+che lo identifica univocamente e la collezione degli abiti depositati nel
+guardaroba deve essere mantenuta ordinata rispetto a questo codice.
+
+Gli oggetti di tipo <em>Abito</em> sono rappresentati tramite una
+classe Java <code>Abito</code> gi&agrave; definita che si trova 
+in un package <code>packa</code>, il cui codice &egrave;
+in <a href="packa/">packa</a>.
+
+<p>Gli oggetti <em>Guardaroba</em> supportano le seguenti funzionalit&agrave;:
+
+<ul>
+  <li><em>crea</em>: che, data una stringa <em>n</em> che rappresenta il nome
+      del <em>Guardaroba</em>, crea un oggetto <em>Guardaroba</em> con nome
+      <em>n</em>, che inizialmente non ha alcun abito depositato;
+  </li>
+  <li><em>nome</em>: che restituisce il nome del <em>Guardaroba</em>;
+  </li>
+  <li><em>presente</em>: che, data una stringa <em>c</em> rappresentante
+il codice di un abito depositato, restituisce
+      <em>true</em> se il codice <em>c</em> &egrave; associato ad
+un abito depositato nel
+      <em>Guardaroba</em>, <em>false</em> altrimenti;
+  </li>
+  <li><em>numeroAbitiDepositati</em>: che restituisce il numero di abiti
+  depositati nel <em>Guardaroba</em>;
+  </li>
+
+  <li><em>qualePosizione</em>: che, data una stringa <em>c</em>
+rappresentante il codice di un abito depositato, restituisce un intero
+rappresentante la posizione dell'abito depositato nella collezione (0 per
+il primo elemento, <em>numeroAbitiDepositati</em>-1 per l'ultimo), 
+oppure lancia una eccezione se
+tale codice non &egrave presente nel guardaroba.  Poich&eacute; la
+collezione degli abiti depositati deve essere ordinata questo metodo deve
+soddisfare la seguente condizione: dati due codici <em>c1</em> e 
+<em>c2</em> tali che <em>c1</em> precede <em>c2</em> secondo l'ordine
+lessicografico delle stringhe, allora <em>qualePosizione(c1)</em>
+deve essere minore di <em>qualePosizione(c2)</em>.
+  </li>
+
+  <li><em>qualeCodice</em>: che, dato un intero <em>n</em>
+rappresentante la posizione di un abito nella collezione
+(0 per il primo elemento, <em>numeroAbitiDepositati</em>-1 per l'ultimo), 
+restituisce la
+stringa corrispondente al codice dell'abito depositato;
+se l'indice della posizione &egrave; fuori dai limiti si
+generi una eccezione;
+  </li>
+
+  <li><em>qualeAbito</em>: che, data una stringa <em>c</em>
+rappresentante il codice di un abito depositato, restituisce l'oggetto
+<code>Abito</code> corrispondente, oppure lancia una eccezione se
+tale codice non &egrave presente nel guardaroba;
+  </li>
+
+  <li><em>consegnaAbito</em>: che, dati un abito <em>a</em> e un codice 
+<em>c</em>, aggiunge l'informazione nel <em>Guardaroba</em>, mantenendo
+la collezione ordinata secondo il codice; se esiste gi&agrave; un abito
+associato al codice <em>c</em>, si lanci una eccezione;
+  </li>
+  <li><em>ritiraAbito</em>: che, dato il codice <em>c</em> di un abito, 
+  elimina l'abito dal guardaroba; se il codice non
+      &egrave; presente non fa nulla;
+  </li>
+
+</ul>
+
+<P>
+Realizzare una classe <code>Guardaroba</code> che implementi queste
+funzionalit&agrave; all'interno del package <code>packg</code>.
+
+<P>
+Si ricorda che il confronto lessicografico tra stringhe &egrave; ottenuto
+tramite il metodo <code>public int compareTo(String anotherString)</code> 
+della classe <code>String</code>, il quale restituisce un valore
+negativo se la stringa oggetto di invocazione precede la stringa
+argomento, un numero positivo in caso contrario e <code>0</code>
+se le due stringhe sono uguali.
+</P>
+
+
+
+<p><strong>Parte 2.</strong></p>
+
+<p> Realizzare la classe <code>ServiziGuardaroba</code> in un package
+<code>packs</code>, contenente i metodi statici:
+<ul>
+<li><em>verificaOrdinato</em>, che, dato un guardaroba <em>g</em>,
+verifica se le informazioni in esso contenute sono ordinate rispetto
+all'ordinamento lessicografico dei codici;</li>
+<li>
+<em>arrayAbiti</em>, che, dati un guardaroba <em>g</em>
+e una array di interi <em>a</em> rappresentante le posizioni degli
+abiti nel guardaroba, restituisca un array di abiti (oggetti della
+classe <code>Abito</code>) della stessa dimensione di <em>a</em>
+e in cui ogni componente contiene l'abito che nel guardaroba si trova
+in posizione <em>a[i]</em>, oppure <code>null</code> se tale posizione
+&egrave; al di fuori degli indici.
+</li>
+</ul>
+
+
+<p><strong>Parte 3.</strong></p>
+
+<p>Scrivere una classe esterna a tutti i package definiti
+precedentemente, cliente di <code>Guardaroba</code> e
+<code>ServiziGuardaroba</code>, contenente un metodo <code>main</code>,
+che utilizzi tutte le funzionalit&agrave; delle due classi.
+
+</body>
+</html>

@@ -1,0 +1,175 @@
+<!doctype html public "-//w3c//dtd html 4.0 transitional//en">
+<html>
+<head>
+<link href="java.css" rel="stylesheet" type="text/css">
+<title>Stampa di numeri interi</title>
+</head>
+
+<body>
+
+<h2>Stampa di numeri interi</h2>
+
+<p>
+Si vogliono stampare su schermo i numeri interi
+da 10 a 50. In Java si potrebbe fare un programma
+con una linea per ogni valore di da 10 a 50,
+ossia un programma di questo genere:<p>
+
+<pre>
+class Interi {
+  public static void main(String[] args) {
+
+    System.out.println("10");
+    System.out.println("11");
+    System.out.println("12");
+
+    ...
+
+    System.out.println("50");
+  }
+}
+</pre>
+
+<p>
+Come &egrave; facile immaginare, il programma completo
+<a href="Interi.java">Interi.java</a> in cui ci sono
+tutte le istruzioni al posto dei puntini <tt>...</tt> 
+&egrave; piuttosto lungo. Se si pensa a quando potrebbe
+essere lungo un programma che stampa i numeri interi da
+-400 a +23000, risulta evidente che questo tipo di
+programmi sequenziali non &egrave; fattibile.<p>
+
+In Java esistono delle istruzioni composte, dette
+istruzioni di ciclo, che permettono di ripetere una
+stessa istruzione per pi&ugrave; volte. Questo &egrave;
+utile per esempio nel caso della stampa dei numeri
+interi, in cui vogliamo ripetere molte volte la
+istruzione di stampa.
+
+<p>
+Una tipica istruzione di ciclo &egrave; il for. Iniziamo
+dando una versione semplificata.
+
+<p>
+<pre>
+for( variabile=valore1; variabile<=valore2; variabile=variabile+1 ) {
+  istruzione1
+  istruzione2
+  ...
+}
+</pre>
+
+<p>
+Questa istruzione composta viene detta <b>ciclo for</b>.
+Le istruzioni dentro il
+blocco (<tt>istruzione1</tt>, <tt>istruzione2</tt>, ecc.)
+vengono eseguite una prima volta con <tt>variabile=valore1</tt>,
+una seconda volta con <tt>variabile=valore1+1</tt>, una
+terza volta con  <tt>variabile=valore1+2</tt>, ecc. fino a
+che non si arriva alla esecuzione con <tt>variabile=valore2</tt>,
+e a questo punto l'esecuzione del ciclo finisce, cio&egrave; 
+si passa ad eseguire la prima instruzione che sta fuori dal
+ciclo.<p>
+
+Riconsideriamo ora il programma di stampa di interi da 10 a
+50. Il problema si risolve con una operazione di stampa 
+che viene ripetuta per ogni numero intero da 10 a 50. In
+altre parole, si pu&ograve; pensare a ripetere la singola
+istruzione
+
+<pre>
+System.out.println(i);
+</pre>
+
+<p>
+una volta con <tt>i=10</tt>, una volta con <tt>i=11</tt>,
+una volta con <tt>i=12</tt>, ecc fino all'ultima volta con
+<tt>i=50</tt>. Questo &egrave; chiaramente equivalente al
+problema di partenza. Inoltre, &egrave; esattamente il tipo
+di problema che si risolve con un ciclo for: la ripetizione
+di una stessa istruzione con valori crescenti di una
+variabile. Dal momento che la variabile che deve cambiare
+valore &egrave; <tt>i</tt>, e deve andare da 10 a 50, un
+programma complessivo che usa il ciclo for &egrave; il
+seguente <a href="InteriFor.java">InteriFor.java</a>.<p>
+
+<pre>
+/*
+  Stampa i numeri interi da 10 a 50.
+*/
+
+class InteriFor {
+  public static void main(String[] args) {
+    int i;
+
+    for(i=10; i<=50; i=i+1) {
+      System.out.println(i);
+    }
+  }
+}
+
+</pre>
+
+<p>
+Nel caso ci fossero dubbi sulla interpretazione dei cicli
+for, un meccanismo che permette di chiarire in che modo
+vengono eseguite le istruzioni &egrave; quello di scrivere
+esplicitamente il ciclo per esteso. Si parte da un generico
+ciclo for:
+
+<pre>
+for( variabile=valore1; variabile<=valore2; variabile=variabile+1 ) {
+  istruzione1;
+  istruzione2;
+  istruzione3;
+}
+</pre>
+
+<p>
+Per semplicit&agrave; si considerano solo tre istruzioni. Per
+definizione, le istruzioni interne al ciclo vengono eseguite
+una volta con <tt>variabile=valore1</tt>, una volta con
+<tt>variabile=valore1+1</tt>, ecc. Quindi, per definizione,
+si pu&ograve; pensare al ciclo di sopra come al programma senza
+cicli di sotto:
+
+<pre>
+variabile=valore1;
+istruzione1;
+istruzione2;
+istruzione3;
+variabile=valore1+1;
+istruzione1;
+istruzione2;
+istruzione3;
+variabile=valore1+2;
+istruzione1;
+istruzione2;
+istruzione3;
+
+...
+
+variabile=valore2;
+istruzione1;
+istruzione2;
+istruzione3;
+</pre>
+
+<p>
+Il programma di sotto, per poter essere effettivamente scritto
+ed eseguito, richiede tutte le istruzioni scritte per esteso:
+non si possono lasciare i puntini <tt>...</tt> per indicare le
+istruzioni in mezzo. Questo procedimento di scrivere per esteso
+il ciclo conviene solo per capire cosa viene effettivamente
+fatto da un ciclo, mentre non &egrave; conveniente programmare
+scrivendo i cicli per esteso.
+
+<p>
+Per esercizio, provare a seguire questo procedimento
+di scrittura esplicita del ciclo for sul programma
+<a href="InteriFor.java">InteriFor.java</a> che stampa i numeri
+interi da 10 a 50 con un ciclo for.<p>
+
+</body>
+</html>
+

@@ -1,0 +1,93 @@
+<!doctype html public "-//w3c//dtd html 4.0 transitional//en">
+<html>
+<head>
+<link href="java.css" rel="stylesheet" type="text/css">
+<title>Rilevazione trascinamento del mouse: mouseDrag</title>
+</head>
+
+<body>
+
+<h2>Rilevazione trascinamento del mouse: mouseDrag</h2>
+
+Spesso &egrave; utile poter rilevare i casi in cui
+l'utente ha premuto il pulsante del mouse e ha poi
+spostato il cursore tenendo premuto il pulsante. Una
+operazione di questo tipo si chiama <i>trascinamento</i>
+(drag). Molti programmi di disegno richedono l'uso di
+questa operazione.<p>
+
+La rilevazione del trascinamento avviene attraverso
+una funzione <tt>mouseDrag</tt>, simile alla funzione di
+rilevazione del click. In particolare, ha gli stessi
+argomenti:
+
+<pre>
+  public boolean mouseDrag(Event e, int x, int y) {
+    Graphics g=new Graphics();
+
+    istruzioni
+
+    return true;
+  }
+</pre>
+
+Questa funzione viene attivata quando viene rilevato
+un movimento del mouse mentre il pulsante &egrave; tenuto
+premuto. &Egrave; anche importante notare che questa
+funzione <i>non</i> viene attivata in <i>tutti</i> i
+punti attraversati dal cursore. Si pu&ograve; dire che
+vale invece l'inverso: se la funzione viene attivata
+(ossia si eseguono le istruzioni al suo interno) allora
+vuol dire che il punto di coordinate <tt>x</tt> e
+<tt>y</tt> &egrave; stato attraversato mentre il pulsante
+&egrave; stato tenuto premuto.<p>
+
+Il seguente esempio
+<a href="PuntiDrag.java">PuntiDrag.java</a>
+disegna dei punti nelle posizioni in cui il mouse viene
+premuto, come fa anche 
+<a href="PuntiMouse.java">PuntiMouse.java</a>. In pi&ugrave;,
+disegna dei punti anche se il cursore viene spostato tenendo
+il pulsante premuto.<p>
+
+<pre>
+/*
+  Disegna dei punti, sulla base del click del mouse
+*/
+
+import java.awt.*;
+
+public class PuntiDrag extends java.applet.Applet {
+  public boolean mouseDown(Event e, int x, int y) {
+    Graphics g=getGraphics();
+
+    g.fillRect(x-2,y-2,4,4);
+
+    return true;
+  }
+
+  public boolean mouseDrag(Event e, int x, int y) {
+    Graphics g=getGraphics();
+
+    g.fillRect(x-2,y-2,4,4);
+
+    return true;
+  }
+}
+
+</pre>
+
+<applet code="PuntiDrag.class" height="500" width="500">
+</applet>
+<p>
+
+Un possibile miglioramento &egrave; quello di fare in modo
+che i punti non vengano cancellati ogni volta che la
+finestra diventa invisibile. &Egrave; chiaramente sufficiente
+introdurre delle variabili globali per rappresentare i punti,
+e una funzione <tt>paint</tt> che li ridisegna ogni volta.<p>
+
+</body>
+</html>
+
+

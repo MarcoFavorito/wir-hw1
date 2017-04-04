@@ -1,0 +1,83 @@
+<html>
+<head>
+<title>Esercizio di esame 18/9/2002</title>
+</head>
+
+<body>
+
+<h1>Esercizio di esame 18/9/2002</h1>
+
+<b>Tutti e due i canali/ Parte II</b>
+
+<hr>
+
+<h4>Domanda 1</h4>
+
+<p>
+Dire cosa stampa il seguente programma.
+</p>
+
+<pre>
+class Prova {
+  public static int alfa(int x) {
+    int y=x+1;
+
+    x++;
+
+    return 0;
+  }
+
+  public static int beta(int y) {
+    int x=10;
+
+    System.out.println(alfa(x));
+
+    return x;
+  }
+
+  public static void main(String arg[]) {
+    System.out.println(beta(12));
+  }
+}
+</pre>
+
+
+<h4>Domanda 2</h4>
+
+<p>
+Dire quale &egrave; il periodo di esistenza
+delle variabili locali dei metodi, delle
+variabili di istanza, e di quelle di classe.
+</p>
+
+
+<h4>Domanda 3</h4>
+
+<p>
+Dire cosa stampa il seguente metodo;
+illustrare con disegni dei record di
+attivazione; dire cosa stampa quando
+viene invocato passando come
+parametri <tt>12</tt> e <tt>3</tt>.
+</p>
+
+<pre>
+public static void ricorsivo(int x, int y) {
+  if(x<0 || y<0)
+    return;
+
+  System.out.println(x);
+
+  if(x>5)
+    ricorsivo(x-1,y-1);
+  else
+    ricorsivo(x-1,y);
+}
+</pre>
+
+<ul>
+
+</body>
+</html>
+
+

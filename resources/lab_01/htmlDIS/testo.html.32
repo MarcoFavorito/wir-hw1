@@ -1,0 +1,217 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<!--Converted with LaTeX2HTML 98.1 release (February 19th, 1998)
+originally by Nikos Drakos (nikos@cbl.leeds.ac.uk), CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>testo esame 11 gennaio 2001</TITLE>
+</HEAD>
+<BODY >
+<P>
+<hr size=3>
+<P>
+<DIV ALIGN="CENTER">
+<B>
+   Universit&#224; di Roma ``La Sapienza''
+<BR>
+Facolt&#224; di Ingegneria
+<BR>
+Corso di Fondamenti di Informatica - A.A.&#229;
+<BR>
+Corsi di Laurea: Aerospaziale, Chimica, Elettrica, 
+   Materiali, Meccanica, Nucleare</B>
+<BR>
+Appello del <B>11 gennaio 2001</B> -- 1<SUP><I>a</I></SUP> prova scritta
+<BR>
+  <EM>tempo a disposizione: 2 ore</EM>
+</DIV>
+
+<P>
+<B>Problema 1 (18 punti)</B>
+
+<P>
+La catena commerciale  P<SMALL>OPPY</SMALL> riunisce <TT>N</TT> negozi, numerati da 
+<TT>1</TT> a <TT>N</TT>, che vendono i prodotti di un medesimo catalogo.
+
+<P>
+Ogni negozio ha un gestore che pu&#242; decidere il prezzo di vendita dei vari prodotti.
+Quindi un medesimo prodotto pu&#242; essere 
+trovato a prezzi diversi in diversi negozi.
+
+<P>
+Le informazioni 
+sui prodotti sono gestite mediante un array di <TT>N</TT> puntatori: 
+<UL>
+<LI>la componente <EM>i</EM>-esima dell'array punta ad una lista dei prodotti 
+	venduti dal negozio <EM>i</EM>-esimo (rappresentata mediante record e 
+	puntatori);
+<LI>tale <EM>i</EM>-esima lista contiene, per ogni prodotto, <TT>nome</TT>
+    (una stringa di al max. 15 caratteri) e <TT>prezzo</TT> 
+    di vendita (numero reale) di quel prodotto in quel negozio.
+Dato che i negozi vendono i medesimi prodotti, 
+<U>le lunghezze delle <TT>N</TT> liste sono uguali</U>.)
+</UL>
+	
+La figura successiva mostra un esempio di array, con le liste 
+associate. <U>In questo particolare esempio</U> <TT>N</TT><EM>=3</EM> e le liste sono 
+visualizzate solo per i primi 5 elementi.<PRE>
+  #####
+  #   #    +-------+   +-------+   +-------+   +-------+   +-------+    
+  #   #    |  PR1  |   |  PR2  |   |  PR3  |   |  PR4  |   |  PR5  |    
+1 #  ----&gt; |      -+--&gt;|      -+--&gt;|      -+--&gt;|      -+--&gt;|      -+--&gt; . . .
+  #   #    | 23.67 |   | 3.67  |   | 10.00 |   | 30.70 |   | 2.33  |    
+  #   #    +-------+   +-------+   +-------+   +-------+   +-------+    
+  #####
+  #   #    +-------+   +-------+   +-------+   +-------+   +-------+    
+2 #  ----&gt; |  PR1  |   |  PR2  |   |  PR3  |   |  PR4  |   |  PR5  | 
+  #   #    |      -+--&gt;|      -+--&gt;|      -+--&gt;|      -+--&gt;|      -+--&gt; . . .   
+  #   #    | 20.00 |   | 4.00  |   | 11.00 |   | 29.99 |   | 5.00  |
+  #   #    +-------+   +-------+   +-------+   +-------+   +-------+    
+  #####
+  #   #    +-------+   +-------+   +-------+   +-------+   +-------+    
+3 #  ----&gt; |  PR1  |   |  PR2  |   |  PR3  |   |  PR4  |   |  PR5  | 
+  #   #    |      -+--&gt;|      -+--&gt;|      -+--&gt;|      -+--&gt;|      -+--&gt; . . .   
+  #   #    | 25.00 |   | 5.00  |   | 8.00  |   | 29.99 |   | 4.99  |
+  #   #    +-------+   +-------+   +-------+   +-------+   +-------+ 
+  #####
+</PRE>
+
+<P>
+
+<P>
+<DL COMPACT>
+<DT>1.
+<DD>Scrivere le dichiarazioni dei tipi di dato Pascal da utilizzarsi
+per risolvere i punti successivi. 
+  <FONT SIZE="-1">In particolare, denominare  
+   <SMALL>TIPOARCHIVIO</SMALL> il tipo per l'array sopra descritto e  <SMALL>TIPOLISTA</SMALL>
+  il tipo per le liste di prodotti.
+  </FONT>
+
+<P>
+<DT>2.
+<DD>Scrivere una <TT>function</TT> Pascal che, ricevendo 
+<U>un array</U> di tipo  <SMALL>TIPOARCHIVIO</SMALL> e <U>il 
+nome di un prodotto</U>, controlli i prezzi praticati per quel prodotto 
+nei vari negozi della catena e restituisca la variazione percentuale 
+tra il minimo ed il massimo prezzo.
+
+<P>
+<FONT SIZE="-1">Ad esempio, considerando l'archivio in figura e il prodotto <TT>PR3</TT>, 
+il massimo prezzo riscontrabile &#232; pi&#249; grande del minimo di un 
+<EM>37.5%</EM>. Quindi il risultato della funzione 
+sarebbe <TT>37.5</TT>. Analogamente, per il prodotto <TT>PR4</TT> il
+risultato della funzione sarebbe <TT>2.37</TT>.
+</FONT>
+
+<P>
+<DT>3.
+<DD>Scrivere una <TT>procedure</TT> Pascal che, ricevendo <U>un array</U> di tipo 
+ <SMALL>TIPOARCHIVIO</SMALL> restituisca, usando un opportuno <EM>parametro di 
+output</EM>, <U>il puntatore iniziale ad una lista</U> 
+composta dai prodotti venduti dalla catena  
+P<SMALL>OPPY</SMALL>, per ciascuno dei quali sia indicato:
+<UL>
+<LI>il nome;
+<LI>la variazione percentuale tra il minimo e il massimo prezzo 
+	praticato, per quel prodotto, nei negozi della catena.	
+</UL>
+
+<P>
+<FONT SIZE="-1">Ad esempio, per l'array della figura precedente, la procedura 
+costruirebbe una lista come la seguente.
+</FONT><PRE>
+     +-------+   +-------+   +-------+   +-------+   +-------+    
+---&gt; |  PR1  |   |  PR2  |   |  PR3  |   |  PR4  |   |  PR5  | 
+     |      -+--&gt;|      -+--&gt;|      -+--&gt;|      -+--&gt;|      -+--&gt; . . .   
+     |  25   |   | 36.24 |   | 37.5  |   | 2.37  |   | 114.59|
+     +-------+   +-------+   +-------+   +-------+   +-------+
+</PRE>
+
+<P>
+</DL>
+
+<P>
+<hr size=3>
+<P>
+<DIV ALIGN="CENTER">
+<B>
+   Universit&#224; di Roma ``La Sapienza''
+<BR>
+Facolt&#224; di Ingegneria
+<BR>
+Corso di Fondamenti di Informatica - A.A.&#229;
+<BR>
+Corsi di Laurea: Aerospaziale, Chimica, Elettrica, 
+Materiali,
+   Meccanica,    Nucleare</B>
+<BR>
+Appello del <B>11 gennaio 2001</B> -- 2<SUP><I>a</I></SUP> prova scritta
+<BR>
+  <EM>tempo a disposizione: 1 ora</EM>
+</DIV>
+
+<P>
+<B>Problema 2 (4 punti)</B>
+
+<P>
+Illustrare 
+uno dei principali 
+algoritmi di visita di grafi, mostrandone gli effetti su un grafo di 
+esempio non banale (almeno 5 nodi e 7 archi).
+
+<P>
+<B>Problema 3 (4 punti)</B>
+
+<P>
+Descrivere tutte le modalit&#224; che si conoscono con le quali diverse 
+unit&#224; di programma sc pascal possono scambiarsi informazioni. 
+Fornire almeno un esempio di uso di ciascuna modalit&#224; descritta.
+
+<P>
+
+<P>
+<B>Problema 4 (4 punti)</B> 
+
+<P>
+Scrivere una unit&#224; di programma Fortran che, data una matrice 
+di interi ,
+produca una seconda matrice in cui gli 
+elementi della prima hanno subito uno scorrimento di un posto verso 
+destra. (L'ultimo elemento di una riga diventa il primo della riga 
+successiva. L'elemento di coordinate <TT>(N,M)</TT> nella prima, diventa
+quello di coordinate <TT>(1,1)</TT> nella seconda.)
+
+<P>
+Ad esempio, (con <I>N</I>=3 e <I>M</I>=4), ricevendo la matrice  
+
+<!-- MATH: $\left[
+\begin{array}{cccc}
+  1 & 2 & 3 & 4\\
+  5 & 6 & 7 & 8\\
+  9 & 10 & 11 & 12\\
+  \end{array}
+\right]$ -->
+
+l'unit&#224; richiesta <U>produce</U> la matrice 
+
+<!-- MATH: $\left[
+\begin{array}{cccc}
+  12 & 1 & 2 & 3\\
+  4 & 5 & 6 & 7\\
+  8 & 9 & 10 & 11\\
+  \end{array}
+\right]$ -->
+
+
+<P>
+Scrivere inoltre un esempio di programma principale contenente 
+un'invocazione dell'unit&#224; progettata.
+<P>
+<hr size=3>
+<P>
+
+</BODY>
+</HTML>

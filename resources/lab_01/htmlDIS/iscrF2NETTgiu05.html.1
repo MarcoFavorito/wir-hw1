@@ -1,0 +1,84 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+<html>
+
+<head>
+<title>Iscrizione appello d'esame</title>
+</head>
+
+<body>
+<h3 style="text-align: center">
+Fondamenti di Informatica II
+<BR>
+Ing. Elettronica, Informatica, delle Telecomunicazioni
+<BR>
+La Sapienza - Consorzio NETTUNO
+</h3>
+
+<H3 align="center">
+Appello del 18 giugno 2005
+</H3>
+
+<P>
+<STRONG>Scegliere l'azione da eseguire</STRONG>,
+inserire i propri dati
+e premere "VIA" (se si vuole vedere la lista non c'e' bisogno di inserire
+i propri dati ...)
+</P>
+
+<FORM action="http://www.dis.uniroma1.it/~marte/cgi-bin/iscrizione.pl" method="post">
+
+<!--
+ATTENZIONE data appello da cambiare qui e nel titolo
+-->
+<P>
+<INPUT type="hidden" name="datappello" value="18 giugno 2005">
+<INPUT type="hidden" name="nomefiletesto" value="appelloF2giu05.txt">
+<INPUT type="hidden" name="insegnamento" value="Fondamenti di Informatica II (consorzio NETTUNO)">
+</P>
+
+<TABLE border="2" width="50%" ALIGN="CENTER">
+<TR>
+ <TD style="text-align: center">Azione da eseguire</TD>
+ <TD style="background-color: pink; font-weight: bold">
+ <INPUT type="radio" name="azione" value="lista" checked> Visione lista iscritti
+ <BR>
+ <INPUT type="radio" name="azione" value="iscrizione"> Iscrizione
+ <BR>
+ <INPUT type="radio" name="azione" value="cancellazione"> Cancellazione
+ </TD>
+</TR>
+    <tr>
+      <td width="24%" align="right">Nome:</td>
+      <td width="76%" align="center"><input type="text" name="Nome" size="20"></td>
+    </tr>
+    <tr>
+      <td width="24%" align="right">Cognome:</td>
+      <td width="76%" align="center"><input type="text" name="Cognome" size="20"></td>
+    </tr>
+    <tr>
+      <td width="24%" align="right">Matricola:</td>
+      <td width="76%" align="center"><input type="text" name="Matricola" size="12"></td>
+    </tr>
+    <tr>
+      <td width="24%" align="right">CCL</td>
+      <td width="76%" align="center">
+      <SELECT name="ccl">
+	  <OPTION value="ELT" selected>Elettronica</OPTION>
+	  <OPTION value="TLC">Telecomunicazioni</OPTION>
+	  <OPTION value="INF">Informatica</OPTION>
+	  </SELECT></td>
+    </tr>
+  </table>
+
+<P style="text-align: center">
+<INPUT type="submit" value="VIA" name="VIA">
+</P>
+
+<P style="text-align: center">
+<INPUT type="reset" value="Annulla i dati inseriti">
+</P>
+</FORM>
+
+</body>
+</html>
+

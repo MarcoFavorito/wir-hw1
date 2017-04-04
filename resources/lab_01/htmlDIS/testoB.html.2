@@ -1,0 +1,85 @@
+<!-- saved from url=(0022)http://internet.e-mail -->
+<!DOCTYPE html PUBLIC "-//w3c//dtd html 4.0 transitional//en">
+<html>
+<head>
+   <title>Esame del 23/3/2004 - Compito B</title>
+</head>
+<body>
+
+<center>
+  <p>
+  <b>Tecniche di Programmazione</b> <br>
+<b>Corso di Laurea in Ingegneria Informatica</b> <br>
+<b>Corso di Laurea in Ingegneria Automatica</b> <br>
+  A.A. 2003/04</p>
+  <h2>Appello del 23/3/2004 - Compito B</h2>
+</center>
+
+Si vogliono gestire dei pronto-soccorsi. Di un oggetto <em>ProntoSoccorso</em> 
+sono di interesse il nome del pronto-soccorso (una stringa) e le visite che deve 
+effettuare. Di ogni visita sono di interesse le seguenti informazioni: 
+<ul>
+  <li><em>nome</em> del paziente (una stringa); 
+  <li> <em>priorit&agrave;</em> della visita (un intero positivo). 
+</ul>
+
+Gli oggetti <em>ProntoScoccorso</em> supportano le seguenti funzionalit&agrave;: 
+<ul>
+  <li><em>crea:</em> che, data una stringa <em>n</em> che rappresenta il nome 
+    di pronto-soccorso, crea un oggetto <em>ProntoScoccorso</em> con nome <em>n</em> 
+    che inizialmente non ha alcuna visita da effettuare;</li>
+  <li><em>nome:</em> che restituisce il nome del <em>ProntoScoccorso</em>; </li>
+  <li><em>presente:</em> che, dato il nome di un paziente, restituisce <em>true</em> 
+    se il paziene &egrave; presente nel pronto-soccorso, <em>false</em> altrimenti; 
+  </li>
+  <li><em>priorit&agrave;:</em> che, dato il nome di un paziente, restituisce 
+    la sua priorit&agrave;; se il paziente non &egrave; presente lancia una eccezione; 
+  </li>
+  <li><em>accoda:</em> che, dato il nome di un paziente e la sua priorit&agrave;, 
+    aggiunge una nuova visita in coda alle visite gi&agrave; presenti; tuttavia 
+    se &egrave; gi&agrave; presente un paziente con lo stesso nome, lancia una 
+    eccezione.</li>
+  <li><em>servi:</em> che, effettua la visita al primo paziente in coda tra quelli 
+    di priorit&agrave; massima, eliminandolo dalla coda e restituendone il nome; 
+    se non c'e' alcuna paziente da visitare restituisce <em>null</em>;</li>
+  <li><em>maxPriorit&agrave;:</em> che, restituisce la priorit&agrave; massima 
+    tra quelle delle visite da effettuare; se non vi &egrave; alcuna visita da 
+    effettuare restituisce <em>-1</em>;</li>
+  <li><em>quantiPriorit&agrave;:</em> che, dato un intero positivo che rappresenta 
+    una priorit&agrave;, restituisce il numero di pazienti da visitare con tale priorit&agrave;;</li>
+  <li><em>tuttiPriorit&agrave;:</em> che, dato un intero positivo che rappresenta 
+    una priorit&agrave;, restituisce un array di stringhe contenente nomi dei 
+    pazienti con quella priorit&agrave;.</li>
+</ul>
+
+<p><strong>Domanda 1.</strong> Scrivere una classe Java <code>ProntoScoccorso</code> 
+  per rappresentare oggetti <em>ProntoScoccorso</em>. Fornire il costo in tempo 
+  dei metodi che realizzano le funzionalit&agrave; <em>priorit&agrave;</em>, <em>servi</em> 
+  e <em>tuttiPriorit&agrave;</em>, motivando la risposta (indicando esplicitamente 
+  i parametri di input e il caso peggiore). 
+<p><strong>Domanda 2.</strong> Realizzare un metodo statico <code>pazientiDaVisitare</code> 
+  cliente della classe <code>ProntoScoccorso</code> che, dati 
+<ul>
+  <li>il nome <em>fin</em> di un file di input di stringhe che rappresentano nomi 
+    di pazienti (tutti diversi tra loro e memorizzati uno per riga), 
+  <li>un intero positivo <em>pin</em> che rappresenta una priorit&agrave;,
+  <li>il nome <em>fout</em> di un file di output, 
+  <li>ed un <code>ProntoScoccorso</code> <em>ps</em>
+</ul>
+<p>scrive sul file <em>fout</em>, uno per riga, il nome del paziente e la
+relativa 
+  priorit&agrave;, dei pazienti in <em>fin </em>presenti in <em>ps </em>la cui 
+  priorit&agrave; &egrave; maggiore di <em>pin. </em>Fornire il costo in tempo 
+  del metodo realizzato, motivando la risposta (indicando esplicitamente i parametri 
+  di input e il caso peggiore). </p>
+<p><strong>Domanda 3.</strong> Spiegare la rappresentazione collegata di alberi 
+  binari in cui l'informazione in ciascun nodo &egrave; una stringa. Spiegare 
+  l'algoritmo di visita in preordine di alberi binari. Facendo uso della rappresentazione 
+  collegata, realizzare un metodo statico pubblico che, dato il riferimento alla 
+  radice di un albero binario <em>alb</em>, restituisca il numero di nodi che 
+  hanno esattamente un figlio diverso dall'albero vuoto. Fornire il costo in tempo 
+  e spazio di memoria del metodo realizzato, motivando la risposta (indicando 
+  esplicitamente i parametri di input e il caso peggiore).
+
+</body>
+</html>

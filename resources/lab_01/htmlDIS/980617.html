@@ -1,0 +1,196 @@
+<HTML>
+<HEAD>
+   <META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1">
+   <META NAME="Generator" CONTENT="Microsoft Word 97">
+   <META NAME="GENERATOR" CONTENT="Mozilla/4.03 [en] (Win95; I) [Netscape]">
+   <TITLE>Fondamenti di Informatica </TITLE>
+</HEAD>
+<BODY>
+
+<CENTER><B><FONT FACE="Times,Times New Roman"><FONT SIZE=+1>Fondamenti
+di Informatica</FONT></FONT></B></CENTER>
+
+<CENTER><B><FONT FACE="Times,Times New Roman">Aeronautica, Meccanica, Elettrica,
+Materiali, Nucleare, Chimica,</FONT></B></CENTER>
+
+<CENTER><B><FONT FACE="Times,Times New Roman">Ambiente e Territorio (vecchio
+programma)</FONT></B></CENTER>
+
+<CENTER><B><FONT FACE="Times,Times New Roman">Appello del 17-6-1998</FONT></B></CENTER>
+
+<CENTER><B>&nbsp;</B></CENTER>
+
+
+<P><B>&nbsp;</B>
+
+<P><B>Esercizio 1 (18 punti)</B>
+
+<P>&nbsp;
+
+<P>Una fabbrica di componenti produce 12 componenti diversi che vengono
+prodotti utilizzando <U>macchine dedicate</U>, cio&eacute; ogni macchina
+produce un solo componente ed &egrave; quindi univocamente individuata
+dal codice di questo.
+
+<P>Ogni luned&igrave; mattina la fabbrica riceve il file <B>Ordini.dat
+</B>contenente tutti gli ordinativi arrivati nella settimana precedente
+e prepara un piano di lavoro per le singole macchine. Al termine di ogni
+giornata lavorativa il piano di lavoro viene aggiornato eliminando tutti
+i pezzi gi&agrave; prodotti.
+
+<P>Il file <B>Ordini.dat </B>&egrave; un file di record e ogni record contiene
+le seguenti informazioni:
+
+<P>codice componente (4 caratteri), codice cliente (6 caratteri), numero
+di pezzi ordinati (intero positivo).
+
+<P>Il piano di lavorazione viene memorizzato in un array <B>Lavoro </B>di
+12 componenti, ciascuna delle quali &egrave; un record contenente il codice
+componente, che individua anche la macchina che lo produce, e un puntatore
+alla lista degli ordini per quel componente.
+
+<P>&nbsp;
+<OL>Il candidato:
+
+<P>&nbsp;
+<LI>
+fornisca le opportune dichiarazioni dei tipi di dati Pascal per rappresentare
+il file <B>Ordini.dat</B> e e l’array <B>Lavoro;</B></LI>
+
+
+<P>&nbsp;
+<LI VALUE="1">
+scriva una procedura Pascal che, leggendo il file <B>Ordini.dat,</B> produca
+e restituisca come parametro di output l’array <B>Lavoro</B>;</LI>
+
+
+<P>&nbsp;
+<LI VALUE="1">
+scriva una procedura Pascal che, ricevendo come parametri di input l’array
+<B>Lavoro</B> (prodotto in accordo al punto precedente) e la quantit&agrave;
+<B>Q</B> di pezzi prodotti dalla macchina<B> </B>di codice <B>K</B>,<B>
+</B>aggiorni l’array <B>Lavoro</B> eliminando gli ordini eseguiti. Se un
+ordine &egrave; stato eseguito eliminare il record relativo e se non &egrave;
+stato <U>completamente</U> eseguito decrementare il numero di pezzi nel
+record stesso.</LI>
+</OL>
+&nbsp;
+
+<P><B>NB:</B> il numero di pezzi eseguiti pu&ograve; anche soddisfare pi&ugrave;
+di un ordine o esaurire la lista degli ordini per quel componente.
+
+<P>&nbsp;
+
+<P><FONT FACE="Times,Times New Roman">Nell'esempio riportato sotto, a sinistra
+(a) c'&egrave; la situazione iniziale dell'array <B>Lavoro</B> (si mostra
+solo la lista della macchina M04) e a destra (b) lo stato dell'array dopo
+l'esecuzione della procedura con <B>K</B>=M04 e <B>Q</B>=14. In (b), il
+primo ordinativo in lista &egrave; stato eliminato perch&eacute; totalmente
+soddisfatto (14>9); il secondo &egrave; stato solo modificato perch&eacute;
+dopo aver soddisfatto il primo ordine ci sono ancora solo 5 (14-9) componenti
+disponibili, che bastano per soddisfare solo parzialmente l'ordine. Quindi
+il secondo ordine rimane in lista con numero di pezzi richiesti diminuito
+di 5. Il terzo ordine non &egrave; stato soddisfatto, n&eacute; parzialmente
+n&eacute; totalmente e rimane invariato in lista.</FONT>
+
+<P><FONT SIZE=-1>&nbsp;</FONT>
+<BR>&nbsp;
+<TABLE BORDER=0 CELLSPACING=0 CELLPADDING=9 WIDTH="567" >
+<TR>
+<TD VALIGN=TOP WIDTH="52%">
+<CENTER><B><FONT SIZE=-1>(a)</FONT></B></CENTER>
+</TD>
+
+<TD VALIGN=TOP WIDTH="48%">
+<CENTER><B><FONT SIZE=-1>(b)</FONT></B></CENTER>
+</TD>
+</TR>
+
+<TR>
+<TD VALIGN=TOP WIDTH="52%">
+<CENTER><IMG SRC="980617-1.jpg" HEIGHT=105 WIDTH=156></CENTER>
+</TD>
+
+<TD VALIGN=TOP WIDTH="48%">
+<CENTER><IMG SRC="980617-2.jpg" HEIGHT=105 WIDTH=117></CENTER>
+</TD>
+</TR>
+</TABLE>
+<FONT SIZE=-1>&nbsp;</FONT>
+
+<P>&nbsp;
+<CENTER><B><FONT FACE="Palatino,Book Antiqua"><FONT SIZE=+1>Fondamenti
+di Informatica</FONT></FONT></B></CENTER>
+
+<CENTER><B><FONT FACE="Palatino,Book Antiqua">Aeronautica, Meccanica, Elettrica,
+Materiali, Nucleare, Chimica,</FONT></B></CENTER>
+
+<CENTER><B><FONT FACE="Palatino,Book Antiqua">Ambiente e Territorio (vecchio
+programma)</FONT></B></CENTER>
+
+<CENTER><B><FONT FACE="Palatino,Book Antiqua">Appello del 17-6-1998</FONT></B></CENTER>
+
+<CENTER><B><FONT FACE="Palatino,Book Antiqua">&nbsp;</FONT></B></CENTER>
+
+<CENTER><B><FONT FACE="Palatino,Book Antiqua">&nbsp;</FONT></B></CENTER>
+
+
+<P><B><FONT FACE="Palatino,Book Antiqua">&nbsp;</FONT></B>
+
+<P><B><FONT FACE="Palatino,Book Antiqua">Esercizio 2</FONT> (4 punti)</B>
+
+<P>Descrivere la rappresentazione binaria in complemento a 2 dei numeri
+interi. In particolare, supponendo che gli interi siano rappresentati con
+8 bit, rappresentare in tale forma il proprio giorno e mese di nascita
+e calcolarne la differenza.
+<BR>&nbsp;
+
+<P><B>Esercizio 3 (4 punti)</B>
+
+<P>Scrivere un sottoprogramma Fortran che, ricevendo come parametro di
+ingresso una matrice quadrata di ordine N, con N pari, sostituisca gli
+elementi delle colonne pari con le righe corrispondenti. Fornire inoltre
+le dichiarazioni da inserire nel programma principale.
+<BR>&nbsp;
+
+<P><B>Esercizio 4 (4 punti)</B>
+
+<P>Che cosa stampa questo programma quando gli vengono forniti in ingresso
+il vostro giorno e mese di nascita?
+
+<P>Mostrare anche l’evoluzione della pila dei record di attivazione della
+procedura P.
+
+<P>&nbsp;
+<BR><FONT FACE="Courier">program data;</FONT>
+<BR><FONT FACE="Courier">&nbsp;&nbsp;&nbsp; var</FONT>
+<BR><FONT FACE="Courier">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; m,
+n: integer;</FONT>
+<BR><FONT FACE="Courier">&nbsp;</FONT>
+<BR><FONT FACE="Courier">function <B>P</B> (m, n: integer): integer;</FONT>
+<BR><FONT FACE="Courier">&nbsp;&nbsp;&nbsp; begin</FONT>
+<BR><FONT FACE="Courier">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; if
+(n &lt;= m) and (m mod n = 0) then</FONT>
+<BR><FONT FACE="Courier"><B>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+P</B> := n</FONT>
+<BR><FONT FACE="Courier">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; else
+if n > m then</FONT>
+<BR><FONT FACE="Courier"><B>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+P</B> := <B>P</B>(n, m)</FONT>
+<BR><FONT FACE="Courier">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+else</FONT>
+<BR><FONT FACE="Courier"><B>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+P</B> := <B>P</B>(n, m mod n);</FONT>
+<BR><FONT FACE="Courier">end;</FONT>
+<BR><FONT FACE="Courier">&nbsp;</FONT>
+<BR><FONT FACE="Courier">begin</FONT>
+<BR><FONT FACE="Courier">&nbsp;&nbsp;&nbsp; readln(m, n);</FONT>
+<BR><FONT FACE="Courier">&nbsp;&nbsp;&nbsp; if (n > 0) and (m > 0) then</FONT>
+<BR><FONT FACE="Courier">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; writeln(<B>P</B>(m,
+n))</FONT>
+<BR><FONT FACE="Courier">&nbsp;&nbsp;&nbsp; else</FONT>
+<BR><FONT FACE="Courier">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; writeln(‘Input
+errato’)</FONT>
+<BR><FONT FACE="Courier">end.</FONT>
+</BODY>
+</HTML>

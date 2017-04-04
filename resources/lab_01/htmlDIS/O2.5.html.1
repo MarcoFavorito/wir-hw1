@@ -1,0 +1,97 @@
+<!doctype HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<html>
+
+<head>
+<meta http-equiv="Content-Language" content="it">
+<meta name="GENERATOR" content="Microsoft FrontPage 5.0">
+<meta name="ProgId" content="FrontPage.Editor.Document">
+<title></title>
+</head>
+
+<body TEXT="#4D1201" BGCOLOR="#BADBFF">
+
+<hr>
+<h1 align="center"><font color="red" , size="+4"><b>Obiettivo O 2.5</b> </font>
+</h1> <p align="center"><font color="blue">Progetto Strategico MIUR
+&quot;Società dell'Informazione&quot; <br> <a href="../index.html">Azione
+A2</a>, Anno I</font></p> <hr> <h3><b>Unità coinvolte</b></h3> <ul>
+<li>ICAR-CNR </li> </ul> <hr> <h3><b>Descrizione</b></h3> <p
+align="justify">L'obiettivo consiste nella definizione di tecniche di
+riparazione a fronte di violazioni della consistenza nella vista globale. I
+sistemi di accesso cooperativo, infatti, hanno la caratteristica di non
+determinare perdite di autonomia gestionale o funzionale nei sistemi sorgenti
+acceduti. E’, quindi, possibile che insorgano, durante la vita del sistema,
+fenomeni di inconsistenza semantica a vari livelli. In particolare, può
+accadere che il contenuto (virtuale o materializzato) di una vista integrata
+definita su più sorgenti non rispetti l’insieme dei vincoli ad essa
+associati; una tale vista può essere considerata, pertanto, come una base di
+dati inconsistente.  L’interrogazione di basi di dati inconsistenti richiede
+la formalizzazione del concetto di porzione consistente dei dati, e la
+definizione di tecniche per risolvere le violazioni della consistenza dei dati,
+tentando una riparazione dei dati o catturando l'informazione comunque
+consistente.</p> <hr> <h3><b>Risultati ottenuti</b></h3> <p align="justify">Uno
+dei principali risultati prodotti in relazione al presente obiettivo consiste
+nella definizione di una tecnica per il calcolo di risposte corrette ad
+interrogazioni poste su basi di dati eventualmente inconsistenti [1, 2, 3,
+4]. La tecnica si basa su una trasformazione dei vincoli d'integrità in regole
+Datalog con disgiunzione in testa, la cui valutazione permette di ottenere
+diversi modelli alternativi; tali modelli possono essere utilizzati per
+definire possibili repair della base di dati (insiemi minimali di inserimenti e
+cancellazioni che rendono la base di dati consistente) oppure per produrre
+risposte consistenti alle interrogazioni (insiemi massimali di atomi che non
+violano i vincoli di integrità) senza tuttavia modificare il contenuto
+informativo della base di dati. La tecnica consente, inoltre, la specifica di
+vincoli che definiscono condizioni sull'inserimento o la cancellazione di atomi
+(repair constraints) e di vincoli che definiscono priorità sulle riparazioni
+(prioritized constraints). Si è dimostrato che, anche in presenza di tali tipi
+di vincoli, l'approccio è corretto e completo, cioè ciascun modello stabile
+definisce una riparazione e ciascuna riparazione è ottenibile a partire da un
+modello stabile.
+</p>
+<p align="justify">Nell'ambito dello stesso contesto di ricerca è stato,
+inoltre, definito un linguaggio logico [1, 3, 5] per l'integrazione dei dati,
+ottenuto a partire da un’estensione di Datalog con vari costrutti come
+choice, set e aggregati. Tale linguaggio consente di specificare il processo di
+integrazione di dati provenienti da differenti sorgenti informative, capace di
+gestire la presenza di alcuni conflitti e limitare la produzione di ridondanza
+e di inconsistenza nella vista globale generata. Esso costituisce uno strumento
+flessibile e generale che, oltre a poter essere utilizzato per implementare la
+maggior parte delle tecniche di integrazione proposte in letteratura, consente
+di definire tecniche ad hoc ideate per lo specifico contesto applicativo e
+sulla base delle esigenze dell'utente. </p> <hr>
+
+<h3><b>Rapporti di ricerca</b></h3> 
+
+  <ul>
+ 
+  <li> Rapporto Anno 1 <a href="O2.5.pdf">in PDF</a>
+
+  </ul>
+
+
+<hr>
+
+<h3><b>Pubblicazioni</b></h3> <ol> <li>Gianluigi Greco, Sergio Greco, Ester
+Zumpano: <a href="GrGrZu-TKDE02.ps">A Logical Framework for Querying and
+Repairing Inconsistent Databases</a>, Rapporto Tecnico ICAR-CNR n.18, 2002,
+accettato per la pubblicazione su <i> IEEE Transactions on Knowledge and Data
+Engineering </i>(<i>TKDE</i>), IEEE Computer Society USA, Philip S. Yu,
+Editor-in-Chief. </li> <li>Gianluigi Greco, Sergio Greco, Ester&nbsp; Zumpano:
+<a href="GrGrZu-Chapter02.pdf">Repairing and Querying Inconsistent
+Databases</a>, to appear in <i>Effective Databases for Text and Document
+Management</i>, Dr.  Shirley and A. Becker, Editors.</li> <li>Gianluigi Greco,
+Sergio Greco, Ester Zumpano: <a href="GrGrZu-ISMIS02.ps"> A Logic Framework for
+the Integration of Databases</a>, in <i>Proceedings of 13th International
+Symposium on Methodologies for Intelligent Systems </i>(<i>ISMIS 2002</i>),
+pages 274-284, 2002. </li> <li>Sergio Greco, E. Zumpano: <a
+href="GrZu-Chapter02.pdf">Consistent Queries over Databases with Integrity
+Constraints</a>, in <i>Database Integrity: Challenge And Solutions</i>, pages
+172-202, Idea Group, 2002. </li> <li>Gianluigi Greco, Sergio Greco, Ester
+Zumpano: <a href="GrGrZu-GULP02.ps">A Logic Language for Database
+Integration</a>, in <i>Proceedings of Joint Conference on Declarative
+Programming</i>, Madrid, Spain, 16-18 September 2002 (APPIA-GULP-PRODE
+2002). </li> </ol> <hr>
+
+</body>
+
+</html>

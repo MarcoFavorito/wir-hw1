@@ -1,0 +1,174 @@
+<!doctype html public "-//w3c//dtd html 4.0 transitional//en">
+<html>
+<head>
+<link href="java.css" rel="stylesheet" type="text/css">
+<title>Rilasciamento pulsante: mouseUp</title>
+</head>
+
+<body>
+
+<h2>Rilasciamento pulsante: mouseUp</h2>
+
+La funzione <tt>mouseUp</tt> viene chiamata ogni volta
+che il pulsante del mouse, che precedentemente era
+stato premuto, &egrave; stato rilasciato. In altre
+parole, quello che suceede quando si preme il pulsante
+del mouse &egrave;:<p>
+
+<table border=1>
+<tr>
+<td>si preme il pulsante del mouse <br>nella posizione <tt>(x,y)</tt></td>
+<td>viene attivata la funzione <tt>mouseDown</tt></td>
+</tr>
+<tr>
+<td>si rilascia il pulsante, mentre il mouse &egrave;<br>
+nella posizione <tt>(x,y)</tt></td>
+<td>viene attivata la funzione <tt>mouseUp</tt></td>
+</tr>
+</table>
+<p>
+
+Va notato che la posizione in cui il pulsante viene rilasciato
+non &egrave; necessariamente la stessa in cui il pulsante &egrave;
+stato premuto. Infatti, l'utente potrebbe aver premuto il
+pulsante, poi mosso il cursore <i>tenendo il pulsante premuto</i>,
+e poi rilasciato il pulsante in una posizione diversa da quella
+iniziale. In effetti, questo metodo di tenere premuto il
+pulsante spostandosi viene spesso usato dai programmi di
+disegno, quando si vogliono disegnare figure geometriche che
+sono caratterizzate da due punti (per esempio, rettangoli).<p>
+
+Facciamo un esempio: disegnamo un quadrato nel punto il cui
+il pulsante viene premuto, e un cerchio nel punto in cui viene
+rilasciato. Chiaramente, se si preme e si rilascia il pulsante
+senza muovere il cursore, questi due punti sono lo stesso.
+D'altra parte, se si muove il mouse mentre il pulsante viene
+tenuto premuto, questi due punti sono differenti. Per realizzare
+due figure differenti nel caso di pressione e rilascio,
+dobbiamo semplicemente definire sia <tt>mouseDown</tt> che
+<tt>mouseUp</tt>. La prima disegna il rettangolo, mentre le
+seconda disegna il cerchio. Il programma completo
+<a href="QuadratiCerchi.java">QuadratiCerchi.java</a>
+&egrave; questo:
+
+<pre>
+/*
+  Quadrati dove viene premuto il pulsante,
+  cerchi dove viene rilasciato.
+*/
+
+import java.awt.*;
+
+public class QuadratiCerchi extends java.applet.Applet {
+
+  public boolean mouseDown(Event e, int x, int y) {
+    Graphics g=getGraphics();
+
+    g.drawRect(x-5,y-5,10,10);
+
+    return true;
+  }
+
+  public boolean mouseUp(Event e, int x, int y) {
+    Graphics g=getGraphics();
+
+    g.drawOval(x-5,y-5,10,10);
+
+    return true;
+  }
+}
+
+</pre>
+
+Un altro esempio: il programma 
+<a href="DisegnaCancella.java">DisegnaCancella.java</a>
+disegna un quadrato nel punto in cui viene premuto il
+pulsante, e lo cancella quando il pulsante viene rilasciato.<p>
+
+<pre>
+/*
+  Disegna un punto finche' il mouse e' premuto,
+  poi lo cancella.
+*/
+
+import java.awt.*;
+
+public class DisegnaCancella extends java.applet.Applet {
+
+  public boolean mouseDown(Event e, int x, int y) {
+    Graphics g=getGraphics();
+
+    g.fillRect(x-3,y-3,7,7);
+
+    return true;
+  }
+
+  public boolean mouseUp(Event e, int x, int y) {
+    Graphics g=getGraphics();
+
+    g.clearRect(x-3,y-3,7,7);
+
+    return true;
+  }
+}
+
+</pre>
+
+Va notato che non necessariamente i quadrati vengono cancellati.
+Infatti, se si preme il pulsante in un punto e si sposta il
+cursore tenendolo premuto, allora la coordinate
+<tt>(x,y)</tt> della funzione <tt>mouseUp</tt> sono diverse
+dal punto <tt>(x,y)</tt> della funzione <tt>mouseDown</tt>.
+Il programma che effettivamente cancella il quadrato disegnato
+deve memorizzare la sua posizione in una variabile globale,
+come viene fatto in
+<a href="DisegnaCancellaDue.java">DisegnaCancellaDue.java</a>,
+che viene riportato qui sotto.<p>
+
+<pre>
+/*
+  Disegna un punto finche' il mouse e' premuto,
+  poi lo cancella.
+*/
+
+import java.awt.*;
+
+public class DisegnaCancellaDue extends java.applet.Applet {
+
+  int lx,ly;
+
+  public boolean mouseDown(Event e, int x, int y) {
+    Graphics g=getGraphics();
+
+    lx=x;
+    ly=y;
+
+    g.fillRect(x-3,y-3,7,7);
+
+    return true;
+  }
+
+  public boolean mouseUp(Event e, int x, int y) {
+    Graphics g=getGraphics();
+
+    g.clearRect(lx-3,ly-3,7,7);
+
+    return true;
+  }
+}
+
+</pre>
+
+Va notato che le variabili globali non si possono chiamare
+<tt>x</tt> e <tt>y</tt>. Infatti, se si facesse cos&iacute;
+non si potrebbero usare all'intero delle funzioni
+<tt>mouseUp</tt> e <tt>mouseDown</tt>, che hanno le loro
+variabili con gli stessi nomi.<p>
+
+<p>
+<applet code="DisegnaCancella.class" height="400" width="400">
+</applet>
+
+</body>
+</html>
+

@@ -1,0 +1,123 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+<HEAD>
+<TITLE>Basi di Dati</TITLE>
+</HEAD>
+
+<BODY TEXT="darkblue" BGCOLOR="lightgrey">
+
+<hr>
+
+        <h1 align="center"><font color="red"><font
+        size=+3>Tesine del Corso di Basi di Dati</font></font></h1>
+<hr>
+
+<p><center>
+<h3>Corso di Laurea in Ingegneria Elettronica, Informatica, delle
+Telecomunicazioni</h3>
+<h4>Docente: <a href="/~lenzerini">Prof. Maurizio Lenzerini</a></h4> </center>
+</p>
+<hr>
+
+<p><h3><font color="blue">Modalit&agrave d'esame</font></h3> 
+
+<p> L'esame si compone di <b>una prova scritta e una prova orale</b>. La prova
+scritta consiste nel progetto di una base di dati, nella formulazione di query
+SQL, e in altre possibili domande. La prova orale include anche una discussione
+di una <b>tesina</b>, le cui modalit&agrave sono esposte qui sotto.</p>
+
+<p>Al fine di sostenere l'esame, il candidato deve consegnare una
+<b>tesina</b>, che sar&agrave valutata dall'Ing. <a href="/~cali">Andrea
+Cal&igrave</a>. <br> Valgono le seguenti regole:
+<ol>
+<li>La tesina &egrave una <b>prova di ammissione</b> all'esame; il voto
+assegnato ad una tesina &egrave <b>booleano</b> (ammesso/non ammesso). Lo
+studente che non supera la prova di ammissione perde la possibilit&agrave di
+sostenere l'esame, e deve ripresentarsi ad un appello successivo.</li> <li>La
+<b>assegnazione</b> della tesina avviene inviando le specifiche per posta
+elettronica e <b>in formato testo</b> all'Ing. <a
+href="mailto:cali@dis.uniroma1.it">Andrea Cal&igrave</a>, il quale
+provveder&agrave a valutare l'originalit&agrave del progetto, ovvero che esso
+non sia uguale ad uno gi&agrave presentato da un altro studente (anche in altri
+anni accademici), e dar&agrave una risposta in merito alla approvazione. Allo
+scopo di minimizzare possibili contestazioni, si consiglia di evitare domini
+banali (ad esempio studenti, impiegati, prodotti etc.), e fare invece
+riferimento ad un dominio applicativo che riguarda il proprio hobby. Saranno
+discusse <b>solo</b> le tesine preventivamente approvate, senza alcuna
+eccezione.</li> <li>La <b>consegna</b> della tesina avviene al momento della
+prova scritta; essa pu&ograve avvenire anche in orario di ricevimento,
+purch&eacute prima della prova scritta, che rimane l'ultimo termine per la
+consegna.</li> <li>La <b>discussione</b> della tesina avviene qualche giorno
+dopo la prova scritta.</li>
+</ol>
+</p>
+
+<p>Il materiale consegnato per la tesina deve consistere in un elaborato <b>in
+forma cartacea</b> pi&ugrave un dischetto contenente <b>tutto il codice</b>. Il
+progetto deve essere realizzato con <b>Oracle Lite</b> (la versione 8i &egrave
+fornita dal docente in prestito, su richiesta) oppure con <a
+href="http://www.postgresql.org"><b>Postgresql</b></a>, per gli studenti che
+utilizzano Linux. L'elaborato dovr&agrave essere strutturato nel modo seguente:
+<ol>
+<li>Una pagina di <b>requisiti</b> che riguarda i dati dell'applicazione e le
+operazioni fondamentali su di essi, secondo lo schema esemplificativo che si
+trova in <a href="requisiti.txt">questo file</a>. I requisiti devono essere
+inventati dallo studente, con la seguente avvertenza: <b>lo schema concettuale
+risultante dal progetto deve contenere almeno 5 e al massino 10 entit&agrave,
+circa 5 relazioni, almeno due relazioni ISA o una generalizzazione con almeno
+due entit&agrave figlie. Le operazioni fondamentali dell'applicazione devono
+essere circa 4.</b></li>
+<li>Lo schema concettuale dell'applicazione, corredato di tutti i vincoli
+previsti dai requisiti che non sono esprimibili mediante lo schema
+medesimo (1 o 2 pagine).</li>
+<li>Lo schema logico, corredato da una descrizione del procedimento seguito per
+condurre la progettazione logica (1 o 2 pagine). </li>
+<li>La descrizione di <b>tutti</b> i vincoli sulle relazioni ottenute,
+specificando in che modo essi sono implementati (in SQL, mediante trigger o da
+applicazione, secondo i criteri esposti ad esercitazione). Essendo il punto 10
+facoltativo, non &egrave necessario implementare quei vincoli che si prevede di
+implementare da applicazione. <b>Almeno un vincolo deve essere implementato
+tramite trigger</b>. Questo punto dovr&agrave essere svolto in 1 o 2
+pagine.</li>
+<li>Lo script in codice SQL della definizione delle relazioni dello schema
+logico.</li>
+<li>Lo script in codice SQL per popolare la base di dati con opportune tuple
+(<b>poche e significative</b>).</li>
+<li>Lo script in codice SQL (eventualmente corredato da pseudocodice) per la
+definizione delle operazioni previste nei requisiti.</li>
+<li>Il codice Java (facente uso di JDBC) delle stored procedure previste,
+corredato da un breve commento.</li>
+<li>Lo script di creazione dei trigger invocanti le stored procedure di cui al
+punto precedente, corredato da un breve commento su come tali trigger
+implementano i vincoli dell'applicazione.</li>
+<li><b>Facoltativamente</b>, il codice Java (facente uso di JDBC) che realizzi
+le operazioni di aggiornamento rilevanti, assicurando il controllo di quei
+vincoli di integrit&agrave non espressi in SQL n&eacute implementati mediante
+trigger.</li>
+<li> Il log (insieme dei messaggi di output del DBMS) dell'esecuzione di tutti
+gli script.</li>
+<li><b>Facoltativamente</b>, il log che mostri la attivazione di uno o
+pi&ugrave trigger in seguito alla violazione di un vincolo di
+integrit&agrave.</li>
+
+</ol>
+</p>
+
+<hr>
+<p><h3><font color="blue">Materiale</font></h3> 
+<ul>
+<li><a href="./aa2001-02/ottobre-29/eser.pdf">Lucidi</a> della lezione del 29 ottobre 2001,
+con allegato <a href="./aa2001-02/ottobre-29/eser.sql">file SQL</a></li>
+<li><a href="./aa2001-02/novembre-5/cali-05-11.ps">Lucidi</a> della lezione del 5 novembre
+2001. <a href="./aa2001-02/novembre-5/lezione-PDF.zip">Versione PDF</a></li>
+<li><a href="./aa2001-02/novembre-19/cali-19-11.ps">Lucidi</a> della lezione del 19 novembre 2001</li>
+<li><a href="./aa2001-02/dicembre-20/cali-20-12.ps">Lucidi</a> della lezione del 20 dicembre 2001</li>
+<li><font color="red"><a href="./aa2000-01/">Lucidi</a> dell'anno accademico 2000-2001</font></li>
+</ul>
+</p>
+<hr>
+Last modified: 23 January 2002
+</body>
+</html>
+
+

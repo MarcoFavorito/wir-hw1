@@ -1,0 +1,60 @@
+
+<HTML>
+
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html;charset=iso-8859-1">
+<meta name="GENERATOR" content="Microsoft Internet Assistant for Macintosh PowerPoint 98">
+ <TITLE>Alternative Plans 1 (No Indexes)</TITLE> 
+</HEAD>
+
+<BODY     >
+
+ <H1>Alternative Plans 1 (No Indexes)</H1> 
+ <P><UL></P>
+
+<P><LI><H2>Main difference:  push selects.
+</H2></P>
+
+<P></UL><UL></P>
+
+<P><LI><H2>With 5 buffers, cost of plan:
+</H2></P>
+
+<P><UL></P>
+
+<P><LI>Scan Reserves (1000) + write temp T1 (10 pages, if we have 100 boats, uniform distribution).
+<LI>Scan Sailors (500) + write temp T2 (250 pages, if we have 10 ratings).
+<LI>Sort T1 (2*2*10), sort T2 (2*3*250), merge (10+250)
+<LI>Total:  3560 page I/Os.
+</UL></UL><UL></P>
+
+<P><LI><H2>If we used BNL join, join cost = 10+4*250, total cost = 2770.
+</H2></P>
+
+<P></UL><UL></P>
+
+<P><LI><H2>If we `push’ projections, T1 has only sid, T2 only sid and sname:
+</H2></P>
+
+<P><UL></P>
+
+<P><LI>T1 fits in 3 pages, cost of BNL drops to under 250 pages, total < 2000.</UL></UL></P>
+
+<P></P> 
+<P>
+<TABLE>
+  <TD HEIGHT=100 WIDTH=100> <A HREF="tsld005.htm">Previous slide</A> </TD>
+  <TD HEIGHT=100 WIDTH=100> <A HREF="tsld007.htm">Next slide</A> </TD>
+  <TD HEIGHT=100 WIDTH=150> <A HREF="tsld001.htm">Back to first slide</A> </TD>
+  <TD HEIGHT=100 WIDTH=150> <A HREF="sld006.htm">View graphic version</A> </TD>
+</TABLE>
+<BR>
+</P>
+
+ <FONT size=4><STRONG> Notes: </FONT></STRONG>
+  <HR SIZE=3> <P> <UL>
+
+5</UL> </P> 
+
+</Body>
+</HTML>

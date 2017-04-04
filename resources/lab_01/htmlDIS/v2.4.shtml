@@ -1,0 +1,602 @@
+<html>
+
+
+<body bgcolor="#FFFFFF">
+<font face="Arial, Helvetica, sans-serif">
+
+<!-- TODO
+1) Module. ONCE or at REBOOT?
+2) Macro di dim pagine!!
+3) Che cavolo combina la make modules_install?
+4) Sistema le macro!
+-->
+
+
+<CENTER><h1><b>CCL v2.4</b></H1></CENTER>
+
+<h3><A name="index">Index</A></h3>
+<H4>
+<OL>
+<LI><A href="#prerequisites">Prerequisites</A>
+<LI><A href="#features">General Features</A>
+<LI><A href="#installation">Installation</A>
+<LI><A href="#initialization">Initialization API</A>
+<LI><A href="#checkpointing">Checkpointing API</A>
+<LI><A href="#communication">Communication API</A>
+</H4>
+</OL>
+
+<hr>
+
+<h3><a name="prerequisites">Prerequisites</a></h3> CCL v2.4 has been developed
+for LINUX 2.0.32 and M2M-PCI32C Myrinet cards. To properly use CCL v2.4 you
+must have already installed:
+
+<UL> <LI>The MyriAPI library to map the Myrinet
+card into application address space.
+
+<LI>The LANai tools to compile the CCL version of the Myrinet Control Program.
+</UL> 
+
+Both of them are available at the <A
+HREF="http://www.myri.com/">Myricom site</A>.  <p>Myricom is not
+supporting the MyriAPI for LINUX kernel versions later than
+2.2.x. This is the reason why CCL v2.4 software cannot be
+started on kernels later than 2.2.x. Specifically, for those kernels,
+Myricom does not currently provide software for initializing network
+cards and loading a customized Myrinet Control Program.<p> For kernel
+versions 2.2.x, simulation software using CCL must run with root
+permissions or at least SUID root. This is because access to the
+<b>/dev/mem</b> device performed by CCL is allowed exclusively with root
+permission on those kernels.
+<p>
+
+
+<hr>
+
+<H3><a name="features">General Features</A></H3> This library consists of three
+main components:
+
+<OL>
+
+  <LI>A Myrinet Control Program (MCP) run by the processor on the Myrinet
+card. This program manages the Myrinet card-side checkpoint and
+communication tasks.
+
+  <LI>An application level library that manages the
+host-side checkpoint and communication tasks.
+
+  <LI><A NAME="KM">A kernel module
+(KM)</A> that reserves blocks of memory to support low level operations
+(i.e. DMA data transfers to/from the LANai internal
+memory).  </OL>
+<p>
+
+<hr>
+
+<H3><a name="installation">Installation</A></H3> You must be able to gain root
+access in order to install this library (although you need it only in <A
+HREF="#module_install">step 6</A> of the installation), anyway every user can
+run it after the installation.  To install the library follow the steps below:
+<OL> <LI>Be sure that all the <a href="#prerequisites">necessary libraries</a>
+are already installed.<P>
+
+<LI>The CCL software is contained into a file <i>CCL-2.4.tar.gz</i>. From
+user account: unpack the file (copy CCL-2.4.tar.gz to a directory where
+you want to have the library source code, cd to that directory, and
+launch &quot;gunzip CCL-2.4.tar.gz ; tar -xvf CCL-2.4.tar&quot;). A directory
+called <B>CCL-2.4</B> containing the source code will be created. In
+the following steps you will need to modify only the <I>Makefile</I>
+and a single file in the subdirectory <B>library_dir</B> contained in the directory <B>CCL-2.4</B>.
+<p>
+
+
+
+<!--
+Two files are expected to be find in <B>library_dir</B>:
+<OL>
+<LI><B>network_map</B><BR>
+This file describes the network configuration and routing.
+<LI><A name="mcp4"><B>mcp4</B></A><BR>
+This file is the MCP used by CCL.
+</OL>
+-->
+
+<LI>Configure compile time values:<BR>
+
+You must correctly set the following parameters in the Makefile to ensure a succesfull compilation.
+
+<ul>
+  <LI><a name="SUID_EXECUTABLE"><B>SUID_EXECUTABLE</B></a>: if set to
+  1 indicates that simulation software will be run with root
+  provileges (i.e. SUID root or launched from root account); if set to
+  0 indicates that simulation software will be run with user
+  privileges. In the latter case, in <a href="#module_install">step
+  6</a> of the installation, read/write permission on the /dev/mem
+  special device file will be granted to generic users. We recall that
+  the value 1 for this parameter is required in case you use LINUX
+  kernel versions 2.2.x.
+
+
+  <LI><a name="LANAI_TOOLS"><B>LANAI_TOOLS</B></a>: indicates
+  the directory containing the LANai tools to compile a customized
+  Myrinet Control Program. 
+
+  <LI><a name="MYRI_HOME"><B>MYRI_HOME</B></a>: indicates the
+  directory containing the MyriAPI library (e.g. the directory
+  containing the unpacked MyriAPI library).
+
+  <LI><a name="LANAI_COMPILER"><B>LANAI_COMPILER</B></a>: indicates
+  the name of the compiler required to compile the
+  Myrinet Control Program. 
+  </UL>
+<p>
+
+
+You can modify the following parameters in the Makefile
+to control the runtime behavior of the library.
+  <UL>
+
+
+  <LI><a name="PACKET_SIZE"><B>PACKET_SIZE</B></a>: this is the size in words (1 word = 4 bytes)
+of the packets that can be transmitted/received through communication functionalities offered by CCL.
+
+
+<LI><a name="MAX_LP"><B>MAX_LP</B></a>: the maximum number of LPs
+that can run on a single machine.
+
+  <LI><a name="MAX_STACK_SIZE"><B>MAX_STACK_SIZE</B></a>: the maximum number of entries of the
+checkpoint stack of a single LP. Obviously it must be greater than
+<a href="#MIN_STACK">MIN_STACK_SIZE</a>.
+  <LI><a name="MIN_STACK"><B>MIN_STACK_SIZE</B></a>: the minimum number of entries of the
+checkpoint stack of a single LP. Obviously it must be lower than
+<a href="#MAX_STACK_SIZE">MAX_STACK_SIZE</a>.
+  <LI><a name="PAGES"><B>PAGES</B></a>: the minimum number of pages the <A HREF="#KM">kernel module (KM)</A>
+  reserves for DMA operations. On the IA-32 architecture each page is 4 Kbytes,
+  therefore the total number of Kbytes KM allocates is PAGES*4.
+  Even if you are not interested in checkpointing functionalities, but only in
+communication functionalities, care should be taken in allocating a
+  minimum amount of pages to support
+  DMA operations. Typically, 64 Kbytes, i.e. 16 pages on the IA-32
+architecture, should be enough when using relatively small _PACKET_SIZE, i.e. up to 32 words per packet (128 bytes packets).
+  <LI><a name="MCP_BURST"><B>MCP_BURST</B></a>: this is the <i>burst length</i> of CCL;
+burst tuning may affect communication and/or checkpointing performance as outlined
+in <a href="http://www.dis.uniroma1.it/~santoroa/publications.shtml#semiasync_burst">a proper study</a>. Normally it is safe
+to leave it at the default value (1024).
+</ul>
+
+
+  <P>
+
+<LI>Create a text file named <B><I><a
+name="network_map">network_map</a></I></B> containing the network
+configuration and place it into the subdirectory
+<b>library_dir</b>.<BR> The description of its specific syntax and an
+example <B><i>network_map</i></B> file (used for a cluster of 8 PCs on a
+M2M-OCT-SW8 switch) are included in the archive (see the
+<B><I>README.network_map</I></B> file).<BR>
+<U><B><I>Remember</I></B></U> to place a correct <B><i>network_map</i></B> file into <b>library_dir</b>.<P>
+
+
+<LI><A name="make">Compile CCL:</A><BR>
+Just cd to the directory <b>CCL-2.4</b>  and launch &quot;make&quot;.<P>
+
+<A NAME="module_install"><LI>Install the kernel module:<BR></A> Every
+step up to the previous one could be done with user privileges.  Now
+you <b>must</b> be root in order to perform this step.<p> 
+cd to the directory <b>CCL-2.4</b> and give "make install_module"<p>
+Sometimes, when asking for very large amounts of reserved memory the
+module installation might fail due to memory fragmentation or
+shortage. In this case, you get either an error message from the module
+itself or a kernel oops, and the machine must be rebooted to install
+the module. Make sure that the successive reboot does not run fsck
+before the module is installed. Otherwise extensive memory usage from
+fsck might once again give rise to failure in the module
+installation.<p>
+
+Now you can go back to user privileges.<P>
+
+<LI>Check <B>library_dir</B>:<BR>
+Now <B>library_dir</B> should contain the following files:
+<UL>
+<LI><B>network_map</B>: the network configuration file described above. It is your task to
+create a correct file and put it into <B>library_dir</B>.
+<LI><B>CCLmcp</B>: this the control program to be run by the
+processor on the Myrinet card. The compiler  generates it automatically.
+<LI><B>ccl.h</B>: any code employing CCL <U>must</U> include this file.
+<LI><B>libCCL.a</B>: any executable employing CCL <U>must</U> link this library. To achieve this you can use the <b>-L</b> and <b>-l</b> options while compiling simulation sofware.
+<LI><B>dummymcp</B>: an idle control prograM loaded on the Myrinet Card
+when shutting down CCL. The compiler  generates it automatically.
+</UL>
+
+Take care that any user of CCL has at least <B>&quot;r--&quot;</B>
+access to <b>library_dir</b> and its files.<P>
+
+
+
+<LI>How to write code embedding CCL's API:<BR>
+The file &quot;ccl.h&quot; in <B>library_dir</B> must be included
+in any code file that makes use of the CCL APIs described in this Guide.
+Also, as said above, the library &quot;libCCL.a&quot; must be linked
+with the rest of the application's object files to produce a working
+executable. Furthermore, the user is also required to link the libraries
+of the myriAPI (namely the files: <B>libLanaiDevice.a</B>, <B>libbfd.a</B>
+and <B>libiberty.a</B>).
+<P>
+</OL>
+
+<p>
+
+<hr>
+
+<H3><a name="initialization">Initialization API</A></H3>
+
+<UL> <LI> <B>int comm_init ()</B><BR> This function initializes the
+communication functionalities of CCL.  Communication functionalities must be
+initialized before any attempt to send/receive messages is made. Only other
+machines employing this same library can exchange messages with this one.  The
+function returns:
+  <UL>
+  <LI><B>COMM_INIT_OK</B>: if communication functionalities of CCL are initialized correctly.
+  <LI><B>COMM_INIT_FAIL</B>: if the inizialization failed for some
+  reason. In such a case, a message explaining reasons for the failure is sent to the standard error channel. This might help solving the problem.
+  </UL>
+Attempting to use the Communication API before the initialization
+leads to undefined runtime behavior.
+<p>
+
+<LI><B><A name="ckpt_init">int ckpt_init (int num_LPs, int
+max_state_size)</A></B><BR>
+
+
+     This function initializes the checkpointing functionalities
+offered by CCL.  It gets hold of the memory reserved by the kernel
+module (KM) and partitions it in <B>num_LPs</B> checkpoint stacks
+(i.e. a checkpoint stack for each LP hosted by the machine).  Each
+checkpoint stack consists of entries, each one of
+<b>max_state_size</b> bytes. Each entry is initially available to
+contain a new checkpoint. The maximum value allowed for
+<b>max_state_size</b> is XX bytes. The number of entries is no greater
+than <a href="#MAX_STACK_SIZE">_MAX_STACK_SIZE</a>. This function attempts to allocate at least <a
+href="#MIN_STACK_SIZE">_MIN_STACK_SIZE</a> entries per checkpoint stack. If not successful, it  
+fails.
+<br>The function
+returns:
+  <UL>
+  <LI><B>CKPT_INIT_OK</B>: if initialization is correct.
+ <LI><B>CKPT_INIT_FAIL_KERNEL</B>: if the library wasn't able to access to the reserved kernel memory for some reason.
+  <LI><B>CKPT_INIT_FAIL_PARTION</B>: if the library wasn't able to partition correctly the reserved kernel memory (e.g. too many LPs with too large minimum size for the checkpoint stack).
+  <LI><B>BAD_PARAMS</B>: if the parameters passed to the function are not consistent (e.g. a negative value for either <b>num_LPs</b> or <b>max_state_size</b>).
+
+
+  </UL>
+This function <B><I>must</I></B> be called <U>after</U> <B>comm_init()</B>. 
+Attempting to use the Checkpointing API before this function is called, and/or calling this function before
+<B><A name="comm_init">comm_init()</A></B> lead to undefined runtime behavior.<P>
+
+
+<LI><B>int ccl_close ()</B><BR>
+This function turns off any activated functionality of CCL.<br>
+
+The function returns:
+  <UL>
+  <LI><B>CCL_CLOSE_OK</B> upon success. In regular use this should always happen.
+  <LI><B>CCL_CLOSE_FAILED</B> should *never* be returned in regular use. Something very bad happened.
+  Please notify it <I>immediately</I> to <A HREF="mailto:santoro@dis.uniroma1.it">santoro@dis.uniroma1.it</A> or to <A HREF="mailto:quaglia@dis.uniroma1.it">quaglia@dis.uniroma1.it</A>.
+  <LI>Hangs: naturally it should *never* happen in regular use. Something very bad happened.
+  Please notify it <I>immediately</I> to <A HREF="mailto:santoro@dis.uniroma1.it">santoro@dis.uniroma1.it</A> or to <A HREF="mailto:quaglia@dis.uniroma1.it">quaglia@dis.uniroma1.it</A>.
+  </UL>
+This function should be called before exiting the simulation application.<P>
+</UL>
+<P>
+<b>Note:</b> the initialization API employs a single function to
+shut-down both communication and checkpointing
+functionalities. Instead, it employs two separate functions to
+start-up these functionalities. This is a design choice allowing the
+user to activate only the communication functionalities, without the
+need for keeping active checkpointing functionalities, if not required.
+<p>
+
+<hr>
+
+<h3><a name="checkpointing">Checkpointing API</A></h3>
+
+<B>Note:</B> most of the functions in the Checkpointing API require an identifier
+of LP as a parameter. It is intended that you have to pass a number between 0 and <B>num_LPs</B>-1,
+where <B>num_LPs</B> is defined, as in the description of <A href="ckpt_init">checkpoint_init()</A>,
+as the parameter that identifies the maximum number of LPs to be hosted by the machine.
+It is the programmer responsibility to associate with each LP a unique numeric identifier in the
+range between 0 and <B>num_LPs</B>-1.
+<br>
+
+
+<UL>
+<LI><B>void *get_state_pointer (int LP_id)</B><BR>
+This function allows retrieving a pointer to the buffer that will be
+destined for the state vector of a given LP, i.e. <b>LP_id</b>.
+<br>
+ This function
+returns:
+  <UL>
+<li> a pointer to that  buffer in case of success. Such a buffer was previously allocated and associated with
+<b>LP_id</b> by <B><A href="#ckpt_init">checkpoint_init ()</A></B>.  
+
+  <LI>NULL in case the function fails (e.g.  you specified a bad <B>LP_id</B>).
+
+
+  </UL>
+After the initialization of the checkpointing functionalities, this
+function returns always the same value when passing the same
+<B>LP_id</B> as parameter. Simulation software needs to  call it
+only during its initialization phase, once per each LP.
+
+
+<P>
+<LI><B><A name="non_block_ckpt">int non_block_ckpt(int LP_id,
+double simulation_clock, int block_option)</A></B><BR> This function starts a
+non-blocking checkpoint operation for a given LP. 
+It checks for the availability of an entry in the stack of checkpoints of
+<B>LP_id</B> to log the current value of the state vector of that same
+LP, and reserves that entry for the checkpoint operation. <br>
+
+If the value of the parameter <b>block_option</b> is set
+to 0 (this is the default), then the checkpoint operation is really
+executed in non-blocking mode. This means that the function
+signals to the control program run by the processor on
+the Myrinet card that it should start handling that checkpoint
+operation. 
+If the value of the parameter <b>block_option</b> is set to
+1, then the operation is actually executed in blocking mode, which
+means that data transfer between the LP state buffer and the
+checkpoint stack entry is charged on the host CPU. In this case we are
+not exploiting DMA based checkpointing capabilities offered by
+CCL. However, we are still exploiting low level memory management
+functionalities offered by the library, such as logging LP state vectors on
+reserved main memory areas.
+
+<br>The return values of this function are:
+  <UL>
+  <LI><B>CKPT_ACTIVATED</B> if the non-blocking checkpoint (case of
+  <b>block_option</b> set to 0) started correctly.
+  <LI><B>CKPT_BLOCK_COMMITTED</B> if the checkpoint operation has been charged to the CPU (case of
+  <b>block_option</b> set to 1) and has been correctly carried out.
+  <LI><B>CKPT_ALREADY_ACTIVE</B> if a non-blocking checkpoint
+  operation (previously activated with <b>block_option</b> set to 0)
+  is still being handled by the Myrinet device. (It is intended that a
+  non-blocking checkpoint operation is active from a successful
+  invocation of the function non_block_ckpt() until the
+  re-synchronization function <A
+  href="ckpt_cond_abort">ckpt_cond_abort()</A> in the API is called to
+  determine the definitve outcome, commit or abort, of that
+  operation.)  In this case, the function non_block_ckpt() fails and
+  the non-blocking checkpoint operation currently being issued is not
+  started.
+  <LI><B>CKPT_STACK_FULL</B> if the memory area destined to the stack of checkpoints of
+  <b>LP_id</b> has no available entry. Also in this case the function
+  fails with no activation of the corresponding checkpoint operation. 
+  <LI><B>BAD_PARAMS</B> if you pass incorrect parameters to the
+  function. Also in this case the function fails with no activation of
+  the corresponding checkpoint operation.  Note that
+  passing a value for <b>simulation_clock</b> which is lower than the simulation time
+  associated with the earliest checkpoint already maintaned in the stack of checkpoints of 
+ <b>LP_id</b> (i.e. the checkpoint at the top of the checkpoint stack)
+  is intended as a wrong parameter value.
+  <LI>Other values should never be returned in regular use. You met a bug. Please notify it to
+  <A HREF="mailto:santoro@dis.uniroma1.it">santoro@dis.uniroma1.it</A> or to
+  <A HREF="mailto:quaglia@dis.uniroma1.it">quaglia@dis.uniroma1.it</A>.
+  </UL>
+<P>
+
+<LI><B>int last_ckpt_time (int LP_id, double *ckpt_time)</B><BR> This
+function provides the value of the simulation time associated with the
+last taken checkpoint of <b>LP_id</b> by writing it into the memory location pointed by the parameter <b>ckpt_time</b>.<br>
+The return values of this function are:
+  <UL>
+  <LI><B>CKPT_TIME_RETRIEVED</B> upon success.
+  <LI><B>CKPT_STACK_EMPTY</B> in case the checkpoint stack of <b>LP_id</b>
+does not currently log any checkpoint.  In this case the memory
+location pointed by <b>ckpt_time</b> remains unaltered.
+  <LI><B>BAD_PARAMS</B> in case you pass incorrect parameters. 
+Also in this case the memory location pointed by <b>ckpt_time</b> remains unaltered.
+  <LI>Other values should never be returned in regular use. You met a bug. Please notify it to
+    <A HREF="mailto:santoro@dis.uniroma1.it">santoro@dis.uniroma1.it</A> or to
+      <A HREF="mailto:quaglia@dis.uniroma1.it">quaglia@dis.uniroma1.it</A>
+  </UL>
+  <P>
+
+
+<LI><B>int earliest_ckpt_time (int LP_id, double
+*ckpt_time)</B><BR> This function provides the value of the simulation
+time associated with the earliest checkpoint of <b>LP_id</b> currently
+logged within the checkpoint stack by writing it into the memory
+location pointed by the parameter <b>ckpt_time</b>.<br> The return
+values of this function are:
+  <UL>
+  <LI><B>CKPT_TIME_RETRIEVED</B> upon success.
+  <LI><B>CKPT_STACK_EMPTY</B> in case the checkpoint stack of <b>LP_id</b>
+does not currently log any checkpoint.  In this case the memory
+location pointed by <b>ckpt_time</b> remains unaltered.
+  <LI><B>BAD_PARAMS</B> in case you pass incorrect parameters. 
+Also in this case the memory location pointed by <b>ckpt_time</b> remains unaltered.
+  <LI>Other values should never be returned in regular use. You met a bug. Please notify it to
+    <A HREF="mailto:santoro@dis.uniroma1.it">santoro@dis.uniroma1.it</A> or to
+      <A HREF="mailto:quaglia@dis.uniroma1.it">quaglia@dis.uniroma1.it</A>
+  </UL>
+  <P>
+
+
+<LI><B>int available_ckpt_entries(int LP_id, int *entries)</B><BR>
+This function provides the number of currently available entries in
+the memory area reserved for the stack of checkpoints of
+<b>LP_id</b>. This number is written in the memory location pointed by
+<b>entries</b>.
+The return values of this function
+are:
+  <UL>
+  <LI><B>CKPT_ENTRIES_OK</B> upon success.
+  <LI><B>BAD_PARAMS</B> in case you pass incorrect parameters. 
+  In this case the memory location pointed by <b>entries</b> remains unaltered.
+  <LI>Other values should never be returned in regular use. You met a bug. Please notify it to
+    <A HREF="mailto:santoro@dis.uniroma1.it">santoro@dis.uniroma1.it</A> or to
+      <A HREF="mailto:quaglia@dis.uniroma1.it">quaglia@dis.uniroma1.it</A>
+  </UL>
+  <P>
+
+
+  <P>
+<LI><B>int prune_stack (int LP_id, double
+global_virtual_time)</B><BR> This function releases all the stack
+entries associated with checkpoints of <B>LP_id</B> having simulation
+time lower than the value of <b>global_virtual_time</b>. This happens
+for all those checkpoints except the most recent one. The memory area
+recovered is made again available for entries of the stack of
+checkpoints of that same LP. <br> The return values are:
+  <UL>
+  <LI>A positive number (or zero) indicating the number of checkpoints deleted from the stack.
+  <LI><B>BAD_PARAMS</B> in case you pass incorrect parameters. In this case the function fails.
+  <LI>Other values should never be returned in regular use. You met a bug. Please notify it to
+       <A HREF="mailto:santoro@dis.uniroma1.it">santoro@dis.uniroma1.it</A> or to
+         <A HREF="mailto:quaglia@dis.uniroma1.it">quaglia@dis.uniroma1.it</A>
+  </UL>
+  <P>
+
+
+
+
+<LI><B>int ckpt_reload (int LP_id, double recovery_time, double *recovered_time)</B><BR>
+This function copies back in the buffer hosting the state vector of <B>LP_id</B> the
+earliest checkpoint  of <B>LP_id</B> whose simulation time is less than or equal to
+<B>recovery_time</B>. It also notifies the simulation time of the
+reloaded checkpoint in the memory area pointed by
+<b>recovered_time</b>. Any checkpoint with simulation time greater than
+<B>recovery_time</B> is released from the checkpoint stack, and the corresponding memory
+locations are recovered and made available again for entries of the
+checkpoint stack destined to successive checkpoint operations for that
+same LP. <br> The return values of this function are:
+  <UL>
+  <LI><B>CKPT_RELOADED</B> upon success.
+  <LI><B>CKPT_PRUNED</B> in case no checkpoint with simulation time
+  lower than or equal to <b>recovery_time</b> is currently available in
+  the stack of checkpoints of <b>LP_id</b>. In this case the function
+  fails by leaving the buffer hosting the state vector of <B>LP_id</B>
+  unaltered.
+ <LI><B>CKPT_DATA_CONFLICT</B> in case there is an ongoing non-block
+  checkpoint operation involving the state vector of the LP. In this
+  case the function fails by leaving the buffer hosting the state
+  vector of <B>LP_id</B> unaltered.
+  <LI><B>BAD_PARAMS</B> in case you pass incorrect parameters. Also in
+  this case the function fails.
+  <LI>Other values should never be returned in regular use. You met a bug. Please notify it to
+    <A HREF="mailto:santoro@dis.uniroma1.it">santoro@dis.uniroma1.it</A> or to
+      <A HREF="mailto:quaglia@dis.uniroma1.it">quaglia@dis.uniroma1.it</A>
+  </UL>
+  <P>
+
+
+
+<LI><B>int active_ckpt(int *LP_id)</B><BR>
+This function retrieves the idenifier of the LP for which a non-blocking checkpoint operation is currently being handled by the Myrinet device. This identifier is made available in the memory area pointed by the parameter <b>LP_id</b>.
+<br>The return values of this function
+are:
+  <UL>
+  <LI><B>CKPT_ACTIVE</B> in case a previously activated checkpoint
+  operation, if any, was still in progress upon the invocation.
+  <LI><B>CKPT_NOT_ACTIVE</B> in case there is no in progress checkpoint operation upon the invocation. In this case the memory area pointed by  <b>LP_id</b> remains unaltered.
+  <LI>Other values should never be returned in regular use. You met a bug. Please notify it to
+    <A HREF="mailto:santoro@dis.uniroma1.it">santoro@dis.uniroma1.it</A> or to
+      <A HREF="mailto:quaglia@dis.uniroma1.it">quaglia@dis.uniroma1.it</A>
+  </UL>
+  <P>
+
+
+
+
+<LI><B><A name="ckpt_cond_abort">int ckpt_cond_abort (float threshold)</A></B><BR>
+
+This re-synchronization function should be called after the invocation
+of <A href="#non_block_ckpt"><B>non_block_ckpt()</B></A> in case you pass a value 0 for the parameter <b>block_option</b> to this same function.
+ckpt_cond_abort() checks the fraction of checkpoint operation that has already been
+carried out by the Myrinet device and compares it with
+<B>threshold</B> (i.e. a value between 0.0 and 1.0).
+If that fraction understeps <B>threshold</B>, then the ongoing
+checkpoint operation is aborted.  Otherwise the host CPU is forced to
+perform busy waiting until the completion of that checkpoint operation.
+Naturally, no busy waiting occurs in case the operation has been already completed. In such
+a case, ckpt_cond_abort() simply finalizes the operation.
+<br> 
+
+This function returns the following values:
+  <UL>
+  <LI><B>CKPT_COMMIT</B> in case the last activated checkpoint operation gets committed.
+  <LI><B>CKPT_ABORT</B> in case the last activated checkpoint operation gets aborted.
+  <LI><B>CKPT_NOT_ACTIVE</B> in case the last activated non-blocking checkpoint
+  operation, if any, has been already terminated by a previous
+  invocation to this same re-synchronization function.
+  <LI><B>BAD_PARAMS</B> in case you pass incorrect parameters.
+  <LI>Other values should never be returned in regular use. You met a bug. Please notify it to
+     <A HREF="mailto:santoro@dis.uniroma1.it">santoro@dis.uniroma1.it</A> or to
+       <A HREF="mailto:quaglia@dis.uniroma1.it">quaglia@dis.uniroma1.it</A>
+  </UL>
+  <P>
+
+
+</UL>
+
+
+
+<hr>
+
+<H3><A name="communication">Communication API</A></H3>
+
+<UL>
+<LI><B>int send_msg (int msg_type, void *message, int machine_id)</B><BR>
+This function sends a message, maintained in the memory area
+pointed by <B>message</B>, of size <A href="#PACKET_SIZE">specified at
+compile time</A> to the receive queue on the machine identified by <b>machine_id</b> (this
+is the identifier of the machine specified in the <a
+href="#network_map"><b>network_map</b> file</a>).
+<b>msg_type</b> is, for the current implementation, a number between 0
+and 7 each one identifying a different message stream at the
+destination point (i.e. the library allows handling 8 different
+communication channels between two end points). A return value of -1
+means that one of the parameters specified is not correct. Otherwise 0
+is returned.<P>
+
+<LI><B>int receive_msg (int msg_type, void *message, int
+*machine_id)</B><BR> This function receives a message of the type
+specified by <B>msg_type</B> if there is any to receive.
+<!--
+A value
+<B>msg_type</B> of -1 means that messages of any type are welcome.
+In
+such a case, the function performs the receive operation giving higher
+delivery priority to messages of lower type values.
+-->
+In case a message
+is to be received, it is written in the memory area pointed by
+<B>message</B> (be sure that the buffer is at least wide enough to
+contain the message), the source machine identifier (as specified by the <a
+href="#network_map"><b>network_map</b> file</a>) of that message is written in the
+memory area pointed by <B>machine_id</B> and the function returns
+the type value of the received message. If incorrect parameters are passed
+to the function -2 is returned. Otherwise -1 is returned.<P>
+</UL>
+<P>
+<HR>
+<P>
+<CENTER>Back to <A HREF="http://www.dis.uniroma1.it/~santoroa/">Andrea Santoro Page</A></CENTER>
+<CENTER>Back to <A HREF="http://www.dis.uniroma1.it/~quaglia/">Francesco Quaglia Page</A></CENTER>
+<p>
+<!--
+<UL>
+<LI><H2></H2>
+</UL>
+-->
+<HR>
+
+
+</font>
+
+
+</body>
+</html>

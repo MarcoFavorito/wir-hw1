@@ -1,0 +1,81 @@
+<HTML>  
+<HEAD>
+  <META NAME="GENERATOR" CONTENT="Adobe PageMill 3.0 Mac">
+  <TITLE>Grafico di funzioni in TurboC</TITLE>
+</HEAD>
+<BODY>
+
+<PRE><CODE>/* Grafico di funzioni - Esercitaz. in laboratorio 25/2/00 */</CODE>
+
+<CODE>#include &lt;stdio.h&gt;</CODE>
+<CODE>#include &lt;math.h&gt;</CODE>
+<CODE>#include &lt;graphics.h&gt;</CODE>
+<CODE>	/* Non ANSI, solo TurboC */</CODE>
+
+<CODE>#define COLORE 5</CODE>
+
+<CODE>main() {</CODE>
+<CODE>	float x, x1, x2, deltax, incrementox, y, y1, y2, deltay;</CODE>
+<CODE>	</CODE>
+<CODE>	int gdriver = DETECT, /* autorilevazione caratteristiche grafiche */</CODE>
+<CODE>          gmode;</CODE>
+
+<CODE>	int maxx, maxy, n, i;</CODE>
+
+<CODE>	printf(&quot;Benvenuto al programma per graficare funzioni.\n&quot;);</CODE>
+<CODE>	printf(&quot;Inserire intervallo [x1,x2]:\n&quot;);</CODE>
+
+<CODE>	do {</CODE>
+<CODE>		printf(&quot;x1=&quot;);</CODE>
+<CODE>		scanf(&quot;%f&quot;,&amp;x1);</CODE>
+<CODE>		printf(&quot;x2=&quot;);</CODE>
+<CODE>		scanf(&quot;%f&quot;,&amp;x2);</CODE>
+<CODE>	} while (x1&gt;=x2);</CODE>
+<CODE>	deltax=x2-x1;</CODE>
+
+<CODE>	do {</CODE>
+<CODE>		printf(&quot;y1=&quot;);</CODE>
+<CODE>		scanf(&quot;%f&quot;,&amp;y1);</CODE>
+<CODE>		printf(&quot;y2=&quot;);</CODE>
+<CODE>		scanf(&quot;%f&quot;,&amp;y2);</CODE>
+<CODE>	} while (y1&gt;=y2);</CODE>
+<CODE>	deltay=y2-y1;</CODE>
+
+<CODE>	do {</CODE>
+<CODE>		printf(&quot;Quanti campioni (almeno 2)? &quot;);</CODE>
+<CODE>		scanf(&quot;%d&quot;,&amp;n);</CODE>
+<CODE>	} while(n&lt;2);</CODE>
+<CODE>	getchar();</CODE>
+
+<CODE>	initgraph(&amp;gdriver, &amp;gmode, &quot;C:\\TC\\BGI&quot;);</CODE>
+
+<CODE>	maxx=getmaxx();</CODE>
+<CODE>	maxy=getmaxy();</CODE>
+
+<CODE>	/* traccio, se visibili, gli assi */</CODE>
+<CODE>	if((y1&lt;=0)&amp;&amp;(y2&gt;=0)) /* traccio asse X poich&eacute; y1&lt;y2 */</CODE>
+<CODE>		line(0,.5+maxy*y2/deltay,maxx,.5+maxy*y2/deltay);</CODE>
+
+<CODE>	if((x1&lt;=0)&amp;&amp;(x2&gt;=0)) /* traccio asse Y poich&eacute; x1&lt;x2 */</CODE>
+<CODE>		line(.5-x1*maxx/deltax,maxy,.5-x1*maxx/deltax,0);</CODE>
+
+<CODE>	/* inizia il grafico */</CODE>
+<CODE>	x=x1;</CODE>
+<CODE>	incrementox=deltax/(n-1);</CODE>
+<CODE>	while(x&lt;=x2) {</CODE>
+<CODE>		y=log(1/x);/* funzione da graficare */</CODE>
+<CODE>		if((y&gt;=y1)&amp;&amp;(y&lt;=y2)) /* se visibilo, traccio il punto */</CODE>
+<CODE>			putpixel(.5+maxx*(x-x1)/deltax,.5+maxy*(y2-y)/deltay,COLORE);</CODE>
+<CODE>		x+=incrementox;</CODE>
+<CODE>	}</CODE>
+
+<CODE>	printf(&quot;premi INVIO... &quot;);</CODE>
+<CODE>	getchar();</CODE>
+
+<CODE>	closegraph();</CODE>
+
+<CODE>	return 0;</CODE>
+<CODE>}</CODE></PRE>
+
+</BODY>
+</HTML>

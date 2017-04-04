@@ -1,0 +1,156 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+<HEAD>
+   <TITLE></TITLE>
+   <META NAME="Author" CONTENT="">
+   <META NAME="GENERATOR" CONTENT="Mozilla/3.01Gold (Win95; I) [Netscape]">
+</HEAD>
+<BODY BGCOLOR="#dfdfdf">
+
+<CENTER><DT><B><FONT SIZE=+2>Fondamenti di Informatica </FONT></B></DT></CENTER>
+
+<CENTER><DT><FONT SIZE=+1>Ingegneria Aeronautica, Meccanica, Elettrica,
+Materiali,</FONT></DT></CENTER>
+
+<CENTER><DT><FONT SIZE=+1>Nucleare, Chimica, Ambiente e Territorio </FONT></DT></CENTER>
+
+<CENTER><DT><B><FONT SIZE=+1>Appello del 19-2-1997</FONT></B></DT></CENTER>
+
+<CENTER><DT><B>PRIMA PARTE</B></DT></CENTER>
+
+<P><B>Esercizio 1 (18 punti)</B></P>
+
+<P>Una associazione naturalistica sta studiando la fauna selvatica di un
+bosco che si estende su una supeficie di 20km x 30km. In particolare vuole
+registrare il numero di tane di volpi e di scoiattoli. Per fare ci&ograve;
+ha suddiviso il bosco in ‘regioni’ di 1 km2 e le ha identificate con due
+coordinate con valori che variano da 0 a 19 e da 0 a 29. La regione di
+coordinate 0,0 include il punto fissato come origine, mentre la regione
+5,6 &eacute; situata 5km a sud e 6km ad est dal punto fissato come origine.
+</P>
+
+<DT>Per ogni regione vengono memorizzate le seguenti informazioni: </DT>
+
+<DT>&middot; le coordinate stabilite con le regole descritte </DT>
+
+<DT>&middot; il numero di tane di volpe (0 se assenti) </DT>
+
+<DT>&middot; il numero di tane di scoiattolo (0 se assenti)</DT>
+
+<P>Non tutte le regioni sono state censite e i dati sono stati memorizzati
+in un ordine casuale in una <B>lista</B> (rappresentata con record e puntatori).</P>
+
+<P>1. Scrivere le dichiarazioni di tipo delle strutture dati necessarie
+per risolvere i problemi seguenti. </P>
+
+<P>2. Scrivere un sottoprogramma che ricevendo in ingresso la lista e due
+coppie di coordinate, calcoli e restituisca in uscita il numero totale
+di tane di ognuno dei due animali presenti nell’area geografica definita
+dalle due coppie di coordinate. Ad esempio se le due coppie di coordinate
+sono 3,4 e 6,5 il sottoprogramma dovr&agrave; calcolare il numero totale
+di tane di ciascun animale che sono contenute nelle regioni (3,4), (3,5),
+(4,4), (4,5), (5,4), (5,5), (6,4), (6,5). </P>
+
+<P>3. Scrivere un sottoprogramma che ricevendo in ingresso la lista e la
+parola ‘volpe’ o la parola ‘scoiattolo’, crei e restituisca in uscita una
+nuova lista contenente i dati relativi alle regioni che contengono un numero
+maggiore di zero di tane dell’animale prescelto.</P>
+
+<P>
+<HR SIZE=6 WIDTH="100%"></P>
+
+<CENTER><DT><B><FONT SIZE=+2>Fondamenti di Informatica</FONT></B></DT></CENTER>
+
+<CENTER><DT><FONT SIZE=+1>Ingegneria Aeronautica, Meccanica, Elettrica,
+Materiali,</FONT></DT></CENTER>
+
+<CENTER><DT><FONT SIZE=+1>Nucleare, Chimica, Ambiente e Territorio </FONT></DT></CENTER>
+
+<CENTER><DT><B><FONT SIZE=+1>Appello del 19-2-1997</FONT></B></DT></CENTER>
+
+<CENTER><DT><B>SECONDA PARTE</B></DT></CENTER>
+
+<DT><B>Esercizio 2 (punti 4)</B></DT>
+
+<DT>Descrivere le funzioni del <B>gestore dei processi</B> e in particolare
+il modo in cui gestisce le interruzioni interne ed esterne.</DT>
+
+<DT><B>Esercizio 3 (4 punti)</B></DT>
+
+<DT>Che cosa stampa il programma seguente se vengono lette le coppie di
+dati (2.0, 3), (2.0, 10), (2.0, -3)? </DT>
+
+<DT>Motivare adeguatamente la risposta.</DT>
+
+<UL>
+<DT><B>program</B> CheFa; </DT>
+
+<DT><B>var</B> x: real; n: integer;</DT>
+</UL>
+
+<UL>
+<DT><B>function </B>P (x: real; n: integer): real; </DT>
+
+<DT><B>begin </B></DT>
+
+<DT><B><FONT COLOR="#FFFFFF">..</FONT>if </B>(n = 0) <B>then </B></DT>
+
+<DT><FONT COLOR="#FFFFFF">......</FONT>P := 1 </DT>
+
+<DT><B><FONT COLOR="#FFFFFF">..</FONT>else if</B> (n &gt; 0) <B>then</B></DT>
+
+<DT><B><FONT COLOR="#FFFFFF">...............</FONT>if </B>odd(n) <B>then
+</B></DT>
+
+<DT><FONT COLOR="#FFFFFF">...........................</FONT>P := x * P(x,
+n div 2) * P(x, n div 2) </DT>
+
+<DT><B><FONT COLOR="#FFFFFF">...............</FONT>else</B> </DT>
+
+<DT><FONT COLOR="#FFFFFF">...........................</FONT>P := P(x, n
+div 2) * P(x, n div 2)<B> </B></DT>
+
+<DT><FONT COLOR="#FFFFFF">..........</FONT><B>else</B> </DT>
+
+<DT><FONT COLOR="#FFFFFF">................</FONT>P := 1 / P(x, -n); </DT>
+
+<DT><B>end</B>;</DT>
+
+<DT><B>begin</B> </DT>
+
+<DT><FONT COLOR="#FFFFFF">..</FONT>readln(x); </DT>
+
+<DT><FONT COLOR="#FFFFFF">..</FONT>readln(n); </DT>
+
+<DT><FONT COLOR="#FFFFFF">..</FONT>writeln(P(x, n) : 10 : 4); </DT>
+
+<DT><B>end</B>.</DT>
+</UL>
+
+<DT><B>Esercizio 4 (4 punti)</B></DT>
+
+<DT>Dato il seguente programma FORTRAN </DT>
+
+<DT><FONT COLOR="#FFFFFF">.............</FONT>PROGRAM Matrici </DT>
+
+<DT><FONT COLOR="#FFFFFF">.............</FONT>REAL A(-5:4, 6), SomPos </DT>
+
+<DT>* legge una matrice reale </DT>
+
+<DT><FONT COLOR="#FFFFFF">.............</FONT>READ(*,*) A </DT>
+
+<DT>* richiama la function SomPos che calcola la somma degli elementi di
+valore positivo di A </DT>
+
+<DT><FONT COLOR="#FFFFFF">.............</FONT>WRITE(*,*) SomPos(A) </DT>
+
+<DT><FONT COLOR="#FFFFFF">.............</FONT>STOP </DT>
+
+<DT><FONT COLOR="#FFFFFF">.............</FONT>END</DT>
+
+<DT>scrivere la function SomPos.</DT>
+
+<DT><A HREF="970219.DOC"><IMG SRC="/images/floppy.gif" HEIGHT=33 WIDTH=32>Download testo in formato Word.</A> </DT>
+
+</BODY>
+</HTML>

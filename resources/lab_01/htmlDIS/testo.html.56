@@ -1,0 +1,79 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=windows-1252">
+<TITLE>testo.html</TITLE>
+</HEAD>
+<BODY>
+
+<H3 ALIGN="CENTER">
+Diploma Universitario di Ingegneria Informatica<br>
+Esame di Fondamenti di Informatica II - primo modulo <BR>
+A.A. 1999/2000 - Appello del 12 aprile 2000</H3>
+
+<B>Problema 1</B>&nbsp;&nbsp; Si consideri un guardaroba di un teatro, quando
+uno spettatore deposita un oggetto (ad esempio un cappotto, una borsa)
+all'oggetto viene associato un token identificativo (un intero maggiore di 0
+che identifica all'interno del deposito l'oggetto in modo univoco). La
+specifica del tipo astratto &egrave; la seguente <I>Guardaroba</I>: </P>
+
+<B><U><DL>
+<DT>TipoAstratto</U> <I>Guardaroba</I></B> </DT>
+<B><U><DT>Sorte</B></U> <I>GR</I> (sorta per il dominio di interesse) </DT>
+<B><U><DT>Funzioni</DT></U></b>
+
+<UL>
+<I><DT><LI><b>Crea</B></I> : <I>() --&gt; GR</I> <BR>
+precondizioni e postcondizioni per <I>Crea</I>() = <I>d</I> <BR>
+<U>pre</U>: nessuna <BR>
+<U>post</U>: <I>d</I> &egrave; un guardaroba con 0 oggetti e con token corrente pari a 1.</LI></DT>
+
+
+
+<B><I><DT><LI>TokenCorrente</B>() --&gt; Token</I><br>
+precondizione e postocondizioni per <I>TokenCorrente() = t</i><br>
+<U>pre</u>: nessuna<br>
+<U>post</u>: <I>t</I> &egrave; il token corrente.</DT>
+
+
+
+<B><I><DT><LI>AggiungiOggetto</B></I>: <I>(GR,Oggetto) --&gt; (GR, Token)</I> <BR>
+precondizioni e postcondizioni per <I>AggiungiOggetto</I>(<I>g</I>,<I>o</I>) = <I>(e,t)</I> <BR>
+<U>pre</U>: nessuna <BR>
+<U>post</U>: <I>e</I> &egrave; il guardaroba ottenuto da <I>g</I> aggiungendo l'oggetto <I>o</I>; all'oggetto <I>o </I>viene associato il token <I>t </I>pari a token corrente; il token corrente viene incrementato di una unit&agrave;.</LI></DT>
+
+<B><I><DT><LI>EstInGuardaroba</B> : (GR, Token) --&gt; Boolean</I><BR>
+precondizioni e postcondizioni per<I> EstInGuardaroba(g,t) = b</I> <BR>
+<U>pre</U>: nessuna<!-- MATH: $1 \leq i \leq QuanteAuto(d)$ --><BR>
+<U>post</U>: <I>b=true</I> se l'oggetto associato a t &egrave; nel guardaroba g<I>, b=false</I> altrimenti. </LI></DT>
+
+<B><I><DT><LI>RestituisciOggetto</B></I> : <I>(GR, Token) --&gt; (GR,Oggetto)</I><BR>
+precondizioni e postcondizioni per <I>RestituisciOggetto(g,t) = (e,a)</I> <BR>
+<U>pre</U>: l'oggetto al quale &egrave; associato il token <I>t</I> &egrave; nel guardaroba <I>g</I><BR>
+<U>post</U>: <I>e</I> &egrave; il guardaroba ottenuto da <I>g</I> eliminando l'oggetto <I>o</I> e <I>a</I> &egrave; l'oggetto al quale &egrave; associato il token <I>t</I>.</LI></DT>
+
+</UL>
+
+<B><U><DT>FineTipoAstratto</B></U></DT>
+
+<DD>&nbsp;</DD> <DT>Si vuole progettare una classe C++ <code>Guardaroba</code>
+che realizzi il tipo astratto <I>Guardaroba</I>. Si assuma che siano state
+definita una classe <code>Oggetto</code> che realizza il tipo astratto
+<I>Oggetto</I> della quale non sono note le funzioni pubbliche e
+private. Inoltre si rappresenti il tipo astratto <I>Token</I> come un intero
+non negativo.</DT>
+
+<B><P>Domanda 1</B>&nbsp;&nbsp; Si illustrino le scelte di progetto relative
+alla realizzazione del tipo astratto <I>Guardaroba</I> mediante la classe C++
+<code>Guardaroba</code>. </P>
+
+<B><P>Domanda 2</B>&nbsp;&nbsp;Si scriva la classe <code>Guardaroba</code> (file .h e file .cpp) secondo le scelte di progetto illustrate per la Domanda 1. Scrivere il codice di tutte le funzioni pubbliche e private della classe.</P>
+
+<B><P>Problema 2 </B>Realizzare una funzione esterna (non friend) della classe
+<code>Guardaroba</code> che dato un guardaroba restituisca il numero di
+oggetti in esso presenti.</P>
+
+<B><P>Problema 3 </B>Spiegare le caratteristiche principali delle classi C++
+che realizzano tipi astratti astrazione d'entit&agrave;, e illustrare come si
+rappresenta la relazione HAS-MANY.</P>
+     </BODY>
+</HTML>

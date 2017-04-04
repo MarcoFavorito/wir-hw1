@@ -1,0 +1,100 @@
+<!doctype html public "-//w3c//dtd html 4.0 transitional//en">
+<html>
+<head>
+<link href="java.css" rel="stylesheet" type="text/css">
+<title>Griglia e punti</title>
+</head>
+
+<body>
+
+<h2>Griglia e punti</h2>
+
+Realizziamo un applet che disegna prima una griglia di
+linee a distanza 30 l'una dall'altra, e poi disegna un
+quadratino in ogni punto in cui viene premuto il pulsante
+del mouse.<p>
+
+La parte in cui si risponde al click &egrave; la stessa
+del programma
+<a href="PuntiMouse.java">PuntiMouse.java</a>: l'effetto
+della pressione deve essere il disegno del rettangolo
+centrato intorno alla posizione corrente del mouse:<p>
+
+<pre>
+  public boolean mouseDown(Event e, int x, int y) {
+    Graphics g=getGraphics();
+
+    g.fillRect(x-2,y-2,4,4);
+
+    return true;
+  }
+</pre>
+
+La parte di disegno della griglia va eseguita subito, e
+non solo quando si preme il pulsante del mouse, per cui
+le istruzioni di disegno della griglia vanno messe all'interno
+del <tt>paint</tt> (la spiegazione di come si disegna la
+griglia &egrave; stata vista in una pagina precedente):<p>
+
+<pre>
+  public void paint(Graphics g) {
+    int i, j;
+    
+    for(i=0; i<=300; i=i+30) {
+      g.drawLine(0,i,300,i);
+      g.drawLine(i,0,i,300);
+    }
+  }
+</pre>
+
+<p>
+
+Il programma
+<a href="DrawAndClick.java">DrawAndClick.java</a>
+disegna una griglia, pi&ugrave; un quadratino per ogni
+punto in cui si preme il pulsante.<p>
+
+<pre>
+/*
+  Disegna nella finestra, e aggiunge quadrati dove
+viene premuto il pulsante del mouse.
+*/
+
+import java.awt.*;
+
+public class DrawAndClick extends java.applet.Applet {
+  public boolean mouseDown(Event e, int x, int y) {
+    Graphics g=getGraphics();
+
+    g.fillRect(x-2,y-2,4,4);
+
+    return true;
+  }
+
+  public void paint(Graphics g) {
+    int i, j;
+    
+    for(i=0; i<=300; i=i+30) {
+      g.drawLine(0,i,300,i);
+      g.drawLine(i,0,i,300);
+    }
+  }
+}
+
+</pre>
+
+Il risultato della esecuzione, premendo il pulsante in
+alcuni punti, &egrave; il seguente.<p>
+
+<center>
+<img src="DrawAndClick.gif">
+</center>
+<p>
+
+<applet code="DrawAndClick.class" width="500" height="500">
+</applet>
+
+
+</body>
+</html>
+

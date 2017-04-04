@@ -1,0 +1,211 @@
+<html><head><title>Eigenvalues :: Using the Symbolic Math Toolbox (Symbolic Math Toolbox)</title>
+<!-- $Revision$  $Date$ -->
+
+<!-- DOCNAME: Symbolic Math Toolbox -->
+<!-- CHUNKNAME: Eigenvalues -->
+<!-- CHAPNAME: Using the Symbolic Math Toolbox -->
+<!-- HEADSTUFF -->
+<link rel=stylesheet href="docstyle1.css" type="text/css">
+</head>
+<body bgcolor=#ffffff>
+<!-- NAVBARTOP -->
+<table border=0 width="100%" cellpadding=0 cellspacing=0><tr>
+<td valign=baseline bgcolor="#e7ebf7"><b>Symbolic Math Toolbox</b></td>
+<td valign=baseline bgcolor="#e7ebf7" align=right><a href="ch215.html"><img src="b_prev.gif" alt="Previous page" border=0></a>&nbsp;&nbsp;&nbsp;<a href="ch217.html"><img src="b_next.gif" alt="Next Page" border=0></a></td>
+</tr>
+</table>
+
+
+<a name="eigenvalues"></a><!-- H2 --><a name="7078"></a><p><font size=+1 color="#990000"><b>Eigenvalues</b></font><br class="hdr">
+<p><a name="7079"></a>The symbolic eigenvalues of a square matrix <code>A</code> or the symbolic eigenvalues and eigenvectors of <code>A</code> are computed, respectively, using the commands</p>
+<ul class=continued><li class=continued><pre><a name="7081"></a>E = eig(A)
+<a name="7082"></a>[V,E] = eig(A)
+</pre></li></ul>
+<p><a name="7083"></a>The variable-precision counterparts are</p>
+<ul class=continued><li class=continued><pre><a name="13988"></a>E = eig(vpa(A))
+<a name="13987"></a>[V,E] = eig(vpa(A))
+</pre></li></ul>
+<p><a name="65915"></a>The eigenvalues of <code>A</code> are the zeros of the characteristic polynomial of <code>A</code>, <code>det(A-x*I)</code>, which is computed by</p>
+<ul class=continued><li class=continued><pre><a name="7088"></a>poly(A)
+</pre></li></ul>
+<p><a name="7089"></a>The matrix <code>H</code> from the last section provides the first example:</p>
+<ul class=continued><li class=continued><pre><a name="7090"></a>H =
+<a name="7091"></a>[8/9, 1/2, 1/3]
+<a name="7092"></a>[1/2, 1/3, 1/4]
+<a name="7093"></a>[1/3, 1/4, 1/5]
+</pre></li></ul>
+<p><a name="7094"></a>The matrix is singular, so one of its eigenvalues must be zero. The statement</p>
+<ul class=continued><li class=continued><pre><a name="7095"></a>[T,E] = eig(H)
+</pre></li></ul>
+<p><a name="7096"></a>produces the matrices <code>T</code> and <code>E</code>. The columns of <code>T</code> are the eigenvectors of <code>H</code>:</p>
+<ul class=continued><li class=continued><pre><a name="26797"></a>T =
+<a name="26798"></a> 
+<a name="26799"></a>[    1, 28/153+2/153*12589^(1/2),  28/153-2/153*12589^(12)]
+<a name="26800"></a>[   -4,                        1,                        1]
+<a name="26801"></a>[ 10/3, 92/255-1/255*12589^(1/2), 292/255+1/255*12589^(12)]
+</pre></li></ul>
+<p><a name="38884"></a>Similarly, the diagonal elements of <code>E</code> are the eigenvalues of <code>H</code>:</p>
+<ul class=continued><li class=continued><pre><a name="26804"></a>E =
+<a name="26805"></a> 
+<a name="51727"></a>[0,                       0,                       0]
+<a name="51728"></a>[0, 32/45+1/180*12589^(1/2),                       0]
+<a name="51729"></a>[0,                       0, 32/45-1/180*12589^(1/2)]
+</pre></li></ul>
+<p><a name="7106"></a>It may be easier to understand the structure of the matrices of eigenvectors, <code>T</code>, and eigenvalues, <code>E</code>, if you convert <code>T</code> and <code>E</code> to decimal notation. To do so, proceed as follows. The commands</p>
+<ul class=continued><li class=continued><pre><a name="27395"></a>Td = double(T)
+<a name="27396"></a>Ed = double(E)
+</pre></li></ul>
+<p><a name="27399"></a>return</p>
+<ul class=continued><li class=continued><pre><a name="57303"></a>Td =
+<a name="57304"></a>    1.0000    1.6497   -1.2837
+<a name="57305"></a>   -4.0000    1.0000    1.0000
+<a name="57306"></a>    3.3333    0.7051    1.5851
+<a name="57307"></a>Ed =
+<a name="57308"></a>    0         0         0
+<a name="57309"></a>    0    1.3344         0
+<a name="57310"></a>    0         0    0.0878
+</pre></li></ul>
+<p><a name="27387"></a>The first eigenvalue is zero. The corresponding eigenvector (the first column of <code>Td</code>) is the same as the basis for the null space found in the last section. The other two eigenvalues are the result of applying the quadratic formula to </p>
+<ul class=continued><li class=continued><pre><a name="7107"></a>x^2-64/45*x+253/2160
+</pre></li></ul>
+<p><a name="7108"></a>which is the quadratic factor in <code>factor(poly(H))</code>.</p>
+<ul class=continued><li class=continued><pre><a name="27453"></a>syms x
+<a name="27454"></a>g = simple(factor(poly(H))/x);
+<a name="27459"></a>solve(g)
+<a name="105246"></a>
+<a name="105211"></a>ans =
+<a name="105213"></a>[ 32/45+1/180*12589^(1/2)]
+<a name="105209"></a>[ 32/45-1/180*12589^(1/2)]
+</pre></li></ul>
+<p><a name="7110"></a>Closed form symbolic expressions for the eigenvalues are possible only when the characteristic polynomial can be expressed as a product of rational polynomials of degree four or less. The Rosser matrix is a classic numerical analysis test matrix that illustrates this requirement. The statement</p>
+<ul class=continued><li class=continued><pre><a name="7112"></a>R = sym(gallery('rosser'))
+</pre></li></ul>
+<p><a name="7113"></a>generates</p>
+<ul class=continued><li class=continued><pre><a name="7114"></a> R = 
+<a name="7115"></a>[&nbsp;611   196  -192   407    -8   -52   -49    29]
+<a name="7116"></a>[&nbsp;196&nbsp;&nbsp;&nbsp;899   113  -192   -71   -43    -8   -44]
+<a name="7117"></a>[-192&nbsp;&nbsp;&nbsp;113   899   196    61    49     8    52]
+<a name="7118"></a>[ 407&nbsp;&nbsp;-192   196   611     8    44    59   -23]
+<a name="7119"></a>[ &nbsp;-8&nbsp;&nbsp;&nbsp;-71    61     8   411  -599   208   208]
+<a name="7120"></a>[&nbsp;-52   -43    49    44  -599   411   208   208]
+<a name="7121"></a>[&nbsp;-49    -8     8    59   208   208    99  -911]
+<a name="7122"></a>[ &nbsp;29   -44    52   -23   208   208  -911    99]
+</pre></li></ul>
+<p><a name="7123"></a>The commands</p>
+<ul class=continued><li class=continued><pre><a name="7124"></a>p = poly(R);
+<a name="7125"></a>pretty(factor(p))
+</pre></li></ul>
+<p><a name="60312"></a>produce</p>
+<ul class=continued><li class=continued><pre><a name="60320"></a>                2                  2                      2
+<a name="60321"></a> x (x - 1020) (x  - 1020 x + 100)(x  - 1040500) (x - 1000)   
+</pre></li></ul>
+<p><a name="60316"></a>The characteristic polynomial (of degree 8) factors nicely into the product of two linear terms and three quadratic terms. You can see immediately that four of the eigenvalues are 0, 1020, and a double root at 1000. The other four roots are obtained from the remaining quadratics. Use</p>
+<ul class=continued><li class=continued><pre><a name="7138"></a>eig(R)
+</pre></li></ul>
+<p><a name="7139"></a>to find all these values</p>
+<ul class=continued><li class=continued><pre><a name="104876"></a>ans =
+<a name="104878"></a>[                0]
+<a name="104879"></a>[             1020]
+<a name="104880"></a>[   10*10405^(1/2)]
+<a name="104881"></a>[  -10*10405^(1/2)]
+<a name="104882"></a>[ 510+100*26^(1/2)]
+<a name="104883"></a>[ 510-100*26^(1/2)]
+<a name="104884"></a>[             1000]
+<a name="104885"></a>[             1000]
+</pre></li></ul>
+<p><a name="107104"></a>The Rosser matrix is not a typical example; it is rare for a full 8-by-8 matrix to have a characteristic polynomial that factors into such simple form. If you change the two "corner" elements of <code>R</code> from 29 to 30 with the commands</p>
+<ul class=continued><li class=continued><pre><a name="7149"></a>S = R;  S(1,8) = 30;  S(8,1) = 30;
+</pre></li></ul>
+<p><a name="7150"></a>and then try</p>
+<ul class=continued><li class=continued><pre><a name="7151"></a>p = poly(S)
+</pre></li></ul>
+<p><a name="7152"></a>you find </p>
+<ul class=continued><li class=continued><pre><a name="105312"></a>p =
+<a name="105314"></a> x^8-4040*x^7+5079941*x^6+82706090*x^5-5327831918568*x^4+
+4287832912719760*x^3-1082699388411166000*x^2+51264008540948000*x
++40250968213600000
+</pre></li></ul>
+<p><a name="7158"></a>You also find that <code>factor(p)</code> is <code>p</code> itself. That is, the characteristic polynomial cannot be factored over the rationals.</p>
+<p><a name="7159"></a>For this modified Rosser matrix</p>
+<ul class=continued><li class=continued><pre><a name="7160"></a>F = eig(S)
+</pre></li></ul>
+<p><a name="7161"></a>returns</p>
+<ul class=continued><li class=continued><pre><a name="106934"></a>F =
+<a name="106936"></a>[  .21803980548301606860857564424981]
+<a name="106937"></a>[  999.94691786044276755320289228602]
+<a name="106938"></a>[  1000.1206982933841335712817075454]
+<a name="106939"></a>[  1019.5243552632016358324933278291]
+<a name="106940"></a>[  1019.9935501291629257348091808173]
+<a name="106941"></a>[  1020.4201882015047278185457498840]
+<a name="106942"></a>[ -.17053529728768998575200874607757]
+<a name="106943"></a>[ -1020.0532142558915165931894252600]
+</pre></li></ul>
+<p><a name="27519"></a>Notice that these values are close to the eigenvalues of the original Rosser matrix. Further, the numerical values of <code>F</code> are a result of Maple's floating-point arithmetic. Consequently, different settings of <code>digits</code> do not alter the number of digits to the right of the decimal place.</p>
+<p><a name="7177"></a>It is also possible to try to compute eigenvalues of symbolic matrices, but closed form solutions are rare. The Givens transformation is generated as the matrix exponential of the elementary matrix</p>
+<ul class=continued><a name="27548"></a><li class=continued><img src="ch2143.gif" alt="" align=bottom>
+</ul>
+<p><a name="27567"></a>The Symbolic Math Toolbox commands</p>
+<ul class=continued><li class=continued><pre><a name="27539"></a>syms t
+<a name="27547"></a>A = sym([0 1; -1 0]);
+<a name="27544"></a>G = expm(t*A)
+</pre></li></ul>
+<p><a name="7180"></a>return</p>
+<ul class=continued><li class=continued><pre><a name="27563"></a>[  cos(t),  sin(t)]
+<a name="27564"></a>[ -sin(t),  cos(t)]
+</pre></li></ul>
+<p><a name="27554"></a>Next, the command</p>
+<ul class=continued><li class=continued><pre><a name="7181"></a>g = eig(G)
+</pre></li></ul>
+<p><a name="7182"></a>produces</p>
+<ul class=continued><li class=continued><pre><a name="27572"></a>g =
+<a name="27574"></a>[ cos(t)+(cos(t)^2-1)^(1/2)]
+<a name="14036"></a>[ cos(t)-(cos(t)^2-1)^(1/2)]
+</pre></li></ul>
+<p><a name="7186"></a>you can use <code>simple</code> to simplify this form of <code>g</code>. Indeed, a repeated application of <code>simple</code></p>
+<ul class=continued><li class=continued><pre><a name="38970"></a>for  j = 1:4
+<a name="27583"></a>&nbsp;&nbsp;&nbsp;[g,how] = simple(g)
+<a name="27584"></a>end
+</pre></li></ul>
+<p><a name="38966"></a>produces the best result:</p>
+<ul class=continued><li class=continued><pre><a name="27586"></a>g =
+<a name="27588"></a>[ cos(t)+(-sin(t)^2)^(1/2)]
+<a name="27589"></a>[ cos(t)-(-sin(t)^2)^(1/2)]
+<a name="27591"></a>
+<a name="27592"></a>how =
+<a name="27594"></a>mwcos2sin
+<a name="27682"></a>
+<a name="27597"></a>g =
+<a name="27599"></a>[ cos(t)+i*sin(t)]
+<a name="27600"></a>[ cos(t)-i*sin(t)]
+<a name="27602"></a> 
+<a name="27603"></a>how =
+<a name="27605"></a>radsimp
+<a name="27628"></a> 
+<a name="27629"></a>g =
+<a name="27631"></a>[   exp(i*t)]
+<a name="27809"></a>[ 1/exp(i*t)]
+<a name="27810"></a>
+<a name="27811"></a>how =
+<a name="27798"></a>convert(exp)
+<a name="27744"></a>
+<a name="27640"></a>g =
+<a name="27642"></a>[  exp(i*t)]
+<a name="27643"></a>[ exp(-i*t)]
+<a name="27645"></a> 
+<a name="27646"></a>how =
+<a name="27648"></a>simplify
+</pre></li></ul>
+<p><a name="7190"></a>Notice the first application of <code>simple</code> uses <code>mwcos2sin</code> to produce a sum of sines and cosines. Next, <code>simple</code> invokes <code>radsimp</code> to produce <code>cos(t) + i*sin(t)</code> for the first eigenvector. The third application of <code>simple</code> uses <code>convert(exp)</code> to change the sines and cosines to complex exponentials. The last application of <code>simple</code> uses <code>simplify</code> to obtain the final form.</p>
+
+<br>
+
+
+<p><table bgcolor="#e7ebf7" border=0 width="100%" cellpadding=0 cellspacing=0><tr valign=top><td align=left width=20><a href="ch215.html"><img src="b_prev.gif" alt="Previous page" border=0 align=bottom></a>&nbsp;</td><td align=left>&nbsp;Linear Algebraic Operations</td><td>&nbsp;</td><td align=right>Jordan Canonical Form&nbsp;</td><td align=right width=20><a href="ch217.html"><img src="b_next.gif" alt="Next page" border=0 align=bottom></a></td></tr></table>
+
+<br>
+<!-- Copyright (c) 1999 by The MathWorks, Inc. -->
+<!-- Last updated: Thu Aug 12 05:55:37 2004 -->
+</body>
+</html>
+
+

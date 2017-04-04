@@ -1,0 +1,126 @@
+<HTML>
+<HEAD>
+<TITLE>
+Fondamenti di Informatica II - Secondo Modulo
+</TITLE>
+</HEAD>
+<BODY >
+
+<DIV ALIGN="CENTER">
+<FONT SIZE="+1"><B>Fondamenti di Informatica II - Secondo Modulo
+<BR>
+A.A. 1999/00 - Esercizio d'esame - prima parte
+</B></FONT></DIV> 
+
+<P>
+<P>
+
+<B>Problema 1</B>&nbsp;&nbsp;Una societ&#224; che offre servizi su internet (provider)
+gestisce diversi clienti abbonati. La specifica del tipo astratto
+``provider'' &#232;:<DL>
+<DT><STRONG><U>TipoAstratto</U> <I>Provider</I></STRONG>
+<DD><DT><STRONG><U>Commento</U></STRONG>
+<DD>ogni valore del tipo rappresenta una societ&#224;
+che offre servizi su internet
+   <DT><STRONG><U>Sorte</U></STRONG>
+<DD><I>Pro</I> (sorta per il dominio di interesse),
+                            &nbsp;&nbsp;&nbsp;<I>Cliente</I> sorta per il dominio dei clienti
+   <DT><STRONG><U>Funzioni</U></STRONG>
+<DD>&nbsp;&nbsp; 
+<DL>
+<DT><STRONG><I>Crea</I></STRONG>
+: 
+() ===> Pro
+<BR>
+precondizioni e postcondizioni per 
+<I>Crea</I>() = <I>p</I>
+<BR>
+  <U>pre</U>: nessuna
+<BR>
+  <U>post</U>: <I>p</I> &#232; una societ&#224; che non ha clienti abbonati
+<DT><STRONG>
+<I>NumeroClienti</I></STRONG>
+:
+(Pro) ===> Intero
+<BR>
+precondizioni e postcondizioni per 
+<I>NumeroClienti</I>(<I>p</I>) = <I>i</I>
+<BR>
+  <U>pre</U>: nessuna
+<BR>
+  <U>post</U>:  <I>i</I> &#232; il numero di clienti di <I>p</I>
+<DT><STRONG>
+<I>AggiungiCliente</I></STRONG>
+:
+(Pro, Cliente) ===> Pro
+<BR>
+precondizioni e postcondizioni per 
+<I>AggiungiCliente</I>(<I>p</I>,<I>c</I>) = <I>r</I>
+<BR>
+  <U>pre</U>: nessuna
+<BR>
+  <U>post</U>: se <I>c</I> non &#232; presente in <I>p</I>, <I>r</I> &#232; la societ&#224;
+  ottenuta da <I>p</I> aggiungendo il cliente <I>c</I>, che &#232; identificato dal numero
+  
+<I>NumeroClienti</I>(<I>p</I>) + 1; altrimenti, <I>r</I> &#232; uguale a <I>p</I>
+<DT><STRONG>
+<I>DammiCliente</I></STRONG>
+:
+(Pro,Intero) ===>
+Cliente
+<BR>
+precondizioni e postcondizioni per 
+<I>DammiCliente</I>(<I>p</I>,<I>i</I>) = <I>c</I>
+<BR>
+  <U>pre</U>:  
+1 <= i <= NumeroClienti(p)
+<BR>
+  <U>post</U>: <I>c</I> &#232; l'<I>i</I>-esimo cliente di <I>p</I></DL>
+<DT><STRONG><U>FineTipoAstratto</U></STRONG>
+<DD></DL>
+
+<P>
+<P>
+
+<B>Domanda 1 </B>&nbsp;&nbsp;Scrivere la definizione (solo file.h) di una
+classe C++ <TT>Provider</TT> che realizzi il tipo astratto <I>Provider</I> in
+modo da rendere <i>DammiCliente</i> il pi&ugrave; efficiente possibile. Si
+assuma l'esistenza della classe <TT>
+ Cliente</TT>, cos&#236; specificata<PRE>
+class Cliente
+{public:
+  Cliente(int d);            // costruisce un cliente che ha bisogno di d KByte di memoria
+  int DammiRichiesta();      // restituisce il numero di KByte di cui il cliente ha bisogno
+  // non interessa il resto
+};
+</PRE>
+Si discuta la complessit&agrave; di ciascuna delle funzioni del tipo astratto.
+<P>
+<P>
+
+<B>Domanda 2 </B>&nbsp;&nbsp;Il provider deve decidere di quali clienti
+soddisfare la richiesta di memoria. La decisione deve essere presa sulla base
+dei seguenti criteri:
+<UL>
+<LI>esiste un limite sulla dimensione della memoria che il provider mette
+  complessivamente a disposizione dei clienti,
+<LI>ad ogni cliente viene assegnato o zero KByte, oppure tutti i KByte che
+   egli richiede,
+<LI>occorre massimizzare il numero di clienti soddisfatti.
+</UL>
+Il ``problema dell'assegnazione di memoria'' &#232; definito nel seguente modo.
+Avendo come input
+<UL>
+<LI>un oggetto <TT>p</TT> della classe <TT>Provider</TT>,
+<LI>un intero <TT>b</TT> che rappresenta il numero di Kbyte che il provider
+     mette complessivamente a disposizione dei clienti,
+</UL>
+si deve decidere di quali clienti del provider <TT>p</TT> soddisfare la
+richiesta.
+
+<P> Si risolva detto problema utilizzando la tecnica greedy (o golosa),
+discutendo brevemente la suddivisione in stadi della generico elemento dello
+spazio di ricerca utilizzato (cio&egrave; la strutturazione della soluzione
+astratta) ed il criterio di scelta greedy adottato.  Scrivere una funzione
+ che risolva il problema mediante l'algoritmo generico <code>Greedy</code>.
+</BODY> </HTML>

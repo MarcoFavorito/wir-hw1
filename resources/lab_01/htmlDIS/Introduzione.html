@@ -1,0 +1,151 @@
+<!doctype html public "-//w3c//dtd html 4.0 transitional//en">
+<html>
+<head>
+<link href="java.css" rel="stylesheet" type="text/css">
+<title>Java</title>
+</head>
+
+<body>
+
+
+<h1>Introduzione</h1>
+
+
+
+<h2>Primo programma Java</h2>
+
+<p>
+Questo &egrave; il contenuto del file
+<a href="Primo.java">Primo.java</a>. Quando
+questo programma viene compilato ed eseguito, 
+stampa la stringa ``Sto eseguendo il programma".
+
+<pre>
+/*
+  Un esempio di programma Java.
+  Questo e' un commento.
+*/
+
+class Primo {
+  public static void main (String args[]) {
+
+    System.out.println("Sto eseguendo il programma");
+  }
+}
+
+</pre>
+
+<p>
+In dettaglio: le prime quattro righe sono un commento:
+in Java, &egrave; possibile mettere delle note nel codice
+per renderlo pi&ugrave; facile da capire, oppure (come
+in questo caso) per indicare quale &egrave; la funzione
+che il programma o una sua parte svolge. Tutto ci&ograve;
+the si trova dopo i due caratteri <tt>/*</tt> ma prima
+di <tt>*/</tt> viene ignorato dal compilatore. In altre
+parole, cancellando le prime quattro righe dal programma
+di sopra, il programma continua a svolgere la stessa
+funzione.
+
+<p>
+La linea <tt>class Primo {</tt> identifica il nome della
+classe che si sta definendo. In questo corso le classi non
+verranno trattate, quindi non serve sapere perch&egrave;
+questa linea &egrave; scritta in questo modo. Tutto quello
+che serve sapere per ora &egrave; che la prima linea di
+un programma Java (dopo eventuali commenti) &egrave; fatta
+in questo modo: la parola <tt>class</tt> seguita dal nome
+del programma, seguita dal resto del programma incluso fra
+due parentesi graffe. Se il nome del file sorgente fosse
+stato per esempio ``Abcd.java", allora la prima linea del
+programma sarebbe stata <tt>class Abcd {</tt>, cio&egrave; la
+parola che segue ``class" &egrave; il nome del file sorgente
+senza la estensione .java
+
+<p>
+La linea immediatamente successiva &egrave;
+<tt>public static void main (String args[]) {</tt>. Per il
+momento, non &egrave; necessario sapere il perch&egrave;,
+per cui non approfondiamo l'argomento.
+
+<p>
+La linea <tt>System.out.println("Sto eseguendo il programma");</tt>
+&egrave; un comando che dice al calcolatore di stampare sullo
+schermo la frase <tt>Sto eseguendo il programma</tt>, senza
+le virgolette.
+
+<p>
+Due parentesi graffe chiuse concludono il programma. Il
+programma non viene compilato se ci sono parentesi graffe
+aperte che non sono state chiuse.<p>
+
+<h4>Riassunto</h4>
+
+<p>
+Tutto quello che si trova tra <tt>/*</tt> e <tt>*/</tt>
+viene ignorato; a parte i commenti, ogni programma ha
+la struttura
+
+<pre>
+class Nomefile {
+  public static void main (String args[]) {
+
+    Istruzioni
+  }
+}
+</pre>
+
+<p>
+In questo schema, <tt>Nomefile</tt> &egrave; il nome del file
+(senza estensione), mentre le istruzioni che il calcolatore deve
+eseguire vanno messe dove appare la parola <tt>Istruzioni</tt>.
+
+</body>
+
+
+
+
+
+<h2>Una sequenza di istruzioni</h2>
+
+<p>
+Nel caso in cui il programma deve eseguire pi&ugrave;
+istruzioni invece di una sola, occorre mettere queste
+istruzioni una dietro l'altra, come si vede nel
+programma <a href="Sequenza.java">Sequenza.java</a>:
+
+<pre>
+/*
+  Una sequenza di istruzioni di stampa
+*/
+
+class Sequenza {
+  public static void main (String args[]) {
+
+    System.out.println("onde si muovono a diversi porti");
+    System.out.println("per lo gran mar de l'essere, e ciascuna");
+    System.out.println("con istinto a lei dato che la porti.");
+  }
+}
+
+</pre>
+
+<p>
+La istruzione <tt>System.out.println</tt>, come si &egrave;
+gi&agrave; visto, stampa una sequenza di caratteri, seguita
+da un ritorno a capo. Per cui, se si vuole stampare la
+sequenza <tt>abcd efg</tt>, la istruzione che occorre eseguire
+&egrave: <tt>System.out.println("abcd efg");</tt><p>
+
+</body>
+
+
+
+
+
+
+
+</body>
+
+</body>
+</html>

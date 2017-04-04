@@ -1,0 +1,87 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+"http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<title>Esempio domanda FIFO</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+</head>
+
+<body>
+<h3>Corso di Laurea in Ing. Informatica, 
+Universita' La Sapienza<br>
+Sistemi Operativi II<br>
+Docente Roberto Baldoni</h3>
+<h3> Esempio di domanda di programmazione (argomento: FIFO - Appello del 5 Aprile 2004). </h3>
+<p>Si vuole realizzare una semplice chat tramite le FIFO UNIX. Il programma da realizzare deve gestire concorrentemente la ricezione e l'invio di nuovi messaggi . La comunicazione tra due programmi omologhi avviene su due fifo differenti: </p>
+<ol>
+  <li> all'avvio il programma richiede, tramite parametro a riga di comando, un identificativo del programma stesso (ad esempio “pluto”). Tale identificativo sar&agrave; anche il nome della fifo su cui il programma si metter&agrave; in attesa di connessioni. </li>
+  <li>Successivamente, il programma richiede l'inserimento di un identificativo (ad esempio “pippo”) di un altro programma con il quale si vuole comunicare. </li>
+  <li> il programma “pluto” legger&agrave; da tastiera stringhe per poi trasferirle al programma “pippo” che le stamper&agrave; a video. </li>
+</ol>
+<p>Di seguito viene riportato lo scheletro del codice che realizza la chat descritta: scrivere il codice mancante. </p>
+<pre>
+#include  &lt;fcntl.h&gt;
+#include  &lt;stdio.h&gt;
+#include  &lt;stdlib.h&gt;
+#include  &lt;string.h&gt;
+#include  &lt;signal.h&gt;
+#include  &lt;sys/errno.h&gt;
+#include  &lt;sys/stat.h&gt;
+#include  &lt;sys/types.h&gt;
+#include  &lt;unistd.h&gt;
+
+#define   COMMAND_LENGTH  1024
+extern int errno;
+
+void handler();
+
+char* fifo_name;
+
+int main(int argc, char *argv[]) {
+   int fd, i=1;
+   char line[COMMAND_LENGTH+1];
+   char buff[256];
+   int ret;
+   char* user;
+
+   signal(SIGPIPE, handler);
+   signal(SIGINT,  handler);
+   signal(SIGHUP,  handler);
+
+   if (argc==1) {
+      printf("Sintassi: %s username\n", argv[0]);
+      exit(0);
+   }
+   
+   fifo_name = (char*)malloc(sizeof(argv[1]));
+   strcpy(fifo_name, argv[1]);
+
+   if (argc==1) {
+      printf("Sintassi: %s username\n", argv[0]);
+      exit(0);
+   }
+   // crea la fifo "server"
+   if ((mkfifo(fifo_name,O_CREAT|0666) &lt; 0) && (errno != EEXIST)) {
+      perror("Can't create FIFO");
+      exit(1);
+   }
+
+   // stabilisce la comunicazione con il partner
+   printf("Inserire lo user name della persona con cui vuoi parlare: ");
+   fgets(buff, 256,stdin);
+   user = (char*)malloc(sizeof(char*)*(strlen(buff)-1));
+   for (i=0; i &lt; (strlen(buff)-1); i++)
+      user[i] = buff[i];
+   user[i]='\0';
+
+   <strong>// completare il codice</strong>
+}
+
+void handler() {
+   printf("########### Error ###########\nPartner has been disconnected..... process exit.\n#############################\n\n");
+   unlink(fifo_name);
+   exit(1);
+}
+</pre>
+</body>
+</html>

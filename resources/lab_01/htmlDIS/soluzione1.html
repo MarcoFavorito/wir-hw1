@@ -1,0 +1,50 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"         "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="it">
+<head>
+	<title>Soluzione domanda PIPE</title>
+</head>
+<body>
+
+<h3>Corso di Laurea in Ing. Informatica, Universita' La Sapienza<br>
+  Sistemi Operativi II
+  Docente Roberto Ba<br>
+  ldoni</h3>
+<h3> Soluzione della domanda di programmazione (argomento: PIPE).</h3>
+<p>Le operazioni che il thread deve effettuare sono abbastanza semplici:</p>
+<ol>
+  <li>il primo passo &egrave; ottenere lo struct thread_info in cui sono memorizzati i riferimenti della pipe sulla quale scrivere il risultato parziale;</li>
+  <li>il passo successivo &egrave; quello del calcolo della somma degli elementi della riga della matrice:
+    <ul>
+      <li> in questo caso il si dichiara scrittore della pipe, quindi chiude il canale di lettura della pipe;</li>
+      <li>effettua il calcolo;</li>
+      <li>scrive il risultato nella pipe;</li>
+      <li>chiude la pipe anche in scrittura (ha terminato il suo compito);</li>
+      <li>esce comunicando al padre l'esito dell'operazione; </li>
+    </ul>
+  </li>
+</ol>
+<p>(<a href="esempio_pipe.c">codice completo</a>) </p>
+<pre>
+void* row_sum(void* arg) {
+   struct thread_info *this_info;
+   int i, partial_sum=0;
+   int status = 0;
+
+   this_info = (struct thread_info *)arg;
+   printf("Thread %d: letti i dati di input.\n",this_info->thread_id);
+
+   close(this_info->pipe_fd[0]);
+   for (i=0; i&lt;N; i++) {
+      partial_sum += this_info->row[i];
+      printf("Somma parziale thread %d: %d\n",this_info->thread_id,partial_sum);
+   }
+   if (write(this_info->pipe_fd[1], &partial_sum, sizeof(int))==-1) {
+      printf("Thread %d: errore durante la write.\n", this_info->thread_id);
+      status = -1;
+   }
+   close(this_info->pipe_fd[1]);
+   pthread_exit((void*)&status);
+}
+</pre>
+</body>
+</html>

@@ -1,0 +1,99 @@
+<!doctype html public "-//w3c//dtd html 4.0 transitional//en">
+<html>
+<head>
+<link href="java.css" rel="stylesheet" type="text/css">
+<title>Archi</title>
+</head>
+
+<body>
+
+<h2>Archi</h2>
+
+Java mette a disposizione una istruzione per disegnare archi
+di cerchio e di ovale. L'istruzione si chiama <tt>drawArc</tt>,
+e ha i seguenti argomenti:<p>
+
+<center>
+<tt>
+drawArc(x,y,w,h,s,n);
+</tt>
+</center>
+<p>
+
+Un arco &egrave; semplicemente una parte di un cerchio o di
+una ellisse. Il modo pi&ugrave; semplice di dire come deve
+essere fatto un arco &egrave; quello di specificare come
+&egrave; fatta l'ellisse completa, e poi di dare
+l'indicazione del punto in cui l'arco comincia e quello
+in cui finisce. In Java, l'ellisse si specifica esattamente
+in questo modo: i primi tre numeri <tt>x,y,w,h</tt> sono
+esattamente la specifica della ellisse ``completa'', di cui
+l'arco fa parte; il numero <tt>s</tt> &egrave; il numero di
+gradi del punto in cui l'arco inizia; <tt>n</tt> &egrave;
+invece la ``lunghezza'' dell'arco in gradi.<p>
+
+Consideriamo di nuovo il disegno dell'ovale:<p>
+
+<center>
+<img src="ovale2.jpg">
+</center>
+<p>
+
+Quello che dobbiamo fare &egrave; segnare l'angolo che
+corrisponde a <tt>s</tt>, e da qui partiamo con un angolo
+ampio <tt>n</tt>.<p>
+
+<center>
+<img src="arco1.jpg">
+</center>
+<p>
+
+La parte di ovale che viene realmente disegnata &egrave; solo
+quella compresa nell'angolo ampio <tt>n</tt>.<p>
+
+<center>
+<img src="arco2.jpg">
+</center>
+<p>
+
+Non &egrave; difficile rendersi conto che questi sei numeri
+che vanno messi nella istruzione <tt>drawArc</tt>
+sono in grado di caratterizzare completamente l'arco: infatti,
+una volta specificato come &egrave; fatta l'ellisse completa,
+e i punti in cui inizia e finisce l'arco, questo &egrave;
+completamente specificato.<p>
+
+Il programma
+<a href="Archi.java">Archi.java</a>
+disegna alcuni archi nella finestra.<p>
+
+<pre>
+/*
+  Disegna degli archi.
+*/
+
+import java.awt.*;
+
+public class Archi extends java.applet.Applet {
+  public void paint(Graphics g) {
+    g.drawArc(0,0,100,100,45,360-90);
+
+    g.drawArc(100,0,100,100,-45,90);
+  }
+}
+
+</pre>
+
+Il risultato dell'esecuzione di questo programma &egrave;
+riportato sotto.<p>
+
+<center>
+<img src="Archi.gif">
+</center>
+<p>
+
+
+
+</body>
+</html>
+

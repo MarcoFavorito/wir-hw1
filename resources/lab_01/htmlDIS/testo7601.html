@@ -1,0 +1,229 @@
+  <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN"
+           "http://www.w3.org/TR/REC-html40/loose.dtd">
+<HTML>
+<META NAME="GENERATOR" CONTENT="TtH 2.25">
+                                                                     
+<center>  <b>   
+<title>cemn primo appello</title>
+Universit&#224; di Roma ``La Sapienza''<br>
+   Facolt&#224; di Ingegneria<br>
+   Corso di Fondamenti di Informatica - A.A. 2000/2001<br>
+   Corsi di Laurea: </b>Chimica, Elettrica, 
+Materiali,
+    Meccanica, Nucleare (vecchio ordinamento)</b><br>
+  Appello del <b>7 giugno 2001</b> - 1<sup>a</sup> prova scritta<br>
+  <em>tempo a disposizione: 2 ore</em>
+</center>
+<p>
+<b>Problema 1 (18 punti)</b>
+
+<p>
+Per lo svolgimento di un esame scritto di Fondamenti di Informatica, un 
+docente 
+prepara una lista degli studenti iscritti. 
+
+<p>
+<u>La lista &#232; rappresentata mediante record e puntatori</u>.
+
+<p>
+Ogni nodo della lista contiene le seguenti informazioni relative ad uno 
+studente:
+
+<UL>
+<p>
+
+<li> nome (stringa di al pi&#249; 20 caratteri)
+
+<li> cognome (stringa di al pi&#249; 20 caratteri)
+
+<li> matricola (stringa di 8 caratteri)
+
+<li> numerofila (intero: la fila di banchi in cui lo studente si siede)
+
+<li> posizfila (carattere indicante il posto della fila dove lo studente 
+si siede)
+</UL>
+<p>
+Gli studenti vengono fatti entrare nell'aula dello scritto seguendo la 
+lista. 
+Durante questa attivit&#224;, la lista viene modificata 
+assegnando ad ogni studente presente una posizione nell'aula 
+(es. 2D = quarto posto della seconda fila; 9A = primo posto della nona 
+fila). 
+
+<p>
+Se uno studente iscritto &#232; assente, 
+nei campi <tt>numerofila</tt> e <tt>posizfila</tt> si mette <tt>0</tt> e 
+<tt>'A'</tt>.
+
+<p>
+Purtroppo succede anche che si presenti una persona non iscritta! 
+Bisognerebbe respingerla, ma in questo compito assumiamo che sia 
+posibile accettarla e aggiungerla alla lista.
+
+<OL type="1">
+<p>
+
+<li> Definire i tipi di dato Pascal adeguati a risolvere i problemi di cui 
+ai 
+successivi punti 2) e 3). 
+Chiamare <tt>TIPOLISTAAPPELLO</tt> il tipo della lista di studenti 
+descritta sopra.
+
+<p>
+
+<li>	Scrivere una procedura Pascal, ESER2, che, ricevendo come parametri 
+
+<DL compact>
+<p>
+    <dt><b>-</b></dt>
+	<dd> una lista di tipo <tt>TIPOLISTAAPPELLO</tt>, 
+    <dt><b>-</b></dt>
+	<dd> una matricola, 
+    <dt><b>-</b></dt>
+	<dd> un intero 
+    <dt><b>-</b></dt>
+	<dd> e un carattere, 
+</DL>
+<p>
+assegni la posizione contraddistinta dall'intero e dal carattere alla 
+persona con 
+matricola data. 
+
+<p>
+Se la persona non e' iscritta, la matricola non e' in lista: 
+in tal caso bisogna che la procedura chieda nome e cognome della persona
+e aggiunga <u>in testa</u> alla lista un nuovo record, con i dati e la 
+posizione della persona.
+
+<p>
+
+<li> Scrivere una procedura Pascal ESER3 che, ricevendo 
+<u>una lista</u> di tipo <tt>TIPOLISTAAPPELLO</tt> <font 
+size="-1">(gi&#224; completata con le posizioni 
+degli studenti)</font> e <u>il nome di un file di testo</u>, 
+
+<UL>
+<p>
+    
+<li> elimini dalla lista tutti gli studenti che risultano assenti 
+    
+<li> e poi memorizzi nel file i dati rimasti in lista.
+</UL>
+<p>
+</OL>
+<center>  <b>   Universit&#224; di Roma ``La Sapienza''<br>
+   Facolt&#224; di Ingegneria<br>
+   Corso di Fondamenti di Informatica - A.A. 2000/2001<br>
+   Corsi di Laurea: </b>Chimica, Elettrica, 
+Materiali,
+    Meccanica, Nucleare (vecchio ordinamento)</b><br>
+  Appello del <b>7 giugno 2001</b> - 2<sup>a</sup> prova scritta<br>
+  <em>tempo a disposizione: 1 ora</em>
+</center>
+<p>
+<b>Problema 2 (4 punti)</b>
+Illustrare le caratteristiche e la rappresentazione della struttura di 
+PILA, mostrando, per ciascuna rappresentazione, l'implementazione in 
+PASCAL di almeno una operazione fondamentale.
+
+<p>
+<b>Problema 3 (4 punti)</b>
+
+<p>
+Descrivere gli algoritmi di ricerca che si conoscono, 
+mostrandone il funzionamento mediante alcuni e-sempi significativi.
+Spiegare le differenze esistenti tra gli algoritmi descritti,
+in termini di complessit&#224; computazionale
+
+<p>
+<b>Problema 4 (4 punti)</b> 
+Sia MATRIX &#232; una matrice di NxM numeri reali. Definiamo che MATRIX 
+&#232; <em>X-equa</em> se ciascuna colonna di <em>MATRIX</em> ha media 
+degli elementi pari a X.
+
+<p>
+Scrivere una unit&#224; di programma FORTRAN (denominata ESER4)
+che, ricevendo 
+
+<DL compact>
+<p>
+<dt><b>-</b></dt>
+	<dd> una matrice <em>MAT</em> di NxM numeri reali, 
+<dt><b>-</b></dt>
+	<dd> il nome di un file NMF 
+<dt><b>-</b></dt>
+	<dd> e quanti altri parametri si ritenga opportuno,
+</DL>
+<p>
+
+<UL>
+<li> memorizzi <em>MAT</em> nel file NMF (del quale non importa il 
+contenuto precedente)
+
+<li> modifichi <em>MAT</em> in modo che, se <em>max</em> &#232; la massima 
+media calcolata sulle
+colonne di <em>MAT</em>, <em>MAT</em> diventi <em>max</em>-equa.
+</UL>
+<p>
+<b>Scrivere inoltre</b> un esempio di main program contenente 
+un'invocazione dell'unit&#224; progettata. 
+In questo main program, comunque, le unit&#224; ulteriori
+che dovessero servire non vanno implementate: basta specificarne 
+le intestazioni (nome e parametri).
+
+<p>
+Ecco un esempio di matrice 2x3 non equa
+
+<p>
+[ </td><td nowrap align=center>
+<TaBle>
+<tr><td align="center"><TablE border=0><tr><td nowrap align=center>
+7 </td></TABle></td><td align="center"><TablE border=0><tr><td nowrap 
+align=center>
+6 </td></TABle></td><td align="center"><TablE border=0><tr><td nowrap 
+align=center>
+8</td></TABle></td>
+<tr><td align="center"><TablE border=0><tr><td nowrap align=center>
+2 </td></TABle></td><td align="center"><TablE border=0><tr><td nowrap 
+align=center>
+7 </td></TABle></td><td align="center"><TablE border=0><tr><td nowrap 
+align=center>
+6</td></TABle></td></TaBle>
+</td><td nowrap align=center>
+]
+
+<p>
+(le medie delle colonne sono 4.5, 6.5 e 7.0, quindi 
+<tt>7.0</tt> &#232; la massima media di valori di una colonna).
+Non c'&#232; un unico modo per ottenere che la matrice sia 
+7.0-<em>equa</em>.
+Ecco, senza scegliere la soluzione pi&#249; banale,
+come potrebbe diventare la matrice dopo l'uso 
+di ESER4:
+
+<p>
+[ </td><td nowrap align=center>
+<TaBle>
+<tr><td align="center"><TablE border=0><tr><td nowrap align=center>
+9.5 </td></TABle></td><td align="center"><TablE border=0><tr><td nowrap 
+align=center>
+6.5 </td></TABle></td><td align="center"><TablE border=0><tr><td nowrap 
+align=center>
+8</td></TABle></td>
+<tr><td align="center"><TablE border=0><tr><td nowrap align=center>
+4.5 </td></TABle></td><td align="center"><TablE border=0><tr><td nowrap 
+align=center>
+7.5 </td></TABle></td><td align="center"><TablE border=0><tr><td nowrap 
+align=center>
+6</td></TABle></td></TaBle>
+</td><td nowrap align=center>
+]
+
+<p>
+
+<p><hr><small>File translated from T<sub><font size="-1">E</font></sub>X 
+by <a href="http://hutchinson.belmont.ma.us/tth/">T<sub><font 
+size="-1">T</font></sub>H</a>, version 2.25.<br>On 17 Jul 2001, 
+16:55.</small>
+</HTML>

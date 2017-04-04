@@ -1,0 +1,73 @@
+<!doctype html public "-//w3c//dtd html 4.0 transitional//en">
+<html>
+<head>
+<link href="java.css" rel="stylesheet" type="text/css">
+<title>Come scrivere una stringa in un applet</title>
+</head>
+
+<body>
+
+<h2>Come scrivere una stringa in un applet</h2>
+
+Per stampare sulla finestra di testo il comando &egrave;
+<tt>System.out.println</tt>. Esiste un comando simile che
+permette di stampare in un punto qualsiasi della finestra
+di un applet. Il comando che si usa per scrivere in un
+applet &egrave; <tt>drawString()</tt>. Questa istruzione
+ha tre argomenti: il primo &egrave; la stringa da stampare,
+gli altri due sono le coordinate <i>x</i> e <i>y</i> in
+cui la stringa va stampata. Questa istruzione &egrave;
+simile alla <tt>System.out.println</tt>, con la differenza
+che &egrave; necessario specificare il punto della finestra
+in cui la stringa va stampata, e quindi sono necessari
+due argomenti interi che nella <tt>System.out.println</tt>
+non sono presenti.<p>
+
+Il programma
+<a href="Testo.java">Testo.java</a> stampa una stringa a
+partire dalla posizione (10,10).<p>
+
+<pre>
+/*
+  Un applet che disegna una stringa
+*/
+
+import java.awt.*;
+
+public class Testo extends java.applet.Applet {
+  public void paint(Graphics g) {
+
+    g.drawString("Questa e' una stringa",100,100);
+  }
+}
+
+</pre>
+
+Il risultato &egrave; il seguente.<p>
+
+<center>
+<img src="Testo.gif">
+</center>
+<p>
+
+Le coordinate <i>x</i> e <i>y</i> rappresentano il punto in
+cui la stringa viene iniziata a stampare. Per capire meglio
+quale &egrave; questo punto, consideriamo il programma
+<a href="InizioTesto.java">InizioTesto.java</a>, in cui il
+punto di coordinate (100,100) &egrave; stato evidenziato
+disegnando una linea da questo punto all'origine degli assi.
+Quello che si ottiene &egrave; il disegno in cui l'estremo in
+basso a sinistra del segmento &egrave; effettivamente il
+punto (100,100), che sono le coordinate che sono state
+messe nella istruzione <tt>drawString</tt>.<p>
+
+<center>
+<img src="InizioTesto.gif">
+</center>
+<p>
+
+
+</body>
+</html>
+
+

@@ -1,0 +1,121 @@
+<html>
+<head>
+<title>Diploma Universitario di Ingegneria Informatica,Esame di Fondamenti di Informatica II - primo modulo,A.A. 2002/03 - Appello del 9 luglio 2003</title>
+</head>
+
+<body>
+
+<h3 align="center">
+Diploma Universitario di Ingegneria Informatica<br>
+Esame di Fondamenti di Informatica II - primo modulo <br>
+  A.A. 2002/03 - Appello del 9 luglio 2003</h3>
+
+<p><b>Problema 1</b>&nbsp;&nbsp; Si consideri la seguente specifica del tipo astratto 
+  <i>NoleggioMotorini</i>: 
+<dl>
+  <dt><b><u>TipoAstratto</u></b><i> </i><i>NoleggioMotorini</i> 
+    <p> 
+  <dt><b><u>Sorte</u></b> <i>NM</i>(sorta per il dominio di interesse) 
+    <p> 
+  <dt><b><u>Funzioni</u></b> 
+    <p> 
+    <ul>
+      <li> 
+        <p><i>Crea : (Stringa, Intero) --&gt; NM</i> <br>
+          precondizioni e postcondizioni per <i>Crea(s,n) = m</i> <br>
+          <u>pre</u>: nessuna <br>
+          <u>post</u>: <i>m </i>&egrave; un noleggio motorini avente come nome 
+          <i>s</i> e che gestisce <i>n</i> motorini numerati da 0 a n-1; ciascun 
+          motorino &egrave; inizialmente nello stato di <i>funzionante</i> e <i>non 
+          affittato</i>. 
+      <li> 
+        <p><i>Nome : (NM) --&gt; Stringa</i> <br>
+          precondizioni e postcondizioni per <i>Nome(m) = s</i> <br>
+          <u>pre</u>: nessuna <br>
+          <u>post</u>: <i>s</i> &egrave; il nome del noleggio motorini <i>m</i>. 
+        </p>
+      <li> 
+        <p><i>NumMotorini : (NM) --&gt; Intero</i> <br>
+          precondizioni e postcondizioni per <i>NumMotorino(m) = n</i> <br>
+          <u>pre</u>: nessuna <br>
+          <u>post</u>: <i>n</i> &egrave; il numero di motorini gestiti dal noleggio 
+          motorini <i>m</i>. </p>
+      <li> 
+        <p><i>Noleggia : (NM,Intero,Persona) --&gt; NM</i><br>
+          precondizioni e postcondizioni per <i>Noleggia(m,i,p) = m'</i><br>
+          <u>pre</u>: <i>i</i> &egrave; compreso tra <i>0</i> e <i>NumMotorini(m)</i> 
+          ed il motorino <i>i</i>-esimo &egrave; nello stato di <i>funzionante</i> 
+          e <i>non affittato</i> <br>
+          <u>post</u>: <i>m'</i> &egrave; il noleggio motorini ottenuto da <i>m</i> 
+          ponendo l'<i>i</i>-esimo motorino nello stato di <i>affittato</i> dalla 
+          persona <i>p</i>. </p>
+      <li> 
+        <p><i>Restituito : (NM,Intero) --&gt; NM</i><br>
+          precondizioni e postcondizioni per <i>Restituito(m,i) = m'</i><br>
+          <u>pre</u>: <i>i</i> &egrave; compreso tra <i>0</i> e <i>NumMotorini(m)-1</i> 
+          ed il motorino <i>i</i>-esimo &egrave; nello stato 
+          di <i>affittato</i> <br>
+          <u>post</u>: <i>m'</i> &egrave; il noleggio motorini ottenuto da <i>m</i> 
+          ponendo l'<i>i</i>-esimo motorino nello stato di <i>non affittato</i>. </p>
+	  <li> 
+        <p><i>SiRompe : (NM,Intero) --&gt; NM</i><br>
+          precondizioni e postcondizioni per <i>SiRompe(m,i) = m'</i><br>
+          <u>pre</u>: <i>i</i> &egrave; compreso tra <i>0</i> e <i>NumMotorini(m)-1</i> 
+          ed il motorino <i>i</i>-esimo &egrave; nello stato di <i>funzionante</i> 
+          <br>
+          <u>post</u>: <i>m'</i> &egrave; il noleggio motorini ottenuto da <i>m</i> 
+          ponendo l'<i>i</i>-esimo motorino nello stato di <i>non funzionante</i> e <i>non affitato</i>. </p>
+	  <li> 
+        <p><i>EstFunzionante : (NM,Intero) --&gt; Booleano</i><br>
+          precondizioni e postcondizioni per <i>EstFunzionante(m,i) = b</i><br>
+          <u>pre</u>: <i>i</i> &egrave; compreso tra <i>0</i> e <i>NumMotorini(m)-1</i><br>  
+          <u>post</u>: <i>b</i> &egrave; <i>true</i>, se <i>i</i>-esimo motorino di <i>m</i> &egrave; nello stato di <i>funzionante</i>;
+		  <i>b</i> &egrave; <i>false</i> altrimenti. </p>
+	  <li> 
+        <p><i>EstAffittato : (NM,Intero) --&gt; (Booleano,Persona)</i><br>
+          precondizioni e postcondizioni per <i>EstAffittato(m,i) = (b,p)</i><br>
+          <u>pre</u>: <i>i</i> &egrave; compreso tra <i>0</i> e <i>NumMotorini(m)-1</i><br>
+          <u>post</u>: <i>b</i> &egrave; <i>true</i>, se <i>i</i>-esimo motorino 
+          di <i>m</i> &egrave; nello stato di <i>affitato</i> e in tal caso <i>p</i> 
+          &egrave; la persona alla quale &egrave affittato; <i>b</i> &egrave; 
+          <i>false</i> altrimenti e in tal caso <i>p</i> non &egrave; significativo. 
+        </p>
+      <li> 
+        <p><i>AggiungiMotorino : (NM) --&gt; NM</i><br>
+          precondizioni e postcondizioni per <i>AggiungiMotorino(m) = m'</i><br>
+          <u>pre</u>: nessuna<br>
+          <u>post</u>: <i>m'</i> &egrave; il noleggio motorini ottenuto aggiungendo ad <i>m</i> il motorino <i>NumMotorini(m}</i>-esimo, 
+		  ponendolo inizialmente nello stato di <i>funzionante</i> e <i>non affittato</i>. </p>
+    </ul>
+</dl>
+       <dt><b><u>FineTipoAstratto</u></b></dt>
+<p> Si vuole scrivere una classe C++ <code>NoleggioMotorini</code> che realizzi 
+  il tipo astratto <i>NoleggioMotorini</i>, considerando che per riferirsi al 
+  tipo astratto <i>Persona</i> &egrave; necessario utilizzare la classe <code>Persona</code> 
+  che si suppone gi&agrave; realizzata, della quale per&ograve; non &egrave; nota 
+  la definizione. 
+<p><b>Domanda 1</b>&nbsp;&nbsp; Si illustrino le scelte di progetto relative alla 
+  realizzazione del tipo astratto <i>NoleggioMotorini</i> mediante la classe C++ 
+  <code>NoleggioMotorini</code>. </p>
+
+<p><b>Domanda 2</b>&nbsp;&nbsp; Si scriva la classe <code>NoleggioMotorini</code> 
+  (file .h e file .cpp) secondo le scelte di progetto illustrate per la Domanda 
+  1. Scrivere il codice delle funzioni pubbliche e private della classe. La realizzazione 
+  del codice della funzione <em>AggiungiMotorino</em> &egrave; opzionale; tutto 
+  il resto &egrave; obbligatorio.</p>
+
+
+
+<p><b>Problema 2</b>&nbsp;&nbsp; Realizzare una funzione esterna (non friend) 
+  della classe <code>NoleggioMotorini</code> che, dato un oggetto <i>m</i> di 
+  tipo <code>NoleggioMotorini</code>, restituisca un array contenente le persone 
+  che hanno in affitto un motorino di <i>m</i> e la dimensione di detto array.</p>
+
+
+<p><b>Problema 3</b>&nbsp;&nbsp; 
+Spiegare brevemente il significato delle nozioni di <i>coesione</i>,
+<i>information hiding</i>, <i>accoppiamento</i>, e <i>interfacciamento
+esplicito</i>, e descrivere i criteri fondamentali che legano tali
+nozioni con la qualit&agrave; della modularizzazione.
+</body>
+</html>

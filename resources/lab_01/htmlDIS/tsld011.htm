@@ -1,0 +1,34 @@
+
+<HTML>
+
+<HEAD>
+<META HTTP-EQUIV="Context-Type" CONTEXT="text/html;charset=PREDEFINITA (AUTOMATICA)">
+<meta name="GENERATOR" content="Microsoft Internet Assistant for PowerPoint 97">
+ <TITLE>Scheduling Concurrent Transactions</TITLE> 
+</HEAD>
+
+<BODY     >
+
+ <H1>Scheduling Concurrent Transactions</H1> 
+ <P><UL>
+<LI><H2>DBMS ensures that execution of {T1, ... , Tn} is equivalent to some serial execution T1’ ... Tn’.
+</H2>
+<UL>
+<LI>Before reading/writing an object, a transaction requests a lock on the object, and waits till the DBMS gives it the lock.  All locks are released at the end of the transaction.  (Strict 2PL locking protocol.)
+<LI>Idea: If an action of Ti (say, writing X) affects Tj (which perhaps reads X), one of them, say Ti, will obtain the lock on X first and Tj is forced to wait until Ti completes; this effectively orders the transactions.
+<LI>What if Tj already has a lock on Y and Ti later requests a lock on Y? (Deadlock!) Ti or Tj is aborted and restarted! </UL></UL></P>
+<P></P> 
+<P>
+<TABLE>
+  <TD HEIGHT=100 WIDTH=100> <A HREF="tsld010.htm">Diapositiva precedente</A> </TD>
+  <TD HEIGHT=100 WIDTH=100> <A HREF="tsld012.htm">Diapositiva successiva</A> </TD>
+  <TD HEIGHT=100 WIDTH=150> <A HREF="tsld001.htm">Torna alla prima diaposiva</A> </TD>
+  <TD HEIGHT=100 WIDTH=150> <A HREF="sld011.htm">Visualizza versione grafica</A> </TD>
+</TABLE>
+<BR>
+</P>
+
+
+
+</Body>
+</HTML>

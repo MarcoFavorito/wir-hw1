@@ -1,0 +1,120 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=windows-1252">
+<META NAME="Generator" CONTENT="Microsoft Word 97">
+<TITLE>testo</TITLE>
+<META NAME="Template" CONTENT="C:\Programmi\Microsoft Office\Office\html.dot">
+</HEAD>
+<BODY>
+
+<P ALIGN="CENTER"><DIV ALIGN="CENTER"><B><FONT SIZE=4>Fondamenti di Informatica II - Secondo Modulo <BR>
+A.A. 1999/00 - Esercizio d'esame - prima parte </DIV></P>
+</FONT><P>Problema 1</B>&nbsp;&nbsp; Si consideri la seguente specifica del tipo astratto <I>DepositoOggetti</I>: </P>
+<B><U><DL>
+<DT>TipoAstratto</U> <I>DepositoOggetti</B></I> </DT>
+<B><U><DT>Sorte</B></U> </DT>
+<I><DD>Dep</I> (sorta per il dominio di interesse) </DD>
+<B><U><DT>Funzioni</DT>
+
+<UL>
+</U><I><DT><LI>Crea</B></I> : <I>() --&gt; Dep</I> </LI></DT>
+</DL></UL>
+<DIR>
+<DIR>
+
+<P><BR>
+precondizioni e postcondizioni per <I>Crea</I>() = <I>d</I> <BR>
+<U>pre</U>: nessuna <BR>
+<U>post</U>: <I>d</I> &egrave; un deposito con 0 oggetti;</P></DIR>
+</DIR>
+
+
+<UL>
+<B><I><DL>
+<DT><LI>InserisciOggetto</B></I>: <I>(Dep,Oggetto) --&gt; (Dep, TimeStamp)</I> </LI></DT>
+</DL></UL>
+<DIR>
+<DIR>
+
+<P><BR>
+precondizioni e postcondizioni per <!-- MATH: $NuovaAuto(d,a) = e$ --><I>InserisciOggetto</I>(<I>d</I>,<I>o</I>) = <I>(e,t)</I> <BR>
+<U>pre</U>: <I>o</I> non &egrave; nel deposito <I>d</I> <BR>
+<U>post</U>: <I>e</I> &egrave; il deposito ottenuto da <I>d</I> aggiungendo l'oggetto <I>o</I>; all'oggetto <I>o </I>viene associato il timestamp <I>t</I>; </P></DIR>
+</DIR>
+
+
+<UL>
+<B><I><DL>
+<DT><LI>EliminaOggetto</B></I> : <I>(Dep,TimeStamp) --&gt; Dep</I> </LI></DT>
+</DL></UL>
+<DIR>
+<DIR>
+
+<P><BR>
+precondizioni e postcondizioni per <!-- MATH: $NuovaAuto(d,a) = e$ --><I>EliminaOggetto</I>(<I>d</I>,<I>t</I>) = <I>e</I> <BR>
+<U>pre</U>: l'oggetto al quale &egrave; associata il timestamp <I>t</I> &egrave; nel deposito <I>d</I><BR>
+<U>post</U>: <I>e</I> &egrave; il deposito ottenuto da <I>d</I> eliminando l'oggetto al quale &egrave; associata la targa <I>t</I>; </P></DIR>
+</DIR>
+
+
+<UL>
+<B><I><DL>
+<DT><LI>EstInDeposito</B></I> : <I>(Dep, TimeStamp) --&gt; Boolean</I> </LI></DT>
+</DL></UL>
+<DIR>
+<DIR>
+
+<P><BR>
+precondizioni e postcondizioni per <I>EstInDeposito</I>(<I>d</I>,<I>t</I>) = <I>b</I> <BR>
+<U>pre</U>: nessuna<!-- MATH: $1 \leq i \leq QuanteAuto(d)$ --><BR>
+<U>post</U>: <I>b=true </I>se l'oggetto alla quale &egrave; associata il timestamp t &egrave; nel deposito<I>, b=false </I>altrimenti; </P></DIR>
+</DIR>
+
+
+<UL>
+<B><I><DL>
+<DT><LI>DammiOggetto</B></I> : <I>(Dep, TimeStamp) --&gt; Oggetto</LI></DT>
+</DL></UL>
+<DIR>
+<DIR>
+
+</I><P><BR>
+precondizioni e postcondizioni per <I>DammiOggetto</I>(<I>d</I>,<I>t</I>) = <I>a</I> <BR>
+<U>pre</U>: l'oggetto al quale &egrave; associata il timestamp <I>t</I> &egrave; nel deposito <I>d<!-- MATH: $1 \leq i \leq QuanteAuto(d)$ --></I><BR>
+<U>post</U>: <I>a</I> &egrave; l'oggetto al quale &egrave; associata il timestamp <I>t</I>; </P></DIR>
+</DIR>
+
+
+<UL>
+<B><I><DL>
+<DT><LI>OggettoPiuVecchio</B></I> : <I>(Dep) --&gt; TimeStamp</I> </LI></DT>
+</DL></UL>
+<DIR>
+<DIR>
+
+<P><BR>
+precondizioni e postcondizioni per <!-- MATH: $NuovaAuto(d,a) = e$ --><I>OggettoPiuVecchio</I>(<I>d</I>) = <I>t</I> <BR>
+<U>pre</U>: nessuna<BR>
+<U>post</U>: <I>t</I> &egrave; il timestamp dell'oggetto che da pi&ugrave; tempo sta nel deposito (se il deposito e vuoto viene restituito un timestamp speciale); </P></DIR>
+</DIR>
+
+
+<UL>
+<B><I><DL>
+<DT><LI>OggettoSuccessivo</B></I> : <I>(Dep,TimeStamp) --&gt; TimeStamp</I> </LI></DT>
+</DL></UL>
+<DIR>
+<DIR>
+
+<P><BR>
+precondizioni e postcondizioni per <!-- MATH: $NuovaAuto(d,a) = e$ --><I>OggettoSuccessivo</I>(<I>d</I>,<I>t</I>) = <I>r</I> <BR>
+<U>pre</U>: l'oggetto al quale &egrave; associata il timestamp <I>t</I> &egrave; nel deposito <I>d</I> <BR>
+<U>post</U>: <I>r</I> &egrave; il timestamp dell'oggetto inserito subito dopo l'oggetto con timestamp t; se tale oggetto non esiste viene restituito <I>t</I>;</P></DIR>
+</DIR>
+
+<B><U><DL>
+<DT>FineTipoAstratto</B></U> </DT>
+</DL>
+<B><P>Domanda 1</B>&nbsp;&nbsp; Realizzare il tipo astratto <I>DepositoOggetti</I> mediante una classe C++ <CODE>DepositoOggetti</CODE> in modo da rendere le operazioni del tipo astratto il pi&ugrave; efficienti possibile. Se si utilizzano strutture dati note (quali, Heap, AlberoRicerca, TavolaHash, ecc), riportare solo la definizione della classe corrispondente (file .h) e una breve descrizione di ciascuna delle operazioni. Per riferirsi al tipo astratto <I>Oggetto</I> &egrave; necessario utilizzare la classe gi&agrave; definita <CODE>Oggetto</CODE>, della quale non &egrave; nota la struttura. Infine si rappresenti il tipo astratto <I>TimeStamp</I> come un intero non negativo. </P>
+<B><P>Domanda 2</B>&nbsp;&nbsp;Si discuta brevemente la complessit&agrave; di ciascuna delle funzioni pubbliche della classe <CODE>DepositoOggetti</CODE>. </P></BODY>
+</HTML>

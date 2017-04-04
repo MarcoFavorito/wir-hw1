@@ -1,0 +1,1030 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html>
+<head>
+  <title>Tipo di documento (DTD) ed analisi sintattica di XML</title>
+  <meta name="description" content="Linguaggi e Traduttori">
+  <meta name="resource-type" content="document">
+  <meta name="distribution" content="global">
+  <meta content="text/html; charset=iso-8859-1"
+ http-equiv="Content-Type">
+  <link rel="stylesheet" href="lezione.css">
+  <link rel="next" href="lezione-3.html">
+  <link rel="prev" href="lezione-1.html">
+  <link rel="index" href="index-xml.html">
+  <meta content="D. Nardi, R. Rosati, L. Dragone" name="author">
+</head>
+<body>
+<p><b>Lezione 2: Tipo di documento (DTD) ed analisi sintattica di XML</b>
+</p>
+<p>Parte 1: Dichiarazioni di tipo di documento (DTD)&nbsp; </p>
+<ul>
+  <li>Il tipo di documento (DTD) </li>
+  <li>Dichiarazioni di elementi e content model </li>
+  <li>Relazione tra DTD e ECFG </li>
+  <li>Esempi di DTD </li>
+  <li>Dichiarazioni di entit&agrave; e di attributi </li>
+</ul>
+Parte 2: Analisi Sintattica di documenti XML/SGML
+<ul>
+  <li>Differenze principali tra XML ed SGML </li>
+  <li>DTD ed istanze di documenti </li>
+  <li>Analisi sintattica </li>
+</ul>
+<hr> <b>Forma di un documento XML</b>
+<p>Un documento XML &egrave; costituito da: </p>
+<ul>
+  <li>un prologo (opzionale), costituito da
+    <ul>
+      <li>una dichiarazione XML </li>
+      <li>una DTD </li>
+    </ul>
+  </li>
+  <li>un'istanza di documento, contenente
+    <ul>
+      <li>testo libero </li>
+      <li>elementi </li>
+      <li>attributi </li>
+      <li>entit&agrave; </li>
+      <li>... </li>
+    </ul>
+  </li>
+</ul>
+<hr> <b>Funzione del DTD</b>
+<p>Un documento XML <i>ben formato</i> pu&ograve; avere una <i>struttura
+arbitraria</i>: </p>
+<ul>
+  <li>elementi di nome arbitrario </li>
+  <li>attributi arbitrari in qualunque elemento </li>
+  <li>elementi organizzati in modo arbitrario </li>
+</ul>
+<p>Sono utili, ma poco pi&ugrave; utili di testo non strutturato. </p>
+<p>Serve un meccanismo per <i>imporre struttura</i> ad un documento: </p>
+<ul>
+  <li>elementi ammessi </li>
+  <li>attributi ammessi </li>
+  <li>stutturazione degli elementi </li>
+  <li>definizione di nuove entit&agrave; (interne ed esterne) </li>
+</ul>
+<hr> <b>Dichiarazione di tipo di documento (DTD)</b>
+<p>Un <i>DTD</i> specifica quali sono le strutture ammesse per
+l'istanza di documento: </p>
+<ul>
+  <li>specifica il <i>tipo del documento</i>, ovvero il tipo
+dell'elemento radice </li>
+  <li>contiene tre insiemi di <i>dichiarazioni</i>:
+    <ul>
+      <li>di <i>tipi di elemento</i> </li>
+      <li>di <i>attributi</i> </li>
+      <li>di <i>entit&agrave;</i> </li>
+    </ul>
+  </li>
+</ul>
+<p>L'insieme di tipi di elemento in un DTD viene detto <i>vocabolario</i>.</p>
+<hr> <b>Dichiarazioni in XML</b>
+<p>In XML tutte le <i>dichiarazioni</i> hanno la forma:&nbsp; </p>
+<p><font face="Courier New">&lt;!<i>OGGETTO-DICHIARATO</i> ... &gt;</font>
+</p>
+<p>Esempi: </p>
+<p><font face="Courier New">&nbsp;&nbsp;&nbsp;&nbsp;&lt;!DOCTYPE ...
+&gt; <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;!ELEMENT ... &gt; <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;!ATTLIST ... &gt; <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;!ENTITY ... &gt; <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;!NOTATION ... &gt; <br>
+</font> </p>
+<hr> <b>Dichiarazione di tipo di documento</b>
+<p>Un documento XML <i>pu&ograve;</i> contenere una DTD. </p>
+<p>La DTD <i>deve</i> precedere il primo elemento (l'elemento radice).
+</p>
+<p>Le dichiarazioni nella DTD possono essere: </p>
+<ul>
+  <li><i>interne</i> al documento stesso
+    <div><font face="Courier New">&lt;!DOCTYPE esempio [</font> <br>
+&nbsp;&nbsp;&nbsp;<font face="Courier New">&lt;!ELEMENT esempio
+(#PCDATA)&gt; ]&gt;</font> <br>
+    </div>
+  </li>
+  <li><i>esterne</i> al documento in un altro file <br>
+(locale o specificato da un URI)
+    <p><font face="Courier New">&lt;!DOCTYPE esempio SYSTEM
+"esempio.dtd"&gt;</font> </p>
+  </li>
+</ul>
+<hr> <b>DTD - Esempio </b>
+<p> </p>
+<div><font face="Courier New">&lt;!DOCTYPE TechRepDip [ <br>
+<br>
+&nbsp;&nbsp;&lt;!ELEMENT TechRepDip &nbsp;&nbsp;&nbsp;(Intestazione,
+Sezione+, Bibliografia?)&gt; <br>
+&nbsp;&nbsp;&lt;!ELEMENT Intestazione &nbsp;(Numero, Data, Titolo,
+Autore+, Sommario?)&gt; <br>
+&nbsp;&nbsp;&lt;!ELEMENT Data
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(Giorno?, Mese,
+Anno)&gt; <br>
+&nbsp;&nbsp;&lt;!ELEMENT Autore
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(Cognome, Nome+)&gt; <br>
+&nbsp;&nbsp;&lt;!ELEMENT Sezione
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(TitoloSezione, Testo?,
+Sezione*)&gt; <br>
+&nbsp;&nbsp;&lt;!ELEMENT Bibliografia &nbsp;(VoceBiblio)+&gt; <br>
+&nbsp;&nbsp;&lt;!ELEMENT Numero
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(#PCDATA)&gt; <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;...</font>
+<br>
+&nbsp;&nbsp; &nbsp;<font face="Courier New">&lt;!ELEMENT VoceBiblio
+&nbsp;&nbsp;&nbsp;(#PCDATA)&gt; <br>
+<br>
+&nbsp;&nbsp;&lt;!ATTLIST Sezione &nbsp;&nbsp;id &nbsp;ID
+&nbsp;#REQUIRED <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;num
+&nbsp;&nbsp;&nbsp;NMTOKEN &nbsp;&nbsp; #IMPLIED <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;stato
+&nbsp;(finale | provvisorio) "finale" &gt; <br>
+<br>
+&nbsp;&nbsp;&lt;!ENTITY DIS &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"Dipartimento
+di Informatica e Sistemistica"&gt; <br>
+&nbsp;&nbsp;&lt;!ENTITY SEZIONE1 SYSTEM "sezione1.xml&gt; <br>
+&nbsp;&nbsp;&lt;!ENTITY SEZIONE2 "&lt;Sezione&gt;Ancora da
+scrivere.&lt;/Sezione&gt;"&gt; <br>
+]&gt;</font> <br>
+</div>
+<hr> <b>Documenti XML validi</b>
+<p>Un documento XML viene detto <i>valido</i> se: </p>
+<ol>
+  <li>&egrave; <i>ben formato</i>, ovvero rispetta tutti vincoli
+imposti da XML </li>
+  <li>contiene una <i>dichiarazione di tipo di documento</i> </li>
+  <li>&egrave; <i>conforme</i> alla DTD </li>
+</ol>
+<p>Osservazione: lo spazio bianco <i>non</i> &egrave; rilevante (di
+norma) </p>
+<hr> <b>Dichiarazioni di tipo di elemento</b>
+<p>Sintassi di una dichiarazione di tipo di elemento: </p>
+<p>&nbsp; <font face="Courier New">&lt;!ELEMENT &nbsp;<i>nome-elemento</i>
+&nbsp;<i>content-model</i>&gt;</font> </p>
+<p>Il <i>content model</i> specifica la struttura degli elementi di
+nome <tt><i>nome-elemento</i></tt>. </p>
+<p><i><font face="Courier New">content model</font></i> &egrave;
+un'espressione regolare costruita su: </p>
+<ul>
+  <li>i tipi di elemento </li>
+  <li><tt>#PCDATA</tt> , che rappresenta del testo libero (senza
+etichette) </li>
+</ul>
+<p>Ci sono delle limitazioni nell'uso di <tt>#PCDATA</tt> nel content
+model che vedremo pi&ugrave; avanti. </p>
+<hr> <b>Forma del content model</b>
+<p>Operatori usati nel content model sono quelli delle espressioni
+regolari: </p>
+<ul>
+  <li><i>sequenza</i>, indicata con <tt>(<i>a,b,...,h</i>)</tt> </li>
+  <li><i>alternativa</i>, indicata con <tt>(<i>a</i> | b | ... | k)</tt>
+  </li>
+  <li><i>opzionalit&agrave;</i>, indicata con<tt> <i>a</i>?</tt> </li>
+  <li><i>ripetizione zero o pi&ugrave; volte</i>, indicata con <tt><i>a</i>*</tt>
+  </li>
+  <li><i>ripetizione una o pi&ugrave; volte</i>, indicata con <tt><i>a</i>+</tt>
+  </li>
+</ul>
+(dove <i><tt>a,b,...</tt></i> indicano un generico content model)
+<hr> <b>Grammatiche context free estese (ECFG</b>)
+<p>Le <i>ECFG</i> sono estensioni delle CFG: </p>
+<ul>
+  <li>hanno lo stesso potere espressivo delle CFG <br>
+(definiscono la stessa classe di linguaggi) </li>
+  <li>permettono di scrivere una grammatica in forma pi&ugrave;
+compatta </li>
+  <li>le <i>produzioni</i> hanno una forma pi&ugrave; generale, che fa
+uso di <i>espressioni regolari</i>:
+    <ul>
+      <li>parte sinistra: &egrave; un nonterminale (come per le CFG) </li>
+      <li>parte destra: &egrave; un'espressione regolare su terminali e
+nonterminali (invece che una semplice sequenza) <br>
+      </li>
+    </ul>
+  </li>
+</ul>
+<hr> <b>Generazione di frasi nelle ECFG</b>
+<p>Per generare una frase del linguaggio: </p>
+<ul>
+  <li>si parte dal simbolo iniziale </li>
+  <li>si <i>applicano</i> le produzioni espandendo i nonterminali </li>
+  <li>l'<i>espansione</i> di un nonterminale secondo una produzione
+avviene in due passi:
+    <ol>
+      <li>si effettua l'espansione del non terminale sostituendolo con
+la parte destra di una regola (che in generale &egrave;
+un'espressione regolare) </li>
+      <li>si sostituisce l'espressione regolare con una parola del
+linguaggio generato da essa generato </li>
+    </ol>
+  </li>
+  <li>ci si ferma quando non ci sono pi&ugrave; nonterminali da
+espandere </li>
+</ul>
+<font size="-1"> </font>
+<p> </p>
+<hr> <b>Relazione tra DTD e ECFG</b>
+<p>Un <i>dichiarazione di tipo di elemento</i> corrisponde ad una
+produzione di una ECFG: </p>
+<ul>
+  <li>il nome dell'elemento corrisponde al nonterminale nella parte
+sinistra </li>
+  <li>il content model corrisponde all'espressione regolare nella parte
+destra </li>
+</ul>
+<p>Il <i>tipo di documento</i> specificato nella DTD corrisponde al
+simbolo iniziale della grammatica. </p>
+<div align="center">
+<p align="left"><i>Da un punto di vista astratto una DTD &egrave; una
+ECFG</i>.</p>
+</div>
+<hr> <b>Relazione tra DTD e ECFG (2)</b>
+<p>La DTD (vista come grammatica) genera l'insieme di documenti validi.</p>
+<p>Importante <i>differenza tra ECFG e DTD</i>: </p>
+<ul>
+  <li>nelle ECFG: quando si applica una produzione si sostuisce in modo
+opportuno </li>
+  <li>nelle <i>DTD</i>: ogni applicazione di una <i>produzione</i>
+genera anche una <i>coppia di etichette</i> (che racchiude la parte di
+documento generata dalla produzione) </li>
+</ul>
+<p>Le etichette nel documento "dicono" quali produzioni sono state
+applicate. </p>
+<p><!-- MATH
+ $\Longrightarrow$
+ -->Motivazione: <u>analizzatori
+sintattici semplici ed efficienti</u> </p>
+<hr> <b>Relazione tra DTD e ECFG - Esempio</b>
+<p><i>S -&gt; A,B+<br>
+A -&gt; a<br>
+B -&gt; b</i> </p>
+<p><i>S </i><i><span style="font-weight: bold;"></span></i><span
+ style="font-weight: bold; color: rgb(255, 0, 0);">=&gt;</span><i
+ style="color: rgb(255, 0, 0);"><span style="font-weight: bold;"></span></i><i>
+A,B+ <span style="font-weight: bold;"></span></i><span
+ style="font-weight: bold; color: rgb(255, 0, 0);">=&gt;</span><i><span
+ style="font-weight: bold;"></span> AB </i><i><span
+ style="font-weight: bold;"></span></i><span
+ style="font-weight: bold; color: rgb(255, 0, 0);">=&gt;</span><i><span
+ style="font-weight: bold;"></span></i><i> aB </i><i><span
+ style="font-weight: bold;"></span></i><span
+ style="font-weight: bold; color: rgb(255, 0, 0);">=&gt;</span><i
+ style="color: rgb(255, 0, 0);"><span style="font-weight: bold;"></span></i><i>
+ab</i> </p>
+<p>DTD </p>
+<p><i>S </i><i><span style="font-weight: bold;"></span></i><span
+ style="font-weight: bold; color: rgb(255, 0, 0);">=&gt;</span><i><span
+ style="font-weight: bold;"></span></i><i> </i><font face="Courier New">&lt;S&gt;</font>&nbsp;
+<i>A,B+</i>
+<font face="Courier New">&lt;/S&gt;</font><i> </i><i><span
+ style="font-weight: bold;"></span></i><span
+ style="font-weight: bold; color: rgb(255, 0, 0);">=&gt;</span><i><span
+ style="font-weight: bold;"></span></i> <font face="Courier New">&lt;S&gt;</font>&nbsp;
+<i>AB</i> <font face="Courier New">&lt;/S&gt;</font>&nbsp;<br>
+<i><span style="font-weight: bold;"></span></i><span
+ style="font-weight: bold; color: rgb(255, 0, 0);">=&gt;</span><i><span
+ style="font-weight: bold;"></span></i>&nbsp;
+<i></i><font face="Courier New">&lt;S&gt; &lt;A&gt; </font><i>a</i><font
+ face="Courier New"> &lt;/A&gt;</font>&nbsp; <i>B</i> <font
+ face="Courier New">&lt;/S&gt;<br>
+</font><i><span style="font-weight: bold;"></span></i><span
+ style="font-weight: bold;"><span style="color: rgb(255, 0, 0);">=&gt;</span>
+</span><i><span style="font-weight: bold;"></span></i><font
+ face="Courier New">&lt;S&gt; &lt;A&gt; </font><i>a</i><font
+ face="Courier New"> &lt;/A&gt;</font>&nbsp; <font face="Courier New">&lt;B&gt;</font><i>b</i><font
+ face="Courier New"> &lt;/B&gt;&lt;/S&gt;</font> <br clear="all">
+</p>
+<hr> <b>Documenti XML sono alberi</b>
+<p>L'annidamento degli elementi definisce in modo esplicito una
+struttura ad albero:<br>
+<br>
+<font face="Courier New">&lt;Mail&gt;<br>
+&nbsp; &lt;From&gt; &lt;Address&gt; Dante@dsn.fi.it &lt;/Address&gt;
+&lt;/From&gt;<br>
+&nbsp; &lt;To&gt; &lt;Address&gt; Beatrice@pitti.fi.it &lt;/Address&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;Address&gt;
+Virgilio@spqr.rm.it &lt;/Address&gt;<br>
+&nbsp; &lt;/To&gt; <br>
+&nbsp; &lt;Subject&gt; Appointment &lt;/Subject&gt;<br>
+&nbsp; &lt;Body&gt; Why don't we meet at disco.inferno at<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; midnight. Tell also
+Caronte.&nbsp; Cheers,<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - D.A.<br>
+&nbsp; &lt;/Body&gt;<br>
+&lt;/Mail&gt;</font><br>
+<img border="0" width="445" src="lezione-2_files/albero.jpg"
+ height="178"> </p>
+<hr> <b>Il Document Object Model</b>
+<p>Ad ogni documento XML corrisponde una <i>struttura ad albero</i>: </p>
+<ul>
+  <li>ad ogni elemento corrisponde un nodo interno </li>
+  <li>al testo libero corrispondono le foglie </li>
+  <li>i figli di un nodo (elemento) sono gli elementi o il testo in
+esso contenuti </li>
+  <li>il modello ad albero pu&ograve; essere esteso anche ad attributi,
+commenti, istruzioni di processamento, ... </li>
+</ul>
+<p>Definito in modo standard dal <i>Document Object Model</i> </p>
+<ul>
+  <li>fornisce un'API per manipolare i nodi dell'albero </li>
+  <li>introduce un livello di astrazione tra il documento XML e
+l'applicazione che lo deve processare </li>
+</ul>
+<hr> <b>DTD - Esempi</b>
+<p>Negli esempi che seguono: </p>
+<ul>
+  <li>assumiamo che il documento contenga sempre la dichiarazione di
+tipo di documento:
+    <p align="left"><font face="Courier New">&lt;!DOCTYPE ESE SYSTEM
+"esempio.dtd"&gt;</font> (che fa riferimento al file esterno <font
+ face="Courier New">esempio.dtd</font>) </p>
+  </li>
+  <li>mostriamo solo:
+    <ul>
+      <li>il contenuto del file <font face="Courier New">esempio.dtd</font>
+      </li>
+      <li>l'istanza di documento, ovvero l'elemento radice </li>
+    </ul>
+  </li>
+</ul>
+<hr> <b>DTD - Esempi (1)</b>
+<p><font face="Courier New">&nbsp; &lt;!ELEMENT ESE (#PCDATA)&gt;</font>
+</p>
+<p>Il tipo dell'elemento radice deve essere il tipo di documento.<br>
+<br>
+<font face="Courier New">&nbsp; &lt;ESE&gt;questo documento e`
+valido&lt;/ESE&gt;</font> </p>
+<p>Documenti non validi:<br>
+<br>
+<font face="Courier New">&nbsp; &lt;boh&gt;questo documento NON e`
+valido&lt;/boh&gt;<br>
+&nbsp; &lt;ese&gt;XML e` case sensitive&lt;/ese&gt;</font><br>
+</p>
+<hr> <b>DTD - Esempi (2)</b>
+<p><font face="Courier New">&nbsp; &lt;!ELEMENT ESE (#PCDATA)&gt;</font>
+</p>
+<p>A <tt>#PCDATA</tt> deve corrispondere solo testo senza elementi
+annidati. Il testo pu&ograve; anche essere vuoto </p>
+<p><font face="Courier New">&nbsp; &lt;ESE&gt;questi documenti sono
+validi&lt;/ESE&gt;<br>
+&nbsp; &lt;ESE&gt;&lt;/ESE&gt;<br>
+&nbsp; &lt;ESE/&gt;<br>
+<br>
+</font>Documento non valido:<br>
+<br>
+<font face="Courier New">&nbsp; &lt;ESE&gt;questo documento
+&lt;b&gt;NON&lt;/b&gt; e` valido&lt;/ESE&gt;</font> </p>
+<hr> <b>DTD - Esempi (3)</b><br>
+<br>
+<font face="Courier New">&nbsp; &lt;!ELEMENT ESE (P1, P2)&gt;<br>
+&nbsp; &lt;!ELEMENT P1&nbsp; (#PCDATA)&gt;<br>
+&nbsp; &lt;!ELEMENT P2&nbsp; (#PCDATA)&gt;</font>
+<p>Elemento che contiene una sequenza fissata di altri elementi.<br>
+<br>
+<font face="Courier New">&nbsp; &lt;ESE&gt; &lt;P1&gt;questa e` la
+prima parte&lt;/P1&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &lt;P2&gt;questa e` la
+seconda parte&lt;/P2&gt; &lt;/ESE&gt;<br>
+&nbsp; &lt;ESE&gt; &lt;P1/&gt; &lt;P2&gt;la prima parte e`
+vuota&lt;/P2&gt; &lt;/ESE&gt;</font> </p>
+<p>Documenti non validi:<br>
+<br>
+<font face="Courier New">&nbsp; &lt;ESE&gt; &lt;P1&gt;manca
+P2&lt;/P1&gt; ____ &lt;/ESE&gt;<br>
+&nbsp; &lt;ESE&gt; &lt;P2/&gt; &lt;P1&gt;ordine sbagliato&lt;/P1&gt;
+&lt;/ESE&gt;<br>
+&nbsp; &lt;ESE&gt; &lt;P1/&gt; &lt;P2/&gt; &lt;P2&gt;un solo
+P2&lt;/P2&gt; &lt;/ESE&gt;<br>
+&nbsp; &lt;ESE&gt; NO testo libero &lt;P1/&gt; &lt;P2/&gt; &lt;/ESE&gt;<br>
+</font> </p>
+<hr> <b>DTD - Esempi (4)</b><br>
+<br>
+<font face="Courier New">&nbsp; &lt;!ELEMENT ESE (IN, S*)&gt;<br>
+&nbsp; &lt;!ELEMENT IN&nbsp; (#PCDATA)&gt;<br>
+&nbsp; &lt;!ELEMENT S&nbsp;&nbsp; (#PCDATA)&gt;</font>
+<p>Elemento che occorre zero o pi&ugrave; volte.<br>
+<br>
+<font face="Courier New">&nbsp; &lt;ESE&gt; &lt;IN&gt;intro&lt;/IN&gt;
+&lt;S&gt;sez1&lt;/S&gt; &lt;S&gt;sez2&lt;/S&gt; &lt;/ESE&gt;<br>
+&nbsp; &lt;ESE&gt; &lt;IN&gt;senza sezioni&lt;/IN&gt; &lt;/ESE&gt;</font>
+</p>
+<p>Documenti non validi:<br>
+<br>
+<font face="Courier New">&nbsp; &lt;ESE&gt;&nbsp;&nbsp;&nbsp;
+&lt;S&gt;intro ci deve essere&lt;/S&gt; &lt;/ESE&gt;<br>
+&nbsp; &lt;ESE&gt; &lt;S&gt;solo dopo intro&lt;/S&gt; &lt;IN/&gt;
+&lt;S&gt;sez1&lt;/S&gt; &lt;/ESE&gt;<br>
+</font> </p>
+<hr> <b>DTD - Esempi (5)</b>
+<p><font face="Courier New">&nbsp; &lt;!ELEMENT ESE (IN, S+)&gt;<br>
+&nbsp; &lt;!ELEMENT IN&nbsp; (#PCDATA)&gt;<br>
+&nbsp; &lt;!ELEMENT S&nbsp;&nbsp; (#PCDATA)&gt;</font> </p>
+<p>Elemento che occorre una o pi&ugrave; volte.<br>
+<br>
+<font face="Courier New">&nbsp; &lt;ESE&gt; &lt;IN&gt;intro&lt;/IN&gt;
+&lt;S&gt;sezione unica&lt;/S&gt; &lt;/ESE&gt;<br>
+&nbsp; &lt;ESE&gt; &lt;IN&gt;intro&lt;/IN&gt; &lt;S&gt;sez1&lt;/S&gt;
+&lt;S&gt;sez2&lt;/S&gt; &lt;/ESE&gt;</font> </p>
+<p>Documenti non validi:<br>
+<br>
+<font face="Courier New">&nbsp; &lt;ESE&gt; &lt;IN&gt;almeno una
+sezione&lt;/IN&gt; _____ &lt;/ESE&gt;<br>
+&nbsp; &lt;ESE&gt;&nbsp;_____&nbsp; &lt;S&gt;intro ci deve
+essere&lt;/S&gt; &lt;/ESE&gt;<br>
+&nbsp; &lt;ESE&gt; &lt;S&gt;solo dopo intro&lt;/S&gt; &lt;/IN&gt;
+&lt;S&gt;sez1&lt;/S&gt; &lt;/ESE&gt;<br>
+</font> </p>
+<hr> <b>DTD - Esempi (6)</b>
+<p><font face="Courier New">&nbsp; &lt;!ELEMENT ESE (IN?, S+)&gt;<br>
+&nbsp; &lt;!ELEMENT IN&nbsp; (#PCDATA)&gt;<br>
+&nbsp; &lt;!ELEMENT S&nbsp;&nbsp; (#PCDATA)&gt;</font> </p>
+<p>Elemento opzionale.<br>
+<br>
+<font face="Courier New">&nbsp; &lt;ESE&gt; &lt;IN&gt;intro&lt;/IN&gt;
+&lt;S&gt;sez1&lt;/S&gt; &lt;S&gt;sez2&lt;/S&gt; &lt;/ESE&gt;<br>
+&nbsp; &lt;ESE&gt; &lt;S&gt;senza introduzione&lt;/S&gt; &lt;/ESE&gt;</font>
+</p>
+<p>Documenti non validi:<br>
+<br>
+<font face="Courier New">&nbsp; &lt;ESE&gt; &lt;IN&gt;intro&lt;/IN&gt;
+&lt;IN&gt;intro unica&lt;/IN&gt; &lt;S/&gt; &lt;/ESE&gt;<br>
+&nbsp; &lt;ESE&gt; &lt;IN&gt;almeno una
+sezione&lt;/IN&gt;&nbsp;_____&nbsp; &lt;/ESE&gt;<br>
+&nbsp; &lt;ESE&gt; &lt;S&gt;solo dopo intro&lt;/S&gt; &lt;/IN&gt;
+&lt;S&gt;sez1&lt;/S&gt; &lt;/ESE&gt;<br>
+</font> </p>
+<hr> <b>DTD - Esempi (7)</b>
+<p><font face="Courier New">&nbsp; &lt;!ELEMENT ESE (IN?, (A1 | A2))&gt;<br>
+&nbsp; &lt;!ELEMENT IN&nbsp; (#PCDATA)&gt;<br>
+&nbsp; &lt;!ELEMENT A1&nbsp; (#PCDATA)&gt;<br>
+&nbsp; &lt;!ELEMENT A2&nbsp; (#PCDATA)&gt;</font> </p>
+<p>Una tra pi&ugrave; alternative.<br>
+<br>
+<font face="Courier New">&nbsp; &lt;ESE&gt; &lt;IN&gt;intro&lt;/IN&gt;
+&lt;A1&gt;alternativa 1&lt;/A1&gt; &lt;/ESE&gt;<br>
+&nbsp; &lt;ESE&gt; &lt;IN&gt;intro&lt;/IN&gt; &lt;A2&gt;alternativa
+2&lt;/A2&gt; &lt;/ESE&gt;<br>
+&nbsp; &lt;ESE&gt; &lt;A1&gt;senza introduzione&lt;/A1&gt; &lt;/ESE&gt;</font>
+</p>
+<p>Documenti non validi:<br>
+<br>
+<font face="Courier New">&nbsp; &lt;ESE&gt; &lt;IN&gt;serve una delle
+2&lt;/IN&gt; _____ &lt;/ESE&gt;<br>
+&nbsp; &lt;ESE&gt; &lt;IN/&gt; &lt;A1&gt;al piu` una delle 2&lt;/A1&gt;
+&lt;A2/&gt; &lt;/ESE&gt;<br>
+&nbsp; &lt;ESE&gt; &lt;IN/&gt; &lt;A1&gt;qui solo testo &lt;A2/&gt;
+&lt;/A1&gt; &lt;/ESE&gt;<br>
+</font> </p>
+<hr> <b>DTD - Esempi (8.1)</b><br>
+<br>
+<font face="Courier New">&nbsp; &lt;!ELEMENT ESE (TI, S1+)&gt;<br>
+&nbsp; &lt;!ELEMENT TI&nbsp; (#PCDATA)&gt;<br>
+&nbsp; &lt;!ELEMENT S1&nbsp; (TI?, S2*)&gt;<br>
+&nbsp; &lt;!ELEMENT S2&nbsp; (#PCDATA)&gt;</font>
+<p>Elementi annidati a un numero fisso di livelli.<br>
+<br>
+<font face="Courier New">&nbsp; &lt;ESE&gt; &lt;TI&gt;esempi
+xml&lt;/TI&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &lt;S1&gt; &lt;TI&gt;sez
+1&lt;/TI&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+&lt;S2&gt;sez 1.1&lt;/S2&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &lt;/S1&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &lt;S1&gt; &lt;TI&gt;sez 2
+ha solo titolo&lt;TI&gt; &lt;/S1&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &lt;S1&gt; &lt;S2/&gt;
+&lt;/S1&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &lt;S1/&gt;<br>
+&nbsp; &lt;/ESE&gt;<br>
+</font> </p>
+<hr> <b>DTD - Esempi (8.2)</b>
+<p><font face="Courier New">&nbsp; &lt;!ELEMENT ESE (TI, S1+)&gt;<br>
+&nbsp; &lt;!ELEMENT TI&nbsp; (#PCDATA)&gt;<br>
+&nbsp; &lt;!ELEMENT S1&nbsp; (TI?, S2*)&gt;<br>
+&nbsp; &lt;!ELEMENT S2&nbsp; (#PCDATA)&gt;</font> </p>
+<p>Documenti non validi:<br>
+<br>
+<font face="Courier New">&nbsp; &lt;ESE&gt; &lt;TI&gt;manca sez. liv.
+1&lt;/TI&gt; _____ &lt;/ESE&gt;<br>
+&nbsp; &lt;ESE&gt; </font><font face="Courier New">_____<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &lt;S1&gt; niente testo
+direttamente in S1<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+&lt;S2&gt;sezione 1.1&lt;/S2&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+&lt;S2&gt;sezione 1.2&lt;/S2&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+&lt;S2&gt; &lt;TI&gt;solo testo in S2&lt;/TI&gt; &lt;/S2&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &lt;/S1&gt;<br>
+&nbsp; &lt;/ESE&gt;<br>
+</font> </p>
+<hr> <b>DTD - Esempi (9)</b><br>
+<br>
+<font face="Courier New">&nbsp; &lt;!ELEMENT ESE (TI, S+)&gt;<br>
+&nbsp; &lt;!ELEMENT S&nbsp;&nbsp; (TI?, (S+ | TXT))&gt;<br>
+&nbsp; &lt;!ELEMENT TI&nbsp; (#PCDATA)&gt;<br>
+&nbsp; &lt;!ELEMENT TXT (#PCDATA)&gt;</font>
+<p>Elementi annidati a livelli arbitrari.<br>
+<br>
+<font face="Courier New">&nbsp; &lt;ESE&gt; &lt;TI&gt;esempi
+xml&lt;/TI&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &lt;S&gt; &lt;TI&gt;tit
+sez.1&lt;/TI&gt; &lt;TXT&gt;testo 1&lt;/TXT&gt; &lt;/S&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &lt;S&gt; &lt;TI&gt;tit
+sez.2&lt;/TI&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+&lt;S&gt; &lt;TXT&gt;testo sez.2.1&lt;/TXT&gt; &lt;/S&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+&lt;S&gt; &lt;TI&gt;titolo sez.2.2&lt;/TI&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+&lt;S&gt; &lt;TXT&gt;testo sez.2.2.1&lt;/TXT&gt; &lt;/S&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+&lt;/S&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &lt;/S&gt;<br>
+&nbsp; &lt;/ESE&gt;<br>
+</font> </p>
+<hr> <b>DTD - Esempi (10)</b>
+<p><font face="Courier New">&nbsp; &lt;!ELEMENT ESE (TI, S+)&gt;<br>
+&nbsp; &lt;!ELEMENT S&nbsp;&nbsp; (#PCDATA | COM | S)*&gt;<br>
+&nbsp; &lt;!ELEMENT TI&nbsp; (#PCDATA)&gt;<br>
+&nbsp; &lt;!ELEMENT COM (#PCDATA)&gt;</font> </p>
+<p>Un elemento pu&ograve; contenere testo misto ad altri elementi
+(elemento a <i>contenuto misto</i>).<br>
+<br>
+<font face="Courier New">&nbsp; &lt;ESE&gt; &lt;TI&gt;esempi
+xml&lt;/TI&gt; &lt;S&gt;sezione 1&lt;/S&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp; &lt;S&gt; sezione 2 &lt;S&gt;sezione
+2.1&lt;/S&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &lt;COM&gt;commento in
+sez. 2&lt;/COM&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; altro testo di sezione
+2<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &lt;S&gt; sezione 2.2
+&lt;S&gt;sezione 2.2.1&lt;/S&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+&lt;COM&gt;sez. 2.2.2 vuota&lt;/COM&gt; &lt;S/&gt; &lt;/S&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp; &lt;/S&gt;<br>
+&nbsp; &lt;/ESE&gt;</font> </p>
+<hr> <b>Elementi a contenuto misto</b>
+<p><tt>#PCDATA</tt> ed altri elementi <i>non</i> possono essere
+combinati in modo arbitrario nel content model. </p>
+<p>L'unica possibilit&agrave; di combinarli &egrave;: </p>
+<p><font face="Courier New">&lt;!ELEMENT <i>elem</i> (#PCDATA | <i>elem1</i>
+| ... | <i>elemk</i>)*&gt;</font> </p>
+<p>Un elemento di questo tipo viene detto a <i>contenuto misto</i>: </p>
+<ul>
+  <li>il suo contenuto &egrave; una sequenza arbitraria di testo libero
+ed elementi di tipo <i>elem1</i>,...,<i>elemk</i> </li>
+  <li>non posso imporre una struttura pi&ugrave; precisa alla
+combinazione di questi elementi </li>
+</ul>
+<hr> <b>Uso scorretto di </b><tt>#PCDATA</tt> <b>nel content model</b>
+<p>Un content model che contiene <tt>#PCDATA</tt> ed altri elementi e
+non ha la forma vista prima &egrave; <i>scorretto</i>.<br>
+<br>
+<font face="Courier New">&nbsp; &lt;!ELEMENT ESE (TI, #PCDATA)&gt;<br>
+&nbsp; &lt;!ELEMENT ESE (TI?, #PCDATA)&gt;<br>
+&nbsp; &lt;!ELEMENT ESE (TI, (#PCDATA | S*))&gt;<br>
+&nbsp; &lt;!ELEMENT ESE (TI, (#PCDATA | S)*)&gt;<br>
+&nbsp; &lt;!ELEMENT S&nbsp;&nbsp; (#PCDATA | COM | S)+&gt;<br>
+&nbsp; &lt;!ELEMENT COM (#PCDATA)+&gt;<br>
+</font> </p>
+<hr> <b>Elementi con contenuto</b> <tt>EMPTY</tt>
+<p align="left">Un elemento pu&ograve; essere forzato ad avere
+contenuto vuoto: </p>
+<p align="left"><font face="Courier New">&lt;!ELEMENT <i>elem</i>
+EMPTY&gt;</font> </p>
+<p>Un elemento dichiarato <tt>EMPTY</tt> pu&ograve; comparire solo con
+l'etichetta di elemento vuoto.<br>
+<br>
+<font face="Courier New">&nbsp; &lt;!ELEMENT VUOTO EMPTY&gt;<br>
+&nbsp; &lt;!ELEMENT E1&nbsp;&nbsp;&nbsp; (#PCDATA)&gt; </font> </p>
+<p>Corretto: </p>
+<p><font face="Courier New">&lt;E1&gt;&lt;/E1&gt; &lt;E1/&gt;
+&lt;VUOTO/&gt;</font> </p>
+<p>Scorretto: </p>
+<p><font face="Courier New">&lt;VUOTO&gt; deve essere vuoto
+&lt;/VUOTO&gt;<br>
+&nbsp; &lt;VUOTO&gt;&lt;/VUOTO&gt;<br>
+</font> </p>
+<hr> <b>Uso di elementi con contenuto</b> <tt>EMPTY</tt>
+<p>Non sono inutili in quanto aggiungono informazione al documento: </p>
+<ul>
+  <li>attraverso attributi associati all'elemento<br>
+    <br>
+    <font face="Courier New">&nbsp; &lt;IMG src="colosseo.gif"<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; align="left"<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; height="50"<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; width="30"/&gt;<br>
+    </font> </li>
+  <li>attraverso la presenza stessa dell'elemento
+    <p><tt>&lt;BR/&gt;</tt> di HTML </p>
+  </li>
+</ul>
+<hr> <b>Elementi con contenuto</b> <tt>ANY</tt>
+<p>Si pu&ograve; usare il contenuto <tt>ANY</tt> per specificare che
+il
+contenuto di un elemento &egrave; una sequenza di testo ed elementi
+qualsiasi: </p>
+<p>&nbsp; <font face="Courier New">&lt;!ELEMENT <i>elem</i> ANY&gt;</font>
+</p>
+<p>Tutti gli elementi che compaiono in un elemento con contenuto <tt>ANY</tt>
+devono essere stati dichiarati. </p>
+<p><font face="Courier New">&nbsp; &lt;!ELEMENT TUTTO ANY&gt;<br>
+&nbsp; &lt;!ELEMENT E1&nbsp;&nbsp;&nbsp; (#PCDATA)&gt;<br>
+&nbsp; &lt;!ELEMENT E2&nbsp;&nbsp;&nbsp; (#PCDATA)&gt;</font> </p>
+<p>Corretto:&nbsp; </p>
+<p><font face="Courier New">&lt;TUTTO&gt; &lt;E1&gt;xxx&lt;/E1&gt; yyy
+&lt;E2/&gt; &lt;E1/&gt; &lt;/TUTTO&gt;</font> </p>
+<p>Scorretto: </p>
+<p><font face="Courier New">&lt;TUTTO&gt; &lt;E3&gt;non
+dichiarato&lt;/E3&gt; &lt;/TUTTO&gt;</font> </p>
+<hr> <b>Entit&agrave;</b>
+<p>Un documento XML: </p>
+<ul>
+  <li>da un punto di vista logico: &egrave; suddiviso in elementi. </li>
+  <li>da un punto di vista fisico: pu&ograve; essere memorizzato su
+pi&ugrave; file </li>
+</ul>
+<p>Un'<i>entit&agrave;</i> &egrave; un'unit&agrave; di memorizzazione
+contenente una parte di un documento XML: </p>
+<ul>
+  <li>l'unit&agrave; che contiene la dichiarazione XML, la DTD e
+l'elemento radice &egrave; l'<i>entit&agrave; documento</i> </li>
+  <li>l'elemento radice e i sottoelementi possono contenere riferimenti
+ad altre entit&agrave; </li>
+</ul>
+<hr> <b>Uso delle entit&agrave;</b>
+<ul>
+  <li>definire abbreviazioni usate comunemente nel documento </li>
+  <li>suddividere il documento in pi&ugrave; parti, memorizzate
+separatamente </li>
+  <li>suddividere la DTD in pi&ugrave; parti e renderla modulare </li>
+</ul>
+<hr> <b>Dichiarazioni e riferimenti ad entit&agrave;</b>
+<ul>
+  <li><i>entit&agrave; interne</i>: il cui valore &egrave; definito nel
+documento stesso (specie di macro)<br>
+    <font face="Courier New">&lt;!ENTITY &nbsp;<i>nome-entita</i>
+&nbsp;"<i>testo</i>"&gt;</font> </li>
+  <li><i>entit&agrave; esterne</i>: il cui valore &egrave; accessibile
+tramite un'URI<br>
+    <font face="Courier New">&lt;!ENTITY &nbsp;<i>nome-entita</i>
+&nbsp;SYSTEM &nbsp;"<i>URI</i>"&gt;</font> </li>
+</ul>
+<p>La nozione di Uniform Resource Identifier (URI) generalizza quella
+di Uniform Resource Locator (URL), separando la risorsa dalla sua
+locazione. </p>
+<p><i>Riferimento ad un'entit&agrave;</i> nel documento: &nbsp;&nbsp;<tt>&amp;<i>nome-entita</i>;</tt>
+</p>
+<hr> <b>Entit&agrave; - Esempi</b>
+<p>Dichiarazioni nel DTD:<br>
+<br>
+<font face="Courier New">&nbsp; &lt;!ENTITY
+DIS&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; "Dip. di Informatica e Sist."&gt;<br>
+&nbsp; &lt;!ENTITY SEZIONE1 SYSTEM "sezione1.xml"&gt;<br>
+&nbsp; &lt;!ENTITY SEZIONE2 "&lt;Sezione&gt;Da
+scrivere.&lt;/Sezione&gt;"&gt;</font> </p>
+<p>Riferimenti nell'istanza di documento:<br>
+<br>
+<font face="Courier New">&nbsp; Presso il &amp;DIS; vengono studiati i
+linguaggi<br>
+&nbsp; per dati semistrutturati, come illustrato nelle<br>
+&nbsp; due sezioni seguenti.<br>
+&nbsp; &amp;SEZIONE1;<br>
+&nbsp; &amp;SEZIONE2;<br>
+</font> </p>
+<hr> <b>Processamento di entit&agrave;</b>
+<ul>
+  <li><i>entit&agrave; parsable</i>, il cui valore &egrave; testo ben
+formato
+    <ul>
+      <li>se contiene un'etichetta iniziale deve contenere anche la
+corrispondente etichetta finale </li>
+      <li>le entit&agrave; interne devono essere parsable </li>
+    </ul>
+  </li>
+  <li><i>entit&agrave; non parsable</i>, il cui valore &egrave;
+arbitrario
+    <ul>
+      <li>non vi si pu&ograve; far riferimento nel testo </li>
+      <li>possono comparire solo come valori di attributi di tipo <tt>ENTITY</tt>
+      </li>
+    </ul>
+  </li>
+</ul>
+<p>Un processore XML sostituisce tutti i riferimenti alle entit&agrave;
+parsable con il loro valore prima di passare il documento
+all'applicazione. </p>
+<hr> <b>Entit&agrave; parametro</b>
+<p>Sono entit&agrave; che si possono usare nel DTD esterno. </p>
+<p><font face="Courier New">&lt;!ENTITY % Text "CDATA"&gt;<br>
+&lt;!ENTITY % coreattrs<br>
+&nbsp;"id&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+ID&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+#IMPLIED<br>
+&nbsp; class&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+CDATA&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; #IMPLIED<br>
+&nbsp; title&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+%Text;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; #IMPLIED<br>
+&nbsp; ..." &gt;</font> </p>
+<p>Riferimento ad un'entit&agrave; parametro: &nbsp;&nbsp;<tt>%<i>nome-entita</i>;</tt>
+</p>
+<p>&Egrave; permesso solo nel DTD. </p>
+<hr> <b>Usi delle entit&agrave; parametro</b>
+<ul>
+  <li>modularizzare il DTD </li>
+  <li>suddividerla su pi&ugrave; file </li>
+</ul>
+<p>Uso di un DTD esterno</p>
+<p><font face="Courier New">&lt;!ENTITY % formule SYSTEM
+"http://.../formule.dtd"&gt;<br>
+%formule;</font></p>
+<hr> <b>Dichiarazioni di attributi</b>
+<p>Un elemento pu&ograve; contenere degli <i>attributi nell'etichetta
+iniziale</i>.</p>
+<p>Se il documento &egrave; valido tutti gli attributi devono essere
+stati dichiarati. </p>
+<p>Sintassi di una <i>dichiarazione di attributi</i> per un
+elemento:&nbsp; </p>
+<p><font face="Courier New">&lt;!ATTLIST &nbsp;<i>nome-elemento</i>
+&nbsp;<i>lista-attributi</i>&gt;</font> </p>
+<ul>
+  <li><tt><i>nome-elemento</i></tt> specifica l'elemento per cui si
+dichiarano gli attributi. </li>
+  <li><tt><i>lista-attributi</i></tt> &egrave; una lista di specifiche<br>
+    <br>
+    <font face="Courier New"><i>nome</i> &nbsp;<i>tipo</i> &nbsp;<i>valore-di-default</i></font>
+  </li>
+</ul>
+<hr> <b>Specifica di un attributo</b>
+<ul>
+  <li><tt><i>nome</i></tt>, da usare nell'etichetta iniziale
+per assegnargli un valore </li>
+  <li><tt><i>tipo</i></tt>, che specifica quali sono i possibili valori
+che l'attributo pu&ograve; assumere </li>
+  <li><tt><i>valore-di-default</i></tt>, ossia cosa fare quando
+l'attributo non viene esplicitamente assegnato nell'etichetta iniziale </li>
+</ul>
+<hr> <b>Tipi degli attributi</b>
+<p>XML distingue 10 possibili <i>tipi di attributo</i>: </p>
+<ul>
+  <li><i>enumerato</i>, ovvero una lista di possibili valori </li>
+  <li>CDATA: testo senza marcatura (&egrave; il tipo pi&ugrave;
+comune); <br>
+il testo non pu&ograve; contenere "<tt>&lt;</tt>'" e "<tt>"</tt>" </li>
+  <li>ID: il valore dell'attributo identifica l'elemento; <br>
+ci pu&ograve; essere un solo attributo di tipo ID per elemento </li>
+  <li>IDREF: il valore dell'attributo &egrave; l'ID di un altro
+elemento </li>
+</ul>
+<hr> <b>Tipi degli attributi (2)</b>
+<ul>
+  <li>ENTITY: il nome di un'entit&agrave; dichiarata nel DTD <br>
+permette di collegarsi a dati esterni in forma binaria (ad es.
+un'immagine) </li>
+  <li>NMTOKEN: un nome XML corretto <br>
+in nomi XML coincidono con gli identificatori Java, JavaScript, ...)</li>
+  <li>IDREFS, ENTITIES, NMTOKENS: versioni al plurale dei precedenti
+(valori separati da spazio) </li>
+  <li>NOTATION: il nome di una notation XML <br>
+una notation permette di specificare il formato di dati non-XML e
+un'applicazione che li processi </li>
+</ul>
+<hr> <b>Specifica del valore di default</b>
+<p>Il <tt><i>valore-di-default</i></tt> pu&ograve; essere </p>
+<ul>
+  <li>un <i>valore esplicito</i> che viene assunto in mancanza di
+specifica<br>
+    <br>
+    <font face="Courier New">&lt;!ATTLIST P align (left|center|right)
+"left" ...&gt;<br>
+    <br>
+    </font></li>
+  <li><tt>#REQUIRED</tt>, che obbliga a specificare l'attributo </li>
+  <li><tt>#IMPLIED</tt>, che rende la specifica del valore opzionale </li>
+  <li><tt>#FIXED "<i>valore-fisso</i>"</tt>, che fissa l'attributo ad
+avere un valore fisso (non pu&ograve; essere modificato all'interno
+del documento) </li>
+</ul>
+<hr> <b>Dichiarazione di attributi - Esempio</b>
+<p>Elemento <tt>img</tt> di XHTML:<br>
+<br>
+<font face="Courier New">&nbsp; &lt;!ELEMENT img EMPTY&gt;<br>
+&nbsp; &lt;!ATTLIST img<br>
+&nbsp;&nbsp;&nbsp;&nbsp;
+id&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+ID&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+#IMPLIED<br>
+&nbsp;&nbsp;&nbsp;&nbsp; class&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+CDATA&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; #IMPLIED<br>
+&nbsp;&nbsp;&nbsp;&nbsp; title&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+CDATA&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; #IMPLIED<br>
+&nbsp;&nbsp;&nbsp;&nbsp;
+src&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+CDATA&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; #REQUIRED<br>
+&nbsp;&nbsp;&nbsp;&nbsp;
+alt&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+CDATA&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; #REQUIRED<br>
+&nbsp;&nbsp;&nbsp;&nbsp; longdesc&nbsp;&nbsp;&nbsp;
+CDATA&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; #IMPLIED<br>
+&nbsp;&nbsp;&nbsp;&nbsp; height&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+CDATA&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; #IMPLIED<br>
+&nbsp;&nbsp;&nbsp;&nbsp; width&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+CDATA&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; #IMPLIED<br>
+&nbsp;&nbsp;&nbsp;&nbsp; usemap&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+CDATA&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; #IMPLIED<br>
+&nbsp;&nbsp;&nbsp;&nbsp; ismap&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+(ismap)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; #IMPLIED<br>
+&nbsp;&nbsp;&nbsp;&nbsp; ...<br>
+&nbsp; &gt;<br>
+</font> </p>
+<hr> <b>Attributi</b> <tt>ID</tt> <b>e</b> <tt>IDREF</tt> <b>-
+Esempio</b><br>
+<br>
+<font face="Courier New">&lt;?xml version="1.0"&gt;<br>
+&lt;!DOCTYPE FAMIGLIA [<br>
+&nbsp;&nbsp; &lt;!ELEMENT FAMIGLIA (PERS*)&gt;<br>
+&nbsp;&nbsp; &lt;!ELEMENT PERS&nbsp; (#PCDATA)&gt;<br>
+&nbsp;&nbsp; &lt;!ATTLIST PERS&nbsp; NP ID #REQUIRED&gt;<br>
+&nbsp;&nbsp; &lt;!ATTLIST PERS&nbsp; PADRE IDREF #IMPLIED&gt;<br>
+&nbsp;&nbsp; &lt;!ATTLIST PERS&nbsp; MADRE IDREF #IMPLIED&gt;<br>
+]&gt;<br>
+<br>
+&lt;FAMIGLIA&gt;<br>
+&nbsp; &lt;PERS NP="a1"&gt;Susanna&lt;/PERS&gt;<br>
+&nbsp; &lt;PERS NP="a2"&gt;Carlo&lt;/PERS&gt;<br>
+&nbsp; &lt;PERS NP="a3" MADRE="a1"&gt;Maria&lt;/PERS&gt;<br>
+&nbsp; &lt;PERS NP="a4" PADRE="a2"&gt;Luca&lt;/PERS&gt;<br>
+&lt;/FAMIGLIA&gt;<br>
+</font>
+<hr> <b>Attributi di tipo</b> <tt>ENTITY</tt>
+<p>Permettono di riferirsi a dati esterni in forma binaria. </p>
+<p>Il valore di un attributo di tipo <tt>ENTITY</tt> &egrave; il nome
+di un'entit&agrave; esterna dichiarata nel DTD.<br>
+<br>
+<font face="Courier New">&nbsp; &lt;!ELEMENT IMAGE EMPTY&gt;<br>
+&nbsp; &lt;!ATTLIST IMAGE SOURCE ENTITY #REQUIRED&gt;<br>
+&nbsp; &lt;!ENTITY LOGO SYSTEM "logo.gif"&gt;</font> </p>
+<p>Nel documento posso inserire un riferimento all'immagine:<br>
+<br>
+<font face="Courier New">&nbsp; ...<br>
+&nbsp; &lt;IMAGE SOURCE="LOGO"/&gt;<br>
+&nbsp; ...<br>
+</font> </p>
+<hr> <b>Parte 2: Analisi Sintattica di documenti XML/SGML</b>
+<ul>
+  <li>Differenze principali tra XML ed SGML </li>
+  <li>DTD ed istanze di documenti </li>
+  <li>Analisi sintattica </li>
+</ul>
+<hr> <b>Differenze principali tra XML ed SGML</b>
+<p>In SGML, una dichiarazione di tipo di elemento ha la seguente forma:</p>
+<p><font face="Courier New">&nbsp; &lt;!ELEMENT&nbsp;&nbsp; <i>elementi-dichiarati</i>&nbsp;&nbsp;&nbsp;<i>regole-di-minimizzazione</i></font>
+<br>
+<i><font face="Courier New">&nbsp;&nbsp;&nbsp;</font></i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font
+ face="Courier New"><i>specifica-contenuto</i>&nbsp;&nbsp;&nbsp; <i>eccezioni</i>&gt;</font>
+</p>
+<p>Ad esempio, nella dichiarazione di tipo di elemento </p>
+<p><font face="Courier New">&nbsp;&nbsp;&nbsp; &lt;!ELEMENT Sezione - -
+(TitoloSezione, Testo?, Sezione*)&nbsp; +(Nota)&gt;</font> </p>
+<p>abbiamo che ``<tt>Sezione</tt>'' &egrave; l'elemento dichiarato, ``<tt>-
+-</tt>'' sono le regole di minimizzazione, ``<tt>(TitoloSezione,
+Testo?, Sezione*)</tt>'' &egrave; la specifica di contenuto e ``<tt>+(Nota)</tt>''
+&egrave; un'eccezione. </p>
+<p>In XML: </p>
+<ul>
+  <li>mancano le <i>regole-di-minimizzazione</i> </li>
+  <li>mancano le <i>eccezioni</i>, </li>
+  <li>la parte <i>elementi-dichiarati</i> ha una forma pi&ugrave;
+semplice </li>
+</ul>
+<hr> <b>DTD e <i>grammatica context free estesa</i></b>
+<p>I terminali della grammatica sono <tt>#PCDATA</tt>, </p>
+<p>I nonterminali della grammatica sono i tipi di elemento </p>
+<p>le dichiarazioni di tipo di elemento corrispondono alle produzioni
+della grammatica. </p>
+<p>I documenti etichettati sono le stringhe generate dal linguaggio </p>
+<p>I documenti etichettati hanno una struttura ad albero determinata
+dalle etichette <br>
+</p>
+<hr> <b>Definizione 2.1.1</b>&nbsp;&nbsp; Un <i>Document Type
+Definition</i> (DTD) <b>D</b> &egrave; una quadrupla (T,E,<b>P</b>,D),
+dove:
+<ul>
+  <li>T &egrave; l'insieme dei terminali, ovvero <tt>#PCDATA</tt>, (in
+SGML anche <tt>#CDATA</tt>, <tt>#RCDATA</tt>) </li>
+  <li>E &egrave; l'insieme dei <i>(tipi di) elemento</i>, che
+corrispondono ai nonterminali della grammatica; </li>
+  <li>D &egrave; il tipo di elemento iniziale, ovvero il tipo del
+documento, che corrisponde al simbolo iniziale della grammatica; </li>
+  <li><b>P</b> &egrave; l'insieme delle <i>dichiarazioni di tipo di
+elemento</i>, che corrispondono alle produzioni della grammatica.
+Ogni dichiarazione di tipo di elemento ha la forma
+    <p><br>
+    <i>E -&gt;</i><img border="0" width="11"
+ src="lezione-2_files/img4.gif" height="11"> </p>
+    <p>dove <i>E</i> &egrave; il tipo di elemento che viene dichiarato
+    </p>
+    <p><img border="0" width="11" src="lezione-2_files/img4.gif"
+ height="11">, detto <i>content model</i>, &egrave; un'espressione sui
+simboli in&nbsp;<!-- MATH
+ $\mathcal{T}\cup\mathcal{E}$
+ -->T unione E</p>
+  </li>
+</ul>
+<hr> <b>Sintassi del content model SGML</b>
+<ul>
+  <p><img border="0" width="385" src="lezione-2_files/img26.gif"
+ height="150"></p>
+</ul>
+In XML non &egrave; possibile specificare i terminali <code>#CDATA</code>
+ed <code>#RCDATA</code> e l'operatore <code>and</code> (permutazione
+arbitraria degli elementi).<br>
+<hr> <b>Istanze di documento conformi ad un DTD</b>
+<p>Un'istanza di documento &egrave; conforme ad un DTD se pu&ograve;
+essere generata a partire dal tipo di elemento iniziale applicando le
+produzioni (ovvero le dichiarazioni di tipo di elemento) del DTD. </p>
+<ul>
+  <li>l'applicazione di una produzione&nbsp;<!-- MATH
+ $E \rightarrow \alpha$
+ -->consiste
+nel considerare una parola <i>w</i> del linguaggio (sui terminali e
+tipi di elemento) definito dal content model&nbsp;<img border="0"
+ width="11" src="lezione-2_files/img4.gif" height="11">, generare per
+ogni simbolo in <i>w</i> la parte di istanza di documento
+corrispondente e infine concatenare le parti cos&igrave; ottenute; </li>
+  <li>ogni volta che viene applicata una produzione la parte di istanza
+di documento generata viene racchiusa tra le etichette iniziale <font
+ face="Courier New">&lt;<i>E</i>&gt;</font> e finale <font
+ face="Courier New">&lt;/<i>E</i>&gt;</font> del tipo di elemento <i>E</i>
+che compare nella parte sinistra della produzione. </li>
+</ul>
+<hr> <b>Definizione 2.1.3</b>&nbsp;&nbsp; L'insieme <i>docs</i>(<b>P</b><!-- MATH
+ $\mathit{docs}(\mathbf{P},S)$
+ -->,S)&nbsp;di<i>istanze
+di documento</i> generate da un insieme di dichiarazioni di tipo di
+elemento <b>P </b>a partire da un simbolo S in T unione E &egrave;
+definito induttivamente al seguente modo:
+<ul>
+  <li>se S &egrave; un terminale T, allora <i>docs</i>(<b>P</b>,S) =
+T. </li>
+  <li>se S &egrave; un tipo di elemento <i>E</i> ed <i>E -&gt;</i>&nbsp;<img
+ border="0" width="11" src="lezione-2_files/img4.gif" height="11">&nbsp;<!-- MATH
+ $E \rightarrow \alpha \in\mathbf{P}$
+ -->&egrave;
+una produzione in <b>P</b> <a
+ href="file:///E:/DIS/slides-3_files/img63.gif">allora</a> <br>
+    <img border="0" width="428" src="lezione-2_files/img63.gif"
+ height="40"></li>
+</ul>
+L'insieme <i>docs</i>(<b>D</b><!-- MATH
+ $\mathit{docs}(\mathbf{D})$
+ -->)&nbsp;di<i>istanze
+di documento generate da un DTD </i>(T,E,<b>P</b>,D) &egrave; dato da <i>docs</i>(<b>P</b>,D).
+<p>Un'istanza di documento <i>&egrave; conforme</i> ad un DTD <b>D </b>se
+appartiene a <i>docs</i>(<b>D</b>) </p>
+<hr> <b>Ambiguit&agrave; causata dalle etichette finali</b>
+<p>Grammatica&nbsp;<img border="0" width="0"
+ src="lezione-2_files/img74.gif" height="0"> </p>
+<p>Documento<img border="0" width="246" src="lezione-2_files/img76.gif"
+ height="50"> <br>
+&nbsp; <br>
+&nbsp; </p>
+<p>Alberi sintattici </p>
+<p><img border="0" width="385" src="lezione-2_files/img72.gif"
+ height="150"> <br>
+</p>
+<hr> <b>Analisi sintattica</b>
+<p>Una conseguenza importante del fatto che ogni istanza di documento
+conforme ad un DTD contiene le etichette derivanti dall'applicazione
+delle produzioni, &egrave; che il linguaggio (comprese le etichette)
+generato da un DTD &egrave; un linguaggio LL(1). </p>
+<ul>
+  <li>la parte sinistra della produzione che &egrave; stata applicata
+per generare una determinata sottostringa &egrave; univocamente
+determinata dall'etichetta iniziale (niente&nbsp; lookahead); </li>
+  <li>il linguaggio generato dal content model &egrave; un linguaggio
+regolare, quindi &egrave; LL(1); </li>
+  <li>la parte di sottostringa generata da un content model pu&ograve;
+essere univocamente determinata in base all'etichetta finale
+corrispondente all'etichetta iniziale.</li>
+</ul>
+<hr>
+<p><b>Riferimenti<br>
+</b></p>
+<p><cite><a href="http://www.w3.org/TR/REC-xml">Extensible Markup
+Language (XML) 1.0 (Second Edition)</a></cite> <strong>W3C
+Recommendation</strong>
+6 October 2000, Tim Bray, Jean Paoli, C. M. Sperberg-McQueen, Eve Maler.<br>
+</p>
+<p><cite><a
+ href="http://www.dis.uniroma1.it/%7Enardi/Didattica/lt/dispense/xml.ps.gz">XML
+Dispensa per il corso di Linguaggi e Traduttori</a></cite> A.A.
+2002/2003, Diego Calvanese, Luigi Dragone, Daniele Nardi, Viviana
+Olivieri</p>
+<ul>
+</ul>
+</body>
+</html>

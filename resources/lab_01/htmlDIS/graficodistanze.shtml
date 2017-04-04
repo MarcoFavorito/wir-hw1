@@ -1,0 +1,194 @@
+<!doctype html public "-//w3c//dtd html 4.0 transitional//en">
+<html>
+<head>
+<link href="java.css" rel="stylesheet" type="text/css">
+<title>Grafico con distanze</title>
+</head>
+
+<body>
+
+<h2>Grafico con distanze</h2>
+
+<p>
+Siano dati un insieme di punti. Per ogni coppia di punti
+nell'insieme, si disegni la linea che li unisce. Inoltre,
+si disegni anche un piccolo quadrato nel punto a met&agrave;
+di questo segmento, e vicino si scriva la distanza fra i
+due punti.
+
+<p>
+Il primo problema da risolvere &egrave; trovare il modo
+di rappresentare un insieme di punti. Dal momento che
+ogni punto &egrave; rappresentato da due interi (le sue
+coordinate) quello che serve &egrave; un metodo per
+rappresentare due insiemi di interi. Un modo che
+conosciamo &egrave; usando i vettori. Possiamo per
+esempio usare due vettori di interi <tt>x</tt> e <tt>y</tt>,
+che contengono ciascuno una delle coordinate di tutti i
+punti. Per esempio, le coordinate del primo punto
+saranno date da <tt>x[0]</tt> e <tt>y[0]</tt>, le
+coordinate del secondo punto si possono memorizzare
+in <tt>x[1]</tt> e <tt>y[1]</tt>, ecc. Chiaramente,
+il numero di elementi dei due vettori deve essere lo stesso.
+Inoltre, il numero di punti che si pu&ograve; rappresentare
+in questo modo coincide con il numero di elementi dei due
+vettori, e quindi vale <tt>x.length</tt> che &egrave;
+uguale a <tt>y.length</tt>.
+
+<p>
+Vadiamo ora il problema del tracciamento delle linee. Quello
+che ci serve &egrave; un metodo per tracciare un segmento
+fra due elementi qualsiasi del vettore. Quindi, deve esistere
+per esempio una linea fra il terzo e il nono elemento, una
+fra il settimo e il quinto, ecc.
+
+<p>
+La soluzione del problema pu&ograve; non essere immediatamente
+chiara. Proviamo a riformulare il problema in altro modo.
+Vogliamo un segmento fra il primo punto e il secondo, fra il
+primo e il terzo ecc. Quindi, se consideriamo solo le linee
+fra il primo elemento e tutti gli altri, allora il seguente
+codice &egrave; valido:
+
+<p>
+<pre>
+  for(p=0; p<=x.length-1; p=p+1) {
+    g.drawLine(x[0],y[0],x[p],y[p]);
+  }
+</pre>
+
+<p>
+Questo frammento di programma disegna una linea fra il primo
+punto e tutti gli altri: infatti, il ciclo viene eseguito per
+ogni indice del vettore tranne il primo, ossia <tt>x[p]</tt>
+e <tt>y[p]</tt> sono di volta in volta tutti gli elementi del
+vettore tranne il primo. Si noti che in questo caso viene
+anche fatta una linea fra il primo punto e se stesso (questo
+problema viene considerato pi&ugrave; avanti).
+
+<p>
+Ora, proviamo a pensare cosa deve succedere quando si deve
+tracciare una linea tra il secondo punto e tutti gli altri.
+Il programma che fa questo &egrave; molto simile al
+precedente:
+
+<p>
+<pre>
+  for(p=0; p<=x.length-1; p=p+1) {
+    g.drawLine(x[1],y[1],x[p],y[p]);
+  }
+</pre>
+
+<p>
+Per il terzo punto abbiamo:
+
+<p>
+<pre>
+  for(p=0; p<=x.length-1; p=p+1) {
+    g.drawLine(x[2],y[2],x[p],y[p]);
+  }
+</pre>
+
+A questo punto &egrave; chiaro che occorre un ciclo for. Infatti,
+sto ripetendo sempre le stesse istruzioni, una volta con
+<tt>x[0],y[0]</tt>, una volta con <tt>x[1],y[1]</tt>, ecc. Quindi,
+usiamo una variabile <tt>t</tt> che parte da 0 a ci fa
+arrivare all'ultimo punto (quindi si arriva a <tt>x.length</tt>.
+Ad ogni iterazione, consideriamo il punto che ha coordinate
+<tt>x[t],y[t]</tt> e tracciamo tutte le linee fra questo punto
+e ogni altro punto. Quindi, a ogni passo va eseguito il ciclo di
+sopra, per cui abbiamo due cicli for l'uno dentro l'altro:
+
+<p>
+<pre>
+    for(t=0; t<=x.length-1; t=t+1) {
+      for(p=0; p<=x.length-1; p=p+1) {
+        g.drawLine(x[t],y[t],x[p],y[p]);
+      }
+    }
+</pre>
+
+<p>
+Se vogliamo evitare il disegno della linea fra il punto e se stesso,
+possiamo aggiungere un controllo: se <tt>t==p</tt> allora sto
+considerando lo stesso punto, per cui non &egrave; necessario
+fare la linea. Quello che si ottiene &egrave;:
+
+<p>
+<pre>
+    for(t=0; t<=x.length-1; t=t+1) {
+      for(p=0; p<=x.length-1; p=p+1) {
+        if(t!=p) {
+          g.drawLine(x[t],y[t],x[p],y[p]);
+        }
+      }
+    }
+</pre>
+
+A questo punto, possiamo risolvere il problema di trovare le
+coordinate del punto a met&agrave; del segmente, e il valore della
+distanza. Il punto a met&agrave; si ottiene semplicemente facendo
+la media delle coordinate <tt>x</tt> e delle coordinate <tt>y</tt>
+dei due punti estremi del segmento. La distanza si trova usando
+il teorema di Pitagora. Entrambe queste cose vanno fatte per ogni
+coppia di punti, per cui le istruzioni necessarie vanno messe
+subito dopo la <tt>drawLine</tt>, visto che questa istruzione
+viene effettivamente eseguita per ogni coppia di punti.
+
+<p>
+Il programma completo
+<a href="GraficoDistanze.java">GraficoDistanze.java</a>
+segue.
+
+<p>
+<pre>
+/*
+  Grafico con distanze
+*/
+
+import java.awt.*;
+
+public class GraficoDistanze extends java.applet.Applet {
+  public void paint(Graphics g) {
+    int x[]={100, 200, 300, 220};
+    int y[]={400, 100, 220, 190};
+    int p, t;
+    int xm, ym;
+    double d;
+
+    for(t=0; t<=x.length-1; t=t+1) {
+      for(p=0; p<=x.length-1; p=p+1) {
+        if(t!=p) {
+          g.drawLine(x[t],y[t],x[p],y[p]);	// disegna la linea
+
+          xm=(x[t]+x[p])/2;			// punto intermedio
+          ym=(y[t]+y[p])/2;
+
+          g.drawRect(xm-2,ym-2,4,4);		// quadratino al centro
+
+						// calcola la distanza
+          d=Math.sqrt((x[t]-x[p])*(x[t]-x[p])+(y[t]-y[p])*(y[t]-y[p]));
+
+          g.drawString(""+d,xm+2,ym+2);		// stampa la distanza
+        }
+      }
+    }
+  }
+}
+
+</pre>
+
+<p>
+Usando i valori messi nel codice come coordinate dei
+punti, si ottiene il seguente risultato.
+
+<p align="center">
+<img src="GraficoDistanze.gif">
+</p>
+
+<p>
+<applet code="GraficoDistanze.class" height="400" width="400">
+</applet>
+
+</body>
+</html>

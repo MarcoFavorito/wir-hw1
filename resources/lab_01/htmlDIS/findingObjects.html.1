@@ -1,0 +1,483 @@
+<html>
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<meta http-equiv="Content-Language" content="en-us">
+<meta name="GENERATOR" content="Microsoft FrontPage 6.0">
+<meta name="keywords" content="Agile data, database administrator, dba, Sybase, Oracle, Agile Alliance, Agile Software Development, Agile Modeling, Agile Database Technique">
+<meta name="ProgId" content="FrontPage.Editor.Document">
+<title>Finding Objects In Relational Databases </title>
+</head>
+
+<body>
+
+<table border="0" width="100%">
+  <tr>
+    <td width="6%"><a href="http://www.agiledata.org">
+	<img border="0" src="http://www.agiledata.org/images/agileDataLogo.jpg" alt="Agile Data" width="95" height="70"></a></td>
+    <td width="100%">
+      <h1 align="center">Finding Objects In Relational Databases</h1>      
+      <p align="center"><b><a href="http://www.agiledata.org">www.agiledata.org</a>: Bringing data professionals and application developers together.</b></td>
+    <td width="94%">
+      <a href="http://www.ambysoft.com/scottAmbler.html">
+		<img border="0" src="http://www.agiledata.org/images/logoScottWAmbler.gif" alt="Scott W. Ambler" width="81" height="57"></a></td>
+  </tr>
+</table>
+
+<p>&nbsp;</p>
+<p>This summarizes Chapter 18 of <a href="http://www.ambysoft.com/agileDatabaseTechniques.html">Agile 
+    Database Techniques</a>.&nbsp; </p>
+<p>A common programming task is to find one or more
+objects that are currently stored in the database and bring them into memory.&nbsp;
+Perhaps you need to display a list of people that work in a department.&nbsp;
+Perhaps you need to enable your users to define search criteria used to
+list available inventory items.&nbsp; Perhaps
+you need to implement a report.&nbsp; Although
+these sound like easy tasks there are many interesting implementation options
+and issues that you need to be aware of.</p>
+<p>&nbsp;</p>
+<h1>Table of Contents</h1>
+<ul>
+  <li><a href="#AgileDBA">The role of the agile DBA</a></li>
+  <li><a href="#ImplementingFindStrategies">Implementing find strategies</a> 
+    <ul>
+      <li><a href="#BruteForce">Brute force</a> </li>
+      <li><a href="#QueryObjects">Query objects</a> </li>
+      <li><a href="#MetaDataDriven">Meta data driven</a> </li>
+    </ul>
+  </li>
+  <li><a href="#ImplementationTechniques">Implementation techniques</a> 
+    <ul>
+      <li><a href="#ErrorHandling">Use the native error handling strategy</a> </li>
+      <li><a href="#ExpectLogicErrors">Expect logic errors</a> </li>
+      <li><a href="#ReturnACollection">Always return a collection</a> </li>
+      <li><a href="#ProxiesAndLazyInitialization">Use proxies and lazy
+        initialization for search lists</a></li>
+      <li><a href="#LazyReads">Use lazy reads for high-overhead attributes</a> </li>
+      <li><a href="#ProgramForPeople">Program for people</a> </li>
+    </ul>
+  </li>
+  <li><a href="#RepresentingFindResults">Representing Find Results</a> </li>
+  <li><a href="#References">References</a> </li>
+</ul>
+<p>&nbsp;</p>
+<h1>1. The Role of the <a name="AgileDBA">Agile DBA</a></h1>
+<p>The role of an Agile DBA is fairly straight forward:
+they will work with, and mentor, application developers in the techniques and
+issues involved with finding the data stored in RDBs.</p>
+<p>&nbsp;</p>
+<h1>2. <a name="ImplementingFindStrategies">Implementing Find Strategies</a></h1>
+<p>For the sake on convenience the term “find strategy” will refer to your
+implementation strategy for finding the data which objects in relational
+databases.<span style="mso-spacerun: yes">&nbsp; </span>The deciding factor in
+choosing a find strategy is the level of database encapsulation that you wish to
+have.<span style="mso-spacerun: yes">&nbsp; </span>In <a href="http://www.agiledata.org/essays/implementationStrategies.html">Encapsulating
+Database Access</a> you saw that there was four basic approaches for
+implementing database access – <a href="http://www.agiledata.org/essays/implementationStrategies.html#StrategyBruteForce">brute
+force</a>, <a href="http://www.agiledata.org/essays/implementationStrategies.html#StrategyDataAccessObjects">data
+access objects (DAOs)</a>, <a href="http://www.agiledata.org/essays/implementationStrategies.html#StrategyPersistenceFrameworks">persistence
+frameworks</a>, and <a href="http://www.agiledata.org/essays/implementationStrategies.html#StrategyServices">services</a>.<span style="mso-spacerun: yes">&nbsp;
+</span>Similarly there are different find strategies that you may choose from: <a href="#BruteForce">brute
+force</a>, <a href="#QueryObjects">query objects</a>, and <a href="#MetaDataDriven">meta
+data driven</a>.<span style="mso-spacerun: yes">&nbsp;</span></p>
+<h2>2.1. <a name="BruteForce">Brute Force</a></h2>
+<p>With the “brute force” find strategy you simply embed database access code, such as Structured Query Language
+(SQL) statements or Enterprise JavaBean (EJB) Query Language (EJB QL), in your business objects.&nbsp; </p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<h2>2.2. <a name="QueryObjects">Query Objects</a></h2>
+<p>Query objects (<a href="http://www.amazon.com/exec/obidos/ASIN/0201433044/ambysoftinc">Brant
+&amp; Yoder 2000</a>) are the find strategy version of DAOs.&nbsp;
+Instead of embedding SQL code in your business objects you instead
+encapsulate it in separate classes.&nbsp; 
+A simple approach would implement a single public operation that accepted the
+criteria and returned a collection of zero or more objects representing the
+result set.&nbsp; A more sophisticated
+approach would enable you to work with the query result in a number of different
+ways, such as collections of objects, as XML documents, or as simple data sets.&nbsp;
+The various ways that <a href="#RepresentingFindResults">query results can
+be represented</a> are discussed later in the chapter.</p>
+<p>&nbsp;</p>
+<h2>2.3. <a name="MetaDataDriven">Meta Data Driven</a></h2>
+<p>A meta data driven approach is the most sophisticated strategy
+available to you and is typically implemented as part of a persistence
+framework.&nbsp; The basic idea is that
+you want to decouple your object schema from your data schema and the only way
+to do this is to describe the <a href="http://www.agiledata.org/essays/mappingObjects.html">mappings</a>
+between them in meta data instead of in hard coded SQL.&nbsp;
+Instead of defining a SQL SELECT statement that specifies the search in
+terms of database columns your application must instead define the search in
+terms of the object attributes.&nbsp;</p>
+<a href="#Figure3MetaDataDriven">
+Figure 1</a> overviews how this would work.&nbsp; The
+business object submits the meta data for a query, perhaps represented as an XML
+document or as a full-fledged object (<a href="http://www.ambysoft.com/persistenceLayer.html">Ambler
+2001d</a>), to a query processor.&nbsp; This
+meta data would represent concepts such as return all customers whose name looks
+like ‘Sc* A*’, return the account with account number 1701-1234, and return
+all employees whose hire date is between January 1 1987 and June 14 1995 that
+work in the marketing department.&nbsp; The
+query processor passes the query to a query builder that uses the mapping meta
+data to build a SELECT statement which can then be submitted to the database.&nbsp;
+The results come back from the database and are converted into the
+appropriate representation (such as an XML structure, a collection of objects,
+…).&nbsp; The representation is then
+returned to the business object.
+<p>&nbsp;</p>
+<p><b><a name="Figure3MetaDataDriven">Figure 1. Overview of the meta data driven
+strategy.</a></b></p>
+<p><img border="0" src="../images/findingMetaDataDriven.gif" width="720" height="476"></p>
+<p>&nbsp;</p>
+<p class="MsoNormal">The primary advantage of this approach is that it enables
+you to keep your object schema and data schema decoupled from one another.<span style="mso-spacerun: yes">&nbsp;
+</span>As long as the query meta data reflects the structure of the current
+object schema and the mapping meta data is current then you do not need to embed
+SQL within your object schema to find objects stored in relational databases.</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<h1>3. <a name="ImplementationTechniques">Implementation Techniques</a></h1>
+<p>Deciding on, and then implementing, your find strategy is just the first
+step. <span style="mso-spacerun:
+yes">&nbsp;</span>You also need to resolve basic issues such as how to handle
+errors, how many objects you expect to come back as the result of a find query,
+when to bring the result across the network, and how to accept search criteria
+from users.<span style="mso-spacerun: yes">&nbsp; </span>In this section I
+describe several techniques that I have found useful over the years to address
+these issues.</p>
+<p>&nbsp;</p>
+<h2>3.1. Use the Native <a name="ErrorHandling">Error Handling</a> Strategy</h2>
+<p>Things don’t always go right and therefore you need
+to handle error conditions properly.&nbsp; Languages
+offer two basic facilities for indicating error: exceptions and return codes.&nbsp;
+Languages such as Java and C# support the ability to throw exceptions
+from operations.&nbsp; </p>
+<p>&nbsp;</p>
+<h2>3.2. <a name="ExpectLogicErrors">Expect &quot;Logic&quot; Errors</a></h2>
+<p>You will need a strategy for handling logic errors.&nbsp; When many users can
+access the database simultaneously, the norm for most applications, logic errors
+will occur.<span style="mso-spacerun:
+yes">&nbsp; These logic errors often represent potential referential integrity 
+problems.&nbsp; </span></p>
+<p>&nbsp;</p>
+<h2>3.3. Always <a name="ReturnACollection">Return a Collection</a></h2>
+<p class="MsoNormal">A <i>find()</i> operation your should always return a
+collection, such as a vector or array, as the result.<span style="mso-spacerun: yes">&nbsp;
+</span>This is a good strategy because:<o:p>
+</o:p>
+</p>
+<ul>
+  <li>
+    <p class="MsoNormal">It’s a single, consistent approach.</li>
+  <li>
+    <p class="MsoNormal">You can easily determine the size of a collection.<span style="mso-spacerun: yes">&nbsp;
+    </span>This simplifies logic error detection because you can determine if
+    there are no objects as the result of your query or several objects when you
+    only expected one.<span style="mso-spacerun: yes">&nbsp;</span></li>
+  <li>
+    <p class="MsoNormal">In languages that don’t support exceptions you can
+    simply use the first element in the collection as the location for the error
+    code/message/object.</li>
+</ul>
+<p class="MsoNormal">A more sophisticated approach is to develop a <i>FindResult</i>
+class that includes a collection containing the result set and the error (if
+any).<span style="mso-spacerun: yes">&nbsp; </span>This class would have the
+ability to iterate over the collection, to answer basic queries such as <i>isEmpty()</i>
+and <i>isSingleResult()</i>.<span style="mso-spacerun:
+yes">&nbsp;</span>&nbsp;</p>
+<p class="MsoNormal">&nbsp;</p>
+<h2>3.4. Use <a name="ProxiesAndLazyInitialization">Proxies and Lazy
+Initialization</a> For Search Lists</h2>
+<p class="BT" style="text-indent:0in">Lazy initialization is an object-level
+technique for improving system performance via an object proxy.<span style="mso-spacerun: yes">&nbsp;
+</span>An object proxy contains just enough information to identify the object
+within the system, very likely the primary key attributes, and enough
+information for users to identify the object.<span style="mso-spacerun: yes">&nbsp;
+</span>The columns that are displayed on a search result screen often determine
+the latter information.<span style="mso-spacerun:
+yes">&nbsp; </span>The basic idea is that instead of bringing all of the data
+for every object in the result set you only bring across the identifying
+information.<span style="mso-spacerun: yes">&nbsp; </span>This information is
+displayed to the user, who then selects one of the proxies from the list to work
+with it.<span style="mso-spacerun: yes">&nbsp; </span>The system then retrieves
+all of the information for the selected business object and enables the user to
+work with that object.</p>
+<p>&nbsp;</p>
+<h2>3.5. Use <a name="LazyReads">Lazy Reads</a> for High-Overhead Attributes</h2>
+<p class="BT" style="text-indent:0in">Lazy reading is an attribute-level
+technique for improving system performance.<span style="mso-spacerun: yes">&nbsp; </span>The
+basic idea that the attribute’s value is read from the database, or calculated
+as the case may be, the first time it is needed instead of setting the value
+when the object is first retrieved into memory.<span style="mso-spacerun: yes">&nbsp;
+</span>Lazy read is a good option when an object’s attribute is high-overhead,
+perhaps it is very large and would be slow to transmit over the network or it
+requires intensive calculations to compute, and when it is rarely accessed.<span style="mso-spacerun: yes">&nbsp;</span></p>
+<p>&nbsp;</p>
+<h2>3.6. <a name="ProgramForPeople">Program for People</a></h2>
+<p class="BT" style="text-indent:0in">When you’re building a search screen
+your users need some way to indicate their search criteria.<span style="mso-spacerun: yes">&nbsp;
+</span>The important thing to remember is that your users very likely aren’t
+computer professionals, they might be struggling with basic computer literacy,
+and may not even be comfortable using computers.<span style="mso-spacerun: yes">&nbsp;
+</span>Have you ever met someone, told them that you were a software architect
+for a large and impressive firm, and the only question they have for you is how
+much memory they should get when they buy a home computer next month?<span style="mso-spacerun: yes">&nbsp;
+</span>This person is very likely one of your more advanced users, and they
+clearly don’t understand what it is that you do for a living.</p>
+<p class="BT" style="text-indent:0in">The point is that your search facility
+will need to be user friendly.<span style="mso-spacerun: yes">&nbsp; </span>It
+should follow accepted user interface standards, which your organization should
+have in place and if they don’t then your team should follow industry
+standards.<span style="mso-spacerun: yes">&nbsp; </span></p>
+<p>&nbsp;</p>
+<h1>4. <a name="RepresentingFindResults">Representing Find Results</a></h1>
+<p>Although this may sound like blasphemy to object purists, you don’t always
+need nor want objects as the result of a search.<span style="mso-spacerun: yes">&nbsp;
+</span>The fact is that there are several ways that the results of a find can be
+represented, as you see in <a href="#Table2FindResults">Table 2</a> which
+describes the various ways to represent customers.<span style="mso-spacerun: yes">&nbsp;
+</span>You don’t need to support all of these representations in your
+application but you will likely find that you need several.</p>
+<p>&nbsp;</p>
+<p class="MsoNormal"><b><a name="Table2FindResults">Table 2. Various ways to
+represent the results of a find</a>.</b></p>
+<table border="1" cellspacing="0" cellpadding="0" style="border-collapse:collapse;
+ border:none;mso-border-alt:solid windowtext .5pt;mso-padding-alt:0in 5.4pt 0in 5.4pt" width="534">
+  <tr>
+    <td valign="top" style="width:110;border:.5pt solid windowtext;
+  padding-left:5.4pt; padding-right:5.4pt; padding-top:0in; padding-bottom:0in">
+      <p class="MsoNormal"><b>Approach<o:p>
+      </o:p>
+      </b></p>
+    </td>
+    <td valign="top" style="border-right:.5pt solid windowtext; border-top:.5pt solid windowtext; border-bottom:.5pt solid windowtext; width:393;border-left:medium none;mso-border-left-alt:solid windowtext .5pt;padding-left:5.4pt; padding-right:5.4pt; padding-top:0in; padding-bottom:0in">
+      <p class="MsoNormal"><b>Description<o:p>
+      </o:p>
+      </b></p>
+    </td>
+  </tr>
+  <tr>
+    <td valign="top" style="border-left:.5pt solid windowtext; border-right:.5pt solid windowtext; border-bottom:.5pt solid windowtext; width:110;border-top:medium none;mso-border-top-alt:solid windowtext .5pt;padding-left:5.4pt; padding-right:5.4pt; padding-top:0in; padding-bottom:0in">
+      <p class="MsoNormal">Business objects<o:p>
+      </o:p>
+      </p>
+    </td>
+    <td valign="top" style="width:393;border-top:medium none;border-left:
+  medium none;border-bottom:.5pt solid windowtext;border-right:.5pt solid windowtext;
+  mso-border-top-alt:solid windowtext .5pt;mso-border-left-alt:solid windowtext .5pt;
+  padding-left:5.4pt; padding-right:5.4pt; padding-top:0in; padding-bottom:0in">
+      <p class="MsoNormal">The result set is marshaled into a collection of <i>Customer</i>
+      objects.<o:p>
+      </o:p>
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td valign="top" style="border-left:.5pt solid windowtext; border-right:.5pt solid windowtext; border-bottom:.5pt solid windowtext; width:110;border-top:medium none;mso-border-top-alt:solid windowtext .5pt;padding-left:5.4pt; padding-right:5.4pt; padding-top:0in; padding-bottom:0in">
+      <p class="MsoNormal">Comma Separated Value (CSV) file<o:p>
+      </o:p>
+      </p>
+    </td>
+    <td valign="top" style="width:393;border-top:medium none;border-left:
+  medium none;border-bottom:.5pt solid windowtext;border-right:.5pt solid windowtext;
+  mso-border-top-alt:solid windowtext .5pt;mso-border-left-alt:solid windowtext .5pt;
+  padding-left:5.4pt; padding-right:5.4pt; padding-top:0in; padding-bottom:0in">
+      <p class="MsoNormal">The result set is marshaled into a text file, with
+      one row in the file for each customer.<span style="mso-spacerun: yes">&nbsp;
+      </span>Commas separate the column values (e.g. Scott,William,Ambler).<o:p>
+      </o:p>
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td valign="top" style="border-left:.5pt solid windowtext; border-right:.5pt solid windowtext; border-bottom:.5pt solid windowtext; width:110;border-top:medium none;mso-border-top-alt:solid windowtext .5pt;padding-left:5.4pt; padding-right:5.4pt; padding-top:0in; padding-bottom:0in">
+      <p class="MsoNormal">Data structure<o:p>
+      </o:p>
+      </p>
+    </td>
+    <td valign="top" style="width:393;border-top:medium none;border-left:
+  medium none;border-bottom:.5pt solid windowtext;border-right:.5pt solid windowtext;
+  mso-border-top-alt:solid windowtext .5pt;mso-border-left-alt:solid windowtext .5pt;
+  padding-left:5.4pt; padding-right:5.4pt; padding-top:0in; padding-bottom:0in">
+      <p class="MsoNormal">The result set is marshaled into a collection of data
+      structures.<span style="mso-spacerun: yes">&nbsp; </span>Each customer
+      data structure is typically just a collection of data values.<o:p>
+      </o:p>
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td valign="top" style="border-left:.5pt solid windowtext; border-right:.5pt solid windowtext; border-bottom:.5pt solid windowtext; width:110;border-top:medium none;mso-border-top-alt:solid windowtext .5pt;padding-left:5.4pt; padding-right:5.4pt; padding-top:0in; padding-bottom:0in">
+      <p class="MsoNormal">Data transfer objects<o:p>
+      </o:p>
+      </p>
+    </td>
+    <td valign="top" style="width:393;border-top:medium none;border-left:
+  medium none;border-bottom:.5pt solid windowtext;border-right:.5pt solid windowtext;
+  mso-border-top-alt:solid windowtext .5pt;mso-border-left-alt:solid windowtext .5pt;
+  padding-left:5.4pt; padding-right:5.4pt; padding-top:0in; padding-bottom:0in">
+      <p class="MsoNormal">The result set is marshaled into a collect of objects
+      that just contain the data and the getters and setters to access the data.<span style="mso-spacerun: yes">&nbsp;
+      </span>These objects are serializable.<span style="mso-spacerun: yes">&nbsp;
+      </span>See <a href="http://www.amazon.com/exec/obidos/ASIN/0471208310/ambysoftinc">Marinescu
+      (2002)</a> and <a href="http://www.amazon.com/exec/obidos/ASIN/0321127420/ambysoftinc">Fowler
+      et. al. (2003)</a> for detailed discussions. <o:p>
+      </o:p>
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td valign="top" style="border-left:.5pt solid windowtext; border-right:.5pt solid windowtext; border-bottom:.5pt solid windowtext; width:110;border-top:medium none;mso-border-top-alt:solid windowtext .5pt;padding-left:5.4pt; padding-right:5.4pt; padding-top:0in; padding-bottom:0in">
+      <p class="MsoNormal">Dataset<o:p>
+      </o:p>
+      </p>
+    </td>
+    <td valign="top" style="width:393;border-top:medium none;border-left:
+  medium none;border-bottom:.5pt solid windowtext;border-right:.5pt solid windowtext;
+  mso-border-top-alt:solid windowtext .5pt;mso-border-left-alt:solid windowtext .5pt;
+  padding-left:5.4pt; padding-right:5.4pt; padding-top:0in; padding-bottom:0in">
+      <p class="MsoNormal">The result set from the database, as it is returned
+      by your database access library (e.g. JDBC or ADO.NET). <o:p>
+      </o:p>
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td valign="top" style="border-left:.5pt solid windowtext; border-right:.5pt solid windowtext; border-bottom:.5pt solid windowtext; width:110;border-top:medium none;mso-border-top-alt:solid windowtext .5pt;padding-left:5.4pt; padding-right:5.4pt; padding-top:0in; padding-bottom:0in">
+      <p class="MsoNormal">Flat File<o:p>
+      </o:p>
+      </p>
+    </td>
+    <td valign="top" style="width:393;border-top:medium none;border-left:
+  medium none;border-bottom:.5pt solid windowtext;border-right:.5pt solid windowtext;
+  mso-border-top-alt:solid windowtext .5pt;mso-border-left-alt:solid windowtext .5pt;
+  padding-left:5.4pt; padding-right:5.4pt; padding-top:0in; padding-bottom:0in">
+      <p class="MsoNormal">The result set is marshaled into a text file, with
+      one row in the file for each customer.<span style="mso-spacerun: yes">&nbsp;
+      </span>The data values are written into known positions (e.g. the first
+      name is written into positions 21 through 40).<o:p>
+      </o:p>
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td valign="top" style="border-left:.5pt solid windowtext; border-right:.5pt solid windowtext; border-bottom:.5pt solid windowtext; width:110;border-top:medium none;mso-border-top-alt:solid windowtext .5pt;padding-left:5.4pt; padding-right:5.4pt; padding-top:0in; padding-bottom:0in">
+      <p class="MsoNormal">Proxies<o:p>
+      </o:p>
+      </p>
+    </td>
+    <td valign="top" style="width:393;border-top:medium none;border-left:
+  medium none;border-bottom:.5pt solid windowtext;border-right:.5pt solid windowtext;
+  mso-border-top-alt:solid windowtext .5pt;mso-border-left-alt:solid windowtext .5pt;
+  padding-left:5.4pt; padding-right:5.4pt; padding-top:0in; padding-bottom:0in">
+      <p class="MsoNormal">The result set is marshaled into a collection of
+      proxy objects that contain just enough information for both the system and
+      your users to identify the object.<o:p>
+      </o:p>
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td valign="top" style="border-left:.5pt solid windowtext; border-right:.5pt solid windowtext; border-bottom:.5pt solid windowtext; width:110;border-top:medium none;mso-border-top-alt:solid windowtext .5pt;padding-left:5.4pt; padding-right:5.4pt; padding-top:0in; padding-bottom:0in">
+      <p class="MsoNormal">Serialized business objects<o:p>
+      </o:p>
+      </p>
+    </td>
+    <td valign="top" style="width:393;border-top:medium none;border-left:
+  medium none;border-bottom:.5pt solid windowtext;border-right:.5pt solid windowtext;
+  mso-border-top-alt:solid windowtext .5pt;mso-border-left-alt:solid windowtext .5pt;
+  padding-left:5.4pt; padding-right:5.4pt; padding-top:0in; padding-bottom:0in">
+      <p class="MsoNormal">The result set is marshaled into a collection of
+      business objects.<span style="mso-spacerun: yes">&nbsp; </span>This
+      collection is in turn converted into a single binary large object (BLOB),
+      or another similar format, which can be transmitted across the network as
+      a single entity and then converted back into the original collection of
+      objects by the receiver.<o:p>
+      </o:p>
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td valign="top" style="border-left:.5pt solid windowtext; border-right:.5pt solid windowtext; border-bottom:.5pt solid windowtext; width:110;border-top:medium none;mso-border-top-alt:solid windowtext .5pt;padding-left:5.4pt; padding-right:5.4pt; padding-top:0in; padding-bottom:0in">
+      <p class="MsoNormal"><a name="XMLDocument">XML document</a><o:p>
+      </o:p>
+      </p>
+    </td>
+    <td valign="top" style="width:393;border-top:medium none;border-left:
+  medium none;border-bottom:.5pt solid windowtext;border-right:.5pt solid windowtext;
+  mso-border-top-alt:solid windowtext .5pt;mso-border-left-alt:solid windowtext .5pt;
+  padding-left:5.4pt; padding-right:5.4pt; padding-top:0in; padding-bottom:0in">
+      <p class="MsoNormal">The result set is converted into a single <a href="http://www.agiledata.org/essays/advancedXML.html">XML</a>
+      document, which will contain zero or more customer structures.<o:p>
+      </o:p>
+      </p>
+    </td>
+  </tr>
+</table>
+<p>&nbsp;</p>
+<h1>5. <a name="References">References</a> and Suggested Online Readings</h1>
+<p><a href="http://www.agiledata.org/essays/references.html">List of References</a></p>
+<table border="0" width="100%">
+  <tr>
+    <td width="12%">
+<b><a href="http://www.ambysoft.com/agileDatabaseTechniques.html">
+<img
+        src="http://images.amazon.com/images/P/0471202835.01.MZZZZZZZ.jpg" alt="Agile Database Techniques"
+        border="0" width="114" height="140"></a></b></td>
+    <td width="88%">This book describes the philosophies and skills required for 
+    developers and database administrators to work together effectively on 
+    project teams following evolutionary software processes such as Extreme 
+    Programming (XP), the Rational Unified Process (RUP), Feature Driven 
+    Development (FDD), Dynamic System Development 
+    Method (DSDM), or The Enterprise Unified Process (EUP).&nbsp; In March 2004 
+	it won a Jolt Productivity award.</td>
+  </tr>
+	<tr>
+    <td width="12%">
+<b><a href="http://www.ambysoft.com/theObjectPrimer.html"><img
+        src="http://images.amazon.com/images/P/0521540186.01.MZZZZZZZ.jpg" alt="The Object Primer 3rd Edition: Agile Model Driven Development (AMDD) with UML 2"
+        border="0" width="106" height="140"></a></b></td>
+    <td width="88%">This book presents a full-lifecycle, agile model driven 
+	development (AMDD) approach to software development.&nbsp; It is one of the 
+	few books which covers both object-oriented and data-oriented development in 
+	a comprehensive and coherent manner.&nbsp; Techniques the book covers 
+	include Agile Modeling (AM), Full Lifecycle Object-Oriented Testing (FLOOT), 
+	over 30 modeling techniques, agile database techniques, refactoring, and 
+	test driven development (TDD).If you want to gain the skills required to 
+	build mission-critical applications in an agile manner, this is the book for 
+	you. </td>
+  </tr>
+</table>
+<p class="MsoNormal">&nbsp;</p>
+<h1> 6. <a name="LetUsHelp">Let Us Help</a></h1>
+                        <p>I work with <a href="http://www.ronin-intl.com">Ronin
+                        International, Inc.</a> helping numerous
+                        organizations to learn about and hopefully adopt agile
+                        techniques and philosophies.&nbsp; Ronin offers both 
+						<a href="http://www.ronin-intl.com/services/">consulting</a> and 
+						<a href="http://www.ronin-intl.com/training/">training</a> 
+						offerings.&nbsp; In addition we host
+						<a href="http://www.enterpriseunifiedprocess.com">Enterprise
+                        Unified Process (EUP)</a> which may find of value.&nbsp; You
+                        might find several of my books to be of interest,
+                        including <a href="http://www.ambysoft.com/theObjectPrimer.html">The
+                        Object Primer 3/e</a>, <a href="http://www.ambysoft.com/agileModeling.html">Agile
+                        Modeling</a>, <a href="http://www.ambysoft.com/elementsUMLStyle.html">The
+                        Elements of UML Style</a>, and <a href="http://www.ambysoft.com/agileDatabaseTechniques.html">Agile
+                        Database Techniques</a>.&nbsp; For more information please
+contact Michael Vizdos at 866-AT-RONIN (U.S. number) or via e-mail (<a href="mailto:michael.vizdos@ronin-intl.com">michael.vizdos@ronin-intl.com</a>).
+                        </p>
+                        <p>&nbsp;<o:p><table border="0" id="table1">
+							<tr>
+								<td><a href="http://www.ambysoft.com">
+								<img border="0" src="../../agilemodeling/images/logoAmbysoft.gif" width="97" height="57"></a></td>
+								<td><b>Page last updated on January 22 2005<br>
+								This site owned by
+								<a href="http://www.ambysoft.com">Ambysoft Inc.</a></b></td>
+								</tr>
+							</table>
+						<p><b>Copyright 2002-2005 <a href="http://www.ambysoft.com/scottAmbler.html">Scott
+W. Ambler</a></b></p>
+
+</body>
+
+</html>

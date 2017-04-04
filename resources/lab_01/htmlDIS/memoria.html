@@ -1,0 +1,1487 @@
+<html>
+<head>
+<title>La memoria</title>
+      <link rel="top" href="../lezioni.html">
+      <link rel="up" href="../lezioni.html">
+      <link rel="contents" href="../lezioni.html">
+      <link rel="previous" href="../file/file.html">
+      <link rel="next" href="../applet/applet.html">
+</head>
+
+<body>
+
+<h1>La memoria e gli oggetti</h1>
+
+<p>
+Cosa succede quando si fa <tt>p=q</tt>
+oppure <tt>p==q</tt>?
+</p>
+
+<p>
+Come si copiano/confrontano gli oggetti?
+</p>
+
+<p>
+Come vengono passati gli oggetti ai
+metodi?
+</p>
+
+<hr>
+
+
+<h4>Variabili e oggetti</h4>
+
+<pre>
+  int x;
+  Point p;
+</pre>
+
+<p>
+Per ogni variabile esiste una casellina
+(spazio di memoria)
+</p>
+
+<img src="duevar.jpg">
+
+<p>
+Non c'&egrave; nessuna differenza! (finora)
+</p>
+
+<hr>
+
+
+<h4>Creazione di oggetti</h4>
+
+<p>
+La espressione <tt>new Point()</tt> crea un
+oggetto e restituisce l'indirizzo di memoria
+dell'oggetto.
+</p>
+
+<p>
+Effetto di <tt>new Point()</tt>:
+</p>
+
+<img src="doponew.jpg">
+
+<p>
+<tt>new Point()</tt> &egrave; un metodo;<br>
+il valore restituito &egrave; la posizione dell'oggetto
+creato in memoria.
+</p>
+
+<hr>
+
+
+<h4>Oggetti e variabili</h4>
+
+<pre>
+  p=new Point();
+</pre>
+
+<p>
+Significa: l'indirizzo di memoria in cui si trova
+l'oggetto creato va in <tt>p</tt>
+</p>
+
+<img src="indinvar.jpg">
+
+<hr>
+
+
+<h4>La memoria, in realt&agrave;</h4>
+
+<p>
+Finora abbiamo visto la memoria come una lavagna.
+</p>
+
+<p>
+In realt&agrave; la memoria &egrave; come una fila
+di cassetti numerati:
+</p>
+
+<img src="cassetti.jpg">
+
+<p>
+In ogni cassetto posso metterci un dato
+</p>
+
+<p>
+Posso fare operazioni del tipo: metti un dato in
+un cassetto 32, vedi cosa c'&egrave; nel cassetto 9,
+ecc.
+</p>
+
+<p>
+Per accedere a un cassetto (per metterci qualcosa o
+per vedere cosa c'&egrave;) devo specificare il numero
+</p>
+
+<p>
+Il numero del cassetto si chiama <i>indirizzo</i>.
+
+<hr>
+
+
+<h4>Indirizzo == valore?</h4>
+
+<dl>
+
+<dt>indirizzo di un cassetto
+<dd>il numero d'indice del cassetto (il numero
+scritto al lato, quello che identifica il cassetto)
+
+<dt>valore in un cassetto
+<dd>quello che c'&egrave; dentro
+
+</dl>
+
+<img src="indirizzi.jpg">
+
+<p>
+Il cassetto numerato 5 (indirizzo 5)
+contiene il valore <tt>24</tt>.
+</p>
+
+<p>
+I cassetti hanno tutti indirizzi diversi
+(non ci sono due cassetti numero 5)
+</p>
+
+<p>
+Due cassetti possono contenere lo stesso
+dato (per esempio, <tt>24</tt> sta sia
+in 54 che in 1)
+</p>
+
+<hr>
+
+
+<h4>Dati in memoria</h4>
+
+<p>
+Nella realt&agrave;: quasi tutte le variabili
+e gli oggetti sono spezzati in pi&ugrave; cassetti.
+</p>
+
+<p>
+Per noi: facciamo finta che ogni variabile e ogni
+oggetto sta in un cassetto.
+</p>
+
+<hr>
+
+
+<h4>E a noi che ce ne importa?</h4>
+
+<p>
+Per le variabili scalari (interi, ecc) non ha
+importanza.
+</p>
+
+<p>
+Le variabili oggetto contengono un numero, che
+&egrave; l'indirizzo della cella in cui si trova
+l'oggetto.
+</p>
+
+<p>
+Questo ha importanza quando si copiano oggetti,
+si confrontano, si passano come parametri, ecc.
+</p>
+
+<hr>
+
+
+<h4>Creazione di un oggetto</h4>
+
+<p>
+Quando si fa <tt>p=new Point();</tt>:
+</p>
+
+<ol>
+<li>si esegue <tt>new Point();</tt>
+<li>il valore che viene ritornato viene messo
+in <tt>p</tt>.
+</ol>
+
+<p>
+Vediamo la memoria un passo per volta.
+</p>
+
+<hr>
+
+
+<h4>Dichiarazione di variabili</h4>
+
+<pre>
+  int x;
+  Point p;
+</pre>
+
+<p>
+A ogni variabile viene assegnato un cassetto:
+</p>
+
+<img src="varcass.jpg">
+
+<p>
+In questo esempio, la variabile <tt>x</tt> &egrave;
+il cassetto numero 1
+</p>
+
+<p>
+&Egrave; lui a scegliere quali cassetti associare
+alle variabili!
+</p>
+
+<p>
+La seconda volta che si esegue il programma,
+la variabile <tt>x</tt> potrebbe essere associata
+al cassetto 29
+</p>
+
+<p>
+Voi sapete solo che ogni volta che usate <tt>x</tt>
+oppure <tt>p</tt>, viene usato il cassetto giusto.
+</p>
+
+<hr>
+
+
+<h4>Uso delle variabili</h4>
+
+<pre>
+  x=-131;
+</pre>
+
+<p>
+Assegnare un valore=mettere il valore nel cassetto
+associato all variabile.
+</p>
+
+<img src="assegnvar.jpg">
+
+<dl>
+
+<dt>indirizzo della variabile
+<dd>numero di indice della cella, indirizzo della
+posizione di memoria associata (1 in questo caso)
+
+<dt>valore della variabile
+<dd>quello che c'&egrave; nel cassetto
+(<tt>-131</tt> in questo caso)
+
+</dl>
+
+<hr>
+
+
+<h4>Creazione di un oggetto</h4>
+
+<pre>
+  new Point();
+</pre>
+
+<p>
+L'oggetto viene messo in un cassetto.
+</p>
+
+<img src="cassogg.jpg">
+
+<p>
+Il metodo <tt>new Point()</tt> restituisce
+<i>un numero:</i>
+</p>
+
+<blockquote>
+<i>
+il costruttore restituisce l'indirizzo (numero
+di indice della cella) in cui si trova l'oggetto
+creato
+</i>
+</blockquote>
+
+<p>
+In questo caso, viene restituito il valore 5
+</p>
+
+<hr>
+
+
+<h4>Assegnare oggetti</h4>
+
+<p>
+Quando faccio <tt>p=</tt>, l'indirizzo
+dell'oggetto va in <tt>p</tt>
+</p>
+
+<img src="varogg.jpg">
+
+<p>
+In <tt>p</tt> viene messo 5 perch&egrave; l'oggetto
+creato si trova nel cassetto 5.
+</p>
+
+<hr>
+
+
+<h4>La lavagna</h4>
+
+<p>
+Sulla lavagna lo scrivo:
+</p>
+
+<img src="indinvar.jpg">
+
+<p>
+Ricordate che significa: nella variabile <tt>p</tt>
+c'&egrave; il numero della cella in cui si trova
+l'oggetto.
+</p>
+
+<hr>
+
+
+<h4>Comportamento delle variabili</h4>
+
+<p>
+Le variabili si comportano <b>tutte</b>
+nello stesso modo.
+</p>
+
+<p>
+Non c'&egrave; nessuna differenza fra una variabile
+intera e una variabile oggetto, a parte il tipo
+</p>
+
+<hr>
+
+
+<h4>Conseguenze: esempio</h4>
+
+<pre>
+  int y;
+  Point q;
+
+  y=x;
+  q=p;
+</pre>
+
+<p>
+Cosa succede?
+</p>
+
+<dl>
+
+<dt><tt>y=x</tt>
+<dd>il valore di <tt>x</tt> viene copiato
+dentro <tt>y</tt>
+
+<dt><tt>q=p</tt>
+<dd>il valore di <tt>p</tt> viene copiato
+in <tt>q</tt>
+
+</dl>
+
+<p>
+Il valore di una variabile &egrave; il numero
+scritto nel <i>suo</i> cassetto.
+</p>
+
+<p>
+Quindi, il valore di <tt>x</tt> &egrave; <tt>-131</tt>
+</p>
+
+<p>
+Il valore di <tt>p</tt> &egrave; 5!
+</p>
+
+<hr>
+
+
+<h4>Stato della memoria, prima e dopo</h4>
+
+<img src="prima.jpg">
+
+<pre>
+  y=x;
+  q=p;
+</pre>
+
+<p>
+I valori (contenuto delle celle) di <tt>x</tt> e <tt>p</tt>
+vengono copiati (nelle celle) <tt>y</tt> e <tt>q</tt>
+</p>
+
+<img src="dopo.jpg">
+
+<hr>
+
+
+<h4>Memoria, nella metafora della lavagna</h4>
+
+<img src="duevarogg.jpg">
+
+<p>
+Le due variabili contengono una freccia verso lo stesso
+oggetto.
+</p>
+
+<p>
+La freccia dice che in una variabile c'&egrave;
+l'indirizzo di una posizione di memoria.
+</p>
+
+<p>
+Se due freccie puntano nello stesso punto, allora
+i due valori sono gli stessi.
+</p>
+
+<hr>
+
+
+<h4>E a noi che ce ne importa (2)?</h4>
+
+<pre>
+  x=10;
+
+  y=x;
+
+  y=-5;
+
+  System.out.println(x);
+</pre>
+
+<p>
+Quando faccio <tt>y=x</tt> significa
+solo che in <tt>y</tt> viene copiato
+il valore di <tt>x</tt>
+</p>
+
+<p>
+Quando faccio <tt>y=-5</tt> il valore
+di <tt>x</tt> resta inalterato.
+</p>
+
+<p>
+Viene stampato <tt>10</tt>
+</p>
+
+<hr>
+
+
+<h4>Se faccio lo stesso sugli oggetti?</h4>
+
+<pre>
+  p.x=10;
+
+  q=p;
+
+  q.x=4;
+
+  System.out.println(p.x);
+</pre>
+
+<p>
+&Egrave; praticamente lo stesso programma
+di prima.
+</p>
+
+<hr>
+
+
+<h4>Cosa succede in memoria</h4>
+
+<p>
+Succedono le stesse cose di prima, per&ograve; gli
+effetti sono completamente diversi.
+</p>
+
+<p>
+Dopo <tt>q=p</tt>, l'indirizzo dell'oggetto
+viene scritto <i>anche</i> in <tt>q</tt>
+</p>
+
+<img src="copia.jpg">
+
+<p>
+Poi faccio <tt>q.x=4;</tt><br>
+Ma l'oggetto il cui indirizzo sta in <tt>q</tt>
+&egrave; sempre quello!
+</p>
+
+<img src="cambia.jpg">
+
+<p>
+Stampare <tt>p.x</tt> causa la stampa di <tt>4</tt>
+</p>
+
+<hr>
+
+
+<h4>Differenza</h4>
+
+<p>
+Sembra che siano state fatte le stesse cose:
+</p>
+
+<pre>
+  var=valore;
+  altravar=var;
+  altravar=nuovo_valore;
+</pre>
+
+<p>
+Solo che per interi <tt>var</tt> non cambia,
+mentre per gli oggetti si
+</p>
+
+<p>
+In realt&agrave;, anche sugli oggetti succede
+la stessa cosa.
+</p>
+
+<p>
+Non &egrave; una eccezione sugli oggetti.
+</p>
+
+<p>
+&Egrave; una conseguenza del principio generale:
+nelle variabili c'&egrave; l'indirizzo di un oggetto
+(un numero)
+</p>
+
+<p>
+Poi le variabili oggetto si comportano nello
+stesso modo.
+</p>
+
+<hr>
+
+
+<h4>Copia di oggetti</h4>
+
+<p>
+<tt>q=p</tt> copia l'indirizzo dell'oggetto,
+non copia l'oggetto
+</p>
+
+<p>
+Gli oggetti si possono copiare, ma non
+facendo <tt>q=p</tt>
+</p>
+
+<p>
+Modo giusto: creo un nuovo oggetto e ci metto dentro i
+valori dell'altro
+</p>
+
+<hr>
+
+
+<h4>Creazione nuovo oggetto</h4>
+
+<pre>
+  Point q;
+  q=new Point();
+
+  q.x=p.x;
+  q.y=p.y;
+</pre>
+
+<p>
+In memoria, viene creato un nuovo oggetto.
+</p>
+
+<img src="nuovo.jpg">
+
+<p>
+Quando faccio <tt>q.x=p.x</tt> viene copiato
+il valore nel nuovo oggetto.
+</p>
+
+<img src="dopocopia.jpg">
+
+<p>
+Se ora faccio <tt>q.x=4</tt>, viene modificato
+solo il secondo oggetto!
+</p>
+
+<img src="cambioancora.jpg">
+
+<hr>
+
+
+<h4>Esercizio</h4>
+
+<p>
+Cosa viene stampato?
+</p>
+
+<pre>
+  Point p;
+  p=new Point();
+
+  p.move(10,20);
+
+  Point q;
+  q=new Point();
+
+  q.move(-2,-2);
+
+  q=p;
+
+  p.x=4;
+
+  System.out.println(q.x);
+</pre>
+
+<hr>
+
+
+<h4>Cosa viene stampato: risposta sbagliata</h4>
+
+<p>
+Quando il meccanismo dei puntatori sar&agrave; chiaro,<br>
+non saranno necessarie le figure.
+</p>
+
+<p>
+Per ora invece servono.
+</p>
+
+<p>
+Regola generale: assegnare = copiare il valore
+</p>
+
+<p>
+Nel caso delle variabili per oggetti, il valore
+&egrave; l'indirizzo.
+</p>
+
+<hr>
+
+
+<h4>Creazione primo oggetto</h4>
+
+<p>
+Viene creato un oggetto, il cui riferimento
+(indirizzo di memoria) va in <tt>p</tt>
+</p>
+
+<img src="sol-1.jpg">
+
+<p>
+<tt>p.move</tt> modifica i campi
+dell'oggetto <i>il cui riferimento sta
+in</i> <tt>p</tt>
+</p>
+
+<p>
+I metodi lavorano sull'oggetto <i>dato
+il suo riferimento</i>
+</p>
+
+<hr>
+
+
+<h4>Creazione secondo oggetto</h4>
+
+<p>
+Stessa cosa: creo un oggetto, metto il
+riferimento in <tt>q</tt>, invoco il 
+metodo.
+</p>
+
+<img src="sol-2.jpg">
+
+<hr>
+
+
+<h4>Assegnamento fra oggetti</h4>
+
+<p>
+Faccio l'assegnamento <tt>q=p</tt>
+</p>
+
+<img src="sol-3.jpg">
+
+<p>
+Quello che &egrave; successo: il numero
+scritto in <tt>p</tt> &egrave; stato
+copiato in <tt>q</tt>
+</p>
+
+<p>
+&Egrave; <i>la stessa cosa</i> che viene
+fatta quando si fa <tt>x=y</tt> con due
+variabili intere.
+</p>
+
+<hr>
+
+
+<h4>Modifico un oggetto</h4>
+
+<pre>
+  p.x=4;
+</pre>
+
+<p>
+La variabile <tt>p.x</tt> viene modificata.
+</p>
+
+<img src="sol-4.jpg">
+
+<p>
+Quanto vale <tt>q.x</tt>?
+</p>
+
+<p>
+&Egrave; la componente <tt>x</tt> dell'oggetto
+il cui indirizzo sta in <tt>q</tt>
+</p>
+
+<p>
+Quindi, &egrave; sempre <tt>4</tt>
+</p>
+
+<hr>
+
+
+<h4>Perdita di oggetti</h4>
+
+<p>
+Non c'&egrave; pi&ugrave; nessuna variabile
+che contiene l'indirizzo del secondo oggetto.
+</p>
+
+<img src="sol-4.jpg">
+
+<p>
+Il secondo oggetto non si pu&ograve; pi&ugrave;
+usare.
+</p>
+
+<p>
+L'oggetto viene cancellato in modo automatico.
+</p>
+
+<hr>
+
+
+<h4>Se volevo ancora usare il secondo oggetto?</h4>
+
+<pre>
+Point t;
+
+t=q;
+q=s;
+</pre>
+
+<p>
+In questo caso, ottengo questo stato della memoria:
+</p>
+
+<img src="salva.jpg">
+
+<p>
+Posso ancora usare il secondo oggetto,
+dato che il suo indirizzo sta in <tt>t</tt>
+</p>
+
+<hr>
+
+
+<h4>Come ottenere la soluzione giusta</h4>
+
+<p>
+Quando si lavora con oggetti, le variabili
+contengono numeri (indirizzi).
+</p>
+
+<p>
+Le variabili si comportano come variabili
+intere.
+</p>
+
+<p>
+Per evitare di scrivere dei numeri a caso,
+uso le freccie. Ma &egrave; solo un modo
+semplificato.
+</p>
+
+<img src="var-freccie.jpg">
+
+<hr>
+
+
+<h4>Assegnamento</h4>
+
+<p>
+Copio i valori.
+</p>
+
+<p>
+Questo equivale a ``copiare le freccie''
+</p>
+
+<p>
+<tt>q=p</tt> mette in <tt>q</tt> una
+freccia che va nello stesso punto della
+freccia di <tt>p</tt>
+</p>
+
+<img src="var-frec-ass.jpg">
+
+<p>
+Da adesso in poi, facciamo tutte le figure
+con le freccie.
+</p>
+
+<p>
+Ricordate che si tratta solo di un modo per
+rappresentare indirizzi.
+</p>
+
+<hr>
+
+
+<h4>Esercizio</h4>
+
+<pre>
+class Segmento {
+  Point inizio;
+  Point fine;
+}
+</pre>
+
+<p>
+Sia dato questo programma:
+</p>
+
+<pre>
+  Segmento s, r;
+  s=new Segmento();
+
+  r=s;
+</pre>
+
+<p>
+Si pu&ograve; fare?
+</p>
+
+<hr>
+
+
+<h4>Si pu&ograve; fare</h4>
+
+<p>
+L'unico vincolo &egrave; che non posso
+usare gli oggetti fino a che non li
+ho creati.
+</p>
+
+<p>
+Ma posso usare <tt>s</tt> anche se
+<tt>s.inizio</tt> ed <tt>s.fine</tt> non
+sono stati creati.
+</p>
+
+<p>
+Posso memorizzare un valore in <tt>r</tt>
+anche se non ho creato l'oggetto.
+</p>
+
+<p>
+Non posso fare <tt>r.inizio=...</tt> prima
+di aver fatto <tt>r=s</tt> soltanto perch&egrave;
+non esiste l'oggetto puntato da <tt>r</tt>
+</p>
+
+<hr>
+
+
+<h4>Esercizio: continuazione</h4>
+
+<pre>
+  Segmento s, r;
+  s=new Segmento();
+
+  s.inizio=new Point();
+  s.inizio.x=12;
+
+  r=new Segmento();
+  r.inizio=s.inizio;
+  
+  s.inizio.x=-4;
+
+  System.out.println(r.inizio.x);
+</pre>
+
+<p>
+Cosa viene stampato?
+</p>
+
+<p>
+<b>Fare la figura con lo stato della memoria</b>
+</p>
+
+<hr>
+
+
+<h4>Copiatura di oggetti</h4>
+
+<p>
+Stato dopo la creazione di <tt>s</tt> ed <tt>r</tt>
+</p>
+
+<img src="rs-1.jpg">
+
+<p>
+Scrivo i nomi delle classi su ogni oggetto
+</p>
+
+<p>
+Per ora, ci serve a non fare confusione.
+</p>
+
+<p>
+Poi si vedr&agrave; che serve.
+</p>
+
+<hr>
+
+
+<h4>Assegnamento <tt>r.inizio=s.inizio</tt></h4>
+
+<p>
+Vale la solita regola: il valore della variabile
+viene copiato.
+</p>
+
+<p>
+Ma <tt>s.inizio</tt> indica un oggetto, quindi
+la variabile contiene un riferimento.
+</p>
+
+<p>
+Il riferimento viene copiato.
+</p>
+
+<img src="rs-2.jpg">
+
+<hr>
+
+
+<h4>Risultato</h4>
+
+<p>
+<tt>s.inizio.x</tt> ed <tt>r.inizio.x</tt>
+sono la stessa cosa.
+</p>
+
+<p>
+Viene stampato <tt>-4</tt>
+</p>
+
+<dl>
+
+<dt>sbagliato:
+<dd><tt>s.inizio.x</tt> ed <tt>r.inizio.x</tt>
+sono due variabili che hanno lo stesso valore
+
+<dt>giusto:
+<dd><tt>s.inizio.x</tt> ed <tt>r.inizio.x</tt>
+sono la stessa variabile
+
+</dl>
+
+<hr>
+
+
+<h4>Confronto fra variabili</h4>
+
+<pre>
+  int x, y;
+  Point p, q;
+
+  ...
+
+  if(x==y) ...
+
+  if(p==q) ...
+</pre>
+
+<dl compact="compact">
+
+<dt><tt>x==y</tt>
+<dd>&egrave; vera se le due
+variabili contengono lo stesso valore
+
+<dt><tt>p==q</tt>
+<dd>&egrave; vera se le due
+variabili contengono lo stesso valore
+
+</dl>
+
+<p>
+&Egrave; sempre la stessa cosa!
+</p>
+
+<hr>
+
+
+<h4>Ma in pratica...</h4>
+
+<p>
+<tt>p==q</tt> non dice se l'oggetto <tt>p</tt>
+&egrave; uguale all'oggetto <tt>q</tt>!
+</p>
+
+<pre>
+  Point p, q;
+
+  p=new Point();
+  p.move(10,10);
+
+  q=new Point();
+  q.move(10,10);
+
+  if(p==q)
+    System.out.println("Sono uguali");
+  else
+    System.out.println("Non sono uguali");
+</pre>
+
+<p>
+Cosa viene stampato?
+</p>
+
+<hr>
+
+
+<h4>Risposta sbagliata</h4>
+
+<p>
+Dato che i due punti sono uguali,<br>
+la condizione <tt>p==q</tt> &egrave; vera.
+</p>
+
+<p>
+Cosa succede in memoria?
+</p>
+
+<hr>
+
+
+<h4>In memoria</h4>
+
+<p>
+Dopo aver creato i due oggetti:
+</p>
+
+<img src="confronto.jpg">
+
+<p>
+Ogni volta che faccio <tt>new</tt>, ho
+un nuovo oggetto, in una nuova posizione.
+</p>
+
+<p>
+Sono due oggetti diversi, per cui le loro
+posizioni in memoria sono diverse!
+</p>
+
+<img src="conf-num.jpg">
+
+<p>
+Il contenuto di <tt>p</tt> e di <tt>q</tt>
+&egrave; lo stesso?
+</p>
+
+<p>
+<tt>p</tt> contiene <tt>5</tt> mentre <tt>q</tt>
+contiene <tt>7</tt>.
+</p>
+
+<p>
+Sono diversi.
+</p>
+
+<hr>
+
+
+<h4>Ma allora <tt>q==p</tt> &egrave; sempre falso?</h4>
+
+<pre>
+  q=p;
+
+  if(q==p)
+    ...
+</pre>
+
+<p>
+Ora <tt>p</tt> e <tt>q</tt> contengono lo
+stesso valore.
+</p>
+
+<hr>
+
+
+<h4>Confronti e freccie</h4>
+
+<p>
+<tt>p==q</tt> &egrave; vera se e solo se
+le freccie di <tt>p</tt> e di <tt>q</tt>
+vanno nello stesso punto:
+</p>
+
+<img src="stesso.jpg">
+
+<hr>
+
+
+<h4>Interpretazione delle freccie</h4>
+
+<dl>
+
+<dt>creare nuovo oggetto
+<dd>viene creato un nuovo rettangolo
+
+<dt>assegnare un puntatore
+<dd>mettere una freccia verso lo stesso
+punto di arrivo dell'altra (vale anche per
+la creazione dell'oggetto, pensando che
+<tt>new Tipo()</tt> &egrave; una variabile
+che punta all'oggetto creato.
+
+<dt>confronto fra puntatori
+<dd>vedere se le freccie vanno nello stesso
+punto
+
+</dl>
+
+<hr>
+
+
+<h4>Ma allora come li confronto?</h4>
+
+<p>
+Basta guardare i valori:
+</p>
+
+<pre>
+  Point p, q;
+
+  p.move(10,10);
+  q.move(10,10);
+
+  if((p.x==q.x) &amp;&amp; (p.y==q.y))
+    ...
+</pre>
+
+<p>
+Attenzione agli oggetti con dentro altri oggetti!<br>
+(non va fatto il confronto fra due variabili oggetto
+anche se stanno dentro un altro oggetto)
+</p>
+
+<hr>
+
+
+<h4>Metodo <tt>equals</tt></h4>
+
+<p>
+Su alcuni tipi, &egrave; definito il metodo
+<tt>equals</tt> che confronta gli oggetti,
+non gli indirizzi.
+</p>
+
+<pre>
+  Point p, q;
+
+  p.move(10,10);
+  q.move(10,10);
+
+  if(p.equals(q))
+    ...
+</pre>
+
+<hr>
+
+
+<h4>Definire un metodo che confronta</h4>
+
+<p>
+Definire un metodo <tt>uguale</tt> che
+confronta due oggetti <tt>NumeroComplesso</tt>
+</p>
+
+<pre>
+class NumeroComplesso {
+  double reale;
+  double imm;
+}
+</pre>
+
+<p>
+Mettere il metodo dentro la classe.
+</p>
+
+<hr>
+
+
+<h4>Metodo di confronto fra complessi: firma</h4>
+
+<p>
+Ha un oggetto di invocazione; l'altro oggetto
+va passato.
+</p>
+
+<p>
+Restituisce un boolean.
+</p>
+
+<pre>
+  boolean uguale(NumeroComplesso n) {
+    ...
+  }
+</pre>
+
+<hr>
+
+
+<h4>Metodo di confronto fra complessi: corpo</h4>
+
+<p>
+Ritorno <tt>true</tt> solo se i due numeri sono
+uguali.
+</p>
+
+<pre>
+  boolean uguale(NumeroComplesso n) {
+    return ((this.reale==n.reale) &amp;&amp; (this.imm==n.imm));
+  }
+</pre>
+
+<p>
+Fra dati scalari (interi, ecc) il confronto
+con <tt>==</tt> confronta il valore!
+</p>
+
+<hr>
+
+
+<h4>Equals</h4>
+
+<p>
+Su tutti gli oggetti &egrave; definito un metodo
+<tt>equals</tt>
+</p>
+
+<p>
+Fa cose diverse a seconda della classe:
+</p>
+
+<pre>
+  Point p, q;
+  p=new Point();
+  p.move(10,20);
+  q=new Point();
+  q.move(10,20);
+</pre>
+
+<p>
+Qui <tt>p.equals(q)</tt> vale <tt>true</tt>
+</p>
+
+<pre>
+  Studente s, t;
+  s=new Studente();
+  s.nome="Paolo";
+  s.media=19;
+  t=new Studente();
+  t.nome="Paolo";
+  t.media=19;
+</pre>
+
+<p>
+Qui <tt>s.equals(t)</tt> &egrave; <tt>false</tt>
+</p>
+
+<p>
+Vedremo in dettaglio l'ereditariet&agrave;,
+e poi come &egrave; definito esattamente il
+metodo <tt>equals</tt>
+</p>
+
+<p>
+Per ora: se voglio aggiungere un metodo di
+confronto fra oggetti in una classe, lo chiamo
+<tt>uguale</tt> invece di <tt>equals</tt>
+</p>
+
+<hr>
+
+
+<h4>Puntatori e stringhe</h4>
+
+<p>
+Le variabili oggetto contengono il riferimento
+all'oggetto.
+</p>
+
+<dl compact="compact">
+
+<dt><tt>q=p</tt>
+<dd>copia un riferimento (locazione di memoria)
+
+<dt><tt>q==p</tt>
+<dd>confronta due riferimenti (locazioni di memoria)
+
+</dl>
+
+<p>
+Vale <b>anche</b> per le stringhe.
+</p>
+
+<hr>
+
+
+<h4>Le stringhe costanti</h4>
+
+<p>
+Quando una stringa costante, tipo
+<tt>"abcd"</tt> appare due volte in
+un programma, &egrave; lo stesso
+oggetto
+</p>
+
+<pre>
+  String s, q;
+
+  s="abcd";
+  q="abcd";
+
+  System.out.println(s==q)
+</pre>
+
+<p>
+Viene stampato <tt>true</tt>
+</p>
+
+<hr>
+
+
+<h4>Stringhe costanti in memoria</h4>
+
+<p>
+Quando appare due volta la stessa stringa
+costante, viene usato lo stesso oggetto.
+</p>
+
+<img src="strmem.jpg">
+
+<p>
+In questo caso, <tt>s==t</tt> ritorna
+<tt>true</tt>
+</p>
+
+<hr>
+
+
+<h4>Allora <tt>==</tt> confronta le stringhe?</h4>
+
+<p>
+NO
+</p>
+
+<pre>
+    s="abcd";
+    q="abcd";
+
+    System.out.println(s==q);
+
+    String a, b;
+    a="ab";
+    b="cd";
+
+    String t=a.concat(b);
+
+    System.out.println(s==t);
+    System.out.println(q==t);
+</pre>
+
+<p>
+Stato della memoria:
+</p>
+
+<img src="duestringhe.jpg">
+
+<p>
+Questo discorso dello stesso oggetto
+vale solo per le stringhe costanti.<br>
+(quelle scritte con <tt>"..."</tt>)
+</p>
+
+<hr>
+
+
+<h4>Come fare il confronto fra oggetti?</h4>
+
+<p>
+Dipende da cosa fa <tt>equals</tt>:
+</p>
+
+<dl>
+
+<dt>usare <tt>equals</tt>:
+<dd>tipo predefinito in cui <tt>equals</tt>
+confronta i valori (<tt>Point</tt>, <tt>Rectangle</tt>,
+<tt>String</tt>)
+
+<dt>non usare <tt>equals</tt>:
+<dd>tutti gli altri tipi, inclusi quelli che si
+ottengono per estensione di <tt>Point</tt> ecc.
+
+</dl>
+
+<p>
+Nel secondo caso, si pu&ograve; definire un
+metodo <tt>uguale</tt> che confronto i valori
+numerici.
+</p>
+
+<hr>
+
+
+<h4>Passaggio dei parametri</h4>
+
+<p>
+Quando si invoca un metodo, i parametri
+attuali vengono copiati nei parametri formali.
+</p>
+
+<p>
+Questo &egrave; un <i>assegnamento</i> come
+quelli visti finora.
+</p>
+
+<p>
+Segue le regole dell'asegnamento:<br>
+se il parametro formale &egrave; un
+intero, si copia l'intero;<br>
+se &egrave; un
+oggetto, si copia il riferimento.
+</p>
+
+<p>
+Conseguenze: altra lezione.
+</p>
+
+</body>
+</html> 
+
+

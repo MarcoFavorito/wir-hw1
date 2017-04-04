@@ -1,0 +1,183 @@
+<!-- saved from url=(0022)http://internet.e-mail -->
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+
+<HTML>
+<HEAD>
+<TITLE>Implementation</TITLE>
+</HEAD>
+
+<BODY >
+<BR>
+
+
+<a name="top">
+<H1>
+Implementation
+</H1>
+
+<!-- menu -->
+<p>
+<h2>Summary</h2>
+<ol>
+	<li><b><a href="#arc">Architecture</a></b></li>
+	<li><b><a href="#sp">System processor</a></b></li>
+	<li><b><a href="#qp">Query Processor</a></b></li>
+	<li><b><a href="#disc">Discussion</a></b></li>
+</ol>
+</p>
+<!-- fine menu -->
+<a name="arc">
+<h3>Architecture</h3>
+
+<DIV ALIGN="CENTER"><A NAME="fig-architecture"></A><A NAME="5261"></A>
+<TABLE>
+<CAPTION ALIGN="BOTTOM"><STRONG>Figure 1:</STRONG>
+Architecture of the system</CAPTION>
+<TR><TD>
+<DIV ALIGN="CENTER">
+<!--img src="img/architecture.png"-->
+<img src="img/architecture.gif"> 
+</DIV></TD></TR>
+</TABLE>
+</DIV>
+
+
+The high-level architecture of the system is displayed in Figure 1.  Such an
+architecture comprises five main modules:
+
+<OL>
+
+<LI>the <b>System Processor</b> elaborates and reasons about the specification
+of the data integration system; </LI>
+
+<LI>the <b>Query Processor</b> has the task of elaborating the user queries
+expressed over the global schema, in order to reformulate such queries over the
+sources; </LI>
+
+<LI>the <b>Data Processor</b> executes the reformulated query, by retrieving
+the data relevant for the query at the sources and computing the answers to the
+query. In this module, source wrappers provide a relational view of data
+sources; </LI>
+
+<LI>the <b>Consistency Handler</b> is activated only when key dependencies are
+defined on the global schema.  It detects the situations in which data at the
+sources are not consistent with the key dependencies.  This requires, in the
+worst case, to compute the retrieved global database;</LI>
+
+<LI>the <b>Meta-Data Repository</b> stores an internal representation of the
+intensional information, i.e., the system specification and the user queries.
+</LI>
+
+</OL>
+
+Here we focus our attention on the System Processor and the Query Processor,
+which we briefly describe in the following.  
+<br><b><a href="#top">(back to top...)</a></b>
+
+<a name="sp">
+<h3>System Processor</h3>
+
+The System Processor performs the following tasks:
+
+<UL>
+
+<LI>stores the system specification in the meta-data repository; </LI>
+
+<LI>through the module <b>LAV-GAV Compiler</b>, transforms the LAV
+specification into a GAV one; </LI>
+
+<LI>through the module <b>ID Expander</b>, computes the transitive
+closure of the inclusion dependencies expressed over the global schema: this
+is realized in order to speed-up the query reformulation task; </LI>
+
+<LI>through the module <b>System Analyzer</b>, verifies some properties of
+the system. In particular:
+
+  <ol>
+
+  <li> verifies whether the system is non-key-conflicting
+
+  <li> by solving query containment tasks, is able to derive formal properties
+  about the system specification.
+
+  </ol>
+
+In particular, based on the constraints and the mapping, this module
+establishes whether two global relations in a GAV system (or two source
+relations in a LAV system) are equivalent, or contained one into the
+other. We point out that query containment is computed by reducing this
+problem to query answering, using a well-known technique (see
+e.g. [JoKl84]. </LI>
+
+</UL>
+
+Notice that all the tasks performed by the System Processor only depend on the
+system specification, therefore they are computed off-line, since all the
+computation is independent of the query that has to be processed.
+<br><b><a href="#top">(back to top...)</a></b>
+
+<a name="qp">
+<h3>Query Processor</h3>
+
+The Query Processor performs the following tasks:
+
+<UL>
+<LI>through the module <b>Query Reformulator</b>, computes the perfect
+rewriting of the user query with respect to the IDs specified over the global
+schema. Such a module essentially implements the algorithm <b>ID-rewrite</b>
+</LI>
+
+<LI>through the module <b>Query Unfolder</b>, unfolds the query produced by
+the module <b>Query Reformulator</b>, thus producing a query that can be
+evaluated overthe sources. Hence, this module essentially implements the
+function <b>unfold</b> </LI>
+
+<LI>through the module <b>Query Optimizer</b>, performs some optimizations on
+the query produced by the previous module. In particular, the module identifies
+and deletes redundant CQs in the rewriting (i.e., CQs subsumed by other
+CQs). </LI>
+
+</UL>
+
+Notice that all the tasks performed by the Query Processor are computed at the
+intensional level, since they are independent of the data at the sources.
+<br><b><a href="#top">(back to top...)</a></b>
+
+<a name="disc">
+<h3>Discussion</h3>
+
+With regard to the Consistency Handler, explicit repair (or cleaning) of the
+data violating key dependencies is made.  This is realized by a second query
+processing module, driven by the Consistency Handler, which implements the
+<b>loosely-sound semantics</b>.
+
+The main purpose of the prototype above presented is to experiment the
+effectiveness of our intensional approach to query processing. Indeed, our aim
+is not only to arrive at an implementation of a general query answering
+mechanism in an expressive data integration setting, but also to push query
+processing as much as possible at the intensional level, following the
+well-established approaches and technology in standard database systems. This
+is a crucial issue especially in data integration applications, where the real
+system bottleneck is typically the access to data sources.
+
+We have run our system starting from the specification of data integration
+settings taken from data warehouse applications: all such experiments have
+shown that the intensional processing of queries is actually performed very
+fast, despite the complexity of the tasks that are computed (which in the worst
+case require time exponential in the size of the query and of the system
+specification).
+
+This prototype is part of a general system for data integration which is
+currently under development within the research project <a
+href="http:sv.mat.unical.it/infomix">INFOMIX</a> (project IST-2001-33570)
+funded by the EU.  The main purpose of INFOMIX is to provide an advanced system
+for information integration, which is innovative with respect to the state of
+the art in terms of reasoning capabilities, handling incomplete and
+inconsistent data sources, handling semi-structured data, and declarative
+user-interaction.
+<br><b><a href="#top">(back to top...)</a></b>
+
+<HR>
+
+</BODY>
+</HTML>

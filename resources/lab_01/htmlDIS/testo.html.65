@@ -1,0 +1,112 @@
+<html>
+<head>
+<title>
+Diploma Universitario di Ingegneria Informatica,
+Esame di Fondamenti di Informatica II - primo modulo,
+A.A. 2000/01 - Appello del 14 dicembre 2001
+</title>
+</head>
+
+<body>
+
+<h3 align="center">
+Diploma Universitario di Ingegneria Informatica<br>
+Esame di Fondamenti di Informatica II - primo modulo <br>
+A.A. 2000/01 - Appello del 14 dicembre 2001</h3>
+
+<p><b>Problema 1</b>&nbsp;&nbsp; Si consideri la seguente specifica del
+tipo astratto <i>Buffer</i>:
+
+<dl>
+  <dt><b><u>TipoAstratto</u></b> <i>Buffer</i><p>
+  <dt><b><u>Sorte</u></b> <i>BF</i> (sorta per il dominio di interesse)<p>
+  <dt><b><u>Funzioni</u></b><p>
+
+       <ul>
+         <li><i>Crea : (Intero) --&gt; BF</i> <br>
+              precondizioni e postcondizioni per <i>Crea(c) = b</i> <br>
+              <u>pre</u>: nessuna <br>
+              <u>post</u>: <i>b</i> &egrave;
+              un buffer avente zero elementi e con capacit&agrave;
+              complessiva di <i>c</i> byte;
+              <p>
+
+         <li><i> CapacitaResidua : (BF) --&gt; Int</i><br>
+              precondizioni e postcondizioni per <i>NumElem(b) =
+                 n</i><br>
+              <u>pre</u>: nessuna<br>
+              <u>post</u>: <i>n</i> &egrave; la capacit&agrave; residua (in
+              byte) del buffer
+              <i>b</i>
+              <p>
+
+         <li><i> NumElem : (BF) --&gt; Int</i><br>
+              precondizioni e postcondizioni per <i>NumElem(b) =
+                 n</i><br>
+              <u>pre</u>: nessuna<br>
+              <u>post</u>: <i>n</i> &egrave; il numero di componenti del buffer
+              <i>b</i>
+              <p>
+
+         <li><i>Aggiungi : (BF, Dato) --&gt; BF</i><br>
+              precondizioni e postcondizioni per
+              <i>Aggiungi(b,d) = b'</i><br>
+              <U>pre</u>:  la dimensione di <i>d</i>
+              non <i>CapacitaResidua(b)</i><br>
+              <U>post</u>: <i>b'</i> &egrave; il buffer ottenuto aggiungendo
+              il dato <i>b</i> in coda a <i>b</i>
+              <p>
+
+         <li><i>Elemento : (BF, Intero) --&gt; Dato</i><br>
+              precondizione e postcondizioni per
+              <i>Elemento(b,i) = d</i><br>
+              <u>pre</u>:  <i>0 &lt;= i &lt;= NumElem(b)</i> <br>
+              <u>post</u>: <i>d</i> &egrave; l'elemento del buffer in
+              posizione <i>i</i>-esima
+              <p>
+
+         <li><i>Svuota : (BF) --&gt; (BF)</i><br>
+              precondizione e postcondizioni per
+              <i>Svuota(b) = b'</i><br>
+              <u>pre</u>: nessuna<br>
+              <u>post</u>: <i>b'</i> &egrave; il buffer ottenuto
+              da <i>b</i> eliminando tutti gli elementi presenti in esso
+              <p>
+       </dl>
+       <dt><b><u>FineTipoAstratto</u></b></dt>
+<p>
+
+Si vuole scrivere una classe C++ <code>Buffer</code> che realizzi il tipo
+astratto <i>Buffer</i>, considerando che per riferirsi al tipo astratto
+<i>Dato</i> &egrave; necessario utilizzare la classe <code>Dato</code> che si
+suppone gi&agrave; realizzata, e che mette a diposizione il costruttore di
+copia, l'assegnazione, il distruttore, e un metodo <code>dimensione()</code>
+che restituisce la dimensione in byte del dato rappresentato dall'oggetto di
+invocazione (il resto della definizione della classe non interessa).
+
+<p><b>Domanda 1</b>&nbsp;&nbsp; Si illustrino le scelte di progetto relative
+alla realizzazione del tipo astratto <i>Buffer</i> mediante la classe C++
+<code>Buffer</code>. </p>
+
+<p><b>Domanda 2</b>&nbsp;&nbsp; Si scriva la classe <code>Buffer</code> (file
+.h e file .cpp) secondo le scelte di progetto illustrate per la Domanda
+1. Scrivere il codice di tutte le funzioni pubbliche e private della
+classe. </p>
+
+
+
+<p><b>Problema 2</b>&nbsp;&nbsp; Realizzare una funzione <code>Accoda</code>
+esterna (non friend) della classe <code>Buffer</code> che dati due oggetti
+<i>b1</i> e <i>b2</i> di tipo <code>Buffer</code>, inserisca tutti gli elementi
+di <i>b2</i> in <i>b1</i> se questi complessivamente non superano la
+capacit&agrave; residua di <i>b1</i>, e non faccia niente altrimenti.</p>
+
+
+
+<p><b>Problema 3</b>&nbsp;&nbsp; Spiegare brevemente il significato delle
+nozioni di <i>coesione</i>, <i>information hiding</i>, <i>accoppiamento</i>, e
+<i>interfacciamento esplicito</i>, e descrivere i criteri fondamentali che
+legano tali nozioni con la qualit&agrave; della <i>modularizzazione</i>.</p>
+
+</body>
+</html>

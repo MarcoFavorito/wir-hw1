@@ -1,0 +1,46 @@
+
+<HTML>
+
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html;charset=iso-8859-1">
+<meta name="GENERATOR" content="Microsoft Internet Assistant for Macintosh PowerPoint 98">
+ <TITLE>Aborting a Transaction</TITLE> 
+</HEAD>
+
+<BODY     >
+
+ <H1>Aborting a Transaction</H1> 
+ <P><UL></P>
+
+<P><LI><H2>If a transaction Ti is aborted, all its actions have to be undone.  Not only that, if Tj reads an object last written by Ti,  Tj must be aborted as well!
+</H2></P>
+
+<P></UL><UL></P>
+
+<P><LI><H2>Most systems avoid such cascading aborts by releasing a transaction’s locks only at commit time.
+</H2></P>
+
+<P><UL></P>
+
+<P><LI>If Ti writes an object, Tj can read this only after Ti commits.
+</UL></UL><UL></P>
+
+<P><LI><H2>In order to undo the actions of an aborted transaction, the DBMS maintains a log in which every write is recorded.  This mechanism is also used to recover from system crashes:  all active Xacts at the time of the crash are aborted when the system comes back up.</H2></P>
+
+<P></UL></P>
+
+<P></P> 
+<P>
+<TABLE>
+  <TD HEIGHT=100 WIDTH=100> <A HREF="tsld020.htm">Previous slide</A> </TD>
+  <TD HEIGHT=100 WIDTH=100> <A HREF="tsld022.htm">Next slide</A> </TD>
+  <TD HEIGHT=100 WIDTH=150> <A HREF="tsld001.htm">Back to first slide</A> </TD>
+  <TD HEIGHT=100 WIDTH=150> <A HREF="sld021.htm">View graphic version</A> </TD>
+</TABLE>
+<BR>
+</P>
+
+
+
+</Body>
+</HTML>

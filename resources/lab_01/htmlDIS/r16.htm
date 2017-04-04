@@ -1,0 +1,58 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=windows-1252">
+<TITLE>Reti di Calcolatori</TITLE>
+</HEAD>
+<BODY background="bgrnd.jpg">
+
+<B><FONT SIZE=5><P>16) Servizi di Naming </P>
+<hr>
+</FONT>
+</B>1.&nbsp; Cosa &egrave; un Name Server
+<OL>
+
+<P ALIGN="JUSTIFY">E' un Server che mantiene informazioni relative alle risorse di un Sistema Distribuito (non solo l'indirizzo corrispondente) e fornisce alle applicazioni chiamanti servizi, detti di risoluzione dei nomi".  </P>
+</OL>
+2.&nbsp; Cos'&egrave; un DNS
+<OL>
+
+<P ALIGN="JUSTIFY">E' l'acronimo di Domain Name System ed &egrave; il modello di name service utilizzato su Internet.  I nomi contenuti in un DNS sono detti "nomi di dominio".  Lo spazio dei nomi considerato &egrave; strutturato gerarchicamente;  un nome comprende una o pi&ugrave; stringhe separate dal ".".  Un "nome di dominio" &egrave; un suffisso del "nome" di ogni risorsa del dominio.  Un esempio:</P>
+<I><P ALIGN="CENTER">fbenedet.hermes.dis.uniroma1.it</I>.</P>
+<P ALIGN="JUSTIFY">Abbiamo "fbenedet", un utente, che si trova su un calcolatore chiamato "hermes", che fa parte di un gruppo (un dominio) definito come "dis", a sua volta parte di un dominio pi&ugrave; ampio detto "uniroma1" che infine &egrave; anch'esso parte di qualcosa, nel nostro caso "it".</P>
+</OL>
+3.&nbsp; Domini di primo livello (TLD) e domini di livello inferiore
+<OL>
+
+<P ALIGN="JUSTIFY">Lo spazio dei nomi su Internet &egrave; partizionato in zone geografiche (us, uk, fr, it ….) e in tipologie di organizzazioni (com, edu, gov, mil, …).  Ciascun dominio &egrave; tenuto ad avere un calcolatore che faccia da "rappresentante ufficiale" per esso. Il rappresentante conosce tutto su tutti i nomi di tutti i suoi sottodomini, ed &egrave; quindi il nodo da consultare per ottenere informazioni. Si dice che esso &egrave; autorevole (in inglese, che ha authority) su questi nomi.  Un dominio pu&ograve; essere particolarmente ricco di nomi (suddivisi magari in sottodomini), per questo un server di dominio pu&ograve; (&egrave; consuetudine un'organizzazione di questo tipo) demandare ad altri name server, la gestione dei sottodomini.</P>
+</OL>
+4.&nbsp; Name server primari e secondari
+<OL>
+
+<P ALIGN="JUSTIFY">Per garantire il servizio, ogni name server deve essere replicato almeno su un altro nodo della rete (o almeno, questo &egrave; previsto dagli standard), possibilmente fuori dalla sua zona geografica (al fine di garantire il servizio anche in caso di isolamento della zona).  Vengono identificati generalmente con Server primario e Server secondario.</P>
+</OL>
+5.&nbsp; Risoluzione dei nomi
+<OL>
+
+<P ALIGN="JUSTIFY">Quando un'applicazione ha l'esigenza di risolvere un nome, interroga (tipicamente accede ad un servizio sulla porta 53) il name server assegnatogli (indicato in fase di configurazione del TCP(IP) e se non disponibile si rivolge al secondario. La risoluzione fatta dal nameserver &egrave; gerarchica. Se gli si chiede di risolvere il nostro fbenedet.hermes.dis.uniroma1.it, comincer&agrave; a vedere se conosce gi&agrave; l'indirizzo, perch&eacute; magari era gi&agrave; stato chiesto da poco e si trova nella cache. Altrimenti guarda se per caso conosce il name Server autorevole per dis.uniroma1.it, che avr&agrave; sicuramente le informazioni su hermes.  In caso contrario controlla se conosce quello per uniroma1.it, che se proprio non conosce hermes, almeno deve sapere chi &egrave; autorevole per dis.uniroma1.it.  In mancanza di informazioni per uniroma1.it, verifica la presenza di riferimenti al name server it e infine, si rivolge al name server del dominio di livello zero.  Esistono attualmente un centinaio di name server di primo livello e 9, su tutto il pianeta, di livello zero.  Sono identificati con</P>
+<I><P ALIGN="CENTER">a.root-servers.net</P>
+<P ALIGN="CENTER">…………………</P>
+<P ALIGN="CENTER">h.root-servers.net</P>
+</I><P ALIGN="JUSTIFY">Il name server primario si trova presso l'Internic, che gestisce il DNS per conto dello IANA, l'Ente che sovraintende l'assegnazione dei domini di primo livello.  Tra i secondari 7 si trovano negli USA e uno in Norvegia.  </P>
+<P ALIGN="JUSTIFY">E' possibile estendere il modello DNS di internet su una propria LAN, fornendo alle applicazioni del proprio ambiente, servizi di naming (installando e configurando un Name Server) interno al proprio dominio.  L'unico problema legato al modello presentato, &egrave; la rigidit&agrave; di tale spazio dei nomi.  Esempio: la classificazione delle zone it, us, fr, uk, …. , &egrave; nata dopo la prima classificazione edu, org, mil, com, …. Non &egrave; possibile attualmente riunificare le zone e convertire edu in us.edu, com in us.com, ….</P>
+</OL>
+6.&nbsp; Richieste di servizio al name server
+<DIR>
+<DIR>
+
+<P ALIGN="JUSTIFY">Le applicazioni chiedono un servizio al Name Server assegnatogli, inviando una query con alcuni parametri in aggiunta al nome.  Un esempio di applicazione che si rivolge al Name Server per la "risoluzione" di un nome &egrave; la posta elettronica. Per inoltrare un messaggio a</P>
+<FONT SIZE=2><P ALIGN="CENTER"></FONT><A HREF="mailto:fbenedet@dis.uniroma1.it"><I><U><FONT COLOR="#0000ff">fbenedet@dis.uniroma1.it</I></U></FONT></A></P>
+<P ALIGN="JUSTIFY">il Server di posta (in uscita) del mittente, effettua una query sul name Server assegnatogli con "tipo" = "mail".  Il name Server risponder&agrave; inviando l'indirizzo IP dell'host in grado di accettare la posta per il dominio indicato (il server della posta in ingresso di Fulvio Benedetti).  Altri tipi di query possono essere formulate ad un Name Server; &egrave; possibile ad esempio ottenere un nome da un indirizzo IP.  La risoluzione degli indirizzi &egrave; particolare; teoricamente sarebbe necessario consultare l'intero database degli indirizzi, per sapere a quale nome &egrave; associato (soluzione impraticabile).  In realt&agrave; viene chiesta la risoluzione di un nome particolare dato dai 4 byte invertiti, aggiunti ad un nome TLD standard che &egrave;</P>
+<I><P ALIGN="CENTER">in-addr.arpa</P>
+</I><P ALIGN="JUSTIFY">Questo rappresenta un dominio fittizio, sotto al quale si trovano tutti gli indirizzi strutturati in forma gerarchica, dal byte pi&ugrave; significativo a quello meno significativo.  Esempio: volendo sapere il nome associato all'indirizzo</P>
+<I><P ALIGN="CENTER">65.104.18.34</P>
+</I><P ALIGN="JUSTIFY">&egrave; sufficiente fornire una richiesta di risoluzione del nome</P>
+<I><P ALIGN="CENTER">34.18.104.65.in-addr.arpa</P>
+</I></DIR>
+</DIR>
+</BODY>
+</HTML>

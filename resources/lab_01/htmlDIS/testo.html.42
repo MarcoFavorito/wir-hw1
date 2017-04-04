@@ -1,0 +1,123 @@
+<html>
+<head>
+<title>
+Diploma Universitario di Ingegneria Informatica,
+Esame di Fondamenti di Informatica II - primo modulo,
+A.A. 2001/02 - Appello del 17 luglio 2002
+</title>
+</head>
+
+<body>
+
+<h3 align="center">
+Diploma Universitario di Ingegneria Informatica<br>
+Esame di Fondamenti di Informatica II - primo modulo <br>
+A.A. 2001/02 - Appello del 17 luglio 2002</h3>
+
+<p><b>Problema 1</b>&nbsp;&nbsp; Si consideri la seguente specifica del
+tipo astratto <i>Molo</i>:
+
+<dl>
+  <dt><b><u>TipoAstratto</u></b> <i>Molo</i><p>
+  <dt><b><u>Sorte</u></b> <i>Molo</i> (sorta per il dominio di interesse)<p>
+  <dt><b><u>Funzioni</u></b><p>
+
+       <ul>
+         <li><i>Crea: (String, Int) --&gt; Molo</i> <br>
+              precondizioni e postcondizioni per <i>Crea(c, n) = m</i> <br>
+              <u>pre</u>: nessuna <br>
+              <u>post</u>: <i>m</i> &egrave;
+              un molo, avente codice <i>c</i> e contenete <i>n</i> posti barca
+              numerati sequenzialmente da <i>0</i> a <i>n-1</i>; i posti barca
+              del molo sono tutti liberi (non hanno una barca associata);
+              <p>
+
+
+         <li><i>NumPostiBarca: (Molo) --&gt; Int</i><br>
+              precondizioni e postcondizioni per <i>NumPostiBarca(m) =
+                 n</i><br>
+              <u>pre</u>: nessuna<br>
+              <u>post</u>: <i>n</i> &egrave; il numero di posti barca del 
+              molo <i>m</i>;
+              <p>
+
+         <li><i>Libero: (Molo, Int) --&gt; Boolean</i><br>
+              precondizione e postcondizioni per
+              <i>Libero(m,i) = b</i><br>
+              <u>pre</u>:  <i>0 &lt;= i &lt; NumPostiBarca(m)</i> <br>
+              <u>post</u>: <i>b=true</i> se il posto barca <i>i</i> del molo 
+	      <i>m</i> &egrave; libero, <i>b=false</i> altrimenti
+              <p>
+
+         <li><i>AssegnaPostoBarca: (Molo, Int, Barca) --&gt; Molo</i><br>
+              precondizioni e postcondizioni per
+              <i>AssegnaPostoBarca(m,i,b) = m'</i><br>
+              <U>pre</u>: <i>0 &lt;= i &lt; NumPostiBarca(m)</i> e 
+              <i>Libero(m,i) = true</i> <br>
+              <U>post</u>: <i>m'</i> &egrave; il molo ottenuto dal molo 
+              <i>m</i> assegnando alla barca <i>b</i> il posto barca 
+	      numero <i>i</i>;
+              <p>
+
+         <li><i>LiberaPostoBarca: (Molo, Int) --&gt; Molo</i><br>
+              precondizioni e postcondizioni per
+              <i>LiberaPostoBarca(m,i) = m'</i><br>
+              <U>pre</u>: <i>0 &lt;= i &lt; NumPostiBarca(m)</i><br>
+              <U>post</u>: <i>m'</i> &egrave; il molo ottenuto dal molo 
+              <i>m</i> liberando (qualora fosse occupato) il 
+              posto barca numero <i>i</i>;
+              <p>
+
+         <li><i>DammiBarca: (Molo, Int) --&gt; Barca</i><br>
+              precondizioni e postcondizioni per
+              <i>DammiBarca(m,i) = b</i><br>
+              <U>pre</u>: <i>0 &lt;= i &lt; NumPostiBarca(m)</i> e 
+	      <i>Libero(m,i) = false</i><br>
+              <U>post</u>: <i>b</i> &egrave; la barca che occupa il posto 
+	      numero <i>i</i> nel molo <i>m</i>;
+              <p>
+
+         <li><i>DammiUnPostoLibero: (Molo) --&gt; Int</i><br>
+              precondizione e postcondizioni per
+              <i>DammiUnPostoLibero(m) = i</i><br>
+              <u>pre</u>: nessuna<br>
+              <u>post</u>: <i>i</i> &egrave; il numero di un qualsiasi 
+              posto barca libero, se non ci sono posti liberi allora 
+              <i>i=-1</i>.
+              <p>
+       </dl>
+       <dt><b><u>FineTipoAstratto</u></b></dt>
+<p>
+
+Si vuole scrivere una classe C++ <tt>Molo</tt> che realizzi il tipo
+astratto <i>Molo</i>, considerando che per riferirsi al tipo astratto
+<i>Barca</i> &egrave; necessario utilizzare la classe <tt>Barca</tt>
+che si suppone gi&agrave; realizzata, ma della quale non si conosce
+nulla.
+
+<p><b>Domanda 1</b>&nbsp;&nbsp; Si illustrino le scelte di progetto relative
+alla realizzazione del tipo astratto <i>Molo</i> mediante la classe C++
+<tt>Molo</tt>. </p>
+
+<p><b>Domanda 2</b>&nbsp;&nbsp; Si scriva la classe <tt>Molo</tt>
+(file .h e file .cpp) secondo le scelte di progetto illustrate per la
+Domanda 1. Scrivere il codice di tutte le funzioni pubbliche e private
+della classe. </p>
+
+<p><b>Problema 2</b>&nbsp;&nbsp; Realizzare una funzione
+<tt>SituazionePostiBarca</tt> esterna (non friend) della classe
+<tt>Molo</tt> che dato un molo <i>m</i> restituisca un array di
+booleani <i>a</i> di dimensione pari al numero di posti barca presenti
+in <i>m</i> e tale che ogni posizione <i>i</i> all'interno dell'array
+contenga  <i>true</i> se il posto barca numero <i>i</i> di <i>m</i>
+&egrave; assegnato ad una barca, <i>false</i> altrimenti.
+
+<p><b>Problema 3</b>&nbsp;&nbsp; 
+Spiegare brevemente il significato delle nozioni di <i>coesione</i>,
+<i>information hiding</i>, <i>accoppiamento</i>, e <i>interfacciamento
+esplicito</i>, e descrivere i criteri fondamentali che legano tali
+nozioni con la qualit&agrave; della modularizzazione.
+</body>
+</html>
+
+

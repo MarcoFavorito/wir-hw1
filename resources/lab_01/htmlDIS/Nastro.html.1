@@ -1,0 +1,65 @@
+<!doctype html public "-//w3c//dtd html 4.0 transitional//en">
+<html>
+<head>
+   <title>Tecniche di Programmazione - Esercitazione 4</title>
+   <!-- <link rel="stylesheet" href="../../fi2001.css" type="text/css"> -->
+</head>
+<body>
+
+<center>
+  <p><B>Tecniche di Programmazione</B> <BR>
+    <B>Corsi di Laurea in Ingegneria Informatica e Automatica</B></p>
+  <p><b>A.A. 2003/04</b></p>
+  <p><b>Esercitazione 4</b></p>
+  <p><b>Strutture Collegate Lineari -- Esercizio di esame</b> </p>
+  </center>
+
+<hr>
+
+<p>Si vuole realizzare una classe <code>Nastro</code> in modo tale che ogni
+oggetto della classe rappresenti un nastro utilizzato per memorizzare programmi
+televisivi.  Di ogni programma sono di interesse le seguenti informazioni:
+<ul>
+  <li>il nome (una stringa);
+  <li>la durata in minuti (un intero).
+</ul>
+
+Ogni nastro ha una certa capienza e ad ogni programma memorizzato sul nastro
+&egrave; associata una posizione (iniziando a contare da 0).  Della classe sono
+di interesse le seguenti funzionalit&agrave;:
+<ul>
+  <li>dato un intero <i>k</i> come parametro, creazione di un nastro con
+      capienza di <i>k</i> minuti, inizialmente vuoto;
+  <li><i>capienzaResidua</i>, che restituisce la capienza residua del nastro in
+      minuti;
+  <li><i>quantiProgrammi</i>, che restituisce il numero di programmi
+      memorizzati sul nastro;
+  <li><i>memorizza</i>, che dati come parametri il nome e la durata di un
+      programma, memorizza il programma nella prossima posizione sul nastro, se
+      la capienza residua del nastro &egrave; sufficiente a contenere il
+      programma; se la capienza residua del nastro non &egrave; sufficiente,
+      non viene effettuata la memorizzazione;
+  <li><i>qualeProgramma</i>, che data una posizione <i>n</i> del nastro,
+      restituisce il nome del programma in posizione <i>n</i>, se questo
+      esiste, restituisce <code>null</code> altrimenti.
+  <li><i>qualeDurata</i>, che data una posizione <i>n</i> del nastro,
+      restituisce la durata del programma in posizione <i>n</i>, se questo
+      esiste, restituisce <code>0</code> altrimenti.
+</ul>
+
+<p><b>Parte 1. </b>Si realizzi la classe <code>Nastro</code> utilizzando una lista 
+  collegata per rappresentare i programmi memorizzati su un nastro. 
+  <!--<p><a href="soluzioni/eser12A/">Soluzione</a></p>-->
+</p>
+
+<p>
+ <p><b>Parte 2. </b>Si realizzi una classe cliente della classe <code>Nastro</code>, 
+  contenente un metodo statico che, presi come parametri un nastro ed il nome 
+  di un file, stampa sul file posizione, nome e durata di tutti programmi memorizzati 
+  sul nastro, uno per riga. Il metodo deve inoltre stampare sul file la durata 
+  complessiva dei programmi memorizzati sul nastro e la capienza residua del nastro. 
+  <!--<p><a href="soluzioni/eser12B/">Soluzione</a></p>-->
+</p>
+
+</body>
+</html>

@@ -1,0 +1,106 @@
+<!doctype html public "-//w3c//dtd html 4.0 transitional//en">
+<html>
+<head>
+<link href="java.css" rel="stylesheet" type="text/css">
+<title>Uso dei colori standard</title>
+</head>
+
+<body>
+
+<h2>Uso dei colori standard</h2>
+
+Le istruzioni grafiche viste fino ad ora disegnano figure
+geometriche con il colore nero.
+Vediamo ora come si fa a disegnare delle linee
+in rosso, o dei cerchi in blu, ecc.<p>
+
+In Java, non &egrave; possibile specificare con una sola
+istruzione che si vuole per esempio disegnare una linea in
+rosso. Java utilizza invece il concetto di <i>colore
+corrente</i>. Ogni volta che si disegna qualcosa, questo
+viene fatto usando il colore corrente. All'inizio, il colore
+corrente &egrave; nero, ma pu&ograve; venire cambiato.
+In questo modo, se si vogliono disegnare due linee in rosso
+e un cerchio in blu, quello che occorre fare &egrave;:<p>
+
+<ul>
+<li>cambiare il colore corrente in rosso;
+<li>disegnare una linea;
+<li>disegnare l'altra linea;
+<li>cambiare il colore corrente in blu;
+<li>disegnare il cerchio.
+</ul>
+
+<p>
+In altre parole, ogni volta che si cambia il colore corrente,
+tutte le successive istruzioni di disegno avverrano con il
+nuovo colore corrente. Per disegnare con un altro colore,
+occorre di nuovo cambiare il colore corrente.<p>
+
+L'istruzione che permette di cambiare il colore corrente
+si chiama <tt>setColor</tt>. I colori standard che Java mette
+a disposizione sono i seguenti:
+
+<pre>
+Color.black Color.blue Color.cyan Color.darkGray Color.gray 
+Color.green Color.lightGray Color.magenta Color.orange 
+Color.pink Color.red Color.white Color.yellow 
+</pre>
+
+Per disegnare le linee in rosso, occorre quindi eseguire la
+istruzione <tt>g.setColor(Color.red)</tt>, che cambia il colore
+corrente in rosso, e poi disegnare le linee normalmente (usando
+la <tt>drawLine</tt> come al solito).<p>
+
+Il programma
+<a href="Standard.java">Standard.java</a>
+usa tre colori standard (rosso, blu e nero) per disegnare varie
+figure geometriche.<p>
+
+<pre>
+/*
+  Uso dei colori standard.
+*/
+
+import java.awt.*;
+
+public class Standard extends java.applet.Applet {
+  public void paint(Graphics g) {
+
+    /* da qui in poi, disegna in rosso */
+    g.setColor(Color.red);
+    g.drawLine(0,0,100,100);
+    g.drawLine(0,100,100,0);
+    g.drawRect(0,0,100,100);
+
+    /* da qui in poi, disegna tutto in blu */
+    g.setColor(Color.blue);
+    g.drawLine(100,100,200,200);
+    g.drawOval(200,200,100,50);
+
+    /* disegna in nero */
+    g.setColor(Color.black);
+    g.drawRect(0,200,50,50);
+
+  }
+}
+
+</pre>
+
+<p>
+Va notato che per tornare a usare il nero, occorre l'istruzione
+<tt>g.setColor(Color.black)</tt>. In altre parole, una volta
+cambiato colore, per tornare a usare quello precedente occorre
+usare la <tt>setColor</tt>: non esiste una istruzione che dice
+di tornare al colore precedente senza specificare quale era.
+Il risultato &egrave; il seguente:<p>
+
+<center>
+<img src="Standard.gif">
+</center>
+<p>
+
+
+</body>
+</html>
+

@@ -1,0 +1,70 @@
+<html>
+<head>
+<title>Laboratorio-13/01/2005 Compito A</title>
+</head>
+
+<body>
+
+<h2 align=center>Laboratorio di Programmazione,
+A.A. 2004/2005<br>
+Esame 13/01/2005<br>
+Compito A</h2>
+
+<h4>Parte 1</h4>
+
+<p>
+Il sistema di memorizzazione su disco del sistema
+operativo DGOS &egrave; basato su oggetti che si chiamano
+<tt>FileSystemItem</tt>; ogni <tt>FileSystemItem</tt>
+pu&ograve; essere di uno dei seguenti tipi:
+</p>
+
+<dl>
+
+<dt><tt>File</tt>
+<dd>un file normale, caratterizzato da un nome (una stringa)
+e una dimensione (un intero);
+
+<dt><tt>FileZip</tt>
+<dd>un tipo particolare di <tt>File</tt> (vedi sopra) che
+contiene un insieme di altri <tt>FileSystemItem</tt>;
+
+<dt><tt>Directory</tt>
+<dd>caratterizzata da un nome (una stringa); contiene un
+insieme di altri <tt>FileSystemItem</tt>.
+
+</dl>
+
+<p>
+Si definiscano i tipi opportuni che realizzano
+<tt>File</tt>, <tt>FileZip</tt>, <tt>Directory</tt>, e
+<tt>FileSystemItem</tt>. Per tutti gli oggetti devono
+essere definite l'uguaglianza profonda con <tt>equals</tt>,
+il metodo <tt>hashCode</tt> opportuno, e la copia
+profonda con <tt>clone</tt>.
+</p>
+
+
+<h4>Parte 2</h4>
+
+<p>
+Si definisca una classe <tt>ServiziDGFS</tt> che contiene
+due metodi statici <tt>void stampaFS(FileSystemItem f)</tt>
+che stampa tutti i file e cartelle (incluso il contenuto dei
+file zip) e <tt>int dimensioneFS(FileSystemItem f)</tt>, che
+calcola la dimensione totale di tutti i file (per i file zip
+si calcola la dimensione del file e non del suo contenuto).
+</p>
+
+
+<h4>Parte 3</h4>
+
+<p>
+Si determini la complessit&agrave; del metodo <tt>clone</tt>
+della parte 1.
+</p>
+
+</body>
+</html>
+
+

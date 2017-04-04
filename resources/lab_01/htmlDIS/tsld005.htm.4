@@ -1,0 +1,58 @@
+
+<HTML>
+
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html;charset=iso-8859-1">
+<meta name="GENERATOR" content="Microsoft Internet Assistant for Macintosh PowerPoint 98">
+ <TITLE>Simple Nested Loops Join</TITLE> 
+</HEAD>
+
+<BODY     >
+
+ <H1>Simple Nested Loops Join</H1> 
+ <P><UL></P>
+
+<P><LI><H2>For each tuple in the outer relation R, we scan the entire inner relation S. 
+</H2></P>
+
+<P><UL></P>
+
+<P><LI>Cost:  M +  pR * M * N  =  1000 + 100*1000*500  I/Os.
+</UL></UL><UL></P>
+
+<P><LI><H2>Page-oriented Nested Loops join:  For each page of R, get each page of S, and write out matching pairs of tuples <r, s>, where r is in R-page and S is in S-page.
+</H2></P>
+
+<P><UL></P>
+
+<P><LI>Cost:  M + M*N = 1000 + 1000*500
+<LI>If smaller relation (S) is outer, cost = 500 + 500*1000  </UL></UL></P>
+
+<P><UL></P>
+
+<P>foreach tuple r in R do
+</UL><UL></P>
+
+<P>	foreach tuple s in S do
+</UL><UL></P>
+
+<P>		if ri == sj  then add <r, s> to result</UL></P>
+
+<P></P> 
+<P>
+<TABLE>
+  <TD HEIGHT=100 WIDTH=100> <A HREF="tsld004.htm">Previous slide</A> </TD>
+  <TD HEIGHT=100 WIDTH=100> <A HREF="tsld006.htm">Next slide</A> </TD>
+  <TD HEIGHT=100 WIDTH=150> <A HREF="tsld001.htm">Back to first slide</A> </TD>
+  <TD HEIGHT=100 WIDTH=150> <A HREF="sld005.htm">View graphic version</A> </TD>
+</TABLE>
+<BR>
+</P>
+
+ <FONT size=4><STRONG> Notes: </FONT></STRONG>
+  <HR SIZE=3> <P> <UL>
+
+6</UL> </P> 
+
+</Body>
+</HTML>

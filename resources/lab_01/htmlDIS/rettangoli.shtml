@@ -1,0 +1,91 @@
+<!doctype html public "-//w3c//dtd html 4.0 transitional//en">
+<html>
+<head>
+<link href="java.css" rel="stylesheet" type="text/css">
+<title>Rettangoli</title>
+</head>
+
+<body>
+
+<h2>Rettangoli</h2>
+
+Si supponga di voler disegnare un rettangolo, i cui lati
+orizzontali abbiano coordinate 50 e 200, e i cui lati
+verticali abbiano coordinate 20 e 80. Questo &egrave;
+gi&agrave; possibile utilizzando la funzione di disegno
+della linea, usando quattro istruzioni separate. I
+vertici del rettangolo hanno coordinate
+(20, 50), (20, 200), (80, 200), (80, 50), quindi &egrave;
+necessario disegnare quattro linee fra questi punti,
+come viene fatto nel programma
+<a href="Rettangolo.java">Rettangolo.java</a>.<p>
+
+<pre>
+/*
+  Disegna un rettangolo usando quattro linee.
+*/
+
+import java.awt.*;
+
+public class Rettangolo extends java.applet.Applet {
+  public void paint(Graphics g) {
+    g.drawLine(20, 50, 20, 200);
+    g.drawLine(20, 200, 80, 200);
+    g.drawLine(80, 200, 80, 50);
+    g.drawLine(80, 50, 20, 50);
+  }
+}
+
+</pre>
+
+&Egrave; possibile disegnare un rettangolo usando una
+sola istruzione. L'istruzione <tt>drawRect(x, y, w, h)</tt>
+disegna un rettangolo in cui <tt>x</tt> e
+<tt>y</tt> sono le coordinate del vertice in alto a
+sinistra del rettangolo, mentre i valori di <tt>w</tt> e
+<tt>h</tt> sono la larghezza e l'altezza del rettangolo.
+&Egrave; chiaro che questi valori sono sufficienti a determinare
+completamente la forma e la posizione del rettangolo.
+Per esempio, per disegnare un rettangolo i cui estremi
+opposti abbiano coordinate (x1, y1) e (x2, y2), la
+istruzione che occorre eseguire &egrave;
+<tt>drawRect(x1, y1, x2-x1, y2-y1)</tt>, dal momento
+che <tt>x2-x1</tt> &egrave; la larghezza del rettangolo
+mentre <tt>y2-y1</tt> &egrave; la sua altezza. Il
+programma <a href="RettUno.java">RettUno.java</a>
+disegna lo stesso rettangolo del programma di sopra,
+questa volta usando la istruzione <tt>drawRect</tt>.<p>
+
+
+<pre>
+/*
+  Disegna un rettangolo usando quattro linee.
+*/
+
+import java.awt.*;
+
+public class RettUno extends java.applet.Applet {
+  public void paint(Graphics g) {
+    g.drawRect(20, 50, 60, 150);
+  }
+}
+
+</pre>
+
+Si ricorda che le istruzioni grafiche come la
+<tt>drawLine</tt> e <tt>drawRect</tt> vanno usate
+mettendo sempre prima l'argomento di <tt>paint</tt>,
+ossia la stringa fra parentesi dopo il
+<tt>Graphics</tt> (in questo caso, <tt>g</tt>).<p>
+
+L'esecuzione produce il seguente disegno:<p>
+
+<center>
+<img src="Rettangolo.gif">
+</center>
+
+
+</body>
+</html>
+
+

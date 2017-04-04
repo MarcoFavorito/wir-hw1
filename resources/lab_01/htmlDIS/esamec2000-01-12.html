@@ -1,0 +1,93 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1">
+<META NAME="Generator" CONTENT="Microsoft Word 81.2">
+<TITLE>Testo esame del 12-1-2000</TITLE>
+<META NAME="Template" CONTENT="damore-7gb:Applications:Microsoft Office 98:Templates:Web Pages:Blank Web Page">
+</HEAD>
+<BODY LINK="#0000ff" VLINK="#800080">
+
+<B><FONT SIZE=4><P ALIGN="CENTER">Universit&agrave; di Roma "La Sapienza" &#151; Facolt&agrave; di Ingegneria</P>
+</FONT><P ALIGN="CENTER">Corso di Fondamenti di Informatica (Ambiente e Territorio)</P>
+</B><FONT SIZE=2><P ALIGN="CENTER">12 gennaio 2000 (1&#170; prova)</P>
+</FONT><I><FONT SIZE=1><P ALIGN="CENTER">tempo a disposizione: 120 minuti</P>
+</I></FONT><FONT SIZE=2><P ALIGN="JUSTIFY">&nbsp;</P>
+<B><P ALIGN="JUSTIFY">Esercizio 1 (18 punti)</P>
+</B><P ALIGN="JUSTIFY">Un cliente di una banca decide di memorizzare su di un file (denominato PORTFOL.DAT) il suo portafoglio titoli. Nel file sono riportate le seguenti informazioni:</P>
+
+<UL>
+<P ALIGN="JUSTIFY"><LI>Codice del titolo (alfanumerico di 4 caratteri);</LI></P>
+<P ALIGN="JUSTIFY"><LI>Numero di azioni o quote;</LI></P>
+<P ALIGN="JUSTIFY"><LI>Prezzo unitario delle azioni o quote, in Euro.</LI></P></UL>
+
+<P ALIGN="JUSTIFY">Ogni settimana la banca invia a tutti i clienti possessori di titoli un file (denominato VALORI.DAT) in cui sono memorizzate le seguenti informazioni:</P>
+
+<UL>
+<P ALIGN="JUSTIFY"><LI>Codice del titolo;</LI></P>
+<P ALIGN="JUSTIFY"><LI>Prezzo unitario delle azioni o quote, in Euro, fissato nell&#146;ultima seduta settimanale della borsa.</LI></P></UL>
+
+<P ALIGN="JUSTIFY">&nbsp;</P>
+<P ALIGN="JUSTIFY">Si richiede di risolvere i seguenti punti: </P>
+<OL>
+
+<P ALIGN="JUSTIFY"><LI>Scrivere le dichiarazioni dei tipi di dato C da utilizzarsi per risolvere i due punti successivi.</LI></P>
+<P ALIGN="JUSTIFY"><LI>Scrivere una funzione C (o pi&ugrave;) che, dati i due file PORTFOL.DAT (che illustra la situazione al 2/1/00) e VALORI.DAT (relativo alla settimana conclusasi il 9/1/00) di cui sopra, memorizzi in un nuovo file, il cui nome fisico &egrave; un parametro della funzione, le informazioni (nello stesso formato del file PORTFOL.DAT) relative a tutti e soli i titoli che nella settimana dal 3 al 9/1/00 hanno ottenuto un guadagno.</LI></P>
+<P ALIGN="JUSTIFY"><LI>Scrivere una funzione C (o pi&ugrave;) che, ricevendo come parametri di ingresso il nome fisico del file costruito al punto 2. ed un positivo <I>Q</I>, costruisca e restituisca una lista, rappresentata mediante strutture e puntatori, in cui sono memorizzati i codici dei titoli posseduti il cui valore complessivo &egrave; superiore a <I>Q</I> Euro.</LI></P></OL>
+
+<P ALIGN="JUSTIFY">&nbsp;</P>
+<B><P ALIGN="JUSTIFY">N.B.</B> Nel risolvere i punti di cui sopra, assumere che:</P>
+<OL TYPE="a">
+
+<P ALIGN="JUSTIFY"><LI>Ogni titolo presente in PORTFOL.DAT vi compare una sola volta.</LI></P>
+<P ALIGN="JUSTIFY"><LI>Ogni titolo presente in VALORI.DAT vi compare una sola volta.</LI></P>
+<P ALIGN="JUSTIFY"><LI>Ogni titolo presente in PORTFOL.DAT &egrave; presente anche in VALORI.DAT.</LI></P>
+<P ALIGN="JUSTIFY"><LI>I titoli sono elencati nei file secondo ordinamenti assolutamente casuali e fra loro indipendenti.</LI></P></OL>
+
+</FONT><P><HR SIZE=0></P>
+<B><FONT SIZE=4><P ALIGN="CENTER">Universit&agrave; di Roma "La Sapienza" &#151; Facolt&agrave; di Ingegneria</P>
+</FONT><P ALIGN="CENTER">Corso di Fondamenti di Informatica (Ambiente e Territorio)</P>
+</B><FONT SIZE=2><P ALIGN="CENTER">12 gennaio 2000 (2&#170; prova)</P>
+</FONT><I><FONT SIZE=1><P ALIGN="CENTER">tempo a disposizione: 60 minuti</P>
+</I></FONT><FONT SIZE=2><P ALIGN="JUSTIFY">&nbsp;</P>
+<P ALIGN="JUSTIFY">&nbsp;</P>
+<B><P ALIGN="JUSTIFY">Esercizio 2 (4 punti)</P>
+</B><P ALIGN="JUSTIFY">Con riferimento al linguaggio C, si descriva il tipo di dato FILE, evidenziandone le caratteristiche ed indicando in quali situazioni appare indicato il suo uso, mostrando almeno un esempio.</P>
+<P ALIGN="JUSTIFY">&nbsp;</P>
+<B><P ALIGN="JUSTIFY">Esercizio 3 (4 punti)</P>
+</B><P ALIGN="JUSTIFY">Per il seguente frammento di programma C, assumendo validi i prototipi mostrati, indicare quali chiamate di funzione sono corrette e quali sono errate, motivando le risposte date. </P>
+</FONT><FONT FACE="Courier" SIZE=1><P ALIGN="JUSTIFY">struct struttura {</P>
+<P ALIGN="JUSTIFY">float z;</P>
+<P ALIGN="JUSTIFY">char bi[2];</P>
+<P ALIGN="JUSTIFY">};</P>
+<P ALIGN="JUSTIFY">/* prototipi */</P>
+<P ALIGN="JUSTIFY">void Proc1 (float *, int);</P>
+<P ALIGN="JUSTIFY">void Proc2 (struct struttura);</P>
+<P ALIGN="JUSTIFY">void Proc3 (float, char, char);</P>
+<P ALIGN="JUSTIFY">void Proc4 (char *);</P>
+<P ALIGN="JUSTIFY">char Fun1 (char, int);</P>
+<P ALIGN="JUSTIFY">/* ... */</P>
+<P ALIGN="JUSTIFY">main() { </P>
+<P ALIGN="JUSTIFY">char a, v[2];</P>
+<P ALIGN="JUSTIFY">float u;</P>
+<P ALIGN="JUSTIFY">int n;</P>
+<P ALIGN="JUSTIFY">struct struttura S;</P>
+<P ALIGN="JUSTIFY">/* ... */</P>
+<P ALIGN="JUSTIFY">Proc1(&amp;u, S.z); /* 1 */</P>
+<P ALIGN="JUSTIFY">Proc1(&amp;u, n); /* 2 */</P>
+<P ALIGN="JUSTIFY">Proc2(S); /* 3 */</P>
+<P ALIGN="JUSTIFY">Proc2(S.z, S.bi); /* 4 */</P>
+<P ALIGN="JUSTIFY">Proc2(S.z, S.bi[0], S.bi[1]); /* 5 */</P>
+<P ALIGN="JUSTIFY">Proc3(S); /* 6 */</P>
+<P ALIGN="JUSTIFY">Proc3(S.z, S.bi[0], S.bi[1]); /* 7 */</P>
+<P ALIGN="JUSTIFY">Proc4(S.bi[2]); /* 8 */</P>
+<P ALIGN="JUSTIFY">Proc4(S.bi); /* 9 */</P>
+<P ALIGN="JUSTIFY">v[0] = Fun1(a, n); /* 10 */</P>
+<P ALIGN="JUSTIFY">Fun1(S.bi[1], 5); /* 11 */</P>
+<P ALIGN="JUSTIFY">a = Fun1(v, n); /* 12 */</P>
+<P ALIGN="JUSTIFY">/* ... */</P>
+<P ALIGN="JUSTIFY">}</P>
+</FONT><FONT SIZE=2><P ALIGN="JUSTIFY">&nbsp;</P>
+<P ALIGN="JUSTIFY">&nbsp;</P>
+<B><P ALIGN="JUSTIFY">Esercizio 4 (4 punti)</P>
+</B><P ALIGN="JUSTIFY">Con riferimento all&#146;algebra relazionale, descrivere l&#146;operazione di join e mostrare almeno un esempio in cui il join &egrave; indispensabile per estrarre informazioni da una o pi&ugrave; relazioni.</P></FONT></BODY>
+</HTML>

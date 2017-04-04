@@ -1,0 +1,64 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=windows-1252">
+<META NAME="Generator" CONTENT="Microsoft Word 97">
+<TITLE>Un grafico può essere rappresentato mediante una sequenza di coppie di valori (ascissa, ordinata)</TITLE>
+</HEAD>
+<BODY>
+
+<B><FONT FACE="Palatino,Book Antiqua"><P ALIGN="CENTER">Fondamenti di Informatica </P>
+<P ALIGN="CENTER">Aeronautica, Meccanica, Elettrica, Materiali, Nucleare, Chimica, </P>
+<P ALIGN="CENTER">Ambiente e Territorio (vecchio programma)</P>
+<P ALIGN="CENTER">Appello del 13-7-1998</P>
+<P ALIGN="JUSTIFY">&nbsp;</P>
+<P ALIGN="JUSTIFY">Esercizio 1 (18 punti)</P>
+<P ALIGN="JUSTIFY">&nbsp;</P>
+</B><P ALIGN="JUSTIFY">Una agenzia di viaggi propone alla clientela un'offerta speciale, in cui vengono proposti a prezzi particolarmente vantaggiosi biglietti aerei da e per alcune città in determinati periodi dell'anno. L'offerta coinvolge un massimo di venti città ed é rappresentata tramite un grafo <B>OFFERTA</B> i cui nodi sono etichettati con il nome della città corrispondente (stringa di dodici caratteri) e gli archi (<B>ogni arco corrisponde ad un biglietto</B>) sono etichettati con il costo del biglietto (intero positivo) e con l'indicazione del periodo (o dei periodi) di validità dell'offerta (uno o più fra i seguenti valori: <B>autunno, natale, pasqua, agosto, sempre</B>. Si noti che<B> </B>un'offerta valida sempre é ovviamente valida anche in autunno, natale, pasqua ed agosto). </P>
+<P ALIGN="JUSTIFY">&nbsp;</P><DIR>
+
+<P ALIGN="JUSTIFY">1.&#9;Definire i tipi di dato Pascal adeguati a risolvere i problemi di cui ai successivi punti (2) e (3).</P>
+<P ALIGN="JUSTIFY">2.&#9;Scrivere una procedura Pascal che, ricevendo come parametri di ingresso il grafo<I> </I><B>OFFERTA</B>, un intero positivo <B>cmax</B>, che rappresenta <I>il costo massimo del biglietto</I> che il cliente e' disposto a pagare, una stringa <B>nomcit</B>, che rappresenta il <I>nome</I> <I>della</I> <I>città di partenza</I> del cliente, e un valore <B>perscel</B>, che rappresenta il <I>periodo prescelto</I> dal cliente, restituisca in uscita un <B>file SCELTE.TXT</B> in cui sono contenute tutte le possibili destinazioni (con specificato, per ogni destinazione, il relativo costo del biglietto) <B>raggiungibili con un solo biglietto</B> a partire da <B>nomcit</B>, con costo minore o uguale a <B>cmax</B> e nel periodo <B>perscel</B>.</P>
+<P ALIGN="JUSTIFY">3.&#9;Scrivere una procedura Pascal che, ricevendo come parametro di ingresso il grafo <B>OFFERTA</B>, elimini tutti i biglietti validi <B>sempre</B>.</P>
+<P ALIGN="JUSTIFY">&nbsp;</P></DIR>
+
+<P ALIGN="JUSTIFY">In Figura 1 è mostrato un esempio di grafo <B>OFFERTA.</P>
+</B><P ALIGN="CENTER"><IMG SRC="Image35.gif" WIDTH=317 HEIGHT=288></P>
+<P ALIGN="CENTER">Figura 1</P>
+<B><P ALIGN="CENTER">Fondamenti di Informatica </P>
+<P ALIGN="CENTER">Aeronautica, Meccanica, Elettrica, Materiali, Nucleare, Chimica, </P>
+<P ALIGN="CENTER">Ambiente e Territorio (vecchio programma)</P>
+<P ALIGN="CENTER">Appello del 13-7-1998</P>
+</B><P ALIGN="CENTER">&nbsp;</P>
+<P ALIGN="JUSTIFY">&nbsp;</P>
+<P ALIGN="JUSTIFY">&nbsp;</P>
+<B><P ALIGN="JUSTIFY">Esercizio 2 (4 punti)</P>
+</B><P ALIGN="JUSTIFY">Con riferimento al linguaggio Pascal, si considerino</P>
+</FONT><FONT FACE="Symbol"><P ALIGN="JUSTIFY">&#8721;&#9;</FONT><FONT FACE="Palatino,Book Antiqua">un tipo (record) ElementoLista, con campi</P><DIR>
+
+</FONT><FONT FACE="Symbol"><P ALIGN="JUSTIFY">-&#9;</FONT><FONT FACE="Palatino,Book Antiqua">info, di tipo intero,</P>
+</FONT><FONT FACE="Symbol"><P ALIGN="JUSTIFY">-&#9;</FONT><FONT FACE="Palatino,Book Antiqua">prox, di tipo <U>puntatore</U> a ElementoLista;</P>
+</FONT><FONT FACE="Symbol"><P ALIGN="JUSTIFY">&#8721;&#9;</FONT><FONT FACE="Palatino,Book Antiqua">una procedura ricorsiva <B>elimina</B> che, data una <U>lista collegata</U> ed un valore intero <U>dovrebbe</U> cancellare dalla lista stessa tutti gli elementi con campo info pari al valore specificato. </P>
+<P ALIGN="JUSTIFY">&nbsp;</P></DIR>
+
+<P ALIGN="JUSTIFY">procedure <B>elimina</B> (var p: punt; valore: integer);</P>
+<P ALIGN="JUSTIFY">&#9;var aux: punt;</P>
+<P ALIGN="JUSTIFY">&nbsp;</P>
+<P ALIGN="JUSTIFY">&#9;begin</P>
+<P ALIGN="JUSTIFY">&#9;&#9;if p^.info = valore then begin</P>
+<P ALIGN="JUSTIFY">&#9;&#9;&#9;aux:= p;</P>
+<P ALIGN="JUSTIFY">    &#9;&#9;&#9; aux := aux^.prox;</P>
+<P ALIGN="JUSTIFY">    &#9;&#9;&#9;dispose (p)</P>
+<P ALIGN="JUSTIFY">    &#9;&#9;&#9;end</P>
+<P ALIGN="JUSTIFY">    &#9;&#9;else elimina(p^.next, valore)</P>
+<P ALIGN="JUSTIFY">&#9;end;</P>
+<P ALIGN="JUSTIFY">&nbsp;</P>
+<P ALIGN="JUSTIFY">La procedura proposta contiene degli errori. Indicarli, spiegarne l’effetto e correggerli.</P>
+<P ALIGN="JUSTIFY">&nbsp;</P>
+<P ALIGN="JUSTIFY">&nbsp;</P>
+<B><P ALIGN="JUSTIFY">Esercizio 3 (4 punti)</P>
+</B><P ALIGN="JUSTIFY">Descrivere la struttura ed i principali componenti di un elaboratore. </P>
+<P ALIGN="JUSTIFY">&nbsp;</P>
+<P ALIGN="JUSTIFY">&nbsp;</P>
+<B><P ALIGN="JUSTIFY">Esercizio 4 (4 punti)</P>
+</B><P ALIGN="JUSTIFY">Scrivere un programma Fortran che, ricevendo in input 20 coppie di NomeCittà(12 caratteri) e CostoBiglietto(intero), le memorizzi in opportune strutture dati e le ordini in ordine crescente di  costo del biglietto.</P></FONT></BODY>
+</HTML>

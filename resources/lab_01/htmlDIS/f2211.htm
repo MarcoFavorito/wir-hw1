@@ -1,0 +1,75 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=windows-1252">
+<title></title>
+</HEAD>
+<BODY background="bgrnd.jpg">
+
+<B><FONT SIZE=5><P>11)</FONT><FONT SIZE=5> </FONT><FONT SIZE=5>Alberi AVL</P>
+<hr>
+</FONT>
+</B>
+<OL>
+
+<I><LI>Introduzione </LI>
+</I><P ALIGN="JUSTIFY">Si definisce altezza di un nodo in un albero il numero di archi sul pi&ugrave; lungo cammino semplice discendente che va dal nodo a una foglia, e si definisce altezza dell'albero l'altezza della sua radice.  In un albero binario completo l'altezza &egrave; pari a <I>log n</I>.</P>
+<P ALIGN="CENTER"><IMG SRC="Image11.gif" WIDTH=343 HEIGHT=204></P>
+<P ALIGN="JUSTIFY">Abbiamo visto che le operazioni principali su un albero binario di ricerca hanno complessit&agrave; O(h) e sappiamo anche che l'altezza di un albero di ricerca pu&ograve; variare a seconda di come gli elementi vengono inseriti e cancellati.  I due alberi di ricerca che seguono, composti dagli stessi elementi inseriti per&ograve; seguendo un ordine diverso hanno altezze molto diverse.</P>
+<P ALIGN="CENTER"><IMG SRC="Image12.gif" width=459 height=242></P>
+<P ALIGN="JUSTIFY">il primo ha altezza 9 mentre il secondo ha altezza 3.  Le operazioni effettuate sul secondo albero avranno costo logaritmico, mentre quelle effettuate sul primo albero avranno costo lineare in n.  In definitiva quindi, perch&eacute; le operazioni da effettuare su un albero di ricerca siano efficienti, &egrave; importante che l'albero risulti bilanciato.</P>
+<I><P ALIGN="JUSTIFY"><LI>Alberi AVL </LI></P>
+</I><P ALIGN="JUSTIFY">Un albero AVL &egrave; un albero binario di ricerca che verifica la seguente propriet&agrave;: per ogni nodo, le altezze dei sottoalberi sinistro e destro differiscono (in valore assoluto) al pi&ugrave; di 1.  Rispetto ad un albero di ricerca, un albero AVL prevede la possibilit&agrave; di ristabilire il bilanciamento dopo le operazioni di inserimento e cancellazione, risalendo l'albero dal nodo inserito o cancellato, fino alla radice.  Per rendere possibile in maniera efficiente questa operazione, ad ogni nodo viene associato un valore +1, 0 o -1, detto <I>fattore di bilanciamento</I>, pari alla profondit&agrave; dell'albero di sinistra meno la profondit&agrave; dell'albero di destra.  </P>
+<I><P ALIGN="JUSTIFY"><LI>Rotazioni </LI></OL>
+<DIR>
+<DIR>
+
+</I><P ALIGN="JUSTIFY">Sono le operazioni che permettono il ripristino delle propriet&agrave; che rendono un albero bilanciato.  Distinguiamo:</P></DIR>
+</DIR>
+
+
+<UL>
+
+<UL>
+<LI>Rotazione sinistra</LI><LI>Rotazione destra</LI></UL>
+</UL>
+
+<DIR>
+<DIR>
+
+<P ALIGN="CENTER"><IMG SRC="Image13.gif" width=440 height=153></P>
+<P ALIGN="JUSTIFY">Notare che le due operazioni sono simmetriche; effettuando una rotazione destra su Y dopo aver effettuato una rotazione sinistra su X, ha come effetto il ripristino dello stato precedente. </P></DIR>
+</DIR>
+
+<p>4. <I>Casi possibili di sbilanciamento</p>
+</I>
+
+<OL>
+
+<B><P ALIGN="JUSTIFY">Sbilanciamento Destra-Destra</P>
+<P ALIGN="CENTER"><IMG SRC="Image14.gif" width=500 height=153></P>
+</B><P ALIGN="JUSTIFY">Si verifica quando un nodo ha fattore di bilanciamento uguale a -2 e figlio destro con fattore di bilanciamento -1.  Se il sottoalbero X ha profondit&agrave; h, allora i sottoalberi B, Y e Z hanno rispettivamente profondita h+2, h e h+1.  Una rotazione a sinistra su A ripristina la propriet&agrave; AVL.</P>
+<B>
+<P ALIGN="JUSTIFY">Sbilanciamento Destra-Sinistra</P>
+</B><P ALIGN="JUSTIFY"><IMG SRC="Image15.gif" width=688 height=233></P>
+<P ALIGN="JUSTIFY">Si verifica quando un nodo ha fattore di bilanciamento uguale a -2 e figlio destro con fattore di bilanciamento +1.  Se il sottoalbero X ha profondit&agrave; h, allora i sottoalberi Y e/o U e Z hanno profondita h.  Una rotazione destra su B e una successiva rotazione sinistra su A ripristinano la propriet&agrave; AVL.</P>
+<B>
+<P ALIGN="JUSTIFY">Sbilanciamento Sinistra-Sinistra</P>
+<P ALIGN="CENTER"><IMG SRC="Image16.gif" width=498 height=154></P>
+</B><P ALIGN="JUSTIFY">Si verifica quando un nodo ha fattore di bilanciamento uguale a +2 e figlio sinistro con fattore di bilanciamento +1.  Se il sottoalbero Z ha profondit&agrave; h, allora i sottoalberi B, Y e X hanno rispettivamente profondita h+1, h e h+1.  Una rotazione a destra su A ripristina la propriet&agrave;
+AVL.</P>
+<B>
+</B>
+<B><P ALIGN="JUSTIFY">Sbilanciamento Sinistra-Destra</P>
+</B><P ALIGN="JUSTIFY"><IMG SRC="Image17.gif" width=687 height=235></P>
+<P ALIGN="JUSTIFY">Si verifica quando un nodo ha fattore di bilanciamento uguale a +2 e figlio sinistro con fattore di bilanciamento -1.  Una rotazione sinistra su B e una successiva rotazione destra su A ripristinano la propriet&agrave;
+AVL.</P>
+<I></OL>
+<p>5. Un esempio</p>
+<DIR>
+<DIR>
+
+</I><P ALIGN="CENTER">Analisi di <a href="AlbAVL.h"> AlbAVL.h</a> e <a href="AlbAVL.cpp"> AlbAVL.cpp</a></P>
+<P ALIGN="JUSTIFY"></P></DIR>
+</DIR>
+</BODY>
+</HTML>

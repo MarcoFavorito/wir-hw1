@@ -1,0 +1,89 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=windows-1252">
+<META NAME="Generator" CONTENT="Microsoft Word 97">
+<TITLE>1</TITLE>
+<META NAME="Template" CONTENT="C:\PROGRAMMI\MICROSOFT OFFICE\OFFICE\html.dot">
+</HEAD>
+<BODY BACKGROUND="bgrnd.jpg">
+
+<B><FONT SIZE=5><P>1) Introduzione alla progettazione di traduttori</P>
+</B></FONT><P ALIGN="RIGHT">Riferimenti: G.Bruno "<I>Linguaggi formali e compilatori</I>" - Utet Libri - Capitolo 1</P>
+<P><HR></P>
+<B><U><FONT SIZE=4><P ALIGN="JUSTIFY">Aula</B></U></FONT> </P>
+<OL>
+
+<I><P ALIGN="JUSTIFY"><LI>Introduzione al corso, argomenti trattati, materiale didattico e riferimenti</LI></P></OL>
+
+
+<UL>
+
+<UL>
+</I><P ALIGN="JUSTIFY"><LI>Docente: prof. Riccardo Rosati <A HREF="mailto:rosati@dis.uniroma1.it"><B><U><FONT COLOR="#0000ff">rosati@dis.uniroma1.it</B></U></FONT></A> </LI></P>
+<P ALIGN="JUSTIFY"><LI>Tutor: Fulvio Benedetti <A HREF="mailto:fbenedet@dis.uniroma1.it"><B><U><FONT COLOR="#0000ff">fbenedet@dis.uniroma1.it</B></U></FONT></A></LI></P>
+<P ALIGN="JUSTIFY"><LI>Pagina web del corso: <A HREF="http://www.dis.uniroma1.it/~fbenedet"><B><U><FONT COLOR="#0000ff">http://www.dis.uniroma1.it/~fbenedet/</B></U></FONT></A></LI></P>
+<P ALIGN="JUSTIFY"><LI>Pagina web del corso di Roma: <A HREF="http://www.dis.uniroma1.it/~rosati/lingtrad/" target="_blank" target="_blank"><B><U><FONT COLOR="#0000ff">http://www.dis.uniroma1.it/~rosati/lingtrad/</B></U></FONT></A></LI></P>
+<P ALIGN="JUSTIFY"><LI>Non &egrave; previsto progetto di fine corso. L'esame consiste in una prova al calcolatore (sviluppo di un parser con flex e bison) + prova scritta (alcune domande di teoria).</LI></P>
+<P ALIGN="JUSTIFY"><LI>Per chi segue il corso, e' previsto un esonero (probabilmente a fine novembre novembre) al calcolatore.</LI></P></UL>
+</UL>
+
+<OL>
+
+<I><P ALIGN="JUSTIFY"><LI>Cosa &egrave; un traduttore</LI></P>
+</I><P ALIGN="JUSTIFY">Il traduttore &egrave; uno "strumento" che, data una sequenza di caratteri in ingresso (Stringa appartenente ad un linguaggio), effettua una traduzione, ovvero una conversione dell'input in un formato di output che utilizza simboli diversi, che &egrave; caratterizzato da una diversa sintassi e diversa semantica.</P>
+<I><P ALIGN="JUSTIFY"><LI>Importanza dei traduttori</LI></P>
+</I><P ALIGN="JUSTIFY">Sono strumenti che usiamo nel quotidiano, fondamentali per la qualit&agrave; e la produttivit&agrave; del nostro lavoro. Basti pensare agli ambienti RAD o CASE; ambienti visuali che consentono di disegnare interfacce grafiche, associare oggetti e metodi ad eventi, definire realt&agrave; complesse attraverso modelli grafici e che in automatico generano il codice necessario. Facciamo uso di traduttori anche quando convertiamo i nostri testi da un formato comprensibile, ad esempio, a WinWord, in un formato comprensibile ad un altro elaboratore testi, quale pu&ograve; essere ad esempio Latex. Rientrano nella categoria dei traduttori anche i compilatori utilizzati per "tradurre" codice sorgente scritto in un linguaggio di alto livello, in codice macchina eseguibile da un elaboratore.</P>
+<I><P ALIGN="JUSTIFY"><LI>Linguaggi</LI></P></OL>
+<DIR>
+<DIR>
+<DIR>
+
+</I><P ALIGN="JUSTIFY">Un linguaggio &egrave; caratterizzato da:</P></DIR>
+</DIR>
+</DIR>
+
+<OL>
+<OL>
+<OL>
+
+<P ALIGN="JUSTIFY"><LI>Lessico <FONT FACE="Wingdings">&agrave;</FONT> vocabolario dei simboli ammessi. Nella lingua italiana "forse", "corso", "premio" sono simboli ammessi; la lingua italiana ammette un numero finito di vocaboli. In linguaggio Java "for", "class", ma anche "abcde" (identificatore) sono simboli ammessi; per la presenza degli identificatori il linguaggio Java, come del resto tutti i linguaggi di programmazione, ammettono un numero infinito di vocaboli.</LI></P>
+<P ALIGN="JUSTIFY"><LI>Sintassi <FONT FACE="Wingdings">&agrave;</FONT> regole che governano la struttura delle frasi.</LI></P>
+<P ALIGN="JUSTIFY"><LI>Semantica <FONT FACE="Wingdings">&agrave;</FONT> Significato di ogni frase. Complessa da affrontare, soprattutto se il linguaggio permette di attribuire significati diversi alla stessa frase (come nei linguaggi naturali).</LI></P></OL>
+</OL>
+</OL>
+
+<OL>
+
+<I><P ALIGN="JUSTIFY"><LI>Linguaggi formali</LI></P>
+</I><P ALIGN="JUSTIFY">Usiamo il termine <I>formale</I> quando usiamo metodi <I>formali</I> per caratterizzare un linguaggio in maniera esatta. E' possibile definire il lessico attraverso espressioni regolari, automi a stati finiti e descrivere la sintassi mediante le grammatiche.</P>
+<I><P ALIGN="JUSTIFY"><LI>Struttura di un traduttore</LI></P>
+</I><P ALIGN="JUSTIFY">Per poter tradurre correttamente una sequenza di caratteri in ingresso, &egrave; necessario conoscerne la "struttura" e il "significato". Viceversa, per poter tradurre correttamente una sequenza di caratteri, &egrave; necessario che questa rispetti la "struttura" e il "significato", noti al traduttore. Un traduttore, nel senso pi&ugrave; generale del termine, pu&ograve; essere considerato composto da tre blocchi funzionali, in cascata (traduzione guidata dalla sintassi):</P>
+<P ALIGN="CENTER"><IMG SRC="Image3.gif" WIDTH=567 HEIGHT=86></P>
+<I><P ALIGN="JUSTIFY"><LI>Analisi dell'input e sintesi dell'output</LI></P>
+</I><P ALIGN="JUSTIFY">Esiste una netta distinzione tra la prima parte di "analisi" (lessicale e sintattica) e la seconda parte detta di "sintesi" (analisi semantica e traduzione nel formato di output). La prima &egrave; completamente indipendente dalla semantica del linguaggio sorgente e destinazione; &egrave; spesso semplice da implementare proprio perch&eacute; caratterizzata da pochi fattori (un vocabolario, un insieme di regole). La fase di sintesi, al contrario, &egrave; dipendente da tutto il resto e pu&ograve; essere molto complessa. </P>
+<I><P ALIGN="JUSTIFY"><LI>Analisi lessicale</LI></P>
+</I><P ALIGN="JUSTIFY">L'analisi lessicale rappresenta il primo passo del processo di traduzione. In questa fase viene verificato se la sequenza di caratteri in input rappresenta un insieme di "simboli del linguaggio" di cui si conosce l'insieme (vocabolario). Il processo di analisi lessicale, restituisce un giudizio positivo o negativo sull'ammissibilit&agrave; della sequenza di caratteri in ingresso, rispetto al "vocabolario" noto; in un traduttore, si parla pi&ugrave; propriamente di "scanner" , uno strato in grado di riconoscere i simboli, ovvero gli "elementi lessicali" di un linguaggio (pi&ugrave; comunemente <I>token</I>) e di restituire in uscita una lista dei simboli riconosciuti, a beneficio dell'analizzatore sintattico. </P>
+<FONT SIZE=2><P ALIGN="JUSTIFY">&nbsp;</P>
+</FONT><P ALIGN="CENTER"><IMG SRC="Image4.gif" WIDTH=389 HEIGHT=140></P>
+<I><P ALIGN="JUSTIFY"><LI>Analisi sintattica</LI></P>
+</I><P ALIGN="JUSTIFY">In questa fase viene verificato se la lista di token in ingresso (nella sequenza indicata) rappresenta una "frase del linguaggio" di cui si conosce la grammatica. Conoscere la grammatica vuol dire conoscere le regole (sintattiche) che ne caratterizzano la struttura. Il processo di analisi sintattica, restituisce un giudizio positivo o negativo sull'ammissibilit&agrave; della lista di simboli in ingresso, rispetto alla "grammatica" nota; in un traduttore, si parla pi&ugrave; propriamente di "parser" ovvero di uno strato in grado di riconoscere le "categorie sintattiche" e di restituire in uscita una rappresentazione strutturata (albero sintattico) dei simboli passati in input, a beneficio dell'analizzatore semantico. </P>
+<FONT SIZE=2><P ALIGN="JUSTIFY">&nbsp;</P>
+</FONT><P ALIGN="CENTER"><IMG SRC="Image5.gif" WIDTH=420 HEIGHT=143></P>
+<P ALIGN="JUSTIFY"><LI>&nbsp;<I>Analisi semantica e generazione dell'output</LI></P></OL>
+<DIR>
+<DIR>
+<DIR>
+
+</I><P ALIGN="JUSTIFY">In questa fase viene verificata l'ammissibilit&agrave; del "significato" dato alla struttura e viene generato il codice/sequenza di caratteri nel formato di output. L'analisi della semantica di un linguaggio &egrave; un argomento molto delicato e non facile da affrontare, tutt'oggi oggetto di ricerca. Per alcune classi di traduttore, questo blocco funzionale si limita a tradurre la struttura nel formato finale; in un traduttore "Da word a Latex" non viene effettuata alcun tipo di verifica.</P>
+<FONT SIZE=2><P ALIGN="CENTER">&nbsp;</P>
+</FONT><P ALIGN="CENTER"><IMG SRC="Image6.gif" WIDTH=409 HEIGHT=144></P>
+<FONT SIZE=2><P ALIGN="CENTER">&nbsp;</P></DIR>
+</DIR>
+</DIR>
+
+</FONT><B><U><FONT SIZE=4><P>Laboratorio</P>
+<OL>
+
+</B></U></FONT><I><P ALIGN="JUSTIFY"><LI>Verifica degli strumenti/ambienti a disposizione</LI></P></OL>
+</I></BODY>
+</HTML>

@@ -1,0 +1,331 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=windows-1252">
+<TITLE>Reti di Calcolatori</TITLE>
+</HEAD>
+<BODY background="bgrnd.jpg">
+
+<B><FONT SIZE=5><P>4) Gli strati Network e Transport dell’IPS (TCP/IP)</P>
+<hr>
+</FONT>
+</B>1.&nbsp; L’header del pacchetto IP
+
+<P ALIGN="CENTER"><CENTER><TABLE BORDER CELLSPACING=1 WIDTH=484>
+<TR><TD WIDTH="3%" VALIGN="TOP">
+<FONT SIZE=1><P ALIGN="CENTER">0</FONT></TD>
+<TD WIDTH="3%" VALIGN="TOP">&nbsp;</TD>
+<TD WIDTH="3%" VALIGN="TOP">&nbsp;</TD>
+<TD WIDTH="3%" VALIGN="TOP">
+<FONT SIZE=1><P ALIGN="CENTER">3</FONT></TD>
+<TD WIDTH="3%" VALIGN="TOP">
+<FONT SIZE=1><P ALIGN="CENTER">4</FONT></TD>
+<TD WIDTH="3%" VALIGN="TOP">&nbsp;</TD>
+<TD WIDTH="3%" VALIGN="TOP">&nbsp;</TD>
+<TD WIDTH="3%" VALIGN="TOP">
+<FONT SIZE=1><P ALIGN="CENTER">7</FONT></TD>
+<TD WIDTH="3%" VALIGN="TOP">
+<FONT SIZE=1><P ALIGN="CENTER">8</FONT></TD>
+<TD WIDTH="3%" VALIGN="TOP">&nbsp;</TD>
+<TD WIDTH="3%" VALIGN="TOP">&nbsp;</TD>
+<TD WIDTH="3%" VALIGN="TOP">&nbsp;</TD>
+<TD WIDTH="3%" VALIGN="TOP">&nbsp;</TD>
+<TD WIDTH="3%" VALIGN="TOP">&nbsp;</TD>
+<TD WIDTH="3%" VALIGN="TOP">&nbsp;</TD>
+<TD WIDTH="3%" VALIGN="TOP">
+<FONT SIZE=1><P ALIGN="CENTER">15</FONT></TD>
+<TD WIDTH="3%" VALIGN="TOP">
+<FONT SIZE=1><P ALIGN="CENTER">16</FONT></TD>
+<TD WIDTH="3%" VALIGN="TOP">&nbsp;</TD>
+<TD WIDTH="3%" VALIGN="TOP">&nbsp;</TD>
+<TD WIDTH="3%" VALIGN="TOP">
+<FONT SIZE=1><P ALIGN="CENTER">19</FONT></TD>
+<TD WIDTH="3%" VALIGN="TOP">
+<FONT SIZE=1><P ALIGN="CENTER">20</FONT></TD>
+<TD WIDTH="3%" VALIGN="TOP">&nbsp;</TD>
+<TD WIDTH="3%" VALIGN="TOP">&nbsp;</TD>
+<TD WIDTH="3%" VALIGN="TOP">&nbsp;</TD>
+<TD WIDTH="3%" VALIGN="TOP">&nbsp;</TD>
+<TD WIDTH="3%" VALIGN="TOP">&nbsp;</TD>
+<TD WIDTH="3%" VALIGN="TOP">&nbsp;</TD>
+<TD WIDTH="3%" VALIGN="TOP">
+<FONT SIZE=1><P ALIGN="CENTER">27</FONT></TD>
+<TD WIDTH="3%" VALIGN="TOP">
+<FONT SIZE=1><P ALIGN="CENTER">28</FONT></TD>
+<TD WIDTH="3%" VALIGN="TOP">&nbsp;</TD>
+<TD WIDTH="3%" VALIGN="TOP">&nbsp;</TD>
+<TD WIDTH="3%" VALIGN="TOP">
+<FONT SIZE=1><P ALIGN="CENTER">31</FONT></TD>
+</TR>
+<TR><TD WIDTH="13%" VALIGN="TOP" COLSPAN=4>
+<FONT SIZE=1><P ALIGN="CENTER">Version</FONT></TD>
+<TD WIDTH="13%" VALIGN="TOP" COLSPAN=4>
+<FONT SIZE=1><P ALIGN="CENTER">HLEN</FONT></TD>
+<TD WIDTH="25%" VALIGN="TOP" COLSPAN=8>
+<FONT SIZE=1><P ALIGN="CENTER">Service Type</FONT></TD>
+<TD WIDTH="50%" VALIGN="TOP" COLSPAN=16>
+<FONT SIZE=1><P ALIGN="CENTER">Total length</FONT></TD>
+</TR>
+<TR><TD WIDTH="50%" VALIGN="TOP" COLSPAN=16>
+<FONT SIZE=1><P ALIGN="CENTER">Identification</FONT></TD>
+<TD WIDTH="13%" VALIGN="TOP" COLSPAN=4>
+<FONT SIZE=1><P ALIGN="CENTER">Flags</FONT></TD>
+<TD WIDTH="38%" VALIGN="TOP" COLSPAN=12>
+<FONT SIZE=1><P ALIGN="CENTER">Fragment Offset</FONT></TD>
+</TR>
+<TR><TD WIDTH="25%" VALIGN="TOP" COLSPAN=8>
+<FONT SIZE=1><P ALIGN="CENTER">Time to Live</FONT></TD>
+<TD WIDTH="25%" VALIGN="TOP" COLSPAN=8>
+<FONT SIZE=1><P ALIGN="CENTER">Protocol</FONT></TD>
+<TD WIDTH="50%" VALIGN="TOP" COLSPAN=16>
+<FONT SIZE=1><P ALIGN="CENTER">Header Checksum</FONT></TD>
+</TR>
+<TR><TD VALIGN="TOP" COLSPAN=32>
+<FONT SIZE=1><P ALIGN="CENTER">Source IP Address</FONT></TD>
+</TR>
+<TR><TD VALIGN="TOP" COLSPAN=32>
+<FONT SIZE=1><P ALIGN="CENTER">Destination IP Address</FONT></TD>
+</TR>
+<TR><TD WIDTH="88%" VALIGN="TOP" COLSPAN=28>
+<FONT SIZE=1><P ALIGN="CENTER">Options</FONT></TD>
+<TD WIDTH="13%" VALIGN="TOP" COLSPAN=4>
+<FONT SIZE=1><P ALIGN="CENTER">Padding</FONT></TD>
+</TR>
+</TABLE>
+</CENTER>
+
+<UL>
+
+<UL>
+<P ALIGN="JUSTIFY"><LI>Version <FONT FACE="Wingdings">&#224;</FONT>
+ numero di versione del protocollo IP che ha generato il pacchetto (attualmente 4)</LI><LI>HLEN <FONT FACE="Wingdings">&#224;</FONT>
+ lunghezza dell’header in parole da 32 bit (variabile in funzione di option)</LI><LI>Service type <FONT FACE="Wingdings">&#224;</FONT>
+ per la gestione delle priorit&agrave; dei pacchetti</LI><LI>Total length <FONT FACE="Wingdings">&#224;</FONT>
+ lunghezza totale (header + dati)</LI><LI>Identification <FONT FACE="Wingdings">&#224;</FONT>
+ identificativo del messaggio origine</LI><LI>Flags <FONT FACE="Wingdings">&#224;</FONT>
+ flags di servizio che indicano anche se il pacchetto &egrave; l’ultimo frammento di un messaggio</LI><LI>Fragment offset <FONT FACE="Wingdings">&#224;</FONT>
+ offset del frammento, in multipli di 8 byte</LI><LI>Time to live <FONT FACE="Wingdings">&#224;</FONT>
+ Durata del pacchetto, oltre la quale non viene pi&ugrave; instradato ma scartato (per evitare i loop)</LI><LI>Protocol <FONT FACE="Wingdings">&#224;</FONT>
+ Identificativo del protocollo di livello superiore</LI><LI>Header checksum <FONT FACE="Wingdings">&#224;</FONT>
+ campo di controllo per la correttezza della ricezione</LI><LI>Source IP address <FONT FACE="Wingdings">&#224;</FONT>
+ indirizzo IP del mittente</LI><LI>Destination IP address <FONT FACE="Wingdings">&#224;</FONT>
+ indirizzo IP del destinatario</LI><LI>Option <FONT FACE="Wingdings">&#224;</FONT>
+ campo usato dall’IP per fornire varie opzioni, quali la sicurezza e il source routing.</LI></UL>
+</UL>
+
+2.&nbsp; Funzioni dello strato di trasporto
+
+
+<UL>
+
+<UL>
+<LI>Accetta messaggi provenienti dallo strato di sessione, apre una o pi&ugrave; connessioni di rete e gestisce la corretta spedizione dei frammenti </LI><LI>Gestisce l’ottimizzazione delle risorse di rete, multiplexando piu’ connessioni di trasporto verso un’unica connessione di rete oppure, per migliorare la congestione della rete, suddividendo una singola richiesta dello strato di sessione in pi&ugrave; richieste verso lo strato di rete</LI></UL>
+</UL>
+
+3.&nbsp; Il protocollo TCP
+
+
+<UL>
+
+<UL>
+<LI>I frammenti non sono superiori a 64K</LI><LI>Lo strato di rete non fornisce garanzie sulla consegna dei pacchetti; il TCP verifica la scadenza di ogni pacchetto inviato e, all'occorrenza, rispedisce il pacchetto (utilizzato nelle applicazioni di rete che richiedono la trasmissione affidabile dell'informazione)</LI><LI>Dal lato ricevente il TCP riassembla i frammenti ricevuti nell'ordine dettato dal progressivo presente sul pacchetto.</LI></UL>
+</UL>
+
+4.&nbsp; Cosa &egrave; una "porta" nell'architettura TCP/IP
+
+
+<UL>
+
+<UL>
+<LI>Una "porta" rappresenta il punto di accesso ai protocolli applicativi.  Dire che un certo servizio corrisponde alla porta x del TCP, sta ad indicare che un determinato applicativo si pone in attesa (su un server) di una richiesta di connessione sulla porta x.</LI><LI>Esiste un certo numero di porte che hanno funzionalit&agrave; standard su Internet. Alcuni esempi:</LI></UL>
+</UL>
+<DIR>
+<DIR>
+<DIR>
+
+<I><P ALIGN="CENTER">80 <FONT FACE="Wingdings">&#224;</FONT>
+ server http</P>
+<P ALIGN="CENTER">23 <FONT FACE="Wingdings">&#224;</FONT>
+ server telnet</P>
+<P ALIGN="CENTER">21 <FONT FACE="Wingdings">&#224;</FONT>
+ server FTP</P></DIR>
+</DIR>
+</DIR>
+
+
+<UL>
+
+<UL>
+</I><LI>Si parla di accesso ai protocolli applicativi, poich&eacute; ad una richiesta di connessione su una specifica porta, deve seguire un messaggio che rispetta le "regole" dettate dall'applicativo stesso.  I protocolli applicativi utilizzati, sono definiti attraverso gli RFC (Request for Comment) disponibili sul sito de "W3C - The World Wide Web Consortium" all'indirizzo <A HREF="http://www.w3.org/#http://www.w3.org/"><U><FONT SIZE=2 COLOR="#0000ff">http://www.w3.org/</U></FONT></A></LI></UL>
+</UL>
+
+5.&nbsp; L’header del pacchetto TCP
+
+<P ALIGN="CENTER"><CENTER><TABLE BORDER CELLSPACING=1 WIDTH=484>
+<TR><TD WIDTH="3%" VALIGN="TOP">
+<FONT SIZE=1><P ALIGN="CENTER">0</FONT></TD>
+<TD WIDTH="3%" VALIGN="TOP">&nbsp;</TD>
+<TD WIDTH="3%" VALIGN="TOP">&nbsp;</TD>
+<TD WIDTH="3%" VALIGN="TOP">
+<FONT SIZE=1><P ALIGN="CENTER">3</FONT></TD>
+<TD WIDTH="3%" VALIGN="TOP">
+<FONT SIZE=1><P ALIGN="CENTER">4</FONT></TD>
+<TD WIDTH="3%" VALIGN="TOP">&nbsp;</TD>
+<TD WIDTH="3%" VALIGN="TOP">&nbsp;</TD>
+<TD WIDTH="3%" VALIGN="TOP">
+<FONT SIZE=1><P ALIGN="CENTER">7</FONT></TD>
+<TD WIDTH="3%" VALIGN="TOP">
+<FONT SIZE=1><P ALIGN="CENTER">8</FONT></TD>
+<TD WIDTH="3%" VALIGN="TOP">&nbsp;</TD>
+<TD WIDTH="3%" VALIGN="TOP">&nbsp;</TD>
+<TD WIDTH="3%" VALIGN="TOP">&nbsp;</TD>
+<TD WIDTH="3%" VALIGN="TOP">&nbsp;</TD>
+<TD WIDTH="3%" VALIGN="TOP">&nbsp;</TD>
+<TD WIDTH="3%" VALIGN="TOP">&nbsp;</TD>
+<TD WIDTH="3%" VALIGN="TOP">
+<FONT SIZE=1><P ALIGN="CENTER">15</FONT></TD>
+<TD WIDTH="3%" VALIGN="TOP">
+<FONT SIZE=1><P ALIGN="CENTER">16</FONT></TD>
+<TD WIDTH="3%" VALIGN="TOP">&nbsp;</TD>
+<TD WIDTH="3%" VALIGN="TOP">&nbsp;</TD>
+<TD WIDTH="3%" VALIGN="TOP">&nbsp;</TD>
+<TD WIDTH="3%" VALIGN="TOP">&nbsp;</TD>
+<TD WIDTH="3%" VALIGN="TOP">&nbsp;</TD>
+<TD WIDTH="3%" VALIGN="TOP">&nbsp;</TD>
+<TD WIDTH="3%" VALIGN="TOP">&nbsp;</TD>
+<TD WIDTH="3%" VALIGN="TOP">&nbsp;</TD>
+<TD WIDTH="3%" VALIGN="TOP">&nbsp;</TD>
+<TD WIDTH="3%" VALIGN="TOP">&nbsp;</TD>
+<TD WIDTH="3%" VALIGN="TOP">
+<FONT SIZE=1><P ALIGN="CENTER">27</FONT></TD>
+<TD WIDTH="3%" VALIGN="TOP">
+<FONT SIZE=1><P ALIGN="CENTER">28</FONT></TD>
+<TD WIDTH="3%" VALIGN="TOP">&nbsp;</TD>
+<TD WIDTH="3%" VALIGN="TOP">&nbsp;</TD>
+<TD WIDTH="3%" VALIGN="TOP">
+<FONT SIZE=1><P ALIGN="CENTER">31</FONT></TD>
+</TR>
+<TR><TD WIDTH="50%" VALIGN="TOP" COLSPAN=16>
+<FONT SIZE=1><P ALIGN="CENTER">Source port</FONT></TD>
+<TD WIDTH="50%" VALIGN="TOP" COLSPAN=16>
+<FONT SIZE=1><P ALIGN="CENTER">Destination port</FONT></TD>
+</TR>
+<TR><TD VALIGN="TOP" COLSPAN=32>
+<FONT SIZE=1><P ALIGN="CENTER">Sequence number</FONT></TD>
+</TR>
+<TR><TD VALIGN="TOP" COLSPAN=32>
+<FONT SIZE=1><P ALIGN="CENTER">Acknowledgement number</FONT></TD>
+</TR>
+<TR><TD WIDTH="13%" VALIGN="TOP" COLSPAN=4>
+<FONT SIZE=1><P ALIGN="CENTER">Data offset</FONT></TD>
+<TD WIDTH="13%" VALIGN="TOP" COLSPAN=4 BGCOLOR="#ffffff">&nbsp;</TD>
+<TD WIDTH="25%" VALIGN="TOP" COLSPAN=8>
+<FONT SIZE=1><P ALIGN="CENTER">Flags</FONT></TD>
+<TD WIDTH="50%" VALIGN="TOP" COLSPAN=16>
+<FONT SIZE=1><P ALIGN="CENTER">Window</FONT></TD>
+</TR>
+<TR><TD WIDTH="50%" VALIGN="TOP" COLSPAN=16>
+<FONT SIZE=1><P ALIGN="CENTER">Checksum</FONT></TD>
+<TD WIDTH="50%" VALIGN="TOP" COLSPAN=16>
+<FONT SIZE=1><P ALIGN="CENTER">Urgent pointer</FONT></TD>
+</TR>
+<TR><TD WIDTH="88%" VALIGN="TOP" COLSPAN=28>
+<FONT SIZE=1><P ALIGN="CENTER">Options</FONT></TD>
+<TD WIDTH="13%" VALIGN="TOP" COLSPAN=4>
+<FONT SIZE=1><P ALIGN="CENTER">Padding</FONT></TD>
+</TR>
+</TABLE>
+</CENTER>
+
+<UL>
+
+<UL>
+<P ALIGN="JUSTIFY"><LI>Source e destination port <FONT FACE="Wingdings">&#224;</FONT>
+ porte utilizzate dagli applicativi che usano la connessione TCP</LI><LI>Sequence number <FONT FACE="Wingdings">&#224;</FONT>
+ numero di sequenza del primo byte del campo dati del pacchetto</LI><LI>Acknowledgement number <FONT FACE="Wingdings">&#224;</FONT>
+  La ricezione dei dati deve essere confermata dall'applicazione remota e la conferma pu&ograve; essere inserita in una PDU in transito nella direzione opposta.  Questo campo contiene il numero di sequenza del primo byte, che il mittente si aspetta di ricevere</LI><LI>Data offset <FONT FACE="Wingdings">&#224;</FONT>
+ numero di parole da 32 bit che compongono l'header (variabili in funzione del campo options)</LI><LI>Flags <FONT FACE="Wingdings">&#224;</FONT>
+ Flag di servizio (per gestire l'"urgenza", la conferma di ricezione ed altro)</LI><LI>Windows <FONT FACE="Wingdings">&#224;</FONT>
+ dimensioni in byte del buffer TCP disponibile (max numero di byte per il traffico entrante)</LI><LI>Checksum <FONT FACE="Wingdings">&#224;</FONT>
+ informazione di controllo, per la verifica di affidabilit&agrave; del pacchetto</LI><LI>Urgent pointer <FONT FACE="Wingdings">&#224;</FONT>
+ punta al primo byte urgente nel pacchetto</LI></UL>
+</UL>
+
+6.&nbsp; Il protocollo UDP
+
+
+<UL>
+
+<UL>
+<LI>Alternativo al TCP, con header pi&ugrave; leggero, &egrave; di tipo "non connesso"</LI><LI>Utilizzato quando l'affidabilit&agrave; del TCP non &egrave; richiesta</LI></UL>
+</UL>
+
+7.&nbsp; L’header del pacchetto UDP
+
+<P ALIGN="CENTER"><CENTER><TABLE BORDER CELLSPACING=1 WIDTH=484>
+<TR><TD WIDTH="3%" VALIGN="TOP">
+<FONT SIZE=1><P ALIGN="CENTER">0</FONT></TD>
+<TD WIDTH="3%" VALIGN="TOP">&nbsp;</TD>
+<TD WIDTH="3%" VALIGN="TOP">&nbsp;</TD>
+<TD WIDTH="3%" VALIGN="TOP">
+<FONT SIZE=1><P ALIGN="CENTER">3</FONT></TD>
+<TD WIDTH="3%" VALIGN="TOP">
+<FONT SIZE=1><P ALIGN="CENTER">4</FONT></TD>
+<TD WIDTH="3%" VALIGN="TOP">&nbsp;</TD>
+<TD WIDTH="3%" VALIGN="TOP">&nbsp;</TD>
+<TD WIDTH="3%" VALIGN="TOP">
+<FONT SIZE=1><P ALIGN="CENTER">7</FONT></TD>
+<TD WIDTH="3%" VALIGN="TOP">
+<FONT SIZE=1><P ALIGN="CENTER">8</FONT></TD>
+<TD WIDTH="3%" VALIGN="TOP">&nbsp;</TD>
+<TD WIDTH="3%" VALIGN="TOP">&nbsp;</TD>
+<TD WIDTH="3%" VALIGN="TOP">&nbsp;</TD>
+<TD WIDTH="3%" VALIGN="TOP">&nbsp;</TD>
+<TD WIDTH="3%" VALIGN="TOP">&nbsp;</TD>
+<TD WIDTH="3%" VALIGN="TOP">&nbsp;</TD>
+<TD WIDTH="3%" VALIGN="TOP">
+<FONT SIZE=1><P ALIGN="CENTER">15</FONT></TD>
+<TD WIDTH="3%" VALIGN="TOP">
+<FONT SIZE=1><P ALIGN="CENTER">16</FONT></TD>
+<TD WIDTH="3%" VALIGN="TOP">&nbsp;</TD>
+<TD WIDTH="3%" VALIGN="TOP">&nbsp;</TD>
+<TD WIDTH="3%" VALIGN="TOP">&nbsp;</TD>
+<TD WIDTH="3%" VALIGN="TOP">&nbsp;</TD>
+<TD WIDTH="3%" VALIGN="TOP">&nbsp;</TD>
+<TD WIDTH="3%" VALIGN="TOP">&nbsp;</TD>
+<TD WIDTH="3%" VALIGN="TOP">&nbsp;</TD>
+<TD WIDTH="3%" VALIGN="TOP">&nbsp;</TD>
+<TD WIDTH="3%" VALIGN="TOP">&nbsp;</TD>
+<TD WIDTH="3%" VALIGN="TOP">&nbsp;</TD>
+<TD WIDTH="3%" VALIGN="TOP">
+<FONT SIZE=1><P ALIGN="CENTER">27</FONT></TD>
+<TD WIDTH="3%" VALIGN="TOP">
+<FONT SIZE=1><P ALIGN="CENTER">28</FONT></TD>
+<TD WIDTH="3%" VALIGN="TOP">&nbsp;</TD>
+<TD WIDTH="3%" VALIGN="TOP">&nbsp;</TD>
+<TD WIDTH="3%" VALIGN="TOP">
+<FONT SIZE=1><P ALIGN="CENTER">31</FONT></TD>
+</TR>
+<TR><TD WIDTH="50%" VALIGN="TOP" COLSPAN=16>
+<FONT SIZE=1><P ALIGN="CENTER">Source port</FONT></TD>
+<TD WIDTH="50%" VALIGN="TOP" COLSPAN=16>
+<FONT SIZE=1><P ALIGN="CENTER">Destination port</FONT></TD>
+</TR>
+<TR><TD WIDTH="50%" VALIGN="TOP" COLSPAN=16>
+<FONT SIZE=1><P ALIGN="CENTER">Message Length</FONT></TD>
+<TD WIDTH="50%" VALIGN="TOP" COLSPAN=16>
+<FONT SIZE=1><P ALIGN="CENTER">Checksum</FONT></TD>
+</TR>
+</TABLE>
+</CENTER>
+
+<UL>
+
+<UL>
+<P ALIGN="JUSTIFY"><LI>Source e destination port <FONT FACE="Wingdings">&#224;</FONT>
+ porte utilizzate dagli applicativi che usano la connessione UDP</LI><LI>Message length <FONT FACE="Wingdings">&#224;</FONT>
+ lunghezza del pacchetto (dati + header)</LI><LI>Checksum <FONT FACE="Wingdings">&#224;</FONT>
+ informazione di controllo, per la verifica di affidabilit&agrave; del pacchetto (opzionale)</LI></UL>
+</UL>
+
+</BODY>
+</HTML>

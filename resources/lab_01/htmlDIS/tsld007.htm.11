@@ -1,0 +1,43 @@
+
+<HTML>
+
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html;charset=iso-8859-1">
+<meta name="GENERATOR" content="Microsoft Internet Assistant for Macintosh PowerPoint 98">
+ <TITLE>Examples of Index Nested Loops</TITLE> 
+</HEAD>
+
+<BODY     >
+
+ <H1>Examples of Index Nested Loops</H1> 
+ <P><UL></P>
+
+<P><LI><H2>Hash-index (Alt. 2) on sid of Sailors (as inner):
+</H2></P>
+
+<P><UL></P>
+
+<P><LI>Scan Reserves:  1000 page I/Os, 100*1000 tuples.
+<LI>For each Reserves tuple:  1.2 I/Os to get data entry in index, plus 1 I/O to get (the exactly one) matching Sailors tuple.  Total:  220,000 I/Os.
+<LI>Hash-index (Alt. 2) on sid of Reserves (as inner):
+<LI>Scan Sailors:  500 page I/Os, 80*500 tuples.
+<LI>For each Sailors tuple:  1.2 I/Os to find index page with data entries, plus cost of retrieving matching Reserves tuples.  Assuming uniform distribution, 2.5 reservations per sailor (100,000 / 40,000).  Cost of retrieving them  is 1 or 2.5 I/Os depending on whether the index is clustered.</UL></UL></P>
+
+<P></P> 
+<P>
+<TABLE>
+  <TD HEIGHT=100 WIDTH=100> <A HREF="tsld006.htm">Previous slide</A> </TD>
+  <TD HEIGHT=100 WIDTH=100> <A HREF="tsld008.htm">Next slide</A> </TD>
+  <TD HEIGHT=100 WIDTH=150> <A HREF="tsld001.htm">Back to first slide</A> </TD>
+  <TD HEIGHT=100 WIDTH=150> <A HREF="sld007.htm">View graphic version</A> </TD>
+</TABLE>
+<BR>
+</P>
+
+ <FONT size=4><STRONG> Notes: </FONT></STRONG>
+  <HR SIZE=3> <P> <UL>
+
+8</UL> </P> 
+
+</Body>
+</HTML>

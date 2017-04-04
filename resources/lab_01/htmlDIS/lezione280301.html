@@ -1,0 +1,289 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1">
+<META NAME="Generator" CONTENT="Microsoft Word 98">
+<TITLE>Fondamnti di Informatica - Corso di Ing</TITLE>
+<META NAME="Template" CONTENT="Sistema 1848:Microsoft Office 98:Modelli:Pagine Web:Pagina Web vuota">
+</HEAD>
+<BODY>
+
+<B><U><FONT SIZE=4><P ALIGN="CENTER">Fond. di Informatica (C.E.M.N.)</U>&#9; &#9;&#9; <U>Quinto complemento didattico</P>
+</U><P ALIGN="CENTER">SOTTOPROGRAMMI</P>
+</FONT><I><P>Problema</B></I> -------&gt; Scomposizione in <B>sottoproblemi</B> ------&gt; ... -----&gt; <B>Sottoprogrammi</B> ----&gt; <B><I>Programma</B></I> </P>
+<B><FONT SIZE=4><P ALIGN="CENTER">sottoprogramma</B> = UNIT&Agrave; del programma (corpo isolato)</P>
+<U><P ALIGN="CENTER">Come il programma principale</U> ha <B>intestazione</B>, <B>parte dichiarativa</B>, <B>parte esecutiva</B>).</P>
+</FONT><P>&#9;</P>
+<FONT SIZE=4><P>Viene DICHIARATA (<B>resa nota</B>) nella parte dichiarativa di un&#146;altra unit&agrave; (ad esempio al <I>main program</I>). Quando &egrave; nota (<B>VISIBILE</B>) ad un&#146;altra unit&agrave; (ad esempio al <I>main program</I> ...), pu&ograve; essere <B>CHIAMATA</B> in un punto qualsiasi della parte esecutiva di quella unit&agrave;.</P>
+</FONT><P>Esempio. Programma che </P>
+<TABLE BORDER CELLSPACING=1 WIDTH=545>
+<TR><TD WIDTH="49%" VALIGN="TOP"><DIR>
+
+<P><FONT SIZE=4>a) stampa una linea di '-';</P></DIR>
+
+<OL START=2 TYPE="a">
+
+<LI>chiede se si vogliono inserire dati; se 's&igrave;' legge una sequenza di 3 interi e ne stampa la media, se no termina. Poi ripete b)</OL>
+</FONT></TD>
+<TD WIDTH="51%" VALIGN="TOP">
+<FONT FACE="Courier New" SIZE=4><P>--------------------------------</P>
+<P>Vuoi dare dati? <B>S&lt;RET&gt;</P>
+<P>7 9 5&lt;RET&gt;</P>
+</B><P>media = 7.0</P>
+<P>--------------------------------</P>
+<P>Vuoi dare dati? <B>N&lt;RET&gt;</B></FONT></TD>
+</TR>
+</TABLE>
+
+<P>L'algoritmo risolutivo si specifica "naturalmente" mediante l'isolamento di tre sottoproblemi caratteristici:</P>
+<B><FONT SIZE=4><P>1.</B> Stampareuna linea di 80 '-';</P>
+<B><P>2.</B> Stampare la Domanda 'Vuoi dare dati?' e leggere la risposta (S/N in una variabile char c)</P>
+<B><P>3.</B> &#9;<B>mentre</B> c='S' &#9;&#9;&#9;(siamo rigidi e se c&lt;&gt;'S' la risposta s'intende negativa)</P>
+<P>&#9;<B>3.1 </B>Leggere 3 reali e stampa la media</P>
+<P>&#9;<B>3.2 </B>Stampare una linea di 80 '-'&#9;</P>
+<P>&#9;<B>3.3 </B>Stampare la Domanda 'Vuoi dare dati?' e leggere la risposta (S/N in una variabile c)</P>
+<U><P ALIGN="CENTER">Notare che &#9;<B>1. = 3.2&#9;2. = 3.3</P>
+</B></U></FONT><P>Se identifichiamo le istruzioni per <B><U><FONT SIZE=4>1.</B> e (<B>3.2</B>) come<B> *</U></FONT>, </B>quelle per <B><U><FONT SIZE=4>2. </B>(e<B> 3.3</B>) come<B> **</B></U></FONT>, </P>
+<P>e quelle per <B><U><FONT SIZE=4>3.1</B> come <B>***</B></U></FONT> possiamo scrivere il programma complessivo come</P>
+<B><FONT FACE="Courier"><P>program</B> MEDIE;</P>
+<B><P>var</B> c:char&#9;pi&ugrave; altro (* significa ..., ** significa ..., *** significa ...)</P>
+<B><P>begin</B> {main program}</P>
+<B><P>&#9;*</P>
+<P>&#9;**</P>
+</B><P>&#9;<B>while</B> (c <B>= </B>'S') <B>do</P>
+</B><P>&#9; <B>begin</P>
+<P>&#9;&#9;***</P>
+<P>&#9;&#9;*</P>
+<P>&#9;&#9;**</P>
+</B><P>&#9; <B>end</B>;</P>
+<B><P>end</B>.</P>
+</FONT><P>La DICHIARAZIONE di un sottoprogramma avviene nella parte dichiarativa dell&#146;unit&agrave; di interesse (nell&#146;esempio, il <I>main program</I>). Per ora la PROCEDURA &egrave; l'unico sottoprogramma che conosciamo.</P>
+<B><FONT FACE="Courier"><P>program</B> MEDIE;</P>
+<B><P>var</B> c:char&#9;</P>
+<B><P>procedure</B> Stampalinea;&#9;&#9;&#9;</FONT>&lt;<B>*</B>------ "usa sue entit&agrave; locali": N ed i</P>
+<FONT FACE="Courier"><P>&#9;<B>const</B> N=80;</P>
+<P>&#9;<B>var</B> i:integer;</P>
+<B><P>begin</B> </P>
+<P>&#9;<B>for</B> i:=1 to N <B>do</B> write('-');</P>
+<P>&#9;writeln;</P>
+<B><P>end</B>;</P>
+<B><P>procedure</B> Domanda;</P>
+<B><P>begin</B> </P>
+<P>&#9;write(' Vuoi dare dati? (S/N) ');</P>
+<P>&#9;readln(c);&#9;&#9;&#9;&#9;&#9;&#9;</FONT>&lt;<B>**</B>------ usa la c dichiarata nel main</P>
+<B><FONT FACE="Courier"><P>end</B>;</P>
+<B><P>procedure</B> Leggi3;&#9;&#9;&#9;&#9;&#9;</FONT>&lt;<B>***</B>------ usa sue entit&agrave; locali: a, b, i</P>
+<FONT FACE="Courier"><P>&#9;var &#9;a,b:real;&#9;&#9;&#9;&#9;&#9;&#9;</FONT>(la SUA i e non quella di Stampalinea)</P>
+<FONT FACE="Courier"><P>&#9;&#9;i:integer;</P>
+<B><P>begin</B> </P>
+<P>&#9;a:=0.0;</P>
+<P>&#9;for i:=1 to 3 do begin read(b); a:=a+b; end;</P>
+<P>&#9;writeln('media = ', a/3);</P>
+<B><P>end</B>;</P>
+<B><P>begin</B> {main program}</P>
+<P>&#9;Stampalinea</P>
+<P>&#9;Domanda</P>
+<P>&#9;<B>while</B> (c <B>= </B>'S') <B>do</P>
+</B><P>&#9; <B>begin</P>
+</B><P>&#9;&#9;Leggi3</P>
+<P>&#9;&#9;Stampalinea</P>
+<P>&#9;&#9;Domanda</P>
+<P>&#9; <B>end</B>;</P>
+<B><P>end</B>.</P>
+</FONT><P>Il programma principale e le procedure in esso definite sono tutte UNIT&Agrave; di programma. &#9;Quando viene eseguita una CHIAMATA, si distingue tra una <B>UNIT&Agrave; CHIAMANTE </B>e una <B>UNIT&Agrave; CHIAMATA</B>.</P><DIR>
+<DIR>
+<DIR>
+<DIR>
+
+<B><P ALIGN="CENTER">ENTIT&Agrave; LOCALI AD UN'UNIT&Agrave;</P>
+</B><P ALIGN="CENTER">variabili_ed_altro, DICHIARATE dentro all'UNIT&Agrave; in questione riservate all'unit&agrave;; </P>
+<B><P ALIGN="CENTER">VISIBILI</B>/UTILIZZABILI solo dall'unit&agrave; in cui sono definite</P>
+<B><P ALIGN="CENTER">&nbsp;</P>
+<P ALIGN="CENTER">ENTIT&Agrave; GLOBALI </B>(dichiarate nel main: visibili ovunque)</P>
+<P>&nbsp;</P>
+<P>&nbsp;</P>
+<P>&nbsp;</P></DIR>
+</DIR>
+</DIR>
+</DIR>
+
+<B><P ALIGN="CENTER">CHIAMATA -----&gt; ATTIVAZIONE DI UNA PROCEDURA</P>
+
+<UL>
+<LI>INTERROTTA</B> esecuzione dell'<B>unit&agrave; chiamaNte </LI>
+</B><LI>Allocazione <B>record di attivazione</B> per la procedura chiamata </LI>
+<LI>controllo dell'esecuzione all'unit&agrave; chiamata (<B>esecuzione</B> del suo codice)</LI></UL>
+<DIR>
+
+<P>al termine, </P></DIR>
+
+
+<UL>
+<LI>record di attivazione deallocato </LI>
+<LI>controllo dell'esecuzione alla unit&agrave; chiamante (dal <B>punto di ritorno</B>)</LI></UL>
+
+<P ALIGN="CENTER"><IMG SRC="Image1.gif" WIDTH=383 HEIGHT=170></P><DIR>
+<DIR>
+<DIR>
+<DIR>
+
+<B><P ALIGN="CENTER">CICLO DI VITA ENTIT&Agrave; LOCALI</P>
+</B><P ALIGN="CENTER">=</P>
+<P ALIGN="CENTER">periodo della loro esistenza come locazioni di memoria in MC = durata attivazione</P>
+<B><P ALIGN="CENTER">CICLO DI VITA DELLE ENTIT&Agrave; GLOBALI</B> = la durata del programma</P>
+<P ALIGN="CENTER">&nbsp;</P></DIR>
+</DIR>
+</DIR>
+</DIR>
+
+<B><FONT SIZE=4><P ALIGN="CENTER">Regole di VISIBILIT&Agrave;&#9;&#9;(USABILITA'!!!)</P>
+</FONT><P>ENTIT&Agrave; LOCALE</B>: visibile solo nell&#146;unit&agrave; in cui &egrave; definita (cio&egrave; usabile solo <I>nel codice di quella unit&agrave;</I>)</P>
+<P><IMG SRC="Image2.gif" WIDTH=497 HEIGHT=141></P>
+<FONT FACE="Courier New"><P>a, b, i</FONT>: &#9;simboli non utilizzabili nel codice di main, o di Domanda, o di Stampalinea. ...<B> solo in leggi3</B>.</P>
+<FONT FACE="Courier New"><P>N,i</FONT> &#9;&#9;Utilizzabili solo da Stampalista</P>
+<FONT FACE="Courier New"><P>c </FONT>&#9;&#9;utilizzabile da chiunque (istruzioni del main, istruzioni delle procedure</P>
+<P>Se il simbolo <FONT FACE="Courier New">a</FONT> venisse usato nel codice di Stampalista --- &gt; ERRORE (Stampalista non vede nessuna a)</P>
+<B><FONT SIZE=4><P ALIGN="CENTER">DICHIARAZIONI MULTIPLE</P>
+</B><P>Il simbolo </FONT><B><FONT FACE="Courier New" SIZE=4>i</FONT><FONT SIZE=4> &egrave; visibile sia in Leggi3 che in Stampalinea</B>. In effetti si tratta di <B>due distinte variabili locali</B>, che giammai esistono contemporaneamente (quindi niente ambiguit&agrave;). </P>
+<B><P>ESISTONO?&#9;&#9;sono allocate nel record di attivazione creato per la chiamata</P>
+
+<UL>
+</B><LI>se &egrave; attivata Leggi3, esiste in memoria il suo record di attivazione. Solo quello! (e quindi la i &egrave; quella di Leggi3 (allocata nel rda)<B> </LI>
+</B><LI>se &egrave; attivata Stampalinea, esiste in memoria il suo record di attivazione. Solo quello! (e quindi la i &egrave; quella di Stampalinea<B> </LI>
+</B><LI>se si sta eseguendo una istruzione del <I>main program</I> o di altre procedure, nessuna </FONT><FONT FACE="Courier New" SIZE=4>i</FONT><FONT SIZE=4> "esiste"</LI></UL>
+
+</FONT><B><P>&nbsp;</P>
+<P ALIGN="CENTER">RICOPERTURA DI UNA DEFINIZIONE</P>
+</B><P><IMG SRC="Image3.gif" WIDTH=497 HEIGHT=141></P>
+<FONT SIZE=4><P>la procedura Leggi3 "vede" la variabile globale c:char, </P>
+<P>MA definisce tra le sue variabili locali una c. </P>
+<P>&#9;Questa definizione RICOPRE la definizione globale c:char. </P>
+<P>&#9;Nel codice di Leggi3, ogni uso del simbolo c riferisce solo alla variabile locale reale.</P>
+</FONT><B><P>&nbsp;</P>
+<P>ESEMPIO</P>
+</B><FONT SIZE=4><P>Cosa stampa il programma PROG?</P>
+
+<UL>
+<LI>Le attivazioni di P1 usano una variabile intera allocata all'atto dell'attivazione e per la durata dell'attivazione. </LI>
+<LI>Le attivazioni di P2 usano una c di tipo character. </LI>
+<LI>Il main program gestisce una variabile globale di tipo character. A differenza delle altre c, questa esiste per tutta la durata del programma. (anche se non sempre viene usata).</LI></UL>
+
+</FONT><P><IMG SRC="Image4.gif" WIDTH=432 HEIGHT=326></P>
+<B><P ALIGN="CENTER">Esecuzione di PROG:</P>
+</B><P ALIGN="CENTER"><IMG SRC="Image5.gif" WIDTH=496 HEIGHT=266></P>
+<B><P ALIGN="CENTER">&nbsp;</P>
+<P ALIGN="CENTER">ANCHE LE PROCEDURE POSSONO ESSERE ENTIT&Agrave; LOCALI</P>
+</B><P>Cio&egrave; &egrave; possibile definire procedure all'interno di altre procedure. Esempio: nel program MEDIE, sostituiamo Domanda con una procedura PREPARAZIONE, responsabile di stampare la linea di '-' e fare la domanda.</P>
+<P ALIGN="CENTER">&nbsp;</P>
+<P ALIGN="CENTER"><IMG SRC="Image6.gif" WIDTH=404 HEIGHT=342></P>
+<B><P>&nbsp;</P>
+<P>Osservazioni:</P><DIR>
+<DIR>
+
+</B><P>- Leggi3 e PREPARAZIONE sono DIRETTAMENTE DEFINITE nella parte dichiarativa del MAIN PROGRAM; in un certo senso stanno allo stesso LIVELLO DI DEFINIZIONE</P>
+<P>- per&ograve; Leggi3 &egrave; stata definita prima e PREPARAZioNE dopo. Se immaginiamo di essere il compilatore e scorrere il programma dall'inizio alla fine, quando incontriamo PREPARAZIONE siamo gi&agrave; passati su (<I><U>conosciamo</I></U>) Leggi3</P>
+<P>- tra Stampalista e la variabile "inutile" di PREPARAZIONE c'&egrave; lo stesso rapporto che c'&egrave; tra PREPARAZIONE e la variabile globale c. PREPARAZIONE "vede" e pu&ograve; usare la variabile globale c. Allo stesso modo Stampalista, se volesse, potrebbe usare la variabile "inutile".</P>
+<P>- Anche Leggi3 "vede" la c globale. MA in Leggi3 un identificatore c &egrave; dichiarato e ricopre quello "visibile dal livello superiore". Pertanto ogni occorrenza del simbolo c in Leggi3 fa riferimento alla c locale.</P></DIR>
+</DIR>
+
+<P>Lo SCOPE (CAMPO D'AZIONE) di una entit&agrave; &egrave; la zona di programma in cui quella entit&agrave; risulta visibile. Adesso possiamo enunciare alcune regole di visibilit&agrave; per le entit&agrave; dichiarate in un programma (o nelle sue procedure)</P>
+<B><P ALIGN="CENTER">REGOLE DI VISIBILIT&Agrave;</P>
+</B><P>&#9;</P><DIR>
+
+<B><P>per VARIABILI (e costanti e tipi)</P></DIR>
+
+</B><P>&#9;&#9;</P><DIR>
+<DIR>
+<DIR>
+
+<P>1) una variabile GLOBALE, G, &egrave; visibile a <U>tutte le procedure definite nel programma</U> (anche dentro ad altre procedure), a meno di quelle procedure in cui G &egrave; ridichiarata </P>
+<P>2) una variabile LOCALE, L, definita in una procedura PROC &egrave; visibile</P>
+<P>&#9;&#9;- alla procedura in cui &egrave; dichiarata (PROC)</P>
+<P>&#9;&#9;- a tutte le procedure dichiarate dentro PROC in cui L non sia ridichiarata (e quindi ricoperta)</P></DIR>
+</DIR>
+
+<B><P>per PROCEDURE&#9;(USABILITA' == CHIAMABILITA'!!!!!)</P></DIR>
+
+</B><P>&#9;&#9;</P><DIR>
+<DIR>
+<DIR>
+
+<P>1) il MAIN PROGRAM pu&ograve; chiamare tutte le procedure DIRETTAMENTE DEFINITE nella sua parte dichiarativa (non quelle dichiarate dentro altre procedure)</P>
+<P>2) una procedura pu&ograve; chiamare</P></DIR>
+</DIR>
+</DIR>
+
+
+<UL>
+
+<UL>
+<LI>le procedure direttamente definite dentro la sua parte dichiarativa; </LI>
+<LI>le procedure definite AL SUO STESSO LIVELLO e PRIMA di lei </LI>
+<LI>le procedure all'interno delle quali e' definita </LI></UL>
+</UL>
+
+<P>&nbsp;</P>
+<B><P ALIGN="CENTER">Applicando queste regole al programma MEDIE si ha che</P>
+
+<UL>
+</B><LI>PREPARAZIONE pu&ograve; chiamare Leggi3 </LI>
+<LI>Stampalinea pu&ograve; chiamare PREPARAZIONE e Leggi3 </LI>
+<LI>Leggi3 non pu&ograve; chiamare altre procedure </LI>
+<LI>sia Stampalista che PREPARAZIONE possono usare la variabile "inutile" (invisibile sia al main program che a Leggi3) </LI>
+<LI>sia Stampalista che PREPARAZIONE che il main program possono usare la variabile c globale. Invece Leggi3 la ricopre con una c:real </LI>
+<LI>i e N sono simboli visibili solo in Stampalinea.</LI></UL>
+
+<P>Queste regole si applicano STATICAMENTE. In altre parole, basta un esame del testo del programma per capire quale entit&agrave; verr&agrave; coinvolta in una data istruzione e quale sar&agrave; il comportamento del programma. Perci&ograve; gli errori dovuti all'uso di entit&agrave; al di fuori del loro scope vengono segnalati dal compilatore.</P>
+<B><P>&nbsp;</P>
+<P>&nbsp;</P>
+</B><P><IMG SRC="Image7.gif" WIDTH=495 HEIGHT=273></P>
+<B><P>&nbsp;</P>
+<P>&nbsp;</P>
+<P>&nbsp;</P>
+<P>&nbsp;</P>
+<P ALIGN="CENTER">Il seguente programma stampa 1</P>
+</B><P ALIGN="CENTER"><IMG SRC="Image8.gif" WIDTH=493 HEIGHT=242></P>
+<B><P ALIGN="CENTER">INTERAZIONE TRA UNITA' DI PROGRAMMA</P>
+</B><P ALIGN="JUSTIFY">Il MAIN PROGRAM e le PROCEDURE (e pi&ugrave; tardi le FUNZIONI) sono le UNIT&Agrave; in cui viene scomposto il programma. Quando nel <I>main program</I> viene chiamata una procedura, il <I>main program</I> &egrave; l'UNIT&Agrave; CHIAMANTE e la procedura &egrave; l'UNIT&Agrave; CHIAMATA.</P>
+<P ALIGN="JUSTIFY">&#9;Quando una procedura PREPARAZIONE chiama un'altra procedura (ad esse visibile) come Stampalinea, PREPARAZIONE &egrave; l'UNITA' CHIAMANTE e Stampalinea &egrave; l'UNITA' CHIAMATA.</P>
+<FONT SIZE=4><P>Le <B>unit&agrave; di un programma </B>possono <B>scambiarsi informazioni</B>: ad esempio il PROGRAM MEDIE e la procedura PREPARAZIONE usano la medesima variabile c globale. (c &egrave; non-locale per PREPARAZIONE).</P>
+<P>Dopo l'esecuzione di PREPARAZIONE in </FONT><FONT FACE="Courier" SIZE=4>c</FONT><FONT SIZE=4> c'&egrave; la risposta dell'utente, usata dal main program per gestire il ciclo while.</P>
+<P>In generale, le possibili interazioni tra unit&agrave; sono</P><DIR>
+<DIR>
+<DIR>
+
+<P>-&#9;passaggio del controllo (chiamata e "ritorno")</P>
+<P>-&#9;scambio di informazioni</P><DIR>
+
+<P>-&#9;uso di VARIABILI NON LOCALI</P>
+<P>-&#9;uso di PARAMETRI delle unit&agrave; sottoprogramma</P>
+<P>&nbsp;</P></DIR>
+</DIR>
+</DIR>
+</DIR>
+
+<B><P ALIGN="CENTER">PARAMETRO</P>
+</B><P ALIGN="CENTER">=</P>
+<P ALIGN="CENTER">dato che viene fornito all'unit&agrave; chiamata, dall'unit&agrave; chiamante, al momento dell'attivazione.</P>
+</FONT><P>Esempio:</P>
+<B><FONT FACE="Courier" SIZE=4><P>program</B> STAMPALINEE;</P>
+<B><P>var</B> k:integer&#9;</P>
+<B><P>procedure</B> Stampa1Linea (lunghezza: integer);&#9;</P>
+<P>{stampa sul video una linea di '-', di lunghezza data dal param.}</P>
+<P>&#9;<B>var</B> i:integer;</P>
+<B><P>begin</B> </P>
+<P>&#9;<B>for</B> i:=1 to lunghezza <B>do</B> write('-');</P>
+<P>&#9;writeln;</P>
+<B><P>end</B>;</P>
+<B><P>begin</B> {main program}</P>
+<P>&#9;writeln(' quanto lunga la linea da stampare? (0 per finire)');</P>
+<P>readln(k);</P>
+<P>while k&lt;&gt;0 do </P>
+<P>begin</P>
+<P>stampa1linea(k);</P>
+<P>&#9; writeln(' quanto lunga la linea da stampare? (0 per finire)');</P>
+<P>readln(k);</P>
+<P>end;</P>
+<B><P>end</B>.</P>
+</FONT><P>Lunghezza = PARAMETRO FORMALE = identificatore usato nelle istruzioni della procedura, con un valore "passato" al momento della chiamata dall'unit&agrave; chiamante.</P>
+<P>&#9;Si tratta di un'altra ENTIT&Agrave; LOCALE della procedura (inutilizzabile dalle altre unit&agrave;, se non per comunicare il "valore da usare").</P></BODY>
+</HTML>

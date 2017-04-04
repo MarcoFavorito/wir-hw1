@@ -1,0 +1,234 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+<HEAD>
+   <TITLE>Appendix A.4 - Library predicates</TITLE>
+   <META NAME="GENERATOR" CONTENT="User-Agent: Mozilla/3.01Gold (Macintosh; I; PPC)">
+</HEAD>
+<BODY TEXT="#000000" BGCOLOR="#D9D9D9" LINK="#0000FF" VLINK="#551A8B" ALINK="#0000FF">
+
+<DIV ALIGN=right><P><I><FONT COLOR="#00007F"><FONT SIZE=+4>Appendix A.4</FONT></FONT></I></P></DIV>
+
+<DIV ALIGN=right><P><FONT COLOR="#00007F"><I><FONT SIZE=+3>Library predicates</FONT></I>
+</FONT>
+<HR></P></DIV>
+
+<P>&nbsp;</P>
+
+<TABLE BORDER=1 CELLSPACING=0 CELLPADDING=6 WIDTH="100%" >
+<TR>
+<TD><B><I>Important Note: </I></B>
+<BLOCKQUOTE>
+<P>libraries described here have to be included in your C project in order
+to make related library predicates working. For instance, if you want to
+use the ProgressBar library predicate, you should include ProgBarLib.c
+in your C project, or your declaration will have no effect.</P>
+
+<P>Libraries ProgBarLib.c, GraphLib.c, ArrayLib.c, ListLib.c are available
+in <TT>Leonardo Folder:C Libraries</TT>.</P>
+</BLOCKQUOTE>
+</TD>
+</TR>
+</TABLE>
+
+<P>&nbsp;</P>
+
+<P><A NAME="ProgBarLib.c"></A></P>
+
+<TABLE BORDER=1 CELLSPACING=0 CELLPADDING=6 WIDTH="100%" >
+<TR>
+<TD>
+<CENTER><P><FONT COLOR="#AF0000"><FONT SIZE=+2>ProgBarLib.c</FONT></FONT>
+</P></CENTER>
+</TD>
+</TR>
+</TABLE>
+
+<P><A NAME="ProgressBar"></A></P>
+
+<TABLE BORDER=1 CELLSPACING=0 CELLPADDING=6 WIDTH="100%" >
+<TR>
+<TD VALIGN=top COLSPAN=3><FONT SIZE=+2>ProgressBar(Out X,Out Y,Out L,Out
+H,Out A,Out B,Out C,Out BC,V)</FONT> </TD>
+
+<TD VALIGN=top COLSPAN=3>
+<DIV ALIGN=right><P><FONT SIZE=+1>Declare progress bars by enumeration</FONT>
+</P></DIV>
+</TD>
+</TR>
+
+<TR>
+<TD VALIGN=top>
+<DIV ALIGN=right><P><FONT COLOR="#AF0000">Description:</FONT> </P></DIV>
+</TD>
+
+<TD COLSPAN=5>the visualization system repeatedly calls this predicate
+for each view V to gather information (enclosing frame, minimum, current
+and maximum value, and color) about progress bars to be drawn inside it.
+<P>By default, the string &quot;Progress bar&quot; is drawn above the bar.</P>
+
+<P>Note progress bars have no ID, since all attributes must be specified
+in the same declaration. </P>
+</TD>
+</TR>
+
+<TR>
+<TD VALIGN=top>
+<DIV ALIGN=right><P><FONT COLOR="#AF0000">Usage:</FONT> </P></DIV>
+</TD>
+
+<TD COLSPAN=5>parameter B must be assigned a value that changes from A
+to C. The bar will automatically reflect any change of the value assigned
+to the parameter B.
+<P>Note if B&lt;=A the bar is empty; if B&gt;=C the bar is full. </P>
+</TD>
+</TR>
+
+<TR>
+<TD>
+<DIV ALIGN=right><P><FONT COLOR="#AF0000">Predicate type:</FONT> </P></DIV>
+</TD>
+
+<TD COLSPAN=5>enumerative </TD>
+</TR>
+
+<TR>
+<TD VALIGN=top ROWSPAN=7>
+<DIV ALIGN=right><P><FONT COLOR="#AF0000">Parameters:</FONT> </P></DIV>
+</TD>
+
+<TD VALIGN=top>X, Y </TD>
+
+<TD VALIGN=top COLSPAN=4>left-top corner of progress bar's enclosing frame
+</TD>
+</TR>
+
+<TR>
+<TD>L, H </TD>
+
+<TD COLSPAN=4>length and height of progress bar's enclosing frame </TD>
+</TR>
+
+<TR>
+<TD>A </TD>
+
+<TD COLSPAN=4>minimun bar value </TD>
+</TR>
+
+<TR>
+<TD>B </TD>
+
+<TD COLSPAN=4>current bar value </TD>
+</TR>
+
+<TR>
+<TD>C </TD>
+
+<TD COLSPAN=4>maximum bar value </TD>
+</TR>
+
+<TR>
+<TD>BC </TD>
+
+<TD COLSPAN=4>bar <A HREF="AppendixB.html#Color">color</A> </TD>
+</TR>
+
+<TR>
+<TD>V </TD>
+
+<TD COLSPAN=4>view that will contain the progress bar </TD>
+</TR>
+
+<TR>
+<TD VALIGN=top ROWSPAN=2>
+<DIV ALIGN=right><P><FONT COLOR="#AF0000">Example:</FONT> </P></DIV>
+</TD>
+
+<TD COLSPAN=5><TT>int i;</TT>
+<P><TT>/**</TT></P>
+
+<BLOCKQUOTE>
+<P><TT>View(Out 1);</TT></P>
+
+<P><TT>ProgressBar(Out 20,Out 40,Out 120,Out 12,Out 1,Out B,Out 10,Out
+LightGreen,1) Assign B=i;</TT></P>
+</BLOCKQUOTE>
+
+<P><TT>**/</TT></P>
+
+<P><TT>void main(){</TT></P>
+
+<BLOCKQUOTE>
+<P><TT>for (i=1;i&lt;=10;i++) {</TT></P>
+
+<BLOCKQUOTE>
+<P><TT>// Do something ...</TT></P>
+</BLOCKQUOTE>
+
+<P><TT>}</TT></P>
+</BLOCKQUOTE>
+
+<P><TT>}</TT></P>
+
+<P><FONT SIZE=-1>&quot;A C variable i is first declared, then a view and
+a progress bar inside it are declared. The progress bar automatically grows
+as i grows up from 1 to 10 in the for loop&quot;</FONT> </P>
+</TD>
+</TR>
+
+<TR>
+<TD>
+<CENTER><P>This is a snapshot of loop's execution when i=7: </P></CENTER>
+</TD>
+
+<TD VALIGN=top COLSPAN=4>
+<CENTER><P><IMG SRC="Images/Pic_A4_1.GIF" X-SAS-UseImageWidth X-SAS-UseImageHeight HEIGHT=128 WIDTH=216 ALIGN=BOTTOM>
+</P></CENTER>
+</TD>
+</TR>
+</TABLE>
+
+<P>&nbsp;</P>
+
+<CENTER><P>[SORRY ... UNDER CONSTRUCTION]</P></CENTER>
+
+<P><A NAME="GraphLib.c"></A></P>
+
+<TABLE BORDER=1 CELLSPACING=0 CELLPADDING=6 WIDTH="100%" >
+<TR>
+<TD>
+<CENTER><P><FONT COLOR="#AF0000"><FONT SIZE=+2>GraphLib.c</FONT></FONT>
+</P></CENTER>
+</TD>
+</TR>
+</TABLE>
+
+<P>&nbsp;</P>
+
+<P><A NAME="ArrayLib.c"></A></P>
+
+<TABLE BORDER=1 CELLSPACING=0 CELLPADDING=6 WIDTH="100%" >
+<TR>
+<TD>
+<CENTER><P><FONT COLOR="#AF0000"><FONT SIZE=+2>ArrayLib.c</FONT></FONT>
+</P></CENTER>
+</TD>
+</TR>
+</TABLE>
+
+<P>&nbsp;</P>
+
+<P><A NAME="ListLib.c"></A></P>
+
+<TABLE BORDER=1 CELLSPACING=0 CELLPADDING=6 WIDTH="100%" >
+<TR>
+<TD>
+<CENTER><P><FONT COLOR="#AF0000"><FONT SIZE=+2>ListLib.c</FONT></FONT>
+</P></CENTER>
+</TD>
+</TR>
+</TABLE>
+
+<P>&nbsp;</P>
+
+</BODY>
+</HTML>

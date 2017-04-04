@@ -1,0 +1,95 @@
+<!DOCTYPE html PUBLIC "-//w3c//dtd html 4.0 transitional//en">
+<html>
+<head>
+<title>Tecniche di Programmazione -- Esercitazione 5</title>
+</head>
+
+<body>
+
+<center>
+  <p><B>Tecniche di Programmazione</B> <BR>
+    <B>Corso di Laurea in Ingegneria Informatica e Automatica</B></p>
+  <p><b>A.A. 2003/04</b></p>
+  <p><b>Gestione di un Molo</b> </p>
+  </center>
+
+<hr>
+
+Si vogliono gestire le informazioni relative a moli ai quali possono essere attraccate 
+delle barche. Ogni barca &egrave; rappresentata dal suo nome (una stringa). Un 
+<em>Molo</em> ha un codice (una stringa) ed un numero fissato di posti barca, 
+numerati sequenzialmente a partire da 0. Ogni posto barca pu&ograve; essere libero 
+oppure occupato da una barca. Gli oggetti <em>Molo</em> supportano le seguenti 
+funzionalit&agrave;: 
+<ul>
+  <li><em>crea:</em> che dato un codice <em>c</em> (una stringa) ed un intero
+      <em>n</em> crea un oggetto <em>Molo</em> con codice <em>c</em>
+      contenente <em>n</em> posti barca inizialmente liberi;
+  </li>
+  <li><em>numPostiBarca:</em> che restituisce il numero di posti barca del
+      molo;
+  </li>
+  <li><em>leggiCodice:</em> che restituisce il codice del molo;
+  </li>
+  <li><em>libero</em>: che dato il numero <em>n</em> di un posto barca
+      restituisce true se il posto <em>n</em> &egrave; libero, false altrimenti.&nbsp;
+  </li>
+  <li><em>assegnaPostoBarca:</em> che dato il numero <em>n</em> di un posto
+      barca ed il nome <em>b</em> di una barca (una stringa), occupa il posto
+      <em>n</em> con la barca <em>b</em>, se il posto &egrave; libero, lancia
+      un'eccezione altrimenti;
+  </li>
+  <li><em>liberaPostoBarca:</em> che dato il numero <em>n</em> di un posto
+      barca rende il posto <em>n</em> libero;
+  </li>
+  <li><em>dammiBarca:</em> che dato il numero <em>n</em> di un posto barca,
+      restituisce il nome della barca che occupa il posto <em>n</em>, se questo
+      &egrave; occupato, lancia un'eccezione altrimenti;
+  </li>
+  <li><em>dammiUnPostoLibero:</em> che restituisce il numero di un qualsiasi
+      posto barca libero; se non ci sono posti barca liberi allora
+      restituisce -1;
+  </li>
+  <li><em>compattaBarche:</em> che modifica l'assegnazione dei posti barca alle
+      barche che occupano il molo in modo che tutti i posti fino ad un certo
+      numero siano occupati e tutti i rimanenti siano liberi.
+  </li>
+</ul>
+
+<p><strong>Domanda 1.</strong> Scrivere una classe Java <code>Molo</code> per
+rappresentare oggetti <em>Molo</em>. <b>La classe deve essere ottimizzata rispetto 
+allo spazio utilizzato per la rappresentazione degli oggetti</b><b> Molo</b>. 
+
+ <p><strong>Domanda 2.</strong> Realizzare un metodo statico
+<code>situazionePostiBarca</code> cliente della classe <code>Molo</code> che,
+dato un molo <em>m</em> restituisca un array <em>a</em> di booleani di
+dimensione pari al numero di posti barca presenti in <em>m</em> e tale che il
+valore in posizione <em>i</em> dell'array sia pari a <code>true</code> se il
+posto barca numero <em>i</em> di <em>m</em> &egrave; occupato da una barca,
+<code>false</code> altrimenti.</p>
+
+ <p><strong>Domanda 2/b.</strong> Realizzare un metodo statico
+<code>listaBarche</code> cliente della classe <code>Molo</code> che,
+dato un molo <em>m</em> restituisca la lista 
+(oggetto della classe <tt>Lista</tt>, realizzata in maniera
+funzionale con l'interfaccia riportata di seguito)
+delle barche presenti nel molo.<br>
+<p>La classe <tt>Lista</tt> ha la seguente interfaccia:
+<blockquote>
+<pre>
+class Lista {
+   public Lista() 
+   public boolean empty() 
+   public String car()
+   public Lista cons(String x)
+   public Lista cdr()
+}
+</pre>
+</blockquote>
+<hr>
+
+<p><a href="soluzione/">Soluzione</a></p>
+
+
+</body>
+</html>

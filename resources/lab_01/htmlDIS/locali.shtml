@@ -1,0 +1,102 @@
+<!doctype html public "-//w3c//dtd html 4.0 transitional//en">
+<html>
+<head>
+<link href="java.css" rel="stylesheet" type="text/css">
+<title>Variabili passate come parametri</title>
+</head>
+
+<body>
+
+<h2>Variabili passate come parametri</h2>
+
+Il programma
+<a href="Locali.java">Locali.java</a>
+chiarisce un punto che pu&ograve; risultare poco chiaro
+nella programmazione con procedure e funzioni.<p>
+
+<pre>
+/*
+  Esempio sull'uso di variabili locali.
+*/
+
+class Locali {
+  static void uno(int x) {
+    x=x+1;
+  }
+
+  static int due(int x) {
+    x=x+1;
+    return x;
+  }
+
+  public static void main(String[] args) {
+    int x=5;
+    int y;
+
+    uno(x);
+    System.out.println(x);
+
+    y=due(x);
+    System.out.println(x);
+    System.out.println(y);
+  }
+}
+
+</pre>
+
+Ci poniamo il seguente problema: cosa viene stampato?
+Questo non &egrave; difficile, se si seguono esattamente
+le regole sul passaggio dei parametri che sono state
+specificate fino ad ora. A volte per&ograve; vengono date
+risposte errate, del tipo ``viene stampato per tre volte
+il numero 6'', oppure ``viene stampato 5, poi due volte 6''.
+La risposta esatta &egrave;:<p>
+
+<center>
+<i>viene stampato due volte 5, poi una volta 6</i>
+</center>
+<p>
+
+Se il risultato che ci si aspettava &egrave; diverso, allora
+non si sono seguite correttamente le regole di passaggio
+sulle procedure.<p>
+
+Analizziamo quindi l'esecuzione del programma:<p>
+
+<ol>
+<li>viene creata la variabile <tt>x</tt> e ci viene messo 5;
+<li>si crea la variabile <tt>y</tt>;
+<li>si chiama la procedura <tt>uno</tt>, passando il valore di
+<tt>x</tt> (che in questo caso &egrave; 5);
+<li>la procedura <tt>uno</tt> crea <i>una sua variabile</i>
+che chiama <tt>x</tt>, e in questa variabile ci mette il valore
+passato, cio&egrave; 5; &egrave; importante notare che questa
+variabile, anche se ha lo stesso nome, non &egrave; la stessa
+di quella che sta nel programma;
+<li>la variabile <tt>x</tt> interna alla procedura <tt>uno</tt>
+viene incrementata;
+<li>questo termina l'esecuzione di <tt>uno</tt>;
+<li>si esegue <tt>System.out.println(x)</tt>; fino a questo punto,
+la variabile <tt>x</tt> non &egrave; stata modificata: infatti,
+la procedura <tt>uno</tt> ha modificato la sua variabile <tt>x</tt>,
+che non &egrave; la stessa del programma. Quindi, si stampa il
+valore 5.
+</ol>
+
+La chiamata alla funzione <tt>due</tt> &egrave; simile: la
+variabile <tt>x</tt> che viene incrementata &egrave; una
+variabile locale della funzione, e non &egrave; la stessa
+del programma. La funzione <tt>due</tt> permette di vedere come
+l'unico modo che una funzione ha di influenzare il
+programma &egrave; quello di ritornare dei valori: tutte le
+altre modifiche vengono ignorate dal programma. In questo
+caso, la variabile <tt>x</tt> interna alla funzione viene
+modificata, ma questa modifica non si riflette sulla variabile
+<tt>x</tt> del programma, ma soltanto nel fatto che il valore
+che la procedura rimanda al programma (che &egrave; il valore
+di <tt>x</tt> aumentato di 1) viene memorizzato nella
+variabile <tt>y</tt>.<p>
+
+</body>
+</html>
+

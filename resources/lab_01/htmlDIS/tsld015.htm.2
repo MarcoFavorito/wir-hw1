@@ -1,0 +1,76 @@
+
+<HTML>
+
+<HEAD>
+<META HTTP-EQUIV="Context-Type" CONTEXT="text/html;charset=PREDEFINITA (AUTOMATICA)">
+<meta name="GENERATOR" content="Microsoft Internet Assistant for PowerPoint 97">
+ <TITLE>Division in SQL</TITLE> 
+</HEAD>
+
+<BODY     >
+
+ <H1>Division in SQL</H1> 
+ <P><UL>
+<LI><H2>Let’s do it the hard way, without EXCEPT:</H2>
+</UL></P>
+<P><UL>
+SELECT  S.sname
+<BR></UL><UL>
+FROM  Sailors S
+</UL><UL>
+WHERE  NOT EXISTS 
+</UL><UL>
+              ((SELECT  B.bid
+</UL><UL>
+                 FROM  Boats B)
+</UL><UL>
+                EXCEPT
+</UL><UL>
+                 (SELECT  R.bid
+</UL><UL>
+                  FROM  Reserves R
+</UL><UL>
+                  WHERE  R.sid=S.sid))</UL></P>
+<P><UL>
+SELECT  S.sname
+<BR></UL><UL>
+FROM  Sailors S
+</UL><UL>
+WHERE  NOT EXISTS  (SELECT  B.bid
+</UL><UL>
+                                    FROM  Boats B 
+</UL><UL>
+                                    WHERE  NOT EXISTS  (SELECT  R.bid
+</UL><UL>
+                                                                        FROM  Reserves R
+</UL><UL>
+                                                                        WHERE  R.bid=B.bid
+</UL><UL>
+                                                                                              AND R.sid=S.sid))</UL></P>
+<P><UL>
+Sailors S such that ...<BR></UL></P>
+<P><UL>
+there is no boat B without ...<BR></UL></P>
+<P><UL>
+a Reserves tuple showing S reserved B<BR></UL></P>
+<P><UL>
+Find sailors who’ve reserved all boats.<BR></UL></P>
+<P><UL>
+(1)<BR></UL></P>
+<P><UL>
+(2)<BR></UL></P>
+<P></P> 
+<P>
+<TABLE>
+  <TD HEIGHT=100 WIDTH=100> <A HREF="tsld014.htm">Diapositiva precedente</A> </TD>
+  <TD HEIGHT=100 WIDTH=100> <A HREF="tsld016.htm">Diapositiva successiva</A> </TD>
+  <TD HEIGHT=100 WIDTH=150> <A HREF="tsld001.htm">Torna alla prima diaposiva</A> </TD>
+  <TD HEIGHT=100 WIDTH=150> <A HREF="sld015.htm">Visualizza versione grafica</A> </TD>
+</TABLE>
+<BR>
+</P>
+
+
+
+</Body>
+</HTML>

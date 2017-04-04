@@ -1,0 +1,2856 @@
+<html>
+<head>
+<title>Interfacce grafiche</title>
+</head>
+
+<body>
+
+<h1>Interfacce grafiche</h1>
+
+<p>
+Evoluzione dell'interazione programma/utente:
+</p>
+
+<dl>
+
+<dt>primi programmi
+<dd>input da terminale (equivalente al moderno
+prompt dei comandi)
+
+<dt>programmi recenti
+<dd>input da finestra (es. BlueJ, notepad, ecc.)
+
+</dl>
+
+<hr>
+
+
+<h4>Programmi visti finora</h4>
+
+<p>
+Output su terminale
+</p>
+
+<p>
+Input da file o con <tt>JOptionPane</tt>
+</p>
+
+<p>
+Ora: interazione evoluta con l'utente
+</p>
+
+<hr>
+
+
+<h4>Il flusso di controllo</h4>
+
+<p>
+Flusso di controllo lineare:
+</p>
+
+<ol>
+
+<li>il programma inizia
+
+<li>si eseguono le sue istruzioni in sequenza<br>
+(eventualmente, invocando dei metodi)
+
+<li>il programma termina
+
+</ol>
+
+<p>
+Per programmi con interfaccia evoluta,
+non va bene
+</p>
+
+<hr>
+
+
+<h4>Esempi di programmi visti</h4>
+
+<dl>
+
+<dt><tt>javac</tt>
+<dd>si lancia, il file sorgente viene compilato,
+termina
+
+<dt><tt>notepad</tt>
+<dd>quando si lancia, viene aperta una finestra;<br>
+a questo punto, il programma aspetta che l'utente
+faccia qualcosa:
+
+<dl>
+
+<dt>preme un tasto
+<dd>aggiunge un carattere al file
+
+<dt>va su File-Salva
+<dd>salva il file
+
+<dt>va su File-Salva come
+<dd>apre una seconda finestra per far scegliere
+all'utente il nome del file
+
+<dt>chiude
+<dd>il programma termina
+
+</dl>
+
+</dl>
+
+<hr>
+
+
+<h4>Differenza essenziale</h4>
+
+<table border="1">
+
+<tr>
+<th>Tipo di programma</th>
+<th>Tipo di flusso</th>
+</tr>
+
+<tr>
+<td>
+Programma senza interfaccia
+</td>
+<td>
+Flusso lineare, dall'inizio alla fine;
+ogni tanto si invoca un metodo oppure si
+aspetta l'input dall'utente
+</td>
+</tr>
+
+<tr>
+<td>
+Programma con interfaccia
+</td>
+<td>
+Aspetta che l'utente faccia qualcosa;
+soltanto in questo caso, si eseguono delle
+istruzioni
+</td>
+</tr>
+
+</table>
+
+<hr>
+
+
+<h4>I programmi visti finora</h4>
+
+<p>
+Se si esegue:
+</p>
+
+<pre>
+  java Prova
+</pre>
+
+<p>
+Quello che succede &egrave;:
+</p>
+
+<ul>
+
+<li>si cerca una classe <tt>Prova</tt>
+
+<li>se vede se ha un metodo <tt>main</tt>
+
+<li>si esegue il metodo <tt>main</tt>
+
+</ul>
+
+<hr>
+
+
+<h4>Gli applet</h4>
+
+<p>
+L'applet &egrave; diverso:
+</p>
+
+<ol>
+
+<li>si disegna la finestra
+
+<li>si specifica cosa deve fare il programma
+quando l'utente fa qualcosa
+
+<li>si aspetta che l'utente faccia qualcosa
+
+</ol>
+
+<p>
+Dato che la parte 3 c'&egrave; sempre, non
+&egrave; necessario scriverla!<br>
+(&egrave; implicita)
+</p>
+
+<hr>
+
+
+<h4>Un esempio di applet</h4>
+
+<p>
+Vediamo come si realizza l'applet qui sotto
+</p>
+
+<p>
+<noapplet code="Incr.class"
+width=150 height=50>
+</applet>
+</p>
+
+<p>
+<img src="Incr.gif">
+</p>
+
+<p>
+Ogni volta che si preme il pulsante, il numero
+aumenta di uno
+</p>
+
+<hr>
+
+
+<h4>Cosa serve per realizzare questo applet?</h4>
+
+<ol>
+
+<li>devo dire che voglio disegnare un pulsante
+e una stringa
+
+<li>devo dire che, quando si preme il pulsante,
+il numero scritto nella stinga aumenta di uno
+
+</ol>
+
+<hr>
+
+
+<h4>Il sorgente dell'applet</h4>
+
+<p>
+Questo &egrave; il sorgente completo
+</p>
+
+<p>
+Sembra complicato, ma in effetti ci sono
+solo le due cose dette prima: il disegno
+della finestra e la reazione a eventi
+</p>
+
+<pre>
+import java.awt.*;
+import java.awt.event.*;
+import java.applet.*;
+
+public class Incr
+  extends Applet
+  implements ActionListener {
+
+  Button incr_button;
+  Label l;
+  int val;
+
+  public void init() {
+    this.val=0;
+
+    this.incr_button=new Button("Incrementa");
+    this.add(this.incr_button);
+    this.incr_button.addActionListener(this);
+
+    this.l=new Label("0");
+    this.add(this.l);
+  }
+
+  public void actionPerformed(ActionEvent e) {
+    this.val++;
+    this.l.setText(Integer.toString(val));
+
+    this.l.invalidate();
+    this.validate();
+  }
+}
+</pre>
+
+<p>
+Vediamo le sue parti
+</p>
+
+<hr>
+
+
+<h4>La creazione di un applet</h4>
+
+<p>
+Quando si esegue un programma, oppure un
+applet, succedono due cose diverse:
+</p>
+
+<dl>
+
+<dt>programma:
+<dd>si esegue il metodo <b>statico</b> <tt>main</tt>
+
+<dt>applet:
+<dd>si crea un oggetto della classe, e si invoca
+su di esso il metodo <b>dinamico</b> <tt>init</tt>
+
+</dl>
+
+<p>
+Notare la differenza: nel primo caso si esegue un
+metodo statico, nel secondo si crea un oggetto, e
+su di esso si invoca un metodo
+</p>
+
+<hr>
+
+
+<h4>Il metodo <tt>init</tt></h4>
+
+<p>
+In questo metodo, scrivo cosa ci va messo
+nella finestra
+</p>
+
+<p>
+Questo applet disegna un pulsante e una
+etichetta:
+</p>
+
+<pre>
+import java.awt.*;
+import java.applet.*;
+
+public class Dis
+  extends Applet {
+
+  public void init() {
+    Button i=new Button("Incrementa");
+    this.add(i);
+
+    Label l=new Label("0");
+    this.add(l);
+  }
+}
+</pre>
+
+<p>
+Se si preme il pulsante non succede niente!
+</p>
+
+<hr>
+
+
+<h4>Significato delle parti</h4>
+
+<p>
+Gli oggetti <tt>Button</tt> sono i pulsanti
+</p>
+
+<p>
+Per aggiungere un pulsante a un applet:
+</p>
+
+<pre>
+Button i=new Button("Incrementa");
+this.add(i);
+</pre>
+
+<ol>
+
+<li>creo il pulsante: il costruttore ha
+come argomento la stringa che ci deve
+essere scritta dentro
+
+<li>aggiungo il pulsante all'applet:
+questo si fa con <tt>this.add(...)</tt>
+
+</ol>
+
+<p>
+Se non faccio la seconda cosa, il pulsante
+non viene disegnato
+</p>
+
+<p>
+Qui <tt>this</tt> chi &egrave;?
+</p>
+
+<hr>
+
+
+<h4>Il <tt>this</tt> dentro gli applet</h4>
+
+<p>
+Lanciare un applet=creare un oggetto della
+classe
+</p>
+
+<p>
+Quindi, il <tt>this</tt> &egrave; l'oggetto
+della classe che &egrave; stato creato
+</p>
+
+<p>
+<tt>init</tt> &egrave; un metodo dinamico:
+viene invocato su un oggetto, che &egrave;
+una finestra
+</p>
+
+<p>
+Le finestre hanno anche il metodo dinamico
+<tt>add</tt>, per aggiungere componenti
+</p>
+
+<p>
+Il metodo <tt>add</tt>, come altri metodi che servono,
+viene ereditato dalla classe <tt>Applet</tt>
+</p>
+
+<p>
+&Egrave; per questo che la classe deve estendere
+<tt>Applet</tt> (ossia, si deve fare
+<tt>extends Applet</tt>)
+</p>
+
+<hr>
+
+
+<h4>Le label</h4>
+
+<p>
+Sono stringhe scritte nella finestra
+</p>
+
+<pre>
+Label l=new Label("0");
+this.add(l);
+</pre>
+
+<ol>
+
+<li>creo l'oggetto <tt>Label</tt>: la stringa &egrave;
+quello che viene stampato effettivamente
+
+<li>lo aggiungo all'applet
+
+</ol>
+
+<hr>
+
+
+<h4>Esercizio</h4>
+
+<p>
+Creare un applet con due pulsanti <tt>Ok</tt>
+e <tt>Cancel</tt> e due etichette con le
+scritte <tt>"Questo essere"</tt> e
+<tt>"applet sgrammaticato"</tt>
+</p>
+
+<hr>
+
+
+<h4>Soluzione</h4>
+
+<p>
+Faccio un applet
+</p>
+
+<p>
+Dentro ci metto i due pulsanti e le due label
+</p>
+
+<hr>
+
+
+<h4>Implementazione</h4>
+
+<p>
+Nel metodo <tt>init</tt> devo mettere la
+creazione dei quattro oggetti
+</p>
+
+<pre>
+import java.awt.*;
+import java.applet.*;
+
+public class Sgramm
+  extends Applet {
+
+  public void init() {
+    Button i=new Button("OK");
+    this.add(i);
+
+    Button j=new Button("Cancel");
+    this.add(j);
+
+    Label l=new Label("Questo essere");
+    this.add(l);
+
+    Label t=new Label("applet sgrammaticato");
+    this.add(t);
+  }
+}
+</pre>
+
+<p>
+Si poteva anche fare
+<tt>this.add(new Button("OK"))</tt> ecc.
+</p>
+
+<p>
+Poi vediamo perch&egrave; di solito non si fa
+</p>
+
+<hr>
+
+
+<h4>Come si presenta</h4>
+
+<img src="Sgramm.gif">
+
+<p>
+Se si fa click sui pulsanti, non succede niente!
+</p>
+
+<p>
+Questo &egrave; normale: non gli ho ancora
+detto cosa deve fare quando l'utente preme un
+pulsante!
+</p>
+
+<hr>
+
+
+<h4>Interazioni</h4>
+
+<p>
+Ogni pulsante genera un <i>evento</i>
+</p>
+
+<p>
+Per fare in modo che l'applet lo sappia,
+devo fare queste due cose:
+</p>
+
+<ol>
+
+<li>nell'applet, devo creare un metodo che
+serve a ricevere l'evento
+
+<li>devo dire al pulsante che l'evento va
+inviato all'applet
+
+</ol>
+
+<hr>
+
+
+<h4>Metafora della trasmissione</h4>
+
+<p>
+Quando il pulsante viene premuto, l'oggetto
+<tt>Button</tt> invia un messaggio per dire
+<tt>"sono stato premuto!"</tt>
+</p>
+
+<p>
+Per&ograve;:
+</p>
+
+<ol>
+
+<li>devo dire al pulsante che voglio anche
+io (l'applet) ricevere questi messaggi
+
+<li>devo scrivere l'applet in maniera che
+possa ricevere messaggi<br>
+(e faccia quello che deve fare quando li riceve)
+
+</ol>
+
+<hr>
+
+
+<h4>La ricezione del messaggio</h4>
+
+<p>
+Per fare in modo che l'applet possa ricevere
+un messaggio, devo fare queste due cose:
+</p>
+
+<pre>
+public class Incr
+  extends Applet
+  implements ActionListener {
+
+  ...
+
+  public void actionPerformed(ActionEvent e) {
+  }
+}
+</pre>
+
+<p>
+Significato delle due cose:
+</p>
+
+<dl>
+
+<dt><tt>implements ActionListener</tt>
+<dd>dichiara che gli oggetti applet di questa
+classe sono in grado di ricevere messaggi
+
+<dt><tt>actionPerformed</tt>
+<dd>&egrave; il metodo di "ricezione"
+
+</dl>
+
+<p>
+Quando qualcuno invia un messaggio all'applet,
+si attiva il metodo di ricezione
+<tt>actionPerformed</tt>
+</p>
+
+<p>
+L'interfaccia <tt>ActionListener</tt> contiene il metodo
+<tt>actionPerformed</tt>. Quando si scrive <tt>implements
+ActionListener</tt> dichiara che sugli oggetti della classe
+si pu&ograve; invocare il metodo <tt>actionPerformed</tt>
+</p>
+
+<hr>
+
+
+<h4>L'invio del messaggio</h4>
+
+<p>
+Ora l'applet &egrave; in grado di ricevere
+messaggi
+</p>
+
+<p>
+Devo dire al pulsante che deve informare
+l'applet ogni volta che viene premuto
+</p>
+
+<p>
+Uso il metodo <tt>addActionListener</tt>
+</p>
+
+<pre>
+  public void init() {
+    Button i=new Button("Incrementa");
+    this.add(i);
+    i.addActionListener(this);
+
+    Label l=new Label("0");
+    this.add(l);
+  }
+</pre>
+
+<p>
+Significato: sto dicendo al pulsante: quando
+vieni premuto, fammi sapere
+</p>
+
+<p>
+Il metodo <tt>addActionListener</tt> ha come argomento un
+<tt>ActionListener</tt>
+</p>
+
+<p>
+Si pu&ograve; quindi invocare solo su oggetti che hanno il
+metodo <tt>actionPerformed</tt>
+</p>
+
+<hr>
+
+
+<h4>L'appet completo</h4>
+
+<p>
+Finora, abbiamo questo codice
+</p>
+
+<p>
+Serve una <tt>import</tt> in pi&ugrave;
+</p>
+
+<pre>
+import java.awt.*;
+import java.awt.event.*;
+import java.applet.*;
+
+public class Con
+  extends Applet
+  implements ActionListener {
+
+  public void init() {
+    Button i=new Button("Incrementa");
+    this.add(i);
+    i.addActionListener(this);
+
+    Label l=new Label("0");
+    this.add(l);
+  }
+
+  public void actionPerformed(ActionEvent e) {
+  }
+}
+</pre>
+
+<hr>
+
+
+<h4>Cosa succede...</h4>
+
+<p>
+Cosa succede se premo il pulsante?
+</p>
+
+<ol>
+
+<li>il bottone invia un messaggio a tutti quelli
+che gli hanno detto di essere interessati a saperlo
+
+<li>fra questi, c'&egrave; l'applet: ha detto di
+essere interessato con <tt>i.addActionListener(this)</tt>
+
+<li>viene invocato il metodo <tt>actionPerformed</tt>
+(il metodo di ricezione)
+
+</ol>
+
+<p>
+Cosa succede in pratica?
+</p>
+
+<hr>
+
+
+<h4>Risposta</h4>
+
+<p>
+Quando si preme il pulsante, viene invocato il
+metodo <tt>actionPerformed</tt>
+</p>
+
+<p>
+Dato che questo metodo non contiene istruzioni,
+quando viene invocato non succede niente
+</p>
+
+<p>
+Quando si preme il pulsante, non succede niente
+di visibile (viene invocato un metodo senza
+istruzioni)
+</p>
+
+<hr>
+
+
+<h4>Esempio di ricezione</h4>
+
+<p>
+Esempio facile: quando ricevo un messaggio,
+stampo una stringa sul prompt dei comandi:
+</p>
+
+<pre>
+public void actionPerformed(
+                ActionEvent e) {
+  System.out.println(
+       "Ho ricevuto un messaggio");
+}
+</pre>
+
+<hr>
+
+
+<h4>Cosa succede in questo caso?</h4>
+
+<p>
+Quando si preme il pulsante:
+</p>
+
+<ul>
+
+<li>dato cho detto al pulsante che <tt>this</tt>
+vuole sapere quando viene premuto,
+
+<li>quando effettivamente viene premuto il
+pulsante, viene invocato <tt>this.actionPerformed</tt>
+
+<li>nel metodo, c'&egrave; scritto di stampare
+la stringa
+
+</ul>
+
+<hr>
+
+
+<h4>Vedere la stampa da browser</h4>
+
+<p>
+Se si sta usando un browser (es. IE),<br>
+le stringhe stampate su terminale non si
+vedono
+</p>
+
+<p>
+Per poterle vedere:
+attivare la console Java
+</p>
+
+<hr>
+
+
+<h4>Modifiche alla finestra</h4>
+
+<p>
+Tipicamente, gli applet non stampano niente
+sul terminale
+</p>
+
+<p>
+Di solito, l'output di un applet viene scritto
+nella finestra
+</p>
+
+<p>
+Esempio: ogni volta che si preme il pulsante,
+aggiungo una etichetta
+</p>
+
+<pre>
+  public void actionPerformed(ActionEvent e) {
+    Label t=new Label("1");
+    this.add(t);
+
+    t.invalidate();
+    this.validate();
+  }
+</pre>
+
+<p>
+Le ultime due istruzioni
+servono per ridisegnare la finestra (prox pagina)
+</p>
+
+<hr>
+
+
+<h4>I metodi <tt>invalidate</tt> e <tt>validate</tt></h4>
+
+<p>
+Quando uno degli oggetti che stanno dentro la
+finestra viene modificato, bisogna fare:
+</p>
+
+<ul>
+
+<li>fare <tt>obj.invalidate()</tt> per tutti
+gli oggetti che sono stati modificati
+
+<li>fare <tt>this.validate()</tt>
+
+</ul>
+
+<p>
+<i>Attenzione!</i> le invocazioni di
+<tt>invalidate</tt> vanno fatte <i>prima</i>
+di <tt>this.validate()</tt>
+</p>
+
+<p>
+Cosa significa:
+</p>
+
+<dl>
+
+<dt><tt>invalidate()</tt>
+<dd>serve a <i>dichiarare</i> che questa componente &egrave;
+cambiata, e quindi il modo in cui &egrave; attualmente
+disegnata non &egrave; pi&ugrave; valido
+
+<dt><tt>validate()</tt>
+<dd>serve a <i>chiedere</i> al sistema di disegnare
+(rendere valide) tutte le componenti dell'applet
+
+</dl>
+
+<p>
+In pratica, basta sapere che si fa prima <tt>invalidate</tt>
+per tutti gli oggetti modificati, e poi 
+<tt>this.validate()</tt>
+</p>
+
+<hr>
+
+<h4>L'applet completo</h4>
+
+<p>
+Il codice complessivo contiene sia il metodo
+<tt>init</tt> (che crea il pulsante e la prima
+label) che il metodo <tt>actionPerformed</tt>
+(che riceve i messaggio che provengono dal
+pulsante)
+</p>
+
+<pre>
+import java.awt.*;
+import java.awt.event.*;
+import java.applet.*;
+
+public class Add
+  extends Applet
+  implements ActionListener {
+
+  public void init() {
+    Button i=new Button("Incrementa");
+    this.add(i);
+    i.addActionListener(this);
+
+    Label l=new Label("0");
+    this.add(l);
+  }
+
+  public void actionPerformed(ActionEvent e) {
+    Label t=new Label("1");
+    this.add(t);
+
+    t.invalidate();
+    this.validate();
+  }
+}
+</pre>
+
+<p>
+<tt>invalidate</tt> e <tt>validate</tt> servono
+per ridisegnare l'applet
+</p>
+
+<hr>
+
+
+<h4>Come funziona</h4>
+
+<p>
+L'applet &egrave; riportato qui sotto:
+</p>
+
+<noapplet code="Add.class"
+width=300 height=100>
+</applet>
+
+<p>
+Stato iniziale:
+</p>
+
+<img src="add-1.gif">
+
+<p>
+Quando premo il pulsante, viene creata
+una nuova etichetta:
+</p>
+
+<img src="add-2.gif">
+
+<p>
+Se premo il pulsante ancora, ne creo
+ancora un'altra, ecc.
+</p>
+
+<img src="add-3.gif">
+
+<hr>
+
+
+<h4>Modificare una label gi&agrave; esistente</h4>
+
+<p>
+Modificare una label &egrave; il modo pi&ugrave;
+semplice per fornire un output all'utente
+</p>
+
+<p>
+Metodo <tt>setText</tt> della classe <tt>Label</tt>:
+</p>
+
+<pre>
+  l.setText(string);
+</pre>
+
+<p>
+La stringa diventa il nuovo contenuto dell'etichetta
+</p>
+
+<hr>
+
+
+<h4>Visibilit&agrave; della variabile</h4>
+
+<pre>
+public class Con
+  extends Applet
+  implements ActionListener {
+
+  public void init() {
+    ...
+
+    Label l=new Label("0");
+    this.add(l);
+  }
+
+  public void actionPerformed(ActionEvent e) {
+    // modifica l
+  }
+}
+</pre>
+
+<p>
+La variabile <tt>l</tt> &egrave; locale al
+metodo <tt>init</tt>
+</p>
+
+<p>
+La variabile <tt>l</tt> non si vede nel metodo
+<tt>actionPerfomed</tt>
+</p>
+
+<hr>
+
+
+<h4>Domanda</h4>
+
+<p>
+Quali variabili sono visibili in tutti i metodi
+dinamici dell'applet?
+</p>
+
+<p>
+Suggerimento: notare <i>"dinamici"</i>
+</p>
+
+<hr>
+
+
+<h4>Risposta</h4>
+
+<p>
+Tutti i metodi dinamici vedono <tt>this</tt>,
+e quindi tutti vedono le componenti
+</p>
+
+<p>
+Soluzione: invece di usare una variabile locale
+uso una componente <tt>l</tt>
+</p>
+
+<p>
+Funziona perch&egrave; sia <tt>init</tt> che
+<tt>actionPerformed</tt> vengono invocati sullo
+stesso oggetto di invocazione
+</p>
+
+<pre>
+// import
+public class Mod
+  extends Applet
+  implements ActionListener {
+
+  Label l;
+
+  public void init() {
+    // creazione pulsante
+
+    this.l=new Label("0");
+    this.add(this.l);
+  }
+
+  public void actionPerformed(ActionEvent e) {
+    this.l.setText("1");
+
+    this.l.invalidate();
+    this.validate();
+  }
+}
+</pre>
+
+<hr>
+
+
+<h4>Funzionamento</h4>
+
+<p>
+Quando si lancia l'applet:
+</p>
+
+<ul>
+
+<li>viene creato un oggetto della classe
+
+<li>su questo oggetto viene invocato <tt>init</tt><br>
+questo crea il pulsante e la label<br>
+l'indirizzo della label viene scritto nella componente
+<tt>l</tt> dell'oggetto
+
+<li>quando il pulsante viene premuto, si invoca
+<tt>actionPerformed</tt> sull'oggetto
+
+</ul>
+
+<hr>
+
+
+<h4>Cosa succede effettivamente</h4>
+
+<noapplet code="Mod.class"
+width=300 height=100>
+</applet>
+
+<p>
+Quando si inizia:
+</p>
+
+<img src="mod-1.gif">
+
+<p>
+Quando si preme il pulsante:
+</p>
+
+<img src="mod-2.gif">
+
+<p>
+Se si preme di nuovo il pulsante, viene invocato
+di nuovo <tt>actionPerformed</tt>, che cambia
+il testo della label in <tt>"1"</tt>
+</p>
+
+<p>
+Quindi, non cambia niente
+</p>
+
+<hr>
+
+
+<h4>Esercizio</h4>
+
+<p>
+Modificare l'applet in modo che l'etichetta
+si incrementi ogni volta che si preme il
+pulsante
+</p>
+
+<p>
+Nota+suggerimento: il metodo <tt>setText</tt>
+ha come argomento una stringa; per convertire
+un intero in stringa, usare
+<tt>Integer.toString(int)</tt>
+</p>
+
+<p>
+Questo metodo ha come argomento un intero e
+come valore di ritorno una stringa
+</p>
+
+<hr>
+
+
+<h4>Soluzione</h4>
+
+<p>
+Serve una variabile intera per contare quante
+volte il pulsante &egrave; stato premuto
+</p>
+
+<p>
+Questa variabile non la posso mettere nel metodo
+<tt>actionPerformed</tt>, altrimenti verrebbe
+distrutta ogni volta che il metodo termina
+</p>
+
+<p>
+Uso una componente
+</p>
+
+<hr>
+
+
+<h4>Implementazione</h4>
+
+<p>
+Componente <tt>n</tt>
+</p>
+
+<p>
+Quando inizializzo l'applet, metto a <tt>0</tt>
+questa componente
+</p>
+
+<p>
+Ogni volta che si preme il pulsante, aumento
+di uno
+</p>
+
+<pre>
+// import
+
+public class Inc
+  extends Applet
+  implements ActionListener {
+
+  Label l;
+  int n;
+
+  public void init() {
+    // crea pulsante
+
+    this.n=0;
+    this.l=new Label(Integer.toString(n));
+    this.add(this.l);
+  }
+
+  public void actionPerformed(ActionEvent e) {
+    this.n++;
+    this.l.setText(Integer.toString(n));
+
+    this.l.invalidate();
+    this.validate();
+  }
+}
+</pre>
+
+<p>
+Dato che ho modificato la label <tt>l</tt>,
+devo fare <tt>l.invalidate()</tt>
+</p>
+
+<p>
+Poi devo comunque fare <tt>this.validate()</tt>
+</p>
+
+<hr>
+
+
+<h4>Il programma completo</h4>
+
+<p>
+Nel programma di prima, sono state omesse
+le <tt>import</tt> e la creazione del pulsante
+</p>
+
+<pre>
+import java.awt.*;
+import java.awt.event.*;
+import java.applet.*;
+
+public class Inc
+  extends Applet
+  implements ActionListener {
+
+  Label l;
+  int n;
+
+  public void init() {
+    Button i=new Button("Incrementa");
+    this.add(i);
+    i.addActionListener(this);
+
+    this.n=0;
+    this.l=new Label(Integer.toString(n));
+    this.add(this.l);
+  }
+
+  public void actionPerformed(ActionEvent e) {
+    this.n++;
+    this.l.setText(Integer.toString(n));
+
+    this.l.invalidate();
+    this.validate();
+  }
+}
+</pre>
+
+<hr>
+
+
+<h4>Esercizio</h4>
+
+<p>
+Modificare il programma di prima in modo tale
+che la label contenga <tt>si</tt> inizialmente,
+e poi si passi a <tt>no</tt> e poi di nuovo
+a <tt>si</tt> ogni volta
+</p>
+
+<hr>
+
+
+<h4>Soluzione</h4>
+
+<p>
+Prima soluzione: uso sempre la variabile <tt>n</tt>
+e poi ogni volta vedo se &egrave; un numero pari
+oppure dispari:
+</p>
+
+<pre>
+// import 
+public class Mama
+  extends Applet
+  implements ActionListener {
+
+  Label l;
+  int n;
+
+  public void init() {
+    ...
+  }
+
+  public void actionPerformed(ActionEvent e) {
+    this.n++;
+    if(n%2==0)
+      this.l.setText("si");
+    else
+      this.l.setText("no");
+
+    this.l.invalidate();
+    this.validate();
+  }
+}
+</pre>
+
+<hr>
+
+
+<h4>Altra soluzione</h4>
+
+<p>
+Memorizzo la stringa attualmente memorizzata
+</p>
+
+<p>
+Ogni volta, cambio
+</p>
+
+<pre>
+// import
+
+public class Cambio
+  extends Applet
+  implements ActionListener {
+
+  Label l;
+  String s;
+
+  public void init() {
+    // pulsante
+
+    this.s="si";
+    this.l=new Label(this.s);
+    this.add(this.l);
+  }
+
+  public void actionPerformed(ActionEvent e) {
+    if(this.s.equals("si"))
+      this.s="no";
+    else
+      this.s="si";
+
+    this.l.setText(this.s);
+
+    this.l.invalidate();
+    this.validate();
+  }
+}
+</pre>
+
+<hr>
+
+
+<h4>Variante</h4>
+
+<p>
+Uso una variabile booleana
+</p>
+
+<pre>
+// import
+public class ConBool
+  extends Applet
+  implements ActionListener {
+
+  Label l;
+  boolean b;
+
+  public void init() {
+    // pulsante
+
+    this.b=true;
+    this.l=new Label("si");
+    this.add(this.l);
+  }
+
+  public void actionPerformed(ActionEvent e) {
+    this.b=!this.b;
+
+    if(this.b)
+      this.l.setText("si");
+    else
+      this.l.setText("no");
+
+    this.l.invalidate();
+    this.validate();
+  }
+}
+</pre>
+
+<p>
+L'istruzione <tt>this.b=!this.b</tt> ha l'effetto
+di negare ogni volta il valore di <tt>this.b</tt>
+</p>
+
+<hr>
+
+
+<h4>Pi&ugrave; pulsanti</h4>
+
+<p>
+Scrivere l'applet che ha due pulsanti:
+<tt>Incrementa</tt> e <tt>Azzera</tt>
+</p>
+
+<p>
+Scrivere solo il metodo <tt>init</tt>
+</p>
+
+<hr>
+
+
+<h4>Disegno</h4>
+
+<p>
+Questo &egrave; facile: faccio due pulsanti
+invece di uno
+</p>
+
+<pre>
+  public void init() {
+    Button i=new Button("Incrementa");
+    this.add(i);
+    i.addActionListener(this);
+
+    Button a=new Button("Azzera");
+    this.add(a);
+    a.addActionListener(this);
+
+    this.n=0;
+    this.l=new Label(Integer.toString(this.n));
+    this.add(this.l);
+  }
+</pre>
+
+<hr>
+
+
+<h4>Azioni</h4>
+
+<p>
+Quando premo uno qualsiasi dei due pulsanti, viene
+comunque invocato il metodo <tt>actionPerformed</tt>
+</p>
+
+<p>
+Infatti, tutti e due i pulsanti sono stati istruiti
+a inviare messaggi a <tt>this</tt>
+</p>
+
+<p>
+Il metodo di ricezione di <tt>this</tt> &egrave; sempre
+e comunque <tt>actionPerformed</tt>
+</p>
+
+<hr>
+
+
+<h4>Il parametro di <tt>actionPerformed</tt></h4>
+
+<p>
+Il parametro di <tt>actionPerformed</tt> &egrave; un
+oggetto che permette di capire il mittente del
+messaggio
+</p>
+
+<pre>
+  e.getSource();
+</pre>
+
+<p>
+Questo metodo ritorna un oggetto, che &egrave;
+il mittente del messaggio
+</p>
+
+<p>
+Nel nostro caso: <tt>e.getSource()</tt> &egrave;
+l'oggetto <tt>Button</tt> che &egrave; stato
+premuto
+</p>
+
+<hr>
+
+
+<h4>Come fare cose diverse</h4>
+
+<p>
+Come faccio a fare cose diverse a seconda del
+pulsante premuto?
+</p>
+
+<p>
+Confronto <tt>e.getSource()</tt> con gli oggetti
+pulsante
+</p>
+
+<p>
+Ma il pulsante:
+</p>
+
+<ul>
+
+<li>va creato in <tt>init</tt>
+
+<li>serve in <tt>actionPerformed</tt> per capire
+chi &egrave; il mittente
+
+</ul>
+
+<p>
+Al posto di variabili locali, uso due componenti
+</p>
+
+<hr>
+
+
+<h4>Implementazione di <tt>init</tt></h4>
+
+<p>
+&Egrave; come al solito, solo che le due
+variabili pulsante sono componenti e non
+pi&ugrave; variabili locali
+</p>
+
+<pre>
+public class Azzera
+  extends Applet
+  implements ActionListener {
+
+  Label l;
+  int n;
+  Button i, a;
+
+  public void init() {
+    this.i=new Button("Incrementa");
+    this.add(this.i);
+    this.i.addActionListener(this);
+
+    this.a=new Button("Azzera");
+    this.add(this.a);
+    this.a.addActionListener(this);
+
+    this.n=0;
+    this.l=new Label(Integer.toString(this.n));
+    this.add(this.l);
+  }
+
+  ...
+}
+</pre>
+
+<hr>
+
+
+<h4>Il metodo <tt>actionPerformed</tt></h4>
+
+<p>
+A seconda di quale &egrave; l'oggetto che
+risulta da <tt>e.getSource()</tt>, faccio
+una cosa oppure l'altra
+</p>
+
+<pre>
+  public void actionPerformed(ActionEvent e) {
+    if(e.getSource()==this.i)
+      this.n++;
+    if(e.getSource()==this.a)
+      this.n=0;
+
+    this.l.setText(Integer.toString(this.n));
+
+    this.l.invalidate();
+    this.validate();
+  }
+</pre>
+
+<hr>
+
+
+<h4>L'applet completo</h4>
+
+<p>
+Il programma completo &egrave; quello che segue
+</p>
+
+<p>
+Dato che i metodi <tt>init</tt> e <tt>actionPerformed</tt>
+vengono invocati sullo stesso oggetto, le componenti
+<tt>this.a</tt> ecc. sono le stesse variabili
+</p>
+
+<p>
+&Egrave; come se fossero variabili che si possono
+usare in tutti i metodi della classe
+</p>
+
+<pre>
+import java.awt.*;
+import java.awt.event.*;
+import java.applet.*;
+
+public class Azzera
+  extends Applet
+  implements ActionListener {
+
+  Label l;
+  int n;
+  Button i, a;
+
+  public void init() {
+    this.i=new Button("Incrementa");
+    this.add(this.i);
+    this.i.addActionListener(this);
+
+    this.a=new Button("Azzera");
+    this.add(this.a);
+    this.a.addActionListener(this);
+
+    this.n=0;
+    this.l=new Label(Integer.toString(this.n));
+    this.add(this.l);
+  }
+
+  public void actionPerformed(ActionEvent e) {
+    if(e.getSource()==this.i)
+      this.n++;
+    if(e.getSource()==this.a)
+      this.n=0;
+
+    this.l.setText(Integer.toString(this.n));
+
+    this.l.invalidate();
+    this.validate();
+  }
+}
+</pre>
+
+<hr>
+
+
+<h4>Osservazioni</h4>
+
+<p>
+L'applet sembra lungo, ma le cose che fa sono
+poche:
+</p>
+
+<ul>
+
+<li>per gli oggetti pulsanti, etichette, ecc.
+uso delle componenti, cos&iacute; sono visibili
+in tutti i metodi<br>
+(tutti i metodi vengono invocati sullo stesso
+oggetto)
+
+<li>nel metodo <tt>init</tt>: faccio la creazione
+degli oggetti: per ogni oggetto, lo aggiungo
+all'applet, e poi dico all'oggetto che voglio
+ricevere i suoi messaggi
+
+<li>il metodo <tt>actionPerformed</tt> &egrave;
+quello che viene invocato quando si ricevono
+messaggi; per sapere il mittente uso
+<tt>e.getSource()</tt>, dove <tt>e</tt>
+&egrave; il parametro formale
+
+</ul>
+
+<hr>
+
+
+<h4>Schema di applet</h4>
+
+<pre>
+import ...
+
+class NomeApplet extends Applet
+  implements ActionListener {
+
+  // oggetti pulsanti ecc.
+  // variabili che devono essere visibili
+  //   a tutti i metodi
+    
+  public void init() {
+    // inizializzazioni
+    // creazione pulsanti, etichette, ecc.
+  }
+
+  public void actionPerformed(ActionEvent e) {
+    // cosa fare quando viene premuto un
+    // pulsante: il pulsante premuto e' quello
+    // che risulta da e.getSource()
+  }
+}
+</pre>
+
+<hr>
+
+
+<h4>Esercizio</h4>
+
+<p>
+Realizzare un applet che contiene:
+</p>
+
+<ol>
+
+<li>due pulsanti <tt>si</tt> e <tt>no</tt>
+<li>una etichetta che contiene <tt>si</tt> oppure
+<tt>no</tt> a seconda dell'ultimo
+pulsante che &egrave; stato premuto;
+<li>una etichetta che contiene il numero totale di
+volte che i pulsanti sono stati premuti
+
+</ol>
+
+<hr>
+
+
+<h4>Progettazione di un applet</h4>
+
+<p>
+Il codice di un applet pu&ograve; essere lungo
+solo perch&egrave; ci sono molte cose da
+scrivere
+</p>
+
+<p>
+Come per tutti i programmi lunghi:<br>
+pensare prima alla soluzione, poi implementare
+</p>
+
+<hr>
+
+
+<h4>Come realizzare l'applet</h4>
+
+<p>
+Serve: un intero per memorizzare il numero di
+volte che un pulsante &egrave; stato premuto
+</p>
+
+<p>
+Cosa fa il metodo <tt>actionPerformed</tt>:
+cambia la prima etichetta in base al pulsante,
+aumenta il numero, e cambia la seconda
+</p>
+
+<p>
+Il numero va incrementato indipendentemente
+da quale sia pulsante premuto
+</p>
+
+<hr>
+
+
+<h4>Componenti</h4>
+
+<p>
+Sono le variabili che devono essere visibili
+a tutti i metodi
+</p>
+
+<p>
+Servono: due pulsanti, due etichette, e un intero
+</p>
+
+<pre>
+import java.awt.*;
+import java.awt.event.*;
+import java.applet.*;
+
+public class Indeciso
+  extends Applet
+  implements ActionListener {
+
+  Label quante, ultimo;
+  int num;
+  Button s, n;
+
+  public void init() {
+    ...
+  }
+
+  public void actionPerformed(ActionEvent e) {
+    ...
+  }
+}
+</pre>
+
+<hr>
+
+
+<h4>Il metodo <tt>init</tt></h4>
+
+<p>
+Crea i quattro oggetti
+</p>
+
+<p>
+Dato che non &egrave; stato ancora premuto
+nessun pulsante, nella prima etichetta ci
+metto la stringa vuota <tt>""</tt>
+</p>
+
+<p>
+Inizializza la componente <tt>num</tt>
+</p>
+
+<pre>
+  Label quante, ultimo;
+  int num;
+  Button s, n;
+
+  public void init() {
+    this.s=new Button("Si");
+    this.add(this.s);
+    this.s.addActionListener(this);
+
+    this.n=new Button("No");
+    this.add(this.n);
+    this.n.addActionListener(this);
+
+    this.num=0;
+    this.quante=new Label(Integer.toString(this.num));
+    this.add(this.quante);
+
+    this.ultimo=new Label("");
+    this.add(this.ultimo);
+  }
+</pre>
+
+<hr>
+
+
+<h4>Il metodo <tt>actionPerformed</tt></h4>
+
+<p>
+Cambio il testo dell'etichetta a seconda del
+tasto premuto
+</p>
+
+<p>
+Poi aumento il numero di volte che un pulsante
+&egrave; stato premuto
+</p>
+
+<pre>
+public class Indeciso
+  extends Applet
+  implements ActionListener {
+
+  Label quante, ultimo;
+  int num;
+  Button s, n;
+
+  public void init() {
+    ...
+  }
+
+  public void actionPerformed(ActionEvent e) {
+    if(e.getSource()==this.s)
+      this.ultimo.setText("Si");
+    if(e.getSource()==this.n)
+      this.ultimo.setText("No");
+
+    this.num++;
+    this.quante.setText(Integer.toString(this.num));
+
+    this.quante.invalidate();
+    this.ultimo.invalidate();
+    this.validate();
+  }
+}
+</pre>
+
+<p>
+Notare: dato che modifico sia <tt>quante</tt>
+che <tt>ultimo</tt>, devo fare <tt>invalidate</tt>
+su tutti e due
+</p>
+
+<hr>
+
+
+<h4>Gli oggetti <tt>TextField</tt></h4>
+
+<p>
+Sono campi in cui l'utente pu&ograve;
+inserire dei dati
+</p>
+
+<p>
+Esempio di campo:
+</p>
+
+<form>
+<input width="12">
+</form>
+
+<p>
+L'utente pu&ograve; digitare una stringa
+</p>
+
+<hr>
+
+
+<h4>Come si usano</h4>
+
+<p>
+Creazione (in <tt>init</tt>):
+</p>
+
+<pre>
+  this.t=new TextField(20);
+  this.add(this.t);
+</pre>
+
+<p>
+il numero dice quanto deve essere largo
+il campo
+</p>
+
+<p>
+Vedere quale valore &egrave; stato
+inserito (in <tt>actionPerformed</tt>):
+</p>
+
+<pre>
+  String s=this.t.getText();
+</pre>
+
+<hr>
+
+
+<h4>Esercizio</h4>
+
+<p>
+Creare un applet con tre oggetti dentro:
+</p>
+
+<ul>
+
+<li>un pulsante <tt>"Cambia"</tt>
+
+<li>un campo testo
+
+<li>une etichetta
+
+</ul>
+
+<p>
+Ogni volta che si preme il pulsante, nella
+etichetta viene messa la stringa che si
+trova attualmente nel campo testo
+</p>
+
+<hr>
+
+
+<h4>Componenti</h4>
+
+<p>
+Servono: un pulsante, un textfield, e una
+label:
+</p>
+
+<pre>
+import java.awt.*;
+import java.awt.event.*;
+import java.applet.*;
+
+public class Ultimo
+  extends Applet
+  implements ActionListener {
+
+  Label ultimo;
+  Button cambia;
+  TextField t;
+
+  public void init() {
+    ...
+  }
+
+  public void actionPerformed(ActionEvent e) {
+    ...
+  }
+}
+</pre>
+
+<hr>
+
+
+<h4>Il metodo <tt>init</tt></h4>
+
+<p>
+Devo solo creare i tre oggetti
+</p>
+
+<pre>
+public class Ultimo
+  extends Applet
+  implements ActionListener {
+
+  Label ultimo;
+  Button cambia;
+  TextField t;
+
+  public void init() {
+    this.cambia=new Button("Cambia");
+    this.add(this.cambia);
+    this.cambia.addActionListener(this);
+
+    this.t=new TextField(20);
+    this.add(this.t);
+
+    this.ultimo=new Label("");
+    this.add(this.ultimo);
+  }
+
+  public void actionPerformed(ActionEvent e) {
+    ...
+  }
+}
+</pre>
+
+<hr>
+
+
+<h4>Il metodo <tt>actionPerformed</tt></h4>
+
+<p>
+Ogni volta che premo il pulsante:
+</p>
+
+<ul>
+
+<li>vado a vedere cosa c'&egrave; scritto
+nel campo testo con il metodo <tt>getText</tt>
+
+<li>cambio il testo dell'etichetta
+
+</ul>
+
+<pre>
+public class Ultimo
+  extends Applet
+  implements ActionListener {
+
+  Label ultimo;
+  Button cambia;
+  TextField t;
+
+  public void init() {
+    ...
+  }
+
+  public void actionPerformed(ActionEvent e) {
+    this.ultimo.setText(t.getText());
+
+    this.ultimo.invalidate();
+    this.validate();
+  }
+}
+</pre>
+
+<hr>
+
+
+<h4>Gli eventi del <tt>TextField</tt></h4>
+
+<p>
+Se si preme enter nel campo testo, non
+succede niente
+</p>
+
+<p>
+Di solito, ci si aspetta che succeda qualcosa
+</p>
+
+<p>
+I campi testi generano un messaggio quando
+si preme enter
+</p>
+
+<p>
+Per&ograve;, non ho detto a questo campo testo
+che volevo sapere i suoi messaggi
+</p>
+
+<p>
+Soluzione: basta dirlo in <tt>init</tt>:
+</p>
+
+<pre>
+  this.t.addActionListener(this);
+</pre>
+
+<hr>
+
+
+<h4>Variante</h4>
+
+<p>
+Stesse componenti
+</p>
+
+<p>
+Quando si preme enter nel campo testo, il
+contenuto viene messo nell'etichetta
+</p>
+
+<p>
+Un solo pulsante "Clear", che rimette la
+stringa vuota nell'etichetta
+</p>
+
+<hr>
+
+
+<h4>Soluzione</h4>
+
+<p>
+Quasi tutto come prima
+</p>
+
+<p>
+Per&ograve; ora, se la sorgente dell'evento
+&egrave; il pulsante, si pulisce l'etichetta;
+se &egrave; il campo testo, si cambia
+</p>
+
+<hr>
+
+
+<h4>Componenti</h4>
+
+<p>
+Sono le stesse di prima
+</p>
+
+<p>
+Ho solo cambiato i nomi (ma non era necessario)
+</p>
+
+<pre>
+import java.awt.*;
+import java.awt.event.*;
+import java.applet.*;
+
+public class Clear
+  extends Applet
+  implements ActionListener {
+
+  Label ultimo;
+  Button pulisci;
+  TextField t;
+</pre>
+
+<hr>
+
+
+<h4>Metodo <tt>init</tt></h4>
+
+<p>
+Crea i tre oggetti
+</p>
+
+<p>
+Dato che voglio i messaggi del campo testo,
+devo invocare <tt>addActionListener</tt> su
+di esso
+</p>
+
+<pre>
+public class Clear extends Applet
+  implements ActionListener {
+
+  Label ultimo;
+  Button pulisci;
+  TextField t;
+
+  public void init() {
+    this.pulisci=new Button("Clear");
+    this.add(this.pulisci);
+    this.pulisci.addActionListener(this);
+
+    this.t=new TextField(20);
+    this.add(this.t);
+    this.t.addActionListener(this);
+
+    this.ultimo=new Label("");
+    this.add(this.ultimo);
+  }
+
+  public void actionPerformed(ActionEvent e) {
+    ...
+  }
+}
+</pre>
+
+<hr>
+
+
+<h4>Metodo <tt>actionPerformed</tt></h4>
+
+<p>
+Se il messaggio viene dal pulsante, metti
+<tt>""</tt> nell'etichetta
+</p>
+
+<p>
+Se viene dal campo testo, mettici il contenuto
+del campo testo
+</p>
+
+<pre>
+public class Clear
+  extends Applet
+  implements ActionListener {
+
+  Label ultimo;
+  Button pulisci;
+  TextField t;
+
+  public void init() {
+    ...
+  }
+
+  public void actionPerformed(ActionEvent e) {
+    if(e.getSource()==this.pulisci)
+      this.ultimo.setText("");
+
+    if(e.getSource()==this.t)
+      this.ultimo.setText(t.getText());
+
+    this.ultimo.invalidate();
+    this.validate();
+  }
+}
+</pre>
+
+<hr>
+
+
+<h4>Cancellare il campo testo</h4>
+
+<p>
+Esiste un metodo <tt>setText</tt> anche per
+gli oggetti <tt>TextField</tt>
+</p>
+
+<pre>
+  this.t.setText(stringa)
+</pre>
+
+<p>
+Al posto del contenuto attuale, ci mette
+la stringa
+</p>
+
+<p>
+Esempio: se sto scrivendo:
+</p>
+
+<form>
+<input width="20" value="abcdefg">
+</form>
+
+<p>
+E viene invocato <tt>setText("aaa")</tt>,
+il campo diventa:
+</p>
+
+<form>
+<input width="20" value="aaa">
+</form>
+
+<hr>
+
+
+<h4>Modifica applet di sopra</h4>
+
+<p>
+Nell'esempio di sopra, se il pulsante deve
+anche cancellare il campo testo, basta
+modificare <tt>actionPerfomed</tt>
+</p>
+
+<pre>
+  public void actionPerformed(ActionEvent e) {
+    if(e.getSource()==this.pulisci) {
+      this.ultimo.setText("");
+      this.t.setText("");
+    }
+
+    if(e.getSource()==this.t)
+      this.ultimo.setText(t.getText());
+
+    this.ultimo.invalidate();
+    this.t.invalidate();
+    this.validate();
+  }
+</pre>
+
+<p>
+Notare che <tt>invalidate</tt> va fatto per tutte
+le componenti che vanno ridisegnate
+</p>
+
+<hr>
+
+
+<h4><tt>validate</tt> e <tt>invalidate</tt></h4>
+
+<p>
+Se non si fa <tt>this.validate()</tt> le modifiche
+non si vedono
+</p>
+
+<p>
+Se non si fa <tt>obj.invalidate()</tt>, spesso
+funziona lo stesso
+</p>
+
+<p>
+Ci possono per&ograve; essere problemi se la modifica
+comporta la dimensione dell'oggetto (es. una label
+diventa pi&ugrave; lunga)
+</p>
+
+<p>
+Sempre meglio metterli tutti e due
+</p>
+
+<p>
+Attenzione! Va fatto prima <tt>invalidate()</tt>
+e <i>poi</i> <tt>validate()</tt>
+</p>
+
+<hr>
+
+
+<h4>Il layout</h4>
+
+<p>
+Finora, i componenti li abbiamo aggiunti
+e basta
+</p>
+
+<p>
+Vengono aggiunti in ordine, e si va ``a capo''
+solo quando non c'&egrave; pi&ugrave; spazio
+</p>
+
+<p>
+Il modo in cui vengono disposti gli oggetti
+dipende dal <i>layout manager</i>
+</p>
+
+<hr>
+
+
+<h4>I layout manager</h4>
+
+<p>
+Esempi di layout manager:
+</p>
+
+<ul>
+<li><tt>FlowLayout</tt>
+<li><tt>BorderLayout</tt>
+<li><tt>GridLayout</tt>
+<li><tt>CardLayout</tt>
+</ul>
+
+<hr>
+
+
+<h4>Uso di un layout manager</h4>
+
+<p>
+Esempio di uso:
+</p>
+
+<pre>
+  this.setLayout(new BorderLayout());
+
+  Button b=new Button("Ok");
+  this.add(b, BorderLayout.NORTH);
+</pre>
+
+<p>
+Cosa cambia?
+</p>
+
+<ol>
+
+<li>si specifica quale layout manager va
+usato con <tt>setLayout</tt>
+
+<li>il metodo <tt>add</tt> si pu&ograve;
+invocare con argomenti addizionali
+
+</ol>
+
+<hr>
+
+
+<h4>Come disporre gli oggetti</h4>
+
+<p>
+I layout manager di Java sono complicati
+da usare
+</p>
+
+<p>
+Usiamo il <a href="RowLayout.class">RowLayout</a>
+manager
+</p>
+
+<p>
+Non fa parte delle classi standard di Java:<br>
+scaricare con il pulsante destro del mouse<br>
+e mettere il file nella directory dove stanno
+i programmi
+</p>
+
+<hr>
+
+
+<h4>Come si usa</h4>
+
+<p>
+Per prima cosa, si specifica che questo &egrave;
+il layout manager da usare
+</p>
+
+<pre>
+  public void init() {
+    this.setLayout(new RowLayout());
+</pre>
+
+<p>
+Va fatto nel metodo <tt>init</tt>
+</p>
+
+<p>
+Quando si aggiunge un componente che deve essere
+l'ultimo di una linea, si fa:
+</p>
+
+<pre>
+    this.add(componente, RowLayout.NEWLINE);
+</pre>
+
+<p>
+Dopo questa invocazione, i prossimi oggetti verranno
+messi su una nuova linea
+</p>
+
+<p>
+&Egrave; una specie di <tt>println</tt> degli oggetti:
+dopo si va a capo
+</p>
+
+<hr>
+
+
+<h4>Esempio</h4>
+
+<p>
+L'applet di prima modificato:<br>
+si va a capo dopo il pulsante
+</p>
+
+<pre>
+  public void init() {
+    this.setLayout(new RowLayout());
+
+    this.pulisci=new Button("Clear");
+    this.add(this.pulisci, RowLayout.NEWLINE);
+    this.pulisci.addActionListener(this);
+
+    this.t=new TextField(20);
+    this.add(this.t);
+    this.t.addActionListener(this);
+
+    this.ultimo=new Label("");
+    this.add(this.ultimo);
+  }
+</pre>
+
+<hr>
+
+
+<h4>Esercizio</h4>
+
+<p>
+Realizzare un applet con questo layout
+</p>
+
+<img src="Somma.gif">
+
+<p>
+Voglio solo il metodo <tt>init</tt>
+(la disposizione degli oggetti)
+</p>
+
+<hr>
+
+
+<h4>Soluzione</h4>
+
+<p>
+Prima di tutto, specifico il layout a righe:
+</p>
+
+<pre>
+  public void init() {
+    this.setLayout(new RowLayout());
+</pre>
+
+<p>
+La prima riga &egrave; fatta da una label
+e da un textfield
+</p>
+
+<pre>
+    t1=new Label("Primo numero:");
+    this.add(t1);
+
+    f1=new TextField(20);
+    this.add(f1, RowLayout.NEWLINE);
+    f1.addActionListener(this);
+</pre>
+
+<p>
+La seconda riga &egrave; simile
+</p>
+
+<p>
+Nella terza, ho i due pulsanti
+</p>
+
+<pre>
+    sum=new Button("Somma");
+    this.add(sum);
+    sum.addActionListener(this);
+
+    clear=new Button("Clear");
+    this.add(clear);
+    clear.addActionListener(this);
+</pre>
+
+<hr>
+
+
+<h4>Esercizio</h4>
+
+<p>
+Modificare l'applet in modo tale che, quando
+si preme il pulsante, sotto appaia la somma
+</p>
+
+<hr>
+
+
+<h4>Soluzione: il layout</h4>
+
+<p>
+Dopo il secondo pulsante, devo andare a capo
+e mettere la label con il risultato
+</p>
+
+<pre>
+  public void init() {
+    this.setLayout(new RowLayout());
+
+        // prima riga: label+textfield
+    t1=new Label("Primo numero:");
+    this.add(t1);
+
+    f1=new TextField(20);
+    this.add(f1, RowLayout.NEWLINE);
+    f1.addActionListener(this);
+
+        // seconda riga: label+textfield
+    t2=new Label("Secondo numero:");
+    this.add(t2);
+
+    f2=new TextField(20);
+    this.add(f2, RowLayout.NEWLINE);
+    f2.addActionListener(this);
+
+        // terza riga: i due pulsanti
+    sum=new Button("Somma");
+    this.add(sum);
+    sum.addActionListener(this);
+
+    clear=new Button("Clear");
+    this.add(clear, RowLayout.NEWLINE);
+    clear.addActionListener(this);
+
+        // quarta riga: il risultato
+    res=new Label();
+    this.add(res);
+  }
+</pre>
+
+<p>
+Tutte le componenti vanno ovviamente definite
+prima
+</p>
+
+<hr>
+
+
+<h4>Soluzione: risposta a eventi</h4>
+
+<p>
+Risposta corretta ai pulsanti:
+</p>
+
+<pre>
+  public void actionPerformed(ActionEvent e) {
+        // pulsante somma
+    if(e.getSource()==sum) {
+      int x=Integer.parseInt(f1.getText());
+      int y=Integer.parseInt(f2.getText());
+
+      res.setText(Integer.toString(x+y));
+    }
+
+        // pulsante clear
+    if(e.getSource()==clear) {
+      f1.setText("");
+      f2.setText("");
+      res.setText("");
+    }
+
+        // ridisegna
+    res.invalidate();
+    this.validate();
+  }
+</pre>
+
+<hr>
+
+
+<h4>Il focus</h4>
+
+<p>
+Quando ci sono pi&ugrave; campi testo nello stesso
+applet, il cursore si trova in uno dei due
+</p>
+
+<p>
+Quello che l'utente digita va a finire nel campo
+dove si trova il cursore
+</p>
+
+<form>
+<input type="text" width="20">
+<br>
+<input type="text" width="20">
+</br>
+
+<p>
+Il campo che ha il cursore dentro si dice che ha
+il focus
+</p>
+
+<p>
+Quando l'utente digita qualcosa, va a finire nel
+campo che ha il focus
+</p>
+
+<hr>
+
+
+<h4>Modificare il focus</h4>
+
+<p>
+Se <tt>f</tt> &egrave; un campo testo, allora
+<tt>f.requestFocus()</tt> d&agrave; a lui il 
+focus
+</p>
+
+<p>
+Dopo avere eseguito questa istruzione, il cursore
+viene messo in <tt>f</tt>
+</p>
+
+<p>
+Quindi, tutto quello che l'utente ora digita va
+nel campo testo <tt>f</tt>
+</p>
+
+<hr>
+
+
+<h4>Esercizio</h4>
+
+<p>
+Modificare il programma:
+</p>
+
+<ul>
+<li>quando si preme enter nel primo campo testo,
+il focus va al secondo
+
+<li>quando si preme enter nel secondo textfield,
+oppure nel pulsante somma, si fa la somma; il
+focus torna al primo campo
+
+<li>quando si preme il tasto clear vengono ripuliti
+i campi testo e l'etichetta (ci va la stringa vuota),
+e il fucus va al primo campo testo
+</ul>
+
+<p>
+Se <tt>f</tt> &egrave; un textfield, facendo
+<tt>f.requestFocus()</tt> d&agrave; il focus
+a lui (il cursore viene messo dentro <tt>f</tt>,
+e i caratteri che l'utente inserisce vanno in
+<tt>f</tt>
+</p>
+
+<hr>
+
+
+<h4>Soluzione</h4>
+
+<p>
+Serve solo modificare il metodo <tt>actionPerformed</tt>
+</p>
+
+<p>
+Basta controllare anche <tt>f1</tt> ed <tt>f2</tt>
+come possibili sorgenti dell'evento
+</p>
+
+<pre>
+  public void actionPerformed(ActionEvent e) {
+
+        // pulsante somma oppure enter nel secondo
+        // textfield:
+        // si fa la somma
+    if((e.getSource()==sum) ||
+       (e.getSource()==f2)) {
+      int x=Integer.parseInt(f1.getText());
+      int y=Integer.parseInt(f2.getText());
+
+      res.setText(Integer.toString(x+y));
+      f1.requestFocus();
+    }
+
+        // pulsante clear
+    if(e.getSource()==clear) {
+      f1.setText("");
+      f2.setText("");
+      res.setText("");
+      f1.requestFocus();
+    }
+
+        // enter nel primo textfield:
+	// focus al secondo
+    if(e.getSource()==f1) {
+      f2.requestFocus();
+    }
+
+        // ridisegna
+    res.invalidate();
+    this.validate();
+  }
+</pre>
+
+<hr>
+
+
+<h4>Osservazioni finali</h4>
+
+<p>
+Le GUI possono essere lunghe da scrivere,
+per&ograve; di solito non ci sono algoritmi
+complessi
+</p>
+
+<p>
+Sono fatte di due parti:
+</p>
+
+<dl>
+<dt>metodo <tt>init</tt>
+<dd>qui si creano i pulsanti ecc. e si dice
+in che posizioni vanno disegnati
+
+<dt>metodo <tt>actionPerformed</tt>
+<dd>si specifica cosa deve succedere quando
+succede qualcosa
+</dl>
+
+<p>
+Il metodo <tt>init</tt> di solito &egrave; una
+sequenza creazione oggetto/aggiunta alla finestra
+</p>
+
+<p>
+Nel metodo <tt>actionPerformed</tt> ci sono una
+serie di <tt>if</tt> per ognuno dei possibili
+oggetti che possono inviare un messaggio
+</p>
+
+<p>
+Ci sono dei programmi per disegnare il layout senza
+dover scrivere il metodo <tt>init</tt>
+</p>
+
+<!--
+
+applet per leggere un DB (cerca anche con un
+solo campo + inserisce): richiede eccezioni
+
+-->
+
+</body>
+</html>
+
+
+

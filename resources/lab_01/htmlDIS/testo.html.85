@@ -1,0 +1,110 @@
+<!DOCTYPE doctype PUBLIC "-//w3c//dtd html 4.0 transitional//en"><html><head>
+   <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   
+   <title>esercitazione 1 - Laboratorio di Programmazione - aa2004/05</title><link rel="stylesheet" href="index_files/lp2003.html" type="text/css"></head>
+
+<body>
+<br>
+<center>
+  <p><b>Laboratorio di Programmazione - A.A. 2004/05</b></p>
+  <h2>Esercitazione 1</h2>
+</center>
+
+<p><strong>Parte 1.</strong></p>
+
+<p>Si vogliono gestire i prestiti di giochi di ludoteche.  
+Di un oggetto <em>Ludoteca</em>
+sono di interesse il nome della <em>Ludoteca</em> (una stringa), l'insieme dei
+giochi disponibili in essa e le persone a cui sono stati prestati.  
+
+</p><p>Di ogni gioco sono di interesse le seguenti informazioni:
+
+</p><ul>
+  <li>il nome (una stringa);</li>
+  <li>la fascia di età per cui il gioco è adatto (due interi, di
+      cui uno rappresenta l'età minima e l'altro l'età
+      massima per cui il gioco è adatto).</li>
+</ul>
+
+<p>La classe <code>Gioco</code> è fornita nel file <a href="Gioco.java">Gioco.java</a>.
+
+</p><p>Di ogni persona sono di interesse le seguenti informazioni:
+
+</p><ul>
+  <li>il nome (una stringa);</li>
+  <li>gli estremi di un documento (una stringa).</li>
+</ul>
+
+<p>La classe <code>Persona</code> è fornita nel file <a href="Persona.java">Persona.java</a>.
+
+
+</p><p>Gli oggetti <em>Ludoteca</em> supportano le seguenti funzionalità:
+
+</p><ul>
+  <li><em>crea</em>: che, data una stringa <em>n</em> che rappresenta il nome
+      della <em>Ludoteca</em>, crea un oggetto <em>Ludoteca</em> con nome
+      <em>n</em>, che inizialmente non ha alcun gioco disponibile;
+  </li>
+  <li><em>nome</em>: che restituisce il nome della <em>Ludoteca</em>;
+  </li>
+  <li><em>presente</em>: che, dato un gioco <em>g</em> (oggetto della classe 
+  <code>Gioco</code>), restituisce
+      <em>true</em> se il gioco <em>g</em> è disponibile nella
+      <em>Ludoteca</em>, <em>false</em> altrimenti;
+  </li>
+  <li><em>chiHaIlGioco</em>: che dato un gioco <em>g</em>, restituisce
+la persona a cui è stato prestato, oppure <code>null</code> se il
+gioco non  è stato prestato;
+  </li>
+  <li><em>numeroGiochi</em>: che restituisce il numero di giochi nella
+      <em>Ludoteca</em>;
+  </li>
+  <li><em>numeroGiochiPrestati</em>: che restituisce il numero di giochi nella
+      <em>Ludoteca</em> che sono stati prestati;
+  </li>
+  <li><em>aggiungiGioco</em>: che, dato un gioco <em>g</em>, lo aggiunge a
+      quelli della <em>Ludoteca</em>;
+  </li>
+  <li><em>eliminaGioco</em>: che, dato un gioco <em>g</em>, lo elimina 
+      da quelli della <em>Ludoteca</em>; se il gioco non
+      è presente non fa nulla;
+  </li>  <li><em>prestaGioco</em>: che, dato un gioco <em>g</em> e una persona
+<em>p</em>, presta il gioco alla persona, se questo esiste e se non è
+già in prestito; altrimenti lancia una eccezione;
+  </li>
+  <li><em>restituisciGioco</em>: che, dato un gioco <em>g</em>, 
+restituisce il gioco, se questo esiste ed è in prestito,
+altrimenti lancia una eccezione;
+  </li>
+  <li><em>tuttiIGiochi</em>: che restituisce un
+      array di giochi contenente i tutti i giochi presenti nella
+      <em>Ludoteca</em>.
+  </li>
+</ul>
+
+
+<p><strong>Parte 2.</strong></p>
+
+<p> Realizzare la classe <code>ServiziLudoteca</code>, contenente il 
+metodo statico
+<code>giochiInComune</code>, cliente della classe <code>Ludoteca</code> che,
+dati</p>
+
+<ul>
+  <li>un oggetto <em>lt</em> della classe <code>Ludoteca</code>,</li>
+  <li>due interi <em>e1</em> ed <em>e2</em> che rappresentano due età,
+  </li><li>il nome <em>fout</em> di un file,
+  </li>
+</ul>
+scrive sul file <em>fout</em>, un gioco per riga, le informazioni (nome e
+fascia di età) relative ai giochi non in prestito in <em>lt</em>,
+che sono adatti sia alle persone di età <em>e1</em> che alle persone di
+età <em>e2</em>.
+
+<p><strong>Parte 3.</strong></p>
+
+<p>Scrivere una classe cliente di <code>Ludoteca</code> e
+<code>ServiziLudoteca</code>, contenente un metodo <code>main</code>,
+che utilizzi tutte le funzionalità delle due classi.
+
+</p></body></html>

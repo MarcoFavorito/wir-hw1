@@ -1,0 +1,42 @@
+
+<HTML>
+
+<HEAD>
+<META HTTP-EQUIV="Context-Type" CONTEXT="text/html;charset=PREDEFINITA (AUTOMATICA)">
+<meta name="GENERATOR" content="Microsoft Internet Assistant for PowerPoint 97">
+ <TITLE>What Does 3NF Achieve?</TITLE> 
+</HEAD>
+
+<BODY     >
+
+ <H1>What Does 3NF Achieve?</H1> 
+ <P><UL>
+<LI><H2>If 3NF violated by X     A, one of the following holds:
+</H2>
+<UL>
+<LI>X is a subset of some key K
+<UL>
+<LI>We store (X, A) pairs redundantly.
+</UL><LI>X is not a proper subset of any key.
+<UL>
+<LI>There is a chain of FDs  K        X        A, which means that we cannot associate an X value with a K value unless we also associate an A value with an X value.
+<LI>But: even if reln is in 3NF, these problems could arise.
+</UL><LI>e.g., Reserves  SBDC,  S       C,   C        S   is in 3NF, but for each reservation of sailor S,  same (S, C) pair is stored.
+</UL></UL><UL>
+<LI><H2>Thus, 3NF is indeed a compromise relative to BCNF.</H2>
+</UL></P>
+<P></P> 
+<P>
+<TABLE>
+  <TD HEIGHT=100 WIDTH=100> <A HREF="tsld012.htm">Diapositiva precedente</A> </TD>
+  <TD HEIGHT=100 WIDTH=100> <A HREF="tsld014.htm">Diapositiva successiva</A> </TD>
+  <TD HEIGHT=100 WIDTH=150> <A HREF="tsld001.htm">Torna alla prima diaposiva</A> </TD>
+  <TD HEIGHT=100 WIDTH=150> <A HREF="sld013.htm">Visualizza versione grafica</A> </TD>
+</TABLE>
+<BR>
+</P>
+
+
+
+</Body>
+</HTML>

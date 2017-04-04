@@ -1,0 +1,67 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=windows-1252">
+<TITLE>Reti di Calcolatori</TITLE>
+</HEAD>
+<BODY background="bgrnd.jpg">
+
+<B><FONT SIZE=5><P>15) Il livello applicativo in Internet - i <I>Servlet</P>
+<hr>
+</I></FONT>
+</B>1.&nbsp; Analogie con il CGI
+<DIR>
+<DIR>
+
+<P ALIGN="JUSTIFY">I Servlet sono applicazioni Java (componenti lato server) che estendono le funzionalit&agrave; del server http.  Il meccanismo &egrave; analogo a quello previsto nell'interfacciamento ad applicazioni CGI (anche l'URL per l'attivazione &egrave; analogo), ma i servlet garantiscono oltre alla portabilit&agrave; del lavoro, una migliore ottimizzazione delle risorse (di conseguenza migliori performance) in quanto:</P></DIR>
+</DIR>
+
+
+<UL>
+
+<UL>
+<LI>L'attivazione di un servlet non prevede l'attivazione di un nuovo processo ma solo il caricamento in memoria di una classe da parte di una VM integrata nel server http (in altre parole, un servlet &egrave; parte integrante del server http).</LI><LI>Al contrario di quanto accade con il CGI, le classi vengono caricate in memoria quando richieste, e li rimangono per eventuali richieste successive.  La richiesta di uno stesso servizio da parte di un secondo client &egrave; equivalente ad una chiamata di procedura o funzione.</LI></UL>
+</UL>
+
+2.&nbsp; Sottoclassi di HttpServlet
+<DIR>
+<DIR>
+
+<P ALIGN="JUSTIFY">Per realizzare un servlet &egrave; sufficiente ereditare dalla classe <I>javax.servlet.http.HttpServlet</I> ed implementare il metodo service (o i metodi <I>doGet e</I> <I>doPost,</I> o entrambi, in funzione del metodo http previsto per l'interfacciamento).  Tali metodi vengono invocati automaticamente dalla VM integrata nel server http; ricevono come parametri strutture dati che consentono con semplicit&agrave; di:</P></DIR>
+</DIR>
+
+
+<UL>
+
+<UL>
+<LI>accedere ai parametri forniti dal client</LI><LI>reperire uno stream di output per restituire la pagina di risposta.</LI></UL>
+</UL>
+<DIR>
+<DIR>
+
+<P ALIGN="JUSTIFY">Analisi di <B>HelloWorldServlet.java</P></DIR>
+</DIR>
+
+</B>3.&nbsp; Cosa &egrave; necessario fare per lavorare con i servlet
+
+
+<UL>
+
+<UL>
+<LI>Procurarsi un http server come Apache, JavaWebServer, o altri che supportano tale tecnologia (i test indicati sono stati fatti con JWS)</LI><LI>Procurarsi il JSDK, installarlo e rendere disponibile alla classpath dei progetti il file servlet.jar presente nella cartella jsdkx.y</LI><LI>Se il test &egrave; condotto con JavaWebServer per ogni servlet deve essere effettuato il "mapping" tra il file ".class" ed un nome logico, in amministrazione della sezione "Setup/Servlet Aliases"</LI></UL>
+</UL>
+
+4.&nbsp; I metodi <I>init()</I> e <I>destroy()</I> 
+
+<OL>
+
+<P ALIGN="JUSTIFY">Vengono richiamati rispettivamente nella fase di inizializzazione del servlet e di <I>unload</I> dello stesso.  L'inizializzazione avviene all'atto del caricamento, quindi in fase di attivazione del server http o alla prima richiesta dell'utente.  In molti casi pu&ograve; risultare conveniente ridefinire il metodo <I>init()</I> per includervi dentro operazioni di un certo peso da effettuare una sola volta; un servlet che fornisce un servizio di accesso a Database pu&ograve; prevedere in questo metodo la connessione, migliorando ulteriormente le performance.  L'<I>unload </I>del servlet avviene in fase di shutdown del server http o quando esplicitamente richiesto dall'amministratore.  </P>
+</OL>
+5.&nbsp; Concorrenza nell'utilizzo dei servlet
+<DIR>
+<DIR>
+
+<P ALIGN="JUSTIFY">Va tenuto presente che ogni richiesta di esecuzione di un servlet viene eseguita in un thread; potenzialmente due thread possono "concorrere" per l'utilizzo dello stesso servlet.  Nei casi pi&ugrave; semplici &egrave; possibile rendere "synchronized" il metodo <I>service()</I>, in altri casi l'intervento pu&ograve; risultare pi&ugrave; delicato.</P>
+</DIR>
+</DIR>
+</BODY>
+</HTML>

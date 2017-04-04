@@ -1,0 +1,72 @@
+<html>
+<title>Camera Motion Estimation</title>
+
+<body>
+
+<br><br>
+<center>
+<h1>Camera Motion Estimation</h1>
+</center>
+
+<UL>
+
+<br><br>
+
+<P>
+We consider the general case for camera motion (6 dof) and with general
+objects in the views.
+</P>
+
+
+<p><img src="fig/refsystem.gif"></p>
+
+<br><br>
+<P>
+The reference system is fixed as follows:<br><br>
+<ol>
+<li>the origin is the lens center of the first left camera,<br><br>
+<li>the X axis connects the lens centers of the left cameras,<br><br>
+<li>the XZ plane contains the optical axis of the first left camera.
+</ol>
+</P>
+
+<br>
+
+<P>Camera motion is described by the 6 variables:
+Th<sub>1</sub>, Rho<sub>1</sub>, X<sub>2</sub>, Th<sub>2</sub>, Rho<sub>2</sub>,
+and Phi<sub>2</sub> (all angles except for X<sub>2</sub>).
+</P>
+
+<br><br>
+
+<P>The new idea is to consider the camera motion problem as a stereo problem, 
+in which the objective is to transform the images as they were taken by 
+a <b>virtual large baseline stereo rig in a standard setting</b>.<br><br>
+In other words, instead of using just a few features in the images we
+make use of all the pixels in the images<br> 
+(data association is addressed by stereo correlation).
+</P>
+
+
+<br><br>
+
+
+<UL>
+<LI><a href="largebaseline.html">Large Baseline Stereo</a><br><br>
+<LI><a href="experiments.html">Experimental results</a><br><br>
+<LI><a href="sensitivity.html">Sensitivity Analysis</a>
+</UL>
+
+</UL>
+
+</body>
+
+</html>
+
+
+
+
+
+
+
+

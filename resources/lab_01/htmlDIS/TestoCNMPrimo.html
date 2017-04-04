@@ -1,0 +1,134 @@
+<!doctype html public "-//w3c//dtd html 4.0 transitional//en">
+<html>
+<head>
+   <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <meta name="Generator" content="Microsoft Word 97">
+   <meta name="GENERATOR" content="Mozilla/4.72 [en] (X11; U; AIX 4.3) [Netscape]">
+   <title>TEMA primo APPELLO</title>
+</head>
+<body text="#000000" bgcolor="#FFFFFF" link="#0000EE" vlink="#551A8B" alink="#FF0000">
+
+<center><b>Universit&agrave; di Roma ``La Sapienza''</b>
+<br><b>Facolt&agrave; di Ingegneria</b>
+<br><b>Corso di Fondamenti di Informatica - A.A. 2001/2002</b>
+<br><b>Corsi di Laurea: Chimica, Materiali, Nucleare (vecchio ordinamento)</b>
+<br><b>Appello del 10 giugno 2002 - 1<sup>a</sup> prova scritta</b>
+<p><b><i>tempo a disposizione: 2 ore</i></b></center>
+
+<p><br>
+<br>
+<br>
+<h1>
+<b><font face="Arial"><font size=+0>Problema 1 (18 punti)</font></font></b></h1>
+I risultati di un esperimento di laboratorio sono contenuti in un file
+di tipo testo. I dati sono organizzati per linee. Ogni linea del file ha
+la seguente struttura:
+<p>&lt;NUMERO PROVA> &lt;RIPETIZIONE> &lt;VALORE-X> &lt;VALORE-Y>
+<p>dove:
+<ul>
+<li>
+NUMERO_PROVA &egrave; un intero positivo che identifica una specifica prova</li>
+
+<li>
+RIPETIZIONE &egrave; un intero positivo minore di 10 che identifica la
+ripetizione di una prova</li>
+
+<li>
+VALORE-X &egrave; un reale con due cifre decimali che indica la variabile
+indipendente dell?esperimento</li>
+
+<li>
+VALORE-Y &egrave; un reale con due cifre decimali che indica la variabile
+dipendente dell?esperimento (il risultato).</li>
+</ul>
+Il file &egrave; ordinato per esperimento e, a parit&agrave; di esperimento,
+per ripetizione. I valori sono separati da uno o pi&ugrave; spazi. Un esempio
+di un file siffatto &egrave; il seguente:
+<p>1 1 8.20 9.00
+<br>1 2 8.20 9.30
+<br>1 3 8.15 8.99
+<br>1 4 7.44 8.90
+<br>2 1 10.00 12.10
+<br>2 2 10.00 11.15
+<br>2 3 10.02 12.45
+<br>2 4 10.01 11.30
+<p>Risolvere i seguenti punti.
+<br>&nbsp;
+<p><b>PUNTO 1</b>
+<br>Definire i tipi di dato PASCAL necessari alla risoluzione dei punti
+2 e 3. In particolare chiamare TIPOLISTA la lista, costruita mediante record
+e puntatori, necessaria a memorizzare i dati del file e tale che ogni nodo
+memorizzi i dati di una singola linea.
+<br>&nbsp;
+<p><b>PUNTO 2</b>
+<br>Scrivere una funzione in PASCAL ESER2 che sia in grado di leggere un
+file come quello descritto e restituisca una lista di tipo TIPOLISTA contente
+tutti i dati del file. La lista deve essere creata mediante <u>inserimento
+in coda</u>.
+<p>La funzione riceve come unico parametro il nome esterno del file dati.
+<br>&nbsp;
+<p><b>PUNTO 3</b>
+<br>Scrivere una procedura ESER3 che, a partire da una lista L di tipo
+TIPOLISTA fornita come parametro, scriva sullo schermo il valore medio
+dei soli esperimenti di L corretti.
+<p>Un esperimento &egrave; corretto se, indicando con <i>m</i> la media
+dei valori che la variabile indipendente assume nelle varie ripetizioni
+ed x il valore della variabile indipendente di una generica ripetizione,
+risulta: |<i>x</i>-<i>m</i>| <font face="Symbol">&pound;</font> T <i>m</i>.
+ossia, il valore <i>x</i> si discosta dal valore medio <i>m</i> al pi&ugrave;
+per il T %. Nei calcoli, arrotondare i valori alla seconda cifra decimale.
+<p>Ad esempio, con T=2% l?esperimento 1 non &egrave; corretto: la media
+dei quattro valori di x vale (8.20+8.20+8.15+7.44)/4=7.88 - cui corrisponde
+un margine di tolleranza pari a 0.02*7.88=0.1576 <font face="Symbol">&raquo;</font>
+0.16; l?esperimento non e? corretto poich&eacute;, ad esempio, |8.20-7.88|=0.32>0.16.
+L?esperimento 2 &egrave; invece corretto ed ha valore medio 11.75. L?output
+sarebbe quindi:
+<p>2 11.75
+<br>&nbsp;
+<br>&nbsp;
+<p>(Suggerimento: usare le funzioni <i>abs()</i> e <i>round()</i>)
+<br>(<a href="eser1.pas">Soluzione</a>)
+<center>
+<hr WIDTH="100%">
+<p><b>Universit&agrave; di Roma ``La Sapienza''</b>
+<br><b>Facolt&agrave; di Ingegneria</b>
+<br><b>Corso di Fondamenti di Informatica - A.A. 2001/2002</b>
+<br><b>Corsi di Laurea: Chimica, Materiali, Nucleare (vecchio ordinamento)</b>
+<br><b>Appello del 10 giugno 2002 - 2<sup>a</sup> prova scritta</b>
+<br><b><i>tempo a disposizione: 1 ora</i></b></center>
+
+<p><br>
+<br>
+<br>
+<br>
+<br>
+<p><b><font face="Arial">Problema 2 (4 punti)</font></b>
+<br><font face="Arial">Illustrare il metodo di rappresentazione binaria
+del tipo real del TURBOPASCAL, discutendo in particolare gli aspetti legati
+a precisione ed <i>overflow</i>.</font>
+<br>&nbsp;
+<br>&nbsp;
+<br>&nbsp;
+<br>&nbsp;
+<p><b><font face="Arial">Problema 3 (4 punti)</font></b>
+<br><font face="Arial">Stabilire la complessit&agrave; computazionale del
+seguente frammento di programma:</font>
+<p><font face="Courier New,Courier"><font size=+1>FOR I:=1 TO N DO</font></font>
+<br><font face="Courier New,Courier"><font size=+1>BEGIN</font></font>
+<br><font face="Courier New,Courier"><font size=+1>&nbsp;&nbsp;&nbsp; J:=I;</font></font>
+<br><font face="Courier New,Courier"><font size=+1>&nbsp;&nbsp;&nbsp; WHILE
+J>=0 DO J:=J-1</font></font>
+<br><font face="Courier New,Courier"><font size=+1>END</font></font><font size=+1></font>
+<p>&nbsp;(<a href="eser3.html">Soluzione</a>)
+<br>&nbsp;
+<p><b><font face="Arial">Problema 4 (4 punti)</font></b>
+<br><font face="Arial">Scrivere una <i>subroutine</i> FORTRAN che legga
+da un file i valori di una matrice quadrata A di ordine N e restituisca
+il valore .TRUE. se la matrice &egrave; unitaria e .FALSE. altrimenti.
+Una matrice &egrave; unitaria se tutti gli elementi sono nulli ad eccezione
+di quelli sulla diagonale principale che valgono 1.</font>
+<p><font face="Arial">Scrivere inoltre un esempio di attivazione della
+<i>subroutine</i> dal <i>main</i>.</font>
+<p>(<a href="Eser4.for">Soluzione</a>)
+</body>
+</html>

@@ -1,0 +1,127 @@
+<!doctype html public "-//w3c//dtd html 4.0 transitional//en">
+<html>
+<head>
+<link href="java.css" rel="stylesheet" type="text/css">
+<title>Disegna una linea spezzata</title>
+</head>
+
+<body>
+
+<h2>Disegna una linea spezzata</h2>
+
+Scrivere un applet che disegna una linea spezzata seguendo
+i click del mouse. In altre parole, ogni volta che si fa
+un click, va aggiunto un segmento fra l'ultimo punto
+della spezzata e quello in cui si trova il cursore.<p>
+
+Lasciamo da parte il problema di rendere permanente
+la spezzata, ossia di fare in modo che venga ridisegnata
+ogni volta che la finestra viene coperta e torna
+nuovamente visibile. Ci concentriamo invece sul
+problema del disegno.<p>
+
+Dal momento che si tratta di fare qualcosa ogni volta
+che si preme il pulsante del mouse, occorre scrivere
+qualcosa nella procedura <tt>mouseDown</tt>. In
+particolare, occorre disegnare un segmento fra l'ultimo
+punto disegnato e quello in cui si trova il cursore in
+questo momento. La posizione attuale del cursore &egrave;
+memorizzata in <tt>x</tt> e <tt>y</tt> come al solito.
+Serve anche sapere la posizione del penultimo punto in
+cui il pulsante era stato premuto. Occorre quindi che
+la procedura stessa salvi la posizione in due variabili
+globali, in modo tale che la volta dopo di sappia la
+posizione precedente.<p>
+
+La funzione <tt>mouseDown</tt> &egrave; quindi fatta in
+questo modo (per ora):<p>
+
+<pre>
+  public boolean mouseDown(Event e, int x, int y) {
+    Graphics g=getGraphics();
+
+    g.drawLine(xultimo,yultimo,x,y);
+
+    xultimo=x;
+    yultimo=y;
+
+    return true;
+  }
+</pre>
+
+Le due variabili <tt>xultimo</tt> e <tt>yultimo</tt> sono
+dichiarate come variabili globali. Resta ancora un punto da
+decidere: quale valore iniziale devono avere queste due
+variabili? Se mettiamo per esempio 0 in entrambe, abbiamo
+che il primo punto della spezzata si trova sempre nella
+posizione (0,0). D'altra parte, noi vorremmo far partire la
+spezzata nel punto in cui il pulsante &egrave; stato premuto
+per la prima volta.<p>
+
+Il problema si risolve facilmente considerando che, la prima
+volta che il pulsante viene premuto, non occorre disegnare
+nessuna linea: infatti, questo &egrave; il punto iniziale
+della spezzata; la prima linea sar&agrave; fra questo punto
+e il successivo. Il problema, a questo punto, &egrave;: come
+facciamo, all'interno di <tt>mouseDown</tt> a capire se
+stiamo al primo click del mouse oppure no? Il problema non
+&egrave; difficile come sembra.<p>
+
+Supponiamo di mettere -1 come valore iniziale di
+<tt>xultimo</tt>. Quando <tt>mouseDown</tt> viene eseguito
+per la prima volta, <tt>xultimo</tt> vale quindi -1. In
+questa variabile viene poi messa la coordinata <tt>x</tt>
+del punto attuale del cursore, che &egrave; un numero
+maggiore o uguale a 0. Alla successiva chiamata, nella
+variabile c'&egrave; ancora questo valore, che viene poi
+modificato nuovamente con la nuova coordinata. Si pu&ograve;
+quindi dire che la variabile vale -1 soltanto la prima
+volta che la procedura viene eseguita, ossia soltanto
+la prima volta che viene premuto il pulsante del mouse.<p>
+
+Questo ci permette di decidere se disegnare o no la linea.
+Come si &egrave; detto, la linea va disegnata soltanto se
+questa non &egrave; la prima volta che il pulsante &egrave;
+stato premuto. Abbiamo visto che <tt>xultimo</tt> vale
+-1 soltanto la prima volta che il pulsante &egrave; stato
+premuto. Quindi, la linea va fatta solo se <tt>xultimo</tt>
+non vale -1.<p>
+
+Il programma finale
+<a href="DisegnaSpezzata.java">DisegnaSpezzata.java</a>
+contiene la procedura <tt>mouseDown</tt> modificata, in cui
+la linea viene disegnata solo se <tt>xultimo</tt> ha
+un valore diverso da -1.<p>
+
+<pre>
+/*
+  Disegna un poligono, dati i punti successivi
+*/
+
+import java.awt.*;
+
+public class DisegnaSpezzata extends java.applet.Applet {
+  int xultimo=-1, yultimo=-1;
+
+  public boolean mouseDown(Event e, int x, int y) {
+    Graphics g=getGraphics();
+
+    if( xultimo != -1 ) {
+      g.drawLine(xultimo,yultimo,x,y);
+    }
+
+    xultimo=x;
+    yultimo=y;
+
+    return true;
+  }
+}
+
+</pre>
+
+<p>
+<applet code="DisegnaSpezzata.class" width="400" height="400">
+</applet>
+
+</body>
+</html>

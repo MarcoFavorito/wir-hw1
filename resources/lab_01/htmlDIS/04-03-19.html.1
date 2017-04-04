@@ -1,0 +1,122 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+
+<!--Converted with jLaTeX2HTML 2002 (1.62) JA patch-1.4
+patched version by:  Kenshi Muto, Debian Project.
+LaTeX2HTML 2002 (1.62),
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>2004-03-19</TITLE>
+<META NAME="description" CONTENT="2004-03-19">
+<META NAME="keywords" CONTENT="2004-03-19">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1">
+<META NAME="Generator" CONTENT="jLaTeX2HTML v2002 JA patch-1.4">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+</HEAD>
+
+<BODY >
+
+<P>
+
+<P>
+<DIV ALIGN="CENTER">
+<FONT SIZE="+1"><B>  Esame di Basi di Dati
+<BR>
+Laurea in Ingegneria Informatica - N.O.
+<BR>
+Laurea in Ingegneria Informatica - V.O. (1a parte)
+<BR>
+A.A.&nbsp;2003/2004 - Appello del 19/03/2004
+<BR>  
+<I>tempo a disposizione: 2 ore</I>
+
+</B></FONT></DIV>
+
+<P>
+
+<H2><A NAME="SECTION00001000000000000000">
+Problema 1</A>
+</H2>
+
+<P>
+Si richiede di progettare lo schema concettuale Entit&#224;-Relazione di
+un'applicazione per la gestione dei progetti gestiti da un'azienda.
+Di ogni progetto interessa il nome (indentificativo), la durata, la tipologia,
+i gruppi di lavoro che vi partecipano (almeno uno), ed i liberi professionisti
+che revisionano il progetto (almeno uno).
+Ogni gruppo di lavoro partecipa ad uno ed un solo progetto.  Di ogni gruppo di
+lavoro interessa il codice, unico nell'ambito del progetto a cui partecipa, le
+risorse finanziare assegnate al gruppo per la partecipazione al progetto, e le
+persone che sono membri del gruppo (almeno una), ciascuna con il relativo
+impegno in termini di ore settimanali.  Interessa inoltre sapere quale &#232; il
+membro del gruppo (uno ed uno solo) che dirige il gruppo stesso.  Si noti che
+ciascuna persona pu&#242; essere membro di pi&#249; gruppi di lavoro, ma pu&#242;
+dirigerne al massimo uno (di cui deve essere membro).
+Di ogni persona di interesse per l'applicazione &#232; rilevante il codice fiscale
+(identificativo), il nome e la data di nascita.  Le persone si partizionano in
+dipendenti dell'azienda e liberi professionisti.  Di ogni dipendente interessa
+lo stipendio annuo ed il dipartimento in cui lavora (uno ed uno solo), con
+l'anno in cui ha iniziato a lavorare nel dipartimento.  Di ogni libero
+professionista interessa la partita IVA ed il numero di telefono, se
+disponibile.
+Di ogni dipartimento interessa il nome (identificativo), il fatturato e l'anno
+di fondazione.
+Interessa infine sapere quali progetti sono di interesse per quali
+dipartimenti, con il relativo grado di interesse (intero positivo).
+
+<P>
+
+<H2><A NAME="SECTION00002000000000000000">
+Problema 2</A>
+</H2>
+
+<P>
+Si richiede di effettuare la progettazione logica dell'applicazione, producendo
+(in una qualunque notazione) lo schema relazionale completo di vincoli, e
+seguendo l'indicazione di evitare valori nulli nella base di dati (si noti che
+le interrogazioni menzionate nel problema&nbsp;3 non sono da considerarsi
+significative per le indicazioni di progetto).
+
+<P>
+
+<H2><A NAME="SECTION00003000000000000000">
+Problema 3</A>
+</H2>
+
+<P>
+Sulla base dello schema relazionale definito per il problema&nbsp;2, esprimere in
+SQL le seguenti interrogazioni:
+
+<OL>
+<LI>Per ciascun dipendente con stipendio annuo superiore a 50.000 Euro,
+  calcolare il nome, la data di nascita, e il fatturato del dipartimento in cui
+  lavora.
+</LI>
+<LI>Calcolare il codice fiscale di ciascun dipendente che dirige un gruppo di
+  lavoro che partecipa ad un progetto il quale &#232; di interesse, con un grado
+  almeno pari a 10, per il dipartimento in cui il dipendente lavora.
+</LI>
+<LI>Calcolare nome e durata di ciascun progetto che ha un costo superiore a
+  10.000 Euro.  Il costo di un progetto deve essere calcolato come la somma
+  delle risorse finanziare assegnate a tutti i gruppi di lavoro che partecipano
+  al progetto stesso.
+</LI>
+<LI>Calcolare i nomi di quei progetti a cui non partecipa alcuna persona che
+  revisiona il progetto stesso.  Si noti che una persona partecipa ad un
+  progetto quando &#232; un membro di un gruppo di lavoro che partecipa al
+  progetto.
+</LI>
+</OL>
+
+<P>
+<BR><HR>
+
+</BODY>
+</HTML>

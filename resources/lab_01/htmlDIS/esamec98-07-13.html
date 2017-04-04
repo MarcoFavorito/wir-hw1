@@ -1,0 +1,152 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1">
+<META NAME="Generator" CONTENT="Microsoft Word 98">
+<TITLE>Esame 13/7/1998</TITLE>
+</HEAD>
+<BODY>
+
+<B><FONT FACE="Times"><P ALIGN="CENTER">Fondamenti di Informatica</P>
+</FONT><FONT FACE="Times" SIZE=3><P ALIGN="CENTER">Ambiente e Territorio</P>
+</B><I><P ALIGN="CENTER">Appello del 13-7-1998</P>
+</I><P ALIGN="JUSTIFY"></P>
+<B><P ALIGN="JUSTIFY">Esercizio 1 (18 punti)</P>
+</B><P ALIGN="JUSTIFY"></P>
+<P ALIGN="JUSTIFY">Una agenzia di viaggi propone alla clientela un&#146;offerta speciale, in cui vengono proposti a prezzi particolarmente vantaggiosi biglietti aerei da e per alcune citt&agrave; in determinati periodi dell&#146;anno. L&#146;offerta coinvolge <I>N</I> citt&agrave; (non pi&ugrave; di 20) ed &egrave; descritta da una tabella (delle offerte) di <I>N</I> righe ed <I>N</I> colonne (associate alle citt&agrave;). Il generico elemento (<I>i</I>, <I>j</I>) della tabella pu&ograve; essere vuoto (caso in cui l&#146;agenzia non offre biglietti speciali dalla citt&agrave; associata alla riga <I>i</I> a quella associata alla riga <I>j</I>) oppure pu&ograve; contenere informazioni (l&#146;agenzia offre biglietti speciali dalla citt&agrave; associata alla riga <I>i</I> a quella associata alla riga <I>j</I>). In questo ultimo caso l&#146;elemento della tabella contiene il costo del biglietto (intero positivo) e l&#146;indicazione del periodo (o dei periodi) di validit&agrave; dell&#146;offerta (uno o pi&ugrave; fra i seguenti valori: autunno, natale, pasqua, agosto e sempre. Si noti che un&#146;offerta valida sempre &egrave; ovviamente valida anche in autunno, natale, pasqua ed agosto). Un possibile esempio &egrave; illustrato in Fig. 1.</P>
+<P ALIGN="JUSTIFY">&#9;La tabella pu&ograve; essere rappresentata tramite una matrice <B>Offerta</B> e un vettore <B>Citta</B>: gli elementi della matrice sono in corrispondenza biunivoca con quelli della tabella, mentre quelli del vettore contengono i nomi delle <I>N</I> citt&agrave; (max 12 caratteri; la citt&agrave; nella cella <I>i</I> corrisponde a quella che nella matrice &egrave; associata alla riga <I>i</I> e alla colonna <I>i</I>). Ogni cella della matrice corrispondente a un elemento non vuoto della tabella delle offerte &egrave; una struttura con due campi: il primo contiene il costo del biglietto aereo e il secondo punta a una lista i cui elementi definiscono il periodo (o i periodi) di validit&agrave; dell&#146;offerta. Ad esempio, con riferimento alla situazione illustrata in Fig. 1, l&#146;elemento della seconda riga e prima colonna della tabella delle offerte &egrave; rappresentato da una struttura con un campo pari a 900.000 e uno che punta a una lista di due elementi, i cui campi informativi contengono rispettivamente i periodi pasqua e natale.</P>
+<P ALIGN="JUSTIFY">&#9;Si noti che non tutti gli elementi della matrice definiscono necessariamente un possibile viaggio: in particolare, quelli della diagonale principale ovviamente non possono corrispondere a viaggio alcuno (che sarebbe da una citt&agrave; alla citt&agrave; stessa!) e ci possono essere collegamenti da una citt&agrave; a un&#146;altra che non fanno parte dell&#146;offerta speciale e quindi non sono presenti nella tabella delle offerte. Si noti inoltre che la presenza di un&#146;offerta dalla citt&agrave; <I>i</I> alla citt&agrave; <I>j</I> non implica necessariamente la presenza di un&#146;offerta simmetrica dalla citt&agrave; <I>j</I> alla citt&agrave; <I>i</I>.</P>
+<P ALIGN="JUSTIFY"></P>
+<OL>
+
+<P ALIGN="JUSTIFY"><LI>[2 punti] Definire i tipi di dato C adeguati a risolvere i problemi di cui ai successivi punti (2) e (3).</LI></P>
+<P ALIGN="JUSTIFY"><LI>[9 punti] Scrivere una funzione C (o pi&ugrave;) che, ricevendo come parametri la matrice <B>Offerta</B>, il vettore <B>Citta</B>, un intero positivo <B>cmax</B>, che rappresenta il <U>costo massimo del biglietto</U> che un cliente &egrave; disposto a pagare, una stringa <B>nomcit</B>, che rappresenta il <U>nome della citt&agrave; di partenza</U> del cliente, e un valore <B>perscel</B>, che rappresenta il <U>periodo prescelto</U> dal cliente, costruisca un file di testo SCELTE.TXT in cui sono contenute tutte le possibili destinazioni (con specificato, per ogni destinazione, il relativo costo del biglietto) <U>raggiungibili con un solo biglietto</U> a partire da <B>nomcit</B>, con costo minore o uguale a <B>cmax</B> e nel periodo <B>perscel</B>.</LI></P>
+<P ALIGN="JUSTIFY"><LI>[7 punti] Scrivere una funzione C (o pi&ugrave;) che, ricevendo come parametro la matrice <B>Offerta</B>, elimini tutti i viaggi aventi validit&agrave; sempre.</LI></P></OL>
+
+<P ALIGN="JUSTIFY"></P></FONT>
+<P ALIGN="CENTER"><CENTER><TABLE BORDER CELLSPACING=1 CELLPADDING=5 WIDTH=426>
+<TR><TD WIDTH="16%" VALIGN="TOP">&nbsp;</TD>
+<TD WIDTH="24%" VALIGN="TOP">
+<FONT FACE="Times" SIZE=3><P ALIGN="CENTER">New York</FONT></TD>
+<TD WIDTH="20%" VALIGN="TOP">
+<FONT FACE="Times" SIZE=3><P ALIGN="CENTER">Parigi</FONT></TD>
+<TD WIDTH="20%" VALIGN="TOP">
+<FONT FACE="Times" SIZE=3><P ALIGN="CENTER">Roma</FONT></TD>
+<TD WIDTH="20%" VALIGN="TOP">
+<FONT FACE="Times" SIZE=3><P ALIGN="CENTER">Londra</FONT></TD>
+</TR>
+<TR><TD WIDTH="16%" VALIGN="TOP">
+<FONT FACE="Times" SIZE=3><P ALIGN="RIGHT">New York</FONT></TD>
+<TD WIDTH="24%" VALIGN="TOP">
+<FONT FACE="Times" SIZE=3><P ALIGN="CENTER">&#150;</FONT></TD>
+<TD WIDTH="20%" VALIGN="TOP">&nbsp;</TD>
+<TD WIDTH="20%" VALIGN="TOP">&nbsp;</TD>
+<TD WIDTH="20%" VALIGN="TOP">
+<FONT FACE="Times" SIZE=3><P ALIGN="CENTER">800.000<BR>
+natale</FONT></TD>
+</TR>
+<TR><TD WIDTH="16%" VALIGN="TOP">
+<FONT FACE="Times" SIZE=3><P ALIGN="RIGHT">Parigi</FONT></TD>
+<TD WIDTH="24%" VALIGN="TOP">
+<FONT FACE="Times" SIZE=3><P ALIGN="CENTER">900.000<BR>
+pasqua e natale</FONT></TD>
+<TD WIDTH="20%" VALIGN="TOP">
+<FONT FACE="Times" SIZE=3><P ALIGN="CENTER">&#150;</FONT></TD>
+<TD WIDTH="20%" VALIGN="TOP">
+<FONT FACE="Times" SIZE=3><P ALIGN="CENTER">320000<BR>
+sempre</FONT></TD>
+<TD WIDTH="20%" VALIGN="TOP">&nbsp;</TD>
+</TR>
+<TR><TD WIDTH="16%" VALIGN="TOP">
+<FONT FACE="Times" SIZE=3><P ALIGN="RIGHT">Roma</FONT></TD>
+<TD WIDTH="24%" VALIGN="TOP">
+<FONT FACE="Times" SIZE=3><P ALIGN="CENTER">850.000<BR>
+agosto</FONT></TD>
+<TD WIDTH="20%" VALIGN="TOP">&nbsp;</TD>
+<TD WIDTH="20%" VALIGN="TOP">
+<FONT FACE="Times" SIZE=3><P ALIGN="CENTER">&#150;</FONT></TD>
+<TD WIDTH="20%" VALIGN="TOP">&nbsp;</TD>
+</TR>
+<TR><TD WIDTH="16%" VALIGN="TOP">
+<FONT FACE="Times" SIZE=3><P ALIGN="RIGHT">Londra</FONT></TD>
+<TD WIDTH="24%" VALIGN="TOP">&nbsp;</TD>
+<TD WIDTH="20%" VALIGN="TOP">
+<FONT FACE="Times" SIZE=3><P ALIGN="CENTER">360.000<BR>
+pasqua</FONT></TD>
+<TD WIDTH="20%" VALIGN="TOP">
+<FONT FACE="Times" SIZE=3><P ALIGN="CENTER">300.000<BR>
+autunno</FONT></TD>
+<TD WIDTH="20%" VALIGN="TOP">
+<FONT FACE="Times" SIZE=3><P ALIGN="CENTER">&#150;</FONT></TD>
+</TR>
+<TR><TD WIDTH="16%" VALIGN="TOP">&nbsp;</TD>
+<TD WIDTH="24%" VALIGN="TOP">&nbsp;</TD>
+<TD WIDTH="20%" VALIGN="TOP">&nbsp;</TD>
+<TD WIDTH="20%" VALIGN="TOP">&nbsp;</TD>
+<TD WIDTH="20%" VALIGN="TOP">&nbsp;</TD>
+</TR>
+<TR><TD VALIGN="TOP" COLSPAN=5>
+<FONT FACE="Times" SIZE=2><P>Fig. 1: </FONT><FONT FACE="Times" SIZE=3>E</FONT><FONT FACE="Times" SIZE=2>sempio di tabella delle offerte (<I>N</I> = 4). Si noti che accanto alle quattro righe e alle quattro colonne della tabella sono indicati i nomi delle citt&agrave; corrispondenti.</FONT></TD>
+</TR>
+</TABLE>
+</CENTER></P>
+
+<FONT FACE="Times" SIZE=3><P ALIGN="JUSTIFY"></P>
+<P ALIGN="CENTER">&nbsp;</P>
+</FONT><B><FONT FACE="Times"><P ALIGN="CENTER">Fondamenti di Informatica</P>
+</FONT><FONT FACE="Times" SIZE=3><P ALIGN="CENTER">Ambiente e Territorio</P>
+</B><I><P ALIGN="CENTER">Appello del 13-7-1998</P>
+</I><P ALIGN="JUSTIFY"></P>
+<B><P ALIGN="JUSTIFY">Esercizio 2 (4 punti)</P>
+</B><P ALIGN="JUSTIFY"></P>
+<P ALIGN="JUSTIFY">Con riferimento al linguaggio C, si considerino</P>
+<OL>
+
+<P ALIGN="JUSTIFY"><LI>un tipo (struct) <B>ElementoLista</B>, con campi</LI></P>
+<OL>
+
+<B><P ALIGN="JUSTIFY"><LI>info</B>, di tipo <B>int</B>,</LI></P>
+<B><P ALIGN="JUSTIFY"><LI>prox</B>, di tipo <B>Punt</B> (<U>puntatore</U> a <B>ElementoLista</B>);</LI></P></OL>
+
+<P ALIGN="JUSTIFY"><LI>una funzione <U>ricorsiva</U> <B>Elimina</B> che, dati una <U>lista collegata</U> ed un valore intero, <U>dovrebbe</U> cancellare dalla lista stessa tutti gli elementi con campo <B>info</B> eguale al valore specificato. </LI></P></OL>
+
+<P ALIGN="JUSTIFY"></P>
+</FONT><FONT FACE="Courier" SIZE=2><P ALIGN="JUSTIFY">/* dichiarazioni di tipo */</P>
+<P ALIGN="JUSTIFY">struct elem {</P>
+<P ALIGN="JUSTIFY">&#9;int info;</P>
+<P ALIGN="JUSTIFY">&#9;struct elem *prox;</P>
+<P ALIGN="JUSTIFY">};</P>
+<P ALIGN="JUSTIFY">typedef struct elem ElementoLista;</P>
+<P ALIGN="JUSTIFY">typedef ElementoLista *Punt;</P>
+<P ALIGN="JUSTIFY"></P>
+<P ALIGN="JUSTIFY">void Elimina(Punt p, int val)</P>
+<P ALIGN="JUSTIFY">{</P>
+<P ALIGN="JUSTIFY">&#9;if(p-&gt;info==val) {</P>
+<P ALIGN="JUSTIFY">&#9;&#9;Punt next;</P>
+<P ALIGN="JUSTIFY">&#9;&#9;next=p-&gt;prox;</P>
+<P ALIGN="JUSTIFY">&#9;&#9;free(p);</P>
+<P ALIGN="JUSTIFY">&#9;&#9;p=next;</P>
+<P ALIGN="JUSTIFY">&#9;} else</P>
+<P ALIGN="JUSTIFY">&#9;&#9;p=p-&gt;prox;</P>
+<P ALIGN="JUSTIFY">&#9;Elimina(p,val);</P>
+<P ALIGN="JUSTIFY">&#9;return;</P>
+<P ALIGN="JUSTIFY">}</P>
+</FONT><FONT FACE="Times" SIZE=3><P ALIGN="JUSTIFY"></P>
+<P ALIGN="JUSTIFY">Il codice C proposto contiene degli errori semantici. Indicarli, spiegarne l&#146;effetto e correggerli.</P>
+<P ALIGN="JUSTIFY"></P>
+<P ALIGN="JUSTIFY">&nbsp;</P>
+<B><P ALIGN="JUSTIFY">Esercizio 3 (4 punti)</P>
+</B><P ALIGN="JUSTIFY"></P>
+<P ALIGN="JUSTIFY">Descrivere la struttura ed i principali componenti di un elaboratore. </P>
+<P ALIGN="JUSTIFY"></P>
+<P ALIGN="JUSTIFY">&nbsp;</P>
+<B><P ALIGN="JUSTIFY">Esercizio 4 (4 punti)</P>
+</B><P ALIGN="JUSTIFY"></P>
+<P ALIGN="JUSTIFY">Si consideri uno schermo di un elaboratore avente risoluzione 1024<FONT FACE="Symbol">&#180;</FONT>
+1536 pixel, in cui ogni pixel pu&ograve; assumere uno fra 256 colori. In tale schermo &egrave; visualizzata una immagine costituita semplicemente da un pentagono regolare, i cui vertici sono descritti da coppie di interi (4 byte).</P>
+<OL>
+
+<U><P ALIGN="JUSTIFY"><LI>Indicare</U> la quantit&agrave; di memoria che richiede la memorizzazione raster dell&#146;intera immagine. &Egrave; possibile risparmiare memoria adottando un qualche metodo di compressione? Se s&igrave;, &egrave; lecito aspettarsi un considerevole risparmio? Giustificare le asserzioni.</LI></P>
+<U><P ALIGN="JUSTIFY"><LI>Stimare</U> la quantit&agrave; di memoria che richiede la memorizzazione vettoriale dell&#146;intera immagine. Giustificare le asserzioni.</LI></P></OL>
+
+<P ALIGN="JUSTIFY"></P></FONT></BODY>
+</HTML>

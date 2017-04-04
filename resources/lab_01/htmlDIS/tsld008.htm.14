@@ -1,0 +1,76 @@
+
+<HTML>
+
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html;charset=iso-8859-1">
+<meta name="GENERATOR" content="Microsoft Internet Assistant for Macintosh PowerPoint 98">
+ <TITLE>Query Blocks: Units of Optimization</TITLE> 
+</HEAD>
+
+<BODY     >
+
+ <H1>Query Blocks: Units of Optimization</H1> 
+ <P><UL></P>
+
+<P><LI><H2>An SQL query is parsed into a collection of query blocks, and these are optimized one block at a time.
+</H2></P>
+
+<P></UL><UL></P>
+
+<P><LI><H2>Nested blocks are usually treated as calls to a subroutine, made once per outer tuple.  (This is an over-simplification, but serves for now.)</H2></P>
+
+<P></UL></P>
+
+<P><UL></P>
+
+<P>SELECT  S.sname
+</UL><UL></P>
+
+<P>FROM  Sailors S
+</UL><UL></P>
+
+<P>WHERE  S.age IN 
+</UL><UL></P>
+
+<P>     (SELECT  MAX (S2.age)
+</UL><UL></P>
+
+<P>       FROM  Sailors S2
+</UL><UL></P>
+
+<P>       GROUP BY  S2.rating)</UL></P>
+
+<P><UL></P>
+
+<P>Nested block</UL></P>
+
+<P><UL></P>
+
+<P>Outer block</UL></P>
+
+<P><UL></P>
+
+<P><LI> For each block, the plans considered are:
+<UL></P>
+
+<P><LI>  All available access methods, for each reln in FROM clause.
+<LI>  All left-deep join trees (i.e., all ways to join the relations one-at-a-time, with the inner reln in the FROM clause, considering all reln permutations and join methods.)</UL></UL></P>
+
+<P></P> 
+<P>
+<TABLE>
+  <TD HEIGHT=100 WIDTH=100> <A HREF="tsld007.htm">Previous slide</A> </TD>
+  <TD HEIGHT=100 WIDTH=100> <A HREF="tsld009.htm">Next slide</A> </TD>
+  <TD HEIGHT=100 WIDTH=150> <A HREF="tsld001.htm">Back to first slide</A> </TD>
+  <TD HEIGHT=100 WIDTH=150> <A HREF="sld008.htm">View graphic version</A> </TD>
+</TABLE>
+<BR>
+</P>
+
+ <FONT size=4><STRONG> Notes: </FONT></STRONG>
+  <HR SIZE=3> <P> <UL>
+
+7</UL> </P> 
+
+</Body>
+</HTML>

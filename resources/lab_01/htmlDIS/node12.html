@@ -1,0 +1,140 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+<HEAD>
+   <TITLE> Distributed Systems Platform (DSP):</TITLE>
+   <META NAME="keywords" CONTENT="">
+   <META NAME="resource-type" CONTENT="">
+   <META NAME="distribution" CONTENT="">
+   <META NAME="GENERATOR" CONTENT="Mozilla/3.01Gold (Win95; I) [Netscape]">
+</HEAD>
+<BODY BACKGROUND="../images/paper1.gif" <meta name="description" value=" Distributed Systems Platform (DSP):">
+
+<P><!Converted with LaTeX2HTML 95 (Thu Jan 19 1995) by Nikos Drakos 
+
+(nikos@cbl.leeds.ac.uk), CBLU, University of Leeds ></P>
+
+<P><BR>
+
+<HR><A NAME="tex2html216"></A><A NAME="tex2html216"></A><A HREF="node13.html" NAME="tex2html216"><IMG SRC="../images/next_motif.gif" ALT="next" HEIGHT=24 WIDTH=37 ALIGN=BOTTOM></A>
+<A NAME="tex2html214"></A><A NAME="tex2html214"></A><A HREF="node10.html" NAME="tex2html214"><IMG SRC="../images/up_motif.gif" ALT="up" HEIGHT=24 WIDTH=26 ALIGN=BOTTOM></A>
+<A NAME="tex2html210"></A><A NAME="tex2html210"></A><A HREF="node11.html" NAME="tex2html210"><IMG SRC="../images/previous_motif.gif" ALT="previous" HEIGHT=24 WIDTH=63 ALIGN=BOTTOM></A>
+<A NAME="tex2html218"></A><A NAME="tex2html218"></A><A HREF="node1.html" NAME="tex2html218"><IMG SRC="../images/contents_motif.gif" ALT="contents" HEIGHT=24 WIDTH=65 ALIGN=BOTTOM></A>
+<BR>
+<B>Next:</B> <A NAME="tex2html217"></A><A NAME="tex2html217"></A><A HREF="node13.html" NAME="tex2html217">Foundations
+and Methods</A> <B>Up:</B> <A NAME="tex2html215"></A><A NAME="tex2html215"></A><A HREF="node10.html" NAME="tex2html215">Software
+Libraries for </A><B>Previous:</B> <A NAME="tex2html211"></A><A NAME="tex2html211"></A><A HREF="node11.html" NAME="tex2html211">Frames:</A>
+<BR>
+
+<HR></P>
+
+<H4><A NAME="SECTION02011220000000000000"></A>Distributed Systems Platform
+(DSP):</H4>
+
+<P>DSP is an extension of the environment-based simulation tool DSS developed
+in ALCOM and ALCOM II. DSP will strongly enhance the executable specification
+language of DSS to allow the description and execution of distributed algorithms
+and protocols (including protocols for hierarchical networks, very fast
+networks, and heterogeneous networks with mobile users). The DSP library
+then aims at containing tested and validated (through the simulation part
+of DSP) protocols, ranging from basic protocols, e.g., for network control,
+to complicated ones, e.g., wait-free objects, admission control in very
+fast networks, etc. Thus, non-expert users will be provided with a tool
+to specify their distributed algorithm for the network they wish, and to
+execute it to test its correctness and performance. </P>
+
+<UL>
+<P><IMG SRC="../images/new.gif" HSPACE=2 BORDER=1 HEIGHT=11 WIDTH=28>DSP
+is designed to provide</P>
+
+<UL>
+<LI>a clear and well accepted model of a distributed system (DSP model)
+that abstracts away specific characteristics of different distributed platforms,
+and therefore, gives a unified framework for the design, analysis, verification
+and programming of general distributed protocols and algorithms. </LI>
+
+<LI>a library (of LEDA philosophy) of distributed data types and algorithms
+in a form that allows them to be used by non-experts and algorithms designers
+(DSP library). </LI>
+</UL>
+
+<P>The success of the von Neumann model for sequential computation is attributable
+to the fact that it is an efficient bridge between software and hardware.
+An analogous bridging model for parallel computation has been proposed
+by L. Valiant (the bulk- synchronous parallel model - BSP). The situation
+in the study and design of distributed algorithms is less clear. Several
+different models of distributed information processing are frequently used
+in the design of such algorithms. The DSP platform aims in providing a
+simple, general enough model, which is well accepted by algorithms designers
+and seems to be a viable candidate for the role of a bridging model of
+distributed computation. The adoption of such a model can be expected to
+insulate software and hardware developments from one another and make possible
+both general purpose distributed systems and transportable software. The
+DSP model follows the principles proposed by the books of <I>G.Tel &quot;Introduction
+to Distributed Algorithms&quot;</I> and <I>N.A.Lynch &quot;Distributed
+Algorithms&quot;</I> and aims in describing precisely and concisely the
+relevant aspects of a whole class of distributed computing systems. A distributed
+computation is considered today to be a collection of discrete events,
+each event being an atomic change in the state of the whole system. This
+notion is captured by the definition of transmission systems. What makes
+such a system distributed is that each transmission is only influenced
+by, and only influences, part of the state, basically the local state of
+a single process. In DSP, each process (mode) is represented by a finite
+state machine with a local transmission table. Events affecting transmissions
+include the arrival of a message at a node, time-outs, node (and link)
+failures and mobile process movement. The power of the nodes is not limited
+in any other way since they are allowed to have local memory and (unbounded)
+local registers. The general model adopted by DSP supports many interesting
+variations (all are tuneable by the user): </P>
+
+<UL>
+<LI>Non determinism (by allowing the designer of a protocol to specify
+a time distribution for the processing steps of a node and/or the message
+transmission delays of links). </LI>
+
+<LI>General topologies of networks (node interconnections). </LI>
+
+<LI>Asynchronous, perfectly synchronous or limited asynchronous computations
+with clean semantics in each case. </LI>
+
+<LI>A clean and abstract failure model for nodes and links (permanent,
+temporary or malicious failures).</LI>
+
+<LI>Clear semantics for fairness in computations, safety and liveness.
+</LI>
+
+<LI>A simple message passing subsystem with clean robustness properties
+and user-defined message types.</LI>
+</UL>
+
+<P>The platform allows in addition the modelling of mobile processes, the
+concurrent execution of more then one distributed algorithms in co-operation
+(e.g. a leader election protocol with a routing protocol or a synchronizer)
+and user control of local (virtual) clocks. The DSP platform thus differs
+from all existing ``simulators'' or ``languages'' of distributed systems
+because of its generality, algorithmic simplicity and clarity of semantics
+of its supported features. It aims in providing to the distributed algorithms
+designer an ideal environment of what a general distributed system ``is
+expected to be''. </P>
+
+<P>The kernel of the platform is an event driven simulator where all future
+events are tagged with a global time to happen (universal time) not known
+to the simulated protocols (global event queue). In addition, an algorithmic
+language for distributed protocols (DSPL) is provided. This is a simple
+algorithmic language without hidden attributes, capable of describing algorithms
+``close'' to their theoretical description. Also, a simple, high-level,
+topology description language (TOPL) which allows the designer to describe
+any general network topology, even hierarchical ones. Finally, a graphical
+user interface with animation features for the examination of distributed
+algorithms evolution on small topologies. The DSP will be enhanced with
+a meta-language aiming at verification of algorithms correctness at a high
+level (by using the clean semantics of low level mechanisms, for example
+messages). <BR>
+
+<HR></P>
+</UL>
+
+<ADDRESS>Paolo Terrevoli<BR>
+<I>revised Jul 2 16:47:02 MET 1997</I></ADDRESS>
+
+</BODY>
+</HTML>

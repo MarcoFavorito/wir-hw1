@@ -1,0 +1,138 @@
+<!doctype html public "-//w3c//dtd html 4.0 transitional//en">
+<html>
+<head>
+<link href="java.css" rel="stylesheet" type="text/css">
+<title>Poligoni</title>
+</head>
+
+<body>
+
+<h2>Poligoni</h2>
+
+Un <i>poligono</i> &egrave; una sequenza di punti, collgati
+fra loro con dei segmenti. Ogni punto &egrave; collegato
+al seguente, e l'ultimo &egrave; collegato con il primo.<p>
+
+Per disegnare un poligono in Java, si pu&ograve; chiaramente
+usare la funzione <tt>drawLine</tt>, ma esiste anche un
+meccanismo che rende le cose pi&ugrave; facili.
+Il procedimento consiste in tre passi:<p>
+
+<ol>
+<li>dichiarazione di una variabile di tipo poligono
+<li>assegnazione di valori a questa variabile
+<li>disegno del poligono
+</ol>
+
+Esistono due modi per effettuare i primi due passi.
+
+<h4>Definizione di poligoni con vettori</h4>
+
+Si definiscono due vettori di interi, che contengono le
+coordinate x e y dei punti del poligono. Poi si dichiara
+una variabile di tipo poligono:
+
+<pre>
+    int x={....};
+    int y={....};
+    Polygon pol=new Polygon(x, y, x.lenght);
+</pre>
+
+Le prime due istruzioni creano due vettori, che devono avere
+la stessa dimensione. L'idea &egrave; che il primo punto
+avr&agrave; coordinate <tt>x[0],y[0]</tt>, il secondo punto
+avr&agrave; coordinate <tt>x[1],y[1]</tt>, e cos&igrave; via.
+La terza istruzione dichiara il poligono: in questo modo, viene
+creata una nuova variabile <tt>pol</tt>, ossia viene creata
+una zona di memoria in cui viene memorizzato un poligono. In
+particolare, il poligono &egrave; formato da <tt>x.lenght</tt>
+punti (numero di elementi del vettore <tt>x</tt>), e le
+coordinate dei suoi punti sono determinate dai valori memorizzati
+nei vettori <tt>x</tt> e <tt>y</tt>.<p>
+
+<h4>Aggiunta di punti a un poligono</h4>
+
+Il secondo modo per creare un poligono &egrave; quello di
+partire da un poligono vuoto, e usare una funzione per aggiungere
+ogni volta un nuovo punto. Per creare un poligono vuoto,
+si usa la dichiarazione seguente.<p>
+
+<pre>
+    Polygon nomepoligono=new Polygon();
+</pre>
+
+Questa dichiarazione crea un poligono che non contiene punti.
+Per poter definire il poligono che serve a noi, occorre
+aggiungere dei punti al poligono. La istruzione che aggiunge
+un punto a un poligono &egrave;:<p>
+
+<pre>
+    nomepoligono.addPoint(x,y);
+</pre>
+
+Questa istruzione aggiunge il punto di coordinate <tt>x,y</tt>
+al poligono che &egrave; stato definito con nome
+<tt>nomepoligono</tt>. Partendo da un poligono vuoto e
+aggiungendo uno per volta i punti necessari, si pu&ograve;
+creare qualsiasi poligono.<p>
+
+
+<h4>Disegno del poligono</h4>
+
+La creazione di un poligono (sia nel primo che nel secondo modo)
+non produce nessun risultato visibile nella finestra. In altre
+parole, dichiarare una variabile di tipo poligono, o aggiungere
+ad essa dei punti, non fa s&iacute; che il poligono venga
+disegnato. Per disegnare un poligono occorre mettere una
+istruzione <tt>drawPolygon</tt>. Il programma
+<a href="Poligoni.java">Poligoni.java</a>
+disegna due poligoni <tt>pol</tt> e <tt>p</tt>, il primo dei
+quali viene definito usando i vettori di interi, mentre il secondo
+&egrave; creato vuoto e gli vengono poi aggiunti dei punti.
+
+<pre>
+/*
+  Disegna due poligoni.
+*/
+
+import java.awt.*;
+
+public class Poligoni extends java.applet.Applet {
+  public void paint(Graphics g) {
+    /* metodo 1: definizione con due vettori */
+    int x[]={10, 20, 30, 40};
+    int y[]={5, 30, 5, 21};
+    Polygon pol=new Polygon(x, y, x.length);
+
+
+    /* metodo 2: si parte dal poligono vuoto e si aggiungono
+       ogni volta dei punti */
+    Polygon p=new Polygon();
+
+    p.addPoint(100,100);
+    p.addPoint(100,180);
+    p.addPoint(180,140);
+    p.addPoint(160,110);
+
+
+    /* disegna i poligoni */
+    g.drawPolygon(pol);
+    g.drawPolygon(p);
+  }
+}
+
+</pre>
+
+Le due istruzioni finali del programma sono quelle che disegnano
+effettivamente i due poligoni. L'esecuzione del programma produce
+il seguente risultato.<p>
+
+<center>
+<img src="Poligoni.gif">
+</center>
+<p>
+
+
+</body>
+</html>
+

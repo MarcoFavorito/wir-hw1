@@ -1,0 +1,213 @@
+<HEAD>
+  <META NAME="GENERATOR" >
+  <TITLE></TITLE>
+  <SCRIPT language="javascript">
+<!--
+ok = false; pick = 0;  img=0;
+ bloccato=1;
+ ferma=1;
+
+if (navigator.userAgent.indexOf ("Mozilla") != -1) {ok = parseInt(navigator.appVersion.substring(0,1)) >= 3;}
+else {alert('Non e` possibile visualizzare correttamente questa pagina \nse non si utilizza una versione del browser superiore alla 3.0');}
+
+   if (ok == 1) {
+      buttonx = new Image(127,30)
+      buttonx.src = "images/button_x.gif"
+      buttono = new Image(127,30)
+      buttono.src = "images/button_o.gif"
+   }
+   function un(nom) {
+       if (ok == 1) { 
+          /*document.f1.src = buttonx.src;
+	  document.f2.src = buttonx.src;
+          document.f3.src = buttonx.src;
+          document.f4.src = buttonx.src;
+          document.f5.src = buttonx.src;
+          document.f6.src = buttonx.src;
+          document.f7.src = buttonx.src;*/
+
+       	  
+          if ((nom == "f1")&&(pick!=1)) {document.f1.src = buttono.src;}
+          if ((nom == "f2")&&(pick!=2)) {document.f2.src = buttono.src;}
+          if ((nom == "f3")&&(pick!=3)) {document.f3.src = buttono.src;}
+          if ((nom == "f4")&&(pick!=4)) {document.f4.src = buttono.src;}
+          if ((nom == "f5")&&(pick!=5)) {document.f5.src = buttono.src;}
+          if ((nom == "f6")&&(pick!=6)) {document.f6.src = buttono.src;}
+          if ((nom == "f7")&&(pick!=7)) {document.f7.src = buttono.src;}
+          return true;
+       }
+   }
+   function deux(nom) {
+
+       if (ok == 1) {
+          if ((nom == "f1")&&(pick!=1)) {document.f1.src = buttonx.src;}
+          if ((nom == "f2")&&(pick!=2)) {document.f2.src = buttonx.src;}
+          if ((nom == "f3")&&(pick!=3)) {document.f3.src = buttonx.src;}
+          if ((nom == "f4")&&(pick!=4)) {document.f4.src = buttonx.src;}
+          if ((nom == "f5")&&(pick!=5)) {document.f5.src = buttonx.src;}
+          if ((nom == "f6")&&(pick!=6)) {document.f6.src = buttonx.src;}
+          if ((nom == "f7")&&(pick!=7)) {document.f7.src = buttonx.src;}
+          return true;
+       }
+   }
+   function trois(nom) {
+
+       if (ok == 1) {
+          if (pick==1) {document.f1.src = buttonx.src;}
+          if (pick==2) {document.f2.src = buttonx.src;}
+          if (pick==3) {document.f3.src = buttonx.src;}
+          if (pick==4) {document.f4.src = buttonx.src;}
+          if (pick==5) {document.f5.src = buttonx.src;}
+          if (pick==6) {document.f6.src = buttonx.src;}
+          if (pick==7) {document.f7.src = buttonx.src;}
+          if ((nom == "f1")&&(pick!=1)) {document.f1.src = buttono.src; pick=1}
+          if ((nom == "f2")&&(pick!=2)) {document.f2.src = buttono.src; pick=2}
+          if ((nom == "f3")&&(pick!=3)) {document.f3.src = buttono.src; pick=3}
+          if ((nom == "f4")&&(pick!=4)) {document.f4.src = buttono.src; pick=4}
+          if ((nom == "f5")&&(pick!=5)) {document.f5.src = buttono.src; pick=5}
+          if ((nom == "f6")&&(pick!=6)) {document.f6.src = buttono.src; pick=6}
+          if ((nom == "f7")&&(pick!=7)) {document.f7.src = buttono.src; pick=7}
+	  if (pick==1) {document.f1.src = buttono.src;} 
+	  if (pick==2) {document.f2.src = buttono.src;} 
+	  if (pick==3) {document.f3.src = buttono.src;} 
+	  if (pick==4) {document.f4.src = buttono.src;} 
+	  if (pick==5) {document.f5.src = buttono.src;} 
+	  if (pick==6) {document.f6.src = buttono.src;} 		  
+	  if (pick==7) {document.f7.src = buttono.src;} 
+          return true;
+       }
+   }
+
+ function cambia() {
+   
+   if (!bloccato && !ferma) {
+    document.logoArt.src="images/artLogoAn"+img+".gif";
+    if (img==12) img=0;
+    else img++;
+   }
+   bloccato=1;
+   
+ }
+ function blocca() {
+   bloccato=0;
+ }
+ function azzera() {
+   ferma=!ferma;
+   if (!ferma) {bloccato=0;cambia();}
+   else {document.logoArt.src='images/artTras.gif';}
+ }
+
+	
+// -->
+  </SCRIPT>
+  <META NAME="Author" CONTENT="Visicom Media Inc.">
+  <META NAME="Description" CONTENT="">
+  <META NAME="Keywords" CONTENT="">
+</HEAD>
+<BODY BACKGROUND="images/backmenu.gif" BGCOLOR="#ffffff" LINK="#000080">
+
+<BASE TARGET=MAIN>
+<TABLE WIDTH="169" HEIGHT="5" BORDER="0" CELLSPACING="0" CELLPADDING="0">
+	<TR>
+		&nbsp;
+	</TR>
+</TABLE>
+<TABLE WIDTH="160" HEIGHT="160" CELLPADDING="0"
+BORDER="0" CELLSPACING="0">
+  <TR>
+    <TD WIDTH="30" HEIGHT="207">
+    
+    <IMG SRC="images/button_x.gif" BORDER="0" WIDTH="33" HEIGHT="30"
+    NAME="f1" NATURALSIZEFLAG="0" ALIGN="BOTTOM">
+    
+    <IMG SRC="images/button_x.gif" BORDER="0" WIDTH="33" 
+    HEIGHT="30" NAME="f2" NATURALSIZEFLAG="0" ALIGN="BOTTOM">
+    
+    <IMG SRC="images/button_x.gif" BORDER="0" WIDTH="33"
+    HEIGHT="30" NAME="f3" NATURALSIZEFLAG="0" ALIGN="BOTTOM">
+    
+    <IMG SRC="images/button_x.gif" BORDER="0" WIDTH="33" HEIGHT="30" 
+    NAME="f4" NATURALSIZEFLAG="0" ALIGN="BOTTOM">
+    
+    <IMG SRC="images/button_x.gif" BORDER="0" WIDTH="33" HEIGHT="30" 
+    NAME="f5" NATURALSIZEFLAG="0" ALIGN="BOTTOM">
+    
+    <IMG SRC="images/button_x.gif" BORDER="0" WIDTH="33" HEIGHT="30" 
+    NAME="f6" NATURALSIZEFLAG="0" ALIGN="BOTTOM">
+    
+    <IMG SRC="images/button_x.gif" BORDER="0" WIDTH="33" HEIGHT="30" 
+    NAME="f7" NATURALSIZEFLAG="0" ALIGN="BOTTOM">
+</TD>
+    <TD WIDTH="130" HEIGHT="177">
+    
+    <A HREF="art98/index.html" onmouseover="un('f1')" onmouseout="deux('f1')"
+    onclick="trois('f1')"><IMG SRC="images/new/art98.gif" BORDER="0"
+    WIDTH="120" HEIGHT="30" NATURALSIZEFLAG="0" ALIGN="BOTTOM"></A>
+    
+    <A HREF="art99/index.html" onmouseover="un('f2')" onmouseout="deux('f2')"
+    onclick="trois('f2')"><IMG SRC="images/new/art99.gif" BORDER="0"
+    WIDTH="127" HEIGHT="30" NATURALSIZEFLAG="0" ALIGN="BOTTOM"></A>
+    
+    <A HREF="http://Robocup.CE.uniPR.it" target="_blank" onmouseover="un('f3')" onmouseout="deux('f3')"
+    onclick="trois('f3')"><IMG SRC="images/new/art2000.gif" BORDER="0" WIDTH="120" HEIGHT="30"
+    WIDTH="127" HEIGHT="30" NATURALSIZEFLAG="3" ALIGN="BOTTOM"></A>
+    
+    <A HREF="http://tibur.dis.uniroma1.it/~tinoweb" onmouseover="un('f4')" onmouseout="deux('f4')"
+     target="_blank"><IMG SRC="images/new/artRoma.gif" BORDER="0"
+    WIDTH="115" HEIGHT="30" NATURALSIZEFLAG="0" ALIGN="BOTTOM"></A>
+    
+    <A HREF="art99/stampa.html" onmouseover="un('f5')" onmouseout="deux('f5')"
+    onclick="trois('f5')"><IMG SRC="images/new/rstv.gif" BORDER="0"
+    WIDTH="115" HEIGHT="30" NATURALSIZEFLAG="0" ALIGN="BOTTOM"></A>
+    
+    <A HREF="http://www.iperv.it/robocup/2000camp" onmouseover="un('f6')" onmouseout="deux('f6')"
+    target="_blank"><IMG SRC="images/new/camp.gif" BORDER="0"
+    WIDTH="115" HEIGHT="30" NATURALSIZEFLAG="0" ALIGN="BOTTOM"></A>
+    
+    <A HREF="iniziative/index.html" onmouseover="un('f7')" onmouseout="deux('f7')"
+    onclick="trois('f7')"><IMG SRC="images/new/eventi.gif" BORDER="0"
+    WIDTH="115" HEIGHT="30" NATURALSIZEFLAG="0" ALIGN="BOTTOM"></A>
+    
+    
+</TD>
+  </TR>
+</TABLE>
+
+<TABLE WIDTH="169" HEIGHT="15" BORDER="0" CELLSPACING="0" CELLPADDING="0">
+	<TR>
+		&nbsp;
+	</TR>
+</TABLE>
+
+<TABLE WIDTH="169" BORDER="0" CELLSPACING="0" CELLPADDING="0">
+
+  
+  <TR>
+    <TD WIDTH="24" HEIGHT="120">
+    <A HREF="sponsor/sponsorizza.html"
+    TARGET="_blank"><IMG SRC="images/sponsorizza.gif"
+ BORDER="0" NATURALSIZEFLAG="1" ALT="Informazioni sulla sponsorizzazione di ART"></A></TD>
+    <TD COLSPAN="2" HEIGHT="120" ALIGN="center" >
+    &nbsp;<A HREF="./" onClick="azzera();return false; " onMouseOver="cambia();"
+onMouseOut="blocca();"><IMG SRC="images/artTras.gif" WIDTH="100" HEIGHT="100"
+ALIGN="BOTTOM" BORDER="0" NATURALSIZEFLAG="3" NAME="logoArt" 
+ALT="Clicca qui per bloccare/sbloccare l'animazione - Esci/entra nel logo per cambiarla"></A>
+</TD>
+     
+  </TR>
+  </TABLE>
+  <TABLE WIDTH="169" BORDER="0" CELLSPACING="0" CELLPADDING="0" ALIGN="CENTER">
+  <TR>
+  	<A HREF="sponsor/index.html"><IMG SRC="images/new/grazie.gif" WIDTH="160" HEIGHT="30"
+ BORDER="0" NATURALSIZEFLAG="3" ALT="Chi contribuisce ai successi di ART" onClick="pick=0"></A>
+  </TR>
+  <TR>
+    <A HREF="main1.html"><IMG SRC="images/new/homePage.gif" WIDTH="150" HEIGHT="60"
+ BORDER="0" NATURALSIZEFLAG="3" ALT="Ritorna alla pagina iniziale" onClick="pick=0"></A>
+  </TR>
+  
+  
+</TABLE>
+
+</BODY>
+</HTML>

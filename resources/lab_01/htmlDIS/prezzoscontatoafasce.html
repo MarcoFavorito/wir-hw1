@@ -1,0 +1,57 @@
+<html>
+
+<head>
+
+<title>Sconto a fasce</title>
+
+<script language="Javascript">
+function calcolaPrezzoConSconto(numero, unitario)
+{
+		var prezzo;
+		var aliquotaSconto;
+		prezzo = numero * unitario;
+
+		aliquotaSconto = 0;
+		if ( (prezzo > 250) && (prezzo <= 500) ) {
+			aliquotaSconto=0.05;
+		}
+		else if ( (prezzo > 500) && (prezzo <= 1000) ) {
+			aliquotaSconto=0.10;
+		}
+		else if ( prezzo > 1000 ) {
+			aliquotaSconto=0.12;
+		}
+
+		window.alert("Sconto " + aliquotaSconto*100 + "%")
+		prezzo = prezzo * (1 - aliquotaSconto);
+		return prezzo;
+}
+</script>
+</head>
+
+<body bgcolor="blue" text="white">
+
+<hr>
+<form>
+<table cellpadding="10">
+<tr>
+	<td align="right">Prezzo unitario:
+	<td><input type="text" name="prezzoUnitario" size="20" style="text-align: right">
+<tr>
+	<td align="right">Quantit&agrave;:
+	<td><input type="text" name="quantita" size="20" style="text-align: right">
+<tr>
+	<td>
+	  <input type="button" name="calcoloTotale" value="Calcola Totale"
+	  onClick="totale.value=calcolaPrezzoConSconto(prezzoUnitario.value, quantita.value);">
+	<td>
+	  <input type="reset" value="Azzera">
+</table>
+<hr>
+<strong>Totale:</strong><td><input type="text" name="totale" size="20" style="text-align: right">
+</form>
+</h2>
+
+</body>
+
+</html>

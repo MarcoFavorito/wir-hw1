@@ -1,0 +1,105 @@
+  <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN"
+           "http://www.w3.org/TR/REC-html40/loose.dtd">
+<HTML>
+<META NAME="GENERATOR" CONTENT="TtH 2.25">
+                                                                      
+<center>  <b>   
+<title>Testo esame 8-6-2000 (1&#170; prova)</title>
+Universit&#224; di Roma ``La Sapienza''<br>
+   Facolt&#224; di Ingegneria<br>
+   Corso di Fondamenti di Informatica - A.A.&#229;<br>
+   Corso di Laurea: </b>Ambiente e Territorio</b><br>
+  Appello del <b>8 giugno 2000</b> - 1<sup>a</sup> prova scritta<br>
+  <em>tempo a disposizione: 2 ore</em>
+</center>
+<p>
+<b>Problema 1 (18 punti)</b> Un amministratore di condominio registra i
+pagamenti effettuati dai proprietari degli appartamenti in un array 
+di strutture A.  Se
+per un appartamento del condominio &#232; stato effettuato almeno un pagamento,
+allora sono rappresentate in A le seguenti informazioni:
+
+<UL>
+<p>
+ 
+<li> nome del proprietario (max 20 caratteri);
+ 
+<li> cognome del proprietario (max 20 caratteri);
+ 
+<li> scala dell'appartamento (lettera maiuscola);
+ 
+<li> interno dell'appartamento (intero positivo);
+ 
+<li> totale pagato fino a quel momento, in euro  (reale).
+</UL>
+<p>
+Ad esempio, in un certo istante l'array A potrebbe contenere le seguenti
+informazioni.
+
+<p>
+
+<center>    
+<TaBle border>
+<tr><td>Mario </td><td>Rossi </td><td>A </td><td>3 </td><td>800.0 </td><td align="center"><font size="-1"><i>cella 0</i></font>  </td>
+<tr><td>Luca </td><td>Neri </td><td>C </td><td>6 </td><td>980.0 </td><td align="center"><font size="-1"><i>cella 1</i></font>  </td>
+<tr><td>Mario </td><td>Rossi </td><td>A </td><td>4 </td><td>120.0 </td><td align="center"><font size="-1"><i>cella 2</i></font>  </td></TaBle>
+
+</center>
+<p>
+Si richiede di risolvere i seguenti punti:
+
+<OL type="1">
+<p>
+
+<li> Scrivere le dichiarazioni dei tipi di dato C da utilizzarsi
+  per risolvere i punti successivi.
+
+<li> Scrivere una funzione C (o pi&#249;) che consenta
+  all'amministratore di aggiornare l'array a fronte di un pagamento relativo
+  ad un certo appartamento.  In particolare la funzione riceve in
+  input l'array A, l'ammontare a del pagamento, la scala s e l'interno
+  i dell'appartamento.  Se in A l'appartamento identificato da s ed i
+  &#232; gi&#224; stato registrato, allora la funzione deve aumentare
+  della quantit&#224; a il totale pagato fino a quel momento per l'appartamento.
+  Altrimenti, la funzione deve:
+  
+<OL type="a">
+<p>
+  
+<li> instaurare con l'utente un dialogo, tramite opportune stampe su schermo,
+    finalizzato a conoscere nome e cognome del proprietario dell'appartamento
+    in questione;
+  
+<li> registrare in A tutti i dati del pagamento, inserendo una 
+  nuova struttura
+    in una posizione qualsiasi dell'array, senza cancellare 
+    informazioni pre-esistenti.
+  </OL>
+<p>
+
+<li> Scrivere una funzione C (o pi&#249;) che consenta
+  all'amministratore di stampare su un file di testo l'ammontare pagato da ciascun
+  proprietario fino a quel momento, tenendo conto che potrebbero esistere
+  persone che sono proprietarie di pi&#249; appartamenti.  In particolare
+  la funzione riceve come parametri di input l'array A e il nome fisico f di
+  un file, e deve scrivere in f una riga per ogni proprietario p registrato
+  in A che contiene: nome e cognome di p, totale pagato da p per tutti i
+  suoi appartamenti.  Ad esempio, facendo riferimento all'array sopra
+  riportato, la funzione deve produrre un file con le seguenti 
+  informazioni:
+<p>
+
+<center>      
+<TaBle>
+<tr><td>Mario Rossi 920.0 </td><td><font size="-1"><i>prima riga</i></font></td>
+<tr><td>Luca Neri 980.0 </td><td><font size="-1"><i>seconda riga</i></font></td></TaBle>
+
+<p>
+</center>La funzione non deve alterare l'array A.<br>
+[<em>Suggerimento:</em> usare un array provvisorio per duplicare A ed 
+eliminare via via le informazioni di cui si &#232; gi&#224; tenuto conto.]
+</OL>
+<p>
+
+<p><hr><small>File translated from T<sub><font size="-1">E</font></sub>X by <a href="http://hutchinson.belmont.ma.us/tth/">T<sub><font size="-1">T</font></sub>H</a>, version 2.25.<br>On  9 Jun 2000, 12:57.</small>
+</HTML>

@@ -1,0 +1,64 @@
+<!doctype html public "-//w3c//dtd html 4.0 transitional//en">
+<html>
+<head>
+<link href="java.css" rel="stylesheet" type="text/css">
+<title>Media elementi di un vettore</title>
+</head>
+
+<body>
+
+<h2>Media elementi di un vettore</h2>
+
+Dato un vettore di interi, si vuole calcolare il loro valore
+medio. Come &egrave; noto, il valore medio si ottiene sommando
+fra loro tutti gli elementi e poi dividendo per il numero degli
+elementi. Il programma risolutivo
+<a href="Media.java">Media.java</a> non differisce molto da
+quello cha <a href="sommavettore.shtml">calcola la somma di un
+vettore</a>. Infatti, occorre prima calcolare la somma
+degli elementi di un vettore, e poi semplicemente dividere
+per il numero di elementi del vettore.<p>
+
+<pre>
+/*
+  Calcola la media degli elementi di un vettore.
+*/
+
+class Media {
+  public static void main(String[] args) {
+    int vettore[]={4, 9, 1, 3, 5};
+    int i;
+    double somma, media;
+
+    somma=0;
+
+    for(i=0; i<=vettore.length-1; i=i+1) {
+      somma=somma+vettore[i];
+    }
+
+    media=somma/vettore.length;
+
+    System.out.println("Media = " + media );
+  }
+}
+
+
+</pre>
+
+Si noti che la variabile <tt>somma</tt> &egrave; stata dichiarata
+come reale, anche se il suo contenuto, essendo una somma di
+numeri interi, sar&agrave; sempre un numero intero. La ragione
+di questa scelta &egrave; legata al modo in cui vengono gestite
+le operazioni aritmetiche in Java. Come si &egrave; visto nella
+<a href="reali.shtml">introduzione delle variabili reali</a>,
+la divisione fra due numeri interi produce sempre un numero intero
+che &egrave; la parte intera della divisione. Per ottenere il
+risultato corretto, usiamo quindi una variabile reale per
+memorizzare la somma. Infatti, la divisione fra questa variabile
+reale e la lunghezza del vettore (che &egrave; intera) produce
+un risultato reale.<p>
+
+
+</body>
+</html>
+
