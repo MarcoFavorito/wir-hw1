@@ -84,6 +84,11 @@ def __main():
             output_file_name \
             file_name_1 file_name_2 ...")
         print()
+        print("Example: \
+            python score_aggregation \
+            fagin \
+            fagin.out \
+            title.tsv text.tsv ...")
         return
 
     # Algorithm name must be either "fagin" or "threshold"
