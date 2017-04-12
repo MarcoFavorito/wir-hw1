@@ -11,7 +11,7 @@ export stemmers=( it.unimi.di.big.mg4j.index.NullTermProcessor it.unimi.di.big.m
 export stemmer_names=( default english english_sw )
 export scorer_functions=( CountScorer TfIdfScorer BM25Scorer )
 export fields=( text title text_and_title )
-
+export k_values=( 1 3 5 7 10 )
 echo "$debug_msg - 1-setmyclasspath $HW_DIR"
 export DIR=$HW_DIR/libs
 

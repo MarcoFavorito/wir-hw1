@@ -77,7 +77,40 @@ def fagin(k, ranking_dictionaries, ranking_lists):
 
 def threshold(k, ranking_dictionaries, ranking_lists):
     """Docstring"""
-    return []
+
+    seen = {}
+    title_list = ranking_lists[0]
+    text_list = ranking_lists[1]
+    title_dict = ranking_dictionaries[0]
+    text_dict = ranking_dictionaries[1]
+
+
+    for title_entry, text_entry in zip(title_list, text_list):
+        title_entry_id = title_entry[0]
+        text_entry_id = text_entry[0]
+        title_entry_score = title_entry[1]
+        text_entry_score = text_entry[1]
+
+        cur_threshold = 2*title_entry_score + text_entry_score
+
+        seen[title_entry_id] = 2*title_dict.get(title_entry_id, 0) + text_dict.get(title_entry_id, 0)
+        seen[text_entry_id] = 2*title_dict.get(text_entry_id, 0) + text_dict.get(text_entry_id, 0)
+
+        top_k = list(seen.items())
+        top_k.sort(key=lambda x: x[1], reverse=True)
+        top_k = top_k[:k]
+
+        if all([score>=cur_threshold for _,score in top_k]) and len(top_k)>=k: return top_k
+        # failed = False
+        # for docId, score in top_k:
+        #     if score < cur_threshold:
+        #         failed = True
+        #         break
+        #
+        # if not failed:
+        #     return top_k
+
+    raise Exception("qualcosa non va...")
 
 def aggregate_scores(algorithm_name, query_dictionaries, query_lists, ground_truth_list):
     """Docstring"""
