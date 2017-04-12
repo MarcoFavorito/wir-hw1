@@ -29,3 +29,5 @@ Instead, if you want to use it from an IDE (e.g. NetBeans or Eclipse), you have 
  - [MG4J official site](http://mg4j.di.unimi.it/)
  - [MG4J Manual](http://mg4j.di.unimi.it/man-big/manual.pdf)
  - [MG4J Docs](http://mg4j.di.unimi.it/docs-big/)
+ ***
+- [R-Precision](https://nlp.stanford.edu/IR-book/html/htmledition/evaluation-of-ranked-retrieval-results-1.html#sec:ranked-evaluation)
