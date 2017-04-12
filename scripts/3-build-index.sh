@@ -1,4 +1,4 @@
-#!/bin/sh
+x\#!/bin/sh
 
 debug_msg="BUILD_INDEX"
 
@@ -23,9 +23,6 @@ if [ ! -d out ]; then
     echo $debug_msg - exiting...
     exit 1
 fi
-
-stemmers=( it.unimi.di.big.mg4j.index.NullTermProcessor it.unimi.di.big.mg4j.index.snowball.EnglishStemmer homework.EnglishStemmerStopwords )
-stemmer_names=( default english english_sw )
 
 # echo $debug_msg ${stemmers[@]}
 # echo $debug_msg ${stemmer_names[@]}

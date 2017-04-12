@@ -18,6 +18,7 @@ source scripts/2-create-collection.sh
 source scripts/3-build-index.sh
 source scripts/4-apply-scorer-functions.sh
 source scripts/5-aggregation.sh
+source scripts/6-evaluation.sh
 
 echo $debug_msg - done!
 echo

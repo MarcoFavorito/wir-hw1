@@ -11,16 +11,12 @@ if [ ! -d out/indices ]; then
     exit 1
 fi
 
-stemmers=( default english english_sw )
-scorer_functions=( CountScorer TfIdfScorer BM25Scorer )
-fields=( text title text_and_title )
-
 if [ -d out/scores ]; then
     rm -r out/scores
 fi
 mkdir out/scores
 
-for stemmer in ${stemmers[@]}; do
+for stemmer in ${stemmer_names[@]}; do
     mkdir out/scores/$stemmer
 
     for scorer_function in ${scorer_functions[@]}; do
@@ -35,7 +31,7 @@ for stemmer in ${stemmers[@]}; do
                 out/scores/${stemmer}/${scorer_function}/${field}.tsv
         done
     done
-done 
+done
 
 echo $debug_msg - done!
-echo 
+echo
