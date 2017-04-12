@@ -22,12 +22,15 @@ for stemmer in ${stemmer_names[@]}; do
         mkdir out/evaluation/$stemmer/$scorer_function
 
         for field in ${fields[@]}; do
+
+						echo "Evaluating Averaged R-Precision of $stemmer/$scorer_function/${field}"
             python3 scripts/evaluation.py \
 								precision \
 								out/evaluation/$stemmer/$scorer_function/${field}_precision.out\
                 Cranfield_DATASET/cran_Ground_Truth.tsv \
               	out/scores/${stemmer}/${scorer_function}/${field}.tsv
 
+						echo "Evaluating nMDCG of $stemmer/$scorer_function/${field}"
 						python3 scripts/evaluation.py \
 								mdcg \
 								out/evaluation/$stemmer/$scorer_function/${field}_mdcg.out \
@@ -39,6 +42,8 @@ done
 
 # evaluation of aggregtion algorithm results. Only Averaged R-Precision
 mkdir out/evaluation/aggregation
+
+echo "Evaluating Averaged R-Precision of 'fagin' output"
 python3 scripts/evaluation.py \
 		precision \
 		out/evaluation/aggregation/precision.out\
@@ -46,6 +51,7 @@ python3 scripts/evaluation.py \
 		out/aggregation/fagin.out
 
 #threshold
+echo "Evaluating Averaged R-Precision of 'threshold' output"
 python3 scripts/evaluation.py \
 		precision \
 		out/evaluation/aggregation/precision.out\

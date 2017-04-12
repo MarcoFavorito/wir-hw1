@@ -92,7 +92,7 @@ def main():
 	ground_truth_dict = file_parser.file2dict_qid(open(ground_truth_filename, "r"), [int, int])
 	scorings_dict = file_parser.file2dict_qid(open(scorings_filename, "r"), [int, int, int, float])
 
-	assert(len(ground_truth_dict) == len(scorings_dict))
+	#assert(len(ground_truth_dict) == len(scorings_dict))
 
 	if metric=="precision":
 		result = averaged_R_Precision(scorings_dict, ground_truth_dict)
