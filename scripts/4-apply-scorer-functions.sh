@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh
 
 debug_msg="APPLY_SCORER_FUNCTIONS"
 

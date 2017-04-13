@@ -1,5 +1,10 @@
+#!/bin/sh
+
 # consider only the scoring of the results from the
 # [​ English_stemmer_able_to_filter_stopwords ​ , ​ BM25Scorer ​ ] configuration.
+
+# Details on score_aggregation.py arguments:
+# score_aggregation.py <algorithm: fagin|threshold> <output_filename> <ground-truth_path> <title_scores_path> <text_scores_path>
 
 debug_msg="AGGREGATION"
 

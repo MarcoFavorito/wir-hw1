@@ -1,0 +1,61 @@
+import sys
+import matplotlib
+import file_parser
+
+
+def make_scores_dict(scores_file):
+	"""
+	:param scores_file:
+	:return: dictionary with key: "stemmer_scorer" and value: "( [text|title|text_title], score)
+	"""
+	scores_list = file_parser.file2list(open(scores_file), [str, str, str, float])
+	scores_dict = dict([("_".join(line[:2]), line[2:]) for line in scores_list])
+	return scores_dict
+
+def invert_keys(dict_label2conf2scores, labels):
+	dict_conf2label2scores = {}
+	for label in labels:
+		conf2scores = dict_label2conf2scores[label]
+		for conf in conf2scores.keys():
+			if conf not in dict_conf2label2scores.keys():
+				dict_conf2label2scores[conf] = []
+			dict_conf2label2scores[conf].append((label, conf2scores[conf]))
+	return dict_conf2label2scores
+
+def print_usage():
+	print("Usage: \n")
+	print("make_plot.py <label1> <scores_filename1> <label2> <scores_filename2> ... ")
+	print("Example: \n"
+		  "make_plot.py k1 nMDCG_k1.tsv k2 nMDCG_k2.tsv, ... ")
+
+
+def main():
+	"""
+	Takes in input a list of files of the format:
+	[Desc1:String Desc2:String Desc3:String ... Score:Float]
+	Where "DescriptionX" stands for some characteristic of the scored configuration.
+	:return:
+	"""
+
+	if len(sys.argv) < 3 and len(sys.argv) % 2 == 0:
+		print_usage()
+		return -1
+
+	scores_filenames = sys.argv[2::2]
+	labels = sys.argv[1::2]
+
+	dict_label2conf2scores = dict([(label, make_scores_dict(filename)) for label, filename in zip(labels, scores_filenames)])
+	dict_conf2label2scores = invert_keys(dict_label2conf2scores, labels)
+
+	dict_conf2scores = {}
+	for conf in dict_conf2label2scores.keys():
+		dict_conf2scores[conf] = {}
+		for label in labels:
+			for mode, score in dict_conf2label2scores[conf][labels]:
+				if mode not in dict_conf2scores[conf].keys():
+					dict_conf2scores[conf][mode] = {}
+				dict_conf2scores[conf][mode].append()
+
+
+
+

@@ -21,10 +21,6 @@ def file2dict_qid(file, formats):
         else:
             d[qId].append(tuple[1:])
 
-    def parse_line(line, formats):
-        return [formats[i](value) for i, value in enumerate(line.split("\t"))]
-
-
     res = {}
     text = file.read()
 
@@ -32,3 +28,12 @@ def file2dict_qid(file, formats):
         add_to_dict(parse_line(line, formats),res)
 
     return res
+
+
+def file2list(file, formats):
+    l = [parse_line(line, formats) for line in file.read().splitlines()]
+    return l
+
+
+def parse_line(line, formats):
+    return [formats[i](value) for i, value in enumerate(line.split("\t"))]

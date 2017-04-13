@@ -1,7 +1,7 @@
 from math import log2
 
 def maximumMDCG(k):
-    res = 1 + sum([1/log2(rank) for rank in range(2,k+1)])
+    res = 1 + sum([1/log2(rank+1) for rank in range(1, k)])
     return res
 
 def relevance(docId, groundTruth):
@@ -9,9 +9,9 @@ def relevance(docId, groundTruth):
 
 def MDCG(k, retrieved_docs, groundTruth):
     res = 0
-    res += relevance(retrieved_docs[0][0], groundTruth)
-    for i in range(2, k+1):
-        res += relevance(retrieved_docs[i][0], groundTruth)/log2(i)
+    res += relevance(retrieved_docs[0], groundTruth)
+    for i in range(1, k):
+        res += relevance(retrieved_docs[i], groundTruth)/log2(i+1)
 
     return res
 
@@ -29,8 +29,18 @@ def averaged_nMDCG(k, all_retrieved_docs, all_relevant_docs):
     queryIds = all_relevant_docs.keys()
     for qid in queryIds:
         cur_retrieved_docs = all_retrieved_docs[qid]
-        cur_relevant_docs = all_relevant_docs[qid]
-        cur_nMDCG = nMDCG(k, cur_retrieved_docs, cur_relevant_docs)
+        # prendo solo gli ids
+        cur_retrieved_doc_ids = [entry[0] for entry in cur_retrieved_docs]
+        cur_relevant_doc_ids = all_relevant_docs[qid]
+
+        # serve per gestire il caso in cui k è maggiore del numero di retrieved docs.
+        # in tal caso, k non può essere più grande di quel numero.
+        cur_k = k
+        max_k = len(cur_retrieved_docs)
+        if cur_k>max_k:
+            cur_k=max_k
+
+        cur_nMDCG = nMDCG(cur_k, cur_retrieved_doc_ids, cur_relevant_doc_ids)
         nMDCG_values.append(cur_nMDCG)
 
     averaged_nMDCG = sum(nMDCG_values)/len(nMDCG_values)

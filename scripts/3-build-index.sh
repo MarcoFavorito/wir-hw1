@@ -1,4 +1,4 @@
-x\#!/bin/sh
+#!/bin/sh
 
 debug_msg="BUILD_INDEX"
 
