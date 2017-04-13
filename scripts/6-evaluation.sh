@@ -52,7 +52,7 @@ for current_k in ${k_values[@]}; do
 	echo "Evaluating Averaged nMDCG of 'fagin' output with k=${current_k}"
 	current_averaged_nMDCG=$(python3 scripts/evaluation.py mdcg Cranfield_DATASET/cran_Ground_Truth.tsv out/aggregation/fagin.out ${current_k})
 
-	echo -e "fagin\t$averaged_r_precision" >> out/evaluation/aggregation/aggregation_averaged_nMDCG_k${current_k}.out
+	echo -e "fagin\t$current_averaged_nMDCG" >> out/evaluation/aggregation/aggregation_averaged_nMDCG_k${current_k}.out
 done
 
 #threshold
