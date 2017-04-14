@@ -5,7 +5,7 @@ import sys
 
 def print_usage():
 	print("Usage: \n")
-	print("make_plot.py out_filename plot_title <label1> <scores_filename1> <label2> <scores_filename2>")
+	print("make_plot.py out_filename plot_title <label1> <scores_filename1> <label2> <scores_filename2> ...")
 
 def main():
 	"""
@@ -52,5 +52,3 @@ def main():
 
 if __name__ == "__main__":
 	main()
-
-
