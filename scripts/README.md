@@ -21,7 +21,7 @@ All the outputs are created in the folder `${outputfolder}`, i.e. `out/${collect
 
 - `run.sh`
 > - calls all the other scripts numbered from `0-*` to `7-*`, which are described in the following;
-> - **Notice**: 
+> - **Notice**: they are all called through `source` in order to use the same environment
 - `0-clean.sh`
 >	- remove the folder `out/${collection_name}`
 - `1-set-my-classpath.sh`
@@ -77,7 +77,7 @@ Notice: the python script only print one the stdout the computed value.
 - `7-make-plots.sh`
 > - produces a set of plots in `svg` format, one for each stemmer-scorer configuration (3x3=9).
 > - Plots are stored in `${output_dir}/evaluation/plots` directory.
->- Usage:
+>- Usage of `make_plot.py`:
 ```
 python make_plot.py out_filename plot_title <label1> <scores_filename1> <label2> <scores_filename2> ...
 Where:
