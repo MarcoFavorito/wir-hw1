@@ -37,7 +37,7 @@ All the outputs are created in the folder `${outputfolder}`, i.e. `out/${collect
 - `5-aggregation.sh`
 > - computes the ranking aggregation of the configuration `EnglishStemmerStopWords` and `BM25Scorer`, both with Fagin's Algorithm and Threshold Algorithm (respectively defined in `fagin.py` and `threshold.py`, calling the script `score_aggregation.py`;
 > - It stores the results in the folder `$output_folder/aggregation/${algorithm_name}.out`
-> - The script is called in the following way:  
+> - The script `scripts/score_aggregation.py` is called in the following way:  
 ```
 python score_aggregation.py algorithm_name output_file_name ground_truth title_scorings text_scorings title_weight text_weight
 Where:
@@ -60,7 +60,7 @@ python score_aggregation.py fagin fagin.out ground_truth.tsv title.tsv text.tsv 
  >		- `benchmark`: a set of files, one for each considered evaluation function (in our default configurations they are 5, as explained above); in each file there is an overview of all the scores for each stemmer-scorer-field combination;
  > 		- `aggregation`: a set of files, one for each considered evaluation function. In each file there is the scores for both the `fagin` and the `threshold` algorithm.
  >		- `plots`: a set of files `.out` in tsv format, one for each stemmer-scorer-filed configuration (in our default settings: 3x3x3=27 different files). In each file there is a summarization of all scores, for a certain stemmer-scorer-field configuration, obtained by every possible evaluation function (only for `Averaged nMDCG`.
- > - The script is called in the following way:  
+ > - The script `scripts/evaluation.py` is called in the following way:  
 ```
 python evaluation.py metric ground_truth scores [k]
 Where:
@@ -77,7 +77,7 @@ Notice: the python script only print one the stdout the computed value.
 - `7-make-plots.sh`
 > - produces a set of plots in `svg` format, one for each stemmer-scorer configuration (3x3=9).
 > - Plots are stored in `${output_dir}/evaluation/plots` directory.
->- Usage of `make_plot.py`:
+>- Usage of `scripts/make_plot.py`:
 ```
 python make_plot.py out_filename plot_title <label1> <scores_filename1> <label2> <scores_filename2> ...
 Where:
