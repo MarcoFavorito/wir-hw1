@@ -44,8 +44,6 @@ def main():
 
 	plt.legend(lines, labels)
 	plt.title(plot_title)
-	plt.xlabel("k")
-	plt.ylabel("averaged nMDCG")
 	plt.grid()
 	plt.savefig(out_filename+".svg")
 
@@ -54,3 +52,5 @@ def main():
 
 if __name__ == "__main__":
 	main()
+
+

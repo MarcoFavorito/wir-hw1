@@ -5,30 +5,31 @@ debug_msg="APPLY_SCORER_FUNCTIONS"
 echo
 echo $debug_msg - start
 
-if [ ! -d out/indices ]; then
-    echo $debug_msg - cannot find \"out/indices\" directory...
+if [ ! -d ${output_path}/indices ]; then
+    echo $debug_msg - cannot find \"${output_path}/indices\" directory...
     echo $debug_msg - exiting...
     exit 1
 fi
 
-if [ -d out/scores ]; then
-    rm -r out/scores
+if [ -d ${output_path}/scores ]; then
+    rm -r ${output_path}/scores
 fi
-mkdir out/scores
+mkdir ${output_path}/scores --parents
 
 for stemmer in ${stemmer_names[@]}; do
-    mkdir out/scores/$stemmer
+    mkdir ${output_path}/scores/$stemmer
 
     for scorer_function in ${scorer_functions[@]}; do
-        mkdir out/scores/$stemmer/$scorer_function
+        mkdir ${output_path}/scores/$stemmer/$scorer_function
 
         for field in ${fields[@]}; do
+						echo "${output_path}/indices/${stemmer}/${collection_name}"
             java homework.RunAllQueries_HW \
-                out/indices/$stemmer/cran \
-                Cranfield_DATASET/cran_all_queries.tsv \
+                ${output_path}/indices/${stemmer}/${collection_name} \
+                ${dataset_path}/${collection_name}_all_queries.tsv \
                 $scorer_function \
                 $field \
-                out/scores/${stemmer}/${scorer_function}/${field}.tsv
+                ${output_path}/scores/${stemmer}/${scorer_function}/${field}.tsv
         done
     done
 done

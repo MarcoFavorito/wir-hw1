@@ -28,19 +28,25 @@ def averaged_nMDCG(k, all_retrieved_docs, all_relevant_docs):
     nMDCG_values = []
     queryIds = all_relevant_docs.keys()
     for qid in queryIds:
-        cur_retrieved_docs = all_retrieved_docs[qid]
-        # prendo solo gli ids
-        cur_retrieved_doc_ids = [entry[0] for entry in cur_retrieved_docs]
-        cur_relevant_doc_ids = all_relevant_docs[qid]
+        # se non ho trovato nessun documento per una certa query,
+        # non ho docs per calcolare nMDCG, quindi è pari a 0
+        if qid not in all_retrieved_docs.keys():
+            cur_nMDCG = 0
+        else:
+            cur_retrieved_docs = all_retrieved_docs[qid]
 
-        # serve per gestire il caso in cui k è maggiore del numero di retrieved docs.
-        # in tal caso, k non può essere più grande di quel numero.
-        cur_k = k
-        max_k = len(cur_retrieved_docs)
-        if cur_k>max_k:
-            cur_k=max_k
+            # prendo solo gli ids
+            cur_retrieved_doc_ids = [entry[0] for entry in cur_retrieved_docs]
+            cur_relevant_doc_ids = all_relevant_docs[qid]
 
-        cur_nMDCG = nMDCG(cur_k, cur_retrieved_doc_ids, cur_relevant_doc_ids)
+            # serve per gestire il caso in cui k è maggiore del numero di retrieved docs.
+            # in tal caso, k non può essere più grande di quel numero.
+            cur_k = k
+            max_k = len(cur_retrieved_docs)
+            if cur_k>max_k:
+                cur_k=max_k
+
+            cur_nMDCG = nMDCG(cur_k, cur_retrieved_doc_ids, cur_relevant_doc_ids)
         nMDCG_values.append(cur_nMDCG)
 
     averaged_nMDCG = sum(nMDCG_values)/len(nMDCG_values)
