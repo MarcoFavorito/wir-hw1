@@ -25,27 +25,34 @@ def nMDCG(k, retrieved_docs, groundTruth):
 
 
 def averaged_nMDCG(k, all_retrieved_docs, all_relevant_docs):
+    """
+
+    :param all_retrieved_docs:  dict[key: qId, value: list[(docId, rank, score)] sorted by score ]
+    :param all_relevant_docs:   dict[key: qId, value: list[(docId)]
+    :return: averaged nMDCG on every queries
+    """
     nMDCG_values = []
     queryIds = all_relevant_docs.keys()
     for qid in queryIds:
-        # se non ho trovato nessun documento per una certa query,
-        # non ho docs per calcolare nMDCG, quindi è pari a 0
+        # if there is no doc for a certain query
+        # we cannot compute nMDCG, so set it to 0
         if qid not in all_retrieved_docs.keys():
             cur_nMDCG = 0
         else:
             cur_retrieved_docs = all_retrieved_docs[qid]
 
-            # prendo solo gli ids
+            # take only the docIds
             cur_retrieved_doc_ids = [entry[0] for entry in cur_retrieved_docs]
             cur_relevant_doc_ids = all_relevant_docs[qid]
 
-            # serve per gestire il caso in cui k è maggiore del numero di retrieved docs.
-            # in tal caso, k non può essere più grande di quel numero.
+            # handle the case when k is greater than the number of retrieved docs
+            # in that case, k cannot be greater than that number
             cur_k = k
             max_k = len(cur_retrieved_docs)
             if cur_k>max_k:
                 cur_k=max_k
 
+            # compute nMDCG for the current query
             cur_nMDCG = nMDCG(cur_k, cur_retrieved_doc_ids, cur_relevant_doc_ids)
         nMDCG_values.append(cur_nMDCG)
 
