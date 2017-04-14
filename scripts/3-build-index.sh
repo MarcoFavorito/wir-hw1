@@ -10,7 +10,6 @@ build_index () {
     mkdir ${output_path}/indices/$stemmer_name --parents
 
     java it.unimi.di.big.mg4j.tool.IndexBuilder -t $stemmer -S ${output_path}/$collection_name.collection ${output_path}/indices/$stemmer_name/$collection_name
-    # java it.unimi.di.big.mg4j.tool.IndexBuilder --downcase -t $stemmer -S ${output_path}/cran.collection ${output_path}/$stemmer_name/cran
 
     ln ${output_path}/$collection_name.collection ${output_path}/indices/$stemmer_name/$collection_name.collection
 }
