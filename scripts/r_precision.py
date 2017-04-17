@@ -37,7 +37,7 @@ def averaged_R_Precision(all_retrieved_docs, all_relevant_docs):
 
 	# compute the R-Precision for each query and store in a list
 	for qId in all_relevant_docs.keys():
-		cur_retrieved = all_retrieved_docs[qId]
+		cur_retrieved = all_retrieved_docs.get(qId,[(None,None,None)])
 		cur_retrieved, _, _ = zip(*cur_retrieved)
 		cur_relevant = all_relevant_docs[qId]
 		cur_R_precision = R_precision(cur_retrieved, cur_relevant)
