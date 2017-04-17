@@ -11,6 +11,7 @@ build_index () {
 
     java it.unimi.di.big.mg4j.tool.IndexBuilder -t $stemmer -S ${output_path}/$collection_name.collection ${output_path}/indices/$stemmer_name/$collection_name
 
+		# create a link for the .collection file into the index folder.
     ln ${output_path}/$collection_name.collection ${output_path}/indices/$stemmer_name/$collection_name.collection
 }
 
@@ -22,9 +23,6 @@ if [ ! -d out ]; then
     echo $debug_msg - exiting...
     exit 1
 fi
-
-# echo $debug_msg ${stemmers[@]}
-# echo $debug_msg ${stemmer_names[@]}
 
 if [ -d ${output_path}/indices ]; then
     rm -r ${output_path}/indices

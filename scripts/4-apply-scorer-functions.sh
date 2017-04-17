@@ -14,13 +14,10 @@ fi
 if [ -d ${output_path}/scores ]; then
     rm -r ${output_path}/scores
 fi
-mkdir ${output_path}/scores --parents
 
 for stemmer in ${stemmer_names[@]}; do
-    mkdir ${output_path}/scores/$stemmer
-
     for scorer_function in ${scorer_functions[@]}; do
-        mkdir ${output_path}/scores/$stemmer/$scorer_function
+        mkdir ${output_path}/scores/$stemmer/$scorer_function --parents
 
         for field in ${fields[@]}; do
 						echo "${output_path}/indices/${stemmer}/${collection_name}"

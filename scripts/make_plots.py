@@ -45,7 +45,7 @@ def main():
 	plt.legend(lines, labels)
 	plt.title(plot_title)
 	plt.grid()
-	plt.savefig(out_filename+".svg")
+	plt.savefig(out_filename+".png")
 
 
 

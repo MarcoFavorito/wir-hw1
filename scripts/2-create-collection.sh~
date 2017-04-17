@@ -5,8 +5,8 @@ debug_msg="CREATE_COLLECTION"
 echo
 echo $debug_msg - start...
 
-if [ ! -d ${output_path} ]; then
-    echo $debug_msg - creating \"${output_path}\" directory...
+if [ ! -d out/${collection_name} ]; then
+    echo $debug_msg - creating \"out/${collection_name}\" directory...
     mkdir ${output_path} --parents
 fi
 
