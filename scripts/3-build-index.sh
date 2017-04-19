@@ -7,7 +7,8 @@ build_index () {
     stemmer_name=$2
 
     echo $debug_msg - creating new \"${output_path}/indices/$stemmer_name\" folder...
-    mkdir ${output_path}/indices/$stemmer_name --parents
+    # mkdir ${output_path}/indices/$stemmer_name --parents
+    mkdir -p ${output_path}/indices/$stemmer_name
 
     java it.unimi.di.big.mg4j.tool.IndexBuilder -t $stemmer -S ${output_path}/$collection_name.collection ${output_path}/indices/$stemmer_name/$collection_name
 
@@ -27,7 +28,8 @@ fi
 if [ -d ${output_path}/indices ]; then
     rm -r ${output_path}/indices
 fi
-mkdir ${output_path}/indices --parents
+# mkdir ${output_path}/indices --parents
+mkdir -p ${output_path}
 
 for i in {0..2}; do
     build_index ${stemmers[i]} ${stemmer_names[i]}

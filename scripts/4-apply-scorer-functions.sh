@@ -17,7 +17,8 @@ fi
 
 for stemmer in ${stemmer_names[@]}; do
     for scorer_function in ${scorer_functions[@]}; do
-        mkdir ${output_path}/scores/$stemmer/$scorer_function --parents
+        # mkdir ${output_path}/scores/$stemmer/$scorer_function --parents
+        mkdir -p ${output_path}/scores/$stemmer/$scorer_function
 
         for field in ${fields[@]}; do
 						echo "${output_path}/indices/${stemmer}/${collection_name}"

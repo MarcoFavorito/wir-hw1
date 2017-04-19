@@ -5,9 +5,12 @@ debug_msg="CREATE_COLLECTION"
 echo
 echo $debug_msg - start...
 
+echo ${output_path}
+
 if [ ! -d ${output_path} ]; then
     echo $debug_msg - creating \"${output_path}\" directory...
-    mkdir ${output_path} --parents
+    # mkdir ${output_path} --parents
+    mkdir -p ${output_path}
 fi
 
 find $collection_path -iname \*.html | \

@@ -13,7 +13,8 @@ echo $debug_msg - start...
 
 echo $debug_msg "mkdir ${output_path}/aggregation"
 
-mkdir ${output_path}/aggregation --parents
+# mkdir ${output_path}/aggregation --parents
+mkdir -p ${output_path}/aggregation
 
 echo $debug_msg "aggregation using fagin. Writing in ${output_path}/aggregation/fagin.out"
 

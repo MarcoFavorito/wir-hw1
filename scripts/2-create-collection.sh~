@@ -7,7 +7,8 @@ echo $debug_msg - start...
 
 if [ ! -d out/${collection_name} ]; then
     echo $debug_msg - creating \"out/${collection_name}\" directory...
-    mkdir ${output_path} --parents
+    # mkdir ${output_path} --parents
+    mkdir -p ${output_path}
 fi
 
 find $collection_path -iname \*.html | \
