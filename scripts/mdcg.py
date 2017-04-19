@@ -1,7 +1,13 @@
 from math import log2
 
-def maximumMDCG(k):
-    res = 1 + sum([1/log2(rank+1) for rank in range(1, k)])
+def maximumMDCG(k, groundTruth):
+
+    # if k is greater equal the number of relevant docs
+    # (i.e. the length of @groundTruth) then
+    # Compute MDCG with the number of relevant docs.
+    max_k = k if k < len(groundTruth) else len(groundTruth)
+    
+    res = 1 + sum([1/log2(rank+1) for rank in range(1, max_k)])
     return res
 
 def relevance(docId, groundTruth):
@@ -18,7 +24,7 @@ def MDCG(k, retrieved_docs, groundTruth):
 
 def nMDCG(k, retrieved_docs, groundTruth):
     cur_MDCG = MDCG(k, retrieved_docs, groundTruth)
-    max_MDCG = maximumMDCG(k)
+    max_MDCG = maximumMDCG(k, groundTruth)
 
     res = cur_MDCG / max_MDCG
     return res
